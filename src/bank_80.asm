@@ -3469,46 +3469,58 @@ IRQ:
     RTI                                                                  ;80988A;
 
 
-Tilemap_HUD_topRow:
+Tilemap_HUD:
+  .topRow
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;80988B;
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;80989B;
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;8098AB;
     dw $2C0F,$2C0F,$2C1D,$2C1D,$2C1D,$2C1D,$2C1D,$2C1C                   ;8098BB;
 
-Tilemap_HUD_rows123:
+  .rows123
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;8098CB;
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;8098DB;
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;8098EB;
     dw $2C0F,$2C0F,$2C12,$2C12,$2C23,$2C12,$2C12,$2C1E                   ;8098FB;
+
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;80990B;
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;80991B;
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;80992B;
     dw $2C0F,$2C0F,$2822,$2822,$2823,$2813,$2C14,$2C1E                   ;80993B;
+
     dw $2C0F,$2C0B,$2C0C,$2C0D,$2C32,$2C0F,$2C09,$2C0F                   ;80994B;
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;80995B;
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;80996B;
     dw $2C0F,$2C0F,$2C12,$2C12,$A824,$2815,$2C16,$2C1E                   ;80997B;
 
-Tilemap_HUD_autoReserve:
-    dw $3C33,$3C46,$3C47,$3C48,$BC33,$BC46                               ;80998B;
+  .autoReserve
+    dw $3C33,$3C46                                                       ;80998B;
+    dw $3C47,$3C48                                                       ;80998F;
+    dw $BC33,$BC46                                                       ;809993;
 
-Tilemap_HUD_emptyAutoReserve:
-    dw $2C33,$2C46,$2C47,$2C48,$AC33,$AC46                               ;809997;
+  .emptyAutoReserve
+    dw $2C33,$2C46                                                       ;809997;
+    dw $2C47,$2C48                                                       ;80999B;
+    dw $AC33,$AC46                                                       ;80999F;
 
-Tilemap_HUD_missiles:
-    dw $344B,$3449,$744B,$344C,$344A,$744C                               ;8099AD;
+  .missiles
+    dw $344B,$3449,$744B                                                 ;8099AD;
+    dw $344C,$344A,$744C                                                 ;8099B3;
 
-Tilemap_HUD_superMissiles:
-    dw $3434,$7434,$3435,$7435                                           ;8099AF;
+  .superMissiles
+    dw $3434,$7434                                                       ;8099AF;
+    dw $3435,$7435                                                       ;8099B3;
 
-Tilemap_HUD_powerBombs:
-    dw $3436,$7436,$3437,$7437                                           ;8099B7;
+  .powerBombs
+    dw $3436,$7436                                                       ;8099B7;
+    dw $3437,$7437                                                       ;8099BB;
 
-Tilemap_HUD_grapple:
-    dw $3438,$7438,$3439,$7439                                           ;8099BF;
+  .grapple
+    dw $3438,$7438                                                       ;8099BF;
+    dw $3439,$7439                                                       ;8099C3;
 
-Tilemap_HUD_xray:
-    dw $343A,$743A,$343B,$743B                                           ;8099C7;
+  .xray
+    dw $343A,$743A                                                       ;8099C7;
+    dw $343B,$743B                                                       ;8099CB;
 
 AddMissilesToHUDTilemap:
     PHP                                                                  ;8099CF;
@@ -3897,8 +3909,8 @@ HandleHUDTilemap_PausedAndRunning:
 
 
 .etankIconOffsets:
-    dw $0042,$0044,$0046,$0048,$004A,$004C,$004E,$0002                   ;809CCE; bottom row
-    dw $0004,$0006,$0008,$000A,$000C,$000E                               ;809CDE;
+    dw $0042,$0044,$0046,$0048,$004A,$004C,$004E                         ;809CCE; bottom (first) row
+    dw $0002,$0004,$0006,$0008,$000A,$000C,$000E                         ;809CDE; top (second) row
 
 ToggleHUDItemHighlight:
     STX.W $077C                                                          ;809CEA;
@@ -3963,9 +3975,12 @@ ToggleHUDItemHighlight:
 .return:
     RTS                                                                  ;809D6D;
 
-
 .HUDItemOffsets:
-    dw $0014,$001C,$0022,$0028,$002E                                     ;809D6E;
+    dw $0014                                                             ;809D6E; Missiles
+    dw $001C                                                             ;809D70; Super missiles
+    dw $0022                                                             ;809D72; Power bombs
+    dw $0028                                                             ;809D74; Grapple beam
+    dw $002E                                                             ;809D76; X-ray
 
 DrawThreeHUDDigits:
     STA.W $4204                                                          ;809D78;
@@ -4009,11 +4024,12 @@ DrawTwoHUDDigits:
     RTS                                                                  ;809DBE;
 
 
-Tilemap_HUDDigits_health:
+Tilemap_HUDDigits:
+  .health
     dw $2C09,$2C00,$2C01,$2C02,$2C03,$2C04,$2C05,$2C06                   ;809DBF;
     dw $2C07,$2C08                                                       ;809DCF;
 
-Tilemap_HUDDigits_ammo:
+  .ammo
     dw $2C09,$2C00,$2C01,$2C02,$2C03,$2C04,$2C05,$2C06                   ;809DD3;
     dw $2C07,$2C08                                                       ;809DE3;
 
@@ -4257,87 +4273,62 @@ TimerDigitsSpritemapPointers:
     dw Spritemap_TimerDigits_9                                           ;809FE6;
 
 Spritemap_TimerDigits_0:
-    dw $0002,$01FC                                                       ;809FE8;
-    db $00                                                               ;809FEC;
-    dw $3BEA,$01FC                                                       ;809FED;
-    db $F8                                                               ;809FF1;
-    dw $3BE0                                                             ;809FF2;
+    dw $0002                                                             ;809FE8;
+    %spritemapEntry(0, $1FC, $00, 0, 0, 3, 5, $1EA)
+    %spritemapEntry(0, $1FC, $F8, 0, 0, 3, 5, $1E0)
 
 Spritemap_TimerDigits_1:
-    dw $0002,$01FC                                                       ;809FF4;
-    db $00                                                               ;809FF8;
-    dw $3BEB,$01FC                                                       ;809FF9;
-    db $F8                                                               ;809FFD;
-    dw $3BE1                                                             ;809FFE;
+    dw $0002                                                             ;809FF4;
+    %spritemapEntry(0, $1FC, $00, 0, 0, 3, 5, $1EB)
+    %spritemapEntry(0, $1FC, $F8, 0, 0, 3, 5, $1E1)
 
 Spritemap_TimerDigits_2:
-    dw $0002,$01FC                                                       ;80A000;
-    db $00                                                               ;80A004;
-    dw $3BEC,$01FC                                                       ;80A005;
-    db $F8                                                               ;80A009;
-    dw $3BE2                                                             ;80A00A;
+    dw $0002                                                             ;80A000;
+    %spritemapEntry(0, $1FC, $00, 0, 0, 3, 5, $1EC)
+    %spritemapEntry(0, $1FC, $F8, 0, 0, 3, 5, $1E2)
 
 Spritemap_TimerDigits_3:
-    dw $0002,$01FC                                                       ;80A00C;
-    db $00                                                               ;80A010;
-    dw $3BED,$01FC                                                       ;80A011;
-    db $F8                                                               ;80A015;
-    dw $3BE3                                                             ;80A016;
+    dw $0002                                                             ;80A00C;
+    %spritemapEntry(0, $1FC, $00, 0, 0, 3, 5, $1ED)
+    %spritemapEntry(0, $1FC, $F8, 0, 0, 3, 5, $1E3)
 
 Spritemap_TimerDigits_4:
-    dw $0002,$01FC                                                       ;80A018;
-    db $00                                                               ;80A01C;
-    dw $3BEE,$01FC                                                       ;80A01D;
-    db $F8                                                               ;80A021;
-    dw $3BE4                                                             ;80A022;
+    dw $0002                                                             ;80A018;
+    %spritemapEntry(0, $1FC, $00, 0, 0, 3, 5, $1EE)
+    %spritemapEntry(0, $1FC, $F8, 0, 0, 3, 5, $1E4)
 
 Spritemap_TimerDigits_5:
-    dw $0002,$01FC                                                       ;80A024;
-    db $00                                                               ;80A028;
-    dw $3BEF,$01FC                                                       ;80A029;
-    db $F8                                                               ;80A02D;
-    dw $3BE5                                                             ;80A02E;
+    dw $0002                                                             ;80A024;
+    %spritemapEntry(0, $1FC, $00, 0, 0, 3, 5, $1EF)
+    %spritemapEntry(0, $1FC, $F8, 0, 0, 3, 5, $1E5)
 
 Spritemap_TimerDigits_6:
-    dw $0002,$01FC                                                       ;80A030;
-    db $00                                                               ;80A034;
-    dw $3BF0,$01FC                                                       ;80A035;
-    db $F8                                                               ;80A039;
-    dw $3BE6                                                             ;80A03A;
+    dw $0002                                                             ;80A030;
+    %spritemapEntry(0, $1FC, $00, 0, 0, 3, 5, $1F0)
+    %spritemapEntry(0, $1FC, $F8, 0, 0, 3, 5, $1E6)
 
 Spritemap_TimerDigits_7:
-    dw $0002,$01FC                                                       ;80A03C;
-    db $00                                                               ;80A040;
-    dw $3BF1,$01FC                                                       ;80A041;
-    db $F8                                                               ;80A045;
-    dw $3BE7                                                             ;80A046;
+    dw $0002                                                             ;80A03C;
+    %spritemapEntry(0, $1FC, $00, 0, 0, 3, 5, $1F1)
+    %spritemapEntry(0, $1FC, $F8, 0, 0, 3, 5, $1E7)
 
 Spritemap_TimerDigits_8:
-    dw $0002,$01FC                                                       ;80A048;
-    db $00                                                               ;80A04C;
-    dw $3BF2,$01FC                                                       ;80A04D;
-    db $F8                                                               ;80A051;
-    dw $3BE8                                                             ;80A052;
+    dw $0002                                                             ;80A048;
+    %spritemapEntry(0, $1FC, $00, 0, 0, 3, 5, $1F2)
+    %spritemapEntry(0, $1FC, $F8, 0, 0, 3, 5, $1E8)
 
 Spritemap_TimerDigits_9:
-    dw $0002,$01FC                                                       ;80A054;
-    db $00                                                               ;80A058;
-    dw $3BF3,$01FC                                                       ;80A059;
-    db $F8                                                               ;80A05D;
-    dw $3BE9                                                             ;80A05E;
+    dw $0002                                                             ;80A054;
+    %spritemapEntry(0, $1FC, $00, 0, 0, 3, 5, $1F3)
+    %spritemapEntry(0, $1FC, $F8, 0, 0, 3, 5, $1E9)
 
 Spritemap_Timer_TIME:
-    dw $0005,$01F0                                                       ;80A060;
-    db $F0                                                               ;80A064;
-    dw $3BF8,$01E8                                                       ;80A065;
-    db $F0                                                               ;80A069;
-    dw $3BF7,$01E0                                                       ;80A06A;
-    db $F0                                                               ;80A06E;
-    dw $3BF6,$0008                                                       ;80A06F;
-    db $F8                                                               ;80A073;
-    dw $3BF5,$01F0                                                       ;80A074;
-    db $F8                                                               ;80A078;
-    dw $3BF4                                                             ;80A079;
+    dw $0005                                                             ;80A060;
+    %spritemapEntry(0, $1F0, $F0, 0, 0, 3, 5, $1F8)
+    %spritemapEntry(0, $1E8, $F0, 0, 0, 3, 5, $1F7)
+    %spritemapEntry(0, $1E0, $F0, 0, 0, 3, 5, $1F6)
+    %spritemapEntry(0, $008, $F8, 0, 0, 3, 5, $1F5)
+    %spritemapEntry(0, $1F0, $F8, 0, 0, 3, 5, $1F4)
 
 StartGameplay:
     PHP                                                                  ;80A07B;
@@ -7389,470 +7380,621 @@ LoadStations_Crateria:
     dw RoomHeader_LandingSite                                            ;80C4C5;
     dw Door_Parlor_1                                                     ;80C4C7;
     dw $0000,$0400,$0400,$0040,$0000                                     ;80C4C9;
+
     dw RoomHeader_CrateriaSave                                           ;80C4D3;
     dw Door_Parlor_5                                                     ;80C4D5;
     dw $0000,$0000,$0000,$0098,$FFE0                                     ;80C4D7;
+
     dw $0000                                                             ;80C4E1;
     dw $0000                                                             ;80C4E3;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C4E5;
+
     dw $0000                                                             ;80C4EF;
     dw $0000                                                             ;80C4F1;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C4F3;
+
     dw $0000                                                             ;80C4FD;
     dw $0000                                                             ;80C4FF;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C501;
+
     dw $0000                                                             ;80C50B;
     dw $0000                                                             ;80C50D;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C50F;
+
     dw $0000                                                             ;80C519;
     dw $0000                                                             ;80C51B;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C51D;
+
     dw $0000                                                             ;80C527;
     dw $0000                                                             ;80C529;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C52B;
+
     dw RoomHeader_ForgottenHighwayElev                                   ;80C535;
     dw Door_ForgottenHighwayElbow_1                                      ;80C537;
     dw $0000,$0000,$0000,$00A8,$0000                                     ;80C539;
+
     dw RoomHeader_RedBinstarElev                                         ;80C543;
     dw Door_CrateriaKihunter_2                                           ;80C545;
     dw $0000,$0000,$0000,$00A8,$0000                                     ;80C547;
+
     dw RoomHeader_ElevToBlueBrinstar                                     ;80C551;
     dw Door_Pit_1                                                        ;80C553;
     dw $0000,$0000,$0000,$0088,$0000                                     ;80C555;
+
     dw RoomHeader_GreenBrinstarElev                                      ;80C55F;
     dw Door_LowerMushrooms_1                                             ;80C561;
     dw $0000,$0000,$0000,$0088,$0000                                     ;80C563;
+
     dw RoomHeader_Statues                                                ;80C56D;
     dw Door_StatuesHallway_1                                             ;80C56F;
     dw $0000,$0000,$0100,$0098,$0000                                     ;80C571;
+
     dw $0000                                                             ;80C57B;
     dw $0000                                                             ;80C57D;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C57F;
+
     dw $0000                                                             ;80C589;
     dw $0000                                                             ;80C58B;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C58D;
+
     dw $0000                                                             ;80C597;
     dw $0000                                                             ;80C599;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C59B;
+
     dw RoomHeader_LandingSite                                            ;80C5A5;
     dw Door_Parlor_1                                                     ;80C5A7;
     dw $0000,$0400,$0400,$0040,$0000                                     ;80C5A9;
+
     dw RoomHeader_EastOcean                                              ;80C5B3;
     dw Door_ForgottenHighwayKagos_0                                      ;80C5B5;
     dw $0000,$0000,$0400,$0095,$0000                                     ;80C5B7;
+
     dw RoomHeader_LandingSite                                            ;80C5C1;
     dw Door_LandingSite_LandingCutscene                                  ;80C5C3;
     dw $0000,$0400,$0000,$0080,$0000                                     ;80C5C5;
+
 
 LoadStations_Brinstar:
     dw RoomHeader_BigPinkSaveRoom                                        ;80C5CF;
     dw Door_BigPink_4                                                    ;80C5D1;
     dw $0000,$0000,$0000,$0098,$FFE0                                     ;80C5D3;
+
     dw RoomHeader_GreenBrinstarSave                                      ;80C5DD;
     dw Door_GreenBrinstarMainShaft_A                                     ;80C5DF;
     dw $0000,$0000,$0000,$0098,$FFE0                                     ;80C5E1;
+
     dw RoomHeader_EtecoonSave                                            ;80C5EB;
     dw Door_EtecoonETank_3                                               ;80C5ED;
     dw $0000,$0000,$0000,$0098,$FFE0                                     ;80C5EF;
+
     dw RoomHeader_WarehouseSave                                          ;80C5F9;
     dw Door_WarehouseKihunter_2                                          ;80C5FB;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C5FD;
+
     dw RoomHeader_RedBrinstarSave                                        ;80C607;
     dw Door_Caterpillar_6                                                ;80C609;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C60B;
+
     dw $0000                                                             ;80C615;
     dw $0000                                                             ;80C617;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C619;
+
     dw $0000                                                             ;80C623;
     dw $0000                                                             ;80C625;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C627;
+
     dw $0000                                                             ;80C631;
     dw $0000                                                             ;80C633;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C635;
+
     dw RoomHeader_GreenBrinstarMainShaft                                 ;80C63F;
     dw Door_BrinstarPreMap_1                                             ;80C641;
     dw $0001,$0000,$0200,$00A8,$0000                                     ;80C643;
+
     dw RoomHeader_MorphBall                                              ;80C64D;
     dw Door_GreenHillZone_1                                              ;80C64F;
     dw $0000,$0500,$0200,$00A8,$0000                                     ;80C651;
+
     dw RoomHeader_Caterpillar                                            ;80C65B;
     dw Door_Hellway_1                                                    ;80C65D;
     dw $0000,$0000,$0200,$00A8,$0000                                     ;80C65F;
+
     dw RoomHeader_WarehouseEntrance                                      ;80C669;
     dw Door_EastTunnel_1                                                 ;80C66B;
     dw $0000,$0000,$0000,$0088,$0000                                     ;80C66D;
+
     dw $0000                                                             ;80C677;
     dw $0000                                                             ;80C679;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C67B;
+
     dw $0000                                                             ;80C685;
     dw $0000                                                             ;80C687;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C689;
+
     dw $0000                                                             ;80C693;
     dw $0000                                                             ;80C695;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C697;
+
     dw $0000                                                             ;80C6A1;
     dw $0000                                                             ;80C6A3;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C6A5;
+
     dw RoomHeader_GreenBrinstarMainShaft                                 ;80C6AF;
     dw Door_BrinstarPreMap_1                                             ;80C6B1;
     dw $0001,$0000,$0200,$00A8,$0000                                     ;80C6B3;
+
     dw RoomHeader_KraidEyeDoor                                           ;80C6BD;
     dw Door_Kraid_0                                                      ;80C6BF;
     dw $0000,$0000,$0100,$0080,$0000                                     ;80C6C1;
+
     dw RoomHeader_BigPink                                                ;80C6CB;
     dw Door_PinkBrinstarPowerBombs_0                                     ;80C6CD;
     dw $0000,$0300,$0000,$0080,$0000                                     ;80C6CF;
+
 
 LoadStations_Norfair:
     dw RoomHeader_PostCrocSave                                           ;80C6D9;
     dw Door_PostCrocFarming_3                                            ;80C6DB;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C6DD;
+
     dw RoomHeader_BubbleMountainSave                                     ;80C6E7;
     dw Door_BubbleMountain_6                                             ;80C6E9;
     dw $0000,$0000,$0000,$0098,$FFE0                                     ;80C6EB;
+
     dw RoomHeader_FrogSave                                               ;80C6F5;
     dw Door_FrogSpeedway_0                                               ;80C6F7;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C6F9;
+
     dw RoomHeader_CrocomireSave                                          ;80C703;
     dw Door_CrocomireSpeedway_2                                          ;80C705;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C707;
+
     dw RoomHeader_LNElevSave                                             ;80C711;
     dw Door_LowerNorfairElev_3                                           ;80C713;
     dw $0000,$0000,$0000,$0098,$FFE0                                     ;80C715;
+
     dw RoomHeader_LNSave                                                 ;80C71F;
     dw Door_RedKihunterShaft_3                                           ;80C721;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C723;
+
     dw $0000                                                             ;80C72D;
     dw $0000                                                             ;80C72F;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C731;
+
     dw $0000                                                             ;80C73B;
     dw $0000                                                             ;80C73D;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C73F;
+
     dw RoomHeader_BusinessCenter                                         ;80C749;
     dw Door_CathedralEntrance_0                                          ;80C74B;
     dw $0000,$0000,$0200,$00A8,$0000                                     ;80C74D;
+
     dw RoomHeader_LowerNorfairElev                                       ;80C757;
     dw Door_LavaDive_1                                                   ;80C759;
     dw $0000,$0000,$0000,$0088,$0000                                     ;80C75B;
+
     dw RoomHeader_MainHall                                               ;80C765;
     dw Door_AcidStatue_1                                                 ;80C767;
     dw $0000,$0400,$0200,$0088,$0000                                     ;80C769;
+
     dw $0000                                                             ;80C773;
     dw $0000                                                             ;80C775;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C777;
+
     dw $0000                                                             ;80C781;
     dw $0000                                                             ;80C783;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C785;
+
     dw $0000                                                             ;80C78F;
     dw $0000                                                             ;80C791;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C793;
+
     dw $0000                                                             ;80C79D;
     dw $0000                                                             ;80C79F;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C7A1;
+
     dw $0000                                                             ;80C7AB;
     dw $0000                                                             ;80C7AD;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C7AF;
+
     dw RoomHeader_BusinessCenter                                         ;80C7B9;
     dw Door_IceBeamGate_2                                                ;80C7BB;
     dw $0002,$0000,$0200,$00A8,$0000                                     ;80C7BD;
+
     dw RoomHeader_CrocomireSpeedway                                      ;80C7C7;
     dw Door_Crocomire_1                                                  ;80C7C9;
     dw $0001,$0C00,$0200,$00A0,$0000                                     ;80C7CB;
+
     dw RoomHeader_LNFarming                                              ;80C7D5;
     dw Door_Plowerhouse_0                                                ;80C7D7;
     dw $0000,$0000,$0000,$00A0,$0000                                     ;80C7D9;
+
     dw RoomHeader_PostCrocFarming                                        ;80C7E3;
     dw Door_PostCrocPowerBombs_0                                         ;80C7E5;
     dw $0000,$0000,$0000,$00B5,$0000                                     ;80C7E7;
+
     dw RoomHeader_MainHall                                               ;80C7F1;
     dw Door_AcidStatue_1                                                 ;80C7F3;
     dw $0001,$0500,$0200,$0035,$0000                                     ;80C7F5;
+
     dw RoomHeader_GoldenTorizo                                           ;80C7FF;
     dw Door_GTEnergyRefill_0                                             ;80C801;
     dw $0000,$0200,$0200,$0000,$0000                                     ;80C803;
+
     dw RoomHeader_GoldenTorizo                                           ;80C80D;
     dw Door_AcidStatue_0                                                 ;80C80F;
     dw $0000,$0000,$0000,$0080,$0000                                     ;80C811;
+
 
 LoadStations_WreckedShip:
     dw RoomHeader_WreckedShipSave                                        ;80C81B;
     dw Door_WreckedShipMainShaft_6                                       ;80C81D;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C81F;
+
     dw $0000                                                             ;80C829;
     dw $0000                                                             ;80C82B;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C82D;
+
     dw $0000                                                             ;80C837;
     dw $0000                                                             ;80C839;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C83B;
+
     dw $0000                                                             ;80C845;
     dw $0000                                                             ;80C847;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C849;
+
     dw $0000                                                             ;80C853;
     dw $0000                                                             ;80C855;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C857;
+
     dw $0000                                                             ;80C861;
     dw $0000                                                             ;80C863;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C865;
+
     dw $0000                                                             ;80C86F;
     dw $0000                                                             ;80C871;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C873;
+
     dw $0000                                                             ;80C87D;
     dw $0000                                                             ;80C87F;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C881;
+
     dw $0000                                                             ;80C88B;
     dw $0000                                                             ;80C88D;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C88F;
+
     dw $0000                                                             ;80C899;
     dw $0000                                                             ;80C89B;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C89D;
+
     dw $0000                                                             ;80C8A7;
     dw $0000                                                             ;80C8A9;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C8AB;
+
     dw $0000                                                             ;80C8B5;
     dw $0000                                                             ;80C8B7;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C8B9;
+
     dw $0000                                                             ;80C8C3;
     dw $0000                                                             ;80C8C5;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C8C7;
+
     dw $0000                                                             ;80C8D1;
     dw $0000                                                             ;80C8D3;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C8D5;
+
     dw $0000                                                             ;80C8DF;
     dw $0000                                                             ;80C8E1;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C8E3;
+
     dw $0000                                                             ;80C8ED;
     dw $0000                                                             ;80C8EF;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C8F1;
+
     dw RoomHeader_WreckedShipEntrance                                    ;80C8FB;
     dw Door_WreckedShipMainShaft_0                                       ;80C8FD;
     dw $0001,$0000,$0000,$0080,$0000                                     ;80C8FF;
+
     dw RoomHeader_Basement                                               ;80C909;
     dw Door_WreckedShipMap_0                                             ;80C90B;
     dw $0000,$0400,$0000,$0080,$0000                                     ;80C90D;
+
 
 LoadStations_Maridia:
     dw RoomHeader_GlassTunnelSave                                        ;80C917;
     dw Door_GlassTunnel_3                                                ;80C919;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C91B;
+
     dw RoomHeader_ForgottenHighwaySave                                   ;80C925;
     dw Door_MaridiaElev_1                                                ;80C927;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C929;
+
     dw RoomHeader_AqueductSave                                           ;80C933;
     dw Door_Aqueduct_5                                                   ;80C935;
     dw $0000,$0000,$0000,$0098,$FFE0                                     ;80C937;
+
     dw RoomHeader_DraygonSave                                            ;80C941;
     dw Door_Colosseum_1                                                  ;80C943;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C945;
+
     dw $0000                                                             ;80C94F;
     dw $0000                                                             ;80C951;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C953;
+
     dw $0000                                                             ;80C95D;
     dw $0000                                                             ;80C95F;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C961;
+
     dw $0000                                                             ;80C96B;
     dw $0000                                                             ;80C96D;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C96F;
+
     dw $0000                                                             ;80C979;
     dw $0000                                                             ;80C97B;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C97D;
+
     dw RoomHeader_MaridiaElev                                            ;80C987;
     dw Door_ThreadTheNeedle_1                                            ;80C989;
     dw $0000,$0000,$0200,$00A8,$0000                                     ;80C98B;
+
     dw $0000                                                             ;80C995;
     dw $0000                                                             ;80C997;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C999;
+
     dw $0000                                                             ;80C9A3;
     dw $0000                                                             ;80C9A5;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C9A7;
+
     dw $0000                                                             ;80C9B1;
     dw $0000                                                             ;80C9B3;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C9B5;
+
     dw $0000                                                             ;80C9BF;
     dw $0000                                                             ;80C9C1;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C9C3;
+
     dw $0000                                                             ;80C9CD;
     dw $0000                                                             ;80C9CF;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C9D1;
+
     dw $0000                                                             ;80C9DB;
     dw $0000                                                             ;80C9DD;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C9DF;
+
     dw $0000                                                             ;80C9E9;
     dw $0000                                                             ;80C9EB;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C9ED;
+
     dw RoomHeader_PseudoPlasmaSpark                                      ;80C9F7;
     dw Door_NWestMaridiaBug_1                                            ;80C9F9;
     dw $0001,$0000,$0000,$00D0,$0000                                     ;80C9FB;
+
     dw RoomHeader_ThePrecious                                            ;80CA05;
     dw Door_ThePrecious_MaridiaLoad11                                    ;80CA07;
     dw $0000,$0000,$0200,$0080,$0000                                     ;80CA09;
+
     dw RoomHeader_BotwoonHallway                                         ;80CA13;
     dw Door_Aqueduct_3                                                   ;80CA15;
     dw $0000,$0300,$0000,$0080,$0000                                     ;80CA17;
+
     dw RoomHeader_Oasis                                                  ;80CA21;
     dw Door_WestSandHall_1                                               ;80CA23;
     dw $0000,$0000,$0100,$0080,$0000                                     ;80CA25;
+
 
 LoadStations_Tourian:
     dw RoomHeader_MotherBrainSave                                        ;80CA2F;
     dw Door_RinkaShaft_1                                                 ;80CA31;
     dw $0000,$0000,$0000,$0098,$FFE0                                     ;80CA33;
+
     dw RoomHeader_UpperTourianSave                                       ;80CA3D;
     dw Door_TourianFirst_3                                               ;80CA3F;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80CA41;
+
     dw $0000                                                             ;80CA4B;
     dw $0000                                                             ;80CA4D;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80CA4F;
+
     dw $0000                                                             ;80CA59;
     dw $0000                                                             ;80CA5B;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80CA5D;
+
     dw $0000                                                             ;80CA67;
     dw $0000                                                             ;80CA69;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80CA6B;
+
     dw $0000                                                             ;80CA75;
     dw $0000                                                             ;80CA77;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80CA79;
+
     dw $0000                                                             ;80CA83;
     dw $0000                                                             ;80CA85;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80CA87;
+
     dw $0000                                                             ;80CA91;
     dw $0000                                                             ;80CA93;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80CA95;
+
     dw RoomHeader_TourianFirst                                           ;80CA9F;
     dw Door_Metroids1_0                                                  ;80CAA1;
     dw $0000,$0000,$0200,$00A8,$0000                                     ;80CAA3;
+
     dw $0000                                                             ;80CAAD;
     dw $0000                                                             ;80CAAF;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80CAB1;
+
     dw $0000                                                             ;80CABB;
     dw $0000                                                             ;80CABD;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80CABF;
+
     dw $0000                                                             ;80CAC9;
     dw $0000                                                             ;80CACB;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80CACD;
+
     dw $0000                                                             ;80CAD7;
     dw $0000                                                             ;80CAD9;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80CADB;
+
     dw $0000                                                             ;80CAE5;
     dw $0000                                                             ;80CAE7;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80CAE9;
+
     dw $0000                                                             ;80CAF3;
     dw $0000                                                             ;80CAF5;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80CAF7;
+
     dw $0000                                                             ;80CB01;
     dw $0000                                                             ;80CB03;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80CB05;
+
     dw RoomHeader_RinkaShaft                                             ;80CB0F;
     dw Door_TourianEyeDoor_1                                             ;80CB11;
     dw $0000,$0000,$0200,$0080,$0000                                     ;80CB13;
+
     dw RoomHeader_RinkaShaft                                             ;80CB1D;
     dw Door_BigBoy_0                                                     ;80CB1F;
     dw $0000,$0000,$0000,$0080,$0000                                     ;80CB21;
+
 
 LoadStations_Ceres:
     dw RoomHeader_CeresElev                                              ;80CB2B;
     dw Door_FallingTile_0                                                ;80CB2D;
     dw $0000,$0000,$0000,$0048,$0000                                     ;80CB2F;
+
     dw RoomHeader_CeresElev                                              ;80CB39;
     dw Door_FallingTile_0                                                ;80CB3B;
     dw $0000,$0000,$0000,$0040,$0000                                     ;80CB3D;
+
     dw RoomHeader_CeresElev                                              ;80CB47;
     dw Door_FallingTile_0                                                ;80CB49;
     dw $0000,$0000,$0000,$0040,$0000                                     ;80CB4B;
+
     dw RoomHeader_CeresElev                                              ;80CB55;
     dw Door_FallingTile_0                                                ;80CB57;
     dw $0000,$0000,$0000,$0040,$0000                                     ;80CB59;
+
     dw RoomHeader_CeresElev                                              ;80CB63;
     dw Door_FallingTile_0                                                ;80CB65;
     dw $0000,$0000,$0000,$0040,$0000                                     ;80CB67;
+
     dw RoomHeader_CeresElev                                              ;80CB71;
     dw Door_FallingTile_0                                                ;80CB73;
     dw $0000,$0000,$0000,$0040,$0000                                     ;80CB75;
+
     dw RoomHeader_CeresElev                                              ;80CB7F;
     dw Door_FallingTile_0                                                ;80CB81;
     dw $0000,$0000,$0000,$0040,$0000                                     ;80CB83;
+
     dw RoomHeader_CeresElev                                              ;80CB8D;
     dw Door_FallingTile_0                                                ;80CB8F;
     dw $0000,$0000,$0000,$0040,$0000                                     ;80CB91;
+
     dw RoomHeader_CeresElev                                              ;80CB9B;
     dw Door_FallingTile_0                                                ;80CB9D;
     dw $0000,$0000,$0000,$0040,$0000                                     ;80CB9F;
+
     dw RoomHeader_CeresElev                                              ;80CBA9;
     dw Door_FallingTile_0                                                ;80CBAB;
     dw $0000,$0000,$0000,$0040,$0000                                     ;80CBAD;
+
     dw RoomHeader_CeresElev                                              ;80CBB7;
     dw Door_FallingTile_0                                                ;80CBB9;
     dw $0000,$0000,$0000,$0040,$0000                                     ;80CBBB;
+
     dw RoomHeader_CeresElev                                              ;80CBC5;
     dw Door_FallingTile_0                                                ;80CBC7;
     dw $0000,$0000,$0000,$0040,$0000                                     ;80CBC9;
+
     dw RoomHeader_CeresElev                                              ;80CBD3;
     dw Door_FallingTile_0                                                ;80CBD5;
     dw $0000,$0000,$0000,$0040,$0000                                     ;80CBD7;
+
     dw RoomHeader_CeresElev                                              ;80CBE1;
     dw Door_FallingTile_0                                                ;80CBE3;
     dw $0000,$0000,$0000,$0040,$0000                                     ;80CBE5;
+
     dw RoomHeader_CeresElev                                              ;80CBEF;
     dw Door_FallingTile_0                                                ;80CBF1;
     dw $0000,$0000,$0000,$0040,$0000                                     ;80CBF3;
+
     dw RoomHeader_CeresElev                                              ;80CBFD;
     dw Door_FallingTile_0                                                ;80CBFF;
     dw $0000,$0000,$0000,$0040,$0000                                     ;80CC01;
+
     dw RoomHeader_CeresElev                                              ;80CC0B;
     dw Door_FallingTile_0                                                ;80CC0D;
     dw $0000,$0000,$0000,$0040,$0000                                     ;80CC0F;
+
 
 LoadStations_Debug:
     dw RoomHeader_Debug                                                  ;80CC19;
     dw UNUSED_Door_Debug_0_83ABC4                                        ;80CC1B;
     dw $0000,$0000,$0000,$00B0,$0000                                     ;80CC1D;
+
     dw RoomHeader_Debug                                                  ;80CC27;
     dw UNUSED_Door_Debug_0_83ABC4                                        ;80CC29;
     dw $0000,$0000,$0000,$00B0,$0000                                     ;80CC2B;
+
     dw RoomHeader_Debug                                                  ;80CC35;
     dw UNUSED_Door_Debug_0_83ABC4                                        ;80CC37;
     dw $0000,$0000,$0000,$00B0,$0000                                     ;80CC39;
+
     dw RoomHeader_Debug                                                  ;80CC43;
     dw UNUSED_Door_Debug_0_83ABC4                                        ;80CC45;
     dw $0000,$0000,$0000,$00B0,$0000                                     ;80CC47;
+
     dw RoomHeader_Debug                                                  ;80CC51;
     dw UNUSED_Door_Debug_0_83ABC4                                        ;80CC53;
     dw $0000,$0000,$0000,$00B0,$0000                                     ;80CC55;
+
     dw RoomHeader_Debug                                                  ;80CC5F;
     dw UNUSED_Door_Debug_0_83ABC4                                        ;80CC61;
     dw $0000,$0000,$0000,$00B0,$0000                                     ;80CC63;
+
     dw RoomHeader_Debug                                                  ;80CC6D;
     dw UNUSED_Door_Debug_0_83ABC4                                        ;80CC6F;
     dw $0000,$0000,$0000,$00B0,$0000                                     ;80CC71;
+
     dw RoomHeader_Debug                                                  ;80CC7B;
     dw UNUSED_Door_Debug_0_83ABC4                                        ;80CC7D;
     dw $0000,$0000,$0000,$00B0,$0000                                     ;80CC7F;
+
     dw RoomHeader_Debug                                                  ;80CC89;
     dw UNUSED_Door_Debug_0_83ABC4                                        ;80CC8B;
     dw $0000,$0000,$0000,$00B0,$0000                                     ;80CC8D;
+
     dw RoomHeader_Debug                                                  ;80CC97;
     dw UNUSED_Door_Debug_0_83ABC4                                        ;80CC99;
     dw $0000,$0000,$0000,$00B0,$0000                                     ;80CC9B;
+
     dw RoomHeader_Debug                                                  ;80CCA5;
     dw UNUSED_Door_Debug_0_83ABC4                                        ;80CCA7;
     dw $0000,$0000,$0000,$00B0,$0000                                     ;80CCA9;
+
     dw RoomHeader_Debug                                                  ;80CCB3;
     dw UNUSED_Door_Debug_0_83ABC4                                        ;80CCB5;
     dw $0000,$0000,$0000,$00B0,$0000                                     ;80CCB7;
+
     dw RoomHeader_Debug                                                  ;80CCC1;
     dw UNUSED_Door_Debug_0_83ABC4                                        ;80CCC3;
     dw $0000,$0000,$0000,$00B0,$0000                                     ;80CCC5;
+
     dw RoomHeader_Debug                                                  ;80CCCF;
     dw UNUSED_Door_Debug_0_83ABC4                                        ;80CCD1;
     dw $0000,$0000,$0000,$00B0,$0000                                     ;80CCD3;
+
     dw RoomHeader_Debug                                                  ;80CCDD;
     dw UNUSED_Door_Debug_0_83ABC4                                        ;80CCDF;
     dw $0000,$0000,$0000,$00B0,$0000                                     ;80CCE1;
+
     dw RoomHeader_Debug                                                  ;80CCEB;
     dw UNUSED_Door_Debug_0_83ABC4                                        ;80CCED;
     dw $0000,$0000,$0000,$00B0,$0000                                     ;80CCEF;
+
     dw RoomHeader_Debug                                                  ;80CCF9;
     dw UNUSED_Door_Debug_0_83ABC4                                        ;80CCFB;
     dw $0000,$0000,$0000,$00B0,$0000                                     ;80CCFD;
+
 
 SetDebugElevatorAsUsed:
     PHP                                                                  ;80CD07;
@@ -7896,15 +8038,28 @@ SetDebugElevatorAsUsed:
     dw ..maridia                                                         ;80CD4E;
     dw ..tourian                                                         ;80CD50;
 
+;        _____________ Source area index
+;       |    _________ Source bit
+;       |   |    _____ Destination area index
+;       |   |   |    _ Destination bit
+;       |   |   |   |
 ..crateria:
-    db $01,$01,$09,$01,$01,$02,$03,$04,$01,$04,$03,$02,$01,$08,$03,$01   ;80CD52;
-    db $01,$10,$0B,$01                                                   ;80CD62;
+    db $01,$01,$09,$01                                                   ;80CD52;
+    db $01,$02,$03,$04
+    db $01,$04,$03,$02
+    db $01,$08,$03,$01
+    db $01,$10,$0B,$01
 
 ..brinstar:
-    db $03,$01,$01,$08,$03,$02,$01,$04,$03,$04,$01,$02,$03,$08,$05,$01   ;80CD66;
+    db $03,$01,$01,$08                                                   ;80CD66;
+    db $03,$02,$01,$04
+    db $03,$04,$01,$02
+    db $03,$08,$05,$01 
 
 ..norfair:
-    db $05,$01,$03,$08,$05,$02,$05,$04,$05,$04,$05,$02                   ;80CD76;
+    db $05,$01,$03,$08                                                   ;80CD76;
+    db $05,$02,$05,$04
+    db $05,$04,$05,$02
 
 ..maridia:
     db $09,$01,$01,$01                                                   ;80CD82;
@@ -7914,6 +8069,7 @@ SetDebugElevatorAsUsed:
 
 ..wreckedShip:
     db $00,$00,$00,$00                                                   ;80CD8A;
+
 
 Freespace_Bank80_CD8E:                                                   ;80CD8E;
 ; $2F32 bytes

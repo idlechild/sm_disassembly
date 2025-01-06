@@ -1,6 +1,8 @@
 
 lorom
+math pri on
 
+incsrc "macros.asm"
 incsrc "bank_80.asm"
 incsrc "bank_81.asm"
 incsrc "bank_82.asm"

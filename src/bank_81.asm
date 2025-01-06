@@ -175,6 +175,9 @@ LoadFromSRAM:
 SaveSlotOffsets:
     dw $0010,$066C,$0CC8                                                 ;81812B;
 
+; Lists of offsets into explored map data ($7E:CD52 + (area index) * 100h) whose bytes are saved to SRAM
+; Map data offsets of 80h+ are specifying the right half of the map (7Fh- are specifying the left half)
+; Each byte is 8 map tiles, and the first row (offsets 0..3 and 80h..83h) is meaningless padding
 SRAMMapData_size:
     db $4A,$48,$4C,$12,$42,$15,$08                                       ;818131;
 
@@ -182,43 +185,191 @@ SRAMMapData_offset:
     db $00,$00,$4A,$00,$92,$00,$DE,$00,$F0,$00,$32,$01,$47,$01           ;818138;
 
 SRAMMapData_crateria:
-    db $07,$0B,$0D,$0E,$0F,$11,$13,$15,$16,$17,$19,$1A,$1D,$1E,$1F,$21   ;818146;
-    db $22,$24,$25,$26,$28,$2A,$2B,$2C,$2E,$2F,$30,$32,$33,$36,$37,$3A   ;818156;
-    db $3B,$3E,$3F,$42,$43,$46,$47,$4A,$4E,$52,$56,$84,$85,$88,$89,$8C   ;818166;
-    db $8D,$90,$91,$94,$95,$96,$97,$98,$99,$9A,$9B,$9C,$9F,$A0,$A3,$A4   ;818176;
-    db $A6,$A7,$A8,$AA,$AB,$AC,$AE,$B2,$B6,$BA,$00,$00,$00,$00,$00,$00   ;818186;
+    db         $07                                                       ;818146;
+    db         $0B
+    db $0D,$0E,$0F
+    db $11,    $13
+    db $15,$16,$17
+    db $19,$1A
+    db $1D,$1E,$1F
+    db $21,$22
+    db $24,$25,$26
+    db $28,    $2A,$2B
+    db $2C,    $2E,$2F
+    db $30,    $32,$33
+    db         $36,$37
+    db         $3A,$3B
+    db         $3E,$3F
+    db         $42,$43
+    db         $46,$47
+    db         $4A
+    db         $4E
+    db         $52
+    db         $56
+    db                 $84,$85
+    db                 $88,$89
+    db                 $8C,$8D
+    db                 $90,$91
+    db                 $94,$95,$96,$97
+    db                 $98,$99,$9A,$9B
+    db                 $9C,        $9F
+    db                 $A0,        $A3
+    db                 $A4,    $A6,$A7
+    db                 $A8,    $AA,$AB
+    db                 $AC,    $AE
+    db                         $B2
+    db                         $B6
+    db                         $BA
+    db $00,$00,$00,$00,$00,$00
 
 SRAMMapData_brinstar:
-    db $05,$09,$0A,$0B,$0D,$0E,$0F,$11,$12,$13,$14,$15,$16,$17,$19,$1A   ;818196;
-    db $1B,$1C,$1D,$1E,$1F,$20,$21,$22,$23,$25,$26,$27,$29,$2A,$2B,$2C   ;8181A6;
-    db $2D,$2E,$2F,$30,$31,$32,$33,$35,$36,$37,$39,$3A,$3B,$42,$43,$47   ;8181B6;
-    db $90,$94,$98,$9C,$A0,$A4,$A8,$AC,$B0,$B4,$B8,$BC,$C0,$C4,$C8,$CC   ;8181C6;
-    db $CD,$CE,$CF,$D1,$D2,$D3,$D5,$D9,$00,$00,$00,$00,$00,$00,$00,$00   ;8181D6;
+    db     $05                                                           ;818196;
+    db     $09,$0A,$0B
+    db     $0D,$0E,$0F
+    db     $11,$12,$13
+    db $14,$15,$16,$17
+    db     $19,$1A,$1B
+    db $1C,$1D,$1E,$1F
+    db $20,$21,$22,$23
+    db     $25,$26,$27
+    db     $29,$2A,$2B
+    db $2C,$2D,$2E,$2F
+    db $30,$31,$32,$33
+    db     $35,$36,$37
+    db     $39,$3A,$3B
+    db         $42,$43
+    db             $47
+    db                 $90
+    db                 $94
+    db                 $98
+    db                 $9C
+    db                 $A0
+    db                 $A4
+    db                 $A8
+    db                 $AC
+    db                 $B0
+    db                 $B4
+    db                 $B8
+    db                 $BC
+    db                 $C0
+    db                 $C4
+    db                 $C8
+    db                 $CC,$CD,$CE,$CF
+    db                     $D1,$D2,$D3
+    db                     $D5,$D9
+    db $00,$00,$00,$00,$00,$00,$00,$00
 
 SRAMMapData_norfair:
-    db $05,$08,$09,$0B,$0C,$0D,$0E,$0F,$10,$11,$12,$13,$14,$15,$16,$17   ;8181E6;
-    db $18,$19,$1A,$1B,$1C,$1D,$1E,$1F,$20,$21,$22,$23,$24,$25,$26,$27   ;8181F6;
-    db $29,$2A,$2B,$2D,$2E,$2F,$31,$32,$33,$34,$35,$36,$37,$38,$39,$3A   ;818206;
-    db $3B,$3C,$3D,$3E,$3F,$40,$41,$42,$44,$45,$46,$47,$48,$49,$4A,$8C   ;818216;
-    db $98,$9C,$A0,$A4,$A8,$AC,$B0,$B4,$B8,$BC,$C0,$C4,$00,$00,$00,$00   ;818226;
+    db     $05                                                           ;8181E6;
+    db $08,$09,    $0B
+    db $0C,$0D,$0E,$0F
+    db $10,$11,$12,$13
+    db $14,$15,$16,$17
+    db $18,$19,$1A,$1B
+    db $1C,$1D,$1E,$1F
+    db $20,$21,$22,$23
+    db $24,$25,$26,$27
+    db     $29,$2A,$2B
+    db     $2D,$2E,$2F
+    db     $31,$32,$33
+    db $34,$35,$36,$37
+    db $38,$39,$3A,$3B
+    db $3C,$3D,$3E,$3F
+    db $40,$41,$42
+    db $44,$45,$46,$47
+    db $48,$49,$4A
+    db                 $8C
+
+
+    db                 $98,
+    db                 $9C,
+    db                 $A0,
+    db                 $A4,
+    db                 $A8,
+    db                 $AC,
+    db                 $B0,
+    db                 $B4,
+    db                 $B8,
+    db                 $BC,
+    db                 $C0,
+    db                 $C4,
+    db $00,$00,$00,$00
 
 SRAMMapData_wreckedShip:
-    db $2D,$2E,$31,$32,$35,$36,$39,$3A,$3D,$3E,$42,$45,$46,$49,$4A,$4E   ;818236;
-    db $51,$52,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00   ;818246;
+    db     $2D,$2E                                                       ;818236;
+    db     $31,$32
+    db     $35,$36
+    db     $39,$3A
+    db     $3D,$3E
+    db         $42
+    db     $45,$46
+    db     $49,$4A
+    db         $4E
+    db     $51,$52
+    db $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
 
 SRAMMapData_maridia:
-    db $07,$0B,$0E,$0F,$12,$13,$15,$16,$17,$19,$1A,$1B,$1D,$1E,$1F,$21   ;818256;
-    db $22,$23,$25,$26,$27,$29,$2A,$2B,$2D,$2E,$2F,$31,$32,$33,$35,$36   ;818266;
-    db $39,$3A,$3B,$3D,$3E,$3F,$41,$42,$43,$45,$46,$47,$49,$4A,$4D,$51   ;818276;
-    db $84,$88,$8C,$90,$94,$98,$9C,$9D,$A0,$A1,$A4,$A5,$A8,$A9,$AC,$AD   ;818286;
-    db $C0,$C4,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00   ;818296;
+    db             $07                                                   ;818256;
+    db             $0B
+    db         $0E,$0F
+    db         $12,$13
+    db     $15,$16,$17
+    db     $19,$1A,$1B
+    db     $1D,$1E,$1F
+    db     $21,$22,$23
+    db     $25,$26,$27
+    db     $29,$2A,$2B
+    db     $2D,$2E,$2F
+    db     $31,$32,$33
+    db     $35,$36
+    db     $39,$3A,$3B
+    db     $3D,$3E,$3F
+    db     $41,$42,$43
+    db     $45,$46,$47
+    db     $49,$4A
+    db     $4D
+    db     $51
+    db                 $84
+    db                 $88
+    db                 $8C
+    db                 $90
+    db                 $94
+    db                 $98
+    db                 $9C,$9D
+    db                 $A0,$A1
+    db                 $A4,$A5
+    db                 $A8,$A9
+    db                 $AC,$AD
+    db                 $C0
+    db                 $C4
+    db $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
 
 SRAMMapData_tourian:
-    db $26,$2A,$2E,$32,$35,$36,$39,$3A,$3E,$41,$42,$45,$46,$4A,$4D,$4E   ;8182A6;
-    db $51,$52,$55,$56,$5A,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00   ;8182B6;
+    db         $26,                                                      ;8182A6;
+    db         $2A,
+    db         $2E,
+    db         $32,
+    db     $35,$36,
+    db     $39,$3A,
+    db         $3E,
+    db     $41,$42,
+    db     $45,$46,
+    db         $4A,
+    db     $4D,$4E,
+    db     $51,$52,
+    db     $55,$56,
+    db         $5A,
+    db $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
 
 SRAMMapData_ceres:
-    db $2D,$31,$35,$39,$3D,$41,$45,$46,$00,$00,$00,$00,$00,$00,$00,$00   ;8182C6;
+    db     $2D                                                           ;8182C6;
+    db     $31
+    db     $35
+    db     $39
+    db     $3D
+    db     $41
+    db     $45,$46
+    db $00,$00,$00,$00,$00,$00,$00,$00
 
 MapRoomPointers:
     dw SRAMMapData_crateria                                              ;8182D6;
@@ -341,80 +492,85 @@ SaveMap:
     RTS                                                                  ;81839E;
 
 
-MapOfOAMIndex_highXPosBit:
-    db $01,$00                                                           ;81839F;
+MapOfOAMIndex:
+  .highXPosBit
+    dw $0001                                                             ;81839F;
 
-MapOfOAMIndex_sizeBit:
-    db $02,$00,$04,$00,$08,$00,$10,$00                                   ;8183A1;
-    dw $0020,$0040,$0080,$0100,$0200,$0400,$0800,$1000                   ;8183A9;
-    dw $2000,$4000,$8000,$0001,$0002,$0004,$0008,$0010                   ;8183B9;
-    dw $0020,$0040,$0080,$0100,$0200,$0400,$0800,$1000                   ;8183C9;
-    dw $2000,$4000,$8000,$0001,$0002,$0004,$0008,$0010                   ;8183D9;
-    dw $0020,$0040,$0080,$0100,$0200,$0400,$0800,$1000                   ;8183E9;
-    dw $2000,$4000,$8000,$0001,$0002,$0004,$0008,$0010                   ;8183F9;
-    dw $0020,$0040,$0080,$0100,$0200,$0400,$0800,$1000                   ;818409;
-    dw $2000,$4000,$8000,$0001,$0002,$0004,$0008,$0010                   ;818419;
-    dw $0020,$0040,$0080,$0100,$0200,$0400,$0800,$1000                   ;818429;
-    dw $2000,$4000,$8000,$0001,$0002,$0004,$0008,$0010                   ;818439;
-    dw $0020,$0040,$0080,$0100,$0200,$0400,$0800,$1000                   ;818449;
-    dw $2000,$4000,$8000,$0001,$0002,$0004,$0008,$0010                   ;818459;
-    dw $0020,$0040,$0080,$0100,$0200,$0400,$0800,$1000                   ;818469;
-    dw $2000,$4000,$8000,$0001,$0002,$0004,$0008,$0010                   ;818479;
-    dw $0020,$0040,$0080,$0100,$0200,$0400,$0800,$1000                   ;818489;
-    dw $2000,$4000,$8000,$0001,$0002,$0004,$0008,$0010                   ;818499;
-    dw $0020,$0040,$0080,$0100,$0200,$0400,$0800,$1000                   ;8184A9;
-    dw $2000,$4000,$8000,$0001,$0002,$0004,$0008,$0010                   ;8184B9;
-    dw $0020,$0040,$0080,$0100,$0200,$0400,$0800,$1000                   ;8184C9;
-    dw $2000,$4000,$8000,$0001,$0002,$0004,$0008,$0010                   ;8184D9;
-    dw $0020,$0040,$0080,$0100,$0200,$0400,$0800,$1000                   ;8184E9;
-    dw $2000,$4000,$8000,$0001,$0002,$0004,$0008,$0010                   ;8184F9;
-    dw $0020,$0040,$0080,$0100,$0200,$0400,$0800,$1000                   ;818509;
-    dw $2000,$4000,$8000,$0001,$0002,$0004,$0008,$0010                   ;818519;
-    dw $0020,$0040,$0080,$0100,$0200,$0400,$0800,$1000                   ;818529;
-    dw $2000,$4000,$8000,$0001,$0002,$0004,$0008,$0010                   ;818539;
-    dw $0020,$0040,$0080,$0100,$0200,$0400,$0800,$1000                   ;818549;
-    dw $2000,$4000,$8000,$0001,$0002,$0004,$0008,$0010                   ;818559;
-    dw $0020,$0040,$0080,$0100,$0200,$0400,$0800,$1000                   ;818569;
-    dw $2000,$4000,$8000,$0001,$0002,$0004,$0008,$0010                   ;818579;
-    dw $0020,$0040,$0080,$0100,$0200,$0400,$0800,$1000                   ;818589;
-    dw $2000,$4000,$8000                                                 ;818599;
+  .sizeBit
+    dw $0002                                                             ;8183A1;
 
-MapOfOAMIndexToHighOAM_address:
+    dw              $0004,$0008, $0010,$0020, $0040,$0080
+    dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
+    dw $0001,$0002, $0004,$0008, $0010,$0020, $0040,$0080
+    dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
+    dw $0001,$0002, $0004,$0008, $0010,$0020, $0040,$0080
+    dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
+    dw $0001,$0002, $0004,$0008, $0010,$0020, $0040,$0080
+    dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
+    dw $0001,$0002, $0004,$0008, $0010,$0020, $0040,$0080
+    dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
+    dw $0001,$0002, $0004,$0008, $0010,$0020, $0040,$0080
+    dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
+    dw $0001,$0002, $0004,$0008, $0010,$0020, $0040,$0080
+    dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
+    dw $0001,$0002, $0004,$0008, $0010,$0020, $0040,$0080
+    dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
+    dw $0001,$0002, $0004,$0008, $0010,$0020, $0040,$0080
+    dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
+    dw $0001,$0002, $0004,$0008, $0010,$0020, $0040,$0080
+    dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
+    dw $0001,$0002, $0004,$0008, $0010,$0020, $0040,$0080
+    dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
+    dw $0001,$0002, $0004,$0008, $0010,$0020, $0040,$0080
+    dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
+    dw $0001,$0002, $0004,$0008, $0010,$0020, $0040,$0080
+    dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
+    dw $0001,$0002, $0004,$0008, $0010,$0020, $0040,$0080
+    dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
+    dw $0001,$0002, $0004,$0008, $0010,$0020, $0040,$0080
+    dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
+    dw $0001,$0002, $0004,$0008, $0010,$0020, $0040,$0080
+    dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
+
+MapOfOAMIndexToHighOAM:
+  .address
     dw $0570                                                             ;81859F;
 
-MapOfOAMIndexToHighOAM_bitmask:
-    dw $0003,$0570,$000C,$0570,$0030,$0570,$00C0,$0570                   ;8185A1;
-    dw $0300,$0570,$0C00,$0570,$3000,$0570,$C000,$0572                   ;8185B1;
-    dw $0003,$0572,$000C,$0572,$0030,$0572,$00C0,$0572                   ;8185C1;
-    dw $0300,$0572,$0C00,$0572,$3000,$0572,$C000,$0574                   ;8185D1;
-    dw $0003,$0574,$000C,$0574,$0030,$0574,$00C0,$0574                   ;8185E1;
-    dw $0300,$0574,$0C00,$0574,$3000,$0574,$C000,$0576                   ;8185F1;
-    dw $0003,$0576,$000C,$0576,$0030,$0576,$00C0,$0576                   ;818601;
-    dw $0300,$0576,$0C00,$0576,$3000,$0576,$C000,$0578                   ;818611;
-    dw $0003,$0578,$000C,$0578,$0030,$0578,$00C0,$0578                   ;818621;
-    dw $0300,$0578,$0C00,$0578,$3000,$0578,$C000,$057A                   ;818631;
-    dw $0003,$057A,$000C,$057A,$0030,$057A,$00C0,$057A                   ;818641;
-    dw $0300,$057A,$0C00,$057A,$3000,$057A,$C000,$057C                   ;818651;
-    dw $0003,$057C,$000C,$057C,$0030,$057C,$00C0,$057C                   ;818661;
-    dw $0300,$057C,$0C00,$057C,$3000,$057C,$C000,$057E                   ;818671;
-    dw $0003,$057E,$000C,$057E,$0030,$057E,$00C0,$057E                   ;818681;
-    dw $0300,$057E,$0C00,$057E,$3000,$057E,$C000,$0580                   ;818691;
-    dw $0003,$0580,$000C,$0580,$0030,$0580,$00C0,$0580                   ;8186A1;
-    dw $0300,$0580,$0C00,$0580,$3000,$0580,$C000,$0582                   ;8186B1;
-    dw $0003,$0582,$000C,$0582,$0030,$0582,$00C0,$0582                   ;8186C1;
-    dw $0300,$0582,$0C00,$0582,$3000,$0582,$C000,$0584                   ;8186D1;
-    dw $0003,$0584,$000C,$0584,$0030,$0584,$00C0,$0584                   ;8186E1;
-    dw $0300,$0584,$0C00,$0584,$3000,$0584,$C000,$0586                   ;8186F1;
-    dw $0003,$0586,$000C,$0586,$0030,$0586,$00C0,$0586                   ;818701;
-    dw $0300,$0586,$0C00,$0586,$3000,$0586,$C000,$0588                   ;818711;
-    dw $0003,$0588,$000C,$0588,$0030,$0588,$00C0,$0588                   ;818721;
-    dw $0300,$0588,$0C00,$0588,$3000,$0588,$C000,$058A                   ;818731;
-    dw $0003,$058A,$000C,$058A,$0030,$058A,$00C0,$058A                   ;818741;
-    dw $0300,$058A,$0C00,$058A,$3000,$058A,$C000,$058C                   ;818751;
-    dw $0003,$058C,$000C,$058C,$0030,$058C,$00C0,$058C                   ;818761;
-    dw $0300,$058C,$0C00,$058C,$3000,$058C,$C000,$058E                   ;818771;
-    dw $0003,$058E,$000C,$058E,$0030,$058E,$00C0,$058E                   ;818781;
-    dw $0300,$058E,$0C00,$058E,$3000,$058E,$C000                         ;818791;
+  .bitmask
+    dw $0003                                                             ;8185A1;
+
+    dw             $0570,$000C,$0570,$0030,$0570,$00C0
+    dw $0570,$0300,$0570,$0C00,$0570,$3000,$0570,$C000
+    dw $0572,$0003,$0572,$000C,$0572,$0030,$0572,$00C0
+    dw $0572,$0300,$0572,$0C00,$0572,$3000,$0572,$C000
+    dw $0574,$0003,$0574,$000C,$0574,$0030,$0574,$00C0
+    dw $0574,$0300,$0574,$0C00,$0574,$3000,$0574,$C000
+    dw $0576,$0003,$0576,$000C,$0576,$0030,$0576,$00C0
+    dw $0576,$0300,$0576,$0C00,$0576,$3000,$0576,$C000
+    dw $0578,$0003,$0578,$000C,$0578,$0030,$0578,$00C0
+    dw $0578,$0300,$0578,$0C00,$0578,$3000,$0578,$C000
+    dw $057A,$0003,$057A,$000C,$057A,$0030,$057A,$00C0
+    dw $057A,$0300,$057A,$0C00,$057A,$3000,$057A,$C000
+    dw $057C,$0003,$057C,$000C,$057C,$0030,$057C,$00C0
+    dw $057C,$0300,$057C,$0C00,$057C,$3000,$057C,$C000
+    dw $057E,$0003,$057E,$000C,$057E,$0030,$057E,$00C0
+    dw $057E,$0300,$057E,$0C00,$057E,$3000,$057E,$C000
+    dw $0580,$0003,$0580,$000C,$0580,$0030,$0580,$00C0
+    dw $0580,$0300,$0580,$0C00,$0580,$3000,$0580,$C000
+    dw $0582,$0003,$0582,$000C,$0582,$0030,$0582,$00C0
+    dw $0582,$0300,$0582,$0C00,$0582,$3000,$0582,$C000
+    dw $0584,$0003,$0584,$000C,$0584,$0030,$0584,$00C0
+    dw $0584,$0300,$0584,$0C00,$0584,$3000,$0584,$C000
+    dw $0586,$0003,$0586,$000C,$0586,$0030,$0586,$00C0
+    dw $0586,$0300,$0586,$0C00,$0586,$3000,$0586,$C000
+    dw $0588,$0003,$0588,$000C,$0588,$0030,$0588,$00C0
+    dw $0588,$0300,$0588,$0C00,$0588,$3000,$0588,$C000
+    dw $058A,$0003,$058A,$000C,$058A,$0030,$058A,$00C0
+    dw $058A,$0300,$058A,$0C00,$058A,$3000,$058A,$C000
+    dw $058C,$0003,$058C,$000C,$058C,$0030,$058C,$00C0
+    dw $058C,$0300,$058C,$0C00,$058C,$3000,$058C,$C000
+    dw $058E,$0003,$058E,$000C,$058E,$0030,$058E,$00C0
+    dw $058E,$0300,$058E,$0C00,$058E,$3000,$058E,$C000      
 
 AddSpritemapToOAM:
     PHX                                                                  ;81879F;
@@ -1473,39 +1629,44 @@ LoadDebugGameOverMenuTilemap:
 
 
 Debug_GameOverMenu_VRAMTransferDefinitions:
-    dw $0040                                                             ;818EE1;
+    dw $0040                                                             ;818EE1; '            GAME QUIT           '
     dl Tilemap_DebugGameOverMenu_gameQuit                                ;818EE3;
     db $00                                                               ;818EE6;
     dw $5140,$0040                                                       ;818EE7;
-    dl Tilemap_DebugGameOverMenu_wouldYouPlay                            ;818EEB;
+
+    dl Tilemap_DebugGameOverMenu_wouldYouPlay                            ;818EEB; '        WOULD YOU PLAY ?        '
     db $00                                                               ;818EEE;
     dw $5180,$0040                                                       ;818EEF;
-    dl Tilemap_DebugGameOverMenu_end                                     ;818EF3;
+
+    dl Tilemap_DebugGameOverMenu_end                                     ;818EF3; '            END                 '
     db $00                                                               ;818EF6;
     dw $51E0,$0040                                                       ;818EF7;
-    dl Tilemap_DebugGameOverMenu_continue                                ;818EFB;
-    db $00                                                               ;818EFE;
-    dw $5220,$FFFF                                                       ;818EFF;
 
-Tilemap_DebugGameOverMenu_gameQuit:
+    dl Tilemap_DebugGameOverMenu_continue                                ;818EFB; '            CONTINUE            '
+    db $00                                                               ;818EFE;
+    dw $5220                                                             ;818EFF;
+    dw $FFFF
+
+Tilemap_DebugGameOverMenu:
+  .gameQuit
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818F03;
     dw $000F,$000F,$000F,$000F,$0070,$006A,$0076,$006E                   ;818F13;
     dw $000F,$007A,$007E,$0072,$007D,$000F,$000F,$000F                   ;818F23;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818F33;
 
-Tilemap_DebugGameOverMenu_wouldYouPlay:
+  .wouldYouPlay
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818F43;
     dw $0080,$0078,$007E,$0075,$006D,$000F,$0082,$0078                   ;818F53;
     dw $007E,$000F,$0079,$0075,$006A,$0082,$000F,$0085                   ;818F63;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818F73;
 
-Tilemap_DebugGameOverMenu_end:
+  .end
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818F83;
     dw $000F,$000F,$000F,$000F,$006E,$0077,$006D,$000F                   ;818F93;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818FA3;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818FB3;
 
-Tilemap_DebugGameOverMenu_continue:
+  .continue
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818FC3;
     dw $000F,$000F,$000F,$000F,$006C,$0078,$0077,$007D                   ;818FD3;
     dw $0072,$0077,$007E,$006E,$000F,$000F,$000F,$000F                   ;818FE3;
@@ -1819,33 +1980,53 @@ GameOverMenu_Index1_Initialise:
 
 
 HDMAObjInstList_ColorMathSubscnBackdrop_GameOverMenuGradient:
-    dw Instruction_HDMAObject_HDMATableBank                              ;81927D;
-    db $81                                                               ;81927F;
-    dw Instruction_HDMAObject_PreInstructionInY                          ;819280;
-    dl RTL_8192DB                                                        ;819282;
-    dw $0001                                                             ;819285;
-    dw HDMATable_ColorMathSubscnBackdrop_GameOverMenuGradient            ;819287;
+    dw Instruction_HDMAObject_HDMATableBank : db $81                     ;81927D;
+    dw Instruction_HDMAObject_PreInstructionInY : dl RTL_8192DB          ;819280;
+    dw $0001, HDMATable_ColorMathSubscnBackdrop_GameOverMenuGradient     ;819285;
     dw Instruction_HDMAObject_Sleep                                      ;819289;
     dw Instruction_HDMAObject_Delete                                     ;81928B;
 
 HDMAObjInstList_ColorMathCtrlRegB_GameOverMenuGradient:
-    dw Instruction_HDMAObject_HDMATableBank                              ;81928D;
-    db $81                                                               ;81928F;
-    dw Instruction_HDMAObject_PreInstructionInY                          ;819290;
-    dl RTL_8192DB                                                        ;819292;
-    dw $0001                                                             ;819295;
-    dw HDMATable_ColorMathCtrlRegB_GameOverMenuGradient                  ;819297;
+    dw Instruction_HDMAObject_HDMATableBank : db $81                     ;81928D;
+    dw Instruction_HDMAObject_PreInstructionInY : dl RTL_8192DB          ;819290;
+    dw $0001, HDMATable_ColorMathCtrlRegB_GameOverMenuGradient           ;819295;
     dw Instruction_HDMAObject_Sleep                                      ;819299;
     dw Instruction_HDMAObject_Delete                                     ;81929B;
 
 HDMATable_ColorMathCtrlRegB_GameOverMenuGradient:
-    db $40,$A1,$3A,$A1,$40,$21,$40,$21,$00,$00                           ;81929D;
+    db $40,$A1                                                           ;81929D;
+    db $3A,$A1
+    db $40,$21
+    db $40,$21
+    db $00,$00
 
 HDMATable_ColorMathSubscnBackdrop_GameOverMenuGradient:
-    db $05,$E8,$05,$E7,$05,$E6,$07,$E5,$08,$E4,$0A,$E3,$0C,$E2,$0C,$E1   ;8192A7;
-    db $40,$E0,$05,$C0,$0E,$C1,$0C,$C2,$0C,$C3,$08,$C4,$07,$C5,$06,$C6   ;8192B7;
-    db $06,$C7,$06,$C8,$06,$C9,$07,$CA,$06,$CB,$06,$CC,$06,$CD,$06,$CE   ;8192C7;
-    db $02,$CF,$00,$00                                                   ;8192D7;
+    db $05,$E8                                                           ;8192A7;
+    db $05,$E7
+    db $05,$E6
+    db $07,$E5
+    db $08,$E4
+    db $0A,$E3
+    db $0C,$E2
+    db $0C,$E1 
+    db $40,$E0
+    db $05,$C0
+    db $0E,$C1
+    db $0C,$C2
+    db $0C,$C3
+    db $08,$C4
+    db $07,$C5
+    db $06,$C6
+    db $06,$C7
+    db $06,$C8
+    db $06,$C9
+    db $07,$CA
+    db $06,$CB
+    db $06,$CC
+    db $06,$CD
+    db $06,$CE
+    db $02,$CF
+    db $00,$00
 
 RTL_8192DB:
     RTL                                                                  ;8192DB;
@@ -3796,12 +3977,18 @@ FileSelectMenu_Index4_Main:
     RTS                                                                  ;81A311;
 
 
-FileSelectMenu_SelectionMissile_Coordinates_Yposition:
-    dw $0030                                                             ;81A312;
+FileSelectMenu_SelectionMissile_Coordinates:
+  .Yposition
+    dw $0030                                                             ;81A312; Slot A
 
-FileSelectMenu_SelectionMissile_Coordinates_Xposition:
-    dw $000E,$0058,$000E,$0080,$000E,$00A3,$000E,$00BB                   ;81A314;
-    dw $000E,$00D3,$000E                                                 ;81A324;
+  .Xposition:
+    dw $000E                                                             ;81A314;
+
+    dw $0058,$000E                                                              ; Slot B
+    dw $0080,$000E                                                              ; Slot C
+    dw $00A3,$000E                                                              ; File copy
+    dw $00BB,$000E                                                              ; File clear
+    dw $00D3,$000E                                                              ; Exit
 
 FileSelectMap_Index0_GameOptionsToAreaSelectMap_ClearBG2:
     REP #$30                                                             ;81A32A;
@@ -3958,22 +4145,59 @@ AreaSelectMap_ForgegroundPaletteTable:
     dw $0000,$35AD,$2D6B,$2529,$18C6,$1084,$294A,$2108                   ;81A4AE;
     dw $1CE7,$14A5,$0C63,$4A52,$3DEF,$318C,$2108,$14A5                   ;81A4BE;
 
-AreaSelectMap_ForegroundPaletteTable_indices_active:
+AreaSelectMap_ForegroundPaletteTable:
+  .indices
+  ..active
     dw $0000,$000A,$0010,$0016,$0024,$002A                               ;81A4CE;
 
-AreaSelectMap_ForegroundPaletteTable_indices_inactive:
+  ..inactive
     dw $0030,$003A,$0040,$0046,$0054,$005A                               ;81A4DA;
 
-AreaSelectMap_ForegroundPaletteTable_data:
+  .data
     dw $000C                                                             ;81A4E6;
 
-AreaSelectMap_ForegroundPaletteTable_RAM:
-    dw $00AC,$0016,$00B6,$FFFF,$0036,$00D6,$FFFF,$002C                   ;81A4E8;
-    dw $00CC,$FFFF,$0002,$00A2,$0042,$00E2,$0056,$00F6                   ;81A4F8;
-    dw $FFFF,$0022,$00C2,$FFFF,$004C,$00EC,$FFFF,$006C                   ;81A508;
-    dw $00AC,$0076,$00B6,$FFFF,$0096,$00D6,$FFFF,$008C                   ;81A518;
-    dw $00CC,$FFFF,$0062,$00A2,$00A2,$00E2,$00B6,$00F6                   ;81A528;
-    dw $FFFF,$0082,$00C2,$FFFF,$00AC,$00EC,$FFFF                         ;81A538;
+  .RAM
+    dw $00AC       ; Active - Crateria - orange
+    dw $0016,$00B6 ; Active - Crateria - yellow
+    dw $FFFF
+
+    dw $0036,$00D6 ; Active - Brinstar
+    dw $FFFF
+
+    dw $002C,$00CC ; Active - Norfair
+    dw $FFFF
+
+    dw $0002,$00A2 ; Active - Wrecked Ship - part that overlaps with Crateria
+    dw $0042,$00E2 ; Active - Wrecked Ship - dark blue
+    dw $0056,$00F6 ; Active - Wrecked Ship - light blue
+    dw $FFFF
+
+    dw $0022,$00C2 ; Active - Maridia
+    dw $FFFF
+
+    dw $004C,$00EC ; Active - Tourian
+    dw $FFFF
+
+    dw $006C,$00AC ; Inactive - Crateria - dark greys
+    dw $0076,$00B6 ; Inactive - Crateria - light greys
+    dw $FFFF
+
+    dw $0096,$00D6 ; Inactive - Brinstar
+    dw $FFFF
+
+    dw $008C,$00CC ; Inactive - Norfair
+    dw $FFFF
+
+    dw $0062,$00A2 ; Inactive - Wrecked Ship - part that overlaps with Crateria
+    dw $00A2,$00E2 ; Inactive - Wrecked Ship - dark greys
+    dw $00B6,$00F6 ; Inactive - Wrecked Ship - light greys
+    dw $FFFF
+
+    dw $0082,$00C2 ; Inactive - Maridia
+    dw $FFFF
+
+    dw $00AC,$00EC ; Inactive - Tourian
+    dw $FFFF
 
 FileSelectMap_Index2_11_Load_AreaSelect_ForegroundTilemap:
     REP #$30                                                             ;81A546;
@@ -4611,47 +4835,58 @@ DrawAreaSelectMapLabels:
     BRA .next                                                            ;81AA1A;
 
 
-FileSelectMap_Labels_Positions_X:
+FileSelectMap_Labels_Positions:
+  .X
     dw $005B                                                             ;81AA1C;
 
-FileSelectMap_Labels_Positions_Y:
-    dw $0032,$002A,$007F,$005E,$00B5,$00CE,$0050,$00CE                   ;81AA1E;
-    dw $009F,$0087,$008B                                                 ;81AA2E;
+  .Y
+    dw $0032       ; Crateria
+    dw $002A,$007F ; Brinstar
+    dw $005E,$00B5 ; Norfair
+    dw $00CE,$0050 ; Wrecked Ship
+    dw $00CE,$009F ; Maridia
+    dw $0087,$008B ; Tourian
 
-RoomSelectMap_ExpandingSquare_Velocities_leftSub:
-    dw $3C00                                                             ;81AA34;
-
-RoomSelectMap_ExpandingSquare_Velocities_left:
+RoomSelectMap_ExpandingSquare_Velocities:
+  .leftSub
+    dw $3C00                                                             ;81AA34; Crateria
+  .left
     dw $FFFE                                                             ;81AA36;
-
-RoomSelectMap_ExpandingSquare_Velocities_rightSub:
+  .rightSub
     dw $3400                                                             ;81AA38;
-
-RoomSelectMap_ExpandingSquare_Velocities_right:
+  .right
     dw $0003                                                             ;81AA3A;
-
-RoomSelectMap_ExpandingSquare_Velocities_topSub:
+  .topSub
     dw $0800                                                             ;81AA3C;
-
-RoomSelectMap_ExpandingSquare_Velocities_top:
+  .top
     dw $FFFF                                                             ;81AA3E;
-
-RoomSelectMap_ExpandingSquare_Velocities_bottomSub:
+  .bottomSub
     dw $0000                                                             ;81AA40;
+  .bottom
+    dw $0004                                                             ;81AA42;
 
-RoomSelectMap_ExpandingSquare_Velocities_bottom:
-    dw $0004,$3800,$FFFF,$0000,$0004,$A400,$FFFD,$6800                   ;81AA42;
-    dw $0002,$F000,$FFFD,$9400,$0003,$0000,$FFFC,$A800                   ;81AA52;
-    dw $0001,$0000,$FFFC,$F800,$0000,$7400,$FFFE,$6800                   ;81AA62;
-    dw $0003,$0000,$FFFC,$F800,$0000,$EC00,$FFFC,$E000                   ;81AA72;
-    dw $0001,$2000,$FFFC,$7800,$0003,$0000,$FFFC,$5C00                   ;81AA82;
-    dw $0003                                                             ;81AA92;
+    dw $3800,$FFFF,$0000,$0004,$A400,$FFFD,$6800,$0002 ; Brinstar
+    dw $F000,$FFFD,$9400,$0003,$0000,$FFFC,$A800,$0001 ; Norfair
+    dw $0000,$FFFC,$F800,$0000,$7400,$FFFE,$6800,$0003 ; Wrecked Ship
+    dw $0000,$FFFC,$F800,$0000,$EC00,$FFFC,$E000,$0001 ; Maridia
+    dw $2000,$FFFC,$7800,$0003,$0000,$FFFC,$5C00,$0003 ; Tourian
 
 RoomSelectMap_ExpandingSquare_Timers:
-    dw $0033,$0035,$002D,$0033,$0033,$0022                               ;81AA94;
+    dw $0033 ; Crateria                                                  ;81AA94;
+    dw $0035 ; Brinstar
+    dw $002D ; Norfair
+    dw $0033 ; Wrecked Ship
+    dw $0033 ; Maridia
+    dw $0022 ; Tourian
 
 FileSelectMapArea_IndexTable:
-    dw $0000,$0003,$0005,$0001,$0004,$0002                               ;81AAA0;
+; Maps file select map area index ($0950) to area index ($079F)
+    dw $0000 ; Crateria                                                  ;81AAA0;
+    dw $0003 ; Wrecked Ship
+    dw $0005 ; Tourian
+    dw $0001 ; Brinstar
+    dw $0004 ; Maridia
+    dw $0002 ; Norfair
 
 FileSelectMap_Index7_AreaSelectMapToRoomSelectMap:
     REP #$30                                                             ;81AAAC;
@@ -5226,19 +5461,26 @@ Handle_FileSelectMap_ScrollArrows:
     BRA .return                                                          ;81AF30;
 
 
-MapScroll_ArrowData_mapScrollDirection_left:
+MapScroll_ArrowData_mapScrollDirection:
+;        ___________________________ X position
+;       |      _____________________ Y position
+;       |     |      _______________ Pause screen animation ID
+;       |     |     |      _________ Necessary input
+;       |     |     |     |      ___ Map scrolling direction
+;       |     |     |     |     |
+  .left
     dw $0010,$0060,$0009,$0200,$0001                                     ;81AF32;
 
-MapScroll_ArrowData_mapScrollDirection_right:
+  .right
     dw $00F0,$0060,$0008,$0100,$0002                                     ;81AF3C;
 
-MapScroll_ArrowData_mapScrollDirection_up:
+  .up
     dw $0080,$0020,$0006,$0800,$0003                                     ;81AF46;
 
-MapScroll_ArrowData_mapScrollDirection_down:
+  .down
     dw $0080,$00A0,$0007,$0400                                           ;81AF50;
 
-MapScroll_ArrowData_mapScrollDirection_end:
+  .end
     dw $0004                                                             ;81AF58;
 
 FileSelectMap_IndexB_C_RoomSelectMapToLoadingGameData:
@@ -5629,9 +5871,8 @@ Load_Tilemap_in_Y_to_X_Coordinates:
 
 
 Tilemap_FileSelect_SamusData:
-    dw $202B,$200A,$2026,$202D,$202B,$200F,$200D,$200A                   ;81B40A;
-    dw $202C,$200A,$FFFE,$203B,$201A,$2036,$2010,$203B                   ;81B41A;
-    dw $200F,$201D,$201A,$2011,$201A,$FFFF                               ;81B42A;
+    dw $202B,$200A,$2026,$202D,$202B,$200F,$200D,$200A,$202C,$200A,$FFFE ;81B40A;
+    dw $203B,$201A,$2036,$2010,$203B,$200F,$201D,$201A,$2011,$201A,$FFFF ;81B420;
 
 Tilemap_FileSelect_SamusA:
     dw $202B,$200A,$2026,$202D,$202B,$200F,$200A,$FFFE                   ;81B436;
@@ -5703,10 +5944,12 @@ Tilemap_FileSelect_isThisOK:
     dw $2078,$2074,$2085,$FFFF                                           ;81B612;
 
 Tilemap_FileSelect_yes:
-    dw $2041,$200E,$202B,$FFFE,$2017,$201E,$203B,$FFFF                   ;81B61A;
+    dw $2041,$200E,$202B,$FFFE                                           ;81B61A;
+    dw $2017,$201E,$203B,$FFFF
 
 Tilemap_FileSelect_no:
-    dw $2027,$200F,$2000,$FFFE,$2037,$200F,$2010,$FFFF                   ;81B62A;
+    dw $2027,$200F,$2000,$FFFE                                           ;81B62A;
+    dw $2037,$200F,$2010,$FFFF
 
 Tilemap_FileSelect_copyCompleted:
     dw $206C,$2078,$2079,$2082,$200F,$206C,$2078,$2076                   ;81B63A;
