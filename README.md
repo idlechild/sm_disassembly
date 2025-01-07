@@ -5,10 +5,11 @@
 
 
 ## Getting Started
- 1. Have python installed. Windows users may also need to setup their PATH environment variable so python can be accessed from anywhere.
- 2. Place your original, unheadered Super Metroid NTSC ROM in the root directory and name it `Super Metroid.sfc`.
- 3. Run `create_data.bat` to extract assets from your original ROM.
- 4. Run `build_rom.bat` to assemble the ROM from source.
+ 1. Have python3 installed. Windows users may also need to setup their PATH environment variable so python can be accessed from anywhere.
+ 2. If you're on Linux, mark tools/asar-standalone as executable.
+ 3. Place your original, unheadered Super Metroid NTSC ROM in the root directory and name it `Super Metroid.sfc`.
+ 4. Run `create_data.bat` on Windows or `create_data.sh` on Linux to extract assets from your original ROM.
+ 5. Run `build_rom.bat` on Windows or `build_rom.sh` on Linux to assemble the ROM from source.
 
 
 ## Contributing
