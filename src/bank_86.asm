@@ -2065,7 +2065,7 @@ InitAI_EnemyProjectile_DraygonGoop:
     STA.B $12                                                            ;868D18;
     LDA.W $1993                                                          ;868D1A;
     STA.B $14                                                            ;868D1D;
-    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;868D1F;
+    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;868D1F; ($16.$18, $1A.$1C) = ([$14] * |cos([$12] * pi / 80h)|, [$14] * |sin([$12] * pi / 80h)|)
     LDA.B $16                                                            ;868D23;
     STA.W $1AB7,Y                                                        ;868D25;
     LDA.B $18                                                            ;868D28;
@@ -2306,7 +2306,7 @@ UNUSED_PreInstruction_EnemyProjectile_Draygon_868E99:
     STA.L $7E97DC,X                                                      ;868EB8;
     STA.B $12                                                            ;868EBC;
     LDA.W #$0001                                                         ;868EBE;
-    STA.B $14                                                            ;868EC1;
+    STA.B $14                                                            ;868EC1; ($16.$18, $1A.$1C) = ([$14] * |cos([$12] * pi / 80h)|, [$14] * |sin([$12] * pi / 80h)|)
     JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;868EC3;
     LDA.B $16                                                            ;868EC7;
     STA.W $1AB7,X                                                        ;868EC9;
@@ -14765,7 +14765,7 @@ PlaceAndAim_DraygonsWallTurretProjectile:
     AND.W #$00FF                                                         ;86E7D4;
     STA.L $7E97DC,X                                                      ;86E7D7;
     STA.B $12                                                            ;86E7DB;
-    LDA.W $1993                                                          ;86E7DD;
+    LDA.W $1993                                                          ;86E7DD; ($16.$18, $1A.$1C) = ([$14] * |cos([$12] * pi / 80h)|, [$14] * |sin([$12] * pi / 80h)|)
     STA.B $14                                                            ;86E7E0;
     JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;86E7E2;
     LDA.B $16                                                            ;86E7E6;
@@ -15368,7 +15368,7 @@ InitAI_EnemyProjectile_BotwoonsSpit:
     TYX                                                                  ;86EBDC;
     LDA.W $060B                                                          ;86EBDD;
     STA.L $7E97DC,X                                                      ;86EBE0;
-    STA.B $12                                                            ;86EBE4;
+    STA.B $12                                                            ;86EBE4; ($16.$18, $1A.$1C) = ([$14] * |cos([$12] * pi / 80h)|, [$14] * |sin([$12] * pi / 80h)|)
     LDA.W $1993                                                          ;86EBE6;
     STA.B $14                                                            ;86EBE9;
     JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;86EBEB;

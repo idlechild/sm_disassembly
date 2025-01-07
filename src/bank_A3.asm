@@ -3925,7 +3925,7 @@ CalculateMovingForwardSpeeds:
     LDA.W $0FB5,X                                                        ;A3A18B;
     AND.W #$00FF                                                         ;A3A18E;
     STA.B $12                                                            ;A3A191;
-    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;A3A193;
+    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;A3A193; ($16.$18, $1A.$1C) = ([$14] * |cos([$12] * pi / 80h)|, [$14] * |sin([$12] * pi / 80h)|)
     LDA.B $16                                                            ;A3A197;
     STA.L $7E7802,X                                                      ;A3A199;
     LDA.B $18                                                            ;A3A19D;

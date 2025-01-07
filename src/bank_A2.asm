@@ -6285,7 +6285,7 @@ InitAI_Multiviola:
     LDA.W $0FB6,X                                                        ;A2B3E8;
     AND.W #$00FF                                                         ;A2B3EB;
     STA.B $14                                                            ;A2B3EE;
-    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;A2B3F0;
+    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;A2B3F0; ($16.$18, $1A.$1C) = ([$14] * |cos([$12] * pi / 80h)|, [$14] * |sin([$12] * pi / 80h)|)
     LDA.B $16                                                            ;A2B3F4;
     STA.W $0FAC,X                                                        ;A2B3F6;
     LDA.B $18                                                            ;A2B3F9;
@@ -6306,7 +6306,7 @@ MainAI_Multiviola:
     LDA.W $0FB6,X                                                        ;A2B417;
     AND.W #$00FF                                                         ;A2B41A;
     STA.B $14                                                            ;A2B41D;
-    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;A2B41F;
+    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;A2B41F; ($16.$18, $1A.$1C) = ([$14] * |cos([$12] * pi / 80h)|, [$14] * |sin([$12] * pi / 80h)|)
     LDA.B $16                                                            ;A2B423;
     STA.W $0FAC,X                                                        ;A2B425;
     LDA.B $18                                                            ;A2B428;

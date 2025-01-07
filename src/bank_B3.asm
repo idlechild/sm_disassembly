@@ -3164,7 +3164,7 @@ MoveBotwoonAccordingToSpeedAndAngleToTargetHole:
     STA.B $12                                                            ;B39C4F;
     LDA.L $7E8030,X                                                      ;B39C51;
     STA.B $14                                                            ;B39C55;
-    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;B39C57;
+    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;B39C57; ($16.$18, $1A.$1C) = ([$14] * |cos([$12] * pi / 80h)|, [$14] * |sin([$12] * pi / 80h)|)
     LDA.L $7E8034,X                                                      ;B39C5B;
     STA.W $0E20                                                          ;B39C5F;
     LDA.B $16                                                            ;B39C62;

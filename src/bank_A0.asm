@@ -6295,10 +6295,23 @@ SineCosineTables_8bitNegativeCosign_SignExtended:
     dw $FF9F,$FFA4,$FFAA,$FFB0,$FFB6,$FFBC,$FFC2,$FFC8                   ;A0B623;
     dw $FFCF,$FFD5,$FFDB,$FFE1,$FFE7,$FFEE,$FFF4,$FFFA                   ;A0B633;
 
+
+;;; $B643: ($16.$18, $1A.$1C) = ([$14] * |cos([$12] * pi / 80h)|, [$14] * |sin([$12] * pi / 80h)|) ;;;
 Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name:
+; All arithmetic done here is unsigned, so [$14] should be positive
+; Uses the standard maths convention for angle(!)
+
+; Standard maths angle convention:
+;          40h
+;           |
+;     80h   #    0
+;
+;          C0h
+;
+; Where # is the origin and | is the negative y axis
     PHB                                                                  ;A0B643;
     PHX                                                                  ;A0B644;
-    PEA.W $A000                                                          ;A0B645;
+    PEA.W UnsignedSineTable>>8&$FF00                                     ;A0B645; $A000
     PLB                                                                  ;A0B648;
     PLB                                                                  ;A0B649;
     REP #$30                                                             ;A0B64A;

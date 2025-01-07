@@ -1351,7 +1351,7 @@ Function_DraygonBody_ChaseSamus:
     STA.B $12                                                            ;A58E85;
     LDA.W #$0002                                                         ;A58E87;
     STA.B $14                                                            ;A58E8A;
-    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;A58E8C;
+    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;A58E8C; ($16.$18, $1A.$1C) = ([$14] * |cos([$12] * pi / 80h)|, [$14] * |sin([$12] * pi / 80h)|)
     LDA.B $16                                                            ;A58E90;
     STA.W $0E24                                                          ;A58E92;
     LDA.B $18                                                            ;A58E95;
@@ -1473,7 +1473,7 @@ Function_DraygonBody_GrabbedSamus_MovingToTargetPosition:
     STA.B $12                                                            ;A58F89;
     LDA.W #$0002                                                         ;A58F8B;
     STA.B $14                                                            ;A58F8E;
-    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;A58F90;
+    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;A58F90; ($16.$18, $1A.$1C) = ([$14] * |cos([$12] * pi / 80h)|, [$14] * |sin([$12] * pi / 80h)|)
     LDA.B $16                                                            ;A58F94;
     STA.W $0E24                                                          ;A58F96;
     LDA.B $18                                                            ;A58F99;
@@ -1766,7 +1766,7 @@ Function_DraygonBody_DeathSequence_DriftToDeathSpot:
     LDA.L $7E8806                                                        ;A591F6;
     AND.W #$00FF                                                         ;A591FA;
     STA.B $12                                                            ;A591FD;
-    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;A591FF;
+    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;A591FF; ($16.$18, $1A.$1C) = ([$14] * |cos([$12] * pi / 80h)|, [$14] * |sin([$12] * pi / 80h)|)
     LDA.B $16                                                            ;A59203;
     STA.W $0E24                                                          ;A59205;
     LDA.B $18                                                            ;A59208;
@@ -2358,7 +2358,7 @@ DraygonReaction_Common:
     LDA.L $7E8806                                                        ;A59685;
     AND.W #$00FF                                                         ;A59689;
     STA.B $12                                                            ;A5968C;
-    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;A5968E;
+    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;A5968E; ($16.$18, $1A.$1C) = ([$14] * |cos([$12] * pi / 80h)|, [$14] * |sin([$12] * pi / 80h)|)
     LDA.B $16                                                            ;A59692;
     STA.L $7E8010                                                        ;A59694;
     LDA.B $18                                                            ;A59698;
@@ -8221,7 +8221,7 @@ Function_SporeSpawn_SetupDeath:
     LDA.L $7E8806                                                        ;A5EBC8;
     AND.W #$00FF                                                         ;A5EBCC;
     STA.B $12                                                            ;A5EBCF;
-    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;A5EBD1;
+    JSL.L Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name              ;A5EBD1; ($16.$18, $1A.$1C) = ([$14] * |cos([$12] * pi / 80h)|, [$14] * |sin([$12] * pi / 80h)|)
     LDA.B $16                                                            ;A5EBD5;
     STA.L $7E8010,X                                                      ;A5EBD7;
     LDA.B $18                                                            ;A5EBDB;

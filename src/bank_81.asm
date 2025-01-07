@@ -281,18 +281,18 @@ SRAMMapData_norfair:
     db                 $8C
 
 
-    db                 $98,
-    db                 $9C,
-    db                 $A0,
-    db                 $A4,
-    db                 $A8,
-    db                 $AC,
-    db                 $B0,
-    db                 $B4,
-    db                 $B8,
-    db                 $BC,
-    db                 $C0,
-    db                 $C4,
+    db                 $98
+    db                 $9C
+    db                 $A0
+    db                 $A4
+    db                 $A8
+    db                 $AC
+    db                 $B0
+    db                 $B4
+    db                 $B8
+    db                 $BC
+    db                 $C0
+    db                 $C4
     db $00,$00,$00,$00
 
 SRAMMapData_wreckedShip:
@@ -345,20 +345,20 @@ SRAMMapData_maridia:
     db $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
 
 SRAMMapData_tourian:
-    db         $26,                                                      ;8182A6;
-    db         $2A,
-    db         $2E,
-    db         $32,
-    db     $35,$36,
-    db     $39,$3A,
-    db         $3E,
-    db     $41,$42,
-    db     $45,$46,
-    db         $4A,
-    db     $4D,$4E,
-    db     $51,$52,
-    db     $55,$56,
-    db         $5A,
+    db         $26                                                       ;8182A6;
+    db         $2A
+    db         $2E
+    db         $32
+    db     $35,$36
+    db     $39,$3A
+    db         $3E
+    db     $41,$42
+    db     $45,$46
+    db         $4A
+    db     $4D,$4E
+    db     $51,$52
+    db     $55,$56
+    db         $5A
     db $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
 
 SRAMMapData_ceres:
@@ -411,7 +411,7 @@ LoadMap:
     STA.B $00                                                            ;818310;
     LDA.W #$0081                                                         ;818312;
     STA.B $02                                                            ;818315;
-    LDA.W SRAMMapData_offset,X                                           ;818317; check label
+    LDA.W SRAMMapData_offset,X                                           ;818317;
     TAX                                                                  ;81831A;
     LDA.W #$CD52                                                         ;81831B; $7E
     STA.B $03                                                            ;81831E;
@@ -495,10 +495,8 @@ SaveMap:
 MapOfOAMIndex:
   .highXPosBit
     dw $0001                                                             ;81839F;
-
   .sizeBit
-    dw $0002                                                             ;8183A1;
-
+    dw       $0002                                                       ;8183A1;
     dw              $0004,$0008, $0010,$0020, $0040,$0080
     dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
     dw $0001,$0002, $0004,$0008, $0010,$0020, $0040,$0080
@@ -535,42 +533,40 @@ MapOfOAMIndex:
 MapOfOAMIndexToHighOAM:
   .address
     dw $0570                                                             ;81859F;
-
   .bitmask
-    dw $0003                                                             ;8185A1;
-
-    dw             $0570,$000C,$0570,$0030,$0570,$00C0
-    dw $0570,$0300,$0570,$0C00,$0570,$3000,$0570,$C000
-    dw $0572,$0003,$0572,$000C,$0572,$0030,$0572,$00C0
-    dw $0572,$0300,$0572,$0C00,$0572,$3000,$0572,$C000
-    dw $0574,$0003,$0574,$000C,$0574,$0030,$0574,$00C0
-    dw $0574,$0300,$0574,$0C00,$0574,$3000,$0574,$C000
-    dw $0576,$0003,$0576,$000C,$0576,$0030,$0576,$00C0
-    dw $0576,$0300,$0576,$0C00,$0576,$3000,$0576,$C000
-    dw $0578,$0003,$0578,$000C,$0578,$0030,$0578,$00C0
-    dw $0578,$0300,$0578,$0C00,$0578,$3000,$0578,$C000
-    dw $057A,$0003,$057A,$000C,$057A,$0030,$057A,$00C0
-    dw $057A,$0300,$057A,$0C00,$057A,$3000,$057A,$C000
-    dw $057C,$0003,$057C,$000C,$057C,$0030,$057C,$00C0
-    dw $057C,$0300,$057C,$0C00,$057C,$3000,$057C,$C000
-    dw $057E,$0003,$057E,$000C,$057E,$0030,$057E,$00C0
-    dw $057E,$0300,$057E,$0C00,$057E,$3000,$057E,$C000
-    dw $0580,$0003,$0580,$000C,$0580,$0030,$0580,$00C0
-    dw $0580,$0300,$0580,$0C00,$0580,$3000,$0580,$C000
-    dw $0582,$0003,$0582,$000C,$0582,$0030,$0582,$00C0
-    dw $0582,$0300,$0582,$0C00,$0582,$3000,$0582,$C000
-    dw $0584,$0003,$0584,$000C,$0584,$0030,$0584,$00C0
-    dw $0584,$0300,$0584,$0C00,$0584,$3000,$0584,$C000
-    dw $0586,$0003,$0586,$000C,$0586,$0030,$0586,$00C0
-    dw $0586,$0300,$0586,$0C00,$0586,$3000,$0586,$C000
-    dw $0588,$0003,$0588,$000C,$0588,$0030,$0588,$00C0
-    dw $0588,$0300,$0588,$0C00,$0588,$3000,$0588,$C000
-    dw $058A,$0003,$058A,$000C,$058A,$0030,$058A,$00C0
-    dw $058A,$0300,$058A,$0C00,$058A,$3000,$058A,$C000
-    dw $058C,$0003,$058C,$000C,$058C,$0030,$058C,$00C0
-    dw $058C,$0300,$058C,$0C00,$058C,$3000,$058C,$C000
-    dw $058E,$0003,$058E,$000C,$058E,$0030,$058E,$00C0
-    dw $058E,$0300,$058E,$0C00,$058E,$3000,$058E,$C000      
+    dw       $0003                                                       ;8185A1;
+    dw              $0570,$000C, $0570,$0030, $0570,$00C0
+    dw $0570,$0300, $0570,$0C00, $0570,$3000, $0570,$C000
+    dw $0572,$0003, $0572,$000C, $0572,$0030, $0572,$00C0
+    dw $0572,$0300, $0572,$0C00, $0572,$3000, $0572,$C000
+    dw $0574,$0003, $0574,$000C, $0574,$0030, $0574,$00C0
+    dw $0574,$0300, $0574,$0C00, $0574,$3000, $0574,$C000
+    dw $0576,$0003, $0576,$000C, $0576,$0030, $0576,$00C0
+    dw $0576,$0300, $0576,$0C00, $0576,$3000, $0576,$C000
+    dw $0578,$0003, $0578,$000C, $0578,$0030, $0578,$00C0
+    dw $0578,$0300, $0578,$0C00, $0578,$3000, $0578,$C000
+    dw $057A,$0003, $057A,$000C, $057A,$0030, $057A,$00C0
+    dw $057A,$0300, $057A,$0C00, $057A,$3000, $057A,$C000
+    dw $057C,$0003, $057C,$000C, $057C,$0030, $057C,$00C0
+    dw $057C,$0300, $057C,$0C00, $057C,$3000, $057C,$C000
+    dw $057E,$0003, $057E,$000C, $057E,$0030, $057E,$00C0
+    dw $057E,$0300, $057E,$0C00, $057E,$3000, $057E,$C000
+    dw $0580,$0003, $0580,$000C, $0580,$0030, $0580,$00C0
+    dw $0580,$0300, $0580,$0C00, $0580,$3000, $0580,$C000
+    dw $0582,$0003, $0582,$000C, $0582,$0030, $0582,$00C0
+    dw $0582,$0300, $0582,$0C00, $0582,$3000, $0582,$C000
+    dw $0584,$0003, $0584,$000C, $0584,$0030, $0584,$00C0
+    dw $0584,$0300, $0584,$0C00, $0584,$3000, $0584,$C000
+    dw $0586,$0003, $0586,$000C, $0586,$0030, $0586,$00C0
+    dw $0586,$0300, $0586,$0C00, $0586,$3000, $0586,$C000
+    dw $0588,$0003, $0588,$000C, $0588,$0030, $0588,$00C0
+    dw $0588,$0300, $0588,$0C00, $0588,$3000, $0588,$C000
+    dw $058A,$0003, $058A,$000C, $058A,$0030, $058A,$00C0
+    dw $058A,$0300, $058A,$0C00, $058A,$3000, $058A,$C000
+    dw $058C,$0003, $058C,$000C, $058C,$0030, $058C,$00C0
+    dw $058C,$0300, $058C,$0C00, $058C,$3000, $058C,$C000
+    dw $058E,$0003, $058E,$000C, $058E,$0030, $058E,$00C0
+    dw $058E,$0300, $058E,$0C00, $058E,$3000, $058E,$C000      
 
 AddSpritemapToOAM:
     PHX                                                                  ;81879F;
@@ -3376,8 +3372,7 @@ timerHandled:
 
 
 .data:
-    dw $002C,$002D,$002E,$002F,$0030,$0031,$0032,$0033                   ;819E2C;
-    dw $0033                                                             ;819E3C;
+    dw $002C,$002D,$002E,$002F,$0030,$0031,$0032,$0033,$0033             ;819E2C;
 
 FileSelectMap:
     REP #$30                                                             ;819E3E;
@@ -3979,16 +3974,14 @@ FileSelectMenu_Index4_Main:
 
 FileSelectMenu_SelectionMissile_Coordinates:
   .Yposition
-    dw $0030                                                             ;81A312; Slot A
-
+    dw $0030                                                             ;81A312;
   .Xposition:
-    dw $000E                                                             ;81A314;
-
-    dw $0058,$000E                                                              ; Slot B
-    dw $0080,$000E                                                              ; Slot C
-    dw $00A3,$000E                                                              ; File copy
-    dw $00BB,$000E                                                              ; File clear
-    dw $00D3,$000E                                                              ; Exit
+    dw       $000E ; Slot A
+    dw $0058,$000E ; Slot B
+    dw $0080,$000E ; Slot C
+    dw $00A3,$000E ; File copy
+    dw $00BB,$000E ; File clear
+    dw $00D3,$000E ; Exit
 
 FileSelectMap_Index0_GameOptionsToAreaSelectMap_ClearBG2:
     REP #$30                                                             ;81A32A;
@@ -4131,21 +4124,20 @@ LoadAreaMapForegroundColors:
     RTS                                                                  ;81A40D;
 
 
+;;; $A40E: Area select map foreground palette data ;;;
 AreaSelectMap_ForgegroundPaletteTable:
-    dw $0000,$7FE0,$7EA0,$7D40,$7C00,$4000,$01DB,$0196                   ;81A40E;
-    dw $0150,$00EB,$00A5,$033B,$0296,$01F0,$014B,$00A5                   ;81A41E;
-    dw $0400,$6400,$4C00,$3400,$1C00,$0400,$0013,$000F                   ;81A42E;
-    dw $000A,$0006,$0001,$0BB1,$0B0D,$0669,$05A4,$0100                   ;81A43E;
-    dw $0000,$7FE0,$7EA0,$7D40,$7C00,$4000,$6417,$4C12                   ;81A44E;
-    dw $380D,$2007,$0802,$5280,$4620,$39C0,$2940,$14A5                   ;81A45E;
-    dw $0000,$35AD,$2D6B,$2529,$18C6,$1084,$4A52,$3DEF                   ;81A46E;
-    dw $318C,$2108,$14A5,$56B5,$4A52,$39CE,$2D6B,$1CE7                   ;81A47E;
-    dw $0000,$18C6,$14A5,$1084,$0842,$0421,$1084,$0C63                   ;81A48E;
-    dw $0842,$0421,$0000,$2108,$1CE7,$14A5,$1084,$0842                   ;81A49E;
-    dw $0000,$35AD,$2D6B,$2529,$18C6,$1084,$294A,$2108                   ;81A4AE;
-    dw $1CE7,$14A5,$0C63,$4A52,$3DEF,$318C,$2108,$14A5                   ;81A4BE;
+;              2                              Ch                             16h
+    dw $0000, $7FE0,$7EA0,$7D40,$7C00,$4000, $01DB,$0196,$0150,$00EB,$00A5, $033B,$0296,$01F0,$014B,$00A5 ; 0.   Active.   WS-Crateria,  Crateria, Crateria
+    dw $0400, $6400,$4C00,$3400,$1C00,$0400, $0013,$000F,$000A,$0006,$0001, $0BB1,$0B0D,$0669,$05A4,$0100 ; 20h. Active.   Maridia,      Norfair,  Brinstar
+    dw $0000, $7FE0,$7EA0,$7D40,$7C00,$4000, $6417,$4C12,$380D,$2007,$0802, $5280,$4620,$39C0,$2940,$14A5 ; 40h. Active.   Wrecked Ship, Tourian,  Wrecked Ship
+    dw $0000, $35AD,$2D6B,$2529,$18C6,$1084, $4A52,$3DEF,$318C,$2108,$14A5, $56B5,$4A52,$39CE,$2D6B,$1CE7 ; 60h. Inactive. WS-Crateria,  Crateria, Crateria
+    dw $0000, $18C6,$14A5,$1084,$0842,$0421, $1084,$0C63,$0842,$0421,$0000, $2108,$1CE7,$14A5,$1084,$0842 ; 80h. Inactive. Maridia,      Norfair,  Brinstar
+    dw $0000, $35AD,$2D6B,$2529,$18C6,$1084, $294A,$2108,$1CE7,$14A5,$0C63, $4A52,$3DEF,$318C,$2108,$14A5 ; A0h. Inactive. Wrecked Ship, Tourian,  Wrecked Ship
 
+
+;;; $A4CE: Area select map foreground palette table ;;;
 AreaSelectMap_ForegroundPaletteTable:
+; Area select map foreground palette table indices (relative to $A4E6)
   .indices
   ..active
     dw $0000,$000A,$0010,$0016,$0024,$002A                               ;81A4CE;
@@ -4153,11 +4145,13 @@ AreaSelectMap_ForegroundPaletteTable:
   ..inactive
     dw $0030,$003A,$0040,$0046,$0054,$005A                               ;81A4DA;
 
+;        _________ Palette data index (relative to $A40E)
+;       |      ___ Palette RAM index (relative to $7E:C000)
+;       |     |
   .data
     dw $000C                                                             ;81A4E6;
-
   .RAM
-    dw $00AC       ; Active - Crateria - orange
+    dw       $00AC ; Active - Crateria - orange
     dw $0016,$00B6 ; Active - Crateria - yellow
     dw $FFFF
 
@@ -4248,7 +4242,7 @@ Load_AreaSelect_BackgroundTilemap:
     CLC                                                                  ;81A597;
     ADC.W #Tilemap_AreaSelect_Background_Crateria                        ;81A598;
     STA.B $D2,X                                                          ;81A59B;
-    LDA.W #$0081                                                         ;81A59D;
+    LDA.W #Tilemap_AreaSelect_Background_Crateria>>16                    ;81A59D;
     STA.B $D4,X                                                          ;81A5A0;
     LDA.B $5A                                                            ;81A5A2;
     AND.W #$00FC                                                         ;81A5A4;
@@ -5591,19 +5585,19 @@ FileSelectMap_Index14_PrepContractSquareTransToAreaSelect:
     TAX                                                                  ;81B019;
     LDA.W RoomSelectMap_ExpandingSquare_Velocities_leftSub,X             ;81B01A;
     STA.L $7E9E40                                                        ;81B01D;
-    LDA.W RoomSelectMap_ExpandingSquare_Velocities_left,X                ;81B021; needs label
+    LDA.W RoomSelectMap_ExpandingSquare_Velocities_left,X                ;81B021;
     STA.L $7E9E42                                                        ;81B024;
-    LDA.W RoomSelectMap_ExpandingSquare_Velocities_rightSub,X            ;81B028; needs label
+    LDA.W RoomSelectMap_ExpandingSquare_Velocities_rightSub,X            ;81B028;
     STA.L $7E9E44                                                        ;81B02B;
-    LDA.W RoomSelectMap_ExpandingSquare_Velocities_right,X               ;81B02F; needs label
+    LDA.W RoomSelectMap_ExpandingSquare_Velocities_right,X               ;81B02F;
     STA.L $7E9E46                                                        ;81B032;
-    LDA.W RoomSelectMap_ExpandingSquare_Velocities_topSub,X              ;81B036; needs label
+    LDA.W RoomSelectMap_ExpandingSquare_Velocities_topSub,X              ;81B036;
     STA.L $7E9E48                                                        ;81B039;
-    LDA.W RoomSelectMap_ExpandingSquare_Velocities_top,X                 ;81B03D; needs label
+    LDA.W RoomSelectMap_ExpandingSquare_Velocities_top,X                 ;81B03D;
     STA.L $7E9E4A                                                        ;81B040;
-    LDA.W RoomSelectMap_ExpandingSquare_Velocities_bottomSub,X           ;81B044; needs label
+    LDA.W RoomSelectMap_ExpandingSquare_Velocities_bottomSub,X           ;81B044;
     STA.L $7E9E4C                                                        ;81B047;
-    LDA.W RoomSelectMap_ExpandingSquare_Velocities_bottom,X              ;81B04B; needs label
+    LDA.W RoomSelectMap_ExpandingSquare_Velocities_bottom,X              ;81B04B;
     STA.L $7E9E4E                                                        ;81B04E;
     LDA.W #$0008                                                         ;81B052;
     STA.L $7E9E32                                                        ;81B055;
