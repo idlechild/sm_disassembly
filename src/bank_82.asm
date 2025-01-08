@@ -8811,631 +8811,379 @@ Ceres_MapIconPositions:
   .debugSavePoints
     dw $FFFF                                                             ;82CAE7;
 
+
+; Some of these spritemap entries have extra bits set,
+; making them incompatible with the spritemapEntry macro
 TitleMenuSpritemaps_2C_FileSelectMenu_SamusHelmet_0:
-    dw $0004,$C3FC                                                       ;82CAE9;
-    db $F4                                                               ;82CAED;
-    dw $3ED1,$C3FC                                                       ;82CAEE;
-    db $FC                                                               ;82CAF2;
-    dw $3EE1,$C3F4                                                       ;82CAF3;
-    db $FC                                                               ;82CAF7;
-    dw $3EE0,$C3F4                                                       ;82CAF8;
-    db $F4                                                               ;82CAFC;
-    dw $3ED0                                                             ;82CAFD;
+    dw $0004                                                             ;82CAE9;
+    dw $C3FC : db $F4 : dw $3ED1
+    dw $C3FC : db $FC : dw $3EE1
+    dw $C3F4 : db $FC : dw $3EE0
+    dw $C3F4 : db $F4 : dw $3ED0
 
 TitleMenuSpritemaps_2D_FileSelectMenu_SamusHelmet_1:
-    dw $0004,$C3F4                                                       ;82CAFF;
-    db $FC                                                               ;82CB03;
-    dw $3EE3,$C3F4                                                       ;82CB04;
-    db $F4                                                               ;82CB08;
-    dw $3ED3,$C3FC                                                       ;82CB09;
-    db $F4                                                               ;82CB0D;
-    dw $3ED4,$C3FC                                                       ;82CB0E;
-    db $FC                                                               ;82CB12;
-    dw $3EE4                                                             ;82CB13;
+    dw $0004                                                             ;82CAFF;
+    dw $C3F4 : db $FC : dw $3EE3
+    dw $C3F4 : db $F4 : dw $3ED3
+    dw $C3FC : db $F4 : dw $3ED4
+    dw $C3FC : db $FC : dw $3EE4
 
 TitleMenuSpritemaps_2E_FileSelectMenu_SamusHelmet_2:
-    dw $0004,$C3FC                                                       ;82CB15;
-    db $F4                                                               ;82CB19;
-    dw $3ED7,$C3F4                                                       ;82CB1A;
-    db $F4                                                               ;82CB1E;
-    dw $3ED6,$C3F4                                                       ;82CB1F;
-    db $FC                                                               ;82CB23;
-    dw $3EE6,$C3FC                                                       ;82CB24;
-    db $FC                                                               ;82CB28;
-    dw $3EE7                                                             ;82CB29;
+    dw $0004                                                             ;82CB15;
+    dw $C3FC : db $F4 : dw $3ED7
+    dw $C3F4 : db $F4 : dw $3ED6
+    dw $C3F4 : db $FC : dw $3EE6
+    dw $C3FC : db $FC : dw $3EE7
 
 TitleMenuSpritemaps_2F_FileSelectMenu_SamusHelmet_3:
-    dw $0006,$0000                                                       ;82CB2B;
-    db $FE                                                               ;82CB2F;
-    dw $3EDA,$01F8                                                       ;82CB30;
-    db $FE                                                               ;82CB34;
-    dw $3ED9,$C3FC                                                       ;82CB35;
-    db $F4                                                               ;82CB39;
-    dw $3ED7,$C3F4                                                       ;82CB3A;
-    db $F4                                                               ;82CB3E;
-    dw $3ED6,$C3F4                                                       ;82CB3F;
-    db $FC                                                               ;82CB43;
-    dw $3EE6,$C3FC                                                       ;82CB44;
-    db $FC                                                               ;82CB48;
-    dw $3EE7                                                             ;82CB49;
+    dw $0006                                                             ;82CB2B;
+    %spritemapEntry(0, $00, $FE, 0, 0, 3, 7, $DA)
+    %spritemapEntry(0, $1F8, $FE, 0, 0, 3, 7, $D9)
+    dw $C3FC : db $F4 : dw $3ED7
+    dw $C3F4 : db $F4 : dw $3ED6
+    dw $C3F4 : db $FC : dw $3EE6
+    dw $C3FC : db $FC : dw $3EE7
 
 TitleMenuSpritemaps_30_FileSelectMenu_SamusHelmet_4:
-    dw $0006,$0000                                                       ;82CB4B;
-    db $FE                                                               ;82CB4F;
-    dw $3EDC,$01F8                                                       ;82CB50;
-    db $FE                                                               ;82CB54;
-    dw $3EDB,$C3FC                                                       ;82CB55;
-    db $F4                                                               ;82CB59;
-    dw $3ED7,$C3F4                                                       ;82CB5A;
-    db $F4                                                               ;82CB5E;
-    dw $3ED6,$C3F4                                                       ;82CB5F;
-    db $FC                                                               ;82CB63;
-    dw $3EE6,$C3FC                                                       ;82CB64;
-    db $FC                                                               ;82CB68;
-    dw $3EE7                                                             ;82CB69;
+    dw $0006                                                             ;82CB4B;
+    %spritemapEntry(0, $00, $FE, 0, 0, 3, 7, $DC)
+    %spritemapEntry(0, $1F8, $FE, 0, 0, 3, 7, $DB)
+    dw $C3FC : db $F4 : dw $3ED7
+    dw $C3F4 : db $F4 : dw $3ED6
+    dw $C3F4 : db $FC : dw $3EE6
+    dw $C3FC : db $FC : dw $3EE7
 
 TitleMenuSpritemaps_31_FileSelectMenu_SamusHelmet_5:
-    dw $0006,$0000                                                       ;82CB6B;
-    db $FE                                                               ;82CB6F;
-    dw $3EDE,$01F8                                                       ;82CB70;
-    db $FE                                                               ;82CB74;
-    dw $3EDD,$C3FC                                                       ;82CB75;
-    db $F4                                                               ;82CB79;
-    dw $3ED7,$C3F4                                                       ;82CB7A;
-    db $F4                                                               ;82CB7E;
-    dw $3ED6,$C3F4                                                       ;82CB7F;
-    db $FC                                                               ;82CB83;
-    dw $3EE6,$C3FC                                                       ;82CB84;
-    db $FC                                                               ;82CB88;
-    dw $3EE7                                                             ;82CB89;
+    dw $0006                                                             ;82CB6B;
+    %spritemapEntry(0, $00, $FE, 0, 0, 3, 7, $DE)
+    %spritemapEntry(0, $1F8, $FE, 0, 0, 3, 7, $DD)
+    dw $C3FC : db $F4 : dw $3ED7
+    dw $C3F4 : db $F4 : dw $3ED6
+    dw $C3F4 : db $FC : dw $3EE6
+    dw $C3FC : db $FC : dw $3EE7
 
 TitleMenuSpritemaps_32_FileSelectMenu_SamusHelmet_6:
-    dw $0006,$0000                                                       ;82CB8B;
-    db $FE                                                               ;82CB8F;
-    dw $3EEA,$01F8                                                       ;82CB90;
-    db $FE                                                               ;82CB94;
-    dw $3EE9,$C3FC                                                       ;82CB95;
-    db $F4                                                               ;82CB99;
-    dw $3ED7,$C3F4                                                       ;82CB9A;
-    db $F4                                                               ;82CB9E;
-    dw $3ED6,$C3F4                                                       ;82CB9F;
-    db $FC                                                               ;82CBA3;
-    dw $3EE6,$C3FC                                                       ;82CBA4;
-    db $FC                                                               ;82CBA8;
-    dw $3EE7                                                             ;82CBA9;
+    dw $0006                                                             ;82CB8B;
+    %spritemapEntry(0, $00, $FE, 0, 0, 3, 7, $EA)
+    %spritemapEntry(0, $1F8, $FE, 0, 0, 3, 7, $E9)
+    dw $C3FC : db $F4 : dw $3ED7
+    dw $C3F4 : db $F4 : dw $3ED6
+    dw $C3F4 : db $FC : dw $3EE6
+    dw $C3FC : db $FC : dw $3EE7
 
 TitleMenuSpritemaps_33_FileSelectMenu_SamusHelmet_7:
-    dw $0006,$0000                                                       ;82CBAB;
-    db $FE                                                               ;82CBAF;
-    dw $3EEC,$01F8                                                       ;82CBB0;
-    db $FE                                                               ;82CBB4;
-    dw $3EEB,$C3FC                                                       ;82CBB5;
-    db $F4                                                               ;82CBB9;
-    dw $3ED7,$C3F4                                                       ;82CBBA;
-    db $F4                                                               ;82CBBE;
-    dw $3ED6,$C3F4                                                       ;82CBBF;
-    db $FC                                                               ;82CBC3;
-    dw $3EE6,$C3FC                                                       ;82CBC4;
-    db $FC                                                               ;82CBC8;
-    dw $3EE7                                                             ;82CBC9;
+    dw $0006                                                             ;82CBAB;
+    %spritemapEntry(0, $00, $FE, 0, 0, 3, 7, $EC)
+    %spritemapEntry(0, $1F8, $FE, 0, 0, 3, 7, $EB)
+    dw $C3FC : db $F4 : dw $3ED7
+    dw $C3F4 : db $F4 : dw $3ED6
+    dw $C3F4 : db $FC : dw $3EE6
+    dw $C3FC : db $FC : dw $3EE7
 
 TitleMenuSpritemaps_34_MenuSelectionMissile_0:
-    dw $0002,$0000                                                       ;82CBCB;
-    db $FC                                                               ;82CBCF;
-    dw $3EEF,$01F8                                                       ;82CBD0;
-    db $FC                                                               ;82CBD4;
-    dw $3EDF                                                             ;82CBD5;
+    dw $0002                                                             ;82CBCB;
+    %spritemapEntry(0, $00, $FC, 0, 0, 3, 7, $EF)
+    %spritemapEntry(0, $1F8, $FC, 0, 0, 3, 7, $DF)
 
 TitleMenuSpritemaps_35_MenuSelectionMissile_1:
-    dw $0002,$0000                                                       ;82CBD7;
-    db $FC                                                               ;82CBDB;
-    dw $3EFF,$01F8                                                       ;82CBDC;
-    db $FC                                                               ;82CBE0;
-    dw $3EEE                                                             ;82CBE1;
+    dw $0002                                                             ;82CBD7;
+    %spritemapEntry(0, $00, $FC, 0, 0, 3, 7, $FF)
+    %spritemapEntry(0, $1F8, $FC, 0, 0, 3, 7, $EE)
 
 TitleMenuSpritemaps_36_MenuSelectionMissile_2:
-    dw $0002,$0000                                                       ;82CBE3;
-    db $FC                                                               ;82CBE7;
-    dw $3ECC,$01F8                                                       ;82CBE8;
-    db $FC                                                               ;82CBEC;
-    dw $3EFE                                                             ;82CBED;
+    dw $0002                                                             ;82CBE3;
+    %spritemapEntry(0, $00, $FC, 0, 0, 3, 7, $CC)
+    %spritemapEntry(0, $1F8, $FC, 0, 0, 3, 7, $FE)
 
 TitleMenuSpritemaps_37_MenuSelectionMissile_3:
-    dw $0002,$01F8                                                       ;82CBEF;
-    db $FC                                                               ;82CBF3;
-    dw $3EC8,$0000                                                       ;82CBF4;
-    db $FC                                                               ;82CBF8;
-    dw $3EFF                                                             ;82CBF9;
+    dw $0002                                                             ;82CBEF;
+    %spritemapEntry(0, $1F8, $FC, 0, 0, 3, 7, $C8)
+    %spritemapEntry(0, $00, $FC, 0, 0, 3, 7, $FF)
 
 TitleMenuSpritemaps_38_AreaSelect_PlanetZebes:
-    dw $0016,$0028                                                       ;82CBFB;
-    db $00                                                               ;82CBFF;
-    dw $303B,$0028                                                       ;82CC00;
-    db $F8                                                               ;82CC04;
-    dw $302B,$0020                                                       ;82CC05;
-    db $00                                                               ;82CC09;
-    dw $301E,$0020                                                       ;82CC0A;
-    db $F8                                                               ;82CC0E;
-    dw $300E,$0018                                                       ;82CC0F;
-    db $00                                                               ;82CC13;
-    dw $301B,$0018                                                       ;82CC14;
-    db $F8                                                               ;82CC18;
-    dw $300B,$0010                                                       ;82CC19;
-    db $00                                                               ;82CC1D;
-    dw $301E,$0010                                                       ;82CC1E;
-    db $F8                                                               ;82CC22;
-    dw $300E,$0008                                                       ;82CC23;
-    db $00                                                               ;82CC27;
-    dw $3052,$0008                                                       ;82CC28;
-    db $F8                                                               ;82CC2C;
-    dw $3042,$01F8                                                       ;82CC2D;
-    db $00                                                               ;82CC31;
-    dw $3011,$01F8                                                       ;82CC32;
-    db $F8                                                               ;82CC36;
-    dw $302C,$01F0                                                       ;82CC37;
-    db $00                                                               ;82CC3B;
-    dw $301E,$01F0                                                       ;82CC3C;
-    db $F8                                                               ;82CC40;
-    dw $300E,$01E8                                                       ;82CC41;
-    db $00                                                               ;82CC45;
-    dw $3037,$01E8                                                       ;82CC46;
-    db $F8                                                               ;82CC4A;
-    dw $3027,$01E0                                                       ;82CC4B;
-    db $00                                                               ;82CC4F;
-    dw $301A,$01E0                                                       ;82CC50;
-    db $F8                                                               ;82CC54;
-    dw $300A,$01D8                                                       ;82CC55;
-    db $00                                                               ;82CC59;
-    dw $3035,$01D8                                                       ;82CC5A;
-    db $F8                                                               ;82CC5E;
-    dw $3025,$01D0                                                       ;82CC5F;
-    db $F8                                                               ;82CC63;
-    dw $300D,$01D0                                                       ;82CC64;
-    db $00                                                               ;82CC68;
-    dw $3038                                                             ;82CC69;
+    dw $0016                                                             ;82CBFB;
+    %spritemapEntry(0, $28, $00, 0, 0, 3, 0, $3B)
+    %spritemapEntry(0, $28, $F8, 0, 0, 3, 0, $2B)
+    %spritemapEntry(0, $20, $00, 0, 0, 3, 0, $1E)
+    %spritemapEntry(0, $20, $F8, 0, 0, 3, 0, $0E)
+    %spritemapEntry(0, $18, $00, 0, 0, 3, 0, $1B)
+    %spritemapEntry(0, $18, $F8, 0, 0, 3, 0, $0B)
+    %spritemapEntry(0, $10, $00, 0, 0, 3, 0, $1E)
+    %spritemapEntry(0, $10, $F8, 0, 0, 3, 0, $0E)
+    %spritemapEntry(0, $08, $00, 0, 0, 3, 0, $52)
+    %spritemapEntry(0, $08, $F8, 0, 0, 3, 0, $42)
+    %spritemapEntry(0, $1F8, $00, 0, 0, 3, 0, $11)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 0, $2C)
+    %spritemapEntry(0, $1F0, $00, 0, 0, 3, 0, $1E)
+    %spritemapEntry(0, $1F0, $F8, 0, 0, 3, 0, $0E)
+    %spritemapEntry(0, $1E8, $00, 0, 0, 3, 0, $37)
+    %spritemapEntry(0, $1E8, $F8, 0, 0, 3, 0, $27)
+    %spritemapEntry(0, $1E0, $00, 0, 0, 3, 0, $1A)
+    %spritemapEntry(0, $1E0, $F8, 0, 0, 3, 0, $0A)
+    %spritemapEntry(0, $1D8, $00, 0, 0, 3, 0, $35)
+    %spritemapEntry(0, $1D8, $F8, 0, 0, 3, 0, $25)
+    %spritemapEntry(0, $1D0, $F8, 0, 0, 3, 0, $0D)
+    %spritemapEntry(0, $1D0, $00, 0, 0, 3, 0, $38)
 
 TitleMenuSpritemaps_39_AreaSelect_Crateria:
-    dw $0008,$0017                                                       ;82CC6B;
-    db $FC                                                               ;82CC6F;
-    dw $306A,$0010                                                       ;82CC70;
-    db $FC                                                               ;82CC74;
-    dw $3072,$000A                                                       ;82CC75;
-    db $FC                                                               ;82CC79;
-    dw $307B,$0002                                                       ;82CC7A;
-    db $FC                                                               ;82CC7E;
-    dw $306E,$01FA                                                       ;82CC7F;
-    db $FC                                                               ;82CC83;
-    dw $307D,$01F2                                                       ;82CC84;
-    db $FC                                                               ;82CC88;
-    dw $306A,$01EA                                                       ;82CC89;
-    db $FC                                                               ;82CC8D;
-    dw $307B,$01E2                                                       ;82CC8E;
-    db $FC                                                               ;82CC92;
-    dw $306C                                                             ;82CC93;
+    dw $0008                                                             ;82CC6B;
+    %spritemapEntry(0, $17, $FC, 0, 0, 3, 0, $6A)
+    %spritemapEntry(0, $10, $FC, 0, 0, 3, 0, $72)
+    %spritemapEntry(0, $0A, $FC, 0, 0, 3, 0, $7B)
+    %spritemapEntry(0, $02, $FC, 0, 0, 3, 0, $6E)
+    %spritemapEntry(0, $1FA, $FC, 0, 0, 3, 0, $7D)
+    %spritemapEntry(0, $1F2, $FC, 0, 0, 3, 0, $6A)
+    %spritemapEntry(0, $1EA, $FC, 0, 0, 3, 0, $7B)
+    %spritemapEntry(0, $1E2, $FC, 0, 0, 3, 0, $6C)
 
 TitleMenuSpritemaps_3A_AreaSelect_Brinstar:
-    dw $0008,$0017                                                       ;82CC95;
-    db $FC                                                               ;82CC99;
-    dw $307B,$000E                                                       ;82CC9A;
-    db $FC                                                               ;82CC9E;
-    dw $306A,$0007                                                       ;82CC9F;
-    db $FC                                                               ;82CCA3;
-    dw $307D,$01FF                                                       ;82CCA4;
-    db $FC                                                               ;82CCA8;
-    dw $307C,$01F7                                                       ;82CCA9;
-    db $FC                                                               ;82CCAD;
-    dw $3077,$01EF                                                       ;82CCAE;
-    db $FC                                                               ;82CCB2;
-    dw $3072,$01E9                                                       ;82CCB3;
-    db $FC                                                               ;82CCB7;
-    dw $307B,$01E1                                                       ;82CCB8;
-    db $FC                                                               ;82CCBC;
-    dw $306B                                                             ;82CCBD;
+    dw $0008                                                             ;82CC95;
+    %spritemapEntry(0, $17, $FC, 0, 0, 3, 0, $7B)
+    %spritemapEntry(0, $0E, $FC, 0, 0, 3, 0, $6A)
+    %spritemapEntry(0, $07, $FC, 0, 0, 3, 0, $7D)
+    %spritemapEntry(0, $1FF, $FC, 0, 0, 3, 0, $7C)
+    %spritemapEntry(0, $1F7, $FC, 0, 0, 3, 0, $77)
+    %spritemapEntry(0, $1EF, $FC, 0, 0, 3, 0, $72)
+    %spritemapEntry(0, $1E9, $FC, 0, 0, 3, 0, $7B)
+    %spritemapEntry(0, $1E1, $FC, 0, 0, 3, 0, $6B)
 
 TitleMenuSpritemaps_3B_AreaSelect_Norfair:
-    dw $0007,$0014                                                       ;82CCBF;
-    db $FC                                                               ;82CCC3;
-    dw $307B,$000C                                                       ;82CCC4;
-    db $FC                                                               ;82CCC8;
-    dw $3072,$0005                                                       ;82CCC9;
-    db $FC                                                               ;82CCCD;
-    dw $306A,$01FD                                                       ;82CCCE;
-    db $FC                                                               ;82CCD2;
-    dw $306F,$01F5                                                       ;82CCD3;
-    db $FC                                                               ;82CCD7;
-    dw $307B,$01ED                                                       ;82CCD8;
-    db $FC                                                               ;82CCDC;
-    dw $3078,$01E5                                                       ;82CCDD;
-    db $FC                                                               ;82CCE1;
-    dw $3077                                                             ;82CCE2;
+    dw $0007                                                             ;82CCBF;
+    %spritemapEntry(0, $14, $FC, 0, 0, 3, 0, $7B)
+    %spritemapEntry(0, $0C, $FC, 0, 0, 3, 0, $72)
+    %spritemapEntry(0, $05, $FC, 0, 0, 3, 0, $6A)
+    %spritemapEntry(0, $1FD, $FC, 0, 0, 3, 0, $6F)
+    %spritemapEntry(0, $1F5, $FC, 0, 0, 3, 0, $7B)
+    %spritemapEntry(0, $1ED, $FC, 0, 0, 3, 0, $78)
+    %spritemapEntry(0, $1E5, $FC, 0, 0, 3, 0, $77)
 
 TitleMenuSpritemaps_3E_AreaSelect_Tourian:
-    dw $0007,$0013                                                       ;82CCE4;
-    db $FC                                                               ;82CCE8;
-    dw $3077,$000A                                                       ;82CCE9;
-    db $FC                                                               ;82CCED;
-    dw $306A,$0003                                                       ;82CCEE;
-    db $FC                                                               ;82CCF2;
-    dw $3072,$01FD                                                       ;82CCF3;
-    db $FC                                                               ;82CCF7;
-    dw $307B,$01F5                                                       ;82CCF8;
-    db $FC                                                               ;82CCFC;
-    dw $307E,$01ED                                                       ;82CCFD;
-    db $FC                                                               ;82CD01;
-    dw $3078,$01E6                                                       ;82CD02;
-    db $FC                                                               ;82CD06;
-    dw $307D                                                             ;82CD07;
+    dw $0007                                                             ;82CCE4;
+    %spritemapEntry(0, $13, $FC, 0, 0, 3, 0, $77)
+    %spritemapEntry(0, $0A, $FC, 0, 0, 3, 0, $6A)
+    %spritemapEntry(0, $03, $FC, 0, 0, 3, 0, $72)
+    %spritemapEntry(0, $1FD, $FC, 0, 0, 3, 0, $7B)
+    %spritemapEntry(0, $1F5, $FC, 0, 0, 3, 0, $7E)
+    %spritemapEntry(0, $1ED, $FC, 0, 0, 3, 0, $78)
+    %spritemapEntry(0, $1E6, $FC, 0, 0, 3, 0, $7D)
 
 TitleMenuSpritemaps_3D_AreaSelect_Maridia:
-    dw $0007,$0013                                                       ;82CD09;
-    db $FC                                                               ;82CD0D;
-    dw $306A,$000B                                                       ;82CD0E;
-    db $FC                                                               ;82CD12;
-    dw $3072,$0004                                                       ;82CD13;
-    db $FC                                                               ;82CD17;
-    dw $306D,$01FC                                                       ;82CD18;
-    db $FC                                                               ;82CD1C;
-    dw $3072,$01F6                                                       ;82CD1D;
-    db $FC                                                               ;82CD21;
-    dw $307B,$01EE                                                       ;82CD22;
-    db $FC                                                               ;82CD26;
-    dw $306A,$01E6                                                       ;82CD27;
-    db $FC                                                               ;82CD2B;
-    dw $3076                                                             ;82CD2C;
+    dw $0007                                                             ;82CD09;
+    %spritemapEntry(0, $13, $FC, 0, 0, 3, 0, $6A)
+    %spritemapEntry(0, $0B, $FC, 0, 0, 3, 0, $72)
+    %spritemapEntry(0, $04, $FC, 0, 0, 3, 0, $6D)
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 3, 0, $72)
+    %spritemapEntry(0, $1F6, $FC, 0, 0, 3, 0, $7B)
+    %spritemapEntry(0, $1EE, $FC, 0, 0, 3, 0, $6A)
+    %spritemapEntry(0, $1E6, $FC, 0, 0, 3, 0, $76)
 
 TitleMenuSpritemaps_3C_AreaSelect_WreckedShip:
-    dw $000B,$0018                                                       ;82CD2E;
-    db $00                                                               ;82CD32;
-    dw $3079,$0010                                                       ;82CD33;
-    db $00                                                               ;82CD37;
-    dw $3072,$0009                                                       ;82CD38;
-    db $00                                                               ;82CD3C;
-    dw $3071,$0001                                                       ;82CD3D;
-    db $00                                                               ;82CD41;
-    dw $307C,$0010                                                       ;82CD42;
-    db $F8                                                               ;82CD46;
-    dw $306D,$0008                                                       ;82CD47;
-    db $F8                                                               ;82CD4B;
-    dw $306E,$0000                                                       ;82CD4C;
-    db $F8                                                               ;82CD50;
-    dw $3074,$01F8                                                       ;82CD51;
-    db $F8                                                               ;82CD55;
-    dw $306C,$01F0                                                       ;82CD56;
-    db $F8                                                               ;82CD5A;
-    dw $306E,$01E8                                                       ;82CD5B;
-    db $F8                                                               ;82CD5F;
-    dw $307B,$01E0                                                       ;82CD60;
-    db $F8                                                               ;82CD64;
-    dw $3080                                                             ;82CD65;
+    dw $000B                                                             ;82CD2E;
+    %spritemapEntry(0, $18, $00, 0, 0, 3, 0, $79)
+    %spritemapEntry(0, $10, $00, 0, 0, 3, 0, $72)
+    %spritemapEntry(0, $09, $00, 0, 0, 3, 0, $71)
+    %spritemapEntry(0, $01, $00, 0, 0, 3, 0, $7C)
+    %spritemapEntry(0, $10, $F8, 0, 0, 3, 0, $6D)
+    %spritemapEntry(0, $08, $F8, 0, 0, 3, 0, $6E)
+    %spritemapEntry(0, $00, $F8, 0, 0, 3, 0, $74)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 0, $6C)
+    %spritemapEntry(0, $1F0, $F8, 0, 0, 3, 0, $6E)
+    %spritemapEntry(0, $1E8, $F8, 0, 0, 3, 0, $7B)
+    %spritemapEntry(0, $1E0, $F8, 0, 0, 3, 0, $80)
 
 TitleMenuSpritemaps_3F_82CD67:
-    dw $0014,$0010                                                       ;82CD67;
-    db $08                                                               ;82CD6B;
-    dw $3EFA,$0008                                                       ;82CD6C;
-    db $08                                                               ;82CD70;
-    dw $3EFA,$0000                                                       ;82CD71;
-    db $08                                                               ;82CD75;
-    dw $3EFA,$01F8                                                       ;82CD76;
-    db $08                                                               ;82CD7A;
-    dw $3EFA,$01F0                                                       ;82CD7B;
-    db $08                                                               ;82CD7F;
-    dw $3EFA,$01E8                                                       ;82CD80;
-    db $08                                                               ;82CD84;
-    dw $3EFA,$0010                                                       ;82CD85;
-    db $F0                                                               ;82CD89;
-    dw $3EFA,$0008                                                       ;82CD8A;
-    db $F0                                                               ;82CD8E;
-    dw $3EFA,$0000                                                       ;82CD8F;
-    db $F0                                                               ;82CD93;
-    dw $3EFA,$01F8                                                       ;82CD94;
-    db $F0                                                               ;82CD98;
-    dw $3EFA,$01F0                                                       ;82CD99;
-    db $F0                                                               ;82CD9D;
-    dw $3EFA,$01E8                                                       ;82CD9E;
-    db $F0                                                               ;82CDA2;
-    dw $3EFA,$01E0                                                       ;82CDA3;
-    db $00                                                               ;82CDA7;
-    dw $3EED,$01E0                                                       ;82CDA8;
-    db $F8                                                               ;82CDAC;
-    dw $3EED,$0018                                                       ;82CDAD;
-    db $00                                                               ;82CDB1;
-    dw $3EED,$0018                                                       ;82CDB2;
-    db $F8                                                               ;82CDB6;
-    dw $3EED,$0018                                                       ;82CDB7;
-    db $08                                                               ;82CDBB;
-    dw $3EFD,$01E0                                                       ;82CDBC;
-    db $08                                                               ;82CDC0;
-    dw $3EFC,$0018                                                       ;82CDC1;
-    db $F0                                                               ;82CDC5;
-    dw $3EFB,$01E0                                                       ;82CDC6;
-    db $F0                                                               ;82CDCA;
-    dw $3EF9                                                             ;82CDCB;
+    dw $0014                                                             ;82CD67;
+    %spritemapEntry(0, $10, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $08, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $00, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F8, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F0, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1E8, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $10, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $08, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $00, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F8, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F0, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1E8, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1E0, $00, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $1E0, $F8, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $18, $00, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $18, $F8, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $18, $08, 0, 0, 3, 7, $FD)
+    %spritemapEntry(0, $1E0, $08, 0, 0, 3, 7, $FC)
+    %spritemapEntry(0, $18, $F0, 0, 0, 3, 7, $FB)
+    %spritemapEntry(0, $1E0, $F0, 0, 0, 3, 7, $F9)
 
 TitleMenuSpritemaps_40_FileCopyArrow_OneSlotDown:
-    dw $000E,$0002                                                       ;82CDCD;
-    db $F0                                                               ;82CDD1;
-    dw $32CF,$01FA                                                       ;82CDD2;
-    db $F0                                                               ;82CDD6;
-    dw $32CE,$0002                                                       ;82CDD7;
-    db $E8                                                               ;82CDDB;
-    dw $32BF,$01FA                                                       ;82CDDC;
-    db $E8                                                               ;82CDE0;
-    dw $32BE,$01FA                                                       ;82CDE1;
-    db $08                                                               ;82CDE5;
-    dw $32B9,$01FA                                                       ;82CDE6;
-    db $10                                                               ;82CDEA;
-    dw $32C9,$0002                                                       ;82CDEB;
-    db $10                                                               ;82CDEF;
-    dw $32CB,$0002                                                       ;82CDF0;
-    db $08                                                               ;82CDF4;
-    dw $32BB,$01F2                                                       ;82CDF5;
-    db $08                                                               ;82CDF9;
-    dw $32B8,$01F2                                                       ;82CDFA;
-    db $00                                                               ;82CDFE;
-    dw $32BC,$01FA                                                       ;82CDFF;
-    db $00                                                               ;82CE03;
-    dw $32BD,$01F2                                                       ;82CE04;
-    db $F0                                                               ;82CE08;
-    dw $32CD,$01FA                                                       ;82CE09;
-    db $F8                                                               ;82CE0D;
-    dw $32BD,$01F2                                                       ;82CE0E;
-    db $F8                                                               ;82CE12;
-    dw $32BC                                                             ;82CE13;
+    dw $000E                                                             ;82CDCD;
+    %spritemapEntry(0, $02, $F0, 0, 0, 3, 1, $CF)
+    %spritemapEntry(0, $1FA, $F0, 0, 0, 3, 1, $CE)
+    %spritemapEntry(0, $02, $E8, 0, 0, 3, 1, $BF)
+    %spritemapEntry(0, $1FA, $E8, 0, 0, 3, 1, $BE)
+    %spritemapEntry(0, $1FA, $08, 0, 0, 3, 1, $B9)
+    %spritemapEntry(0, $1FA, $10, 0, 0, 3, 1, $C9)
+    %spritemapEntry(0, $02, $10, 0, 0, 3, 1, $CB)
+    %spritemapEntry(0, $02, $08, 0, 0, 3, 1, $BB)
+    %spritemapEntry(0, $1F2, $08, 0, 0, 3, 1, $B8)
+    %spritemapEntry(0, $1F2, $00, 0, 0, 3, 1, $BC)
+    %spritemapEntry(0, $1FA, $00, 0, 0, 3, 1, $BD)
+    %spritemapEntry(0, $1F2, $F0, 0, 0, 3, 1, $CD)
+    %spritemapEntry(0, $1FA, $F8, 0, 0, 3, 1, $BD)
+    %spritemapEntry(0, $1F2, $F8, 0, 0, 3, 1, $BC)
 
 TitleMenuSpritemaps_41_FileCopyArrow_OneSlotUp:
-    dw $000E,$01F2                                                       ;82CE15;
-    db $F0                                                               ;82CE19;
-    dw $B2B8,$01F2                                                       ;82CE1A;
-    db $F8                                                               ;82CE1E;
-    dw $B2BC,$01FA                                                       ;82CE1F;
-    db $F8                                                               ;82CE23;
-    dw $B2BD,$01FA                                                       ;82CE24;
-    db $E8                                                               ;82CE28;
-    dw $B2C9,$01FA                                                       ;82CE29;
-    db $F0                                                               ;82CE2D;
-    dw $B2B9,$0002                                                       ;82CE2E;
-    db $08                                                               ;82CE32;
-    dw $B2CF,$01FA                                                       ;82CE33;
-    db $08                                                               ;82CE37;
-    dw $B2CE,$0002                                                       ;82CE38;
-    db $10                                                               ;82CE3C;
-    dw $B2BF,$01FA                                                       ;82CE3D;
-    db $10                                                               ;82CE41;
-    dw $B2BE,$01F2                                                       ;82CE42;
-    db $08                                                               ;82CE46;
-    dw $B2CD,$01FA                                                       ;82CE47;
-    db $00                                                               ;82CE4B;
-    dw $B2BD,$01F2                                                       ;82CE4C;
-    db $00                                                               ;82CE50;
-    dw $B2BC,$0002                                                       ;82CE51;
-    db $E8                                                               ;82CE55;
-    dw $B2CB,$0002                                                       ;82CE56;
-    db $F0                                                               ;82CE5A;
-    dw $B2BB                                                             ;82CE5B;
+    dw $000E                                                             ;82CE15;
+    %spritemapEntry(0, $1F2, $F0, 1, 0, 3, 1, $B8)
+    %spritemapEntry(0, $1F2, $F8, 1, 0, 3, 1, $BC)
+    %spritemapEntry(0, $1FA, $F8, 1, 0, 3, 1, $BD)
+    %spritemapEntry(0, $1FA, $E8, 1, 0, 3, 1, $C9)
+    %spritemapEntry(0, $1FA, $F0, 1, 0, 3, 1, $B9)
+    %spritemapEntry(0, $02, $08, 1, 0, 3, 1, $CF)
+    %spritemapEntry(0, $1FA, $08, 1, 0, 3, 1, $CE)
+    %spritemapEntry(0, $02, $10, 1, 0, 3, 1, $BF)
+    %spritemapEntry(0, $1FA, $10, 1, 0, 3, 1, $BE)
+    %spritemapEntry(0, $1F2, $08, 1, 0, 3, 1, $CD)
+    %spritemapEntry(0, $1FA, $00, 1, 0, 3, 1, $BD)
+    %spritemapEntry(0, $1F2, $00, 1, 0, 3, 1, $BC)
+    %spritemapEntry(0, $02, $E8, 1, 0, 3, 1, $CB)
+    %spritemapEntry(0, $02, $F0, 1, 0, 3, 1, $BB)
 
 TitleMenuSpritemaps_42_FileCopyArrow_TwoSlotsDown:
-    dw $0016,$01FA                                                       ;82CE5D;
-    db $08                                                               ;82CE61;
-    dw $32BD,$01F2                                                       ;82CE62;
-    db $08                                                               ;82CE66;
-    dw $32BC,$01FA                                                       ;82CE67;
-    db $00                                                               ;82CE6B;
-    dw $32BD,$01F2                                                       ;82CE6C;
-    db $00                                                               ;82CE70;
-    dw $32BC,$01FA                                                       ;82CE71;
-    db $F8                                                               ;82CE75;
-    dw $32BD,$01F2                                                       ;82CE76;
-    db $F8                                                               ;82CE7A;
-    dw $32BC,$01FA                                                       ;82CE7B;
-    db $F0                                                               ;82CE7F;
-    dw $32BD,$01F2                                                       ;82CE80;
-    db $F0                                                               ;82CE84;
-    dw $32BC,$01F2                                                       ;82CE85;
-    db $18                                                               ;82CE89;
-    dw $32B8,$01F2                                                       ;82CE8A;
-    db $10                                                               ;82CE8E;
-    dw $32BC,$01FA                                                       ;82CE8F;
-    db $10                                                               ;82CE93;
-    dw $32BD,$01FA                                                       ;82CE94;
-    db $20                                                               ;82CE98;
-    dw $32C9,$01FA                                                       ;82CE99;
-    db $18                                                               ;82CE9D;
-    dw $32B9,$0002                                                       ;82CE9E;
-    db $E0                                                               ;82CEA2;
-    dw $32CF,$01FA                                                       ;82CEA3;
-    db $E0                                                               ;82CEA7;
-    dw $32CE,$0002                                                       ;82CEA8;
-    db $D8                                                               ;82CEAC;
-    dw $32BF,$01FA                                                       ;82CEAD;
-    db $D8                                                               ;82CEB1;
-    dw $32BE,$01F2                                                       ;82CEB2;
-    db $E0                                                               ;82CEB6;
-    dw $32CD,$01FA                                                       ;82CEB7;
-    db $E8                                                               ;82CEBB;
-    dw $32BD,$01F2                                                       ;82CEBC;
-    db $E8                                                               ;82CEC0;
-    dw $32BC,$0002                                                       ;82CEC1;
-    db $20                                                               ;82CEC5;
-    dw $32CB,$0002                                                       ;82CEC6;
-    db $18                                                               ;82CECA;
-    dw $32BB                                                             ;82CECB;
+    dw $0016                                                             ;82CE5D;
+    %spritemapEntry(0, $1FA, $08, 0, 0, 3, 1, $BD)
+    %spritemapEntry(0, $1F2, $08, 0, 0, 3, 1, $BC)
+    %spritemapEntry(0, $1FA, $00, 0, 0, 3, 1, $BD)
+    %spritemapEntry(0, $1F2, $00, 0, 0, 3, 1, $BC)
+    %spritemapEntry(0, $1FA, $F8, 0, 0, 3, 1, $BD)
+    %spritemapEntry(0, $1F2, $F8, 0, 0, 3, 1, $BC)
+    %spritemapEntry(0, $1FA, $F0, 0, 0, 3, 1, $BD)
+    %spritemapEntry(0, $1F2, $F0, 0, 0, 3, 1, $BC)
+    %spritemapEntry(0, $1F2, $18, 0, 0, 3, 1, $B8)
+    %spritemapEntry(0, $1F2, $10, 0, 0, 3, 1, $BC)
+    %spritemapEntry(0, $1FA, $10, 0, 0, 3, 1, $BD)
+    %spritemapEntry(0, $1FA, $20, 0, 0, 3, 1, $C9)
+    %spritemapEntry(0, $1FA, $18, 0, 0, 3, 1, $B9)
+    %spritemapEntry(0, $02, $E0, 0, 0, 3, 1, $CF)
+    %spritemapEntry(0, $1FA, $E0, 0, 0, 3, 1, $CE)
+    %spritemapEntry(0, $02, $D8, 0, 0, 3, 1, $BF)
+    %spritemapEntry(0, $1FA, $D8, 0, 0, 3, 1, $BE)
+    %spritemapEntry(0, $1F2, $E0, 0, 0, 3, 1, $CD)
+    %spritemapEntry(0, $1FA, $E8, 0, 0, 3, 1, $BD)
+    %spritemapEntry(0, $1F2, $E8, 0, 0, 3, 1, $BC)
+    %spritemapEntry(0, $02, $20, 0, 0, 3, 1, $CB)
+    %spritemapEntry(0, $02, $18, 0, 0, 3, 1, $BB)
 
 TitleMenuSpritemaps_43_FileCopyArrow_TwoSlotsUp:
-    dw $0016,$01FA                                                       ;82CECD;
-    db $F0                                                               ;82CED1;
-    dw $B2BD,$01F2                                                       ;82CED2;
-    db $F0                                                               ;82CED6;
-    dw $B2BC,$01FA                                                       ;82CED7;
-    db $F8                                                               ;82CEDB;
-    dw $B2BD,$01F2                                                       ;82CEDC;
-    db $F8                                                               ;82CEE0;
-    dw $B2BC,$01FA                                                       ;82CEE1;
-    db $00                                                               ;82CEE5;
-    dw $B2BD,$01F2                                                       ;82CEE6;
-    db $00                                                               ;82CEEA;
-    dw $B2BC,$01FA                                                       ;82CEEB;
-    db $08                                                               ;82CEEF;
-    dw $B2BD,$01F2                                                       ;82CEF0;
-    db $08                                                               ;82CEF4;
-    dw $B2BC,$01F2                                                       ;82CEF5;
-    db $E0                                                               ;82CEF9;
-    dw $B2B8,$01F2                                                       ;82CEFA;
-    db $E8                                                               ;82CEFE;
-    dw $B2BC,$01FA                                                       ;82CEFF;
-    db $E8                                                               ;82CF03;
-    dw $B2BD,$01FA                                                       ;82CF04;
-    db $D8                                                               ;82CF08;
-    dw $B2C9,$01FA                                                       ;82CF09;
-    db $E0                                                               ;82CF0D;
-    dw $B2B9,$0002                                                       ;82CF0E;
-    db $18                                                               ;82CF12;
-    dw $B2CF,$01FA                                                       ;82CF13;
-    db $18                                                               ;82CF17;
-    dw $B2CE,$0002                                                       ;82CF18;
-    db $20                                                               ;82CF1C;
-    dw $B2BF,$01FA                                                       ;82CF1D;
-    db $20                                                               ;82CF21;
-    dw $B2BE,$01F2                                                       ;82CF22;
-    db $18                                                               ;82CF26;
-    dw $B2CD,$01FA                                                       ;82CF27;
-    db $10                                                               ;82CF2B;
-    dw $B2BD,$01F2                                                       ;82CF2C;
-    db $10                                                               ;82CF30;
-    dw $B2BC,$0002                                                       ;82CF31;
-    db $D8                                                               ;82CF35;
-    dw $B2CB,$0002                                                       ;82CF36;
-    db $E0                                                               ;82CF3A;
-    dw $B2BB                                                             ;82CF3B;
+    dw $0016                                                             ;82CECD;
+    %spritemapEntry(0, $1FA, $F0, 1, 0, 3, 1, $BD)
+    %spritemapEntry(0, $1F2, $F0, 1, 0, 3, 1, $BC)
+    %spritemapEntry(0, $1FA, $F8, 1, 0, 3, 1, $BD)
+    %spritemapEntry(0, $1F2, $F8, 1, 0, 3, 1, $BC)
+    %spritemapEntry(0, $1FA, $00, 1, 0, 3, 1, $BD)
+    %spritemapEntry(0, $1F2, $00, 1, 0, 3, 1, $BC)
+    %spritemapEntry(0, $1FA, $08, 1, 0, 3, 1, $BD)
+    %spritemapEntry(0, $1F2, $08, 1, 0, 3, 1, $BC)
+    %spritemapEntry(0, $1F2, $E0, 1, 0, 3, 1, $B8)
+    %spritemapEntry(0, $1F2, $E8, 1, 0, 3, 1, $BC)
+    %spritemapEntry(0, $1FA, $E8, 1, 0, 3, 1, $BD)
+    %spritemapEntry(0, $1FA, $D8, 1, 0, 3, 1, $C9)
+    %spritemapEntry(0, $1FA, $E0, 1, 0, 3, 1, $B9)
+    %spritemapEntry(0, $02, $18, 1, 0, 3, 1, $CF)
+    %spritemapEntry(0, $1FA, $18, 1, 0, 3, 1, $CE)
+    %spritemapEntry(0, $02, $20, 1, 0, 3, 1, $BF)
+    %spritemapEntry(0, $1FA, $20, 1, 0, 3, 1, $BE)
+    %spritemapEntry(0, $1F2, $18, 1, 0, 3, 1, $CD)
+    %spritemapEntry(0, $1FA, $10, 1, 0, 3, 1, $BD)
+    %spritemapEntry(0, $1F2, $10, 1, 0, 3, 1, $BC)
+    %spritemapEntry(0, $02, $D8, 1, 0, 3, 1, $CB)
+    %spritemapEntry(0, $02, $E0, 1, 0, 3, 1, $BB)
 
 TitleMenuSpritemaps_44_82CF3D:
-    dw $0004,$01FF                                                       ;82CF3D;
-    db $FF                                                               ;82CF41;
-    dw $F0B3,$01F8                                                       ;82CF42;
-    db $FF                                                               ;82CF46;
-    dw $B0B3,$01FF                                                       ;82CF47;
-    db $F8                                                               ;82CF4B;
-    dw $70B3,$01F8                                                       ;82CF4C;
-    db $F8                                                               ;82CF50;
-    dw $30B3                                                             ;82CF51;
+    dw $0004                                                             ;82CF3D;
+    %spritemapEntry(0, $1FF, $FF, 1, 1, 3, 0, $B3)
+    %spritemapEntry(0, $1F8, $FF, 1, 0, 3, 0, $B3)
+    %spritemapEntry(0, $1FF, $F8, 0, 1, 3, 0, $B3)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 0, $B3)
 
 TitleMenuSpritemaps_45:
-    dw $0002,$C3F4                                                       ;82CF53;
-    db $F8                                                               ;82CF57;
-    dw $3095,$C3FC                                                       ;82CF58;
-    db $F8                                                               ;82CF5C;
-    dw $3096                                                             ;82CF5D;
+    dw $0002                                                             ;82CF53;
+    dw $C3F4 : db $F8 : dw $3095
+    dw $C3FC : db $F8 : dw $3096
 
 TitleMenuSpritemaps_46:
-    dw $0001,$C3F8                                                       ;82CF5F;
-    db $F8                                                               ;82CF63;
-    dw $3091                                                             ;82CF64;
+    dw $0001                                                             ;82CF5F;
+    dw $C3F8 : db $F8 : dw $3091
 
 TitleMenuSpritemaps_47:
-    dw $0004,$0000                                                       ;82CF66;
-    db $00                                                               ;82CF6A;
-    dw $70A0,$0000                                                       ;82CF6B;
-    db $F8                                                               ;82CF6F;
-    dw $7090,$01F8                                                       ;82CF70;
-    db $00                                                               ;82CF74;
-    dw $30A0,$01F8                                                       ;82CF75;
-    db $F8                                                               ;82CF79;
-    dw $3090                                                             ;82CF7A;
+    dw $0004                                                             ;82CF66;
+    %spritemapEntry(0, $00, $00, 0, 1, 3, 0, $A0)
+    %spritemapEntry(0, $00, $F8, 0, 1, 3, 0, $90)
+    %spritemapEntry(0, $1F8, $00, 0, 0, 3, 0, $A0)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 0, $90)
 
 TitleMenuSpritemaps_5F_SamusPositionIndicator_0:
-    dw $0004,$0004                                                       ;82CF7C;
-    db $04                                                               ;82CF80;
-    dw $EEAF,$01FC                                                       ;82CF81;
-    db $04                                                               ;82CF85;
-    dw $AEAF,$0004                                                       ;82CF86;
-    db $FC                                                               ;82CF8A;
-    dw $6EAF,$01FC                                                       ;82CF8B;
-    db $FC                                                               ;82CF8F;
-    dw $2EAF                                                             ;82CF90;
+    dw $0004                                                             ;82CF7C;
+    %spritemapEntry(0, $04, $04, 1, 1, 2, 7, $AF)
+    %spritemapEntry(0, $1FC, $04, 1, 0, 2, 7, $AF)
+    %spritemapEntry(0, $04, $FC, 0, 1, 2, 7, $AF)
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 7, $AF)
 
 TitleMenuSpritemaps_5F_SamusPositionIndicator_1:
-    dw $0004,$0005                                                       ;82CF92;
-    db $05                                                               ;82CF96;
-    dw $EEAF,$01FB                                                       ;82CF97;
-    db $05                                                               ;82CF9B;
-    dw $AEAF,$0005                                                       ;82CF9C;
-    db $FB                                                               ;82CFA0;
-    dw $6EAF,$01FB                                                       ;82CFA1;
-    db $FB                                                               ;82CFA5;
-    dw $2EAF                                                             ;82CFA6;
+    dw $0004                                                             ;82CF92;
+    %spritemapEntry(0, $05, $05, 1, 1, 2, 7, $AF)
+    %spritemapEntry(0, $1FB, $05, 1, 0, 2, 7, $AF)
+    %spritemapEntry(0, $05, $FB, 0, 1, 2, 7, $AF)
+    %spritemapEntry(0, $1FB, $FB, 0, 0, 2, 7, $AF)
 
 TitleMenuSpritemaps_5F_SamusPositionIndicator_2:
-    dw $0004,$0006                                                       ;82CFA8;
-    db $06                                                               ;82CFAC;
-    dw $EEAF,$01FA                                                       ;82CFAD;
-    db $06                                                               ;82CFB1;
-    dw $AEAF,$0006                                                       ;82CFB2;
-    db $FA                                                               ;82CFB6;
-    dw $6EAF,$01FA                                                       ;82CFB7;
-    db $FA                                                               ;82CFBB;
-    dw $2EAF                                                             ;82CFBC;
+    dw $0004                                                             ;82CFA8;
+    %spritemapEntry(0, $06, $06, 1, 1, 2, 7, $AF)
+    %spritemapEntry(0, $1FA, $06, 1, 0, 2, 7, $AF)
+    %spritemapEntry(0, $06, $FA, 0, 1, 2, 7, $AF)
+    %spritemapEntry(0, $1FA, $FA, 0, 0, 2, 7, $AF)
 
 TitleMenuSpritemaps_62_BossCrossOutIcon:
-    dw $0004,$0003                                                       ;82CFBE;
-    db $04                                                               ;82CFC2;
-    dw $EE9F,$0003                                                       ;82CFC3;
-    db $FC                                                               ;82CFC7;
-    dw $6E9F,$01FC                                                       ;82CFC8;
-    db $04                                                               ;82CFCC;
-    dw $AE9F,$01FC                                                       ;82CFCD;
-    db $FC                                                               ;82CFD1;
-    dw $2E9F                                                             ;82CFD2;
+    dw $0004                                                             ;82CFBE;
+    %spritemapEntry(0, $03, $04, 1, 1, 2, 7, $9F)
+    %spritemapEntry(0, $03, $FC, 0, 1, 2, 7, $9F)
+    %spritemapEntry(0, $1FC, $04, 1, 0, 2, 7, $9F)
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 7, $9F)
 
 TitleMenuSpritemaps_63_GunshipIcon:
-    dw $0002,$0004                                                       ;82CFD4;
-    db $FE                                                               ;82CFD8;
-    dw $6E8F,$01FC                                                       ;82CFD9;
-    db $FE                                                               ;82CFDD;
-    dw $2E8F                                                             ;82CFDE;
+    dw $0002                                                             ;82CFD4;
+    %spritemapEntry(0, $04, $FE, 0, 1, 2, 7, $8F)
+    %spritemapEntry(0, $1FC, $FE, 0, 0, 2, 7, $8F)
 
 TitleMenuSpritemaps_64_GameOverBabyMetroidContainer:
-    dw $0004,$0000                                                       ;82CFE0;
-    db $08                                                               ;82CFE4;
-    dw $FA9A,$01F8                                                       ;82CFE5;
-    db $08                                                               ;82CFE9;
-    dw $BA9A,$0000                                                       ;82CFEA;
-    db $F0                                                               ;82CFEE;
-    dw $7A9A,$01F8                                                       ;82CFEF;
-    db $F0                                                               ;82CFF3;
-    dw $3A9A                                                             ;82CFF4;
+    dw $0004                                                             ;82CFE0;
+    %spritemapEntry(0, $00, $08, 1, 1, 3, 5, $9A)
+    %spritemapEntry(0, $1F8, $08, 1, 0, 3, 5, $9A)
+    %spritemapEntry(0, $00, $F0, 0, 1, 3, 5, $9A)
+    %spritemapEntry(0, $1F8, $F0, 0, 0, 3, 5, $9A)
 
 TitleMenuSpritemaps_65_GameOverBabyMetroid_0:
-    dw $0001,$C3F8                                                       ;82CFF6;
-    db $F8                                                               ;82CFFA;
-    dw $3890                                                             ;82CFFB;
+    dw $0001                                                             ;82CFF6;
+    dw $C3F8 : db $F8 : dw $3890
 
 TitleMenuSpritemaps_66_GameOverBabyMetroid_1:
-    dw $0001,$C3F8                                                       ;82CFFD;
-    db $F8                                                               ;82D001;
-    dw $3892                                                             ;82D002;
+    dw $0001                                                             ;82CFFD;
+    dw $C3F8 : db $F8 : dw $3892
 
 TitleMenuSpritemaps_67_GameOverBabyMetroid_2:
-    dw $0001,$C3F8                                                       ;82D004;
-    db $F8                                                               ;82D008;
-    dw $389B                                                             ;82D009;
+    dw $0001                                                             ;82D004;
+    dw $C3F8 : db $F8 : dw $389B
 
 TitleMenuSpritemaps_48_BorderAround_SAMUS_DATA:
-    dw $0020,$01C8                                                       ;82D00B;
-    db $00                                                               ;82D00F;
-    dw $3EED,$01C8                                                       ;82D010;
-    db $F8                                                               ;82D014;
-    dw $3EED,$0030                                                       ;82D015;
-    db $00                                                               ;82D019;
-    dw $3EED,$0030                                                       ;82D01A;
-    db $F8                                                               ;82D01E;
-    dw $3EED,$0030                                                       ;82D01F;
-    db $08                                                               ;82D023;
-    dw $3EFD,$01C8                                                       ;82D024;
-    db $08                                                               ;82D028;
-    dw $3EFC,$0030                                                       ;82D029;
-    db $F0                                                               ;82D02D;
-    dw $3EFB,$01C8                                                       ;82D02E;
-    db $F0                                                               ;82D032;
-    dw $3EF9,$01F8                                                       ;82D033;
+    dw $0020                                                             ;82D00B;
+    %spritemapEntry(0, $1C8, $00, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $1C8, $F8, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $30, $00, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $30, $F8, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $30, $08, 0, 0, 3, 7, $FD)
+    %spritemapEntry(0, $1C8, $08, 0, 0, 3, 7, $FC)
+    %spritemapEntry(0, $30, $F0, 0, 0, 3, 7, $FB)
+    %spritemapEntry(0, $1C8, $F0, 0, 0, 3, 7, $F9)
+    dw $01F8                                                       ;82D033;
     db $08                                                               ;82D037;
     dw $3EFA,$01F0                                                       ;82D038;
     db $08                                                               ;82D03C;
