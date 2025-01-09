@@ -9183,522 +9183,271 @@ TitleMenuSpritemaps_48_BorderAround_SAMUS_DATA:
     %spritemapEntry(0, $1C8, $08, 0, 0, 3, 7, $FC)
     %spritemapEntry(0, $30, $F0, 0, 0, 3, 7, $FB)
     %spritemapEntry(0, $1C8, $F0, 0, 0, 3, 7, $F9)
-    dw $01F8                                                       ;82D033;
-    db $08                                                               ;82D037;
-    dw $3EFA,$01F0                                                       ;82D038;
-    db $08                                                               ;82D03C;
-    dw $3EFA,$01E8                                                       ;82D03D;
-    db $08                                                               ;82D041;
-    dw $3EFA,$01E0                                                       ;82D042;
-    db $08                                                               ;82D046;
-    dw $3EFA,$01D8                                                       ;82D047;
-    db $08                                                               ;82D04B;
-    dw $3EFA,$01D0                                                       ;82D04C;
-    db $08                                                               ;82D050;
-    dw $3EFA,$0028                                                       ;82D051;
-    db $08                                                               ;82D055;
-    dw $3EFA,$0020                                                       ;82D056;
-    db $08                                                               ;82D05A;
-    dw $3EFA,$0018                                                       ;82D05B;
-    db $08                                                               ;82D05F;
-    dw $3EFA,$0010                                                       ;82D060;
-    db $08                                                               ;82D064;
-    dw $3EFA,$0008                                                       ;82D065;
-    db $08                                                               ;82D069;
-    dw $3EFA,$0000                                                       ;82D06A;
-    db $08                                                               ;82D06E;
-    dw $3EFA,$0028                                                       ;82D06F;
-    db $F0                                                               ;82D073;
-    dw $3EFA,$0020                                                       ;82D074;
-    db $F0                                                               ;82D078;
-    dw $3EFA,$0018                                                       ;82D079;
-    db $F0                                                               ;82D07D;
-    dw $3EFA,$0010                                                       ;82D07E;
-    db $F0                                                               ;82D082;
-    dw $3EFA,$0008                                                       ;82D083;
-    db $F0                                                               ;82D087;
-    dw $3EFA,$0000                                                       ;82D088;
-    db $F0                                                               ;82D08C;
-    dw $3EFA,$01F8                                                       ;82D08D;
-    db $F0                                                               ;82D091;
-    dw $3EFA,$01F0                                                       ;82D092;
-    db $F0                                                               ;82D096;
-    dw $3EFA,$01E8                                                       ;82D097;
-    db $F0                                                               ;82D09B;
-    dw $3EFA,$01E0                                                       ;82D09C;
-    db $F0                                                               ;82D0A0;
-    dw $3EFA,$01D8                                                       ;82D0A1;
-    db $F0                                                               ;82D0A5;
-    dw $3EFA,$01D0                                                       ;82D0A6;
-    db $F0                                                               ;82D0AA;
-    dw $3EFA                                                             ;82D0AB;
+    %spritemapEntry(0, $1F8, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F0, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1E8, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1E0, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1D8, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1D0, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $28, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $20, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $18, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $10, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $08, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $00, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $28, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $20, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $18, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $10, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $08, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $00, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F8, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F0, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1E8, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1E0, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1D8, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1D0, $F0, 0, 0, 3, 7, $FA)
 
 TitleMenuSpritemaps_49_BorderAround_DATA_COPY_MODE:
-    dw $0028,$0000                                                       ;82D0AD;
-    db $08                                                               ;82D0B1;
-    dw $3EFA,$0008                                                       ;82D0B2;
-    db $08                                                               ;82D0B6;
-    dw $3EFA,$01F0                                                       ;82D0B7;
-    db $08                                                               ;82D0BB;
-    dw $3EFA,$01F8                                                       ;82D0BC;
-    db $08                                                               ;82D0C0;
-    dw $3EFA,$0000                                                       ;82D0C1;
-    db $F0                                                               ;82D0C5;
-    dw $3EFA,$0008                                                       ;82D0C6;
-    db $F0                                                               ;82D0CA;
-    dw $3EFA,$01F0                                                       ;82D0CB;
-    db $F0                                                               ;82D0CF;
-    dw $3EFA,$01F8                                                       ;82D0D0;
-    db $F0                                                               ;82D0D4;
-    dw $3EFA,$01B8                                                       ;82D0D5;
-    db $00                                                               ;82D0D9;
-    dw $3EED,$01B8                                                       ;82D0DA;
-    db $F8                                                               ;82D0DE;
-    dw $3EED,$0040                                                       ;82D0DF;
-    db $00                                                               ;82D0E3;
-    dw $3EED,$0040                                                       ;82D0E4;
-    db $F8                                                               ;82D0E8;
-    dw $3EED,$0040                                                       ;82D0E9;
-    db $08                                                               ;82D0ED;
-    dw $3EFD,$01B8                                                       ;82D0EE;
-    db $08                                                               ;82D0F2;
-    dw $3EFC,$0040                                                       ;82D0F3;
-    db $F0                                                               ;82D0F7;
-    dw $3EFB,$01B8                                                       ;82D0F8;
-    db $F0                                                               ;82D0FC;
-    dw $3EF9,$01E8                                                       ;82D0FD;
-    db $08                                                               ;82D101;
-    dw $3EFA,$01E0                                                       ;82D102;
-    db $08                                                               ;82D106;
-    dw $3EFA,$01D8                                                       ;82D107;
-    db $08                                                               ;82D10B;
-    dw $3EFA,$01D0                                                       ;82D10C;
-    db $08                                                               ;82D110;
-    dw $3EFA,$01C8                                                       ;82D111;
-    db $08                                                               ;82D115;
-    dw $3EFA,$01C0                                                       ;82D116;
-    db $08                                                               ;82D11A;
-    dw $3EFA,$0038                                                       ;82D11B;
-    db $08                                                               ;82D11F;
-    dw $3EFA,$0030                                                       ;82D120;
-    db $08                                                               ;82D124;
-    dw $3EFA,$0028                                                       ;82D125;
-    db $08                                                               ;82D129;
-    dw $3EFA,$0020                                                       ;82D12A;
-    db $08                                                               ;82D12E;
-    dw $3EFA,$0018                                                       ;82D12F;
-    db $08                                                               ;82D133;
-    dw $3EFA,$0010                                                       ;82D134;
-    db $08                                                               ;82D138;
-    dw $3EFA,$0038                                                       ;82D139;
-    db $F0                                                               ;82D13D;
-    dw $3EFA,$0030                                                       ;82D13E;
-    db $F0                                                               ;82D142;
-    dw $3EFA,$0028                                                       ;82D143;
-    db $F0                                                               ;82D147;
-    dw $3EFA,$0020                                                       ;82D148;
-    db $F0                                                               ;82D14C;
-    dw $3EFA,$0018                                                       ;82D14D;
-    db $F0                                                               ;82D151;
-    dw $3EFA,$0010                                                       ;82D152;
-    db $F0                                                               ;82D156;
-    dw $3EFA,$01E8                                                       ;82D157;
-    db $F0                                                               ;82D15B;
-    dw $3EFA,$01E0                                                       ;82D15C;
-    db $F0                                                               ;82D160;
-    dw $3EFA,$01D8                                                       ;82D161;
-    db $F0                                                               ;82D165;
-    dw $3EFA,$01D0                                                       ;82D166;
-    db $F0                                                               ;82D16A;
-    dw $3EFA,$01C8                                                       ;82D16B;
-    db $F0                                                               ;82D16F;
-    dw $3EFA,$01C0                                                       ;82D170;
-    db $F0                                                               ;82D174;
-    dw $3EFA                                                             ;82D175;
+    dw $0028                                                             ;82D0AD;
+    %spritemapEntry(0, $00, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $08, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F0, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F8, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $00, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $08, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F0, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F8, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1B8, $00, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $1B8, $F8, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $40, $00, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $40, $F8, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $40, $08, 0, 0, 3, 7, $FD)
+    %spritemapEntry(0, $1B8, $08, 0, 0, 3, 7, $FC)
+    %spritemapEntry(0, $40, $F0, 0, 0, 3, 7, $FB)
+    %spritemapEntry(0, $1B8, $F0, 0, 0, 3, 7, $F9)
+    %spritemapEntry(0, $1E8, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1E0, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1D8, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1D0, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1C8, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1C0, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $38, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $30, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $28, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $20, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $18, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $10, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $38, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $30, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $28, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $20, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $18, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $10, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1E8, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1E0, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1D8, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1D0, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1C8, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1C0, $F0, 0, 0, 3, 7, $FA)
 
 TitleMenuSpritemaps_4A_BorderAround_DATA_CLEAR_MODE:
-    dw $002A,$01EC                                                       ;82D177;
-    db $F0                                                               ;82D17B;
-    dw $3EFA,$01EC                                                       ;82D17C;
-    db $08                                                               ;82D180;
-    dw $3EFA,$0004                                                       ;82D181;
-    db $08                                                               ;82D185;
-    dw $3EFA,$000C                                                       ;82D186;
-    db $08                                                               ;82D18A;
-    dw $3EFA,$01F4                                                       ;82D18B;
-    db $08                                                               ;82D18F;
-    dw $3EFA,$01FC                                                       ;82D190;
-    db $08                                                               ;82D194;
-    dw $3EFA,$0004                                                       ;82D195;
-    db $F0                                                               ;82D199;
-    dw $3EFA,$000C                                                       ;82D19A;
-    db $F0                                                               ;82D19E;
-    dw $3EFA,$01F4                                                       ;82D19F;
-    db $F0                                                               ;82D1A3;
-    dw $3EFA,$01FC                                                       ;82D1A4;
-    db $F0                                                               ;82D1A8;
-    dw $3EFA,$01B4                                                       ;82D1A9;
-    db $00                                                               ;82D1AD;
-    dw $3EED,$01B4                                                       ;82D1AE;
-    db $F8                                                               ;82D1B2;
-    dw $3EED,$0044                                                       ;82D1B3;
-    db $00                                                               ;82D1B7;
-    dw $3EED,$0044                                                       ;82D1B8;
-    db $F8                                                               ;82D1BC;
-    dw $3EED,$0044                                                       ;82D1BD;
-    db $08                                                               ;82D1C1;
-    dw $3EFD,$01B4                                                       ;82D1C2;
-    db $08                                                               ;82D1C6;
-    dw $3EFC,$0044                                                       ;82D1C7;
-    db $F0                                                               ;82D1CB;
-    dw $3EFB,$01B4                                                       ;82D1CC;
-    db $F0                                                               ;82D1D0;
-    dw $3EF9,$01E4                                                       ;82D1D1;
-    db $08                                                               ;82D1D5;
-    dw $3EFA,$01DC                                                       ;82D1D6;
-    db $08                                                               ;82D1DA;
-    dw $3EFA,$01D4                                                       ;82D1DB;
-    db $08                                                               ;82D1DF;
-    dw $3EFA,$01CC                                                       ;82D1E0;
-    db $08                                                               ;82D1E4;
-    dw $3EFA,$01C4                                                       ;82D1E5;
-    db $08                                                               ;82D1E9;
-    dw $3EFA,$01BC                                                       ;82D1EA;
-    db $08                                                               ;82D1EE;
-    dw $3EFA,$003C                                                       ;82D1EF;
-    db $08                                                               ;82D1F3;
-    dw $3EFA,$0034                                                       ;82D1F4;
-    db $08                                                               ;82D1F8;
-    dw $3EFA,$002C                                                       ;82D1F9;
-    db $08                                                               ;82D1FD;
-    dw $3EFA,$0024                                                       ;82D1FE;
-    db $08                                                               ;82D202;
-    dw $3EFA,$001C                                                       ;82D203;
-    db $08                                                               ;82D207;
-    dw $3EFA,$0014                                                       ;82D208;
-    db $08                                                               ;82D20C;
-    dw $3EFA,$003C                                                       ;82D20D;
-    db $F0                                                               ;82D211;
-    dw $3EFA,$0034                                                       ;82D212;
-    db $F0                                                               ;82D216;
-    dw $3EFA,$002C                                                       ;82D217;
-    db $F0                                                               ;82D21B;
-    dw $3EFA,$0024                                                       ;82D21C;
-    db $F0                                                               ;82D220;
-    dw $3EFA,$001C                                                       ;82D221;
-    db $F0                                                               ;82D225;
-    dw $3EFA,$0014                                                       ;82D226;
-    db $F0                                                               ;82D22A;
-    dw $3EFA,$01E4                                                       ;82D22B;
-    db $F0                                                               ;82D22F;
-    dw $3EFA,$01DC                                                       ;82D230;
-    db $F0                                                               ;82D234;
-    dw $3EFA,$01D4                                                       ;82D235;
-    db $F0                                                               ;82D239;
-    dw $3EFA,$01CC                                                       ;82D23A;
-    db $F0                                                               ;82D23E;
-    dw $3EFA,$01C4                                                       ;82D23F;
-    db $F0                                                               ;82D243;
-    dw $3EFA,$01BC                                                       ;82D244;
-    db $F0                                                               ;82D248;
-    dw $3EFA                                                             ;82D249;
+    dw $002A                                                             ;82D177;
+    %spritemapEntry(0, $1EC, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1EC, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $04, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $0C, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F4, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1FC, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $04, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $0C, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F4, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1FC, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1B4, $00, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $1B4, $F8, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $44, $00, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $44, $F8, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $44, $08, 0, 0, 3, 7, $FD)
+    %spritemapEntry(0, $1B4, $08, 0, 0, 3, 7, $FC)
+    %spritemapEntry(0, $44, $F0, 0, 0, 3, 7, $FB)
+    %spritemapEntry(0, $1B4, $F0, 0, 0, 3, 7, $F9)
+    %spritemapEntry(0, $1E4, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1DC, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1D4, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1CC, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1C4, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1BC, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $3C, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $34, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $2C, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $24, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1C, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $14, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $3C, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $34, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $2C, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $24, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1C, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $14, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1E4, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1DC, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1D4, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1CC, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1C4, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1BC, $F0, 0, 0, 3, 7, $FA)
 
 TitleMenuSpritemaps_4B_BorderAround_OPTIONS_MODE:
-    dw $0022,$01FC                                                       ;82D24B;
-    db $08                                                               ;82D24F;
-    dw $3EFA,$01FC                                                       ;82D250;
-    db $F0                                                               ;82D254;
-    dw $3EFA,$01F4                                                       ;82D255;
-    db $08                                                               ;82D259;
-    dw $3EFA,$01F4                                                       ;82D25A;
-    db $F0                                                               ;82D25E;
-    dw $3EFA,$01C4                                                       ;82D25F;
-    db $00                                                               ;82D263;
-    dw $3EED,$01C4                                                       ;82D264;
-    db $F8                                                               ;82D268;
-    dw $3EED,$0034                                                       ;82D269;
-    db $00                                                               ;82D26D;
-    dw $3EED,$0034                                                       ;82D26E;
-    db $F8                                                               ;82D272;
-    dw $3EED,$0034                                                       ;82D273;
-    db $08                                                               ;82D277;
-    dw $3EFD,$01C4                                                       ;82D278;
-    db $08                                                               ;82D27C;
-    dw $3EFC,$0034                                                       ;82D27D;
-    db $F0                                                               ;82D281;
-    dw $3EFB,$01C4                                                       ;82D282;
-    db $F0                                                               ;82D286;
-    dw $3EF9,$01EC                                                       ;82D287;
-    db $08                                                               ;82D28B;
-    dw $3EFA,$01E4                                                       ;82D28C;
-    db $08                                                               ;82D290;
-    dw $3EFA,$01DC                                                       ;82D291;
-    db $08                                                               ;82D295;
-    dw $3EFA,$01D4                                                       ;82D296;
-    db $08                                                               ;82D29A;
-    dw $3EFA,$01CC                                                       ;82D29B;
-    db $08                                                               ;82D29F;
-    dw $3EFA,$002C                                                       ;82D2A0;
-    db $08                                                               ;82D2A4;
-    dw $3EFA,$0024                                                       ;82D2A5;
-    db $08                                                               ;82D2A9;
-    dw $3EFA,$001C                                                       ;82D2AA;
-    db $08                                                               ;82D2AE;
-    dw $3EFA,$0014                                                       ;82D2AF;
-    db $08                                                               ;82D2B3;
-    dw $3EFA,$000C                                                       ;82D2B4;
-    db $08                                                               ;82D2B8;
-    dw $3EFA,$0004                                                       ;82D2B9;
-    db $08                                                               ;82D2BD;
-    dw $3EFA,$002C                                                       ;82D2BE;
-    db $F0                                                               ;82D2C2;
-    dw $3EFA,$0024                                                       ;82D2C3;
-    db $F0                                                               ;82D2C7;
-    dw $3EFA,$001C                                                       ;82D2C8;
-    db $F0                                                               ;82D2CC;
-    dw $3EFA,$0014                                                       ;82D2CD;
-    db $F0                                                               ;82D2D1;
-    dw $3EFA,$000C                                                       ;82D2D2;
-    db $F0                                                               ;82D2D6;
-    dw $3EFA,$0004                                                       ;82D2D7;
-    db $F0                                                               ;82D2DB;
-    dw $3EFA,$01EC                                                       ;82D2DC;
-    db $F0                                                               ;82D2E0;
-    dw $3EFA,$01E4                                                       ;82D2E1;
-    db $F0                                                               ;82D2E5;
-    dw $3EFA,$01DC                                                       ;82D2E6;
-    db $F0                                                               ;82D2EA;
-    dw $3EFA,$01D4                                                       ;82D2EB;
-    db $F0                                                               ;82D2EF;
-    dw $3EFA,$01CC                                                       ;82D2F0;
-    db $F0                                                               ;82D2F4;
-    dw $3EFA                                                             ;82D2F5;
+    dw $0022                                                             ;82D24B;
+    %spritemapEntry(0, $1FC, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1FC, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F4, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F4, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1C4, $00, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $1C4, $F8, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $34, $00, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $34, $F8, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $34, $08, 0, 0, 3, 7, $FD)
+    %spritemapEntry(0, $1C4, $08, 0, 0, 3, 7, $FC)
+    %spritemapEntry(0, $34, $F0, 0, 0, 3, 7, $FB)
+    %spritemapEntry(0, $1C4, $F0, 0, 0, 3, 7, $F9)
+    %spritemapEntry(0, $1EC, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1E4, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1DC, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1D4, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1CC, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $2C, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $24, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1C, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $14, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $0C, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $04, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $2C, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $24, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1C, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $14, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $0C, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $04, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1EC, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1E4, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1DC, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1D4, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1CC, $F0, 0, 0, 3, 7, $FA)
 
 TitleMenuSpritemaps_49_BorderAround_CONTROLLER_SETTING_MODE:
-    dw $003A,$01DC                                                       ;82D2F7;
-    db $08                                                               ;82D2FB;
-    dw $3EFA,$01E4                                                       ;82D2FC;
-    db $08                                                               ;82D300;
-    dw $3EFA,$0014                                                       ;82D301;
-    db $08                                                               ;82D305;
-    dw $3EFA,$000C                                                       ;82D306;
-    db $08                                                               ;82D30A;
-    dw $3EFA,$0004                                                       ;82D30B;
-    db $08                                                               ;82D30F;
-    dw $3EFA,$01EC                                                       ;82D310;
-    db $08                                                               ;82D314;
-    dw $3EFA,$01FC                                                       ;82D315;
-    db $08                                                               ;82D319;
-    dw $3EFA,$01F4                                                       ;82D31A;
-    db $08                                                               ;82D31E;
-    dw $3EFA,$01DC                                                       ;82D31F;
-    db $F0                                                               ;82D323;
-    dw $3EFA,$01E4                                                       ;82D324;
-    db $F0                                                               ;82D328;
-    dw $3EFA,$0014                                                       ;82D329;
-    db $F0                                                               ;82D32D;
-    dw $3EFA,$000C                                                       ;82D32E;
-    db $F0                                                               ;82D332;
-    dw $3EFA,$0004                                                       ;82D333;
-    db $F0                                                               ;82D337;
-    dw $3EFA,$01EC                                                       ;82D338;
-    db $F0                                                               ;82D33C;
-    dw $3EFA,$01FC                                                       ;82D33D;
-    db $F0                                                               ;82D341;
-    dw $3EFA,$01F4                                                       ;82D342;
-    db $F0                                                               ;82D346;
-    dw $3EFA,$01CC                                                       ;82D347;
-    db $F0                                                               ;82D34B;
-    dw $3EFA,$01CC                                                       ;82D34C;
-    db $08                                                               ;82D350;
-    dw $3EFA,$0024                                                       ;82D351;
-    db $08                                                               ;82D355;
-    dw $3EFA,$002C                                                       ;82D356;
-    db $08                                                               ;82D35A;
-    dw $3EFA,$01D4                                                       ;82D35B;
-    db $08                                                               ;82D35F;
-    dw $3EFA,$001C                                                       ;82D360;
-    db $08                                                               ;82D364;
-    dw $3EFA,$0024                                                       ;82D365;
-    db $F0                                                               ;82D369;
-    dw $3EFA,$002C                                                       ;82D36A;
-    db $F0                                                               ;82D36E;
-    dw $3EFA,$01D4                                                       ;82D36F;
-    db $F0                                                               ;82D373;
-    dw $3EFA,$001C                                                       ;82D374;
-    db $F0                                                               ;82D378;
-    dw $3EFA,$0194                                                       ;82D379;
-    db $00                                                               ;82D37D;
-    dw $3EED,$0194                                                       ;82D37E;
-    db $F8                                                               ;82D382;
-    dw $3EED,$0064                                                       ;82D383;
-    db $00                                                               ;82D387;
-    dw $3EED,$0064                                                       ;82D388;
-    db $F8                                                               ;82D38C;
-    dw $3EED,$0064                                                       ;82D38D;
-    db $08                                                               ;82D391;
-    dw $3EFD,$0194                                                       ;82D392;
-    db $08                                                               ;82D396;
-    dw $3EFC,$0064                                                       ;82D397;
-    db $F0                                                               ;82D39B;
-    dw $3EFB,$0194                                                       ;82D39C;
-    db $F0                                                               ;82D3A0;
-    dw $3EF9,$01C4                                                       ;82D3A1;
-    db $08                                                               ;82D3A5;
-    dw $3EFA,$01BC                                                       ;82D3A6;
-    db $08                                                               ;82D3AA;
-    dw $3EFA,$01B4                                                       ;82D3AB;
-    db $08                                                               ;82D3AF;
-    dw $3EFA,$01AC                                                       ;82D3B0;
-    db $08                                                               ;82D3B4;
-    dw $3EFA,$01A4                                                       ;82D3B5;
-    db $08                                                               ;82D3B9;
-    dw $3EFA,$019C                                                       ;82D3BA;
-    db $08                                                               ;82D3BE;
-    dw $3EFA,$005C                                                       ;82D3BF;
-    db $08                                                               ;82D3C3;
-    dw $3EFA,$0054                                                       ;82D3C4;
-    db $08                                                               ;82D3C8;
-    dw $3EFA,$004C                                                       ;82D3C9;
-    db $08                                                               ;82D3CD;
-    dw $3EFA,$0044                                                       ;82D3CE;
-    db $08                                                               ;82D3D2;
-    dw $3EFA,$003C                                                       ;82D3D3;
-    db $08                                                               ;82D3D7;
-    dw $3EFA,$0034                                                       ;82D3D8;
-    db $08                                                               ;82D3DC;
-    dw $3EFA,$005C                                                       ;82D3DD;
-    db $F0                                                               ;82D3E1;
-    dw $3EFA,$0054                                                       ;82D3E2;
-    db $F0                                                               ;82D3E6;
-    dw $3EFA,$004C                                                       ;82D3E7;
-    db $F0                                                               ;82D3EB;
-    dw $3EFA,$0044                                                       ;82D3EC;
-    db $F0                                                               ;82D3F0;
-    dw $3EFA,$003C                                                       ;82D3F1;
-    db $F0                                                               ;82D3F5;
-    dw $3EFA,$0034                                                       ;82D3F6;
-    db $F0                                                               ;82D3FA;
-    dw $3EFA,$01C4                                                       ;82D3FB;
-    db $F0                                                               ;82D3FF;
-    dw $3EFA,$01BC                                                       ;82D400;
-    db $F0                                                               ;82D404;
-    dw $3EFA,$01B4                                                       ;82D405;
-    db $F0                                                               ;82D409;
-    dw $3EFA,$01AC                                                       ;82D40A;
-    db $F0                                                               ;82D40E;
-    dw $3EFA,$01A4                                                       ;82D40F;
-    db $F0                                                               ;82D413;
-    dw $3EFA,$019C                                                       ;82D414;
-    db $F0                                                               ;82D418;
-    dw $3EFA                                                             ;82D419;
+    dw $003A                                                             ;82D2F7;
+    %spritemapEntry(0, $1DC, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1E4, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $14, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $0C, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $04, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1EC, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1FC, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F4, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1DC, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1E4, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $14, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $0C, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $04, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1EC, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1FC, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F4, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1CC, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1CC, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $24, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $2C, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1D4, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1C, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $24, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $2C, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1D4, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1C, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $194, $00, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $194, $F8, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $64, $00, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $64, $F8, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $64, $08, 0, 0, 3, 7, $FD)
+    %spritemapEntry(0, $194, $08, 0, 0, 3, 7, $FC)
+    %spritemapEntry(0, $64, $F0, 0, 0, 3, 7, $FB)
+    %spritemapEntry(0, $194, $F0, 0, 0, 3, 7, $F9)
+    %spritemapEntry(0, $1C4, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1BC, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1B4, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1AC, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1A4, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $19C, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $5C, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $54, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $4C, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $44, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $3C, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $34, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $5C, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $54, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $4C, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $44, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $3C, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $34, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1C4, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1BC, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1B4, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1AC, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1A4, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $19C, $F0, 0, 0, 3, 7, $FA)
 
 TitleMenuSpritemaps_4D_BorderAround_SPECIAL_SETTING_MODE:
-    dw $0034,$01E8                                                       ;82D41B;
-    db $08                                                               ;82D41F;
-    dw $3EFA,$01F0                                                       ;82D420;
-    db $08                                                               ;82D424;
-    dw $3EFA,$0008                                                       ;82D425;
-    db $08                                                               ;82D429;
-    dw $3EFA,$0000                                                       ;82D42A;
-    db $08                                                               ;82D42E;
-    dw $3EFA,$01F8                                                       ;82D42F;
-    db $08                                                               ;82D433;
-    dw $3EFA,$01E8                                                       ;82D434;
-    db $F0                                                               ;82D438;
-    dw $3EFA,$01F0                                                       ;82D439;
-    db $F0                                                               ;82D43D;
-    dw $3EFA,$0008                                                       ;82D43E;
-    db $F0                                                               ;82D442;
-    dw $3EFA,$0000                                                       ;82D443;
-    db $F0                                                               ;82D447;
-    dw $3EFA,$01F8                                                       ;82D448;
-    db $F0                                                               ;82D44C;
-    dw $3EFA,$01D8                                                       ;82D44D;
-    db $F0                                                               ;82D451;
-    dw $3EFA,$01D8                                                       ;82D452;
-    db $08                                                               ;82D456;
-    dw $3EFA,$0018                                                       ;82D457;
-    db $08                                                               ;82D45B;
-    dw $3EFA,$0020                                                       ;82D45C;
-    db $08                                                               ;82D460;
-    dw $3EFA,$01E0                                                       ;82D461;
-    db $08                                                               ;82D465;
-    dw $3EFA,$0010                                                       ;82D466;
-    db $08                                                               ;82D46A;
-    dw $3EFA,$0018                                                       ;82D46B;
-    db $F0                                                               ;82D46F;
-    dw $3EFA,$0020                                                       ;82D470;
-    db $F0                                                               ;82D474;
-    dw $3EFA,$01E0                                                       ;82D475;
-    db $F0                                                               ;82D479;
-    dw $3EFA,$0010                                                       ;82D47A;
-    db $F0                                                               ;82D47E;
-    dw $3EFA,$01A0                                                       ;82D47F;
-    db $00                                                               ;82D483;
-    dw $3EED,$01A0                                                       ;82D484;
-    db $F8                                                               ;82D488;
-    dw $3EED,$0058                                                       ;82D489;
-    db $00                                                               ;82D48D;
-    dw $3EED,$0058                                                       ;82D48E;
-    db $F8                                                               ;82D492;
-    dw $3EED,$0058                                                       ;82D493;
-    db $08                                                               ;82D497;
-    dw $3EFD,$01A0                                                       ;82D498;
-    db $08                                                               ;82D49C;
-    dw $3EFC,$0058                                                       ;82D49D;
-    db $F0                                                               ;82D4A1;
-    dw $3EFB,$01A0                                                       ;82D4A2;
-    db $F0                                                               ;82D4A6;
-    dw $3EF9,$01D0                                                       ;82D4A7;
-    db $08                                                               ;82D4AB;
-    dw $3EFA,$01C8                                                       ;82D4AC;
-    db $08                                                               ;82D4B0;
-    dw $3EFA,$01C0                                                       ;82D4B1;
-    db $08                                                               ;82D4B5;
-    dw $3EFA,$01B8                                                       ;82D4B6;
-    db $08                                                               ;82D4BA;
-    dw $3EFA,$01B0                                                       ;82D4BB;
-    db $08                                                               ;82D4BF;
-    dw $3EFA,$01A8                                                       ;82D4C0;
-    db $08                                                               ;82D4C4;
-    dw $3EFA,$0050                                                       ;82D4C5;
-    db $08                                                               ;82D4C9;
-    dw $3EFA,$0048                                                       ;82D4CA;
-    db $08                                                               ;82D4CE;
-    dw $3EFA,$0040                                                       ;82D4CF;
-    db $08                                                               ;82D4D3;
-    dw $3EFA,$0038                                                       ;82D4D4;
-    db $08                                                               ;82D4D8;
-    dw $3EFA,$0030                                                       ;82D4D9;
-    db $08                                                               ;82D4DD;
-    dw $3EFA,$0028                                                       ;82D4DE;
-    db $08                                                               ;82D4E2;
-    dw $3EFA,$0050                                                       ;82D4E3;
-    db $F0                                                               ;82D4E7;
-    dw $3EFA,$0048                                                       ;82D4E8;
-    db $F0                                                               ;82D4EC;
-    dw $3EFA,$0040                                                       ;82D4ED;
-    db $F0                                                               ;82D4F1;
-    dw $3EFA,$0038                                                       ;82D4F2;
-    db $F0                                                               ;82D4F6;
-    dw $3EFA,$0030                                                       ;82D4F7;
-    db $F0                                                               ;82D4FB;
-    dw $3EFA,$0028                                                       ;82D4FC;
-    db $F0                                                               ;82D500;
-    dw $3EFA,$01D0                                                       ;82D501;
-    db $F0                                                               ;82D505;
-    dw $3EFA,$01C8                                                       ;82D506;
-    db $F0                                                               ;82D50A;
-    dw $3EFA,$01C0                                                       ;82D50B;
-    db $F0                                                               ;82D50F;
-    dw $3EFA,$01B8                                                       ;82D510;
-    db $F0                                                               ;82D514;
-    dw $3EFA,$01B0                                                       ;82D515;
-    db $F0                                                               ;82D519;
-    dw $3EFA,$01A8                                                       ;82D51A;
-    db $F0                                                               ;82D51E;
-    dw $3EFA                                                             ;82D51F;
+    dw $0034                                                             ;82D41B;
+    %spritemapEntry(0, $1E8, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F0, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $08, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $00, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F8, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1E8, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F0, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $08, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $00, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1F8, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1D8, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1D8, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $18, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $20, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1E0, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $10, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $18, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $20, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1E0, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $10, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1A0, $00, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $1A0, $F8, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $58, $00, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $58, $F8, 0, 0, 3, 7, $ED)
+    %spritemapEntry(0, $58, $08, 0, 0, 3, 7, $FD)
+    %spritemapEntry(0, $1A0, $08, 0, 0, 3, 7, $FC)
+    %spritemapEntry(0, $58, $F0, 0, 0, 3, 7, $FB)
+    %spritemapEntry(0, $1A0, $F0, 0, 0, 3, 7, $F9)
+    %spritemapEntry(0, $1D0, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1C8, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1C0, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1B8, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1B0, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1A8, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $50, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $48, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $40, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $38, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $30, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $28, $08, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $50, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $48, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $40, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $38, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $30, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $28, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1D0, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1C8, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1C0, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1B8, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1B0, $F0, 0, 0, 3, 7, $FA)
+    %spritemapEntry(0, $1A8, $F0, 0, 0, 3, 7, $FA)
 
 Samus_Wireframe_Tilemaps_powerSuit:
     dw $0000,$0000,$0000,$25B3,$65B3,$0000,$0000,$0000                   ;82D521;
