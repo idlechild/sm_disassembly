@@ -15,6 +15,40 @@ Small_MessageBox_TopBottomBorder_Tilemap:
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;858070;
 
 MessageBox_Routine:
+; Parameter:
+;     A: Message index
+;         1: Energy tank
+;         2: Missile
+;         3: Super missile
+;         4: Power bomb
+;         5: Grappling beam
+;         6: X-ray scope
+;         7: Varia suit
+;         8: Spring ball
+;         9: Morphing ball
+;         Ah: Screw attack
+;         Bh: Hi-jump boots
+;         Ch: Space jump
+;         Dh: Speed booster
+;         Eh: Charge beam
+;         Fh: Ice beam
+;         10h: Wave beam
+;         11h: Spazer
+;         12h: Plasma beam
+;         13h: Bomb
+;         14h: Map data access completed
+;         15h: Energy recharge completed
+;         16h: Missile reload completed
+;         17h: Would you like to save?
+;         18h: Save completed
+;         19h: Reserve tank
+;         1Ah: Gravity suit
+;         1Ch: Would you like to save? (Used by gunship)
+; Returns:
+;     A: If save confirmation, returns [save confirmation selection] (0: yes, 2: no)
+
+; This routine does not return until the message box has disappeared (~6 seconds)
+; This is the only routine in this bank that's externally callable
     PHP                                                                  ;858080;
     PHB                                                                  ;858081;
     PHX                                                                  ;858082;
@@ -45,7 +79,6 @@ MessageBox_Routine:
     PLB                                                                  ;8580BC;
     PLP                                                                  ;8580BD;
     RTL                                                                  ;8580BE;
-
 
 .gunship:
     JSR.W Handle_MessageBox_Interaction                                  ;8580BF;
@@ -230,7 +263,7 @@ Clear_MessageBox_BG3Tilemap:
 
 
 .blankTile:
-    db $0E,$00                                                           ;85823F;
+    dw $000E                                                             ;85823F;
 
 Initialise_MessageBox:
     REP #$30                                                             ;858241;
@@ -481,8 +514,15 @@ DrawSpecialButton_SetupPPUForLargeMessageBox:
     RTS                                                                  ;858425;
 
 
-.buttons:
-    dw $28E0,$3CE1,$2CF7,$38F8,$38D0,$38EB,$38F1,$284E                   ;858426;
+.buttons:                                                                ;858426;
+    dw $28E0 ; A
+    dw $3CE1 ; B
+    dw $2CF7 ; X
+    dw $38F8 ; Y
+    dw $38D0 ; Select
+    dw $38EB ; L
+    dw $38F1 ; R
+    dw $284E ; Blank
 
 Setup_PPU_for_Small_MessageBox:
     REP #$30                                                             ;858436;
@@ -796,114 +836,141 @@ Restore_PPU:
     RTS                                                                  ;85869A;
 
 
-MessageDefinitionsPointers_modifyMessageBox:
-    dw Setup_PPU_for_Small_MessageBox                                    ;85869B;
-
-MessageDefinitionsPointers_drawInitialMessageBox:
+MessageDefinitionsPointers:
+  .modifyMessageBox
+    dw Setup_PPU_for_Small_MessageBox                                    ;85869B; 1: Energy tank
+  .drawInitialMessageBox
     dw Write_Small_MessageBox_Tilemap                                    ;85869D;
-
-MessageDefinitionsPointers_messageTilemap:
+  .messageTilemap
     dw MessageTilemaps_energyTank                                        ;85869F;
-    dw DrawShootButton_SetupPPUForLargeMessageBox                        ;8586A1;
+    dw DrawShootButton_SetupPPUForLargeMessageBox                        ;8586A1; 2: Missile
     dw Write_Large_MessageBox_Tilemap                                    ;8586A3;
-
-MessageDefinitionsPointers_nextEntryMessageTilemap:
+  .nextEntryMessageTilemap
     dw MessageTilemaps_missile                                           ;8586A5;
-    dw DrawShootButton_SetupPPUForLargeMessageBox                        ;8586A7;
+    dw DrawShootButton_SetupPPUForLargeMessageBox                        ;8586A7; 3: Super missile
     dw Write_Large_MessageBox_Tilemap                                    ;8586A9;
     dw MessageTilemaps_superMissile                                      ;8586AB;
-    dw DrawShootButton_SetupPPUForLargeMessageBox                        ;8586AD;
+    dw DrawShootButton_SetupPPUForLargeMessageBox                        ;8586AD; 4: Power bomb
     dw Write_Large_MessageBox_Tilemap                                    ;8586AF;
     dw MessageTilemaps_powerBomb                                         ;8586B1;
-    dw DrawShootButton_SetupPPUForLargeMessageBox                        ;8586B3;
+    dw DrawShootButton_SetupPPUForLargeMessageBox                        ;8586B3; 5: Grappling beam
     dw Write_Large_MessageBox_Tilemap                                    ;8586B5;
     dw MessageTilemaps_grapplingBeam                                     ;8586B7;
-    dw DrawRunButton_SetupPPUForLargeMessageBox                          ;8586B9;
+    dw DrawRunButton_SetupPPUForLargeMessageBox                          ;8586B9; 6: X-ray scope
     dw Write_Large_MessageBox_Tilemap                                    ;8586BB;
     dw MessageTilemaps_xrayScope                                         ;8586BD;
-    dw Setup_PPU_for_Small_MessageBox                                    ;8586BF;
+    dw Setup_PPU_for_Small_MessageBox                                    ;8586BF; 7: Varia suit
     dw Write_Small_MessageBox_Tilemap                                    ;8586C1;
     dw MessageTilemaps_variaSuit                                         ;8586C3;
-    dw Setup_PPU_for_Small_MessageBox                                    ;8586C5;
+    dw Setup_PPU_for_Small_MessageBox                                    ;8586C5; 8: Spring ball
     dw Write_Small_MessageBox_Tilemap                                    ;8586C7;
     dw MessageTilemaps_springBall                                        ;8586C9;
-    dw Setup_PPU_for_Small_MessageBox                                    ;8586CB;
+    dw Setup_PPU_for_Small_MessageBox                                    ;8586CB; 9: Morphing ball
     dw Write_Small_MessageBox_Tilemap                                    ;8586CD;
     dw MessageTilemaps_morphingBall                                      ;8586CF;
-    dw Setup_PPU_for_Small_MessageBox                                    ;8586D1;
+    dw Setup_PPU_for_Small_MessageBox                                    ;8586D1; Ah: Screw attack
     dw Write_Small_MessageBox_Tilemap                                    ;8586D3;
     dw MessageTilemaps_screwAttack                                       ;8586D5;
-    dw Setup_PPU_for_Small_MessageBox                                    ;8586D7;
+    dw Setup_PPU_for_Small_MessageBox                                    ;8586D7; Bh: Hi-jump boots
     dw Write_Small_MessageBox_Tilemap                                    ;8586D9;
     dw MessageTilemaps_hiJumpBoots                                       ;8586DB;
-    dw Setup_PPU_for_Small_MessageBox                                    ;8586DD;
+    dw Setup_PPU_for_Small_MessageBox                                    ;8586DD; Ch: Space jump
     dw Write_Small_MessageBox_Tilemap                                    ;8586DF;
     dw MessageTilemaps_spaceJump                                         ;8586E1;
-    dw DrawRunButton_SetupPPUForLargeMessageBox                          ;8586E3;
+    dw DrawRunButton_SetupPPUForLargeMessageBox                          ;8586E3; Dh: Speed booster
     dw Write_Large_MessageBox_Tilemap                                    ;8586E5;
     dw MessageTilemaps_speedBooster                                      ;8586E7;
-    dw Setup_PPU_for_Small_MessageBox                                    ;8586E9;
+    dw Setup_PPU_for_Small_MessageBox                                    ;8586E9; Eh: Charge beam
     dw Write_Small_MessageBox_Tilemap                                    ;8586EB;
     dw MessageTilemaps_chargeBeam                                        ;8586ED;
-    dw Setup_PPU_for_Small_MessageBox                                    ;8586EF;
+    dw Setup_PPU_for_Small_MessageBox                                    ;8586EF; Fh: Ice beam
     dw Write_Small_MessageBox_Tilemap                                    ;8586F1;
     dw MessageTilemaps_iceBeam                                           ;8586F3;
-    dw Setup_PPU_for_Small_MessageBox                                    ;8586F5;
+    dw Setup_PPU_for_Small_MessageBox                                    ;8586F5; 10h: Wave beam
     dw Write_Small_MessageBox_Tilemap                                    ;8586F7;
     dw MessageTilemaps_waveBeam                                          ;8586F9;
-    dw Setup_PPU_for_Small_MessageBox                                    ;8586FB;
+    dw Setup_PPU_for_Small_MessageBox                                    ;8586FB; 11h: Spazer
     dw Write_Small_MessageBox_Tilemap                                    ;8586FD;
     dw MessageTilemaps_spazer                                            ;8586FF;
-    dw Setup_PPU_for_Small_MessageBox                                    ;858701;
+    dw Setup_PPU_for_Small_MessageBox                                    ;858701; 12h: Plasma beam
     dw Write_Small_MessageBox_Tilemap                                    ;858703;
     dw MessageTilemaps_plasmaBeam                                        ;858705;
-    dw DrawShootButton_SetupPPUForLargeMessageBox                        ;858707;
+    dw DrawShootButton_SetupPPUForLargeMessageBox                        ;858707; 13h: Bomb
     dw Write_Large_MessageBox_Tilemap                                    ;858709;
     dw MessageTilemaps_bomb                                              ;85870B;
-    dw Setup_PPU_for_Small_MessageBox                                    ;85870D;
+    dw Setup_PPU_for_Small_MessageBox                                    ;85870D; 14h: Map data access completed
     dw Write_Small_MessageBox_Tilemap                                    ;85870F;
     dw MessageTilemaps_map                                               ;858711;
-    dw Setup_PPU_for_Small_MessageBox                                    ;858713;
+    dw Setup_PPU_for_Small_MessageBox                                    ;858713; 15h: Energy recharge completed
     dw Write_Small_MessageBox_Tilemap                                    ;858715;
     dw MessageTilemaps_energyRecharge                                    ;858717;
-    dw Setup_PPU_for_Small_MessageBox                                    ;858719;
+    dw Setup_PPU_for_Small_MessageBox                                    ;858719; 16h: Missile reload completed
     dw Write_Small_MessageBox_Tilemap                                    ;85871B;
     dw MessageTilemaps_missileReload                                     ;85871D;
-    dw Setup_PPU_for_Large_MessageBox                                    ;85871F;
+    dw Setup_PPU_for_Large_MessageBox                                    ;85871F; 17h: Would you like to save?
     dw Write_Small_MessageBox_Tilemap                                    ;858721;
     dw MessageTilemaps_save                                              ;858723;
-    dw Setup_PPU_for_Small_MessageBox                                    ;858725;
+    dw Setup_PPU_for_Small_MessageBox                                    ;858725; 18h: Save completed
     dw Write_Small_MessageBox_Tilemap                                    ;858727;
     dw MessageTilemaps_saveCompleted                                     ;858729;
-    dw Setup_PPU_for_Small_MessageBox                                    ;85872B;
+    dw Setup_PPU_for_Small_MessageBox                                    ;85872B; 19h: Reserve tank
     dw Write_Small_MessageBox_Tilemap                                    ;85872D;
     dw MessageTilemaps_reserveTank                                       ;85872F;
-    dw Setup_PPU_for_Small_MessageBox                                    ;858731;
+    dw Setup_PPU_for_Small_MessageBox                                    ;858731; 1Ah: Gravity suit
     dw Write_Small_MessageBox_Tilemap                                    ;858733;
     dw MessageTilemaps_gravitySuit                                       ;858735;
-    dw Setup_PPU_for_Small_MessageBox                                    ;858737;
+    dw Setup_PPU_for_Small_MessageBox                                    ;858737; 1Bh: Terminator
     dw Write_Small_MessageBox_Tilemap                                    ;858739;
     dw MessageTilemaps_Terminator                                        ;85873B;
-    dw Setup_PPU_for_Large_MessageBox                                    ;85873D;
+    dw Setup_PPU_for_Large_MessageBox                                    ;85873D; 1Ch: Would you like to save? (Used by gunship)
     dw Write_Small_MessageBox_Tilemap                                    ;85873F;
     dw MessageTilemaps_save                                              ;858741;
-    dw Setup_PPU_for_Small_MessageBox                                    ;858743;
+    dw Setup_PPU_for_Small_MessageBox                                    ;858743; 1Dh: Terminator. (Save completed, unused)
     dw Write_Small_MessageBox_Tilemap                                    ;858745;
     dw MessageTilemaps_saveCompleted                                     ;858747;
 
-Special_Button_Tilemap_Offsets:
-    dw $0000,$012A,$012A,$012C,$012C,$012C,$0000,$0000                   ;858749;
-    dw $0000,$0000,$0000,$0000,$0120,$0000,$0000,$0000                   ;858759;
-    dw $0000,$0000,$012A,$0000,$0000,$0000,$0000,$0000                   ;858769;
-    dw $0000,$0000,$0000                                                 ;858779;
+Special_Button_Tilemap_Offsets:                                          ;858749;
+    dw $0000 ; 1: Energy tank
+    dw $012A ; 2: Missile
+    dw $012A ; 3: Super missile
+    dw $012C ; 4: Power bomb
+    dw $012C ; 5: Grappling beam
+    dw $012C ; 6: X-ray scope
+    dw $0000 ; 7: Varia suit
+    dw $0000 ; 8: Spring ball
+    dw $0000 ; 9: Morphing ball
+    dw $0000 ; Ah: Screw attack
+    dw $0000 ; Bh: Hi-jump boots
+    dw $0000 ; Ch: Space jump
+    dw $0120 ; Dh: Speed booster
+    dw $0000 ; Eh: Charge beam
+    dw $0000 ; Fh: Ice beam
+    dw $0000 ; 10h: Wave beam
+    dw $0000 ; 11h: Spazer
+    dw $0000 ; 12h: Plasma beam
+    dw $012A ; 13h: Bomb
+    dw $0000 ; 14h: Map data access completed
+    dw $0000 ; 15h: Energy recharge completed
+    dw $0000 ; 16h: Missile reload completed
+    dw $0000 ; 17h: Would you like to save?
+    dw $0000 ; 18h: Save completed
+    dw $0000 ; 19h: Reserve tank
+    dw $0000 ; 1Ah: Gravity suit
+    dw $0000 ; 1Bh: Dummy
 
-MessageTilemaps_energyTank:
+MessageTilemaps:
+  .energyTank
+; '    ENERGY TANK    '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;85877F;
     dw $284E,$284E,$28E4,$28ED,$28E4,$28F1,$28E6,$28F8                   ;85878F;
     dw $284E,$28F3,$28E0,$28ED,$28EA,$284E,$284E,$284E                   ;85879F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;8587AF;
 
-MessageTilemaps_missile:
+  .missile
+; '          MISSILE         '
+; '                          '
+; '         |miss|                 '
+; '  select |ile | & press the A button.  '
     dw $000E,$000E,$000E,$284E,$284E,$284E,$284E,$284E                   ;8587BF;
     dw $284E,$284E,$284E,$284E,$284E,$28EC,$28E8,$28F2                   ;8587CF;
     dw $28F2,$28E8,$28EB,$28E4,$284E,$284E,$284E,$284E                   ;8587DF;
@@ -921,7 +988,11 @@ MessageTilemaps_missile:
     dw $28B1,$28B2,$28C0,$28C1,$28D1,$28E0,$28D3,$28B5                   ;85889F;
     dw $28B6,$28B7,$28CB,$284E,$284E,$000E,$000E,$000E                   ;8588AF;
 
-MessageTilemaps_superMissile:
+  .superMissile
+; '      SUPER MISSILE       '
+; '                          '
+; '         [sup                 '
+; '   select er] & press the B button.  '
     dw $000E,$000E,$000E,$284E,$284E,$284E,$284E,$284E                   ;8588BF;
     dw $284E,$28F2,$28F4,$28EF,$28E4,$28F1,$284E,$28EC                   ;8588CF;
     dw $28E8,$28F2,$28F2,$28E8,$28EB,$28E4,$284E,$284E                   ;8588DF;
@@ -939,7 +1010,11 @@ MessageTilemaps_superMissile:
     dw $28B1,$28B2,$28C0,$28C1,$28D1,$3CE1,$28D3,$28B5                   ;85899F;
     dw $28B6,$28B7,$28CB,$284E,$284E,$000E,$000E,$000E                   ;8589AF;
 
-MessageTilemaps_powerBomb:
+  .powerBomb
+; '        POWER BOMB        '
+; '                          '
+; '       [pow                   '
+; ' select er] & set it with the R button. '
     dw $000E,$000E,$000E,$284E,$284E,$284E,$284E,$284E                   ;8589BF;
     dw $284E,$284E,$284E,$28EF,$28EE,$28F6,$28E4,$28F1                   ;8589CF;
     dw $284E,$28E1,$28EE,$28EC,$28E1,$284E,$284E,$284E                   ;8589DF;
@@ -957,7 +1032,11 @@ MessageTilemaps_powerBomb:
     dw $284E,$28BE,$28BF,$28C0,$28C1,$28D1,$38F1,$28D3                   ;858A9F;
     dw $28B5,$28B6,$28B7,$28CB,$284E,$000E,$000E,$000E                   ;858AAF;
 
-MessageTilemaps_grapplingBeam:
+  .grapplingBeam
+; '      GRAPPLING BEAM      '
+; '                          '
+; '        [gra                   '
+; ' select pple] press & hold the Y button. '
     dw $000E,$000E,$000E,$284E,$284E,$284E,$284E,$284E                   ;858ABF;
     dw $284E,$28E6,$28F1,$28E0,$28EF,$28EF,$28EB,$28E8                   ;858ACF;
     dw $28ED,$28E6,$284E,$28E1,$28E4,$28E0,$28EC,$284E                   ;858ADF;
@@ -975,7 +1054,11 @@ MessageTilemaps_grapplingBeam:
     dw $284E,$28B3,$28B4,$28C0,$28C1,$28D1,$38F8,$28D3                   ;858B9F;
     dw $28B5,$28B6,$28B7,$28CB,$284E,$000E,$000E,$000E                   ;858BAF;
 
-MessageTilemaps_xrayScope:
+  .xrayScope
+; '        X-RAY SCOPE       '
+; '                          '
+; '        [x-                   '
+; ' select ray] press & hold the X button. '
     dw $000E,$000E,$000E,$284E,$284E,$284E,$284E,$284E                   ;858BBF;
     dw $284E,$284E,$284E,$28F7,$28CF,$28F1,$28E0,$28F8                   ;858BCF;
     dw $284E,$28F2,$28E2,$28EE,$28EF,$28E4,$284E,$284E                   ;858BDF;
@@ -993,43 +1076,53 @@ MessageTilemaps_xrayScope:
     dw $284E,$28B3,$28B4,$28C0,$28C1,$28D1,$2CF7,$28D3                   ;858C9F;
     dw $28B5,$28B6,$28B7,$28CB,$284E,$000E,$000E,$000E                   ;858CAF;
 
-MessageTilemaps_variaSuit:
+  .variaSuit
+; '    VARIA SUIT     '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858CBF;
     dw $284E,$284E,$28F5,$28E0,$28F1,$28E8,$28E0,$284E                   ;858CCF;
     dw $28F2,$28F4,$28E8,$28F3,$284E,$284E,$284E,$284E                   ;858CDF;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;858CEF;
 
-MessageTilemaps_springBall:
+  .springBall
+; '    SPRING BALL    '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858CFF;
     dw $284E,$284E,$28F2,$28EF,$28F1,$28E8,$28ED,$28E6                   ;858D0F;
     dw $284E,$28E1,$28E0,$28EB,$28EB,$284E,$284E,$284E                   ;858D1F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;858D2F;
 
-MessageTilemaps_morphingBall:
+  .morphingBall
+; '   MORPHING BALL   '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858D3F;
     dw $284E,$28EC,$28EE,$28F1,$28EF,$28E7,$28E8,$28ED                   ;858D4F;
     dw $28E6,$284E,$28E1,$28E0,$28EB,$28EB,$284E,$284E                   ;858D5F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;858D6F;
 
-MessageTilemaps_screwAttack:
+  .screwAttack
+; '   SCREW ATTACK    '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858D7F;
     dw $284E,$28F2,$28E2,$28F1,$28E4,$28F6,$284E,$28E0                   ;858D8F;
     dw $28F3,$28F3,$28E0,$28E2,$28EA,$284E,$284E,$284E                   ;858D9F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;858DAF;
 
-MessageTilemaps_hiJumpBoots:
+  .hiJumpBoots
+; '   HI-JUMP BOOTS   '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858DBF;
     dw $284E,$28E7,$28E8,$28CF,$28E9,$28F4,$28EC,$28EF                   ;858DCF;
     dw $284E,$28E1,$28EE,$28EE,$28F3,$28F2,$284E,$284E                   ;858DDF;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;858DEF;
 
-MessageTilemaps_spaceJump:
+  .spaceJump
+; '    SPACE JUMP     '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858DFF;
     dw $284E,$284E,$28F2,$28EF,$28E0,$28E2,$28E4,$284E                   ;858E0F;
     dw $28E9,$28F4,$28EC,$28EF,$284E,$284E,$284E,$284E                   ;858E1F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;858E2F;
 
-MessageTilemaps_speedBooster:
+  .speedBooster
+; '      SPEED BOOSTER       '
+; '                          '
+; '                          '
+; '  press & hold the # button to run. '
     dw $000E,$000E,$000E,$284E,$284E,$284E,$284E,$284E                   ;858E3F;
     dw $284E,$28F2,$28EF,$28E4,$28E4,$28E3,$284E,$28E1                   ;858E4F;
     dw $28EE,$28EE,$28F2,$28F3,$28E4,$28F1,$284E,$284E                   ;858E5F;
@@ -1047,37 +1140,46 @@ MessageTilemaps_speedBooster:
     dw $38D0,$28D3,$28B5,$28B6,$28B7,$284E,$28C2,$284E                   ;858F1F;
     dw $28BC,$28BD,$28CB,$284E,$284E,$000E,$000E,$000E                   ;858F2F;
 
-MessageTilemaps_chargeBeam:
+  .chargeBeam
+; '    CHARGE BEAM    '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858F3F;
     dw $284E,$284E,$28E2,$28E7,$28E0,$28F1,$28E6,$28E4                   ;858F4F;
     dw $284E,$28E1,$28E4,$28E0,$28EC,$284E,$284E,$284E                   ;858F5F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;858F6F;
 
-MessageTilemaps_iceBeam:
+  .iceBeam
+; '     ICE BEAM      '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858F7F;
     dw $284E,$284E,$284E,$28E8,$28E2,$28E4,$284E,$28E1                   ;858F8F;
     dw $28E4,$28E0,$28EC,$284E,$284E,$284E,$284E,$284E                   ;858F9F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;858FAF;
 
-MessageTilemaps_waveBeam:
+  .waveBeam
+; '     WAVE BEAM     '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858FBF;
     dw $284E,$284E,$284E,$28F6,$28E0,$28F5,$28E4,$284E                   ;858FCF;
     dw $28E1,$28E4,$28E0,$28EC,$284E,$284E,$284E,$284E                   ;858FDF;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;858FEF;
 
-MessageTilemaps_spazer:
+  .spazer
+; '      SPAZER       '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858FFF;
     dw $284E,$284E,$284E,$284E,$28F2,$28EF,$28E0,$28F9                   ;85900F;
     dw $28E4,$28F1,$284E,$284E,$284E,$284E,$284E,$284E                   ;85901F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;85902F;
 
-MessageTilemaps_plasmaBeam:
+  .plasmaBeam
+; '    PLASMA BEAM    '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;85903F;
     dw $284E,$284E,$28EF,$28EB,$28E0,$28F2,$28EC,$28E0                   ;85904F;
     dw $284E,$28E1,$28E4,$28E0,$28EC,$284E,$284E,$284E                   ;85905F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;85906F;
 
-MessageTilemaps_bomb:
+  .bomb
+; '           BOMB           '
+; '  o                       '
+; '  T-                      '
+; '  |=>O & set it with the L button.  '
     dw $000E,$000E,$000E,$284E,$284E,$284E,$284E,$284E                   ;85907F;
     dw $284E,$284E,$284E,$284E,$284E,$284E,$28E1,$28EE                   ;85908F;
     dw $28EC,$28E1,$284E,$284E,$284E,$284E,$284E,$284E                   ;85909F;
@@ -1095,7 +1197,10 @@ MessageTilemaps_bomb:
     dw $28BE,$28BF,$28C0,$28C1,$28D1,$38EB,$28D3,$28B5                   ;85915F;
     dw $28B6,$28B7,$28CB,$284E,$284E,$000E,$000E,$000E                   ;85916F;
 
-MessageTilemaps_map:
+  .map
+; '  MAP DATA ACCESS  '
+; '                   '
+; '    COMPLETED.     '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$3C4E,$3C4E                   ;85917F;
     dw $3CEC,$3CE0,$3CEF,$3C4E,$3CE3,$3CE0,$3CF3,$3CE0                   ;85918F;
     dw $3C4E,$3CE0,$3CE2,$3CE2,$3CE4,$3CF2,$3CF2,$3C4E                   ;85919F;
@@ -1109,7 +1214,10 @@ MessageTilemaps_map:
     dw $3CF3,$3CE4,$3CE3,$3CFA,$3C4E,$3C4E,$3C4E,$3C4E                   ;85921F;
     dw $3C4E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;85922F;
 
-MessageTilemaps_energyRecharge:
+  .energyRecharge
+; '  ENERGY RECHARGE  '
+; '                   '
+; '    COMPLETED.     '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$3C4E,$3C4E                   ;85923F;
     dw $3CE4,$3CED,$3CE4,$3CF1,$3CE6,$3CF8,$3C4E,$3CF1                   ;85924F;
     dw $3CE4,$3CE2,$3CE7,$3CE0,$3CF1,$3CE6,$3CE4,$3C4E                   ;85925F;
@@ -1123,7 +1231,10 @@ MessageTilemaps_energyRecharge:
     dw $3CF3,$3CE4,$3CE3,$3CFA,$3C4E,$3C4E,$3C4E,$3C4E                   ;8592DF;
     dw $3C4E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;8592EF;
 
-MessageTilemaps_missileReload:
+  .missileReload
+; '  MISSILE RELOAD   '
+; '                   '
+; '    COMPLETED.     '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$3C4E,$3C4E                   ;8592FF;
     dw $3CEC,$3CE8,$3CF2,$3CF2,$3CE8,$3CEB,$3CE4,$3C4E                   ;85930F;
     dw $3CF1,$3CE4,$3CEB,$3CEE,$3CE0,$3CE3,$3C4E,$3C4E                   ;85931F;
@@ -1137,7 +1248,11 @@ MessageTilemaps_missileReload:
     dw $3CF3,$3CE4,$3CE3,$3CFA,$384E,$384E,$3C4E,$3C4E                   ;85939F;
     dw $3C4E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;8593AF;
 
-MessageTilemaps_save:
+  .save
+; '  WOULD YOU LIKE   '
+; '  TO SAVE?         '
+; '                   '
+; '  =>YES      NO    '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$3C4E,$3C4E                   ;8593BF;
     dw $3CF6,$3CEE,$3CF4,$3CEB,$3CE3,$3C4E,$3CF8,$3CEE                   ;8593CF;
     dw $3CF4,$3C4E,$3CEB,$3CE8,$3CEA,$3CE4,$3C4E,$3C4E                   ;8593DF;
@@ -1155,47 +1270,52 @@ MessageTilemaps_save:
     dw $3C4E,$3C4E,$3C4E,$2CED,$2CEE,$3C4E,$3C4E,$3C4E                   ;85949F;
     dw $3C4E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;8594AF;
 
-MessageTilemaps_saveCompleted:
+  .saveCompleted
+; '  SAVE COMPLETED.  '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$3C4E,$3C4E                   ;8594BF;
     dw $3CF2,$3CE0,$3CF5,$3CE4,$3C4E,$3CE2,$3CEE,$3CEC                   ;8594CF;
     dw $3CEF,$3CEB,$3CE4,$3CF3,$3CE4,$3CE3,$3CFA,$3C4E                   ;8594DF;
     dw $3C4E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;8594EF;
 
-MessageTilemaps_reserveTank:
+  .reserveTank
+; '   RESERVE TANK    '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;8594FF;
     dw $284E,$28F1,$28E4,$28F2,$28E4,$28F1,$28F5,$28E4                   ;85950F;
     dw $284E,$28F3,$28E0,$28ED,$28EA,$284E,$284E,$284E                   ;85951F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;85952F;
 
-MessageTilemaps_gravitySuit:
+  .gravitySuit
+; '   GRAVITY SUIT    '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;85953F;
     dw $284E,$28E6,$28F1,$28E0,$28F5,$28E8,$28F3,$28F8                   ;85954F;
     dw $284E,$28F2,$28F4,$28E8,$28F3,$284E,$284E,$284E                   ;85955F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;85956F;
 
-MessageTilemaps_Terminator:
+  .Terminator
     dw $0000                                                             ;85957F;
 
 UNUSED_MessageTilemaps_YES_859581:
+; '  =>YES      NO    ' (unused)
     dw $000E,$000E,$000E,$000E,$000E,$000E,$3C4E,$3C4E                   ;859581;
     dw $38CC,$38CD,$3CF8,$3CE4,$3CF2,$3C4E,$3C4E,$3C4E                   ;859591;
     dw $3C4E,$3C4E,$3C4E,$2CED,$2CEE,$3C4E,$3C4E,$3C4E                   ;8595A1;
     dw $3C4E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;8595B1;
 
 MessageTilemaps_YES:
+; '  =>YES      NO    '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$3C4E,$3C4E                   ;8595C1;
     dw $38CC,$38CD,$3CF8,$3CE4,$3CF2,$3C4E,$3C4E,$3C4E                   ;8595D1;
     dw $3C4E,$3C4E,$3C4E,$2CED,$2CEE,$3C4E,$3C4E,$3C4E                   ;8595E1;
     dw $3C4E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;8595F1;
 
 MessageTilemaps_NO:
+; '    YES    =>NO    '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$3C4E,$3C4E                   ;859601;
     dw $3C4E,$3C4E,$2CF8,$2CE4,$2CF2,$3C4E,$3C4E,$3C4E                   ;859611;
     dw $3C4E,$38CC,$38CD,$3CED,$3CEE,$3C4E,$3C4E,$3C4E                   ;859621;
     dw $3C4E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;859631;
 
-MessageTilemaps_Terminator2:                                             ;859641;
-    dw $0000
+    dw $0000                                                             ;859641;
 
 Freespace_Bank85_9643:                                                   ;859643;
 ; $69BD bytes

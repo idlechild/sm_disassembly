@@ -1,1 +1,2 @@
 $84D94B Should be 8bit
+$85823F Should be 16bit
