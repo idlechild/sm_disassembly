@@ -7026,10 +7026,8 @@ Setup_MaridiaElevatube:
 
 
 InstList_PLM_MaridiaElevatube:
-    dw $0010                                                             ;84B8F0;
-    dw DrawInst_CrumbleKraidCeiling_CrumbleKraidSpikes_Elevatube         ;84B8F2;
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max6                            ;84B8F4;
-    db $15                                                               ;84B8F6;
+    dw $0010,DrawInst_CrumbleKraidCeiling_CrumbleKraidSpikes_Elevatube   ;84B8F0;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $15                   ;84B8F4;
     dw Instruction_PLM_Delete                                            ;84B8F7;
 
 PLMEntries_maridiaElevatube:
@@ -7057,8 +7055,7 @@ InstList_PLM_MakeOldTourianEscapeShaftFakeWallExplode:
     dw PreInstruction_PLM_MakeOldTourianEscapeShaftFakeWallExplode       ;84B91B;
     dw Instruction_PLM_Sleep                                             ;84B91D;
     dw Instruction_PLM_ClearPreInstruction                               ;84B91F;
-    dw $0001                                                             ;84B921;
-    dw DrawInst_OldTourianEscapeShaftBlocks                              ;84B923;
+    dw $0001,DrawInst_OldTourianEscapeShaftBlocks                        ;84B921;
     dw Instruction_PLM_Delete                                            ;84B925;
 
 PreInstruction_PLM_MakeOldTourianEscapeShaftFakeWallExplode:
@@ -7140,16 +7137,11 @@ Setup_Reaction_CrittersEscapeBlock:
 
 
 InstList_PLM_CrittersEscapeBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max6                            ;84B9A2;
-    db $0A                                                               ;84B9A4;
-    dw $0004                                                             ;84B9A5;
-    dw DrawInst_CrittersEscapeBlock_0                                    ;84B9A7;
-    dw $0004                                                             ;84B9A9;
-    dw DrawInst_CrittersEscapeBlock_1                                    ;84B9AB;
-    dw $0004                                                             ;84B9AD;
-    dw DrawInst_CrittersEscapeBlock_2                                    ;84B9AF;
-    dw $0001                                                             ;84B9B1;
-    dw DrawInst_CrittersEscapeBlock_3                                    ;84B9B3;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $0A                   ;84B9A2;
+    dw $0004,DrawInst_CrittersEscapeBlock_0                              ;84B9A5;
+    dw $0004,DrawInst_CrittersEscapeBlock_1                              ;84B9A9;
+    dw $0004,DrawInst_CrittersEscapeBlock_2                              ;84B9AD;
+    dw $0001,DrawInst_CrittersEscapeBlock_3                              ;84B9B1;
     dw Instruction_PLM_SetCrittersEscapedEvent                           ;84B9B5;
     dw Instruction_PLM_Delete                                            ;84B9B7;
 
@@ -7229,22 +7221,15 @@ PLMEntries_turnCeresElevatorDoorToSolidBlocksDuringEscape:
     dw InstList_PLM_Delete                                               ;84BA4A;
 
 InstList_PLM_BombTorizoGreyDoor:
-    dw $0002                                                             ;84BA4C;
-    dw DrawInst_DoorFacingRight_A683                                     ;84BA4E;
+    dw $0002,DrawInst_DoorFacingRight_A683                               ;84BA4C;
     dw Instruction_PLM_GotoYIfSamusDoesntHaveBombs                       ;84BA50;
     dw InstList_PLM_BombTorizoGreyDoor                                   ;84BA52;
-    dw $0028                                                             ;84BA54;
-    dw DrawInst_DoorFacingRight_A683                                     ;84BA56;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84BA58;
-    db $08                                                               ;84BA5A;
-    dw $0002                                                             ;84BA5B;
-    dw DrawInst_GreyDoorFacingRight_3                                    ;84BA5D;
-    dw $0002                                                             ;84BA5F;
-    dw DrawInst_GreyDoorFacingRight_2                                    ;84BA61;
-    dw $0002                                                             ;84BA63;
-    dw DrawInst_GreyDoorFacingRight_1                                    ;84BA65;
-    dw $0001                                                             ;84BA67;
-    dw DrawInst_GreyDoorFacingRight_0                                    ;84BA69;
+    dw $0028,DrawInst_DoorFacingRight_A683                               ;84BA54;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84BA58;
+    dw $0002,DrawInst_GreyDoorFacingRight_3                              ;84BA5B;
+    dw $0002,DrawInst_GreyDoorFacingRight_2                              ;84BA5F;
+    dw $0002,DrawInst_GreyDoorFacingRight_1                              ;84BA63;
+    dw $0001,DrawInst_GreyDoorFacingRight_0                              ;84BA67;
     dw Instruction_PLM_GotoY                                             ;84BA6B;
     dw InstList_PLM_BombTorizoGreyDoor_0                                 ;84BA6D;
 
@@ -7269,8 +7254,7 @@ InstList_PLM_BombTorizoGreyDoor_0:
     dw Instruction_PLM_LinkInstruction_Y                                 ;84BA83;
     dw InstList_PLM_BombTorizoGreyDoor_2                                 ;84BA85;
     dw Instruction_PLM_SetGreyDoorPreInstruction                         ;84BA87;
-    dw $0001                                                             ;84BA89;
-    dw DrawInst_GreyDoorFacingRight_0                                    ;84BA8B;
+    dw $0001,DrawInst_GreyDoorFacingRight_0                              ;84BA89;
 
 InstList_PLM_BombTorizoGreyDoor_1:
     dw Instruction_PLM_Sleep                                             ;84BA8D;
@@ -7284,37 +7268,25 @@ InstList_PLM_BombTorizoGreyDoor_2:
     dw PreInstruction_PLM_GotoLinkInstructionIfShot                      ;84BA99;
 
 InstList_PLM_BombTorizoGreyDoor_3:
-    dw $0003                                                             ;84BA9B;
-    dw DrawInst_DoorFacingRight_A9EF                                     ;84BA9D;
-    dw $0004                                                             ;84BA9F;
-    dw DrawInst_GreyDoorFacingRight_0                                    ;84BAA1;
-    dw $0003                                                             ;84BAA3;
-    dw DrawInst_DoorFacingRight_A9EF                                     ;84BAA5;
-    dw $0004                                                             ;84BAA7;
-    dw DrawInst_GreyDoorFacingRight_0                                    ;84BAA9;
-    dw $0003                                                             ;84BAAB;
-    dw DrawInst_DoorFacingRight_A9EF                                     ;84BAAD;
-    dw $0004                                                             ;84BAAF;
-    dw DrawInst_GreyDoorFacingRight_0                                    ;84BAB1;
+    dw $0003,DrawInst_DoorFacingRight_A9EF                               ;84BA9B;
+    dw $0004,DrawInst_GreyDoorFacingRight_0                              ;84BA9F;
+    dw $0003,DrawInst_DoorFacingRight_A9EF                               ;84BAA3;
+    dw $0004,DrawInst_GreyDoorFacingRight_0                              ;84BAA7;
+    dw $0003,DrawInst_DoorFacingRight_A9EF                               ;84BAAB;
+    dw $0004,DrawInst_GreyDoorFacingRight_0                              ;84BAAF;
     dw Instruction_PLM_GotoY                                             ;84BAB3;
     dw InstList_PLM_BombTorizoGreyDoor_3                                 ;84BAB5;
 
 InstList_PLM_BombTorizoGreyDoor_4:
-    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY                   ;84BAB7;
-    db $01                                                               ;84BAB9;
+    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY : db $01          ;84BAB7;
     dw InstList_PLM_BombTorizoGreyDoor_5                                 ;84BABA;
 
 InstList_PLM_BombTorizoGreyDoor_5:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84BABC;
-    db $07                                                               ;84BABE;
-    dw $0004                                                             ;84BABF;
-    dw DrawInst_GreyDoorFacingRight_1                                    ;84BAC1;
-    dw $0004                                                             ;84BAC3;
-    dw DrawInst_GreyDoorFacingRight_2                                    ;84BAC5;
-    dw $0004                                                             ;84BAC7;
-    dw DrawInst_GreyDoorFacingRight_3                                    ;84BAC9;
-    dw $0001                                                             ;84BACB;
-    dw DrawInst_DoorFacingRight_A683                                     ;84BACD;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84BABC;
+    dw $0004,DrawInst_GreyDoorFacingRight_1                              ;84BABF;
+    dw $0004,DrawInst_GreyDoorFacingRight_2                              ;84BAC3;
+    dw $0004,DrawInst_GreyDoorFacingRight_3                              ;84BAC7;
+    dw $0001,DrawInst_DoorFacingRight_A683                               ;84BACB;
     dw Instruction_PLM_Delete                                            ;84BACF;
 
 if !FEATURE_KEEP_UNREFERENCED
@@ -7367,11 +7339,9 @@ Setup_ClearCrateriaMainstreetEscapePassageIfCrittersEscaped:
 
 
 InstList_PLM_ClearCrateriaMainstreetEscPassageIfCrittersEsc:
-    dw $0001                                                             ;84BB19;
-    dw DrawInst_CrateriaMainStreetEscape                                 ;84BB1B;
+    dw $0001,DrawInst_CrateriaMainStreetEscape                           ;84BB19;
     dw Instruction_PLM_MovePLMRight4Blocks                               ;84BB1D;
-    dw $0001                                                             ;84BB1F;
-    dw DrawInst_CrateriaMainStreetEscape                                 ;84BB21;
+    dw $0001,DrawInst_CrateriaMainStreetEscape                           ;84BB1F;
     dw Instruction_PLM_Delete                                            ;84BB23;
 
 Instruction_PLM_MovePLMRight4Blocks:
@@ -7387,26 +7357,20 @@ PLMEntries_ClearCrateriaMainstreetEscapePassageIfCrittersEsc:
     dw InstList_PLM_ClearCrateriaMainstreetEscPassageIfCrittersEsc       ;84BB32;
 
 InstList_PLM_GateThatClosesDuringEscapeAfterMotherBrain_0:
-    dw $0006                                                             ;84BB34;
-    dw DrawInst_EscapeRoom1Gate_2                                        ;84BB36;
+    dw $0006,DrawInst_EscapeRoom1Gate_2                                  ;84BB34;
     dw Instruction_PLM_Delete                                            ;84BB38;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_84BB34:
-    dw $0006                                                             ;84BB3A;
-    dw DrawInst_EscapeRoom1Gate_1                                        ;84BB3C;
-    dw $005E                                                             ;84BB3E;
-    dw DrawInst_EscapeRoom1Gate_0                                        ;84BB40;
+    dw $0006,DrawInst_EscapeRoom1Gate_1                                  ;84BB3A;
+    dw $005E,DrawInst_EscapeRoom1Gate_0                                  ;84BB3E;
     dw Instruction_PLM_Delete                                            ;84BB42;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_PLM_GateThatClosesDuringEscapeAfterMotherBrain_1:
-    dw $0002                                                             ;84BB44;
-    dw DrawInst_EscapeRoom1Gate_0                                        ;84BB46;
-    dw $0002                                                             ;84BB48;
-    dw DrawInst_EscapeRoom1Gate_1                                        ;84BB4A;
-    dw $0002                                                             ;84BB4C;
-    dw DrawInst_EscapeRoom1Gate_2                                        ;84BB4E;
+    dw $0002,DrawInst_EscapeRoom1Gate_0                                  ;84BB44;
+    dw $0002,DrawInst_EscapeRoom1Gate_1                                  ;84BB48;
+    dw $0002,DrawInst_EscapeRoom1Gate_2                                  ;84BB4C;
     dw Instruction_PLM_Delete                                            ;84BB50;
 
 PreInstruction_PLM_WakePLMIfTriggered:
@@ -7536,173 +7500,129 @@ Instruction_PLM_WakeEnemyProjectileAtPLMsPosition:
 
 
 InstList_PLM_DownwardsOpenGate:
-    dw $0001                                                             ;84BC13;
-    dw DrawInst_DownwardsGateOpen                                        ;84BC15;
+    dw $0001,DrawInst_DownwardsGateOpen                                  ;84BC13;
     dw Instruction_PLM_ClearTrigger                                      ;84BC17;
     dw Instruction_PLM_PreInstruction_inY                                ;84BC19;
     dw PreInstruction_PLM_WakePLMIfTriggered                             ;84BC1B;
     dw Instruction_PLM_Sleep                                             ;84BC1D;
-    dw $0010                                                             ;84BC1F;
-    dw DrawInst_DownwardsGateOpen                                        ;84BC21;
+    dw $0010,DrawInst_DownwardsGateOpen                                  ;84BC1F;
     dw Instruction_PLM_SpawnEnemyProjectileY                             ;84BC23;
     dw EnemyProjectile_SpawnedDownwardsShotGate                          ;84BC25;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84BC27;
-    db $0E                                                               ;84BC29;
-    dw $0010                                                             ;84BC2A;
-    dw DrawInst_DownwardsGateOpenClosed_0                                ;84BC2C;
-    dw $0010                                                             ;84BC2E;
-    dw DrawInst_DownwardsGateOpenClosed_1                                ;84BC30;
-    dw $0010                                                             ;84BC32;
-    dw DrawInst_DownwardsGateOpenClosed_2                                ;84BC34;
-    dw $0018                                                             ;84BC36;
-    dw DrawInst_DownwardsGateOpenClosed_3                                ;84BC38;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $0E                   ;84BC27;
+    dw $0010,DrawInst_DownwardsGateOpenClosed_0                          ;84BC2A;
+    dw $0010,DrawInst_DownwardsGateOpenClosed_1                          ;84BC2E;
+    dw $0010,DrawInst_DownwardsGateOpenClosed_2                          ;84BC32;
+    dw $0018,DrawInst_DownwardsGateOpenClosed_3                          ;84BC36;
 
 InstList_PLM_DownwardsClosedGate:
-    dw $0001                                                             ;84BC3A;
-    dw DrawInst_DownwardsGateClosed                                      ;84BC3C;
+    dw $0001,DrawInst_DownwardsGateClosed                                ;84BC3A;
     dw Instruction_PLM_ClearTrigger                                      ;84BC3E;
     dw Instruction_PLM_PreInstruction_inY                                ;84BC40;
     dw PreInst_PLM_WakePLMIfTriggeredOrSamusWithin4BlockColumnBelow      ;84BC42;
     dw Instruction_PLM_Sleep                                             ;84BC44;
-    dw Instruction_PLM_WakeEnemyProjectileAtPLMsPosition                 ;84BC46;
-    dw $E566                                                             ;84BC48;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84BC4A;
-    db $0E                                                               ;84BC4C;
-    dw $0010                                                             ;84BC4D;
-    dw DrawInst_DownwardsGateOpenClosed_3                                ;84BC4F;
-    dw $0010                                                             ;84BC51;
-    dw DrawInst_DownwardsGateOpenClosed_2                                ;84BC53;
-    dw $0010                                                             ;84BC55;
-    dw DrawInst_DownwardsGateOpenClosed_1                                ;84BC57;
-    dw $0018                                                             ;84BC59;
-    dw DrawInst_DownwardsGateOpenClosed_0                                ;84BC5B;
+    dw Instruction_PLM_WakeEnemyProjectileAtPLMsPosition,$E566           ;84BC46;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $0E                   ;84BC4A;
+    dw $0010,DrawInst_DownwardsGateOpenClosed_3                          ;84BC4D;
+    dw $0010,DrawInst_DownwardsGateOpenClosed_2                          ;84BC51;
+    dw $0010,DrawInst_DownwardsGateOpenClosed_1                          ;84BC55;
+    dw $0018,DrawInst_DownwardsGateOpenClosed_0                          ;84BC59;
     dw Instruction_PLM_GotoY                                             ;84BC5D;
     dw InstList_PLM_DownwardsOpenGate                                    ;84BC5F;
 
 InstList_PLM_UpwardsOpenGate:
-    dw $0008                                                             ;84BC61;
-    dw DrawInst_UpwardsGateOpen                                          ;84BC63;
+    dw $0008,DrawInst_UpwardsGateOpen                                    ;84BC61;
     dw Instruction_PLM_ClearTrigger                                      ;84BC65;
     dw Instruction_PLM_PreInstruction_inY                                ;84BC67;
     dw PreInstruction_PLM_WakePLMIfTriggered                             ;84BC69;
     dw Instruction_PLM_Sleep                                             ;84BC6B;
-    dw $0010                                                             ;84BC6D;
-    dw DrawInst_UpwardsGateOpen                                          ;84BC6F;
+    dw $0010,DrawInst_UpwardsGateOpen                                    ;84BC6D;
     dw Instruction_PLM_SpawnEnemyProjectileY                             ;84BC71;
     dw EnemyProjectile_SpawnedUpwardsShotGate                            ;84BC73;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84BC75;
-    db $0E                                                               ;84BC77;
-    dw $0010                                                             ;84BC78;
-    dw DrawInst_UpwardsGateOpenClosed_0                                  ;84BC7A;
-    dw $0010                                                             ;84BC7C;
-    dw DrawInst_UpwardsGateOpenClosed_1                                  ;84BC7E;
-    dw $0010                                                             ;84BC80;
-    dw DrawInst_UpwardsGateOpenClosed_2                                  ;84BC82;
-    dw $0010                                                             ;84BC84;
-    dw DrawInst_UpwardsGateOpenClosed_3                                  ;84BC86;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $0E                   ;84BC75;
+    dw $0010,DrawInst_UpwardsGateOpenClosed_0                            ;84BC78;
+    dw $0010,DrawInst_UpwardsGateOpenClosed_1                            ;84BC7C;
+    dw $0010,DrawInst_UpwardsGateOpenClosed_2                            ;84BC80;
+    dw $0010,DrawInst_UpwardsGateOpenClosed_3                            ;84BC84;
 
 InstList_PLM_UpwardsClosedGate:
-    dw $0008                                                             ;84BC88;
-    dw DrawInst_UpwardsGateClosed                                        ;84BC8A;
+    dw $0008,DrawInst_UpwardsGateClosed                                  ;84BC88;
     dw Instruction_PLM_ClearTrigger                                      ;84BC8C;
     dw Instruction_PLM_PreInstruction_inY                                ;84BC8E;
     dw PreInst_PLM_WakePLMIfTriggeredOrSamusWithin4BlockColumnAbove      ;84BC90;
 
 InstList_PLM_UpwardsClosedGate_sleep:
     dw Instruction_PLM_Sleep                                             ;84BC92;
-    dw Instruction_PLM_WakeEnemyProjectileAtPLMsPosition                 ;84BC94;
-    dw $E5B0                                                             ;84BC96;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84BC98;
-    db $0E                                                               ;84BC9A;
-    dw $0010                                                             ;84BC9B;
-    dw DrawInst_UpwardsGateOpenClosed_3                                  ;84BC9D;
-    dw $0010                                                             ;84BC9F;
-    dw DrawInst_UpwardsGateOpenClosed_2                                  ;84BCA1;
-    dw $0010                                                             ;84BCA3;
-    dw DrawInst_UpwardsGateOpenClosed_1                                  ;84BCA5;
-    dw $0010                                                             ;84BCA7;
-    dw DrawInst_UpwardsGateOpenClosed_0                                  ;84BCA9;
+    dw Instruction_PLM_WakeEnemyProjectileAtPLMsPosition,$E5B0           ;84BC94;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $0E                   ;84BC98;
+    dw $0010,DrawInst_UpwardsGateOpenClosed_3                            ;84BC9B;
+    dw $0010,DrawInst_UpwardsGateOpenClosed_2                            ;84BC9F;
+    dw $0010,DrawInst_UpwardsGateOpenClosed_1                            ;84BCA3;
+    dw $0010,DrawInst_UpwardsGateOpenClosed_0                            ;84BCA7;
     dw Instruction_PLM_GotoY                                             ;84BCAB;
     dw InstList_PLM_UpwardsOpenGate                                      ;84BCAD;
 
 InstList_PLM_DownwardsGateShotblock_BlueLeft:
-    dw $0001                                                             ;84BCAF;
-    dw DrawInst_GateShotblockDownwardsBlueLeft                           ;84BCB1;
+    dw $0001,DrawInst_GateShotblockDownwardsBlueLeft                     ;84BCAF;
     dw Instruction_PLM_Delete                                            ;84BCB3;
 
 InstList_PLM_DownwardsGateShotblock_BlueRight:
-    dw $0001                                                             ;84BCB5;
-    dw DrawInst_GateShotblockDownwardsBlueRight                          ;84BCB7;
+    dw $0001,DrawInst_GateShotblockDownwardsBlueRight                    ;84BCB5;
     dw Instruction_PLM_Delete                                            ;84BCB9;
 
 InstList_PLM_DownwardsGateShotblock_RedLeft:
-    dw $0001                                                             ;84BCBB;
-    dw DrawInst_GateShotblockDownwardsRedLeft                            ;84BCBD;
+    dw $0001,DrawInst_GateShotblockDownwardsRedLeft                      ;84BCBB;
     dw Instruction_PLM_Delete                                            ;84BCBF;
 
 InstList_PLM_DownwardsGateShotblock_RedRight:
-    dw $0001                                                             ;84BCC1;
-    dw DrawInst_GateShotblockDownwardsRedRight                           ;84BCC3;
+    dw $0001,DrawInst_GateShotblockDownwardsRedRight                     ;84BCC1;
     dw Instruction_PLM_Delete                                            ;84BCC5;
 
 InstList_PLM_DownwardsGateShotblock_GreenLeft:
-    dw $0001                                                             ;84BCC7;
-    dw DrawInst_GateShotblockDownwardsGreenLeft                          ;84BCC9;
+    dw $0001,DrawInst_GateShotblockDownwardsGreenLeft                    ;84BCC7;
     dw Instruction_PLM_Delete                                            ;84BCCB;
 
 InstList_PLM_DownwardsGateShotblock_GreenRight:
-    dw $0001                                                             ;84BCCD;
-    dw DrawInst_GateShotblockDownwardsGreenRight                         ;84BCCF;
+    dw $0001,DrawInst_GateShotblockDownwardsGreenRight                   ;84BCCD;
     dw Instruction_PLM_Delete                                            ;84BCD1;
 
 InstList_PLM_DownwardsGateShotblock_YellowLeft:
-    dw $0001                                                             ;84BCD3;
-    dw DrawInst_GateShotblockDownwardsYellowLeft                         ;84BCD5;
+    dw $0001,DrawInst_GateShotblockDownwardsYellowLeft                   ;84BCD3;
     dw Instruction_PLM_Delete                                            ;84BCD7;
 
 InstList_PLM_DownwardsGateShotblock_YellowRight:
-    dw $0001                                                             ;84BCD9;
-    dw DrawInst_GateShotblockDownwardsYellowRight                        ;84BCDB;
+    dw $0001,DrawInst_GateShotblockDownwardsYellowRight                  ;84BCD9;
     dw Instruction_PLM_Delete                                            ;84BCDD;
 
 InstList_PLM_UpwardsGateShotblock_BlueLeft:
-    dw $0001                                                             ;84BCDF;
-    dw DrawInst_GateShotblockUpwardsBlueLeft                             ;84BCE1;
+    dw $0001,DrawInst_GateShotblockUpwardsBlueLeft                       ;84BCDF;
     dw Instruction_PLM_Delete                                            ;84BCE3;
 
 InstList_PLM_UpwardsGateShotblock_BlueRight:
-    dw $0001                                                             ;84BCE5;
-    dw DrawInst_GateShotblockUpwardsBlueRight                            ;84BCE7;
+    dw $0001,DrawInst_GateShotblockUpwardsBlueRight                      ;84BCE5;
     dw Instruction_PLM_Delete                                            ;84BCE9;
 
 InstList_PLM_UpwardsGateShotblock_RedLeft:
-    dw $0001                                                             ;84BCEB;
-    dw DrawInst_GateShotblockUpwardsRedLeft                              ;84BCED;
+    dw $0001,DrawInst_GateShotblockUpwardsRedLeft                        ;84BCEB;
     dw Instruction_PLM_Delete                                            ;84BCEF;
 
 InstList_PLM_UpwardsGateShotblock_RedRight:
-    dw $0001                                                             ;84BCF1;
-    dw DrawInst_GateShotblockUpwardsRedRight                             ;84BCF3;
+    dw $0001,DrawInst_GateShotblockUpwardsRedRight                       ;84BCF1;
     dw Instruction_PLM_Delete                                            ;84BCF5;
 
 InstList_PLM_UpwardsGateShotblock_GreenLeft:
-    dw $0001                                                             ;84BCF7;
-    dw DrawInst_GateShotblockUpwardsGreenLeft                            ;84BCF9;
+    dw $0001,DrawInst_GateShotblockUpwardsGreenLeft                      ;84BCF7;
     dw Instruction_PLM_Delete                                            ;84BCFB;
 
 InstList_PLM_UpwardsGateShotblock_GreenRight:
-    dw $0001                                                             ;84BCFD;
-    dw DrawInst_GateShotblockUpwardsGreenRight                           ;84BCFF;
+    dw $0001,DrawInst_GateShotblockUpwardsGreenRight                     ;84BCFD;
     dw Instruction_PLM_Delete                                            ;84BD01;
 
 InstList_PLM_UpwardsGateShotblock_YellowLeft:
-    dw $0001                                                             ;84BD03;
-    dw DrawInst_GateShotblockUpwardsYellowLeft                           ;84BD05;
+    dw $0001,DrawInst_GateShotblockUpwardsYellowLeft                     ;84BD03;
     dw Instruction_PLM_Delete                                            ;84BD07;
 
 InstList_PLM_UpwardsGateShotblock_YellowRight:
-    dw $0001                                                             ;84BD09;
-    dw DrawInst_GateShotblockUpwardsYellowRight                          ;84BD0B;
+    dw $0001,DrawInst_GateShotblockUpwardsYellowRight                    ;84BD09;
     dw Instruction_PLM_Delete                                            ;84BD0D;
 
 PreInstruction_PLM_GotoLinkInstructionIfShot:
@@ -7919,18 +7839,12 @@ Instruction_PLM_SetGreyDoorPreInstruction:
     dw PreInstruction_PLM_GotoLinkInstructionIfCrittersEscaped           ;84BE57;
 
 InstList_PLM_GreyDoorFacingLeft_0:
-    dw $0002                                                             ;84BE59;
-    dw DrawInst_DoorFacingLeft_A677                                      ;84BE5B;
-    dw $0002                                                             ;84BE5D;
-    dw DrawInst_GreyDoorFacingLeft_3                                     ;84BE5F;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84BE61;
-    db $08                                                               ;84BE63;
-    dw $0002                                                             ;84BE64;
-    dw DrawInst_GreyDoorFacingLeft_2                                     ;84BE66;
-    dw $0002                                                             ;84BE68;
-    dw DrawInst_GreyDoorFacingLeft_1                                     ;84BE6A;
-    dw $0001                                                             ;84BE6C;
-    dw DrawInst_GreyDoorFacingLeft_0                                     ;84BE6E;
+    dw $0002,DrawInst_DoorFacingLeft_A677                                ;84BE59;
+    dw $0002,DrawInst_GreyDoorFacingLeft_3                               ;84BE5D;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84BE61;
+    dw $0002,DrawInst_GreyDoorFacingLeft_2                               ;84BE64;
+    dw $0002,DrawInst_GreyDoorFacingLeft_1                               ;84BE68;
+    dw $0001,DrawInst_GreyDoorFacingLeft_0                               ;84BE6C;
 
 InstList_PLM_GreyDoorFacingLeft_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84BE70;
@@ -7938,8 +7852,7 @@ InstList_PLM_GreyDoorFacingLeft_1:
     dw Instruction_PLM_LinkInstruction_Y                                 ;84BE74;
     dw InstList_PLM_GreyDoorFacingLeft_3                                 ;84BE76;
     dw Instruction_PLM_SetGreyDoorPreInstruction                         ;84BE78;
-    dw $0001                                                             ;84BE7A;
-    dw DrawInst_GreyDoorFacingLeft_0                                     ;84BE7C;
+    dw $0001,DrawInst_GreyDoorFacingLeft_0                               ;84BE7A;
 
 InstList_PLM_GreyDoorFacingLeft_2:
     dw Instruction_PLM_Sleep                                             ;84BE7E;
@@ -7953,52 +7866,34 @@ InstList_PLM_GreyDoorFacingLeft_3:
     dw PreInstruction_PLM_GotoLinkInstructionIfShot                      ;84BE8A;
 
 InstList_PLM_GreyDoorFacingLeft_4:
-    dw $0003                                                             ;84BE8C;
-    dw DrawInst_DoorFacingLeft_A9B3                                      ;84BE8E;
-    dw $0004                                                             ;84BE90;
-    dw DrawInst_GreyDoorFacingLeft_0                                     ;84BE92;
-    dw $0003                                                             ;84BE94;
-    dw DrawInst_DoorFacingLeft_A9B3                                      ;84BE96;
-    dw $0004                                                             ;84BE98;
-    dw DrawInst_GreyDoorFacingLeft_0                                     ;84BE9A;
-    dw $0003                                                             ;84BE9C;
-    dw DrawInst_DoorFacingLeft_A9B3                                      ;84BE9E;
-    dw $0004                                                             ;84BEA0;
-    dw DrawInst_GreyDoorFacingLeft_0                                     ;84BEA2;
+    dw $0003,DrawInst_DoorFacingLeft_A9B3                                ;84BE8C;
+    dw $0004,DrawInst_GreyDoorFacingLeft_0                               ;84BE90;
+    dw $0003,DrawInst_DoorFacingLeft_A9B3                                ;84BE94;
+    dw $0004,DrawInst_GreyDoorFacingLeft_0                               ;84BE98;
+    dw $0003,DrawInst_DoorFacingLeft_A9B3                                ;84BE9C;
+    dw $0004,DrawInst_GreyDoorFacingLeft_0                               ;84BEA0;
     dw Instruction_PLM_GotoY                                             ;84BEA4;
     dw InstList_PLM_GreyDoorFacingLeft_4                                 ;84BEA6;
 
 InstList_PLM_GreyDoorFacingLeft_5:
-    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY                   ;84BEA8;
-    db $01                                                               ;84BEAA;
+    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY : db $01          ;84BEA8;
     dw InstList_PLM_GreyDoorFacingLeft_6                                 ;84BEAB;
 
 InstList_PLM_GreyDoorFacingLeft_6:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84BEAD;
-    db $07                                                               ;84BEAF;
-    dw $0004                                                             ;84BEB0;
-    dw DrawInst_GreyDoorFacingLeft_1                                     ;84BEB2;
-    dw $0004                                                             ;84BEB4;
-    dw DrawInst_GreyDoorFacingLeft_2                                     ;84BEB6;
-    dw $0004                                                             ;84BEB8;
-    dw DrawInst_GreyDoorFacingLeft_3                                     ;84BEBA;
-    dw $0001                                                             ;84BEBC;
-    dw DrawInst_DoorFacingLeft_A677                                      ;84BEBE;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84BEAD;
+    dw $0004,DrawInst_GreyDoorFacingLeft_1                               ;84BEB0;
+    dw $0004,DrawInst_GreyDoorFacingLeft_2                               ;84BEB4;
+    dw $0004,DrawInst_GreyDoorFacingLeft_3                               ;84BEB8;
+    dw $0001,DrawInst_DoorFacingLeft_A677                                ;84BEBC;
     dw Instruction_PLM_Delete                                            ;84BEC0;
 
 InstList_PLM_GreyDoorFacingRight_0:
-    dw $0002                                                             ;84BEC2;
-    dw DrawInst_DoorFacingRight_A683                                     ;84BEC4;
-    dw $0002                                                             ;84BEC6;
-    dw DrawInst_GreyDoorFacingRight_3                                    ;84BEC8;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84BECA;
-    db $08                                                               ;84BECC;
-    dw $0002                                                             ;84BECD;
-    dw DrawInst_GreyDoorFacingRight_2                                    ;84BECF;
-    dw $0002                                                             ;84BED1;
-    dw DrawInst_GreyDoorFacingRight_1                                    ;84BED3;
-    dw $0001                                                             ;84BED5;
-    dw DrawInst_GreyDoorFacingRight_0                                    ;84BED7;
+    dw $0002,DrawInst_DoorFacingRight_A683                               ;84BEC2;
+    dw $0002,DrawInst_GreyDoorFacingRight_3                              ;84BEC6;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84BECA;
+    dw $0002,DrawInst_GreyDoorFacingRight_2                              ;84BECD;
+    dw $0002,DrawInst_GreyDoorFacingRight_1                              ;84BED1;
+    dw $0001,DrawInst_GreyDoorFacingRight_0                              ;84BED5;
 
 InstList_PLM_GreyDoorFacingRight_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84BED9;
@@ -8006,8 +7901,7 @@ InstList_PLM_GreyDoorFacingRight_1:
     dw Instruction_PLM_LinkInstruction_Y                                 ;84BEDD;
     dw InstList_PLM_GreyDoorFacingRight_3                                ;84BEDF;
     dw Instruction_PLM_SetGreyDoorPreInstruction                         ;84BEE1;
-    dw $0001                                                             ;84BEE3;
-    dw DrawInst_GreyDoorFacingRight_0                                    ;84BEE5;
+    dw $0001,DrawInst_GreyDoorFacingRight_0                              ;84BEE3;
 
 InstList_PLM_GreyDoorFacingRight_2:
     dw Instruction_PLM_Sleep                                             ;84BEE7;
@@ -8021,52 +7915,34 @@ InstList_PLM_GreyDoorFacingRight_3:
     dw PreInstruction_PLM_GotoLinkInstructionIfShot                      ;84BEF3;
 
 InstList_PLM_GreyDoorFacingRight_4:
-    dw $0003                                                             ;84BEF5;
-    dw DrawInst_DoorFacingRight_A9EF                                     ;84BEF7;
-    dw $0004                                                             ;84BEF9;
-    dw DrawInst_GreyDoorFacingRight_0                                    ;84BEFB;
-    dw $0003                                                             ;84BEFD;
-    dw DrawInst_DoorFacingRight_A9EF                                     ;84BEFF;
-    dw $0004                                                             ;84BF01;
-    dw DrawInst_GreyDoorFacingRight_0                                    ;84BF03;
-    dw $0003                                                             ;84BF05;
-    dw DrawInst_DoorFacingRight_A9EF                                     ;84BF07;
-    dw $0004                                                             ;84BF09;
-    dw DrawInst_GreyDoorFacingRight_0                                    ;84BF0B;
+    dw $0003,DrawInst_DoorFacingRight_A9EF                               ;84BEF5;
+    dw $0004,DrawInst_GreyDoorFacingRight_0                              ;84BEF9;
+    dw $0003,DrawInst_DoorFacingRight_A9EF                               ;84BEFD;
+    dw $0004,DrawInst_GreyDoorFacingRight_0                              ;84BF01;
+    dw $0003,DrawInst_DoorFacingRight_A9EF                               ;84BF05;
+    dw $0004,DrawInst_GreyDoorFacingRight_0                              ;84BF09;
     dw Instruction_PLM_GotoY                                             ;84BF0D;
     dw InstList_PLM_GreyDoorFacingRight_4                                ;84BF0F;
 
 InstList_PLM_GreyDoorFacingRight_5:
-    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY                   ;84BF11;
-    db $01                                                               ;84BF13;
+    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY : db $01          ;84BF11;
     dw InstList_PLM_GreyDoorFacingRight_6                                ;84BF14;
 
 InstList_PLM_GreyDoorFacingRight_6:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84BF16;
-    db $07                                                               ;84BF18;
-    dw $0004                                                             ;84BF19;
-    dw DrawInst_GreyDoorFacingRight_1                                    ;84BF1B;
-    dw $0004                                                             ;84BF1D;
-    dw DrawInst_GreyDoorFacingRight_2                                    ;84BF1F;
-    dw $0004                                                             ;84BF21;
-    dw DrawInst_GreyDoorFacingRight_3                                    ;84BF23;
-    dw $0001                                                             ;84BF25;
-    dw DrawInst_DoorFacingRight_A683                                     ;84BF27;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84BF16;
+    dw $0004,DrawInst_GreyDoorFacingRight_1                              ;84BF19;
+    dw $0004,DrawInst_GreyDoorFacingRight_2                              ;84BF1D;
+    dw $0004,DrawInst_GreyDoorFacingRight_3                              ;84BF21;
+    dw $0001,DrawInst_DoorFacingRight_A683                               ;84BF25;
     dw Instruction_PLM_Delete                                            ;84BF29;
 
 InstList_PLM_GreyDoorFacingUp_0:
-    dw $0002                                                             ;84BF2B;
-    dw DrawInst_DoorFacingUp_A68F                                        ;84BF2D;
-    dw $0002                                                             ;84BF2F;
-    dw DrawInst_GreyDoorFacingUp_3                                       ;84BF31;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84BF33;
-    db $08                                                               ;84BF35;
-    dw $0002                                                             ;84BF36;
-    dw DrawInst_GreyDoorFacingUp_2                                       ;84BF38;
-    dw $0002                                                             ;84BF3A;
-    dw DrawInst_GreyDoorFacingUp_1                                       ;84BF3C;
-    dw $0001                                                             ;84BF3E;
-    dw DrawInst_GreyDoorFacingUp_0                                       ;84BF40;
+    dw $0002,DrawInst_DoorFacingUp_A68F                                  ;84BF2B;
+    dw $0002,DrawInst_GreyDoorFacingUp_3                                 ;84BF2F;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84BF33;
+    dw $0002,DrawInst_GreyDoorFacingUp_2                                 ;84BF36;
+    dw $0002,DrawInst_GreyDoorFacingUp_1                                 ;84BF3A;
+    dw $0001,DrawInst_GreyDoorFacingUp_0                                 ;84BF3E;
 
 InstList_PLM_GreyDoorFacingUp_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84BF42;
@@ -8074,8 +7950,7 @@ InstList_PLM_GreyDoorFacingUp_1:
     dw Instruction_PLM_LinkInstruction_Y                                 ;84BF46;
     dw InstList_PLM_GreyDoorFacingUp_3                                   ;84BF48;
     dw Instruction_PLM_SetGreyDoorPreInstruction                         ;84BF4A;
-    dw $0001                                                             ;84BF4C;
-    dw DrawInst_GreyDoorFacingUp_0                                       ;84BF4E;
+    dw $0001,DrawInst_GreyDoorFacingUp_0                                 ;84BF4C;
 
 InstList_PLM_GreyDoorFacingUp_2:
     dw Instruction_PLM_Sleep                                             ;84BF50;
@@ -8089,52 +7964,34 @@ InstList_PLM_GreyDoorFacingUp_3:
     dw PreInstruction_PLM_GotoLinkInstructionIfShot                      ;84BF5C;
 
 InstList_PLM_GreyDoorFacingUp_4:
-    dw $0003                                                             ;84BF5E;
-    dw DrawInst_DoorFacingUp_AA2B                                        ;84BF60;
-    dw $0004                                                             ;84BF62;
-    dw DrawInst_GreyDoorFacingUp_0                                       ;84BF64;
-    dw $0003                                                             ;84BF66;
-    dw DrawInst_DoorFacingUp_AA2B                                        ;84BF68;
-    dw $0004                                                             ;84BF6A;
-    dw DrawInst_GreyDoorFacingUp_0                                       ;84BF6C;
-    dw $0003                                                             ;84BF6E;
-    dw DrawInst_DoorFacingUp_AA2B                                        ;84BF70;
-    dw $0004                                                             ;84BF72;
-    dw DrawInst_GreyDoorFacingUp_0                                       ;84BF74;
+    dw $0003,DrawInst_DoorFacingUp_AA2B                                  ;84BF5E;
+    dw $0004,DrawInst_GreyDoorFacingUp_0                                 ;84BF62;
+    dw $0003,DrawInst_DoorFacingUp_AA2B                                  ;84BF66;
+    dw $0004,DrawInst_GreyDoorFacingUp_0                                 ;84BF6A;
+    dw $0003,DrawInst_DoorFacingUp_AA2B                                  ;84BF6E;
+    dw $0004,DrawInst_GreyDoorFacingUp_0                                 ;84BF72;
     dw Instruction_PLM_GotoY                                             ;84BF76;
     dw InstList_PLM_GreyDoorFacingUp_4                                   ;84BF78;
 
 InstList_PLM_GreyDoorFacingUp_5:
-    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY                   ;84BF7A;
-    db $01                                                               ;84BF7C;
+    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY : db $01          ;84BF7A;
     dw InstList_PLM_GreyDoorFacingUp_6                                   ;84BF7D;
 
 InstList_PLM_GreyDoorFacingUp_6:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84BF7F;
-    db $07                                                               ;84BF81;
-    dw $0004                                                             ;84BF82;
-    dw DrawInst_GreyDoorFacingUp_1                                       ;84BF84;
-    dw $0004                                                             ;84BF86;
-    dw DrawInst_GreyDoorFacingUp_2                                       ;84BF88;
-    dw $0004                                                             ;84BF8A;
-    dw DrawInst_GreyDoorFacingUp_3                                       ;84BF8C;
-    dw $0001                                                             ;84BF8E;
-    dw DrawInst_DoorFacingUp_A68F                                        ;84BF90;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84BF7F;
+    dw $0004,DrawInst_GreyDoorFacingUp_1                                 ;84BF82;
+    dw $0004,DrawInst_GreyDoorFacingUp_2                                 ;84BF86;
+    dw $0004,DrawInst_GreyDoorFacingUp_3                                 ;84BF8A;
+    dw $0001,DrawInst_DoorFacingUp_A68F                                  ;84BF8E;
     dw Instruction_PLM_Delete                                            ;84BF92;
 
 InstList_PLM_GreyDoorFacingDown_0:
-    dw $0002                                                             ;84BF94;
-    dw DrawInst_DoorFacingDown_A69B                                      ;84BF96;
-    dw $0002                                                             ;84BF98;
-    dw DrawInst_GreyDoorFacingDown_3                                     ;84BF9A;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84BF9C;
-    db $08                                                               ;84BF9E;
-    dw $0002                                                             ;84BF9F;
-    dw DrawInst_GreyDoorFacingDown_2                                     ;84BFA1;
-    dw $0002                                                             ;84BFA3;
-    dw DrawInst_GreyDoorFacingDown_1                                     ;84BFA5;
-    dw $0001                                                             ;84BFA7;
-    dw DrawInst_GreyDoorFacingDown_0                                     ;84BFA9;
+    dw $0002,DrawInst_DoorFacingDown_A69B                                ;84BF94;
+    dw $0002,DrawInst_GreyDoorFacingDown_3                               ;84BF98;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84BF9C;
+    dw $0002,DrawInst_GreyDoorFacingDown_2                               ;84BF9F;
+    dw $0002,DrawInst_GreyDoorFacingDown_1                               ;84BFA3;
+    dw $0001,DrawInst_GreyDoorFacingDown_0                               ;84BFA7;
 
 InstList_PLM_GreyDoorFacingDown_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84BFAB;
@@ -8142,8 +7999,7 @@ InstList_PLM_GreyDoorFacingDown_1:
     dw Instruction_PLM_LinkInstruction_Y                                 ;84BFAF;
     dw InstList_PLM_GreyDoorFacingDown_3                                 ;84BFB1;
     dw Instruction_PLM_SetGreyDoorPreInstruction                         ;84BFB3;
-    dw $0001                                                             ;84BFB5;
-    dw DrawInst_GreyDoorFacingDown_0                                     ;84BFB7;
+    dw $0001,DrawInst_GreyDoorFacingDown_0                               ;84BFB5;
 
 InstList_PLM_GreyDoorFacingDown_2:
     dw Instruction_PLM_Sleep                                             ;84BFB9;
@@ -8157,52 +8013,34 @@ InstList_PLM_GreyDoorFacingDown_3:
     dw PreInstruction_PLM_GotoLinkInstructionIfShot                      ;84BFC5;
 
 InstList_PLM_GreyDoorFacingDown_4:
-    dw $0003                                                             ;84BFC7;
-    dw DrawInst_DoorFacingDown_AA67                                      ;84BFC9;
-    dw $0004                                                             ;84BFCB;
-    dw DrawInst_GreyDoorFacingDown_0                                     ;84BFCD;
-    dw $0003                                                             ;84BFCF;
-    dw DrawInst_DoorFacingDown_AA67                                      ;84BFD1;
-    dw $0004                                                             ;84BFD3;
-    dw DrawInst_GreyDoorFacingDown_0                                     ;84BFD5;
-    dw $0003                                                             ;84BFD7;
-    dw DrawInst_DoorFacingDown_AA67                                      ;84BFD9;
-    dw $0004                                                             ;84BFDB;
-    dw DrawInst_GreyDoorFacingDown_0                                     ;84BFDD;
+    dw $0003,DrawInst_DoorFacingDown_AA67                                ;84BFC7;
+    dw $0004,DrawInst_GreyDoorFacingDown_0                               ;84BFCB;
+    dw $0003,DrawInst_DoorFacingDown_AA67                                ;84BFCF;
+    dw $0004,DrawInst_GreyDoorFacingDown_0                               ;84BFD3;
+    dw $0003,DrawInst_DoorFacingDown_AA67                                ;84BFD7;
+    dw $0004,DrawInst_GreyDoorFacingDown_0                               ;84BFDB;
     dw Instruction_PLM_GotoY                                             ;84BFDF;
     dw InstList_PLM_GreyDoorFacingDown_4                                 ;84BFE1;
 
 InstList_PLM_GreyDoorFacingDown_5:
-    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY                   ;84BFE3;
-    db $01                                                               ;84BFE5;
+    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY : db $01          ;84BFE3;
     dw InstList_PLM_GreyDoorFacingDown_6                                 ;84BFE6;
 
 InstList_PLM_GreyDoorFacingDown_6:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84BFE8;
-    db $07                                                               ;84BFEA;
-    dw $0004                                                             ;84BFEB;
-    dw DrawInst_GreyDoorFacingDown_1                                     ;84BFED;
-    dw $0004                                                             ;84BFEF;
-    dw DrawInst_GreyDoorFacingDown_2                                     ;84BFF1;
-    dw $0004                                                             ;84BFF3;
-    dw DrawInst_GreyDoorFacingDown_3                                     ;84BFF5;
-    dw $0001                                                             ;84BFF7;
-    dw DrawInst_DoorFacingDown_A69B                                      ;84BFF9;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84BFE8;
+    dw $0004,DrawInst_GreyDoorFacingDown_1                               ;84BFEB;
+    dw $0004,DrawInst_GreyDoorFacingDown_2                               ;84BFEF;
+    dw $0004,DrawInst_GreyDoorFacingDown_3                               ;84BFF3;
+    dw $0001,DrawInst_DoorFacingDown_A69B                                ;84BFF7;
     dw Instruction_PLM_Delete                                            ;84BFFB;
 
 InstList_PLM_YellowDoorFacingLeft_0:
-    dw $0002                                                             ;84BFFD;
-    dw DrawInst_DoorFacingLeft_A677                                      ;84BFFF;
-    dw $0002                                                             ;84C001;
-    dw DrawInst_YellowDoorFacingLeft_3                                   ;84C003;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C005;
-    db $08                                                               ;84C007;
-    dw $0002                                                             ;84C008;
-    dw DrawInst_YellowDoorFacingLeft_2                                   ;84C00A;
-    dw $0002                                                             ;84C00C;
-    dw DrawInst_YellowDoorFacingLeft_1                                   ;84C00E;
-    dw $0001                                                             ;84C010;
-    dw DrawInst_YellowDoorFacingLeft_0                                   ;84C012;
+    dw $0002,DrawInst_DoorFacingLeft_A677                                ;84BFFD;
+    dw $0002,DrawInst_YellowDoorFacingLeft_3                             ;84C001;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84C005;
+    dw $0002,DrawInst_YellowDoorFacingLeft_2                             ;84C008;
+    dw $0002,DrawInst_YellowDoorFacingLeft_1                             ;84C00C;
+    dw $0001,DrawInst_YellowDoorFacingLeft_0                             ;84C010;
 
 InstList_PLM_YellowDoorFacingLeft_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C014;
@@ -8211,8 +8049,7 @@ InstList_PLM_YellowDoorFacingLeft_1:
     dw InstList_PLM_YellowDoorFacingLeft_3                               ;84C01A;
     dw Instruction_PLM_PreInstruction_inY                                ;84C01C;
     dw PreInstruction_PLM_GotoLinkInstructionIfHitWithPowerBomb          ;84C01E;
-    dw $0001                                                             ;84C020;
-    dw DrawInst_YellowDoorFacingLeft_0                                   ;84C022;
+    dw $0001,DrawInst_YellowDoorFacingLeft_0                             ;84C020;
 
 InstList_PLM_YellowDoorFacingLeft_2:
     dw Instruction_PLM_Sleep                                             ;84C024;
@@ -8220,50 +8057,32 @@ InstList_PLM_YellowDoorFacingLeft_2:
     dw InstList_PLM_YellowDoorFacingLeft_2                               ;84C028;
 
 InstList_PLM_YellowDoorFacingLeft_3:
-    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY                   ;84C02A;
-    db $01                                                               ;84C02C;
+    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY : db $01          ;84C02A;
     dw InstList_PLM_YellowDoorFacingLeft_4                               ;84C02D;
-    dw $0003                                                             ;84C02F;
-    dw DrawInst_DoorFacingLeft_A9B3                                      ;84C031;
-    dw $0004                                                             ;84C033;
-    dw DrawInst_YellowDoorFacingLeft_0                                   ;84C035;
-    dw $0003                                                             ;84C037;
-    dw DrawInst_DoorFacingLeft_A9B3                                      ;84C039;
-    dw $0004                                                             ;84C03B;
-    dw DrawInst_YellowDoorFacingLeft_0                                   ;84C03D;
-    dw $0003                                                             ;84C03F;
-    dw DrawInst_DoorFacingLeft_A9B3                                      ;84C041;
-    dw $0004                                                             ;84C043;
-    dw DrawInst_YellowDoorFacingLeft_0                                   ;84C045;
+    dw $0003,DrawInst_DoorFacingLeft_A9B3                                ;84C02F;
+    dw $0004,DrawInst_YellowDoorFacingLeft_0                             ;84C033;
+    dw $0003,DrawInst_DoorFacingLeft_A9B3                                ;84C037;
+    dw $0004,DrawInst_YellowDoorFacingLeft_0                             ;84C03B;
+    dw $0003,DrawInst_DoorFacingLeft_A9B3                                ;84C03F;
+    dw $0004,DrawInst_YellowDoorFacingLeft_0                             ;84C043;
     dw Instruction_PLM_GotoY                                             ;84C047;
     dw InstList_PLM_YellowDoorFacingLeft_2                               ;84C049;
 
 InstList_PLM_YellowDoorFacingLeft_4:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C04B;
-    db $07                                                               ;84C04D;
-    dw $0004                                                             ;84C04E;
-    dw DrawInst_YellowDoorFacingLeft_1                                   ;84C050;
-    dw $0004                                                             ;84C052;
-    dw DrawInst_YellowDoorFacingLeft_2                                   ;84C054;
-    dw $0004                                                             ;84C056;
-    dw DrawInst_YellowDoorFacingLeft_3                                   ;84C058;
-    dw $005C                                                             ;84C05A;
-    dw DrawInst_DoorFacingLeft_A677                                      ;84C05C;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C04B;
+    dw $0004,DrawInst_YellowDoorFacingLeft_1                             ;84C04E;
+    dw $0004,DrawInst_YellowDoorFacingLeft_2                             ;84C052;
+    dw $0004,DrawInst_YellowDoorFacingLeft_3                             ;84C056;
+    dw $005C,DrawInst_DoorFacingLeft_A677                                ;84C05A;
     dw Instruction_PLM_Delete                                            ;84C05E;
 
 InstList_PLM_YellowDoorFacingRight_0:
-    dw $0002                                                             ;84C060;
-    dw DrawInst_DoorFacingRight_A683                                     ;84C062;
-    dw $0002                                                             ;84C064;
-    dw DrawInst_YellowDoorFacingRight_3                                  ;84C066;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C068;
-    db $08                                                               ;84C06A;
-    dw $0002                                                             ;84C06B;
-    dw DrawInst_YellowDoorFacingRight_2                                  ;84C06D;
-    dw $0002                                                             ;84C06F;
-    dw DrawInst_YellowDoorFacingRight_1                                  ;84C071;
-    dw $0001                                                             ;84C073;
-    dw DrawInst_YellowDoorFacingRight_0                                  ;84C075;
+    dw $0002,DrawInst_DoorFacingRight_A683                               ;84C060;
+    dw $0002,DrawInst_YellowDoorFacingRight_3                            ;84C064;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84C068;
+    dw $0002,DrawInst_YellowDoorFacingRight_2                            ;84C06B;
+    dw $0002,DrawInst_YellowDoorFacingRight_1                            ;84C06F;
+    dw $0001,DrawInst_YellowDoorFacingRight_0                            ;84C073;
 
 InstList_PLM_YellowDoorFacingRight_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C077;
@@ -8272,8 +8091,7 @@ InstList_PLM_YellowDoorFacingRight_1:
     dw InstList_PLM_YellowDoorFacingRight_3                              ;84C07D;
     dw Instruction_PLM_PreInstruction_inY                                ;84C07F;
     dw PreInstruction_PLM_GotoLinkInstructionIfHitWithPowerBomb          ;84C081;
-    dw $0001                                                             ;84C083;
-    dw DrawInst_YellowDoorFacingRight_0                                  ;84C085;
+    dw $0001,DrawInst_YellowDoorFacingRight_0                            ;84C083;
 
 InstList_PLM_YellowDoorFacingRight_2:
     dw Instruction_PLM_Sleep                                             ;84C087;
@@ -8281,50 +8099,32 @@ InstList_PLM_YellowDoorFacingRight_2:
     dw InstList_PLM_YellowDoorFacingRight_2                              ;84C08B;
 
 InstList_PLM_YellowDoorFacingRight_3:
-    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY                   ;84C08D;
-    db $01                                                               ;84C08F;
-    dw InstList_PLM_YellowDoorFacingRight_4                              ;84C090;
-    dw $0003                                                             ;84C092;
-    dw DrawInst_DoorFacingRight_A9EF                                     ;84C094;
-    dw $0004                                                             ;84C096;
-    dw DrawInst_YellowDoorFacingRight_0                                  ;84C098;
-    dw $0003                                                             ;84C09A;
-    dw DrawInst_DoorFacingRight_A9EF                                     ;84C09C;
-    dw $0004                                                             ;84C09E;
-    dw DrawInst_YellowDoorFacingRight_0                                  ;84C0A0;
-    dw $0003                                                             ;84C0A2;
-    dw DrawInst_DoorFacingRight_A9EF                                     ;84C0A4;
-    dw $0004                                                             ;84C0A6;
-    dw DrawInst_YellowDoorFacingRight_0                                  ;84C0A8;
+    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY : db $01          ;84C08D;
+    dw InstList_PLM_YellowDoorFacingRight_4                              ;84C08F;
+    dw $0003,DrawInst_DoorFacingRight_A9EF                               ;84C092;
+    dw $0004,DrawInst_YellowDoorFacingRight_0                            ;84C096;
+    dw $0003,DrawInst_DoorFacingRight_A9EF                               ;84C09A;
+    dw $0004,DrawInst_YellowDoorFacingRight_0                            ;84C09E;
+    dw $0003,DrawInst_DoorFacingRight_A9EF                               ;84C0A2;
+    dw $0004,DrawInst_YellowDoorFacingRight_0                            ;84C0A6;
     dw Instruction_PLM_GotoY                                             ;84C0AA;
     dw InstList_PLM_YellowDoorFacingRight_2                              ;84C0AC;
 
 InstList_PLM_YellowDoorFacingRight_4:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C0AE;
-    db $07                                                               ;84C0B0;
-    dw $0006                                                             ;84C0B1;
-    dw DrawInst_YellowDoorFacingRight_1                                  ;84C0B3;
-    dw $0006                                                             ;84C0B5;
-    dw DrawInst_YellowDoorFacingRight_2                                  ;84C0B7;
-    dw $0006                                                             ;84C0B9;
-    dw DrawInst_YellowDoorFacingRight_3                                  ;84C0BB;
-    dw $0001                                                             ;84C0BD;
-    dw DrawInst_DoorFacingRight_A683                                     ;84C0BF;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C0AE;
+    dw $0006,DrawInst_YellowDoorFacingRight_1                            ;84C0B1;
+    dw $0006,DrawInst_YellowDoorFacingRight_2                            ;84C0B5;
+    dw $0006,DrawInst_YellowDoorFacingRight_3                            ;84C0B9;
+    dw $0001,DrawInst_DoorFacingRight_A683                               ;84C0BD;
     dw Instruction_PLM_Delete                                            ;84C0C1;
 
 InstList_PLM_YellowDoorFacingUp_0:
-    dw $0002                                                             ;84C0C3;
-    dw DrawInst_DoorFacingUp_A68F                                        ;84C0C5;
-    dw $0002                                                             ;84C0C7;
-    dw DrawInst_YellowDoorFacingUp_3                                     ;84C0C9;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C0CB;
-    db $08                                                               ;84C0CD;
-    dw $0002                                                             ;84C0CE;
-    dw DrawInst_YellowDoorFacingUp_2                                     ;84C0D0;
-    dw $0002                                                             ;84C0D2;
-    dw DrawInst_YellowDoorFacingUp_1                                     ;84C0D4;
-    dw $0001                                                             ;84C0D6;
-    dw DrawInst_YellowDoorFacingUp_0                                     ;84C0D8;
+    dw $0002,DrawInst_DoorFacingUp_A68F                                  ;84C0C3;
+    dw $0002,DrawInst_YellowDoorFacingUp_3                               ;84C0C7;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84C0CB;
+    dw $0002,DrawInst_YellowDoorFacingUp_2                               ;84C0CE;
+    dw $0002,DrawInst_YellowDoorFacingUp_1                               ;84C0D2;
+    dw $0001,DrawInst_YellowDoorFacingUp_0                               ;84C0D6;
 
 InstList_PLM_YellowDoorFacingUp_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C0DA;
@@ -8333,57 +8133,38 @@ InstList_PLM_YellowDoorFacingUp_1:
     dw InstList_PLM_YellowDoorFacingUp_3                                 ;84C0E0;
     dw Instruction_PLM_PreInstruction_inY                                ;84C0E2;
     dw PreInstruction_PLM_GotoLinkInstructionIfHitWithPowerBomb          ;84C0E4;
-    dw $0001                                                             ;84C0E6;
-    dw DrawInst_YellowDoorFacingUp_0                                     ;84C0E8;
+    dw $0001,DrawInst_YellowDoorFacingUp_0                               ;84C0E6;
 
 InstList_PLM_YellowDoorFacingUp_2:
     dw Instruction_PLM_Sleep                                             ;84C0EA;
 
 InstList_PLM_YellowDoorFacingUp_3:
-    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY                   ;84C0EC;
-    db $01                                                               ;84C0EE;
+    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY : db $01          ;84C0EC;
     dw InstList_PLM_YellowDoorFacingUp_4                                 ;84C0EF;
-    dw $0003                                                             ;84C0F1;
-    dw DrawInst_DoorFacingUp_AA2B                                        ;84C0F3;
-    dw $0004                                                             ;84C0F5;
-    dw DrawInst_YellowDoorFacingUp_0                                     ;84C0F7;
-    dw $0003                                                             ;84C0F9;
-    dw DrawInst_DoorFacingUp_AA2B                                        ;84C0FB;
-    dw $0004                                                             ;84C0FD;
-    dw DrawInst_YellowDoorFacingUp_0                                     ;84C0FF;
-    dw $0003                                                             ;84C101;
-    dw DrawInst_DoorFacingUp_AA2B                                        ;84C103;
-    dw $0004                                                             ;84C105;
-    dw DrawInst_YellowDoorFacingUp_0                                     ;84C107;
+    dw $0003,DrawInst_DoorFacingUp_AA2B                                  ;84C0F1;
+    dw $0004,DrawInst_YellowDoorFacingUp_0                               ;84C0F5;
+    dw $0003,DrawInst_DoorFacingUp_AA2B                                  ;84C0F9;
+    dw $0004,DrawInst_YellowDoorFacingUp_0                               ;84C0FD;
+    dw $0003,DrawInst_DoorFacingUp_AA2B                                  ;84C101;
+    dw $0004,DrawInst_YellowDoorFacingUp_0                               ;84C105;
     dw Instruction_PLM_GotoY                                             ;84C109;
     dw InstList_PLM_YellowDoorFacingUp_2                                 ;84C10B;
 
 InstList_PLM_YellowDoorFacingUp_4:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C10D;
-    db $07                                                               ;84C10F;
-    dw $0006                                                             ;84C110;
-    dw DrawInst_YellowDoorFacingUp_1                                     ;84C112;
-    dw $0006                                                             ;84C114;
-    dw DrawInst_YellowDoorFacingUp_2                                     ;84C116;
-    dw $0006                                                             ;84C118;
-    dw DrawInst_YellowDoorFacingUp_3                                     ;84C11A;
-    dw $0001                                                             ;84C11C;
-    dw DrawInst_DoorFacingUp_A68F                                        ;84C11E;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C10D;
+    dw $0006,DrawInst_YellowDoorFacingUp_1                               ;84C110;
+    dw $0006,DrawInst_YellowDoorFacingUp_2                               ;84C114;
+    dw $0006,DrawInst_YellowDoorFacingUp_3                               ;84C118;
+    dw $0001,DrawInst_DoorFacingUp_A68F                                  ;84C11C;
     dw Instruction_PLM_Delete                                            ;84C120;
 
 InstList_PLM_YellowDoorFacingDown_0:
-    dw $0002                                                             ;84C122;
-    dw DrawInst_DoorFacingDown_A69B                                      ;84C124;
-    dw $0002                                                             ;84C126;
-    dw DrawInst_YellowDoorFacingDown_3                                   ;84C128;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C12A;
-    db $08                                                               ;84C12C;
-    dw $0002                                                             ;84C12D;
-    dw DrawInst_YellowDoorFacingDown_2                                   ;84C12F;
-    dw $0002                                                             ;84C131;
-    dw DrawInst_YellowDoorFacingDown_1                                   ;84C133;
-    dw $0001                                                             ;84C135;
-    dw DrawInst_YellowDoorFacingDown_0                                   ;84C137;
+    dw $0002,DrawInst_DoorFacingDown_A69B                                ;84C122;
+    dw $0002,DrawInst_YellowDoorFacingDown_3                             ;84C126;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84C12A;
+    dw $0002,DrawInst_YellowDoorFacingDown_2                             ;84C12D;
+    dw $0002,DrawInst_YellowDoorFacingDown_1                             ;84C131;
+    dw $0001,DrawInst_YellowDoorFacingDown_0                             ;84C135;
 
 InstList_PLM_YellowDoorFacingDown_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C139;
@@ -8392,59 +8173,39 @@ InstList_PLM_YellowDoorFacingDown_1:
     dw InstList_PLM_YellowDoorFacingDown_3                               ;84C13F;
     dw Instruction_PLM_PreInstruction_inY                                ;84C141;
     dw PreInstruction_PLM_GotoLinkInstructionIfHitWithPowerBomb          ;84C143;
-    dw $0002                                                             ;84C145;
-    dw DrawInst_YellowDoorFacingDown_0                                   ;84C147;
-    dw $0001                                                             ;84C149;
-    dw DrawInst_YellowDoorFacingDown_0                                   ;84C14B;
+    dw $0002,DrawInst_YellowDoorFacingDown_0                             ;84C145;
+    dw $0001,DrawInst_YellowDoorFacingDown_0                             ;84C149;
 
 InstList_PLM_YellowDoorFacingDown_2:
     dw Instruction_PLM_Sleep                                             ;84C14D;
 
 InstList_PLM_YellowDoorFacingDown_3:
-    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY                   ;84C14F;
-    db $01                                                               ;84C151;
+    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY : db $01          ;84C14F;
     dw InstList_PLM_YellowDoorFacingDown_4                               ;84C152;
-    dw $0003                                                             ;84C154;
-    dw DrawInst_DoorFacingDown_AA67                                      ;84C156;
-    dw $0004                                                             ;84C158;
-    dw DrawInst_YellowDoorFacingDown_0                                   ;84C15A;
-    dw $0003                                                             ;84C15C;
-    dw DrawInst_DoorFacingDown_AA67                                      ;84C15E;
-    dw $0004                                                             ;84C160;
-    dw DrawInst_YellowDoorFacingDown_0                                   ;84C162;
-    dw $0003                                                             ;84C164;
-    dw DrawInst_DoorFacingDown_AA67                                      ;84C166;
-    dw $0004                                                             ;84C168;
-    dw DrawInst_YellowDoorFacingDown_0                                   ;84C16A;
+    dw $0003,DrawInst_DoorFacingDown_AA67                                ;84C154;
+    dw $0004,DrawInst_YellowDoorFacingDown_0                             ;84C158;
+    dw $0003,DrawInst_DoorFacingDown_AA67                                ;84C15C;
+    dw $0004,DrawInst_YellowDoorFacingDown_0                             ;84C160;
+    dw $0003,DrawInst_DoorFacingDown_AA67                                ;84C164;
+    dw $0004,DrawInst_YellowDoorFacingDown_0                             ;84C168;
     dw Instruction_PLM_GotoY                                             ;84C16C;
     dw InstList_PLM_YellowDoorFacingDown_2                               ;84C16E;
 
 InstList_PLM_YellowDoorFacingDown_4:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C170;
-    db $07                                                               ;84C172;
-    dw $0006                                                             ;84C173;
-    dw DrawInst_YellowDoorFacingDown_1                                   ;84C175;
-    dw $0006                                                             ;84C177;
-    dw DrawInst_YellowDoorFacingDown_2                                   ;84C179;
-    dw $0006                                                             ;84C17B;
-    dw DrawInst_YellowDoorFacingDown_3                                   ;84C17D;
-    dw $0001                                                             ;84C17F;
-    dw DrawInst_DoorFacingDown_A69B                                      ;84C181;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C170;
+    dw $0006,DrawInst_YellowDoorFacingDown_1                             ;84C173;
+    dw $0006,DrawInst_YellowDoorFacingDown_2                             ;84C177;
+    dw $0006,DrawInst_YellowDoorFacingDown_3                             ;84C17B;
+    dw $0001,DrawInst_DoorFacingDown_A69B                                ;84C17F;
     dw Instruction_PLM_Delete                                            ;84C183;
 
 InstList_PLM_GreenDoorFacingLeft_0:
-    dw $0002                                                             ;84C185;
-    dw DrawInst_DoorFacingLeft_A677                                      ;84C187;
-    dw $0002                                                             ;84C189;
-    dw DrawInst_GreenDoorFacingLeft_3                                    ;84C18B;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C18D;
-    db $08                                                               ;84C18F;
-    dw $0002                                                             ;84C190;
-    dw DrawInst_GreenDoorFacingLeft_2                                    ;84C192;
-    dw $0002                                                             ;84C194;
-    dw DrawInst_GreenDoorFacingLeft_1                                    ;84C196;
-    dw $0001                                                             ;84C198;
-    dw DrawInst_GreenDoorFacingLeft_0                                    ;84C19A;
+    dw $0002,DrawInst_DoorFacingLeft_A677                                ;84C185;
+    dw $0002,DrawInst_GreenDoorFacingLeft_3                              ;84C189;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84C18D;
+    dw $0002,DrawInst_GreenDoorFacingLeft_2                              ;84C190;
+    dw $0002,DrawInst_GreenDoorFacingLeft_1                              ;84C194;
+    dw $0001,DrawInst_GreenDoorFacingLeft_0                              ;84C198;
 
 InstList_PLM_GreenDoorFacingLeft_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C19C;
@@ -8453,57 +8214,38 @@ InstList_PLM_GreenDoorFacingLeft_1:
     dw InstList_PLM_GreenDoorFacingLeft_3                                ;84C1A2;
     dw Instruction_PLM_PreInstruction_inY                                ;84C1A4;
     dw PreInstruction_PLM_GotoLinkInstIfShotWithASuperMissile            ;84C1A6;
-    dw $0001                                                             ;84C1A8;
-    dw DrawInst_GreenDoorFacingLeft_0                                    ;84C1AA;
+    dw $0001,DrawInst_GreenDoorFacingLeft_0                              ;84C1A8;
 
 InstList_PLM_GreenDoorFacingLeft_2:
     dw Instruction_PLM_Sleep                                             ;84C1AC;
 
 InstList_PLM_GreenDoorFacingLeft_3:
-    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY                   ;84C1AE;
-    db $01                                                               ;84C1B0;
+    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY : db $01          ;84C1AE;
     dw InstList_PLM_GreenDoorFacingLeft_4                                ;84C1B1;
-    dw $0003                                                             ;84C1B3;
-    dw DrawInst_DoorFacingLeft_A9B3                                      ;84C1B5;
-    dw $0004                                                             ;84C1B7;
-    dw DrawInst_GreenDoorFacingLeft_0                                    ;84C1B9;
-    dw $0003                                                             ;84C1BB;
-    dw DrawInst_DoorFacingLeft_A9B3                                      ;84C1BD;
-    dw $0004                                                             ;84C1BF;
-    dw DrawInst_GreenDoorFacingLeft_0                                    ;84C1C1;
-    dw $0003                                                             ;84C1C3;
-    dw DrawInst_DoorFacingLeft_A9B3                                      ;84C1C5;
-    dw $0004                                                             ;84C1C7;
-    dw DrawInst_GreenDoorFacingLeft_0                                    ;84C1C9;
+    dw $0003,DrawInst_DoorFacingLeft_A9B3                                ;84C1B3;
+    dw $0004,DrawInst_GreenDoorFacingLeft_0                              ;84C1B7;
+    dw $0003,DrawInst_DoorFacingLeft_A9B3                                ;84C1BB;
+    dw $0004,DrawInst_GreenDoorFacingLeft_0                              ;84C1BF;
+    dw $0003,DrawInst_DoorFacingLeft_A9B3                                ;84C1C3;
+    dw $0004,DrawInst_GreenDoorFacingLeft_0                              ;84C1C7;
     dw Instruction_PLM_GotoY                                             ;84C1CB;
     dw InstList_PLM_GreenDoorFacingLeft_2                                ;84C1CD;
 
 InstList_PLM_GreenDoorFacingLeft_4:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C1CF;
-    db $07                                                               ;84C1D1;
-    dw $0006                                                             ;84C1D2;
-    dw DrawInst_GreenDoorFacingLeft_1                                    ;84C1D4;
-    dw $0006                                                             ;84C1D6;
-    dw DrawInst_GreenDoorFacingLeft_2                                    ;84C1D8;
-    dw $0006                                                             ;84C1DA;
-    dw DrawInst_GreenDoorFacingLeft_3                                    ;84C1DC;
-    dw $0001                                                             ;84C1DE;
-    dw DrawInst_DoorFacingLeft_A677                                      ;84C1E0;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C1CF;
+    dw $0006,DrawInst_GreenDoorFacingLeft_1                              ;84C1D2;
+    dw $0006,DrawInst_GreenDoorFacingLeft_2                              ;84C1D6;
+    dw $0006,DrawInst_GreenDoorFacingLeft_3                              ;84C1DA;
+    dw $0001,DrawInst_DoorFacingLeft_A677                                ;84C1DE;
     dw Instruction_PLM_Delete                                            ;84C1E2;
 
 InstList_PLM_GreenDoorFacingRight_0:
-    dw $0002                                                             ;84C1E4;
-    dw DrawInst_DoorFacingRight_A683                                     ;84C1E6;
-    dw $0002                                                             ;84C1E8;
-    dw DrawInst_GreenDoorFacingRight_3                                   ;84C1EA;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C1EC;
-    db $08                                                               ;84C1EE;
-    dw $0002                                                             ;84C1EF;
-    dw DrawInst_GreenDoorFacingRight_2                                   ;84C1F1;
-    dw $0002                                                             ;84C1F3;
-    dw DrawInst_GreenDoorFacingRight_1                                   ;84C1F5;
-    dw $0001                                                             ;84C1F7;
-    dw DrawInst_GreenDoorFacingRight_0                                   ;84C1F9;
+    dw $0002,DrawInst_DoorFacingRight_A683                               ;84C1E4;
+    dw $0002,DrawInst_GreenDoorFacingRight_3                             ;84C1E8;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84C1EC;
+    dw $0002,DrawInst_GreenDoorFacingRight_2                             ;84C1EF;
+    dw $0002,DrawInst_GreenDoorFacingRight_1                             ;84C1F3;
+    dw $0001,DrawInst_GreenDoorFacingRight_0                             ;84C1F7;
 
 InstList_PLM_GreenDoorFacingRight_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C1FB;
@@ -8512,57 +8254,38 @@ InstList_PLM_GreenDoorFacingRight_1:
     dw InstList_PLM_GreenDoorFacingRight_3                               ;84C201;
     dw Instruction_PLM_PreInstruction_inY                                ;84C203;
     dw PreInstruction_PLM_GotoLinkInstIfShotWithASuperMissile            ;84C205;
-    dw $0001                                                             ;84C207;
-    dw DrawInst_GreenDoorFacingRight_0                                   ;84C209;
+    dw $0001,DrawInst_GreenDoorFacingRight_0                             ;84C207;
 
 InstList_PLM_GreenDoorFacingRight_2:
     dw Instruction_PLM_Sleep                                             ;84C20B;
 
 InstList_PLM_GreenDoorFacingRight_3:
-    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY                   ;84C20D;
-    db $01                                                               ;84C20F;
+    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY : db $01          ;84C20D;
     dw InstList_PLM_GreenDoorFacingRight_4                               ;84C210;
-    dw $0003                                                             ;84C212;
-    dw DrawInst_DoorFacingRight_A9EF                                     ;84C214;
-    dw $0004                                                             ;84C216;
-    dw DrawInst_GreenDoorFacingRight_0                                   ;84C218;
-    dw $0003                                                             ;84C21A;
-    dw DrawInst_DoorFacingRight_A9EF                                     ;84C21C;
-    dw $0004                                                             ;84C21E;
-    dw DrawInst_GreenDoorFacingRight_0                                   ;84C220;
-    dw $0003                                                             ;84C222;
-    dw DrawInst_DoorFacingRight_A9EF                                     ;84C224;
-    dw $0004                                                             ;84C226;
-    dw DrawInst_GreenDoorFacingRight_0                                   ;84C228;
+    dw $0003,DrawInst_DoorFacingRight_A9EF                               ;84C212;
+    dw $0004,DrawInst_GreenDoorFacingRight_0                             ;84C216;
+    dw $0003,DrawInst_DoorFacingRight_A9EF                               ;84C21A;
+    dw $0004,DrawInst_GreenDoorFacingRight_0                             ;84C21E;
+    dw $0003,DrawInst_DoorFacingRight_A9EF                               ;84C222;
+    dw $0004,DrawInst_GreenDoorFacingRight_0                             ;84C226;
     dw Instruction_PLM_GotoY                                             ;84C22A;
     dw InstList_PLM_GreenDoorFacingRight_2                               ;84C22C;
 
 InstList_PLM_GreenDoorFacingRight_4:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C22E;
-    db $07                                                               ;84C230;
-    dw $0006                                                             ;84C231;
-    dw DrawInst_GreenDoorFacingRight_1                                   ;84C233;
-    dw $0006                                                             ;84C235;
-    dw DrawInst_GreenDoorFacingRight_2                                   ;84C237;
-    dw $0006                                                             ;84C239;
-    dw DrawInst_GreenDoorFacingRight_3                                   ;84C23B;
-    dw $0001                                                             ;84C23D;
-    dw DrawInst_DoorFacingRight_A683                                     ;84C23F;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C22E;
+    dw $0006,DrawInst_GreenDoorFacingRight_1                             ;84C231;
+    dw $0006,DrawInst_GreenDoorFacingRight_2                             ;84C235;
+    dw $0006,DrawInst_GreenDoorFacingRight_3                             ;84C239;
+    dw $0001,DrawInst_DoorFacingRight_A683                               ;84C23D;
     dw Instruction_PLM_Delete                                            ;84C241;
 
 InstList_PLM_GreenDoorFacingUp_0:
-    dw $0002                                                             ;84C243;
-    dw DrawInst_DoorFacingUp_A68F                                        ;84C245;
-    dw $0002                                                             ;84C247;
-    dw DrawInst_GreenDoorFacingUp_3                                      ;84C249;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C24B;
-    db $08                                                               ;84C24D;
-    dw $0002                                                             ;84C24E;
-    dw DrawInst_GreenDoorFacingUp_2                                      ;84C250;
-    dw $0002                                                             ;84C252;
-    dw DrawInst_GreenDoorFacingUp_1                                      ;84C254;
-    dw $0001                                                             ;84C256;
-    dw DrawInst_GreenDoorFacingUp_0                                      ;84C258;
+    dw $0002,DrawInst_DoorFacingUp_A68F                                  ;84C243;
+    dw $0002,DrawInst_GreenDoorFacingUp_3                                ;84C247;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84C24B;
+    dw $0002,DrawInst_GreenDoorFacingUp_2                                ;84C24E;
+    dw $0002,DrawInst_GreenDoorFacingUp_1                                ;84C252;
+    dw $0001,DrawInst_GreenDoorFacingUp_0                                ;84C256;
 
 InstList_PLM_GreenDoorFacingUp_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C25A;
@@ -8571,57 +8294,38 @@ InstList_PLM_GreenDoorFacingUp_1:
     dw InstList_PLM_GreenDoorFacingUp_3                                  ;84C260;
     dw Instruction_PLM_PreInstruction_inY                                ;84C262;
     dw PreInstruction_PLM_GotoLinkInstIfShotWithASuperMissile            ;84C264;
-    dw $0001                                                             ;84C266;
-    dw DrawInst_GreenDoorFacingUp_0                                      ;84C268;
+    dw $0001,DrawInst_GreenDoorFacingUp_0                                ;84C266;
 
 InstList_PLM_GreenDoorFacingUp_2:
     dw Instruction_PLM_Sleep                                             ;84C26A;
 
 InstList_PLM_GreenDoorFacingUp_3:
-    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY                   ;84C26C;
-    db $01                                                               ;84C26E;
+    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY : db $01          ;84C26C;
     dw InstList_PLM_GreenDoorFacingUp_4                                  ;84C26F;
-    dw $0003                                                             ;84C271;
-    dw DrawInst_DoorFacingUp_AA2B                                        ;84C273;
-    dw $0004                                                             ;84C275;
-    dw DrawInst_GreenDoorFacingUp_0                                      ;84C277;
-    dw $0003                                                             ;84C279;
-    dw DrawInst_DoorFacingUp_AA2B                                        ;84C27B;
-    dw $0004                                                             ;84C27D;
-    dw DrawInst_GreenDoorFacingUp_0                                      ;84C27F;
-    dw $0003                                                             ;84C281;
-    dw DrawInst_DoorFacingUp_AA2B                                        ;84C283;
-    dw $0004                                                             ;84C285;
-    dw DrawInst_GreenDoorFacingUp_0                                      ;84C287;
+    dw $0003,DrawInst_DoorFacingUp_AA2B                                  ;84C271;
+    dw $0004,DrawInst_GreenDoorFacingUp_0                                ;84C275;
+    dw $0003,DrawInst_DoorFacingUp_AA2B                                  ;84C279;
+    dw $0004,DrawInst_GreenDoorFacingUp_0                                ;84C27D;
+    dw $0003,DrawInst_DoorFacingUp_AA2B                                  ;84C281;
+    dw $0004,DrawInst_GreenDoorFacingUp_0                                ;84C285;
     dw Instruction_PLM_GotoY                                             ;84C289;
     dw InstList_PLM_GreenDoorFacingUp_2                                  ;84C28B;
 
 InstList_PLM_GreenDoorFacingUp_4:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C28D;
-    db $07                                                               ;84C28F;
-    dw $0006                                                             ;84C290;
-    dw DrawInst_GreenDoorFacingUp_1                                      ;84C292;
-    dw $0006                                                             ;84C294;
-    dw DrawInst_GreenDoorFacingUp_2                                      ;84C296;
-    dw $0006                                                             ;84C298;
-    dw DrawInst_GreenDoorFacingUp_3                                      ;84C29A;
-    dw $0001                                                             ;84C29C;
-    dw DrawInst_DoorFacingUp_A68F                                        ;84C29E;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C28D;
+    dw $0006,DrawInst_GreenDoorFacingUp_1                                ;84C290;
+    dw $0006,DrawInst_GreenDoorFacingUp_2                                ;84C294;
+    dw $0006,DrawInst_GreenDoorFacingUp_3                                ;84C298;
+    dw $0001,DrawInst_DoorFacingUp_A68F                                  ;84C29C;
     dw Instruction_PLM_Delete                                            ;84C2A0;
 
 InstList_PLM_GreenDoorFacingDown_0:
-    dw $0002                                                             ;84C2A2;
-    dw DrawInst_DoorFacingDown_A69B                                      ;84C2A4;
-    dw $0002                                                             ;84C2A6;
-    dw DrawInst_GreenDoorFacingDown_3                                    ;84C2A8;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C2AA;
-    db $08                                                               ;84C2AC;
-    dw $0002                                                             ;84C2AD;
-    dw DrawInst_GreenDoorFacingDown_2                                    ;84C2AF;
-    dw $0002                                                             ;84C2B1;
-    dw DrawInst_GreenDoorFacingDown_1                                    ;84C2B3;
-    dw $0001                                                             ;84C2B5;
-    dw DrawInst_GreenDoorFacingDown_0                                    ;84C2B7;
+    dw $0002,DrawInst_DoorFacingDown_A69B                                ;84C2A2;
+    dw $0002,DrawInst_GreenDoorFacingDown_3                              ;84C2A6;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84C2AA;
+    dw $0002,DrawInst_GreenDoorFacingDown_2                              ;84C2AD;
+    dw $0002,DrawInst_GreenDoorFacingDown_1                              ;84C2B1;
+    dw $0001,DrawInst_GreenDoorFacingDown_0                              ;84C2B5;
 
 InstList_PLM_GreenDoorFacingDown_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C2B9;
@@ -8630,57 +8334,38 @@ InstList_PLM_GreenDoorFacingDown_1:
     dw InstList_PLM_GreenDoorFacingDown_3                                ;84C2BF;
     dw Instruction_PLM_PreInstruction_inY                                ;84C2C1;
     dw PreInstruction_PLM_GotoLinkInstIfShotWithASuperMissile            ;84C2C3;
-    dw $0001                                                             ;84C2C5;
-    dw DrawInst_GreenDoorFacingDown_0                                    ;84C2C7;
+    dw $0001,DrawInst_GreenDoorFacingDown_0                              ;84C2C5;
 
 InstList_PLM_GreenDoorFacingDown_2:
     dw Instruction_PLM_Sleep                                             ;84C2C9;
 
 InstList_PLM_GreenDoorFacingDown_3:
-    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY                   ;84C2CB;
-    db $01                                                               ;84C2CD;
+    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY : db $01          ;84C2CB;
     dw InstList_PLM_GreenDoorFacingDown_4                                ;84C2CE;
-    dw $0003                                                             ;84C2D0;
-    dw DrawInst_DoorFacingDown_AA67                                      ;84C2D2;
-    dw $0004                                                             ;84C2D4;
-    dw DrawInst_GreenDoorFacingDown_0                                    ;84C2D6;
-    dw $0003                                                             ;84C2D8;
-    dw DrawInst_DoorFacingDown_AA67                                      ;84C2DA;
-    dw $0004                                                             ;84C2DC;
-    dw DrawInst_GreenDoorFacingDown_0                                    ;84C2DE;
-    dw $0003                                                             ;84C2E0;
-    dw DrawInst_DoorFacingDown_AA67                                      ;84C2E2;
-    dw $0004                                                             ;84C2E4;
-    dw DrawInst_GreenDoorFacingDown_0                                    ;84C2E6;
+    dw $0003,DrawInst_DoorFacingDown_AA67                                ;84C2D0;
+    dw $0004,DrawInst_GreenDoorFacingDown_0                              ;84C2D4;
+    dw $0003,DrawInst_DoorFacingDown_AA67                                ;84C2D8;
+    dw $0004,DrawInst_GreenDoorFacingDown_0                              ;84C2DC;
+    dw $0003,DrawInst_DoorFacingDown_AA67                                ;84C2E0;
+    dw $0004,DrawInst_GreenDoorFacingDown_0                              ;84C2E4;
     dw Instruction_PLM_GotoY                                             ;84C2E8;
     dw InstList_PLM_GreenDoorFacingDown_2                                ;84C2EA;
 
 InstList_PLM_GreenDoorFacingDown_4:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C2EC;
-    db $07                                                               ;84C2EE;
-    dw $0006                                                             ;84C2EF;
-    dw DrawInst_GreenDoorFacingDown_1                                    ;84C2F1;
-    dw $0006                                                             ;84C2F3;
-    dw DrawInst_GreenDoorFacingDown_2                                    ;84C2F5;
-    dw $0006                                                             ;84C2F7;
-    dw DrawInst_GreenDoorFacingDown_3                                    ;84C2F9;
-    dw $0001                                                             ;84C2FB;
-    dw DrawInst_DoorFacingDown_A69B                                      ;84C2FD;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C2EC;
+    dw $0006,DrawInst_GreenDoorFacingDown_1                              ;84C2EF;
+    dw $0006,DrawInst_GreenDoorFacingDown_2                              ;84C2F3;
+    dw $0006,DrawInst_GreenDoorFacingDown_3                              ;84C2F7;
+    dw $0001,DrawInst_DoorFacingDown_A69B                                ;84C2FB;
     dw Instruction_PLM_Delete                                            ;84C2FF;
 
 InstList_PLM_RedDoorFacingLeft_0:
-    dw $0002                                                             ;84C301;
-    dw DrawInst_DoorFacingLeft_A677                                      ;84C303;
-    dw $0002                                                             ;84C305;
-    dw DrawInst_RedDoorFacingLeft_3                                      ;84C307;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C309;
-    db $08                                                               ;84C30B;
-    dw $0002                                                             ;84C30C;
-    dw DrawInst_RedDoorFacingLeft_2                                      ;84C30E;
-    dw $0002                                                             ;84C310;
-    dw DrawInst_RedDoorFacingLeft_1                                      ;84C312;
-    dw $0001                                                             ;84C314;
-    dw DrawInst_RedDoorFacingLeft_0                                      ;84C316;
+    dw $0002,DrawInst_DoorFacingLeft_A677                                ;84C301;
+    dw $0002,DrawInst_RedDoorFacingLeft_3                                ;84C305;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84C309;
+    dw $0002,DrawInst_RedDoorFacingLeft_2                                ;84C30C;
+    dw $0002,DrawInst_RedDoorFacingLeft_1                                ;84C310;
+    dw $0001,DrawInst_RedDoorFacingLeft_0                                ;84C314;
 
 InstList_PLM_RedDoorFacingLeft_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C318;
@@ -8689,59 +8374,39 @@ InstList_PLM_RedDoorFacingLeft_1:
     dw InstList_PLM_RedDoorFacingLeft_3                                  ;84C31E;
     dw Instruction_PLM_PreInstruction_inY                                ;84C320;
     dw PreInstruction_PLM_GotoLinkInstructionIfShotWithAMissile          ;84C322;
-    dw $0001                                                             ;84C324;
-    dw DrawInst_RedDoorFacingLeft_0                                      ;84C326;
+    dw $0001,DrawInst_RedDoorFacingLeft_0                                ;84C324;
 
 InstList_PLM_RedDoorFacingLeft_2:
     dw Instruction_PLM_Sleep                                             ;84C328;
 
 InstList_PLM_RedDoorFacingLeft_3:
-    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY                   ;84C32A;
-    db $05                                                               ;84C32C;
+    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY : db $05          ;84C32A;
     dw InstList_PLM_RedDoorFacingLeft_4                                  ;84C32D;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C32F;
-    db $09                                                               ;84C331;
-    dw $0003                                                             ;84C332;
-    dw DrawInst_DoorFacingLeft_A9B3                                      ;84C334;
-    dw $0004                                                             ;84C336;
-    dw DrawInst_RedDoorFacingLeft_0                                      ;84C338;
-    dw $0003                                                             ;84C33A;
-    dw DrawInst_DoorFacingLeft_A9B3                                      ;84C33C;
-    dw $0004                                                             ;84C33E;
-    dw DrawInst_RedDoorFacingLeft_0                                      ;84C340;
-    dw $0003                                                             ;84C342;
-    dw DrawInst_DoorFacingLeft_A9B3                                      ;84C344;
-    dw $0004                                                             ;84C346;
-    dw DrawInst_RedDoorFacingLeft_0                                      ;84C348;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $09                   ;84C32F;
+    dw $0003,DrawInst_DoorFacingLeft_A9B3                                ;84C332;
+    dw $0004,DrawInst_RedDoorFacingLeft_0                                ;84C336;
+    dw $0003,DrawInst_DoorFacingLeft_A9B3                                ;84C33A;
+    dw $0004,DrawInst_RedDoorFacingLeft_0                                ;84C33E;
+    dw $0003,DrawInst_DoorFacingLeft_A9B3                                ;84C342;
+    dw $0004,DrawInst_RedDoorFacingLeft_0                                ;84C346;
     dw Instruction_PLM_GotoY                                             ;84C34A;
     dw InstList_PLM_RedDoorFacingLeft_2                                  ;84C34C;
 
 InstList_PLM_RedDoorFacingLeft_4:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C34E;
-    db $07                                                               ;84C350;
-    dw $0006                                                             ;84C351;
-    dw DrawInst_RedDoorFacingLeft_1                                      ;84C353;
-    dw $0006                                                             ;84C355;
-    dw DrawInst_RedDoorFacingLeft_2                                      ;84C357;
-    dw $0006                                                             ;84C359;
-    dw DrawInst_RedDoorFacingLeft_3                                      ;84C35B;
-    dw $0001                                                             ;84C35D;
-    dw DrawInst_DoorFacingLeft_A677                                      ;84C35F;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C34E;
+    dw $0006,DrawInst_RedDoorFacingLeft_1                                ;84C351;
+    dw $0006,DrawInst_RedDoorFacingLeft_2                                ;84C355;
+    dw $0006,DrawInst_RedDoorFacingLeft_3                                ;84C359;
+    dw $0001,DrawInst_DoorFacingLeft_A677                                ;84C35D;
     dw Instruction_PLM_Delete                                            ;84C361;
 
 InstList_PLM_RedDoorFacingRight_0:
-    dw $0002                                                             ;84C363;
-    dw DrawInst_DoorFacingRight_A683                                     ;84C365;
-    dw $0002                                                             ;84C367;
-    dw DrawInst_RedDoorFacingRight_3                                     ;84C369;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C36B;
-    db $08                                                               ;84C36D;
-    dw $0002                                                             ;84C36E;
-    dw DrawInst_RedDoorFacingRight_2                                     ;84C370;
-    dw $0002                                                             ;84C372;
-    dw DrawInst_RedDoorFacingRight_1                                     ;84C374;
-    dw $0001                                                             ;84C376;
-    dw DrawInst_RedDoorFacingRight_0                                     ;84C378;
+    dw $0002,DrawInst_DoorFacingRight_A683                               ;84C363;
+    dw $0002,DrawInst_RedDoorFacingRight_3                               ;84C367;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84C36B;
+    dw $0002,DrawInst_RedDoorFacingRight_2                               ;84C36E;
+    dw $0002,DrawInst_RedDoorFacingRight_1                               ;84C372;
+    dw $0001,DrawInst_RedDoorFacingRight_0                               ;84C376;
 
 InstList_PLM_RedDoorFacingRight_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C37A;
@@ -8750,59 +8415,39 @@ InstList_PLM_RedDoorFacingRight_1:
     dw InstList_PLM_RedDoorFacingRight_3                                 ;84C380;
     dw Instruction_PLM_PreInstruction_inY                                ;84C382;
     dw PreInstruction_PLM_GotoLinkInstructionIfShotWithAMissile          ;84C384;
-    dw $0001                                                             ;84C386;
-    dw DrawInst_RedDoorFacingRight_0                                     ;84C388;
+    dw $0001,DrawInst_RedDoorFacingRight_0                               ;84C386;
 
 InstList_PLM_RedDoorFacingRight_2:
     dw Instruction_PLM_Sleep                                             ;84C38A;
 
 InstList_PLM_RedDoorFacingRight_3:
-    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY                   ;84C38C;
-    db $05                                                               ;84C38E;
+    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY : db $05          ;84C38C;
     dw InstList_PLM_RedDoorFacingRight_4                                 ;84C38F;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C391;
-    db $09                                                               ;84C393;
-    dw $0003                                                             ;84C394;
-    dw DrawInst_DoorFacingRight_A9EF                                     ;84C396;
-    dw $0004                                                             ;84C398;
-    dw DrawInst_RedDoorFacingRight_0                                     ;84C39A;
-    dw $0003                                                             ;84C39C;
-    dw DrawInst_DoorFacingRight_A9EF                                     ;84C39E;
-    dw $0004                                                             ;84C3A0;
-    dw DrawInst_RedDoorFacingRight_0                                     ;84C3A2;
-    dw $0003                                                             ;84C3A4;
-    dw DrawInst_DoorFacingRight_A9EF                                     ;84C3A6;
-    dw $0004                                                             ;84C3A8;
-    dw DrawInst_RedDoorFacingRight_0                                     ;84C3AA;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $09                   ;84C391;
+    dw $0003,DrawInst_DoorFacingRight_A9EF                               ;84C394;
+    dw $0004,DrawInst_RedDoorFacingRight_0                               ;84C398;
+    dw $0003,DrawInst_DoorFacingRight_A9EF                               ;84C39C;
+    dw $0004,DrawInst_RedDoorFacingRight_0                               ;84C3A0;
+    dw $0003,DrawInst_DoorFacingRight_A9EF                               ;84C3A4;
+    dw $0004,DrawInst_RedDoorFacingRight_0                               ;84C3A8;
     dw Instruction_PLM_GotoY                                             ;84C3AC;
     dw InstList_PLM_RedDoorFacingRight_2                                 ;84C3AE;
 
 InstList_PLM_RedDoorFacingRight_4:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C3B0;
-    db $07                                                               ;84C3B2;
-    dw $0006                                                             ;84C3B3;
-    dw DrawInst_RedDoorFacingRight_1                                     ;84C3B5;
-    dw $0006                                                             ;84C3B7;
-    dw DrawInst_RedDoorFacingRight_2                                     ;84C3B9;
-    dw $0006                                                             ;84C3BB;
-    dw DrawInst_RedDoorFacingRight_3                                     ;84C3BD;
-    dw $0001                                                             ;84C3BF;
-    dw DrawInst_DoorFacingRight_A683                                     ;84C3C1;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C3B0;
+    dw $0006,DrawInst_RedDoorFacingRight_1                               ;84C3B3;
+    dw $0006,DrawInst_RedDoorFacingRight_2                               ;84C3B7;
+    dw $0006,DrawInst_RedDoorFacingRight_3                               ;84C3BB;
+    dw $0001,DrawInst_DoorFacingRight_A683                               ;84C3BF;
     dw Instruction_PLM_Delete                                            ;84C3C3;
 
 InstList_PLM_RedDoorFacingUp_0:
-    dw $0002                                                             ;84C3C5;
-    dw DrawInst_DoorFacingUp_A68F                                        ;84C3C7;
-    dw $0002                                                             ;84C3C9;
-    dw DrawInst_RedDoorFacingUp_3                                        ;84C3CB;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C3CD;
-    db $08                                                               ;84C3CF;
-    dw $0002                                                             ;84C3D0;
-    dw DrawInst_RedDoorFacingUp_2                                        ;84C3D2;
-    dw $0002                                                             ;84C3D4;
-    dw DrawInst_RedDoorFacingUp_1                                        ;84C3D6;
-    dw $0001                                                             ;84C3D8;
-    dw DrawInst_RedDoorFacingUp_0                                        ;84C3DA;
+    dw $0002,DrawInst_DoorFacingUp_A68F                                  ;84C3C5;
+    dw $0002,DrawInst_RedDoorFacingUp_3                                  ;84C3C9;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84C3CD;
+    dw $0002,DrawInst_RedDoorFacingUp_2                                  ;84C3D0;
+    dw $0002,DrawInst_RedDoorFacingUp_1                                  ;84C3D4;
+    dw $0001,DrawInst_RedDoorFacingUp_0                                  ;84C3D8;
 
 InstList_PLM_RedDoorFacingUp_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C3DC;
@@ -8811,59 +8456,39 @@ InstList_PLM_RedDoorFacingUp_1:
     dw InstList_PLM_RedDoorFacingUp_3                                    ;84C3E2;
     dw Instruction_PLM_PreInstruction_inY                                ;84C3E4;
     dw PreInstruction_PLM_GotoLinkInstructionIfShotWithAMissile          ;84C3E6;
-    dw $0001                                                             ;84C3E8;
-    dw DrawInst_RedDoorFacingUp_0                                        ;84C3EA;
+    dw $0001,DrawInst_RedDoorFacingUp_0                                  ;84C3E8;
 
 InstList_PLM_RedDoorFacingUp_2:
     dw Instruction_PLM_Sleep                                             ;84C3EC;
 
 InstList_PLM_RedDoorFacingUp_3:
-    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY                   ;84C3EE;
-    db $05                                                               ;84C3F0;
+    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY : db $05          ;84C3EE;
     dw InstList_PLM_RedDoorFacingUp_4                                    ;84C3F1;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C3F3;
-    db $09                                                               ;84C3F5;
-    dw $0003                                                             ;84C3F6;
-    dw DrawInst_DoorFacingUp_AA2B                                        ;84C3F8;
-    dw $0004                                                             ;84C3FA;
-    dw DrawInst_RedDoorFacingUp_0                                        ;84C3FC;
-    dw $0003                                                             ;84C3FE;
-    dw DrawInst_DoorFacingUp_AA2B                                        ;84C400;
-    dw $0004                                                             ;84C402;
-    dw DrawInst_RedDoorFacingUp_0                                        ;84C404;
-    dw $0003                                                             ;84C406;
-    dw DrawInst_DoorFacingUp_AA2B                                        ;84C408;
-    dw $0004                                                             ;84C40A;
-    dw DrawInst_RedDoorFacingUp_0                                        ;84C40C;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $09                   ;84C3F3;
+    dw $0003,DrawInst_DoorFacingUp_AA2B                                  ;84C3F6;
+    dw $0004,DrawInst_RedDoorFacingUp_0                                  ;84C3FA;
+    dw $0003,DrawInst_DoorFacingUp_AA2B                                  ;84C3FE;
+    dw $0004,DrawInst_RedDoorFacingUp_0                                  ;84C402;
+    dw $0003,DrawInst_DoorFacingUp_AA2B                                  ;84C406;
+    dw $0004,DrawInst_RedDoorFacingUp_0                                  ;84C40A;
     dw Instruction_PLM_GotoY                                             ;84C40E;
     dw InstList_PLM_RedDoorFacingUp_2                                    ;84C410;
 
 InstList_PLM_RedDoorFacingUp_4:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C412;
-    db $07                                                               ;84C414;
-    dw $0006                                                             ;84C415;
-    dw DrawInst_RedDoorFacingUp_1                                        ;84C417;
-    dw $0006                                                             ;84C419;
-    dw DrawInst_RedDoorFacingUp_2                                        ;84C41B;
-    dw $0006                                                             ;84C41D;
-    dw DrawInst_RedDoorFacingUp_3                                        ;84C41F;
-    dw $0001                                                             ;84C421;
-    dw DrawInst_DoorFacingUp_A68F                                        ;84C423;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C412;
+    dw $0006,DrawInst_RedDoorFacingUp_1                                  ;84C415;
+    dw $0006,DrawInst_RedDoorFacingUp_2                                  ;84C419;
+    dw $0006,DrawInst_RedDoorFacingUp_3                                  ;84C41D;
+    dw $0001,DrawInst_DoorFacingUp_A68F                                  ;84C421;
     dw Instruction_PLM_Delete                                            ;84C425;
 
 InstList_PLM_RedDoorFacingDown_0:
-    dw $0002                                                             ;84C427;
-    dw DrawInst_DoorFacingDown_A69B                                      ;84C429;
-    dw $0002                                                             ;84C42B;
-    dw DrawInst_RedDoorFacingDown_3                                      ;84C42D;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C42F;
-    db $08                                                               ;84C431;
-    dw $0002                                                             ;84C432;
-    dw DrawInst_RedDoorFacingDown_2                                      ;84C434;
-    dw $0002                                                             ;84C436;
-    dw DrawInst_RedDoorFacingDown_1                                      ;84C438;
-    dw $0001                                                             ;84C43A;
-    dw DrawInst_RedDoorFacingDown_0                                      ;84C43C;
+    dw $0002,DrawInst_DoorFacingDown_A69B                                ;84C427;
+    dw $0002,DrawInst_RedDoorFacingDown_3                                ;84C42B;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84C42F;
+    dw $0002,DrawInst_RedDoorFacingDown_2                                ;84C432;
+    dw $0002,DrawInst_RedDoorFacingDown_1                                ;84C436;
+    dw $0001,DrawInst_RedDoorFacingDown_0                                ;84C43A;
 
 InstList_PLM_RedDoorFacingDown_1:
     dw Instruction_PLM_GotoY_ifRoomArg_DoorIsSet                         ;84C43E;
@@ -8872,172 +8497,110 @@ InstList_PLM_RedDoorFacingDown_1:
     dw InstList_PLM_RedDoorFacingDown_3                                  ;84C444;
     dw Instruction_PLM_PreInstruction_inY                                ;84C446;
     dw PreInstruction_PLM_GotoLinkInstructionIfShotWithAMissile          ;84C448;
-    dw $0001                                                             ;84C44A;
-    dw DrawInst_RedDoorFacingDown_0                                      ;84C44C;
+    dw $0001,DrawInst_RedDoorFacingDown_0                                ;84C44A;
 
 InstList_PLM_RedDoorFacingDown_2:
     dw Instruction_PLM_Sleep                                             ;84C44E;
 
 InstList_PLM_RedDoorFacingDown_3:
-    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY                   ;84C450;
-    db $05                                                               ;84C452;
+    dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY : db $05          ;84C450;
     dw InstList_PLM_RedDoorFacingDown_4                                  ;84C453;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C455;
-    db $09                                                               ;84C457;
-    dw $0003                                                             ;84C458;
-    dw DrawInst_DoorFacingDown_AA67                                      ;84C45A;
-    dw $0004                                                             ;84C45C;
-    dw DrawInst_RedDoorFacingDown_0                                      ;84C45E;
-    dw $0003                                                             ;84C460;
-    dw DrawInst_DoorFacingDown_AA67                                      ;84C462;
-    dw $0004                                                             ;84C464;
-    dw DrawInst_RedDoorFacingDown_0                                      ;84C466;
-    dw $0003                                                             ;84C468;
-    dw DrawInst_DoorFacingDown_AA67                                      ;84C46A;
-    dw $0004                                                             ;84C46C;
-    dw DrawInst_RedDoorFacingDown_0                                      ;84C46E;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $09                   ;84C455;
+    dw $0003,DrawInst_DoorFacingDown_AA67                                ;84C458;
+    dw $0004,DrawInst_RedDoorFacingDown_0                                ;84C45C;
+    dw $0003,DrawInst_DoorFacingDown_AA67                                ;84C460;
+    dw $0004,DrawInst_RedDoorFacingDown_0                                ;84C464;
+    dw $0003,DrawInst_DoorFacingDown_AA67                                ;84C468;
+    dw $0004,DrawInst_RedDoorFacingDown_0                                ;84C46C;
     dw Instruction_PLM_GotoY                                             ;84C470;
     dw InstList_PLM_RedDoorFacingDown_2                                  ;84C472;
 
 InstList_PLM_RedDoorFacingDown_4:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C474;
-    db $07                                                               ;84C476;
-    dw $0006                                                             ;84C477;
-    dw DrawInst_RedDoorFacingDown_1                                      ;84C479;
-    dw $0006                                                             ;84C47B;
-    dw DrawInst_RedDoorFacingDown_2                                      ;84C47D;
-    dw $0006                                                             ;84C47F;
-    dw DrawInst_RedDoorFacingDown_3                                      ;84C481;
-    dw $0001                                                             ;84C483;
-    dw DrawInst_DoorFacingDown_A69B                                      ;84C485;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C474;
+    dw $0006,DrawInst_RedDoorFacingDown_1                                ;84C477;
+    dw $0006,DrawInst_RedDoorFacingDown_2                                ;84C47B;
+    dw $0006,DrawInst_RedDoorFacingDown_3                                ;84C47F;
+    dw $0001,DrawInst_DoorFacingDown_A69B                                ;84C483;
     dw Instruction_PLM_Delete                                            ;84C487;
 
 InstList_PLM_BlueDoorFacingLeftOpened_40:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C489;
-    db $07                                                               ;84C48B;
-    dw $0006                                                             ;84C48C;
-    dw DrawInst_BlueDoorFacingLeft_0                                     ;84C48E;
-    dw $0006                                                             ;84C490;
-    dw DrawInst_BlueDoorFacingLeft_1                                     ;84C492;
-    dw $0006                                                             ;84C494;
-    dw DrawInst_BlueDoorFacingLeft_2                                     ;84C496;
-    dw $005E                                                             ;84C498;
-    dw DrawInst_DoorFacingLeft_A677                                      ;84C49A;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C489;
+    dw $0006,DrawInst_BlueDoorFacingLeft_0                               ;84C48C;
+    dw $0006,DrawInst_BlueDoorFacingLeft_1                               ;84C490;
+    dw $0006,DrawInst_BlueDoorFacingLeft_2                               ;84C494;
+    dw $005E,DrawInst_DoorFacingLeft_A677                                ;84C498;
     dw Instruction_PLM_Delete                                            ;84C49C;
 
 InstList_PLM_BlueDoorFacingLeftClosed:
-    dw $0002                                                             ;84C49E;
-    dw DrawInst_DoorFacingLeft_A677                                      ;84C4A0;
-    dw $0002                                                             ;84C4A2;
-    dw DrawInst_BlueDoorFacingLeft_2                                     ;84C4A4;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C4A6;
-    db $08                                                               ;84C4A8;
-    dw $0002                                                             ;84C4A9;
-    dw DrawInst_BlueDoorFacingLeft_1                                     ;84C4AB;
-    dw $0002                                                             ;84C4AD;
-    dw DrawInst_BlueDoorFacingLeft_0                                     ;84C4AF;
+    dw $0002,DrawInst_DoorFacingLeft_A677                                ;84C49E;
+    dw $0002,DrawInst_BlueDoorFacingLeft_2                               ;84C4A2;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84C4A6;
+    dw $0002,DrawInst_BlueDoorFacingLeft_1                               ;84C4A9;
+    dw $0002,DrawInst_BlueDoorFacingLeft_0                               ;84C4AD;
 
 InstList_PLM_ClosedBlueDoorFacingLeft_40:
-    dw Instruction_PLM_PLMBTS_Y                                          ;84C4B1;
-    db $40                                                               ;84C4B3;
-    dw $0001                                                             ;84C4B4;
-    dw DrawInst_DoorFacingLeft_A9B3                                      ;84C4B6;
+    dw Instruction_PLM_PLMBTS_Y : db $40                                 ;84C4B1;
+    dw $0001,DrawInst_DoorFacingLeft_A9B3                                ;84C4B4;
     dw Instruction_PLM_Delete                                            ;84C4B8;
 
 InstList_PLM_BlueDoorFacingLeftOpened_41:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C4BA;
-    db $07                                                               ;84C4BC;
-    dw $0006                                                             ;84C4BD;
-    dw DrawInst_BlueDoorFacingRight_0                                    ;84C4BF;
-    dw $0006                                                             ;84C4C1;
-    dw DrawInst_BlueDoorFacingRight_1                                    ;84C4C3;
-    dw $0006                                                             ;84C4C5;
-    dw DrawInst_BlueDoorFacingRight_2                                    ;84C4C7;
-    dw $005E                                                             ;84C4C9;
-    dw DrawInst_DoorFacingRight_A683                                     ;84C4CB;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C4BA;
+    dw $0006,DrawInst_BlueDoorFacingRight_0                              ;84C4BD;
+    dw $0006,DrawInst_BlueDoorFacingRight_1                              ;84C4C1;
+    dw $0006,DrawInst_BlueDoorFacingRight_2                              ;84C4C5;
+    dw $005E,DrawInst_DoorFacingRight_A683                               ;84C4C9;
     dw Instruction_PLM_Delete                                            ;84C4CD;
 
 InstList_PLM_BlueDoorFacingRightClosed:
-    dw $0002                                                             ;84C4CF;
-    dw DrawInst_DoorFacingRight_A683                                     ;84C4D1;
-    dw $0002                                                             ;84C4D3;
-    dw DrawInst_BlueDoorFacingRight_2                                    ;84C4D5;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C4D7;
-    db $08                                                               ;84C4D9;
-    dw $0002                                                             ;84C4DA;
-    dw DrawInst_BlueDoorFacingRight_1                                    ;84C4DC;
-    dw $0002                                                             ;84C4DE;
-    dw DrawInst_BlueDoorFacingRight_0                                    ;84C4E0;
+    dw $0002,DrawInst_DoorFacingRight_A683                               ;84C4CF;
+    dw $0002,DrawInst_BlueDoorFacingRight_2                              ;84C4D3;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84C4D7;
+    dw $0002,DrawInst_BlueDoorFacingRight_1                              ;84C4DA;
+    dw $0002,DrawInst_BlueDoorFacingRight_0                              ;84C4DE;
 
 InstList_PLM_ClosedBlueDoorFacingLeft_41:
-    dw Instruction_PLM_PLMBTS_Y                                          ;84C4E2;
-    db $41                                                               ;84C4E4;
-    dw $0001                                                             ;84C4E5;
-    dw DrawInst_DoorFacingRight_A9EF                                     ;84C4E7;
+    dw Instruction_PLM_PLMBTS_Y : db $41                                 ;84C4E2;
+    dw $0001,DrawInst_DoorFacingRight_A9EF                               ;84C4E5;
     dw Instruction_PLM_Delete                                            ;84C4E9;
 
 InstList_PLM_BlueDoorFacingUpOpened_42:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C4EB;
-    db $07                                                               ;84C4ED;
-    dw $0006                                                             ;84C4EE;
-    dw DrawInst_BlueDoorFacingUp_0                                       ;84C4F0;
-    dw $0006                                                             ;84C4F2;
-    dw DrawInst_BlueDoorFacingUp_1                                       ;84C4F4;
-    dw $0006                                                             ;84C4F6;
-    dw DrawInst_BlueDoorFacingUp_2                                       ;84C4F8;
-    dw $005E                                                             ;84C4FA;
-    dw DrawInst_DoorFacingUp_A68F                                        ;84C4FC;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C4EB;
+    dw $0006,DrawInst_BlueDoorFacingUp_0                                 ;84C4EE;
+    dw $0006,DrawInst_BlueDoorFacingUp_1                                 ;84C4F2;
+    dw $0006,DrawInst_BlueDoorFacingUp_2                                 ;84C4F6;
+    dw $005E,DrawInst_DoorFacingUp_A68F                                  ;84C4FA;
     dw Instruction_PLM_Delete                                            ;84C4FE;
 
 InstList_PLM_BlueDoorFacingUpClosed_42:
-    dw $0002                                                             ;84C500;
-    dw DrawInst_DoorFacingUp_A68F                                        ;84C502;
-    dw $0002                                                             ;84C504;
-    dw DrawInst_BlueDoorFacingUp_2                                       ;84C506;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C508;
-    db $08                                                               ;84C50A;
-    dw $0002                                                             ;84C50B;
-    dw DrawInst_BlueDoorFacingUp_1                                       ;84C50D;
-    dw $0002                                                             ;84C50F;
-    dw DrawInst_BlueDoorFacingUp_0                                       ;84C511;
+    dw $0002,DrawInst_DoorFacingUp_A68F                                  ;84C500;
+    dw $0002,DrawInst_BlueDoorFacingUp_2                                 ;84C504;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84C508;
+    dw $0002,DrawInst_BlueDoorFacingUp_1                                 ;84C50B;
+    dw $0002,DrawInst_BlueDoorFacingUp_0                                 ;84C50F;
 
 InstList_PLM_ClosedBlueDoorFacingUp_42:
-    dw Instruction_PLM_PLMBTS_Y                                          ;84C513;
-    db $42                                                               ;84C515;
-    dw $0001                                                             ;84C516;
-    dw DrawInst_DoorFacingUp_AA2B                                        ;84C518;
+    dw Instruction_PLM_PLMBTS_Y : db $42                                 ;84C513;
+    dw $0001,DrawInst_DoorFacingUp_AA2B                                  ;84C516;
     dw Instruction_PLM_Delete                                            ;84C51A;
 
 InstList_PLM_BlueDoorFacingUpOpened_43:
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C51C;
-    db $07                                                               ;84C51E;
-    dw $0006                                                             ;84C51F;
-    dw DrawInst_BlueDoorFacingDown_0                                     ;84C521;
-    dw $0006                                                             ;84C523;
-    dw DrawInst_BlueDoorFacingDown_1                                     ;84C525;
-    dw $0006                                                             ;84C527;
-    dw DrawInst_BlueDoorFacingDown_2                                     ;84C529;
-    dw $005E                                                             ;84C52B;
-    dw DrawInst_DoorFacingDown_A69B                                      ;84C52D;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $07                   ;84C51C;
+    dw $0006,DrawInst_BlueDoorFacingDown_0                               ;84C51F;
+    dw $0006,DrawInst_BlueDoorFacingDown_1                               ;84C523;
+    dw $0006,DrawInst_BlueDoorFacingDown_2                               ;84C527;
+    dw $005E,DrawInst_DoorFacingDown_A69B                                ;84C52B;
     dw Instruction_PLM_Delete                                            ;84C52F;
 
 InstList_PLM_BlueDoorFacingUpClosed_43:
-    dw $0002                                                             ;84C531;
-    dw DrawInst_DoorFacingDown_A69B                                      ;84C533;
-    dw $0002                                                             ;84C535;
-    dw DrawInst_BlueDoorFacingDown_2                                     ;84C537;
-    dw Instruction_PLM_QueueSound_Y_Lib3_Max6                            ;84C539;
-    db $08                                                               ;84C53B;
-    dw $0002                                                             ;84C53C;
-    dw DrawInst_BlueDoorFacingDown_1                                     ;84C53E;
-    dw $0002                                                             ;84C540;
-    dw DrawInst_BlueDoorFacingDown_0                                     ;84C542;
+    dw $0002,DrawInst_DoorFacingDown_A69B                                ;84C531;
+    dw $0002,DrawInst_BlueDoorFacingDown_2                               ;84C535;
+    dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $08                   ;84C539;
+    dw $0002,DrawInst_BlueDoorFacingDown_1                               ;84C53C;
+    dw $0002,DrawInst_BlueDoorFacingDown_0                               ;84C540;
 
 InstList_PLM_ClosedBlueDoorFacingUp_43:
-    dw Instruction_PLM_PLMBTS_Y                                          ;84C544;
-    db $43                                                               ;84C546;
-    dw $0001                                                             ;84C547;
-    dw DrawInst_DoorFacingDown_AA67                                      ;84C549;
+    dw Instruction_PLM_PLMBTS_Y : db $43                                 ;84C544;
+    dw $0001,DrawInst_DoorFacingDown_AA67                                ;84C547;
     dw Instruction_PLM_Delete                                            ;84C54B;
 
 Setup_LeftGreenGateTrigger:
@@ -9322,10 +8885,17 @@ Setup_DownwardsGateShotblock:
     dw InstList_PLM_DownwardsGateShotblock_GreenRight                    ;84C714;
     dw InstList_PLM_DownwardsGateShotblock_YellowLeft                    ;84C716;
     dw InstList_PLM_DownwardsGateShotblock_YellowRight                   ;84C718;
-
+;        _____________________________________________ 0: Blue left
+;       |      _______________________________________ 2: Blue right
+;       |     |      _________________________________ 4: Red left
+;       |     |     |      ___________________________ 6: Red right
+;       |     |     |     |      _____________________ 8: Green left
+;       |     |     |     |     |      _______________ Ah: Green right
+;       |     |     |     |     |     |      _________ Ch: Yellow left
+;       |     |     |     |     |     |     |      ___ Eh: Yellow right
+;       |     |     |     |     |     |     |     |
 .leftBlock:
     dw $C046,$0000,$C048,$0000,$C04A,$0000,$C04C,$0000                   ;84C71A;
-
 .rightBlock:
     dw $0000,$C047,$0000,$C049,$0000,$C04B,$0000,$C04D                   ;84C72A;
 
@@ -9363,10 +8933,17 @@ Setup_UpwardsGateShotblock:
     dw InstList_PLM_UpwardsGateShotblock_GreenRight                      ;84C76E;
     dw InstList_PLM_UpwardsGateShotblock_YellowLeft                      ;84C770;
     dw InstList_PLM_UpwardsGateShotblock_YellowRight                     ;84C772;
-
+;        _____________________________________________ 0: Blue left
+;       |      _______________________________________ 2: Blue right
+;       |     |      _________________________________ 4: Red left
+;       |     |     |      ___________________________ 6: Red right
+;       |     |     |     |      _____________________ 8: Green left
+;       |     |     |     |     |      _______________ Ah: Green right
+;       |     |     |     |     |     |      _________ Ch: Yellow left
+;       |     |     |     |     |     |     |      ___ Eh: Yellow right
+;       |     |     |     |     |     |     |     |
 .leftBlock:
     dw $C046,$0000,$C048,$0000,$C04A,$0000,$C04C,$0000                   ;84C774;
-
 .rightBlock:
     dw $0000,$C047,$0000,$C049,$0000,$C04B,$0000,$C04D                   ;84C784;
 
@@ -9622,781 +9199,507 @@ PLMEntries_gateThatClosesInEscapeRoom1_PLM:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_PLM_Draws1x1ShotBlock_84C8D4:
-    dw $0001                                                             ;84C8D4;
-    dw UNUSED_DrawInst_1x1ShotBlock_84A475                               ;84C8D6;
+    dw $0001,UNUSED_DrawInst_1x1ShotBlock_84A475                         ;84C8D4;
     dw Instruction_PLM_Delete                                            ;84C8D8;
 
 UNUSED_InstList_PLM_Draws1x2ShotBlock_84C8DA:
-    dw $0001                                                             ;84C8DA;
-    dw DrawInst_2x1RespawningShotBlock                                   ;84C8DC;
+    dw $0001,DrawInst_2x1RespawningShotBlock                             ;84C8DA;
     dw Instruction_PLM_Delete                                            ;84C8DE;
 
 UNUSED_InstList_PLM_Draws2x1ShotBlock_84C8E0:
-    dw $0001                                                             ;84C8E0;
-    dw DrawInst_1x2RespawningShotBlock                                   ;84C8E2;
+    dw $0001,DrawInst_1x2RespawningShotBlock                             ;84C8E0;
     dw Instruction_PLM_Delete                                            ;84C8E4;
 
 UNUSED_InstList_PLM_Draws2x2ShotBlock_84C8E6:
-    dw $0001                                                             ;84C8E6;
-    dw DrawInst_2x2RespawningShotBlock                                   ;84C8E8;
+    dw $0001,DrawInst_2x2RespawningShotBlock                             ;84C8E6;
     dw Instruction_PLM_Delete                                            ;84C8EA;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_BombReaction_PLM_1x1RespawningCrumbleBlock:
-    dw $0001                                                             ;84C8EC;
-    dw DrawInst_1x1RespawningCrumbleBlock                                ;84C8EE;
+    dw $0001,DrawInst_1x1RespawningCrumbleBlock                          ;84C8EC;
     dw Instruction_PLM_Delete                                            ;84C8F0;
 
 InstList_BombReaction_PLM_2x1RespawningCrumbleBlock:
-    dw $0001                                                             ;84C8F2;
-    dw DrawInst_2x1RespawningCrumbleBlock                                ;84C8F4;
+    dw $0001,DrawInst_2x1RespawningCrumbleBlock                          ;84C8F2;
     dw Instruction_PLM_Delete                                            ;84C8F6;
 
 InstList_BombReaction_PLM_1x2RespawningCrumbleBlock:
-    dw $0001                                                             ;84C8F8;
-    dw DrawInst_1x2RespawningCrumbleBlock                                ;84C8FA;
+    dw $0001,DrawInst_1x2RespawningCrumbleBlock                          ;84C8F8;
     dw Instruction_PLM_Delete                                            ;84C8FC;
 
 InstList_BombReaction_PLM_2x2RespawningCrumbleBlock:
-    dw $0001                                                             ;84C8FE;
-    dw DrawInst_2x2RespawningCrumbleBlock                                ;84C900;
+    dw $0001,DrawInst_2x2RespawningCrumbleBlock                          ;84C8FE;
     dw Instruction_PLM_Delete                                            ;84C902;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_PLM_84C904:
-    dw $0001                                                             ;84C904;
-    dw UNUSED_DrawInst_84A4C1                                            ;84C906;
+    dw $0001,UNUSED_DrawInst_84A4C1                                      ;84C904;
     dw Instruction_PLM_Delete                                            ;84C908;
 
 UNUSED_InstList_PLM_84C90A:
-    dw $0001                                                             ;84C90A;
-    dw DrawInst_2x1RespawningBombBlock                                   ;84C90C;
+    dw $0001,DrawInst_2x1RespawningBombBlock                             ;84C90A;
     dw Instruction_PLM_Delete                                            ;84C90E;
 
 UNUSED_InstList_PLM_84C910:
-    dw $0001                                                             ;84C910;
-    dw DrawInst_1x2RespawningBombBlock                                   ;84C912;
+    dw $0001,DrawInst_1x2RespawningBombBlock                             ;84C910;
     dw Instruction_PLM_Delete                                            ;84C914;
 
 UNUSED_InstList_PLM_84C916:
-    dw $0001                                                             ;84C916;
-    dw DrawInst_2x2RespawningBombBlock                                   ;84C918;
+    dw $0001,DrawInst_2x2RespawningBombBlock                             ;84C916;
     dw Instruction_PLM_Delete                                            ;84C91A;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 UNUSED_InstList_PLM_PowerBombBlockBombed_84C91C:
-    dw $0001                                                             ;84C91C;
-    dw UNUSED_DrawInst_PowerBombBlockBombed_84A4E7                       ;84C91E;
+    dw $0001,UNUSED_DrawInst_PowerBombBlockBombed_84A4E7                 ;84C91C;
     dw Instruction_PLM_Delete                                            ;84C920;
 
 UNUSED_InstList_PLM_SuperMissileBlockBombed_84C922:
-    dw $0001                                                             ;84C922;
-    dw UNUSED_DrawInst_SuperMissileBlockBombed_84A4ED                    ;84C924;
+    dw $0001,UNUSED_DrawInst_SuperMissileBlockBombed_84A4ED              ;84C922;
     dw Instruction_PLM_Delete                                            ;84C926;
 
 InstList_PLM_BombReaction_SpeedBlock:
-    dw $0001                                                             ;84C928;
-    dw DrawInst_BombReactionSpeedBlock                                   ;84C92A;
+    dw $0001,DrawInst_BombReactionSpeedBlock                             ;84C928;
     dw Instruction_PLM_Delete                                            ;84C92C;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_PLM_84C92E:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max6                            ;84C92E;
-    db $06                                                               ;84C930;
-    dw $0004                                                             ;84C931;
-    dw DrawInst_Respawn1x1_0                                             ;84C933;
-    dw $0004                                                             ;84C935;
-    dw DrawInst_Respawn1x1_1                                             ;84C937;
-    dw $0004                                                             ;84C939;
-    dw DrawInst_Respawn1x1_2                                             ;84C93B;
-    dw $0180                                                             ;84C93D;
-    dw DrawInst_Respawn1x1_3                                             ;84C93F;
-    dw $0004                                                             ;84C941;
-    dw DrawInst_Respawn1x1_2                                             ;84C943;
-    dw $0004                                                             ;84C945;
-    dw DrawInst_Respawn1x1_1                                             ;84C947;
-    dw $0004                                                             ;84C949;
-    dw DrawInst_Respawn1x1_0                                             ;84C94B;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $06                   ;84C92E;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84C931;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84C935;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84C939;
+    dw $0180,DrawInst_Respawn1x1_3                                       ;84C93D;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84C941;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84C945;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84C949;
     dw Instruction_PLM_DrawPLMBlock                                      ;84C94D;
     dw Instruction_PLM_Delete                                            ;84C94F;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_PLM_RespawningSpeedBlock_SlowerCrumbleAnimation:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84C951;
-    db $06                                                               ;84C953;
-    dw $0002                                                             ;84C954;
-    dw DrawInst_Respawn1x1_0                                             ;84C956;
-    dw $0002                                                             ;84C958;
-    dw DrawInst_Respawn1x1_1                                             ;84C95A;
-    dw $0002                                                             ;84C95C;
-    dw DrawInst_Respawn1x1_2                                             ;84C95E;
-    dw $0030                                                             ;84C960;
-    dw DrawInst_Respawn1x1_3                                             ;84C962;
-    dw $0004                                                             ;84C964;
-    dw DrawInst_Respawn1x1_2                                             ;84C966;
-    dw $0004                                                             ;84C968;
-    dw DrawInst_Respawn1x1_1                                             ;84C96A;
-    dw $0004                                                             ;84C96C;
-    dw DrawInst_Respawn1x1_0                                             ;84C96E;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $06                   ;84C951;
+    dw $0002,DrawInst_Respawn1x1_0                                       ;84C954;
+    dw $0002,DrawInst_Respawn1x1_1                                       ;84C958;
+    dw $0002,DrawInst_Respawn1x1_2                                       ;84C95C;
+    dw $0030,DrawInst_Respawn1x1_3                                       ;84C960;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84C964;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84C968;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84C96C;
     dw Instruction_PLM_DrawPLMBlock                                      ;84C970;
     dw Instruction_PLM_Delete                                            ;84C972;
 
 InstList_PLM_RespawningSpeedBoostBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84C974;
-    db $06                                                               ;84C976;
-    dw $0001                                                             ;84C977;
-    dw DrawInst_Respawn1x1_0                                             ;84C979;
-    dw $0001                                                             ;84C97B;
-    dw DrawInst_Respawn1x1_1                                             ;84C97D;
-    dw $0001                                                             ;84C97F;
-    dw DrawInst_Respawn1x1_2                                             ;84C981;
-    dw $0030                                                             ;84C983;
-    dw DrawInst_Respawn1x1_3                                             ;84C985;
-    dw $0004                                                             ;84C987;
-    dw DrawInst_Respawn1x1_2                                             ;84C989;
-    dw $0004                                                             ;84C98B;
-    dw DrawInst_Respawn1x1_1                                             ;84C98D;
-    dw $0004                                                             ;84C98F;
-    dw DrawInst_Respawn1x1_0                                             ;84C991;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $06                   ;84C974;
+    dw $0001,DrawInst_Respawn1x1_0                                       ;84C977;
+    dw $0001,DrawInst_Respawn1x1_1                                       ;84C97B;
+    dw $0001,DrawInst_Respawn1x1_2                                       ;84C97F;
+    dw $0030,DrawInst_Respawn1x1_3                                       ;84C983;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84C987;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84C98B;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84C98F;
     dw Instruction_PLM_DrawPLMBlock                                      ;84C993;
     dw Instruction_PLM_Delete                                            ;84C995;
 
 InstList_PLM_RespawningSpeedBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84C997;
-    db $06                                                               ;84C999;
-    dw $0001                                                             ;84C99A;
-    dw DrawInst_Respawn1x1_0                                             ;84C99C;
-    dw $0001                                                             ;84C99E;
-    dw DrawInst_Respawn1x1_1                                             ;84C9A0;
-    dw $0001                                                             ;84C9A2;
-    dw DrawInst_Respawn1x1_2                                             ;84C9A4;
-    dw $0030                                                             ;84C9A6;
-    dw DrawInst_Respawn1x1_3                                             ;84C9A8;
-    dw $0004                                                             ;84C9AA;
-    dw DrawInst_Respawn1x1_2                                             ;84C9AC;
-    dw $0004                                                             ;84C9AE;
-    dw DrawInst_Respawn1x1_1                                             ;84C9B0;
-    dw $0004                                                             ;84C9B2;
-    dw DrawInst_Respawn1x1_0                                             ;84C9B4;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $06                   ;84C997;
+                                                                   ;84C999;
+    dw $0001,DrawInst_Respawn1x1_0                                       ;84C99A;
+    dw $0001,DrawInst_Respawn1x1_1                                       ;84C99E;
+    dw $0001,DrawInst_Respawn1x1_2                                       ;84C9A2;
+    dw $0030,DrawInst_Respawn1x1_3                                       ;84C9A6;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84C9AA;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84C9AE;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84C9B2;
     dw Instruction_PLM_DrawPLMBlock_Clone                                ;84C9B6;
     dw Instruction_PLM_Delete                                            ;84C9B8;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_PLM_84C9BA:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max6                            ;84C9BA;
-    db $06                                                               ;84C9BC;
-    dw $0004                                                             ;84C9BD;
-    dw DrawInst_Respawn1x1_0                                             ;84C9BF;
-    dw $0004                                                             ;84C9C1;
-    dw DrawInst_Respawn1x1_1                                             ;84C9C3;
-    dw $0004                                                             ;84C9C5;
-    dw DrawInst_Respawn1x1_2                                             ;84C9C7;
-    dw $0001                                                             ;84C9C9;
-    dw DrawInst_Respawn1x1_3                                             ;84C9CB;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $06                   ;84C9BA;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84C9BD;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84C9C1;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84C9C5;
+    dw $0001,DrawInst_Respawn1x1_3                                       ;84C9C9;
     dw Instruction_PLM_Delete                                            ;84C9CD;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_PLM_SpeedBlockSlowerCrumbleAnimation:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84C9CF;
-    db $06                                                               ;84C9D1;
-    dw $0002                                                             ;84C9D2;
-    dw DrawInst_Respawn1x1_0                                             ;84C9D4;
-    dw $0002                                                             ;84C9D6;
-    dw DrawInst_Respawn1x1_1                                             ;84C9D8;
-    dw $0002                                                             ;84C9DA;
-    dw DrawInst_Respawn1x1_2                                             ;84C9DC;
-    dw $0001                                                             ;84C9DE;
-    dw DrawInst_Respawn1x1_3                                             ;84C9E0;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $06                   ;84C9CF;
+    dw $0002,DrawInst_Respawn1x1_0                                       ;84C9D2;
+    dw $0002,DrawInst_Respawn1x1_1                                       ;84C9D6;
+    dw $0002,DrawInst_Respawn1x1_2                                       ;84C9DA;
+    dw $0001,DrawInst_Respawn1x1_3                                       ;84C9DE;
     dw Instruction_PLM_Delete                                            ;84C9E2;
 
 InstList_PLM_SpeedBoostBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84C9E4;
-    db $06                                                               ;84C9E6;
-    dw $0001                                                             ;84C9E7;
-    dw DrawInst_Respawn1x1_0                                             ;84C9E9;
-    dw $0001                                                             ;84C9EB;
-    dw DrawInst_Respawn1x1_1                                             ;84C9ED;
-    dw $0001                                                             ;84C9EF;
-    dw DrawInst_Respawn1x1_2                                             ;84C9F1;
-    dw $0001                                                             ;84C9F3;
-    dw DrawInst_Respawn1x1_3                                             ;84C9F5;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $06                   ;84C9E4;
+    dw $0001,DrawInst_Respawn1x1_0                                       ;84C9E7;
+    dw $0001,DrawInst_Respawn1x1_1                                       ;84C9EB;
+    dw $0001,DrawInst_Respawn1x1_2                                       ;84C9EF;
+    dw $0001,DrawInst_Respawn1x1_3                                       ;84C9F3;
     dw Instruction_PLM_Delete                                            ;84C9F7;
 
 InstList_PLM_1x1RespawningCrumbleBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84C9F9;
-    db $0A                                                               ;84C9FB;
-    dw $0008                                                             ;84C9FC;
-    dw DrawInst_Respawn1x1_0                                             ;84C9FE;
-    dw $0006                                                             ;84CA00;
-    dw DrawInst_Respawn1x1_1                                             ;84CA02;
-    dw $0004                                                             ;84CA04;
-    dw DrawInst_Respawn1x1_2                                             ;84CA06;
-    dw $0010                                                             ;84CA08;
-    dw DrawInst_Respawn1x1_3                                             ;84CA0A;
-    dw $0004                                                             ;84CA0C;
-    dw DrawInst_Respawn1x1_2                                             ;84CA0E;
-    dw $0004                                                             ;84CA10;
-    dw DrawInst_Respawn1x1_1                                             ;84CA12;
-    dw $0004                                                             ;84CA14;
-    dw DrawInst_Respawn1x1_0                                             ;84CA16;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84C9F9;
+    dw $0008,DrawInst_Respawn1x1_0                                       ;84C9FC;
+    dw $0006,DrawInst_Respawn1x1_1                                       ;84CA00;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84CA04;
+    dw $0010,DrawInst_Respawn1x1_3                                       ;84CA08;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84CA0C;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84CA10;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84CA14;
     dw Instruction_PLM_DrawPLMBlock                                      ;84CA18;
     dw Instruction_PLM_Delete                                            ;84CA1A;
 
 InstList_PLM_2x1RespawningCrumbleBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84CA1C;
-    db $0A                                                               ;84CA1E;
-    dw $0004                                                             ;84CA1F;
-    dw DrawInst_Respawn2x1_0                                             ;84CA21;
-    dw $0004                                                             ;84CA23;
-    dw DrawInst_Respawn2x1_1                                             ;84CA25;
-    dw $0004                                                             ;84CA27;
-    dw DrawInst_Respawn2x1_2                                             ;84CA29;
-    dw $0010                                                             ;84CA2B;
-    dw DrawInst_Respawn2x1_3                                             ;84CA2D;
-    dw $0004                                                             ;84CA2F;
-    dw DrawInst_Respawn2x1_2                                             ;84CA31;
-    dw $0004                                                             ;84CA33;
-    dw DrawInst_Respawn2x1_1                                             ;84CA35;
-    dw $0004                                                             ;84CA37;
-    dw DrawInst_Respawn2x1_0                                             ;84CA39;
-    dw $0001                                                             ;84CA3B;
-    dw DrawInst_2x1RespawningCrumbleBlock                                ;84CA3D;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CA1C;
+    dw $0004,DrawInst_Respawn2x1_0                                       ;84CA1F;
+    dw $0004,DrawInst_Respawn2x1_1                                       ;84CA23;
+    dw $0004,DrawInst_Respawn2x1_2                                       ;84CA27;
+    dw $0010,DrawInst_Respawn2x1_3                                       ;84CA2B;
+    dw $0004,DrawInst_Respawn2x1_2                                       ;84CA2F;
+    dw $0004,DrawInst_Respawn2x1_1                                       ;84CA33;
+    dw $0004,DrawInst_Respawn2x1_0                                       ;84CA37;
+    dw $0001,DrawInst_2x1RespawningCrumbleBlock                          ;84CA3B;
     dw Instruction_PLM_Delete                                            ;84CA3F;
 
 InstList_PLM_1x2RespawningCrumbleBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84CA41;
-    db $0A                                                               ;84CA43;
-    dw $0004                                                             ;84CA44;
-    dw DrawInst_Respawn1x2_0                                             ;84CA46;
-    dw $0004                                                             ;84CA48;
-    dw DrawInst_Respawn1x2_1                                             ;84CA4A;
-    dw $0004                                                             ;84CA4C;
-    dw DrawInst_Respawn1x2_2                                             ;84CA4E;
-    dw $0020                                                             ;84CA50;
-    dw DrawInst_Respawn1x2_3                                             ;84CA52;
-    dw $0004                                                             ;84CA54;
-    dw DrawInst_Respawn1x2_2                                             ;84CA56;
-    dw $0004                                                             ;84CA58;
-    dw DrawInst_Respawn1x2_1                                             ;84CA5A;
-    dw $0004                                                             ;84CA5C;
-    dw DrawInst_Respawn1x2_0                                             ;84CA5E;
-    dw $0001                                                             ;84CA60;
-    dw DrawInst_1x2RespawningCrumbleBlock                                ;84CA62;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CA41;
+    dw $0004,DrawInst_Respawn1x2_0                                       ;84CA44;
+    dw $0004,DrawInst_Respawn1x2_1                                       ;84CA48;
+    dw $0004,DrawInst_Respawn1x2_2                                       ;84CA4C;
+    dw $0020,DrawInst_Respawn1x2_3                                       ;84CA50;
+    dw $0004,DrawInst_Respawn1x2_2                                       ;84CA54;
+    dw $0004,DrawInst_Respawn1x2_1                                       ;84CA58;
+    dw $0004,DrawInst_Respawn1x2_0                                       ;84CA5C;
+    dw $0001,DrawInst_1x2RespawningCrumbleBlock                          ;84CA60;
     dw Instruction_PLM_Delete                                            ;84CA64;
 
 InstList_PLM_2x2RespawningCrumbleBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84CA66;
-    db $0A                                                               ;84CA68;
-    dw $0004                                                             ;84CA69;
-    dw DrawInst_Respawn2x2_0                                             ;84CA6B;
-    dw $0004                                                             ;84CA6D;
-    dw DrawInst_Respawn2x2_1                                             ;84CA6F;
-    dw $0004                                                             ;84CA71;
-    dw DrawInst_Respawn2x2_2                                             ;84CA73;
-    dw $0020                                                             ;84CA75;
-    dw DrawInst_Respawn2x2_3                                             ;84CA77;
-    dw $0004                                                             ;84CA79;
-    dw DrawInst_Respawn2x2_2                                             ;84CA7B;
-    dw $0004                                                             ;84CA7D;
-    dw DrawInst_Respawn2x2_1                                             ;84CA7F;
-    dw $0004                                                             ;84CA81;
-    dw DrawInst_Respawn2x2_0                                             ;84CA83;
-    dw $0001                                                             ;84CA85;
-    dw DrawInst_2x2RespawningCrumbleBlock                                ;84CA87;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CA66;
+    dw $0004,DrawInst_Respawn2x2_0                                       ;84CA69;
+    dw $0004,DrawInst_Respawn2x2_1                                       ;84CA6D;
+    dw $0004,DrawInst_Respawn2x2_2                                       ;84CA71;
+    dw $0020,DrawInst_Respawn2x2_3                                       ;84CA75;
+    dw $0004,DrawInst_Respawn2x2_2                                       ;84CA79;
+    dw $0004,DrawInst_Respawn2x2_1                                       ;84CA7D;
+    dw $0004,DrawInst_Respawn2x2_0                                       ;84CA81;
+    dw $0001,DrawInst_2x2RespawningCrumbleBlock                          ;84CA85;
     dw Instruction_PLM_Delete                                            ;84CA89;
 
 InstList_PLM_1x1CrumbleBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84CA8B;
-    db $0A                                                               ;84CA8D;
-    dw $0004                                                             ;84CA8E;
-    dw DrawInst_Respawn1x1_0                                             ;84CA90;
-    dw $0004                                                             ;84CA92;
-    dw DrawInst_Respawn1x1_1                                             ;84CA94;
-    dw $0004                                                             ;84CA96;
-    dw DrawInst_Respawn1x1_2                                             ;84CA98;
-    dw $0001                                                             ;84CA9A;
-    dw DrawInst_Respawn1x1_3                                             ;84CA9C;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CA8B;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84CA8E;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84CA92;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84CA96;
+    dw $0001,DrawInst_Respawn1x1_3                                       ;84CA9A;
     dw Instruction_PLM_Delete                                            ;84CA9E;
 
 InstList_PLM_2x1CrumbleBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84CAA0;
-    db $0A                                                               ;84CAA2;
-    dw $0004                                                             ;84CAA3;
-    dw DrawInst_Respawn2x1_0                                             ;84CAA5;
-    dw $0004                                                             ;84CAA7;
-    dw DrawInst_Respawn2x1_1                                             ;84CAA9;
-    dw $0004                                                             ;84CAAB;
-    dw DrawInst_Respawn2x1_2                                             ;84CAAD;
-    dw $0001                                                             ;84CAAF;
-    dw DrawInst_Respawn2x1_3                                             ;84CAB1;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CAA0;
+    dw $0004,DrawInst_Respawn2x1_0                                       ;84CAA3;
+    dw $0004,DrawInst_Respawn2x1_1                                       ;84CAA7;
+    dw $0004,DrawInst_Respawn2x1_2                                       ;84CAAB;
+    dw $0001,DrawInst_Respawn2x1_3                                       ;84CAAF;
     dw Instruction_PLM_Delete                                            ;84CAB3;
 
 InstList_PLM_1x2CrumbleBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84CAB5;
-    db $0A                                                               ;84CAB7;
-    dw $0004                                                             ;84CAB8;
-    dw DrawInst_Respawn1x2_0                                             ;84CABA;
-    dw $0004                                                             ;84CABC;
-    dw DrawInst_Respawn1x2_1                                             ;84CABE;
-    dw $0004                                                             ;84CAC0;
-    dw DrawInst_Respawn1x2_2                                             ;84CAC2;
-    dw $0001                                                             ;84CAC4;
-    dw DrawInst_Respawn1x2_3                                             ;84CAC6;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CAB5;
+    dw $0004,DrawInst_Respawn1x2_0                                       ;84CAB8;
+    dw $0004,DrawInst_Respawn1x2_1                                       ;84CABC;
+    dw $0004,DrawInst_Respawn1x2_2                                       ;84CAC0;
+    dw $0001,DrawInst_Respawn1x2_3                                       ;84CAC4;
     dw Instruction_PLM_Delete                                            ;84CAC8;
 
 InstList_PLM_2x2CrumbleBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84CACA;
-    db $0A                                                               ;84CACC;
-    dw $0004                                                             ;84CACD;
-    dw DrawInst_Respawn2x2_0                                             ;84CACF;
-    dw $0004                                                             ;84CAD1;
-    dw DrawInst_Respawn2x2_1                                             ;84CAD3;
-    dw $0004                                                             ;84CAD5;
-    dw DrawInst_Respawn2x2_2                                             ;84CAD7;
-    dw $0001                                                             ;84CAD9;
-    dw DrawInst_Respawn2x2_3                                             ;84CADB;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CACA;
+    dw $0004,DrawInst_Respawn2x2_0                                       ;84CACD;
+    dw $0004,DrawInst_Respawn2x2_1                                       ;84CAD1;
+    dw $0004,DrawInst_Respawn2x2_2                                       ;84CAD5;
+    dw $0001,DrawInst_Respawn2x2_3                                       ;84CAD9;
     dw Instruction_PLM_Delete                                            ;84CADD;
 
 InstList_PLM_1x1RespawningShotBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84CADF;
-    db $0A                                                               ;84CAE1;
-    dw $0004                                                             ;84CAE2;
-    dw DrawInst_Respawn1x1_0                                             ;84CAE4;
-    dw $0004                                                             ;84CAE6;
-    dw DrawInst_Respawn1x1_1                                             ;84CAE8;
-    dw $0004                                                             ;84CAEA;
-    dw DrawInst_Respawn1x1_2                                             ;84CAEC;
-    dw $0180                                                             ;84CAEE;
-    dw DrawInst_Respawn1x1_3                                             ;84CAF0;
-    dw $0004                                                             ;84CAF2;
-    dw DrawInst_Respawn1x1_2                                             ;84CAF4;
-    dw $0004                                                             ;84CAF6;
-    dw DrawInst_Respawn1x1_1                                             ;84CAF8;
-    dw $0004                                                             ;84CAFA;
-    dw DrawInst_Respawn1x1_0                                             ;84CAFC;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CADF;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84CAE2;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84CAE6;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84CAEA;
+    dw $0180,DrawInst_Respawn1x1_3                                       ;84CAEE;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84CAF2;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84CAF6;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84CAFA;
     dw Instruction_PLM_DrawPLMBlock                                      ;84CAFE;
     dw Instruction_PLM_Delete                                            ;84CB00;
 
 InstList_PLM_2x1RespawningShotBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84CB02;
-    db $0A                                                               ;84CB04;
-    dw $0004                                                             ;84CB05;
-    dw DrawInst_Respawn2x1_0                                             ;84CB07;
-    dw $0004                                                             ;84CB09;
-    dw DrawInst_Respawn2x1_1                                             ;84CB0B;
-    dw $0004                                                             ;84CB0D;
-    dw DrawInst_Respawn2x1_2                                             ;84CB0F;
-    dw $0180                                                             ;84CB11;
-    dw DrawInst_Respawn2x1_3                                             ;84CB13;
-    dw $0004                                                             ;84CB15;
-    dw DrawInst_Respawn2x1_2                                             ;84CB17;
-    dw $0004                                                             ;84CB19;
-    dw DrawInst_Respawn2x1_1                                             ;84CB1B;
-    dw $0004                                                             ;84CB1D;
-    dw DrawInst_Respawn2x1_0                                             ;84CB1F;
-    dw $0001                                                             ;84CB21;
-    dw DrawInst_2x1RespawningShotBlock                                   ;84CB23;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CB02;
+    dw $0004,DrawInst_Respawn2x1_0                                       ;84CB05;
+    dw $0004,DrawInst_Respawn2x1_1                                       ;84CB09;
+    dw $0004,DrawInst_Respawn2x1_2                                       ;84CB0D;
+    dw $0180,DrawInst_Respawn2x1_3                                       ;84CB11;
+    dw $0004,DrawInst_Respawn2x1_2                                       ;84CB15;
+    dw $0004,DrawInst_Respawn2x1_1                                       ;84CB19;
+    dw $0004,DrawInst_Respawn2x1_0                                       ;84CB1D;
+    dw $0001,DrawInst_2x1RespawningShotBlock                             ;84CB21;
     dw Instruction_PLM_Delete                                            ;84CB25;
 
 InstList_PLM_1x2RespawningShotBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84CB27;
-    db $0A                                                               ;84CB29;
-    dw $0004                                                             ;84CB2A;
-    dw DrawInst_Respawn1x2_0                                             ;84CB2C;
-    dw $0004                                                             ;84CB2E;
-    dw DrawInst_Respawn1x2_1                                             ;84CB30;
-    dw $0004                                                             ;84CB32;
-    dw DrawInst_Respawn1x2_2                                             ;84CB34;
-    dw $0180                                                             ;84CB36;
-    dw DrawInst_Respawn1x2_3                                             ;84CB38;
-    dw $0004                                                             ;84CB3A;
-    dw DrawInst_Respawn1x2_2                                             ;84CB3C;
-    dw $0004                                                             ;84CB3E;
-    dw DrawInst_Respawn1x2_1                                             ;84CB40;
-    dw $0004                                                             ;84CB42;
-    dw DrawInst_Respawn1x2_0                                             ;84CB44;
-    dw $0001                                                             ;84CB46;
-    dw DrawInst_1x2RespawningShotBlock                                   ;84CB48;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CB27;
+    dw $0004,DrawInst_Respawn1x2_0                                       ;84CB2A;
+    dw $0004,DrawInst_Respawn1x2_1                                       ;84CB2E;
+    dw $0004,DrawInst_Respawn1x2_2                                       ;84CB32;
+    dw $0180,DrawInst_Respawn1x2_3                                       ;84CB36;
+    dw $0004,DrawInst_Respawn1x2_2                                       ;84CB3A;
+    dw $0004,DrawInst_Respawn1x2_1                                       ;84CB3E;
+    dw $0004,DrawInst_Respawn1x2_0                                       ;84CB42;
+    dw $0001,DrawInst_1x2RespawningShotBlock                             ;84CB46;
     dw Instruction_PLM_Delete                                            ;84CB4A;
 
 InstList_PLM_2x2RespawningShotBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84CB4C;
-    db $0A                                                               ;84CB4E;
-    dw $0004                                                             ;84CB4F;
-    dw DrawInst_Respawn2x2_0                                             ;84CB51;
-    dw $0004                                                             ;84CB53;
-    dw DrawInst_Respawn2x2_1                                             ;84CB55;
-    dw $0004                                                             ;84CB57;
-    dw DrawInst_Respawn2x2_2                                             ;84CB59;
-    dw $0180                                                             ;84CB5B;
-    dw DrawInst_Respawn2x2_3                                             ;84CB5D;
-    dw $0004                                                             ;84CB5F;
-    dw DrawInst_Respawn2x2_2                                             ;84CB61;
-    dw $0004                                                             ;84CB63;
-    dw DrawInst_Respawn2x2_1                                             ;84CB65;
-    dw $0004                                                             ;84CB67;
-    dw DrawInst_Respawn2x2_0                                             ;84CB69;
-    dw $0001                                                             ;84CB6B;
-    dw DrawInst_2x2RespawningShotBlock                                   ;84CB6D;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CB4C;
+    dw $0004,DrawInst_Respawn2x2_0                                       ;84CB4F;
+    dw $0004,DrawInst_Respawn2x2_1                                       ;84CB53;
+    dw $0004,DrawInst_Respawn2x2_2                                       ;84CB57;
+    dw $0180,DrawInst_Respawn2x2_3                                       ;84CB5B;
+    dw $0004,DrawInst_Respawn2x2_2                                       ;84CB5F;
+    dw $0004,DrawInst_Respawn2x2_1                                       ;84CB63;
+    dw $0004,DrawInst_Respawn2x2_0                                       ;84CB67;
+    dw $0001,DrawInst_2x2RespawningShotBlock                             ;84CB6B;
     dw Instruction_PLM_Delete                                            ;84CB6F;
 
 InstList_PLM_RespawningSuperMissileBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max6                            ;84CB71;
-    db $0A                                                               ;84CB73;
-    dw $0004                                                             ;84CB74;
-    dw DrawInst_Respawn1x1_0                                             ;84CB76;
-    dw $0004                                                             ;84CB78;
-    dw DrawInst_Respawn1x1_1                                             ;84CB7A;
-    dw $0004                                                             ;84CB7C;
-    dw DrawInst_Respawn1x1_2                                             ;84CB7E;
-    dw $0180                                                             ;84CB80;
-    dw DrawInst_Respawn1x1_3                                             ;84CB82;
-    dw $0004                                                             ;84CB84;
-    dw DrawInst_Respawn1x1_2                                             ;84CB86;
-    dw $0004                                                             ;84CB88;
-    dw DrawInst_Respawn1x1_1                                             ;84CB8A;
-    dw $0004                                                             ;84CB8C;
-    dw DrawInst_Respawn1x1_0                                             ;84CB8E;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $0A                   ;84CB71;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84CB74;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84CB78;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84CB7C;
+    dw $0180,DrawInst_Respawn1x1_3                                       ;84CB80;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84CB84;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84CB88;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84CB8C;
     dw Instruction_PLM_DrawPLMBlock                                      ;84CB90;
     dw Instruction_PLM_Delete                                            ;84CB92;
 
 InstList_PLM_RespawningPowerBombBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84CB94;
-    db $0A                                                               ;84CB96;
-    dw $0004                                                             ;84CB97;
-    dw DrawInst_Respawn1x1_0                                             ;84CB99;
-    dw $0004                                                             ;84CB9B;
-    dw DrawInst_Respawn1x1_1                                             ;84CB9D;
-    dw $0004                                                             ;84CB9F;
-    dw DrawInst_Respawn1x1_2                                             ;84CBA1;
-    dw $0180                                                             ;84CBA3;
-    dw DrawInst_Respawn1x1_3                                             ;84CBA5;
-    dw $0004                                                             ;84CBA7;
-    dw DrawInst_Respawn1x1_2                                             ;84CBA9;
-    dw $0004                                                             ;84CBAB;
-    dw DrawInst_Respawn1x1_1                                             ;84CBAD;
-    dw $0004                                                             ;84CBAF;
-    dw DrawInst_Respawn1x1_0                                             ;84CBB1;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CB94;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84CB97;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84CB9B;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84CB9F;
+    dw $0180,DrawInst_Respawn1x1_3                                       ;84CBA3;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84CBA7;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84CBAB;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84CBAF;
     dw Instruction_PLM_DrawPLMBlock                                      ;84CBB3;
     dw Instruction_PLM_Delete                                            ;84CBB5;
 
 InstList_PLM_1x1ShotBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84CBB7;
-    db $0A                                                               ;84CBB9;
-    dw $0004                                                             ;84CBBA;
-    dw DrawInst_Respawn1x1_0                                             ;84CBBC;
-    dw $0004                                                             ;84CBBE;
-    dw DrawInst_Respawn1x1_1                                             ;84CBC0;
-    dw $0004                                                             ;84CBC2;
-    dw DrawInst_Respawn1x1_2                                             ;84CBC4;
-    dw $0001                                                             ;84CBC6;
-    dw DrawInst_Respawn1x1_3                                             ;84CBC8;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CBB7;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84CBBA;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84CBBE;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84CBC2;
+    dw $0001,DrawInst_Respawn1x1_3                                       ;84CBC6;
     dw Instruction_PLM_Delete                                            ;84CBCA;
 
 InstList_PLM_2x1ShotBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84CBCC;
-    db $0A                                                               ;84CBCE;
-    dw $0004                                                             ;84CBCF;
-    dw DrawInst_Respawn2x1_0                                             ;84CBD1;
-    dw $0004                                                             ;84CBD3;
-    dw DrawInst_Respawn2x1_1                                             ;84CBD5;
-    dw $0004                                                             ;84CBD7;
-    dw DrawInst_Respawn2x1_2                                             ;84CBD9;
-    dw $0001                                                             ;84CBDB;
-    dw DrawInst_Respawn2x1_3                                             ;84CBDD;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CBCC;
+    dw $0004,DrawInst_Respawn2x1_0                                       ;84CBCF;
+    dw $0004,DrawInst_Respawn2x1_1                                       ;84CBD3;
+    dw $0004,DrawInst_Respawn2x1_2                                       ;84CBD7;
+    dw $0001,DrawInst_Respawn2x1_3                                       ;84CBDB;
     dw Instruction_PLM_Delete                                            ;84CBDF;
 
 InstList_PLM_1x2ShotBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84CBE1;
-    db $0A                                                               ;84CBE3;
-    dw $0004                                                             ;84CBE4;
-    dw DrawInst_Respawn1x2_0                                             ;84CBE6;
-    dw $0004                                                             ;84CBE8;
-    dw DrawInst_Respawn1x2_1                                             ;84CBEA;
-    dw $0004                                                             ;84CBEC;
-    dw DrawInst_Respawn1x2_2                                             ;84CBEE;
-    dw $0001                                                             ;84CBF0;
-    dw DrawInst_Respawn1x2_3                                             ;84CBF2;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CBE1;
+    dw $0004,DrawInst_Respawn1x2_0                                       ;84CBE4;
+    dw $0004,DrawInst_Respawn1x2_1                                       ;84CBE8;
+    dw $0004,DrawInst_Respawn1x2_2                                       ;84CBEC;
+    dw $0001,DrawInst_Respawn1x2_3                                       ;84CBF0;
     dw Instruction_PLM_Delete                                            ;84CBF4;
 
 InstList_PLM_2x2ShotBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84CBF6;
-    db $0A                                                               ;84CBF8;
-    dw $0004                                                             ;84CBF9;
-    dw DrawInst_Respawn2x2_0                                             ;84CBFB;
-    dw $0004                                                             ;84CBFD;
-    dw DrawInst_Respawn2x2_1                                             ;84CBFF;
-    dw $0004                                                             ;84CC01;
-    dw DrawInst_Respawn2x2_2                                             ;84CC03;
-    dw $0001                                                             ;84CC05;
-    dw DrawInst_Respawn2x2_3                                             ;84CC07;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CBF6;
+    dw $0004,DrawInst_Respawn2x2_0                                       ;84CBF9;
+    dw $0004,DrawInst_Respawn2x2_1                                       ;84CBFD;
+    dw $0004,DrawInst_Respawn2x2_2                                       ;84CC01;
+    dw $0001,DrawInst_Respawn2x2_3                                       ;84CC05;
     dw Instruction_PLM_Delete                                            ;84CC09;
 
 InstList_PLM_SuperMissileBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max6                            ;84CC0B;
-    db $0A                                                               ;84CC0D;
-    dw $0004                                                             ;84CC0E;
-    dw DrawInst_Respawn1x1_0                                             ;84CC10;
-    dw $0004                                                             ;84CC12;
-    dw DrawInst_Respawn1x1_1                                             ;84CC14;
-    dw $0004                                                             ;84CC16;
-    dw DrawInst_Respawn1x1_2                                             ;84CC18;
-    dw $0001                                                             ;84CC1A;
-    dw DrawInst_Respawn1x1_3                                             ;84CC1C;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $0A                   ;84CC0B;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84CC0E;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84CC12;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84CC16;
+    dw $0001,DrawInst_Respawn1x1_3                                       ;84CC1A;
     dw Instruction_PLM_Delete                                            ;84CC1E;
 
 InstList_PLM_PowerBombBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max1                            ;84CC20;
-    db $0A                                                               ;84CC22;
-    dw $0003                                                             ;84CC23;
-    dw DrawInst_Respawn1x1_0                                             ;84CC25;
-    dw $0002                                                             ;84CC27;
-    dw DrawInst_Respawn1x1_1                                             ;84CC29;
-    dw $0001                                                             ;84CC2B;
-    dw DrawInst_Respawn1x1_2                                             ;84CC2D;
-    dw $0001                                                             ;84CC2F;
-    dw DrawInst_Respawn1x1_3                                             ;84CC31;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max1 : db $0A                   ;84CC20;
+    dw $0003,DrawInst_Respawn1x1_0                                       ;84CC23;
+    dw $0002,DrawInst_Respawn1x1_1                                       ;84CC27;
+    dw $0001,DrawInst_Respawn1x1_2                                       ;84CC2B;
+    dw $0001,DrawInst_Respawn1x1_3                                       ;84CC2F;
     dw Instruction_PLM_Delete                                            ;84CC33;
 
 InstList_PLM_CollisionReaction_1x1RespawningBombBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max3                            ;84CC35;
-    db $06                                                               ;84CC37;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $06                   ;84CC35;
     dw Instruction_PLM_GotoY                                             ;84CC38;
     dw InstList_PLM_1x1RespawningBombBlock                               ;84CC3A;
 
 InstList_PLM_Reaction_1x1RespawningBombBlock_0:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max3                            ;84CC3C;
-    db $0A                                                               ;84CC3E;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $0A                   ;84CC3C;
 
 InstList_PLM_1x1RespawningBombBlock:
-    dw $0004                                                             ;84CC3F;
-    dw DrawInst_Respawn1x1_0                                             ;84CC41;
-    dw $0004                                                             ;84CC43;
-    dw DrawInst_Respawn1x1_1                                             ;84CC45;
-    dw $0004                                                             ;84CC47;
-    dw DrawInst_Respawn1x1_2                                             ;84CC49;
-    dw $0180                                                             ;84CC4B;
-    dw DrawInst_Respawn1x1_3                                             ;84CC4D;
-    dw $0004                                                             ;84CC4F;
-    dw DrawInst_Respawn1x1_2                                             ;84CC51;
-    dw $0004                                                             ;84CC53;
-    dw DrawInst_Respawn1x1_1                                             ;84CC55;
-    dw $0004                                                             ;84CC57;
-    dw DrawInst_Respawn1x1_0                                             ;84CC59;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84CC3F;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84CC43;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84CC47;
+    dw $0180,DrawInst_Respawn1x1_3                                       ;84CC4B;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84CC4F;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84CC53;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84CC57;
     dw Instruction_PLM_DrawPLMBlock                                      ;84CC5B;
     dw Instruction_PLM_Delete                                            ;84CC5D;
 
 InstList_PLM_Collision_2x1RespawningBombBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max3                            ;84CC5F;
-    db $06                                                               ;84CC61;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $06                   ;84CC5F;
     dw Instruction_PLM_GotoY                                             ;84CC62;
     dw InstList_PLM_2x1RespawningBombBlock                               ;84CC64;
 
 InstList_PLM_Reaction_2x1RespawningBombBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max3                            ;84CC66;
-    db $0A                                                               ;84CC68;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $0A                   ;84CC66;
 
 InstList_PLM_2x1RespawningBombBlock:
-    dw $0004                                                             ;84CC69;
-    dw DrawInst_Respawn2x1_0                                             ;84CC6B;
-    dw $0004                                                             ;84CC6D;
-    dw DrawInst_Respawn2x1_1                                             ;84CC6F;
-    dw $0004                                                             ;84CC71;
-    dw DrawInst_Respawn2x1_2                                             ;84CC73;
-    dw $0180                                                             ;84CC75;
-    dw DrawInst_Respawn2x1_3                                             ;84CC77;
-    dw $0004                                                             ;84CC79;
-    dw DrawInst_Respawn2x1_2                                             ;84CC7B;
-    dw $0004                                                             ;84CC7D;
-    dw DrawInst_Respawn2x1_1                                             ;84CC7F;
-    dw $0004                                                             ;84CC81;
-    dw DrawInst_Respawn2x1_0                                             ;84CC83;
-    dw $0001                                                             ;84CC85;
-    dw DrawInst_2x1RespawningBombBlock                                   ;84CC87;
+    dw $0004,DrawInst_Respawn2x1_0                                       ;84CC69;
+    dw $0004,DrawInst_Respawn2x1_1                                       ;84CC6D;
+    dw $0004,DrawInst_Respawn2x1_2                                       ;84CC71;
+    dw $0180,DrawInst_Respawn2x1_3                                       ;84CC75;
+    dw $0004,DrawInst_Respawn2x1_2                                       ;84CC79;
+    dw $0004,DrawInst_Respawn2x1_1                                       ;84CC7D;
+    dw $0004,DrawInst_Respawn2x1_0                                       ;84CC81;
+    dw $0001,DrawInst_2x1RespawningBombBlock                             ;84CC85;
     dw Instruction_PLM_Delete                                            ;84CC89;
 
 InstList_PLM_Collision_1x2RespawningBombBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max3                            ;84CC8B;
-    db $06                                                               ;84CC8D;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $06                   ;84CC8B;
     dw Instruction_PLM_GotoY                                             ;84CC8E;
     dw InstList_PLM_1x2RespawningBombBlock                               ;84CC90;
 
 InstList_PLM_Reaction_1x2RespawningBombBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max3                            ;84CC92;
-    db $0A                                                               ;84CC94;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $0A                   ;84CC92;
 
 InstList_PLM_1x2RespawningBombBlock:
-    dw $0004                                                             ;84CC95;
-    dw DrawInst_Respawn1x2_0                                             ;84CC97;
-    dw $0004                                                             ;84CC99;
-    dw DrawInst_Respawn1x2_1                                             ;84CC9B;
-    dw $0004                                                             ;84CC9D;
-    dw DrawInst_Respawn1x2_2                                             ;84CC9F;
-    dw $0180                                                             ;84CCA1;
-    dw DrawInst_Respawn1x2_3                                             ;84CCA3;
-    dw $0004                                                             ;84CCA5;
-    dw DrawInst_Respawn1x2_2                                             ;84CCA7;
-    dw $0004                                                             ;84CCA9;
-    dw DrawInst_Respawn1x2_1                                             ;84CCAB;
-    dw $0004                                                             ;84CCAD;
-    dw DrawInst_Respawn1x2_0                                             ;84CCAF;
-    dw $0001                                                             ;84CCB1;
-    dw DrawInst_1x2RespawningBombBlock                                   ;84CCB3;
+    dw $0004,DrawInst_Respawn1x2_0                                       ;84CC95;
+    dw $0004,DrawInst_Respawn1x2_1                                       ;84CC99;
+    dw $0004,DrawInst_Respawn1x2_2                                       ;84CC9D;
+    dw $0180,DrawInst_Respawn1x2_3                                       ;84CCA1;
+    dw $0004,DrawInst_Respawn1x2_2                                       ;84CCA5;
+    dw $0004,DrawInst_Respawn1x2_1                                       ;84CCA9;
+    dw $0004,DrawInst_Respawn1x2_0                                       ;84CCAD;
+    dw $0001,DrawInst_1x2RespawningBombBlock                             ;84CCB1;
     dw Instruction_PLM_Delete                                            ;84CCB5;
 
 InstList_PLM_Collision_2x2RespawningBombBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max3                            ;84CCB7;
-    db $06                                                               ;84CCB9;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $06                   ;84CCB7;
     dw Instruction_PLM_GotoY                                             ;84CCBA;
     dw InstList_PLM_2x2RespawningBombBlock                               ;84CCBC;
 
 InstList_PLM_Reaction_2x2RespawningBombBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max3                            ;84CCBE;
-    db $0A                                                               ;84CCC0;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $0A                   ;84CCBE;
 
 InstList_PLM_2x2RespawningBombBlock:
-    dw $0004                                                             ;84CCC1;
-    dw DrawInst_Respawn2x2_0                                             ;84CCC3;
-    dw $0004                                                             ;84CCC5;
-    dw DrawInst_Respawn2x2_1                                             ;84CCC7;
-    dw $0004                                                             ;84CCC9;
-    dw DrawInst_Respawn2x2_2                                             ;84CCCB;
-    dw $0180                                                             ;84CCCD;
-    dw DrawInst_Respawn2x2_3                                             ;84CCCF;
-    dw $0004                                                             ;84CCD1;
-    dw DrawInst_Respawn2x2_2                                             ;84CCD3;
-    dw $0004                                                             ;84CCD5;
-    dw DrawInst_Respawn2x2_1                                             ;84CCD7;
-    dw $0004                                                             ;84CCD9;
-    dw DrawInst_Respawn2x2_0                                             ;84CCDB;
-    dw $0001                                                             ;84CCDD;
-    dw DrawInst_2x2RespawningBombBlock                                   ;84CCDF;
+    dw $0004,DrawInst_Respawn2x2_0                                       ;84CCC1;
+    dw $0004,DrawInst_Respawn2x2_1                                       ;84CCC5;
+    dw $0004,DrawInst_Respawn2x2_2                                       ;84CCC9;
+    dw $0180,DrawInst_Respawn2x2_3                                       ;84CCCD;
+    dw $0004,DrawInst_Respawn2x2_2                                       ;84CCD1;
+    dw $0004,DrawInst_Respawn2x2_1                                       ;84CCD5;
+    dw $0004,DrawInst_Respawn2x2_0                                       ;84CCD9;
+    dw $0001,DrawInst_2x2RespawningBombBlock                             ;84CCDD;
     dw Instruction_PLM_Delete                                            ;84CCE1;
 
 InstList_PLM_Collision_1x1RespawningBombBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max3                            ;84CCE3;
-    db $06                                                               ;84CCE5;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $06                   ;84CCE3;
     dw Instruction_PLM_GotoY                                             ;84CCE6;
     dw InstList_PLM_1x1BombBlock                                         ;84CCE8;
 
 InstList_PLM_Reaction_1x1RespawningBombBlock_4:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max3                            ;84CCEA;
-    db $0A                                                               ;84CCEC;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $0A                   ;84CCEA;
 
 InstList_PLM_1x1BombBlock:
-    dw $0004                                                             ;84CCED;
-    dw DrawInst_Respawn1x1_0                                             ;84CCEF;
-    dw $0004                                                             ;84CCF1;
-    dw DrawInst_Respawn1x1_1                                             ;84CCF3;
-    dw $0004                                                             ;84CCF5;
-    dw DrawInst_Respawn1x1_2                                             ;84CCF7;
-    dw $0001                                                             ;84CCF9;
-    dw DrawInst_Respawn1x1_3                                             ;84CCFB;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84CCED;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84CCF1;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84CCF5;
+    dw $0001,DrawInst_Respawn1x1_3                                       ;84CCF9;
     dw Instruction_PLM_Delete                                            ;84CCFD;
 
 InstList_PLM_Collision_2x1BombBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max3                            ;84CCFF;
-    db $06                                                               ;84CD01;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $06                   ;84CCFF;
     dw Instruction_PLM_GotoY                                             ;84CD02;
     dw InstList_PLM_2x1BombBlock                                         ;84CD04;
 
 InstList_PLM_Reaction_2x1BombBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max3                            ;84CD06;
-    db $0A                                                               ;84CD08;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $0A                   ;84CD06;
 
 InstList_PLM_2x1BombBlock:
-    dw $0004                                                             ;84CD09;
-    dw DrawInst_Respawn2x1_0                                             ;84CD0B;
-    dw $0004                                                             ;84CD0D;
-    dw DrawInst_Respawn2x1_1                                             ;84CD0F;
-    dw $0004                                                             ;84CD11;
-    dw DrawInst_Respawn2x1_2                                             ;84CD13;
-    dw $0001                                                             ;84CD15;
-    dw DrawInst_Respawn2x1_3                                             ;84CD17;
+    dw $0004,DrawInst_Respawn2x1_0                                       ;84CD09;
+    dw $0004,DrawInst_Respawn2x1_1                                       ;84CD0D;
+    dw $0004,DrawInst_Respawn2x1_2                                       ;84CD11;
+    dw $0001,DrawInst_Respawn2x1_3                                       ;84CD15;
     dw Instruction_PLM_Delete                                            ;84CD19;
 
 InstList_PLM_Collision_1x2BombBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max3                            ;84CD1B;
-    db $06                                                               ;84CD1D;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $06                   ;84CD1B;
     dw Instruction_PLM_GotoY                                             ;84CD1E;
     dw InstList_PLM_1x2BombBlock                                         ;84CD20;
 
 InstList_PLM_Reaction_1x2BombBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max3                            ;84CD22;
-    db $0A                                                               ;84CD24;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $0A                   ;84CD22;
 
 InstList_PLM_1x2BombBlock:
-    dw $0004                                                             ;84CD25;
-    dw DrawInst_Respawn1x2_0                                             ;84CD27;
-    dw $0004                                                             ;84CD29;
-    dw DrawInst_Respawn1x2_1                                             ;84CD2B;
-    dw $0004                                                             ;84CD2D;
-    dw DrawInst_Respawn1x2_2                                             ;84CD2F;
-    dw $0001                                                             ;84CD31;
-    dw DrawInst_Respawn1x2_3                                             ;84CD33;
+    dw $0004,DrawInst_Respawn1x2_0                                       ;84CD25;
+    dw $0004,DrawInst_Respawn1x2_1                                       ;84CD29;
+    dw $0004,DrawInst_Respawn1x2_2                                       ;84CD2D;
+    dw $0001,DrawInst_Respawn1x2_3                                       ;84CD31;
     dw Instruction_PLM_Delete                                            ;84CD35;
 
 InstList_PLM_Collision_2x2BombBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max3                            ;84CD37;
-    db $06                                                               ;84CD39;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $06                   ;84CD37;
     dw Instruction_PLM_GotoY                                             ;84CD3A;
     dw InstList_PLM_2x2BombBlock                                         ;84CD3C;
 
 InstList_PLM_Reaction_2x2BombBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max3                            ;84CD3E;
-    db $0A                                                               ;84CD40;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $0A                   ;84CD3E;
 
 InstList_PLM_2x2BombBlock:
-    dw $0004                                                             ;84CD41;
-    dw DrawInst_Respawn2x2_0                                             ;84CD43;
-    dw $0004                                                             ;84CD45;
-    dw DrawInst_Respawn2x2_1                                             ;84CD47;
-    dw $0004                                                             ;84CD49;
-    dw DrawInst_Respawn2x2_2                                             ;84CD4B;
-    dw $0001                                                             ;84CD4D;
-    dw DrawInst_Respawn2x2_3                                             ;84CD4F;
+    dw $0004,DrawInst_Respawn2x2_0                                       ;84CD41;
+    dw $0004,DrawInst_Respawn2x2_1                                       ;84CD45;
+    dw $0004,DrawInst_Respawn2x2_2                                       ;84CD49;
+    dw $0001,DrawInst_Respawn2x2_3                                       ;84CD4D;
     dw Instruction_PLM_Delete                                            ;84CD51;
 
 InstList_PLM_EnemyBreakableBlock:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max3                            ;84CD53;
-    db $0A                                                               ;84CD55;
-    dw $0004                                                             ;84CD56;
-    dw DrawInst_Respawn1x1_0                                             ;84CD58;
-    dw $0004                                                             ;84CD5A;
-    dw DrawInst_Respawn1x1_1                                             ;84CD5C;
-    dw $0004                                                             ;84CD5E;
-    dw DrawInst_Respawn1x1_2                                             ;84CD60;
-    dw $0001                                                             ;84CD62;
-    dw DrawInst_Respawn1x1_3                                             ;84CD64;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max3 : db $0A                   ;84CD53;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84CD56;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84CD5A;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84CD5E;
+    dw $0001,DrawInst_Respawn1x1_3                                       ;84CD62;
     dw Instruction_PLM_Delete                                            ;84CD66;
 
 InstList_PLM_GrappleBlock:
     dw Instruction_PLM_Delete                                            ;84CD68;
 
 InstList_PLM_RespawningBreakableGrappleBlock:
-    dw $00F0                                                             ;84CD6A;
-    dw DrawInst_BreakableGrappleBlock_0                                  ;84CD6C;
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max6                            ;84CD6E;
-    db $0A                                                               ;84CD70;
-    dw $0004                                                             ;84CD71;
-    dw DrawInst_BreakableGrappleBlock_1                                  ;84CD73;
-    dw $0004                                                             ;84CD75;
-    dw DrawInst_BreakableGrappleBlock_2                                  ;84CD77;
-    dw $0004                                                             ;84CD79;
-    dw DrawInst_BreakableGrappleBlock_3                                  ;84CD7B;
-    dw $0006                                                             ;84CD7D;
-    dw DrawInst_BreakableGrappleBlock_4                                  ;84CD7F;
-    dw $0004                                                             ;84CD81;
-    dw DrawInst_BreakableGrappleBlock_3                                  ;84CD83;
-    dw $0004                                                             ;84CD85;
-    dw DrawInst_BreakableGrappleBlock_2                                  ;84CD87;
-    dw $0004                                                             ;84CD89;
-    dw DrawInst_BreakableGrappleBlock_1                                  ;84CD8B;
-    dw SetPLMBTSTo1                                                      ;84CD8D;
+    dw $00F0,DrawInst_BreakableGrappleBlock_0                            ;84CD6A;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $0A                   ;84CD6E;
+    dw $0004,DrawInst_BreakableGrappleBlock_1                            ;84CD71;
+    dw $0004,DrawInst_BreakableGrappleBlock_2                            ;84CD75;
+    dw $0004,DrawInst_BreakableGrappleBlock_3                            ;84CD79;
+    dw $0006,DrawInst_BreakableGrappleBlock_4                            ;84CD7D;
+    dw $0004,DrawInst_BreakableGrappleBlock_3                            ;84CD81;
+    dw $0004,DrawInst_BreakableGrappleBlock_2                            ;84CD85;
+    dw $0004,DrawInst_BreakableGrappleBlock_1                            ;84CD89;
+    dw Instruction_SetPLMBTSTo1                                          ;84CD8D;
     dw Instruction_PLM_DrawPLMBlock                                      ;84CD8F;
     dw Instruction_PLM_Delete                                            ;84CD91;
 
-SetPLMBTSTo1:
+Instruction_SetPLMBTSTo1:
     PHX                                                                  ;84CD93;
     LDA.W $1C87,X                                                        ;84CD94;
     LSR A                                                                ;84CD97;
@@ -10410,18 +9713,12 @@ SetPLMBTSTo1:
 
 
 InstList_PLM_BreakableGrappleBlock:
-    dw $0078                                                             ;84CDA9;
-    dw DrawInst_BreakableGrappleBlock_0                                  ;84CDAB;
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max6                            ;84CDAD;
-    db $0A                                                               ;84CDAF;
-    dw $0004                                                             ;84CDB0;
-    dw DrawInst_BreakableGrappleBlock_1                                  ;84CDB2;
-    dw $0004                                                             ;84CDB4;
-    dw DrawInst_BreakableGrappleBlock_2                                  ;84CDB6;
-    dw $0004                                                             ;84CDB8;
-    dw DrawInst_BreakableGrappleBlock_3                                  ;84CDBA;
-    dw $0001                                                             ;84CDBC;
-    dw DrawInst_BreakableGrappleBlock_4                                  ;84CDBE;
+    dw $0078,DrawInst_BreakableGrappleBlock_0                            ;84CDA9;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $0A                   ;84CDAD;
+    dw $0004,DrawInst_BreakableGrappleBlock_1                            ;84CDB0;
+    dw $0004,DrawInst_BreakableGrappleBlock_2                            ;84CDB4;
+    dw $0004,DrawInst_BreakableGrappleBlock_3                            ;84CDB8;
+    dw $0001,DrawInst_BreakableGrappleBlock_4                            ;84CDBC;
     dw Instruction_PLM_Delete                                            ;84CDC0;
 
 if !FEATURE_KEEP_UNREFERENCED
@@ -10975,8 +10272,7 @@ PLMEntries_Grappled_DraygonsBrokenTurret:
 
 if !FEATURE_KEEP_UNREFERENCED
 InstList_PLM_UnusedBlueBrinstarFaceBlock:
-    dw $0001                                                             ;84D0EC;
-    dw DrawInst_UnusedBlueBrinstarFaceBlock                              ;84D0EE;
+    dw $0001,DrawInst_UnusedBlueBrinstarFaceBlock                        ;84D0EC;
     dw Instruction_PLM_Delete                                            ;84D0F0;
 
 PLMEntries_UnusedBlueBrinstarFaceBlock:
@@ -10985,14 +10281,10 @@ PLMEntries_UnusedBlueBrinstarFaceBlock:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_PLM_CrumbleLowerNorfairChozoRoomPlug:
-    dw $0004                                                             ;84D0F6;
-    dw DrawInst_Respawn1x1_0                                             ;84D0F8;
-    dw $0004                                                             ;84D0FA;
-    dw DrawInst_Respawn1x1_1                                             ;84D0FC;
-    dw $0004                                                             ;84D0FE;
-    dw DrawInst_Respawn1x1_2                                             ;84D100;
-    dw $0001                                                             ;84D102;
-    dw DrawInst_Respawn1x1_3                                             ;84D104;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84D0F6;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84D0FA;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84D0FE;
+    dw $0001,DrawInst_Respawn1x1_3                                       ;84D102;
     dw Instruction_PLM_Delete                                            ;84D106;
 
 Setup_CrumbleLowerNorfairChozoRoomPlug:
@@ -11015,8 +10307,7 @@ Setup_UnusedShotBlock:
 
 
 InstList_PLM_UnusedShotBlock:
-    dw $0004                                                             ;84D121;
-    dw DrawInst_84A33F                                                   ;84D123;
+    dw $0004,DrawInst_84A33F                                             ;84D121;
     dw Instruction_PLM_Delete                                            ;84D125;
 
 PLMEntries_UnusedShotBlock:
@@ -11031,8 +10322,7 @@ Setup_UnusedGrappleBlock:
 
 
 InstList_PLM_UnusedGrappleBlock:
-    dw $0001                                                             ;84D135;
-    dw DrawInst_BreakableGrappleBlock_0                                  ;84D137;
+    dw $0001,DrawInst_BreakableGrappleBlock_0                            ;84D135;
     dw Instruction_PLM_Delete                                            ;84D139;
 
 PLMEntries_UnusedGrappleBlock:
@@ -11042,8 +10332,7 @@ endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_PLM_LowerNorfairChozoHand_0:
     dw Instruction_PLM_GotoY_ifEventIsSet                                ;84D13F;
-    dw $000C                                                             ;84D141;
-    dw InstList_PLM_LowerNorfairChozoHand_1                              ;84D143;
+    dw $000C,InstList_PLM_LowerNorfairChozoHand_1                        ;84D141;
     dw Instruction_PLM_PreInstruction_inY                                ;84D145;
     dw PreInstruction_DeletePLM_SpawnTriggerBlockIf_4_8_IsBlankAir       ;84D147;
     dw Instruction_PLM_Sleep                                             ;84D149;
@@ -11051,8 +10340,7 @@ InstList_PLM_LowerNorfairChozoHand_0:
 
 InstList_PLM_LowerNorfairChozoHand_1:
     dw Instruction_PLM_FXBaseYPosition_2D2                               ;84D14D;
-    dw $0001                                                             ;84D14F;
-    dw DrawInst_ItemChozoOrb                                             ;84D151;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84D14F;
     dw Instruction_PLM_Delete                                            ;84D153;
 
 Instruction_PLM_FXBaseYPosition_2D2:
@@ -11150,114 +10438,91 @@ PreInstruction_PLM_IncrementPLMRoomArgIfShotByMissile:
 
 InstList_PLM_MotherBrainsGlass_0:
     dw Instruction_PLM_GotoY_ifBossBitsSet                               ;84D202;
-    db $01                                                               ;84D204;
-    dw InstList_PLM_UnusedMotherBrainsGlass_AreaBossDead                 ;84D205;
+    db $01 : dw InstList_PLM_UnusedMotherBrainsGlass_AreaBossDead        ;84D204;
     dw Instruction_PLM_GotoY_ifEventIsSet                                ;84D207;
-    dw $0002                                                             ;84D209;
-    dw InstList_PLM_UnusedMotherBrainsGlass_NoGlassState                 ;84D20B;
+    dw $0002,InstList_PLM_UnusedMotherBrainsGlass_NoGlassState           ;84D209;
     dw Instruction_PLM_PreInstruction_inY                                ;84D20D;
     dw PreInstruction_PLM_IncrementPLMRoomArgIfShotByMissile             ;84D20F;
 
 InstList_PLM_MotherBrainsGlass_1:
-    dw $0001                                                             ;84D211;
-    dw DrawInst_MotherBrainsGlass_0                                      ;84D213;
+    dw $0001,DrawInst_MotherBrainsGlass_0                                ;84D211;
     dw Instruction_PLM_GotoY_IfRoomArgGreaterThanY                       ;84D215;
-    dw $0002                                                             ;84D217;
-    dw InstList_PLM_MotherBrainsGlass_1                                  ;84D219;
+    dw $0002,InstList_PLM_MotherBrainsGlass_1                            ;84D217;
 
 InstList_PLM_MotherBrainsGlass_2:
-    dw $0001                                                             ;84D21B;
-    dw DrawInst_MotherBrainsGlass_1                                      ;84D21D;
+    dw $0001,DrawInst_MotherBrainsGlass_1                                ;84D21B;
     dw Instruction_PLM_GotoY_IfRoomArgGreaterThanY                       ;84D21F;
-    dw $0004                                                             ;84D221;
-    dw InstList_PLM_MotherBrainsGlass_2                                  ;84D223;
+    dw $0004,InstList_PLM_MotherBrainsGlass_2                            ;84D221;
 
 InstList_PLM_MotherBrainsGlass_3:
-    dw $0001                                                             ;84D225;
-    dw DrawInst_MotherBrainsGlass_2                                      ;84D227;
+    dw $0001,DrawInst_MotherBrainsGlass_2                                ;84D225;
     dw Instruction_PLM_GotoY_IfRoomArgGreaterThanY                       ;84D229;
-    dw $0006                                                             ;84D22B;
-    dw InstList_PLM_MotherBrainsGlass_3                                  ;84D22D;
+    dw $0006,InstList_PLM_MotherBrainsGlass_3                            ;84D22B;
     dw Inst_PLM_Spawn4MotherBrainsGlassShatteringShardsWithArgs          ;84D22F;
-    dw $0000,$0000,$0000,$0000,$0004                                     ;84D231;
-    dw DrawInst_MotherBrainsGlass_3                                      ;84D23B;
+    dw $0000,$0000,$0000,$0000                                           ;84D231;
+    dw $0004,DrawInst_MotherBrainsGlass_3                                ;84D239;
     dw Inst_PLM_Spawn4MotherBrainsGlassShatteringShardsWithArgs          ;84D23D;
     dw $0000,$0000,$0000,$0000                                           ;84D23F;
 
 InstList_PLM_MotherBrainsGlass_4:
-    dw $0001                                                             ;84D247;
-    dw DrawInst_MotherBrainsGlass_3                                      ;84D249;
+    dw $0001,DrawInst_MotherBrainsGlass_3                                ;84D247;
     dw Instruction_PLM_GotoY_IfRoomArgGreaterThanY                       ;84D24B;
-    dw $0008                                                             ;84D24D;
-    dw InstList_PLM_MotherBrainsGlass_4                                  ;84D24F;
+    dw $0008,InstList_PLM_MotherBrainsGlass_4                            ;84D24D;
 
 InstList_PLM_MotherBrainsGlass_5:
-    dw $0001                                                             ;84D251;
-    dw DrawInst_MotherBrainsGlass_4                                      ;84D253;
+    dw $0001,DrawInst_MotherBrainsGlass_4                                ;84D251;
     dw Instruction_PLM_GotoY_IfRoomArgGreaterThanY                       ;84D255;
-    dw $000A                                                             ;84D257;
-    dw InstList_PLM_MotherBrainsGlass_5                                  ;84D259;
+    dw $000A,InstList_PLM_MotherBrainsGlass_5                            ;84D257;
 
 InstList_PLM_MotherBrainsGlass_6:
-    dw $0001                                                             ;84D25B;
-    dw DrawInst_MotherBrainsGlass_5                                      ;84D25D;
+    dw $0001,DrawInst_MotherBrainsGlass_5                                ;84D25B;
     dw Instruction_PLM_GotoY_IfRoomArgGreaterThanY                       ;84D25F;
-    dw $000C                                                             ;84D261;
-    dw InstList_PLM_MotherBrainsGlass_6                                  ;84D263;
+    dw $000C,InstList_PLM_MotherBrainsGlass_6                            ;84D261;
     dw Inst_PLM_Spawn4MotherBrainsGlassShatteringShardsWithArgs          ;84D265;
-    dw $0002,$0002,$0002,$0002,$0004                                     ;84D267;
-    dw DrawInst_MotherBrainsGlass_6                                      ;84D271;
+    dw $0002,$0002,$0002,$0002                                           ;84D267;
+    dw $0004,DrawInst_MotherBrainsGlass_6                                ;84D271;
     dw Inst_PLM_Spawn4MotherBrainsGlassShatteringShardsWithArgs          ;84D273;
     dw $0002,$0002,$0002,$0002                                           ;84D275;
 
 InstList_PLM_MotherBrainsGlass_7:
-    dw $0001                                                             ;84D27D;
-    dw DrawInst_MotherBrainsGlass_6                                      ;84D27F;
+    dw $0001,DrawInst_MotherBrainsGlass_6                                ;84D27D;
     dw Instruction_PLM_GotoY_IfRoomArgGreaterThanY                       ;84D281;
-    dw $000E                                                             ;84D283;
-    dw InstList_PLM_MotherBrainsGlass_7                                  ;84D285;
+    dw $000E,InstList_PLM_MotherBrainsGlass_7                            ;84D283;
     dw Inst_PLM_Spawn4MotherBrainsGlassShatteringShardsWithArgs          ;84D287;
-    dw $0000,$0000,$0002,$0002,$0004                                     ;84D289;
-    dw DrawInst_MotherBrainsGlass_7                                      ;84D293;
+    dw $0000,$0000,$0002,$0002                                           ;84D289;
+    dw $0004,DrawInst_MotherBrainsGlass_7                                ;84D293;
     dw Inst_PLM_Spawn4MotherBrainsGlassShatteringShardsWithArgs          ;84D295;
     dw $0004,$0004,$0004,$0004                                           ;84D297;
 
 InstList_PLM_MotherBrainsGlass_8:
-    dw $0001                                                             ;84D29F;
-    dw DrawInst_MotherBrainsGlass_7                                      ;84D2A1;
+    dw $0001,DrawInst_MotherBrainsGlass_7                                ;84D29F;
     dw Instruction_PLM_GotoY_IfRoomArgGreaterThanY                       ;84D2A3;
-    dw $0010                                                             ;84D2A5;
-    dw InstList_PLM_MotherBrainsGlass_8                                  ;84D2A7;
+    dw $0010,InstList_PLM_MotherBrainsGlass_8                            ;84D2A5;
     dw Inst_PLM_Spawn4MotherBrainsGlassShatteringShardsWithArgs          ;84D2A9;
-    dw $0002,$0002,$0004,$0004,$0004                                     ;84D2AB;
-    dw DrawInst_MotherBrainsGlass_8                                      ;84D2B5;
+    dw $0002,$0002,$0004,$0004                                           ;84D2AB;
+    dw $0004,DrawInst_MotherBrainsGlass_8                                ;84D2B5;
     dw Inst_PLM_Spawn4MotherBrainsGlassShatteringShardsWithArgs          ;84D2B7;
     dw $0002,$0002,$0004,$0004                                           ;84D2B9;
 
 InstList_PLM_MotherBrainsGlass_9:
-    dw $0001                                                             ;84D2C1;
-    dw DrawInst_MotherBrainsGlass_8                                      ;84D2C3;
+    dw $0001,DrawInst_MotherBrainsGlass_8                                ;84D2C1;
     dw Instruction_PLM_GotoY_IfRoomArgGreaterThanY                       ;84D2C5;
-    dw $0012                                                             ;84D2C7;
-    dw InstList_PLM_MotherBrainsGlass_9                                  ;84D2C9;
+    dw $0012,InstList_PLM_MotherBrainsGlass_9                            ;84D2C7;
     dw Inst_PLM_Spawn4MotherBrainsGlassShatteringShardsWithArgs          ;84D2CB;
-    dw $0002,$0002,$0004,$0004,$0004                                     ;84D2CD;
-    dw DrawInst_MotherBrainsGlass_9                                      ;84D2D7;
+    dw $0002,$0002,$0004,$0004                                           ;84D2CD;
+    dw $0004,DrawInst_MotherBrainsGlass_9                                ;84D2D7;
     dw Inst_PLM_Spawn4MotherBrainsGlassShatteringShardsWithArgs          ;84D2D9;
-    dw $0002,$0002,$0004,$0004,$0030                                     ;84D2DB;
-    dw DrawInst_MotherBrainsGlass_9                                      ;84D2E5;
-    dw Instruction_PLM_SetTheEvent                                       ;84D2E7;
-    dw $0002                                                             ;84D2E9;
+    dw $0002,$0002,$0004,$0004                                           ;84D2DB;
+    dw $0030,DrawInst_MotherBrainsGlass_9                                ;84D2E5;
+    dw Instruction_PLM_SetTheEvent,$0002                                 ;84D2E7;
     dw Instruction_PLM_Delete                                            ;84D2EB;
 
 InstList_PLM_UnusedMotherBrainsGlass_AreaBossDead:
-    dw $0001                                                             ;84D2ED;
-    dw UNUSED_DrawInst_849817                                            ;84D2EF;
+    dw $0001,UNUSED_DrawInst_849817                                      ;84D2ED;
     dw Instruction_PLM_Delete                                            ;84D2F1;
 
 InstList_PLM_UnusedMotherBrainsGlass_NoGlassState:
-    dw $0001                                                             ;84D2F3;
-    dw DrawInst_MotherBrainsGlass_9                                      ;84D2F5;
+    dw $0001,DrawInst_MotherBrainsGlass_9                                ;84D2F3;
     dw Instruction_PLM_Delete                                            ;84D2F7;
 
 Instruction_PLM_GotoY_IfRoomArgGreaterThanY:
@@ -11332,42 +10597,30 @@ Instruction_PLM_SpawnBombTorizoStatueBreakingWIthArgY:
 
 
 InstList_PLM_BombTorizosCrumblingChozo:
-    dw $0001                                                             ;84D368;
-    dw DrawInst_BombTorizosCrumblingChozo_0                              ;84D36A;
+    dw $0001,DrawInst_BombTorizosCrumblingChozo_0                        ;84D368;
     dw Instruction_PLM_PreInstruction_inY                                ;84D36C;
     dw PreInstruction_PLM_WakePLMIfSamusHasBombs                         ;84D36E;
     dw Instruction_PLM_Sleep                                             ;84D370;
-    dw $0078                                                             ;84D372;
-    dw DrawInst_BombTorizosCrumblingChozo_0                              ;84D374;
+    dw $0078,DrawInst_BombTorizosCrumblingChozo_0                        ;84D372;
     dw Instruction_PLM_TransferBytesToVRAM                               ;84D376;
-    dw $0400                                                             ;84D378;
-    dl Tiles_BombTorizosCrumblingChozo                                   ;84D37A;
-    dw $6E00,$0060                                                       ;84D37D;
-    dw DrawInst_BombTorizosCrumblingChozo_0                              ;84D381;
-    dw Instruction_PLM_SpawnBombTorizoStatueBreakingWIthArgY             ;84D383;
-    dw $0000,$0030                                                       ;84D385;
-    dw DrawInst_BombTorizosCrumblingChozo_0                              ;84D389;
-    dw Instruction_PLM_SpawnBombTorizoStatueBreakingWIthArgY             ;84D38B;
-    dw $0002,$000F                                                       ;84D38D;
-    dw DrawInst_BombTorizosCrumblingChozo_0                              ;84D391;
-    dw Instruction_PLM_SpawnBombTorizoStatueBreakingWIthArgY             ;84D393;
-    dw $0004,$000E                                                       ;84D395;
-    dw DrawInst_BombTorizosCrumblingChozo_0                              ;84D399;
-    dw Instruction_PLM_SpawnBombTorizoStatueBreakingWIthArgY             ;84D39B;
-    dw $0006,$000D                                                       ;84D39D;
-    dw DrawInst_BombTorizosCrumblingChozo_0                              ;84D3A1;
-    dw Instruction_PLM_SpawnBombTorizoStatueBreakingWIthArgY             ;84D3A3;
-    dw $0008,$000C                                                       ;84D3A5;
-    dw DrawInst_BombTorizosCrumblingChozo_0                              ;84D3A9;
-    dw Instruction_PLM_SpawnBombTorizoStatueBreakingWIthArgY             ;84D3AB;
-    dw $000A,$000B                                                       ;84D3AD;
-    dw DrawInst_BombTorizosCrumblingChozo_0                              ;84D3B1;
-    dw Instruction_PLM_SpawnBombTorizoStatueBreakingWIthArgY             ;84D3B3;
-    dw $000C,$000A                                                       ;84D3B5;
-    dw DrawInst_BombTorizosCrumblingChozo_0                              ;84D3B9;
-    dw Instruction_PLM_SpawnBombTorizoStatueBreakingWIthArgY             ;84D3BB;
-    dw $000E,$0001                                                       ;84D3BD;
-    dw DrawInst_BombTorizosCrumblingChozo_1                              ;84D3C1;
+    dw $0400 : dl Tiles_BombTorizosCrumblingChozo : dw $6E00             ;84D378;
+    dw $0060,DrawInst_BombTorizosCrumblingChozo_0                        ;84D37D;
+    dw Instruction_PLM_SpawnBombTorizoStatueBreakingWIthArgY,$0000       ;84D383;
+    dw $0030,DrawInst_BombTorizosCrumblingChozo_0                        ;84D385;
+    dw Instruction_PLM_SpawnBombTorizoStatueBreakingWIthArgY,$0002       ;84D38B;
+    dw $000F,DrawInst_BombTorizosCrumblingChozo_0                        ;84D38D;
+    dw Instruction_PLM_SpawnBombTorizoStatueBreakingWIthArgY,$0004       ;84D393;
+    dw $000E,DrawInst_BombTorizosCrumblingChozo_0                        ;84D395;
+    dw Instruction_PLM_SpawnBombTorizoStatueBreakingWIthArgY,$0006       ;84D39B;
+    dw $000D,DrawInst_BombTorizosCrumblingChozo_0                        ;84D39D;
+    dw Instruction_PLM_SpawnBombTorizoStatueBreakingWIthArgY,$0008       ;84D3A3;
+    dw $000C,DrawInst_BombTorizosCrumblingChozo_0                        ;84D3A5;
+    dw Instruction_PLM_SpawnBombTorizoStatueBreakingWIthArgY,$000A       ;84D3AB;
+    dw $000B,DrawInst_BombTorizosCrumblingChozo_0                        ;84D3AD;
+    dw Instruction_PLM_SpawnBombTorizoStatueBreakingWIthArgY,$000C       ;84D3B3;
+    dw $000A,DrawInst_BombTorizosCrumblingChozo_0                        ;84D3B5;
+    dw Instruction_PLM_SpawnBombTorizoStatueBreakingWIthArgY,$000E       ;84D3BB;
+    dw $0001,DrawInst_BombTorizosCrumblingChozo_1                        ;84D3BD;
     dw Instruction_PLM_QueueSong1MusicTrack                              ;84D3C3;
     dw Instruction_PLM_Delete                                            ;84D3C5;
 
@@ -11378,8 +10631,7 @@ Instruction_PLM_QueueSong1MusicTrack:
 
 
 InstList_PLM_ClearSlopeAccessForWreckedShipChozo:
-    dw $0001                                                             ;84D3CF;
-    dw DrawInst_ClearSlopeAccessForWreckedShipChozo                      ;84D3D1;
+    dw $0001,DrawInst_ClearSlopeAccessForWreckedShipChozo                ;84D3CF;
     dw Instruction_PLM_TransformWreckedShipChozosSpikesIntoSlopes        ;84D3D3;
     dw Instruction_PLM_Delete                                            ;84D3D5;
 
@@ -11396,8 +10648,7 @@ Instruction_PLM_TransformWreckedShipChozosSpikesIntoSlopes:
 
 
 InstList_PLM_BlockSlopeAccessForWreckedShipChozo:
-    dw $0001                                                             ;84D3EC;
-    dw DrawInst_BlockSlopeAccessForWreckedShipChozo                      ;84D3EE;
+    dw $0001,DrawInst_BlockSlopeAccessForWreckedShipChozo                ;84D3EC;
     dw Instruction_PLM_RevertWreckedShipChozosSlopesIntoSpikes           ;84D3F0;
     dw Instruction_PLM_Delete                                            ;84D3F2;
 
@@ -11438,49 +10689,39 @@ UNUSED_InstList_PLM_WreckedShip3x4ChozoBombBlock_84D426:
     dw UNUSED_PreInst_PLM_GotoToLinkInstructionIfBombed_84D409           ;84D430;
 
 UNUSED_InstList_PLM_WreckedShip3x4ChozoBombBlock_84D432:
-    dw $0077                                                             ;84D432;
-    dw UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_0_849D59             ;84D434;
+    dw $0077,UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_0_849D59       ;84D432;
     dw Instruction_PLM_GotoY                                             ;84D436;
     dw UNUSED_InstList_PLM_WreckedShip3x4ChozoBombBlock_84D432           ;84D438;
 
 UNUSED_InstList_PLM_WreckedShip3x4ChozoBombBlock_84D43A:
     dw Instruction_PLM_SetRoomArg_ChozoBlockDestroyed                    ;84D43A;
-    dw $0004                                                             ;84D43C;
-    dw UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_1_849D7D             ;84D43E;
-    dw $0004                                                             ;84D440;
-    dw UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_2_849DA1             ;84D442;
-    dw $0004                                                             ;84D444;
-    dw UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_3_849DC5             ;84D446;
+    dw $0004,UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_1_849D7D       ;84D43C;
+    dw $0004,UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_2_849DA1       ;84D440;
+    dw $0004,UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_3_849DC5       ;84D444;
 
 UNUSED_InstList_PLM_WreckedShip3x4ChozoBombBlock_84D448:
-    dw $0004                                                             ;84D448;
-    dw UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_4_849DE9             ;84D44A;
+    dw $0004,UNUSED_DrawInst_WreckedShip3x4ChozoBombBlock_4_849DE9       ;84D448;
     dw Instruction_PLM_Delete                                            ;84D44C;
 
 UNUSED_InstList_PLM_AlternateLowerNorfairChozoHand_84D44E:
     dw Instruction_PLM_GotoY_ifEventIsSet                                ;84D44E;
-    dw $000C                                                             ;84D450;
-    dw UNUSED_InstList_PLM_AlternateLowerNorfairChozoHand_84D46E         ;84D452;
+    dw $000C,UNUSED_InstList_PLM_AlternateLowerNorfairChozoHand_84D46E   ;84D450;
     dw Instruction_PLM_LinkInstruction_Y                                 ;84D454;
     dw UNUSED_InstList_PLM_AlternateLowerNorfairChozoHand_84D462         ;84D456;
     dw Instruction_PLM_PreInstruction_inY                                ;84D458;
     dw PreInstruction_PLM_GotoLinkInstructionIfHitWithPowerBomb          ;84D45A;
-    dw $0001                                                             ;84D45C;
-    dw UNUSED_DrawInst_AlternateLowerNorfairChozoHand_849CA7             ;84D45E;
+    dw $0001,UNUSED_DrawInst_AlternateLowerNorfairChozoHand_849CA7       ;84D45C;
     dw Instruction_PLM_Sleep                                             ;84D460;
 
 UNUSED_InstList_PLM_AlternateLowerNorfairChozoHand_84D462:
-    dw $0001                                                             ;84D462;
-    dw UNUSED_DrawInst_AlternateLowerNorfairChozoHand_849CBF             ;84D464;
+    dw $0001,UNUSED_DrawInst_AlternateLowerNorfairChozoHand_849CBF       ;84D462;
     dw UNUSED_Instruction_PLM_DrainAcidLake_84D476                       ;84D466;
-    dw Instruction_PLM_SetTheEvent                                       ;84D468;
-    dw $000C                                                             ;84D46A;
+    dw Instruction_PLM_SetTheEvent,$000C                                 ;84D468;
     dw Instruction_PLM_Delete                                            ;84D46C;
 
 UNUSED_InstList_PLM_AlternateLowerNorfairChozoHand_84D46E:
     dw UNUSED_Instruction_PLM_FXBaseYPosition_2D2_84D489                 ;84D46E;
-    dw $0001                                                             ;84D470;
-    dw UNUSED_DrawInst_AlternateLowerNorfairChozoHand_849CBF             ;84D472;
+    dw $0001,UNUSED_DrawInst_AlternateLowerNorfairChozoHand_849CBF       ;84D470;
     dw Instruction_PLM_Delete                                            ;84D474;
 
 UNUSED_Instruction_PLM_DrainAcidLake_84D476:
@@ -11506,26 +10747,20 @@ InstList_PLM_UnusedLowerNorfair2x2ChozoShotBlock_84D490:
     dw InstList_PLM_UnusedLowerNorfair2x2ChozoShotBlock_84D4A2           ;84D496;
     dw Instruction_PLM_PreInstruction_inY                                ;84D498;
     dw PreInstruction_PLM_GotoLinkInstructionIfShot                      ;84D49A;
-    dw $0001                                                             ;84D49C;
-    dw UNUSED_DrawInst_LowerNorfair2x2ChozoShotBlock_849B0B              ;84D49E;
+    dw $0001,UNUSED_DrawInst_LowerNorfair2x2ChozoShotBlock_849B0B        ;84D49C;
     dw Instruction_PLM_Sleep                                             ;84D4A0;
 
 InstList_PLM_UnusedLowerNorfair2x2ChozoShotBlock_84D4A2:
-    dw $0004                                                             ;84D4A2;
-    dw UNUSED_DrawInst_LowerNorfair2x2ChozoShotBlock_849B1B              ;84D4A4;
-    dw $0004                                                             ;84D4A6;
-    dw UNUSED_DrawInst_LowerNorfair2x2ChozoShotBlock_849B2B              ;84D4A8;
-    dw $0004                                                             ;84D4AA;
-    dw UNUSED_DrawInst_LowerNorfair2x2ChozoShotBlock_849B3B              ;84D4AC;
-    dw $0001                                                             ;84D4AE;
-    dw UNUSED_DrawInst_LowerNorfair2x2ChozoShotBlock_849B4B              ;84D4B0;
+    dw $0004,UNUSED_DrawInst_LowerNorfair2x2ChozoShotBlock_849B1B        ;84D4A2;
+    dw $0004,UNUSED_DrawInst_LowerNorfair2x2ChozoShotBlock_849B2B        ;84D4A6;
+    dw $0004,UNUSED_DrawInst_LowerNorfair2x2ChozoShotBlock_849B3B        ;84D4AA;
+    dw $0001,UNUSED_DrawInst_LowerNorfair2x2ChozoShotBlock_849B4B        ;84D4AE;
     dw Instruction_PLM_SetRoomArg_ChozoBlockDestroyed                    ;84D4B2;
     dw RTS_84D4BE                                                        ;84D4B4;
     dw Instruction_PLM_Delete                                            ;84D4B6;
 
 InstList_PLM_UnusedLowerNorfair2x2ChozoShotBlock_84D4B8:
-    dw $0001                                                             ;84D4B8;
-    dw UNUSED_DrawInst_LowerNorfair2x2ChozoShotBlock_849B4B              ;84D4BA;
+    dw $0001,UNUSED_DrawInst_LowerNorfair2x2ChozoShotBlock_849B4B        ;84D4B8;
     dw Instruction_PLM_Delete                                            ;84D4BC;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -11548,14 +10783,12 @@ PreInstruction_PLM_WakePLMIf_A_B_X_Y_Left_Right:
 
 InstList_PLM_NoobTube_0:
     dw Instruction_PLM_GotoY_ifEventIsSet                                ;84D4D4;
-    dw $000B                                                             ;84D4D6;
-    dw InstList_PLM_NoobTube_4                                           ;84D4D8;
+    dw $000B,InstList_PLM_NoobTube_4                                     ;84D4D6;
     dw Instruction_PLM_LinkInstruction_Y                                 ;84D4DA;
     dw InstList_PLM_NoobTube_1                                           ;84D4DC;
     dw Instruction_PLM_PreInstruction_inY                                ;84D4DE;
     dw PreInstruction_PLM_GotoLinkInstructionIfHitWithPowerBomb          ;84D4E0;
-    dw $0001                                                             ;84D4E2;
-    dw DrawInst_NoobTube_0                                               ;84D4E4;
+    dw $0001,DrawInst_NoobTube_0                                         ;84D4E2;
     dw Instruction_PLM_Sleep                                             ;84D4E6;
 
 InstList_PLM_NoobTube_1:
@@ -11569,29 +10802,21 @@ InstList_PLM_NoobTube_2:
     dw Instruction_PLM_ClearPreInstruction                               ;84D4F2;
     dw Instruction_PLM_LockSamus                                         ;84D4F4;
     dw Instruction_PLM_SpawnNoobTubeCrackEnemyProjectile                 ;84D4F6;
-    dw $0030                                                             ;84D4F8;
-    dw DrawInst_NoobTube_1                                               ;84D4FA;
-    dw $0001                                                             ;84D4FC;
-    dw DrawInst_NoobTube_5                                               ;84D4FE;
-    dw $0001                                                             ;84D500;
-    dw DrawInst_NoobTube_6                                               ;84D502;
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max6                            ;84D504;
-    db $1A                                                               ;84D506;
+    dw $0030,DrawInst_NoobTube_1                                         ;84D4F8;
+    dw $0001,DrawInst_NoobTube_5                                         ;84D4FC;
+    dw $0001,DrawInst_NoobTube_6                                         ;84D500;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $1A                   ;84D504;
     dw Inst_PLM_SpawnANoobTubeShards_6NoobTubeReleasedAirBubbles         ;84D507;
     dw Instruction_PLM_TriggerNoobTubeEarthquake                         ;84D509;
-    dw $0060                                                             ;84D50B;
-    dw DrawInst_NoobTube_2                                               ;84D50D;
-    dw Instruction_PLM_SetTheEvent                                       ;84D50F;
-    dw $000B                                                             ;84D511;
+    dw $0060,DrawInst_NoobTube_2                                         ;84D50B;
+    dw Instruction_PLM_SetTheEvent,$000B                                 ;84D50F;
     dw Instruction_PLM_EnableWaterPhysics                                ;84D513;
     dw Instruction_PLM_UnlockSamus                                       ;84D515;
     dw Instruction_PLM_Delete                                            ;84D517;
 
 InstList_PLM_NoobTube_3:
-    dw $0001                                                             ;84D519;
-    dw DrawInst_NoobTube_3                                               ;84D51B;
-    dw $0001                                                             ;84D51D;
-    dw DrawInst_NoobTube_4                                               ;84D51F;
+    dw $0001,DrawInst_NoobTube_3                                         ;84D519;
+    dw $0001,DrawInst_NoobTube_4                                         ;84D51D;
 
 InstList_PLM_NoobTube_4:
     dw Instruction_PLM_EnableWaterPhysics                                ;84D521;
@@ -12034,11 +11259,9 @@ InstList_PLM_EyeDoorEyeFacingLeft_0:
     dw InstList_PLM_EyeDoorEyeFacingLeft_8                               ;84D820;
 
 InstList_PLM_EyeDoorEyeFacingLeft_1:
-    dw $0004                                                             ;84D822;
-    dw DrawInst_EyeDoorEyeFacingLeft_1                                   ;84D824;
+    dw $0004,DrawInst_EyeDoorEyeFacingLeft_1                             ;84D822;
     dw Instruction_PLM_GotoY_ifSamusIsWithin_YColumnsRowsOfPLM           ;84D826;
-    db $06,$04                                                           ;84D828;
-    dw InstList_PLM_EyeDoorEyeFacingLeft_2                               ;84D82A;
+    db $06,$04 : dw InstList_PLM_EyeDoorEyeFacingLeft_2                  ;84D828;
     dw Instruction_PLM_GotoY                                             ;84D82C;
     dw InstList_PLM_EyeDoorEyeFacingLeft_1                               ;84D82E;
 
@@ -12047,77 +11270,52 @@ InstList_PLM_EyeDoorEyeFacingLeft_2:
     dw InstList_PLM_EyeDoorEyeFacingLeft_5                               ;84D832;
     dw Instruction_PLM_PreInstruction_inY                                ;84D834;
     dw PreInstruction_PLM_GotoLinkInstructionIfShotWithAMissile          ;84D836;
-    dw $0008                                                             ;84D838;
-    dw DrawInst_EyeDoorEyeFacingLeft_2                                   ;84D83A;
+    dw $0008,DrawInst_EyeDoorEyeFacingLeft_2                             ;84D838;
 
 InstList_PLM_EyeDoorEyeFacingLeft_3:
     dw Instruction_PLM_GotoY_ifSamusIsWithin_YColumnsRowsOfPLM           ;84D83C;
-    db $01,$04                                                           ;84D83E;
-    dw InstList_PLM_EyeDoorEyeFacingLeft_4                               ;84D840;
-    dw $0040                                                             ;84D842;
-    dw DrawInst_EyeDoorEyeFacingLeft_3                                   ;84D844;
-    dw Instruction_PLM_ShootEyeDoorProjectileWithEnemyProjArgY           ;84D846;
-    dw $0000,$0020                                                       ;84D848;
-    dw DrawInst_EyeDoorEyeFacingLeft_3                                   ;84D84C;
-    dw Instruction_PLM_ShootEyeDoorProjectileWithEnemyProjArgY           ;84D84E;
-    dw $0000,$0020                                                       ;84D850;
-    dw DrawInst_EyeDoorEyeFacingLeft_3                                   ;84D854;
-    dw Instruction_PLM_ShootEyeDoorProjectileWithEnemyProjArgY           ;84D856;
-    dw $0000,$0040                                                       ;84D858;
-    dw DrawInst_EyeDoorEyeFacingLeft_3                                   ;84D85C;
-    dw $0006                                                             ;84D85E;
-    dw DrawInst_EyeDoorEyeFacingLeft_2                                   ;84D860;
-    dw $0030                                                             ;84D862;
-    dw DrawInst_EyeDoorEyeFacingLeft_1                                   ;84D864;
-    dw $0030                                                             ;84D866;
-    dw DrawInst_EyeDoorEyeFacingLeft_1                                   ;84D868;
-    dw $0006                                                             ;84D86A;
-    dw DrawInst_EyeDoorEyeFacingLeft_2                                   ;84D86C;
+    db $01,$04 : dw InstList_PLM_EyeDoorEyeFacingLeft_4                  ;84D83E;
+    dw $0040,DrawInst_EyeDoorEyeFacingLeft_3                             ;84D842;
+    dw Instruction_PLM_ShootEyeDoorProjectileWithEnemyProjArgY,$0000     ;84D846;
+    dw $0020,DrawInst_EyeDoorEyeFacingLeft_3                             ;84D848;
+    dw Instruction_PLM_ShootEyeDoorProjectileWithEnemyProjArgY,$0000     ;84D84E;
+    dw $0020,DrawInst_EyeDoorEyeFacingLeft_3                             ;84D850;
+    dw Instruction_PLM_ShootEyeDoorProjectileWithEnemyProjArgY,$0000     ;84D856;
+    dw $0040,DrawInst_EyeDoorEyeFacingLeft_3                             ;84D858;
+    dw $0006,DrawInst_EyeDoorEyeFacingLeft_2                             ;84D85E;
+    dw $0030,DrawInst_EyeDoorEyeFacingLeft_1                             ;84D862;
+    dw $0030,DrawInst_EyeDoorEyeFacingLeft_1                             ;84D866;
+    dw $0006,DrawInst_EyeDoorEyeFacingLeft_2                             ;84D86A;
     dw Instruction_PLM_GotoY_ifSamusIsWithin_YColumnsRowsOfPLM           ;84D86E;
-    db $06,$04                                                           ;84D870;
-    dw InstList_PLM_EyeDoorEyeFacingLeft_3                               ;84D872;
+    db $06,$04 : dw InstList_PLM_EyeDoorEyeFacingLeft_3                  ;84D870;
     dw Instruction_PLM_GotoY                                             ;84D874;
     dw InstList_PLM_EyeDoorEyeFacingLeft_1                               ;84D876;
 
 InstList_PLM_EyeDoorEyeFacingLeft_4:
-    dw $0004                                                             ;84D878;
-    dw DrawInst_EyeDoorEyeFacingLeft_1                                   ;84D87A;
+    dw $0004,DrawInst_EyeDoorEyeFacingLeft_1                             ;84D878;
     dw Instruction_PLM_GotoY                                             ;84D87C;
     dw InstList_PLM_EyeDoorEyeFacingLeft_3                               ;84D87E;
 
 InstList_PLM_EyeDoorEyeFacingLeft_5:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max6                            ;84D880;
-    db $09                                                               ;84D882;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $09                   ;84D880;
     dw Instruction_PLM_Spawn2EyeDoorSmokeEnemyProjectiles                ;84D883;
     dw Instruction_PLM_Spawn2EyeDoorSmokeEnemyProjectiles                ;84D885;
     dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY                   ;84D887;
-    db $03                                                               ;84D889;
-    dw InstList_PLM_EyeDoorEyeFacingLeft_6                               ;84D88A;
-    dw $0002                                                             ;84D88C;
-    dw DrawInst_EyeDoorEyeFacingLeft_4                                   ;84D88E;
-    dw $0002                                                             ;84D890;
-    dw DrawInst_EyeDoorEyeFacingLeft_5                                   ;84D892;
+    db $03 : dw InstList_PLM_EyeDoorEyeFacingLeft_6                      ;84D889;
+    dw $0002,DrawInst_EyeDoorEyeFacingLeft_4                             ;84D88C;
+    dw $0002,DrawInst_EyeDoorEyeFacingLeft_5                             ;84D890;
     dw Instruction_PLM_Spawn2EyeDoorSmokeEnemyProjectiles                ;84D894;
-    dw $0002                                                             ;84D896;
-    dw DrawInst_EyeDoorEyeFacingLeft_4                                   ;84D898;
-    dw $0002                                                             ;84D89A;
-    dw DrawInst_EyeDoorEyeFacingLeft_5                                   ;84D89C;
-    dw $0002                                                             ;84D89E;
-    dw DrawInst_EyeDoorEyeFacingLeft_4                                   ;84D8A0;
+    dw $0002,DrawInst_EyeDoorEyeFacingLeft_4                             ;84D896;
+    dw $0002,DrawInst_EyeDoorEyeFacingLeft_5                             ;84D89A;
+    dw $0002,DrawInst_EyeDoorEyeFacingLeft_4                             ;84D89E;
     dw Instruction_PLM_Spawn2EyeDoorSmokeEnemyProjectiles                ;84D8A2;
-    dw $0002                                                             ;84D8A4;
-    dw DrawInst_EyeDoorEyeFacingLeft_5                                   ;84D8A6;
-    dw $0004                                                             ;84D8A8;
-    dw DrawInst_EyeDoorEyeFacingLeft_2                                   ;84D8AA;
-    dw $0008                                                             ;84D8AC;
-    dw DrawInst_EyeDoorEyeFacingLeft_1                                   ;84D8AE;
-    dw Instruction_PLM_SpawnEyeDoorSweatEnemyProjectileWithArgY          ;84D8B0;
-    dw $0000,$0038                                                       ;84D8B2;
-    dw DrawInst_EyeDoorEyeFacingLeft_1                                   ;84D8B6;
-    dw $0004                                                             ;84D8B8;
-    dw DrawInst_EyeDoorEyeFacingLeft_2                                   ;84D8BA;
-    dw $0004                                                             ;84D8BC;
-    dw DrawInst_EyeDoorEyeFacingLeft_5                                   ;84D8BE;
+    dw $0002,DrawInst_EyeDoorEyeFacingLeft_5                             ;84D8A4;
+    dw $0004,DrawInst_EyeDoorEyeFacingLeft_2                             ;84D8A8;
+    dw $0008,DrawInst_EyeDoorEyeFacingLeft_1                             ;84D8AC;
+    dw Instruction_PLM_SpawnEyeDoorSweatEnemyProjectileWithArgY,$0000    ;84D8B0;
+    dw $0038,DrawInst_EyeDoorEyeFacingLeft_1                             ;84D8B2;
+    dw $0004,DrawInst_EyeDoorEyeFacingLeft_2                             ;84D8B8;
+    dw $0004,DrawInst_EyeDoorEyeFacingLeft_5                             ;84D8BC;
     dw Instruction_PLM_GotoY                                             ;84D8C0;
     dw InstList_PLM_EyeDoorEyeFacingLeft_3                               ;84D8C2;
 
@@ -12128,14 +11326,11 @@ InstList_PLM_EyeDoorEyeFacingLeft_6:
     dw Instruction_PLM_Spawn2EyeDoorSmokeEnemyProjectiles                ;84D8CA;
     dw Instruction_PLM_Spawn2EyeDoorSmokeEnemyProjectiles                ;84D8CC;
     dw Instruction_PLM_MovePLMUp1Row_MakeABlueDoorFacingLeft             ;84D8CE;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84D8D0;
-    db $0A                                                               ;84D8D2;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $0A                        ;84D8D0;
 
 InstList_PLM_EyeDoorEyeFacingLeft_7:
-    dw $0003                                                             ;84D8D3;
-    dw DrawInst_EyeDoorEyeFacingLeft_0                                   ;84D8D5;
-    dw $0004                                                             ;84D8D7;
-    dw DrawInst_EyeDoorEyeFacingLeft                                     ;84D8D9;
+    dw $0003,DrawInst_EyeDoorEyeFacingLeft_0                             ;84D8D3;
+    dw $0004,DrawInst_EyeDoorEyeFacingLeft                               ;84D8D7;
     dw Instruction_PLM_DecrementTimer_GotoYIfNonZero                     ;84D8DB;
     dw InstList_PLM_EyeDoorEyeFacingLeft_7                               ;84D8DD;
     dw Instruction_PLM_GotoY                                             ;84D8DF;
@@ -12152,10 +11347,8 @@ InstList_PLM_EyeDoorFacingLeft_0:
 
 InstList_PLM_EyeDoorFacingLeft_1:
     dw Instruction_PLM_GotoY_ifSamusIsWithin_YColumnsRowsOfPLM           ;84D8ED;
-    db $06,$10                                                           ;84D8EF;
-    dw InstList_PLM_EyeDoorFacingLeft_2                                  ;84D8F1;
-    dw $0008                                                             ;84D8F3;
-    dw DrawInst_EyeDoorFacingLeft_0                                      ;84D8F5;
+    db $06,$10 : dw InstList_PLM_EyeDoorFacingLeft_2                     ;84D8EF;
+    dw $0008,DrawInst_EyeDoorFacingLeft_0                                ;84D8F3;
     dw Instruction_PLM_GotoY                                             ;84D8F7;
     dw InstList_PLM_EyeDoorFacingLeft_1                                  ;84D8F9;
 
@@ -12166,17 +11359,12 @@ InstList_PLM_EyeDoorFacingLeft_2:
     dw PreInstruction_PLM_WakePLMIfRoomArgDoorIsSet                      ;84D901;
 
 InstList_PLM_EyeDoorFacingLeft_3:
-    dw $0008                                                             ;84D903;
-    dw DrawInst_EyeDoorFacingLeft_0                                      ;84D905;
-    dw $0008                                                             ;84D907;
-    dw DrawInst_EyeDoorFacingLeft_1                                      ;84D909;
-    dw $0008                                                             ;84D90B;
-    dw DrawInst_EyeDoorFacingLeft_2                                      ;84D90D;
-    dw $0008                                                             ;84D90F;
-    dw DrawInst_EyeDoorFacingLeft_1                                      ;84D911;
+    dw $0008,DrawInst_EyeDoorFacingLeft_0                                ;84D903;
+    dw $0008,DrawInst_EyeDoorFacingLeft_1                                ;84D907;
+    dw $0008,DrawInst_EyeDoorFacingLeft_2                                ;84D90B;
+    dw $0008,DrawInst_EyeDoorFacingLeft_1                                ;84D90F;
     dw Instruction_PLM_GotoY_ifSamusIsWithin_YColumnsRowsOfPLM           ;84D913;
-    db $06,$10                                                           ;84D915;
-    dw InstList_PLM_EyeDoorFacingLeft_3                                  ;84D917;
+    db $06,$10 : dw InstList_PLM_EyeDoorFacingLeft_3                     ;84D915;
     dw Instruction_PLM_GotoY                                             ;84D919;
     dw InstList_PLM_EyeDoorFacingLeft_1                                  ;84D91B;
 
@@ -12189,10 +11377,8 @@ InstList_PLM_EyeDoorBottomFacingLeft_0:
 
 InstList_PLM_EyeDoorBottomFacingLeft_1:
     dw Instruction_PLM_GotoY_ifSamusIsWithin_YColumnsRowsOfPLM           ;84D923;
-    db $06,$10                                                           ;84D925;
-    dw InstList_PLM_EyeDoorBottomFacingLeft_2                            ;84D927;
-    dw $0008                                                             ;84D929;
-    dw DrawInst_EyeDoorBottomFacingLeft_0                                ;84D92B;
+    db $06,$10 : dw InstList_PLM_EyeDoorBottomFacingLeft_2               ;84D925;
+    dw $0008,DrawInst_EyeDoorBottomFacingLeft_0                          ;84D929;
     dw Instruction_PLM_GotoY                                             ;84D92D;
     dw InstList_PLM_EyeDoorBottomFacingLeft_1                            ;84D92F;
 
@@ -12203,17 +11389,12 @@ InstList_PLM_EyeDoorBottomFacingLeft_2:
     dw PreInstruction_PLM_WakePLMIfRoomArgDoorIsSet                      ;84D937;
 
 InstList_PLM_EyeDoorBottomFacingLeft_3:
-    dw $0008                                                             ;84D939;
-    dw DrawInst_EyeDoorBottomFacingLeft_0                                ;84D93B;
-    dw $0008                                                             ;84D93D;
-    dw DrawInst_EyeDoorBottomFacingLeft_1                                ;84D93F;
-    dw $0008                                                             ;84D941;
-    dw DrawInst_EyeDoorBottomFacingLeft_2                                ;84D943;
-    dw $0008                                                             ;84D945;
-    dw DrawInst_EyeDoorBottomFacingLeft_1                                ;84D947;
+    dw $0008,DrawInst_EyeDoorBottomFacingLeft_0                          ;84D939;
+    dw $0008,DrawInst_EyeDoorBottomFacingLeft_1                          ;84D93D;
+    dw $0008,DrawInst_EyeDoorBottomFacingLeft_2                          ;84D941;
+    dw $0008,DrawInst_EyeDoorBottomFacingLeft_1                          ;84D945;
     dw Instruction_PLM_GotoY_ifSamusIsWithin_YColumnsRowsOfPLM           ;84D949;
-    dw $1006                                                             ;84D94B;
-    dw InstList_PLM_EyeDoorBottomFacingLeft_3                            ;84D94D;
+    db $06,$10 : dw InstList_PLM_EyeDoorBottomFacingLeft_3               ;84D94B;
     dw Instruction_PLM_GotoY                                             ;84D94F;
     dw InstList_PLM_EyeDoorBottomFacingLeft_1                            ;84D951;
 
@@ -12225,11 +11406,9 @@ InstList_PLM_EyeDoorEyeFacingRight_0:
     dw InstList_PLM_EyeDoorEyeFacingRight_8                              ;84D957;
 
 InstList_PLM_EyeDoorEyeFacingRight_1:
-    dw $0004                                                             ;84D959;
-    dw DrawInst_EyeDoorEyeFacingRight_1                                  ;84D95B;
+    dw $0004,DrawInst_EyeDoorEyeFacingRight_1                            ;84D959;
     dw Instruction_PLM_GotoY_ifSamusIsWithin_YColumnsRowsOfPLM           ;84D95D;
-    db $06,$04                                                           ;84D95F;
-    dw InstList_PLM_EyeDoorEyeFacingRight_2                              ;84D961;
+    db $06,$04 : dw InstList_PLM_EyeDoorEyeFacingRight_2                 ;84D95F;
     dw Instruction_PLM_GotoY                                             ;84D963;
     dw InstList_PLM_EyeDoorEyeFacingRight_1                              ;84D965;
 
@@ -12238,77 +11417,52 @@ InstList_PLM_EyeDoorEyeFacingRight_2:
     dw InstList_PLM_EyeDoorEyeFacingRight_5                              ;84D969;
     dw Instruction_PLM_PreInstruction_inY                                ;84D96B;
     dw PreInstruction_PLM_GotoLinkInstructionIfShotWithAMissile          ;84D96D;
-    dw $0008                                                             ;84D96F;
-    dw DrawInst_EyeDoorEyeFacingRight_2                                  ;84D971;
+    dw $0008,DrawInst_EyeDoorEyeFacingRight_2                            ;84D96F;
 
 InstList_PLM_EyeDoorEyeFacingRight_3:
     dw Instruction_PLM_GotoY_ifSamusIsWithin_YColumnsRowsOfPLM           ;84D973;
-    db $01,$04                                                           ;84D975;
-    dw InstList_PLM_EyeDoorEyeFacingRight_4                              ;84D977;
-    dw $0040                                                             ;84D979;
-    dw DrawInst_EyeDoorEyeFacingRight_3                                  ;84D97B;
-    dw Instruction_PLM_ShootEyeDoorProjectileWithEnemyProjArgY           ;84D97D;
-    dw $0014,$0020                                                       ;84D97F;
-    dw DrawInst_EyeDoorEyeFacingRight_3                                  ;84D983;
-    dw Instruction_PLM_ShootEyeDoorProjectileWithEnemyProjArgY           ;84D985;
-    dw $0014,$0020                                                       ;84D987;
-    dw DrawInst_EyeDoorEyeFacingRight_3                                  ;84D98B;
-    dw Instruction_PLM_ShootEyeDoorProjectileWithEnemyProjArgY           ;84D98D;
-    dw $0014,$0040                                                       ;84D98F;
-    dw DrawInst_EyeDoorEyeFacingRight_3                                  ;84D993;
-    dw $0006                                                             ;84D995;
-    dw DrawInst_EyeDoorEyeFacingRight_2                                  ;84D997;
-    dw $0030                                                             ;84D999;
-    dw DrawInst_EyeDoorEyeFacingRight_1                                  ;84D99B;
-    dw $0030                                                             ;84D99D;
-    dw DrawInst_EyeDoorEyeFacingRight_1                                  ;84D99F;
-    dw $0006                                                             ;84D9A1;
-    dw DrawInst_EyeDoorEyeFacingRight_2                                  ;84D9A3;
+    db $01,$04 : dw InstList_PLM_EyeDoorEyeFacingRight_4                 ;84D975;
+    dw $0040,DrawInst_EyeDoorEyeFacingRight_3                            ;84D979;
+    dw Instruction_PLM_ShootEyeDoorProjectileWithEnemyProjArgY,$0014     ;84D97D;
+    dw $0020,DrawInst_EyeDoorEyeFacingRight_3                            ;84D97F;
+    dw Instruction_PLM_ShootEyeDoorProjectileWithEnemyProjArgY,$0014     ;84D985;
+    dw $0020,DrawInst_EyeDoorEyeFacingRight_3                            ;84D987;
+    dw Instruction_PLM_ShootEyeDoorProjectileWithEnemyProjArgY,$0014     ;84D98D;
+    dw $0040,DrawInst_EyeDoorEyeFacingRight_3                            ;84D98F;
+    dw $0006,DrawInst_EyeDoorEyeFacingRight_2                            ;84D995;
+    dw $0030,DrawInst_EyeDoorEyeFacingRight_1                            ;84D999;
+    dw $0030,DrawInst_EyeDoorEyeFacingRight_1                            ;84D99D;
+    dw $0006,DrawInst_EyeDoorEyeFacingRight_2                            ;84D9A1;
     dw Instruction_PLM_GotoY_ifSamusIsWithin_YColumnsRowsOfPLM           ;84D9A5;
-    db $06,$04                                                           ;84D9A7;
-    dw InstList_PLM_EyeDoorEyeFacingRight_3                              ;84D9A9;
+    db $06,$04 : dw InstList_PLM_EyeDoorEyeFacingRight_3                 ;84D9A7;
     dw Instruction_PLM_GotoY                                             ;84D9AB;
     dw InstList_PLM_EyeDoorEyeFacingRight_1                              ;84D9AD;
 
 InstList_PLM_EyeDoorEyeFacingRight_4:
-    dw $0004                                                             ;84D9AF;
-    dw DrawInst_EyeDoorEyeFacingRight_1                                  ;84D9B1;
+    dw $0004,DrawInst_EyeDoorEyeFacingRight_1                            ;84D9AF;
     dw Instruction_PLM_GotoY                                             ;84D9B3;
     dw InstList_PLM_EyeDoorEyeFacingRight_3                              ;84D9B5;
 
 InstList_PLM_EyeDoorEyeFacingRight_5:
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max6                            ;84D9B7;
-    db $09                                                               ;84D9B9;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $09                   ;84D9B7;
     dw Instruction_PLM_Spawn2EyeDoorSmokeEnemyProjectiles                ;84D9BA;
     dw Instruction_PLM_Spawn2EyeDoorSmokeEnemyProjectiles                ;84D9BC;
     dw Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY                   ;84D9BE;
-    db $03                                                               ;84D9C0;
-    dw InstList_PLM_EyeDoorEyeFacingRight_6                              ;84D9C1;
-    dw $0002                                                             ;84D9C3;
-    dw DrawInst_EyeDoorEyeFacingRight_4                                  ;84D9C5;
-    dw $0002                                                             ;84D9C7;
-    dw DrawInst_EyeDoorEyeFacingRight_5                                  ;84D9C9;
+    db $03 : dw InstList_PLM_EyeDoorEyeFacingRight_6                     ;84D9C0;
+    dw $0002,DrawInst_EyeDoorEyeFacingRight_4                            ;84D9C3;
+    dw $0002,DrawInst_EyeDoorEyeFacingRight_5                            ;84D9C7;
     dw Instruction_PLM_Spawn2EyeDoorSmokeEnemyProjectiles                ;84D9CB;
-    dw $0002                                                             ;84D9CD;
-    dw DrawInst_EyeDoorEyeFacingRight_4                                  ;84D9CF;
-    dw $0002                                                             ;84D9D1;
-    dw DrawInst_EyeDoorEyeFacingRight_5                                  ;84D9D3;
-    dw $0002                                                             ;84D9D5;
-    dw DrawInst_EyeDoorEyeFacingRight_4                                  ;84D9D7;
+    dw $0002,DrawInst_EyeDoorEyeFacingRight_4                            ;84D9CD;
+    dw $0002,DrawInst_EyeDoorEyeFacingRight_5                            ;84D9D1;
+    dw $0002,DrawInst_EyeDoorEyeFacingRight_4                            ;84D9D5;
     dw Instruction_PLM_Spawn2EyeDoorSmokeEnemyProjectiles                ;84D9D9;
-    dw $0002                                                             ;84D9DB;
-    dw DrawInst_EyeDoorEyeFacingRight_5                                  ;84D9DD;
-    dw $0004                                                             ;84D9DF;
-    dw DrawInst_EyeDoorEyeFacingRight_2                                  ;84D9E1;
-    dw $0008                                                             ;84D9E3;
-    dw DrawInst_EyeDoorEyeFacingRight_1                                  ;84D9E5;
-    dw Instruction_PLM_SpawnEyeDoorSweatEnemyProjectileWithArgY          ;84D9E7;
-    dw $0004,$0038                                                       ;84D9E9;
-    dw DrawInst_EyeDoorEyeFacingRight_1                                  ;84D9ED;
-    dw $0004                                                             ;84D9EF;
-    dw DrawInst_EyeDoorEyeFacingRight_2                                  ;84D9F1;
-    dw $0004                                                             ;84D9F3;
-    dw DrawInst_EyeDoorEyeFacingRight_5                                  ;84D9F5;
+    dw $0002,DrawInst_EyeDoorEyeFacingRight_5                            ;84D9DB;
+    dw $0004,DrawInst_EyeDoorEyeFacingRight_2                            ;84D9DF;
+    dw $0008,DrawInst_EyeDoorEyeFacingRight_1                            ;84D9E3;
+    dw Instruction_PLM_SpawnEyeDoorSweatEnemyProjectileWithArgY,$0004    ;84D9E7;
+    dw $0038,DrawInst_EyeDoorEyeFacingRight_1                            ;84D9E9;
+    dw $0004,DrawInst_EyeDoorEyeFacingRight_2                            ;84D9EF;
+    dw $0004,DrawInst_EyeDoorEyeFacingRight_5                            ;84D9F3;
     dw Instruction_PLM_GotoY                                             ;84D9F7;
     dw InstList_PLM_EyeDoorEyeFacingRight_3                              ;84D9F9;
 
@@ -12319,14 +11473,11 @@ InstList_PLM_EyeDoorEyeFacingRight_6:
     dw Instruction_PLM_Spawn2EyeDoorSmokeEnemyProjectiles                ;84DA01;
     dw Instruction_PLM_Spawn2EyeDoorSmokeEnemyProjectiles                ;84DA03;
     dw Instruction_PLM_MovePLMUp1Row_MakeABlueDoorFacingRight            ;84DA05;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84DA07;
-    db $0A                                                               ;84DA09;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $0A                        ;84DA07;
 
 InstList_PLM_EyeDoorEyeFacingRight_7:
-    dw $0003                                                             ;84DA0A;
-    dw DrawInst_EyeDoorEyeFacingRight_0                                  ;84DA0C;
-    dw $0004                                                             ;84DA0E;
-    dw DrawInst_EyeDoorEyeFacingRight                                    ;84DA10;
+    dw $0003,DrawInst_EyeDoorEyeFacingRight_0                            ;84DA0A;
+    dw $0004,DrawInst_EyeDoorEyeFacingRight                              ;84DA0E;
     dw Instruction_PLM_DecrementTimer_GotoYIfNonZero                     ;84DA12;
     dw InstList_PLM_EyeDoorEyeFacingRight_7                              ;84DA14;
     dw Instruction_PLM_GotoY                                             ;84DA16;
@@ -12343,10 +11494,8 @@ InstList_PLM_EyeDoorFacingRight_0:
 
 InstList_PLM_EyeDoorFacingRight_1:
     dw Instruction_PLM_GotoY_ifSamusIsWithin_YColumnsRowsOfPLM           ;84DA24;
-    db $06,$10                                                           ;84DA26;
-    dw InstList_PLM_EyeDoorFacingRight_2                                 ;84DA28;
-    dw $0008                                                             ;84DA2A;
-    dw DrawInst_EyeDoorFacingRight_0                                     ;84DA2C;
+    db $06,$10 : dw InstList_PLM_EyeDoorFacingRight_2                    ;84DA26;
+    dw $0008,DrawInst_EyeDoorFacingRight_0                               ;84DA2A;
     dw Instruction_PLM_GotoY                                             ;84DA2E;
     dw InstList_PLM_EyeDoorFacingRight_1                                 ;84DA30;
 
@@ -12357,17 +11506,12 @@ InstList_PLM_EyeDoorFacingRight_2:
     dw PreInstruction_PLM_WakePLMIfRoomArgDoorIsSet                      ;84DA38;
 
 InstList_PLM_EyeDoorFacingRight_3:
-    dw $0006                                                             ;84DA3A;
-    dw DrawInst_EyeDoorFacingRight_0                                     ;84DA3C;
-    dw $0006                                                             ;84DA3E;
-    dw DrawInst_EyeDoorFacingRight_1                                     ;84DA40;
-    dw $0006                                                             ;84DA42;
-    dw DrawInst_EyeDoorFacingRight_2                                     ;84DA44;
-    dw $0006                                                             ;84DA46;
-    dw DrawInst_EyeDoorFacingRight_1                                     ;84DA48;
+    dw $0006,DrawInst_EyeDoorFacingRight_0                               ;84DA3A;
+    dw $0006,DrawInst_EyeDoorFacingRight_1                               ;84DA3E;
+    dw $0006,DrawInst_EyeDoorFacingRight_2                               ;84DA42;
+    dw $0006,DrawInst_EyeDoorFacingRight_1                               ;84DA46;
     dw Instruction_PLM_GotoY_ifSamusIsWithin_YColumnsRowsOfPLM           ;84DA4A;
-    db $06,$10                                                           ;84DA4C;
-    dw InstList_PLM_EyeDoorFacingRight_3                                 ;84DA4E;
+    db $06,$10 : dw InstList_PLM_EyeDoorFacingRight_3                    ;84DA4C;
     dw Instruction_PLM_GotoY                                             ;84DA50;
     dw InstList_PLM_EyeDoorFacingRight_1                                 ;84DA52;
 
@@ -12380,10 +11524,8 @@ InstList_PLM_EyeDoorBottomFacingRight_0:
 
 InstList_PLM_EyeDoorBottomFacingRight_1:
     dw Instruction_PLM_GotoY_ifSamusIsWithin_YColumnsRowsOfPLM           ;84DA5A;
-    db $06,$10                                                           ;84DA5C;
-    dw InstList_PLM_EyeDoorBottomFacingRight_2                           ;84DA5E;
-    dw $0008                                                             ;84DA60;
-    dw DrawInst_EyeDoorBottomFacingRight_0                               ;84DA62;
+    db $06,$10 : dw InstList_PLM_EyeDoorBottomFacingRight_2              ;84DA5C;
+    dw $0008,DrawInst_EyeDoorBottomFacingRight_0                         ;84DA60;
     dw Instruction_PLM_GotoY                                             ;84DA64;
     dw InstList_PLM_EyeDoorBottomFacingRight_1                           ;84DA66;
 
@@ -12394,17 +11536,12 @@ InstList_PLM_EyeDoorBottomFacingRight_2:
     dw PreInstruction_PLM_WakePLMIfRoomArgDoorIsSet                      ;84DA6E;
 
 InstList_PLM_EyeDoorBottomFacingRight_3:
-    dw $0006                                                             ;84DA70;
-    dw DrawInst_EyeDoorBottomFacingRight_0                               ;84DA72;
-    dw $0006                                                             ;84DA74;
-    dw DrawInst_EyeDoorBottomFacingRight_1                               ;84DA76;
-    dw $0006                                                             ;84DA78;
-    dw DrawInst_EyeDoorBottomFacingRight_2                               ;84DA7A;
-    dw $0006                                                             ;84DA7C;
-    dw DrawInst_EyeDoorBottomFacingRight_1                               ;84DA7E;
+    dw $0006,DrawInst_EyeDoorBottomFacingRight_0                         ;84DA70;
+    dw $0006,DrawInst_EyeDoorBottomFacingRight_1                         ;84DA74;
+    dw $0006,DrawInst_EyeDoorBottomFacingRight_2                         ;84DA78;
+    dw $0006,DrawInst_EyeDoorBottomFacingRight_1                         ;84DA7C;
     dw Instruction_PLM_GotoY_ifSamusIsWithin_YColumnsRowsOfPLM           ;84DA80;
-    db $06,$10                                                           ;84DA82;
-    dw InstList_PLM_EyeDoorBottomFacingRight_3                           ;84DA84;
+    db $06,$10 : dw InstList_PLM_EyeDoorBottomFacingRight_3              ;84DA82;
     dw Instruction_PLM_GotoY                                             ;84DA86;
     dw InstList_PLM_EyeDoorBottomFacingRight_1                           ;84DA88;
 
@@ -12785,28 +11922,20 @@ InstList_PLM_DraygonCannonWithShieldFacingRight_0:
     dw PreInst_PLM_GotoLinkInstructionIfShotWithAMissile_Draygon         ;84DCE4;
 
 InstList_PLM_DraygonCannonWithShieldFacingRight_1:
-    dw $0008                                                             ;84DCE6;
-    dw DrawInst_DraygonCannonShieldRight_0                               ;84DCE8;
+    dw $0008,DrawInst_DraygonCannonShieldRight_0                         ;84DCE6;
     dw Instruction_PLM_Sleep                                             ;84DCEA;
     dw Instruction_PLM_GotoY                                             ;84DCEC;
     dw InstList_PLM_DraygonCannonWithShieldFacingRight_1                 ;84DCEE;
 
 InstList_PLM_DraygonCannonWithShieldFacingRight_2:
     dw Instruction_PLM_IncRoomArg_RoomArgFFFF_GotoY                      ;84DCF0;
-    db $03                                                               ;84DCF2;
-    dw InstList_PLM_DraygonCannonFacingRight_0                           ;84DCF3;
-    dw $0003                                                             ;84DCF5;
-    dw DrawInst_DraygonCannonShieldRight_0                               ;84DCF7;
-    dw $0004                                                             ;84DCF9;
-    dw DrawInst_DraygonCannonShieldRight_1                               ;84DCFB;
-    dw $0003                                                             ;84DCFD;
-    dw DrawInst_DraygonCannonShieldRight_0                               ;84DCFF;
-    dw $0004                                                             ;84DD01;
-    dw DrawInst_DraygonCannonShieldRight_1                               ;84DD03;
-    dw $0003                                                             ;84DD05;
-    dw DrawInst_DraygonCannonShieldRight_0                               ;84DD07;
-    dw $0004                                                             ;84DD09;
-    dw DrawInst_DraygonCannonShieldRight_1                               ;84DD0B;
+    db $03 : dw InstList_PLM_DraygonCannonFacingRight_0                  ;84DCF2;
+    dw $0003,DrawInst_DraygonCannonShieldRight_0                         ;84DCF5;
+    dw $0004,DrawInst_DraygonCannonShieldRight_1                         ;84DCF9;
+    dw $0003,DrawInst_DraygonCannonShieldRight_0                         ;84DCFD;
+    dw $0004,DrawInst_DraygonCannonShieldRight_1                         ;84DD01;
+    dw $0003,DrawInst_DraygonCannonShieldRight_0                         ;84DD05;
+    dw $0004,DrawInst_DraygonCannonShieldRight_1                         ;84DD09;
     dw Instruction_PLM_GotoY                                             ;84DD0D;
     dw InstList_PLM_DraygonCannonWithShieldFacingRight_1                 ;84DD0F;
 
@@ -12814,14 +11943,10 @@ InstList_PLM_DraygonCannonFacingRight_0:
     dw Instruction_PLM_DamageDraygonTurret                               ;84DD11;
 
 InstList_PLM_DraygonCannonFacingRight_1:
-    dw $0006                                                             ;84DD13;
-    dw DrawInst_DraygonCannonRight_0                                     ;84DD15;
-    dw $0006                                                             ;84DD17;
-    dw DrawInst_DraygonCannonRight_1                                     ;84DD19;
-    dw $0006                                                             ;84DD1B;
-    dw DrawInst_DraygonCannonRight_2                                     ;84DD1D;
-    dw $0006                                                             ;84DD1F;
-    dw DrawInst_DraygonCannonRight_3                                     ;84DD21;
+    dw $0006,DrawInst_DraygonCannonRight_0                               ;84DD13;
+    dw $0006,DrawInst_DraygonCannonRight_1                               ;84DD17;
+    dw $0006,DrawInst_DraygonCannonRight_2                               ;84DD1B;
+    dw $0006,DrawInst_DraygonCannonRight_3                               ;84DD1F;
     dw Instruction_PLM_GotoY                                             ;84DD23;
     dw InstList_PLM_DraygonCannonFacingRight_1                           ;84DD25;
 
@@ -12832,28 +11957,20 @@ InstList_PLM_DraygonCannonWithShieldFacingDownRight_0:
     dw PreInst_PLM_GotoLinkInstructionIfShotWithAMissile_Draygon         ;84DD2D;
 
 InstList_PLM_DraygonCannonWithShieldFacingDownRight_1:
-    dw $0008                                                             ;84DD2F;
-    dw UNUSED_DrawInst_DraygonCannonShieldDownRight_0_849FED             ;84DD31;
+    dw $0008,UNUSED_DrawInst_DraygonCannonShieldDownRight_0_849FED       ;84DD2F;
     dw Instruction_PLM_Sleep                                             ;84DD33;
     dw Instruction_PLM_GotoY                                             ;84DD35;
     dw InstList_PLM_DraygonCannonWithShieldFacingDownRight_1             ;84DD37;
 
 InstList_PLM_DraygonCannonWithShieldFacingDownRight_2:
     dw Instruction_PLM_IncRoomArg_RoomArgFFFF_GotoY                      ;84DD39;
-    db $03                                                               ;84DD3B;
-    dw UNUSED_InstList_PLM_DraygonCannonFacingDownRight_0                ;84DD3C;
-    dw $0003                                                             ;84DD3E;
-    dw UNUSED_DrawInst_DraygonCannonShieldDownRight_0_849FED             ;84DD40;
-    dw $0004                                                             ;84DD42;
-    dw UNUSED_DrawInst_DraygonCannonShieldDownRight_1_849FFD             ;84DD44;
-    dw $0003                                                             ;84DD46;
-    dw UNUSED_DrawInst_DraygonCannonShieldDownRight_0_849FED             ;84DD48;
-    dw $0004                                                             ;84DD4A;
-    dw UNUSED_DrawInst_DraygonCannonShieldDownRight_1_849FFD             ;84DD4C;
-    dw $0003                                                             ;84DD4E;
-    dw UNUSED_DrawInst_DraygonCannonShieldDownRight_0_849FED             ;84DD50;
-    dw $0004                                                             ;84DD52;
-    dw UNUSED_DrawInst_DraygonCannonShieldDownRight_1_849FFD             ;84DD54;
+    db $03 : dw UNUSED_InstList_PLM_DraygonCannonFacingDownRight_0       ;84DD3B;
+    dw $0003,UNUSED_DrawInst_DraygonCannonShieldDownRight_0_849FED       ;84DD3E;
+    dw $0004,UNUSED_DrawInst_DraygonCannonShieldDownRight_1_849FFD       ;84DD42;
+    dw $0003,UNUSED_DrawInst_DraygonCannonShieldDownRight_0_849FED       ;84DD46;
+    dw $0004,UNUSED_DrawInst_DraygonCannonShieldDownRight_1_849FFD       ;84DD4A;
+    dw $0003,UNUSED_DrawInst_DraygonCannonShieldDownRight_0_849FED       ;84DD4E;
+    dw $0004,UNUSED_DrawInst_DraygonCannonShieldDownRight_1_849FFD       ;84DD52;
     dw Instruction_PLM_GotoY                                             ;84DD56;
     dw InstList_PLM_DraygonCannonWithShieldFacingDownRight_1             ;84DD58;
 
@@ -12862,14 +11979,10 @@ UNUSED_InstList_PLM_DraygonCannonFacingDownRight_0:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_PLM_DraygonCannonFacingDownRight_1:
-    dw $0006                                                             ;84DD5C;
-    dw UNUSED_DrawInst_DraygonCannonDownRight_0_84A06D                   ;84DD5E;
-    dw $0006                                                             ;84DD60;
-    dw UNUSED_DrawInst_DraygonCannonDownRight_1_84A07D                   ;84DD62;
-    dw $0006                                                             ;84DD64;
-    dw UNUSED_DrawInst_DraygonCannonDownRight_2_84A08D                   ;84DD66;
-    dw $0006                                                             ;84DD68;
-    dw UNUSED_DrawInst_DraygonCannonDownRight_3_84A09D                   ;84DD6A;
+    dw $0006,UNUSED_DrawInst_DraygonCannonDownRight_0_84A06D             ;84DD5C;
+    dw $0006,UNUSED_DrawInst_DraygonCannonDownRight_1_84A07D             ;84DD60;
+    dw $0006,UNUSED_DrawInst_DraygonCannonDownRight_2_84A08D             ;84DD64;
+    dw $0006,UNUSED_DrawInst_DraygonCannonDownRight_3_84A09D             ;84DD68;
     dw Instruction_PLM_GotoY                                             ;84DD6C;
     dw UNUSED_InstList_PLM_DraygonCannonFacingDownRight_1                ;84DD6E;
 
@@ -12880,28 +11993,20 @@ UNUSED_InstList_DraygonCannonWithShieldFacingUpRight_84DD70:
     dw PreInst_PLM_GotoLinkInstructionIfShotWithAMissile_Draygon         ;84DD76;
 
 UNUSED_InstList_DraygonCannonWithShieldFacingUpRight_84DD78:
-    dw $0008                                                             ;84DD78;
-    dw UNUSED_DrawInst_DraygonCannonShieldUpRight_0_84A00D               ;84DD7A;
+    dw $0008,UNUSED_DrawInst_DraygonCannonShieldUpRight_0_84A00D         ;84DD78;
     dw Instruction_PLM_Sleep                                             ;84DD7C;
     dw Instruction_PLM_GotoY                                             ;84DD7E;
     dw UNUSED_InstList_DraygonCannonWithShieldFacingUpRight_84DD78       ;84DD80;
 
 UNUSED_InstList_DraygonCannonWithShieldFacingUpRight_84DD82:
     dw Instruction_PLM_IncRoomArg_RoomArgFFFF_GotoY                      ;84DD82;
-    db $03                                                               ;84DD84;
-    dw UNUSED_InstList_PLM_DraygonCannonFacingUpRight_84DDA3             ;84DD85;
-    dw $0003                                                             ;84DD87;
-    dw UNUSED_DrawInst_DraygonCannonShieldUpRight_0_84A00D               ;84DD89;
-    dw $0004                                                             ;84DD8B;
-    dw UNUSED_DrawInst_DraygonCannonShieldUpRight_1_84A01D               ;84DD8D;
-    dw $0003                                                             ;84DD8F;
-    dw UNUSED_DrawInst_DraygonCannonShieldUpRight_0_84A00D               ;84DD91;
-    dw $0004                                                             ;84DD93;
-    dw UNUSED_DrawInst_DraygonCannonShieldUpRight_1_84A01D               ;84DD95;
-    dw $0003                                                             ;84DD97;
-    dw UNUSED_DrawInst_DraygonCannonShieldUpRight_0_84A00D               ;84DD99;
-    dw $0004                                                             ;84DD9B;
-    dw UNUSED_DrawInst_DraygonCannonShieldUpRight_1_84A01D               ;84DD9D;
+    db $03 : dw UNUSED_InstList_PLM_DraygonCannonFacingUpRight_84DDA3    ;84DD84;
+    dw $0003,UNUSED_DrawInst_DraygonCannonShieldUpRight_0_84A00D         ;84DD87;
+    dw $0004,UNUSED_DrawInst_DraygonCannonShieldUpRight_1_84A01D         ;84DD8B;
+    dw $0003,UNUSED_DrawInst_DraygonCannonShieldUpRight_0_84A00D         ;84DD8F;
+    dw $0004,UNUSED_DrawInst_DraygonCannonShieldUpRight_1_84A01D         ;84DD93;
+    dw $0003,UNUSED_DrawInst_DraygonCannonShieldUpRight_0_84A00D         ;84DD97;
+    dw $0004,UNUSED_DrawInst_DraygonCannonShieldUpRight_1_84A01D         ;84DD9B;
     dw Instruction_PLM_GotoY                                             ;84DD9F;
     dw UNUSED_InstList_DraygonCannonWithShieldFacingUpRight_84DD78       ;84DDA1;
 
@@ -12909,14 +12014,10 @@ UNUSED_InstList_PLM_DraygonCannonFacingUpRight_84DDA3:
     dw Instruction_PLM_DamageDraygonTurretFacingUpRight                  ;84DDA3;
 
 UNUSED_InstList_PLM_DraygonCannonFacingUpRight_84DDA5:
-    dw $0006                                                             ;84DDA5;
-    dw UNUSED_DrawInst_DraygonCannonUpRight_0_84A0AD                     ;84DDA7;
-    dw $0006                                                             ;84DDA9;
-    dw UNUSED_DrawInst_DraygonCannonUpRight_1_84A0BD                     ;84DDAB;
-    dw $0006                                                             ;84DDAD;
-    dw UNUSED_DrawInst_DraygonCannonUpRight_2_84A0CD                     ;84DDAF;
-    dw $0006                                                             ;84DDB1;
-    dw UNUSED_DrawInst_DraygonCannonUpRight_3_84A0DD                     ;84DDB3;
+    dw $0006,UNUSED_DrawInst_DraygonCannonUpRight_0_84A0AD               ;84DDA5;
+    dw $0006,UNUSED_DrawInst_DraygonCannonUpRight_1_84A0BD               ;84DDA9;
+    dw $0006,UNUSED_DrawInst_DraygonCannonUpRight_2_84A0CD               ;84DDAD;
+    dw $0006,UNUSED_DrawInst_DraygonCannonUpRight_3_84A0DD               ;84DDB1;
     dw Instruction_PLM_GotoY                                             ;84DDB5;
     dw UNUSED_InstList_PLM_DraygonCannonFacingUpRight_84DDA5             ;84DDB7;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -12928,28 +12029,20 @@ InstList_PLM_DraygonCannonWithShieldFacingLeft_0:
     dw PreInst_PLM_GotoLinkInstructionIfShotWithAMissile_Draygon         ;84DDBF;
 
 InstList_PLM_DraygonCannonWithShieldFacingLeft_1:
-    dw $0008                                                             ;84DDC1;
-    dw DrawInst_DraygonCannonShieldLeft_0                                ;84DDC3;
+    dw $0008,DrawInst_DraygonCannonShieldLeft_0                          ;84DDC1;
     dw Instruction_PLM_Sleep                                             ;84DDC5;
     dw Instruction_PLM_GotoY                                             ;84DDC7;
     dw InstList_PLM_DraygonCannonWithShieldFacingLeft_1                  ;84DDC9;
 
 InstList_PLM_DraygonCannonWithShieldFacingLeft_2:
     dw Instruction_PLM_IncRoomArg_RoomArgFFFF_GotoY                      ;84DDCB;
-    db $03                                                               ;84DDCD;
-    dw InstList_PLM_DraygonCannonFacingLeft_0                            ;84DDCE;
-    dw $0003                                                             ;84DDD0;
-    dw DrawInst_DraygonCannonShieldLeft_0                                ;84DDD2;
-    dw $0004                                                             ;84DDD4;
-    dw DrawInst_DraygonCannonShieldLeft_1                                ;84DDD6;
-    dw $0003                                                             ;84DDD8;
-    dw DrawInst_DraygonCannonShieldLeft_0                                ;84DDDA;
-    dw $0004                                                             ;84DDDC;
-    dw DrawInst_DraygonCannonShieldLeft_1                                ;84DDDE;
-    dw $0003                                                             ;84DDE0;
-    dw DrawInst_DraygonCannonShieldLeft_0                                ;84DDE2;
-    dw $0004                                                             ;84DDE4;
-    dw DrawInst_DraygonCannonShieldLeft_1                                ;84DDE6;
+    db $03 : dw InstList_PLM_DraygonCannonFacingLeft_0                   ;84DDCD;
+    dw $0003,DrawInst_DraygonCannonShieldLeft_0                          ;84DDD0;
+    dw $0004,DrawInst_DraygonCannonShieldLeft_1                          ;84DDD4;
+    dw $0003,DrawInst_DraygonCannonShieldLeft_0                          ;84DDD8;
+    dw $0004,DrawInst_DraygonCannonShieldLeft_1                          ;84DDDC;
+    dw $0003,DrawInst_DraygonCannonShieldLeft_0                          ;84DDE0;
+    dw $0004,DrawInst_DraygonCannonShieldLeft_1                          ;84DDE4;
     dw Instruction_PLM_GotoY                                             ;84DDE8;
     dw InstList_PLM_DraygonCannonWithShieldFacingLeft_1                  ;84DDEA;
 
@@ -12957,14 +12050,10 @@ InstList_PLM_DraygonCannonFacingLeft_0:
     dw Instruction_PLM_DamageDraygonTurret_duplicate                     ;84DDEC;
 
 InstList_PLM_DraygonCannonFacingLeft_1:
-    dw $0006                                                             ;84DDEE;
-    dw DrawInst_DraygonCannonLeft_0                                      ;84DDF0;
-    dw $0006                                                             ;84DDF2;
-    dw DrawInst_DraygonCannonLeft_1                                      ;84DDF4;
-    dw $0006                                                             ;84DDF6;
-    dw DrawInst_DraygonCannonLeft_2                                      ;84DDF8;
-    dw $0006                                                             ;84DDFA;
-    dw DrawInst_DraygonCannonLeft_3                                      ;84DDFC;
+    dw $0006,DrawInst_DraygonCannonLeft_0                                ;84DDEE;
+    dw $0006,DrawInst_DraygonCannonLeft_1                                ;84DDF2;
+    dw $0006,DrawInst_DraygonCannonLeft_2                                ;84DDF6;
+    dw $0006,DrawInst_DraygonCannonLeft_3                                ;84DDFA;
     dw Instruction_PLM_GotoY                                             ;84DDFE;
     dw InstList_PLM_DraygonCannonFacingLeft_1                            ;84DE00;
 
@@ -12976,28 +12065,20 @@ UNUSED_InstList_DraygonCannonWithShieldFacingDownLeft_84DE02:
     dw PreInst_PLM_GotoLinkInstructionIfShotWithAMissile_Draygon         ;84DE08;
 
 UNUSED_InstList_DraygonCannonWithShieldFacingDownLeft_84DE0A:
-    dw $0008                                                             ;84DE0A;
-    dw UNUSED_DrawInst_DraygonCannonShieldDownLeft_0_84A115              ;84DE0C;
+    dw $0008,UNUSED_DrawInst_DraygonCannonShieldDownLeft_0_84A115        ;84DE0A;
     dw Instruction_PLM_Sleep                                             ;84DE0E;
     dw Instruction_PLM_GotoY                                             ;84DE10;
     dw UNUSED_InstList_DraygonCannonWithShieldFacingDownLeft_84DE0A      ;84DE12;
 
 UNUSED_InstList_DraygonCannonWithShieldFacingDownLeft_84DE14:
     dw Instruction_PLM_IncRoomArg_RoomArgFFFF_GotoY                      ;84DE14;
-    db $03                                                               ;84DE16;
-    dw UNUSED_InstList_PLM_DraygonCannonFacingDownLeft_84DE35            ;84DE17;
-    dw $0003                                                             ;84DE19;
-    dw UNUSED_DrawInst_DraygonCannonShieldDownLeft_0_84A115              ;84DE1B;
-    dw $0004                                                             ;84DE1D;
-    dw UNUSED_DrawInst_DraygonCannonShieldDownLeft_1_84A129              ;84DE1F;
-    dw $0003                                                             ;84DE21;
-    dw UNUSED_DrawInst_DraygonCannonShieldDownLeft_0_84A115              ;84DE23;
-    dw $0004                                                             ;84DE25;
-    dw UNUSED_DrawInst_DraygonCannonShieldDownLeft_1_84A129              ;84DE27;
-    dw $0003                                                             ;84DE29;
-    dw UNUSED_DrawInst_DraygonCannonShieldDownLeft_0_84A115              ;84DE2B;
-    dw $0004                                                             ;84DE2D;
-    dw UNUSED_DrawInst_DraygonCannonShieldDownLeft_1_84A129              ;84DE2F;
+    db $03 : dw UNUSED_InstList_PLM_DraygonCannonFacingDownLeft_84DE35   ;84DE16;
+    dw $0003,UNUSED_DrawInst_DraygonCannonShieldDownLeft_0_84A115        ;84DE19;
+    dw $0004,UNUSED_DrawInst_DraygonCannonShieldDownLeft_1_84A129        ;84DE1D;
+    dw $0003,UNUSED_DrawInst_DraygonCannonShieldDownLeft_0_84A115        ;84DE21;
+    dw $0004,UNUSED_DrawInst_DraygonCannonShieldDownLeft_1_84A129        ;84DE25;
+    dw $0003,UNUSED_DrawInst_DraygonCannonShieldDownLeft_0_84A115        ;84DE29;
+    dw $0004,UNUSED_DrawInst_DraygonCannonShieldDownLeft_1_84A129        ;84DE2D;
     dw Instruction_PLM_GotoY                                             ;84DE31;
     dw UNUSED_InstList_DraygonCannonWithShieldFacingDownLeft_84DE0A      ;84DE33;
 
@@ -13005,14 +12086,10 @@ UNUSED_InstList_PLM_DraygonCannonFacingDownLeft_84DE35:
     dw Instruction_PLM_DamageDraygonTurretFacingDownLeft                 ;84DE35;
 
 UNUSED_InstList_PLM_DraygonCannonFacingDownLeft_84DE37:
-    dw $0006                                                             ;84DE37;
-    dw UNUSED_DrawInst_DraygonCannonDownLeft_0_84A1B5                    ;84DE39;
-    dw $0006                                                             ;84DE3B;
-    dw UNUSED_DrawInst_DraygonCannonDownLeft_1_84A1C9                    ;84DE3D;
-    dw $0006                                                             ;84DE3F;
-    dw UNUSED_DrawInst_DraygonCannonDownLeft_2_84A1DD                    ;84DE41;
-    dw $0006                                                             ;84DE43;
-    dw UNUSED_DrawInst_DraygonCannonDownLeft_3_84A1F1                    ;84DE45;
+    dw $0006,UNUSED_DrawInst_DraygonCannonDownLeft_0_84A1B5              ;84DE37;
+    dw $0006,UNUSED_DrawInst_DraygonCannonDownLeft_1_84A1C9              ;84DE3B;
+    dw $0006,UNUSED_DrawInst_DraygonCannonDownLeft_2_84A1DD              ;84DE3F;
+    dw $0006,UNUSED_DrawInst_DraygonCannonDownLeft_3_84A1F1              ;84DE43;
     dw Instruction_PLM_GotoY                                             ;84DE47;
     dw UNUSED_InstList_PLM_DraygonCannonFacingDownLeft_84DE37            ;84DE49;
 
@@ -13023,28 +12100,20 @@ UNUSED_InstList_DraygonCannonWithShieldFacingUpLeft_84DE4B:
     dw PreInst_PLM_GotoLinkInstructionIfShotWithAMissile_Draygon         ;84DE51;
 
 UNUSED_InstList_DraygonCannonWithShieldFacingUpLeft_84DE53:
-    dw $0008                                                             ;84DE53;
-    dw UNUSED_DrawInst_DraygonCannonShieldUpLeft_0_84A13D                ;84DE55;
+    dw $0008,UNUSED_DrawInst_DraygonCannonShieldUpLeft_0_84A13D          ;84DE53;
     dw Instruction_PLM_Sleep                                             ;84DE57;
     dw Instruction_PLM_GotoY                                             ;84DE59;
     dw UNUSED_InstList_DraygonCannonWithShieldFacingUpLeft_84DE53        ;84DE5B;
 
 UNUSED_InstList_DraygonCannonWithShieldFacingUpLeft_84DE5D:
     dw Instruction_PLM_IncRoomArg_RoomArgFFFF_GotoY                      ;84DE5D;
-    db $03                                                               ;84DE5F;
-    dw UNUSED_InstList_PLM_DraygonCannonFacingUpLeft_84DE7E              ;84DE60;
-    dw $0003                                                             ;84DE62;
-    dw UNUSED_DrawInst_DraygonCannonShieldUpLeft_0_84A13D                ;84DE64;
-    dw $0004                                                             ;84DE66;
-    dw UNUSED_DrawInst_DraygonCannonShieldUpLeft_1_84A151                ;84DE68;
-    dw $0003                                                             ;84DE6A;
-    dw UNUSED_DrawInst_DraygonCannonShieldUpLeft_0_84A13D                ;84DE6C;
-    dw $0004                                                             ;84DE6E;
-    dw UNUSED_DrawInst_DraygonCannonShieldUpLeft_1_84A151                ;84DE70;
-    dw $0003                                                             ;84DE72;
-    dw UNUSED_DrawInst_DraygonCannonShieldUpLeft_0_84A13D                ;84DE74;
-    dw $0004                                                             ;84DE76;
-    dw UNUSED_DrawInst_DraygonCannonShieldUpLeft_1_84A151                ;84DE78;
+    db $03 : dw UNUSED_InstList_PLM_DraygonCannonFacingUpLeft_84DE7E     ;84DE5F;
+    dw $0003,UNUSED_DrawInst_DraygonCannonShieldUpLeft_0_84A13D          ;84DE62;
+    dw $0004,UNUSED_DrawInst_DraygonCannonShieldUpLeft_1_84A151          ;84DE66;
+    dw $0003,UNUSED_DrawInst_DraygonCannonShieldUpLeft_0_84A13D          ;84DE6A;
+    dw $0004,UNUSED_DrawInst_DraygonCannonShieldUpLeft_1_84A151          ;84DE6E;
+    dw $0003,UNUSED_DrawInst_DraygonCannonShieldUpLeft_0_84A13D          ;84DE72;
+    dw $0004,UNUSED_DrawInst_DraygonCannonShieldUpLeft_1_84A151          ;84DE76;
     dw Instruction_PLM_GotoY                                             ;84DE7A;
     dw UNUSED_InstList_DraygonCannonWithShieldFacingUpLeft_84DE53        ;84DE7C;
 
@@ -13052,14 +12121,10 @@ UNUSED_InstList_PLM_DraygonCannonFacingUpLeft_84DE7E:
     dw Instruction_PLM_DamageDraygonTurretFacingUpLeft                   ;84DE7E;
 
 UNUSED_InstList_PLM_DraygonCannonFacingUpLeft_84DE80:
-    dw $0006                                                             ;84DE80;
-    dw UNUSED_DrawInst_DraygonCannonUpLeft_0_84A205                      ;84DE82;
-    dw $0006                                                             ;84DE84;
-    dw UNUSED_DrawInst_DraygonCannonUpLeft_1_84A219                      ;84DE86;
-    dw $0006                                                             ;84DE88;
-    dw UNUSED_DrawInst_DraygonCannonUpLeft_2_84A22D                      ;84DE8A;
-    dw $0006                                                             ;84DE8C;
-    dw UNUSED_DrawInst_DraygonCannonUpLeft_3_84A241                      ;84DE8E;
+    dw $0006,UNUSED_DrawInst_DraygonCannonUpLeft_0_84A205                ;84DE80;
+    dw $0006,UNUSED_DrawInst_DraygonCannonUpLeft_1_84A219                ;84DE84;
+    dw $0006,UNUSED_DrawInst_DraygonCannonUpLeft_2_84A22D                ;84DE88;
+    dw $0006,UNUSED_DrawInst_DraygonCannonUpLeft_3_84A241                ;84DE8C;
     dw Instruction_PLM_GotoY                                             ;84DE90;
     dw UNUSED_InstList_PLM_DraygonCannonFacingUpLeft_84DE80              ;84DE92;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -13237,8 +12302,7 @@ PreInstruction_PLM_GotoLinkInstructionIfTriggered:
 
 
 InstList_PLM_EmptyItem:
-    dw $0001                                                             ;84DFA9;
-    dw DrawInst_ItemChozoOrb                                             ;84DFAB;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84DFA9;
     dw Instruction_PLM_Delete                                            ;84DFAD;
 
 InstList_PLM_ItemOrb_0:
@@ -13246,35 +12310,26 @@ InstList_PLM_ItemOrb_0:
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84DFB1;
 
 InstList_PLM_ItemOrb_1:
-    dw $0014                                                             ;84DFB3;
-    dw DrawInst_ItemOrb_0                                                ;84DFB5;
-    dw $000A                                                             ;84DFB7;
-    dw DrawInst_ItemOrb_1                                                ;84DFB9;
-    dw $0014                                                             ;84DFBB;
-    dw DrawInst_ItemOrb_2                                                ;84DFBD;
-    dw $000A                                                             ;84DFBF;
-    dw DrawInst_ItemOrb_1                                                ;84DFC1;
+    dw $0014,DrawInst_ItemOrb_0                                          ;84DFB3;
+    dw $000A,DrawInst_ItemOrb_1                                          ;84DFB7;
+    dw $0014,DrawInst_ItemOrb_2                                          ;84DFBB;
+    dw $000A,DrawInst_ItemOrb_1                                          ;84DFBF;
     dw Instruction_PLM_GotoY                                             ;84DFC3;
     dw InstList_PLM_ItemOrb_1                                            ;84DFC5;
 
 InstList_PLM_Callable_ItemOrbBurst:
     dw Instruction_PLM_ClearPreInstruction                               ;84DFC7;
-    dw $0003                                                             ;84DFC9;
-    dw DrawInst_ItemChozoOrb                                             ;84DFCB;
-    dw $0003                                                             ;84DFCD;
-    dw DrawInst_ItemOrbBurst                                             ;84DFCF;
-    dw $0003                                                             ;84DFD1;
-    dw DrawInst_ItemChozoOrb                                             ;84DFD3;
+    dw $0003,DrawInst_ItemChozoOrb                                       ;84DFC9;
+    dw $0003,DrawInst_ItemOrbBurst                                       ;84DFCD;
+    dw $0003,DrawInst_ItemChozoOrb                                       ;84DFD1;
     dw Instruction_PLM_Return                                            ;84DFD5;
 
 InstList_PLM_Callable_EmptyItemOrb_0:
     dw Instruction_PLM_ClearPreInstruction                               ;84DFD7;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84DFD9;
-    db $16                                                               ;84DFDB;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84DFD9;
 
 InstList_PLM_Callable_EmptyItemOrb_1:
-    dw $0008                                                             ;84DFDC;
-    dw DrawInst_ItemChozoOrb                                             ;84DFDE;
+    dw $0008,DrawInst_ItemChozoOrb                                       ;84DFDC;
     dw Instruction_PLM_DecrementTimer_GotoYIfNonZero                     ;84DFE0;
     dw InstList_PLM_Callable_EmptyItemOrb_1                              ;84DFE2;
     dw Instruction_PLM_Return                                            ;84DFE4;
@@ -13301,43 +12356,31 @@ InstList_PLM_Callable_ItemShotBlock:
     dw PreInstruction_PLM_WakePLMIfTriggered_WithDeadCodePBCheck         ;84E009;
     dw Instruction_PLM_Sleep                                             ;84E00B;
     dw Instruction_PLM_ClearPreInstruction                               ;84E00D;
-    dw Instruction_PLM_QueueSound_Y_Lib2_Max6                            ;84E00F;
-    db $0A                                                               ;84E011;
-    dw $0004                                                             ;84E012;
-    dw DrawInst_ItemShotBlock_0                                          ;84E014;
-    dw $0004                                                             ;84E016;
-    dw DrawInst_ItemShotBlock_1                                          ;84E018;
-    dw $0004                                                             ;84E01A;
-    dw DrawInst_ItemShotBlock_2                                          ;84E01C;
+    dw Instruction_PLM_QueueSound_Y_Lib2_Max6 : db $0A                   ;84E00F;
+    dw $0004,DrawInst_ItemShotBlock_0                                    ;84E012;
+    dw $0004,DrawInst_ItemShotBlock_1                                    ;84E016;
+    dw $0004,DrawInst_ItemShotBlock_2                                    ;84E01A;
     dw Instruction_PLM_Return                                            ;84E01E;
 
 InstList_PLM_Callable_ItemShotBlockReconcealing:
     dw Instruction_PLM_ClearPreInstruction                               ;84E020;
-    dw $0004                                                             ;84E022;
-    dw DrawInst_ItemShotBlock_2                                          ;84E024;
-    dw $0004                                                             ;84E026;
-    dw DrawInst_ItemShotBlock_1                                          ;84E028;
-    dw $0004                                                             ;84E02A;
-    dw DrawInst_ItemShotBlock_0                                          ;84E02C;
+    dw $0004,DrawInst_ItemShotBlock_2                                    ;84E022;
+    dw $0004,DrawInst_ItemShotBlock_1                                    ;84E026;
+    dw $0004,DrawInst_ItemShotBlock_0                                    ;84E02A;
     dw Instruction_PLM_DrawPLMBlock_Clone                                ;84E02E;
     dw Instruction_PLM_Return                                            ;84E030;
 
 InstList_PLM_Callable_EmptyItemShotBlockReconcealing_0:
     dw Instruction_PLM_ClearPreInstruction                               ;84E032;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E034;
-    db $16                                                               ;84E036;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E034;
 
 InstList_PLM_Callable_EmptyItemShotBlockReconcealing_1:
-    dw $0008                                                             ;84E037;
-    dw DrawInst_ItemChozoOrb                                             ;84E039;
+    dw $0008,DrawInst_ItemChozoOrb                                       ;84E037;
     dw Instruction_PLM_DecrementTimer_GotoYIfNonZero                     ;84E03B;
     dw InstList_PLM_Callable_EmptyItemShotBlockReconcealing_1            ;84E03D;
-    dw $0004                                                             ;84E03F;
-    dw DrawInst_Respawn1x1_2                                             ;84E041;
-    dw $0004                                                             ;84E043;
-    dw DrawInst_Respawn1x1_1                                             ;84E045;
-    dw $0004                                                             ;84E047;
-    dw DrawInst_Respawn1x1_0                                             ;84E049;
+    dw $0004,DrawInst_Respawn1x1_2                                       ;84E03F;
+    dw $0004,DrawInst_Respawn1x1_1                                       ;84E043;
+    dw $0004,DrawInst_Respawn1x1_0                                       ;84E047;
     dw Instruction_PLM_DrawPLMBlock_Clone                                ;84E04B;
     dw Instruction_PLM_Return                                            ;84E04D;
 
@@ -13395,19 +12438,15 @@ InstList_PLM_EnergyTank_0:
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E0A3;
 
 InstList_PLM_EnergyTank_1:
-    dw $0004                                                             ;84E0A5;
-    dw DrawInst_EnergyTank_0                                             ;84E0A7;
-    dw $0004                                                             ;84E0A9;
-    dw DrawInst_EnergyTank_1                                             ;84E0AB;
+    dw $0004,DrawInst_EnergyTank_0                                       ;84E0A5;
+    dw $0004,DrawInst_EnergyTank_1                                       ;84E0A9;
     dw Instruction_PLM_GotoY                                             ;84E0AD;
     dw InstList_PLM_EnergyTank_1                                         ;84E0AF;
 
 InstList_PLM_EnergyTank_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E0B1;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E0B3;
-    db $02                                                               ;84E0B5;
-    dw Instruction_PLM_CollectHealth_EnergyTank                          ;84E0B6;
-    dw $0064                                                             ;84E0B8;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E0B3;
+    dw Instruction_PLM_CollectHealth_EnergyTank,$0064                    ;84E0B6;
 
 InstList_PLM_EnergyTank_3:
     dw Instruction_PLM_GotoY                                             ;84E0BA;
@@ -13422,19 +12461,15 @@ InstList_PLM_MissileTank_0:
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E0C8;
 
 InstList_PLM_MissileTank_1:
-    dw $0004                                                             ;84E0CA;
-    dw DrawInst_MissileTank_0                                            ;84E0CC;
-    dw $0004                                                             ;84E0CE;
-    dw DrawInst_MissileTank_1                                            ;84E0D0;
+    dw $0004,DrawInst_MissileTank_0                                      ;84E0CA;
+    dw $0004,DrawInst_MissileTank_1                                      ;84E0CE;
     dw Instruction_PLM_GotoY                                             ;84E0D2;
     dw InstList_PLM_MissileTank_1                                        ;84E0D4;
 
 InstList_PLM_MissileTank_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E0D6;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E0D8;
-    db $02                                                               ;84E0DA;
-    dw Instruction_PLM_CollectAmmo_MissileTank                           ;84E0DB;
-    dw $0005                                                             ;84E0DD;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E0D8;
+    dw Instruction_PLM_CollectAmmo_MissileTank,$0005                     ;84E0DB;
 
 InstList_PLM_MissileTank_3:
     dw Instruction_PLM_GotoY                                             ;84E0DF;
@@ -13449,19 +12484,15 @@ InstList_PLM_SuperMissileTank_0:
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E0ED;
 
 InstList_PLM_SuperMissileTank_1:
-    dw $0004                                                             ;84E0EF;
-    dw DrawInst_SuperMissileTank_0                                       ;84E0F1;
-    dw $0004                                                             ;84E0F3;
-    dw DrawInst_SuperMissileTank_1                                       ;84E0F5;
+    dw $0004,DrawInst_SuperMissileTank_0                                 ;84E0EF;
+    dw $0004,DrawInst_SuperMissileTank_1                                 ;84E0F3;
     dw Instruction_PLM_GotoY                                             ;84E0F7;
     dw InstList_PLM_SuperMissileTank_1                                   ;84E0F9;
 
 InstList_PLM_SuperMissileTank_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E0FB;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E0FD;
-    db $02                                                               ;84E0FF;
-    dw Instruction_PLM_CollectAmmo_SuperMissileTank                      ;84E100;
-    dw $0005                                                             ;84E102;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E0FD;
+    dw Instruction_PLM_CollectAmmo_SuperMissileTank,$0005                ;84E100;
 
 InstList_PLM_SuperMissileTank_3:
     dw Instruction_PLM_GotoY                                             ;84E104;
@@ -13476,19 +12507,15 @@ InstList_PLM_PowerBombTank_0:
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E112;
 
 InstList_PLM_PowerBombTank_1:
-    dw $0004                                                             ;84E114;
-    dw DrawInst_PowerBombTank_0                                          ;84E116;
-    dw $0004                                                             ;84E118;
-    dw DrawInst_PowerBombTank_1                                          ;84E11A;
+    dw $0004,DrawInst_PowerBombTank_0                                    ;84E114;
+    dw $0004,DrawInst_PowerBombTank_1                                    ;84E118;
     dw Instruction_PLM_GotoY                                             ;84E11C;
     dw InstList_PLM_PowerBombTank_1                                      ;84E11E;
 
 InstList_PLM_PowerBombTank_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E120;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E122;
-    db $02                                                               ;84E124;
-    dw Instruction_PLM_CollectAmmo_PowerBombTank                         ;84E125;
-    dw $0005                                                             ;84E127;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E122;
+    dw Instruction_PLM_CollectAmmo_PowerBombTank,$0005                   ;84E125;
 
 InstList_PLM_PowerBombTank_3:
     dw Instruction_PLM_GotoY                                             ;84E129;
@@ -13496,8 +12523,7 @@ InstList_PLM_PowerBombTank_3:
 
 InstList_PLM_Bombs_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E12D;
-    dw ItemPLMGFX_Bombs                                                  ;84E12F;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E131;
+    dw ItemPLMGFX_Bombs : db $00,$00,$00,$00,$00,$00,$00,$00             ;84E12F;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E139;
     dw InstList_PLM_Bombs_3                                              ;84E13B;
     dw Instruction_PLM_LinkInstruction_Y                                 ;84E13D;
@@ -13513,11 +12539,8 @@ InstList_PLM_Bombs_1:
 
 InstList_PLM_Bombs_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E14D;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E14F;
-    db $02                                                               ;84E151;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84E152;
-    dw $1000                                                             ;84E154;
-    db $13                                                               ;84E156;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E14F;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$1000 : db $13  ;84E152;
 
 InstList_PLM_Bombs_3:
     dw Instruction_PLM_GotoY                                             ;84E157;
@@ -13525,8 +12548,7 @@ InstList_PLM_Bombs_3:
 
 InstList_PLM_ChargeBeam_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E15B;
-    dw ItemPLMGFX_ChargeBeam                                             ;84E15D;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E15F;
+    dw ItemPLMGFX_ChargeBeam : db $00,$00,$00,$00,$00,$00,$00,$00        ;84E15D;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E167;
     dw InstList_PLM_ChargeBeam_3                                         ;84E169;
     dw Instruction_PLM_LinkInstruction_Y                                 ;84E16B;
@@ -13542,11 +12564,8 @@ InstList_PLM_ChargeBeam_1:
 
 InstList_PLM_ChargeBeam_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E17B;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E17D;
-    db $02                                                               ;84E17F;
-    dw Instruction_PLM_PickUpBeam_DisplayMessageBox                      ;84E180;
-    dw $1000                                                             ;84E182;
-    db $0E                                                               ;84E184;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E17D;
+    dw Instruction_PLM_PickUpBeam_DisplayMessageBox,$1000 : db $0E       ;84E180;
 
 InstList_PLM_ChargeBeam_3:
     dw Instruction_PLM_GotoY                                             ;84E185;
@@ -13554,8 +12573,7 @@ InstList_PLM_ChargeBeam_3:
 
 InstList_PLM_IceBeam_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E189;
-    dw ItemPLMGFX_IceBeam                                                ;84E18B;
-    db $00,$03,$00,$00,$00,$03,$00,$00                                   ;84E18D;
+    dw ItemPLMGFX_IceBeam : db $00,$03,$00,$00,$00,$03,$00,$00           ;84E18B;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E195;
     dw InstList_PLM_IceBeam_3                                            ;84E197;
     dw Instruction_PLM_LinkInstruction_Y                                 ;84E199;
@@ -13571,11 +12589,8 @@ InstList_PLM_IceBeam_1:
 
 InstList_PLM_IceBeam_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E1A9;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E1AB;
-    db $02                                                               ;84E1AD;
-    dw Instruction_PLM_PickUpBeam_DisplayMessageBox                      ;84E1AE;
-    dw $0002                                                             ;84E1B0;
-    db $0F                                                               ;84E1B2;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E1AB;
+    dw Instruction_PLM_PickUpBeam_DisplayMessageBox,$0002 : db $0F       ;84E1AE;
 
 InstList_PLM_IceBeam_3:
     dw Instruction_PLM_GotoY                                             ;84E1B3;
@@ -13583,8 +12598,7 @@ InstList_PLM_IceBeam_3:
 
 InstList_PLM_HiJumpBoots_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E1B7;
-    dw ItemPLMGFX_HiJumpBoots                                            ;84E1B9;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E1BB;
+    dw ItemPLMGFX_HiJumpBoots : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E1B9;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E1C3;
     dw InstList_PLM_HiJumpBoots_3                                        ;84E1C5;
     dw Instruction_PLM_LinkInstruction_Y                                 ;84E1C7;
@@ -13600,11 +12614,8 @@ InstList_PLM_HiJumpBoots_1:
 
 InstList_PLM_HiJumpBoots_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E1D7;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E1D9;
-    db $02                                                               ;84E1DB;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84E1DC;
-    dw $0100                                                             ;84E1DE;
-    db $0B                                                               ;84E1E0;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E1D9;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0100 : db $0B  ;84E1DC;
 
 InstList_PLM_HiJumpBoots_3:
     dw Instruction_PLM_GotoY                                             ;84E1E1;
@@ -13612,8 +12623,7 @@ InstList_PLM_HiJumpBoots_3:
 
 InstList_PLM_SpeedBooster_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E1E5;
-    dw ItemPLMGFX_SpeedBooster                                           ;84E1E7;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E1E9;
+    dw ItemPLMGFX_SpeedBooster : db $00,$00,$00,$00,$00,$00,$00,$00      ;84E1E7;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E1F1;
     dw InstList_PLM_SpeedBooster_3                                       ;84E1F3;
     dw Instruction_PLM_LinkInstruction_Y                                 ;84E1F5;
@@ -13629,11 +12639,8 @@ InstList_PLM_SpeedBooster_1:
 
 InstList_PLM_SpeedBooster_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E205;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E207;
-    db $02                                                               ;84E209;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84E20A;
-    dw $2000                                                             ;84E20C;
-    db $0D                                                               ;84E20E;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E207;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$2000 : db $0D  ;84E20A;
 
 InstList_PLM_SpeedBooster_3:
     dw Instruction_PLM_GotoY                                             ;84E20F;
@@ -13641,8 +12648,7 @@ InstList_PLM_SpeedBooster_3:
 
 InstList_PLM_WaveBeam_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E213;
-    dw ItemPLMGFX_WaveBeam                                               ;84E215;
-    db $00,$02,$00,$00,$00,$02,$00,$00                                   ;84E217;
+    dw ItemPLMGFX_WaveBeam : db $00,$02,$00,$00,$00,$02,$00,$00          ;84E215;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E21F;
     dw InstList_PLM_WaveBeam_3                                           ;84E221;
     dw Instruction_PLM_LinkInstruction_Y                                 ;84E223;
@@ -13658,11 +12664,8 @@ InstList_PLM_WaveBeam_1:
 
 InstList_PLM_WaveBeam_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E233;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E235;
-    db $02                                                               ;84E237;
-    dw Instruction_PLM_PickUpBeam_DisplayMessageBox                      ;84E238;
-    dw $0001                                                             ;84E23A;
-    db $10                                                               ;84E23C;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E235;
+    dw Instruction_PLM_PickUpBeam_DisplayMessageBox,$0001 : db $10       ;84E238;
 
 InstList_PLM_WaveBeam_3:
     dw Instruction_PLM_GotoY                                             ;84E23D;
@@ -13670,8 +12673,7 @@ InstList_PLM_WaveBeam_3:
 
 InstList_PLM_Spazer_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E241;
-    dw ItemPLMGFX_Spazer                                                 ;84E243;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E245;
+    dw ItemPLMGFX_Spazer : db $00,$00,$00,$00,$00,$00,$00,$00            ;84E243;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E24D;
     dw InstList_PLM_Spazer_3                                             ;84E24F;
     dw Instruction_PLM_LinkInstruction_Y                                 ;84E251;
@@ -13687,11 +12689,8 @@ InstList_PLM_Spazer_1:
 
 InstList_PLM_Spazer_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E261;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E263;
-    db $02                                                               ;84E265;
-    dw Instruction_PLM_PickUpBeam_DisplayMessageBox                      ;84E266;
-    dw $0004                                                             ;84E268;
-    db $11                                                               ;84E26A;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E263;
+    dw Instruction_PLM_PickUpBeam_DisplayMessageBox,$0004 : db $11       ;84E266;
 
 InstList_PLM_Spazer_3:
     dw Instruction_PLM_GotoY                                             ;84E26B;
@@ -13699,8 +12698,7 @@ InstList_PLM_Spazer_3:
 
 InstList_PLM_SpringBall_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E26F;
-    dw ItemPLMGFX_SpringBall                                             ;84E271;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E273;
+    dw ItemPLMGFX_SpringBall : db $00,$00,$00,$00,$00,$00,$00,$00        ;84E271;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E27B;
     dw InstList_PLM_SpringBall_3                                         ;84E27D;
     dw Instruction_PLM_LinkInstruction_Y                                 ;84E27F;
@@ -13716,11 +12714,8 @@ InstList_PLM_SpringBall_1:
 
 InstList_PLM_SpringBall_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E28F;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E291;
-    db $02                                                               ;84E293;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84E294;
-    dw $0002                                                             ;84E296;
-    db $08                                                               ;84E298;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E291;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0002 : db $08  ;84E294;
 
 InstList_PLM_SpringBall_3:
     dw Instruction_PLM_GotoY                                             ;84E299;
@@ -13733,8 +12728,7 @@ Instruction_PLM_ClearChargeBeamCounter:
 
 InstList_PLM_VariaSuit_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E2A1;
-    dw ItemPLMGFX_VariaSuit                                              ;84E2A3;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E2A5;
+    dw ItemPLMGFX_VariaSuit : db $00,$00,$00,$00,$00,$00,$00,$00         ;84E2A3;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E2AD;
     dw InstList_PLM_VariaSuit_3                                          ;84E2AF;
     dw Instruction_PLM_LinkInstruction_Y                                 ;84E2B1;
@@ -13750,12 +12744,9 @@ InstList_PLM_VariaSuit_1:
 
 InstList_PLM_VariaSuit_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E2C1;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E2C3;
-    db $02                                                               ;84E2C5;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E2C3;
     dw Instruction_PLM_ClearChargeBeamCounter                            ;84E2C6;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84E2C8;
-    dw $0001                                                             ;84E2CA;
-    db $07                                                               ;84E2CC;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0001 : db $07  ;84E2C8;
     dw Instruction_PLM_CallFunctionInY                                   ;84E2CD;
     dl VariaSuit_Pickup                                                  ;84E2CF;
 
@@ -13765,8 +12756,7 @@ InstList_PLM_VariaSuit_3:
 
 InstList_PLM_GravitySuit_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E2D6;
-    dw ItemPLMGFX_GravitySuit                                            ;84E2D8;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E2DA;
+    dw ItemPLMGFX_GravitySuit : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E2D8;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E2E2;
     dw InstList_PLM_GravitySuit_3                                        ;84E2E4;
     dw Instruction_PLM_LinkInstruction_Y                                 ;84E2E6;
@@ -13782,12 +12772,9 @@ InstList_PLM_GravitySuit_1:
 
 InstList_PLM_GravitySuit_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E2F6;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E2F8;
-    db $02                                                               ;84E2FA;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E2F8;
     dw Instruction_PLM_ClearChargeBeamCounter                            ;84E2FB;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84E2FD;
-    dw $0020                                                             ;84E2FF;
-    db $1A                                                               ;84E301;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0020 : db $1A  ;84E2FD;
     dw Instruction_PLM_CallFunctionInY                                   ;84E302;
     dl GravitySuit_Pickup                                                ;84E304;
 
@@ -13797,8 +12784,7 @@ InstList_PLM_GravitySuit_3:
 
 InstList_PLM_XrayScope_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E30B;
-    dw ItemPLMGFX_XrayScope                                              ;84E30D;
-    db $01,$01,$00,$00,$03,$03,$00,$00                                   ;84E30F;
+    dw ItemPLMGFX_XrayScope : db $01,$01,$00,$00,$03,$03,$00,$00         ;84E30D;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E317;
     dw InstList_PLM_XrayScope_3                                          ;84E319;
     dw Instruction_PLM_LinkInstruction_Y                                 ;84E31B;
@@ -13814,10 +12800,8 @@ InstList_PLM_XrayScope_1:
 
 InstList_PLM_XrayScope_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E32B;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E32D;
-    db $02                                                               ;84E32F;
-    dw Inst_PLM_PickUpEquipment_AddXrayToHUD_DisplayMessageBox           ;84E330;
-    dw $8000                                                             ;84E332;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E32D;
+    dw Inst_PLM_PickUpEquipment_AddXrayToHUD_DisplayMessageBox,$8000     ;84E330;
 
 InstList_PLM_XrayScope_3:
     dw Instruction_PLM_GotoY                                             ;84E334;
@@ -13825,8 +12809,7 @@ InstList_PLM_XrayScope_3:
 
 InstList_PLM_PlasmaBeam_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E338;
-    dw ItemPLMGFX_PlasmaBeam                                             ;84E33A;
-    db $00,$01,$00,$00,$00,$01,$00,$00                                   ;84E33C;
+    dw ItemPLMGFX_PlasmaBeam : db $00,$01,$00,$00,$00,$01,$00,$00        ;84E33A;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E344;
     dw InstList_PLM_PlasmaBeam_3                                         ;84E346;
     dw Instruction_PLM_LinkInstruction_Y                                 ;84E348;
@@ -13842,11 +12825,8 @@ InstList_PLM_PlasmaBeam_1:
 
 InstList_PLM_PlasmaBeam_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E358;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E35A;
-    db $02                                                               ;84E35C;
-    dw Instruction_PLM_PickUpBeam_DisplayMessageBox                      ;84E35D;
-    dw $0008                                                             ;84E35F;
-    db $12                                                               ;84E361;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E35A;
+    dw Instruction_PLM_PickUpBeam_DisplayMessageBox,$0008 : db $12       ;84E35D;
 
 InstList_PLM_PlasmaBeam_3:
     dw Instruction_PLM_GotoY                                             ;84E362;
@@ -13854,8 +12834,7 @@ InstList_PLM_PlasmaBeam_3:
 
 InstList_PLM_GrappleBeam_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E366;
-    dw ItemPLMGFX_GrappleBeam                                            ;84E368;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E36A;
+    dw ItemPLMGFX_GrappleBeam : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E368;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E372;
     dw InstList_PLM_GrappleBeam_3                                        ;84E374;
     dw Instruction_PLM_LinkInstruction_Y                                 ;84E376;
@@ -13871,10 +12850,8 @@ InstList_PLM_GrappleBeam_1:
 
 InstList_PLM_GrappleBeam_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E386;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E388;
-    db $02                                                               ;84E38A;
-    dw Inst_PLM_PickUpEquipment_AddGrappleHUD_DisplayMessageBox          ;84E38B;
-    dw $4000                                                             ;84E38D;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E388;
+    dw Inst_PLM_PickUpEquipment_AddGrappleHUD_DisplayMessageBox,$4000    ;84E38B;
 
 InstList_PLM_GrappleBeam_3:
     dw Instruction_PLM_GotoY                                             ;84E38F;
@@ -13882,8 +12859,7 @@ InstList_PLM_GrappleBeam_3:
 
 InstList_PLM_SpaceJump_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E393;
-    dw ItemPLMGFX_SpaceJump                                              ;84E395;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E397;
+    dw ItemPLMGFX_SpaceJump : db $00,$00,$00,$00,$00,$00,$00,$00         ;84E395;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E39F;
     dw InstList_PLM_SpaceJump_3                                          ;84E3A1;
     dw Instruction_PLM_LinkInstruction_Y                                 ;84E3A3;
@@ -13899,11 +12875,8 @@ InstList_PLM_SpaceJump_1:
 
 InstList_PLM_SpaceJump_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E3B3;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E3B5;
-    db $02                                                               ;84E3B7;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84E3B8;
-    dw $0200                                                             ;84E3BA;
-    db $0C                                                               ;84E3BC;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E3B5;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0200 : db $0C  ;84E3B8;
 
 InstList_PLM_SpaceJump_3:
     dw Instruction_PLM_GotoY                                             ;84E3BD;
@@ -13911,8 +12884,7 @@ InstList_PLM_SpaceJump_3:
 
 InstList_PLM_ScrewAttack_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E3C1;
-    dw ItemPLMGFX_ScrewAttack                                            ;84E3C3;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E3C5;
+    dw ItemPLMGFX_ScrewAttack : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E3C3;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E3CD;
     dw InstList_PLM_ScrewAttack_3                                        ;84E3CF;
     dw Instruction_PLM_LinkInstruction_Y                                 ;84E3D1;
@@ -13928,11 +12900,8 @@ InstList_PLM_ScrewAttack_1:
 
 InstList_PLM_ScrewAttack_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E3E1;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E3E3;
-    db $02                                                               ;84E3E5;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84E3E6;
-    dw $0008                                                             ;84E3E8;
-    db $0A                                                               ;84E3EA;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E3E3;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0008 : db $0A  ;84E3E6;
 
 InstList_PLM_ScrewAttack_3:
     dw Instruction_PLM_GotoY                                             ;84E3EB;
@@ -13940,8 +12909,7 @@ InstList_PLM_ScrewAttack_3:
 
 InstList_PLM_MorphBall_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E3EF;
-    dw ItemPLMGFX_MorphBall                                              ;84E3F1;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E3F3;
+    dw ItemPLMGFX_MorphBall : db $00,$00,$00,$00,$00,$00,$00,$00         ;84E3F1;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E3FB;
     dw InstList_PLM_MorphBall_3                                          ;84E3FD;
     dw Instruction_PLM_LinkInstruction_Y                                 ;84E3FF;
@@ -13957,11 +12925,8 @@ InstList_PLM_MorphBall_1:
 
 InstList_PLM_MorphBall_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E40F;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E411;
-    db $02                                                               ;84E413;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84E414;
-    dw $0004                                                             ;84E416;
-    db $09                                                               ;84E418;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E411;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0004 : db $09  ;84E414;
 
 InstList_PLM_MorphBall_3:
     dw Instruction_PLM_GotoY                                             ;84E419;
@@ -13969,8 +12934,7 @@ InstList_PLM_MorphBall_3:
 
 InstList_PLM_ReserveTank_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E41D;
-    dw ItemPLMGFX_ReserveTank                                            ;84E41F;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E421;
+    dw ItemPLMGFX_ReserveTank : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E41F;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E429;
     dw InstList_PLM_ReserveTank_3                                        ;84E42B;
     dw Instruction_PLM_LinkInstruction_Y                                 ;84E42D;
@@ -13986,10 +12950,8 @@ InstList_PLM_ReserveTank_1:
 
 InstList_PLM_ReserveTank_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E43D;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E43F;
-    db $02                                                               ;84E441;
-    dw Instruction_PLM_CollectHealth_ReserveTank                         ;84E442;
-    dw $0064                                                             ;84E444;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E43F;
+    dw Instruction_PLM_CollectHealth_ReserveTank,$0064                   ;84E442;
 
 InstList_PLM_ReserveTank_3:
     dw Instruction_PLM_GotoY                                             ;84E446;
@@ -14006,27 +12968,21 @@ InstList_PLM_EnergyTankChozoOrb_0:
     dw InstList_PLM_EnergyTankChozoOrb_2                                 ;84E458;
     dw Instruction_PLM_PreInstruction_inY                                ;84E45A;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E45C;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E45E;
-    db $16                                                               ;84E460;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E45E;
 
 InstList_PLM_EnergyTankChozoOrb_1:
-    dw $0004                                                             ;84E461;
-    dw DrawInst_EnergyTank_0                                             ;84E463;
-    dw $0004                                                             ;84E465;
-    dw DrawInst_EnergyTank_1                                             ;84E467;
+    dw $0004,DrawInst_EnergyTank_0                                       ;84E461;
+    dw $0004,DrawInst_EnergyTank_1                                       ;84E465;
     dw Instruction_PLM_GotoY                                             ;84E469;
     dw InstList_PLM_EnergyTankChozoOrb_1                                 ;84E46B;
 
 InstList_PLM_EnergyTankChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E46D;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E46F;
-    db $02                                                               ;84E471;
-    dw Instruction_PLM_CollectHealth_EnergyTank                          ;84E472;
-    dw $0064                                                             ;84E474;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E46F;
+    dw Instruction_PLM_CollectHealth_EnergyTank,$0064                    ;84E472;
 
 InstList_PLM_EnergyTankChozoOrb_3:
-    dw $0001                                                             ;84E476;
-    dw DrawInst_ItemChozoOrb                                             ;84E478;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E476;
     dw Instruction_PLM_Delete                                            ;84E47A;
 
 InstList_PLM_MissileTankChozoOrb_0:
@@ -14040,27 +12996,21 @@ InstList_PLM_MissileTankChozoOrb_0:
     dw InstList_PLM_MissileTankChozoOrb_2                                ;84E48A;
     dw Instruction_PLM_PreInstruction_inY                                ;84E48C;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E48E;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E490;
-    db $16                                                               ;84E492;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E490;
 
 InstList_PLM_MissileTankChozoOrb_1:
-    dw $0004                                                             ;84E493;
-    dw DrawInst_MissileTank_0                                            ;84E495;
-    dw $0004                                                             ;84E497;
-    dw DrawInst_MissileTank_1                                            ;84E499;
+    dw $0004,DrawInst_MissileTank_0                                      ;84E493;
+    dw $0004,DrawInst_MissileTank_1                                      ;84E497;
     dw Instruction_PLM_GotoY                                             ;84E49B;
     dw InstList_PLM_MissileTankChozoOrb_1                                ;84E49D;
 
 InstList_PLM_MissileTankChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E49F;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E4A1;
-    db $02                                                               ;84E4A3;
-    dw Instruction_PLM_CollectAmmo_MissileTank                           ;84E4A4;
-    dw $0005                                                             ;84E4A6;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E4A1;
+    dw Instruction_PLM_CollectAmmo_MissileTank,$0005                     ;84E4A4;
 
 InstList_PLM_MissileTankChozoOrb_3:
-    dw $0001                                                             ;84E4A8;
-    dw DrawInst_ItemChozoOrb                                             ;84E4AA;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E4A8;
     dw Instruction_PLM_Delete                                            ;84E4AC;
 
 InstList_PLM_SuperMissileTankChozoOrb_0:
@@ -14074,27 +13024,21 @@ InstList_PLM_SuperMissileTankChozoOrb_0:
     dw InstList_PLM_SuperMissileTankChozoOrb_2                           ;84E4BC;
     dw Instruction_PLM_PreInstruction_inY                                ;84E4BE;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E4C0;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E4C2;
-    db $16                                                               ;84E4C4;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E4C2;
 
 InstList_PLM_SuperMissileTankChozoOrb_1:
-    dw $0004                                                             ;84E4C5;
-    dw DrawInst_SuperMissileTank_0                                       ;84E4C7;
-    dw $0004                                                             ;84E4C9;
-    dw DrawInst_SuperMissileTank_1                                       ;84E4CB;
+    dw $0004,DrawInst_SuperMissileTank_0                                 ;84E4C5;
+    dw $0004,DrawInst_SuperMissileTank_1                                 ;84E4C9;
     dw Instruction_PLM_GotoY                                             ;84E4CD;
     dw InstList_PLM_SuperMissileTankChozoOrb_1                           ;84E4CF;
 
 InstList_PLM_SuperMissileTankChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E4D1;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E4D3;
-    db $02                                                               ;84E4D5;
-    dw Instruction_PLM_CollectAmmo_SuperMissileTank                      ;84E4D6;
-    dw $0005                                                             ;84E4D8;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E4D3;
+    dw Instruction_PLM_CollectAmmo_SuperMissileTank,$0005                ;84E4D6;
 
 InstList_PLM_SuperMissileTankChozoOrb_3:
-    dw $0001                                                             ;84E4DA;
-    dw DrawInst_ItemChozoOrb                                             ;84E4DC;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E4DA;
     dw Instruction_PLM_Delete                                            ;84E4DE;
 
 InstList_PLM_PowerBombTankChozoOrb_0:
@@ -14108,33 +13052,26 @@ InstList_PLM_PowerBombTankChozoOrb_0:
     dw InstList_PLM_PowerBombTankChozoOrb_2                              ;84E4EE;
     dw Instruction_PLM_PreInstruction_inY                                ;84E4F0;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E4F2;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E4F4;
-    db $16                                                               ;84E4F6;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E4F4;
 
 InstList_PLM_PowerBombTankChozoOrb_1:
-    dw $0004                                                             ;84E4F7;
-    dw DrawInst_PowerBombTank_0                                          ;84E4F9;
-    dw $0004                                                             ;84E4FB;
-    dw DrawInst_PowerBombTank_1                                          ;84E4FD;
+    dw $0004,DrawInst_PowerBombTank_0                                    ;84E4F7;
+    dw $0004,DrawInst_PowerBombTank_1                                    ;84E4FB;
     dw Instruction_PLM_GotoY                                             ;84E4FF;
     dw InstList_PLM_PowerBombTankChozoOrb_1                              ;84E501;
 
 InstList_PLM_PowerBombTankChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E503;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E505;
-    db $02                                                               ;84E507;
-    dw Instruction_PLM_CollectAmmo_PowerBombTank                         ;84E508;
-    dw $0005                                                             ;84E50A;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E505;
+    dw Instruction_PLM_CollectAmmo_PowerBombTank,$0005                   ;84E508;
 
 InstList_PLM_PowerBombTankChozoOrb_3:
-    dw $0001                                                             ;84E50C;
-    dw DrawInst_ItemChozoOrb                                             ;84E50E;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E50C;
     dw Instruction_PLM_Delete                                            ;84E510;
 
 InstList_PLM_BombsChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E512;
-    dw ItemPLMGFX_Bombs                                                  ;84E514;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E516;
+    dw ItemPLMGFX_Bombs : db $00,$00,$00,$00,$00,$00,$00,$00             ;84E514;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E51E;
     dw InstList_PLM_BombsChozoOrb_3                                      ;84E520;
     dw Instruction_PLM_Call_Y                                            ;84E522;
@@ -14145,8 +13082,7 @@ InstList_PLM_BombsChozoOrb_0:
     dw InstList_PLM_BombsChozoOrb_2                                      ;84E52C;
     dw Instruction_PLM_PreInstruction_inY                                ;84E52E;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E530;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E532;
-    db $16                                                               ;84E534;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E532;
 
 InstList_PLM_BombsChozoOrb_1:
     dw Instruction_PLM_DrawItemFrame0                                    ;84E535;
@@ -14156,21 +13092,16 @@ InstList_PLM_BombsChozoOrb_1:
 
 InstList_PLM_BombsChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E53D;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E53F;
-    db $02                                                               ;84E541;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84E542;
-    dw $1000                                                             ;84E544;
-    db $13                                                               ;84E546;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E53F;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$1000 : db $13  ;84E542;
 
 InstList_PLM_BombsChozoOrb_3:
-    dw $0001                                                             ;84E547;
-    dw DrawInst_ItemChozoOrb                                             ;84E549;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E547;
     dw Instruction_PLM_Delete                                            ;84E54B;
 
 InstList_PLM_ChargeBeamChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E54D;
-    dw ItemPLMGFX_ChargeBeam                                             ;84E54F;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E551;
+    dw ItemPLMGFX_ChargeBeam : db $00,$00,$00,$00,$00,$00,$00,$00        ;84E54F;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E559;
     dw InstList_PLM_ChargeBeamChozoOrb_3                                 ;84E55B;
     dw Instruction_PLM_Call_Y                                            ;84E55D;
@@ -14181,8 +13112,7 @@ InstList_PLM_ChargeBeamChozoOrb_0:
     dw InstList_PLM_ChargeBeamChozoOrb_2                                 ;84E567;
     dw Instruction_PLM_PreInstruction_inY                                ;84E569;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E56B;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E56D;
-    db $16                                                               ;84E56F;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E56D;
 
 InstList_PLM_ChargeBeamChozoOrb_1:
     dw Instruction_PLM_DrawItemFrame0                                    ;84E570;
@@ -14192,21 +13122,16 @@ InstList_PLM_ChargeBeamChozoOrb_1:
 
 InstList_PLM_ChargeBeamChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E578;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E57A;
-    db $02                                                               ;84E57C;
-    dw Instruction_PLM_PickUpBeam_DisplayMessageBox                      ;84E57D;
-    dw $1000                                                             ;84E57F;
-    db $0E                                                               ;84E581;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E57A;
+    dw Instruction_PLM_PickUpBeam_DisplayMessageBox,$1000 : db $0E       ;84E57D;
 
 InstList_PLM_ChargeBeamChozoOrb_3:
-    dw $0001                                                             ;84E582;
-    dw DrawInst_ItemChozoOrb                                             ;84E584;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E582;
     dw Instruction_PLM_Delete                                            ;84E586;
 
 InstList_PLM_IceBeamChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E588;
-    dw ItemPLMGFX_IceBeam                                                ;84E58A;
-    db $00,$03,$00,$00,$00,$03,$00,$00                                   ;84E58C;
+    dw ItemPLMGFX_IceBeam : db $00,$03,$00,$00,$00,$03,$00,$00           ;84E58A;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E594;
     dw InstList_PLM_IceBeamChozoOrb_3                                    ;84E596;
     dw Instruction_PLM_Call_Y                                            ;84E598;
@@ -14217,8 +13142,7 @@ InstList_PLM_IceBeamChozoOrb_0:
     dw InstList_PLM_IceBeamChozoOrb_2                                    ;84E5A2;
     dw Instruction_PLM_PreInstruction_inY                                ;84E5A4;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E5A6;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E5A8;
-    db $16                                                               ;84E5AA;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E5A8;
 
 InstList_PLM_IceBeamChozoOrb_1:
     dw Instruction_PLM_DrawItemFrame0                                    ;84E5AB;
@@ -14228,21 +13152,16 @@ InstList_PLM_IceBeamChozoOrb_1:
 
 InstList_PLM_IceBeamChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E5B3;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E5B5;
-    db $02                                                               ;84E5B7;
-    dw Instruction_PLM_PickUpBeam_DisplayMessageBox                      ;84E5B8;
-    dw $0002                                                             ;84E5BA;
-    db $0F                                                               ;84E5BC;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E5B5;
+    dw Instruction_PLM_PickUpBeam_DisplayMessageBox,$0002 : db $0F       ;84E5B8;
 
 InstList_PLM_IceBeamChozoOrb_3:
-    dw $0001                                                             ;84E5BD;
-    dw DrawInst_ItemChozoOrb                                             ;84E5BF;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E5BD;
     dw Instruction_PLM_Delete                                            ;84E5C1;
 
 InstList_PLM_HiJumpBootsChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E5C3;
-    dw ItemPLMGFX_HiJumpBoots                                            ;84E5C5;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E5C7;
+    dw ItemPLMGFX_HiJumpBoots : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E5C5;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E5CF;
     dw InstList_PLM_HiJumpBootsChozoOrb_3                                ;84E5D1;
     dw Instruction_PLM_Call_Y                                            ;84E5D3;
@@ -14253,8 +13172,7 @@ InstList_PLM_HiJumpBootsChozoOrb_0:
     dw InstList_PLM_HiJumpBootsChozoOrb_2                                ;84E5DD;
     dw Instruction_PLM_PreInstruction_inY                                ;84E5DF;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E5E1;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E5E3;
-    db $16                                                               ;84E5E5;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E5E3;
 
 InstList_PLM_HiJumpBootsChozoOrb_1:
     dw Instruction_PLM_DrawItemFrame0                                    ;84E5E6;
@@ -14264,21 +13182,16 @@ InstList_PLM_HiJumpBootsChozoOrb_1:
 
 InstList_PLM_HiJumpBootsChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E5EE;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E5F0;
-    db $02                                                               ;84E5F2;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84E5F3;
-    dw $0100                                                             ;84E5F5;
-    db $0B                                                               ;84E5F7;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E5F0;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0100 : db $0B  ;84E5F3;
 
 InstList_PLM_HiJumpBootsChozoOrb_3:
-    dw $0001                                                             ;84E5F8;
-    dw DrawInst_ItemChozoOrb                                             ;84E5FA;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E5F8;
     dw Instruction_PLM_Delete                                            ;84E5FC;
 
 InstList_PLM_SpeedBoosterChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E5FE;
-    dw ItemPLMGFX_SpeedBooster                                           ;84E600;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E602;
+    dw ItemPLMGFX_SpeedBooster : db $00,$00,$00,$00,$00,$00,$00,$00      ;84E600;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E60A;
     dw InstList_PLM_SpeedBoosterChozoOrb_4                               ;84E60C;
     dw Instruction_PLM_Call_Y                                            ;84E60E;
@@ -14289,8 +13202,7 @@ InstList_PLM_SpeedBoosterChozoOrb_0:
     dw InstList_PLM_SpeedBoosterChozoOrb_2                               ;84E618;
     dw Instruction_PLM_PreInstruction_inY                                ;84E61A;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E61C;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E61E;
-    db $16                                                               ;84E620;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E61E;
 
 InstList_PLM_SpeedBoosterChozoOrb_1:
     dw Instruction_PLM_DrawItemFrame0                                    ;84E621;
@@ -14300,18 +13212,14 @@ InstList_PLM_SpeedBoosterChozoOrb_1:
 
 InstList_PLM_SpeedBoosterChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E629;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E62B;
-    db $02                                                               ;84E62D;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84E62E;
-    dw $2000                                                             ;84E630;
-    db $0D                                                               ;84E632;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E62B;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$2000 : db $0D  ;84E62E;
 
 InstList_PLM_SpeedBoosterChozoOrb_3:
     dw Instruction_PLM_FXYVelocity_FFE0                                  ;84E633;
 
 InstList_PLM_SpeedBoosterChozoOrb_4:
-    dw $0001                                                             ;84E635;
-    dw DrawInst_ItemChozoOrb                                             ;84E637;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E635;
     dw Instruction_PLM_Delete                                            ;84E639;
 
 Instruction_PLM_FXYVelocity_FFE0:
@@ -14322,8 +13230,7 @@ Instruction_PLM_FXYVelocity_FFE0:
 
 InstList_PLM_WaveBeamChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E642;
-    dw ItemPLMGFX_WaveBeam                                               ;84E644;
-    db $00,$02,$00,$00,$00,$02,$00,$00                                   ;84E646;
+    dw ItemPLMGFX_WaveBeam : db $00,$02,$00,$00,$00,$02,$00,$00          ;84E644;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E64E;
     dw InstList_PLM_WaveBeamChozoOrb_3                                   ;84E650;
     dw Instruction_PLM_Call_Y                                            ;84E652;
@@ -14334,8 +13241,7 @@ InstList_PLM_WaveBeamChozoOrb_0:
     dw InstList_PLM_WaveBeamChozoOrb_2                                   ;84E65C;
     dw Instruction_PLM_PreInstruction_inY                                ;84E65E;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E660;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E662;
-    db $16                                                               ;84E664;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E662;
 
 InstList_PLM_WaveBeamChozoOrb_1:
     dw Instruction_PLM_DrawItemFrame0                                    ;84E665;
@@ -14345,21 +13251,16 @@ InstList_PLM_WaveBeamChozoOrb_1:
 
 InstList_PLM_WaveBeamChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E66D;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E66F;
-    db $02                                                               ;84E671;
-    dw Instruction_PLM_PickUpBeam_DisplayMessageBox                      ;84E672;
-    dw $0001                                                             ;84E674;
-    db $10                                                               ;84E676;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E66F;
+    dw Instruction_PLM_PickUpBeam_DisplayMessageBox,$0001 : db $10       ;84E672;
 
 InstList_PLM_WaveBeamChozoOrb_3:
-    dw $0001                                                             ;84E677;
-    dw DrawInst_ItemChozoOrb                                             ;84E679;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E677;
     dw Instruction_PLM_Delete                                            ;84E67B;
 
 InstList_PLM_SpazerChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E67D;
-    dw ItemPLMGFX_Spazer                                                 ;84E67F;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E681;
+    dw ItemPLMGFX_Spazer : db $00,$00,$00,$00,$00,$00,$00,$00            ;84E67F;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E689;
     dw InstList_PLM_SpazerChozoOrb_3                                     ;84E68B;
     dw Instruction_PLM_Call_Y                                            ;84E68D;
@@ -14370,8 +13271,7 @@ InstList_PLM_SpazerChozoOrb_0:
     dw InstList_PLM_SpazerChozoOrb_2                                     ;84E697;
     dw Instruction_PLM_PreInstruction_inY                                ;84E699;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E69B;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E69D;
-    db $16                                                               ;84E69F;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E69D;
 
 InstList_PLM_SpazerChozoOrb_1:
     dw Instruction_PLM_DrawItemFrame0                                    ;84E6A0;
@@ -14381,21 +13281,16 @@ InstList_PLM_SpazerChozoOrb_1:
 
 InstList_PLM_SpazerChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E6A8;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E6AA;
-    db $02                                                               ;84E6AC;
-    dw Instruction_PLM_PickUpBeam_DisplayMessageBox                      ;84E6AD;
-    dw $0004                                                             ;84E6AF;
-    db $11                                                               ;84E6B1;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E6AA;
+    dw Instruction_PLM_PickUpBeam_DisplayMessageBox,$0004 : db $11       ;84E6AD;
 
 InstList_PLM_SpazerChozoOrb_3:
-    dw $0001                                                             ;84E6B2;
-    dw DrawInst_ItemChozoOrb                                             ;84E6B4;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E6B2;
     dw Instruction_PLM_Delete                                            ;84E6B6;
 
 InstList_PLM_SpringBallChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E6B8;
-    dw ItemPLMGFX_SpringBall                                             ;84E6BA;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E6BC;
+    dw ItemPLMGFX_SpringBall : db $00,$00,$00,$00,$00,$00,$00,$00        ;84E6BA;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E6C4;
     dw InstList_PLM_SpringBallChozoOrb_3                                 ;84E6C6;
     dw Instruction_PLM_Call_Y                                            ;84E6C8;
@@ -14406,8 +13301,7 @@ InstList_PLM_SpringBallChozoOrb_0:
     dw InstList_PLM_SpringBallChozoOrb_2                                 ;84E6D2;
     dw Instruction_PLM_PreInstruction_inY                                ;84E6D4;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E6D6;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E6D8;
-    db $16                                                               ;84E6DA;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E6D8;
 
 InstList_PLM_SpringBallChozoOrb_1:
     dw Instruction_PLM_DrawItemFrame0                                    ;84E6DB;
@@ -14417,21 +13311,16 @@ InstList_PLM_SpringBallChozoOrb_1:
 
 InstList_PLM_SpringBallChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E6E3;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E6E5;
-    db $02                                                               ;84E6E7;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84E6E8;
-    dw $0002                                                             ;84E6EA;
-    db $08                                                               ;84E6EC;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E6E5;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0002 : db $08  ;84E6E8;
 
 InstList_PLM_SpringBallChozoOrb_3:
-    dw $0001                                                             ;84E6ED;
-    dw DrawInst_ItemChozoOrb                                             ;84E6EF;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E6ED;
     dw Instruction_PLM_Delete                                            ;84E6F1;
 
 InstList_PLM_VariaSuitChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E6F3;
-    dw ItemPLMGFX_VariaSuit                                              ;84E6F5;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E6F7;
+    dw ItemPLMGFX_VariaSuit : db $00,$00,$00,$00,$00,$00,$00,$00         ;84E6F5;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E6FF;
     dw InstList_PLM_VariaSuitChozoOrb_3                                  ;84E701;
     dw Instruction_PLM_Call_Y                                            ;84E703;
@@ -14442,8 +13331,7 @@ InstList_PLM_VariaSuitChozoOrb_0:
     dw InstList_PLM_VariaSuitChozoOrb_2                                  ;84E70D;
     dw Instruction_PLM_PreInstruction_inY                                ;84E70F;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E711;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E713;
-    db $16                                                               ;84E715;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E713;
 
 InstList_PLM_VariaSuitChozoOrb_1:
     dw Instruction_PLM_DrawItemFrame0                                    ;84E716;
@@ -14453,24 +13341,19 @@ InstList_PLM_VariaSuitChozoOrb_1:
 
 InstList_PLM_VariaSuitChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E71E;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E720;
-    db $02                                                               ;84E722;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E720;
     dw Instruction_PLM_ClearChargeBeamCounter                            ;84E723;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84E725;
-    dw $0001                                                             ;84E727;
-    db $07                                                               ;84E729;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0001 : db $07  ;84E725;
     dw Instruction_PLM_CallFunctionInY                                   ;84E72A;
     dl VariaSuit_Pickup                                                  ;84E72C;
 
 InstList_PLM_VariaSuitChozoOrb_3:
-    dw $0001                                                             ;84E72F;
-    dw DrawInst_ItemChozoOrb                                             ;84E731;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E72F;
     dw Instruction_PLM_Delete                                            ;84E733;
 
 InstList_PLM_GravitySuitChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E735;
-    dw ItemPLMGFX_GravitySuit                                            ;84E737;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E739;
+    dw ItemPLMGFX_GravitySuit : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E737;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E741;
     dw InstList_PLM_GravitySuitChozoOrb_3                                ;84E743;
     dw Instruction_PLM_Call_Y                                            ;84E745;
@@ -14481,8 +13364,7 @@ InstList_PLM_GravitySuitChozoOrb_0:
     dw InstList_PLM_GravitySuitChozoOrb_2                                ;84E74F;
     dw Instruction_PLM_PreInstruction_inY                                ;84E751;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E753;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E755;
-    db $16                                                               ;84E757;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E755;
 
 InstList_PLM_GravitySuitChozoOrb_1:
     dw Instruction_PLM_DrawItemFrame0                                    ;84E758;
@@ -14492,24 +13374,19 @@ InstList_PLM_GravitySuitChozoOrb_1:
 
 InstList_PLM_GravitySuitChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E760;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E762;
-    db $02                                                               ;84E764;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E762;
     dw Instruction_PLM_ClearChargeBeamCounter                            ;84E765;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84E767;
-    dw $0020                                                             ;84E769;
-    db $1A                                                               ;84E76B;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0020 : db $1A  ;84E767;
     dw Instruction_PLM_CallFunctionInY                                   ;84E76C;
     dl GravitySuit_Pickup                                                ;84E76E;
 
 InstList_PLM_GravitySuitChozoOrb_3:
-    dw $0001                                                             ;84E771;
-    dw DrawInst_ItemChozoOrb                                             ;84E773;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E771;
     dw Instruction_PLM_Delete                                            ;84E775;
 
 InstList_PLM_XrayScopeChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E777;
-    dw ItemPLMGFX_XrayScope                                              ;84E779;
-    db $01,$01,$00,$00,$03,$03,$00,$00                                   ;84E77B;
+    dw ItemPLMGFX_XrayScope : db $01,$01,$00,$00,$03,$03,$00,$00         ;84E779;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E783;
     dw InstList_PLM_XrayScopeChozoOrb_3                                  ;84E785;
     dw Instruction_PLM_Call_Y                                            ;84E787;
@@ -14520,8 +13397,7 @@ InstList_PLM_XrayScopeChozoOrb_0:
     dw InstList_PLM_XrayScopeChozoOrb_2                                  ;84E791;
     dw Instruction_PLM_PreInstruction_inY                                ;84E793;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E795;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E797;
-    db $16                                                               ;84E799;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E797;
 
 InstList_PLM_XrayScopeChozoOrb_1:
     dw Instruction_PLM_DrawItemFrame0                                    ;84E79A;
@@ -14531,20 +13407,16 @@ InstList_PLM_XrayScopeChozoOrb_1:
 
 InstList_PLM_XrayScopeChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E7A2;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E7A4;
-    db $02                                                               ;84E7A6;
-    dw Inst_PLM_PickUpEquipment_AddXrayToHUD_DisplayMessageBox           ;84E7A7;
-    dw $8000                                                             ;84E7A9;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E7A4;
+    dw Inst_PLM_PickUpEquipment_AddXrayToHUD_DisplayMessageBox,$8000     ;84E7A7;
 
 InstList_PLM_XrayScopeChozoOrb_3:
-    dw $0001                                                             ;84E7AB;
-    dw DrawInst_ItemChozoOrb                                             ;84E7AD;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E7AB;
     dw Instruction_PLM_Delete                                            ;84E7AF;
 
 InstList_PLM_PlasmaBeamChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E7B1;
-    dw ItemPLMGFX_PlasmaBeam                                             ;84E7B3;
-    db $00,$01,$00,$00,$00,$01,$00,$00                                   ;84E7B5;
+    dw ItemPLMGFX_PlasmaBeam : db $00,$01,$00,$00,$00,$01,$00,$00        ;84E7B3;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E7BD;
     dw InstList_PLM_PlasmaBeamChozoOrb_3                                 ;84E7BF;
     dw Instruction_PLM_Call_Y                                            ;84E7C1;
@@ -14555,8 +13427,7 @@ InstList_PLM_PlasmaBeamChozoOrb_0:
     dw InstList_PLM_PlasmaBeamChozoOrb_2                                 ;84E7CB;
     dw Instruction_PLM_PreInstruction_inY                                ;84E7CD;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E7CF;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E7D1;
-    db $16                                                               ;84E7D3;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E7D1;
 
 InstList_PLM_PlasmaBeamChozoOrb_1:
     dw Instruction_PLM_DrawItemFrame0                                    ;84E7D4;
@@ -14566,21 +13437,16 @@ InstList_PLM_PlasmaBeamChozoOrb_1:
 
 InstList_PLM_PlasmaBeamChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E7DC;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E7DE;
-    db $02                                                               ;84E7E0;
-    dw Instruction_PLM_PickUpBeam_DisplayMessageBox                      ;84E7E1;
-    dw $0008                                                             ;84E7E3;
-    db $12                                                               ;84E7E5;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E7DE;
+    dw Instruction_PLM_PickUpBeam_DisplayMessageBox,$0008 : db $12       ;84E7E1;
 
 InstList_PLM_PlasmaBeamChozoOrb_3:
-    dw $0001                                                             ;84E7E6;
-    dw DrawInst_ItemChozoOrb                                             ;84E7E8;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E7E6;
     dw Instruction_PLM_Delete                                            ;84E7EA;
 
 InstList_PLM_GrappleBeamChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E7EC;
-    dw ItemPLMGFX_GrappleBeam                                            ;84E7EE;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E7F0;
+    dw ItemPLMGFX_GrappleBeam : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E7EE;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E7F8;
     dw InstList_PLM_GrappleBeamChozoOrb_3                                ;84E7FA;
     dw Instruction_PLM_Call_Y                                            ;84E7FC;
@@ -14591,8 +13457,7 @@ InstList_PLM_GrappleBeamChozoOrb_0:
     dw InstList_PLM_GrappleBeamChozoOrb_2                                ;84E806;
     dw Instruction_PLM_PreInstruction_inY                                ;84E808;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E80A;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E80C;
-    db $16                                                               ;84E80E;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E80C;
 
 InstList_PLM_GrappleBeamChozoOrb_1:
     dw Instruction_PLM_DrawItemFrame0                                    ;84E80F;
@@ -14602,20 +13467,16 @@ InstList_PLM_GrappleBeamChozoOrb_1:
 
 InstList_PLM_GrappleBeamChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E817;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E819;
-    db $02                                                               ;84E81B;
-    dw Inst_PLM_PickUpEquipment_AddGrappleHUD_DisplayMessageBox          ;84E81C;
-    dw $4000                                                             ;84E81E;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E819;
+    dw Inst_PLM_PickUpEquipment_AddGrappleHUD_DisplayMessageBox,$4000    ;84E81C;
 
 InstList_PLM_GrappleBeamChozoOrb_3:
-    dw $0001                                                             ;84E820;
-    dw DrawInst_ItemChozoOrb                                             ;84E822;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E820;
     dw Instruction_PLM_Delete                                            ;84E824;
 
 InstList_PLM_SpaceJumpChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E826;
-    dw ItemPLMGFX_SpaceJump                                              ;84E828;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E82A;
+    dw ItemPLMGFX_SpaceJump : db $00,$00,$00,$00,$00,$00,$00,$00         ;84E828;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E832;
     dw InstList_PLM_SpaceJumpChozoOrb_3                                  ;84E834;
     dw Instruction_PLM_Call_Y                                            ;84E836;
@@ -14626,8 +13487,7 @@ InstList_PLM_SpaceJumpChozoOrb_0:
     dw InstList_PLM_SpaceJumpChozoOrb_2                                  ;84E840;
     dw Instruction_PLM_PreInstruction_inY                                ;84E842;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E844;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E846;
-    db $16                                                               ;84E848;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E846;
 
 InstList_PLM_SpaceJumpChozoOrb_1:
     dw Instruction_PLM_DrawItemFrame0                                    ;84E849;
@@ -14637,21 +13497,16 @@ InstList_PLM_SpaceJumpChozoOrb_1:
 
 InstList_PLM_SpaceJumpChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E851;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E853;
-    db $02                                                               ;84E855;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84E856;
-    dw $0200                                                             ;84E858;
-    db $0C                                                               ;84E85A;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E853;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0200 : db $0C  ;84E856;
 
 InstList_PLM_SpaceJumpChozoOrb_3:
-    dw $0001                                                             ;84E85B;
-    dw DrawInst_ItemChozoOrb                                             ;84E85D;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E85B;
     dw Instruction_PLM_Delete                                            ;84E85F;
 
 InstList_PLM_ScrewAttackChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E861;
-    dw ItemPLMGFX_ScrewAttack                                            ;84E863;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E865;
+    dw ItemPLMGFX_ScrewAttack : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E863;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E86D;
     dw InstList_PLM_ScrewAttackChozoOrb_3                                ;84E86F;
     dw Instruction_PLM_Call_Y                                            ;84E871;
@@ -14662,8 +13517,7 @@ InstList_PLM_ScrewAttackChozoOrb_0:
     dw InstList_PLM_ScrewAttackChozoOrb_2                                ;84E87B;
     dw Instruction_PLM_PreInstruction_inY                                ;84E87D;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E87F;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E881;
-    db $16                                                               ;84E883;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E881;
 
 InstList_PLM_ScrewAttackChozoOrb_1:
     dw Instruction_PLM_DrawItemFrame0                                    ;84E884;
@@ -14673,21 +13527,16 @@ InstList_PLM_ScrewAttackChozoOrb_1:
 
 InstList_PLM_ScrewAttackChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E88C;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E88E;
-    db $02                                                               ;84E890;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84E891;
-    dw $0008                                                             ;84E893;
-    db $0A                                                               ;84E895;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E88E;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0008 : db $0A  ;84E891;
 
 InstList_PLM_ScrewAttackChozoOrb_3:
-    dw $0001                                                             ;84E896;
-    dw DrawInst_ItemChozoOrb                                             ;84E898;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E896;
     dw Instruction_PLM_Delete                                            ;84E89A;
 
 InstList_PLM_MorphBallChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E89C;
-    dw ItemPLMGFX_MorphBall                                              ;84E89E;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E8A0;
+    dw ItemPLMGFX_MorphBall : db $00,$00,$00,$00,$00,$00,$00,$00         ;84E89E;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E8A8;
     dw InstList_PLM_MorphBallChozoOrb_3                                  ;84E8AA;
     dw Instruction_PLM_Call_Y                                            ;84E8AC;
@@ -14698,8 +13547,7 @@ InstList_PLM_MorphBallChozoOrb_0:
     dw InstList_PLM_MorphBallChozoOrb_2                                  ;84E8B6;
     dw Instruction_PLM_PreInstruction_inY                                ;84E8B8;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E8BA;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E8BC;
-    db $16                                                               ;84E8BE;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E8BC;
 
 InstList_PLM_MorphBallChozoOrb_1:
     dw Instruction_PLM_DrawItemFrame0                                    ;84E8BF;
@@ -14709,21 +13557,16 @@ InstList_PLM_MorphBallChozoOrb_1:
 
 InstList_PLM_MorphBallChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E8C7;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E8C9;
-    db $02                                                               ;84E8CB;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84E8CC;
-    dw $0002                                                             ;84E8CE;
-    db $09                                                               ;84E8D0;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E8C9;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0002 : db $09  ;84E8CC;
 
 InstList_PLM_MorphBallChozoOrb_3:
-    dw $0001                                                             ;84E8D1;
-    dw DrawInst_ItemChozoOrb                                             ;84E8D3;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E8D1;
     dw Instruction_PLM_Delete                                            ;84E8D5;
 
 InstList_PLM_ReserveTankChozoOrb_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E8D7;
-    dw ItemPLMGFX_ReserveTank                                            ;84E8D9;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E8DB;
+    dw ItemPLMGFX_ReserveTank : db $00,$00,$00,$00,$00,$00,$00,$00       ;84E8D9;
     dw Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected                   ;84E8E3;
     dw InstList_PLM_ReserveTankChozoOrb_3                                ;84E8E5;
     dw Instruction_PLM_Call_Y                                            ;84E8E7;
@@ -14734,8 +13577,7 @@ InstList_PLM_ReserveTankChozoOrb_0:
     dw InstList_PLM_ReserveTankChozoOrb_2                                ;84E8F1;
     dw Instruction_PLM_PreInstruction_inY                                ;84E8F3;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E8F5;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E8F7;
-    db $16                                                               ;84E8F9;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E8F7;
 
 InstList_PLM_ReserveTankChozoOrb_1:
     dw Instruction_PLM_DrawItemFrame0                                    ;84E8FA;
@@ -14745,14 +13587,11 @@ InstList_PLM_ReserveTankChozoOrb_1:
 
 InstList_PLM_ReserveTankChozoOrb_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E902;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E904;
-    db $02                                                               ;84E906;
-    dw Instruction_PLM_CollectHealth_ReserveTank                         ;84E907;
-    dw $0064                                                             ;84E909;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E904;
+    dw Instruction_PLM_CollectHealth_ReserveTank,$0064                   ;84E907;
 
 InstList_PLM_ReserveTankChozoOrb_3:
-    dw $0001                                                             ;84E90B;
-    dw DrawInst_ItemChozoOrb                                             ;84E90D;
+    dw $0001,DrawInst_ItemChozoOrb                                       ;84E90B;
     dw Instruction_PLM_Delete                                            ;84E90F;
 
 InstList_PLM_EnergyTankShotBlock_0:
@@ -14764,14 +13603,11 @@ InstList_PLM_EnergyTankShotBlock_0:
     dw InstList_PLM_EnergyTankShotBlock_2                                ;84E91B;
     dw Instruction_PLM_PreInstruction_inY                                ;84E91D;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E91F;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E921;
-    db $16                                                               ;84E923;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E921;
 
 InstList_PLM_EnergyTankShotBlock_1:
-    dw $0004                                                             ;84E924;
-    dw DrawInst_EnergyTank_0                                             ;84E926;
-    dw $0004                                                             ;84E928;
-    dw DrawInst_EnergyTank_1                                             ;84E92A;
+    dw $0004,DrawInst_EnergyTank_0                                       ;84E924;
+    dw $0004,DrawInst_EnergyTank_1                                       ;84E928;
     dw Instruction_PLM_DecrementTimer_GotoYIfNonZero                     ;84E92C;
     dw InstList_PLM_EnergyTankShotBlock_1                                ;84E92E;
     dw Instruction_PLM_Call_Y                                            ;84E930;
@@ -14781,10 +13617,8 @@ InstList_PLM_EnergyTankShotBlock_1:
 
 InstList_PLM_EnergyTankShotBlock_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E938;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E93A;
-    db $02                                                               ;84E93C;
-    dw Instruction_PLM_CollectHealth_EnergyTank                          ;84E93D;
-    dw $0064                                                             ;84E93F;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E93A;
+    dw Instruction_PLM_CollectHealth_EnergyTank,$0064                    ;84E93D;
 
 InstList_PLM_EnergyTankShotBlock_3:
     dw Instruction_PLM_Call_Y                                            ;84E941;
@@ -14801,14 +13635,11 @@ InstList_PLM_MissileTankShotBlock_0:
     dw InstList_PLM_MissileTankShotBlock_2                               ;84E953;
     dw Instruction_PLM_PreInstruction_inY                                ;84E955;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E957;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E959;
-    db $16                                                               ;84E95B;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E959;
 
 InstList_PLM_MissileTankShotBlock_1:
-    dw $0004                                                             ;84E95C;
-    dw DrawInst_MissileTank_0                                            ;84E95E;
-    dw $0004                                                             ;84E960;
-    dw DrawInst_MissileTank_1                                            ;84E962;
+    dw $0004,DrawInst_MissileTank_0                                      ;84E95C;
+    dw $0004,DrawInst_MissileTank_1                                      ;84E960;
     dw Instruction_PLM_DecrementTimer_GotoYIfNonZero                     ;84E964;
     dw InstList_PLM_MissileTankShotBlock_1                               ;84E966;
     dw Instruction_PLM_Call_Y                                            ;84E968;
@@ -14818,10 +13649,8 @@ InstList_PLM_MissileTankShotBlock_1:
 
 InstList_PLM_MissileTankShotBlock_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E970;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E972;
-    db $02                                                               ;84E974;
-    dw Instruction_PLM_CollectAmmo_MissileTank                           ;84E975;
-    dw $0005                                                             ;84E977;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E972;
+    dw Instruction_PLM_CollectAmmo_MissileTank,$0005                     ;84E975;
 
 InstList_PLM_MissileTankShotBlock_3:
     dw Instruction_PLM_Call_Y                                            ;84E979;
@@ -14838,14 +13667,11 @@ InstList_PLM_SuperMissileTankShotBlock_0:
     dw InstList_PLM_SuperMissileTankShotBlock_2                          ;84E98B;
     dw Instruction_PLM_PreInstruction_inY                                ;84E98D;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E98F;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E991;
-    db $16                                                               ;84E993;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E991;
 
 InstList_PLM_SuperMissileTankShotBlock_1:
-    dw $0004                                                             ;84E994;
-    dw DrawInst_SuperMissileTank_0                                       ;84E996;
-    dw $0004                                                             ;84E998;
-    dw DrawInst_SuperMissileTank_1                                       ;84E99A;
+    dw $0004,DrawInst_SuperMissileTank_0                                 ;84E994;
+    dw $0004,DrawInst_SuperMissileTank_1                                 ;84E998;
     dw Instruction_PLM_DecrementTimer_GotoYIfNonZero                     ;84E99C;
     dw InstList_PLM_SuperMissileTankShotBlock_1                          ;84E99E;
     dw Instruction_PLM_Call_Y                                            ;84E9A0;
@@ -14855,10 +13681,8 @@ InstList_PLM_SuperMissileTankShotBlock_1:
 
 InstList_PLM_SuperMissileTankShotBlock_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E9A8;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E9AA;
-    db $02                                                               ;84E9AC;
-    dw Instruction_PLM_CollectAmmo_SuperMissileTank                      ;84E9AD;
-    dw $0005                                                             ;84E9AF;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E9AA;
+    dw Instruction_PLM_CollectAmmo_SuperMissileTank,$0005                ;84E9AD;
 
 InstList_PLM_SuperMissileTankShotBlock_3:
     dw Instruction_PLM_Call_Y                                            ;84E9B1;
@@ -14875,14 +13699,11 @@ InstList_PLM_PowerBombTankShotBlock_0:
     dw InstList_PLM_PowerBombTankShotBlock_2                             ;84E9C3;
     dw Instruction_PLM_PreInstruction_inY                                ;84E9C5;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84E9C7;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84E9C9;
-    db $16                                                               ;84E9CB;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84E9C9;
 
 InstList_PLM_PowerBombTankShotBlock_1:
-    dw $0004                                                             ;84E9CC;
-    dw DrawInst_PowerBombTank_0                                          ;84E9CE;
-    dw $0004                                                             ;84E9D0;
-    dw DrawInst_PowerBombTank_1                                          ;84E9D2;
+    dw $0004,DrawInst_PowerBombTank_0                                    ;84E9CC;
+    dw $0004,DrawInst_PowerBombTank_1                                    ;84E9D0;
     dw Instruction_PLM_DecrementTimer_GotoYIfNonZero                     ;84E9D4;
     dw InstList_PLM_PowerBombTankShotBlock_1                             ;84E9D6;
     dw Instruction_PLM_Call_Y                                            ;84E9D8;
@@ -14892,10 +13713,8 @@ InstList_PLM_PowerBombTankShotBlock_1:
 
 InstList_PLM_PowerBombTankShotBlock_2:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84E9E0;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84E9E2;
-    db $02                                                               ;84E9E4;
-    dw Instruction_PLM_CollectAmmo_PowerBombTank                         ;84E9E5;
-    dw $0005                                                             ;84E9E7;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84E9E2;
+    dw Instruction_PLM_CollectAmmo_PowerBombTank,$0005                   ;84E9E5;
 
 InstList_PLM_PowerBombTankShotBlock_3:
     dw Instruction_PLM_Call_Y                                            ;84E9E9;
@@ -14905,8 +13724,7 @@ InstList_PLM_PowerBombTankShotBlock_3:
 
 InstList_PLM_BombsShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84E9F1;
-    dw ItemPLMGFX_Bombs                                                  ;84E9F3;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84E9F5;
+    dw ItemPLMGFX_Bombs : db $00,$00,$00,$00,$00,$00,$00,$00             ;84E9F3;
 
 InstList_PLM_BombsShotBlock_1:
     dw Instruction_PLM_Call_Y                                            ;84E9FD;
@@ -14917,8 +13735,7 @@ InstList_PLM_BombsShotBlock_1:
     dw InstList_PLM_BombsShotBlock_3                                     ;84EA07;
     dw Instruction_PLM_PreInstruction_inY                                ;84EA09;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84EA0B;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84EA0D;
-    db $16                                                               ;84EA0F;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84EA0D;
 
 InstList_PLM_BombsShotBlock_2:
     dw Instruction_PLM_DrawItemFrame0                                    ;84EA10;
@@ -14932,11 +13749,8 @@ InstList_PLM_BombsShotBlock_2:
 
 InstList_PLM_BombsShotBlock_3:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84EA20;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84EA22;
-    db $02                                                               ;84EA24;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84EA25;
-    dw $1000                                                             ;84EA27;
-    db $13                                                               ;84EA29;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84EA22;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$1000 : db $13  ;84EA25;
 
 InstList_PLM_BombsShotBlock_4:
     dw Instruction_PLM_Call_Y                                            ;84EA2A;
@@ -14946,8 +13760,7 @@ InstList_PLM_BombsShotBlock_4:
 
 InstList_PLM_ChargeBeamShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EA32;
-    dw ItemPLMGFX_ChargeBeam                                             ;84EA34;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84EA36;
+    dw ItemPLMGFX_ChargeBeam : db $00,$00,$00,$00,$00,$00,$00,$00        ;84EA34;
 
 InstList_PLM_ChargeBeamShotBlock_1:
     dw Instruction_PLM_Call_Y                                            ;84EA3E;
@@ -14958,8 +13771,7 @@ InstList_PLM_ChargeBeamShotBlock_1:
     dw InstList_PLM_ChargeBeamShotBlock_3                                ;84EA48;
     dw Instruction_PLM_PreInstruction_inY                                ;84EA4A;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84EA4C;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84EA4E;
-    db $16                                                               ;84EA50;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84EA4E;
 
 InstList_PLM_ChargeBeamShotBlock_2:
     dw Instruction_PLM_DrawItemFrame0                                    ;84EA51;
@@ -14973,11 +13785,8 @@ InstList_PLM_ChargeBeamShotBlock_2:
 
 InstList_PLM_ChargeBeamShotBlock_3:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84EA61;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84EA63;
-    db $02                                                               ;84EA65;
-    dw Instruction_PLM_PickUpBeam_DisplayMessageBox                      ;84EA66;
-    dw $1000                                                             ;84EA68;
-    db $0E                                                               ;84EA6A;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84EA63;
+    dw Instruction_PLM_PickUpBeam_DisplayMessageBox,$1000 : db $0E       ;84EA66;
 
 InstList_PLM_ChargeBeamShotBlock_4:
     dw Instruction_PLM_Call_Y                                            ;84EA6B;
@@ -14987,8 +13796,7 @@ InstList_PLM_ChargeBeamShotBlock_4:
 
 InstList_PLM_IceBeamShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EA73;
-    dw ItemPLMGFX_IceBeam                                                ;84EA75;
-    db $00,$03,$00,$00,$00,$03,$00,$00                                   ;84EA77;
+    dw ItemPLMGFX_IceBeam : db $00,$03,$00,$00,$00,$03,$00,$00           ;84EA75;
 
 InstList_PLM_IceBeamShotBlock_1:
     dw Instruction_PLM_Call_Y                                            ;84EA7F;
@@ -14999,8 +13807,7 @@ InstList_PLM_IceBeamShotBlock_1:
     dw InstList_PLM_IceBeamShotBlock_3                                   ;84EA89;
     dw Instruction_PLM_PreInstruction_inY                                ;84EA8B;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84EA8D;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84EA8F;
-    db $16                                                               ;84EA91;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84EA8F;
 
 InstList_PLM_IceBeamShotBlock_2:
     dw Instruction_PLM_DrawItemFrame0                                    ;84EA92;
@@ -15014,11 +13821,8 @@ InstList_PLM_IceBeamShotBlock_2:
 
 InstList_PLM_IceBeamShotBlock_3:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84EAA2;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84EAA4;
-    db $02                                                               ;84EAA6;
-    dw Instruction_PLM_PickUpBeam_DisplayMessageBox                      ;84EAA7;
-    dw $0002                                                             ;84EAA9;
-    db $0F                                                               ;84EAAB;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84EAA4;
+    dw Instruction_PLM_PickUpBeam_DisplayMessageBox,$0002 : db $0F       ;84EAA7;
 
 InstList_PLM_IceBeamShotBlock_4:
     dw Instruction_PLM_Call_Y                                            ;84EAAC;
@@ -15028,8 +13832,7 @@ InstList_PLM_IceBeamShotBlock_4:
 
 InstList_PLM_HiJumpBootsShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EAB4;
-    dw ItemPLMGFX_HiJumpBoots                                            ;84EAB6;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84EAB8;
+    dw ItemPLMGFX_HiJumpBoots : db $00,$00,$00,$00,$00,$00,$00,$00       ;84EAB6;
 
 InstList_PLM_HiJumpBootsShotBlock_1:
     dw Instruction_PLM_Call_Y                                            ;84EAC0;
@@ -15040,8 +13843,7 @@ InstList_PLM_HiJumpBootsShotBlock_1:
     dw InstList_PLM_HiJumpBootsShotBlock_3                               ;84EACA;
     dw Instruction_PLM_PreInstruction_inY                                ;84EACC;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84EACE;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84EAD0;
-    db $16                                                               ;84EAD2;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84EAD0;
 
 InstList_PLM_HiJumpBootsShotBlock_2:
     dw Instruction_PLM_DrawItemFrame0                                    ;84EAD3;
@@ -15055,11 +13857,8 @@ InstList_PLM_HiJumpBootsShotBlock_2:
 
 InstList_PLM_HiJumpBootsShotBlock_3:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84EAE3;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84EAE5;
-    db $02                                                               ;84EAE7;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84EAE8;
-    dw $0100                                                             ;84EAEA;
-    db $0B                                                               ;84EAEC;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84EAE5;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0100 : db $0B  ;84EAE8;
 
 InstList_PLM_HiJumpBootsShotBlock_4:
     dw Instruction_PLM_Call_Y                                            ;84EAED;
@@ -15069,8 +13868,7 @@ InstList_PLM_HiJumpBootsShotBlock_4:
 
 InstList_PLM_SpeedBoosterShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EAF5;
-    dw ItemPLMGFX_SpeedBooster                                           ;84EAF7;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84EAF9;
+    dw ItemPLMGFX_SpeedBooster : db $00,$00,$00,$00,$00,$00,$00,$00      ;84EAF7;
 
 InstList_PLM_SpeedBoosterShotBlock_1:
     dw Instruction_PLM_Call_Y                                            ;84EB01;
@@ -15081,8 +13879,7 @@ InstList_PLM_SpeedBoosterShotBlock_1:
     dw InstList_PLM_SpeedBoosterShotBlock_3                              ;84EB0B;
     dw Instruction_PLM_PreInstruction_inY                                ;84EB0D;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84EB0F;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84EB11;
-    db $16                                                               ;84EB13;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84EB11;
 
 InstList_PLM_SpeedBoosterShotBlock_2:
     dw Instruction_PLM_DrawItemFrame0                                    ;84EB14;
@@ -15096,11 +13893,8 @@ InstList_PLM_SpeedBoosterShotBlock_2:
 
 InstList_PLM_SpeedBoosterShotBlock_3:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84EB24;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84EB26;
-    db $02                                                               ;84EB28;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84EB29;
-    dw $2000                                                             ;84EB2B;
-    db $0D                                                               ;84EB2D;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84EB26;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$2000 : db $0D  ;84EB29;
 
 InstList_PLM_SpeedBoosterShotBlock_4:
     dw Instruction_PLM_Call_Y                                            ;84EB2E;
@@ -15110,8 +13904,7 @@ InstList_PLM_SpeedBoosterShotBlock_4:
 
 InstList_PLM_WaveBeamShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EB36;
-    dw ItemPLMGFX_WaveBeam                                               ;84EB38;
-    db $00,$02,$00,$00,$00,$02,$00,$00                                   ;84EB3A;
+    dw ItemPLMGFX_WaveBeam : db $00,$02,$00,$00,$00,$02,$00,$00          ;84EB38;
 
 InstList_PLM_WaveBeamShotBlock_1:
     dw Instruction_PLM_Call_Y                                            ;84EB42;
@@ -15122,8 +13915,7 @@ InstList_PLM_WaveBeamShotBlock_1:
     dw InstList_PLM_WaveBeamShotBlock_3                                  ;84EB4C;
     dw Instruction_PLM_PreInstruction_inY                                ;84EB4E;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84EB50;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84EB52;
-    db $16                                                               ;84EB54;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84EB52;
 
 InstList_PLM_WaveBeamShotBlock_2:
     dw Instruction_PLM_DrawItemFrame0                                    ;84EB55;
@@ -15137,11 +13929,8 @@ InstList_PLM_WaveBeamShotBlock_2:
 
 InstList_PLM_WaveBeamShotBlock_3:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84EB65;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84EB67;
-    db $02                                                               ;84EB69;
-    dw Instruction_PLM_PickUpBeam_DisplayMessageBox                      ;84EB6A;
-    dw $0001                                                             ;84EB6C;
-    db $10                                                               ;84EB6E;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84EB67;
+    dw Instruction_PLM_PickUpBeam_DisplayMessageBox,$0001 : db $10       ;84EB6A;
 
 InstList_PLM_WaveBeamShotBlock_4:
     dw Instruction_PLM_Call_Y                                            ;84EB6F;
@@ -15151,8 +13940,7 @@ InstList_PLM_WaveBeamShotBlock_4:
 
 InstList_PLM_SpazerShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EB77;
-    dw ItemPLMGFX_Spazer                                                 ;84EB79;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84EB7B;
+    dw ItemPLMGFX_Spazer : db $00,$00,$00,$00,$00,$00,$00,$00            ;84EB79;
 
 InstList_PLM_SpazerShotBlock_1:
     dw Instruction_PLM_Call_Y                                            ;84EB83;
@@ -15163,8 +13951,7 @@ InstList_PLM_SpazerShotBlock_1:
     dw InstList_PLM_SpazerShotBlock_3                                    ;84EB8D;
     dw Instruction_PLM_PreInstruction_inY                                ;84EB8F;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84EB91;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84EB93;
-    db $16                                                               ;84EB95;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84EB93;
 
 InstList_PLM_SpazerShotBlock_2:
     dw Instruction_PLM_DrawItemFrame0                                    ;84EB96;
@@ -15178,11 +13965,8 @@ InstList_PLM_SpazerShotBlock_2:
 
 InstList_PLM_SpazerShotBlock_3:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84EBA6;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84EBA8;
-    db $02                                                               ;84EBAA;
-    dw Instruction_PLM_PickUpBeam_DisplayMessageBox                      ;84EBAB;
-    dw $0004                                                             ;84EBAD;
-    db $11                                                               ;84EBAF;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84EBA8;
+    dw Instruction_PLM_PickUpBeam_DisplayMessageBox,$0004 : db $11       ;84EBAB;
 
 InstList_PLM_SpazerShotBlock_4:
     dw Instruction_PLM_Call_Y                                            ;84EBB0;
@@ -15192,8 +13976,7 @@ InstList_PLM_SpazerShotBlock_4:
 
 InstList_PLM_SpringBallShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EBB8;
-    dw ItemPLMGFX_SpringBall                                             ;84EBBA;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84EBBC;
+    dw ItemPLMGFX_SpringBall : db $00,$00,$00,$00,$00,$00,$00,$00        ;84EBBA;
 
 InstList_PLM_SpringBallShotBlock_1:
     dw Instruction_PLM_Call_Y                                            ;84EBC4;
@@ -15204,8 +13987,7 @@ InstList_PLM_SpringBallShotBlock_1:
     dw InstList_PLM_SpringBallShotBlock_3                                ;84EBCE;
     dw Instruction_PLM_PreInstruction_inY                                ;84EBD0;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84EBD2;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84EBD4;
-    db $16                                                               ;84EBD6;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84EBD4;
 
 InstList_PLM_SpringBallShotBlock_2:
     dw Instruction_PLM_DrawItemFrame0                                    ;84EBD7;
@@ -15219,11 +14001,8 @@ InstList_PLM_SpringBallShotBlock_2:
 
 InstList_PLM_SpringBallShotBlock_3:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84EBE7;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84EBE9;
-    db $02                                                               ;84EBEB;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84EBEC;
-    dw $0002                                                             ;84EBEE;
-    db $08                                                               ;84EBF0;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84EBE9;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0002 : db $08  ;84EBEC;
 
 InstList_PLM_SpringBallShotBlock_4:
     dw Instruction_PLM_Call_Y                                            ;84EBF1;
@@ -15233,8 +14012,7 @@ InstList_PLM_SpringBallShotBlock_4:
 
 InstList_PLM_VariaSuitShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EBF9;
-    dw ItemPLMGFX_VariaSuit                                              ;84EBFB;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84EBFD;
+    dw ItemPLMGFX_VariaSuit : db $00,$00,$00,$00,$00,$00,$00,$00         ;84EBFB;
 
 InstList_PLM_VariaSuitShotBlock_1:
     dw Instruction_PLM_Call_Y                                            ;84EC05;
@@ -15245,8 +14023,7 @@ InstList_PLM_VariaSuitShotBlock_1:
     dw InstList_PLM_VariaSuitShotBlock_3                                 ;84EC0F;
     dw Instruction_PLM_PreInstruction_inY                                ;84EC11;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84EC13;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84EC15;
-    db $16                                                               ;84EC17;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84EC15;
 
 InstList_PLM_VariaSuitShotBlock_2:
     dw Instruction_PLM_DrawItemFrame0                                    ;84EC18;
@@ -15260,12 +14037,9 @@ InstList_PLM_VariaSuitShotBlock_2:
 
 InstList_PLM_VariaSuitShotBlock_3:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84EC28;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84EC2A;
-    db $02                                                               ;84EC2C;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84EC2A;
     dw Instruction_PLM_ClearChargeBeamCounter                            ;84EC2D;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84EC2F;
-    dw $0001                                                             ;84EC31;
-    db $07                                                               ;84EC33;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0001 : db $07  ;84EC2F;
     dw Instruction_PLM_CallFunctionInY                                   ;84EC34;
     dl VariaSuit_Pickup                                                  ;84EC36;
 
@@ -15277,8 +14051,7 @@ InstList_PLM_VariaSuitShotBlock_4:
 
 InstList_PLM_GravitySuitShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EC41;
-    dw ItemPLMGFX_GravitySuit                                            ;84EC43;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84EC45;
+    dw ItemPLMGFX_GravitySuit : db $00,$00,$00,$00,$00,$00,$00,$00       ;84EC43;
 
 InstList_PLM_GravitySuitShotBlock_1:
     dw Instruction_PLM_Call_Y                                            ;84EC4D;
@@ -15289,8 +14062,7 @@ InstList_PLM_GravitySuitShotBlock_1:
     dw InstList_PLM_GravitySuitShotBlock_3                               ;84EC57;
     dw Instruction_PLM_PreInstruction_inY                                ;84EC59;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84EC5B;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84EC5D;
-    db $16                                                               ;84EC5F;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84EC5D;
 
 InstList_PLM_GravitySuitShotBlock_2:
     dw Instruction_PLM_DrawItemFrame0                                    ;84EC60;
@@ -15304,12 +14076,9 @@ InstList_PLM_GravitySuitShotBlock_2:
 
 InstList_PLM_GravitySuitShotBlock_3:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84EC70;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84EC72;
-    db $02                                                               ;84EC74;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84EC72;
     dw Instruction_PLM_ClearChargeBeamCounter                            ;84EC75;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84EC77;
-    dw $0020                                                             ;84EC79;
-    db $1A                                                               ;84EC7B;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0020 : db $1A  ;84EC77;
     dw Instruction_PLM_CallFunctionInY                                   ;84EC7C;
     dl GravitySuit_Pickup                                                ;84EC7E;
 
@@ -15321,8 +14090,7 @@ InstList_PLM_GravitySuitShotBlock_4:
 
 InstList_PLM_XrayScopeShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EC89;
-    dw ItemPLMGFX_XrayScope                                              ;84EC8B;
-    db $01,$01,$00,$00,$03,$03,$00,$00                                   ;84EC8D;
+    dw ItemPLMGFX_XrayScope : db $01,$01,$00,$00,$03,$03,$00,$00         ;84EC8B;
 
 InstList_PLM_XrayScopeShotBlock_1:
     dw Instruction_PLM_Call_Y                                            ;84EC95;
@@ -15333,8 +14101,7 @@ InstList_PLM_XrayScopeShotBlock_1:
     dw InstList_PLM_XrayScopeShotBlock_3                                 ;84EC9F;
     dw Instruction_PLM_PreInstruction_inY                                ;84ECA1;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84ECA3;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84ECA5;
-    db $16                                                               ;84ECA7;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84ECA5;
 
 InstList_PLM_XrayScopeShotBlock_2:
     dw Instruction_PLM_DrawItemFrame0                                    ;84ECA8;
@@ -15348,10 +14115,8 @@ InstList_PLM_XrayScopeShotBlock_2:
 
 InstList_PLM_XrayScopeShotBlock_3:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84ECB8;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84ECBA;
-    db $02                                                               ;84ECBC;
-    dw Inst_PLM_PickUpEquipment_AddXrayToHUD_DisplayMessageBox           ;84ECBD;
-    dw $8000                                                             ;84ECBF;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84ECBA;
+    dw Inst_PLM_PickUpEquipment_AddXrayToHUD_DisplayMessageBox,$8000     ;84ECBD;
 
 InstList_PLM_XrayScopeShotBlock_4:
     dw Instruction_PLM_Call_Y                                            ;84ECC1;
@@ -15361,8 +14126,7 @@ InstList_PLM_XrayScopeShotBlock_4:
 
 InstList_PLM_PlasmaBeamShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84ECC9;
-    dw ItemPLMGFX_PlasmaBeam                                             ;84ECCB;
-    db $00,$01,$00,$00,$00,$01,$00,$00                                   ;84ECCD;
+    dw ItemPLMGFX_PlasmaBeam : db $00,$01,$00,$00,$00,$01,$00,$00        ;84ECCB;
 
 InstList_PLM_PlasmaBeamShotBlock_1:
     dw Instruction_PLM_Call_Y                                            ;84ECD5;
@@ -15373,8 +14137,7 @@ InstList_PLM_PlasmaBeamShotBlock_1:
     dw InstList_PLM_PlasmaBeamShotBlock_3                                ;84ECDF;
     dw Instruction_PLM_PreInstruction_inY                                ;84ECE1;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84ECE3;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84ECE5;
-    db $16                                                               ;84ECE7;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84ECE5;
 
 InstList_PLM_PlasmaBeamShotBlock_2:
     dw Instruction_PLM_DrawItemFrame0                                    ;84ECE8;
@@ -15388,11 +14151,8 @@ InstList_PLM_PlasmaBeamShotBlock_2:
 
 InstList_PLM_PlasmaBeamShotBlock_3:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84ECF8;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84ECFA;
-    db $02                                                               ;84ECFC;
-    dw Instruction_PLM_PickUpBeam_DisplayMessageBox                      ;84ECFD;
-    dw $0008                                                             ;84ECFF;
-    db $12                                                               ;84ED01;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84ECFA;
+    dw Instruction_PLM_PickUpBeam_DisplayMessageBox,$0008 : db $12       ;84ECFD;
 
 InstList_PLM_PlasmaBeamShotBlock_4:
     dw Instruction_PLM_Call_Y                                            ;84ED02;
@@ -15402,8 +14162,7 @@ InstList_PLM_PlasmaBeamShotBlock_4:
 
 InstList_PLM_GrappleBeamShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84ED0A;
-    dw ItemPLMGFX_GrappleBeam                                            ;84ED0C;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84ED0E;
+    dw ItemPLMGFX_GrappleBeam : db $00,$00,$00,$00,$00,$00,$00,$00       ;84ED0C;
 
 InstList_PLM_GrappleBeamShotBlock_1:
     dw Instruction_PLM_Call_Y                                            ;84ED16;
@@ -15414,8 +14173,7 @@ InstList_PLM_GrappleBeamShotBlock_1:
     dw InstList_PLM_GrappleBeamShotBlock_3                               ;84ED20;
     dw Instruction_PLM_PreInstruction_inY                                ;84ED22;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84ED24;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84ED26;
-    db $16                                                               ;84ED28;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84ED26;
 
 InstList_PLM_GrappleBeamShotBlock_2:
     dw Instruction_PLM_DrawItemFrame0                                    ;84ED29;
@@ -15429,10 +14187,8 @@ InstList_PLM_GrappleBeamShotBlock_2:
 
 InstList_PLM_GrappleBeamShotBlock_3:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84ED39;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84ED3B;
-    db $02                                                               ;84ED3D;
-    dw Inst_PLM_PickUpEquipment_AddGrappleHUD_DisplayMessageBox          ;84ED3E;
-    dw $4000                                                             ;84ED40;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84ED3B;
+    dw Inst_PLM_PickUpEquipment_AddGrappleHUD_DisplayMessageBox,$4000    ;84ED3E;
 
 InstList_PLM_GrappleBeamShotBlock_4:
     dw Instruction_PLM_Call_Y                                            ;84ED42;
@@ -15442,8 +14198,7 @@ InstList_PLM_GrappleBeamShotBlock_4:
 
 InstList_PLM_SpaceJumpShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84ED4A;
-    dw ItemPLMGFX_SpaceJump                                              ;84ED4C;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84ED4E;
+    dw ItemPLMGFX_SpaceJump : db $00,$00,$00,$00,$00,$00,$00,$00         ;84ED4C;
 
 InstList_PLM_SpaceJumpShotBlock_1:
     dw Instruction_PLM_Call_Y                                            ;84ED56;
@@ -15454,8 +14209,7 @@ InstList_PLM_SpaceJumpShotBlock_1:
     dw InstList_PLM_SpaceJumpShotBlock_3                                 ;84ED60;
     dw Instruction_PLM_PreInstruction_inY                                ;84ED62;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84ED64;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84ED66;
-    db $16                                                               ;84ED68;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84ED66;
 
 InstList_PLM_SpaceJumpShotBlock_2:
     dw Instruction_PLM_DrawItemFrame0                                    ;84ED69;
@@ -15469,11 +14223,8 @@ InstList_PLM_SpaceJumpShotBlock_2:
 
 InstList_PLM_SpaceJumpShotBlock_3:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84ED79;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84ED7B;
-    db $02                                                               ;84ED7D;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84ED7E;
-    dw $0200                                                             ;84ED80;
-    db $0C                                                               ;84ED82;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84ED7B;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0200 : db $0C  ;84ED7E;
 
 InstList_PLM_SpaceJumpShotBlock_4:
     dw Instruction_PLM_Call_Y                                            ;84ED83;
@@ -15483,8 +14234,7 @@ InstList_PLM_SpaceJumpShotBlock_4:
 
 InstList_PLM_ScrewAttackShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84ED8B;
-    dw ItemPLMGFX_ScrewAttack                                            ;84ED8D;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84ED8F;
+    dw ItemPLMGFX_ScrewAttack : db $00,$00,$00,$00,$00,$00,$00,$00       ;84ED8D;
 
 InstList_PLM_ScrewAttackShotBlock_1:
     dw Instruction_PLM_Call_Y                                            ;84ED97;
@@ -15495,8 +14245,7 @@ InstList_PLM_ScrewAttackShotBlock_1:
     dw InstList_PLM_ScrewAttackShotBlock_3                               ;84EDA1;
     dw Instruction_PLM_PreInstruction_inY                                ;84EDA3;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84EDA5;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84EDA7;
-    db $16                                                               ;84EDA9;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84EDA7;
 
 InstList_PLM_ScrewAttackShotBlock_2:
     dw Instruction_PLM_DrawItemFrame0                                    ;84EDAA;
@@ -15510,11 +14259,8 @@ InstList_PLM_ScrewAttackShotBlock_2:
 
 InstList_PLM_ScrewAttackShotBlock_3:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84EDBA;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84EDBC;
-    db $02                                                               ;84EDBE;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84EDBF;
-    dw $0008                                                             ;84EDC1;
-    db $0A                                                               ;84EDC3;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84EDBC;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0008 : db $0A  ;84EDBF;
 
 InstList_PLM_ScrewAttackShotBlock_4:
     dw Instruction_PLM_Call_Y                                            ;84EDC4;
@@ -15524,8 +14270,7 @@ InstList_PLM_ScrewAttackShotBlock_4:
 
 InstList_PLM_MorphBallShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EDCC;
-    dw ItemPLMGFX_MorphBall                                              ;84EDCE;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84EDD0;
+    dw ItemPLMGFX_MorphBall : db $00,$00,$00,$00,$00,$00,$00,$00         ;84EDCE;
 
 InstList_PLM_MorphBallShotBlock_1:
     dw Instruction_PLM_Call_Y                                            ;84EDD8;
@@ -15536,8 +14281,7 @@ InstList_PLM_MorphBallShotBlock_1:
     dw InstList_PLM_MorphBallShotBlock_3                                 ;84EDE2;
     dw Instruction_PLM_PreInstruction_inY                                ;84EDE4;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84EDE6;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84EDE8;
-    db $16                                                               ;84EDEA;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84EDE8;
 
 InstList_PLM_MorphBallShotBlock_2:
     dw Instruction_PLM_DrawItemFrame0                                    ;84EDEB;
@@ -15551,11 +14295,8 @@ InstList_PLM_MorphBallShotBlock_2:
 
 InstList_PLM_MorphBallShotBlock_3:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84EDFB;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84EDFD;
-    db $02                                                               ;84EDFF;
-    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox                 ;84EE00;
-    dw $0002                                                             ;84EE02;
-    db $09                                                               ;84EE04;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84EDFD;
+    dw Instruction_PLM_PickUpEquipment_DisplayMessageBox,$0002 : db $09  ;84EE00;
 
 InstList_PLM_MorphBallShotBlock_4:
     dw Instruction_PLM_Call_Y                                            ;84EE05;
@@ -15565,8 +14306,7 @@ InstList_PLM_MorphBallShotBlock_4:
 
 InstList_PLM_ReserveTankShotBlock_0:
     dw Instruction_PLM_LoadItemPLMGFX                                    ;84EE0D;
-    dw ItemPLMGFX_ReserveTank                                            ;84EE0F;
-    db $00,$00,$00,$00,$00,$00,$00,$00                                   ;84EE11;
+    dw ItemPLMGFX_ReserveTank : db $00,$00,$00,$00,$00,$00,$00,$00       ;84EE0F;
 
 InstList_PLM_ReserveTankShotBlock_1:
     dw Instruction_PLM_Call_Y                                            ;84EE19;
@@ -15577,8 +14317,7 @@ InstList_PLM_ReserveTankShotBlock_1:
     dw InstList_PLM_ReserveTankShotBlock_3                               ;84EE23;
     dw Instruction_PLM_PreInstruction_inY                                ;84EE25;
     dw PreInstruction_PLM_GotoLinkInstructionIfTriggered                 ;84EE27;
-    dw Instruction_PLM_TimerEqualsY_8Bit                                 ;84EE29;
-    db $16                                                               ;84EE2B;
+    dw Instruction_PLM_TimerEqualsY_8Bit : db $16                        ;84EE29;
 
 InstList_PLM_ReserveTankShotBlock_2:
     dw Instruction_PLM_DrawItemFrame0                                    ;84EE2C;
@@ -15592,10 +14331,8 @@ InstList_PLM_ReserveTankShotBlock_2:
 
 InstList_PLM_ReserveTankShotBlock_3:
     dw Instruction_PLM_SetRoomArg_ItemCollected                          ;84EE3C;
-    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack                   ;84EE3E;
-    db $02                                                               ;84EE40;
-    dw Instruction_PLM_CollectHealth_ReserveTank                         ;84EE41;
-    dw $0064                                                             ;84EE43;
+    dw Instruction_PLM_ClearMusicQueue_QueueMusicTrack : db $02          ;84EE3E;
+    dw Instruction_PLM_CollectHealth_ReserveTank,$0064                   ;84EE41;
 
 InstList_PLM_ReserveTankShotBlock_4:
     dw Instruction_PLM_Call_Y                                            ;84EE45;
