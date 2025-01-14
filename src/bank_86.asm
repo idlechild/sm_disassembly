@@ -4472,70 +4472,44 @@ PreInstruction_EnemyProjectile_AlcoonFireball:
 
 
 InstList_EnemyProjectile_Pirate_MotherBrain_Laser_Left_0:
-    dw $0002                                                             ;869F41;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_8                    ;869F43;
-    dw $0002                                                             ;869F45;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_9                    ;869F47;
-    dw $0002                                                             ;869F49;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_A                    ;869F4B;
+    dw $0002,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_8              ;869F41;
+    dw $0002,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_9              ;869F45;
+    dw $0002,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_A              ;869F49;
     dw Instruction_PreInstructionInY_ExecuteY                            ;869F4D;
     dw PreInstruction_EnemyProjectile_Pirate_MotherBrain_Laser_Left      ;869F4F;
-    dw $0001                                                             ;869F51;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_0                    ;869F53;
-    dw $0001                                                             ;869F55;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_1                    ;869F57;
-    dw $0001                                                             ;869F59;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_2                    ;869F5B;
-    dw $0001                                                             ;869F5D;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_3                    ;869F5F;
-    dw $0001                                                             ;869F61;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_4                    ;869F63;
-    dw $0001                                                             ;869F65;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_5                    ;869F67;
-    dw $0001                                                             ;869F69;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_6                    ;869F6B;
-    dw $0001                                                             ;869F6D;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_7                    ;869F6F;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_0              ;869F51;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_1              ;869F55;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_2              ;869F59;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_3              ;869F5D;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_4              ;869F61;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_5              ;869F65;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_6              ;869F69;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_7              ;869F6D;
 
 InstList_EnemyProjectile_Pirate_MotherBrain_Laser_Left_1:
-    dw $0001                                                             ;869F71;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_6                    ;869F73;
-    dw $0001                                                             ;869F75;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_7                    ;869F77;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_6              ;869F71;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_7              ;869F75;
     dw Instruction_EnemyProjectile_GotoY                                 ;869F79;
     dw InstList_EnemyProjectile_Pirate_MotherBrain_Laser_Left_1          ;869F7B;
 
 InstList_EnemyProjectile_Pirate_MotherBrain_Laser_Right_0:
-    dw $0002                                                             ;869F7D;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_8                    ;869F7F;
-    dw $0002                                                             ;869F81;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_9                    ;869F83;
-    dw $0002                                                             ;869F85;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_A                    ;869F87;
+    dw $0002,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_8              ;869F7D;
+    dw $0002,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_9              ;869F81;
+    dw $0002,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_A              ;869F85;
     dw Instruction_PreInstructionInY_ExecuteY                            ;869F89;
     dw PreInst_EnemyProjectile_Pirate_MotherBrain_Laser_Right            ;869F8B;
-    dw $0001                                                             ;869F8D;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_0                    ;869F8F;
-    dw $0001                                                             ;869F91;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_1                    ;869F93;
-    dw $0001                                                             ;869F95;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_2                    ;869F97;
-    dw $0001                                                             ;869F99;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_3                    ;869F9B;
-    dw $0001                                                             ;869F9D;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_4                    ;869F9F;
-    dw $0001                                                             ;869FA1;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_5                    ;869FA3;
-    dw $0001                                                             ;869FA5;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_6                    ;869FA7;
-    dw $0001                                                             ;869FA9;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_7                    ;869FAB;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_0              ;869F8D;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_1              ;869F91;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_2              ;869F95;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_3              ;869F99;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_4              ;869F9D;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_5              ;869FA1;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_6              ;869FA5;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_7              ;869FA9;
 
 InstList_EnemyProjectile_Pirate_MotherBrain_Laser_Right_1:
-    dw $0001                                                             ;869FAD;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_6                    ;869FAF;
-    dw $0001                                                             ;869FB1;
-    dw EnemyProjSpritemaps_Pirate_MotherBrain_Laser_7                    ;869FB3;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_6              ;869FAD;
+    dw $0001,EnemyProjSpritemaps_Pirate_MotherBrain_Laser_7              ;869FB1;
     dw Instruction_EnemyProjectile_GotoY                                 ;869FB5;
     dw InstList_EnemyProjectile_Pirate_MotherBrain_Laser_Right_1         ;869FB7;
 
@@ -4544,22 +4518,14 @@ InstList_EnemyProjectile_PirateClaw_Left_0:
     dw PreInstruction_EnemyProjectile_PirateClaw_Left                    ;869FBB;
 
 InstList_EnemyProjectile_PirateClaw_Left_1:
-    dw $0001                                                             ;869FBD;
-    dw EnemyProjSpritemaps_PirateClaw_0                                  ;869FBF;
-    dw $0001                                                             ;869FC1;
-    dw EnemyProjSpritemaps_PirateClaw_1                                  ;869FC3;
-    dw $0001                                                             ;869FC5;
-    dw EnemyProjSpritemaps_PirateClaw_2                                  ;869FC7;
-    dw $0001                                                             ;869FC9;
-    dw EnemyProjSpritemaps_PirateClaw_3                                  ;869FCB;
-    dw $0001                                                             ;869FCD;
-    dw EnemyProjSpritemaps_PirateClaw_4                                  ;869FCF;
-    dw $0001                                                             ;869FD1;
-    dw EnemyProjSpritemaps_PirateClaw_5                                  ;869FD3;
-    dw $0001                                                             ;869FD5;
-    dw EnemyProjSpritemaps_PirateClaw_6                                  ;869FD7;
-    dw $0001                                                             ;869FD9;
-    dw EnemyProjSpritemaps_PirateClaw_7                                  ;869FDB;
+    dw $0001,EnemyProjSpritemaps_PirateClaw_0                            ;869FBD;
+    dw $0001,EnemyProjSpritemaps_PirateClaw_1                            ;869FC1;
+    dw $0001,EnemyProjSpritemaps_PirateClaw_2                            ;869FC5;
+    dw $0001,EnemyProjSpritemaps_PirateClaw_3                            ;869FC9;
+    dw $0001,EnemyProjSpritemaps_PirateClaw_4                            ;869FCD;
+    dw $0001,EnemyProjSpritemaps_PirateClaw_5                            ;869FD1;
+    dw $0001,EnemyProjSpritemaps_PirateClaw_6                            ;869FD5;
+    dw $0001,EnemyProjSpritemaps_PirateClaw_7                            ;869FD9;
     dw Instruction_EnemyProjectile_GotoY                                 ;869FDD;
     dw InstList_EnemyProjectile_PirateClaw_Left_1                        ;869FDF;
 
@@ -4568,22 +4534,14 @@ InstList_EnemyProjectile_PirateClaw_Right_0:
     dw PreInstruction_EnemyProjectile_PirateClaw_Right                   ;869FE3;
 
 InstList_EnemyProjectile_PirateClaw_Right_1:
-    dw $0001                                                             ;869FE5;
-    dw EnemyProjSpritemaps_PirateClaw_8                                  ;869FE7;
-    dw $0001                                                             ;869FE9;
-    dw EnemyProjSpritemaps_PirateClaw_9                                  ;869FEB;
-    dw $0001                                                             ;869FED;
-    dw EnemyProjSpritemaps_PirateClaw_A                                  ;869FEF;
-    dw $0001                                                             ;869FF1;
-    dw EnemyProjSpritemaps_PirateClaw_B                                  ;869FF3;
-    dw $0001                                                             ;869FF5;
-    dw EnemyProjSpritemaps_PirateClaw_C                                  ;869FF7;
-    dw $0001                                                             ;869FF9;
-    dw EnemyProjSpritemaps_PirateClaw_D                                  ;869FFB;
-    dw $0001                                                             ;869FFD;
-    dw EnemyProjSpritemaps_PirateClaw_E                                  ;869FFF;
-    dw $0001                                                             ;86A001;
-    dw EnemyProjSpritemaps_PirateClaw_F                                  ;86A003;
+    dw $0001,EnemyProjSpritemaps_PirateClaw_8                            ;869FE5;
+    dw $0001,EnemyProjSpritemaps_PirateClaw_9                            ;869FE9;
+    dw $0001,EnemyProjSpritemaps_PirateClaw_A                            ;869FED;
+    dw $0001,EnemyProjSpritemaps_PirateClaw_B                            ;869FF1;
+    dw $0001,EnemyProjSpritemaps_PirateClaw_C                            ;869FF5;
+    dw $0001,EnemyProjSpritemaps_PirateClaw_D                            ;869FF9;
+    dw $0001,EnemyProjSpritemaps_PirateClaw_E                            ;869FFD;
+    dw $0001,EnemyProjSpritemaps_PirateClaw_F                            ;86A001;
     dw Instruction_EnemyProjectile_GotoY                                 ;86A005;
     dw InstList_EnemyProjectile_PirateClaw_Right_1                       ;86A007;
 
@@ -4793,164 +4751,112 @@ PreInstruction_EnemyProjectile_PirateClaw_Right:
 
 
 EnemyProjectile_PirateMotherBrainLaser:
-    dw InitAI_EnemyProjectile_Pirate_MotherBrain_Laser                   ;86A17B;
-    dw PreInstruction_EnemyProjectile_Pirate_MotherBrain_Laser_Left      ;86A17D;
-    dw InstList_EnemyProjectile_Pirate_MotherBrain_Laser_Left_0          ;86A17F;
-    db $10,$04                                                           ;86A181;
-    dw $100A                                                             ;86A183;
-    dw $0000                                                             ;86A185;
-    dw InstList_EnemyProjectile_Delete                                   ;86A187;
+    dw InitAI_EnemyProjectile_Pirate_MotherBrain_Laser                   ;86A17B; Initialisation AI
+    dw PreInstruction_EnemyProjectile_Pirate_MotherBrain_Laser_Left      ;86A17D; Initial pre-instruction
+    dw InstList_EnemyProjectile_Pirate_MotherBrain_Laser_Left_0          ;86A17F; Initial instruction list
+    db $10,$04                                                           ;86A181; X,Y radius
+    dw $100A                                                             ;86A183; Properties
+    dw $0000                                                             ;86A185; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86A187; Shot instruction list
 
 EnemyProjectile_PirateClaw:
-    dw PreInstruction_EnemyProjectile_PirateClaw                         ;86A189;
-    dw RTS_86A05B                                                        ;86A18B;
-    dw $0000                                                             ;86A18D;
-    db $08,$08                                                           ;86A18F;
-    dw $1014,$0000                                                       ;86A191;
-    dw InstList_EnemyProjectile_Delete                                   ;86A195;
+    dw PreInstruction_EnemyProjectile_PirateClaw                         ;86A189; Initialisation AI
+    dw RTS_86A05B                                                        ;86A18B; Initial pre-instruction
+    dw $0000                                                             ;86A18D; Initial instruction list
+    db $08,$08                                                           ;86A18F; X,Y radius
+    dw $1014,$0000                                                       ;86A191; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86A195; Shot instruction list
 
 InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index0_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86A197;
-    dw $0001                                                             ;86A199;
+    dw Instruction_EnemyProjectile_TimerInY,$0001                        ;86A197;
 
 InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index0_1:
-    dw $0008                                                             ;86A19B;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_0                    ;86A19D;
-    dw $0008                                                             ;86A19F;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_1                    ;86A1A1;
-    dw $0009                                                             ;86A1A3;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_2                    ;86A1A5;
-    dw $0009                                                             ;86A1A7;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_3                    ;86A1A9;
-    dw $000A                                                             ;86A1AB;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_4                    ;86A1AD;
-    dw $000A                                                             ;86A1AF;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_5                    ;86A1B1;
-    dw $000A                                                             ;86A1B3;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_6                    ;86A1B5;
-    dw $000A                                                             ;86A1B7;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_7                    ;86A1B9;
+    dw $0008,EnemyProjSpritemaps_GunshipLiftoffDustClouds_0              ;86A19B;
+    dw $0008,EnemyProjSpritemaps_GunshipLiftoffDustClouds_1              ;86A19F;
+    dw $0009,EnemyProjSpritemaps_GunshipLiftoffDustClouds_2              ;86A1A3;
+    dw $0009,EnemyProjSpritemaps_GunshipLiftoffDustClouds_3              ;86A1A7;
+    dw $000A,EnemyProjSpritemaps_GunshipLiftoffDustClouds_4              ;86A1AB;
+    dw $000A,EnemyProjSpritemaps_GunshipLiftoffDustClouds_5              ;86A1AF;
+    dw $000A,EnemyProjSpritemaps_GunshipLiftoffDustClouds_6              ;86A1B3;
+    dw $000A,EnemyProjSpritemaps_GunshipLiftoffDustClouds_7              ;86A1B7;
     dw Instruction_EnemyProjectile_DecrementTimer_GotoYIfNonZero         ;86A1BB;
     dw InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index0_1        ;86A1BD;
     dw Instruction_EnemyProjectile_Delete                                ;86A1BF;
 
 InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index2_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86A1C1;
-    dw $0001                                                             ;86A1C3;
+    dw Instruction_EnemyProjectile_TimerInY,$0001                        ;86A1C1;
 
 InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index2_1:
-    dw $0006                                                             ;86A1C5;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_8                    ;86A1C7;
-    dw $0006                                                             ;86A1C9;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_9                    ;86A1CB;
-    dw $0007                                                             ;86A1CD;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_A                    ;86A1CF;
-    dw $0007                                                             ;86A1D1;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_B                    ;86A1D3;
-    dw $0008                                                             ;86A1D5;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_C                    ;86A1D7;
-    dw $0008                                                             ;86A1D9;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_D                    ;86A1DB;
-    dw $0008                                                             ;86A1DD;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_E                    ;86A1DF;
-    dw $0008                                                             ;86A1E1;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_F                    ;86A1E3;
+    dw $0006,EnemyProjSpritemaps_GunshipLiftoffDustClouds_8              ;86A1C5;
+    dw $0006,EnemyProjSpritemaps_GunshipLiftoffDustClouds_9              ;86A1C9;
+    dw $0007,EnemyProjSpritemaps_GunshipLiftoffDustClouds_A              ;86A1CD;
+    dw $0007,EnemyProjSpritemaps_GunshipLiftoffDustClouds_B              ;86A1D1;
+    dw $0008,EnemyProjSpritemaps_GunshipLiftoffDustClouds_C              ;86A1D5;
+    dw $0008,EnemyProjSpritemaps_GunshipLiftoffDustClouds_D              ;86A1D9;
+    dw $0008,EnemyProjSpritemaps_GunshipLiftoffDustClouds_E              ;86A1DD;
+    dw $0008,EnemyProjSpritemaps_GunshipLiftoffDustClouds_F              ;86A1E1;
     dw Instruction_EnemyProjectile_DecrementTimer_GotoYIfNonZero         ;86A1E5;
     dw InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index2_1        ;86A1E7;
     dw Instruction_EnemyProjectile_Delete                                ;86A1E9;
 
 InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index4_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86A1EB;
-    dw $0001                                                             ;86A1ED;
+    dw Instruction_EnemyProjectile_TimerInY,$0001                        ;86A1EB;
 
 InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index4_1:
-    dw $000B                                                             ;86A1EF;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_10                   ;86A1F1;
-    dw $000B                                                             ;86A1F3;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_11                   ;86A1F5;
-    dw $000C                                                             ;86A1F7;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_12                   ;86A1F9;
-    dw $000C                                                             ;86A1FB;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_13                   ;86A1FD;
-    dw $000D                                                             ;86A1FF;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_14                   ;86A201;
-    dw $000D                                                             ;86A203;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_15                   ;86A205;
-    dw $000D                                                             ;86A207;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_16                   ;86A209;
+    dw $000B,EnemyProjSpritemaps_GunshipLiftoffDustClouds_10             ;86A1EF;
+    dw $000B,EnemyProjSpritemaps_GunshipLiftoffDustClouds_11             ;86A1F3;
+    dw $000C,EnemyProjSpritemaps_GunshipLiftoffDustClouds_12             ;86A1F7;
+    dw $000C,EnemyProjSpritemaps_GunshipLiftoffDustClouds_13             ;86A1FB;
+    dw $000D,EnemyProjSpritemaps_GunshipLiftoffDustClouds_14             ;86A1FF;
+    dw $000D,EnemyProjSpritemaps_GunshipLiftoffDustClouds_15             ;86A203;
+    dw $000D,EnemyProjSpritemaps_GunshipLiftoffDustClouds_16             ;86A207;
     dw Instruction_EnemyProjectile_DecrementTimer_GotoYIfNonZero         ;86A20B;
     dw InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index4_1        ;86A20D;
     dw Instruction_EnemyProjectile_Delete                                ;86A20F;
 
 InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index6_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86A211;
-    dw $0001                                                             ;86A213;
+    dw Instruction_EnemyProjectile_TimerInY,$0001                        ;86A211;
 
 InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index6_1:
-    dw $0008                                                             ;86A215;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_17                   ;86A217;
-    dw $0008                                                             ;86A219;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_18                   ;86A21B;
-    dw $0009                                                             ;86A21D;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_19                   ;86A21F;
-    dw $0009                                                             ;86A221;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_1A                   ;86A223;
-    dw $000A                                                             ;86A225;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_1B                   ;86A227;
-    dw $000A                                                             ;86A229;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_1C                   ;86A22B;
-    dw $000A                                                             ;86A22D;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_1D                   ;86A22F;
-    dw $000A                                                             ;86A231;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_1E                   ;86A233;
+    dw $0008,EnemyProjSpritemaps_GunshipLiftoffDustClouds_17             ;86A215;
+    dw $0008,EnemyProjSpritemaps_GunshipLiftoffDustClouds_18             ;86A219;
+    dw $0009,EnemyProjSpritemaps_GunshipLiftoffDustClouds_19             ;86A21D;
+    dw $0009,EnemyProjSpritemaps_GunshipLiftoffDustClouds_1A             ;86A221;
+    dw $000A,EnemyProjSpritemaps_GunshipLiftoffDustClouds_1B             ;86A225;
+    dw $000A,EnemyProjSpritemaps_GunshipLiftoffDustClouds_1C             ;86A229;
+    dw $000A,EnemyProjSpritemaps_GunshipLiftoffDustClouds_1D             ;86A22D;
+    dw $000A,EnemyProjSpritemaps_GunshipLiftoffDustClouds_1E             ;86A231;
     dw Instruction_EnemyProjectile_DecrementTimer_GotoYIfNonZero         ;86A235;
     dw InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index6_1        ;86A237;
     dw Instruction_EnemyProjectile_Delete                                ;86A239;
 
 InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index8_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86A23B;
-    dw $0001                                                             ;86A23D;
+    dw Instruction_EnemyProjectile_TimerInY,$0001                        ;86A23B;
 
 InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index8_1:
-    dw $0006                                                             ;86A23F;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_1F                   ;86A241;
-    dw $0006                                                             ;86A243;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_20                   ;86A245;
-    dw $0007                                                             ;86A247;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_21                   ;86A249;
-    dw $0007                                                             ;86A24B;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_22                   ;86A24D;
-    dw $0008                                                             ;86A24F;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_23                   ;86A251;
-    dw $0008                                                             ;86A253;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_24                   ;86A255;
-    dw $0008                                                             ;86A257;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_25                   ;86A259;
-    dw $0008                                                             ;86A25B;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_26                   ;86A25D;
+    dw $0006,EnemyProjSpritemaps_GunshipLiftoffDustClouds_1F             ;86A23F;
+    dw $0006,EnemyProjSpritemaps_GunshipLiftoffDustClouds_20             ;86A243;
+    dw $0007,EnemyProjSpritemaps_GunshipLiftoffDustClouds_21             ;86A247;
+    dw $0007,EnemyProjSpritemaps_GunshipLiftoffDustClouds_22             ;86A24B;
+    dw $0008,EnemyProjSpritemaps_GunshipLiftoffDustClouds_23             ;86A24F;
+    dw $0008,EnemyProjSpritemaps_GunshipLiftoffDustClouds_24             ;86A253;
+    dw $0008,EnemyProjSpritemaps_GunshipLiftoffDustClouds_25             ;86A257;
+    dw $0008,EnemyProjSpritemaps_GunshipLiftoffDustClouds_26             ;86A25B;
     dw Instruction_EnemyProjectile_DecrementTimer_GotoYIfNonZero         ;86A25F;
     dw InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index8_1        ;86A261;
     dw Instruction_EnemyProjectile_Delete                                ;86A263;
 
 InstList_EnemyProjectile_GunshipLiftoffDustClouds_IndexA_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86A265;
-    dw $0001                                                             ;86A267;
+    dw Instruction_EnemyProjectile_TimerInY,$0001                        ;86A265;
 
 InstList_EnemyProjectile_GunshipLiftoffDustClouds_IndexA_1:
-    dw $000B                                                             ;86A269;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_27                   ;86A26B;
-    dw $000B                                                             ;86A26D;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_28                   ;86A26F;
-    dw $000C                                                             ;86A271;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_29                   ;86A273;
-    dw $000C                                                             ;86A275;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_2A                   ;86A277;
-    dw $000D                                                             ;86A279;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_2B                   ;86A27B;
-    dw $000D                                                             ;86A27D;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_2C                   ;86A27F;
-    dw $000D                                                             ;86A281;
-    dw EnemyProjSpritemaps_GunshipLiftoffDustClouds_2D                   ;86A283;
+    dw $000B,EnemyProjSpritemaps_GunshipLiftoffDustClouds_27             ;86A269;
+    dw $000B,EnemyProjSpritemaps_GunshipLiftoffDustClouds_28             ;86A26D;
+    dw $000C,EnemyProjSpritemaps_GunshipLiftoffDustClouds_29             ;86A271;
+    dw $000C,EnemyProjSpritemaps_GunshipLiftoffDustClouds_2A             ;86A275;
+    dw $000D,EnemyProjSpritemaps_GunshipLiftoffDustClouds_2B             ;86A279;
+    dw $000D,EnemyProjSpritemaps_GunshipLiftoffDustClouds_2C             ;86A27D;
+    dw $000D,EnemyProjSpritemaps_GunshipLiftoffDustClouds_2D             ;86A281;
     dw Instruction_EnemyProjectile_DecrementTimer_GotoYIfNonZero         ;86A285;
     dw InstList_EnemyProjectile_GunshipLiftoffDustClouds_IndexA_1        ;86A287;
     dw Instruction_EnemyProjectile_Delete                                ;86A289;
@@ -4959,16 +4865,13 @@ InstList_EnemyProjectile_Delete_A28B:
     dw Instruction_EnemyProjectile_Delete                                ;86A28B;
 
 InstList_EnemyProjectile_Shot_CeresElevatorPad:
-    dw $0001                                                             ;86A28D;
-    dw EnemyProjSpritemaps_CeresElevatorPad_DustCloud_Explosion_0        ;86A28F;
-    dw $0001                                                             ;86A291;
-    dw EnemyProjSpritemaps_CeresElevatorPad_DustCloud_Explosion_1        ;86A293;
+    dw $0001,EnemyProjSpritemaps_CeresElevatorPad_DustCloud_Explosion_0  ;86A28D;
+    dw $0001,EnemyProjSpritemaps_CeresElevatorPad_DustCloud_Explosion_1  ;86A291;
     dw Instruction_EnemyProjectile_GotoY                                 ;86A295;
     dw InstList_EnemyProjectile_Shot_CeresElevatorPad                    ;86A297;
 
 InstList_EnemyProj_Shot_CeresElevatorPadLevelDataConcealer:
-    dw $0001                                                             ;86A299;
-    dw EnemyProjSpritemaps_CeresElevatorPadLevelDataConcealer            ;86A29B;
+    dw $0001,EnemyProjSpritemaps_CeresElevatorPadLevelDataConcealer      ;86A299;
     dw Instruction_EnemyProjectile_GotoY                                 ;86A29D;
     dw InstList_EnemyProj_Shot_CeresElevatorPadLevelDataConcealer        ;86A29F;
 
@@ -5087,31 +4990,31 @@ PreInst_EnemyProjectile_CeresElevatorPadLevelDataConcealer:
 
 
 EnemyProjectile_GunShipLiftoffDustClouds:
-    dw InitAI_EnemyProjectile_GunshipLiftoffDustClouds                   ;86A379;
-    dw RTS_86A327                                                        ;86A37B;
-    dw InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index0_0        ;86A37D;
-    db $08,$08                                                           ;86A37F;
-    dw $3000                                                             ;86A381;
-    dw $0000                                                             ;86A383;
-    dw InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index0_0        ;86A385;
+    dw InitAI_EnemyProjectile_GunshipLiftoffDustClouds                   ;86A379; Initialisation AI
+    dw RTS_86A327                                                        ;86A37B; Initial pre-instruction
+    dw InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index0_0        ;86A37D; Initial instruction list
+    db $08,$08                                                           ;86A37F; X,Y radius
+    dw $3000                                                             ;86A381; Properties
+    dw $0000                                                             ;86A383; Hit instruction list
+    dw InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index0_0        ;86A385; Shot instruction list
 
 EnemyProjectile_CeresElevatorPad:
-    dw InitAI_EnemyProjectile_CeresElevatorPad                           ;86A387;
-    dw PreInstruction_EnemyProjectile_CeresElevatorPad                   ;86A389;
-    dw InstList_EnemyProjectile_Shot_CeresElevatorPad                    ;86A38B;
-    db $01,$01                                                           ;86A38D;
-    dw $3000                                                             ;86A38F;
-    dw $0000                                                             ;86A391;
-    dw InstList_EnemyProjectile_Shot_CeresElevatorPad                    ;86A393;
+    dw InitAI_EnemyProjectile_CeresElevatorPad                           ;86A387; Initialisation AI
+    dw PreInstruction_EnemyProjectile_CeresElevatorPad                   ;86A389; Initial pre-instruction
+    dw InstList_EnemyProjectile_Shot_CeresElevatorPad                    ;86A38B; Initial instruction list
+    db $01,$01                                                           ;86A38D; X,Y radius
+    dw $3000                                                             ;86A38F; Properties
+    dw $0000                                                             ;86A391; Hit instruction list
+    dw InstList_EnemyProjectile_Shot_CeresElevatorPad                    ;86A393; Shot instruction list
 
 EnemyProjectile_CeresElevatorPadLevelDataConcealer:
-    dw InitAI_EnemyProjectile_CeresElevatorPadLevelDataConcealer         ;86A395;
-    dw PreInst_EnemyProjectile_CeresElevatorPadLevelDataConcealer        ;86A397;
-    dw InstList_EnemyProj_Shot_CeresElevatorPadLevelDataConcealer        ;86A399;
-    db $01,$01                                                           ;86A39B;
-    dw $3000                                                             ;86A39D;
-    dw $0000                                                             ;86A39F;
-    dw InstList_EnemyProj_Shot_CeresElevatorPadLevelDataConcealer        ;86A3A1;
+    dw InitAI_EnemyProjectile_CeresElevatorPadLevelDataConcealer         ;86A395; Initialisation AI
+    dw PreInst_EnemyProjectile_CeresElevatorPadLevelDataConcealer        ;86A397; Initial pre-instruction
+    dw InstList_EnemyProj_Shot_CeresElevatorPadLevelDataConcealer        ;86A399; Initial instruction list
+    db $01,$01                                                           ;86A39B; X,Y radius
+    dw $3000                                                             ;86A39D; Properties
+    dw $0000                                                             ;86A39F; Hit instruction list
+    dw InstList_EnemyProj_Shot_CeresElevatorPadLevelDataConcealer        ;86A3A1; Shot instruction list
 
 InitAI_PreInstruction_EnemyProjectile_PrePhantoonRoom:
     LDA.W #$0000                                                         ;86A3A3;
@@ -5120,17 +5023,16 @@ InitAI_PreInstruction_EnemyProjectile_PrePhantoonRoom:
 
 
 InstList_EnemyProjectile_PrePhantoonRoom:
-    dw $0020                                                             ;86A3AA;
-    dw EnemyProjSpritemaps_Blank_Default                                 ;86A3AC;
+    dw $0020,EnemyProjSpritemaps_Blank_Default                           ;86A3AA;
     dw Instruction_EnemyProjectile_Delete                                ;86A3AE;
 
 EnemyProjectile_PrePhantoonRoom:
-    dw InitAI_PreInstruction_EnemyProjectile_PrePhantoonRoom             ;86A3B0;
-    dw InitAI_PreInstruction_EnemyProjectile_PrePhantoonRoom             ;86A3B2;
-    dw InstList_EnemyProjectile_PrePhantoonRoom                          ;86A3B4;
-    db $00,$00                                                           ;86A3B6;
-    dw $3000,$0000                                                       ;86A3B8;
-    dw InstList_EnemyProjectile_Delete                                   ;86A3BC;
+    dw InitAI_PreInstruction_EnemyProjectile_PrePhantoonRoom             ;86A3B0; Initialisation AI
+    dw InitAI_PreInstruction_EnemyProjectile_PrePhantoonRoom             ;86A3B2; Initial pre-instruction
+    dw InstList_EnemyProjectile_PrePhantoonRoom                          ;86A3B4; Initial instruction list
+    db $00,$00                                                           ;86A3B6; X,Y radius
+    dw $3000,$0000                                                       ;86A3B8; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86A3BC; Shot instruction list
 
 Instruction_EnemyProjectile_Torizo_ResetPosition:
     LDA.W $1AFF,X                                                        ;86A3BE;
@@ -5142,80 +5044,57 @@ Instruction_EnemyProjectile_Torizo_ResetPosition:
 
 InstList_EnemyProjectile_BombTorizoLowHealthExplosion_0:
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86A3CB;
-    dw Instruction_EnemyProjectile_Properties_OrY                        ;86A3CD;
-    dw $3000                                                             ;86A3CF;
-    dw Instruction_EnemyProjectile_TimerInY                              ;86A3D1;
-    dw $0003                                                             ;86A3D3;
+    dw Instruction_EnemyProjectile_Properties_OrY,$3000                  ;86A3CD;
+    dw Instruction_EnemyProjectile_TimerInY,$0003                        ;86A3D1;
 
 InstList_EnemyProjectile_BombTorizoLowHealthExplosion_1:
     dw Instruction_EnemyProjectile_Torizo_ResetPosition                  ;86A3D5;
     dw Instruction_MoveRandomlyWithinXRadius_YRadius                     ;86A3D7;
     db $0F,$00,$0F,$00                                                   ;86A3D9;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86A3DD;
-    db $24                                                               ;86A3DF;
-    dw $0002                                                             ;86A3E0;
-    dw EnemyProjSpritemaps_Common_0                                      ;86A3E2;
-    dw $0002                                                             ;86A3E4;
-    dw EnemyProjSpritemaps_Common_1                                      ;86A3E6;
-    dw $0003                                                             ;86A3E8;
-    dw EnemyProjSpritemaps_Common_2                                      ;86A3EA;
-    dw $0003                                                             ;86A3EC;
-    dw EnemyProjSpritemaps_Common_3                                      ;86A3EE;
-    dw $0002                                                             ;86A3F0;
-    dw EnemyProjSpritemaps_Common_4                                      ;86A3F2;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $24      ;86A3DD;
+    dw $0002,EnemyProjSpritemaps_Common_0                                ;86A3E0;
+    dw $0002,EnemyProjSpritemaps_Common_1                                ;86A3E4;
+    dw $0003,EnemyProjSpritemaps_Common_2                                ;86A3E8;
+    dw $0003,EnemyProjSpritemaps_Common_3                                ;86A3EC;
+    dw $0002,EnemyProjSpritemaps_Common_4                                ;86A3F0;
     dw Instruction_EnemyProjectile_DecrementTimer_GotoYIfNonZero         ;86A3F4;
     dw InstList_EnemyProjectile_BombTorizoLowHealthExplosion_1           ;86A3F6;
     dw Instruction_EnemyProjectile_Delete                                ;86A3F8;
 
 InstList_EnemyProjectile_TorizoDeathExplosion_0:
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86A3FA;
-    dw Instruction_EnemyProjectile_Properties_OrY                        ;86A3FC;
-    dw $3000                                                             ;86A3FE;
+    dw Instruction_EnemyProjectile_Properties_OrY,$3000                  ;86A3FC;
     dw Instruction_EnemyProjectile_GotoY_Probability_1_4                 ;86A400;
     dw InstList_EnemyProjectile_TorizoDeathExplosion_2                   ;86A402;
-    dw Instruction_EnemyProjectile_TimerInY                              ;86A404;
-    dw $0002                                                             ;86A406;
+    dw Instruction_EnemyProjectile_TimerInY,$0002                        ;86A404;
 
 InstList_EnemyProjectile_TorizoDeathExplosion_1:
     dw Instruction_EnemyProjectile_Torizo_ResetPosition                  ;86A408;
     dw Instruction_MoveRandomlyWithinXRadius_YRadius                     ;86A40A;
     db $1F,$00,$3F,$10                                                   ;86A40C;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86A410;
-    db $24                                                               ;86A412;
-    dw $0004                                                             ;86A413;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_0                       ;86A415;
-    dw $0006                                                             ;86A417;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_1                       ;86A419;
-    dw $0005                                                             ;86A41B;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_2                       ;86A41D;
-    dw $0005                                                             ;86A41F;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_3                       ;86A421;
-    dw $0005                                                             ;86A423;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_4                       ;86A425;
-    dw $0006                                                             ;86A427;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_5                       ;86A429;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $24      ;86A410;
+    dw $0004,EnemyProjSpritemaps_Common_SmallExplosion_0                 ;86A413;
+    dw $0006,EnemyProjSpritemaps_Common_SmallExplosion_1                 ;86A417;
+    dw $0005,EnemyProjSpritemaps_Common_SmallExplosion_2                 ;86A41B;
+    dw $0005,EnemyProjSpritemaps_Common_SmallExplosion_3                 ;86A41F;
+    dw $0005,EnemyProjSpritemaps_Common_SmallExplosion_4                 ;86A423;
+    dw $0006,EnemyProjSpritemaps_Common_SmallExplosion_5                 ;86A427;
     dw Instruction_EnemyProjectile_DecrementTimer_GotoYIfNonZero         ;86A42B;
     dw InstList_EnemyProjectile_TorizoDeathExplosion_1                   ;86A42D;
     dw Instruction_EnemyProjectile_Delete                                ;86A42F;
 
 InstList_EnemyProjectile_TorizoDeathExplosion_2:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86A431;
-    dw $0002                                                             ;86A433;
+    dw Instruction_EnemyProjectile_TimerInY,$0002                        ;86A431;
 
 InstList_EnemyProjectile_TorizoDeathExplosion_3:
     dw Instruction_EnemyProjectile_Torizo_ResetPosition                  ;86A435;
     dw Instruction_MoveRandomlyWithinXRadius_YRadius                     ;86A437;
     db $1F,$00,$3F,$04                                                   ;86A439;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86A43D;
-    db $24                                                               ;86A43F;
-    dw $0008                                                             ;86A440;
-    dw EnemyProjSpritemaps_Common_Smoke_0                                ;86A442;
-    dw $0008                                                             ;86A444;
-    dw EnemyProjSpritemaps_Common_Smoke_1                                ;86A446;
-    dw $0008                                                             ;86A448;
-    dw EnemyProjSpritemaps_Common_Smoke_2                                ;86A44A;
-    dw $0008                                                             ;86A44C;
-    dw EnemyProjSpritemaps_Common_Smoke_3                                ;86A44E;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $24      ;86A43D;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_0                          ;86A440;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_1                          ;86A444;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_2                          ;86A448;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_3                          ;86A44C;
     dw Instruction_EnemyProjectile_DecrementTimer_GotoYIfNonZero         ;86A450;
     dw InstList_EnemyProjectile_TorizoDeathExplosion_3                   ;86A452;
     dw Instruction_EnemyProjectile_Delete                                ;86A454;
@@ -5237,25 +5116,20 @@ Instruction_EnemyProjectile_GotoY_Probability_1_4:
 
 
 InstList_EnemyProj_BombTorizoLowHealthDrool_4FrameDelay:
-    dw $0002                                                             ;86A46A;
-    dw EnemyProjSpritemaps_Blank_Default                                 ;86A46C;
+    dw $0002,EnemyProjSpritemaps_Blank_Default                           ;86A46A;
 
 InstList_EnemyProj_BombTorizoLowHealthDrool_2FrameDelay:
-    dw $0002                                                             ;86A46E;
-    dw EnemyProjSpritemaps_Blank_Default                                 ;86A470;
+    dw $0002,EnemyProjSpritemaps_Blank_Default                           ;86A46E;
 
 InstList_EnemyProj_BombTorizoLowHealthDrool_NoDelay_0:
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86A472;
     dw PreInst_EnemyProjectile_BombTorizoLowHealthDrool_Falling          ;86A474;
-    dw Instruction_EnemyProjectile_Properties_OrY                        ;86A476;
-    dw $3000,$0005                                                       ;86A478;
-    dw UNUSED_EnemyProjSpritemaps_BombTorizoLowHealthDrool_0_8D8C54      ;86A47C;
-    dw Instruction_EnemyProjectile_Properties_AndY                       ;86A47E;
-    dw $EFFF                                                             ;86A480;
+    dw Instruction_EnemyProjectile_Properties_OrY,$3000                  ;86A476;
+    dw $0005,UNUSED_EnemyProjSpritemaps_BombTorizoLowHealthDrool_0_8D8C54 ;86A478;
+    dw Instruction_EnemyProjectile_Properties_AndY,$EFFF                 ;86A47E;
 
 InstList_EnemyProj_BombTorizoLowHealthDrool_NoDelay_1:
-    dw $0040                                                             ;86A482;
-    dw UNUSED_EnemyProjSpritemaps_BombTorizoLowHealthDrool_0_8D8C54      ;86A484;
+    dw $0040,UNUSED_EnemyProjSpritemaps_BombTorizoLowHealthDrool_0_8D8C54 ;86A482;
     dw Instruction_EnemyProjectile_GotoY                                 ;86A486;
     dw InstList_EnemyProj_BombTorizoLowHealthDrool_NoDelay_1             ;86A488;
 
@@ -5265,212 +5139,154 @@ InstList_EnemyProj_BombTorizoLowHealthDrool_HitWall:
 
 InstList_EnemyProj_BombTorizoLowHealthDrool_HitFloor:
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86A48E;
-    dw $0008                                                             ;86A490;
-    dw UNUSED_EnemyProjSpritemaps_BombTorizoLowHealthDrool_1_8D8C5B      ;86A492;
-    dw $0008                                                             ;86A494;
-    dw UNUSED_EnemyProjSpritemaps_BombTorizoLowHealthDrool_2_8D8C62      ;86A496;
-    dw $0008                                                             ;86A498;
-    dw UNUSED_EnemyProjSpritemaps_BombTorizoLowHealthDrool_3_8D8C69      ;86A49A;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BombTorizoLowHealthDrool_1_8D8C5B ;86A490;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BombTorizoLowHealthDrool_2_8D8C62 ;86A494;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BombTorizoLowHealthDrool_3_8D8C69 ;86A498;
     dw Instruction_EnemyProjectile_Delete                                ;86A49C;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_EnemyProjectile_BombTorizo_86A49E:
-    dw Instruction_EnemyProjectile_Properties_OrY                        ;86A49E;
-    dw $3000,$0024                                                       ;86A4A0;
-    dw UNUSED_EnemyProjSpritemaps_BombTorizoLowHealthDrool_0_8D8C54      ;86A4A4;
+    dw Instruction_EnemyProjectile_Properties_OrY,$3000                  ;86A49E;
+    dw $0024,UNUSED_EnemyProjSpritemaps_BombTorizoLowHealthDrool_0_8D8C54 ;86A4A0;
     dw Instruction_EnemyProjectile_GotoY                                 ;86A4A6;
     dw InstList_EnemyProj_BombTorizoLowHealthDrool_HitFloor              ;86A4A8;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_EnemyProjectile_BombTorizoExplosionSwipe:
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max1               ;86A4AA;
-    db $26                                                               ;86A4AC;
-    dw $0005                                                             ;86A4AD;
-    dw EnemyProjSpritemaps_Common_0                                      ;86A4AF;
-    dw $0005                                                             ;86A4B1;
-    dw EnemyProjSpritemaps_Common_1                                      ;86A4B3;
-    dw $0005                                                             ;86A4B5;
-    dw EnemyProjSpritemaps_Common_2                                      ;86A4B7;
-    dw $0005                                                             ;86A4B9;
-    dw EnemyProjSpritemaps_Common_3                                      ;86A4BB;
-    dw $0005                                                             ;86A4BD;
-    dw EnemyProjSpritemaps_Common_4                                      ;86A4BF;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max1 : db $26      ;86A4AA;
+    dw $0005,EnemyProjSpritemaps_Common_0                                ;86A4AD;
+    dw $0005,EnemyProjSpritemaps_Common_1                                ;86A4B1;
+    dw $0005,EnemyProjSpritemaps_Common_2                                ;86A4B5;
+    dw $0005,EnemyProjSpritemaps_Common_3                                ;86A4B9;
+    dw $0005,EnemyProjSpritemaps_Common_4                                ;86A4BD;
     dw Instruction_EnemyProjectile_Delete                                ;86A4C1;
 
 InstList_EnemyProjectile_BombTorizoChozoBreaking_Index0:
-    dw $0080                                                             ;86A4C3;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_0                     ;86A4C5;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86A4C7;
-    db $0C                                                               ;86A4C9;
+    dw $0080,EnemyProjSpritemaps_BombTorizoChozoBreaking_0               ;86A4C3;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $0C      ;86A4C7;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86A4CA;
     dw PreInst_EnemyProjectile_BombTorizoChozoBreaking_Falling           ;86A4CC;
-    dw $0070                                                             ;86A4CE;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_0                     ;86A4D0;
+    dw $0070,EnemyProjSpritemaps_BombTorizoChozoBreaking_0               ;86A4CE;
     dw Instruction_EnemyProjectile_Delete                                ;86A4D2;
 
 InstList_EnemyProjectile_BombTorizoChozoBreaking_Index2:
-    dw $0078                                                             ;86A4D4;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_1                     ;86A4D6;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86A4D8;
-    db $0C                                                               ;86A4DA;
+    dw $0078,EnemyProjSpritemaps_BombTorizoChozoBreaking_1               ;86A4D4;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $0C      ;86A4D8;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86A4DB;
     dw PreInst_EnemyProjectile_BombTorizoChozoBreaking_Falling           ;86A4DD;
-    dw $0070                                                             ;86A4DF;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_1                     ;86A4E1;
+    dw $0070,EnemyProjSpritemaps_BombTorizoChozoBreaking_1               ;86A4DF;
     dw Instruction_EnemyProjectile_Delete                                ;86A4E3;
 
 InstList_EnemyProjectile_BombTorizoChozoBreaking_Index4:
-    dw $0070                                                             ;86A4E5;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_2                     ;86A4E7;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86A4E9;
-    db $0C                                                               ;86A4EB;
+    dw $0070,EnemyProjSpritemaps_BombTorizoChozoBreaking_2               ;86A4E5;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $0C      ;86A4E9;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86A4EC;
     dw PreInst_EnemyProjectile_BombTorizoChozoBreaking_Falling           ;86A4EE;
-    dw $0070                                                             ;86A4F0;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_2                     ;86A4F2;
+    dw $0070,EnemyProjSpritemaps_BombTorizoChozoBreaking_2               ;86A4F0;
     dw Instruction_EnemyProjectile_Delete                                ;86A4F4;
 
 InstList_EnemyProjectile_BombTorizoChozoBreaking_Index6:
-    dw $0068                                                             ;86A4F6;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_3                     ;86A4F8;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86A4FA;
-    db $0C                                                               ;86A4FC;
+    dw $0068,EnemyProjSpritemaps_BombTorizoChozoBreaking_3               ;86A4F6;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $0C      ;86A4FA;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86A4FD;
     dw PreInst_EnemyProjectile_BombTorizoChozoBreaking_Falling           ;86A4FF;
-    dw $0070                                                             ;86A501;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_3                     ;86A503;
+    dw $0070,EnemyProjSpritemaps_BombTorizoChozoBreaking_3               ;86A501;
     dw Instruction_EnemyProjectile_Delete                                ;86A505;
 
 InstList_EnemyProjectile_BombTorizoChozoBreaking_Index8:
-    dw $0060                                                             ;86A507;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_4                     ;86A509;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86A50B;
-    db $0C                                                               ;86A50D;
+    dw $0060,EnemyProjSpritemaps_BombTorizoChozoBreaking_4               ;86A507;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $0C      ;86A50B;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86A50E;
     dw PreInst_EnemyProjectile_BombTorizoChozoBreaking_Falling           ;86A510;
-    dw $0070                                                             ;86A512;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_4                     ;86A514;
+    dw $0070,EnemyProjSpritemaps_BombTorizoChozoBreaking_4               ;86A512;
     dw Instruction_EnemyProjectile_Delete                                ;86A516;
 
 InstList_EnemyProjectile_BombTorizoChozoBreaking_IndexA:
-    dw $0058                                                             ;86A518;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_5                     ;86A51A;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86A51C;
-    db $0C                                                               ;86A51E;
+    dw $0058,EnemyProjSpritemaps_BombTorizoChozoBreaking_5               ;86A518;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $0C      ;86A51C;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86A51F;
     dw PreInst_EnemyProjectile_BombTorizoChozoBreaking_Falling           ;86A521;
-    dw $0070                                                             ;86A523;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_5                     ;86A525;
+    dw $0070,EnemyProjSpritemaps_BombTorizoChozoBreaking_5               ;86A523;
     dw Instruction_EnemyProjectile_Delete                                ;86A527;
 
 InstList_EnemyProjectile_BombTorizoChozoBreaking_IndexC:
-    dw $0050                                                             ;86A529;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_6                     ;86A52B;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86A52D;
-    db $0C                                                               ;86A52F;
+    dw $0050,EnemyProjSpritemaps_BombTorizoChozoBreaking_6               ;86A529;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $0C      ;86A52D;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86A530;
     dw PreInst_EnemyProjectile_BombTorizoChozoBreaking_Falling           ;86A532;
-    dw $0070                                                             ;86A534;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_6                     ;86A536;
+    dw $0070,EnemyProjSpritemaps_BombTorizoChozoBreaking_6               ;86A534;
     dw Instruction_EnemyProjectile_Delete                                ;86A538;
 
 InstList_EnemyProjectile_BombTorizoChozoBreaking_IndexE:
-    dw $0048                                                             ;86A53A;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_7                     ;86A53C;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86A53E;
-    db $0C                                                               ;86A540;
+    dw $0048,EnemyProjSpritemaps_BombTorizoChozoBreaking_7               ;86A53A;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $0C      ;86A53E;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86A541;
     dw PreInst_EnemyProjectile_BombTorizoChozoBreaking_Falling           ;86A543;
-    dw $0070                                                             ;86A545;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_7                     ;86A547;
+    dw $0070,EnemyProjSpritemaps_BombTorizoChozoBreaking_7               ;86A545;
     dw Instruction_EnemyProjectile_Delete                                ;86A549;
 
 InstList_EnemyProjectile_BombTorizoChozoBreaking_Index10:
-    dw $0040                                                             ;86A54B;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_8                     ;86A54D;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86A54F;
-    db $0C                                                               ;86A551;
+    dw $0040,EnemyProjSpritemaps_BombTorizoChozoBreaking_8               ;86A54B;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $0C      ;86A54F;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86A552;
     dw PreInst_EnemyProjectile_BombTorizoChozoBreaking_Falling           ;86A554;
-    dw $0070                                                             ;86A556;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_8                     ;86A558;
+    dw $0070,EnemyProjSpritemaps_BombTorizoChozoBreaking_8               ;86A556;
     dw Instruction_EnemyProjectile_Delete                                ;86A55A;
 
 InstList_EnemyProjectile_BombTorizoChozoBreaking_Index12:
-    dw $0040                                                             ;86A55C;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_9                     ;86A55E;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86A560;
-    db $0C                                                               ;86A562;
+    dw $0040,EnemyProjSpritemaps_BombTorizoChozoBreaking_9               ;86A55C;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $0C      ;86A560;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86A563;
     dw PreInst_EnemyProjectile_BombTorizoChozoBreaking_Falling           ;86A565;
-    dw $0070                                                             ;86A567;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_9                     ;86A569;
+    dw $0070,EnemyProjSpritemaps_BombTorizoChozoBreaking_9               ;86A567;
     dw Instruction_EnemyProjectile_Delete                                ;86A56B;
 
 InstList_EnemyProjectile_BombTorizoChozoBreaking_Index14:
-    dw $0040                                                             ;86A56D;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_A                     ;86A56F;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86A571;
-    db $0C                                                               ;86A573;
+    dw $0040,EnemyProjSpritemaps_BombTorizoChozoBreaking_A               ;86A56D;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $0C      ;86A571;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86A574;
     dw PreInst_EnemyProjectile_BombTorizoChozoBreaking_Falling           ;86A576;
-    dw $0070                                                             ;86A578;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_A                     ;86A57A;
+    dw $0070,EnemyProjSpritemaps_BombTorizoChozoBreaking_A               ;86A578;
     dw Instruction_EnemyProjectile_Delete                                ;86A57C;
 
 InstList_EnemyProjectile_BombTorizoChozoBreaking_Index16:
-    dw $0040                                                             ;86A57E;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_B                     ;86A580;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86A582;
-    db $0C                                                               ;86A584;
+    dw $0040,EnemyProjSpritemaps_BombTorizoChozoBreaking_B               ;86A57E;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $0C      ;86A582;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86A585;
     dw PreInst_EnemyProjectile_BombTorizoChozoBreaking_Falling           ;86A587;
-    dw $0070                                                             ;86A589;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_B                     ;86A58B;
+    dw $0070,EnemyProjSpritemaps_BombTorizoChozoBreaking_B               ;86A589;
     dw Instruction_EnemyProjectile_Delete                                ;86A58D;
 
 InstList_EnemyProjectile_BombTorizoChozoBreaking_Index18:
-    dw $0040                                                             ;86A58F;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_C                     ;86A591;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86A593;
-    db $0C                                                               ;86A595;
+    dw $0040,EnemyProjSpritemaps_BombTorizoChozoBreaking_C               ;86A58F;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $0C      ;86A593;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86A596;
     dw PreInst_EnemyProjectile_BombTorizoChozoBreaking_Falling           ;86A598;
-    dw $0070                                                             ;86A59A;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_C                     ;86A59C;
+    dw $0070,EnemyProjSpritemaps_BombTorizoChozoBreaking_C               ;86A59A;
     dw Instruction_EnemyProjectile_Delete                                ;86A59E;
 
 InstList_EnemyProjectile_BombTorizoChozoBreaking_Index1A:
-    dw $0040                                                             ;86A5A0;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_D                     ;86A5A2;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86A5A4;
-    db $0C                                                               ;86A5A6;
+    dw $0040,EnemyProjSpritemaps_BombTorizoChozoBreaking_D               ;86A5A0;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $0C      ;86A5A4;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86A5A7;
     dw PreInst_EnemyProjectile_BombTorizoChozoBreaking_Falling           ;86A5A9;
-    dw $0070                                                             ;86A5AB;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_D                     ;86A5AD;
+    dw $0070,EnemyProjSpritemaps_BombTorizoChozoBreaking_D               ;86A5AB;
     dw Instruction_EnemyProjectile_Delete                                ;86A5AF;
 
 InstList_EnemyProjectile_BombTorizoChozoBreaking_Index1C:
-    dw $0040                                                             ;86A5B1;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_E                     ;86A5B3;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86A5B5;
-    db $0C                                                               ;86A5B7;
+    dw $0040,EnemyProjSpritemaps_BombTorizoChozoBreaking_E               ;86A5B1;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $0C      ;86A5B5;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86A5B8;
     dw PreInst_EnemyProjectile_BombTorizoChozoBreaking_Falling           ;86A5BA;
-    dw $0070                                                             ;86A5BC;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_E                     ;86A5BE;
+    dw $0070,EnemyProjSpritemaps_BombTorizoChozoBreaking_E               ;86A5BC;
     dw Instruction_EnemyProjectile_Delete                                ;86A5C0;
 
 InstList_EnemyProjectile_BombTorizoChozoBreaking_Index1E:
-    dw $0040                                                             ;86A5C2;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_F                     ;86A5C4;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86A5C6;
-    db $0C                                                               ;86A5C8;
+    dw $0040,EnemyProjSpritemaps_BombTorizoChozoBreaking_F               ;86A5C2;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $0C      ;86A5C6;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86A5C9;
     dw PreInst_EnemyProjectile_BombTorizoChozoBreaking_Falling           ;86A5CB;
-    dw $0070                                                             ;86A5CD;
-    dw EnemyProjSpritemaps_BombTorizoChozoBreaking_F                     ;86A5CF;
+    dw $0070,EnemyProjSpritemaps_BombTorizoChozoBreaking_F               ;86A5CD;
     dw Instruction_EnemyProjectile_Delete                                ;86A5D1;
 
 InitAI_EnemyProjectile_BombTorizoContinuousDrool:
@@ -5660,12 +5476,12 @@ InitAI_EnemyProjectile_BombTorizoExplosiveSwipe:
 
 
 .Xpositions:
-    dw $FFE2,$FFD8,$FFD1,$FFE1,$FFEB,$FFFF,$FFE4,$FFD5                   ;86A738;
-    dw $FFD0,$FFE1,$FFEB                                                 ;86A748;
+    dw $FFE2,$FFD8,$FFD1,$FFE1,$FFEB,$FFFF,$FFE4,$FFD5,$FFD0,$FFE1       ;86A738;
+    dw $FFEB ; Unused
 
 .Yposition:
-    dw $FFCC,$FFE4,$FFF5,$0009,$0015,$0014,$FFCC,$FFE5                   ;86A74E;
-    dw $FFF6,$0009,$0014                                                 ;86A75E;
+    dw $FFCC,$FFE4,$FFF5,$0009,$0015,$0014,$FFCC,$FFE5,$FFF6,$0009       ;86A74E;
+    dw $0014 ; Unused
 
 InitAI_EnemyProj_BombTorizoChozoBreaking:
     LDX.W $1C27                                                          ;86A764;
@@ -5711,7 +5527,7 @@ InitAI_EnemyProj_BombTorizoChozoBreaking:
     dw InstList_EnemyProjectile_BombTorizoChozoBreaking_IndexA           ;86A7B5;
     dw InstList_EnemyProjectile_BombTorizoChozoBreaking_IndexC           ;86A7B7;
     dw InstList_EnemyProjectile_BombTorizoChozoBreaking_IndexE           ;86A7B9;
-    dw InstList_EnemyProjectile_BombTorizoChozoBreaking_Index10          ;86A7BB;
+    dw InstList_EnemyProjectile_BombTorizoChozoBreaking_Index10          ;86A7BB; The rest are unused
     dw InstList_EnemyProjectile_BombTorizoChozoBreaking_Index12          ;86A7BD;
     dw InstList_EnemyProjectile_BombTorizoChozoBreaking_Index14          ;86A7BF;
     dw InstList_EnemyProjectile_BombTorizoChozoBreaking_Index16          ;86A7C1;
@@ -5722,7 +5538,7 @@ InitAI_EnemyProj_BombTorizoChozoBreaking:
 
 .Xoffsets:
     dw $0008,$0018,$FFF8,$0008,$0018,$FFF8,$0008,$0018                   ;86A7CB;
-    dw $0008,$FFF8,$0018,$0008,$FFF8,$0018,$0008,$FFF8                   ;86A7DB;
+    dw $0008,$FFF8,$0018,$0008,$FFF8,$0018,$0008,$FFF8 ; Unused
 
 .Yoffsets:
     dw $FFF8,$FFF8,$0008,$0008,$0008,$0018,$0018,$0018                   ;86A7EB;
@@ -5760,12 +5576,16 @@ InitAI_EnemyProjectile_BombTorizoLowHealthExplosion:
     STA.W $1B23,Y                                                        ;86A855;
     RTS                                                                  ;86A858;
 
-
-.Xoffsets:
-    dw $0000,$000C,$FFF4,$0000,$0010,$FFF0                               ;86A859;
-
-.Yoffsets:
-    dw $FFF8,$FFF8,$FFF8,$FFEC,$FFEC,$FFEC                               ;86A865;
+;        _______________ Unused
+;       |      _________ Facing right
+;       |     |      ___ Facing left
+;       |     |     |
+.Xoffsets:                                                               ;86A859;
+    dw $0000,$000C,$FFF4
+    dw $0000,$0010,$FFF0                               
+.Yoffsets:                                                               ;86A865;
+    dw $FFF8,$FFF8,$FFF8
+    dw $FFEC,$FFEC,$FFEC                               
 
 InitAI_EnemyProjectile_TorizoDeathExplosion:
     LDX.W $0E54                                                          ;86A871;
@@ -5911,69 +5731,69 @@ endif ; !FEATURE_KEEP_UNREFERENCED
 
 
 EnemyProjectile_BombTorizoContinuousDrool:
-    dw InitAI_EnemyProjectile_BombTorizoContinuousDrool                  ;86A95B;
-    dw RTS_8684FB                                                        ;86A95D;
-    dw InstList_EnemyProj_BombTorizoLowHealthDrool_NoDelay_0             ;86A95F;
-    db $01,$02                                                           ;86A961;
-    dw $3000                                                             ;86A963;
-    dw $0000                                                             ;86A965;
-    dw InstList_EnemyProjectile_Delete                                   ;86A967;
+    dw InitAI_EnemyProjectile_BombTorizoContinuousDrool                  ;86A95B; Initialisation AI
+    dw RTS_8684FB                                                        ;86A95D; Initial pre-instruction
+    dw InstList_EnemyProj_BombTorizoLowHealthDrool_NoDelay_0             ;86A95F; Initial instruction list
+    db $01,$02                                                           ;86A961; X,Y radius
+    dw $3000                                                             ;86A963; Properties
+    dw $0000                                                             ;86A965; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86A967; Shot instruction list
 
 EnemyProjectile_BombTorizoInitialDrool:
-    dw InitAI_EnemyProjectile_BombTorizoInitialDrool                     ;86A969;
-    dw RTS_8684FB                                                        ;86A96B;
-    dw InstList_EnemyProj_BombTorizoLowHealthDrool_NoDelay_0             ;86A96D;
-    db $01,$02                                                           ;86A96F;
-    dw $2000                                                             ;86A971;
-    dw $0000                                                             ;86A973;
-    dw InstList_EnemyProjectile_Delete                                   ;86A975;
+    dw InitAI_EnemyProjectile_BombTorizoInitialDrool                     ;86A969; Initialisation AI
+    dw RTS_8684FB                                                        ;86A96B; Initial pre-instruction
+    dw InstList_EnemyProj_BombTorizoLowHealthDrool_NoDelay_0             ;86A96D; Initial instruction list
+    db $01,$02                                                           ;86A96F; X,Y radius
+    dw $2000                                                             ;86A971; Properties
+    dw $0000                                                             ;86A973; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86A975; Shot instruction list
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_EnemyProjectile_BombTorizo_86A977:
-    dw UNUSED_InitAI_EnemyProjectile_BombTorizo_86A6C7                   ;86A977;
-    dw PreInst_EnemyProjectile_BombTorizoChozoBreaking_Falling           ;86A979;
-    dw UNUSED_InstList_EnemyProjectile_BombTorizo_86A49E                 ;86A97B;
-    db $00,$00                                                           ;86A97D;
-    dw $3000                                                             ;86A97F;
-    dw $0000                                                             ;86A981;
-    dw InstList_EnemyProjectile_Delete                                   ;86A983;
+    dw UNUSED_InitAI_EnemyProjectile_BombTorizo_86A6C7                   ;86A977; Initialisation AI
+    dw PreInst_EnemyProjectile_BombTorizoChozoBreaking_Falling           ;86A979; Initial pre-instruction
+    dw UNUSED_InstList_EnemyProjectile_BombTorizo_86A49E                 ;86A97B; Initial instruction list
+    db $00,$00                                                           ;86A97D; X,Y radius
+    dw $3000                                                             ;86A97F; Properties
+    dw $0000                                                             ;86A981; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86A983; Shot instruction list
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 EnemyProjectile_BombTorizoExplosiveSwipe:
-    dw InitAI_EnemyProjectile_BombTorizoExplosiveSwipe                   ;86A985;
-    dw RTS_86A919                                                        ;86A987;
-    dw InstList_EnemyProjectile_BombTorizoExplosionSwipe                 ;86A989;
-    db $10,$10                                                           ;86A98B;
-    dw $500A                                                             ;86A98D;
-    dw $0000                                                             ;86A98F;
-    dw InstList_EnemyProjectile_Delete                                   ;86A991;
+    dw InitAI_EnemyProjectile_BombTorizoExplosiveSwipe                   ;86A985; Initialisation AI
+    dw RTS_86A919                                                        ;86A987; Initial pre-instruction
+    dw InstList_EnemyProjectile_BombTorizoExplosionSwipe                 ;86A989; Initial instruction list
+    db $10,$10                                                           ;86A98B; X,Y radius
+    dw $500A                                                             ;86A98D; Properties
+    dw $0000                                                             ;86A98F; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86A991; Shot instruction list
 
 EnemyProjectile_BombTorizoStatueBreaking:
-    dw InitAI_EnemyProj_BombTorizoChozoBreaking                          ;86A993;
-    dw RTS_8684FB                                                        ;86A995;
-    dw InstList_EnemyProjectile_BombTorizoChozoBreaking_Index10          ;86A997;
-    db $08,$08                                                           ;86A999;
-    dw $3000                                                             ;86A99B;
-    dw $0000                                                             ;86A99D;
-    dw InstList_EnemyProjectile_Delete                                   ;86A99F;
+    dw InitAI_EnemyProj_BombTorizoChozoBreaking                          ;86A993; Initialisation AI
+    dw RTS_8684FB                                                        ;86A995; Initial pre-instruction
+    dw InstList_EnemyProjectile_BombTorizoChozoBreaking_Index10          ;86A997; Initial instruction list
+    db $08,$08                                                           ;86A999; X,Y radius
+    dw $3000                                                             ;86A99B; Properties
+    dw $0000                                                             ;86A99D; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86A99F; Shot instruction list
 
 EnemyProjectile_BombTorizoLowHealthExplosion:
-    dw InitAI_EnemyProjectile_BombTorizoLowHealthExplosion               ;86A9A1;
-    dw RTS_8684FB                                                        ;86A9A3;
-    dw InstList_EnemyProjectile_BombTorizoLowHealthExplosion_0           ;86A9A5;
-    db $04,$10                                                           ;86A9A7;
-    dw $3000                                                             ;86A9A9;
-    dw $0000                                                             ;86A9AB;
-    dw InstList_EnemyProjectile_Delete                                   ;86A9AD;
+    dw InitAI_EnemyProjectile_BombTorizoLowHealthExplosion               ;86A9A1; Initialisation AI
+    dw RTS_8684FB                                                        ;86A9A3; Initial pre-instruction
+    dw InstList_EnemyProjectile_BombTorizoLowHealthExplosion_0           ;86A9A5; Initial instruction list
+    db $04,$10                                                           ;86A9A7; X,Y radius
+    dw $3000                                                             ;86A9A9; Properties
+    dw $0000                                                             ;86A9AB; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86A9AD; Shot instruction list
 
 EnemyProjectile_BombTorizoDeathExplosion:
-    dw InitAI_EnemyProjectile_TorizoDeathExplosion                       ;86A9AF;
-    dw RTS_8684FB                                                        ;86A9B1;
-    dw InstList_EnemyProjectile_TorizoDeathExplosion_0                   ;86A9B3;
-    db $04,$10                                                           ;86A9B5;
-    dw $3000                                                             ;86A9B7;
-    dw $0000                                                             ;86A9B9;
-    dw InstList_EnemyProjectile_Delete                                   ;86A9BB;
+    dw InitAI_EnemyProjectile_TorizoDeathExplosion                       ;86A9AF; Initialisation AI
+    dw RTS_8684FB                                                        ;86A9B1; Initial pre-instruction
+    dw InstList_EnemyProjectile_TorizoDeathExplosion_0                   ;86A9B3; Initial instruction list
+    db $04,$10                                                           ;86A9B5; X,Y radius
+    dw $3000                                                             ;86A9B7; Properties
+    dw $0000                                                             ;86A9B9; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86A9BB; Shot instruction list
 
 
 if !FEATURE_KEEP_UNREFERENCED
@@ -6062,105 +5882,74 @@ UNUSED_PreInstruction_EnemyProjectile_QuestionMark:
 
 
 UNUSED_InstList_EnemyProjectile_QuestionMark_0_86AADB:
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib3_Max6               ;86AADB;
-    db $09                                                               ;86AADD;
-    dw $012C                                                             ;86AADE;
-    dw UNUSED_EnemyProjSpritemaps_QuestionMark_8D8C4D                    ;86AAE0;
-    dw Instruction_EnemyProjectile_TimerInY                              ;86AAE2;
-    dw $0018                                                             ;86AAE4;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib3_Max6 : db $09      ;86AADB;
+    dw $012C,UNUSED_EnemyProjSpritemaps_QuestionMark_8D8C4D              ;86AADE;
+    dw Instruction_EnemyProjectile_TimerInY,$0018                        ;86AAE2;
 
 UNUSED_InstList_EnemyProjectile_QuestionMark_1_86AAE6:
-    dw $0002                                                             ;86AAE6;
-    dw UNUSED_EnemyProjSpritemaps_QuestionMark_8D8C4D                    ;86AAE8;
-    dw $0002                                                             ;86AAEA;
-    dw EnemyProjSpritemaps_Blank_Default                                 ;86AAEC;
+    dw $0002,UNUSED_EnemyProjSpritemaps_QuestionMark_8D8C4D              ;86AAE6;
+    dw $0002,EnemyProjSpritemaps_Blank_Default                           ;86AAEA;
     dw Instruction_EnemyProjectile_DecrementTimer_GotoYIfNonZero         ;86AAEE;
     dw UNUSED_InstList_EnemyProjectile_QuestionMark_1_86AAE6             ;86AAF0;
 
 UNUSED_InstList_EnemyProjectile_Shot_QuestionMark_86AAF2:
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86AAF2;
-    db $0D                                                               ;86AAF4;
-    dw $0008                                                             ;86AAF5;
-    dw EnemyProjSpritemaps_Common_Smoke_0                                ;86AAF7;
-    dw $0008                                                             ;86AAF9;
-    dw EnemyProjSpritemaps_Common_Smoke_1                                ;86AAFB;
-    dw $0008                                                             ;86AAFD;
-    dw EnemyProjSpritemaps_Common_Smoke_2                                ;86AAFF;
-    dw $0008                                                             ;86AB01;
-    dw EnemyProjSpritemaps_Common_Smoke_3                                ;86AB03;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $0D      ;86AAF2;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_0                          ;86AAF5;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_1                          ;86AAF9;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_2                          ;86AAFD;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_3                          ;86AB01;
     dw Instruction_EnemyProjectile_Delete                                ;86AB05;
 
 UNUSED_EnemyProjectile_QuestionMark_86AB07:
-    dw UNUSED_InitAI_EnemyProjectile_QuestionMark_86AA3D                 ;86AB07;
-    dw UNUSED_PreInstruction_EnemyProjectile_QuestionMark                ;86AB09;
-    dw UNUSED_InstList_EnemyProjectile_QuestionMark_0_86AADB             ;86AB0B;
-    db $00,$00                                                           ;86AB0D;
-    dw $B000,$0000                                                       ;86AB0F;
-    dw UNUSED_InstList_EnemyProjectile_Shot_QuestionMark_86AAF2          ;86AB13;
+    dw UNUSED_InitAI_EnemyProjectile_QuestionMark_86AA3D                 ;86AB07; Initialisation AI
+    dw UNUSED_PreInstruction_EnemyProjectile_QuestionMark                ;86AB09; Initial pre-instruction
+    dw UNUSED_InstList_EnemyProjectile_QuestionMark_0_86AADB             ;86AB0B; Initial instruction list
+    db $00,$00                                                           ;86AB0D; X,Y radius
+    dw $B000,$0000                                                       ;86AB0F; Properties, Hit instruction list
+    dw UNUSED_InstList_EnemyProjectile_Shot_QuestionMark_86AAF2          ;86AB13; Shot instruction list
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_EnemyProjectile_TorizoChozoOrbs_Left:
-    dw $0055                                                             ;86AB15;
-    dw EnemyProjSpritemaps_TorizoChozoOrbs_0                             ;86AB17;
+    dw $0055,EnemyProjSpritemaps_TorizoChozoOrbs_0                       ;86AB15;
     dw Instruction_EnemyProjectile_GotoY                                 ;86AB19;
     dw InstList_EnemyProjectile_TorizoChozoOrbs_Left                     ;86AB1B;
 
 InstList_EnemyProjectile_TorizoChozoOrbs_Right:
-    dw $0055                                                             ;86AB1D;
-    dw EnemyProjSpritemaps_TorizoChozoOrbs_1                             ;86AB1F;
+    dw $0055,EnemyProjSpritemaps_TorizoChozoOrbs_1                       ;86AB1D;
     dw Instruction_EnemyProjectile_GotoY                                 ;86AB21;
     dw InstList_EnemyProjectile_TorizoChozoOrbs_Right                    ;86AB23;
 
 InstList_EnemyProjectile_TorizoChozoOrbs_BreakOnWall:
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86AB25;
-    dw Instruction_EnemyProjectile_Properties_OrY                        ;86AB27;
-    dw $5000,$0004                                                       ;86AB29;
-    dw EnemyProjSpritemaps_Common_0                                      ;86AB2D;
-    dw $0004                                                             ;86AB2F;
-    dw EnemyProjSpritemaps_Common_1                                      ;86AB31;
-    dw $0004                                                             ;86AB33;
-    dw EnemyProjSpritemaps_Common_2                                      ;86AB35;
-    dw $0004                                                             ;86AB37;
-    dw EnemyProjSpritemaps_Common_3                                      ;86AB39;
-    dw $0004                                                             ;86AB3B;
-    dw EnemyProjSpritemaps_Common_4                                      ;86AB3D;
+    dw Instruction_EnemyProjectile_Properties_OrY,$5000                  ;86AB27;
+    dw $0004,EnemyProjSpritemaps_Common_0                                ;86AB29;
+    dw $0004,EnemyProjSpritemaps_Common_1                                ;86AB2F;
+    dw $0004,EnemyProjSpritemaps_Common_2                                ;86AB33;
+    dw $0004,EnemyProjSpritemaps_Common_3                                ;86AB37;
+    dw $0004,EnemyProjSpritemaps_Common_4                                ;86AB3B;
     dw Instruction_EnemyProjectile_Delete                                ;86AB3F;
 
 InstList_EnemyProjectile_TorizoChozoOrbs_BreakOnFloor:
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86AB41;
-    dw Instruction_EnemyProjectile_Properties_AndY                       ;86AB43;
-    dw $DFFF                                                             ;86AB45;
-    dw Instruction_EnemyProjectile_Properties_OrY                        ;86AB47;
-    dw $5000                                                             ;86AB49;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib3_Max6               ;86AB4B;
-    db $13                                                               ;86AB4D;
-    dw $0004                                                             ;86AB4E;
-    dw EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_0         ;86AB50;
-    dw $0005                                                             ;86AB52;
-    dw EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_1         ;86AB54;
-    dw $0006                                                             ;86AB56;
-    dw EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_2         ;86AB58;
-    dw $0007                                                             ;86AB5A;
-    dw EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_3         ;86AB5C;
-    dw $0008                                                             ;86AB5E;
-    dw EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_4         ;86AB60;
-    dw $0009                                                             ;86AB62;
-    dw EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_5         ;86AB64;
+    dw Instruction_EnemyProjectile_Properties_AndY,$DFFF                 ;86AB43;
+    dw Instruction_EnemyProjectile_Properties_OrY,$5000                  ;86AB47;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib3_Max6 : db $13      ;86AB4B;
+    dw $0004,EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_0   ;86AB4E;
+    dw $0005,EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_1   ;86AB52;
+    dw $0006,EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_2   ;86AB56;
+    dw $0007,EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_3   ;86AB5A;
+    dw $0008,EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_4   ;86AB5E;
+    dw $0009,EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_5   ;86AB62;
     dw Instruction_EnemyProjectile_Delete                                ;86AB66;
 
 InstList_EnemyProjectile_Shot_TorizoChozoOrbs:
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86AB68;
-    dw Instruction_EnemyProjectile_Properties_OrY                        ;86AB6A;
-    dw $5000,$0004                                                       ;86AB6C;
-    dw EnemyProjSpritemaps_Common_0                                      ;86AB70;
-    dw $0004                                                             ;86AB72;
-    dw EnemyProjSpritemaps_Common_1                                      ;86AB74;
-    dw $0004                                                             ;86AB76;
-    dw EnemyProjSpritemaps_Common_2                                      ;86AB78;
-    dw $0004                                                             ;86AB7A;
-    dw EnemyProjSpritemaps_Common_3                                      ;86AB7C;
-    dw $0004                                                             ;86AB7E;
-    dw EnemyProjSpritemaps_Common_4                                      ;86AB80;
+    dw Instruction_EnemyProjectile_Properties_OrY,$5000                  ;86AB6A;
+    dw $0004,EnemyProjSpritemaps_Common_0                                ;86AB6C;
+    dw $0004,EnemyProjSpritemaps_Common_1                                ;86AB72;
+    dw $0004,EnemyProjSpritemaps_Common_2                                ;86AB76;
+    dw $0004,EnemyProjSpritemaps_Common_3                                ;86AB7A;
+    dw $0004,EnemyProjSpritemaps_Common_4                                ;86AB7E;
     dw Instruction_EnemyProjectile_SpawnEnemyDropsWIthYDropChances       ;86AB82;
     dw EnemyHeaders_BombTorizoOrb                                        ;86AB84;
     dw EnemyHeaders_GoldenTorizoOrb                                      ;86AB86;
@@ -6239,14 +6028,18 @@ InitAI_EnemyProjectile_BombTorizoChozoOrbs:
 .gotoCommon:
     JMP.W InitAI_EnemyProjectile_TorizoChozoOrbs_Egg_EyeBeam_Common      ;86AC05;
 
-
+;        _____________________ X offset
+;       |      _______________ X velocity (unit 1/100h px/frame)
+;       |     |      _________ Y offset
+;       |     |     |      ___ Y velocity (unit 1/100h px/frame)
+;       |     |     |     |
 .right:
     dw InstList_EnemyProjectile_TorizoChozoOrbs_Right                    ;86AC08;
     dw $001B,$0190,$FFD8,$FE60                                           ;86AC0A;
-
 .left:
     dw InstList_EnemyProjectile_TorizoChozoOrbs_Left                     ;86AC12;
     dw $FFE5,$FE70,$FFD8,$FE60                                           ;86AC14;
+
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InitializeTorizoChozoOrbToTargetSamus:
@@ -6313,14 +6106,18 @@ InitAI_EnemyProjectile_GoldenTorizosChozoOrbs:
 .gotoCommon:
     JMP.W InitAI_EnemyProjectile_TorizoChozoOrbs_Egg_EyeBeam_Common      ;86AC96;
 
-
+;        _____________________ X offset
+;       |      _______________ X velocity (unit 1/100h px/frame)
+;       |     |      _________ Y offset
+;       |     |     |      ___ Y velocity (unit 1/100h px/frame)
+;       |     |     |     |
 .right:
     dw InstList_EnemyProjectile_TorizoChozoOrbs_Right                    ;86AC99;
     dw $001B,$0100,$FFD8,$FE40                                           ;86AC9B;
-
 .left:
     dw InstList_EnemyProjectile_TorizoChozoOrbs_Left                     ;86ACA3;
     dw $FFE5,$FF00,$FFD8,$FE40                                           ;86ACA5;
+
 
 PreInstruction_EnemyProjectile_BombTorizosChozoOrbs:
     JSR.W Move_EnemyProjectile_Horizontally                              ;86ACAD;
@@ -6423,31 +6220,31 @@ PreInstruction_EnemyProjectile_GoldenTorizosChozoOrbs:
 
 
 EnemyProjectile_BombTorizoChozoOrbs:
-    dw InitAI_EnemyProjectile_BombTorizoChozoOrbs                        ;86AD5E;
-    dw PreInstruction_EnemyProjectile_BombTorizosChozoOrbs               ;86AD60;
-    dw InstList_EnemyProjectile_TorizoChozoOrbs_Left                     ;86AD62;
-    db $07,$07                                                           ;86AD64;
-    dw $9008                                                             ;86AD66;
-    dw $0000                                                             ;86AD68;
-    dw InstList_EnemyProjectile_Shot_TorizoChozoOrbs                     ;86AD6A;
+    dw InitAI_EnemyProjectile_BombTorizoChozoOrbs                        ;86AD5E; Initialisation AI
+    dw PreInstruction_EnemyProjectile_BombTorizosChozoOrbs               ;86AD60; Initial pre-instruction
+    dw InstList_EnemyProjectile_TorizoChozoOrbs_Left                     ;86AD62; Initial instruction list
+    db $07,$07                                                           ;86AD64; X,Y radius
+    dw $9008                                                             ;86AD66; Properties
+    dw $0000                                                             ;86AD68; Hit instruction list
+    dw InstList_EnemyProjectile_Shot_TorizoChozoOrbs                     ;86AD6A; Shot instruction list
 
 EnemyProjectile_BombTorizoChozoOrbsHigherDamage:
-    dw InitAI_EnemyProjectile_BombTorizoChozoOrbs                        ;86AD6C;
-    dw PreInstruction_EnemyProjectile_BombTorizosChozoOrbs               ;86AD6E;
-    dw InstList_EnemyProjectile_TorizoChozoOrbs_Left                     ;86AD70;
-    db $07,$07                                                           ;86AD72;
-    dw $900A                                                             ;86AD74;
-    dw $0000                                                             ;86AD76;
-    dw InstList_EnemyProjectile_Shot_TorizoChozoOrbs                     ;86AD78;
+    dw InitAI_EnemyProjectile_BombTorizoChozoOrbs                        ;86AD6C; Initialisation AI
+    dw PreInstruction_EnemyProjectile_BombTorizosChozoOrbs               ;86AD6E; Initial pre-instruction
+    dw InstList_EnemyProjectile_TorizoChozoOrbs_Left                     ;86AD70; Initial instruction list
+    db $07,$07                                                           ;86AD72; X,Y radius
+    dw $900A                                                             ;86AD74; Properties
+    dw $0000                                                             ;86AD76; Hit instruction list
+    dw InstList_EnemyProjectile_Shot_TorizoChozoOrbs                     ;86AD78; Shot instruction list
 
 EnemyProjectile_GoldenTorizoChozoOrbs:
-    dw InitAI_EnemyProjectile_GoldenTorizosChozoOrbs                     ;86AD7A;
-    dw PreInstruction_EnemyProjectile_GoldenTorizosChozoOrbs             ;86AD7C;
-    dw InstList_EnemyProjectile_TorizoChozoOrbs_Left                     ;86AD7E;
-    db $07,$07                                                           ;86AD80;
-    dw $B050                                                             ;86AD82;
-    dw $0000                                                             ;86AD84;
-    dw InstList_EnemyProjectile_Shot_TorizoChozoOrbs                     ;86AD86;
+    dw InitAI_EnemyProjectile_GoldenTorizosChozoOrbs                     ;86AD7A; Initialisation AI
+    dw PreInstruction_EnemyProjectile_GoldenTorizosChozoOrbs             ;86AD7C; Initial pre-instruction
+    dw InstList_EnemyProjectile_TorizoChozoOrbs_Left                     ;86AD7E; Initial instruction list
+    db $07,$07                                                           ;86AD80; X,Y radius
+    dw $B050                                                             ;86AD82; Properties
+    dw $0000                                                             ;86AD84; Hit instruction list
+    dw InstList_EnemyProjectile_Shot_TorizoChozoOrbs                     ;86AD86; Shot instruction list
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_EnemyProjectile_86AD88:
@@ -6487,30 +6284,22 @@ endif ; !FEATURE_KEEP_UNREFERENCED
 
 
 InstList_EnemyProjectile_TorizoSonicBoom_FiredLeft:
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86ADBF;
-    db $48                                                               ;86ADC1;
-    dw $0006                                                             ;86ADC2;
-    dw EnemyProjSpritemaps_TorizoSonicBoom_0                             ;86ADC4;
-    dw $0006                                                             ;86ADC6;
-    dw EnemyProjSpritemaps_TorizoSonicBoom_1                             ;86ADC8;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $48      ;86ADBF;
+    dw $0006,EnemyProjSpritemaps_TorizoSonicBoom_0                       ;86ADC2;
+    dw $0006,EnemyProjSpritemaps_TorizoSonicBoom_1                       ;86ADC6;
 
 InstList_EnemyProjectile_TorizoSonicBoom_MovingLeft:
-    dw $0050                                                             ;86ADCA;
-    dw EnemyProjSpritemaps_TorizoSonicBoom_2                             ;86ADCC;
+    dw $0050,EnemyProjSpritemaps_TorizoSonicBoom_2                       ;86ADCA;
     dw Instruction_EnemyProjectile_GotoY                                 ;86ADCE;
     dw InstList_EnemyProjectile_TorizoSonicBoom_MovingLeft               ;86ADD0;
 
 InstList_EnemyProjectile_TorizoSonicBoom_FiredRight:
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86ADD2;
-    db $48                                                               ;86ADD4;
-    dw $0006                                                             ;86ADD5;
-    dw EnemyProjSpritemaps_TorizoSonicBoom_3                             ;86ADD7;
-    dw $0006                                                             ;86ADD9;
-    dw EnemyProjSpritemaps_TorizoSonicBoom_4                             ;86ADDB;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $48      ;86ADD2;
+    dw $0006,EnemyProjSpritemaps_TorizoSonicBoom_3                       ;86ADD5;
+    dw $0006,EnemyProjSpritemaps_TorizoSonicBoom_4                       ;86ADD9;
 
 InstList_EnemyProjectile_TorizoSonicBoom_MovingRight:
-    dw $0050                                                             ;86ADDD;
-    dw EnemyProjSpritemaps_TorizoSonicBoom_5                             ;86ADDF;
+    dw $0050,EnemyProjSpritemaps_TorizoSonicBoom_5                       ;86ADDD;
     dw Instruction_EnemyProjectile_GotoY                                 ;86ADE1;
     dw InstList_EnemyProjectile_TorizoSonicBoom_MovingRight              ;86ADE3;
 
@@ -6519,23 +6308,17 @@ InstList_EnemyProjectile_TorizoSonicBoom_HitWall_0:
     dw Instruction_EnemyProjectile_DisableCollisionWIthSamusProj         ;86ADE7;
     dw Instruction_EnemyProjectile_DisableCollisionWithSamus             ;86ADE9;
     dw Instruction_EnemyProjectile_SetHighPriority                       ;86ADEB;
-    dw Instruction_EnemyProjectile_TimerInY                              ;86ADED;
-    dw $0005                                                             ;86ADEF;
+    dw Instruction_EnemyProjectile_TimerInY,$0005                        ;86ADED;
 
 InstList_EnemyProjectile_TorizoSonicBoom_HitWall_1:
     dw Instruction_EnemyProjectile_Torizo_ResetPosition                  ;86ADF1;
     dw Instruction_MoveRandomlyWithinXRadius_YRadius                     ;86ADF3;
     db $0F,$00,$1F,$00                                                   ;86ADF5;
-    dw $0002                                                             ;86ADF9;
-    dw EnemyProjSpritemaps_Common_0                                      ;86ADFB;
-    dw $0002                                                             ;86ADFD;
-    dw EnemyProjSpritemaps_Common_1                                      ;86ADFF;
-    dw $0003                                                             ;86AE01;
-    dw EnemyProjSpritemaps_Common_2                                      ;86AE03;
-    dw $0003                                                             ;86AE05;
-    dw EnemyProjSpritemaps_Common_3                                      ;86AE07;
-    dw $0002                                                             ;86AE09;
-    dw EnemyProjSpritemaps_Common_4                                      ;86AE0B;
+    dw $0002,EnemyProjSpritemaps_Common_0                                ;86ADF9;
+    dw $0002,EnemyProjSpritemaps_Common_1                                ;86ADFD;
+    dw $0003,EnemyProjSpritemaps_Common_2                                ;86AE01;
+    dw $0003,EnemyProjSpritemaps_Common_3                                ;86AE05;
+    dw $0002,EnemyProjSpritemaps_Common_4                                ;86AE09;
     dw RTS_8681DE                                                        ;86AE0D;
     dw Instruction_EnemyProjectile_DecrementTimer_GotoYIfNonZero         ;86AE0F;
     dw InstList_EnemyProjectile_TorizoSonicBoom_HitWall_1                ;86AE11;
@@ -6621,52 +6404,42 @@ PreInstruction_EnemyProjectile_TorizoSonicBoom:
 
 
 EnemyProjectile_BombTorizoSonicBoom:
-    dw InitAI_EnemyProjectile_TorizoSonicBoom                            ;86AEA8;
-    dw PreInstruction_EnemyProjectile_TorizoSonicBoom                    ;86AEAA;
-    dw InstList_EnemyProjectile_TorizoSonicBoom_FiredLeft                ;86AEAC;
-    db $03,$14                                                           ;86AEAE;
-    dw $100A                                                             ;86AEB0;
-    dw $0000                                                             ;86AEB2;
-    dw InstList_EnemyProjectile_Delete                                   ;86AEB4;
+    dw InitAI_EnemyProjectile_TorizoSonicBoom                            ;86AEA8; Initialisation AI
+    dw PreInstruction_EnemyProjectile_TorizoSonicBoom                    ;86AEAA; Initial pre-instruction
+    dw InstList_EnemyProjectile_TorizoSonicBoom_FiredLeft                ;86AEAC; Initial instruction list
+    db $03,$14                                                           ;86AEAE; X,Y radius
+    dw $100A                                                             ;86AEB0; Properties
+    dw $0000                                                             ;86AEB2; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86AEB4; Shot instruction list
 
 EnemyProjectile_GoldenTorizoSonicBoom:
-    dw InitAI_EnemyProjectile_TorizoSonicBoom                            ;86AEB6;
-    dw PreInstruction_EnemyProjectile_TorizoSonicBoom                    ;86AEB8;
-    dw InstList_EnemyProjectile_TorizoSonicBoom_FiredLeft                ;86AEBA;
-    db $03,$14                                                           ;86AEBC;
-    dw $1078                                                             ;86AEBE;
-    dw $0000                                                             ;86AEC0;
-    dw InstList_EnemyProjectile_Delete                                   ;86AEC2;
+    dw InitAI_EnemyProjectile_TorizoSonicBoom                            ;86AEB6; Initialisation AI
+    dw PreInstruction_EnemyProjectile_TorizoSonicBoom                    ;86AEB8; Initial pre-instruction
+    dw InstList_EnemyProjectile_TorizoSonicBoom_FiredLeft                ;86AEBA; Initial instruction list
+    db $03,$14                                                           ;86AEBC; X,Y radius
+    dw $1078                                                             ;86AEBE; Properties
+    dw $0000                                                             ;86AEC0; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86AEC2; Shot instruction list
 
 InstList_EnemyProj_WreckedShipChozoSpikeClearingFootsteps:
     dw Instruction_MoveRandomlyWithinXRadius_YRadius                     ;86AEC4;
     db $0F,$00,$0F,$03                                                   ;86AEC6;
-    dw $0002                                                             ;86AECA;
-    dw EnemyProjSpritemaps_Common_BigDustCloud_0                         ;86AECC;
-    dw $0002                                                             ;86AECE;
-    dw EnemyProjSpritemaps_Common_BigDustCloud_1                         ;86AED0;
-    dw $0002                                                             ;86AED2;
-    dw EnemyProjSpritemaps_Common_BigDustCloud_2                         ;86AED4;
-    dw $0002                                                             ;86AED6;
-    dw EnemyProjSpritemaps_Common_BigDustCloud_3                         ;86AED8;
+    dw $0002,EnemyProjSpritemaps_Common_BigDustCloud_0                   ;86AECA;
+    dw $0002,EnemyProjSpritemaps_Common_BigDustCloud_1                   ;86AECE;
+    dw $0002,EnemyProjSpritemaps_Common_BigDustCloud_2                   ;86AED2;
+    dw $0002,EnemyProjSpritemaps_Common_BigDustCloud_3                   ;86AED6;
     dw Instruction_EnemyProjectile_Delete                                ;86AEDA;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_EnemyProj_SpikeClearingExplosions_86AEDC:
     dw Instruction_MoveRandomlyWithinXRadius_YRadius                     ;86AEDC;
     db $0F,$00,$0F,$03                                                   ;86AEDE;
-    dw $0005                                                             ;86AEE2;
-    dw EnemyProjSpritemaps_Common_BigExplosion_0                         ;86AEE4;
-    dw $0005                                                             ;86AEE6;
-    dw EnemyProjSpritemaps_Common_BigExplosion_1                         ;86AEE8;
-    dw $0005                                                             ;86AEEA;
-    dw EnemyProjSpritemaps_Common_BigExplosion_2                         ;86AEEC;
-    dw $0005                                                             ;86AEEE;
-    dw EnemyProjSpritemaps_Common_BigExplosion_3                         ;86AEF0;
-    dw $0005                                                             ;86AEF2;
-    dw EnemyProjSpritemaps_Common_BigExplosion_4                         ;86AEF4;
-    dw $0005                                                             ;86AEF6;
-    dw EnemyProjSpritemaps_Common_BigExplosion_5                         ;86AEF8;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_0                   ;86AEE2;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_1                   ;86AEE6;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_2                   ;86AEEA;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_3                   ;86AEEE;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_4                   ;86AEF2;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_5                   ;86AEF6;
     dw Instruction_EnemyProjectile_Delete                                ;86AEFA;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -6684,21 +6457,16 @@ InitAI_EnemyProj_WreckedShipChozoSpikeClearingFootsteps:
 
 
 InstList_EnemyProj_TourianStatueDustClouds_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86AF14;
-    dw $0040                                                             ;86AF16;
+    dw Instruction_EnemyProjectile_TimerInY,$0040                        ;86AF14;
 
 InstList_EnemyProj_TourianStatueDustClouds_1:
     dw Instruction_EnemyProjectile_ResetPosition                         ;86AF18;
     dw Instruction_MoveRandomlyWithinXRadius_YRadius                     ;86AF1A;
     db $3F,$00,$03,$00                                                   ;86AF1C;
-    dw $0002                                                             ;86AF20;
-    dw EnemyProjSpritemaps_Common_BigDustCloud_0                         ;86AF22;
-    dw $0002                                                             ;86AF24;
-    dw EnemyProjSpritemaps_Common_BigDustCloud_1                         ;86AF26;
-    dw $0002                                                             ;86AF28;
-    dw EnemyProjSpritemaps_Common_BigDustCloud_2                         ;86AF2A;
-    dw $0002                                                             ;86AF2C;
-    dw EnemyProjSpritemaps_Common_BigDustCloud_3                         ;86AF2E;
+    dw $0002,EnemyProjSpritemaps_Common_BigDustCloud_0                   ;86AF20;
+    dw $0002,EnemyProjSpritemaps_Common_BigDustCloud_1                   ;86AF24;
+    dw $0002,EnemyProjSpritemaps_Common_BigDustCloud_2                   ;86AF28;
+    dw $0002,EnemyProjSpritemaps_Common_BigDustCloud_3                   ;86AF2C;
     dw Instruction_EnemyProjectile_DecrementTimer_GotoYIfNonZero         ;86AF30;
     dw InstList_EnemyProj_TourianStatueDustClouds_1                      ;86AF32;
     dw Instruction_EnemyProjectile_Delete                                ;86AF34;
@@ -6733,30 +6501,30 @@ InitAI_EnemyProjectile_TorizoLandingDustCloud_RightFoot:
 
 
 EnemyProjectile_WreckedShipChozoSpikeClearingFootsteps:
-    dw InitAI_EnemyProj_WreckedShipChozoSpikeClearingFootsteps           ;86AF68;
-    dw RTS_8684FB                                                        ;86AF6A;
-    dw InstList_EnemyProj_WreckedShipChozoSpikeClearingFootsteps         ;86AF6C;
-    db $00,$00                                                           ;86AF6E;
-    dw $3000,$0000                                                       ;86AF70;
-    dw InstList_EnemyProjectile_Delete                                   ;86AF74;
+    dw InitAI_EnemyProj_WreckedShipChozoSpikeClearingFootsteps           ;86AF68; Initialisation AI
+    dw RTS_8684FB                                                        ;86AF6A; Initial pre-instruction
+    dw InstList_EnemyProj_WreckedShipChozoSpikeClearingFootsteps         ;86AF6C; Initial instruction list
+    db $00,$00                                                           ;86AF6E; X,Y radius
+    dw $3000,$0000                                                       ;86AF70; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86AF74; Shot instruction list
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_EnemyProjectile_SpikeClearingExplosions_86AF76:
-    dw InitAI_EnemyProj_WreckedShipChozoSpikeClearingFootsteps           ;86AF76;
-    dw RTS_8684FB                                                        ;86AF78;
-    dw UNUSED_InstList_EnemyProj_SpikeClearingExplosions_86AEDC          ;86AF7A;
-    db $00,$00                                                           ;86AF7C;
-    dw $3000,$0000                                                       ;86AF7E;
-    dw InstList_EnemyProjectile_Delete                                   ;86AF82;
+    dw InitAI_EnemyProj_WreckedShipChozoSpikeClearingFootsteps           ;86AF76; Initialisation AI
+    dw RTS_8684FB                                                        ;86AF78; Initial pre-instruction
+    dw UNUSED_InstList_EnemyProj_SpikeClearingExplosions_86AEDC          ;86AF7A; Initial instruction list
+    db $00,$00                                                           ;86AF7C; X,Y radius
+    dw $3000,$0000                                                       ;86AF7E; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86AF82; Shot instruction list
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 EnemyProjectile_TourianStatueDustClouds:
-    dw InitAI_EnemyProjectile_TourianStatueDustClouds                    ;86AF84;
-    dw RTS_8684FB                                                        ;86AF86;
-    dw InstList_EnemyProj_TourianStatueDustClouds_0                      ;86AF88;
-    db $00,$00                                                           ;86AF8A;
-    dw $3000,$0000                                                       ;86AF8C;
-    dw InstList_EnemyProjectile_Delete                                   ;86AF90;
+    dw InitAI_EnemyProjectile_TourianStatueDustClouds                    ;86AF84; Initialisation AI
+    dw RTS_8684FB                                                        ;86AF86; Initial pre-instruction
+    dw InstList_EnemyProj_TourianStatueDustClouds_0                      ;86AF88; Initial instruction list
+    db $00,$00                                                           ;86AF8A; X,Y radius
+    dw $3000,$0000                                                       ;86AF8C; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86AF90; Shot instruction list
 
 Instruction_EnemyProjectile_TorizoLandingDustClouds:
     LDA.W $1A93,X                                                        ;86AF92;
@@ -6767,31 +6535,23 @@ Instruction_EnemyProjectile_TorizoLandingDustClouds:
 
 
 InstList_EnemyProjectile_TorizoLandingDustCloud_RightFoot:
-    dw $0004                                                             ;86AF9D;
-    dw EnemyProjSpritemaps_TorizoLandingDustCloud_Right_0                ;86AF9F;
+    dw $0004,EnemyProjSpritemaps_TorizoLandingDustCloud_Right_0          ;86AF9D;
     dw Instruction_EnemyProjectile_TorizoLandingDustClouds               ;86AFA1;
-    dw $0004                                                             ;86AFA3;
-    dw EnemyProjSpritemaps_TorizoLandingDustCloud_Right_1                ;86AFA5;
+    dw $0004,EnemyProjSpritemaps_TorizoLandingDustCloud_Right_1          ;86AFA3;
     dw Instruction_EnemyProjectile_TorizoLandingDustClouds               ;86AFA7;
-    dw $0004                                                             ;86AFA9;
-    dw EnemyProjSpritemaps_TorizoLandingDustCloud_Right_2                ;86AFAB;
+    dw $0004,EnemyProjSpritemaps_TorizoLandingDustCloud_Right_2          ;86AFA9;
     dw Instruction_EnemyProjectile_TorizoLandingDustClouds               ;86AFAD;
-    dw $0004                                                             ;86AFAF;
-    dw EnemyProjSpritemaps_TorizoLandingDustCloud_Right_3                ;86AFB1;
+    dw $0004,EnemyProjSpritemaps_TorizoLandingDustCloud_Right_3          ;86AFAF;
     dw Instruction_EnemyProjectile_Delete                                ;86AFB3;
 
 InstList_EnemyProjectile_TorizoLandingDustCloud_LeftFoot:
-    dw $0004                                                             ;86AFB5;
-    dw EnemyProjSpritemaps_TorizoLandingDustCloud_Left_0                 ;86AFB7;
+    dw $0004,EnemyProjSpritemaps_TorizoLandingDustCloud_Left_0           ;86AFB5;
     dw Instruction_EnemyProjectile_TorizoLandingDustClouds               ;86AFB9;
-    dw $0004                                                             ;86AFBB;
-    dw EnemyProjSpritemaps_TorizoLandingDustCloud_Left_1                 ;86AFBD;
+    dw $0004,EnemyProjSpritemaps_TorizoLandingDustCloud_Left_1           ;86AFBB;
     dw Instruction_EnemyProjectile_TorizoLandingDustClouds               ;86AFBF;
-    dw $0004                                                             ;86AFC1;
-    dw EnemyProjSpritemaps_TorizoLandingDustCloud_Left_2                 ;86AFC3;
+    dw $0004,EnemyProjSpritemaps_TorizoLandingDustCloud_Left_2           ;86AFC1;
     dw Instruction_EnemyProjectile_TorizoLandingDustClouds               ;86AFC5;
-    dw $0004                                                             ;86AFC7;
-    dw EnemyProjSpritemaps_TorizoLandingDustCloud_Left_3                 ;86AFC9;
+    dw $0004,EnemyProjSpritemaps_TorizoLandingDustCloud_Left_3           ;86AFC7;
     dw Instruction_EnemyProjectile_Delete                                ;86AFCB;
 
 InitAI_EnemyProjectile_TorizoLandingDustCloud_LeftFoot:
@@ -6808,22 +6568,22 @@ InitAI_EnemyProjectile_TorizoLandingDustCloud_LeftFoot:
 
 
 EnemyProjectile_TorizoLandingDustCloud_RightFoot:
-    dw InitAI_EnemyProjectile_TorizoLandingDustCloud_RightFoot           ;86AFE5;
-    dw RTS_8684FB                                                        ;86AFE7;
-    dw InstList_EnemyProjectile_TorizoLandingDustCloud_RightFoot         ;86AFE9;
-    db $00,$00                                                           ;86AFEB;
-    dw $3000                                                             ;86AFED;
-    dw $0000                                                             ;86AFEF;
-    dw InstList_EnemyProjectile_Delete                                   ;86AFF1;
+    dw InitAI_EnemyProjectile_TorizoLandingDustCloud_RightFoot           ;86AFE5; Initialisation AI
+    dw RTS_8684FB                                                        ;86AFE7; Initial pre-instruction
+    dw InstList_EnemyProjectile_TorizoLandingDustCloud_RightFoot         ;86AFE9; Initial instruction list
+    db $00,$00                                                           ;86AFEB; X,Y radius
+    dw $3000                                                             ;86AFED; Properties
+    dw $0000                                                             ;86AFEF; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86AFF1; Shot instruction list
 
 EnemyProjectile_TorizoLandingDustCloud_LeftFoot:
-    dw InitAI_EnemyProjectile_TorizoLandingDustCloud_LeftFoot            ;86AFF3;
-    dw RTS_8684FB                                                        ;86AFF5;
-    dw InstList_EnemyProjectile_TorizoLandingDustCloud_LeftFoot          ;86AFF7;
-    db $00,$00                                                           ;86AFF9;
-    dw $3000                                                             ;86AFFB;
-    dw $0000                                                             ;86AFFD;
-    dw InstList_EnemyProjectile_Delete                                   ;86AFFF;
+    dw InitAI_EnemyProjectile_TorizoLandingDustCloud_LeftFoot            ;86AFF3; Initialisation AI
+    dw RTS_8684FB                                                        ;86AFF5; Initial pre-instruction
+    dw InstList_EnemyProjectile_TorizoLandingDustCloud_LeftFoot          ;86AFF7; Initial instruction list
+    db $00,$00                                                           ;86AFF9; X,Y radius
+    dw $3000                                                             ;86AFFB; Properties
+    dw $0000                                                             ;86AFFD; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86AFFF; Shot instruction list
 
 InitAI_EnemyProjectile_GoldenTorizoEgg:
     LDX.W $0E54                                                          ;86B001;
@@ -6849,11 +6609,14 @@ InitAI_EnemyProjectile_GoldenTorizoEgg:
 .gotoCommon:
     JMP.W InitAI_EnemyProjectile_TorizoChozoOrbs_Egg_EyeBeam_Common      ;86B02C;
 
-
+;        _____________________ X offset
+;       |      _______________ X velocity (unit 1/100h px/frame)
+;       |     |      _________ Y offset
+;       |     |     |      ___ Y velocity (unit 1/100h px/frame)
+;       |     |     |     |
 .rightwards:
     dw InstList_EnemyProjectile_GoldenTorizoEgg_BouncingRight            ;86B02F;
     dw $0010,$0080,$FFFF,$FE80                                           ;86B031;
-
 .leftwards:
     dw InstList_EnemyProjectile_GoldenTorizoEgg_BouncingLeft             ;86B039;
     dw $FFF0,$FF80,$FFFF,$FE80                                           ;86B03B;
@@ -6977,38 +6740,28 @@ PreInstruction_EnemyProjectile_GoldenTorizoEgg_HitWall:
 
 
 InstList_EnemyProjectile_GoldenTorizoEgg_BouncingLeft:
-    dw $0030                                                             ;86B104;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_0                             ;86B106;
+    dw $0030,EnemyProjSpritemaps_GoldenTorizoEgg_0                       ;86B104;
     dw Instruction_EnemyProjectile_Sleep                                 ;86B108;
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86B10A;
-    dw $0004                                                             ;86B10C;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_1                             ;86B10E;
-    dw $0004                                                             ;86B110;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_2                             ;86B112;
-    dw $0004                                                             ;86B114;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_3                             ;86B116;
+    dw $0004,EnemyProjSpritemaps_GoldenTorizoEgg_1                       ;86B10C;
+    dw $0004,EnemyProjSpritemaps_GoldenTorizoEgg_2                       ;86B110;
+    dw $0004,EnemyProjSpritemaps_GoldenTorizoEgg_3                       ;86B114;
     dw Instruction_EnemyProjectile_GotoY                                 ;86B118;
     dw InstList_EnemyProjectile_GoldenTorizoEgg_Hatch                    ;86B11A;
 
 InstList_EnemyProjectile_GoldenTorizoEgg_BouncingRight:
-    dw $0030                                                             ;86B11C;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_C                             ;86B11E;
+    dw $0030,EnemyProjSpritemaps_GoldenTorizoEgg_C                       ;86B11C;
     dw Instruction_EnemyProjectile_Sleep                                 ;86B120;
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86B122;
-    dw $0004                                                             ;86B124;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_D                             ;86B126;
-    dw $0004                                                             ;86B128;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_E                             ;86B12A;
-    dw $0004                                                             ;86B12C;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_F                             ;86B12E;
+    dw $0004,EnemyProjSpritemaps_GoldenTorizoEgg_D                       ;86B124;
+    dw $0004,EnemyProjSpritemaps_GoldenTorizoEgg_E                       ;86B128;
+    dw $0004,EnemyProjSpritemaps_GoldenTorizoEgg_F                       ;86B12C;
     dw Instruction_EnemyProjectile_GotoY                                 ;86B130;
     dw InstList_EnemyProjectile_GoldenTorizoEgg_Hatch                    ;86B132;
 
 InstList_EnemyProjectile_GoldenTorizoEgg_Hatch:
-    dw Instruction_EnemyProjectile_Properties_AndY                       ;86B134;
-    dw $DFFF                                                             ;86B136;
-    dw Instruction_EnemyProjectile_Properties_OrY                        ;86B138;
-    dw $8000                                                             ;86B13A;
+    dw Instruction_EnemyProjectile_Properties_AndY,$DFFF                 ;86B134;
+    dw Instruction_EnemyProjectile_Properties_OrY,$8000                  ;86B138;
     dw Instruction_EnemyProjectile_GoldenTorizoEgg_GoToHatched           ;86B13C;
 
 Instruction_EnemyProjectile_GoldenTorizoEgg_GoToHatched:
@@ -7024,38 +6777,28 @@ Instruction_EnemyProjectile_GoldenTorizoEgg_GoToHatched:
 
 
 InstList_EnemyProjectile_GoldenTorizoEgg_Hatched_Left_0:
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86B14B;
-    db $22                                                               ;86B14D;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $22      ;86B14B;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86B14E;
     dw PreInstruction_EnemyProjectile_GoldenTorizoEgg_Hatched            ;86B150;
 
 InstList_EnemyProjectile_GoldenTorizoEgg_Hatched_Left_1:
-    dw $0006                                                             ;86B152;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_4                             ;86B154;
-    dw $0006                                                             ;86B156;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_5                             ;86B158;
-    dw $0006                                                             ;86B15A;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_6                             ;86B15C;
-    dw $0006                                                             ;86B15E;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_5                             ;86B160;
+    dw $0006,EnemyProjSpritemaps_GoldenTorizoEgg_4                       ;86B152;
+    dw $0006,EnemyProjSpritemaps_GoldenTorizoEgg_5                       ;86B156;
+    dw $0006,EnemyProjSpritemaps_GoldenTorizoEgg_6                       ;86B15A;
+    dw $0006,EnemyProjSpritemaps_GoldenTorizoEgg_5                       ;86B15E;
     dw Instruction_EnemyProjectile_GotoY                                 ;86B162;
     dw InstList_EnemyProjectile_GoldenTorizoEgg_Hatched_Left_1           ;86B164;
 
 InstList_EnemyProjectile_GoldenTorizoEgg_Hatched_Right_0:
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86B166;
-    db $22                                                               ;86B168;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $22      ;86B166;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86B169;
     dw PreInstruction_EnemyProjectile_GoldenTorizoEgg_Hatched            ;86B16B;
 
 InstList_EnemyProjectile_GoldenTorizoEgg_Hatched_Right_1:
-    dw $0006                                                             ;86B16D;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_10                            ;86B16F;
-    dw $0006                                                             ;86B171;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_11                            ;86B173;
-    dw $0006                                                             ;86B175;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_12                            ;86B177;
-    dw $0006                                                             ;86B179;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_11                            ;86B17B;
+    dw $0006,EnemyProjSpritemaps_GoldenTorizoEgg_10                      ;86B16D;
+    dw $0006,EnemyProjSpritemaps_GoldenTorizoEgg_11                      ;86B171;
+    dw $0006,EnemyProjSpritemaps_GoldenTorizoEgg_12                      ;86B175;
+    dw $0006,EnemyProjSpritemaps_GoldenTorizoEgg_11                      ;86B179;
     dw Instruction_EnemyProjectile_GotoY                                 ;86B17D;
     dw InstList_EnemyProjectile_GoldenTorizoEgg_Hatched_Right_1          ;86B17F;
 
@@ -7069,7 +6812,6 @@ UNUSED_Instruction_EnemyProjectile_GotoBreak_86B183:
     LDY.W #InstList_EnemyProjectile_GoldenTorizoEgg_Break_FacingLeft     ;86B188;
     RTS                                                                  ;86B18B;
 
-
 .facingRight:
     LDY.W #InstList_EnemyProjectile_GoldenTorizoEgg_Break_FacingRight    ;86B18C;
     RTS                                                                  ;86B18F;
@@ -7078,39 +6820,29 @@ endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_EnemyProjectile_GoldenTorizoEgg_Break_FacingLeft:
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86B190;
-    dw $0004                                                             ;86B192;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_7                             ;86B194;
-    dw $0004                                                             ;86B196;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_8                             ;86B198;
-    dw $0004                                                             ;86B19A;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_9                             ;86B19C;
-    dw $0004                                                             ;86B19E;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_A                             ;86B1A0;
-    dw $000A                                                             ;86B1A2;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_B                             ;86B1A4;
+    dw $0004,EnemyProjSpritemaps_GoldenTorizoEgg_7                       ;86B192;
+    dw $0004,EnemyProjSpritemaps_GoldenTorizoEgg_8                       ;86B196;
+    dw $0004,EnemyProjSpritemaps_GoldenTorizoEgg_9                       ;86B19A;
+    dw $0004,EnemyProjSpritemaps_GoldenTorizoEgg_A                       ;86B19E;
+    dw $000A,EnemyProjSpritemaps_GoldenTorizoEgg_B                       ;86B1A2;
     dw Instruction_EnemyProjectile_Delete                                ;86B1A6;
 
 InstList_EnemyProjectile_GoldenTorizoEgg_Break_FacingRight:
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86B1A8;
-    dw $0004                                                             ;86B1AA;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_13                            ;86B1AC;
-    dw $0004                                                             ;86B1AE;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_14                            ;86B1B0;
-    dw $0004                                                             ;86B1B2;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_15                            ;86B1B4;
-    dw $0004                                                             ;86B1B6;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_16                            ;86B1B8;
-    dw $0008                                                             ;86B1BA;
-    dw EnemyProjSpritemaps_GoldenTorizoEgg_17                            ;86B1BC;
+    dw $0004,EnemyProjSpritemaps_GoldenTorizoEgg_13                      ;86B1AA;
+    dw $0004,EnemyProjSpritemaps_GoldenTorizoEgg_14                      ;86B1AE;
+    dw $0004,EnemyProjSpritemaps_GoldenTorizoEgg_15                      ;86B1B2;
+    dw $0004,EnemyProjSpritemaps_GoldenTorizoEgg_16                      ;86B1B6;
+    dw $0008,EnemyProjSpritemaps_GoldenTorizoEgg_17                      ;86B1BA;
     dw Instruction_EnemyProjectile_Delete                                ;86B1BE;
 
 EnemyProjectile_GoldenTorizoEgg:
-    dw InitAI_EnemyProjectile_GoldenTorizoEgg                            ;86B1C0;
-    dw PreInstruction_EnemyProjectile_GoldenTorizoEgg_Bouncing           ;86B1C2;
-    dw InstList_EnemyProjectile_GoldenTorizoEgg_BouncingLeft             ;86B1C4;
-    db $07,$07                                                           ;86B1C6;
-    dw $6064,$0000                                                       ;86B1C8;
-    dw InstList_EnemyProjectile_TorizoChozoOrbs_BreakOnWall              ;86B1CC;
+    dw InitAI_EnemyProjectile_GoldenTorizoEgg                            ;86B1C0; Initialisation AI
+    dw PreInstruction_EnemyProjectile_GoldenTorizoEgg_Bouncing           ;86B1C2; Initial pre-instruction
+    dw InstList_EnemyProjectile_GoldenTorizoEgg_BouncingLeft             ;86B1C4; Initial instruction list
+    db $07,$07                                                           ;86B1C6; X,Y radius
+    dw $6064,$0000                                                       ;86B1C8; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_TorizoChozoOrbs_BreakOnWall              ;86B1CC; Shot instruction list
 
 InitAI_EnemyProjectile_GoldenTorizoSuperMissile:
     LDA.W $0E54                                                          ;86B1CE;
@@ -7141,10 +6873,11 @@ InitAI_EnemyProjectile_GoldenTorizoSuperMissile:
     STA.W $1B47,Y                                                        ;86B201;
     RTS                                                                  ;86B204;
 
-
+;        _________ Leftwards
+;       |      ___ Rightwards
+;       |     |
 .Xoffsets:
     dw $FFE2,$001E                                                       ;86B205;
-
 .InstListPointers:
     dw InstList_EnemyProj_GoldenTorizoSuperMissile_Leftwards_0           ;86B209;
     dw InstList_EnemyProj_GoldenTorizoSuperMissile_Rightwards_0          ;86B20B;
@@ -7233,90 +6966,62 @@ CalculateGoldenTorizoSuperMissileVelocitiesFromAngle:
 
 
 InstList_EnemyProj_GoldenTorizoSuperMissile_Rightwards_0:
-    dw $0030                                                             ;86B293;
-    dw EnemyProjSpritemaps_GoldenTorizoSuperMissile_6                    ;86B295;
+    dw $0030,EnemyProjSpritemaps_GoldenTorizoSuperMissile_6              ;86B293;
     dw Instruction_AimSuperMissile_Rightwards                            ;86B297;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86B299;
     dw PreInst_EnemyProjectile_GoldenTorizoSuperMissile_Thrown           ;86B29B;
 
 InstList_EnemyProj_GoldenTorizoSuperMissile_Rightwards_1:
-    dw $0002                                                             ;86B29D;
-    dw EnemyProjSpritemaps_GoldenTorizoSuperMissile_5                    ;86B29F;
-    dw $0002                                                             ;86B2A1;
-    dw EnemyProjSpritemaps_GoldenTorizoSuperMissile_4                    ;86B2A3;
-    dw $0002                                                             ;86B2A5;
-    dw EnemyProjSpritemaps_GoldenTorizoSuperMissile_3                    ;86B2A7;
-    dw $0002                                                             ;86B2A9;
-    dw EnemyProjSpritemaps_GoldenTorizoSuperMissile_2                    ;86B2AB;
-    dw $0002                                                             ;86B2AD;
-    dw EnemyProjSpritemaps_GoldenTorizoSuperMissile_1                    ;86B2AF;
-    dw $0002                                                             ;86B2B1;
-    dw EnemyProjSpritemaps_GoldenTorizoSuperMissile_0                    ;86B2B3;
-    dw $0002                                                             ;86B2B5;
-    dw EnemyProjSpritemaps_GoldenTorizoSuperMissile_7                    ;86B2B7;
-    dw $0002                                                             ;86B2B9;
-    dw EnemyProjSpritemaps_GoldenTorizoSuperMissile_6                    ;86B2BB;
+    dw $0002,EnemyProjSpritemaps_GoldenTorizoSuperMissile_5              ;86B29D;
+    dw $0002,EnemyProjSpritemaps_GoldenTorizoSuperMissile_4              ;86B2A1;
+    dw $0002,EnemyProjSpritemaps_GoldenTorizoSuperMissile_3              ;86B2A5;
+    dw $0002,EnemyProjSpritemaps_GoldenTorizoSuperMissile_2              ;86B2A9;
+    dw $0002,EnemyProjSpritemaps_GoldenTorizoSuperMissile_1              ;86B2AD;
+    dw $0002,EnemyProjSpritemaps_GoldenTorizoSuperMissile_0              ;86B2B1;
+    dw $0002,EnemyProjSpritemaps_GoldenTorizoSuperMissile_7              ;86B2B5;
+    dw $0002,EnemyProjSpritemaps_GoldenTorizoSuperMissile_6              ;86B2B9;
     dw Instruction_EnemyProjectile_GotoY                                 ;86B2BD;
     dw InstList_EnemyProj_GoldenTorizoSuperMissile_Rightwards_1          ;86B2BF;
 
 InstList_EnemyProj_GoldenTorizoSuperMissile_Leftwards_0:
-    dw $0030                                                             ;86B2C1;
-    dw EnemyProjSpritemaps_GoldenTorizoSuperMissile_6                    ;86B2C3;
+    dw $0030,EnemyProjSpritemaps_GoldenTorizoSuperMissile_6              ;86B2C1;
     dw Instruction_AimSuperMissile_Leftwards                             ;86B2C5;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86B2C7;
     dw PreInst_EnemyProjectile_GoldenTorizoSuperMissile_Thrown           ;86B2C9;
 
 InstList_EnemyProj_GoldenTorizoSuperMissile_Leftwards_1:
-    dw $0002                                                             ;86B2CB;
-    dw EnemyProjSpritemaps_GoldenTorizoSuperMissile_7                    ;86B2CD;
-    dw $0002                                                             ;86B2CF;
-    dw EnemyProjSpritemaps_GoldenTorizoSuperMissile_0                    ;86B2D1;
-    dw $0002                                                             ;86B2D3;
-    dw EnemyProjSpritemaps_GoldenTorizoSuperMissile_1                    ;86B2D5;
-    dw $0002                                                             ;86B2D7;
-    dw EnemyProjSpritemaps_GoldenTorizoSuperMissile_2                    ;86B2D9;
-    dw $0002                                                             ;86B2DB;
-    dw EnemyProjSpritemaps_GoldenTorizoSuperMissile_3                    ;86B2DD;
-    dw $0002                                                             ;86B2DF;
-    dw EnemyProjSpritemaps_GoldenTorizoSuperMissile_4                    ;86B2E1;
-    dw $0002                                                             ;86B2E3;
-    dw EnemyProjSpritemaps_GoldenTorizoSuperMissile_5                    ;86B2E5;
-    dw $0002                                                             ;86B2E7;
-    dw EnemyProjSpritemaps_GoldenTorizoSuperMissile_6                    ;86B2E9;
+    dw $0002,EnemyProjSpritemaps_GoldenTorizoSuperMissile_7              ;86B2CB;
+    dw $0002,EnemyProjSpritemaps_GoldenTorizoSuperMissile_0              ;86B2CF;
+    dw $0002,EnemyProjSpritemaps_GoldenTorizoSuperMissile_1              ;86B2D3;
+    dw $0002,EnemyProjSpritemaps_GoldenTorizoSuperMissile_2              ;86B2D7;
+    dw $0002,EnemyProjSpritemaps_GoldenTorizoSuperMissile_3              ;86B2DB;
+    dw $0002,EnemyProjSpritemaps_GoldenTorizoSuperMissile_4              ;86B2DF;
+    dw $0002,EnemyProjSpritemaps_GoldenTorizoSuperMissile_5              ;86B2E3;
+    dw $0002,EnemyProjSpritemaps_GoldenTorizoSuperMissile_6              ;86B2E7;
     dw Instruction_EnemyProjectile_GotoY                                 ;86B2EB;
     dw InstList_EnemyProj_GoldenTorizoSuperMissile_Leftwards_1           ;86B2ED;
 
 InstList_EnemyProjectile_Shot_GoldenTorizoSuperMissile:
-    dw Instruction_EnemyProjectile_XYRadiusInY                           ;86B2EF;
-    db $10,$10                                                           ;86B2F1;
+    dw Instruction_EnemyProjectile_XYRadiusInY : db $10,$10              ;86B2EF;
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86B2F3;
-    dw Instruction_EnemyProjectile_Properties_OrY                        ;86B2F5;
-    dw $5000                                                             ;86B2F7;
-    dw Instruction_EnemyProjectile_Properties_AndY                       ;86B2F9;
-    dw $5FFF                                                             ;86B2FB;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86B2FD;
-    db $24                                                               ;86B2FF;
-    dw $0005                                                             ;86B300;
-    dw EnemyProjSpritemaps_Common_BigExplosion_0                         ;86B302;
-    dw $0005                                                             ;86B304;
-    dw EnemyProjSpritemaps_Common_BigExplosion_1                         ;86B306;
-    dw $0005                                                             ;86B308;
-    dw EnemyProjSpritemaps_Common_BigExplosion_2                         ;86B30A;
-    dw $0005                                                             ;86B30C;
-    dw EnemyProjSpritemaps_Common_BigExplosion_3                         ;86B30E;
-    dw $0005                                                             ;86B310;
-    dw EnemyProjSpritemaps_Common_BigExplosion_4                         ;86B312;
-    dw $0005                                                             ;86B314;
-    dw EnemyProjSpritemaps_Common_BigExplosion_5                         ;86B316;
+    dw Instruction_EnemyProjectile_Properties_OrY,$5000                  ;86B2F5;
+    dw Instruction_EnemyProjectile_Properties_AndY,$5FFF                 ;86B2F9;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $24      ;86B2FD;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_0                   ;86B300;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_1                   ;86B304;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_2                   ;86B308;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_3                   ;86B30C;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_4                   ;86B310;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_5                   ;86B314;
     dw Instruction_EnemyProjectile_Delete                                ;86B318;
 
 EnemyProjectile_GoldenTorizoSuperMissile:
-    dw InitAI_EnemyProjectile_GoldenTorizoSuperMissile                   ;86B31A;
-    dw PreInstruction_EnemyProjectile_GoldenTorizoSuperMissile_Held      ;86B31C;
-    dw InstList_EnemyProj_GoldenTorizoSuperMissile_Rightwards_0          ;86B31E;
-    db $04,$04                                                           ;86B320;
-    dw $A0C8,$0000                                                       ;86B322;
-    dw InstList_EnemyProjectile_Shot_GoldenTorizoSuperMissile            ;86B326;
+    dw InitAI_EnemyProjectile_GoldenTorizoSuperMissile                   ;86B31A; Initialisation AI
+    dw PreInstruction_EnemyProjectile_GoldenTorizoSuperMissile_Held      ;86B31C; Initial pre-instruction
+    dw InstList_EnemyProj_GoldenTorizoSuperMissile_Rightwards_0          ;86B31E; Initial instruction list
+    db $04,$04                                                           ;86B320; X,Y radius
+    dw $A0C8,$0000                                                       ;86B322; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Shot_GoldenTorizoSuperMissile            ;86B326; Shot instruction list
 
 InitAI_EnemyProjectile_GoldenTorizoEyeBeam:
     LDX.W $0E54                                                          ;86B328;
@@ -7360,11 +7065,14 @@ InitAI_EnemyProjectile_GoldenTorizoEyeBeam:
     STA.W $1ADB,Y                                                        ;86B372;
     RTS                                                                  ;86B375;
 
-
+;        _____________________ X offset
+;       |      _______________ X velocity (unit 1/100h px/frame)
+;       |     |      _________ Y offset
+;       |     |     |      ___ Y velocity (unit 1/100h px/frame)
+;       |     |     |     |
 .rightwards:
     dw InstList_EnemyProjectile_GoldenTorizoEyeBeam_Normal               ;86B376;
     dw $0014,$0400,$FFE2,$0400                                           ;86B378;
-
 .leftwards:
     dw InstList_EnemyProjectile_GoldenTorizoEyeBeam_Normal               ;86B380;
     dw $FFEC,$FC00,$FFE2,$0400                                           ;86B382;
@@ -7420,64 +7128,46 @@ Instruction_EnemyProjectile_GotoYIfEyeBeamExplosionsDisabled:
 
 InstList_EnemyProjectile_GoldenTorizoEyeBeam_HitWall:
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86B3CD;
-    dw $0004                                                             ;86B3CF;
-    dw EnemyProjSpritemaps_Common_0                                      ;86B3D1;
-    dw $0004                                                             ;86B3D3;
-    dw EnemyProjSpritemaps_Common_1                                      ;86B3D5;
-    dw $0004                                                             ;86B3D7;
-    dw EnemyProjSpritemaps_Common_2                                      ;86B3D9;
-    dw $0004                                                             ;86B3DB;
-    dw EnemyProjSpritemaps_Common_3                                      ;86B3DD;
-    dw $0004                                                             ;86B3DF;
-    dw EnemyProjSpritemaps_Common_4                                      ;86B3E1;
+    dw $0004,EnemyProjSpritemaps_Common_0                                ;86B3CF;
+    dw $0004,EnemyProjSpritemaps_Common_1                                ;86B3D3;
+    dw $0004,EnemyProjSpritemaps_Common_2                                ;86B3D7;
+    dw $0004,EnemyProjSpritemaps_Common_3                                ;86B3DB;
+    dw $0004,EnemyProjSpritemaps_Common_4                                ;86B3DF;
     dw Instruction_EnemyProjectile_Delete                                ;86B3E3;
 
 InstList_EnemyProjectile_GoldenTorizoEyeBeam_HitFloor_0:
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86B3E5;
 
 InstList_EnemyProjectile_GoldenTorizoEyeBeam_HitFloor_1:
-    dw $0008                                                             ;86B3E7;
-    dw EnemyProjSpritemaps_Blank_Default                                 ;86B3E9;
+    dw $0008,EnemyProjSpritemaps_Blank_Default                           ;86B3E7;
     dw Instruction_EnemyProjectile_GotoYIfEyeBeamExplosionsDisabled      ;86B3EB;
     dw InstList_EnemyProjectile_GoldenTorizoEyeBeam_HitFloor_1           ;86B3ED;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib3_Max6               ;86B3EF;
-    db $13                                                               ;86B3F1;
-    dw $0004                                                             ;86B3F2;
-    dw EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_0         ;86B3F4;
-    dw $0005                                                             ;86B3F6;
-    dw EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_1         ;86B3F8;
-    dw Instruction_EnemyProjectile_Properties_AndY                       ;86B3FA;
-    dw $DFFF,$0006                                                       ;86B3FC;
-    dw EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_2         ;86B400;
-    dw $0007                                                             ;86B402;
-    dw EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_3         ;86B404;
-    dw $0008                                                             ;86B406;
-    dw EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_4         ;86B408;
-    dw $0009                                                             ;86B40A;
-    dw EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_5         ;86B40C;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib3_Max6 : db $13      ;86B3EF;
+    dw $0004,EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_0   ;86B3F2;
+    dw $0005,EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_1   ;86B3F6;
+    dw Instruction_EnemyProjectile_Properties_AndY,$DFFF                 ;86B3FA;
+    dw $0006,EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_2   ;86B3FC;
+    dw $0007,EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_3   ;86B402;
+    dw $0008,EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_4   ;86B406;
+    dw $0009,EnemyProjSpritemaps_TorizoChozoOrbs_GoldenTorizoEyeBeam_5   ;86B40A;
     dw Instruction_EnemyProjectile_Delete                                ;86B40E;
 
 InstList_EnemyProjectile_GoldenTorizoEyeBeam_Normal:
-    dw $0001                                                             ;86B410;
-    dw EnemyProjSpritemaps_Common_4                                      ;86B412;
-    dw $0001                                                             ;86B414;
-    dw EnemyProjSpritemaps_Common_3                                      ;86B416;
-    dw $0001                                                             ;86B418;
-    dw EnemyProjSpritemaps_Common_2                                      ;86B41A;
-    dw $0001                                                             ;86B41C;
-    dw EnemyProjSpritemaps_Common_1                                      ;86B41E;
-    dw $0001                                                             ;86B420;
-    dw EnemyProjSpritemaps_Common_0                                      ;86B422;
+    dw $0001,EnemyProjSpritemaps_Common_4                                ;86B410;
+    dw $0001,EnemyProjSpritemaps_Common_3                                ;86B414;
+    dw $0001,EnemyProjSpritemaps_Common_2                                ;86B418;
+    dw $0001,EnemyProjSpritemaps_Common_1                                ;86B41C;
+    dw $0001,EnemyProjSpritemaps_Common_0                                ;86B420;
     dw Instruction_EnemyProjectile_GotoY                                 ;86B424;
     dw InstList_EnemyProjectile_GoldenTorizoEyeBeam_Normal               ;86B426;
 
 EnemyProjectile_GoldenTorizoEyeBeam:
-    dw InitAI_EnemyProjectile_GoldenTorizoEyeBeam                        ;86B428;
-    dw PreInstruction_EnemyProjectile_GoldenTorizoEyeBeam                ;86B42A;
-    dw InstList_EnemyProjectile_GoldenTorizoEyeBeam_Normal               ;86B42C;
-    db $03,$03                                                           ;86B42E;
-    dw $700A,$0000                                                       ;86B430;
-    dw InstList_EnemyProjectile_Delete                                   ;86B434;
+    dw InitAI_EnemyProjectile_GoldenTorizoEyeBeam                        ;86B428; Initialisation AI
+    dw PreInstruction_EnemyProjectile_GoldenTorizoEyeBeam                ;86B42A; Initial pre-instruction
+    dw InstList_EnemyProjectile_GoldenTorizoEyeBeam_Normal               ;86B42C; Initial instruction list
+    db $03,$03                                                           ;86B42E; X,Y radius
+    dw $700A,$0000                                                       ;86B430; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86B434; Shot instruction list
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Instruction_ResetPosition_86B436:
@@ -7491,42 +7181,29 @@ endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_EnemyProj_OldTourianEscapeShaftFakeWallExplosion_0:
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86B443;
-    dw Instruction_EnemyProjectile_TimerInY                              ;86B445;
-    dw $0001                                                             ;86B447;
+    dw Instruction_EnemyProjectile_TimerInY,$0001                        ;86B445;
 
 InstList_EnemyProj_OldTourianEscapeShaftFakeWallExplosion_1:
     dw Instruction_MoveRandomlyWithinXRadius_YRadius                     ;86B449;
     db $07,$00,$0F,$00                                                   ;86B44B;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86B44F;
-    db $24                                                               ;86B451;
-    dw $0004                                                             ;86B452;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_0                       ;86B454;
-    dw $0006                                                             ;86B456;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_1                       ;86B458;
-    dw $0005                                                             ;86B45A;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_2                       ;86B45C;
-    dw $0005                                                             ;86B45E;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_3                       ;86B460;
-    dw $0005                                                             ;86B462;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_4                       ;86B464;
-    dw $0006                                                             ;86B466;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_5                       ;86B468;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $24      ;86B44F;
+    dw $0004,EnemyProjSpritemaps_Common_SmallExplosion_0                 ;86B452;
+    dw $0006,EnemyProjSpritemaps_Common_SmallExplosion_1                 ;86B456;
+    dw $0005,EnemyProjSpritemaps_Common_SmallExplosion_2                 ;86B45A;
+    dw $0005,EnemyProjSpritemaps_Common_SmallExplosion_3                 ;86B45E;
+    dw $0005,EnemyProjSpritemaps_Common_SmallExplosion_4                 ;86B462;
+    dw $0006,EnemyProjSpritemaps_Common_SmallExplosion_5                 ;86B466;
     dw Instruction_EnemyProjectile_DecrementTimer_GotoYIfNonZero         ;86B46A;
     dw InstList_EnemyProj_OldTourianEscapeShaftFakeWallExplosion_1       ;86B46C;
     dw Instruction_EnemyProjectile_Delete                                ;86B46E;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_EnemyProjectile_86B470:
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86B470;
-    db $24                                                               ;86B472;
-    dw $0008                                                             ;86B473;
-    dw EnemyProjSpritemaps_Common_Smoke_0                                ;86B475;
-    dw $0008                                                             ;86B477;
-    dw EnemyProjSpritemaps_Common_Smoke_1                                ;86B479;
-    dw $0008                                                             ;86B47B;
-    dw EnemyProjSpritemaps_Common_Smoke_2                                ;86B47D;
-    dw $0008                                                             ;86B47F;
-    dw EnemyProjSpritemaps_Common_Smoke_3                                ;86B481;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $24      ;86B470;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_0                          ;86B473;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_1                          ;86B477;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_2                          ;86B47B;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_3                          ;86B47F;
     dw Instruction_EnemyProjectile_DecrementTimer_GotoYIfNonZero         ;86B483;
     dw InstList_EnemyProj_OldTourianEscapeShaftFakeWallExplosion_1       ;86B485;
     dw Instruction_EnemyProjectile_Delete                                ;86B487;
@@ -7563,42 +7240,34 @@ RTS_86B4B0:
 
 
 EnemyProjectile_OldTourianEscapeShaftFakeWallExplosion:
-    dw InitAI_EnemyProj_OldTourianEscapeShaftFakeWallExplosion           ;86B4B1;
-    dw RTS_86B4B0                                                        ;86B4B3;
-    dw InstList_EnemyProj_OldTourianEscapeShaftFakeWallExplosion_0       ;86B4B5;
-    db $00,$00                                                           ;86B4B7;
-    dw $3000,$0000                                                       ;86B4B9;
-    dw InstList_EnemyProjectile_Delete                                   ;86B4BD;
+    dw InitAI_EnemyProj_OldTourianEscapeShaftFakeWallExplosion           ;86B4B1; Initialisation AI
+    dw RTS_86B4B0                                                        ;86B4B3; Initial pre-instruction
+    dw InstList_EnemyProj_OldTourianEscapeShaftFakeWallExplosion_0       ;86B4B5; Initial instruction list
+    db $00,$00                                                           ;86B4B7; X,Y radius
+    dw $3000,$0000                                                       ;86B4B9; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86B4BD; Shot instruction list
 
 InstList_EnemyProjectile_DragonFireball_Rising_Left:
-    dw $0005                                                             ;86B4BF;
-    dw EnemyProjSpritemaps_DragonFireball_0                              ;86B4C1;
-    dw $0005                                                             ;86B4C3;
-    dw EnemyProjSpritemaps_DragonFireball_1                              ;86B4C5;
+    dw $0005,EnemyProjSpritemaps_DragonFireball_0                        ;86B4BF;
+    dw $0005,EnemyProjSpritemaps_DragonFireball_1                        ;86B4C3;
     dw Instruction_EnemyProjectile_GotoY                                 ;86B4C7;
     dw InstList_EnemyProjectile_DragonFireball_Rising_Left               ;86B4C9;
 
 InstList_EnemyProjectile_DragonFireball_Rising_Right:
-    dw $0005                                                             ;86B4CB;
-    dw EnemyProjSpritemaps_DragonFireball_4                              ;86B4CD;
-    dw $0005                                                             ;86B4CF;
-    dw EnemyProjSpritemaps_DragonFireball_5                              ;86B4D1;
+    dw $0005,EnemyProjSpritemaps_DragonFireball_4                        ;86B4CB;
+    dw $0005,EnemyProjSpritemaps_DragonFireball_5                        ;86B4CF;
     dw Instruction_EnemyProjectile_GotoY                                 ;86B4D3;
     dw InstList_EnemyProjectile_DragonFireball_Rising_Right              ;86B4D5;
 
 InstList_EnemyProjectile_DragonFireball_Falling_Left:
-    dw $0005                                                             ;86B4D7;
-    dw EnemyProjSpritemaps_DragonFireball_2                              ;86B4D9;
-    dw $0005                                                             ;86B4DB;
-    dw EnemyProjSpritemaps_DragonFireball_3                              ;86B4DD;
+    dw $0005,EnemyProjSpritemaps_DragonFireball_2                        ;86B4D7;
+    dw $0005,EnemyProjSpritemaps_DragonFireball_3                        ;86B4DB;
     dw Instruction_EnemyProjectile_GotoY                                 ;86B4DF;
     dw InstList_EnemyProjectile_DragonFireball_Falling_Left              ;86B4E1;
 
 InstList_EnemyProjectile_DragonFireball_Falling_Right:
-    dw $0005                                                             ;86B4E3;
-    dw EnemyProjSpritemaps_DragonFireball_6                              ;86B4E5;
-    dw $0005                                                             ;86B4E7;
-    dw EnemyProjSpritemaps_DragonFireball_7                              ;86B4E9;
+    dw $0005,EnemyProjSpritemaps_DragonFireball_6                        ;86B4E3;
+    dw $0005,EnemyProjSpritemaps_DragonFireball_7                        ;86B4E7;
     dw Instruction_EnemyProjectile_GotoY                                 ;86B4EB;
     dw InstList_EnemyProjectile_DragonFireball_Falling_Right             ;86B4ED;
 
@@ -7726,65 +7395,50 @@ Delete_EnemyProjectile_IfVerticallyOffScreen:
 
 
 EnemyProjectile_DragonFireball:
-    dw InitAI_EnemyProjectile_DragonFireball                             ;86B5CB;
-    dw PreInstruction_EnemyProjectile_DragonFireball                     ;86B5CD;
-    dw InstList_EnemyProjectile_DragonFireball_Rising_Left               ;86B5CF;
-    db $02,$02                                                           ;86B5D1;
-    dw $000A,$0000                                                       ;86B5D3;
-    dw InstList_EnemyProjectile_Delete                                   ;86B5D7;
+    dw InitAI_EnemyProjectile_DragonFireball                             ;86B5CB; Initialisation AI
+    dw PreInstruction_EnemyProjectile_DragonFireball                     ;86B5CD; Initial pre-instruction
+    dw InstList_EnemyProjectile_DragonFireball_Rising_Left               ;86B5CF; Initial instruction list
+    db $02,$02                                                           ;86B5D1; X,Y radius
+    dw $000A,$0000                                                       ;86B5D3; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86B5D7; Shot instruction list
 
 InstList_EnemyProjectile_EyeDoorProjectile_Normal_0:
-    dw $0004                                                             ;86B5D9;
-    dw EnemyProjSpritemaps_EyeDoorProjectile_4                           ;86B5DB;
-    dw $0003                                                             ;86B5DD;
-    dw EnemyProjSpritemaps_EyeDoorProjectile_5                           ;86B5DF;
-    dw $0002                                                             ;86B5E1;
-    dw EnemyProjSpritemaps_EyeDoorProjectile_6                           ;86B5E3;
+    dw $0004,EnemyProjSpritemaps_EyeDoorProjectile_4                     ;86B5D9;
+    dw $0003,EnemyProjSpritemaps_EyeDoorProjectile_5                     ;86B5DD;
+    dw $0002,EnemyProjSpritemaps_EyeDoorProjectile_6                     ;86B5E1;
     dw Instruction_EnemyProjectile_CalculateDirectionTowardsSamus        ;86B5E5;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86B5E7;
     dw PreInstruction_EnemyProjectile_EyeDoorProjectile_Moving           ;86B5E9;
 
 InstList_EnemyProjectile_EyeDoorProjectile_Normal_1:
-    dw $0010                                                             ;86B5EB;
-    dw EnemyProjSpritemaps_EyeDoorProjectile_7                           ;86B5ED;
+    dw $0010,EnemyProjSpritemaps_EyeDoorProjectile_7                     ;86B5EB;
     dw Instruction_EnemyProjectile_GotoY                                 ;86B5EF;
     dw InstList_EnemyProjectile_EyeDoorProjectile_Normal_1               ;86B5F1;
 
 InstList_EnemyProjectile_EyeDoorProjectile_Explode:
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86B5F3;
-    dw $0002                                                             ;86B5F5;
-    dw EnemyProjSpritemaps_EyeDoorProjectile_6                           ;86B5F7;
-    dw $0003                                                             ;86B5F9;
-    dw EnemyProjSpritemaps_EyeDoorProjectile_5                           ;86B5FB;
-    dw $0004                                                             ;86B5FD;
-    dw EnemyProjSpritemaps_EyeDoorProjectile_4                           ;86B5FF;
+    dw $0002,EnemyProjSpritemaps_EyeDoorProjectile_6                     ;86B5F5;
+    dw $0003,EnemyProjSpritemaps_EyeDoorProjectile_5                     ;86B5F9;
+    dw $0004,EnemyProjSpritemaps_EyeDoorProjectile_4                     ;86B5FD;
     dw Instruction_EnemyProjectile_Delete                                ;86B601;
 
 InstList_EnemyProjectile_Shot_EyeDoorProjectile:
-    dw $0004                                                             ;86B603;
-    dw EnemyProjSpritemaps_EyeDoorProjectile_0                           ;86B605;
-    dw $0004                                                             ;86B607;
-    dw EnemyProjSpritemaps_EyeDoorProjectile_1                           ;86B609;
-    dw $0004                                                             ;86B60B;
-    dw EnemyProjSpritemaps_EyeDoorProjectile_2                           ;86B60D;
-    dw $0004                                                             ;86B60F;
-    dw EnemyProjSpritemaps_EyeDoorProjectile_3                           ;86B611;
+    dw $0004,EnemyProjSpritemaps_EyeDoorProjectile_0                     ;86B603;
+    dw $0004,EnemyProjSpritemaps_EyeDoorProjectile_1                     ;86B607;
+    dw $0004,EnemyProjSpritemaps_EyeDoorProjectile_2                     ;86B60B;
+    dw $0004,EnemyProjSpritemaps_EyeDoorProjectile_3                     ;86B60F;
     dw Instruction_EnemyProjectile_Delete                                ;86B613;
 
 InstList_EnemyProjectile_EyeDoorSweat_Falling:
-    dw $0006                                                             ;86B615;
-    dw EnemyProjSpritemaps_EyeDoorSweat_0                                ;86B617;
+    dw $0006,EnemyProjSpritemaps_EyeDoorSweat_0                          ;86B615;
     dw Instruction_EnemyProjectile_GotoY                                 ;86B619;
     dw InstList_EnemyProjectile_EyeDoorSweat_Falling                     ;86B61B;
 
 InstList_EnemyProjectile_EyeDoorSweat_HitFloor:
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86B61D;
-    dw $0006                                                             ;86B61F;
-    dw EnemyProjSpritemaps_EyeDoorSweat_1                                ;86B621;
-    dw $0006                                                             ;86B623;
-    dw EnemyProjSpritemaps_EyeDoorSweat_2                                ;86B625;
-    dw $0006                                                             ;86B627;
-    dw EnemyProjSpritemaps_EyeDoorSweat_3                                ;86B629;
+    dw $0006,EnemyProjSpritemaps_EyeDoorSweat_1                          ;86B61F;
+    dw $0006,EnemyProjSpritemaps_EyeDoorSweat_2                          ;86B623;
+    dw $0006,EnemyProjSpritemaps_EyeDoorSweat_3                          ;86B627;
     dw Instruction_EnemyProjectile_Delete                                ;86B62B;
 
 InitAI_EnemyProjectile_EyeDoorProjectile:
@@ -7815,11 +7469,9 @@ InitAI_EnemyProjectile_EyeDoorProjectile:
 
 .Xpositions:
     dw $FFF0                                                             ;86B65B;
-
 .Ypositions:
-    dw $0010,$FFA0,$FFC0,$FF80,$FFE0,$FFA0,$0040,$FF80                   ;86B65D;
-    dw $0020,$0010,$0010,$0060,$FFC0,$0070,$FFC0,$0080                   ;86B66D;
-    dw $FFC0,$0090,$FFC0                                                 ;86B67D;
+    dw       $0010, $FFA0,$FFC0, $FF80,$FFE0, $FFA0,$0040, $FF80,$0020   ;86B65D;
+    dw $0010,$0010, $0060,$FFC0, $0070,$FFC0, $0080,$FFC0, $0090,$FFC0   ;86B66D;
 
 InitAI_EnemyProjectile_EyeDoorSweat:
     LDX.W $1C27                                                          ;86B683;
@@ -7846,12 +7498,11 @@ InitAI_EnemyProjectile_EyeDoorSweat:
     STA.W $1ADB,Y                                                        ;86B6AD;
     RTS                                                                  ;86B6B0;
 
-
-.Xvelocity:
+  .Xvelocity
     dw $FFC0                                                             ;86B6B1;
+  .Yvelocity
+    dw       $0200, $0040,$0200                                          ;86B6B3;
 
-.Yvelocity:
-    dw $0200,$0040,$0200                                                 ;86B6B3;
 
 PreInstruction_EnemyProjectile_EyeDoorProjectile_Moving:
     JSR.W Move_EnemyProjectile_Horizontally                              ;86B6B9;
@@ -7931,68 +7582,58 @@ PreInstruction_EnemyProjectile_EyeDoorSweat:
 
 
 EnemyProjectile_EyeDoorProjectile:
-    dw InitAI_EnemyProjectile_EyeDoorProjectile                          ;86B743;
-    dw RTS_8684FB                                                        ;86B745;
-    dw InstList_EnemyProjectile_EyeDoorProjectile_Normal_0               ;86B747;
-    db $08,$08                                                           ;86B749;
-    dw $8004                                                             ;86B74B;
-    dw $0000                                                             ;86B74D;
-    dw InstList_EnemyProjectile_Shot_EyeDoorProjectile                   ;86B74F;
+    dw InitAI_EnemyProjectile_EyeDoorProjectile                          ;86B743; Initialisation AI
+    dw RTS_8684FB                                                        ;86B745; Initial pre-instruction
+    dw InstList_EnemyProjectile_EyeDoorProjectile_Normal_0               ;86B747; Initial instruction list
+    db $08,$08                                                           ;86B749; X,Y radius
+    dw $8004                                                             ;86B74B; Properties
+    dw $0000                                                             ;86B74D; Hit instruction list
+    dw InstList_EnemyProjectile_Shot_EyeDoorProjectile                   ;86B74F; Shot instruction list
 
 EnemyProjectile_EyeDoorSweat:
-    dw InitAI_EnemyProjectile_EyeDoorSweat                               ;86B751;
-    dw PreInstruction_EnemyProjectile_EyeDoorSweat                       ;86B753;
-    dw InstList_EnemyProjectile_EyeDoorSweat_Falling                     ;86B755;
-    db $00,$00                                                           ;86B757;
-    dw $0004                                                             ;86B759;
-    dw $0000                                                             ;86B75B;
-    dw InstList_EnemyProjectile_Delete                                   ;86B75D;
+    dw InitAI_EnemyProjectile_EyeDoorSweat                               ;86B751; Initialisation AI
+    dw PreInstruction_EnemyProjectile_EyeDoorSweat                       ;86B753; Initial pre-instruction
+    dw InstList_EnemyProjectile_EyeDoorSweat_Falling                     ;86B755; Initial instruction list
+    db $00,$00                                                           ;86B757; X,Y radius
+    dw $0004                                                             ;86B759; Properties
+    dw $0000                                                             ;86B75B; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86B75D; Shot instruction list
 
 if !FEATURE_KEEP_UNREFERENCED
-UNUSED_Colors_86B75F:
-    dw $5294,$39CE,$2108,$2484,$35AD,$2529,$14A5,$1842                   ;86B75F;
-    dw $2108,$1084,$14A5,$1842,$0C63,$0421,$0842,$0000                   ;86B76F;
-    dw $5294,$39CE,$2108,$2484,$5294,$39CE,$2108,$2484                   ;86B77F;
-    dw $5294,$39CE,$2108,$2484,$5294,$39CE,$2108,$2484                   ;86B78F;
+UNUSED_Colors_86B75F:                                                    ;86B75F;
+; "5294, 39CE, 2108, 2484" is colours Bh..Eh of lots of sprite palette 5s (common sprites)
+    dw $5294,$39CE,$2108,$2484 ; (14h, 14h, 14h), (Eh, Eh, Eh), (8, 8, 8), (4, 4, 9)
+    dw $35AD,$2529,$14A5,$1842 ; ( Dh,  Dh,  Dh), ( 9,  9,  9), (5, 5, 5), (2, 2, 6)
+    dw $2108,$1084,$14A5,$1842 ; (  8,   8,   8), ( 4,  4,  4), (5, 5, 5), (2, 2, 6)
+    dw $0C63,$0421,$0842,$0000 ; (  3,   3,   3), ( 1,  1,  1), (2, 2, 2), (0, 0, 0)
+    dw $5294,$39CE,$2108,$2484
+    dw $5294,$39CE,$2108,$2484
+    dw $5294,$39CE,$2108,$2484
+    dw $5294,$39CE,$2108,$2484
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_EnemyProjectile_TourianStatue_Delete:
     dw Instruction_EnemyProjectile_Delete                                ;86B79F;
 
 InstList_EnemyProj_TourianStatueUnlockingParticleWaterSplash:
-    dw $0008                                                             ;86B7A1;
-    dw EnemyProjSpritemaps_TourianStatueUnlockParticleWaterSplash_0      ;86B7A3;
-    dw $0008                                                             ;86B7A5;
-    dw EnemyProjSpritemaps_TourianStatueUnlockParticleWaterSplash_1      ;86B7A7;
-    dw $0008                                                             ;86B7A9;
-    dw EnemyProjSpritemaps_TourianStatueUnlockParticleWaterSplash_2      ;86B7AB;
-    dw $0008                                                             ;86B7AD;
-    dw EnemyProjSpritemaps_TourianStatueUnlockParticleWaterSplash_3      ;86B7AF;
+    dw $0008,EnemyProjSpritemaps_TourianStatueUnlockParticleWaterSplash_0 ;86B7A1;
+    dw $0008,EnemyProjSpritemaps_TourianStatueUnlockParticleWaterSplash_1 ;86B7A5;
+    dw $0008,EnemyProjSpritemaps_TourianStatueUnlockParticleWaterSplash_2 ;86B7A9;
+    dw $0008,EnemyProjSpritemaps_TourianStatueUnlockParticleWaterSplash_3 ;86B7AD;
     dw Instruction_EnemyProjectile_Delete                                ;86B7B1;
 
 InstList_EnemyProj_TourianStatueEyeGlow:
-    dw $0008                                                             ;86B7B3;
-    dw EnemyProjSpritemaps_TourianStatueEyeGlow_8                        ;86B7B5;
-    dw $0008                                                             ;86B7B7;
-    dw EnemyProjSpritemaps_TourianStatueEyeGlow_7                        ;86B7B9;
-    dw $0008                                                             ;86B7BB;
-    dw EnemyProjSpritemaps_TourianStatueEyeGlow_6                        ;86B7BD;
-    dw $0007                                                             ;86B7BF;
-    dw EnemyProjSpritemaps_TourianStatueEyeGlow_5                        ;86B7C1;
-    dw $0007                                                             ;86B7C3;
-    dw EnemyProjSpritemaps_TourianStatueEyeGlow_4                        ;86B7C5;
-    dw $0007                                                             ;86B7C7;
-    dw EnemyProjSpritemaps_TourianStatueEyeGlow_3                        ;86B7C9;
-    dw $0006                                                             ;86B7CB;
-    dw EnemyProjSpritemaps_TourianStatueEyeGlow_2                        ;86B7CD;
-    dw $0006                                                             ;86B7CF;
-    dw EnemyProjSpritemaps_TourianStatueEyeGlow_1                        ;86B7D1;
-    dw $0005                                                             ;86B7D3;
-    dw EnemyProjSpritemaps_TourianStatueEyeGlow_0                        ;86B7D5;
-    dw $0030                                                             ;86B7D7;
-    dw EnemyProjSpritemaps_Blank_Default                                 ;86B7D9;
-    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6               ;86B7DB;
-    db $19                                                               ;86B7DD;
+    dw $0008,EnemyProjSpritemaps_TourianStatueEyeGlow_8                  ;86B7B3;
+    dw $0008,EnemyProjSpritemaps_TourianStatueEyeGlow_7                  ;86B7B7;
+    dw $0008,EnemyProjSpritemaps_TourianStatueEyeGlow_6                  ;86B7BB;
+    dw $0007,EnemyProjSpritemaps_TourianStatueEyeGlow_5                  ;86B7BF;
+    dw $0007,EnemyProjSpritemaps_TourianStatueEyeGlow_4                  ;86B7C3;
+    dw $0007,EnemyProjSpritemaps_TourianStatueEyeGlow_3                  ;86B7C7;
+    dw $0006,EnemyProjSpritemaps_TourianStatueEyeGlow_2                  ;86B7CB;
+    dw $0006,EnemyProjSpritemaps_TourianStatueEyeGlow_1                  ;86B7CF;
+    dw $0005,EnemyProjSpritemaps_TourianStatueEyeGlow_0                  ;86B7D3;
+    dw $0030,EnemyProjSpritemaps_Blank_Default                           ;86B7D7;
+    dw Instruction_EnemyProjectile_QueueSoundInY_Lib2_Max6 : db $19      ;86B7DB;
     dw Instruction_EnemyProj_TourianStatueUnlockingEarthquake            ;86B7DE;
     dw Instruction_EnemyProj_SpawnTourianStatueUnlockingParticle         ;86B7E0;
     dw Instruction_EnemyProj_SpawnTourianStatueUnlockingParticle         ;86B7E2;
@@ -8018,15 +7659,11 @@ Instruction_EnemyProj_TourianStatueUnlockingEarthquake:
 
 
 InstList_EnemyProjectile_TourianStatueUnlockingParticle:
-    dw $0003                                                             ;86B802;
-    dw EnemyProjSpritemaps_TourianStatueUnlockingParticle_0              ;86B804;
-    dw $0003                                                             ;86B806;
-    dw EnemyProjSpritemaps_TourianStatueUnlockingParticle_1              ;86B808;
+    dw $0003,EnemyProjSpritemaps_TourianStatueUnlockingParticle_0        ;86B802;
+    dw $0003,EnemyProjSpritemaps_TourianStatueUnlockingParticle_1        ;86B806;
     dw Inst_EnemyProj_SpawnTourianStatueUnlockingParticleTail            ;86B80A;
-    dw $0003                                                             ;86B80C;
-    dw EnemyProjSpritemaps_TourianStatueUnlockingParticle_3              ;86B80E;
-    dw $0003                                                             ;86B810;
-    dw EnemyProjSpritemaps_TourianStatueUnlockingParticle_2              ;86B812;
+    dw $0003,EnemyProjSpritemaps_TourianStatueUnlockingParticle_3        ;86B80C;
+    dw $0003,EnemyProjSpritemaps_TourianStatueUnlockingParticle_2        ;86B810;
     dw Instruction_EnemyProjectile_DecrementTimer_GotoYIfNonZero         ;86B814;
     dw InstList_EnemyProjectile_TourianStatueUnlockingParticle           ;86B816;
 
@@ -8040,17 +7677,13 @@ Inst_EnemyProj_SpawnTourianStatueUnlockingParticleTail:
 
 
 InstList_EnemyProj_SpawnTourianStatueUnlockingParticleTail:
-    dw $0004                                                             ;86B823;
-    dw EnemyProjSpritemaps_TourianStatueUnlockingParticleTail_0          ;86B825;
-    dw Instruction_EnemyProjectile_YPositionInY                          ;86B827;
-    dw $0008,$0004                                                       ;86B829;
-    dw EnemyProjSpritemaps_TourianStatueUnlockingParticleTail_1          ;86B82D;
-    dw Instruction_EnemyProjectile_YPositionInY                          ;86B82F;
-    dw $0004,$0004                                                       ;86B831;
-    dw EnemyProjSpritemaps_TourianStatueUnlockingParticleTail_2          ;86B835;
-    dw Instruction_EnemyProjectile_YPositionInY                          ;86B837;
-    dw $0002,$0004                                                       ;86B839;
-    dw EnemyProjSpritemaps_TourianStatueUnlockingParticleTail_3          ;86B83D;
+    dw $0004,EnemyProjSpritemaps_TourianStatueUnlockingParticleTail_0    ;86B823;
+    dw Instruction_EnemyProjectile_YPositionInY,$0008                    ;86B827;
+    dw $0004,EnemyProjSpritemaps_TourianStatueUnlockingParticleTail_1    ;86B829;
+    dw Instruction_EnemyProjectile_YPositionInY,$0004                    ;86B82F;
+    dw $0004,EnemyProjSpritemaps_TourianStatueUnlockingParticleTail_2    ;86B831;
+    dw Instruction_EnemyProjectile_YPositionInY,$0002                    ;86B837;
+    dw $0004,EnemyProjSpritemaps_TourianStatueUnlockingParticleTail_3    ;86B839;
     dw Instruction_EnemyProjectile_Delete                                ;86B83F;
 
 Instruction_EnemyProjectile_YPositionInY:
@@ -8064,34 +7697,28 @@ Instruction_EnemyProjectile_YPositionInY:
 
 
 InstList_EnemyProjectile_TourianStatuesSoul:
-    dw $0008                                                             ;86B84E;
-    dw EnemyProjSpritemaps_TourianStatuesSoul_0                          ;86B850;
-    dw $0008                                                             ;86B852;
-    dw EnemyProjSpritemaps_TourianStatuesSoul_1                          ;86B854;
+    dw $0008,EnemyProjSpritemaps_TourianStatuesSoul_0                    ;86B84E;
+    dw $0008,EnemyProjSpritemaps_TourianStatuesSoul_1                    ;86B852;
     dw Instruction_EnemyProjectile_GotoY                                 ;86B856;
     dw InstList_EnemyProjectile_TourianStatuesSoul                       ;86B858;
 
 InstList_EnemyProjectile_TourianStatueBaseDecoration_0:
-    dw $0080                                                             ;86B85A;
-    dw EnemyProjSpritemaps_TourianStatueBaseDecoration                   ;86B85C;
+    dw $0080,EnemyProjSpritemaps_TourianStatueBaseDecoration             ;86B85A;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86B85E;
     dw PreInst_EnemyProj_TourianStatueBaseDecoration_AllowProcess        ;86B860;
 
 InstList_EnemyProjectile_TourianStatueBaseDecoration_1:
-    dw $0777                                                             ;86B862;
-    dw EnemyProjSpritemaps_TourianStatueBaseDecoration                   ;86B864;
+    dw $0777,EnemyProjSpritemaps_TourianStatueBaseDecoration             ;86B862;
     dw Instruction_EnemyProjectile_GotoY                                 ;86B866;
     dw InstList_EnemyProjectile_TourianStatueBaseDecoration_1            ;86B868;
 
 InstList_EnemyProjectile_TourianStatueRidley:
-    dw $0777                                                             ;86B86A;
-    dw EnemyProjSpritemaps_TourianStatueRidley                           ;86B86C;
+    dw $0777,EnemyProjSpritemaps_TourianStatueRidley                     ;86B86A;
     dw Instruction_EnemyProjectile_GotoY                                 ;86B86E;
     dw InstList_EnemyProjectile_TourianStatueRidley                      ;86B870;
 
 InstList_EnemyProjectile_TourianStatuePhantoon:
-    dw $0777                                                             ;86B872;
-    dw EnemyProjSpritemaps_TourianStatuePhantoon                         ;86B874;
+    dw $0777,EnemyProjSpritemaps_TourianStatuePhantoon                   ;86B872;
     dw Instruction_EnemyProjectile_GotoY                                 ;86B876;
     dw InstList_EnemyProjectile_TourianStatuePhantoon                    ;86B878;
 
@@ -8172,24 +7799,26 @@ InitAI_EnemyProjectile_TourianStatuesSoul:
     STA.W $1ADB,Y                                                        ;86B90A;
     RTS                                                                  ;86B90D;
 
-
-TourianStatueEyeData_Xposition:
+;        _____________________ Phantoon
+;       |      _______________ Ridley
+;       |     |      _________ Draygon
+;       |     |     |      ___ Kraid
+;       |     |     |     |
+TourianStatueEyeData:
+  .Xposition:
     dw $0084,$007A,$009E,$0068                                           ;86B90E;
-
-TourianStatueEyeData_Yposition:
+  .Yposition:
     dw $0090,$0051,$0080,$0072                                           ;86B916;
 
-TourianStatueEyeData_Phantoon:
-    dw $6BFF,$033B,$0216,$0173                                           ;86B91E;
-
-TourianStatueEyeData_Ridley:
-    dw $7F5F,$7C1F,$5816,$300C                                           ;86B926;
-
-TourianStatueEyeData_Draygon:
-    dw $7F5A,$7EC0,$6DE0,$54E0                                           ;86B92E;
-
-TourianStatueEyeData_Kraid:
-    dw $6BFA,$3BE0,$2680,$1580                                           ;86B936;
+; Sprite palette 7 colours 9..Ch. Eye glow colours
+  .Phantoon:
+    dw $6BFF,$033B,$0216,$0173                                           ;86B91E; yellow
+  .Ridley:
+    dw $7F5F,$7C1F,$5816,$300C                                           ;86B926; red
+  .Draygon:
+    dw $7F5A,$7EC0,$6DE0,$54E0                                           ;86B92E; blue
+  .Kraid:
+    dw $6BFA,$3BE0,$2680,$1580                                           ;86B936; green
 
 InitAI_EnemyProjectile_TourianStatueBaseDecoration:
     LDA.W #$0078                                                         ;86B93E;
@@ -8341,123 +7970,104 @@ PreInst_EnemyProj_TourianStatue_Ridley_Phantoon_BaseDecor:
 
 
 EnemyProjectile_TourianStatueWaterSplash:
-    dw InitAI_EnemyProj_TourianStatueUnlockingParticleWaterSplash        ;86BA5C;
-    dw PreInst_EnemyProj_TourianStatueUnlockingParticleWaterSplash       ;86BA5E;
-    dw InstList_EnemyProj_TourianStatueUnlockingParticleWaterSplash      ;86BA60;
-    db $00,$00                                                           ;86BA62;
-    dw $3000                                                             ;86BA64;
-    dw $0000                                                             ;86BA66;
-    dw InstList_EnemyProjectile_Delete                                   ;86BA68;
+    dw InitAI_EnemyProj_TourianStatueUnlockingParticleWaterSplash        ;86BA5C; Initialisation AI
+    dw PreInst_EnemyProj_TourianStatueUnlockingParticleWaterSplash       ;86BA5E; Initial pre-instruction
+    dw InstList_EnemyProj_TourianStatueUnlockingParticleWaterSplash      ;86BA60; Initial instruction list
+    db $00,$00                                                           ;86BA62; X,Y radius
+    dw $3000                                                             ;86BA64; Properties
+    dw $0000                                                             ;86BA66; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86BA68; Shot instruction list
 
 EnemyProjectile_TourianStatueEyeGlow:
-    dw InitAI_EnemyProjectile_TourianStatueEyeGlow                       ;86BA6A;
-    dw RTS_8684FB                                                        ;86BA6C;
-    dw InstList_EnemyProj_TourianStatueEyeGlow                           ;86BA6E;
-    db $00,$00                                                           ;86BA70;
-    dw $3000                                                             ;86BA72;
-    dw $0000                                                             ;86BA74;
-    dw InstList_EnemyProjectile_Delete                                   ;86BA76;
+    dw InitAI_EnemyProjectile_TourianStatueEyeGlow                       ;86BA6A; Initialisation AI
+    dw RTS_8684FB                                                        ;86BA6C; Initial pre-instruction
+    dw InstList_EnemyProj_TourianStatueEyeGlow                           ;86BA6E; Initial instruction list
+    db $00,$00                                                           ;86BA70; X,Y radius
+    dw $3000                                                             ;86BA72; Properties
+    dw $0000                                                             ;86BA74; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86BA76; Shot instruction list
 
 EnemyProjectile_TourianStatueUnlockingParticle:
-    dw InitAI_EnemyProjectile_TourianStatueUnlockingParticle             ;86BA78;
-    dw PreInst_EnemyProjectile_TourianStatueUnlockingParticle            ;86BA7A;
-    dw InstList_EnemyProjectile_TourianStatueUnlockingParticle           ;86BA7C;
-    db $00,$00                                                           ;86BA7E;
-    dw $3000                                                             ;86BA80;
-    dw $0000                                                             ;86BA82;
-    dw InstList_EnemyProjectile_Delete                                   ;86BA84;
+    dw InitAI_EnemyProjectile_TourianStatueUnlockingParticle             ;86BA78; Initialisation AI
+    dw PreInst_EnemyProjectile_TourianStatueUnlockingParticle            ;86BA7A; Initial pre-instruction
+    dw InstList_EnemyProjectile_TourianStatueUnlockingParticle           ;86BA7C; Initial instruction list
+    db $00,$00                                                           ;86BA7E; X,Y radius
+    dw $3000                                                             ;86BA80; Properties
+    dw $0000                                                             ;86BA82; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86BA84; Shot instruction list
 
 EnemyProjectile_TourianStatueUnlockingParticleTail:
-    dw InitAI_EnemyProjectile_TourianStatueUnlockingParticleTail         ;86BA86;
-    dw RTS_8684FB                                                        ;86BA88;
-    dw InstList_EnemyProj_SpawnTourianStatueUnlockingParticleTail        ;86BA8A;
-    db $00,$00                                                           ;86BA8C;
-    dw $3000                                                             ;86BA8E;
-    dw $0000                                                             ;86BA90;
-    dw InstList_EnemyProjectile_Delete                                   ;86BA92;
+    dw InitAI_EnemyProjectile_TourianStatueUnlockingParticleTail         ;86BA86; Initialisation AI
+    dw RTS_8684FB                                                        ;86BA88; Initial pre-instruction
+    dw InstList_EnemyProj_SpawnTourianStatueUnlockingParticleTail        ;86BA8A; Initial instruction list
+    db $00,$00                                                           ;86BA8C; X,Y radius
+    dw $3000                                                             ;86BA8E; Properties
+    dw $0000                                                             ;86BA90; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86BA92; Shot instruction list
 
 EnemyProjectile_TourianStatueSoul:
-    dw InitAI_EnemyProjectile_TourianStatuesSoul                         ;86BA94;
-    dw PreInstruction_EnemyProjectile_TourianStatuesSoul                 ;86BA96;
-    dw InstList_EnemyProjectile_TourianStatuesSoul                       ;86BA98;
-    db $00,$00                                                           ;86BA9A;
-    dw $3000                                                             ;86BA9C;
-    dw $0000                                                             ;86BA9E;
-    dw InstList_EnemyProjectile_Delete                                   ;86BAA0;
+    dw InitAI_EnemyProjectile_TourianStatuesSoul                         ;86BA94; Initialisation AI
+    dw PreInstruction_EnemyProjectile_TourianStatuesSoul                 ;86BA96; Initial pre-instruction
+    dw InstList_EnemyProjectile_TourianStatuesSoul                       ;86BA98; Initial instruction list
+    db $00,$00                                                           ;86BA9A; X,Y radius
+    dw $3000                                                             ;86BA9C; Properties
+    dw $0000                                                             ;86BA9E; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86BAA0; Shot instruction list
 
 EnemyProjectile_TourianStatueRidley:
-    dw InitAI_EnemyProjectile_TourianStatue_Ridley                       ;86BAA2;
-    dw PreInst_EnemyProj_TourianStatue_Ridley_Phantoon_BaseDecor         ;86BAA4;
-    dw InstList_EnemyProjectile_TourianStatueRidley                      ;86BAA6;
-    db $00,$00                                                           ;86BAA8;
-    dw $2000                                                             ;86BAAA;
-    dw $0000                                                             ;86BAAC;
-    dw InstList_EnemyProjectile_Delete                                   ;86BAAE;
+    dw InitAI_EnemyProjectile_TourianStatue_Ridley                       ;86BAA2; Initialisation AI
+    dw PreInst_EnemyProj_TourianStatue_Ridley_Phantoon_BaseDecor         ;86BAA4; Initial pre-instruction
+    dw InstList_EnemyProjectile_TourianStatueRidley                      ;86BAA6; Initial instruction list
+    db $00,$00                                                           ;86BAA8; X,Y radius
+    dw $2000                                                             ;86BAAA; Properties
+    dw $0000                                                             ;86BAAC; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86BAAE; Shot instruction list
 
 EnemyProjectile_TourianStatuePhantoon:
-    dw InitAI_EnemyProjectile_TourianStatue_Phantoon                     ;86BAB0;
-    dw PreInst_EnemyProj_TourianStatue_Ridley_Phantoon_BaseDecor         ;86BAB2;
-    dw InstList_EnemyProjectile_TourianStatuePhantoon                    ;86BAB4;
-    db $00,$00                                                           ;86BAB6;
-    dw $2000                                                             ;86BAB8;
-    dw $0000                                                             ;86BABA;
-    dw InstList_EnemyProjectile_Delete                                   ;86BABC;
+    dw InitAI_EnemyProjectile_TourianStatue_Phantoon                     ;86BAB0; Initialisation AI
+    dw PreInst_EnemyProj_TourianStatue_Ridley_Phantoon_BaseDecor         ;86BAB2; Initial pre-instruction
+    dw InstList_EnemyProjectile_TourianStatuePhantoon                    ;86BAB4; Initial instruction list
+    db $00,$00                                                           ;86BAB6; X,Y radius
+    dw $2000                                                             ;86BAB8; Properties
+    dw $0000                                                             ;86BABA; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86BABC; Shot instruction list
 
 EnemyProjectile_TourianStatueBaseDecoration:
-    dw InitAI_EnemyProjectile_TourianStatueBaseDecoration                ;86BABE;
-    dw PreInst_EnemyProj_TourianStatue_Ridley_Phantoon_BaseDecor         ;86BAC0;
-    dw InstList_EnemyProjectile_TourianStatueBaseDecoration_0            ;86BAC2;
-    db $00,$00                                                           ;86BAC4;
-    dw $2000                                                             ;86BAC6;
-    dw $0000                                                             ;86BAC8;
-    dw InstList_EnemyProjectile_Delete                                   ;86BACA;
+    dw InitAI_EnemyProjectile_TourianStatueBaseDecoration                ;86BABE; Initialisation AI
+    dw PreInst_EnemyProj_TourianStatue_Ridley_Phantoon_BaseDecor         ;86BAC0; Initial pre-instruction
+    dw InstList_EnemyProjectile_TourianStatueBaseDecoration_0            ;86BAC2; Initial instruction list
+    db $00,$00                                                           ;86BAC4; X,Y radius
+    dw $2000                                                             ;86BAC6; Properties
+    dw $0000                                                             ;86BAC8; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86BACA; Shot instruction list
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_EnemyProjectile_Parameter0_86BACC:
-    dw $0002                                                             ;86BACC;
-    dw UNUSED_EnemyProjSpritemaps_0_8D9268                               ;86BACE;
-    dw $0002                                                             ;86BAD0;
-    dw UNUSED_EnemyProjSpritemaps_1_8D926F                               ;86BAD2;
-    dw $0002                                                             ;86BAD4;
-    dw UNUSED_EnemyProjSpritemaps_2_8D9276                               ;86BAD6;
-    dw $0002                                                             ;86BAD8;
-    dw UNUSED_EnemyProjSpritemaps_3_8D927D                               ;86BADA;
-    dw $0002                                                             ;86BADC;
-    dw UNUSED_EnemyProjSpritemaps_4_8D9284                               ;86BADE;
-    dw $0002                                                             ;86BAE0;
-    dw UNUSED_EnemyProjSpritemaps_5_8D928B                               ;86BAE2;
-    dw $0002                                                             ;86BAE4;
-    dw UNUSED_EnemyProjSpritemaps_6_8D9292                               ;86BAE6;
+    dw $0002,UNUSED_EnemyProjSpritemaps_0_8D9268                         ;86BACC;
+    dw $0002,UNUSED_EnemyProjSpritemaps_1_8D926F                         ;86BAD0;
+    dw $0002,UNUSED_EnemyProjSpritemaps_2_8D9276                         ;86BAD4;
+    dw $0002,UNUSED_EnemyProjSpritemaps_3_8D927D                         ;86BAD8;
+    dw $0002,UNUSED_EnemyProjSpritemaps_4_8D9284                         ;86BADC;
+    dw $0002,UNUSED_EnemyProjSpritemaps_5_8D928B                         ;86BAE0;
+    dw $0002,UNUSED_EnemyProjSpritemaps_6_8D9292                         ;86BAE4;
     dw Instruction_EnemyProjectile_Delete                                ;86BAE8;
 
 UNUSED_InstList_EnemyProjectile_Parameter1_86BAEA:
-    dw $0002                                                             ;86BAEA;
-    dw UNUSED_EnemyProjSpritemaps_7_8D9299                               ;86BAEC;
-    dw $0002                                                             ;86BAEE;
-    dw UNUSED_EnemyProjSpritemaps_8_8D92A0                               ;86BAF0;
-    dw $0002                                                             ;86BAF2;
-    dw UNUSED_EnemyProjSpritemaps_9_8D92A7                               ;86BAF4;
-    dw $0002                                                             ;86BAF6;
-    dw UNUSED_EnemyProjSpritemaps_A_8D92AE                               ;86BAF8;
-    dw $0002                                                             ;86BAFA;
-    dw UNUSED_EnemyProjSpritemaps_B_8D92B5                               ;86BAFC;
-    dw $0002                                                             ;86BAFE;
-    dw UNUSED_EnemyProjSpritemaps_C_8D92BC                               ;86BB00;
-    dw $0002                                                             ;86BB02;
-    dw UNUSED_EnemyProjSpritemaps_D_8D92C3                               ;86BB04;
+    dw $0002,UNUSED_EnemyProjSpritemaps_7_8D9299                         ;86BAEA;
+    dw $0002,UNUSED_EnemyProjSpritemaps_8_8D92A0                         ;86BAEE;
+    dw $0002,UNUSED_EnemyProjSpritemaps_9_8D92A7                         ;86BAF2;
+    dw $0002,UNUSED_EnemyProjSpritemaps_A_8D92AE                         ;86BAF6;
+    dw $0002,UNUSED_EnemyProjSpritemaps_B_8D92B5                         ;86BAFA;
+    dw $0002,UNUSED_EnemyProjSpritemaps_C_8D92BC                         ;86BAFE;
+    dw $0002,UNUSED_EnemyProjSpritemaps_D_8D92C3                         ;86BB02;
     dw Instruction_EnemyProjectile_Delete                                ;86BB06;
 
 UNUSED_InstList_EnemyProjectile_Parameter2_86BB08:
-    dw $0002                                                             ;86BB08;
-    dw UNUSED_EnemyProjSpritemaps_E_8D92CA                               ;86BB0A;
-    dw $0002                                                             ;86BB0C;
-    dw UNUSED_EnemyProjSpritemaps_E_8D92CA                               ;86BB0E;
-    dw $0002                                                             ;86BB10;
-    dw UNUSED_EnemyProjSpritemaps_F_8D92D6                               ;86BB12;
-    dw $0002                                                             ;86BB14;
-    dw UNUSED_EnemyProjSpritemaps_10_8D92E2                              ;86BB16;
-    dw $0002                                                             ;86BB18;
-    dw UNUSED_EnemyProjSpritemaps_12_8D92FA                              ;86BB1A;
+    dw $0002,UNUSED_EnemyProjSpritemaps_E_8D92CA                         ;86BB08;
+    dw $0002,UNUSED_EnemyProjSpritemaps_E_8D92CA                         ;86BB0C;
+    dw $0002,UNUSED_EnemyProjSpritemaps_F_8D92D6                         ;86BB10;
+    dw $0002,UNUSED_EnemyProjSpritemaps_10_8D92E2                        ;86BB14;
+    dw $0002,UNUSED_EnemyProjSpritemaps_12_8D92FA                        ;86BB18;
     dw Instruction_EnemyProjectile_Delete                                ;86BB1C;
 
 UNUSED_InstList_Pointers_86BB1E:
@@ -8497,39 +8107,27 @@ RTS_86BB4F:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_EnemyProjectile_86BB50:
-    dw UNUSED_InitAI_EnemyProjectile_86BB30                              ;86BB50;
-    dw RTS_86BB4F                                                        ;86BB52;
-    dw UNUSED_InstList_EnemyProjectile_Parameter0_86BACC                 ;86BB54;
-    db $00,$00                                                           ;86BB56;
-    dw $0000,$7000                                                       ;86BB58;
-    dw InstList_EnemyProjectile_Delete                                   ;86BB5C;
+    dw UNUSED_InitAI_EnemyProjectile_86BB30                              ;86BB50; Initialisation AI
+    dw RTS_86BB4F                                                        ;86BB52; Initial pre-instruction
+    dw UNUSED_InstList_EnemyProjectile_Parameter0_86BACC                 ;86BB54; Initial instruction list
+    db $00,$00                                                           ;86BB56; X,Y radius
+    dw $0000,$7000                                                       ;86BB58; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86BB5C; Shot instruction list
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_EnemyProjectile_PuromiBody:
-    dw $0003                                                             ;86BB5E;
-    dw EnemyProjSpritemaps_PuromiBody_0                                  ;86BB60;
-    dw $0003                                                             ;86BB62;
-    dw EnemyProjSpritemaps_PuromiBody_1                                  ;86BB64;
-    dw $0003                                                             ;86BB66;
-    dw EnemyProjSpritemaps_PuromiBody_4                                  ;86BB68;
-    dw $0003                                                             ;86BB6A;
-    dw EnemyProjSpritemaps_PuromiBody_2                                  ;86BB6C;
-    dw $0003                                                             ;86BB6E;
-    dw EnemyProjSpritemaps_PuromiBody_3                                  ;86BB70;
-    dw $0003                                                             ;86BB72;
-    dw EnemyProjSpritemaps_PuromiBody_5                                  ;86BB74;
-    dw $0003                                                             ;86BB76;
-    dw EnemyProjSpritemaps_PuromiBody_0                                  ;86BB78;
-    dw $0003                                                             ;86BB7A;
-    dw EnemyProjSpritemaps_PuromiBody_1                                  ;86BB7C;
-    dw $0003                                                             ;86BB7E;
-    dw EnemyProjSpritemaps_PuromiBody_6                                  ;86BB80;
-    dw $0003                                                             ;86BB82;
-    dw EnemyProjSpritemaps_PuromiBody_2                                  ;86BB84;
-    dw $0003                                                             ;86BB86;
-    dw EnemyProjSpritemaps_PuromiBody_3                                  ;86BB88;
-    dw $0003                                                             ;86BB8A;
-    dw EnemyProjSpritemaps_PuromiBody_7                                  ;86BB8C;
+    dw $0003,EnemyProjSpritemaps_PuromiBody_0                            ;86BB5E;
+    dw $0003,EnemyProjSpritemaps_PuromiBody_1                            ;86BB62;
+    dw $0003,EnemyProjSpritemaps_PuromiBody_4                            ;86BB66;
+    dw $0003,EnemyProjSpritemaps_PuromiBody_2                            ;86BB6A;
+    dw $0003,EnemyProjSpritemaps_PuromiBody_3                            ;86BB6E;
+    dw $0003,EnemyProjSpritemaps_PuromiBody_5                            ;86BB72;
+    dw $0003,EnemyProjSpritemaps_PuromiBody_0                            ;86BB76;
+    dw $0003,EnemyProjSpritemaps_PuromiBody_1                            ;86BB7A;
+    dw $0003,EnemyProjSpritemaps_PuromiBody_6                            ;86BB7E;
+    dw $0003,EnemyProjSpritemaps_PuromiBody_2                            ;86BB82;
+    dw $0003,EnemyProjSpritemaps_PuromiBody_3                            ;86BB86;
+    dw $0003,EnemyProjSpritemaps_PuromiBody_7                            ;86BB8A;
     dw Instruction_EnemyProjectile_GotoY                                 ;86BB8E;
     dw InstList_EnemyProjectile_PuromiBody                               ;86BB90;
 
@@ -8562,16 +8160,15 @@ RTS_86BBC6:
 
 
 EnemyProjectile_Puromi:
-    dw InitAI_EnemyProjectile_PuromiBody                                 ;86BBC7;
-    dw RTS_86BBC6                                                        ;86BBC9;
-    dw InstList_EnemyProjectile_PuromiBody                               ;86BBCB;
-    db $08,$08                                                           ;86BBCD;
-    dw $C040,$0000                                                       ;86BBCF;
-    dw InstList_EnemyProjectile_Delete                                   ;86BBD3;
+    dw InitAI_EnemyProjectile_PuromiBody                                 ;86BBC7; Initialisation AI
+    dw RTS_86BBC6                                                        ;86BBC9; Initial pre-instruction
+    dw InstList_EnemyProjectile_PuromiBody                               ;86BBCB; Initial instruction list
+    db $08,$08                                                           ;86BBCD; X,Y radius
+    dw $C040,$0000                                                       ;86BBCF; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86BBD3; Shot instruction list
 
 InstList_EnemyProjectile_NorfairLavaquakeRocks:
-    dw $0001                                                             ;86BBD5;
-    dw EnemyProjSpritemaps_LavaquakeRocks                                ;86BBD7;
+    dw $0001,EnemyProjSpritemaps_LavaquakeRocks                          ;86BBD5;
     dw Instruction_EnemyProjectile_Sleep                                 ;86BBD9;
 
 InitAI_EnemyProjectile_NorfairLavaquakeRocks:
@@ -8792,48 +8389,40 @@ CheckIf_EnemyProjectile_IsOffScreen:
 
 
 EnemyProjectile_LavaquakeRocks:
-    dw InitAI_EnemyProjectile_NorfairLavaquakeRocks                      ;86BD5A;
-    dw PreInstruction_EnemyProjectile_NorfairLavaquakeRocks              ;86BD5C;
-    dw InstList_EnemyProjectile_NorfairLavaquakeRocks                    ;86BD5E;
-    db $02,$02                                                           ;86BD60;
-    dw $0010,$0000                                                       ;86BD62;
-    dw InstList_EnemyProjectile_Delete                                   ;86BD66;
+    dw InitAI_EnemyProjectile_NorfairLavaquakeRocks                      ;86BD5A; Initialisation AI
+    dw PreInstruction_EnemyProjectile_NorfairLavaquakeRocks              ;86BD5C; Initial pre-instruction
+    dw InstList_EnemyProjectile_NorfairLavaquakeRocks                    ;86BD5E; Initial instruction list
+    db $02,$02                                                           ;86BD60; X,Y radius
+    dw $0010,$0000                                                       ;86BD62; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86BD66; Shot instruction list
 
 InstList_EnemyProjectile_ShaktoolsAttack_FrontCircle_0:
-    dw $0004                                                             ;86BD68;
-    dw EnemyProjSpritemaps_ShaktoolsAttack                               ;86BD6A;
-    dw $0004                                                             ;86BD6C;
-    dw EnemyProjSpritemaps_ShaktoolsAttack_FrontMiddleCircle             ;86BD6E;
+    dw $0004,EnemyProjSpritemaps_ShaktoolsAttack                         ;86BD68;
+    dw $0004,EnemyProjSpritemaps_ShaktoolsAttack_FrontMiddleCircle       ;86BD6C;
 
 InstList_EnemyProjectile_ShaktoolsAttack_FrontCircle_1:
-    dw $0077                                                             ;86BD70;
-    dw EnemyProjSpritemaps_ShaktoolsAttack_FrontCircle                   ;86BD72;
+    dw $0077,EnemyProjSpritemaps_ShaktoolsAttack_FrontCircle             ;86BD70;
     dw Instruction_EnemyProjectile_GotoY                                 ;86BD74;
     dw InstList_EnemyProjectile_ShaktoolsAttack_FrontCircle_1            ;86BD76;
 
 InstList_EnemyProjectile_ShaktoolsAttack_MiddleCircle_0:
-    dw $0006                                                             ;86BD78;
-    dw EnemyProjSpritemaps_ShaktoolsAttack                               ;86BD7A;
+    dw $0006,EnemyProjSpritemaps_ShaktoolsAttack                         ;86BD78;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86BD7C;
     dw PreInst_EnemyProjectile_ShaktoolsAttack_MiddleBack_Moving         ;86BD7E;
-    dw $0004                                                             ;86BD80;
-    dw EnemyProjSpritemaps_ShaktoolsAttack                               ;86BD82;
+    dw $0004,EnemyProjSpritemaps_ShaktoolsAttack                         ;86BD80;
 
 InstList_EnemyProjectile_ShaktoolsAttack_MiddleCircle_1:
-    dw $0077                                                             ;86BD84;
-    dw EnemyProjSpritemaps_ShaktoolsAttack_FrontMiddleCircle             ;86BD86;
+    dw $0077,EnemyProjSpritemaps_ShaktoolsAttack_FrontMiddleCircle       ;86BD84;
     dw Instruction_EnemyProjectile_GotoY                                 ;86BD88;
     dw InstList_EnemyProjectile_ShaktoolsAttack_MiddleCircle_1           ;86BD8A;
 
 InstList_EnemyProjectile_ShaktoolsAttack_BackCircle_0:
-    dw $000A                                                             ;86BD8C;
-    dw EnemyProjSpritemaps_ShaktoolsAttack                               ;86BD8E;
+    dw $000A,EnemyProjSpritemaps_ShaktoolsAttack                         ;86BD8C;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86BD90;
     dw PreInst_EnemyProjectile_ShaktoolsAttack_MiddleBack_Moving         ;86BD92;
 
 InstList_EnemyProjectile_ShaktoolsAttack_BackCircle_1:
-    dw $0077                                                             ;86BD94;
-    dw EnemyProjSpritemaps_ShaktoolsAttack                               ;86BD96;
+    dw $0077,EnemyProjSpritemaps_ShaktoolsAttack                         ;86BD94;
     dw Instruction_EnemyProjectile_GotoY                                 ;86BD98;
     dw InstList_EnemyProjectile_ShaktoolsAttack_BackCircle_1             ;86BD9A;
 
@@ -8907,31 +8496,31 @@ PreInst_EnemyProjectile_ShaktoolsAttack_MiddleBack_Moving:
 
 
 EnemyProjectile_ShaktoolFrontCircle:
-    dw InitAI_EnemyProjectile_ShaktoolsAttack_Front                      ;86BE25;
-    dw PreInstruction_EnemyProjectile_ShaktoolsAttack_Front              ;86BE27;
-    dw InstList_EnemyProjectile_ShaktoolsAttack_FrontCircle_0            ;86BE29;
-    db $04,$04                                                           ;86BE2B;
-    dw $000A                                                             ;86BE2D;
-    dw $0000                                                             ;86BE2F;
-    dw InstList_EnemyProjectile_Delete                                   ;86BE31;
+    dw InitAI_EnemyProjectile_ShaktoolsAttack_Front                      ;86BE25; Initialisation AI
+    dw PreInstruction_EnemyProjectile_ShaktoolsAttack_Front              ;86BE27; Initial pre-instruction
+    dw InstList_EnemyProjectile_ShaktoolsAttack_FrontCircle_0            ;86BE29; Initial instruction list
+    db $04,$04                                                           ;86BE2B; X,Y radius
+    dw $000A                                                             ;86BE2D; Properties
+    dw $0000                                                             ;86BE2F; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86BE31; Shot instruction list
 
 EnemyProjectile_ShaktoolMiddleCircle:
-    dw InitAI_EnemyProjectile_ShaktoolsAttack_Middle_Back                ;86BE33;
-    dw RTS_8684FB                                                        ;86BE35;
-    dw InstList_EnemyProjectile_ShaktoolsAttack_MiddleCircle_0           ;86BE37;
-    db $04,$04                                                           ;86BE39;
-    dw $2000                                                             ;86BE3B;
-    dw $0000                                                             ;86BE3D;
-    dw InstList_EnemyProjectile_Delete                                   ;86BE3F;
+    dw InitAI_EnemyProjectile_ShaktoolsAttack_Middle_Back                ;86BE33; Initialisation AI
+    dw RTS_8684FB                                                        ;86BE35; Initial pre-instruction
+    dw InstList_EnemyProjectile_ShaktoolsAttack_MiddleCircle_0           ;86BE37; Initial instruction list
+    db $04,$04                                                           ;86BE39; X,Y radius
+    dw $2000                                                             ;86BE3B; Properties
+    dw $0000                                                             ;86BE3D; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86BE3F; Shot instruction list
 
 EnemyProjectile_ShaktoolBackCircle:
-    dw InitAI_EnemyProjectile_ShaktoolsAttack_Middle_Back                ;86BE41;
-    dw RTS_8684FB                                                        ;86BE43;
-    dw InstList_EnemyProjectile_ShaktoolsAttack_BackCircle_0             ;86BE45;
-    db $04,$04                                                           ;86BE47;
-    dw $2000                                                             ;86BE49;
-    dw $0000                                                             ;86BE4B;
-    dw InstList_EnemyProjectile_Delete                                   ;86BE4D;
+    dw InitAI_EnemyProjectile_ShaktoolsAttack_Middle_Back                ;86BE41; Initialisation AI
+    dw RTS_8684FB                                                        ;86BE43; Initial pre-instruction
+    dw InstList_EnemyProjectile_ShaktoolsAttack_BackCircle_0             ;86BE45; Initial instruction list
+    db $04,$04                                                           ;86BE47; X,Y radius
+    dw $2000                                                             ;86BE49; Properties
+    dw $0000                                                             ;86BE4B; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86BE4D; Shot instruction list
 
 InitAI_EnemyProjectile_MotherBrainsTurrets:
     LDA.W #$0400                                                         ;86BE4F;
@@ -8963,12 +8552,11 @@ InitAI_EnemyProjectile_MotherBrainsTurrets:
 .Xpositions:
     dw $0398,$0348,$0328,$02D8,$0288,$0268,$0218,$01C8                   ;86BE89;
     dw $01A8,$0158,$0108,$00E8                                           ;86BE99;
-
 .Ypositions:
     dw $0030,$0040,$0040,$0030,$0040,$0040,$0030,$0040                   ;86BEA1;
     dw $0040,$0030,$0040,$0040                                           ;86BEB1;
-
 .InstListPointers:
+; indexed by [enemy projectile direction index]
     dw InstList_EnemyProjectile_MotherBrainsTurret_Left                  ;86BEB9;
     dw InstList_EnemyProjectile_MotherBrainsTurret_DownLeft              ;86BEBB;
     dw InstList_EnemyProjectile_MotherBrainsTurret_Down                  ;86BEBD;
@@ -8977,7 +8565,6 @@ InitAI_EnemyProjectile_MotherBrainsTurrets:
     dw InstList_EnemyProjectile_MotherBrainsTurret_UpRight               ;86BEC3;
     dw InstList_EnemyProjectile_MotherBrainsTurret_Up                    ;86BEC5;
     dw InstList_EnemyProjectile_MotherBrainsTurret_UpLeft                ;86BEC7;
-
 .allowedRotationPointers:
     dw MotherBrainTurret_AllowedRotations_0                              ;86BEC9;
     dw MotherBrainTurret_AllowedRotations_1                              ;86BECB;
@@ -8991,46 +8578,43 @@ InitAI_EnemyProjectile_MotherBrainsTurrets:
     dw MotherBrainTurret_AllowedRotations_9                              ;86BEDB;
     dw MotherBrainTurret_AllowedRotations_A                              ;86BEDD;
     dw MotherBrainTurret_AllowedRotations_B                              ;86BEDF;
-
 .directionIndices:
     dw $0003,$0004,$0002,$0003,$0004,$0002,$0003,$0004                   ;86BEE1;
     dw $0002,$0003,$0004,$0001                                           ;86BEF1;
 
+;        ______________________________ Pointing left
+;       |    __________________________ Pointing down-left
+;       |   |    ______________________ Pointing down
+;       |   |   |    __________________ Pointing down-right
+;       |   |   |   |    ______________ Pointing right
+;       |   |   |   |   |     _________ Pointing up-right
+;       |   |   |   |   |    |    _____ Pointing up
+;       |   |   |   |   |    |   |    _ Pointing up-left
+;       |   |   |   |   |    |   |   |
 MotherBrainTurret_AllowedRotations_0:
-    db $00,$01,$01,$01,$00,$00,$00,$00                                   ;86BEF9;
-
+    db $00,$01,$01,$01,$00, $00,$00,$00                                  ;86BEF9;
 MotherBrainTurret_AllowedRotations_1:
-    db $00,$00,$01,$01,$01,$00,$00,$00                                   ;86BF01;
-
+    db $00,$00,$01,$01,$01, $00,$00,$00                                  ;86BF01;
 MotherBrainTurret_AllowedRotations_2:
-    db $01,$01,$01,$00,$00,$00,$00,$00                                   ;86BF09;
-
+    db $01,$01,$01,$00,$00, $00,$00,$00                                  ;86BF09;
 MotherBrainTurret_AllowedRotations_3:
-    db $00,$01,$01,$01,$00,$00,$00,$00                                   ;86BF11;
-
+    db $00,$01,$01,$01,$00, $00,$00,$00                                  ;86BF11;
 MotherBrainTurret_AllowedRotations_4:
-    db $00,$01,$01,$01,$01,$00,$00,$00                                   ;86BF19;
-
+    db $00,$01,$01,$01,$01, $00,$00,$00                                  ;86BF19;
 MotherBrainTurret_AllowedRotations_5:
-    db $01,$01,$01,$01,$00,$00,$00,$00                                   ;86BF21;
-
+    db $01,$01,$01,$01,$00, $00,$00,$00                                  ;86BF21;
 MotherBrainTurret_AllowedRotations_6:
-    db $00,$01,$01,$01,$00,$00,$00,$00                                   ;86BF29;
-
+    db $00,$01,$01,$01,$00, $00,$00,$00                                  ;86BF29;
 MotherBrainTurret_AllowedRotations_7:
-    db $00,$00,$01,$01,$01,$00,$00,$00                                   ;86BF31;
-
+    db $00,$00,$01,$01,$01, $00,$00,$00                                  ;86BF31;
 MotherBrainTurret_AllowedRotations_8:
-    db $01,$01,$01,$00,$00,$00,$00,$00                                   ;86BF39;
-
+    db $01,$01,$01,$00,$00, $00,$00,$00                                  ;86BF39;
 MotherBrainTurret_AllowedRotations_9:
-    db $00,$01,$01,$01,$00,$00,$00,$00                                   ;86BF41;
-
+    db $00,$01,$01,$01,$00, $00,$00,$00                                  ;86BF41;
 MotherBrainTurret_AllowedRotations_A:
-    db $00,$01,$01,$01,$01,$00,$00,$00                                   ;86BF49;
-
+    db $00,$01,$01,$01,$01, $00,$00,$00                                  ;86BF49;
 MotherBrainTurret_AllowedRotations_B:
-    db $01,$01,$01,$01,$00,$00,$00,$00                                   ;86BF51;
+    db $01,$01,$01,$01,$00, $00,$00,$00                                  ;86BF51;
 
 InitAI_EnemyProjectile_MotherBrainsTurretBullets:
     LDA.W #$0000                                                         ;86BF59;
@@ -9062,18 +8646,24 @@ InitAI_EnemyProjectile_MotherBrainsTurretBullets:
     STA.W $1A93,Y                                                        ;86BF9B;
     RTS                                                                  ;86BF9E;
 
-
+;        _____________________________________________ Left
+;       |      _______________________________________ Down-left
+;       |     |      _________________________________ Down
+;       |     |     |      ___________________________ Down-right
+;       |     |     |     |      _____________________ Right
+;       |     |     |     |     |      _______________ Up-right
+;       |     |     |     |     |     |      _________ Up
+;       |     |     |     |     |     |     |      ___ Up-left
+;       |     |     |     |     |     |     |     |
 .Xoffset:
     dw $FFEF,$FFF4,$0000,$000C,$0011,$000C,$0000,$FFF4                   ;86BF9F;
-
 .Yoffset:
     dw $FFF7,$0003,$0007,$0003,$FFF7,$FFED,$FFEB,$FFED                   ;86BFAF;
-
 .Xvelocity:
     dw $FD40,$FE0E,$0000,$01F2,$02C0,$01F2,$0000,$FE0E                   ;86BFBF;
-
 .Yvelocity:
     dw $0000,$01F2,$02C0,$01F2,$0000,$FE0E,$FD40,$FE0E                   ;86BFCF;
+
 
 PreInstruction_EnemyProjectile_MotherBrainsTurrets:
     JSR.W Check_If_Turret_Is_On_Screen                                   ;86BFDF;
@@ -9246,43 +8836,35 @@ PreInstruction_EnemyProjectile_MotherBrainsTurretBullets:
 
 
 InstList_EnemyProjectile_MotherBrainsTurret_Left:
-    dw $0001                                                             ;86C101;
-    dw EnemyProjSpritemaps_MotherBrainsTurrets_Left                      ;86C103;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTurrets_Left                ;86C101;
     dw Instruction_EnemyProjectile_Sleep                                 ;86C105;
 
 InstList_EnemyProjectile_MotherBrainsTurret_DownLeft:
-    dw $0001                                                             ;86C107;
-    dw EnemyProjSpritemaps_MotherBrainsTurrets_DownLeft                  ;86C109;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTurrets_DownLeft            ;86C107;
     dw Instruction_EnemyProjectile_Sleep                                 ;86C10B;
 
 InstList_EnemyProjectile_MotherBrainsTurret_Down:
-    dw $0001                                                             ;86C10D;
-    dw EnemyProjSpritemaps_MotherBrainsTurrets_Down                      ;86C10F;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTurrets_Down                ;86C10D;
     dw Instruction_EnemyProjectile_Sleep                                 ;86C111;
 
 InstList_EnemyProjectile_MotherBrainsTurret_DownRight:
-    dw $0001                                                             ;86C113;
-    dw EnemyProjSpritemaps_MotherBrainsTurrets_DownRight                 ;86C115;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTurrets_DownRight           ;86C113;
     dw Instruction_EnemyProjectile_Sleep                                 ;86C117;
 
 InstList_EnemyProjectile_MotherBrainsTurret_Right:
-    dw $0001                                                             ;86C119;
-    dw EnemyProjSpritemaps_MotherBrainsTurrets_Right                     ;86C11B;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTurrets_Right               ;86C119;
     dw Instruction_EnemyProjectile_Sleep                                 ;86C11D;
 
 InstList_EnemyProjectile_MotherBrainsTurret_UpRight:
-    dw $0001                                                             ;86C11F;
-    dw EnemyProjSpritemaps_MotherBrainsTurrets_UpRight                   ;86C121;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTurrets_UpRight             ;86C11F;
     dw Instruction_EnemyProjectile_Sleep                                 ;86C123;
 
 InstList_EnemyProjectile_MotherBrainsTurret_Up:
-    dw $0001                                                             ;86C125;
-    dw EnemyProjSpritemaps_MotherBrainsTurrets_Up                        ;86C127;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTurrets_Up                  ;86C125;
     dw Instruction_EnemyProjectile_Sleep                                 ;86C129;
 
 InstList_EnemyProjectile_MotherBrainsTurret_UpLeft:
-    dw $0001                                                             ;86C12B;
-    dw EnemyProjSpritemaps_MotherBrainsTurrets_UpLeft                    ;86C12D;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTurrets_UpLeft              ;86C12B;
     dw Instruction_EnemyProjectile_Sleep                                 ;86C12F;
 
 InstList_EnemyProj_MotherBrainsTurretBullets_GotoDirection:
@@ -9297,43 +8879,35 @@ InstList_EnemyProj_MotherBrainsTurretBullets_GotoDirection:
     dw InstList_EnemyProjectile_MotherBrainsTurretBullets_UpLeft         ;86C141;
 
 InstList_EnemyProjectile_MotherBrainsTurretBullets_Left:
-    dw $0001                                                             ;86C143;
-    dw EnemyProjSpritemaps_MotherBrainsTurretBullets_Left                ;86C145;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTurretBullets_Left          ;86C143;
     dw Instruction_EnemyProjectile_Sleep                                 ;86C147;
 
 InstList_EnemyProjectile_MotherBrainsTurretBullets_DownLeft:
-    dw $0001                                                             ;86C149;
-    dw EnemyProjSpritemaps_MotherBrainsTurretBullets_DownLeft            ;86C14B;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTurretBullets_DownLeft      ;86C149;
     dw Instruction_EnemyProjectile_Sleep                                 ;86C14D;
 
 InstList_EnemyProjectile_MotherBrainsTurretBullets_Down:
-    dw $0001                                                             ;86C14F;
-    dw EnemyProjSpritemaps_MotherBrainsTurretBullets_Down                ;86C151;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTurretBullets_Down          ;86C14F;
     dw Instruction_EnemyProjectile_Sleep                                 ;86C153;
 
 InstList_EnemyProjectile_MotherBrainsTurretBullets_DownRight:
-    dw $0001                                                             ;86C155;
-    dw EnemyProjSpritemaps_MotherBrainsTurretBullets_DownRight           ;86C157;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTurretBullets_DownRight     ;86C155;
     dw Instruction_EnemyProjectile_Sleep                                 ;86C159;
 
 InstList_EnemyProjectile_MotherBrainsTurretBullets_Right:
-    dw $0001                                                             ;86C15B;
-    dw EnemyProjSpritemaps_MotherBrainsTurretBullets_Right               ;86C15D;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTurretBullets_Right         ;86C15B;
     dw Instruction_EnemyProjectile_Sleep                                 ;86C15F;
 
 InstList_EnemyProjectile_MotherBrainsTurretBullets_UpRight:
-    dw $0001                                                             ;86C161;
-    dw EnemyProjSpritemaps_MotherBrainsTurretBullets_UpRight             ;86C163;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTurretBullets_UpRight       ;86C161;
     dw Instruction_EnemyProjectile_Sleep                                 ;86C165;
 
 InstList_EnemyProjectile_MotherBrainsTurretBullets_Up:
-    dw $0001                                                             ;86C167;
-    dw EnemyProjSpritemaps_MotherBrainsTurretBullets_Up                  ;86C169;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTurretBullets_Up            ;86C167;
     dw Instruction_EnemyProjectile_Sleep                                 ;86C16B;
 
 InstList_EnemyProjectile_MotherBrainsTurretBullets_UpLeft:
-    dw $0001                                                             ;86C16D;
-    dw EnemyProjSpritemaps_MotherBrainsTurretBullets_UpLeft              ;86C16F;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTurretBullets_UpLeft        ;86C16D;
     dw Instruction_EnemyProjectile_Sleep                                 ;86C171;
 
 Instruction_EnemyProjectile_MotherBrainsTurretBullets_GotoY:
@@ -9347,35 +8921,30 @@ Instruction_EnemyProjectile_MotherBrainsTurretBullets_GotoY:
 
 
 EnemyProjectile_MotherBrainTurret:
-    dw InitAI_EnemyProjectile_MotherBrainsTurrets                        ;86C17E;
-    dw PreInstruction_EnemyProjectile_MotherBrainsTurrets                ;86C180;
-    dw InstList_EnemyProjectile_MotherBrainsTurret_Down                  ;86C182;
-    db $00,$00                                                           ;86C184;
-    dw $6000,$0000                                                       ;86C186;
-    dw InstList_EnemyProjectile_Delete                                   ;86C18A;
+    dw InitAI_EnemyProjectile_MotherBrainsTurrets                        ;86C17E; Initialisation AI
+    dw PreInstruction_EnemyProjectile_MotherBrainsTurrets                ;86C180; Initial pre-instruction
+    dw InstList_EnemyProjectile_MotherBrainsTurret_Down                  ;86C182; Initial instruction list
+    db $00,$00                                                           ;86C184; X,Y radius
+    dw $6000,$0000                                                       ;86C186; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86C18A; Shot instruction list
 
 EnemyProjectile_MotherBrainTurretBullets:
-    dw InitAI_EnemyProjectile_MotherBrainsTurretBullets                  ;86C18C;
-    dw PreInstruction_EnemyProjectile_MotherBrainsTurretBullets          ;86C18E;
-    dw InstList_EnemyProj_MotherBrainsTurretBullets_GotoDirection        ;86C190;
-    db $03,$03                                                           ;86C192;
-    dw $4014                                                             ;86C194;
-    dw InstList_EnemyProjectile_Shot_MotherBrainTurretBullets            ;86C196;
-    dw InstList_EnemyProjectile_Shot_MotherBrainTurretBullets            ;86C198;
+    dw InitAI_EnemyProjectile_MotherBrainsTurretBullets                  ;86C18C; Initialisation AI
+    dw PreInstruction_EnemyProjectile_MotherBrainsTurretBullets          ;86C18E; Initial pre-instruction
+    dw InstList_EnemyProj_MotherBrainsTurretBullets_GotoDirection        ;86C190; Initial instruction list
+    db $03,$03                                                           ;86C192; X,Y radius
+    dw $4014                                                             ;86C194; Properties
+    dw InstList_EnemyProjectile_Shot_MotherBrainTurretBullets            ;86C196; Hit instruction list
+    dw InstList_EnemyProjectile_Shot_MotherBrainTurretBullets            ;86C198; Shot instruction list
 
 InstList_EnemyProjectile_Shot_MotherBrainTurretBullets:
     dw Instruction_EnemyProjectile_UsePalette0                           ;86C19A;
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86C19C;
-    dw $0008                                                             ;86C19E;
-    dw EnemyProjSpritemaps_Common_Smoke_0                                ;86C1A0;
-    dw $0008                                                             ;86C1A2;
-    dw EnemyProjSpritemaps_Common_Smoke_1                                ;86C1A4;
-    dw $0008                                                             ;86C1A6;
-    dw EnemyProjSpritemaps_Common_Smoke_2                                ;86C1A8;
-    dw $0008                                                             ;86C1AA;
-    dw EnemyProjSpritemaps_Common_Smoke_3                                ;86C1AC;
-    dw $0020                                                             ;86C1AE;
-    dw EnemyProjSpritemaps_MotherBrainsTurretBullets                     ;86C1B0;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_0                          ;86C19E;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_1                          ;86C1A2;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_2                          ;86C1A6;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_3                          ;86C1AA;
+    dw $0020,EnemyProjSpritemaps_MotherBrainsTurretBullets               ;86C1AE;
     dw Instruction_EnemyProjectile_Delete                                ;86C1B2;
 
 Instruction_EnemyProjectile_UsePalette0:
@@ -9776,47 +9345,29 @@ Instruction_EnemyProjectile_UsePalette0_duplicate:
 
 
 InstList_EnemyProjectile_MotherBrainsOnionRings:
-    dw Instruction_EnemyProjectile_XYRadiusInY                           ;86C432;
-    db $01,$01                                                           ;86C434;
-    dw $0010                                                             ;86C436;
-    dw EnemyProjSpritemaps_MotherBrainOnionRings_0                       ;86C438;
-    dw Instruction_EnemyProjectile_XYRadiusInY                           ;86C43A;
-    db $02,$02                                                           ;86C43C;
-    dw $000A                                                             ;86C43E;
-    dw EnemyProjSpritemaps_MotherBrainOnionRings_1                       ;86C440;
-    dw Instruction_EnemyProjectile_XYRadiusInY                           ;86C442;
-    db $03,$03                                                           ;86C444;
-    dw $0008                                                             ;86C446;
-    dw EnemyProjSpritemaps_MotherBrainOnionRings_2                       ;86C448;
-    dw Instruction_EnemyProjectile_XYRadiusInY                           ;86C44A;
-    db $04,$04                                                           ;86C44C;
-    dw $0007                                                             ;86C44E;
-    dw EnemyProjSpritemaps_MotherBrainOnionRings_3                       ;86C450;
-    dw Instruction_EnemyProjectile_XYRadiusInY                           ;86C452;
-    db $05,$05                                                           ;86C454;
-    dw $0006                                                             ;86C456;
-    dw EnemyProjSpritemaps_MotherBrainOnionRings_4                       ;86C458;
-    dw Instruction_EnemyProjectile_XYRadiusInY                           ;86C45A;
-    db $06,$06                                                           ;86C45C;
-    dw $0005                                                             ;86C45E;
-    dw EnemyProjSpritemaps_MotherBrainOnionRings_5                       ;86C460;
+    dw Instruction_EnemyProjectile_XYRadiusInY : db $01,$01              ;86C432;
+    dw $0010,EnemyProjSpritemaps_MotherBrainOnionRings_0                 ;86C436;
+    dw Instruction_EnemyProjectile_XYRadiusInY : db $02,$02              ;86C43A;
+    dw $000A,EnemyProjSpritemaps_MotherBrainOnionRings_1                 ;86C43E;
+    dw Instruction_EnemyProjectile_XYRadiusInY : db $03,$03              ;86C442;
+    dw $0008,EnemyProjSpritemaps_MotherBrainOnionRings_2                 ;86C446;
+    dw Instruction_EnemyProjectile_XYRadiusInY : db $04,$04              ;86C44A;
+    dw $0007,EnemyProjSpritemaps_MotherBrainOnionRings_3                 ;86C44E;
+    dw Instruction_EnemyProjectile_XYRadiusInY : db $05,$05              ;86C452;
+    dw $0006,EnemyProjSpritemaps_MotherBrainOnionRings_4                 ;86C456;
+    dw Instruction_EnemyProjectile_XYRadiusInY : db $06,$06              ;86C45A;
+    dw $0005,EnemyProjSpritemaps_MotherBrainOnionRings_5                 ;86C45E;
     dw Instruction_EnemyProjectile_Sleep                                 ;86C462;
 
 InstList_EnemyProjectile_Hit_MotherBrainsOnionRings:
     dw Instruction_EnemyProjectile_UsePalette0_duplicate                 ;86C464;
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86C466;
-    dw $0005                                                             ;86C468;
-    dw EnemyProjSpritemaps_Common_BigExplosion_0                         ;86C46A;
-    dw $0005                                                             ;86C46C;
-    dw EnemyProjSpritemaps_Common_BigExplosion_1                         ;86C46E;
-    dw $0005                                                             ;86C470;
-    dw EnemyProjSpritemaps_Common_BigExplosion_2                         ;86C472;
-    dw $0005                                                             ;86C474;
-    dw EnemyProjSpritemaps_Common_BigExplosion_3                         ;86C476;
-    dw $0005                                                             ;86C478;
-    dw EnemyProjSpritemaps_Common_BigExplosion_4                         ;86C47A;
-    dw $0005                                                             ;86C47C;
-    dw EnemyProjSpritemaps_Common_BigExplosion_5                         ;86C47E;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_0                   ;86C468;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_1                   ;86C46C;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_2                   ;86C470;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_3                   ;86C474;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_4                   ;86C478;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_5                   ;86C47C;
     dw Instruction_EnemyProjectile_Delete                                ;86C480;
 
 InitAI_EnemyProjectile_MotherBrainsBomb:
@@ -9917,6 +9468,7 @@ PreInstruction_EnemyProjectile_MotherBrainsBomb:
 
 
 .Yaccelerations:
+; (1/100h px/frame^2) indexed by bounce counter
     dw $0007,$0010,$0020,$0040,$0070,$00B0,$00F0,$0130                   ;86C550;
     dw $0170,$0000                                                       ;86C560;
 
@@ -10128,9 +9680,9 @@ InitAI_EnemyProjectile_MotherBrainRedBeam_Fired:
     STA.W $183E                                                          ;86C759;
     RTS                                                                  ;86C75C;
 
-
 if !FEATURE_KEEP_UNREFERENCED
 .unused:
+; Guessing that [enemy projectile $1AFF] was used to index this table at one point
     dw $0002,$FFFE,$0002,$FFFE,$FFFE,$0002,$FFFE,$0002                   ;86C75D;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -10139,76 +9691,46 @@ RTS_86C76D:
 
 
 InstList_EnemyProjectile_MotherBrainBomb:
-    dw $0006                                                             ;86C76E;
-    dw EnemyProjSpritemaps_MotherBrainsBomb_0                            ;86C770;
-    dw $0005                                                             ;86C772;
-    dw EnemyProjSpritemaps_MotherBrainsBomb_1                            ;86C774;
-    dw $0004                                                             ;86C776;
-    dw EnemyProjSpritemaps_MotherBrainsBomb_2                            ;86C778;
-    dw $0003                                                             ;86C77A;
-    dw EnemyProjSpritemaps_MotherBrainsBomb_3                            ;86C77C;
-    dw $0002                                                             ;86C77E;
-    dw EnemyProjSpritemaps_MotherBrainsBomb_4                            ;86C780;
-    dw $0002                                                             ;86C782;
-    dw EnemyProjSpritemaps_MotherBrainsBomb_5                            ;86C784;
-    dw $0003                                                             ;86C786;
-    dw EnemyProjSpritemaps_MotherBrainsBomb_6                            ;86C788;
-    dw $0004                                                             ;86C78A;
-    dw EnemyProjSpritemaps_MotherBrainsBomb_7                            ;86C78C;
-    dw $0005                                                             ;86C78E;
-    dw EnemyProjSpritemaps_MotherBrainsBomb_8                            ;86C790;
+    dw $0006,EnemyProjSpritemaps_MotherBrainsBomb_0                      ;86C76E;
+    dw $0005,EnemyProjSpritemaps_MotherBrainsBomb_1                      ;86C772;
+    dw $0004,EnemyProjSpritemaps_MotherBrainsBomb_2                      ;86C776;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsBomb_3                      ;86C77A;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsBomb_4                      ;86C77E;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsBomb_5                      ;86C782;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsBomb_6                      ;86C786;
+    dw $0004,EnemyProjSpritemaps_MotherBrainsBomb_7                      ;86C78A;
+    dw $0005,EnemyProjSpritemaps_MotherBrainsBomb_8                      ;86C78E;
     dw Instruction_EnemyProjectile_GotoY                                 ;86C792;
     dw InstList_EnemyProjectile_MotherBrainBomb                          ;86C794;
 
 InstList_EnemyProjectile_MotherBrainRedBeam:
-    dw $0003                                                             ;86C796;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_0                         ;86C798;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsRedBeam_0                   ;86C796;
     dw Instruction_EnemyProjectile_CallExternalFunctionInY               ;86C79A;
     dl Spawn_MotherBrainRedBeam_Fired                                    ;86C79C;
-    dw $0003                                                             ;86C79F;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_1                         ;86C7A1;
-    dw $0002                                                             ;86C7A3;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_2                         ;86C7A5;
-    dw $0002                                                             ;86C7A7;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_3                         ;86C7A9;
-    dw $0001                                                             ;86C7AB;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_4                         ;86C7AD;
-    dw $0001                                                             ;86C7AF;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_5                         ;86C7B1;
-    dw $0001                                                             ;86C7B3;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_6                         ;86C7B5;
-    dw $0003                                                             ;86C7B7;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_0                         ;86C7B9;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsRedBeam_1                   ;86C79F;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsRedBeam_2                   ;86C7A3;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsRedBeam_3                   ;86C7A7;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsRedBeam_4                   ;86C7AB;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsRedBeam_5                   ;86C7AF;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsRedBeam_6                   ;86C7B3;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsRedBeam_0                   ;86C7B7;
     dw Instruction_EnemyProjectile_CallExternalFunctionInY               ;86C7BB;
     dl Spawn_MotherBrainRedBeam_Fired                                    ;86C7BD;
-    dw $0003                                                             ;86C7C0;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_1                         ;86C7C2;
-    dw $0002                                                             ;86C7C4;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_2                         ;86C7C6;
-    dw $0002                                                             ;86C7C8;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_3                         ;86C7CA;
-    dw $0001                                                             ;86C7CC;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_4                         ;86C7CE;
-    dw $0001                                                             ;86C7D0;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_5                         ;86C7D2;
-    dw $0001                                                             ;86C7D4;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_6                         ;86C7D6;
-    dw $0003                                                             ;86C7D8;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_0                         ;86C7DA;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsRedBeam_1                   ;86C7C0;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsRedBeam_2                   ;86C7C4;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsRedBeam_3                   ;86C7C8;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsRedBeam_4                   ;86C7CC;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsRedBeam_5                   ;86C7D0;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsRedBeam_6                   ;86C7D4;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsRedBeam_0                   ;86C7D8;
     dw Instruction_EnemyProjectile_CallExternalFunctionInY               ;86C7DC;
     dl Spawn_MotherBrainRedBeam_Fired                                    ;86C7DE;
-    dw $0003                                                             ;86C7E1;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_1                         ;86C7E3;
-    dw $0002                                                             ;86C7E5;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_2                         ;86C7E7;
-    dw $0002                                                             ;86C7E9;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_3                         ;86C7EB;
-    dw $0001                                                             ;86C7ED;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_4                         ;86C7EF;
-    dw $0001                                                             ;86C7F1;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_5                         ;86C7F3;
-    dw $0001                                                             ;86C7F5;
-    dw EnemyProjSpritemaps_MotherBrainsRedBeam_6                         ;86C7F7;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsRedBeam_1                   ;86C7E1;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsRedBeam_2                   ;86C7E5;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsRedBeam_3                   ;86C7E9;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsRedBeam_4                   ;86C7ED;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsRedBeam_5                   ;86C7F1;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsRedBeam_6                   ;86C7F5;
     dw Instruction_EnemyProjectile_Delete                                ;86C7F9;
 
 Spawn_MotherBrainRedBeam_Fired:
@@ -10241,18 +9763,12 @@ PreInst_EnemyProjectile_MotherBrainRainbowBeam_Charging:
 
 
 InstList_EnemyProjectile_MotherBrainRainbowBeam_Charging:
-    dw $0005                                                             ;86C829;
-    dw EnemyProjSpritemaps_MotherBrainsRainbowBeamCharging_5             ;86C82B;
-    dw $0005                                                             ;86C82D;
-    dw EnemyProjSpritemaps_MotherBrainsRainbowBeamCharging_4             ;86C82F;
-    dw $0005                                                             ;86C831;
-    dw EnemyProjSpritemaps_MotherBrainsRainbowBeamCharging_3             ;86C833;
-    dw $0005                                                             ;86C835;
-    dw EnemyProjSpritemaps_MotherBrainsRainbowBeamCharging_2             ;86C837;
-    dw $0005                                                             ;86C839;
-    dw EnemyProjSpritemaps_MotherBrainsRainbowBeamCharging_1             ;86C83B;
-    dw $0005                                                             ;86C83D;
-    dw EnemyProjSpritemaps_MotherBrainsRainbowBeamCharging_0             ;86C83F;
+    dw $0005,EnemyProjSpritemaps_MotherBrainsRainbowBeamCharging_5       ;86C829;
+    dw $0005,EnemyProjSpritemaps_MotherBrainsRainbowBeamCharging_4       ;86C82D;
+    dw $0005,EnemyProjSpritemaps_MotherBrainsRainbowBeamCharging_3       ;86C831;
+    dw $0005,EnemyProjSpritemaps_MotherBrainsRainbowBeamCharging_2       ;86C835;
+    dw $0005,EnemyProjSpritemaps_MotherBrainsRainbowBeamCharging_1       ;86C839;
+    dw $0005,EnemyProjSpritemaps_MotherBrainsRainbowBeamCharging_0       ;86C83D;
     dw Instruction_EnemyProjectile_Delete                                ;86C841;
 
 InitAI_EnemyProjectile_MotherBrainsDrool:
@@ -10278,13 +9794,16 @@ PreInstruction_EnemyProjectile_MotherBrainsDrool:
     STZ.W $1ADB,X                                                        ;86C86A;
     RTS                                                                  ;86C86D;
 
-
 .Xoffsets:
     dw $0006                                                             ;86C86E;
-
 .Yoffsets:
-    dw $0014,$000E,$0012,$0008,$0017,$000A,$0013,$000B                   ;86C870;
-    dw $0019,$000C,$0012                                                 ;86C880;
+    dw       $0014                                                       ;86C870;
+    dw $000E,$0012
+    dw $0008,$0017
+    dw $000A,$0013
+    dw $000B,$0019
+    dw $000C,$0012
+
 
 PreInstruction_EnemyProjectile_MotherBrainsDrool_Falling:
     LDA.W $1ADB,X                                                        ;86C886;
@@ -10310,21 +9829,15 @@ PreInstruction_EnemyProjectile_MotherBrainsDrool_Falling:
 
 
 InstList_EnemyProjectile_MotherBrainsDrool:
-    dw $000A                                                             ;86C8B0;
-    dw EnemyProjSpritemaps_MotherBrainsDrool_0                           ;86C8B2;
-    dw $000A                                                             ;86C8B4;
-    dw EnemyProjSpritemaps_MotherBrainsDrool_1                           ;86C8B6;
-    dw $000A                                                             ;86C8B8;
-    dw EnemyProjSpritemaps_MotherBrainsDrool_7                           ;86C8BA;
-    dw $000A                                                             ;86C8BC;
-    dw EnemyProjSpritemaps_MotherBrainsDrool_8                           ;86C8BE;
-    dw $000A                                                             ;86C8C0;
-    dw EnemyProjSpritemaps_MotherBrainsDrool_9                           ;86C8C2;
+    dw $000A,EnemyProjSpritemaps_MotherBrainsDrool_0                     ;86C8B0;
+    dw $000A,EnemyProjSpritemaps_MotherBrainsDrool_1                     ;86C8B4;
+    dw $000A,EnemyProjSpritemaps_MotherBrainsDrool_7                     ;86C8B8;
+    dw $000A,EnemyProjSpritemaps_MotherBrainsDrool_8                     ;86C8BC;
+    dw $000A,EnemyProjSpritemaps_MotherBrainsDrool_9                     ;86C8C0;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86C8C4;
     dw PreInstruction_EnemyProjectile_MotherBrainsDrool_Falling          ;86C8C6;
     dw Instruction_EnemyProj_MotherBrainsDrool_MoveDownCPixels           ;86C8C8;
-    dw $000A                                                             ;86C8CA;
-    dw EnemyProjSpritemaps_MotherBrainsDrool_2                           ;86C8CC;
+    dw $000A,EnemyProjSpritemaps_MotherBrainsDrool_2                     ;86C8CA;
     dw Instruction_EnemyProjectile_Sleep                                 ;86C8CE;
 
 Instruction_EnemyProj_MotherBrainsDrool_MoveDownCPixels:
@@ -10337,21 +9850,16 @@ Instruction_EnemyProj_MotherBrainsDrool_MoveDownCPixels:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_EnemyProjectile_MotherBrainsDrool_86C8DB:
-    dw $000A                                                             ;86C8DB;
-    dw EnemyProjSpritemaps_MotherBrainsDrool_2                           ;86C8DD;
+    dw $000A,EnemyProjSpritemaps_MotherBrainsDrool_2                     ;86C8DB;
     dw Instruction_EnemyProjectile_Sleep                                 ;86C8DF;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_EnemyProjectile_MotherBrainsDrool_HitFloor:
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86C8E1;
-    dw $000A                                                             ;86C8E3;
-    dw EnemyProjSpritemaps_MotherBrainsDrool_3                           ;86C8E5;
-    dw $000A                                                             ;86C8E7;
-    dw EnemyProjSpritemaps_MotherBrainsDrool_4                           ;86C8E9;
-    dw $000A                                                             ;86C8EB;
-    dw EnemyProjSpritemaps_MotherBrainsDrool_5                           ;86C8ED;
-    dw $000A                                                             ;86C8EF;
-    dw EnemyProjSpritemaps_MotherBrainsDrool_6                           ;86C8F1;
+    dw $000A,EnemyProjSpritemaps_MotherBrainsDrool_3                     ;86C8E3;
+    dw $000A,EnemyProjSpritemaps_MotherBrainsDrool_4                     ;86C8E7;
+    dw $000A,EnemyProjSpritemaps_MotherBrainsDrool_5                     ;86C8EB;
+    dw $000A,EnemyProjSpritemaps_MotherBrainsDrool_6                     ;86C8EF;
     dw Instruction_EnemyProjectile_Delete                                ;86C8F3;
 
 InitAI_EnemyProjectile_MotherBrainsDeathExplosion:
@@ -10437,20 +9945,18 @@ InitAI_EnemyProjectile_MotherBrainExplodedEscapeDoorParticle:
     STA.W $1AFF,X                                                        ;86C98E;
     RTS                                                                  ;86C991;
 
-
 .Xoffsets:
     dw $0000                                                             ;86C992;
-
 .Yoffsets:
-    dw $FFE0,$0000,$FFE8,$0000,$FFF0,$0000,$FFF8,$0000                   ;86C994;
-    dw $0000,$0000,$0008,$0000,$0010,$0000,$0018                         ;86C9A4;
+    dw       $FFE0,$0000,$FFE8,$0000,$FFF0,$0000,$FFF8                   ;86C994;
+    dw $0000,$0000,$0000,$0008,$0000,$0010,$0000,$0018                   ;86C9A4;
 
 .Xvelocities:
     dw $0500                                                             ;86C9B2;
-
 .Yvelocities:
-    dw $FE00,$0500,$FF00,$0500,$FF00,$0500,$FF80,$0500                   ;86C9B4;
-    dw $FF80,$0500,$0080,$0500,$FF00,$0500,$0200                         ;86C9C4;
+    dw       $FE00,$0500,$FF00,$0500,$FF00,$0500,$FF80                   ;86C9B4;
+    dw $0500,$FF80,$0500,$0080,$0500,$FF00,$0500,$0200                   ;86C9C4;
+
 
 PreInst_EnemyProj_MotherBrainExplodedEscapeDoorParticles:
     LDA.W $1AB7,X                                                        ;86C9D2;
@@ -10494,43 +10000,27 @@ PreInst_EnemyProj_MotherBrainExplodedEscapeDoorParticles:
 
 
 InstList_EnemyProj_MotherBrainExplodedEscapeDoorParticle:
-    dw $0001                                                             ;86CA22;
-    dw EnemyProjSpritemaps_MotherBrainExplodedEscapeDoorParticles_0      ;86CA24;
-    dw $0001                                                             ;86CA26;
-    dw EnemyProjSpritemaps_MotherBrainExplodedEscapeDoorParticles_1      ;86CA28;
-    dw $0001                                                             ;86CA2A;
-    dw EnemyProjSpritemaps_MotherBrainExplodedEscapeDoorParticles_2      ;86CA2C;
-    dw $0001                                                             ;86CA2E;
-    dw EnemyProjSpritemaps_MotherBrainExplodedEscapeDoorParticles_3      ;86CA30;
-    dw $0003                                                             ;86CA32;
-    dw EnemyProjSpritemaps_MotherBrainExplodedEscapeDoorParticles_4      ;86CA34;
-    dw $0003                                                             ;86CA36;
-    dw EnemyProjSpritemaps_MotherBrainExplodedEscapeDoorParticles_5      ;86CA38;
-    dw $0004                                                             ;86CA3A;
-    dw EnemyProjSpritemaps_MotherBrainExplodedEscapeDoorParticles_6      ;86CA3C;
-    dw $0004                                                             ;86CA3E;
-    dw EnemyProjSpritemaps_MotherBrainExplodedEscapeDoorParticles_7      ;86CA40;
+    dw $0001,EnemyProjSpritemaps_MotherBrainExplodedEscapeDoorParticles_0 ;86CA22;
+    dw $0001,EnemyProjSpritemaps_MotherBrainExplodedEscapeDoorParticles_1 ;86CA26;
+    dw $0001,EnemyProjSpritemaps_MotherBrainExplodedEscapeDoorParticles_2 ;86CA2A;
+    dw $0001,EnemyProjSpritemaps_MotherBrainExplodedEscapeDoorParticles_3 ;86CA2E;
+    dw $0003,EnemyProjSpritemaps_MotherBrainExplodedEscapeDoorParticles_4 ;86CA32;
+    dw $0003,EnemyProjSpritemaps_MotherBrainExplodedEscapeDoorParticles_5 ;86CA36;
+    dw $0004,EnemyProjSpritemaps_MotherBrainExplodedEscapeDoorParticles_6 ;86CA3A;
+    dw $0004,EnemyProjSpritemaps_MotherBrainExplodedEscapeDoorParticles_7 ;86CA3E;
     dw Instruction_EnemyProjectile_GotoY                                 ;86CA42;
     dw InstList_EnemyProj_MotherBrainExplodedEscapeDoorParticle          ;86CA44;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_86CA46:
-    dw $0001                                                             ;86CA46;
-    dw UNUSED_EnemyProjSpritemaps_0_8D96D3                               ;86CA48;
-    dw $0001                                                             ;86CA4A;
-    dw UNUSED_EnemyProjSpritemaps_1_8D96DA                               ;86CA4C;
-    dw $0001                                                             ;86CA4E;
-    dw UNUSED_EnemyProjSpritemaps_2_8D96E1                               ;86CA50;
-    dw $0001                                                             ;86CA52;
-    dw UNUSED_EnemyProjSpritemaps_3_8D96E8                               ;86CA54;
-    dw $0003                                                             ;86CA56;
-    dw UNUSED_EnemyProjSpritemaps_4_8D96EF                               ;86CA58;
-    dw $0003                                                             ;86CA5A;
-    dw UNUSED_EnemyProjSpritemaps_5_8D96F6                               ;86CA5C;
-    dw $0004                                                             ;86CA5E;
-    dw UNUSED_EnemyProjSpritemaps_6_8D96FD                               ;86CA60;
-    dw $0004                                                             ;86CA62;
-    dw UNUSED_EnemyProjSpritemaps_7_8D9704                               ;86CA64;
+    dw $0001,UNUSED_EnemyProjSpritemaps_0_8D96D3                         ;86CA46;
+    dw $0001,UNUSED_EnemyProjSpritemaps_1_8D96DA                         ;86CA4A;
+    dw $0001,UNUSED_EnemyProjSpritemaps_2_8D96E1                         ;86CA4E;
+    dw $0001,UNUSED_EnemyProjSpritemaps_3_8D96E8                         ;86CA52;
+    dw $0003,UNUSED_EnemyProjSpritemaps_4_8D96EF                         ;86CA56;
+    dw $0003,UNUSED_EnemyProjSpritemaps_5_8D96F6                         ;86CA5A;
+    dw $0004,UNUSED_EnemyProjSpritemaps_6_8D96FD                         ;86CA5E;
+    dw $0004,UNUSED_EnemyProjSpritemaps_7_8D9704                         ;86CA62;
     dw Instruction_EnemyProjectile_GotoY                                 ;86CA66;
     dw UNUSED_InstList_86CA46                                            ;86CA68;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -10571,42 +10061,26 @@ RTS_86CAA3:
 
 InstList_EnemyProjectile_MotherBrainPurpleBreath_Big:
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86CAA4;
-    dw $0008                                                             ;86CAA6;
-    dw EnemyProjSpritemaps_MotherBrainsPurpleBreath_Big_0                ;86CAA8;
-    dw $0008                                                             ;86CAAA;
-    dw EnemyProjSpritemaps_MotherBrainsPurpleBreath_Big_1                ;86CAAC;
-    dw $0009                                                             ;86CAAE;
-    dw EnemyProjSpritemaps_MotherBrainsPurpleBreath_Big_2                ;86CAB0;
-    dw $0009                                                             ;86CAB2;
-    dw EnemyProjSpritemaps_MotherBrainsPurpleBreath_Big_3                ;86CAB4;
-    dw $000A                                                             ;86CAB6;
-    dw EnemyProjSpritemaps_MotherBrainsPurpleBreath_Big_4                ;86CAB8;
-    dw $000A                                                             ;86CABA;
-    dw EnemyProjSpritemaps_MotherBrainsPurpleBreath_Big_5                ;86CABC;
-    dw $000B                                                             ;86CABE;
-    dw EnemyProjSpritemaps_MotherBrainsPurpleBreath_Big_6                ;86CAC0;
-    dw $000B                                                             ;86CAC2;
-    dw EnemyProjSpritemaps_MotherBrainsPurpleBreath_Big_7                ;86CAC4;
+    dw $0008,EnemyProjSpritemaps_MotherBrainsPurpleBreath_Big_0          ;86CAA6;
+    dw $0008,EnemyProjSpritemaps_MotherBrainsPurpleBreath_Big_1          ;86CAAA;
+    dw $0009,EnemyProjSpritemaps_MotherBrainsPurpleBreath_Big_2          ;86CAAE;
+    dw $0009,EnemyProjSpritemaps_MotherBrainsPurpleBreath_Big_3          ;86CAB2;
+    dw $000A,EnemyProjSpritemaps_MotherBrainsPurpleBreath_Big_4          ;86CAB6;
+    dw $000A,EnemyProjSpritemaps_MotherBrainsPurpleBreath_Big_5          ;86CABA;
+    dw $000B,EnemyProjSpritemaps_MotherBrainsPurpleBreath_Big_6          ;86CABE;
+    dw $000B,EnemyProjSpritemaps_MotherBrainsPurpleBreath_Big_7          ;86CAC2;
     dw Instruction_EnemyProjectile_Delete                                ;86CAC6;
 
 InstList_EnemyProjectile_MotherBrainPurpleBreath_Small:
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86CAC8;
-    dw $0008                                                             ;86CACA;
-    dw EnemyProjSpritemaps_MotherBrainsPurpleBreath_Small_0              ;86CACC;
-    dw $0008                                                             ;86CACE;
-    dw EnemyProjSpritemaps_MotherBrainsPurpleBreath_Small_1              ;86CAD0;
-    dw $000A                                                             ;86CAD2;
-    dw EnemyProjSpritemaps_MotherBrainsPurpleBreath_Small_2              ;86CAD4;
-    dw $000A                                                             ;86CAD6;
-    dw EnemyProjSpritemaps_MotherBrainsPurpleBreath_Small_3              ;86CAD8;
-    dw $000B                                                             ;86CADA;
-    dw EnemyProjSpritemaps_MotherBrainsPurpleBreath_Small_4              ;86CADC;
-    dw $000B                                                             ;86CADE;
-    dw EnemyProjSpritemaps_MotherBrainsPurpleBreath_Small_5              ;86CAE0;
-    dw $000C                                                             ;86CAE2;
-    dw EnemyProjSpritemaps_MotherBrainsPurpleBreath_Small_6              ;86CAE4;
-    dw $000C                                                             ;86CAE6;
-    dw EnemyProjSpritemaps_MotherBrainsPurpleBreath_Small_7              ;86CAE8;
+    dw $0008,EnemyProjSpritemaps_MotherBrainsPurpleBreath_Small_0        ;86CACA;
+    dw $0008,EnemyProjSpritemaps_MotherBrainsPurpleBreath_Small_1        ;86CACE;
+    dw $000A,EnemyProjSpritemaps_MotherBrainsPurpleBreath_Small_2        ;86CAD2;
+    dw $000A,EnemyProjSpritemaps_MotherBrainsPurpleBreath_Small_3        ;86CAD6;
+    dw $000B,EnemyProjSpritemaps_MotherBrainsPurpleBreath_Small_4        ;86CADA;
+    dw $000B,EnemyProjSpritemaps_MotherBrainsPurpleBreath_Small_5        ;86CADE;
+    dw $000C,EnemyProjSpritemaps_MotherBrainsPurpleBreath_Small_6        ;86CAE2;
+    dw $000C,EnemyProjSpritemaps_MotherBrainsPurpleBreath_Small_7        ;86CAE6;
     dw Instruction_EnemyProjectile_MotherBrainPurpleBreath_Inactive      ;86CAEA;
     dw Instruction_EnemyProjectile_Delete                                ;86CAEC;
 
@@ -10631,126 +10105,125 @@ PreInstruction_EnemyProjectile_TimeBombSetJapanText:
 
 
 InstList_EnemyProjectile_TimeBombSetJapanText:
-    dw $0001                                                             ;86CB0D;
-    dw EnemyProjSpritemaps_TimeBombSetJapanSet                           ;86CB0F;
+    dw $0001,EnemyProjSpritemaps_TimeBombSetJapanSet                     ;86CB0D;
     dw Instruction_EnemyProjectile_Sleep                                 ;86CB11;
 
 EnemyProjectile_MotherBrainDeathExplosion:
-    dw InitAI_EnemyProjectile_MotherBrainsDeathExplosion                 ;86CB13;
-    dw PreInstruction_EnemyProjectile_MotherBrainsDeathExplosion         ;86CB15;
-    dw $0000                                                             ;86CB17;
-    db $00,$00                                                           ;86CB19;
-    dw $2000                                                             ;86CB1B;
-    dw $0000                                                             ;86CB1D;
-    dw InstList_EnemyProjectile_Delete                                   ;86CB1F;
+    dw InitAI_EnemyProjectile_MotherBrainsDeathExplosion                 ;86CB13; Initialisation AI
+    dw PreInstruction_EnemyProjectile_MotherBrainsDeathExplosion         ;86CB15; Initial pre-instruction
+    dw $0000                                                             ;86CB17; Initial instruction list
+    db $00,$00                                                           ;86CB19; X,Y radius
+    dw $2000                                                             ;86CB1B; Properties
+    dw $0000                                                             ;86CB1D; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CB1F; Shot instruction list
 
 EnemyProjectile_MotherBrainExplodedEscapeDoorParticles:
-    dw InitAI_EnemyProjectile_MotherBrainExplodedEscapeDoorParticle      ;86CB21;
-    dw PreInst_EnemyProj_MotherBrainExplodedEscapeDoorParticles          ;86CB23;
-    dw InstList_EnemyProj_MotherBrainExplodedEscapeDoorParticle          ;86CB25;
-    db $00,$00                                                           ;86CB27;
-    dw $3000                                                             ;86CB29;
-    dw $0000                                                             ;86CB2B;
-    dw InstList_EnemyProjectile_Delete                                   ;86CB2D;
+    dw InitAI_EnemyProjectile_MotherBrainExplodedEscapeDoorParticle      ;86CB21; Initialisation AI
+    dw PreInst_EnemyProj_MotherBrainExplodedEscapeDoorParticles          ;86CB23; Initial pre-instruction
+    dw InstList_EnemyProj_MotherBrainExplodedEscapeDoorParticle          ;86CB25; Initial instruction list
+    db $00,$00                                                           ;86CB27; X,Y radius
+    dw $3000                                                             ;86CB29; Properties
+    dw $0000                                                             ;86CB2B; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CB2D; Shot instruction list
 
 EnemyProjectile_MotherBrainPurpleBreath_Big:
-    dw InitAI_EnemyProjectile_MotherBrainPurpleBreath_Big                ;86CB2F;
-    dw RTS_86CAA3                                                        ;86CB31;
-    dw InstList_EnemyProjectile_MotherBrainPurpleBreath_Big              ;86CB33;
-    db $00,$00                                                           ;86CB35;
-    dw $3000                                                             ;86CB37;
-    dw $0000                                                             ;86CB39;
-    dw InstList_EnemyProjectile_Delete                                   ;86CB3B;
+    dw InitAI_EnemyProjectile_MotherBrainPurpleBreath_Big                ;86CB2F; Initialisation AI
+    dw RTS_86CAA3                                                        ;86CB31; Initial pre-instruction
+    dw InstList_EnemyProjectile_MotherBrainPurpleBreath_Big              ;86CB33; Initial instruction list
+    db $00,$00                                                           ;86CB35; X,Y radius
+    dw $3000                                                             ;86CB37; Properties
+    dw $0000                                                             ;86CB39; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CB3B; Shot instruction list
 
 EnemyProjectile_MotherBrainPurpleBreath_Small:
-    dw InitAI_EnemyProjectile_MotherBrainPurpleBreath_Small              ;86CB3D;
-    dw RTS_86CAA3                                                        ;86CB3F;
-    dw InstList_EnemyProjectile_MotherBrainPurpleBreath_Small            ;86CB41;
-    db $00,$00                                                           ;86CB43;
-    dw $3000                                                             ;86CB45;
-    dw $0000                                                             ;86CB47;
-    dw InstList_EnemyProjectile_Delete                                   ;86CB49;
+    dw InitAI_EnemyProjectile_MotherBrainPurpleBreath_Small              ;86CB3D; Initialisation AI
+    dw RTS_86CAA3                                                        ;86CB3F; Initial pre-instruction
+    dw InstList_EnemyProjectile_MotherBrainPurpleBreath_Small            ;86CB41; Initial instruction list
+    db $00,$00                                                           ;86CB43; X,Y radius
+    dw $3000                                                             ;86CB45; Properties
+    dw $0000                                                             ;86CB47; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CB49; Shot instruction list
 
 EnemyProjectile_MotherBrainOnionRings:
-    dw InitAI_EnemyProjectile_MotherBrainsOnionRings                     ;86CB4B;
-    dw PreInstruction_EnemyProjectile_MotherBrainsOnionRings             ;86CB4D;
-    dw InstList_EnemyProjectile_MotherBrainsOnionRings                   ;86CB4F;
-    db $06,$06                                                           ;86CB51;
-    dw $3050                                                             ;86CB53;
-    dw InstList_EnemyProjectile_Hit_MotherBrainsOnionRings               ;86CB55;
-    dw InstList_EnemyProjectile_Delete                                   ;86CB57;
+    dw InitAI_EnemyProjectile_MotherBrainsOnionRings                     ;86CB4B; Initialisation AI
+    dw PreInstruction_EnemyProjectile_MotherBrainsOnionRings             ;86CB4D; Initial pre-instruction
+    dw InstList_EnemyProjectile_MotherBrainsOnionRings                   ;86CB4F; Initial instruction list
+    db $06,$06                                                           ;86CB51; X,Y radius
+    dw $3050                                                             ;86CB53; Properties
+    dw InstList_EnemyProjectile_Hit_MotherBrainsOnionRings               ;86CB55; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CB57; Shot instruction list
 
 EnemyProjectile_MotherBrainBomb:
-    dw InitAI_EnemyProjectile_MotherBrainsBomb                           ;86CB59;
-    dw PreInstruction_EnemyProjectile_MotherBrainsBomb                   ;86CB5B;
-    dw InstList_EnemyProjectile_MotherBrainBomb                          ;86CB5D;
-    db $06,$06                                                           ;86CB5F;
-    dw $40A0                                                             ;86CB61;
-    dw $0000                                                             ;86CB63;
-    dw InstList_EnemyProjectile_Delete                                   ;86CB65;
+    dw InitAI_EnemyProjectile_MotherBrainsBomb                           ;86CB59; Initialisation AI
+    dw PreInstruction_EnemyProjectile_MotherBrainsBomb                   ;86CB5B; Initial pre-instruction
+    dw InstList_EnemyProjectile_MotherBrainBomb                          ;86CB5D; Initial instruction list
+    db $06,$06                                                           ;86CB5F; X,Y radius
+    dw $40A0                                                             ;86CB61; Properties
+    dw $0000                                                             ;86CB63; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CB65; Shot instruction list
 
 EnemyProjectile_MotherBrainRedBeam_Charging:
-    dw InitAI_EnemyProjectile_MotherBrainRedBeam_Charging                ;86CB67;
-    dw RTS_86C76D                                                        ;86CB69;
-    dw InstList_EnemyProjectile_MotherBrainRedBeam                       ;86CB6B;
-    db $06,$06                                                           ;86CB6D;
-    dw $1190                                                             ;86CB6F;
-    dw $0000                                                             ;86CB71;
-    dw InstList_EnemyProjectile_Delete                                   ;86CB73;
+    dw InitAI_EnemyProjectile_MotherBrainRedBeam_Charging                ;86CB67; Initialisation AI
+    dw RTS_86C76D                                                        ;86CB69; Initial pre-instruction
+    dw InstList_EnemyProjectile_MotherBrainRedBeam                       ;86CB6B; Initial instruction list
+    db $06,$06                                                           ;86CB6D; X,Y radius
+    dw $1190                                                             ;86CB6F; Properties
+    dw $0000                                                             ;86CB71; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CB73; Shot instruction list
 
 EnemyProjectile_MotherBrainRedBeam_Fired:
-    dw InitAI_EnemyProjectile_MotherBrainRedBeam_Fired                   ;86CB75;
-    dw RTS_86C76D                                                        ;86CB77;
-    dw InstList_EnemyProjectile_MotherBrainRedBeam                       ;86CB79;
-    db $06,$06                                                           ;86CB7B;
-    dw $1190                                                             ;86CB7D;
-    dw $0000                                                             ;86CB7F;
-    dw InstList_EnemyProjectile_Delete                                   ;86CB81;
+    dw InitAI_EnemyProjectile_MotherBrainRedBeam_Fired                   ;86CB75; Initialisation AI
+    dw RTS_86C76D                                                        ;86CB77; Initial pre-instruction
+    dw InstList_EnemyProjectile_MotherBrainRedBeam                       ;86CB79; Initial instruction list
+    db $06,$06                                                           ;86CB7B; X,Y radius
+    dw $1190                                                             ;86CB7D; Properties
+    dw $0000                                                             ;86CB7F; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CB81; Shot instruction list
 
 EnemyProjectile_MotherBrainRainbowBeam_Charging:
-    dw InitAI_EnemyProjectile_MotherBrainRainbowBeam_Charging            ;86CB83;
-    dw PreInst_EnemyProjectile_MotherBrainRainbowBeam_Charging           ;86CB85;
-    dw InstList_EnemyProjectile_MotherBrainRainbowBeam_Charging          ;86CB87;
-    db $00,$00                                                           ;86CB89;
-    dw $7000                                                             ;86CB8B;
-    dw $0000                                                             ;86CB8D;
-    dw InstList_EnemyProjectile_Delete                                   ;86CB8F;
+    dw InitAI_EnemyProjectile_MotherBrainRainbowBeam_Charging            ;86CB83; Initialisation AI
+    dw PreInst_EnemyProjectile_MotherBrainRainbowBeam_Charging           ;86CB85; Initial pre-instruction
+    dw InstList_EnemyProjectile_MotherBrainRainbowBeam_Charging          ;86CB87; Initial instruction list
+    db $00,$00                                                           ;86CB89; X,Y radius
+    dw $7000                                                             ;86CB8B; Properties
+    dw $0000                                                             ;86CB8D; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CB8F; Shot instruction list
 
 EnemyProjectile_MotherBrainDrool:
-    dw InitAI_EnemyProjectile_MotherBrainsDrool                          ;86CB91;
-    dw PreInstruction_EnemyProjectile_MotherBrainsDrool                  ;86CB93;
-    dw InstList_EnemyProjectile_MotherBrainsDrool                        ;86CB95;
-    db $00,$00                                                           ;86CB97;
-    dw $7000                                                             ;86CB99;
-    dw $0000                                                             ;86CB9B;
-    dw InstList_EnemyProjectile_Delete                                   ;86CB9D;
+    dw InitAI_EnemyProjectile_MotherBrainsDrool                          ;86CB91; Initialisation AI
+    dw PreInstruction_EnemyProjectile_MotherBrainsDrool                  ;86CB93; Initial pre-instruction
+    dw InstList_EnemyProjectile_MotherBrainsDrool                        ;86CB95; Initial instruction list
+    db $00,$00                                                           ;86CB97; X,Y radius
+    dw $7000                                                             ;86CB99; Properties
+    dw $0000                                                             ;86CB9B; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CB9D; Shot instruction list
 
 EnemyProjectile_MotherBrainDyingDrool:
-    dw InitAI_EnemyProjectile_MotherBrainsDrool                          ;86CB9F;
-    dw PreInstruction_EnemyProjectile_MotherBrainsDrool                  ;86CBA1;
-    dw InstList_EnemyProjectile_MotherBrainsDrool                        ;86CBA3;
-    db $00,$00                                                           ;86CBA5;
-    dw $7000                                                             ;86CBA7;
-    dw $0000                                                             ;86CBA9;
-    dw InstList_EnemyProjectile_Delete                                   ;86CBAB;
+    dw InitAI_EnemyProjectile_MotherBrainsDrool                          ;86CB9F; Initialisation AI
+    dw PreInstruction_EnemyProjectile_MotherBrainsDrool                  ;86CBA1; Initial pre-instruction
+    dw InstList_EnemyProjectile_MotherBrainsDrool                        ;86CBA3; Initial instruction list
+    db $00,$00                                                           ;86CBA5; X,Y radius
+    dw $7000                                                             ;86CBA7; Properties
+    dw $0000                                                             ;86CBA9; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CBAB; Shot instruction list
 
 EnemyProjectile_MotherBrainRainbowBeam_Explosion:
-    dw InitAI_EnemyProjectile_MotherBrainsRainbowBeamExplosion           ;86CBAD;
-    dw PreInstruction_EnemyProj_MotherBrainsRainbowBeamExplosion         ;86CBAF;
-    dw InstList_EnemyProj_MiscDust_4_MotherBrainRainbowBeamExplosion     ;86CBB1;
-    db $01,$01                                                           ;86CBB3;
-    dw $7000                                                             ;86CBB5;
-    dw $0000                                                             ;86CBB7;
-    dw InstList_EnemyProjectile_Delete                                   ;86CBB9;
+    dw InitAI_EnemyProjectile_MotherBrainsRainbowBeamExplosion           ;86CBAD; Initialisation AI
+    dw PreInstruction_EnemyProj_MotherBrainsRainbowBeamExplosion         ;86CBAF; Initial pre-instruction
+    dw InstList_EnemyProj_MiscDust_4_MotherBrainRainbowBeamExplosion     ;86CBB1; Initial instruction list
+    db $01,$01                                                           ;86CBB3; X,Y radius
+    dw $7000                                                             ;86CBB5; Properties
+    dw $0000                                                             ;86CBB7; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CBB9; Shot instruction list
 
 EnemyProjectile_TimeBombSetJapanText:
-    dw InitAI_EnemyProjectile_TimeBombSetJapanText                       ;86CBBB;
-    dw PreInstruction_EnemyProjectile_TimeBombSetJapanText               ;86CBBD;
-    dw InstList_EnemyProjectile_TimeBombSetJapanText                     ;86CBBF;
-    db $00,$00                                                           ;86CBC1;
-    dw $1000                                                             ;86CBC3;
-    dw $0000                                                             ;86CBC5;
-    dw InstList_EnemyProjectile_Delete                                   ;86CBC7;
+    dw InitAI_EnemyProjectile_TimeBombSetJapanText                       ;86CBBB; Initialisation AI
+    dw PreInstruction_EnemyProjectile_TimeBombSetJapanText               ;86CBBD; Initial pre-instruction
+    dw InstList_EnemyProjectile_TimeBombSetJapanText                     ;86CBBF; Initial instruction list
+    db $00,$00                                                           ;86CBC1; X,Y radius
+    dw $1000                                                             ;86CBC3; Properties
+    dw $0000                                                             ;86CBC5; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CBC7; Shot instruction list
 
 InitAI_EnemyProjectile_MotherBrainsTubeFalling:
     TYX                                                                  ;86CBC9;
@@ -10807,234 +10280,162 @@ MotherBrainsTubeFallingFunction_Falling:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_86CC33:
-    dw $FF00,$0100,$0100,$0000,$FF00,$FF00,$0100,$0000                   ;86CC33;
+    dw $FF00,$0100, $0100,$0000, $FF00,$FF00, $0100,$0000                ;86CC33;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_EnemyProjectile_MotherBrainsTubeFalling_TopRight:
-    dw $0001                                                             ;86CC43;
-    dw EnemyProjSpritemaps_MotherBrainsTubeFalling_TopRight              ;86CC45;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTubeFalling_TopRight        ;86CC43;
     dw Instruction_EnemyProjectile_Sleep                                 ;86CC47;
 
 InstList_EnemyProjectile_MotherBrainsTubeFalling_TopLeft:
-    dw $0001                                                             ;86CC49;
-    dw EnemyProjSpritemaps_MotherBrainsTubeFalling_TopLeft               ;86CC4B;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTubeFalling_TopLeft         ;86CC49;
     dw Instruction_EnemyProjectile_Sleep                                 ;86CC4D;
 
 InstList_EnemyProj_MotherBrainsTubeFalling_TopMiddleLeft:
-    dw $0001                                                             ;86CC4F;
-    dw EnemyProjSpritemaps_MotherBrainsTubeFalling_TopMiddleLeft         ;86CC51;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTubeFalling_TopMiddleLeft   ;86CC4F;
     dw Instruction_EnemyProjectile_Sleep                                 ;86CC53;
 
 InstList_EnemyProj_MotherBrainsTubeFalling_TopMiddleRight:
-    dw $0001                                                             ;86CC55;
-    dw EnemyProjSpritemaps_MotherBrainsTubeFalling_TopMiddleRight        ;86CC57;
+    dw $0001,EnemyProjSpritemaps_MotherBrainsTubeFalling_TopMiddleRight  ;86CC55;
     dw Instruction_EnemyProjectile_Sleep                                 ;86CC59;
 
 EnemyProjectile_MotherBrainTubeFalling_TopRight:
-    dw InitAI_EnemyProjectile_MotherBrainsTubeFalling                    ;86CC5B;
-    dw PreInstruction_EnemyProjectile_MotherBrainsTubeFalling            ;86CC5D;
-    dw InstList_EnemyProjectile_MotherBrainsTubeFalling_TopRight         ;86CC5F;
-    db $08,$10                                                           ;86CC61;
-    dw $5000                                                             ;86CC63;
-    dw $0000                                                             ;86CC65;
-    dw InstList_EnemyProjectile_Delete                                   ;86CC67;
+    dw InitAI_EnemyProjectile_MotherBrainsTubeFalling                    ;86CC5B; Initialisation AI
+    dw PreInstruction_EnemyProjectile_MotherBrainsTubeFalling            ;86CC5D; Initial pre-instruction
+    dw InstList_EnemyProjectile_MotherBrainsTubeFalling_TopRight         ;86CC5F; Initial instruction list
+    db $08,$10                                                           ;86CC61; X,Y radius
+    dw $5000                                                             ;86CC63; Properties
+    dw $0000                                                             ;86CC65; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CC67; Shot instruction list
 
 EnemyProjectile_MotherBrainTubeFalling_TopLeft:
-    dw InitAI_EnemyProjectile_MotherBrainsTubeFalling                    ;86CC69;
-    dw PreInstruction_EnemyProjectile_MotherBrainsTubeFalling            ;86CC6B;
-    dw InstList_EnemyProjectile_MotherBrainsTubeFalling_TopLeft          ;86CC6D;
-    db $08,$10                                                           ;86CC6F;
-    dw $5000                                                             ;86CC71;
-    dw $0000                                                             ;86CC73;
-    dw InstList_EnemyProjectile_Delete                                   ;86CC75;
+    dw InitAI_EnemyProjectile_MotherBrainsTubeFalling                    ;86CC69; Initialisation AI
+    dw PreInstruction_EnemyProjectile_MotherBrainsTubeFalling            ;86CC6B; Initial pre-instruction
+    dw InstList_EnemyProjectile_MotherBrainsTubeFalling_TopLeft          ;86CC6D; Initial instruction list
+    db $08,$10                                                           ;86CC6F; X,Y radius
+    dw $5000                                                             ;86CC71; Properties
+    dw $0000                                                             ;86CC73; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CC75; Shot instruction list
 
 EnemyProjectile_MotherBrainTubeFalling_TopMiddleLeft:
-    dw InitAI_EnemyProjectile_MotherBrainsTubeFalling                    ;86CC77;
-    dw PreInstruction_EnemyProjectile_MotherBrainsTubeFalling            ;86CC79;
-    dw InstList_EnemyProj_MotherBrainsTubeFalling_TopMiddleLeft          ;86CC7B;
-    db $08,$18                                                           ;86CC7D;
-    dw $5000                                                             ;86CC7F;
-    dw $0000                                                             ;86CC81;
-    dw InstList_EnemyProjectile_Delete                                   ;86CC83;
+    dw InitAI_EnemyProjectile_MotherBrainsTubeFalling                    ;86CC77; Initialisation AI
+    dw PreInstruction_EnemyProjectile_MotherBrainsTubeFalling            ;86CC79; Initial pre-instruction
+    dw InstList_EnemyProj_MotherBrainsTubeFalling_TopMiddleLeft          ;86CC7B; Initial instruction list
+    db $08,$18                                                           ;86CC7D; X,Y radius
+    dw $5000                                                             ;86CC7F; Properties
+    dw $0000                                                             ;86CC81; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CC83; Shot instruction list
 
 EnemyProjectile_MotherBrainTubeFalling_TopMiddleRight:
-    dw InitAI_EnemyProjectile_MotherBrainsTubeFalling                    ;86CC85;
-    dw PreInstruction_EnemyProjectile_MotherBrainsTubeFalling            ;86CC87;
-    dw InstList_EnemyProj_MotherBrainsTubeFalling_TopMiddleRight         ;86CC89;
-    db $08,$18                                                           ;86CC8B;
-    dw $5000                                                             ;86CC8D;
-    dw $0000                                                             ;86CC8F;
-    dw InstList_EnemyProjectile_Delete                                   ;86CC91;
+    dw InitAI_EnemyProjectile_MotherBrainsTubeFalling                    ;86CC85; Initialisation AI
+    dw PreInstruction_EnemyProjectile_MotherBrainsTubeFalling            ;86CC87; Initial pre-instruction
+    dw InstList_EnemyProj_MotherBrainsTubeFalling_TopMiddleRight         ;86CC89; Initial instruction list
+    db $08,$18                                                           ;86CC8B; X,Y radius
+    dw $5000                                                             ;86CC8D; Properties
+    dw $0000                                                             ;86CC8F; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CC91; Shot instruction list
 
 InstList_EnemyProjectile_MotherBrainsGlassShattering_0:
-    dw $0004                                                             ;86CC93;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_0           ;86CC95;
-    dw $0003                                                             ;86CC97;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_1           ;86CC99;
-    dw $0002                                                             ;86CC9B;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_2           ;86CC9D;
-    dw $0003                                                             ;86CC9F;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_3           ;86CCA1;
-    dw $0004                                                             ;86CCA3;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_4           ;86CCA5;
-    dw $0003                                                             ;86CCA7;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_5           ;86CCA9;
-    dw $0002                                                             ;86CCAB;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_6           ;86CCAD;
-    dw $0003                                                             ;86CCAF;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_7           ;86CCB1;
+    dw $0004,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_0     ;86CC93;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_1     ;86CC97;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_2     ;86CC9B;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_3     ;86CC9F;
+    dw $0004,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_4     ;86CCA3;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_5     ;86CCA7;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_6     ;86CCAB;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_7     ;86CCAF;
     dw Instruction_EnemyProjectile_GotoY                                 ;86CCB3;
     dw InstList_EnemyProjectile_MotherBrainsGlassShattering_0            ;86CCB5;
 
 InstList_EnemyProjectile_MotherBrainsGlassShattering_1_2:
-    dw $0004                                                             ;86CCB7;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_10          ;86CCB9;
-    dw $0003                                                             ;86CCBB;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_11          ;86CCBD;
-    dw $0002                                                             ;86CCBF;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_12          ;86CCC1;
-    dw $0003                                                             ;86CCC3;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_13          ;86CCC5;
-    dw $0004                                                             ;86CCC7;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_14          ;86CCC9;
-    dw $0003                                                             ;86CCCB;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_15          ;86CCCD;
-    dw $0002                                                             ;86CCCF;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_16          ;86CCD1;
-    dw $0003                                                             ;86CCD3;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_17          ;86CCD5;
+    dw $0004,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_10    ;86CCB7;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_11    ;86CCBB;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_12    ;86CCBF;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_13    ;86CCC3;
+    dw $0004,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_14    ;86CCC7;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_15    ;86CCCB;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_16    ;86CCCF;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_17    ;86CCD3;
     dw Instruction_EnemyProjectile_GotoY                                 ;86CCD7;
     dw InstList_EnemyProjectile_MotherBrainsGlassShattering_1_2          ;86CCD9;
 
 InstList_EnemyProjectile_MotherBrainsGlassShattering_3_4_5:
-    dw $0004                                                             ;86CCDB;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_8           ;86CCDD;
-    dw $0003                                                             ;86CCDF;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_9           ;86CCE1;
-    dw $0002                                                             ;86CCE3;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_A           ;86CCE5;
-    dw $0003                                                             ;86CCE7;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_B           ;86CCE9;
-    dw $0004                                                             ;86CCEB;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_C           ;86CCED;
-    dw $0003                                                             ;86CCEF;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_D           ;86CCF1;
-    dw $0002                                                             ;86CCF3;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_E           ;86CCF5;
-    dw $0003                                                             ;86CCF7;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_F           ;86CCF9;
+    dw $0004,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_8     ;86CCDB;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_9     ;86CCDF;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_A     ;86CCE3;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_B     ;86CCE7;
+    dw $0004,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_C     ;86CCEB;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_D     ;86CCEF;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_E     ;86CCF3;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_F     ;86CCF7;
     dw Instruction_EnemyProjectile_GotoY                                 ;86CCFB;
     dw InstList_EnemyProjectile_MotherBrainsGlassShattering_3_4_5        ;86CCFD;
 
 InstList_EnemyProjectile_MotherBrainsGlassShattering_6_7:
-    dw $0004                                                             ;86CCFF;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_18          ;86CD01;
-    dw $0003                                                             ;86CD03;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_19          ;86CD05;
-    dw $0002                                                             ;86CD07;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_1A          ;86CD09;
-    dw $0003                                                             ;86CD0B;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_1B          ;86CD0D;
-    dw $0004                                                             ;86CD0F;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_1C          ;86CD11;
-    dw $0003                                                             ;86CD13;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_1D          ;86CD15;
-    dw $0002                                                             ;86CD17;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_1E          ;86CD19;
-    dw $0003                                                             ;86CD1B;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_1F          ;86CD1D;
+    dw $0004,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_18    ;86CCFF;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_19    ;86CD03;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_1A    ;86CD07;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_1B    ;86CD0B;
+    dw $0004,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_1C    ;86CD0F;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_1D    ;86CD13;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_1E    ;86CD17;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_1F    ;86CD1B;
     dw Instruction_EnemyProjectile_GotoY                                 ;86CD1F;
     dw InstList_EnemyProjectile_MotherBrainsGlassShattering_6_7          ;86CD21;
 
 InstList_EnemyProjectile_MotherBrainsGlassShattering_8:
-    dw $0004                                                             ;86CD23;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_20          ;86CD25;
-    dw $0003                                                             ;86CD27;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_21          ;86CD29;
-    dw $0002                                                             ;86CD2B;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_22          ;86CD2D;
-    dw $0003                                                             ;86CD2F;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_23          ;86CD31;
-    dw $0004                                                             ;86CD33;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_24          ;86CD35;
-    dw $0003                                                             ;86CD37;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_25          ;86CD39;
-    dw $0002                                                             ;86CD3B;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_26          ;86CD3D;
-    dw $0003                                                             ;86CD3F;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_27          ;86CD41;
+    dw $0004,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_20    ;86CD23;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_21    ;86CD27;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_22    ;86CD2B;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_23    ;86CD2F;
+    dw $0004,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_24    ;86CD33;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_25    ;86CD37;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_26    ;86CD3B;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_27    ;86CD3F;
     dw Instruction_EnemyProjectile_GotoY                                 ;86CD43;
     dw InstList_EnemyProjectile_MotherBrainsGlassShattering_8            ;86CD45;
 
 InstList_EnemyProjectile_MotherBrainsGlassShattering_9_A:
-    dw $0004                                                             ;86CD47;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_30          ;86CD49;
-    dw $0003                                                             ;86CD4B;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_31          ;86CD4D;
-    dw $0002                                                             ;86CD4F;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_32          ;86CD51;
-    dw $0003                                                             ;86CD53;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_33          ;86CD55;
-    dw $0004                                                             ;86CD57;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_34          ;86CD59;
-    dw $0003                                                             ;86CD5B;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_35          ;86CD5D;
-    dw $0002                                                             ;86CD5F;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_36          ;86CD61;
-    dw $0003                                                             ;86CD63;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_37          ;86CD65;
+    dw $0004,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_30    ;86CD47;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_31    ;86CD4B;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_32    ;86CD4F;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_33    ;86CD53;
+    dw $0004,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_34    ;86CD57;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_35    ;86CD5B;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_36    ;86CD5F;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_37    ;86CD63;
     dw Instruction_EnemyProjectile_GotoY                                 ;86CD67;
     dw InstList_EnemyProjectile_MotherBrainsGlassShattering_9_A          ;86CD69;
 
 InstList_EnemyProjectile_MotherBrainsGlassShattering_B_C_D:
-    dw $0004                                                             ;86CD6B;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_28          ;86CD6D;
-    dw $0003                                                             ;86CD6F;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_29          ;86CD71;
-    dw $0002                                                             ;86CD73;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_2A          ;86CD75;
-    dw $0003                                                             ;86CD77;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_2B          ;86CD79;
-    dw $0004                                                             ;86CD7B;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_2C          ;86CD7D;
-    dw $0003                                                             ;86CD7F;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_2D          ;86CD81;
-    dw $0002                                                             ;86CD83;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_2E          ;86CD85;
-    dw $0003                                                             ;86CD87;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_2F          ;86CD89;
+    dw $0004,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_28    ;86CD6B;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_29    ;86CD6F;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_2A    ;86CD73;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_2B    ;86CD77;
+    dw $0004,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_2C    ;86CD7B;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_2D    ;86CD7F;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_2E    ;86CD83;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_2F    ;86CD87;
     dw Instruction_EnemyProjectile_GotoY                                 ;86CD8B;
     dw InstList_EnemyProjectile_MotherBrainsGlassShattering_B_C_D        ;86CD8D;
 
 InstList_EnemyProjectile_MotherBrainsGlassShattering_E_F:
-    dw $0004                                                             ;86CD8F;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_38          ;86CD91;
-    dw $0003                                                             ;86CD93;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_39          ;86CD95;
-    dw $0002                                                             ;86CD97;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_3A          ;86CD99;
-    dw $0003                                                             ;86CD9B;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_3B          ;86CD9D;
-    dw $0004                                                             ;86CD9F;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_3C          ;86CDA1;
-    dw $0003                                                             ;86CDA3;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_3D          ;86CDA5;
-    dw $0002                                                             ;86CDA7;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_3E          ;86CDA9;
-    dw $0003                                                             ;86CDAB;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_3F          ;86CDAD;
+    dw $0004,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_38    ;86CD8F;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_39    ;86CD93;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_3A    ;86CD97;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_3B    ;86CD9B;
+    dw $0004,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_3C    ;86CD9F;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_3D    ;86CDA3;
+    dw $0002,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_3E    ;86CDA7;
+    dw $0003,EnemyProjSpritemaps_MotherBrainsGlassShattering_Shard_3F    ;86CDAB;
     dw Instruction_EnemyProjectile_GotoY                                 ;86CDAF;
     dw InstList_EnemyProjectile_MotherBrainsGlassShattering_E_F          ;86CDB1;
 
 InstList_EnemyProjectile_MotherBrainsGlassShattering_Sparkle:
-    dw $0006                                                             ;86CDB3;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Sparkle_0         ;86CDB5;
-    dw $0008                                                             ;86CDB7;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Sparkle_1         ;86CDB9;
-    dw $0006                                                             ;86CDBB;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Sparkle_2         ;86CDBD;
-    dw $0008                                                             ;86CDBF;
-    dw EnemyProjSpritemaps_MotherBrainsGlassShattering_Sparkle_3         ;86CDC1;
+    dw $0006,EnemyProjSpritemaps_MotherBrainsGlassShattering_Sparkle_0   ;86CDB3;
+    dw $0008,EnemyProjSpritemaps_MotherBrainsGlassShattering_Sparkle_1   ;86CDB7;
+    dw $0006,EnemyProjSpritemaps_MotherBrainsGlassShattering_Sparkle_2   ;86CDBB;
+    dw $0008,EnemyProjSpritemaps_MotherBrainsGlassShattering_Sparkle_3   ;86CDBF;
     dw Instruction_EnemyProjectile_Delete                                ;86CDC3;
 
 InitAI_EnemyProjectile_MotherBrainsGlassShattering_Shard:
@@ -11095,7 +10496,6 @@ InitAI_EnemyProjectile_MotherBrainsGlassShattering_Shard:
     STA.W $1A93,Y                                                        ;86CE3D;
     RTS                                                                  ;86CE40;
 
-
 .InstListPointers:
     dw InstList_EnemyProjectile_MotherBrainsGlassShattering_0            ;86CE41;
     dw InstList_EnemyProjectile_MotherBrainsGlassShattering_1_2          ;86CE43;
@@ -11115,10 +10515,13 @@ InitAI_EnemyProjectile_MotherBrainsGlassShattering_Shard:
     dw InstList_EnemyProjectile_MotherBrainsGlassShattering_E_F          ;86CE5F;
 
 .Xoffsets:
+; Indexed by initialisation parameter
     dw $0008,$FFD8,$FFF0                                                 ;86CE61;
 
 .Yoffsets:
+; Indexed by initialisation parameter
     dw $0020,$0020,$0020                                                 ;86CE67;
+
 
 InitAI_EnemyProjectile_MotherBrainGlassShattering_Sparkle:
     LDX.W $1993                                                          ;86CE6D;
@@ -11193,91 +10596,72 @@ PreInstruction_EnemyProj_MotherBrainGlassShattering_Shard:
 
 
 EnemyProjectile_MotherBrainGlassShattering_Shard:
-    dw InitAI_EnemyProjectile_MotherBrainsGlassShattering_Shard          ;86CEFC;
-    dw PreInstruction_EnemyProj_MotherBrainGlassShattering_Shard         ;86CEFE;
-    dw InstList_EnemyProjectile_MotherBrainsGlassShattering_0            ;86CF00;
-    db $00,$00                                                           ;86CF02;
-    dw $3000                                                             ;86CF04;
-    dw $0000                                                             ;86CF06;
-    dw InstList_EnemyProjectile_Delete                                   ;86CF08;
+    dw InitAI_EnemyProjectile_MotherBrainsGlassShattering_Shard          ;86CEFC; Initialisation AI
+    dw PreInstruction_EnemyProj_MotherBrainGlassShattering_Shard         ;86CEFE; Initial pre-instruction
+    dw InstList_EnemyProjectile_MotherBrainsGlassShattering_0            ;86CF00; Initial instruction list
+    db $00,$00                                                           ;86CF02; X,Y radius
+    dw $3000                                                             ;86CF04; Properties
+    dw $0000                                                             ;86CF06; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CF08; Shot instruction list
 
 EnemyProjectile_MotherBrainGlassShattering_Sparkle:
-    dw InitAI_EnemyProjectile_MotherBrainGlassShattering_Sparkle         ;86CF0A;
-    dw RTS_8684FB                                                        ;86CF0C;
-    dw InstList_EnemyProjectile_MotherBrainsGlassShattering_Sparkle      ;86CF0E;
-    db $00,$00                                                           ;86CF10;
-    dw $3000                                                             ;86CF12;
-    dw $0000                                                             ;86CF14;
-    dw InstList_EnemyProjectile_Delete                                   ;86CF16;
+    dw InitAI_EnemyProjectile_MotherBrainGlassShattering_Sparkle         ;86CF0A; Initialisation AI
+    dw RTS_8684FB                                                        ;86CF0C; Initial pre-instruction
+    dw InstList_EnemyProjectile_MotherBrainsGlassShattering_Sparkle      ;86CF0E; Initial instruction list
+    db $00,$00                                                           ;86CF10; X,Y radius
+    dw $3000                                                             ;86CF12; Properties
+    dw $0000                                                             ;86CF14; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CF16; Shot instruction list
 
 EnemyProjectile_KiHunterAcidSpit_Left:
-    dw InitAI_EnemyProjectile_KiHunterAcidSpit_Left                      ;86CF18;
-    dw RTS_86CFF7                                                        ;86CF1A;
-    dw InstList_EnemyProjectile_KiHunterAcidSpit_Left                    ;86CF1C;
-    db $02,$08                                                           ;86CF1E;
-    dw $0014                                                             ;86CF20;
-    dw $0000                                                             ;86CF22;
-    dw InstList_EnemyProjectile_Delete                                   ;86CF24;
+    dw InitAI_EnemyProjectile_KiHunterAcidSpit_Left                      ;86CF18; Initialisation AI
+    dw RTS_86CFF7                                                        ;86CF1A; Initial pre-instruction
+    dw InstList_EnemyProjectile_KiHunterAcidSpit_Left                    ;86CF1C; Initial instruction list
+    db $02,$08                                                           ;86CF1E; X,Y radius
+    dw $0014                                                             ;86CF20; Properties
+    dw $0000                                                             ;86CF22; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CF24; Shot instruction list
 
 EnemyProjectile_KiHunterAcidSpit_Right:
-    dw InitAI_EnemyProjectile_KiHunterAcidSpit_Right                     ;86CF26;
-    dw RTS_86CFF7                                                        ;86CF28;
-    dw InstList_EnemyProjectile_KiHunterAcidSpit_Right                   ;86CF2A;
-    db $02,$08                                                           ;86CF2C;
-    dw $0014                                                             ;86CF2E;
-    dw $0000                                                             ;86CF30;
-    dw InstList_EnemyProjectile_Delete                                   ;86CF32;
+    dw InitAI_EnemyProjectile_KiHunterAcidSpit_Right                     ;86CF26; Initialisation AI
+    dw RTS_86CFF7                                                        ;86CF28; Initial pre-instruction
+    dw InstList_EnemyProjectile_KiHunterAcidSpit_Right                   ;86CF2A; Initial instruction list
+    db $02,$08                                                           ;86CF2C; X,Y radius
+    dw $0014                                                             ;86CF2E; Properties
+    dw $0000                                                             ;86CF30; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86CF32; Shot instruction list
 
 InstList_EnemyProjectile_KiHunterAcidSpit_Left:
-    dw $0003                                                             ;86CF34;
-    dw EnemyProjSpritemaps_KihunterAcidSpit_Left_0                       ;86CF36;
-    dw $0003                                                             ;86CF38;
-    dw EnemyProjSpritemaps_KihunterAcidSpit_Left_1                       ;86CF3A;
-    dw $0004                                                             ;86CF3C;
-    dw EnemyProjSpritemaps_KihunterAcidSpit_Left_2                       ;86CF3E;
-    dw $0003                                                             ;86CF40;
-    dw EnemyProjSpritemaps_KihunterAcidSpit_Left_3                       ;86CF42;
-    dw $0001                                                             ;86CF44;
-    dw EnemyProjSpritemaps_KihunterAcidSpit_Left_4                       ;86CF46;
+    dw $0003,EnemyProjSpritemaps_KihunterAcidSpit_Left_0                 ;86CF34;
+    dw $0003,EnemyProjSpritemaps_KihunterAcidSpit_Left_1                 ;86CF38;
+    dw $0004,EnemyProjSpritemaps_KihunterAcidSpit_Left_2                 ;86CF3C;
+    dw $0003,EnemyProjSpritemaps_KihunterAcidSpit_Left_3                 ;86CF40;
+    dw $0001,EnemyProjSpritemaps_KihunterAcidSpit_Left_4                 ;86CF44;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86CF48;
     dw PreInstruction_EnemyProj_KiHunterAcidSpit_Left_StartMoving        ;86CF4A;
-    dw $0001                                                             ;86CF4C;
-    dw EnemyProjSpritemaps_KihunterAcidSpit_Left_4                       ;86CF4E;
-    dw $0001                                                             ;86CF50;
-    dw EnemyProjSpritemaps_KihunterAcidSpit_Left_5                       ;86CF52;
+    dw $0001,EnemyProjSpritemaps_KihunterAcidSpit_Left_4                 ;86CF4C;
+    dw $0001,EnemyProjSpritemaps_KihunterAcidSpit_Left_5                 ;86CF50;
     dw Instruction_EnemyProjectile_Sleep                                 ;86CF54;
 
 InstList_EnemyProjectile_KiHunterAcidSpit_HitFloor:
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86CF56;
-    dw $000C                                                             ;86CF58;
-    dw EnemyProjSpritemaps_KihunterAcidSpit_0                            ;86CF5A;
-    dw $000A                                                             ;86CF5C;
-    dw EnemyProjSpritemaps_KihunterAcidSpit_1                            ;86CF5E;
-    dw $000A                                                             ;86CF60;
-    dw EnemyProjSpritemaps_KihunterAcidSpit_2                            ;86CF62;
-    dw $0008                                                             ;86CF64;
-    dw EnemyProjSpritemaps_KihunterAcidSpit_3                            ;86CF66;
-    dw $0008                                                             ;86CF68;
-    dw EnemyProjSpritemaps_KihunterAcidSpit_4                            ;86CF6A;
+    dw $000C,EnemyProjSpritemaps_KihunterAcidSpit_0                      ;86CF58;
+    dw $000A,EnemyProjSpritemaps_KihunterAcidSpit_1                      ;86CF5C;
+    dw $000A,EnemyProjSpritemaps_KihunterAcidSpit_2                      ;86CF60;
+    dw $0008,EnemyProjSpritemaps_KihunterAcidSpit_3                      ;86CF64;
+    dw $0008,EnemyProjSpritemaps_KihunterAcidSpit_4                      ;86CF68;
     dw Instruction_EnemyProjectile_Delete                                ;86CF6C;
 
 InstList_EnemyProjectile_KiHunterAcidSpit_Right:
-    dw $0003                                                             ;86CF6E;
-    dw EnemyProjSpritemaps_KihunterAcidSpit_Right_0                      ;86CF70;
-    dw $0003                                                             ;86CF72;
-    dw EnemyProjSpritemaps_KihunterAcidSpit_Right_1                      ;86CF74;
-    dw $0004                                                             ;86CF76;
-    dw EnemyProjSpritemaps_KihunterAcidSpit_Right_2                      ;86CF78;
-    dw $0003                                                             ;86CF7A;
-    dw EnemyProjSpritemaps_KihunterAcidSpit_Right_3                      ;86CF7C;
-    dw $0001                                                             ;86CF7E;
-    dw EnemyProjSpritemaps_KihunterAcidSpit_Right_4                      ;86CF80;
+    dw $0003,EnemyProjSpritemaps_KihunterAcidSpit_Right_0                ;86CF6E;
+    dw $0003,EnemyProjSpritemaps_KihunterAcidSpit_Right_1                ;86CF72;
+    dw $0004,EnemyProjSpritemaps_KihunterAcidSpit_Right_2                ;86CF76;
+    dw $0003,EnemyProjSpritemaps_KihunterAcidSpit_Right_3                ;86CF7A;
+    dw $0001,EnemyProjSpritemaps_KihunterAcidSpit_Right_4                ;86CF7E;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86CF82;
     dw PreInstruction_EnemyProj_KiHunterAcidSpit_Right_StartMoving       ;86CF84;
-    dw $0001                                                             ;86CF86;
-    dw EnemyProjSpritemaps_KihunterAcidSpit_Right_4                      ;86CF88;
-    dw $0001                                                             ;86CF8A;
-    dw EnemyProjSpritemaps_KihunterAcidSpit_Right_5                      ;86CF8C;
+    dw $0001,EnemyProjSpritemaps_KihunterAcidSpit_Right_4                ;86CF86;
+    dw $0001,EnemyProjSpritemaps_KihunterAcidSpit_Right_5                ;86CF8A;
     dw Instruction_EnemyProjectile_Sleep                                 ;86CF8E;
 
 InitAI_EnemyProjectile_KiHunterAcidSpit_Left:
@@ -11373,53 +10757,42 @@ PreInstruction_EnemyProj_KiHunterAcidSpit_Moving:
 
 
 EnemyProjectile_KagoBug:
-    dw InitAI_EnemyProjectile_KagoBug                                    ;86D02E;
-    dw RTS_86D0EB                                                        ;86D030;
-    dw InstList_EnemyProjectile_KraidRocks_KagoBug                       ;86D032;
-    db $04,$04                                                           ;86D034;
-    dw $0014,$0000                                                       ;86D036;
-    dw InstList_EnemyProjectile_Shot_KagoBug                             ;86D03A;
+    dw InitAI_EnemyProjectile_KagoBug                                    ;86D02E; Initialisation AI
+    dw RTS_86D0EB                                                        ;86D030; Initial pre-instruction
+    dw InstList_EnemyProjectile_KraidRocks_KagoBug                       ;86D032; Initial instruction list
+    db $04,$04                                                           ;86D034; X,Y radius
+    dw $0014,$0000                                                       ;86D036; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Shot_KagoBug                             ;86D03A; Shot instruction list
 
 InstList_EnemyProjectile_KagoBug_HitFloor:
-    dw $0005                                                             ;86D03C;
-    dw EnemyProjSpritemaps_KagoBugs_2                                    ;86D03E;
+    dw $0005,EnemyProjSpritemaps_KagoBugs_2                              ;86D03C;
     dw Instruction_EnemyProjectile_KagoBug_StartIdling                   ;86D040;
-    dw $7FFF                                                             ;86D042;
-    dw EnemyProjSpritemaps_KagoBugs_1                                    ;86D044;
+    dw $7FFF,EnemyProjSpritemaps_KagoBugs_1                              ;86D042;
     dw Instruction_EnemyProjectile_GotoY                                 ;86D046;
     dw InstList_EnemyProjectile_KagoBug_HitFloor                         ;86D048;
 
 InstList_EnemyProjectile_KagoBug_Falling:
-    dw $7FFF                                                             ;86D04A;
-    dw EnemyProjSpritemaps_KagoBugs_1                                    ;86D04C;
+    dw $7FFF,EnemyProjSpritemaps_KagoBugs_1                              ;86D04A;
     dw Instruction_EnemyProjectile_GotoY                                 ;86D04E;
     dw InstList_EnemyProjectile_KagoBug_Falling                          ;86D050;
 
 InstList_EnemyProjectile_KagoBug_Jump_0:
-    dw $0010                                                             ;86D052;
-    dw EnemyProjSpritemaps_KagoBugs_2                                    ;86D054;
-    dw $0005                                                             ;86D056;
-    dw EnemyProjSpritemaps_KagoBugs_1                                    ;86D058;
+    dw $0010,EnemyProjSpritemaps_KagoBugs_2                              ;86D052;
+    dw $0005,EnemyProjSpritemaps_KagoBugs_1                              ;86D056;
     dw Instruction_EnemyProjectile_KagoBug_StartJumping                  ;86D05A;
 
 InstList_EnemyProjectile_KagoBug_Jump_1:
-    dw $7FFF                                                             ;86D05C;
-    dw EnemyProjSpritemaps_KagoBugs_0                                    ;86D05E;
+    dw $7FFF,EnemyProjSpritemaps_KagoBugs_0                              ;86D05C;
     dw Instruction_EnemyProjectile_GotoY                                 ;86D060;
     dw InstList_EnemyProjectile_KagoBug_Jump_1                           ;86D062;
 
 InstList_EnemyProjectile_Shot_KagoBug:
     dw Instruction_EnemyProjectile_UsePalette0_duplicate_again           ;86D064;
-    dw $0004                                                             ;86D066;
-    dw EnemyProjSpritemaps_Common_0                                      ;86D068;
-    dw $0004                                                             ;86D06A;
-    dw EnemyProjSpritemaps_Common_1                                      ;86D06C;
-    dw $0004                                                             ;86D06E;
-    dw EnemyProjSpritemaps_Common_2                                      ;86D070;
-    dw $0004                                                             ;86D072;
-    dw EnemyProjSpritemaps_Common_3                                      ;86D074;
-    dw $0004                                                             ;86D076;
-    dw EnemyProjSpritemaps_Common_4                                      ;86D078;
+    dw $0004,EnemyProjSpritemaps_Common_0                                ;86D066;
+    dw $0004,EnemyProjSpritemaps_Common_1                                ;86D06A;
+    dw $0004,EnemyProjSpritemaps_Common_2                                ;86D06E;
+    dw $0004,EnemyProjSpritemaps_Common_3                                ;86D072;
+    dw $0004,EnemyProjSpritemaps_Common_4                                ;86D076;
     dw PreInstruction_EnemyProjectile_KagoBug_SpawnDrop                  ;86D07A;
     dw Instruction_EnemyProjectile_GotoY                                 ;86D07C;
     dw InstList_EnemyProjectile_Delete                                   ;86D07E;
@@ -11427,14 +10800,13 @@ InstList_EnemyProjectile_Shot_KagoBug:
 InstList_EnemyProjectile_Delete_duplicate:
     dw Instruction_EnemyProjectile_Delete                                ;86D080;
 
-KagoBug_Constants_Yacceleration:
-    dw $00E0                                                             ;86D082;
-
-KagoBug_Constants_Xproximity:
-    dw $0030                                                             ;86D084;
-
-KagoBug_Constants_Xvelocity:
-    dw $0200                                                             ;86D086;
+KagoBug_Constants:
+  .Yacceleration
+    dw $00E0                                                             ;86D082; Unit 1/100h px/frame²
+  .Xproximity
+    dw $0030                                                             ;86D084; Kago bug will jump towards kago if it's at least this many pixels away
+  .Xvelocity
+    dw $0200                                                             ;86D086; Unit 1/100h px/frame
 
 InitAI_EnemyProjectile_KagoBug:
     LDA.W $0E54                                                          ;86D088;
@@ -11669,21 +11041,26 @@ Enable_KagoBug_Collision_with_SamusProj_IfFarEnoughFromKago:
 
 
 InstList_EnemyProjectile_PowampSpike:
-    dw $0006                                                             ;86D208;
-    dw EnemyProjSpritemaps_PowampSpikes_0                                ;86D20A;
-    dw $0006                                                             ;86D20C;
-    dw EnemyProjSpritemaps_PowampSpikes_1                                ;86D20E;
-    dw $0006                                                             ;86D210;
-    dw EnemyProjSpritemaps_PowampSpikes_2                                ;86D212;
+    dw $0006,EnemyProjSpritemaps_PowampSpikes_0                          ;86D208;
+    dw $0006,EnemyProjSpritemaps_PowampSpikes_1                          ;86D20C;
+    dw $0006,EnemyProjSpritemaps_PowampSpikes_2                          ;86D210;
     dw Instruction_EnemyProjectile_GotoY                                 ;86D214;
     dw InstList_EnemyProjectile_PowampSpike                              ;86D216;
 
 InstList_EnemyProjectile_PowampSpike_Delete:
     dw Instruction_EnemyProjectile_Delete                                ;86D218;
 
+;        _____________________________________________ 0: Up
+;       |      _______________________________________ 1: Up-right
+;       |     |      _________________________________ 2: Right
+;       |     |     |      ___________________________ 3: Down-right
+;       |     |     |     |      _____________________ 4: Down
+;       |     |     |     |     |      _______________ 5: Down-left
+;       |     |     |     |     |     |      _________ 6: Left
+;       |     |     |     |     |     |     |      ___ 7: Up-left
+;       |     |     |     |     |     |     |     |
 PowampSpike_VelocityTable_X:
     dw $0000,$0020,$0020,$0020,$0000,$FFE0,$FFE0,$FFE0                   ;86D21A;
-
 PowampSpike_VelocityTable_Y:
     dw $FFE0,$FFE0,$0000,$0020,$0020,$0020,$0000,$FFE0                   ;86D22A;
 
@@ -11737,70 +11114,63 @@ PreInstruction_EnemyProjectile_PowampSpike:
 
 
 EnemyProjectile_Powamp:
-    dw InitAI_EnemyProjectile_PowampSpike                                ;86D298;
-    dw PreInstruction_EnemyProjectile_PowampSpike                        ;86D29A;
-    dw InstList_EnemyProjectile_PowampSpike                              ;86D29C;
-    db $04,$04                                                           ;86D29E;
-    dw $0014,$0000                                                       ;86D2A0;
-    dw InstList_EnemyProjectile_PowampSpike_Delete                       ;86D2A4;
+    dw InitAI_EnemyProjectile_PowampSpike                                ;86D298; Initialisation AI
+    dw PreInstruction_EnemyProjectile_PowampSpike                        ;86D29A; Initial pre-instruction
+    dw InstList_EnemyProjectile_PowampSpike                              ;86D29C; Initial instruction list
+    db $04,$04                                                           ;86D29E; X,Y radius
+    dw $0014,$0000                                                       ;86D2A0; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_PowampSpike_Delete                       ;86D2A4; Shot instruction list
 
 EnemyProjectile_RobotLaser_UpLeft:
-    dw InitAI_EnemyProjectile_WreckedShipRobotLaser_UpLeft_Right         ;86D2A6;
-    dw PreInstruction_EnemyProjectile_WreckedShipRobotLaser              ;86D2A8;
-    dw InstList_EnemyProjectile_WreckedShipRobotLaser_0                  ;86D2AA;
-    db $0C,$0C                                                           ;86D2AC;
-    dw $0004,$0000                                                       ;86D2AE;
-    dw InstList_EnemyProjectile_Delete                                   ;86D2B2;
+    dw InitAI_EnemyProjectile_WreckedShipRobotLaser_UpLeft_Right         ;86D2A6; Initialisation AI
+    dw PreInstruction_EnemyProjectile_WreckedShipRobotLaser              ;86D2A8; Initial pre-instruction
+    dw InstList_EnemyProjectile_WreckedShipRobotLaser_0                  ;86D2AA; Initial instruction list
+    db $0C,$0C                                                           ;86D2AC; X,Y radius
+    dw $0004,$0000                                                       ;86D2AE; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86D2B2; Shot instruction list
 
 EnemyProjectile_RobotLaser_Horizontal:
-    dw InitAI_EnemyProjectile_WreckedShipRobotLaser_Horizontal           ;86D2B4;
-    dw PreInstruction_EnemyProjectile_WreckedShipRobotLaser              ;86D2B6;
-    dw InstList_EnemyProjectile_WreckedShipRobotLaser_0                  ;86D2B8;
-    db $0F,$02                                                           ;86D2BA;
-    dw $0014,$0000                                                       ;86D2BC;
-    dw InstList_EnemyProjectile_Delete                                   ;86D2C0;
+    dw InitAI_EnemyProjectile_WreckedShipRobotLaser_Horizontal           ;86D2B4; Initialisation AI
+    dw PreInstruction_EnemyProjectile_WreckedShipRobotLaser              ;86D2B6; Initial pre-instruction
+    dw InstList_EnemyProjectile_WreckedShipRobotLaser_0                  ;86D2B8; Initial instruction list
+    db $0F,$02                                                           ;86D2BA; X,Y radius
+    dw $0014,$0000                                                       ;86D2BC; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86D2C0; Shot instruction list
 
 EnemyProjectile_RobotLaser_DownLeft:
-    dw InitAI_EnemyProjectile_WreckedShipRobotLaser_DownLeft_Right       ;86D2C2;
-    dw PreInstruction_EnemyProjectile_WreckedShipRobotLaser              ;86D2C4;
-    dw InstList_EnemyProjectile_WreckedShipRobotLaser_0                  ;86D2C6;
-    db $0C,$0C                                                           ;86D2C8;
-    dw $0004,$0000                                                       ;86D2CA;
-    dw InstList_EnemyProjectile_Delete                                   ;86D2CE;
+    dw InitAI_EnemyProjectile_WreckedShipRobotLaser_DownLeft_Right       ;86D2C2; Initialisation AI
+    dw PreInstruction_EnemyProjectile_WreckedShipRobotLaser              ;86D2C4; Initial pre-instruction
+    dw InstList_EnemyProjectile_WreckedShipRobotLaser_0                  ;86D2C6; Initial instruction list
+    db $0C,$0C                                                           ;86D2C8; X,Y radius
+    dw $0004,$0000                                                       ;86D2CA; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86D2CE; Shot instruction list
 
 EnemyProjectile_RobotLaser_UpRight:
-    dw InitAI_EnemyProjectile_WreckedShipRobotLaser_UpLeft_Right         ;86D2D0;
-    dw PreInstruction_EnemyProjectile_WreckedShipRobotLaser              ;86D2D2;
-    dw InstList_EnemyProjectile_WreckedShipRobotLaser_0                  ;86D2D4;
-    db $0C,$0C                                                           ;86D2D6;
-    dw $0004,$0000                                                       ;86D2D8;
-    dw InstList_EnemyProjectile_Delete                                   ;86D2DC;
+    dw InitAI_EnemyProjectile_WreckedShipRobotLaser_UpLeft_Right         ;86D2D0; Initialisation AI
+    dw PreInstruction_EnemyProjectile_WreckedShipRobotLaser              ;86D2D2; Initial pre-instruction
+    dw InstList_EnemyProjectile_WreckedShipRobotLaser_0                  ;86D2D4; Initial instruction list
+    db $0C,$0C                                                           ;86D2D6; X,Y radius
+    dw $0004,$0000                                                       ;86D2D8; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86D2DC; Shot instruction list
 
 EnemyProjectile_RobotLaser_DownRight:
-    dw InitAI_EnemyProjectile_WreckedShipRobotLaser_DownLeft_Right       ;86D2DE;
-    dw PreInstruction_EnemyProjectile_WreckedShipRobotLaser              ;86D2E0;
-    dw InstList_EnemyProjectile_WreckedShipRobotLaser_0                  ;86D2E2;
-    db $0C,$0C                                                           ;86D2E4;
-    dw $0004,$0000                                                       ;86D2E6;
-    dw InstList_EnemyProjectile_Delete                                   ;86D2EA;
+    dw InitAI_EnemyProjectile_WreckedShipRobotLaser_DownLeft_Right       ;86D2DE; Initialisation AI
+    dw PreInstruction_EnemyProjectile_WreckedShipRobotLaser              ;86D2E0; Initial pre-instruction
+    dw InstList_EnemyProjectile_WreckedShipRobotLaser_0                  ;86D2E2; Initial instruction list
+    db $0C,$0C                                                           ;86D2E4; X,Y radius
+    dw $0004,$0000                                                       ;86D2E6; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86D2EA; Shot instruction list
 
 InstList_EnemyProjectile_WreckedShipRobotLaser_0:
-    dw $0004                                                             ;86D2EC;
-    dw EnemyProjSpritemaps_WorkRobotLaser_0                              ;86D2EE;
-    dw $0004                                                             ;86D2F0;
-    dw EnemyProjSpritemaps_WorkRobotLaser_1                              ;86D2F2;
-    dw $0004                                                             ;86D2F4;
-    dw EnemyProjSpritemaps_WorkRobotLaser_2                              ;86D2F6;
+    dw $0004,EnemyProjSpritemaps_WorkRobotLaser_0                        ;86D2EC;
+    dw $0004,EnemyProjSpritemaps_WorkRobotLaser_1                        ;86D2F0;
+    dw $0004,EnemyProjSpritemaps_WorkRobotLaser_2                        ;86D2F4;
 
 InstList_EnemyProjectile_WreckedShipRobotLaser_1:
-    dw $0004                                                             ;86D2F8;
-    dw EnemyProjSpritemaps_WorkRobotLaser_3                              ;86D2FA;
-    dw $0004                                                             ;86D2FC;
-    dw EnemyProjSpritemaps_WorkRobotLaser_4                              ;86D2FE;
-    dw $0004                                                             ;86D300;
-    dw EnemyProjSpritemaps_WorkRobotLaser_5                              ;86D302;
-    dw $0004                                                             ;86D304;
-    dw EnemyProjSpritemaps_WorkRobotLaser_4                              ;86D306;
+    dw $0004,EnemyProjSpritemaps_WorkRobotLaser_3                        ;86D2F8;
+    dw $0004,EnemyProjSpritemaps_WorkRobotLaser_4                        ;86D2FC;
+    dw $0004,EnemyProjSpritemaps_WorkRobotLaser_5                        ;86D300;
+    dw $0004,EnemyProjSpritemaps_WorkRobotLaser_4                        ;86D304;
     dw Instruction_EnemyProjectile_GotoY                                 ;86D308;
     dw InstList_EnemyProjectile_WreckedShipRobotLaser_1                  ;86D30A;
 
@@ -11920,95 +11290,57 @@ PreInstruction_EnemyProjectile_WreckedShipRobotLaser:
 
 
 InstList_EnemyProjectile_NoobTubeCrack_0:
-    dw $000C                                                             ;86D3D7;
-    dw EnemyProjSpritemaps_NoobTubeCrack_0                               ;86D3D9;
-    dw $000A                                                             ;86D3DB;
-    dw EnemyProjSpritemaps_NoobTubeCrack_1                               ;86D3DD;
-    dw $0008                                                             ;86D3DF;
-    dw EnemyProjSpritemaps_NoobTubeCrack_2                               ;86D3E1;
-    dw $0006                                                             ;86D3E3;
-    dw EnemyProjSpritemaps_NoobTubeCrack_3                               ;86D3E5;
-    dw $0006                                                             ;86D3E7;
-    dw EnemyProjSpritemaps_NoobTubeCrack_4                               ;86D3E9;
-    dw $0006                                                             ;86D3EB;
-    dw EnemyProjSpritemaps_NoobTubeCrack_5                               ;86D3ED;
+    dw $000C,EnemyProjSpritemaps_NoobTubeCrack_0                         ;86D3D7;
+    dw $000A,EnemyProjSpritemaps_NoobTubeCrack_1                         ;86D3DB;
+    dw $0008,EnemyProjSpritemaps_NoobTubeCrack_2                         ;86D3DF;
+    dw $0006,EnemyProjSpritemaps_NoobTubeCrack_3                         ;86D3E3;
+    dw $0006,EnemyProjSpritemaps_NoobTubeCrack_4                         ;86D3E7;
+    dw $0006,EnemyProjSpritemaps_NoobTubeCrack_5                         ;86D3EB;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86D3EF;
     dw PreInstruction_EnemyProjectile_NoobTubeCrack_Flickering           ;86D3F1;
-    dw $0001                                                             ;86D3F3;
-    dw EnemyProjSpritemaps_NoobTubeCrack_6                               ;86D3F5;
-    dw $0001                                                             ;86D3F7;
-    dw EnemyProjSpritemaps_NoobTubeCrack_7                               ;86D3F9;
-    dw $0001                                                             ;86D3FB;
-    dw EnemyProjSpritemaps_NoobTubeCrack_8                               ;86D3FD;
-    dw $0001                                                             ;86D3FF;
-    dw EnemyProjSpritemaps_NoobTubeCrack_9                               ;86D401;
-    dw $0001                                                             ;86D403;
-    dw EnemyProjSpritemaps_NoobTubeCrack_A                               ;86D405;
-    dw $0002                                                             ;86D407;
-    dw EnemyProjSpritemaps_NoobTubeCrack_B                               ;86D409;
-    dw $0003                                                             ;86D40B;
-    dw EnemyProjSpritemaps_NoobTubeCrack_C                               ;86D40D;
-    dw $0006                                                             ;86D40F;
-    dw EnemyProjSpritemaps_NoobTubeCrack_D                               ;86D411;
-    dw $0009                                                             ;86D413;
-    dw EnemyProjSpritemaps_NoobTubeCrack_E                               ;86D415;
-    dw $0008                                                             ;86D417;
-    dw EnemyProjSpritemaps_NoobTubeCrack_F                               ;86D419;
+    dw $0001,EnemyProjSpritemaps_NoobTubeCrack_6                         ;86D3F3;
+    dw $0001,EnemyProjSpritemaps_NoobTubeCrack_7                         ;86D3F7;
+    dw $0001,EnemyProjSpritemaps_NoobTubeCrack_8                         ;86D3FB;
+    dw $0001,EnemyProjSpritemaps_NoobTubeCrack_9                         ;86D3FF;
+    dw $0001,EnemyProjSpritemaps_NoobTubeCrack_A                         ;86D403;
+    dw $0002,EnemyProjSpritemaps_NoobTubeCrack_B                         ;86D407;
+    dw $0003,EnemyProjSpritemaps_NoobTubeCrack_C                         ;86D40B;
+    dw $0006,EnemyProjSpritemaps_NoobTubeCrack_D                         ;86D40F;
+    dw $0009,EnemyProjSpritemaps_NoobTubeCrack_E                         ;86D413;
+    dw $0008,EnemyProjSpritemaps_NoobTubeCrack_F                         ;86D417;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86D41B;
     dw PreInstruction_EnemyProjectile_NoobTubeCrack_Falling              ;86D41D;
-    dw $0007                                                             ;86D41F;
-    dw EnemyProjSpritemaps_NoobTubeCrack_10                              ;86D421;
-    dw $0007                                                             ;86D423;
-    dw EnemyProjSpritemaps_NoobTubeCrack_11                              ;86D425;
-    dw $0007                                                             ;86D427;
-    dw EnemyProjSpritemaps_NoobTubeCrack_12                              ;86D429;
-    dw $0007                                                             ;86D42B;
-    dw EnemyProjSpritemaps_NoobTubeCrack_13                              ;86D42D;
-    dw $0007                                                             ;86D42F;
-    dw EnemyProjSpritemaps_NoobTubeCrack_14                              ;86D431;
-    dw $0007                                                             ;86D433;
-    dw EnemyProjSpritemaps_NoobTubeCrack_15                              ;86D435;
-    dw $0007                                                             ;86D437;
-    dw EnemyProjSpritemaps_NoobTubeCrack_16                              ;86D439;
-    dw $0007                                                             ;86D43B;
-    dw EnemyProjSpritemaps_NoobTubeCrack_17                              ;86D43D;
-    dw $0007                                                             ;86D43F;
-    dw EnemyProjSpritemaps_NoobTubeCrack_18                              ;86D441;
-    dw $0007                                                             ;86D443;
-    dw EnemyProjSpritemaps_NoobTubeCrack_19                              ;86D445;
-    dw $0007                                                             ;86D447;
-    dw EnemyProjSpritemaps_NoobTubeCrack_1A                              ;86D449;
-    dw $0007                                                             ;86D44B;
-    dw EnemyProjSpritemaps_NoobTubeCrack_1B                              ;86D44D;
-    dw $0007                                                             ;86D44F;
-    dw EnemyProjSpritemaps_NoobTubeCrack_1C                              ;86D451;
-    dw $0007                                                             ;86D453;
-    dw EnemyProjSpritemaps_NoobTubeCrack_1D                              ;86D455;
-    dw $0007                                                             ;86D457;
-    dw EnemyProjSpritemaps_NoobTubeCrack_1E                              ;86D459;
-    dw $0007                                                             ;86D45B;
-    dw EnemyProjSpritemaps_NoobTubeCrack_1F                              ;86D45D;
-    dw $0007                                                             ;86D45F;
-    dw EnemyProjSpritemaps_NoobTubeCrack_20                              ;86D461;
-    dw $0007                                                             ;86D463;
-    dw EnemyProjSpritemaps_NoobTubeCrack_21                              ;86D465;
-    dw $0010                                                             ;86D467;
-    dw EnemyProjSpritemaps_NoobTubeCrack_22                              ;86D469;
+    dw $0007,EnemyProjSpritemaps_NoobTubeCrack_10                        ;86D41F;
+    dw $0007,EnemyProjSpritemaps_NoobTubeCrack_11                        ;86D423;
+    dw $0007,EnemyProjSpritemaps_NoobTubeCrack_12                        ;86D427;
+    dw $0007,EnemyProjSpritemaps_NoobTubeCrack_13                        ;86D42B;
+    dw $0007,EnemyProjSpritemaps_NoobTubeCrack_14                        ;86D42F;
+    dw $0007,EnemyProjSpritemaps_NoobTubeCrack_15                        ;86D433;
+    dw $0007,EnemyProjSpritemaps_NoobTubeCrack_16                        ;86D437;
+    dw $0007,EnemyProjSpritemaps_NoobTubeCrack_17                        ;86D43B;
+    dw $0007,EnemyProjSpritemaps_NoobTubeCrack_18                        ;86D43F;
+    dw $0007,EnemyProjSpritemaps_NoobTubeCrack_19                        ;86D443;
+    dw $0007,EnemyProjSpritemaps_NoobTubeCrack_1A                        ;86D447;
+    dw $0007,EnemyProjSpritemaps_NoobTubeCrack_1B                        ;86D44B;
+    dw $0007,EnemyProjSpritemaps_NoobTubeCrack_1C                        ;86D44F;
+    dw $0007,EnemyProjSpritemaps_NoobTubeCrack_1D                        ;86D453;
+    dw $0007,EnemyProjSpritemaps_NoobTubeCrack_1E                        ;86D457;
+    dw $0007,EnemyProjSpritemaps_NoobTubeCrack_1F                        ;86D45B;
+    dw $0007,EnemyProjSpritemaps_NoobTubeCrack_20                        ;86D45F;
+    dw $0007,EnemyProjSpritemaps_NoobTubeCrack_21                        ;86D463;
+    dw $0010,EnemyProjSpritemaps_NoobTubeCrack_22                        ;86D467;
     dw Instruction_EnemyProjectile_TimerInY                              ;86D46B;
     dw $0006                                                             ;86D46D;
 
 InstList_EnemyProjectile_NoobTubeCrack_1:
-    dw $0010                                                             ;86D46F;
-    dw EnemyProjSpritemaps_NoobTubeCrack_23                              ;86D471;
-    dw $0010                                                             ;86D473;
-    dw EnemyProjSpritemaps_NoobTubeCrack_22                              ;86D475;
+    dw $0010,EnemyProjSpritemaps_NoobTubeCrack_23                        ;86D46F;
+    dw $0010,EnemyProjSpritemaps_NoobTubeCrack_22                        ;86D473;
     dw Instruction_EnemyProjectile_DecrementTimer_GotoYIfNonZero         ;86D477;
     dw InstList_EnemyProjectile_NoobTubeCrack_1                          ;86D479;
     dw Instruction_EnemyProjectile_Delete                                ;86D47B;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter0_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D47D;
-    dw $0020                                                             ;86D47F;
+    dw Instruction_EnemyProjectile_TimerInY,$0020                        ;86D47D;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter0_1:
     dw Instruction_EnemyProj_FlickerNoobTubeShardLeftRightSpritemap      ;86D481;
@@ -12019,8 +11351,7 @@ InstList_EnemyProjectile_NoobTubeShard_Parameter0_1:
     dw Instruction_EnemyProjectile_AssignNoobTubeShardFallingAngle       ;86D48B;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86D48D;
     dw Instruction_EnemyProjectile_NoobTubeCrack_Falling                 ;86D48F;
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D491;
-    dw $0110                                                             ;86D493;
+    dw Instruction_EnemyProjectile_TimerInY,$0110                        ;86D491;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter0_2:
     dw Instruction_EnemyProj_FlickerNoobTubeShardLeftRightSpritemap      ;86D495;
@@ -12031,8 +11362,7 @@ InstList_EnemyProjectile_NoobTubeShard_Parameter0_2:
     dw Instruction_EnemyProjectile_Delete                                ;86D49F;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter2_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D4A1;
-    dw $0020                                                             ;86D4A3;
+    dw Instruction_EnemyProjectile_TimerInY,$0020                        ;86D4A1;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter2_1:
     dw Instruction_EnemyProj_FlickerNoobTubeShardLeftRightSpritemap      ;86D4A5;
@@ -12043,8 +11373,7 @@ InstList_EnemyProjectile_NoobTubeShard_Parameter2_1:
     dw Instruction_EnemyProjectile_AssignNoobTubeShardFallingAngle       ;86D4AF;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86D4B1;
     dw Instruction_EnemyProjectile_NoobTubeCrack_Falling                 ;86D4B3;
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D4B5;
-    dw $0110                                                             ;86D4B7;
+    dw Instruction_EnemyProjectile_TimerInY,$0110                        ;86D4B5;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter2_2:
     dw Instruction_EnemyProj_FlickerNoobTubeShardLeftRightSpritemap      ;86D4B9;
@@ -12055,8 +11384,7 @@ InstList_EnemyProjectile_NoobTubeShard_Parameter2_2:
     dw Instruction_EnemyProjectile_Delete                                ;86D4C3;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter4_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D4C5;
-    dw $0020                                                             ;86D4C7;
+    dw Instruction_EnemyProjectile_TimerInY,$0020                        ;86D4C5;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter4_1:
     dw Instruction_EnemyProj_FlickerNoobTubeShardLeftRightSpritemap      ;86D4C9;
@@ -12067,8 +11395,7 @@ InstList_EnemyProjectile_NoobTubeShard_Parameter4_1:
     dw Instruction_EnemyProjectile_AssignNoobTubeShardFallingAngle       ;86D4D3;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86D4D5;
     dw Instruction_EnemyProjectile_NoobTubeCrack_Falling                 ;86D4D7;
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D4D9;
-    dw $0110                                                             ;86D4DB;
+    dw Instruction_EnemyProjectile_TimerInY,$0110                        ;86D4D9;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter4_2:
     dw Instruction_EnemyProj_FlickerNoobTubeShardLeftRightSpritemap      ;86D4DD;
@@ -12079,8 +11406,7 @@ InstList_EnemyProjectile_NoobTubeShard_Parameter4_2:
     dw Instruction_EnemyProjectile_Delete                                ;86D4E7;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter6_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D4E9;
-    dw $0020                                                             ;86D4EB;
+    dw Instruction_EnemyProjectile_TimerInY,$0020                        ;86D4E9;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter6_1:
     dw Instruction_EnemyProj_FlickerNoobTubeShardLeftRightSpritemap      ;86D4ED;
@@ -12091,8 +11417,7 @@ InstList_EnemyProjectile_NoobTubeShard_Parameter6_1:
     dw Instruction_EnemyProjectile_AssignNoobTubeShardFallingAngle       ;86D4F7;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86D4F9;
     dw Instruction_EnemyProjectile_NoobTubeCrack_Falling                 ;86D4FB;
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D4FD;
-    dw $0110                                                             ;86D4FF;
+    dw Instruction_EnemyProjectile_TimerInY,$0110                        ;86D4FD;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter6_2:
     dw Instruction_EnemyProj_FlickerNoobTubeShardLeftRightSpritemap      ;86D501;
@@ -12103,8 +11428,7 @@ InstList_EnemyProjectile_NoobTubeShard_Parameter6_2:
     dw Instruction_EnemyProjectile_Delete                                ;86D50B;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter8_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D50D;
-    dw $0020                                                             ;86D50F;
+    dw Instruction_EnemyProjectile_TimerInY,$0020                        ;86D50D;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter8_1:
     dw Instruction_EnemyProj_FlickerNoobTubeShardLeftRightSpritemap      ;86D511;
@@ -12115,8 +11439,7 @@ InstList_EnemyProjectile_NoobTubeShard_Parameter8_1:
     dw Instruction_EnemyProjectile_AssignNoobTubeShardFallingAngle       ;86D51B;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86D51D;
     dw Instruction_EnemyProjectile_NoobTubeCrack_Falling                 ;86D51F;
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D521;
-    dw $0110                                                             ;86D523;
+    dw Instruction_EnemyProjectile_TimerInY,$0110                        ;86D521;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter8_2:
     dw Instruction_EnemyProj_FlickerNoobTubeShardLeftRightSpritemap      ;86D525;
@@ -12127,8 +11450,7 @@ InstList_EnemyProjectile_NoobTubeShard_Parameter8_2:
     dw Instruction_EnemyProjectile_Delete                                ;86D52F;
 
 InstList_EnemyProjectile_NoobTubeShard_ParameterA_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D531;
-    dw $0020                                                             ;86D533;
+    dw Instruction_EnemyProjectile_TimerInY,$0020                        ;86D531;
 
 InstList_EnemyProjectile_NoobTubeShard_ParameterA_1:
     dw Instruction_EnemyProj_FlickerNoobTubeShardLeftRightSpritemap      ;86D535;
@@ -12139,8 +11461,7 @@ InstList_EnemyProjectile_NoobTubeShard_ParameterA_1:
     dw Instruction_EnemyProjectile_AssignNoobTubeShardFallingAngle       ;86D53F;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86D541;
     dw Instruction_EnemyProjectile_NoobTubeCrack_Falling                 ;86D543;
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D545;
-    dw $0110                                                             ;86D547;
+    dw Instruction_EnemyProjectile_TimerInY,$0110                        ;86D545;
 
 InstList_EnemyProjectile_NoobTubeShard_ParameterA_2:
     dw Instruction_EnemyProj_FlickerNoobTubeShardLeftRightSpritemap      ;86D549;
@@ -12151,8 +11472,7 @@ InstList_EnemyProjectile_NoobTubeShard_ParameterA_2:
     dw Instruction_EnemyProjectile_Delete                                ;86D553;
 
 InstList_EnemyProjectile_NoobTubeShard_ParameterC_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D555;
-    dw $0020                                                             ;86D557;
+    dw Instruction_EnemyProjectile_TimerInY,$0020                        ;86D555;
 
 InstList_EnemyProjectile_NoobTubeShard_ParameterC_1:
     dw Instruction_EnemyProj_FlickerNoobTubeShardLeftRightSpritemap      ;86D559;
@@ -12163,8 +11483,7 @@ InstList_EnemyProjectile_NoobTubeShard_ParameterC_1:
     dw Instruction_EnemyProjectile_AssignNoobTubeShardFallingAngle       ;86D563;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86D565;
     dw Instruction_EnemyProjectile_NoobTubeCrack_Falling                 ;86D567;
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D569;
-    dw $0110                                                             ;86D56B;
+    dw Instruction_EnemyProjectile_TimerInY,$0110                        ;86D569;
 
 InstList_EnemyProjectile_NoobTubeShard_ParameterC_2:
     dw Instruction_EnemyProj_FlickerNoobTubeShardLeftRightSpritemap      ;86D56D;
@@ -12175,8 +11494,7 @@ InstList_EnemyProjectile_NoobTubeShard_ParameterC_2:
     dw Instruction_EnemyProjectile_Delete                                ;86D577;
 
 InstList_EnemyProjectile_NoobTubeShard_ParameterE_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D579;
-    dw $0020                                                             ;86D57B;
+    dw Instruction_EnemyProjectile_TimerInY,$0020                        ;86D579;
 
 InstList_EnemyProjectile_NoobTubeShard_ParameterE_1:
     dw Instruction_EnemyProj_FlickerNoobTubeShardLeftRightSpritemap      ;86D57D;
@@ -12187,8 +11505,7 @@ InstList_EnemyProjectile_NoobTubeShard_ParameterE_1:
     dw Instruction_EnemyProjectile_AssignNoobTubeShardFallingAngle       ;86D587;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86D589;
     dw Instruction_EnemyProjectile_NoobTubeCrack_Falling                 ;86D58B;
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D58D;
-    dw $0110                                                             ;86D58F;
+    dw Instruction_EnemyProjectile_TimerInY,$0110                        ;86D58D;
 
 InstList_EnemyProjectile_NoobTubeShard_ParameterE_2:
     dw Instruction_EnemyProj_FlickerNoobTubeShardLeftRightSpritemap      ;86D591;
@@ -12199,8 +11516,7 @@ InstList_EnemyProjectile_NoobTubeShard_ParameterE_2:
     dw Instruction_EnemyProjectile_Delete                                ;86D59B;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter10_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D59D;
-    dw $0020                                                             ;86D59F;
+    dw Instruction_EnemyProjectile_TimerInY,$0020                        ;86D59D;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter10_1:
     dw Instruction_EnemyProjectile_NoobTubeShard_FlickerSpritemap        ;86D5A1;
@@ -12210,8 +11526,7 @@ InstList_EnemyProjectile_NoobTubeShard_Parameter10_1:
     dw Instruction_EnemyProjectile_AssignNoobTubeShardFallingAngle       ;86D5A9;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86D5AB;
     dw Instruction_EnemyProjectile_NoobTubeCrack_Falling                 ;86D5AD;
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D5AF;
-    dw $0110                                                             ;86D5B1;
+    dw Instruction_EnemyProjectile_TimerInY,$0110                        ;86D5AF;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter10_2:
     dw Instruction_EnemyProjectile_NoobTubeShard_FlickerSpritemap        ;86D5B3;
@@ -12221,8 +11536,7 @@ InstList_EnemyProjectile_NoobTubeShard_Parameter10_2:
     dw Instruction_EnemyProjectile_Delete                                ;86D5BB;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter12_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D5BD;
-    dw $0020                                                             ;86D5BF;
+    dw Instruction_EnemyProjectile_TimerInY,$0020                        ;86D5BD;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter12_1:
     dw Instruction_EnemyProj_FlickerNoobTubeShardLeftRightSpritemap      ;86D5C1;
@@ -12233,8 +11547,7 @@ InstList_EnemyProjectile_NoobTubeShard_Parameter12_1:
     dw Instruction_EnemyProjectile_AssignNoobTubeShardFallingAngle       ;86D5CB;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86D5CD;
     dw Instruction_EnemyProjectile_NoobTubeCrack_Falling                 ;86D5CF;
-    dw Instruction_EnemyProjectile_TimerInY                              ;86D5D1;
-    dw $0110                                                             ;86D5D3;
+    dw Instruction_EnemyProjectile_TimerInY,$0110                        ;86D5D1;
 
 InstList_EnemyProjectile_NoobTubeShard_Parameter12_2:
     dw Instruction_EnemyProj_FlickerNoobTubeShardLeftRightSpritemap      ;86D5D5;
@@ -12315,39 +11628,24 @@ Instruction_EnemyProjectile_NoobTubeShard_FlickerSpritemap:
 InstList_EnemyProjectile_NoobTubeReleasedAirBubbles:
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86D652;
     dw PreInstruction_EnemyProj_NoobTubeReleasedAirBubbles_Flying        ;86D654;
-    dw $0002                                                             ;86D656;
-    dw EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_0                  ;86D658;
-    dw $0002                                                             ;86D65A;
-    dw EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_1                  ;86D65C;
-    dw $0002                                                             ;86D65E;
-    dw EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_2                  ;86D660;
-    dw $0002                                                             ;86D662;
-    dw EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_3                  ;86D664;
+    dw $0002,EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_0            ;86D656;
+    dw $0002,EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_1            ;86D65A;
+    dw $0002,EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_2            ;86D65E;
+    dw $0002,EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_3            ;86D662;
     dw Inststruction_EnemyProjectile_NoobTubeReleasedAirBubbles          ;86D666;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86D668;
     dw PreInstruction_EnemyProj_NoobTubeReleasedAirBubbles_Falling       ;86D66A;
-    dw $0002                                                             ;86D66C;
-    dw EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_3                  ;86D66E;
-    dw $0002                                                             ;86D670;
-    dw EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_4                  ;86D672;
-    dw $0002                                                             ;86D674;
-    dw EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_5                  ;86D676;
-    dw $0002                                                             ;86D678;
-    dw EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_6                  ;86D67A;
-    dw $0002                                                             ;86D67C;
-    dw EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_7                  ;86D67E;
-    dw $0002                                                             ;86D680;
-    dw EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_8                  ;86D682;
-    dw $0004                                                             ;86D684;
-    dw EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_9                  ;86D686;
-    dw $0004                                                             ;86D688;
-    dw EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_A                  ;86D68A;
-    dw $0004                                                             ;86D68C;
-    dw EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_B                  ;86D68E;
-    dw $0004                                                             ;86D690;
-    dw EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_C                  ;86D692;
-    dw $0004                                                             ;86D694;
-    dw EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_D                  ;86D696;
+    dw $0002,EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_3            ;86D66C;
+    dw $0002,EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_4            ;86D670;
+    dw $0002,EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_5            ;86D674;
+    dw $0002,EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_6            ;86D678;
+    dw $0002,EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_7            ;86D67C;
+    dw $0002,EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_8            ;86D680;
+    dw $0004,EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_9            ;86D684;
+    dw $0004,EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_A            ;86D688;
+    dw $0004,EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_B            ;86D68C;
+    dw $0004,EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_C            ;86D690;
+    dw $0004,EnemyProjSpritemaps_NoobTubeReleasedAirBubbles_D            ;86D694;
     dw Instruction_EnemyProjectile_Delete                                ;86D698;
 
 Inststruction_EnemyProjectile_NoobTubeReleasedAirBubbles:
@@ -12417,19 +11715,15 @@ InitAI_EnemyProjectile_NoobTubeShard:
 .Xoffset:
     dw $FFC8,$FFC0,$FFEC,$FFD8,$FFC0,$FFD0,$FFE8,$FFD8                   ;86D710;
     dw $0000,$FFF8                                                       ;86D720;
-
 .Yoffsets:
     dw $0008,$FFF4,$FFE6,$FFE8,$FFE0,$001C,$0010,$FFF8                   ;86D724;
     dw $FFE8,$0010                                                       ;86D734;
-
 .Xvelocity:
-    dw $FE80,$FE80,$FF60,$FEE0,$FEE0,$FEC0,$FFA0,$FEA0                   ;86D738;
+    dw $FE80,$FE80,$FF60,$FEE0,$FEE0,$FEC0,$FFA0,$FEA0                   ;86D738; Unit 1/100h px/frame
     dw $0000,$FFC0                                                       ;86D748;
-
 .Yvelocity:
-    dw $0140,$FF00,$FE60,$FEE0,$FEE0,$01C0,$0240,$FFA0                   ;86D74C;
+    dw $0140,$FF00,$FE60,$FEE0,$FEE0,$01C0,$0240,$FFA0                   ;86D74C; Unit 1/100h px/frame
     dw $FEE0,$0180                                                       ;86D75C;
-
 .InstListPointer:
     dw InstList_EnemyProjectile_NoobTubeShard_Parameter0_0               ;86D760;
     dw InstList_EnemyProjectile_NoobTubeShard_Parameter2_0               ;86D762;
@@ -12468,12 +11762,11 @@ InitAI_EnemyProjectile_NoobTubeReleasedAirBubbles:
     STA.W $1ADB,Y                                                        ;86D7A3;
     RTS                                                                  ;86D7A6;
 
-
 .Xoffset:
     dw $0028,$0050,$0068,$0078,$0098,$00B8                               ;86D7A7;
-
 .Yoffset:
     dw $0050,$0048,$0054,$0020,$0040,$0054                               ;86D7B3;
+
 
 PreInstruction_EnemyProjectile_NoobTubeCrack_Flickering:
     LDA.W $1A4B,X                                                        ;86D7BF;
@@ -12645,77 +11938,67 @@ PreInstruction_EnemyProj_NoobTubeReleasedAirBubbles_Flying:
 
 
 EnemyProjectile_NoobTubeCrack:
-    dw Instruction_EnemyProjectile_NoobTubeCrack                         ;86D904;
-    dw RTS_8684FB                                                        ;86D906;
-    dw InstList_EnemyProjectile_NoobTubeCrack_0                          ;86D908;
-    db $00,$00                                                           ;86D90A;
-    dw $3000,$0000                                                       ;86D90C;
-    dw InstList_EnemyProjectile_Delete                                   ;86D910;
+    dw Instruction_EnemyProjectile_NoobTubeCrack                         ;86D904; Initialisation AI
+    dw RTS_8684FB                                                        ;86D906; Initial pre-instruction
+    dw InstList_EnemyProjectile_NoobTubeCrack_0                          ;86D908; Initial instruction list
+    db $00,$00                                                           ;86D90A; X,Y radius
+    dw $3000,$0000                                                       ;86D90C; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86D910; Shot instruction list
 
 EnemyProjectile_NoobTubeShard:
-    dw InitAI_EnemyProjectile_NoobTubeShard                              ;86D912;
-    dw PreInstruction_EnemyProjectile_NoobTubeShard_Flying               ;86D914;
-    dw InstList_EnemyProjectile_NoobTubeShard_Parameter0_0               ;86D916;
-    db $00,$00                                                           ;86D918;
-    dw $3000,$0000                                                       ;86D91A;
-    dw InstList_EnemyProjectile_Delete                                   ;86D91E;
+    dw InitAI_EnemyProjectile_NoobTubeShard                              ;86D912; Initialisation AI
+    dw PreInstruction_EnemyProjectile_NoobTubeShard_Flying               ;86D914; Initial pre-instruction
+    dw InstList_EnemyProjectile_NoobTubeShard_Parameter0_0               ;86D916; Initial instruction list
+    db $00,$00                                                           ;86D918; X,Y radius
+    dw $3000,$0000                                                       ;86D91A; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86D91E; Shot instruction list
 
 EnemyProjectile_NoobTubeAirBubbles:
-    dw InitAI_EnemyProjectile_NoobTubeReleasedAirBubbles                 ;86D920;
-    dw RTS_8684FB                                                        ;86D922;
-    dw InstList_EnemyProjectile_NoobTubeReleasedAirBubbles               ;86D924;
-    db $00,$00                                                           ;86D926;
-    dw $3000,$0000                                                       ;86D928;
-    dw InstList_EnemyProjectile_Delete                                   ;86D92C;
+    dw InitAI_EnemyProjectile_NoobTubeReleasedAirBubbles                 ;86D920; Initialisation AI
+    dw RTS_8684FB                                                        ;86D922; Initial pre-instruction
+    dw InstList_EnemyProjectile_NoobTubeReleasedAirBubbles               ;86D924; Initial instruction list
+    db $00,$00                                                           ;86D926; X,Y radius
+    dw $3000,$0000                                                       ;86D928; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86D92C; Shot instruction list
 
 InstList_EnemyProjectile_CacatacSpike_Left_FacingUp:
-    dw $0001                                                             ;86D92E;
-    dw EnemyProjSpritemaps_CacatacSpikes_0                               ;86D930;
+    dw $0001,EnemyProjSpritemaps_CacatacSpikes_0                         ;86D92E;
     dw Instruction_EnemyProjectile_Sleep                                 ;86D932;
 
 InstList_EnemyProjectile_CacatacSpike_UpLeft:
-    dw $0001                                                             ;86D934;
-    dw EnemyProjSpritemaps_CacatacSpikes_1                               ;86D936;
+    dw $0001,EnemyProjSpritemaps_CacatacSpikes_1                         ;86D934;
     dw Instruction_EnemyProjectile_Sleep                                 ;86D938;
 
 InstList_EnemyProjectile_CacatacSpike_Up:
-    dw $0001                                                             ;86D93A;
-    dw EnemyProjSpritemaps_CacatacSpikes_2                               ;86D93C;
+    dw $0001,EnemyProjSpritemaps_CacatacSpikes_2                         ;86D93A;
     dw Instruction_EnemyProjectile_Sleep                                 ;86D93E;
 
 InstList_EnemyProjectile_CacatacSpike_UpRight:
-    dw $0001                                                             ;86D940;
-    dw EnemyProjSpritemaps_CacatacSpikes_3                               ;86D942;
+    dw $0001,EnemyProjSpritemaps_CacatacSpikes_3                         ;86D940;
     dw Instruction_EnemyProjectile_Sleep                                 ;86D944;
 
 InstList_EnemyProjectile_CacatacSpike_Right_FacingUp:
-    dw $0001                                                             ;86D946;
-    dw EnemyProjSpritemaps_CacatacSpikes_4                               ;86D948;
+    dw $0001,EnemyProjSpritemaps_CacatacSpikes_4                         ;86D946;
     dw Instruction_EnemyProjectile_Sleep                                 ;86D94A;
 
 InstList_EnemyProjectile_CacatacSpike_Left_FacingDown:
-    dw $0001                                                             ;86D94C;
-    dw EnemyProjSpritemaps_CacatacSpikes_5                               ;86D94E;
+    dw $0001,EnemyProjSpritemaps_CacatacSpikes_5                         ;86D94C;
     dw Instruction_EnemyProjectile_Sleep                                 ;86D950;
 
 InstList_EnemyProjectile_CacatacSpike_DownLeft:
-    dw $0001                                                             ;86D952;
-    dw EnemyProjSpritemaps_CacatacSpikes_6                               ;86D954;
+    dw $0001,EnemyProjSpritemaps_CacatacSpikes_6                         ;86D952;
     dw Instruction_EnemyProjectile_Sleep                                 ;86D956;
 
 InstList_EnemyProjectile_CacatacSpike_Down:
-    dw $0001                                                             ;86D958;
-    dw EnemyProjSpritemaps_CacatacSpikes_7                               ;86D95A;
+    dw $0001,EnemyProjSpritemaps_CacatacSpikes_7                         ;86D958;
     dw Instruction_EnemyProjectile_Sleep                                 ;86D95C;
 
 InstList_EnemyProjectile_CacatacSpike_DownRight:
-    dw $0001                                                             ;86D95E;
-    dw EnemyProjSpritemaps_CacatacSpikes_8                               ;86D960;
+    dw $0001,EnemyProjSpritemaps_CacatacSpikes_8                         ;86D95E;
     dw Instruction_EnemyProjectile_Sleep                                 ;86D962;
 
 InstList_EnemyProjectile_CacatacSpike_Down_FacingRight:
-    dw $0001                                                             ;86D964;
-    dw EnemyProjSpritemaps_CacatacSpikes_9                               ;86D966;
+    dw $0001,EnemyProjSpritemaps_CacatacSpikes_9                         ;86D964;
     dw Instruction_EnemyProjectile_Sleep                                 ;86D968;
 
 CacatacSpike_InstListPointers:
@@ -12962,18 +12245,16 @@ CheckIf_EnemyProjectile_IsOffScreen_duplicate:
 
 
 EnemyProjectile_Cacatac:
-    dw InitAI_EnemyProjectile_CacatacSpike                               ;86DAFE;
-    dw PreInstruction_EnemyProjectile_CacatacSpike                       ;86DB00;
-    dw InstList_EnemyProjectile_CacatacSpike_Left_FacingUp               ;86DB02;
-    db $02,$02                                                           ;86DB04;
-    dw $0005,$0000                                                       ;86DB06;
-    dw InstList_EnemyProjectile_Delete                                   ;86DB0A;
+    dw InitAI_EnemyProjectile_CacatacSpike                               ;86DAFE; Initialisation AI
+    dw PreInstruction_EnemyProjectile_CacatacSpike                       ;86DB00; Initial pre-instruction
+    dw InstList_EnemyProjectile_CacatacSpike_Left_FacingUp               ;86DB02; Initial instruction list
+    db $02,$02                                                           ;86DB04; X,Y radius
+    dw $0005,$0000                                                       ;86DB06; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86DB0A; Shot instruction list
 
 UNUSED_InstList_EnemyProjectile_StokeProjectile_86DB0B:
-    dw $0010                                                             ;86DB0C;
-    dw UNUSED_EnemyProjSpritemaps_StokeProjectile_0_8DA94E               ;86DB0E;
-    dw $0010                                                             ;86DB10;
-    dw UNUSED_EnemyProjSpritemaps_StokeProjectile_1_8DA955               ;86DB12;
+    dw $0010,UNUSED_EnemyProjSpritemaps_StokeProjectile_0_8DA94E         ;86DB0C;
+    dw $0010,UNUSED_EnemyProjSpritemaps_StokeProjectile_1_8DA955         ;86DB10;
     dw Instruction_EnemyProjectile_GotoY                                 ;86DB14;
     dw UNUSED_InstList_EnemyProjectile_StokeProjectile_86DB0B            ;86DB16;
 
@@ -13095,64 +12376,47 @@ CheckIf_EnemyProjectile_IsOffScreen_duplicate_again:
 
 
 UNUSED_EnemyProjectile_Stoke_86DBF2:
-    dw UNUSED_InitAI_EnemyProjectile_StokeProjectile_86DB18              ;86DBF2;
-    dw UNUSED_PreInstruction_EnemyProjectile_StokeProjectile_86DB5B      ;86DBF4;
-    dw UNUSED_InstList_EnemyProjectile_StokeProjectile_86DB0B            ;86DBF6;
-    db $02,$02                                                           ;86DBF8;
-    dw $0005,$0000                                                       ;86DBFA;
-    dw InstList_EnemyProjectile_Delete                                   ;86DBFE;
+    dw UNUSED_InitAI_EnemyProjectile_StokeProjectile_86DB18              ;86DBF2; Initialisation AI
+    dw UNUSED_PreInstruction_EnemyProjectile_StokeProjectile_86DB5B      ;86DBF4; Initial pre-instruction
+    dw UNUSED_InstList_EnemyProjectile_StokeProjectile_86DB0B            ;86DBF6; Initial instruction list
+    db $02,$02                                                           ;86DBF8; X,Y radius
+    dw $0005,$0000                                                       ;86DBFA; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86DBFE; Shot instruction list
 
 InstList_EnemyProjectile_Shot_SporeSpawner:
-    dw $0001                                                             ;86DC00;
-    dw EnemyProjSpritemaps_SporeSpawners_0                               ;86DC02;
+    dw $0001,EnemyProjSpritemaps_SporeSpawners_0                         ;86DC00;
     dw Instruction_EnemyProjectile_Sleep                                 ;86DC04;
 
 InstList_EnemyProjectile_SporeSpawner_SpawnSpore:
-    dw $0001                                                             ;86DC06;
-    dw EnemyProjSpritemaps_SporeSpawners_0                               ;86DC08;
-    dw $0006                                                             ;86DC0A;
-    dw EnemyProjSpritemaps_SporeSpawners_1                               ;86DC0C;
+    dw $0001,EnemyProjSpritemaps_SporeSpawners_0                         ;86DC06;
+    dw $0006,EnemyProjSpritemaps_SporeSpawners_1                         ;86DC0A;
     dw Instruction_EnemyProjectile_SporeSpawner_SpawnSpore               ;86DC0E;
-    dw $0010                                                             ;86DC10;
-    dw EnemyProjSpritemaps_SporeSpawners_2                               ;86DC12;
-    dw $0006                                                             ;86DC14;
-    dw EnemyProjSpritemaps_SporeSpawners_1                               ;86DC16;
-    dw $0001                                                             ;86DC18;
-    dw EnemyProjSpritemaps_SporeSpawners_0                               ;86DC1A;
+    dw $0010,EnemyProjSpritemaps_SporeSpawners_2                         ;86DC10;
+    dw $0006,EnemyProjSpritemaps_SporeSpawners_1                         ;86DC14;
+    dw $0001,EnemyProjSpritemaps_SporeSpawners_0                         ;86DC18;
     dw Instruction_EnemyProjectile_Sleep                                 ;86DC1C;
 
 InstList_EnemyProjectile_Spores:
-    dw $0005                                                             ;86DC1E;
-    dw EnemyProjSpritemaps_Spores_0                                      ;86DC20;
-    dw $0005                                                             ;86DC22;
-    dw EnemyProjSpritemaps_Spores_1                                      ;86DC24;
-    dw $0005                                                             ;86DC26;
-    dw EnemyProjSpritemaps_Spores_2                                      ;86DC28;
+    dw $0005,EnemyProjSpritemaps_Spores_0                                ;86DC1E;
+    dw $0005,EnemyProjSpritemaps_Spores_1                                ;86DC22;
+    dw $0005,EnemyProjSpritemaps_Spores_2                                ;86DC26;
     dw Instruction_EnemyProjectile_GotoY                                 ;86DC2A;
     dw InstList_EnemyProjectile_Spores                                   ;86DC2C;
 
 InstList_EnemyProjectile_SporeSpawnsStalk:
-    dw $0005                                                             ;86DC2E;
-    dw EnemyProjSpritemaps_SporeSpawnsStalk                              ;86DC30;
+    dw $0005,EnemyProjSpritemaps_SporeSpawnsStalk                        ;86DC2E;
     dw Instruction_EnemyProjectile_Sleep                                 ;86DC32;
 
 InstList_EnemyProjectile_Shot_Spores:
-    dw $0001                                                             ;86DC34;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_0                       ;86DC36;
+    dw $0001,EnemyProjSpritemaps_Common_SmallExplosion_0                 ;86DC34;
     dw Instruction_EnemyProjectile_Spores_SetProperties3000              ;86DC38;
-    dw $0003                                                             ;86DC3A;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_0                       ;86DC3C;
-    dw $0006                                                             ;86DC3E;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_1                       ;86DC40;
-    dw $0005                                                             ;86DC42;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_2                       ;86DC44;
+    dw $0003,EnemyProjSpritemaps_Common_SmallExplosion_0                 ;86DC3A;
+    dw $0006,EnemyProjSpritemaps_Common_SmallExplosion_1                 ;86DC3E;
+    dw $0005,EnemyProjSpritemaps_Common_SmallExplosion_2                 ;86DC42;
     dw Instruction_EnemyProj_EnemyDeathExpl_QueueEnemyKilledSoundFX      ;86DC46;
-    dw $0005                                                             ;86DC48;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_3                       ;86DC4A;
-    dw $0005                                                             ;86DC4C;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_4                       ;86DC4E;
-    dw $0006                                                             ;86DC50;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_5                       ;86DC52;
+    dw $0005,EnemyProjSpritemaps_Common_SmallExplosion_3                 ;86DC48;
+    dw $0005,EnemyProjSpritemaps_Common_SmallExplosion_4                 ;86DC4C;
+    dw $0006,EnemyProjSpritemaps_Common_SmallExplosion_5                 ;86DC50;
     dw Instruction_EnemyProjectile_Spores_SpawnEnemyDrops                ;86DC54;
     dw Instruction_EnemyProjectile_GotoY                                 ;86DC56;
     dw InstList_EnemyProjectile_Delete                                   ;86DC58;
@@ -13318,6 +12582,7 @@ PreInstruction_EnemyProjectile_SporeSpawner:
 
 
 SporeMovementData:
+; TODO: This data should 8bit
     dw $0100,$0001,$0100,$0001,$0100,$0001,$0100,$0001                   ;86DD6C;
     dw $0100,$0001,$0001,$0100,$0001,$0100,$0001,$0100                   ;86DD7C;
     dw $0001,$0100,$0001,$0001,$0100,$0001,$0100,$0001                   ;86DD8C;
@@ -13336,55 +12601,49 @@ SporeMovementData:
     dw $00FF,$00FF,$FF00,$00FF,$00FF,$FFFF,$00FF,$0000                   ;86DE5C;
 
 EnemyProjectile_SporeSpawnStalk:
-    dw InitAI_EnemyProjectile_SporeSpawnsStalk                           ;86DE6C;
-    dw RTS_86DD44                                                        ;86DE6E;
-    dw InstList_EnemyProjectile_SporeSpawnsStalk                         ;86DE70;
-    db $08,$08                                                           ;86DE72;
-    dw $2000,$0000                                                       ;86DE74;
-    dw InstList_EnemyProjectile_SporeSpawnsStalk                         ;86DE78;
+    dw InitAI_EnemyProjectile_SporeSpawnsStalk                           ;86DE6C; Initialisation AI
+    dw RTS_86DD44                                                        ;86DE6E; Initial pre-instruction
+    dw InstList_EnemyProjectile_SporeSpawnsStalk                         ;86DE70; Initial instruction list
+    db $08,$08                                                           ;86DE72; X,Y radius
+    dw $2000,$0000                                                       ;86DE74; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_SporeSpawnsStalk                         ;86DE78; Shot instruction list
 
 EnemyProjectile_SporeSpawnSpores:
-    dw InitAI_EnemyProjectile_Spores                                     ;86DE7A;
-    dw PreInstruction_EnemyProjectile_Spores                             ;86DE7C;
-    dw InstList_EnemyProjectile_Spores                                   ;86DE7E;
-    db $02,$02                                                           ;86DE80;
-    dw $8004,$0000                                                       ;86DE82;
-    dw InstList_EnemyProjectile_Shot_Spores                              ;86DE86;
+    dw InitAI_EnemyProjectile_Spores                                     ;86DE7A; Initialisation AI
+    dw PreInstruction_EnemyProjectile_Spores                             ;86DE7C; Initial pre-instruction
+    dw InstList_EnemyProjectile_Spores                                   ;86DE7E; Initial instruction list
+    db $02,$02                                                           ;86DE80; X,Y radius
+    dw $8004,$0000                                                       ;86DE82; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Shot_Spores                              ;86DE86; Shot instruction list
 
 EnemyProjectile_SporeSpawnSporeSpawner:
-    dw InitAI_EnemyProjectile_SporeSpawner                               ;86DE88;
-    dw PreInstruction_EnemyProjectile_SporeSpawner                       ;86DE8A;
-    dw InstList_EnemyProjectile_Shot_SporeSpawner                        ;86DE8C;
-    db $02,$02                                                           ;86DE8E;
-    dw $2000,$0000                                                       ;86DE90;
-    dw InstList_EnemyProjectile_Shot_SporeSpawner                        ;86DE94;
+    dw InitAI_EnemyProjectile_SporeSpawner                               ;86DE88; Initialisation AI
+    dw PreInstruction_EnemyProjectile_SporeSpawner                       ;86DE8A; Initial pre-instruction
+    dw InstList_EnemyProjectile_Shot_SporeSpawner                        ;86DE8C; Initial instruction list
+    db $02,$02                                                           ;86DE8E; X,Y radius
+    dw $2000,$0000                                                       ;86DE90; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Shot_SporeSpawner                        ;86DE94; Shot instruction list
 
 InstList_EnemyProjectile_NamiFuneFireball_Left:
-    dw $0005                                                             ;86DE96;
-    dw EnemyProjSpritemaps_Namihe_Fune_Fireball_0                        ;86DE98;
-    dw $0005                                                             ;86DE9A;
-    dw EnemyProjSpritemaps_Namihe_Fune_Fireball_1                        ;86DE9C;
-    dw $0005                                                             ;86DE9E;
-    dw EnemyProjSpritemaps_Namihe_Fune_Fireball_2                        ;86DEA0;
+    dw $0005,EnemyProjSpritemaps_Namihe_Fune_Fireball_0                  ;86DE96;
+    dw $0005,EnemyProjSpritemaps_Namihe_Fune_Fireball_1                  ;86DE9A;
+    dw $0005,EnemyProjSpritemaps_Namihe_Fune_Fireball_2                  ;86DE9E;
     dw Instruction_EnemyProjectile_GotoY                                 ;86DEA2;
     dw InstList_EnemyProjectile_NamiFuneFireball_Left                    ;86DEA4;
 
 InstList_EnemyProjectile_NamiFuneFireball_Right:
-    dw $0005                                                             ;86DEA6;
-    dw EnemyProjSpritemaps_Namihe_Fune_Fireball_3                        ;86DEA8;
-    dw $0005                                                             ;86DEAA;
-    dw EnemyProjSpritemaps_Namihe_Fune_Fireball_4                        ;86DEAC;
-    dw $0005                                                             ;86DEAE;
-    dw EnemyProjSpritemaps_Namihe_Fune_Fireball_5                        ;86DEB0;
+    dw $0005,EnemyProjSpritemaps_Namihe_Fune_Fireball_3                  ;86DEA6;
+    dw $0005,EnemyProjSpritemaps_Namihe_Fune_Fireball_4                  ;86DEAA;
+    dw $0005,EnemyProjSpritemaps_Namihe_Fune_Fireball_5                  ;86DEAE;
     dw Instruction_EnemyProjectile_GotoY                                 ;86DEB2;
     dw InstList_EnemyProjectile_NamiFuneFireball_Right                   ;86DEB4;
 
-NamiFuneFireball_XVelocityTable_left:
+NamiFuneFireball_XVelocityTable:
+  .left
     dw $FFC0                                                             ;86DEB6;
-
-NamiFuneFireball_XVelocityTable_right:
-    dw $0040,$FF80,$0080,$FF40,$00C0,$FF00,$0100,$FEC0                   ;86DEB8;
-    dw $0140,$FE80,$0180,$FE40,$01C0,$FE00,$0200                         ;86DEC8;
+  .right
+    dw       $0040, $FF80,$0080, $FF40,$00C0, $FF00,$0100                ;86DEB8;
+    dw $FEC0,$0140, $FE80,$0180, $FE40,$01C0, $FE00,$0200                ;86DEC8;
 
 InitAI_EnemyProjectile_NamiFuneFireball:
     LDX.W $0E54                                                          ;86DED6;
@@ -13513,29 +12772,27 @@ endif ; !FEATURE_KEEP_UNREFERENCED
 
 
 EnemyProjectile_NamiheFireball:
-    dw InitAI_EnemyProjectile_NamiFuneFireball                           ;86DFBC;
-    dw PreInstruction_EnemyProjectile_NamiFuneFireball                   ;86DFBE;
-    dw InstList_EnemyProjectile_NamiFuneFireball_Left                    ;86DFC0;
-    db $04,$08                                                           ;86DFC2;
-    dw $00C8,$0000                                                       ;86DFC4;
-    dw InstList_EnemyProjectile_Delete                                   ;86DFC8;
+    dw InitAI_EnemyProjectile_NamiFuneFireball                           ;86DFBC; Initialisation AI
+    dw PreInstruction_EnemyProjectile_NamiFuneFireball                   ;86DFBE; Initial pre-instruction
+    dw InstList_EnemyProjectile_NamiFuneFireball_Left                    ;86DFC0; Initial instruction list
+    db $04,$08                                                           ;86DFC2; X,Y radius
+    dw $00C8,$0000                                                       ;86DFC4; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86DFC8; Shot instruction list
 
 EnemyProjectile_FuneFireball:
-    dw InitAI_EnemyProjectile_NamiFuneFireball                           ;86DFCA;
-    dw PreInstruction_EnemyProjectile_NamiFuneFireball                   ;86DFCC;
-    dw InstList_EnemyProjectile_NamiFuneFireball_Left                    ;86DFCE;
-    db $04,$08                                                           ;86DFD0;
-    dw $003C,$0000                                                       ;86DFD2;
-    dw InstList_EnemyProjectile_Delete                                   ;86DFD6;
+    dw InitAI_EnemyProjectile_NamiFuneFireball                           ;86DFCA; Initialisation AI
+    dw PreInstruction_EnemyProjectile_NamiFuneFireball                   ;86DFCC; Initial pre-instruction
+    dw InstList_EnemyProjectile_NamiFuneFireball_Left                    ;86DFCE; Initial instruction list
+    db $04,$08                                                           ;86DFD0; X,Y radius
+    dw $003C,$0000                                                       ;86DFD2; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86DFD6; Shot instruction list
 
 InstList_EnemyProjectile_MagdolliteFlame_Left:
-    dw $0001                                                             ;86DFD8;
-    dw EnemyProjSpritemaps_MagdolliteFlame_0                             ;86DFDA;
+    dw $0001,EnemyProjSpritemaps_MagdolliteFlame_0                       ;86DFD8;
     dw Instruction_EnemyProjectile_Sleep                                 ;86DFDC;
 
 InstList_EnemyProjectile_MagdolliteFlame_Right:
-    dw $0001                                                             ;86DFDE;
-    dw EnemyProjSpritemaps_MagdolliteFlame_1                             ;86DFE0;
+    dw $0001,EnemyProjSpritemaps_MagdolliteFlame_1                       ;86DFDE;
     dw Instruction_EnemyProjectile_Sleep                                 ;86DFE2;
 
 InstList_EnemyProjectile_Shot_MagdolliteFlame:
@@ -13677,486 +12934,294 @@ CheckIf_EnemyProjectile_IsOffScreen_duplicate_again3:
 
 
 EnemyProjectile_Magdollite:
-    dw InitAI_EnemyProjectile_MagdolliteFlame                            ;86E0E0;
-    dw PreInstruction_EnemyProjectile_MagdolliteFlame                    ;86E0E2;
-    dw InstList_EnemyProjectile_MagdolliteFlame_Left                     ;86E0E4;
-    db $02,$02                                                           ;86E0E6;
-    dw $8028,$0000                                                       ;86E0E8;
-    dw InstList_EnemyProjectile_Shot_MagdolliteFlame                     ;86E0EC;
+    dw InitAI_EnemyProjectile_MagdolliteFlame                            ;86E0E0; Initialisation AI
+    dw PreInstruction_EnemyProjectile_MagdolliteFlame                    ;86E0E2; Initial pre-instruction
+    dw InstList_EnemyProjectile_MagdolliteFlame_Left                     ;86E0E4; Initial instruction list
+    db $02,$02                                                           ;86E0E6; X,Y radius
+    dw $8028,$0000                                                       ;86E0E8; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Shot_MagdolliteFlame                     ;86E0EC; Shot instruction list
 
 UNUSED_InstList_EnemyProj_MiscDust_0_BeamCharge_86E0EE:
-    dw $0003                                                             ;86E0EE;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_35                        ;86E0F0;
-    dw $0003                                                             ;86E0F2;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_36                        ;86E0F4;
-    dw $0003                                                             ;86E0F6;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_37                        ;86E0F8;
-    dw $0003                                                             ;86E0FA;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_38                        ;86E0FC;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_35                  ;86E0EE;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_36                  ;86E0F2;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_37                  ;86E0F6;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_38                  ;86E0FA;
     dw Instruction_EnemyProjectile_Delete                                ;86E0FE;
 
 InstList_EnemyProj_MiscDust_1_MotherBrainElbowChargeParticle:
-    dw $0005                                                             ;86E100;
-    dw EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_0          ;86E102;
-    dw $0004                                                             ;86E104;
-    dw EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_1          ;86E106;
-    dw $0003                                                             ;86E108;
-    dw EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_2          ;86E10A;
-    dw $0003                                                             ;86E10C;
-    dw EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_3          ;86E10E;
-    dw $0003                                                             ;86E110;
-    dw EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_4          ;86E112;
-    dw $0003                                                             ;86E114;
-    dw EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_5          ;86E116;
+    dw $0005,EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_0    ;86E100;
+    dw $0004,EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_1    ;86E104;
+    dw $0003,EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_2    ;86E108;
+    dw $0003,EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_3    ;86E10C;
+    dw $0003,EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_4    ;86E110;
+    dw $0003,EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_5    ;86E114;
     dw Instruction_EnemyProjectile_Delete                                ;86E118;
 
 InstList_EnemyProj_MiscDust_2_MotherBrainElbowChargeEnergy:
-    dw $0004                                                             ;86E11A;
-    dw EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_6          ;86E11C;
-    dw $0003                                                             ;86E11E;
-    dw EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_7          ;86E120;
-    dw $0002                                                             ;86E122;
-    dw EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_8          ;86E124;
-    dw $0002                                                             ;86E126;
-    dw EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_9          ;86E128;
-    dw $0002                                                             ;86E12A;
-    dw EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_A          ;86E12C;
-    dw $0002                                                             ;86E12E;
-    dw EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_B          ;86E130;
-    dw $000C                                                             ;86E132;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_0                       ;86E134;
+    dw $0004,EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_6    ;86E11A;
+    dw $0003,EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_7    ;86E11E;
+    dw $0002,EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_8    ;86E122;
+    dw $0002,EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_9    ;86E126;
+    dw $0002,EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_A    ;86E12A;
+    dw $0002,EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_B    ;86E12E;
+    dw $000C,EnemyProjSpritemaps_Common_SmallExplosion_0                 ;86E132;
     dw Instruction_EnemyProjectile_Delete                                ;86E136;
 
 InstList_EnemyProj_MiscDust_3_SmallExplosion:
-    dw $0004                                                             ;86E138;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_0                       ;86E13A;
-    dw $0006                                                             ;86E13C;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_1                       ;86E13E;
-    dw $0005                                                             ;86E140;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_2                       ;86E142;
-    dw $0005                                                             ;86E144;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_3                       ;86E146;
-    dw $0005                                                             ;86E148;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_4                       ;86E14A;
-    dw $0006                                                             ;86E14C;
-    dw EnemyProjSpritemaps_Common_SmallExplosion_5                       ;86E14E;
+    dw $0004,EnemyProjSpritemaps_Common_SmallExplosion_0                 ;86E138;
+    dw $0006,EnemyProjSpritemaps_Common_SmallExplosion_1                 ;86E13C;
+    dw $0005,EnemyProjSpritemaps_Common_SmallExplosion_2                 ;86E140;
+    dw $0005,EnemyProjSpritemaps_Common_SmallExplosion_3                 ;86E144;
+    dw $0005,EnemyProjSpritemaps_Common_SmallExplosion_4                 ;86E148;
+    dw $0006,EnemyProjSpritemaps_Common_SmallExplosion_5                 ;86E14C;
     dw Instruction_EnemyProjectile_Delete                                ;86E150;
 
 InstList_EnemyProj_MiscDust_4_MotherBrainRainbowBeamExplosion:
-    dw $0003                                                             ;86E152;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_39                        ;86E154;
-    dw $0003                                                             ;86E156;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_3A                        ;86E158;
-    dw $0004                                                             ;86E15A;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_3B                        ;86E15C;
-    dw $0004                                                             ;86E15E;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_3C                        ;86E160;
-    dw $0004                                                             ;86E162;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_3D                        ;86E164;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_39                  ;86E152;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_3A                  ;86E156;
+    dw $0004,EnemyProjSpritemaps_DustCloud_Explosion_3B                  ;86E15A;
+    dw $0004,EnemyProjSpritemaps_DustCloud_Explosion_3C                  ;86E15E;
+    dw $0004,EnemyProjSpritemaps_DustCloud_Explosion_3D                  ;86E162;
     dw Instruction_EnemyProjectile_Delete                                ;86E166;
 
 UNUSED_InstList_EnemyProj_MiscDust_5_BeamTrail_86E168:
-    dw $0008                                                             ;86E168;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_3E                        ;86E16A;
-    dw $0008                                                             ;86E16C;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_3F                        ;86E16E;
-    dw $0008                                                             ;86E170;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_40                        ;86E172;
-    dw $0008                                                             ;86E174;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_41                        ;86E176;
-    dw $0018                                                             ;86E178;
-    dw EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_9          ;86E17A;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_3E                  ;86E168;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_3F                  ;86E16C;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_40                  ;86E170;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_41                  ;86E174;
+    dw $0018,EnemyProjSpritemaps_DrayTurretProj_DustCloud_Explosion_9    ;86E178;
     dw Instruction_EnemyProjectile_Delete                                ;86E17C;
 
 InstList_EnemyProj_MiscDust_6_DudShot_TinyExplosion:
-    dw $0004                                                             ;86E17E;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_45                        ;86E180;
-    dw $0004                                                             ;86E182;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_46                        ;86E184;
-    dw $0004                                                             ;86E186;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_47                        ;86E188;
-    dw $0004                                                             ;86E18A;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_48                        ;86E18C;
-    dw $0004                                                             ;86E18E;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_49                        ;86E190;
-    dw $0004                                                             ;86E192;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_4A                        ;86E194;
+    dw $0004,EnemyProjSpritemaps_DustCloud_Explosion_45                  ;86E17E;
+    dw $0004,EnemyProjSpritemaps_DustCloud_Explosion_46                  ;86E182;
+    dw $0004,EnemyProjSpritemaps_DustCloud_Explosion_47                  ;86E186;
+    dw $0004,EnemyProjSpritemaps_DustCloud_Explosion_48                  ;86E18A;
+    dw $0004,EnemyProjSpritemaps_DustCloud_Explosion_49                  ;86E18E;
+    dw $0004,EnemyProjSpritemaps_DustCloud_Explosion_4A                  ;86E192;
     dw Instruction_EnemyProjectile_Delete                                ;86E196;
 
 UNUSED_InstList_EnemyProj_MiscDust_7_PowerBomb_86E198:
-    dw $0005                                                             ;86E198;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_42                        ;86E19A;
-    dw $0005                                                             ;86E19C;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_43                        ;86E19E;
-    dw $0005                                                             ;86E1A0;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_44                        ;86E1A2;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_42                  ;86E198;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_43                  ;86E19C;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_44                  ;86E1A0;
     dw Instruction_EnemyProjectile_Delete                                ;86E1A4;
 
 UNUSED_InstList_EnemyProj_MiscDust_8_ElevatorPad_86E1A6:
-    dw $0001                                                             ;86E1A6;
-    dw EnemyProjSpritemaps_CeresElevatorPad_DustCloud_Explosion_0        ;86E1A8;
-    dw $0001                                                             ;86E1AA;
-    dw EnemyProjSpritemaps_CeresElevatorPad_DustCloud_Explosion_1        ;86E1AC;
+    dw $0001,EnemyProjSpritemaps_CeresElevatorPad_DustCloud_Explosion_0  ;86E1A6;
+    dw $0001,EnemyProjSpritemaps_CeresElevatorPad_DustCloud_Explosion_1  ;86E1AA;
     dw Instruction_EnemyProjectile_Delete                                ;86E1AE;
 
 InstList_EnemyProj_MiscDust_9_SmallDustCloud:
-    dw $0005                                                             ;86E1B0;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_4F                        ;86E1B2;
-    dw $0005                                                             ;86E1B4;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_4B                        ;86E1B6;
-    dw $0005                                                             ;86E1B8;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_4C                        ;86E1BA;
-    dw $0005                                                             ;86E1BC;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_4D                        ;86E1BE;
-    dw $0005                                                             ;86E1C0;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_4E                        ;86E1C2;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_4F                  ;86E1B0;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_4B                  ;86E1B4;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_4C                  ;86E1B8;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_4D                  ;86E1BC;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_4E                  ;86E1C0;
     dw Instruction_EnemyProjectile_Delete                                ;86E1C4;
 
 InstList_EnemyProj_MiscDust_A_CorpseDustCloud:
-    dw $0003                                                             ;86E1C6;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_4F                        ;86E1C8;
-    dw $0003                                                             ;86E1CA;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_50                        ;86E1CC;
-    dw $0003                                                             ;86E1CE;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_51                        ;86E1D0;
-    dw $0003                                                             ;86E1D2;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_52                        ;86E1D4;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_4F                  ;86E1C6;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_50                  ;86E1CA;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_51                  ;86E1CE;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_52                  ;86E1D2;
     dw Instruction_EnemyProjectile_Delete                                ;86E1D6;
 
 InstList_EnemyProj_MiscDust_B_EyeDoorSweatDrop:
-    dw $0005                                                             ;86E1D8;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_53                        ;86E1DA;
-    dw $0005                                                             ;86E1DC;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_54                        ;86E1DE;
-    dw $0005                                                             ;86E1E0;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_55                        ;86E1E2;
-    dw $0005                                                             ;86E1E4;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_56                        ;86E1E6;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_53                  ;86E1D8;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_54                  ;86E1DC;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_55                  ;86E1E0;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_56                  ;86E1E4;
     dw Instruction_EnemyProjectile_Delete                                ;86E1E8;
 
 InstList_EnemyProj_MiscDust_C_Smoke:
-    dw $0008                                                             ;86E1EA;
-    dw EnemyProjSpritemaps_Common_Smoke_0                                ;86E1EC;
-    dw $0008                                                             ;86E1EE;
-    dw EnemyProjSpritemaps_Common_Smoke_1                                ;86E1F0;
-    dw $0008                                                             ;86E1F2;
-    dw EnemyProjSpritemaps_Common_Smoke_2                                ;86E1F4;
-    dw $0008                                                             ;86E1F6;
-    dw EnemyProjSpritemaps_Common_Smoke_3                                ;86E1F8;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_0                          ;86E1EA;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_1                          ;86E1EE;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_2                          ;86E1F2;
+    dw $0008,EnemyProjSpritemaps_Common_Smoke_3                          ;86E1F6;
     dw Instruction_EnemyProjectile_Delete                                ;86E1FA;
 
 UNUSED_InstList_EnemyProj_MiscDust_1C_ElevatorPad_86E1FC:
-    dw $0001                                                             ;86E1FC;
-    dw EnemyProjSpritemaps_CeresElevatorPad_DustCloud_Explosion_0        ;86E1FE;
-    dw $0001                                                             ;86E200;
-    dw EnemyProjSpritemaps_CeresElevatorPad_DustCloud_Explosion_1        ;86E202;
+    dw $0001,EnemyProjSpritemaps_CeresElevatorPad_DustCloud_Explosion_0  ;86E1FC;
+    dw $0001,EnemyProjSpritemaps_CeresElevatorPad_DustCloud_Explosion_1  ;86E200;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E204;
     dw UNUSED_InstList_EnemyProj_MiscDust_1C_ElevatorPad_86E1FC          ;86E206;
 
 InstList_EnemyProj_MiscDust_1D_BigExplosion:
-    dw $0005                                                             ;86E208;
-    dw EnemyProjSpritemaps_Common_BigExplosion_0                         ;86E20A;
-    dw $0005                                                             ;86E20C;
-    dw EnemyProjSpritemaps_Common_BigExplosion_1                         ;86E20E;
-    dw $0005                                                             ;86E210;
-    dw EnemyProjSpritemaps_Common_BigExplosion_2                         ;86E212;
-    dw $0005                                                             ;86E214;
-    dw EnemyProjSpritemaps_Common_BigExplosion_3                         ;86E216;
-    dw $0005                                                             ;86E218;
-    dw EnemyProjSpritemaps_Common_BigExplosion_4                         ;86E21A;
-    dw $0005                                                             ;86E21C;
-    dw EnemyProjSpritemaps_Common_BigExplosion_5                         ;86E21E;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_0                   ;86E208;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_1                   ;86E20C;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_2                   ;86E210;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_3                   ;86E214;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_4                   ;86E218;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_5                   ;86E21C;
     dw Instruction_EnemyProjectile_Delete                                ;86E220;
 
 UNUSED_InstList_EnemyProj_MiscDust_D_SmallEnergyDrop_86E222:
-    dw $0008                                                             ;86E222;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_57                        ;86E224;
-    dw $0008                                                             ;86E226;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_58                        ;86E228;
-    dw $0008                                                             ;86E22A;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_59                        ;86E22C;
-    dw $0008                                                             ;86E22E;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_5A                        ;86E230;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_57                  ;86E222;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_58                  ;86E226;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_59                  ;86E22A;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_5A                  ;86E22E;
     dw Instruction_EnemyProjectile_Delete                                ;86E232;
 
 UNUSED_InstList_EnemyProj_MiscDust_E_BigEnergyDrop_86E22E:
-    dw $0008                                                             ;86E234;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_5B                        ;86E236;
-    dw $0008                                                             ;86E238;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_5C                        ;86E23A;
-    dw $0008                                                             ;86E23C;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_5D                        ;86E23E;
-    dw $0008                                                             ;86E240;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_5E                        ;86E242;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_5B                  ;86E234;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_5C                  ;86E238;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_5D                  ;86E23C;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_5E                  ;86E240;
     dw Instruction_EnemyProjectile_Delete                                ;86E244;
 
 UNUSED_InstList_EnemyProj_MiscDust_F_Bomb_86E246:
-    dw $0005                                                             ;86E246;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_5F                        ;86E248;
-    dw $0005                                                             ;86E24A;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_60                        ;86E24C;
-    dw $0005                                                             ;86E24E;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_61                        ;86E250;
-    dw $0005                                                             ;86E252;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_62                        ;86E254;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_5F                  ;86E246;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_60                  ;86E24A;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_61                  ;86E24E;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_62                  ;86E252;
     dw Instruction_EnemyProjectile_Delete                                ;86E256;
 
 UNUSED_InstList_EnemyProj_MiscDust_10_WeirdEnergyDrop_86E258:
-    dw $0010                                                             ;86E258;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_63                        ;86E25A;
-    dw $0010                                                             ;86E25C;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_64                        ;86E25E;
-    dw $0010                                                             ;86E260;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_65                        ;86E262;
+    dw $0010,EnemyProjSpritemaps_DustCloud_Explosion_63                  ;86E258;
+    dw $0010,EnemyProjSpritemaps_DustCloud_Explosion_64                  ;86E25C;
+    dw $0010,EnemyProjSpritemaps_DustCloud_Explosion_65                  ;86E260;
     dw Instruction_EnemyProjectile_Delete                                ;86E264;
 
 InstList_EnemyProj_MiscDust_11_RockParticles:
-    dw $0002                                                             ;86E266;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_0                         ;86E268;
-    dw $0002                                                             ;86E26A;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1                         ;86E26C;
-    dw $0002                                                             ;86E26E;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_2                         ;86E270;
-    dw $0002                                                             ;86E272;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_3                         ;86E274;
-    dw $0002                                                             ;86E276;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_4                         ;86E278;
-    dw $0002                                                             ;86E27A;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_5                         ;86E27C;
-    dw $0002                                                             ;86E27E;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_6                         ;86E280;
-    dw $0002                                                             ;86E282;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_7                         ;86E284;
-    dw $0002                                                             ;86E286;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_8                         ;86E288;
-    dw $0002                                                             ;86E28A;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_9                         ;86E28C;
-    dw $0002                                                             ;86E28E;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_A                         ;86E290;
-    dw $0002                                                             ;86E292;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_B                         ;86E294;
-    dw $0002                                                             ;86E296;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_C                         ;86E298;
-    dw $0002                                                             ;86E29A;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_D                         ;86E29C;
-    dw $0002                                                             ;86E29E;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_E                         ;86E2A0;
-    dw $0002                                                             ;86E2A2;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_F                         ;86E2A4;
+    dw $0002,EnemyProjSpritemaps_DustCloud_Explosion_0                   ;86E266;
+    dw $0002,EnemyProjSpritemaps_DustCloud_Explosion_1                   ;86E26A;
+    dw $0002,EnemyProjSpritemaps_DustCloud_Explosion_2                   ;86E26E;
+    dw $0002,EnemyProjSpritemaps_DustCloud_Explosion_3                   ;86E272;
+    dw $0002,EnemyProjSpritemaps_DustCloud_Explosion_4                   ;86E276;
+    dw $0002,EnemyProjSpritemaps_DustCloud_Explosion_5                   ;86E27A;
+    dw $0002,EnemyProjSpritemaps_DustCloud_Explosion_6                   ;86E27E;
+    dw $0002,EnemyProjSpritemaps_DustCloud_Explosion_7                   ;86E282;
+    dw $0002,EnemyProjSpritemaps_DustCloud_Explosion_8                   ;86E286;
+    dw $0002,EnemyProjSpritemaps_DustCloud_Explosion_9                   ;86E28A;
+    dw $0002,EnemyProjSpritemaps_DustCloud_Explosion_A                   ;86E28E;
+    dw $0002,EnemyProjSpritemaps_DustCloud_Explosion_B                   ;86E292;
+    dw $0002,EnemyProjSpritemaps_DustCloud_Explosion_C                   ;86E296;
+    dw $0002,EnemyProjSpritemaps_DustCloud_Explosion_D                   ;86E29A;
+    dw $0002,EnemyProjSpritemaps_DustCloud_Explosion_E                   ;86E29E;
+    dw $0002,EnemyProjSpritemaps_DustCloud_Explosion_F                   ;86E2A2;
     dw Instruction_EnemyProjectile_Delete                                ;86E2A6;
 
 InstList_EnemyProj_MiscDust_12_ShortBigDustCloud:
-    dw $0002                                                             ;86E2A8;
-    dw EnemyProjSpritemaps_Common_BigDustCloud_0                         ;86E2AA;
-    dw $0002                                                             ;86E2AC;
-    dw EnemyProjSpritemaps_Common_BigDustCloud_1                         ;86E2AE;
-    dw $0002                                                             ;86E2B0;
-    dw EnemyProjSpritemaps_Common_BigDustCloud_2                         ;86E2B2;
-    dw $0002                                                             ;86E2B4;
-    dw EnemyProjSpritemaps_Common_BigDustCloud_3                         ;86E2B6;
+    dw $0002,EnemyProjSpritemaps_Common_BigDustCloud_0                   ;86E2A8;
+    dw $0002,EnemyProjSpritemaps_Common_BigDustCloud_1                   ;86E2AC;
+    dw $0002,EnemyProjSpritemaps_Common_BigDustCloud_2                   ;86E2B0;
+    dw $0002,EnemyProjSpritemaps_Common_BigDustCloud_3                   ;86E2B4;
     dw Instruction_EnemyProjectile_Delete                                ;86E2B8;
 
 UNUSED_InstList_EnemyProj_MiscDust_13_CloudShortBeam_86E2BA:
-    dw $0003                                                             ;86E2BA;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_10                        ;86E2BC;
-    dw $0003                                                             ;86E2BE;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_11                        ;86E2C0;
-    dw $0003                                                             ;86E2C2;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_12                        ;86E2C4;
-    dw $0003                                                             ;86E2C6;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_13                        ;86E2C8;
-    dw $0003                                                             ;86E2CA;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_14                        ;86E2CC;
-    dw $0005                                                             ;86E2CE;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_15                        ;86E2D0;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_10                  ;86E2BA;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_11                  ;86E2BE;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_12                  ;86E2C2;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_13                  ;86E2C6;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_14                  ;86E2CA;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_15                  ;86E2CE;
     dw Instruction_EnemyProjectile_Delete                                ;86E2D2;
 
 UNUSED_InstList_EnemyProj_MiscDust_14_CloudMediumBeam_86E2D4:
-    dw $0003                                                             ;86E2D4;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_10                        ;86E2D6;
-    dw $0003                                                             ;86E2D8;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_11                        ;86E2DA;
-    dw $0003                                                             ;86E2DC;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_12                        ;86E2DE;
-    dw $0003                                                             ;86E2E0;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_13                        ;86E2E2;
-    dw $0003                                                             ;86E2E4;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_14                        ;86E2E6;
-    dw $0003                                                             ;86E2E8;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_15                        ;86E2EA;
-    dw $0003                                                             ;86E2EC;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_16                        ;86E2EE;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_10                  ;86E2D4;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_11                  ;86E2D8;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_12                  ;86E2DC;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_13                  ;86E2E0;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_14                  ;86E2E4;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_15                  ;86E2E8;
+    dw $0003,EnemyProjSpritemaps_DustCloud_Explosion_16                  ;86E2EC;
     dw Instruction_EnemyProjectile_Delete                                ;86E2F0;
 
 InstList_EnemyProj_MiscDust_15_BigDustCloud:
-    dw $0005                                                             ;86E2F2;
-    dw EnemyProjSpritemaps_Common_BigDustCloud_0                         ;86E2F4;
-    dw $0005                                                             ;86E2F6;
-    dw EnemyProjSpritemaps_Common_BigDustCloud_1                         ;86E2F8;
-    dw $0005                                                             ;86E2FA;
-    dw EnemyProjSpritemaps_Common_BigDustCloud_2                         ;86E2FC;
-    dw $0005                                                             ;86E2FE;
-    dw EnemyProjSpritemaps_Common_BigDustCloud_3                         ;86E300;
-    dw $0005                                                             ;86E302;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_10                        ;86E304;
-    dw $0005                                                             ;86E306;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_11                        ;86E308;
-    dw $0005                                                             ;86E30A;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_12                        ;86E30C;
-    dw $0005                                                             ;86E30E;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_13                        ;86E310;
+    dw $0005,EnemyProjSpritemaps_Common_BigDustCloud_0                   ;86E2F2;
+    dw $0005,EnemyProjSpritemaps_Common_BigDustCloud_1                   ;86E2F6;
+    dw $0005,EnemyProjSpritemaps_Common_BigDustCloud_2                   ;86E2FA;
+    dw $0005,EnemyProjSpritemaps_Common_BigDustCloud_3                   ;86E2FE;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_10                  ;86E302;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_11                  ;86E306;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_12                  ;86E30A;
+    dw $0005,EnemyProjSpritemaps_DustCloud_Explosion_13                  ;86E30E;
     dw Instruction_EnemyProjectile_Delete                                ;86E312;
 
 UNUSED_InstList_EnemyProj_MiscDust_16_LongBeam_86E314:
-    dw $0001                                                             ;86E314;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_14                        ;86E316;
-    dw $0001                                                             ;86E318;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_15                        ;86E31A;
-    dw $0001                                                             ;86E31C;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_16                        ;86E31E;
-    dw $0001                                                             ;86E320;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_17                        ;86E322;
-    dw $0001                                                             ;86E324;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_18                        ;86E326;
-    dw $0001                                                             ;86E328;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_19                        ;86E32A;
-    dw $0001                                                             ;86E32C;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1A                        ;86E32E;
-    dw $0001                                                             ;86E330;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1B                        ;86E332;
-    dw $0001                                                             ;86E334;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1A                        ;86E336;
-    dw $0001                                                             ;86E338;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1B                        ;86E33A;
-    dw $0001                                                             ;86E33C;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1A                        ;86E33E;
-    dw $0001                                                             ;86E340;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1B                        ;86E342;
-    dw $0001                                                             ;86E344;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1A                        ;86E346;
-    dw $0001                                                             ;86E348;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1B                        ;86E34A;
-    dw $0001                                                             ;86E34C;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1A                        ;86E34E;
-    dw $0001                                                             ;86E350;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1B                        ;86E352;
-    dw $0001                                                             ;86E354;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1A                        ;86E356;
-    dw $0001                                                             ;86E358;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1B                        ;86E35A;
-    dw $0001                                                             ;86E35C;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1A                        ;86E35E;
-    dw $0001                                                             ;86E360;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1B                        ;86E362;
-    dw $0001                                                             ;86E364;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1A                        ;86E366;
-    dw $0001                                                             ;86E368;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1B                        ;86E36A;
-    dw $0001                                                             ;86E36C;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1A                        ;86E36E;
-    dw $0001                                                             ;86E370;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1B                        ;86E372;
-    dw $0001                                                             ;86E374;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1A                        ;86E376;
-    dw $0001                                                             ;86E378;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1B                        ;86E37A;
-    dw $0001                                                             ;86E37C;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1A                        ;86E37E;
-    dw $0001                                                             ;86E380;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1B                        ;86E382;
-    dw $0001                                                             ;86E384;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1A                        ;86E386;
-    dw $0001                                                             ;86E388;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1B                        ;86E38A;
-    dw $0001                                                             ;86E38C;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1A                        ;86E38E;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_14                  ;86E314;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_15                  ;86E318;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_16                  ;86E31C;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_17                  ;86E320;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_18                  ;86E324;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_19                  ;86E328;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1A                  ;86E32C;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1B                  ;86E330;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1A                  ;86E334;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1B                  ;86E338;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1A                  ;86E33C;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1B                  ;86E340;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1A                  ;86E344;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1B                  ;86E348;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1A                  ;86E34C;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1B                  ;86E350;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1A                  ;86E354;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1B                  ;86E358;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1A                  ;86E35C;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1B                  ;86E360;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1A                  ;86E364;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1B                  ;86E368;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1A                  ;86E36C;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1B                  ;86E370;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1A                  ;86E374;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1B                  ;86E378;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1A                  ;86E37C;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1B                  ;86E380;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1A                  ;86E384;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1B                  ;86E388;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1A                  ;86E38C;
     dw Instruction_EnemyProjectile_Delete                                ;86E390;
 
 UNUSED_InstList_EnemyProj_MiscDust_17_FlickerLongBeam_86E392:
-    dw $0001                                                             ;86E392;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1A                        ;86E394;
-    dw $0001                                                             ;86E396;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1B                        ;86E398;
-    dw $0001                                                             ;86E39A;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1A                        ;86E39C;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1A                  ;86E392;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1B                  ;86E396;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_1A                  ;86E39A;
     dw Instruction_EnemyProjectile_Delete                                ;86E39E;
 
 InstList_EnemyProj_MiscDust_18_LongDraygonBreathBubbles:
-    dw $0008                                                             ;86E3A0;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1C                        ;86E3A2;
-    dw $0008                                                             ;86E3A4;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1D                        ;86E3A6;
-    dw $0008                                                             ;86E3A8;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1E                        ;86E3AA;
-    dw $0008                                                             ;86E3AC;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_1F                        ;86E3AE;
-    dw $0008                                                             ;86E3B0;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_20                        ;86E3B2;
-    dw $0008                                                             ;86E3B4;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_21                        ;86E3B6;
-    dw $0008                                                             ;86E3B8;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_22                        ;86E3BA;
-    dw $0008                                                             ;86E3BC;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_23                        ;86E3BE;
-    dw $0008                                                             ;86E3C0;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_24                        ;86E3C2;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_1C                  ;86E3A0;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_1D                  ;86E3A4;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_1E                  ;86E3A8;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_1F                  ;86E3AC;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_20                  ;86E3B0;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_21                  ;86E3B4;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_22                  ;86E3B8;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_23                  ;86E3BC;
+    dw $0008,EnemyProjSpritemaps_DustCloud_Explosion_24                  ;86E3C0;
     dw Instruction_EnemyProjectile_Delete                                ;86E3C4;
 
 UNUSED_InstList_EnemyProj_MiscDust_19_SaveStationElec_86E3C6:
-    dw $0001                                                             ;86E3C6;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_25                        ;86E3C8;
-    dw $0001                                                             ;86E3CA;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_26                        ;86E3CC;
-    dw $0001                                                             ;86E3CE;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_27                        ;86E3D0;
-    dw $0001                                                             ;86E3D2;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_28                        ;86E3D4;
-    dw $0001                                                             ;86E3D6;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_29                        ;86E3D8;
-    dw $0001                                                             ;86E3DA;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_2A                        ;86E3DC;
-    dw $0001                                                             ;86E3DE;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_2B                        ;86E3E0;
-    dw $0001                                                             ;86E3E2;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_2C                        ;86E3E4;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_25                  ;86E3C6;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_26                  ;86E3CA;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_27                  ;86E3CE;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_28                  ;86E3D2;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_29                  ;86E3D6;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_2A                  ;86E3DA;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_2B                  ;86E3DE;
+    dw $0001,EnemyProjSpritemaps_DustCloud_Explosion_2C                  ;86E3E2;
     dw Instruction_EnemyProjectile_Delete                                ;86E3E6;
 
 UNUSED_InstList_EnemyProj_MiscDust_ExpandVerticalGate_86E3E8:
-    dw $0010                                                             ;86E3E8;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_2D                        ;86E3EA;
-    dw $0010                                                             ;86E3EC;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_2E                        ;86E3EE;
-    dw $0010                                                             ;86E3F0;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_2F                        ;86E3F2;
-    dw $0010                                                             ;86E3F4;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_30                        ;86E3F6;
-    dw $0010                                                             ;86E3F8;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_31                        ;86E3FA;
-    dw $0010                                                             ;86E3FC;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_32                        ;86E3FE;
-    dw $0010                                                             ;86E400;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_33                        ;86E402;
-    dw $0010                                                             ;86E404;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_34                        ;86E406;
+    dw $0010,EnemyProjSpritemaps_DustCloud_Explosion_2D                  ;86E3E8;
+    dw $0010,EnemyProjSpritemaps_DustCloud_Explosion_2E                  ;86E3EC;
+    dw $0010,EnemyProjSpritemaps_DustCloud_Explosion_2F                  ;86E3F0;
+    dw $0010,EnemyProjSpritemaps_DustCloud_Explosion_30                  ;86E3F4;
+    dw $0010,EnemyProjSpritemaps_DustCloud_Explosion_31                  ;86E3F8;
+    dw $0010,EnemyProjSpritemaps_DustCloud_Explosion_32                  ;86E3FC;
+    dw $0010,EnemyProjSpritemaps_DustCloud_Explosion_33                  ;86E400;
+    dw $0010,EnemyProjSpritemaps_DustCloud_Explosion_34                  ;86E404;
     dw Instruction_EnemyProjectile_Delete                                ;86E408;
 
 UNUSED_InstList_EnemyProj_MiscDust_ContractVertGate_86E40A:
-    dw $0004                                                             ;86E40A;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_34                        ;86E40C;
-    dw $0004                                                             ;86E40E;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_33                        ;86E410;
-    dw $0004                                                             ;86E412;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_32                        ;86E414;
-    dw $0004                                                             ;86E416;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_31                        ;86E418;
-    dw $0004                                                             ;86E41A;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_30                        ;86E41C;
-    dw $0004                                                             ;86E41E;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_2F                        ;86E420;
-    dw $0004                                                             ;86E422;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_2E                        ;86E424;
-    dw $0004                                                             ;86E426;
-    dw EnemyProjSpritemaps_DustCloud_Explosion_2D                        ;86E428;
+    dw $0004,EnemyProjSpritemaps_DustCloud_Explosion_34                  ;86E40A;
+    dw $0004,EnemyProjSpritemaps_DustCloud_Explosion_33                  ;86E40E;
+    dw $0004,EnemyProjSpritemaps_DustCloud_Explosion_32                  ;86E412;
+    dw $0004,EnemyProjSpritemaps_DustCloud_Explosion_31                  ;86E416;
+    dw $0004,EnemyProjSpritemaps_DustCloud_Explosion_30                  ;86E41A;
+    dw $0004,EnemyProjSpritemaps_DustCloud_Explosion_2F                  ;86E41E;
+    dw $0004,EnemyProjSpritemaps_DustCloud_Explosion_2E                  ;86E422;
+    dw $0004,EnemyProjSpritemaps_DustCloud_Explosion_2D                  ;86E426;
     dw Instruction_EnemyProjectile_Delete                                ;86E42A;
 
 MiscDust_InstListPointers:
@@ -14203,20 +13268,24 @@ InitAI_EnemyProj_MiscDust:
     STA.W $1A93,Y                                                        ;86E47A;
     RTS                                                                  ;86E47D;
 
-
+;        _____________________ Random X offset range
+;       |      _______________ Random Y offset range
+;       |     |      _________ Minimum X offset
+;       |     |     |      ___ Minimum Y offset
+;       |     |     |     |
 PLM_MiscDust_XYOffsetTable_randomX:
     dw $0000                                                             ;86E47E;
-
 PLM_MiscDust_XYOffsetTable_randomY:
-    dw $0000                                                             ;86E480;
-
+    dw       $0000                                                       ;86E480;
 PLM_MiscDust_XYOffsetTable_minX:
-    dw $0000                                                             ;86E482;
-
+    dw             $0000                                                 ;86E482;
 PLM_MiscDust_XYOffsetTable_minY:
-    dw $0000,$0007,$0007,$FFFC,$FFFC,$000F,$000F,$FFF8                   ;86E484;
-    dw $FFF8,$000F,$001F,$FFF8,$FFF0,$001F,$003F,$FFF0                   ;86E494;
-    dw $FFE0                                                             ;86E4A4;
+    dw                   $0000                                           ;86E484;
+    dw $0007,$0007,$FFFC,$FFFC
+    dw $000F,$000F,$FFF8,$FFF8
+    dw $000F,$001F,$FFF8,$FFF0
+    dw $001F,$003F,$FFF0,$FFE0
+
 
 InitAI_EnemyProj_MiscDustPLM:
     LDA.W $1993                                                          ;86E4A6;
@@ -14281,29 +13350,29 @@ RTS_86E508:
 
 
 EnemyProjectile_MiscDust:
-    dw InitAI_EnemyProj_MiscDust                                         ;86E509;
-    dw PreInstruction_EnemyProjectile_MiscDust                           ;86E50B;
-    dw UNUSED_InstList_EnemyProj_MiscDust_0_BeamCharge_86E0EE            ;86E50D;
-    db $00,$00                                                           ;86E50F;
-    dw $1000,$0000                                                       ;86E511;
-    dw InstList_EnemyProjectile_Delete                                   ;86E515;
+    dw InitAI_EnemyProj_MiscDust                                         ;86E509; Initialisation AI
+    dw PreInstruction_EnemyProjectile_MiscDust                           ;86E50B; Initial pre-instruction
+    dw UNUSED_InstList_EnemyProj_MiscDust_0_BeamCharge_86E0EE            ;86E50D; Initial instruction list
+    db $00,$00                                                           ;86E50F; X,Y radius
+    dw $1000,$0000                                                       ;86E511; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86E515; Shot instruction list
 
 EnemyProjectile_MiscDustPLM:
-    dw InitAI_EnemyProj_MiscDustPLM                                      ;86E517;
-    dw RTS_86E508                                                        ;86E519;
-    dw InstList_EnemyProj_MiscDust_3_SmallExplosion                      ;86E51B;
-    db $00,$00                                                           ;86E51D;
-    dw $0000,$0000                                                       ;86E51F;
-    dw InstList_EnemyProjectile_Delete                                   ;86E523;
+    dw InitAI_EnemyProj_MiscDustPLM                                      ;86E517; Initialisation AI
+    dw RTS_86E508                                                        ;86E519; Initial pre-instruction
+    dw InstList_EnemyProj_MiscDust_3_SmallExplosion                      ;86E51B; Initial instruction list
+    db $00,$00                                                           ;86E51D; X,Y radius
+    dw $0000,$0000                                                       ;86E51F; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86E523; Shot instruction list
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_EnemyProjectile_DustCloudExplosion_86E525:
-    dw InitAI_EnemyProj_MiscDust                                         ;86E525;
+    dw InitAI_EnemyProj_MiscDust                                         ;86E525; Initialisation AI
     dw InstList_EnemyProjectile_GunshipLiftoffDustClouds_Index0_0        ;86E527; >_< this is not a pre-instruction, its an instruction list
-    dw InstList_EnemyProj_MiscDust_3_SmallExplosion                      ;86E529;
-    db $00,$00                                                           ;86E52B;
-    dw $0000,$0000                                                       ;86E52D;
-    dw InstList_EnemyProjectile_Delete                                   ;86E531;
+    dw InstList_EnemyProj_MiscDust_3_SmallExplosion                      ;86E529; Initial instruction list
+    db $00,$00                                                           ;86E52B; X,Y radius
+    dw $0000,$0000                                                       ;86E52D; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86E531; Shot instruction list
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Instruction_EnemyProjectile_ShotGate_EnemyVelocityInY:
@@ -14315,84 +13384,64 @@ Instruction_EnemyProjectile_ShotGate_EnemyVelocityInY:
 
 
 InstList_EnemyProjectile_ShotGate_SpawnedDownwards:
-    dw Instruction_EnemyProjectile_ShotGate_EnemyVelocityInY             ;86E53C;
-    dw $0100                                                             ;86E53E;
+    dw Instruction_EnemyProjectile_ShotGate_EnemyVelocityInY,$0100       ;86E53C;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86E540;
     dw PreInstruction_EnemyProjectile_ShotGate_InitialClosed             ;86E542;
-    dw $0001                                                             ;86E544;
-    dw EnemyProjSpritemaps_DownwardsShotGate_0                           ;86E546;
+    dw $0001,EnemyProjSpritemaps_DownwardsShotGate_0                     ;86E544;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E548;
-    dw $0001                                                             ;86E54A;
-    dw EnemyProjSpritemaps_DownwardsShotGate_1                           ;86E54C;
+    dw $0001,EnemyProjSpritemaps_DownwardsShotGate_1                     ;86E54A;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E54E;
-    dw $0001                                                             ;86E550;
-    dw EnemyProjSpritemaps_DownwardsShotGate_2                           ;86E552;
+    dw $0001,EnemyProjSpritemaps_DownwardsShotGate_2                     ;86E550;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E554;
-    dw $0001                                                             ;86E556;
-    dw EnemyProjSpritemaps_DownwardsShotGate_3                           ;86E558;
+    dw $0001,EnemyProjSpritemaps_DownwardsShotGate_3                     ;86E556;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E55A;
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86E55C;
 
 InstList_EnemyProjectile_ShotGate_InitialClosedDownwards:
-    dw Instruction_EnemyProjectile_ShotGate_EnemyVelocityInY             ;86E55E;
-    dw $FF00,$0001                                                       ;86E560;
-    dw EnemyProjSpritemaps_DownwardsShotGate_3                           ;86E564;
+    dw Instruction_EnemyProjectile_ShotGate_EnemyVelocityInY,$FF00       ;86E55E;
+    dw $0001,EnemyProjSpritemaps_DownwardsShotGate_3                     ;86E560;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E566;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86E568;
     dw PreInstruction_EnemyProjectile_ShotGate_InitialClosed             ;86E56A;
-    dw $0001                                                             ;86E56C;
-    dw EnemyProjSpritemaps_DownwardsShotGate_3                           ;86E56E;
+    dw $0001,EnemyProjSpritemaps_DownwardsShotGate_3                     ;86E56C;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E570;
-    dw $0001                                                             ;86E572;
-    dw EnemyProjSpritemaps_DownwardsShotGate_2                           ;86E574;
+    dw $0001,EnemyProjSpritemaps_DownwardsShotGate_2                     ;86E572;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E576;
-    dw $0001                                                             ;86E578;
-    dw EnemyProjSpritemaps_DownwardsShotGate_1                           ;86E57A;
+    dw $0001,EnemyProjSpritemaps_DownwardsShotGate_1                     ;86E578;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E57C;
-    dw $0001                                                             ;86E57E;
-    dw EnemyProjSpritemaps_DownwardsShotGate_0                           ;86E580;
+    dw $0001,EnemyProjSpritemaps_DownwardsShotGate_0                     ;86E57E;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E582;
     dw Instruction_EnemyProjectile_Delete                                ;86E584;
 
 InstList_EnemyProjectile_ShotGate_SpawnedUpwards:
-    dw Instruction_EnemyProjectile_ShotGate_EnemyVelocityInY             ;86E586;
-    dw $FF00                                                             ;86E588;
+    dw Instruction_EnemyProjectile_ShotGate_EnemyVelocityInY,$FF00       ;86E586;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86E58A;
     dw PreInstruction_EnemyProjectile_ShotGate_InitialClosed             ;86E58C;
-    dw $0001                                                             ;86E58E;
-    dw EnemyProjSpritemaps_UpwardsShotGate_0                             ;86E590;
+    dw $0001,EnemyProjSpritemaps_UpwardsShotGate_0                       ;86E58E;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E592;
-    dw $0001                                                             ;86E594;
-    dw EnemyProjSpritemaps_UpwardsShotGate_1                             ;86E596;
+    dw $0001,EnemyProjSpritemaps_UpwardsShotGate_1                       ;86E594;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E598;
-    dw $0001                                                             ;86E59A;
-    dw EnemyProjSpritemaps_UpwardsShotGate_2                             ;86E59C;
+    dw $0001,EnemyProjSpritemaps_UpwardsShotGate_2                       ;86E59A;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E59E;
-    dw $0001                                                             ;86E5A0;
-    dw EnemyProjSpritemaps_UpwardsShotGate_3                             ;86E5A2;
+    dw $0001,EnemyProjSpritemaps_UpwardsShotGate_3                       ;86E5A0;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E5A4;
     dw Instruction_EnemyProjectile_ClearPreInstruction                   ;86E5A6;
 
 InstList_EnemyProjectile_ShotGate_InitialClosedUpwards:
-    dw Instruction_EnemyProjectile_ShotGate_EnemyVelocityInY             ;86E5A8;
-    dw $0100,$0001                                                       ;86E5AA;
-    dw EnemyProjSpritemaps_UpwardsShotGate_3                             ;86E5AE;
+    dw Instruction_EnemyProjectile_ShotGate_EnemyVelocityInY,$0100       ;86E5A8;
+    dw $0001,EnemyProjSpritemaps_UpwardsShotGate_3                       ;86E5AA;
 
 InstList_EnemyProjectile_ShotGate_InitialClosedUpwards_sleep:
     dw Instruction_EnemyProjectile_Sleep                                 ;86E5B0;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86E5B2;
     dw PreInstruction_EnemyProjectile_ShotGate_InitialClosed             ;86E5B4;
-    dw $0001                                                             ;86E5B6;
-    dw EnemyProjSpritemaps_UpwardsShotGate_3                             ;86E5B8;
+    dw $0001,EnemyProjSpritemaps_UpwardsShotGate_3                       ;86E5B6;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E5BA;
-    dw $0001                                                             ;86E5BC;
-    dw EnemyProjSpritemaps_UpwardsShotGate_2                             ;86E5BE;
+    dw $0001,EnemyProjSpritemaps_UpwardsShotGate_2                       ;86E5BC;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E5C0;
-    dw $0001                                                             ;86E5C2;
-    dw EnemyProjSpritemaps_UpwardsShotGate_1                             ;86E5C4;
+    dw $0001,EnemyProjSpritemaps_UpwardsShotGate_1                       ;86E5C2;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E5C6;
-    dw $0001                                                             ;86E5C8;
-    dw EnemyProjSpritemaps_UpwardsShotGate_0                             ;86E5CA;
+    dw $0001,EnemyProjSpritemaps_UpwardsShotGate_0                       ;86E5C8;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E5CC;
     dw Instruction_EnemyProjectile_Delete                                ;86E5CE;
 
@@ -14474,58 +13523,49 @@ PreInstruction_EnemyProjectile_ShotGate_InitialClosed:
 
 
 EnemyProjectile_SpawnedDownwardsShotGate:
-    dw InitAI_EnemyProjectile_ShotGate_Spawned                           ;86E64B;
-    dw RTS_86E604                                                        ;86E64D;
-    dw InstList_EnemyProjectile_ShotGate_SpawnedDownwards                ;86E64F;
-    db $00,$00                                                           ;86E651;
-    dw $2000,$0000                                                       ;86E653;
-    dw InstList_EnemyProjectile_Delete                                   ;86E657;
+    dw InitAI_EnemyProjectile_ShotGate_Spawned                           ;86E64B; Initialisation AI
+    dw RTS_86E604                                                        ;86E64D; Initial pre-instruction
+    dw InstList_EnemyProjectile_ShotGate_SpawnedDownwards                ;86E64F; Initial instruction list
+    db $00,$00                                                           ;86E651; X,Y radius
+    dw $2000,$0000                                                       ;86E653; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86E657; Shot instruction list
 
 EnemyProjectile_DownwardsShotGateInitiallyClosed:
-    dw InitAI_EnemyProjectile_ShotGate_InitialClosedDownwards            ;86E659;
-    dw RTS_86E604                                                        ;86E65B;
-    dw InstList_EnemyProjectile_ShotGate_InitialClosedDownwards          ;86E65D;
-    db $00,$00                                                           ;86E65F;
-    dw $2000,$0000                                                       ;86E661;
-    dw InstList_EnemyProjectile_Delete                                   ;86E665;
+    dw InitAI_EnemyProjectile_ShotGate_InitialClosedDownwards            ;86E659; Initialisation AI
+    dw RTS_86E604                                                        ;86E65B; Initial pre-instruction
+    dw InstList_EnemyProjectile_ShotGate_InitialClosedDownwards          ;86E65D; Initial instruction list
+    db $00,$00                                                           ;86E65F; X,Y radius
+    dw $2000,$0000                                                       ;86E661; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86E665; Shot instruction list
 
 EnemyProjectile_SpawnedUpwardsShotGate:
-    dw InitAI_EnemyProjectile_ShotGate_Spawned                           ;86E667;
-    dw RTS_86E604                                                        ;86E669;
-    dw InstList_EnemyProjectile_ShotGate_SpawnedUpwards                  ;86E66B;
-    db $00,$00                                                           ;86E66D;
-    dw $2000,$0000                                                       ;86E66F;
-    dw InstList_EnemyProjectile_Delete                                   ;86E673;
+    dw InitAI_EnemyProjectile_ShotGate_Spawned                           ;86E667; Initialisation AI
+    dw RTS_86E604                                                        ;86E669; Initial pre-instruction
+    dw InstList_EnemyProjectile_ShotGate_SpawnedUpwards                  ;86E66B; Initial instruction list
+    db $00,$00                                                           ;86E66D; X,Y radius
+    dw $2000,$0000                                                       ;86E66F; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86E673; Shot instruction list
 
 EnemyProjectile_UpwardsShotGateInitiallyClosed:
-    dw InitAI_EnemyProjectile_ShotGate_InitialClosedUpwards              ;86E675;
-    dw RTS_86E604                                                        ;86E677;
-    dw InstList_EnemyProjectile_ShotGate_InitialClosedUpwards            ;86E679;
-    db $00,$00                                                           ;86E67B;
-    dw $2000,$0000                                                       ;86E67D;
-    dw InstList_EnemyProjectile_Delete                                   ;86E681;
+    dw InitAI_EnemyProjectile_ShotGate_InitialClosedUpwards              ;86E675; Initialisation AI
+    dw RTS_86E604                                                        ;86E677; Initial pre-instruction
+    dw InstList_EnemyProjectile_ShotGate_InitialClosedUpwards            ;86E679; Initial instruction list
+    db $00,$00                                                           ;86E67B; X,Y radius
+    dw $2000,$0000                                                       ;86E67D; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86E681; Shot instruction list
 
 InstList_EnemyProjectile_SaveStationElectricity_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86E683;
-    dw $0014                                                             ;86E685;
+    dw Instruction_EnemyProjectile_TimerInY,$0014                        ;86E683;
 
 InstList_EnemyProjectile_SaveStationElectricity_1:
-    dw $0001                                                             ;86E687;
-    dw EnemyProjSpritemaps_SaveStationElectricity_0                      ;86E689;
-    dw $0001                                                             ;86E68B;
-    dw EnemyProjSpritemaps_SaveStationElectricity_1                      ;86E68D;
-    dw $0001                                                             ;86E68F;
-    dw EnemyProjSpritemaps_SaveStationElectricity_2                      ;86E691;
-    dw $0001                                                             ;86E693;
-    dw EnemyProjSpritemaps_SaveStationElectricity_3                      ;86E695;
-    dw $0001                                                             ;86E697;
-    dw EnemyProjSpritemaps_SaveStationElectricity_4                      ;86E699;
-    dw $0001                                                             ;86E69B;
-    dw EnemyProjSpritemaps_SaveStationElectricity_5                      ;86E69D;
-    dw $0001                                                             ;86E69F;
-    dw EnemyProjSpritemaps_SaveStationElectricity_6                      ;86E6A1;
-    dw $0001                                                             ;86E6A3;
-    dw EnemyProjSpritemaps_SaveStationElectricity_7                      ;86E6A5;
+    dw $0001,EnemyProjSpritemaps_SaveStationElectricity_0                ;86E687;
+    dw $0001,EnemyProjSpritemaps_SaveStationElectricity_1                ;86E68B;
+    dw $0001,EnemyProjSpritemaps_SaveStationElectricity_2                ;86E68F;
+    dw $0001,EnemyProjSpritemaps_SaveStationElectricity_3                ;86E693;
+    dw $0001,EnemyProjSpritemaps_SaveStationElectricity_4                ;86E697;
+    dw $0001,EnemyProjSpritemaps_SaveStationElectricity_5                ;86E69B;
+    dw $0001,EnemyProjSpritemaps_SaveStationElectricity_6                ;86E69F;
+    dw $0001,EnemyProjSpritemaps_SaveStationElectricity_7                ;86E6A3;
     dw Instruction_EnemyProjectile_DecrementTimer_GotoYIfNonZero         ;86E6A7;
     dw InstList_EnemyProjectile_SaveStationElectricity_1                 ;86E6A9;
     dw Instruction_EnemyProjectile_Delete                                ;86E6AB;
@@ -14557,12 +13597,12 @@ RTS_86E6D1:
 
 
 EnemyProjectile_SaveStationElectricity:
-    dw InitAI_EnemyProjectile_SaveStationElectrictiy                     ;86E6D2;
-    dw RTS_86E6D1                                                        ;86E6D4;
-    dw InstList_EnemyProjectile_SaveStationElectricity_0                 ;86E6D6;
-    db $00,$00                                                           ;86E6D8;
-    dw $3000,$0000                                                       ;86E6DA;
-    dw InstList_EnemyProjectile_Delete                                   ;86E6DE;
+    dw InitAI_EnemyProjectile_SaveStationElectrictiy                     ;86E6D2; Initialisation AI
+    dw RTS_86E6D1                                                        ;86E6D4; Initial pre-instruction
+    dw InstList_EnemyProjectile_SaveStationElectricity_0                 ;86E6D6; Initial instruction list
+    db $00,$00                                                           ;86E6D8; X,Y radius
+    dw $3000,$0000                                                       ;86E6DA; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86E6DE; Shot instruction list
 
 CheckIf_EnemyProjectile_IsOffScreen_duplicate_again4:
     PHX                                                                  ;86E6E0;
@@ -14711,332 +13751,235 @@ PlaceAndAim_DraygonsWallTurretProjectile:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_EnemyProj_BotwoonsBody_UpFacingLeft_86E7FB:
-    dw $0008                                                             ;86E7FB;
-    dw EnemyProjSpritemaps_BotwoonsBody_UpFacingLeft_0                   ;86E7FD;
-    dw $0008                                                             ;86E7FF;
-    dw EnemyProjSpritemaps_BotwoonsBody_UpFacingLeft_1                   ;86E801;
-    dw $0008                                                             ;86E803;
-    dw EnemyProjSpritemaps_BotwoonsBody_UpFacingLeft_2                   ;86E805;
-    dw $0008                                                             ;86E807;
-    dw EnemyProjSpritemaps_BotwoonsBody_UpFacingLeft_3                   ;86E809;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_UpFacingLeft_0             ;86E7FB;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_UpFacingLeft_1             ;86E7FF;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_UpFacingLeft_2             ;86E803;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_UpFacingLeft_3             ;86E807;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E80B;
     dw UNUSED_InstList_EnemyProj_BotwoonsBody_UpFacingLeft_86E7FB        ;86E80D;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_EnemyProjectile_BotwoonsBody_UpLeft:
-    dw $0008                                                             ;86E80F;
-    dw EnemyProjSpritemaps_BotwoonsBody_0                                ;86E811;
-    dw $0008                                                             ;86E813;
-    dw EnemyProjSpritemaps_BotwoonsBody_1                                ;86E815;
-    dw $0008                                                             ;86E817;
-    dw EnemyProjSpritemaps_BotwoonsBody_2                                ;86E819;
-    dw $0008                                                             ;86E81B;
-    dw EnemyProjSpritemaps_BotwoonsBody_3                                ;86E81D;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_0                          ;86E80F;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_1                          ;86E813;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_2                          ;86E817;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_3                          ;86E81B;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E81F;
     dw InstList_EnemyProjectile_BotwoonsBody_UpLeft                      ;86E821;
 
 InstList_EnemyProjectile_BotwoonsBody_Left:
-    dw $0008                                                             ;86E823;
-    dw EnemyProjSpritemaps_BotwoonsBody_4                                ;86E825;
-    dw $0008                                                             ;86E827;
-    dw EnemyProjSpritemaps_BotwoonsBody_5                                ;86E829;
-    dw $0008                                                             ;86E82B;
-    dw EnemyProjSpritemaps_BotwoonsBody_6                                ;86E82D;
-    dw $0008                                                             ;86E82F;
-    dw EnemyProjSpritemaps_BotwoonsBody_7                                ;86E831;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_4                          ;86E823;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_5                          ;86E827;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_6                          ;86E82B;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_7                          ;86E82F;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E833;
     dw InstList_EnemyProjectile_BotwoonsBody_Left                        ;86E835;
 
 InstList_EnemyProjectile_BotwoonsBody_DownLeft:
-    dw $0008                                                             ;86E837;
-    dw EnemyProjSpritemaps_BotwoonsBody_8                                ;86E839;
-    dw $0008                                                             ;86E83B;
-    dw EnemyProjSpritemaps_BotwoonsBody_9                                ;86E83D;
-    dw $0008                                                             ;86E83F;
-    dw EnemyProjSpritemaps_BotwoonsBody_A                                ;86E841;
-    dw $0008                                                             ;86E843;
-    dw EnemyProjSpritemaps_BotwoonsBody_B                                ;86E845;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_8                          ;86E837;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_9                          ;86E83B;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_A                          ;86E83F;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_B                          ;86E843;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E847;
     dw InstList_EnemyProjectile_BotwoonsBody_DownLeft                    ;86E849;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_EnemyProj_BotwoonsBody_DownFacingLeft_86E84B:
-    dw $0008                                                             ;86E84B;
-    dw UNUSED_EnemyProjSpritemap_BotwoonsBody_DownFacingLeft_8DB682      ;86E84D;
-    dw $0008                                                             ;86E84F;
-    dw UNUSED_EnemyProjSpritemap_BotwoonsBody_DownFacingLeft_8DB689      ;86E851;
-    dw $0008                                                             ;86E853;
-    dw UNUSED_EnemyProjSpritemap_BotwoonsBody_DownFacingLeft_8DB690      ;86E855;
-    dw $0008                                                             ;86E857;
-    dw UNUSED_EnemyProjSpritemap_BotwoonsBody_DownFacingLeft_8DB697      ;86E859;
+    dw $0008,UNUSED_EnemyProjSpritemap_BotwoonsBody_DownFacingLeft_8DB682 ;86E84B;
+    dw $0008,UNUSED_EnemyProjSpritemap_BotwoonsBody_DownFacingLeft_8DB689 ;86E84F;
+    dw $0008,UNUSED_EnemyProjSpritemap_BotwoonsBody_DownFacingLeft_8DB690 ;86E853;
+    dw $0008,UNUSED_EnemyProjSpritemap_BotwoonsBody_DownFacingLeft_8DB697 ;86E857;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E85B;
     dw UNUSED_InstList_EnemyProj_BotwoonsBody_DownFacingLeft_86E84B      ;86E85D;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_EnemyProjectile_BotwoonsBody_Down_FacingRight:
-    dw $0008                                                             ;86E85F;
-    dw EnemyProjSpritemaps_BotwoonsBody_C                                ;86E861;
-    dw $0008                                                             ;86E863;
-    dw EnemyProjSpritemaps_BotwoonsBody_D                                ;86E865;
-    dw $0008                                                             ;86E867;
-    dw EnemyProjSpritemaps_BotwoonsBody_E                                ;86E869;
-    dw $0008                                                             ;86E86B;
-    dw EnemyProjSpritemaps_BotwoonsBody_F                                ;86E86D;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_C                          ;86E85F;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_D                          ;86E863;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_E                          ;86E867;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_F                          ;86E86B;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E86F;
     dw InstList_EnemyProjectile_BotwoonsBody_Down_FacingRight            ;86E871;
 
 InstList_EnemyProjectile_BotwoonsBody_DownRight:
-    dw $0008                                                             ;86E873;
-    dw EnemyProjSpritemaps_BotwoonsBody_10                               ;86E875;
-    dw $0008                                                             ;86E877;
-    dw EnemyProjSpritemaps_BotwoonsBody_11                               ;86E879;
-    dw $0008                                                             ;86E87B;
-    dw EnemyProjSpritemaps_BotwoonsBody_12                               ;86E87D;
-    dw $0008                                                             ;86E87F;
-    dw EnemyProjSpritemaps_BotwoonsBody_13                               ;86E881;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_10                         ;86E873;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_11                         ;86E877;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_12                         ;86E87B;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_13                         ;86E87F;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E883;
     dw InstList_EnemyProjectile_BotwoonsBody_DownRight                   ;86E885;
 
 InstList_EnemyProjectile_BotwoonsBody_Right:
-    dw $0008                                                             ;86E887;
-    dw EnemyProjSpritemaps_BotwoonsBody_14                               ;86E889;
-    dw $0008                                                             ;86E88B;
-    dw EnemyProjSpritemaps_BotwoonsBody_15                               ;86E88D;
-    dw $0008                                                             ;86E88F;
-    dw EnemyProjSpritemaps_BotwoonsBody_16                               ;86E891;
-    dw $0008                                                             ;86E893;
-    dw EnemyProjSpritemaps_BotwoonsBody_17                               ;86E895;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_14                         ;86E887;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_15                         ;86E88B;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_16                         ;86E88F;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_17                         ;86E893;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E897;
     dw InstList_EnemyProjectile_BotwoonsBody_Right                       ;86E899;
 
 InstList_EnemyProjectile_BotwoonsBody_UpRight:
-    dw $0008                                                             ;86E89B;
-    dw EnemyProjSpritemaps_BotwoonsBody_18                               ;86E89D;
-    dw $0008                                                             ;86E89F;
-    dw EnemyProjSpritemaps_BotwoonsBody_19                               ;86E8A1;
-    dw $0008                                                             ;86E8A3;
-    dw EnemyProjSpritemaps_BotwoonsBody_1A                               ;86E8A5;
-    dw $0008                                                             ;86E8A7;
-    dw EnemyProjSpritemaps_BotwoonsBody_1B                               ;86E8A9;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_18                         ;86E89B;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_19                         ;86E89F;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_1A                         ;86E8A3;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_1B                         ;86E8A7;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E8AB;
     dw InstList_EnemyProjectile_BotwoonsBody_UpRight                     ;86E8AD;
 
 InstList_EnemyProjectile_BotwoonsBody_Up_FacingRight:
-    dw $0008                                                             ;86E8AF;
-    dw EnemyProjSpritemaps_BotwoonsBody_1C                               ;86E8B1;
-    dw $0008                                                             ;86E8B3;
-    dw EnemyProjSpritemaps_BotwoonsBody_1D                               ;86E8B5;
-    dw $0008                                                             ;86E8B7;
-    dw EnemyProjSpritemaps_BotwoonsBody_1E                               ;86E8B9;
-    dw $0008                                                             ;86E8BB;
-    dw EnemyProjSpritemaps_BotwoonsBody_1F                               ;86E8BD;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_1C                         ;86E8AF;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_1D                         ;86E8B3;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_1E                         ;86E8B7;
+    dw $0008,EnemyProjSpritemaps_BotwoonsBody_1F                         ;86E8BB;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E8BF;
     dw InstList_EnemyProjectile_BotwoonsBody_Up_FacingRight              ;86E8C1;
 
 InstList_EnemyProjectile_BotwoonsTail_Up_FacingRight:
-    dw $0001                                                             ;86E8C3;
-    dw EnemyProjSpritemaps_BotwoonsBody_20                               ;86E8C5;
+    dw $0001,EnemyProjSpritemaps_BotwoonsBody_20                         ;86E8C3;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E8C7;
 
 InstList_EnemyProjectile_BotwoonsTail_UpLeft:
-    dw $0001                                                             ;86E8C9;
-    dw EnemyProjSpritemaps_BotwoonsBody_21                               ;86E8CB;
+    dw $0001,EnemyProjSpritemaps_BotwoonsBody_21                         ;86E8C9;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E8CD;
 
 InstList_EnemyProjectile_BotwoonsTail_Left:
-    dw $0001                                                             ;86E8CF;
-    dw EnemyProjSpritemaps_BotwoonsBody_22                               ;86E8D1;
+    dw $0001,EnemyProjSpritemaps_BotwoonsBody_22                         ;86E8CF;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E8D3;
 
 InstList_EnemyProjectile_BotwoonsTail_DownLeft:
-    dw $0001                                                             ;86E8D5;
-    dw EnemyProjSpritemaps_BotwoonsBody_23                               ;86E8D7;
+    dw $0001,EnemyProjSpritemaps_BotwoonsBody_23                         ;86E8D5;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E8D9;
 
 InstList_EnemyProjectile_BotwoonsTail_Down:
-    dw $0001                                                             ;86E8DB;
-    dw EnemyProjSpritemaps_BotwoonsBody_24                               ;86E8DD;
+    dw $0001,EnemyProjSpritemaps_BotwoonsBody_24                         ;86E8DB;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E8DF;
 
 InstList_EnemyProjectile_BotwoonsTail_DownRight:
-    dw $0001                                                             ;86E8E1;
-    dw EnemyProjSpritemaps_BotwoonsBody_25                               ;86E8E3;
+    dw $0001,EnemyProjSpritemaps_BotwoonsBody_25                         ;86E8E1;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E8E5;
 
 InstList_EnemyProjectile_BotwoonsTail_Right:
-    dw $0001                                                             ;86E8E7;
-    dw EnemyProjSpritemaps_BotwoonsBody_26                               ;86E8E9;
+    dw $0001,EnemyProjSpritemaps_BotwoonsBody_26                         ;86E8E7;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E8EB;
 
 InstList_EnemyProjectile_BotwoonsTail_UpRight:
-    dw $0001                                                             ;86E8ED;
-    dw EnemyProjSpritemaps_BotwoonsBody_27                               ;86E8EF;
+    dw $0001,EnemyProjSpritemaps_BotwoonsBody_27                         ;86E8ED;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E8F1;
 
 InstList_EnemyProjectile_BotwoonsBodyTail_Hidden:
-    dw $0001                                                             ;86E8F3;
-    dw EnemyProjSpritemaps_BotwoonsBody_28                               ;86E8F5;
+    dw $0001,EnemyProjSpritemaps_BotwoonsBody_28                         ;86E8F3;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E8F7;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E8F9:
-    dw $0008                                                             ;86E8F9;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_0_8DB762              ;86E8FB;
-    dw $0008                                                             ;86E8FD;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_1_8DB769              ;86E8FF;
-    dw $0008                                                             ;86E901;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_2_8DB770              ;86E903;
-    dw $0008                                                             ;86E905;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_3_8DB777              ;86E907;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_0_8DB762        ;86E8F9;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_1_8DB769        ;86E8FD;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_2_8DB770        ;86E901;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_3_8DB777        ;86E905;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E909;
     dw UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E8F9           ;86E90B;
 
 UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E90D:
-    dw $0008                                                             ;86E90D;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_4_8DB77E              ;86E90F;
-    dw $0008                                                             ;86E911;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_5_8DB785              ;86E913;
-    dw $0008                                                             ;86E915;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_6_8DB78C              ;86E917;
-    dw $0008                                                             ;86E919;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_7_8DB793              ;86E91B;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_4_8DB77E        ;86E90D;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_5_8DB785        ;86E911;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_6_8DB78C        ;86E915;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_7_8DB793        ;86E919;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E91D;
     dw UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E90D           ;86E91F;
 
 UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E921:
-    dw $0008                                                             ;86E921;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_8_8DB79A              ;86E923;
-    dw $0008                                                             ;86E925;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_9_8DB7A1              ;86E927;
-    dw $0008                                                             ;86E929;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_A_8DB7A8              ;86E92B;
-    dw $0008                                                             ;86E92D;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_B_8DB7AF              ;86E92F;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_8_8DB79A        ;86E921;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_9_8DB7A1        ;86E925;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_A_8DB7A8        ;86E929;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_B_8DB7AF        ;86E92D;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E931;
     dw UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E921           ;86E933;
 
 UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E935:
-    dw $0008                                                             ;86E935;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_C_8DB7B6              ;86E937;
-    dw $0008                                                             ;86E939;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_D_8DB7BD              ;86E93B;
-    dw $0008                                                             ;86E93D;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_E_8DB7C4              ;86E93F;
-    dw $0008                                                             ;86E941;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_F_8DB7CB              ;86E943;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_C_8DB7B6        ;86E935;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_D_8DB7BD        ;86E939;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_E_8DB7C4        ;86E93D;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_F_8DB7CB        ;86E941;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E945;
     dw UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E935           ;86E947;
 
 UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E949:
-    dw $0008                                                             ;86E949;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_10_8DB7D2             ;86E94B;
-    dw $0008                                                             ;86E94D;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_11_8DB7D9             ;86E94F;
-    dw $0008                                                             ;86E951;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_12_8DB7E0             ;86E953;
-    dw $0008                                                             ;86E955;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_13_8DB7E7             ;86E957;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_10_8DB7D2       ;86E949;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_11_8DB7D9       ;86E94D;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_12_8DB7E0       ;86E951;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_13_8DB7E7       ;86E955;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E959;
     dw UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E949           ;86E95B;
 
 UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E95D:
-    dw $0008                                                             ;86E95D;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_14_8DB7EE             ;86E95F;
-    dw $0008                                                             ;86E961;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_15_8DB7F5             ;86E963;
-    dw $0008                                                             ;86E965;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_16_8DB7FC             ;86E967;
-    dw $0008                                                             ;86E969;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_17_8DB803             ;86E96B;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_14_8DB7EE       ;86E95D;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_15_8DB7F5       ;86E961;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_16_8DB7FC       ;86E965;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_17_8DB803       ;86E969;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E96D;
     dw UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E95D           ;86E96F;
 
 UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E971:
-    dw $0008                                                             ;86E971;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_18_8DB80A             ;86E973;
-    dw $0008                                                             ;86E975;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_19_8DB811             ;86E977;
-    dw $0008                                                             ;86E979;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_1A_8DB818             ;86E97B;
-    dw $0008                                                             ;86E97D;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_1B_8DB81F             ;86E97F;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_18_8DB80A       ;86E971;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_19_8DB811       ;86E975;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_1A_8DB818       ;86E979;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_1B_8DB81F       ;86E97D;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E981;
     dw UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E971           ;86E983;
 
 UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E985:
-    dw $0008                                                             ;86E985;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_1C_8DB826             ;86E987;
-    dw $0008                                                             ;86E989;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_1D_8DB82D             ;86E98B;
-    dw $0008                                                             ;86E98D;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_1E_8DB834             ;86E98F;
-    dw $0008                                                             ;86E991;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_1F_8DB83B             ;86E993;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_1C_8DB826       ;86E985;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_1D_8DB82D       ;86E989;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_1E_8DB834       ;86E98D;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_1F_8DB83B       ;86E991;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E995;
     dw UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E985           ;86E997;
 
 UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E999:
-    dw $0008                                                             ;86E999;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_20_8DB842             ;86E99B;
-    dw $0008                                                             ;86E99D;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_21_8DB849             ;86E99F;
-    dw $0008                                                             ;86E9A1;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_22_8DB850             ;86E9A3;
-    dw $0008                                                             ;86E9A5;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_23_8DB857             ;86E9A7;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_20_8DB842       ;86E999;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_21_8DB849       ;86E99D;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_22_8DB850       ;86E9A1;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_23_8DB857       ;86E9A5;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E9A9;
     dw UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E999           ;86E9AB;
 
 UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E9AD:
-    dw $0008                                                             ;86E9AD;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_24_8DB85E             ;86E9AF;
-    dw $0008                                                             ;86E9B1;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_25_8DB865             ;86E9B3;
-    dw $0008                                                             ;86E9B5;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_26_8DB86C             ;86E9B7;
-    dw $0008                                                             ;86E9B9;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_27_8DB873             ;86E9BB;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_24_8DB85E       ;86E9AD;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_25_8DB865       ;86E9B1;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_26_8DB86C       ;86E9B5;
+    dw $0008,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_27_8DB873       ;86E9B9;
     dw Instruction_EnemyProjectile_GotoY                                 ;86E9BD;
     dw UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E9AD           ;86E9BF;
 
 UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E9C1:
-    dw $0001                                                             ;86E9C1;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_28_8DB87A             ;86E9C3;
+    dw $0001,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_28_8DB87A       ;86E9C1;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E9C5;
 
 UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E9C7:
-    dw $0001                                                             ;86E9C7;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_29_8DB881             ;86E9C9;
+    dw $0001,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_29_8DB881       ;86E9C7;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E9CB;
 
 UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E9CD:
-    dw $0001                                                             ;86E9CD;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_2A_8DB888             ;86E9CF;
+    dw $0001,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_2A_8DB888       ;86E9CD;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E9D1;
 
 UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E9D3:
-    dw $0001                                                             ;86E9D3;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_2B_8DB88F             ;86E9D5;
+    dw $0001,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_2B_8DB88F       ;86E9D3;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E9D7;
 
 UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E9D9:
-    dw $0001                                                             ;86E9D9;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_2C_8DB896             ;86E9DB;
+    dw $0001,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_2C_8DB896       ;86E9D9;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E9DD;
 
 UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E9DF:
-    dw $0001                                                             ;86E9DF;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_2D_8DB89D             ;86E9E1;
+    dw $0001,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_2D_8DB89D       ;86E9DF;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E9E3;
 
 UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E9E5:
-    dw $0001                                                             ;86E9E5;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_2E_8DB8A4             ;86E9E7;
+    dw $0001,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_2E_8DB8A4       ;86E9E5;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E9E9;
 
 UNUSED_InstList_EnemyProjectile_BotwoonsBodyTail_86E9EB:
-    dw $0001                                                             ;86E9EB;
-    dw UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_2F_8DB8AB             ;86E9ED;
+    dw $0001,UNUSED_EnemyProjSpritemaps_BotwoonsBodyTail_2F_8DB8AB       ;86E9EB;
     dw Instruction_EnemyProjectile_Sleep                                 ;86E9EF;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -15271,24 +14214,19 @@ Function_EnemyProj_BotwoonsBody_QueueSmallExplosionSoundFX:
 
 
 EnemyProjectile_BotwoonsBody:
-    dw InitAI_EnemyProjectile_BotwoonsBody                               ;86EBA0;
-    dw PreInstruction_EnemyProjectile_BotwoonsBody                       ;86EBA2;
-    dw InstList_EnemyProjectile_BotwoonsBodyTail_Hidden                  ;86EBA4;
-    db $02,$02                                                           ;86EBA6;
-    dw $E080,$0000                                                       ;86EBA8;
-    dw InstList_EnemyProjectile_Delete                                   ;86EBAC;
+    dw InitAI_EnemyProjectile_BotwoonsBody                               ;86EBA0; Initialisation AI
+    dw PreInstruction_EnemyProjectile_BotwoonsBody                       ;86EBA2; Initial pre-instruction
+    dw InstList_EnemyProjectile_BotwoonsBodyTail_Hidden                  ;86EBA4; Initial instruction list
+    db $02,$02                                                           ;86EBA6; X,Y radius
+    dw $E080,$0000                                                       ;86EBA8; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86EBAC; Shot instruction list
 
 InstList_EnemyProjectile_BotwoonsSpit:
-    dw $0003                                                             ;86EBAE;
-    dw EnemyProjSpritemaps_BotwoonsSpit_0                                ;86EBB0;
-    dw $0003                                                             ;86EBB2;
-    dw EnemyProjSpritemaps_BotwoonsSpit_1                                ;86EBB4;
-    dw $0003                                                             ;86EBB6;
-    dw EnemyProjSpritemaps_BotwoonsSpit_2                                ;86EBB8;
-    dw $0003                                                             ;86EBBA;
-    dw EnemyProjSpritemaps_BotwoonsSpit_3                                ;86EBBC;
-    dw $0003                                                             ;86EBBE;
-    dw EnemyProjSpritemaps_BotwoonsSpit_4                                ;86EBC0;
+    dw $0003,EnemyProjSpritemaps_BotwoonsSpit_0                          ;86EBAE;
+    dw $0003,EnemyProjSpritemaps_BotwoonsSpit_1                          ;86EBB2;
+    dw $0003,EnemyProjSpritemaps_BotwoonsSpit_2                          ;86EBB6;
+    dw $0003,EnemyProjSpritemaps_BotwoonsSpit_3                          ;86EBBA;
+    dw $0003,EnemyProjSpritemaps_BotwoonsSpit_4                          ;86EBBE;
     dw Instruction_EnemyProjectile_GotoY                                 ;86EBC2;
     dw InstList_EnemyProjectile_BotwoonsSpit                             ;86EBC4;
 
@@ -15363,21 +14301,19 @@ CheckIf_EnemyProjectile_IsOffScreen_duplicate_again5:
 
 
 EnemyProjectile_BotwoonsSpit:
-    dw InitAI_EnemyProjectile_BotwoonsSpit                               ;86EC48;
-    dw PreInstruction_EnemyProjectile_BotwoonsSpit                       ;86EC4A;
-    dw InstList_EnemyProjectile_BotwoonsSpit                             ;86EC4C;
-    db $02,$02                                                           ;86EC4E;
-    dw $1060,$0000                                                       ;86EC50;
-    dw InstList_EnemyProjectile_Delete                                   ;86EC54;
+    dw InitAI_EnemyProjectile_BotwoonsSpit                               ;86EC48; Initialisation AI
+    dw PreInstruction_EnemyProjectile_BotwoonsSpit                       ;86EC4A; Initial pre-instruction
+    dw InstList_EnemyProjectile_BotwoonsSpit                             ;86EC4C; Initial instruction list
+    db $02,$02                                                           ;86EC4E; X,Y radius
+    dw $1060,$0000                                                       ;86EC50; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86EC54; Shot instruction list
 
 InstList_EnemyProjectile_YappingMawsBody_FacingDown:
-    dw $0001                                                             ;86EC56;
-    dw EnemyProjSpritemaps_YappingMawsBody_0                             ;86EC58;
+    dw $0001,EnemyProjSpritemaps_YappingMawsBody_0                       ;86EC56;
     dw Instruction_EnemyProjectile_Sleep                                 ;86EC5A;
 
 InstList_EnemyProjectile_YappingMawsBody_FacingUp:
-    dw $0001                                                             ;86EC5C;
-    dw EnemyProjSpritemaps_YappingMawsBody_1                             ;86EC5E;
+    dw $0001,EnemyProjSpritemaps_YappingMawsBody_1                       ;86EC5C;
     dw Instruction_EnemyProjectile_Sleep                                 ;86EC60;
 
 InitAI_EnemyProjectile_YappingMawsBody:
@@ -15411,29 +14347,25 @@ RTS_86EC94:
 
 
 EnemyProjectile_YappingMawsBody:
-    dw InitAI_EnemyProjectile_YappingMawsBody                            ;86EC95;
-    dw RTS_86EC94                                                        ;86EC97;
-    dw InstList_EnemyProjectile_YappingMawsBody_FacingDown               ;86EC99;
-    db $02,$02                                                           ;86EC9B;
-    dw $2005,$0000                                                       ;86EC9D;
-    dw InstList_EnemyProjectile_Delete                                   ;86ECA1;
+    dw InitAI_EnemyProjectile_YappingMawsBody                            ;86EC95; Initialisation AI
+    dw RTS_86EC94                                                        ;86EC97; Initial pre-instruction
+    dw InstList_EnemyProjectile_YappingMawsBody_FacingDown               ;86EC99; Initial instruction list
+    db $02,$02                                                           ;86EC9B; X,Y radius
+    dw $2005,$0000                                                       ;86EC9D; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86ECA1; Shot instruction list
 
 InstList_EnemyProjectile_Pickup_HandleRespawningEnemy:
-    dw $0040                                                             ;86ECA3;
-    dw EnemyProjSpritemaps_Blank_Default                                 ;86ECA5;
+    dw $0040,EnemyProjSpritemaps_Blank_Default                           ;86ECA3;
     dw Instruction_EnemyProjectile_Pickup_HandleRespawningEnemy          ;86ECA7;
     dw Instruction_EnemyProjectile_Delete                                ;86ECA9;
 
 InstList_EnemyProjectile_EnemyDeathExplosion_BigExplosion_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86ECAB;
-    dw $0005                                                             ;86ECAD;
+    dw Instruction_EnemyProjectile_TimerInY,$0005                        ;86ECAB;
 
 InstList_EnemyProjectile_EnemyDeathExplosion_BigExplosion_1:
-    dw Instruction_EnemyProj_EnemyDeathExpl_SpawnSpriteObjectInY_10      ;86ECAF;
-    dw $0003                                                             ;86ECB1;
-    dw Instruction_EnemyProj_EnemyDeathExpl_SpawnSpriteObjectInY_10      ;86ECB3;
-    dw $000C,$0008                                                       ;86ECB5;
-    dw EnemyProjSpritemaps_Blank_Default                                 ;86ECB9;
+    dw Instruction_EnemyProj_EnemyDeathExpl_SpawnSpriteObjectInY_10,$0003 ;86ECAF;
+    dw Instruction_EnemyProj_EnemyDeathExpl_SpawnSpriteObjectInY_10,$000C ;86ECB3;
+    dw $0008,EnemyProjSpritemaps_Blank_Default                           ;86ECB5;
     dw Instruction_EnemyProj_EDeathExplo_QueueSmallExplosionSoundFX      ;86ECBB;
     dw Instruction_EnemyProjectile_DecrementTimer_GotoYIfNonZero         ;86ECBD;
     dw InstList_EnemyProjectile_EnemyDeathExplosion_BigExplosion_1       ;86ECBF;
@@ -15441,17 +14373,13 @@ InstList_EnemyProjectile_EnemyDeathExplosion_BigExplosion_1:
     dw Instruction_EnemyProjectile_Delete                                ;86ECC3;
 
 InstList_EnemyProj_EnemyDeathExplosion_MiniKraidExplosion_0:
-    dw Instruction_EnemyProjectile_TimerInY                              ;86ECC5;
-    dw $0010                                                             ;86ECC7;
+    dw Instruction_EnemyProjectile_TimerInY,$0010                        ;86ECC5;
 
 InstList_EnemyProj_EnemyDeathExplosion_MiniKraidExplosion_1:
-    dw Instruction_EnemyProj_EnemyDeathExpl_SpawnSpriteObjectInY_20      ;86ECC9;
-    dw $0003                                                             ;86ECCB;
-    dw Instruction_EnemyProj_EnemyDeathExpl_SpawnSpriteObjectInY_20      ;86ECCD;
-    dw $000C                                                             ;86ECCF;
-    dw Instruction_EnemyProj_EnemyDeathExpl_SpawnSpriteObjectInY_20      ;86ECD1;
-    dw $0015,$0008                                                       ;86ECD3;
-    dw EnemyProjSpritemaps_Blank_Default                                 ;86ECD7;
+    dw Instruction_EnemyProj_EnemyDeathExpl_SpawnSpriteObjectInY_20,$0003 ;86ECC9;
+    dw Instruction_EnemyProj_EnemyDeathExpl_SpawnSpriteObjectInY_20,$000C ;86ECCD;
+    dw Instruction_EnemyProj_EnemyDeathExpl_SpawnSpriteObjectInY_20,$0015 ;86ECD1;
+    dw $0008,EnemyProjSpritemaps_Blank_Default                           ;86ECD3;
     dw Instruction_EnemyProj_EDeathExplo_QueueSmallExplosionSoundFX      ;86ECD9;
     dw Instruction_EnemyProjectile_DecrementTimer_GotoYIfNonZero         ;86ECDB;
     dw InstList_EnemyProj_EnemyDeathExplosion_MiniKraidExplosion_1       ;86ECDD;
@@ -15517,36 +14445,24 @@ Instruction_EnemyProj_EnemyDeathExpl_SpawnSpriteObjectInY_10:
 
 
 InstList_EnemyProjectile_EnemyDeathExplosion_NormalExplosion:
-    dw $0005                                                             ;86ED4B;
-    dw EnemyProjSpritemaps_Common_BigExplosion_0                         ;86ED4D;
-    dw $0005                                                             ;86ED4F;
-    dw EnemyProjSpritemaps_Common_BigExplosion_1                         ;86ED51;
-    dw $0005                                                             ;86ED53;
-    dw EnemyProjSpritemaps_Common_BigExplosion_2                         ;86ED55;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_0                   ;86ED4B;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_1                   ;86ED4F;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_2                   ;86ED53;
     dw Instruction_EnemyProj_EnemyDeathExpl_QueueEnemyKilledSoundFX      ;86ED57;
-    dw $0005                                                             ;86ED59;
-    dw EnemyProjSpritemaps_Common_BigExplosion_3                         ;86ED5B;
-    dw $0005                                                             ;86ED5D;
-    dw EnemyProjSpritemaps_Common_BigExplosion_4                         ;86ED5F;
-    dw $0005                                                             ;86ED61;
-    dw EnemyProjSpritemaps_Common_BigExplosion_5                         ;86ED63;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_3                   ;86ED59;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_4                   ;86ED5D;
+    dw $0005,EnemyProjSpritemaps_Common_BigExplosion_5                   ;86ED61;
     dw Instruction_EnemyProjectile_EnemyDeathExplosion_BecomePickup      ;86ED65;
     dw Instruction_EnemyProjectile_Delete                                ;86ED67;
 
 InstList_EnemyProjectile_EnemyDeathExplosion_SmallExplosion:
-    dw $0004                                                             ;86ED69;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_0                         ;86ED6B;
-    dw $0006                                                             ;86ED6D;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_1                         ;86ED6F;
-    dw $0005                                                             ;86ED71;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_2                         ;86ED73;
+    dw $0004,EnemyProjSpritemaps_EnemyDeathExplosion_0                   ;86ED69;
+    dw $0006,EnemyProjSpritemaps_EnemyDeathExplosion_1                   ;86ED6D;
+    dw $0005,EnemyProjSpritemaps_EnemyDeathExplosion_2                   ;86ED71;
     dw Instruction_EnemyProj_EnemyDeathExpl_QueueEnemyKilledSoundFX      ;86ED75;
-    dw $0005                                                             ;86ED77;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_3                         ;86ED79;
-    dw $0005                                                             ;86ED7B;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_4                         ;86ED7D;
-    dw $0006                                                             ;86ED7F;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_5                         ;86ED81;
+    dw $0005,EnemyProjSpritemaps_EnemyDeathExplosion_3                   ;86ED77;
+    dw $0005,EnemyProjSpritemaps_EnemyDeathExplosion_4                   ;86ED7B;
+    dw $0006,EnemyProjSpritemaps_EnemyDeathExplosion_5                   ;86ED7F;
     dw Instruction_EnemyProjectile_EnemyDeathExplosion_BecomePickup      ;86ED83;
     dw Instruction_EnemyProjectile_Delete                                ;86ED85;
 
@@ -15560,148 +14476,96 @@ UNUSED_InstList_EnemyProj_EnemyDeathExplosion_Delete_86ED8B:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_EnemyProjectile_Pickup_SmallEnergy:
-    dw $0008                                                             ;86ED8D;
-    dw EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_4                  ;86ED8F;
-    dw $0008                                                             ;86ED91;
-    dw EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_5                  ;86ED93;
-    dw $0008                                                             ;86ED95;
-    dw EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_6                  ;86ED97;
-    dw $0008                                                             ;86ED99;
-    dw EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_7                  ;86ED9B;
+    dw $0008,EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_4            ;86ED8D;
+    dw $0008,EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_5            ;86ED91;
+    dw $0008,EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_6            ;86ED95;
+    dw $0008,EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_7            ;86ED99;
     dw Instruction_EnemyProjectile_GotoY                                 ;86ED9D;
     dw InstList_EnemyProjectile_Pickup_SmallEnergy                       ;86ED9F;
     dw Instruction_EnemyProjectile_Sleep                                 ;86EDA1;
 
 InstList_EnemyProjectile_Pickup_BigEnergy:
-    dw $0008                                                             ;86EDA3;
-    dw EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_8                  ;86EDA5;
-    dw $0008                                                             ;86EDA7;
-    dw EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_9                  ;86EDA9;
-    dw $0008                                                             ;86EDAB;
-    dw EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_A                  ;86EDAD;
-    dw $0008                                                             ;86EDAF;
-    dw EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_B                  ;86EDB1;
+    dw $0008,EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_8            ;86EDA3;
+    dw $0008,EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_9            ;86EDA7;
+    dw $0008,EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_A            ;86EDAB;
+    dw $0008,EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_B            ;86EDAF;
     dw Instruction_EnemyProjectile_GotoY                                 ;86EDB3;
     dw InstList_EnemyProjectile_Pickup_BigEnergy                         ;86EDB5;
     dw Instruction_EnemyProjectile_Sleep                                 ;86EDB7;
 
 InstList_EnemyProjectile_Pickup_Missiles:
-    dw $0005                                                             ;86EDB9;
-    dw EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_C                  ;86EDBB;
-    dw $0005                                                             ;86EDBD;
-    dw EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_D                  ;86EDBF;
+    dw $0005,EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_C            ;86EDB9;
+    dw $0005,EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_D            ;86EDBD;
     dw Instruction_EnemyProjectile_GotoY                                 ;86EDC1;
     dw InstList_EnemyProjectile_Pickup_Missiles                          ;86EDC3;
     dw Instruction_EnemyProjectile_Sleep                                 ;86EDC5;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_EnemyProjectile_Pickup_Bombs_86EDC7:
-    dw $0005                                                             ;86EDC7;
-    dw UNUSED_EnemyProjSpritemaps_Pickup_Bombs_0_8DC0C9                  ;86EDC9;
-    dw $0005                                                             ;86EDCB;
-    dw UNUSED_EnemyProjSpritemaps_Pickup_Bombs_1_8DC0D0                  ;86EDCD;
-    dw $0005                                                             ;86EDCF;
-    dw UNUSED_EnemyProjSpritemaps_Pickup_Bombs_2_8DC0D7                  ;86EDD1;
-    dw $0005                                                             ;86EDD3;
-    dw UNUSED_EnemyProjSpritemaps_Pickup_Bombs_3_8DC0DE                  ;86EDD5;
+    dw $0005,UNUSED_EnemyProjSpritemaps_Pickup_Bombs_0_8DC0C9            ;86EDC7;
+    dw $0005,UNUSED_EnemyProjSpritemaps_Pickup_Bombs_1_8DC0D0            ;86EDCB;
+    dw $0005,UNUSED_EnemyProjSpritemaps_Pickup_Bombs_2_8DC0D7            ;86EDCF;
+    dw $0005,UNUSED_EnemyProjSpritemaps_Pickup_Bombs_3_8DC0DE            ;86EDD3;
     dw Instruction_EnemyProjectile_GotoY                                 ;86EDD7;
     dw UNUSED_InstList_EnemyProjectile_Pickup_Bombs_86EDC7               ;86EDD9;
     dw Instruction_EnemyProjectile_Sleep                                 ;86EDDB;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_EnemyProjectile_Pickup_SuperMissiles:
-    dw $0005                                                             ;86EDDD;
-    dw EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_E                  ;86EDDF;
-    dw $0005                                                             ;86EDE1;
-    dw EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_F                  ;86EDE3;
+    dw $0005,EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_E            ;86EDDD;
+    dw $0005,EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_F            ;86EDE1;
     dw Instruction_EnemyProjectile_GotoY                                 ;86EDE5;
     dw InstList_EnemyProjectile_Pickup_SuperMissiles                     ;86EDE7;
     dw Instruction_EnemyProjectile_Sleep                                 ;86EDE9;
 
 InstList_EnemyProjectile_Pickup_PowerBombs:
-    dw $0005                                                             ;86EDEB;
-    dw EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_0                  ;86EDED;
-    dw $0005                                                             ;86EDEF;
-    dw EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_1                  ;86EDF1;
-    dw $0005                                                             ;86EDF3;
-    dw EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_2                  ;86EDF5;
-    dw $0005                                                             ;86EDF7;
-    dw EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_3                  ;86EDF9;
+    dw $0005,EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_0            ;86EDEB;
+    dw $0005,EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_1            ;86EDEF;
+    dw $0005,EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_2            ;86EDF3;
+    dw $0005,EnemyProjSpritemaps_Pickup_EnemyDeathExplosion_3            ;86EDF7;
     dw Instruction_EnemyProjectile_GotoY                                 ;86EDFB;
     dw InstList_EnemyProjectile_Pickup_PowerBombs                        ;86EDFD;
 
 InstList_EnemyProj_EnemyDeathExplosion_KilledBySamusContact:
-    dw $0002                                                             ;86EDFF;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_6                         ;86EE01;
-    dw $0002                                                             ;86EE03;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_7                         ;86EE05;
-    dw $0002                                                             ;86EE07;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_8                         ;86EE09;
-    dw $0002                                                             ;86EE0B;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_9                         ;86EE0D;
-    dw $0002                                                             ;86EE0F;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_A                         ;86EE11;
-    dw $0002                                                             ;86EE13;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_B                         ;86EE15;
-    dw $0002                                                             ;86EE17;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_C                         ;86EE19;
+    dw $0002,EnemyProjSpritemaps_EnemyDeathExplosion_6                   ;86EDFF;
+    dw $0002,EnemyProjSpritemaps_EnemyDeathExplosion_7                   ;86EE03;
+    dw $0002,EnemyProjSpritemaps_EnemyDeathExplosion_8                   ;86EE07;
+    dw $0002,EnemyProjSpritemaps_EnemyDeathExplosion_9                   ;86EE0B;
+    dw $0002,EnemyProjSpritemaps_EnemyDeathExplosion_A                   ;86EE0F;
+    dw $0002,EnemyProjSpritemaps_EnemyDeathExplosion_B                   ;86EE13;
+    dw $0002,EnemyProjSpritemaps_EnemyDeathExplosion_C                   ;86EE17;
     dw Instruction_EnemyProj_EDeathExplo_QueueContactKilledSoundFX       ;86EE1B;
-    dw $0002                                                             ;86EE1D;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_D                         ;86EE1F;
-    dw $0002                                                             ;86EE21;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_E                         ;86EE23;
-    dw $0002                                                             ;86EE25;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_F                         ;86EE27;
-    dw $0002                                                             ;86EE29;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_10                        ;86EE2B;
-    dw $0002                                                             ;86EE2D;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_11                        ;86EE2F;
-    dw $0002                                                             ;86EE31;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_12                        ;86EE33;
-    dw $0002                                                             ;86EE35;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_13                        ;86EE37;
-    dw $0002                                                             ;86EE39;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_14                        ;86EE3B;
-    dw $0002                                                             ;86EE3D;
-    dw EnemyProjSpritemaps_EnemyDeathExplosion_15                        ;86EE3F;
+    dw $0002,EnemyProjSpritemaps_EnemyDeathExplosion_D                   ;86EE1D;
+    dw $0002,EnemyProjSpritemaps_EnemyDeathExplosion_E                   ;86EE21;
+    dw $0002,EnemyProjSpritemaps_EnemyDeathExplosion_F                   ;86EE25;
+    dw $0002,EnemyProjSpritemaps_EnemyDeathExplosion_10                  ;86EE29;
+    dw $0002,EnemyProjSpritemaps_EnemyDeathExplosion_11                  ;86EE2D;
+    dw $0002,EnemyProjSpritemaps_EnemyDeathExplosion_12                  ;86EE31;
+    dw $0002,EnemyProjSpritemaps_EnemyDeathExplosion_13                  ;86EE35;
+    dw $0002,EnemyProjSpritemaps_EnemyDeathExplosion_14                  ;86EE39;
+    dw $0002,EnemyProjSpritemaps_EnemyDeathExplosion_15                  ;86EE3D;
     dw Instruction_EnemyProjectile_EnemyDeathExplosion_BecomePickup      ;86EE41;
     dw Instruction_EnemyProjectile_Delete                                ;86EE43;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_EnemyProj_EnemyDeathExplo_KillContact_86EE45:
-    dw $0002                                                             ;86EE45;
-    dw UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_0_8DB8E5       ;86EE47;
-    dw $0002                                                             ;86EE49;
-    dw UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_1_8DB8F6       ;86EE4B;
-    dw $0002                                                             ;86EE4D;
-    dw UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_2_8DB907       ;86EE4F;
-    dw $0002                                                             ;86EE51;
-    dw UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_3_8DB92C       ;86EE53;
-    dw $0002                                                             ;86EE55;
-    dw UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_4_8DB951       ;86EE57;
-    dw $0002                                                             ;86EE59;
-    dw UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_5_8DB976       ;86EE5B;
-    dw $0002                                                             ;86EE5D;
-    dw UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_6_8DB99B       ;86EE5F;
+    dw $0002,UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_0_8DB8E5 ;86EE45;
+    dw $0002,UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_1_8DB8F6 ;86EE49;
+    dw $0002,UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_2_8DB907 ;86EE4D;
+    dw $0002,UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_3_8DB92C ;86EE51;
+    dw $0002,UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_4_8DB951 ;86EE55;
+    dw $0002,UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_5_8DB976 ;86EE59;
+    dw $0002,UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_6_8DB99B ;86EE5D;
     dw Instruction_EnemyProj_EDeathExplo_QueueContactKilledSoundFX       ;86EE61;
-    dw $0002                                                             ;86EE63;
-    dw UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_7_8DB9B1       ;86EE65;
-    dw $0002                                                             ;86EE67;
-    dw UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_8_8DB9C7       ;86EE69;
-    dw $0002                                                             ;86EE6B;
-    dw UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_9_8DB9DD       ;86EE6D;
-    dw $0002                                                             ;86EE6F;
-    dw UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_A_8DB9F3       ;86EE71;
-    dw $0002                                                             ;86EE73;
-    dw UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_B_8DBA09       ;86EE75;
-    dw $0002                                                             ;86EE77;
-    dw UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_C_8DBA1F       ;86EE79;
-    dw $0002                                                             ;86EE7B;
-    dw UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_D_8DBA35       ;86EE7D;
-    dw $0002                                                             ;86EE7F;
-    dw UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_E_8DBA4B       ;86EE81;
-    dw $0002                                                             ;86EE83;
-    dw UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_F_8DBA61       ;86EE85;
+    dw $0002,UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_7_8DB9B1 ;86EE63;
+    dw $0002,UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_8_8DB9C7 ;86EE67;
+    dw $0002,UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_9_8DB9DD ;86EE6B;
+    dw $0002,UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_A_8DB9F3 ;86EE6F;
+    dw $0002,UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_B_8DBA09 ;86EE73;
+    dw $0002,UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_C_8DBA1F ;86EE77;
+    dw $0002,UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_D_8DBA35 ;86EE7B;
+    dw $0002,UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_E_8DBA4B ;86EE7F;
+    dw $0002,UNUSED_EnemyProjSpritemaps_EDeathExplo_KillContact_F_8DBA61 ;86EE83;
     dw Instruction_EnemyProjectile_EnemyDeathExplosion_BecomePickup      ;86EE87;
     dw Instruction_EnemyProjectile_Delete                                ;86EE89;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -16244,8 +15108,13 @@ Random_Drop_Routine:
     RTS                                                                  ;86F25D;
 
 
-.drops:
-    db $01,$02,$04,$06,$05,$03                                           ;86F25E;
+.drops:                                                                  ;86F25E;
+    db $01 ; Small health
+    db $02 ; Big health
+    db $04 ; Missiles
+    db $06 ; Nothing
+    db $05 ; Super missiles
+    db $03 ; Power bombs
 
 Respawn_Enemy:
     PHB                                                                  ;86F264;
@@ -16335,56 +15204,42 @@ Respawn_Enemy:
 
 
 EnemyProjectile_EnemyDeathPickup:
-    dw InitAI_EnemyProjectile_Pickup                                     ;86F337;
-    dw PreInstruction_EnemyProjectile_Pickup                             ;86F339;
-    dw InstList_EnemyProjectile_Pickup_SmallEnergy                       ;86F33B;
-    db $10,$10                                                           ;86F33D;
-    dw $3000                                                             ;86F33F;
-    dw InstList_EnemyProjectile_Delete                                   ;86F341;
-    dw InstList_EnemyProjectile_Delete                                   ;86F343;
+    dw InitAI_EnemyProjectile_Pickup                                     ;86F337; Initialisation AI
+    dw PreInstruction_EnemyProjectile_Pickup                             ;86F339; Initial pre-instruction
+    dw InstList_EnemyProjectile_Pickup_SmallEnergy                       ;86F33B; Initial instruction list
+    db $10,$10                                                           ;86F33D; X,Y radius
+    dw $3000                                                             ;86F33F; Properties
+    dw InstList_EnemyProjectile_Delete                                   ;86F341; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86F343; Shot instruction list
 
 EnemyProjectile_EnemyDeathExplosion:
-    dw InitAI_EnemyProjectile_EnemyDeathExplosion                        ;86F345;
-    dw RTS_86EFDF                                                        ;86F347;
-    dw InstList_EnemyProjectile_Pickup_SmallEnergy                       ;86F349;
-    db $10,$10                                                           ;86F34B;
-    dw $7000                                                             ;86F34D;
-    dw InstList_EnemyProjectile_Delete                                   ;86F34F;
-    dw InstList_EnemyProjectile_Delete                                   ;86F351;
+    dw InitAI_EnemyProjectile_EnemyDeathExplosion                        ;86F345; Initialisation AI
+    dw RTS_86EFDF                                                        ;86F347; Initial pre-instruction
+    dw InstList_EnemyProjectile_Pickup_SmallEnergy                       ;86F349; Initial instruction list
+    db $10,$10                                                           ;86F34B; X,Y radius
+    dw $7000                                                             ;86F34D; Properties
+    dw InstList_EnemyProjectile_Delete                                   ;86F34F; Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86F351; Shot instruction list
 
 InstList_EnemyProjectile_FallingSpark_Falling:
-    dw $0003                                                             ;86F353;
-    dw EnemyProjSpritemaps_Sparks_0                                      ;86F355;
-    dw $0003                                                             ;86F357;
-    dw EnemyProjSpritemaps_Sparks_1                                      ;86F359;
-    dw $0003                                                             ;86F35B;
-    dw EnemyProjSpritemaps_Sparks_2                                      ;86F35D;
+    dw $0003,EnemyProjSpritemaps_Sparks_0                                ;86F353;
+    dw $0003,EnemyProjSpritemaps_Sparks_1                                ;86F357;
+    dw $0003,EnemyProjSpritemaps_Sparks_2                                ;86F35B;
     dw Instruction_EnemyProjectile_GotoY                                 ;86F35F;
     dw InstList_EnemyProjectile_FallingSpark_Falling                     ;86F361;
 
 InstList_EnemyProjectile_FallingSpark_HitFloor:
-    dw $0001                                                             ;86F363;
-    dw EnemyProjSpritemaps_Sparks_0                                      ;86F365;
-    dw $0001                                                             ;86F367;
-    dw EnemyProjSpritemaps_Blank_Default                                 ;86F369;
-    dw $0001                                                             ;86F36B;
-    dw EnemyProjSpritemaps_Sparks_0                                      ;86F36D;
-    dw $0001                                                             ;86F36F;
-    dw EnemyProjSpritemaps_Blank_Default                                 ;86F371;
-    dw $0001                                                             ;86F373;
-    dw EnemyProjSpritemaps_Sparks_1                                      ;86F375;
-    dw $0001                                                             ;86F377;
-    dw EnemyProjSpritemaps_Blank_Default                                 ;86F379;
-    dw $0001                                                             ;86F37B;
-    dw EnemyProjSpritemaps_Sparks_1                                      ;86F37D;
-    dw $0001                                                             ;86F37F;
-    dw EnemyProjSpritemaps_Blank_Default                                 ;86F381;
-    dw $0001                                                             ;86F383;
-    dw EnemyProjSpritemaps_Sparks_2                                      ;86F385;
-    dw $0001                                                             ;86F387;
-    dw EnemyProjSpritemaps_Blank_Default                                 ;86F389;
-    dw $0001                                                             ;86F38B;
-    dw EnemyProjSpritemaps_Sparks_2                                      ;86F38D;
+    dw $0001,EnemyProjSpritemaps_Sparks_0                                ;86F363;
+    dw $0001,EnemyProjSpritemaps_Blank_Default                           ;86F367;
+    dw $0001,EnemyProjSpritemaps_Sparks_0                                ;86F36B;
+    dw $0001,EnemyProjSpritemaps_Blank_Default                           ;86F36F;
+    dw $0001,EnemyProjSpritemaps_Sparks_1                                ;86F373;
+    dw $0001,EnemyProjSpritemaps_Blank_Default                           ;86F377;
+    dw $0001,EnemyProjSpritemaps_Sparks_1                                ;86F37B;
+    dw $0001,EnemyProjSpritemaps_Blank_Default                           ;86F37F;
+    dw $0001,EnemyProjSpritemaps_Sparks_2                                ;86F383;
+    dw $0001,EnemyProjSpritemaps_Blank_Default                           ;86F387;
+    dw $0001,EnemyProjSpritemaps_Sparks_2                                ;86F38B;
     dw Instruction_EnemyProjectile_Delete                                ;86F38F;
 
 InitAI_EnemyProjectile_FallingSpark:
@@ -16413,13 +15268,18 @@ InitAI_EnemyProjectile_FallingSpark:
     STA.W $1AFF,Y                                                        ;86F3D0;
     RTS                                                                  ;86F3D3;
 
-
-.distance:
+; This table is one entry too short to be indexed with 1Ch >_<;
+  .distance
     dw $FFFF                                                             ;86F3D4;
+  .subdistance
+    dw       $B800                                                       ;86F3D6;
+    dw $FFFF,$C000
+    dw $FFFF,$E000
+    dw $FFFF,$FF00
+    dw $0000,$0100
+    dw $0000,$2000
+    dw $0000,$4000
 
-.subdistance:
-    dw $B800,$FFFF,$C000,$FFFF,$E000,$FFFF,$FF00,$0000                   ;86F3D6;
-    dw $0100,$0000,$2000,$0000,$4000                                     ;86F3E6;
 
 PreInstruction_EnemyProjectile_FallingSpark:
     LDA.W $1ADB,X                                                        ;86F3F0;
@@ -16497,12 +15357,12 @@ PreInstruction_EnemyProjectile_FallingSpark:
 
 
 EnemyProjectile_FallingSpark:
-    dw InitAI_EnemyProjectile_FallingSpark                               ;86F498;
-    dw PreInstruction_EnemyProjectile_FallingSpark                       ;86F49A;
-    dw InstList_EnemyProjectile_FallingSpark_Falling                     ;86F49C;
-    db $04,$04                                                           ;86F49E;
-    dw $0005,$0000                                                       ;86F4A0;
-    dw InstList_EnemyProjectile_Delete                                   ;86F4A4;
+    dw InitAI_EnemyProjectile_FallingSpark                               ;86F498; Initialisation AI
+    dw PreInstruction_EnemyProjectile_FallingSpark                       ;86F49A; Initial pre-instruction
+    dw InstList_EnemyProjectile_FallingSpark_Falling                     ;86F49C; Initial instruction list
+    db $04,$04                                                           ;86F49E; X,Y radius
+    dw $0005,$0000                                                       ;86F4A0; Properties, Hit instruction list
+    dw InstList_EnemyProjectile_Delete                                   ;86F4A4; Shot instruction list
 
 Freespace_Bank86_F4A6:                                                   ;86F4A6;
 ; $B5A bytes

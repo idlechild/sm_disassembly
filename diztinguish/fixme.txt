@@ -1,2 +1,3 @@
 $84D94B Should be 8bit
 $85823F Should be 16bit
+$86DD6C Should be 8bit
