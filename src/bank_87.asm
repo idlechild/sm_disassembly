@@ -287,50 +287,34 @@ endif ; !FEATURE_KEEP_UNREFERENCED
 
 
 InstList_AnimatedTilesObject_VerticalSpikes:
-    dw $0008                                                             ;87816A;
-    dw AnimatedTiles_VerticalSpikes_0                                    ;87816C;
-    dw $0008                                                             ;87816E;
-    dw AnimatedTiles_VerticalSpikes_1                                    ;878170;
-    dw $0008                                                             ;878172;
-    dw AnimatedTiles_VerticalSpikes_2                                    ;878174;
-    dw $0008                                                             ;878176;
-    dw AnimatedTiles_VerticalSpikes_1                                    ;878178;
+    dw $0008,AnimatedTiles_VerticalSpikes_0                              ;87816A;
+    dw $0008,AnimatedTiles_VerticalSpikes_1                              ;87816E;
+    dw $0008,AnimatedTiles_VerticalSpikes_2                              ;878172;
+    dw $0008,AnimatedTiles_VerticalSpikes_1                              ;878176;
     dw Instruction_AnimatedTilesObject_GotoY                             ;87817A;
     dw InstList_AnimatedTilesObject_VerticalSpikes                       ;87817C;
 
 InstList_AnimatedTilesObject_HorizontalSpikes:
-    dw $0008                                                             ;87817E;
-    dw AnimatedTiles_HorizontalSpikes_0                                  ;878180;
-    dw $0008                                                             ;878182;
-    dw AnimatedTiles_HorizontalSpikes_1                                  ;878184;
-    dw $0008                                                             ;878186;
-    dw AnimatedTiles_HorizontalSpikes_2                                  ;878188;
-    dw $0008                                                             ;87818A;
-    dw AnimatedTiles_HorizontalSpikes_1                                  ;87818C;
+    dw $0008,AnimatedTiles_HorizontalSpikes_0                            ;87817E;
+    dw $0008,AnimatedTiles_HorizontalSpikes_1                            ;878182;
+    dw $0008,AnimatedTiles_HorizontalSpikes_2                            ;878186;
+    dw $0008,AnimatedTiles_HorizontalSpikes_1                            ;87818A;
     dw Instruction_AnimatedTilesObject_GotoY                             ;87818E;
     dw InstList_AnimatedTilesObject_HorizontalSpikes                     ;878190;
 
 InstList_AnimatedTilesObject_CrateriaLake:
-    dw $000A                                                             ;878192;
-    dw AnimatedTiles_CrateriaLake_0                                      ;878194;
-    dw $000A                                                             ;878196;
-    dw AnimatedTiles_CrateriaLake_1                                      ;878198;
-    dw $000A                                                             ;87819A;
-    dw AnimatedTiles_CrateriaLake_2                                      ;87819C;
-    dw $000A                                                             ;87819E;
-    dw AnimatedTiles_CrateriaLake_1                                      ;8781A0;
+    dw $000A,AnimatedTiles_CrateriaLake_0                                ;878192;
+    dw $000A,AnimatedTiles_CrateriaLake_1                                ;878196;
+    dw $000A,AnimatedTiles_CrateriaLake_2                                ;87819A;
+    dw $000A,AnimatedTiles_CrateriaLake_1                                ;87819E;
     dw Instruction_AnimatedTilesObject_GotoY                             ;8781A2;
     dw InstList_AnimatedTilesObject_CrateriaLake                         ;8781A4;
 
 UNUSED_InstList_AnimatedTilesObject_CrateriaLava_8781A6:
-    dw $000A                                                             ;8781A6;
-    dw UNUSED_AnimatedTiles_CrateriaLava_0_878B64                        ;8781A8;
-    dw $000A                                                             ;8781AA;
-    dw UNUSED_AnimatedTiles_CrateriaLava_1_878C24                        ;8781AC;
-    dw $000A                                                             ;8781AE;
-    dw UNUSED_AnimatedTiles_CrateriaLava_2_878CE4                        ;8781B0;
-    dw $000A                                                             ;8781B2;
-    dw UNUSED_AnimatedTiles_CrateriaLava_3_878DA4                        ;8781B4;
+    dw $000A,UNUSED_AnimatedTiles_CrateriaLava_0_878B64                  ;8781A6;
+    dw $000A,UNUSED_AnimatedTiles_CrateriaLava_1_878C24                  ;8781AA;
+    dw $000A,UNUSED_AnimatedTiles_CrateriaLava_2_878CE4                  ;8781AE;
+    dw $000A,UNUSED_AnimatedTiles_CrateriaLava_3_878DA4                  ;8781B2;
     dw Instruction_AnimatedTilesObject_GotoY                             ;8781B6;
     dw UNUSED_InstList_AnimatedTilesObject_CrateriaLava_8781A6           ;8781B8;
 
@@ -350,14 +334,10 @@ InstList_AnimatedTilesObject_WreckedShipScreen_0:
     dw Instruction_AnimatedTilesObject_WaitUntilAreaBossIsDead           ;8781CB;
 
 InstList_AnimatedTilesObject_WreckedShipScreen_1:
-    dw $000A                                                             ;8781CD;
-    dw AnimatedTiles_WreckedShipScreen_0                                 ;8781CF;
-    dw $000A                                                             ;8781D1;
-    dw AnimatedTiles_WreckedShipScreen_1                                 ;8781D3;
-    dw $000A                                                             ;8781D5;
-    dw AnimatedTiles_WreckedShipScreen_2                                 ;8781D7;
-    dw $000A                                                             ;8781D9;
-    dw AnimatedTiles_WreckedShipScreen_1                                 ;8781DB;
+    dw $000A,AnimatedTiles_WreckedShipScreen_0                           ;8781CD;
+    dw $000A,AnimatedTiles_WreckedShipScreen_1                           ;8781D1;
+    dw $000A,AnimatedTiles_WreckedShipScreen_2                           ;8781D5;
+    dw $000A,AnimatedTiles_WreckedShipScreen_1                           ;8781D9;
     dw Instruction_AnimatedTilesObject_GotoY                             ;8781DD;
     dw InstList_AnimatedTilesObject_WreckedShipScreen_1                  ;8781DF;
 
@@ -365,14 +345,10 @@ InstList_AnimTilesObject_WreckedShipTreadmill_Rightwards_0:
     dw Instruction_AnimatedTilesObject_WaitUntilAreaBossIsDead           ;8781E1;
 
 InstList_AnimTilesObject_WreckedShipTreadmill_Rightwards_1:
-    dw $0001                                                             ;8781E3;
-    dw AnimatedTiles_WreckedShipTreadmill_0                              ;8781E5;
-    dw $0001                                                             ;8781E7;
-    dw AnimatedTiles_WreckedShipTreadmill_1                              ;8781E9;
-    dw $0001                                                             ;8781EB;
-    dw AnimatedTiles_WreckedShipTreadmill_2                              ;8781ED;
-    dw $0001                                                             ;8781EF;
-    dw AnimatedTiles_WreckedShipTreadmill_3                              ;8781F1;
+    dw $0001,AnimatedTiles_WreckedShipTreadmill_0                        ;8781E3;
+    dw $0001,AnimatedTiles_WreckedShipTreadmill_1                        ;8781E7;
+    dw $0001,AnimatedTiles_WreckedShipTreadmill_2                        ;8781EB;
+    dw $0001,AnimatedTiles_WreckedShipTreadmill_3                        ;8781EF;
     dw Instruction_AnimatedTilesObject_GotoY                             ;8781F3;
     dw InstList_AnimTilesObject_WreckedShipTreadmill_Rightwards_1        ;8781F5;
 
@@ -380,50 +356,34 @@ InstList_AnimTilesObject_WreckedShipTreadmill_Leftwards_0:
     dw Instruction_AnimatedTilesObject_WaitUntilAreaBossIsDead           ;8781F7;
 
 InstList_AnimTilesObject_WreckedShipTreadmill_Leftwards_1:
-    dw $0001                                                             ;8781F9;
-    dw AnimatedTiles_WreckedShipTreadmill_3                              ;8781FB;
-    dw $0001                                                             ;8781FD;
-    dw AnimatedTiles_WreckedShipTreadmill_2                              ;8781FF;
-    dw $0001                                                             ;878201;
-    dw AnimatedTiles_WreckedShipTreadmill_1                              ;878203;
-    dw $0001                                                             ;878205;
-    dw AnimatedTiles_WreckedShipTreadmill_0                              ;878207;
+    dw $0001,AnimatedTiles_WreckedShipTreadmill_3                        ;8781F9;
+    dw $0001,AnimatedTiles_WreckedShipTreadmill_2                        ;8781FD;
+    dw $0001,AnimatedTiles_WreckedShipTreadmill_1                        ;878201;
+    dw $0001,AnimatedTiles_WreckedShipTreadmill_0                        ;878205;
     dw Instruction_AnimatedTilesObject_GotoY                             ;878209;
     dw InstList_AnimTilesObject_WreckedShipTreadmill_Leftwards_1         ;87820B;
 
 InstList_AnimatedTilesObject_BrinstarMouth:
-    dw $0010                                                             ;87820D;
-    dw AnimatedTiles_BrinstarMouth_0                                     ;87820F;
-    dw $0010                                                             ;878211;
-    dw AnimatedTiles_BrinstarMouth_1                                     ;878213;
-    dw $0010                                                             ;878215;
-    dw AnimatedTiles_BrinstarMouth_2                                     ;878217;
-    dw $0010                                                             ;878219;
-    dw AnimatedTiles_BrinstarMouth_1                                     ;87821B;
+    dw $0010,AnimatedTiles_BrinstarMouth_0                               ;87820D;
+    dw $0010,AnimatedTiles_BrinstarMouth_1                               ;878211;
+    dw $0010,AnimatedTiles_BrinstarMouth_2                               ;878215;
+    dw $0010,AnimatedTiles_BrinstarMouth_1                               ;878219;
     dw Instruction_AnimatedTilesObject_GotoY                             ;87821D;
     dw InstList_AnimatedTilesObject_BrinstarMouth                        ;87821F;
 
 InstList_AnimatedTilesObject_MaridiaSandCeiling:
-    dw $000A                                                             ;878221;
-    dw AnimatedTiles_MaridiaSandCeiling_0                                ;878223;
-    dw $000A                                                             ;878225;
-    dw AnimatedTiles_MaridiaSandCeiling_1                                ;878227;
-    dw $000A                                                             ;878229;
-    dw AnimatedTiles_MaridiaSandCeiling_2                                ;87822B;
-    dw $000A                                                             ;87822D;
-    dw AnimatedTiles_MaridiaSandCeiling_3                                ;87822F;
+    dw $000A,AnimatedTiles_MaridiaSandCeiling_0                          ;878221;
+    dw $000A,AnimatedTiles_MaridiaSandCeiling_1                          ;878225;
+    dw $000A,AnimatedTiles_MaridiaSandCeiling_2                          ;878229;
+    dw $000A,AnimatedTiles_MaridiaSandCeiling_3                          ;87822D;
     dw Instruction_AnimatedTilesObject_GotoY                             ;878231;
     dw InstList_AnimatedTilesObject_MaridiaSandCeiling                   ;878233;
 
 InstList_AnimatedTilesObject_MaridiaSandFalling:
-    dw $000A                                                             ;878235;
-    dw AnimatedTiles_MaridiaSandFalling_0                                ;878237;
-    dw $000A                                                             ;878239;
-    dw AnimatedTiles_MaridiaSandFalling_1                                ;87823B;
-    dw $000A                                                             ;87823D;
-    dw AnimatedTiles_MaridiaSandFalling_2                                ;87823F;
-    dw $000A                                                             ;878241;
-    dw AnimatedTiles_MaridiaSandFalling_3                                ;878243;
+    dw $000A,AnimatedTiles_MaridiaSandFalling_0                          ;878235;
+    dw $000A,AnimatedTiles_MaridiaSandFalling_1                          ;878239;
+    dw $000A,AnimatedTiles_MaridiaSandFalling_2                          ;87823D;
+    dw $000A,AnimatedTiles_MaridiaSandFalling_3                          ;878241;
     dw Instruction_AnimatedTilesObject_GotoY                             ;878245;
     dw InstList_AnimatedTilesObject_MaridiaSandFalling                   ;878247;
 
@@ -481,16 +441,11 @@ AnimatedTilesObjects_FX_maridiaSandFalling:
     dw $0020,$1020                                                       ;87828F;
 
 InstList_AnimatedTilesObject_Lava:
-    dw $000D                                                             ;878293;
-    dw AnimatedTiles_Lava_0                                              ;878295;
-    dw $000D                                                             ;878297;
-    dw AnimatedTiles_Lava_1                                              ;878299;
-    dw $000D                                                             ;87829B;
-    dw AnimatedTiles_Lava_2                                              ;87829D;
-    dw $000D                                                             ;87829F;
-    dw AnimatedTiles_Lava_3                                              ;8782A1;
-    dw $000D                                                             ;8782A3;
-    dw AnimatedTiles_Lava_4                                              ;8782A5;
+    dw $000D,AnimatedTiles_Lava_0                                        ;878293;
+    dw $000D,AnimatedTiles_Lava_1                                        ;878297;
+    dw $000D,AnimatedTiles_Lava_2                                        ;87829B;
+    dw $000D,AnimatedTiles_Lava_3                                        ;87829F;
+    dw $000D,AnimatedTiles_Lava_4                                        ;8782A3;
     dw Instruction_AnimatedTilesObject_GotoY                             ;8782A7;
     dw InstList_AnimatedTilesObject_Lava                                 ;8782A9;
 
@@ -499,16 +454,11 @@ AnimatedTilesObject_Lava:
     dw $0040,$4280                                                       ;8782AD;
 
 InstList_AnimatedTilesObject_Acid:
-    dw $000A                                                             ;8782B1;
-    dw AnimatedTiles_Acid_0                                              ;8782B3;
-    dw $000A                                                             ;8782B5;
-    dw AnimatedTiles_Acid_1                                              ;8782B7;
-    dw $000A                                                             ;8782B9;
-    dw AnimatedTiles_Acid_2                                              ;8782BB;
-    dw $000A                                                             ;8782BD;
-    dw AnimatedTiles_Acid_3                                              ;8782BF;
-    dw $000A                                                             ;8782C1;
-    dw AnimatedTiles_Acid_4                                              ;8782C3;
+    dw $000A,AnimatedTiles_Acid_0                                        ;8782B1;
+    dw $000A,AnimatedTiles_Acid_1                                        ;8782B5;
+    dw $000A,AnimatedTiles_Acid_2                                        ;8782B9;
+    dw $000A,AnimatedTiles_Acid_3                                        ;8782BD;
+    dw $000A,AnimatedTiles_Acid_4                                        ;8782C1;
     dw Instruction_AnimatedTilesObject_GotoY                             ;8782C5;
     dw InstList_AnimatedTilesObject_Acid                                 ;8782C7;
 
@@ -517,16 +467,11 @@ AnimatedTilesObject_Acid:
     dw $0040,$4280                                                       ;8782CB;
 
 InstList_AnimatedTilesObject_Rain:
-    dw $000A                                                             ;8782CF;
-    dw AnimatedTiles_Rain_0                                              ;8782D1;
-    dw $000A                                                             ;8782D3;
-    dw AnimatedTiles_Rain_1                                              ;8782D5;
-    dw $000A                                                             ;8782D7;
-    dw AnimatedTiles_Rain_2                                              ;8782D9;
-    dw $000A                                                             ;8782DB;
-    dw AnimatedTiles_Rain_3                                              ;8782DD;
-    dw $000A                                                             ;8782DF;
-    dw AnimatedTiles_Rain_4                                              ;8782E1;
+    dw $000A,AnimatedTiles_Rain_0                                        ;8782CF;
+    dw $000A,AnimatedTiles_Rain_1                                        ;8782D3;
+    dw $000A,AnimatedTiles_Rain_2                                        ;8782D7;
+    dw $000A,AnimatedTiles_Rain_3                                        ;8782DB;
+    dw $000A,AnimatedTiles_Rain_4                                        ;8782DF;
     dw Instruction_AnimatedTilesObject_GotoY                             ;8782E3;
     dw InstList_AnimatedTilesObject_Rain                                 ;8782E5;
 
@@ -535,12 +480,9 @@ AnimatedTilesObject_Rain:
     dw $0050,$4280                                                       ;8782E9;
 
 InstList_AnimatedTilesObject_Spores:
-    dw $000A                                                             ;8782ED;
-    dw AnimatedTiles_Spores_0                                            ;8782EF;
-    dw $000A                                                             ;8782F1;
-    dw AnimatedTiles_Spores_1                                            ;8782F3;
-    dw $000A                                                             ;8782F5;
-    dw AnimatedTiles_Spores_2                                            ;8782F7;
+    dw $000A,AnimatedTiles_Spores_0                                      ;8782ED;
+    dw $000A,AnimatedTiles_Spores_1                                      ;8782F1;
+    dw $000A,AnimatedTiles_Spores_2                                      ;8782F5;
     dw Instruction_AnimatedTilesObject_GotoY                             ;8782F9;
     dw InstList_AnimatedTilesObject_Spores                               ;8782FB;
 
@@ -669,235 +611,164 @@ Instruction_AnimatedTilesObject_Write8ColorsOfTargetPaletteD:
     dw $3800,$7F58,$6ED5,$5A71,$49EE,$356A,$24E7,$1083                   ;87839C;
 
 InstList_AnimatedTilesObject_TourianStatuePhantoon:
-    dw Instruction_AnimatedTilesObject_TourianStatueSetAnimStateY        ;8783AC;
-    dw $0001                                                             ;8783AE;
-    dw Instruction_AnimatedTilesObject_GotoYIfEventYSet                  ;8783B0;
-    dw $0006                                                             ;8783B2;
+    dw Instruction_AnimatedTilesObject_TourianStatueSetAnimStateY,$0001  ;8783AC;
+    dw Instruction_AnimatedTilesObject_GotoYIfEventYSet,$0006            ;8783B0;
     dw InstList_AnimatedTilesObject_TourianStatuePhantoon_grey           ;8783B4;
-    dw $0006                                                             ;8783B6;
-    dw AnimatedTiles_PhantoonStatue_0                                    ;8783B8;
+    dw $0006,AnimatedTiles_PhantoonStatue_0                              ;8783B6;
 
 InstList_AnimatedTilesObject_TourianStatuePhantoon_loop:
-    dw $000C                                                             ;8783BA;
-    dw AnimatedTiles_PhantoonStatue_1                                    ;8783BC;
-    dw $000C                                                             ;8783BE;
-    dw AnimatedTiles_PhantoonStatue_2                                    ;8783C0;
-    dw $000C                                                             ;8783C2;
-    dw AnimatedTiles_PhantoonStatue_1                                    ;8783C4;
-    dw $0010                                                             ;8783C6;
-    dw AnimatedTiles_PhantoonStatue_0                                    ;8783C8;
+    dw $000C,AnimatedTiles_PhantoonStatue_1                              ;8783BA;
+    dw $000C,AnimatedTiles_PhantoonStatue_2                              ;8783BE;
+    dw $000C,AnimatedTiles_PhantoonStatue_1                              ;8783C2;
+    dw $0010,AnimatedTiles_PhantoonStatue_0                              ;8783C6;
     dw Instruction_AnimTilesObject_GotoYIfAnyBossBitsYSetForAreaY        ;8783CA;
     db $01,$03                                                           ;8783CC;
     dw InstList_AnimatedTilesObject_TourianStatuePhantoon_dead           ;8783CE;
-    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY      ;8783D0;
-    dw $0001                                                             ;8783D2;
+    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY,$0001 ;8783D0;
     dw Instruction_AnimatedTilesObject_GotoY                             ;8783D4;
     dw InstList_AnimatedTilesObject_TourianStatuePhantoon_loop           ;8783D6;
 
 InstList_AnimatedTilesObject_TourianStatuePhantoon_dead:
     dw Instruction_AnimatedTilesObject_GotoYIfTourianStatueBusy          ;8783D8;
     dw InstList_AnimatedTilesObject_TourianStatuePhantoon_loop           ;8783DA;
-    dw Instruction_AnimatedTilesObject_TourianStatueSetAnimStateY        ;8783DC;
-    dw $8000                                                             ;8783DE;
-    dw Instruction_AnimatedTilesObject_Clear3ColorsOfPaletteData         ;8783E0;
-    dw $0158,$0010                                                       ;8783E2;
-    dw AnimatedTiles_PhantoonStatue_1                                    ;8783E6;
-    dw $0010                                                             ;8783E8;
-    dw AnimatedTiles_PhantoonStatue_2                                    ;8783EA;
-    dw Instruction_AnimTilesObject_SpawnTourianStatueEyeGlowParamY       ;8783EC;
-    dw $0000,$00C0                                                       ;8783EE;
-    dw AnimatedTiles_PhantoonStatue_Other                                ;8783F2;
-    dw Instruction_AnimTilesObject_SpawnTourianStatuesSoulParamY         ;8783F4;
-    dw $0000                                                             ;8783F6;
+    dw Instruction_AnimatedTilesObject_TourianStatueSetAnimStateY,$8000  ;8783DC;
+    dw Instruction_AnimatedTilesObject_Clear3ColorsOfPaletteData,$0158   ;8783E0;
+    dw $0010,AnimatedTiles_PhantoonStatue_1                              ;8783E2;
+    dw $0010,AnimatedTiles_PhantoonStatue_2                              ;8783E8;
+    dw Instruction_AnimTilesObject_SpawnTourianStatueEyeGlowParamY,$0000 ;8783EC;
+    dw $00C0,AnimatedTiles_PhantoonStatue_Other                          ;8783EE;
+    dw Instruction_AnimTilesObject_SpawnTourianStatuesSoulParamY,$0000   ;8783F4;
     dw Instruction_AnimatedTilesObject_SpawnPaletteFXObjectInY           ;8783F8;
     dw PaletteFXObjects_GreyOutTourianStatue_Phantoon                    ;8783FA;
-    dw $0080                                                             ;8783FC;
-    dw AnimatedTiles_PhantoonStatue_Other                                ;8783FE;
-    dw Instruction_AnimatedTilesObject_SetEventY                         ;878400;
-    dw $0006                                                             ;878402;
-    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY      ;878404;
-    dw $8001                                                             ;878406;
+    dw $0080,AnimatedTiles_PhantoonStatue_Other                          ;8783FC;
+    dw Instruction_AnimatedTilesObject_SetEventY,$0006                   ;878400;
+    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY,$8001 ;878404;
     dw Instruction_AnimatedTilesObject_Delete                            ;878408;
 
 InstList_AnimatedTilesObject_TourianStatuePhantoon_grey:
-    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY      ;87840A;
-    dw $8001                                                             ;87840C;
-    dw Instruction_AnimatedTilesObject_Write8ColorsOfTargetPaletteD      ;87840E;
-    dw $0140                                                             ;878410;
+    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY,$8001 ;87840A;
+    dw Instruction_AnimatedTilesObject_Write8ColorsOfTargetPaletteD,$0140 ;87840E;
     dw Instruction_AnimatedTilesObject_Delete                            ;878412;
 
 InstList_AnimatedTilesObject_TourianStatueRidley:
-    dw Instruction_AnimatedTilesObject_TourianStatueSetAnimStateY        ;878414;
-    dw $0002                                                             ;878416;
-    dw Instruction_AnimatedTilesObject_GotoYIfEventYSet                  ;878418;
-    dw $0007                                                             ;87841A;
+    dw Instruction_AnimatedTilesObject_TourianStatueSetAnimStateY,$0002  ;878414;
+    dw Instruction_AnimatedTilesObject_GotoYIfEventYSet,$0007            ;878418;
     dw InstList_AnimatedTilesObject_TourianStatueRidley_grey             ;87841C;
-    dw $000A                                                             ;87841E;
-    dw AnimatedTiles_RidleyStatue_0                                      ;878420;
+    dw $000A,AnimatedTiles_RidleyStatue_0                                ;87841E;
 
 InstList_AnimatedTilesObject_TourianStatueRidley_loopWait:
-    dw $000C                                                             ;878422;
-    dw AnimatedTiles_RidleyStatue_1                                      ;878424;
-    dw $000C                                                             ;878426;
-    dw AnimatedTiles_RidleyStatue_2                                      ;878428;
-    dw $000C                                                             ;87842A;
-    dw AnimatedTiles_RidleyStatue_1                                      ;87842C;
-    dw $0010                                                             ;87842E;
-    dw AnimatedTiles_RidleyStatue_0                                      ;878430;
+    dw $000C,AnimatedTiles_RidleyStatue_1                                ;878422;
+    dw $000C,AnimatedTiles_RidleyStatue_2                                ;878426;
+    dw $000C,AnimatedTiles_RidleyStatue_1                                ;87842A;
+    dw $0010,AnimatedTiles_RidleyStatue_0                                ;87842E;
     dw Instruction_AnimTilesObject_GotoYIfAnyBossBitsYSetForAreaY        ;878432;
     db $01,$02                                                           ;878434;
     dw InstList_AnimatedTilesObject_TourianStatueRidley_dead             ;878436;
-    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY      ;878438;
-    dw $0002                                                             ;87843A;
+    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY,$0002 ;878438;
     dw Instruction_AnimatedTilesObject_GotoY                             ;87843C;
     dw InstList_AnimatedTilesObject_TourianStatueRidley_loopWait         ;87843E;
 
 InstList_AnimatedTilesObject_TourianStatueRidley_dead:
     dw Instruction_AnimatedTilesObject_GotoYIfTourianStatueBusy          ;878440;
     dw InstList_AnimatedTilesObject_TourianStatueRidley_loopWait         ;878442;
-    dw Instruction_AnimatedTilesObject_TourianStatueSetAnimStateY        ;878444;
-    dw $8000                                                             ;878446;
-    dw Instruction_AnimatedTilesObject_Clear3ColorsOfPaletteData         ;878448;
-    dw $0132,$0010                                                       ;87844A;
-    dw AnimatedTiles_RidleyStatue_1                                      ;87844E;
-    dw $0010                                                             ;878450;
-    dw AnimatedTiles_RidleyStatue_2                                      ;878452;
-    dw Instruction_AnimTilesObject_SpawnTourianStatueEyeGlowParamY       ;878454;
-    dw $0002,$00C0                                                       ;878456;
-    dw AnimatedTiles_RidleyStatue_Other                                  ;87845A;
-    dw Instruction_AnimTilesObject_SpawnTourianStatuesSoulParamY         ;87845C;
-    dw $0002                                                             ;87845E;
+    dw Instruction_AnimatedTilesObject_TourianStatueSetAnimStateY,$8000  ;878444;
+    dw Instruction_AnimatedTilesObject_Clear3ColorsOfPaletteData,$0132   ;878448;
+    dw $0010,AnimatedTiles_RidleyStatue_1                                ;87844A;
+    dw $0010,AnimatedTiles_RidleyStatue_2                                ;878450;
+    dw Instruction_AnimTilesObject_SpawnTourianStatueEyeGlowParamY,$0002 ;878454;
+    dw $00C0,AnimatedTiles_RidleyStatue_Other                            ;878456;
+    dw Instruction_AnimTilesObject_SpawnTourianStatuesSoulParamY,$0002   ;87845C;
     dw Instruction_AnimatedTilesObject_SpawnPaletteFXObjectInY           ;878460;
     dw PaletteFXObjects_GreyOutTourianStatue_Ridley                      ;878462;
-    dw $0080                                                             ;878464;
+    dw $0080,                                                            ;878464;
     dw AnimatedTiles_RidleyStatue_Other                                  ;878466;
-    dw Instruction_AnimatedTilesObject_SetEventY                         ;878468;
-    dw $0007                                                             ;87846A;
-    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY      ;87846C;
-    dw $8002                                                             ;87846E;
+    dw Instruction_AnimatedTilesObject_SetEventY,$0007                   ;878468;
+    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY,$8002 ;87846C;
     dw Instruction_AnimatedTilesObject_Delete                            ;878470;
 
 InstList_AnimatedTilesObject_TourianStatueRidley_grey:
-    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY      ;878472;
-    dw $8002                                                             ;878474;
-    dw Instruction_AnimatedTilesObject_Write8ColorsOfTargetPaletteD      ;878476;
-    dw $0120                                                             ;878478;
+    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY,$8002 ;878472;
+    dw Instruction_AnimatedTilesObject_Write8ColorsOfTargetPaletteD,$0120 ;878476;
     dw Instruction_AnimatedTilesObject_Delete                            ;87847A;
 
 InstList_AnimatedTilesObject_TourianStatueKraid:
-    dw Instruction_AnimatedTilesObject_TourianStatueSetAnimStateY        ;87847C;
-    dw $0004                                                             ;87847E;
-    dw Instruction_AnimatedTilesObject_GotoYIfEventYSet                  ;878480;
-    dw $0009                                                             ;878482;
+    dw Instruction_AnimatedTilesObject_TourianStatueSetAnimStateY,$0004  ;87847C;
+    dw Instruction_AnimatedTilesObject_GotoYIfEventYSet,$0009            ;878480;
     dw InstList_AnimatedTilesObject_TourianStatueKraid_grey              ;878484;
-    dw $0004                                                             ;878486;
-    dw AnimatedTiles_KraidStatue_0                                       ;878488;
+    dw $0004,AnimatedTiles_KraidStatue_0                                 ;878486;
 
 InstList_AnimatedTilesObject_TourianStatueKraid_loopWait:
-    dw $000C                                                             ;87848A;
-    dw AnimatedTiles_KraidStatue_1                                       ;87848C;
-    dw $000C                                                             ;87848E;
-    dw AnimatedTiles_KraidStatue_2                                       ;878490;
-    dw $000C                                                             ;878492;
-    dw AnimatedTiles_KraidStatue_1                                       ;878494;
-    dw $0010                                                             ;878496;
-    dw AnimatedTiles_KraidStatue_0                                       ;878498;
+    dw $000C,AnimatedTiles_KraidStatue_1                                 ;87848A;
+    dw $000C,AnimatedTiles_KraidStatue_2                                 ;87848E;
+    dw $000C,AnimatedTiles_KraidStatue_1                                 ;878492;
+    dw $0010,AnimatedTiles_KraidStatue_0                                 ;878496;
     dw Instruction_AnimTilesObject_GotoYIfAnyBossBitsYSetForAreaY        ;87849A;
     db $01,$01                                                           ;87849C;
     dw InstList_AnimatedTilesObject_TourianStatueKraid_dead              ;87849E;
-    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY      ;8784A0;
-    dw $0004                                                             ;8784A2;
+    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY,$0004 ;8784A0;
     dw Instruction_AnimatedTilesObject_GotoY                             ;8784A4;
     dw InstList_AnimatedTilesObject_TourianStatueKraid_loopWait          ;8784A6;
 
 InstList_AnimatedTilesObject_TourianStatueKraid_dead:
     dw Instruction_AnimatedTilesObject_GotoYIfTourianStatueBusy          ;8784A8;
     dw InstList_AnimatedTilesObject_TourianStatueKraid_loopWait          ;8784AA;
-    dw Instruction_AnimatedTilesObject_TourianStatueSetAnimStateY        ;8784AC;
-    dw $8000                                                             ;8784AE;
-    dw Instruction_AnimatedTilesObject_Clear3ColorsOfPaletteData         ;8784B0;
-    dw $00F8,$0010                                                       ;8784B2;
-    dw AnimatedTiles_KraidStatue_1                                       ;8784B6;
-    dw $0010                                                             ;8784B8;
-    dw AnimatedTiles_KraidStatue_2                                       ;8784BA;
-    dw Instruction_AnimTilesObject_SpawnTourianStatueEyeGlowParamY       ;8784BC;
-    dw $0006,$00C0                                                       ;8784BE;
-    dw AnimatedTiles_DraygonStatue_Other                                 ;8784C2;
-    dw Instruction_AnimTilesObject_SpawnTourianStatuesSoulParamY         ;8784C4;
-    dw $0006                                                             ;8784C6;
+    dw Instruction_AnimatedTilesObject_TourianStatueSetAnimStateY,$8000  ;8784AC;
+    dw Instruction_AnimatedTilesObject_Clear3ColorsOfPaletteData,$00F8   ;8784B0;
+    dw $0010,AnimatedTiles_KraidStatue_1                                 ;8784B2;
+    dw $0010,AnimatedTiles_KraidStatue_2                                 ;8784B8;
+    dw Instruction_AnimTilesObject_SpawnTourianStatueEyeGlowParamY,$0006 ;8784BC;
+    dw $00C0,AnimatedTiles_DraygonStatue_Other                           ;8784BE;
+    dw Instruction_AnimTilesObject_SpawnTourianStatuesSoulParamY,$0006   ;8784C4;
     dw Instruction_AnimatedTilesObject_SpawnPaletteFXObjectInY           ;8784C8;
     dw PaletteFXObjects_GreyOutTourianStatue_Kraid                       ;8784CA;
-    dw $0080                                                             ;8784CC;
-    dw AnimatedTiles_DraygonStatue_Other                                 ;8784CE;
-    dw Instruction_AnimatedTilesObject_SetEventY                         ;8784D0;
-    dw $0009                                                             ;8784D2;
-    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY      ;8784D4;
-    dw $8004                                                             ;8784D6;
+    dw $0080,AnimatedTiles_DraygonStatue_Other                           ;8784CC;
+    dw Instruction_AnimatedTilesObject_SetEventY,$0009                   ;8784D0;
+    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY,$8004 ;8784D4;
     dw Instruction_AnimatedTilesObject_Delete                            ;8784D8;
 
 InstList_AnimatedTilesObject_TourianStatueKraid_grey:
-    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY      ;8784DA;
-    dw $8004                                                             ;8784DC;
-    dw Instruction_AnimatedTilesObject_Write8ColorsOfTargetPaletteD      ;8784DE;
-    dw $00E0                                                             ;8784E0;
+    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY,$8004 ;8784DA;
+    dw Instruction_AnimatedTilesObject_Write8ColorsOfTargetPaletteD,$00E0 ;8784DE;
     dw Instruction_AnimatedTilesObject_Delete                            ;8784E2;
 
 InstList_AnimatedTilesObject_TourianStatueDraygon:
-    dw Instruction_AnimatedTilesObject_TourianStatueSetAnimStateY        ;8784E4;
-    dw $0008                                                             ;8784E6;
-    dw Instruction_AnimatedTilesObject_GotoYIfEventYSet                  ;8784E8;
-    dw $0008                                                             ;8784EA;
+    dw Instruction_AnimatedTilesObject_TourianStatueSetAnimStateY,$0008  ;8784E4;
+    dw Instruction_AnimatedTilesObject_GotoYIfEventYSet,$0008            ;8784E8;
     dw InstList_AnimatedTilesObject_TourianStatueDraygon_grey            ;8784EC;
-    dw $0008                                                             ;8784EE;
-    dw AnimatedTiles_DraygonStatue_0                                     ;8784F0;
+    dw $0008,AnimatedTiles_DraygonStatue_0                               ;8784EE;
 
 InstList_AnimatedTilesObject_TourianStatueDraygon_loopWait:
-    dw $000C                                                             ;8784F2;
-    dw AnimatedTiles_DraygonStatue_1                                     ;8784F4;
-    dw $000C                                                             ;8784F6;
-    dw AnimatedTiles_DraygonStatue_2                                     ;8784F8;
-    dw $000C                                                             ;8784FA;
-    dw AnimatedTiles_DraygonStatue_1                                     ;8784FC;
-    dw $0010                                                             ;8784FE;
-    dw AnimatedTiles_DraygonStatue_0                                     ;878500;
+    dw $000C,AnimatedTiles_DraygonStatue_1                               ;8784F2;
+    dw $000C,AnimatedTiles_DraygonStatue_2                               ;8784F6;
+    dw $000C,AnimatedTiles_DraygonStatue_1                               ;8784FA;
+    dw $0010,AnimatedTiles_DraygonStatue_0                               ;8784FE;
     dw Instruction_AnimTilesObject_GotoYIfAnyBossBitsYSetForAreaY        ;878502;
     db $01,$04                                                           ;878504;
     dw InstList_AnimatedTilesObject_TourianStatueDraygon_dead            ;878506;
-    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY      ;878508;
-    dw $0008                                                             ;87850A;
+    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY,$0008 ;878508;
     dw Instruction_AnimatedTilesObject_GotoY                             ;87850C;
     dw InstList_AnimatedTilesObject_TourianStatueDraygon_loopWait        ;87850E;
 
 InstList_AnimatedTilesObject_TourianStatueDraygon_dead:
     dw Instruction_AnimatedTilesObject_GotoYIfTourianStatueBusy          ;878510;
     dw InstList_AnimatedTilesObject_TourianStatueDraygon_loopWait        ;878512;
-    dw Instruction_AnimatedTilesObject_TourianStatueSetAnimStateY        ;878514;
-    dw $8000                                                             ;878516;
-    dw Instruction_AnimatedTilesObject_Clear3ColorsOfPaletteData         ;878518;
-    dw $00D2,$0010                                                       ;87851A;
-    dw AnimatedTiles_DraygonStatue_1                                     ;87851E;
-    dw $0010                                                             ;878520;
-    dw AnimatedTiles_DraygonStatue_2                                     ;878522;
-    dw Instruction_AnimTilesObject_SpawnTourianStatueEyeGlowParamY       ;878524;
-    dw $0004,$00C0                                                       ;878526;
-    dw AnimatedTiles_KraidStatue_Other                                   ;87852A;
-    dw Instruction_AnimTilesObject_SpawnTourianStatuesSoulParamY         ;87852C;
-    dw $0004                                                             ;87852E;
+    dw Instruction_AnimatedTilesObject_TourianStatueSetAnimStateY,$8000  ;878514;
+    dw Instruction_AnimatedTilesObject_Clear3ColorsOfPaletteData,$00D2   ;878518;
+    dw $0010,AnimatedTiles_DraygonStatue_1                               ;87851A;
+    dw $0010,AnimatedTiles_DraygonStatue_2                               ;878520;
+    dw Instruction_AnimTilesObject_SpawnTourianStatueEyeGlowParamY,$0004 ;878524;
+    dw $00C0,AnimatedTiles_KraidStatue_Other                             ;878526;
+    dw Instruction_AnimTilesObject_SpawnTourianStatuesSoulParamY,$0004   ;87852C;
     dw Instruction_AnimatedTilesObject_SpawnPaletteFXObjectInY           ;878530;
     dw PaletteFXObjects_GreyOutTourianStatue_Draygon                     ;878532;
-    dw $0080                                                             ;878534;
-    dw AnimatedTiles_KraidStatue_Other                                   ;878536;
-    dw Instruction_AnimatedTilesObject_SetEventY                         ;878538;
-    dw $0008                                                             ;87853A;
-    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY      ;87853C;
-    dw $8008                                                             ;87853E;
+    dw $0080,AnimatedTiles_KraidStatue_Other                             ;878534;
+    dw Instruction_AnimatedTilesObject_SetEventY,$0008                   ;878538;
+    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY,$8008 ;87853C;
     dw Instruction_AnimatedTilesObject_Delete                            ;878540;
 
 InstList_AnimatedTilesObject_TourianStatueDraygon_grey:
-    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY      ;878542;
-    dw $8008                                                             ;878544;
-    dw Instruction_AnimatedTilesObject_Write8ColorsOfTargetPaletteD      ;878546;
-    dw $00C0                                                             ;878548;
+    dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY,$8008 ;878542;
+    dw Instruction_AnimatedTilesObject_Write8ColorsOfTargetPaletteD,$00C0 ;878546;
     dw Instruction_AnimatedTilesObject_Delete                            ;87854A;
 
 AnimatedTilesObject_TourianStatuePhantoon:
