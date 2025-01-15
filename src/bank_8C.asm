@@ -5170,7 +5170,7 @@ EndingSequenceSpritemaps_COMPLETEDS:
     db $10                                                               ;8CADA2;
     dw $3122                                                             ;8CADA3;
 
-EndingSequenceSpritemaps_COMPLETESU:
+EndingSequenceSpritemaps_COMPLETEDSU:
     dw $0016,$0000                                                       ;8CADA5;
     db $18                                                               ;8CADA9;
     dw $3154,$0000                                                       ;8CADAA;
@@ -5217,7 +5217,7 @@ EndingSequenceSpritemaps_COMPLETESU:
     db $10                                                               ;8CAE12;
     dw $3122                                                             ;8CAE13;
 
-EndingSequenceSpritemaps_COMPLETESUC:
+EndingSequenceSpritemaps_COMPLETEDSUC:
     dw $0018,$0008                                                       ;8CAE15;
     db $18                                                               ;8CAE19;
     dw $3132,$0008                                                       ;8CAE1A;
@@ -5268,7 +5268,7 @@ EndingSequenceSpritemaps_COMPLETESUC:
     db $10                                                               ;8CAE8C;
     dw $3122                                                             ;8CAE8D;
 
-EndingSequenceSpritemaps_COMPLETESUCC:
+EndingSequenceSpritemaps_COMPLETEDSUCC:
     dw $001A,$0010                                                       ;8CAE8F;
     db $18                                                               ;8CAE93;
     dw $3132,$0010                                                       ;8CAE94;
@@ -5323,7 +5323,7 @@ EndingSequenceSpritemaps_COMPLETESUCC:
     db $10                                                               ;8CAF10;
     dw $3122                                                             ;8CAF11;
 
-EndingSequenceSpritemaps_COMPLETESUCCE:
+EndingSequenceSpritemaps_COMPLETEDSUCCE:
     dw $001C,$0018                                                       ;8CAF13;
     db $18                                                               ;8CAF17;
     dw $3134,$0018                                                       ;8CAF18;
@@ -5382,7 +5382,7 @@ EndingSequenceSpritemaps_COMPLETESUCCE:
     db $10                                                               ;8CAF9E;
     dw $3122                                                             ;8CAF9F;
 
-EndingSequenceSpritemaps_COMPLETESUCCES:
+EndingSequenceSpritemaps_COMPLETEDSUCCES:
     dw $001E,$0020                                                       ;8CAFA1;
     db $18                                                               ;8CAFA5;
     dw $3152,$0020                                                       ;8CAFA6;
@@ -5445,7 +5445,7 @@ EndingSequenceSpritemaps_COMPLETESUCCES:
     db $10                                                               ;8CB036;
     dw $3122                                                             ;8CB037;
 
-EndingSequenceSpritemaps_COMPLETESUCCESS:
+EndingSequenceSpritemaps_COMPLETEDSUCCESS:
     dw $0020,$0028                                                       ;8CB039;
     db $18                                                               ;8CB03D;
     dw $3152,$0028                                                       ;8CB03E;
@@ -5512,7 +5512,7 @@ EndingSequenceSpritemaps_COMPLETESUCCESS:
     db $10                                                               ;8CB0D8;
     dw $3122                                                             ;8CB0D9;
 
-EkndingSequenceSpritemaps_COMPLETESUCCESSF:
+EndingSequenceSpritemaps_COMPLETEDSUCCESSF:
     dw $0022,$0030                                                       ;8CB0DB;
     db $18                                                               ;8CB0DF;
     dw $3135,$0030                                                       ;8CB0E0;
@@ -5583,7 +5583,7 @@ EkndingSequenceSpritemaps_COMPLETESUCCESSF:
     db $10                                                               ;8CB184;
     dw $3122                                                             ;8CB185;
 
-EndingSequenceSpritemaps_COMPLETESUCCESSFU:
+EndingSequenceSpritemaps_COMPLETEDSUCCESSFU:
     dw $0024,$0038                                                       ;8CB187;
     db $18                                                               ;8CB18B;
     dw $3154,$0038                                                       ;8CB18C;
@@ -5658,7 +5658,7 @@ EndingSequenceSpritemaps_COMPLETESUCCESSFU:
     db $10                                                               ;8CB23A;
     dw $3122                                                             ;8CB23B;
 
-EndingSequenceSpritemaps_COMPLETESUCCESSFUL:
+EndingSequenceSpritemaps_COMPLETEDSUCCESSFUL:
     dw $0026,$0040                                                       ;8CB23D;
     db $18                                                               ;8CB241;
     dw $313B,$0040                                                       ;8CB242;
@@ -5737,7 +5737,7 @@ EndingSequenceSpritemaps_COMPLETESUCCESSFUL:
     db $10                                                               ;8CB2FA;
     dw $3122                                                             ;8CB2FB;
 
-EndingSequenceSpritemaps_COMPLETESUCCESSFULL:
+EndingSequenceSpritemaps_COMPLETEDSUCCESSFULL:
     dw $0028,$0048                                                       ;8CB2FD;
     db $18                                                               ;8CB301;
     dw $313B,$0048                                                       ;8CB302;
@@ -5820,7 +5820,7 @@ EndingSequenceSpritemaps_COMPLETESUCCESSFULL:
     db $10                                                               ;8CB3C4;
     dw $3122                                                             ;8CB3C5;
 
-EndingSequenceSpritemaps_COMPLETESUCCESSFULLY:
+EndingSequenceSpritemaps_COMPLETEDSUCCESSFULLY:
     dw $002A,$0050                                                       ;8CB3C7;
     db $18                                                               ;8CB3CB;
     dw $3158,$0050                                                       ;8CB3CC;

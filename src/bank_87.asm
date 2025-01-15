@@ -680,8 +680,7 @@ InstList_AnimatedTilesObject_TourianStatueRidley_dead:
     dw Instruction_AnimTilesObject_SpawnTourianStatuesSoulParamY,$0002   ;87845C;
     dw Instruction_AnimatedTilesObject_SpawnPaletteFXObjectInY           ;878460;
     dw PaletteFXObjects_GreyOutTourianStatue_Ridley                      ;878462;
-    dw $0080,                                                            ;878464;
-    dw AnimatedTiles_RidleyStatue_Other                                  ;878466;
+    dw $0080,AnimatedTiles_RidleyStatue_Other                            ;878464;
     dw Instruction_AnimatedTilesObject_SetEventY,$0007                   ;878468;
     dw Instruction_AnimatedTilesObject_TourianStatueResetAnimStateY,$8002 ;87846C;
     dw Instruction_AnimatedTilesObject_Delete                            ;878470;

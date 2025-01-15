@@ -940,6 +940,7 @@ Debug_DisplayVersionInfo:
     dw $31F2,$31F1,$31F0                                                 ;8B877A;
 
 .versionStringOAMEntryTileNumbersAttributes:
+; '0123456789ABCDEF'
     dw $39F4,$39F5,$39F6,$39F7,$39F8,$39F9,$39FA,$39FB                   ;8B8780;
     dw $39FC,$39FD,$39D0,$39D1,$39D2,$39D3,$39D4,$39D5                   ;8B8790;
 
@@ -2052,8 +2053,15 @@ MoveUnusedSpritesOffScreen:
     RTS                                                                  ;8B8F25;
 
 
-.Xpos:
-    dw $5555,$5554,$5550,$5540,$5500,$5400,$5000,$4000                   ;8B8F26;
+.Xpos:                                                                   ;8B8F26;
+    dw $5555 ; Sprites 0..7 high X position bits
+    dw $5554 ; Sprites 1..7 high X position bits
+    dw $5550 ; Sprites 2..7 high X position bits
+    dw $5540 ; Sprites 3..7 high X position bits
+    dw $5500 ; Sprites 4..7 high X position bits
+    dw $5400 ; Sprites 5..7 high X position bits
+    dw $5000 ; Sprites 6..7 high X position bits
+    dw $4000 ; Sprites 7 high X position bit
 
 .moveAllSprites:
     STA.W $0370                                                          ;8B8F36;
@@ -4506,111 +4514,77 @@ RTL_8BA03C:
 
 
 InstList_CinematicSpriteObject_1994ScrollingText:
-    dw $003C,$0000,$0008                                                 ;8BA03D;
-    dw TitleSequenceSpritemaps_1                                         ;8BA043;
-    dw $0008                                                             ;8BA045;
-    dw TitleSequenceSpritemaps_19                                        ;8BA047;
-    dw $0008                                                             ;8BA049;
-    dw TitleSequenceSpritemaps_199                                       ;8BA04B;
-    dw $002D                                                             ;8BA04D;
-    dw TitleSequenceSpritemaps_1994                                      ;8BA04F;
+    dw $003C,$0000                                                       ;8BA03D;
+    dw $0008,TitleSequenceSpritemaps_1                                   ;8BA041;
+    dw $0008,TitleSequenceSpritemaps_19                                  ;8BA045;
+    dw $0008,TitleSequenceSpritemaps_199                                 ;8BA049;
+    dw $002D,TitleSequenceSpritemaps_1994                                ;8BA04D;
     dw Instruction_TriggerTitleSequenceScene0                            ;8BA051;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BA053;
 
 InstList_CinematicSpriteObject_NintendoScrollingText:
-    dw $0008                                                             ;8BA055;
-    dw TitleSequenceSpritemaps_N                                         ;8BA057;
-    dw $0008                                                             ;8BA059;
-    dw TitleSequenceSpritemaps_NI                                        ;8BA05B;
-    dw $0008                                                             ;8BA05D;
-    dw TitleSequenceSpritemaps_NIN                                       ;8BA05F;
-    dw $0008                                                             ;8BA061;
-    dw TitleSequenceSpritemaps_NINT                                      ;8BA063;
-    dw $0008                                                             ;8BA065;
-    dw TitleSequenceSpritemaps_NINTE                                     ;8BA067;
-    dw $0008                                                             ;8BA069;
-    dw TitleSequenceSpritemaps_NINTEN                                    ;8BA06B;
-    dw $0008                                                             ;8BA06D;
-    dw TitleSequenceSpritemaps_NINTEND                                   ;8BA06F;
-    dw $002D                                                             ;8BA071;
-    dw TitleSequenceSpritemaps_NINTENDO                                  ;8BA073;
+    dw $0008,TitleSequenceSpritemaps_N                                   ;8BA055;
+    dw $0008,TitleSequenceSpritemaps_NI                                  ;8BA059;
+    dw $0008,TitleSequenceSpritemaps_NIN                                 ;8BA05D;
+    dw $0008,TitleSequenceSpritemaps_NINT                                ;8BA061;
+    dw $0008,TitleSequenceSpritemaps_NINTE                               ;8BA065;
+    dw $0008,TitleSequenceSpritemaps_NINTEN                              ;8BA069;
+    dw $0008,TitleSequenceSpritemaps_NINTEND                             ;8BA06D;
+    dw $002D,TitleSequenceSpritemaps_NINTENDO                            ;8BA071;
     dw Instruction_TriggerTitleSequenceScene1                            ;8BA075;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BA077;
 
 InstList_CinematicSpriteObject_PresentsScrollingText:
-    dw $0008                                                             ;8BA079;
-    dw TitleSequenceSpritemaps_P                                         ;8BA07B;
-    dw $0008                                                             ;8BA07D;
-    dw TitleSequenceSpritemaps_PR                                        ;8BA07F;
-    dw $0008                                                             ;8BA081;
-    dw TitleSequenceSpritemaps_PRE                                       ;8BA083;
-    dw $0008                                                             ;8BA085;
-    dw TitleSequenceSpritemaps_PRES                                      ;8BA087;
-    dw $0008                                                             ;8BA089;
-    dw TitleSequenceSpritemaps_PRESE                                     ;8BA08B;
-    dw $0008                                                             ;8BA08D;
-    dw TitleSequenceSpritemaps_PRESEN                                    ;8BA08F;
-    dw $0008                                                             ;8BA091;
-    dw TitleSequenceSpritemaps_PRESENT                                   ;8BA093;
-    dw $002D                                                             ;8BA095;
-    dw TitleSequenceSpritemaps_PRESENTS                                  ;8BA097;
+    dw $0008,TitleSequenceSpritemaps_P                                   ;8BA079;
+    dw $0008,TitleSequenceSpritemaps_PR                                  ;8BA07D;
+    dw $0008,TitleSequenceSpritemaps_PRE                                 ;8BA081;
+    dw $0008,TitleSequenceSpritemaps_PRES                                ;8BA085;
+    dw $0008,TitleSequenceSpritemaps_PRESE                               ;8BA089;
+    dw $0008,TitleSequenceSpritemaps_PRESEN                              ;8BA08D;
+    dw $0008,TitleSequenceSpritemaps_PRESENT                             ;8BA091;
+    dw $002D,TitleSequenceSpritemaps_PRESENTS                            ;8BA095;
     dw Instruction_TriggerTitleSequenceScene2                            ;8BA099;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BA09B;
 
 InstList_CinematicSpriteObject_Metroid3ScrollingText:
-    dw $0008                                                             ;8BA09D;
-    dw TitleSequenceSpritemaps_M                                         ;8BA09F;
-    dw $0008                                                             ;8BA0A1;
-    dw TitleSequenceSpritemaps_ME                                        ;8BA0A3;
-    dw $0008                                                             ;8BA0A5;
-    dw TitleSequenceSpritemaps_MET                                       ;8BA0A7;
-    dw $0008                                                             ;8BA0A9;
-    dw TitleSequenceSpritemaps_METR                                      ;8BA0AB;
-    dw $0008                                                             ;8BA0AD;
-    dw TitleSequenceSpritemaps_METRO                                     ;8BA0AF;
-    dw $0008                                                             ;8BA0B1;
-    dw TitleSequenceSpritemaps_METROI                                    ;8BA0B3;
-    dw $0008                                                             ;8BA0B5;
-    dw TitleSequenceSpritemaps_METROID                                   ;8BA0B7;
-    dw $0008                                                             ;8BA0B9;
-    dw TitleSequenceSpritemaps_METROID_                                  ;8BA0BB;
-    dw $0078                                                             ;8BA0BD;
-    dw TitleSequenceSpritemaps_METROID3                                  ;8BA0BF;
+    dw $0008,TitleSequenceSpritemaps_M                                   ;8BA09D;
+    dw $0008,TitleSequenceSpritemaps_ME                                  ;8BA0A1;
+    dw $0008,TitleSequenceSpritemaps_MET                                 ;8BA0A5;
+    dw $0008,TitleSequenceSpritemaps_METR                                ;8BA0A9;
+    dw $0008,TitleSequenceSpritemaps_METRO                               ;8BA0AD;
+    dw $0008,TitleSequenceSpritemaps_METROI                              ;8BA0B1;
+    dw $0008,TitleSequenceSpritemaps_METROID                             ;8BA0B5;
+    dw $0008,TitleSequenceSpritemaps_METROID_                            ;8BA0B9;
+    dw $0078,TitleSequenceSpritemaps_METROID3                            ;8BA0BD;
     dw Instruction_TriggerTitleSequenceScene3                            ;8BA0C1;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BA0C3;
 
 InstList_CinematicSpriteObject_SuperMetroidTitleLogo_FadeIn:
-    dw $0020                                                             ;8BA0C5;
-    dw TitleSequenceSpritemaps_SuperMetroidTitleLogo                     ;8BA0C7;
+    dw $0020,TitleSequenceSpritemaps_SuperMetroidTitleLogo               ;8BA0C5;
     dw Instruction_FadeInNintendoCopyright                               ;8BA0C9;
 
-InstList_CinematicSpriteObject_SuperMetroidTitleLogo_Immedia:
-    dw $0001                                                             ;8BA0CB;
-    dw TitleSequenceSpritemaps_SuperMetroidTitleLogo                     ;8BA0CD;
+InstList_CinematicSpriteObject_SuperMetroidTitleLogo_Immediate:
+    dw $0001,TitleSequenceSpritemaps_SuperMetroidTitleLogo               ;8BA0CB;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BA0CF;
-    dw InstList_CinematicSpriteObject_SuperMetroidTitleLogo_Immedia      ;8BA0D1;
+    dw InstList_CinematicSpriteObject_SuperMetroidTitleLogo_Immediate    ;8BA0D1;
 
 if !FEATURE_KEEP_UNREFERENCED
 InstList_CinematicSpriteObject_UnusedNintendoBootLogo_FadeIn:
-    dw $0020                                                             ;8BA0D3;
-    dw TitleSequenceSpritemaps_NintendoBootLogo                          ;8BA0D5;
+    dw $0020,TitleSequenceSpritemaps_NintendoBootLogo                    ;8BA0D3;
     dw Instruction_UsePalette0_FadeInNintendoCopyright                   ;8BA0D7;
 
-InstList_CinematicSpriteObject_UnusedNintendoBootLogo_Immedi:
-    dw $0001                                                             ;8BA0D9;
-    dw TitleSequenceSpritemaps_NintendoBootLogo                          ;8BA0DB;
+InstList_CinematicSpriteObject_UnusedNintendoBootLogo_Immediate:
+    dw $0001,TitleSequenceSpritemaps_NintendoBootLogo                    ;8BA0D9;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BA0DD;
-    dw InstList_CinematicSpriteObject_UnusedNintendoBootLogo_Immedi      ;8BA0DF;
+    dw InstList_CinematicSpriteObject_UnusedNintendoBootLogo_Immediate   ;8BA0DF;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_CinematicSpriteObject_NintendoCopyright_FadeIn:
-    dw $0020                                                             ;8BA0E1;
-    dw TitleSequenceSpritemaps_NintendoCopyright                         ;8BA0E3;
+    dw $0020,TitleSequenceSpritemaps_NintendoCopyright                   ;8BA0E1;
     dw Instruction_StartDemoCountdown                                    ;8BA0E5;
 
 InstList_CinematicSpriteObject_NintendoCopyright_Immediate:
-    dw $0001                                                             ;8BA0E7;
-    dw TitleSequenceSpritemaps_NintendoCopyright                         ;8BA0E9;
+    dw $0001,TitleSequenceSpritemaps_NintendoCopyright                   ;8BA0E7;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BA0EB;
     dw InstList_CinematicSpriteObject_NintendoCopyright_Immediate        ;8BA0ED;
 
@@ -4648,12 +4622,12 @@ endif ; !FEATURE_KEEP_UNREFERENCED
   .SuperMetroidLogoImmediate
     dw InitFunction_CinematicSpriteObject_SuperMetroidLogoImmediate      ;8BA119;
     dw RTS_8B93D9                                                        ;8BA11B;
-    dw InstList_CinematicSpriteObject_SuperMetroidTitleLogo_Immedia      ;8BA11D;
+    dw InstList_CinematicSpriteObject_SuperMetroidTitleLogo_Immediate    ;8BA11D;
 if !FEATURE_KEEP_UNREFERENCED
   .UnusedNintendoBootLogoImm
     dw InitFunction_CinematicSpriteObject_UnusedNintendoBootLogoImm      ;8BA11F;
     dw RTS_8B93D9                                                        ;8BA121;
-    dw InstList_CinematicSpriteObject_UnusedNintendoBootLogo_Immedi      ;8BA123;
+    dw InstList_CinematicSpriteObject_UnusedNintendoBootLogo_Immediate   ;8BA123;
 endif ; !FEATURE_KEEP_UNREFERENCED
   .NintendoCopyrightImmediate
     dw InitFunc_CinematicSpriteObject_NintendoCopyrightImmediate         ;8BA125;
@@ -4662,161 +4636,111 @@ endif ; !FEATURE_KEEP_UNREFERENCED
 
 Mode7Object_InstList_TitleSequenceBabyMetroid_0:
     dw Instruction_LoadBabyMetroid_Colors0                               ;8BA12B;
-    dw Mode7Objects_Instruction_TimerInY                                 ;8BA12D;
-    dw $0002                                                             ;8BA12F;
+    dw Mode7Objects_Instruction_TimerInY,$0002                           ;8BA12D;
 
 Mode7Object_InstList_TitleSequenceBabyMetroid_1:
-    dw $000A                                                             ;8BA131;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_0                      ;8BA133;
-    dw $000A                                                             ;8BA135;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA137;
-    dw $000A                                                             ;8BA139;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_2                      ;8BA13B;
-    dw $000A                                                             ;8BA13D;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA13F;
+    dw $000A,Mode7TransferData_TitleSequenceBabyMetroid_0                ;8BA131;
+    dw $000A,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA135;
+    dw $000A,Mode7TransferData_TitleSequenceBabyMetroid_2                ;8BA139;
+    dw $000A,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA13D;
     dw Mode7Objects_Instruction_DecrementTimer_GotoYIfNonZero            ;8BA141;
     dw Mode7Object_InstList_TitleSequenceBabyMetroid_1                   ;8BA143;
     dw Instruction_PlayBabyMetroid_Cry1                                  ;8BA145;
     dw Instruction_LoadBabyMetroid_Colors1                               ;8BA147;
-    dw $0006                                                             ;8BA149;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_0                      ;8BA14B;
+    dw $0006,Mode7TransferData_TitleSequenceBabyMetroid_0                ;8BA149;
     dw Instruction_LoadBabyMetroid_Colors2                               ;8BA14D;
-    dw $0005                                                             ;8BA14F;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA151;
+    dw $0005,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA14F;
     dw Instruction_LoadBabyMetroid_Colors3                               ;8BA153;
-    dw $0004                                                             ;8BA155;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_2                      ;8BA157;
+    dw $0004,Mode7TransferData_TitleSequenceBabyMetroid_2                ;8BA155;
     dw Instruction_LoadBabyMetroid_Colors2                               ;8BA159;
-    dw $0003                                                             ;8BA15B;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA15D;
+    dw $0003,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA15B;
     dw Instruction_LoadBabyMetroid_Colors1                               ;8BA15F;
-    dw $0002                                                             ;8BA161;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_0                      ;8BA163;
+    dw $0002,Mode7TransferData_TitleSequenceBabyMetroid_0                ;8BA161;
     dw Instruction_LoadBabyMetroid_Colors2                               ;8BA165;
-    dw $0003                                                             ;8BA167;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA169;
+    dw $0003,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA167;
     dw Instruction_LoadBabyMetroid_Colors3                               ;8BA16B;
-    dw $0004                                                             ;8BA16D;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_2                      ;8BA16F;
+    dw $0004,Mode7TransferData_TitleSequenceBabyMetroid_2                ;8BA16D;
     dw Instruction_LoadBabyMetroid_Colors2                               ;8BA171;
-    dw $0005                                                             ;8BA173;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA175;
+    dw $0005,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA173;
     dw Instruction_LoadBabyMetroid_Colors1                               ;8BA177;
-    dw $0006                                                             ;8BA179;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_0                      ;8BA17B;
+    dw $0006,Mode7TransferData_TitleSequenceBabyMetroid_0                ;8BA179;
     dw Instruction_LoadBabyMetroid_Colors2                               ;8BA17D;
-    dw $0007                                                             ;8BA17F;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA181;
+    dw $0007,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA17F;
     dw Instruction_LoadBabyMetroid_Colors3                               ;8BA183;
-    dw $0008                                                             ;8BA185;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_2                      ;8BA187;
+    dw $0008,Mode7TransferData_TitleSequenceBabyMetroid_2                ;8BA185;
     dw Instruction_LoadBabyMetroid_Colors2                               ;8BA189;
-    dw $0009                                                             ;8BA18B;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA18D;
+    dw $0009,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA18B;
     dw Instruction_LoadBabyMetroid_Colors0                               ;8BA18F;
-    dw Mode7Objects_Instruction_TimerInY                                 ;8BA191;
-    dw $0004                                                             ;8BA193;
+    dw Mode7Objects_Instruction_TimerInY,$0004                           ;8BA191;
 
 Mode7Object_InstList_TitleSequenceBabyMetroid_2:
-    dw $000A                                                             ;8BA195;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_0                      ;8BA197;
-    dw $000A                                                             ;8BA199;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA19B;
-    dw $000A                                                             ;8BA19D;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_2                      ;8BA19F;
-    dw $000A                                                             ;8BA1A1;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA1A3;
+    dw $000A,Mode7TransferData_TitleSequenceBabyMetroid_0                ;8BA195;
+    dw $000A,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA199;
+    dw $000A,Mode7TransferData_TitleSequenceBabyMetroid_2                ;8BA19D;
+    dw $000A,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA1A1;
     dw Mode7Objects_Instruction_DecrementTimer_GotoYIfNonZero            ;8BA1A5;
     dw Mode7Object_InstList_TitleSequenceBabyMetroid_2                   ;8BA1A7;
     dw Instruction_PlayBabyMetroid_Cry2                                  ;8BA1A9;
     dw Instruction_LoadBabyMetroid_Colors1                               ;8BA1AB;
-    dw $0006                                                             ;8BA1AD;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_0                      ;8BA1AF;
+    dw $0006,Mode7TransferData_TitleSequenceBabyMetroid_0                ;8BA1AD;
     dw Instruction_LoadBabyMetroid_Colors2                               ;8BA1B1;
-    dw $0005                                                             ;8BA1B3;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA1B5;
+    dw $0005,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA1B3;
     dw Instruction_LoadBabyMetroid_Colors3                               ;8BA1B7;
-    dw $0004                                                             ;8BA1B9;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_2                      ;8BA1BB;
+    dw $0004,Mode7TransferData_TitleSequenceBabyMetroid_2                ;8BA1B9;
     dw Instruction_LoadBabyMetroid_Colors2                               ;8BA1BD;
-    dw $0003                                                             ;8BA1BF;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA1C1;
+    dw $0003,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA1BF;
     dw Instruction_LoadBabyMetroid_Colors1                               ;8BA1C3;
-    dw $0002                                                             ;8BA1C5;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_0                      ;8BA1C7;
+    dw $0002,Mode7TransferData_TitleSequenceBabyMetroid_0                ;8BA1C5;
     dw Instruction_LoadBabyMetroid_Colors2                               ;8BA1C9;
-    dw $0003                                                             ;8BA1CB;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA1CD;
+    dw $0003,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA1CB;
     dw Instruction_LoadBabyMetroid_Colors3                               ;8BA1CF;
-    dw $0004                                                             ;8BA1D1;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_2                      ;8BA1D3;
+    dw $0004,Mode7TransferData_TitleSequenceBabyMetroid_2                ;8BA1D1;
     dw Instruction_LoadBabyMetroid_Colors2                               ;8BA1D5;
-    dw $0005                                                             ;8BA1D7;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA1D9;
+    dw $0005,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA1D7;
     dw Instruction_LoadBabyMetroid_Colors1                               ;8BA1DB;
-    dw $0006                                                             ;8BA1DD;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_0                      ;8BA1DF;
+    dw $0006,Mode7TransferData_TitleSequenceBabyMetroid_0                ;8BA1DD;
     dw Instruction_LoadBabyMetroid_Colors2                               ;8BA1E1;
-    dw $0007                                                             ;8BA1E3;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA1E5;
+    dw $0007,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA1E3;
     dw Instruction_LoadBabyMetroid_Colors3                               ;8BA1E7;
-    dw $0008                                                             ;8BA1E9;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_2                      ;8BA1EB;
+    dw $0008,Mode7TransferData_TitleSequenceBabyMetroid_2                ;8BA1E9;
     dw Instruction_LoadBabyMetroid_Colors2                               ;8BA1ED;
-    dw $0009                                                             ;8BA1EF;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA1F1;
+    dw $0009,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA1EF;
     dw Instruction_LoadBabyMetroid_Colors0                               ;8BA1F3;
     dw Mode7Objects_Instruction_TimerInY                                 ;8BA1F5;
     dw $0003                                                             ;8BA1F7;
 
 Mode7Object_InstList_TitleSequenceBabyMetroid_3:
-    dw $000A                                                             ;8BA1F9;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_0                      ;8BA1FB;
-    dw $000A                                                             ;8BA1FD;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA1FF;
-    dw $000A                                                             ;8BA201;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_2                      ;8BA203;
-    dw $000A                                                             ;8BA205;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA207;
+    dw $000A,Mode7TransferData_TitleSequenceBabyMetroid_0                ;8BA1F9;
+    dw $000A,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA1FD;
+    dw $000A,Mode7TransferData_TitleSequenceBabyMetroid_2                ;8BA201;
+    dw $000A,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA205;
     dw Mode7Objects_Instruction_DecrementTimer_GotoYIfNonZero            ;8BA209;
     dw Mode7Object_InstList_TitleSequenceBabyMetroid_3                   ;8BA20B;
     dw Instruction_PlayBabyMetroid_Cry3                                  ;8BA20D;
     dw Instruction_LoadBabyMetroid_Colors1                               ;8BA20F;
-    dw $0006                                                             ;8BA211;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_0                      ;8BA213;
+    dw $0006,Mode7TransferData_TitleSequenceBabyMetroid_0                ;8BA211;
     dw Instruction_LoadBabyMetroid_Colors2                               ;8BA215;
-    dw $0005                                                             ;8BA217;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA219;
+    dw $0005,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA217;
     dw Instruction_LoadBabyMetroid_Colors3                               ;8BA21B;
-    dw $0004                                                             ;8BA21D;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_2                      ;8BA21F;
+    dw $0004,Mode7TransferData_TitleSequenceBabyMetroid_2                ;8BA21D;
     dw Instruction_LoadBabyMetroid_Colors2                               ;8BA221;
-    dw $0003                                                             ;8BA223;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA225;
+    dw $0003,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA223;
     dw Instruction_LoadBabyMetroid_Colors1                               ;8BA227;
-    dw $0002                                                             ;8BA229;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_0                      ;8BA22B;
+    dw $0002,Mode7TransferData_TitleSequenceBabyMetroid_0                ;8BA229;
     dw Instruction_LoadBabyMetroid_Colors2                               ;8BA22D;
-    dw $0003                                                             ;8BA22F;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA231;
+    dw $0003,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA22F;
     dw Instruction_LoadBabyMetroid_Colors3                               ;8BA233;
-    dw $0004                                                             ;8BA235;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_2                      ;8BA237;
+    dw $0004,Mode7TransferData_TitleSequenceBabyMetroid_2                ;8BA235;
     dw Instruction_LoadBabyMetroid_Colors2                               ;8BA239;
-    dw $0005                                                             ;8BA23B;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA23D;
+    dw $0005,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA23B;
     dw Instruction_LoadBabyMetroid_Colors1                               ;8BA23F;
-    dw $0006                                                             ;8BA241;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_0                      ;8BA243;
+    dw $0006,Mode7TransferData_TitleSequenceBabyMetroid_0                ;8BA241;
     dw Instruction_LoadBabyMetroid_Colors2                               ;8BA245;
-    dw $0007                                                             ;8BA247;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA249;
+    dw $0007,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA247;
     dw Instruction_LoadBabyMetroid_Colors3                               ;8BA24B;
-    dw $0008                                                             ;8BA24D;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_2                      ;8BA24F;
+    dw $0008,Mode7TransferData_TitleSequenceBabyMetroid_2                ;8BA24D;
     dw Instruction_LoadBabyMetroid_Colors2                               ;8BA251;
-    dw $0009                                                             ;8BA253;
-    dw Mode7TransferData_TitleSequenceBabyMetroid_1                      ;8BA255;
+    dw $0009,Mode7TransferData_TitleSequenceBabyMetroid_1                ;8BA253;
     dw Mode7Objects_Instruction_GotoY                                    ;8BA257;
     dw Mode7Object_InstList_TitleSequenceBabyMetroid_0                   ;8BA259;
 
@@ -4894,6 +4818,7 @@ Instruction_LoadBabyMetroid_Colors3:
     RTS                                                                  ;8BA2B6;
 
 
+; Game over baby metroid palettes are in bank $82
 TitleSequenceBabyMetroid_Colors_0:
     db $00,$10,$F5,$6B,$41,$2E,$A1,$2D,$01,$2D,$5F,$5E,$3F,$18,$14,$10   ;8BA2B7;
     db $0A,$08,$04,$04,$9F,$4F,$D8,$3E,$12,$2E,$70,$6F,$FF,$7F,$E0,$5E   ;8BA2C7;
@@ -4911,22 +4836,22 @@ TitleSequenceBabyMetroid_Colors_3:
     db $D0,$20,$CA,$1C,$FF,$67,$9B,$57,$D5,$46,$D6,$7B,$FF,$7F,$A6,$77   ;8BA327;
 
 Mode7TransferData_TitleSequenceBabyMetroid_0:
-    db $C0                                                               ;8BA337;
-    dl $7F9000                                                           ;8BA338;
-    dw $0100,$3800                                                       ;8BA33B;
-    db $80,$00                                                           ;8BA33F;
+    db $C0                                                               ;8BA337; Control. C0h = write to VRAM tiles
+    dl $7F9000                                                           ;8BA338; Source address
+    dw $0100,$3800                                                       ;8BA33B; Size, Destination address (VRAM)
+    db $80,$00                                                           ;8BA33F; VRAM address increment mode
 
 Mode7TransferData_TitleSequenceBabyMetroid_1:
-    db $C0                                                               ;8BA341;
-    dl $7F9100                                                           ;8BA342;
-    dw $0100,$3800                                                       ;8BA345;
-    db $80,$00                                                           ;8BA349;
+    db $C0                                                               ;8BA341; Control. C0h = write to VRAM tiles
+    dl $7F9100                                                           ;8BA342; Source address
+    dw $0100,$3800                                                       ;8BA345; Size, Destination address (VRAM)
+    db $80,$00                                                           ;8BA349; VRAM address increment mode
 
 Mode7TransferData_TitleSequenceBabyMetroid_2:
-    db $C0                                                               ;8BA34B;
-    dl $7F9200                                                           ;8BA34C;
-    dw $0100,$3800                                                       ;8BA34F;
-    db $80,$00                                                           ;8BA353;
+    db $C0                                                               ;8BA34B; Control. C0h = write to VRAM tiles
+    dl $7F9200                                                           ;8BA34C; Source address
+    dw $0100,$3800                                                       ;8BA34F; Size, Destination address (VRAM)
+    db $80,$00                                                           ;8BA353; VRAM address increment mode
 
 Mode7Object_TitleSequenceBabyMetroid:
     dw RTS_8B93D9                                                        ;8BA355;
@@ -5569,13 +5494,19 @@ InitFunction_CinematicSpriteObject_MetroidEggParticles:
     STA.W $1ABD,Y                                                        ;8BA978;
     RTS                                                                  ;8BA97B;
 
-
+;        _________ X position - 10h
+;       |      ___ Y position - 3Bh
+;       |     |
 .Xposition:
     dw $005C                                                             ;8BA97C;
-
 .Yposition:
-    dw $0058,$0063,$0058,$0059,$005D,$0060,$005B,$0066                   ;8BA97E;
-    dw $005E,$0063,$0060                                                 ;8BA98E;
+    dw       $0058                                                       ;8BA97E;
+    dw $0063,$0058
+    dw $0059,$005D
+    dw $0060,$005B
+    dw $0066,$005E
+    dw $0063,$0060
+
 
 PreInstruction_CinematicSpriteObject_MetroidEggParticle:
     LDA.W $1B7D,X                                                        ;8BA994;
@@ -5621,20 +5552,22 @@ PreInstruction_CinematicSpriteObject_MetroidEggParticle:
 
 
 .Xvelocities:
-    dw $FFFF,$4000,$0000,$4000,$FFFF,$8000,$FFFF,$2000                   ;8BA9EA;
-    dw $0000,$8000,$0000,$2000                                           ;8BA9FA;
+; Indexed by [cinematic sprite object index] * 4
+    dw $FFFF,$4000, $0000,$4000, $FFFF,$8000, $FFFF,$2000                 ;8BA9EA;
+    dw $0000,$8000, $0000,$2000                                           ;8BA9FA;
 
 .Yvelocities:
-    dw $FFFE,$0000,$FFFE,$C000,$FFFE,$A000,$FFFE,$8000                   ;8BAA02;
-    dw $FFFE,$6000,$FFFE,$4000,$FFFE,$2000,$FFFF,$0000                   ;8BAA12;
-    dw $FFFF,$C000,$FFFF,$A000,$FFFF,$8000,$FFFF,$6000                   ;8BAA22;
-    dw $FFFF,$4000,$FFFF,$2000,$0000,$0000,$0000,$2000                   ;8BAA32;
-    dw $0000,$4000,$0000,$6000,$0000,$8000,$0000,$A000                   ;8BAA42;
-    dw $0000,$C000,$0000,$E000,$0001,$0000,$0001,$2000                   ;8BAA52;
-    dw $0001,$4000,$0001,$6000,$0001,$8000,$0001,$A000                   ;8BAA62;
-    dw $0001,$C000,$0001,$E000,$0002,$0000,$0002,$2000                   ;8BAA72;
-    dw $0002,$4000,$0002,$6000,$0002,$8000,$0002,$A000                   ;8BAA82;
-    dw $0002,$C000,$0002,$E000                                           ;8BAA92;
+; Indexed by [cinematic sprite object index] * 4
+    dw $FFFE,$0000, $FFFE,$C000, $FFFE,$A000, $FFFE,$8000                 ;8BAA02;
+    dw $FFFE,$6000, $FFFE,$4000, $FFFE,$2000, $FFFF,$0000                 ;8BAA12;
+    dw $FFFF,$C000, $FFFF,$A000, $FFFF,$8000, $FFFF,$6000                 ;8BAA22;
+    dw $FFFF,$4000, $FFFF,$2000, $0000,$0000, $0000,$2000                 ;8BAA32;
+    dw $0000,$4000, $0000,$6000, $0000,$8000, $0000,$A000                 ;8BAA42;
+    dw $0000,$C000, $0000,$E000, $0001,$0000, $0001,$2000                 ;8BAA52;
+    dw $0001,$4000, $0001,$6000, $0001,$8000, $0001,$A000                 ;8BAA62;
+    dw $0001,$C000, $0001,$E000, $0002,$0000, $0002,$2000                 ;8BAA72;
+    dw $0002,$4000, $0002,$6000, $0002,$8000, $0002,$A000                 ;8BAA82;
+    dw $0002,$C000, $0002,$E000                                           ;8BAA92;
 
 
 InitFunction_CinematicSpriteObject_MetroidEggSlimeDrops:
@@ -5716,45 +5649,48 @@ PreInstruction_CinematicSpriteObject_MetroidEggSlimeDrops:
 
 
 .Xvelocities:
-    dw $FFFF,$0000,$FFFF,$8000,$0001,$0000,$0000,$8000                   ;8BAB35;
+; Indexed by [cinematic sprite object index] * 4
+    dw $FFFF,$0000, $FFFF,$8000, $0001,$0000, $0000,$8000                ;8BAB35;
     dw $FFFF,$8000                                                       ;8BAB45;
 
 .YvelocitiesOdd:
-    dw $FFFE,$0000,$FFFE,$C000,$FFFE,$A000,$FFFE,$8000                   ;8BAB49;
-    dw $FFFE,$6000,$FFFE,$4000,$FFFE,$2000,$FFFF,$0000                   ;8BAB59;
-    dw $FFFF,$C000,$FFFF,$A000,$FFFF,$8000,$FFFF,$6000                   ;8BAB69;
-    dw $FFFF,$4000,$FFFF,$2000,$0000,$0000,$0000,$2000                   ;8BAB79;
-    dw $0000,$4000,$0000,$6000,$0000,$8000,$0000,$A000                   ;8BAB89;
-    dw $0000,$C000,$0000,$E000,$0001,$0000,$0001,$2000                   ;8BAB99;
-    dw $0001,$4000,$0001,$6000,$0001,$8000,$0001,$A000                   ;8BABA9;
-    dw $0001,$C000,$0001,$E000,$0002,$0000,$0002,$2000                   ;8BABB9;
-    dw $0002,$4000,$0002,$6000,$0002,$8000,$0002,$A000                   ;8BABC9;
-    dw $0002,$C000,$0002,$E000,$0003,$0000,$0003,$2000                   ;8BABD9;
-    dw $0003,$4000,$0003,$6000,$0003,$8000,$0003,$A000                   ;8BABE9;
-    dw $0003,$C000,$0003,$E000,$0004,$0000,$0004,$2000                   ;8BABF9;
-    dw $0004,$4000,$0004,$6000,$0004,$8000,$0004,$A000                   ;8BAB09;
-    dw $0004,$C000,$0004,$E000,$0005,$0000,$0005,$2000                   ;8BAC19;
-    dw $0005,$4000,$0005,$6000,$0005,$8000,$0005,$A000                   ;8BAC29;
-    dw $0005,$C000,$0005,$E000                                           ;8BAC39;
+; for odd index slime drops. Indexed by [cinematic sprite object counter] * 4
+    dw $FFFE,$0000, $FFFE,$C000, $FFFE,$A000, $FFFE,$8000                ;8BAB49;
+    dw $FFFE,$6000, $FFFE,$4000, $FFFE,$2000, $FFFF,$0000                ;8BAB59;
+    dw $FFFF,$C000, $FFFF,$A000, $FFFF,$8000, $FFFF,$6000                ;8BAB69;
+    dw $FFFF,$4000, $FFFF,$2000, $0000,$0000, $0000,$2000                ;8BAB79;
+    dw $0000,$4000, $0000,$6000, $0000,$8000, $0000,$A000                ;8BAB89;
+    dw $0000,$C000, $0000,$E000, $0001,$0000, $0001,$2000                ;8BAB99;
+    dw $0001,$4000, $0001,$6000, $0001,$8000, $0001,$A000                ;8BABA9;
+    dw $0001,$C000, $0001,$E000, $0002,$0000, $0002,$2000                ;8BABB9;
+    dw $0002,$4000, $0002,$6000, $0002,$8000, $0002,$A000                ;8BABC9;
+    dw $0002,$C000, $0002,$E000, $0003,$0000, $0003,$2000                ;8BABD9;
+    dw $0003,$4000, $0003,$6000, $0003,$8000, $0003,$A000                ;8BABE9;
+    dw $0003,$C000, $0003,$E000, $0004,$0000, $0004,$2000                ;8BABF9;
+    dw $0004,$4000, $0004,$6000, $0004,$8000, $0004,$A000                ;8BAB09;
+    dw $0004,$C000, $0004,$E000, $0005,$0000, $0005,$2000                ;8BAC19;
+    dw $0005,$4000, $0005,$6000, $0005,$8000, $0005,$A000                ;8BAC29;
+    dw $0005,$C000, $0005,$E000                                          ;8BAC39;
 
 .YvelocitiesEven:
-    dw $FFFD,$0000,$FFFD,$C000,$FFFD,$A000,$FFFD,$8000                   ;8BAC41;
-    dw $FFFD,$6000,$FFFD,$4000,$FFFD,$2000,$FFFE,$0000                   ;8BAC51;
-    dw $FFFE,$C000,$FFFE,$A000,$FFFE,$8000,$FFFE,$6000                   ;8BAC61;
-    dw $FFFE,$4000,$FFFE,$2000,$FFFF,$0000,$FFFF,$C000                   ;8BAC71;
-    dw $FFFF,$A000,$FFFF,$8000,$FFFF,$6000,$FFFF,$4000                   ;8BAC81;
-    dw $FFFF,$2000,$0000,$0000,$0000,$2000,$0000,$4000                   ;8BAC91;
-    dw $0000,$6000,$0000,$8000,$0000,$A000,$0000,$C000                   ;8BACA1;
-    dw $0000,$E000,$0001,$0000,$0001,$2000,$0001,$4000                   ;8BACB1;
-    dw $0001,$6000,$0001,$8000,$0001,$A000,$0001,$C000                   ;8BACC1;
-    dw $0001,$E000,$0002,$0000,$0002,$2000,$0002,$4000                   ;8BACD1;
-    dw $0002,$6000,$0002,$8000,$0002,$A000,$0002,$C000                   ;8BACE1;
-    dw $0002,$E000,$0003,$0000,$0003,$2000,$0003,$4000                   ;8BACF1;
-    dw $0003,$6000,$0003,$8000,$0003,$A000,$0003,$C000                   ;8BAC01;
-    dw $0003,$E000,$0004,$0000,$0004,$2000,$0004,$4000                   ;8BAD11;
-    dw $0004,$6000,$0004,$8000,$0004,$A000,$0004,$C000                   ;8BAD21;
-    dw $0004,$E000,$0005,$0000,$0005,$2000,$0005,$4000                   ;8BAD31;
-    dw $0005,$6000,$0005,$8000,$0005,$A000,$0005,$C000                   ;8BAD41;
+;  for even index slime drops. Indexed by [cinematic sprite object counter] * 4
+    dw $FFFD,$0000, $FFFD,$C000, $FFFD,$A000, $FFFD,$8000                ;8BAC41;
+    dw $FFFD,$6000, $FFFD,$4000, $FFFD,$2000, $FFFE,$0000                ;8BAC51;
+    dw $FFFE,$C000, $FFFE,$A000, $FFFE,$8000, $FFFE,$6000                ;8BAC61;
+    dw $FFFE,$4000, $FFFE,$2000, $FFFF,$0000, $FFFF,$C000                ;8BAC71;
+    dw $FFFF,$A000, $FFFF,$8000, $FFFF,$6000, $FFFF,$4000                ;8BAC81;
+    dw $FFFF,$2000, $0000,$0000, $0000,$2000, $0000,$4000                ;8BAC91;
+    dw $0000,$6000, $0000,$8000, $0000,$A000, $0000,$C000                ;8BACA1;
+    dw $0000,$E000, $0001,$0000, $0001,$2000, $0001,$4000                ;8BACB1;
+    dw $0001,$6000, $0001,$8000, $0001,$A000, $0001,$C000                ;8BACC1;
+    dw $0001,$E000, $0002,$0000, $0002,$2000, $0002,$4000                ;8BACD1;
+    dw $0002,$6000, $0002,$8000, $0002,$A000, $0002,$C000                ;8BACE1;
+    dw $0002,$E000, $0003,$0000, $0003,$2000, $0003,$4000                ;8BACF1;
+    dw $0003,$6000, $0003,$8000, $0003,$A000, $0003,$C000                ;8BAC01;
+    dw $0003,$E000, $0004,$0000, $0004,$2000, $0004,$4000                ;8BAD11;
+    dw $0004,$6000, $0004,$8000, $0004,$A000, $0004,$C000                ;8BAD21;
+    dw $0004,$E000, $0005,$0000, $0005,$2000, $0005,$4000                ;8BAD31;
+    dw $0005,$6000, $0005,$8000, $0005,$A000, $0005,$C000                ;8BAD41;
     dw $0005,$E000                                                       ;8BAD51;
 
 InitFunction_CinematicSpriteObject_BabyMetroidBeingDelivered:
@@ -7950,10 +7886,10 @@ CinematicFunction_FlyToCeres_FlyingIntoCamera:
 
 
 .transferData:
-    db $80                                                               ;8BBE74;
-    dl $7F4300                                                           ;8BBE75;
-    dw $0300,$0000                                                       ;8BBE78;
-    db $00,$00                                                           ;8BBE7C;
+    db $80                                                               ;8BBE74; Control. 80h = write to VRAM tilemap
+    dl $7F4300                                                           ;8BBE75; Source address
+    dw $0300,$0000                                                       ;8BBE78; Size, Destination address (VRAM)
+    db $00, $00                                                          ;8BBE7C; VRAM address increment mode
 
 InitFunction_CinematicSpriteObject_CeresStars:
     LDA.W $1B9D                                                          ;8BBE7E;
@@ -8621,22 +8557,22 @@ CinematicFunction_CeresGoesBoom_CeresExplosions:
 
 
 .mode7TransferData_frontOfGunship:
-    db $80                                                               ;8BC3E6;
-    dl $7F4000                                                           ;8BC3E7;
-    dw $0300,$0000                                                       ;8BC3EA;
-    db $00,$00                                                           ;8BC3EE;
+    db $80                                                               ;8BC3E6; Control. 80h = write to VRAM tilemap
+    dl $7F4000                                                           ;8BC3E7; Source address
+    dw $0300,$0000                                                       ;8BC3EA; Size, Destination address (VRAM)
+    db $00, $00                                                          ;8BC3EE; VRAM address increment mode
 
 .mode7TransferData_clearCeresLowerHalf:
-    db $80                                                               ;8BC3F0;
-    dl $7F4C00                                                           ;8BC3F1;
-    dw $0300,$0300                                                       ;8BC3F4;
-    db $00,$00                                                           ;8BC3F8;
+    db $80                                                               ;8BC3F0; Control. 80h = write to VRAM tilemap
+    dl $7F4C00                                                           ;8BC3F1; Source address
+    dw $0300,$0300                                                       ;8BC3F4; Size, Destination address (VRAM)
+    db $00, $00                                                          ;8BC3F8; VRAM address increment mode
 
 .mode7TransferData_clearCeresUpperHalf:
-    db $80                                                               ;8BC3FA;
-    dl $7F4C00                                                           ;8BC3FB;
-    dw $0300,$0000                                                       ;8BC3FE;
-    db $00,$00                                                           ;8BC402;
+    db $80                                                               ;8BC3FA; Control. 80h = write to VRAM tilemap
+    dl $7F4C00                                                           ;8BC3FB; Source address
+    dw $0300,$0000                                                       ;8BC3FE; Size, Destination address (VRAM)
+    db $00, $00                                                          ;8BC402; VRAM address increment mode
 
 Instruction_SpawnCeresExplosions1:
     PHY                                                                  ;8BC404;
@@ -8686,15 +8622,13 @@ InitFunction_CinematicSpriteObject_CeresExplosion1:
     STA.W $1ABD,Y                                                        ;8BC467;
     RTS                                                                  ;8BC46A;
 
-
 .timer:
     dw $0001,$0010,$0020,$0030,$0040                                     ;8BC46B;
-
 .Xoffset:
     dw $0010,$FFF0,$0010,$FFF0,$0000                                     ;8BC475;
-
 .Yoffset:
     dw $FFF0,$0010,$0010,$FFF0,$0000                                     ;8BC47F;
+
 
 PreInst_CeresExplosionSpawner_SpawnExplosion2EveryCFrames:
     LDA.W $1F51                                                          ;8BC489;
@@ -8751,13 +8685,18 @@ InitFunction_CinematicSpriteObject_CeresExplosion2:
     STA.W $1ABD,Y                                                        ;8BC4E7;
     RTS                                                                  ;8BC4EA;
 
-
-.Xoffset:
+  .Xoffset
     dw $000E                                                             ;8BC4EB;
+  .Yoffset
+    dw       $FFF8                                                       ;8BC4ED;
+    dw $0008,$000C
+    dw $FFF0,$000C
+    dw $FFF8,$FFF2
+    dw $0000,$0000
+    dw $0010,$000E
+    dw $FFF4,$0004
+    dw $FFF8,$FFF0
 
-.Yoffset:
-    dw $FFF8,$0008,$000C,$FFF0,$000C,$FFF8,$FFF2,$0000                   ;8BC4ED;
-    dw $0000,$0010,$000E,$FFF4,$0004,$FFF8,$FFF0                         ;8BC4FD;
 
 RTS_8BC50B:
     RTS                                                                  ;8BC50B;
@@ -8808,15 +8747,13 @@ InitFunction_CinematicSpriteObject_CeresExplosion3:
     STA.W $1ABD,Y                                                        ;8BC566;
     RTS                                                                  ;8BC569;
 
-
-.timer:
+  .timer
     dw $0001,$0004,$0008,$0010                                           ;8BC56A;
-
-.Xoffset:
+  .Xoffset
     dw $0008,$000C,$FFF8,$FFF4                                           ;8BC572;
-
-.Yoffset:
+  .Yoffset
     dw $FFFC,$0008,$FFF6,$000C                                           ;8BC57A;
+
 
 PreInstruction_CinematicSpriteObject_CeresExplosion:
     LDA.W $1AFD,X                                                        ;8BC582;
@@ -9544,14 +9481,10 @@ CinematicFunction_FlyToZebes_LoadGameData:
 
 
 InstList_CinematicSpriteObject_IntroMotherBrain:
-    dw $0010                                                             ;8BCB05;
-    dw IntroCeresExplosionSpritemaps_MotherBrainFrame1                   ;8BCB07;
-    dw $0010                                                             ;8BCB09;
-    dw IntroCeresExplosionSpritemaps_MotherBrainFrame2                   ;8BCB0B;
-    dw $0010                                                             ;8BCB0D;
-    dw IntroCeresExplosionSpritemaps_MotherBrainFrame3                   ;8BCB0F;
-    dw $0010                                                             ;8BCB11;
-    dw IntroCeresExplosionSpritemaps_MotherBrainFrame2                   ;8BCB13;
+    dw $0010,IntroCeresExplosionSpritemaps_MotherBrainFrame1             ;8BCB05;
+    dw $0010,IntroCeresExplosionSpritemaps_MotherBrainFrame2             ;8BCB09;
+    dw $0010,IntroCeresExplosionSpritemaps_MotherBrainFrame3             ;8BCB0D;
+    dw $0010,IntroCeresExplosionSpritemaps_MotherBrainFrame2             ;8BCB11;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCB15;
     dw InstList_CinematicSpriteObject_IntroMotherBrain                   ;8BCB17;
 
@@ -9561,162 +9494,111 @@ InstList_IntroMotherBrain_StartPage2_0:
     dw PreInstruction_IntroMotherBrain_CrossFading                       ;8BCB1D;
 
 InstList_IntroMotherBrain_StartPage2_1:
-    dw $0010                                                             ;8BCB1F;
-    dw IntroCeresExplosionSpritemaps_MotherBrainFrame1                   ;8BCB21;
-    dw $0010                                                             ;8BCB23;
-    dw IntroCeresExplosionSpritemaps_MotherBrainFrame2                   ;8BCB25;
-    dw $0010                                                             ;8BCB27;
-    dw IntroCeresExplosionSpritemaps_MotherBrainFrame3                   ;8BCB29;
-    dw $0010                                                             ;8BCB2B;
-    dw IntroCeresExplosionSpritemaps_MotherBrainFrame2                   ;8BCB2D;
+    dw $0010,IntroCeresExplosionSpritemaps_MotherBrainFrame1             ;8BCB1F;
+    dw $0010,IntroCeresExplosionSpritemaps_MotherBrainFrame2             ;8BCB23;
+    dw $0010,IntroCeresExplosionSpritemaps_MotherBrainFrame3             ;8BCB27;
+    dw $0010,IntroCeresExplosionSpritemaps_MotherBrainFrame2             ;8BCB2B;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCB2F;
     dw InstList_IntroMotherBrain_StartPage2_1                            ;8BCB31;
 
 InstList_CinematicSpriteObject_MetroidEgg:
-    dw $0005                                                             ;8BCB33;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame1            ;8BCB35;
+    dw $0005,IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame1      ;8BCB33;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCB37;
     dw InstList_CinematicSpriteObject_MetroidEgg                         ;8BCB39;
 
 InstList_MetroidEggHatching_0:
-    dw $0020                                                             ;8BCB3B;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame1            ;8BCB3D;
-    dw CinematicSpriteObject_Instruction_TimerInY                        ;8BCB3F;
-    dw $0004                                                             ;8BCB41;
+    dw $0020,IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame1      ;8BCB3B;
+    dw CinematicSpriteObject_Instruction_TimerInY,$0004                  ;8BCB3F;
 
 InstList_MetroidEggHatching_1:
-    dw $0005                                                             ;8BCB43;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame1            ;8BCB45;
-    dw $0005                                                             ;8BCB47;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame2            ;8BCB49;
-    dw $0005                                                             ;8BCB4B;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame1            ;8BCB4D;
-    dw $0005                                                             ;8BCB4F;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame3            ;8BCB51;
+    dw $0005,IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame1      ;8BCB43;
+    dw $0005,IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame2      ;8BCB47;
+    dw $0005,IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame1      ;8BCB4B;
+    dw $0005,IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame3      ;8BCB4F;
     dw CinematicSpriteObject_Inst_DecrementTimer_GotoYIfNonZero          ;8BCB53;
     dw InstList_MetroidEggHatching_1                                     ;8BCB55;
-    dw $000A                                                             ;8BCB57;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame1            ;8BCB59;
-    dw $000A                                                             ;8BCB5B;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame4            ;8BCB5D;
-    dw $000A                                                             ;8BCB5F;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame5            ;8BCB61;
-    dw $000A                                                             ;8BCB63;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame6            ;8BCB65;
-    dw $000A                                                             ;8BCB67;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame7            ;8BCB69;
-    dw $000A                                                             ;8BCB6B;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame8            ;8BCB6D;
-    dw $0050                                                             ;8BCB6F;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame9            ;8BCB71;
+    dw $000A,IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame1      ;8BCB57;
+    dw $000A,IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame4      ;8BCB5B;
+    dw $000A,IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame5      ;8BCB5F;
+    dw $000A,IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame6      ;8BCB63;
+    dw $000A,IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame7      ;8BCB67;
+    dw $000A,IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame8      ;8BCB6B;
+    dw $0050,IntroCeresExplosionSpritemaps_MetroidEggHatchingFrame9      ;8BCB6F;
     dw Instruction_SpawnMetroidEggParticles                              ;8BCB73;
-    dw $000A                                                             ;8BCB75;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchedFrame1             ;8BCB77;
+    dw $000A,IntroCeresExplosionSpritemaps_MetroidEggHatchedFrame1       ;8BCB75;
 
 InstList_MetroidEggHatching_2:
-    dw $000A                                                             ;8BCB79;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchedFrame2             ;8BCB7B;
-    dw $000A                                                             ;8BCB7D;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchedFrame3             ;8BCB7F;
-    dw $000A                                                             ;8BCB81;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchedFrame4             ;8BCB83;
-    dw $000A                                                             ;8BCB85;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchedFrame5             ;8BCB87;
-    dw $000A                                                             ;8BCB89;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchedFrame6             ;8BCB8B;
-    dw $0140                                                             ;8BCB8D;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchedFrame7             ;8BCB8F;
+    dw $000A,IntroCeresExplosionSpritemaps_MetroidEggHatchedFrame2       ;8BCB79;
+    dw $000A,IntroCeresExplosionSpritemaps_MetroidEggHatchedFrame3       ;8BCB7D;
+    dw $000A,IntroCeresExplosionSpritemaps_MetroidEggHatchedFrame4       ;8BCB81;
+    dw $000A,IntroCeresExplosionSpritemaps_MetroidEggHatchedFrame5       ;8BCB85;
+    dw $000A,IntroCeresExplosionSpritemaps_MetroidEggHatchedFrame6       ;8BCB89;
+    dw $0140,IntroCeresExplosionSpritemaps_MetroidEggHatchedFrame7       ;8BCB8D;
     dw Instruction_StartIntroPage3                                       ;8BCB91;
     dw CinematicSpriteObject_Instruction_PreInstructionY                 ;8BCB93;
     dw PreInstruction_MetroidEgg_DeleteAfterCrossFade                    ;8BCB95;
 
 InstList_MetroidEggHatching_3:
-    dw $0050                                                             ;8BCB97;
-    dw IntroCeresExplosionSpritemaps_MetroidEggHatchedFrame7             ;8BCB99;
+    dw $0050,IntroCeresExplosionSpritemaps_MetroidEggHatchedFrame7       ;8BCB97;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCB9B;
     dw InstList_MetroidEggHatching_3                                     ;8BCB9D;
 
 InstList_CinematicSpriteObject_BabyMetroidBeingDelivered_0:
-    dw CinematicSpriteObject_Instruction_TimerInY                        ;8BCB9F;
-    dw $000A                                                             ;8BCBA1;
+    dw CinematicSpriteObject_Instruction_TimerInY,$000A                  ;8BCB9F;
 
 InstList_CinematicSpriteObject_BabyMetroidBeingDelivered_1:
-    dw $000A                                                             ;8BCBA3;
-    dw IntroCeresExplosionSpritemaps_BabyMetroidDeliveredFrame1          ;8BCBA5;
-    dw $000A                                                             ;8BCBA7;
-    dw IntroCeresExplosionSpritemaps_BabyMetroidDeliveredFrame2          ;8BCBA9;
-    dw $000A                                                             ;8BCBAB;
-    dw IntroCeresExplosionSpritemaps_BabyMetroidDeliveredFrame3          ;8BCBAD;
-    dw $000A                                                             ;8BCBAF;
-    dw IntroCeresExplosionSpritemaps_BabyMetroidDeliveredFrame2          ;8BCBB1;
+    dw $000A,IntroCeresExplosionSpritemaps_BabyMetroidDeliveredFrame1    ;8BCBA3;
+    dw $000A,IntroCeresExplosionSpritemaps_BabyMetroidDeliveredFrame2    ;8BCBA7;
+    dw $000A,IntroCeresExplosionSpritemaps_BabyMetroidDeliveredFrame3    ;8BCBAB;
+    dw $000A,IntroCeresExplosionSpritemaps_BabyMetroidDeliveredFrame2    ;8BCBAF;
     dw CinematicSpriteObject_Inst_DecrementTimer_GotoYIfNonZero          ;8BCBB3;
     dw InstList_CinematicSpriteObject_BabyMetroidBeingDelivered_1        ;8BCBB5;
     dw Instruction_StartIntroPage4                                       ;8BCBB7;
 
 InstList_CinematicSpriteObject_BabyMetroidBeingDelivered_2:
-    dw $000A                                                             ;8BCBB9;
-    dw IntroCeresExplosionSpritemaps_BabyMetroidDeliveredFrame1          ;8BCBBB;
-    dw $000A                                                             ;8BCBBD;
-    dw IntroCeresExplosionSpritemaps_BabyMetroidDeliveredFrame2          ;8BCBBF;
-    dw $000A                                                             ;8BCBC1;
-    dw IntroCeresExplosionSpritemaps_BabyMetroidDeliveredFrame3          ;8BCBC3;
-    dw $000A                                                             ;8BCBC5;
-    dw IntroCeresExplosionSpritemaps_BabyMetroidDeliveredFrame2          ;8BCBC7;
+    dw $000A,IntroCeresExplosionSpritemaps_BabyMetroidDeliveredFrame1    ;8BCBB9;
+    dw $000A,IntroCeresExplosionSpritemaps_BabyMetroidDeliveredFrame2    ;8BCBBD;
+    dw $000A,IntroCeresExplosionSpritemaps_BabyMetroidDeliveredFrame3    ;8BCBC1;
+    dw $000A,IntroCeresExplosionSpritemaps_BabyMetroidDeliveredFrame2    ;8BCBC5;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCBC9;
     dw InstList_CinematicSpriteObject_BabyMetroidBeingDelivered_2        ;8BCBCB;
 
 InstList_CinematicSpriteObject_BabyMetroidBeingExamined_0:
-    dw CinematicSpriteObject_Instruction_TimerInY                        ;8BCBCD;
-    dw $000A                                                             ;8BCBCF;
+    dw CinematicSpriteObject_Instruction_TimerInY,$000A                  ;8BCBCD;
 
 InstList_CinematicSpriteObject_BabyMetroidBeingExamined_1:
-    dw $000A                                                             ;8BCBD1;
-    dw IntroCeresExplosionSpritemaps_BabyMetroidExaminedFrame1           ;8BCBD3;
-    dw $000A                                                             ;8BCBD5;
-    dw IntroCeresExplosionSpritemaps_BabyMetroidExaminedFrame2           ;8BCBD7;
-    dw $000A                                                             ;8BCBD9;
-    dw IntroCeresExplosionSpritemaps_BabyMetroidExaminedFrame3           ;8BCBDB;
-    dw $000A                                                             ;8BCBDD;
-    dw IntroCeresExplosionSpritemaps_BabyMetroidExaminedFrame2           ;8BCBDF;
+    dw $000A,IntroCeresExplosionSpritemaps_BabyMetroidExaminedFrame1     ;8BCBD1;
+    dw $000A,IntroCeresExplosionSpritemaps_BabyMetroidExaminedFrame2     ;8BCBD5;
+    dw $000A,IntroCeresExplosionSpritemaps_BabyMetroidExaminedFrame3     ;8BCBD9;
+    dw $000A,IntroCeresExplosionSpritemaps_BabyMetroidExaminedFrame2     ;8BCBDD;
     dw CinematicSpriteObject_Inst_DecrementTimer_GotoYIfNonZero          ;8BCBE1;
     dw InstList_CinematicSpriteObject_BabyMetroidBeingExamined_1         ;8BCBE3;
     dw Instruction_StartIntroPage5                                       ;8BCBE5;
 
 InstList_CinematicSpriteObject_BabyMetroidBeingExamined_2:
-    dw $000A                                                             ;8BCBE7;
-    dw IntroCeresExplosionSpritemaps_BabyMetroidExaminedFrame1           ;8BCBE9;
-    dw $000A                                                             ;8BCBEB;
-    dw IntroCeresExplosionSpritemaps_BabyMetroidExaminedFrame2           ;8BCBED;
-    dw $000A                                                             ;8BCBEF;
-    dw IntroCeresExplosionSpritemaps_BabyMetroidExaminedFrame3           ;8BCBF1;
-    dw $000A                                                             ;8BCBF3;
-    dw IntroCeresExplosionSpritemaps_BabyMetroidExaminedFrame2           ;8BCBF5;
+    dw $000A,IntroCeresExplosionSpritemaps_BabyMetroidExaminedFrame1     ;8BCBE7;
+    dw $000A,IntroCeresExplosionSpritemaps_BabyMetroidExaminedFrame2     ;8BCBEB;
+    dw $000A,IntroCeresExplosionSpritemaps_BabyMetroidExaminedFrame3     ;8BCBEF;
+    dw $000A,IntroCeresExplosionSpritemaps_BabyMetroidExaminedFrame2     ;8BCBF3;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCBF7;
     dw InstList_CinematicSpriteObject_BabyMetroidBeingExamined_2         ;8BCBF9;
 
 InstList_CinematicSpriteObject_IntroTextCaret:
-    dw $0005                                                             ;8BCBFB;
-    dw IntroCeresExplosionSpritemaps_BlinkingTypewriterBlock             ;8BCBFD;
+    dw $0005,IntroCeresExplosionSpritemaps_BlinkingTypewriterBlock       ;8BCBFB;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCBFF;
     dw InstList_CinematicSpriteObject_IntroTextCaret                     ;8BCC01;
 
 InstList_IntroTextCaret_Blink:
-    dw $0005                                                             ;8BCC03;
-    dw IntroCeresExplosionSpritemaps_BlinkingTypewriterBlock             ;8BCC05;
-    dw $0005                                                             ;8BCC07;
-    dw $0000                                                             ;8BCC09;
+    dw $0005,IntroCeresExplosionSpritemaps_BlinkingTypewriterBlock       ;8BCC03;
+    dw $0005,$0000                                                       ;8BCC07;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCC0B;
     dw InstList_IntroTextCaret_Blink                                     ;8BCC0D;
 
 InstList_CinematicSpriteObject_IntroJapanTextNextPageArrow:
-    dw $000A                                                             ;8BCC0F;
-    dw IntroCeresExplosionSpritemaps_JapanTextNextPageArrowFrame1        ;8BCC11;
-    dw $000A                                                             ;8BCC13;
-    dw IntroCeresExplosionSpritemaps_JapanTextNextPageArrowFrame2        ;8BCC15;
-    dw $000A                                                             ;8BCC17;
-    dw IntroCeresExplosionSpritemaps_JapanTextNextPageArrowFrame3        ;8BCC19;
-    dw $000A                                                             ;8BCC1B;
-    dw IntroCeresExplosionSpritemaps_JapanTextNextPageArrowFrame2        ;8BCC1D;
+    dw $000A,IntroCeresExplosionSpritemaps_JapanTextNextPageArrowFrame1  ;8BCC0F;
+    dw $000A,IntroCeresExplosionSpritemaps_JapanTextNextPageArrowFrame2  ;8BCC13;
+    dw $000A,IntroCeresExplosionSpritemaps_JapanTextNextPageArrowFrame3  ;8BCC17;
+    dw $000A,IntroCeresExplosionSpritemaps_JapanTextNextPageArrowFrame2  ;8BCC1B;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCC1F;
     dw InstList_CinematicSpriteObject_IntroJapanTextNextPageArrow        ;8BCC21;
 
@@ -9726,95 +9608,72 @@ InstList_IntroJapanTextNextPageArrow_Blink:
     dw InstList_CinematicSpriteObject_IntroJapanTextNextPageArrow        ;8BCC29;
 
 InstList_CinematicSpriteObject_ConfusedBabyMetroid:
-    dw $000A                                                             ;8BCC2B;
-    dw IntroCeresExplosionSpritemaps_ConfusedBabyMetroidFrame1           ;8BCC2D;
-    dw $000A                                                             ;8BCC2F;
-    dw IntroCeresExplosionSpritemaps_ConfusedBabyMetroidFrame2           ;8BCC31;
-    dw $000A                                                             ;8BCC33;
-    dw IntroCeresExplosionSpritemaps_ConfusedBabyMetroidFrame3           ;8BCC35;
-    dw $000A                                                             ;8BCC37;
-    dw IntroCeresExplosionSpritemaps_ConfusedBabyMetroidFrame2           ;8BCC39;
+    dw $000A,IntroCeresExplosionSpritemaps_ConfusedBabyMetroidFrame1     ;8BCC2B;
+    dw $000A,IntroCeresExplosionSpritemaps_ConfusedBabyMetroidFrame2     ;8BCC2F;
+    dw $000A,IntroCeresExplosionSpritemaps_ConfusedBabyMetroidFrame3     ;8BCC33;
+    dw $000A,IntroCeresExplosionSpritemaps_ConfusedBabyMetroidFrame2     ;8BCC37;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCC3B;
     dw InstList_CinematicSpriteObject_ConfusedBabyMetroid                ;8BCC3D;
 
 InstList_CinematicSpriteObject_CeresUnderAttackLargeAsteroid:
-    dw $000A                                                             ;8BCC3F;
-    dw SpaceSpritemaps_CeresUnderAttackLargeAsteroids                    ;8BCC41;
+    dw $000A,SpaceSpritemaps_CeresUnderAttackLargeAsteroids              ;8BCC3F;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCC43;
     dw InstList_CinematicSpriteObject_CeresUnderAttackLargeAsteroid      ;8BCC45;
 
 InstList_CinematicSpriteObject_CeresUnderAttack:
-    dw $000A                                                             ;8BCC47;
-    dw SpaceSpritemaps_CeresUnderAttack                                  ;8BCC49;
+    dw $000A,SpaceSpritemaps_CeresUnderAttack                            ;8BCC47;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCC4B;
     dw InstList_CinematicSpriteObject_CeresUnderAttack                   ;8BCC4D;
 
 InstList_CinematicSpriteObject_CeresSmallAsteroids:
-    dw $000A                                                             ;8BCC4F;
-    dw SpaceSpritemaps_CeresSmallAsteroids                               ;8BCC51;
+    dw $000A,SpaceSpritemaps_CeresSmallAsteroids                         ;8BCC4F;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCC53;
     dw InstList_CinematicSpriteObject_CeresSmallAsteroids                ;8BCC55;
 
 InstList_CinematicSpriteObject_CeresPurpleSpaceVortext:
-    dw $0001                                                             ;8BCC57;
-    dw SpaceSpritemaps_CeresPurpleVortexFrame1                           ;8BCC59;
-    dw $0001                                                             ;8BCC5B;
-    dw SpaceSpritemaps_CeresPurpleVortexFrame2                           ;8BCC5D;
+    dw $0001,SpaceSpritemaps_CeresPurpleVortexFrame1                     ;8BCC57;
+    dw $0001,SpaceSpritemaps_CeresPurpleVortexFrame2                     ;8BCC5B;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCC5F;
     dw InstList_CinematicSpriteObject_CeresPurpleSpaceVortext            ;8BCC61;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_CinematicSpriteObject_SpaceColonyText_8BCC63:
-    dw $0100,$0000,$000A                                                 ;8BCC63;
-    dw UNUSED_SpaceSpritemaps_S_8C92AA                                   ;8BCC69;
-    dw $000A                                                             ;8BCC6B;
-    dw UNUSED_SpaceSpritemaps_SP_8C92B1                                  ;8BCC6D;
-    dw $000A                                                             ;8BCC6F;
-    dw UNUSED_SpaceSpritemaps_SPA_8C92BD                                 ;8BCC71;
-    dw $000A                                                             ;8BCC73;
-    dw UNUSED_SpaceSpritemaps_SPAC_8C92CE                                ;8BCC75;
-    dw $000A                                                             ;8BCC77;
-    dw UNUSED_SpaceSpritemaps_SPACE_8C92E4                               ;8BCC79;
-    dw $000A                                                             ;8BCC7B;
-    dw UNUSED_SpaceSpritemaps_SPACEC_8C92FF                              ;8BCC7D;
-    dw $000A                                                             ;8BCC7F;
-    dw UNUSED_SpaceSpritemaps_SPACECO_8C931F                             ;8BCC81;
-    dw $000A                                                             ;8BCC83;
-    dw UNUSED_SpaceSpritemaps_SPACECOL_8C9344                            ;8BCC85;
-    dw $000A                                                             ;8BCC87;
-    dw UNUSED_SpaceSpritemaps_SPACECOLO_9C936E                           ;8BCC89;
-    dw $000A                                                             ;8BCC8B;
-    dw UNUSED_SpaceSpritemaps_SPACECOLON_8C939D                          ;8BCC8D;
-    dw $000A                                                             ;8BCC8F;
-    dw UNUSED_SpaceSpritemaps_SPACECOLONY_8C921F                         ;8BCC91;
+; CinematicSpriteObjectDefinitions_SpaceColony is used instead
+    dw $0100,$0000                                                       ;8BCC63;
+    dw $000A,UNUSED_SpaceSpritemaps_S_8C92AA                             ;8BCC67;
+    dw $000A,UNUSED_SpaceSpritemaps_SP_8C92B1                            ;8BCC6B;
+    dw $000A,UNUSED_SpaceSpritemaps_SPA_8C92BD                           ;8BCC6F;
+    dw $000A,UNUSED_SpaceSpritemaps_SPAC_8C92CE                          ;8BCC73;
+    dw $000A,UNUSED_SpaceSpritemaps_SPACE_8C92E4                         ;8BCC77;
+    dw $000A,UNUSED_SpaceSpritemaps_SPACEC_8C92FF                        ;8BCC7B;
+    dw $000A,UNUSED_SpaceSpritemaps_SPACECO_8C931F                       ;8BCC7F;
+    dw $000A,UNUSED_SpaceSpritemaps_SPACECOL_8C9344                      ;8BCC83;
+    dw $000A,UNUSED_SpaceSpritemaps_SPACECOLO_9C936E                     ;8BCC87;
+    dw $000A,UNUSED_SpaceSpritemaps_SPACECOLON_8C939D                    ;8BCC8B;
+    dw $000A,UNUSED_SpaceSpritemaps_SPACECOLONY_8C921F                   ;8BCC8F;
     dw Instruction_SkipNextInstructionIfEnglishText                      ;8BCC93;
-    dw $0080                                                             ;8BCC95;
-    dw UNUSED_SpaceSpritemaps_SPACECOLONY_8C921F                         ;8BCC97;
+    dw $0080,UNUSED_SpaceSpritemaps_SPACECOLONY_8C921F                   ;8BCC95;
     dw Instruction_FinishFlyToCeres                                      ;8BCC99;
 
 UNUSED_InstList_CinematicSpriteObject_SpaceColonyText_8BCC9B:
-    dw $0001                                                             ;8BCC9B;
-    dw UNUSED_SpaceSpritemaps_SPACECOLONY_8C921F                         ;8BCC9D;
+    dw $0001,UNUSED_SpaceSpritemaps_SPACECOLONY_8C921F                   ;8BCC9B;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCC9F;
     dw UNUSED_InstList_CinematicSpriteObject_SpaceColonyText_8BCC9B      ;8BCCA1;
 
 UNUSED_InstList_CineSpriteObject_SpaceColonyJapanText_8BCCA3:
-    dw $000A                                                             ;8BCCA3;
-    dw UNUSED_SpaceSpritemaps_JapanText_SPACECOLONY_8C9258               ;8BCCA5;
+    dw $000A,UNUSED_SpaceSpritemaps_JapanText_SPACECOLONY_8C9258         ;8BCCA3;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCCA7;
     dw UNUSED_InstList_CineSpriteObject_SpaceColonyJapanText_8BCCA3      ;8BCCA9;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_CinematicSpriteObject_Zebes:
-    dw $000A                                                             ;8BCCAB;
-    dw SpaceSpritemaps_Zebes                                             ;8BCCAD;
+    dw $000A,SpaceSpritemaps_Zebes                                       ;8BCCAB;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCCAF;
     dw InstList_CinematicSpriteObject_Zebes                              ;8BCCB1;
 
 if !FEATURE_KEEP_UNREFERENCED
 InstList_CinematicSpriteObject_ZebesStars1:
-    dw $000A                                                             ;8BCCB3;
-    dw UNUSED_SpaceSpritemaps_ZebesStars1_8C96CB                         ;8BCCB5;
+    dw $000A,UNUSED_SpaceSpritemaps_ZebesStars1_8C96CB                   ;8BCCB3;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCCB7;
     dw InstList_CinematicSpriteObject_ZebesStars1                        ;8BCCB9;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -9822,213 +9681,155 @@ endif ; !FEATURE_KEEP_UNREFERENCED
 InstList_CinematicSpriteObject_PlanetZebesText:
     dw $0040,$0000                                                       ;8BCCBB;
     dw Instruction_FadeInPlanetZebesText                                 ;8BCCBF;
-    dw $0020                                                             ;8BCCC1;
-    dw SpaceSpritemaps_PlanetZebes                                       ;8BCCC3;
+    dw $0020,SpaceSpritemaps_PlanetZebes                                 ;8BCCC1;
     dw Instruction_SpawnPlanetZebesJapanTextIfNeeded                     ;8BCCC5;
-    dw $00C0                                                             ;8BCCC7;
-    dw SpaceSpritemaps_PlanetZebes                                       ;8BCCC9;
+    dw $00C0,SpaceSpritemaps_PlanetZebes                                 ;8BCCC7;
     dw Instruction_FadeOutPlanetZebesText                                ;8BCCCB;
-    dw $0060                                                             ;8BCCCD;
-    dw SpaceSpritemaps_PlanetZebes                                       ;8BCCCF;
+    dw $0060,SpaceSpritemaps_PlanetZebes                                 ;8BCCCD;
     dw Instruction_StartFlyingToZebes                                    ;8BCCD1;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BCCD3;
 
 InstList_CinematicSpriteObject_PlanetZebesJapanText:
-    dw $00C0                                                             ;8BCCD5;
-    dw SpaceSpritemaps_JapanText_PlanetZebes                             ;8BCCD7;
+    dw $00C0,SpaceSpritemaps_JapanText_PlanetZebes                       ;8BCCD5;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BCCD9;
 
 InstList_CinematicSpriteObject_CeresExplosion1:
-    dw $0003                                                             ;8BCCDB;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame1              ;8BCCDD;
-    dw $0003                                                             ;8BCCDF;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame2              ;8BCCE1;
-    dw $0003                                                             ;8BCCE3;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame3              ;8BCCE5;
-    dw $0003                                                             ;8BCCE7;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame4              ;8BCCE9;
-    dw $0003                                                             ;8BCCEB;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame5              ;8BCCED;
-    dw $0003                                                             ;8BCCEF;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame6              ;8BCCF1;
+    dw $0003,SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame1        ;8BCCDB;
+    dw $0003,SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame2        ;8BCCDF;
+    dw $0003,SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame3        ;8BCCE3;
+    dw $0003,SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame4        ;8BCCE7;
+    dw $0003,SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame5        ;8BCCEB;
+    dw $0003,SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame6        ;8BCCEF;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BCCF3;
 
 InstList_CinematicSpriteObject_CeresExplosion2_0:
-    dw CinematicSpriteObject_Instruction_TimerInY                        ;8BCCF5;
-    dw $0006                                                             ;8BCCF7;
+    dw CinematicSpriteObject_Instruction_TimerInY,$0006                  ;8BCCF5;
 
 InstList_CinematicSpriteObject_CeresExplosion2_1:
-    dw $0003                                                             ;8BCCF9;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame1              ;8BCCFB;
-    dw $0003                                                             ;8BCCFD;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame2              ;8BCCFF;
-    dw $0003                                                             ;8BCD01;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame3              ;8BCD03;
-    dw $0003                                                             ;8BCD05;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame4              ;8BCD07;
-    dw $0003                                                             ;8BCD09;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame5              ;8BCD0B;
-    dw $0003                                                             ;8BCD0D;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame6              ;8BCD0F;
-    dw $0010                                                             ;8BCD11;
-    dw $0000                                                             ;8BCD13;
+    dw $0003,SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame1        ;8BCCF9;
+    dw $0003,SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame2        ;8BCCFD;
+    dw $0003,SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame3        ;8BCD01;
+    dw $0003,SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame4        ;8BCD05;
+    dw $0003,SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame5        ;8BCD09;
+    dw $0003,SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame6        ;8BCD0D;
+    dw $0010,$0000                                                       ;8BCD11;
     dw CinematicSpriteObject_Inst_DecrementTimer_GotoYIfNonZero          ;8BCD15;
     dw InstList_CinematicSpriteObject_CeresExplosion2_1                  ;8BCD17;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BCD19;
 
 InstList_CinematicSpriteObject_CeresExplosion3_0:
-    dw CinematicSpriteObject_Instruction_TimerInY                        ;8BCD1B;
-    dw $0007                                                             ;8BCD1D;
+    dw CinematicSpriteObject_Instruction_TimerInY,$0007                  ;8BCD1B;
 
 InstList_CinematicSpriteObject_CeresExplosion3_1:
-    dw $0005                                                             ;8BCD1F;
-    dw SpaceSpritemaps_CeresExplosionFrame1                              ;8BCD21;
-    dw $0005                                                             ;8BCD23;
-    dw SpaceSpritemaps_CeresExplosionFrame2                              ;8BCD25;
-    dw $0005                                                             ;8BCD27;
-    dw SpaceSpritemaps_CeresExplosionFrame3                              ;8BCD29;
-    dw $0005                                                             ;8BCD2B;
-    dw SpaceSpritemaps_CeresExplosionFrame4                              ;8BCD2D;
+    dw $0005,SpaceSpritemaps_CeresExplosionFrame1                        ;8BCD1F;
+    dw $0005,SpaceSpritemaps_CeresExplosionFrame2                        ;8BCD23;
+    dw $0005,SpaceSpritemaps_CeresExplosionFrame3                        ;8BCD27;
+    dw $0005,SpaceSpritemaps_CeresExplosionFrame4                        ;8BCD2B;
     dw $0008,$0000                                                       ;8BCD2F;
     dw CinematicSpriteObject_Inst_DecrementTimer_GotoYIfNonZero          ;8BCD33;
     dw InstList_CinematicSpriteObject_CeresExplosion3_1                  ;8BCD35;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BCD37;
 
 InstList_CinematicSpriteObject_MetroidEggParticle1:
-    dw $0001                                                             ;8BCD39;
-    dw IntroCeresExplosionSpritemaps_MetroidEggsParticle1                ;8BCD3B;
+    dw $0001,IntroCeresExplosionSpritemaps_MetroidEggsParticle1          ;8BCD39;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCD3D;
     dw InstList_CinematicSpriteObject_MetroidEggParticle1                ;8BCD3F;
 
 InstList_CinematicSpriteObject_MetroidEggParticle2:
-    dw $0001                                                             ;8BCD41;
-    dw IntroCeresExplosionSpritemaps_MetroidEggsParticle2                ;8BCD43;
+    dw $0001,IntroCeresExplosionSpritemaps_MetroidEggsParticle2          ;8BCD41;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCD45;
     dw InstList_CinematicSpriteObject_MetroidEggParticle2                ;8BCD47;
 
 InstList_CinematicSpriteObject_MetroidEggParticle3:
-    dw $0001                                                             ;8BCD49;
-    dw IntroCeresExplosionSpritemaps_MetroidEggsParticle3                ;8BCD4B;
+    dw $0001,IntroCeresExplosionSpritemaps_MetroidEggsParticle3          ;8BCD49;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCD4D;
     dw InstList_CinematicSpriteObject_MetroidEggParticle3                ;8BCD4F;
 
 InstList_CinematicSpriteObject_MetroidEggParticle4:
-    dw $0001                                                             ;8BCD51;
-    dw IntroCeresExplosionSpritemaps_MetroidEggsParticle4                ;8BCD53;
+    dw $0001,IntroCeresExplosionSpritemaps_MetroidEggsParticle4          ;8BCD51;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCD55;
     dw InstList_CinematicSpriteObject_MetroidEggParticle4                ;8BCD57;
 
 InstList_CinematicSpriteObject_MetroidEggParticle5:
-    dw $0001                                                             ;8BCD59;
-    dw IntroCeresExplosionSpritemaps_MetroidEggsParticle5                ;8BCD5B;
+    dw $0001,IntroCeresExplosionSpritemaps_MetroidEggsParticle5          ;8BCD59;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCD5D;
     dw InstList_CinematicSpriteObject_MetroidEggParticle5                ;8BCD5F;
 
 InstList_CinematicSpriteObject_MetroidEggParticle6:
-    dw $0001                                                             ;8BCD61;
-    dw IntroCeresExplosionSpritemaps_MetroidEggsParticle6                ;8BCD63;
+    dw $0001,IntroCeresExplosionSpritemaps_MetroidEggsParticle6          ;8BCD61;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCD65;
     dw InstList_CinematicSpriteObject_MetroidEggParticle6                ;8BCD67;
 
 InstList_CinematicSpriteObject_MetroidEggSlimeDrops:
-    dw $0001                                                             ;8BCD69;
-    dw IntroCeresExplosionSpritemaps_MetroidEggsSlimeDropsFrame1         ;8BCD6B;
+    dw $0001,IntroCeresExplosionSpritemaps_MetroidEggsSlimeDropsFrame1   ;8BCD69;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCD6D;
     dw InstList_CinematicSpriteObject_MetroidEggSlimeDrops               ;8BCD6F;
 
 InstList_MetroidEggParticle_HitGround:
-    dw $000A                                                             ;8BCD71;
-    dw IntroCeresExplosionSpritemaps_MetroidEggsSlimeDropsFrame2         ;8BCD73;
-    dw $000A                                                             ;8BCD75;
-    dw IntroCeresExplosionSpritemaps_MetroidEggsSlimeDropsFrame3         ;8BCD77;
-    dw $000A                                                             ;8BCD79;
-    dw IntroCeresExplosionSpritemaps_MetroidEggsSlimeDropsFrame4         ;8BCD7B;
-    dw $000A                                                             ;8BCD7D;
-    dw IntroCeresExplosionSpritemaps_MetroidEggsSlimeDropsFrame5         ;8BCD7F;
+    dw $000A,IntroCeresExplosionSpritemaps_MetroidEggsSlimeDropsFrame2   ;8BCD71;
+    dw $000A,IntroCeresExplosionSpritemaps_MetroidEggsSlimeDropsFrame3   ;8BCD75;
+    dw $000A,IntroCeresExplosionSpritemaps_MetroidEggsSlimeDropsFrame4   ;8BCD79;
+    dw $000A,IntroCeresExplosionSpritemaps_MetroidEggsSlimeDropsFrame5   ;8BCD7D;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BCD81;
 
 InstList_CinematicSpriteObject_ZebesStars2:
-    dw $000A                                                             ;8BCD83;
-    dw SpaceSpritemaps_ZebesStars2                                       ;8BCD85;
+    dw $000A,SpaceSpritemaps_ZebesStars2                                 ;8BCD83;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCD87;
     dw InstList_CinematicSpriteObject_ZebesStars2                        ;8BCD89;
 
 InstList_CinematicSpriteObject_ZebesStars3:
-    dw $000A                                                             ;8BCD8B;
-    dw SpaceSpritemaps_ZebesStars3                                       ;8BCD8D;
+    dw $000A,SpaceSpritemaps_ZebesStars3                                 ;8BCD8B;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCD8F;
     dw InstList_CinematicSpriteObject_ZebesStars3                        ;8BCD91;
 
 InstList_CinematicSpriteObject_ZebesStars4:
-    dw $000A                                                             ;8BCD93;
-    dw SpaceSpritemaps_ZebesStars4                                       ;8BCD95;
+    dw $000A,SpaceSpritemaps_ZebesStars4                                 ;8BCD93;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCD97;
     dw InstList_CinematicSpriteObject_ZebesStars4                        ;8BCD99;
 
 InstList_CinematicSpriteObject_ZebesStars5:
-    dw $000A                                                             ;8BCD9B;
-    dw SpaceSpritemaps_ZebesStars5                                       ;8BCD9D;
+    dw $000A,SpaceSpritemaps_ZebesStars5                                 ;8BCD9B;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCD9F;
     dw InstList_CinematicSpriteObject_ZebesStars5                        ;8BCDA1;
 
 InstList_CinematicSpriteObject_CeresStars:
-    dw $000A                                                             ;8BCDA3;
-    dw SpaceSpritemaps_CeresStars                                        ;8BCDA5;
+    dw $000A,SpaceSpritemaps_CeresStars                                  ;8BCDA3;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCDA7;
     dw InstList_CinematicSpriteObject_CeresStars                         ;8BCDA9;
 
 InstList_CinematicSpriteObject_IntroMotherBrainExplosion_Big:
-    dw $0006                                                             ;8BCDAB;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionBigFrame1                ;8BCDAD;
-    dw $0006                                                             ;8BCDAF;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionBigFrame2                ;8BCDB1;
-    dw $0006                                                             ;8BCDB3;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionBigFrame3                ;8BCDB5;
-    dw $0006                                                             ;8BCDB7;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionBigFrame4                ;8BCDB9;
-    dw $0006                                                             ;8BCDBB;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionBigFrame5                ;8BCDBD;
-    dw $0006                                                             ;8BCDBF;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionBigFrame6                ;8BCDC1;
+    dw $0006,SpaceSpritemaps_IntroMotherBrainExplosionBigFrame1          ;8BCDAB;
+    dw $0006,SpaceSpritemaps_IntroMotherBrainExplosionBigFrame2          ;8BCDAF;
+    dw $0006,SpaceSpritemaps_IntroMotherBrainExplosionBigFrame3          ;8BCDB3;
+    dw $0006,SpaceSpritemaps_IntroMotherBrainExplosionBigFrame4          ;8BCDB7;
+    dw $0006,SpaceSpritemaps_IntroMotherBrainExplosionBigFrame5          ;8BCDBB;
+    dw $0006,SpaceSpritemaps_IntroMotherBrainExplosionBigFrame6          ;8BCDBF;
     dw $0010,$0000                                                       ;8BCDC3;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCDC7;
     dw InstList_CinematicSpriteObject_IntroMotherBrainExplosion_Big      ;8BCDC9;
 
 InstList_CineSpriteObject_IntroMotherBrainExplosion_Small:
-    dw $0003                                                             ;8BCDCB;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame1              ;8BCDCD;
-    dw $0003                                                             ;8BCDCF;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame2              ;8BCDD1;
-    dw $0003                                                             ;8BCDD3;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame3              ;8BCDD5;
-    dw $0003                                                             ;8BCDD7;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame4              ;8BCDD9;
-    dw $0003                                                             ;8BCDDB;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame5              ;8BCDDD;
-    dw $0003                                                             ;8BCDDF;
-    dw SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame6              ;8BCDE1;
+    dw $0003,SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame1        ;8BCDCB;
+    dw $0003,SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame2        ;8BCDCF;
+    dw $0003,SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame3        ;8BCDD3;
+    dw $0003,SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame4        ;8BCDD7;
+    dw $0003,SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame5        ;8BCDDB;
+    dw $0003,SpaceSpritemaps_IntroMotherBrainExplosionSmallFrame6        ;8BCDDF;
     dw $0010,$0000                                                       ;8BCDE3;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCDE7;
     dw InstList_CineSpriteObject_IntroMotherBrainExplosion_Small         ;8BCDE9;
 
 InstList_CinematicSpriteObject_IntroRinka_0:
-    dw $000A                                                             ;8BCDEB;
-    dw IntroCeresExplosionSpritemaps_RinkaFrame1                         ;8BCDED;
-    dw $000A                                                             ;8BCDEF;
-    dw IntroCeresExplosionSpritemaps_RinkaFrame2                         ;8BCDF1;
-    dw $000A                                                             ;8BCDF3;
-    dw IntroCeresExplosionSpritemaps_RinkaFrame3                         ;8BCDF5;
+    dw $000A,IntroCeresExplosionSpritemaps_RinkaFrame1                   ;8BCDEB;
+    dw $000A,IntroCeresExplosionSpritemaps_RinkaFrame2                   ;8BCDEF;
+    dw $000A,IntroCeresExplosionSpritemaps_RinkaFrame3                   ;8BCDF3;
     dw Instruction_StartMoving_IntroRinka                                ;8BCDF7;
 
 InstList_CinematicSpriteObject_IntroRinka_1:
-    dw $000A                                                             ;8BCDF9;
-    dw IntroCeresExplosionSpritemaps_RinkaFrame2                         ;8BCDFB;
-    dw $000A                                                             ;8BCDFD;
-    dw IntroCeresExplosionSpritemaps_RinkaFrame1                         ;8BCDFF;
-    dw $000A                                                             ;8BCE01;
-    dw IntroCeresExplosionSpritemaps_RinkaFrame2                         ;8BCE03;
-    dw $000A                                                             ;8BCE05;
-    dw IntroCeresExplosionSpritemaps_RinkaFrame3                         ;8BCE07;
+    dw $000A,IntroCeresExplosionSpritemaps_RinkaFrame2                   ;8BCDF9;
+    dw $000A,IntroCeresExplosionSpritemaps_RinkaFrame1                   ;8BCDFD;
+    dw $000A,IntroCeresExplosionSpritemaps_RinkaFrame2                   ;8BCE01;
+    dw $000A,IntroCeresExplosionSpritemaps_RinkaFrame3                   ;8BCE05;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCE09;
     dw InstList_CinematicSpriteObject_IntroRinka_1                       ;8BCE0B;
 
@@ -10040,18 +9841,12 @@ InstList_CinematicSpriteObject_RinkaSpawner:
     dw CinematicSpriteObject_Instruction_Delete                          ;8BCE19;
 
 InstList_CinematicSpriteObject_CeresFinalExplosion:
-    dw $0005                                                             ;8BCE1B;
-    dw SpaceSpritemaps_CeresFinalExplosionFrame1                         ;8BCE1D;
-    dw $0005                                                             ;8BCE1F;
-    dw SpaceSpritemaps_CeresFinalExplosionFrame2                         ;8BCE21;
-    dw $0005                                                             ;8BCE23;
-    dw SpaceSpritemaps_CeresFinalExplosionFrame3                         ;8BCE25;
-    dw $0005                                                             ;8BCE27;
-    dw SpaceSpritemaps_CeresFinalExplosionFrame4                         ;8BCE29;
-    dw $0005                                                             ;8BCE2B;
-    dw SpaceSpritemaps_CeresFinalExplosionFrame5                         ;8BCE2D;
-    dw $0005                                                             ;8BCE2F;
-    dw SpaceSpritemaps_CeresFinalExplosionFrame6                         ;8BCE31;
+    dw $0005,SpaceSpritemaps_CeresFinalExplosionFrame1                   ;8BCE1B;
+    dw $0005,SpaceSpritemaps_CeresFinalExplosionFrame2                   ;8BCE1F;
+    dw $0005,SpaceSpritemaps_CeresFinalExplosionFrame3                   ;8BCE23;
+    dw $0005,SpaceSpritemaps_CeresFinalExplosionFrame4                   ;8BCE27;
+    dw $0005,SpaceSpritemaps_CeresFinalExplosionFrame5                   ;8BCE2B;
+    dw $0005,SpaceSpritemaps_CeresFinalExplosionFrame6                   ;8BCE2F;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BCE33;
 
 InstList_CinematicSpriteObject_CeresExplosionSpawner:
@@ -10065,8 +9860,7 @@ InstList_CinematicSpriteObject_CeresExplosionSpawner:
     dw CinematicSpriteObject_Instruction_Delete                          ;8BCE49;
 
 InstList_CinematicSpriteObject_CeresExplosionLargeAsteroids:
-    dw $000A                                                             ;8BCE4B;
-    dw SpaceSpritemaps_CeresExplosionLargeAsteroids                      ;8BCE4D;
+    dw $000A,SpaceSpritemaps_CeresExplosionLargeAsteroids                ;8BCE4B;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BCE4F;
     dw InstList_CinematicSpriteObject_CeresExplosionLargeAsteroids       ;8BCE51;
 
@@ -10319,124 +10113,337 @@ UNUSED_CinematicSpriteObjectDefs_IntroTextPage1_8BCF6F:
     dw CinematicBGObjectInstLists_IntroTextPage1                         ;8BCF73;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-IntroJapanTextData_Page1_TopLine:
-    dw $0040,$0011,$0A60,$0B60,$04E0,$0150,$0EF0,$0EF0                   ;8BCF75;
-    dw $0E00,$0F00,$0E10,$0F10,$0E20,$0F20,$0E30,$0F30                   ;8BCF85;
-    dw $0F70,$0F10,$0280,$0380,$0C70,$0D70,$0C80,$0D80                   ;8BCF95;
-    dw $04C0,$05C0,$08E0,$09E0,$0EF0,$0760,$00F0,$01F0                   ;8BCFA5;
-    dw $0280,$0380,$0290,$0390                                           ;8BCFB5;
 
-IntroJapanTextData_Page1_BottomLine:
-    dw $01C0,$000F,$0680,$0780,$0690,$0790,$0E80,$0F80                   ;8BCFBD;
-    dw $0650,$0750,$0E40,$0F40,$0E60,$0F60,$04F0,$0320                   ;8BCFCD;
-    dw $0280,$0380,$08F0,$09F0,$0010,$0110,$0280,$0380                   ;8BCFDD;
-    dw $0C90,$0D90,$05E0,$01F0,$0EF0,$0760,$00F0,$01F0                   ;8BCFED;
+; Format:
+;     dddd,nnnn
+;     tttt,bbbb
+;     tttt,bbbb
+;     ...
+; where
+;     d: Japanese text tiles destination offset ($7E:4000 + d)
+;     n: Number of characters
+;     t: Top Japanese text tiles source offset ($7F:A000 + t)
+;     b: Bottom Japanese text tiles source offset ($7F:A000 + b)
+IntroJapanTextData_Page1_TopLine:                                        ;8BCF75;
+; 私が メトロイドの存在を知ったのは (I learnt of the metroids' existence)
+    dw $0040,$0011
+    dw $0A60,$0B60
+    dw $04E0,$0150
+    dw $0EF0,$0EF0
+    dw $0E00,$0F00
+    dw $0E10,$0F10
+    dw $0E20,$0F20
+    dw $0E30,$0F30
+    dw $0F70,$0F10
+    dw $0280,$0380
+    dw $0C70,$0D70
+    dw $0C80,$0D80
+    dw $04C0,$05C0
+    dw $08E0,$09E0
+    dw $0EF0,$0760
+    dw $00F0,$01F0
+    dw $0280,$0380
+    dw $0290,$0390
 
-IntroJapanTextData_Page2_Subpage1_TopLine:
-    dw $0020,$0015,$00E0,$01E0,$0280,$0380,$0A20,$0B20                   ;8BCFFD;
-    dw $0EF0,$0EF0,$0A60,$0B60,$0290,$0390,$0680,$0780                   ;8BD00D;
-    dw $0690,$0790,$0660,$07E0,$0670,$0770,$06E0,$07E0                   ;8BD01D;
-    dw $06F0,$07F0,$06F0,$07F0,$02C0,$03C0,$0EF0,$0EF0                   ;8BD02D;
-    dw $0E00,$0F00,$0E10,$0F10,$0E20,$0F20,$0E30,$0F30                   ;8BD03D;
-    dw $0F70,$0F10,$04C0,$05C0                                           ;8BD04D;
+IntroJapanTextData_Page1_BottomLine:                                     ;8BCFBD;
+; 惑星ゼーベスでの戦いの時だった (it was during the battle on planet Zebes)
+    dw $01C0,$000F
+    dw $0680,$0780
+    dw $0690,$0790
+    dw $0E80,$0F80
+    dw $0650,$0750
+    dw $0E40,$0F40
+    dw $0E60,$0F60
+    dw $04F0,$0320
+    dw $0280,$0380
+    dw $08F0,$09F0
+    dw $0010,$0110
+    dw $0280,$0380
+    dw $0C90,$0D90
+    dw $05E0,$01F0
+    dw $0EF0,$0760
+    dw $00F0,$01F0
 
-IntroJapanTextData_Page2_Subpage1_BottomLine:
-    dw $01A0,$000B,$0A30,$0B30,$0A40,$0B40,$00A0,$01A0                   ;8BD055;
-    dw $00D0,$01D0,$0480,$0580,$00F0,$01F0,$0410,$0510                   ;8BD065;
-    dw $0250,$0350,$0A50,$0B50,$0EF0,$0760,$00F0,$01F0                   ;8BD075;
+IntroJapanTextData_Page2_Subpage1_TopLine:                               ;8BCFFD;
+; その後 私は惑星ＳＲ３８８へ メトロイドを (after that, I, to planet SR388, with the metroid)
+    dw $0020,$0015
+    dw $00E0,$01E0
+    dw $0280,$0380
+    dw $0A20,$0B20
+    dw $0EF0,$0EF0
+    dw $0A60,$0B60
+    dw $0290,$0390
+    dw $0680,$0780
+    dw $0690,$0790
+    dw $0660,$07E0
+    dw $0670,$0770
+    dw $06E0,$07E0
+    dw $06F0,$07F0
+    dw $06F0,$07F0
+    dw $02C0,$03C0
+    dw $0EF0,$0EF0
+    dw $0E00,$0F00
+    dw $0E10,$0F10
+    dw $0E20,$0F20
+    dw $0E30,$0F30
+    dw $0F70,$0F10
+    dw $04C0,$05C0
 
-IntroJapanTextData_Page2_Subpage2_TopLine:
-    dw $0010,$0016,$00E0,$01E0,$0090,$0190,$04F0,$0320                   ;8BD085;
-    dw $0EF0,$0EF0,$0A70,$0B70,$0A80,$0B80,$0280,$0380                   ;8BD095;
-    dw $0A90,$0B90,$0060,$0160,$0AA0,$0BA0,$0470,$0570                   ;8BD0A5;
-    dw $04F0,$0320,$0000,$0100,$0480,$0580,$0E40,$0F40                   ;8BD0B5;
-    dw $0E50,$0F50,$0650,$0750,$0E00,$0F00,$0E10,$0F10                   ;8BD0C5;
-    dw $0E20,$0F20,$0E30,$0F30,$0F70,$0F10                               ;8BD0D5;
+IntroJapanTextData_Page2_Subpage1_BottomLine:                            ;8BD055;
+; 壊滅させるために向った (headed there to destroy it)
+    dw $01A0,$000B
+    dw $0A30,$0B30
+    dw $0A40,$0B40
+    dw $00A0,$01A0
+    dw $00D0,$01D0
+    dw $0480,$0580
+    dw $00F0,$01F0
+    dw $0410,$0510
+    dw $0250,$0350
+    dw $0A50,$0B50
+    dw $0EF0,$0760
+    dw $00F0,$01F0
 
-IntroJapanTextData_Page2_Subpage2_BottomLine:
-    dw $0190,$0005,$04C0,$05C0,$06A0,$07A0,$06B0,$07B0                   ;8BD0E1;
-    dw $00B0,$01B0,$00F0,$01F0                                           ;8BD0F1;
+IntroJapanTextData_Page2_Subpage2_TopLine:                               ;8BD085;
+; そこで 唯一の生き残りであるベビーメトロイド (there, the only baby metroid left alive)
+    dw $0010,$0016
+    dw $00E0,$01E0
+    dw $0090,$0190
+    dw $04F0,$0320
+    dw $0EF0,$0EF0
+    dw $0A70,$0B70
+    dw $0A80,$0B80
+    dw $0280,$0380
+    dw $0A90,$0B90
+    dw $0060,$0160
+    dw $0AA0,$0BA0
+    dw $0470,$0570
+    dw $04F0,$0320
+    dw $0000,$0100
+    dw $0480,$0580
+    dw $0E40,$0F40
+    dw $0E50,$0F50
+    dw $0650,$0750
+    dw $0E00,$0F00
+    dw $0E10,$0F10
+    dw $0E20,$0F20
+    dw $0E30,$0F30
+    dw $0F70,$0F10
 
-IntroJapanTextData_Page3_Subpage1:
-    dw $0000,$0018,$06C0,$07C0,$06D0,$07D0,$0250,$0350                   ;8BD0F9;
-    dw $0290,$0390,$0E40,$0F40,$0E50,$0F50,$0650,$0750                   ;8BD109;
-    dw $0E00,$0F00,$0E10,$0F10,$0E20,$0F20,$0E30,$0F30                   ;8BD119;
-    dw $0F70,$0F10,$04E0,$0150,$0210,$0310,$0010,$0110                   ;8BD129;
-    dw $0220,$0320,$0A00,$0B00,$00F0,$01F0,$0230,$0330                   ;8BD139;
-    dw $0A10,$0B10,$0020,$0120,$0E40,$0F40,$0060,$0160                   ;8BD149;
-    dw $05E0,$01F0                                                       ;8BD159;
+IntroJapanTextData_Page2_Subpage2_BottomLine:                            ;8BD0E1;
+; を捕獲した (I captured)
+    dw $0190,$0005
+    dw $04C0,$05C0
+    dw $06A0,$07A0
+    dw $06B0,$07B0
+    dw $00B0,$01B0
+    dw $00F0,$01F0
 
-IntroJapanTextData_Page3_Subpage2:
-    dw $0010,$0016,$0A90,$0B90,$02E0,$03E0,$0490,$0590                   ;8BD15D;
-    dw $0220,$0320,$00C0,$01C0,$05F0,$0170,$0AD0,$0BD0                   ;8BD16D;
-    dw $0250,$0350,$0CB0,$0DB0,$0EF0,$0760,$00F0,$01F0                   ;8BD17D;
-    dw $0A60,$0B60,$04C0,$05C0,$08A0,$09A0,$08B0,$09B0                   ;8BD18D;
-    dw $05E0,$01F0,$0230,$0330,$08C0,$09C0,$0EF0,$0760                   ;8BD19D;
-    dw $00F0,$01F0,$0C50,$0D50,$05E0,$01F0                               ;8BD1AD;
+IntroJapanTextData_Page3_Subpage1:                                       ;8BD0F9;
+; 正確にはベビーメトロイドがついて来たと言うべきだ (rather, I should say the metroid followed me)
+    dw $0000,$0018
+    dw $06C0,$07C0
+    dw $06D0,$07D0
+    dw $0250,$0350
+    dw $0290,$0390
+    dw $0E40,$0F40
+    dw $0E50,$0F50
+    dw $0650,$0750
+    dw $0E00,$0F00
+    dw $0E10,$0F10
+    dw $0E20,$0F20
+    dw $0E30,$0F30
+    dw $0F70,$0F10
+    dw $04E0,$0150
+    dw $0210,$0310
+    dw $0010,$0110
+    dw $0220,$0320
+    dw $0A00,$0B00
+    dw $00F0,$01F0
+    dw $0230,$0330
+    dw $0A10,$0B10
+    dw $0020,$0120
+    dw $0E40,$0F40
+    dw $0060,$0160
+    dw $05E0,$01F0
 
-IntroJapanTextData_Page4_Subpage1_TopLine:
-    dw $0010,$0016,$00E0,$01E0,$0280,$0380,$0E40,$0F40                   ;8BD1B9;
-    dw $0E50,$0F50,$0650,$0750,$0E00,$0F00,$0E10,$0F10                   ;8BD1C9;
-    dw $0E20,$0F20,$0E30,$0F30,$0F70,$0F10,$04C0,$05C0                   ;8BD1D9;
-    dw $0A60,$0B60,$0290,$0390,$0E60,$0F60,$0E70,$0F40                   ;8BD1E9;
-    dw $0650,$0750,$0E60,$0F60,$0E90,$0F90,$0E20,$0F20                   ;8BD1F9;
-    dw $0EA0,$0FA0,$0650,$0750,$0280,$0380                               ;8BD209;
+IntroJapanTextData_Page3_Subpage2:                                       ;8BD15D;
+; 生まれてすぐ目に入った私を母親だと思った様だ (when it was born, it seemed to think that I, whom it immediately noticed, was its mother)
+    dw $0010,$0016
+    dw $0A90,$0B90
+    dw $02E0,$03E0
+    dw $0490,$0590
+    dw $0220,$0320
+    dw $00C0,$01C0
+    dw $05F0,$0170
+    dw $0AD0,$0BD0
+    dw $0250,$0350
+    dw $0CB0,$0DB0
+    dw $0EF0,$0760
+    dw $00F0,$01F0
+    dw $0A60,$0B60
+    dw $04C0,$05C0
+    dw $08A0,$09A0
+    dw $08B0,$09B0
+    dw $05E0,$01F0
+    dw $0230,$0330
+    dw $08C0,$09C0
+    dw $0EF0,$0760
+    dw $00F0,$01F0
+    dw $0C50,$0D50
+    dw $05E0,$01F0
 
-IntroJapanTextData_Page4_Subpage1_BottomLine:
-    dw $0190,$0010,$0CE0,$0DE0,$0CF0,$0DF0,$0C20,$0D20                   ;8BD215;
-    dw $0C30,$0D30,$0610,$0710,$0620,$0720,$0630,$0730                   ;8BD225;
-    dw $0640,$0740,$0650,$0750,$02C0,$03C0,$0230,$0330                   ;8BD235;
-    dw $0C60,$0D60,$0200,$0300,$08D0,$09D0,$04D0,$05D0                   ;8BD245;
-    dw $05E0,$01F0                                                       ;8BD255;
+IntroJapanTextData_Page4_Subpage1_TopLine:                               ;8BD1B9;
+; そのベビーメトロイドを私はスペースコロニーの (I went to a space colony with this baby metroid)
+    dw $0010,$0016
+    dw $00E0,$01E0
+    dw $0280,$0380
+    dw $0E40,$0F40
+    dw $0E50,$0F50
+    dw $0650,$0750
+    dw $0E00,$0F00
+    dw $0E10,$0F10
+    dw $0E20,$0F20
+    dw $0E30,$0F30
+    dw $0F70,$0F10
+    dw $04C0,$05C0
+    dw $0A60,$0B60
+    dw $0290,$0390
+    dw $0E60,$0F60
+    dw $0E70,$0F40
+    dw $0650,$0750
+    dw $0E60,$0F60
+    dw $0E90,$0F90
+    dw $0E20,$0F20
+    dw $0EA0,$0FA0
+    dw $0650,$0750
+    dw $0280,$0380
 
-IntroJapanTextData_Page4_Subpage2_TopLine:
-    dw $0030,$0012,$0E00,$0F00,$0E10,$0F10,$0E20,$0F20                   ;8BD259;
-    dw $0E30,$0F30,$0F70,$0F10,$0280,$0380,$0AB0,$0BB0                   ;8BD269;
-    dw $0490,$0590,$00F0,$01F0,$0CC0,$0DC0,$0CD0,$0DD0                   ;8BD279;
-    dw $04C0,$05C0,$0CE0,$0DE0,$0CF0,$0DF0,$0280,$0380                   ;8BD289;
-    dw $0CA0,$0DA0,$0A00,$0B00,$0250,$0350                               ;8BD299;
+IntroJapanTextData_Page4_Subpage1_BottomLine:                            ;8BD215;
+; 宇宙科学アカデミーへと持ち込んだ (the Space Science Academy)
+    dw $0190,$0010
+    dw $0CE0,$0DE0
+    dw $0CF0,$0DF0
+    dw $0C20,$0D20
+    dw $0C30,$0D30
+    dw $0610,$0710
+    dw $0620,$0720
+    dw $0630,$0730
+    dw $0640,$0740
+    dw $0650,$0750
+    dw $02C0,$03C0
+    dw $0230,$0330
+    dw $0C60,$0D60
+    dw $0200,$0300
+    dw $08D0,$09D0
+    dw $04D0,$05D0
+    dw $05E0,$01F0
 
-IntroJapanTextData_Page4_Subpage2_BottomLine:
-    dw $01B0,$000B,$0800,$0900,$0810,$0910,$00F0,$01F0                   ;8BD2A5;
-    dw $00D0,$01D0,$0480,$0580,$00F0,$01F0,$0410,$0510                   ;8BD2B5;
-    dw $0250,$0350,$0EF0,$0600,$0EF0,$0600,$0EF0,$0600                   ;8BD2C5;
+IntroJapanTextData_Page4_Subpage2_TopLine:                               ;8BD259;
+; メトロイドの優れた特性を宇宙の未来に (with the metroid's amazing special powers, for the future of space)
+    dw $0030,$0012
+    dw $0E00,$0F00
+    dw $0E10,$0F10
+    dw $0E20,$0F20
+    dw $0E30,$0F30
+    dw $0F70,$0F10
+    dw $0280,$0380
+    dw $0AB0,$0BB0
+    dw $0490,$0590
+    dw $00F0,$01F0
+    dw $0CC0,$0DC0
+    dw $0CD0,$0DD0
+    dw $04C0,$05C0
+    dw $0CE0,$0DE0
+    dw $0CF0,$0DF0
+    dw $0280,$0380
+    dw $0CA0,$0DA0
+    dw $0A00,$0B00
+    dw $0250,$0350
 
-IntroJapanTextData_Page5_Subpage1:
-    dw $0050,$000D,$0860,$0960,$0870,$0970,$0290,$0390                   ;8BD2D5;
-    dw $0840,$0940,$0850,$0950,$0250,$0350,$0C40,$0D40                   ;8BD2E5;
-    dw $02F0,$03F0,$0210,$0310,$0210,$0310,$0000,$0100                   ;8BD2F5;
-    dw $0EF0,$0760,$00F0,$01F0                                           ;8BD305;
+IntroJapanTextData_Page4_Subpage2_BottomLine:                            ;8BD2A5;
+; 役立たせるために・・・ (in order to harness it...)
+    dw $01B0,$000B
+    dw $0800,$0900
+    dw $0810,$0910
+    dw $00F0,$01F0
+    dw $00D0,$01D0
+    dw $0480,$0580
+    dw $00F0,$01F0
+    dw $0410,$0510
+    dw $0250,$0350
+    dw $0EF0,$0600
+    dw $0EF0,$0600
+    dw $0EF0,$0600
 
-IntroJapanTextData_Page5_Subpage2:
-    dw $0000,$0018,$00E0,$01E0,$04D0,$05D0,$0240,$0340                   ;8BD30D;
-    dw $0000,$0100,$0480,$0580,$0AC0,$0BC0,$0E60,$0F60                   ;8BD31D;
-    dw $0E70,$0F40,$0650,$0750,$0E60,$0F60,$0E90,$0F90                   ;8BD32D;
-    dw $0E20,$0F20,$0EA0,$0FA0,$0650,$0750,$0050,$0150                   ;8BD33D;
-    dw $0460,$0560,$0880,$0980,$0890,$0990,$0820,$0920                   ;8BD34D;
-    dw $0830,$0930,$04E0,$0150,$0CB0,$0DB0,$0EF0,$0760                   ;8BD35D;
-    dw $00F0,$01F0                                                       ;8BD36D;
+IntroJapanTextData_Page5_Subpage1:                                       ;8BD2D5;
+; 研究は順調に進みつつあった (research was continuing smoothly)
+    dw $0050,$000D
+    dw $0860,$0960
+    dw $0870,$0970
+    dw $0290,$0390
+    dw $0840,$0940
+    dw $0850,$0950
+    dw $0250,$0350
+    dw $0C40,$0D40
+    dw $02F0,$03F0
+    dw $0210,$0310
+    dw $0210,$0310
+    dw $0000,$0100
+    dw $0EF0,$0760
+    dw $00F0,$01F0
 
-IntroJapanTextData_Page6:
-    dw $0090,$0005,$0AE0,$0BE0,$0AF0,$0BF0,$0C00,$0D00                   ;8BD371;
-    dw $0C10,$0D10,$05E0,$01F0                                           ;8BD381;
+IntroJapanTextData_Page5_Subpage2:                                       ;8BD30D;
+; そんなある日スペースコロニーから突然連絡が入った (one day I got a sudden transmission from the space colony)
+    dw $0000,$0018
+    dw $00E0,$01E0
+    dw $04D0,$05D0
+    dw $0240,$0340
+    dw $0000,$0100
+    dw $0480,$0580
+    dw $0AC0,$0BC0
+    dw $0E60,$0F60
+    dw $0E70,$0F40
+    dw $0650,$0750
+    dw $0E60,$0F60
+    dw $0E90,$0F90
+    dw $0E20,$0F20
+    dw $0EA0,$0FA0
+    dw $0650,$0750
+    dw $0050,$0150
+    dw $0460,$0560
+    dw $0880,$0980
+    dw $0890,$0990
+    dw $0820,$0920
+    dw $0830,$0930
+    dw $04E0,$0150
+    dw $0CB0,$0DB0
+    dw $0EF0,$0760
+    dw $00F0,$01F0
+
+IntroJapanTextData_Page6:                                                ;8BD371;
+; 非常事態だ (it's an emergency)
+    dw $0090,$0005
+    dw $0AE0,$0BE0
+    dw $0AF0,$0BF0
+    dw $0C00,$0D00
+    dw $0C10,$0D10
+    dw $05E0,$01F0
 
 InstList_Mode7Object_Page1:
     dw Instruction_LoadIntroJapanTextPage1                               ;8BD389;
-    dw $0001                                                             ;8BD38B;
-    dw Mode7_Transfer_Data                                               ;8BD38D;
+    dw $0001,Mode7_Transfer_Data                                         ;8BD38B;
     dw Instruction_EnableCinematicBGTilemapUpdates_duplicate             ;8BD38F;
     dw Mode7Objects_Instruction_Delete                                   ;8BD391;
 
 InstList_Mode7Object_Page2_Subpage1:
     dw Instruction_LoadIntroJapanTextPage2_Subpage1                      ;8BD393;
-    dw $0001                                                             ;8BD395;
-    dw Mode7_Transfer_Data                                               ;8BD397;
+    dw $0001,Mode7_Transfer_Data                                         ;8BD395;
     dw Instruction_EnableCinematicBGTilemapUpdates_duplicate             ;8BD399;
     dw Mode7Objects_Instruction_Delete                                   ;8BD39B;
 
 InstList_Mode7Object_Page2_Subpage2:
-    dw $0001                                                             ;8BD39D;
-    dw Mode7_Transfer_Data                                               ;8BD39F;
+    dw $0001,Mode7_Transfer_Data                                         ;8BD39D;
     dw Mode7Objects_Instruction_GotoY                                    ;8BD3A1;
     dw InstList_Mode7Object_Page2_Subpage2                               ;8BD3A3;
 
@@ -10446,14 +10453,12 @@ InstList_EnableCinematicBGTilemapUpdates_Page2DoneInput:
 
 InstList_Mode7Object_Page3_Subpage1:
     dw Instruction_LoadIntroJapanTextPage3_Subpage1                      ;8BD3A9;
-    dw $0001                                                             ;8BD3AB;
-    dw Mode7_Transfer_Data                                               ;8BD3AD;
+    dw $0001,Mode7_Transfer_Data                                         ;8BD3AB;
     dw Instruction_EnableCinematicBGTilemapUpdates_duplicate             ;8BD3AF;
     dw Mode7Objects_Instruction_Delete                                   ;8BD3B1;
 
 InstList_Mode7Object_Page3_Subpage2:
-    dw $0001                                                             ;8BD3B3;
-    dw Mode7_Transfer_Data                                               ;8BD3B5;
+    dw $0001,Mode7_Transfer_Data                                         ;8BD3B3;
     dw Mode7Objects_Instruction_GotoY                                    ;8BD3B7;
     dw InstList_Mode7Object_Page3_Subpage2                               ;8BD3B9;
 
@@ -10463,14 +10468,12 @@ InstList_EnableCinematicBGTilemapUpdates_Page3DoneInput:
 
 InstList_Mode7Object_Page4_Subpage1:
     dw Instruction_LoadIntroJapanTextPage4_Subpage1                      ;8BD3BF;
-    dw $0001                                                             ;8BD3C1;
-    dw Mode7_Transfer_Data                                               ;8BD3C3;
+    dw $0001,Mode7_Transfer_Data                                         ;8BD3C1;
     dw Instruction_EnableCinematicBGTilemapUpdates_duplicate             ;8BD3C5;
     dw Mode7Objects_Instruction_Delete                                   ;8BD3C7;
 
 InstList_Mode7Object_Page4_Subpage2:
-    dw $0001                                                             ;8BD3C9;
-    dw Mode7_Transfer_Data                                               ;8BD3CB;
+    dw $0001,Mode7_Transfer_Data                                         ;8BD3C9;
     dw Mode7Objects_Instruction_GotoY                                    ;8BD3CD;
     dw InstList_Mode7Object_Page4_Subpage2                               ;8BD3CF;
 
@@ -10480,14 +10483,12 @@ InstList_EnableCinematicBGTilemapUpdates_Page4DoneInput:
 
 InstList_Mode7Object_Page5_Subpage1:
     dw Instruction_LoadIntroJapanTextPage5_Subpage1                      ;8BD3D5;
-    dw $0001                                                             ;8BD3D7;
-    dw Mode7_Transfer_Data                                               ;8BD3D9;
+    dw $0001,Mode7_Transfer_Data                                         ;8BD3D7;
     dw Instruction_EnableCinematicBGTilemapUpdates_duplicate             ;8BD3DB;
     dw Mode7Objects_Instruction_Delete                                   ;8BD3DD;
 
 InstList_Mode7Object_Page5_Subpage2:
-    dw $0001                                                             ;8BD3DF;
-    dw Mode7_Transfer_Data                                               ;8BD3E1;
+    dw $0001,Mode7_Transfer_Data                                         ;8BD3DF;
     dw Mode7Objects_Instruction_GotoY                                    ;8BD3E3;
     dw InstList_Mode7Object_Page5_Subpage2                               ;8BD3E5;
 
@@ -10497,16 +10498,14 @@ InstList_EnableCinematicBGTilemapUpdates_Page5DoneInput:
 
 InstList_Mode7Object_Page6:
     dw Instruction_LoadIntroJapanTextPage6                               ;8BD3EB;
-    dw $0001                                                             ;8BD3ED;
-    dw Mode7_Transfer_Data                                               ;8BD3EF;
+    dw $0001,Mode7_Transfer_Data                                         ;8BD3ED;
     dw Instruction_EnableCinematicBGTilemapUpdates_duplicate_again       ;8BD3F1;
     dw Mode7Objects_Instruction_Delete                                   ;8BD3F3;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_Mode7Object_D43D_8BD3F5:
     dw UNUSED_Instruction_LoadIntroJapanText_NonExistent                 ;8BD3F5;
-    dw $0001                                                             ;8BD3F7;
-    dw Mode7_Transfer_Data                                               ;8BD3F9;
+    dw $0001,Mode7_Transfer_Data                                         ;8BD3F7;
     dw Instruction_EnableCinematicBGTilemapUpdates                       ;8BD3FB;
     dw Mode7Objects_Instruction_Delete                                   ;8BD3FD;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -11349,28 +11348,13 @@ CinematicFunc_Ending_SpaceView_LoadGunshipBG:
 .return:
     RTS                                                                  ;8BDB5C;
 
-
-.sourceAddresses:
-    dw $0000                                                             ;8BDB5D;
-    dw $0800                                                             ;8BDB5F;
-    dw $1000                                                             ;8BDB61;
-    dw $1800                                                             ;8BDB63;
-    dw $2000                                                             ;8BDB65;
-    dw $2800                                                             ;8BDB67;
-    dw $3000                                                             ;8BDB69;
-    dw $3800                                                             ;8BDB6B;
-    dw $4000                                                             ;8BDB6D;
-    dw $4800                                                             ;8BDB6F;
-    dw $5000                                                             ;8BDB71;
-    dw $5800                                                             ;8BDB73;
-    dw $6000                                                             ;8BDB75;
-    dw $6800                                                             ;8BDB77;
-    dw $7000                                                             ;8BDB79;
-    dw $7800                                                             ;8BDB7B;
-
+.sourceAddresses:                                                        
+    dw $0000,$0800,$1000,$1800,$2000,$2800,$3000,$3800                   ;8BDB5D; Tiles source addresses (bank $7F)
+    dw $4000,$4800,$5000,$5800,$6000,$6800,$7000,$7800                   ;8BDB6D; Tilemap source addresses (bank $7F)
 .destinationAddresses:
-    dw $0000,$0800,$1000,$1800,$2000,$2800,$3000,$3800                   ;8BDB7D;
-    dw $0000,$0800,$1000,$1800,$2000,$2800,$3000,$3800                   ;8BDB8D;
+    dw $0000,$0800,$1000,$1800,$2000,$2800,$3000,$3800                   ;8BDB7D; Tiles destination addresses (VRAM)
+    dw $0000,$0800,$1000,$1800,$2000,$2800,$3000,$3800                   ;8BDB8D; Tilemap destination addresses (VRAM)
+
 
 RTS_8BDB9D:
     RTS                                                                  ;8BDB9D;
@@ -11563,10 +11547,10 @@ CinematicFunc_Ending_SpaceView_GunshipEmergence_SpinningFast:
 
 
 .shakingXVelocities:
-    dw $0000,$8000,$0000,$8000,$0000,$8000,$0000,$8000                   ;8BDD02;
-    dw $FFFF,$8000,$FFFF,$8000,$0000,$8000,$0000,$8000                   ;8BDD12;
-    dw $0000,$8000,$0000,$8000,$FFFF,$8000,$FFFF,$8000                   ;8BDD22;
-    dw $0000,$8000,$0000,$8000,$FFFF,$8000,$FFFF,$8000                   ;8BDD32;
+    dw $0000,$8000, $0000,$8000, $0000,$8000, $0000,$8000                ;8BDD02;
+    dw $FFFF,$8000, $FFFF,$8000, $0000,$8000, $0000,$8000                ;8BDD12;
+    dw $0000,$8000, $0000,$8000, $FFFF,$8000, $FFFF,$8000                ;8BDD22;
+    dw $0000,$8000, $0000,$8000, $FFFF,$8000, $FFFF,$8000                ;8BDD32;
 
 CinematicFunc_Ending_SpaceView_GunshipEmergence_SpinningSlow:
     JSR.W FadeOut_ZebesExplosion_AfterGlow                               ;8BDD42;
@@ -11675,10 +11659,10 @@ CinematicFunc_Ending_SpaceView_GunshipEmergence_FlyToCamera:
     BPL .loopPalette                                                     ;8BDE40;
     RTS                                                                  ;8BDE42;
 
-
 .greyGunshipPalette:
     dw $0000,$6F7B,$4A52,$1CE7,$0000,$5AD6,$4A52,$35AD                   ;8BDE43;
     dw $2529,$7FFF,$56B5,$294A,$4210,$2D6B,$18C6,$7FFF                   ;8BDE53;
+
 
 RTS_8BDE63:
     RTS                                                                  ;8BDE63;
@@ -12405,27 +12389,30 @@ TransferPostCreditsSuperMetroidIconToVRAM:
     RTS                                                                  ;8BE459;
 
 
-.size:
-    dw $0400                                                             ;8BE45A;
-
-.source:
+  .size
+    dw $0400                                                             ;8BE45A; Item percentage Japanese text
+  .source
     dl $7FD000                                                           ;8BE45C;
     db $00                                                               ;8BE45F;
-
-.destination:
-    dw $4800,$0800                                                       ;8BE460;
+  .destination
+    dw $4800                                                             ;8BE460;
+    dw $0800                                                             ;8BE462; Super Metroid icon tiles
     dl $7E6000                                                           ;8BE464;
     db $00                                                               ;8BE467;
-    dw $6000,$0800                                                       ;8BE468;
+    dw $6000                                                             ;8BE468;
+    dw $0800                                                             ;8BE46A;
     dl $7E6800                                                           ;8BE46C;
     db $00                                                               ;8BE46F;
-    dw $6400,$0800                                                       ;8BE470;
+    dw $6400                                                             ;8BE470;
+    dw $0800                                                             ;8BE472;
     dl $7E7000                                                           ;8BE474;
     db $00                                                               ;8BE477;
-    dw $6800,$0800                                                       ;8BE478;
+    dw $6800                                                             ;8BE478;
+    dw $0800                                                             ;8BE47A;
     dl $7E7800                                                           ;8BE47C;
     db $00                                                               ;8BE47F;
-    dw $6C00,$0800                                                       ;8BE480;
+    dw $6C00                                                             ;8BE480;
+    dw $0800                                                             ;8BE482; Super Metroid icon tilemap
     dl $7E8000                                                           ;8BE484;
     db $00                                                               ;8BE487;
     dw $5400                                                             ;8BE488;
@@ -12622,11 +12609,10 @@ CinematicFunction_PostCredits_GreyOutSuperMetroidIcon:
     PLX                                                                  ;8BE5E5;
     RTS                                                                  ;8BE5E6;
 
-
-.BGPalette:
+; Pointers to (the last colour of) increasingly grey palettes
+  .BGPalette
     dw Palettes_EndingSuperMetroidIconFadingToGrey_BG_10                 ;8BE5E7; These pointers read the list backwards :(
-
-.spritePalette:
+  .spritePalette
     dw Palettes_EndingSuperMetroidIconFadingToGrey_Sprite_1              ;8BE5E9;
     dw Palettes_EndingSuperMetroidIconFadingToGrey_BG_F                  ;8BE5EB;
     dw Palettes_EndingSuperMetroidIconFadingToGrey_Sprite_2              ;8BE5ED;
@@ -12795,31 +12781,23 @@ Instruction_DrawItemPercentageCount:
 
 .tankValuesEnergy:
     dw $09C4                                                             ;8BE70D;
-
 .tankValuesReserve:
     dw $09D4                                                             ;8BE70F;
-
 .tankValuesMissiles:
     dw $09C8                                                             ;8BE711;
-
 .tankValuesSuperMissiles:
     dw $09CC                                                             ;8BE713;
-
 .tankValuesPowerBombs:
     dw $09D0                                                             ;8BE715;
 
 .tankValuesEnergyDivisor:
     dw $0064                                                             ;8BE717;
-
 .tankValuesReserveDivisor:
     dw $0064                                                             ;8BE719;
-
 .tankValuesMissilesDivisor:
     dw $0005                                                             ;8BE71B;
-
 .tankValuesSuperMissilesDivisor:
     dw $0005                                                             ;8BE71D;
-
 .tankValuesPowerBombsDivisor:
     dw $0005                                                             ;8BE71F;
 
@@ -12830,13 +12808,21 @@ Instruction_DrawItemPercentageCount:
 .beamBits:
     dw $0001,$0002,$0004,$0008,$1000                                     ;8BE737;
 
-TilemapValuesForDecimalDigits_topHalf:
-    dw $3860                                                             ;8BE741;
 
-TilemapValuesForDecimalDigits_bottomHalf:
-    dw $3870,$3861,$3871,$3862,$3872,$3863,$3873,$3864                   ;8BE743;
-    dw $3874,$3865,$3875,$3866,$3876,$3867,$3877,$3868                   ;8BE753;
-    dw $3878,$3869,$3879                                                 ;8BE763;
+TilemapValuesForDecimalDigits:
+  .topHalf
+    dw $3860                                                             ;8BE741;
+  .bottomHalf                                                            ;8BE743;
+    dw       $3870 ; 0
+    dw $3861,$3871 ; 1
+    dw $3862,$3872 ; 2
+    dw $3863,$3873 ; 3
+    dw $3864,$3874 ; 4
+    dw $3865,$3875 ; 5
+    dw $3866,$3876 ; 6
+    dw $3867,$3877 ; 7
+    dw $3868,$3878 ; 8
+    dw $3869,$3879 ; 9
 
 Instruction_DrawItemPercentageJapanText:
     PHX                                                                  ;8BE769;
@@ -13167,6 +13153,7 @@ Handle_ShootingStars:
 
 
 .tilemapValues:
+; Tile number and attributes, indexed by animation frame
     dw $0000,$09F0,$09F1,$09F2,$09F3,$09F3,$09F3,$09F3                   ;8BE9A7;
     dw $09F3,$09F3,$09F3,$09F3,$09F3,$09F3,$09F3,$09F3                   ;8BE9B7;
     dw $09F3,$09F3,$09F3,$09F3                                           ;8BE9C7;
@@ -13203,47 +13190,33 @@ ShootingStar_Table_delay:
     db $00,$00,$F8,$FF,$FC,$FF,$00,$0F,$00,$00                           ;8BEB05;
 
 InstList_CinematicSpriteObjects_ExplodingZebes_Zebes_0:
-    dw CinematicSpriteObject_Instruction_TimerInY                        ;8BEB0F;
-    dw $0005                                                             ;8BEB11;
+    dw CinematicSpriteObject_Instruction_TimerInY,$0005                  ;8BEB0F;
 
 InstList_CinematicSpriteObjects_ExplodingZebes_Zebes_1:
-    dw $000D                                                             ;8BEB13;
-    dw EndingSequenceSpritemaps_ExplodingPlanetZebesFrame1               ;8BEB15;
-    dw $000D                                                             ;8BEB17;
-    dw EndingSequenceSpritemaps_ExplodingPlanetZebesFrame2               ;8BEB19;
-    dw $000D                                                             ;8BEB1B;
-    dw EndingSequenceSpritemaps_ExplodingPlanetZebesFrame3               ;8BEB1D;
-    dw $000D                                                             ;8BEB1F;
-    dw EndingSequenceSpritemaps_ExplodingPlanetZebesFrame4               ;8BEB21;
+    dw $000D,EndingSequenceSpritemaps_ExplodingPlanetZebesFrame1         ;8BEB13;
+    dw $000D,EndingSequenceSpritemaps_ExplodingPlanetZebesFrame2         ;8BEB17;
+    dw $000D,EndingSequenceSpritemaps_ExplodingPlanetZebesFrame3         ;8BEB1B;
+    dw $000D,EndingSequenceSpritemaps_ExplodingPlanetZebesFrame4         ;8BEB1F;
     dw CinematicSpriteObject_Inst_DecrementTimer_GotoYIfNonZero          ;8BEB23;
     dw InstList_CinematicSpriteObjects_ExplodingZebes_Zebes_1            ;8BEB25;
     dw Instruction_FadeOutZoomedOutExplodingZebes                        ;8BEB27;
-    dw $0020                                                             ;8BEB29;
-    dw EndingSequenceSpritemaps_ExplodingPlanetZebesFrame5               ;8BEB2B;
-    dw $0020                                                             ;8BEB2D;
-    dw EndingSequenceSpritemaps_ExplodingPlanetZebesFrame6               ;8BEB2F;
-    dw $0020                                                             ;8BEB31;
-    dw EndingSequenceSpritemaps_ExplodingPlanetZebesFrame7               ;8BEB33;
-    dw $0020                                                             ;8BEB35;
-    dw EndingSequenceSpritemaps_ExplodingPlanetZebesFrame8               ;8BEB37;
+    dw $0020,EndingSequenceSpritemaps_ExplodingPlanetZebesFrame5         ;8BEB29;
+    dw $0020,EndingSequenceSpritemaps_ExplodingPlanetZebesFrame6         ;8BEB2D;
+    dw $0020,EndingSequenceSpritemaps_ExplodingPlanetZebesFrame7         ;8BEB31;
+    dw $0020,EndingSequenceSpritemaps_ExplodingPlanetZebesFrame8         ;8BEB35;
     dw Instruction_CineSpriteObjectSpawnZebesExplosionSilhouette         ;8BEB39;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BEB3B;
 
 InstList_CinematicSpriteObjects_ExplodingZebes_PurpleGlow:
-    dw $0010                                                             ;8BEB3D;
-    dw EndingSequenceSpritemaps_ExplodingPlanetZebesGlow                 ;8BEB3F;
-    dw $0010                                                             ;8BEB41;
-    dw EndingSequenceSpritemaps_ZebesSupernovaPart1                      ;8BEB43;
-    dw $0010                                                             ;8BEB45;
-    dw EndingSequenceSpritemaps_ZebesSupernovaPart2                      ;8BEB47;
-    dw $0010                                                             ;8BEB49;
-    dw EndingSequenceSpritemaps_ZebesSupernovaPart1                      ;8BEB4B;
+    dw $0010,EndingSequenceSpritemaps_ExplodingPlanetZebesGlow           ;8BEB3D;
+    dw $0010,EndingSequenceSpritemaps_ZebesSupernovaPart1                ;8BEB41;
+    dw $0010,EndingSequenceSpritemaps_ZebesSupernovaPart2                ;8BEB45;
+    dw $0010,EndingSequenceSpritemaps_ZebesSupernovaPart1                ;8BEB49;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEB4D;
     dw InstList_CinematicSpriteObjects_ExplodingZebes_PurpleGlow         ;8BEB4F;
 
 InstList_CinematicSpriteObjects_ExplodingZebes_Stars:
-    dw $0010                                                             ;8BEB51;
-    dw EndingSequenceSpritemaps_ZebesBoomStarryBackground                ;8BEB53;
+    dw $0010,EndingSequenceSpritemaps_ZebesBoomStarryBackground          ;8BEB51;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEB55;
     dw InstList_CinematicSpriteObjects_ExplodingZebes_Stars              ;8BEB57;
 
@@ -13251,525 +13224,378 @@ InstList_CinematicSpriteObjects_ExplodingZebes_Lava_0:
     dw $009C,$0000                                                       ;8BEB59;
 
 InstList_CinematicSpriteObjects_ExplodingZebes_Lava_1:
-    dw $000A                                                             ;8BEB5D;
-    dw EndingSequenceSpritemaps_ExplodingPlanetZebesCoreFrame1           ;8BEB5F;
-    dw $000A                                                             ;8BEB61;
-    dw EndingSequenceSpritemaps_ExplodingPlanetZebesCoreFrame2           ;8BEB63;
+    dw $000A,EndingSequenceSpritemaps_ExplodingPlanetZebesCoreFrame1     ;8BEB5D;
+    dw $000A,EndingSequenceSpritemaps_ExplodingPlanetZebesCoreFrame2     ;8BEB61;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEB65;
     dw InstList_CinematicSpriteObjects_ExplodingZebes_Lava_1             ;8BEB67;
 
 InstList_CinematicSpriteObjects_ExplodingZebes_Silhouette:
-    dw $0008                                                             ;8BEB69;
-    dw EndingSequenceSpritemaps_ZebesSupernovaPart3                      ;8BEB6B;
+    dw $0008,EndingSequenceSpritemaps_ZebesSupernovaPart3                ;8BEB69;
     dw Instruction_CinematicSpriteObject_StartZebesExplosion             ;8BEB6D;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BEB6F;
 
 InstList_CinematicSpriteObjects_ExplodingZebes_Stars_Right:
-    dw $0090                                                             ;8BEB71;
-    dw EndingSequenceSpritemaps_ZebesBoomStarryBackground                ;8BEB73;
+    dw $0090,EndingSequenceSpritemaps_ZebesBoomStarryBackground          ;8BEB71;
     dw Instruction_ZebesExplosionFinale                                  ;8BEB75;
-    dw $014C                                                             ;8BEB77;
-    dw EndingSequenceSpritemaps_ZebesBoomStarryBackground                ;8BEB79;
+    dw $014C,EndingSequenceSpritemaps_ZebesBoomStarryBackground          ;8BEB77;
     dw Instruction_EndZebesExplosion                                     ;8BEB7B;
     dw CinematicSpriteObject_Instruction_PreInstructionY                 ;8BEB7D;
     dw Instruction_CinematicSpriteObject_ZebesExplosion_Stars_Left       ;8BEB7F;
 
 InstList_CinematicSpriteObjects_ExplodingZebes_Stars_Left:
-    dw $0010                                                             ;8BEB81;
-    dw EndingSequenceSpritemaps_ZebesBoomStarryBackground                ;8BEB83;
+    dw $0010,EndingSequenceSpritemaps_ZebesBoomStarryBackground          ;8BEB81;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEB85;
     dw InstList_CinematicSpriteObjects_ExplodingZebes_Stars_Left         ;8BEB87;
 
 InstList_CinematicSpriteObjects_ExplodingZebes_AfterGlow:
-    dw $0010                                                             ;8BEB89;
-    dw EndingSequenceSpritemaps_ZebesSupernovaPart4                      ;8BEB8B;
+    dw $0010,EndingSequenceSpritemaps_ZebesSupernovaPart4                ;8BEB89;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEB8D;
     dw InstList_CinematicSpriteObjects_ExplodingZebes_AfterGlow          ;8BEB8F;
 
 InstList_CinematicSpriteObjects_TheOperationWas_0:
-    dw $0008                                                             ;8BEB91;
-    dw EndingSequenceSpritemaps_T                                        ;8BEB93;
-    dw $0008                                                             ;8BEB95;
-    dw EndingSequenceSpritemaps_TH                                       ;8BEB97;
-    dw $000F                                                             ;8BEB99;
-    dw EndingSequenceSpritemaps_THE                                      ;8BEB9B;
-    dw $0008                                                             ;8BEB9D;
-    dw EndingSequenceSpritemaps_THEO                                     ;8BEB9F;
-    dw $0008                                                             ;8BEBA1;
-    dw EndingSequenceSpritemaps_THEOP                                    ;8BEBA3;
-    dw $0008                                                             ;8BEBA5;
-    dw EndingSequenceSpritemaps_THEOPE                                   ;8BEBA7;
-    dw $0008                                                             ;8BEBA9;
-    dw EndingSequenceSpritemaps_THEOPER                                  ;8BEBAB;
-    dw $0008                                                             ;8BEBAD;
-    dw EndingSequenceSpritemaps_THEOPERA                                 ;8BEBAF;
-    dw $0008                                                             ;8BEBB1;
-    dw EndingSequenceSpritemaps_THEOPERAT                                ;8BEBB3;
-    dw $0008                                                             ;8BEBB5;
-    dw EndingSequenceSpritemaps_THEOPERATI                               ;8BEBB7;
-    dw $0008                                                             ;8BEBB9;
-    dw EndingSequenceSpritemaps_THEOPERATIO                              ;8BEBBB;
-    dw $000F                                                             ;8BEBBD;
-    dw EndingSequenceSpritemaps_THEOPERATION                             ;8BEBBF;
-    dw $0008                                                             ;8BEBC1;
-    dw EndingSequenceSpritemaps_THEOPERATIONW                            ;8BEBC3;
-    dw $0008                                                             ;8BEBC5;
-    dw EndingSequenceSpritemaps_THEOPERATIONWA                           ;8BEBC7;
-    dw $000F                                                             ;8BEBC9;
-    dw EndingSequenceSpritemaps_THEOPERATIONWAS                          ;8BEBCB;
+    dw $0008,EndingSequenceSpritemaps_T                                  ;8BEB91;
+    dw $0008,EndingSequenceSpritemaps_TH                                 ;8BEB95;
+    dw $000F,EndingSequenceSpritemaps_THE                                ;8BEB99;
+    dw $0008,EndingSequenceSpritemaps_THEO                               ;8BEB9D;
+    dw $0008,EndingSequenceSpritemaps_THEOP                              ;8BEBA1;
+    dw $0008,EndingSequenceSpritemaps_THEOPE                             ;8BEBA5;
+    dw $0008,EndingSequenceSpritemaps_THEOPER                            ;8BEBA9;
+    dw $0008,EndingSequenceSpritemaps_THEOPERA                           ;8BEBAD;
+    dw $0008,EndingSequenceSpritemaps_THEOPERAT                          ;8BEBB1;
+    dw $0008,EndingSequenceSpritemaps_THEOPERATI                         ;8BEBB5;
+    dw $0008,EndingSequenceSpritemaps_THEOPERATIO                        ;8BEBB9;
+    dw $000F,EndingSequenceSpritemaps_THEOPERATION                       ;8BEBBD;
+    dw $0008,EndingSequenceSpritemaps_THEOPERATIONW                      ;8BEBC1;
+    dw $0008,EndingSequenceSpritemaps_THEOPERATIONWA                     ;8BEBC5;
+    dw $000F,EndingSequenceSpritemaps_THEOPERATIONWAS                    ;8BEBC9;
     dw Instruction_CinematicSpriteObject_SpawnCompletedSuccessfully      ;8BEBCD;
 
 InstList_CinematicSpriteObjects_TheOperationWas_1:
-    dw $000F                                                             ;8BEBCF;
-    dw EndingSequenceSpritemaps_THEOPERATIONWAS                          ;8BEBD1;
+    dw $000F,EndingSequenceSpritemaps_THEOPERATIONWAS                    ;8BEBCF;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEBD3;
     dw InstList_CinematicSpriteObjects_TheOperationWas_1                 ;8BEBD5;
 
 InstList_CinematicSpriteObjects_CompletedSuccessfully_0:
-    dw $0008                                                             ;8BEBD7;
-    dw EndingSequenceSpritemaps_C_ompleted                               ;8BEBD9;
-    dw $0008                                                             ;8BEBDB;
-    dw EndingSequenceSpritemaps_CO                                       ;8BEBDD;
-    dw $0008                                                             ;8BEBDF;
-    dw EndingSequenceSpritemaps_COM                                      ;8BEBE1;
-    dw $0008                                                             ;8BEBE3;
-    dw EndingSequenceSpritemaps_COMP                                     ;8BEBE5;
-    dw $0008                                                             ;8BEBE7;
-    dw EndingSequenceSpritemaps_COMPL                                    ;8BEBE9;
-    dw $0008                                                             ;8BEBEB;
-    dw EndingSequenceSpritemaps_COMPLE                                   ;8BEBED;
-    dw $0008                                                             ;8BEBEF;
-    dw EndingSequenceSpritemaps_COMPLET                                  ;8BEBF1;
-    dw $0008                                                             ;8BEBF3;
-    dw EndingSequenceSpritemaps_COMPLETE                                 ;8BEBF5;
-    dw $000F                                                             ;8BEBF7;
-    dw EndingSequenceSpritemaps_COMPLETED                                ;8BEBF9;
-    dw $0008                                                             ;8BEBFB;
-    dw EndingSequenceSpritemaps_COMPLETEDS                               ;8BEBFD;
-    dw $0008                                                             ;8BEBFF;
-    dw EndingSequenceSpritemaps_COMPLETESU                               ;8BEC01;
-    dw $0008                                                             ;8BEC03;
-    dw EndingSequenceSpritemaps_COMPLETESUC                              ;8BEC05;
-    dw $0008                                                             ;8BEC07;
-    dw EndingSequenceSpritemaps_COMPLETESUCC                             ;8BEC09;
-    dw $0008                                                             ;8BEC0B;
-    dw EndingSequenceSpritemaps_COMPLETESUCCE                            ;8BEC0D;
-    dw $0008                                                             ;8BEC0F;
-    dw EndingSequenceSpritemaps_COMPLETESUCCES                           ;8BEC11;
-    dw $0008                                                             ;8BEC13;
-    dw EndingSequenceSpritemaps_COMPLETESUCCESS                          ;8BEC15;
-    dw $0008                                                             ;8BEC17;
-    dw EkndingSequenceSpritemaps_COMPLETESUCCESSF                        ;8BEC19;
-    dw $0008                                                             ;8BEC1B;
-    dw EndingSequenceSpritemaps_COMPLETESUCCESSFU                        ;8BEC1D;
-    dw $0008                                                             ;8BEC1F;
-    dw EndingSequenceSpritemaps_COMPLETESUCCESSFUL                       ;8BEC21;
-    dw $0008                                                             ;8BEC23;
-    dw EndingSequenceSpritemaps_COMPLETESUCCESSFULL                      ;8BEC25;
-    dw $000F                                                             ;8BEC27;
-    dw EndingSequenceSpritemaps_COMPLETESUCCESSFULLY                     ;8BEC29;
+    dw $0008,EndingSequenceSpritemaps_C_ompleted                         ;8BEBD7;
+    dw $0008,EndingSequenceSpritemaps_CO                                 ;8BEBDB;
+    dw $0008,EndingSequenceSpritemaps_COM                                ;8BEBDF;
+    dw $0008,EndingSequenceSpritemaps_COMP                               ;8BEBE3;
+    dw $0008,EndingSequenceSpritemaps_COMPL                              ;8BEBE7;
+    dw $0008,EndingSequenceSpritemaps_COMPLE                             ;8BEBEB;
+    dw $0008,EndingSequenceSpritemaps_COMPLET                            ;8BEBEF;
+    dw $0008,EndingSequenceSpritemaps_COMPLETE                           ;8BEBF3;
+    dw $000F,EndingSequenceSpritemaps_COMPLETED                          ;8BEBF7;
+    dw $0008,EndingSequenceSpritemaps_COMPLETEDS                         ;8BEBFB;
+    dw $0008,EndingSequenceSpritemaps_COMPLETEDSU                        ;8BEBFF;
+    dw $0008,EndingSequenceSpritemaps_COMPLETEDSUC                       ;8BEC03;
+    dw $0008,EndingSequenceSpritemaps_COMPLETEDSUCC                      ;8BEC07;
+    dw $0008,EndingSequenceSpritemaps_COMPLETEDSUCCE                     ;8BEC0B;
+    dw $0008,EndingSequenceSpritemaps_COMPLETEDSUCCES                    ;8BEC0F;
+    dw $0008,EndingSequenceSpritemaps_COMPLETEDSUCCESS                   ;8BEC13;
+    dw $0008,EndingSequenceSpritemaps_COMPLETEDSUCCESSF                  ;8BEC17;
+    dw $0008,EndingSequenceSpritemaps_COMPLETEDSUCCESSFU                 ;8BEC1B;
+    dw $0008,EndingSequenceSpritemaps_COMPLETEDSUCCESSFUL                ;8BEC1F;
+    dw $0008,EndingSequenceSpritemaps_COMPLETEDSUCCESSFULL               ;8BEC23;
+    dw $000F,EndingSequenceSpritemaps_COMPLETEDSUCCESSFULLY              ;8BEC27;
     dw Instruction_CinematicSpriteObject_SpawnClearTime                  ;8BEC2B;
 
 InstList_CinematicSpriteObjects_CompletedSuccessfully_1:
-    dw $0008                                                             ;8BEC2D;
-    dw EndingSequenceSpritemaps_COMPLETESUCCESSFULLY                     ;8BEC2F;
+    dw $0008,EndingSequenceSpritemaps_COMPLETEDSUCCESSFULLY              ;8BEC2D;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEC31;
     dw InstList_CinematicSpriteObjects_CompletedSuccessfully_1           ;8BEC33;
 
 InstList_CinematicSpriteObjects_ClearTime_0:
-    dw $0008                                                             ;8BEC35;
-    dw EndingSequenceSpritemaps_C_lear                                   ;8BEC37;
-    dw $0008                                                             ;8BEC39;
-    dw EndingSequenceSpritemaps_CL                                       ;8BEC3B;
-    dw $0008                                                             ;8BEC3D;
-    dw EndingSequenceSpritemaps_CLE                                      ;8BEC3F;
-    dw $0008                                                             ;8BEC41;
-    dw EndingSequenceSpritemaps_CLEA                                     ;8BEC43;
-    dw $000F                                                             ;8BEC45;
-    dw EndingSequenceSpritemaps_CLEAR                                    ;8BEC47;
-    dw $0008                                                             ;8BEC49;
-    dw EndingSequenceSpritemaps_CLEART                                   ;8BEC4B;
-    dw $0008                                                             ;8BEC4D;
-    dw EndingSequenceSpritemaps_CLEARTI                                  ;8BEC4F;
-    dw $0008                                                             ;8BEC51;
-    dw EndingSequenceSpritemaps_CLEARTIM                                 ;8BEC53;
-    dw $000F                                                             ;8BEC55;
-    dw EndingSequenceSpritemaps_CLEARTIME                                ;8BEC57;
+    dw $0008,EndingSequenceSpritemaps_C_lear                             ;8BEC35;
+    dw $0008,EndingSequenceSpritemaps_CL                                 ;8BEC39;
+    dw $0008,EndingSequenceSpritemaps_CLE                                ;8BEC3D;
+    dw $0008,EndingSequenceSpritemaps_CLEA                               ;8BEC41;
+    dw $000F,EndingSequenceSpritemaps_CLEAR                              ;8BEC45;
+    dw $0008,EndingSequenceSpritemaps_CLEART                             ;8BEC49;
+    dw $0008,EndingSequenceSpritemaps_CLEARTI                            ;8BEC4D;
+    dw $0008,EndingSequenceSpritemaps_CLEARTIM                           ;8BEC51;
+    dw $000F,EndingSequenceSpritemaps_CLEARTIME                          ;8BEC55;
     dw Instruction_CineSpriteObject_SpawnClearTime_Hours_TensDigit       ;8BEC59;
-    dw $0008                                                             ;8BEC5B;
-    dw EndingSequenceSpritemaps_CLEARTIME                                ;8BEC5D;
+    dw $0008,EndingSequenceSpritemaps_CLEARTIME                          ;8BEC5B;
     dw Instruction_CineSpriteObject_SpawnClearTime_Hours_OnesDigit       ;8BEC5F;
-    dw $0008                                                             ;8BEC61;
-    dw EndingSequenceSpritemaps_CLEARTIME                                ;8BEC63;
+    dw $0008,EndingSequenceSpritemaps_CLEARTIME                          ;8BEC61;
     dw Instruction_CinematicSpriteObject_SpawnClearTime_Colon            ;8BEC65;
-    dw $0008                                                             ;8BEC67;
-    dw EndingSequenceSpritemaps_CLEARTIME                                ;8BEC69;
+    dw $0008,EndingSequenceSpritemaps_CLEARTIME                          ;8BEC67;
     dw Inst_CineSpriteObject_SpawnClearTime_Minutes_TensDigit            ;8BEC6B;
-    dw $0008                                                             ;8BEC6D;
-    dw EndingSequenceSpritemaps_CLEARTIME                                ;8BEC6F;
+    dw $0008,EndingSequenceSpritemaps_CLEARTIME                          ;8BEC6D;
     dw Inst_CineSpriteObject_SpawnClearTime_Minutes_OnesDigit            ;8BEC71;
-    dw $0080                                                             ;8BEC73;
-    dw EndingSequenceSpritemaps_CLEARTIME                                ;8BEC75;
+    dw $0080,EndingSequenceSpritemaps_CLEARTIME                          ;8BEC73;
     dw Instruction_CinematicSpriteObject_TransitionToCredits             ;8BEC77;
 
 InstList_CinematicSpriteObjects_ClearTime_1:
-    dw $000F                                                             ;8BEC79;
-    dw EndingSequenceSpritemaps_CLEARTIME                                ;8BEC7B;
+    dw $000F,EndingSequenceSpritemaps_CLEARTIME                          ;8BEC79;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEC7D;
     dw InstList_CinematicSpriteObjects_ClearTime_1                       ;8BEC7F;
 
 InstList_ClearTimeDigit_0:
-    dw $0008                                                             ;8BEC81;
-    dw EndingSequenceSpritemaps_0                                        ;8BEC83;
+    dw $0008,EndingSequenceSpritemaps_0                                  ;8BEC81;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEC85;
     dw InstList_ClearTimeDigit_0                                         ;8BEC87;
 
 InstList_ClearTimeDigit_1:
-    dw $0008                                                             ;8BEC89;
-    dw EndingSequenceSpritemaps_1                                        ;8BEC8B;
+    dw $0008,EndingSequenceSpritemaps_1                                  ;8BEC89;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEC8D;
     dw InstList_ClearTimeDigit_1                                         ;8BEC8F;
 
 InstList_ClearTimeDigit_2:
-    dw $0008                                                             ;8BEC91;
-    dw EndingSequenceSpritemaps_2                                        ;8BEC93;
+    dw $0008,EndingSequenceSpritemaps_2                                  ;8BEC91;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEC95;
     dw InstList_ClearTimeDigit_2                                         ;8BEC97;
 
 InstList_ClearTimeDigit_3:
-    dw $0008                                                             ;8BEC99;
-    dw EndingSequenceSpritemaps_3                                        ;8BEC9B;
+    dw $0008,EndingSequenceSpritemaps_3                                  ;8BEC99;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEC9D;
     dw InstList_ClearTimeDigit_3                                         ;8BEC9F;
 
 InstList_ClearTimeDigit_4:
-    dw $0008                                                             ;8BECA1;
-    dw EndingSequenceSpritemaps_4                                        ;8BECA3;
+    dw $0008,EndingSequenceSpritemaps_4                                  ;8BECA1;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BECA5;
     dw InstList_ClearTimeDigit_4                                         ;8BECA7;
 
 InstList_ClearTimeDigit_5:
-    dw $0008                                                             ;8BECA9;
-    dw EndingSequenceSpritemaps_5                                        ;8BECAB;
+    dw $0008,EndingSequenceSpritemaps_5                                  ;8BECA9;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BECAD;
     dw InstList_ClearTimeDigit_5                                         ;8BECAF;
 
 InstList_ClearTimeDigit_6:
-    dw $0008                                                             ;8BECB1;
-    dw EndingSequenceSpritemaps_6                                        ;8BECB3;
+    dw $0008,EndingSequenceSpritemaps_6                                  ;8BECB1;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BECB5;
     dw InstList_ClearTimeDigit_6                                         ;8BECB7;
 
 InstList_ClearTimeDigit_7:
-    dw $0008                                                             ;8BECB9;
-    dw EndingSequenceSpritemaps_7                                        ;8BECBB;
+    dw $0008,EndingSequenceSpritemaps_7                                  ;8BECB9;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BECBD;
     dw InstList_ClearTimeDigit_7                                         ;8BECBF;
 
 InstList_ClearTimeDigit_8:
-    dw $0008                                                             ;8BECC1;
-    dw EndingSequenceSpritemaps_8                                        ;8BECC3;
+    dw $0008,EndingSequenceSpritemaps_8                                  ;8BECC1;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BECC5;
     dw InstList_ClearTimeDigit_8                                         ;8BECC7;
 
 InstList_ClearTimeDigit_9:
-    dw $0008                                                             ;8BECC9;
-    dw EndingSequenceSpritemaps_9                                        ;8BECCB;
+    dw $0008,EndingSequenceSpritemaps_9                                  ;8BECC9;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BECCD;
     dw InstList_ClearTimeDigit_9                                         ;8BECCF;
 
 InstList_CinematicSpriteObject_ClearTime_Colon:
-    dw $0008                                                             ;8BECD1;
-    dw EndingSequenceSpritemaps_Colon                                    ;8BECD3;
+    dw $0008,EndingSequenceSpritemaps_Colon                              ;8BECD1;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BECD5;
     dw InstList_CinematicSpriteObject_ClearTime_Colon                    ;8BECD7;
 
 InstList_CinematicSpriteObject_CrittersEscape:
-    dw $0001                                                             ;8BECD9;
-    dw EndingSequenceSpritemaps_CrittersEscapePodFrame1                  ;8BECDB;
-    dw $0001                                                             ;8BECDD;
-    dw EndingSequenceSpritemaps_CrittersEscapePodFrame2                  ;8BECDF;
-    dw $0001                                                             ;8BECE1;
-    dw EndingSequenceSpritemaps_CrittersEscapePodFrame3                  ;8BECE3;
-    dw $0001                                                             ;8BECE5;
-    dw EndingSequenceSpritemaps_CrittersEscapePodFrame4                  ;8BECE7;
+    dw $0001,EndingSequenceSpritemaps_CrittersEscapePodFrame1            ;8BECD9;
+    dw $0001,EndingSequenceSpritemaps_CrittersEscapePodFrame2            ;8BECDD;
+    dw $0001,EndingSequenceSpritemaps_CrittersEscapePodFrame3            ;8BECE1;
+    dw $0001,EndingSequenceSpritemaps_CrittersEscapePodFrame4            ;8BECE5;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BECE9;
     dw InstList_CinematicSpriteObject_CrittersEscape                     ;8BECEB;
 
 InstList_CinematicSpriteObject_YellowClouds_Top_TopHalf:
-    dw $0001                                                             ;8BECED;
-    dw EndingSequenceSpritemaps_EndingCutsceneTopCloudsPattern           ;8BECEF;
+    dw $0001,EndingSequenceSpritemaps_EndingCutsceneTopCloudsPattern     ;8BECED;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BECF1;
     dw InstList_CinematicSpriteObject_YellowClouds_Top_TopHalf           ;8BECF3;
 
 InstList_CinematicSpriteObject_YellowClouds_Top_BottomHalf:
-    dw $0001                                                             ;8BECF5;
-    dw EndingSequenceSpritemaps_EndingCutsceneTopCloudsEdge              ;8BECF7;
+    dw $0001,EndingSequenceSpritemaps_EndingCutsceneTopCloudsEdge        ;8BECF5;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BECF9;
     dw InstList_CinematicSpriteObject_YellowClouds_Top_BottomHalf        ;8BECFB;
 
 InstList_CinematicSpriteObject_YellowClouds_Bottom_TopHalf:
-    dw $0001                                                             ;8BECFD;
-    dw EndingSequenceSpritemaps_EndingCutsceneBottomCloudsEdge           ;8BECFF;
+    dw $0001,EndingSequenceSpritemaps_EndingCutsceneBottomCloudsEdge     ;8BECFD;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BED01;
     dw InstList_CinematicSpriteObject_YellowClouds_Bottom_TopHalf        ;8BED03;
 
 InstList_CineSpriteObject_YellowClouds_Bottom_BottomHalf:
-    dw $0001                                                             ;8BED05;
-    dw EndingSequenceSpritemaps_EndingCutsceneBottomCloudsPattern        ;8BED07;
+    dw $0001,EndingSequenceSpritemaps_EndingCutsceneBottomCloudsPattern  ;8BED05;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BED09;
     dw InstList_CineSpriteObject_YellowClouds_Bottom_BottomHalf          ;8BED0B;
 
 InstList_CinematicSpriteObject_YellowClouds_Right:
-    dw $0001                                                             ;8BED0D;
-    dw EndingSequenceSpritemaps_EndingCutsceneRightClouds                ;8BED0F;
+    dw $0001,EndingSequenceSpritemaps_EndingCutsceneRightClouds          ;8BED0D;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BED11;
     dw InstList_CinematicSpriteObject_YellowClouds_Right                 ;8BED13;
 
 InstList_CinematicSpriteObject_YellowClouds_Left:
-    dw $0001                                                             ;8BED15;
-    dw EndingSequenceSpritemaps_EndingCutsceneLeftClouds                 ;8BED17;
+    dw $0001,EndingSequenceSpritemaps_EndingCutsceneLeftClouds           ;8BED15;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BED19;
     dw InstList_CinematicSpriteObject_YellowClouds_Left                  ;8BED1B;
 
 InstList_CinematicSpriteObject_SuitlessSamus_Idle:
-    dw $0080                                                             ;8BED1D;
-    dw EndingSequenceSpritemaps_SuitlessSamusStandingArmsStraight        ;8BED1F;
+    dw $0080,EndingSequenceSpritemaps_SuitlessSamusStandingArmsStraight  ;8BED1D;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BED21;
     dw InstList_CinematicSpriteObject_SuitlessSamus_Idle                 ;8BED23;
 
 InstList_CinematicSpriteObject_SuitlessSamus_Idle_Legs:
-    dw $0080                                                             ;8BED25;
-    dw EndingSequenceSpritemaps_SuitlessSamusLowerBody                   ;8BED27;
+    dw $0080,EndingSequenceSpritemaps_SuitlessSamusLowerBody             ;8BED25;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BED29;
     dw InstList_CinematicSpriteObject_SuitlessSamus_Idle_Legs            ;8BED2B;
 
 InstList_CinematicSpriteObject_SuitlessSamus_LettingHairDown:
-    dw $005A                                                             ;8BED2D;
-    dw EndingSequenceSpritemaps_SuitlessSamusStandingArmsStraight        ;8BED2F;
-    dw $0008                                                             ;8BED31;
-    dw EndingSequenceSpritemaps_SuitlessSamusOpeningHairFrame1           ;8BED33;
-    dw $000A                                                             ;8BED35;
-    dw EndingSequenceSpritemaps_SuitlessSamusOpeningHairFrame2           ;8BED37;
-    dw $000A                                                             ;8BED39;
-    dw EndingSequenceSpritemaps_SuitlessSamusOpeningHairFrame3           ;8BED3B;
-    dw $0020                                                             ;8BED3D;
-    dw EndingSequenceSpritemaps_SuitlessSamusOpeningHairFrame4           ;8BED3F;
-    dw $000A                                                             ;8BED41;
-    dw EndingSequenceSpritemaps_SuitlessSamusOpeningHairFrame5           ;8BED43;
-    dw $0009                                                             ;8BED45;
-    dw EndingSequenceSpritemaps_SuitlessSamusOpeningHairFrame6           ;8BED47;
-    dw $0010                                                             ;8BED49;
-    dw EndingSequenceSpritemaps_SuitlessSamusOpeningHairFrame7           ;8BED4B;
-    dw $000A                                                             ;8BED4D;
-    dw EndingSequenceSpritemaps_SuitlessSamusOpeningHairFrame8           ;8BED4F;
-    dw $0030                                                             ;8BED51;
-    dw EndingSequenceSpritemaps_SuitlessSamusStanding                    ;8BED53;
+    dw $005A,EndingSequenceSpritemaps_SuitlessSamusStandingArmsStraight  ;8BED2D;
+    dw $0008,EndingSequenceSpritemaps_SuitlessSamusOpeningHairFrame1     ;8BED31;
+    dw $000A,EndingSequenceSpritemaps_SuitlessSamusOpeningHairFrame2     ;8BED35;
+    dw $000A,EndingSequenceSpritemaps_SuitlessSamusOpeningHairFrame3     ;8BED39;
+    dw $0020,EndingSequenceSpritemaps_SuitlessSamusOpeningHairFrame4     ;8BED3D;
+    dw $000A,EndingSequenceSpritemaps_SuitlessSamusOpeningHairFrame5     ;8BED41;
+    dw $0009,EndingSequenceSpritemaps_SuitlessSamusOpeningHairFrame6     ;8BED45;
+    dw $0010,EndingSequenceSpritemaps_SuitlessSamusOpeningHairFrame7     ;8BED49;
+    dw $000A,EndingSequenceSpritemaps_SuitlessSamusOpeningHairFrame8     ;8BED4D;
+    dw $0030,EndingSequenceSpritemaps_SuitlessSamusStanding              ;8BED51;
     dw Instruction_CinematicSpriteObject_SpawnSuitlessSamusJump          ;8BED55;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BED57;
 
 InstList_CineSpriteObject_SuitlessSamus_LettingHairDown_Legs:
-    dw $005A                                                             ;8BED59;
-    dw EndingSequenceSpritemaps_SuitlessSamusLowerBody                   ;8BED5B;
-    dw $0008                                                             ;8BED5D;
-    dw EndingSequenceSpritemaps_SuitlessSamusLowerBody                   ;8BED5F;
-    dw $000A                                                             ;8BED61;
-    dw EndingSequenceSpritemaps_SuitlessSamusLowerBody                   ;8BED63;
-    dw $000A                                                             ;8BED65;
-    dw EndingSequenceSpritemaps_SuitlessSamusLowerBody                   ;8BED67;
-    dw $0020                                                             ;8BED69;
-    dw EndingSequenceSpritemaps_SuitlessSamusLowerBody                   ;8BED6B;
-    dw $000A                                                             ;8BED6D;
-    dw EndingSequenceSpritemaps_SuitlessSamusLowerBody                   ;8BED6F;
-    dw $0009                                                             ;8BED71;
-    dw EndingSequenceSpritemaps_SuitlessSamusLowerBody                   ;8BED73;
-    dw $0010                                                             ;8BED75;
-    dw EndingSequenceSpritemaps_SuitlessSamusLowerBody                   ;8BED77;
-    dw $000A                                                             ;8BED79;
-    dw EndingSequenceSpritemaps_SuitlessSamusLowerBody                   ;8BED7B;
+    dw $005A,EndingSequenceSpritemaps_SuitlessSamusLowerBody             ;8BED59;
+    dw $0008,EndingSequenceSpritemaps_SuitlessSamusLowerBody             ;8BED5D;
+    dw $000A,EndingSequenceSpritemaps_SuitlessSamusLowerBody             ;8BED61;
+    dw $000A,EndingSequenceSpritemaps_SuitlessSamusLowerBody             ;8BED65;
+    dw $0020,EndingSequenceSpritemaps_SuitlessSamusLowerBody             ;8BED69;
+    dw $000A,EndingSequenceSpritemaps_SuitlessSamusLowerBody             ;8BED6D;
+    dw $0009,EndingSequenceSpritemaps_SuitlessSamusLowerBody             ;8BED71;
+    dw $0010,EndingSequenceSpritemaps_SuitlessSamusLowerBody             ;8BED75;
+    dw $000A,EndingSequenceSpritemaps_SuitlessSamusLowerBody             ;8BED79;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BED7D;
 
 InstList_CinematicSpriteObject_SuitlessSamus_Jump_0:
-    dw $0030                                                             ;8BED7F;
-    dw EndingSequenceSpritemaps_SuitlessSamusStanding                    ;8BED81;
-    dw $000A                                                             ;8BED83;
-    dw EndingSequenceSpritemaps_SuitlessSamusPreparingToJump             ;8BED85;
+    dw $0030,EndingSequenceSpritemaps_SuitlessSamusStanding              ;8BED7F;
+    dw $000A,EndingSequenceSpritemaps_SuitlessSamusPreparingToJump       ;8BED83;
     dw Instruction_CinematicSpriteObject_MakeEndingSamusJump             ;8BED87;
     dw CinematicSpriteObject_Instruction_PreInstructionY                 ;8BED89;
     dw Inst_CineSpriteObject_SpawnSuitlessSamus_LettingHairDown          ;8BED8B;
 
 InstList_CinematicSpriteObject_SuitlessSamus_Jump_1:
-    dw $0030                                                             ;8BED8D;
-    dw EndingSequenceSpritemaps_SuitlessSamusJumping                     ;8BED8F;
+    dw $0030,EndingSequenceSpritemaps_SuitlessSamusJumping               ;8BED8D;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BED91;
     dw InstList_CinematicSpriteObject_SuitlessSamus_Jump_1               ;8BED93;
 
 InstList_Samus_Jump_Falling:
-    dw $000A                                                             ;8BED95;
-    dw EndingSequenceSpritemaps_SamusFalling                             ;8BED97;
+    dw $000A,EndingSequenceSpritemaps_SamusFalling                       ;8BED95;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BED99;
     dw InstList_Samus_Jump_Falling                                       ;8BED9B;
 
 InstList_Samus_Jump_Landed:
-    dw $000A                                                             ;8BED9D;
-    dw EndingSequenceSpritemaps_SamusLanding                             ;8BED9F;
-    dw $0010                                                             ;8BEDA1;
-    dw EndingSequenceSpritemaps_SamusLanded                              ;8BEDA3;
-    dw $0030                                                             ;8BEDA5;
-    dw EndingSequenceSpritemaps_SamusShooting                            ;8BEDA7;
+    dw $000A,EndingSequenceSpritemaps_SamusLanding                       ;8BED9D;
+    dw $0010,EndingSequenceSpritemaps_SamusLanded                        ;8BEDA1;
+    dw $0030,EndingSequenceSpritemaps_SamusShooting                      ;8BEDA5;
     dw Instruction_CinematicSpriteObject_SamusShootsScreen               ;8BEDA9;
-    dw $0080                                                             ;8BEDAB;
-    dw EndingSequenceSpritemaps_SamusShooting                            ;8BEDAD;
+    dw $0080,EndingSequenceSpritemaps_SamusShooting                      ;8BEDAB;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BEDAF;
 
 InstList_CinematicSpriteObject_SuitedSamus_Idle_Body:
-    dw $000A                                                             ;8BEDB1;
-    dw EndingSequenceSpritemaps_LargeSamusFromEndingStanding             ;8BEDB3;
+    dw $000A,EndingSequenceSpritemaps_LargeSamusFromEndingStanding       ;8BEDB1;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEDB5;
     dw InstList_CinematicSpriteObject_SuitedSamus_Idle_Body              ;8BEDB7;
 
 InstList_CinematicSpriteObject_SuitedSamus_Idle_Head_Helmet:
-    dw $000A                                                             ;8BEDB9;
-    dw EndingSequenceSpritemaps_SamusHeadWithHelmetFromEnding            ;8BEDBB;
+    dw $000A,EndingSequenceSpritemaps_SamusHeadWithHelmetFromEnding      ;8BEDB9;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEDBD;
     dw InstList_CinematicSpriteObject_SuitedSamus_Idle_Head_Helmet       ;8BEDBF;
 
 InstList_CinematicSpriteObject_SuitedSamus_Head:
-    dw $000A                                                             ;8BEDC1;
-    dw EndingSequenceSpritemaps_SamusHeadFromEndingFrame1                ;8BEDC3;
+    dw $000A,EndingSequenceSpritemaps_SamusHeadFromEndingFrame1          ;8BEDC1;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEDC5;
     dw InstList_CinematicSpriteObject_SuitedSamus_Head                   ;8BEDC7;
 
 InstList_CinematicSpriteObject_SuitedSamus_ThumbsUp_Body:
-    dw $0040                                                             ;8BEDC9;
-    dw EndingSequenceSpritemaps_LargeSamusFromEndingStanding             ;8BEDCB;
-    dw $0108                                                             ;8BEDCD;
-    dw EndingSequenceSpritemaps_HeadlessArmlessSuitedSamus               ;8BEDCF;
+    dw $0040,EndingSequenceSpritemaps_LargeSamusFromEndingStanding       ;8BEDC9;
+    dw $0108,EndingSequenceSpritemaps_HeadlessArmlessSuitedSamus         ;8BEDCD;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BEDD1;
 
 InstList_CinematicSpriteObject_SuitedSamus_ThumbsUp_Arm:
-    dw $0040                                                             ;8BEDD3;
-    dw $0000                                                             ;8BEDD5;
-    dw $0008                                                             ;8BEDD7;
-    dw EndingSequenceSpritemaps_SamusArmFromEndingFrame1                 ;8BEDD9;
-    dw $0008                                                             ;8BEDDB;
-    dw EndingSequenceSpritemaps_SamusArmFromEndingFrame2                 ;8BEDDD;
-    dw $0005                                                             ;8BEDDF;
-    dw EndingSequenceSpritemaps_SamusArmFromEndingFrame3                 ;8BEDE1;
-    dw $0004                                                             ;8BEDE3;
-    dw EndingSequenceSpritemaps_SamusArmFromEndingFrame4                 ;8BEDE5;
-    dw $0003                                                             ;8BEDE7;
-    dw EndingSequenceSpritemaps_SamusArmFromEndingFrame5                 ;8BEDE9;
-    dw $0020                                                             ;8BEDEB;
-    dw EndingSequenceSpritemaps_SamusArmFromEndingFrame6                 ;8BEDED;
-    dw $0008                                                             ;8BEDEF;
-    dw EndingSequenceSpritemaps_SamusArmFromEndingFrame7                 ;8BEDF1;
-    dw $0040                                                             ;8BEDF3;
-    dw EndingSequenceSpritemaps_SamusArmFromEndingFrame8                 ;8BEDF5;
-    dw $0005                                                             ;8BEDF7;
-    dw EndingSequenceSpritemaps_SamusArmFromEndingFrame6                 ;8BEDF9;
-    dw $0005                                                             ;8BEDFB;
-    dw EndingSequenceSpritemaps_SamusArmFromEndingFrame5                 ;8BEDFD;
-    dw $0005                                                             ;8BEDFF;
-    dw EndingSequenceSpritemaps_SamusArmFromEndingFrame4                 ;8BEE01;
-    dw $0005                                                             ;8BEE03;
-    dw EndingSequenceSpritemaps_SamusArmFromEndingFrame3                 ;8BEE05;
-    dw $0070                                                             ;8BEE07;
-    dw EndingSequenceSpritemaps_SamusArmFromEndingFrame2                 ;8BEE09;
+    dw $0040,$0000                                                       ;8BEDD3;
+    dw $0008,EndingSequenceSpritemaps_SamusArmFromEndingFrame1           ;8BEDD7;
+    dw $0008,EndingSequenceSpritemaps_SamusArmFromEndingFrame2           ;8BEDDB;
+    dw $0005,EndingSequenceSpritemaps_SamusArmFromEndingFrame3           ;8BEDDF;
+    dw $0004,EndingSequenceSpritemaps_SamusArmFromEndingFrame4           ;8BEDE3;
+    dw $0003,EndingSequenceSpritemaps_SamusArmFromEndingFrame5           ;8BEDE7;
+    dw $0020,EndingSequenceSpritemaps_SamusArmFromEndingFrame6           ;8BEDEB;
+    dw $0008,EndingSequenceSpritemaps_SamusArmFromEndingFrame7           ;8BEDEF;
+    dw $0040,EndingSequenceSpritemaps_SamusArmFromEndingFrame8           ;8BEDF3;
+    dw $0005,EndingSequenceSpritemaps_SamusArmFromEndingFrame6           ;8BEDF7;
+    dw $0005,EndingSequenceSpritemaps_SamusArmFromEndingFrame5           ;8BEDFB;
+    dw $0005,EndingSequenceSpritemaps_SamusArmFromEndingFrame4           ;8BEDFF;
+    dw $0005,EndingSequenceSpritemaps_SamusArmFromEndingFrame3           ;8BEE03;
+    dw $0070,EndingSequenceSpritemaps_SamusArmFromEndingFrame2           ;8BEE07;
     dw Instruction_CinematicSpriteObject_SpawnSuitedSamusJump            ;8BEE0B;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BEE0D;
 
 InstList_CineSpriteObject_SuitedSamus_ThumbsUp_Head_Helmet:
-    dw $0148                                                             ;8BEE0F;
-    dw EndingSequenceSpritemaps_SamusHeadWithHelmetFromEnding            ;8BEE11;
+    dw $0148,EndingSequenceSpritemaps_SamusHeadWithHelmetFromEnding      ;8BEE0F;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BEE13;
 
 InstList_CinematicSpriteObject_SuitedSamus_ThumbsUp_Head:
-    dw $0080                                                             ;8BEE15;
-    dw EndingSequenceSpritemaps_SamusHeadFromEndingFrame1                ;8BEE17;
-    dw $0005                                                             ;8BEE19;
-    dw EndingSequenceSpritemaps_SamusHeadFromEndingFrame2                ;8BEE1B;
-    dw $0005                                                             ;8BEE1D;
-    dw EndingSequenceSpritemaps_SamusHeadFromEndingFrame3                ;8BEE1F;
-    dw $00BE                                                             ;8BEE21;
-    dw EndingSequenceSpritemaps_SamusHeadFromEndingFrame4                ;8BEE23;
+    dw $0080,EndingSequenceSpritemaps_SamusHeadFromEndingFrame1          ;8BEE15;
+    dw $0005,EndingSequenceSpritemaps_SamusHeadFromEndingFrame2          ;8BEE19;
+    dw $0005,EndingSequenceSpritemaps_SamusHeadFromEndingFrame3          ;8BEE1D;
+    dw $00BE,EndingSequenceSpritemaps_SamusHeadFromEndingFrame4          ;8BEE21;
     dw CinematicSpriteObject_Instruction_Delete                          ;8BEE25;
 
 InstList_CinematicSpriteObject_SuitedSamus_Jump_Body_0:
     dw Instruction_CineSpriteObject_PositionSuitedHeadToPrepareJump      ;8BEE27;
-    dw $000A                                                             ;8BEE29;
-    dw EndingSequenceSpritemaps_LargeSamusFromEndingPreparingToJump      ;8BEE2B;
+    dw $000A,EndingSequenceSpritemaps_LargeSamusFromEndingPreparingToJump ;8BEE29;
     dw Instruction_CinematicSpriteObject_PositionSamusHeadToJump         ;8BEE2D;
     dw Instruction_CinematicSpriteObject_MakeEndingSamusJump             ;8BEE2F;
     dw CinematicSpriteObject_Instruction_PreInstructionY                 ;8BEE31;
     dw Inst_CineSpriteObject_SpawnSuitlessSamus_LettingHairDown          ;8BEE33;
 
 InstList_CinematicSpriteObject_SuitedSamus_Jump_Body_1:
-    dw $0005                                                             ;8BEE35;
-    dw EndingSequenceSpritemaps_LargeSamusFromEndingJumping              ;8BEE37;
+    dw $0005,EndingSequenceSpritemaps_LargeSamusFromEndingJumping        ;8BEE35;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEE39;
     dw InstList_CinematicSpriteObject_SuitedSamus_Jump_Body_1            ;8BEE3B;
 
 InstList_CineSpriteObject_SuitedSamus_Jump_Head_Helmet_0:
-    dw $000A                                                             ;8BEE3D;
-    dw EndingSequenceSpritemaps_LargeSamusHelmetFromEndingFrame1         ;8BEE3F;
+    dw $000A,EndingSequenceSpritemaps_LargeSamusHelmetFromEndingFrame1   ;8BEE3D;
     dw CinematicSpriteObject_Instruction_PreInstructionY                 ;8BEE41;
     dw PreInst_CinematicSpriteObject_SuitedSamus_Jump_Head_Jumping       ;8BEE43;
 
 InstList_CineSpriteObject_SuitedSamus_Jump_Head_Helmet_1:
-    dw $0005                                                             ;8BEE45;
-    dw EndingSequenceSpritemaps_LargeSamusHelmetFromEndingFrame2         ;8BEE47;
+    dw $0005,EndingSequenceSpritemaps_LargeSamusHelmetFromEndingFrame2   ;8BEE45;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEE49;
     dw InstList_CineSpriteObject_SuitedSamus_Jump_Head_Helmet_1          ;8BEE4B;
 
 InstList_CinematicSpriteObject_SuitedSamus_Jump_Head_0:
-    dw $000A                                                             ;8BEE4D;
-    dw EndingSequenceSpritemaps_JumpingSamusHeadFromEnding               ;8BEE4F;
+    dw $000A,EndingSequenceSpritemaps_JumpingSamusHeadFromEnding         ;8BEE4D;
     dw CinematicSpriteObject_Instruction_PreInstructionY                 ;8BEE51;
     dw PreInst_CinematicSpriteObject_SuitedSamus_Jump_Head_Jumping       ;8BEE53;
 
 InstList_CinematicSpriteObject_SuitedSamus_Jump_Head_1:
-    dw $0005                                                             ;8BEE55;
-    dw EndingSequenceSpritemaps_JumpingSamusHeadFromEnding               ;8BEE57;
+    dw $0005,EndingSequenceSpritemaps_JumpingSamusHeadFromEnding         ;8BEE55;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEE59;
     dw InstList_CinematicSpriteObject_SuitedSamus_Jump_Head_1            ;8BEE5B;
 
 InstList_CinematicSpriteObject_SuperMetroidIcon_S_TopHalf:
-    dw $000A                                                             ;8BEE5D;
-    dw EndingSequenceSpritemaps_ScrewAttackSymbolUpperPart               ;8BEE5F;
+    dw $000A,EndingSequenceSpritemaps_ScrewAttackSymbolUpperPart         ;8BEE5D;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEE61;
     dw InstList_CinematicSpriteObject_SuperMetroidIcon_S_TopHalf         ;8BEE63;
 
 InstList_CinematicSpriteObject_SuperMetroidIcon_S_BottomHalf:
-    dw $000A                                                             ;8BEE65;
-    dw EndingSequenceSpritemaps_ScrewAttackSymbolLowerPart               ;8BEE67;
+    dw $000A,EndingSequenceSpritemaps_ScrewAttackSymbolLowerPart         ;8BEE65;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEE69;
     dw InstList_CinematicSpriteObject_SuperMetroidIcon_S_BottomHalf      ;8BEE6B;
 
 InstList_CineSpriteObject_SuperMetroidIcon_Circle_TopHalf_0:
-    dw $0060,$0000,$0005                                                 ;8BEE6D;
-    dw EndingSequenceSpritemaps_ScrewAttackSymbolRightWrapFrame1         ;8BEE73;
-    dw $0005                                                             ;8BEE75;
-    dw EndingSequenceSpritemaps_ScrewAttackSymbolRightWrapFrame2         ;8BEE77;
-    dw $0040                                                             ;8BEE79;
-    dw EndingSequenceSpritemaps_ScrewAttackSymbolRightWrapFrame3         ;8BEE7B;
+    dw $0060,$0000                                                       ;8BEE6D;
+    dw $0005,EndingSequenceSpritemaps_ScrewAttackSymbolRightWrapFrame1   ;8BEE71;
+    dw $0005,EndingSequenceSpritemaps_ScrewAttackSymbolRightWrapFrame2   ;8BEE75;
+    dw $0040,EndingSequenceSpritemaps_ScrewAttackSymbolRightWrapFrame3   ;8BEE79;
     dw Instruction_GreyOutSuperMetroidIcon                               ;8BEE7D;
 
 InstList_CineSpriteObject_SuperMetroidIcon_Circle_TopHalf_1:
-    dw $0005                                                             ;8BEE7F;
-    dw EndingSequenceSpritemaps_ScrewAttackSymbolRightWrapFrame3         ;8BEE81;
+    dw $0005,EndingSequenceSpritemaps_ScrewAttackSymbolRightWrapFrame3   ;8BEE7F;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEE83;
     dw InstList_CineSpriteObject_SuperMetroidIcon_Circle_TopHalf_1       ;8BEE85;
 
 InstList_CineSpriteObject_SuperMetroidIcon_Circle_BotHalf_0:
-    dw $0060,$0000,$0005                                                 ;8BEE87;
-    dw EndingSequenceSpritemaps_ScrewAttackSymbolLeftWrapFrame1          ;8BEE8D;
-    dw $0005                                                             ;8BEE8F;
-    dw EndingSequenceSpritemaps_ScrewAttackSymbolLeftWrapFrame2          ;8BEE91;
+    dw $0060,$0000                                                       ;8BEE87;
+    dw $0005,EndingSequenceSpritemaps_ScrewAttackSymbolLeftWrapFrame1    ;8BEE8B;
+    dw $0005,EndingSequenceSpritemaps_ScrewAttackSymbolLeftWrapFrame2    ;8BEE8F;
 
 InstList_CineSpriteObject_SuperMetroidIcon_Circle_BotHalf_1:
-    dw $0005                                                             ;8BEE93;
-    dw EndingSequenceSpritemaps_ScrewAttackSymbolLeftWrapFrame3          ;8BEE95;
+    dw $0005,EndingSequenceSpritemaps_ScrewAttackSymbolLeftWrapFrame3    ;8BEE93;
     dw CinematicSpriteObject_Instruction_GotoY                           ;8BEE97;
     dw InstList_CineSpriteObject_SuperMetroidIcon_Circle_BotHalf_1       ;8BEE99;
 
@@ -15066,6 +14892,7 @@ CinematicBGObjectDefinitions_PostCredits_ItemPercentage:
     dw CinematicBGObjectInstLists_Ending_ItemPercentage                  ;8BF752;
 
 Debug_VersionString:
+; '02.02.21.30'
     db $30,$32,$2E,$30,$32,$2E,$32,$31,$2E,$33,$30,$00                   ;8BF754;
 
 Freespace_Bank8B_F760:                                                   ;8BF760;

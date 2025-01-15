@@ -1706,10 +1706,8 @@ Spawn_PowerBombExplosion:
 
 
 InstList_PowerBombExplosion_Window2_LeftPosition:
-    dw Instruction_HDMAObject_HDMATableBank                              ;888ACE;
-    db $89                                                               ;888AD0;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;888AD1;
-    db $7E                                                               ;888AD3;
+    dw Instruction_HDMAObject_HDMATableBank : db $89                     ;888ACE;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;888AD1;
     dw Instruction_HDMAObject_CallExternalFunctionInY                    ;888AD4;
     dl PowerBombExplosion_Setup1_PreExplosion_White                      ;888AD6;
     dw Instruction_HDMAObject_PreInstructionInY                          ;888AD9;
@@ -1799,10 +1797,8 @@ PowerBombExplosion_ClearnUp_TryCrystalFlash:
 
 
 InstList_PowerBombExplosion_Window2_RightPosition:
-    dw Instruction_HDMAObject_HDMATableBank                              ;888B80;
-    db $89                                                               ;888B82;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;888B83;
-    db $7E                                                               ;888B85;
+    dw Instruction_HDMAObject_HDMATableBank : db $89                     ;888B80;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;888B83;
     dw Instruction_HDMAObject_PreInstructionInY                          ;888B86;
     dl PreInstruction_PowerBombExplosion_SetLayerBlendingWindow2         ;888B88;
     dw Instruction_HDMAObject_Sleep                                      ;888B8B;
@@ -2128,19 +2124,48 @@ Calculate_PowerBombExplo_HDMADataTables_Scaled_RightOfScreen:
     RTS                                                                  ;888D84;
 
 
-PowerBombExplosion_Colors_red:
+PowerBombExplosion_Colors:
+; Indexed by [power bomb explosion radius] / 800h
+; Red, green, blue. Range 0..1Fh
+; Yellow section
+  .red
     db $0E                                                               ;888D85;
-
-PowerBombExplosion_Colors_green:
-    db $0E                                                               ;888D86;
-
-PowerBombExplosion_Colors_blue:
-    db $0A,$0F,$0F,$09,$10,$10,$08,$11,$11,$07,$12,$12,$06,$13,$13,$05   ;888D87;
-    db $14,$14,$04,$15,$15,$03,$16,$16,$02,$17,$17,$01,$18,$18,$00,$19   ;888D97;
-    db $19,$00,$1A,$1A,$00,$1A,$1A,$00,$1A,$1A,$1A,$1A,$1A,$1A,$1B,$1B   ;888DA7;
-    db $1B,$1B,$1B,$1B,$1C,$1C,$1C,$1B,$1B,$1B,$1A,$1A,$1A,$1A,$18,$18   ;888DB7;
-    db $1A,$17,$17,$19,$16,$16,$18,$15,$15,$17,$15,$15,$16,$14,$14,$15   ;888DC7;
-    db $13,$13,$12,$10,$10,$12,$0E,$0E,$12,$0D,$0D,$12,$0D,$0D           ;888DD7;
+  .green
+    db     $0E                                                           ;888D86;
+  .blue
+    db         $0A                                                       ;888D87;
+    db $0F,$0F,$09
+    db $10,$10,$08
+    db $11,$11,$07
+    db $12,$12,$06
+    db $13,$13,$05
+    db $14,$14,$04
+    db $15,$15,$03
+    db $16,$16,$02
+    db $17,$17,$01
+    db $18,$18,$00
+    db $19,$19,$00
+    db $1A,$1A,$00
+    db $1A,$1A,$00
+; White section
+    db $1A,$1A,$1A
+    db $1A,$1A,$1A
+    db $1B,$1B,$1B
+    db $1B,$1B,$1B
+    db $1C,$1C,$1C
+    db $1B,$1B,$1B
+    db $1A,$1A,$1A
+    db $1A,$18,$18
+    db $1A,$17,$17
+    db $19,$16,$16
+    db $18,$15,$15
+    db $17,$15,$15
+    db $16,$14,$14
+    db $15,$13,$13
+    db $12,$10,$10
+    db $12,$0E,$0E
+    db $12,$0D,$0D
+    db $12,$0D,$0D
 
 PowerBombExplosion_InitialRadiusSpeed:
     dw $0000                                                             ;888DE5;
@@ -2543,22 +2568,52 @@ UNUSED_CalPBRelatedHDMADataTables_Scaled_OnScreen_88903A:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-PowerBomb_PreExplosion_Colors_red:
+PowerBomb_PreExplosion_Colors:
+; Indexed by [power bomb pre-explosion radius] / 800h
+; Red, green, blue. Range 0..1Fh
+; White section
+  .red
     db $10                                                               ;889079;
-
-PowerBomb_PreExplosion_Colors_green:
+  .green
     db $10                                                               ;88907A;
-
-PowerBomb_PreExplosion_Colors_blue:
-    db $10,$04,$04,$04,$06,$06,$06,$08,$08,$08,$0A,$0A,$0A,$0C,$0C,$0C   ;88907B;
-    db $0E,$0E,$0A,$10,$10,$08,$12,$12,$08,$14,$14,$08,$16,$16,$08,$18   ;88908B;
-    db $18,$08,$1A,$1A,$0A,$18,$18,$08,$16,$16,$06,$14,$14,$04           ;88909B;
+  .blue
+    db $10                                                               ;88907B;
+    db $04,$04,$04
+    db $06,$06,$06
+    db $08,$08,$08
+    db $0A,$0A,$0A
+    db $0C,$0C,$0C
+    db $0E,$0E,$0A
+; Yellow section
+    db $10,$10,$08
+    db $12,$12,$08
+    db $14,$14,$08
+    db $16,$16,$08
+    db $18,$18,$08
+    db $1A,$1A,$0A
+    db $18,$18,$08
+    db $16,$16,$06
+    db $14,$14,$04
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_PowerBomb_ExplosionRelated_Colors_8890A9:
-    db $13,$13,$0F,$11,$11,$0E,$0F,$0F,$0D,$0D,$0D,$0C,$0B,$0B,$0B,$0A   ;8890A9;
-    db $0A,$0A,$09,$09,$09,$08,$08,$08,$07,$07,$07,$06,$06,$06,$05,$05   ;8890B9;
-    db $05,$04,$04,$04,$03,$03,$03,$02,$02,$02,$01,$01,$01,$00,$00,$00   ;8890C9;
+; These might have been used for the after-glow in earlier development
+    db $13,$13,$0F                                                       ;8890A9;
+    db $11,$11,$0E
+    db $0F,$0F,$0D
+    db $0D,$0D,$0C
+    db $0B,$0B,$0B
+    db $0A,$0A,$0A
+    db $09,$09,$09
+    db $08,$08,$08
+    db $07,$07,$07
+    db $06,$06,$06
+    db $05,$05,$05
+    db $04,$04,$04
+    db $03,$03,$03
+    db $02,$02,$02
+    db $01,$01,$01
+    db $00,$00,$00
 
 UNUSED_PowerBombColors_8890D9:
     dw $0001                                                             ;8890D9;
@@ -2780,6 +2835,9 @@ PreInstruction_PowerBombExplosion_2_PreExplosion_Yellow:
 
 
 PowerBomb_Explosion_ShapeDefinitionTiles_PreScaled:
+; Defines the shape of (the bottom) half of a power bomb explosion
+; Each byte defines the width of the power bomb explosion for that pixel-row, C0h pixel-rows total
+; One line per frame of explosion
     db $7F,$7F,$7F,$7F,$7F,$7F,$7F,$7F,$7F,$7F,$7F,$7F,$7F,$7E,$7E,$7E   ;889246;
     db $7E,$7D,$7D,$7D,$7D,$7D,$7C,$7C,$7B,$7B,$7B,$7A,$7A,$7A,$79,$79   ;889256;
     db $78,$78,$77,$77,$76,$76,$75,$75,$74,$74,$73,$72,$71,$71,$70,$6F   ;889266;
@@ -2986,6 +3044,9 @@ PowerBomb_Explosion_ShapeDefinitionTiles_PreScaled:
     db $62,$5F,$5C,$58,$55,$50,$4D,$49,$44,$3E,$3A,$34,$2C,$24,$19,$00   ;889EF6;
 
 PowerBomb_PreExplosion_ShapeDefinitionTables_PreScaled:
+; Defines the shape of (the bottom) half of a power bomb explosion
+; Each byte defines the width of the power bomb explosion for that pixel-row, C0h pixel-rows total
+; One line per frame of explosion
     db $91,$91,$91,$91,$91,$91,$91,$91,$91,$91,$90,$90,$90,$90,$90,$90   ;889F06;
     db $90,$8F,$8F,$8F,$8F,$8F,$8E,$8E,$8E,$8E,$8D,$8C,$8C,$8C,$8C,$8B   ;889F16;
     db $8B,$8B,$8A,$8A,$89,$89,$88,$88,$87,$87,$86,$86,$85,$84,$84,$83   ;889F26;
@@ -3036,6 +3097,9 @@ PowerBomb_PreExplosion_ShapeDefinitionTables_PreScaled:
     db $62,$5F,$5C,$58,$55,$50,$4D,$49,$44,$3E,$3A,$34,$2C,$24,$19,$00   ;88A1F6;
 
 PowerBomb_ShapeDefinitionTiles_Optimization_A206:
+; PJ believes this padding exists purely because of the "optimisation" done in the
+; "calculate power bomb explosion HDMA data tables - stage 1/3" routines ($8CC6/$8D04/$8D46)
+; where Y starts at 60h so that it can be checked against 80h via inspecting the negative flag.
     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;88A206;
     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;88A216;
 
@@ -3046,10 +3110,14 @@ PowerBomb_ShapeDefinitionTiles_Optimization_A226:
     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;88A256;
 
 PowerBombExplosion_ShapeDefinitionTable_Unscaled_width:
+; This table gives the shape of (the bottom) half of a power bomb explosion with X radius = 100h (Y radius C0h),
+; starting from the bottom and ending at the centre
+; Width
     db $00,$0C,$19,$25,$31,$3E,$4A,$56,$61,$6D,$78,$83,$8E,$98,$A2,$AB   ;88A266;
     db $B5,$BD,$C5,$CD,$D4,$DB,$E1,$E7,$EC,$F1,$F4,$F8,$FB,$FD,$FE,$FF   ;88A276;
 
 PowerBombExplosion_ShapeDefinitionTable_Unscaled_topOffset:
+; Top offset (previous entry used as bottom offset)
     db $BF,$BF,$BE,$BD,$BA,$B8,$B6,$B2,$AF,$AB,$A6,$A2,$9C,$96,$90,$8A   ;88A286;
     db $84,$7D,$75,$6E,$66,$5E,$56,$4D,$45,$3C,$33,$2A,$20,$17,$0D,$04   ;88A296;
 
@@ -3066,10 +3134,8 @@ Spawn_CrystalFlash_HDMAObjects:
 
 
 InstList_CrystalFlash_Window2_LeftPosition:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88A2BD;
-    db $89                                                               ;88A2BF;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88A2C0;
-    db $7E                                                               ;88A2C2;
+    dw Instruction_HDMAObject_HDMATableBank : db $89                     ;88A2BD;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88A2C0;
     dw Instruction_HDMAObject_CallExternalFunctionInY                    ;88A2C3;
     dl CrystalFlash_Setup_1                                              ;88A2C5;
     dw Instruction_HDMAObject_CallExternalFunctionInY                    ;88A2C8;
@@ -3120,10 +3186,8 @@ CrystalFlash_Cleanup:
 
 
 InstList_CrystalFlash_Window2_RightPosition:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88A32A;
-    db $89                                                               ;88A32C;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88A32D;
-    db $7E                                                               ;88A32F;
+    dw Instruction_HDMAObject_HDMATableBank : db $89                     ;88A32A;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88A32D;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88A330;
     dl PreInstruction_CrystalFlash_CustomLayerBlendingWindow2Config      ;88A332;
     dw Instruction_HDMAObject_Sleep                                      ;88A335;
@@ -3976,17 +4040,33 @@ Damage_Samus_IfSheIsInTheTopRow:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Table_88A8DA:
+; Looks like the format of FXType_22_RepeatingBG3StripsTable below
     dw $0000,$0010,$0020,$0020,$0010,$0030,$0040                         ;88A8DA;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 FXType_22_RepeatingBG3StripsTable:
-    dw $0000,$0010,$0020,$0030,$0010,$0030,$0040,$0010                   ;88A8E8;
-    dw $0040,$0300,$0010,$0050,$0310,$0010,$0060,$0330                   ;88A8F8;
-    dw $0010,$0070,$0340,$0010,$0080,$03A0,$0010,$0090                   ;88A908;
-    dw $03B0,$0010,$00A0,$03D0,$0010,$00B0,$03E0,$0010                   ;88A918;
-    dw $00C0,$04E0,$0020,$00D0,$0500,$0020,$00F0,$0600                   ;88A928;
+; This table defines sections of repeating strips of BG3
+;        _______________ Section top position
+;       |      _________ Strip height
+;       |     |      ___ BG3 tilemap Y position
+;       |     |     |
+    dw $0000,$0010,$0020                                                 ;88A8E8;
+    dw $0030,$0010,$0030
+    dw $0040,$0010,$0040
+    dw $0300,$0010,$0050
+    dw $0310,$0010,$0060
+    dw $0330,$0010,$0070
+    dw $0340,$0010,$0080
+    dw $03A0,$0010,$0090
+    dw $03B0,$0010,$00A0
+    dw $03D0,$0010,$00B0
+    dw $03E0,$0010,$00C0
+    dw $04E0,$0020,$00D0
+    dw $0500,$0020,$00F0
+    dw $0600
 
 FXType_22_BG3XScrollHDMAData:
+; Looks like only the first line is used (see PreInstruction_FXType_22_BG3XScroll)
     dw $0000,$0001,$0002,$0003,$0003,$0002,$0001,$0000                   ;88A938;
     dw $0000,$FFFF,$FFFE,$FFFD,$FFFD,$FFFE,$FFFF,$0000                   ;88A948;
     dw $0000,$0001,$0002,$0003,$0003,$0002,$0001,$0000                   ;88A958;
@@ -4057,74 +4137,59 @@ RTL_88AD38:
 
 
 InstList_FXType_22_BG1XScroll_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88AD39;
-    db $7E                                                               ;88AD3B;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88AD3C;
-    db $7E                                                               ;88AD3E;
+    dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88AD39;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88AD3C;
     dw Instruction_HDMAObjectPhaseIncreaseTimer_1                        ;88AD3F;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88AD41;
     dl RTL_88AD38                                                        ;88AD43;
 
 InstList_FXType_22_BG1XScroll_1:
-    dw $7000                                                             ;88AD46;
-    dw $9F02                                                             ;88AD48;
+    dw $7000,$9F02                                                       ;88AD46; $7E9F02
     dw Instruction_HDMAObject_GotoY                                      ;88AD4A;
     dw InstList_FXType_22_BG1XScroll_1                                   ;88AD4C;
 
 InstList_FXType_22_BG3XScroll_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88AD4E;
-    db $7E                                                               ;88AD50;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88AD51;
-    db $7E                                                               ;88AD53;
+    dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88AD4E;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88AD51;
     dw Instruction_HDMAObjectPhaseIncreaseTimer_1                        ;88AD54;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88AD56;
     dl PreInstruction_FXType_22_BG3XScroll                               ;88AD58;
 
 InstList_FXType_22_BG3XScroll_1:
-    dw $7000                                                             ;88AD5B;
-    dw $9E02                                                             ;88AD5D;
+    dw $7000,$9E02                                                       ;88AD5B; $7E9E02
     dw Instruction_HDMAObject_GotoY                                      ;88AD5F;
     dw InstList_FXType_22_BG3XScroll_1                                   ;88AD61;
 
 InstList_FXType_22_BG3YScroll_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88AD63;
-    db $7E                                                               ;88AD65;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88AD66;
-    db $7E                                                               ;88AD68;
+    dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88AD63;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88AD66;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88AD69;
     dl PreInstruction_FXType_22_BG3Yscroll                               ;88AD6B;
 
 InstList_FXType_22_BG3YScroll_1:
-    dw $7000                                                             ;88AD6E;
-    dw $9C00                                                             ;88AD70;
+    dw $7000,$9C00                                                       ;88AD6E; $7E9C00
     dw Instruction_HDMAObject_GotoY                                      ;88AD72;
     dw InstList_FXType_22_BG3YScroll_1                                   ;88AD74;
 
 InstList_ScrollingSkyLand_BG2XScroll_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88AD76;
-    db $7E                                                               ;88AD78;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88AD79;
-    db $7E                                                               ;88AD7B;
+    dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88AD76;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88AD79;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88AD7C;
     dl PreInstruction_ScrollingSkyLand_BG2XScroll                        ;88AD7E;
 
 InstList_ScrollingSkyLand_BG2XScroll_1:
-    dw $7000                                                             ;88AD81;
-    dw $9F00                                                             ;88AD83;
+    dw $7000,$9F00                                                       ;88AD81; $7E9F00
     dw Instruction_HDMAObject_GotoY                                      ;88AD85;
     dw InstList_ScrollingSkyLand_BG2XScroll_1                            ;88AD87;
 
 InstList_ScrollingSkyOcean_BG2XScroll_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88AD89;
-    db $7E                                                               ;88AD8B;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88AD8C;
-    db $7E                                                               ;88AD8E;
+    dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88AD89;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88AD8C;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88AD8F;
     dl PreInstruction_ScrollingSkyOcean_BG2XScroll                       ;88AD91;
 
 InstList_ScrollingSkyOcean_BG2XScroll_1:
-    dw $7000                                                             ;88AD94;
-    dw $9F00                                                             ;88AD96;
+    dw $7000,$9F00                                                       ;88AD94; $7E9F00
     dw Instruction_HDMAObject_GotoY                                      ;88AD98;
     dw InstList_ScrollingSkyOcean_BG2XScroll_1                           ;88AD9A;
 
@@ -4285,67 +4350,48 @@ Handle_ScrollingSky_BG2XScroll_HDMATables:
     RTL                                                                  ;88AEC0;
 
 
-ScrollingSky_ScrollingTable_topPosition:
+ScrollingSky_ScrollingTable:
+; Scrolling sky scroll table
+;                        ________________ Top position of scrolling section
+;                       |     ___________ Scroll subspeed
+;                       |    |     ______ Scroll speed
+;                       |    |    |     _ Pointer to HDMA data table entry
+;                       |    |    |    |
+  .topPosition
     dw $0000                                                             ;88AEC1;
-
-ScrollingSky_ScrollingTable_scrollSubspeed:
+  .scrollSubspeed
     dw $8000                                                             ;88AEC3;
-
-ScrollingSky_ScrollingTable_scrollSpeed:
+  .scrollSpeed
     dw $0000                                                             ;88AEC5;
-
-ScrollingSky_ScrollingTable_HDMADataTableEntryPointer:
+  .HDMADataTableEntryPointer
     dw $9F80                                                             ;88AEC7;
-
-ScrollingSky_ScrollingTable_nextEntry:
-    dw $0010,$C000,$0000                                                 ;88AEC9;
-    dw $9F84                                                             ;88AECF;
-    dw $0038,$8000,$0000                                                 ;88AED1;
-    dw $9F88                                                             ;88AED7;
-    dw $00D0,$C000,$0000                                                 ;88AED9;
-    dw $9F8C                                                             ;88AEDF;
-    dw $00E0,$8000,$0000                                                 ;88AEE1;
-    dw $9F90                                                             ;88AEE7;
-    dw $0120,$C000,$0000                                                 ;88AEE9;
-    dw $9F94                                                             ;88AEEF;
-    dw $01A0,$8000,$0000                                                 ;88AEF1;
-    dw $9F98                                                             ;88AEF7;
-    dw $01D8,$C000,$0000                                                 ;88AEF9;
-    dw $9F9C                                                             ;88AEFF;
-    dw $0238,$8000,$0000                                                 ;88AF01;
-    dw $9FA0                                                             ;88AF07;
-    dw $0268,$C000,$0000                                                 ;88AF09;
-    dw $9FA4                                                             ;88AF0F;
-    dw $02A0,$8000,$0000                                                 ;88AF11;
-    dw $9FA8                                                             ;88AF17;
-    dw $02E0,$C000,$0000                                                 ;88AF19;
-    dw $9FA0                                                             ;88AF1F;
-    dw $0300,$8000,$0000                                                 ;88AF21;
-    dw $9FB0                                                             ;88AF27;
-    dw $0320,$C000,$0000                                                 ;88AF29;
-    dw $9FB4                                                             ;88AF2F;
-    dw $0350,$8000,$0000                                                 ;88AF31;
-    dw $9FB8                                                             ;88AF37;
-    dw $0378,$C000,$0000                                                 ;88AF39;
-    dw $9FBC                                                             ;88AF3F;
-    dw $03C8,$8000,$0000                                                 ;88AF41;
-    dw $9FC0                                                             ;88AF47;
-    dw $0440,$7000,$0000                                                 ;88AF49;
-    dw $9FC4                                                             ;88AF4F;
-    dw $0460,$C000,$0000                                                 ;88AF51;
-    dw $9FC8                                                             ;88AF57;
-    dw $0480,$8000,$0000                                                 ;88AF59;
-    dw $9FCC                                                             ;88AF5F;
-    dw $0490,$0000,$0000                                                 ;88AF61;
-    dw $9FD0                                                             ;88AF67;
-    dw $04A8,$0000,$0000                                                 ;88AF69;
-    dw $9FD4                                                             ;88AF6F;
-    dw $04B8,$0000,$0000                                                 ;88AF71;
-    dw $9FD8                                                             ;88AF77;
-    dw $0500,$0500,$0000,$0000                                           ;88AF79;
-    dw $9FDC                                                             ;88AF81;
-    dw $0578,$0000,$0000                                                 ;88AF83;
-    dw $9FE0                                                             ;88AF89;
+  .nextEntry
+    dw $0010,$C000,$0000,$9F84                                           ;88AEC9;
+    dw $0038,$8000,$0000,$9F88                                           ;88AED1;
+    dw $00D0,$C000,$0000,$9F8C                                           ;88AED9;
+    dw $00E0,$8000,$0000,$9F90                                           ;88AEE1;
+    dw $0120,$C000,$0000,$9F94                                           ;88AEE9;
+    dw $01A0,$8000,$0000,$9F98                                           ;88AEF1;
+    dw $01D8,$C000,$0000,$9F9C                                           ;88AEF9;
+    dw $0238,$8000,$0000,$9FA0                                           ;88AF01;
+    dw $0268,$C000,$0000,$9FA4                                           ;88AF09;
+    dw $02A0,$8000,$0000,$9FA8                                           ;88AF11;
+    dw $02E0,$C000,$0000,$9FA0                                           ;88AF19;
+    dw $0300,$8000,$0000,$9FB0                                           ;88AF21;
+    dw $0320,$C000,$0000,$9FB4                                           ;88AF29;
+    dw $0350,$8000,$0000,$9FB8                                           ;88AF31;
+    dw $0378,$C000,$0000,$9FBC                                           ;88AF39;
+    dw $03C8,$8000,$0000,$9FC0                                           ;88AF41;
+    dw $0440,$7000,$0000,$9FC4                                           ;88AF49;
+    dw $0460,$C000,$0000,$9FC8                                           ;88AF51;
+    dw $0480,$8000,$0000,$9FCC                                           ;88AF59;
+    dw $0490,$0000,$0000,$9FD0                                           ;88AF61;
+    dw $04A8,$0000,$0000,$9FD4                                           ;88AF69;
+    dw $04B8,$0000,$0000,$9FD8                                           ;88AF71;
+    dw $0500
+; Unused continuation
+    dw $0500,$0000,$0000,$9FDC                                           ;88AF79;
+    dw $0578,$0000,$0000,$9FE0                                           ;88AF83;
     dw $05F0                                                             ;88AF8B;
 
 RoomMainASM_ScrollingSkyLand:
@@ -4463,10 +4509,12 @@ RoomMainASM_ScrollingSky:
 
 
 Fireflea_Flashing_Shades:
+; Indexed by [fireflea flashing index] * 2
     dw $0000,$0100,$0200,$0300,$0400,$0500,$0600,$0500                   ;88B058;
     dw $0400,$0300,$0200,$0100                                           ;88B068;
 
 Fireflea_Darkness_Shades:
+; Indexed by [fireflea darkness level]
     dw $0000,$0600,$0C00,$1200,$1800,$1900                               ;88B070;
 
 FXType_24_Fireflea:
@@ -4491,14 +4539,12 @@ FXType_24_Fireflea:
 
 
 InstList_Fireflea_BG3XScroll_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88B0AC;
-    db $7E                                                               ;88B0AE;
+    dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88B0AC;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88B0AF;
     dl PreInstruction_Fireflea_BG3XScroll                                ;88B0B1;
 
 InstList_Fireflea_BG3XScroll_1:
-    dw $0001                                                             ;88B0B4;
-    dw $9E00                                                             ;88B0B6;
+    dw $0001,$9E00                                                       ;88B0B4; $7E9E00
     dw Instruction_HDMAObject_GotoY                                      ;88B0B8;
     dw InstList_Fireflea_BG3XScroll_1                                    ;88B0BA;
 
@@ -4591,16 +4637,13 @@ endif ; !FEATURE_KEEP_UNREFERENCED
 
 
 InstList_ExpandingContractingEffect_BG2YScroll_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88B16C;
-    db $7E                                                               ;88B16E;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88B16F;
-    db $7E                                                               ;88B171;
+    dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88B16C;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88B16F;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88B172;
     dl PreInstruction_ExpandingContractingEffect_BG2YScroll              ;88B174;
 
 InstList_ExpandingContractingEffect_BG2YScroll_1:
-    dw $7777                                                             ;88B177;
-    dw $9E00                                                             ;88B179;
+    dw $7777,$9E00                                                       ;88B177; $7E9E00
     dw Instruction_HDMAObject_GotoY                                      ;88B17B;
     dw InstList_ExpandingContractingEffect_BG2YScroll_1                  ;88B17D;
 
@@ -4719,13 +4762,22 @@ Handle_Earthquake_SoundEffect:
     PLX                                                                  ;88B254;
     RTS                                                                  ;88B255;
 
-
+;        _________ Sound index (sound library 2)
+;       |      ___ Base timer
+;       |     |
 .soundIndex:
     dw $0046                                                             ;88B256;
-
 .baseTimer:
-    dw $0001,$0046,$0003,$0046,$0002,$0046,$0001,$0046                   ;88B258;
-    dw $0001,$0046,$0002,$0046,$0002,$0046,$0001,$8000                   ;88B268;
+    dw       $0001
+    dw $0046,$0003
+    dw $0046,$0002
+    dw $0046,$0001
+    dw $0046,$0001
+    dw $0046,$0002
+    dw $0046,$0002
+    dw $0046,$0001
+    dw $8000
+
 
 RTL_88B278:
     RTL                                                                  ;88B278;
@@ -4913,6 +4965,7 @@ FXRisingFunction_LavaAcid_Rising:
 
 
 Lava_SoundEffects:
+; Sound library 2. Chosen randomly from the following
     db $12,$13,$14,$12,$13,$14,$12,$13                                   ;88B3A1;
 
 Instruction_LavaSoundTimer_70:
@@ -5039,6 +5092,7 @@ PreInstruction_LavaAcid_BG3YScroll:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_WaveDisplacementTable_88B48E:
+; Wave displacement table. Same as the data at Setup_LavaAcid_BG2YScrollDataTable_VerticallyWavy_waveDisplacementTable
     dw $0000,$0001,$0001,$0000,$0000,$FFFF,$FFFF,$0000                   ;88B48E;
     dw $0000,$0001,$0001,$0000,$0000,$FFFF,$FFFF,$0000                   ;88B49E;
     dw $0000,$0001,$0001,$0000,$0000,$FFFF,$FFFF,$0000                   ;88B4AE;
@@ -5219,2375 +5273,1209 @@ Setup_LavaAcid_BG2YScrollDataTable_VerticallyWavy:
     PLX                                                                  ;88B608;
     RTS                                                                  ;88B609;
 
-
-.waveDisplacementTable:
+  .waveDisplacementTable
     dw $0000,$0001,$0001,$0000,$0000,$FFFF,$FFFF,$0000                   ;88B60A;
     dw $0000,$0001,$0001,$0000,$0000,$FFFF,$FFFF,$0000                   ;88B61A;
 
+
 IndirectHDMATable_LavaAcid_BG3Yscroll:
-    db $81                                                               ;88B62A;
-    dw $9C00                                                             ;88B62B;
-    db $81                                                               ;88B62D;
-    dw $9C00                                                             ;88B62E;
-    db $81                                                               ;88B630;
-    dw $9C00                                                             ;88B631;
-    db $81                                                               ;88B633;
-    dw $9C00                                                             ;88B634;
-    db $81                                                               ;88B636;
-    dw $9C00                                                             ;88B637;
-    db $81                                                               ;88B639;
-    dw $9C00                                                             ;88B63A;
-    db $81                                                               ;88B63C;
-    dw $9C00                                                             ;88B63D;
-    db $81                                                               ;88B63F;
-    dw $9C00                                                             ;88B640;
-    db $81                                                               ;88B642;
-    dw $9C00                                                             ;88B643;
-    db $81                                                               ;88B645;
-    dw $9C00                                                             ;88B646;
-    db $81                                                               ;88B648;
-    dw $9C00                                                             ;88B649;
-    db $81                                                               ;88B64B;
-    dw $9C00                                                             ;88B64C;
-    db $81                                                               ;88B64E;
-    dw $9C00                                                             ;88B64F;
-    db $81                                                               ;88B651;
-    dw $9C00                                                             ;88B652;
-    db $81                                                               ;88B654;
-    dw $9C00                                                             ;88B655;
-    db $81                                                               ;88B657;
-    dw $9C00                                                             ;88B658;
-    db $81                                                               ;88B65A;
-    dw $9C00                                                             ;88B65B;
-    db $81                                                               ;88B65D;
-    dw $9C00                                                             ;88B65E;
-    db $81                                                               ;88B660;
-    dw $9C00                                                             ;88B661;
-    db $81                                                               ;88B663;
-    dw $9C00                                                             ;88B664;
-    db $81                                                               ;88B666;
-    dw $9C00                                                             ;88B667;
-    db $81                                                               ;88B669;
-    dw $9C00                                                             ;88B66A;
-    db $81                                                               ;88B66C;
-    dw $9C00                                                             ;88B66D;
-    db $81                                                               ;88B66F;
-    dw $9C00                                                             ;88B670;
-    db $81                                                               ;88B672;
-    dw $9C00                                                             ;88B673;
-    db $81                                                               ;88B675;
-    dw $9C00                                                             ;88B676;
-    db $81                                                               ;88B678;
-    dw $9C00                                                             ;88B679;
-    db $81                                                               ;88B67B;
-    dw $9C00                                                             ;88B67C;
-    db $81                                                               ;88B67E;
-    dw $9C00                                                             ;88B67F;
-    db $81                                                               ;88B681;
-    dw $9C00                                                             ;88B682;
-    db $81                                                               ;88B684;
-    dw $9C00                                                             ;88B685;
-    db $81                                                               ;88B687;
-    dw $9C00                                                             ;88B688;
-    db $81                                                               ;88B68A;
-    dw $9C00                                                             ;88B68B;
-    db $81                                                               ;88B68D;
-    dw $9C00                                                             ;88B68E;
-    db $81                                                               ;88B690;
-    dw $9C00                                                             ;88B691;
-    db $81                                                               ;88B693;
-    dw $9C00                                                             ;88B694;
-    db $81                                                               ;88B696;
-    dw $9C00                                                             ;88B697;
-    db $81                                                               ;88B699;
-    dw $9C00                                                             ;88B69A;
-    db $81                                                               ;88B69C;
-    dw $9C00                                                             ;88B69D;
-    db $81                                                               ;88B69F;
-    dw $9C00                                                             ;88B6A0;
-    db $81                                                               ;88B6A2;
-    dw $9C00                                                             ;88B6A3;
-    db $81                                                               ;88B6A5;
-    dw $9C00                                                             ;88B6A6;
-    db $81                                                               ;88B6A8;
-    dw $9C00                                                             ;88B6A9;
-    db $81                                                               ;88B6AB;
-    dw $9C00                                                             ;88B6AC;
-    db $81                                                               ;88B6AE;
-    dw $9C00                                                             ;88B6AF;
-    db $81                                                               ;88B6B1;
-    dw $9C00                                                             ;88B6B2;
-    db $81                                                               ;88B6B4;
-    dw $9C00                                                             ;88B6B5;
-    db $81                                                               ;88B6B7;
-    dw $9C00                                                             ;88B6B8;
-    db $81                                                               ;88B6BA;
-    dw $9C00                                                             ;88B6BB;
-    db $81                                                               ;88B6BD;
-    dw $9C00                                                             ;88B6BE;
-    db $81                                                               ;88B6C0;
-    dw $9C00                                                             ;88B6C1;
-    db $81                                                               ;88B6C3;
-    dw $9C00                                                             ;88B6C4;
-    db $81                                                               ;88B6C6;
-    dw $9C00                                                             ;88B6C7;
-    db $81                                                               ;88B6C9;
-    dw $9C00                                                             ;88B6CA;
-    db $81                                                               ;88B6CC;
-    dw $9C00                                                             ;88B6CD;
-    db $81                                                               ;88B6CF;
-    dw $9C00                                                             ;88B6D0;
-    db $81                                                               ;88B6D2;
-    dw $9C00                                                             ;88B6D3;
-    db $81                                                               ;88B6D5;
-    dw $9C00                                                             ;88B6D6;
-    db $81                                                               ;88B6D8;
-    dw $9C00                                                             ;88B6D9;
-    db $81                                                               ;88B6DB;
-    dw $9C00                                                             ;88B6DC;
-    db $81                                                               ;88B6DE;
-    dw $9C00                                                             ;88B6DF;
-    db $81                                                               ;88B6E1;
-    dw $9C00                                                             ;88B6E2;
-    db $81                                                               ;88B6E4;
-    dw $9C00                                                             ;88B6E5;
-    db $81                                                               ;88B6E7;
-    dw $9C00                                                             ;88B6E8;
-    db $81                                                               ;88B6EA;
-    dw $9C00                                                             ;88B6EB;
-    db $81                                                               ;88B6ED;
-    dw $9C00                                                             ;88B6EE;
-    db $81                                                               ;88B6F0;
-    dw $9C00                                                             ;88B6F1;
-    db $81                                                               ;88B6F3;
-    dw $9C00                                                             ;88B6F4;
-    db $81                                                               ;88B6F6;
-    dw $9C00                                                             ;88B6F7;
-    db $81                                                               ;88B6F9;
-    dw $9C00                                                             ;88B6FA;
-    db $81                                                               ;88B6FC;
-    dw $9C00                                                             ;88B6FD;
-    db $81                                                               ;88B6FF;
-    dw $9C00                                                             ;88B700;
-    db $81                                                               ;88B702;
-    dw $9C00                                                             ;88B703;
-    db $81                                                               ;88B705;
-    dw $9C00                                                             ;88B706;
-    db $81                                                               ;88B708;
-    dw $9C00                                                             ;88B709;
-    db $81                                                               ;88B70B;
-    dw $9C00                                                             ;88B70C;
-    db $81                                                               ;88B70E;
-    dw $9C00                                                             ;88B70F;
-    db $81                                                               ;88B711;
-    dw $9C00                                                             ;88B712;
-    db $81                                                               ;88B714;
-    dw $9C00                                                             ;88B715;
-    db $81                                                               ;88B717;
-    dw $9C00                                                             ;88B718;
-    db $81                                                               ;88B71A;
-    dw $9C00                                                             ;88B71B;
-    db $81                                                               ;88B71D;
-    dw $9C00                                                             ;88B71E;
-    db $81                                                               ;88B720;
-    dw $9C00                                                             ;88B721;
-    db $81                                                               ;88B723;
-    dw $9C00                                                             ;88B724;
-    db $81                                                               ;88B726;
-    dw $9C00                                                             ;88B727;
-    db $81                                                               ;88B729;
-    dw $9C00                                                             ;88B72A;
-    db $81                                                               ;88B72C;
-    dw $9C00                                                             ;88B72D;
-    db $81                                                               ;88B72F;
-    dw $9C00                                                             ;88B730;
-    db $81                                                               ;88B732;
-    dw $9C00                                                             ;88B733;
-    db $81                                                               ;88B735;
-    dw $9C00                                                             ;88B736;
-    db $81                                                               ;88B738;
-    dw $9C00                                                             ;88B739;
-    db $81                                                               ;88B73B;
-    dw $9C00                                                             ;88B73C;
-    db $81                                                               ;88B73E;
-    dw $9C00                                                             ;88B73F;
-    db $81                                                               ;88B741;
-    dw $9C00                                                             ;88B742;
-    db $81                                                               ;88B744;
-    dw $9C00                                                             ;88B745;
-    db $81                                                               ;88B747;
-    dw $9C00                                                             ;88B748;
-    db $81                                                               ;88B74A;
-    dw $9C00                                                             ;88B74B;
-    db $81                                                               ;88B74D;
-    dw $9C00                                                             ;88B74E;
-    db $81                                                               ;88B750;
-    dw $9C00                                                             ;88B751;
-    db $81                                                               ;88B753;
-    dw $9C00                                                             ;88B754;
-    db $81                                                               ;88B756;
-    dw $9C00                                                             ;88B757;
-    db $81                                                               ;88B759;
-    dw $9C00                                                             ;88B75A;
-    db $81                                                               ;88B75C;
-    dw $9C00                                                             ;88B75D;
-    db $81                                                               ;88B75F;
-    dw $9C00                                                             ;88B760;
-    db $81                                                               ;88B762;
-    dw $9C00                                                             ;88B763;
-    db $81                                                               ;88B765;
-    dw $9C00                                                             ;88B766;
-    db $81                                                               ;88B768;
-    dw $9C00                                                             ;88B769;
-    db $81                                                               ;88B76B;
-    dw $9C00                                                             ;88B76C;
-    db $81                                                               ;88B76E;
-    dw $9C00                                                             ;88B76F;
-    db $81                                                               ;88B771;
-    dw $9C00                                                             ;88B772;
-    db $81                                                               ;88B774;
-    dw $9C00                                                             ;88B775;
-    db $81                                                               ;88B777;
-    dw $9C00                                                             ;88B778;
-    db $81                                                               ;88B77A;
-    dw $9C00                                                             ;88B77B;
-    db $81                                                               ;88B77D;
-    dw $9C00                                                             ;88B77E;
-    db $81                                                               ;88B780;
-    dw $9C00                                                             ;88B781;
-    db $81                                                               ;88B783;
-    dw $9C00                                                             ;88B784;
-    db $81                                                               ;88B786;
-    dw $9C00                                                             ;88B787;
-    db $81                                                               ;88B789;
-    dw $9C00                                                             ;88B78A;
-    db $81                                                               ;88B78C;
-    dw $9C00                                                             ;88B78D;
-    db $81                                                               ;88B78F;
-    dw $9C00                                                             ;88B790;
-    db $81                                                               ;88B792;
-    dw $9C00                                                             ;88B793;
-    db $81                                                               ;88B795;
-    dw $9C00                                                             ;88B796;
-    db $81                                                               ;88B798;
-    dw $9C00                                                             ;88B799;
-    db $81                                                               ;88B79B;
-    dw $9C00                                                             ;88B79C;
-    db $81                                                               ;88B79E;
-    dw $9C00                                                             ;88B79F;
-    db $81                                                               ;88B7A1;
-    dw $9C00                                                             ;88B7A2;
-    db $81                                                               ;88B7A4;
-    dw $9C00                                                             ;88B7A5;
-    db $81                                                               ;88B7A7;
-    dw $9C00                                                             ;88B7A8;
-    db $81                                                               ;88B7AA;
-    dw $9C00                                                             ;88B7AB;
-    db $81                                                               ;88B7AD;
-    dw $9C00                                                             ;88B7AE;
-    db $81                                                               ;88B7B0;
-    dw $9C00                                                             ;88B7B1;
-    db $81                                                               ;88B7B3;
-    dw $9C00                                                             ;88B7B4;
-    db $81                                                               ;88B7B6;
-    dw $9C00                                                             ;88B7B7;
-    db $81                                                               ;88B7B9;
-    dw $9C00                                                             ;88B7BA;
-    db $81                                                               ;88B7BC;
-    dw $9C00                                                             ;88B7BD;
-    db $81                                                               ;88B7BF;
-    dw $9C00                                                             ;88B7C0;
-    db $81                                                               ;88B7C2;
-    dw $9C00                                                             ;88B7C3;
-    db $81                                                               ;88B7C5;
-    dw $9C00                                                             ;88B7C6;
-    db $81                                                               ;88B7C8;
-    dw $9C00                                                             ;88B7C9;
-    db $81                                                               ;88B7CB;
-    dw $9C00                                                             ;88B7CC;
-    db $81                                                               ;88B7CE;
-    dw $9C00                                                             ;88B7CF;
-    db $81                                                               ;88B7D1;
-    dw $9C00                                                             ;88B7D2;
-    db $81                                                               ;88B7D4;
-    dw $9C00                                                             ;88B7D5;
-    db $81                                                               ;88B7D7;
-    dw $9C00                                                             ;88B7D8;
-    db $81                                                               ;88B7DA;
-    dw $9C00                                                             ;88B7DB;
-    db $81                                                               ;88B7DD;
-    dw $9C00                                                             ;88B7DE;
-    db $81                                                               ;88B7E0;
-    dw $9C00                                                             ;88B7E1;
-    db $81                                                               ;88B7E3;
-    dw $9C00                                                             ;88B7E4;
-    db $81                                                               ;88B7E6;
-    dw $9C00                                                             ;88B7E7;
-    db $81                                                               ;88B7E9;
-    dw $9C00                                                             ;88B7EA;
-    db $81                                                               ;88B7EC;
-    dw $9C00                                                             ;88B7ED;
-    db $81                                                               ;88B7EF;
-    dw $9C00                                                             ;88B7F0;
-    db $81                                                               ;88B7F2;
-    dw $9C00                                                             ;88B7F3;
-    db $81                                                               ;88B7F5;
-    dw $9C00                                                             ;88B7F6;
-    db $81                                                               ;88B7F8;
-    dw $9C00                                                             ;88B7F9;
-    db $81                                                               ;88B7FB;
-    dw $9C00                                                             ;88B7FC;
-    db $81                                                               ;88B7FE;
-    dw $9C00                                                             ;88B7FF;
-    db $81                                                               ;88B801;
-    dw $9C00                                                             ;88B802;
-    db $81                                                               ;88B804;
-    dw $9C00                                                             ;88B805;
-    db $81                                                               ;88B807;
-    dw $9C00                                                             ;88B808;
-    db $81                                                               ;88B80A;
-    dw $9C00                                                             ;88B80B;
-    db $81                                                               ;88B80D;
-    dw $9C00                                                             ;88B80E;
-    db $81                                                               ;88B810;
-    dw $9C00                                                             ;88B811;
-    db $81                                                               ;88B813;
-    dw $9C00                                                             ;88B814;
-    db $81                                                               ;88B816;
-    dw $9C00                                                             ;88B817;
-    db $81                                                               ;88B819;
-    dw $9C00                                                             ;88B81A;
-    db $81                                                               ;88B81C;
-    dw $9C00                                                             ;88B81D;
-    db $81                                                               ;88B81F;
-    dw $9C00                                                             ;88B820;
-    db $81                                                               ;88B822;
-    dw $9C00                                                             ;88B823;
-    db $81                                                               ;88B825;
-    dw $9C00                                                             ;88B826;
-    db $81                                                               ;88B828;
-    dw $9C00                                                             ;88B829;
-    db $81                                                               ;88B82B;
-    dw $9C00                                                             ;88B82C;
-    db $81                                                               ;88B82E;
-    dw $9C00                                                             ;88B82F;
-    db $81                                                               ;88B831;
-    dw $9C00                                                             ;88B832;
-    db $81                                                               ;88B834;
-    dw $9C00                                                             ;88B835;
-    db $81                                                               ;88B837;
-    dw $9C00                                                             ;88B838;
-    db $81                                                               ;88B83A;
-    dw $9C00                                                             ;88B83B;
-    db $81                                                               ;88B83D;
-    dw $9C00                                                             ;88B83E;
-    db $81                                                               ;88B840;
-    dw $9C00                                                             ;88B841;
-    db $81                                                               ;88B843;
-    dw $9C00                                                             ;88B844;
-    db $81                                                               ;88B846;
-    dw $9C00                                                             ;88B847;
-    db $81                                                               ;88B849;
-    dw $9C00                                                             ;88B84A;
-    db $81                                                               ;88B84C;
-    dw $9C00                                                             ;88B84D;
-    db $81                                                               ;88B84F;
-    dw $9C00                                                             ;88B850;
-    db $81                                                               ;88B852;
-    dw $9C00                                                             ;88B853;
-    db $81                                                               ;88B855;
-    dw $9C00                                                             ;88B856;
-    db $81                                                               ;88B858;
-    dw $9C00                                                             ;88B859;
-    db $81                                                               ;88B85B;
-    dw $9C00                                                             ;88B85C;
-    db $81                                                               ;88B85E;
-    dw $9C00                                                             ;88B85F;
-    db $81                                                               ;88B861;
-    dw $9C00                                                             ;88B862;
-    db $81                                                               ;88B864;
-    dw $9C00                                                             ;88B865;
-    db $81                                                               ;88B867;
-    dw $9C00                                                             ;88B868;
-    db $81                                                               ;88B86A;
-    dw $9C00                                                             ;88B86B;
-    db $81                                                               ;88B86D;
-    dw $9C00                                                             ;88B86E;
-    db $81                                                               ;88B870;
-    dw $9C00                                                             ;88B871;
-    db $81                                                               ;88B873;
-    dw $9C00                                                             ;88B874;
-    db $81                                                               ;88B876;
-    dw $9C00                                                             ;88B877;
-    db $81                                                               ;88B879;
-    dw $9C00                                                             ;88B87A;
-    db $81                                                               ;88B87C;
-    dw $9C00                                                             ;88B87D;
-    db $81                                                               ;88B87F;
-    dw $9C00                                                             ;88B880;
-    db $81                                                               ;88B882;
-    dw $9C00                                                             ;88B883;
-    db $81                                                               ;88B885;
-    dw $9C00                                                             ;88B886;
-    db $81                                                               ;88B888;
-    dw $9C00                                                             ;88B889;
-    db $81                                                               ;88B88B;
-    dw $9C00                                                             ;88B88C;
-    db $81                                                               ;88B88E;
-    dw $9C00                                                             ;88B88F;
-    db $81                                                               ;88B891;
-    dw $9C00                                                             ;88B892;
-    db $81                                                               ;88B894;
-    dw $9C00                                                             ;88B895;
-    db $81                                                               ;88B897;
-    dw $9C00                                                             ;88B898;
-    db $81                                                               ;88B89A;
-    dw $9C00                                                             ;88B89B;
-    db $81                                                               ;88B89D;
-    dw $9C00                                                             ;88B89E;
-    db $81                                                               ;88B8A0;
-    dw $9C00                                                             ;88B8A1;
-    db $81                                                               ;88B8A3;
-    dw $9C00                                                             ;88B8A4;
-    db $81                                                               ;88B8A6;
-    dw $9C00                                                             ;88B8A7;
-    db $81                                                               ;88B8A9;
-    dw $9C00                                                             ;88B8AA;
-    db $81                                                               ;88B8AC;
-    dw $9C00                                                             ;88B8AD;
-    db $81                                                               ;88B8AF;
-    dw $9C00                                                             ;88B8B0;
-    db $81                                                               ;88B8B2;
-    dw $9C00                                                             ;88B8B3;
-    db $81                                                               ;88B8B5;
-    dw $9C00                                                             ;88B8B6;
-    db $81                                                               ;88B8B8;
-    dw $9C00                                                             ;88B8B9;
-    db $81                                                               ;88B8BB;
-    dw $9C00                                                             ;88B8BC;
-    db $81                                                               ;88B8BE;
-    dw $9C00                                                             ;88B8BF;
-    db $81                                                               ;88B8C1;
-    dw $9C00                                                             ;88B8C2;
-    db $81                                                               ;88B8C4;
-    dw $9C00                                                             ;88B8C5;
-    db $81                                                               ;88B8C7;
-    dw $9C00                                                             ;88B8C8;
-    db $81                                                               ;88B8CA;
-    dw $9C00                                                             ;88B8CB;
-    db $81                                                               ;88B8CD;
-    dw $9C00                                                             ;88B8CE;
-    db $81                                                               ;88B8D0;
-    dw $9C00                                                             ;88B8D1;
-    db $81                                                               ;88B8D3;
-    dw $9C00                                                             ;88B8D4;
-    db $81                                                               ;88B8D6;
-    dw $9C00                                                             ;88B8D7;
-    db $81                                                               ;88B8D9;
-    dw $9C00                                                             ;88B8DA;
-    db $81                                                               ;88B8DC;
-    dw $9C00                                                             ;88B8DD;
-    db $81                                                               ;88B8DF;
-    dw $9C00                                                             ;88B8E0;
-    db $81                                                               ;88B8E2;
-    dw $9C00                                                             ;88B8E3;
-    db $81                                                               ;88B8E5;
-    dw $9C00                                                             ;88B8E6;
-    db $81                                                               ;88B8E8;
-    dw $9C00                                                             ;88B8E9;
-    db $81                                                               ;88B8EB;
-    dw $9C00                                                             ;88B8EC;
-    db $81                                                               ;88B8EE;
-    dw $9C00                                                             ;88B8EF;
-    db $81                                                               ;88B8F1;
-    dw $9C00                                                             ;88B8F2;
-    db $81                                                               ;88B8F4;
-    dw $9C00                                                             ;88B8F5;
-    db $81                                                               ;88B8F7;
-    dw $9C00                                                             ;88B8F8;
-    db $81                                                               ;88B8FA;
-    dw $9C02                                                             ;88B8FB;
-    db $81                                                               ;88B8FD;
-    dw $9C02                                                             ;88B8FE;
-    db $81                                                               ;88B900;
-    dw $9C02                                                             ;88B901;
-    db $81                                                               ;88B903;
-    dw $9C02                                                             ;88B904;
-    db $81                                                               ;88B906;
-    dw $9C02                                                             ;88B907;
-    db $81                                                               ;88B909;
-    dw $9C02                                                             ;88B90A;
-    db $81                                                               ;88B90C;
-    dw $9C02                                                             ;88B90D;
-    db $81                                                               ;88B90F;
-    dw $9C02                                                             ;88B910;
-    db $81                                                               ;88B912;
-    dw $9C02                                                             ;88B913;
-    db $81                                                               ;88B915;
-    dw $9C02                                                             ;88B916;
-    db $81                                                               ;88B918;
-    dw $9C02                                                             ;88B919;
-    db $81                                                               ;88B91B;
-    dw $9C02                                                             ;88B91C;
-    db $81                                                               ;88B91E;
-    dw $9C02                                                             ;88B91F;
-    db $81                                                               ;88B921;
-    dw $9C02                                                             ;88B922;
-    db $81                                                               ;88B924;
-    dw $9C02                                                             ;88B925;
-    db $81                                                               ;88B927;
-    dw $9C02                                                             ;88B928;
-    db $81                                                               ;88B92A;
-    dw $9C02                                                             ;88B92B;
-    db $81                                                               ;88B92D;
-    dw $9C02                                                             ;88B92E;
-    db $81                                                               ;88B930;
-    dw $9C02                                                             ;88B931;
-    db $81                                                               ;88B933;
-    dw $9C02                                                             ;88B934;
-    db $81                                                               ;88B936;
-    dw $9C02                                                             ;88B937;
-    db $81                                                               ;88B939;
-    dw $9C02                                                             ;88B93A;
-    db $81                                                               ;88B93C;
-    dw $9C02                                                             ;88B93D;
-    db $81                                                               ;88B93F;
-    dw $9C02                                                             ;88B940;
-    db $81                                                               ;88B942;
-    dw $9C02                                                             ;88B943;
-    db $81                                                               ;88B945;
-    dw $9C02                                                             ;88B946;
-    db $81                                                               ;88B948;
-    dw $9C02                                                             ;88B949;
-    db $81                                                               ;88B94B;
-    dw $9C02                                                             ;88B94C;
-    db $81                                                               ;88B94E;
-    dw $9C02                                                             ;88B94F;
-    db $81                                                               ;88B951;
-    dw $9C02                                                             ;88B952;
-    db $81                                                               ;88B954;
-    dw $9C02                                                             ;88B955;
-    db $81                                                               ;88B957;
-    dw $9C02                                                             ;88B958;
-    db $81                                                               ;88B95A;
-    dw $9C02                                                             ;88B95B;
-    db $81                                                               ;88B95D;
-    dw $9C02                                                             ;88B95E;
-    db $81                                                               ;88B960;
-    dw $9C02                                                             ;88B961;
-    db $81                                                               ;88B963;
-    dw $9C02                                                             ;88B964;
-    db $81                                                               ;88B966;
-    dw $9C02                                                             ;88B967;
-    db $81                                                               ;88B969;
-    dw $9C02                                                             ;88B96A;
-    db $81                                                               ;88B96C;
-    dw $9C02                                                             ;88B96D;
-    db $81                                                               ;88B96F;
-    dw $9C02                                                             ;88B970;
-    db $81                                                               ;88B972;
-    dw $9C02                                                             ;88B973;
-    db $81                                                               ;88B975;
-    dw $9C02                                                             ;88B976;
-    db $81                                                               ;88B978;
-    dw $9C02                                                             ;88B979;
-    db $81                                                               ;88B97B;
-    dw $9C02                                                             ;88B97C;
-    db $81                                                               ;88B97E;
-    dw $9C02                                                             ;88B97F;
-    db $81                                                               ;88B981;
-    dw $9C02                                                             ;88B982;
-    db $81                                                               ;88B984;
-    dw $9C02                                                             ;88B985;
-    db $81                                                               ;88B987;
-    dw $9C02                                                             ;88B988;
-    db $81                                                               ;88B98A;
-    dw $9C02                                                             ;88B98B;
-    db $81                                                               ;88B98D;
-    dw $9C02                                                             ;88B98E;
-    db $81                                                               ;88B990;
-    dw $9C02                                                             ;88B991;
-    db $81                                                               ;88B993;
-    dw $9C02                                                             ;88B994;
-    db $81                                                               ;88B996;
-    dw $9C02                                                             ;88B997;
-    db $81                                                               ;88B999;
-    dw $9C02                                                             ;88B99A;
-    db $81                                                               ;88B99C;
-    dw $9C02                                                             ;88B99D;
-    db $81                                                               ;88B99F;
-    dw $9C02                                                             ;88B9A0;
-    db $81                                                               ;88B9A2;
-    dw $9C02                                                             ;88B9A3;
-    db $81                                                               ;88B9A5;
-    dw $9C02                                                             ;88B9A6;
-    db $81                                                               ;88B9A8;
-    dw $9C02                                                             ;88B9A9;
-    db $81                                                               ;88B9AB;
-    dw $9C02                                                             ;88B9AC;
-    db $81                                                               ;88B9AE;
-    dw $9C02                                                             ;88B9AF;
-    db $81                                                               ;88B9B1;
-    dw $9C02                                                             ;88B9B2;
-    db $81                                                               ;88B9B4;
-    dw $9C02                                                             ;88B9B5;
-    db $81                                                               ;88B9B7;
-    dw $9C02                                                             ;88B9B8;
-    db $81                                                               ;88B9BA;
-    dw $9C02                                                             ;88B9BB;
-    db $81                                                               ;88B9BD;
-    dw $9C02                                                             ;88B9BE;
-    db $81                                                               ;88B9C0;
-    dw $9C02                                                             ;88B9C1;
-    db $81                                                               ;88B9C3;
-    dw $9C02                                                             ;88B9C4;
-    db $81                                                               ;88B9C6;
-    dw $9C02                                                             ;88B9C7;
-    db $81                                                               ;88B9C9;
-    dw $9C02                                                             ;88B9CA;
-    db $81                                                               ;88B9CC;
-    dw $9C02                                                             ;88B9CD;
-    db $81                                                               ;88B9CF;
-    dw $9C02                                                             ;88B9D0;
-    db $81                                                               ;88B9D2;
-    dw $9C02                                                             ;88B9D3;
-    db $81                                                               ;88B9D5;
-    dw $9C02                                                             ;88B9D6;
-    db $81                                                               ;88B9D8;
-    dw $9C02                                                             ;88B9D9;
-    db $81                                                               ;88B9DB;
-    dw $9C02                                                             ;88B9DC;
-    db $81                                                               ;88B9DE;
-    dw $9C02                                                             ;88B9DF;
-    db $81                                                               ;88B9E1;
-    dw $9C02                                                             ;88B9E2;
-    db $81                                                               ;88B9E4;
-    dw $9C02                                                             ;88B9E5;
-    db $81                                                               ;88B9E7;
-    dw $9C02                                                             ;88B9E8;
-    db $81                                                               ;88B9EA;
-    dw $9C02                                                             ;88B9EB;
-    db $81                                                               ;88B9ED;
-    dw $9C02                                                             ;88B9EE;
-    db $81                                                               ;88B9F0;
-    dw $9C02                                                             ;88B9F1;
-    db $81                                                               ;88B9F3;
-    dw $9C02                                                             ;88B9F4;
-    db $81                                                               ;88B9F6;
-    dw $9C02                                                             ;88B9F7;
-    db $81                                                               ;88B9F9;
-    dw $9C02                                                             ;88B9FA;
-    db $81                                                               ;88B9FC;
-    dw $9C02                                                             ;88B9FD;
-    db $81                                                               ;88B9FF;
-    dw $9C02                                                             ;88BA00;
-    db $81                                                               ;88BA02;
-    dw $9C02                                                             ;88BA03;
-    db $81                                                               ;88BA05;
-    dw $9C02                                                             ;88BA06;
-    db $81                                                               ;88BA08;
-    dw $9C02                                                             ;88BA09;
-    db $81                                                               ;88BA0B;
-    dw $9C02                                                             ;88BA0C;
-    db $81                                                               ;88BA0E;
-    dw $9C02                                                             ;88BA0F;
-    db $81                                                               ;88BA11;
-    dw $9C02                                                             ;88BA12;
-    db $81                                                               ;88BA14;
-    dw $9C02                                                             ;88BA15;
-    db $81                                                               ;88BA17;
-    dw $9C02                                                             ;88BA18;
-    db $81                                                               ;88BA1A;
-    dw $9C02                                                             ;88BA1B;
-    db $81                                                               ;88BA1D;
-    dw $9C02                                                             ;88BA1E;
-    db $81                                                               ;88BA20;
-    dw $9C02                                                             ;88BA21;
-    db $81                                                               ;88BA23;
-    dw $9C02                                                             ;88BA24;
-    db $81                                                               ;88BA26;
-    dw $9C02                                                             ;88BA27;
-    db $81                                                               ;88BA29;
-    dw $9C02                                                             ;88BA2A;
-    db $81                                                               ;88BA2C;
-    dw $9C02                                                             ;88BA2D;
-    db $81                                                               ;88BA2F;
-    dw $9C02                                                             ;88BA30;
-    db $81                                                               ;88BA32;
-    dw $9C02                                                             ;88BA33;
-    db $81                                                               ;88BA35;
-    dw $9C02                                                             ;88BA36;
-    db $81                                                               ;88BA38;
-    dw $9C02                                                             ;88BA39;
-    db $81                                                               ;88BA3B;
-    dw $9C02                                                             ;88BA3C;
-    db $81                                                               ;88BA3E;
-    dw $9C02                                                             ;88BA3F;
-    db $81                                                               ;88BA41;
-    dw $9C02                                                             ;88BA42;
-    db $81                                                               ;88BA44;
-    dw $9C02                                                             ;88BA45;
-    db $81                                                               ;88BA47;
-    dw $9C02                                                             ;88BA48;
-    db $81                                                               ;88BA4A;
-    dw $9C02                                                             ;88BA4B;
-    db $81                                                               ;88BA4D;
-    dw $9C02                                                             ;88BA4E;
-    db $81                                                               ;88BA50;
-    dw $9C02                                                             ;88BA51;
-    db $81                                                               ;88BA53;
-    dw $9C02                                                             ;88BA54;
-    db $81                                                               ;88BA56;
-    dw $9C02                                                             ;88BA57;
-    db $81                                                               ;88BA59;
-    dw $9C02                                                             ;88BA5A;
-    db $81                                                               ;88BA5C;
-    dw $9C02                                                             ;88BA5D;
-    db $81                                                               ;88BA5F;
-    dw $9C02                                                             ;88BA60;
-    db $81                                                               ;88BA62;
-    dw $9C02                                                             ;88BA63;
-    db $81                                                               ;88BA65;
-    dw $9C02                                                             ;88BA66;
-    db $81                                                               ;88BA68;
-    dw $9C02                                                             ;88BA69;
-    db $81                                                               ;88BA6B;
-    dw $9C02                                                             ;88BA6C;
-    db $81                                                               ;88BA6E;
-    dw $9C02                                                             ;88BA6F;
-    db $81                                                               ;88BA71;
-    dw $9C02                                                             ;88BA72;
-    db $81                                                               ;88BA74;
-    dw $9C02                                                             ;88BA75;
-    db $81                                                               ;88BA77;
-    dw $9C02                                                             ;88BA78;
-    db $81                                                               ;88BA7A;
-    dw $9C02                                                             ;88BA7B;
-    db $81                                                               ;88BA7D;
-    dw $9C02                                                             ;88BA7E;
-    db $81                                                               ;88BA80;
-    dw $9C02                                                             ;88BA81;
-    db $81                                                               ;88BA83;
-    dw $9C02                                                             ;88BA84;
-    db $81                                                               ;88BA86;
-    dw $9C02                                                             ;88BA87;
-    db $81                                                               ;88BA89;
-    dw $9C02                                                             ;88BA8A;
-    db $81                                                               ;88BA8C;
-    dw $9C02                                                             ;88BA8D;
-    db $81                                                               ;88BA8F;
-    dw $9C02                                                             ;88BA90;
-    db $81                                                               ;88BA92;
-    dw $9C02                                                             ;88BA93;
-    db $81                                                               ;88BA95;
-    dw $9C02                                                             ;88BA96;
-    db $81                                                               ;88BA98;
-    dw $9C02                                                             ;88BA99;
-    db $81                                                               ;88BA9B;
-    dw $9C02                                                             ;88BA9C;
-    db $81                                                               ;88BA9E;
-    dw $9C02                                                             ;88BA9F;
-    db $81                                                               ;88BAA1;
-    dw $9C02                                                             ;88BAA2;
-    db $81                                                               ;88BAA4;
-    dw $9C02                                                             ;88BAA5;
-    db $81                                                               ;88BAA7;
-    dw $9C02                                                             ;88BAA8;
-    db $81                                                               ;88BAAA;
-    dw $9C02                                                             ;88BAAB;
-    db $81                                                               ;88BAAD;
-    dw $9C02                                                             ;88BAAE;
-    db $81                                                               ;88BAB0;
-    dw $9C02                                                             ;88BAB1;
-    db $81                                                               ;88BAB3;
-    dw $9C02                                                             ;88BAB4;
-    db $81                                                               ;88BAB6;
-    dw $9C02                                                             ;88BAB7;
-    db $81                                                               ;88BAB9;
-    dw $9C02                                                             ;88BABA;
-    db $81                                                               ;88BABC;
-    dw $9C02                                                             ;88BABD;
-    db $81                                                               ;88BABF;
-    dw $9C02                                                             ;88BAC0;
-    db $81                                                               ;88BAC2;
-    dw $9C02                                                             ;88BAC3;
-    db $81                                                               ;88BAC5;
-    dw $9C02                                                             ;88BAC6;
-    db $81                                                               ;88BAC8;
-    dw $9C02                                                             ;88BAC9;
-    db $81                                                               ;88BACB;
-    dw $9C02                                                             ;88BACC;
-    db $81                                                               ;88BACE;
-    dw $9C02                                                             ;88BACF;
-    db $81                                                               ;88BAD1;
-    dw $9C02                                                             ;88BAD2;
-    db $81                                                               ;88BAD4;
-    dw $9C02                                                             ;88BAD5;
-    db $81                                                               ;88BAD7;
-    dw $9C02                                                             ;88BAD8;
-    db $81                                                               ;88BADA;
-    dw $9C02                                                             ;88BADB;
-    db $81                                                               ;88BADD;
-    dw $9C02                                                             ;88BADE;
-    db $81                                                               ;88BAE0;
-    dw $9C02                                                             ;88BAE1;
-    db $81                                                               ;88BAE3;
-    dw $9C02                                                             ;88BAE4;
-    db $81                                                               ;88BAE6;
-    dw $9C02                                                             ;88BAE7;
-    db $81                                                               ;88BAE9;
-    dw $9C02                                                             ;88BAEA;
-    db $81                                                               ;88BAEC;
-    dw $9C02                                                             ;88BAED;
-    db $81                                                               ;88BAEF;
-    dw $9C02                                                             ;88BAF0;
-    db $81                                                               ;88BAF2;
-    dw $9C02                                                             ;88BAF3;
-    db $81                                                               ;88BAF5;
-    dw $9C02                                                             ;88BAF6;
-    db $81                                                               ;88BAF8;
-    dw $9C02                                                             ;88BAF9;
-    db $81                                                               ;88BAFB;
-    dw $9C02                                                             ;88BAFC;
-    db $81                                                               ;88BAFE;
-    dw $9C02                                                             ;88BAFF;
-    db $81                                                               ;88BB01;
-    dw $9C02                                                             ;88BB02;
-    db $81                                                               ;88BB04;
-    dw $9C02                                                             ;88BB05;
-    db $81                                                               ;88BB07;
-    dw $9C02                                                             ;88BB08;
-    db $81                                                               ;88BB0A;
-    dw $9C02                                                             ;88BB0B;
-    db $81                                                               ;88BB0D;
-    dw $9C02                                                             ;88BB0E;
-    db $81                                                               ;88BB10;
-    dw $9C02                                                             ;88BB11;
-    db $81                                                               ;88BB13;
-    dw $9C02                                                             ;88BB14;
-    db $81                                                               ;88BB16;
-    dw $9C02                                                             ;88BB17;
-    db $81                                                               ;88BB19;
-    dw $9C02                                                             ;88BB1A;
-    db $81                                                               ;88BB1C;
-    dw $9C02                                                             ;88BB1D;
-    db $81                                                               ;88BB1F;
-    dw $9C02                                                             ;88BB20;
-    db $81                                                               ;88BB22;
-    dw $9C02                                                             ;88BB23;
-    db $81                                                               ;88BB25;
-    dw $9C02                                                             ;88BB26;
-    db $81                                                               ;88BB28;
-    dw $9C02                                                             ;88BB29;
-    db $81                                                               ;88BB2B;
-    dw $9C02                                                             ;88BB2C;
-    db $81                                                               ;88BB2E;
-    dw $9C02                                                             ;88BB2F;
-    db $81                                                               ;88BB31;
-    dw $9C02                                                             ;88BB32;
-    db $81                                                               ;88BB34;
-    dw $9C02                                                             ;88BB35;
-    db $81                                                               ;88BB37;
-    dw $9C02                                                             ;88BB38;
-    db $81                                                               ;88BB3A;
-    dw $9C02                                                             ;88BB3B;
-    db $81                                                               ;88BB3D;
-    dw $9C02                                                             ;88BB3E;
-    db $81                                                               ;88BB40;
-    dw $9C02                                                             ;88BB41;
-    db $81                                                               ;88BB43;
-    dw $9C02                                                             ;88BB44;
-    db $81                                                               ;88BB46;
-    dw $9C02                                                             ;88BB47;
-    db $81                                                               ;88BB49;
-    dw $9C02                                                             ;88BB4A;
-    db $81                                                               ;88BB4C;
-    dw $9C02                                                             ;88BB4D;
-    db $81                                                               ;88BB4F;
-    dw $9C02                                                             ;88BB50;
-    db $81                                                               ;88BB52;
-    dw $9C02                                                             ;88BB53;
-    db $81                                                               ;88BB55;
-    dw $9C02                                                             ;88BB56;
-    db $81                                                               ;88BB58;
-    dw $9C02                                                             ;88BB59;
-    db $81                                                               ;88BB5B;
-    dw $9C02                                                             ;88BB5C;
-    db $81                                                               ;88BB5E;
-    dw $9C02                                                             ;88BB5F;
-    db $81                                                               ;88BB61;
-    dw $9C02                                                             ;88BB62;
-    db $81                                                               ;88BB64;
-    dw $9C02                                                             ;88BB65;
-    db $81                                                               ;88BB67;
-    dw $9C02                                                             ;88BB68;
-    db $81                                                               ;88BB6A;
-    dw $9C02                                                             ;88BB6B;
-    db $81                                                               ;88BB6D;
-    dw $9C02                                                             ;88BB6E;
-    db $81                                                               ;88BB70;
-    dw $9C02                                                             ;88BB71;
-    db $81                                                               ;88BB73;
-    dw $9C02                                                             ;88BB74;
-    db $81                                                               ;88BB76;
-    dw $9C02                                                             ;88BB77;
-    db $81                                                               ;88BB79;
-    dw $9C02                                                             ;88BB7A;
-    db $81                                                               ;88BB7C;
-    dw $9C02                                                             ;88BB7D;
-    db $81                                                               ;88BB7F;
-    dw $9C02                                                             ;88BB80;
-    db $81                                                               ;88BB82;
-    dw $9C02                                                             ;88BB83;
-    db $81                                                               ;88BB85;
-    dw $9C02                                                             ;88BB86;
-    db $81                                                               ;88BB88;
-    dw $9C02                                                             ;88BB89;
-    db $81                                                               ;88BB8B;
-    dw $9C02                                                             ;88BB8C;
-    db $81                                                               ;88BB8E;
-    dw $9C02                                                             ;88BB8F;
-    db $81                                                               ;88BB91;
-    dw $9C02                                                             ;88BB92;
-    db $81                                                               ;88BB94;
-    dw $9C02                                                             ;88BB95;
-    db $81                                                               ;88BB97;
-    dw $9C02                                                             ;88BB98;
-    db $81                                                               ;88BB9A;
-    dw $9C02                                                             ;88BB9B;
-    db $81                                                               ;88BB9D;
-    dw $9C02                                                             ;88BB9E;
-    db $81                                                               ;88BBA0;
-    dw $9C02                                                             ;88BBA1;
-    db $81                                                               ;88BBA3;
-    dw $9C02                                                             ;88BBA4;
-    db $81                                                               ;88BBA6;
-    dw $9C02                                                             ;88BBA7;
-    db $81                                                               ;88BBA9;
-    dw $9C02                                                             ;88BBAA;
-    db $81                                                               ;88BBAC;
-    dw $9C02                                                             ;88BBAD;
-    db $81                                                               ;88BBAF;
-    dw $9C02                                                             ;88BBB0;
-    db $81                                                               ;88BBB2;
-    dw $9C02                                                             ;88BBB3;
-    db $81                                                               ;88BBB5;
-    dw $9C02                                                             ;88BBB6;
-    db $81                                                               ;88BBB8;
-    dw $9C02                                                             ;88BBB9;
-    db $81                                                               ;88BBBB;
-    dw $9C02                                                             ;88BBBC;
-    db $81                                                               ;88BBBE;
-    dw $9C02                                                             ;88BBBF;
-    db $81                                                               ;88BBC1;
-    dw $9C02                                                             ;88BBC2;
-    db $81                                                               ;88BBC4;
-    dw $9C02                                                             ;88BBC5;
-    db $81                                                               ;88BBC7;
-    dw $9C02                                                             ;88BBC8;
-    db $81                                                               ;88BBCA;
-    dw $9C02                                                             ;88BBCB;
-    db $81                                                               ;88BBCD;
-    dw $9C02                                                             ;88BBCE;
-    db $81                                                               ;88BBD0;
-    dw $9C02                                                             ;88BBD1;
-    db $81                                                               ;88BBD3;
-    dw $9C02                                                             ;88BBD4;
-    db $81                                                               ;88BBD6;
-    dw $9C02                                                             ;88BBD7;
-    db $81                                                               ;88BBD9;
-    dw $9C02                                                             ;88BBDA;
-    db $81                                                               ;88BBDC;
-    dw $9C02                                                             ;88BBDD;
-    db $81                                                               ;88BBDF;
-    dw $9C02                                                             ;88BBE0;
-    db $81                                                               ;88BBE2;
-    dw $9C02                                                             ;88BBE3;
-    db $81                                                               ;88BBE5;
-    dw $9C02                                                             ;88BBE6;
-    db $81                                                               ;88BBE8;
-    dw $9C02                                                             ;88BBE9;
-    db $81                                                               ;88BBEB;
-    dw $9C02                                                             ;88BBEC;
-    db $81                                                               ;88BBEE;
-    dw $9C02                                                             ;88BBEF;
-    db $81                                                               ;88BBF1;
-    dw $9C02                                                             ;88BBF2;
-    db $81                                                               ;88BBF4;
-    dw $9C02                                                             ;88BBF5;
-    db $81                                                               ;88BBF7;
-    dw $9C02                                                             ;88BBF8;
-    db $81                                                               ;88BBFA;
-    dw $9C02                                                             ;88BBFB;
-    db $81                                                               ;88BBFD;
-    dw $9C02                                                             ;88BBFE;
-    db $81                                                               ;88BC00;
-    dw $9C02                                                             ;88BC01;
-    db $81                                                               ;88BC03;
-    dw $9C02                                                             ;88BC04;
-    db $81                                                               ;88BC06;
-    dw $9C02                                                             ;88BC07;
-    db $81                                                               ;88BC09;
-    dw $9C02                                                             ;88BC0A;
-    db $81                                                               ;88BC0C;
-    dw $9C02                                                             ;88BC0D;
-    db $81                                                               ;88BC0F;
-    dw $9C02                                                             ;88BC10;
-    db $81                                                               ;88BC12;
-    dw $9C02                                                             ;88BC13;
-    db $81                                                               ;88BC15;
-    dw $9C02                                                             ;88BC16;
-    db $81                                                               ;88BC18;
-    dw $9C02                                                             ;88BC19;
-    db $81                                                               ;88BC1B;
-    dw $9C02                                                             ;88BC1C;
-    db $81                                                               ;88BC1E;
-    dw $9C02                                                             ;88BC1F;
-    db $81                                                               ;88BC21;
-    dw $9C02                                                             ;88BC22;
-    db $81                                                               ;88BC24;
-    dw $9C02                                                             ;88BC25;
-    db $81                                                               ;88BC27;
-    dw $9C02                                                             ;88BC28;
-    db $81                                                               ;88BC2A;
-    dw $9C02                                                             ;88BC2B;
-    db $81                                                               ;88BC2D;
-    dw $9C02                                                             ;88BC2E;
-    db $81                                                               ;88BC30;
-    dw $9C02                                                             ;88BC31;
-    db $81                                                               ;88BC33;
-    dw $9C02                                                             ;88BC34;
-    db $81                                                               ;88BC36;
-    dw $9C02                                                             ;88BC37;
-    db $81                                                               ;88BC39;
-    dw $9C02                                                             ;88BC3A;
-    db $81                                                               ;88BC3C;
-    dw $9C02                                                             ;88BC3D;
-    db $81                                                               ;88BC3F;
-    dw $9C02                                                             ;88BC40;
-    db $81                                                               ;88BC42;
-    dw $9C02                                                             ;88BC43;
-    db $81                                                               ;88BC45;
-    dw $9C02                                                             ;88BC46;
-    db $81                                                               ;88BC48;
-    dw $9C02                                                             ;88BC49;
-    db $81                                                               ;88BC4B;
-    dw $9C02                                                             ;88BC4C;
-    db $81                                                               ;88BC4E;
-    dw $9C02                                                             ;88BC4F;
-    db $81                                                               ;88BC51;
-    dw $9C02                                                             ;88BC52;
-    db $81                                                               ;88BC54;
-    dw $9C02                                                             ;88BC55;
-    db $81                                                               ;88BC57;
-    dw $9C02                                                             ;88BC58;
-    db $81                                                               ;88BC5A;
-    dw $9C02                                                             ;88BC5B;
-    db $81                                                               ;88BC5D;
-    dw $9C02                                                             ;88BC5E;
-    db $81                                                               ;88BC60;
-    dw $9C02                                                             ;88BC61;
-    db $81                                                               ;88BC63;
-    dw $9C02                                                             ;88BC64;
-    db $81                                                               ;88BC66;
-    dw $9C02                                                             ;88BC67;
-    db $81                                                               ;88BC69;
-    dw $9C02                                                             ;88BC6A;
-    db $81                                                               ;88BC6C;
-    dw $9C02                                                             ;88BC6D;
-    db $81                                                               ;88BC6F;
-    dw $9C02                                                             ;88BC70;
-    db $81                                                               ;88BC72;
-    dw $9C02                                                             ;88BC73;
-    db $81                                                               ;88BC75;
-    dw $9C02                                                             ;88BC76;
-    db $81                                                               ;88BC78;
-    dw $9C02                                                             ;88BC79;
-    db $81                                                               ;88BC7B;
-    dw $9C02                                                             ;88BC7C;
-    db $81                                                               ;88BC7E;
-    dw $9C02                                                             ;88BC7F;
-    db $81                                                               ;88BC81;
-    dw $9C02                                                             ;88BC82;
-    db $81                                                               ;88BC84;
-    dw $9C02                                                             ;88BC85;
-    db $81                                                               ;88BC87;
-    dw $9C02                                                             ;88BC88;
-    db $81                                                               ;88BC8A;
-    dw $9C02                                                             ;88BC8B;
-    db $81                                                               ;88BC8D;
-    dw $9C02                                                             ;88BC8E;
-    db $81                                                               ;88BC90;
-    dw $9C02                                                             ;88BC91;
-    db $81                                                               ;88BC93;
-    dw $9C02                                                             ;88BC94;
-    db $81                                                               ;88BC96;
-    dw $9C02                                                             ;88BC97;
-    db $81                                                               ;88BC99;
-    dw $9C02                                                             ;88BC9A;
-    db $81                                                               ;88BC9C;
-    dw $9C02                                                             ;88BC9D;
-    db $81                                                               ;88BC9F;
-    dw $9C02                                                             ;88BCA0;
-    db $81                                                               ;88BCA2;
-    dw $9C02                                                             ;88BCA3;
-    db $81                                                               ;88BCA5;
-    dw $9C02                                                             ;88BCA6;
-    db $81                                                               ;88BCA8;
-    dw $9C02                                                             ;88BCA9;
-    db $81                                                               ;88BCAB;
-    dw $9C02                                                             ;88BCAC;
-    db $81                                                               ;88BCAE;
-    dw $9C02                                                             ;88BCAF;
-    db $81                                                               ;88BCB1;
-    dw $9C02                                                             ;88BCB2;
-    db $81                                                               ;88BCB4;
-    dw $9C02                                                             ;88BCB5;
-    db $81                                                               ;88BCB7;
-    dw $9C02                                                             ;88BCB8;
-    db $81                                                               ;88BCBA;
-    dw $9C02                                                             ;88BCBB;
-    db $81                                                               ;88BCBD;
-    dw $9C02                                                             ;88BCBE;
-    db $81                                                               ;88BCC0;
-    dw $9C02                                                             ;88BCC1;
-    db $81                                                               ;88BCC3;
-    dw $9C02                                                             ;88BCC4;
-    db $81                                                               ;88BCC6;
-    dw $9C02                                                             ;88BCC7;
-    db $81                                                               ;88BCC9;
-    dw $9C02                                                             ;88BCCA;
-    db $81                                                               ;88BCCC;
-    dw $9C02                                                             ;88BCCD;
-    db $81                                                               ;88BCCF;
-    dw $9C02                                                             ;88BCD0;
-    db $81                                                               ;88BCD2;
-    dw $9C02                                                             ;88BCD3;
-    db $81                                                               ;88BCD5;
-    dw $9C02                                                             ;88BCD6;
-    db $81                                                               ;88BCD8;
-    dw $9C02                                                             ;88BCD9;
-    db $81                                                               ;88BCDB;
-    dw $9C02                                                             ;88BCDC;
-    db $81                                                               ;88BCDE;
-    dw $9C02                                                             ;88BCDF;
-    db $81                                                               ;88BCE1;
-    dw $9C02                                                             ;88BCE2;
-    db $81                                                               ;88BCE4;
-    dw $9C02                                                             ;88BCE5;
-    db $81                                                               ;88BCE7;
-    dw $9C02                                                             ;88BCE8;
-    db $81                                                               ;88BCEA;
-    dw $9C02                                                             ;88BCEB;
-    db $81                                                               ;88BCED;
-    dw $9C02                                                             ;88BCEE;
-    db $81                                                               ;88BCF0;
-    dw $9C02                                                             ;88BCF1;
-    db $81                                                               ;88BCF3;
-    dw $9C02                                                             ;88BCF4;
-    db $81                                                               ;88BCF6;
-    dw $9C02                                                             ;88BCF7;
-    db $81                                                               ;88BCF9;
-    dw $9C02                                                             ;88BCFA;
-    db $81                                                               ;88BCFC;
-    dw $9C02                                                             ;88BCFD;
-    db $81                                                               ;88BCFF;
-    dw $9C02                                                             ;88BD00;
-    db $81                                                               ;88BD02;
-    dw $9C02                                                             ;88BD03;
-    db $81                                                               ;88BD05;
-    dw $9C02                                                             ;88BD06;
-    db $81                                                               ;88BD08;
-    dw $9C02                                                             ;88BD09;
-    db $81                                                               ;88BD0B;
-    dw $9C02                                                             ;88BD0C;
-    db $81                                                               ;88BD0E;
-    dw $9C02                                                             ;88BD0F;
-    db $81                                                               ;88BD11;
-    dw $9C02                                                             ;88BD12;
-    db $81                                                               ;88BD14;
-    dw $9C02                                                             ;88BD15;
-    db $81                                                               ;88BD17;
-    dw $9C02                                                             ;88BD18;
-    db $81                                                               ;88BD1A;
-    dw $9C02                                                             ;88BD1B;
-    db $81                                                               ;88BD1D;
-    dw $9C02                                                             ;88BD1E;
-    db $81                                                               ;88BD20;
-    dw $9C02                                                             ;88BD21;
-    db $81                                                               ;88BD23;
-    dw $9C02                                                             ;88BD24;
-    db $81                                                               ;88BD26;
-    dw $9C02                                                             ;88BD27;
-    db $81                                                               ;88BD29;
-    dw $9C02                                                             ;88BD2A;
-    db $81                                                               ;88BD2C;
-    dw $9C02                                                             ;88BD2D;
-    db $81                                                               ;88BD2F;
-    dw $9C02                                                             ;88BD30;
-    db $81                                                               ;88BD32;
-    dw $9C02                                                             ;88BD33;
-    db $81                                                               ;88BD35;
-    dw $9C02                                                             ;88BD36;
-    db $81                                                               ;88BD38;
-    dw $9C02                                                             ;88BD39;
-    db $81                                                               ;88BD3B;
-    dw $9C02                                                             ;88BD3C;
-    db $81                                                               ;88BD3E;
-    dw $9C02                                                             ;88BD3F;
-    db $81                                                               ;88BD41;
-    dw $9C02                                                             ;88BD42;
-    db $81                                                               ;88BD44;
-    dw $9C02                                                             ;88BD45;
-    db $81                                                               ;88BD47;
-    dw $9C02                                                             ;88BD48;
-    db $81                                                               ;88BD4A;
-    dw $9C02                                                             ;88BD4B;
-    db $81                                                               ;88BD4D;
-    dw $9C02                                                             ;88BD4E;
-    db $81                                                               ;88BD50;
-    dw $9C02                                                             ;88BD51;
-    db $81                                                               ;88BD53;
-    dw $9C02                                                             ;88BD54;
-    db $81                                                               ;88BD56;
-    dw $9C02                                                             ;88BD57;
-    db $81                                                               ;88BD59;
-    dw $9C02                                                             ;88BD5A;
-    db $81                                                               ;88BD5C;
-    dw $9C02                                                             ;88BD5D;
-    db $81                                                               ;88BD5F;
-    dw $9C02                                                             ;88BD60;
-    db $81                                                               ;88BD62;
-    dw $9C02                                                             ;88BD63;
-    db $81                                                               ;88BD65;
-    dw $9C02                                                             ;88BD66;
-    db $81                                                               ;88BD68;
-    dw $9C02                                                             ;88BD69;
-    db $81                                                               ;88BD6B;
-    dw $9C02                                                             ;88BD6C;
-    db $81                                                               ;88BD6E;
-    dw $9C02                                                             ;88BD6F;
-    db $81                                                               ;88BD71;
-    dw $9C02                                                             ;88BD72;
-    db $81                                                               ;88BD74;
-    dw $9C02                                                             ;88BD75;
-    db $81                                                               ;88BD77;
-    dw $9C02                                                             ;88BD78;
-    db $81                                                               ;88BD7A;
-    dw $9C02                                                             ;88BD7B;
-    db $81                                                               ;88BD7D;
-    dw $9C02                                                             ;88BD7E;
-    db $81                                                               ;88BD80;
-    dw $9C02                                                             ;88BD81;
-    db $81                                                               ;88BD83;
-    dw $9C02                                                             ;88BD84;
-    db $81                                                               ;88BD86;
-    dw $9C02                                                             ;88BD87;
-    db $81                                                               ;88BD89;
-    dw $9C02                                                             ;88BD8A;
-    db $81                                                               ;88BD8C;
-    dw $9C02                                                             ;88BD8D;
-    db $81                                                               ;88BD8F;
-    dw $9C02                                                             ;88BD90;
-    db $81                                                               ;88BD92;
-    dw $9C02                                                             ;88BD93;
-    db $81                                                               ;88BD95;
-    dw $9C02                                                             ;88BD96;
-    db $81                                                               ;88BD98;
-    dw $9C02                                                             ;88BD99;
-    db $81                                                               ;88BD9B;
-    dw $9C02                                                             ;88BD9C;
-    db $81                                                               ;88BD9E;
-    dw $9C02                                                             ;88BD9F;
-    db $81                                                               ;88BDA1;
-    dw $9C02                                                             ;88BDA2;
-    db $81                                                               ;88BDA4;
-    dw $9C02                                                             ;88BDA5;
-    db $81                                                               ;88BDA7;
-    dw $9C02                                                             ;88BDA8;
-    db $60                                                               ;88BDAA;
-    dw $9C02                                                             ;88BDAB;
-    db $60                                                               ;88BDAD;
-    dw $9C02                                                             ;88BDAE;
-    db $00                                                               ;88BDB0;
+; 81h,$9C00 x F0h
+; 81h,$9C02 x 190h
+; 60h,$9C02 x 2
+; 0
+
+; Disregarding the unnecessary nature of the lava/acid BG3 Y scroll HDMA (see $B3B0), this table is needlessly large
+; There's no reason to have more than E0h scanlines of $9C02 (even less if the HUD is accounted for)
+    db $81 : dw $9C00                                                    ;88B62A;
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $81 : dw $9C02
+    db $60 : dw $9C02
+    db $60 : dw $9C02
+    db $00
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_IndirectHDMATable_88BDB1:
-    db $81                                                               ;88BDB1;
-    dw $9C44                                                             ;88BDB2;
-    db $81                                                               ;88BDB4;
-    dw $9C44                                                             ;88BDB5;
-    db $81                                                               ;88BDB7;
-    dw $9C44                                                             ;88BDB8;
-    db $81                                                               ;88BDBA;
-    dw $9C44                                                             ;88BDBB;
-    db $81                                                               ;88BDBD;
-    dw $9C44                                                             ;88BDBE;
-    db $81                                                               ;88BDC0;
-    dw $9C44                                                             ;88BDC1;
-    db $81                                                               ;88BDC3;
-    dw $9C44                                                             ;88BDC4;
-    db $81                                                               ;88BDC6;
-    dw $9C44                                                             ;88BDC7;
-    db $81                                                               ;88BDC9;
-    dw $9C44                                                             ;88BDCA;
-    db $81                                                               ;88BDCC;
-    dw $9C44                                                             ;88BDCD;
-    db $81                                                               ;88BDCF;
-    dw $9C44                                                             ;88BDD0;
-    db $81                                                               ;88BDD2;
-    dw $9C44                                                             ;88BDD3;
-    db $81                                                               ;88BDD5;
-    dw $9C44                                                             ;88BDD6;
-    db $81                                                               ;88BDD8;
-    dw $9C44                                                             ;88BDD9;
-    db $81                                                               ;88BDDB;
-    dw $9C44                                                             ;88BDDC;
-    db $81                                                               ;88BDDE;
-    dw $9C44                                                             ;88BDDF;
-    db $81                                                               ;88BDE1;
-    dw $9C44                                                             ;88BDE2;
-    db $81                                                               ;88BDE4;
-    dw $9C44                                                             ;88BDE5;
-    db $81                                                               ;88BDE7;
-    dw $9C44                                                             ;88BDE8;
-    db $81                                                               ;88BDEA;
-    dw $9C44                                                             ;88BDEB;
-    db $81                                                               ;88BDED;
-    dw $9C44                                                             ;88BDEE;
-    db $81                                                               ;88BDF0;
-    dw $9C44                                                             ;88BDF1;
-    db $81                                                               ;88BDF3;
-    dw $9C44                                                             ;88BDF4;
-    db $81                                                               ;88BDF6;
-    dw $9C44                                                             ;88BDF7;
-    db $81                                                               ;88BDF9;
-    dw $9C44                                                             ;88BDFA;
-    db $81                                                               ;88BDFC;
-    dw $9C44                                                             ;88BDFD;
-    db $81                                                               ;88BDFF;
-    dw $9C44                                                             ;88BE00;
-    db $81                                                               ;88BE02;
-    dw $9C44                                                             ;88BE03;
-    db $81                                                               ;88BE05;
-    dw $9C44                                                             ;88BE06;
-    db $81                                                               ;88BE08;
-    dw $9C44                                                             ;88BE09;
-    db $81                                                               ;88BE0B;
-    dw $9C44                                                             ;88BE0C;
-    db $81                                                               ;88BE0E;
-    dw $9C44                                                             ;88BE0F;
-    db $81                                                               ;88BE11;
-    dw $9C44                                                             ;88BE12;
-    db $81                                                               ;88BE14;
-    dw $9C44                                                             ;88BE15;
-    db $81                                                               ;88BE17;
-    dw $9C44                                                             ;88BE18;
-    db $81                                                               ;88BE1A;
-    dw $9C44                                                             ;88BE1B;
-    db $81                                                               ;88BE1D;
-    dw $9C44                                                             ;88BE1E;
-    db $81                                                               ;88BE20;
-    dw $9C44                                                             ;88BE21;
-    db $81                                                               ;88BE23;
-    dw $9C44                                                             ;88BE24;
-    db $81                                                               ;88BE26;
-    dw $9C44                                                             ;88BE27;
-    db $81                                                               ;88BE29;
-    dw $9C44                                                             ;88BE2A;
-    db $81                                                               ;88BE2C;
-    dw $9C44                                                             ;88BE2D;
-    db $81                                                               ;88BE2F;
-    dw $9C44                                                             ;88BE30;
-    db $81                                                               ;88BE32;
-    dw $9C44                                                             ;88BE33;
-    db $81                                                               ;88BE35;
-    dw $9C44                                                             ;88BE36;
-    db $81                                                               ;88BE38;
-    dw $9C44                                                             ;88BE39;
-    db $81                                                               ;88BE3B;
-    dw $9C44                                                             ;88BE3C;
-    db $81                                                               ;88BE3E;
-    dw $9C44                                                             ;88BE3F;
-    db $81                                                               ;88BE41;
-    dw $9C44                                                             ;88BE42;
-    db $81                                                               ;88BE44;
-    dw $9C44                                                             ;88BE45;
-    db $81                                                               ;88BE47;
-    dw $9C44                                                             ;88BE48;
-    db $81                                                               ;88BE4A;
-    dw $9C44                                                             ;88BE4B;
-    db $81                                                               ;88BE4D;
-    dw $9C44                                                             ;88BE4E;
-    db $81                                                               ;88BE50;
-    dw $9C44                                                             ;88BE51;
-    db $81                                                               ;88BE53;
-    dw $9C44                                                             ;88BE54;
-    db $81                                                               ;88BE56;
-    dw $9C44                                                             ;88BE57;
-    db $81                                                               ;88BE59;
-    dw $9C44                                                             ;88BE5A;
-    db $81                                                               ;88BE5C;
-    dw $9C44                                                             ;88BE5D;
-    db $81                                                               ;88BE5F;
-    dw $9C44                                                             ;88BE60;
-    db $81                                                               ;88BE62;
-    dw $9C44                                                             ;88BE63;
-    db $81                                                               ;88BE65;
-    dw $9C44                                                             ;88BE66;
-    db $81                                                               ;88BE68;
-    dw $9C44                                                             ;88BE69;
-    db $81                                                               ;88BE6B;
-    dw $9C44                                                             ;88BE6C;
-    db $81                                                               ;88BE6E;
-    dw $9C44                                                             ;88BE6F;
-    db $81                                                               ;88BE71;
-    dw $9C44                                                             ;88BE72;
-    db $81                                                               ;88BE74;
-    dw $9C44                                                             ;88BE75;
-    db $81                                                               ;88BE77;
-    dw $9C44                                                             ;88BE78;
-    db $81                                                               ;88BE7A;
-    dw $9C44                                                             ;88BE7B;
-    db $81                                                               ;88BE7D;
-    dw $9C44                                                             ;88BE7E;
-    db $81                                                               ;88BE80;
-    dw $9C44                                                             ;88BE81;
-    db $81                                                               ;88BE83;
-    dw $9C44                                                             ;88BE84;
-    db $81                                                               ;88BE86;
-    dw $9C44                                                             ;88BE87;
-    db $81                                                               ;88BE89;
-    dw $9C44                                                             ;88BE8A;
-    db $81                                                               ;88BE8C;
-    dw $9C44                                                             ;88BE8D;
-    db $81                                                               ;88BE8F;
-    dw $9C44                                                             ;88BE90;
-    db $81                                                               ;88BE92;
-    dw $9C44                                                             ;88BE93;
-    db $81                                                               ;88BE95;
-    dw $9C44                                                             ;88BE96;
-    db $81                                                               ;88BE98;
-    dw $9C44                                                             ;88BE99;
-    db $81                                                               ;88BE9B;
-    dw $9C44                                                             ;88BE9C;
-    db $81                                                               ;88BE9E;
-    dw $9C44                                                             ;88BE9F;
-    db $81                                                               ;88BEA1;
-    dw $9C44                                                             ;88BEA2;
-    db $81                                                               ;88BEA4;
-    dw $9C44                                                             ;88BEA5;
-    db $81                                                               ;88BEA7;
-    dw $9C44                                                             ;88BEA8;
-    db $81                                                               ;88BEAA;
-    dw $9C44                                                             ;88BEAB;
-    db $81                                                               ;88BEAD;
-    dw $9C44                                                             ;88BEAE;
-    db $81                                                               ;88BEB0;
-    dw $9C44                                                             ;88BEB1;
-    db $81                                                               ;88BEB3;
-    dw $9C44                                                             ;88BEB4;
-    db $81                                                               ;88BEB6;
-    dw $9C44                                                             ;88BEB7;
-    db $81                                                               ;88BEB9;
-    dw $9C44                                                             ;88BEBA;
-    db $81                                                               ;88BEBC;
-    dw $9C44                                                             ;88BEBD;
-    db $81                                                               ;88BEBF;
-    dw $9C44                                                             ;88BEC0;
-    db $81                                                               ;88BEC2;
-    dw $9C44                                                             ;88BEC3;
-    db $81                                                               ;88BEC5;
-    dw $9C44                                                             ;88BEC6;
-    db $81                                                               ;88BEC8;
-    dw $9C44                                                             ;88BEC9;
-    db $81                                                               ;88BECB;
-    dw $9C44                                                             ;88BECC;
-    db $81                                                               ;88BECE;
-    dw $9C44                                                             ;88BECF;
-    db $81                                                               ;88BED1;
-    dw $9C44                                                             ;88BED2;
-    db $81                                                               ;88BED4;
-    dw $9C44                                                             ;88BED5;
-    db $81                                                               ;88BED7;
-    dw $9C44                                                             ;88BED8;
-    db $81                                                               ;88BEDA;
-    dw $9C44                                                             ;88BEDB;
-    db $81                                                               ;88BEDD;
-    dw $9C44                                                             ;88BEDE;
-    db $81                                                               ;88BEE0;
-    dw $9C44                                                             ;88BEE1;
-    db $81                                                               ;88BEE3;
-    dw $9C44                                                             ;88BEE4;
-    db $81                                                               ;88BEE6;
-    dw $9C44                                                             ;88BEE7;
-    db $81                                                               ;88BEE9;
-    dw $9C44                                                             ;88BEEA;
-    db $81                                                               ;88BEEC;
-    dw $9C44                                                             ;88BEED;
-    db $81                                                               ;88BEEF;
-    dw $9C44                                                             ;88BEF0;
-    db $81                                                               ;88BEF2;
-    dw $9C44                                                             ;88BEF3;
-    db $81                                                               ;88BEF5;
-    dw $9C44                                                             ;88BEF6;
-    db $81                                                               ;88BEF8;
-    dw $9C44                                                             ;88BEF9;
-    db $81                                                               ;88BEFB;
-    dw $9C44                                                             ;88BEFC;
-    db $81                                                               ;88BEFE;
-    dw $9C44                                                             ;88BEFF;
-    db $81                                                               ;88BF01;
-    dw $9C44                                                             ;88BF02;
-    db $81                                                               ;88BF04;
-    dw $9C44                                                             ;88BF05;
-    db $81                                                               ;88BF07;
-    dw $9C44                                                             ;88BF08;
-    db $81                                                               ;88BF0A;
-    dw $9C44                                                             ;88BF0B;
-    db $81                                                               ;88BF0D;
-    dw $9C44                                                             ;88BF0E;
-    db $81                                                               ;88BF10;
-    dw $9C44                                                             ;88BF11;
-    db $81                                                               ;88BF13;
-    dw $9C44                                                             ;88BF14;
-    db $81                                                               ;88BF16;
-    dw $9C44                                                             ;88BF17;
-    db $81                                                               ;88BF19;
-    dw $9C44                                                             ;88BF1A;
-    db $81                                                               ;88BF1C;
-    dw $9C44                                                             ;88BF1D;
-    db $81                                                               ;88BF1F;
-    dw $9C44                                                             ;88BF20;
-    db $81                                                               ;88BF22;
-    dw $9C44                                                             ;88BF23;
-    db $81                                                               ;88BF25;
-    dw $9C44                                                             ;88BF26;
-    db $81                                                               ;88BF28;
-    dw $9C44                                                             ;88BF29;
-    db $81                                                               ;88BF2B;
-    dw $9C44                                                             ;88BF2C;
-    db $81                                                               ;88BF2E;
-    dw $9C44                                                             ;88BF2F;
-    db $81                                                               ;88BF31;
-    dw $9C44                                                             ;88BF32;
-    db $81                                                               ;88BF34;
-    dw $9C44                                                             ;88BF35;
-    db $81                                                               ;88BF37;
-    dw $9C44                                                             ;88BF38;
-    db $81                                                               ;88BF3A;
-    dw $9C44                                                             ;88BF3B;
-    db $81                                                               ;88BF3D;
-    dw $9C44                                                             ;88BF3E;
-    db $81                                                               ;88BF40;
-    dw $9C44                                                             ;88BF41;
-    db $81                                                               ;88BF43;
-    dw $9C44                                                             ;88BF44;
-    db $81                                                               ;88BF46;
-    dw $9C44                                                             ;88BF47;
-    db $81                                                               ;88BF49;
-    dw $9C44                                                             ;88BF4A;
-    db $81                                                               ;88BF4C;
-    dw $9C44                                                             ;88BF4D;
-    db $81                                                               ;88BF4F;
-    dw $9C44                                                             ;88BF50;
-    db $81                                                               ;88BF52;
-    dw $9C44                                                             ;88BF53;
-    db $81                                                               ;88BF55;
-    dw $9C44                                                             ;88BF56;
-    db $81                                                               ;88BF58;
-    dw $9C44                                                             ;88BF59;
-    db $81                                                               ;88BF5B;
-    dw $9C44                                                             ;88BF5C;
-    db $81                                                               ;88BF5E;
-    dw $9C44                                                             ;88BF5F;
-    db $81                                                               ;88BF61;
-    dw $9C44                                                             ;88BF62;
-    db $81                                                               ;88BF64;
-    dw $9C44                                                             ;88BF65;
-    db $81                                                               ;88BF67;
-    dw $9C44                                                             ;88BF68;
-    db $81                                                               ;88BF6A;
-    dw $9C44                                                             ;88BF6B;
-    db $81                                                               ;88BF6D;
-    dw $9C44                                                             ;88BF6E;
-    db $81                                                               ;88BF70;
-    dw $9C44                                                             ;88BF71;
-    db $81                                                               ;88BF73;
-    dw $9C44                                                             ;88BF74;
-    db $81                                                               ;88BF76;
-    dw $9C44                                                             ;88BF77;
-    db $81                                                               ;88BF79;
-    dw $9C44                                                             ;88BF7A;
-    db $81                                                               ;88BF7C;
-    dw $9C44                                                             ;88BF7D;
-    db $81                                                               ;88BF7F;
-    dw $9C44                                                             ;88BF80;
-    db $81                                                               ;88BF82;
-    dw $9C44                                                             ;88BF83;
-    db $81                                                               ;88BF85;
-    dw $9C44                                                             ;88BF86;
-    db $81                                                               ;88BF88;
-    dw $9C44                                                             ;88BF89;
-    db $81                                                               ;88BF8B;
-    dw $9C44                                                             ;88BF8C;
-    db $81                                                               ;88BF8E;
-    dw $9C44                                                             ;88BF8F;
-    db $81                                                               ;88BF91;
-    dw $9C44                                                             ;88BF92;
-    db $81                                                               ;88BF94;
-    dw $9C44                                                             ;88BF95;
-    db $81                                                               ;88BF97;
-    dw $9C44                                                             ;88BF98;
-    db $81                                                               ;88BF9A;
-    dw $9C44                                                             ;88BF9B;
-    db $81                                                               ;88BF9D;
-    dw $9C44                                                             ;88BF9E;
-    db $81                                                               ;88BFA0;
-    dw $9C44                                                             ;88BFA1;
-    db $81                                                               ;88BFA3;
-    dw $9C44                                                             ;88BFA4;
-    db $81                                                               ;88BFA6;
-    dw $9C44                                                             ;88BFA7;
-    db $81                                                               ;88BFA9;
-    dw $9C44                                                             ;88BFAA;
-    db $81                                                               ;88BFAC;
-    dw $9C44                                                             ;88BFAD;
-    db $81                                                               ;88BFAF;
-    dw $9C44                                                             ;88BFB0;
-    db $81                                                               ;88BFB2;
-    dw $9C44                                                             ;88BFB3;
-    db $81                                                               ;88BFB5;
-    dw $9C44                                                             ;88BFB6;
-    db $81                                                               ;88BFB8;
-    dw $9C44                                                             ;88BFB9;
-    db $81                                                               ;88BFBB;
-    dw $9C44                                                             ;88BFBC;
-    db $81                                                               ;88BFBE;
-    dw $9C44                                                             ;88BFBF;
-    db $81                                                               ;88BFC1;
-    dw $9C44                                                             ;88BFC2;
-    db $81                                                               ;88BFC4;
-    dw $9C44                                                             ;88BFC5;
-    db $81                                                               ;88BFC7;
-    dw $9C44                                                             ;88BFC8;
-    db $81                                                               ;88BFCA;
-    dw $9C44                                                             ;88BFCB;
-    db $81                                                               ;88BFCD;
-    dw $9C44                                                             ;88BFCE;
-    db $81                                                               ;88BFD0;
-    dw $9C44                                                             ;88BFD1;
-    db $81                                                               ;88BFD3;
-    dw $9C44                                                             ;88BFD4;
-    db $81                                                               ;88BFD6;
-    dw $9C44                                                             ;88BFD7;
-    db $81                                                               ;88BFD9;
-    dw $9C44                                                             ;88BFDA;
-    db $81                                                               ;88BFDC;
-    dw $9C44                                                             ;88BFDD;
-    db $81                                                               ;88BFDF;
-    dw $9C44                                                             ;88BFE0;
-    db $81                                                               ;88BFE2;
-    dw $9C44                                                             ;88BFE3;
-    db $81                                                               ;88BFE5;
-    dw $9C44                                                             ;88BFE6;
-    db $81                                                               ;88BFE8;
-    dw $9C44                                                             ;88BFE9;
-    db $81                                                               ;88BFEB;
-    dw $9C44                                                             ;88BFEC;
-    db $81                                                               ;88BFEE;
-    dw $9C44                                                             ;88BFEF;
-    db $81                                                               ;88BFF1;
-    dw $9C44                                                             ;88BFF2;
-    db $81                                                               ;88BFF4;
-    dw $9C44                                                             ;88BFF5;
-    db $81                                                               ;88BFF7;
-    dw $9C44                                                             ;88BFF8;
-    db $81                                                               ;88BFFA;
-    dw $9C44                                                             ;88BFFB;
-    db $81                                                               ;88BFFD;
-    dw $9C44                                                             ;88BFFE;
-    db $81                                                               ;88C000;
-    dw $9C44                                                             ;88C001;
-    db $81                                                               ;88C003;
-    dw $9C44                                                             ;88C004;
-    db $81                                                               ;88C006;
-    dw $9C44                                                             ;88C007;
-    db $81                                                               ;88C009;
-    dw $9C44                                                             ;88C00A;
-    db $81                                                               ;88C00C;
-    dw $9C44                                                             ;88C00D;
-    db $81                                                               ;88C00F;
-    dw $9C44                                                             ;88C010;
-    db $81                                                               ;88C012;
-    dw $9C44                                                             ;88C013;
-    db $81                                                               ;88C015;
-    dw $9C44                                                             ;88C016;
-    db $81                                                               ;88C018;
-    dw $9C44                                                             ;88C019;
-    db $81                                                               ;88C01B;
-    dw $9C44                                                             ;88C01C;
-    db $81                                                               ;88C01E;
-    dw $9C44                                                             ;88C01F;
-    db $81                                                               ;88C021;
-    dw $9C44                                                             ;88C022;
-    db $81                                                               ;88C024;
-    dw $9C44                                                             ;88C025;
-    db $81                                                               ;88C027;
-    dw $9C44                                                             ;88C028;
-    db $81                                                               ;88C02A;
-    dw $9C44                                                             ;88C02B;
-    db $81                                                               ;88C02D;
-    dw $9C44                                                             ;88C02E;
-    db $81                                                               ;88C030;
-    dw $9C44                                                             ;88C031;
-    db $81                                                               ;88C033;
-    dw $9C44                                                             ;88C034;
-    db $81                                                               ;88C036;
-    dw $9C44                                                             ;88C037;
-    db $81                                                               ;88C039;
-    dw $9C44                                                             ;88C03A;
-    db $81                                                               ;88C03C;
-    dw $9C44                                                             ;88C03D;
-    db $81                                                               ;88C03F;
-    dw $9C44                                                             ;88C040;
-    db $81                                                               ;88C042;
-    dw $9C44                                                             ;88C043;
-    db $81                                                               ;88C045;
-    dw $9C44                                                             ;88C046;
-    db $81                                                               ;88C048;
-    dw $9C44                                                             ;88C049;
-    db $81                                                               ;88C04B;
-    dw $9C44                                                             ;88C04C;
-    db $81                                                               ;88C04E;
-    dw $9C44                                                             ;88C04F;
-    db $81                                                               ;88C051;
-    dw $9C44                                                             ;88C052;
-    db $81                                                               ;88C054;
-    dw $9C44                                                             ;88C055;
-    db $81                                                               ;88C057;
-    dw $9C44                                                             ;88C058;
-    db $81                                                               ;88C05A;
-    dw $9C44                                                             ;88C05B;
-    db $81                                                               ;88C05D;
-    dw $9C44                                                             ;88C05E;
-    db $81                                                               ;88C060;
-    dw $9C44                                                             ;88C061;
-    db $81                                                               ;88C063;
-    dw $9C44                                                             ;88C064;
-    db $81                                                               ;88C066;
-    dw $9C44                                                             ;88C067;
-    db $81                                                               ;88C069;
-    dw $9C44                                                             ;88C06A;
-    db $81                                                               ;88C06C;
-    dw $9C44                                                             ;88C06D;
-    db $81                                                               ;88C06F;
-    dw $9C44                                                             ;88C070;
-    db $81                                                               ;88C072;
-    dw $9C44                                                             ;88C073;
-    db $81                                                               ;88C075;
-    dw $9C44                                                             ;88C076;
-    db $81                                                               ;88C078;
-    dw $9C44                                                             ;88C079;
-    db $81                                                               ;88C07B;
-    dw $9C44                                                             ;88C07C;
-    db $81                                                               ;88C07E;
-    dw $9C44                                                             ;88C07F;
-    db $81                                                               ;88C081;
-    dw $9C44                                                             ;88C082;
-    db $81                                                               ;88C084;
-    dw $9C44                                                             ;88C085;
-    db $81                                                               ;88C087;
-    dw $9C44                                                             ;88C088;
-    db $81                                                               ;88C08A;
-    dw $9C44                                                             ;88C08B;
-    db $81                                                               ;88C08D;
-    dw $9C44                                                             ;88C08E;
-    db $81                                                               ;88C090;
-    dw $9C44                                                             ;88C091;
-    db $81                                                               ;88C093;
-    dw $9C44                                                             ;88C094;
-    db $81                                                               ;88C096;
-    dw $9C44                                                             ;88C097;
-    db $81                                                               ;88C099;
-    dw $9C44                                                             ;88C09A;
-    db $81                                                               ;88C09C;
-    dw $9C44                                                             ;88C09D;
-    db $81                                                               ;88C09F;
-    dw $9C44                                                             ;88C0A0;
-    db $81                                                               ;88C0A2;
-    dw $9C44                                                             ;88C0A3;
-    db $81                                                               ;88C0A5;
-    dw $9C44                                                             ;88C0A6;
-    db $81                                                               ;88C0A8;
-    dw $9C44                                                             ;88C0A9;
-    db $81                                                               ;88C0AB;
-    dw $9C44                                                             ;88C0AC;
-    db $81                                                               ;88C0AE;
-    dw $9C44                                                             ;88C0AF;
+    db $81 : dw $9C44                                                    ;88BDB1;
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 IndirectHDMATable_LavaAcidBG2_Yscroll:
-    db $81                                                               ;88C0B1;
-    dw $9C46                                                             ;88C0B2;
-    db $81                                                               ;88C0B4;
-    dw $9C48                                                             ;88C0B5;
-    db $81                                                               ;88C0B7;
-    dw $9C4A                                                             ;88C0B8;
-    db $81                                                               ;88C0BA;
-    dw $9C4C                                                             ;88C0BB;
-    db $81                                                               ;88C0BD;
-    dw $9C4E                                                             ;88C0BE;
-    db $81                                                               ;88C0C0;
-    dw $9C50                                                             ;88C0C1;
-    db $81                                                               ;88C0C3;
-    dw $9C52                                                             ;88C0C4;
-    db $81                                                               ;88C0C6;
-    dw $9C54                                                             ;88C0C7;
-    db $81                                                               ;88C0C9;
-    dw $9C56                                                             ;88C0CA;
-    db $81                                                               ;88C0CC;
-    dw $9C58                                                             ;88C0CD;
-    db $81                                                               ;88C0CF;
-    dw $9C5A                                                             ;88C0D0;
-    db $81                                                               ;88C0D2;
-    dw $9C5C                                                             ;88C0D3;
-    db $81                                                               ;88C0D5;
-    dw $9C5E                                                             ;88C0D6;
-    db $81                                                               ;88C0D8;
-    dw $9C60                                                             ;88C0D9;
-    db $81                                                               ;88C0DB;
-    dw $9C62                                                             ;88C0DC;
-    db $81                                                               ;88C0DE;
-    dw $9C64                                                             ;88C0DF;
-    db $81                                                               ;88C0E1;
-    dw $9C46                                                             ;88C0E2;
-    db $81                                                               ;88C0E4;
-    dw $9C48                                                             ;88C0E5;
-    db $81                                                               ;88C0E7;
-    dw $9C4A                                                             ;88C0E8;
-    db $81                                                               ;88C0EA;
-    dw $9C4C                                                             ;88C0EB;
-    db $81                                                               ;88C0ED;
-    dw $9C4E                                                             ;88C0EE;
-    db $81                                                               ;88C0F0;
-    dw $9C50                                                             ;88C0F1;
-    db $81                                                               ;88C0F3;
-    dw $9C52                                                             ;88C0F4;
-    db $81                                                               ;88C0F6;
-    dw $9C54                                                             ;88C0F7;
-    db $81                                                               ;88C0F9;
-    dw $9C56                                                             ;88C0FA;
-    db $81                                                               ;88C0FC;
-    dw $9C58                                                             ;88C0FD;
-    db $81                                                               ;88C0FF;
-    dw $9C5A                                                             ;88C100;
-    db $81                                                               ;88C102;
-    dw $9C5C                                                             ;88C103;
-    db $81                                                               ;88C105;
-    dw $9C5E                                                             ;88C106;
-    db $81                                                               ;88C108;
-    dw $9C60                                                             ;88C109;
-    db $81                                                               ;88C10B;
-    dw $9C62                                                             ;88C10C;
-    db $81                                                               ;88C10E;
-    dw $9C64                                                             ;88C10F;
-    db $81                                                               ;88C111;
-    dw $9C46                                                             ;88C112;
-    db $81                                                               ;88C114;
-    dw $9C48                                                             ;88C115;
-    db $81                                                               ;88C117;
-    dw $9C4A                                                             ;88C118;
-    db $81                                                               ;88C11A;
-    dw $9C4C                                                             ;88C11B;
-    db $81                                                               ;88C11D;
-    dw $9C4E                                                             ;88C11E;
-    db $81                                                               ;88C120;
-    dw $9C50                                                             ;88C121;
-    db $81                                                               ;88C123;
-    dw $9C52                                                             ;88C124;
-    db $81                                                               ;88C126;
-    dw $9C54                                                             ;88C127;
-    db $81                                                               ;88C129;
-    dw $9C56                                                             ;88C12A;
-    db $81                                                               ;88C12C;
-    dw $9C58                                                             ;88C12D;
-    db $81                                                               ;88C12F;
-    dw $9C5A                                                             ;88C130;
-    db $81                                                               ;88C132;
-    dw $9C5C                                                             ;88C133;
-    db $81                                                               ;88C135;
-    dw $9C5E                                                             ;88C136;
-    db $81                                                               ;88C138;
-    dw $9C60                                                             ;88C139;
-    db $81                                                               ;88C13B;
-    dw $9C62                                                             ;88C13C;
-    db $81                                                               ;88C13E;
-    dw $9C64                                                             ;88C13F;
-    db $81                                                               ;88C141;
-    dw $9C46                                                             ;88C142;
-    db $81                                                               ;88C144;
-    dw $9C48                                                             ;88C145;
-    db $81                                                               ;88C147;
-    dw $9C4A                                                             ;88C148;
-    db $81                                                               ;88C14A;
-    dw $9C4C                                                             ;88C14B;
-    db $81                                                               ;88C14D;
-    dw $9C4E                                                             ;88C14E;
-    db $81                                                               ;88C150;
-    dw $9C50                                                             ;88C151;
-    db $81                                                               ;88C153;
-    dw $9C52                                                             ;88C154;
-    db $81                                                               ;88C156;
-    dw $9C54                                                             ;88C157;
-    db $81                                                               ;88C159;
-    dw $9C56                                                             ;88C15A;
-    db $81                                                               ;88C15C;
-    dw $9C58                                                             ;88C15D;
-    db $81                                                               ;88C15F;
-    dw $9C5A                                                             ;88C160;
-    db $81                                                               ;88C162;
-    dw $9C5C                                                             ;88C163;
-    db $81                                                               ;88C165;
-    dw $9C5E                                                             ;88C166;
-    db $81                                                               ;88C168;
-    dw $9C60                                                             ;88C169;
-    db $81                                                               ;88C16B;
-    dw $9C62                                                             ;88C16C;
-    db $81                                                               ;88C16E;
-    dw $9C64                                                             ;88C16F;
-    db $81                                                               ;88C171;
-    dw $9C46                                                             ;88C172;
-    db $81                                                               ;88C174;
-    dw $9C48                                                             ;88C175;
-    db $81                                                               ;88C177;
-    dw $9C4A                                                             ;88C178;
-    db $81                                                               ;88C17A;
-    dw $9C4C                                                             ;88C17B;
-    db $81                                                               ;88C17D;
-    dw $9C4E                                                             ;88C17E;
-    db $81                                                               ;88C180;
-    dw $9C50                                                             ;88C181;
-    db $81                                                               ;88C183;
-    dw $9C52                                                             ;88C184;
-    db $81                                                               ;88C186;
-    dw $9C54                                                             ;88C187;
-    db $81                                                               ;88C189;
-    dw $9C56                                                             ;88C18A;
-    db $81                                                               ;88C18C;
-    dw $9C58                                                             ;88C18D;
-    db $81                                                               ;88C18F;
-    dw $9C5A                                                             ;88C190;
-    db $81                                                               ;88C192;
-    dw $9C5C                                                             ;88C193;
-    db $81                                                               ;88C195;
-    dw $9C5E                                                             ;88C196;
-    db $81                                                               ;88C198;
-    dw $9C60                                                             ;88C199;
-    db $81                                                               ;88C19B;
-    dw $9C62                                                             ;88C19C;
-    db $81                                                               ;88C19E;
-    dw $9C64                                                             ;88C19F;
-    db $81                                                               ;88C1A1;
-    dw $9C46                                                             ;88C1A2;
-    db $81                                                               ;88C1A4;
-    dw $9C48                                                             ;88C1A5;
-    db $81                                                               ;88C1A7;
-    dw $9C4A                                                             ;88C1A8;
-    db $81                                                               ;88C1AA;
-    dw $9C4C                                                             ;88C1AB;
-    db $81                                                               ;88C1AD;
-    dw $9C4E                                                             ;88C1AE;
-    db $81                                                               ;88C1B0;
-    dw $9C50                                                             ;88C1B1;
-    db $81                                                               ;88C1B3;
-    dw $9C52                                                             ;88C1B4;
-    db $81                                                               ;88C1B6;
-    dw $9C54                                                             ;88C1B7;
-    db $81                                                               ;88C1B9;
-    dw $9C56                                                             ;88C1BA;
-    db $81                                                               ;88C1BC;
-    dw $9C58                                                             ;88C1BD;
-    db $81                                                               ;88C1BF;
-    dw $9C5A                                                             ;88C1C0;
-    db $81                                                               ;88C1C2;
-    dw $9C5C                                                             ;88C1C3;
-    db $81                                                               ;88C1C5;
-    dw $9C5E                                                             ;88C1C6;
-    db $81                                                               ;88C1C8;
-    dw $9C60                                                             ;88C1C9;
-    db $81                                                               ;88C1CB;
-    dw $9C62                                                             ;88C1CC;
-    db $81                                                               ;88C1CE;
-    dw $9C64                                                             ;88C1CF;
-    db $81                                                               ;88C1D1;
-    dw $9C46                                                             ;88C1D2;
-    db $81                                                               ;88C1D4;
-    dw $9C48                                                             ;88C1D5;
-    db $81                                                               ;88C1D7;
-    dw $9C4A                                                             ;88C1D8;
-    db $81                                                               ;88C1DA;
-    dw $9C4C                                                             ;88C1DB;
-    db $81                                                               ;88C1DD;
-    dw $9C4E                                                             ;88C1DE;
-    db $81                                                               ;88C1E0;
-    dw $9C50                                                             ;88C1E1;
-    db $81                                                               ;88C1E3;
-    dw $9C52                                                             ;88C1E4;
-    db $81                                                               ;88C1E6;
-    dw $9C54                                                             ;88C1E7;
-    db $81                                                               ;88C1E9;
-    dw $9C56                                                             ;88C1EA;
-    db $81                                                               ;88C1EC;
-    dw $9C58                                                             ;88C1ED;
-    db $81                                                               ;88C1EF;
-    dw $9C5A                                                             ;88C1F0;
-    db $81                                                               ;88C1F2;
-    dw $9C5C                                                             ;88C1F3;
-    db $81                                                               ;88C1F5;
-    dw $9C5E                                                             ;88C1F6;
-    db $81                                                               ;88C1F8;
-    dw $9C60                                                             ;88C1F9;
-    db $81                                                               ;88C1FB;
-    dw $9C62                                                             ;88C1FC;
-    db $81                                                               ;88C1FE;
-    dw $9C64                                                             ;88C1FF;
-    db $81                                                               ;88C201;
-    dw $9C46                                                             ;88C202;
-    db $81                                                               ;88C204;
-    dw $9C48                                                             ;88C205;
-    db $81                                                               ;88C207;
-    dw $9C4A                                                             ;88C208;
-    db $81                                                               ;88C20A;
-    dw $9C4C                                                             ;88C20B;
-    db $81                                                               ;88C20D;
-    dw $9C4E                                                             ;88C20E;
-    db $81                                                               ;88C210;
-    dw $9C50                                                             ;88C211;
-    db $81                                                               ;88C213;
-    dw $9C52                                                             ;88C214;
-    db $81                                                               ;88C216;
-    dw $9C54                                                             ;88C217;
-    db $81                                                               ;88C219;
-    dw $9C56                                                             ;88C21A;
-    db $81                                                               ;88C21C;
-    dw $9C58                                                             ;88C21D;
-    db $81                                                               ;88C21F;
-    dw $9C5A                                                             ;88C220;
-    db $81                                                               ;88C222;
-    dw $9C5C                                                             ;88C223;
-    db $81                                                               ;88C225;
-    dw $9C5E                                                             ;88C226;
-    db $81                                                               ;88C228;
-    dw $9C60                                                             ;88C229;
-    db $81                                                               ;88C22B;
-    dw $9C62                                                             ;88C22C;
-    db $81                                                               ;88C22E;
-    dw $9C64                                                             ;88C22F;
-    db $81                                                               ;88C231;
-    dw $9C46                                                             ;88C232;
-    db $81                                                               ;88C234;
-    dw $9C48                                                             ;88C235;
-    db $81                                                               ;88C237;
-    dw $9C4A                                                             ;88C238;
-    db $81                                                               ;88C23A;
-    dw $9C4C                                                             ;88C23B;
-    db $81                                                               ;88C23D;
-    dw $9C4E                                                             ;88C23E;
-    db $81                                                               ;88C240;
-    dw $9C50                                                             ;88C241;
-    db $81                                                               ;88C243;
-    dw $9C52                                                             ;88C244;
-    db $81                                                               ;88C246;
-    dw $9C54                                                             ;88C247;
-    db $81                                                               ;88C249;
-    dw $9C56                                                             ;88C24A;
-    db $81                                                               ;88C24C;
-    dw $9C58                                                             ;88C24D;
-    db $81                                                               ;88C24F;
-    dw $9C5A                                                             ;88C250;
-    db $81                                                               ;88C252;
-    dw $9C5C                                                             ;88C253;
-    db $81                                                               ;88C255;
-    dw $9C5E                                                             ;88C256;
-    db $81                                                               ;88C258;
-    dw $9C60                                                             ;88C259;
-    db $81                                                               ;88C25B;
-    dw $9C62                                                             ;88C25C;
-    db $81                                                               ;88C25E;
-    dw $9C64                                                             ;88C25F;
-    db $81                                                               ;88C261;
-    dw $9C46                                                             ;88C262;
-    db $81                                                               ;88C264;
-    dw $9C48                                                             ;88C265;
-    db $81                                                               ;88C267;
-    dw $9C4A                                                             ;88C268;
-    db $81                                                               ;88C26A;
-    dw $9C4C                                                             ;88C26B;
-    db $81                                                               ;88C26D;
-    dw $9C4E                                                             ;88C26E;
-    db $81                                                               ;88C270;
-    dw $9C50                                                             ;88C271;
-    db $81                                                               ;88C273;
-    dw $9C52                                                             ;88C274;
-    db $81                                                               ;88C276;
-    dw $9C54                                                             ;88C277;
-    db $81                                                               ;88C279;
-    dw $9C56                                                             ;88C27A;
-    db $81                                                               ;88C27C;
-    dw $9C58                                                             ;88C27D;
-    db $81                                                               ;88C27F;
-    dw $9C5A                                                             ;88C280;
-    db $81                                                               ;88C282;
-    dw $9C5C                                                             ;88C283;
-    db $81                                                               ;88C285;
-    dw $9C5E                                                             ;88C286;
-    db $81                                                               ;88C288;
-    dw $9C60                                                             ;88C289;
-    db $81                                                               ;88C28B;
-    dw $9C62                                                             ;88C28C;
-    db $81                                                               ;88C28E;
-    dw $9C64                                                             ;88C28F;
-    db $81                                                               ;88C291;
-    dw $9C46                                                             ;88C292;
-    db $81                                                               ;88C294;
-    dw $9C48                                                             ;88C295;
-    db $81                                                               ;88C297;
-    dw $9C4A                                                             ;88C298;
-    db $81                                                               ;88C29A;
-    dw $9C4C                                                             ;88C29B;
-    db $81                                                               ;88C29D;
-    dw $9C4E                                                             ;88C29E;
-    db $81                                                               ;88C2A0;
-    dw $9C50                                                             ;88C2A1;
-    db $81                                                               ;88C2A3;
-    dw $9C52                                                             ;88C2A4;
-    db $81                                                               ;88C2A6;
-    dw $9C54                                                             ;88C2A7;
-    db $81                                                               ;88C2A9;
-    dw $9C56                                                             ;88C2AA;
-    db $81                                                               ;88C2AC;
-    dw $9C58                                                             ;88C2AD;
-    db $81                                                               ;88C2AF;
-    dw $9C5A                                                             ;88C2B0;
-    db $81                                                               ;88C2B2;
-    dw $9C5C                                                             ;88C2B3;
-    db $81                                                               ;88C2B5;
-    dw $9C5E                                                             ;88C2B6;
-    db $81                                                               ;88C2B8;
-    dw $9C60                                                             ;88C2B9;
-    db $81                                                               ;88C2BB;
-    dw $9C62                                                             ;88C2BC;
-    db $81                                                               ;88C2BE;
-    dw $9C64                                                             ;88C2BF;
-    db $81                                                               ;88C2C1;
-    dw $9C46                                                             ;88C2C2;
-    db $81                                                               ;88C2C4;
-    dw $9C48                                                             ;88C2C5;
-    db $81                                                               ;88C2C7;
-    dw $9C4A                                                             ;88C2C8;
-    db $81                                                               ;88C2CA;
-    dw $9C4C                                                             ;88C2CB;
-    db $81                                                               ;88C2CD;
-    dw $9C4E                                                             ;88C2CE;
-    db $81                                                               ;88C2D0;
-    dw $9C50                                                             ;88C2D1;
-    db $81                                                               ;88C2D3;
-    dw $9C52                                                             ;88C2D4;
-    db $81                                                               ;88C2D6;
-    dw $9C54                                                             ;88C2D7;
-    db $81                                                               ;88C2D9;
-    dw $9C56                                                             ;88C2DA;
-    db $81                                                               ;88C2DC;
-    dw $9C58                                                             ;88C2DD;
-    db $81                                                               ;88C2DF;
-    dw $9C5A                                                             ;88C2E0;
-    db $81                                                               ;88C2E2;
-    dw $9C5C                                                             ;88C2E3;
-    db $81                                                               ;88C2E5;
-    dw $9C5E                                                             ;88C2E6;
-    db $81                                                               ;88C2E8;
-    dw $9C60                                                             ;88C2E9;
-    db $81                                                               ;88C2EB;
-    dw $9C62                                                             ;88C2EC;
-    db $81                                                               ;88C2EE;
-    dw $9C64                                                             ;88C2EF;
-    db $81                                                               ;88C2F1;
-    dw $9C46                                                             ;88C2F2;
-    db $81                                                               ;88C2F4;
-    dw $9C48                                                             ;88C2F5;
-    db $81                                                               ;88C2F7;
-    dw $9C4A                                                             ;88C2F8;
-    db $81                                                               ;88C2FA;
-    dw $9C4C                                                             ;88C2FB;
-    db $81                                                               ;88C2FD;
-    dw $9C4E                                                             ;88C2FE;
-    db $81                                                               ;88C300;
-    dw $9C50                                                             ;88C301;
-    db $81                                                               ;88C303;
-    dw $9C52                                                             ;88C304;
-    db $81                                                               ;88C306;
-    dw $9C54                                                             ;88C307;
-    db $81                                                               ;88C309;
-    dw $9C56                                                             ;88C30A;
-    db $81                                                               ;88C30C;
-    dw $9C58                                                             ;88C30D;
-    db $81                                                               ;88C30F;
-    dw $9C5A                                                             ;88C310;
-    db $81                                                               ;88C312;
-    dw $9C5C                                                             ;88C313;
-    db $81                                                               ;88C315;
-    dw $9C5E                                                             ;88C316;
-    db $81                                                               ;88C318;
-    dw $9C60                                                             ;88C319;
-    db $81                                                               ;88C31B;
-    dw $9C62                                                             ;88C31C;
-    db $81                                                               ;88C31E;
-    dw $9C64                                                             ;88C31F;
-    db $81                                                               ;88C321;
-    dw $9C46                                                             ;88C322;
-    db $81                                                               ;88C324;
-    dw $9C48                                                             ;88C325;
-    db $81                                                               ;88C327;
-    dw $9C4A                                                             ;88C328;
-    db $81                                                               ;88C32A;
-    dw $9C4C                                                             ;88C32B;
-    db $81                                                               ;88C32D;
-    dw $9C4E                                                             ;88C32E;
-    db $81                                                               ;88C330;
-    dw $9C50                                                             ;88C331;
-    db $81                                                               ;88C333;
-    dw $9C52                                                             ;88C334;
-    db $81                                                               ;88C336;
-    dw $9C54                                                             ;88C337;
-    db $81                                                               ;88C339;
-    dw $9C56                                                             ;88C33A;
-    db $81                                                               ;88C33C;
-    dw $9C58                                                             ;88C33D;
-    db $81                                                               ;88C33F;
-    dw $9C5A                                                             ;88C340;
-    db $81                                                               ;88C342;
-    dw $9C5C                                                             ;88C343;
-    db $81                                                               ;88C345;
-    dw $9C5E                                                             ;88C346;
-    db $81                                                               ;88C348;
-    dw $9C60                                                             ;88C349;
-    db $81                                                               ;88C34B;
-    dw $9C62                                                             ;88C34C;
-    db $81                                                               ;88C34E;
-    dw $9C64                                                             ;88C34F;
-    db $81                                                               ;88C351;
-    dw $9C46                                                             ;88C352;
-    db $81                                                               ;88C354;
-    dw $9C48                                                             ;88C355;
-    db $81                                                               ;88C357;
-    dw $9C4A                                                             ;88C358;
-    db $81                                                               ;88C35A;
-    dw $9C4C                                                             ;88C35B;
-    db $81                                                               ;88C35D;
-    dw $9C4E                                                             ;88C35E;
-    db $81                                                               ;88C360;
-    dw $9C50                                                             ;88C361;
-    db $81                                                               ;88C363;
-    dw $9C52                                                             ;88C364;
-    db $81                                                               ;88C366;
-    dw $9C54                                                             ;88C367;
-    db $81                                                               ;88C369;
-    dw $9C56                                                             ;88C36A;
-    db $81                                                               ;88C36C;
-    dw $9C58                                                             ;88C36D;
-    db $81                                                               ;88C36F;
-    dw $9C5A                                                             ;88C370;
-    db $81                                                               ;88C372;
-    dw $9C5C                                                             ;88C373;
-    db $81                                                               ;88C375;
-    dw $9C5E                                                             ;88C376;
-    db $81                                                               ;88C378;
-    dw $9C60                                                             ;88C379;
-    db $81                                                               ;88C37B;
-    dw $9C62                                                             ;88C37C;
-    db $81                                                               ;88C37E;
-    dw $9C64                                                             ;88C37F;
-    db $81                                                               ;88C381;
-    dw $9C46                                                             ;88C382;
-    db $81                                                               ;88C384;
-    dw $9C48                                                             ;88C385;
-    db $81                                                               ;88C387;
-    dw $9C4A                                                             ;88C388;
-    db $81                                                               ;88C38A;
-    dw $9C4C                                                             ;88C38B;
-    db $81                                                               ;88C38D;
-    dw $9C4E                                                             ;88C38E;
-    db $81                                                               ;88C390;
-    dw $9C50                                                             ;88C391;
-    db $81                                                               ;88C393;
-    dw $9C52                                                             ;88C394;
-    db $81                                                               ;88C396;
-    dw $9C54                                                             ;88C397;
-    db $81                                                               ;88C399;
-    dw $9C56                                                             ;88C39A;
-    db $81                                                               ;88C39C;
-    dw $9C58                                                             ;88C39D;
-    db $81                                                               ;88C39F;
-    dw $9C5A                                                             ;88C3A0;
-    db $81                                                               ;88C3A2;
-    dw $9C5C                                                             ;88C3A3;
-    db $81                                                               ;88C3A5;
-    dw $9C5E                                                             ;88C3A6;
-    db $81                                                               ;88C3A8;
-    dw $9C60                                                             ;88C3A9;
-    db $81                                                               ;88C3AB;
-    dw $9C62                                                             ;88C3AC;
-    db $81                                                               ;88C3AE;
-    dw $9C64                                                             ;88C3AF;
-    db $81                                                               ;88C3B1;
-    dw $9C46                                                             ;88C3B2;
-    db $81                                                               ;88C3B4;
-    dw $9C48                                                             ;88C3B5;
-    db $81                                                               ;88C3B7;
-    dw $9C4A                                                             ;88C3B8;
-    db $81                                                               ;88C3BA;
-    dw $9C4C                                                             ;88C3BB;
-    db $81                                                               ;88C3BD;
-    dw $9C4E                                                             ;88C3BE;
-    db $81                                                               ;88C3C0;
-    dw $9C50                                                             ;88C3C1;
-    db $81                                                               ;88C3C3;
-    dw $9C52                                                             ;88C3C4;
-    db $81                                                               ;88C3C6;
-    dw $9C54                                                             ;88C3C7;
-    db $81                                                               ;88C3C9;
-    dw $9C56                                                             ;88C3CA;
-    db $81                                                               ;88C3CC;
-    dw $9C58                                                             ;88C3CD;
-    db $81                                                               ;88C3CF;
-    dw $9C5A                                                             ;88C3D0;
-    db $81                                                               ;88C3D2;
-    dw $9C5C                                                             ;88C3D3;
-    db $81                                                               ;88C3D5;
-    dw $9C5E                                                             ;88C3D6;
-    db $81                                                               ;88C3D8;
-    dw $9C60                                                             ;88C3D9;
-    db $81                                                               ;88C3DB;
-    dw $9C62                                                             ;88C3DC;
-    db $81                                                               ;88C3DE;
-    dw $9C64                                                             ;88C3DF;
+    db $81 : dw $9C46                                                    ;88C0B1;
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C46
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C46
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C46
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C46
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C46
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C46
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C46
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C46
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C46
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C46
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C46
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C46
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C46
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C46
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C46
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C46
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+
 
 InstList_LavaAcidBG3_Yscroll:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88C3E1;
-    db $88                                                               ;88C3E3;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88C3E4;
-    db $7E                                                               ;88C3E6;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88C3E1;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88C3E4;
     dw Instruction_LavaSoundTimer_70                                     ;88C3E7;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88C3E9;
     dl PreInstruction_LavaAcid_BG3YScroll                                ;88C3EB;
     dw Instruction_HDMAObject_Sleep                                      ;88C3EE;
 
 InstList_LavaAcidBG2_Yscroll:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88C3F0;
-    db $88                                                               ;88C3F2;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88C3F3;
-    db $7E                                                               ;88C3F5;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88C3F0;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88C3F3;
     dw Instruction_HDMAObject_PhaseDecreaseTimer_1                       ;88C3F6;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88C3F8;
     dl PreInstruction_LavaAcid_BG2YScroll                                ;88C3FA;
@@ -7945,3100 +6833,1560 @@ Setup_Water_BG2_Xscroll_DataTable_NotWavy:
 
 
 IndirectHDMATable_WaterBG3XScroll_0:
-    db $81                                                               ;88C645;
-    dw $9C00                                                             ;88C646;
-    db $81                                                               ;88C648;
-    dw $9C00                                                             ;88C649;
-    db $81                                                               ;88C64B;
-    dw $9C00                                                             ;88C64C;
-    db $81                                                               ;88C64E;
-    dw $9C00                                                             ;88C64F;
-    db $81                                                               ;88C651;
-    dw $9C00                                                             ;88C652;
-    db $81                                                               ;88C654;
-    dw $9C00                                                             ;88C655;
-    db $81                                                               ;88C657;
-    dw $9C00                                                             ;88C658;
-    db $81                                                               ;88C65A;
-    dw $9C00                                                             ;88C65B;
-    db $81                                                               ;88C65D;
-    dw $9C00                                                             ;88C65E;
-    db $81                                                               ;88C660;
-    dw $9C00                                                             ;88C661;
-    db $81                                                               ;88C663;
-    dw $9C00                                                             ;88C664;
-    db $81                                                               ;88C666;
-    dw $9C00                                                             ;88C667;
-    db $81                                                               ;88C669;
-    dw $9C00                                                             ;88C66A;
-    db $81                                                               ;88C66C;
-    dw $9C00                                                             ;88C66D;
-    db $81                                                               ;88C66F;
-    dw $9C00                                                             ;88C670;
-    db $81                                                               ;88C672;
-    dw $9C00                                                             ;88C673;
-    db $81                                                               ;88C675;
-    dw $9C00                                                             ;88C676;
-    db $81                                                               ;88C678;
-    dw $9C00                                                             ;88C679;
-    db $81                                                               ;88C67B;
-    dw $9C00                                                             ;88C67C;
-    db $81                                                               ;88C67E;
-    dw $9C00                                                             ;88C67F;
-    db $81                                                               ;88C681;
-    dw $9C00                                                             ;88C682;
-    db $81                                                               ;88C684;
-    dw $9C00                                                             ;88C685;
-    db $81                                                               ;88C687;
-    dw $9C00                                                             ;88C688;
-    db $81                                                               ;88C68A;
-    dw $9C00                                                             ;88C68B;
-    db $81                                                               ;88C68D;
-    dw $9C00                                                             ;88C68E;
-    db $81                                                               ;88C690;
-    dw $9C00                                                             ;88C691;
-    db $81                                                               ;88C693;
-    dw $9C00                                                             ;88C694;
-    db $81                                                               ;88C696;
-    dw $9C00                                                             ;88C697;
-    db $81                                                               ;88C699;
-    dw $9C00                                                             ;88C69A;
-    db $81                                                               ;88C69C;
-    dw $9C00                                                             ;88C69D;
-    db $81                                                               ;88C69F;
-    dw $9C00                                                             ;88C6A0;
-    db $81                                                               ;88C6A2;
-    dw $9C00                                                             ;88C6A3;
-    db $81                                                               ;88C6A5;
-    dw $9C00                                                             ;88C6A6;
-    db $81                                                               ;88C6A8;
-    dw $9C00                                                             ;88C6A9;
-    db $81                                                               ;88C6AB;
-    dw $9C00                                                             ;88C6AC;
-    db $81                                                               ;88C6AE;
-    dw $9C00                                                             ;88C6AF;
-    db $81                                                               ;88C6B1;
-    dw $9C00                                                             ;88C6B2;
-    db $81                                                               ;88C6B4;
-    dw $9C00                                                             ;88C6B5;
-    db $81                                                               ;88C6B7;
-    dw $9C00                                                             ;88C6B8;
-    db $81                                                               ;88C6BA;
-    dw $9C00                                                             ;88C6BB;
-    db $81                                                               ;88C6BD;
-    dw $9C00                                                             ;88C6BE;
-    db $81                                                               ;88C6C0;
-    dw $9C00                                                             ;88C6C1;
-    db $81                                                               ;88C6C3;
-    dw $9C00                                                             ;88C6C4;
-    db $81                                                               ;88C6C6;
-    dw $9C00                                                             ;88C6C7;
-    db $81                                                               ;88C6C9;
-    dw $9C00                                                             ;88C6CA;
-    db $81                                                               ;88C6CC;
-    dw $9C00                                                             ;88C6CD;
-    db $81                                                               ;88C6CF;
-    dw $9C00                                                             ;88C6D0;
-    db $81                                                               ;88C6D2;
-    dw $9C00                                                             ;88C6D3;
-    db $81                                                               ;88C6D5;
-    dw $9C00                                                             ;88C6D6;
-    db $81                                                               ;88C6D8;
-    dw $9C00                                                             ;88C6D9;
-    db $81                                                               ;88C6DB;
-    dw $9C00                                                             ;88C6DC;
-    db $81                                                               ;88C6DE;
-    dw $9C00                                                             ;88C6DF;
-    db $81                                                               ;88C6E1;
-    dw $9C00                                                             ;88C6E2;
-    db $81                                                               ;88C6E4;
-    dw $9C00                                                             ;88C6E5;
-    db $81                                                               ;88C6E7;
-    dw $9C00                                                             ;88C6E8;
-    db $81                                                               ;88C6EA;
-    dw $9C00                                                             ;88C6EB;
-    db $81                                                               ;88C6ED;
-    dw $9C00                                                             ;88C6EE;
-    db $81                                                               ;88C6F0;
-    dw $9C00                                                             ;88C6F1;
-    db $81                                                               ;88C6F3;
-    dw $9C00                                                             ;88C6F4;
-    db $81                                                               ;88C6F6;
-    dw $9C00                                                             ;88C6F7;
-    db $81                                                               ;88C6F9;
-    dw $9C00                                                             ;88C6FA;
-    db $81                                                               ;88C6FC;
-    dw $9C00                                                             ;88C6FD;
-    db $81                                                               ;88C6FF;
-    dw $9C00                                                             ;88C700;
-    db $81                                                               ;88C702;
-    dw $9C00                                                             ;88C703;
-    db $81                                                               ;88C705;
-    dw $9C00                                                             ;88C706;
-    db $81                                                               ;88C708;
-    dw $9C00                                                             ;88C709;
-    db $81                                                               ;88C70B;
-    dw $9C00                                                             ;88C70C;
-    db $81                                                               ;88C70E;
-    dw $9C00                                                             ;88C70F;
-    db $81                                                               ;88C711;
-    dw $9C00                                                             ;88C712;
-    db $81                                                               ;88C714;
-    dw $9C00                                                             ;88C715;
-    db $81                                                               ;88C717;
-    dw $9C00                                                             ;88C718;
-    db $81                                                               ;88C71A;
-    dw $9C00                                                             ;88C71B;
-    db $81                                                               ;88C71D;
-    dw $9C00                                                             ;88C71E;
-    db $81                                                               ;88C720;
-    dw $9C00                                                             ;88C721;
-    db $81                                                               ;88C723;
-    dw $9C00                                                             ;88C724;
-    db $81                                                               ;88C726;
-    dw $9C00                                                             ;88C727;
-    db $81                                                               ;88C729;
-    dw $9C00                                                             ;88C72A;
-    db $81                                                               ;88C72C;
-    dw $9C00                                                             ;88C72D;
-    db $81                                                               ;88C72F;
-    dw $9C00                                                             ;88C730;
-    db $81                                                               ;88C732;
-    dw $9C00                                                             ;88C733;
-    db $81                                                               ;88C735;
-    dw $9C00                                                             ;88C736;
-    db $81                                                               ;88C738;
-    dw $9C00                                                             ;88C739;
-    db $81                                                               ;88C73B;
-    dw $9C00                                                             ;88C73C;
-    db $81                                                               ;88C73E;
-    dw $9C00                                                             ;88C73F;
-    db $81                                                               ;88C741;
-    dw $9C00                                                             ;88C742;
-    db $81                                                               ;88C744;
-    dw $9C00                                                             ;88C745;
-    db $81                                                               ;88C747;
-    dw $9C00                                                             ;88C748;
-    db $81                                                               ;88C74A;
-    dw $9C00                                                             ;88C74B;
-    db $81                                                               ;88C74D;
-    dw $9C00                                                             ;88C74E;
-    db $81                                                               ;88C750;
-    dw $9C00                                                             ;88C751;
-    db $81                                                               ;88C753;
-    dw $9C00                                                             ;88C754;
-    db $81                                                               ;88C756;
-    dw $9C00                                                             ;88C757;
-    db $81                                                               ;88C759;
-    dw $9C00                                                             ;88C75A;
-    db $81                                                               ;88C75C;
-    dw $9C00                                                             ;88C75D;
-    db $81                                                               ;88C75F;
-    dw $9C00                                                             ;88C760;
-    db $81                                                               ;88C762;
-    dw $9C00                                                             ;88C763;
-    db $81                                                               ;88C765;
-    dw $9C00                                                             ;88C766;
-    db $81                                                               ;88C768;
-    dw $9C00                                                             ;88C769;
-    db $81                                                               ;88C76B;
-    dw $9C00                                                             ;88C76C;
-    db $81                                                               ;88C76E;
-    dw $9C00                                                             ;88C76F;
-    db $81                                                               ;88C771;
-    dw $9C00                                                             ;88C772;
-    db $81                                                               ;88C774;
-    dw $9C00                                                             ;88C775;
-    db $81                                                               ;88C777;
-    dw $9C00                                                             ;88C778;
-    db $81                                                               ;88C77A;
-    dw $9C00                                                             ;88C77B;
-    db $81                                                               ;88C77D;
-    dw $9C00                                                             ;88C77E;
-    db $81                                                               ;88C780;
-    dw $9C00                                                             ;88C781;
-    db $81                                                               ;88C783;
-    dw $9C00                                                             ;88C784;
-    db $81                                                               ;88C786;
-    dw $9C00                                                             ;88C787;
-    db $81                                                               ;88C789;
-    dw $9C00                                                             ;88C78A;
-    db $81                                                               ;88C78C;
-    dw $9C00                                                             ;88C78D;
-    db $81                                                               ;88C78F;
-    dw $9C00                                                             ;88C790;
-    db $81                                                               ;88C792;
-    dw $9C00                                                             ;88C793;
-    db $81                                                               ;88C795;
-    dw $9C00                                                             ;88C796;
-    db $81                                                               ;88C798;
-    dw $9C00                                                             ;88C799;
-    db $81                                                               ;88C79B;
-    dw $9C00                                                             ;88C79C;
-    db $81                                                               ;88C79E;
-    dw $9C00                                                             ;88C79F;
-    db $81                                                               ;88C7A1;
-    dw $9C00                                                             ;88C7A2;
-    db $81                                                               ;88C7A4;
-    dw $9C00                                                             ;88C7A5;
-    db $81                                                               ;88C7A7;
-    dw $9C00                                                             ;88C7A8;
-    db $81                                                               ;88C7AA;
-    dw $9C00                                                             ;88C7AB;
-    db $81                                                               ;88C7AD;
-    dw $9C00                                                             ;88C7AE;
-    db $81                                                               ;88C7B0;
-    dw $9C00                                                             ;88C7B1;
-    db $81                                                               ;88C7B3;
-    dw $9C00                                                             ;88C7B4;
-    db $81                                                               ;88C7B6;
-    dw $9C00                                                             ;88C7B7;
-    db $81                                                               ;88C7B9;
-    dw $9C00                                                             ;88C7BA;
-    db $81                                                               ;88C7BC;
-    dw $9C00                                                             ;88C7BD;
-    db $81                                                               ;88C7BF;
-    dw $9C00                                                             ;88C7C0;
-    db $81                                                               ;88C7C2;
-    dw $9C00                                                             ;88C7C3;
-    db $81                                                               ;88C7C5;
-    dw $9C00                                                             ;88C7C6;
-    db $81                                                               ;88C7C8;
-    dw $9C00                                                             ;88C7C9;
-    db $81                                                               ;88C7CB;
-    dw $9C00                                                             ;88C7CC;
-    db $81                                                               ;88C7CE;
-    dw $9C00                                                             ;88C7CF;
-    db $81                                                               ;88C7D1;
-    dw $9C00                                                             ;88C7D2;
-    db $81                                                               ;88C7D4;
-    dw $9C00                                                             ;88C7D5;
-    db $81                                                               ;88C7D7;
-    dw $9C00                                                             ;88C7D8;
-    db $81                                                               ;88C7DA;
-    dw $9C00                                                             ;88C7DB;
-    db $81                                                               ;88C7DD;
-    dw $9C00                                                             ;88C7DE;
-    db $81                                                               ;88C7E0;
-    dw $9C00                                                             ;88C7E1;
-    db $81                                                               ;88C7E3;
-    dw $9C00                                                             ;88C7E4;
-    db $81                                                               ;88C7E6;
-    dw $9C00                                                             ;88C7E7;
-    db $81                                                               ;88C7E9;
-    dw $9C00                                                             ;88C7EA;
-    db $81                                                               ;88C7EC;
-    dw $9C00                                                             ;88C7ED;
-    db $81                                                               ;88C7EF;
-    dw $9C00                                                             ;88C7F0;
-    db $81                                                               ;88C7F2;
-    dw $9C00                                                             ;88C7F3;
-    db $81                                                               ;88C7F5;
-    dw $9C00                                                             ;88C7F6;
-    db $81                                                               ;88C7F8;
-    dw $9C00                                                             ;88C7F9;
-    db $81                                                               ;88C7FB;
-    dw $9C00                                                             ;88C7FC;
-    db $81                                                               ;88C7FE;
-    dw $9C00                                                             ;88C7FF;
-    db $81                                                               ;88C801;
-    dw $9C00                                                             ;88C802;
-    db $81                                                               ;88C804;
-    dw $9C00                                                             ;88C805;
-    db $81                                                               ;88C807;
-    dw $9C00                                                             ;88C808;
-    db $81                                                               ;88C80A;
-    dw $9C00                                                             ;88C80B;
-    db $81                                                               ;88C80D;
-    dw $9C00                                                             ;88C80E;
-    db $81                                                               ;88C810;
-    dw $9C00                                                             ;88C811;
-    db $81                                                               ;88C813;
-    dw $9C00                                                             ;88C814;
-    db $81                                                               ;88C816;
-    dw $9C00                                                             ;88C817;
-    db $81                                                               ;88C819;
-    dw $9C00                                                             ;88C81A;
-    db $81                                                               ;88C81C;
-    dw $9C00                                                             ;88C81D;
-    db $81                                                               ;88C81F;
-    dw $9C00                                                             ;88C820;
-    db $81                                                               ;88C822;
-    dw $9C00                                                             ;88C823;
-    db $81                                                               ;88C825;
-    dw $9C00                                                             ;88C826;
-    db $81                                                               ;88C828;
-    dw $9C00                                                             ;88C829;
-    db $81                                                               ;88C82B;
-    dw $9C00                                                             ;88C82C;
-    db $81                                                               ;88C82E;
-    dw $9C00                                                             ;88C82F;
-    db $81                                                               ;88C831;
-    dw $9C00                                                             ;88C832;
-    db $81                                                               ;88C834;
-    dw $9C00                                                             ;88C835;
-    db $81                                                               ;88C837;
-    dw $9C00                                                             ;88C838;
-    db $81                                                               ;88C83A;
-    dw $9C00                                                             ;88C83B;
-    db $81                                                               ;88C83D;
-    dw $9C00                                                             ;88C83E;
-    db $81                                                               ;88C840;
-    dw $9C00                                                             ;88C841;
-    db $81                                                               ;88C843;
-    dw $9C00                                                             ;88C844;
-    db $81                                                               ;88C846;
-    dw $9C00                                                             ;88C847;
-    db $81                                                               ;88C849;
-    dw $9C00                                                             ;88C84A;
-    db $81                                                               ;88C84C;
-    dw $9C00                                                             ;88C84D;
-    db $81                                                               ;88C84F;
-    dw $9C00                                                             ;88C850;
-    db $81                                                               ;88C852;
-    dw $9C00                                                             ;88C853;
-    db $81                                                               ;88C855;
-    dw $9C00                                                             ;88C856;
-    db $81                                                               ;88C858;
-    dw $9C00                                                             ;88C859;
-    db $81                                                               ;88C85B;
-    dw $9C00                                                             ;88C85C;
-    db $81                                                               ;88C85E;
-    dw $9C00                                                             ;88C85F;
-    db $81                                                               ;88C861;
-    dw $9C00                                                             ;88C862;
-    db $81                                                               ;88C864;
-    dw $9C00                                                             ;88C865;
-    db $81                                                               ;88C867;
-    dw $9C00                                                             ;88C868;
-    db $81                                                               ;88C86A;
-    dw $9C00                                                             ;88C86B;
-    db $81                                                               ;88C86D;
-    dw $9C00                                                             ;88C86E;
-    db $81                                                               ;88C870;
-    dw $9C00                                                             ;88C871;
-    db $81                                                               ;88C873;
-    dw $9C00                                                             ;88C874;
-    db $81                                                               ;88C876;
-    dw $9C00                                                             ;88C877;
-    db $81                                                               ;88C879;
-    dw $9C00                                                             ;88C87A;
-    db $81                                                               ;88C87C;
-    dw $9C00                                                             ;88C87D;
-    db $81                                                               ;88C87F;
-    dw $9C00                                                             ;88C880;
-    db $81                                                               ;88C882;
-    dw $9C00                                                             ;88C883;
-    db $81                                                               ;88C885;
-    dw $9C00                                                             ;88C886;
-    db $81                                                               ;88C888;
-    dw $9C00                                                             ;88C889;
-    db $81                                                               ;88C88B;
-    dw $9C00                                                             ;88C88C;
-    db $81                                                               ;88C88E;
-    dw $9C00                                                             ;88C88F;
-    db $81                                                               ;88C891;
-    dw $9C00                                                             ;88C892;
-    db $81                                                               ;88C894;
-    dw $9C00                                                             ;88C895;
-    db $81                                                               ;88C897;
-    dw $9C00                                                             ;88C898;
-    db $81                                                               ;88C89A;
-    dw $9C00                                                             ;88C89B;
-    db $81                                                               ;88C89D;
-    dw $9C00                                                             ;88C89E;
-    db $81                                                               ;88C8A0;
-    dw $9C00                                                             ;88C8A1;
-    db $81                                                               ;88C8A3;
-    dw $9C00                                                             ;88C8A4;
-    db $81                                                               ;88C8A6;
-    dw $9C00                                                             ;88C8A7;
-    db $81                                                               ;88C8A9;
-    dw $9C00                                                             ;88C8AA;
-    db $81                                                               ;88C8AC;
-    dw $9C00                                                             ;88C8AD;
-    db $81                                                               ;88C8AF;
-    dw $9C00                                                             ;88C8B0;
-    db $81                                                               ;88C8B2;
-    dw $9C00                                                             ;88C8B3;
-    db $81                                                               ;88C8B5;
-    dw $9C00                                                             ;88C8B6;
-    db $81                                                               ;88C8B8;
-    dw $9C00                                                             ;88C8B9;
-    db $81                                                               ;88C8BB;
-    dw $9C00                                                             ;88C8BC;
-    db $81                                                               ;88C8BE;
-    dw $9C00                                                             ;88C8BF;
-    db $81                                                               ;88C8C1;
-    dw $9C00                                                             ;88C8C2;
-    db $81                                                               ;88C8C4;
-    dw $9C00                                                             ;88C8C5;
-    db $81                                                               ;88C8C7;
-    dw $9C00                                                             ;88C8C8;
-    db $81                                                               ;88C8CA;
-    dw $9C00                                                             ;88C8CB;
-    db $81                                                               ;88C8CD;
-    dw $9C00                                                             ;88C8CE;
-    db $81                                                               ;88C8D0;
-    dw $9C00                                                             ;88C8D1;
-    db $81                                                               ;88C8D3;
-    dw $9C00                                                             ;88C8D4;
-    db $81                                                               ;88C8D6;
-    dw $9C00                                                             ;88C8D7;
-    db $81                                                               ;88C8D9;
-    dw $9C00                                                             ;88C8DA;
-    db $81                                                               ;88C8DC;
-    dw $9C00                                                             ;88C8DD;
-    db $81                                                               ;88C8DF;
-    dw $9C00                                                             ;88C8E0;
-    db $81                                                               ;88C8E2;
-    dw $9C00                                                             ;88C8E3;
-    db $81                                                               ;88C8E5;
-    dw $9C00                                                             ;88C8E6;
-    db $81                                                               ;88C8E8;
-    dw $9C00                                                             ;88C8E9;
-    db $81                                                               ;88C8EB;
-    dw $9C00                                                             ;88C8EC;
-    db $81                                                               ;88C8EE;
-    dw $9C00                                                             ;88C8EF;
-    db $81                                                               ;88C8F1;
-    dw $9C00                                                             ;88C8F2;
-    db $81                                                               ;88C8F4;
-    dw $9C00                                                             ;88C8F5;
-    db $81                                                               ;88C8F7;
-    dw $9C00                                                             ;88C8F8;
-    db $81                                                               ;88C8FA;
-    dw $9C00                                                             ;88C8FB;
-    db $81                                                               ;88C8FD;
-    dw $9C00                                                             ;88C8FE;
-    db $81                                                               ;88C900;
-    dw $9C00                                                             ;88C901;
-    db $81                                                               ;88C903;
-    dw $9C00                                                             ;88C904;
-    db $81                                                               ;88C906;
-    dw $9C00                                                             ;88C907;
-    db $81                                                               ;88C909;
-    dw $9C00                                                             ;88C90A;
-    db $81                                                               ;88C90C;
-    dw $9C00                                                             ;88C90D;
-    db $81                                                               ;88C90F;
-    dw $9C00                                                             ;88C910;
-    db $81                                                               ;88C912;
-    dw $9C00                                                             ;88C913;
-    db $81                                                               ;88C915;
-    dw $9C00                                                             ;88C916;
-    db $81                                                               ;88C918;
-    dw $9C00                                                             ;88C919;
-    db $81                                                               ;88C91B;
-    dw $9C00                                                             ;88C91C;
-    db $81                                                               ;88C91E;
-    dw $9C00                                                             ;88C91F;
-    db $81                                                               ;88C921;
-    dw $9C00                                                             ;88C922;
-    db $81                                                               ;88C924;
-    dw $9C00                                                             ;88C925;
-    db $81                                                               ;88C927;
-    dw $9C00                                                             ;88C928;
-    db $81                                                               ;88C92A;
-    dw $9C00                                                             ;88C92B;
-    db $81                                                               ;88C92D;
-    dw $9C00                                                             ;88C92E;
-    db $81                                                               ;88C930;
-    dw $9C00                                                             ;88C931;
-    db $81                                                               ;88C933;
-    dw $9C00                                                             ;88C934;
-    db $81                                                               ;88C936;
-    dw $9C00                                                             ;88C937;
-    db $81                                                               ;88C939;
-    dw $9C00                                                             ;88C93A;
-    db $81                                                               ;88C93C;
-    dw $9C00                                                             ;88C93D;
-    db $81                                                               ;88C93F;
-    dw $9C00                                                             ;88C940;
-    db $81                                                               ;88C942;
-    dw $9C00                                                             ;88C943;
+    db $81 : dw $9C00                                                    ;88C645;
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
+    db $81 : dw $9C00
 
 IndirectHDMATable_WaterBG3XScroll_1:
-    db $81                                                               ;88C945;
-    dw $9C04                                                             ;88C946;
-    db $81                                                               ;88C948;
-    dw $9C06                                                             ;88C949;
-    db $81                                                               ;88C94B;
-    dw $9C08                                                             ;88C94C;
-    db $81                                                               ;88C94E;
-    dw $9C0A                                                             ;88C94F;
-    db $81                                                               ;88C951;
-    dw $9C0C                                                             ;88C952;
-    db $81                                                               ;88C954;
-    dw $9C0E                                                             ;88C955;
-    db $81                                                               ;88C957;
-    dw $9C10                                                             ;88C958;
-    db $81                                                               ;88C95A;
-    dw $9C12                                                             ;88C95B;
-    db $81                                                               ;88C95D;
-    dw $9C14                                                             ;88C95E;
-    db $81                                                               ;88C960;
-    dw $9C16                                                             ;88C961;
-    db $81                                                               ;88C963;
-    dw $9C18                                                             ;88C964;
-    db $81                                                               ;88C966;
-    dw $9C1A                                                             ;88C967;
-    db $81                                                               ;88C969;
-    dw $9C1C                                                             ;88C96A;
-    db $81                                                               ;88C96C;
-    dw $9C1E                                                             ;88C96D;
-    db $81                                                               ;88C96F;
-    dw $9C20                                                             ;88C970;
-    db $81                                                               ;88C972;
-    dw $9C22                                                             ;88C973;
-    db $81                                                               ;88C975;
-    dw $9C04                                                             ;88C976;
-    db $81                                                               ;88C978;
-    dw $9C06                                                             ;88C979;
-    db $81                                                               ;88C97B;
-    dw $9C08                                                             ;88C97C;
-    db $81                                                               ;88C97E;
-    dw $9C0A                                                             ;88C97F;
-    db $81                                                               ;88C981;
-    dw $9C0C                                                             ;88C982;
-    db $81                                                               ;88C984;
-    dw $9C0E                                                             ;88C985;
-    db $81                                                               ;88C987;
-    dw $9C10                                                             ;88C988;
-    db $81                                                               ;88C98A;
-    dw $9C12                                                             ;88C98B;
-    db $81                                                               ;88C98D;
-    dw $9C14                                                             ;88C98E;
-    db $81                                                               ;88C990;
-    dw $9C16                                                             ;88C991;
-    db $81                                                               ;88C993;
-    dw $9C18                                                             ;88C994;
-    db $81                                                               ;88C996;
-    dw $9C1A                                                             ;88C997;
-    db $81                                                               ;88C999;
-    dw $9C1C                                                             ;88C99A;
-    db $81                                                               ;88C99C;
-    dw $9C1E                                                             ;88C99D;
-    db $81                                                               ;88C99F;
-    dw $9C20                                                             ;88C9A0;
-    db $81                                                               ;88C9A2;
-    dw $9C22                                                             ;88C9A3;
-    db $81                                                               ;88C9A5;
-    dw $9C04                                                             ;88C9A6;
-    db $81                                                               ;88C9A8;
-    dw $9C06                                                             ;88C9A9;
-    db $81                                                               ;88C9AB;
-    dw $9C08                                                             ;88C9AC;
-    db $81                                                               ;88C9AE;
-    dw $9C0A                                                             ;88C9AF;
-    db $81                                                               ;88C9B1;
-    dw $9C0C                                                             ;88C9B2;
-    db $81                                                               ;88C9B4;
-    dw $9C0E                                                             ;88C9B5;
-    db $81                                                               ;88C9B7;
-    dw $9C10                                                             ;88C9B8;
-    db $81                                                               ;88C9BA;
-    dw $9C12                                                             ;88C9BB;
-    db $81                                                               ;88C9BD;
-    dw $9C14                                                             ;88C9BE;
-    db $81                                                               ;88C9C0;
-    dw $9C16                                                             ;88C9C1;
-    db $81                                                               ;88C9C3;
-    dw $9C18                                                             ;88C9C4;
-    db $81                                                               ;88C9C6;
-    dw $9C1A                                                             ;88C9C7;
-    db $81                                                               ;88C9C9;
-    dw $9C1C                                                             ;88C9CA;
-    db $81                                                               ;88C9CC;
-    dw $9C1E                                                             ;88C9CD;
-    db $81                                                               ;88C9CF;
-    dw $9C20                                                             ;88C9D0;
-    db $81                                                               ;88C9D2;
-    dw $9C22                                                             ;88C9D3;
-    db $81                                                               ;88C9D5;
-    dw $9C04                                                             ;88C9D6;
-    db $81                                                               ;88C9D8;
-    dw $9C06                                                             ;88C9D9;
-    db $81                                                               ;88C9DB;
-    dw $9C08                                                             ;88C9DC;
-    db $81                                                               ;88C9DE;
-    dw $9C0A                                                             ;88C9DF;
-    db $81                                                               ;88C9E1;
-    dw $9C0C                                                             ;88C9E2;
-    db $81                                                               ;88C9E4;
-    dw $9C0E                                                             ;88C9E5;
-    db $81                                                               ;88C9E7;
-    dw $9C10                                                             ;88C9E8;
-    db $81                                                               ;88C9EA;
-    dw $9C12                                                             ;88C9EB;
-    db $81                                                               ;88C9ED;
-    dw $9C14                                                             ;88C9EE;
-    db $81                                                               ;88C9F0;
-    dw $9C16                                                             ;88C9F1;
-    db $81                                                               ;88C9F3;
-    dw $9C18                                                             ;88C9F4;
-    db $81                                                               ;88C9F6;
-    dw $9C1A                                                             ;88C9F7;
-    db $81                                                               ;88C9F9;
-    dw $9C1C                                                             ;88C9FA;
-    db $81                                                               ;88C9FC;
-    dw $9C1E                                                             ;88C9FD;
-    db $81                                                               ;88C9FF;
-    dw $9C20                                                             ;88CA00;
-    db $81                                                               ;88CA02;
-    dw $9C22                                                             ;88CA03;
-    db $81                                                               ;88CA05;
-    dw $9C04                                                             ;88CA06;
-    db $81                                                               ;88CA08;
-    dw $9C06                                                             ;88CA09;
-    db $81                                                               ;88CA0B;
-    dw $9C08                                                             ;88CA0C;
-    db $81                                                               ;88CA0E;
-    dw $9C0A                                                             ;88CA0F;
-    db $81                                                               ;88CA11;
-    dw $9C0C                                                             ;88CA12;
-    db $81                                                               ;88CA14;
-    dw $9C0E                                                             ;88CA15;
-    db $81                                                               ;88CA17;
-    dw $9C10                                                             ;88CA18;
-    db $81                                                               ;88CA1A;
-    dw $9C12                                                             ;88CA1B;
-    db $81                                                               ;88CA1D;
-    dw $9C14                                                             ;88CA1E;
-    db $81                                                               ;88CA20;
-    dw $9C16                                                             ;88CA21;
-    db $81                                                               ;88CA23;
-    dw $9C18                                                             ;88CA24;
-    db $81                                                               ;88CA26;
-    dw $9C1A                                                             ;88CA27;
-    db $81                                                               ;88CA29;
-    dw $9C1C                                                             ;88CA2A;
-    db $81                                                               ;88CA2C;
-    dw $9C1E                                                             ;88CA2D;
-    db $81                                                               ;88CA2F;
-    dw $9C20                                                             ;88CA30;
-    db $81                                                               ;88CA32;
-    dw $9C22                                                             ;88CA33;
-    db $81                                                               ;88CA35;
-    dw $9C04                                                             ;88CA36;
-    db $81                                                               ;88CA38;
-    dw $9C06                                                             ;88CA39;
-    db $81                                                               ;88CA3B;
-    dw $9C08                                                             ;88CA3C;
-    db $81                                                               ;88CA3E;
-    dw $9C0A                                                             ;88CA3F;
-    db $81                                                               ;88CA41;
-    dw $9C0C                                                             ;88CA42;
-    db $81                                                               ;88CA44;
-    dw $9C0E                                                             ;88CA45;
-    db $81                                                               ;88CA47;
-    dw $9C10                                                             ;88CA48;
-    db $81                                                               ;88CA4A;
-    dw $9C12                                                             ;88CA4B;
-    db $81                                                               ;88CA4D;
-    dw $9C14                                                             ;88CA4E;
-    db $81                                                               ;88CA50;
-    dw $9C16                                                             ;88CA51;
-    db $81                                                               ;88CA53;
-    dw $9C18                                                             ;88CA54;
-    db $81                                                               ;88CA56;
-    dw $9C1A                                                             ;88CA57;
-    db $81                                                               ;88CA59;
-    dw $9C1C                                                             ;88CA5A;
-    db $81                                                               ;88CA5C;
-    dw $9C1E                                                             ;88CA5D;
-    db $81                                                               ;88CA5F;
-    dw $9C20                                                             ;88CA60;
-    db $81                                                               ;88CA62;
-    dw $9C22                                                             ;88CA63;
-    db $81                                                               ;88CA65;
-    dw $9C04                                                             ;88CA66;
-    db $81                                                               ;88CA68;
-    dw $9C06                                                             ;88CA69;
-    db $81                                                               ;88CA6B;
-    dw $9C08                                                             ;88CA6C;
-    db $81                                                               ;88CA6E;
-    dw $9C0A                                                             ;88CA6F;
-    db $81                                                               ;88CA71;
-    dw $9C0C                                                             ;88CA72;
-    db $81                                                               ;88CA74;
-    dw $9C0E                                                             ;88CA75;
-    db $81                                                               ;88CA77;
-    dw $9C10                                                             ;88CA78;
-    db $81                                                               ;88CA7A;
-    dw $9C12                                                             ;88CA7B;
-    db $81                                                               ;88CA7D;
-    dw $9C14                                                             ;88CA7E;
-    db $81                                                               ;88CA80;
-    dw $9C16                                                             ;88CA81;
-    db $81                                                               ;88CA83;
-    dw $9C18                                                             ;88CA84;
-    db $81                                                               ;88CA86;
-    dw $9C1A                                                             ;88CA87;
-    db $81                                                               ;88CA89;
-    dw $9C1C                                                             ;88CA8A;
-    db $81                                                               ;88CA8C;
-    dw $9C1E                                                             ;88CA8D;
-    db $81                                                               ;88CA8F;
-    dw $9C20                                                             ;88CA90;
-    db $81                                                               ;88CA92;
-    dw $9C22                                                             ;88CA93;
-    db $81                                                               ;88CA95;
-    dw $9C04                                                             ;88CA96;
-    db $81                                                               ;88CA98;
-    dw $9C06                                                             ;88CA99;
-    db $81                                                               ;88CA9B;
-    dw $9C08                                                             ;88CA9C;
-    db $81                                                               ;88CA9E;
-    dw $9C0A                                                             ;88CA9F;
-    db $81                                                               ;88CAA1;
-    dw $9C0C                                                             ;88CAA2;
-    db $81                                                               ;88CAA4;
-    dw $9C0E                                                             ;88CAA5;
-    db $81                                                               ;88CAA7;
-    dw $9C10                                                             ;88CAA8;
-    db $81                                                               ;88CAAA;
-    dw $9C12                                                             ;88CAAB;
-    db $81                                                               ;88CAAD;
-    dw $9C14                                                             ;88CAAE;
-    db $81                                                               ;88CAB0;
-    dw $9C16                                                             ;88CAB1;
-    db $81                                                               ;88CAB3;
-    dw $9C18                                                             ;88CAB4;
-    db $81                                                               ;88CAB6;
-    dw $9C1A                                                             ;88CAB7;
-    db $81                                                               ;88CAB9;
-    dw $9C1C                                                             ;88CABA;
-    db $81                                                               ;88CABC;
-    dw $9C1E                                                             ;88CABD;
-    db $81                                                               ;88CABF;
-    dw $9C20                                                             ;88CAC0;
-    db $81                                                               ;88CAC2;
-    dw $9C22                                                             ;88CAC3;
-    db $81                                                               ;88CAC5;
-    dw $9C04                                                             ;88CAC6;
-    db $81                                                               ;88CAC8;
-    dw $9C06                                                             ;88CAC9;
-    db $81                                                               ;88CACB;
-    dw $9C08                                                             ;88CACC;
-    db $81                                                               ;88CACE;
-    dw $9C0A                                                             ;88CACF;
-    db $81                                                               ;88CAD1;
-    dw $9C0C                                                             ;88CAD2;
-    db $81                                                               ;88CAD4;
-    dw $9C0E                                                             ;88CAD5;
-    db $81                                                               ;88CAD7;
-    dw $9C10                                                             ;88CAD8;
-    db $81                                                               ;88CADA;
-    dw $9C12                                                             ;88CADB;
-    db $81                                                               ;88CADD;
-    dw $9C14                                                             ;88CADE;
-    db $81                                                               ;88CAE0;
-    dw $9C16                                                             ;88CAE1;
-    db $81                                                               ;88CAE3;
-    dw $9C18                                                             ;88CAE4;
-    db $81                                                               ;88CAE6;
-    dw $9C1A                                                             ;88CAE7;
-    db $81                                                               ;88CAE9;
-    dw $9C1C                                                             ;88CAEA;
-    db $81                                                               ;88CAEC;
-    dw $9C1E                                                             ;88CAED;
-    db $81                                                               ;88CAEF;
-    dw $9C20                                                             ;88CAF0;
-    db $81                                                               ;88CAF2;
-    dw $9C22                                                             ;88CAF3;
-    db $81                                                               ;88CAF5;
-    dw $9C04                                                             ;88CAF6;
-    db $81                                                               ;88CAF8;
-    dw $9C06                                                             ;88CAF9;
-    db $81                                                               ;88CAFB;
-    dw $9C08                                                             ;88CAFC;
-    db $81                                                               ;88CAFE;
-    dw $9C0A                                                             ;88CAFF;
-    db $81                                                               ;88CB01;
-    dw $9C0C                                                             ;88CB02;
-    db $81                                                               ;88CB04;
-    dw $9C0E                                                             ;88CB05;
-    db $81                                                               ;88CB07;
-    dw $9C10                                                             ;88CB08;
-    db $81                                                               ;88CB0A;
-    dw $9C12                                                             ;88CB0B;
-    db $81                                                               ;88CB0D;
-    dw $9C14                                                             ;88CB0E;
-    db $81                                                               ;88CB10;
-    dw $9C16                                                             ;88CB11;
-    db $81                                                               ;88CB13;
-    dw $9C18                                                             ;88CB14;
-    db $81                                                               ;88CB16;
-    dw $9C1A                                                             ;88CB17;
-    db $81                                                               ;88CB19;
-    dw $9C1C                                                             ;88CB1A;
-    db $81                                                               ;88CB1C;
-    dw $9C1E                                                             ;88CB1D;
-    db $81                                                               ;88CB1F;
-    dw $9C20                                                             ;88CB20;
-    db $81                                                               ;88CB22;
-    dw $9C22                                                             ;88CB23;
-    db $81                                                               ;88CB25;
-    dw $9C04                                                             ;88CB26;
-    db $81                                                               ;88CB28;
-    dw $9C06                                                             ;88CB29;
-    db $81                                                               ;88CB2B;
-    dw $9C08                                                             ;88CB2C;
-    db $81                                                               ;88CB2E;
-    dw $9C0A                                                             ;88CB2F;
-    db $81                                                               ;88CB31;
-    dw $9C0C                                                             ;88CB32;
-    db $81                                                               ;88CB34;
-    dw $9C0E                                                             ;88CB35;
-    db $81                                                               ;88CB37;
-    dw $9C10                                                             ;88CB38;
-    db $81                                                               ;88CB3A;
-    dw $9C12                                                             ;88CB3B;
-    db $81                                                               ;88CB3D;
-    dw $9C14                                                             ;88CB3E;
-    db $81                                                               ;88CB40;
-    dw $9C16                                                             ;88CB41;
-    db $81                                                               ;88CB43;
-    dw $9C18                                                             ;88CB44;
-    db $81                                                               ;88CB46;
-    dw $9C1A                                                             ;88CB47;
-    db $81                                                               ;88CB49;
-    dw $9C1C                                                             ;88CB4A;
-    db $81                                                               ;88CB4C;
-    dw $9C1E                                                             ;88CB4D;
-    db $81                                                               ;88CB4F;
-    dw $9C20                                                             ;88CB50;
-    db $81                                                               ;88CB52;
-    dw $9C22                                                             ;88CB53;
-    db $81                                                               ;88CB55;
-    dw $9C04                                                             ;88CB56;
-    db $81                                                               ;88CB58;
-    dw $9C06                                                             ;88CB59;
-    db $81                                                               ;88CB5B;
-    dw $9C08                                                             ;88CB5C;
-    db $81                                                               ;88CB5E;
-    dw $9C0A                                                             ;88CB5F;
-    db $81                                                               ;88CB61;
-    dw $9C0C                                                             ;88CB62;
-    db $81                                                               ;88CB64;
-    dw $9C0E                                                             ;88CB65;
-    db $81                                                               ;88CB67;
-    dw $9C10                                                             ;88CB68;
-    db $81                                                               ;88CB6A;
-    dw $9C12                                                             ;88CB6B;
-    db $81                                                               ;88CB6D;
-    dw $9C14                                                             ;88CB6E;
-    db $81                                                               ;88CB70;
-    dw $9C16                                                             ;88CB71;
-    db $81                                                               ;88CB73;
-    dw $9C18                                                             ;88CB74;
-    db $81                                                               ;88CB76;
-    dw $9C1A                                                             ;88CB77;
-    db $81                                                               ;88CB79;
-    dw $9C1C                                                             ;88CB7A;
-    db $81                                                               ;88CB7C;
-    dw $9C1E                                                             ;88CB7D;
-    db $81                                                               ;88CB7F;
-    dw $9C20                                                             ;88CB80;
-    db $81                                                               ;88CB82;
-    dw $9C22                                                             ;88CB83;
-    db $81                                                               ;88CB85;
-    dw $9C04                                                             ;88CB86;
-    db $81                                                               ;88CB88;
-    dw $9C06                                                             ;88CB89;
-    db $81                                                               ;88CB8B;
-    dw $9C08                                                             ;88CB8C;
-    db $81                                                               ;88CB8E;
-    dw $9C0A                                                             ;88CB8F;
-    db $81                                                               ;88CB91;
-    dw $9C0C                                                             ;88CB92;
-    db $81                                                               ;88CB94;
-    dw $9C0E                                                             ;88CB95;
-    db $81                                                               ;88CB97;
-    dw $9C10                                                             ;88CB98;
-    db $81                                                               ;88CB9A;
-    dw $9C12                                                             ;88CB9B;
-    db $81                                                               ;88CB9D;
-    dw $9C14                                                             ;88CB9E;
-    db $81                                                               ;88CBA0;
-    dw $9C16                                                             ;88CBA1;
-    db $81                                                               ;88CBA3;
-    dw $9C18                                                             ;88CBA4;
-    db $81                                                               ;88CBA6;
-    dw $9C1A                                                             ;88CBA7;
-    db $81                                                               ;88CBA9;
-    dw $9C1C                                                             ;88CBAA;
-    db $81                                                               ;88CBAC;
-    dw $9C1E                                                             ;88CBAD;
-    db $81                                                               ;88CBAF;
-    dw $9C20                                                             ;88CBB0;
-    db $81                                                               ;88CBB2;
-    dw $9C22                                                             ;88CBB3;
-    db $81                                                               ;88CBB5;
-    dw $9C04                                                             ;88CBB6;
-    db $81                                                               ;88CBB8;
-    dw $9C06                                                             ;88CBB9;
-    db $81                                                               ;88CBBB;
-    dw $9C08                                                             ;88CBBC;
-    db $81                                                               ;88CBBE;
-    dw $9C0A                                                             ;88CBBF;
-    db $81                                                               ;88CBC1;
-    dw $9C0C                                                             ;88CBC2;
-    db $81                                                               ;88CBC4;
-    dw $9C0E                                                             ;88CBC5;
-    db $81                                                               ;88CBC7;
-    dw $9C10                                                             ;88CBC8;
-    db $81                                                               ;88CBCA;
-    dw $9C12                                                             ;88CBCB;
-    db $81                                                               ;88CBCD;
-    dw $9C14                                                             ;88CBCE;
-    db $81                                                               ;88CBD0;
-    dw $9C16                                                             ;88CBD1;
-    db $81                                                               ;88CBD3;
-    dw $9C18                                                             ;88CBD4;
-    db $81                                                               ;88CBD6;
-    dw $9C1A                                                             ;88CBD7;
-    db $81                                                               ;88CBD9;
-    dw $9C1C                                                             ;88CBDA;
-    db $81                                                               ;88CBDC;
-    dw $9C1E                                                             ;88CBDD;
-    db $81                                                               ;88CBDF;
-    dw $9C20                                                             ;88CBE0;
-    db $81                                                               ;88CBE2;
-    dw $9C22                                                             ;88CBE3;
-    db $81                                                               ;88CBE5;
-    dw $9C04                                                             ;88CBE6;
-    db $81                                                               ;88CBE8;
-    dw $9C06                                                             ;88CBE9;
-    db $81                                                               ;88CBEB;
-    dw $9C08                                                             ;88CBEC;
-    db $81                                                               ;88CBEE;
-    dw $9C0A                                                             ;88CBEF;
-    db $81                                                               ;88CBF1;
-    dw $9C0C                                                             ;88CBF2;
-    db $81                                                               ;88CBF4;
-    dw $9C0E                                                             ;88CBF5;
-    db $81                                                               ;88CBF7;
-    dw $9C10                                                             ;88CBF8;
-    db $81                                                               ;88CBFA;
-    dw $9C12                                                             ;88CBFB;
-    db $81                                                               ;88CBFD;
-    dw $9C14                                                             ;88CBFE;
-    db $81                                                               ;88CC00;
-    dw $9C16                                                             ;88CC01;
-    db $81                                                               ;88CC03;
-    dw $9C18                                                             ;88CC04;
-    db $81                                                               ;88CC06;
-    dw $9C1A                                                             ;88CC07;
-    db $81                                                               ;88CC09;
-    dw $9C1C                                                             ;88CC0A;
-    db $81                                                               ;88CC0C;
-    dw $9C1E                                                             ;88CC0D;
-    db $81                                                               ;88CC0F;
-    dw $9C20                                                             ;88CC10;
-    db $81                                                               ;88CC12;
-    dw $9C22                                                             ;88CC13;
-    db $81                                                               ;88CC15;
-    dw $9C04                                                             ;88CC16;
-    db $81                                                               ;88CC18;
-    dw $9C06                                                             ;88CC19;
-    db $81                                                               ;88CC1B;
-    dw $9C08                                                             ;88CC1C;
-    db $81                                                               ;88CC1E;
-    dw $9C0A                                                             ;88CC1F;
-    db $81                                                               ;88CC21;
-    dw $9C0C                                                             ;88CC22;
-    db $81                                                               ;88CC24;
-    dw $9C0E                                                             ;88CC25;
-    db $81                                                               ;88CC27;
-    dw $9C10                                                             ;88CC28;
-    db $81                                                               ;88CC2A;
-    dw $9C12                                                             ;88CC2B;
-    db $81                                                               ;88CC2D;
-    dw $9C14                                                             ;88CC2E;
-    db $81                                                               ;88CC30;
-    dw $9C16                                                             ;88CC31;
-    db $81                                                               ;88CC33;
-    dw $9C18                                                             ;88CC34;
-    db $81                                                               ;88CC36;
-    dw $9C1A                                                             ;88CC37;
-    db $81                                                               ;88CC39;
-    dw $9C1C                                                             ;88CC3A;
-    db $81                                                               ;88CC3C;
-    dw $9C1E                                                             ;88CC3D;
-    db $81                                                               ;88CC3F;
-    dw $9C20                                                             ;88CC40;
-    db $81                                                               ;88CC42;
-    dw $9C22                                                             ;88CC43;
-    db $81                                                               ;88CC45;
-    dw $9C04                                                             ;88CC46;
-    db $81                                                               ;88CC48;
-    dw $9C06                                                             ;88CC49;
-    db $81                                                               ;88CC4B;
-    dw $9C08                                                             ;88CC4C;
-    db $81                                                               ;88CC4E;
-    dw $9C0A                                                             ;88CC4F;
-    db $81                                                               ;88CC51;
-    dw $9C0C                                                             ;88CC52;
-    db $81                                                               ;88CC54;
-    dw $9C0E                                                             ;88CC55;
-    db $81                                                               ;88CC57;
-    dw $9C10                                                             ;88CC58;
-    db $81                                                               ;88CC5A;
-    dw $9C12                                                             ;88CC5B;
-    db $81                                                               ;88CC5D;
-    dw $9C14                                                             ;88CC5E;
-    db $81                                                               ;88CC60;
-    dw $9C16                                                             ;88CC61;
-    db $81                                                               ;88CC63;
-    dw $9C18                                                             ;88CC64;
-    db $81                                                               ;88CC66;
-    dw $9C1A                                                             ;88CC67;
-    db $81                                                               ;88CC69;
-    dw $9C1C                                                             ;88CC6A;
-    db $81                                                               ;88CC6C;
-    dw $9C1E                                                             ;88CC6D;
-    db $81                                                               ;88CC6F;
-    dw $9C20                                                             ;88CC70;
-    db $81                                                               ;88CC72;
-    dw $9C22                                                             ;88CC73;
-    db $81                                                               ;88CC75;
-    dw $9C04                                                             ;88CC76;
-    db $81                                                               ;88CC78;
-    dw $9C06                                                             ;88CC79;
-    db $81                                                               ;88CC7B;
-    dw $9C08                                                             ;88CC7C;
-    db $81                                                               ;88CC7E;
-    dw $9C0A                                                             ;88CC7F;
-    db $81                                                               ;88CC81;
-    dw $9C0C                                                             ;88CC82;
-    db $81                                                               ;88CC84;
-    dw $9C0E                                                             ;88CC85;
-    db $81                                                               ;88CC87;
-    dw $9C10                                                             ;88CC88;
-    db $81                                                               ;88CC8A;
-    dw $9C12                                                             ;88CC8B;
-    db $81                                                               ;88CC8D;
-    dw $9C14                                                             ;88CC8E;
-    db $81                                                               ;88CC90;
-    dw $9C16                                                             ;88CC91;
-    db $81                                                               ;88CC93;
-    dw $9C18                                                             ;88CC94;
-    db $81                                                               ;88CC96;
-    dw $9C1A                                                             ;88CC97;
-    db $81                                                               ;88CC99;
-    dw $9C1C                                                             ;88CC9A;
-    db $81                                                               ;88CC9C;
-    dw $9C1E                                                             ;88CC9D;
-    db $81                                                               ;88CC9F;
-    dw $9C20                                                             ;88CCA0;
-    db $81                                                               ;88CCA2;
-    dw $9C22                                                             ;88CCA3;
-    db $81                                                               ;88CCA5;
-    dw $9C04                                                             ;88CCA6;
-    db $81                                                               ;88CCA8;
-    dw $9C06                                                             ;88CCA9;
-    db $81                                                               ;88CCAB;
-    dw $9C08                                                             ;88CCAC;
-    db $81                                                               ;88CCAE;
-    dw $9C0A                                                             ;88CCAF;
-    db $81                                                               ;88CCB1;
-    dw $9C0C                                                             ;88CCB2;
-    db $81                                                               ;88CCB4;
-    dw $9C0E                                                             ;88CCB5;
-    db $81                                                               ;88CCB7;
-    dw $9C10                                                             ;88CCB8;
-    db $81                                                               ;88CCBA;
-    dw $9C12                                                             ;88CCBB;
-    db $81                                                               ;88CCBD;
-    dw $9C14                                                             ;88CCBE;
-    db $81                                                               ;88CCC0;
-    dw $9C16                                                             ;88CCC1;
-    db $81                                                               ;88CCC3;
-    dw $9C18                                                             ;88CCC4;
-    db $81                                                               ;88CCC6;
-    dw $9C1A                                                             ;88CCC7;
-    db $81                                                               ;88CCC9;
-    dw $9C1C                                                             ;88CCCA;
-    db $81                                                               ;88CCCC;
-    dw $9C1E                                                             ;88CCCD;
-    db $81                                                               ;88CCCF;
-    dw $9C20                                                             ;88CCD0;
-    db $81                                                               ;88CCD2;
-    dw $9C22                                                             ;88CCD3;
-    db $81                                                               ;88CCD5;
-    dw $9C04                                                             ;88CCD6;
-    db $81                                                               ;88CCD8;
-    dw $9C06                                                             ;88CCD9;
-    db $81                                                               ;88CCDB;
-    dw $9C08                                                             ;88CCDC;
-    db $81                                                               ;88CCDE;
-    dw $9C0A                                                             ;88CCDF;
-    db $81                                                               ;88CCE1;
-    dw $9C0C                                                             ;88CCE2;
-    db $81                                                               ;88CCE4;
-    dw $9C0E                                                             ;88CCE5;
-    db $81                                                               ;88CCE7;
-    dw $9C10                                                             ;88CCE8;
-    db $81                                                               ;88CCEA;
-    dw $9C12                                                             ;88CCEB;
-    db $81                                                               ;88CCED;
-    dw $9C14                                                             ;88CCEE;
-    db $81                                                               ;88CCF0;
-    dw $9C16                                                             ;88CCF1;
-    db $81                                                               ;88CCF3;
-    dw $9C18                                                             ;88CCF4;
-    db $81                                                               ;88CCF6;
-    dw $9C1A                                                             ;88CCF7;
-    db $81                                                               ;88CCF9;
-    dw $9C1C                                                             ;88CCFA;
-    db $81                                                               ;88CCFC;
-    dw $9C1E                                                             ;88CCFD;
-    db $81                                                               ;88CCFF;
-    dw $9C20                                                             ;88CD00;
-    db $81                                                               ;88CD02;
-    dw $9C22                                                             ;88CD03;
-    db $81                                                               ;88CD05;
-    dw $9C04                                                             ;88CD06;
-    db $81                                                               ;88CD08;
-    dw $9C06                                                             ;88CD09;
-    db $81                                                               ;88CD0B;
-    dw $9C08                                                             ;88CD0C;
-    db $81                                                               ;88CD0E;
-    dw $9C0A                                                             ;88CD0F;
-    db $81                                                               ;88CD11;
-    dw $9C0C                                                             ;88CD12;
-    db $81                                                               ;88CD14;
-    dw $9C0E                                                             ;88CD15;
-    db $81                                                               ;88CD17;
-    dw $9C10                                                             ;88CD18;
-    db $81                                                               ;88CD1A;
-    dw $9C12                                                             ;88CD1B;
-    db $81                                                               ;88CD1D;
-    dw $9C14                                                             ;88CD1E;
-    db $81                                                               ;88CD20;
-    dw $9C16                                                             ;88CD21;
-    db $81                                                               ;88CD23;
-    dw $9C18                                                             ;88CD24;
-    db $81                                                               ;88CD26;
-    dw $9C1A                                                             ;88CD27;
-    db $81                                                               ;88CD29;
-    dw $9C1C                                                             ;88CD2A;
-    db $81                                                               ;88CD2C;
-    dw $9C1E                                                             ;88CD2D;
-    db $81                                                               ;88CD2F;
-    dw $9C20                                                             ;88CD30;
-    db $81                                                               ;88CD32;
-    dw $9C22                                                             ;88CD33;
-    db $81                                                               ;88CD35;
-    dw $9C04                                                             ;88CD36;
-    db $81                                                               ;88CD38;
-    dw $9C06                                                             ;88CD39;
-    db $81                                                               ;88CD3B;
-    dw $9C08                                                             ;88CD3C;
-    db $81                                                               ;88CD3E;
-    dw $9C0A                                                             ;88CD3F;
-    db $81                                                               ;88CD41;
-    dw $9C0C                                                             ;88CD42;
-    db $81                                                               ;88CD44;
-    dw $9C0E                                                             ;88CD45;
-    db $81                                                               ;88CD47;
-    dw $9C10                                                             ;88CD48;
-    db $81                                                               ;88CD4A;
-    dw $9C12                                                             ;88CD4B;
-    db $81                                                               ;88CD4D;
-    dw $9C14                                                             ;88CD4E;
-    db $81                                                               ;88CD50;
-    dw $9C16                                                             ;88CD51;
-    db $81                                                               ;88CD53;
-    dw $9C18                                                             ;88CD54;
-    db $81                                                               ;88CD56;
-    dw $9C1A                                                             ;88CD57;
-    db $81                                                               ;88CD59;
-    dw $9C1C                                                             ;88CD5A;
-    db $81                                                               ;88CD5C;
-    dw $9C1E                                                             ;88CD5D;
-    db $81                                                               ;88CD5F;
-    dw $9C20                                                             ;88CD60;
-    db $81                                                               ;88CD62;
-    dw $9C22                                                             ;88CD63;
-    db $81                                                               ;88CD65;
-    dw $9C04                                                             ;88CD66;
-    db $81                                                               ;88CD68;
-    dw $9C06                                                             ;88CD69;
-    db $81                                                               ;88CD6B;
-    dw $9C08                                                             ;88CD6C;
-    db $81                                                               ;88CD6E;
-    dw $9C0A                                                             ;88CD6F;
-    db $81                                                               ;88CD71;
-    dw $9C0C                                                             ;88CD72;
-    db $81                                                               ;88CD74;
-    dw $9C0E                                                             ;88CD75;
-    db $81                                                               ;88CD77;
-    dw $9C10                                                             ;88CD78;
-    db $81                                                               ;88CD7A;
-    dw $9C12                                                             ;88CD7B;
-    db $81                                                               ;88CD7D;
-    dw $9C14                                                             ;88CD7E;
-    db $81                                                               ;88CD80;
-    dw $9C16                                                             ;88CD81;
-    db $81                                                               ;88CD83;
-    dw $9C18                                                             ;88CD84;
-    db $81                                                               ;88CD86;
-    dw $9C1A                                                             ;88CD87;
-    db $81                                                               ;88CD89;
-    dw $9C1C                                                             ;88CD8A;
-    db $81                                                               ;88CD8C;
-    dw $9C1E                                                             ;88CD8D;
-    db $81                                                               ;88CD8F;
-    dw $9C20                                                             ;88CD90;
-    db $81                                                               ;88CD92;
-    dw $9C22                                                             ;88CD93;
-    db $81                                                               ;88CD95;
-    dw $9C04                                                             ;88CD96;
-    db $81                                                               ;88CD98;
-    dw $9C06                                                             ;88CD99;
-    db $81                                                               ;88CD9B;
-    dw $9C08                                                             ;88CD9C;
-    db $81                                                               ;88CD9E;
-    dw $9C0A                                                             ;88CD9F;
-    db $81                                                               ;88CDA1;
-    dw $9C0C                                                             ;88CDA2;
-    db $81                                                               ;88CDA4;
-    dw $9C0E                                                             ;88CDA5;
-    db $81                                                               ;88CDA7;
-    dw $9C10                                                             ;88CDA8;
-    db $81                                                               ;88CDAA;
-    dw $9C12                                                             ;88CDAB;
-    db $81                                                               ;88CDAD;
-    dw $9C14                                                             ;88CDAE;
-    db $81                                                               ;88CDB0;
-    dw $9C16                                                             ;88CDB1;
-    db $81                                                               ;88CDB3;
-    dw $9C18                                                             ;88CDB4;
-    db $81                                                               ;88CDB6;
-    dw $9C1A                                                             ;88CDB7;
-    db $81                                                               ;88CDB9;
-    dw $9C1C                                                             ;88CDBA;
-    db $81                                                               ;88CDBC;
-    dw $9C1E                                                             ;88CDBD;
-    db $81                                                               ;88CDBF;
-    dw $9C20                                                             ;88CDC0;
-    db $81                                                               ;88CDC2;
-    dw $9C22                                                             ;88CDC3;
-    db $81                                                               ;88CDC5;
-    dw $9C04                                                             ;88CDC6;
-    db $81                                                               ;88CDC8;
-    dw $9C06                                                             ;88CDC9;
-    db $81                                                               ;88CDCB;
-    dw $9C08                                                             ;88CDCC;
-    db $81                                                               ;88CDCE;
-    dw $9C0A                                                             ;88CDCF;
-    db $81                                                               ;88CDD1;
-    dw $9C0C                                                             ;88CDD2;
-    db $81                                                               ;88CDD4;
-    dw $9C0E                                                             ;88CDD5;
-    db $81                                                               ;88CDD7;
-    dw $9C10                                                             ;88CDD8;
-    db $81                                                               ;88CDDA;
-    dw $9C12                                                             ;88CDDB;
-    db $81                                                               ;88CDDD;
-    dw $9C14                                                             ;88CDDE;
-    db $81                                                               ;88CDE0;
-    dw $9C16                                                             ;88CDE1;
-    db $81                                                               ;88CDE3;
-    dw $9C18                                                             ;88CDE4;
-    db $81                                                               ;88CDE6;
-    dw $9C1A                                                             ;88CDE7;
-    db $81                                                               ;88CDE9;
-    dw $9C1C                                                             ;88CDEA;
-    db $81                                                               ;88CDEC;
-    dw $9C1E                                                             ;88CDED;
-    db $81                                                               ;88CDEF;
-    dw $9C20                                                             ;88CDF0;
-    db $81                                                               ;88CDF2;
-    dw $9C22                                                             ;88CDF3;
-    db $81                                                               ;88CDF5;
-    dw $9C04                                                             ;88CDF6;
-    db $81                                                               ;88CDF8;
-    dw $9C06                                                             ;88CDF9;
-    db $81                                                               ;88CDFB;
-    dw $9C08                                                             ;88CDFC;
-    db $81                                                               ;88CDFE;
-    dw $9C0A                                                             ;88CDFF;
-    db $81                                                               ;88CE01;
-    dw $9C0C                                                             ;88CE02;
-    db $81                                                               ;88CE04;
-    dw $9C0E                                                             ;88CE05;
-    db $81                                                               ;88CE07;
-    dw $9C10                                                             ;88CE08;
-    db $81                                                               ;88CE0A;
-    dw $9C12                                                             ;88CE0B;
-    db $81                                                               ;88CE0D;
-    dw $9C14                                                             ;88CE0E;
-    db $81                                                               ;88CE10;
-    dw $9C16                                                             ;88CE11;
-    db $81                                                               ;88CE13;
-    dw $9C18                                                             ;88CE14;
-    db $81                                                               ;88CE16;
-    dw $9C1A                                                             ;88CE17;
-    db $81                                                               ;88CE19;
-    dw $9C1C                                                             ;88CE1A;
-    db $81                                                               ;88CE1C;
-    dw $9C1E                                                             ;88CE1D;
-    db $81                                                               ;88CE1F;
-    dw $9C20                                                             ;88CE20;
-    db $81                                                               ;88CE22;
-    dw $9C22                                                             ;88CE23;
-    db $81                                                               ;88CE25;
-    dw $9C04                                                             ;88CE26;
-    db $81                                                               ;88CE28;
-    dw $9C06                                                             ;88CE29;
-    db $81                                                               ;88CE2B;
-    dw $9C08                                                             ;88CE2C;
-    db $81                                                               ;88CE2E;
-    dw $9C0A                                                             ;88CE2F;
-    db $81                                                               ;88CE31;
-    dw $9C0C                                                             ;88CE32;
-    db $81                                                               ;88CE34;
-    dw $9C0E                                                             ;88CE35;
-    db $81                                                               ;88CE37;
-    dw $9C10                                                             ;88CE38;
-    db $81                                                               ;88CE3A;
-    dw $9C12                                                             ;88CE3B;
-    db $81                                                               ;88CE3D;
-    dw $9C14                                                             ;88CE3E;
-    db $81                                                               ;88CE40;
-    dw $9C16                                                             ;88CE41;
-    db $81                                                               ;88CE43;
-    dw $9C18                                                             ;88CE44;
-    db $81                                                               ;88CE46;
-    dw $9C1A                                                             ;88CE47;
-    db $81                                                               ;88CE49;
-    dw $9C1C                                                             ;88CE4A;
-    db $81                                                               ;88CE4C;
-    dw $9C1E                                                             ;88CE4D;
-    db $81                                                               ;88CE4F;
-    dw $9C20                                                             ;88CE50;
-    db $81                                                               ;88CE52;
-    dw $9C22                                                             ;88CE53;
-    db $81                                                               ;88CE55;
-    dw $9C04                                                             ;88CE56;
-    db $81                                                               ;88CE58;
-    dw $9C06                                                             ;88CE59;
-    db $81                                                               ;88CE5B;
-    dw $9C08                                                             ;88CE5C;
-    db $81                                                               ;88CE5E;
-    dw $9C0A                                                             ;88CE5F;
-    db $81                                                               ;88CE61;
-    dw $9C0C                                                             ;88CE62;
-    db $81                                                               ;88CE64;
-    dw $9C0E                                                             ;88CE65;
-    db $81                                                               ;88CE67;
-    dw $9C10                                                             ;88CE68;
-    db $81                                                               ;88CE6A;
-    dw $9C12                                                             ;88CE6B;
-    db $81                                                               ;88CE6D;
-    dw $9C14                                                             ;88CE6E;
-    db $81                                                               ;88CE70;
-    dw $9C16                                                             ;88CE71;
-    db $81                                                               ;88CE73;
-    dw $9C18                                                             ;88CE74;
-    db $81                                                               ;88CE76;
-    dw $9C1A                                                             ;88CE77;
-    db $81                                                               ;88CE79;
-    dw $9C1C                                                             ;88CE7A;
-    db $81                                                               ;88CE7C;
-    dw $9C1E                                                             ;88CE7D;
-    db $81                                                               ;88CE7F;
-    dw $9C20                                                             ;88CE80;
-    db $81                                                               ;88CE82;
-    dw $9C22                                                             ;88CE83;
-    db $81                                                               ;88CE85;
-    dw $9C04                                                             ;88CE86;
-    db $81                                                               ;88CE88;
-    dw $9C06                                                             ;88CE89;
-    db $81                                                               ;88CE8B;
-    dw $9C08                                                             ;88CE8C;
-    db $81                                                               ;88CE8E;
-    dw $9C0A                                                             ;88CE8F;
-    db $81                                                               ;88CE91;
-    dw $9C0C                                                             ;88CE92;
-    db $81                                                               ;88CE94;
-    dw $9C0E                                                             ;88CE95;
-    db $81                                                               ;88CE97;
-    dw $9C10                                                             ;88CE98;
-    db $81                                                               ;88CE9A;
-    dw $9C12                                                             ;88CE9B;
-    db $81                                                               ;88CE9D;
-    dw $9C14                                                             ;88CE9E;
-    db $81                                                               ;88CEA0;
-    dw $9C16                                                             ;88CEA1;
-    db $81                                                               ;88CEA3;
-    dw $9C18                                                             ;88CEA4;
-    db $81                                                               ;88CEA6;
-    dw $9C1A                                                             ;88CEA7;
-    db $81                                                               ;88CEA9;
-    dw $9C1C                                                             ;88CEAA;
-    db $81                                                               ;88CEAC;
-    dw $9C1E                                                             ;88CEAD;
-    db $81                                                               ;88CEAF;
-    dw $9C20                                                             ;88CEB0;
-    db $81                                                               ;88CEB2;
-    dw $9C22                                                             ;88CEB3;
-    db $81                                                               ;88CEB5;
-    dw $9C04                                                             ;88CEB6;
-    db $81                                                               ;88CEB8;
-    dw $9C06                                                             ;88CEB9;
-    db $81                                                               ;88CEBB;
-    dw $9C08                                                             ;88CEBC;
-    db $81                                                               ;88CEBE;
-    dw $9C0A                                                             ;88CEBF;
-    db $81                                                               ;88CEC1;
-    dw $9C0C                                                             ;88CEC2;
-    db $81                                                               ;88CEC4;
-    dw $9C0E                                                             ;88CEC5;
-    db $81                                                               ;88CEC7;
-    dw $9C10                                                             ;88CEC8;
-    db $81                                                               ;88CECA;
-    dw $9C12                                                             ;88CECB;
-    db $81                                                               ;88CECD;
-    dw $9C14                                                             ;88CECE;
-    db $81                                                               ;88CED0;
-    dw $9C16                                                             ;88CED1;
-    db $81                                                               ;88CED3;
-    dw $9C18                                                             ;88CED4;
-    db $81                                                               ;88CED6;
-    dw $9C1A                                                             ;88CED7;
-    db $81                                                               ;88CED9;
-    dw $9C1C                                                             ;88CEDA;
-    db $81                                                               ;88CEDC;
-    dw $9C1E                                                             ;88CEDD;
-    db $81                                                               ;88CEDF;
-    dw $9C20                                                             ;88CEE0;
-    db $81                                                               ;88CEE2;
-    dw $9C22                                                             ;88CEE3;
-    db $81                                                               ;88CEE5;
-    dw $9C04                                                             ;88CEE6;
-    db $81                                                               ;88CEE8;
-    dw $9C06                                                             ;88CEE9;
-    db $81                                                               ;88CEEB;
-    dw $9C08                                                             ;88CEEC;
-    db $81                                                               ;88CEEE;
-    dw $9C0A                                                             ;88CEEF;
-    db $81                                                               ;88CEF1;
-    dw $9C0C                                                             ;88CEF2;
-    db $81                                                               ;88CEF4;
-    dw $9C0E                                                             ;88CEF5;
-    db $81                                                               ;88CEF7;
-    dw $9C10                                                             ;88CEF8;
-    db $81                                                               ;88CEFA;
-    dw $9C12                                                             ;88CEFB;
-    db $81                                                               ;88CEFD;
-    dw $9C14                                                             ;88CEFE;
-    db $81                                                               ;88CF00;
-    dw $9C16                                                             ;88CF01;
-    db $81                                                               ;88CF03;
-    dw $9C18                                                             ;88CF04;
-    db $81                                                               ;88CF06;
-    dw $9C1A                                                             ;88CF07;
-    db $81                                                               ;88CF09;
-    dw $9C1C                                                             ;88CF0A;
-    db $81                                                               ;88CF0C;
-    dw $9C1E                                                             ;88CF0D;
-    db $81                                                               ;88CF0F;
-    dw $9C20                                                             ;88CF10;
-    db $81                                                               ;88CF12;
-    dw $9C22                                                             ;88CF13;
-    db $81                                                               ;88CF15;
-    dw $9C04                                                             ;88CF16;
-    db $81                                                               ;88CF18;
-    dw $9C06                                                             ;88CF19;
-    db $81                                                               ;88CF1B;
-    dw $9C08                                                             ;88CF1C;
-    db $81                                                               ;88CF1E;
-    dw $9C0A                                                             ;88CF1F;
-    db $81                                                               ;88CF21;
-    dw $9C0C                                                             ;88CF22;
-    db $81                                                               ;88CF24;
-    dw $9C0E                                                             ;88CF25;
-    db $81                                                               ;88CF27;
-    dw $9C10                                                             ;88CF28;
-    db $81                                                               ;88CF2A;
-    dw $9C12                                                             ;88CF2B;
-    db $81                                                               ;88CF2D;
-    dw $9C14                                                             ;88CF2E;
-    db $81                                                               ;88CF30;
-    dw $9C16                                                             ;88CF31;
-    db $81                                                               ;88CF33;
-    dw $9C18                                                             ;88CF34;
-    db $81                                                               ;88CF36;
-    dw $9C1A                                                             ;88CF37;
-    db $81                                                               ;88CF39;
-    dw $9C1C                                                             ;88CF3A;
-    db $81                                                               ;88CF3C;
-    dw $9C1E                                                             ;88CF3D;
-    db $81                                                               ;88CF3F;
-    dw $9C20                                                             ;88CF40;
-    db $81                                                               ;88CF42;
-    dw $9C22                                                             ;88CF43;
-    db $00                                                               ;88CF45;
+    db $81 : dw $9C04                                                    ;88C945;
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $81 : dw $9C04
+    db $81 : dw $9C06
+    db $81 : dw $9C08
+    db $81 : dw $9C0A
+    db $81 : dw $9C0C
+    db $81 : dw $9C0E
+    db $81 : dw $9C10
+    db $81 : dw $9C12
+    db $81 : dw $9C14
+    db $81 : dw $9C16
+    db $81 : dw $9C18
+    db $81 : dw $9C1A
+    db $81 : dw $9C1C
+    db $81 : dw $9C1E
+    db $81 : dw $9C20
+    db $81 : dw $9C22
+    db $00
 
 IndirectHDMATable_WaterBG2XScroll:
-    db $81                                                               ;88CF46;
-    dw $9C44                                                             ;88CF47;
-    db $81                                                               ;88CF49;
-    dw $9C44                                                             ;88CF4A;
-    db $81                                                               ;88CF4C;
-    dw $9C44                                                             ;88CF4D;
-    db $81                                                               ;88CF4F;
-    dw $9C44                                                             ;88CF50;
-    db $81                                                               ;88CF52;
-    dw $9C44                                                             ;88CF53;
-    db $81                                                               ;88CF55;
-    dw $9C44                                                             ;88CF56;
-    db $81                                                               ;88CF58;
-    dw $9C44                                                             ;88CF59;
-    db $81                                                               ;88CF5B;
-    dw $9C44                                                             ;88CF5C;
-    db $81                                                               ;88CF5E;
-    dw $9C44                                                             ;88CF5F;
-    db $81                                                               ;88CF61;
-    dw $9C44                                                             ;88CF62;
-    db $81                                                               ;88CF64;
-    dw $9C44                                                             ;88CF65;
-    db $81                                                               ;88CF67;
-    dw $9C44                                                             ;88CF68;
-    db $81                                                               ;88CF6A;
-    dw $9C44                                                             ;88CF6B;
-    db $81                                                               ;88CF6D;
-    dw $9C44                                                             ;88CF6E;
-    db $81                                                               ;88CF70;
-    dw $9C44                                                             ;88CF71;
-    db $81                                                               ;88CF73;
-    dw $9C44                                                             ;88CF74;
-    db $81                                                               ;88CF76;
-    dw $9C44                                                             ;88CF77;
-    db $81                                                               ;88CF79;
-    dw $9C44                                                             ;88CF7A;
-    db $81                                                               ;88CF7C;
-    dw $9C44                                                             ;88CF7D;
-    db $81                                                               ;88CF7F;
-    dw $9C44                                                             ;88CF80;
-    db $81                                                               ;88CF82;
-    dw $9C44                                                             ;88CF83;
-    db $81                                                               ;88CF85;
-    dw $9C44                                                             ;88CF86;
-    db $81                                                               ;88CF88;
-    dw $9C44                                                             ;88CF89;
-    db $81                                                               ;88CF8B;
-    dw $9C44                                                             ;88CF8C;
-    db $81                                                               ;88CF8E;
-    dw $9C44                                                             ;88CF8F;
-    db $81                                                               ;88CF91;
-    dw $9C44                                                             ;88CF92;
-    db $81                                                               ;88CF94;
-    dw $9C44                                                             ;88CF95;
-    db $81                                                               ;88CF97;
-    dw $9C44                                                             ;88CF98;
-    db $81                                                               ;88CF9A;
-    dw $9C44                                                             ;88CF9B;
-    db $81                                                               ;88CF9D;
-    dw $9C44                                                             ;88CF9E;
-    db $81                                                               ;88CFA0;
-    dw $9C44                                                             ;88CFA1;
-    db $81                                                               ;88CFA3;
-    dw $9C44                                                             ;88CFA4;
-    db $81                                                               ;88CFA6;
-    dw $9C44                                                             ;88CFA7;
-    db $81                                                               ;88CFA9;
-    dw $9C44                                                             ;88CFAA;
-    db $81                                                               ;88CFAC;
-    dw $9C44                                                             ;88CFAD;
-    db $81                                                               ;88CFAF;
-    dw $9C44                                                             ;88CFB0;
-    db $81                                                               ;88CFB2;
-    dw $9C44                                                             ;88CFB3;
-    db $81                                                               ;88CFB5;
-    dw $9C44                                                             ;88CFB6;
-    db $81                                                               ;88CFB8;
-    dw $9C44                                                             ;88CFB9;
-    db $81                                                               ;88CFBB;
-    dw $9C44                                                             ;88CFBC;
-    db $81                                                               ;88CFBE;
-    dw $9C44                                                             ;88CFBF;
-    db $81                                                               ;88CFC1;
-    dw $9C44                                                             ;88CFC2;
-    db $81                                                               ;88CFC4;
-    dw $9C44                                                             ;88CFC5;
-    db $81                                                               ;88CFC7;
-    dw $9C44                                                             ;88CFC8;
-    db $81                                                               ;88CFCA;
-    dw $9C44                                                             ;88CFCB;
-    db $81                                                               ;88CFCD;
-    dw $9C44                                                             ;88CFCE;
-    db $81                                                               ;88CFD0;
-    dw $9C44                                                             ;88CFD1;
-    db $81                                                               ;88CFD3;
-    dw $9C44                                                             ;88CFD4;
-    db $81                                                               ;88CFD6;
-    dw $9C44                                                             ;88CFD7;
-    db $81                                                               ;88CFD9;
-    dw $9C44                                                             ;88CFDA;
-    db $81                                                               ;88CFDC;
-    dw $9C44                                                             ;88CFDD;
-    db $81                                                               ;88CFDF;
-    dw $9C44                                                             ;88CFE0;
-    db $81                                                               ;88CFE2;
-    dw $9C44                                                             ;88CFE3;
-    db $81                                                               ;88CFE5;
-    dw $9C44                                                             ;88CFE6;
-    db $81                                                               ;88CFE8;
-    dw $9C44                                                             ;88CFE9;
-    db $81                                                               ;88CFEB;
-    dw $9C44                                                             ;88CFEC;
-    db $81                                                               ;88CFEE;
-    dw $9C44                                                             ;88CFEF;
-    db $81                                                               ;88CFF1;
-    dw $9C44                                                             ;88CFF2;
-    db $81                                                               ;88CFF4;
-    dw $9C44                                                             ;88CFF5;
-    db $81                                                               ;88CFF7;
-    dw $9C44                                                             ;88CFF8;
-    db $81                                                               ;88CFFA;
-    dw $9C44                                                             ;88CFFB;
-    db $81                                                               ;88CFFD;
-    dw $9C44                                                             ;88CFFE;
-    db $81                                                               ;88D000;
-    dw $9C44                                                             ;88D001;
-    db $81                                                               ;88D003;
-    dw $9C44                                                             ;88D004;
-    db $81                                                               ;88D006;
-    dw $9C44                                                             ;88D007;
-    db $81                                                               ;88D009;
-    dw $9C44                                                             ;88D00A;
-    db $81                                                               ;88D00C;
-    dw $9C44                                                             ;88D00D;
-    db $81                                                               ;88D00F;
-    dw $9C44                                                             ;88D010;
-    db $81                                                               ;88D012;
-    dw $9C44                                                             ;88D013;
-    db $81                                                               ;88D015;
-    dw $9C44                                                             ;88D016;
-    db $81                                                               ;88D018;
-    dw $9C44                                                             ;88D019;
-    db $81                                                               ;88D01B;
-    dw $9C44                                                             ;88D01C;
-    db $81                                                               ;88D01E;
-    dw $9C44                                                             ;88D01F;
-    db $81                                                               ;88D021;
-    dw $9C44                                                             ;88D022;
-    db $81                                                               ;88D024;
-    dw $9C44                                                             ;88D025;
-    db $81                                                               ;88D027;
-    dw $9C44                                                             ;88D028;
-    db $81                                                               ;88D02A;
-    dw $9C44                                                             ;88D02B;
-    db $81                                                               ;88D02D;
-    dw $9C44                                                             ;88D02E;
-    db $81                                                               ;88D030;
-    dw $9C44                                                             ;88D031;
-    db $81                                                               ;88D033;
-    dw $9C44                                                             ;88D034;
-    db $81                                                               ;88D036;
-    dw $9C44                                                             ;88D037;
-    db $81                                                               ;88D039;
-    dw $9C44                                                             ;88D03A;
-    db $81                                                               ;88D03C;
-    dw $9C44                                                             ;88D03D;
-    db $81                                                               ;88D03F;
-    dw $9C44                                                             ;88D040;
-    db $81                                                               ;88D042;
-    dw $9C44                                                             ;88D043;
-    db $81                                                               ;88D045;
-    dw $9C44                                                             ;88D046;
-    db $81                                                               ;88D048;
-    dw $9C44                                                             ;88D049;
-    db $81                                                               ;88D04B;
-    dw $9C44                                                             ;88D04C;
-    db $81                                                               ;88D04E;
-    dw $9C44                                                             ;88D04F;
-    db $81                                                               ;88D051;
-    dw $9C44                                                             ;88D052;
-    db $81                                                               ;88D054;
-    dw $9C44                                                             ;88D055;
-    db $81                                                               ;88D057;
-    dw $9C44                                                             ;88D058;
-    db $81                                                               ;88D05A;
-    dw $9C44                                                             ;88D05B;
-    db $81                                                               ;88D05D;
-    dw $9C44                                                             ;88D05E;
-    db $81                                                               ;88D060;
-    dw $9C44                                                             ;88D061;
-    db $81                                                               ;88D063;
-    dw $9C44                                                             ;88D064;
-    db $81                                                               ;88D066;
-    dw $9C44                                                             ;88D067;
-    db $81                                                               ;88D069;
-    dw $9C44                                                             ;88D06A;
-    db $81                                                               ;88D06C;
-    dw $9C44                                                             ;88D06D;
-    db $81                                                               ;88D06F;
-    dw $9C44                                                             ;88D070;
-    db $81                                                               ;88D072;
-    dw $9C44                                                             ;88D073;
-    db $81                                                               ;88D075;
-    dw $9C44                                                             ;88D076;
-    db $81                                                               ;88D078;
-    dw $9C44                                                             ;88D079;
-    db $81                                                               ;88D07B;
-    dw $9C44                                                             ;88D07C;
-    db $81                                                               ;88D07E;
-    dw $9C44                                                             ;88D07F;
-    db $81                                                               ;88D081;
-    dw $9C44                                                             ;88D082;
-    db $81                                                               ;88D084;
-    dw $9C44                                                             ;88D085;
-    db $81                                                               ;88D087;
-    dw $9C44                                                             ;88D088;
-    db $81                                                               ;88D08A;
-    dw $9C44                                                             ;88D08B;
-    db $81                                                               ;88D08D;
-    dw $9C44                                                             ;88D08E;
-    db $81                                                               ;88D090;
-    dw $9C44                                                             ;88D091;
-    db $81                                                               ;88D093;
-    dw $9C44                                                             ;88D094;
-    db $81                                                               ;88D096;
-    dw $9C44                                                             ;88D097;
-    db $81                                                               ;88D099;
-    dw $9C44                                                             ;88D09A;
-    db $81                                                               ;88D09C;
-    dw $9C44                                                             ;88D09D;
-    db $81                                                               ;88D09F;
-    dw $9C44                                                             ;88D0A0;
-    db $81                                                               ;88D0A2;
-    dw $9C44                                                             ;88D0A3;
-    db $81                                                               ;88D0A5;
-    dw $9C44                                                             ;88D0A6;
-    db $81                                                               ;88D0A8;
-    dw $9C44                                                             ;88D0A9;
-    db $81                                                               ;88D0AB;
-    dw $9C44                                                             ;88D0AC;
-    db $81                                                               ;88D0AE;
-    dw $9C44                                                             ;88D0AF;
-    db $81                                                               ;88D0B1;
-    dw $9C44                                                             ;88D0B2;
-    db $81                                                               ;88D0B4;
-    dw $9C44                                                             ;88D0B5;
-    db $81                                                               ;88D0B7;
-    dw $9C44                                                             ;88D0B8;
-    db $81                                                               ;88D0BA;
-    dw $9C44                                                             ;88D0BB;
-    db $81                                                               ;88D0BD;
-    dw $9C44                                                             ;88D0BE;
-    db $81                                                               ;88D0C0;
-    dw $9C44                                                             ;88D0C1;
-    db $81                                                               ;88D0C3;
-    dw $9C44                                                             ;88D0C4;
-    db $81                                                               ;88D0C6;
-    dw $9C44                                                             ;88D0C7;
-    db $81                                                               ;88D0C9;
-    dw $9C44                                                             ;88D0CA;
-    db $81                                                               ;88D0CC;
-    dw $9C44                                                             ;88D0CD;
-    db $81                                                               ;88D0CF;
-    dw $9C44                                                             ;88D0D0;
-    db $81                                                               ;88D0D2;
-    dw $9C44                                                             ;88D0D3;
-    db $81                                                               ;88D0D5;
-    dw $9C44                                                             ;88D0D6;
-    db $81                                                               ;88D0D8;
-    dw $9C44                                                             ;88D0D9;
-    db $81                                                               ;88D0DB;
-    dw $9C44                                                             ;88D0DC;
-    db $81                                                               ;88D0DE;
-    dw $9C44                                                             ;88D0DF;
-    db $81                                                               ;88D0E1;
-    dw $9C44                                                             ;88D0E2;
-    db $81                                                               ;88D0E4;
-    dw $9C44                                                             ;88D0E5;
-    db $81                                                               ;88D0E7;
-    dw $9C44                                                             ;88D0E8;
-    db $81                                                               ;88D0EA;
-    dw $9C44                                                             ;88D0EB;
-    db $81                                                               ;88D0ED;
-    dw $9C44                                                             ;88D0EE;
-    db $81                                                               ;88D0F0;
-    dw $9C44                                                             ;88D0F1;
-    db $81                                                               ;88D0F3;
-    dw $9C44                                                             ;88D0F4;
-    db $81                                                               ;88D0F6;
-    dw $9C44                                                             ;88D0F7;
-    db $81                                                               ;88D0F9;
-    dw $9C44                                                             ;88D0FA;
-    db $81                                                               ;88D0FC;
-    dw $9C44                                                             ;88D0FD;
-    db $81                                                               ;88D0FF;
-    dw $9C44                                                             ;88D100;
-    db $81                                                               ;88D102;
-    dw $9C44                                                             ;88D103;
-    db $81                                                               ;88D105;
-    dw $9C44                                                             ;88D106;
-    db $81                                                               ;88D108;
-    dw $9C44                                                             ;88D109;
-    db $81                                                               ;88D10B;
-    dw $9C44                                                             ;88D10C;
-    db $81                                                               ;88D10E;
-    dw $9C44                                                             ;88D10F;
-    db $81                                                               ;88D111;
-    dw $9C44                                                             ;88D112;
-    db $81                                                               ;88D114;
-    dw $9C44                                                             ;88D115;
-    db $81                                                               ;88D117;
-    dw $9C44                                                             ;88D118;
-    db $81                                                               ;88D11A;
-    dw $9C44                                                             ;88D11B;
-    db $81                                                               ;88D11D;
-    dw $9C44                                                             ;88D11E;
-    db $81                                                               ;88D120;
-    dw $9C44                                                             ;88D121;
-    db $81                                                               ;88D123;
-    dw $9C44                                                             ;88D124;
-    db $81                                                               ;88D126;
-    dw $9C44                                                             ;88D127;
-    db $81                                                               ;88D129;
-    dw $9C44                                                             ;88D12A;
-    db $81                                                               ;88D12C;
-    dw $9C44                                                             ;88D12D;
-    db $81                                                               ;88D12F;
-    dw $9C44                                                             ;88D130;
-    db $81                                                               ;88D132;
-    dw $9C44                                                             ;88D133;
-    db $81                                                               ;88D135;
-    dw $9C44                                                             ;88D136;
-    db $81                                                               ;88D138;
-    dw $9C44                                                             ;88D139;
-    db $81                                                               ;88D13B;
-    dw $9C44                                                             ;88D13C;
-    db $81                                                               ;88D13E;
-    dw $9C44                                                             ;88D13F;
-    db $81                                                               ;88D141;
-    dw $9C44                                                             ;88D142;
-    db $81                                                               ;88D144;
-    dw $9C44                                                             ;88D145;
-    db $81                                                               ;88D147;
-    dw $9C44                                                             ;88D148;
-    db $81                                                               ;88D14A;
-    dw $9C44                                                             ;88D14B;
-    db $81                                                               ;88D14D;
-    dw $9C44                                                             ;88D14E;
-    db $81                                                               ;88D150;
-    dw $9C44                                                             ;88D151;
-    db $81                                                               ;88D153;
-    dw $9C44                                                             ;88D154;
-    db $81                                                               ;88D156;
-    dw $9C44                                                             ;88D157;
-    db $81                                                               ;88D159;
-    dw $9C44                                                             ;88D15A;
-    db $81                                                               ;88D15C;
-    dw $9C44                                                             ;88D15D;
-    db $81                                                               ;88D15F;
-    dw $9C44                                                             ;88D160;
-    db $81                                                               ;88D162;
-    dw $9C44                                                             ;88D163;
-    db $81                                                               ;88D165;
-    dw $9C44                                                             ;88D166;
-    db $81                                                               ;88D168;
-    dw $9C44                                                             ;88D169;
-    db $81                                                               ;88D16B;
-    dw $9C44                                                             ;88D16C;
-    db $81                                                               ;88D16E;
-    dw $9C44                                                             ;88D16F;
-    db $81                                                               ;88D171;
-    dw $9C44                                                             ;88D172;
-    db $81                                                               ;88D174;
-    dw $9C44                                                             ;88D175;
-    db $81                                                               ;88D177;
-    dw $9C44                                                             ;88D178;
-    db $81                                                               ;88D17A;
-    dw $9C44                                                             ;88D17B;
-    db $81                                                               ;88D17D;
-    dw $9C44                                                             ;88D17E;
-    db $81                                                               ;88D180;
-    dw $9C44                                                             ;88D181;
-    db $81                                                               ;88D183;
-    dw $9C44                                                             ;88D184;
-    db $81                                                               ;88D186;
-    dw $9C44                                                             ;88D187;
-    db $81                                                               ;88D189;
-    dw $9C44                                                             ;88D18A;
-    db $81                                                               ;88D18C;
-    dw $9C44                                                             ;88D18D;
-    db $81                                                               ;88D18F;
-    dw $9C44                                                             ;88D190;
-    db $81                                                               ;88D192;
-    dw $9C44                                                             ;88D193;
-    db $81                                                               ;88D195;
-    dw $9C44                                                             ;88D196;
-    db $81                                                               ;88D198;
-    dw $9C44                                                             ;88D199;
-    db $81                                                               ;88D19B;
-    dw $9C44                                                             ;88D19C;
-    db $81                                                               ;88D19E;
-    dw $9C44                                                             ;88D19F;
-    db $81                                                               ;88D1A1;
-    dw $9C44                                                             ;88D1A2;
-    db $81                                                               ;88D1A4;
-    dw $9C44                                                             ;88D1A5;
-    db $81                                                               ;88D1A7;
-    dw $9C44                                                             ;88D1A8;
-    db $81                                                               ;88D1AA;
-    dw $9C44                                                             ;88D1AB;
-    db $81                                                               ;88D1AD;
-    dw $9C44                                                             ;88D1AE;
-    db $81                                                               ;88D1B0;
-    dw $9C44                                                             ;88D1B1;
-    db $81                                                               ;88D1B3;
-    dw $9C44                                                             ;88D1B4;
-    db $81                                                               ;88D1B6;
-    dw $9C44                                                             ;88D1B7;
-    db $81                                                               ;88D1B9;
-    dw $9C44                                                             ;88D1BA;
-    db $81                                                               ;88D1BC;
-    dw $9C44                                                             ;88D1BD;
-    db $81                                                               ;88D1BF;
-    dw $9C44                                                             ;88D1C0;
-    db $81                                                               ;88D1C2;
-    dw $9C44                                                             ;88D1C3;
-    db $81                                                               ;88D1C5;
-    dw $9C44                                                             ;88D1C6;
-    db $81                                                               ;88D1C8;
-    dw $9C44                                                             ;88D1C9;
-    db $81                                                               ;88D1CB;
-    dw $9C44                                                             ;88D1CC;
-    db $81                                                               ;88D1CE;
-    dw $9C44                                                             ;88D1CF;
-    db $81                                                               ;88D1D1;
-    dw $9C44                                                             ;88D1D2;
-    db $81                                                               ;88D1D4;
-    dw $9C44                                                             ;88D1D5;
-    db $81                                                               ;88D1D7;
-    dw $9C44                                                             ;88D1D8;
-    db $81                                                               ;88D1DA;
-    dw $9C44                                                             ;88D1DB;
-    db $81                                                               ;88D1DD;
-    dw $9C44                                                             ;88D1DE;
-    db $81                                                               ;88D1E0;
-    dw $9C44                                                             ;88D1E1;
-    db $81                                                               ;88D1E3;
-    dw $9C44                                                             ;88D1E4;
-    db $81                                                               ;88D1E6;
-    dw $9C44                                                             ;88D1E7;
-    db $81                                                               ;88D1E9;
-    dw $9C44                                                             ;88D1EA;
-    db $81                                                               ;88D1EC;
-    dw $9C44                                                             ;88D1ED;
-    db $81                                                               ;88D1EF;
-    dw $9C44                                                             ;88D1F0;
-    db $81                                                               ;88D1F2;
-    dw $9C44                                                             ;88D1F3;
-    db $81                                                               ;88D1F5;
-    dw $9C44                                                             ;88D1F6;
-    db $81                                                               ;88D1F8;
-    dw $9C44                                                             ;88D1F9;
-    db $81                                                               ;88D1FB;
-    dw $9C44                                                             ;88D1FC;
-    db $81                                                               ;88D1FE;
-    dw $9C44                                                             ;88D1FF;
-    db $81                                                               ;88D201;
-    dw $9C44                                                             ;88D202;
-    db $81                                                               ;88D204;
-    dw $9C44                                                             ;88D205;
-    db $81                                                               ;88D207;
-    dw $9C44                                                             ;88D208;
-    db $81                                                               ;88D20A;
-    dw $9C44                                                             ;88D20B;
-    db $81                                                               ;88D20D;
-    dw $9C44                                                             ;88D20E;
-    db $81                                                               ;88D210;
-    dw $9C44                                                             ;88D211;
-    db $81                                                               ;88D213;
-    dw $9C44                                                             ;88D214;
-    db $81                                                               ;88D216;
-    dw $9C44                                                             ;88D217;
-    db $81                                                               ;88D219;
-    dw $9C44                                                             ;88D21A;
-    db $81                                                               ;88D21C;
-    dw $9C44                                                             ;88D21D;
-    db $81                                                               ;88D21F;
-    dw $9C44                                                             ;88D220;
-    db $81                                                               ;88D222;
-    dw $9C44                                                             ;88D223;
-    db $81                                                               ;88D225;
-    dw $9C44                                                             ;88D226;
-    db $81                                                               ;88D228;
-    dw $9C44                                                             ;88D229;
-    db $81                                                               ;88D22B;
-    dw $9C44                                                             ;88D22C;
-    db $81                                                               ;88D22E;
-    dw $9C44                                                             ;88D22F;
-    db $81                                                               ;88D231;
-    dw $9C44                                                             ;88D232;
-    db $81                                                               ;88D234;
-    dw $9C44                                                             ;88D235;
-    db $81                                                               ;88D237;
-    dw $9C44                                                             ;88D238;
-    db $81                                                               ;88D23A;
-    dw $9C44                                                             ;88D23B;
-    db $81                                                               ;88D23D;
-    dw $9C44                                                             ;88D23E;
-    db $81                                                               ;88D240;
-    dw $9C44                                                             ;88D241;
-    db $81                                                               ;88D243;
-    dw $9C44                                                             ;88D244;
-    db $81                                                               ;88D246;
-    dw $9C48                                                             ;88D247;
-    db $81                                                               ;88D249;
-    dw $9C4A                                                             ;88D24A;
-    db $81                                                               ;88D24C;
-    dw $9C4C                                                             ;88D24D;
-    db $81                                                               ;88D24F;
-    dw $9C4E                                                             ;88D250;
-    db $81                                                               ;88D252;
-    dw $9C50                                                             ;88D253;
-    db $81                                                               ;88D255;
-    dw $9C52                                                             ;88D256;
-    db $81                                                               ;88D258;
-    dw $9C54                                                             ;88D259;
-    db $81                                                               ;88D25B;
-    dw $9C56                                                             ;88D25C;
-    db $81                                                               ;88D25E;
-    dw $9C58                                                             ;88D25F;
-    db $81                                                               ;88D261;
-    dw $9C5A                                                             ;88D262;
-    db $81                                                               ;88D264;
-    dw $9C5C                                                             ;88D265;
-    db $81                                                               ;88D267;
-    dw $9C5E                                                             ;88D268;
-    db $81                                                               ;88D26A;
-    dw $9C60                                                             ;88D26B;
-    db $81                                                               ;88D26D;
-    dw $9C62                                                             ;88D26E;
-    db $81                                                               ;88D270;
-    dw $9C64                                                             ;88D271;
-    db $81                                                               ;88D273;
-    dw $9C66                                                             ;88D274;
-    db $81                                                               ;88D276;
-    dw $9C48                                                             ;88D277;
-    db $81                                                               ;88D279;
-    dw $9C4A                                                             ;88D27A;
-    db $81                                                               ;88D27C;
-    dw $9C4C                                                             ;88D27D;
-    db $81                                                               ;88D27F;
-    dw $9C4E                                                             ;88D280;
-    db $81                                                               ;88D282;
-    dw $9C50                                                             ;88D283;
-    db $81                                                               ;88D285;
-    dw $9C52                                                             ;88D286;
-    db $81                                                               ;88D288;
-    dw $9C54                                                             ;88D289;
-    db $81                                                               ;88D28B;
-    dw $9C56                                                             ;88D28C;
-    db $81                                                               ;88D28E;
-    dw $9C58                                                             ;88D28F;
-    db $81                                                               ;88D291;
-    dw $9C5A                                                             ;88D292;
-    db $81                                                               ;88D294;
-    dw $9C5C                                                             ;88D295;
-    db $81                                                               ;88D297;
-    dw $9C5E                                                             ;88D298;
-    db $81                                                               ;88D29A;
-    dw $9C60                                                             ;88D29B;
-    db $81                                                               ;88D29D;
-    dw $9C62                                                             ;88D29E;
-    db $81                                                               ;88D2A0;
-    dw $9C64                                                             ;88D2A1;
-    db $81                                                               ;88D2A3;
-    dw $9C66                                                             ;88D2A4;
-    db $81                                                               ;88D2A6;
-    dw $9C48                                                             ;88D2A7;
-    db $81                                                               ;88D2A9;
-    dw $9C4A                                                             ;88D2AA;
-    db $81                                                               ;88D2AC;
-    dw $9C4C                                                             ;88D2AD;
-    db $81                                                               ;88D2AF;
-    dw $9C4E                                                             ;88D2B0;
-    db $81                                                               ;88D2B2;
-    dw $9C50                                                             ;88D2B3;
-    db $81                                                               ;88D2B5;
-    dw $9C52                                                             ;88D2B6;
-    db $81                                                               ;88D2B8;
-    dw $9C54                                                             ;88D2B9;
-    db $81                                                               ;88D2BB;
-    dw $9C56                                                             ;88D2BC;
-    db $81                                                               ;88D2BE;
-    dw $9C58                                                             ;88D2BF;
-    db $81                                                               ;88D2C1;
-    dw $9C5A                                                             ;88D2C2;
-    db $81                                                               ;88D2C4;
-    dw $9C5C                                                             ;88D2C5;
-    db $81                                                               ;88D2C7;
-    dw $9C5E                                                             ;88D2C8;
-    db $81                                                               ;88D2CA;
-    dw $9C60                                                             ;88D2CB;
-    db $81                                                               ;88D2CD;
-    dw $9C62                                                             ;88D2CE;
-    db $81                                                               ;88D2D0;
-    dw $9C64                                                             ;88D2D1;
-    db $81                                                               ;88D2D3;
-    dw $9C66                                                             ;88D2D4;
-    db $81                                                               ;88D2D6;
-    dw $9C48                                                             ;88D2D7;
-    db $81                                                               ;88D2D9;
-    dw $9C4A                                                             ;88D2DA;
-    db $81                                                               ;88D2DC;
-    dw $9C4C                                                             ;88D2DD;
-    db $81                                                               ;88D2DF;
-    dw $9C4E                                                             ;88D2E0;
-    db $81                                                               ;88D2E2;
-    dw $9C50                                                             ;88D2E3;
-    db $81                                                               ;88D2E5;
-    dw $9C52                                                             ;88D2E6;
-    db $81                                                               ;88D2E8;
-    dw $9C54                                                             ;88D2E9;
-    db $81                                                               ;88D2EB;
-    dw $9C56                                                             ;88D2EC;
-    db $81                                                               ;88D2EE;
-    dw $9C58                                                             ;88D2EF;
-    db $81                                                               ;88D2F1;
-    dw $9C5A                                                             ;88D2F2;
-    db $81                                                               ;88D2F4;
-    dw $9C5C                                                             ;88D2F5;
-    db $81                                                               ;88D2F7;
-    dw $9C5E                                                             ;88D2F8;
-    db $81                                                               ;88D2FA;
-    dw $9C60                                                             ;88D2FB;
-    db $81                                                               ;88D2FD;
-    dw $9C62                                                             ;88D2FE;
-    db $81                                                               ;88D300;
-    dw $9C64                                                             ;88D301;
-    db $81                                                               ;88D303;
-    dw $9C66                                                             ;88D304;
-    db $81                                                               ;88D306;
-    dw $9C48                                                             ;88D307;
-    db $81                                                               ;88D309;
-    dw $9C4A                                                             ;88D30A;
-    db $81                                                               ;88D30C;
-    dw $9C4C                                                             ;88D30D;
-    db $81                                                               ;88D30F;
-    dw $9C4E                                                             ;88D310;
-    db $81                                                               ;88D312;
-    dw $9C50                                                             ;88D313;
-    db $81                                                               ;88D315;
-    dw $9C52                                                             ;88D316;
-    db $81                                                               ;88D318;
-    dw $9C54                                                             ;88D319;
-    db $81                                                               ;88D31B;
-    dw $9C56                                                             ;88D31C;
-    db $81                                                               ;88D31E;
-    dw $9C58                                                             ;88D31F;
-    db $81                                                               ;88D321;
-    dw $9C5A                                                             ;88D322;
-    db $81                                                               ;88D324;
-    dw $9C5C                                                             ;88D325;
-    db $81                                                               ;88D327;
-    dw $9C5E                                                             ;88D328;
-    db $81                                                               ;88D32A;
-    dw $9C60                                                             ;88D32B;
-    db $81                                                               ;88D32D;
-    dw $9C62                                                             ;88D32E;
-    db $81                                                               ;88D330;
-    dw $9C64                                                             ;88D331;
-    db $81                                                               ;88D333;
-    dw $9C66                                                             ;88D334;
-    db $81                                                               ;88D336;
-    dw $9C48                                                             ;88D337;
-    db $81                                                               ;88D339;
-    dw $9C4A                                                             ;88D33A;
-    db $81                                                               ;88D33C;
-    dw $9C4C                                                             ;88D33D;
-    db $81                                                               ;88D33F;
-    dw $9C4E                                                             ;88D340;
-    db $81                                                               ;88D342;
-    dw $9C50                                                             ;88D343;
-    db $81                                                               ;88D345;
-    dw $9C52                                                             ;88D346;
-    db $81                                                               ;88D348;
-    dw $9C54                                                             ;88D349;
-    db $81                                                               ;88D34B;
-    dw $9C56                                                             ;88D34C;
-    db $81                                                               ;88D34E;
-    dw $9C58                                                             ;88D34F;
-    db $81                                                               ;88D351;
-    dw $9C5A                                                             ;88D352;
-    db $81                                                               ;88D354;
-    dw $9C5C                                                             ;88D355;
-    db $81                                                               ;88D357;
-    dw $9C5E                                                             ;88D358;
-    db $81                                                               ;88D35A;
-    dw $9C60                                                             ;88D35B;
-    db $81                                                               ;88D35D;
-    dw $9C62                                                             ;88D35E;
-    db $81                                                               ;88D360;
-    dw $9C64                                                             ;88D361;
-    db $81                                                               ;88D363;
-    dw $9C66                                                             ;88D364;
-    db $81                                                               ;88D366;
-    dw $9C48                                                             ;88D367;
-    db $81                                                               ;88D369;
-    dw $9C4A                                                             ;88D36A;
-    db $81                                                               ;88D36C;
-    dw $9C4C                                                             ;88D36D;
-    db $81                                                               ;88D36F;
-    dw $9C4E                                                             ;88D370;
-    db $81                                                               ;88D372;
-    dw $9C50                                                             ;88D373;
-    db $81                                                               ;88D375;
-    dw $9C52                                                             ;88D376;
-    db $81                                                               ;88D378;
-    dw $9C54                                                             ;88D379;
-    db $81                                                               ;88D37B;
-    dw $9C56                                                             ;88D37C;
-    db $81                                                               ;88D37E;
-    dw $9C58                                                             ;88D37F;
-    db $81                                                               ;88D381;
-    dw $9C5A                                                             ;88D382;
-    db $81                                                               ;88D384;
-    dw $9C5C                                                             ;88D385;
-    db $81                                                               ;88D387;
-    dw $9C5E                                                             ;88D388;
-    db $81                                                               ;88D38A;
-    dw $9C60                                                             ;88D38B;
-    db $81                                                               ;88D38D;
-    dw $9C62                                                             ;88D38E;
-    db $81                                                               ;88D390;
-    dw $9C64                                                             ;88D391;
-    db $81                                                               ;88D393;
-    dw $9C66                                                             ;88D394;
-    db $81                                                               ;88D396;
-    dw $9C48                                                             ;88D397;
-    db $81                                                               ;88D399;
-    dw $9C4A                                                             ;88D39A;
-    db $81                                                               ;88D39C;
-    dw $9C4C                                                             ;88D39D;
-    db $81                                                               ;88D39F;
-    dw $9C4E                                                             ;88D3A0;
-    db $81                                                               ;88D3A2;
-    dw $9C50                                                             ;88D3A3;
-    db $81                                                               ;88D3A5;
-    dw $9C52                                                             ;88D3A6;
-    db $81                                                               ;88D3A8;
-    dw $9C54                                                             ;88D3A9;
-    db $81                                                               ;88D3AB;
-    dw $9C56                                                             ;88D3AC;
-    db $81                                                               ;88D3AE;
-    dw $9C58                                                             ;88D3AF;
-    db $81                                                               ;88D3B1;
-    dw $9C5A                                                             ;88D3B2;
-    db $81                                                               ;88D3B4;
-    dw $9C5C                                                             ;88D3B5;
-    db $81                                                               ;88D3B7;
-    dw $9C5E                                                             ;88D3B8;
-    db $81                                                               ;88D3BA;
-    dw $9C60                                                             ;88D3BB;
-    db $81                                                               ;88D3BD;
-    dw $9C62                                                             ;88D3BE;
-    db $81                                                               ;88D3C0;
-    dw $9C64                                                             ;88D3C1;
-    db $81                                                               ;88D3C3;
-    dw $9C66                                                             ;88D3C4;
-    db $81                                                               ;88D3C6;
-    dw $9C48                                                             ;88D3C7;
-    db $81                                                               ;88D3C9;
-    dw $9C4A                                                             ;88D3CA;
-    db $81                                                               ;88D3CC;
-    dw $9C4C                                                             ;88D3CD;
-    db $81                                                               ;88D3CF;
-    dw $9C4E                                                             ;88D3D0;
-    db $81                                                               ;88D3D2;
-    dw $9C50                                                             ;88D3D3;
-    db $81                                                               ;88D3D5;
-    dw $9C52                                                             ;88D3D6;
-    db $81                                                               ;88D3D8;
-    dw $9C54                                                             ;88D3D9;
-    db $81                                                               ;88D3DB;
-    dw $9C56                                                             ;88D3DC;
-    db $81                                                               ;88D3DE;
-    dw $9C58                                                             ;88D3DF;
-    db $81                                                               ;88D3E1;
-    dw $9C5A                                                             ;88D3E2;
-    db $81                                                               ;88D3E4;
-    dw $9C5C                                                             ;88D3E5;
-    db $81                                                               ;88D3E7;
-    dw $9C5E                                                             ;88D3E8;
-    db $81                                                               ;88D3EA;
-    dw $9C60                                                             ;88D3EB;
-    db $81                                                               ;88D3ED;
-    dw $9C62                                                             ;88D3EE;
-    db $81                                                               ;88D3F0;
-    dw $9C64                                                             ;88D3F1;
-    db $81                                                               ;88D3F3;
-    dw $9C66                                                             ;88D3F4;
-    db $81                                                               ;88D3F6;
-    dw $9C48                                                             ;88D3F7;
-    db $81                                                               ;88D3F9;
-    dw $9C4A                                                             ;88D3FA;
-    db $81                                                               ;88D3FC;
-    dw $9C4C                                                             ;88D3FD;
-    db $81                                                               ;88D3FF;
-    dw $9C4E                                                             ;88D400;
-    db $81                                                               ;88D402;
-    dw $9C50                                                             ;88D403;
-    db $81                                                               ;88D405;
-    dw $9C52                                                             ;88D406;
-    db $81                                                               ;88D408;
-    dw $9C54                                                             ;88D409;
-    db $81                                                               ;88D40B;
-    dw $9C56                                                             ;88D40C;
-    db $81                                                               ;88D40E;
-    dw $9C58                                                             ;88D40F;
-    db $81                                                               ;88D411;
-    dw $9C5A                                                             ;88D412;
-    db $81                                                               ;88D414;
-    dw $9C5C                                                             ;88D415;
-    db $81                                                               ;88D417;
-    dw $9C5E                                                             ;88D418;
-    db $81                                                               ;88D41A;
-    dw $9C60                                                             ;88D41B;
-    db $81                                                               ;88D41D;
-    dw $9C62                                                             ;88D41E;
-    db $81                                                               ;88D420;
-    dw $9C64                                                             ;88D421;
-    db $81                                                               ;88D423;
-    dw $9C66                                                             ;88D424;
-    db $81                                                               ;88D426;
-    dw $9C48                                                             ;88D427;
-    db $81                                                               ;88D429;
-    dw $9C4A                                                             ;88D42A;
-    db $81                                                               ;88D42C;
-    dw $9C4C                                                             ;88D42D;
-    db $81                                                               ;88D42F;
-    dw $9C4E                                                             ;88D430;
-    db $81                                                               ;88D432;
-    dw $9C50                                                             ;88D433;
-    db $81                                                               ;88D435;
-    dw $9C52                                                             ;88D436;
-    db $81                                                               ;88D438;
-    dw $9C54                                                             ;88D439;
-    db $81                                                               ;88D43B;
-    dw $9C56                                                             ;88D43C;
-    db $81                                                               ;88D43E;
-    dw $9C58                                                             ;88D43F;
-    db $81                                                               ;88D441;
-    dw $9C5A                                                             ;88D442;
-    db $81                                                               ;88D444;
-    dw $9C5C                                                             ;88D445;
-    db $81                                                               ;88D447;
-    dw $9C5E                                                             ;88D448;
-    db $81                                                               ;88D44A;
-    dw $9C60                                                             ;88D44B;
-    db $81                                                               ;88D44D;
-    dw $9C62                                                             ;88D44E;
-    db $81                                                               ;88D450;
-    dw $9C64                                                             ;88D451;
-    db $81                                                               ;88D453;
-    dw $9C66                                                             ;88D454;
-    db $81                                                               ;88D456;
-    dw $9C48                                                             ;88D457;
-    db $81                                                               ;88D459;
-    dw $9C4A                                                             ;88D45A;
-    db $81                                                               ;88D45C;
-    dw $9C4C                                                             ;88D45D;
-    db $81                                                               ;88D45F;
-    dw $9C4E                                                             ;88D460;
-    db $81                                                               ;88D462;
-    dw $9C50                                                             ;88D463;
-    db $81                                                               ;88D465;
-    dw $9C52                                                             ;88D466;
-    db $81                                                               ;88D468;
-    dw $9C54                                                             ;88D469;
-    db $81                                                               ;88D46B;
-    dw $9C56                                                             ;88D46C;
-    db $81                                                               ;88D46E;
-    dw $9C58                                                             ;88D46F;
-    db $81                                                               ;88D471;
-    dw $9C5A                                                             ;88D472;
-    db $81                                                               ;88D474;
-    dw $9C5C                                                             ;88D475;
-    db $81                                                               ;88D477;
-    dw $9C5E                                                             ;88D478;
-    db $81                                                               ;88D47A;
-    dw $9C60                                                             ;88D47B;
-    db $81                                                               ;88D47D;
-    dw $9C62                                                             ;88D47E;
-    db $81                                                               ;88D480;
-    dw $9C64                                                             ;88D481;
-    db $81                                                               ;88D483;
-    dw $9C66                                                             ;88D484;
-    db $81                                                               ;88D486;
-    dw $9C48                                                             ;88D487;
-    db $81                                                               ;88D489;
-    dw $9C4A                                                             ;88D48A;
-    db $81                                                               ;88D48C;
-    dw $9C4C                                                             ;88D48D;
-    db $81                                                               ;88D48F;
-    dw $9C4E                                                             ;88D490;
-    db $81                                                               ;88D492;
-    dw $9C50                                                             ;88D493;
-    db $81                                                               ;88D495;
-    dw $9C52                                                             ;88D496;
-    db $81                                                               ;88D498;
-    dw $9C54                                                             ;88D499;
-    db $81                                                               ;88D49B;
-    dw $9C56                                                             ;88D49C;
-    db $81                                                               ;88D49E;
-    dw $9C58                                                             ;88D49F;
-    db $81                                                               ;88D4A1;
-    dw $9C5A                                                             ;88D4A2;
-    db $81                                                               ;88D4A4;
-    dw $9C5C                                                             ;88D4A5;
-    db $81                                                               ;88D4A7;
-    dw $9C5E                                                             ;88D4A8;
-    db $81                                                               ;88D4AA;
-    dw $9C60                                                             ;88D4AB;
-    db $81                                                               ;88D4AD;
-    dw $9C62                                                             ;88D4AE;
-    db $81                                                               ;88D4B0;
-    dw $9C64                                                             ;88D4B1;
-    db $81                                                               ;88D4B3;
-    dw $9C66                                                             ;88D4B4;
-    db $81                                                               ;88D4B6;
-    dw $9C48                                                             ;88D4B7;
-    db $81                                                               ;88D4B9;
-    dw $9C4A                                                             ;88D4BA;
-    db $81                                                               ;88D4BC;
-    dw $9C4C                                                             ;88D4BD;
-    db $81                                                               ;88D4BF;
-    dw $9C4E                                                             ;88D4C0;
-    db $81                                                               ;88D4C2;
-    dw $9C50                                                             ;88D4C3;
-    db $81                                                               ;88D4C5;
-    dw $9C52                                                             ;88D4C6;
-    db $81                                                               ;88D4C8;
-    dw $9C54                                                             ;88D4C9;
-    db $81                                                               ;88D4CB;
-    dw $9C56                                                             ;88D4CC;
-    db $81                                                               ;88D4CE;
-    dw $9C58                                                             ;88D4CF;
-    db $81                                                               ;88D4D1;
-    dw $9C5A                                                             ;88D4D2;
-    db $81                                                               ;88D4D4;
-    dw $9C5C                                                             ;88D4D5;
-    db $81                                                               ;88D4D7;
-    dw $9C5E                                                             ;88D4D8;
-    db $81                                                               ;88D4DA;
-    dw $9C60                                                             ;88D4DB;
-    db $81                                                               ;88D4DD;
-    dw $9C62                                                             ;88D4DE;
-    db $81                                                               ;88D4E0;
-    dw $9C64                                                             ;88D4E1;
-    db $81                                                               ;88D4E3;
-    dw $9C66                                                             ;88D4E4;
-    db $81                                                               ;88D4E6;
-    dw $9C48                                                             ;88D4E7;
-    db $81                                                               ;88D4E9;
-    dw $9C4A                                                             ;88D4EA;
-    db $81                                                               ;88D4EC;
-    dw $9C4C                                                             ;88D4ED;
-    db $81                                                               ;88D4EF;
-    dw $9C4E                                                             ;88D4F0;
-    db $81                                                               ;88D4F2;
-    dw $9C50                                                             ;88D4F3;
-    db $81                                                               ;88D4F5;
-    dw $9C52                                                             ;88D4F6;
-    db $81                                                               ;88D4F8;
-    dw $9C54                                                             ;88D4F9;
-    db $81                                                               ;88D4FB;
-    dw $9C56                                                             ;88D4FC;
-    db $81                                                               ;88D4FE;
-    dw $9C58                                                             ;88D4FF;
-    db $81                                                               ;88D501;
-    dw $9C5A                                                             ;88D502;
-    db $81                                                               ;88D504;
-    dw $9C5C                                                             ;88D505;
-    db $81                                                               ;88D507;
-    dw $9C5E                                                             ;88D508;
-    db $81                                                               ;88D50A;
-    dw $9C60                                                             ;88D50B;
-    db $81                                                               ;88D50D;
-    dw $9C62                                                             ;88D50E;
-    db $81                                                               ;88D510;
-    dw $9C64                                                             ;88D511;
-    db $81                                                               ;88D513;
-    dw $9C66                                                             ;88D514;
-    db $81                                                               ;88D516;
-    dw $9C48                                                             ;88D517;
-    db $81                                                               ;88D519;
-    dw $9C4A                                                             ;88D51A;
-    db $81                                                               ;88D51C;
-    dw $9C4C                                                             ;88D51D;
-    db $81                                                               ;88D51F;
-    dw $9C4E                                                             ;88D520;
-    db $81                                                               ;88D522;
-    dw $9C50                                                             ;88D523;
-    db $81                                                               ;88D525;
-    dw $9C52                                                             ;88D526;
-    db $81                                                               ;88D528;
-    dw $9C54                                                             ;88D529;
-    db $81                                                               ;88D52B;
-    dw $9C56                                                             ;88D52C;
-    db $81                                                               ;88D52E;
-    dw $9C58                                                             ;88D52F;
-    db $81                                                               ;88D531;
-    dw $9C5A                                                             ;88D532;
-    db $81                                                               ;88D534;
-    dw $9C5C                                                             ;88D535;
-    db $81                                                               ;88D537;
-    dw $9C5E                                                             ;88D538;
-    db $81                                                               ;88D53A;
-    dw $9C60                                                             ;88D53B;
-    db $81                                                               ;88D53D;
-    dw $9C62                                                             ;88D53E;
-    db $81                                                               ;88D540;
-    dw $9C64                                                             ;88D541;
-    db $81                                                               ;88D543;
-    dw $9C66                                                             ;88D544;
-    db $81                                                               ;88D546;
-    dw $9C48                                                             ;88D547;
-    db $81                                                               ;88D549;
-    dw $9C4A                                                             ;88D54A;
-    db $81                                                               ;88D54C;
-    dw $9C4C                                                             ;88D54D;
-    db $81                                                               ;88D54F;
-    dw $9C4E                                                             ;88D550;
-    db $81                                                               ;88D552;
-    dw $9C50                                                             ;88D553;
-    db $81                                                               ;88D555;
-    dw $9C52                                                             ;88D556;
-    db $81                                                               ;88D558;
-    dw $9C54                                                             ;88D559;
-    db $81                                                               ;88D55B;
-    dw $9C56                                                             ;88D55C;
-    db $81                                                               ;88D55E;
-    dw $9C58                                                             ;88D55F;
-    db $81                                                               ;88D561;
-    dw $9C5A                                                             ;88D562;
-    db $81                                                               ;88D564;
-    dw $9C5C                                                             ;88D565;
-    db $81                                                               ;88D567;
-    dw $9C5E                                                             ;88D568;
-    db $81                                                               ;88D56A;
-    dw $9C60                                                             ;88D56B;
-    db $81                                                               ;88D56D;
-    dw $9C62                                                             ;88D56E;
-    db $81                                                               ;88D570;
-    dw $9C64                                                             ;88D571;
-    db $81                                                               ;88D573;
-    dw $9C66                                                             ;88D574;
-    db $81                                                               ;88D576;
-    dw $9C48                                                             ;88D577;
-    db $81                                                               ;88D579;
-    dw $9C4A                                                             ;88D57A;
-    db $81                                                               ;88D57C;
-    dw $9C4C                                                             ;88D57D;
-    db $81                                                               ;88D57F;
-    dw $9C4E                                                             ;88D580;
-    db $81                                                               ;88D582;
-    dw $9C50                                                             ;88D583;
-    db $81                                                               ;88D585;
-    dw $9C52                                                             ;88D586;
-    db $81                                                               ;88D588;
-    dw $9C54                                                             ;88D589;
-    db $81                                                               ;88D58B;
-    dw $9C56                                                             ;88D58C;
-    db $81                                                               ;88D58E;
-    dw $9C58                                                             ;88D58F;
-    db $81                                                               ;88D591;
-    dw $9C5A                                                             ;88D592;
-    db $81                                                               ;88D594;
-    dw $9C5C                                                             ;88D595;
-    db $81                                                               ;88D597;
-    dw $9C5E                                                             ;88D598;
-    db $81                                                               ;88D59A;
-    dw $9C60                                                             ;88D59B;
-    db $81                                                               ;88D59D;
-    dw $9C62                                                             ;88D59E;
-    db $81                                                               ;88D5A0;
-    dw $9C64                                                             ;88D5A1;
-    db $81                                                               ;88D5A3;
-    dw $9C66                                                             ;88D5A4;
-    db $81                                                               ;88D5A6;
-    dw $9C48                                                             ;88D5A7;
-    db $81                                                               ;88D5A9;
-    dw $9C4A                                                             ;88D5AA;
-    db $81                                                               ;88D5AC;
-    dw $9C4C                                                             ;88D5AD;
-    db $81                                                               ;88D5AF;
-    dw $9C4E                                                             ;88D5B0;
-    db $81                                                               ;88D5B2;
-    dw $9C50                                                             ;88D5B3;
-    db $81                                                               ;88D5B5;
-    dw $9C52                                                             ;88D5B6;
-    db $81                                                               ;88D5B8;
-    dw $9C54                                                             ;88D5B9;
-    db $81                                                               ;88D5BB;
-    dw $9C56                                                             ;88D5BC;
-    db $81                                                               ;88D5BE;
-    dw $9C58                                                             ;88D5BF;
-    db $81                                                               ;88D5C1;
-    dw $9C5A                                                             ;88D5C2;
-    db $81                                                               ;88D5C4;
-    dw $9C5C                                                             ;88D5C5;
-    db $81                                                               ;88D5C7;
-    dw $9C5E                                                             ;88D5C8;
-    db $81                                                               ;88D5CA;
-    dw $9C60                                                             ;88D5CB;
-    db $81                                                               ;88D5CD;
-    dw $9C62                                                             ;88D5CE;
-    db $81                                                               ;88D5D0;
-    dw $9C64                                                             ;88D5D1;
-    db $81                                                               ;88D5D3;
-    dw $9C66                                                             ;88D5D4;
-    db $81                                                               ;88D5D6;
-    dw $9C48                                                             ;88D5D7;
-    db $81                                                               ;88D5D9;
-    dw $9C4A                                                             ;88D5DA;
-    db $81                                                               ;88D5DC;
-    dw $9C4C                                                             ;88D5DD;
-    db $81                                                               ;88D5DF;
-    dw $9C4E                                                             ;88D5E0;
-    db $81                                                               ;88D5E2;
-    dw $9C50                                                             ;88D5E3;
-    db $81                                                               ;88D5E5;
-    dw $9C52                                                             ;88D5E6;
-    db $81                                                               ;88D5E8;
-    dw $9C54                                                             ;88D5E9;
-    db $81                                                               ;88D5EB;
-    dw $9C56                                                             ;88D5EC;
-    db $81                                                               ;88D5EE;
-    dw $9C58                                                             ;88D5EF;
-    db $81                                                               ;88D5F1;
-    dw $9C5A                                                             ;88D5F2;
-    db $81                                                               ;88D5F4;
-    dw $9C5C                                                             ;88D5F5;
-    db $81                                                               ;88D5F7;
-    dw $9C5E                                                             ;88D5F8;
-    db $81                                                               ;88D5FA;
-    dw $9C60                                                             ;88D5FB;
-    db $81                                                               ;88D5FD;
-    dw $9C62                                                             ;88D5FE;
-    db $81                                                               ;88D600;
-    dw $9C64                                                             ;88D601;
-    db $81                                                               ;88D603;
-    dw $9C66                                                             ;88D604;
-    db $81                                                               ;88D606;
-    dw $9C48                                                             ;88D607;
-    db $81                                                               ;88D609;
-    dw $9C4A                                                             ;88D60A;
-    db $81                                                               ;88D60C;
-    dw $9C4C                                                             ;88D60D;
-    db $81                                                               ;88D60F;
-    dw $9C4E                                                             ;88D610;
-    db $81                                                               ;88D612;
-    dw $9C50                                                             ;88D613;
-    db $81                                                               ;88D615;
-    dw $9C52                                                             ;88D616;
-    db $81                                                               ;88D618;
-    dw $9C54                                                             ;88D619;
-    db $81                                                               ;88D61B;
-    dw $9C56                                                             ;88D61C;
-    db $81                                                               ;88D61E;
-    dw $9C58                                                             ;88D61F;
-    db $81                                                               ;88D621;
-    dw $9C5A                                                             ;88D622;
-    db $81                                                               ;88D624;
-    dw $9C5C                                                             ;88D625;
-    db $81                                                               ;88D627;
-    dw $9C5E                                                             ;88D628;
-    db $81                                                               ;88D62A;
-    dw $9C60                                                             ;88D62B;
-    db $81                                                               ;88D62D;
-    dw $9C62                                                             ;88D62E;
-    db $81                                                               ;88D630;
-    dw $9C64                                                             ;88D631;
-    db $81                                                               ;88D633;
-    dw $9C66                                                             ;88D634;
-    db $81                                                               ;88D636;
-    dw $9C48                                                             ;88D637;
-    db $81                                                               ;88D639;
-    dw $9C4A                                                             ;88D63A;
-    db $81                                                               ;88D63C;
-    dw $9C4C                                                             ;88D63D;
-    db $81                                                               ;88D63F;
-    dw $9C4E                                                             ;88D640;
-    db $81                                                               ;88D642;
-    dw $9C50                                                             ;88D643;
-    db $81                                                               ;88D645;
-    dw $9C52                                                             ;88D646;
-    db $81                                                               ;88D648;
-    dw $9C54                                                             ;88D649;
-    db $81                                                               ;88D64B;
-    dw $9C56                                                             ;88D64C;
-    db $81                                                               ;88D64E;
-    dw $9C58                                                             ;88D64F;
-    db $81                                                               ;88D651;
-    dw $9C5A                                                             ;88D652;
-    db $81                                                               ;88D654;
-    dw $9C5C                                                             ;88D655;
-    db $81                                                               ;88D657;
-    dw $9C5E                                                             ;88D658;
-    db $81                                                               ;88D65A;
-    dw $9C60                                                             ;88D65B;
-    db $81                                                               ;88D65D;
-    dw $9C62                                                             ;88D65E;
-    db $81                                                               ;88D660;
-    dw $9C64                                                             ;88D661;
-    db $81                                                               ;88D663;
-    dw $9C66                                                             ;88D664;
-    db $81                                                               ;88D666;
-    dw $9C48                                                             ;88D667;
-    db $81                                                               ;88D669;
-    dw $9C4A                                                             ;88D66A;
-    db $81                                                               ;88D66C;
-    dw $9C4C                                                             ;88D66D;
-    db $81                                                               ;88D66F;
-    dw $9C4E                                                             ;88D670;
-    db $81                                                               ;88D672;
-    dw $9C50                                                             ;88D673;
-    db $81                                                               ;88D675;
-    dw $9C52                                                             ;88D676;
-    db $81                                                               ;88D678;
-    dw $9C54                                                             ;88D679;
-    db $81                                                               ;88D67B;
-    dw $9C56                                                             ;88D67C;
-    db $81                                                               ;88D67E;
-    dw $9C58                                                             ;88D67F;
-    db $81                                                               ;88D681;
-    dw $9C5A                                                             ;88D682;
-    db $81                                                               ;88D684;
-    dw $9C5C                                                             ;88D685;
-    db $81                                                               ;88D687;
-    dw $9C5E                                                             ;88D688;
-    db $81                                                               ;88D68A;
-    dw $9C60                                                             ;88D68B;
-    db $81                                                               ;88D68D;
-    dw $9C62                                                             ;88D68E;
-    db $81                                                               ;88D690;
-    dw $9C64                                                             ;88D691;
-    db $81                                                               ;88D693;
-    dw $9C66                                                             ;88D694;
-    db $81                                                               ;88D696;
-    dw $9C48                                                             ;88D697;
-    db $81                                                               ;88D699;
-    dw $9C4A                                                             ;88D69A;
-    db $81                                                               ;88D69C;
-    dw $9C4C                                                             ;88D69D;
-    db $81                                                               ;88D69F;
-    dw $9C4E                                                             ;88D6A0;
-    db $81                                                               ;88D6A2;
-    dw $9C50                                                             ;88D6A3;
-    db $81                                                               ;88D6A5;
-    dw $9C52                                                             ;88D6A6;
-    db $81                                                               ;88D6A8;
-    dw $9C54                                                             ;88D6A9;
-    db $81                                                               ;88D6AB;
-    dw $9C56                                                             ;88D6AC;
-    db $81                                                               ;88D6AE;
-    dw $9C58                                                             ;88D6AF;
-    db $81                                                               ;88D6B1;
-    dw $9C5A                                                             ;88D6B2;
-    db $81                                                               ;88D6B4;
-    dw $9C5C                                                             ;88D6B5;
-    db $81                                                               ;88D6B7;
-    dw $9C5E                                                             ;88D6B8;
-    db $81                                                               ;88D6BA;
-    dw $9C60                                                             ;88D6BB;
-    db $81                                                               ;88D6BD;
-    dw $9C62                                                             ;88D6BE;
-    db $81                                                               ;88D6C0;
-    dw $9C64                                                             ;88D6C1;
-    db $81                                                               ;88D6C3;
-    dw $9C66                                                             ;88D6C4;
-    db $81                                                               ;88D6C6;
-    dw $9C48                                                             ;88D6C7;
-    db $81                                                               ;88D6C9;
-    dw $9C4A                                                             ;88D6CA;
-    db $81                                                               ;88D6CC;
-    dw $9C4C                                                             ;88D6CD;
-    db $81                                                               ;88D6CF;
-    dw $9C4E                                                             ;88D6D0;
-    db $81                                                               ;88D6D2;
-    dw $9C50                                                             ;88D6D3;
-    db $81                                                               ;88D6D5;
-    dw $9C52                                                             ;88D6D6;
-    db $81                                                               ;88D6D8;
-    dw $9C54                                                             ;88D6D9;
-    db $81                                                               ;88D6DB;
-    dw $9C56                                                             ;88D6DC;
-    db $81                                                               ;88D6DE;
-    dw $9C58                                                             ;88D6DF;
-    db $81                                                               ;88D6E1;
-    dw $9C5A                                                             ;88D6E2;
-    db $81                                                               ;88D6E4;
-    dw $9C5C                                                             ;88D6E5;
-    db $81                                                               ;88D6E7;
-    dw $9C5E                                                             ;88D6E8;
-    db $81                                                               ;88D6EA;
-    dw $9C60                                                             ;88D6EB;
-    db $81                                                               ;88D6ED;
-    dw $9C62                                                             ;88D6EE;
-    db $81                                                               ;88D6F0;
-    dw $9C64                                                             ;88D6F1;
-    db $81                                                               ;88D6F3;
-    dw $9C66                                                             ;88D6F4;
-    db $81                                                               ;88D6F6;
-    dw $9C48                                                             ;88D6F7;
-    db $81                                                               ;88D6F9;
-    dw $9C4A                                                             ;88D6FA;
-    db $81                                                               ;88D6FC;
-    dw $9C4C                                                             ;88D6FD;
-    db $81                                                               ;88D6FF;
-    dw $9C4E                                                             ;88D700;
-    db $81                                                               ;88D702;
-    dw $9C50                                                             ;88D703;
-    db $81                                                               ;88D705;
-    dw $9C52                                                             ;88D706;
-    db $81                                                               ;88D708;
-    dw $9C54                                                             ;88D709;
-    db $81                                                               ;88D70B;
-    dw $9C56                                                             ;88D70C;
-    db $81                                                               ;88D70E;
-    dw $9C58                                                             ;88D70F;
-    db $81                                                               ;88D711;
-    dw $9C5A                                                             ;88D712;
-    db $81                                                               ;88D714;
-    dw $9C5C                                                             ;88D715;
-    db $81                                                               ;88D717;
-    dw $9C5E                                                             ;88D718;
-    db $81                                                               ;88D71A;
-    dw $9C60                                                             ;88D71B;
-    db $81                                                               ;88D71D;
-    dw $9C62                                                             ;88D71E;
-    db $81                                                               ;88D720;
-    dw $9C64                                                             ;88D721;
-    db $81                                                               ;88D723;
-    dw $9C66                                                             ;88D724;
-    db $81                                                               ;88D726;
-    dw $9C48                                                             ;88D727;
-    db $81                                                               ;88D729;
-    dw $9C4A                                                             ;88D72A;
-    db $81                                                               ;88D72C;
-    dw $9C4C                                                             ;88D72D;
-    db $81                                                               ;88D72F;
-    dw $9C4E                                                             ;88D730;
-    db $81                                                               ;88D732;
-    dw $9C50                                                             ;88D733;
-    db $81                                                               ;88D735;
-    dw $9C52                                                             ;88D736;
-    db $81                                                               ;88D738;
-    dw $9C54                                                             ;88D739;
-    db $81                                                               ;88D73B;
-    dw $9C56                                                             ;88D73C;
-    db $81                                                               ;88D73E;
-    dw $9C58                                                             ;88D73F;
-    db $81                                                               ;88D741;
-    dw $9C5A                                                             ;88D742;
-    db $81                                                               ;88D744;
-    dw $9C5C                                                             ;88D745;
-    db $81                                                               ;88D747;
-    dw $9C5E                                                             ;88D748;
-    db $81                                                               ;88D74A;
-    dw $9C60                                                             ;88D74B;
-    db $81                                                               ;88D74D;
-    dw $9C62                                                             ;88D74E;
-    db $81                                                               ;88D750;
-    dw $9C64                                                             ;88D751;
-    db $81                                                               ;88D753;
-    dw $9C66                                                             ;88D754;
-    db $81                                                               ;88D756;
-    dw $9C48                                                             ;88D757;
-    db $81                                                               ;88D759;
-    dw $9C4A                                                             ;88D75A;
-    db $81                                                               ;88D75C;
-    dw $9C4C                                                             ;88D75D;
-    db $81                                                               ;88D75F;
-    dw $9C4E                                                             ;88D760;
-    db $81                                                               ;88D762;
-    dw $9C50                                                             ;88D763;
-    db $81                                                               ;88D765;
-    dw $9C52                                                             ;88D766;
-    db $81                                                               ;88D768;
-    dw $9C54                                                             ;88D769;
-    db $81                                                               ;88D76B;
-    dw $9C56                                                             ;88D76C;
-    db $81                                                               ;88D76E;
-    dw $9C58                                                             ;88D76F;
-    db $81                                                               ;88D771;
-    dw $9C5A                                                             ;88D772;
-    db $81                                                               ;88D774;
-    dw $9C5C                                                             ;88D775;
-    db $81                                                               ;88D777;
-    dw $9C5E                                                             ;88D778;
-    db $81                                                               ;88D77A;
-    dw $9C60                                                             ;88D77B;
-    db $81                                                               ;88D77D;
-    dw $9C62                                                             ;88D77E;
-    db $81                                                               ;88D780;
-    dw $9C64                                                             ;88D781;
-    db $81                                                               ;88D783;
-    dw $9C66                                                             ;88D784;
-    db $81                                                               ;88D786;
-    dw $9C48                                                             ;88D787;
-    db $81                                                               ;88D789;
-    dw $9C4A                                                             ;88D78A;
-    db $81                                                               ;88D78C;
-    dw $9C4C                                                             ;88D78D;
-    db $81                                                               ;88D78F;
-    dw $9C4E                                                             ;88D790;
-    db $81                                                               ;88D792;
-    dw $9C50                                                             ;88D793;
-    db $81                                                               ;88D795;
-    dw $9C52                                                             ;88D796;
-    db $81                                                               ;88D798;
-    dw $9C54                                                             ;88D799;
-    db $81                                                               ;88D79B;
-    dw $9C56                                                             ;88D79C;
-    db $81                                                               ;88D79E;
-    dw $9C58                                                             ;88D79F;
-    db $81                                                               ;88D7A1;
-    dw $9C5A                                                             ;88D7A2;
-    db $81                                                               ;88D7A4;
-    dw $9C5C                                                             ;88D7A5;
-    db $81                                                               ;88D7A7;
-    dw $9C5E                                                             ;88D7A8;
-    db $81                                                               ;88D7AA;
-    dw $9C60                                                             ;88D7AB;
-    db $81                                                               ;88D7AD;
-    dw $9C62                                                             ;88D7AE;
-    db $81                                                               ;88D7B0;
-    dw $9C64                                                             ;88D7B1;
-    db $81                                                               ;88D7B3;
-    dw $9C66                                                             ;88D7B4;
-    db $81                                                               ;88D7B6;
-    dw $9C48                                                             ;88D7B7;
-    db $81                                                               ;88D7B9;
-    dw $9C4A                                                             ;88D7BA;
-    db $81                                                               ;88D7BC;
-    dw $9C4C                                                             ;88D7BD;
-    db $81                                                               ;88D7BF;
-    dw $9C4E                                                             ;88D7C0;
-    db $81                                                               ;88D7C2;
-    dw $9C50                                                             ;88D7C3;
-    db $81                                                               ;88D7C5;
-    dw $9C52                                                             ;88D7C6;
-    db $81                                                               ;88D7C8;
-    dw $9C54                                                             ;88D7C9;
-    db $81                                                               ;88D7CB;
-    dw $9C56                                                             ;88D7CC;
-    db $81                                                               ;88D7CE;
-    dw $9C58                                                             ;88D7CF;
-    db $81                                                               ;88D7D1;
-    dw $9C5A                                                             ;88D7D2;
-    db $81                                                               ;88D7D4;
-    dw $9C5C                                                             ;88D7D5;
-    db $81                                                               ;88D7D7;
-    dw $9C5E                                                             ;88D7D8;
-    db $81                                                               ;88D7DA;
-    dw $9C60                                                             ;88D7DB;
-    db $81                                                               ;88D7DD;
-    dw $9C62                                                             ;88D7DE;
-    db $81                                                               ;88D7E0;
-    dw $9C64                                                             ;88D7E1;
-    db $81                                                               ;88D7E3;
-    dw $9C66                                                             ;88D7E4;
-    db $81                                                               ;88D7E6;
-    dw $9C48                                                             ;88D7E7;
-    db $81                                                               ;88D7E9;
-    dw $9C4A                                                             ;88D7EA;
-    db $81                                                               ;88D7EC;
-    dw $9C4C                                                             ;88D7ED;
-    db $81                                                               ;88D7EF;
-    dw $9C4E                                                             ;88D7F0;
-    db $81                                                               ;88D7F2;
-    dw $9C50                                                             ;88D7F3;
-    db $81                                                               ;88D7F5;
-    dw $9C52                                                             ;88D7F6;
-    db $81                                                               ;88D7F8;
-    dw $9C54                                                             ;88D7F9;
-    db $81                                                               ;88D7FB;
-    dw $9C56                                                             ;88D7FC;
-    db $81                                                               ;88D7FE;
-    dw $9C58                                                             ;88D7FF;
-    db $81                                                               ;88D801;
-    dw $9C5A                                                             ;88D802;
-    db $81                                                               ;88D804;
-    dw $9C5C                                                             ;88D805;
-    db $81                                                               ;88D807;
-    dw $9C5E                                                             ;88D808;
-    db $81                                                               ;88D80A;
-    dw $9C60                                                             ;88D80B;
-    db $81                                                               ;88D80D;
-    dw $9C62                                                             ;88D80E;
-    db $81                                                               ;88D810;
-    dw $9C64                                                             ;88D811;
-    db $81                                                               ;88D813;
-    dw $9C66                                                             ;88D814;
-    db $81                                                               ;88D816;
-    dw $9C48                                                             ;88D817;
-    db $81                                                               ;88D819;
-    dw $9C4A                                                             ;88D81A;
-    db $81                                                               ;88D81C;
-    dw $9C4C                                                             ;88D81D;
-    db $81                                                               ;88D81F;
-    dw $9C4E                                                             ;88D820;
-    db $81                                                               ;88D822;
-    dw $9C50                                                             ;88D823;
-    db $81                                                               ;88D825;
-    dw $9C52                                                             ;88D826;
-    db $81                                                               ;88D828;
-    dw $9C54                                                             ;88D829;
-    db $81                                                               ;88D82B;
-    dw $9C56                                                             ;88D82C;
-    db $81                                                               ;88D82E;
-    dw $9C58                                                             ;88D82F;
-    db $81                                                               ;88D831;
-    dw $9C5A                                                             ;88D832;
-    db $81                                                               ;88D834;
-    dw $9C5C                                                             ;88D835;
-    db $81                                                               ;88D837;
-    dw $9C5E                                                             ;88D838;
-    db $81                                                               ;88D83A;
-    dw $9C60                                                             ;88D83B;
-    db $81                                                               ;88D83D;
-    dw $9C62                                                             ;88D83E;
-    db $81                                                               ;88D840;
-    dw $9C64                                                             ;88D841;
-    db $81                                                               ;88D843;
-    dw $9C66                                                             ;88D844;
-    db $00                                                               ;88D846;
+    db $81 : dw $9C44                                                    ;88CF46;
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C44
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $81 : dw $9C48
+    db $81 : dw $9C4A
+    db $81 : dw $9C4C
+    db $81 : dw $9C4E
+    db $81 : dw $9C50
+    db $81 : dw $9C52
+    db $81 : dw $9C54
+    db $81 : dw $9C56
+    db $81 : dw $9C58
+    db $81 : dw $9C5A
+    db $81 : dw $9C5C
+    db $81 : dw $9C5E
+    db $81 : dw $9C60
+    db $81 : dw $9C62
+    db $81 : dw $9C64
+    db $81 : dw $9C66
+    db $00
 
 InstList_Water_BG2_Xscroll:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88D847;
-    db $88                                                               ;88D849;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88D84A;
-    db $7E                                                               ;88D84C;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88D847;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88D84A;
     dw Instruction_HDMA_Object_Phase_Increase_Timer_1_duplicate          ;88D84D;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88D84F;
     dl PreInstruction_Water_BG2_Xscroll                                  ;88D851;
     dw Instruction_HDMAObject_Sleep                                      ;88D854;
 
 InstList_Water_BG3_Xscroll:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88D856;
-    db $88                                                               ;88D858;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88D859;
-    db $7E                                                               ;88D85B;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88D856;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88D859;
     dw Instruction_HDMA_Object_Phase_Increase_Timer_1                    ;88D85C;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88D85E;
     dl PreInstruction_Water_BG3_Xscroll                                  ;88D860;
@@ -11055,82 +8403,47 @@ RTL_88D86E:
     RTL                                                                  ;88D86E;
 
 
-IndirectHDMATable_BG3Scroll:
-    db $81                                                               ;88D86F;
-    dw $CAD8                                                             ;88D870;
-    db $81                                                               ;88D872;
-    dw $CAD8                                                             ;88D873;
-    db $81                                                               ;88D875;
-    dw $CAD8                                                             ;88D876;
-    db $81                                                               ;88D878;
-    dw $CAD8                                                             ;88D879;
-    db $81                                                               ;88D87B;
-    dw $CAD8                                                             ;88D87C;
-    db $81                                                               ;88D87E;
-    dw $CAD8                                                             ;88D87F;
-    db $81                                                               ;88D881;
-    dw $CAD8                                                             ;88D882;
-    db $81                                                               ;88D884;
-    dw $CAD8                                                             ;88D885;
-    db $81                                                               ;88D887;
-    dw $CAD8                                                             ;88D888;
-    db $81                                                               ;88D88A;
-    dw $CAD8                                                             ;88D88B;
-    db $81                                                               ;88D88D;
-    dw $CAD8                                                             ;88D88E;
-    db $81                                                               ;88D890;
-    dw $CAD8                                                             ;88D891;
-    db $81                                                               ;88D893;
-    dw $CAD8                                                             ;88D894;
-    db $81                                                               ;88D896;
-    dw $CAD8                                                             ;88D897;
-    db $81                                                               ;88D899;
-    dw $CAD8                                                             ;88D89A;
-    db $81                                                               ;88D89C;
-    dw $CAD8                                                             ;88D89D;
-    db $81                                                               ;88D89F;
-    dw $CAD8                                                             ;88D8A0;
-    db $81                                                               ;88D8A2;
-    dw $CAD8                                                             ;88D8A3;
-    db $81                                                               ;88D8A5;
-    dw $CAD8                                                             ;88D8A6;
-    db $81                                                               ;88D8A8;
-    dw $CAD8                                                             ;88D8A9;
-    db $81                                                               ;88D8AB;
-    dw $CAD8                                                             ;88D8AC;
-    db $81                                                               ;88D8AE;
-    dw $CAD8                                                             ;88D8AF;
-    db $81                                                               ;88D8B1;
-    dw $CAD8                                                             ;88D8B2;
-    db $81                                                               ;88D8B4;
-    dw $CAD8                                                             ;88D8B5;
-    db $81                                                               ;88D8B7;
-    dw $CAD8                                                             ;88D8B8;
-    db $81                                                               ;88D8BA;
-    dw $CAD8                                                             ;88D8BB;
-    db $81                                                               ;88D8BD;
-    dw $CAD8                                                             ;88D8BE;
-    db $81                                                               ;88D8C0;
-    dw $CAD8                                                             ;88D8C1;
-    db $81                                                               ;88D8C3;
-    dw $CAD8                                                             ;88D8C4;
-    db $81                                                               ;88D8C6;
-    dw $CAD8                                                             ;88D8C7;
-    db $81                                                               ;88D8C9;
-    dw $CAD8                                                             ;88D8CA;
-    db $81                                                               ;88D8CC;
-    dw $CADC                                                             ;88D8CD;
-    db $00                                                               ;88D8CF;
+IndirectHDMATable_BG3Scroll:                                             ;88D86F;
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CAD8
+    db $81 : dw $CADC
+    db $00
 
 InstList_BG3Scroll_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88D8D0;
-    db $88                                                               ;88D8D2;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88D8D3;
-    db $7E                                                               ;88D8D5;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88D8D0;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88D8D3;
 
 InstList_BG3Scroll_1:
-    dw $7FFF                                                             ;88D8D6;
-    dw IndirectHDMATable_BG3Scroll                                       ;88D8D8;
+    dw $7FFF,IndirectHDMATable_BG3Scroll                                 ;88D8D6;
     dw Instruction_HDMAObject_GotoY                                      ;88D8DA;
     dw InstList_BG3Scroll_1                                              ;88D8DC;
 
@@ -11149,29 +8462,26 @@ RTL_88D8EF:
 
 
 IndirectHDMATable_CeresRidleyMode_BGTileSize:
-    db $1F                                                               ;88D8F0;
-    dw $07EB                                                             ;88D8F1;
-    db $60                                                               ;88D8F3;
-    dw $07EC                                                             ;88D8F4;
-    db $50                                                               ;88D8F6;
-    dw $07EC                                                             ;88D8F7;
-    db $10                                                               ;88D8F9;
-    dw $07EB                                                             ;88D8FA;
-    db $00                                                               ;88D8FC;
+    db $1F : dw $07EB                                                    ;88D8F0;
+    db $60 : dw $07EC
+    db $50 : dw $07EC
+    db $10 : dw $07EB
+    db $00
 
-IndirectHDMATable_CeresRidleyMainScreenLayers:
-    db $1F,$04,$60,$13,$50,$13,$10,$12,$00                               ;88D8FD;
+IndirectHDMATable_CeresRidleyMainScreenLayers:                           ;88D8FD;
+    db $1F,$04 ;         BG3
+    db $60,$13 ; BG1/BG2/    sprites
+    db $50,$13 ; BG1/BG2/    sprites
+    db $10,$12 ;     BG2/    sprites
+    db $00
 
 InstList_CeresRidleyMode_BGTileSize_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88D906;
-    db $88                                                               ;88D908;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88D909;
-    db $00                                                               ;88D90B;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88D906;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $00             ;88D909;
     dw Instruction_VideoMode_for_HUD_and_Floor_1                         ;88D90C;
 
 InstList_CeresRidleyMode_BGTileSize_1:
-    dw $7FFF                                                             ;88D90E;
-    dw IndirectHDMATable_CeresRidleyMode_BGTileSize                      ;88D910;
+    dw $7FFF,IndirectHDMATable_CeresRidleyMode_BGTileSize                ;88D90E;
     dw Instruction_HDMAObject_GotoY                                      ;88D912;
     dw InstList_CeresRidleyMode_BGTileSize_1                             ;88D914;
 
@@ -11182,12 +8492,10 @@ Instruction_VideoMode_for_HUD_and_Floor_1:
 
 
 InstList_CeresRidley_MainScreenLayers_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88D91D;
-    db $88                                                               ;88D91F;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88D91D;
 
 InstList_CeresRidley_MainScreenLayers_1:
-    dw $7FFF                                                             ;88D920;
-    dw IndirectHDMATable_CeresRidleyMainScreenLayers                     ;88D922;
+    dw $7FFF,IndirectHDMATable_CeresRidleyMainScreenLayers               ;88D920;
     dw Instruction_HDMAObject_GotoY                                      ;88D924;
     dw InstList_CeresRidley_MainScreenLayers_1                           ;88D926;
 
@@ -11202,23 +8510,18 @@ RTL_88D931:
     RTL                                                                  ;88D931;
 
 
-IndirectHDMATable_CeresElevatorMode_BGTileSize:
-    db $1F                                                               ;88D932;
-    dw $07EB                                                             ;88D933;
-    db $70                                                               ;88D935;
-    dw $07EC                                                             ;88D936;
-    db $00                                                               ;88D938;
+IndirectHDMATable_CeresElevatorMode_BGTileSize:                          ;88D932;
+    db $1F : dw $07EB
+    db $70 : dw $07EC
+    db $00
 
 InstList_CeresElevatorMode_BGTileSize_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88D939;
-    db $88                                                               ;88D93B;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88D93C;
-    db $00                                                               ;88D93E;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88D939;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $00             ;88D93C;
     dw Instruction_VideoMode_for_HUD_1                                   ;88D93F;
 
 InstList_CeresElevatorMode_BGTileSize_1:
-    dw $7FFF                                                             ;88D941;
-    dw IndirectHDMATable_CeresElevatorMode_BGTileSize                    ;88D943;
+    dw $7FFF,IndirectHDMATable_CeresElevatorMode_BGTileSize              ;88D941;
     dw Instruction_HDMAObject_GotoY                                      ;88D945;
     dw InstList_CeresElevatorMode_BGTileSize_1                           ;88D947;
 
@@ -11243,17 +8546,14 @@ FXType_A_Rain:
 
 
 InstList_Rain_BG3Scroll_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88D96C;
-    db $88                                                               ;88D96E;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88D96F;
-    db $7E                                                               ;88D971;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88D96C;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88D96F;
     dw Instruction_HDMAObjectBG3XVelocity                                ;88D972;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88D974;
     dl PreInstruction_RainBG3Scroll                                      ;88D976;
 
 InstList_Rain_BG3Scroll_1:
-    dw $7FFF                                                             ;88D979;
-    dw IndirectHDMATable_BG3Scroll                                       ;88D97B;
+    dw $7FFF,IndirectHDMATable_BG3Scroll                                 ;88D979;
     dw Instruction_HDMAObject_GotoY                                      ;88D97D;
     dw InstList_Rain_BG3Scroll_1                                         ;88D97F;
 
@@ -11274,11 +8574,9 @@ Instruction_HDMAObjectBG3XVelocity:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_IndirectHDMATable_88D99A:
-    db $1F                                                               ;88D99A;
-    dw $CAD8                                                             ;88D99B;
-    db $81                                                               ;88D99D;
-    dw $CADC                                                             ;88D99E;
-    db $00                                                               ;88D9A0;
+    db $1F : dw $CAD8                                                    ;88D99A;
+    db $81 : dw $CADC
+    db $00
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PreInstruction_RainBG3Scroll:
@@ -11359,26 +8657,21 @@ FXType_8_Spores:
 
 
 InstList_Spores_BG3_Xscroll_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88DA2D;
-    db $88                                                               ;88DA2F;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88DA30;
-    db $7E                                                               ;88DA32;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88DA2D;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88DA30;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88DA33;
     dl PreInstruction_Spores_BG3_Xsscroll                                ;88DA35;
 
 InstList_Spores_BG3_Xscroll_1:
-    dw $7FFF                                                             ;88DA38;
-    dw IndirectHDMATable_BG3Scroll                                       ;88DA3A;
+    dw $7FFF,IndirectHDMATable_BG3Scroll                                 ;88DA38;
     dw Instruction_HDMAObject_GotoY                                      ;88DA3C;
     dw InstList_Spores_BG3_Xscroll_1                                     ;88DA3E;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_IndirectHDMATable_88DA40:
-    db $1F                                                               ;88DA40;
-    dw $CAD8                                                             ;88DA41;
-    db $81                                                               ;88DA43;
-    dw $CADC                                                             ;88DA44;
-    db $00                                                               ;88DA46;
+    db $1F : dw $CAD8                                                    ;88DA40;
+    db $81 : dw $CADC
+    db $00
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PreInstruction_Spores_BG3_Xsscroll:
@@ -11478,6 +8771,7 @@ UNUSED_HandleSporesWaviness_88DA9F:
 
 
 .waveDisplacementTable:
+; Same as WaveDisplacementTable_Water
     dw $0000,$0001,$0001,$0000,$0000,$FFFF,$FFFF,$0000                   ;88DAE8;
     dw $0000,$0001,$0001,$0000,$0000,$FFFF,$FFFF,$0000                   ;88DAF8;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -11494,17 +8788,14 @@ FXType_C_Fog:
 
 
 InstList_Fog_BG3_Scroll_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88DB19;
-    db $88                                                               ;88DB1B;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88DB1C;
-    db $7E                                                               ;88DB1E;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88DB19;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88DB1C;
     dw RTS_88DB2E                                                        ;88DB1F;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88DB21;
     dl PreInstruction_Fog_BG3Scroll                                      ;88DB23;
 
 InstList_Fog_BG3_Scroll_1:
-    dw $7FFF                                                             ;88DB26;
-    dw IndirectHDMATable_BG3Scroll                                       ;88DB28;
+    dw $7FFF,IndirectHDMATable_BG3Scroll                                 ;88DB26;
     dw Instruction_HDMAObject_GotoY                                      ;88DB2A;
     dw InstList_Fog_BG3_Scroll_1                                         ;88DB2C;
 
@@ -11514,11 +8805,9 @@ RTS_88DB2E:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_IndirectHDMATable_88DB2F:
-    db $1F                                                               ;88DB2F;
-    dw $CAD8                                                             ;88DB30;
-    db $81                                                               ;88DB32;
-    dw $CADC                                                             ;88DB33;
-    db $00                                                               ;88DB35;
+    db $1F : dw $CAD8                                                    ;88DB2F;
+    db $81 : dw $CADC
+    db $00
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PreInstruction_Fog_BG3Scroll:
@@ -11744,16 +9033,13 @@ Instruction_GotoY_ifEntranceToTourianUnlocked:
 
 
 InstList_TourianEntranceStatue_BG2Yscroll_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88DCFA;
-    db $88                                                               ;88DCFC;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88DCFD;
-    db $7E                                                               ;88DCFF;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88DCFA;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88DCFD;
     dw Instruction_GotoY_ifEntranceToTourianUnlocked                     ;88DD00;
     dw InstList_TourianEntranceStatue_BG2Yscroll_1                       ;88DD02;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88DD04;
     dl PreInst_TourianEntranceStatue_BG2_Yscroll_WaitForUnlock           ;88DD06;
-    dw $0001                                                             ;88DD09;
-    dw IndirectHDMATable_TourianEntranceStatue_BG2YScroll                ;88DD0B;
+    dw $0001,IndirectHDMATable_TourianEntranceStatue_BG2YScroll          ;88DD09;
     dw Instruction_HDMAObject_Sleep                                      ;88DD0D;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88DD0F;
     dl PreInst_TourianEntranceStatue_BG2Yscroll_DescentDelay             ;88DD11;
@@ -11765,18 +9051,14 @@ InstList_TourianEntranceStatue_BG2Yscroll_0:
 InstList_TourianEntranceStatue_BG2Yscroll_1:
     dw Instruction_HDMAObject_PreInstructionInY                          ;88DD1D;
     dl PreInst_TourianEntranceStatue_BG2Yscroll_EnableScrolling          ;88DD1F;
-    dw $0001                                                             ;88DD22;
-    dw IndirectHDMATable_TourianEntranceStatue_BG2YScroll                ;88DD24;
+    dw $0001,IndirectHDMATable_TourianEntranceStatue_BG2YScroll          ;88DD22;
     dw Instruction_HDMAObject_Sleep                                      ;88DD26;
 
-IndirectHDMATable_TourianEntranceStatue_BG2YScroll:
-    db $1F                                                               ;88DD28;
-    dw $9E00                                                             ;88DD29;
-    db $01                                                               ;88DD2B;
-    dw $9E00                                                             ;88DD2C;
-    db $01                                                               ;88DD2E;
-    dw $9E00                                                             ;88DD2F;
-    db $00                                                               ;88DD31;
+IndirectHDMATable_TourianEntranceStatue_BG2YScroll:                      ;88DD28;
+    db $1F : dw $9E00
+    db $01 : dw $9E00
+    db $01 : dw $9E00
+    db $00
 
 Spawn_BombTorizoHaze:
     JSL.L Spawn_HDMAObject                                               ;88DD32;
@@ -11795,18 +9077,14 @@ PreInst_BombTorizoHaze_ColorMathSubScnBackdropColor:
 
 
 PreInst_BombTorizoHaze_ColorMathSubScnBackColor_GreenRed_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88DD4A;
-    db $88                                                               ;88DD4C;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88DD4D;
-    db $88                                                               ;88DD4F;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88DD4A;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $88             ;88DD4D;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88DD50;
     dl PreInst_BombTorizoHaze_ColorMathSubScnBackdropColor               ;88DD52;
-    dw $0001                                                             ;88DD55;
-    dw HDMATable_Nothing_88DD61                                          ;88DD57;
+    dw $0001,HDMATable_Nothing_88DD61                                    ;88DD55;
 
 PreInst_BombTorizoHaze_ColorMathSubScnBackColor_GreenRed_1:
-    dw $7777                                                             ;88DD59;
-    dw HDMATable_BombTorizoHaze_ColorMathSubScnBackColor_GreenRed        ;88DD5B;
+    dw $7777,HDMATable_BombTorizoHaze_ColorMathSubScnBackColor_GreenRed  ;88DD59;
     dw Instruction_HDMAObject_GotoY                                      ;88DD5D;
     dw PreInst_BombTorizoHaze_ColorMathSubScnBackColor_GreenRed_1        ;88DD5F;
 
@@ -11814,16 +9092,12 @@ HDMATable_Nothing_88DD61:
     db $00                                                               ;88DD61;
 
 PreInst_BombTorizoHaze_ColorMathSubScnBackdropColor_Blue_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88DD62;
-    db $88                                                               ;88DD64;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88DD65;
-    db $88                                                               ;88DD67;
-    dw $0001                                                             ;88DD68;
-    dw HDMATable_Nothing_88DD74                                          ;88DD6A;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88DD62;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $88             ;88DD65;
+    dw $0001,HDMATable_Nothing_88DD74                                    ;88DD68;
 
 PreInst_BombTorizoHaze_ColorMathSubScnBackdropColor_Blue_1:
-    dw $7777                                                             ;88DD6C;
-    dw HDMATable_BombTorizoHaze_ColorMathSubScnBackdropColor_Blue        ;88DD6E;
+    dw $7777,HDMATable_BombTorizoHaze_ColorMathSubScnBackdropColor_Blue  ;88DD6C;
     dw Instruction_HDMAObject_GotoY                                      ;88DD70;
     dw PreInst_BombTorizoHaze_ColorMathSubScnBackdropColor_Blue_1        ;88DD72;
 
@@ -11831,15 +9105,42 @@ HDMATable_Nothing_88DD74:
     db $00                                                               ;88DD74;
 
 HDMATable_BombTorizoHaze_ColorMathSubScnBackColor_GreenRed:
-    db $48,$20,$40,$0A,$21,$41,$0A,$21,$41,$0A,$21,$41,$0A,$22,$42,$0A   ;88DD75;
-    db $22,$42,$0A,$22,$42,$0A,$23,$43,$0A,$23,$43,$0A,$23,$43,$0A,$24   ;88DD85;
-    db $44,$0A,$24,$44,$0A,$24,$44,$0A,$25,$45,$0A,$25,$45,$0A,$25,$45   ;88DD95;
-    db $00                                                               ;88DDA5;
+    db $48,$20,$40                                                       ;88DD75;
+    db $0A,$21,$41
+    db $0A,$21,$41
+    db $0A,$21,$41
+    db $0A,$22,$42
+    db $0A,$22,$42
+    db $0A,$22,$42
+    db $0A,$23,$43
+    db $0A,$23,$43
+    db $0A,$23,$43
+    db $0A,$24,$44
+    db $0A,$24,$44
+    db $0A,$24,$44
+    db $0A,$25,$45
+    db $0A,$25,$45
+    db $0A,$25,$45
+    db $00
 
 HDMATable_BombTorizoHaze_ColorMathSubScnBackdropColor_Blue:
-    db $48,$80,$0A,$81,$0A,$81,$0A,$82,$0A,$82,$0A,$83,$0A,$83,$0A,$84   ;88DDA6;
-    db $0A,$84,$0A,$85,$0A,$85,$0A,$86,$0A,$86,$0A,$87,$0A,$87,$0A,$88   ;88DDB6;
-    db $00                                                               ;88DDC6;
+    db $48,$80                                                           ;88DDA6;
+    db $0A,$81
+    db $0A,$81
+    db $0A,$82
+    db $0A,$82
+    db $0A,$83
+    db $0A,$83
+    db $0A,$84
+    db $0A,$84
+    db $0A,$85
+    db $0A,$85
+    db $0A,$86
+    db $0A,$86
+    db $0A,$87
+    db $0A,$87
+    db $0A,$88
+    db $00
 
 FXType_2C_CeresHaze:
     LDA.W #$0001                                                         ;88DDC7;
@@ -12015,18 +9316,14 @@ PreInstruction_CeresHaze_ColorMathSubScnBackColor_FadingOut:
 
 
 InstList_CeresHaze_ColorMathSubScnBackColor_RidleyAlive_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88DED3;
-    db $88                                                               ;88DED5;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88DED6;
-    db $7E                                                               ;88DED8;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88DED3;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88DED6;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88DED9;
     dl PreInst_CeresHaze_ColorMathSubScnBackdropColor_RidleyIsAlive      ;88DEDB;
-    dw $0001                                                             ;88DEDE;
-    dw Empty_HDMATable_88DEEA                                            ;88DEE0;
+    dw $0001,Empty_HDMATable_88DEEA                                      ;88DEDE;
 
 InstList_CeresHaze_ColorMathSubScnBackColor_RidleyAlive_1:
-    dw $7777                                                             ;88DEE2;
-    dw IndirectHDMATable_CeresHaze_ColorMathSubScnBackdropColor          ;88DEE4;
+    dw $7777,IndirectHDMATable_CeresHaze_ColorMathSubScnBackdropColor    ;88DEE2;
     dw Instruction_HDMAObject_GotoY                                      ;88DEE6;
     dw InstList_CeresHaze_ColorMathSubScnBackColor_RidleyAlive_1         ;88DEE8;
 
@@ -12034,18 +9331,14 @@ Empty_HDMATable_88DEEA:
     db $00                                                               ;88DEEA;
 
 InstList_CeresHaze_ColorMathSubScnBackColor_RidleyDead_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88DEEB;
-    db $88                                                               ;88DEED;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88DEEE;
-    db $7E                                                               ;88DEF0;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88DEEB;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88DEEE;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88DEF1;
     dl PreInst_CeresHaze_ColorMathSubScnBackdropColor_RidleyIsDead       ;88DEF3;
-    dw $0001                                                             ;88DEF6;
-    dw Empty_HDMATable_88DF02                                            ;88DEF8;
+    dw $0001,Empty_HDMATable_88DF02                                      ;88DEF6;
 
 InstList_CeresHaze_ColorMathSubScnBackColor_RidleyDead_1:
-    dw $7777                                                             ;88DEFA;
-    dw IndirectHDMATable_CeresHaze_ColorMathSubScnBackdropColor          ;88DEFC;
+    dw $7777,IndirectHDMATable_CeresHaze_ColorMathSubScnBackdropColor    ;88DEFA;
     dw Instruction_HDMAObject_GotoY                                      ;88DEFE;
     dw InstList_CeresHaze_ColorMathSubScnBackColor_RidleyDead_1          ;88DF00;
 
@@ -12053,39 +9346,23 @@ Empty_HDMATable_88DF02:
     db $00                                                               ;88DF02;
 
 IndirectHDMATable_CeresHaze_ColorMathSubScnBackdropColor:
-    db $40                                                               ;88DF03;
-    dw $9D00                                                             ;88DF04;
-    db $08                                                               ;88DF06;
-    dw $9D01                                                             ;88DF07;
-    db $08                                                               ;88DF09;
-    dw $9D02                                                             ;88DF0A;
-    db $08                                                               ;88DF0C;
-    dw $9D03                                                             ;88DF0D;
-    db $08                                                               ;88DF0F;
-    dw $9D04                                                             ;88DF10;
-    db $08                                                               ;88DF12;
-    dw $9D05                                                             ;88DF13;
-    db $08                                                               ;88DF15;
-    dw $9D06                                                             ;88DF16;
-    db $08                                                               ;88DF18;
-    dw $9D07                                                             ;88DF19;
-    db $08                                                               ;88DF1B;
-    dw $9D08                                                             ;88DF1C;
-    db $08                                                               ;88DF1E;
-    dw $9D09                                                             ;88DF1F;
-    db $08                                                               ;88DF21;
-    dw $9D0A                                                             ;88DF22;
-    db $08                                                               ;88DF24;
-    dw $9D0B                                                             ;88DF25;
-    db $08                                                               ;88DF27;
-    dw $9D0C                                                             ;88DF28;
-    db $08                                                               ;88DF2A;
-    dw $9D0D                                                             ;88DF2B;
-    db $08                                                               ;88DF2D;
-    dw $9D0E                                                             ;88DF2E;
-    db $08                                                               ;88DF30;
-    dw $9D0F                                                             ;88DF31;
-    db $00                                                               ;88DF33;
+    db $40 : dw $9D00                                                    ;88DF03;
+    db $08 : dw $9D01
+    db $08 : dw $9D02
+    db $08 : dw $9D03
+    db $08 : dw $9D04
+    db $08 : dw $9D05
+    db $08 : dw $9D06
+    db $08 : dw $9D07
+    db $08 : dw $9D08
+    db $08 : dw $9D09
+    db $08 : dw $9D0A
+    db $08 : dw $9D0B
+    db $08 : dw $9D0C
+    db $08 : dw $9D0D
+    db $08 : dw $9D0E
+    db $08 : dw $9D0F
+    db $00
 
 Spawn_DraygonMainScreenLayers_HDMAObject:
     JSL.L Spawn_HDMAObject                                               ;88DF34;
@@ -12111,49 +9388,40 @@ endif ; !FEATURE_KEEP_UNREFERENCED
 
 
 InstList_DraygonMainScreenLayers_Initial:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88DF4F;
-    db $88                                                               ;88DF51;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88DF52;
-    db $88                                                               ;88DF54;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88DF4F;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $88             ;88DF52;
     dw Instruction_HDMAObject_CallExternalFunctionInY                    ;88DF55;
     dl RTL_88DF91                                                        ;88DF57;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88DF5A;
     dl PreInstruction_DraygonMainScreenLayers                            ;88DF5C;
 
 InstList_DraygonMainScreenLayers_DraygonAroundMiddle:
-    dw $0001                                                             ;88DF5F;
-    dw HDMATable_DraygonMainScreenLayers_DraygonAroundMiddle             ;88DF61;
+    dw $0001,HDMATable_DraygonMainScreenLayers_DraygonAroundMiddle       ;88DF5F;
     dw Instruction_HDMAObject_Sleep                                      ;88DF63;
 
 InstList_DraygonMainScreenLayers_DraygonAroundBottom:
-    dw $0001                                                             ;88DF65;
-    dw HDMATable_DraygonMainScreenLayers_DraygonAroundBottom             ;88DF67;
+    dw $0001,HDMATable_DraygonMainScreenLayers_DraygonAroundBottom       ;88DF65;
     dw Instruction_HDMAObject_Sleep                                      ;88DF69;
 
 InstList_DraygonMainScreenLayers_DraygonAroundTop:
-    dw $0001                                                             ;88DF6B;
-    dw HDMATable_DraygonMainScreenLayers_DraygonAroundTop                ;88DF6D;
+    dw $0001,HDMATable_DraygonMainScreenLayers_DraygonAroundTop          ;88DF6B;
     dw Instruction_HDMAObject_Sleep                                      ;88DF6F;
 
 InstList_DraygonMainScreenLayers_DraygonOffScreen:
-    dw $0001                                                             ;88DF71;
-    dw HDMATable_DraygonMainScreenLayers_DraygonOffScreen                ;88DF73;
+    dw $0001,HDMATable_DraygonMainScreenLayers_DraygonOffScreen          ;88DF71;
     dw Instruction_HDMAObject_Sleep                                      ;88DF75;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_BG3_Yscroll_0_88DF77:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88DF77;
-    db $88                                                               ;88DF79;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88DF7A;
-    db $88                                                               ;88DF7C;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88DF77;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $88             ;88DF7A;
     dw Instruction_HDMAObject_CallExternalFunctionInY                    ;88DF7D;
     dl RTL_88DF92                                                        ;88DF7F;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88DF82;
     dl RTL_88DF93                                                        ;88DF84;
 
 UNUSED_InstList_BG3_Yscroll_1_88DF87:
-    dw $0001                                                             ;88DF87;
-    dw UNUSED_HDMATable_BG3_Yscroll                                      ;88DF89;
+    dw $0001,UNUSED_HDMATable_BG3_Yscroll                                ;88DF87;
     dw Instruction_HDMAObject_GotoY                                      ;88DF8B;
     dw UNUSED_InstList_BG3_Yscroll_1_88DF87                              ;88DF8D;
     dw Instruction_HDMAObject_Sleep                                      ;88DF8F;
@@ -12233,25 +9501,33 @@ PreInstruction_DraygonMainScreenLayers:
     RTL                                                                  ;88E006;
 
 
-HDMATable_DraygonMainScreenLayers_DraygonAroundMiddle:
-    db $1F,$04,$81,$13,$00                                               ;88E007;
+HDMATable_DraygonMainScreenLayers_DraygonAroundMiddle:                   ;88E007;
+    db $1F,$04 ;         BG3
+    db $81,$13 ; BG1/BG2/    sprites
+    db $00
 
-HDMATable_DraygonMainScreenLayers_DraygonAroundBottom:
-    db $1F,$04,$60,$11,$81,$13,$00                                       ;88E00C;
+HDMATable_DraygonMainScreenLayers_DraygonAroundBottom:                   ;88E00C;
+    db $1F,$04 ;         BG3
+    db $60,$11 ; BG1/        sprites
+    db $81,$13 ; BG1/BG2/    sprites
+    db $00
 
-HDMATable_DraygonMainScreenLayers_DraygonAroundTop:
-    db $1F,$04,$40,$13,$81,$11,$00                                       ;88E013;
+HDMATable_DraygonMainScreenLayers_DraygonAroundTop:                      ;88E013;
+    db $1F,$04 ;         BG3
+    db $40,$13 ; BG1/BG2/    sprites
+    db $81,$11 ; BG1/        sprites
+    db $00
 
-HDMATable_DraygonMainScreenLayers_DraygonOffScreen:
-    db $1F,$04,$81,$11,$00                                               ;88E01A;
+HDMATable_DraygonMainScreenLayers_DraygonOffScreen:                      ;88E01A;
+    db $1F,$04 ;         BG3
+    db $81,$11 ; BG1/        sprites
+    db $00
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_HDMATable_BG3_Yscroll:
-    db $40                                                               ;88E01F;
-    dw $0000                                                             ;88E020;
-    db $81                                                               ;88E022;
-    dw $0020                                                             ;88E023;
-    db $00                                                               ;88E025;
+    db $40 : dw $0000                                                    ;88E01F;
+    db $81 : dw $0020
+    db $00
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 PreInstruction_VariaSuitPickup:
@@ -12769,6 +10045,7 @@ AdvanceSuitPickup_ColorMathSubScnBackdrop_TransitionToBlue:
 
 
 SuitPickup_LightBeam_CurveWidths:
+; Indexed by scanline for upper half (`FFh - scanline` for lower half)
     db $01,$02,$03,$04,$05,$06,$07,$07,$08,$08,$09,$09,$0A,$0A,$0B,$0B   ;88E3C9;
     db $0B,$0C,$0C,$0C,$0D,$0D,$0D,$0E,$0E,$0E,$0E,$0F,$0F,$0F,$0F,$10   ;88E3D9;
     db $10,$10,$10,$10,$11,$11,$11,$11,$11,$11,$12,$12,$12,$12,$12,$12   ;88E3E9;
@@ -12842,15 +10119,14 @@ Spawn_WavyPhantoon_HDMAObject:
 
 
 InstList_WavyPhantoon_BG2_Xscroll:
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88E4A8;
-    db $7E                                                               ;88E4AA;
-    dw Instruction_HDMAObject_HDMATableBank                              ;88E4AB;
-    db $7E                                                               ;88E4AD;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88E4A8;
+                                                                   ;88E4AA;
+    dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88E4AB;
+                                                                   ;88E4AD;
     dw Instruction_Setup_WavyPhantoon                                    ;88E4AE;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88E4B0;
     dl PreInstruction_WavyPhantoon                                       ;88E4B2;
-    dw $0001                                                             ;88E4B5;
-    dw $9000                                                             ;88E4B7;
+    dw $0001,$9000                                                       ;88E4B5;
     dw Instruction_HDMAObject_Sleep                                      ;88E4B9;
     dw Instruction_HDMAObject_Delete                                     ;88E4BB;
 
@@ -13164,20 +10440,22 @@ RTL_88E726:
 
 
 InstList_MotherBrainRising_MainScreenLayers:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88E727;
-    db $88                                                               ;88E729;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88E72A;
-    db $88                                                               ;88E72C;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88E727;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $88             ;88E72A;
     dw Instruction_HDMAObject_CallExternalFunctionInY                    ;88E72D;
     dl RTL_88E726                                                        ;88E72F;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88E732;
     dl RTL_88E726                                                        ;88E734;
-    dw $0001                                                             ;88E737;
-    dw HDMATable_MotherBrainRising_MainScreenLayers                      ;88E739;
+    dw $0001,HDMATable_MotherBrainRising_MainScreenLayers                ;88E737;
     dw Instruction_HDMAObject_Sleep                                      ;88E73B;
 
-HDMATable_MotherBrainRising_MainScreenLayers:
-    db $20,$04,$18,$15,$60,$13,$40,$13,$08,$05,$00                       ;88E73D;
+HDMATable_MotherBrainRising_MainScreenLayers:                            ;88E73D;
+    db $20,$04 ;         BG3
+    db $18,$15 ; BG1/    BG3/sprites
+    db $60,$13 ; BG1/BG2/    sprites
+    db $40,$13 ; BG1/BG2/    sprites
+    db $08,$05 ; BG1/    BG3
+    db $00
 
 Spawn_MotherBrainRainbowBeam_HDMAObject:
     JSL.L Spawn_HDMAObject                                               ;88E748;
@@ -13187,16 +10465,13 @@ Spawn_MotherBrainRainbowBeam_HDMAObject:
 
 
 InstList_MotherBrainRainbowBeam_Window1Position:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88E751;
-    db $7E                                                               ;88E753;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88E754;
-    db $7E                                                               ;88E756;
+    dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88E751;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88E754;
     dw Instruction_HDMAObject_CallExternalFunctionInY                    ;88E757;
     dl Initialise_Rainbow_Beam                                           ;88E759;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88E75C;
     dl PreInstruction_MotherBrainRainbowBeam                             ;88E75E;
-    dw $0001                                                             ;88E761;
-    dw $9C00                                                             ;88E763;
+    dw $0001,$9C00                                                       ;88E761;
     dw Instruction_HDMAObject_Sleep                                      ;88E765;
 
 Initialise_Rainbow_Beam:
@@ -13311,19 +10586,21 @@ Set_RainbowBeam_ColorMathSubscreenBackdropColor:
     REP #$20                                                             ;88E830;
     RTS                                                                  ;88E832;
 
+  .table
+; Rainbow beam colour table
+; The table index is incremented by 4 per frame instead of 2, so only entries 2k for some k are used
+    dw $001F,$005F, $009F,$00DF, $011F,$015F, $019F,$01DF                 ;88E833;
+    dw $023F,$027F, $02BF,$02FF, $033F,$037F, $03BF,$03FF                 ;88E843;
+    dw $03FD,$03FB, $03F9,$03F7, $03F5,$03F3, $03F1,$03EF                 ;88E853;
+    dw $03EC,$03EA, $03E8,$03E6, $03E4,$03E2, $03E0,$0BA0                 ;88E863;
+    dw $1360,$1B20, $22E0,$2AA0, $3260,$3A20, $45E0,$4D80                 ;88E873;
+    dw $5540,$5D00, $64C0,$6C80, $7440,$7C00, $7C02,$7C04                 ;88E883;
+    dw $7C06,$7C08, $7C0A,$7C0C, $7C0D,$7C2F, $7C31,$7C33                 ;88E893;
+    dw $7C35,$7C37, $7C39,$7C3B, $7C1F,$741F, $6C1F,$641F                 ;88E8A3;
+    dw $5C1F,$541F, $4C1F,$441F, $3C1F,$301F, $281F,$201F                 ;88E8B3;
+    dw $181F,$101F, $081F,$FFFF, $FFFF                                    ;88E8C3;
+    dw $FFFF,$FFFF,$FFFF,$FFFF,$FFFF,$FFFF ; Excess terminators
 
-.table:
-    dw $001F,$005F,$009F,$00DF,$011F,$015F,$019F,$01DF                   ;88E833;
-    dw $023F,$027F,$02BF,$02FF,$033F,$037F,$03BF,$03FF                   ;88E843;
-    dw $03FD,$03FB,$03F9,$03F7,$03F5,$03F3,$03F1,$03EF                   ;88E853;
-    dw $03EC,$03EA,$03E8,$03E6,$03E4,$03E2,$03E0,$0BA0                   ;88E863;
-    dw $1360,$1B20,$22E0,$2AA0,$3260,$3A20,$45E0,$4D80                   ;88E873;
-    dw $5540,$5D00,$64C0,$6C80,$7440,$7C00,$7C02,$7C04                   ;88E883;
-    dw $7C06,$7C08,$7C0A,$7C0C,$7C0D,$7C2F,$7C31,$7C33                   ;88E893;
-    dw $7C35,$7C37,$7C39,$7C3B,$7C1F,$741F,$6C1F,$641F                   ;88E8A3;
-    dw $5C1F,$541F,$4C1F,$441F,$3C1F,$301F,$281F,$201F                   ;88E8B3;
-    dw $181F,$101F,$081F,$FFFF,$FFFF,$FFFF,$FFFF,$FFFF                   ;88E8C3;
-    dw $FFFF,$FFFF,$FFFF                                                 ;88E8D3;
 
 Spawn_MorphBallEyeBeam_HDMAObject:
     PHP                                                                  ;88E8D9;
@@ -13342,25 +10619,20 @@ Spawn_MorphBallEyeBeam_HDMAObject:
 
 
 InstList_MorphBallEyeBeam_Window1Position:
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88E8EC;
-    db $7E                                                               ;88E8EE;
-    dw Instruction_HDMAObject_HDMATableBank                              ;88E8EF;
-    db $7E                                                               ;88E8F1;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88E8EC;
+    dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88E8EF;
     dw Instruction_Initialise_MorphBallEyeBeam_HDMA                      ;88E8F2;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88E8F4;
     dl PreInstruction_MorphBallEyeBeam_BeamIsWidening                    ;88E8F6;
-    dw $0001                                                             ;88E8F9;
-    dw $9000                                                             ;88E8FB;
+    dw $0001,$9000                                                       ;88E8F9;
     dw Instruction_HDMAObject_Sleep                                      ;88E8FD;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88E8FF;
     dl PreInstruction_MorphBallEyeBeamHDMA_FullBeam                      ;88E901;
-    dw $0001                                                             ;88E904;
-    dw $9000                                                             ;88E906;
+    dw $0001,$9000                                                       ;88E904;
     dw Instruction_HDMAObject_Sleep                                      ;88E908;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88E90A;
     dl PreInstruction_MorphBallEyeBeamHDMA_DeactivateBeam                ;88E90C;
-    dw $0001                                                             ;88E90F;
-    dw $9000                                                             ;88E911;
+    dw $0001,$9000                                                       ;88E90F;
     dw Instruction_HDMAObject_Sleep                                      ;88E913;
     dw Instruction_HDMAObject_Delete                                     ;88E915;
 
@@ -13534,18 +10806,31 @@ PreInstruction_MorphBallEyeBeamHDMA_FullBeam:
     PLP                                                                  ;88EA89;
     RTL                                                                  ;88EA8A;
 
-
-.red:
+;        ____________ Red component
+;       |    ________ Green component
+;       |   |    ____ Blue component
+;       |   |   |
+  .red:
     db $30                                                               ;88EA8B;
-
-.green:
-    db $50                                                               ;88EA8C;
-
-.blue:
-    db $80,$00,$2F,$4F,$80,$00,$2E,$4E,$80,$00,$2D,$4D,$80,$00,$2C,$4C   ;88EA8D;
-    db $80,$00,$2B,$4B,$80,$00,$2A,$4A,$80,$00,$29,$49,$80,$00,$28,$48   ;88EA9D;
-    db $80,$00,$29,$49,$80,$00,$2A,$4A,$80,$00,$2B,$4B,$80,$00,$2C,$4C   ;88EAAD;
-    db $80,$00,$2D,$4D,$80,$00,$2E,$4E,$80,$00,$2F,$4F,$80,$00           ;88EABD;
+  .green:
+    db     $50                                                           ;88EA8C;
+  .blue:
+    db         $80, $00                                                  ;88EA8D;
+    db $2F,$4F,$80, $00
+    db $2E,$4E,$80, $00
+    db $2D,$4D,$80, $00
+    db $2C,$4C,$80, $00
+    db $2B,$4B,$80, $00
+    db $2A,$4A,$80, $00
+    db $29,$49,$80, $00
+    db $28,$48,$80, $00
+    db $29,$49,$80, $00
+    db $2A,$4A,$80, $00
+    db $2B,$4B,$80, $00
+    db $2C,$4C,$80, $00
+    db $2D,$4D,$80, $00
+    db $2E,$4E,$80, $00
+    db $2F,$4F,$80, $00
 
 PreInstruction_MorphBallEyeBeamHDMA_DeactivateBeam:
     PHP                                                                  ;88EACB;
@@ -13642,28 +10927,28 @@ Spawn_TitleSequenceGradient_HDMAObjects:
 
 
 InstList_ColorMathSubScnBackdropColor_TitleSequenceGradient:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88EB73;
-    db $7E                                                               ;88EB75;
+    dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88EB73;
     dw Instruction_Setup_TitleSequenceGradient_HDMATable                 ;88EB76;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88EB78;
     dl PreInst_ColorMathSubScnBackdropColor_TitleSequenceGradient        ;88EB7A;
-    dw $0001                                                             ;88EB7D;
-    dw $9800                                                             ;88EB7F;
+    dw $0001,$9800                                                       ;88EB7D;
     dw Instruction_HDMAObject_Sleep                                      ;88EB81;
     dw Instruction_HDMAObject_Delete                                     ;88EB83;
 
 InstList_ColorMathControlRegB_TitleSequenceGradient:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88EB85;
-    db $88                                                               ;88EB87;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88EB85;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88EB88;
     dl PreInstruction_ColorMathControlRegB_TitleSequenceGradient         ;88EB8A;
-    dw $0001                                                             ;88EB8D;
-    dw HDMATable_ColorMathControlRegB_TitleSequenceGradient              ;88EB8F;
+    dw $0001,HDMATable_ColorMathControlRegB_TitleSequenceGradient        ;88EB8D;
     dw Instruction_HDMAObject_Sleep                                      ;88EB91;
     dw Instruction_HDMAObject_Delete                                     ;88EB93;
 
-HDMATable_ColorMathControlRegB_TitleSequenceGradient:
-    db $40,$A1,$3A,$A1,$40,$31,$40,$31,$00,$00                           ;88EB95;
+HDMATable_ColorMathControlRegB_TitleSequenceGradient:                    ;88EB95;
+    db $40,$A1 ;\
+    db $3A,$A1 ;} Enable subtractive colour math on BG1/backdrop
+    db $40,$31 ;\
+    db $40,$31 ;} Enable colour math on BG1/sprites/backdrop
+    db $00,$00
 
 Instruction_Setup_TitleSequenceGradient_HDMATable:
     PHP                                                                  ;88EB9F;
@@ -13735,17 +11020,19 @@ SpawnIntroCutsceneCrossFade_HDMAObject:
 
 
 InstList_IntroCutsceneCrossFade:
-    dw Instruction_HDMAObject_HDMATableBank                              ;88EC03;
-    db $88                                                               ;88EC05;
+    dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88EC03;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88EC06;
     dl PreInstruction_IntroCutsceneCrossFade                             ;88EC08;
-    dw $0001                                                             ;88EC0B;
-    dw HDMATable_IntroCutsceneCrossFade_ColorMathControlRegB             ;88EC0D;
+    dw $0001,HDMATable_IntroCutsceneCrossFade_ColorMathControlRegB       ;88EC0B;
     dw Instruction_HDMAObject_Sleep                                      ;88EC0F;
     dw Instruction_HDMAObject_Delete                                     ;88EC11;
 
-HDMATable_IntroCutsceneCrossFade_ColorMathControlRegB:
-    db $17,$02,$60,$06,$40,$06,$48,$02,$00,$00                           ;88EC13;
+HDMATable_IntroCutsceneCrossFade_ColorMathControlRegB:                   ;88EC13;
+    db $17,$02 ; Enable colour math on BG2
+    db $60,$06 ; Enable colour math on BG2/BG3
+    db $40,$06 ; Enable colour math on BG2/BG3
+    db $48,$02 ; Enable colour math on BG2
+    db $00,$00
 
 PreInstruction_IntroCutsceneCrossFade:
     PHP                                                                  ;88EC1D;
@@ -13803,15 +11090,12 @@ Spawn_WavySamus_HDMAObject:
 
 
 InstList_WavySamus:
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;88EC8A;
-    db $7E                                                               ;88EC8C;
-    dw Instruction_HDMAObject_HDMATableBank                              ;88EC8D;
-    db $00                                                               ;88EC8F;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88EC8A;
+    dw Instruction_HDMAObject_HDMATableBank : db $00                     ;88EC8D;
     dw Instruction_Setup_WavySamus                                       ;88EC90;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88EC92;
     dl PreInstruction_WavySamus                                          ;88EC94;
-    dw $0001                                                             ;88EC97;
-    dw $0D82                                                             ;88EC99;
+    dw $0001,$0D82                                                       ;88EC97;
     dw Instruction_HDMAObject_Sleep                                      ;88EC9B;
     dw Instruction_HDMAObject_Delete                                     ;88EC9D;
 
