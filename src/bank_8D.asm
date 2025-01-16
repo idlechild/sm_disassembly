@@ -9929,1053 +9929,1063 @@ RTS_8DC685:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_8DC686:
+; Looks like garbage data
     dw $1000,$C690,$C595,$C61E,$C686,$0180,$0000,$0000                   ;8DC686;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_PaletteFXObject_FadeInSuperMetroidTitleLogo:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DC696;
-    dw $0142,$0003,$0000,$0000,$0000,$0000,$0000,$0000                   ;8DC698;
-    dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;8DC6A8;
-    dw $0000                                                             ;8DC6B8;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC6BA;
-    dw $0003,$1084,$0084,$0064,$0064,$0044,$0024,$0004                   ;8DC6BC;
-    dw $0004,$0003,$0002,$0401,$0400,$0C63,$0421,$0000                   ;8DC6CC;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC6DC;
-    dw $0003,$2108,$0508,$00E8,$00C8,$0088,$0048,$0028                   ;8DC6DE;
-    dw $0008,$0006,$0405,$0803,$0C01,$18C6,$0C42,$0400                   ;8DC6EE;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC6FE;
-    dw $0003,$35AD,$05AD,$056D,$052D,$00CD,$008D,$004D                   ;8DC700;
-    dw $000D,$000A,$0407,$0C05,$1422,$2529,$1484,$0400                   ;8DC710;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC720;
-    dw $0003,$4631,$0A31,$05D1,$0591,$0531,$00B1,$0051                   ;8DC722;
-    dw $0011,$000D,$080A,$1026,$1823,$318C,$1CA5,$0800                   ;8DC732;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC742;
-    dw $0003,$5AD6,$0AD6,$0A56,$09F6,$0576,$00F6,$0076                   ;8DC744;
-    dw $0016,$0011,$080C,$1428,$2044,$3DEF,$24E7,$0800                   ;8DC754;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC764;
-    dw $0003,$6B5A,$0F5A,$0ADA,$0A5A,$05BA,$011A,$009A                   ;8DC766;
-    dw $001A,$0014,$0C0F,$182A,$2845,$4A52,$2D08,$0C00                   ;8DC776;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC786;
-    dw $0003,$7FFF,$13FF,$0F5F,$0EBF,$0A1F,$055F,$04BF                   ;8DC788;
-    dw $001F,$0018,$1032,$204C,$3066,$5AB5,$354A,$1000                   ;8DC798;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC7A8;
-    dw Instruction_Delete_8DC5CF                                         ;8DC7AA;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0142                   ;8DC696;
+    dw $0003
+    dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+    dw $0000,$0000,$0000,$0000,$0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $1084,$0084,$0064,$0064,$0044,$0024,$0004,$0004
+    dw $0003,$0002,$0401,$0400,$0C63,$0421,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $2108,$0508,$00E8,$00C8,$0088,$0048,$0028,$0008
+    dw $0006,$0405,$0803,$0C01,$18C6,$0C42,$0400
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $35AD,$05AD,$056D,$052D,$00CD,$008D,$004D,$000D
+    dw $000A,$0407,$0C05,$1422,$2529,$1484,$0400
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $4631,$0A31,$05D1,$0591,$0531,$00B1,$0051,$0011
+    dw $000D,$080A,$1026,$1823,$318C,$1CA5,$0800
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $5AD6,$0AD6,$0A56,$09F6,$0576,$00F6,$0076,$0016
+    dw $0011,$080C,$1428,$2044,$3DEF,$24E7,$0800
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $6B5A,$0F5A,$0ADA,$0A5A,$05BA,$011A,$009A,$001A
+    dw $0014,$0C0F,$182A,$2845,$4A52,$2D08,$0C00
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $7FFF,$13FF,$0F5F,$0EBF,$0A1F,$055F,$04BF,$001F
+    dw $0018,$1032,$204C,$3066,$5AB5,$354A,$1000
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_Delete_8DC5CF
 
 InstList_PaletteFXObject_FadeInNintendoBootLogo:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DC7AC;
-    dw $0132                                                             ;8DC7AE;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0132                   ;8DC7AC;
 
 InstList_PaletteFXObject_Common_FadeInLogo:
-    dw $0003,$0C63,$0C20                                                 ;8DC7B0;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC7B6;
-    dw $0003,$1CE7,$1C60                                                 ;8DC7B8;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC7BE;
-    dw $0003,$2D6B,$2C80                                                 ;8DC7C0;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC7C6;
-    dw $0003,$3DEF,$3CC0                                                 ;8DC7C8;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC7CE;
-    dw $0003,$4E73,$4CE0                                                 ;8DC7D0;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC7D6;
-    dw $0003,$5EF7,$5D20                                                 ;8DC7D8;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC7DE;
-    dw $0003,$6F7B,$6D40                                                 ;8DC7E0;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC7E6;
-    dw $0003,$7FFF,$7D80                                                 ;8DC7E8;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC7EE;
-    dw Instruction_Delete_8DC5CF                                         ;8DC7F0;
+    dw $0003                                                             ;8DC7B0;
+    dw $0C63,$0C20
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $1CE7,$1C60
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $2D6B,$2C80
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $3DEF,$3CC0
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $4E73,$4CE0
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $5EF7,$5D20
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $6F7B,$6D40
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $7FFF,$7D80
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_Delete_8DC5CF
 
 InstList_PaletteFXObject_FadeInNintendoCopyright:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DC7F2;
-    dw $0192                                                             ;8DC7F4;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0192                   ;8DC7F2;
     dw Instruction_PaletteFXObject_GotoY                                 ;8DC7F6;
     dw InstList_PaletteFXObject_Common_FadeInLogo                        ;8DC7F8;
 
 InstList_PaletteFXObject_TitleScreenBabyMetroidTubeLight_0:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DC7FA;
-    dw $0054                                                             ;8DC7FC;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0054                   ;8DC7FA;
 
 InstList_PaletteFXObject_TitleScreenBabyMetroidTubeLight_1:
     dw $000A                                                             ;8DC7FE;
-    dw $0113,$000F,$175C,$0299                                           ;8DC800;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC808;
-    dw $000A,$00B0,$000C,$0AF9,$0236                                     ;8DC80A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC814;
-    dw $000A,$006D,$0009,$0296,$01D3                                     ;8DC816;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC820;
-    dw $000A,$000A,$0006,$0233,$0170                                     ;8DC822;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC82C;
-    dw $000A,$0007,$0003,$01D0,$010D                                     ;8DC82E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC838;
-    dw $000A,$000A,$0006,$0233,$0170                                     ;8DC83A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC844;
-    dw $000A,$006D,$0009,$0296,$01D3                                     ;8DC846;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC850;
-    dw $000A,$00B0,$000C,$0AF9,$0236                                     ;8DC852;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC85C;
-    dw Instruction_PaletteFXObject_GotoY                                 ;8DC85E;
-    dw InstList_PaletteFXObject_TitleScreenBabyMetroidTubeLight_1        ;8DC860;
+    dw $0113,$000F,$175C,$0299
+    dw Instruction_PaletteFXObject_Done
+    dw $000A
+    dw $00B0,$000C,$0AF9,$0236
+    dw Instruction_PaletteFXObject_Done
+    dw $000A
+    dw $006D,$0009,$0296,$01D3
+    dw Instruction_PaletteFXObject_Done
+    dw $000A
+    dw $000A,$0006,$0233,$0170
+    dw Instruction_PaletteFXObject_Done
+    dw $000A
+    dw $0007,$0003,$01D0,$010D
+    dw Instruction_PaletteFXObject_Done
+    dw $000A
+    dw $000A,$0006,$0233,$0170
+    dw Instruction_PaletteFXObject_Done
+    dw $000A
+    dw $006D,$0009,$0296,$01D3
+    dw Instruction_PaletteFXObject_Done
+    dw $000A
+    dw $00B0,$000C,$0AF9,$0236
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_GotoY
+    dw InstList_PaletteFXObject_TitleScreenBabyMetroidTubeLight_1
 
 InstList_PaletteFXObject_TitleScreenFlickeringDisplays_0:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DC862;
-    dw $005C                                                             ;8DC864;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$005C                   ;8DC862;
 
 InstList_PaletteFXObject_TitleScreenFlickeringDisplays_1:
-    dw $0001,$13FF,$0BB1                                                 ;8DC866;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC86C;
-    dw $0001,$00AC,$0145                                                 ;8DC86E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC874;
-    dw Instruction_PaletteFXObject_GotoY                                 ;8DC876;
-    dw InstList_PaletteFXObject_TitleScreenFlickeringDisplays_1          ;8DC878;
+    dw $0001                                                             ;8DC866;
+    dw $13FF,$0BB1
+    dw Instruction_PaletteFXObject_Done
+    dw $0001
+    dw $00AC,$0145
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_GotoY
+    dw InstList_PaletteFXObject_TitleScreenFlickeringDisplays_1
 
 InstList_PaletteFXObject_CutsceneGunshipEngineFlicker_0:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DC87A;
-    dw $00BE                                                             ;8DC87C;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$00BE                   ;8DC87A;
 
 InstList_PaletteFXObject_CutsceneGunshipEngineFlicker_1:
-    dw $0001,$7FFF                                                       ;8DC87E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC882;
-    dw $0001,$0000                                                       ;8DC884;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC888;
-    dw Instruction_PaletteFXObject_GotoY                                 ;8DC88A;
-    dw InstList_PaletteFXObject_CutsceneGunshipEngineFlicker_1           ;8DC88C;
+    dw $0001                                                             ;8DC87E;
+    dw $7FFF
+    dw Instruction_PaletteFXObject_Done
+    dw $0001
+    dw $0000
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_GotoY
+    dw InstList_PaletteFXObject_CutsceneGunshipEngineFlicker_1
 
 InstList_PaletteFXObject_CutsceneCeresNavigationLight_Sprite:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DC88E;
-    dw $01DA                                                             ;8DC890;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$01DA                   ;8DC88E;
 
 InstList_PaletteFXObject_Common_CeresNavigationLights:
-    dw $0004,$001F,$0000                                                 ;8DC892;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC898;
-    dw $0004,$001B,$0004                                                 ;8DC89A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC8A0;
-    dw $0004,$0016,$0009                                                 ;8DC8A2;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC8A8;
-    dw $0004,$0012,$000D                                                 ;8DC8AA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC8B0;
-    dw $0004,$000D,$0012                                                 ;8DC8B2;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC8B8;
-    dw $0004,$0009,$0016                                                 ;8DC8BA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC8C0;
-    dw $0004,$0004,$001B                                                 ;8DC8C2;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC8C8;
-    dw $0004,$0000,$001F                                                 ;8DC8CA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC8D0;
-    dw $0004,$0004,$001B                                                 ;8DC8D2;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC8D8;
-    dw $0004,$0009,$0016                                                 ;8DC8DA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC8E0;
-    dw $0004,$000D,$0012                                                 ;8DC8E2;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC8E8;
-    dw $0004,$0012,$000D                                                 ;8DC8EA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC8F0;
-    dw $0004,$0016,$0009                                                 ;8DC8F2;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC8F8;
-    dw $0004,$001B,$0004                                                 ;8DC8FA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC900;
-    dw Instruction_PaletteFXObject_GotoY                                 ;8DC902;
-    dw InstList_PaletteFXObject_Common_CeresNavigationLights             ;8DC904;
+    dw $0004                                                             ;8DC892;
+    dw $001F,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0004
+    dw $001B,$0004
+    dw Instruction_PaletteFXObject_Done
+    dw $0004
+    dw $0016,$0009
+    dw Instruction_PaletteFXObject_Done
+    dw $0004
+    dw $0012,$000D
+    dw Instruction_PaletteFXObject_Done
+    dw $0004
+    dw $000D,$0012
+    dw Instruction_PaletteFXObject_Done
+    dw $0004
+    dw $0009,$0016
+    dw Instruction_PaletteFXObject_Done
+    dw $0004
+    dw $0004,$001B
+    dw Instruction_PaletteFXObject_Done
+    dw $0004
+    dw $0000,$001F
+    dw Instruction_PaletteFXObject_Done
+    dw $0004
+    dw $0004,$001B
+    dw Instruction_PaletteFXObject_Done
+    dw $0004
+    dw $0009,$0016
+    dw Instruction_PaletteFXObject_Done
+    dw $0004
+    dw $000D,$0012
+    dw Instruction_PaletteFXObject_Done
+    dw $0004
+    dw $0012,$000D
+    dw Instruction_PaletteFXObject_Done
+    dw $0004
+    dw $0016,$0009
+    dw Instruction_PaletteFXObject_Done
+    dw $0004
+    dw $001B,$0004
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_GotoY
+    dw InstList_PaletteFXObject_Common_CeresNavigationLights
 
 InstList_PaletteFXObject_CutsceneCeresNavigationLights_BG:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DC906;
-    dw $00DA                                                             ;8DC908;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$00DA                   ;8DC906;
     dw Instruction_PaletteFXObject_GotoY                                 ;8DC90A;
     dw InstList_PaletteFXObject_Common_CeresNavigationLights             ;8DC90C;
 
 InstList_PaletteFXObject_FadeInPlanetZebesText:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DC90E;
-    dw $0102,$0003,$0000,$0000,$0000                                     ;8DC910;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC91A;
-    dw $0003,$1084,$0C63,$0421                                           ;8DC91C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC924;
-    dw $0003,$2529,$1CE7,$0C63                                           ;8DC926;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC92E;
-    dw $0003,$35AD,$294A,$1084                                           ;8DC930;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC938;
-    dw $0003,$4A52,$39CE,$18C6                                           ;8DC93A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC942;
-    dw $0003,$5AD6,$4631,$1CE7                                           ;8DC944;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC94C;
-    dw $0003,$6F7B,$56B5,$2529                                           ;8DC94E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC956;
-    dw $0003,$7FFF,$6318,$294A                                           ;8DC958;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC960;
-    dw Instruction_Delete_8DC5CF                                         ;8DC962;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0102                   ;8DC90E;
+    dw $0003
+    dw $0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $1084,$0C63,$0421
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $2529,$1CE7,$0C63
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $35AD,$294A,$1084
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $4A52,$39CE,$18C6
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $5AD6,$4631,$1CE7
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $6F7B,$56B5,$2529
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $7FFF,$6318,$294A
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_Delete_8DC5CF
 
 InstList_PaletteFXObject_FadeOutPlanetZebesText:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DC964;
-    dw $0102,$0003,$7FFF,$6318,$294A                                     ;8DC966;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC970;
-    dw $0003,$6F7B,$56B5,$2529                                           ;8DC972;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC97A;
-    dw $0003,$5AD6,$4631,$1CE7                                           ;8DC97C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC984;
-    dw $0003,$4A52,$39CE,$18C6                                           ;8DC986;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC98E;
-    dw $0003,$35AD,$294A,$1084                                           ;8DC990;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC998;
-    dw $0003,$2529,$1CE7,$0C63                                           ;8DC99A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC9A2;
-    dw $0003,$1084,$0C63,$0421                                           ;8DC9A4;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC9AC;
-    dw $0003,$0000,$0000,$0000                                           ;8DC9AE;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC9B6;
-    dw Instruction_Delete_8DC5CF                                         ;8DC9B8;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0102                   ;8DC964;
+    dw $0003
+    dw $7FFF,$6318,$294A
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $6F7B,$56B5,$2529
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $5AD6,$4631,$1CE7
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $4A52,$39CE,$18C6
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $35AD,$294A,$1084
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $2529,$1CE7,$0C63
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $1084,$0C63,$0421
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_Delete_8DC5CF
 
 InstList_PaletteFXObject_OldMotherBrainFightBGLights_0:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DC9BA;
-    dw $0028                                                             ;8DC9BC;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0028                   ;8DC9BA;
 
 InstList_PaletteFXObject_OldMotherBrainFightBGLights_1:
-    dw $0006,$7FFF,$6318,$294A                                           ;8DC9BE;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC9C6;
-    dw $0006,$6F7B,$56B5,$2529                                           ;8DC9C8;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC9D0;
-    dw $0006,$5AD6,$4631,$1CE7                                           ;8DC9D2;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC9DA;
-    dw $0006,$4A52,$39CE,$18C6                                           ;8DC9DC;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC9E4;
-    dw $0006,$35AD,$294A,$1084                                           ;8DC9E6;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC9EE;
-    dw $0006,$2529,$1CE7,$0C63                                           ;8DC9F0;
-    dw Instruction_PaletteFXObject_Done                                  ;8DC9F8;
-    dw $0006,$1084,$0C63,$0421                                           ;8DC9FA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA02;
-    dw $0006,$0000,$0000,$0000                                           ;8DCA04;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA0C;
-    dw $0006,$1084,$0C63,$0421                                           ;8DCA0E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA16;
-    dw $0006,$2529,$1CE7,$0C63                                           ;8DCA18;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA20;
-    dw $0006,$35AD,$294A,$1084                                           ;8DCA22;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA2A;
-    dw $0006,$4A52,$39CE,$18C6                                           ;8DCA2C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA34;
-    dw $0006,$5AD6,$4631,$1CE7                                           ;8DCA36;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA3E;
-    dw $0006,$6F7B,$56B5,$2529                                           ;8DCA40;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA48;
-    dw Instruction_PaletteFXObject_GotoY                                 ;8DCA4A;
-    dw InstList_PaletteFXObject_OldMotherBrainFightBGLights_1            ;8DCA4C;
+    dw $0006                                                             ;8DC9BE;
+    dw $7FFF,$6318,$294A
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $6F7B,$56B5,$2529
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $5AD6,$4631,$1CE7
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $4A52,$39CE,$18C6
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $35AD,$294A,$1084
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $2529,$1CE7,$0C63
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $1084,$0C63,$0421
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $1084,$0C63,$0421
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $2529,$1CE7,$0C63
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $35AD,$294A,$1084
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $4A52,$39CE,$18C6
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $5AD6,$4631,$1CE7
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $6F7B,$56B5,$2529
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_GotoY
+    dw InstList_PaletteFXObject_OldMotherBrainFightBGLights_1
 
 InstList_PaletteFXObject_GunshipGlow_0:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DCA4E;
-    dw $01FE                                                             ;8DCA50;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$01FE                   ;8DCA4E;
 
 InstList_PaletteFXObject_GunshipGlow_1:
-    dw $0005,$0000                                                       ;8DCA52;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA56;
-    dw $0005,$0402                                                       ;8DCA58;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA5C;
-    dw $0005,$0404                                                       ;8DCA5E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA62;
-    dw $0005,$0806                                                       ;8DCA64;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA68;
-    dw $0005,$0C08                                                       ;8DCA6A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA6E;
-    dw $0005,$0C0A                                                       ;8DCA70;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA74;
-    dw $0005,$100C                                                       ;8DCA76;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA7A;
-    dw $0005,$180E                                                       ;8DCA7C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA80;
-    dw $0005,$100C                                                       ;8DCA82;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA86;
-    dw $0005,$0C0A                                                       ;8DCA88;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA8C;
-    dw $0005,$0C08                                                       ;8DCA8E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA92;
-    dw $0005,$0806                                                       ;8DCA94;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA98;
-    dw $0005,$0404                                                       ;8DCA9A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCA9E;
-    dw $0005,$0402                                                       ;8DCAA0;
+    dw $0005                                                             ;8DCA52;
+    dw $0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0005
+    dw $0402
+    dw Instruction_PaletteFXObject_Done
+    dw $0005
+    dw $0404
+    dw Instruction_PaletteFXObject_Done
+    dw $0005
+    dw $0806
+    dw Instruction_PaletteFXObject_Done
+    dw $0005
+    dw $0C08
+    dw Instruction_PaletteFXObject_Done
+    dw $0005
+    dw $0C0A
+    dw Instruction_PaletteFXObject_Done
+    dw $0005
+    dw $100C
+    dw Instruction_PaletteFXObject_Done
+    dw $0005
+    dw $180E
+    dw Instruction_PaletteFXObject_Done
+    dw $0005
+    dw $100C
+    dw Instruction_PaletteFXObject_Done
+    dw $0005
+    dw $0C0A
+    dw Instruction_PaletteFXObject_Done
+    dw $0005
+    dw $0C08
+    dw Instruction_PaletteFXObject_Done
+    dw $0005
+    dw $0806
+    dw Instruction_PaletteFXObject_Done
+    dw $0005
+    dw $0404
+    dw Instruction_PaletteFXObject_Done
+    dw $0005
+    dw $0402
     dw Instruction_PaletteFXObject_Done                                  ;8DCAA4;
     dw Instruction_PaletteFXObject_GotoY                                 ;8DCAA6;
     dw InstList_PaletteFXObject_GunshipGlow_1                            ;8DCAA8;
 
 InstList_PaletteFXObject_FadeOutZoomedOutExplodingZebes:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DCAAA;
-    dw $01E0,$0008,$2003,$0E9A,$05F9,$0596,$0133,$008E                   ;8DCAAC;
-    dw $0009,$0005                                                       ;8DCABC;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCAC0;
-    dw $0008,$2003,$01F5,$0154,$00F0,$008E,$0009,$0004                   ;8DCAC2;
-    dw $0000                                                             ;8DCAD2;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCAD4;
-    dw $0008,$0000,$0150,$00AF,$004B,$0009,$0004,$0000                   ;8DCAD6;
-    dw $0000                                                             ;8DCAE6;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCAE8;
-    dw $0008,$0000,$00AB,$000A,$0006,$0004,$0000,$0000                   ;8DCAEA;
-    dw $0000                                                             ;8DCAFA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCAFC;
-    dw $0008,$0000,$0006,$0005,$0001,$0000,$0000,$0000                   ;8DCAFE;
-    dw $0000                                                             ;8DCB0E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCB10;
-    dw $0008,$0000,$0001,$0000,$0000,$0000,$0000,$0000                   ;8DCB12;
-    dw $0000                                                             ;8DCB22;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCB24;
-    dw $0008,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;8DCB26;
-    dw $0000                                                             ;8DCB36;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCB38;
-    dw Instruction_Delete_8DC5CF                                         ;8DCB3A;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$01E0                   ;8DCAAA;
+    dw $0008
+    dw $2003,$0E9A,$05F9,$0596,$0133,$008E,$0009,$0005
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $2003,$01F5,$0154,$00F0,$008E,$0009,$0004,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $0000,$0150,$00AF,$004B,$0009,$0004,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $0000,$00AB,$000A,$0006,$0004,$0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $0000,$0006,$0005,$0001,$0000,$0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $0000,$0001,$0000,$0000,$0000,$0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_Delete_8DC5CF
 
 InstList_PaletteFXObject_WidePartOfZebesExplosion_Foreground:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DCB3C;
-    dw $0002,$0004,$7C00,$0000,$0000,$0000,$0000,$0000                   ;8DCB3E;
-    dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;8DCB4E;
-    dw $0000                                                             ;8DCB5E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCB60;
-    dw $0004,$7CA0,$7CA0,$0000,$0000,$0000,$0000,$0000                   ;8DCB62;
-    dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;8DCB72;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCB82;
-    dw $0004,$7DE0,$7DE0,$7DE0,$0000,$0000,$0000,$0000                   ;8DCB84;
-    dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;8DCB94;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCBA4;
-    dw $003C,$7DE0,$7DE0,$7DE0,$7DE0,$0000,$0000,$0000                   ;8DCBA6;
-    dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;8DCBB6;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCBC6;
-    dw $0006,$7E80,$7E80,$7E80,$7E80,$7E80,$0000,$0000                   ;8DCBC8;
-    dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;8DCBD8;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCBE8;
-    dw $0006,$7F20,$7F20,$7F20,$7F20,$7F20,$7F20,$0000                   ;8DCBEA;
-    dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;8DCBFA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCC0A;
-    dw $0006,$7FFD,$7FE9,$7FE9,$7FE9,$7FE9,$7FE9,$7FE9                   ;8DCC0C;
-    dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;8DCC1C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCC2C;
-    dw $0006,$7FFD,$7FFD,$7FF3,$7FF3,$7FF3,$7FF3,$7FF3                   ;8DCC2E;
-    dw $7FE9,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;8DCC3E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCC4E;
-    dw $0006,$7FFD,$7FFD,$7FFD,$7FF8,$7FF8,$7FF8,$7FF8                   ;8DCC50;
-    dw $7FE9,$2940,$0000,$0000,$0000,$0000,$0000,$0000                   ;8DCC60;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCC70;
-    dw $0006,$7FFD,$7FFD,$7FFD,$7FFD,$7FFD,$7FFD,$7FF8                   ;8DCC72;
-    dw $7FF8,$7FE9,$2940,$0000,$0000,$0000,$0000,$0000                   ;8DCC82;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCC92;
-    dw $0006,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DCC94;
-    dw $7FFF,$7FFF,$7FE9,$2940,$0000,$0000,$0000,$0000                   ;8DCCA4;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCCB4;
-    dw $0006,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DCCB6;
-    dw $7FFF,$7FFF,$7FFF,$7FE9,$2940,$0000,$0000,$0000                   ;8DCCC6;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCCD6;
-    dw $0006,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DCCD8;
-    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FE9,$2940,$0000,$0000                   ;8DCCE8;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCCF8;
-    dw $0006,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DCCFA;
-    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FE9,$2940,$0000                   ;8DCD0A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCD1A;
-    dw $0006,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DCD1C;
-    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FE9,$6B40                   ;8DCD2C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCD3C;
-    dw $0006,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DCD3E;
-    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FF7                   ;8DCD4E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCD5E;
-    dw Instruction_Delete_8DC5CF                                         ;8DCD60;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0002                   ;8DCB3C;
+    dw $0004
+    dw $7C00,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0004
+    dw $7CA0,$7CA0,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0004
+    dw $7DE0,$7DE0,$7DE0,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $003C
+    dw $7DE0,$7DE0,$7DE0,$7DE0,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $7E80,$7E80,$7E80,$7E80,$7E80,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $7F20,$7F20,$7F20,$7F20,$7F20,$7F20,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $7FFD,$7FE9,$7FE9,$7FE9,$7FE9,$7FE9,$7FE9,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $7FFD,$7FFD,$7FF3,$7FF3,$7FF3,$7FF3,$7FF3,$7FE9,$0000,$0000,$0000,$0000,$0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $7FFD,$7FFD,$7FFD,$7FF8,$7FF8,$7FF8,$7FF8,$7FE9,$2940,$0000,$0000,$0000,$0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $7FFD,$7FFD,$7FFD,$7FFD,$7FFD,$7FFD,$7FF8,$7FF8,$7FE9,$2940,$0000,$0000,$0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FE9,$2940,$0000,$0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FE9,$2940,$0000,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FE9,$2940,$0000,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FE9,$2940,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FE9,$6B40
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FF7
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_Delete_8DC5CF
 
 InstList_PaletteFXObject_ZebesExplosionFinale:
     dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DCD62;
-    dw $0002,$0002,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DCD64;
-    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DCD74;
-    dw $7FFF                                                             ;8DCD84;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCD86;
-    dw $0002,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DCD88;
-    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD                   ;8DCD98;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCDA8;
-    dw $0002,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DCDAA;
-    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B                   ;8DCDBA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCDCA;
-    dw $0002,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DCDCC;
-    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318                   ;8DCDDC;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCDEC;
-    dw $0002,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DCDEE;
-    dw $7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6                   ;8DCDFE;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCE0E;
-    dw $0002,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DCE10;
-    dw $7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294                   ;8DCE20;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCE30;
-    dw $0002,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DCE32;
-    dw $7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52                   ;8DCE42;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCE52;
-    dw $0002,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DCE54;
-    dw $7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210                   ;8DCE64;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCE74;
-    dw $0002,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DCE76;
-    dw $77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD                   ;8DCE86;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCE96;
-    dw $0002,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD                   ;8DCE98;
-    dw $6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B                   ;8DCEA8;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCEB8;
-    dw $0002,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B                   ;8DCEBA;
-    dw $6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529                   ;8DCECA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCEDA;
-    dw $0002,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318                   ;8DCEDC;
-    dw $5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529,$1CE7                   ;8DCEEC;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCEFC;
-    dw $0002,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6                   ;8DCEFE;
-    dw $5294,$4A52,$4210,$35AD,$2D6B,$2529,$1CE7,$14A5                   ;8DCF0E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCF1E;
-    dw $0002,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294                   ;8DCF20;
-    dw $4A52,$4210,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842                   ;8DCF30;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCF40;
-    dw $0002,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52                   ;8DCF42;
-    dw $4210,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842,$0000                   ;8DCF52;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCF62;
-    dw $0009,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52                   ;8DCF64;
-    dw $4210,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842,$0000                   ;8DCF74;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCF84;
-    dw $0009,$0000,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294                   ;8DCF86;
-    dw $4A52,$4210,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842                   ;8DCF96;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCFA6;
-    dw $0009,$0842,$0000,$7FFF,$77BD,$6F7B,$6318,$5AD6                   ;8DCFA8;
-    dw $5294,$4A52,$4210,$35AD,$2D6B,$2529,$1CE7,$14A5                   ;8DCFB8;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCFC8;
-    dw $0009,$14A5,$0842,$0000,$7FFF,$77BD,$6F7B,$6318                   ;8DCFCA;
-    dw $5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529,$1CE7                   ;8DCFDA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DCFEA;
-    dw $0009,$1CE7,$14A5,$0842,$0000,$7FFF,$77BD,$6F7B                   ;8DCFEC;
-    dw $6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529                   ;8DCFFC;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD00C;
-    dw $0009,$2529,$1CE7,$14A5,$0842,$0000,$7FFF,$77BD                   ;8DD00E;
-    dw $6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B                   ;8DD01E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD02E;
-    dw $0009,$2D6B,$2529,$1CE7,$14A5,$0842,$0000,$7FFF                   ;8DD030;
-    dw $77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD                   ;8DD040;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD050;
-    dw $0009,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842,$0000                   ;8DD052;
-    dw $7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210                   ;8DD062;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD072;
-    dw $0009,$4A52,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842                   ;8DD074;
-    dw $0000,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52                   ;8DD084;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD094;
-    dw $0009,$5294,$4A52,$35AD,$2D6B,$2529,$1CE7,$14A5                   ;8DD096;
-    dw $0842,$0000,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294                   ;8DD0A6;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD0B6;
-    dw $0009,$5AD6,$5294,$4A52,$35AD,$2D6B,$2529,$1CE7                   ;8DD0B8;
-    dw $14A5,$0842,$0000,$7FFF,$77BD,$6F7B,$6318,$5AD6                   ;8DD0C8;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD0D8;
-    dw $0009,$6318,$5AD6,$5294,$4A52,$35AD,$2D6B,$2529                   ;8DD0DA;
-    dw $1CE7,$14A5,$0842,$0000,$7FFF,$77BD,$6F7B,$6318                   ;8DD0EA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD0FA;
-    dw $0009,$6F7B,$6318,$5AD6,$5294,$4A52,$35AD,$2D6B                   ;8DD0FC;
-    dw $2529,$1CE7,$14A5,$0842,$0000,$7FFF,$77BD,$6F7B                   ;8DD10C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD11C;
-    dw $0009,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$35AD                   ;8DD11E;
-    dw $2D6B,$2529,$1CE7,$14A5,$0842,$0000,$7FFF,$77BD                   ;8DD12E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD13E;
-    dw $0009,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52                   ;8DD140;
-    dw $35AD,$2D6B,$2529,$1CE7,$14A5,$0842,$0000,$7FFF                   ;8DD150;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD160;
-    dw $0009,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52                   ;8DD162;
-    dw $4210,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842,$0000                   ;8DD172;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD182;
-    dw $0009,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294                   ;8DD184;
-    dw $4A52,$4210,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842                   ;8DD194;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD1A4;
-    dw $0009,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6                   ;8DD1A6;
-    dw $5294,$4A52,$4210,$35AD,$2D6B,$2529,$1CE7,$14A5                   ;8DD1B6;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD1C6;
-    dw $0009,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318                   ;8DD1C8;
-    dw $5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529,$1CE7                   ;8DD1D8;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD1E8;
-    dw $0009,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B                   ;8DD1EA;
-    dw $6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529                   ;8DD1FA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD20A;
-    dw $0009,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD                   ;8DD20C;
-    dw $6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B                   ;8DD21C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD22C;
-    dw $0009,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DD22E;
-    dw $77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD                   ;8DD23E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD24E;
-    dw $0009,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DD250;
-    dw $7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210                   ;8DD260;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD270;
-    dw $0009,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DD272;
-    dw $7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52                   ;8DD282;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD292;
-    dw $0009,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DD294;
-    dw $7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294                   ;8DD2A4;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD2B4;
-    dw $0009,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DD2B6;
-    dw $7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6                   ;8DD2C6;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD2D6;
-    dw $0009,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DD2D8;
-    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318                   ;8DD2E8;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD2F8;
-    dw $0009,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DD2FA;
-    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B                   ;8DD30A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD31A;
-    dw $0009,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DD31C;
-    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD                   ;8DD32C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD33C;
-    dw $0009,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DD33E;
-    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DD34E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD35E;
-    dw Instruction_Delete_8DC5CF                                         ;8DD360;
+    dw $0002
+    dw $0002
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529,$1CE7
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529,$1CE7,$14A5
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $0000,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $0842,$0000,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529,$1CE7,$14A5
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $14A5,$0842,$0000,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529,$1CE7
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $1CE7,$14A5,$0842,$0000,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $2529,$1CE7,$14A5,$0842,$0000,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $2D6B,$2529,$1CE7,$14A5,$0842,$0000,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $35AD,$2D6B,$2529,$1CE7,$14A5,$0842,$0000,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $4A52,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842,$0000,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $5294,$4A52,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842,$0000,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $5AD6,$5294,$4A52,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842,$0000,$7FFF,$77BD,$6F7B,$6318,$5AD6
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $6318,$5AD6,$5294,$4A52,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842,$0000,$7FFF,$77BD,$6F7B,$6318
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $6F7B,$6318,$5AD6,$5294,$4A52,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842,$0000,$7FFF,$77BD,$6F7B
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842,$0000,$7FFF,$77BD
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842,$0000,$7FFF
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529,$1CE7,$14A5,$0842
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529,$1CE7,$14A5
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529,$1CE7
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B,$2529
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD,$2D6B
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210,$35AD
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52,$4210
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294,$4A52
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6,$5294
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318,$5AD6
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B,$6318
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD,$6F7B
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$77BD
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_Delete_8DC5CF
 
 InstList_PaletteFXObject_WidePartOfZebesExplosion_Background:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DD362;
-    dw $0022                                                             ;8DD364;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0022                   ;8DD362;
     dw Instruction_PaletteFXObject_GotoY                                 ;8DD366;
     dw InstList_PaletteFXObject_Common_ZebesExplosion                    ;8DD368;
 
 InstList_PaletteFXObject_WhiteOutSpaceDuringZebesExplosion:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DD36A;
-    dw $0000                                                             ;8DD36C;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0000                   ;8DD36A;
 
 InstList_PaletteFXObject_Common_ZebesExplosion:
-    dw $000E,$0000                                                       ;8DD36E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD372;
-    dw $000E,$0842                                                       ;8DD374;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD378;
-    dw $000E,$1084                                                       ;8DD37A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD37E;
-    dw $000E,$1CE7                                                       ;8DD380;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD384;
-    dw $000E,$2529                                                       ;8DD386;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD38A;
-    dw $000E,$2D6B                                                       ;8DD38C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD390;
-    dw $000E,$35AD                                                       ;8DD392;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD396;
-    dw $000E,$3DEF                                                       ;8DD398;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD39C;
-    dw $000E,$4A52                                                       ;8DD39E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD3A2;
-    dw $000E,$5294                                                       ;8DD3A4;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD3A8;
-    dw $000E,$5AD6                                                       ;8DD3AA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD3AE;
-    dw $000E,$6318                                                       ;8DD3B0;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD3B4;
-    dw $000E,$6B5A                                                       ;8DD3B6;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD3BA;
-    dw $000E,$77BD                                                       ;8DD3BC;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD3C0;
-    dw $000E,$7FFF                                                       ;8DD3C2;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD3C6;
-    dw Instruction_Delete_8DC5CF                                         ;8DD3C8;
+    dw $000E                                                             ;8DD36E;
+    dw $0000
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $0842
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $1084
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $1CE7
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $2529
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $2D6B
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $35AD
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $3DEF
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $4A52
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $5294
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $5AD6
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $6318
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $6B5A
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $77BD
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $7FFF
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_Delete_8DC5CF
 
 InstList_PaletteFXObject_ZebesExplosionPlanetAfterGlow_0:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DD3CA;
-    dw $01C2                                                             ;8DD3CC;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$01C2                   ;8DD3CA;
 
 InstList_PaletteFXObject_ZebesExplosionPlanetAfterGlow_1:
-    dw $0010,$6B9C,$5EBB,$49FA,$3D58,$2CD4,$408F,$288A                   ;8DD3CE;
-    dw $1C47                                                             ;8DD3DE;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD3E0;
-    dw $0010,$77FF,$6B1E,$565D,$49BB,$3516,$44B0,$288B                   ;8DD3E2;
-    dw $1C48                                                             ;8DD3F2;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD3F4;
-    dw $0010,$7FFF,$777F,$62BF,$561E,$3937,$48D1,$288C                   ;8DD3F6;
-    dw $1C49                                                             ;8DD406;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD408;
-    dw $0010,$7FFF,$7FDF,$7F7F,$6ABF,$3D58,$5113,$2CAE                   ;8DD40A;
-    dw $206B                                                             ;8DD41A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD41C;
-    dw $0010,$7FFF,$777F,$62BF,$561E,$3937,$48D1,$288C                   ;8DD41E;
-    dw $1C49                                                             ;8DD42E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD430;
-    dw $0010,$77FF,$6B1E,$565D,$49BB,$3516,$44B0,$288B                   ;8DD432;
-    dw $1C48                                                             ;8DD442;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD444;
-    dw Instruction_PaletteFXObject_GotoY                                 ;8DD446;
-    dw InstList_PaletteFXObject_ZebesExplosionPlanetAfterGlow_1          ;8DD448;
+    dw $0010                                                             ;8DD3CE;
+    dw $6B9C,$5EBB,$49FA,$3D58,$2CD4,$408F,$288A,$1C47
+    dw Instruction_PaletteFXObject_Done
+    dw $0010
+    dw $77FF,$6B1E,$565D,$49BB,$3516,$44B0,$288B,$1C48
+    dw Instruction_PaletteFXObject_Done
+    dw $0010
+    dw $7FFF,$777F,$62BF,$561E,$3937,$48D1,$288C,$1C49
+    dw Instruction_PaletteFXObject_Done
+    dw $0010
+    dw $7FFF,$7FDF,$7F7F,$6ABF,$3D58,$5113,$2CAE,$206B
+    dw Instruction_PaletteFXObject_Done
+    dw $0010
+    dw $7FFF,$777F,$62BF,$561E,$3937,$48D1,$288C,$1C49
+    dw Instruction_PaletteFXObject_Done
+    dw $0010
+    dw $77FF,$6B1E,$565D,$49BB,$3516,$44B0,$288B,$1C48
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_GotoY
+    dw InstList_PaletteFXObject_ZebesExplosionPlanetAfterGlow_1
 
 InstList_PaletteFXObject_ExplodingZebesLava_0:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DD44A;
-    dw $0080                                                             ;8DD44C;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0080                   ;8DD44A;
 
 InstList_PaletteFXObject_ExplodingZebesLava_1:
-    dw $0009,$0012                                                       ;8DD44E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD452;
-    dw $0008,$000F                                                       ;8DD454;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD458;
-    dw $0007,$000C                                                       ;8DD45A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD45E;
-    dw $0006,$0009                                                       ;8DD460;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD464;
-    dw $0005,$0006                                                       ;8DD466;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD46A;
-    dw $0005,$0003                                                       ;8DD46C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD470;
-    dw $0006,$0006                                                       ;8DD472;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD476;
-    dw $0007,$0009                                                       ;8DD478;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD47C;
-    dw $0008,$000C                                                       ;8DD47E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD482;
-    dw $0009,$000F                                                       ;8DD484;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD488;
-    dw Instruction_PaletteFXObject_GotoY                                 ;8DD48A;
-    dw InstList_PaletteFXObject_ExplodingZebesLava_1                     ;8DD48C;
+    dw $0009                                                             ;8DD44E;
+    dw $0012
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $000F
+    dw Instruction_PaletteFXObject_Done
+    dw $0007
+    dw $000C
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $0009
+    dw Instruction_PaletteFXObject_Done
+    dw $0005
+    dw $0006
+    dw Instruction_PaletteFXObject_Done
+    dw $0005
+    dw $0003
+    dw Instruction_PaletteFXObject_Done
+    dw $0006
+    dw $0006
+    dw Instruction_PaletteFXObject_Done
+    dw $0007
+    dw $0009
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $000C
+    dw Instruction_PaletteFXObject_Done
+    dw $0009
+    dw $000F
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_GotoY
+    dw InstList_PaletteFXObject_ExplodingZebesLava_1
 
 InstList_PaletteFXObject_FadeOutExplodingZebesCrust:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DD48E;
-    dw $0082,$0014,$0864,$0884,$0CA6,$10C7,$0CC8,$0D07                   ;8DD490;
-    dw $0D0A,$0CEC,$0D2C,$112C,$118E,$0D70,$11F4,$1633                   ;8DD4A0;
-    dw $1698                                                             ;8DD4B0;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD4B2;
-    dw $0014,$0443,$0463,$0885,$0CA6,$08A7,$08E6,$08E8                   ;8DD4B4;
-    dw $08CA,$08EA,$0CEA,$0D4C,$092E,$0DB1,$11D0,$1235                   ;8DD4C4;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD4D4;
-    dw $0014,$0443,$0463,$0864,$0C85,$0886,$08C5,$08C7                   ;8DD4D6;
-    dw $08A9,$08C9,$0CC9,$0D2A,$090C,$0D6F,$0D8E,$0DF2                   ;8DD4E6;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD4F6;
-    dw $0014,$0422,$0442,$0463,$0864,$0465,$04A4,$04A6                   ;8DD4F8;
-    dw $0487,$04A7,$08A7,$08E8,$04CA,$092C,$0D4B,$0D8F                   ;8DD508;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD518;
-    dw $0014,$0422,$0442,$0443,$0863,$0464,$0483,$0485                   ;8DD51A;
-    dw $0466,$0486,$0886,$08C7,$04A8,$08EA,$0909,$094C                   ;8DD52A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD53A;
-    dw $0014,$0021,$0021,$0422,$0442,$0443,$0462,$0463                   ;8DD53C;
-    dw $0444,$0464,$0464,$0485,$0486,$04A7,$04C7,$04E9                   ;8DD54C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD55C;
-    dw $0014,$0001,$0021,$0021,$0421,$0022,$0041,$0042                   ;8DD55E;
-    dw $0023,$0043,$0443,$0463,$0044,$0465,$0484,$04A6                   ;8DD56E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD57E;
-    dw $0014,$0000,$0000,$0000,$0000,$0001,$0020,$0021                   ;8DD580;
-    dw $0001,$0021,$0021,$0021,$0022,$0022,$0042,$0043                   ;8DD590;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD5A0;
-    dw Instruction_Delete_8DC5CF                                         ;8DD5A2;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0082                   ;8DD48E;
+    dw $0014
+    dw $0864,$0884,$0CA6,$10C7,$0CC8,$0D07,$0D0A,$0CEC,$0D2C,$112C,$118E,$0D70,$11F4,$1633,$1698
+    dw Instruction_PaletteFXObject_Done
+    dw $0014
+    dw $0443,$0463,$0885,$0CA6,$08A7,$08E6,$08E8,$08CA,$08EA,$0CEA,$0D4C,$092E,$0DB1,$11D0,$1235
+    dw Instruction_PaletteFXObject_Done
+    dw $0014
+    dw $0443,$0463,$0864,$0C85,$0886,$08C5,$08C7,$08A9,$08C9,$0CC9,$0D2A,$090C,$0D6F,$0D8E,$0DF2
+    dw Instruction_PaletteFXObject_Done
+    dw $0014
+    dw $0422,$0442,$0463,$0864,$0465,$04A4,$04A6,$0487,$04A7,$08A7,$08E8,$04CA,$092C,$0D4B,$0D8F
+    dw Instruction_PaletteFXObject_Done
+    dw $0014
+    dw $0422,$0442,$0443,$0863,$0464,$0483,$0485,$0466,$0486,$0886,$08C7,$04A8,$08EA,$0909,$094C
+    dw Instruction_PaletteFXObject_Done
+    dw $0014
+    dw $0021,$0021,$0422,$0442,$0443,$0462,$0463,$0444,$0464,$0464,$0485,$0486,$04A7,$04C7,$04E9
+    dw Instruction_PaletteFXObject_Done
+    dw $0014
+    dw $0001,$0021,$0021,$0421,$0022,$0041,$0042,$0023,$0043,$0443,$0463,$0044,$0465,$0484,$04A6
+    dw Instruction_PaletteFXObject_Done
+    dw $0014
+    dw $0000,$0000,$0000,$0000,$0001,$0020,$0021,$0001,$0021,$0021,$0021,$0022,$0022,$0042,$0043
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_Delete_8DC5CF
 
 InstList_PaletteFXObject_FadeOutExplodingZebesGreyClouds:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DD5A4;
-    dw $00A2,$000E,$0842,$0C63,$1084,$14A5,$18C6,$1CE7                   ;8DD5A6;
-    dw $2108,$2529,$2D6B,$318C,$39CE,$4631,$4A52,$5294                   ;8DD5B6;
-    dw $6318                                                             ;8DD5C6;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD5C8;
-    dw $000E,$0421,$0842,$0C63,$1084,$14A5,$18C6,$1CE7                   ;8DD5CA;
-    dw $1CE7,$2529,$294A,$318C,$39CE,$3DEF,$4631,$56B5                   ;8DD5DA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD5EA;
-    dw $000E,$0421,$0842,$0C63,$0C63,$1084,$14A5,$18C6                   ;8DD5EC;
-    dw $18C6,$2108,$2529,$294A,$318C,$35AD,$3DEF,$4A52                   ;8DD5FC;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD60C;
-    dw $000E,$0421,$0421,$0842,$0C63,$0C63,$1084,$14A5                   ;8DD60E;
-    dw $14A5,$18C6,$1CE7,$2108,$294A,$2D6B,$318C,$3DEF                   ;8DD61E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD62E;
-    dw $000E,$0421,$0421,$0842,$0842,$0C63,$0C63,$1084                   ;8DD630;
-    dw $1084,$14A5,$18C6,$1CE7,$2108,$2529,$294A,$318C                   ;8DD640;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD650;
-    dw $000E,$0000,$0421,$0421,$0421,$0842,$0842,$0C63                   ;8DD652;
-    dw $0C63,$1084,$1084,$14A5,$18C6,$18C6,$1CE7,$2529                   ;8DD662;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD672;
-    dw $000E,$0000,$0000,$0421,$0421,$0421,$0421,$0842                   ;8DD674;
-    dw $0842,$0842,$0C63,$0C63,$1084,$1084,$14A5,$18C6                   ;8DD684;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD694;
-    dw $000E,$0000,$0000,$0000,$0000,$0000,$0000,$0421                   ;8DD696;
-    dw $0421,$0421,$0421,$0421,$0842,$0842,$0842,$0C63                   ;8DD6A6;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD6B6;
-    dw Instruction_Delete_8DC5CF                                         ;8DD6B8;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$00A2                   ;8DD5A4;
+    dw $000E
+    dw $0842,$0C63,$1084,$14A5,$18C6,$1CE7,$2108,$2529,$2D6B,$318C,$39CE,$4631,$4A52,$5294,$6318
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $0421,$0842,$0C63,$1084,$14A5,$18C6,$1CE7,$1CE7,$2529,$294A,$318C,$39CE,$3DEF,$4631,$56B5
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $0421,$0842,$0C63,$0C63,$1084,$14A5,$18C6,$18C6,$2108,$2529,$294A,$318C,$35AD,$3DEF,$4A52
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $0421,$0421,$0842,$0C63,$0C63,$1084,$14A5,$14A5,$18C6,$1CE7,$2108,$294A,$2D6B,$318C,$3DEF
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $0421,$0421,$0842,$0842,$0C63,$0C63,$1084,$1084,$14A5,$18C6,$1CE7,$2108,$2529,$294A,$318C
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $0000,$0421,$0421,$0421,$0842,$0842,$0C63,$0C63,$1084,$1084,$14A5,$18C6,$18C6,$1CE7,$2529
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $0000,$0000,$0421,$0421,$0421,$0421,$0842,$0842,$0842,$0C63,$0C63,$1084,$1084,$14A5,$18C6
+    dw Instruction_PaletteFXObject_Done
+    dw $000E
+    dw $0000,$0000,$0000,$0000,$0000,$0000,$0421,$0421,$0421,$0421,$0421,$0842,$0842,$0842,$0C63
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_Delete_8DC5CF
 
 InstList_PaletteFXObject_GunshipEmergingFromZebesExplosion:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DD6BA;
-    dw $00A0,$0018,$0000,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DD6BC;
-    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DD6CC;
-    dw $7FFF,$7FFF                                                       ;8DD6DC;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD6E0;
-    dw $0018,$0000,$6F7B,$6B7B,$6B5A,$6B5A,$6B7B,$6B7B                   ;8DD6E2;
-    dw $6B7B,$6B5B,$6F7A,$6B7A,$6B7A,$6F7B,$6F5A,$6B5A                   ;8DD6F2;
-    dw $6B5B                                                             ;8DD702;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD704;
-    dw $0018,$0000,$5F18,$5AF8,$5AD6,$5AD6,$5B18,$5AF7                   ;8DD706;
-    dw $5AF7,$5AD7,$5F16,$5AF6,$5AF6,$5EF7,$5ED6,$5AD6                   ;8DD716;
-    dw $5AD7                                                             ;8DD726;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD728;
-    dw $0018,$0000,$4EB5,$4694,$4652,$4631,$4A94,$4674                   ;8DD72A;
-    dw $4673,$4653,$4EB1,$4A71,$4A71,$4E73,$4E52,$4A52                   ;8DD73A;
-    dw $4A33                                                             ;8DD74A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD74C;
-    dw $0018,$0000,$4231,$3611,$35CE,$35AD,$3631,$3610                   ;8DD74E;
-    dw $35F0,$35CF,$3E2D,$3A0D,$35ED,$41EF,$3DCE,$39AD                   ;8DD75E;
-    dw $35AF                                                             ;8DD76E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD770;
-    dw $0018,$0000,$31CE,$21AD,$214A,$2108,$25AD,$218D                   ;8DD772;
-    dw $216C,$214B,$2DC8,$2988,$2568,$316B,$2D4A,$2929                   ;8DD782;
-    dw $250B                                                             ;8DD792;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD794;
-    dw $0018,$0000,$216B,$112A,$10C6,$1084,$154A,$1109                   ;8DD796;
-    dw $10E8,$10C7,$1D64,$1904,$14E4,$20E7,$1CC6,$18A5                   ;8DD7A6;
-    dw $1487                                                             ;8DD7B6;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD7B8;
-    dw $0018,$0000,$1508,$00C7,$0042,$0000,$04E7,$00A6                   ;8DD7BA;
-    dw $0085,$0043,$1100,$08A0,$0460,$1484,$0C42,$0821                   ;8DD7CA;
-    dw $0404                                                             ;8DD7DA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD7DC;
-    dw $0018,$0000,$1508,$00C7,$0042,$0000,$04E7,$00A6                   ;8DD7DE;
-    dw $0085,$0043,$1100,$08A0,$0460,$1484,$0C42,$0821                   ;8DD7EE;
-    dw $0000                                                             ;8DD7FE;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD800;
-    dw $0018,$0000,$1D6B,$010A,$0063,$0000,$094A,$00E8                   ;8DD802;
-    dw $00C7,$0064,$1560,$0CE0,$0880,$1CC6,$1063,$0C42                   ;8DD812;
-    dw $0000                                                             ;8DD822;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD824;
-    dw $0018,$0000,$25CE,$014C,$0064,$0000,$098C,$012B                   ;8DD826;
-    dw $00E9,$0086,$1DE0,$1120,$08C0,$24E7,$1884,$1042                   ;8DD836;
-    dw $0000                                                             ;8DD846;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD848;
-    dw $0018,$0000,$2E31,$018F,$0085,$0000,$0DEF,$016D                   ;8DD84A;
-    dw $012B,$00A7,$2240,$1560,$0CE0,$2D29,$1CA5,$1463                   ;8DD85A;
-    dw $0000                                                             ;8DD86A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD86C;
-    dw $0018,$0000,$3295,$05F1,$00A7,$0000,$0E32,$01AF                   ;8DD86E;
-    dw $014C,$00E9,$2AA0,$19C0,$0D00,$314A,$20C6,$1463                   ;8DD87E;
-    dw $0000                                                             ;8DD88E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD890;
-    dw $0018,$0000,$3AF8,$0634,$00C8,$0000,$1295,$01F1                   ;8DD892;
-    dw $018E,$010A,$2F00,$1E00,$1120,$398C,$24E7,$1884                   ;8DD8A2;
-    dw $0000                                                             ;8DD8B2;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD8B4;
-    dw $0018,$0000,$435B,$0676,$00C9,$0000,$12D7,$0234                   ;8DD8B6;
-    dw $01B0,$012C,$3780,$2240,$1160,$41AD,$2D08,$1C84                   ;8DD8C6;
-    dw $0000                                                             ;8DD8D6;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD8D8;
-    dw $0018,$0000,$4BBE,$06B9,$00EA,$0000,$173A,$0276                   ;8DD8DA;
-    dw $01F2,$014D,$3BE0,$2680,$1580,$49EF,$3129,$20A5                   ;8DD8EA;
-    dw $0000                                                             ;8DD8FA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD8FC;
-    dw Instruction_Delete_8DC5CF                                         ;8DD8FE;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$00A0                   ;8DD6BA;
+    dw $0018
+    dw $0000,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF
+    dw Instruction_PaletteFXObject_Done
+    dw $0018
+    dw $0000,$6F7B,$6B7B,$6B5A,$6B5A,$6B7B,$6B7B,$6B7B,$6B5B,$6F7A,$6B7A,$6B7A,$6F7B,$6F5A,$6B5A,$6B5B
+    dw Instruction_PaletteFXObject_Done
+    dw $0018
+    dw $0000,$5F18,$5AF8,$5AD6,$5AD6,$5B18,$5AF7,$5AF7,$5AD7,$5F16,$5AF6,$5AF6,$5EF7,$5ED6,$5AD6,$5AD7
+    dw Instruction_PaletteFXObject_Done
+    dw $0018
+    dw $0000,$4EB5,$4694,$4652,$4631,$4A94,$4674,$4673,$4653,$4EB1,$4A71,$4A71,$4E73,$4E52,$4A52,$4A33
+    dw Instruction_PaletteFXObject_Done
+    dw $0018
+    dw $0000,$4231,$3611,$35CE,$35AD,$3631,$3610,$35F0,$35CF,$3E2D,$3A0D,$35ED,$41EF,$3DCE,$39AD,$35AF
+    dw Instruction_PaletteFXObject_Done
+    dw $0018
+    dw $0000,$31CE,$21AD,$214A,$2108,$25AD,$218D,$216C,$214B,$2DC8,$2988,$2568,$316B,$2D4A,$2929,$250B
+    dw Instruction_PaletteFXObject_Done
+    dw $0018
+    dw $0000,$216B,$112A,$10C6,$1084,$154A,$1109,$10E8,$10C7,$1D64,$1904,$14E4,$20E7,$1CC6,$18A5,$1487
+    dw Instruction_PaletteFXObject_Done
+    dw $0018
+    dw $0000,$1508,$00C7,$0042,$0000,$04E7,$00A6,$0085,$0043,$1100,$08A0,$0460,$1484,$0C42,$0821,$0404
+    dw Instruction_PaletteFXObject_Done
+    dw $0018
+    dw $0000,$1508,$00C7,$0042,$0000,$04E7,$00A6,$0085,$0043,$1100,$08A0,$0460,$1484,$0C42,$0821,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0018
+    dw $0000,$1D6B,$010A,$0063,$0000,$094A,$00E8,$00C7,$0064,$1560,$0CE0,$0880,$1CC6,$1063,$0C42,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0018
+    dw $0000,$25CE,$014C,$0064,$0000,$098C,$012B,$00E9,$0086,$1DE0,$1120,$08C0,$24E7,$1884,$1042,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0018
+    dw $0000,$2E31,$018F,$0085,$0000,$0DEF,$016D,$012B,$00A7,$2240,$1560,$0CE0,$2D29,$1CA5,$1463,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0018
+    dw $0000,$3295,$05F1,$00A7,$0000,$0E32,$01AF,$014C,$00E9,$2AA0,$19C0,$0D00,$314A,$20C6,$1463,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0018
+    dw $0000,$3AF8,$0634,$00C8,$0000,$1295,$01F1,$018E,$010A,$2F00,$1E00,$1120,$398C,$24E7,$1884,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0018
+    dw $0000,$435B,$0676,$00C9,$0000,$12D7,$0234,$01B0,$012C,$3780,$2240,$1160,$41AD,$2D08,$1C84,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw $0018
+    dw $0000,$4BBE,$06B9,$00EA,$0000,$173A,$0276,$01F2,$014D,$3BE0,$2680,$1580,$49EF,$3129,$20A5,$0000
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_Delete_8DC5CF
 
 InstList_PaletteFXObject_HyperBeam_0:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DD900;
-    dw $01C2                                                             ;8DD902;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$01C2                   ;8DD900;
 
 InstList_PaletteFXObject_HyperBeam_1:
-    dw $0002,$7FFF,$661F,$351F,$001F,$673F,$4E7F,$319F                   ;8DD904;
-    dw $18DF                                                             ;8DD914;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD916;
-    dw $0002,$7FFF,$36BD,$1D9B,$00D9,$6B9F,$4F3F,$2EDF                   ;8DD918;
-    dw $0E7F                                                             ;8DD928;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD92A;
-    dw $0002,$7FFF,$033B,$0216,$0173,$6BFF,$4BFF,$2BFF                   ;8DD92C;
-    dw $03FF                                                             ;8DD93C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD93E;
-    dw $0002,$7FFF,$1F8E,$164B,$0D8A,$6BFD,$4BF9,$2BF5                   ;8DD940;
-    dw $03F0                                                             ;8DD950;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD952;
-    dw $0002,$7FFF,$3BE0,$2680,$1580,$6BFA,$4BF2,$2BEA                   ;8DD954;
-    dw $03E0                                                             ;8DD964;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD966;
-    dw $0002,$7FFF,$5F60,$4A40,$3540,$77B4,$5F8E,$4B28                   ;8DD968;
-    dw $3301                                                             ;8DD978;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD97A;
-    dw $0002,$7FFF,$7EC0,$6DE0,$54E0,$7F6E,$730A,$6665                   ;8DD97C;
-    dw $5E22                                                             ;8DD98C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD98E;
-    dw $0002,$7FFF,$7D70,$650B,$4486,$7F37,$7A75,$71B2                   ;8DD990;
-    dw $652E                                                             ;8DD9A0;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD9A2;
-    dw $0002,$7FFF,$7C1F,$5816,$300C,$7EDF,$7DDF,$7CDF                   ;8DD9A4;
-    dw $681A                                                             ;8DD9B4;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD9B6;
-    dw $0002,$7FFF,$711F,$489B,$1816,$731F,$663F,$593F                   ;8DD9B8;
-    dw $407D                                                             ;8DD9C8;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD9CA;
-    dw Instruction_PaletteFXObject_GotoY                                 ;8DD9CC;
-    dw InstList_PaletteFXObject_HyperBeam_1                              ;8DD9CE;
+    dw $0002                                                             ;8DD904;
+    dw $7FFF,$661F,$351F,$001F,$673F,$4E7F,$319F,$18DF
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$36BD,$1D9B,$00D9,$6B9F,$4F3F,$2EDF,$0E7F
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$033B,$0216,$0173,$6BFF,$4BFF,$2BFF,$03FF
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$1F8E,$164B,$0D8A,$6BFD,$4BF9,$2BF5,$03F0
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$3BE0,$2680,$1580,$6BFA,$4BF2,$2BEA,$03E0
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$5F60,$4A40,$3540,$77B4,$5F8E,$4B28,$3301
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$7EC0,$6DE0,$54E0,$7F6E,$730A,$6665,$5E22
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$7D70,$650B,$4486,$7F37,$7A75,$71B2,$652E
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$7C1F,$5816,$300C,$7EDF,$7DDF,$7CDF,$681A
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $7FFF,$711F,$489B,$1816,$731F,$663F,$593F,$407D
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_GotoY
+    dw InstList_PaletteFXObject_HyperBeam_1
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_PaletteFXObject_8DD9D0:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DD9D0;
-    dw $00A0,$0002,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DD9D2;
-    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DD9E2;
-    dw $7FFF,$7FFF                                                       ;8DD9F2;
-    dw Instruction_PaletteFXObject_Done                                  ;8DD9F6;
-    dw $0002,$739C,$77BD,$73BD,$73BD,$739C,$77BD,$73BD                   ;8DD9F8;
-    dw $73BD,$73BD,$77BC,$77BC,$77BC,$77BD,$77BD,$77BD                   ;8DDA08;
-    dw $77BD                                                             ;8DDA18;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDA1A;
-    dw $0002,$6B5A,$6F9C,$6B7B,$6B7B,$6B5A,$6F7B,$6B7B                   ;8DDA1C;
-    dw $6B7B,$6B7B,$6F9A,$6F7A,$6F7A,$6F7B,$6F7B,$6F7B                   ;8DDA2C;
-    dw $739C                                                             ;8DDA3C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDA3E;
-    dw $0002,$6318,$675A,$635A,$6339,$6318,$675A,$635A                   ;8DDA40;
-    dw $6339,$6339,$6758,$6758,$6738,$6739,$6739,$6739                   ;8DDA50;
-    dw $6B5A                                                             ;8DDA60;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDA62;
-    dw $0002,$5AD6,$6339,$5B18,$5AF7,$5AD6,$5F18,$5B18                   ;8DDA64;
-    dw $5AF8,$5AF7,$5F36,$5F16,$5EF6,$62F7,$5EF7,$5EF7                   ;8DDA74;
-    dw $6739                                                             ;8DDA84;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDA86;
-    dw $0002,$5294,$5AF7,$52D7,$52B5,$5294,$56F7,$52D7                   ;8DDA88;
-    dw $52D6,$52B6,$5AF4,$56D4,$56B4,$5AD6,$56B5,$56B5                   ;8DDA98;
-    dw $5EF7                                                             ;8DDAA8;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDAAA;
-    dw $0002,$4A52,$52D6,$4AB5,$4A73,$4A52,$4EB5,$4AB5                   ;8DDAAC;
-    dw $4A94,$4A74,$52D2,$4EB2,$4E72,$5294,$4E73,$4E73                   ;8DDABC;
-    dw $5AD6                                                             ;8DDACC;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDACE;
-    dw $0002,$4210,$4A94,$4274,$4231,$4210,$4694,$4273                   ;8DDAD0;
-    dw $4252,$4232,$4A90,$4670,$4630,$4A52,$4631,$4631                   ;8DDAE0;
-    dw $5294                                                             ;8DDAF0;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDAF2;
-    dw $0002,$39CE,$4673,$3A32,$39F0,$39CE,$3E52,$3A32                   ;8DDAF4;
-    dw $3A11,$3A10,$426E,$3E2E,$3E0E,$4610,$41EF,$3DEF                   ;8DDB04;
-    dw $4E73                                                             ;8DDB14;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDB16;
-    dw $0002,$318C,$3E31,$3211,$31AE,$318C,$3631,$3210                   ;8DDB18;
-    dw $31CF,$31CE,$3A2C,$360C,$35CC,$3DCE,$39AD,$35AD                   ;8DDB28;
-    dw $4631                                                             ;8DDB38;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDB3A;
-    dw $0002,$294A,$3610,$29CF,$296C,$294A,$2DEF,$29CF                   ;8DDB3C;
-    dw $29AD,$298D,$360A,$2DCA,$2D8A,$35AD,$316B,$2D6B                   ;8DDB4C;
-    dw $4210                                                             ;8DDB5C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDB5E;
-    dw Instruction_Delete_8DC5CF                                         ;8DDB60;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$00A0                   ;8DD9D0;
+    dw $0002
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $739C,$77BD,$73BD,$73BD,$739C,$77BD,$73BD,$73BD,$73BD,$77BC,$77BC,$77BC,$77BD,$77BD,$77BD,$77BD
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $6B5A,$6F9C,$6B7B,$6B7B,$6B5A,$6F7B,$6B7B,$6B7B,$6B7B,$6F9A,$6F7A,$6F7A,$6F7B,$6F7B,$6F7B,$739C
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $6318,$675A,$635A,$6339,$6318,$675A,$635A,$6339,$6339,$6758,$6758,$6738,$6739,$6739,$6739,$6B5A
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $5AD6,$6339,$5B18,$5AF7,$5AD6,$5F18,$5B18,$5AF8,$5AF7,$5F36,$5F16,$5EF6,$62F7,$5EF7,$5EF7,$6739
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $5294,$5AF7,$52D7,$52B5,$5294,$56F7,$52D7,$52D6,$52B6,$5AF4,$56D4,$56B4,$5AD6,$56B5,$56B5,$5EF7
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $4A52,$52D6,$4AB5,$4A73,$4A52,$4EB5,$4AB5,$4A94,$4A74,$52D2,$4EB2,$4E72,$5294,$4E73,$4E73,$5AD6
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $4210,$4A94,$4274,$4231,$4210,$4694,$4273,$4252,$4232,$4A90,$4670,$4630,$4A52,$4631,$4631,$5294
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $39CE,$4673,$3A32,$39F0,$39CE,$3E52,$3A32,$3A11,$3A10,$426E,$3E2E,$3E0E,$4610,$41EF,$3DEF,$4E73
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $318C,$3E31,$3211,$31AE,$318C,$3631,$3210,$31CF,$31CE,$3A2C,$360C,$35CC,$3DCE,$39AD,$35AD,$4631
+    dw Instruction_PaletteFXObject_Done
+    dw $0002
+    dw $294A,$3610,$29CF,$296C,$294A,$2DEF,$29CF,$29AD,$298D,$360A,$2DCA,$2D8A,$35AD,$316B,$2D6B,$4210
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_Delete_8DC5CF
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_PaletteFXObject_SamusLoading_PowerSuit_0:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DDB62;
-    dw $0180                                                             ;8DDB64;
-    dw Instruction_PaletteFXObject_TimerInY                              ;8DDB66;
-    db $24                                                               ;8DDB68;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0180                   ;8DDB62;
+    dw Instruction_PaletteFXObject_TimerInY : db $24                     ;8DDB66;
 
 InstList_PaletteFXObject_SamusLoading_PowerSuit_1:
-    dw $0003,$3800,$0108,$03BD,$1405,$3BE0,$21A8,$579F                   ;8DDB69;
-    dw $4AD2,$3A4E,$00BB,$02B5,$016B,$0252,$1104,$0074                   ;8DDB79;
-    dw $000D                                                             ;8DDB89;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDB8B;
-    dw $0003,$0000,$52AE,$5FBD,$65E5,$7FE0,$7388,$7FFF                   ;8DDB8D;
-    dw $7FF2,$7FEE,$569B,$5F55,$5E0B,$53F6,$62E4,$5254                   ;8DDB9D;
-    dw $51ED                                                             ;8DDBAD;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDBAF;
-    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero         ;8DDBB1;
-    dw InstList_PaletteFXObject_SamusLoading_PowerSuit_1                 ;8DDBB3;
-    dw Instruction_PaletteFXObject_TimerInY                              ;8DDBB5;
-    db $03                                                               ;8DDBB7;
+    dw $0003                                                             ;8DDB69;
+    dw $3800,$0108,$03BD,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$02B5,$016B,$0252,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $0000,$52AE,$5FBD,$65E5,$7FE0,$7388,$7FFF,$7FF2,$7FEE,$569B,$5F55,$5E0B,$53F6,$62E4,$5254,$51ED
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero
+    dw InstList_PaletteFXObject_SamusLoading_PowerSuit_1
+    dw Instruction_PaletteFXObject_TimerInY : db $03
 
 InstList_PaletteFXObject_SamusLoading_PowerSuit_2:
-    dw $0003,$3800,$0108,$03BD,$1405,$3BE0,$21A8,$579F                   ;8DDBB8;
-    dw $4AD2,$3A4E,$00BB,$02B5,$016B,$0252,$1104,$0074                   ;8DDBC8;
-    dw $000D                                                             ;8DDBD8;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDBDA;
-    dw $0003,$0000,$52AE,$5FBD,$65E5,$7FE0,$7388,$7FFF                   ;8DDBDC;
-    dw $7FF2,$7FEE,$569B,$5F55,$5E0B,$53F6,$62E4,$5254                   ;8DDBEC;
-    dw $51ED                                                             ;8DDBFC;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDBFE;
-    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero         ;8DDC00;
-    dw InstList_PaletteFXObject_SamusLoading_PowerSuit_2                 ;8DDC02;
-    dw Instruction_PaletteFXObject_TimerInY                              ;8DDC04;
-    db $03                                                               ;8DDC06;
+    dw $0003                                                             ;8DDBB8;
+    dw $3800,$0108,$03BD,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$02B5,$016B,$0252,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $0000,$52AE,$5FBD,$65E5,$7FE0,$7388,$7FFF,$7FF2,$7FEE,$569B,$5F55,$5E0B,$53F6,$62E4,$5254,$51ED
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero
+    dw InstList_PaletteFXObject_SamusLoading_PowerSuit_2
+    dw Instruction_PaletteFXObject_TimerInY : db $03
 
 InstList_PaletteFXObject_SamusLoading_PowerSuit_3:
-    dw $0003,$3800,$0108,$03BD,$1405,$3BE0,$21A8,$579F                   ;8DDC07;
-    dw $4AD2,$3A4E,$00BB,$02B5,$016B,$0252,$1104,$0074                   ;8DDC17;
-    dw $000D                                                             ;8DDC27;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDC29;
-    dw $0003,$2003,$516E,$4BBD,$64A5,$7FE0,$7248,$7FFF                   ;8DDC2B;
-    dw $7F72,$7EEE,$555B,$4AB5,$496B,$52B6,$61A4,$5114                   ;8DDC3B;
-    dw $50AD                                                             ;8DDC4B;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDC4D;
-    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero         ;8DDC4F;
-    dw InstList_PaletteFXObject_SamusLoading_PowerSuit_3                 ;8DDC51;
-    dw Instruction_PaletteFXObject_TimerInY                              ;8DDC53;
-    db $02                                                               ;8DDC55;
+    dw $0003
+    dw $3800,$0108,$03BD,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$02B5,$016B,$0252,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $2003,$516E,$4BBD,$64A5,$7FE0,$7248,$7FFF,$7F72,$7EEE,$555B,$4AB5,$496B,$52B6,$61A4,$5114,$50AD
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero
+    dw InstList_PaletteFXObject_SamusLoading_PowerSuit_3
+    dw Instruction_PaletteFXObject_TimerInY : db $02
 
 InstList_PaletteFXObject_SamusLoading_PowerSuit_4:
-    dw $0003,$3800,$0108,$03BD,$1405,$3BE0,$21A8,$579F                   ;8DDC56;
-    dw $4AD2,$3A4E,$00BB,$02B5,$016B,$0252,$1104,$0074                   ;8DDC66;
-    dw $000D                                                             ;8DDC76;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDC78;
-    dw $0003,$2003,$28CE,$37BD,$3C05,$63E0,$49A8,$7F9F                   ;8DDC7A;
-    dw $72D2,$624E,$28BB,$36B5,$356B,$2A16,$3904,$2874                   ;8DDC8A;
-    dw $280D                                                             ;8DDC9A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDC9C;
-    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero         ;8DDC9E;
-    dw InstList_PaletteFXObject_SamusLoading_PowerSuit_4                 ;8DDCA0;
-    dw $0001,$3800,$0108,$03BD,$1405,$3BE0,$21A8,$579F                   ;8DDCA2;
-    dw $4AD2,$3A4E,$00BB,$02B5,$016B,$0252,$1104,$0074                   ;8DDCB2;
-    dw $000D                                                             ;8DDCC2;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDCC4;
-    dw Instruction_Delete_8DC5CF                                         ;8DDCC6;
+    dw $0003
+    dw $3800,$0108,$03BD,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$02B5,$016B,$0252,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $2003,$28CE,$37BD,$3C05,$63E0,$49A8,$7F9F,$72D2,$624E,$28BB,$36B5,$356B,$2A16,$3904,$2874,$280D
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero
+    dw InstList_PaletteFXObject_SamusLoading_PowerSuit_4
+    dw $0001
+    dw $3800,$0108,$03BD,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$02B5,$016B,$0252,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_Delete_8DC5CF
 
 InstList_PaletteFXObject_SamusLoading_VairaSuit_0:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DDCC8;
-    dw $0180                                                             ;8DDCCA;
-    dw Instruction_PaletteFXObject_TimerInY                              ;8DDCCC;
-    db $24                                                               ;8DDCCE;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0180                   ;8DDCC8;
+    dw Instruction_PaletteFXObject_TimerInY : db $24                     ;8DDCCC;
 
 InstList_PaletteFXObject_SamusLoading_VairaSuit_1:
-    dw $0003,$0000,$0108,$02FF,$1405,$3BE0,$21A8,$579F                   ;8DDCCF;
-    dw $4AD2,$3A4E,$00BB,$01BE,$008E,$0252,$1104,$0074                   ;8DDCDF;
-    dw $000D                                                             ;8DDCEF;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDCF1;
-    dw $0003,$0000,$79A8,$7B9F,$65E5,$7FE0,$7388,$7FFF                   ;8DDCF3;
-    dw $7FF2,$7FEE,$569B,$765E,$752E,$524D,$62E4,$5254                   ;8DDD03;
-    dw $51ED                                                             ;8DDD13;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDD15;
-    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero         ;8DDD17;
-    dw InstList_PaletteFXObject_SamusLoading_VairaSuit_1                 ;8DDD19;
-    dw Instruction_PaletteFXObject_TimerInY                              ;8DDD1B;
-    db $03                                                               ;8DDD1D;
+    dw $0003                                                             ;8DDCCF;
+    dw $0000,$0108,$02FF,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$01BE,$008E,$0252,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $0000,$79A8,$7B9F,$65E5,$7FE0,$7388,$7FFF,$7FF2,$7FEE,$569B,$765E,$752E,$524D,$62E4,$5254,$51ED
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero
+    dw InstList_PaletteFXObject_SamusLoading_VairaSuit_1
+    dw Instruction_PaletteFXObject_TimerInY : db $03
 
 InstList_PaletteFXObject_SamusLoading_VairaSuit_2:
-    dw $0003,$0000,$0108,$02FF,$1405,$3BE0,$21A8,$579F                   ;8DDD1E;
-    dw $4AD2,$3A4E,$00BB,$01BE,$008E,$0252,$1104,$0074                   ;8DDD2E;
-    dw $000D                                                             ;8DDD3E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDD40;
-    dw $0003,$0000,$79A8,$7B9F,$65E5,$7FE0,$7388,$7FFF                   ;8DDD42;
-    dw $7FF2,$7FEE,$569B,$765E,$752E,$524D,$62E4,$5254                   ;8DDD52;
-    dw $51ED                                                             ;8DDD62;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDD64;
-    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero         ;8DDD66;
-    dw InstList_PaletteFXObject_SamusLoading_VairaSuit_2                 ;8DDD68;
-    dw Instruction_PaletteFXObject_TimerInY                              ;8DDD6A;
-    db $03                                                               ;8DDD6C;
+    dw $0003
+    dw $0000,$0108,$02FF,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$01BE,$008E,$0252,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $0000,$79A8,$7B9F,$65E5,$7FE0,$7388,$7FFF,$7FF2,$7FEE,$569B,$765E,$752E,$524D,$62E4,$5254,$51ED
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero
+    dw InstList_PaletteFXObject_SamusLoading_VairaSuit_2
+    dw Instruction_PaletteFXObject_TimerInY : db $03
 
 InstList_PaletteFXObject_SamusLoading_VairaSuit_3:
-    dw $0003,$0000,$0108,$02FF,$1405,$3BE0,$21A8,$579F                   ;8DDD6D;
-    dw $4AD2,$3A4E,$00BB,$01BE,$008E,$0252,$1104,$0074                   ;8DDD7D;
-    dw $000D                                                             ;8DDD8D;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDD8F;
-    dw $0003,$2003,$5108,$52FF,$64A5,$7FE0,$7248,$7FFF                   ;8DDD91;
-    dw $7F72,$7EEE,$555B,$51BE,$508E,$3E4D,$61A4,$5114                   ;8DDDA1;
-    dw $50AD                                                             ;8DDDB1;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDDB3;
-    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero         ;8DDDB5;
-    dw InstList_PaletteFXObject_SamusLoading_VairaSuit_3                 ;8DDDB7;
-    dw Instruction_PaletteFXObject_TimerInY                              ;8DDDB9;
-    db $02                                                               ;8DDDBB;
+    dw $0003
+    dw $0000,$0108,$02FF,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$01BE,$008E,$0252,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $2003,$5108,$52FF,$64A5,$7FE0,$7248,$7FFF,$7F72,$7EEE,$555B,$51BE,$508E,$3E4D,$61A4,$5114,$50AD
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero
+    dw InstList_PaletteFXObject_SamusLoading_VairaSuit_3
+    dw Instruction_PaletteFXObject_TimerInY : db $02
 
 InstList_PaletteFXObject_SamusLoading_VairaSuit_4:
-    dw $0003,$0000,$0108,$02FF,$1405,$3BE0,$21A8,$579F                   ;8DDDBC;
-    dw $4AD2,$3A4E,$00BB,$01BE,$008E,$0252,$1104,$0074                   ;8DDDCC;
-    dw $000D                                                             ;8DDDDC;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDDDE;
-    dw $0003,$2003,$2908,$2AFF,$3C05,$63E0,$49A8,$7F9F                   ;8DDDE0;
-    dw $72D2,$624E,$28BB,$29BE,$288E,$2A4D,$3904,$2874                   ;8DDDF0;
-    dw $280D                                                             ;8DDE00;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDE02;
-    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero         ;8DDE04;
-    dw InstList_PaletteFXObject_SamusLoading_VairaSuit_4                 ;8DDE06;
-    dw $0001,$0000,$0108,$02FF,$1405,$3BE0,$21A8,$579F                   ;8DDE08;
-    dw $4AD2,$3A4E,$00BB,$01BE,$008E,$0252,$1104,$0074                   ;8DDE18;
-    dw $000D                                                             ;8DDE28;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDE2A;
-    dw Instruction_Delete_8DC5CF                                         ;8DDE2C;
+    dw $0003
+    dw $0000,$0108,$02FF,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$01BE,$008E,$0252,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $2003,$2908,$2AFF,$3C05,$63E0,$49A8,$7F9F,$72D2,$624E,$28BB,$29BE,$288E,$2A4D,$3904,$2874,$280D
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero
+    dw InstList_PaletteFXObject_SamusLoading_VairaSuit_4
+    dw $0001
+    dw $0000,$0108,$02FF,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$01BE,$008E,$0252,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_Delete_8DC5CF
 
 InstList_PaletteFXObject_SamusLoading_GravitySuit_0:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DDE2E;
-    dw $0180                                                             ;8DDE30;
-    dw Instruction_PaletteFXObject_TimerInY                              ;8DDE32;
-    db $24                                                               ;8DDE34;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0180                   ;8DDE2E;
+    dw Instruction_PaletteFXObject_TimerInY : db $24                     ;8DDE32;
 
 InstList_PaletteFXObject_SamusLoading_GravitySuit_1:
-    dw $0003,$3800,$0108,$421F,$1405,$3BE0,$21A8,$579F                   ;8DDE35;
-    dw $4AD2,$3A4E,$00BB,$5914,$30AA,$0274,$1104,$0074                   ;8DDE45;
-    dw $000D                                                             ;8DDE55;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDE57;
-    dw $0003,$0000,$52AE,$7FFF,$65E5,$7FE0,$7388,$7FFF                   ;8DDE59;
-    dw $7FF2,$7FEE,$569B,$7EF4,$7E8A,$53F6,$62E4,$5254                   ;8DDE69;
-    dw $51ED                                                             ;8DDE79;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDE7B;
-    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero         ;8DDE7D;
-    dw InstList_PaletteFXObject_SamusLoading_GravitySuit_1               ;8DDE7F;
-    dw Instruction_PaletteFXObject_TimerInY                              ;8DDE81;
-    db $03                                                               ;8DDE83;
+    dw $0003                                                             ;8DDE35;
+    dw $3800,$0108,$421F,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$5914,$30AA,$0274,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $0000,$52AE,$7FFF,$65E5,$7FE0,$7388,$7FFF,$7FF2,$7FEE,$569B,$7EF4,$7E8A,$53F6,$62E4,$5254,$51ED
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero
+    dw InstList_PaletteFXObject_SamusLoading_GravitySuit_1
+    dw Instruction_PaletteFXObject_TimerInY : db $03
 
 InstList_PaletteFXObject_SamusLoading_GravitySuit_2:
-    dw $0003,$3800,$0108,$421F,$1405,$3BE0,$21A8,$579F                   ;8DDE84;
-    dw $4AD2,$3A4E,$00BB,$5914,$30AA,$0274,$1104,$0074                   ;8DDE94;
-    dw $000D                                                             ;8DDEA4;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDEA6;
-    dw $0003,$0000,$52AE,$7FFF,$65E5,$7FE0,$7388,$7FFF                   ;8DDEA8;
-    dw $7FF2,$7FEE,$569B,$7EF4,$7E8A,$53F6,$62E4,$5254                   ;8DDEB8;
-    dw $51ED                                                             ;8DDEC8;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDECA;
-    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero         ;8DDECC;
-    dw InstList_PaletteFXObject_SamusLoading_GravitySuit_2               ;8DDECE;
-    dw Instruction_PaletteFXObject_TimerInY                              ;8DDED0;
-    db $03                                                               ;8DDED2;
+    dw $0003
+    dw $3800,$0108,$421F,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$5914,$30AA,$0274,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $0000,$52AE,$7FFF,$65E5,$7FE0,$7388,$7FFF,$7FF2,$7FEE,$569B,$7EF4,$7E8A,$53F6,$62E4,$5254,$51ED
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero
+    dw InstList_PaletteFXObject_SamusLoading_GravitySuit_2
+    dw Instruction_PaletteFXObject_TimerInY : db $03
 
 InstList_PaletteFXObject_SamusLoading_GravitySuit_3:
-    dw $0003,$3800,$0108,$421F,$1405,$3BE0,$21A8,$579F                   ;8DDED3;
-    dw $4AD2,$3A4E,$00BB,$5914,$30AA,$0274,$1104,$0074                   ;8DDEE3;
-    dw $000D                                                             ;8DDEF3;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDEF5;
-    dw $0003,$2003,$516E,$7EBF,$64A5,$7FE0,$7248,$7FFF                   ;8DDEF7;
-    dw $7F72,$7EEE,$555B,$7DB4,$7D4A,$52B6,$61A4,$5114                   ;8DDF07;
-    dw $50AD                                                             ;8DDF17;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDF19;
-    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero         ;8DDF1B;
-    dw InstList_PaletteFXObject_SamusLoading_GravitySuit_3               ;8DDF1D;
-    dw Instruction_PaletteFXObject_TimerInY                              ;8DDF1F;
-    db $02                                                               ;8DDF21;
+    dw $0003
+    dw $3800,$0108,$421F,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$5914,$30AA,$0274,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $2003,$516E,$7EBF,$64A5,$7FE0,$7248,$7FFF,$7F72,$7EEE,$555B,$7DB4,$7D4A,$52B6,$61A4,$5114,$50AD
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero
+    dw InstList_PaletteFXObject_SamusLoading_GravitySuit_3
+    dw Instruction_PaletteFXObject_TimerInY : db $02
 
 InstList_PaletteFXObject_SamusLoading_GravitySuit_4:
-    dw $0003,$3800,$0108,$421F,$1405,$3BE0,$21A8,$579F                   ;8DDF22;
-    dw $4AD2,$3A4E,$00BB,$5914,$30AA,$0274,$1104,$0074                   ;8DDF32;
-    dw $000D                                                             ;8DDF42;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDF44;
-    dw $0003,$2003,$28CE,$6E1F,$3C05,$63E0,$49A8,$7F9F                   ;8DDF46;
-    dw $72D2,$624E,$28BB,$7D14,$58AA,$2A16,$3904,$2874                   ;8DDF56;
-    dw $280D                                                             ;8DDF66;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDF68;
-    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero         ;8DDF6A;
-    dw InstList_PaletteFXObject_SamusLoading_GravitySuit_4               ;8DDF6C;
-    dw $0001,$3800,$0108,$421F,$1405,$3BE0,$21A8,$579F                   ;8DDF6E;
-    dw $4AD2,$3A4E,$00BB,$5914,$30AA,$0274,$1104,$0074                   ;8DDF7E;
-    dw $000D                                                             ;8DDF8E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDF90;
-    dw Instruction_Delete_8DC5CF                                         ;8DDF92;
+    dw $0003
+    dw $3800,$0108,$421F,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$5914,$30AA,$0274,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
+    dw $0003
+    dw $2003,$28CE,$6E1F,$3C05,$63E0,$49A8,$7F9F,$72D2,$624E,$28BB,$7D14,$58AA,$2A16,$3904,$2874,$280D
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_DecrementTimer_GotoYIfNonZero
+    dw InstList_PaletteFXObject_SamusLoading_GravitySuit_4
+    dw $0001
+    dw $3800,$0108,$421F,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$5914,$30AA,$0274,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_Delete_8DC5CF
 
 InstList_PaletteFXObject_PostCreditsSuperMetroidIconGlare:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DDF94;
-    dw $01E0,$0001,$2DEB,$119F,$10B2,$1088,$127F,$1153                   ;8DDF96;
-    dw $10AC,$135F,$11D3,$10EC,$7BE4,$79C4,$4C84,$4BFF                   ;8DDFA6;
-    dw $13FF,$28E7                                                       ;8DDFB6;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDFBA;
-    dw $0001,$3A4E,$21FF,$2134,$210C,$22BF,$21B5,$212F                   ;8DDFBC;
-    dw $237F,$2235,$216F,$7BE8,$7A28,$5508,$53FF,$23FF                   ;8DDFCC;
-    dw $356B                                                             ;8DDFDC;
-    dw Instruction_PaletteFXObject_Done                                  ;8DDFDE;
-    dw $0001,$4691,$365F,$35B6,$35B0,$36FF,$3637,$35B2                   ;8DDFE0;
-    dw $379F,$3697,$35F2,$7BED,$7A8D,$5DAD,$5BFF,$37FF                   ;8DDFF0;
-    dw $45EF                                                             ;8DE000;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE002;
-    dw $0001,$56F5,$46BF,$4658,$4633,$473F,$4699,$4655                   ;8DE004;
-    dw $479F,$46D9,$4675,$7BF1,$7AD1,$6631,$63FF,$47FF                   ;8DE014;
-    dw $5273                                                             ;8DE024;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE026;
-    dw $0001,$6338,$5B1F,$5ADA,$5AD7,$5B7F,$5B1B,$5AD8                   ;8DE028;
-    dw $5BBF,$5B3B,$5AF8,$7BF6,$7B36,$6ED6,$6BFF,$5BFF                   ;8DE038;
-    dw $62F7                                                             ;8DE048;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE04A;
-    dw $0001,$6F9B,$6B7F,$6B5C,$6B5B,$6BBF,$6B7D,$6B5B                   ;8DE04C;
-    dw $6BDF,$6B9D,$6B7B,$7BFA,$7B9A,$775A,$73FF,$6BFF                   ;8DE05C;
-    dw $6F7B                                                             ;8DE06C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE06E;
-    dw $0001,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DE070;
-    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;8DE080;
-    dw $7FFF                                                             ;8DE090;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE092;
-    dw $0001,$6F9B,$6B7F,$6B5C,$6B5B,$6BBF,$6B7D,$6B5B                   ;8DE094;
-    dw $6BDF,$6B9D,$6B7B,$7BFA,$7B9A,$775A,$73FF,$6BFF                   ;8DE0A4;
-    dw $6F7B                                                             ;8DE0B4;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE0B6;
-    dw $0001,$6338,$5B1F,$5ADA,$5AD7,$5B7F,$5B1B,$5AD8                   ;8DE0B8;
-    dw $5BBF,$5B3B,$5AF8,$7BF6,$7B36,$6ED6,$6BFF,$5BFF                   ;8DE0C8;
-    dw $62F7                                                             ;8DE0D8;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE0DA;
-    dw $0001,$56F5,$46BF,$4658,$4633,$473F,$4699,$4655                   ;8DE0DC;
-    dw $479F,$46D9,$4675,$7BF1,$7AD1,$6631,$63FF,$47FF                   ;8DE0EC;
-    dw $5273                                                             ;8DE0FC;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE0FE;
-    dw $0001,$4691,$365F,$35B6,$35B0,$36FF,$3637,$35B2                   ;8DE100;
-    dw $379F,$3697,$35F2,$7BED,$7A8D,$5DAD,$5BFF,$37FF                   ;8DE110;
-    dw $45EF                                                             ;8DE120;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE122;
-    dw $0001,$3A4E,$21FF,$2134,$210C,$22BF,$21B5,$212F                   ;8DE124;
-    dw $237F,$2235,$216F,$7BE8,$7A28,$5508,$53FF,$23FF                   ;8DE134;
-    dw $356B                                                             ;8DE144;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE146;
-    dw $0001,$2DEB,$119F,$10B2,$1088,$127F,$1153,$10AC                   ;8DE148;
-    dw $135F,$11D3,$10EC,$7BE4,$79C4,$4C84,$4BFF,$13FF                   ;8DE158;
-    dw $28E7                                                             ;8DE168;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE16A;
-    dw $0001,$21A8,$013F,$0030,$0005,$025F,$00F2,$0029                   ;8DE16C;
-    dw $035F,$0192,$0089,$7BE0,$7980,$4400,$43FF,$03FF                   ;8DE17C;
-    dw $1C84                                                             ;8DE18C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE18E;
-    dw Instruction_Delete_8DC5CF                                         ;8DE190;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$01E0                   ;8DDF94;
+    dw $0001
+    dw $2DEB,$119F,$10B2,$1088,$127F,$1153,$10AC,$135F,$11D3,$10EC,$7BE4,$79C4,$4C84,$4BFF,$13FF,$28E7
+    dw Instruction_PaletteFXObject_Done
+    dw $0001
+    dw $3A4E,$21FF,$2134,$210C,$22BF,$21B5,$212F,$237F,$2235,$216F,$7BE8,$7A28,$5508,$53FF,$23FF,$356B
+    dw Instruction_PaletteFXObject_Done
+    dw $0001
+    dw $4691,$365F,$35B6,$35B0,$36FF,$3637,$35B2,$379F,$3697,$35F2,$7BED,$7A8D,$5DAD,$5BFF,$37FF,$45EF
+    dw Instruction_PaletteFXObject_Done
+    dw $0001
+    dw $56F5,$46BF,$4658,$4633,$473F,$4699,$4655,$479F,$46D9,$4675,$7BF1,$7AD1,$6631,$63FF,$47FF,$5273
+    dw Instruction_PaletteFXObject_Done
+    dw $0001
+    dw $6338,$5B1F,$5ADA,$5AD7,$5B7F,$5B1B,$5AD8,$5BBF,$5B3B,$5AF8,$7BF6,$7B36,$6ED6,$6BFF,$5BFF,$62F7
+    dw Instruction_PaletteFXObject_Done
+    dw $0001
+    dw $6F9B,$6B7F,$6B5C,$6B5B,$6BBF,$6B7D,$6B5B,$6BDF,$6B9D,$6B7B,$7BFA,$7B9A,$775A,$73FF,$6BFF,$6F7B
+    dw Instruction_PaletteFXObject_Done
+    dw $0001
+    dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF
+    dw Instruction_PaletteFXObject_Done
+    dw $0001
+    dw $6F9B,$6B7F,$6B5C,$6B5B,$6BBF,$6B7D,$6B5B,$6BDF,$6B9D,$6B7B,$7BFA,$7B9A,$775A,$73FF,$6BFF,$6F7B
+    dw Instruction_PaletteFXObject_Done
+    dw $0001
+    dw $6338,$5B1F,$5ADA,$5AD7,$5B7F,$5B1B,$5AD8,$5BBF,$5B3B,$5AF8,$7BF6,$7B36,$6ED6,$6BFF,$5BFF,$62F7
+    dw Instruction_PaletteFXObject_Done
+    dw $0001
+    dw $56F5,$46BF,$4658,$4633,$473F,$4699,$4655,$479F,$46D9,$4675,$7BF1,$7AD1,$6631,$63FF,$47FF,$5273
+    dw Instruction_PaletteFXObject_Done
+    dw $0001
+    dw $4691,$365F,$35B6,$35B0,$36FF,$3637,$35B2,$379F,$3697,$35F2,$7BED,$7A8D,$5DAD,$5BFF,$37FF,$45EF
+    dw Instruction_PaletteFXObject_Done
+    dw $0001
+    dw $3A4E,$21FF,$2134,$210C,$22BF,$21B5,$212F,$237F,$2235,$216F,$7BE8,$7A28,$5508,$53FF,$23FF,$356B
+    dw Instruction_PaletteFXObject_Done
+    dw $0001
+    dw $2DEB,$119F,$10B2,$1088,$127F,$1153,$10AC,$135F,$11D3,$10EC,$7BE4,$79C4,$4C84,$4BFF,$13FF,$28E7
+    dw Instruction_PaletteFXObject_Done
+    dw $0001
+    dw $21A8,$013F,$0030,$0005,$025F,$00F2,$0029,$035F,$0192,$0089,$7BE0,$7980,$4400,$43FF,$03FF,$1C84
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_Delete_8DC5CF
 
 InstList_PaletteFXObject_Delete:
     dw Instruction_Delete_8DC5CF                                         ;8DE192;
@@ -11119,53 +11129,49 @@ InstList_PaletteFXObject_Nothing:
     dw Instruction_Delete_8DC5CF                                         ;8DE220;
 
 InstList_PaletteFXObject_GreyOutTourianStatue_Draygon:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DE222;
-    dw $00C0                                                             ;8DE224;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$00C0                   ;8DE222;
     dw Instruction_PaletteFXObject_GotoY                                 ;8DE226;
     dw InstList_PaletteFXObject_Common_GreyOutTourianStatue              ;8DE228;
 
 InstList_PaletteFXObject_GreyOutTourianStatue_Kraid:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DE22A;
-    dw $00E0                                                             ;8DE22C;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$00E0                   ;8DE22A;
     dw Instruction_PaletteFXObject_GotoY                                 ;8DE22E;
     dw InstList_PaletteFXObject_Common_GreyOutTourianStatue              ;8DE230;
 
 InstList_PaletteFXObject_GreyOutTourianStatue_Ridley:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DE232;
-    dw $0120                                                             ;8DE234;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0120                   ;8DE232;
     dw Instruction_PaletteFXObject_GotoY                                 ;8DE236;
     dw InstList_PaletteFXObject_Common_GreyOutTourianStatue              ;8DE238;
 
 InstList_PaletteFXObject_GreyOutTourianStatue_Phantoon:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DE23A;
-    dw $0140                                                             ;8DE23C;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0140                   ;8DE23A;
 
 InstList_PaletteFXObject_Common_GreyOutTourianStatue:
-    dw $0008,$0000,$57FF,$2BFF,$1F3C,$0278,$01B0,$010B                   ;8DE23E;
-    dw $0087                                                             ;8DE24E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE250;
-    dw $0008,$3800,$5BDE,$33DE,$271A,$0E57,$09AF,$050A                   ;8DE252;
-    dw $0486                                                             ;8DE262;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE264;
-    dw $0008,$3800,$63DD,$3F9C,$2EF9,$1655,$118E,$0D0A                   ;8DE266;
-    dw $0486                                                             ;8DE276;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE278;
-    dw $0008,$3800,$67BC,$477B,$36D7,$2234,$198D,$1109                   ;8DE27A;
-    dw $0885                                                             ;8DE28A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE28C;
-    dw $0008,$3800,$6F9B,$5359,$42D6,$2A32,$1D8D,$14E9                   ;8DE28E;
-    dw $0885                                                             ;8DE29E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE2A0;
-    dw $0008,$3800,$737A,$5B38,$4AB4,$3611,$258C,$18E8                   ;8DE2A2;
-    dw $0C84                                                             ;8DE2B2;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE2B4;
-    dw $0008,$3800,$7B79,$66F6,$5293,$3E0F,$2D6B,$20E8                   ;8DE2B6;
-    dw $0C84                                                             ;8DE2C6;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE2C8;
-    dw $0008,$3800,$7F58,$6ED5,$5A71,$49EE,$356A,$24E7                   ;8DE2CA;
-    dw $1083                                                             ;8DE2DA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE2DC;
-    dw Instruction_Delete_8DC5CF                                         ;8DE2DE;
+    dw $0008                                                             ;8DE23E;
+    dw $0000,$57FF,$2BFF,$1F3C,$0278,$01B0,$010B,$0087
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $3800,$5BDE,$33DE,$271A,$0E57,$09AF,$050A,$0486
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $3800,$63DD,$3F9C,$2EF9,$1655,$118E,$0D0A,$0486
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $3800,$67BC,$477B,$36D7,$2234,$198D,$1109,$0885
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $3800,$6F9B,$5359,$42D6,$2A32,$1D8D,$14E9,$0885
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $3800,$737A,$5B38,$4AB4,$3611,$258C,$18E8,$0C84
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $3800,$7B79,$66F6,$5293,$3E0F,$2D6B,$20E8,$0C84
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $3800,$7F58,$6ED5,$5A71,$49EE,$356A,$24E7,$1083
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_Delete_8DC5CF
 
 PreInstruction_PaletteFXObject_DeleteIfEnemy0Died:
     LDA.W $0F8C                                                          ;8DE2E0;
@@ -11177,48 +11183,58 @@ PreInstruction_PaletteFXObject_DeleteIfEnemy0Died:
 
 
 InstList_PaletteFXObject_BombTorizoBelly_0:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DE2E9;
-    dw $0132                                                             ;8DE2EB;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0132                   ;8DE2E9;
     dw Instruction_PaletteFXObject_PreInstructionInY                     ;8DE2ED;
     dw PreInstruction_PaletteFXObject_DeleteIfEnemy0Died                 ;8DE2EF;
 
 InstList_PaletteFXObject_BombTorizoBelly_1:
-    dw $000A,$6F7F,$51F8,$410E                                           ;8DE2F1;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE2F9;
-    dw $0008,$56BC,$3935,$284B                                           ;8DE2FB;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE303;
-    dw $0008,$4639,$28B2,$1828                                           ;8DE305;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE30D;
-    dw $000A,$2D74,$100D,$0403                                           ;8DE30F;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE317;
-    dw $0008,$4639,$28B2,$1828                                           ;8DE319;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE321;
-    dw $0008,$56BC,$3935,$284B                                           ;8DE323;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE32B;
-    dw Instruction_PaletteFXObject_GotoY                                 ;8DE32D;
-    dw InstList_PaletteFXObject_BombTorizoBelly_1                        ;8DE32F;
+    dw $000A                                                             ;8DE2F1;
+    dw $6F7F,$51F8,$410E
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $56BC,$3935,$284B
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $4639,$28B2,$1828
+    dw Instruction_PaletteFXObject_Done
+    dw $000A
+    dw $2D74,$100D,$0403
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $4639,$28B2,$1828
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $56BC,$3935,$284B
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_GotoY
+    dw InstList_PaletteFXObject_BombTorizoBelly_1
 
 InstList_PaletteFXObject_GoldenTorizoBelly_0:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DE331;
-    dw $0132                                                             ;8DE333;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0132                   ;8DE331;
     dw Instruction_PaletteFXObject_PreInstructionInY                     ;8DE335;
     dw PreInstruction_PaletteFXObject_DeleteIfEnemy0Died                 ;8DE337;
 
 InstList_PaletteFXObject_GoldenTorizoBelly_1:
-    dw $000A,$73E0,$4F20,$2A20                                           ;8DE339;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE341;
-    dw $0008,$5380,$2E20,$0920                                           ;8DE343;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE34B;
-    dw $0008,$3AC0,$1560,$0480                                           ;8DE34D;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE355;
-    dw $000A,$2200,$00A0,$0020                                           ;8DE357;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE35F;
-    dw $0008,$3AC0,$1560,$0480                                           ;8DE361;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE369;
-    dw $0008,$5380,$2E20,$0920                                           ;8DE36B;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE373;
-    dw Instruction_PaletteFXObject_GotoY                                 ;8DE375;
-    dw InstList_PaletteFXObject_GoldenTorizoBelly_1                      ;8DE377;
+    dw $000A                                                             ;8DE339;
+    dw $73E0,$4F20,$2A20
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $5380,$2E20,$0920
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $3AC0,$1560,$0480
+    dw Instruction_PaletteFXObject_Done
+    dw $000A
+    dw $2200,$00A0,$0020
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $3AC0,$1560,$0480
+    dw Instruction_PaletteFXObject_Done
+    dw $0008
+    dw $5380,$2E20,$0920
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_GotoY
+    dw InstList_PaletteFXObject_GoldenTorizoBelly_1
 
 PreInstruction_PaletteFXObject_SamusInHeat:
     LDA.W $09A2                                                          ;8DE379;
@@ -11354,88 +11370,87 @@ Setup_PaletteFXObject_Norfair1_Tourian1:
 InstList_PaletteFXObject_SamusInHeat_PowerSuit_0:
     dw Instruction_PaletteFXObject_PreInstructionInY                     ;8DE45E;
     dw PreInstruction_PaletteFXObject_SamusInHeat                        ;8DE460;
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DE462;
-    dw $0182                                                             ;8DE464;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0182                   ;8DE462;
 
 InstList_PaletteFXObject_SamusInHeat_PowerSuit_1:
-    dw $0010,$0108,$03BD,$1405,$3BE0,$21A8,$579F,$4AD2                   ;8DE466;
-    dw $3A4E,$00BB,$02B5,$016B,$0252,$1104,$0074,$000D                   ;8DE476;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE486;
+    dw $0010                                                             ;8DE466;
+    dw $0108,$03BD,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$02B5,$016B,$0252,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_PowerSuit_2:
-    dw $0004,$0109,$03BD,$1406,$3BE1,$25CA,$579F,$4AD3                   ;8DE488;
-    dw $3A4F,$00BC,$02B6,$016C,$0253,$1105,$0075,$000E                   ;8DE498;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE4A8;
+    dw $0004                                                             ;8DE488;
+    dw $0109,$03BD,$1406,$3BE1,$25CA,$579F,$4AD3,$3A4F,$00BC,$02B6,$016C,$0253,$1105,$0075,$000E
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_PowerSuit_3:
-    dw $0004,$0109,$03BD,$1406,$3BE1,$25CA,$579F,$4AD3                   ;8DE4AA;
-    dw $3A4F,$00BC,$02B6,$016C,$0253,$1105,$0075,$000E                   ;8DE4BA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE4CA;
+    dw $0004                                                             ;8DE4AA;
+    dw $0109,$03BD,$1406,$3BE1,$25CA,$579F,$4AD3,$3A4F,$00BC,$02B6,$016C,$0253,$1105,$0075,$000E
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_PowerSuit_4:
-    dw $0005,$010A,$03BE,$1407,$3BE2,$25CC,$579F,$4AD4                   ;8DE4CC;
-    dw $3A50,$00BC,$02B7,$016D,$0254,$1106,$0076,$000F                   ;8DE4DC;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE4EC;
+    dw $0005                                                             ;8DE4CC;
+    dw $010A,$03BE,$1407,$3BE2,$25CC,$579F,$4AD4,$3A50,$00BC,$02B7,$016D,$0254,$1106,$0076,$000F
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_PowerSuit_5:
-    dw $0006,$010A,$03BE,$1407,$3BE2,$25CC,$579F,$4AD4                   ;8DE4EE;
-    dw $3A50,$00BC,$02B7,$016D,$0254,$1106,$0076,$000F                   ;8DE4FE;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE50E;
+    dw $0006                                                             ;8DE4EE;
+    dw $010A,$03BE,$1407,$3BE2,$25CC,$579F,$4AD4,$3A50,$00BC,$02B7,$016D,$0254,$1106,$0076,$000F
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_PowerSuit_6:
-    dw $0007,$010B,$03BE,$1408,$3BE3,$29EE,$579F,$4AD5                   ;8DE510;
-    dw $3A51,$00BD,$02B8,$016E,$0255,$1107,$0077,$0010                   ;8DE520;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE530;
+    dw $0007                                                             ;8DE510;
+    dw $010B,$03BE,$1408,$3BE3,$29EE,$579F,$4AD5,$3A51,$00BD,$02B8,$016E,$0255,$1107,$0077,$0010
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_PowerSuit_7:
-    dw $0008,$010B,$03BE,$1408,$3BE3,$29EE,$579F,$4AD5                   ;8DE532;
-    dw $3A51,$00BD,$02B8,$016E,$0255,$1107,$0077,$0010                   ;8DE542;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE552;
+    dw $0008                                                             ;8DE532;
+    dw $010B,$03BE,$1408,$3BE3,$29EE,$579F,$4AD5,$3A51,$00BD,$02B8,$016E,$0255,$1107,$0077,$0010
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_PowerSuit_8:
-    dw $0008,$010D,$03BE,$140A,$3BE5,$2E0F,$579F,$4AD7                   ;8DE554;
-    dw $3A53,$00BD,$02BA,$0170,$0257,$1109,$0079,$0012                   ;8DE564;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE574;
+    dw $0008                                                             ;8DE554;
+    dw $010D,$03BE,$140A,$3BE5,$2E0F,$579F,$4AD7,$3A53,$00BD,$02BA,$0170,$0257,$1109,$0079,$0012
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_PowerSuit_9:
-    dw $0008,$010D,$03BE,$140A,$3BE5,$2E0F,$579F,$4AD7                   ;8DE576;
-    dw $3A53,$00BD,$02BA,$0170,$0257,$1109,$0079,$0012                   ;8DE586;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE596;
+    dw $0008                                                             ;8DE576;
+    dw $010D,$03BE,$140A,$3BE5,$2E0F,$579F,$4AD7,$3A53,$00BD,$02BA,$0170,$0257,$1109,$0079,$0012
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_PowerSuit_A:
-    dw $0008,$010B,$03BE,$1408,$3BE3,$29EE,$579F,$4AD5                   ;8DE598;
-    dw $3A51,$00BD,$02B8,$016E,$0255,$1107,$0077,$0010                   ;8DE5A8;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE5B8;
+    dw $0008                                                             ;8DE598;
+    dw $010B,$03BE,$1408,$3BE3,$29EE,$579F,$4AD5,$3A51,$00BD,$02B8,$016E,$0255,$1107,$0077,$0010
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_PowerSuit_B:
-    dw $0007,$010B,$03BE,$1408,$3BE3,$29EE,$579F,$4AD5                   ;8DE5BA;
-    dw $3A51,$00BD,$02B8,$016E,$0255,$1107,$0077,$0010                   ;8DE5CA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE5DA;
+    dw $0007                                                             ;8DE5BA;
+    dw $010B,$03BE,$1408,$3BE3,$29EE,$579F,$4AD5,$3A51,$00BD,$02B8,$016E,$0255,$1107,$0077,$0010
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_PowerSuit_C:
-    dw $0006,$010A,$03BE,$1407,$3BE2,$25CC,$579F,$4AD4                   ;8DE5DC;
-    dw $3A50,$00BC,$02B7,$016D,$0254,$1106,$0076,$000F                   ;8DE5EC;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE5FC;
+    dw $0006                                                             ;8DE5DC;
+    dw $010A,$03BE,$1407,$3BE2,$25CC,$579F,$4AD4,$3A50,$00BC,$02B7,$016D,$0254,$1106,$0076,$000F
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_PowerSuit_D:
-    dw $0005,$010A,$03BE,$1407,$3BE2,$25CC,$579F,$4AD4                   ;8DE5FE;
-    dw $3A50,$00BC,$02B7,$016D,$0254,$1106,$0076,$000F                   ;8DE60E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE61E;
+    dw $0005                                                             ;8DE5FE;
+    dw $010A,$03BE,$1407,$3BE2,$25CC,$579F,$4AD4,$3A50,$00BC,$02B7,$016D,$0254,$1106,$0076,$000F
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_PowerSuit_E:
-    dw $0004,$0109,$03BD,$1406,$3BE1,$25CA,$579F,$4AD3                   ;8DE620;
-    dw $3A4F,$00BC,$02B6,$016C,$0253,$1105,$0075,$000E                   ;8DE630;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE640;
+    dw $0004                                                             ;8DE620;
+    dw $0109,$03BD,$1406,$3BE1,$25CA,$579F,$4AD3,$3A4F,$00BC,$02B6,$016C,$0253,$1105,$0075,$000E
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_PowerSuit_F:
-    dw $0004,$0109,$03BD,$1406,$3BE1,$25CA,$579F,$4AD3                   ;8DE642;
-    dw $3A4F,$00BC,$02B6,$016C,$0253,$1105,$0075,$000E                   ;8DE652;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE662;
+    dw $0004                                                             ;8DE642;
+    dw $0109,$03BD,$1406,$3BE1,$25CA,$579F,$4AD3,$3A4F,$00BC,$02B6,$016C,$0253,$1105,$0075,$000E
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_PowerSuit_10:
-    dw $0003,$0109,$03BD,$1406,$3BE1,$25CA,$579F,$4AD3                   ;8DE664;
-    dw $3A4F,$00BC,$02B6,$016C,$0253,$1105,$0075,$000E                   ;8DE674;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE684;
+    dw $0003                                                             ;8DE664;
+    dw $0109,$03BD,$1406,$3BE1,$25CA,$579F,$4AD3,$3A4F,$00BC,$02B6,$016C,$0253,$1105,$0075,$000E
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_PowerSuit_11:
     dw Instruction_PaletteFXObject_GotoY                                 ;8DE686;
@@ -11446,88 +11461,87 @@ InstList_PaletteFXObject_SamusInHeat_VariaSuit_0:
     dw PreInstruction_PaletteFXObject_SamusInHeat                        ;8DE68C;
 
 InstList_PaletteFXObject_SamusInHeat_VariaSuit_1:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DE68E;
-    dw $0182                                                             ;8DE690;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0182                   ;8DE68E;
 
 InstList_PaletteFXObject_SamusInHeat_VariaSuit_2:
-    dw $0010,$0108,$02FF,$1405,$3BE0,$21A8,$579F,$4AD2                   ;8DE692;
-    dw $3A4E,$00BB,$01BE,$008E,$0252,$1104,$0074,$000D                   ;8DE6A2;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE6B2;
+    dw $0010                                                             ;8DE692;
+    dw $0108,$02FF,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$01BE,$008E,$0252,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_VariaSuit_3:
-    dw $0004,$0109,$02FF,$1406,$3BE1,$25CA,$579F,$4AD3                   ;8DE6B4;
-    dw $3A4F,$00BC,$01BE,$008F,$0253,$1105,$0075,$000E                   ;8DE6C4;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE6D4;
+    dw $0004                                                             ;8DE6B4;
+    dw $0109,$02FF,$1406,$3BE1,$25CA,$579F,$4AD3,$3A4F,$00BC,$01BE,$008F,$0253,$1105,$0075,$000E
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_VariaSuit_4:
-    dw $0004,$0109,$02FF,$1406,$3BE1,$25CA,$579F,$4AD3                   ;8DE6D6;
-    dw $3A4F,$00BC,$01BE,$008F,$0253,$1105,$0075,$000E                   ;8DE6E6;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE6F6;
+    dw $0004                                                             ;8DE6D6;
+    dw $0109,$02FF,$1406,$3BE1,$25CA,$579F,$4AD3,$3A4F,$00BC,$01BE,$008F,$0253,$1105,$0075,$000E
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_VariaSuit_5:
-    dw $0005,$010A,$02FF,$1407,$3BE2,$25CC,$579F,$4AD4                   ;8DE6F8;
-    dw $3A50,$00BC,$01BE,$0090,$0254,$1106,$0076,$000F                   ;8DE708;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE718;
+    dw $0005                                                             ;8DE6F8;
+    dw $010A,$02FF,$1407,$3BE2,$25CC,$579F,$4AD4,$3A50,$00BC,$01BE,$0090,$0254,$1106,$0076,$000F
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_VariaSuit_6:
-    dw $0006,$010A,$02FF,$1407,$3BE2,$25CC,$579F,$4AD4                   ;8DE71A;
-    dw $3A50,$00BC,$01BE,$0090,$0254,$1106,$0076,$000F                   ;8DE72A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE73A;
+    dw $0006                                                             ;8DE71A;
+    dw $010A,$02FF,$1407,$3BE2,$25CC,$579F,$4AD4,$3A50,$00BC,$01BE,$0090,$0254,$1106,$0076,$000F
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_VariaSuit_7:
-    dw $0007,$010B,$02FF,$1408,$3BE3,$29EE,$579F,$4AD5                   ;8DE73C;
-    dw $3A51,$00BD,$01BE,$0091,$0255,$1107,$0077,$0010                   ;8DE74C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE75C;
+    dw $0007                                                             ;8DE73C;
+    dw $010B,$02FF,$1408,$3BE3,$29EE,$579F,$4AD5,$3A51,$00BD,$01BE,$0091,$0255,$1107,$0077,$0010
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_VariaSuit_8:
-    dw $0008,$010B,$02FF,$1408,$3BE3,$29EE,$579F,$4AD5                   ;8DE75E;
-    dw $3A51,$00BD,$01BE,$0091,$0255,$1107,$0077,$0010                   ;8DE76E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE77E;
+    dw $0008                                                             ;8DE75E;
+    dw $010B,$02FF,$1408,$3BE3,$29EE,$579F,$4AD5,$3A51,$00BD,$01BE,$0091,$0255,$1107,$0077,$0010
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_VariaSuit_9:
-    dw $0008,$010D,$02FF,$140A,$3BE5,$2E0F,$579F,$4AD7                   ;8DE780;
-    dw $3A53,$00BD,$01BF,$0093,$0257,$1109,$0079,$0012                   ;8DE790;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE7A0;
+    dw $0008                                                             ;8DE780;
+    dw $010D,$02FF,$140A,$3BE5,$2E0F,$579F,$4AD7,$3A53,$00BD,$01BF,$0093,$0257,$1109,$0079,$0012
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_VariaSuit_A:
-    dw $0008,$010D,$02FF,$140A,$3BE5,$2E0F,$579F,$4AD7                   ;8DE7A2;
-    dw $3A53,$00BD,$01BF,$0093,$0257,$1109,$0079,$0012                   ;8DE7B2;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE7C2;
+    dw $0008                                                             ;8DE7A2;
+    dw $010D,$02FF,$140A,$3BE5,$2E0F,$579F,$4AD7,$3A53,$00BD,$01BF,$0093,$0257,$1109,$0079,$0012
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_VariaSuit_B:
-    dw $0008,$010B,$02FF,$1408,$3BE3,$29EE,$579F,$4AD5                   ;8DE7C4;
-    dw $3A51,$00BD,$01BE,$0091,$0255,$1107,$0077,$0010                   ;8DE7D4;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE7E4;
+    dw $0008                                                             ;8DE7C4;
+    dw $010B,$02FF,$1408,$3BE3,$29EE,$579F,$4AD5,$3A51,$00BD,$01BE,$0091,$0255,$1107,$0077,$0010
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_VariaSuit_C:
-    dw $0007,$010B,$02FF,$1408,$3BE3,$29EE,$579F,$4AD5                   ;8DE7E6;
-    dw $3A51,$00BD,$01BE,$0091,$0255,$1107,$0077,$0010                   ;8DE7F6;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE806;
+    dw $0007                                                             ;8DE7E6;
+    dw $010B,$02FF,$1408,$3BE3,$29EE,$579F,$4AD5,$3A51,$00BD,$01BE,$0091,$0255,$1107,$0077,$0010
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_VariaSuit_D:
-    dw $0006,$010A,$02FF,$1407,$3BE2,$25CC,$579F,$4AD4                   ;8DE808;
-    dw $3A50,$00BC,$01BE,$0090,$0254,$1106,$0076,$000F                   ;8DE818;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE828;
+    dw $0006                                                             ;8DE808;
+    dw $010A,$02FF,$1407,$3BE2,$25CC,$579F,$4AD4,$3A50,$00BC,$01BE,$0090,$0254,$1106,$0076,$000F
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_VariaSuit_E:
-    dw $0005,$010A,$02FF,$1407,$3BE2,$25CC,$579F,$4AD4                   ;8DE82A;
-    dw $3A50,$00BC,$01BE,$0090,$0254,$1106,$0076,$000F                   ;8DE83A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE84A;
+    dw $0005                                                             ;8DE82A;
+    dw $010A,$02FF,$1407,$3BE2,$25CC,$579F,$4AD4,$3A50,$00BC,$01BE,$0090,$0254,$1106,$0076,$000F
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_VariaSuit_F:
-    dw $0004,$0109,$02FF,$1406,$3BE1,$25CA,$579F,$4AD3                   ;8DE84C;
-    dw $3A4F,$00BC,$01BE,$008F,$0253,$1105,$0075,$000E                   ;8DE85C;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE86C;
+    dw $0004                                                             ;8DE84C;
+    dw $0109,$02FF,$1406,$3BE1,$25CA,$579F,$4AD3,$3A4F,$00BC,$01BE,$008F,$0253,$1105,$0075,$000E
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_VariaSuit_10:
-    dw $0004,$0109,$02FF,$1406,$3BE1,$25CA,$579F,$4AD3                   ;8DE86E;
-    dw $3A4F,$00BC,$01BE,$008F,$0253,$1105,$0075,$000E                   ;8DE87E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE88E;
+    dw $0004                                                             ;8DE86E;
+    dw $0109,$02FF,$1406,$3BE1,$25CA,$579F,$4AD3,$3A4F,$00BC,$01BE,$008F,$0253,$1105,$0075,$000E
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_VariaSuit_11:
-    dw $0010,$0108,$02FF,$1405,$3BE0,$21A8,$579F,$4AD2                   ;8DE890;
-    dw $3A4E,$00BB,$01BE,$008E,$0252,$1104,$0074,$000D                   ;8DE8A0;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE8B0;
+    dw $0010                                                             ;8DE890;
+    dw $0108,$02FF,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$01BE,$008E,$0252,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_VariaSuit_12:
     dw Instruction_PaletteFXObject_GotoY                                 ;8DE8B2;
@@ -11538,114 +11552,120 @@ InstList_PaletteFXObject_SamusInHeat_GravitySuit_0:
     dw PreInstruction_PaletteFXObject_SamusInHeat                        ;8DE8B8;
 
 InstList_PaletteFXObject_SamusInHeat_GravitySuit_1:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DE8BA;
-    dw $0182                                                             ;8DE8BC;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0182                   ;8DE8BA;
 
 InstList_PaletteFXObject_SamusInHeat_GravitySuit_2:
-    dw $0010,$0108,$421F,$1405,$3BE0,$21A8,$579F,$4AD2                   ;8DE8BE;
-    dw $3A4E,$00BB,$5914,$30AA,$0274,$1104,$0074,$000D                   ;8DE8CE;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE8DE;
+    dw $0010                                                             ;8DE8BE;
+    dw $0108,$421F,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$5914,$30AA,$0274,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_GravitySuit_3:
-    dw $0004,$0109,$421F,$1406,$3BE1,$25CA,$579F,$4AD3                   ;8DE8E0;
-    dw $3A4F,$00BC,$5915,$30AB,$0253,$1105,$0075,$000E                   ;8DE8F0;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE900;
+    dw $0004                                                             ;8DE8E0;
+    dw $0109,$421F,$1406,$3BE1,$25CA,$579F,$4AD3,$3A4F,$00BC,$5915,$30AB,$0253,$1105,$0075,$000E
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_GravitySuit_4:
-    dw $0004,$0109,$421F,$1406,$3BE1,$25CA,$579F,$4AD3                   ;8DE902;
-    dw $3A4F,$00BC,$5915,$30AB,$0253,$1105,$0075,$000E                   ;8DE912;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE922;
+    dw $0004                                                             ;8DE902;
+    dw $0109,$421F,$1406,$3BE1,$25CA,$579F,$4AD3,$3A4F,$00BC,$5915,$30AB,$0253,$1105,$0075,$000E
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_GravitySuit_5:
-    dw $0005,$010A,$421F,$1407,$3BE2,$25CC,$579F,$4AD4                   ;8DE924;
-    dw $3A50,$00BC,$5916,$30AC,$0254,$1106,$0076,$000F                   ;8DE934;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE944;
+    dw $0005                                                             ;8DE924;
+    dw $010A,$421F,$1407,$3BE2,$25CC,$579F,$4AD4,$3A50,$00BC,$5916,$30AC,$0254,$1106,$0076,$000F
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_GravitySuit_6:
-    dw $0006,$010A,$421F,$1407,$3BE2,$25CC,$579F,$4AD4                   ;8DE946;
-    dw $3A50,$00BC,$5916,$30AC,$0254,$1106,$0076,$000F                   ;8DE956;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE966;
+    dw $0006                                                             ;8DE946;
+    dw $010A,$421F,$1407,$3BE2,$25CC,$579F,$4AD4,$3A50,$00BC,$5916,$30AC,$0254,$1106,$0076,$000F
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_GravitySuit_7:
-    dw $0007,$010B,$421F,$1408,$3BE3,$29EE,$579F,$4AD5                   ;8DE968;
-    dw $3A51,$00BD,$5917,$30AD,$0255,$1107,$0077,$0010                   ;8DE978;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE988;
+    dw $0007                                                             ;8DE968;
+    dw $010B,$421F,$1408,$3BE3,$29EE,$579F,$4AD5,$3A51,$00BD,$5917,$30AD,$0255,$1107,$0077,$0010
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_GravitySuit_8:
-    dw $0008,$010B,$421F,$1408,$3BE3,$29EE,$579F,$4AD5                   ;8DE98A;
-    dw $3A51,$00BD,$5917,$30AD,$0255,$1107,$0077,$0010                   ;8DE99A;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE9AA;
+    dw $0008                                                             ;8DE98A;
+    dw $010B,$421F,$1408,$3BE3,$29EE,$579F,$4AD5,$3A51,$00BD,$5917,$30AD,$0255,$1107,$0077,$0010
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_GravitySuit_9:
-    dw $0008,$010D,$421F,$140A,$3BE5,$2E0F,$579F,$4AD7                   ;8DE9AC;
-    dw $3A53,$00BD,$5919,$30AF,$0257,$1109,$0079,$0012                   ;8DE9BC;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE9CC;
+    dw $0008                                                             ;8DE9AC;
+    dw $010D,$421F,$140A,$3BE5,$2E0F,$579F,$4AD7,$3A53,$00BD,$5919,$30AF,$0257,$1109,$0079,$0012
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_GravitySuit_A:
-    dw $0008,$010D,$421F,$140A,$3BE5,$2E0F,$579F,$4AD7                   ;8DE9CE;
-    dw $3A53,$00BD,$5919,$30AF,$0257,$1109,$0079,$0012                   ;8DE9DE;
-    dw Instruction_PaletteFXObject_Done                                  ;8DE9EE;
+    dw $0008                                                             ;8DE9CE;
+    dw $010D,$421F,$140A,$3BE5,$2E0F,$579F,$4AD7,$3A53,$00BD,$5919,$30AF,$0257,$1109,$0079,$0012
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_GravitySuit_B:
-    dw $0008,$010B,$421F,$1408,$3BE3,$29EE,$579F,$4AD5                   ;8DE9F0;
-    dw $3A51,$00BD,$5917,$30AD,$0255,$1107,$0077,$0010                   ;8DEA00;
-    dw Instruction_PaletteFXObject_Done                                  ;8DEA10;
+    dw $0008                                                             ;8DE9F0;
+    dw $010B,$421F,$1408,$3BE3,$29EE,$579F,$4AD5,$3A51,$00BD,$5917,$30AD,$0255,$1107,$0077,$0010
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_GravitySuit_C:
-    dw $0007,$010B,$421F,$1408,$3BE3,$29EE,$579F,$4AD5                   ;8DEA12;
-    dw $3A51,$00BD,$5917,$30AD,$0255,$1107,$0077,$0010                   ;8DEA22;
-    dw Instruction_PaletteFXObject_Done                                  ;8DEA32;
+    dw $0007                                                             ;8DEA12;
+    dw $010B,$421F,$1408,$3BE3,$29EE,$579F,$4AD5,$3A51,$00BD,$5917,$30AD,$0255,$1107,$0077,$0010
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_GravitySuit_D:
-    dw $0006,$010A,$421F,$1407,$3BE2,$25CC,$579F,$4AD4                   ;8DEA34;
-    dw $3A50,$00BC,$5916,$30AC,$0254,$1106,$0076,$000F                   ;8DEA44;
-    dw Instruction_PaletteFXObject_Done                                  ;8DEA54;
+    dw $0006                                                             ;8DEA34;
+    dw $010A,$421F,$1407,$3BE2,$25CC,$579F,$4AD4,$3A50,$00BC,$5916,$30AC,$0254,$1106,$0076,$000F
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_GravitySuit_E:
-    dw $0005,$010A,$421F,$1407,$3BE2,$25CC,$579F,$4AD4                   ;8DEA56;
-    dw $3A50,$00BC,$5916,$30AC,$0254,$1106,$0076,$000F                   ;8DEA66;
-    dw Instruction_PaletteFXObject_Done                                  ;8DEA76;
+    dw $0005                                                             ;8DEA56;
+    dw $010A,$421F,$1407,$3BE2,$25CC,$579F,$4AD4,$3A50,$00BC,$5916,$30AC,$0254,$1106,$0076,$000F
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_GravitySuit_F:
-    dw $0004,$0109,$421F,$1406,$3BE1,$25CA,$579F,$4AD3                   ;8DEA78;
-    dw $3A4F,$00BC,$5915,$30AB,$0253,$1105,$0075,$000E                   ;8DEA88;
-    dw Instruction_PaletteFXObject_Done                                  ;8DEA98;
+    dw $0004                                                             ;8DEA78;
+    dw $0109,$421F,$1406,$3BE1,$25CA,$579F,$4AD3,$3A4F,$00BC,$5915,$30AB,$0253,$1105,$0075,$000E
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_GravitySuit_10:
-    dw $0004,$0109,$421F,$1406,$3BE1,$25CA,$579F,$4AD3                   ;8DEA9A;
-    dw $3A4F,$00BC,$5915,$30AB,$0253,$1105,$0075,$000E                   ;8DEAAA;
-    dw Instruction_PaletteFXObject_Done                                  ;8DEABA;
+    dw $0004                                                             ;8DEA9A;
+    dw $0109,$421F,$1406,$3BE1,$25CA,$579F,$4AD3,$3A4F,$00BC,$5915,$30AB,$0253,$1105,$0075,$000E
+    dw Instruction_PaletteFXObject_Done
 
 InstList_PaletteFXObject_SamusInHeat_GravitySuit_11:
-    dw $0010,$0108,$421F,$1405,$3BE0,$21A8,$579F,$4AD2                   ;8DEABC;
-    dw $3A4E,$00BB,$5914,$30AA,$0274,$1104,$0074,$000D                   ;8DEACC;
-    dw Instruction_PaletteFXObject_Done                                  ;8DEADC;
-    dw Instruction_PaletteFXObject_GotoY                                 ;8DEADE;
-    dw InstList_PaletteFXObject_SamusInHeat_GravitySuit_2                ;8DEAE0;
+    dw $0010                                                             ;8DEABC;
+    dw $0108,$421F,$1405,$3BE0,$21A8,$579F,$4AD2,$3A4E,$00BB,$5914,$30AA,$0274,$1104,$0074,$000D
+    dw Instruction_PaletteFXObject_Done
+    dw Instruction_PaletteFXObject_GotoY
+    dw InstList_PaletteFXObject_SamusInHeat_GravitySuit_2
 
 InstList_PaletteFXObject_WreckedShip1_0:
-    dw Instruction_PaletteFXObject_ColorIndexInY                         ;8DEAE2;
-    dw $0098                                                             ;8DEAE4;
+    dw Instruction_PaletteFXObject_ColorIndexInY,$0098                   ;8DEAE2;
 
 InstList_PaletteFXObject_WreckedShip1_1:
-    dw $000A,$1EA9,$0BB1                                                 ;8DEAE6;
-    dw Instruction_PaletteFXObject_Done                                  ;8DEAEC;
-    dw $000A,$1667,$034E                                                 ;8DEAEE;
-    dw Instruction_PaletteFXObject_Done                                  ;8DEAF4;
-    dw $000A,$0E25,$02EB                                                 ;8DEAF6;
-    dw Instruction_PaletteFXObject_Done                                  ;8DEAFC;
-    dw $000A,$05E3,$0288                                                 ;8DEAFE;
-    dw Instruction_PaletteFXObject_Done                                  ;8DEB04;
-    dw $000A,$01A1,$0225                                                 ;8DEB06;
-    dw Instruction_PaletteFXObject_Done                                  ;8DEB0C;
-    dw $000A,$05E3,$0288                                                 ;8DEB0E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DEB14;
-    dw $000A,$0E25,$02EB                                                 ;8DEB16;
-    dw Instruction_PaletteFXObject_Done                                  ;8DEB1C;
-    dw $000A,$1667,$034E                                                 ;8DEB1E;
-    dw Instruction_PaletteFXObject_Done                                  ;8DEB24;
-    dw Instruction_PaletteFXObject_GotoY                                 ;8DEB26;
-    dw InstList_PaletteFXObject_WreckedShip1_1                           ;8DEB28;
+    dw $000A                                                             ;8DEAE6;
+    dw $1EA9,$0BB1                                                 
+    dw Instruction_PaletteFXObject_Done                            
+    dw $000A
+    dw $1667,$034E                                                 
+    dw Instruction_PaletteFXObject_Done                            
+    dw $000A
+    dw $0E25,$02EB                                                 
+    dw Instruction_PaletteFXObject_Done                            
+    dw $000A
+    dw $05E3,$0288                                                 
+    dw Instruction_PaletteFXObject_Done                            
+    dw $000A
+    dw $01A1,$0225                                                 
+    dw Instruction_PaletteFXObject_Done                            
+    dw $000A
+    dw $05E3,$0288                                                 
+    dw Instruction_PaletteFXObject_Done                            
+    dw $000A
+    dw $0E25,$02EB                                                 
+    dw Instruction_PaletteFXObject_Done                            
+    dw $000A
+    dw $1667,$034E                                                 
+    dw Instruction_PaletteFXObject_Done                            
+    dw Instruction_PaletteFXObject_GotoY                           
+    dw InstList_PaletteFXObject_WreckedShip1_1                     
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_PreInstruction_PaletteFXObject_WaitUntilAreBossIsDead:

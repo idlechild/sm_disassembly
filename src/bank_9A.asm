@@ -2,6 +2,8 @@
 org $9A8000
 
 
+; Palette loaded when loading a save or demo. (although nothing is displayed during this time)
+; Palettes for common sprites, beams and flashing enemies are loaded from here during door transition
 Initial_Palette_BGPalette0:
     dw $14E0,$7FFF,$6B5A,$6B5A,$6B5A,$6B5A,$6B5A,$6B5A                   ;9A8000;
     dw $6B5A,$6B5A,$6B5A,$6B5A,$6B5A,$6B5A,$6B5A,$6B5A                   ;9A8010;

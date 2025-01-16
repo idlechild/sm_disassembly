@@ -39,6 +39,7 @@ UNUSED_SamusPalettes_9B94E0:
     dw $7D00,$7D00,$7D00,$7D00,$7D00,$7D00,$7D00,$7D00                   ;9B94F0;
 
 UNUSED_SamusPalettes_9B9500:
+; Used by unused routine UNUSED_SetSamusPaletteToSolidWhite_91DD4C, test palette perhaps
     dw $3800,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;9B9500;
     dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;9B9510;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -98,6 +99,8 @@ UNUSED_SamusPalettes_9B96A0:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 SamusPalettes_CrystalFlash_0:
+; Crystal flash Samus. Colours 0..9 = Samus colours, Ah..Fh = bubble colours
+; These two parts are loaded independently / asynchronously
     dw $3800,$4210,$4210,$4210,$4210,$4210,$4210,$4210                   ;9B96C0;
     dw $4210,$4210                                                       ;9B96D0;
 
@@ -162,6 +165,7 @@ SamusPalettes_GravitySuit:
     dw $3A4E,$00BB,$5914,$30AA,$0274,$1104,$0074,$000D                   ;9B9810;
 
 SamusPalettes_PowerSuit_DeathSequence_BeamCharging_0:
+; Power suit - death sequence (eight frames) / beam charging (first four frames)
     dw $0000,$0108,$03BD,$1405,$3BE0,$21A8,$579F,$4AD2                   ;9B9820;
     dw $3A4E,$00BB,$02B5,$016B,$0252,$1104,$0074,$000D                   ;9B9830;
 
@@ -194,6 +198,7 @@ SamusPalettes_PowerSuit_DeathSequence_7:
     dw $73BC,$6F7E,$6FBD,$6F9C,$6FBD,$6F9B,$6F7D,$6F7C                   ;9B9910;
 
 SamusPalettes_VariaSuit_DeathSequence_BeamCharging_0:
+; Varia suit - death sequence (eight frames) / beam charging (first four frames)
     dw $0000,$0108,$02FF,$1405,$3BE0,$21A8,$579F,$4AD2                   ;9B9920;
     dw $3A4E,$00BB,$01BE,$008E,$0252,$1104,$0074,$000D                   ;9B9930;
 
@@ -226,6 +231,7 @@ SamusPalettes_VariaSuit_DeathSequence_7:
     dw $73BC,$6F7E,$6F9E,$6F7C,$6FBD,$6F9B,$6F7D,$6F7C                   ;9B9A10;
 
 SamusPalettes_GravitySuit_DeathSequence_BeamCharging_0:
+; Gravity suit - death sequence (eight frames) / beam charging (first four frames)
     dw $14E0,$00CE,$421F,$1405,$3BE0,$21A8,$579F,$4AD2                   ;9B9A20;
     dw $3A4E,$00BB,$5914,$30AA,$0216,$1104,$0074,$000D                   ;9B9A30;
 
@@ -258,6 +264,7 @@ SamusPalettes_GravitySuit_DeathSequence_7:
     dw $73BC,$6F7E,$779D,$737C,$6FBD,$6F9B,$6F7D,$6F7C                   ;9B9B10;
 
 SamusPalettes_PowerSuit_SpeedBoosting_BabyMetroidDrain_0:
+; SamusPalettes_PowerSuit_SpeedBoosting_BabyMetroidDrain_3 also used for metroid drain blue
     dw $0000,$0108,$03BD,$1405,$3BE0,$21A8,$579F,$4AD2                   ;9B9B20;
     dw $3A4E,$00BB,$02B5,$016B,$0252,$1104,$0074,$000D                   ;9B9B30;
 
@@ -290,6 +297,7 @@ SamusPalettes_PowerSuit_SpeedBoosterShine_3:
     dw $6B7A,$5F1E,$5F9C,$5F5A,$5F7B,$6338,$5F1C,$5EFA                   ;9B9C10;
 
 SamusPalettes_PowerSuit_Shinespark_PseudoScrewAttack_0:
+; SamusPalettes_PowerSuit_Shinespark_PseudoScrewAttack_3 also used for power suit pseudo screw attack
     dw $3800,$0108,$03BD,$1405,$3BE0,$21A8,$579F,$4AD2                   ;9B9C20;
     dw $3A4E,$00BB,$02B5,$016B,$0252,$1104,$0074,$000D                   ;9B9C30;
 
@@ -322,6 +330,7 @@ SamusPalettes_PowerSuit_ScrewAttack_3:
     dw $63EE,$2BFB,$03F0,$034B,$2BF6,$3BE4,$2BF4,$2BED                   ;9B9D10;
 
 SamusPalettes_VariaSuit_SpeedBoosting_BabyMetroidDrain_0:
+; SamusPalettes_VariaSuit_SpeedBoosting_BabyMetroidDrain_3 also used for metroid drain blue
     dw $0000,$0108,$02FF,$1405,$3BE0,$21A8,$579F,$4AD2                   ;9B9D20;
     dw $3A4E,$00BB,$01BE,$008E,$0252,$1104,$0074,$000D                   ;9B9D30;
 
@@ -354,6 +363,7 @@ SamusPalettes_VariaSuit_SpeedBoosterShine_3:
     dw $6B7A,$5F1E,$5F5E,$5F1A,$5F7B,$6338,$5F1C,$5EFA                   ;9B9E10;
 
 SamusPalettes_VariaSuit_Shinespark_PseudoScrewAttack_0:
+; SamusPalettes_VariaSuit_Shinespark_PseudoScrewAttack_3 also used for varia suit pseudo screw attack
     dw $3800,$0108,$02FF,$1405,$3BE0,$21A8,$579F,$4AD2                   ;9B9E20;
     dw $3A4E,$00BB,$01BE,$008E,$0252,$1104,$0074,$000D                   ;9B9E30;
 
@@ -386,6 +396,7 @@ SamusPalettes_VariaSuit_ScrewAttack_3:
     dw $63EE,$2BFB,$039E,$026E,$03F2,$3BE4,$2BF4,$2BED                   ;9B9F10;
 
 SamusPalettes_GravitySuit_SpeedBoosting_BabyMetroidDrain_0:
+; SamusPalettes_GravitySuit_SpeedBoosting_BabyMetroidDrain_3 also used for metroid drain blue
     dw $14E0,$00CE,$421F,$1405,$3BE0,$21A8,$579F,$4AD2                   ;9B9F20;
     dw $3A4E,$00BB,$5914,$30AA,$0216,$1104,$0074,$000D                   ;9B9F30;
 
@@ -418,6 +429,7 @@ SamusPalettes_GravitySuit_SpeedBoosterShine_3:
     dw $6B7A,$5F1E,$733C,$6B19,$5F7C,$6338,$5F1C,$5EFA                   ;9BA010;
 
 SamusPalettes_GravitySuit_Shinespark_0:
+; SamusPalettes_GravitySuit_Shinespark_3 also used for gravity suit pseudo screw attack
     dw $3800,$00CE,$421F,$1405,$3BE0,$21A8,$579F,$4AD2                   ;9BA020;
     dw $3A4E,$00BB,$5914,$30AA,$0216,$1104,$0074,$000D                   ;9BA030;
 
@@ -530,11 +542,13 @@ SamusPalettes_HurtFlash:
     dw $6B7B,$6B7B,$6B7B,$5F18,$6B7B,$5F18,$6739,$5F18                   ;9BA390;
 
 SamusPalettes_Intro:
+; Intro Samus (greyscale)
     dw $3800,$2DAD,$52D6,$1084,$77FF,$2DAD,$677B,$52D6                   ;9BA3A0;
     dw $4252,$4252,$4252,$1908,$4252,$1908,$2DAD,$1908                   ;9BA3B0;
 
-SamusPalettes_Visor:
-    dw $3BE0,$5FF0,$7FFF,$43FF,$2F5A,$1AB5                               ;9BA3C0;
+SamusPalettes_Visor:                                                     ;9BA3C0;
+    dw $3BE0,$5FF0,$7FFF ; Using x-ray
+    dw $43FF,$2F5A,$1AB5 ; In room with layer blending configuration = 28h/2Ah (with colour math backdrops)
 
 SetProjectileTrailPosition:
     PHP                                                                  ;9BA3CC;
@@ -792,6 +806,14 @@ UnchargedBeamTrails_WaveIcePlasma:
     dw UnchargedBeamTrails_WaveIcePlasma_7                               ;9BA56B;
     dw UnchargedBeamTrails_WaveIcePlasma_0                               ;9BA56D;
 
+; Format:
+;     x,y,X,Y
+;     x: Left trail X offset
+;     y: Left trail Y offset
+;     X: Right trail X offset
+;     Y: Right trail Y offset
+
+; Indexed by [[projectile instruction pointer] - 2] * 4
 UnchargedBeamTrails_Default_0:
     db $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00   ;9BA56F;
     db $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00   ;9BA57F;
@@ -949,76 +971,76 @@ UnchargedBeamTrails_WaveIcePlasma_7:
     db $12,$06,$06,$12                                                   ;9BA98B;
 
 ChargedBeamTrails_Default:
-    dw ChargedBeamTrails_Default_0                                       ;9BA98F;
-    dw ChargedBeamTrails_Default_0                                       ;9BA991;
-    dw ChargedBeamTrails_Default_0                                       ;9BA993;
-    dw ChargedBeamTrails_Default_0                                       ;9BA995;
-    dw ChargedBeamTrails_Default_0                                       ;9BA997;
-    dw ChargedBeamTrails_Default_0                                       ;9BA999;
-    dw ChargedBeamTrails_Default_0                                       ;9BA99B;
-    dw ChargedBeamTrails_Default_0                                       ;9BA99D;
-    dw ChargedBeamTrails_Default_0                                       ;9BA99F;
-    dw ChargedBeamTrails_Default_0                                       ;9BA9A1;
+    dw ChargedBeamTrails_Default_0                                       ;9BA98F; Up, facing right
+    dw ChargedBeamTrails_Default_0                                       ;9BA991; Up-right
+    dw ChargedBeamTrails_Default_0                                       ;9BA993; Right
+    dw ChargedBeamTrails_Default_0                                       ;9BA995; Down-right
+    dw ChargedBeamTrails_Default_0                                       ;9BA997; Down, facing right
+    dw ChargedBeamTrails_Default_0                                       ;9BA999; Down, facing left
+    dw ChargedBeamTrails_Default_0                                       ;9BA99B; Down-left
+    dw ChargedBeamTrails_Default_0                                       ;9BA99D; Left
+    dw ChargedBeamTrails_Default_0                                       ;9BA99F; Up-left
+    dw ChargedBeamTrails_Default_0                                       ;9BA9A1; Up, facing left
 
 ChargedBeamTrails_Wave_WaveIce:
-    dw ChargedBeamTrails_Wave_WaveIce_0                                  ;9BA9A3;
-    dw ChargedBeamTrails_Wave_WaveIce_2                                  ;9BA9A5;
-    dw ChargedBeamTrails_Wave_WaveIce_1                                  ;9BA9A7;
-    dw ChargedBeamTrails_Wave_WaveIce_3                                  ;9BA9A9;
-    dw ChargedBeamTrails_Wave_WaveIce_0                                  ;9BA9AB;
-    dw ChargedBeamTrails_Wave_WaveIce_0                                  ;9BA9AD;
-    dw ChargedBeamTrails_Wave_WaveIce_2                                  ;9BA9AF;
-    dw ChargedBeamTrails_Wave_WaveIce_1                                  ;9BA9B1;
-    dw ChargedBeamTrails_Wave_WaveIce_3                                  ;9BA9B3;
-    dw ChargedBeamTrails_Wave_WaveIce_0                                  ;9BA9B5;
+    dw ChargedBeamTrails_Wave_WaveIce_0                                  ;9BA9A3; Up, facing right
+    dw ChargedBeamTrails_Wave_WaveIce_2                                  ;9BA9A5; Up-right
+    dw ChargedBeamTrails_Wave_WaveIce_1                                  ;9BA9A7; Right
+    dw ChargedBeamTrails_Wave_WaveIce_3                                  ;9BA9A9; Down-right
+    dw ChargedBeamTrails_Wave_WaveIce_0                                  ;9BA9AB; Down, facing right
+    dw ChargedBeamTrails_Wave_WaveIce_0                                  ;9BA9AD; Down, facing left
+    dw ChargedBeamTrails_Wave_WaveIce_2                                  ;9BA9AF; Down-left
+    dw ChargedBeamTrails_Wave_WaveIce_1                                  ;9BA9B1; Left
+    dw ChargedBeamTrails_Wave_WaveIce_3                                  ;9BA9B3; Up-left
+    dw ChargedBeamTrails_Wave_WaveIce_0                                  ;9BA9B5; Up, facing left
 
 ChargedBeamTrails_IceSpazer:
-    dw ChargedBeamTrails_IceSpazer_0                                     ;9BA9B7;
-    dw ChargedBeamTrails_IceSpazer_1                                     ;9BA9B9;
-    dw ChargedBeamTrails_IceSpazer_2                                     ;9BA9BB;
-    dw ChargedBeamTrails_IceSpazer_3                                     ;9BA9BD;
-    dw ChargedBeamTrails_IceSpazer_4                                     ;9BA9BF;
-    dw ChargedBeamTrails_IceSpazer_4                                     ;9BA9C1;
-    dw ChargedBeamTrails_IceSpazer_5                                     ;9BA9C3;
-    dw ChargedBeamTrails_IceSpazer_6                                     ;9BA9C5;
-    dw ChargedBeamTrails_IceSpazer_7                                     ;9BA9C7;
-    dw ChargedBeamTrails_IceSpazer_0                                     ;9BA9C9;
+    dw ChargedBeamTrails_IceSpazer_0                                     ;9BA9B7; Up, facing right
+    dw ChargedBeamTrails_IceSpazer_1                                     ;9BA9B9; Up-right
+    dw ChargedBeamTrails_IceSpazer_2                                     ;9BA9BB; Right
+    dw ChargedBeamTrails_IceSpazer_3                                     ;9BA9BD; Down-right
+    dw ChargedBeamTrails_IceSpazer_4                                     ;9BA9BF; Down, facing right
+    dw ChargedBeamTrails_IceSpazer_4                                     ;9BA9C1; Down, facing left
+    dw ChargedBeamTrails_IceSpazer_5                                     ;9BA9C3; Down-left
+    dw ChargedBeamTrails_IceSpazer_6                                     ;9BA9C5; Left
+    dw ChargedBeamTrails_IceSpazer_7                                     ;9BA9C7; Up-left
+    dw ChargedBeamTrails_IceSpazer_0                                     ;9BA9C9; Up, facing left
 
 ChargedBeamTrails_WaveIceSpazer:
-    dw ChargedBeamTrails_WaveIceSpazer_0                                 ;9BA9CB;
-    dw ChargedBeamTrails_WaveIceSpazer_1                                 ;9BA9CD;
-    dw ChargedBeamTrails_WaveIceSpazer_2                                 ;9BA9CF;
-    dw ChargedBeamTrails_WaveIceSpazer_3                                 ;9BA9D1;
-    dw ChargedBeamTrails_WaveIceSpazer_4                                 ;9BA9D3;
-    dw ChargedBeamTrails_WaveIceSpazer_4                                 ;9BA9D5;
-    dw ChargedBeamTrails_WaveIceSpazer_5                                 ;9BA9D7;
-    dw ChargedBeamTrails_WaveIceSpazer_6                                 ;9BA9D9;
-    dw ChargedBeamTrails_WaveIceSpazer_7                                 ;9BA9DB;
-    dw ChargedBeamTrails_WaveIceSpazer_0                                 ;9BA9DD;
+    dw ChargedBeamTrails_WaveIceSpazer_0                                 ;9BA9CB; Up, facing right
+    dw ChargedBeamTrails_WaveIceSpazer_1                                 ;9BA9CD; Up-right
+    dw ChargedBeamTrails_WaveIceSpazer_2                                 ;9BA9CF; Right
+    dw ChargedBeamTrails_WaveIceSpazer_3                                 ;9BA9D1; Down-right
+    dw ChargedBeamTrails_WaveIceSpazer_4                                 ;9BA9D3; Down, facing right
+    dw ChargedBeamTrails_WaveIceSpazer_4                                 ;9BA9D5; Down, facing left
+    dw ChargedBeamTrails_WaveIceSpazer_5                                 ;9BA9D7; Down-left
+    dw ChargedBeamTrails_WaveIceSpazer_6                                 ;9BA9D9; Left
+    dw ChargedBeamTrails_WaveIceSpazer_7                                 ;9BA9DB; Up-left
+    dw ChargedBeamTrails_WaveIceSpazer_0                                 ;9BA9DD; Up, facing left
 
 ChargedBeamTrails_IcePlasma:
-    dw ChargedBeamTrails_IcePlasma_0                                     ;9BA9DF;
-    dw ChargedBeamTrails_IcePlasma_1                                     ;9BA9E1;
-    dw ChargedBeamTrails_IcePlasma_2                                     ;9BA9E3;
-    dw ChargedBeamTrails_IcePlasma_3                                     ;9BA9E5;
-    dw ChargedBeamTrails_IcePlasma_4                                     ;9BA9E7;
-    dw ChargedBeamTrails_IcePlasma_4                                     ;9BA9E9;
-    dw ChargedBeamTrails_IcePlasma_5                                     ;9BA9EB;
-    dw ChargedBeamTrails_IcePlasma_6                                     ;9BA9ED;
-    dw ChargedBeamTrails_IcePlasma_7                                     ;9BA9EF;
-    dw ChargedBeamTrails_IcePlasma_0                                     ;9BA9F1;
+    dw ChargedBeamTrails_IcePlasma_0                                     ;9BA9DF; Up, facing right
+    dw ChargedBeamTrails_IcePlasma_1                                     ;9BA9E1; Up-right
+    dw ChargedBeamTrails_IcePlasma_2                                     ;9BA9E3; Right
+    dw ChargedBeamTrails_IcePlasma_3                                     ;9BA9E5; Down-right
+    dw ChargedBeamTrails_IcePlasma_4                                     ;9BA9E7; Down, facing right
+    dw ChargedBeamTrails_IcePlasma_4                                     ;9BA9E9; Down, facing left
+    dw ChargedBeamTrails_IcePlasma_5                                     ;9BA9EB; Down-left
+    dw ChargedBeamTrails_IcePlasma_6                                     ;9BA9ED; Left
+    dw ChargedBeamTrails_IcePlasma_7                                     ;9BA9EF; Up-left
+    dw ChargedBeamTrails_IcePlasma_0                                     ;9BA9F1; Up, facing left
 
 ChargedBeamTrails_WaveIcePlasma:
-    dw ChargedBeamTrails_WaveIcePlasma_0                                 ;9BA9F3;
-    dw ChargedBeamTrails_WaveIcePlasma_1                                 ;9BA9F5;
-    dw ChargedBeamTrails_WaveIcePlasma_2                                 ;9BA9F7;
-    dw ChargedBeamTrails_WaveIcePlasma_3                                 ;9BA9F9;
-    dw ChargedBeamTrails_WaveIcePlasma_4                                 ;9BA9FB;
-    dw ChargedBeamTrails_WaveIcePlasma_4                                 ;9BA9FD;
-    dw ChargedBeamTrails_WaveIcePlasma_5                                 ;9BA9FF;
-    dw ChargedBeamTrails_WaveIcePlasma_6                                 ;9BAA01;
-    dw ChargedBeamTrails_WaveIcePlasma_7                                 ;9BAA03;
-    dw ChargedBeamTrails_WaveIcePlasma_0                                 ;9BAA05;
+    dw ChargedBeamTrails_WaveIcePlasma_0                                 ;9BA9F3; Up, facing right
+    dw ChargedBeamTrails_WaveIcePlasma_1                                 ;9BA9F5; Up-right
+    dw ChargedBeamTrails_WaveIcePlasma_2                                 ;9BA9F7; Right
+    dw ChargedBeamTrails_WaveIcePlasma_3                                 ;9BA9F9; Down-right
+    dw ChargedBeamTrails_WaveIcePlasma_4                                 ;9BA9FB; Down, facing right
+    dw ChargedBeamTrails_WaveIcePlasma_4                                 ;9BA9FD; Down, facing left
+    dw ChargedBeamTrails_WaveIcePlasma_5                                 ;9BA9FF; Down-left
+    dw ChargedBeamTrails_WaveIcePlasma_6                                 ;9BAA01; Left
+    dw ChargedBeamTrails_WaveIcePlasma_7                                 ;9BAA03; Up-left
+    dw ChargedBeamTrails_WaveIcePlasma_0                                 ;9BAA05; Up, facing left
 
 ChargedBeamTrails_Default_0:
     db $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00   ;9BAA07;
@@ -1249,28 +1271,36 @@ ChargedBeamTrails_WaveIcePlasma_7:
     db $18,$10,$10,$18,$18,$10,$10,$18                                   ;9BB31F;
 
 SpazerSBATrail_WaveSpazer:
-    dw SpazerSBATrail_WaveSpazer_0                                       ;9BB327;
-    dw SpazerSBATrail_WaveSpazer_1                                       ;9BB329;
-    dw SpazerSBATrail_WaveSpazer_2                                       ;9BB32B;
-    dw SpazerSBATrail_WaveSpazer_3                                       ;9BB32D;
-    dw SpazerSBATrail_WaveSpazer_0                                       ;9BB32F;
-    dw SpazerSBATrail_WaveSpazer_0                                       ;9BB331;
-    dw SpazerSBATrail_WaveSpazer_1                                       ;9BB333;
-    dw SpazerSBATrail_WaveSpazer_2                                       ;9BB335;
-    dw SpazerSBATrail_WaveSpazer_3                                       ;9BB337;
-    dw SpazerSBATrail_WaveSpazer_0                                       ;9BB339;
+    dw SpazerSBATrail_WaveSpazer_0                                       ;9BB327; Up, facing right
+    dw SpazerSBATrail_WaveSpazer_1                                       ;9BB329; Up-right
+    dw SpazerSBATrail_WaveSpazer_2                                       ;9BB32B; Right
+    dw SpazerSBATrail_WaveSpazer_3                                       ;9BB32D; Down-right
+    dw SpazerSBATrail_WaveSpazer_0                                       ;9BB32F; Down, facing right
+    dw SpazerSBATrail_WaveSpazer_0                                       ;9BB331; Down, facing left
+    dw SpazerSBATrail_WaveSpazer_1                                       ;9BB333; Down-left
+    dw SpazerSBATrail_WaveSpazer_2                                       ;9BB335; Left
+    dw SpazerSBATrail_WaveSpazer_3                                       ;9BB337; Up-left
+    dw SpazerSBATrail_WaveSpazer_0                                       ;9BB339; Up, facing left
 
+; Format:
+;     x,y,X,Y
+;     x: Left trail X offset
+;     y: Left trail Y offset
+;     X: Right trail X offset
+;     Y: Right trail Y offset
+
+; Indexed by [[projectile instruction pointer] - 2] * 4
 SpazerSBATrail_WaveSpazer_0:
-    db $00,$00,$00,$00,$10,$00,$F0,$00,$00,$00,$00,$00,$F0,$00,$10,$00   ;9BB33B;
+    db $00,$00,$00,$00, $10,$00,$F0,$00, $00,$00,$00,$00, $F0,$00,$10,$00 ;9BB33B;
 
 SpazerSBATrail_WaveSpazer_1:
-    db $00,$00,$00,$00,$F6,$F6,$0A,$0A,$00,$00,$00,$00,$0A,$0A,$F6,$F6   ;9BB34B;
+    db $00,$00,$00,$00, $F6,$F6,$0A,$0A, $00,$00,$00,$00, $0A,$0A,$F6,$F6 ;9BB34B;
 
 SpazerSBATrail_WaveSpazer_2:
-    db $00,$00,$00,$00,$00,$F0,$00,$10,$00,$00,$00,$00,$00,$10,$00,$F0   ;9BB35B;
+    db $00,$00,$00,$00, $00,$F0,$00,$10, $00,$00,$00,$00, $00,$10,$00,$F0 ;9BB35B;
 
 SpazerSBATrail_WaveSpazer_3:
-    db $00,$00,$00,$00,$0A,$F6,$F6,$0A,$00,$00,$00,$00,$F6,$0A,$0A,$F6   ;9BB36B;
+    db $00,$00,$00,$00, $0A,$F6,$F6,$0A, $00,$00,$00,$00, $F6,$0A,$0A,$F6 ;9BB36B;
 
 UNSUED_SpazerSBATrail_Spazer_IceSpazer_9BB37B:
     dw UNSUED_SpazerSBATrail_Spazer_IceSpazer_0_9BB38F                   ;9BB37B;
@@ -1285,10 +1315,10 @@ UNSUED_SpazerSBATrail_Spazer_IceSpazer_9BB37B:
     dw UNSUED_SpazerSBATrail_Spazer_IceSpazer_0_9BB38F                   ;9BB38D;
 
 UNSUED_SpazerSBATrail_Spazer_IceSpazer_0_9BB38F:
-    db $00,$00,$00,$00,$F8,$08,$08,$08,$F0,$08,$10,$08                   ;9BB38F;
+    db $00,$00,$00,$00, $F8,$08,$08,$08, $F0,$08,$10,$08                 ;9BB38F;
 
 UNSUED_SpazerSBATrail_Spazer_IceSpazer_1_9BB39B:
-    db $00,$00,$00,$00,$F8,$F8,$08,$F8,$F0,$F8,$10,$F8                   ;9BB39B;
+    db $00,$00,$00,$00, $F8,$F8,$08,$F8, $F0,$F8,$10,$F8                 ;9BB39B;
 
 SetSamusDeathSequencePose:
     PHP                                                                  ;9BB3A7;
@@ -1350,9 +1380,35 @@ SetSamusDeathSequencePose:
     RTL                                                                  ;9BB41F;
 
 
-.animationFrames:
-    db $05,$05,$05,$05,$01,$05,$05,$00,$01,$00,$05,$05,$05,$05,$05,$05   ;9BB420;
-    db $05,$01,$01,$01,$05,$05,$05,$05,$05,$05,$05,$05                   ;9BB430;
+.animationFrames:                                                        ;9BB420;
+    db $05 ; 0: Standing
+    db $05 ; 1: Running
+    db $05 ; 2: Normal jumping
+    db $05 ; 3: Spin jumping
+    db $01 ; 4: Morph ball - on ground
+    db $05 ; 5: Crouching
+    db $05 ; 6: Falling
+    db $00 ; 7: Unused
+    db $01 ; 8: Morph ball - falling
+    db $00 ; 9: Unused
+    db $05 ; Ah: Knockback / crystal flash ending
+    db $05 ; Bh: Unused
+    db $05 ; Ch: Unused
+    db $05 ; Dh: Unused
+    db $05 ; Eh: Turning around - on ground
+    db $05 ; Fh: Crouching/standing/morphing/unmorphing transition
+    db $05 ; 10h: Moonwalking
+    db $01 ; 11h: Spring ball - on ground
+    db $01 ; 12h: Spring ball - in air
+    db $01 ; 13h: Spring ball - falling
+    db $05 ; 14h: Wall jumping
+    db $05 ; 15h: Ran into a wall
+    db $05 ; 16h: Grappling
+    db $05 ; 17h: Turning around - jumping
+    db $05 ; 18h: Turning around - falling
+    db $05 ; 19h: Damage boost
+    db $05 ; 1Ah: Grabbed by Draygon
+    db $05 ; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 Draw_Samus_Starting_Death_Animation_JSL:
     JSL.L Draw_Samus_Starting_Death_Animation                            ;9BB43C;
@@ -1816,12 +1872,22 @@ SamusDeathSequencePalettePointers_Suitless:
     dw SamusPalettes_DeathSequence_SuitlessSamus_7                       ;9BB81F;
     dw SamusPalettes_DeathSequence_SuitlessSamus_8                       ;9BB821;
 
-DeathSequenceSuitExplosionPaletteIndexTable_timer:
+DeathSequenceSuitExplosionPaletteIndexTable:
+;        _____ Timer
+;       |    _ Palette table index (for SamusDeathSequencePalettePointers_Suit_power and SamusDeathSequencePalettePointers_Suitless)
+;       |   |
+  .timer
     db $15                                                               ;9BB823;
-
-DeathSequenceSuitExplosionPaletteIndexTable_index:
-    db $00,$06,$02,$03,$03,$04,$04,$05,$05,$05,$06,$06,$07,$06,$08,$50   ;9BB824;
-    db $09                                                               ;9BB834;
+  .index
+    db     $00                                                           ;9BB824;
+    db $06,$02
+    db $03,$03
+    db $04,$04
+    db $05,$05
+    db $05,$06
+    db $06,$07
+    db $06,$08
+    db $50,$09
 
 ShadesOfWhite:
     dw $0421,$0C63,$14A5,$1CE7,$2529,$2D6B,$35AD,$4210                   ;9BB835;
@@ -1876,9 +1942,36 @@ CancelGrappleBeamIfInIncompatiblePose:
     RTS                                                                  ;9BB8B7;
 
 
-.poses:
-    db $00,$00,$00,$01,$01,$00,$00,$01,$01,$01,$01,$00,$00,$01,$01,$01   ;9BB8B8;
-    db $00,$01,$01,$01,$01,$00,$00,$01,$01,$01,$00,$01                   ;9BB8C8;
+.poses:                                                                  ;9BB8B8;
+; Indexed by Samus movement type, 1 = cancel grapple beam
+    db $00 ;  0: Standing
+    db $00 ;  1: Running
+    db $00 ;  2: Normal jumping
+    db $01 ; *3: Spin jumping
+    db $01 ; *4: Morph ball - on ground
+    db $00 ;  5: Crouching
+    db $00 ;  6: Falling
+    db $01 ; *7: Unused
+    db $01 ; *8: Morph ball - falling
+    db $01 ; *9: Unused
+    db $01 ; *Ah: Knockback / crystal flash ending
+    db $00 ;  Bh: Unused
+    db $00 ;  Ch: Unused
+    db $01 ; *Dh: Unused
+    db $01 ; *Eh: Turning around - on ground
+    db $01 ; *Fh: Crouching/standing/morphing/unmorphing transition
+    db $00 ;  10h: Moonwalking
+    db $01 ; *11h: Spring ball - on ground
+    db $01 ; *12h: Spring ball - in air
+    db $01 ; *13h: Spring ball - falling
+    db $01 ; *14h: Wall jumping
+    db $00 ;  15h: Ran into a wall
+    db $00 ;  16h: Grappling
+    db $01 ; *17h: Turning around - jumping
+    db $01 ; *18h: Turning around - falling
+    db $01 ; *19h: Damage boost
+    db $00 ;  1Ah: Grabbed by Draygon
+    db $01 ; *1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 RTS_9BB8D4:
     RTS                                                                  ;9BB8D4;
@@ -2052,7 +2145,7 @@ HandleConnectingGrapple:
 .movingVertically:
     LDA.W ConnectingToGrappleBlockPointerTable_MovingVertically_next,X   ;9BB9CA;
     STA.W $0D32                                                          ;9BB9CD;
-    LDA.W ConnectingToGrappleBlockPointerTable_MovingVertically_func,X   ;9BB9D0;
+    LDA.W ConnectingToGrappleBlockPointerTable_MovingVertically_function,X ;9BB9D0;
     STA.W $0D82                                                          ;9BB9D3;
     JMP.W ($0D82)                                                        ;9BB9D6;
 
@@ -3088,72 +3181,102 @@ HandleGrappleBeamFlare:
     PLP                                                                  ;9BC0D9;
     RTL                                                                  ;9BC0DA;
 
+;        _______________________________________________________ 0: Up, facing right
+;       |      _________________________________________________ 1: Up-right
+;       |     |      ___________________________________________ 2: Right
+;       |     |     |      _____________________________________ 3: Down-right
+;       |     |     |     |      _______________________________ 4: Down, facing right
+;       |     |     |     |     |      _________________________ 5: Down, facing left
+;       |     |     |     |     |     |      ___________________ 6: Down-left
+;       |     |     |     |     |     |     |      _____________ 7: Left
+;       |     |     |     |     |     |     |     |      _______ 8: Up-left
+;       |     |     |     |     |     |     |     |     |      _ 9: Up, facing left
+;       |     |     |     |     |     |     |     |     |     |
+GrappleBeamFireVelocityTable_X:                                          ;9BC0DB;
+; Grapple beam extension X velocity * 100h (must be multiple of 4)
+    dw $0000,$087C,$0BF4,$087C,$0000,$0000,$F784,$F40C,$F784,$0000
 
-GrappleBeamFireVelocityTable_X:
-    dw $0000,$087C,$0BF4,$087C,$0000,$0000,$F784,$F40C                   ;9BC0DB;
-    dw $F784,$0000                                                       ;9BC0EB;
-
-GrappleBeamFireVelocityTable_Y:
-    dw $F40C,$F784,$0000,$087C,$0BF4,$0BF4,$087C,$0000                   ;9BC0EF;
-    dw $F784,$F40C                                                       ;9BC0FF;
+GrappleBeamFireVelocityTable_Y:                                          ;9BC0EF;
+; Grapple beam extension X velocity * 100h (must be multiple of 4)
+    dw $F40C,$F784,$0000,$087C,$0BF4,$0BF4,$087C,$0000,$F784,$F40C
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_9BC103:
     db $80                                                               ;9BC103;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-GrappleBeamFireAngles:
-    dw $8000,$A000,$C000,$E000,$0000,$0000,$2000,$4000                   ;9BC104;
-    dw $6000,$8000                                                       ;9BC114;
+GrappleBeamFireAngles:                                                   ;9BC104;
+;        _______________________________________________________ 0: Up, facing right
+;       |      _________________________________________________ 1: Up-right
+;       |     |      ___________________________________________ 2: Right
+;       |     |     |      _____________________________________ 3: Down-right
+;       |     |     |     |      _______________________________ 4: Down, facing right
+;       |     |     |     |     |      _________________________ 5: Down, facing left
+;       |     |     |     |     |     |      ___________________ 6: Down-left
+;       |     |     |     |     |     |     |      _____________ 7: Left
+;       |     |     |     |     |     |     |     |      _______ 8: Up-left
+;       |     |     |     |     |     |     |     |     |      _ 9: Up, facing left
+;       |     |     |     |     |     |     |     |     |     |
+; Indexed by [direction grapple is fired] * 2
+    dw $8000,$A000,$C000,$E000,$0000,$0000,$2000,$4000,$6000,$8000
 
 GrappleSwingConstants_AccelerationDueToAngleOfSwing:
+; Grapple swing Samus base acceleration due to angle of swing
     dw $0018                                                             ;9BC118;
 
 GrappleSwingConstants_AccelerationDueToButtonInput:
+; Grapple swing Samus base acceleration due to button input
     dw $000C                                                             ;9BC11A;
 
 GrappleSwingConstants_Deceleration:
+; Grapple swing Samus base deceleration
     dw $0005                                                             ;9BC11C;
 
 GrappleSwingConstants_AbsoluteAngularVelocity:
+; Absolute grapple swing angular velocity
     dw $0480                                                             ;9BC11E;
 
 GrappleSwingConstants_ExtraAngularVelocity_GrappleKick:
+; Extra grapple swing angular velocity (for grapple kick)
     dw $0300                                                             ;9BC120;
 
-GrappleBeamFireOffsets_NotRunning_OriginX:
-    dw $0002,$000A,$0002,$000A,$0003,$FFFC,$FFF6,$FFFE                   ;9BC122;
-    dw $FFF6,$FFFE                                                       ;9BC132;
+;        _______________________________________________________ 0: Up, facing right
+;       |      _________________________________________________ 1: Up-right
+;       |     |      ___________________________________________ 2: Right
+;       |     |     |      _____________________________________ 3: Down-right
+;       |     |     |     |      _______________________________ 4: Down, facing right
+;       |     |     |     |     |      _________________________ 5: Down, facing left
+;       |     |     |     |     |     |      ___________________ 6: Down-left
+;       |     |     |     |     |     |     |      _____________ 7: Left
+;       |     |     |     |     |     |     |     |      _______ 8: Up-left
+;       |     |     |     |     |     |     |     |     |      _ 9: Up, facing left
+;       |     |     |     |     |     |     |     |     |     |
+GrappleBeamFireOffsets_NotRunning_OriginX:                               ;9BC122;
+    dw $0002,$000A,$0002,$000A,$0003,$FFFC,$FFF6,$FFFE,$FFF6,$FFFE
 
-GrappleBeamFireOffsets_NotRunning_OriginY:
-    dw $FFF0,$FFF4,$0002,$0000,$0006,$0006,$0000,$0002                   ;9BC136;
-    dw $FFF4,$FFF0                                                       ;9BC146;
+GrappleBeamFireOffsets_NotRunning_OriginY:                               ;9BC136;
+    dw $FFF0,$FFF4,$0002,$0000,$0006,$0006,$0000,$0002,$FFF4,$FFF0
 
-GrappleBeamFireOffsets_NotRunning_FlareX:
-    dw $0002,$0012,$000F,$0011,$0003,$FFFC,$FFEF,$FFF1                   ;9BC14A;
-    dw $FFEE,$FFFE                                                       ;9BC15A;
+GrappleBeamFireOffsets_NotRunning_FlareX:                                ;9BC14A;
+    dw $0002,$0012,$000F,$0011,$0003,$FFFC,$FFEF,$FFF1,$FFEE,$FFFE
 
-GrappleBeamFireOffsets_NotRunning_FlareY:
-    dw $FFE4,$FFED,$0001,$0006,$0011,$0011,$0006,$0001                   ;9BC15E;
-    dw $FFEC,$FFE4                                                       ;9BC16E;
+GrappleBeamFireOffsets_NotRunning_FlareY:                                ;9BC15E;
+    dw $FFE4,$FFED,$0001,$0006,$0011,$0011,$0006,$0001,$FFEC,$FFE4
 
-GrappleBeamFireOffsets_Running_OriginX:
-    dw $0002,$000A,$0002,$000A,$0003,$FFFC,$FFF6,$FFFE                   ;9BC172;
-    dw $FFF6,$FFFE                                                       ;9BC182;
+GrappleBeamFireOffsets_Running_OriginX:                                  ;9BC172;
+    dw $0002,$000A,$0002,$000A,$0003,$FFFC,$FFF6,$FFFE,$FFF6,$FFFE
 
-GrappleBeamFireOffsets_Running_OriginY:
-    dw $FFF0,$FFF4,$FFFE,$0000,$0006,$0006,$0000,$FFFE                   ;9BC186;
-    dw $FFF4,$FFF0                                                       ;9BC196;
+GrappleBeamFireOffsets_Running_OriginY:                                  ;9BC186;
+    dw $FFF0,$FFF4,$FFFE,$0000,$0006,$0006,$0000,$FFFE,$FFF4,$FFF0
 
-GrappleBeamFireOffsets_Running_FlareX:
-    dw $0002,$0013,$0014,$0012,$0003,$FFFC,$FFEE,$FFEC                   ;9BC19A;
-    dw $FFED,$FFFE                                                       ;9BC1AA;
+GrappleBeamFireOffsets_Running_FlareX:                                   ;9BC19A;
+    dw $0002,$0013,$0014,$0012,$0003,$FFFC,$FFEE,$FFEC,$FFED,$FFFE
 
-GrappleBeamFireOffsets_Running_FlareY:
-    dw $FFE0,$FFEA,$FFFD,$0006,$0019,$0019,$0006,$FFFD                   ;9BC1AE;
-    dw $FFEC,$FFE0                                                       ;9BC1BE;
+GrappleBeamFireOffsets_Running_FlareY:                                   ;9BC1AE;
+    dw $FFE0,$FFEA,$FFFD,$0006,$0019,$0019,$0006,$FFFD,$FFEC,$FFE0
 
 GrappleSwingSamusXYOffsets:
+; Indices into $C2C2/C302 tables. Indexed by [grapple beam end angle] / 100h
     db $00,$00,$00,$00,$01,$01,$01,$01,$01,$01,$01,$01,$02,$02,$02,$02   ;9BC1C2;
     db $02,$02,$02,$02,$03,$03,$03,$03,$03,$03,$03,$03,$04,$04,$04,$04   ;9BC1D2;
     db $04,$04,$04,$04,$05,$05,$05,$05,$05,$05,$05,$05,$06,$06,$06,$06   ;9BC1E2;
@@ -3172,16 +3295,16 @@ GrappleSwingSamusXYOffsets:
     db $1E,$1E,$1E,$1E,$1F,$1F,$1F,$1F,$1F,$1F,$1F,$1F,$00,$00,$00,$00   ;9BC2B2;
 
 GrappleSwingSamusXYOffsets_Left:
-    db $00,$F1,$07,$F2,$0C,$F5,$12,$F6,$16,$FA,$1A,$02,$1D,$05,$1F,$0A   ;9BC2C2;
-    db $1F,$11,$1E,$16,$1B,$1B,$1A,$1F,$15,$26,$10,$29,$10,$2C,$08,$2E   ;9BC2D2;
-    db $00,$2F,$F9,$2E,$F4,$2B,$EE,$2A,$EA,$26,$E6,$1E,$E3,$1B,$E1,$16   ;9BC2E2;
-    db $E1,$0F,$E2,$0A,$E5,$05,$E6,$01,$EB,$FA,$F0,$F7,$F0,$F4,$F8,$F2   ;9BC2F2;
+    db $00,$F1, $07,$F2, $0C,$F5, $12,$F6, $16,$FA, $1A,$02, $1D,$05, $1F,$0A ;9BC2C2;
+    db $1F,$11, $1E,$16, $1B,$1B, $1A,$1F, $15,$26, $10,$29, $10,$2C, $08,$2E ;9BC2D2;
+    db $00,$2F, $F9,$2E, $F4,$2B, $EE,$2A, $EA,$26, $E6,$1E, $E3,$1B, $E1,$16 ;9BC2E2;
+    db $E1,$0F, $E2,$0A, $E5,$05, $E6,$01, $EB,$FA, $F0,$F7, $F0,$F4, $F8,$F2 ;9BC2F2;
 
 GrappleSwingSamusXYOffsets_Right:
-    db $00,$F2,$09,$F3,$10,$F6,$12,$F8,$15,$FB,$1A,$02,$1C,$06,$1E,$0A   ;9BC302;
-    db $1E,$10,$1E,$17,$1B,$1C,$1A,$21,$15,$25,$10,$29,$0B,$2B,$05,$2D   ;9BC312;
-    db $00,$2E,$F7,$2D,$F0,$2A,$EE,$28,$EB,$25,$E6,$1E,$E4,$1A,$E2,$16   ;9BC322;
-    db $E1,$0F,$E2,$09,$E5,$04,$E6,$FF,$EB,$FB,$F0,$F7,$F5,$F5,$FB,$F3   ;9BC332;
+    db $00,$F2, $09,$F3, $10,$F6, $12,$F8, $15,$FB, $1A,$02, $1C,$06, $1E,$0A ;9BC302;
+    db $1E,$10, $1E,$17, $1B,$1C, $1A,$21, $15,$25, $10,$29, $0B,$2B, $05,$2D ;9BC312;
+    db $00,$2E, $F7,$2D, $F0,$2A, $EE,$28, $EB,$25, $E6,$1E, $E4,$1A, $E2,$16 ;9BC322;
+    db $E1,$0F, $E2,$09, $E5,$04, $E6,$FF, $EB,$FB, $F0,$F7, $F5,$F5, $FB,$F3 ;9BC332;
 
 GrappleBeamStartTilesBeginEndPointers_0:
     dw Tiles_GrappleBeam_Horizontal_Beam                                 ;9BC342;
@@ -3255,10 +3378,11 @@ GrappleBeamTilesPointers:
     dw Tiles_GrappleBeam_Vertical_Beam+$20                               ;9BC3C2;
     dw Tiles_GrappleBeam_Vertical_Beam+$20                               ;9BC3C4;
 
-ConnectingToGrappleBlockPointerTable_Default_next:
+; Indexed by [direction grapple is fired] * 4.
+ConnectingToGrappleBlockPointerTable_Default:
+  .next ; Next grapple beam function
     dw GrappleBeamFunction_Connected_Swinging                            ;9BC3C6;
-
-ConnectingToGrappleBlockPointerTable_Default_function:
+  .function ; Function to execute
     dw HandleConnectingGrapple_SwingingClockwise                         ;9BC3C8;
     dw GrappleBeamFunction_Connected_Swinging                            ;9BC3CA;
     dw HandleConnectingGrapple_SwingingClockwise                         ;9BC3CC;
@@ -3279,10 +3403,10 @@ ConnectingToGrappleBlockPointerTable_Default_function:
     dw GrappleBeamFunction_Connected_Swinging                            ;9BC3EA;
     dw HandleConnectingGrapple_SwingingAntiClockwise                     ;9BC3EC;
 
-ConnectingToGrappleBlockPointerTable_MovingVertically_next:
+ConnectingToGrappleBlockPointerTable_MovingVertically:
+  .next
     dw GrappleBeamFunction_Connected_Swinging                            ;9BC3EE;
-
-ConnectingToGrappleBlockPointerTable_MovingVertically_func:
+  .function
     dw HandleConnectingGrapple_SwingingClockwise                         ;9BC3F0;
     dw GrappleBeamFunction_Connected_Swinging                            ;9BC3F2;
     dw HandleConnectingGrapple_SwingingClockwise                         ;9BC3F4;
@@ -3303,10 +3427,10 @@ ConnectingToGrappleBlockPointerTable_MovingVertically_func:
     dw GrappleBeamFunction_Connected_Swinging                            ;9BC412;
     dw HandleConnectingGrapple_SwingingAntiClockwise                     ;9BC414;
 
-ConnectingToGrappleBlockPointerTable_Crouching_next:
+ConnectingToGrappleBlockPointerTable_Crouching:
+  .next
     dw GrappleBeamFunction_Connected_Swinging                            ;9BC416;
-
-ConnectingToGrappleBlockPointerTable_Crouching_function:
+  .function
     dw HandleConnectingGrapple_SwingingClockwise                         ;9BC418;
     dw GrappleBeamFunction_Connected_Swinging                            ;9BC41A;
     dw HandleConnectingGrapple_SwingingClockwise                         ;9BC41C;
@@ -3327,20 +3451,23 @@ ConnectingToGrappleBlockPointerTable_Crouching_function:
     dw GrappleBeamFunction_Connected_Swinging                            ;9BC43A;
     dw HandleConnectingGrapple_SwingingAntiClockwise                     ;9BC43C;
 
-GrappleBeamSpecialAngles_angle:
-    dw $D680                                                             ;9BC43E;
 
-GrappleBeamSpecialAngles_pose:
-    dw $00B6                                                             ;9BC440;
-
-GrappleBeamSpecialAngles_XOffset:
-    dw $FFE2                                                             ;9BC442;
-
-GrappleBeamSpecialAngles_YOffset:
-    dw $FFE8                                                             ;9BC444;
-
-GrappleBeamSpecialAngles_grappleFunction:
-    dw GrappleBeamFunction_Connected_LockedInPlace                       ;9BC446;
+GrappleBeamSpecialAngles:
+;        __________________________ Angle. Unit pi/8000h radians
+;       |      ____________________ Samus pose
+;       |     |      ______________ X offset
+;       |     |     |      ________ Y offset
+;       |     |     |     |
+  .angle                                                                 ;9BC43E;
+    dw $D680                                                             
+  .pose                                                                  ;9BC440;
+    dw       $00B6                                                             
+  .XOffset                                                               ;9BC442;
+    dw             $FFE2                                                             
+  .YOffset                                                               ;9BC444;
+    dw                   $FFE8                                                             
+  .grappleFunction:                                                      ;9BC446;
+    dw GrappleBeamFunction_Connected_LockedInPlace                       
     dw $2A80,$00B7,$001E,$FFE8                                           ;9BC448;
     dw GrappleBeamFunction_Connected_LockedInPlace                       ;9BC450;
     dw $B380,$00B6,$FFE4,$FFF8                                           ;9BC452;
