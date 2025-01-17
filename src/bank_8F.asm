@@ -7067,7 +7067,7 @@ RoomState_FastPillarsSetup:
     dw $0000                                                             ;8FB3C2;
     dw $0000                                                             ;8FB3C4;
     dw PLMPopulation_FastPillarsSetup                                    ;8FB3C6;
-    dw LibBG_Norfair_9_VeritcalPatternBrick                              ;8FB3C8;
+    dw LibBG_Norfair_9_VerticalPatternBrick                              ;8FB3C8;
     dw RTS_8F91F7                                                        ;8FB3CA;
 
 RoomDoors_FastPillarsSetup:
@@ -8378,9 +8378,9 @@ LibBG_Norfair_9_HorizontalPatternBrick:
     dl $7E4000                                                           ;8FBEA2;
     dw $4C00,$0800,$0000                                                 ;8FBEA5;
 
-LibBG_Norfair_9_VeritcalPatternBrick:
+LibBG_Norfair_9_VerticalPatternBrick:
     dw $0004                                                             ;8FBEAB;
-    dl Background_Norfair_9_VeritcalPatternBrick                         ;8FBEAD;
+    dl Background_Norfair_9_VerticalPatternBrick                         ;8FBEAD;
     dw $4000,$0002                                                       ;8FBEB0;
     dl $7E4000                                                           ;8FBEB4;
     dw $4800,$0800,$0002                                                 ;8FBEB7;

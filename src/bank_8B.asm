@@ -7208,10 +7208,10 @@ InitFunction_CinematicSpriteObject_IntroRinka:
 
 
 .Xposition:
-    db $70,$00,$C0,$00,$80,$00,$E8,$00                                   ;8BB8B5;
+    dw $0070,$00C0,$0080,$00E8                                           ;8BB8B5;
 
 .Yposition:
-    db $50,$00,$40,$00,$38,$00,$58,$00                                   ;8BB8BD;
+    dw $0050,$0040,$0038,$0058                                           ;8BB8BD;
 
 Instruction_StartMoving_IntroRinka:
     LDA.W $1B7D,X                                                        ;8BB8C5;
@@ -7362,15 +7362,15 @@ InitFunc_CineSpriteObject_IntroMotherBrainExplosion_Small:
     STA.W $1ABD,Y                                                        ;8BB9F9;
     RTS                                                                  ;8BB9FC;
 
-
 .Xposition:
-    db $10,$00,$F0,$FF,$F0,$FF                                           ;8BB9FD;
+    dw $0010,$FFF0,$FFF0                                                 ;8BB9FD;
 
 .Yposition:
-    db $00,$00,$04,$00,$F8,$FF                                           ;8BBA03;
+    dw $0000,$0004,$FFF8                                                 ;8BBA03;
 
 .instructionTimer:
-    db $01,$00,$08,$00,$10,$00                                           ;8BBA09;
+    dw $0001,$0008,$0010                                                 ;8BBA09;
+
 
 PreInst_CinematicSpriteObject_IntroMotherBrainExplosion:
     LDA.W $1A4B                                                          ;8BBA0F;
@@ -11600,10 +11600,10 @@ CinematicFunc_Ending_SpaceView_GunshipEmergence_SpinningSlow:
 .return:
     RTS                                                                  ;8BDDAC;
 
-
 .shakingXVelocities:
-    db $01,$00,$00,$00,$01,$00,$00,$00,$01,$00,$00,$00,$FF,$FF,$00,$00   ;8BDDAD;
-    db $FF,$FF,$00,$00,$01,$00,$00,$00,$01,$00,$00,$00,$FF,$FF,$00,$00   ;8BDDAF;
+    dw $0001,$0000,$0001,$0000,$0001,$0000,$FFFF,$0000                   ;8BDDAD;
+    dw $FFFF,$0000,$0001,$0000,$0001,$0000,$FFFF,$0000                   ;8BDDBD;
+
 
 CinematicFunc_Ending_SpaceView_GunshipEmergence_FlyToCamera:
     JSR.W FadeOut_ZebesExplosion_AfterGlow                               ;8BDDCD;
@@ -13159,35 +13159,35 @@ Handle_ShootingStars:
     dw $09F3,$09F3,$09F3,$09F3                                           ;8BE9C7;
 
 ShootingStar_Table_Xaccel:
-    db $10,$00                                                           ;8BE9CF;
+    dw $0010                                                             ;8BE9CF;
 
 ShootingStar_Table_Yaccel:
-    db $F0,$FF                                                           ;8BE9D1;
+    dw       $FFF0                                                       ;8BE9D1;
 
 ShootingStar_Table_timer:
-    db $06,$00                                                           ;8BE9D3;
+    dw             $0006                                                 ;8BE9D3;
 
 ShootingStar_Table_delay:
-    db $08,$00,$0C,$00,$FF,$FF,$06,$00,$00,$00,$0D,$00,$F6,$FF,$06,$00   ;8BE9D5;
-    db $06,$00,$08,$00,$F0,$FF,$06,$00,$00,$00,$02,$00,$F2,$FF,$06,$00   ;8BE9E5;
-    db $08,$00,$10,$00,$F8,$FF,$06,$00,$00,$00,$02,$00,$FF,$FF,$00,$0F   ;8BE9F5;
-    db $00,$00,$01,$00,$FE,$FF,$00,$0F,$00,$00,$00,$00,$FD,$FF,$00,$0F   ;8BEA05;
-    db $00,$00,$02,$00,$FB,$FF,$20,$00,$04,$00,$0F,$00,$10,$00,$06,$00   ;8BEA15;
-    db $08,$00,$02,$00,$09,$00,$08,$00,$00,$00,$0C,$00,$08,$00,$06,$00   ;8BEA25;
-    db $00,$00,$10,$00,$04,$00,$06,$00,$08,$00,$08,$00,$0C,$00,$08,$00   ;8BEA35;
-    db $00,$00,$02,$00,$08,$00,$08,$00,$00,$00,$02,$00,$04,$00,$00,$0F   ;8BEA45;
-    db $00,$00,$02,$00,$01,$00,$00,$0F,$00,$00,$F3,$FF,$0D,$00,$04,$00   ;8BEA55;
-    db $08,$00,$F2,$FF,$08,$00,$04,$00,$00,$00,$F9,$FF,$0E,$00,$06,$00   ;8BEA65;
-    db $00,$00,$FB,$FF,$10,$00,$04,$00,$08,$00,$FC,$FF,$05,$00,$20,$00   ;8BEA75;
-    db $00,$00,$FE,$FF,$03,$00,$00,$0F,$00,$00,$FE,$FF,$04,$00,$00,$0F   ;8BEA85;
-    db $00,$00,$FD,$FF,$01,$00,$00,$0F,$00,$00,$F4,$FF,$02,$00,$04,$00   ;8BEA95;
-    db $00,$00,$FA,$FF,$05,$00,$20,$00,$00,$00,$FD,$FF,$08,$00,$20,$00   ;8BEAA5;
-    db $00,$00,$F2,$FF,$F7,$FF,$04,$00,$08,$00,$F8,$FF,$F4,$FF,$04,$00   ;8BEAB5;
-    db $00,$00,$FA,$FF,$F2,$FF,$06,$00,$00,$00,$F4,$FF,$F0,$FF,$04,$00   ;8BEAC5;
-    db $08,$00,$F8,$FF,$FC,$FF,$20,$00,$00,$00,$FD,$FF,$FA,$FF,$20,$00   ;8BEAD5;
-    db $00,$00,$F9,$FF,$F8,$FF,$20,$00,$00,$00,$FE,$FF,$FD,$FF,$00,$0F   ;8BEAE5;
-    db $00,$00,$FC,$FF,$FC,$FF,$00,$0F,$00,$00,$F8,$FF,$FE,$FF,$00,$0F   ;8BEAF5;
-    db $00,$00,$F8,$FF,$FC,$FF,$00,$0F,$00,$00                           ;8BEB05;
+    dw                   $0008,$000C,$FFFF,$0006,$0000                   ;8BE9D5;
+    dw $000D,$FFF6,$0006,$0006,$0008,$FFF0,$0006,$0000
+    dw $0002,$FFF2,$0006,$0008,$0010,$FFF8,$0006,$0000
+    dw $0002,$FFFF,$0F00,$0000,$0001,$FFFE,$0F00,$0000
+    dw $0000,$FFFD,$0F00,$0000,$0002,$FFFB,$0020,$0004
+    dw $000F,$0010,$0006,$0008,$0002,$0009,$0008,$0000
+    dw $000C,$0008,$0006,$0000,$0010,$0004,$0006,$0008
+    dw $0008,$000C,$0008,$0000,$0002,$0008,$0008,$0000
+    dw $0002,$0004,$0F00,$0000,$0002,$0001,$0F00,$0000
+    dw $FFF3,$000D,$0004,$0008,$FFF2,$0008,$0004,$0000
+    dw $FFF9,$000E,$0006,$0000,$FFFB,$0010,$0004,$0008
+    dw $FFFC,$0005,$0020,$0000,$FFFE,$0003,$0F00,$0000
+    dw $FFFE,$0004,$0F00,$0000,$FFFD,$0001,$0F00,$0000
+    dw $FFF4,$0002,$0004,$0000,$FFFA,$0005,$0020,$0000
+    dw $FFFD,$0008,$0020,$0000,$FFF2,$FFF7,$0004,$0008
+    dw $FFF8,$FFF4,$0004,$0000,$FFFA,$FFF2,$0006,$0000
+    dw $FFF4,$FFF0,$0004,$0008,$FFF8,$FFFC,$0020,$0000
+    dw $FFFD,$FFFA,$0020,$0000,$FFF9,$FFF8,$0020,$0000
+    dw $FFFE,$FFFD,$0F00,$0000,$FFFC,$FFFC,$0F00,$0000
+    dw $FFF8,$FFFE,$0F00,$0000,$FFF8,$FFFC,$0F00,$0000
 
 InstList_CinematicSpriteObjects_ExplodingZebes_Zebes_0:
     dw CinematicSpriteObject_Instruction_TimerInY,$0005                  ;8BEB0F;

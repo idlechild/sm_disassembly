@@ -1028,7 +1028,7 @@ EnemyPopulations_MotherBrainFallingTubes_MainTube:
 InitAI_MotherBrainTubes:
     LDX.W $0E54                                                          ;A98B35;
     LDY.W $0FB4,X                                                        ;A98B38;
-    LDA.W .XRaidius,Y                                                    ;A98B3B;
+    LDA.W .XRadius,Y                                                     ;A98B3B;
     STA.W $0F82,X                                                        ;A98B3E;
     LDA.W .YRadius,Y                                                     ;A98B41;
     STA.W $0F84,X                                                        ;A98B44;
@@ -1042,7 +1042,7 @@ InitAI_MotherBrainTubes:
     RTL                                                                  ;A98B5C;
 
 
-.XRaidius:
+.XRadius:
     dw $0010,$0010,$0008,$0008,$0010                                     ;A98B5D;
 
 .YRadius:

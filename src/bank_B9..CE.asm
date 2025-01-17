@@ -21,8 +21,8 @@ incbin "../data/Background_Norfair_9_A_SmallPatternBrownPurple_1.bin" ; $4A byte
 Background_Norfair_9_HorizontalPatternBrick:
 incbin "../data/Background_Norfair_9_HorizontalPatternBrick.bin" ; $92 bytes
 
-Background_Norfair_9_VeritcalPatternBrick:
-incbin "../data/Background_Norfair_9_VeritcalPatternBrick.bin" ; $449 bytes
+Background_Norfair_9_VerticalPatternBrick:
+incbin "../data/Background_Norfair_9_VerticalPatternBrick.bin" ; $449 bytes
 
 Background_Norfair_9_A_CavernStalagtites:
 incbin "../data/Background_Norfair_9_A_CavernStalagtites.bin" ; $27C bytes

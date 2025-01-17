@@ -431,13 +431,13 @@ InstList_Boyon_Idle_0:
 
 InstList_Boyon_Idle_1:
     dw $000A                                                             ;A286AB;
-    dw Spritemap_Boyon_0                                                 ;A286AD;
+    dw Spritemap_Boyon_Idle_0                                            ;A286AD;
     dw $000A                                                             ;A286AF;
-    dw Spritemap_Boyon_1                                                 ;A286B1;
+    dw Spritemap_Boyon_Idle_1                                            ;A286B1;
     dw $000A                                                             ;A286B3;
-    dw Spritemap_Boyon_2                                                 ;A286B5;
+    dw Spritemap_Boyon_Idle_2                                            ;A286B5;
     dw $000A                                                             ;A286B7;
-    dw Spritemap_Boyon_1                                                 ;A286B9;
+    dw Spritemap_Boyon_Idle_1                                            ;A286B9;
     dw Instruction_CommonA2_GotoY                                        ;A286BB;
     dw InstList_Boyon_Idle_1                                             ;A286BD;
 
@@ -447,17 +447,17 @@ InstList_Boyon_Bouncing_0:
 
 InstList_Boyon_Bouncing_1:
     dw $0005                                                             ;A286C3;
-    dw Spritemap_Boyon_3                                                 ;A286C5;
+    dw Spritemap_Boyon_Bouncing_0                                        ;A286C5;
     dw $0005                                                             ;A286C7;
-    dw Spritemap_Boyon_4                                                 ;A286C9;
+    dw Spritemap_Boyon_Bouncing_1                                        ;A286C9;
     dw $0005                                                             ;A286CB;
-    dw Spritemap_Boyon_5                                                 ;A286CD;
+    dw Spritemap_Boyon_Bouncing_2                                        ;A286CD;
     dw $0005                                                             ;A286CF;
-    dw Spritemap_Boyon_6                                                 ;A286D1;
+    dw Spritemap_Boyon_Bouncing_3                                        ;A286D1;
     dw $0005                                                             ;A286D3;
-    dw Spritemap_Boyon_5                                                 ;A286D5;
+    dw Spritemap_Boyon_Bouncing_2                                        ;A286D5;
     dw $0005                                                             ;A286D7;
-    dw Spritemap_Boyon_4                                                 ;A286D9;
+    dw Spritemap_Boyon_Bouncing_1                                        ;A286D9;
     dw Instruction_Common_GotoY                                          ;A286DB;
     dw InstList_Boyon_Bouncing_1                                         ;A286DD;
 
@@ -709,37 +709,37 @@ RTL_A288D9:
     RTL                                                                  ;A288D9;
 
 
-Spritemap_Boyon_0:
+Spritemap_Boyon_Idle_0:
     dw $0001,$C3F8                                                       ;A288DA;
     db $F8                                                               ;A288DE;
     dw $2100                                                             ;A288DF;
 
-Spritemap_Boyon_1:
+Spritemap_Boyon_Idle_1:
     dw $0001,$C3F8                                                       ;A288E1;
     db $F8                                                               ;A288E5;
     dw $2102                                                             ;A288E6;
 
-Spritemap_Boyon_2:
+Spritemap_Boyon_Idle_2:
     dw $0001,$C3F8                                                       ;A288E8;
     db $F8                                                               ;A288EC;
     dw $2104                                                             ;A288ED;
 
-Spritemap_Boyon_3:
+Spritemap_Boyon_Bouncing_0:
     dw $0001,$C3F8                                                       ;A288EF;
     db $F8                                                               ;A288F3;
     dw $2106                                                             ;A288F4;
 
-Spritemap_Boyon_4:
+Spritemap_Boyon_Bouncing_1:
     dw $0001,$C3F8                                                       ;A288F6;
     db $F8                                                               ;A288FA;
     dw $2108                                                             ;A288FB;
 
-Spritemap_Boyon_5:
+Spritemap_Boyon_Bouncing_2:
     dw $0001,$C3F8                                                       ;A288FD;
     db $F8                                                               ;A28901;
     dw $210A                                                             ;A28902;
 
-Spritemap_Boyon_6:
+Spritemap_Boyon_Bouncing_3:
     dw $0001,$C3F8                                                       ;A28904;
     db $F8                                                               ;A28908;
     dw $210C                                                             ;A28909;
@@ -760,22 +760,22 @@ InstList_Stoke_MovingLeft_0:
 
 InstList_Stoke_MovingLeft_1:
     dw $0008                                                             ;A28934;
-    dw Spritemap_Stoke_0                                                 ;A28936;
+    dw Spritemap_Stoke_MovingLeft_0                                      ;A28936;
     dw $0010                                                             ;A28938;
-    dw Spritemap_Stoke_1                                                 ;A2893A;
+    dw Spritemap_Stoke_MovingLeft_1                                      ;A2893A;
     dw $0008                                                             ;A2893C;
-    dw Spritemap_Stoke_2                                                 ;A2893E;
+    dw Spritemap_Stoke_MovingLeft_2                                      ;A2893E;
     dw $0008                                                             ;A28940;
-    dw Spritemap_Stoke_3                                                 ;A28942;
+    dw Spritemap_Stoke_MovingLeft_3                                      ;A28942;
     dw Instruction_Common_GotoY                                          ;A28944;
     dw InstList_Stoke_MovingLeft_1                                       ;A28946;
 
 InstList_Stoke_AttackingLeft:
     dw $0010                                                             ;A28948;
-    dw Spritemap_Stoke_2                                                 ;A2894A;
+    dw Spritemap_Stoke_MovingLeft_2                                      ;A2894A;
     dw Instruction_Stoke_SpawnProjectileWithDirectionInY                 ;A2894C;
     dw $0000,$0010                                                       ;A2894E;
-    dw Spritemap_Stoke_4                                                 ;A28952;
+    dw Spritemap_Stoke_AttackingLeft                                     ;A28952;
     dw Instruction_Common_GotoY                                          ;A28954;
     dw InstList_Stoke_MovingLeft_0                                       ;A28956;
 
@@ -784,22 +784,22 @@ InstList_Stoke_MovingRight_0:
 
 InstList_Stoke_MovingRight_1:
     dw $0008                                                             ;A2895A;
-    dw Spritemap_Stoke_5                                                 ;A2895C;
+    dw Spritemap_Stoke_MovingRight_0                                     ;A2895C;
     dw $0010                                                             ;A2895E;
-    dw Spritemap_Stoke_6                                                 ;A28960;
+    dw Spritemap_Stoke_MovingRight_1                                     ;A28960;
     dw $0008                                                             ;A28962;
-    dw Spritemap_Stoke_7                                                 ;A28964;
+    dw Spritemap_Stoke_MovingRight_2                                     ;A28964;
     dw $0008                                                             ;A28966;
-    dw Spritemap_Stoke_8                                                 ;A28968;
+    dw Spritemap_Stoke_MovingRight_3                                     ;A28968;
     dw Instruction_Common_GotoY                                          ;A2896A;
     dw InstList_Stoke_MovingRight_1                                      ;A2896C;
 
 InstList_Stoke_AttackingRight:
     dw $0010                                                             ;A2896E;
-    dw Spritemap_Stoke_7                                                 ;A28970;
+    dw Spritemap_Stoke_MovingRight_2                                     ;A28970;
     dw Instruction_Stoke_SpawnProjectileWithDirectionInY                 ;A28972;
     dw $0001,$0010                                                       ;A28974;
-    dw Spritemap_Stoke_9                                                 ;A28978;
+    dw Spritemap_Stoke_AttackingRight                                    ;A28978;
     dw Instruction_Common_GotoY                                          ;A2897A;
     dw InstList_Stoke_MovingRight_0                                      ;A2897C;
 
@@ -1005,14 +1005,14 @@ RTL_A28AC9:
     RTL                                                                  ;A28AC9;
 
 
-Spritemap_Stoke_0:
+Spritemap_Stoke_MovingLeft_0:
     dw $0002,$C3FE                                                       ;A28ACA;
     db $F8                                                               ;A28ACE;
     dw $2101,$C3F6                                                       ;A28ACF;
     db $F8                                                               ;A28AD3;
     dw $2100                                                             ;A28AD4;
 
-Spritemap_Stoke_1:
+Spritemap_Stoke_MovingLeft_1:
     dw $0003,$01FE                                                       ;A28AD6;
     db $F0                                                               ;A28ADA;
     dw $210F,$C3FE                                                       ;A28ADB;
@@ -1021,21 +1021,21 @@ Spritemap_Stoke_1:
     db $F8                                                               ;A28AE4;
     dw $2103                                                             ;A28AE5;
 
-Spritemap_Stoke_2:
+Spritemap_Stoke_MovingLeft_2:
     dw $0002,$C3F6                                                       ;A28AE7;
     db $F8                                                               ;A28AEB;
     dw $2106,$C3FE                                                       ;A28AEC;
     db $F8                                                               ;A28AF0;
     dw $2101                                                             ;A28AF1;
 
-Spritemap_Stoke_3:
+Spritemap_Stoke_MovingLeft_3:
     dw $0002,$C3FE                                                       ;A28AF3;
     db $F8                                                               ;A28AF7;
     dw $2101,$C3F6                                                       ;A28AF8;
     db $F8                                                               ;A28AFC;
     dw $2108                                                             ;A28AFD;
 
-Spritemap_Stoke_4:
+Spritemap_Stoke_AttackingLeft:
     dw $0004,$01FE                                                       ;A28AFF;
     db $F0                                                               ;A28B03;
     dw $210E,$01F6                                                       ;A28B04;
@@ -1046,14 +1046,14 @@ Spritemap_Stoke_4:
     db $F8                                                               ;A28B12;
     dw $210A                                                             ;A28B13;
 
-Spritemap_Stoke_5:
+Spritemap_Stoke_MovingRight_0:
     dw $0002,$C3F2                                                       ;A28B15;
     db $F8                                                               ;A28B19;
     dw $6101,$C3FA                                                       ;A28B1A;
     db $F8                                                               ;A28B1E;
     dw $6100                                                             ;A28B1F;
 
-Spritemap_Stoke_6:
+Spritemap_Stoke_MovingRight_1:
     dw $0003,$01FA                                                       ;A28B21;
     db $F0                                                               ;A28B25;
     dw $610F,$C3F2                                                       ;A28B26;
@@ -1062,21 +1062,21 @@ Spritemap_Stoke_6:
     db $F8                                                               ;A28B2F;
     dw $6103                                                             ;A28B30;
 
-Spritemap_Stoke_7:
+Spritemap_Stoke_MovingRight_2:
     dw $0002,$C3FA                                                       ;A28B32;
     db $F8                                                               ;A28B36;
     dw $6106,$C3F2                                                       ;A28B37;
     db $F8                                                               ;A28B3B;
     dw $6101                                                             ;A28B3C;
 
-Spritemap_Stoke_8:
+Spritemap_Stoke_MovingRight_3:
     dw $0002,$C3F2                                                       ;A28B3E;
     db $F8                                                               ;A28B42;
     dw $6101,$C3FA                                                       ;A28B43;
     db $F8                                                               ;A28B47;
     dw $6108                                                             ;A28B48;
 
-Spritemap_Stoke_9:
+Spritemap_Stoke_AttackingRight:
     dw $0004,$01FA                                                       ;A28B4A;
     db $F0                                                               ;A28B4E;
     dw $610E,$0002                                                       ;A28B4F;

@@ -15,3 +15,9 @@ macro spritemapEntry(Size, XOffset, YOffset, YFlip, XFlip, Priority, Palette, Ti
     db <YOffset>
     dw <YFlip><<15|<XFlip><<14|<Priority><<12|<Palette><<9|<Tile>
 endmacro
+
+macro PLMPopEntry(ID, X, Y, Param)
+    dw <ID>
+    db <X>, <Y>
+    dw <Param>
+endmacro

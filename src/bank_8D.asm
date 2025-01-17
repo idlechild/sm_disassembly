@@ -13134,7 +13134,7 @@ InstList_PaletteFXObject_Crateria4_1:
     dw $0001
     dw $32FC,$2EDA,$26D8,$26D7,$26D7,$22B7,$0802,$0401,$0401,$0401,$0401
     dw Instruction_PaletteFXObject_Done
-    dw $0018,
+    dw $0018
     dw $48D5,$38B0,$286A,$2488,$2067,$1846,$1425,$1024,$0C23,$0C03,$0802
     dw Instruction_PaletteFXObject_Done
     dw $0001
