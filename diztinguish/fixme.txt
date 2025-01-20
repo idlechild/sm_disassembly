@@ -1,0 +1,4 @@
+
+$8FC9EC Pointer at end
+$8FC247 Pointers at ends
+$8FC597 Parameters should be 8bit

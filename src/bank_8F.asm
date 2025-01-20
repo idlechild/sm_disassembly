@@ -1218,6 +1218,7 @@ PLMPopulation_LNSave:                                                    ;8F918C
     %PLMPopEntry(PLMEntries_saveStation, $07, $0B, $0005)
     dw $0000
 
+
 SetupASM_ClearBlocksAfterSavingAnimalsAndShakeScreen:
     JSL.L Spawn_Hardcoded_PLM                                            ;8F9194;
     db $3D,$0B                                                           ;8F9198;
@@ -1316,13 +1317,11 @@ RTS_8F91F7:
 RoomHeader_LandingSite:
     db $00,$00,$17,$00,$09,$05,$70,$A0,$00                               ;8F91F8;
     dw RoomDoors_LandingSite                                             ;8F9201;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8F9203;
-    db $0E                                                               ;8F9205;
+    dw RoomStateCheck_EventHasBeenSet : db $0E                           ;8F9203;
     dw RoomState_LandingSite_3                                           ;8F9206;
     dw RoomStateCheck_PowerBombs                                         ;8F9208;
     dw RoomState_LandingSite_2                                           ;8F920A;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8F920C;
-    db $00                                                               ;8F920E;
+    dw RoomStateCheck_EventHasBeenSet : db $00                           ;8F920C;
     dw RoomState_LandingSite_1                                           ;8F920F;
     dw Use_StatePointer_inX                                              ;8F9211;
 
@@ -1386,13 +1385,12 @@ RoomScrolls_LandingSite:
     db $02,$02,$02,$02,$01,$01,$01,$01,$01,$01,$01,$01,$01               ;8F92A3;
 
 RoomPLM_LandingSite_0:
-    db $13,$01,$80                                                       ;8F92B0;
+    db $13,$01, $80                                                      ;8F92B0;
 
 RoomHeader_GauntletEntrance:
     db $01,$00,$12,$02,$05,$01,$70,$A0,$00                               ;8F92B3;
     dw RoomDoors_GauntletEntrance                                        ;8F92BC;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8F92BE;
-    db $00                                                               ;8F92C0;
+    dw RoomStateCheck_EventHasBeenSet : db $00                           ;8F92BE;
     dw RoomState_GauntletEntrance_1                                      ;8F92C1;
     dw Use_StatePointer_inX                                              ;8F92C3;
 
@@ -1431,11 +1429,9 @@ RoomDoors_GauntletEntrance:
 RoomHeader_Parlor:
     db $02,$00,$12,$04,$05,$05,$70,$A0,$00                               ;8F92FD;
     dw RoomDoors_Parlor                                                  ;8F9306;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8F9308;
-    db $0E                                                               ;8F930A;
+    dw RoomStateCheck_EventHasBeenSet : db $0E                           ;8F9308;
     dw RoomState_Parlor_2                                                ;8F930B;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8F930D;
-    db $00                                                               ;8F930F;
+    dw RoomStateCheck_EventHasBeenSet : db $00                           ;8F930D;
     dw RoomState_Parlor_1                                                ;8F9310;
     dw Use_StatePointer_inX                                              ;8F9312;
 
@@ -1495,31 +1491,31 @@ RoomScrolls_Parlor:
     db $02,$00,$00,$00,$00,$02,$00,$00,$00                               ;8F9380;
 
 RoomPLM_Parlor_0:
-    db $08,$02,$80                                                       ;8F9389;
+    db $08,$02, $80                                                      ;8F9389;
 
 RoomPLM_Parlor_1:
-    db $08,$00,$80                                                       ;8F938C;
+    db $08,$00, $80                                                      ;8F938C;
 
 RoomPLM_Parlor_2:
-    db $00,$00,$02,$00,$06,$02,$80                                       ;8F938F;
+    db $00,$00, $02,$00, $06,$02, $80                                    ;8F938F;
 
 RoomPLM_Parlor_6:
-    db $06,$00,$80                                                       ;8F9396;
+    db $06,$00, $80                                                      ;8F9396;
 
 RoomPLM_Parlor_A:
-    db $00,$01,$80                                                       ;8F9399;
+    db $00,$01, $80                                                      ;8F9399;
 
 RoomPLM_Parlor_D:
-    db $02,$01,$80                                                       ;8F939C;
+    db $02,$01, $80                                                      ;8F939C;
 
 RoomPLM_Parlor_13_14:
-    db $04,$01,$80                                                       ;8F939F;
+    db $04,$01, $80                                                      ;8F939F;
 
 RoomPLM_Parlor_15:
-    db $04,$00,$80                                                       ;8F93A2;
+    db $04,$00, $80                                                      ;8F93A2;
 
 RoomPLM_Parlor_1A:
-    db $04,$00,$08,$02,$80                                               ;8F93A5;
+    db $04,$00, $08,$02, $80                                             ;8F93A5;
 
 RoomHeader_CrateriaPowerBombs:
     db $03,$00,$20,$01,$02,$01,$70,$A0,$00                               ;8F93AA;
@@ -1651,10 +1647,10 @@ RoomScroll_CrateriaKihunter:
     db $01,$01,$01,$00,$00,$00,$00,$02,$00                               ;8F94B9;
 
 RoomPLM_CrateriaKihunter_0:
-    db $01,$02,$04,$02,$80                                               ;8F94C2;
+    db $01,$02, $04,$02, $80                                             ;8F94C2;
 
 RoomPLM_CrateriaKihunter_2:
-    db $01,$01,$04,$00,$80                                               ;8F94C7;
+    db $01,$01, $04,$00, $80                                             ;8F94C7;
 
 RoomHeader_ForgottenHighwayElev:
     db $08,$00,$34,$0A,$01,$01,$70,$A0,$00                               ;8F94CC;
@@ -1684,7 +1680,7 @@ RoomScrolls_ForgottenHighwayElev:
     db $01                                                               ;8F94F9;
 
 RoomPLM_ForgottenHighwayElev_0:
-    db $00,$02,$80                                                       ;8F94FA;
+    db $00,$02, $80                                                      ;8F94FA;
 
 RoomHeader_EastOcean:
     db $09,$00,$31,$00,$07,$06,$70,$A0,$00                               ;8F94FD;
@@ -1860,7 +1856,7 @@ RoomScrolls_RedBinstarElev:
     db $01                                                               ;8F9657;
 
 RoomPLM_RedBinstarElev_0:
-    db $00,$02,$80                                                       ;8F9658;
+    db $00,$02, $80                                                      ;8F9658;
 
 RoomHeader_GauntletETank:
     db $10,$00,$0C,$02,$06,$01,$70,$A0,$00                               ;8F965B;
@@ -1889,7 +1885,7 @@ RoomScrolls_GauntletETank:
     db $01,$01,$01,$01,$00,$01                                           ;8F9686;
 
 RoomPLM_GauntletETank_0:
-    db $04,$01,$80                                                       ;8F968C;
+    db $04,$01, $80                                                      ;8F968C;
 
 RoomHeader_PreBowling:
     db $11,$00,$2B,$02,$01,$01,$70,$A0,$00                               ;8F968F;
@@ -1917,11 +1913,9 @@ RoomDoors_PreBowling:
 RoomHeader_Climb:
     db $12,$00,$12,$09,$03,$09,$70,$A0,$00                               ;8F96BA;
     dw RoomDoors_Climb                                                   ;8F96C3;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8F96C5;
-    db $0E                                                               ;8F96C7;
+    dw RoomStateCheck_EventHasBeenSet : db $0E                           ;8F96C5;
     dw RoomState_Climb_2                                                 ;8F96C8;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8F96CA;
-    db $00                                                               ;8F96CC;
+    dw RoomStateCheck_EventHasBeenSet : db $00                           ;8F96CA;
     dw RoomState_Climb_1                                                 ;8F96CD;
     dw Use_StatePointer_inX                                              ;8F96CF;
 
@@ -1979,28 +1973,28 @@ RoomScrolls_Climb:
     db $02,$00,$00,$02,$00,$00,$02,$00,$00,$01,$00                       ;8F9739;
 
 RoomPLM_Climb_1:
-    db $02,$01,$80                                                       ;8F9744;
+    db $02,$01, $80                                                      ;8F9744;
 
 RoomPLM_Climb_0:
-    db $02,$00,$80                                                       ;8F9747;
+    db $02,$00, $80                                                      ;8F9747;
 
 RoomPLM_Climb_3:
-    db $17,$01,$80                                                       ;8F974A;
+    db $17,$01, $80                                                      ;8F974A;
 
 RoomPLM_Climb_2:
-    db $17,$00,$80                                                       ;8F974D;
+    db $17,$00, $80                                                      ;8F974D;
 
 RoomPLM_Climb_E:
-    db $18,$01,$80                                                       ;8F9750;
+    db $18,$01, $80                                                      ;8F9750;
 
 RoomPLM_Climb_A:
-    db $18,$00,$80                                                       ;8F9753;
+    db $18,$00, $80                                                      ;8F9753;
 
 RoomPLM_Climb_12:
-    db $19,$01,$80                                                       ;8F9756;
+    db $19,$01, $80                                                      ;8F9756;
 
 RoomPLM_Climb_16:
-    db $19,$00,$80                                                       ;8F9759;
+    db $19,$00, $80                                                      ;8F9759;
 
 RoomHeader_Pit:
     db $13,$00,$14,$11,$03,$02,$70,$A0,$00                               ;8F975C;
@@ -2045,10 +2039,10 @@ RoomScrolls_Pit:
     db $01,$01,$01,$00,$00,$00                                           ;8F97A5;
 
 RoomPLM_Pit_0_1:
-    db $00,$02,$03,$02,$80                                               ;8F97AB;
+    db $00,$02, $03,$02, $80                                             ;8F97AB;
 
 RoomPLM_Pit_2:
-    db $00,$01,$03,$00,$80                                               ;8F97B0;
+    db $00,$01, $03,$00, $80                                             ;8F97B0;
 
 RoomHeader_ElevToBlueBrinstar:
     db $14,$00,$17,$11,$01,$01,$70,$A0,$00                               ;8F97B5;
@@ -2094,16 +2088,14 @@ RoomScrolls_ElevToBlueBrinstar:
     db $01                                                               ;8F9800;
 
 RoomPLM_ElevToBlueBrinstar:
-    db $00,$02,$80                                                       ;8F9801;
+    db $00,$02, $80                                                      ;8F9801;
 
 RoomHeader_BombTorizo:
     db $15,$00,$19,$06,$01,$01,$70,$A0,$00                               ;8F9804;
     dw RoomDoors_BombTorizo                                              ;8F980D;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8F980F;
-    db $0E                                                               ;8F9811;
+    dw RoomStateCheck_EventHasBeenSet : db $0E                           ;8F980F;
     dw RoomState_BombTorizo_2                                            ;8F9812;
-    dw RoomStateCheck_BossIsDead                                         ;8F9814;
-    db $04                                                               ;8F9816;
+    dw RoomStateCheck_BossIsDead : db $04                                ;8F9814;
     dw RoomState_BombTorizo_1                                            ;8F9817;
     dw Use_StatePointer_inX                                              ;8F9819;
 
@@ -2158,11 +2150,9 @@ RoomVar_BombTorizo:
 RoomHeader_Flyway:
     db $16,$00,$16,$06,$03,$01,$70,$A0,$00                               ;8F9879;
     dw RoomDoors_Flyway                                                  ;8F9882;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8F9884;
-    db $0E                                                               ;8F9886;
+    dw RoomStateCheck_EventHasBeenSet : db $0E                           ;8F9884;
     dw RoomState_Flyway_2                                                ;8F9887;
-    dw RoomStateCheck_BossIsDead                                         ;8F9889;
-    db $04                                                               ;8F988B;
+    dw RoomStateCheck_BossIsDead : db $04                                ;8F9889;
     dw RoomState_Flyway_1                                                ;8F988C;
     dw Use_StatePointer_inX                                              ;8F988E;
 
@@ -2286,7 +2276,7 @@ RoomScrolls_GreenBrinstarElev:
     db $01                                                               ;8F9965;
 
 RoomPLM_GreenBrinstarElev_0:
-    db $00,$02,$80                                                       ;8F9966;
+    db $00,$02, $80                                                      ;8F9966;
 
 RoomHeader_LowerMushrooms:
     db $1A,$00,$07,$08,$04,$01,$70,$A0,$00                               ;8F9969;
@@ -2362,10 +2352,10 @@ RoomScrolls_GreenPiratesShaft:
     db $02,$02,$02,$00,$02,$02,$01                                       ;8F99EC;
 
 RoomPLM_GreenPiratesShaft_0:
-    db $03,$02,$80                                                       ;8F99F3;
+    db $03,$02, $80                                                      ;8F99F3;
 
 RoomPLM_GreenPiratesShaft_2:
-    db $03,$00,$80                                                       ;8F99F6;
+    db $03,$00, $80                                                      ;8F99F6;
 
 RoomHeader_CrateriaSuper:
     db $1D,$00,$15,$09,$04,$08,$70,$A0,$00                               ;8F99F9;
@@ -2397,8 +2387,7 @@ RoomScrolls_CrateriaSuper:
 RoomHeader_FinalMissileBombway:
     db $1E,$00,$11,$07,$02,$01,$70,$A0,$00                               ;8F9A44;
     dw RoomDoors_FinalMissileBombway                                     ;8F9A4D;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8F9A4F;
-    db $00                                                               ;8F9A51;
+    dw RoomStateCheck_EventHasBeenSet : db $00                           ;8F9A4F;
     dw RoomState_FinalMissileBombway_1                                   ;8F9A52;
     dw Use_StatePointer_inX                                              ;8F9A54;
 
@@ -2440,8 +2429,7 @@ RoomScrolls_FinalMissileBombway:
 RoomHeader_FinalMissile:
     db $1F,$00,$10,$07,$01,$01,$70,$A0,$00                               ;8F9A90;
     dw RoomDoors_FinalMissile                                            ;8F9A99;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8F9A9B;
-    db $00                                                               ;8F9A9D;
+    dw RoomStateCheck_EventHasBeenSet : db $00                           ;8F9A9B;
     dw RoomState_FinalMissile_1                                          ;8F9A9E;
     dw Use_StatePointer_inX                                              ;8F9AA0;
 
@@ -2517,13 +2505,13 @@ RoomScrolls_GreenBrinstarMainShaft:
     db $02,$00,$02,$00,$02,$00,$02,$00,$02,$00,$02,$00,$00,$00,$02,$00   ;8F9B36;
 
 RoomPLM_GreenBrinstarMainShaft_0:
-    db $1C,$02,$1D,$00,$80                                               ;8F9B46;
+    db $1C,$02, $1D,$00, $80                                             ;8F9B46;
 
 RoomPLM_GreenBrinstarMainShaft_1_2:
-    db $1C,$00,$1D,$01,$29,$01,$80                                       ;8F9B4B;
+    db $1C,$00, $1D,$01, $29,$01, $80                                    ;8F9B4B;
 
 RoomPLM_GreenBrinstarMainShaft_3:
-    db $18,$02,$1C,$02,$1D,$00,$29,$00,$80                               ;8F9B52;
+    db $18,$02, $1C,$02, $1D,$00, $29,$00, $80                           ;8F9B52;
 
 RoomHeader_SporeSpawnSuper:
     db $01,$01,$17,$01,$02,$09,$70,$A0,$00                               ;8F9B5B;
@@ -2553,7 +2541,7 @@ RoomScrolls_SporeSpawnSuper:
     db $01,$01                                                           ;8F9B96;
 
 RoomPLM_SporeSpawnSuper_0:
-    db $01,$02,$03,$02,$80                                               ;8F9B98;
+    db $01,$02, $03,$02, $80                                             ;8F9B98;
 
 RoomHeader_BrinstarPreMap:
     db $02,$01,$06,$04,$03,$01,$70,$A0,$00                               ;8F9B9D;
@@ -2605,10 +2593,10 @@ RoomScrolls_EarlySupers:
     db $00,$00,$00,$01,$01,$01                                           ;8F9BF3;
 
 RoomPLM_EarlySupers_0_4:
-    db $00,$02,$01,$02,$02,$02,$80                                       ;8F9BF9;
+    db $00,$02, $01,$02, $02,$02, $80                                    ;8F9BF9;
 
 RoomPLM_EarlySupers_3:
-    db $00,$00,$01,$00,$02,$00,$80                                       ;8F9C00;
+    db $00,$00, $01,$00, $02,$00, $80                                    ;8F9C00;
 
 RoomHeader_BrinstarReserveTank:
     db $04,$01,$0D,$04,$02,$01,$70,$A0,$00                               ;8F9C07;
@@ -2636,7 +2624,7 @@ RoomScrolls_BrinstarReserveTank:
     db $01,$00                                                           ;8F9C30;
 
 RoomPLM_BrinstarReserveTank_0:
-    db $01,$01,$80                                                       ;8F9C32;
+    db $01,$01, $80                                                      ;8F9C32;
 
 RoomHeader_GreenBrinstarMap:
     db $05,$01,$05,$04,$01,$01,$70,$A0,$00                               ;8F9C35;
@@ -2749,10 +2737,10 @@ RoomScrolls_Dachora:
     db $02,$02,$02,$02,$02,$00,$00                                       ;8F9D0A;
 
 RoomPLM_Dachora_6:
-    db $0B,$02,$80                                                       ;8F9D11;
+    db $0B,$02, $80                                                      ;8F9D11;
 
 RoomPLM_Dachora_A_16:
-    db $04,$01,$0B,$00,$80                                               ;8F9D14;
+    db $04,$01, $0B,$00, $80                                             ;8F9D14;
 
 RoomHeader_BigPink:
     db $09,$01,$0F,$04,$05,$0A,$70,$A0,$00                               ;8F9D19;
@@ -2791,22 +2779,22 @@ RoomScrolls_BigPink:
     db $00,$00                                                           ;8F9D82;
 
 RoomPLM_BigPink_0:
-    db $20,$02,$25,$02,$26,$02,$80                                       ;8F9D84;
+    db $20,$02, $25,$02, $26,$02, $80                                    ;8F9D84;
 
 RoomPLM_BigPink_1:
-    db $24,$02,$80                                                       ;8F9D8B;
+    db $24,$02, $80                                                      ;8F9D8B;
 
 RoomPLM_BigPink_2:
-    db $1D,$00,$80                                                       ;8F9D8E;
+    db $1D,$00, $80                                                      ;8F9D8E;
 
 RoomPLM_BigPink_3:
-    db $1C,$01,$1D,$01,$80                                               ;8F9D91;
+    db $1C,$01, $1D,$01, $80                                             ;8F9D91;
 
 RoomPLM_BigPink_4:
-    db $01,$02,$80                                                       ;8F9D96;
+    db $01,$02, $80                                                      ;8F9D96;
 
 RoomPLM_BigPink_5:
-    db $01,$00,$80                                                       ;8F9D99;
+    db $01,$00, $80                                                      ;8F9D99;
 
 RoomHeader_SporeSpawnKihunters:
     db $0A,$01,$13,$04,$04,$01,$70,$A0,$00                               ;8F9D9C;
@@ -2834,8 +2822,7 @@ RoomDoors_SporeSpawnKihunters:
 RoomHeader_SporeSpawn:
     db $0B,$01,$16,$01,$01,$03,$70,$A0,$00                               ;8F9DC7;
     dw RoomDoors_SporeSpawn                                              ;8F9DD0;
-    dw RoomStateCheck_BossIsDead                                         ;8F9DD2;
-    db $02                                                               ;8F9DD4;
+    dw RoomStateCheck_BossIsDead : db $02                                ;8F9DD2;
     dw RoomState_SporeSpawn_1                                            ;8F9DD5;
     dw Use_StatePointer_inX                                              ;8F9DD7;
 
@@ -2898,10 +2885,10 @@ RoomScrolls_PinkBrinstarPowerBombs:
     db $01,$01,$00,$00                                                   ;8F9E3C;
 
 RoomPLM_PinkBrinstarPowerBombs_0:
-    db $00,$02,$01,$00,$02,$01,$03,$01,$80                               ;8F9E40;
+    db $00,$02, $01,$00, $02,$01, $03,$01, $80                           ;8F9E40;
 
 RoomPLM_PinkBrinstarPowerBombs_1:
-    db $00,$01,$01,$01,$02,$00,$03,$00,$80                               ;8F9E49;
+    db $00,$01, $01,$01, $02,$00, $03,$00, $80                           ;8F9E49;
 
 RoomHeader_GreenHillZone:
     db $0D,$01,$13,$0A,$08,$04,$70,$A0,$00                               ;8F9E52;
@@ -2934,8 +2921,7 @@ RoomScrolls_GreenHillZone:
 RoomHeader_MorphBall:
     db $0E,$01,$15,$08,$08,$03,$70,$A0,$00                               ;8F9E9F;
     dw RoomDoors_MorphBall                                               ;8F9EA8;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8F9EAA;
-    db $00                                                               ;8F9EAC;
+    dw RoomStateCheck_EventHasBeenSet : db $00                           ;8F9EAA;
     dw RoomState_MorphBall_1                                             ;8F9EAD;
     dw Use_StatePointer_inX                                              ;8F9EAF;
 
@@ -2978,22 +2964,21 @@ RoomScrolls_MorphBall:
     db $01,$01,$01,$01,$01,$01,$01,$01                                   ;8F9EFD;
 
 RoomPLM_MorphBall_0:
-    db $12,$01,$80                                                       ;8F9F05;
+    db $12,$01, $80                                                      ;8F9F05;
 
 RoomPLM_MorphBall_9:
-    db $12,$00,$80                                                       ;8F9F08;
+    db $12,$00, $80                                                      ;8F9F08;
 
 RoomPLM_MorphBall_B_D:
-    db $0D,$02,$80                                                       ;8F9F0B;
+    db $0D,$02, $80                                                      ;8F9F0B;
 
 RoomPLM_MorphBall_F:
-    db $0D,$00,$80                                                       ;8F9F0E;
+    db $0D,$00, $80                                                      ;8F9F0E;
 
 RoomHeader_ConstructionZone:
     db $0F,$01,$1D,$0A,$01,$02,$70,$A0,$00                               ;8F9F11;
     dw RoomDoors_ConstructionZone                                        ;8F9F1A;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8F9F1C;
-    db $00                                                               ;8F9F1E;
+    dw RoomStateCheck_EventHasBeenSet : db $00                           ;8F9F1C;
     dw RoomState_ConstructionZone_1                                      ;8F9F1F;
     dw Use_StatePointer_inX                                              ;8F9F21;
 
@@ -3034,13 +3019,12 @@ RoomScrolls_ConstructionZone:
     db $01,$00                                                           ;8F9F5D;
 
 RoomPLM_ConstructionZone_0:
-    db $00,$02,$01,$01,$80                                               ;8F9F5F;
+    db $00,$02, $01,$01, $80                                             ;8F9F5F;
 
 RoomHeader_BlueBrinstarETank:
     db $10,$01,$1E,$08,$03,$03,$70,$A0,$00                               ;8F9F64;
     dw RoomDoors_BlueBrinstarETank                                       ;8F9F6D;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8F9F6F;
-    db $00                                                               ;8F9F71;
+    dw RoomStateCheck_EventHasBeenSet : db $00                           ;8F9F6F;
     dw RoomState_BlueBrinstarETank_1                                     ;8F9F72;
     dw Use_StatePointer_inX                                              ;8F9F74;
 
@@ -3080,7 +3064,7 @@ RoomScrolls_BlueBrinstarETank:
     db $00,$00,$02,$00,$00,$00,$01,$01,$01                               ;8F9FAE;
 
 RoomPLM_BlueBrinstarETank_0_1:
-    db $05,$02,$80                                                       ;8F9FB7;
+    db $05,$02, $80                                                      ;8F9FB7;
 
 RoomHeader_NoobBridge:
     db $11,$01,$1B,$0D,$06,$01,$70,$A0,$00                               ;8F9FBA;
@@ -3160,7 +3144,7 @@ RoomScrolls_EtecoonETank:
     db $01,$01,$00,$00,$00,$00,$00,$01,$01,$01                           ;8FA040;
 
 RoomPLM_EtecoonETank_0:
-    db $01,$02,$05,$01,$06,$01,$80                                       ;8FA04A;
+    db $01,$02, $05,$01, $06,$01, $80                                    ;8FA04A;
 
 RoomHeader_EtecoonSuper:
     db $14,$01,$05,$0A,$01,$01,$70,$A0,$00                               ;8FA051;
@@ -3262,7 +3246,7 @@ RoomScrolls_WaterwayETank:
     db $00,$01,$01,$01,$01,$01,$01                                       ;8FA0FD;
 
 RoomPLM_WaterwayETank:
-    db $00,$01,$80                                                       ;8FA104;
+    db $00,$01, $80                                                      ;8FA104;
 
 RoomHeader_FirstMissile:
     db $18,$01,$1C,$0B,$01,$01,$70,$A0,$00                               ;8FA107;
@@ -3472,7 +3456,7 @@ RoomScrolls_RedTower:
     db $02,$02,$02,$02,$02,$02,$01,$00,$02,$02                           ;8FA284;
 
 RoomPLM_RedTower_0:
-    db $06,$02,$07,$02,$80                                               ;8FA28E;
+    db $06,$02, $07,$02, $80                                             ;8FA28E;
 
 RoomHeader_RedBrinstarFirefleas:
     db $21,$01,$19,$0F,$08,$02,$90,$A0,$00                               ;8FA293;
@@ -3578,13 +3562,13 @@ RoomScrolls_Caterpillar:
     db $00,$00,$00,$00,$00,$02,$00,$00                                   ;8FA367;
 
 RoomPLM_Caterpillar_0:
-    db $0F,$02,$12,$02,$80                                               ;8FA36F;
+    db $0F,$02, $12,$02, $80                                             ;8FA36F;
 
 RoomPLM_Caterpillar_2:
-    db $0A,$01,$09,$02,$80                                               ;8FA374;
+    db $0A,$01, $09,$02, $80                                             ;8FA374;
 
 RoomPLM_Caterpillar_3:
-    db $0A,$00,$80                                                       ;8FA379;
+    db $0A,$00, $80                                                      ;8FA379;
 
 RoomHeader_BetaPowerBomb:
     db $25,$01,$23,$07,$02,$02,$70,$A0,$00                               ;8FA37C;
@@ -3612,7 +3596,7 @@ RoomScrolls_BetaPowerBomb:
     db $01,$01,$00,$00                                                   ;8FA3A5;
 
 RoomPLM_BetaPowerBomb_0:
-    db $00,$02,$02,$01,$80                                               ;8FA3A9;
+    db $00,$02, $02,$01, $80                                             ;8FA3A9;
 
 RoomHeader_AlphaPowerBomb:
     db $26,$01,$22,$0B,$03,$01,$70,$A0,$00                               ;8FA3AE;
@@ -3640,7 +3624,7 @@ RoomScrolls_AlphaPowerBomb:
     db $00,$01,$01                                                       ;8FA3D7;
 
 RoomPLM_AlphaPowerBomb_8:
-    db $00,$01,$80                                                       ;8FA3DA;
+    db $00,$01, $80                                                      ;8FA3DA;
 
 RoomHeader_SkreeBoost:
     db $27,$01,$22,$12,$02,$01,$70,$A0,$00                               ;8FA3DD;
@@ -3693,10 +3677,10 @@ RoomScrolls_BelowSpazer:
     db $00,$00,$01,$01                                                   ;8FA435;
 
 RoomPLM_BelowSpazer_0_8_A:
-    db $00,$02,$01,$02,$80                                               ;8FA439;
+    db $00,$02, $01,$02, $80                                             ;8FA439;
 
 RoomPLM_BelowSpazer_4_9_B:
-    db $00,$00,$01,$00,$02,$01,$03,$01,$80                               ;8FA43E;
+    db $00,$00, $01,$00, $02,$01, $03,$01, $80                           ;8FA43E;
 
 RoomHeader_Spazer:
     db $29,$01,$26,$11,$01,$01,$70,$A0,$00                               ;8FA447;
@@ -3751,13 +3735,13 @@ RoomScrolls_WarehouseZeela:
     db $01,$00,$00,$01                                                   ;8FA49E;
 
 RoomPLM_WarehouseZeela_0:
-    db $00,$02,$02,$01,$03,$00,$80                                       ;8FA4A2;
+    db $00,$02, $02,$01, $03,$00, $80                                    ;8FA4A2;
 
 RoomPLM_WarehouseZeela_1_3:
-    db $00,$02,$02,$01,$80                                               ;8FA4A9;
+    db $00,$02, $02,$01, $80                                             ;8FA4A9;
 
 RoomPLM_WarehouseZeela_2:
-    db $03,$01,$80                                                       ;8FA4AE;
+    db $03,$01, $80                                                      ;8FA4AE;
 
 RoomHeader_WarehouseETank:
     db $2B,$01,$2B,$13,$01,$01,$70,$A0,$00                               ;8FA4B1;
@@ -3809,22 +3793,21 @@ RoomScrolls_WarehouseKihunter:
     db $02,$01,$01,$00,$00,$01,$00,$00                                   ;8FA507;
 
 RoomPLM_WarehouseKihunter_0:
-    db $01,$01,$05,$00,$80                                               ;8FA50F;
+    db $01,$01, $05,$00, $80                                             ;8FA50F;
 
 RoomPLM_WarehouseKihunter_1:
-    db $01,$02,$05,$01,$80                                               ;8FA514;
+    db $01,$02, $05,$01, $80                                             ;8FA514;
 
 RoomPLM_WarehouseKihunter_9:
-    db $05,$00,$80                                                       ;8FA519;
+    db $05,$00, $80                                                      ;8FA519;
 
 RoomPLM_WarehouseKihunter_A_B:
-    db $03,$01,$05,$00,$80                                               ;8FA51C;
+    db $03,$01, $05,$00, $80                                             ;8FA51C;
 
 RoomHeader_MiniKraid:
     db $2D,$01,$2F,$13,$06,$01,$70,$A0,$00                               ;8FA521;
     dw RoomDoors_MiniKraid                                               ;8FA52A;
-    dw RoomStateCheck_BossIsDead                                         ;8FA52C;
-    db $01                                                               ;8FA52E;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FA52C;
     dw RoomState_MiniKraid_1                                             ;8FA52F;
     dw Use_StatePointer_inX                                              ;8FA531;
 
@@ -3888,13 +3871,12 @@ RoomScrolls_KraidEyeDoor:
     db $00,$00,$01,$01                                                   ;8FA598;
 
 RoomPLM_KraidEyeDoor_0:
-    db $00,$02,$80                                                       ;8FA59C;
+    db $00,$02, $80                                                      ;8FA59C;
 
 RoomHeader_Kraid:
     db $2F,$01,$37,$12,$02,$02,$70,$A0,$05                               ;8FA59F;
     dw RoomDoors_Kraid                                                   ;8FA5A8;
-    dw RoomStateCheck_BossIsDead                                         ;8FA5AA;
-    db $01                                                               ;8FA5AC;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FA5AA;
     dw RoomState_Kraid_1                                                 ;8FA5AD;
     dw Use_StatePointer_inX                                              ;8FA5AF;
 
@@ -4029,10 +4011,10 @@ RoomScrolls_Statues:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_RoomPLM_8FA699:
-    db $00,$02,$01,$01,$80                                               ;8FA699;
+    db $00,$02, $01,$01, $80                                             ;8FA699;
 
 UNUSED_RoomPLM_8FA69E:
-    db $01,$02,$80                                                       ;8FA69E;
+    db $01,$02, $80                                                      ;8FA69E;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 RoomHeader_WarehouseEntrance:
@@ -4064,16 +4046,16 @@ RoomScrolls_WarehouseEntrance:
     db $01,$00,$02,$00,$01,$01                                           ;8FA6D0;
 
 RoomPLM_WarehouseEntrance_0:
-    db $00,$02,$80                                                       ;8FA6D6;
+    db $00,$02, $80                                                      ;8FA6D6;
 
 RoomPLM_WarehouseEntrance_2:
-    db $01,$02,$80                                                       ;8FA6D9;
+    db $01,$02, $80                                                      ;8FA6D9;
 
 RoomPLM_WarehouseEntrance_5:
-    db $00,$01,$80                                                       ;8FA6DC;
+    db $00,$01, $80                                                      ;8FA6DC;
 
 RoomPLM_WarehouseEntrance_9:
-    db $00,$00,$80                                                       ;8FA6DF;
+    db $00,$00, $80                                                      ;8FA6DF;
 
 RoomHeader_VariaSuit:
     db $35,$01,$39,$13,$01,$01,$70,$A0,$02                               ;8FA6E2;
@@ -4269,7 +4251,7 @@ RoomScrolls_IceBeamGate:
     db $00,$01,$01,$01,$01,$01,$01,$01,$00,$00,$00,$00                   ;8FA854;
 
 RoomPLM_IceBeamGate_0:
-    db $11,$02,$18,$01,$80                                               ;8FA860;
+    db $11,$02, $18,$01, $80                                             ;8FA860;
 
 RoomHeader_IceBeamTutorial:
     db $05,$02,$04,$01,$02,$01,$70,$A0,$00                               ;8FA865;
@@ -4344,16 +4326,16 @@ RoomScrolls_IceBeamSnake:
     db $02,$00,$02,$00,$01,$00                                           ;8FA8E6;
 
 RoomPLM_IceBeamSnake_0:
-    db $03,$01,$80                                                       ;8FA8EC;
+    db $03,$01, $80                                                      ;8FA8EC;
 
 RoomPLM_IceBeamSnake_1:
-    db $03,$00,$80                                                       ;8FA8EF;
+    db $03,$00, $80                                                      ;8FA8EF;
 
 RoomPLM_IceBeamSnake_2:
-    db $02,$02,$80                                                       ;8FA8F2;
+    db $02,$02, $80                                                      ;8FA8F2;
 
 RoomPLM_IceBeamSnake_3:
-    db $02,$00,$80                                                       ;8FA8F5;
+    db $02,$00, $80                                                      ;8FA8F5;
 
 RoomHeader_CrumbleShaft:
     db $08,$02,$02,$04,$01,$04,$70,$A0,$00                               ;8FA8F8;
@@ -4411,23 +4393,22 @@ RoomScrolls_CrocomireSpeedway:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_RoomPLM_8FA97B:
-    db $19,$02,$26,$02,$80                                               ;8FA97B;
+    db $19,$02, $26,$02, $80                                             ;8FA97B;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 RoomPLM_CrocomireSpeedway_0:
-    db $19,$02,$25,$02,$26,$02,$80                                       ;8FA980;
+    db $19,$02, $25,$02, $26,$02, $80                                    ;8FA980;
 
 RoomPLM_CrocomireSpeedway_5:
-    db $25,$02,$80                                                       ;8FA987;
+    db $25,$02, $80                                                      ;8FA987;
 
 RoomPLM_CrocomireSpeedway_8:
-    db $25,$00,$80                                                       ;8FA98A;
+    db $25,$00, $80                                                      ;8FA98A;
 
 RoomHeader_Crocomire:
     db $0A,$02,$0C,$0A,$08,$01,$70,$A0,$01                               ;8FA98D;
     dw RoomDoors_Crocomire                                               ;8FA996;
-    dw RoomStateCheck_BossIsDead                                         ;8FA998;
-    db $02                                                               ;8FA99A;
+    dw RoomStateCheck_BossIsDead : db $02                                ;8FA998;
     dw RoomState_Crocomire_1                                             ;8FA99B;
     dw Use_StatePointer_inX                                              ;8FA99D;
 
@@ -4468,10 +4449,10 @@ RoomScrolls_Crocomire:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_RoomPLM_8FA9DF:
-    db $01,$01,$80                                                       ;8FA9DF;
+    db $01,$01, $80                                                      ;8FA9DF;
 
 UNUSED_RoomPLM_8FA9E2:
-    db $00,$01,$80                                                       ;8FA9E2;
+    db $00,$01, $80                                                      ;8FA9E2;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 RoomHeader_HiJumpBoots:
@@ -4549,16 +4530,16 @@ RoomScrolls_HiJumpETank:
     db $00,$01,$00,$00                                                   ;8FAA6C;
 
 RoomPLM_HiJumpETank_1:
-    db $00,$02,$02,$02,$80                                               ;8FAA70;
+    db $00,$02, $02,$02, $80                                             ;8FAA70;
 
 RoomPLM_HiJumpETank_0:
-    db $00,$02,$02,$02,$03,$02,$80                                       ;8FAA75;
+    db $00,$02, $02,$02, $03,$02, $80                                    ;8FAA75;
 
 RoomPLM_HiJumpETank_2:
-    db $03,$00,$80                                                       ;8FAA7C;
+    db $03,$00, $80                                                      ;8FAA7C;
 
 RoomPLM_HiJumpETank_3:
-    db $03,$02,$80                                                       ;8FAA7F;
+    db $03,$02, $80                                                      ;8FAA7F;
 
 RoomHeader_PostCrocFarming:
     db $0E,$02,$0A,$0A,$02,$02,$90,$A0,$02                               ;8FAA82;
@@ -4854,7 +4835,7 @@ RoomScrolls_GreenBubblesMissiles:
     db $00,$01                                                           ;8FACAE;
 
 RoomPLM_GreenBubblesMissiles_0:
-    db $00,$01,$80                                                       ;8FACB0;
+    db $00,$01, $80                                                      ;8FACB0;
 
 RoomHeader_BubbleMountain:
     db $1A,$02,$16,$02,$02,$04,$90,$A0,$00                               ;8FACB3;
@@ -4979,10 +4960,10 @@ RoomScrolls_SingleChamber:
     db $00,$00,$01,$00,$00,$00,$00,$00                                   ;8FAD9F;
 
 RoomPLM_SingleChamber_0:
-    db $01,$00,$80                                                       ;8FADA7;
+    db $01,$00, $80                                                      ;8FADA7;
 
 RoomPLM_SingleChamber_1_4:
-    db $01,$01,$80                                                       ;8FADAA;
+    db $01,$01, $80                                                      ;8FADAA;
 
 RoomHeader_DoubleChamber:
     db $1E,$02,$19,$04,$04,$02,$90,$A0,$00                               ;8FADAD;
@@ -5083,16 +5064,16 @@ RoomScrolls_Volcano:
     db $00,$00,$02,$00,$00,$02,$00,$00,$01                               ;8FAE5D;
 
 RoomPLM_Volcano_0:
-    db $06,$01,$07,$01,$80                                               ;8FAE66;
+    db $06,$01, $07,$01, $80                                             ;8FAE66;
 
 RoomPLM_Volcano_1:
-    db $08,$01,$80                                                       ;8FAE6B;
+    db $08,$01, $80                                                      ;8FAE6B;
 
 RoomPLM_Volcano_7:
-    db $08,$00,$80                                                       ;8FAE6E;
+    db $08,$00, $80                                                      ;8FAE6E;
 
 RoomPLM_Volcano_B:
-    db $07,$00,$80                                                       ;8FAE71;
+    db $07,$00, $80                                                      ;8FAE71;
 
 RoomHeader_KronicBoost:
     db $22,$02,$19,$08,$02,$03,$70,$A0,$00                               ;8FAE74;
@@ -5123,13 +5104,13 @@ RoomScrolls_KronicBoost:
     db $00,$02,$00,$02,$00,$01                                           ;8FAEA3;
 
 RoomPLM_KronicBoost_0:
-    db $02,$01,$80                                                       ;8FAEA9;
+    db $02,$01, $80                                                      ;8FAEA9;
 
 RoomPLM_KronicBoost_1:
-    db $02,$00,$03,$02,$80                                               ;8FAEAC;
+    db $02,$00, $03,$02, $80                                             ;8FAEAC;
 
 RoomPLM_KronicBoost_5:
-    db $03,$00,$80                                                       ;8FAEB1;
+    db $03,$00, $80                                                      ;8FAEB1;
 
 RoomHeader_MagdolliteTunnel:
     db $23,$02,$17,$08,$03,$01,$70,$A0,$00                               ;8FAEB4;
@@ -5182,7 +5163,7 @@ RoomScrolls_PurpleShaft:
     db $02,$02,$01                                                       ;8FAF0C;
 
 RoomPLM_PurpleShaft_0_3:
-    db $00,$02,$01,$02,$80                                               ;8FAF0F;
+    db $00,$02, $01,$02, $80                                             ;8FAF0F;
 
 RoomHeader_LavaDive:
     db $25,$02,$16,$0A,$04,$03,$70,$A0,$00                               ;8FAF14;
@@ -5236,7 +5217,7 @@ RoomScrolls_LowerNorfairElev:
     db $01                                                               ;8FAF6E;
 
 RoomPLM_LowerNorfairElev_0:
-    db $00,$02,$80                                                       ;8FAF6F;
+    db $00,$02, $80                                                      ;8FAF6F;
 
 RoomHeader_UpperNorfairFarming:
     db $27,$02,$14,$05,$02,$02,$A0,$A0,$00                               ;8FAF72;
@@ -5407,13 +5388,13 @@ RoomScrolls_BatCave:
     db $00,$01                                                           ;8FB0A5;
 
 RoomPLM_BatCave_0:
-    db $00,$02,$01,$02,$80                                               ;8FB0A7;
+    db $00,$02, $01,$02, $80                                             ;8FB0A7;
 
 RoomPLM_BatCave_2:
-    db $00,$02,$01,$01,$80                                               ;8FB0AC;
+    db $00,$02, $01,$01, $80                                             ;8FB0AC;
 
 RoomPLM_BatCave_4:
-    db $00,$00,$80                                                       ;8FB0B1;
+    db $00,$00, $80                                                      ;8FB0B1;
 
 RoomHeader_NorfairMap:
     db $2E,$02,$09,$04,$01,$01,$70,$A0,$00                               ;8FB0B4;
@@ -5609,14 +5590,14 @@ RoomScrolls_AcidStatue:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_RoomPLM_8FB219:
-    db $03,$01,$04,$01,$06,$00,$07,$00,$08,$00,$80                       ;8FB219;
+    db $03,$01, $04,$01, $06,$00, $07,$00, $08,$00, $80                  ;8FB219;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 RoomPLM_AcidStatue_0:
-    db $03,$02,$04,$02,$06,$02,$07,$02,$80                               ;8FB224;
+    db $03,$02, $04,$02, $06,$02, $07,$02, $80                           ;8FB224;
 
 RoomPLM_AcidStatue_1:
-    db $04,$00,$06,$01,$07,$01,$08,$01,$80                               ;8FB22D;
+    db $04,$00, $06,$01, $07,$01, $08,$01, $80                           ;8FB22D;
 
 RoomHeader_MainHall:
     db $36,$02,$11,$0B,$08,$03,$70,$A0,$00                               ;8FB236;
@@ -5648,16 +5629,15 @@ RoomScrolls_MainHall:
     db $01,$01,$01,$01,$01,$01,$01,$01                                   ;8FB275;
 
 RoomPLM_MainHall_0_2:
-    db $0C,$02,$80                                                       ;8FB27D;
+    db $0C,$02, $80                                                      ;8FB27D;
 
 RoomPLM_MainHall_4:
-    db $0C,$00,$80                                                       ;8FB280;
+    db $0C,$00, $80                                                      ;8FB280;
 
 RoomHeader_GoldenTorizo:
     db $37,$02,$12,$0F,$02,$02,$70,$A0,$00                               ;8FB283;
     dw RoomDoors_GoldenTorizo                                            ;8FB28C;
-    dw RoomStateCheck_BossIsDead                                         ;8FB28E;
-    db $04                                                               ;8FB290;
+    dw RoomStateCheck_BossIsDead : db $04                                ;8FB28E;
     dw RoomState_GoldenTorizo_1                                          ;8FB291;
     dw Use_StatePointer_inX                                              ;8FB293;
 
@@ -5697,7 +5677,7 @@ RoomScrolls_GoldenTorizo:
     db $02,$02,$01,$01                                                   ;8FB2CD;
 
 RoomPLM_GoldenTorizo_0:
-    db $00,$02,$01,$02,$02,$01,$03,$01,$80                               ;8FB2D1;
+    db $00,$02, $01,$02, $02,$01, $03,$01, $80                           ;8FB2D1;
 
 RoomHeader_FastRipper:
     db $38,$02,$15,$0E,$04,$01,$70,$A0,$00                               ;8FB2DA;
@@ -5747,8 +5727,7 @@ RoomDoors_GTEnergyRefill:
 RoomHeader_Ridley:
     db $3A,$02,$17,$10,$01,$02,$70,$A0,$00                               ;8FB32E;
     dw RoomDoors_Ridley                                                  ;8FB337;
-    dw RoomStateCheck_BossIsDead                                         ;8FB339;
-    db $01                                                               ;8FB33B;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FB339;
     dw RoomState_Ridley_1                                                ;8FB33C;
     dw Use_StatePointer_inX                                              ;8FB33E;
 
@@ -5840,10 +5819,10 @@ RoomScrolls_FastPillarsSetup:
     db $02,$01,$00                                                       ;8FB3D6;
 
 RoomPLM_FastPillarsSetup_0:
-    db $01,$02,$80                                                       ;8FB3D9;
+    db $01,$02, $80                                                      ;8FB3D9;
 
 RoomPLM_FastPillarsSetup_2:
-    db $01,$02,$02,$01,$80                                               ;8FB3DC;
+    db $01,$02, $02,$01, $80                                             ;8FB3DC;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_RoomHeader_8FB3E1:
@@ -5896,22 +5875,22 @@ RoomScrolls_MickeyMouse:
     db $00,$00,$00,$02,$00,$00,$00,$02,$00,$00,$00,$02,$01,$01,$01,$01   ;8FB435;
 
 RoomPLM_MickeyMouse_0:
-    db $06,$01,$80                                                       ;8FB445;
+    db $06,$01, $80                                                      ;8FB445;
 
 RoomPLM_MickeyMouse_1:
-    db $06,$00,$80                                                       ;8FB448;
+    db $06,$00, $80                                                      ;8FB448;
 
 RoomPLM_MickeyMouse_2:
-    db $07,$01,$80                                                       ;8FB44B;
+    db $07,$01, $80                                                      ;8FB44B;
 
 RoomPLM_MickeyMouse_6:
-    db $07,$00,$80                                                       ;8FB44E;
+    db $07,$00, $80                                                      ;8FB44E;
 
 RoomPLM_MickeyMouse_A:
-    db $0E,$01,$80                                                       ;8FB451;
+    db $0E,$01, $80                                                      ;8FB451;
 
 RoomPLM_MickeyMouse_D:
-    db $0E,$00,$80                                                       ;8FB454;
+    db $0E,$00, $80                                                      ;8FB454;
 
 RoomHeader_Pillar:
     db $3F,$02,$1A,$0E,$04,$01,$70,$A0,$00                               ;8FB457;
@@ -5987,7 +5966,7 @@ RoomScrolls_WorstRoomInTheGame:
     db $00,$02,$02,$02,$02,$01                                           ;8FB4DA;
 
 RoomPLM_WorstRoomInTheGame_0:
-    db $00,$02,$01,$02,$80                                               ;8FB4E0;
+    db $00,$02, $01,$02, $80                                             ;8FB4E0;
 
 RoomHeader_Amphitheatre:
     db $42,$02,$1F,$09,$04,$05,$70,$A0,$00                               ;8FB4E5;
@@ -6040,13 +6019,13 @@ RoomScrolls_LNSpringBallMaze:
     db $02,$00,$00,$00,$00,$01,$01,$00,$00,$00                           ;8FB53D;
 
 RoomPLM_LNSpringBallMaze_0:
-    db $01,$01,$02,$01,$06,$00,$80                                       ;8FB547;
+    db $01,$01, $02,$01, $06,$00, $80                                    ;8FB547;
 
 RoomPLM_LNSpringBallMaze_4:
-    db $01,$00,$02,$00,$06,$01,$80                                       ;8FB54E;
+    db $01,$00, $02,$00, $06,$01, $80                                    ;8FB54E;
 
 RoomPLM_LNSpringBallMaze_C:
-    db $03,$01,$04,$02,$80                                               ;8FB555;
+    db $03,$01, $04,$02, $80                                             ;8FB555;
 
 RoomHeader_LNEscapePowerBombs:
     db $44,$02,$25,$06,$01,$01,$70,$A0,$00                               ;8FB55A;
@@ -6100,16 +6079,16 @@ RoomScrolls_RedKihunterShaft:
     db $02,$00,$00,$02,$00,$00,$02,$00,$00,$02,$00,$00,$02,$00,$02       ;8FB5B4;
 
 RoomPLM_RedKihunterShaft_0_4:
-    db $0A,$02,$0D,$02,$80                                               ;8FB5C3;
+    db $0A,$02, $0D,$02, $80                                             ;8FB5C3;
 
 RoomPLM_RedKihunterShaft_3_5:
-    db $0A,$00,$0D,$00,$80                                               ;8FB5C8;
+    db $0A,$00, $0D,$00, $80                                             ;8FB5C8;
 
 RoomPLM_RedKihunterShaft_6:
-    db $00,$02,$03,$02,$80                                               ;8FB5CD;
+    db $00,$02, $03,$02, $80                                             ;8FB5CD;
 
 RoomPLM_RedKihunterShaft_A:
-    db $00,$02,$80                                                       ;8FB5D2;
+    db $00,$02, $80                                                      ;8FB5D2;
 
 RoomHeader_Wasteland:
     db $46,$02,$20,$0E,$06,$03,$70,$A0,$00                               ;8FB5D5;
@@ -6139,25 +6118,25 @@ RoomScrolls_Wasteland:
     db $00,$00                                                           ;8FB610;
 
 RoomPLM_Wasteland_0:
-    db $07,$02,$80                                                       ;8FB612;
+    db $07,$02, $80                                                      ;8FB612;
 
 RoomPLM_Wasteland_2:
-    db $01,$01,$07,$00,$80                                               ;8FB615;
+    db $01,$01, $07,$00, $80                                             ;8FB615;
 
 RoomPLM_Wasteland_8_C:
-    db $04,$01,$80                                                       ;8FB61A;
+    db $04,$01, $80                                                      ;8FB61A;
 
 RoomPLM_Wasteland_A:
-    db $00,$01,$01,$01,$80                                               ;8FB61D;
+    db $00,$01, $01,$01, $80                                             ;8FB61D;
 
 RoomPLM_Wasteland_9_B:
-    db $04,$00,$80                                                       ;8FB622;
+    db $04,$00, $80                                                      ;8FB622;
 
 RoomPLM_Wasteland_D:
-    db $00,$00,$80                                                       ;8FB625;
+    db $00,$00, $80                                                      ;8FB625;
 
 RoomPLM_Wasteland_11:
-    db $01,$00,$80                                                       ;8FB628;
+    db $01,$00, $80                                                      ;8FB628;
 
 RoomHeader_MetalPirates:
     db $47,$02,$1E,$10,$03,$01,$70,$A0,$00                               ;8FB62B;
@@ -6209,13 +6188,13 @@ RoomScrolls_ThreeMusketeers:
     db $00,$02,$00,$00,$00,$02,$00,$00,$00,$01,$01,$01                   ;8FB681;
 
 RoomPLM_ThreeMusketeers_0:
-    db $09,$00,$80                                                       ;8FB68D;
+    db $09,$00, $80                                                      ;8FB68D;
 
 RoomPLM_ThreeMusketeers_6:
-    db $08,$01,$09,$01,$80                                               ;8FB690;
+    db $08,$01, $09,$01, $80                                             ;8FB690;
 
 RoomPLM_ThreeMusketeers_7:
-    db $08,$00,$80                                                       ;8FB695;
+    db $08,$00, $80                                                      ;8FB695;
 
 RoomHeader_RidleyETank:
     db $49,$02,$16,$11,$01,$01,$70,$A0,$00                               ;8FB698;
@@ -6292,16 +6271,16 @@ RoomScrolls_LNFireflea:
     db $01,$01                                                           ;8FB72B;
 
 RoomPLM_LNFireflea_2:
-    db $0B,$01,$80                                                       ;8FB72D;
+    db $0B,$01, $80                                                      ;8FB72D;
 
 RoomPLM_LNFireflea_5:
-    db $0B,$02,$0D,$02,$0E,$02,$80                                       ;8FB730;
+    db $0B,$02, $0D,$02, $0E,$02, $80                                    ;8FB730;
 
 RoomPLM_LNFireflea_9:
-    db $00,$01,$04,$00,$80                                               ;8FB737;
+    db $00,$01, $04,$00, $80                                             ;8FB737;
 
 RoomPLM_LNFireflea_11:
-    db $01,$02,$04,$02,$80                                               ;8FB73C;
+    db $01,$02, $04,$02, $80                                             ;8FB73C;
 
 RoomHeader_LNSave:
     db $4C,$02,$24,$0C,$01,$01,$70,$A0,$00                               ;8FB741;
@@ -6631,256 +6610,176 @@ DoorASM_Scroll_3_Green:
     RTS                                                                  ;8FBA36;
 
 
-LibBG_Brinstar_6_Vertical_GlowPatches:
-    dw $0004                                                             ;8FBA37;
-    dl Background_Brinstar_6_Vertical_GlowPatches                        ;8FBA39;
-    dw $4000,$0002                                                       ;8FBA3C;
-    dl $7E4000                                                           ;8FBA40;
-    dw $4800,$0800,$0002                                                 ;8FBA43;
-    dl $7E4000                                                           ;8FBA49;
-    dw $4C00,$0800,$0000                                                 ;8FBA4C;
+LibBG_Brinstar_6_Vertical_GlowPatches:                                   ;8FBA37;
+    dw $0004 : dl Background_Brinstar_6_Vertical_GlowPatches : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Brinstar_6_Horizontal_GlowPatches:
-    dw $0004                                                             ;8FBA52;
-    dl Background_Brinstar_6_Horizontal_GlowPatches                      ;8FBA54;
-    dw $4000,$0002                                                       ;8FBA57;
-    dl $7E4000                                                           ;8FBA5B;
-    dw $4800,$0800,$0002                                                 ;8FBA5E;
-    dl $7E4000                                                           ;8FBA64;
-    dw $4C00,$0800,$0000                                                 ;8FBA67;
+LibBG_Brinstar_6_Horizontal_GlowPatches:                                 ;8FBA52;
+    dw $0004 : dl Background_Brinstar_6_Horizontal_GlowPatches : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Brinstar_6_LargeHorizontalPattern:
-    dw $0004                                                             ;8FBA6D;
-    dl Background_Brinstar_6_LargeHorizontalPattern                      ;8FBA6F;
-    dw $4000,$0002                                                       ;8FBA72;
-    dl $7E4000                                                           ;8FBA76;
-    dw $4800,$0800,$0002                                                 ;8FBA79;
-    dl $7E4000                                                           ;8FBA7F;
-    dw $4C00,$0800,$0000                                                 ;8FBA82;
+LibBG_Brinstar_6_LargeHorizontalPattern:                                 ;8FBA6D;
+    dw $0004 : dl Background_Brinstar_6_LargeHorizontalPattern : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Brinstar_6_MediumHorizontalPattern:
-    dw $0004                                                             ;8FBA88;
-    dl Background_Brinstar_6_MediumHorizontalPattern                     ;8FBA8A;
-    dw $4000,$0002                                                       ;8FBA8D;
-    dl $7E4000                                                           ;8FBA91;
-    dw $4800,$0800,$0002                                                 ;8FBA94;
-    dl $7E4000                                                           ;8FBA9A;
-    dw $4C00,$0800,$0000                                                 ;8FBA9D;
+LibBG_Brinstar_6_MediumHorizontalPattern:                                ;8FBA88;
+    dw $0004 : dl Background_Brinstar_6_MediumHorizontalPattern : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Brinstar_6_ThinHorizontalPattern:
-    dw $0004                                                             ;8FBAA3;
-    dl Background_Brinstar_6_ThinHorizontalPattern                       ;8FBAA5;
-    dw $4000,$0002                                                       ;8FBAA8;
-    dl $7E4000                                                           ;8FBAAC;
-    dw $4800,$0800,$0002                                                 ;8FBAAF;
-    dl $7E4000                                                           ;8FBAB5;
-    dw $4C00,$0800,$0000                                                 ;8FBAB8;
+LibBG_Brinstar_6_ThinHorizontalPattern:                                  ;8FBAA3;
+    dw $0004 : dl Background_Brinstar_6_ThinHorizontalPattern : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Brinstar_6_SmallPattern:
-    dw $0004                                                             ;8FBABE;
-    dl Background_Brinstar_6_SmallPattern                                ;8FBAC0;
-    dw $4000,$0002                                                       ;8FBAC3;
-    dl $7E4000                                                           ;8FBAC7;
-    dw $4800,$0800,$0002                                                 ;8FBACA;
-    dl $7E4000                                                           ;8FBAD0;
-    dw $4C00,$0800,$0000                                                 ;8FBAD3;
+LibBG_Brinstar_6_SmallPattern:                                           ;8FBABE;
+    dw $0004 : dl Background_Brinstar_6_SmallPattern : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Brinstar_6_SpheresPattern:
-    dw $0004                                                             ;8FBAD9;
-    dl Background_Brinstar_6_SpheresPattern                              ;8FBADB;
-    dw $4000,$0002                                                       ;8FBADE;
-    dl $7E4000                                                           ;8FBAE2;
-    dw $4800,$0800,$0002                                                 ;8FBAE5;
-    dl $7E4000                                                           ;8FBAEB;
-    dw $4C00,$0800,$0000                                                 ;8FBAEE;
+LibBG_Brinstar_6_SpheresPattern:                                         ;8FBAD9;
+    dw $0004 : dl Background_Brinstar_6_SpheresPattern : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Brinstar_6_SmallPattern_Variety_0:
-    dw $0004                                                             ;8FBAF4;
-    dl Background_Brinstar_6_SmallPattern_Variety_0                      ;8FBAF6;
-    dw $4000,$0002                                                       ;8FBAF9;
-    dl $7E4000                                                           ;8FBAFD;
-    dw $4800,$0800,$0002                                                 ;8FBB00;
-    dl $7E4000                                                           ;8FBB06;
-    dw $4C00,$0800,$0000                                                 ;8FBB09;
+LibBG_Brinstar_6_SmallPattern_Variety_0:                                 ;8FBAF4;
+    dw $0004 : dl Background_Brinstar_6_SmallPattern_Variety_0 : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
 if !FEATURE_KEEP_UNREFERENCED
-UNUSED_LibBG_Brinstar_6_SmallPattern_Variety_1_8FBB0F:
-    dw $0004                                                             ;8FBB0F;
-    dl Background_Brinstar_6_SmallPattern_Variety_1                      ;8FBB11;
-    dw $4000,$0002                                                       ;8FBB14;
-    dl $7E4000                                                           ;8FBB18;
-    dw $4800,$0800,$0002                                                 ;8FBB1B;
-    dl $7E4000                                                           ;8FBB21;
-    dw $4C00,$0800,$0000                                                 ;8FBB24;
+UNUSED_LibBG_Brinstar_6_SmallPattern_Variety_1_8FBB0F:                   ;8FBB0F;
+    dw $0004 : dl Background_Brinstar_6_SmallPattern_Variety_1 : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-UNUSED_LibBG_Brinstar_6_SmallPattern_Variety_2_8FBB2A:
-    dw $0004                                                             ;8FBB2A;
-    dl Background_Brinstar_6_SmallPattern_Variety_2                      ;8FBB2C;
-    dw $4000,$0002                                                       ;8FBB2F;
-    dl $7E4000                                                           ;8FBB33;
-    dw $4800,$0800,$0002                                                 ;8FBB36;
-    dl $7E4000                                                           ;8FBB3C;
-    dw $4C00,$0800,$0000                                                 ;8FBB3F;
+UNUSED_LibBG_Brinstar_6_SmallPattern_Variety_2_8FBB2A:                   ;8FBB2A;
+    dw $0004 : dl Background_Brinstar_6_SmallPattern_Variety_2 : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-LibBG_Brinstar_6_DarkPattern:
-    dw $0004                                                             ;8FBB45;
-    dl Background_Brinstar_6_DarkPattern                                 ;8FBB47;
-    dw $4000,$0002                                                       ;8FBB4A;
-    dl $7E4000                                                           ;8FBB4E;
-    dw $4800,$0800,$0002                                                 ;8FBB51;
-    dl $7E4000                                                           ;8FBB57;
-    dw $4C00,$0800,$0000                                                 ;8FBB5A;
+LibBG_Brinstar_6_DarkPattern:                                            ;8FBB45;
+    dw $0004 : dl Background_Brinstar_6_DarkPattern : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Tourian_15_Statues:
-    dw $0004                                                             ;8FBB60;
-    dl Background_Tourian_15_Statues                                     ;8FBB62;
-    dw $4000,$0002                                                       ;8FBB65;
-    dl $7E4000                                                           ;8FBB69;
-    dw $4800,$1000,$0002                                                 ;8FBB6C;
-    dl Tiles_TourianStatuesSoul                                          ;8FBB72;
-    dw $6D00,$0600,$0000                                                 ;8FBB75;
+LibBG_Tourian_15_Statues:                                                ;8FBB60;
+    dw $0004 : dl Background_Tourian_15_Statues : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$1000
+    dw $0002 : dl Tiles_TourianStatuesSoul : dw $6D00,$0600
+    dw $0000
 
-LibBG_Brinstar_7_WideVerticalTower_Brick_0:
-    dw $0004                                                             ;8FBB7B;
-    dl Background_Brinstar_7_WideVerticalTower_Brick_0                   ;8FBB7D;
-    dw $4000,$0002                                                       ;8FBB80;
-    dl $7E4000                                                           ;8FBB84;
-    dw $4800,$0800,$0002                                                 ;8FBB87;
-    dl $7E4000                                                           ;8FBB8D;
-    dw $4C00,$0800,$0000                                                 ;8FBB90;
+LibBG_Brinstar_7_WideVerticalTower_Brick_0:                              ;8FBB7B;
+    dw $0004 : dl Background_Brinstar_7_WideVerticalTower_Brick_0 : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
 if !FEATURE_KEEP_UNREFERENCED
-UNUSED_LibBG_Brinstar_7_WideVerticalTower_Brick_1_8FBB96:
-    dw $0004                                                             ;8FBB96;
-    dl Background_Brinstar_7_WideVerticalTower_Brick_1                   ;8FBB98;
-    dw $4000,$0002                                                       ;8FBB9B;
-    dl $7E4000                                                           ;8FBB9F;
-    dw $4800,$0800,$0002                                                 ;8FBBA2;
-    dl $7E4000                                                           ;8FBBA8;
-    dw $4C00,$0800,$0000                                                 ;8FBBAB;
+UNUSED_LibBG_Brinstar_7_WideVerticalTower_Brick_1_8FBB96:                ;8FBB96;
+    dw $0004 : dl Background_Brinstar_7_WideVerticalTower_Brick_1 : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-UNUSED_LibBG_Brinstar_7_WideVerticalTower_Brick_2_8FBBB1:
-    dw $0004                                                             ;8FBBB1;
-    dl Background_Brinstar_7_WideVerticalTower_Brick_2                   ;8FBBB3;
-    dw $4000,$0002                                                       ;8FBBB6;
-    dl $7E4000                                                           ;8FBBBA;
-    dw $4800,$0800,$0002                                                 ;8FBBBD;
-    dl $7E4000                                                           ;8FBBC3;
-    dw $4C00,$0800,$0000                                                 ;8FBBC6;
+UNUSED_LibBG_Brinstar_7_WideVerticalTower_Brick_2_8FBBB1:                ;8FBBB1;
+    dw $0004 : dl Background_Brinstar_7_WideVerticalTower_Brick_2 : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-LibBG_Brinstar_7_VerticalTower:
-    dw $0004                                                             ;8FBBCC;
-    dl Background_Brinstar_7_VerticalTower                               ;8FBBCE;
-    dw $4000,$0002                                                       ;8FBBD1;
-    dl $7E4000                                                           ;8FBBD5;
-    dw $4800,$0800,$0002                                                 ;8FBBD8;
-    dl $7E4000                                                           ;8FBBDE;
-    dw $4C00,$0800,$0000                                                 ;8FBBE1;
+LibBG_Brinstar_7_VerticalTower:                                          ;8FBBCC;
+    dw $0004 : dl Background_Brinstar_7_VerticalTower : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Brinstar_7_NarrowVerticalTower_Brick:
-    dw $0004                                                             ;8FBBE7;
-    dl Background_Brinstar_7_NarrowVerticalTower_Brick                   ;8FBBE9;
-    dw $4000,$0002                                                       ;8FBBEC;
-    dl $7E4000                                                           ;8FBBF0;
-    dw $4800,$0800,$0002                                                 ;8FBBF3;
-    dl $7E4000                                                           ;8FBBF9;
-    dw $4C00,$0800,$0000                                                 ;8FBBFC;
+LibBG_Brinstar_7_NarrowVerticalTower_Brick:                              ;8FBBE7;
+    dw $0004 : dl Background_Brinstar_7_NarrowVerticalTower_Brick : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Brinstar_7_VerticalBrick_0:
-    dw $0004                                                             ;8FBC02;
-    dl Background_Brinstar_7_VerticalBrick_0                             ;8FBC04;
-    dw $4000,$0002                                                       ;8FBC07;
-    dl $7E4000                                                           ;8FBC0B;
-    dw $4800,$0800,$0002                                                 ;8FBC0E;
-    dl $7E4000                                                           ;8FBC14;
-    dw $4C00,$0800,$0000                                                 ;8FBC17;
+LibBG_Brinstar_7_VerticalBrick_0:                                        ;8FBC02;
+    dw $0004 : dl Background_Brinstar_7_VerticalBrick_0 : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
 if !FEATURE_KEEP_UNREFERENCED
-UNUSED_LibBG_Brinstar_7_VerticalBrick_1_8FBC1D:
-    dw $0004                                                             ;8FBC1D;
-    dl Background_Brinstar_7_VerticalBrick_1                             ;8FBC1F;
-    dw $4000,$0002                                                       ;8FBC22;
-    dl $7E4000                                                           ;8FBC26;
-    dw $4800,$0800,$0002                                                 ;8FBC29;
-    dl $7E4000                                                           ;8FBC2F;
-    dw $4C00,$0800,$0000                                                 ;8FBC32;
+UNUSED_LibBG_Brinstar_7_VerticalBrick_1_8FBC1D:                          ;8FBC1D;
+    dw $0004 : dl Background_Brinstar_7_VerticalBrick_1 : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-LibBG_Brinstar_7_MechanicalRoom_SpikeFloor:
-    dw $0004                                                             ;8FBC38;
-    dl Background_Brinstar_7_MechanicalRoom_SpikeFloor                   ;8FBC3A;
-    dw $4000,$0002                                                       ;8FBC3D;
-    dl $7E4000                                                           ;8FBC41;
-    dw $4800,$0800,$0002                                                 ;8FBC44;
-    dl $7E4000                                                           ;8FBC4A;
-    dw $4C00,$0800,$0000                                                 ;8FBC4D;
+LibBG_Brinstar_7_MechanicalRoom_SpikeFloor:                              ;8FBC38;
+    dw $0004 : dl Background_Brinstar_7_MechanicalRoom_SpikeFloor : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Brinstar_7_MechanicalRoom:
-    dw $0004                                                             ;8FBC53;
-    dl Background_Brinstar_7_MechanicalRoom                              ;8FBC55;
-    dw $4000,$0002                                                       ;8FBC58;
-    dl $7E4000                                                           ;8FBC5C;
-    dw $4800,$0800,$0002                                                 ;8FBC5F;
-    dl $7E4000                                                           ;8FBC65;
-    dw $4C00,$0800,$0000                                                 ;8FBC68;
+LibBG_Brinstar_7_MechanicalRoom:                                         ;8FBC53;
+    dw $0004 : dl Background_Brinstar_7_MechanicalRoom : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Brinstar_7_NarrowVerticalTower_Brick_Vines_0:
-    dw $0004                                                             ;8FBC6E;
-    dl Background_Brinstar_7_NarrowVerticalTower_Brick_Vines_0           ;8FBC70;
-    dw $4000,$0002                                                       ;8FBC73;
-    dl $7E4000                                                           ;8FBC77;
-    dw $4800,$0800,$0002                                                 ;8FBC7A;
-    dl $7E4000                                                           ;8FBC80;
-    dw $4C00,$0800,$0000                                                 ;8FBC83;
+LibBG_Brinstar_7_NarrowVerticalTower_Brick_Vines_0:                      ;8FBC6E;
+    dw $0004 : dl Background_Brinstar_7_NarrowVerticalTower_Brick_Vines_0 : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
 if !FEATURE_KEEP_UNREFERENCED
-UNUSED_LibBG_Brin_7_NarrowVerticalTower_Brick_Vines_1_8FBC89:
-    dw $0004                                                             ;8FBC89;
-    dl Background_Brinstar_7_NarrowVerticalTower_Brick_Vines_1           ;8FBC8B;
-    dw $4000,$0002                                                       ;8FBC8E;
-    dl $7E4000                                                           ;8FBC92;
-    dw $4800,$0800,$0002                                                 ;8FBC95;
-    dl $7E4000                                                           ;8FBC9B;
-    dw $4C00,$0800,$0000                                                 ;8FBC9E;
+UNUSED_LibBG_Brin_7_NarrowVerticalTower_Brick_Vines_1_8FBC89:            ;8FBC89;
+    dw $0004 : dl Background_Brinstar_7_NarrowVerticalTower_Brick_Vines_1 : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-LibBG_Brinstar_8_NarrowVerticalTower_Brick_Grey_0:
-    dw $0004                                                             ;8FBCA4;
-    dl Background_Brinstar_8_NarrowVerticalTower_Brick_Grey_0            ;8FBCA6;
-    dw $4000,$0002                                                       ;8FBCA9;
-    dl $7E4000                                                           ;8FBCAD;
-    dw $4800,$1000,$0000                                                 ;8FBCB0;
+LibBG_Brinstar_8_NarrowVerticalTower_Brick_Grey_0:                       ;8FBCA4;
+    dw $0004 : dl Background_Brinstar_8_NarrowVerticalTower_Brick_Grey_0 : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$1000
+    dw $0000
 
 if !FEATURE_KEEP_UNREFERENCED
-UNUSED_LibBG_Brin_8_NarrowVerticalTower_Brick_Grey_1_8FBCB6:
-    dw $0004                                                             ;8FBCB6;
-    dl Background_Brinstar_8_NarrowVerticalTower_Brick_Grey_1            ;8FBCB8;
-    dw $4000,$0002                                                       ;8FBCBB;
-    dl $7E4000                                                           ;8FBCBF;
-    dw $4800,$0800,$0002                                                 ;8FBCC2;
-    dl $7E4000                                                           ;8FBCC8;
-    dw $4C00,$0800,$0000                                                 ;8FBCCB;
+UNUSED_LibBG_Brin_8_NarrowVerticalTower_Brick_Grey_1_8FBCB6:             ;8FBCB6;
+    dw $0004 : dl Background_Brinstar_8_NarrowVerticalTower_Brick_Grey_1 : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-UNUSED_LibBG_Brin_8_NarrowVerticalTower_Brick_Grey_2_8FBCD1:
-    dw $0004                                                             ;8FBCD1;
-    dl Background_Brinstar_8_NarrowVerticalTower_Brick_Grey_2            ;8FBCD3;
-    dw $4000,$0002                                                       ;8FBCD6;
-    dl $7E4000                                                           ;8FBCDA;
-    dw $4800,$0800,$0002                                                 ;8FBCDD;
-    dl $7E4000                                                           ;8FBCE3;
-    dw $4C00,$0800,$0000                                                 ;8FBCE6;
+UNUSED_LibBG_Brin_8_NarrowVerticalTower_Brick_Grey_2_8FBCD1:             ;8FBCD1;
+    dw $0004 : dl Background_Brinstar_8_NarrowVerticalTower_Brick_Grey_2 : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-LibBG_Brinstar_7_BlueGridBlocks:
-    dw $0004                                                             ;8FBCEC;
-    dl Background_Brinstar_7_BlueGridBlocks                              ;8FBCEE;
-    dw $4000,$0002                                                       ;8FBCF1;
-    dl $7E4000                                                           ;8FBCF5;
-    dw $4800,$0800,$0002                                                 ;8FBCF8;
-    dl $7E4000                                                           ;8FBCFE;
-    dw $4C00,$0800,$0000                                                 ;8FBD01;
+LibBG_Brinstar_7_BlueGridBlocks:                                         ;8FBCEC;
+    dw $0004 : dl Background_Brinstar_7_BlueGridBlocks : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
 DoorASM_Scroll_18_1C_Green:
     PHP                                                                  ;8FBD07;
@@ -7099,124 +6998,85 @@ DoorASM_Scroll_2_Green:
     RTS                                                                  ;8FBE3E;
 
 
-LibBG_Norfair_9_A_SmallPatternBrownPurple_Bright:
-    dw $0004                                                             ;8FBE3F;
-    dl Background_Norfair_9_A_SmallPatternBrownPurple_Bright             ;8FBE41;
-    dw $4000,$0002                                                       ;8FBE44;
-    dl $7E4000                                                           ;8FBE48;
-    dw $4800,$0800,$0002                                                 ;8FBE4B;
-    dl $7E4000                                                           ;8FBE51;
-    dw $4C00,$0800,$0000                                                 ;8FBE54;
+LibBG_Norfair_9_A_SmallPatternBrownPurple_Bright:                        ;8FBE3F;
+    dw $0004 : dl Background_Norfair_9_A_SmallPatternBrownPurple_Bright : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Norfair_9_A_SmallPatternBrownPurple_0:
-    dw $0004                                                             ;8FBE5A;
-    dl Background_Norfair_9_A_SmallPatternBrownPurple_0                  ;8FBE5C;
-    dw $4000,$0002                                                       ;8FBE5F;
-    dl $7E4000                                                           ;8FBE63;
-    dw $4800,$0800,$0002                                                 ;8FBE66;
-    dl $7E4000                                                           ;8FBE6C;
-    dw $4C00,$0800,$0000                                                 ;8FBE6F;
+LibBG_Norfair_9_A_SmallPatternBrownPurple_0:                             ;8FBE5A;
+    dw $0004 : dl Background_Norfair_9_A_SmallPatternBrownPurple_0 : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
 if !FEATURE_KEEP_UNREFERENCED
-UNUSED_LibBG_Norfair_9_A_SmallPatternBrownPurple_1_8FBE75:
-    dw $0004                                                             ;8FBE75;
-    dl Background_Norfair_9_A_SmallPatternBrownPurple_1                  ;8FBE77;
-    dw $4000,$0002                                                       ;8FBE7A;
-    dl $7E4000                                                           ;8FBE7E;
-    dw $4800,$0800,$0002                                                 ;8FBE81;
-    dl $7E4000                                                           ;8FBE87;
-    dw $4C00,$0800,$0000                                                 ;8FBE8A;
+UNUSED_LibBG_Norfair_9_A_SmallPatternBrownPurple_1_8FBE75:               ;8FBE75;
+    dw $0004 : dl Background_Norfair_9_A_SmallPatternBrownPurple_1 : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-LibBG_Norfair_9_HorizontalPatternBrick:
-    dw $0004                                                             ;8FBE90;
-    dl Background_Norfair_9_HorizontalPatternBrick                       ;8FBE92;
-    dw $4000,$0002                                                       ;8FBE95;
-    dl $7E4000                                                           ;8FBE99;
-    dw $4800,$0800,$0002                                                 ;8FBE9C;
-    dl $7E4000                                                           ;8FBEA2;
-    dw $4C00,$0800,$0000                                                 ;8FBEA5;
+LibBG_Norfair_9_HorizontalPatternBrick:                                  ;8FBE90;
+    dw $0004 : dl Background_Norfair_9_HorizontalPatternBrick : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Norfair_9_VerticalPatternBrick:
-    dw $0004                                                             ;8FBEAB;
-    dl Background_Norfair_9_VerticalPatternBrick                         ;8FBEAD;
-    dw $4000,$0002                                                       ;8FBEB0;
-    dl $7E4000                                                           ;8FBEB4;
-    dw $4800,$0800,$0002                                                 ;8FBEB7;
-    dl $7E4000                                                           ;8FBEBD;
-    dw $4C00,$0800,$0000                                                 ;8FBEC0;
+LibBG_Norfair_9_VerticalPatternBrick:                                    ;8FBEAB;
+    dw $0004 : dl Background_Norfair_9_VerticalPatternBrick : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Norfair_9_A_CavernStalagtites:
-    dw $0004                                                             ;8FBEC6;
-    dl Background_Norfair_9_A_CavernStalagtites                          ;8FBEC8;
-    dw $4000,$0002                                                       ;8FBECB;
-    dl $7E4000                                                           ;8FBECF;
-    dw $4800,$0800,$0002                                                 ;8FBED2;
-    dl $7E4000                                                           ;8FBED8;
-    dw $4C00,$0800,$0000                                                 ;8FBEDB;
+LibBG_Norfair_9_A_CavernStalagtites:                                     ;8FBEC6;
+    dw $0004 : dl Background_Norfair_9_A_CavernStalagtites : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Norfair_9_A_CavernVertical:
-    dw $0004                                                             ;8FBEE1;
-    dl Background_Norfair_9_A_CavernVertical                             ;8FBEE3;
-    dw $4000,$0002                                                       ;8FBEE6;
-    dl $7E4000                                                           ;8FBEEA;
-    dw $4800,$0800,$0002                                                 ;8FBEED;
-    dl $7E4000                                                           ;8FBEF3;
-    dw $4C00,$0800,$0000                                                 ;8FBEF6;
+LibBG_Norfair_9_A_CavernVertical:                                        ;8FBEE1;
+    dw $0004 : dl Background_Norfair_9_A_CavernVertical : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Norfair_9_CavernHorizontalRuins:
-    dw $0004                                                             ;8FBEFC;
-    dl Background_Norfair_9_CavernHorizontalRuins                        ;8FBEFE;
-    dw $4000,$0002                                                       ;8FBF01;
-    dl $7E4000                                                           ;8FBF05;
-    dw $4800,$0800,$0002                                                 ;8FBF08;
-    dl $7E4000                                                           ;8FBF0E;
-    dw $4C00,$0800,$0000                                                 ;8FBF11;
+LibBG_Norfair_9_CavernHorizontalRuins:                                   ;8FBEFC;
+    dw $0004 : dl Background_Norfair_9_CavernHorizontalRuins : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Norfair_9_CavernVerticalRuins:
-    dw $0004                                                             ;8FBF17;
-    dl Background_Norfair_9_CavernVerticalRuins                          ;8FBF19;
-    dw $4000,$0002                                                       ;8FBF1C;
-    dl $7E4000                                                           ;8FBF20;
-    dw $4800,$0800,$0002                                                 ;8FBF23;
-    dl $7E4000                                                           ;8FBF29;
-    dw $4C00,$0800,$0000                                                 ;8FBF2C;
+LibBG_Norfair_9_CavernVerticalRuins:                                     ;8FBF17;
+    dw $0004 : dl Background_Norfair_9_CavernVerticalRuins : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Norfair_9_CavernRoomPillars:
-    dw $0004                                                             ;8FBF32;
-    dl Background_Norfair_9_CavernRoomPillars                            ;8FBF34;
-    dw $4000,$0002                                                       ;8FBF37;
-    dl $7E4000                                                           ;8FBF3B;
-    dw $4800,$0800,$0002                                                 ;8FBF3E;
-    dl $7E4000                                                           ;8FBF44;
-    dw $4C00,$0800,$0000                                                 ;8FBF47;
+LibBG_Norfair_9_CavernRoomPillars:                                       ;8FBF32;
+    dw $0004 : dl Background_Norfair_9_CavernRoomPillars : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Norfair_9_RoomStatues:
-    dw $0004                                                             ;8FBF4D;
-    dl Background_Norfair_9_RoomStatues                                  ;8FBF4F;
-    dw $4000,$0002                                                       ;8FBF52;
-    dl $7E4000                                                           ;8FBF56;
-    dw $4800,$0800,$0002                                                 ;8FBF59;
-    dl $7E4000                                                           ;8FBF5F;
-    dw $4C00,$0800,$0000                                                 ;8FBF62;
+LibBG_Norfair_9_RoomStatues:                                             ;8FBF4D;
+    dw $0004 : dl Background_Norfair_9_RoomStatues : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Norfair_9_PurplePatches:
-    dw $0004                                                             ;8FBF68;
-    dl Background_Norfair_9_PurplePatches                                ;8FBF6A;
-    dw $4000,$0002                                                       ;8FBF6D;
-    dl $7E4000                                                           ;8FBF71;
-    dw $4800,$0800,$0002                                                 ;8FBF74;
-    dl $7E4000                                                           ;8FBF7A;
-    dw $4C00,$0800,$0000                                                 ;8FBF7D;
+LibBG_Norfair_9_PurplePatches:                                           ;8FBF68;
+    dw $0004 : dl Background_Norfair_9_PurplePatches : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Norfair_9_Bubbles:
-    dw $0004                                                             ;8FBF83;
-    dl Background_Norfair_9_Bubbles                                      ;8FBF85;
-    dw $4000,$0002                                                       ;8FBF88;
-    dl $7E4000                                                           ;8FBF8C;
-    dw $4800,$0800,$0002                                                 ;8FBF8F;
-    dl $7E4000                                                           ;8FBF95;
-    dw $4C00,$0800,$0000                                                 ;8FBF98;
+LibBG_Norfair_9_Bubbles:                                                 ;8FBF83;
+    dw $0004 : dl Background_Norfair_9_Bubbles : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
 DoorASM_Scroll_3_4_Red_6_7_8_Blue:
     PHP                                                                  ;8FBF9E;
@@ -7571,6 +7431,7 @@ GenerateRandomExplosionAt_12_14:
 
 
 ExplosionSpriteObjectIDs:
+; 3 = small explosion, 9 = small dust cloud, Ch = smoke, 12h = short big dust cloud, 15h = big dust cloud
     db $03,$03,$09,$0C,$0C,$12,$12,$15                                   ;8FC1D6;
 
 ExplosionSoundEffects:
@@ -7595,108 +7456,72 @@ MainASM_ScrollScreenRightInDachoraRoom:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-UNUSED_8FC209:
-    dw $0051,$0061,$0001,$0002,$0005,$0006                               ;8FC209;
+UNUSED_8FC209:                                                           ;8FC209;
+; See UNUSED_UnknownUnreferenced_8FE881 for the other areas
+    dw $0051 ; "Next" item / refill station index (50h is the last used one, see "Item PLMs.asm")
+    dw $0061 ; "Next" doorcap index (60h is the last used one, see "Door PLMs.asm")
+    dw $0001 ; ?
+    dw $0002 ; Number of save stations in Crateria
+    dw $0005 ; Number of save stations in Brinstar
+    dw $0006 ; Number of save stations in Norfair
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-PLMPopulation_BowlingAlley_State0:
-    dw PLMEntries_ScrollPLM                                              ;8FC215;
-    db $1F,$2D                                                           ;8FC217;
-    dw $C9EC                                                             ;8FC219;
-    dw PLMEntries_upwardsExtension                                       ;8FC21B;
-    db $41,$26                                                           ;8FC21D;
-    dw $8000                                                             ;8FC21F;
-    dw PLMEntries_upwardsExtension                                       ;8FC221;
-    db $41,$27                                                           ;8FC223;
-    dw $8000                                                             ;8FC225;
-    dw PLMEntries_ScrollPLM                                              ;8FC227;
-    db $41,$28                                                           ;8FC229;
-    dw $C9F1,$0000                                                       ;8FC22B;
+PLMPopulation_BowlingAlley_State0:                                       ;8FC215;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $1F, $2D, RoomPLM_BowlingAlley_0)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $41, $26, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $41, $27, $8000)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $41, $28, RoomPLM_BowlingAlley_3)
+    dw $0000                                                             ;8FC22D;
 
 PLMPopulation_WreckedShipEntrance_State0:
     dw $0000                                                             ;8FC22F;
 
-PLMPopulation_Attic_State0:
-    dw PLMEntries_greyDoorFacingRight                                    ;8FC231;
-    db $01,$06                                                           ;8FC233;
-    dw $0080                                                             ;8FC235;
-    dw PLMEntries_greyDoorFacingLeft                                     ;8FC237;
-    db $6E,$06                                                           ;8FC239;
-    dw $0081                                                             ;8FC23B;
-    dw PLMEntries_wreckedShipAttic                                       ;8FC23D;
-    db $08,$08                                                           ;8FC23F;
-    dw $8000,$0000                                                       ;8FC241;
+PLMPopulation_Attic_State0:                                              ;8FC231;
+    %PLMPopEntry(PLMEntries_greyDoorFacingRight, $01, $06, $0080)
+    %PLMPopEntry(PLMEntries_greyDoorFacingLeft, $6E, $06, $0081)
+    %PLMPopEntry(PLMEntries_wreckedShipAttic, $08, $08, $8000)
+    dw $0000
 
 PLMPopulation_AssemblyLine_State0:
     dw $0000                                                             ;8FC245;
 
-PLMPopulation_WreckedShipMainShaft_State0_1:
-    dw PLMEntries_ScrollPLM                                              ;8FC247;
-    db $3E,$57                                                           ;8FC249;
-    dw $CB7A                                                             ;8FC24B;
-    dw PLMEntries_ScrollPLM                                              ;8FC24D;
-    db $51,$69                                                           ;8FC24F;
-    dw $CB7D                                                             ;8FC251;
-    dw PLMEntries_ScrollPLM                                              ;8FC253;
-    db $41,$57                                                           ;8FC255;
-    dw $CB80                                                             ;8FC257;
-    dw PLMEntries_ScrollPLM                                              ;8FC259;
-    db $4E,$69                                                           ;8FC25B;
-    dw $CB83                                                             ;8FC25D;
-    dw PLMEntries_ScrollPLM                                              ;8FC25F;
-    db $47,$6D                                                           ;8FC261;
-    dw $CB86                                                             ;8FC263;
-    dw PLMEntries_MissileTank                                            ;8FC265;
-    db $02,$59                                                           ;8FC267;
-    dw $0080                                                             ;8FC269;
-    dw PLMEntries_greyDoorFacingRight                                    ;8FC26B;
-    db $41,$66                                                           ;8FC26D;
-    dw $0082                                                             ;8FC26F;
-    dw PLMEntries_greyDoorFacingLeft                                     ;8FC271;
-    db $4E,$46                                                           ;8FC273;
-    dw $0083                                                             ;8FC275;
-    dw PLMEntries_greenDoorFacingUp                                      ;8FC277;
-    db $46,$7D                                                           ;8FC279;
-    dw $0084,$0000                                                       ;8FC27B;
+PLMPopulation_WreckedShipMainShaft_State0_1:                             ;8FC247;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $3E, $57, RoomPLM_WreckedShipMainShaft_0)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $51, $69, RoomPLM_WreckedShipMainShaft_1)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $41, $57, RoomPLM_WreckedShipMainShaft_2)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $4E, $69, RoomPLM_WreckedShipMainShaft_3)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $47, $6D, RoomPLM_WreckedShipMainShaft_4)
+    %PLMPopEntry(PLMEntries_MissileTank, $02, $59, $0080)
+    %PLMPopEntry(PLMEntries_greyDoorFacingRight, $41, $66, $0082)
+    %PLMPopEntry(PLMEntries_greyDoorFacingLeft, $4E, $46, $0083)
+    %PLMPopEntry(PLMEntries_greenDoorFacingUp, $46, $7D, $0084)
+    dw $0000
 
 PLMPopulation_SpikyDeath_State0:
     dw $0000                                                             ;8FC27F;
 
-PLMPopulation_ElectricDeath_State0:
-    dw PLMEntries_ScrollPLM                                              ;8FC281;
-    db $07,$10                                                           ;8FC283;
-    dw RoomPLM_ElectricDeath_0                                           ;8FC285;
-    dw PLMEntries_rightwardsExtension                                    ;8FC287;
-    db $08,$10                                                           ;8FC289;
-    dw $8000,$0000                                                       ;8FC28B;
+PLMPopulation_ElectricDeath_State0:                                      ;8FC281;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $07, $10, RoomPLM_ElectricDeath_0)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $08, $10, $8000)
+    dw $0000
 
 PLMPopulation_WreckedShipETank_State0:
     dw $0000                                                             ;8FC28F;
 
-PLMPopulation_Basement_State0:
-    dw PLMEntries_ScrollPLM                                              ;8FC291;
-    db $40,$0C                                                           ;8FC293;
-    dw RoomPLM_Basement_0                                                ;8FC295;
-    dw PLMEntries_ScrollPLM                                              ;8FC297;
-    db $46,$0C                                                           ;8FC299;
-    dw RoomPLM_Basement_1                                                ;8FC29B;
-    dw PLMEntries_EyeDoorFacingLeft                                      ;8FC29D;
-    db $4E,$06                                                           ;8FC29F;
-    dw $0085                                                             ;8FC2A1;
-    dw PLMEntries_EyeDoorBottomFacingLeft                                ;8FC2A3;
-    db $4E,$09                                                           ;8FC2A5;
-    dw $0085                                                             ;8FC2A7;
-    dw PLMEntries_EyeDoorEyeFacingLeft                                   ;8FC2A9;
-    db $4E,$07                                                           ;8FC2AB;
-    dw $0085,$0000                                                       ;8FC2AD;
+PLMPopulation_Basement_State0:                                           ;8FC291;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $40, $0C, RoomPLM_Basement_0)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $46, $0C, RoomPLM_Basement_1)
+    %PLMPopEntry(PLMEntries_EyeDoorFacingLeft, $4E, $06, $0085)
+    %PLMPopEntry(PLMEntries_EyeDoorBottomFacingLeft, $4E, $09, $0085)
+    %PLMPopEntry(PLMEntries_EyeDoorEyeFacingLeft, $4E, $07, $0085)
+    dw $0000
 
 PLMPopulation_WreckedShipMap_State0:
     dw $0000                                                             ;8FC2B1;
 
-PLMPopulation_Phantoon_State0_1:
-    dw PLMEntries_greyDoorFacingRight                                    ;8FC2B3;
-    db $01,$06                                                           ;8FC2B5;
-    dw $0086,$0000                                                       ;8FC2B7;
+PLMPopulation_Phantoon_State0_1:                                         ;8FC2B3;
+    %PLMPopEntry(PLMEntries_greyDoorFacingRight, $01, $06, $0086)
+    dw $0000
 
 PLMPopulation_SpongeBath_State0:
     dw $0000                                                             ;8FC2BB;
@@ -7704,374 +7529,197 @@ PLMPopulation_SpongeBath_State0:
 PLMPopulation_WSWestSuper_State0:
     dw $0000                                                             ;8FC2BD;
 
-PLMPopulation_WSEastSuper_State0:
-    dw PLMEntries_ScrollPLM                                              ;8FC2BF;
-    db $2F,$07                                                           ;8FC2C1;
-    dw RoomPLM_WSEastSuper_0                                             ;8FC2C3;
-    dw $0000                                                             ;8FC2C5;
+PLMPopulation_WSEastSuper_State0:                                        ;8FC2BF;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $2F, $07, RoomPLM_WSEastSuper_0)
+    dw $0000
 
 PLMPopulation_GravitySuit_State0_WreckedShipSave_State0:
     dw $0000                                                             ;8FC2C7;
 
-PLMPopulation_WreckedShipSave_State1:
-    dw PLMEntries_saveStation                                            ;8FC2C9;
-    db $07,$0B                                                           ;8FC2CB;
-    dw $0000,$0000                                                       ;8FC2CD;
+PLMPopulation_WreckedShipSave_State1:                                    ;8FC2C9;
+    %PLMPopEntry(PLMEntries_saveStation, $07, $0B, $0000)
+    dw $0000
 
-PLMPopulation_BowlingAlley_State1:
-    dw PLMEntries_ScrollPLM                                              ;8FC2D1;
-    db $1F,$2D                                                           ;8FC2D3;
-    dw RoomPLM_BowlingAlley_0                                            ;8FC2D5;
-    dw PLMEntries_upwardsExtension                                       ;8FC2D7;
-    db $41,$26                                                           ;8FC2D9;
-    dw $8000                                                             ;8FC2DB;
-    dw PLMEntries_upwardsExtension                                       ;8FC2DD;
-    db $41,$27                                                           ;8FC2DF;
-    dw $8000                                                             ;8FC2E1;
-    dw PLMEntries_ScrollPLM                                              ;8FC2E3;
-    db $41,$28                                                           ;8FC2E5;
-    dw RoomPLM_BowlingAlley_3                                            ;8FC2E7;
-    dw PLMEntries_ReserveTankChozoOrb                                    ;8FC2E9;
-    db $53,$0B                                                           ;8FC2EB;
-    dw $0081                                                             ;8FC2ED;
-    dw PLMEntries_MissileTank                                            ;8FC2EF;
-    db $3C,$26                                                           ;8FC2F1;
-    dw $0082                                                             ;8FC2F3;
-    dw PLMEntries_greyDoorFacingRight                                    ;8FC2F5;
-    db $01,$16                                                           ;8FC2F7;
-    dw $9087,$0000                                                       ;8FC2F9;
+PLMPopulation_BowlingAlley_State1:                                       ;8FC2D1;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $1F, $2D, RoomPLM_BowlingAlley_0)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $41, $26, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $41, $27, $8000)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $41, $28, RoomPLM_BowlingAlley_3)
+    %PLMPopEntry(PLMEntries_ReserveTankChozoOrb, $53, $0B, $0081)
+    %PLMPopEntry(PLMEntries_MissileTank, $3C, $26, $0082)
+    %PLMPopEntry(PLMEntries_greyDoorFacingRight, $01, $16, $9087)
+    dw $0000
 
 PLMPopulation_WreckedShipEntrance_State1:
     dw $0000                                                             ;8FC2FD;
 
-PLMPopulation_Attic_State1:
-    dw PLMEntries_greyDoorFacingRight                                    ;8FC2FF;
-    db $01,$06                                                           ;8FC301;
-    dw $0C88                                                             ;8FC303;
-    dw PLMEntries_greyDoorFacingLeft                                     ;8FC305;
-    db $6E,$06                                                           ;8FC307;
-    dw $0C89                                                             ;8FC309;
-    dw PLMEntries_greyDoorFacingUp                                       ;8FC30B;
-    db $46,$0E                                                           ;8FC30D;
-    dw $0C8A                                                             ;8FC30F;
-    dw PLMEntries_wreckedShipAttic                                       ;8FC311;
-    db $08,$08                                                           ;8FC313;
-    dw $8000,$0000                                                       ;8FC315;
+PLMPopulation_Attic_State1:                                              ;8FC2FF;
+    %PLMPopEntry(PLMEntries_greyDoorFacingRight, $01, $06, $0C88)
+    %PLMPopEntry(PLMEntries_greyDoorFacingLeft, $6E, $06, $0C89)
+    %PLMPopEntry(PLMEntries_greyDoorFacingUp, $46, $0E, $0C8A)
+    %PLMPopEntry(PLMEntries_wreckedShipAttic, $08, $08, $8000)
+    dw $0000
 
-PLMPopulation_AssemblyLine_State1:
-    dw PLMEntries_MissileTank                                            ;8FC319;
-    db $2D,$08                                                           ;8FC31B;
-    dw $0083,$0000                                                       ;8FC31D;
+PLMPopulation_AssemblyLine_State1:                                       ;8FC319;
+    %PLMPopEntry(PLMEntries_MissileTank, $2D, $08, $0083)
+    dw $0000
 
 PLMPopulation_SpikyDeath_State1:
     dw $0000                                                             ;8FC321;
 
-PLMPopulation_ElectricDeath_State1:
-    dw PLMEntries_ScrollPLM                                              ;8FC323;
-    db $07,$10                                                           ;8FC325;
-    dw RoomPLM_ElectricDeath_0                                           ;8FC327;
-    dw PLMEntries_rightwardsExtension                                    ;8FC329;
-    db $08,$10                                                           ;8FC32B;
-    dw $8000                                                             ;8FC32D;
-    dw PLMEntries_redDoorFacingRight                                     ;8FC32F;
-    db $01,$06                                                           ;8FC331;
-    dw $008B,$0000                                                       ;8FC333;
+PLMPopulation_ElectricDeath_State1:                                      ;8FC323;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $07, $10, RoomPLM_ElectricDeath_0)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $08, $10, $8000)
+    %PLMPopEntry(PLMEntries_redDoorFacingRight, $01, $06, $008B)
+    dw $0000
 
-PLMPopulation_WreckedShipETank_State1:
-    dw PLMEntries_EnergyTank                                             ;8FC337;
-    db $03,$06                                                           ;8FC339;
-    dw $0084,$0000                                                       ;8FC33B;
+PLMPopulation_WreckedShipETank_State1:                                   ;8FC337;
+    %PLMPopEntry(PLMEntries_EnergyTank, $03, $06, $0084)
+    dw $0000
 
-PLMPopulation_Basement_State1:
-    dw PLMEntries_ScrollPLM                                              ;8FC33F;
-    db $40,$0C                                                           ;8FC341;
-    dw RoomPLM_Basement_0                                                ;8FC343;
-    dw PLMEntries_ScrollPLM                                              ;8FC345;
-    db $46,$0C                                                           ;8FC347;
-    dw RoomPLM_Basement_1                                                ;8FC349;
-    dw $0000                                                             ;8FC34B;
+PLMPopulation_Basement_State1:                                           ;8FC33F;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $40, $0C, RoomPLM_Basement_0)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $46, $0C, RoomPLM_Basement_1)
+    dw $0000
 
-PLMPopulation_WreckedShipMap_State1:
-    dw PLMEntries_mapStation                                             ;8FC34D;
-    db $05,$0A                                                           ;8FC34F;
-    dw $8000,$0000                                                       ;8FC351;
+PLMPopulation_WreckedShipMap_State1:                                     ;8FC34D;
+    %PLMPopEntry(PLMEntries_mapStation, $05, $0A, $8000)
+    dw $0000
 
 PLMPopulation_SpongeBath_State1:
     dw $0000                                                             ;8FC355;
 
-PLMPopulation_WSWestSuper_State1:
-    dw PLMEntries_SuperMissileTank                                       ;8FC357;
-    db $02,$07                                                           ;8FC359;
-    dw $0085,$0000                                                       ;8FC35B;
+PLMPopulation_WSWestSuper_State1:                                        ;8FC357;
+    %PLMPopEntry(PLMEntries_SuperMissileTank, $02, $07, $0085)
+    dw $0000
 
-PLMPopulation_WSEastSuper_State1:
-    dw PLMEntries_ScrollPLM                                              ;8FC35F;
-    db $2F,$07                                                           ;8FC361;
-    dw RoomPLM_WSEastSuper_0                                             ;8FC363;
-    dw PLMEntries_SuperMissileTank                                       ;8FC365;
-    db $38,$09                                                           ;8FC367;
-    dw $0086,$0000                                                       ;8FC369;
+PLMPopulation_WSEastSuper_State1:                                        ;8FC35F;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $2F, $07, RoomPLM_WSEastSuper_0)
+    %PLMPopEntry(PLMEntries_SuperMissileTank, $38, $09, $0086)
+    dw $0000
 
-PLMPopulation_GravitySuit_State1:
-    dw PLMEntries_GravitySuitChozoOrb                                    ;8FC36D;
-    db $07,$09                                                           ;8FC36F;
-    dw $0087,$0000                                                       ;8FC371;
+PLMPopulation_GravitySuit_State1:                                        ;8FC36D;
+    %PLMPopEntry(PLMEntries_GravitySuitChozoOrb, $07, $09, $0087)
+    dw $0000
 
-PLMPopulation_GlassTunnelSave:
-    dw PLMEntries_saveStation                                            ;8FC375;
-    db $07,$0B                                                           ;8FC377;
-    dw $0000,$0000                                                       ;8FC379;
+PLMPopulation_GlassTunnelSave:                                           ;8FC375;
+    %PLMPopEntry(PLMEntries_saveStation, $07, $0B, $0000)
+    dw $0000
 
-PLMPopulation_GlassTunnel_State0_1:
-    dw PLMEntries_ScrollPLM                                              ;8FC37D;
-    db $03,$14                                                           ;8FC37F;
-    dw RoomPLM_GlassTunnel_0_4                                           ;8FC381;
-    dw PLMEntries_rightwardsExtension                                    ;8FC383;
-    db $04,$14                                                           ;8FC385;
-    dw $8000                                                             ;8FC387;
-    dw PLMEntries_rightwardsExtension                                    ;8FC389;
-    db $05,$14                                                           ;8FC38B;
-    dw $8000                                                             ;8FC38D;
-    dw PLMEntries_rightwardsExtension                                    ;8FC38F;
-    db $06,$14                                                           ;8FC391;
-    dw $8000                                                             ;8FC393;
-    dw PLMEntries_ScrollPLM                                              ;8FC395;
-    db $09,$14                                                           ;8FC397;
-    dw RoomPLM_GlassTunnel_0_4                                           ;8FC399;
-    dw PLMEntries_rightwardsExtension                                    ;8FC39B;
-    db $0A,$14                                                           ;8FC39D;
-    dw $8000                                                             ;8FC39F;
-    dw PLMEntries_rightwardsExtension                                    ;8FC3A1;
-    db $0B,$14                                                           ;8FC3A3;
-    dw $8000                                                             ;8FC3A5;
-    dw PLMEntries_rightwardsExtension                                    ;8FC3A7;
-    db $0C,$14                                                           ;8FC3A9;
-    dw $8000                                                             ;8FC3AB;
-    dw PLMEntries_ScrollPLM                                              ;8FC3AD;
-    db $05,$1D                                                           ;8FC3AF;
-    dw RoomPLM_GlassTunnel_8                                             ;8FC3B1;
-    dw PLMEntries_rightwardsExtension                                    ;8FC3B3;
-    db $06,$1D                                                           ;8FC3B5;
-    dw $8000                                                             ;8FC3B7;
-    dw PLMEntries_rightwardsExtension                                    ;8FC3B9;
-    db $07,$1D                                                           ;8FC3BB;
-    dw $8000                                                             ;8FC3BD;
-    dw PLMEntries_rightwardsExtension                                    ;8FC3BF;
-    db $08,$1D                                                           ;8FC3C1;
-    dw $8000                                                             ;8FC3C3;
-    dw PLMEntries_rightwardsExtension                                    ;8FC3C5;
-    db $09,$1D                                                           ;8FC3C7;
-    dw $8000                                                             ;8FC3C9;
-    dw PLMEntries_rightwardsExtension                                    ;8FC3CB;
-    db $0A,$1D                                                           ;8FC3CD;
-    dw $8000                                                             ;8FC3CF;
-    dw PLMEntries_NoobTube                                               ;8FC3D1;
-    db $02,$15                                                           ;8FC3D3;
-    dw $0080                                                             ;8FC3D5;
-    dw PLMEntries_redDoorFacingLeft                                      ;8FC3D7;
-    db $0E,$26                                                           ;8FC3D9;
-    dw $008C,$0000                                                       ;8FC3DB;
+PLMPopulation_GlassTunnel_State0_1:                                      ;8FC37D;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $03, $14, RoomPLM_GlassTunnel_0_4)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $04, $14, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $05, $14, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $06, $14, $8000)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $09, $14, RoomPLM_GlassTunnel_0_4)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $0A, $14, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $0B, $14, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $0C, $14, $8000)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $05, $1D, RoomPLM_GlassTunnel_8)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $06, $1D, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $07, $1D, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $08, $1D, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $09, $1D, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $0A, $1D, $8000)
+    %PLMPopEntry(PLMEntries_NoobTube, $02, $15, $0080)
+    %PLMPopEntry(PLMEntries_redDoorFacingLeft, $0E, $26, $008C)
+    dw $0000
 
 PLMPopulation_WestTunnel:
     dw $0000                                                             ;8FC3DF;
 
-PLMPopulation_EastTunnel:
-    dw PLMEntries_ScrollPLM                                              ;8FC3E1;
-    db $05,$09                                                           ;8FC3E3;
-    dw RoomPLM_EastTunnel_0                                              ;8FC3E5;
-    dw PLMEntries_ScrollPLM                                              ;8FC3E7;
-    db $05,$10                                                           ;8FC3E9;
-    dw RoomPLM_EastTunnel_1                                              ;8FC3EB;
-    dw PLMEntries_ScrollPLM                                              ;8FC3ED;
-    db $05,$16                                                           ;8FC3EF;
-    dw RoomPLM_EastTunnel_2                                              ;8FC3F1;
-    dw PLMEntries_upwardsExtension                                       ;8FC3F3;
-    db $0A,$03                                                           ;8FC3F5;
-    dw $8000                                                             ;8FC3F7;
-    dw PLMEntries_upwardsExtension                                       ;8FC3F9;
-    db $0A,$04                                                           ;8FC3FB;
-    dw $8000                                                             ;8FC3FD;
-    dw PLMEntries_upwardsExtension                                       ;8FC3FF;
-    db $0A,$05                                                           ;8FC401;
-    dw $8000                                                             ;8FC403;
-    dw PLMEntries_upwardsExtension                                       ;8FC405;
-    db $0A,$06                                                           ;8FC407;
-    dw $8000                                                             ;8FC409;
-    dw PLMEntries_upwardsExtension                                       ;8FC40B;
-    db $0A,$07                                                           ;8FC40D;
-    dw $8000                                                             ;8FC40F;
-    dw PLMEntries_upwardsExtension                                       ;8FC411;
-    db $0A,$08                                                           ;8FC413;
-    dw $8000                                                             ;8FC415;
-    dw PLMEntries_ScrollPLM                                              ;8FC417;
-    db $0A,$09                                                           ;8FC419;
-    dw RoomPLM_EastTunnel_9                                              ;8FC41B;
-    dw PLMEntries_downwardsClosedGate                                    ;8FC41D;
-    db $16,$05                                                           ;8FC41F;
-    dw $8000                                                             ;8FC421;
-    dw PLMEntries_downwardsGateShotblock                                 ;8FC423;
-    db $16,$05                                                           ;8FC425;
-    dw $000A,$0000                                                       ;8FC427;
+PLMPopulation_EastTunnel:                                                ;8FC3E1;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $05, $09, RoomPLM_EastTunnel_0)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $05, $10, RoomPLM_EastTunnel_1)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $05, $16, RoomPLM_EastTunnel_2)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0A, $03, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0A, $04, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0A, $05, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0A, $06, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0A, $07, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0A, $08, $8000)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $0A, $09, RoomPLM_EastTunnel_9)
+    %PLMPopEntry(PLMEntries_downwardsClosedGate, $16, $05, $8000)
+    %PLMPopEntry(PLMEntries_downwardsGateShotblock, $16, $05, $000A)
+    dw $0000
 
-PLMPopulation_MainStreet:
-    dw PLMEntries_ScrollPLM                                              ;8FC42B;
-    db $25,$29                                                           ;8FC42D;
-    dw RoomPLM_MainStreet_0                                              ;8FC42F;
-    dw PLMEntries_redDoorFacingLeft                                      ;8FC431;
-    db $1E,$76                                                           ;8FC433;
-    dw $008D                                                             ;8FC435;
-    dw PLMEntries_MissileTank                                            ;8FC437;
-    db $0E,$35                                                           ;8FC439;
-    dw $0088                                                             ;8FC43B;
-    dw PLMEntries_SuperMissileTank                                       ;8FC43D;
-    db $16,$28                                                           ;8FC43F;
-    dw $0089,$0000                                                       ;8FC441;
+PLMPopulation_MainStreet:                                                ;8FC42B;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $25, $29, RoomPLM_MainStreet_0)
+    %PLMPopEntry(PLMEntries_redDoorFacingLeft, $1E, $76, $008D)
+    %PLMPopEntry(PLMEntries_MissileTank, $0E, $35, $0088)
+    %PLMPopEntry(PLMEntries_SuperMissileTank, $16, $28, $0089)
+    dw $0000
 
-PLMPopulation_FishTank:
-    dw PLMEntries_upwardsExtension                                       ;8FC445;
-    db $1F,$26                                                           ;8FC447;
-    dw $8000                                                             ;8FC449;
-    dw PLMEntries_upwardsExtension                                       ;8FC44B;
-    db $1F,$27                                                           ;8FC44D;
-    dw $8000                                                             ;8FC44F;
-    dw PLMEntries_upwardsExtension                                       ;8FC451;
-    db $1F,$28                                                           ;8FC453;
-    dw $8000                                                             ;8FC455;
-    dw PLMEntries_ScrollPLM                                              ;8FC457;
-    db $1F,$29                                                           ;8FC459;
-    dw RoomPLM_FishTank_3_7                                              ;8FC45B;
-    dw PLMEntries_upwardsExtension                                       ;8FC45D;
-    db $30,$26                                                           ;8FC45F;
-    dw $8000                                                             ;8FC461;
-    dw PLMEntries_upwardsExtension                                       ;8FC463;
-    db $30,$27                                                           ;8FC465;
-    dw $8000                                                             ;8FC467;
-    dw PLMEntries_upwardsExtension                                       ;8FC469;
-    db $30,$28                                                           ;8FC46B;
-    dw $8000                                                             ;8FC46D;
-    dw PLMEntries_ScrollPLM                                              ;8FC46F;
-    db $30,$29                                                           ;8FC471;
-    dw RoomPLM_FishTank_3_7                                              ;8FC473;
-    dw PLMEntries_redDoorFacingLeft                                      ;8FC475;
-    db $3E,$26                                                           ;8FC477;
-    dw $008E,$0000                                                       ;8FC479;
+PLMPopulation_FishTank:                                                  ;8FC445;
+    %PLMPopEntry(PLMEntries_upwardsExtension, $1F, $26, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $1F, $27, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $1F, $28, $8000)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $1F, $29, RoomPLM_FishTank_3_7)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $30, $26, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $30, $27, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $30, $28, $8000)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $30, $29, RoomPLM_FishTank_3_7)
+    %PLMPopEntry(PLMEntries_redDoorFacingLeft, $3E, $26, $008E)
+    dw $0000
 
-PLMPopulation_MamaTurtle:
-    dw PLMEntries_EnergyTank                                             ;8FC47D;
-    db $1F,$0A                                                           ;8FC47F;
-    dw $008A                                                             ;8FC481;
-    dw PLMEntries_MissileTankShotBlock                                   ;8FC483;
-    db $2C,$1D                                                           ;8FC485;
-    dw $008B,$0000                                                       ;8FC487;
+PLMPopulation_MamaTurtle:                                                ;8FC47D;
+    %PLMPopEntry(PLMEntries_EnergyTank, $1F, $0A, $008A)
+    %PLMPopEntry(PLMEntries_MissileTankShotBlock, $2C, $1D, $008B)
+    dw $0000
 
-PLMPopulation_CrabTunnel:
-    dw PLMEntries_downwardsClosedGate                                    ;8FC48B;
-    db $0E,$07                                                           ;8FC48D;
-    dw $8000                                                             ;8FC48F;
-    dw PLMEntries_downwardsGateShotblock                                 ;8FC491;
-    db $0E,$07                                                           ;8FC493;
-    dw $0008,$0000                                                       ;8FC495;
+PLMPopulation_CrabTunnel:                                                ;8FC48B;
+    %PLMPopEntry(PLMEntries_downwardsClosedGate, $0E, $07, $8000)
+    %PLMPopEntry(PLMEntries_downwardsGateShotblock, $0E, $07, $0008)
+    dw $0000
 
 PLMPopulation_MtEverest:
     dw $0000                                                             ;8FC499;
 
-PLMPopulation_RedFish:
-    dw PLMEntries_ScrollPLM                                              ;8FC49B;
-    db $20,$06                                                           ;8FC49D;
-    dw RoomPLM_RedFish_0                                                 ;8FC49F;
-    dw PLMEntries_ScrollPLM                                              ;8FC4A1;
-    db $1E,$06                                                           ;8FC4A3;
-    dw RoomPLM_RedFish_1                                                 ;8FC4A5;
-    dw $0000                                                             ;8FC4A7;
+PLMPopulation_RedFish:                                                   ;8FC49B;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $20, $06, RoomPLM_RedFish_0)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $1E, $06, RoomPLM_RedFish_1)
+    dw $0000
 
-PLMPopulation_WateringHole:
-    dw PLMEntries_ScrollPLM                                              ;8FC4A9;
-    db $07,$1F                                                           ;8FC4AB;
-    dw RoomPLM_WateringHole_0                                            ;8FC4AD;
-    dw PLMEntries_SuperMissileTank                                       ;8FC4AF;
-    db $04,$26                                                           ;8FC4B1;
-    dw $008C                                                             ;8FC4B3;
-    dw PLMEntries_MissileTank                                            ;8FC4B5;
-    db $0B,$27                                                           ;8FC4B7;
-    dw $008D,$0000                                                       ;8FC4B9;
+PLMPopulation_WateringHole:                                              ;8FC4A9;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $07, $1F, RoomPLM_WateringHole_0)
+    %PLMPopEntry(PLMEntries_SuperMissileTank, $04, $26, $008C)
+    %PLMPopEntry(PLMEntries_MissileTank, $0B, $27, $008D)
+    dw $0000
 
-PLMPopulation_NWestMaridiaBug:
-    dw PLMEntries_upwardsExtension                                       ;8FC4BD;
-    db $20,$16                                                           ;8FC4BF;
-    dw $8000                                                             ;8FC4C1;
-    dw PLMEntries_upwardsExtension                                       ;8FC4C3;
-    db $20,$17                                                           ;8FC4C5;
-    dw $8000                                                             ;8FC4C7;
-    dw PLMEntries_upwardsExtension                                       ;8FC4C9;
-    db $20,$18                                                           ;8FC4CB;
-    dw $8000                                                             ;8FC4CD;
-    dw PLMEntries_ScrollPLM                                              ;8FC4CF;
-    db $20,$19                                                           ;8FC4D1;
-    dw RoomPLM_NWestMaridiaBug_3_7                                       ;8FC4D3;
-    dw PLMEntries_upwardsExtension                                       ;8FC4D5;
-    db $0F,$16                                                           ;8FC4D7;
-    dw $8000                                                             ;8FC4D9;
-    dw PLMEntries_upwardsExtension                                       ;8FC4DB;
-    db $0F,$17                                                           ;8FC4DD;
-    dw $8000                                                             ;8FC4DF;
-    dw PLMEntries_upwardsExtension                                       ;8FC4E1;
-    db $0F,$18                                                           ;8FC4E3;
-    dw $8000                                                             ;8FC4E5;
-    dw PLMEntries_ScrollPLM                                              ;8FC4E7;
-    db $0F,$19                                                           ;8FC4E9;
-    dw RoomPLM_NWestMaridiaBug_3_7                                       ;8FC4EB;
-    dw $0000                                                             ;8FC4ED;
+PLMPopulation_NWestMaridiaBug:                                           ;8FC4BD;
+    %PLMPopEntry(PLMEntries_upwardsExtension, $20, $16, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $20, $17, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $20, $18, $8000)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $20, $19, RoomPLM_NWestMaridiaBug_3_7)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0F, $16, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0F, $17, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0F, $18, $8000)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $0F, $19, RoomPLM_NWestMaridiaBug_3_7)
+    dw $0000
 
-PLMPopulation_CrabShaft:
-    dw PLMEntries_ScrollPLM                                              ;8FC4EF;
-    db $07,$2D                                                           ;8FC4F1;
-    dw RoomPLM_CrabShaft_0                                               ;8FC4F3;
-    dw PLMEntries_rightwardsExtension                                    ;8FC4F5;
-    db $08,$2D                                                           ;8FC4F7;
-    dw $8000                                                             ;8FC4F9;
-    dw PLMEntries_greenDoorFacingLeft                                    ;8FC4FB;
-    db $1E,$36                                                           ;8FC4FD;
-    dw $008F,$0000                                                       ;8FC4FF;
+PLMPopulation_CrabShaft:                                                 ;8FC4EF;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $07, $2D, RoomPLM_CrabShaft_0)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $08, $2D, $8000)
+    %PLMPopEntry(PLMEntries_greenDoorFacingLeft, $1E, $36, $008F)
+    dw $0000
 
-PLMPopulation_PseudoPlasmaSpark:
-    dw PLMEntries_upwardsExtension                                       ;8FC503;
-    db $1F,$26                                                           ;8FC505;
-    dw $8000                                                             ;8FC507;
-    dw PLMEntries_upwardsExtension                                       ;8FC509;
-    db $1F,$27                                                           ;8FC50B;
-    dw $8000                                                             ;8FC50D;
-    dw PLMEntries_upwardsExtension                                       ;8FC50F;
-    db $1F,$28                                                           ;8FC511;
-    dw $8000                                                             ;8FC513;
-    dw PLMEntries_ScrollPLM                                              ;8FC515;
-    db $1F,$29                                                           ;8FC517;
-    dw RoomPLM_PseudoPlasmaSpark_3                                       ;8FC519;
-    dw PLMEntries_upwardsExtension                                       ;8FC51B;
-    db $1D,$26                                                           ;8FC51D;
-    dw $8000                                                             ;8FC51F;
-    dw PLMEntries_upwardsExtension                                       ;8FC521;
-    db $1D,$27                                                           ;8FC523;
-    dw $8000                                                             ;8FC525;
-    dw PLMEntries_upwardsExtension                                       ;8FC527;
-    db $1D,$28                                                           ;8FC529;
-    dw $8000                                                             ;8FC52B;
-    dw PLMEntries_ScrollPLM                                              ;8FC52D;
-    db $1D,$29                                                           ;8FC52F;
-    dw RoomPLM_PseudoPlasmaSpark_7                                       ;8FC531;
-    dw PLMEntries_MissileTank                                            ;8FC533;
-    db $2C,$28                                                           ;8FC535;
-    dw $008E,$0000                                                       ;8FC537;
+PLMPopulation_PseudoPlasmaSpark:                                         ;8FC503;
+    %PLMPopEntry(PLMEntries_upwardsExtension, $1F, $26, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $1F, $27, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $1F, $28, $8000)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $1F, $29, RoomPLM_PseudoPlasmaSpark_3)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $1D, $26, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $1D, $27, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $1D, $28, $8000)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $1D, $29, RoomPLM_PseudoPlasmaSpark_7)
+    %PLMPopEntry(PLMEntries_MissileTank, $2C, $28, $008E)
+    dw $0000
 
-PLMPopulation_CrabHole:
-    dw PLMEntries_ScrollPLM                                              ;8FC53B;
-    db $08,$0E                                                           ;8FC53D;
-    dw RoomPLM_CrabHole_0_1                                              ;8FC53F;
-    dw PLMEntries_ScrollPLM                                              ;8FC541;
-    db $08,$11                                                           ;8FC543;
-    dw RoomPLM_CrabHole_0_1                                              ;8FC545;
-    dw PLMEntries_redDoorFacingLeft                                      ;8FC547;
-    db $0E,$16                                                           ;8FC549;
-    dw $0090,$0000                                                       ;8FC54B;
+PLMPopulation_CrabHole:                                                  ;8FC53B;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $08, $0E, RoomPLM_CrabHole_0_1)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $08, $11, RoomPLM_CrabHole_0_1)
+    %PLMPopEntry(PLMEntries_redDoorFacingLeft, $0E, $16, $0090)
+    dw $0000
 
 PLMPopulation_WestSandHallTunnel:
     dw $0000                                                             ;8FC54F;
@@ -8079,45 +7727,34 @@ PLMPopulation_WestSandHallTunnel:
 PLMPopulation_PlasmaTutorial:
     dw $0000                                                             ;8FC551;
 
-PLMPopulation_Plasma:
-    dw PLMEntries_greyDoorFacingRight                                    ;8FC553;
-    db $01,$06                                                           ;8FC555;
-    dw $0C91                                                             ;8FC557;
-    dw PLMEntries_PlasmaBeamChozoOrb                                     ;8FC559;
-    db $19,$26                                                           ;8FC55B;
-    dw $008F,$0000                                                       ;8FC55D;
+PLMPopulation_Plasma:                                                    ;8FC553;
+    %PLMPopEntry(PLMEntries_greyDoorFacingRight, $01, $06, $0C91)
+    %PLMPopEntry(PLMEntries_PlasmaBeamChozoOrb, $19, $26, $008F)
+    dw $0000
 
 PLMPopulation_ThreadTheNeedle:
     dw $0000                                                             ;8FC561;
 
-PLMPopulation_MaridiaElev:
-    dw PLMEntries_elevatorPlatform                                       ;8FC563;
-    db $06,$2C                                                           ;8FC565;
-    dw $8000                                                             ;8FC567;
-    dw PLMEntries_redDoorFacingLeft                                      ;8FC569;
-    db $0E,$46                                                           ;8FC56B;
-    dw $0092,$0000                                                       ;8FC56D;
+PLMPopulation_MaridiaElev:                                               ;8FC563;
+    %PLMPopEntry(PLMEntries_elevatorPlatform, $06, $2C, $8000)
+    %PLMPopEntry(PLMEntries_redDoorFacingLeft, $0E, $46, $0092)
+    dw $0000
 
-PLMPopulation_PlasmaSpark:
-    dw PLMEntries_greyDoorFacingLeft                                     ;8FC571;
-    db $2E,$16                                                           ;8FC573;
-    dw $0093                                                             ;8FC575;
-    dw PLMEntries_greenDoorFacingUp                                      ;8FC577;
-    db $06,$2D                                                           ;8FC579;
-    dw $0094,$0000                                                       ;8FC57B;
+PLMPopulation_PlasmaSpark:                                               ;8FC571;
+    %PLMPopEntry(PLMEntries_greyDoorFacingLeft, $2E, $16, $0093)
+    %PLMPopEntry(PLMEntries_greenDoorFacingUp, $06, $2D, $0094)
+    dw $0000
 
 PLMPopulation_Kassiuz:
     dw $0000                                                             ;8FC57F;
 
-PLMPopulation_MaridiaMap:
-    dw PLMEntries_mapStation                                             ;8FC581;
-    db $0B,$0A                                                           ;8FC583;
-    dw $8000,$0000                                                       ;8FC585;
+PLMPopulation_MaridiaMap:                                                ;8FC581;
+    %PLMPopEntry(PLMEntries_mapStation, $0B, $0A, $8000)
+    dw $0000
 
-PLMPopulation_ForgottenHighwaySave:
-    dw PLMEntries_saveStation                                            ;8FC589;
-    db $07,$0B                                                           ;8FC58B;
-    dw $0001,$0000                                                       ;8FC58D;
+PLMPopulation_ForgottenHighwaySave:                                      ;8FC589;
+    %PLMPopEntry(PLMEntries_saveStation, $07, $0B, $0001)
+    dw $0000
 
 PLMPopulation_Toilet:
     dw $0000                                                             ;8FC591;
@@ -8128,58 +7765,32 @@ PLMPopulation_BugSandHole:
 PLMPopulation_WestSandHall:
     dw $0000                                                             ;8FC595;
 
-PLMPopulation_Oasis:
-    dw PLMEntries_ScrollPLM                                              ;8FC597;
-    db $03,$14                                                           ;8FC599;
-    dw RoomPLM_Oasis_0                                                   ;8FC59B;
-    dw PLMEntries_rightwardsExtension                                    ;8FC59D;
-    dw $1404,$8000                                                       ;8FC59F;
-    dw PLMEntries_rightwardsExtension                                    ;8FC5A3;
-    db $05,$14                                                           ;8FC5A5;
-    dw $8000                                                             ;8FC5A7;
-    dw PLMEntries_rightwardsExtension                                    ;8FC5A9;
-    db $06,$14                                                           ;8FC5AB;
-    dw $8000                                                             ;8FC5AD;
-    dw PLMEntries_rightwardsExtension                                    ;8FC5AF;
-    db $07,$14                                                           ;8FC5B1;
-    dw $8000                                                             ;8FC5B3;
-    dw PLMEntries_rightwardsExtension                                    ;8FC5B5;
-    db $08,$14                                                           ;8FC5B7;
-    dw $8000                                                             ;8FC5B9;
-    dw PLMEntries_rightwardsExtension                                    ;8FC5BB;
-    db $09,$14                                                           ;8FC5BD;
-    dw $8000                                                             ;8FC5BF;
-    dw PLMEntries_rightwardsExtension                                    ;8FC5C1;
-    db $0A,$14                                                           ;8FC5C3;
-    dw $8000                                                             ;8FC5C5;
-    dw PLMEntries_rightwardsExtension                                    ;8FC5C7;
-    db $0B,$14                                                           ;8FC5C9;
-    dw $8000                                                             ;8FC5CB;
-    dw PLMEntries_rightwardsExtension                                    ;8FC5CD;
-    db $0C,$14                                                           ;8FC5CF;
-    dw $8000                                                             ;8FC5D1;
-    dw PLMEntries_greenDoorFacingDown                                    ;8FC5D3;
-    db $06,$02                                                           ;8FC5D5;
-    dw $0095,$0000                                                       ;8FC5D7;
+PLMPopulation_Oasis:                                                     ;8FC597;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $03, $14, RoomPLM_Oasis_0)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $04, $14, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $05, $14, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $06, $14, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $07, $14, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $08, $14, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $09, $14, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $0A, $14, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $0B, $14, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $0C, $14, $8000)
+    %PLMPopEntry(PLMEntries_greenDoorFacingDown, $06, $02, $0095)
+    dw $0000
 
 PLMPopulation_EastSandHall:
     dw $0000                                                             ;8FC5DB;
 
-PLMPopulation_WestSandHole:
-    dw PLMEntries_MissileTank                                            ;8FC5DD;
-    db $06,$04                                                           ;8FC5DF;
-    dw $0090                                                             ;8FC5E1;
-    dw PLMEntries_ReserveTankChozoOrb                                    ;8FC5E3;
-    db $0F,$04                                                           ;8FC5E5;
-    dw $0091,$0000                                                       ;8FC5E7;
+PLMPopulation_WestSandHole:                                              ;8FC5DD;
+    %PLMPopEntry(PLMEntries_MissileTank, $06, $04, $0090)
+    %PLMPopEntry(PLMEntries_ReserveTankChozoOrb, $0F, $04, $0091)
+    dw $0000
 
-PLMPopulation_EastSandHole:
-    dw PLMEntries_MissileTank                                            ;8FC5EB;
-    db $03,$07                                                           ;8FC5ED;
-    dw $0092                                                             ;8FC5EF;
-    dw PLMEntries_PowerBombTank                                          ;8FC5F1;
-    db $19,$10                                                           ;8FC5F3;
-    dw $0093,$0000                                                       ;8FC5F5;
+PLMPopulation_EastSandHole:                                              ;8FC5EB;
+    %PLMPopEntry(PLMEntries_MissileTank, $03, $07, $0092)
+    %PLMPopEntry(PLMEntries_PowerBombTank, $19, $10, $0093)
+    dw $0000
 
 PLMPopulation_WestAqueductQuicksand:
     dw $0000                                                             ;8FC5F9;
@@ -8187,204 +7798,101 @@ PLMPopulation_WestAqueductQuicksand:
 PLMPopulation_EastAqueductQuicksand:
     dw $0000                                                             ;8FC5FB;
 
-PLMPopulation_Aqueduct:
-    dw PLMEntries_redDoorFacingRight                                     ;8FC5FD;
-    db $01,$26                                                           ;8FC5FF;
-    dw $0096                                                             ;8FC601;
-    dw PLMEntries_MissileTank                                            ;8FC603;
-    db $4C,$09                                                           ;8FC605;
-    dw $0094                                                             ;8FC607;
-    dw PLMEntries_SuperMissileTank                                       ;8FC609;
-    db $5C,$08                                                           ;8FC60B;
-    dw $0095,$0000                                                       ;8FC60D;
+PLMPopulation_Aqueduct:                                                  ;8FC5FD;
+    %PLMPopEntry(PLMEntries_redDoorFacingRight, $01, $26, $0096)
+    %PLMPopEntry(PLMEntries_MissileTank, $4C, $09, $0094)
+    %PLMPopEntry(PLMEntries_SuperMissileTank, $5C, $08, $0095)
+    dw $0000
 
-PLMPopulation_Butterfly:
-    dw PLMEntries_greyDoorFacingLeft                                     ;8FC611;
-    db $0E,$06                                                           ;8FC613;
-    dw $0097,$0000                                                       ;8FC615;
+PLMPopulation_Butterfly:                                                 ;8FC611;
+    %PLMPopEntry(PLMEntries_greyDoorFacingLeft, $0E, $06, $0097)
+    dw $0000
 
 PLMPopulation_BotwoonHallway:
     dw $0000                                                             ;8FC619;
 
-PLMPopulation_Pants:
-    dw PLMEntries_ScrollPLM                                              ;8FC61B;
-    db $06,$32                                                           ;8FC61D;
-    dw RoomPLM_Pants_0_4                                                 ;8FC61F;
-    dw PLMEntries_rightwardsExtension                                    ;8FC621;
-    db $07,$32                                                           ;8FC623;
-    dw $8000                                                             ;8FC625;
-    dw PLMEntries_rightwardsExtension                                    ;8FC627;
-    db $08,$32                                                           ;8FC629;
-    dw $8000                                                             ;8FC62B;
-    dw PLMEntries_rightwardsExtension                                    ;8FC62D;
-    db $09,$32                                                           ;8FC62F;
-    dw $8000                                                             ;8FC631;
-    dw PLMEntries_ScrollPLM                                              ;8FC633;
-    db $0D,$0C                                                           ;8FC635;
-    dw RoomPLM_Pants_0_4                                                 ;8FC637;
-    dw PLMEntries_upwardsExtension                                       ;8FC639;
-    db $0D,$0B                                                           ;8FC63B;
-    dw $8000                                                             ;8FC63D;
-    dw PLMEntries_upwardsExtension                                       ;8FC63F;
-    db $0D,$0A                                                           ;8FC641;
-    dw $8000                                                             ;8FC643;
-    dw PLMEntries_upwardsExtension                                       ;8FC645;
-    db $0D,$09                                                           ;8FC647;
-    dw $8000                                                             ;8FC649;
-    dw PLMEntries_upwardsExtension                                       ;8FC64B;
-    db $0D,$08                                                           ;8FC64D;
-    dw $8000                                                             ;8FC64F;
-    dw PLMEntries_upwardsExtension                                       ;8FC651;
-    db $0D,$07                                                           ;8FC653;
-    dw $8000                                                             ;8FC655;
-    dw PLMEntries_upwardsExtension                                       ;8FC657;
-    db $0D,$06                                                           ;8FC659;
-    dw $8000                                                             ;8FC65B;
-    dw PLMEntries_upwardsExtension                                       ;8FC65D;
-    db $0D,$05                                                           ;8FC65F;
-    dw $8000                                                             ;8FC661;
-    dw PLMEntries_upwardsExtension                                       ;8FC663;
-    db $0D,$04                                                           ;8FC665;
-    dw $8000                                                             ;8FC667;
-    dw PLMEntries_ScrollPLM                                              ;8FC669;
-    db $12,$0E                                                           ;8FC66B;
-    dw RoomPLM_Pants_D                                                   ;8FC66D;
-    dw PLMEntries_upwardsExtension                                       ;8FC66F;
-    db $12,$0D                                                           ;8FC671;
-    dw $8000                                                             ;8FC673;
-    dw PLMEntries_upwardsExtension                                       ;8FC675;
-    db $12,$0C                                                           ;8FC677;
-    dw $8000                                                             ;8FC679;
-    dw PLMEntries_upwardsExtension                                       ;8FC67B;
-    db $12,$0B                                                           ;8FC67D;
-    dw $8000                                                             ;8FC67F;
-    dw PLMEntries_upwardsExtension                                       ;8FC681;
-    db $12,$0A                                                           ;8FC683;
-    dw $8000                                                             ;8FC685;
-    dw PLMEntries_upwardsExtension                                       ;8FC687;
-    db $12,$09                                                           ;8FC689;
-    dw $8000                                                             ;8FC68B;
-    dw PLMEntries_upwardsExtension                                       ;8FC68D;
-    db $12,$08                                                           ;8FC68F;
-    dw $8000                                                             ;8FC691;
-    dw PLMEntries_upwardsExtension                                       ;8FC693;
-    db $12,$07                                                           ;8FC695;
-    dw $8000                                                             ;8FC697;
-    dw PLMEntries_ScrollPLM                                              ;8FC699;
-    db $15,$2B                                                           ;8FC69B;
-    dw RoomPLM_Pants_15                                                  ;8FC69D;
-    dw PLMEntries_rightwardsExtension                                    ;8FC69F;
-    db $16,$2B                                                           ;8FC6A1;
-    dw $8000                                                             ;8FC6A3;
-    dw PLMEntries_rightwardsExtension                                    ;8FC6A5;
-    db $17,$2B                                                           ;8FC6A7;
-    dw $8000,$0000                                                       ;8FC6A9;
+PLMPopulation_Pants:                                                     ;8FC61B;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $06, $32, RoomPLM_Pants_0_4)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $07, $32, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $08, $32, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $09, $32, $8000)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $0D, $0C, RoomPLM_Pants_0_4)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0D, $0B, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0D, $0A, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0D, $09, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0D, $08, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0D, $07, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0D, $06, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0D, $05, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0D, $04, $8000)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $12, $0E, RoomPLM_Pants_D)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $12, $0D, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $12, $0C, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $12, $0B, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $12, $0A, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $12, $09, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $12, $08, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $12, $07, $8000)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $15, $2B, RoomPLM_Pants_15)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $16, $2B, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $17, $2B, $8000)
+    dw $0000
 
-PLMPopulation_EastPants:
-    dw PLMEntries_ScrollPLM                                              ;8FC6AD;
-    db $05,$22                                                           ;8FC6AF;
-    dw RoomPLM_EastPants_0                                               ;8FC6B1;
-    dw PLMEntries_rightwardsExtension                                    ;8FC6B3;
-    db $06,$22                                                           ;8FC6B5;
-    dw $8000                                                             ;8FC6B7;
-    dw PLMEntries_rightwardsExtension                                    ;8FC6B9;
-    db $07,$22                                                           ;8FC6BB;
-    dw $8000                                                             ;8FC6BD;
-    dw PLMEntries_rightwardsExtension                                    ;8FC6BF;
-    db $08,$22                                                           ;8FC6C1;
-    dw $8000                                                             ;8FC6C3;
-    dw PLMEntries_rightwardsExtension                                    ;8FC6C5;
-    db $09,$22                                                           ;8FC6C7;
-    dw $8000                                                             ;8FC6C9;
-    dw PLMEntries_rightwardsExtension                                    ;8FC6CB;
-    db $0A,$12                                                           ;8FC6CD;
-    dw $8000                                                             ;8FC6CF;
-    dw PLMEntries_ScrollPLM                                              ;8FC6D1;
-    db $05,$1B                                                           ;8FC6D3;
-    dw RoomPLM_EastPants_6                                               ;8FC6D5;
-    dw PLMEntries_rightwardsExtension                                    ;8FC6D7;
-    db $06,$1B                                                           ;8FC6D9;
-    dw $8000                                                             ;8FC6DB;
-    dw PLMEntries_rightwardsExtension                                    ;8FC6DD;
-    db $07,$1B                                                           ;8FC6DF;
-    dw $8000,$0000                                                       ;8FC6E1;
+PLMPopulation_EastPants:                                                 ;8FC6AD;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $05, $22, RoomPLM_EastPants_0)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $06, $22, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $07, $22, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $08, $22, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $09, $22, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $0A, $12, $8000)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $05, $1B, RoomPLM_EastPants_6)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $06, $1B, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $07, $1B, $8000)
+    dw $0000
 
-PLMPopulation_Springball:
-    dw PLMEntries_SpringBallChozoOrb                                     ;8FC6E5;
-    db $18,$16                                                           ;8FC6E7;
-    dw $0096,$0000                                                       ;8FC6E9;
+PLMPopulation_Springball:                                                ;8FC6E5;
+    %PLMPopEntry(PLMEntries_SpringBallChozoOrb, $18, $16, $0096)
+    dw $0000
 
 PLMPopulation_BelowBotwoonETank:
     dw $0000                                                             ;8FC6ED;
 
-PLMPopulation_Colosseum:
-    dw PLMEntries_redDoorFacingLeft                                      ;8FC6EF;
-    db $6E,$06                                                           ;8FC6F1;
-    dw $0098                                                             ;8FC6F3;
-    dw PLMEntries_greenDoorFacingLeft                                    ;8FC6F5;
-    db $4E,$26                                                           ;8FC6F7;
-    dw $0099                                                             ;8FC6F9;
-    dw PLMEntries_greenDoorFacingLeft                                    ;8FC6FB;
-    db $6E,$16                                                           ;8FC6FD;
-    dw $009A,$0000                                                       ;8FC6FF;
+PLMPopulation_Colosseum:                                                 ;8FC6EF;
+    %PLMPopEntry(PLMEntries_redDoorFacingLeft, $6E, $06, $0098)
+    %PLMPopEntry(PLMEntries_greenDoorFacingLeft, $4E, $26, $0099)
+    %PLMPopEntry(PLMEntries_greenDoorFacingLeft, $6E, $16, $009A)
+    dw $0000
 
-PLMPopulation_AqueductSave:
-    dw PLMEntries_saveStation                                            ;8FC703;
-    db $05,$0B                                                           ;8FC705;
-    dw $0002,$0000                                                       ;8FC707;
+PLMPopulation_AqueductSave:                                              ;8FC703;
+    %PLMPopEntry(PLMEntries_saveStation, $05, $0B, $0002)
+    dw $0000
 
-PLMPopulation_ThePrecious_State0_1:
-    dw PLMEntries_ScrollPLM                                              ;8FC70B;
-    db $04,$0E                                                           ;8FC70D;
-    dw RoomPLM_ThePrecious_0                                             ;8FC70F;
-    dw PLMEntries_rightwardsExtension                                    ;8FC711;
-    db $05,$0E                                                           ;8FC713;
-    dw $8000                                                             ;8FC715;
-    dw PLMEntries_rightwardsExtension                                    ;8FC717;
-    db $06,$0E                                                           ;8FC719;
-    dw $8000                                                             ;8FC71B;
-    dw PLMEntries_rightwardsExtension                                    ;8FC71D;
-    db $07,$0E                                                           ;8FC71F;
-    dw $8000                                                             ;8FC721;
-    dw PLMEntries_rightwardsExtension                                    ;8FC723;
-    db $08,$0E                                                           ;8FC725;
-    dw $8000                                                             ;8FC727;
-    dw PLMEntries_rightwardsExtension                                    ;8FC729;
-    db $09,$0E                                                           ;8FC72B;
-    dw $8000                                                             ;8FC72D;
-    dw PLMEntries_rightwardsExtension                                    ;8FC72F;
-    db $0A,$0E                                                           ;8FC731;
-    dw $8000                                                             ;8FC733;
-    dw PLMEntries_rightwardsExtension                                    ;8FC735;
-    db $0B,$0E                                                           ;8FC737;
-    dw $8000                                                             ;8FC739;
-    dw PLMEntries_EyeDoorFacingRIght                                     ;8FC73B;
-    db $01,$26                                                           ;8FC73D;
-    dw $009B                                                             ;8FC73F;
-    dw PLMEntries_EyeDoorBottomFacingRight                               ;8FC741;
-    db $01,$29                                                           ;8FC743;
-    dw $009B                                                             ;8FC745;
-    dw PLMEntries_EyeDoorEyeFacingRight                                  ;8FC747;
-    db $01,$27                                                           ;8FC749;
-    dw $009B                                                             ;8FC74B;
-    dw PLMEntries_MissileTankShotBlock                                   ;8FC74D;
-    db $1C,$06                                                           ;8FC74F;
-    dw $0097,$0000                                                       ;8FC751;
+PLMPopulation_ThePrecious_State0_1:                                      ;8FC70B;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $04, $0E, RoomPLM_ThePrecious_0)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $05, $0E, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $06, $0E, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $07, $0E, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $08, $0E, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $09, $0E, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $0A, $0E, $8000)
+    %PLMPopEntry(PLMEntries_rightwardsExtension, $0B, $0E, $8000)
+    %PLMPopEntry(PLMEntries_EyeDoorFacingRIght, $01, $26, $009B)
+    %PLMPopEntry(PLMEntries_EyeDoorBottomFacingRight, $01, $29, $009B)
+    %PLMPopEntry(PLMEntries_EyeDoorEyeFacingRight, $01, $27, $009B)
+    %PLMPopEntry(PLMEntries_MissileTankShotBlock, $1C, $06, $0097)
+    dw $0000
 
-PLMPopulation_BotwoonETank:
-    dw PLMEntries_EnergyTank                                             ;8FC755;
-    db $32,$05                                                           ;8FC757;
-    dw $0098,$0000                                                       ;8FC759;
+PLMPopulation_BotwoonETank:                                              ;8FC755;
+    %PLMPopEntry(PLMEntries_EnergyTank, $32, $05, $0098)
+    dw $0000
 
-PLMPopulation_DraygonSave:
-    dw PLMEntries_saveStation                                            ;8FC75D;
-    db $07,$0B                                                           ;8FC75F;
-    dw $0003,$0000                                                       ;8FC761;
+PLMPopulation_DraygonSave:                                               ;8FC75D;
+    %PLMPopEntry(PLMEntries_saveStation, $07, $0B, $0003)
+    dw $0000
 
-PLMPopulation_MaridiaMissileRefill:
-    dw PLMEntries_missileStation                                         ;8FC765;
-    db $08,$0A                                                           ;8FC767;
-    dw $0099,$0000                                                       ;8FC769;
+PLMPopulation_MaridiaMissileRefill:                                      ;8FC765;
+    %PLMPopEntry(PLMEntries_missileStation, $08, $0A, $0099)
+    dw $0000
 
 PLMPopulation_PlasmaBeachQuicksand:
     dw $0000                                                             ;8FC76D;
@@ -8395,43 +7903,27 @@ PLMPopulation_BotwoonQuicksand:
 PLMPopulation_Shaktool_State0_1:
     dw $0000                                                             ;8FC771;
 
-PLMPopulation_HalfieClimb:
-    dw PLMEntries_ScrollPLM                                              ;8FC773;
-    db $10,$29                                                           ;8FC775;
-    dw RoomPLM_HalfieClimb_0                                             ;8FC777;
-    dw PLMEntries_ScrollPLM                                              ;8FC779;
-    db $0B,$29                                                           ;8FC77B;
-    dw RoomPLM_HalfieClimb_1                                             ;8FC77D;
-    dw PLMEntries_upwardsExtension                                       ;8FC77F;
-    db $0B,$28                                                           ;8FC781;
-    dw $8000                                                             ;8FC783;
-    dw PLMEntries_upwardsExtension                                       ;8FC785;
-    db $0B,$27                                                           ;8FC787;
-    dw $8000                                                             ;8FC789;
-    dw PLMEntries_upwardsExtension                                       ;8FC78B;
-    db $0B,$26                                                           ;8FC78D;
-    dw $8000                                                             ;8FC78F;
-    dw PLMEntries_ScrollPLM                                              ;8FC791;
-    db $0E,$29                                                           ;8FC793;
-    dw RoomPLM_HalfieClimb_5                                             ;8FC795;
-    dw PLMEntries_greyDoorFacingRight                                    ;8FC797;
-    db $01,$16                                                           ;8FC799;
-    dw $009C,$0000                                                       ;8FC79B;
+PLMPopulation_HalfieClimb:                                               ;8FC773;
+    %PLMPopEntry(PLMEntries_ScrollPLM, $10, $29, RoomPLM_HalfieClimb_0)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $0B, $29, RoomPLM_HalfieClimb_1)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0B, $28, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0B, $27, $8000)
+    %PLMPopEntry(PLMEntries_upwardsExtension, $0B, $26, $8000)
+    %PLMPopEntry(PLMEntries_ScrollPLM, $0E, $29, RoomPLM_HalfieClimb_5)
+    %PLMPopEntry(PLMEntries_greyDoorFacingRight, $01, $16, $009C)
+    dw $0000
 
-PLMPopulation_Botwoon_State0_1:
-    dw PLMEntries_greyDoorFacingRight                                    ;8FC79F;
-    db $01,$06                                                           ;8FC7A1;
-    dw $049D,$0000                                                       ;8FC7A3;
+PLMPopulation_Botwoon_State0_1:                                          ;8FC79F;
+    %PLMPopEntry(PLMEntries_greyDoorFacingRight, $01, $06, $049D)
+    dw $0000
 
-PLMPopulation_SpaceJump:
-    dw PLMEntries_SpaceJumpChozoOrb                                      ;8FC7A7;
-    db $04,$08                                                           ;8FC7A9;
-    dw $009A,$0000                                                       ;8FC7AB;
+PLMPopulation_SpaceJump:                                                 ;8FC7A7;
+    %PLMPopEntry(PLMEntries_SpaceJumpChozoOrb, $04, $08, $009A)
+    dw $0000
 
-PLMPopulation_MaridiaEnergyRefill:
-    dw PLMEntries_energyStation                                          ;8FC7AF;
-    db $08,$0A                                                           ;8FC7B1;
-    dw $009B,$0000                                                       ;8FC7B3;
+PLMPopulation_MaridiaEnergyRefill:                                       ;8FC7AF;
+    %PLMPopEntry(PLMEntries_energyStation, $08, $0A, $009B)
+    dw $0000
 
 PLMPopulation_WestCactusAlley:
     dw $0000                                                             ;8FC7B7;
@@ -8439,154 +7931,101 @@ PLMPopulation_WestCactusAlley:
 PLMPopulation_EastCactusAlley:
     dw $0000                                                             ;8FC7B9;
 
-PLMPopulation_Draygon_State0_1:
-    dw PLMEntries_greyDoorFacingLeft                                     ;8FC7BB;
-    db $1E,$06                                                           ;8FC7BD;
-    dw $009E                                                             ;8FC7BF;
-    dw PLMEntries_greyDoorFacingRight                                    ;8FC7C1;
-    db $01,$16                                                           ;8FC7C3;
-    dw $009F                                                             ;8FC7C5;
-    dw PLMEntries_DraygonCannonFacingRight                               ;8FC7C7;
-    db $02,$0B                                                           ;8FC7C9;
-    dw $8802                                                             ;8FC7CB;
-    dw PLMEntries_DraygonCannonWithShieldFacingRight                     ;8FC7CD;
-    db $02,$12                                                           ;8FC7CF;
-    dw $8804                                                             ;8FC7D1;
-    dw PLMEntries_DraygonCannonWithShieldFacingLeft                      ;8FC7D3;
-    db $1D,$0F                                                           ;8FC7D5;
-    dw $8806                                                             ;8FC7D7;
-    dw PLMEntries_DraygonCannonWithShieldFacingLeft                      ;8FC7D9;
-    db $1D,$15                                                           ;8FC7DB;
-    dw $8808,$0000                                                       ;8FC7DD;
+PLMPopulation_Draygon_State0_1:                                          ;8FC7BB;
+    %PLMPopEntry(PLMEntries_greyDoorFacingLeft, $1E, $06, $009E)
+    %PLMPopEntry(PLMEntries_greyDoorFacingRight, $01, $16, $009F)
+    %PLMPopEntry(PLMEntries_DraygonCannonFacingRight, $02, $0B, $8802)
+    %PLMPopEntry(PLMEntries_DraygonCannonWithShieldFacingRight, $02, $12, $8804)
+    %PLMPopEntry(PLMEntries_DraygonCannonWithShieldFacingLeft, $1D, $0F, $8806)
+    %PLMPopEntry(PLMEntries_DraygonCannonWithShieldFacingLeft, $1D, $15, $8808)
+    dw $0000
 
-PLMPopulation_TourianFirst:
-    dw PLMEntries_elevatorPlatform                                       ;8FC7E1;
-    db $06,$2C                                                           ;8FC7E3;
-    dw $8000,$0000                                                       ;8FC7E5;
+PLMPopulation_TourianFirst:                                              ;8FC7E1;
+    %PLMPopEntry(PLMEntries_elevatorPlatform, $06, $2C, $8000)
+    dw $0000
 
-PLMPopulation_Metroids1_State0_1:
-    dw PLMEntries_SetsMetroidsClearedStatesWhenRequired                  ;8FC7E9;
-    db $08,$08                                                           ;8FC7EB;
-    dw $0012                                                             ;8FC7ED;
-    dw PLMEntries_greyDoorFacingRight                                    ;8FC7EF;
-    db $01,$06                                                           ;8FC7F1;
-    dw $0CA0,$0000                                                       ;8FC7F3;
+PLMPopulation_Metroids1_State0_1:                                        ;8FC7E9;
+    %PLMPopEntry(PLMEntries_SetsMetroidsClearedStatesWhenRequired, $08, $08, $0012)
+    %PLMPopEntry(PLMEntries_greyDoorFacingRight, $01, $06, $0CA0)
+    dw $0000
 
-PLMPopulation_Metroids2_State0_1:
-    dw PLMEntries_SetsMetroidsClearedStatesWhenRequired                  ;8FC7F7;
-    db $08,$08                                                           ;8FC7F9;
-    dw $0014                                                             ;8FC7FB;
-    dw PLMEntries_greyDoorFacingLeft                                     ;8FC7FD;
-    db $0E,$16                                                           ;8FC7FF;
-    dw $0CA1,$0000                                                       ;8FC801;
+PLMPopulation_Metroids2_State0_1:                                        ;8FC7F7;
+    %PLMPopEntry(PLMEntries_SetsMetroidsClearedStatesWhenRequired, $08, $08, $0014)
+    %PLMPopEntry(PLMEntries_greyDoorFacingLeft, $0E, $16, $0CA1)
+    dw $0000
 
-PLMPopulation_Metroids3_State0_1:
-    dw PLMEntries_SetsMetroidsClearedStatesWhenRequired                  ;8FC805;
-    db $08,$08                                                           ;8FC807;
-    dw $0016                                                             ;8FC809;
-    dw PLMEntries_greyDoorFacingLeft                                     ;8FC80B;
-    db $5E,$06                                                           ;8FC80D;
-    dw $0CA2,$0000                                                       ;8FC80F;
+PLMPopulation_Metroids3_State0_1:                                        ;8FC805;
+    %PLMPopEntry(PLMEntries_SetsMetroidsClearedStatesWhenRequired, $08, $08, $0016)
+    %PLMPopEntry(PLMEntries_greyDoorFacingLeft, $5E, $06, $0CA2)
+    dw $0000
 
-PLMPopulation_Metroids4_State0_1:
-    dw PLMEntries_SetsMetroidsClearedStatesWhenRequired                  ;8FC813;
-    db $08,$08                                                           ;8FC815;
-    dw $0018                                                             ;8FC817;
-    dw PLMEntries_greyDoorFacingUp                                       ;8FC819;
-    db $06,$1E                                                           ;8FC81B;
-    dw $0CA3,$0000                                                       ;8FC81D;
+PLMPopulation_Metroids4_State0_1:                                        ;8FC813;
+    %PLMPopEntry(PLMEntries_SetsMetroidsClearedStatesWhenRequired, $08, $08, $0018)
+    %PLMPopEntry(PLMEntries_greyDoorFacingUp, $06, $1E, $0CA3)
+    dw $0000
 
 PLMPopulation_BlueHopper_State0_1:
     dw $0000                                                             ;8FC821;
 
-PLMPopulation_DustTorizo_State0_1:
-    dw PLMEntries_greyDoorFacingLeft                                     ;8FC823;
-    db $1E,$06                                                           ;8FC825;
-    dw $90A4                                                             ;8FC827;
-    dw PLMEntries_greyDoorFacingRight                                    ;8FC829;
-    db $01,$06                                                           ;8FC82B;
-    dw $0CA5,$0000                                                       ;8FC82D;
+PLMPopulation_DustTorizo_State0_1:                                       ;8FC823;
+    %PLMPopEntry(PLMEntries_greyDoorFacingLeft, $1E, $06, $90A4)
+    %PLMPopEntry(PLMEntries_greyDoorFacingRight, $01, $06, $0CA5)
+    dw $0000
 
-PLMPopulation_BigBoy_State0_1:
-    dw PLMEntries_greyDoorFacingLeft                                     ;8FC831;
-    db $3E,$06                                                           ;8FC833;
-    dw $90A6,$0000                                                       ;8FC835;
+PLMPopulation_BigBoy_State0_1:                                           ;8FC831;
+    %PLMPopEntry(PLMEntries_greyDoorFacingLeft, $3E, $06, $90A6)
+    dw $0000
 
-PLMPopulation_Seaweed:
-    dw PLMEntries_redDoorFacingLeft                                      ;8FC839;
-    db $0E,$16                                                           ;8FC83B;
-    dw $00A7,$0000                                                       ;8FC83D;
+PLMPopulation_Seaweed:                                                   ;8FC839;
+    %PLMPopEntry(PLMEntries_redDoorFacingLeft, $0E, $16, $00A7)
+    dw $0000
 
-PLMPopulation_TourianRecharge:
-    dw PLMEntries_missileStation                                         ;8FC841;
-    db $08,$0A                                                           ;8FC843;
-    dw $009C                                                             ;8FC845;
-    dw PLMEntries_energyStation                                          ;8FC847;
-    db $06,$0A                                                           ;8FC849;
-    dw $009D,$0000                                                       ;8FC84B;
+PLMPopulation_TourianRecharge:                                           ;8FC841;
+    %PLMPopEntry(PLMEntries_missileStation, $08, $0A, $009C)
+    %PLMPopEntry(PLMEntries_energyStation, $06, $0A, $009D)
+    dw $0000
 
-PLMPopulation_MotherBrain_State0_1_2:
-    dw PLMEntries_MotherBrainsGlass                                      ;8FC84F;
-    db $09,$05                                                           ;8FC851;
-    dw $8000,$0000                                                       ;8FC853;
+PLMPopulation_MotherBrain_State0_1_2:                                    ;8FC84F;
+    %PLMPopEntry(PLMEntries_MotherBrainsGlass, $09, $05, $8000)
+    dw $0000
 
-PLMPopulation_TourianEyeDoor:
-    dw PLMEntries_EyeDoorFacingLeft                                      ;8FC857;
-    db $3E,$06                                                           ;8FC859;
-    dw $00A8                                                             ;8FC85B;
-    dw PLMEntries_EyeDoorBottomFacingLeft                                ;8FC85D;
-    db $3E,$09                                                           ;8FC85F;
-    dw $00A8                                                             ;8FC861;
-    dw PLMEntries_EyeDoorEyeFacingLeft                                   ;8FC863;
-    db $3E,$07                                                           ;8FC865;
-    dw $00A8,$0000                                                       ;8FC867;
+PLMPopulation_TourianEyeDoor:                                            ;8FC857;
+    %PLMPopEntry(PLMEntries_EyeDoorFacingLeft, $3E, $06, $00A8)
+    %PLMPopEntry(PLMEntries_EyeDoorBottomFacingLeft, $3E, $09, $00A8)
+    %PLMPopEntry(PLMEntries_EyeDoorEyeFacingLeft, $3E, $07, $00A8)
+    dw $0000
 
-PLMPopulation_RinkaShaft:
-    dw PLMEntries_redDoorFacingRight                                     ;8FC86B;
-    db $01,$26                                                           ;8FC86D;
-    dw $00A9,$0000                                                       ;8FC86F;
+PLMPopulation_RinkaShaft:                                                ;8FC86B;
+    %PLMPopEntry(PLMEntries_redDoorFacingRight, $01, $26, $00A9)
+    dw $0000
 
-PLMPopulation_MotherBrainSave:
-    dw PLMEntries_saveStation                                            ;8FC873;
-    db $05,$0B                                                           ;8FC875;
-    dw $0000,$0000                                                       ;8FC877;
+PLMPopulation_MotherBrainSave:                                           ;8FC873;
+    %PLMPopEntry(PLMEntries_saveStation, $05, $0B, $0000)
+    dw $0000
 
-PLMPopulation_TourianEscape1:
-    dw PLMEntries_SetsMetroidsClearedStatesWhenRequired                  ;8FC87B;
-    db $08,$08                                                           ;8FC87D;
-    dw $0000                                                             ;8FC87F;
-    dw PLMEntries_gateThatClosesInEscapeRoom1                            ;8FC881;
-    db $1F,$06                                                           ;8FC883;
-    dw $8000,$0000                                                       ;8FC885;
+PLMPopulation_TourianEscape1:                                            ;8FC87B;
+    %PLMPopEntry(PLMEntries_SetsMetroidsClearedStatesWhenRequired, $08, $08, $0000)
+    %PLMPopEntry(PLMEntries_gateThatClosesInEscapeRoom1, $1F, $06, $8000)
+    dw $0000
 
-PLMPopulation_TourianEscape2:
-    dw PLMEntries_SetsMetroidsClearedStatesWhenRequired                  ;8FC889;
-    db $08,$08                                                           ;8FC88B;
-    dw $0002                                                             ;8FC88D;
-    dw PLMEntries_greyDoorFacingDown                                     ;8FC88F;
-    db $06,$03                                                           ;8FC891;
-    dw $90AA,$0000                                                       ;8FC893;
+PLMPopulation_TourianEscape2:                                            ;8FC889;
+    %PLMPopEntry(PLMEntries_SetsMetroidsClearedStatesWhenRequired, $08, $08, $0002)
+    %PLMPopEntry(PLMEntries_greyDoorFacingDown, $06, $03, $90AA)
+    dw $0000
 
-PLMPopulation_TourianEscape3:
-    dw PLMEntries_SetsMetroidsClearedStatesWhenRequired                  ;8FC897;
-    db $08,$08                                                           ;8FC899;
-    dw $0004                                                             ;8FC89B;
-    dw PLMEntries_greyDoorFacingRight                                    ;8FC89D;
-    db $01,$16                                                           ;8FC89F;
-    dw $90AB,$0000                                                       ;8FC8A1;
+PLMPopulation_TourianEscape3:                                            ;8FC897;
+    %PLMPopEntry(PLMEntries_SetsMetroidsClearedStatesWhenRequired, $08, $08, $0004)
+    %PLMPopEntry(PLMEntries_greyDoorFacingRight, $01, $16, $90AB)
+    dw $0000
 
-PLMPopulation_TourianEscape4:
-    dw PLMEntries_SetsMetroidsClearedStatesWhenRequired                  ;8FC8A5;
-    db $08,$08                                                           ;8FC8A7;
-    dw $0006                                                             ;8FC8A9;
-    dw PLMEntries_greyDoorFacingRight                                    ;8FC8AB;
-    db $01,$36                                                           ;8FC8AD;
-    dw $90AC,$0000                                                       ;8FC8AF;
+PLMPopulation_TourianEscape4:                                            ;8FC8A5;
+    %PLMPopEntry(PLMEntries_SetsMetroidsClearedStatesWhenRequired, $08, $08, $0006)
+    %PLMPopEntry(PLMEntries_greyDoorFacingRight, $01, $36, $90AC)
+    dw $0000
 
-PLMPopulation_UpperTourianSave:
-    dw PLMEntries_saveStation                                            ;8FC8B3;
-    db $07,$0B                                                           ;8FC8B5;
-    dw $0001,$0000                                                       ;8FC8B7;
+PLMPopulation_UpperTourianSave:                                          ;8FC8B3;
+    %PLMPopEntry(PLMEntries_saveStation, $07, $0B, $0001)
+    dw $0000
 
 PLMPopulation_CeresElev_State0_1:
     dw $0000                                                             ;8FC8BB;
@@ -8748,8 +8187,7 @@ SetupASM_SetBG1_2_TilesBaseAddress_SpawnCeresHaze:
 RoomHeader_BowlingAlley:
     db $00,$03,$0A,$0B,$06,$03,$70,$A0,$00                               ;8FC98E;
     dw RoomDoors_BowlingAlley                                            ;8FC997;
-    dw RoomStateCheck_BossIsDead                                         ;8FC999;
-    db $01                                                               ;8FC99B;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FC999;
     dw RoomState_BowlingAlley_1                                          ;8FC99C;
     dw Use_StatePointer_inX                                              ;8FC99E;
 
@@ -8795,30 +8233,29 @@ RoomScrolls_BowlingAlley:
     dw $0200                                                             ;8FC9EA;
 
 RoomPLM_BowlingAlley_0:
-    db $0E,$01,$0F,$01,$80                                               ;8FC9EC;
+    db $0E,$01, $0F,$01, $80                                             ;8FC9EC;
 
 RoomPLM_BowlingAlley_3:
-    db $04,$00,$05,$02,$0B,$02,$10,$01,$11,$01,$80                       ;8FC9F1;
+    db $04,$00, $05,$02, $0B,$02, $10,$01, $11,$01, $80                  ;8FC9F1;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_RoomPLM_8FC9FC:
-    db $05,$01,$80                                                       ;8FC9FC;
+    db $05,$01, $80                                                      ;8FC9FC;
 
 UNUSED_RoomPLM_8FC9FF:
-    db $04,$01,$80                                                       ;8FC9FF;
+    db $04,$01, $80                                                      ;8FC9FF;
 
 UNUSED_RoomPLM_8FCA02:
-    db $05,$00,$80                                                       ;8FCA02;
+    db $05,$00, $80                                                      ;8FCA02;
 
 UNUSED_RoomPLM_8FCA05:
-    db $04,$00,$80                                                       ;8FCA05;
+    db $04,$00, $80                                                      ;8FCA05;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 RoomHeader_WreckedShipEntrance:
     db $01,$03,$0C,$0E,$04,$01,$70,$A0,$00                               ;8FCA08;
     dw RoomDoors_WreckedShipEntrance                                     ;8FCA11;
-    dw RoomStateCheck_BossIsDead                                         ;8FCA13;
-    db $01                                                               ;8FCA15;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FCA13;
     dw RoomState_WreckedShipEntrance_1                                   ;8FCA16;
     dw Use_StatePointer_inX                                              ;8FCA18;
 
@@ -8857,8 +8294,7 @@ RoomDoors_WreckedShipEntrance:
 RoomHeader_Attic:
     db $02,$03,$0C,$0A,$07,$01,$00,$00,$00                               ;8FCA52;
     dw RoomDoors_Attic                                                   ;8FCA5B;
-    dw RoomStateCheck_BossIsDead                                         ;8FCA5D;
-    db $01                                                               ;8FCA5F;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FCA5D;
     dw RoomState_Attic_1                                                 ;8FCA60;
     dw Use_StatePointer_inX                                              ;8FCA62;
 
@@ -8900,20 +8336,19 @@ RoomScrolls_Attic:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_RoomPLM_8FCAA5:
-    db $00,$01,$80                                                       ;8FCAA5;
+    db $00,$01, $80                                                      ;8FCAA5;
 
 UNUSED_RoomPLM_8FCAA8:
-    db $03,$01,$80                                                       ;8FCAA8;
+    db $03,$01, $80                                                      ;8FCAA8;
 
 UNUSED_RoomPLM_8FCAAB:
-    db $03,$02,$80                                                       ;8FCAAB;
+    db $03,$02, $80                                                      ;8FCAAB;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 RoomHeader_AssemblyLine:
     db $03,$03,$13,$0A,$03,$01,$70,$A0,$00                               ;8FCAAE;
     dw RoomDoors_AssemblyLine                                            ;8FCAB7;
-    dw RoomStateCheck_BossIsDead                                         ;8FCAB9;
-    db $01                                                               ;8FCABB;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FCAB9;
     dw RoomState_AssemblyLine_1                                          ;8FCABC;
     dw Use_StatePointer_inX                                              ;8FCABE;
 
@@ -8951,8 +8386,7 @@ RoomDoors_AssemblyLine:
 RoomHeader_WreckedShipMainShaft:
     db $04,$03,$0C,$0B,$06,$08,$70,$A0,$00                               ;8FCAF6;
     dw RoomDoors_WreckedShipMainShaft                                    ;8FCAFF;
-    dw RoomStateCheck_BossIsDead                                         ;8FCB01;
-    db $01                                                               ;8FCB03;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FCB01;
     dw RoomState_WreckedShipMainShaft_1                                  ;8FCB04;
     dw Use_StatePointer_inX                                              ;8FCB06;
 
@@ -8999,25 +8433,24 @@ RoomScrolls_WreckedShipMainShaft:
     db $01,$00,$02,$00,$00,$00,$00,$00,$01,$00,$00,$00,$00,$00,$00,$00   ;8FCB6A;
 
 RoomPLM_WreckedShipMainShaft_0:
-    db $21,$01,$80                                                       ;8FCB7A;
+    db $21,$01, $80                                                      ;8FCB7A;
 
 RoomPLM_WreckedShipMainShaft_1:
-    db $29,$01,$80                                                       ;8FCB7D;
+    db $29,$01, $80                                                      ;8FCB7D;
 
 RoomPLM_WreckedShipMainShaft_2:
-    db $21,$00,$80                                                       ;8FCB80;
+    db $21,$00, $80                                                      ;8FCB80;
 
 RoomPLM_WreckedShipMainShaft_3:
-    db $29,$00,$80                                                       ;8FCB83;
+    db $29,$00, $80                                                      ;8FCB83;
 
 RoomPLM_WreckedShipMainShaft_4:
-    db $28,$02,$2E,$02,$80                                               ;8FCB86;
+    db $28,$02, $2E,$02, $80                                             ;8FCB86;
 
 RoomHeader_SpikyDeath:
     db $05,$03,$13,$0F,$02,$01,$70,$A0,$00                               ;8FCB8B;
     dw RoomDoors_SpikyDeath                                              ;8FCB94;
-    dw RoomStateCheck_BossIsDead                                         ;8FCB96;
-    db $01                                                               ;8FCB98;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FCB96;
     dw RoomState_SpikyDeath_1                                            ;8FCB99;
     dw Use_StatePointer_inX                                              ;8FCB9B;
 
@@ -9056,8 +8489,7 @@ RoomDoors_SpikyDeath:
 RoomHeader_ElectricDeath:
     db $06,$03,$15,$0D,$01,$03,$70,$A0,$00                               ;8FCBD5;
     dw RoomDoors_ElectricDeath                                           ;8FCBDE;
-    dw RoomStateCheck_BossIsDead                                         ;8FCBE0;
-    db $01                                                               ;8FCBE2;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FCBE0;
     dw RoomState_ElectricDeath_1                                         ;8FCBE3;
     dw Use_StatePointer_inX                                              ;8FCBE5;
 
@@ -9098,13 +8530,12 @@ RoomScrolls_ElectricDeath:
     db $00,$02,$02                                                       ;8FCC21;
 
 RoomPLM_ElectricDeath_0:
-    db $00,$02,$80                                                       ;8FCC24;
+    db $00,$02, $80                                                      ;8FCC24;
 
 RoomHeader_WreckedShipETank:
     db $07,$03,$12,$0D,$03,$02,$90,$A0,$00                               ;8FCC27;
     dw RoomDoors_WreckedShipETank                                        ;8FCC30;
-    dw RoomStateCheck_BossIsDead                                         ;8FCC32;
-    db $01                                                               ;8FCC34;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FCC32;
     dw RoomState_WreckedShipETank_1                                      ;8FCC35;
     dw Use_StatePointer_inX                                              ;8FCC37;
 
@@ -9142,8 +8573,7 @@ RoomDoors_WreckedShipETank:
 RoomHeader_Basement:
     db $08,$03,$0E,$13,$05,$01,$70,$A0,$00                               ;8FCC6F;
     dw RoomDoors_Basement                                                ;8FCC78;
-    dw RoomStateCheck_BossIsDead                                         ;8FCC7A;
-    db $01                                                               ;8FCC7C;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FCC7A;
     dw RoomState_Basement_1                                              ;8FCC7D;
     dw Use_StatePointer_inX                                              ;8FCC7F;
 
@@ -9184,21 +8614,20 @@ RoomScrolls_Basement:
     db $01,$01,$01,$01,$00                                               ;8FCCBB;
 
 RoomPLM_Basement_0:
-    db $03,$01,$04,$01,$80                                               ;8FCCC0;
+    db $03,$01, $04,$01, $80                                             ;8FCCC0;
 
 RoomPLM_Basement_1:
-    db $03,$00,$80                                                       ;8FCCC5;
+    db $03,$00, $80                                                      ;8FCCC5;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_RoomPLM_8FCCC8:
-    db $04,$00,$80                                                       ;8FCCC8;
+    db $04,$00, $80                                                      ;8FCCC8;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 RoomHeader_WreckedShipMap:
     db $09,$03,$0D,$13,$01,$01,$70,$A0,$00                               ;8FCCCB;
     dw RoomDoors_WreckedShipMap                                          ;8FCCD4;
-    dw RoomStateCheck_BossIsDead                                         ;8FCCD6;
-    db $01                                                               ;8FCCD8;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FCCD6;
     dw RoomState_WreckedShipMap_1                                        ;8FCCD9;
     dw Use_StatePointer_inX                                              ;8FCCDB;
 
@@ -9236,8 +8665,7 @@ RoomDoors_WreckedShipMap:
 RoomHeader_Phantoon:
     db $0A,$03,$13,$13,$01,$01,$70,$A0,$00                               ;8FCD13;
     dw RoomDoors_Phantoon                                                ;8FCD1C;
-    dw RoomStateCheck_BossIsDead                                         ;8FCD1E;
-    db $01                                                               ;8FCD20;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FCD1E;
     dw RoomState_Phantoon_1                                              ;8FCD21;
     dw Use_StatePointer_inX                                              ;8FCD23;
 
@@ -9278,8 +8706,7 @@ RoomScrolls_Phantoon:
 RoomHeader_SpongeBath:
     db $0B,$03,$11,$0F,$02,$01,$70,$A0,$00                               ;8FCD5C;
     dw RoomDoors_SpongeBath                                              ;8FCD65;
-    dw RoomStateCheck_BossIsDead                                         ;8FCD67;
-    db $01                                                               ;8FCD69;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FCD67;
     dw RoomState_SpongeBath_1                                            ;8FCD6A;
     dw Use_StatePointer_inX                                              ;8FCD6C;
 
@@ -9321,8 +8748,7 @@ RoomScrolls_SpongeBath:
 RoomHeader_WSWestSuper:
     db $0C,$03,$0F,$11,$01,$01,$70,$A0,$00                               ;8FCDA8;
     dw RoomDoors_WSWestSuper                                             ;8FCDB1;
-    dw RoomStateCheck_BossIsDead                                         ;8FCDB3;
-    db $01                                                               ;8FCDB5;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FCDB3;
     dw RoomState_WSWestSuper_1                                           ;8FCDB6;
     dw Use_StatePointer_inX                                              ;8FCDB8;
 
@@ -9363,8 +8789,7 @@ RoomScrolls_WSWestSuper:
 RoomHeader_WSEastSuper:
     db $0D,$03,$12,$11,$04,$01,$70,$A0,$00                               ;8FCDF1;
     dw RoomDoors_WSEastSuper                                             ;8FCDFA;
-    dw RoomStateCheck_BossIsDead                                         ;8FCDFC;
-    db $01                                                               ;8FCDFE;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FCDFC;
     dw RoomState_WSEastSuper_1                                           ;8FCDFF;
     dw Use_StatePointer_inX                                              ;8FCE01;
 
@@ -9403,13 +8828,12 @@ RoomScrolls_WSEastSuper:
     db $01,$01,$01,$00                                                   ;8FCE39;
 
 RoomPLM_WSEastSuper_0:
-    db $03,$01,$80                                                       ;8FCE3D;
+    db $03,$01, $80                                                      ;8FCE3D;
 
 RoomHeader_GravitySuit:
     db $0E,$03,$0A,$0D,$01,$01,$70,$A0,$00                               ;8FCE40;
     dw RoomDoors_GravitySuit                                             ;8FCE49;
-    dw RoomStateCheck_BossIsDead                                         ;8FCE4B;
-    db $01                                                               ;8FCE4D;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FCE4B;
     dw RoomState_GravitySuit_1                                           ;8FCE4E;
     dw Use_StatePointer_inX                                              ;8FCE50;
 
@@ -9448,8 +8872,7 @@ RoomDoors_GravitySuit:
 RoomHeader_WreckedShipSave:
     db $0F,$03,$11,$0E,$01,$01,$70,$A0,$00                               ;8FCE8A;
     dw RoomDoors_WreckedShipSave                                         ;8FCE93;
-    dw RoomStateCheck_BossIsDead                                         ;8FCE95;
-    db $01                                                               ;8FCE97;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FCE95;
     dw RoomState_WreckedShipSave_1                                       ;8FCE98;
     dw Use_StatePointer_inX                                              ;8FCE9A;
 
@@ -9509,8 +8932,7 @@ RoomDoors_GlassTunnelSave:
 RoomHeader_GlassTunnel:
     db $01,$04,$0B,$11,$01,$03,$70,$A0,$00                               ;8FCEFB;
     dw RoomDoors_GlassTunnel                                             ;8FCF04;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8FCF06;
-    db $0B                                                               ;8FCF08;
+    dw RoomStateCheck_EventHasBeenSet : db $0B                           ;8FCF06;
     dw RoomState_GlassTunnel_1                                           ;8FCF09;
     dw Use_StatePointer_inX                                              ;8FCF0B;
 
@@ -9552,10 +8974,10 @@ RoomScrolls_GlassTunnel:
     db $02,$02,$02                                                       ;8FCF49;
 
 RoomPLM_GlassTunnel_0_4:
-    db $00,$02,$80                                                       ;8FCF4C;
+    db $00,$02, $80                                                      ;8FCF4C;
 
 RoomPLM_GlassTunnel_8:
-    db $01,$02,$02,$02,$80                                               ;8FCF4F;
+    db $01,$02, $02,$02, $80                                             ;8FCF4F;
 
 RoomHeader_WestTunnel:
     db $02,$04,$0A,$12,$01,$01,$70,$A0,$00                               ;8FCF54;
@@ -9611,13 +9033,13 @@ RoomScrolls_EastTunnel:
     db $01,$01,$01,$01,$00,$00,$00,$00                                   ;8FCFAD;
 
 RoomPLM_EastTunnel_0:
-    db $00,$01,$01,$00,$04,$00,$80                                       ;8FCFB5;
+    db $00,$01, $01,$00, $04,$00, $80                                    ;8FCFB5;
 
 RoomPLM_EastTunnel_1:
-    db $00,$02,$04,$01,$80                                               ;8FCFBC;
+    db $00,$02, $04,$01, $80                                             ;8FCFBC;
 
 RoomPLM_EastTunnel_2:
-    db $00,$00,$04,$01,$80                                               ;8FCFC1;
+    db $00,$00, $04,$01, $80                                             ;8FCFC1;
 
 RoomPLM_EastTunnel_9:
     db $01,$01,$80                                                       ;8FCFC6;
@@ -9653,7 +9075,7 @@ RoomScrolls_MainStreet:
     db $02,$00,$02,$02,$02,$02,$02,$00                                   ;8FD00A;
 
 RoomPLM_MainStreet_0:
-    db $07,$01,$0A,$00,$80                                               ;8FD012;
+    db $07,$01, $0A,$00, $80                                             ;8FD012;
 
 RoomHeader_FishTank:
     db $05,$04,$0D,$0D,$04,$03,$70,$A0,$00                               ;8FD017;
@@ -9684,7 +9106,7 @@ RoomScrolls_FishTank:
     db $02,$02,$02,$02,$02,$02,$02,$02,$02,$02,$00,$02                   ;8FD046;
 
 RoomPLM_FishTank_3_7:
-    db $0A,$02,$80                                                       ;8FD052;
+    db $0A,$02, $80                                                      ;8FD052;
 
 RoomHeader_MamaTurtle:
     db $06,$04,$11,$0C,$03,$04,$70,$A0,$00                               ;8FD055;
@@ -9795,10 +9217,10 @@ RoomScrolls_RedFish:
     db $01,$00,$02,$00,$00,$02                                           ;8FD12F;
 
 RoomPLM_RedFish_0:
-    db $02,$02,$80                                                       ;8FD135;
+    db $02,$02, $80                                                      ;8FD135;
 
 RoomPLM_RedFish_1:
-    db $01,$01,$80                                                       ;8FD138;
+    db $01,$01, $80                                                      ;8FD138;
 
 RoomHeader_WateringHole:
     db $0A,$04,$0C,$04,$02,$03,$70,$A0,$00                               ;8FD13B;
@@ -9826,7 +9248,7 @@ RoomScrolls_WateringHole:
     db $02,$01,$02,$00,$00,$00                                           ;8FD164;
 
 RoomPLM_WateringHole_0:
-    db $04,$01,$80                                                       ;8FD16A;
+    db $04,$01, $80                                                      ;8FD16A;
 
 RoomHeader_NWestMaridiaBug:
     db $0B,$04,$0E,$04,$04,$02,$70,$A0,$00                               ;8FD16D;
@@ -9855,7 +9277,7 @@ RoomScrolls_NWestMaridiaBug:
     db $02,$00,$00,$00,$01,$00,$01,$01                                   ;8FD198;
 
 RoomPLM_NWestMaridiaBug_3_7:
-    db $05,$01,$80                                                       ;8FD1A0;
+    db $05,$01, $80                                                      ;8FD1A0;
 
 RoomHeader_CrabShaft:
     db $0C,$04,$12,$07,$02,$04,$70,$A0,$00                               ;8FD1A3;
@@ -9885,7 +9307,7 @@ RoomScrolls_CrabShaft:
     db $02,$00,$02,$00,$01,$00,$00,$01                                   ;8FD1D0;
 
 RoomPLM_CrabShaft_0:
-    db $04,$02,$06,$01,$80                                               ;8FD1D8;
+    db $04,$02, $06,$01, $80                                             ;8FD1D8;
 
 RoomHeader_PseudoPlasmaSpark:
     db $0D,$04,$12,$04,$04,$03,$70,$A0,$00                               ;8FD1DD;
@@ -9915,10 +9337,10 @@ RoomScrolls_PseudoPlasmaSpark:
     db $02,$02,$02,$02,$02,$02,$02,$02,$02,$02,$00,$00                   ;8FD20A;
 
 RoomPLM_PseudoPlasmaSpark_3:
-    db $0A,$02,$80                                                       ;8FD216;
+    db $0A,$02, $80                                                      ;8FD216;
 
 RoomPLM_PseudoPlasmaSpark_7:
-    db $0A,$00,$80                                                       ;8FD219;
+    db $0A,$00, $80                                                      ;8FD219;
 
 RoomHeader_CrabHole:
     db $0E,$04,$10,$10,$01,$02,$70,$A0,$00                               ;8FD21C;
@@ -9949,7 +9371,7 @@ RoomScrolls_CrabHole:
     db $01,$00                                                           ;8FD24B;
 
 RoomPLM_CrabHole_0_1:
-    db $00,$02,$01,$01,$80                                               ;8FD24D;
+    db $00,$02, $01,$01, $80                                             ;8FD24D;
 
 RoomHeader_WestSandHallTunnel:
     db $0F,$04,$11,$10,$01,$01,$70,$A0,$00                               ;8FD252;
@@ -10283,7 +9705,7 @@ RoomScrolls_Oasis:
     db $00,$01                                                           ;8FD4BB;
 
 RoomPLM_Oasis_0:
-    db $00,$02,$01,$02,$80                                               ;8FD4BD;
+    db $00,$02, $01,$02, $80                                             ;8FD4BD;
 
 RoomHeader_EastSandHall:
     db $1C,$04,$17,$10,$03,$01,$70,$A0,$00                               ;8FD4C2;
@@ -10522,13 +9944,13 @@ RoomScrolls_Pants:
     db $02,$02,$02,$02,$02,$01,$01,$00                                   ;8FD675;
 
 RoomPLM_Pants_0_4:
-    db $02,$02,$03,$00,$04,$02,$05,$00,$06,$01,$07,$00,$80               ;8FD67D;
+    db $02,$02, $03,$00, $04,$02, $05,$00, $06,$01, $07,$00, $80         ;8FD67D;
 
 RoomPLM_Pants_D:
-    db $02,$00,$03,$02,$04,$00,$05,$01,$06,$00,$80                       ;8FD68A;
+    db $02,$00, $03,$02, $04,$00, $05,$01, $06,$00, $80                  ;8FD68A;
 
 RoomPLM_Pants_15:
-    db $05,$02,$07,$01,$80                                               ;8FD695;
+    db $05,$02, $07,$01, $80                                             ;8FD695;
 
 RoomHeader_EastPants:
     db $25,$04,$1B,$0E,$01,$03,$70,$A0,$00                               ;8FD69A;
@@ -10557,10 +9979,10 @@ RoomScrolls_EastPants:
     db $02,$00,$01                                                       ;8FD6C5;
 
 RoomPLM_EastPants_0:
-    db $01,$02,$80                                                       ;8FD6C8;
+    db $01,$02, $80                                                      ;8FD6C8;
 
 RoomPLM_EastPants_6:
-    db $01,$02,$02,$01,$80                                               ;8FD6CB;
+    db $01,$02, $02,$01, $80                                             ;8FD6CB;
 
 RoomHeader_Springball:
     db $26,$04,$20,$0F,$02,$02,$70,$A0,$00                               ;8FD6D0;
@@ -10667,8 +10089,7 @@ RoomScrolls_AqueductSave:
 RoomHeader_ThePrecious:
     db $2A,$04,$29,$07,$02,$03,$90,$A0,$00                               ;8FD78F;
     dw RoomDoors_ThePrecious                                             ;8FD798;
-    dw RoomStateCheck_BossIsDead                                         ;8FD79A;
-    db $01                                                               ;8FD79C;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FD79A;
     dw RoomState_ThePrecious_1                                           ;8FD79D;
     dw Use_StatePointer_inX                                              ;8FD79F;
 
@@ -10708,7 +10129,7 @@ RoomScrolls_ThePrecious:
     db $01,$01,$00,$00,$01,$00                                           ;8FD7D9;
 
 RoomPLM_ThePrecious_0:
-    db $00,$02,$02,$02,$80                                               ;8FD7DF;
+    db $00,$02, $02,$02, $80                                             ;8FD7DF;
 
 RoomHeader_BotwoonETank:
     db $2B,$04,$1A,$08,$07,$01,$70,$A0,$00                               ;8FD7E4;
@@ -10837,8 +10258,7 @@ RoomScrolls_BotwoonQuicksand:
 RoomHeader_Shaktool:
     db $30,$04,$1C,$0F,$04,$01,$70,$A0,$00                               ;8FD8C5;
     dw RoomDoors_Shaktool                                                ;8FD8CE;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8FD8D0;
-    db $0D                                                               ;8FD8D2;
+    dw RoomStateCheck_EventHasBeenSet : db $0D                           ;8FD8D0;
     dw RoomState_Shaktool_1                                              ;8FD8D3;
     dw Use_StatePointer_inX                                              ;8FD8D5;
 
@@ -10906,19 +10326,18 @@ RoomScrolls_HalfieClimb:
     db $02,$00,$00,$00,$00,$02,$00,$00,$00,$00,$01,$00,$01,$01,$01       ;8FD942;
 
 RoomPLM_HalfieClimb_0:
-    db $05,$00,$0B,$01,$80                                               ;8FD951;
+    db $05,$00, $0B,$01, $80                                             ;8FD951;
 
 RoomPLM_HalfieClimb_1:
-    db $05,$01,$0B,$00,$80                                               ;8FD956;
+    db $05,$01, $0B,$00, $80                                             ;8FD956;
 
 RoomPLM_HalfieClimb_5:
-    db $0A,$01,$80                                                       ;8FD95B;
+    db $0A,$01, $80                                                      ;8FD95B;
 
 RoomHeader_Botwoon:
     db $32,$04,$18,$08,$02,$01,$70,$A0,$00                               ;8FD95E;
     dw RoomDoors_Botwoon                                                 ;8FD967;
-    dw RoomStateCheck_BossIsDead                                         ;8FD969;
-    db $02                                                               ;8FD96B;
+    dw RoomStateCheck_BossIsDead : db $02                                ;8FD969;
     dw RoomState_Botwoon_1                                               ;8FD96C;
     dw Use_StatePointer_inX                                              ;8FD96E;
 
@@ -11062,8 +10481,7 @@ RoomScrolls_EastCactusAlley:
 RoomHeader_Draygon:
     db $37,$04,$27,$09,$02,$02,$70,$A0,$01                               ;8FDA60;
     dw RoomDoors_Draygon                                                 ;8FDA69;
-    dw RoomStateCheck_BossIsDead                                         ;8FDA6B;
-    db $01                                                               ;8FDA6D;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FDA6B;
     dw RoomState_Draygon_1                                               ;8FDA6E;
     dw Use_StatePointer_inX                                              ;8FDA70;
 
@@ -11133,8 +10551,7 @@ RoomScrolls_TourianFirst:
 RoomHeader_Metroids1:
     db $01,$05,$0E,$0C,$06,$01,$70,$A0,$00                               ;8FDAE1;
     dw RoomDoors_Metroids1                                               ;8FDAEA;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8FDAEC;
-    db $10                                                               ;8FDAEE;
+    dw RoomStateCheck_EventHasBeenSet : db $10                           ;8FDAEC;
     dw RoomState_Metroids1_1                                             ;8FDAEF;
     dw Use_StatePointer_inX                                              ;8FDAF1;
 
@@ -11176,8 +10593,7 @@ RoomScrolls_Metroids1:
 RoomHeader_Metroids2:
     db $02,$05,$0D,$0C,$01,$02,$70,$A0,$00                               ;8FDB31;
     dw RoomDoors_Metroids2                                               ;8FDB3A;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8FDB3C;
-    db $11                                                               ;8FDB3E;
+    dw RoomStateCheck_EventHasBeenSet : db $11                           ;8FDB3C;
     dw RoomState_Metroids2_1                                             ;8FDB3F;
     dw Use_StatePointer_inX                                              ;8FDB41;
 
@@ -11219,8 +10635,7 @@ RoomScrolls_Metroids2:
 RoomHeader_Metroids3:
     db $03,$05,$0E,$0D,$06,$01,$70,$A0,$00                               ;8FDB7D;
     dw RoomDoors_Metroids3                                               ;8FDB86;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8FDB88;
-    db $12                                                               ;8FDB8A;
+    dw RoomStateCheck_EventHasBeenSet : db $12                           ;8FDB88;
     dw RoomState_Metroids3_1                                             ;8FDB8B;
     dw Use_StatePointer_inX                                              ;8FDB8D;
 
@@ -11262,8 +10677,7 @@ RoomScrolls_Metroids3:
 RoomHeader_Metroids4:
     db $04,$05,$14,$0D,$01,$02,$70,$A0,$00                               ;8FDBCD;
     dw RoomDoors_Metroids4                                               ;8FDBD6;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8FDBD8;
-    db $13                                                               ;8FDBDA;
+    dw RoomStateCheck_EventHasBeenSet : db $13                           ;8FDBD8;
     dw RoomState_Metroids4_1                                             ;8FDBDB;
     dw Use_StatePointer_inX                                              ;8FDBDD;
 
@@ -11305,8 +10719,7 @@ RoomScrolls_Metroids4:
 RoomHeader_BlueHopper:
     db $05,$05,$13,$0F,$02,$01,$70,$A0,$00                               ;8FDC19;
     dw RoomDoors_BlueHopper                                              ;8FDC22;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8FDC24;
-    db $14                                                               ;8FDC26;
+    dw RoomStateCheck_EventHasBeenSet : db $14                           ;8FDC24;
     dw RoomState_BlueHopper_1                                            ;8FDC27;
     dw Use_StatePointer_inX                                              ;8FDC29;
 
@@ -11348,8 +10761,7 @@ RoomScrolls_BlueHopper:
 RoomHeader_DustTorizo:
     db $06,$05,$11,$0F,$02,$01,$70,$A0,$00                               ;8FDC65;
     dw RoomDoors_DustTorizo                                              ;8FDC6E;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8FDC70;
-    db $14                                                               ;8FDC72;
+    dw RoomStateCheck_EventHasBeenSet : db $14                           ;8FDC70;
     dw RoomState_DustTorizo_1                                            ;8FDC73;
     dw Use_StatePointer_inX                                              ;8FDC75;
 
@@ -11391,8 +10803,7 @@ RoomScrolls_DustTorizo:
 RoomHeader_BigBoy:
     db $07,$05,$0D,$0F,$04,$01,$70,$A0,$00                               ;8FDCB1;
     dw RoomDoors_BigBoy                                                  ;8FDCBA;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8FDCBC;
-    db $14                                                               ;8FDCBE;
+    dw RoomStateCheck_EventHasBeenSet : db $14                           ;8FDCBC;
     dw RoomState_BigBoy_1                                                ;8FDCBF;
     dw Use_StatePointer_inX                                              ;8FDCC1;
 
@@ -11488,8 +10899,7 @@ RoomHeader_MotherBrain:
     dw RoomDoors_MotherBrain                                             ;8FDD61;
     dw RoomStateCheck_MainAreaBossIsDead                                 ;8FDD63;
     dw RoomState_MotherBrain_2                                           ;8FDD65;
-    dw RoomStateCheck_EventHasBeenSet                                    ;8FDD67;
-    db $02                                                               ;8FDD69;
+    dw RoomStateCheck_EventHasBeenSet : db $02                           ;8FDD67;
     dw RoomState_MotherBrain_1                                           ;8FDD6A;
     dw Use_StatePointer_inX                                              ;8FDD6C;
 
@@ -11753,8 +11163,7 @@ RoomScrolls_UpperTourianSave:
 RoomHeader_CeresElev:
     db $00,$06,$0C,$0D,$01,$03,$70,$A0,$05                               ;8FDF45;
     dw RoomDoors_CeresElev                                               ;8FDF4E;
-    dw RoomStateCheck_BossIsDead                                         ;8FDF50;
-    db $01                                                               ;8FDF52;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FDF50;
     dw RoomState_CeresElev_1                                             ;8FDF53;
     dw Use_StatePointer_inX                                              ;8FDF55;
 
@@ -11792,8 +11201,7 @@ RoomDoors_CeresElev:
 RoomHeader_FallingTile:
     db $01,$06,$0D,$0F,$02,$01,$70,$A0,$00                               ;8FDF8D;
     dw RoomDoors_FallingTile                                             ;8FDF96;
-    dw RoomStateCheck_BossIsDead                                         ;8FDF98;
-    db $01                                                               ;8FDF9A;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FDF98;
     dw RoomState_FallingTile_1                                           ;8FDF9B;
     dw Use_StatePointer_inX                                              ;8FDF9D;
 
@@ -11832,8 +11240,7 @@ RoomDoors_FallingTile:
 RoomHeader_MagnetStairs:
     db $02,$06,$0F,$0F,$01,$02,$70,$A0,$00                               ;8FDFD7;
     dw RoomDoors_MagnetStairs                                            ;8FDFE0;
-    dw RoomStateCheck_BossIsDead                                         ;8FDFE2;
-    db $01                                                               ;8FDFE4;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FDFE2;
     dw RoomState_MagnetStairs_1                                          ;8FDFE5;
     dw Use_StatePointer_inX                                              ;8FDFE7;
 
@@ -11872,8 +11279,7 @@ RoomDoors_MagnetStairs:
 RoomHeader_DeadScientist:
     db $03,$06,$10,$10,$02,$01,$70,$A0,$00                               ;8FE021;
     dw RoomDoors_DeadScientist                                           ;8FE02A;
-    dw RoomStateCheck_BossIsDead                                         ;8FE02C;
-    db $01                                                               ;8FE02E;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FE02C;
     dw RoomState_DeadScientist_1                                         ;8FE02F;
     dw Use_StatePointer_inX                                              ;8FE031;
 
@@ -11912,8 +11318,7 @@ RoomDoors_DeadScientist:
 RoomHeader_58Escape:
     db $04,$06,$12,$10,$02,$01,$70,$A0,$00                               ;8FE06B;
     dw RoomDoors_58Escape                                                ;8FE074;
-    dw RoomStateCheck_BossIsDead                                         ;8FE076;
-    db $01                                                               ;8FE078;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FE076;
     dw RoomState_58Escape_1                                              ;8FE079;
     dw Use_StatePointer_inX                                              ;8FE07B;
 
@@ -11952,8 +11357,7 @@ RoomDoors_58Escape:
 RoomHeader_CeresRidley:
     db $05,$06,$14,$10,$01,$01,$70,$A0,$05                               ;8FE0B5;
     dw RoomDoors_CeresRidley                                             ;8FE0BE;
-    dw RoomStateCheck_BossIsDead                                         ;8FE0C0;
-    db $01                                                               ;8FE0C2;
+    dw RoomStateCheck_BossIsDead : db $01                                ;8FE0C0;
     dw RoomState_CeresRidley_1                                           ;8FE0C3;
     dw Use_StatePointer_inX                                              ;8FE0C5;
 
@@ -11988,86 +11392,65 @@ RoomState_CeresRidley_1:
 RoomDoors_CeresRidley:
     dw Door_CeresRidley                                                  ;8FE0FB;
 
-LibBG_Phantoon_State0:
-    dw $0002                                                             ;8FE0FD;
-    dl $7E2000                                                           ;8FE0FF;
-    dw $4800,$1000,$0000                                                 ;8FE102;
+LibBG_Phantoon_State0:                                                   ;8FE0FD;
+    dw $0002 : dl $7E2000 : dw $4800,$1000
+    dw $0000
 
-LibBG_Draygon_State0:
-    dw $0002                                                             ;8FE108;
-    dl $7E2000                                                           ;8FE10A;
-    dw $4800,$1000,$0000                                                 ;8FE10D;
+LibBG_Draygon_State0:                                                    ;8FE108;
+    dw $0002 : dl $7E2000 : dw $4800,$1000
+    dw $0000
 
 LibBG_Phantoon_Draygon_State1:
-    dw $000A,$0000                                                       ;8FE113;
+    dw $000A
+    dw $0000                                                       ;8FE113;
 
-LibBG_WreckedShip_4_5_EntranceHall:
-    dw $0004                                                             ;8FE117;
-    dl Background_WreckedShip_4_5_EntranceHall_0                         ;8FE119;
-    dw $4000,$0002                                                       ;8FE11C;
-    dl $7E4000                                                           ;8FE120;
-    dw $4800,$0800,$0002                                                 ;8FE123;
-    dl $7E4000                                                           ;8FE129;
-    dw $4C00,$0800,$0000                                                 ;8FE12C;
+LibBG_WreckedShip_4_5_EntranceHall:                                      ;8FE117;
+    dw $0004 : dl Background_WreckedShip_4_5_EntranceHall_0 : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
 if !FEATURE_KEEP_UNREFERENCED
-UNUSED_LibBG_WreckedShip_4_5_EntranceHall_1_8FE132:
-    dw $0004                                                             ;8FE132;
-    dl Background_WreckedShip_4_5_EntranceHall_1                         ;8FE134;
-    dw $4000,$0002                                                       ;8FE137;
-    dl $7E4000                                                           ;8FE13B;
-    dw $4800,$0800,$0002                                                 ;8FE13E;
-    dl $7E4000                                                           ;8FE144;
-    dw $4C00,$0800,$0000                                                 ;8FE147;
+UNUSED_LibBG_WreckedShip_4_5_EntranceHall_1_8FE132:                      ;8FE132;
+    dw $0004 : dl Background_WreckedShip_4_5_EntranceHall_1 : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-LibBG_WreckedShip_4_5_Columns_Tubes:
-    dw $0004                                                             ;8FE14D;
-    dl Background_WreckedShip_4_5_Columns_Tubes                          ;8FE14F;
-    dw $4000,$0002                                                       ;8FE152;
-    dl $7E4000                                                           ;8FE156;
-    dw $4800,$0800,$0002                                                 ;8FE159;
-    dl $7E4000                                                           ;8FE15F;
-    dw $4C00,$0800,$0000                                                 ;8FE162;
+LibBG_WreckedShip_4_5_Columns_Tubes:                                     ;8FE14D;
+    dw $0004 : dl Background_WreckedShip_4_5_Columns_Tubes : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_WreckedShip_4_5_ExperimentRoom:
-    dw $0004                                                             ;8FE168;
-    dl Background_WreckedShip_4_5_ExperimentRoom                         ;8FE16A;
-    dw $4000,$0002                                                       ;8FE16D;
-    dl $7E4000                                                           ;8FE171;
-    dw $4800,$0800,$0002                                                 ;8FE174;
-    dl $7E4000                                                           ;8FE17A;
-    dw $4C00,$0800,$0000                                                 ;8FE17D;
+LibBG_WreckedShip_4_5_ExperimentRoom:                                    ;8FE168;
+    dw $0004 : dl Background_WreckedShip_4_5_ExperimentRoom : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_WreckedShip_4_5_Panels_Vents:
-    dw $0004                                                             ;8FE183;
-    dl Background_WreckedShip_4_5_Panels_Vents                           ;8FE185;
-    dw $4000,$0002                                                       ;8FE188;
-    dl $7E4000                                                           ;8FE18C;
-    dw $4800,$0800,$0002                                                 ;8FE18F;
-    dl $7E4000                                                           ;8FE195;
-    dw $4C00,$0800,$0000                                                 ;8FE198;
+LibBG_WreckedShip_4_5_Panels_Vents:                                      ;8FE183;
+    dw $0004 : dl Background_WreckedShip_4_5_Panels_Vents : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_WreckedShip_4_5_Panels_Vents_Horizontal:
-    dw $0004                                                             ;8FE19E;
-    dl Background_WreckedShip_4_5_Panels_Vents_Horizontal                ;8FE1A0;
-    dw $4000,$0002                                                       ;8FE1A3;
-    dl $7E4000                                                           ;8FE1A7;
-    dw $4800,$0800,$0002                                                 ;8FE1AA;
-    dl $7E4000                                                           ;8FE1B0;
-    dw $4C00,$0800,$0000                                                 ;8FE1B3;
+LibBG_WreckedShip_4_5_Panels_Vents_Horizontal:                           ;8FE19E;
+    dw $0004 : dl Background_WreckedShip_4_5_Panels_Vents_Horizontal : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_WreckedShip_4_5_Panels_Vents_Vertical:
-    dw $0004                                                             ;8FE1B9;
-    dl Background_WreckedShip_4_5_Panels_Vents_Vertical                  ;8FE1BB;
-    dw $4000,$0002                                                       ;8FE1BE;
-    dl $7E4000                                                           ;8FE1C2;
-    dw $4800,$0800,$0002                                                 ;8FE1C5;
-    dl $7E4000                                                           ;8FE1CB;
-    dw $4C00,$0800,$0000                                                 ;8FE1CE;
+LibBG_WreckedShip_4_5_Panels_Vents_Vertical:                             ;8FE1B9;
+    dw $0004 : dl Background_WreckedShip_4_5_Panels_Vents_Vertical : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_CeresElevator_State0_1:
-    dw $000A,$0000                                                       ;8FE1D4;
+LibBG_CeresElevator_State0_1:                                            ;8FE1D4;
+    dw $000A
+    dw $0000
 
 DoorASM_StartWreckedShipTreadmillEastEntrance:
     LDY.W #AnimatedTilesObjects_FX_wreckedShipTreadmillLeftwards         ;8FE1D8;
@@ -12140,19 +11523,15 @@ DoorASM_Scroll_6_7_8_9_A_B_Red:
     RTS                                                                  ;8FE247;
 
 
-LibBG_Maridia_B_BrownWall:
-    dw $0004                                                             ;8FE248;
-    dl Background_Maridia_B_BrownWall                                    ;8FE24A;
-    dw $4000,$0002                                                       ;8FE24D;
-    dl $7E4000                                                           ;8FE251;
-    dw $4800,$1000,$0000                                                 ;8FE254;
+LibBG_Maridia_B_BrownWall:                                               ;8FE248;
+    dw $0004 : dl Background_Maridia_B_BrownWall : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$1000
+    dw $0000
 
-LibBG_Maridia_C_GreenWall:
-    dw $0004                                                             ;8FE25A;
-    dl Background_Maridia_C_GreenWall                                    ;8FE25C;
-    dw $4000,$0002                                                       ;8FE25F;
-    dl $7E4000                                                           ;8FE263;
-    dw $4800,$1000,$0000                                                 ;8FE266;
+LibBG_Maridia_C_GreenWall:                                               ;8FE25A;
+    dw $0004 : dl Background_Maridia_C_GreenWall : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$1000
+    dw $0000
 
 DoorASM_SetupElevatubeFromSouth:
     LDA.W #$FF00                                                         ;8FE26C;
@@ -12385,77 +11764,53 @@ DoorASM_Scroll_0_2_Green_duplicate:
     RTS                                                                  ;8FE3E7;
 
 
-LibBG_Tourian_D_MechanicalRoom:
-    dw $0004                                                             ;8FE3E8;
-    dl Background_Tourian_D_MechanicalRoom                               ;8FE3EA;
-    dw $4000,$0002                                                       ;8FE3ED;
-    dl $7E4000                                                           ;8FE3F1;
-    dw $4800,$0800,$0002                                                 ;8FE3F4;
-    dl $7E4000                                                           ;8FE3FA;
-    dw $4C00,$0800,$0000                                                 ;8FE3FD;
+LibBG_Tourian_D_MechanicalRoom:                                          ;8FE3E8;
+    dw $0004 : dl Background_Tourian_D_MechanicalRoom : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Tourian_D_MechanicalRoom_Letterbox:
-    dw $0004                                                             ;8FE403;
-    dl Background_Tourian_D_MechanicalRoom_Letterbox                     ;8FE405;
-    dw $4000,$0002                                                       ;8FE408;
-    dl $7E4000                                                           ;8FE40C;
-    dw $4800,$0800,$0002                                                 ;8FE40F;
-    dl $7E4000                                                           ;8FE415;
-    dw $4C00,$0800,$0000                                                 ;8FE418;
+LibBG_Tourian_D_MechanicalRoom_Letterbox:                                ;8FE403;
+    dw $0004 : dl Background_Tourian_D_MechanicalRoom_Letterbox : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Tourian_D_VerticalStructures:
-    dw $0004                                                             ;8FE41E;
-    dl Background_Tourian_D_VerticalStructures                           ;8FE420;
-    dw $4000,$0002                                                       ;8FE423;
-    dl $7E4000                                                           ;8FE427;
-    dw $4800,$0800,$0002                                                 ;8FE42A;
-    dl $7E4000                                                           ;8FE430;
-    dw $4C00,$0800,$0000                                                 ;8FE433;
+LibBG_Tourian_D_VerticalStructures:                                      ;8FE41E;
+    dw $0004 : dl Background_Tourian_D_VerticalStructures : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Tourian_D_PipeRoom_Letterbox:
-    dw $0004                                                             ;8FE439;
-    dl Background_Tourian_D_PipeRoom_Letterbox                           ;8FE43B;
-    dw $4000,$0002                                                       ;8FE43E;
-    dl $7E4000                                                           ;8FE442;
-    dw $4800,$0800,$0002                                                 ;8FE445;
-    dl $7E4000                                                           ;8FE44B;
-    dw $4C00,$0800,$0000                                                 ;8FE44E;
+LibBG_Tourian_D_PipeRoom_Letterbox:                                      ;8FE439;
+    dw $0004 : dl Background_Tourian_D_PipeRoom_Letterbox : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Tourian_D_PipeRoom_VerticalSeparation:
-    dw $0004                                                             ;8FE454;
-    dl Background_Tourian_D_PipeRoom_VerticalSeparation                  ;8FE456;
-    dw $4000,$0002                                                       ;8FE459;
-    dl $7E4000                                                           ;8FE45D;
-    dw $4800,$0800,$0002                                                 ;8FE460;
-    dl $7E4000                                                           ;8FE466;
-    dw $4C00,$0800,$0000                                                 ;8FE469;
+LibBG_Tourian_D_PipeRoom_VerticalSeparation:                             ;8FE454;
+    dw $0004 : dl Background_Tourian_D_PipeRoom_VerticalSeparation : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Tourian_D_PipeRoom:
-    dw $0004                                                             ;8FE46F;
-    dl Background_Tourian_D_PipeRoom                                     ;8FE471;
-    dw $4000,$0002                                                       ;8FE474;
-    dl $7E4000                                                           ;8FE478;
-    dw $4800,$0800,$0002                                                 ;8FE47B;
-    dl $7E4000                                                           ;8FE481;
-    dw $4C00,$0800,$0000                                                 ;8FE484;
+LibBG_Tourian_D_PipeRoom:                                                ;8FE46F;
+    dw $0004 : dl Background_Tourian_D_PipeRoom : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Tourian_E_PipeRoom_Dark:
-    dw $0004                                                             ;8FE48A;
-    dl Background_Tourian_E_PipeRoom_Dark                                ;8FE48C;
-    dw $4000,$0002                                                       ;8FE48F;
-    dl $7E4000                                                           ;8FE493;
-    dw $4800,$0800,$0002                                                 ;8FE496;
-    dl $7E4000                                                           ;8FE49C;
-    dw $4C00,$0800,$0000                                                 ;8FE49F;
+LibBG_Tourian_E_PipeRoom_Dark:                                           ;8FE48A;
+    dw $0004 : dl Background_Tourian_E_PipeRoom_Dark : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
-LibBG_Tourian_D_E_StatueHall:
-    dw $0004                                                             ;8FE4A5;
-    dl Background_Tourian_D_E_StatueHall                                 ;8FE4A7;
-    dw $4000,$0002                                                       ;8FE4AA;
-    dl $7E4000                                                           ;8FE4AE;
-    dw $4800,$0800,$0002                                                 ;8FE4B1;
-    dl $7E4000                                                           ;8FE4B7;
-    dw $4C00,$0800,$0000                                                 ;8FE4BA;
+LibBG_Tourian_D_E_StatueHall:                                            ;8FE4A5;
+    dw $0004 : dl Background_Tourian_D_E_StatueHall : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 
 DoorASM_Scroll_0_1_Green_duplicate:
     PHP                                                                  ;8FE4C0;
@@ -12751,20 +12106,20 @@ UNUSED_RoomStateCheck_SpeedBooster_8FE678:
     RTS                                                                  ;8FE689;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-
 Door_Closing_PLMs:
-    dw $0000                                                             ;8FE68A;
-    dw $0000                                                             ;8FE68C;
-    dw $0000                                                             ;8FE68E;
-    dw $0000                                                             ;8FE690;
-    dw PLMEntries_blueDoorClosingFacingRight                             ;8FE692;
-    dw PLMEntries_blueDoorClosingFacingLeft                              ;8FE694;
-    dw PLMEntries_blueDoorClosingFacingDown                              ;8FE696;
-    dw PLMEntries_blueDoorClosingFacingUp                                ;8FE698;
-    dw PLMEntries_gateThatClosesInEscapeRoom1_PLM                        ;8FE69A;
-    dw PLMEntries_gateThatClosesInEscapeRoom1_PLM                        ;8FE69C;
-    dw PLMEntries_gateThatClosesInEscapeRoom1_PLM                        ;8FE69E;
-    dw PLMEntries_gateThatClosesInEscapeRoom1_PLM                        ;8FE6A0;
+; Spawned by Spawn_Door_Closing_PLM during door transition
+    dw $0000                                                             ;8FE68A; 0: Non-closing door facing right
+    dw $0000                                                             ;8FE68C; 1: Non-closing door facing left
+    dw $0000                                                             ;8FE68E; 2: Non-closing door facing down
+    dw $0000                                                             ;8FE690; 3: Non-closing door facing up
+    dw PLMEntries_blueDoorClosingFacingRight                             ;8FE692; 4: Blue door closing facing right
+    dw PLMEntries_blueDoorClosingFacingLeft                              ;8FE694; 5: Blue door closing facing left
+    dw PLMEntries_blueDoorClosingFacingDown                              ;8FE696; 6: Blue door closing facing down
+    dw PLMEntries_blueDoorClosingFacingUp                                ;8FE698; 7: Blue door closing facing up
+    dw PLMEntries_gateThatClosesInEscapeRoom1_PLM                        ;8FE69A; 8: Gate that closes during escape in room after Mother Brain
+    dw PLMEntries_gateThatClosesInEscapeRoom1_PLM                        ;8FE69C; 9: Gate that closes during escape in room after Mother Brain
+    dw PLMEntries_gateThatClosesInEscapeRoom1_PLM                        ;8FE69E; Ah: Gate that closes during escape in room after Mother Brain
+    dw PLMEntries_gateThatClosesInEscapeRoom1_PLM                        ;8FE6A0; Bh: Gate that closes during escape in room after Mother Brain
 
 Tileset_Table_0_UpperCrateria:
     dl TileTables_0_1_UpperCrateria                                      ;8FE6A2;
@@ -12992,24 +12347,34 @@ RoomDoors_Debug:
     dw UNUSED_Door_Debug_3_83ABE5                                        ;8FE859;
 
 if !FEATURE_KEEP_UNREFERENCED
-UNUSED_LibraryBackground_8FE85B:
-    dw $0002                                                             ;8FE85B;
-    dl FX_Layer3_Tilemaps_water                                          ;8FE85D;
-    dw $5880,$0F00,$0004                                                 ;8FE860;
-    dl Background_Crateria_0_Rocks                                       ;8FE866;
-    dw $4000,$0002                                                       ;8FE869;
-    dl $7E4000                                                           ;8FE86D;
-    dw $4800,$0800,$0002                                                 ;8FE870;
-    dl $7E4000                                                           ;8FE876;
-    dw $4C00,$0800,$0000                                                 ;8FE879;
+UNUSED_LibraryBackground_8FE85B:                                         ;8FE85B;
+; Unused library background. Same as the library background LibBG_Crateria_0_Rocks used by rooms:
+;     Crateria mainstreet
+;     Landing site power bomb room
+;     Pre moat room
+;     East Crateria maze
+;     Moat
+; Except that this one additionally (incorrectly) loads the water FX tilemap
+    dw $0002 : dl FX_Layer3_Tilemaps_water : dw $5880,$0F00
+    dw $0004 : dl Background_Crateria_0_Rocks : dw $4000
+    dw $0002 : dl $7E4000 : dw $4800,$0800
+    dw $0002 : dl $7E4000 : dw $4C00,$0800
+    dw $0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 RoomPLM_Debug:
     db $00,$00                                                           ;8FE87F;
 
 if !FEATURE_KEEP_UNREFERENCED
-UNUSED_UnknownUnreferenced_8FE881:
-    dw $009E,$00AD,$0081,$0001,$0004,$0002,$0000                         ;8FE881;
+UNUSED_UnknownUnreferenced_8FE881:                                       ;8FE881;
+; See UNUSED_8FC209 for the other areas
+    dw $009E ; "Next" item / refill station index (9Dh is the last used one, see "Item PLMs.asm" from bank logs)
+    dw $00AD ; "Next" doorcap index (ACh is the last used one, see "Door PLMs.asm" from bank logs)
+    dw $0081 ; ?
+    dw $0001 ; Number of save stations in Wrecked Ship
+    dw $0004 ; Number of save stations in Maridia
+    dw $0002 ; Number of save stations in Tourian
+    dw $0000 ; Number of save stations in Ceres?                         
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Execute_Room_Setup_ASM:

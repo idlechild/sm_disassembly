@@ -19,34 +19,34 @@ NormalSamusPoseInputHandler:
 
 
 .pointers:
-    dw NormalSamusPoseInputHandler_Standing                              ;918014;
-    dw NormalSamusPoseInputHandler_1_Running                             ;918016;
-    dw NormalSamusPoseInputHandler_NormalJumping                         ;918018;
-    dw NormalSamusPoseInputHandler_SpinJumping                           ;91801A;
-    dw NormalSamusPoseInputHandler_MorphBall_OnGround                    ;91801C;
-    dw NormalSamusPoseInputHandler_Crouching                             ;91801E;
-    dw NormalSamusPoseInputHandler_Falling                               ;918020;
-    dw RTS_918086                                                        ;918022;
-    dw NormalSamusPoseInputHandler_MorphBall_Falling                     ;918024;
-    dw RTS_918112                                                        ;918026;
-    dw NormalSamusPoseInputHandler_Knockback_CrystalFlashEnding          ;918028;
-    dw RTS_91812D                                                        ;91802A;
-    dw NormalSamusPoseInputHandler_C_DetermineProspectivePose            ;91802C;
-    dw NormalSamusPoseInputHandler_D_DetermineProspectivePose            ;91802E;
-    dw NormalSamusPoseInputHandler_TurningAround_OnGround                ;918030;
-    dw RTS_918146                                                        ;918032;
-    dw NormalSamusPoseInputHandler_Moonwalking                           ;918034;
-    dw NormalSamusPoseInputHandler_SpringBall_OnGround                   ;918036;
-    dw NormalSamusPoseInputHandler_SpringBall_InAir                      ;918038;
-    dw NormalSamusPoseInputHandler_SpringBall_Falling                    ;91803A;
-    dw NormalSamusPoseInputHandler_WallJumping                           ;91803C;
-    dw NormalSamusPoseInputHandler_RanIntoAWall                          ;91803E;
-    dw NormalSamusPoseInputHandler_Grappling                             ;918040;
-    dw NormalSamusPoseInputHandler_TurningAround_Jumping                 ;918042;
-    dw NormalSamusPoseInputHandler_TurningAround_Falling                 ;918044;
-    dw NormalSamusPoseInputHandler_DamageBoost                           ;918046;
-    dw NormalSamusPoseInputHandler_GrabbedByDraygon                      ;918048;
-    dw NormalSamusPoseInputHandler_Shinespark_CF_Drained_DamagedMB       ;91804A;
+    dw NormalSamusPoseInputHandler_Standing                              ;918014; 0: Standing
+    dw NormalSamusPoseInputHandler_1_Running                             ;918016; 1: Running
+    dw NormalSamusPoseInputHandler_NormalJumping                         ;918018; 2: Normal jumping
+    dw NormalSamusPoseInputHandler_SpinJumping                           ;91801A; 3: Spin jumping
+    dw NormalSamusPoseInputHandler_MorphBall_OnGround                    ;91801C; 4: Morph ball - on ground
+    dw NormalSamusPoseInputHandler_Crouching                             ;91801E; 5: Crouching
+    dw NormalSamusPoseInputHandler_Falling                               ;918020; 6: Falling
+    dw RTS_918086                                                        ;918022; 7: Unused
+    dw NormalSamusPoseInputHandler_MorphBall_Falling                     ;918024; 8: Morph ball - falling
+    dw RTS_918112                                                        ;918026; 9: Unused
+    dw NormalSamusPoseInputHandler_Knockback_CrystalFlashEnding          ;918028; Ah: Knockback / crystal flash ending
+    dw RTS_91812D                                                        ;91802A; Bh: Unused
+    dw NormalSamusPoseInputHandler_C_DetermineProspectivePose            ;91802C; Ch: Unused
+    dw NormalSamusPoseInputHandler_D_DetermineProspectivePose            ;91802E; Dh: Unused
+    dw NormalSamusPoseInputHandler_TurningAround_OnGround                ;918030; Eh: Turning around - on ground
+    dw RTS_918146                                                        ;918032; Fh: Crouching/standing/morphing/unmorphing transition
+    dw NormalSamusPoseInputHandler_Moonwalking                           ;918034; 10h: Moonwalking
+    dw NormalSamusPoseInputHandler_SpringBall_OnGround                   ;918036; 11h: Spring ball - on ground
+    dw NormalSamusPoseInputHandler_SpringBall_InAir                      ;918038; 12h: Spring ball - in air
+    dw NormalSamusPoseInputHandler_SpringBall_Falling                    ;91803A; 13h: Spring ball - falling
+    dw NormalSamusPoseInputHandler_WallJumping                           ;91803C; 14h: Wall jumping
+    dw NormalSamusPoseInputHandler_RanIntoAWall                          ;91803E; 15h: Ran into a wall
+    dw NormalSamusPoseInputHandler_Grappling                             ;918040; 16h: Grappling
+    dw NormalSamusPoseInputHandler_TurningAround_Jumping                 ;918042; 17h: Turning around - jumping
+    dw NormalSamusPoseInputHandler_TurningAround_Falling                 ;918044; 18h: Turning around - falling
+    dw NormalSamusPoseInputHandler_DamageBoost                           ;918046; 19h: Damage boost
+    dw NormalSamusPoseInputHandler_GrabbedByDraygon                      ;918048; 1Ah: Grabbed by Draygon
+    dw NormalSamusPoseInputHandler_Shinespark_CF_Drained_DamagedMB       ;91804A; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 RTS_91804C:
     RTS                                                                  ;91804C;
@@ -594,9 +594,36 @@ Set_ProspectivePoseChangeCommand:
     RTS                                                                  ;918331;
 
 
-.poseChangeCommands:
-    db $02,$01,$01,$00,$06,$02,$08,$02,$01,$06,$02,$02,$02,$06,$02,$02   ;918332;
-    db $02,$06,$06,$06,$06,$02,$06,$02,$02,$02,$02,$02                   ;918342;
+.poseChangeCommands:                                                     ;918332;
+; Value for prospective pose change command. If 1 and [Samus X base speed] = 0, use 2 instead
+    db $02 ; 0: Standing
+    db $01 ; 1: Running
+    db $01 ; 2: Normal jumping
+    db $00 ; 3: Spin jumping
+    db $06 ; 4: Morph ball - on ground
+    db $02 ; 5: Crouching
+    db $08 ; 6: Falling
+    db $02 ; 7: Unused
+    db $01 ; 8: Morph ball - falling
+    db $06 ; 9: Unused
+    db $02 ; Ah: Knockback / crystal flash ending
+    db $02 ; Bh: Unused
+    db $02 ; Ch: Unused
+    db $06 ; Dh: Unused
+    db $02 ; Eh: Turning around - on ground
+    db $02 ; Fh: Crouching/standing/morphing/unmorphing transition
+    db $02 ; 10h: Moonwalking
+    db $06 ; 11h: Spring ball - on ground
+    db $06 ; 12h: Spring ball - in air
+    db $06 ; 13h: Spring ball - falling
+    db $06 ; 14h: Wall jumping
+    db $02 ; 15h: Ran into a wall
+    db $06 ; 16h: Grappling
+    db $02 ; 17h: Turning around - jumping
+    db $02 ; 18h: Turning around - falling
+    db $02 ; 19h: Damage boost
+    db $02 ; 1Ah: Grabbed by Draygon
+    db $02 ; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 Enable_DemoInput:
     PHP                                                                  ;91834E;
@@ -954,12 +981,17 @@ Draw_RecordedDemoDuration:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-UNUSED_InstList_DemoInput_JumpLeft_GiveControlBack_9185CE:
-    dw $001E,$0000,$0000,$0001,$0200,$0200,$001A,$0200                   ;9185CE;
-    dw $0000,$0001,$0280,$0080,$0034,$0280,$0000,$001E                   ;9185DE;
-    dw $0200,$0000,$0049,$0000,$0000                                     ;9185EE;
-    dw Instruction_EndDemoInput_GiveControlBackToPlayer                  ;9185F8;
-    dw Instruction_DemoInputObject_Delete                                ;9185FA;
+UNUSED_InstList_DemoInput_JumpLeft_GiveControlBack_9185CE:               ;9185CE;
+; For UNUSED_DemoInputObject_Intro_JumpLeft_GiveControlBack_918778
+    dw $001E,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $001A,$0200,$0000 ;       <
+    dw $0001,$0280,$0080 ;       < A
+    dw $0034,$0280,$0000 ;       < A
+    dw $001E,$0200,$0000 ;       <
+    dw $0049,$0000,$0000
+    dw Instruction_EndDemoInput_GiveControlBackToPlayer
+    dw Instruction_DemoInputObject_Delete
 
 Instruction_EndDemoInput_GiveControlBackToPlayer:
     LDA.W #SamusCurrentStateHandler_Normal                               ;9185FC;
@@ -971,26 +1003,30 @@ Instruction_EndDemoInput_GiveControlBackToPlayer:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-InstList_DemoInput_BabyMetroidDiscovery_RunningLeft_0:
-    dw $005A,$0000,$0000,$0001,$0200,$0200                               ;91860D;
+InstList_DemoInput_BabyMetroidDiscovery_RunningLeft_0:                   ;91860D;
+    dw $005A,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
 
-InstList_DemoInput_BabyMetroidDiscovery_RunningLeft_1:
-    dw $0001,$0200,$0000                                                 ;918619;
-    dw Instruction_DemoInputObject_GotoY                                 ;91861F;
-    dw InstList_DemoInput_BabyMetroidDiscovery_RunningLeft_1             ;918621;
+InstList_DemoInput_BabyMetroidDiscovery_RunningLeft_1:                   ;918619;
+    dw $0001,$0200,$0000 ;       <
+    dw Instruction_DemoInputObject_GotoY
+    dw InstList_DemoInput_BabyMetroidDiscovery_RunningLeft_1
 
-InstList_DemoInput_BabyMetroidDiscovery_StopAndLook_0:
-    dw $012C,$0000,$0000,$0001,$0010,$0010,$00AA,$0010                   ;918623;
-    dw $0000,$00F0,$0000,$0000,$0001,$0200,$0200                         ;918633;
+InstList_DemoInput_BabyMetroidDiscovery_StopAndLook_0:                   ;918623;
+    dw $012C,$0000,$0000 ;
+    dw $0001,$0010,$0010 ;            R
+    dw $00AA,$0010,$0000 ;            R
+    dw $00F0,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
 
-InstList_DemoInput_BabyMetroidDiscovery_StopAndLook_1:
-    dw $0001,$0200,$0000                                                 ;918641;
-    dw Instruction_DemoInputObject_GotoY                                 ;918647;
-    dw InstList_DemoInput_BabyMetroidDiscovery_StopAndLook_1             ;918649;
+InstList_DemoInput_BabyMetroidDiscovery_StopAndLook_1:                   ;918641;
+    dw $0001,$0200,$0000 ;       <
+    dw Instruction_DemoInputObject_GotoY
+    dw InstList_DemoInput_BabyMetroidDiscovery_StopAndLook_1
 
-InstList_DemoInput_BabyMetroidDiscovery_End:
-    dw Instruction_EndDemoInput                                          ;91864B;
-    dw Instruction_DemoInputObject_Delete                                ;91864D;
+InstList_DemoInput_BabyMetroidDiscovery_End:                             ;91864B;
+    dw Instruction_EndDemoInput
+    dw Instruction_DemoInputObject_Delete
 
 PreInstruction_DemoInput_BabyMetroidDiscovery_RunningLeft:
     LDA.W $0AF6                                                          ;91864F;
@@ -1033,20 +1069,29 @@ Instruction_EndDemoInput:
     RTS                                                                  ;918693;
 
 
-InstList_DemoInput_OldMotherBrainFight:
-    dw $005A,$0000,$0000,$0001,$0040,$0040,$0028,$0040                   ;918694;
-    dw $0000,$0001,$0040,$0040,$001D,$0040,$0000,$0046                   ;9186A4;
-    dw $0000,$0000                                                       ;9186B4;
+InstList_DemoInput_OldMotherBrainFight:                                  ;918694;
+    dw $005A,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0028,$0040,$0000 ;          X
+    dw $0001,$0040,$0040 ;          X
+    dw $001D,$0040,$0000 ;          X
+    dw $0046,$0000,$0000 ;
 
 if !FEATURE_KEEP_UNREFERENCED
-UNUSED_InstList_DemoInput_OldMotherBrainFight_9186B8:
-    dw $0014,$0000,$0000,$0001,$0200,$0200,$0007,$0200                   ;9186B8;
-    dw $0000,$0001,$0280,$0080,$0007,$0280,$0000,$0004                   ;9186C8;
-    dw $0200,$0000,$003C,$0000,$0000,$0001,$0040,$0040                   ;9186D8;
-    dw $0028,$0040,$0000,$0001,$0040,$0040,$0013,$0040                   ;9186E8;
-    dw $0000                                                             ;9186F8;
-    dw Instruction_EndDemoInputWithSamusFacingLeft                       ;9186FA;
-    dw Instruction_DemoInputObject_Delete                                ;9186FC;
+UNUSED_InstList_DemoInput_OldMotherBrainFight_9186B8:                    ;9186B8;
+    dw $0014,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0007,$0200,$0000 ;       <
+    dw $0001,$0280,$0080 ;       < A
+    dw $0007,$0280,$0000 ;       < A
+    dw $0004,$0200,$0000 ;       <
+    dw $003C,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0028,$0040,$0000 ;          X
+    dw $0001,$0040,$0040 ;          X
+    dw $0013,$0040,$0000 ;          X
+    dw Instruction_EndDemoInputWithSamusFacingLeft
+    dw Instruction_DemoInputObject_Delete
 
 UNUSED_Instruction_EndDemoInputWithSamusFacingLeft_9186FE:
     PHX                                                                  ;9186FE;
@@ -1236,57 +1281,84 @@ DemoData_Pointers:
     dw DemoData_Set2                                                     ;918889;
     dw DemoData_Set3                                                     ;91888B;
 
+;        ____________________________________________ Equipment
+;       |      ______________________________________ Missiles
+;       |     |      ________________________________ Super missiles
+;       |     |     |      __________________________ Power bombs
+;       |     |     |     |      ____________________ Health
+;       |     |     |     |     |      ______________ Collected beams
+;       |     |     |     |     |     |      ________ Equipped beams
+;       |     |     |     |     |     |     |
 DemoData_Set0:
     dw $0000,$0000,$0000,$0000,$0063,$0000,$0000                         ;91888D;
     dw DemoInputObjects_Title_LandingSite                                ;91889B;
+
     dw $0004,$0005,$0000,$0000,$0063,$0000,$0000                         ;91889D;
     dw DemoInputObjects_Title_MissileDoor                                ;9188AB;
+
     dw $0004,$000F,$0000,$0000,$00C7,$1000,$1000                         ;9188AD;
     dw DemoInputObjects_Title_PreSporeSpawnHall                          ;9188BB;
+
     dw $2105,$001E,$0005,$0000,$012B,$1004,$1004                         ;9188BD;
     dw DemoInputObjects_Title_SpeedBooster                               ;9188CB;
+
     dw $6105,$001E,$0005,$0005,$018F,$1006,$1006                         ;9188CD;
     dw DemoInputObjects_Title_GrappleBeam                                ;9188DB;
+
     dw $0004,$0014,$0000,$0000,$00C7,$1000,$1000                         ;9188DD;
     dw DemoInputObjects_Title_PseudoScrewAttack                          ;9188EB;
 
 DemoData_Set1:
     dw $2105,$001E,$0005,$0000,$012B,$1006,$1006                         ;9188ED;
     dw DemoInputObjects_Title_IceBeam                                    ;9188FB;
+
     dw $0004,$000A,$0000,$0000,$00C7,$0000,$0000                         ;9188FD;
     dw DemoInputObjects_Title_FireFleaRoom                               ;91890B;
+
     dw $0004,$0019,$0005,$0000,$00C7,$1000,$1000                         ;91890D;
     dw DemoInputObjects_Title_BrinstarDiagonalRoom                       ;91891B;
+
     dw $E325,$004B,$000F,$000A,$0383,$1000,$1000                         ;91891D;
     dw DemoInputObjects_Title_LowerNorfairEntrance                       ;91892B;
+
     dw $E32D,$0055,$000F,$000A,$03E7,$0000,$0000                         ;91892D;
     dw DemoInputObjects_Title_ScrewAttack                                ;91893B;
+
     dw $E105,$002D,$0005,$0005,$018F,$1000,$1000                         ;91893D;
     dw DemoInputObjects_Title_Dachora                                    ;91894B;
 
 DemoData_Set2:
     dw $E105,$0037,$0005,$0005,$018F,$1000,$1000                         ;91894D;
     dw DemoInputObjects_Title_WreckedShipBasement                        ;91895B;
+
     dw $F33F,$0055,$000F,$000A,$03E7,$100F,$1000                         ;91895D;
     dw DemoInputObjects_Title_Shinespark                                 ;91896B;
+
     dw $0104,$0019,$0005,$0000,$012B,$1004,$1004                         ;91896D;
     dw DemoInputObjects_Title_EyeDoor                                    ;91897B;
+
     dw $2105,$001E,$0005,$0000,$012B,$0000,$0000                         ;91897D;
     dw DemoInputObjects_Title_RedBrinstarElevator                        ;91898B;
+
     dw $0104,$0019,$0005,$0000,$012B,$0000,$0000                         ;91898D;
     dw DemoInputObjects_Title_Kraid                                      ;91899B;
+
     dw $2105,$001E,$0005,$0005,$012B,$1008,$1008                         ;91899D;
     dw DemoInputObjects_Title_TourianEntrance                            ;9189AB;
 
 DemoData_Set3:
     dw $F32D,$0055,$000F,$000A,$03E7,$1000,$1000                         ;9189AD;
     dw DemoInputObjects_Title_GauntletEntrance                           ;9189BB;
+
     dw $F32D,$0055,$000F,$000A,$03E7,$0000,$0000                         ;9189BD;
     dw DemoInputObjects_Title_AdvancedGrappleBeam                        ;9189CB;
+
     dw $F32D,$0055,$000F,$000A,$03E7,$0000,$0000                         ;9189CD;
     dw DemoInputObjects_Title_IBJ                                        ;9189DB;
+
     dw $F32D,$0055,$000F,$000A,$03E7,$1008,$1008                         ;9189DD;
     dw DemoInputObjects_Title_SBA                                        ;9189EB;
+
     dw $F32D,$0055,$0014,$0014,$03E7,$1000,$1000                         ;9189ED;
     dw DemoInputObjects_Title_CrystalFlash                               ;9189FB;
 
@@ -1420,404 +1492,908 @@ PreInstruction_DemoInput_Shinespark:
     RTS                                                                  ;918ACD;
 
 
-InstList_DemoInput_LandingSite:
-    dw $0121,$0000,$0000,$0001,$0200,$0200,$0006,$0200                   ;918ACE;
-    dw $0000,$0001,$0A00,$0800,$0003,$0A00,$0000,$0013                   ;918ADE;
-    dw $0200,$0000,$0001,$0280,$0080,$0028,$0280,$0000                   ;918AEE;
-    dw $0032,$0200,$0000,$0024,$0000,$0000,$0001,$0100                   ;918AFE;
-    dw $0100,$0005,$0100,$0000,$000F,$0000,$0000,$0001                   ;918B0E;
-    dw $0200,$0200,$0005,$0200,$0000,$0022,$0000,$0000                   ;918B1E;
-    dw $0001,$0200,$0200,$004A,$0200,$0000,$0005,$0000                   ;918B2E;
-    dw $0000,$0001,$0100,$0100,$0005,$0100,$0000,$0045                   ;918B3E;
-    dw $0000,$0000,$0001,$0200,$0200,$0003,$0200,$0000                   ;918B4E;
-    dw $0001,$8200,$8000,$0049,$8200,$0000,$0001,$8A00                   ;918B5E;
-    dw $0800,$0003,$8A00,$0000,$0001,$0200,$0000,$0002                   ;918B6E;
-    dw $0000,$0000,$0001,$0100,$0100,$0007,$0100,$0000                   ;918B7E;
-    dw $000B,$0000,$0000,$0001,$0010,$0010,$001F,$0010                   ;918B8E;
-    dw $0000,$0001,$0210,$0200,$0005,$0210,$0000,$001D                   ;918B9E;
-    dw $0010,$0000,$0001,$0200,$0200,$005E,$0200,$0000                   ;918BAE;
-    dw $0030,$0000,$0000,$0001,$0200,$0200,$002E,$0200                   ;918BBE;
-    dw $0000,$001F,$0000,$0000,$0001,$0100,$0100,$0004                   ;918BCE;
-    dw $0100,$0000,$0040,$0000,$0000,$0001,$0200,$0200                   ;918BDE;
-    dw $0004,$0200,$0000,$0028,$0000,$0000,$0001,$0040                   ;918BEE;
-    dw $0040,$0006,$0040,$0000,$002B,$0000,$0000,$0001                   ;918BFE;
-    dw $0200,$0200,$0011,$0200,$0000,$0007,$0000,$0000                   ;918C0E;
-    dw $0001,$0200,$0200,$0004,$0200,$0000,$0014,$0100                   ;918C1E;
-    dw $0000,$0001,$0140,$0040,$0003,$0140,$0000                         ;918C2E;
-    dw Instruction_DemoInputObject_Delete                                ;918C3C;
+InstList_DemoInput_LandingSite:                                          ;918ACE;
+    dw $0121,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0006,$0200,$0000 ;       <
+    dw $0001,$0A00,$0800 ;     ^ <
+    dw $0003,$0A00,$0000 ;     ^ <
+    dw $0013,$0200,$0000 ;       <
+    dw $0001,$0280,$0080 ;       < A
+    dw $0028,$0280,$0000 ;       < A
+    dw $0032,$0200,$0000 ;       <
+    dw $0024,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0005,$0100,$0000 ;        >
+    dw $000F,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0005,$0200,$0000 ;       <
+    dw $0022,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $004A,$0200,$0000 ;       <
+    dw $0005,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0005,$0100,$0000 ;        >
+    dw $0045,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0003,$0200,$0000 ;       <
+    dw $0001,$8200,$8000 ; B     <
+    dw $0049,$8200,$0000 ; B     <
+    dw $0001,$8A00,$0800 ; B   ^ <
+    dw $0003,$8A00,$0000 ; B   ^ <
+    dw $0001,$0200,$0000 ;       <
+    dw $0002,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0007,$0100,$0000 ;        >
+    dw $000B,$0000,$0000 ;
+    dw $0001,$0010,$0010 ;            R
+    dw $001F,$0010,$0000 ;            R
+    dw $0001,$0210,$0200 ;       <    R
+    dw $0005,$0210,$0000 ;       <    R
+    dw $001D,$0010,$0000 ;            R
+    dw $0001,$0200,$0200 ;       <
+    dw $005E,$0200,$0000 ;       <
+    dw $0030,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $002E,$0200,$0000 ;       <
+    dw $001F,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0004,$0100,$0000 ;        >
+    dw $0040,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0004,$0200,$0000 ;       <
+    dw $0028,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0006,$0040,$0000 ;          X
+    dw $002B,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0011,$0200,$0000 ;       <
+    dw $0007,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0004,$0200,$0000 ;       <
+    dw $0014,$0100,$0000 ;        >
+    dw $0001,$0140,$0040 ;        > X
+    dw $0003,$0140,$0000 ;        > X
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_PseudoScrewAttack:
-    dw $0016,$0000,$0000,$0001,$0800,$0800,$0003,$0800                   ;918C3E;
-    dw $0000,$0005,$0000,$0000,$0001,$0800,$0800,$0006                   ;918C4E;
-    dw $0800,$0000,$0016,$0000,$0000,$0001,$0200,$0200                   ;918C5E;
-    dw $0005,$0200,$0000,$000B,$0000,$0000,$0001,$0040                   ;918C6E;
-    dw $0040,$004E,$0040,$0000,$0001,$0240,$0200,$000D                   ;918C7E;
-    dw $0240,$0000,$0001,$02C0,$0080,$0014,$02C0,$0000                   ;918C8E;
-    dw $0014,$0240,$0000,$0020,$0040,$0000,$0001,$0140                   ;918C9E;
-    dw $0100,$000F,$0140,$0000,$0001,$01C0,$0080,$0006                   ;918CAE;
-    dw $01C0,$0000,$0002,$00C0,$0000,$0001,$02C0,$0200                   ;918CBE;
-    dw $001E,$02C0,$0000,$0008,$0240,$0000,$0006,$0040                   ;918CCE;
-    dw $0000,$0001,$0140,$0100,$000B,$0140,$0000,$0001                   ;918CDE;
-    dw $01C0,$0080,$0023,$01C0,$0000,$003A,$0140,$0000                   ;918CEE;
-    dw $0001,$01C0,$0080,$0013,$01C0,$0000,$0001,$09C0                   ;918CFE;
-    dw $0800,$0002,$01C0,$0000,$0008,$00C0,$0000,$000D                   ;918D0E;
-    dw $0040,$0000,$0001,$0240,$0200,$0029,$0240,$0000                   ;918D1E;
-    dw $0001,$02C0,$0080,$0007,$02C0,$0000,$0001,$0AC0                   ;918D2E;
-    dw $0800,$0002,$0AC0,$0000,$0001,$08C0,$0000,$0001                   ;918D3E;
-    dw $01C0,$0100,$0028,$01C0,$0000,$0010,$0140,$0000                   ;918D4E;
-    dw $0006,$0040,$0000,$0001,$00C0,$0080,$0004,$00C0                   ;918D5E;
-    dw $0000,$0001,$00E0,$0020,$0012,$00E0,$0000,$002A                   ;918D6E;
-    dw $0020,$0000,$0001,$0120,$0100,$0002,$0120,$0000                   ;918D7E;
-    dw $0005,$0100,$0000,$0008,$0000,$0000,$0001,$0100                   ;918D8E;
-    dw $0100,$0011,$0100,$0000,$0001,$0180,$0080,$000F                   ;918D9E;
-    dw $0180,$0000,$0013,$0100,$0000,$0001,$8100,$8000                   ;918DAE;
-    dw $0029,$8100,$0000,$0001,$8180,$0080,$0020,$8180                   ;918DBE;
-    dw $0000,$0005,$8080,$0000,$0006,$8000,$0000,$0001                   ;918DCE;
-    dw $0200,$0200,$000F,$0200,$0000,$0065,$0000,$0000                   ;918DDE;
-    dw Instruction_DemoInputObject_Delete                                ;918DEE;
+InstList_DemoInput_PseudoScrewAttack:                                    ;918C3E;
+    dw $0016,$0000,$0000 ;
+    dw $0001,$0800,$0800 ;     ^
+    dw $0003,$0800,$0000 ;     ^
+    dw $0005,$0000,$0000 ;
+    dw $0001,$0800,$0800 ;     ^
+    dw $0006,$0800,$0000 ;     ^
+    dw $0016,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0005,$0200,$0000 ;       <
+    dw $000B,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $004E,$0040,$0000 ;          X
+    dw $0001,$0240,$0200 ;       <  X
+    dw $000D,$0240,$0000 ;       <  X
+    dw $0001,$02C0,$0080 ;       < AX
+    dw $0014,$02C0,$0000 ;       < AX
+    dw $0014,$0240,$0000 ;       <  X
+    dw $0020,$0040,$0000 ;          X
+    dw $0001,$0140,$0100 ;        > X
+    dw $000F,$0140,$0000 ;        > X
+    dw $0001,$01C0,$0080 ;        >AX
+    dw $0006,$01C0,$0000 ;        >AX
+    dw $0002,$00C0,$0000 ;         AX
+    dw $0001,$02C0,$0200 ;       < AX
+    dw $001E,$02C0,$0000 ;       < AX
+    dw $0008,$0240,$0000 ;       <  X
+    dw $0006,$0040,$0000 ;          X
+    dw $0001,$0140,$0100 ;        > X
+    dw $000B,$0140,$0000 ;        > X
+    dw $0001,$01C0,$0080 ;        >AX
+    dw $0023,$01C0,$0000 ;        >AX
+    dw $003A,$0140,$0000 ;        > X
+    dw $0001,$01C0,$0080 ;        >AX
+    dw $0013,$01C0,$0000 ;        >AX
+    dw $0001,$09C0,$0800 ;     ^  >AX
+    dw $0002,$01C0,$0000 ;        >AX
+    dw $0008,$00C0,$0000 ;         AX
+    dw $000D,$0040,$0000 ;          X
+    dw $0001,$0240,$0200 ;       <  X
+    dw $0029,$0240,$0000 ;       <  X
+    dw $0001,$02C0,$0080 ;       < AX
+    dw $0007,$02C0,$0000 ;       < AX
+    dw $0001,$0AC0,$0800 ;     ^ < AX
+    dw $0002,$0AC0,$0000 ;     ^ < AX
+    dw $0001,$08C0,$0000 ;     ^   AX
+    dw $0001,$01C0,$0100 ;        >AX
+    dw $0028,$01C0,$0000 ;        >AX
+    dw $0010,$0140,$0000 ;        > X
+    dw $0006,$0040,$0000 ;          X
+    dw $0001,$00C0,$0080 ;         AX
+    dw $0004,$00C0,$0000 ;         AX
+    dw $0001,$00E0,$0020 ;         AXL
+    dw $0012,$00E0,$0000 ;         AXL
+    dw $002A,$0020,$0000 ;           L
+    dw $0001,$0120,$0100 ;        >  L
+    dw $0002,$0120,$0000 ;        >  L
+    dw $0005,$0100,$0000 ;        >
+    dw $0008,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0011,$0100,$0000 ;        >
+    dw $0001,$0180,$0080 ;        >A
+    dw $000F,$0180,$0000 ;        >A
+    dw $0013,$0100,$0000 ;        >
+    dw $0001,$8100,$8000 ; B      >
+    dw $0029,$8100,$0000 ; B      >
+    dw $0001,$8180,$0080 ; B      >A
+    dw $0020,$8180,$0000 ; B      >A
+    dw $0005,$8080,$0000 ; B       A
+    dw $0006,$8000,$0000 ; B
+    dw $0001,$0200,$0200 ;       <
+    dw $000F,$0200,$0000 ;       <
+    dw $0065,$0000,$0000 ;
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_SpeedBooster:
-    dw $0020,$0000,$0000,$0001,$0200,$0200,$0002,$0200                   ;918DF0;
-    dw $0000,$0001,$8200,$8000,$00EE,$8200,$0000,$0001                   ;918E00;
-    dw $8A00,$0800,$0002,$8200,$0000,$0001,$8100,$0100                   ;918E10;
-    dw $0016,$0100,$0000,$0031,$0000,$0000,$0001,$0200                   ;918E20;
-    dw $0200,$0005,$0200,$0000,$0013,$0000,$0000,$0001                   ;918E30;
-    dw $0040,$0040,$0008,$0040,$0000,$0011,$0000,$0000                   ;918E40;
-    dw $0001,$0200,$0200,$001B,$0200,$0000,$0063,$0000                   ;918E50;
-    dw $0000                                                             ;918E60;
-    dw Instruction_DemoInputObject_Delete                                ;918E62;
+InstList_DemoInput_SpeedBooster:                                         ;918DF0;
+    dw $0020,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0002,$0200,$0000 ;       <
+    dw $0001,$8200,$8000 ; B     <
+    dw $00EE,$8200,$0000 ; B     <
+    dw $0001,$8A00,$0800 ; B   ^ <
+    dw $0002,$8200,$0000 ; B     <
+    dw $0001,$8100,$0100 ; B      >
+    dw $0016,$0100,$0000 ;        >
+    dw $0031,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0005,$0200,$0000 ;       <
+    dw $0013,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0008,$0040,$0000 ;          X
+    dw $0011,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $001B,$0200,$0000 ;       <
+    dw $0063,$0000,$0000 ;
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_Dachora:
-    dw $0008,$0000,$0000,$0001,$0200,$0200,$0001,$0200                   ;918E64;
-    dw $0000,$010A,$0000,$0000,$0001,$0100,$0100,$0004                   ;918E74;
-    dw $0100,$0000,$0011,$0000,$0000,$0001,$0200,$0200                   ;918E84;
-    dw $0004,$0200,$0000,$0038,$0000,$0000,$0001,$0200                   ;918E94;
-    dw $0200,$0164,$0200,$0000,$011E,$0000,$0000                         ;918EA4;
-    dw Instruction_DemoInputObject_Delete                                ;918EB2;
+InstList_DemoInput_Dachora:                                              ;918E64;
+    dw $0008,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0001,$0200,$0000 ;       <
+    dw $010A,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0004,$0100,$0000 ;        >
+    dw $0011,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0004,$0200,$0000 ;       <
+    dw $0038,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0164,$0200,$0000 ;       <
+    dw $011E,$0000,$0000 ;
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_RedBrinstarElevator:
-    dw $005A,$0000,$0000,$0001,$0100,$0100,$000A,$0100                   ;918EB4;
-    dw $0000,$0001,$0180,$0080,$0006,$0180,$0000,$0011                   ;918EC4;
-    dw $0100,$0000,$0020,$0000,$0000,$0001,$0200,$0200                   ;918ED4;
-    dw $0001,$0200,$0000,$0001,$0280,$0080,$0014,$0280                   ;918EE4;
-    dw $0000,$0003,$0200,$0000,$0014,$0000,$0000,$0001                   ;918EF4;
-    dw $0100,$0100,$0004,$0100,$0000,$0048,$0000,$0000                   ;918F04;
-    dw $0001,$0080,$0080,$0011,$0080,$0000,$0001,$0180                   ;918F14;
-    dw $0100,$000A,$0180,$0000,$0016,$0100,$0000,$0200                   ;918F24;
-    dw $0000,$0000                                                       ;918F34;
-    dw Instruction_DemoInputObject_Delete                                ;918F38;
+InstList_DemoInput_RedBrinstarElevator:                                  ;918EB4;
+    dw $005A,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $000A,$0100,$0000 ;        >
+    dw $0001,$0180,$0080 ;        >A
+    dw $0006,$0180,$0000 ;        >A
+    dw $0011,$0100,$0000 ;        >
+    dw $0020,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0001,$0200,$0000 ;       <
+    dw $0001,$0280,$0080 ;       < A
+    dw $0014,$0280,$0000 ;       < A
+    dw $0003,$0200,$0000 ;       <
+    dw $0014,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0004,$0100,$0000 ;        >
+    dw $0048,$0000,$0000 ;
+    dw $0001,$0080,$0080 ;         A
+    dw $0011,$0080,$0000 ;         A
+    dw $0001,$0180,$0100 ;        >A
+    dw $000A,$0180,$0000 ;        >A
+    dw $0016,$0100,$0000 ;        >
+    dw $0200,$0000,$0000 ;
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_WreckedShipBasement:
-    dw $003D,$0000,$0000,$0001,$0100,$0100,$0005,$0100                   ;918F3A;
-    dw $0000,$000F,$0000,$0000,$0001,$0200,$0200,$0005                   ;918F4A;
-    dw $0200,$0000,$0027,$0000,$0000,$0001,$0200,$0200                   ;918F5A;
-    dw $0066,$0200,$0000,$0001,$8200,$8000,$0007,$8200                   ;918F6A;
-    dw $0000,$004F,$0200,$0000,$0057,$0000,$0000,$0001                   ;918F7A;
-    dw $0100,$0100,$0002,$0100,$0000,$0064,$0000,$0000                   ;918F8A;
-    dw $0001,$0100,$0100,$004E,$0100,$0000,$0001,$8100                   ;918F9A;
-    dw $8000,$0017,$8100,$0000,$0006,$0100,$0000,$0001                   ;918FAA;
-    dw $8100,$8000,$0003,$8100,$0000,$0001,$0100,$0000                   ;918FBA;
-    dw $0001,$8100,$8000,$0002,$8100,$0000,$0034,$0100                   ;918FCA;
-    dw $0000,$00A9,$0000,$0000                                           ;918FDA;
-    dw Instruction_DemoInputObject_Delete                                ;918FE2;
+InstList_DemoInput_WreckedShipBasement:                                  ;918F3A;
+    dw $003D,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0005,$0100,$0000 ;        >
+    dw $000F,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0005,$0200,$0000 ;       <
+    dw $0027,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0066,$0200,$0000 ;       <
+    dw $0001,$8200,$8000 ; B     <
+    dw $0007,$8200,$0000 ; B     <
+    dw $004F,$0200,$0000 ;       <
+    dw $0057,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0002,$0100,$0000 ;        >
+    dw $0064,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $004E,$0100,$0000 ;        >
+    dw $0001,$8100,$8000 ; B      >
+    dw $0017,$8100,$0000 ; B      >
+    dw $0006,$0100,$0000 ;        >
+    dw $0001,$8100,$8000 ; B      >
+    dw $0003,$8100,$0000 ; B      >
+    dw $0001,$0100,$0000 ;        >
+    dw $0001,$8100,$8000 ; B      >
+    dw $0002,$8100,$0000 ; B      >
+    dw $0034,$0100,$0000 ;        >
+    dw $00A9,$0000,$0000 ;
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_LowerNorfairEntrance:
-    dw $0013,$0000,$0000,$0001,$0200,$0200,$0012,$0200                   ;918FE4;
-    dw $0000,$0029,$0000,$0000,$0001,$8000,$8000,$0015                   ;918FF4;
-    dw $8000,$0000,$000B,$0000,$0000,$0001,$8000,$8000                   ;919004;
-    dw $001F,$8000,$0000,$0001,$8200,$0200,$0030,$8200                   ;919014;
-    dw $0000,$0003,$8000,$0000,$0001,$8200,$0200,$0007                   ;919024;
-    dw $8200,$0000,$0045,$8000,$0000,$0001,$8200,$0200                   ;919034;
-    dw $0091,$8200,$0000,$000A,$8000,$0000,$0001,$8200                   ;919044;
-    dw $0200,$0006,$8200,$0000,$0036,$8000,$0000,$0001                   ;919054;
-    dw $8200,$0200,$0090,$8200,$0000,$0011,$0200,$0000                   ;919064;
-    dw $0001,$0280,$0080,$0017,$0280,$0000,$0008,$0080                   ;919074;
-    dw $0000,$0001,$0180,$0100,$000E,$0180,$0000,$000F                   ;919084;
-    dw $0100,$0000,$0002,$0000,$0000,$0001,$0080,$0080                   ;919094;
-    dw $001C,$0080,$0000,$0001,$0280,$0200,$000C,$0280                   ;9190A4;
-    dw $0000,$0002,$0200,$0000,$000F,$0000,$0000,$0001                   ;9190B4;
-    dw $0080,$0080,$0011,$0080,$0000,$0001,$0180,$0100                   ;9190C4;
-    dw $000F,$0180,$0000,$0002,$0080,$0000,$0010,$0000                   ;9190D4;
-    dw $0000,$0001,$0080,$0080,$0001,$0280,$0200,$0014                   ;9190E4;
-    dw $0280,$0000,$0015,$0200,$0000,$0001,$8200,$8000                   ;9190F4;
-    dw $000E,$8200,$0000,$0006,$0200,$0000,$0001,$0280                   ;919104;
-    dw $0080,$0004,$0280,$0000,$0011,$0200,$0000,$0001                   ;919114;
-    dw $8200,$8000,$0024,$8200,$0000,$0002,$0200,$0000                   ;919124;
-    dw $0014,$0200,$0000,$0007,$0000,$0000,$0001,$0100                   ;919134;
-    dw $0100,$0009,$0100,$0000,$002D,$0000,$0000                         ;919144;
-    dw Instruction_DemoInputObject_Delete                                ;919152;
+InstList_DemoInput_LowerNorfairEntrance:                                 ;918FE4;
+    dw $0013,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0012,$0200,$0000 ;       <
+    dw $0029,$0000,$0000 ;
+    dw $0001,$8000,$8000 ; B
+    dw $0015,$8000,$0000 ; B
+    dw $000B,$0000,$0000 ;
+    dw $0001,$8000,$8000 ; B
+    dw $001F,$8000,$0000 ; B
+    dw $0001,$8200,$0200 ; B     <
+    dw $0030,$8200,$0000 ; B     <
+    dw $0003,$8000,$0000 ; B
+    dw $0001,$8200,$0200 ; B     <
+    dw $0007,$8200,$0000 ; B     <
+    dw $0045,$8000,$0000 ; B
+    dw $0001,$8200,$0200 ; B     <
+    dw $0091,$8200,$0000 ; B     <
+    dw $000A,$8000,$0000 ; B
+    dw $0001,$8200,$0200 ; B     <
+    dw $0006,$8200,$0000 ; B     <
+    dw $0036,$8000,$0000 ; B
+    dw $0001,$8200,$0200 ; B     <
+    dw $0090,$8200,$0000 ; B     <
+    dw $0011,$0200,$0000 ;       <
+    dw $0001,$0280,$0080 ;       < A
+    dw $0017,$0280,$0000 ;       < A
+    dw $0008,$0080,$0000 ;         A
+    dw $0001,$0180,$0100 ;        >A
+    dw $000E,$0180,$0000 ;        >A
+    dw $000F,$0100,$0000 ;        >
+    dw $0002,$0000,$0000 ;
+    dw $0001,$0080,$0080 ;         A
+    dw $001C,$0080,$0000 ;         A
+    dw $0001,$0280,$0200 ;       < A
+    dw $000C,$0280,$0000 ;       < A
+    dw $0002,$0200,$0000 ;       <
+    dw $000F,$0000,$0000 ;
+    dw $0001,$0080,$0080 ;         A
+    dw $0011,$0080,$0000 ;         A
+    dw $0001,$0180,$0100 ;        >A
+    dw $000F,$0180,$0000 ;        >A
+    dw $0002,$0080,$0000 ;         A
+    dw $0010,$0000,$0000 ;
+    dw $0001,$0080,$0080 ;         A
+    dw $0001,$0280,$0200 ;       < A
+    dw $0014,$0280,$0000 ;       < A
+    dw $0015,$0200,$0000 ;       <
+    dw $0001,$8200,$8000 ; B     <
+    dw $000E,$8200,$0000 ; B     <
+    dw $0006,$0200,$0000 ;       <
+    dw $0001,$0280,$0080 ;       < A
+    dw $0004,$0280,$0000 ;       < A
+    dw $0011,$0200,$0000 ;       <
+    dw $0001,$8200,$8000 ; B     <
+    dw $0024,$8200,$0000 ; B     <
+    dw $0002,$0200,$0000 ;       <
+    dw $0014,$0200,$0000 ;       <
+    dw $0007,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0009,$0100,$0000 ;        >
+    dw $002D,$0000,$0000 ;
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_EyeDoor:
-    dw $000B,$0100,$0000,$0017,$0000,$0000,$0001,$0040                   ;919154;
-    dw $0040,$0008,$0040,$0000,$0004,$0000,$0000,$0001                   ;919164;
-    dw $0100,$0100,$0002,$0100,$0000,$000C,$0000,$0000                   ;919174;
-    dw $0001,$2000,$2000,$0006,$2000,$0000,$000D,$0000                   ;919184;
-    dw $0000,$0001,$0100,$0100,$000A,$0100,$0000,$0001                   ;919194;
-    dw $0180,$0080,$0006,$0180,$0000,$000E,$0100,$0000                   ;9191A4;
-    dw $0010,$0000,$0000,$0001,$0100,$0100,$0002,$0100                   ;9191B4;
-    dw $0000,$0001,$0180,$0080,$0006,$0180,$0000,$000D                   ;9191C4;
-    dw $0100,$0000,$0010,$0000,$0000,$0001,$0100,$0100                   ;9191D4;
-    dw $0002,$0100,$0000,$0001,$0180,$0080,$0008,$0180                   ;9191E4;
-    dw $0000,$001C,$0100,$0000,$0020,$0000,$0000,$0001                   ;9191F4;
-    dw $0100,$0100,$0001,$0180,$0080,$000B,$0180,$0000                   ;919204;
-    dw $0012,$0100,$0000,$0016,$0000,$0000,$0001,$0100                   ;919214;
-    dw $0100,$0006,$0100,$0000,$0028,$0000,$0000,$0001                   ;919224;
-    dw $0100,$0100,$0006,$0100,$0000,$0001,$0180,$0080                   ;919234;
-    dw $0008,$0180,$0000,$0017,$0100,$0000,$000F,$0000                   ;919244;
-    dw $0000,$0001,$0080,$0080,$0006,$0080,$0000,$000A                   ;919254;
-    dw $0000,$0000,$0001,$0040,$0040,$0006,$0040,$0000                   ;919264;
-    dw $0025,$0000,$0000,$0001,$0200,$0200,$0007,$0200                   ;919274;
-    dw $0000,$0008,$0000,$0000,$0001,$0100,$0100,$0007                   ;919284;
-    dw $0100,$0000,$0052,$0000,$0000,$0001,$0080,$0080                   ;919294;
-    dw $0007,$0080,$0000,$0011,$0000,$0000,$0001,$0040                   ;9192A4;
-    dw $0040,$0004,$0040,$0000,$000C,$0000,$0000,$0001                   ;9192B4;
-    dw $0080,$0080,$000B,$0080,$0000,$001E,$0000,$0000                   ;9192C4;
-    dw $0001,$0040,$0040,$0006,$0040,$0000,$000D,$0000                   ;9192D4;
-    dw $0000,$0001,$0080,$0080,$0005,$0080,$0000,$000D                   ;9192E4;
-    dw $0000,$0000,$0001,$0040,$0040,$0006,$0040,$0000                   ;9192F4;
-    dw $007C,$0000,$0000,$0001,$0200,$0200,$0007,$0200                   ;919304;
-    dw $0000,$0011,$0000,$0000,$0001,$0100,$0100,$0009                   ;919314;
-    dw $0100,$0000,$0001,$0140,$0040,$0003,$0140,$0000                   ;919324;
-    dw $0004,$0100,$0000                                                 ;919334;
-    dw Instruction_DemoInputObject_Delete                                ;91933A;
+InstList_DemoInput_EyeDoor:                                              ;919154;
+    dw $000B,$0100,$0000 ;        >
+    dw $0017,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0008,$0040,$0000 ;          X
+    dw $0004,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0002,$0100,$0000 ;        >
+    dw $000C,$0000,$0000 ;
+    dw $0001,$2000,$2000 ;   s
+    dw $0006,$2000,$0000 ;   s
+    dw $000D,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $000A,$0100,$0000 ;        >
+    dw $0001,$0180,$0080 ;        >A
+    dw $0006,$0180,$0000 ;        >A
+    dw $000E,$0100,$0000 ;        >
+    dw $0010,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0002,$0100,$0000 ;        >
+    dw $0001,$0180,$0080 ;        >A
+    dw $0006,$0180,$0000 ;        >A
+    dw $000D,$0100,$0000 ;        >
+    dw $0010,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0002,$0100,$0000 ;        >
+    dw $0001,$0180,$0080 ;        >A
+    dw $0008,$0180,$0000 ;        >A
+    dw $001C,$0100,$0000 ;        >
+    dw $0020,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0001,$0180,$0080 ;        >A
+    dw $000B,$0180,$0000 ;        >A
+    dw $0012,$0100,$0000 ;        >
+    dw $0016,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0006,$0100,$0000 ;        >
+    dw $0028,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0006,$0100,$0000 ;        >
+    dw $0001,$0180,$0080 ;        >A
+    dw $0008,$0180,$0000 ;        >A
+    dw $0017,$0100,$0000 ;        >
+    dw $000F,$0000,$0000 ;
+    dw $0001,$0080,$0080 ;         A
+    dw $0006,$0080,$0000 ;         A
+    dw $000A,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0006,$0040,$0000 ;          X
+    dw $0025,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0007,$0200,$0000 ;       <
+    dw $0008,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0007,$0100,$0000 ;        >
+    dw $0052,$0000,$0000 ;
+    dw $0001,$0080,$0080 ;         A
+    dw $0007,$0080,$0000 ;         A
+    dw $0011,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0004,$0040,$0000 ;          X
+    dw $000C,$0000,$0000 ;
+    dw $0001,$0080,$0080 ;         A
+    dw $000B,$0080,$0000 ;         A
+    dw $001E,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0006,$0040,$0000 ;          X
+    dw $000D,$0000,$0000 ;
+    dw $0001,$0080,$0080 ;         A
+    dw $0005,$0080,$0000 ;         A
+    dw $000D,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0006,$0040,$0000 ;          X
+    dw $007C,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0007,$0200,$0000 ;       <
+    dw $0011,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0009,$0100,$0000 ;        >
+    dw $0001,$0140,$0040 ;        > X
+    dw $0003,$0140,$0000 ;        > X
+    dw $0004,$0100,$0000 ;        >
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_Shinespark:
-    dw $00A5,$0000,$0000                                                 ;91933C;
-    dw Instruction_DemoInputObject_GotoY                                 ;919342;
-    dw InstList_DemoInput_Shinespark                                     ;919344;
+InstList_DemoInput_Shinespark:                                           ;91933C;
+    dw $00A5,$0000,$0000 ;
+    dw Instruction_DemoInputObject_GotoY
+    dw InstList_DemoInput_Shinespark
 
-UNUSED_InstList_DemoInput_Shinespark_Unseen_919346:
-    dw $0096,$0000,$0000,$0001,$0200,$0200,$00CC,$0200                   ;919346;
-    dw $0000,$0001,$8200,$8000,$0076,$8200,$0000,$0002                   ;919356;
-    dw $8000,$0000,$0001,$8100,$0100,$00B6,$8100,$0000                   ;919366;
-    dw $000C,$0100,$0000,$0001,$0180,$0080,$0006,$0180                   ;919376;
-    dw $0000,$000E,$0100,$0000,$0024,$0000,$0000,$0001                   ;919386;
-    dw $2000,$2000,$0005,$2000,$0000,$000B,$0000,$0000                   ;919396;
-    dw $0001,$2000,$2000,$0004,$2000,$0000,$000E,$0000                   ;9193A6;
-    dw $0000,$0001,$0040,$0040,$0007,$0040,$0000,$00F0                   ;9193B6;
-    dw $0000,$0000                                                       ;9193C6;
-    dw Instruction_DemoInputObject_Delete                                ;9193CA;
+UNUSED_InstList_DemoInput_Shinespark_Unseen_919346:                      ;919346;
+; The demo timer expires before these inputs are used
+    dw $0096,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $00CC,$0200,$0000 ;       <
+    dw $0001,$8200,$8000 ; B     <
+    dw $0076,$8200,$0000 ; B     <
+    dw $0002,$8000,$0000 ; B
+    dw $0001,$8100,$0100 ; B      >
+    dw $00B6,$8100,$0000 ; B      >
+    dw $000C,$0100,$0000 ;        >
+    dw $0001,$0180,$0080 ;        >A
+    dw $0006,$0180,$0000 ;        >A
+    dw $000E,$0100,$0000 ;        >
+    dw $0024,$0000,$0000 ;
+    dw $0001,$2000,$2000 ;   s
+    dw $0005,$2000,$0000 ;   s
+    dw $000B,$0000,$0000 ;
+    dw $0001,$2000,$2000 ;   s
+    dw $0004,$2000,$0000 ;   s
+    dw $000E,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0007,$0040,$0000 ;          X
+    dw $00F0,$0000,$0000 ;
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_MissileDoor:
-    dw $0029,$0000,$0000,$0001,$0100,$0100,$0031,$0100                   ;9193CC;
-    dw $0000,$0044,$0000,$0000,$0001,$2000,$2000,$0005                   ;9193DC;
-    dw $2000,$0000,$0023,$0000,$0000,$0001,$0040,$0040                   ;9193EC;
-    dw $0008,$0040,$0000,$000A,$0000,$0000,$0001,$0040                   ;9193FC;
-    dw $0040,$0008,$0040,$0000,$0011,$0000,$0000,$0001                   ;91940C;
-    dw $0040,$0040,$0007,$0040,$0000,$000D,$0000,$0000                   ;91941C;
-    dw $0001,$0040,$0040,$0008,$0040,$0000,$0007,$0000                   ;91942C;
-    dw $0000,$0001,$0040,$0040,$0009,$0040,$0000,$0020                   ;91943C;
-    dw $0000,$0000,$0001,$8100,$8100,$0011,$8100,$0000                   ;91944C;
-    dw $001A,$0000,$0000                                                 ;91945C;
-    dw Instruction_DemoInputObject_Delete                                ;919462;
+InstList_DemoInput_MissileDoor:                                          ;9193CC;
+    dw $0029,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0031,$0100,$0000 ;        >
+    dw $0044,$0000,$0000 ;
+    dw $0001,$2000,$2000 ;   s
+    dw $0005,$2000,$0000 ;   s
+    dw $0023,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0008,$0040,$0000 ;          X
+    dw $000A,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0008,$0040,$0000 ;          X
+    dw $0011,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0007,$0040,$0000 ;          X
+    dw $000D,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0008,$0040,$0000 ;          X
+    dw $0007,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0009,$0040,$0000 ;          X
+    dw $0020,$0000,$0000 ;
+    dw $0001,$8100,$8100 ; B      >
+    dw $0011,$8100,$0000 ; B      >
+    dw $001A,$0000,$0000 ;
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_Kraid:
-    dw $0200,$0000,$0000                                                 ;919464;
-    dw Instruction_DemoInputObject_Delete                                ;91946A;
+InstList_DemoInput_Kraid:                                                ;919464;
+    dw $0200,$0000,$0000 ;                                                 
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_FireFleaRoom:
-    dw $002B,$0000,$0000,$0001,$0200,$0200,$0046,$0200                   ;91946C;
-    dw $0000,$0037,$0000,$0000,$0001,$0200,$0200,$000C                   ;91947C;
-    dw $0200,$0000,$0001,$0280,$0080,$0013,$0280,$0000                   ;91948C;
-    dw $0013,$0200,$0000,$0001,$0240,$0040,$000B,$0240                   ;91949C;
-    dw $0000,$0005,$0200,$0000,$0001,$0280,$0080,$0015                   ;9194AC;
-    dw $0280,$0000,$0025,$0200,$0000,$0001,$0280,$0080                   ;9194BC;
-    dw $000E,$0280,$0000,$0021,$0200,$0000,$0001,$0280                   ;9194CC;
-    dw $0080,$0009,$0280,$0000,$001D,$0200,$0000,$0008                   ;9194DC;
-    dw $0000,$0000,$0001,$0020,$0020,$0001,$0020,$0000                   ;9194EC;
-    dw $0001,$0420,$0400,$00C4,$0020,$0000                               ;9194FC;
-    dw Instruction_DemoInputObject_Delete                                ;919508;
+InstList_DemoInput_FireFleaRoom:                                         ;91946C;
+    dw $002B,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0046,$0200,$0000 ;       <
+    dw $0037,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $000C,$0200,$0000 ;       <
+    dw $0001,$0280,$0080 ;       < A
+    dw $0013,$0280,$0000 ;       < A
+    dw $0013,$0200,$0000 ;       <
+    dw $0001,$0240,$0040 ;       <  X
+    dw $000B,$0240,$0000 ;       <  X
+    dw $0005,$0200,$0000 ;       <
+    dw $0001,$0280,$0080 ;       < A
+    dw $0015,$0280,$0000 ;       < A
+    dw $0025,$0200,$0000 ;       <
+    dw $0001,$0280,$0080 ;       < A
+    dw $000E,$0280,$0000 ;       < A
+    dw $0021,$0200,$0000 ;       <
+    dw $0001,$0280,$0080 ;       < A
+    dw $0009,$0280,$0000 ;       < A
+    dw $001D,$0200,$0000 ;       <
+    dw $0008,$0000,$0000 ;
+    dw $0001,$0020,$0020 ;           L
+    dw $0001,$0020,$0000 ;           L
+    dw $0001,$0420,$0400 ;      v    L
+    dw $00C4,$0020,$0000 ;           L
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_ScrewAttack:
-    dw $0030,$0000,$0000,$0001,$8100,$8100,$001E,$8100                   ;91950A;
-    dw $0000,$0001,$8180,$0080,$000C,$8180,$0000,$001C                   ;91951A;
-    dw $8100,$0000,$0001,$8180,$0080,$0017,$8180,$0000                   ;91952A;
-    dw $002B,$8100,$0000,$0001,$0400,$0400,$0003,$0000                   ;91953A;
-    dw $0000,$0001,$0200,$0200,$0001,$0210,$0010,$009D                   ;91954A;
-    dw $0010,$0000                                                       ;91955A;
-    dw Instruction_DemoInputObject_Delete                                ;91955E;
+InstList_DemoInput_ScrewAttack:                                          ;91950A;
+    dw $0030,$0000,$0000 ;
+    dw $0001,$8100,$8100 ; B      >
+    dw $001E,$8100,$0000 ; B      >
+    dw $0001,$8180,$0080 ; B      >A
+    dw $000C,$8180,$0000 ; B      >A
+    dw $001C,$8100,$0000 ; B      >
+    dw $0001,$8180,$0080 ; B      >A
+    dw $0017,$8180,$0000 ; B      >A
+    dw $002B,$8100,$0000 ; B      >
+    dw $0001,$0400,$0400 ;      v
+    dw $0003,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0001,$0210,$0010 ;       <    R
+    dw $009D,$0010,$0000 ;            R
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_BrinstarDiagonalRoom:
-    dw $0029,$0000,$0000,$0001,$0100,$0100,$0012,$0100                   ;919560;
-    dw $0000,$0001,$0180,$0080,$0016,$0180,$0000,$0041                   ;919570;
-    dw $0100,$0000,$0014,$0000,$0000,$0001,$0010,$0010                   ;919580;
-    dw $000A,$0010,$0000,$0001,$0050,$0040,$001D,$0050                   ;919590;
-    dw $0000,$0005,$0040,$0000,$0001,$0440,$0400,$0037                   ;9195A0;
-    dw $0440,$0000,$00DB,$0000,$0000                                     ;9195B0;
-    dw Instruction_DemoInputObject_Delete                                ;9195BA;
+InstList_DemoInput_BrinstarDiagonalRoom:                                 ;919560;
+    dw $0029,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0012,$0100,$0000 ;        >
+    dw $0001,$0180,$0080 ;        >A
+    dw $0016,$0180,$0000 ;        >A
+    dw $0041,$0100,$0000 ;        >
+    dw $0014,$0000,$0000 ;
+    dw $0001,$0010,$0010 ;            R
+    dw $000A,$0010,$0000 ;            R
+    dw $0001,$0050,$0040 ;          X R
+    dw $001D,$0050,$0000 ;          X R
+    dw $0005,$0040,$0000 ;          X
+    dw $0001,$0440,$0400 ;      v   X
+    dw $0037,$0440,$0000 ;      v   X
+    dw $00DB,$0000,$0000 ;
+    dw Instruction_DemoInputObject_Delete
 
 if !FEATURE_KEEP_UNREFERENCED
-UNUSED_InstList_DemoInput_9195BC:
-    dw $0029,$0000,$0000,$0001,$0200,$0200,$0018,$0200                   ;9195BC;
-    dw $0000,$0011,$0000,$0000,$0001,$0080,$0080,$0018                   ;9195CC;
-    dw $0080,$0000,$0001,$0280,$0200,$0005,$0280,$0000                   ;9195DC;
-    dw $0010,$0200,$0000,$0020,$0000,$0000,$0001,$0080                   ;9195EC;
-    dw $0080,$0009,$0080,$0000,$0001,$0280,$0200,$0015                   ;9195FC;
-    dw $0280,$0000,$0016,$0200,$0000,$0014,$0000,$0000                   ;91960C;
-    dw $0001,$0100,$0100,$0007,$0100,$0000,$0001,$0180                   ;91961C;
-    dw $0080,$0018,$0180,$0000,$001D,$0100,$0000,$0010                   ;91962C;
-    dw $0000,$0000,$0001,$0400,$0400,$0005,$0400,$0000                   ;91963C;
-    dw $0001,$0600,$0200,$0096,$0000,$0000                               ;91964C;
-    dw Instruction_DemoInputObject_Delete                                ;919658;
+UNUSED_InstList_DemoInput_9195BC:                                        ;9195BC;
+    dw $0029,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0018,$0200,$0000 ;       <
+    dw $0011,$0000,$0000 ;
+    dw $0001,$0080,$0080 ;         A
+    dw $0018,$0080,$0000 ;         A
+    dw $0001,$0280,$0200 ;       < A
+    dw $0005,$0280,$0000 ;       < A
+    dw $0010,$0200,$0000 ;       <
+    dw $0020,$0000,$0000 ;
+    dw $0001,$0080,$0080 ;         A
+    dw $0009,$0080,$0000 ;         A
+    dw $0001,$0280,$0200 ;       < A
+    dw $0015,$0280,$0000 ;       < A
+    dw $0016,$0200,$0000 ;       <
+    dw $0014,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0007,$0100,$0000 ;        >
+    dw $0001,$0180,$0080 ;        >A
+    dw $0018,$0180,$0000 ;        >A
+    dw $001D,$0100,$0000 ;        >
+    dw $0010,$0000,$0000 ;
+    dw $0001,$0400,$0400 ;      v
+    dw $0005,$0400,$0000 ;      v
+    dw $0001,$0600,$0200 ;      v<
+    dw $0096,$0000,$0000 ;
+    dw Instruction_DemoInputObject_Delete
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-InstList_DemoInput_PreSporeSpawnHall:
-    dw $001B,$0000,$0000,$0001,$0200,$0200,$0005,$0200                   ;91965A;
-    dw $0000,$000F,$0000,$0000,$0001,$0100,$0100,$0005                   ;91966A;
-    dw $0100,$0000,$0010,$0000,$0000,$0001,$0100,$0100                   ;91967A;
-    dw $000D,$0100,$0000,$002A,$0100,$0000,$0007,$0000                   ;91968A;
-    dw $0000,$0001,$0080,$0080,$0015,$0080,$0000,$001E                   ;91969A;
-    dw $0000,$0000,$0001,$0200,$0200,$0013,$0200,$0000                   ;9196AA;
-    dw $0010,$0000,$0000,$0001,$0100,$0100,$0008,$0100                   ;9196BA;
-    dw $0000,$0001,$0180,$0080,$000F,$0180,$0000,$0001                   ;9196CA;
-    dw $0080,$0000,$0001,$0280,$0200,$0007,$0280,$0000                   ;9196DA;
-    dw $0004,$0200,$0000,$0001,$0000,$0000,$0001,$0100                   ;9196EA;
-    dw $0100,$0004,$0100,$0000,$0001,$0140,$0040,$0009                   ;9196FA;
-    dw $0140,$0000,$0005,$0140,$0000,$004C,$0040,$0000                   ;91970A;
-    dw $0001,$0440,$0400,$0003,$0040,$0000,$0001,$0050                   ;91971A;
-    dw $0010,$0004,$0050,$0000,$0084,$0010,$0000                         ;91972A;
-    dw Instruction_DemoInputObject_Delete                                ;919738;
+InstList_DemoInput_PreSporeSpawnHall:                                    ;91965A;
+    dw $001B,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0005,$0200,$0000 ;       <
+    dw $000F,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0005,$0100,$0000 ;        >
+    dw $0010,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $000D,$0100,$0000 ;        >
+    dw $002A,$0100,$0000 ;        >
+    dw $0007,$0000,$0000 ;
+    dw $0001,$0080,$0080 ;         A
+    dw $0015,$0080,$0000 ;         A
+    dw $001E,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0013,$0200,$0000 ;       <
+    dw $0010,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0008,$0100,$0000 ;        >
+    dw $0001,$0180,$0080 ;        >A
+    dw $000F,$0180,$0000 ;        >A
+    dw $0001,$0080,$0000 ;         A
+    dw $0001,$0280,$0200 ;       < A
+    dw $0007,$0280,$0000 ;       < A
+    dw $0004,$0200,$0000 ;       <
+    dw $0001,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0004,$0100,$0000 ;        >
+    dw $0001,$0140,$0040 ;        > X
+    dw $0009,$0140,$0000 ;        > X
+    dw $0005,$0140,$0000 ;        > X
+    dw $004C,$0040,$0000 ;          X
+    dw $0001,$0440,$0400 ;      v   X
+    dw $0003,$0040,$0000 ;          X
+    dw $0001,$0050,$0010 ;          X R
+    dw $0004,$0050,$0000 ;          X R
+    dw $0084,$0010,$0000 ;            R
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_GrappleBeam:
-    dw $0010,$0000,$0000,$0001,$2000,$2000,$000C,$0000                   ;91973A;
-    dw $0000,$0001,$2000,$2000,$000C,$0000,$0000,$0001                   ;91974A;
-    dw $2000,$2000,$000C,$0000,$0000,$0001,$2000,$2000                   ;91975A;
-    dw $000C,$0000,$0000,$0001,$0010,$0010,$0022,$0010                   ;91976A;
-    dw $0000,$0001,$0050,$0040,$0010,$0050,$0000,$0001                   ;91977A;
-    dw $0650,$0600,$0006,$0650,$0000,$000C,$0450,$0000                   ;91978A;
-    dw $0001,$0550,$0100,$0004,$0550,$0000,$0012,$0150                   ;91979A;
-    dw $0000,$0006,$0110,$0000,$0001,$0150,$0040,$0007                   ;9197AA;
-    dw $0150,$0000,$0001,$0550,$0400,$0004,$0550,$0000                   ;9197BA;
-    dw $0016,$0450,$0000,$0001,$0550,$0100,$0005,$0550                   ;9197CA;
-    dw $0000,$000B,$0150,$0000,$0007,$0110,$0000,$0001                   ;9197DA;
-    dw $0150,$0040,$000A,$0150,$0000,$0001,$0550,$0400                   ;9197EA;
-    dw $000C,$0550,$0000,$000E,$0150,$0000,$000A,$0110                   ;9197FA;
-    dw $0000,$0001,$0150,$0040,$0008,$0150,$0000,$0001                   ;91980A;
-    dw $0550,$0400,$000C,$0550,$0000,$000E,$0150,$0000                   ;91981A;
-    dw $000A,$0110,$0000,$0001,$0150,$0040,$0008,$0150                   ;91982A;
-    dw $0000,$0001,$0550,$0400,$000D,$0550,$0000,$000E                   ;91983A;
-    dw $0150,$0000,$000A,$0110,$0000,$0001,$0150,$0040                   ;91984A;
-    dw $0009,$0150,$0000,$0001,$0550,$0400,$000C,$0550                   ;91985A;
-    dw $0000,$0008,$0150,$0000,$0004,$0100,$0000,$0020                   ;91986A;
-    dw $0000,$0000,$0001,$0400,$0400,$0005,$0400,$0000                   ;91987A;
-    dw $0001,$0200,$0200,$0005,$0200,$0000,$0028,$0000                   ;91988A;
-    dw $0000                                                             ;91989A;
-    dw Instruction_DemoInputObject_Delete                                ;91989C;
+InstList_DemoInput_GrappleBeam:                                          ;91973A;
+    dw $0010,$0000,$0000 ;
+    dw $0001,$2000,$2000 ;   s
+    dw $000C,$0000,$0000 ;
+    dw $0001,$2000,$2000 ;   s
+    dw $000C,$0000,$0000 ;
+    dw $0001,$2000,$2000 ;   s
+    dw $000C,$0000,$0000 ;
+    dw $0001,$2000,$2000 ;   s
+    dw $000C,$0000,$0000 ;
+    dw $0001,$0010,$0010 ;            R
+    dw $0022,$0010,$0000 ;            R
+    dw $0001,$0050,$0040 ;          X R
+    dw $0010,$0050,$0000 ;          X R
+    dw $0001,$0650,$0600 ;      v<  X R
+    dw $0006,$0650,$0000 ;      v<  X R
+    dw $000C,$0450,$0000 ;      v   X R
+    dw $0001,$0550,$0100 ;      v > X R
+    dw $0004,$0550,$0000 ;      v > X R
+    dw $0012,$0150,$0000 ;        > X R
+    dw $0006,$0110,$0000 ;        >   R
+    dw $0001,$0150,$0040 ;        > X R
+    dw $0007,$0150,$0000 ;        > X R
+    dw $0001,$0550,$0400 ;      v > X R
+    dw $0004,$0550,$0000 ;      v > X R
+    dw $0016,$0450,$0000 ;      v   X R
+    dw $0001,$0550,$0100 ;      v > X R
+    dw $0005,$0550,$0000 ;      v > X R
+    dw $000B,$0150,$0000 ;        > X R
+    dw $0007,$0110,$0000 ;        >   R
+    dw $0001,$0150,$0040 ;        > X R
+    dw $000A,$0150,$0000 ;        > X R
+    dw $0001,$0550,$0400 ;      v > X R
+    dw $000C,$0550,$0000 ;      v > X R
+    dw $000E,$0150,$0000 ;        > X R
+    dw $000A,$0110,$0000 ;        >   R
+    dw $0001,$0150,$0040 ;        > X R
+    dw $0008,$0150,$0000 ;        > X R
+    dw $0001,$0550,$0400 ;      v > X R
+    dw $000C,$0550,$0000 ;      v > X R
+    dw $000E,$0150,$0000 ;        > X R
+    dw $000A,$0110,$0000 ;        >   R
+    dw $0001,$0150,$0040 ;        > X R
+    dw $0008,$0150,$0000 ;        > X R
+    dw $0001,$0550,$0400 ;      v > X R
+    dw $000D,$0550,$0000 ;      v > X R
+    dw $000E,$0150,$0000 ;        > X R
+    dw $000A,$0110,$0000 ;        >   R
+    dw $0001,$0150,$0040 ;        > X R
+    dw $0009,$0150,$0000 ;        > X R
+    dw $0001,$0550,$0400 ;      v > X R
+    dw $000C,$0550,$0000 ;      v > X R
+    dw $0008,$0150,$0000 ;        > X R
+    dw $0004,$0100,$0000 ;        >
+    dw $0020,$0000,$0000 ;
+    dw $0001,$0400,$0400 ;      v
+    dw $0005,$0400,$0000 ;      v
+    dw $0001,$0200,$0200 ;       <
+    dw $0005,$0200,$0000 ;       <
+    dw $0028,$0000,$0000 ;
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_IceBeam:
-    dw $0021,$0000,$0000,$0001,$0040,$0040,$0005,$0040                   ;91989E;
-    dw $0000,$0006,$0000,$0000,$0001,$0040,$0040,$0005                   ;9198AE;
-    dw $0040,$0000,$0012,$0000,$0000,$0001,$0200,$0200                   ;9198BE;
-    dw $0017,$0200,$0000,$001C,$0000,$0000,$0001,$0080                   ;9198CE;
-    dw $0080,$000E,$0080,$0000,$0001,$0480,$0400,$0005                   ;9198DE;
-    dw $0480,$0000,$000B,$0400,$0000,$0001,$0440,$0040                   ;9198EE;
-    dw $0006,$0440,$0000,$0008,$0400,$0000,$0007,$0000                   ;9198FE;
-    dw $0000,$0001,$0200,$0200,$001D,$0200,$0000,$0009                   ;91990E;
-    dw $0000,$0000,$0001,$0200,$0200,$000E,$0200,$0000                   ;91991E;
-    dw $0001,$0280,$0080,$001D,$0280,$0000,$0038,$0200                   ;91992E;
-    dw $0000,$0001,$0280,$0080,$0016,$0280,$0000,$002B                   ;91993E;
-    dw $0200,$0000,$0001,$0080,$0080,$0010,$0080,$0000                   ;91994E;
-    dw $0001,$0480,$0400,$0008,$0480,$0000,$0005,$0400                   ;91995E;
-    dw $0000,$0001,$0440,$0040,$0008,$0440,$0000,$0008                   ;91996E;
-    dw $0400,$0000,$0008,$0000,$0000,$0001,$0200,$0200                   ;91997E;
-    dw $002B,$0200,$0000,$0001,$0280,$0080,$0010,$0280                   ;91998E;
-    dw $0000,$0012,$0200,$0000,$005D,$0000,$0000                         ;91999E;
-    dw Instruction_DemoInputObject_Delete                                ;9199AC;
+InstList_DemoInput_IceBeam:                                              ;91989E;
+    dw $0021,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0005,$0040,$0000 ;          X
+    dw $0006,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0005,$0040,$0000 ;          X
+    dw $0012,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0017,$0200,$0000 ;       <
+    dw $001C,$0000,$0000 ;
+    dw $0001,$0080,$0080 ;         A
+    dw $000E,$0080,$0000 ;         A
+    dw $0001,$0480,$0400 ;      v  A
+    dw $0005,$0480,$0000 ;      v  A
+    dw $000B,$0400,$0000 ;      v
+    dw $0001,$0440,$0040 ;      v   X
+    dw $0006,$0440,$0000 ;      v   X
+    dw $0008,$0400,$0000 ;      v
+    dw $0007,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $001D,$0200,$0000 ;       <
+    dw $0009,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $000E,$0200,$0000 ;       <
+    dw $0001,$0280,$0080 ;       < A
+    dw $001D,$0280,$0000 ;       < A
+    dw $0038,$0200,$0000 ;       <
+    dw $0001,$0280,$0080 ;       < A
+    dw $0016,$0280,$0000 ;       < A
+    dw $002B,$0200,$0000 ;       <
+    dw $0001,$0080,$0080 ;         A
+    dw $0010,$0080,$0000 ;         A
+    dw $0001,$0480,$0400 ;      v  A
+    dw $0008,$0480,$0000 ;      v  A
+    dw $0005,$0400,$0000 ;      v
+    dw $0001,$0440,$0040 ;      v   X
+    dw $0008,$0440,$0000 ;      v   X
+    dw $0008,$0400,$0000 ;      v
+    dw $0008,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $002B,$0200,$0000 ;       <
+    dw $0001,$0280,$0080 ;       < A
+    dw $0010,$0280,$0000 ;       < A
+    dw $0012,$0200,$0000 ;       <
+    dw $005D,$0000,$0000 ;
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_GauntletEntrance:
-    dw $0016,$0000,$0000,$0001,$0100,$0100,$0005,$0100                   ;9199AE;
-    dw $0000,$0100,$0000,$0000                                           ;9199BE;
-    dw Instruction_DemoInputObject_Delete                                ;9199C6;
+InstList_DemoInput_GauntletEntrance:                                     ;9199AE;
+    dw $0016,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0005,$0100,$0000 ;        >
+    dw $0100,$0000,$0000 ;
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_AdvancedGrappleBeam:
-    dw $003F,$0000,$0000,$0001,$0100,$0100,$0005,$0100                   ;9199C8;
-    dw $0000,$001E,$0000,$0000,$0001,$0200,$0200,$0005                   ;9199D8;
-    dw $0200,$0000,$0016,$0000,$0000,$0001,$2000,$2000                   ;9199E8;
-    dw $0004,$2000,$0000,$000D,$0000,$0000,$0001,$2000                   ;9199F8;
-    dw $2000,$0005,$2000,$0000,$0008,$0000,$0000,$0001                   ;919A08;
-    dw $2000,$2000,$0006,$2000,$0000,$0007,$0000,$0000                   ;919A18;
-    dw $0001,$2000,$2000,$0005,$2000,$0000,$002F,$0000                   ;919A28;
-    dw $0000,$0001,$0200,$0200,$0014,$0200,$0000,$0002                   ;919A38;
-    dw $0000,$0000,$0001,$0100,$0100,$0006,$0100,$0000                   ;919A48;
-    dw $0009,$0000,$0000,$0001,$0040,$0040,$0019,$0040                   ;919A58;
-    dw $0000,$0001,$0440,$0400,$0005,$0440,$0000,$0001                   ;919A68;
-    dw $0540,$0100,$0002,$0540,$0000,$0006,$0140,$0000                   ;919A78;
-    dw $0027,$0040,$0000,$0001,$0240,$0200,$000D,$0240                   ;919A88;
-    dw $0000,$0034,$0040,$0000,$0001,$0140,$0100,$0007                   ;919A98;
-    dw $0140,$0000,$0037,$0040,$0000,$0001,$0240,$0200                   ;919AA8;
-    dw $000F,$0240,$0000,$002F,$0040,$0000,$0001,$0140                   ;919AB8;
-    dw $0100,$00B1,$0140,$0000,$0001,$01C0,$0080,$000B                   ;919AC8;
-    dw $01C0,$0000,$00BA,$0180,$0000,$0003,$0100,$0000                   ;919AD8;
-    dw $0046,$0000,$0000                                                 ;919AE8;
-    dw Instruction_DemoInputObject_Delete                                ;919AEE;
+InstList_DemoInput_AdvancedGrappleBeam:                                  ;9199C8;
+    dw $003F,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0005,$0100,$0000 ;        >
+    dw $001E,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0005,$0200,$0000 ;       <
+    dw $0016,$0000,$0000 ;
+    dw $0001,$2000,$2000 ;   s
+    dw $0004,$2000,$0000 ;   s
+    dw $000D,$0000,$0000 ;
+    dw $0001,$2000,$2000 ;   s
+    dw $0005,$2000,$0000 ;   s
+    dw $0008,$0000,$0000 ;
+    dw $0001,$2000,$2000 ;   s
+    dw $0006,$2000,$0000 ;   s
+    dw $0007,$0000,$0000 ;
+    dw $0001,$2000,$2000 ;   s
+    dw $0005,$2000,$0000 ;   s
+    dw $002F,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0014,$0200,$0000 ;       <
+    dw $0002,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0006,$0100,$0000 ;        >
+    dw $0009,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0019,$0040,$0000 ;          X
+    dw $0001,$0440,$0400 ;      v   X
+    dw $0005,$0440,$0000 ;      v   X
+    dw $0001,$0540,$0100 ;      v > X
+    dw $0002,$0540,$0000 ;      v > X
+    dw $0006,$0140,$0000 ;        > X
+    dw $0027,$0040,$0000 ;          X
+    dw $0001,$0240,$0200 ;       <  X
+    dw $000D,$0240,$0000 ;       <  X
+    dw $0034,$0040,$0000 ;          X
+    dw $0001,$0140,$0100 ;        > X
+    dw $0007,$0140,$0000 ;        > X
+    dw $0037,$0040,$0000 ;          X
+    dw $0001,$0240,$0200 ;       <  X
+    dw $000F,$0240,$0000 ;       <  X
+    dw $002F,$0040,$0000 ;          X
+    dw $0001,$0140,$0100 ;        > X
+    dw $00B1,$0140,$0000 ;        > X
+    dw $0001,$01C0,$0080 ;        >AX
+    dw $000B,$01C0,$0000 ;        >AX
+    dw $00BA,$0180,$0000 ;        >A
+    dw $0003,$0100,$0000 ;        >
+    dw $0046,$0000,$0000 ;
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_IBJ:
-    dw $0019,$0000,$0000,$0001,$0100,$0100,$0022,$0100                   ;919AF0;
-    dw $0000,$0018,$0000,$0000,$0001,$0080,$0080,$000B                   ;919B00;
-    dw $0080,$0000,$0001,$0480,$0400,$0007,$0480,$0000                   ;919B10;
-    dw $0002,$0080,$0000,$0001,$0480,$0400,$0008,$0480                   ;919B20;
-    dw $0000,$0001,$04C0,$0040,$0003,$04C0,$0000,$000A                   ;919B30;
-    dw $00C0,$0000,$0002,$0080,$0000,$0020,$0000,$0000                   ;919B40;
-    dw $0001,$0040,$0040,$000B,$0040,$0000,$0025,$0000                   ;919B50;
-    dw $0000,$0001,$0040,$0040,$0009,$0040,$0000,$0026                   ;919B60;
-    dw $0000,$0000,$0001,$0040,$0040,$0009,$0040,$0000                   ;919B70;
-    dw $0026,$0000,$0000,$0001,$0040,$0040,$0008,$0040                   ;919B80;
-    dw $0000,$0027,$0000,$0000,$0001,$0040,$0040,$0009                   ;919B90;
-    dw $0040,$0000,$0028,$0000,$0000,$0001,$0040,$0040                   ;919BA0;
-    dw $0008,$0040,$0000,$0028,$0000,$0000,$0001,$0040                   ;919BB0;
-    dw $0040,$0009,$0040,$0000,$0026,$0000,$0000,$0001                   ;919BC0;
-    dw $0040,$0040,$0008,$0040,$0000,$0028,$0000,$0000                   ;919BD0;
-    dw $0001,$0040,$0040,$0007,$0040,$0000,$0029,$0000                   ;919BE0;
-    dw $0000,$0001,$0040,$0040,$0007,$0040,$0000,$0029                   ;919BF0;
-    dw $0000,$0000,$0001,$0040,$0040,$0007,$0040,$0000                   ;919C00;
-    dw $0028,$0000,$0000,$0001,$0040,$0040,$0008,$0040                   ;919C10;
-    dw $0000,$0027,$0000,$0000,$0001,$0040,$0040,$0007                   ;919C20;
-    dw $0040,$0000,$002A,$0000,$0000,$0001,$0040,$0040                   ;919C30;
-    dw $0007,$0040,$0000,$002A,$0000,$0000,$0001,$0040                   ;919C40;
-    dw $0040,$0007,$0040,$0000,$0028,$0000,$0000,$0001                   ;919C50;
-    dw $0040,$0040,$0007,$0040,$0000,$0028,$0000,$0000                   ;919C60;
-    dw $0001,$0040,$0040,$0007,$0040,$0000,$0010,$0000                   ;919C70;
-    dw $0000,$0001,$0100,$0100,$001E,$0100,$0000,$0017                   ;919C80;
-    dw $0000,$0000,$0001,$0800,$0800,$0009,$0800,$0000                   ;919C90;
-    dw $0008,$0000,$0000,$0001,$0800,$0800,$0005,$0800                   ;919CA0;
-    dw $0000,$0001,$0000,$0000,$0001,$0800,$0800,$0009                   ;919CB0;
-    dw $0000,$0000,$0001,$0200,$0200,$0004,$0200,$0000                   ;919CC0;
-    dw $00C4,$0000,$0000                                                 ;919CD0;
-    dw Instruction_DemoInputObject_Delete                                ;919CD6;
+InstList_DemoInput_IBJ:                                                  ;919AF0;
+    dw $0019,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $0022,$0100,$0000 ;        >
+    dw $0018,$0000,$0000 ;
+    dw $0001,$0080,$0080 ;         A
+    dw $000B,$0080,$0000 ;         A
+    dw $0001,$0480,$0400 ;      v  A
+    dw $0007,$0480,$0000 ;      v  A
+    dw $0002,$0080,$0000 ;         A
+    dw $0001,$0480,$0400 ;      v  A
+    dw $0008,$0480,$0000 ;      v  A
+    dw $0001,$04C0,$0040 ;      v  AX
+    dw $0003,$04C0,$0000 ;      v  AX
+    dw $000A,$00C0,$0000 ;         AX
+    dw $0002,$0080,$0000 ;         A
+    dw $0020,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $000B,$0040,$0000 ;          X
+    dw $0025,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0009,$0040,$0000 ;          X
+    dw $0026,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0009,$0040,$0000 ;          X
+    dw $0026,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0008,$0040,$0000 ;          X
+    dw $0027,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0009,$0040,$0000 ;          X
+    dw $0028,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0008,$0040,$0000 ;          X
+    dw $0028,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0009,$0040,$0000 ;          X
+    dw $0026,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0008,$0040,$0000 ;          X
+    dw $0028,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0007,$0040,$0000 ;          X
+    dw $0029,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0007,$0040,$0000 ;          X
+    dw $0029,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0007,$0040,$0000 ;          X
+    dw $0028,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0008,$0040,$0000 ;          X
+    dw $0027,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0007,$0040,$0000 ;          X
+    dw $002A,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0007,$0040,$0000 ;          X
+    dw $002A,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0007,$0040,$0000 ;          X
+    dw $0028,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0007,$0040,$0000 ;          X
+    dw $0028,$0000,$0000 ;
+    dw $0001,$0040,$0040 ;          X
+    dw $0007,$0040,$0000 ;          X
+    dw $0010,$0000,$0000 ;
+    dw $0001,$0100,$0100 ;        >
+    dw $001E,$0100,$0000 ;        >
+    dw $0017,$0000,$0000 ;
+    dw $0001,$0800,$0800 ;     ^
+    dw $0009,$0800,$0000 ;     ^
+    dw $0008,$0000,$0000 ;
+    dw $0001,$0800,$0800 ;     ^
+    dw $0005,$0800,$0000 ;     ^
+    dw $0001,$0000,$0000 ;
+    dw $0001,$0800,$0800 ;     ^
+    dw $0009,$0000,$0000 ;
+    dw $0001,$0200,$0200 ;       <
+    dw $0004,$0200,$0000 ;       <
+    dw $00C4,$0000,$0000 ;
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_SBA:
-    dw $001A,$0000,$0000,$0001,$2000,$2000,$0008,$2000                   ;919CD8;
-    dw $0000,$0006,$0000,$0000,$0001,$2000,$2000,$0006                   ;919CE8;
-    dw $2000,$0000,$0006,$0000,$0000,$0001,$2000,$2000                   ;919CF8;
-    dw $0006,$2000,$0000,$0008,$0000,$0000,$0001,$0080                   ;919D08;
-    dw $0080,$0003,$0080,$0000,$0001,$0180,$0100,$0023                   ;919D18;
-    dw $0180,$0000,$0007,$0100,$0000,$0010,$0000,$0000                   ;919D28;
-    dw $0001,$0080,$0080,$0010,$0080,$0000,$0001,$0280                   ;919D38;
-    dw $0200,$0007,$0280,$0000,$0001,$02C0,$0040,$0004                   ;919D48;
-    dw $02C0,$0000,$000E,$0240,$0000,$0010,$0040,$0000                   ;919D58;
-    dw $0001,$00C0,$0080,$0008,$00C0,$0000,$0001,$01C0                   ;919D68;
-    dw $0100,$000B,$01C0,$0000,$0014,$0140,$0000,$0015                   ;919D78;
-    dw $0040,$0000,$0001,$0440,$0400,$0006,$0440,$0000                   ;919D88;
-    dw $0040,$0040,$0000,$0034,$0000,$0000                               ;919D98;
-    dw Instruction_DemoInputObject_Delete                                ;919DA4;
+InstList_DemoInput_SBA:                                                  ;919CD8;
+    dw $001A,$0000,$0000 ;
+    dw $0001,$2000,$2000 ;   s
+    dw $0008,$2000,$0000 ;   s
+    dw $0006,$0000,$0000 ;
+    dw $0001,$2000,$2000 ;   s
+    dw $0006,$2000,$0000 ;   s
+    dw $0006,$0000,$0000 ;
+    dw $0001,$2000,$2000 ;   s
+    dw $0006,$2000,$0000 ;   s
+    dw $0008,$0000,$0000 ;
+    dw $0001,$0080,$0080 ;         A
+    dw $0003,$0080,$0000 ;         A
+    dw $0001,$0180,$0100 ;        >A
+    dw $0023,$0180,$0000 ;        >A
+    dw $0007,$0100,$0000 ;        >
+    dw $0010,$0000,$0000 ;
+    dw $0001,$0080,$0080 ;         A
+    dw $0010,$0080,$0000 ;         A
+    dw $0001,$0280,$0200 ;       < A
+    dw $0007,$0280,$0000 ;       < A
+    dw $0001,$02C0,$0040 ;       < AX
+    dw $0004,$02C0,$0000 ;       < AX
+    dw $000E,$0240,$0000 ;       <  X
+    dw $0010,$0040,$0000 ;          X
+    dw $0001,$00C0,$0080 ;         AX
+    dw $0008,$00C0,$0000 ;         AX
+    dw $0001,$01C0,$0100 ;        >AX
+    dw $000B,$01C0,$0000 ;        >AX
+    dw $0014,$0140,$0000 ;        > X
+    dw $0015,$0040,$0000 ;          X
+    dw $0001,$0440,$0400 ;      v   X
+    dw $0006,$0440,$0000 ;      v   X
+    dw $0040,$0040,$0000 ;          X
+    dw $0034,$0000,$0000 ;
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_TourianEntrance:
-    dw $0195,$0000,$0000                                                 ;919DA6;
-    dw Instruction_DemoInputObject_Delete                                ;919DAC;
+InstList_DemoInput_TourianEntrance:                                      ;919DA6;
+    dw $0195,$0000,$0000 ;
+    dw Instruction_DemoInputObject_Delete
 
-InstList_DemoInput_CrystalFlash:
-    dw $001B,$0000,$0000,$0001,$0400,$0400,$0005,$0400                   ;919DAE;
-    dw $0000,$0005,$0000,$0000,$0001,$0400,$0400,$0007                   ;919DBE;
-    dw $0400,$0000,$0009,$0000,$0000,$0001,$2000,$2000                   ;919DCE;
-    dw $0006,$2000,$0000,$0006,$0000,$0000,$0001,$2000                   ;919DDE;
-    dw $2000,$0005,$2000,$0000,$0008,$0000,$0000,$0001                   ;919DEE;
-    dw $2000,$2000,$0007,$2000,$0000,$0031,$0000,$0000                   ;919DFE;
-    dw $0001,$0430,$0430,$0009,$0430,$0000,$0001,$0470                   ;919E0E;
-    dw $0040,$0010,$0470,$0000,$001E,$0430,$0000,$0001                   ;919E1E;
-    dw $0470,$0040,$00BE,$0470,$0000,$0003,$0070,$0000                   ;919E2E;
-    dw $0001,$0030,$0000,$0001,$0010,$0000,$013C,$0000                   ;919E3E;
-    dw $0000                                                             ;919E4E;
-    dw Instruction_DemoInputObject_Delete                                ;919E50;
+InstList_DemoInput_CrystalFlash:                                         ;919DAE;
+    dw $001B,$0000,$0000 ;
+    dw $0001,$0400,$0400 ;      v
+    dw $0005,$0400,$0000 ;      v
+    dw $0005,$0000,$0000 ;
+    dw $0001,$0400,$0400 ;      v
+    dw $0007,$0400,$0000 ;      v
+    dw $0009,$0000,$0000 ;
+    dw $0001,$2000,$2000 ;   s
+    dw $0006,$2000,$0000 ;   s
+    dw $0006,$0000,$0000 ;
+    dw $0001,$2000,$2000 ;   s
+    dw $0005,$2000,$0000 ;   s
+    dw $0008,$0000,$0000 ;
+    dw $0001,$2000,$2000 ;   s
+    dw $0007,$2000,$0000 ;   s
+    dw $0031,$0000,$0000 ;
+    dw $0001,$0430,$0430 ;      v    LR
+    dw $0009,$0430,$0000 ;      v    LR
+    dw $0001,$0470,$0040 ;      v   XLR
+    dw $0010,$0470,$0000 ;      v   XLR
+    dw $001E,$0430,$0000 ;      v    LR
+    dw $0001,$0470,$0040 ;      v   XLR
+    dw $00BE,$0470,$0000 ;      v   XLR
+    dw $0003,$0070,$0000 ;          XLR
+    dw $0001,$0030,$0000 ;           LR
+    dw $0001,$0010,$0000 ;            R
+    dw $013C,$0000,$0000 ;
+    dw Instruction_DemoInputObject_Delete
 
 DemoInputObjects_Title_LandingSite:
     dw RTS_9183BF                                                        ;919E52;
@@ -1941,6 +2517,30 @@ DemoInputObjects_Title_CrystalFlash:
     dw PreInstruction_DemoInput_Normal                                   ;919EDE;
     dw InstList_DemoInput_CrystalFlash                                   ;919EE0;
 
+
+; Transition table entries have the format:
+;     nnnn cccc pppp
+;     nnnn cccc pppp
+;     FFFF
+; where:
+;     n is the required newly pressed input, n = FFFF terminates the table entry
+;     c is the required held input
+;     p is the pose to transition to (if not currently already in that pose)
+
+; Note that all of the buttons in c and n must be part of the respective input.
+; Buttons are defined with the following bitflags:
+;     8000: Run
+;     4000: Cancel
+;     2000: Select
+;     1000: Start
+;     0800: Up
+;     0400: Down
+;     0200: Left
+;     0100: Right
+;     0080: Jump
+;     0040: Shoot
+;     0020: Aim diagonally down
+;     0010: Aim diagonally up
 TransitionTable:
     dw TransitionTable_00_9B_FacingForward                               ;919EE2;
     dw TransitionTable_01_03_05_07_A4_A6_E0_E2_E4_E6_FacingRight         ;919EE4;
@@ -2196,145 +2796,363 @@ TransitionTable:
     dw TransitionTable_Terminator_91A0DE                                 ;91A0D8;
     dw TransitionTable_Terminator_91A0DE                                 ;91A0DA;
 
+; entry 2F/30/35/36/37/38/39/3A/3B/3C/3F/40/43/44/5D/5E/5F/60/61/62/87/88/8F/90/91/92/93/94/95/96/97/98/99/9A/9C/9D/9E/9F/A0/A1/A2/A3/A8/A9/AA/AB/AC/AD/AE/AF/B0/B1/B2/B3/B4/B5/B6/B7/B8/B9/C5/C6/C9/CA/CB/CC/CD/CE/D3/D4/D5/D6/D7/D8/D9/DA/DB/DC/DD/DE/E8/E9/EA/EB/F1/F2/F3/F4/F5/F6/F7/F8/F9/FA/FB/FC
 TransitionTable_Terminator_91A0DE:
     dw $FFFF                                                             ;91A0DC;
 
-TransitionTable_00_9B_FacingForward:
-    dw $0000,$0100,$0026,$0000,$0200,$0025,$FFFF                         ;91A0DE;
+TransitionTable_00_9B_FacingForward:                                     ;91A0DE;
+; 00: Facing forward - power suit
+; 9B: Facing forward - varia/gravity suit
+    dw $0000,$0100,$0026
+    dw $0000,$0200,$0025
+    dw $FFFF                         
 
-TransitionTable_01_03_05_07_A4_A6_E0_E2_E4_E6_FacingRight:
-    dw $0080,$0800,$0055,$0080,$0010,$0057,$0080,$0020                   ;91A0EC;
-    dw $0059,$0080,$0000,$004B,$0400,$0030,$00F1,$0400                   ;91A0FC;
-    dw $0010,$00F3,$0400,$0020,$00F5,$0400,$0000,$0035                   ;91A10C;
-    dw $0000,$0260,$0078,$0000,$0250,$0076,$0000,$0230                   ;91A11C;
-    dw $0025,$0000,$0030,$0003,$0000,$0110,$000F,$0000                   ;91A12C;
-    dw $0120,$0011,$0000,$0900,$000F,$0000,$0500,$0011                   ;91A13C;
-    dw $0000,$0240,$004A,$0000,$0200,$0025,$0000,$0800                   ;91A14C;
-    dw $0003,$0000,$0010,$0005,$0000,$0020,$0007,$0000                   ;91A15C;
-    dw $0100,$0009,$FFFF                                                 ;91A16C;
+TransitionTable_01_03_05_07_A4_A6_E0_E2_E4_E6_FacingRight:               ;91A0EC;
+; 01: Facing right - normal
+; 03: Facing right - aiming up
+; 05: Facing right - aiming up-right
+; 07: Facing right - aiming down-right
+; A4: Facing right - landing from normal jump
+; A6: Facing right - landing from spin jump
+; E0: Facing right - landing from normal jump - aiming up
+; E2: Facing right - landing from normal jump - aiming up-right
+; E4: Facing right - landing from normal jump - aiming down-right
+; E6: Facing right - landing from normal jump - firing
+    dw $0080,$0800,$0055
+    dw $0080,$0010,$0057
+    dw $0080,$0020,$0059
+    dw $0080,$0000,$004B
+    dw $0400,$0030,$00F1
+    dw $0400,$0010,$00F3
+    dw $0400,$0020,$00F5
+    dw $0400,$0000,$0035
+    dw $0000,$0260,$0078
+    dw $0000,$0250,$0076
+    dw $0000,$0230,$0025
+    dw $0000,$0030,$0003
+    dw $0000,$0110,$000F
+    dw $0000,$0120,$0011
+    dw $0000,$0900,$000F
+    dw $0000,$0500,$0011
+    dw $0000,$0240,$004A
+    dw $0000,$0200,$0025
+    dw $0000,$0800,$0003
+    dw $0000,$0010,$0005
+    dw $0000,$0020,$0007
+    dw $0000,$0100,$0009
+    dw $FFFF
 
-TransitionTable_02_04_06_08_A5_A7_E1_E3_E5_E7_FacingLeft:
-    dw $0080,$0800,$0056,$0080,$0010,$0058,$0080,$0020                   ;91A172;
-    dw $005A,$0080,$0000,$004C,$0400,$0030,$00F2,$0400                   ;91A182;
-    dw $0010,$00F4,$0400,$0020,$00F6,$0400,$0000,$0036                   ;91A192;
-    dw $0000,$0160,$0077,$0000,$0150,$0075,$0000,$0130                   ;91A1A2;
-    dw $0026,$0000,$0030,$0004,$0000,$0210,$0010,$0000                   ;91A1B2;
-    dw $0220,$0012,$0000,$0A00,$0010,$0000,$0600,$0012                   ;91A1C2;
-    dw $0000,$0140,$0049,$0000,$0100,$0026,$0000,$0800                   ;91A1D2;
-    dw $0004,$0000,$0010,$0006,$0000,$0020,$0008,$0000                   ;91A1E2;
-    dw $0200,$000A,$FFFF                                                 ;91A1F2;
+TransitionTable_02_04_06_08_A5_A7_E1_E3_E5_E7_FacingLeft:                ;91A172;
+; 02: Facing left - normal
+; 04: Facing left - aiming up
+; 06: Facing left - aiming up-left
+; 08: Facing left - aiming down-left
+; A5: Facing left - landing from normal jump
+; A7: Facing left - landing from spin jump
+; E1: Facing left - landing from normal jump - aiming up
+; E3: Facing left - landing from normal jump - aiming up-left
+; E5: Facing left - landing from normal jump - aiming down-left
+; E7: Facing left - landing from normal jump - firing
+    dw $0080,$0800,$0056
+    dw $0080,$0010,$0058
+    dw $0080,$0020,$005A
+    dw $0080,$0000,$004C
+    dw $0400,$0030,$00F2
+    dw $0400,$0010,$00F4
+    dw $0400,$0020,$00F6
+    dw $0400,$0000,$0036
+    dw $0000,$0160,$0077
+    dw $0000,$0150,$0075
+    dw $0000,$0130,$0026
+    dw $0000,$0030,$0004
+    dw $0000,$0210,$0010
+    dw $0000,$0220,$0012
+    dw $0000,$0A00,$0010
+    dw $0000,$0600,$0012
+    dw $0000,$0140,$0049
+    dw $0000,$0100,$0026
+    dw $0000,$0800,$0004
+    dw $0000,$0010,$0006
+    dw $0000,$0020,$0008
+    dw $0000,$0200,$000A
+    dw $FFFF
 
-TransitionTable_09_0D_0F_11_MovingRight:
-    dw $0400,$0000,$0035,$0080,$0000,$0019,$0000,$0110                   ;91A1F8;
-    dw $000F,$0000,$0120,$0011,$0000,$0900,$000F,$0000                   ;91A208;
-    dw $0500,$0011,$0000,$0140,$000B,$0000,$0100,$0009                   ;91A218;
-    dw $0000,$0200,$0025,$0000,$0800,$0003,$0000,$0010                   ;91A228;
-    dw $0005,$0000,$0020,$0007,$FFFF                                     ;91A238;
+TransitionTable_09_0D_0F_11_MovingRight:                                 ;91A1F8;
+; 09: Moving right - not aiming
+; 0D: Moving right - aiming up (unused)
+; 0F: Moving right - aiming up-right
+; 11: Moving right - aiming down-right
+    dw $0400,$0000,$0035
+    dw $0080,$0000,$0019
+    dw $0000,$0110,$000F
+    dw $0000,$0120,$0011
+    dw $0000,$0900,$000F
+    dw $0000,$0500,$0011
+    dw $0000,$0140,$000B
+    dw $0000,$0100,$0009
+    dw $0000,$0200,$0025
+    dw $0000,$0800,$0003
+    dw $0000,$0010,$0005
+    dw $0000,$0020,$0007
+    dw $FFFF
 
-TransitionTable_0A_0E_10_12_MovingLeft:
-    dw $0400,$0000,$0036,$0080,$0000,$001A,$0000,$0210                   ;91A242;
-    dw $0010,$0000,$0220,$0012,$0000,$0A00,$0010,$0000                   ;91A252;
-    dw $0600,$0012,$0000,$0240,$000C,$0000,$0200,$000A                   ;91A262;
-    dw $0000,$0100,$0026,$0000,$0800,$0004,$0000,$0010                   ;91A272;
-    dw $0006,$0000,$0020,$0008,$FFFF                                     ;91A282;
+TransitionTable_0A_0E_10_12_MovingLeft:                                  ;91A242;
+; 0A: Moving left - not aiming
+; 0E: Moving left - aiming up (unused)
+; 10: Moving left - aiming up-left
+; 12: Moving left - aiming down-left
+    dw $0400,$0000,$0036
+    dw $0080,$0000,$001A
+    dw $0000,$0210,$0010
+    dw $0000,$0220,$0012
+    dw $0000,$0A00,$0010
+    dw $0000,$0600,$0012
+    dw $0000,$0240,$000C
+    dw $0000,$0200,$000A
+    dw $0000,$0100,$0026
+    dw $0000,$0800,$0004
+    dw $0000,$0010,$0006
+    dw $0000,$0020,$0008
+    dw $FFFF            
 
-TransitionTable_4B_55_57_59_FacingRight_NormalJumpTransition:
-    dw $0000,$0280,$002F,$0000,$0880,$0015,$0000,$0480                   ;91A28C;
-    dw $0017,$0000,$0090,$0069,$0000,$00A0,$006B,$0000                   ;91A29C;
-    dw $0180,$0051,$0000,$00C0,$0013,$0000,$0040,$0013                   ;91A2AC;
-    dw $FFFF                                                             ;91A2BC;
+TransitionTable_4B_55_57_59_FacingRight_NormalJumpTransition:            ;91A28C;
+; 4B: Facing right - normal jump transition
+; 55: Facing right - normal jump transition - aiming up
+; 57: Facing right - normal jump transition - aiming up-right
+; 59: Facing right - normal jump transition - aiming down-right
+    dw $0000,$0280,$002F
+    dw $0000,$0880,$0015
+    dw $0000,$0480,$0017
+    dw $0000,$0090,$0069
+    dw $0000,$00A0,$006B
+    dw $0000,$0180,$0051
+    dw $0000,$00C0,$0013
+    dw $0000,$0040,$0013
+    dw $FFFF
 
-TransitionTable_4C_56_58_5A_FacingLeft_NormalJumpTransition:
-    dw $0000,$0180,$0030,$0000,$0880,$0016,$0000,$0480                   ;91A2BE;
-    dw $0018,$0000,$0090,$006A,$0000,$00A0,$006C,$0000                   ;91A2CE;
-    dw $0280,$0052,$0000,$00C0,$0014,$0000,$0100,$0030                   ;91A2DE;
-    dw $0000,$0040,$0014,$FFFF                                           ;91A2EE;
+TransitionTable_4C_56_58_5A_FacingLeft_NormalJumpTransition:             ;91A2BE;
+; 4C: Facing left - normal jump transition
+; 56: Facing left - normal jump transition - aiming up
+; 58: Facing left - normal jump transition - aiming up-left
+; 5A: Facing left - normal jump transition - aiming down-left
+    dw $0000,$0180,$0030
+    dw $0000,$0880,$0016
+    dw $0000,$0480,$0018
+    dw $0000,$0090,$006A
+    dw $0000,$00A0,$006C
+    dw $0000,$0280,$0052
+    dw $0000,$00C0,$0014
+    dw $0000,$0100,$0030
+    dw $0000,$0040,$0014
+    dw $FFFF
 
-TransitionTable_15_4D_51_69_6B_FacingRight_NormalJump:
-    dw $0000,$0980,$0069,$0000,$0580,$006B,$0000,$0190                   ;91A2F6;
-    dw $0069,$0000,$01A0,$006B,$0000,$0900,$0069,$0000                   ;91A306;
-    dw $0500,$006B,$0000,$0280,$002F,$0000,$0880,$0015                   ;91A316;
-    dw $0000,$0480,$0017,$0000,$0090,$0069,$0000,$00A0                   ;91A326;
-    dw $006B,$0000,$0180,$0051,$0000,$00C0,$0013,$0000                   ;91A336;
-    dw $0200,$002F,$0000,$0800,$0015,$0000,$0400,$0017                   ;91A346;
-    dw $0000,$0010,$0069,$0000,$0020,$006B,$0000,$0100                   ;91A356;
-    dw $0051,$0000,$0080,$004D,$0000,$0040,$0013,$FFFF                   ;91A366;
+TransitionTable_15_4D_51_69_6B_FacingRight_NormalJump:                   ;91A2F6;
+; 15: Facing right - normal jump - aiming up
+; 4D: Facing right - normal jump - not aiming - not moving - gun not extended
+; 51: Facing right - normal jump - not aiming - moving forward
+; 69: Facing right - normal jump - aiming up-right
+; 6B: Facing right - normal jump - aiming down-right
+    dw $0000,$0980,$0069
+    dw $0000,$0580,$006B
+    dw $0000,$0190,$0069
+    dw $0000,$01A0,$006B
+    dw $0000,$0900,$0069
+    dw $0000,$0500,$006B
+    dw $0000,$0280,$002F
+    dw $0000,$0880,$0015
+    dw $0000,$0480,$0017
+    dw $0000,$0090,$0069
+    dw $0000,$00A0,$006B
+    dw $0000,$0180,$0051
+    dw $0000,$00C0,$0013
+    dw $0000,$0200,$002F
+    dw $0000,$0800,$0015
+    dw $0000,$0400,$0017
+    dw $0000,$0010,$0069
+    dw $0000,$0020,$006B
+    dw $0000,$0100,$0051
+    dw $0000,$0080,$004D
+    dw $0000,$0040,$0013
+    dw $FFFF
 
-TransitionTable_16_4E_52_6A_6C_FacingLeft_NormalJump:
-    dw $0000,$0A80,$006A,$0000,$0680,$006C,$0000,$0290                   ;91A376;
-    dw $006A,$0000,$02A0,$006C,$0000,$0A00,$006A,$0000                   ;91A386;
-    dw $0600,$006C,$0000,$0180,$0030,$0000,$0880,$0016                   ;91A396;
-    dw $0000,$0480,$0018,$0000,$0090,$006A,$0000,$00A0                   ;91A3A6;
-    dw $006C,$0000,$0280,$0052,$0000,$00C0,$0014,$0000                   ;91A3B6;
-    dw $0100,$0030,$0000,$0800,$0016,$0000,$0400,$0018                   ;91A3C6;
-    dw $0000,$0010,$006A,$0000,$0020,$006C,$0000,$0200                   ;91A3D6;
-    dw $0052,$0000,$0080,$004E,$0000,$0040,$0014,$FFFF                   ;91A3E6;
+TransitionTable_16_4E_52_6A_6C_FacingLeft_NormalJump:                    ;91A376;
+; 16: Facing left - normal jump - aiming up
+; 4E: Facing left - normal jump - not aiming - not moving - gun not extended
+; 52: Facing left - normal jump - not aiming - moving forward
+; 6A: Facing left - normal jump - aiming up-left
+; 6C: Facing left - normal jump - aiming down-left
+    dw $0000,$0A80,$006A
+    dw $0000,$0680,$006C
+    dw $0000,$0290,$006A
+    dw $0000,$02A0,$006C
+    dw $0000,$0A00,$006A
+    dw $0000,$0600,$006C
+    dw $0000,$0180,$0030
+    dw $0000,$0880,$0016
+    dw $0000,$0480,$0018
+    dw $0000,$0090,$006A
+    dw $0000,$00A0,$006C
+    dw $0000,$0280,$0052
+    dw $0000,$00C0,$0014
+    dw $0000,$0100,$0030
+    dw $0000,$0800,$0016
+    dw $0000,$0400,$0018
+    dw $0000,$0010,$006A
+    dw $0000,$0020,$006C
+    dw $0000,$0200,$0052
+    dw $0000,$0080,$004E
+    dw $0000,$0040,$0014
+    dw $FFFF
 
-TransitionTable_4F_FacingLeft_DamageBoost:
-    dw $0000,$0280,$0052,$0000,$0180,$004F,$0000,$0080                   ;91A3F6;
-    dw $004E,$FFFF                                                       ;91A406;
+TransitionTable_4F_FacingLeft_DamageBoost:                               ;91A3F6;
+; 4F: Facing left - damage boost
+    dw $0000,$0280,$0052
+    dw $0000,$0180,$004F
+    dw $0000,$0080
+    dw $004E
+    dw $FFFF
 
-TransitionTable_50_FacingRight_DamageBoost:
-    dw $0000,$0280,$0050,$0000,$0180,$0051,$0000,$0080                   ;91A40A;
-    dw $004D,$FFFF                                                       ;91A41A;
+TransitionTable_50_FacingRight_DamageBoost:                              ;91A40A;
+; 50: Facing right - damage boost
+    dw $0000,$0280,$0050
+    dw $0000,$0180,$0051
+    dw $0000,$0080
+    dw $004D
+    dw $FFFF
 
-TransitionTable_19_FacingRIght_SpinJump:
-    dw $0040,$0000,$0013,$0040,$0100,$0013,$0000,$0840                   ;91A41E;
-    dw $0015,$0000,$0440,$0017,$0000,$0050,$0069,$0000                   ;91A42E;
-    dw $0060,$006B,$0000,$0180,$0019,$0000,$0800,$0015                   ;91A43E;
-    dw $0000,$0010,$0069,$0000,$0020,$006B,$0000,$0400                   ;91A44E;
-    dw $0017,$0000,$0100,$0019,$0000,$0200,$001A,$FFFF                   ;91A45E;
+TransitionTable_19_FacingRIght_SpinJump:                                 ;91A41E;
+; 19: Facing right - spin jump
+    dw $0040,$0000,$0013
+    dw $0040,$0100,$0013
+    dw $0000,$0840,$0015
+    dw $0000,$0440,$0017
+    dw $0000,$0050,$0069
+    dw $0000,$0060,$006B
+    dw $0000,$0180,$0019
+    dw $0000,$0800,$0015
+    dw $0000,$0010,$0069
+    dw $0000,$0020,$006B
+    dw $0000,$0400,$0017
+    dw $0000,$0100,$0019
+    dw $0000,$0200,$001A
+    dw $FFFF
 
-TransitionTable_1A_FacingLeft_SpinJump:
-    dw $0040,$0000,$0014,$0040,$0200,$0014,$0000,$0840                   ;91A46E;
-    dw $0016,$0000,$0440,$0018,$0000,$0050,$006A,$0000                   ;91A47E;
-    dw $0060,$006C,$0000,$0280,$001A,$0000,$0800,$0016                   ;91A48E;
-    dw $0000,$0010,$006A,$0000,$0020,$006C,$0000,$0400                   ;91A49E;
-    dw $0018,$0000,$0200,$001A,$0000,$0100,$0019,$FFFF                   ;91A4AE;
+TransitionTable_1A_FacingLeft_SpinJump:                                  ;91A46E;
+; 1A: Facing left - spin jump
+    dw $0040,$0000,$0014
+    dw $0040,$0200,$0014
+    dw $0000,$0840,$0016
+    dw $0000,$0440,$0018
+    dw $0000,$0050,$006A
+    dw $0000,$0060,$006C
+    dw $0000,$0280,$001A
+    dw $0000,$0800,$0016
+    dw $0000,$0010,$006A
+    dw $0000,$0020,$006C
+    dw $0000,$0400,$0018
+    dw $0000,$0200,$001A
+    dw $0000,$0100,$0019
+    dw $FFFF
 
-TransitionTable_1B_FacingRight_SpaceJump:
-    dw $0040,$0000,$0013,$0040,$0100,$0013,$0000,$0840                   ;91A4BE;
-    dw $0015,$0000,$0440,$0017,$0000,$0050,$0069,$0000                   ;91A4CE;
-    dw $0060,$006B,$0000,$0180,$001B,$0000,$0800,$0015                   ;91A4DE;
-    dw $0000,$0010,$0069,$0000,$0020,$006B,$0000,$0400                   ;91A4EE;
-    dw $0017,$0000,$0100,$001B,$0000,$0200,$001C,$FFFF                   ;91A4FE;
+TransitionTable_1B_FacingRight_SpaceJump:                                ;91A4BE;
+; 1B: Facing right - space jump
+    dw $0040,$0000,$0013
+    dw $0040,$0100,$0013
+    dw $0000,$0840,$0015
+    dw $0000,$0440,$0017
+    dw $0000,$0050,$0069
+    dw $0000,$0060,$006B
+    dw $0000,$0180,$001B
+    dw $0000,$0800,$0015
+    dw $0000,$0010,$0069
+    dw $0000,$0020,$006B
+    dw $0000,$0400,$0017
+    dw $0000,$0100,$001B
+    dw $0000,$0200,$001C
+    dw $FFFF
 
-TransitionTable_1C_FacingLeft_SpaceJump:
-    dw $0040,$0000,$0014,$0040,$0200,$0014,$0000,$0840                   ;91A50E;
-    dw $0016,$0000,$0440,$0018,$0000,$0050,$006A,$0000                   ;91A51E;
-    dw $0060,$006C,$0000,$0280,$001C,$0000,$0800,$0016                   ;91A52E;
-    dw $0000,$0010,$006A,$0000,$0020,$006C,$0000,$0400                   ;91A53E;
-    dw $0018,$0000,$0200,$001C,$0000,$0100,$001B,$FFFF                   ;91A54E;
+TransitionTable_1C_FacingLeft_SpaceJump:                                 ;91A50E;
+; 1C: Facing left - space jump
+    dw $0040,$0000,$0014
+    dw $0040,$0200,$0014
+    dw $0000,$0840,$0016
+    dw $0000,$0440,$0018
+    dw $0000,$0050,$006A
+    dw $0000,$0060,$006C
+    dw $0000,$0280,$001C
+    dw $0000,$0800,$0016
+    dw $0000,$0010,$006A
+    dw $0000,$0020,$006C
+    dw $0000,$0400,$0018
+    dw $0000,$0200,$001C
+    dw $0000,$0100,$001B
+    dw $FFFF
 
-TransitionTable_81_ScrewAttack:
-    dw $0040,$0000,$0013,$0040,$0100,$0013,$0000,$0840                   ;91A55E;
-    dw $0015,$0000,$0440,$0017,$0000,$0050,$0069,$0000                   ;91A56E;
-    dw $0060,$006B,$0000,$0180,$0081,$0000,$0800,$0015                   ;91A57E;
-    dw $0000,$0010,$0069,$0000,$0020,$006B,$0000,$0400                   ;91A58E;
-    dw $0017,$0000,$0100,$0081,$0000,$0200,$0082,$FFFF                   ;91A59E;
+TransitionTable_81_ScrewAttack:                                          ;91A55E;
+; 81: Facing right - screw attack
+    dw $0040,$0000,$0013
+    dw $0040,$0100,$0013
+    dw $0000,$0840,$0015
+    dw $0000,$0440,$0017
+    dw $0000,$0050,$0069
+    dw $0000,$0060,$006B
+    dw $0000,$0180,$0081
+    dw $0000,$0800,$0015
+    dw $0000,$0010,$0069
+    dw $0000,$0020,$006B
+    dw $0000,$0400,$0017
+    dw $0000,$0100,$0081
+    dw $0000,$0200,$0082
+    dw $FFFF
 
-TransitionTable_82_FacingLeft_ScrewAttack:
-    dw $0040,$0000,$0014,$0040,$0200,$0014,$0000,$0840                   ;91A5AE;
-    dw $0016,$0000,$0440,$0018,$0000,$0050,$006A,$0000                   ;91A5BE;
-    dw $0060,$006C,$0000,$0280,$0082,$0000,$0800,$0016                   ;91A5CE;
-    dw $0000,$0010,$006A,$0000,$0020,$006C,$0000,$0400                   ;91A5DE;
-    dw $0018,$0000,$0200,$0082,$0000,$0100,$0081,$FFFF                   ;91A5EE;
+TransitionTable_82_FacingLeft_ScrewAttack:                               ;91A5AE;
+; 82: Facing left - screw attack
+    dw $0040,$0000,$0014
+    dw $0040,$0200,$0014
+    dw $0000,$0840,$0016
+    dw $0000,$0440,$0018
+    dw $0000,$0050,$006A
+    dw $0000,$0060,$006C
+    dw $0000,$0280,$0082
+    dw $0000,$0800,$0016
+    dw $0000,$0010,$006A
+    dw $0000,$0020,$006C
+    dw $0000,$0400,$0018
+    dw $0000,$0200,$0082
+    dw $0000,$0100,$0081
+    dw $FFFF
 
-TransitionTable_1D_FaceRight_MorphBall_NoSpringBall_OnGround:
-    dw $0800,$0000,$003D,$0080,$0000,$003D,$0000,$0100                   ;91A5FE;
-    dw $001E,$0000,$0200,$001F,$FFFF                                     ;91A60E;
+TransitionTable_1D_FaceRight_MorphBall_NoSpringBall_OnGround:            ;91A5FE;
+; 1D: Facing right - morph ball - no springball - on ground
+    dw $0800,$0000,$003D
+    dw $0080,$0000,$003D
+    dw $0000,$0100,$001E
+    dw $0000,$0200,$001F
+    dw $FFFF
 
-TransitionTable_1E_MoveRight_MorphBall_NoSpringBall_OnGround:
-    dw $0800,$0000,$003D,$0080,$0000,$003D,$0000,$0100                   ;91A618;
-    dw $001E,$0000,$0200,$001F,$FFFF                                     ;91A628;
+TransitionTable_1E_MoveRight_MorphBall_NoSpringBall_OnGround:            ;91A618;
+; 1E: Moving right - morph ball - no springball - on ground
+    dw $0800,$0000,$003D
+    dw $0080,$0000,$003D
+    dw $0000,$0100,$001E
+    dw $0000,$0200,$001F
+    dw $FFFF
 
-TransitionTable_1F_MoveLeft_MorphBall_NoSpringBall_OnGround:
-    dw $0800,$0000,$003E,$0080,$0000,$003E,$0000,$0100                   ;91A632;
-    dw $001E,$0000,$0200,$001F,$FFFF                                     ;91A642;
+TransitionTable_1F_MoveLeft_MorphBall_NoSpringBall_OnGround:             ;91A632;
+; 1F: Moving left - morph ball - no springball - on ground
+    dw $0800,$0000,$003E
+    dw $0080,$0000,$003E
+    dw $0000,$0100,$001E
+    dw $0000,$0200,$001F
+    dw $FFFF
 
-TransitionTable_1D_FaceLeft_MorphBall_NoSpringBall_OnGround:
-    dw $0800,$0000,$003E,$0080,$0000,$003E,$0000,$0100                   ;91A64C;
-    dw $001E,$0000,$0200,$001F,$FFFF                                     ;91A65C;
+TransitionTable_1D_FaceLeft_MorphBall_NoSpringBall_OnGround:             ;91A64C;
+; 41: Facing left - morph ball - no springball - on ground
+    dw $0800,$0000,$003E
+    dw $0080,$0000,$003E
+    dw $0000,$0100,$001E
+    dw $0000,$0200,$001F
+    dw $FFFF
 
 UNUSED_TransitionTable_20_21_22_24_91A666:
     dw $FFFF                                                             ;91A666;

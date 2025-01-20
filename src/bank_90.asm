@@ -220,9 +220,36 @@ Spawn_AirBubbles:
     RTS                                                                  ;9081A3;
 
 
-WaterSplash_TypeTable:
-    db $01,$00,$00,$00,$01,$01,$00,$00,$00,$00,$00,$00,$00,$00,$01,$01   ;9081A4;
-    db $01,$01,$00,$00,$00,$01,$00,$00,$00,$00,$00,$00                   ;9081B4;
+WaterSplash_TypeTable:                                                   ;9081A4;
+; 0: diving splash, else footstep splashes
+    db $01 ;* 0: Standing
+    db $00 ; 1: Running
+    db $00 ; 2: Normal jumping
+    db $00 ; 3: Spin jumping
+    db $01 ;* 4: Morph ball - on ground
+    db $01 ;* 5: Crouching
+    db $00 ; 6: Falling
+    db $00 ; 7: Unused
+    db $00 ; 8: Morph ball - falling
+    db $00 ; 9: Unused
+    db $00 ; Ah: Knockback / crystal flash ending
+    db $00 ; Bh: Unused
+    db $00 ; Ch: Unused
+    db $00 ; Dh: Unused
+    db $01 ;* Eh: Turning around - on ground
+    db $01 ;* Fh: Crouching/standing/morphing/unmorphing transition
+    db $01 ;* 10h: Moonwalking
+    db $01 ;* 11h: Spring ball - on ground
+    db $00 ; 12h: Spring ball - in air
+    db $00 ; 13h: Spring ball - falling
+    db $00 ; 14h: Wall jumping
+    db $01 ;* 15h: Ran into a wall
+    db $00 ; 16h: Grappling
+    db $00 ; 17h: Turning around - jumping
+    db $00 ; 18h: Turning around - falling
+    db $00 ; 19h: Damage boost
+    db $00 ; 1Ah: Grabbed by Draygon
+    db $00 ; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 AnimateSamus_FX_Lava:
     LDA.W $1962                                                          ;9081C0;
@@ -878,34 +905,34 @@ Draw_Samus:
 
 
 Draw_Samus_pointers:
-    dw DetermineIf_SamusBottomHalf_IsDrawn_Standing                      ;90864E;
-    dw Flag_SamusBottomHalfIsDrawn                                       ;908650;
-    dw Flag_SamusBottomHalfIsDrawn                                       ;908652;
-    dw DetermineIf_SamusBottomHalf_IsDrawn_SpinJumping                   ;908654;
-    dw Flag_SamusBottomHalfIsNotDrawn                                    ;908656;
-    dw Flag_SamusBottomHalfIsDrawn                                       ;908658;
-    dw Flag_SamusBottomHalfIsDrawn                                       ;90865A;
-    dw Flag_SamusBottomHalfIsNotDrawn                                    ;90865C;
-    dw Flag_SamusBottomHalfIsNotDrawn                                    ;90865E;
-    dw Flag_SamusBottomHalfIsNotDrawn                                    ;908660;
-    dw DetermineIf_SamusBottomHalf_IsDrawn_Knockback_CFEnding            ;908662;
-    dw Flag_SamusBottomHalfIsDrawn                                       ;908664;
-    dw Flag_SamusBottomHalfIsDrawn                                       ;908666;
-    dw DetermineIf_SamusBottomHalf_IsDrawn_UnusedMovementTypeD           ;908668;
-    dw Flag_SamusBottomHalfIsDrawn                                       ;90866A;
-    dw DetermineIf_SamusBottomHalf_IsDrawn_TransitionPoses               ;90866C;
-    dw Flag_SamusBottomHalfIsDrawn                                       ;90866E;
-    dw Flag_SamusBottomHalfIsNotDrawn                                    ;908670;
-    dw Flag_SamusBottomHalfIsNotDrawn                                    ;908672;
-    dw Flag_SamusBottomHalfIsNotDrawn                                    ;908674;
-    dw DetermineIf_SamusBottomHalf_IsDrawn_WallJumping                   ;908676;
-    dw Flag_SamusBottomHalfIsDrawn                                       ;908678;
-    dw Flag_SamusBottomHalfIsDrawn                                       ;90867A;
-    dw Flag_SamusBottomHalfIsDrawn                                       ;90867C;
-    dw Flag_SamusBottomHalfIsDrawn                                       ;90867E;
-    dw DetermineIf_SamusBottomHalf_IsDrawn_DamageBoost                   ;908680;
-    dw Flag_SamusBottomHalfIsDrawn                                       ;908682;
-    dw DetermineIf_SamusBottomHalf_IsDrawn_Shinespark_CF_Drained         ;908684;
+    dw DetermineIf_SamusBottomHalf_IsDrawn_Standing                      ;90864E; 0: Standing
+    dw Flag_SamusBottomHalfIsDrawn                                       ;908650; 1: Running
+    dw Flag_SamusBottomHalfIsDrawn                                       ;908652; 2: Normal jumping
+    dw DetermineIf_SamusBottomHalf_IsDrawn_SpinJumping                   ;908654; 3: Spin jumping
+    dw Flag_SamusBottomHalfIsNotDrawn                                    ;908656; 4: Morph ball - on ground
+    dw Flag_SamusBottomHalfIsDrawn                                       ;908658; 5: Crouching
+    dw Flag_SamusBottomHalfIsDrawn                                       ;90865A; 6: Falling
+    dw Flag_SamusBottomHalfIsNotDrawn                                    ;90865C; 7: Unused
+    dw Flag_SamusBottomHalfIsNotDrawn                                    ;90865E; 8: Morph ball - falling
+    dw Flag_SamusBottomHalfIsNotDrawn                                    ;908660; 9: Unused
+    dw DetermineIf_SamusBottomHalf_IsDrawn_Knockback_CFEnding            ;908662; Ah: Knockback
+    dw Flag_SamusBottomHalfIsDrawn                                       ;908664; Bh: Unused
+    dw Flag_SamusBottomHalfIsDrawn                                       ;908666; Ch: Unused
+    dw DetermineIf_SamusBottomHalf_IsDrawn_UnusedMovementTypeD           ;908668; Dh: Unused
+    dw Flag_SamusBottomHalfIsDrawn                                       ;90866A; Eh: Turning around - on ground
+    dw DetermineIf_SamusBottomHalf_IsDrawn_TransitionPoses               ;90866C; Fh: Crouching/standing/morphing/unmorphing transition
+    dw Flag_SamusBottomHalfIsDrawn                                       ;90866E; 10h: Moonwalking
+    dw Flag_SamusBottomHalfIsNotDrawn                                    ;908670; 11h: Spring ball - on ground
+    dw Flag_SamusBottomHalfIsNotDrawn                                    ;908672; 12h: Spring ball - in air
+    dw Flag_SamusBottomHalfIsNotDrawn                                    ;908674; 13h: Spring ball - falling
+    dw DetermineIf_SamusBottomHalf_IsDrawn_WallJumping                   ;908676; 14h: Wall jumping
+    dw Flag_SamusBottomHalfIsDrawn                                       ;908678; 15h: Ran into a wall
+    dw Flag_SamusBottomHalfIsDrawn                                       ;90867A; 16h: Grappling
+    dw Flag_SamusBottomHalfIsDrawn                                       ;90867C; 17h: Turning around - jumping
+    dw Flag_SamusBottomHalfIsDrawn                                       ;90867E; 18h: Turning around - falling
+    dw DetermineIf_SamusBottomHalf_IsDrawn_DamageBoost                   ;908680; 19h: Damage boost
+    dw Flag_SamusBottomHalfIsDrawn                                       ;908682; 1Ah: Grabbed by Draygon
+    dw DetermineIf_SamusBottomHalf_IsDrawn_Shinespark_CF_Drained         ;908684; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 Flag_SamusBottomHalfIsDrawn:
     SEC                                                                  ;908686;
@@ -1723,6 +1750,7 @@ AddAtmosphericSpritemapToOAM:
 
 
 AtmosphericGraphics_AnimationTimers:
+; Indexed by [atmospheric graphics type] * 2
     dw $0000                                                             ;908B93;
     dw AtmosphericGraphics_1_FootstepSplashes                            ;908B95;
     dw AtmosphericGraphics_2_FootstepSplashes                            ;908B97;
@@ -1733,6 +1761,7 @@ AtmosphericGraphics_AnimationTimers:
     dw AtmosphericGraphics_7_Dust                                        ;908BA1;
     dw $0000                                                             ;908BA3;
 
+; Indexed by [atmospheric graphics animation frame] * 2
 AtmosphericGraphics_1_FootstepSplashes:
     dw $0003,$0003,$0003,$0003                                           ;908BA5;
 
@@ -1756,9 +1785,11 @@ AtmosphericGraphics_7_Dust:
     dw $0003,$0004,$0005,$0006                                           ;908BE7;
 
 AtmosphericGraphics_NumberOfAnimationFrames:
+; Indexed by [atmospheric graphics type] * 2
     dw $0000,$0004,$0004,$0009,$0004,$0008,$0004,$0004                   ;908BEF;
 
 AtmosphericGraphics_SpriteTileNumberAttributes:
+; Indexed by [atmospheric graphics type] * 2
     dw $0000                                                             ;908BFF;
     dw AtmosphericGraphics_SpriteTileNumberAttributes_1_Footstep         ;908C01;
     dw $0000                                                             ;908C03;
@@ -1769,6 +1800,7 @@ AtmosphericGraphics_SpriteTileNumberAttributes:
     dw AtmosphericGraphics_SpriteTileNumberAttribute_4_6_7_LavaDust      ;908C0D;
 
 AtmosphericGraphics_SpriteTileNumberAttributes_1_Footstep:
+; Indexed by [atmospheric graphics animation frame] * 2
     dw $2A2C,$2A2D,$2A2E,$2A2F                                           ;908C0F;
 
 AtmosphericGraphics_SpriteTileNumberAttribute_4_6_7_LavaDust:
@@ -1808,34 +1840,34 @@ Calculate_SamusSpritemapPosition:
 
 
 .pointers:
-    dw CalculateSamusSpritemapPosition_Standing                          ;908C5C;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C5E;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C60;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C62;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C64;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C66;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C68;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C6A;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C6C;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C6E;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C70;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C72;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C74;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C76;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C78;
-    dw CalculateSamusSpritemapPosition_TransitionPoses                   ;908C7A;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C7C;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C7E;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C80;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C82;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C84;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C86;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C88;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C8A;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C8C;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C8E;
-    dw CalculateUsualSamusSpritemapPosition                              ;908C90;
-    dw CalculateSamusSpritemapPosition_Shinespark_CF_Drained             ;908C92;
+    dw CalculateSamusSpritemapPosition_Standing                          ;908C5C; *0: Standing
+    dw CalculateUsualSamusSpritemapPosition                              ;908C5E;  1: Running
+    dw CalculateUsualSamusSpritemapPosition                              ;908C60;  2: Normal jumping
+    dw CalculateUsualSamusSpritemapPosition                              ;908C62;  3: Spin jumping
+    dw CalculateUsualSamusSpritemapPosition                              ;908C64;  4: Morph ball - on ground
+    dw CalculateUsualSamusSpritemapPosition                              ;908C66;  5: Crouching
+    dw CalculateUsualSamusSpritemapPosition                              ;908C68;  6: Falling
+    dw CalculateUsualSamusSpritemapPosition                              ;908C6A;  7: Unused
+    dw CalculateUsualSamusSpritemapPosition                              ;908C6C;  8: Morph ball - falling
+    dw CalculateUsualSamusSpritemapPosition                              ;908C6E;  9: Unused
+    dw CalculateUsualSamusSpritemapPosition                              ;908C70;  Ah: Knockback
+    dw CalculateUsualSamusSpritemapPosition                              ;908C72;  Bh: Unused
+    dw CalculateUsualSamusSpritemapPosition                              ;908C74;  Ch: Unused
+    dw CalculateUsualSamusSpritemapPosition                              ;908C76;  Dh: Unused
+    dw CalculateUsualSamusSpritemapPosition                              ;908C78;  Eh: Turning around - on ground
+    dw CalculateSamusSpritemapPosition_TransitionPoses                   ;908C7A; *Fh: Crouching/standing/morphing/unmorphing transition
+    dw CalculateUsualSamusSpritemapPosition                              ;908C7C;  10h: Moonwalking
+    dw CalculateUsualSamusSpritemapPosition                              ;908C7E;  11h: Spring ball - on ground
+    dw CalculateUsualSamusSpritemapPosition                              ;908C80;  12h: Spring ball - in air
+    dw CalculateUsualSamusSpritemapPosition                              ;908C82;  13h: Spring ball - falling
+    dw CalculateUsualSamusSpritemapPosition                              ;908C84;  14h: Wall jumping
+    dw CalculateUsualSamusSpritemapPosition                              ;908C86;  15h: Ran into a wall
+    dw CalculateUsualSamusSpritemapPosition                              ;908C88;  16h: Grappling
+    dw CalculateUsualSamusSpritemapPosition                              ;908C8A;  17h: Turning around - jumping
+    dw CalculateUsualSamusSpritemapPosition                              ;908C8C;  18h: Turning around - falling
+    dw CalculateUsualSamusSpritemapPosition                              ;908C8E;  19h: Damage boost
+    dw CalculateUsualSamusSpritemapPosition                              ;908C90;  1Ah: Grabbed by Draygon
+    dw CalculateSamusSpritemapPosition_Shinespark_CF_Drained             ;908C92; *1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 CalculateUsualSamusSpritemapPosition:
     TYA                                                                  ;908C94;
@@ -1922,8 +1954,11 @@ CalculateSamusSpritemapPosition_Standing:
     RTS                                                                  ;908D27;
 
 
-.data:
-    db $03,$06,$00,$00,$03,$06,$00,$00,$03,$03,$06,$00,$03,$03,$06,$00   ;908D28;
+  .data                                                                  ;908D28;
+    db $03,$06,$00,$00 ; Facing right - landing from normal jump
+    db $03,$06,$00,$00 ; Facing left  - landing from normal jump
+    db $03,$03,$06,$00 ; Facing right - landing from spin jump
+    db $03,$03,$06,$00 ; Facing left  - landing from spin jump
 
 Goto_CalculateUsualSamusSpritemapPosition:
     PLB                                                                  ;908D38;
@@ -1969,9 +2004,19 @@ CalculateSamusSpritemapPosition_TransitionPoses:
     RTS                                                                  ;908D7F;
 
 
-.data:
-    db $F8,$00,$F8,$00,$FC,$FE,$FC,$FE,$00,$00,$00,$00,$FC,$00,$FC,$00   ;908D80;
-    db $05,$04,$05,$04,$00,$00,$00,$00                                   ;908D90;
+  .data                                                                  ;908D80;
+    db $F8,$00 ; Facing right - crouching transition
+    db $F8,$00 ; Facing left  - crouching transition
+    db $FC,$FE ; Facing right - morphing transition
+    db $FC,$FE ; Facing left  - morphing transition
+    db $00,$00 ; Unused
+    db $00,$00 ; Unused
+    db $FC,$00 ; Facing right - standing transition
+    db $FC,$00 ; Facing left  - standing transition
+    db $05,$04 ; Facing right - unmorphing transition
+    db $05,$04 ; Facing left  - unmorphing transition
+    db $00,$00 ; Unused
+    db $00,$00 ; Unused
 
 CalculateSamusSpritemapPosition_Shinespark_CF_Drained:
     PHB                                                                  ;908D98;
@@ -2026,6 +2071,7 @@ CalculateSamusSpritemapPosition_Shinespark_CF_Drained:
 
 
 .data:
+; Samus drained - crouching
     db $07,$05,$F8,$F8,$F8,$F8,$F8,$FB,$04,$04,$04,$04,$00,$00,$04,$FD   ;908DEF;
     db $FB,$00,$00,$04,$FD,$FB,$FD,$04,$00,$00,$04,$00,$00,$04,$00,$00   ;908DFF;
 
@@ -2046,13 +2092,13 @@ SetLiquidPhysicsType:
 
 
 .pointers:
-    dw SetLiquidPhysicsType_Air                                          ;908E26;
-    dw SetLiquidPhysicsType_LavaAcid                                     ;908E28;
-    dw SetLiquidPhysicsType_LavaAcid                                     ;908E2A;
-    dw SetLiquidPhysicsType_Water                                        ;908E2C;
-    dw SetLiquidPhysicsType_Air                                          ;908E2E;
-    dw SetLiquidPhysicsType_Air                                          ;908E30;
-    dw SetLiquidPhysicsType_Air                                          ;908E32;
+    dw SetLiquidPhysicsType_Air                                          ;908E26; ; 0: None / 20h: Unused scrolling sky
+    dw SetLiquidPhysicsType_LavaAcid                                     ;908E28; ; 2: Lava / 22h: Unused
+    dw SetLiquidPhysicsType_LavaAcid                                     ;908E2A; ; 4: Acid / 24h: Fireflea
+    dw SetLiquidPhysicsType_Water                                        ;908E2C; ; 6: Water / 26h: Tourian entrance statue
+    dw SetLiquidPhysicsType_Air                                          ;908E2E; ; 8: Spores / 28h: Ceres Ridley
+    dw SetLiquidPhysicsType_Air                                          ;908E30; ; Ah: Rain / 2Ah: Ceres elevator
+    dw SetLiquidPhysicsType_Air                                          ;908E32; ; Ch: Fog / 2Ch: Ceres haze
     dw SetLiquidPhysicsType_Air                                          ;908E34;
 
 SetLiquidPhysicsType_Air:
@@ -3260,12 +3306,12 @@ Handle_Horizontal_Scrolling:
     PLP                                                                  ;90963D;
     RTS                                                                  ;90963E;
 
-
-.facingRight:
+; Target distance camera is to the left of Samus
+  .facingRight
     dw $0060,$0040,$0020,$00E0                                           ;90963F;
-
-.facingLeft:
+  .facingLeft
     dw $00A0,$0050,$0020,$00E0                                           ;909647;
+
 
 Handle_Vertical_Scrolling:
     PHP                                                                  ;90964F;
@@ -4138,7 +4184,7 @@ DetermineGrappleSwing_SamusXSpeedTable_EntryPointer:
 
 
 .submergedInAcidLava:
-    LDX.W #SamusPhysicsConst_XAccelSpeeds_DisconnectGrappleInLavaAcid   ;909C56;
+    LDX.W #SamusPhysicsConstants_XAccelSpeeds_DisconnectGrappleInLavaAcid   ;909C56;
 
 .return:
     PLP                                                                  ;909C59;
@@ -4484,208 +4530,256 @@ WallJump_Check:
     RTS                                                                  ;909E8A;
 
 
-SamusPhysicsConstants_LavaSubDamagePerFrame:
+SamusPhysicsConstants:
+  .LavaSubDamagePerFrame
     dw $8000                                                             ;909E8B;
 
-SamusPhysicsConstants_LavaDamagePerFrame:
+  .LavaDamagePerFrame
     dw $0000                                                             ;909E8D;
 
-SamusPhysicsConstants_AcidSubDamagePerFrame:
+  .AcidSubDamagePerFrame
     dw $8000                                                             ;909E8F;
 
-SamusPhysicsConstants_AcidDamagePerFrame:
+  .AcidDamagePerFrame
     dw $0001                                                             ;909E91;
 
-SamusPhysicsConstants_AnimationDelayInWater:
+  .AnimationDelayInWater
     dw $0003                                                             ;909E93;
 
-SamusPhysicsConstants_AnimationDelayInLavaAcid:
+  .AnimationDelayInLavaAcid
     dw $0002                                                             ;909E95;
 
-SamusPhysicsConstants_SpaceJumpMinimumYVelocityInAir:
+  .SpaceJumpMinimumYVelocityInAir
     dw $0280                                                             ;909E97;
 
-SamusPhysicsConstants_SpaceJumpMaximumYVelocityInAir:
+  .SpaceJumpMaximumYVelocityInAir
     dw $0500                                                             ;909E99;
 
-SamusPhysicsConstants_SpaceJumpMinimumYVelocityInWater:
+  .SpaceJumpMinimumYVelocityInWater
     dw $0080                                                             ;909E9B;
 
-SamusPhysicsConstants_SpaceJumpMaximumYVelocityInWater:
+  .SpaceJumpMaximumYVelocityInWater
     dw $0500                                                             ;909E9D;
 
-SamusPhysicsConstants_MaximumDistanceFromWallForWallJump:
+  .MaximumDistanceFromWallForWallJump
     dw $0008                                                             ;909E9F;
 
-SamusPhysicsConstants_YSubAccelerationInAir:
+  .YSubAccelerationInAir
     dw $1C00                                                             ;909EA1;
 
-SamusPhysicsConstants_YSubAccelerationInWater:
+  .YSubAccelerationInWater
     dw $0800                                                             ;909EA3;
 
-SamusPhysicsConstants_YSubAccelerationInAcidLava:
+  .YSubAccelerationInAcidLava
     dw $0900                                                             ;909EA5;
 
-SamusPhysicsConstants_YAccelerationInAir:
+  .YAccelerationInAir
     dw $0000                                                             ;909EA7;
 
-SamusPhysicsConstants_YAccelerationInWater:
+  .YAccelerationInWater
     dw $0000                                                             ;909EA9;
 
-SamusPhysicsConstants_YAccelerationInAcidLava:
+  .YAccelerationInAcidLava
     dw $0000                                                             ;909EAB;
 
-SamusPhysicsConstants_CameraXOffsetFromSamusWhenTurning:
+  .CameraXOffsetFromSamusWhenTurning
     dw $0001                                                             ;909EAD;
 
-SamusPhysicsConstants_CameraXSubOffsetFromSamusWhenTurning:
+  .CameraXSubOffsetFromSamusWhenTurning
     dw $0000                                                             ;909EAF;
 
-SamusPhysicsConstants_CameraYOffsetFromSamusWhenTurning:
+  .CameraYOffsetFromSamusWhenTurning
     dw $0001                                                             ;909EB1;
 
-SamusPhysicsConstants_CameraYSubOffsetFromSamusWhenTurning:
+  .CameraYSubOffsetFromSamusWhenTurning
     dw $0000                                                             ;909EB3;
 
-SamusPhysicsConstants_YSpeedWhenBouncingInMorphBall:
+  .YSpeedWhenBouncingInMorphBall
     dw $0001                                                             ;909EB5;
 
-SamusPhysicsConstants_YSubSpeedWhenBouncingInMorphBall:
+  .YSubSpeedWhenBouncingInMorphBall
     dw $0000                                                             ;909EB7;
 
-SamusPhysicsConstants_InitialYSpeeds_Jumping:
+  .InitialYSpeeds_Jumping
     dw $0004,$0001,$0002                                                 ;909EB9;
 
-SamusPhysicsConstants_InitialYSubSpeeds_Jumping:
+  .InitialYSubSpeeds_Jumping
     dw $E000,$C000,$C000                                                 ;909EBF;
 
-SamusPhysicsConstants_InitialYSpeeds_HiJumpJumping:
+  .InitialYSpeeds_HiJumpJumping
     dw $0006,$0002,$0003                                                 ;909EC5;
 
-SamusPhysicsConstants_InitialYSubSpeeds_HiJumpJumping:
+  .InitialYSubSpeeds_HiJumpJumping
     dw $0000,$8000,$8000                                                 ;909ECB;
 
-SamusPhysicsConstants_InitialYSpeeds_WallJumping:
+  .InitialYSpeeds_WallJumping
     dw $0004,$0000,$0002                                                 ;909ED1;
 
-SamusPhysicsConstants_InitialYSubSpeeds_WallJumping:
+  .InitialYSubSpeeds_WallJumping
     dw $A000,$4000,$A000                                                 ;909ED7;
 
-SamusPhysicsConstants_InitialYSpeeds_HiJumpWallJumping:
+  .InitialYSpeeds_HiJumpWallJumping
     dw $0005,$0000,$0003                                                 ;909EDD;
 
-SamusPhysicsConstants_InitialYSubSpeeds_HiJumpWallJumping:
+  .InitialYSubSpeeds_HiJumpWallJumping
     dw $8000,$8000,$8000                                                 ;909EE3;
 
-SamusPhysicsConstants_InitialYSpeeds_Knockback:
+  .InitialYSpeeds_Knockback
     dw $0005,$0002,$0002                                                 ;909EE9;
 
-SamusPhysicsConstants_InitialYSubSpeeds_Knockback:
+  .InitialYSubSpeeds_Knockback
     dw $0000,$0000,$0000                                                 ;909EEF;
 
-SamusPhysicsConstants_InitialYSpeeds_BombJump:
+  .InitialYSpeeds_BombJump
     dw $0002,$0000,$0000                                                 ;909EF5;
 
-SamusPhysicsConstants_InitialYSubSpeeds_BombJump:
+  .InitialYSubSpeeds_BombJump
     dw $C000,$1000,$1000                                                 ;909EFB;
 
-SamusPhysicsConstants_XAccelerations_DashHeld:
+  .XAccelerations_DashHeld
     dw $0000,$0000,$0000                                                 ;909F01;
 
-SamusPhysicsConstants_XSubAccelerations_DashHeld:
+  .XSubAccelerations_DashHeld
     dw $1000,$0400,$0400                                                 ;909F07;
 
-SamusPhysicsConstants_MaxXExtraRunSpeeds_SpeedBooster:
+  .MaxXExtraRunSpeeds_SpeedBooster
     dw $0007,$0004,$0004                                                 ;909F0D;
 
-SamusPhysicsConstants_MaxXExtraRunSubSpeeds_SpeedBooster:
+  .MaxXExtraRunSubSpeeds_SpeedBooster
     dw $0000,$0000,$0000                                                 ;909F13;
 
-SamusPhysicsConstants_MaxXExtraRunSpeeds_NoSpeedBooster_0:
+  .MaxXExtraRunSpeeds_NoSpeedBooster_0
     dw $0002,$0001,$0000                                                 ;909F19;
 
-SamusPhysicsConstants_MaxXExtraRunSpeeds_NoSpeedBooster_1:
+  .MaxXExtraRunSpeeds_NoSpeedBooster_1
     dw $0000,$0000,$0000                                                 ;909F1F;
 
-SamusPhysicsConstants_XAccelSpeeds_DiagonalBombJump:
+  .XAccelSpeeds_DiagonalBombJump
     dw $0000,$3000,$0003,$0000,$0000,$0800                               ;909F25;
 
-SamusPhysicsConstants_XAccelSpeeds_DisconnectGrappleInAir:
+  .XAccelSpeeds_DisconnectGrappleInAir
     dw $0000,$3000,$000F,$0000,$0000,$1000                               ;909F31;
 
-SamusPhysicsConstants_XAccelSpeeds_DisconnectGrappleInWater:
+  .XAccelSpeeds_DisconnectGrappleInWater
     dw $0000,$3000,$000F,$0000,$0000,$1000                               ;909F3D;
 
-SamusPhysicsConst_XAccelSpeeds_DisconnectGrappleInLavaAcid:
+  .XAccelSpeeds_DisconnectGrappleInLavaAcid
     dw $0000,$3000,$000F,$0000,$0000,$1000                               ;909F49;
 
-SamusXSpeedTable_Normal:
-    dw $0000,$C000,$0000,$0000,$0000,$8000,$0000,$3000                   ;909F55;
-    dw $0002,$C000,$0000,$8000,$0000,$C000,$0001,$4000                   ;909F65;
-    dw $0000,$8000,$0000,$C000,$0001,$6000,$0000,$8000                   ;909F75;
-    dw $0000,$C000,$0003,$4000,$0000,$8000,$0000,$C000                   ;909F85;
-    dw $0000,$0000,$0000,$8000,$0000,$C000,$0001,$0000                   ;909F95;
-    dw $0000,$8000,$0002,$0000,$0001,$0000,$0000,$8000                   ;909FA5;
-    dw $0000,$C000,$0001,$0000,$0000,$8000,$0002,$0000                   ;909FB5;
-    dw $0002,$0000,$0000,$8000,$0001,$8000,$0005,$0000                   ;909FC5;
-    dw $0000,$8000,$0000,$C000,$0000,$0000,$0000,$8000                   ;909FD5;
-    dw $0000,$C000,$0000,$0000,$0000,$8000,$0000,$C000                   ;909FE5;
-    dw $0002,$0000,$0000,$8000,$0000,$C000,$0000,$0000                   ;909FF5;
-    dw $0000,$8000,$0000,$C000,$0001,$4000,$0000,$8000                   ;90A005;
-    dw $0000,$C000,$0000,$8000,$0000,$8000,$0000,$C000                   ;90A015;
-    dw $0003,$4000,$0000,$8000,$0000,$C000,$0001,$4000                   ;90A025;
-    dw $0000,$8000,$0000,$C000,$0001,$0000,$0000,$8000                   ;90A035;
-    dw $0000,$C000,$0001,$6000,$0000,$8000,$0000,$C000                   ;90A045;
-    dw $0000,$0000,$0000,$8000,$0000,$C000,$0001,$4000                   ;90A055;
-    dw $0000,$8000,$0000,$C000,$0000,$0000,$0000,$8000                   ;90A065;
-    dw $0000,$C000,$0000,$0000,$0000,$8000,$0000,$C000                   ;90A075;
-    dw $0005,$0000,$0000,$8000                                           ;90A085;
+SamusXSpeedTable_Normal:                                                 ;909F55;
+; Used for Samus X base speed (due to general movement)
 
-SamusXSpeedTable_InWater:
-    dw $0000,$C000,$0000,$0000,$0000,$0800,$0000,$0400                   ;90A08D;
-    dw $0002,$C000,$0000,$0800,$0000,$C000,$0001,$4000                   ;90A09D;
-    dw $0000,$0800,$0000,$C000,$0001,$6000,$0000,$0800                   ;90A0AD;
-    dw $0000,$0400,$0002,$C000,$0000,$0800,$0000,$C000                   ;90A0BD;
-    dw $0000,$0000,$0000,$0800,$0000,$C000,$0001,$0000                   ;90A0CD;
-    dw $0000,$0800,$0002,$0000,$0001,$0000,$0000,$0800                   ;90A0DD;
-    dw $0000,$0400,$0001,$8000,$0000,$0800,$0002,$0000                   ;90A0ED;
-    dw $0002,$0000,$0000,$0800,$0001,$8000,$0005,$0000                   ;90A0FD;
-    dw $0000,$0800,$0000,$C000,$0000,$0000,$0000,$0800                   ;90A10D;
-    dw $0000,$C000,$0000,$0000,$0000,$0800,$0000,$C000                   ;90A11D;
-    dw $0002,$0000,$0000,$0800,$0000,$C000,$0000,$0000                   ;90A12D;
-    dw $0000,$0800,$0000,$C000,$0001,$4000,$0000,$0800                   ;90A13D;
-    dw $0000,$C000,$0000,$8000,$0000,$0800,$0000,$0400                   ;90A14D;
-    dw $0002,$C000,$0000,$0800,$0000,$0400,$0001,$4000                   ;90A15D;
-    dw $0000,$0800,$0000,$0400,$0001,$8000,$0000,$0800                   ;90A16D;
-    dw $0000,$C000,$0001,$6000,$0000,$0800,$0000,$C000                   ;90A17D;
-    dw $0000,$0000,$0000,$0800,$0000,$C000,$0001,$4000                   ;90A18D;
-    dw $0000,$0800,$0000,$C000,$0000,$0000,$0000,$0800                   ;90A19D;
-    dw $0000,$C000,$0000,$0000,$0000,$0800,$0000,$C000                   ;90A1AD;
-    dw $0000,$8000,$0000,$0800,$0000,$C000,$0005,$0000                   ;90A1BD;
-    dw $0000,$0800,$0000,$C000,$0005,$0000,$0000,$0800                   ;90A1CD;
+;        _________________________________ X acceleration
+;       |      ___________________________ X subacceleration
+;       |     |      _____________________ Max X speed
+;       |     |     |      _______________ Max X subspeed
+;       |     |     |     |      _________ X deceleration
+;       |     |     |     |     |      ___ X subdeceleration
+;       |     |     |     |     |     |
+    dw $0000,$C000,$0000,$0000,$0000,$8000 ; 0: Standing
+    dw $0000,$3000,$0002,$C000,$0000,$8000 ; 1: Running
+    dw $0000,$C000,$0001,$4000,$0000,$8000 ; 2: Normal jumping
+    dw $0000,$C000,$0001,$6000,$0000,$8000 ; 3: Spin jumping
+    dw $0000,$C000,$0003,$4000,$0000,$8000 ; 4: Morph ball - on ground
+    dw $0000,$C000,$0000,$0000,$0000,$8000 ; 5: Crouching
+    dw $0000,$C000,$0001,$0000,$0000,$8000 ; 6: Falling
+    dw $0002,$0000,$0001,$0000,$0000,$8000 ; 7: Unused
+    dw $0000,$C000,$0001,$0000,$0000,$8000 ; 8: Morph ball - falling
+    dw $0002,$0000,$0002,$0000,$0000,$8000 ; 9: Unused
+    dw $0001,$8000,$0005,$0000,$0000,$8000 ; Ah: Knockback / crystal flash ending
+    dw $0000,$C000,$0000,$0000,$0000,$8000 ; Bh: Unused
+    dw $0000,$C000,$0000,$0000,$0000,$8000 ; Ch: Unused
+    dw $0000,$C000,$0002,$0000,$0000,$8000 ; Dh: Unused
+    dw $0000,$C000,$0000,$0000,$0000,$8000 ; Eh: Turning around - on ground
+    dw $0000,$C000,$0001,$4000,$0000,$8000 ; Fh: Crouching/standing/morphing/unmorphing transition
+    dw $0000,$C000,$0000,$8000,$0000,$8000 ; 10h: Moonwalking
+    dw $0000,$C000,$0003,$4000,$0000,$8000 ; 11h: Spring ball - on ground
+    dw $0000,$C000,$0001,$4000,$0000,$8000 ; 12h: Spring ball - in air
+    dw $0000,$C000,$0001,$0000,$0000,$8000 ; 13h: Spring ball - falling
+    dw $0000,$C000,$0001,$6000,$0000,$8000 ; 14h: Wall jumping
+    dw $0000,$C000,$0000,$0000,$0000,$8000 ; 15h: Ran into a wall
+    dw $0000,$C000,$0001,$4000,$0000,$8000 ; 16h: Grappling
+    dw $0000,$C000,$0000,$0000,$0000,$8000 ; 17h: Turning around - jumping
+    dw $0000,$C000,$0000,$0000,$0000,$8000 ; 18h: Turning around - falling
+    dw $0000,$C000,$0005,$0000,$0000,$8000 ; 19h: Damage boost
 
-SamusXSpeedTable_InLavaAcid:
-    dw $0000,$C000,$0000,$0000,$0000,$4000,$0000,$0400                   ;90A1DD;
-    dw $0001,$C000,$0000,$4000,$0000,$C000,$0001,$4000                   ;90A1ED;
-    dw $0000,$4000,$0000,$C000,$0001,$6000,$0000,$4000                   ;90A1FD;
-    dw $0000,$0400,$0002,$C000,$0000,$4000,$0000,$C000                   ;90A20D;
-    dw $0000,$0000,$0000,$4000,$0000,$C000,$0001,$0000                   ;90A21D;
-    dw $0000,$4000,$0002,$0000,$0001,$0000,$0000,$4000                   ;90A22D;
-    dw $0000,$0400,$0001,$6000,$0000,$4000,$0002,$0000                   ;90A23D;
-    dw $0002,$0000,$0000,$4000,$0001,$8000,$0005,$0000                   ;90A24D;
-    dw $0000,$4000,$0000,$C000,$0000,$0000,$0000,$4000                   ;90A25D;
-    dw $0000,$C000,$0000,$0000,$0000,$4000,$0000,$C000                   ;90A26D;
-    dw $0002,$0000,$0000,$4000,$0000,$C000,$0000,$0000                   ;90A27D;
-    dw $0000,$4000,$0000,$C000,$0001,$4000,$0000,$4000                   ;90A28D;
-    dw $0000,$C000,$0000,$8000,$0000,$4000,$0000,$0400                   ;90A29D;
-    dw $0002,$C000,$0000,$4000,$0000,$0400,$0001,$4000                   ;90A2AD;
-    dw $0000,$4000,$0000,$0400,$0001,$6000,$0000,$4000                   ;90A2BD;
-    dw $0000,$C000,$0001,$6000,$0000,$4000,$0000,$C000                   ;90A2CD;
-    dw $0000,$0000,$0000,$4000,$0000,$C000,$0001,$4000                   ;90A2DD;
-    dw $0000,$4000,$0000,$C000,$0000,$0000,$0000,$4000                   ;90A2ED;
-    dw $0000,$C000,$0000,$0000,$0000,$4000,$0000,$C000                   ;90A2FD;
-    dw $0000,$8000,$0000,$4000,$0000,$C000,$0005,$0000                   ;90A30D;
-    dw $0000,$4000,$0000,$C000,$0005,$0000,$0000,$4000                   ;90A31D;
+SamusXSpeedTable_InWater:                                                ;90A08D;
+; Used for Samus X base speed (due to general movement)
+
+;        _________________________________ X acceleration
+;       |      ___________________________ X subacceleration
+;       |     |      _____________________ Max X speed
+;       |     |     |      _______________ Max X subspeed
+;       |     |     |     |      _________ X deceleration
+;       |     |     |     |     |      ___ X subdeceleration
+;       |     |     |     |     |     |
+    dw $0000,$C000,$0000,$0000,$0000,$0800 ; 0: Standing
+    dw $0000,$0400,$0002,$C000,$0000,$0800 ; 1: Running
+    dw $0000,$C000,$0001,$4000,$0000,$0800 ; 2: Normal jumping
+    dw $0000,$C000,$0001,$6000,$0000,$0800 ; 3: Spin jumping
+    dw $0000,$0400,$0002,$C000,$0000,$0800 ; 4: Morph ball - on ground
+    dw $0000,$C000,$0000,$0000,$0000,$0800 ; 5: Crouching
+    dw $0000,$C000,$0001,$0000,$0000,$0800 ; 6: Falling
+    dw $0002,$0000,$0001,$0000,$0000,$0800 ; 7: Unused
+    dw $0000,$0400,$0001,$8000,$0000,$0800 ; 8: Morph ball - falling
+    dw $0002,$0000,$0002,$0000,$0000,$0800 ; 9: Unused
+    dw $0001,$8000,$0005,$0000,$0000,$0800 ; Ah: Knockback / crystal flash ending
+    dw $0000,$C000,$0000,$0000,$0000,$0800 ; Bh: Unused
+    dw $0000,$C000,$0000,$0000,$0000,$0800 ; Ch: Unused
+    dw $0000,$C000,$0002,$0000,$0000,$0800 ; Dh: Unused
+    dw $0000,$C000,$0000,$0000,$0000,$0800 ; Eh: Turning around - on ground
+    dw $0000,$C000,$0001,$4000,$0000,$0800 ; Fh: Crouching/standing/morphing/unmorphing transition
+    dw $0000,$C000,$0000,$8000,$0000,$0800 ; 10h: Moonwalking
+    dw $0000,$0400,$0002,$C000,$0000,$0800 ; 11h: Spring ball - on ground
+    dw $0000,$0400,$0001,$4000,$0000,$0800 ; 12h: Spring ball - in air
+    dw $0000,$0400,$0001,$8000,$0000,$0800 ; 13h: Spring ball - falling
+    dw $0000,$C000,$0001,$6000,$0000,$0800 ; 14h: Wall jumping
+    dw $0000,$C000,$0000,$0000,$0000,$0800 ; 15h: Ran into a wall
+    dw $0000,$C000,$0001,$4000,$0000,$0800 ; 16h: Grappling
+    dw $0000,$C000,$0000,$0000,$0000,$0800 ; 17h: Turning around - jumping
+    dw $0000,$C000,$0000,$0000,$0000,$0800 ; 18h: Turning around - falling
+    dw $0000,$C000,$0000,$8000,$0000,$0800 ; 19h: Damage boost
+    dw $0000,$C000,$0005,$0000,$0000,$0800 ; 1Ah: Grabbed by Draygon
+    dw $0000,$C000,$0005,$0000,$0000,$0800 ; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
+
+SamusXSpeedTable_InLavaAcid:                                             ;90A1DD;
+; Used for Samus X base speed (due to general movement)
+
+;        _________________________________ X acceleration
+;       |      ___________________________ X subacceleration
+;       |     |      _____________________ Max X speed
+;       |     |     |      _______________ Max X subspeed
+;       |     |     |     |      _________ X deceleration
+;       |     |     |     |     |      ___ X subdeceleration
+;       |     |     |     |     |     |
+    dw $0000,$C000,$0000,$0000,$0000,$4000 ; 0: Standing
+    dw $0000,$0400,$0001,$C000,$0000,$4000 ; 1: Running
+    dw $0000,$C000,$0001,$4000,$0000,$4000 ; 2: Normal jumping
+    dw $0000,$C000,$0001,$6000,$0000,$4000 ; 3: Spin jumping
+    dw $0000,$0400,$0002,$C000,$0000,$4000 ; 4: Morph ball - on ground
+    dw $0000,$C000,$0000,$0000,$0000,$4000 ; 5: Crouching
+    dw $0000,$C000,$0001,$0000,$0000,$4000 ; 6: Falling
+    dw $0002,$0000,$0001,$0000,$0000,$4000 ; 7: Unused
+    dw $0000,$0400,$0001,$6000,$0000,$4000 ; 8: Morph ball - falling
+    dw $0002,$0000,$0002,$0000,$0000,$4000 ; 9: Unused
+    dw $0001,$8000,$0005,$0000,$0000,$4000 ; Ah: Knockback / crystal flash ending
+    dw $0000,$C000,$0000,$0000,$0000,$4000 ; Bh: Unused
+    dw $0000,$C000,$0000,$0000,$0000,$4000 ; Ch: Unused
+    dw $0000,$C000,$0002,$0000,$0000,$4000 ; Dh: Unused
+    dw $0000,$C000,$0000,$0000,$0000,$4000 ; Eh: Turning around - on ground
+    dw $0000,$C000,$0001,$4000,$0000,$4000 ; Fh: Crouching/standing/morphing/unmorphing transition
+    dw $0000,$C000,$0000,$8000,$0000,$4000 ; 10h: Moonwalking
+    dw $0000,$0400,$0002,$C000,$0000,$4000 ; 11h: Spring ball - on ground
+    dw $0000,$0400,$0001,$4000,$0000,$4000 ; 12h: Spring ball - in air
+    dw $0000,$0400,$0001,$6000,$0000,$4000 ; 13h: Spring ball - falling
+    dw $0000,$C000,$0001,$6000,$0000,$4000 ; 14h: Wall jumping
+    dw $0000,$C000,$0000,$0000,$0000,$4000 ; 15h: Ran into a wall
+    dw $0000,$C000,$0001,$4000,$0000,$4000 ; 16h: Grappling
+    dw $0000,$C000,$0000,$0000,$0000,$4000 ; 17h: Turning around - jumping
+    dw $0000,$C000,$0000,$0000,$0000,$4000 ; 18h: Turning around - falling
+    dw $0000,$C000,$0000,$8000,$0000,$4000 ; 19h: Damage boost
+    dw $0000,$C000,$0005,$0000,$0000,$4000 ; 1Ah: Grabbed by Draygon
+    dw $0000,$C000,$0005,$0000,$0000,$4000 ; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 UNUSED_SamusMovement_7_90A32D:
     PHP                                                                  ;90A32D;
@@ -4715,34 +4809,34 @@ SamusMovementHandler_Normal:
 
 
 .pointers:
-    dw SamusMovement_Standing                                            ;90A34B;
-    dw SamusMovement_Running                                             ;90A34D;
-    dw SamusMovement_Jumping                                             ;90A34F;
-    dw SamusMovement_SpinJumping                                         ;90A351;
-    dw SamusMovement_MorphBall_OnGround                                  ;90A353;
-    dw SamusMovement_Crouching                                           ;90A355;
-    dw SamusMovement_Falling                                             ;90A357;
-    dw UNUSED_SamusMovement_7_90A32D                                     ;90A359;
-    dw SamusMovement_MorphBall_Falling                                   ;90A35B;
-    dw UNUSED_RTS_90A5FB                                                 ;90A35D;
-    dw SamusMovement_Knockback_CrystalFlashEnding                        ;90A35F;
-    dw UNUSED_SamusMovement_B_90A607                                     ;90A361;
-    dw UNUSED_SamusMovement_C_90A60F                                     ;90A363;
-    dw UNUSED_SamusMovement_D_90A617                                     ;90A365;
-    dw SamusMovement_TurningAround_OnGround                              ;90A367;
-    dw SamusMovement_TransitionPoses                                     ;90A369;
-    dw SamusMovement_Moonwalking                                         ;90A36B;
-    dw SamusMovement_SpringBall_OnGround                                 ;90A36D;
-    dw SamusMovement_SpringBall_InAir                                    ;90A36F;
-    dw SamusMovement_SpringBall_Falling                                  ;90A371;
-    dw SamusMovement_WallJumping                                         ;90A373;
-    dw SamusMovement_RanIntoAWall                                        ;90A375;
-    dw SamusMovement_Grappling                                           ;90A377;
-    dw SamusMovement_TurningAround_Jumping                               ;90A379;
-    dw SamusMovement_TurningAround_Falling                               ;90A37B;
-    dw SamusMovement_DamageBoost                                         ;90A37D;
-    dw SamusMovement_GrabbedByDraygon                                    ;90A37F;
-    dw SamusMovement_Shinespark_CF_Drained_DamagedByMotherBrain          ;90A381;
+    dw SamusMovement_Standing                                            ;90A34B; 0: Standing
+    dw SamusMovement_Running                                             ;90A34D; 1: Running
+    dw SamusMovement_Jumping                                             ;90A34F; 2: Normal jumping
+    dw SamusMovement_SpinJumping                                         ;90A351; 3: Spin jumping
+    dw SamusMovement_MorphBall_OnGround                                  ;90A353; 4: Morph ball - on ground
+    dw SamusMovement_Crouching                                           ;90A355; 5: Crouching
+    dw SamusMovement_Falling                                             ;90A357; 6: Falling
+    dw UNUSED_SamusMovement_7_90A32D                                     ;90A359; 7: Unused
+    dw SamusMovement_MorphBall_Falling                                   ;90A35B; 8: Morph ball - falling
+    dw UNUSED_RTS_90A5FB                                                 ;90A35D; 9: Unused
+    dw SamusMovement_Knockback_CrystalFlashEnding                        ;90A35F; Ah: Knockback / crystal flash ending
+    dw UNUSED_SamusMovement_B_90A607                                     ;90A361; Bh: Unused
+    dw UNUSED_SamusMovement_C_90A60F                                     ;90A363; Ch: Unused
+    dw UNUSED_SamusMovement_D_90A617                                     ;90A365; Dh: Unused
+    dw SamusMovement_TurningAround_OnGround                              ;90A367; Eh: Turning around - on ground
+    dw SamusMovement_TransitionPoses                                     ;90A369; Fh: Crouching/standing/morphing/unmorphing transition
+    dw SamusMovement_Moonwalking                                         ;90A36B; 10h: Moonwalking
+    dw SamusMovement_SpringBall_OnGround                                 ;90A36D; 11h: Spring ball - on ground
+    dw SamusMovement_SpringBall_InAir                                    ;90A36F; 12h: Spring ball - in air
+    dw SamusMovement_SpringBall_Falling                                  ;90A371; 13h: Spring ball - falling
+    dw SamusMovement_WallJumping                                         ;90A373; 14h: Wall jumping
+    dw SamusMovement_RanIntoAWall                                        ;90A375; 15h: Ran into a wall
+    dw SamusMovement_Grappling                                           ;90A377; 16h: Grappling
+    dw SamusMovement_TurningAround_Jumping                               ;90A379; 17h: Turning around - jumping
+    dw SamusMovement_TurningAround_Falling                               ;90A37B; 18h: Turning around - falling
+    dw SamusMovement_DamageBoost                                         ;90A37D; 19h: Damage boost
+    dw SamusMovement_GrabbedByDraygon                                    ;90A37F; 1Ah: Grabbed by Draygon
+    dw SamusMovement_Shinespark_CF_Drained_DamagedByMotherBrain          ;90A381; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 SamusMovement_Standing:
     PHP                                                                  ;90A383;
@@ -4830,6 +4924,7 @@ SamusMovement_Running:
 
 
 .frames:
+; Presumably these frames correspond to the points when Samus' foot hits the ground
     db $00,$00,$01,$00,$00,$00,$00,$01,$00,$00                           ;90A424;
 
 SamusMovement_Jumping:
@@ -4962,6 +5057,7 @@ SamusMovement_SpinJumping:
 
 
 .framesSFX:
+; Samus animation frames on which to play underwater space jump sound effect
     db $01,$00,$00,$00,$00,$00,$00,$00,$01,$00,$00,$00,$00               ;90A514;
 
 SamusMovement_MorphBall_OnGround:
@@ -5158,18 +5254,18 @@ SamusMovement_TransitionPoses:
 
 
 .pointers:
-    dw RTS_90A671                                                        ;90A659;
-    dw RTS_90A671                                                        ;90A65B;
-    dw RTS_90A671                                                        ;90A65D;
-    dw RTS_90A671                                                        ;90A65F;
-    dw Enable_Horizontal_Slope_Detection                                 ;90A661;
-    dw Enable_Horizontal_Slope_Detection                                 ;90A663;
-    dw RTS_90A671                                                        ;90A665;
-    dw RTS_90A671                                                        ;90A667;
-    dw RTS_90A671                                                        ;90A669;
-    dw RTS_90A671                                                        ;90A66B;
-    dw Enable_Horizontal_Slope_Detection                                 ;90A66D;
-    dw Enable_Horizontal_Slope_Detection                                 ;90A66F;
+    dw RTS_90A671                                                        ;90A659; 35h: Facing right - crouching transition
+    dw RTS_90A671                                                        ;90A65B; 36h: Facing left  - crouching transition
+    dw RTS_90A671                                                        ;90A65D; 37h: Facing right - morphing transition
+    dw RTS_90A671                                                        ;90A65F; 38h: Facing left  - morphing transition
+    dw Enable_Horizontal_Slope_Detection                                 ;90A661; 39h: Unused
+    dw Enable_Horizontal_Slope_Detection                                 ;90A663; 3Ah: Unused
+    dw RTS_90A671                                                        ;90A665; 3Bh: Facing right - standing transition
+    dw RTS_90A671                                                        ;90A667; 3Ch: Facing left  - standing transition
+    dw RTS_90A671                                                        ;90A669; 3Dh: Facing right - unmorphing transition
+    dw RTS_90A671                                                        ;90A66B; 3Eh: Facing left  - unmorphing transition
+    dw Enable_Horizontal_Slope_Detection                                 ;90A66D; 3Fh: Unused
+    dw Enable_Horizontal_Slope_Detection                                 ;90A66F; 40h: Unused
 
 RTS_90A671:
     RTS                                                                  ;90A671;
@@ -5465,42 +5561,52 @@ DisableMinimap_MarkBossRoomTilesExplored:
     RTL                                                                  ;90A839;
 
 
-.bossID:
+;        ________ Boss ID
+;       |     ___ Pointer to room map tile offsets
+;       |    |
+  .bossID
     dw $0003                                                             ;90A83A;
+  .pointer
+    dw       .kraid                                                      ;90A83C;
+    dw $0006,.crocomire                                                  ;90A83E;
+    dw $0007,.phantoon                                                   ;90A842;
+    dw $0008,.draygon                                                    ;90A846;
+    dw $000A,.motherBrain                                                ;90A84A;
+    dw $0005,.ridley                                                     ;90A84E;
 
-.pointer:
-    dw .kraid                                                            ;90A83C;
-    dw $0006                                                             ;90A83E;
-    dw .crocomire                                                        ;90A840;
-    dw $0007                                                             ;90A842;
-    dw .phantoon                                                         ;90A844;
-    dw $0008                                                             ;90A846;
-    dw .draygon                                                          ;90A848;
-    dw $000A                                                             ;90A84A;
-    dw .motherBrain                                                      ;90A84C;
-    dw $0005                                                             ;90A84E;
-    dw .ridley                                                           ;90A850;
-
-.kraid:
-    dw $0000,$0000,$0100,$0000,$0000,$0100,$0100,$0100                   ;90A852;
-    dw $FFFF                                                             ;90A862;
-
-.crocomire:
-    dw $0300,$0000,$0400,$0000,$0500,$0000,$FFFF                         ;90A864;
-
-.phantoon:
-    dw $0000,$0000,$FFFF                                                 ;90A872;
-
-.draygon:
-    dw $0000,$0000,$0100,$0000,$0000,$0100,$0100,$0100                   ;90A878;
-    dw $FFFF                                                             ;90A888;
-
-.motherBrain:
-    dw $0000,$0000,$0100,$0000,$0200,$0000,$0300,$0000                   ;90A88A;
-    dw $FFFF                                                             ;90A89A;
-
-.ridley:
-    dw $0000,$0000,$0000,$0100,$FFFF                                     ;90A89C;
+;        _________ X offset (in pixels)
+;       |      ___ Y offset (in pixels)
+;       |     |
+  .kraid                                                                 ;90A852;
+    dw $0000,$0000
+    dw $0100,$0000
+    dw $0000,$0100
+    dw $0100,$0100
+    dw $FFFF
+  .crocomire                                                             ;90A864;
+    dw $0300,$0000
+    dw $0400,$0000
+    dw $0500,$0000
+    dw $FFFF
+  .phantoon                                                              ;90A872;
+    dw $0000,$0000
+    dw $FFFF
+  .draygon                                                               ;90A878;
+    dw $0000,$0000
+    dw $0100,$0000
+    dw $0000,$0100
+    dw $0100,$0100
+    dw $FFFF
+  .motherBrain                                                           ;90A88A;
+    dw $0000,$0000
+    dw $0100,$0000
+    dw $0200,$0000
+    dw $0300,$0000
+    dw $FFFF
+  .ridley                                                                ;90A89C;
+    dw $0000,$0000
+    dw $0000,$0100
+    dw $FFFF
 
 MarkMapTilesExplored:
     PHP                                                                  ;90A8A6;
@@ -6025,6 +6131,9 @@ Bitmasks_1bit_90AC04:
     db $80,$40,$20,$10,$08,$04,$02,$01                                   ;90AC04;
 
 Bitmasks_6bit_90AC0C:
+; Why are these 6-bits instead of 5?
+; FC00h >> i
+; 3Fh << Ah - i
     dw $FC00,$7E00,$3F00,$1F80,$0FC0,$07E0,$03F0,$01F8                   ;90AC0C;
 
 Handle_Samus_Cooldown:
@@ -6492,17 +6601,17 @@ Beam_NoWaveBeam:
     RTS                                                                  ;90AF35;
 
 
-.pointers:
-    dw BeamBlockCollision_NoWaveBeam_Vertical                            ;90AF36;
-    dw BeamBlockCollision_NoWaveBeam_Diagonal                            ;90AF38;
-    dw BeamBlockCollision_NoWaveBeam_Horizontal                          ;90AF3A;
-    dw BeamBlockCollision_NoWaveBeam_Diagonal                            ;90AF3C;
-    dw BeamBlockCollision_NoWaveBeam_Vertical                            ;90AF3E;
-    dw BeamBlockCollision_NoWaveBeam_Vertical                            ;90AF40;
-    dw BeamBlockCollision_NoWaveBeam_Diagonal                            ;90AF42;
-    dw BeamBlockCollision_NoWaveBeam_Horizontal                          ;90AF44;
-    dw BeamBlockCollision_NoWaveBeam_Diagonal                            ;90AF46;
-    dw BeamBlockCollision_NoWaveBeam_Vertical                            ;90AF48;
+  .pointers
+    dw BeamBlockCollision_NoWaveBeam_Vertical                            ;90AF36; 0: Up, facing right
+    dw BeamBlockCollision_NoWaveBeam_Diagonal                            ;90AF38; 1: Up-right
+    dw BeamBlockCollision_NoWaveBeam_Horizontal                          ;90AF3A; 2: Right
+    dw BeamBlockCollision_NoWaveBeam_Diagonal                            ;90AF3C; 3: Down-right
+    dw BeamBlockCollision_NoWaveBeam_Vertical                            ;90AF3E; 4: Down, facing right
+    dw BeamBlockCollision_NoWaveBeam_Vertical                            ;90AF40; 5: Down, facing left
+    dw BeamBlockCollision_NoWaveBeam_Diagonal                            ;90AF42; 6: Down-left
+    dw BeamBlockCollision_NoWaveBeam_Horizontal                          ;90AF44; 7: Left
+    dw BeamBlockCollision_NoWaveBeam_Diagonal                            ;90AF46; 8: Up-left
+    dw BeamBlockCollision_NoWaveBeam_Vertical                            ;90AF48; 9: Up, facing left
 
 BeamBlockCollision_NoWaveBeam_Vertical:
     LDX.W $0DDE                                                          ;90AF4A;
@@ -6566,17 +6675,17 @@ ProjectilePreInstruction_Missile:
     RTS                                                                  ;90AFB2;
 
 
-.pointers:
-    dw MissileBlockCollision_Vertical                                    ;90AFB3;
-    dw MissileBlockCollision_Diagonal                                    ;90AFB5;
-    dw MissileBlockCollision_Horizontal                                  ;90AFB7;
-    dw MissileBlockCollision_Diagonal                                    ;90AFB9;
-    dw MissileBlockCollision_Vertical                                    ;90AFBB;
-    dw MissileBlockCollision_Vertical                                    ;90AFBD;
-    dw MissileBlockCollision_Diagonal                                    ;90AFBF;
-    dw MissileBlockCollision_Horizontal                                  ;90AFC1;
-    dw MissileBlockCollision_Diagonal                                    ;90AFC3;
-    dw MissileBlockCollision_Vertical                                    ;90AFC5;
+  .pointers
+    dw MissileBlockCollision_Vertical                                    ;90AFB3; 0: Up, facing right
+    dw MissileBlockCollision_Diagonal                                    ;90AFB5; 1: Up-right
+    dw MissileBlockCollision_Horizontal                                  ;90AFB7; 2: Right
+    dw MissileBlockCollision_Diagonal                                    ;90AFB9; 3: Down-right
+    dw MissileBlockCollision_Vertical                                    ;90AFBB; 4: Down, facing right
+    dw MissileBlockCollision_Vertical                                    ;90AFBD; 5: Down, facing left
+    dw MissileBlockCollision_Diagonal                                    ;90AFBF; 6: Down-left
+    dw MissileBlockCollision_Horizontal                                  ;90AFC1; 7: Left
+    dw MissileBlockCollision_Diagonal                                    ;90AFC3; 8: Up-left
+    dw MissileBlockCollision_Vertical                                    ;90AFC5; 9: Up, facing left
 
 MissileBlockCollision_Vertical:
     LDX.W $0DDE                                                          ;90AFC7;
@@ -6647,17 +6756,17 @@ ProjectilePreInstruction_SuperMissile:
     RTS                                                                  ;90B032;
 
 
-.pointers:
-    dw SuperMissileBlockCollision_Vertical                               ;90B033;
-    dw SuperMissileBlockCollision_Diagonal                               ;90B035;
-    dw SuperMissileBlockCollision_Horizontal                             ;90B037;
-    dw SuperMissileBlockCollision_Diagonal                               ;90B039;
-    dw SuperMissileBlockCollision_Vertical                               ;90B03B;
-    dw SuperMissileBlockCollision_Vertical                               ;90B03D;
-    dw SuperMissileBlockCollision_Diagonal                               ;90B03F;
-    dw SuperMissileBlockCollision_Horizontal                             ;90B041;
-    dw SuperMissileBlockCollision_Diagonal                               ;90B043;
-    dw SuperMissileBlockCollision_Vertical                               ;90B045;
+  .pointers
+    dw SuperMissileBlockCollision_Vertical                               ;90B033; 0: Up, facing right
+    dw SuperMissileBlockCollision_Diagonal                               ;90B035; 1: Up-right
+    dw SuperMissileBlockCollision_Horizontal                             ;90B037; 2: Right
+    dw SuperMissileBlockCollision_Diagonal                               ;90B039; 3: Down-right
+    dw SuperMissileBlockCollision_Vertical                               ;90B03B; 4: Down, facing right
+    dw SuperMissileBlockCollision_Vertical                               ;90B03D; 5: Down, facing left
+    dw SuperMissileBlockCollision_Diagonal                               ;90B03F; 6: Down-left
+    dw SuperMissileBlockCollision_Horizontal                             ;90B041; 7: Left
+    dw SuperMissileBlockCollision_Diagonal                               ;90B043; 8: Up-left
+    dw SuperMissileBlockCollision_Vertical                               ;90B045; 9: Up, facing left
 
 SuperMissileBlockCollision_Vertical:
     LDX.W $0DDE                                                          ;90B047;
@@ -6936,6 +7045,28 @@ InitializeMissileVelocities:
 
 
 InitializeProjectileVelocities:
+;; Parameters:
+;;     X: Projectile index
+;;     $12: Projectile index
+;;     $16: Base speed
+
+; There's a repeating issue in all of the subroutines jumped to from here with how "distance Samus moved" is loaded
+; These are the variables:
+;     $0DAA.$0DAC: Distance Samus moved left
+;     $0DAE.$0DB0: Distance Samus moved right
+;     $0DB2.$0DB4: Distance Samus moved up
+;     $0DB6.$0DB8: Distance Samus moved down
+
+; Notice that the most significant word is stored before the least significant
+; Generally speaking, it's more useful to extend little endian ordering and store the least significant word first
+; If distance Samus moved left was $0DAC.$0DAA, then loading $0DAB would give (distance Samus moved left) * 100h,
+; disregarding the high byte of $0DAC and low byte of $0DAA, which is a common trick used a lot in SM
+
+; It looks like they tried to apply this trick without realising the ordering of the words isn't suitable
+; E.g. $0DA9 is loaded into A for (distance Samus moved left) * 100h, which does load the low byte of $0DAA into the high byte of A,
+; but also loads garbage (namely the high byte of $0DA8) into the low byte of A
+
+; TODO: add these pesky garbage low bytes to the below calculations
     STZ.W $0B8C,X                                                        ;90B1F3;
     STZ.W $0BA0,X                                                        ;90B1F6;
     LDA.W $0C04,X                                                        ;90B1F9;
@@ -7374,29 +7505,35 @@ endif ; !FEATURE_KEEP_UNREFERENCED
 InstList_BeamTrail_Empty:
     dw $0000                                                             ;90B4C9;
 
-InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam:
-    dw $0001,$2C38,$0001,$2C38,$0001,$2C38,$0001,$2C38                   ;90B4CB;
-    dw $0001,$2C39,$0001,$2C39                                           ;90B4DB;
-    dw Instruction_MoveLeftProjectileTrailDownOnePixel                   ;90B4E3;
-    dw $0001,$2C39,$0001,$2C39                                           ;90B4E5;
-    dw Instruction_MoveLeftProjectileTrailDownOnePixel                   ;90B4ED;
-    dw $0001,$2C3A                                                       ;90B4EF;
-    dw Instruction_MoveLeftProjectileTrailDownOnePixel                   ;90B4F3;
-    dw $0001,$2C3A                                                       ;90B4F5;
-    dw Instruction_MoveLeftProjectileTrailDownOnePixel                   ;90B4F9;
-    dw $0001,$2C3A                                                       ;90B4FB;
-    dw Instruction_MoveLeftProjectileTrailDownOnePixel                   ;90B4FF;
-    dw $0001,$2C3A                                                       ;90B501;
-    dw Instruction_MoveLeftProjectileTrailDownOnePixel                   ;90B505;
-    dw $0001,$2C3A                                                       ;90B507;
-    dw Instruction_MoveLeftProjectileTrailDownOnePixel                   ;90B50B;
-    dw $0001,$2C3A                                                       ;90B50D;
-    dw Instruction_MoveLeftProjectileTrailDownOnePixel                   ;90B511;
-    dw $0001,$2C3A                                                       ;90B513;
-    dw Instruction_MoveLeftProjectileTrailDownOnePixel                   ;90B517;
-    dw $0001,$2C3A                                                       ;90B519;
-    dw Instruction_MoveLeftProjectileTrailDownOnePixel                   ;90B51D;
-    dw $0004,$2C3B,$0000                                                 ;90B51F;
+InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam:                        ;90B4CB;
+    dw $0001,$2C38
+    dw $0001,$2C38
+    dw $0001,$2C38
+    dw $0001,$2C38
+    dw $0001,$2C39
+    dw $0001,$2C39
+    dw Instruction_MoveLeftProjectileTrailDownOnePixel
+    dw $0001,$2C39
+    dw $0001,$2C39
+    dw Instruction_MoveLeftProjectileTrailDownOnePixel
+    dw $0001,$2C3A
+    dw Instruction_MoveLeftProjectileTrailDownOnePixel
+    dw $0001,$2C3A
+    dw Instruction_MoveLeftProjectileTrailDownOnePixel
+    dw $0001,$2C3A
+    dw Instruction_MoveLeftProjectileTrailDownOnePixel
+    dw $0001,$2C3A
+    dw Instruction_MoveLeftProjectileTrailDownOnePixel
+    dw $0001,$2C3A
+    dw Instruction_MoveLeftProjectileTrailDownOnePixel
+    dw $0001,$2C3A
+    dw Instruction_MoveLeftProjectileTrailDownOnePixel
+    dw $0001,$2C3A
+    dw Instruction_MoveLeftProjectileTrailDownOnePixel
+    dw $0001,$2C3A
+    dw Instruction_MoveLeftProjectileTrailDownOnePixel
+    dw $0004,$2C3B
+    dw $0000
 
 Instruction_MoveLeftProjectileTrailDownOnePixel:
     LDA.W $D778,Y                                                        ;90B525;
@@ -7405,29 +7542,35 @@ Instruction_MoveLeftProjectileTrailDownOnePixel:
     RTS                                                                  ;90B52C;
 
 
-InstList_RightBeamTrail_SomeIceBeams:
-    dw $0001,$2C38,$0001,$2C38,$0001,$2C38,$0001,$2C38                   ;90B52D;
-    dw $0001,$2C39,$0001,$2C39                                           ;90B53D;
-    dw Instruction_MoveRightProjectileTrailDownOnePixel                  ;90B545;
-    dw $0001,$2C39,$0001,$2C39                                           ;90B547;
-    dw Instruction_MoveRightProjectileTrailDownOnePixel                  ;90B54F;
-    dw $0001,$2C3A                                                       ;90B551;
-    dw Instruction_MoveRightProjectileTrailDownOnePixel                  ;90B555;
-    dw $0001,$2C3A                                                       ;90B557;
-    dw Instruction_MoveRightProjectileTrailDownOnePixel                  ;90B55B;
-    dw $0001,$2C3A                                                       ;90B55D;
-    dw Instruction_MoveRightProjectileTrailDownOnePixel                  ;90B561;
-    dw $0001,$2C3A                                                       ;90B563;
-    dw Instruction_MoveRightProjectileTrailDownOnePixel                  ;90B567;
-    dw $0001,$2C3A                                                       ;90B569;
-    dw Instruction_MoveRightProjectileTrailDownOnePixel                  ;90B56D;
-    dw $0001,$2C3A                                                       ;90B56F;
-    dw Instruction_MoveRightProjectileTrailDownOnePixel                  ;90B573;
-    dw $0001,$2C3A                                                       ;90B575;
-    dw Instruction_MoveRightProjectileTrailDownOnePixel                  ;90B579;
-    dw $0001,$2C3A                                                       ;90B57B;
-    dw Instruction_MoveRightProjectileTrailDownOnePixel                  ;90B57F;
-    dw $0004,$2C3B,$0000                                                 ;90B581;
+InstList_RightBeamTrail_SomeIceBeams:                                    ;90B52D;
+    dw $0001,$2C38
+    dw $0001,$2C38
+    dw $0001,$2C38
+    dw $0001,$2C38
+    dw $0001,$2C39
+    dw $0001,$2C39
+    dw Instruction_MoveRightProjectileTrailDownOnePixel
+    dw $0001,$2C39
+    dw $0001,$2C39
+    dw Instruction_MoveRightProjectileTrailDownOnePixel
+    dw $0001,$2C3A
+    dw Instruction_MoveRightProjectileTrailDownOnePixel
+    dw $0001,$2C3A
+    dw Instruction_MoveRightProjectileTrailDownOnePixel
+    dw $0001,$2C3A
+    dw Instruction_MoveRightProjectileTrailDownOnePixel
+    dw $0001,$2C3A
+    dw Instruction_MoveRightProjectileTrailDownOnePixel
+    dw $0001,$2C3A
+    dw Instruction_MoveRightProjectileTrailDownOnePixel
+    dw $0001,$2C3A
+    dw Instruction_MoveRightProjectileTrailDownOnePixel
+    dw $0001,$2C3A
+    dw Instruction_MoveRightProjectileTrailDownOnePixel
+    dw $0001,$2C3A
+    dw Instruction_MoveRightProjectileTrailDownOnePixel
+    dw $0004,$2C3B
+    dw $0000
 
 Instruction_MoveRightProjectileTrailDownOnePixel:
     LDA.W $D79C,Y                                                        ;90B587;
@@ -7436,13 +7579,19 @@ Instruction_MoveRightProjectileTrailDownOnePixel:
     RTS                                                                  ;90B58E;
 
 
-InstList_BeamTrail_WaveBeam:
-    dw $0004,$2A3C,$0004,$2A3D,$0004,$2A3E,$0004,$2A3F                   ;90B58F;
-    dw $0000                                                             ;90B59F;
+InstList_BeamTrail_WaveBeam:                                             ;90B58F;
+    dw $0004,$2A3C
+    dw $0004,$2A3D
+    dw $0004,$2A3E
+    dw $0004,$2A3F
+    dw $0000
 
-InstList_BeamTrail_SuperMissile:
-    dw $0004,$2A48,$0004,$2A49,$0004,$2A4A,$0004,$2A4B                   ;90B5A1;
-    dw $0000                                                             ;90B5B1;
+InstList_BeamTrail_SuperMissile:                                         ;90B5A1;
+    dw $0004,$2A48
+    dw $0004,$2A49
+    dw $0004,$2A4A
+    dw $0004,$2A4B
+    dw $0000
 
 Instruction_MoveLeftProjectileTrailUpOnePixel:
     LDA.W $D778,Y                                                        ;90B5B3;
@@ -7452,86 +7601,86 @@ Instruction_MoveLeftProjectileTrailUpOnePixel:
 
 
 ProjectileTrail_InstListPointers_Left:
-    dw InstList_BeamTrail_Empty                                          ;90B5BB;
-    dw InstList_BeamTrail_WaveBeam                                       ;90B5BD;
-    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5BF;
-    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5C1;
-    dw InstList_BeamTrail_Empty                                          ;90B5C3;
-    dw InstList_BeamTrail_Empty                                          ;90B5C5;
-    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5C7;
-    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5C9;
-    dw InstList_BeamTrail_Empty                                          ;90B5CB;
-    dw InstList_BeamTrail_Empty                                          ;90B5CD;
-    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5CF;
-    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5D1;
-    dw InstList_BeamTrail_Empty                                          ;90B5D3;
-    dw InstList_BeamTrail_Empty                                          ;90B5D5;
-    dw InstList_BeamTrail_Empty                                          ;90B5D7;
-    dw InstList_BeamTrail_Empty                                          ;90B5D9;
-    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5DB;
-    dw InstList_BeamTrail_WaveBeam                                       ;90B5DD;
-    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5DF;
-    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5E1;
-    dw InstList_BeamTrail_Empty                                          ;90B5E3;
-    dw InstList_BeamTrail_Empty                                          ;90B5E5;
-    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5E7;
-    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5E9;
-    dw InstList_BeamTrail_Empty                                          ;90B5EB;
-    dw InstList_BeamTrail_Empty                                          ;90B5ED;
-    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5EF;
-    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5F1;
-    dw InstList_BeamTrail_Empty                                          ;90B5F3;
-    dw InstList_BeamTrail_Empty                                          ;90B5F5;
-    dw InstList_BeamTrail_Empty                                          ;90B5F7;
-    dw InstList_BeamTrail_Empty                                          ;90B5F9;
-    dw InstList_BeamTrail_SuperMissile                                   ;90B5FB;
-    dw InstList_BeamTrail_SuperMissile                                   ;90B5FD;
-    dw InstList_BeamTrail_Empty                                          ;90B5FF;
-    dw InstList_BeamTrail_Empty                                          ;90B601;
-    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B603;
-    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B605;
-    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B607;
+    dw InstList_BeamTrail_Empty                                          ;90B5BB;  0: Uncharged power
+    dw InstList_BeamTrail_WaveBeam                                       ;90B5BD; *1: Uncharged wave
+    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5BF; *2: Uncharged ice
+    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5C1; *3: Uncharged ice + wave
+    dw InstList_BeamTrail_Empty                                          ;90B5C3;  4: Uncharged spazer
+    dw InstList_BeamTrail_Empty                                          ;90B5C5;  5: Uncharged spazer + wave
+    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5C7; *6: Uncharged spazer + ice
+    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5C9; *7: Uncharged spazer + ice + wave
+    dw InstList_BeamTrail_Empty                                          ;90B5CB;  8: Uncharged plasma
+    dw InstList_BeamTrail_Empty                                          ;90B5CD;  9: Uncharged plasma + wave
+    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5CF; *Ah: Uncharged plasma + ice
+    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5D1; *Bh: Uncharged plasma + ice + wave
+    dw InstList_BeamTrail_Empty                                          ;90B5D3;  Ch
+    dw InstList_BeamTrail_Empty                                          ;90B5D5;  Dh
+    dw InstList_BeamTrail_Empty                                          ;90B5D7;  Eh
+    dw InstList_BeamTrail_Empty                                          ;90B5D9;  Fh
+    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5DB; *10h: Charged power
+    dw InstList_BeamTrail_WaveBeam                                       ;90B5DD; *11h: Charged wave
+    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5DF; *12h: Charged ice
+    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5E1; *13h: Charged ice + wave
+    dw InstList_BeamTrail_Empty                                          ;90B5E3;  14h: Charged spazer
+    dw InstList_BeamTrail_Empty                                          ;90B5E5;  15h: Charged spazer + wave
+    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5E7; *16h: Charged spazer + ice
+    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5E9; *17h: Charged spazer + ice + wave
+    dw InstList_BeamTrail_Empty                                          ;90B5EB;  18h: Charged plasma
+    dw InstList_BeamTrail_Empty                                          ;90B5ED;  19h: Charged plasma + wave
+    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5EF; *1Ah: Charged plasma + ice
+    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B5F1; *1Bh: Charged plasma + ice + wave
+    dw InstList_BeamTrail_Empty                                          ;90B5F3;  1Ch
+    dw InstList_BeamTrail_Empty                                          ;90B5F5;  1Dh
+    dw InstList_BeamTrail_Empty                                          ;90B5F7;  1Eh
+    dw InstList_BeamTrail_Empty                                          ;90B5F9;  1Fh
+    dw InstList_BeamTrail_SuperMissile                                   ;90B5FB; *20h: Missile
+    dw InstList_BeamTrail_SuperMissile                                   ;90B5FD; *21h: Super missile
+    dw InstList_BeamTrail_Empty                                          ;90B5FF;  22h
+    dw InstList_BeamTrail_Empty                                          ;90B601;  23h
+    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B603; *24h: Spazer SBA trail
+    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B605; *25h
+    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B607; *26h
 
 ProjectileTrail_InstListPointers_Right:
-    dw InstList_BeamTrail_Empty                                          ;90B609;
-    dw InstList_BeamTrail_Empty                                          ;90B60B;
-    dw InstList_BeamTrail_Empty                                          ;90B60D;
-    dw InstList_BeamTrail_Empty                                          ;90B60F;
-    dw InstList_BeamTrail_Empty                                          ;90B611;
-    dw InstList_BeamTrail_Empty                                          ;90B613;
-    dw InstList_RightBeamTrail_SomeIceBeams                              ;90B615;
-    dw InstList_RightBeamTrail_SomeIceBeams                              ;90B617;
-    dw InstList_BeamTrail_Empty                                          ;90B619;
-    dw InstList_BeamTrail_Empty                                          ;90B61B;
-    dw InstList_BeamTrail_Empty                                          ;90B61D;
-    dw InstList_RightBeamTrail_SomeIceBeams                              ;90B61F;
-    dw InstList_BeamTrail_Empty                                          ;90B621;
-    dw InstList_BeamTrail_Empty                                          ;90B623;
-    dw InstList_BeamTrail_Empty                                          ;90B625;
-    dw InstList_BeamTrail_Empty                                          ;90B627;
-    dw InstList_BeamTrail_Empty                                          ;90B629;
-    dw InstList_BeamTrail_WaveBeam                                       ;90B62B;
-    dw InstList_BeamTrail_Empty                                          ;90B62D;
-    dw InstList_RightBeamTrail_SomeIceBeams                              ;90B62F;
-    dw InstList_BeamTrail_Empty                                          ;90B631;
-    dw InstList_BeamTrail_Empty                                          ;90B633;
-    dw InstList_RightBeamTrail_SomeIceBeams                              ;90B635;
-    dw InstList_RightBeamTrail_SomeIceBeams                              ;90B637;
-    dw InstList_BeamTrail_Empty                                          ;90B639;
-    dw InstList_BeamTrail_Empty                                          ;90B63B;
-    dw InstList_BeamTrail_Empty                                          ;90B63D;
-    dw InstList_RightBeamTrail_SomeIceBeams                              ;90B63F;
-    dw InstList_BeamTrail_Empty                                          ;90B641;
-    dw InstList_BeamTrail_Empty                                          ;90B643;
-    dw InstList_BeamTrail_Empty                                          ;90B645;
-    dw InstList_BeamTrail_Empty                                          ;90B647;
-    dw InstList_BeamTrail_Empty                                          ;90B649;
-    dw InstList_BeamTrail_Empty                                          ;90B64B;
-    dw InstList_BeamTrail_Empty                                          ;90B64D;
-    dw InstList_BeamTrail_Empty                                          ;90B64F;
-    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B651;
-    dw InstList_RightBeamTrail_SomeIceBeams                              ;90B653;
-    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B655;
+    dw InstList_BeamTrail_Empty                                          ;90B609;  0: Uncharged power
+    dw InstList_BeamTrail_Empty                                          ;90B60B;  1: Uncharged wave
+    dw InstList_BeamTrail_Empty                                          ;90B60D;  2: Uncharged ice
+    dw InstList_BeamTrail_Empty                                          ;90B60F;  3: Uncharged ice + wave
+    dw InstList_BeamTrail_Empty                                          ;90B611;  4: Uncharged spazer
+    dw InstList_BeamTrail_Empty                                          ;90B613;  5: Uncharged spazer + wave
+    dw InstList_RightBeamTrail_SomeIceBeams                              ;90B615; *6: Uncharged spazer + ice
+    dw InstList_RightBeamTrail_SomeIceBeams                              ;90B617; *7: Uncharged spazer + ice + wave
+    dw InstList_BeamTrail_Empty                                          ;90B619;  8: Uncharged plasma
+    dw InstList_BeamTrail_Empty                                          ;90B61B;  9: Uncharged plasma + wave
+    dw InstList_BeamTrail_Empty                                          ;90B61D;  Ah: Uncharged plasma + ice
+    dw InstList_RightBeamTrail_SomeIceBeams                              ;90B61F; *Bh: Uncharged plasma + ice + wave
+    dw InstList_BeamTrail_Empty                                          ;90B621;  Ch
+    dw InstList_BeamTrail_Empty                                          ;90B623;  Dh
+    dw InstList_BeamTrail_Empty                                          ;90B625;  Eh
+    dw InstList_BeamTrail_Empty                                          ;90B627;  Fh
+    dw InstList_BeamTrail_Empty                                          ;90B629;  10h: Charged power
+    dw InstList_BeamTrail_WaveBeam                                       ;90B62B; *11h: Charged wave
+    dw InstList_BeamTrail_Empty                                          ;90B62D;  12h: Charged ice
+    dw InstList_RightBeamTrail_SomeIceBeams                              ;90B62F; *13h: Charged ice + wave
+    dw InstList_BeamTrail_Empty                                          ;90B631;  14h: Charged spazer
+    dw InstList_BeamTrail_Empty                                          ;90B633;  15h: Charged spazer + wave
+    dw InstList_RightBeamTrail_SomeIceBeams                              ;90B635; *16h: Charged spazer + ice
+    dw InstList_RightBeamTrail_SomeIceBeams                              ;90B637; *17h: Charged spazer + ice + wave
+    dw InstList_BeamTrail_Empty                                          ;90B639;  18h: Charged plasma
+    dw InstList_BeamTrail_Empty                                          ;90B63B;  19h: Charged plasma + wave
+    dw InstList_BeamTrail_Empty                                          ;90B63D;  1Ah: Charged plasma + ice
+    dw InstList_RightBeamTrail_SomeIceBeams                              ;90B63F; *1Bh: Charged plasma + ice + wave
+    dw InstList_BeamTrail_Empty                                          ;90B641;  1Ch
+    dw InstList_BeamTrail_Empty                                          ;90B643;  1Dh
+    dw InstList_BeamTrail_Empty                                          ;90B645;  1Eh
+    dw InstList_BeamTrail_Empty                                          ;90B647;  1Fh
+    dw InstList_BeamTrail_Empty                                          ;90B649;  20h: Missile
+    dw InstList_BeamTrail_Empty                                          ;90B64B;  21h: Super missile
+    dw InstList_BeamTrail_Empty                                          ;90B64D;  22h
+    dw InstList_BeamTrail_Empty                                          ;90B64F;  23h
+    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B651; *24h: Spazer SBA trail
+    dw InstList_RightBeamTrail_SomeIceBeams                              ;90B653; *25h
+    dw InstList_LeftBeamTrail_IceBeams_ChargedPowerBeam                  ;90B655; *26h
 
 Spawn_ProjectileTrail:
     PHB                                                                  ;90B657;
@@ -7969,18 +8118,19 @@ Fire_Uncharge_Beam:
 
 
 .pointers:
-    dw Beam_NoWaveBeam                                                   ;90B96E;
-    dw ProjectilePreInstruction_Beam_UnchargedIceWave                    ;90B970;
-    dw Beam_NoWaveBeam                                                   ;90B972;
-    dw ProjectilePreInstruction_Beam_UnchargedIceWave                    ;90B974;
-    dw Beam_NoWaveBeam                                                   ;90B976;
-    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90B978;
-    dw Beam_NoWaveBeam                                                   ;90B97A;
-    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90B97C;
-    dw Beam_NoWaveBeam                                                   ;90B97E;
-    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90B980;
-    dw Beam_NoWaveBeam                                                   ;90B982;
-    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90B984;
+; Projectile pre-instruction pointers
+    dw Beam_NoWaveBeam                                                   ;90B96E; 0: Power
+    dw ProjectilePreInstruction_Beam_UnchargedIceWave                    ;90B970; 1: Wave
+    dw Beam_NoWaveBeam                                                   ;90B972; 2: Ice
+    dw ProjectilePreInstruction_Beam_UnchargedIceWave                    ;90B974; 3: Ice + wave
+    dw Beam_NoWaveBeam                                                   ;90B976; 4: Spazer
+    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90B978; 5: Spazer + wave
+    dw Beam_NoWaveBeam                                                   ;90B97A; 6: Spazer + ice
+    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90B97C; 7: Spazer + ice + wave
+    dw Beam_NoWaveBeam                                                   ;90B97E; 8: Plasma
+    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90B980; 9: Plasma + wave
+    dw Beam_NoWaveBeam                                                   ;90B982; Ah: Plasma + ice
+    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90B984; Bh: Plasma + ice + wave
 
 FireChargeBeam:
     JSR.W Check_if_Samus_Can_Fire_Beam                                   ;90B986;
@@ -8078,18 +8228,19 @@ FireChargeBeam:
 
 
 SamusBeamPreInstructionPointers:
-    dw Beam_NoWaveBeam                                                   ;90BA3E;
-    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90BA40;
-    dw Beam_NoWaveBeam                                                   ;90BA42;
-    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90BA44;
-    dw Beam_NoWaveBeam                                                   ;90BA46;
-    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90BA48;
-    dw Beam_NoWaveBeam                                                   ;90BA4A;
-    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90BA4C;
-    dw Beam_NoWaveBeam                                                   ;90BA4E;
-    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90BA50;
-    dw Beam_NoWaveBeam                                                   ;90BA52;
-    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90BA54;
+; Projectile pre-instruction pointers
+    dw Beam_NoWaveBeam                                                   ;90BA3E; 0: Power
+    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90BA40; 1: Wave
+    dw Beam_NoWaveBeam                                                   ;90BA42; 2: Ice
+    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90BA44; 3: Ice + wave
+    dw Beam_NoWaveBeam                                                   ;90BA46; 4: Spazer
+    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90BA48; 5: Spazer + wave
+    dw Beam_NoWaveBeam                                                   ;90BA4A; 6: Spazer + ice
+    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90BA4C; 7: Spazer + ice + wave
+    dw Beam_NoWaveBeam                                                   ;90BA4E; 8: Plasma
+    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90BA50; 9: Plasma + wave
+    dw Beam_NoWaveBeam                                                   ;90BA52; Ah: Plasma + ice
+    dw ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave      ;90BA54; Bh: Plasma + ice + wave
 
 InitializeProjectilePositionDirection:
     LDA.W $0A1C                                                          ;90BA56;
@@ -8542,16 +8693,16 @@ InitialBeamBlockCollision_NoWaveBeam:
 
 
 .pointers:
-    dw InitialBeamBlockCollision_NoWaveBeam_Vertical                     ;90BD72;
-    dw InitialBeamBlockCollision_NoWaveBeam_Diagonal                     ;90BD74;
-    dw InitialBeamBlockCollision_NoWaveBeam_Right                        ;90BD76;
-    dw InitialBeamBlockCollision_NoWaveBeam_Diagonal                     ;90BD78;
-    dw InitialBeamBlockCollision_NoWaveBeam_Vertical                     ;90BD7A;
-    dw InitialBeamBlockCollision_NoWaveBeam_Vertical                     ;90BD7C;
-    dw InitialBeamBlockCollision_NoWaveBeam_Diagonal                     ;90BD7E;
-    dw InitialBeamBlockCollision_NoWaveBeam_Left                         ;90BD80;
-    dw InitialBeamBlockCollision_NoWaveBeam_Diagonal                     ;90BD82;
-    dw InitialBeamBlockCollision_NoWaveBeam_Vertical                     ;90BD84;
+    dw InitialBeamBlockCollision_NoWaveBeam_Vertical                     ;90BD72; 0: Up, facing right
+    dw InitialBeamBlockCollision_NoWaveBeam_Diagonal                     ;90BD74; 1: Up-right
+    dw InitialBeamBlockCollision_NoWaveBeam_Right                        ;90BD76; 2: Right
+    dw InitialBeamBlockCollision_NoWaveBeam_Diagonal                     ;90BD78; 3: Down-right
+    dw InitialBeamBlockCollision_NoWaveBeam_Vertical                     ;90BD7A; 4: Down, facing right
+    dw InitialBeamBlockCollision_NoWaveBeam_Vertical                     ;90BD7C; 5: Down, facing left
+    dw InitialBeamBlockCollision_NoWaveBeam_Diagonal                     ;90BD7E; 6: Down-left
+    dw InitialBeamBlockCollision_NoWaveBeam_Left                         ;90BD80; 7: Left
+    dw InitialBeamBlockCollision_NoWaveBeam_Diagonal                     ;90BD82; 8: Up-left
+    dw InitialBeamBlockCollision_NoWaveBeam_Vertical                     ;90BD84; 9: Up, facing left
 
 InitialBeamBlockCollision_NoWaveBeam_Vertical:
     LDX.W $0DDE                                                          ;90BD86;
@@ -8595,16 +8746,16 @@ InitialWaveBeamBlockCollision:
 
 
 .pointers:
-    dw InitialWaveBeamBlockCollision_Vertical                            ;90BDC0;
-    dw InitialWaveBeamBlockCollision_Diagonal                            ;90BDC2;
-    dw InitialWaveBeamBlockCollision_Right                               ;90BDC4;
-    dw InitialWaveBeamBlockCollision_Diagonal                            ;90BDC6;
-    dw InitialWaveBeamBlockCollision_Vertical                            ;90BDC8;
-    dw InitialWaveBeamBlockCollision_Vertical                            ;90BDCA;
-    dw InitialWaveBeamBlockCollision_Diagonal                            ;90BDCC;
-    dw InitialWaveBeamBlockCollision_Left                                ;90BDCE;
-    dw InitialWaveBeamBlockCollision_Diagonal                            ;90BDD0;
-    dw InitialWaveBeamBlockCollision_Vertical                            ;90BDD2;
+    dw InitialWaveBeamBlockCollision_Vertical                            ;90BDC0; 0: Up, facing right
+    dw InitialWaveBeamBlockCollision_Diagonal                            ;90BDC2; 1: Up-right
+    dw InitialWaveBeamBlockCollision_Right                               ;90BDC4; 2: Right
+    dw InitialWaveBeamBlockCollision_Diagonal                            ;90BDC6; 3: Down-right
+    dw InitialWaveBeamBlockCollision_Vertical                            ;90BDC8; 4: Down, facing right
+    dw InitialWaveBeamBlockCollision_Vertical                            ;90BDCA; 5: Down, facing left
+    dw InitialWaveBeamBlockCollision_Diagonal                            ;90BDCC; 6: Down-left
+    dw InitialWaveBeamBlockCollision_Left                                ;90BDCE; 7: Left
+    dw InitialWaveBeamBlockCollision_Diagonal                            ;90BDD0; 8: Up-left
+    dw InitialWaveBeamBlockCollision_Vertical                            ;90BDD2; 9: Up, facing left
 
 InitialWaveBeamBlockCollision_Vertical:
     LDX.W $0DDE                                                          ;90BDD4;
@@ -9167,133 +9318,265 @@ HandlePowerBomb:
     PLP                                                                  ;90C1A6;
     RTS                                                                  ;90C1A7;
 
+;        _________________________________________________________ 0: Up, facing right
+;       |      ___________________________________________________ 1: Up-right
+;       |     |      _____________________________________________ 2: Right
+;       |     |     |      _______________________________________ 3: Down-right
+;       |     |     |     |      _________________________________ 4: Down, facing right
+;       |     |     |     |     |      ___________________________ 5: Down, facing left
+;       |     |     |     |     |     |      _____________________ 6: Down-left
+;       |     |     |     |     |     |     |      _______________ 7: Left
+;       |     |     |     |     |     |     |     |      _________ 8: Up-left
+;       |     |     |     |     |     |     |     |     |      ___ 9: Up, facing left
+;       |     |     |     |     |     |     |     |     |     |       _______________ Ah: Turning - aiming up / up-left / up-right
+;       |     |     |     |     |     |     |     |     |     |      |      _________ Bh: Turning - neutral aim
+;       |     |     |     |     |     |     |     |     |     |      |     |      ___ Ch: Turning - aiming down / down-left / down-right
+;       |     |     |     |     |     |     |     |     |     |      |     |     |
+ProjectileOriginOffsetsByDirection:
+  .FlareX_Default:                                                       ;90C1A8;
+    dw $0002,$0012,$000F,$0011,$0003,$FFFC,$FFEF,$FFF1,$FFEE,$FFFE, $FFFC,$FFFC,$FFFC
+  .FlareY_Default:                                                       ;90C1C2;
+    dw $FFE4,$FFED,$0001,$0006,$0011,$0011,$0006,$0001,$FFEC,$FFE4, $FFEC,$FFFE,$0008
 
-ProjectileOriginOffsetsByDirection_FlareX_Default:
-    dw $0002,$0012,$000F,$0011,$0003,$FFFC,$FFEF,$FFF1                   ;90C1A8;
-    dw $FFEE,$FFFE,$FFFC,$FFFC,$FFFC                                     ;90C1B8;
+  .FlareX_Running:                                                       ;90C1DC;
+    dw $0002,$0013,$0014,$0012,$0003,$FFFC,$FFEE,$FFEC,$FFED,$FFFE
+  .FlareY_Running:                                                       ;90C1F0;
+    dw $FFE0,$FFEA,$FFFD,$0006,$0019,$0019,$0006,$FFFD,$FFEC,$FFE0
 
-ProjectileOriginOffsetsByDirection_FlareY_Default:
-    dw $FFE4,$FFED,$0001,$0006,$0011,$0011,$0006,$0001                   ;90C1C2;
-    dw $FFEC,$FFE4,$FFEC,$FFFE,$0008                                     ;90C1D2;
+  .ProjectileX_Default:                                                  ;90C204;
+    dw $0002,$000D,$000B,$000D,$0002,$FFFB,$FFF2,$FFF5,$FFED,$FFFE
+  .ProjectileY_Default:                                                  ;90C218;
+    dw $FFF8,$FFF3,$0001,$0004,$000D,$000D,$0004,$0001,$FFED,$FFF8
 
-ProjectileOriginOffsetsByDirection_FlareX_Running:
-    dw $0002,$0013,$0014,$0012,$0003,$FFFC,$FFEE,$FFEC                   ;90C1DC;
-    dw $FFED,$FFFE                                                       ;90C1EC;
+  .ProjX_Moonwalk_Running:                                               ;90C22C;
+    dw $0002,$000F,$000F,$000D,$0002,$FFFB,$FFF3,$FFF3,$FFF1,$FFFE
+  .ProjY_Moonwalk_Running:                                               ;90C240;
+    dw $FFF8,$FFF0,$FFFE,$0001,$000D,$000D,$0001,$FFFE,$FFF0,$FFF8
 
-ProjectileOriginOffsetsByDirection_FlareY_Running:
-    dw $FFE0,$FFEA,$FFFD,$0006,$0019,$0019,$0006,$FFFD                   ;90C1F0;
-    dw $FFEC,$FFE0                                                       ;90C200;
+ProjectileCooldowns_Uncharged:                                           ;90C254;
+    db $0F ; 0: Power
+    db $0F ; 1: Wave
+    db $0F ; 2: Ice
+    db $0F ; 3: Ice + wave
+    db $0F ; 4: Spazer
+    db $0F ; 5: Spazer + wave
+    db $0F ; 6: Spazer + ice
+    db $0F ; 7: Spazer + ice + wave
+    db $0F ; 8: Plasma
+    db $0F ; 9: Plasma + wave
+    db $0C ; Ah: Plasma + ice <-- !
+    db $0F ; Bh: Plasma + ice + wave
+    db $00,$00,$00,$00
 
-ProjectileOriginOffsetsByDirection_ProjectileX_Default:
-    dw $0002,$000D,$000B,$000D,$0002,$FFFB,$FFF2,$FFF5                   ;90C204;
-    dw $FFED,$FFFE                                                       ;90C214;
-
-ProjectileOriginOffsetsByDirection_ProjectileY_Default:
-    dw $FFF8,$FFF3,$0001,$0004,$000D,$000D,$0004,$0001                   ;90C218;
-    dw $FFED,$FFF8                                                       ;90C228;
-
-ProjectileOriginOffsetsByDirection_ProjX_Moonwalk_Running:
-    dw $0002,$000F,$000F,$000D,$0002,$FFFB,$FFF3,$FFF3                   ;90C22C;
-    dw $FFF1,$FFFE                                                       ;90C23C;
-
-ProjectileOriginOffsetsByDirection_ProjY_Moonwalk_Running:
-    dw $FFF8,$FFF0,$FFFE,$0001,$000D,$000D,$0001,$FFFE                   ;90C240;
-    dw $FFF0,$FFF8                                                       ;90C250;
-
-ProjectileCooldowns_Uncharged:
-    db $0F,$0F,$0F,$0F,$0F,$0F,$0F,$0F,$0F,$0F,$0C,$0F,$00,$00,$00,$00   ;90C254;
-
-ProjectileCooldowns_Charged:
-    db $1E,$1E,$1E,$1E,$1E,$1E,$1E,$1E,$1E,$1E,$1E,$1E,$00,$00,$00,$00   ;90C264;
+ProjectileCooldowns_Charged:                                             ;90C264;
+    db $1E ; 0: Power
+    db $1E ; 1: Wave
+    db $1E ; 2: Ice
+    db $1E ; 3: Ice + wave
+    db $1E ; 4: Spazer
+    db $1E ; 5: Spazer + wave
+    db $1E ; 6: Spazer + ice
+    db $1E ; 7: Spazer + ice + wave
+    db $1E ; 8: Plasma
+    db $1E ; 9: Plasma + wave
+    db $1E ; Ah: Plasma + ice
+    db $1E ; Bh: Plasma + ice + wave
+    db $00,$00,$00,$00
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Padding_90C274:
+; Useless padding?
     db $00,$00,$00,$00,$00,$00                                           ;90C274;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-ProjectileCooldowns_NonBeamProjectiles:
-    db $00,$0A,$14,$28,$00,$10,$00,$00,$00                               ;90C27A;
+ProjectileCooldowns_NonBeamProjectiles:                                  ;90C27A;
+    db $00
+    db $0A ; Missile
+    db $14 ; Super missile
+    db $28 ; Power bomb
+    db $00
+    db $10 ; Bomb
+    db $00
+    db $00
+    db $00
 
 BeamAutoFireCooldowns:
     db $19,$19,$19,$19,$19,$19,$19,$19,$19,$19,$19,$19                   ;90C283;
 
-ProjectileSFX_Uncharged:
-    dw $000B,$000D,$000C,$000E,$000F,$0012,$0010,$0011                   ;90C28F;
-    dw $0013,$0016,$0014,$0015                                           ;90C29F;
+ProjectileSFX_Uncharged:                                                 ;90C28F;
+    dw $000B ; 0: Power
+    dw $000D ; 1: Wave
+    dw $000C ; 2: Ice
+    dw $000E ; 3: Ice + wave
+    dw $000F ; 4: Spazer
+    dw $0012 ; 5: Spazer + wave
+    dw $0010 ; 6: Spazer + ice
+    dw $0011 ; 7: Spazer + ice + wave
+    dw $0013 ; 8: Plasma
+    dw $0016 ; 9: Plasma + wave
+    dw $0014 ; Ah: Plasma + ice
+    dw $0015 ; Bh: Plasma + ice + wave
 
-ProjectileSFX_Charged:
-    dw $0017,$0019,$0018,$001A,$001B,$001E,$001C,$001D                   ;90C2A7;
-    dw $001F,$0022,$0020,$0021                                           ;90C2B7;
+ProjectileSFX_Charged:                                                   ;90C2A7;
+    dw $0017 ; 0: Power
+    dw $0019 ; 1: Wave
+    dw $0018 ; 2: Ice
+    dw $001A ; 3: Ice + wave
+    dw $001B ; 4: Spazer
+    dw $001E ; 5: Spazer + wave
+    dw $001C ; 6: Spazer + ice
+    dw $001D ; 7: Spazer + ice + wave
+    dw $001F ; 8: Plasma
+    dw $0022 ; 9: Plasma + wave
+    dw $0020 ; Ah: Plasma + ice
+    dw $0021 ; Bh: Plasma + ice + wave
 
 ProjectileSFX_NonBeamProjectiles:
-    dw $0000,$0003,$0004,$0000,$0000,$0000,$0000,$0000                   ;90C2BF;
-    dw $0000                                                             ;90C2CF;
+;              _________ Missiles
+;             |      ___ Super missiles
+;             |     |
+    dw $0000,$0003,$0004,$0000,$0000,$0000,$0000,$0000,$0000             ;90C2BF;
 
-BeamSpeeds_Horizontal_Vertical:
-    dw $0400                                                             ;90C2D1;
-
-BeamSpeeds_Diagonal:
-    dw $02AB,$0400,$02AB,$0400,$02AB,$0400,$02AB,$0400                   ;90C2D3;
-    dw $02AB,$0400,$02AB,$0400,$02AB,$0400,$02AB,$0400                   ;90C2E3;
-    dw $02AB,$0400,$02AB,$0400,$02AB,$0400,$02AB                         ;90C2F3;
+;        _________ Speed for horizontal / vertical direction
+;       |      ___ Speed for diagonal direction
+;       |     |
+BeamSpeeds_Horizontal_Vertical:                                          ;90C2D1;
+    dw $0400
+BeamSpeeds_Diagonal:                                                     ;90C2D3;
+    dw       $02AB ; 0: Power
+    dw $0400,$02AB ; 1: Wave
+    dw $0400,$02AB ; 2: Ice
+    dw $0400,$02AB ; 3: Ice + wave
+    dw $0400,$02AB ; 4: Spazer
+    dw $0400,$02AB ; 5: Spazer + wave
+    dw $0400,$02AB ; 6: Spazer + ice
+    dw $0400,$02AB ; 7: Spazer + ice + wave
+    dw $0400,$02AB ; 8: Plasma
+    dw $0400,$02AB ; 9: Plasma + wave
+    dw $0400,$02AB ; Ah: Plasma + ice
+    dw $0400,$02AB ; Bh: Plasma + ice + wave
 
 MissileInitializedBitset:
+; This gets added to projectile $0C7C to indicate that it's been initialised
     dw $0100                                                             ;90C301;
 
-MissileAccelerations:
-    dw $0000,$FFC0,$0036,$FFCA,$0040,$0000,$0036,$0036                   ;90C303;
-    dw $0000,$0040,$0000,$0040,$FFCA,$0036,$FFC0,$0000                   ;90C313;
-    dw $FFCA,$FFCA,$0000,$FFC0                                           ;90C323;
+MissileAccelerations:                                                    ;90C303;
+;        _________ X acceleration. Unit 1/100h px/frame²
+;       |      ___ Y acceleration. Unit 1/100h px/frame²
+;       |     |
+    dw $0000,$FFC0 ; 0: Up, facing right
+    dw $0036,$FFCA ; 1: Up-right
+    dw $0040,$0000 ; 2: Right
+    dw $0036,$0036 ; 3: Down-right
+    dw $0000,$0040 ; 4: Down, facing right
+    dw $0000,$0040 ; 5: Down, facing left
+    dw $FFCA,$0036 ; 6: Down-left
+    dw $FFC0,$0000 ; 7: Left
+    dw $FFCA,$FFCA ; 8: Up-left
+    dw $0000,$FFC0 ; 9: Up, facing left
 
-SuperMissileAccelerations:
-    dw $0000,$FF00,$00B6,$FF4A,$0100,$0000,$00B6,$00B6                   ;90C32B;
-    dw $0000,$0100,$0000,$0100,$FF4A,$00B6,$FF00,$0000                   ;90C33B;
-    dw $FF4A,$FF4A,$0000,$FF00                                           ;90C34B;
+SuperMissileAccelerations:                                               ;90C32B;
+;        _________ X acceleration. Unit 1/100h px/frame²
+;       |      ___ Y acceleration. Unit 1/100h px/frame²
+;       |     |
+    dw $0000,$FF00 ; 0: Up, facing right
+    dw $00B6,$FF4A ; 1: Up-right
+    dw $0100,$0000 ; 2: Right
+    dw $00B6,$00B6 ; 3: Down-right
+    dw $0000,$0100 ; 4: Down, facing right
+    dw $0000,$0100 ; 5: Down, facing left
+    dw $FF4A,$00B6 ; 6: Down-left
+    dw $FF00,$0000 ; 7: Left
+    dw $FF4A,$FF4A ; 8: Up-left
+    dw $0000,$FF00 ; 9: Up, facing left
 
-ProjectileAccelerations_X:
-    dw $0000,$0010,$0010,$0010,$0000,$0000,$FFF0,$FFF0                   ;90C353;
-    dw $FFF0,$0000                                                       ;90C363;
+ProjectileAccelerations_X:                                               ;90C353;
+; X acceleration. Unit 1/100h px/frame²
+    dw $0000 ; 0: Up, facing right
+    dw $0010 ; 1: Up-right
+    dw $0010 ; 2: Right
+    dw $0010 ; 3: Down-right
+    dw $0000 ; 4: Down, facing right
+    dw $0000 ; 5: Down, facing left
+    dw $FFF0 ; 6: Down-left
+    dw $FFF0 ; 7: Left
+    dw $FFF0 ; 8: Up-left
+    dw $0000 ; 9: Up, facing left
 
-ProjectileAccelerations_Y:
-    dw $FFF0,$FFF0,$0000,$0010,$0010,$0010,$0010,$0000                   ;90C367;
-    dw $FFF0,$FFF0                                                       ;90C377;
+ProjectileAccelerations_Y:                                               ;90C367;
+; Y acceleration. Unit 1/100h px/frame²
+    dw $FFF0 ; 0: Up, facing right
+    dw $FFF0 ; 1: Up-right
+    dw $0000 ; 2: Right
+    dw $0010 ; 3: Down-right
+    dw $0010 ; 4: Down, facing right
+    dw $0010 ; 5: Down, facing left
+    dw $0010 ; 6: Down-left
+    dw $0000 ; 7: Left
+    dw $FFF0 ; 8: Up-left
+    dw $FFF0 ; 9: Up, facing left
 
-ProtoWeaponConstants_Beams:
-    db $03,$14,$00,$0A,$28,$01,$05,$1E,$00,$0A,$28,$01,$14,$50,$00,$14   ;90C37B;
-    db $50,$01,$14,$50,$00,$14,$50,$01,$1E,$64,$00,$1E,$64,$01,$1E,$64   ;90C38B;
-    db $00,$1E,$64,$01                                                   ;90C39B;
+ProtoWeaponConstants_Beams:                                              ;90C37B;
+; Used only by $94:9C73 to set $0DD2 as part of bomb explosion block collision detection
+; Highly likely that these tables were supposed to be abandoned entirely and that one check was left over
+;        _________ Unused. Uncharged damage?
+;       |    _____ Unused. Charged damage?
+;       |   |    _ Projectile proto type
+;       |   |   |
+    db $03,$14,$00 ; 0: Power
+    db $0A,$28,$01 ; 1: Wave
+    db $05,$1E,$00 ; 2: Ice
+    db $0A,$28,$01 ; 3: Ice + wave
+    db $14,$50,$00 ; 4: Spazer
+    db $14,$50,$01 ; 5: Spazer + wave
+    db $14,$50,$00 ; 6: Spazer + ice
+    db $14,$50,$01 ; 7: Spazer + ice + wave
+    db $1E,$64,$00 ; 8: Plasma
+    db $1E,$64,$01 ; 9: Plasma + wave
+    db $1E,$64,$00 ; Ah: Plasma + ice
+    db $1E,$64,$01 ; Bh: Plasma + ice + wave
 
-ProtoWeaponConstants_NonBeams:
-    db $00,$00,$0A,$00,$32,$00,$32,$03,$00,$FF,$0A,$02,$00,$FF,$00,$FF   ;90C39F;
-    db $00,$FF                                                           ;90C3AF;
+ProtoWeaponConstants_NonBeams:                                           ;90C39F;
+;        _____ Unused. Damage?
+;       |    _ Projectile proto type
+;       |   |
+    db $00,$00
+    db $0A,$00 ; Missile
+    db $32,$00 ; Super missile
+    db $32,$03 ; Power bomb
+    db $00,$FF
+    db $0A,$02 ; Bomb
+    db $00,$FF
+    db $00,$FF   
+    db $00,$FF
 
 BeamTilesPointers:
-    dw Tiles_PowerBeam                                                   ;90C3B1;
-    dw Tiles_WaveBeam                                                    ;90C3B3;
-    dw Tiles_IceBeam                                                     ;90C3B5;
-    dw Tiles_WaveBeam                                                    ;90C3B7;
-    dw Tiles_Spazer                                                      ;90C3B9;
-    dw Tiles_Spazer                                                      ;90C3BB;
-    dw Tiles_Spazer                                                      ;90C3BD;
-    dw Tiles_Spazer                                                      ;90C3BF;
-    dw Tiles_PlasmaBeam                                                  ;90C3C1;
-    dw Tiles_PlasmaBeam                                                  ;90C3C3;
-    dw Tiles_PlasmaBeam                                                  ;90C3C5;
-    dw Tiles_PlasmaBeam                                                  ;90C3C7;
+    dw Tiles_PowerBeam                                                   ;90C3B1; 0: Power
+    dw Tiles_WaveBeam                                                    ;90C3B3; 1: Wave
+    dw Tiles_IceBeam                                                     ;90C3B5; 2: Ice
+    dw Tiles_WaveBeam                                                    ;90C3B7; 3: Ice + wave
+    dw Tiles_Spazer                                                      ;90C3B9; 4: Spazer
+    dw Tiles_Spazer                                                      ;90C3BB; 5: Spazer + wave
+    dw Tiles_Spazer                                                      ;90C3BD; 6: Spazer + ice
+    dw Tiles_Spazer                                                      ;90C3BF; 7: Spazer + ice + wave
+    dw Tiles_PlasmaBeam                                                  ;90C3C1; 8: Plasma
+    dw Tiles_PlasmaBeam                                                  ;90C3C3; 9: Plasma + wave
+    dw Tiles_PlasmaBeam                                                  ;90C3C5; Ah: Plasma + ice
+    dw Tiles_PlasmaBeam                                                  ;90C3C7; Bh: Plasma + ice + wave
 
 BeamPalettePointers:
-    dw BeamPalettes_Power                                                ;90C3C9;
-    dw BeamPalettes_Wave                                                 ;90C3CB;
-    dw BeamPalettes_Ice                                                  ;90C3CD;
-    dw BeamPalettes_Ice                                                  ;90C3CF;
-    dw BeamPalettes_Spazer                                               ;90C3D1;
-    dw BeamPalettes_Wave                                                 ;90C3D3;
-    dw BeamPalettes_Ice                                                  ;90C3D5;
-    dw BeamPalettes_Ice                                                  ;90C3D7;
-    dw BeamPalettes_Plasma                                               ;90C3D9;
-    dw BeamPalettes_Plasma                                               ;90C3DB;
-    dw BeamPalettes_Ice                                                  ;90C3DD;
-    dw BeamPalettes_Ice                                                  ;90C3DF;
+    dw BeamPalettes_Power                                                ;90C3C9; 0: Power
+    dw BeamPalettes_Wave                                                 ;90C3CB; 1: Wave
+    dw BeamPalettes_Ice                                                  ;90C3CD; 2: Ice
+    dw BeamPalettes_Ice                                                  ;90C3CF; 3: Ice + wave
+    dw BeamPalettes_Spazer                                               ;90C3D1; 4: Spazer
+    dw BeamPalettes_Wave                                                 ;90C3D3; 5: Spazer + wave
+    dw BeamPalettes_Ice                                                  ;90C3D5; 6: Spazer + ice
+    dw BeamPalettes_Ice                                                  ;90C3D7; 7: Spazer + ice + wave
+    dw BeamPalettes_Plasma                                               ;90C3D9; 8: Plasma
+    dw BeamPalettes_Plasma                                               ;90C3DB; 9: Plasma + wave
+    dw BeamPalettes_Ice                                                  ;90C3DD; Ah: Plasma + ice
+    dw BeamPalettes_Ice                                                  ;90C3DF; Bh: Plasma + ice + wave
 
 BeamPalettes_Power:
     dw $3800,$7FFF,$19FF,$1D55,$10AD,$53FF,$039E,$295F                   ;90C3E1;
@@ -9419,12 +9702,12 @@ HandleSwitchingHUDSelection:
 
 
 .pointers:
-    dw SwitchedToHUDItemHandler_Nothing                                  ;90C539;
-    dw SwitchedToHUDItemHandler_Missiles                                 ;90C53B;
-    dw SwitchedToHUDItemHandler_SuperMissiles                            ;90C53D;
-    dw SwitchedToHUDItemHandler_PowerBombs                               ;90C53F;
-    dw SwitchedToHUDItemHandler_GrappleBeam                              ;90C541;
-    dw SwitchedToHUDItemHandler_XrayScope                                ;90C543;
+    dw SwitchedToHUDItemHandler_Nothing                                  ;90C539; Nothing
+    dw SwitchedToHUDItemHandler_Missiles                                 ;90C53B; Missiles
+    dw SwitchedToHUDItemHandler_SuperMissiles                            ;90C53D; Super missiles
+    dw SwitchedToHUDItemHandler_PowerBombs                               ;90C53F; Power bombs
+    dw SwitchedToHUDItemHandler_GrappleBeam                              ;90C541; Grapple
+    dw SwitchedToHUDItemHandler_XrayScope                                ;90C543; X-ray
 
 SwitchedToHUDItemHandler_Nothing:
     STZ.W $0CD0                                                          ;90C545;
@@ -9793,10 +10076,11 @@ DrawArmCannon:
 
 
 .spriteValues:
-    dw $281F,$281F,$281F,$681F,$A81F,$E81F,$281F,$681F                   ;90C791;
-    dw $681F,$681F                                                       ;90C7A1;
+; Indexed by direction (see $0C04)
+    dw $281F,$281F,$281F,$681F,$A81F,$E81F,$281F,$681F,$681F,$681F       ;90C791; Sprite tile number and attributes
 
 .pointers:
+; Pointers to below table
     dw .armCannonTiles_0                                                 ;90C7A5;
     dw .armCannonTiles_3                                                 ;90C7A7;
     dw .armCannonTiles_1                                                 ;90C7A9;
@@ -9808,24 +10092,22 @@ DrawArmCannon:
     dw .armCannonTiles_3                                                 ;90C7B5;
     dw .armCannonTiles_0                                                 ;90C7B7;
 
+; Pointers to tiles in bank $9A, indexed by arm cannon frame
 .armCannonTiles_0:
     dw $0000                                                             ;90C7B9;
     dw Tiles_NonClosed_ArmCannon_Vertical_0                              ;90C7BB;
     dw Tiles_NonClosed_ArmCannon_Vertical_1                              ;90C7BD;
     dw Tiles_NonClosed_ArmCannon_Vertical_2                              ;90C7BF;
-
 .armCannonTiles_1:
     dw $0000                                                             ;90C7C1;
     dw Tiles_NonClosed_ArmCannon_Horizontal_0                            ;90C7C3;
     dw Tiles_NonClosed_ArmCannon_Horizontal_1                            ;90C7C5;
     dw Tiles_NonClosed_ArmCannon_Horizontal_2                            ;90C7C7;
-
 .armCannonTiles_2:
     dw $0000                                                             ;90C7C9;
     dw Tiles_NonClosed_ArmCannon_DownwardsDiagonal_0                     ;90C7CB;
     dw Tiles_NonClosed_ArmCannon_DownwardsDiagonal_1                     ;90C7CD;
     dw Tiles_NonClosed_ArmCannon_DownwardsDiagonal_2                     ;90C7CF;
-
 .armCannonTiles_3:
     dw $0000                                                             ;90C7D1;
     dw Tiles_NonClosed_ArmCannon_UpwardsDiagonal_0                       ;90C7D3;
@@ -9833,6 +10115,7 @@ DrawArmCannon:
     dw Tiles_NonClosed_ArmCannon_UpwardsDiagonal_2                       ;90C7D7;
 
 ArmCannonOpenFlags:
+; Indexed by HUD item index. 1 for open arm cannon
     db $00,$01,$01,$00,$01,$00                                           ;90C7D9;
 
 ArmCannonDrawingData:
@@ -10090,190 +10373,339 @@ ArmCannonDrawingData:
     dw ArmCannonDrawingData_FacingRight_AimingDownRight                  ;90C9D5;
     dw ArmCannonDrawingData_FacingLeft_AimingDownLeft                    ;90C9D7;
 
+
+; Format:
+;     dd aa
+;     [DD aa] ; If d & 80h != 0
+;     [xx yy]...
+;
+; where
+;     d: Direction
+;     D: Direction if [Samus animation frame] != 0
+;     {
+;         0: Up, facing right
+;         1: Up-right
+;         2: Right
+;         3: Down-right
+;         4: Down, facing right
+;         5: Down, facing left
+;         6: Down-left
+;         7: Left
+;         8: Up-left
+;         9: Up, facing left
+;     }
+;     a: Arm cannon drawing mode
+;     {
+;         0: Arm cannon isn't drawn
+;         1: Arm cannon is drawn normally
+;         2: Samus is facing forward (same as 0?)
+;     }
+;     x/y: X/Y offsets, indexed by [Samus animation frame]
 ArmCannonDrawingData_Default:
+; All other poses
     db $00,$00                                                           ;90C9D9;
 
 ArmCannonDrawingData_FacingForward:
+; 0: Facing forward - power suit
+; 9Bh: Facing forward - varia/gravity suit
     db $00,$02                                                           ;90C9DB;
 
 ArmCannonDrawingData_FacingRight:
+; 1: Facing right - normal
+; 47h: Unused
+; 89h: Facing right - ran into a wall
+; A8h: Unused
+; E6h: Facing right - landing from normal jump - firing
+; EEh: Facing right - grabbed by Draygon - firing
     db $02,$01,$0B,$FD,$0B,$FD,$0B,$FD,$0B,$FD,$0B,$FD,$0B,$FD,$0B,$FD   ;90C9DD;
     db $0B,$FD,$0B,$FD                                                   ;90C9ED;
 
 ArmCannonDrawingData_FacingLeft:
+; 2: Facing left  - normal
+; 48h: Unused
+; 8Ah: Facing left  - ran into a wall
+; A9h: Unused
+; BCh: Facing left  - grabbed by Draygon - firing
+; E7h: Facing left  - landing from normal jump - firing
     db $07,$01,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD   ;90C9F1;
     db $ED,$FD,$ED,$FD                                                   ;90CA01;
 
 ArmCannonDrawingData_FacingRight_AimingUp:
+; 3: Facing right - aiming up
     db $81,$01,$80,$01,$0E,$EA,$FE,$E1                                   ;90CA05;
 
 ArmCannonDrawingData_FacingLeft_AimingUp:
+; 4: Facing left  - aiming up
     db $88,$01,$89,$01,$EA,$E9,$FA,$E1                                   ;90CA0D;
 
 ArmCannonDrawingData_FacingRight_AimingUpRight:
+; 5: Facing right - aiming up-right
+; 57h: Facing right - normal jump transition - aiming up-right
+; CFh: Facing right - ran into a wall - aiming up-right
+; E2h: Facing right - landing from normal jump - aiming up-right
+; EDh: Facing right - grabbed by Draygon - not moving - aiming up-right
+; F3h: Facing right - crouching transition - aiming up-right
+; F9h: Facing right - standing transition - aiming up-right
     db $01,$01,$0D,$EA                                                   ;90CA15;
 
 ArmCannonDrawingData_FacingLeft_AimingUpLeft:
+; 6: Facing left  - aiming up-left
+; 58h: Facing left  - normal jump transition - aiming up-left
+; BBh: Facing left  - grabbed by Draygon - not moving - aiming up-left
+; D0h: Facing left  - ran into a wall - aiming up-left
+; E3h: Facing left  - landing from normal jump - aiming up-left
+; F4h: Facing left  - crouching transition - aiming up-left
+; FAh: Facing left  - standing transition - aiming up-left
     db $08,$01,$EB,$E9                                                   ;90CA19;
 
 ArmCannonDrawingData_FacingRight_AimingDownRight:
+; 7: Facing right - aiming down-right
+; 59h: Facing right - normal jump transition - aiming down-right
+; AAh: Unused
+; D1h: Facing right - ran into a wall - aiming down-right
+; E4h: Facing right - landing from normal jump - aiming down-right
+; EFh: Facing right - grabbed by Draygon - not moving - aiming down-right
+; F5h: Facing right - crouching transition - aiming down-right
+; FBh: Facing right - standing transition - aiming down-right
     db $03,$01,$0D,$02                                                   ;90CA1D;
 
 ArmCannonDrawingData_FacingLeft_AimingDownLeft:
+; 8: Facing left  - aiming down-left
+; 5Ah: Facing left  - normal jump transition - aiming down-left
+; ABh: Unused
+; BDh: Facing left  - grabbed by Draygon - not moving - aiming down-left
+; D2h: Facing left  - ran into a wall - aiming down-left
+; E5h: Facing left  - landing from normal jump - aiming down-left
+; F6h: Facing left  - crouching transition - aiming down-left
+; FCh: Facing left  - standing transition - aiming down-left
     db $06,$01,$EB,$02                                                   ;90CA21;
 
 ArmCannonDrawingData_MovingRight_GunExtended:
+; Bh: Moving right - gun extended
     db $02,$01,$11,$FA,$11,$FA,$11,$F9,$11,$F8,$11,$F9,$11,$FA,$11,$F9   ;90CA25;
     db $11,$F9,$11,$F8,$11,$F9                                           ;90CA35;
 
 ArmCannonDrawingData_MovingLeft_GunExtended:
+; Ch: Moving left  - gun extended
     db $07,$01,$E7,$FA,$E7,$FA,$E7,$F8,$E7,$F9,$E7,$F9,$E7,$FA,$E7,$F9   ;90CA3B;
     db $E7,$F8,$E7,$F9,$E7,$F9                                           ;90CA4B;
 
 ArmCannonDrawingData_MovingRight_AimingUpRight:
+; Fh: Moving right - aiming up-right
     db $01,$01,$0C,$EA,$0C,$EA,$0C,$E9,$0C,$E8,$0C,$E9,$0C,$EA,$0C,$EA   ;90CA51;
     db $0C,$E9,$0C,$E8,$0C,$E9                                           ;90CA61;
 
 ArmCannonDrawingData_MovingLeft_AimingUpLeft:
+; 10h: Moving left  - aiming up-left
     db $08,$01,$EC,$EA,$EC,$EA,$EC,$E9,$EC,$E8,$EC,$E9,$EC,$EA,$EC,$EA   ;90CA67;
     db $EC,$E9,$EC,$E8,$EC,$E9                                           ;90CA77;
 
 ArmCannonDrawingData_MovingRight_AimingDownRight:
+; 11h: Moving right - aiming down-right
     db $03,$01,$0B,$01,$0B,$01,$0B,$00,$0B,$FF,$0B,$00,$0B,$01,$0B,$01   ;90CA7D;
     db $0B,$00,$0B,$FF,$0B,$00                                           ;90CA8D;
 
 ArmCannonDrawingData_MovingLeft_AimingDownLeft:
+; 12h: Moving left  - aiming down-left
     db $06,$01,$ED,$01,$ED,$01,$ED,$00,$ED,$FF,$ED,$00,$ED,$01,$ED,$01   ;90CA93;
     db $ED,$00,$ED,$FF,$ED,$00                                           ;90CAA3;
 
 ArmCannonDrawingData_FacingRight_NormalJump_NotMoving_GunExt:
+; 13h: Facing right - normal jump - not aiming - not moving - gun extended
+; ACh: Unused
     db $02,$01,$0B,$FD,$0B,$FD                                           ;90CAA9;
 
 ArmCannonDrawingData_FacingLeft_NormalJump_NotMoving_GunExt:
+; 14h: Facing left  - normal jump - not aiming - not moving - gun extended
+; ADh: Unused
     db $07,$01,$ED,$FD,$ED,$FD                                           ;90CAAF;
 
 ArmCannonDrawingData_FacingRight_NormalJump_AimingUp:
+; 15h: Facing right - normal jump - aiming up
     db $81,$01,$80,$01,$0E,$E9,$FE,$E0                                   ;90CAB5;
 
 ArmCannonDrawingData_FacingLeft_NormalJump_AimingUp:
+; 16h: Facing left  - normal jump - aiming up
     db $88,$01,$89,$01,$EA,$E8,$FA,$E0                                   ;90CABD;
 
 ArmCannonDrawingData_FacingRight_NormalJump_AimingDown:
+; 17h: Facing right - normal jump - aiming down
+; AEh: Unused
     db $04,$01,$00,$0D,$00,$0D                                           ;90CAC5;
 
 ArmCannonDrawingData_FacingLeft_NormalJump_AimingDown:
+; 18h: Facing left  - normal jump - aiming down
+; AFh: Unused
     db $05,$01,$F7,$0D,$F7,$0D                                           ;90CACB;
 
 ArmCannonDrawingData_FacingRight_NormalJumpTransition:
+; 4Bh: Facing right - normal jump transition
     db $03,$01,$FB,$00,$06,$02,$ED,$FE                                   ;90CAD1;
 
 ArmCannonDrawingData_FacingRight_NormalJump_MovingForward:
+; 51h: Facing right - normal jump - not aiming - moving forward
     db $02,$01,$0B,$FD,$0B,$FD                                           ;90CAD9;
 
 ArmCannonDrawingData_FacingLeft_NormalJump_MovingForward:
+; 52h: Facing left  - normal jump - not aiming - moving forward
     db $07,$01,$ED,$FD,$ED,$FD                                           ;90CADF;
 
 ArmCannonDrawingData_FacingRight_NormalJump_AimingUpRight:
+; 69h: Facing right - normal jump - aiming up-right
     db $01,$01,$0C,$EA,$0C,$EA                                           ;90CAE5;
 
 ArmCannonDrawingData_FacingLeft_NormalJump_AimingUpLeft:
+; 6Ah: Facing left  - normal jump - aiming up-left
     db $08,$01,$EC,$EA,$EC,$EA                                           ;90CAEB;
 
 ArmCannonDrawingData_FacingRight_NormalJump_AimingDownRight:
+; 6Bh: Facing right - normal jump - aiming down-right
+; B0h: Unused
     db $03,$01,$0B,$01,$0B,$01                                           ;90CAF1;
 
 ArmCannonDrawingData_FacingLeft_NormalJump_AimingDownLeft:
+; 6Ch: Facing left  - normal jump - aiming down-left
+; B1h: Unused
     db $06,$01,$ED,$01,$ED,$01                                           ;90CAF7;
 
 ArmCannonDrawingData_FacingRight_Falling_GunExtended:
+; 67h: Facing right - falling - gun extended
     db $02,$01,$0B,$FD,$0B,$FD,$0B,$FD,$0B,$FD,$0B,$FD,$0B,$FD,$0B,$FD   ;90CAFD;
 
 ArmCannonDrawingData_FacingLeft_Falling_GunExtended:
+; 68h: Facing left  - falling - gun extended
     db $07,$01,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD   ;90CB0D;
 
 ArmCannonDrawingData_FacingRight_Falling_AimingUp:
+; 2Bh: Facing right - falling - aiming up
     db $81,$01,$80,$01,$0E,$E9,$FE,$E0,$FE,$E0                           ;90CB1D;
 
 ArmCannonDrawingData_FacingLeft_Falling_AimingUp:
+; 2Ch: Facing left  - falling - aiming up
     db $88,$01,$89,$01,$EA,$E8,$FA,$E4,$FA,$E4                           ;90CB27;
 
 ArmCannonDrawingData_FacingRight_Falling_AimingDown:
+; 2Dh: Facing right - falling - aiming down
     db $04,$01,$00,$09,$00,$09                                           ;90CB31;
 
 ArmCannonDrawingData_FacingLeft_Falling_AimingDown:
+; 2Eh: Facing left  - falling - aiming down
     db $05,$01,$F7,$09,$F7,$09                                           ;90CB37;
 
 ArmCannonDrawingData_FacingRight_Falling_AimingUpRight:
+; 6Dh: Facing right - falling - aiming up-right
     db $01,$01,$0C,$EA,$0C,$EA,$0C,$EA                                   ;90CB3D;
 
 ArmCannonDrawingData_FacingLeft_Falling_AimingUpLeft:
+; 6Eh: Facing left  - falling - aiming up-left
     db $08,$01,$EC,$EA,$EC,$EA,$EC,$EA                                   ;90CB45;
 
 ArmCannonDrawingData_FacingRight_Falling_AimingDownRight:
+; 6Fh: Facing right - falling - aiming down-right
     db $03,$01,$0B,$01,$0B,$01,$0B,$01                                   ;90CB4D;
 
 ArmCannonDrawingData_FacingLeft_Falling_AimingDownLeft:
+; 70h: Facing left  - falling - aiming down-left
     db $06,$01,$ED,$01,$ED,$01,$ED,$01                                   ;90CB55;
 
 ArmCannonDrawingData_FacingRight_Crouching:
+; 27h: Facing right - crouching
+; B4h: Unused
     db $02,$01,$0B,$FD,$0B,$FD,$0B,$FD,$0B,$FD,$0B,$FD,$0B,$FD,$0B,$FD   ;90CB5D;
     db $0B,$FD,$0B,$FD                                                   ;90CB6D;
 
 ArmCannonDrawingData_FacingLeft_Crouching:
+; 28h: Facing left  - crouching
+; B5h: Unused
     db $07,$01,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD   ;90CB71;
     db $ED,$FD,$ED,$FD                                                   ;90CB81;
 
 ArmCannonDrawingData_FacingRight_Crouching_AimingUpRight:
+; 71h: Facing right - crouching - aiming up-right
     db $01,$01,$0E,$E9                                                   ;90CB85;
 
 ArmCannonDrawingData_FacingLeft_Crouching_AimingUpLeft:
+; 72h: Facing left  - crouching - aiming up-left
     db $08,$01,$EA,$E8                                                   ;90CB89;
 
 ArmCannonDrawingData_FacingRight_Crouching_AimingDownRight:
+; 73h: Facing right - crouching - aiming down-right
     db $03,$01,$0D,$02                                                   ;90CB8D;
 
 ArmCannonDrawingData_FacingLeft_Crouching_AimingDownLeft:
+; 74h: Facing left  - crouching - aiming down-left
+; B7h: Unused
     db $06,$01,$EB,$02                                                   ;90CB91;
 
 ArmCannonDrawingData_FacingRight_Crouching_AimingUp:
+; 85h: Facing right - crouching - aiming up
     db $81,$01,$80,$01,$0E,$E9,$FE,$E0                                   ;90CB95;
 
 ArmCannonDrawingData_FacingLeft_Crouching_AimingUp:
+; 86h: Facing left  - crouching - aiming up
     db $88,$01,$89,$01,$EA,$E8,$FA,$E0                                   ;90CB9D;
 
 ArmCannonDrawingData_FacingLeft_Moonwalk:
+; 49h: Facing left  - moonwalk
     db $02,$01,$F1,$FD,$F1,$FC,$F1,$FC,$F1,$FD,$F1,$FC,$F1,$FC           ;90CBA5;
 
 ArmCannonDrawingData_FacingRight_Moonwalk:
+; 4Ah: Facing right - moonwalk
     db $07,$01,$07,$FD,$07,$FC,$07,$FC,$07,$FD,$07,$FC,$07,$FC           ;90CBB3;
 
 ArmCannonDrawingData_FacingLeft_Moonwalk_AimingUpLeft:
+; 75h: Facing left  - moonwalk - aiming up-left
     db $08,$01,$EC,$EA,$EC,$E9,$EC,$E9,$EC,$EA,$EC,$E9,$EC,$E9           ;90CBC1;
 
 ArmCannonDrawingData_FacingRight_Moonwalk_AimingUpRight:
+; 76h: Facing right - moonwalk - aiming up-right
     db $01,$01,$0C,$EA,$0C,$E9,$0C,$E9,$0C,$EA,$0C,$E9,$0C,$E9           ;90CBCF;
 
 ArmCannonDrawingData_FacingLeft_Moonwalk_AimingDownLeft:
+; 77h: Facing left  - moonwalk - aiming down-left
     db $06,$01,$ED,$01,$ED,$00,$ED,$00,$ED,$01,$ED,$00,$ED,$00           ;90CBDD;
 
 ArmCannonDrawingData_FacingRight_Moonwalk_AimingDownRight:
+; 78h: Facing right - moonwalk - aiming down-right
     db $03,$01,$0B,$01,$0B,$00,$0B,$00,$0B,$01,$0B,$00,$0B,$00           ;90CBEB;
 
 ArmCannonDrawingData_FacingRight_LandingFromNormalJump:
+; A4h: Facing right - landing from normal jump
     db $03,$01,$FB,$00,$FB,$00,$06,$02,$ED,$FE,$ED,$FE                   ;90CBF9;
 
 ArmCannonDrawingData_FacingRight_LandingFromSpinJump:
+; A6h: Facing right - landing from spin jump
     db $03,$01,$FB,$00,$FB,$00,$FB,$00,$06,$02,$ED,$FE,$ED,$FE,$ED,$FE   ;90CC05;
 
 ArmCannonDrawingData_FacingRight_Transition_AimingUp:
+; 55h: Facing right - normal jump transition - aiming up
+; E0h: Facing right - landing from normal jump - aiming up
+; F1h: Facing right - crouching transition - aiming up
+; F7h: Facing right - standing transition - aiming up
     db $00,$01,$FE,$E1,$FE,$E1                                           ;90CC15;
 
 ArmCannonDrawingData_FacingLeft_Transition_AimingUp:
+; 56h: Facing left  - normal jump transition - aiming up
+; E1h: Facing left  - landing from normal jump - aiming up
+; F2h: Facing left  - crouching transition - aiming up
+; F8h: Facing left  - standing transition - aiming up
     db $09,$01,$FA,$E1,$FA,$E1                                           ;90CC1B;
 
-CostOfSBAsInPowerBombs:
-    dw $0000,$0001,$0001,$0000,$0001,$0000,$0000,$0000                   ;90CC21;
-    dw $0001,$0000,$0000,$0000                                           ;90CC31;
+CostOfSBAsInPowerBombs:                                                  ;90CC21;
+; Obviously only the pure beams have non-zero values, and obviously they're all 1
+; This table sucks
+    dw $0000 ; 0: Power
+    dw $0001 ; 1: Wave
+    dw $0001 ; 2: Ice
+    dw $0000 ; 3: Ice + wave
+    dw $0001 ; 4: Spazer
+    dw $0000 ; 5: Spazer + wave
+    dw $0000 ; 6: Spazer + ice
+    dw $0000 ; 7: Spazer + ice + wave
+    dw $0001 ; 8: Plasma
+    dw $0000 ; 9: Plasma + wave
+    dw $0000 ; Ah: Plasma + ice
+    dw $0000 ; Bh: Plasma + ice + wave
 
 Math_90CC39:
     PHP                                                                  ;90CC39;
@@ -10389,21 +10821,29 @@ FireSBA:
 
 
 .pointers:
-    dw CLCRTS_90CD18                                                     ;90CCF0;
-    dw FireWaveSBA                                                       ;90CCF2;
-    dw FireIceSBA                                                        ;90CCF4;
-    dw CLCRTS_90CD18                                                     ;90CCF6;
-    dw FireSpazerSBA                                                     ;90CCF8;
-    dw CLCRTS_90CD18                                                     ;90CCFA;
-    dw CLCRTS_90CD18                                                     ;90CCFC;
-    dw CLCRTS_90CD18                                                     ;90CCFE;
-    dw FirePlasmaSBA                                                     ;90CD00;
-    dw CLCRTS_90CD18                                                     ;90CD02;
-    dw CLCRTS_90CD18                                                     ;90CD04;
-    dw CLCRTS_90CD18                                                     ;90CD06;
+    dw CLCRTS_90CD18                                                     ;90CCF0; 0: Power
+    dw FireWaveSBA                                                       ;90CCF2; 1: Wave
+    dw FireIceSBA                                                        ;90CCF4; 2: Ice
+    dw CLCRTS_90CD18                                                     ;90CCF6; 3: Ice + wave
+    dw FireSpazerSBA                                                     ;90CCF8; 4: Spazer
+    dw CLCRTS_90CD18                                                     ;90CCFA; 5: Spazer + wave
+    dw CLCRTS_90CD18                                                     ;90CCFC; 6: Spazer + ice
+    dw CLCRTS_90CD18                                                     ;90CCFE; 7: Spazer + ice + wave
+    dw FirePlasmaSBA                                                     ;90CD00; 8: Plasma
+    dw CLCRTS_90CD18                                                     ;90CD02; 9: Plasma + wave
+    dw CLCRTS_90CD18                                                     ;90CD04; Ah: Plasma + ice
+    dw CLCRTS_90CD18                                                     ;90CD06; Bh: Plasma + ice + wave
 
-IcePlasmaSBAProjectileOriginAngles:
-    dw $0000,$0040,$0080,$00C0,$0020,$0060,$00A0,$00E0                   ;90CD08;
+IcePlasmaSBAProjectileOriginAngles:                                      ;90CD08;
+; Angle of projectiles from Samus (2pi / 100h radians clockwise, 0 = up) for ice/plasma SBA
+    dw $0000
+    dw $0040
+    dw $0080
+    dw $00C0
+    dw $0020 ; Unused
+    dw $0060 ; Unused
+    dw $00A0 ; Unused
+    dw $00E0 ; Unused
 
 CLCRTS_90CD18:
     CLC                                                                  ;90CD18;
@@ -10458,9 +10898,11 @@ FireWaveSBA:
 
 
 .XOffsets:
+; X offsets from Samus
     dw $0080,$0080,$FF80,$FF80                                           ;90CD8B;
 
 .YOffsets:
+; y offsets from Samus
     dw $0080,$FF80,$FF80,$0080                                           ;90CD93;
 
 FireIceSBA:
@@ -11351,12 +11793,16 @@ ShinesparkCrash_Finish:
     STZ.W $0DEE                                                          ;90D4C2;
     RTS                                                                  ;90D4C5;
 
+.data0:                                                                  ;90D4C6;
+    db $00                                                               
+.data1:                                                                  ;90D4C7;
+    db     $80 ; C9h: Facing right - shinespark - horizontal
+    db $00,$80 ; CAh: Facing left  - shinespark - horizontal
+    db $40,$C0 ; CBh: Facing right - shinespark - vertical
+    db $40,$C0 ; CCh: Facing left  - shinespark - vertical
+    db $E0,$60 ; CDh: Facing right - shinespark - diagonal
+    db $20,$A0 ; CEh: Facing left  - shinespark - diagonal
 
-.data0:
-    db $00                                                               ;90D4C6;
-
-.data1:
-    db $80,$00,$80,$40,$C0,$40,$C0,$E0,$60,$20,$A0                       ;90D4C7;
 
 ProjectilePreInstruction_SpeedEcho:
     LDA.W $0BDC,X                                                        ;90D4D2;
@@ -11872,16 +12318,15 @@ BombSpread:
     RTS                                                                  ;90D8CE;
 
 
-BombSpreadData_timers:
+BombSpreadData:
+  .timers
     db $78,$00,$6E,$00,$64,$00,$6E,$00,$78,$00                           ;90D8CF;
-
-BombSpreadData_XVelocities:
+  .XVelocities
+; Unit 1/100h px/frame. MSb = direction, set = left, clear = right
     db $00,$81,$80,$80,$00,$00,$80,$00,$00,$01                           ;90D8D9;
-
-BombSpreadData_YSpeeds:
+  .YSpeeds
     db $00,$00,$01,$00,$02,$00,$01,$00,$00,$00                           ;90D8E3;
-
-BombSpreadData_YSubSpeeds:
+  .YSubSpeeds
     db $00,$00,$00,$00,$00,$80,$00,$00,$00,$00                           ;90D8ED;
 
 ProjectilePreInstruction_BombSpread:
@@ -12195,6 +12640,7 @@ ProjectilePreInstruction_SpazerSBA:
     dw SpazerSBA_Phase4_FlyingUpAwayFromPoint                            ;90DB4D;
 
 .clearing:
+; Projectile clearing subroutines
     dw ClearSpazerSBAPair_0                                              ;90DB4F;
     dw ClearSpazerSBAPair_2                                              ;90DB51;
     dw ClearSpazerSBAPair_4                                              ;90DB53;
@@ -12424,34 +12870,34 @@ HandleHUDSpecificBehaviorAndProjectiles:
 
 
 .pointers:
-    dw HUDSelectionHandler_Standard                                      ;90DD05;
-    dw HUDSelectionHandler_Standard                                      ;90DD07;
-    dw HUDSelectionHandler_Standard                                      ;90DD09;
-    dw HUDSelectionHandler_SpinWallJump_Knockback_Shinespark_CF_etc      ;90DD0B;
-    dw HUDSelectionHandler_MorphBall                                     ;90DD0D;
-    dw HUDSelectionHandler_Standard                                      ;90DD0F;
-    dw HUDSelectionHandler_Standard                                      ;90DD11;
-    dw HUDSelectionHandler_MorphBall                                     ;90DD13;
-    dw HUDSelectionHandler_MorphBall                                     ;90DD15;
-    dw HUDSelectionHandler_MorphBall                                     ;90DD17;
-    dw HUDSelectionHandler_SpinWallJump_Knockback_Shinespark_CF_etc      ;90DD19;
-    dw HUDSelectionHandler_Grappling                                     ;90DD1B;
-    dw HUDSelectionHandler_Grappling                                     ;90DD1D;
-    dw HUDSelectionHandler_SpinWallJump_Knockback_Shinespark_CF_etc      ;90DD1F;
-    dw HUDSelectionHandler_TurningAround                                 ;90DD21;
-    dw HUDSelectionHandler_TransitionPoses                               ;90DD23;
-    dw HUDSelectionHandler_Standard                                      ;90DD25;
-    dw HUDSelectionHandler_MorphBall                                     ;90DD27;
-    dw HUDSelectionHandler_MorphBall                                     ;90DD29;
-    dw HUDSelectionHandler_MorphBall                                     ;90DD2B;
-    dw HUDSelectionHandler_SpinWallJump_Knockback_Shinespark_CF_etc      ;90DD2D;
-    dw HUDSelectionHandler_Standard                                      ;90DD2F;
-    dw HUDSelectionHandler_Grappling                                     ;90DD31;
-    dw HUDSelectionHandler_TurningAround                                 ;90DD33;
-    dw HUDSelectionHandler_TurningAround                                 ;90DD35;
-    dw HUDSelectionHandler_SpinWallJump_Knockback_Shinespark_CF_etc      ;90DD37;
-    dw HUDSelectionHandler_GrabbedByDraygon                              ;90DD39;
-    dw HUDSelectionHandler_SpinWallJump_Knockback_Shinespark_CF_etc      ;90DD3B;
+    dw HUDSelectionHandler_Standard                                      ;90DD05; 0: Standing
+    dw HUDSelectionHandler_Standard                                      ;90DD07; 1: Running
+    dw HUDSelectionHandler_Standard                                      ;90DD09; 2: Normal jumping
+    dw HUDSelectionHandler_SpinWallJump_Knockback_Shinespark_CF_etc      ;90DD0B; 3: Spin jumping
+    dw HUDSelectionHandler_MorphBall                                     ;90DD0D; 4: Morph ball - on ground
+    dw HUDSelectionHandler_Standard                                      ;90DD0F; 5: Crouching
+    dw HUDSelectionHandler_Standard                                      ;90DD11; 6: Falling
+    dw HUDSelectionHandler_MorphBall                                     ;90DD13; 7: Unused. Glitchy morph ball / spin jump
+    dw HUDSelectionHandler_MorphBall                                     ;90DD15; 8: Morph ball - falling
+    dw HUDSelectionHandler_MorphBall                                     ;90DD17; 9: Unused
+    dw HUDSelectionHandler_SpinWallJump_Knockback_Shinespark_CF_etc      ;90DD19; Ah: Knockback / crystal flash ending
+    dw HUDSelectionHandler_Grappling                                     ;90DD1B; Bh: Unused
+    dw HUDSelectionHandler_Grappling                                     ;90DD1D; Ch: Unused
+    dw HUDSelectionHandler_SpinWallJump_Knockback_Shinespark_CF_etc      ;90DD1F; Dh: Unused
+    dw HUDSelectionHandler_TurningAround                                 ;90DD21; Eh: Turning around - on ground
+    dw HUDSelectionHandler_TransitionPoses                               ;90DD23; Fh: Crouching/standing/morphing/unmorphing transition
+    dw HUDSelectionHandler_Standard                                      ;90DD25; 10h: Moonwalking
+    dw HUDSelectionHandler_MorphBall                                     ;90DD27; 11h: Spring ball - on ground
+    dw HUDSelectionHandler_MorphBall                                     ;90DD29; 12h: Spring ball - in air
+    dw HUDSelectionHandler_MorphBall                                     ;90DD2B; 13h: Spring ball - falling
+    dw HUDSelectionHandler_SpinWallJump_Knockback_Shinespark_CF_etc      ;90DD2D; 14h: Wall jumping
+    dw HUDSelectionHandler_Standard                                      ;90DD2F; 15h: Ran into a wall
+    dw HUDSelectionHandler_Grappling                                     ;90DD31; 16h: Grappling
+    dw HUDSelectionHandler_TurningAround                                 ;90DD33; 17h: Turning around - jumping
+    dw HUDSelectionHandler_TurningAround                                 ;90DD35; 18h: Turning around - falling
+    dw HUDSelectionHandler_SpinWallJump_Knockback_Shinespark_CF_etc      ;90DD37; 19h: Damage boost
+    dw HUDSelectionHandler_GrabbedByDraygon                              ;90DD39; 1Ah: Grabbed by Draygon
+    dw HUDSelectionHandler_SpinWallJump_Knockback_Shinespark_CF_etc      ;90DD3B; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 HUDSelectionHandler_Standard:
     PHP                                                                  ;90DD3D;
@@ -12482,13 +12928,13 @@ HUDSelectionHandler_Standard:
 
 
 .pointers:
-    dw HUDSelectionHandler_Nothing_PowerBombs                            ;90DD61;
-    dw HUDSelectionHandler_Missiles_SuperMissiles                        ;90DD63;
-    dw HUDSelectionHandler_Missiles_SuperMissiles                        ;90DD65;
-    dw HUDSelectionHandler_Nothing_PowerBombs                            ;90DD67;
-    dw HUDSelectionHandler_Grappling                                     ;90DD69;
-    dw HUDSelectionHandler_Xray                                          ;90DD6B;
-    dw HUDSelectionHandler_TurningAround                                 ;90DD6D;
+    dw HUDSelectionHandler_Nothing_PowerBombs                            ;90DD61; Nothing
+    dw HUDSelectionHandler_Missiles_SuperMissiles                        ;90DD63; Missiles
+    dw HUDSelectionHandler_Missiles_SuperMissiles                        ;90DD65; Super missiles
+    dw HUDSelectionHandler_Nothing_PowerBombs                            ;90DD67; Power bombs
+    dw HUDSelectionHandler_Grappling                                     ;90DD69; Grapple
+    dw HUDSelectionHandler_Xray                                          ;90DD6B; X-ray
+    dw HUDSelectionHandler_TurningAround                                 ;90DD6D; HUD selection handler for turning, looks like a mistake, would cause stack overflow if Samus shoots in the air, can't be indexed anyway
 
 HUDSelectionHandler_Grappling:
     JSL.L GrappleBeamHandler                                             ;90DD6F;
@@ -12533,8 +12979,19 @@ HUDSelectionHandler_TransitionPoses:
     RTS                                                                  ;90DDA9;
 
 
-.flags:
-    db $00,$00,$01,$01,$01,$01,$00,$00,$01,$01,$01,$01                   ;90DDAA;
+.flags:                                                                  ;90DDAA;
+    db $00 ; Facing right - crouching transition
+    db $00 ; Facing left  - crouching transition
+    db $01 ; Facing right - morphing transition
+    db $01 ; Facing left  - morphing transition
+    db $01 ; Unused
+    db $01 ; Unused
+    db $00 ; Facing right - standing transition
+    db $00 ; Facing left  - standing transition
+    db $01 ; Facing right - unmorphing transition
+    db $01 ; Facing left  - unmorphing transition
+    db $01 ; Unused
+    db $01 ; Unused
 
 HUDSelectionHandler_SpinWallJump_Knockback_Shinespark_CF_etc:
     LDA.W $0D32                                                          ;90DDB6;
@@ -12669,34 +13126,34 @@ SamusIsHit_Interruption:
 
 
 .pointers:
-    dw KnockbackTransition_Normal                                        ;90DE82;
-    dw KnockbackTransition_Normal                                        ;90DE84;
-    dw KnockbackTransition_Normal                                        ;90DE86;
-    dw KnockbackTransition_Normal                                        ;90DE88;
-    dw KnockbackTransition_Morphed                                       ;90DE8A;
-    dw KnockbackTransition_Normal                                        ;90DE8C;
-    dw KnockbackTransition_Normal_Falling                                ;90DE8E;
-    dw UNUSED_KnockbackTransition_Movement7_90DF1D                       ;90DE90;
-    dw KnockbackTransition_Morphed                                       ;90DE92;
-    dw KnockbackTransition_Morphed                                       ;90DE94;
-    dw KnockbackTransition_Ignore                                        ;90DE96;
-    dw KnockbackTransition_Ignore_ClearDirection                         ;90DE98;
-    dw KnockbackTransition_Ignore_ClearDirection                         ;90DE9A;
-    dw KnockbackTransition_Normal                                        ;90DE9C;
-    dw KnockbackTransition_Ignore_ClearDirection                         ;90DE9E;
-    dw KnockbackTransition_Ignore_ClearDirection                         ;90DEA0;
-    dw KnockbackTransition_Normal                                        ;90DEA2;
-    dw KnockbackTransition_Morphed                                       ;90DEA4;
-    dw KnockbackTransition_Morphed                                       ;90DEA6;
-    dw KnockbackTransition_Morphed                                       ;90DEA8;
-    dw KnockbackTransition_Normal                                        ;90DEAA;
-    dw KnockbackTransition_Normal                                        ;90DEAC;
-    dw KnockbackTransition_Ignore                                        ;90DEAE;
-    dw KnockbackTransition_Ignore_ClearDirection                         ;90DEB0;
-    dw KnockbackTransition_Ignore_ClearDirection                         ;90DEB2;
-    dw KnockbackTransition_Ignore_ClearDirection                         ;90DEB4;
-    dw KnockbackTransition_Ignore_ClearDirection                         ;90DEB6;
-    dw KnockbackTransition_SetSamusDrainedHurtAnimation_OrIgnore         ;90DEB8;
+    dw KnockbackTransition_Normal                                        ;90DE82; 0: Standing
+    dw KnockbackTransition_Normal                                        ;90DE84; 1: Running
+    dw KnockbackTransition_Normal                                        ;90DE86; 2: Normal jumping
+    dw KnockbackTransition_Normal                                        ;90DE88; 3: Spin jumping
+    dw KnockbackTransition_Morphed                                       ;90DE8A; 4: Morph ball - on ground
+    dw KnockbackTransition_Normal                                        ;90DE8C; 5: Crouching
+    dw KnockbackTransition_Normal_Falling                                ;90DE8E; 6: Falling
+    dw UNUSED_KnockbackTransition_Movement7_90DF1D                       ;90DE90; 7: Unused
+    dw KnockbackTransition_Morphed                                       ;90DE92; 8: Morph ball - falling
+    dw KnockbackTransition_Morphed                                       ;90DE94; 9: Unused
+    dw KnockbackTransition_Ignore                                        ;90DE96; Ah: Knockback / crystal flash ending
+    dw KnockbackTransition_Ignore_ClearDirection                         ;90DE98; Bh: Unused
+    dw KnockbackTransition_Ignore_ClearDirection                         ;90DE9A; Ch: Unused
+    dw KnockbackTransition_Normal                                        ;90DE9C; Dh: Unused
+    dw KnockbackTransition_Ignore_ClearDirection                         ;90DE9E; Eh: Turning around - on ground
+    dw KnockbackTransition_Ignore_ClearDirection                         ;90DEA0; Fh: Crouching/standing/morphing/unmorphing transition
+    dw KnockbackTransition_Normal                                        ;90DEA2; 10h: Moonwalking
+    dw KnockbackTransition_Morphed                                       ;90DEA4; 11h: Spring ball - on ground
+    dw KnockbackTransition_Morphed                                       ;90DEA6; 12h: Spring ball - in air
+    dw KnockbackTransition_Morphed                                       ;90DEA8; 13h: Spring ball - falling
+    dw KnockbackTransition_Normal                                        ;90DEAA; 14h: Wall jumping
+    dw KnockbackTransition_Normal                                        ;90DEAC; 15h: Ran into a wall
+    dw KnockbackTransition_Ignore                                        ;90DEAE; 16h: Grappling
+    dw KnockbackTransition_Ignore_ClearDirection                         ;90DEB0; 17h: Turning around - jumping
+    dw KnockbackTransition_Ignore_ClearDirection                         ;90DEB2; 18h: Turning around - falling
+    dw KnockbackTransition_Ignore_ClearDirection                         ;90DEB4; 19h: Damage boost
+    dw KnockbackTransition_Ignore_ClearDirection                         ;90DEB6; 1Ah: Grabbed by Draygon
+    dw KnockbackTransition_SetSamusDrainedHurtAnimation_OrIgnore         ;90DEB8; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 KnockbackTransition_SetSamusDrainedHurtAnimation_OrIgnore:
     LDA.W $0A1C                                                          ;90DEBA;
@@ -12798,12 +13255,12 @@ SamusMovementHandler_Knockback:
 
 
 .pointers:
-    dw ZeroIndex_Crash                                                   ;90DF44;
-    dw KnockbackMoement_Up                                               ;90DF46;
-    dw KnockbackMoement_Up                                               ;90DF48;
-    dw UNUSED_KnockbackMoement_StraightUp_90DF5D                         ;90DF4A;
-    dw KnockbackMoement_Down                                             ;90DF4C;
-    dw KnockbackMoement_Down                                             ;90DF4E;
+    dw ZeroIndex_Crash                                                   ;90DF44; 0: Crashes
+    dw KnockbackMoement_Up                                               ;90DF46; 1: Up left
+    dw KnockbackMoement_Up                                               ;90DF48; 2: Up right
+    dw UNUSED_KnockbackMoement_StraightUp_90DF5D                         ;90DF4A; 3: Straight up (unused)
+    dw KnockbackMoement_Down                                             ;90DF4C; 4: Down left
+    dw KnockbackMoement_Down                                             ;90DF4E; 5: Down right
 
 ZeroIndex_Crash:
     BRA ZeroIndex_Crash                                                  ;90DF50;
@@ -12869,34 +13326,34 @@ SerupBombJump:
 
 
 .pointers:
-    dw SetupBombJump_Standing_Crouching                                  ;90DFB5;
-    dw SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple      ;90DFB7;
-    dw SetupBombJump_Jumping_Turning_DamageBoost_TransitionPoses         ;90DFB9;
-    dw SetupBombJump_Jumping_Turning_DamageBoost_TransitionPoses         ;90DFBB;
-    dw SetupBombJump_Morphed_Knockback_CrystalFlashEnding                ;90DFBD;
-    dw SetupBombJump_Standing_Crouching                                  ;90DFBF;
-    dw SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple      ;90DFC1;
-    dw SetupBombJump_Morphed_Knockback_CrystalFlashEnding                ;90DFC3;
-    dw SetupBombJump_Morphed_Knockback_CrystalFlashEnding                ;90DFC5;
-    dw SetupBombJump_Morphed_Knockback_CrystalFlashEnding                ;90DFC7;
-    dw SetupBombJump_Morphed_Knockback_CrystalFlashEnding                ;90DFC9;
-    dw SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple      ;90DFCB;
-    dw SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple      ;90DFCD;
-    dw SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple      ;90DFCF;
-    dw SetupBombJump_Jumping_Turning_DamageBoost_TransitionPoses         ;90DFD1;
-    dw SetupBombJump_Jumping_Turning_DamageBoost_TransitionPoses         ;90DFD3;
-    dw SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple      ;90DFD5;
-    dw SetupBombJump_Morphed_Knockback_CrystalFlashEnding                ;90DFD7;
-    dw SetupBombJump_Morphed_Knockback_CrystalFlashEnding                ;90DFD9;
-    dw SetupBombJump_Morphed_Knockback_CrystalFlashEnding                ;90DFDB;
-    dw SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple      ;90DFDD;
-    dw SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple      ;90DFDF;
-    dw SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple      ;90DFE1;
-    dw SetupBombJump_Jumping_Turning_DamageBoost_TransitionPoses         ;90DFE3;
-    dw SetupBombJump_Jumping_Turning_DamageBoost_TransitionPoses         ;90DFE5;
-    dw SetupBombJump_Jumping_Turning_DamageBoost_TransitionPoses         ;90DFE7;
-    dw SetupBombJump_DraygonGrab_Shinespark_CF_Drained_DamagedMB         ;90DFE9;
-    dw SetupBombJump_DraygonGrab_Shinespark_CF_Drained_DamagedMB         ;90DFEB;
+    dw SetupBombJump_Standing_Crouching                                  ;90DFB5; 0: Standing
+    dw SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple      ;90DFB7; 1: Running
+    dw SetupBombJump_Jumping_Turning_DamageBoost_TransitionPoses         ;90DFB9; 2: Normal jumping
+    dw SetupBombJump_Jumping_Turning_DamageBoost_TransitionPoses         ;90DFBB; 3: Spin jumping
+    dw SetupBombJump_Morphed_Knockback_CrystalFlashEnding                ;90DFBD; 4: Morph ball - on ground
+    dw SetupBombJump_Standing_Crouching                                  ;90DFBF; 5: Crouching
+    dw SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple      ;90DFC1; 6: Falling
+    dw SetupBombJump_Morphed_Knockback_CrystalFlashEnding                ;90DFC3; 7: Unused
+    dw SetupBombJump_Morphed_Knockback_CrystalFlashEnding                ;90DFC5; 8: Morph ball - falling
+    dw SetupBombJump_Morphed_Knockback_CrystalFlashEnding                ;90DFC7; 9: Unused
+    dw SetupBombJump_Morphed_Knockback_CrystalFlashEnding                ;90DFC9; Ah: Knockback / crystal flash ending
+    dw SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple      ;90DFCB; Bh: Unused
+    dw SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple      ;90DFCD; Ch: Unused
+    dw SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple      ;90DFCF; Dh: Unused
+    dw SetupBombJump_Jumping_Turning_DamageBoost_TransitionPoses         ;90DFD1; Eh: Turning around - on ground
+    dw SetupBombJump_Jumping_Turning_DamageBoost_TransitionPoses         ;90DFD3; Fh: Crouching/standing/morphing/unmorphing transition
+    dw SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple      ;90DFD5; 10h: Moonwalking
+    dw SetupBombJump_Morphed_Knockback_CrystalFlashEnding                ;90DFD7; 11h: Spring ball - on ground
+    dw SetupBombJump_Morphed_Knockback_CrystalFlashEnding                ;90DFD9; 12h: Spring ball - in air
+    dw SetupBombJump_Morphed_Knockback_CrystalFlashEnding                ;90DFDB; 13h: Spring ball - falling
+    dw SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple      ;90DFDD; 14h: Wall jumping
+    dw SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple      ;90DFDF; 15h: Ran into a wall
+    dw SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple      ;90DFE1; 16h: Grappling
+    dw SetupBombJump_Jumping_Turning_DamageBoost_TransitionPoses         ;90DFE3; 17h: Turning around - jumping
+    dw SetupBombJump_Jumping_Turning_DamageBoost_TransitionPoses         ;90DFE5; 18h: Turning around - falling
+    dw SetupBombJump_Jumping_Turning_DamageBoost_TransitionPoses         ;90DFE7; 19h: Damage boost
+    dw SetupBombJump_DraygonGrab_Shinespark_CF_Drained_DamagedMB         ;90DFE9; 1Ah: Grabbed by Draygon
+    dw SetupBombJump_DraygonGrab_Shinespark_CF_Drained_DamagedMB         ;90DFEB; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 SetupBombJump_Standing_Crouching:
     LDA.W $0A78                                                          ;90DFED;
@@ -12966,10 +13423,10 @@ SamusMovementHandler_BombJump_Main:
 
 
 .pointers:
-    dw ZeroIndex_Crash                                                   ;90E044;
-    dw SamusMovementHandler_BombJump_Main_Horizontal                     ;90E046;
-    dw SamusMovementHandler_BombJump_Main_Straight                       ;90E048;
-    dw SamusMovementHandler_BombJump_Main_Horizontal                     ;90E04A;
+    dw ZeroIndex_Crash                                                   ;90E044; 0: Crashes
+    dw SamusMovementHandler_BombJump_Main_Horizontal                     ;90E046; 1: Left
+    dw SamusMovementHandler_BombJump_Main_Straight                       ;90E048; 2: Straight
+    dw SamusMovementHandler_BombJump_Main_Horizontal                     ;90E04A; 3: Right
 
 SamusMovementHandler_BombJump_Main_Horizontal:
     JSR.W MoveSamus_Horizontally_KnockbackBombJump                       ;90E04C;
@@ -13870,13 +14327,65 @@ SetSamusSolidVerticalCollisionResult_DownwardsMovement:
     RTS                                                                  ;90E659;
 
 
-.data0:
-    db $00,$00,$04,$04,$01,$00,$04,$02,$04,$04,$00,$00,$00,$00,$04,$04   ;90E65A;
-    db $00,$03,$04,$04,$04,$00,$04,$04,$04,$04,$04,$04                   ;90E66A;
+.data0:                                                                  ;90E65A;
+    db $00 ; 0: Standing
+    db $00 ; 1: Running
+    db $04 ; 2: Normal jumping
+    db $04 ; 3: Spin jumping
+    db $01 ; 4: Morph ball - on ground
+    db $00 ; 5: Crouching
+    db $04 ; 6: Falling
+    db $02 ; 7: Unused
+    db $04 ; 8: Morph ball - falling
+    db $04 ; 9: Unused
+    db $00 ; Ah: Knockback
+    db $00 ; Bh: Unused
+    db $00 ; Ch: Unused
+    db $00 ; Dh: Unused
+    db $04 ; Eh: Turning around - on ground
+    db $04 ; Fh: Crouching/standing/morphing/unmorphing transition
+    db $00 ; 10h: Moonwalking
+    db $03 ; 11h: Spring ball - on ground
+    db $04 ; 12h: Spring ball - in air
+    db $04 ; 13h: Spring ball - falling
+    db $04 ; 14h: Wall jumping
+    db $00 ; 15h: Ran into a wall
+    db $04 ; 16h: Grappling
+    db $04 ; 17h: Turning around - jumping
+    db $04 ; 18h: Turning around - falling
+    db $04 ; 19h: Damage boost
+    db $04 ; 1Ah: Grabbed by Draygon
+    db $04 ; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
-.data1:
-    db $04,$04,$00,$00,$04,$04,$00,$04,$01,$02,$00,$04,$04,$00,$04,$04   ;90E676;
-    db $04,$04,$03,$03,$00,$04,$04,$04,$04,$00,$04,$04                   ;90E686;
+.data1:                                                                  ;90E676;
+    db $04 ; 0: Standing
+    db $04 ; 1: Running
+    db $00 ; 2: Normal jumping
+    db $00 ; 3: Spin jumping
+    db $04 ; 4: Morph ball - on ground
+    db $04 ; 5: Crouching
+    db $00 ; 6: Falling
+    db $04 ; 7: Unused
+    db $01 ; 8: Morph ball - falling
+    db $02 ; 9: Unused
+    db $00 ; Ah: Knockback
+    db $04 ; Bh: Unused
+    db $04 ; Ch: Unused
+    db $00 ; Dh: Unused
+    db $04 ; Eh: Turning around - on ground
+    db $04 ; Fh: Crouching/standing/morphing/unmorphing transition
+    db $04 ; 10h: Moonwalking
+    db $04 ; 11h: Spring ball - on ground
+    db $03 ; 12h: Spring ball - in air
+    db $03 ; 13h: Spring ball - falling
+    db $00 ; 14h: Wall jumping
+    db $04 ; 15h: Ran into a wall
+    db $04 ; 16h: Grappling
+    db $04 ; 17h: Turning around - jumping
+    db $04 ; 18h: Turning around - falling
+    db $00 ; 19h: Damage boost
+    db $04 ; 1Ah: Grabbed by Draygon
+    db $04 ; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 SamusCurrentStateHandler:
     JMP.W ($0A42)                                                        ;90E692;
@@ -14930,9 +15439,35 @@ DemoRecorder_DisplaySamusPositionAsAmmoIfMorphed:
     RTS                                                                  ;90ED4F;
 
 
-.poses:
-    db $00,$00,$00,$00,$01,$00,$00,$01,$01,$01,$00,$00,$00,$00,$00,$00   ;90ED50;
-    db $00,$01,$01,$01,$00,$00,$00,$00,$00,$00,$00,$00                   ;90ED60;
+.poses:                                                                  ;90ED50;
+    db $00 ;  0: Standing
+    db $00 ;  1: Running
+    db $00 ;  2: Normal jumping
+    db $00 ;  3: Spin jumping
+    db $01 ; *4: Morph ball - on ground
+    db $00 ;  5: Crouching
+    db $00 ;  6: Falling
+    db $01 ; *7: Unused
+    db $01 ; *8: Morph ball - falling
+    db $01 ; *9: Unused
+    db $00 ;  Ah: Knockback / crystal flash ending
+    db $00 ;  Bh: Unused
+    db $00 ;  Ch: Unused
+    db $00 ;  Dh: Unused
+    db $00 ;  Eh: Turning around - on ground
+    db $00 ;  Fh: Crouching/standing/morphing/unmorphing transition
+    db $00 ;  10h: Moonwalking
+    db $01 ; *11h: Spring ball - on ground
+    db $01 ; *12h: Spring ball - in air
+    db $01 ; *13h: Spring ball - falling
+    db $00 ;  14h: Wall jumping
+    db $00 ;  15h: Ran into a wall
+    db $00 ;  16h: Grappling
+    db $00 ;  17h: Turning around - jumping
+    db $00 ;  18h: Turning around - falling
+    db $00 ;  19h: Damage boost
+    db $00 ;  1Ah: Grabbed by Draygon
+    db $00 ;  1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DisplayInGameTimeAsAmmo_90ED6C:
@@ -14958,14 +15493,14 @@ FootstepGraphics:
 
 
 .pointers:
-    dw FootstepGraphics_Crateria                                         ;90ED91;
-    dw FootstepGraphics_Common                                           ;90ED93;
-    dw FootstepGraphics_Common                                           ;90ED95;
-    dw FootstepGraphics_Common                                           ;90ED97;
-    dw FootstepGraphics_Maridia                                          ;90ED99;
-    dw FootstepGraphics_Common                                           ;90ED9B;
-    dw FootstepGraphics_Common                                           ;90ED9D;
-    dw FootstepGraphics_Common                                           ;90ED9F;
+    dw FootstepGraphics_Crateria                                         ;90ED91; Crateria
+    dw FootstepGraphics_Common                                           ;90ED93; Brinstar
+    dw FootstepGraphics_Common                                           ;90ED95; Norfair
+    dw FootstepGraphics_Common                                           ;90ED97; Wrecked Ship
+    dw FootstepGraphics_Maridia                                          ;90ED99; Maridia
+    dw FootstepGraphics_Common                                           ;90ED9B; Tourian
+    dw FootstepGraphics_Common                                           ;90ED9D; Ceres
+    dw FootstepGraphics_Common                                           ;90ED9F; Debug
 
 FootstepGraphics_Crateria:
     LDA.W $1F51                                                          ;90EDA1;
@@ -14990,8 +15525,23 @@ FootstepGraphics_Crateria:
     JMP.W FootstepGraphics_Common                                        ;90EDC6;
 
 
-.footstepTypes:
-    db $01,$00,$00,$00,$00,$02,$00,$04,$00,$04,$04,$04,$04,$00,$04,$00   ;90EDC9;
+.footstepTypes:                                                          ;90EDC9;
+    db $01 ; 0: Landing site
+    db $00
+    db $00
+    db $00
+    db $00
+    db $02 ; 5: Wrecked Ship entrance
+    db $00
+    db $04 ; 7: Pre moat room
+    db $00
+    db $04 ; 9: Wrecked Ship back door
+    db $04 ; Ah: East Crateria kago shaft
+    db $04 ; Bh: East Crateria maze
+    db $04 ; Ch: Post Crateria maze yellow door
+    db $00
+    db $04 ; Eh: Moat
+    db $00
 
 .wreckedShipEntrance:
     LDA.W $0AFA                                                          ;90EDD9;
@@ -15163,10 +15713,12 @@ UpdateSamusEchoPosition:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_PossiblyFootStepGraphicOffsets_90EF1C:
+; Best guess is footstep graphic offsets from Samus' position
     dw $000C,$0010                                                       ;90EF1C;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Unknown_ShinesparkMovementHandler_Unused_90EF20:
+; Loaded by shinespark Samus movement handlers and then unused >_<;
     dw $0010                                                             ;90EF20;
 
 PostGrappleCollisionDetection:
@@ -15244,9 +15796,11 @@ UNUSED_FireUnknownProjectile27_90EF5E:
 
 
 .XOffsets:
+; X offsets from Samus
     dw $0080,$0080,$FF80,$FF80                                           ;90EFC3;
 
 .YOffsets:
+; Y offsets from Samus
     dw $FF80,$0080,$0080,$FF80                                           ;90EFCB;
 
 UNUSED_ProjectilePreInstruction_UnknownProjectile27_90EFD3:
@@ -15292,18 +15846,16 @@ UNUSED_ProjectilePreInstruction_UnknownProjectile27_90EFD3:
 .return:
     RTS                                                                  ;90F02A;
 
-
+; Indexed by projectile index
 .XVelocities:
     dw $FFFC,$FFFC,$0004,$0004                                           ;90F02B;
-
 .YVelocities:
     dw $0004,$FFFC,$FFFC,$0004                                           ;90F033;
-
 .XOffsets:
     dw $0080,$0080,$FF80,$FF80                                           ;90F03B;
-
 .YOffsets:
     dw $FF80,$0080,$0080,$FF80                                           ;90F043;
+
 
 UNUSED_SamusMovementHandler_90F04B:
     LDA.W $0A68                                                          ;90F04B;
