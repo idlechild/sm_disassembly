@@ -1933,7 +1933,7 @@ InstList_DemoInput_MissileDoor:                                          ;9193CC
     dw Instruction_DemoInputObject_Delete
 
 InstList_DemoInput_Kraid:                                                ;919464;
-    dw $0200,$0000,$0000 ;                                                 
+    dw $0200,$0000,$0000 ;
     dw Instruction_DemoInputObject_Delete
 
 InstList_DemoInput_FireFleaRoom:                                         ;91946C;
@@ -2805,7 +2805,7 @@ TransitionTable_00_9B_FacingForward:                                     ;91A0DE
 ; 9B: Facing forward - varia/gravity suit
     dw $0000,$0100,$0026
     dw $0000,$0200,$0025
-    dw $FFFF                         
+    dw $FFFF
 
 TransitionTable_01_03_05_07_A4_A6_E0_E2_E4_E6_FacingRight:               ;91A0EC;
 ; 01: Facing right - normal
@@ -2913,7 +2913,7 @@ TransitionTable_0A_0E_10_12_MovingLeft:                                  ;91A242
     dw $0000,$0800,$0004
     dw $0000,$0010,$0006
     dw $0000,$0020,$0008
-    dw $FFFF            
+    dw $FFFF
 
 TransitionTable_4B_55_57_59_FacingRight_NormalJumpTransition:            ;91A28C;
 ; 4B: Facing right - normal jump transition
@@ -3163,41 +3163,97 @@ UNUSED_TransitionTable_23_91A668:
 UNUSED_TransitionTable_42_91A66A:
     dw $FFFF                                                             ;91A66A;
 
-TransitionTable_27_71_73_85_FacingRight_Crouching:
-    dw $0800,$0030,$00F7,$0800,$0010,$00F9,$0800,$0020                   ;91A66C;
-    dw $00FB,$0800,$0000,$003B,$0200,$0000,$0043,$0400                   ;91A67C;
-    dw $0000,$0037,$0080,$0000,$004B,$0000,$0030,$0085                   ;91A68C;
-    dw $0000,$0110,$0001,$0000,$0120,$0001,$0000,$0010                   ;91A69C;
-    dw $0071,$0000,$0020,$0073,$0000,$0100,$0001,$FFFF                   ;91A6AC;
+TransitionTable_27_71_73_85_FacingRight_Crouching:                       ;91A66C;
+; 27: Facing right - crouching
+; 71: Facing right - crouching transition - aiming up-right
+; 73: Facing right - crouching transition - aiming down-right
+; 85: Facing right - crouching - aiming up
+    dw $0800,$0030,$00F7
+    dw $0800,$0010,$00F9
+    dw $0800,$0020,$00FB
+    dw $0800,$0000,$003B
+    dw $0200,$0000,$0043
+    dw $0400,$0000,$0037
+    dw $0080,$0000,$004B
+    dw $0000,$0030,$0085
+    dw $0000,$0110,$0001
+    dw $0000,$0120,$0001
+    dw $0000,$0010,$0071
+    dw $0000,$0020,$0073
+    dw $0000,$0100,$0001
+    dw $FFFF
 
-TransitionTable_28_72_74_86_Crouching:
-    dw $0800,$0030,$00F8,$0800,$0010,$00FA,$0800,$0020                   ;91A6BC;
-    dw $00FC,$0800,$0000,$003C,$0100,$0000,$0044,$0400                   ;91A6CC;
-    dw $0000,$0038,$0080,$0000,$004C,$0000,$0030,$0086                   ;91A6DC;
-    dw $0000,$0220,$0002,$0000,$0210,$0002,$0000,$0010                   ;91A6EC;
-    dw $0072,$0000,$0020,$0074,$0000,$0200,$0002,$FFFF                   ;91A6FC;
+TransitionTable_28_72_74_86_Crouching:                                   ;91A6BC;
+; 28: Facing left - crouching
+; 72: Facing left - crouching transition - aiming up-left
+; 74: Facing left - crouching transition - aiming down-left
+; 86: Facing left - crouching - aiming up
+    dw $0800,$0030,$00F8
+    dw $0800,$0010,$00FA
+    dw $0800,$0020,$00FC
+    dw $0800,$0000,$003C
+    dw $0100,$0000,$0044
+    dw $0400,$0000,$0038
+    dw $0080,$0000,$004C
+    dw $0000,$0030,$0086
+    dw $0000,$0220,$0002
+    dw $0000,$0210,$0002
+    dw $0000,$0010,$0072
+    dw $0000,$0020,$0074
+    dw $0000,$0200,$0002
+    dw $FFFF
 
-TransitionTable_29_2B_6D_6F_FacingRight_Falling:
-    dw $0000,$0900,$006D,$0000,$0500,$006F,$0000,$0A00                   ;91A70C;
-    dw $0087,$0000,$0600,$0087,$0000,$0200,$0087,$0000                   ;91A71C;
-    dw $0800,$002B,$0000,$0400,$002D,$0000,$0010,$006D                   ;91A72C;
-    dw $0000,$0020,$006F,$0000,$0040,$0067,$0000,$0100                   ;91A73C;
-    dw $0029,$FFFF                                                       ;91A74C;
+TransitionTable_29_2B_6D_6F_FacingRight_Falling:                         ;91A70C;
+; 29: Facing right - falling
+; 2B: Facing right - falling - aiming up
+; 6D: Facing right - falling - aiming up-right
+; 6F: Facing right - falling - aiming down-right
+    dw $0000,$0900,$006D
+    dw $0000,$0500,$006F
+    dw $0000,$0A00,$0087
+    dw $0000,$0600,$0087
+    dw $0000,$0200,$0087
+    dw $0000,$0800,$002B
+    dw $0000,$0400,$002D
+    dw $0000,$0010,$006D
+    dw $0000,$0020,$006F
+    dw $0000,$0040,$0067
+    dw $0000,$0100,$0029
+    dw $FFFF
 
-TransitionTable_2A_2C_6E_70_FacingLeft_Falling:
-    dw $0000,$0A00,$006E,$0000,$0600,$0070,$0000,$0900                   ;91A750;
-    dw $0088,$0000,$0500,$0088,$0000,$0100,$0088,$0000                   ;91A760;
-    dw $0800,$002C,$0000,$0400,$002E,$0000,$0010,$006E                   ;91A770;
-    dw $0000,$0020,$0070,$0000,$0040,$0068,$0000,$0200                   ;91A780;
-    dw $002A,$FFFF                                                       ;91A790;
+TransitionTable_2A_2C_6E_70_FacingLeft_Falling:                          ;91A750;
+; 2A: Facing left - falling
+; 2C: Facing left - falling - aiming up
+; 6E: Facing left - falling - aiming up-left
+; 70: Facing left - falling - aiming down-left
+    dw $0000,$0A00,$006E
+    dw $0000,$0600,$0070
+    dw $0000,$0900,$0088
+    dw $0000,$0500,$0088
+    dw $0000,$0100,$0088
+    dw $0000,$0800,$002C
+    dw $0000,$0400,$002E
+    dw $0000,$0010,$006E
+    dw $0000,$0020,$0070
+    dw $0000,$0040,$0068
+    dw $0000,$0200,$002A
+    dw $FFFF
 
-TransitionTable_31_FacingRight_MorphBall_NoSpringBall_InAir:
-    dw $0800,$0000,$003D,$0080,$0000,$003D,$0000,$0100                   ;91A794;
-    dw $0031,$0000,$0200,$0032,$FFFF                                     ;91A7A4;
+TransitionTable_31_FacingRight_MorphBall_NoSpringBall_InAir:             ;91A794;
+; 31: Facing right - morph ball - no springball - in air
+    dw $0800,$0000,$003D
+    dw $0080,$0000,$003D
+    dw $0000,$0100,$0031
+    dw $0000,$0200,$0032
+    dw $FFFF
 
-TransitionTable_32_FacingLeft_MorphBall_NoSpringBall_InAir:
-    dw $0800,$0000,$003E,$0080,$0000,$003E,$0000,$0200                   ;91A7AE;
-    dw $0032,$0000,$0100,$0031,$FFFF                                     ;91A7BE;
+TransitionTable_32_FacingLeft_MorphBall_NoSpringBall_InAir:              ;91A7AE;
+; 32: Facing left - morph ball - no springball - in air
+    dw $0800,$0000,$003E
+    dw $0080,$0000,$003E
+    dw $0000,$0200,$0032
+    dw $0000,$0100,$0031
+    dw $FFFF
 
 UNUSED_TransitionTable_33_91A7C8:
     dw $FFFF                                                             ;91A7C8;
@@ -3205,53 +3261,95 @@ UNUSED_TransitionTable_33_91A7C8:
 UNUSED_TransitionTable_34_91A7CA:
     dw $FFFF                                                             ;91A7CA;
 
-UNUSED_TransitionTable_45_91A7CC:
-    dw $0000,$0240,$0045,$0000,$0100,$0009,$0000,$0200                   ;91A7CC;
-    dw $0025,$FFFF                                                       ;91A7DC;
+UNUSED_TransitionTable_45_91A7CC:                                        ;91A7CC;
+    dw $0000,$0240,$0045
+    dw $0000,$0100,$0009
+    dw $0000,$0200,$0025
+    dw $FFFF
 
-UNUSED_TransitionTable_46_91A7E0:
-    dw $0000,$0140,$0046,$0000,$0200,$000A,$0000,$0100                   ;91A7E0;
-    dw $0026,$FFFF                                                       ;91A7F0;
+UNUSED_TransitionTable_46_91A7E0:                                        ;91A7E0;
+    dw $0000,$0140,$0046
+    dw $0000,$0200,$000A
+    dw $0000,$0100,$0026
+    dw $FFFF
 
 UNUSED_TransitionTable_47_91A7F4:
     dw $FFFF                                                             ;91A7F4;
 
 if !FEATURE_KEEP_UNREFERENCED
-UNUSED_TransitionTable_PossiblyPartOfAbove_91A7F6:
-    dw $0080,$0000,$004B,$0400,$0000,$0035,$0000,$0210                   ;91A7F6;
-    dw $0078,$0000,$0220,$0076,$0000,$0240,$004A,$0000                   ;91A806;
-    dw $0100,$0009,$0000,$0200,$0025,$0000,$0800,$0003                   ;91A816;
-    dw $0000,$0010,$0005,$0000,$0020,$0007,$FFFF                         ;91A826;
+UNUSED_TransitionTable_PossiblyPartOfAbove_91A7F6:                       ;91A7F6;
+; Possibly no-op'd sections of the above?
+    dw $0080,$0000,$004B
+    dw $0400,$0000,$0035
+    dw $0000,$0210,$0078
+    dw $0000,$0220,$0076
+    dw $0000,$0240,$004A
+    dw $0000,$0100,$0009
+    dw $0000,$0200,$0025
+    dw $0000,$0800,$0003
+    dw $0000,$0010,$0005
+    dw $0000,$0020,$0007
+    dw $FFFF
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 UNUSED_TransitionTable_48_91A834:
     dw $FFFF                                                             ;91A834;
 
 if !FEATURE_KEEP_UNREFERENCED
-UNUSED_TransitionTable_PossiblyPartOfAbove_91A836:
-    dw $0080,$0000,$004C,$0400,$0000,$0036,$0000,$0120                   ;91A836;
-    dw $0077,$0000,$0110,$0075,$0000,$0140,$0049,$0000                   ;91A846;
-    dw $0200,$000A,$0000,$0100,$0026,$0000,$0800,$0004                   ;91A856;
-    dw $0000,$0010,$0006,$0000,$0020,$0008,$FFFF                         ;91A866;
+UNUSED_TransitionTable_PossiblyPartOfAbove_91A836:                       ;91A836;
+; Possibly no-op'd sections of the above?
+    dw $0080,$0000,$004C
+    dw $0400,$0000,$0036
+    dw $0000,$0120,$0077
+    dw $0000,$0110,$0075
+    dw $0000,$0140,$0049
+    dw $0000,$0200,$000A
+    dw $0000,$0100,$0026
+    dw $0000,$0800,$0004
+    dw $0000,$0010,$0006
+    dw $0000,$0020,$0008
+    dw $FFFF
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-TransitionTable_49_75_77_FacingLeft_Moonwalk:
-    dw $0400,$0000,$0036,$0080,$0000,$00C0,$0080,$0010                   ;91A874;
-    dw $00C2,$0080,$0020,$00C4,$0000,$0160,$0077,$0000                   ;91A884;
-    dw $0150,$0075,$0000,$0140,$0049,$0000,$0200,$000A                   ;91A894;
-    dw $0000,$0100,$0026,$FFFF                                           ;91A8A4;
+TransitionTable_49_75_77_FacingLeft_Moonwalk:                            ;91A874;
+; 49: Facing left - moonwalk
+; 75: Facing left - moonwalk - aiming up-left
+; 77: Facing left - moonwalk - aiming down-left
+    dw $0400,$0000,$0036
+    dw $0080,$0000,$00C0
+    dw $0080,$0010,$00C2
+    dw $0080,$0020,$00C4
+    dw $0000,$0160,$0077
+    dw $0000,$0150,$0075
+    dw $0000,$0140,$0049
+    dw $0000,$0200,$000A
+    dw $0000,$0100,$0026
+    dw $FFFF
 
-TransitionTable_4A_76_78_FacingRight_Moonwalk:
-    dw $0400,$0000,$0035,$0080,$0000,$00BF,$0080,$0010                   ;91A8AC;
-    dw $00C1,$0080,$0020,$00C3,$0000,$0250,$0076,$0000                   ;91A8BC;
-    dw $0260,$0078,$0000,$0240,$004A,$0000,$0100,$0009                   ;91A8CC;
-    dw $0000,$0200,$0025,$FFFF                                           ;91A8DC;
+TransitionTable_4A_76_78_FacingRight_Moonwalk:                           ;91A8AC;
+; 4A: Facing right - moonwalk
+; 76: Facing right - moonwalk - aiming up-right
+; 78: Facing right - moonwalk - aiming down-right
+    dw $0400,$0000,$0035
+    dw $0080,$0000,$00BF
+    dw $0080,$0010,$00C1
+    dw $0080,$0020,$00C3
+    dw $0000,$0250,$0076
+    dw $0000,$0260,$0078
+    dw $0000,$0240,$004A
+    dw $0000,$0100,$0009
+    dw $0000,$0200,$0025
+    dw $FFFF
 
-TransitionTable_53_FacingRight_Knockback:
-    dw $0000,$0280,$0050,$FFFF                                           ;91A8E4;
+TransitionTable_53_FacingRight_Knockback:                                ;91A8E4;
+; 53: Facing right - knockback
+    dw $0000,$0280,$0050
+    dw $FFFF
 
-TransitionTable_54_FacingLeft_Knockback:
-    dw $0000,$0180,$004F,$FFFF                                           ;91A8EC;
+TransitionTable_54_FacingLeft_Knockback:                                 ;91A8EC;
+; 54: Facing left - knockback
+    dw $0000,$0180,$004F
+    dw $FFFF
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_TransitionTable_91A8F4:
@@ -3267,236 +3365,482 @@ UNUSED_TransitionTable_91A8FA:
     dw $FFFF                                                             ;91A8FA;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-UNUSED_TransitionTable_5B_91A8FC:
-    dw $0000,$0280,$0066,$FFFF                                           ;91A8FC;
+UNUSED_TransitionTable_5B_91A8FC:                                        ;91A8FC;
+    dw $0000,$0280,$0066
+    dw $FFFF
 
-UNUSED_TransitionTable_5C_91A904:
-    dw $0000,$0180,$0065,$FFFF                                           ;91A904;
+UNUSED_TransitionTable_5C_91A904:                                        ;91A904;
+    dw $0000,$0180,$0065
+    dw $FFFF
 
-TransitionTable_79_7B_FacingRight_MorphBall_Spring_OnGround:
-    dw $0800,$0000,$003D,$0080,$0000,$007F,$0000,$0100                   ;91A90C;
-    dw $007B,$0000,$0200,$007C,$FFFF                                     ;91A91C;
+TransitionTable_79_7B_FacingRight_MorphBall_Spring_OnGround:             ;91A90C;
+; 79: Facing right - morph ball - spring ball - on ground
+; 7B: Moving right - morph ball - spring ball - on ground
+    dw $0800,$0000,$003D
+    dw $0080,$0000,$007F
+    dw $0000,$0100,$007B
+    dw $0000,$0200,$007C
+    dw $FFFF
 
-TransitionTable_7A_7C_FacingLeft_MorphBall_Spring_OnGround:
-    dw $0800,$0000,$003E,$0080,$0000,$0080,$0000,$0100                   ;91A926;
-    dw $007B,$0000,$0200,$007C,$FFFF                                     ;91A936;
+TransitionTable_7A_7C_FacingLeft_MorphBall_Spring_OnGround:              ;91A926;
+; 7A: Facing left - morph ball - spring ball - on ground
+; 7C: Moving left - morph ball - spring ball - on ground
+    dw $0800,$0000,$003E
+    dw $0080,$0000,$0080
+    dw $0000,$0100,$007B
+    dw $0000,$0200,$007C
+    dw $FFFF
 
-TransitionTable_7D_FacingRight_MorphBall_SpringBall_Falling:
-    dw $0800,$0000,$003D,$0000,$0200,$007E,$0000,$0100                   ;91A940;
-    dw $007D,$FFFF                                                       ;91A950;
+TransitionTable_7D_FacingRight_MorphBall_SpringBall_Falling:             ;91A940;
+; 7D: Facing right - morph ball - spring ball - falling
+    dw $0800,$0000,$003D
+    dw $0000,$0200,$007E
+    dw $0000,$0100,$007D
+    dw $FFFF
 
-TransitionTable_7E_FacingLeft_MorphBall_SpringBall_Falling:
-    dw $0800,$0000,$003E,$0000,$0100,$007D,$0000,$0200                   ;91A954;
-    dw $007E,$FFFF                                                       ;91A964;
+TransitionTable_7E_FacingLeft_MorphBall_SpringBall_Falling:              ;91A954;
+; 7E: Facing left - morph ball - spring ball - falling
+    dw $0800,$0000,$003E
+    dw $0000,$0100,$007D
+    dw $0000,$0200,$007E
+    dw $FFFF
 
-TransitionTable_7F_FacingRight_MorphBall_SpringBall_InAir:
-    dw $0800,$0000,$003D,$0000,$0100,$007F,$0000,$0200                   ;91A968;
-    dw $0080,$FFFF                                                       ;91A978;
+TransitionTable_7F_FacingRight_MorphBall_SpringBall_InAir:               ;91A968;
+; 7F: Facing right - morph ball - spring ball - in air
+    dw $0800,$0000,$003D
+    dw $0000,$0100,$007F
+    dw $0000,$0200,$0080
+    dw $FFFF
 
-TransitionTable_80_FacingLeft_MorphBall_SpringBall_InAir:
-    dw $0800,$0000,$003E,$0000,$0100,$007F,$0000,$0200                   ;91A97C;
-    dw $0080,$FFFF                                                       ;91A98C;
+TransitionTable_80_FacingLeft_MorphBall_SpringBall_InAir:                ;91A97C;
+; 80: Facing left - morph ball - spring ball - in air
+    dw $0800,$0000,$003E
+    dw $0000,$0100,$007F
+    dw $0000,$0200,$0080
+    dw $FFFF
 
-UNUSED_TransitionTable_63_91A990:
-    dw $0000,$0280,$0066,$FFFF                                           ;91A990;
+UNUSED_TransitionTable_63_91A990:                                        ;91A990;
+    dw $0000,$0280,$0066
+    dw $FFFF
 
-UNUSED_TransitionTable_64_91A998:
-    dw $0000,$0180,$0065,$FFFF                                           ;91A998;
+UNUSED_TransitionTable_64_91A998:                                        ;91A998;
+    dw $0000,$0180,$0065
+    dw $FFFF
 
-UNUSED_TransitionTable_65_91A9A0:
-    dw $0000,$0180,$0065,$0000,$0010,$0069,$0000,$0020                   ;91A9A0;
-    dw $006B,$0000,$0040,$0013,$0000,$0080,$0065,$0000                   ;91A9B0;
-    dw $0100,$0065,$FFFF                                                 ;91A9C0;
+UNUSED_TransitionTable_65_91A9A0:                                        ;91A9A0;
+    dw $0000,$0180,$0065
+    dw $0000,$0010,$0069
+    dw $0000,$0020,$006B
+    dw $0000,$0040,$0013
+    dw $0000,$0080,$0065
+    dw $0000,$0100,$0065
+    dw $FFFF
 
-UNUSED_TransitionTable_66_91A9C6:
-    dw $0000,$0280,$0066,$0000,$0010,$006A,$0000,$0020                   ;91A9C6;
-    dw $006C,$0000,$0040,$0014,$0000,$0080,$0066,$0000                   ;91A9D6;
-    dw $0200,$0066,$FFFF                                                 ;91A9E6;
+UNUSED_TransitionTable_66_91A9C6:                                        ;91A9C6;
+    dw $0000,$0280,$0066
+    dw $0000,$0010,$006A
+    dw $0000,$0020,$006C
+    dw $0000,$0040,$0014
+    dw $0000,$0080,$0066
+    dw $0000,$0200,$0066
+    dw $FFFF
 
-TransitionTable_83_FacingRight_WallJump:
-    dw $0400,$0000,$0037,$0000,$0200,$001A,$0000,$0010                   ;91A9EC;
-    dw $0069,$0000,$0020,$006B,$0000,$0040,$0013,$0000                   ;91A9FC;
-    dw $0080,$0083,$FFFF                                                 ;91AA0C;
+TransitionTable_83_FacingRight_WallJump:                                 ;91A9EC;
+; 83: Facing right - wall jump
+    dw $0400,$0000,$0037
+    dw $0000,$0200,$001A
+    dw $0000,$0010,$0069
+    dw $0000,$0020,$006B
+    dw $0000,$0040,$0013
+    dw $0000,$0080,$0083
+    dw $FFFF
 
-TransitionTable_84_FacingLeft_WallJump:
-    dw $0400,$0000,$0038,$0000,$0100,$0019,$0000,$0010                   ;91AA12;
-    dw $006A,$0000,$0020,$006C,$0000,$0040,$0014,$0000                   ;91AA22;
-    dw $0080,$0084,$FFFF                                                 ;91AA32;
+TransitionTable_84_FacingLeft_WallJump:                                  ;91AA12;
+; 84: Facing left - wall jump
+    dw $0400,$0000,$0038
+    dw $0000,$0100,$0019
+    dw $0000,$0010,$006A
+    dw $0000,$0020,$006C
+    dw $0000,$0040,$0014
+    dw $0000,$0080,$0084
+    dw $FFFF
 
-TransitionTable_89_CF_D1_FacingRight_RanIntoAWall:
-    dw $0080,$0000,$004B,$0000,$0900,$000F,$0000,$0500                   ;91AA38;
-    dw $0011,$0400,$0000,$0035,$0000,$0220,$0078,$0000                   ;91AA48;
-    dw $0210,$0076,$0000,$0800,$0003,$0000,$0010,$0005                   ;91AA58;
-    dw $0000,$0020,$0007,$0000,$0200,$0025,$0000,$0100                   ;91AA68;
-    dw $0009,$FFFF                                                       ;91AA78;
+TransitionTable_89_CF_D1_FacingRight_RanIntoAWall:                       ;91AA38;
+; 89: Facing right - ran into a wall
+; CF: Facing right - ran into a wall - aiming up-right
+; D1: Facing right - ran into a wall - aiming down-right
+    dw $0080,$0000,$004B
+    dw $0000,$0900,$000F
+    dw $0000,$0500,$0011
+    dw $0400,$0000,$0035
+    dw $0000,$0220,$0078
+    dw $0000,$0210,$0076
+    dw $0000,$0800,$0003
+    dw $0000,$0010,$0005
+    dw $0000,$0020,$0007
+    dw $0000,$0200,$0025
+    dw $0000,$0100,$0009
+    dw $FFFF
 
-TransitionTable_8A_D0_D2_FacingLeft_RanIntoAWall:
-    dw $0080,$0000,$004C,$0000,$0A00,$0010,$0000,$0600                   ;91AA7C;
-    dw $0012,$0400,$0000,$0036,$0000,$0120,$0077,$0000                   ;91AA8C;
-    dw $0110,$0075,$0000,$0800,$0004,$0000,$0010,$0006                   ;91AA9C;
-    dw $0000,$0020,$0008,$0000,$0100,$0026,$0000,$0200                   ;91AAAC;
-    dw $000A,$FFFF                                                       ;91AABC;
+TransitionTable_8A_D0_D2_FacingLeft_RanIntoAWall:                        ;91AA7C;
+; 8A: Facing left - ran into a wall
+; D0: Facing left - ran into a wall - aiming up-left
+; D2: Facing left - ran into a wall - aiming down-left
+    dw $0080,$0000,$004C
+    dw $0000,$0A00,$0010
+    dw $0000,$0600,$0012
+    dw $0400,$0000,$0036
+    dw $0000,$0120,$0077
+    dw $0000,$0110,$0075
+    dw $0000,$0800,$0004
+    dw $0000,$0010,$0006
+    dw $0000,$0020,$0008
+    dw $0000,$0100,$0026
+    dw $0000,$0200,$000A
+    dw $FFFF
 
-TransitionTable_13_FaceRight_NormalJump_NotMoving_GunExtend:
-    dw $0000,$0980,$0069,$0000,$0580,$006B,$0000,$0190                   ;91AAC0;
-    dw $0069,$0000,$01A0,$006B,$0000,$0900,$0069,$0000                   ;91AAD0;
-    dw $0500,$006B,$0000,$0280,$002F,$0000,$0880,$0015                   ;91AAE0;
-    dw $0000,$0480,$0017,$0000,$0090,$0069,$0000,$00A0                   ;91AAF0;
-    dw $006B,$0000,$0180,$0051,$0000,$00C0,$0013,$0000                   ;91AB00;
-    dw $0200,$002F,$0000,$0800,$0015,$0000,$0400,$0017                   ;91AB10;
-    dw $0000,$0010,$0069,$0000,$0020,$006B,$0000,$0100                   ;91AB20;
-    dw $0051,$0000,$0040,$0013,$FFFF                                     ;91AB30;
+TransitionTable_13_FaceRight_NormalJump_NotMoving_GunExtend:             ;91AAC0;
+; 13: Facing right - normal jump - not aiming - not moving - gun extended
+    dw $0000,$0980,$0069
+    dw $0000,$0580,$006B
+    dw $0000,$0190,$0069
+    dw $0000,$01A0,$006B
+    dw $0000,$0900,$0069
+    dw $0000,$0500,$006B
+    dw $0000,$0280,$002F
+    dw $0000,$0880,$0015
+    dw $0000,$0480,$0017
+    dw $0000,$0090,$0069
+    dw $0000,$00A0,$006B
+    dw $0000,$0180,$0051
+    dw $0000,$00C0,$0013
+    dw $0000,$0200,$002F
+    dw $0000,$0800,$0015
+    dw $0000,$0400,$0017
+    dw $0000,$0010,$0069
+    dw $0000,$0020,$006B
+    dw $0000,$0100,$0051
+    dw $0000,$0040,$0013
+    dw $FFFF
 
-TransitionTable_14_FacingLeft_NormalJump_NotMoving_GunExtend:
-    dw $0000,$0A80,$006A,$0000,$0680,$006C,$0000,$0290                   ;91AB3A;
-    dw $006A,$0000,$02A0,$006C,$0000,$0A00,$006A,$0000                   ;91AB4A;
-    dw $0600,$006C,$0000,$0180,$0030,$0000,$0880,$0016                   ;91AB5A;
-    dw $0000,$0480,$0018,$0000,$0090,$006A,$0000,$00A0                   ;91AB6A;
-    dw $006C,$0000,$0280,$0052,$0000,$00C0,$0014,$0000                   ;91AB7A;
-    dw $0100,$0030,$0000,$0800,$0016,$0000,$0400,$0018                   ;91AB8A;
-    dw $0000,$0010,$006A,$0000,$0020,$006C,$0000,$0200                   ;91AB9A;
-    dw $0052,$0000,$0040,$0014,$FFFF                                     ;91ABAA;
+TransitionTable_14_FacingLeft_NormalJump_NotMoving_GunExtend:            ;91AB3A;
+; 14: Facing left - normal jump - not aiming - not moving - gun extended
+    dw $0000,$0A80,$006A
+    dw $0000,$0680,$006C
+    dw $0000,$0290,$006A
+    dw $0000,$02A0,$006C
+    dw $0000,$0A00,$006A
+    dw $0000,$0600,$006C
+    dw $0000,$0180,$0030
+    dw $0000,$0880,$0016
+    dw $0000,$0480,$0018
+    dw $0000,$0090,$006A
+    dw $0000,$00A0,$006C
+    dw $0000,$0280,$0052
+    dw $0000,$00C0,$0014
+    dw $0000,$0100,$0030
+    dw $0000,$0800,$0016
+    dw $0000,$0400,$0018
+    dw $0000,$0010,$006A
+    dw $0000,$0020,$006C
+    dw $0000,$0200,$0052
+    dw $0000,$0040,$0014
+    dw $FFFF
 
-TransitionTable_17_FacingRight_NormalJump_AimingDown:
-    dw $0400,$0000,$0037,$0000,$0980,$0069,$0000,$0580                   ;91ABB4;
-    dw $006B,$0000,$0190,$0069,$0000,$01A0,$006B,$0000                   ;91ABC4;
-    dw $01C0,$0013,$0000,$0900,$0069,$0000,$0500,$006B                   ;91ABD4;
-    dw $0000,$0280,$002F,$0000,$0880,$0015,$0000,$0480                   ;91ABE4;
-    dw $0017,$0000,$0090,$0069,$0000,$00A0,$006B,$0000                   ;91ABF4;
-    dw $0180,$0051,$0000,$00C0,$0013,$0000,$0200,$002F                   ;91AC04;
-    dw $0000,$0800,$0015,$0000,$0400,$0017,$0000,$0010                   ;91AC14;
-    dw $0069,$0000,$0020,$006B,$0000,$0100,$0051,$0000                   ;91AC24;
-    dw $0080,$0017,$0000,$0040,$0013,$FFFF                               ;91AC34;
+TransitionTable_17_FacingRight_NormalJump_AimingDown:                    ;91ABB4;
+; 17: Facing right - normal jump - aiming down
+    dw $0400,$0000,$0037
+    dw $0000,$0980,$0069
+    dw $0000,$0580,$006B
+    dw $0000,$0190,$0069
+    dw $0000,$01A0,$006B
+    dw $0000,$01C0,$0013
+    dw $0000,$0900,$0069
+    dw $0000,$0500,$006B
+    dw $0000,$0280,$002F
+    dw $0000,$0880,$0015
+    dw $0000,$0480,$0017
+    dw $0000,$0090,$0069
+    dw $0000,$00A0,$006B
+    dw $0000,$0180,$0051
+    dw $0000,$00C0,$0013
+    dw $0000,$0200,$002F
+    dw $0000,$0800,$0015
+    dw $0000,$0400,$0017
+    dw $0000,$0010,$0069
+    dw $0000,$0020,$006B
+    dw $0000,$0100,$0051
+    dw $0000,$0080,$0017
+    dw $0000,$0040,$0013
+    dw $FFFF
 
-TransitionTable_18_FacingLeft_NormalJump_AimingDown:
-    dw $0400,$0000,$0038,$0000,$0A80,$006A,$0000,$0680                   ;91AC40;
-    dw $006C,$0000,$0290,$006A,$0000,$02A0,$006C,$0000                   ;91AC50;
-    dw $02A0,$006C,$0000,$0A00,$006A,$0000,$0600,$006C                   ;91AC60;
-    dw $0000,$0180,$0030,$0000,$0880,$0016,$0000,$0480                   ;91AC70;
-    dw $0018,$0000,$0090,$006A,$0000,$00A0,$006C,$0000                   ;91AC80;
-    dw $0280,$0052,$0000,$00C0,$0014,$0000,$0100,$0030                   ;91AC90;
-    dw $0000,$0800,$0016,$0000,$0400,$0018,$0000,$0010                   ;91ACA0;
-    dw $006A,$0000,$0020,$006C,$0000,$0200,$0052,$0000                   ;91ACB0;
-    dw $0080,$0018,$0000,$0040,$0014,$FFFF                               ;91ACC0;
+TransitionTable_18_FacingLeft_NormalJump_AimingDown:                     ;91AC40;
+; 18: Facing left - normal jump - aiming down
+    dw $0400,$0000,$0038
+    dw $0000,$0A80,$006A
+    dw $0000,$0680,$006C
+    dw $0000,$0290,$006A
+    dw $0000,$02A0,$006C
+    dw $0000,$02A0,$006C
+    dw $0000,$0A00,$006A
+    dw $0000,$0600,$006C
+    dw $0000,$0180,$0030
+    dw $0000,$0880,$0016
+    dw $0000,$0480,$0018
+    dw $0000,$0090,$006A
+    dw $0000,$00A0,$006C
+    dw $0000,$0280,$0052
+    dw $0000,$00C0,$0014
+    dw $0000,$0100,$0030
+    dw $0000,$0800,$0016
+    dw $0000,$0400,$0018
+    dw $0000,$0010,$006A
+    dw $0000,$0020,$006C
+    dw $0000,$0200,$0052
+    dw $0000,$0080,$0018
+    dw $0000,$0040,$0014
+    dw $FFFF
 
-TransitionTable_3D_FacingRight_Unmorphing:
-    dw $0000,$0140,$0067,$0000,$0840,$002B,$0000,$0440                   ;91ACCC;
-    dw $002D,$FFFF                                                       ;91ACDC;
+TransitionTable_3D_FacingRight_Unmorphing:                               ;91ACCC;
+; 3D: Facing right - unmorphing
+    dw $0000,$0140,$0067
+    dw $0000,$0840,$002B
+    dw $0000,$0440,$002D
+    dw $FFFF
 
-TransitionTable_3E_FacingLeft_Unmorphing:
-    dw $0000,$0240,$0068,$0000,$0840,$002C,$0000,$0440                   ;91ACE0;
-    dw $002E,$FFFF                                                       ;91ACF0;
+TransitionTable_3E_FacingLeft_Unmorphing:                                ;91ACE0;
+; 3E: Facing left - unmorphing
+    dw $0000,$0240,$0068
+    dw $0000,$0840,$002C
+    dw $0000,$0440,$002E
+    dw $FFFF
 
-TransitionTable_25_FacingRight_Turning_Standing:
-    dw $0000,$0280,$001A,$0080,$0000,$004C,$0000,$0200                   ;91ACF4;
-    dw $0025,$FFFF                                                       ;91AD04;
+TransitionTable_25_FacingRight_Turning_Standing:                         ;91ACF4;
+; 25: Facing right - turning - standing
+    dw $0000,$0280,$001A
+    dw $0080,$0000,$004C
+    dw $0000,$0200,$0025
+    dw $FFFF
 
-TransitionTable_26_FacingLeft_Turning_Standing:
-    dw $0000,$0180,$0019,$0080,$0000,$004B,$0000,$0100                   ;91AD08;
-    dw $0026,$FFFF                                                       ;91AD18;
+TransitionTable_26_FacingLeft_Turning_Standing:                          ;91AD08;
+; 26: Facing left - turning - standing
+    dw $0000,$0180,$0019
+    dw $0080,$0000,$004B
+    dw $0000,$0100,$0026
+    dw $FFFF
 
-TransitionTable_8B_FacingRight_Turning_Standing_AimingUp:
-    dw $0080,$0200,$001A,$0080,$0000,$004C,$0000,$0200                   ;91AD1C;
-    dw $008B,$FFFF                                                       ;91AD2C;
+TransitionTable_8B_FacingRight_Turning_Standing_AimingUp:                ;91AD1C;
+; 8B: Facing right - turning - standing - aiming up
+    dw $0080,$0200,$001A
+    dw $0080,$0000,$004C
+    dw $0000,$0200,$008B
+    dw $FFFF
 
-TransitionTable_8C_FacingLeft_Turning_Standing_AimingUp:
-    dw $0080,$0100,$0019,$0080,$0000,$004B,$0000,$0100                   ;91AD30;
-    dw $008C,$FFFF                                                       ;91AD40;
+TransitionTable_8C_FacingLeft_Turning_Standing_AimingUp:                 ;91AD30;
+; 8C: Facing left - turning - standing - aiming up
+    dw $0080,$0100,$0019
+    dw $0080,$0000,$004B
+    dw $0000,$0100,$008C
+    dw $FFFF
 
-TransitionTable_8D_FacingRight_Turning_Standing_AimDownRight:
-    dw $0080,$0200,$001A,$0080,$0000,$004C,$0000,$0200                   ;91AD44;
-    dw $008D,$FFFF                                                       ;91AD54;
+TransitionTable_8D_FacingRight_Turning_Standing_AimDownRight:            ;91AD44;
+; 8D: Facing right - turning - standing - aiming down-right
+    dw $0080,$0200,$001A
+    dw $0080,$0000,$004C
+    dw $0000,$0200,$008D
+    dw $FFFF
 
-TransitionTable_8E_FacingLeft_Turning_Standing_AimDownLeft:
-    dw $0080,$0100,$0019,$0080,$0000,$004B,$0000,$0100                   ;91AD58;
-    dw $008E,$FFFF                                                       ;91AD68;
+TransitionTable_8E_FacingLeft_Turning_Standing_AimDownLeft:              ;91AD58;
+; 8E: Facing left - turning - standing - aiming down-left
+    dw $0080,$0100,$0019
+    dw $0080,$0000,$004B
+    dw $0000,$0100,$008E
+    dw $FFFF
 
-TransitionTable_C7_FacingRight_VerticalShinesparkWindup:
-    dw $0000,$0880,$00CB,$0000,$0090,$00CD,$0000,$0180                   ;91AD6C;
-    dw $00C9,$FFFF                                                       ;91AD7C;
+TransitionTable_C7_FacingRight_VerticalShinesparkWindup:                 ;91AD6C;
+; C7: Facing right - vertical shinespark windup
+    dw $0000,$0880,$00CB
+    dw $0000,$0090,$00CD
+    dw $0000,$0180,$00C9
+    dw $FFFF
 
-TransitionTable_C8_FacingLeft_VerticalShinesparkWindup:
-    dw $0000,$0880,$00CC,$0000,$0090,$00CE,$0000,$0280                   ;91AD80;
-    dw $00CA,$FFFF                                                       ;91AD90;
+TransitionTable_C8_FacingLeft_VerticalShinesparkWindup:                  ;91AD80;
+; C8: Facing left - vertical shinespark windup
+    dw $0000,$0880,$00CC
+    dw $0000,$0090,$00CE
+    dw $0000,$0280,$00CA
+    dw $FFFF
 
-TransitionTable_2D_FacingRight_Falling_AimingDown:
-    dw $0400,$0000,$0037,$0000,$0900,$006D,$0000,$0500                   ;91AD94;
-    dw $006F,$0000,$0800,$002B,$0000,$0400,$002D,$0000                   ;91ADA4;
-    dw $0200,$0087,$0000,$0010,$006D,$0000,$0020,$006F                   ;91ADB4;
-    dw $0000,$0040,$0067,$0000,$0100,$0029,$FFFF                         ;91ADC4;
+TransitionTable_2D_FacingRight_Falling_AimingDown:                       ;91AD94;
+; 2D: Facing right - falling - aiming down
+    dw $0400,$0000,$0037
+    dw $0000,$0900,$006D
+    dw $0000,$0500,$006F
+    dw $0000,$0800,$002B
+    dw $0000,$0400,$002D
+    dw $0000,$0200,$0087
+    dw $0000,$0010,$006D
+    dw $0000,$0020,$006F
+    dw $0000,$0040,$0067
+    dw $0000,$0100,$0029
+    dw $FFFF
 
-TransitionTable_2E_FacingLeft_Falling_AimingDown:
-    dw $0400,$0000,$0038,$0000,$0A00,$006E,$0000,$0600                   ;91ADD2;
-    dw $0070,$0000,$0800,$002C,$0000,$0400,$002E,$0000                   ;91ADE2;
-    dw $0100,$0088,$0000,$0010,$006E,$0000,$0020,$0070                   ;91ADF2;
-    dw $0000,$0040,$0068,$0000,$0200,$002A,$FFFF                         ;91AE02;
+TransitionTable_2E_FacingLeft_Falling_AimingDown:                        ;91ADD2;
+; 2E: Facing left - falling - aiming down
+    dw $0400,$0000,$0038
+    dw $0000,$0A00,$006E
+    dw $0000,$0600,$0070
+    dw $0000,$0800,$002C
+    dw $0000,$0400,$002E
+    dw $0000,$0100,$0088
+    dw $0000,$0010,$006E
+    dw $0000,$0020,$0070
+    dw $0000,$0040,$0068
+    dw $0000,$0200,$002A
+    dw $FFFF
 
-UNUSED_TransitionTable_DF_91AE10:
-    dw $0800,$0000,$00DE,$FFFF                                           ;91AE10;
+UNUSED_TransitionTable_DF_91AE10:                                        ;91AE10;
+    dw $0800,$0000,$00DE
+    dw $FFFF
 
-TransitionTable_BA_BB_BC_BD_BE_FacingLeft_GrabbedByDraygon:
-    dw $0000,$0A40,$00BB,$0000,$0640,$00BD,$0000,$0240                   ;91AE18;
-    dw $00BC,$0000,$0010,$00BB,$0000,$0020,$00BD,$0000                   ;91AE28;
-    dw $0040,$00BC,$0000,$0200,$00BE,$0000,$0100,$00BE                   ;91AE38;
-    dw $0000,$0800,$00BE,$0000,$0400,$00BE,$FFFF                         ;91AE48;
+TransitionTable_BA_BB_BC_BD_BE_FacingLeft_GrabbedByDraygon:              ;91AE18;
+; BA: Facing left - grabbed by Draygon - not moving - not aiming
+; BB: Facing left - grabbed by Draygon - not moving - aiming up-left
+; BC: Facing left - grabbed by Draygon - firing
+; BD: Facing left - grabbed by Draygon - not moving - aiming down-left
+; BE: Facing left - grabbed by Draygon - moving
+    dw $0000,$0A40,$00BB
+    dw $0000,$0640,$00BD
+    dw $0000,$0240,$00BC
+    dw $0000,$0010,$00BB
+    dw $0000,$0020,$00BD
+    dw $0000,$0040,$00BC
+    dw $0000,$0200,$00BE
+    dw $0000,$0100,$00BE
+    dw $0000,$0800,$00BE
+    dw $0000,$0400,$00BE
+    dw $FFFF
 
-TransitionTable_EC_ED_EE_EF_F0_FacingRight_GrabbedByDraygon:
-    dw $0000,$0940,$00ED,$0000,$0540,$00EF,$0000,$0140                   ;91AE56;
-    dw $00EE,$0000,$0010,$00ED,$0000,$0020,$00EF,$0000                   ;91AE66;
-    dw $0040,$00EE,$0000,$0200,$00F0,$0000,$0100,$00F0                   ;91AE76;
-    dw $0000,$0800,$00F0,$0000,$0400,$00F0,$FFFF                         ;91AE86;
+TransitionTable_EC_ED_EE_EF_F0_FacingRight_GrabbedByDraygon:             ;91AE56;
+; EC: Facing right - grabbed by Draygon - not moving - not aiming
+; ED: Facing right - grabbed by Draygon - not moving - aiming up-right
+; EE: Facing right - grabbed by Draygon - firing
+; EF: Facing right - grabbed by Draygon - not moving - aiming down-right
+; F0: Facing right - grabbed by Draygon - moving
+    dw $0000,$0940,$00ED
+    dw $0000,$0540,$00EF
+    dw $0000,$0140,$00EE
+    dw $0000,$0010,$00ED
+    dw $0000,$0020,$00EF
+    dw $0000,$0040,$00EE
+    dw $0000,$0200,$00F0
+    dw $0000,$0100,$00F0
+    dw $0000,$0800,$00F0
+    dw $0000,$0400,$00F0
+    dw $FFFF
 
-TransitionTable_0B_MovingRight_GunExtended:
-    dw $0400,$0000,$0035,$0080,$0000,$0019,$0000,$0110                   ;91AE94;
-    dw $000F,$0000,$0120,$0011,$0000,$0900,$000F,$0000                   ;91AEA4;
-    dw $0500,$0011,$0000,$0140,$000B,$0000,$0100,$000B                   ;91AEB4;
-    dw $0000,$0200,$0025,$0000,$0800,$0003,$0000,$0010                   ;91AEC4;
-    dw $0005,$0000,$0020,$0007,$FFFF                                     ;91AED4;
+TransitionTable_0B_MovingRight_GunExtended:                              ;91AE94;
+; 0B: Moving right - gun extended
+    dw $0400,$0000,$0035
+    dw $0080,$0000,$0019
+    dw $0000,$0110,$000F
+    dw $0000,$0120,$0011
+    dw $0000,$0900,$000F
+    dw $0000,$0500,$0011
+    dw $0000,$0140,$000B
+    dw $0000,$0100,$000B
+    dw $0000,$0200,$0025
+    dw $0000,$0800,$0003
+    dw $0000,$0010,$0005
+    dw $0000,$0020,$0007
+    dw $FFFF
 
-TransitionTable_0C_MovingLeft_GunExtended:
-    dw $0400,$0000,$0036,$0080,$0000,$001A,$0000,$0210                   ;91AEDE;
-    dw $0010,$0000,$0220,$0012,$0000,$0A00,$0010,$0000                   ;91AEEE;
-    dw $0600,$0012,$0000,$0240,$000C,$0000,$0200,$000C                   ;91AEFE;
-    dw $0000,$0100,$0026,$0000,$0800,$0004,$0000,$0010                   ;91AF0E;
-    dw $0006,$0000,$0020,$0008,$FFFF                                     ;91AF1E;
+TransitionTable_0C_MovingLeft_GunExtended:                               ;91AEDE;
+; 0C: Moving left - gun extended
+    dw $0400,$0000,$0036
+    dw $0080,$0000,$001A
+    dw $0000,$0210,$0010
+    dw $0000,$0220,$0012
+    dw $0000,$0A00,$0010
+    dw $0000,$0600,$0012
+    dw $0000,$0240,$000C
+    dw $0000,$0200,$000C
+    dw $0000,$0100,$0026
+    dw $0000,$0800,$0004
+    dw $0000,$0010,$0006
+    dw $0000,$0020,$0008
+    dw $FFFF
 
-TransitionTable_67_FacingRight_Falling_GunExtended:
-    dw $0000,$0900,$006D,$0000,$0500,$006F,$0000,$0800                   ;91AF28;
-    dw $002B,$0000,$0400,$002D,$0000,$0200,$0087,$0000                   ;91AF38;
-    dw $0010,$006D,$0000,$0020,$006F,$0000,$0040,$0067                   ;91AF48;
-    dw $0000,$0100,$0067,$FFFF                                           ;91AF58;
+TransitionTable_67_FacingRight_Falling_GunExtended:                      ;91AF28;
+; 67: Facing right - falling - gun extended
+    dw $0000,$0900,$006D
+    dw $0000,$0500,$006F
+    dw $0000,$0800,$002B
+    dw $0000,$0400,$002D
+    dw $0000,$0200,$0087
+    dw $0000,$0010,$006D
+    dw $0000,$0020,$006F
+    dw $0000,$0040,$0067
+    dw $0000,$0100,$0067
+    dw $FFFF
 
-TransitionTable_68_FacingLeft_Falling_GunExtended:
-    dw $0000,$0A00,$006E,$0000,$0600,$0070,$0000,$0800                   ;91AF60;
-    dw $002C,$0000,$0400,$002E,$0000,$0100,$0088,$0000                   ;91AF70;
-    dw $0010,$006E,$0000,$0020,$0070,$0000,$0040,$0068                   ;91AF80;
-    dw $0000,$0200,$0068,$FFFF                                           ;91AF90;
+TransitionTable_68_FacingLeft_Falling_GunExtended:                       ;91AF60;
+; 68: Facing left - falling - gun extended
+    dw $0000,$0A00,$006E
+    dw $0000,$0600,$0070
+    dw $0000,$0800,$002C
+    dw $0000,$0400,$002E
+    dw $0000,$0100,$0088
+    dw $0000,$0010,$006E
+    dw $0000,$0020,$0070
+    dw $0000,$0040,$0068
+    dw $0000,$0200,$0068
+    dw $FFFF
 
-TransitionTable_BF_FacingRight_Moonwalking_TurnJumpLeft:
-    dw $0000,$0280,$001A,$0080,$0000,$004C,$0000,$0200                   ;91AF98;
-    dw $00BF,$FFFF                                                       ;91AFA8;
+TransitionTable_BF_FacingRight_Moonwalking_TurnJumpLeft:                 ;91AF98;
+; BF: Facing right - moonwalking - turn/jump left
+    dw $0000,$0280,$001A
+    dw $0080,$0000,$004C
+    dw $0000,$0200,$00BF
+    dw $FFFF
 
-TransitionTable_C0_FacingLeft_Moonwalking_TurnJumpRight:
-    dw $0000,$0180,$0019,$0080,$0000,$004B,$0000,$0100                   ;91AFAC;
-    dw $00C0,$FFFF                                                       ;91AFBC;
+TransitionTable_C0_FacingLeft_Moonwalking_TurnJumpRight:                 ;91AFAC;
+; C0: Facing left - moonwalking - turn/jump right
+    dw $0000,$0180,$0019
+    dw $0080,$0000,$004B
+    dw $0000,$0100,$00C0
+    dw $FFFF
 
-TransitionTable_C1_FaceRight_Moonwalk_TurnJumpLeft_AimUpRight:
-    dw $0080,$0200,$001A,$0080,$0000,$004C,$0000,$0200                   ;91AFC0;
-    dw $00C1,$FFFF                                                       ;91AFD0;
+TransitionTable_C1_FaceRight_Moonwalk_TurnJumpLeft_AimUpRight:           ;91AFC0;
+; C1: Facing right - moonwalking - turn/jump left - aiming up-right
+    dw $0080,$0200,$001A
+    dw $0080,$0000,$004C
+    dw $0000,$0200,$00C1
+    dw $FFFF
 
-TransitionTable_C2_FaceLeft_Moonwalk_TurnJumpRight_AimUpLeft:
-    dw $0080,$0100,$0019,$0080,$0000,$004B,$0000,$0100                   ;91AFD4;
-    dw $00C2,$FFFF                                                       ;91AFE4;
+TransitionTable_C2_FaceLeft_Moonwalk_TurnJumpRight_AimUpLeft:            ;91AFD4;
+; C2: Facing left - moonwalking - turn/jump right - aiming up-left
+    dw $0080,$0100,$0019
+    dw $0080,$0000,$004B
+    dw $0000,$0100,$00C2
+    dw $FFFF
 
-TransitionTable_C3_FaceRight_Moonwalk_TurnJumpLeft_AimDownRight:
-    dw $0080,$0200,$001A,$0080,$0000,$004C,$0000,$0200                   ;91AFE8;
-    dw $00C3,$FFFF                                                       ;91AFF8;
+TransitionTable_C3_FaceRight_Moonwalk_TurnJumpLeft_AimDownRight:         ;91AFE8;
+; C3: Facing right - moonwalking - turn/jump left - aiming down-right
+    dw $0080,$0200,$001A
+    dw $0080,$0000,$004C
+    dw $0000,$0200,$00C3
+    dw $FFFF
 
-TransitionTable_C4_FaceLeft_Moonwalk_TurnJumpRight_AimDownLeft:
-    dw $0080,$0100,$0019,$0080,$0000,$004B,$0000,$0100                   ;91AFFC;
-    dw $00C4,$FFFF                                                       ;91B00C;
+TransitionTable_C4_FaceLeft_Moonwalk_TurnJumpRight_AimDownLeft:          ;91AFFC;
+; C4: Facing left - moonwalking - turn/jump right - aiming down-left
+    dw $0080,$0100,$0019
+    dw $0080,$0000,$004B
+    dw $0000,$0100,$00C4
+    dw $FFFF
 
 AnimationDelayTable:
+; Indexed by [Samus pose] * 2
     dw AnimationDelays_0_9B                                              ;91B010;
     dw AnimationDelays_01_02                                             ;91B012;
     dw AnimationDelays_01_02                                             ;91B014;
@@ -3751,426 +4095,757 @@ AnimationDelayTable:
     dw AnimationDelays_FB                                                ;91B206;
     dw AnimationDelays_FC                                                ;91B208;
 
-AnimationDelays_09_0A_0B_0C_0D_0E_0F_10_11_12_45_46:
+; Positive values are animation delay durations, negative values are instructions (first nybble ignored):
+;     F6:                  Go to beginning if [Samus health] >= 30
+;     F7:                  Set drained Samus movement handler
+;     F8 pp:               Enable auto-jump hack and transition to pose p if not jumping
+;     F9 eeee gg aa GG AA: Transition to pose G/A if item e equipped, otherwise g/a, and to pose g/G if Y speed = 0, otherwise a/A
+;     FA gg aa:            Transition to pose g if Y speed = 0, otherwise a
+;     FB:                  Select animation delay sequence for wall-jump
+;     FC eeee pp PP:       Transition to pose P if item e equipped, otherwise p
+;     FD pp:               Transition to pose p
+;     FE nn:               Go back n bytes
+;     FF:                  Go to beginning
+
+AnimationDelays_09_0A_0B_0C_0D_0E_0F_10_11_12_45_46:; 9: Moving right - not aiming
+; Ah: Moving left  - not aiming
+; Bh: Moving right - gun extended
+; Ch: Moving left  - gun extended
+; Dh: Moving right - aiming up (unused)
+; Eh: Moving left  - aiming up (unused)
+; Fh: Moving right - aiming up-right
+; 10h: Moving left  - aiming up-left
+; 11h: Moving right - aiming down-right
+; 12h: Moving left  - aiming down-left
+; 45h: Unused
+; 46h: Unused
     db $02,$03,$02,$03,$02,$03,$02,$03,$02,$03,$FF                       ;91B20A;
 
 if !FEATURE_KEEP_UNREFERENCED
-UNUSED_AnimationDelays_91B215:
-    db $04,$04,$04,$04,$04,$04,$03,$04,$04,$03,$FF,$0A,$FF               ;91B215;
+UNUSED_AnimationDelays_91B215:                                           ;91B215;
+; Unused. Not a subanimation of the above, just looks like a slower version
+    db $04,$04,$04,$04,$04,$04,$03,$04,$04,$03,$FF
+    db $0A,$FF
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-AnimationDelays_03_04_85_86:
-    db $02,$10,$FE,$01                                                   ;91B222;
+AnimationDelays_03_04_85_86:                                             ;91B222;
+; 3: Facing right - aiming up
+; 4: Facing left  - aiming up
+; 85h: Facing right - crouching - aiming up
+; 86h: Facing left  - crouching - aiming up
+    db $02
+    db $10, $FE,$01
 
 AnimationDelays_49_4A_75_76_77_78:
+; 49h: Facing left  - moonwalk
+; 4Ah: Facing right - moonwalk
+; 75h: Facing left  - moonwalk - aiming up-left
+; 76h: Facing right - moonwalk - aiming up-right
+; 77h: Facing left  - moonwalk - aiming down-left
+; 78h: Facing right - moonwalk - aiming down-right
     db $10,$10,$10,$10,$10,$10,$FF                                       ;91B226;
 
 AnimationDelays_A4_E6:
+; A4h: Facing right - landing from normal jump
+; E6h: Facing right - landing from normal jump - firing
     db $05,$02,$F8,$01                                                   ;91B22D;
 
 AnimationDelays_A5_E7:
+; A5h: Facing left  - landing from normal jump
+; E7h: Facing left  - landing from normal jump - firing
     db $05,$02,$F8,$02                                                   ;91B231;
 
 AnimationDelays_A6:
+; A6h: Facing right - landing from spin jump
     db $03,$05,$02,$F8,$01                                               ;91B235;
 
 AnimationDelays_A7:
+; A7h: Facing left  - landing from spin jump
     db $03,$05,$02,$F8,$02                                               ;91B23A;
 
 AnimationDelays_E0:
+; E0h: Facing right - landing from normal jump - aiming up
     db $05,$02,$F8,$03                                                   ;91B23F;
 
 AnimationDelays_E1:
+; E1h: Facing left  - landing from normal jump - aiming up
     db $05,$02,$F8,$04                                                   ;91B243;
 
 AnimationDelays_E2:
+; E2h: Facing right - landing from normal jump - aiming up-right
     db $05,$02,$F8,$05                                                   ;91B247;
 
 AnimationDelays_E3:
+; E3h: Facing left  - landing from normal jump - aiming up-left
     db $05,$02,$F8,$06                                                   ;91B24B;
 
 AnimationDelays_E4:
+; E4h: Facing right - landing from normal jump - aiming down-right
     db $05,$02,$F8,$07                                                   ;91B24F;
 
 AnimationDelays_E5:
+; E5h: Facing left  - landing from normal jump - aiming down-left
     db $05,$02,$F8,$08                                                   ;91B253;
 
-AnimationDelays_E8:
-    db $02,$02,$02,$10,$F7,$01,$FE,$01,$10,$10,$10,$10,$FE,$04,$03,$FD   ;91B257;
-    db $01                                                               ;91B267;
+AnimationDelays_E8:                                                      ;91B257;
+; E8h: Facing right - Samus drained - crouching/falling
+    db $02,$02,$02,$10,$F7
+    db $01, $FE,$01
+    db $10,$10,$10,$10, $FE,$04
+    db $03,$FD,$01
 
-AnimationDelays_E9:
-    db $02,$02,$10,$F7,$01,$FE,$01,$08,$10,$10,$10,$10,$FE,$04,$10,$10   ;91B268;
-    db $10,$FD,$02,$10,$10,$10,$10,$10,$FE,$0E,$10,$FE,$11,$10,$FE,$01   ;91B278;
+AnimationDelays_E9:                                                      ;91B268;
+; E9h: Facing left  - Samus drained - crouching/falling
+    ; Falling
+    db $02,$02,$10,$F7
+    db $01, $FE,$01
+    ; Crouching
+    db $08
+    db $10,$10,$10,$10, $FE,$04
+    ; Samus is let up
+    db $10,$10,$10, $FD,$02
+    ; Samus fails to stand up
+    db $10,$10,$10,$10,$10, $FE,$0E
+    ; Samus gets hit
+    db $10, $FE,$11
+    ; Samus is frozen (receiving hyper beam)
+    db $10, $FE,$01
 
-AnimationDelays_EA:
-    db $10,$10,$10,$10,$FF,$03,$FD,$01                                   ;91B288;
+AnimationDelays_EA:                                                      ;91B288;
+; EAh: Facing right - Samus drained - standing
+    db $10,$10,$10,$10,$FF
+    ; Samus is let up
+    db $03, $FD,$01
 
-AnimationDelays_EB:
-    db $10,$10,$10,$10,$FF,$03,$FD,$02                                   ;91B290;
+AnimationDelays_EB:                                                      ;91B290;
+; EBh: Facing left  - Samus drained - standing
+    db $10,$10,$10,$10,$FF
+    ; Samus is let up
+    db $03, $FD,$02
 
-AnimationDelays_01_02:
-    db $0A,$0A,$0A,$0A,$F6,$08,$08,$08,$08,$FE,$04                       ;91B298;
+AnimationDelays_01_02:                                                   ;91B298;
+; 1: Facing right - normal
+; 2: Facing left  - normal
+    db $0A,$0A,$0A,$0A,$F6
+    db $08,$08,$08,$08, $FE,$04
 
-AnimationDelays_27_28:
-    db $0A,$0A,$0A,$0A,$F6,$08,$08,$08,$08,$FE,$04                       ;91B2A3;
+AnimationDelays_27_28:                                                   ;91B2A3;
+; 27h: Facing right - crouching
+; 28h: Facing left  - crouching
+    db $0A,$0A,$0A,$0A,$F6
+    db $08,$08,$08,$08, $FE,$04
 
-AnimationDelays_D5_D6_D9_DA:
-    db $0F,$0F,$0F,$0F,$0F,$FF                                           ;91B2AE;
+AnimationDelays_D5_D6_D9_DA:                                             ;91B2AE;
+; D5h: Facing right - x-ray - standing
+; D6h: Facing left  - x-ray - standing
+; D9h: Facing right - x-ray - crouching
+; DAh: Facing left  - x-ray - crouching
+; These delays don't really take effect, Samus animation frame is set every frame during x-ray
+    db $0F ; Looking up
+    db $0F ; Looking up-forward
+    db $0F ; Looking forward
+    db $0F ; Looking down-forward
+    db $0F ; Looking down
+    db $FF
 
 AnimationDelays_Various_91B2B4:
+; 5: Facing right - aiming up-right
+; 6: Facing left  - aiming up-left
+; 7: Facing right - aiming down-right
+; 8: Facing left  - aiming down-left
+; 47h: Unused
+; 48h: Unused
+; 71h: Facing right - crouching - aiming up-right
+; 72h: Facing left  - crouching - aiming up-left
+; 73h: Facing right - crouching - aiming down-right
+; 74h: Facing left  - crouching - aiming down-left
+; 89h: Facing right - ran into a wall
+; 8Ah: Facing left  - ran into a wall
+; B4h: Facing right - grappling - crouching
+; B5h: Facing left  - grappling - crouching
+; B6h: Facing right - grappling - crouching - aiming down-right
+; B7h: Facing left  - grappling - crouching - aiming down-left
+; B8h: Facing left  - grapple wall jump pose
+; B9h: Facing right - grapple wall jump pose
+; BAh: Facing left  - grabbed by Draygon - not moving - not aiming
+; BBh: Facing left  - grabbed by Draygon - not moving - aiming up-left
+; BCh: Facing left  - grabbed by Draygon - firing
+; BDh: Facing left  - grabbed by Draygon - not moving - aiming down-left
+; CFh: Facing right - ran into a wall - aiming up-right
+; D0h: Facing left  - ran into a wall - aiming up-left
+; D1h: Facing right - ran into a wall - aiming down-right
+; D2h: Facing left  - ran into a wall - aiming down-left
+; ECh: Facing right - grabbed by Draygon - not moving - not aiming
+; EDh: Facing right - grabbed by Draygon - not moving - aiming up-right
+; EEh: Facing right - grabbed by Draygon - firing
+; EFh: Facing right - grabbed by Draygon - not moving - aiming down-right
     db $10,$FF                                                           ;91B2B4;
 
 AnimationDelays_A8_A9_AA_AB:
+; A8h: Facing right - grappling
+; A9h: Facing left  - grappling
+; AAh: Facing right - grappling - aiming down-right
+; ABh: Facing left  - grappling - aiming down-left
     db $10,$FF                                                           ;91B2B6;
 
-AnimationDelays_AC_AD:
-    db $02,$10,$FE,$01                                                   ;91B2B8;
+AnimationDelays_AC_AD:                                                   ;91B2B8;
+; ACh: Unused. Facing right - grappling - in air
+; ADh: Unused. Facing left  - grappling - in air
+    db $02
+    db $10, $FE,$01
 
-AnimationDelays_AE_AF:
-    db $02,$10,$FE,$01                                                   ;91B2BC;
+AnimationDelays_AE_AF:                                                   ;91B2BC;
+; AEh: Unused. Facing right - grappling - in air - aiming down
+; AFh: Unused. Facing left  - grappling - in air - aiming down
+    db $02
+    db $10, $FE,$01
 
-AnimationDelays_B0_B1:
-    db $02,$10,$FE,$01                                                   ;91B2C0;
+AnimationDelays_B0_B1:                                                   ;91B2C0;
+; B0h: Unused. Facing right - grappling - in air - aiming down-right
+; B1h: Unused. Facing left  - grappling - in air - aiming down-left
+    db $02
+    db $10, $FE,$01
 
-AnimationDelays_B2_B3:
-    db $08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08   ;91B2C4;
-    db $08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08   ;91B2D4;
-    db $08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08   ;91B2E4;
-    db $08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08   ;91B2F4;
-    db $08,$08,$FE,$01                                                   ;91B304;
+AnimationDelays_B2_B3:                                                   ;91B2C4;
+; B2h: Facing clockwise     - grapple - in air
+; B3h: Facing anticlockwise - grapple - in air
+; These delays don't really take effect, Samus animation frame is set every frame during grapple swinging
+    ; Swinging
+    db $08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08
+    db $08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08
+    ; Kicking
+    db $08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08
+    db $08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08,$08
+    ; Hanging straight down
+    db $08
+    db $08, $FE,$01
 
 AnimationDelays_4B:
-    db $01,$FD,$4D                                                       ;91B308;
+; 4Bh: Facing right - normal jump transition
+    db $01, $FD,$4D                                                      ;91B308;
 
 AnimationDelays_4C:
-    db $01,$FD,$4E                                                       ;91B30B;
+; 4Ch: Facing left  - normal jump transition
+    db $01, $FD,$4E                                                      ;91B30B;
 
 AnimationDelays_55:
-    db $01,$FD,$15,$00                                                   ;91B30E;
+; 55h: Facing right - normal jump transition - aiming up
+    db $01, $FD,$15, $00                                                 ;91B30E;
 
 AnimationDelays_56:
-    db $01,$FD,$16,$00                                                   ;91B312;
+; 56h: Facing left  - normal jump transition - aiming up
+    db $01, $FD,$16, $00                                                 ;91B312;
 
 AnimationDelays_57:
-    db $01,$FD,$69,$00                                                   ;91B316;
+; 57h: Facing right - normal jump transition - aiming up-right
+    db $01, $FD,$69, $00                                                 ;91B316;
 
 AnimationDelays_58:
-    db $01,$FD,$6A,$00                                                   ;91B31A;
+; 58h: Facing left  - normal jump transition - aiming up-left
+    db $01, $FD,$6A, $00                                                 ;91B31A;
 
 AnimationDelays_59:
-    db $01,$FD,$6B,$00                                                   ;91B31E;
+; 59h: Facing right - normal jump transition - aiming down-right
+    db $01, $FD,$6B, $00                                                 ;91B31E;
 
 AnimationDelays_5A:
-    db $01,$FD,$6C,$00                                                   ;91B322;
+; 5Ah: Facing left  - normal jump transition - aiming down-left
+    db $01, $FD,$6C, $00                                                 ;91B322;
 
-AnimationDelays_4D_4E_C7_C8:
-    db $03,$04,$04,$04,$04,$50,$FE,$01                                   ;91B326;
+AnimationDelays_4D_4E_C7_C8:                                             ;91B326;
+; 4Dh: Facing right - normal jump - not aiming - not moving - gun not extended
+; 4Eh: Facing left  - normal jump - not aiming - not moving - gun not extended
+; C7h: Facing right - vertical shinespark windup
+; C8h: Facing left  - vertical shinespark windup
+    db $03,$04,$04,$04,$04
+    db $50, $FE,$01
 
-AnimationDelays_4F_50:
-    db $08,$02,$02,$02,$02,$02,$02,$02,$02,$02,$FE,$01                   ;91B32E;
+AnimationDelays_4F_50:                                                   ;91B32E;
+; 4Fh: Facing left  - damage boost
+; 50h: Facing right - damage boost
+    db $08,$02,$02,$02,$02,$02,$02,$02,$02
+    db $02, $FE,$01
 
-AnimationDelays_15_16:
-    db $02,$10,$FE,$01                                                   ;91B33A;
+AnimationDelays_15_16:                                                   ;91B33A;
+; 15h: Facing right - normal jump - aiming up
+; 16h: Facing left  - normal jump - aiming up
+    db $02
+    db $10, $FE,$01
 
-AnimationDelays_17_18:
-    db $02,$10,$FE,$01                                                   ;91B33E;
+AnimationDelays_17_18:                                                   ;91B33E;
+; 17h: Facing right - normal jump - aiming down
+; 18h: Facing left  - normal jump - aiming down
+    db $02
+    db $10, $FE,$01
 
-AnimationDelays_51_52:
-    db $02,$03,$FE,$01                                                   ;91B342;
+AnimationDelays_51_52:                                                   ;91B342;
+; 51h: Facing right - normal jump - not aiming - moving forward
+; 52h: Facing left  - normal jump - not aiming - moving forward
+    db $02
+    db $03, $FE,$01
 
-AnimationDelays_13_14_69_6A_6B_6C:
-    db $02,$10,$FE,$01                                                   ;91B346;
+AnimationDelays_13_14_69_6A_6B_6C:                                       ;91B346;
+; 13h: Facing right - normal jump - not aiming - not moving - gun extended
+; 14h: Facing left  - normal jump - not aiming - not moving - gun extended
+; 69h: Facing right - normal jump - aiming up-right
+; 6Ah: Facing left  - normal jump - aiming up-left
+; 6Bh: Facing right - normal jump - aiming down-right
+; 6Ch: Facing left  - normal jump - aiming down-left
+    db $02
+    db $10, $FE,$01
 
-AnimationDelays_29_2A:
-    db $08,$06,$06,$FE,$01,$08,$10,$FE,$01                               ;91B34A;
+AnimationDelays_29_2A:                                                   ;91B34A;
+; 29h: Facing right - falling
+; 2Ah: Facing left  - falling
+    db $08,$06
+    db $06, $FE,$01
+    ; Terminal velocity
+    db $08
+    db $10, $FE,$01
 
-AnimationDelays_67_68:
-    db $08,$06,$06,$FE,$01,$08,$10,$FE,$01                               ;91B353;
+AnimationDelays_67_68:                                                   ;91B353;
+; 67h: Facing right - falling - gun extended
+; 68h: Facing left  - falling - gun extended
+    db $08,$06
+    db $06, $FE,$01
+    ; Terminal velocity
+    db $08
+    db $10, $FE,$01
 
-AnimationDelays_2B_2C:
-    db $02,$10,$10,$FE,$01                                               ;91B35C;
+AnimationDelays_2B_2C:                                                   ;91B35C;
+; 2Bh: Facing right - falling - aiming up
+; 2Ch: Facing left  - falling - aiming up
+    db $02,$10
+    db $10, $FE,$01
 
-AnimationDelays_6D_6E_6F_70:
-    db $02,$F0,$10,$FE,$01                                               ;91B361;
+AnimationDelays_6D_6E_6F_70:                                             ;91B361;
+; 6Dh: Facing right - falling - aiming up-right
+; 6Eh: Facing left  - falling - aiming up-left
+; 6Fh: Facing right - falling - aiming down-right
+; 70h: Facing left  - falling - aiming down-left
+    db $02,$F0
+    db $10, $FE,$01
 
-AnimationDelays_2D_2E:
-    db $02,$10,$FE,$01                                                   ;91B366;
+AnimationDelays_2D_2E:                                                   ;91B366;
+; 2Dh: Facing right - falling - aiming down
+; 2Eh: Facing left  - falling - aiming down
+    db $02
+    db $10, $FE,$01
 
-AnimationDelays_53_54:
-    db $02,$10,$FE,$01                                                   ;91B36A;
+AnimationDelays_53_54:                                                   ;91B36A;
+; 53h: Facing right - knockback
+; 54h: Facing left  - knockback
+    db $02
+    db $10, $FE,$01
 
 if !FEATURE_KEEP_UNREFERENCED
-UNUSED_AnimationDelays_91B36E:
-    db $06,$06,$06,$08,$FF,$08,$08,$FF,$0A,$FF                           ;91B36E;
+UNUSED_AnimationDelays_91B36E:                                           ;91B36E;
+; Unused. Not a subanimation of the above
+    db $06,$06,$06,$08,$FF
+    db $08,$08,$FF
+    db $0A,$FF
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-AnimationDelays_Various_91B378:
-    db $03,$03,$03,$03,$03,$03,$03,$03,$FF,$03,$FE,$0A                   ;91B378;
+AnimationDelays_Various_91B378:                                          ;91B378;
+; 1Dh: Facing right - morph ball - no springball - on ground
+; 1Eh: Moving right - morph ball - no springball - on ground
+; 1Fh: Moving left  - morph ball - no springball - on ground
+; 20h: Unused
+; 21h: Unused
+; 22h: Unused
+; 23h: Unused
+; 24h: Unused
+; 31h: Facing right - morph ball - no springball - in air
+; 32h: Facing left  - morph ball - no springball - in air
+; 33h: Unused
+; 34h: Unused
+; 41h: Facing left  - morph ball - no springball - on ground
+; 42h: Unused
+; 5Bh: Unused
+; 5Ch: Unused
+; 5Dh: Unused
+; 5Eh: Unused
+; 5Fh: Unused
+; 60h: Unused
+; 61h: Unused
+; 62h: Unused
+; 79h: Facing right - morph ball - spring ball - on ground
+; 7Ah: Facing left  - morph ball - spring ball - on ground
+; 7Bh: Moving right - morph ball - spring ball - on ground
+; 7Ch: Moving left  - morph ball - spring ball - on ground
+; 7Dh: Facing right - morph ball - spring ball - falling
+; 7Eh: Facing left  - morph ball - spring ball - falling
+; 7Fh: Facing right - morph ball - spring ball - in air
+; 80h: Facing left  - morph ball - spring ball - in air
+; C5h: Unused
+; DFh: Unused. Related to Draygon
+    db $03,$03,$03,$03,$03,$03,$03,$03,$FF
+    ; Unused. Squished morph ball
+    db $03, $FE,$0A
 
-AnimationDelays_19_1A:
-    db $04,$03,$02,$03,$02,$03,$02,$03,$02,$FE,$08,$08,$FF               ;91B384;
+AnimationDelays_19_1A:                                                   ;91B384;
+; 19h: Facing right - spin jump
+; 1Ah: Facing left  - spin jump
+    db $04
+    db $03,$02,$03,$02,$03,$02,$03,$02, $FE,$08
+    ; Wall jump eligible
+    db $08,$FF
 
-AnimationDelays_1B_1C:
-    db $04,$01,$01,$01,$01,$01,$01,$01,$01,$FE,$08,$08,$FF               ;91B391;
+AnimationDelays_1B_1C:                                                   ;91B391;
+; 1Bh: Facing right - space jump
+; 1Ch: Facing left  - space jump
+    db $04
+    db $01,$01,$01,$01,$01,$01,$01,$01, $FE,$08
+    ; Wall jump eligible
+    db $08,$FF
 
-AnimationDelays_81_82:
-    db $04,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01   ;91B39E;
-    db $01,$01,$01,$01,$01,$01,$01,$01,$01,$FE,$18,$08,$FF               ;91B3AE;
+AnimationDelays_81_82:                                                   ;91B39E;
+; 81h: Facing right - screw attack
+; 82h: Facing left  - screw attack
+    db $04
+    db $01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01, $FE,$18
+    ; Wall jump eligible
+    db $08,$FF
 
 AnimationDelays_25:
-    db $02,$02,$02,$F8,$02                                               ;91B3BB;
+; 25h: Facing right - turning - standing
+    db $02,$02,$02, $F8,$02                                              ;91B3BB;
 
 AnimationDelays_26:
-    db $02,$02,$02,$F8,$01                                               ;91B3C0;
+; 26h: Facing left  - turning - standing
+    db $02,$02,$02, $F8,$01                                              ;91B3C0;
 
 AnimationDelays_2F:
-    db $02,$02,$02,$F8,$52                                               ;91B3C5;
+; 2Fh: Facing right - turning - jumping
+    db $02,$02,$02, $F8,$52                                              ;91B3C5;
 
 AnimationDelays_30:
-    db $02,$02,$02,$F8,$51                                               ;91B3CA;
+; 30h: Facing left  - turning - jumping
+    db $02,$02,$02, $F8,$51                                              ;91B3CA;
 
 AnimationDelays_43:
-    db $02,$02,$02,$F8,$28                                               ;91B3CF;
+; 43h: Facing right - turning - crouching
+    db $02,$02,$02, $F8,$28                                              ;91B3CF;
 
 AnimationDelays_44:
-    db $02,$02,$02,$F8,$27                                               ;91B3D4;
+; 44h: Facing left  - turning - crouching
+    db $02,$02,$02, $F8,$27                                              ;91B3D4;
 
 AnimationDelays_87:
-    db $02,$02,$02,$F8,$2A                                               ;91B3D9;
+; 87h: Facing right - turning - falling
+    db $02,$02,$02, $F8,$2A                                              ;91B3D9;
 
 AnimationDelays_88:
-    db $02,$02,$02,$F8,$29                                               ;91B3DE;
+; 88h: Facing left  - turning - falling
+    db $02,$02,$02, $F8,$29                                              ;91B3DE;
 
 AnimationDelays_8B:
-    db $02,$02,$02,$F8,$04                                               ;91B3E3;
+; 8Bh: Facing right - turning - standing - aiming up
+    db $02,$02,$02, $F8,$04                                              ;91B3E3;
 
 AnimationDelays_8C:
-    db $02,$02,$02,$F8,$03                                               ;91B3E8;
+; 8Ch: Facing left  - turning - standing - aiming up
+    db $02,$02,$02, $F8,$03                                              ;91B3E8;
 
 AnimationDelays_8D:
-    db $02,$02,$02,$F8,$08                                               ;91B3ED;
+; 8Dh: Facing right - turning - standing - aiming down-right
+    db $02,$02,$02, $F8,$08                                              ;91B3ED;
 
 AnimationDelays_8E:
-    db $02,$02,$02,$F8,$07                                               ;91B3F2;
+; 8Eh: Facing left  - turning - standing - aiming down-left
+    db $02,$02,$02, $F8,$07                                              ;91B3F2;
 
 AnimationDelays_8F:
-    db $02,$02,$02,$F8,$16                                               ;91B3F7;
+; 8Fh: Facing right - turning - in air - aiming up
+    db $02,$02,$02, $F8,$16                                              ;91B3F7;
 
 AnimationDelays_90:
-    db $02,$02,$02,$F8,$15                                               ;91B3FC;
+; 90h: Facing left  - turning - in air - aiming up
+    db $02,$02,$02, $F8,$15                                              ;91B3FC;
 
 AnimationDelays_91:
-    db $02,$02,$02,$F8,$18                                               ;91B401;
+; 91h: Facing right - turning - in air - aiming down/down-right
+    db $02,$02,$02, $F8,$18                                              ;91B401;
 
 AnimationDelays_92:
-    db $02,$02,$02,$F8,$17                                               ;91B406;
+; 92h: Facing left  - turning - in air - aiming down/down-left
+    db $02,$02,$02, $F8,$17                                              ;91B406;
 
 AnimationDelays_93:
-    db $02,$02,$02,$F8,$2C                                               ;91B40B;
+; 93h: Facing right - turning - falling - aiming up
+    db $02,$02,$02, $F8,$2C                                              ;91B40B;
 
 AnimationDelays_94:
-    db $02,$02,$02,$F8,$2B                                               ;91B410;
+; 94h: Facing left  - turning - falling - aiming up
+    db $02,$02,$02, $F8,$2B                                              ;91B410;
 
 AnimationDelays_95:
-    db $02,$02,$02,$F8,$2E                                               ;91B415;
+; 95h: Facing right - turning - falling - aiming down/down-right
+    db $02,$02,$02, $F8,$2E                                              ;91B415;
 
 AnimationDelays_96:
-    db $02,$02,$02,$F8,$2D                                               ;91B41A;
+; 96h: Facing left  - turning - falling - aiming down/down-left
+    db $02,$02,$02, $F8,$2D                                              ;91B41A;
 
 AnimationDelays_97:
-    db $02,$02,$02,$F8,$86                                               ;91B41F;
+; 97h: Facing right - turning - crouching - aiming up
+    db $02,$02,$02, $F8,$86                                              ;91B41F;
 
 AnimationDelays_98:
-    db $02,$02,$02,$F8,$85                                               ;91B424;
+; 98h: Facing left  - turning - crouching - aiming up
+    db $02,$02,$02, $F8,$85                                              ;91B424;
 
 AnimationDelays_99:
-    db $02,$02,$02,$F8,$74                                               ;91B429;
+; 99h: Facing right - turning - crouching - aiming down/down-right
+    db $02,$02,$02, $F8,$74                                              ;91B429;
 
 AnimationDelays_9A:
-    db $02,$02,$02,$F8,$73                                               ;91B42E;
+; 9Ah: Facing left  - turning - crouching - aiming down/down-left
+    db $02,$02,$02, $F8,$73                                              ;91B42E;
 
 AnimationDelays_9C:
-    db $02,$02,$02,$F8,$06                                               ;91B433;
+; 9Ch: Facing right - turning - standing - aiming up-right
+    db $02,$02,$02, $F8,$06                                              ;91B433;
 
 AnimationDelays_9D:
-    db $02,$02,$02,$F8,$05                                               ;91B438;
+; 9Dh: Facing left  - turning - standing - aiming up-left
+    db $02,$02,$02, $F8,$05                                              ;91B438;
 
 AnimationDelays_9E:
-    db $02,$02,$02,$F8,$6A                                               ;91B43D;
+; 9Eh: Facing right - turning - in air - aiming up-right
+    db $02,$02,$02, $F8,$6A                                              ;91B43D;
 
 AnimationDelays_9F:
-    db $02,$02,$02,$F8,$69                                               ;91B442;
+; 9Fh: Facing left  - turning - in air - aiming up-left
+    db $02,$02,$02, $F8,$69                                              ;91B442;
 
 AnimationDelays_A0:
-    db $02,$02,$02,$F8,$6E                                               ;91B447;
+; A0h: Facing right - turning - falling - aiming up-right
+    db $02,$02,$02, $F8,$6E                                              ;91B447;
 
 AnimationDelays_A1:
-    db $02,$02,$02,$F8,$6D                                               ;91B44C;
+; A1h: Facing left  - turning - falling - aiming up-left
+    db $02,$02,$02, $F8,$6D                                              ;91B44C;
 
 AnimationDelays_A2:
-    db $02,$02,$02,$F8,$72                                               ;91B451;
+; A2h: Facing right - turning - crouching - aiming up-right
+    db $02,$02,$02, $F8,$72                                              ;91B451;
 
 AnimationDelays_A3:
-    db $02,$02,$02,$F8,$71                                               ;91B456;
+; A3h: Facing left  - turning - crouching - aiming up-left
+    db $02,$02,$02, $F8,$71                                              ;91B456;
 
 AnimationDelays_BF:
-    db $02,$02,$02,$F8,$1A                                               ;91B45B;
+; BFh: Facing right - moonwalking - turn/jump left
+    db $02,$02,$02, $F8,$1A                                              ;91B45B;
 
 AnimationDelays_C0:
-    db $02,$02,$02,$F8,$19                                               ;91B460;
+; C0h: Facing left  - moonwalking - turn/jump right
+    db $02,$02,$02, $F8,$19                                              ;91B460;
 
 AnimationDelays_C1:
-    db $02,$02,$02,$F8,$1A                                               ;91B465;
+; C1h: Facing right - moonwalking - turn/jump left  - aiming up-right
+    db $02,$02,$02, $F8,$1A                                              ;91B465;
 
 AnimationDelays_C2:
-    db $02,$02,$02,$F8,$19                                               ;91B46A;
+; C2h: Facing left  - moonwalking - turn/jump right - aiming up-left
+    db $02,$02,$02, $F8,$19                                              ;91B46A;
 
 AnimationDelays_C3:
-    db $02,$02,$02,$F8,$1A                                               ;91B46F;
+; C3h: Facing right - moonwalking - turn/jump left  - aiming down-right
+    db $02,$02,$02, $F8,$1A                                              ;91B46F;
 
 AnimationDelays_C4:
-    db $02,$02,$02,$F8,$19                                               ;91B474;
+; C4h: Facing left  - moonwalking - turn/jump right - aiming down-left
+    db $02,$02,$02, $F8,$19                                              ;91B474;
 
 UNUSED_AnimationDelays_C6_91B479:
-    db $02,$02,$02,$FD,$BA                                               ;91B479;
+    db $02,$02,$02, $FD,$BA                                              ;91B479;
 
-UNUSED_AnimationDelays_63_91B47E:
-    db $04,$03,$FE,$01                                                   ;91B47E;
+UNUSED_AnimationDelays_63_91B47E:                                        ;91B47E;
+    db $04
+    db $03, $FE,$01
 
-UNUSED_AnimationDelays_64_91B482:
-    db $04,$03,$FE,$01                                                   ;91B482;
+UNUSED_AnimationDelays_64_91B482:                                        ;91B482;
+    db $04
+    db $03, $FE,$01
 
-UNUSED_AnimationDelays_65_66_91B486:
-    db $03,$02,$02,$02,$02,$02,$02,$02,$02,$FE,$08                       ;91B486;
+UNUSED_AnimationDelays_65_66_91B486:                                     ;91B486;
+; 65h: Unused. Related to movement type Dh
+; 66h: Unused. Related to movement type Dh
+    db $03
+    db $02,$02,$02,$02,$02,$02,$02,$02, $FE,$08
 
-AnimationDelays_83_84:
-    db $05,$05,$FB,$03,$02,$03,$02,$03,$02,$03,$02,$FE,$08,$02,$01,$02   ;91B491;
-    db $01,$02,$01,$02,$01,$FE,$08,$01,$01,$01,$01,$01,$01,$01,$01,$01   ;91B4A1;
-    db $01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$FE   ;91B4B1;
-    db $18                                                               ;91B4C1;
+AnimationDelays_83_84:                                                   ;91B491;
+; 83h: Facing right - wall jump
+; 84h: Facing left  - wall jump
+    ; Wall jump start-up
+    db $05,$05,$FB
+    ; Normal
+    db $03,$02,$03,$02,$03,$02,$03,$02,$FE,$08
+    ; Space jump
+    db $02,$01,$02,$01,$02,$01,$02,$01,$FE,$08
+    ; Screw attack
+    db $01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01, $FE,$18
 
 AnimationDelays_35:
-    db $03,$FD,$27                                                       ;91B4C2;
+; 35h: Facing right - crouching transition
+    db $03, $FD,$27                                                      ;91B4C2;
 
 AnimationDelays_36:
-    db $03,$FD,$28                                                       ;91B4C5;
+; 36h: Facing left  - crouching transition
+    db $03, $FD,$28                                                      ;91B4C5;
 
-AnimationDelays_37:
-    db $03,$03,$F9                                                       ;91B4C8;
-    dw $0002                                                             ;91B4CB;
-    db $1D,$31,$79,$7D                                                   ;91B4CD;
+AnimationDelays_37:                                                      ;91B4C8;
+; 37h: Facing right - morphing transition
+    db $03,$03, $F9 : dw $0002 : db $1D,$31,$79,$7D
 
-AnimationDelays_38:
-    db $03,$03,$F9                                                       ;91B4D1;
-    dw $0002                                                             ;91B4D4;
-    db $41,$32,$7A,$7E                                                   ;91B4D6;
+AnimationDelays_38:                                                      ;91B4D1;
+; 38h: Facing left  - morphing transition
+    db $03,$03, $F9 : dw $0002 : db $41,$32,$7A,$7E
 
 UNUSED_AnimationDelays_39_91B4DA:
-    db $00,$FD,$20                                                       ;91B4DA;
+    db $00, $FD,$20                                                      ;91B4DA;
 
 UNUSED_AnimationDelays_3A_91B4DD:
-    db $00,$FD,$42                                                       ;91B4DD;
+    db $00, $FD,$42                                                      ;91B4DD;
 
 AnimationDelays_3B:
-    db $03,$FD,$01                                                       ;91B4E0;
+; 3Bh: Facing right - standing transition
+    db $03, $FD,$01                                                      ;91B4E0;
 
 AnimationDelays_3C:
-    db $03,$FD,$02                                                       ;91B4E3;
+; 3Ch: Facing left  - standing transition
+    db $03, $FD,$02                                                      ;91B4E3;
 
 AnimationDelays_3D:
-    db $03,$03,$FD,$27                                                   ;91B4E6;
+; 3Dh: Facing right - unmorphing transition
+    db $03,$03, $FD,$27                                                  ;91B4E6;
 
 AnimationDelays_3E:
-    db $03,$03,$FD,$28                                                   ;91B4EA;
+; 3Eh: Facing left  - unmorphing transition
+    db $03,$03, $FD,$28                                                  ;91B4EA;
 
-UNUSED_AnimationDelays_3F_91B4EE:
-    db $00,$FC                                                           ;91B4EE;
-    dw $0002                                                             ;91B4F0;
-    db $1D,$79                                                           ;91B4F2;
+UNUSED_AnimationDelays_3F_91B4EE:                                        ;91B4EE;
+    db $00, $FC : dw $0002 : db $1D,$79
 
-UNUSED_AnimationDelays_40_91B4F4:
-    db $00,$FC                                                           ;91B4F4;
-    dw $0002                                                             ;91B4F6;
-    db $41,$7A                                                           ;91B4F8;
+UNUSED_AnimationDelays_40_91B4F4:                                        ;91B4F4;
+    db $00, $FC : dw $0002 : db $41,$7A
 
-UNUSED_AnimationDelays_DB_91B4FA:
-    db $03,$03,$03,$F9                                                   ;91B4FA;
-    dw $0002                                                             ;91B4FE;
-    db $1D,$31,$79,$7D                                                   ;91B500;
+UNUSED_AnimationDelays_DB_91B4FA:                                        ;91B4FA;
+    db $03,$03,$03, $F9 : dw $0002 : db $1D,$31,$79,$7D
 
-UNUSED_AnimationDelays_DC_91B504:
-    db $03,$03,$03,$F9                                                   ;91B504;
-    dw $0002                                                             ;91B508;
-    db $DF,$DF,$DF,$DF                                                   ;91B50A;
+UNUSED_AnimationDelays_DC_91B504:                                        ;91B504;
+    db $03,$03,$03, $F9 : dw $0002 : db $DF,$DF,$DF,$DF
 
 UNUSED_AnimationDelays_DD_91B50E:
-    db $03,$03,$03,$FD,$01                                               ;91B50E;
+    db $03,$03,$03, $FD,$01                                              ;91B50E;
 
 UNUSED_AnimationDelays_DE_91B513:
-    db $03,$03,$03,$FD,$BA                                               ;91B513;
+    db $03,$03,$03, $FD,$BA                                              ;91B513;
 
 AnimationDelays_F1:
-    db $03,$FD,$85                                                       ;91B518;
+; F1h: Facing right - crouching transition - aiming up
+    db $03, $FD,$85                                                      ;91B518;
 
 AnimationDelays_F2:
-    db $03,$FD,$86                                                       ;91B51B;
+; F2h: Facing left  - crouching transition - aiming up
+    db $03, $FD,$86                                                      ;91B51B;
 
 AnimationDelays_F3:
-    db $03,$FD,$71                                                       ;91B51E;
+; F3h: Facing right - crouching transition - aiming up-right
+    db $03, $FD,$71                                                      ;91B51E;
 
 AnimationDelays_F4:
-    db $03,$FD,$72                                                       ;91B521;
+; F4h: Facing left  - crouching transition - aiming up-left
+    db $03, $FD,$72                                                      ;91B521;
 
 AnimationDelays_F5:
-    db $03,$FD,$73                                                       ;91B524;
+; F5h: Facing right - crouching transition - aiming down-right
+    db $03, $FD,$73                                                      ;91B524;
 
 AnimationDelays_F6:
-    db $03,$FD,$74                                                       ;91B527;
+; F6h: Facing left  - crouching transition - aiming down-left
+    db $03, $FD,$74                                                      ;91B527;
 
 AnimationDelays_F7:
-    db $03,$FD,$03                                                       ;91B52A;
+; F7h: Facing right - standing transition - aiming up
+    db $03, $FD,$03                                                      ;91B52A;
 
 AnimationDelays_F8:
-    db $03,$FD,$04                                                       ;91B52D;
+; F8h: Facing left  - standing transition - aiming up
+    db $03, $FD,$04                                                      ;91B52D;
 
 AnimationDelays_F9:
-    db $03,$FD,$05                                                       ;91B530;
+; F9h: Facing right - standing transition - aiming up-right
+    db $03, $FD,$05                                                      ;91B530;
 
 AnimationDelays_FA:
-    db $03,$FD,$06                                                       ;91B533;
+; FAh: Facing left  - standing transition - aiming up-left
+    db $03, $FD,$06                                                      ;91B533;
 
 AnimationDelays_FB:
-    db $03,$FD,$07                                                       ;91B536;
+; FBh: Facing right - standing transition - aiming down-right
+    db $03, $FD,$07                                                      ;91B536;
 
 AnimationDelays_FC:
-    db $03,$FD,$08                                                       ;91B539;
+; FCh: Facing left  - standing transition - aiming down-left
+    db $03, $FD,$08                                                      ;91B539;
 
 AnimationDelays_BE_F0:
+; BEh: Facing left  - grabbed by Draygon - moving
+; F0h: Facing right - grabbed by Draygon - moving
     db $06,$06,$06,$06,$06,$06,$FF                                       ;91B53C;
 
 AnimationDelays_C9_CA_CB_CC_CD_CE:
+; C9h: Facing right - shinespark - horizontal
+; CAh: Facing left  - shinespark - horizontal
+; CBh: Facing right - shinespark - vertical
+; CCh: Facing left  - shinespark - vertical
+; CDh: Facing right - shinespark - diagonal
+; CEh: Facing left  - shinespark - diagonal
     db $08,$FF                                                           ;91B543;
 
-AnimationDelays_D3:
-    db $03,$03,$01,$01,$FE,$02,$0C,$0C,$0C,$0C,$FE,$04,$03,$03,$03,$FD   ;91B545;
-    db $01                                                               ;91B555;
+AnimationDelays_D3:                                                      ;91B545;
+; D3h: Facing right - crystal flash
+    ; Raise Samus and generate bubble
+    db $03,$03
+    db $01,$01, $FE,$02
+    ; Main
+    db $0C,$0C,$0C,$0C, $FE,$04
+    ; Finish
+    db $03,$03,$03, $FD,$01
 
-AnimationDelays_D4:
-    db $03,$03,$01,$01,$FE,$02,$0C,$0C,$0C,$0C,$FE,$04,$03,$03,$03,$FD   ;91B556;
-    db $02                                                               ;91B566;
+AnimationDelays_D4:                                                      ;91B556;
+; D4h: Facing left  - crystal flash
+    ; Raise Samus and generate bubble
+    db $03,$03
+    db $01,$01, $FE,$02
+    ; Main
+    db $0C,$0C,$0C,$0C, $FE,$04
+    ; Finish
+    db $03,$03,$03, $FD,$02
 
-AnimationDelays_D7_D8:
-    db $02,$02,$02,$02,$02,$02,$FE,$01                                   ;91B567;
+AnimationDelays_D7_D8:                                                   ;91B567;
+; D7h: Facing right - crystal flash ending
+; D8h: Facing left  - crystal flash ending
+    ; Transition from morphed
+    db $02,$02,$02,$02,$02
+    ; Unmorphed
+    db $02, $FE,$01
 
-AnimationDelays_0_9B:
-    db $08,$FF,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03   ;91B56F;
-    db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03   ;91B57F;
-    db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03   ;91B58F;
-    db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03   ;91B59F;
-    db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03   ;91B5AF;
-    db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$33,$02,$02,$02,$30   ;91B5BF;
-    db $FE,$01                                                           ;91B5CF;
+AnimationDelays_0_9B:                                                    ;91B56F;
+; 0: Facing forward - power suit
+; 9Bh: Facing forward - varia/gravity suit
+    db $08,$FF
+    ; Samus appears (with save station electricity)
+    db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03
+    db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03
+    db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03
+    db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03
+    db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03
+    db $03,$03,$03,$03,$03,$03,$03,$03,$03,$33,$02,$02,$02
+    db $30, $FE,$01
 
 AnimationDelayTable_Running_NoSpeedBooster_pointer:
     dw AnimationDelayTable_Running_NoSpeedBooster                        ;91B5D1;
@@ -4179,6 +4854,7 @@ AnimationDelayTable_Running_NoSpeedBooster:
     db $02,$02,$02,$02,$02,$02,$02,$02,$02,$02,$FF                       ;91B5D3;
 
 AnimationDelayTable_Running_SpeedBooster_pointers:
+; Indexed by [speed boost counter] * 2
     dw AnimationDelayTable_Running_SpeedBooster_0                        ;91B5DE;
     dw AnimationDelayTable_Running_SpeedBooster_1                        ;91B5E0;
     dw AnimationDelayTable_Running_SpeedBooster_2                        ;91B5E2;
@@ -4201,117 +4877,155 @@ AnimationDelayTable_Running_SpeedBooster_4:
     db $01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$FF                       ;91B614;
 
 SpeedBoostTimerResetValues:
+; Indexed by [speed boost counter] * 2
     dw $0001,$0001,$0001,$0001,$0002                                     ;91B61F;
 
-PoseDefinitions_00_XDirection:
-    db $00                                                               ;91B629;
-
-PoseDefinitions_movementType:
-    db $00                                                               ;91B62A;
-
-PoseDefinitions_newPose:
-    db $FF                                                               ;91B62B;
-
-PoseDefinitions_directionShotsFired:
-    db $FF                                                               ;91B62C;
-
-PoseDefinitions_YOffset:
-    db $08,$00                                                           ;91B62D;
-
-PoseDefinitions_YRadius:
-    db $18,$00                                                           ;91B62F;
+PoseDefinitions:
+;        _____________________________ $B629: Pose X direction
+;       |    _________________________ $B62A: Movement type
+;       |   |    _____________________ $B62B: New pose if not affected by buttons
+;       |   |   |    _________________ $B62C: Direction shots are fired. High nybble set means can't fire and grapple beam is cancelled
+;       |   |   |   |    _____________ $B62D: Y offset of Samus GFX and projectile origin (but not Samus hitbox)
+;       |   |   |   |   |    _________ $B62E: Unused
+;       |   |   |   |   |   |    _____ $B62F: Y radius
+;       |   |   |   |   |   |   |    _ $B630: Unused
+;       |   |   |   |   |   |   |   |
+; 0: Facing forward - power suit
+  .XDirection                                                            ;91B629;
+    db $00                                                               
+  .movementType                                                          ;91B62A;
+    db     $00                                                               
+  .newPose                                                               ;91B62B;
+    db         $FF                                                               
+  .directionShotsFired                                                   ;91B62C;
+    db             $FF                                                               
+  .YOffset                                                               ;91B62D;
+    db                 $08,$00                                                           
+  .YRadius                                                               ;91B62F;
+    db                         $18,$00                                                           
 
 PoseDefinitions_01:
+; 1: Facing right - normal
     db $08,$00,$FF,$02,$06,$00,$15,$00                                   ;91B631;
 
 PoseDefinitions_02:
+; 2: Facing left  - normal
     db $04,$00,$FF,$07,$06,$00,$15,$00                                   ;91B639;
 
 PoseDefinitions_03:
+; 3: Facing right - aiming up
     db $08,$00,$01,$00,$06,$00,$15,$00                                   ;91B641;
 
 PoseDefinitions_04:
+; 4: Facing left  - aiming up
     db $04,$00,$02,$09,$06,$00,$15,$00                                   ;91B649;
 
 PoseDefinitions_05:
+; 5: Facing right - aiming up-right
     db $08,$00,$01,$01,$06,$00,$15,$00                                   ;91B651;
 
 PoseDefinitions_06:
+; 6: Facing left  - aiming up-left
     db $04,$00,$02,$08,$06,$00,$15,$00                                   ;91B659;
 
 PoseDefinitions_07:
+; 7: Facing right - aiming down-right
     db $08,$00,$01,$03,$06,$00,$15,$00                                   ;91B661;
 
 PoseDefinitions_08:
+; 8: Facing left  - aiming down-left
     db $04,$00,$02,$06,$06,$00,$15,$00                                   ;91B669;
 
 PoseDefinitions_09:
+; 9: Moving right - not aiming
     db $08,$01,$01,$02,$06,$00,$15,$00                                   ;91B671;
 
 PoseDefinitions_0A:
+; Ah: Moving left  - not aiming
     db $04,$01,$02,$07,$06,$00,$15,$00                                   ;91B679;
 
 PoseDefinitions_0B:
+; Bh: Moving right - gun extended
     db $08,$01,$01,$02,$06,$00,$15,$00                                   ;91B681;
 
 PoseDefinitions_0C:
+; Ch: Moving left  - gun extended
     db $04,$01,$02,$07,$06,$00,$15,$00                                   ;91B689;
 
 PoseDefinitions_0D:
+; Dh: Moving right - aiming up (unused)
     db $08,$01,$01,$00,$06,$00,$15,$00                                   ;91B691;
 
 PoseDefinitions_0E:
+; Eh: Moving left  - aiming up (unused)
     db $04,$01,$02,$09,$06,$00,$15,$00                                   ;91B699;
 
 PoseDefinitions_0F:
+; Fh: Moving right - aiming up-right
     db $08,$01,$01,$01,$06,$00,$15,$00                                   ;91B6A1;
 
 PoseDefinitions_10:
+; 10h: Moving left  - aiming up-left
     db $04,$01,$02,$08,$06,$00,$15,$00                                   ;91B6A9;
 
 PoseDefinitions_11:
+; 11h: Moving right - aiming down-right
     db $08,$01,$01,$03,$06,$00,$15,$00                                   ;91B6B1;
 
 PoseDefinitions_12:
+; 12h: Moving left  - aiming down-left
     db $04,$01,$02,$06,$06,$00,$15,$00                                   ;91B6B9;
 
 PoseDefinitions_13:
+; 13h: Facing right - normal jump - not aiming - not moving - gun extended
     db $08,$02,$FF,$02,$08,$00,$13,$00                                   ;91B6C1;
 
 PoseDefinitions_14:
+; 14h: Facing left  - normal jump - not aiming - not moving - gun extended
     db $04,$02,$FF,$07,$08,$00,$13,$00                                   ;91B6C9;
 
 PoseDefinitions_15:
+; 15h: Facing right - normal jump - aiming up
     db $08,$02,$51,$00,$08,$00,$13,$00                                   ;91B6D1;
 
 PoseDefinitions_16:
+; 16h: Facing left  - normal jump - aiming up
     db $04,$02,$52,$09,$08,$00,$13,$00                                   ;91B6D9;
 
 PoseDefinitions_17:
+; 17h: Facing right - normal jump - aiming down
     db $08,$02,$FF,$04,$06,$00,$0A,$00                                   ;91B6E1;
 
 PoseDefinitions_18:
+; 18h: Facing left  - normal jump - aiming down
     db $04,$02,$FF,$05,$06,$00,$0A,$00                                   ;91B6E9;
 
 PoseDefinitions_19:
+; 19h: Facing right - spin jump
     db $08,$03,$FF,$FF,$00,$00,$0C,$00                                   ;91B6F1;
 
 PoseDefinitions_1A:
+; 1Ah: Facing left  - spin jump
     db $04,$03,$FF,$FF,$00,$00,$0C,$00                                   ;91B6F9;
 
 PoseDefinitions_1B:
+; 1Bh: Facing right - space jump
     db $08,$03,$FF,$FF,$00,$00,$0C,$00                                   ;91B701;
 
 PoseDefinitions_1C:
+; 1Ch: Facing left  - space jump
     db $04,$03,$FF,$FF,$00,$00,$0C,$00                                   ;91B709;
 
 PoseDefinitions_1D:
+; 1Dh: Facing right - morph ball - no springball - on ground
     db $08,$04,$FF,$FF,$00,$00,$07,$00                                   ;91B711;
 
 PoseDefinitions_1E:
+; 1Eh: Moving right - morph ball - no springball - on ground
     db $08,$04,$1D,$FF,$00,$00,$07,$00                                   ;91B719;
 
 PoseDefinitions_1F:
+; 1Fh: Moving left  - morph ball - no springball - on ground
     db $04,$04,$41,$FF,$00,$00,$07,$00                                   ;91B721;
 
 UNUSED_PoseDefinitions_20_91B729:
@@ -4330,45 +5044,59 @@ UNUSED_PoseDefinitions_24_91B749:
     db $08,$07,$20,$FF,$00,$00,$07,$00                                   ;91B749;
 
 PoseDefinitions_25:
+; 25h: Facing right - turning - standing
     db $04,$0E,$FF,$FB,$06,$00,$15,$00                                   ;91B751;
 
 PoseDefinitions_26:
+; 26h: Facing left  - turning - standing
     db $08,$0E,$FF,$FB,$06,$00,$15,$00                                   ;91B759;
 
 PoseDefinitions_27:
+; 27h: Facing right - crouching
     db $08,$05,$27,$02,$00,$00,$10,$00                                   ;91B761;
 
 PoseDefinitions_28:
+; 28h: Facing left  - crouching
     db $04,$05,$28,$07,$00,$00,$10,$00                                   ;91B769;
 
 PoseDefinitions_29:
+; 29h: Facing right - falling
     db $08,$06,$FF,$02,$08,$00,$13,$00                                   ;91B771;
 
 PoseDefinitions_2A:
+; 2Ah: Facing left  - falling
     db $04,$06,$FF,$07,$08,$00,$13,$00                                   ;91B779;
 
 PoseDefinitions_2B:
+; 2Bh: Facing right - falling - aiming up
     db $08,$06,$29,$00,$08,$00,$13,$00                                   ;91B781;
 
 PoseDefinitions_2C:
+; 2Ch: Facing left  - falling - aiming up
     db $04,$06,$2A,$09,$08,$00,$13,$00                                   ;91B789;
 
 PoseDefinitions_2D:
+; 2Dh: Facing right - falling - aiming down
     db $08,$06,$FF,$04,$06,$00,$0A,$00                                   ;91B791;
 
 PoseDefinitions_2E:
+; 2Eh: Facing left  - falling - aiming down
     db $04,$06,$FF,$05,$06,$00,$0A,$00                                   ;91B799;
 
 PoseDefinitions_2F:
+; 2Fh: Facing right - turning - jumping
     db $04,$17,$FF,$FB,$08,$00,$13,$00                                   ;91B7A1;
 
 PoseDefinitions_30:
+; 30h: Facing left  - turning - jumping
     db $08,$17,$FF,$FB,$08,$00,$13,$00                                   ;91B7A9;
 
 PoseDefinitions_31:
+; 31h: Facing right - morph ball - no springball - in air
     db $08,$08,$FF,$FF,$00,$00,$07,$00                                   ;91B7B1;
 
 PoseDefinitions_32:
+; 32h: Facing left  - morph ball - no springball - in air
     db $04,$08,$FF,$FF,$00,$00,$07,$00                                   ;91B7B9;
 
 UNUSED_PoseDefinitions_33_91B7C1:
@@ -4378,15 +5106,19 @@ UNUSED_PoseDefinitions_34_91B7C9:
     db $04,$09,$FF,$FF,$00,$00,$07,$00                                   ;91B7C9;
 
 PoseDefinitions_35:
+; 35h: Facing right - crouching transition
     db $08,$0F,$FF,$02,$00,$00,$10,$00                                   ;91B7D1;
 
 PoseDefinitions_36:
+; 36h: Facing left  - crouching transition
     db $04,$0F,$FF,$07,$00,$00,$10,$00                                   ;91B7D9;
 
 PoseDefinitions_37:
+; 37h: Facing right - morphing transition
     db $08,$0F,$FF,$FF,$00,$00,$07,$00                                   ;91B7E1;
 
 PoseDefinitions_38:
+; 38h: Facing left  - morphing transition
     db $04,$0F,$FF,$FF,$00,$00,$07,$00                                   ;91B7E9;
 
 UNUSED_PoseDefinitions_39_91B7F1:
@@ -4396,15 +5128,19 @@ UNUSED_PoseDefinitions_3A_91B7F9:
     db $04,$0F,$FF,$FF,$00,$00,$07,$00                                   ;91B7F9;
 
 PoseDefinitions_3B:
+; 3Bh: Facing right - standing transition
     db $08,$0F,$FF,$02,$06,$00,$15,$00                                   ;91B801;
 
 PoseDefinitions_3C:
+; 3Ch: Facing left  - standing transition
     db $04,$0F,$FF,$07,$06,$00,$15,$00                                   ;91B809;
 
 PoseDefinitions_3D:
+; 3Dh: Facing right - unmorphing transition
     db $08,$0F,$FF,$FF,$00,$00,$10,$00                                   ;91B811;
 
 PoseDefinitions_3E:
+; 3Eh: Facing left  - unmorphing transition
     db $04,$0F,$FF,$FF,$00,$00,$10,$00                                   ;91B819;
 
 UNUSED_PoseDefinitions_3F_91B821:
@@ -4414,15 +5150,18 @@ UNUSED_PoseDefinitions_40_91B829:
     db $04,$0F,$FF,$FF,$00,$00,$07,$00                                   ;91B829;
 
 PoseDefinitions_41:
+; 41h: Facing left  - morph ball - no springball - on ground
     db $04,$04,$FF,$FF,$00,$00,$07,$00                                   ;91B831;
 
 UNUSED_PoseDefinitions_42_91B839:
     db $04,$07,$FF,$FF,$00,$00,$07,$00                                   ;91B839;
 
 PoseDefinitions_43:
+; 43h: Facing right - turning - crouching
     db $04,$0E,$FF,$FB,$00,$00,$10,$00                                   ;91B841;
 
 PoseDefinitions_44:
+; 44h: Facing left  - turning - crouching
     db $08,$0E,$FF,$FB,$00,$00,$10,$00                                   ;91B849;
 
 UNUSED_PoseDefinitions_45_91B851:
@@ -4438,57 +5177,75 @@ UNUSED_PoseDefinitions_48_91B869:
     db $04,$00,$FF,$07,$06,$00,$15,$00                                   ;91B869;
 
 PoseDefinitions_49:
+; 49h: Facing left  - moonwalk
     db $08,$10,$02,$07,$06,$00,$15,$00                                   ;91B871;
 
 PoseDefinitions_4A:
+; 4Ah: Facing right - moonwalk
     db $04,$10,$01,$02,$06,$00,$15,$00                                   ;91B879;
 
 PoseDefinitions_4B:
+; 4Bh: Facing right - normal jump transition
     db $08,$02,$FF,$02,$03,$00,$13,$00                                   ;91B881;
 
 PoseDefinitions_4C:
+; 4Ch: Facing left  - normal jump transition
     db $04,$02,$FF,$07,$03,$00,$13,$00                                   ;91B889;
 
 PoseDefinitions_4D:
+; 4Dh: Facing right - normal jump - not aiming - not moving - gun not extended
     db $08,$02,$FF,$02,$08,$00,$13,$00                                   ;91B891;
 
 PoseDefinitions_4E:
+; 4Eh: Facing left  - normal jump - not aiming - not moving - gun not extended
     db $04,$02,$FF,$07,$08,$00,$13,$00                                   ;91B899;
 
 PoseDefinitions_4F:
+; 4Fh: Facing left  - damage boost
     db $08,$19,$4E,$FF,$08,$00,$13,$00                                   ;91B8A1;
 
 PoseDefinitions_50:
+; 50h: Facing right - damage boost
     db $04,$19,$4D,$FF,$08,$00,$13,$00                                   ;91B8A9;
 
 PoseDefinitions_51:
+; 51h: Facing right - normal jump - not aiming - moving forward
     db $08,$02,$FF,$02,$08,$00,$13,$00                                   ;91B8B1;
 
 PoseDefinitions_52:
+; 52h: Facing left  - normal jump - not aiming - moving forward
     db $04,$02,$FF,$07,$08,$00,$13,$00                                   ;91B8B9;
 
 PoseDefinitions_53:
+; 53h: Facing right - knockback
     db $08,$0A,$FF,$FF,$06,$00,$15,$00                                   ;91B8C1;
 
 PoseDefinitions_54:
+; 54h: Facing left  - knockback
     db $04,$0A,$FF,$FF,$06,$00,$15,$00                                   ;91B8C9;
 
 PoseDefinitions_55:
+; 55h: Facing right - normal jump transition - aiming up
     db $08,$02,$FF,$00,$03,$00,$13,$00                                   ;91B8D1;
 
 PoseDefinitions_56:
+; 56h: Facing left  - normal jump transition - aiming up
     db $04,$02,$FF,$09,$03,$00,$13,$00                                   ;91B8D9;
 
 PoseDefinitions_57:
+; 57h: Facing right - normal jump transition - aiming up-right
     db $08,$02,$FF,$01,$03,$00,$13,$00                                   ;91B8E1;
 
 PoseDefinitions_58:
+; 58h: Facing left  - normal jump transition - aiming up-left
     db $04,$02,$FF,$08,$03,$00,$13,$00                                   ;91B8E9;
 
 PoseDefinitions_59:
+; 59h: Facing right - normal jump transition - aiming down-right
     db $08,$02,$FF,$03,$03,$00,$13,$00                                   ;91B8F1;
 
 PoseDefinitions_5A:
+; 5Ah: Facing left  - normal jump transition - aiming down-left
     db $04,$02,$FF,$06,$03,$00,$13,$00                                   ;91B8F9;
 
 UNUSED_PoseDefinitions_5B_91B901:
@@ -4528,198 +5285,263 @@ UNUSED_PoseDefinitions_66_91B959:
     db $04,$0D,$2A,$FF,$0C,$00,$0C,$00                                   ;91B959;
 
 PoseDefinitions_67:
+; 67h: Facing right - falling - gun extended
     db $08,$06,$FF,$02,$08,$00,$13,$00                                   ;91B961;
 
 PoseDefinitions_68:
+; 68h: Facing left  - falling - gun extended
     db $04,$06,$FF,$07,$08,$00,$13,$00                                   ;91B969;
 
 PoseDefinitions_69:
+; 69h: Facing right - normal jump - aiming up-right
     db $08,$02,$51,$01,$08,$00,$13,$00                                   ;91B971;
 
 PoseDefinitions_6A:
+; 6Ah: Facing left  - normal jump - aiming up-left
     db $04,$02,$52,$08,$08,$00,$13,$00                                   ;91B979;
 
 PoseDefinitions_6B:
+; 6Bh: Facing right - normal jump - aiming down-right
     db $08,$02,$51,$03,$08,$00,$13,$00                                   ;91B981;
 
 PoseDefinitions_6C:
+; 6Ch: Facing left  - normal jump - aiming down-left
     db $04,$02,$52,$06,$08,$00,$13,$00                                   ;91B989;
 
 PoseDefinitions_6D:
+; 6Dh: Facing right - falling - aiming up-right
     db $08,$06,$29,$01,$08,$00,$13,$00                                   ;91B991;
 
 PoseDefinitions_6E:
+; 6Eh: Facing left  - falling - aiming up-left
     db $04,$06,$2A,$08,$08,$00,$13,$00                                   ;91B999;
 
 PoseDefinitions_6F:
+; 6Fh: Facing right - falling - aiming down-right
     db $08,$06,$29,$03,$08,$00,$13,$00                                   ;91B9A1;
 
 PoseDefinitions_70:
+; 70h: Facing left  - falling - aiming down-left
     db $04,$06,$2A,$06,$08,$00,$13,$00                                   ;91B9A9;
 
 PoseDefinitions_71:
+; 71h: Facing right - crouching - aiming up-right
     db $08,$05,$27,$01,$00,$00,$10,$00                                   ;91B9B1;
 
 PoseDefinitions_72:
+; 72h: Facing left  - crouching - aiming up-left
     db $04,$05,$28,$08,$00,$00,$10,$00                                   ;91B9B9;
 
 PoseDefinitions_73:
+; 73h: Facing right - crouching - aiming down-right
     db $08,$05,$27,$03,$00,$00,$10,$00                                   ;91B9C1;
 
 PoseDefinitions_74:
+; 74h: Facing left  - crouching - aiming down-left
     db $04,$05,$28,$06,$00,$00,$10,$00                                   ;91B9C9;
 
 PoseDefinitions_75:
+; 75h: Facing left  - moonwalk - aiming up-left
     db $08,$10,$06,$08,$06,$00,$15,$00                                   ;91B9D1;
 
 PoseDefinitions_76:
+; 76h: Facing right - moonwalk - aiming up-right
     db $04,$10,$05,$01,$06,$00,$15,$00                                   ;91B9D9;
 
 PoseDefinitions_77:
+; 77h: Facing left  - moonwalk - aiming down-left
     db $08,$10,$08,$06,$06,$00,$15,$00                                   ;91B9E1;
 
 PoseDefinitions_78:
+; 78h: Facing right - moonwalk - aiming down-right
     db $04,$10,$07,$03,$06,$00,$15,$00                                   ;91B9E9;
 
 PoseDefinitions_79:
+; 79h: Facing right - morph ball - spring ball - on ground
     db $08,$11,$FF,$FF,$00,$00,$07,$00                                   ;91B9F1;
 
 PoseDefinitions_7A:
+; 7Ah: Facing left  - morph ball - spring ball - on ground
     db $04,$11,$FF,$FF,$00,$00,$07,$00                                   ;91B9F9;
 
 PoseDefinitions_7B:
+; 7Bh: Moving right - morph ball - spring ball - on ground
     db $08,$11,$79,$FF,$00,$00,$07,$00                                   ;91BA01;
 
 PoseDefinitions_7C:
+; 7Ch: Moving left  - morph ball - spring ball - on ground
     db $04,$11,$7A,$FF,$00,$00,$07,$00                                   ;91BA09;
 
 PoseDefinitions_7D:
+; 7Dh: Facing right - morph ball - spring ball - falling
     db $08,$13,$FF,$FF,$00,$00,$07,$00                                   ;91BA11;
 
 PoseDefinitions_7E:
+; 7Eh: Facing left  - morph ball - spring ball - falling
     db $04,$13,$FF,$FF,$00,$00,$07,$00                                   ;91BA19;
 
 PoseDefinitions_7F:
+; 7Fh: Facing right - morph ball - spring ball - in air
     db $08,$12,$FF,$FF,$00,$00,$07,$00                                   ;91BA21;
 
 PoseDefinitions_80:
+; 80h: Facing left  - morph ball - spring ball - in air
     db $04,$12,$FF,$FF,$00,$00,$07,$00                                   ;91BA29;
 
 PoseDefinitions_81:
+; 81h: Facing right - screw attack
     db $08,$03,$FF,$FF,$00,$00,$0C,$00                                   ;91BA31;
 
 PoseDefinitions_82:
+; 82h: Facing left  - screw attack
     db $04,$03,$FF,$FF,$00,$00,$0C,$00                                   ;91BA39;
 
 PoseDefinitions_83:
+; 83h: Facing right - wall jump
     db $08,$14,$19,$FF,$08,$00,$13,$00                                   ;91BA41;
 
 PoseDefinitions_84:
+; 84h: Facing left  - wall jump
     db $04,$14,$1A,$FF,$08,$00,$13,$00                                   ;91BA49;
 
 PoseDefinitions_85:
+; 85h: Facing right - crouching - aiming up
     db $08,$05,$27,$00,$00,$00,$10,$00                                   ;91BA51;
 
 PoseDefinitions_86:
+; 86h: Facing left  - crouching - aiming up
     db $04,$05,$28,$09,$00,$00,$10,$00                                   ;91BA59;
 
 PoseDefinitions_87:
+; 87h: Facing right - turning - falling
     db $04,$18,$FF,$FB,$08,$00,$13,$00                                   ;91BA61;
 
 PoseDefinitions_88:
+; 88h: Facing left  - turning - falling
     db $08,$18,$FF,$FB,$08,$00,$13,$00                                   ;91BA69;
 
 PoseDefinitions_89:
+; 89h: Facing right - ran into a wall
     db $08,$15,$FF,$02,$06,$00,$15,$00                                   ;91BA71;
 
 PoseDefinitions_8A:
+; 8Ah: Facing left  - ran into a wall
     db $04,$15,$FF,$07,$06,$00,$15,$00                                   ;91BA79;
 
 PoseDefinitions_8B:
+; 8Bh: Facing right - turning - standing - aiming up
     db $04,$0E,$FF,$FA,$06,$00,$15,$00                                   ;91BA81;
 
 PoseDefinitions_8C:
+; 8Ch: Facing left  - turning - standing - aiming up
     db $08,$0E,$FF,$FA,$06,$00,$15,$00                                   ;91BA89;
 
 PoseDefinitions_8D:
+; 8Dh: Facing right - turning - standing - aiming down-right
     db $04,$0E,$FF,$FC,$06,$00,$15,$00                                   ;91BA91;
 
 PoseDefinitions_8E:
+; 8Eh: Facing left  - turning - standing - aiming down-left
     db $08,$0E,$FF,$FC,$06,$00,$15,$00                                   ;91BA99;
 
 PoseDefinitions_8F:
+; 8Fh: Facing right - turning - in air - aiming up
     db $04,$17,$FF,$FA,$08,$00,$13,$00                                   ;91BAA1;
 
 PoseDefinitions_90:
+; 90h: Facing left  - turning - in air - aiming up
     db $08,$17,$FF,$FA,$08,$00,$13,$00                                   ;91BAA9;
 
 PoseDefinitions_91:
+; 91h: Facing right - turning - in air - aiming down/down-right
     db $04,$17,$FF,$FC,$08,$00,$13,$00                                   ;91BAB1;
 
 PoseDefinitions_92:
+; 92h: Facing left  - turning - in air - aiming down/down-left
     db $08,$17,$FF,$FC,$08,$00,$13,$00                                   ;91BAB9;
 
 PoseDefinitions_93:
+; 93h: Facing right - turning - falling - aiming up
     db $04,$18,$FF,$FA,$08,$00,$13,$00                                   ;91BAC1;
 
 PoseDefinitions_94:
+; 94h: Facing left  - turning - falling - aiming up
     db $08,$18,$FF,$FA,$08,$00,$13,$00                                   ;91BAC9;
 
 PoseDefinitions_95:
+; 95h: Facing right - turning - falling - aiming down/down-right
     db $04,$18,$FF,$FC,$08,$00,$13,$00                                   ;91BAD1;
 
 PoseDefinitions_96:
+; 96h: Facing left  - turning - falling - aiming down/down-left
     db $08,$18,$FF,$FC,$08,$00,$13,$00                                   ;91BAD9;
 
 PoseDefinitions_97:
+; 97h: Facing right - turning - crouching - aiming up
     db $04,$17,$28,$FA,$00,$00,$10,$00                                   ;91BAE1;
 
 PoseDefinitions_98:
+; 98h: Facing left  - turning - crouching - aiming up
     db $08,$17,$28,$FA,$00,$00,$10,$00                                   ;91BAE9;
 
 PoseDefinitions_99:
+; 99h: Facing right - turning - crouching - aiming down/down-right
     db $04,$17,$28,$FC,$00,$00,$10,$00                                   ;91BAF1;
 
 PoseDefinitions_9A:
+; 9Ah: Facing left  - turning - crouching - aiming down/down-left
     db $08,$17,$28,$FC,$00,$00,$10,$00                                   ;91BAF9;
 
 PoseDefinitions_9B:
+; 9Bh: Facing forward - varia/gravity suit
     db $00,$00,$FF,$FF,$08,$00,$18,$00                                   ;91BB01;
 
 PoseDefinitions_9C:
+; 9Ch: Facing right - turning - standing - aiming up-right
     db $04,$0E,$FF,$FA,$06,$00,$15,$00                                   ;91BB09;
 
 PoseDefinitions_9D:
+; 9Dh: Facing left  - turning - standing - aiming up-left
     db $08,$0E,$FF,$FA,$06,$00,$15,$00                                   ;91BB11;
 
 PoseDefinitions_9E:
+; 9Eh: Facing right - turning - in air - aiming up-right
     db $04,$17,$FF,$FA,$08,$00,$13,$00                                   ;91BB19;
 
 PoseDefinitions_9F:
+; 9Fh: Facing left  - turning - in air - aiming up-left
     db $08,$17,$FF,$FA,$08,$00,$13,$00                                   ;91BB21;
 
 PoseDefinitions_A0:
+; A0h: Facing right - turning - falling - aiming up-right
     db $04,$18,$FF,$FA,$08,$00,$13,$00                                   ;91BB29;
 
 PoseDefinitions_A1:
+; A1h: Facing left  - turning - falling - aiming up-left
     db $08,$18,$FF,$FA,$08,$00,$13,$00                                   ;91BB31;
 
 PoseDefinitions_A2:
+; A2h: Facing right - turning - crouching - aiming up-right
     db $04,$17,$28,$FA,$00,$00,$10,$00                                   ;91BB39;
 
 PoseDefinitions_A3:
+; A3h: Facing left  - turning - crouching - aiming up-left
     db $08,$17,$28,$FA,$00,$00,$10,$00                                   ;91BB41;
 
 PoseDefinitions_A4:
+; A4h: Facing right - landing from normal jump
     db $08,$00,$FF,$02,$03,$00,$15,$00                                   ;91BB49;
 
 PoseDefinitions_A5:
+; A5h: Facing left  - landing from normal jump
     db $04,$00,$FF,$07,$03,$00,$15,$00                                   ;91BB51;
 
 PoseDefinitions_A6:
+; A6h: Facing right - landing from spin jump
     db $08,$00,$FF,$02,$03,$00,$15,$00                                   ;91BB59;
 
 PoseDefinitions_A7:
+; A7h: Facing left  - landing from spin jump
     db $04,$00,$FF,$07,$03,$00,$15,$00                                   ;91BB61;
 
 UNUSED_PoseDefinitions_A8_91BB69:
@@ -4753,9 +5575,11 @@ UNUSED_PoseDefinitions_B1_91BBB1:
     db $04,$16,$70,$06,$08,$00,$13,$00                                   ;91BBB1;
 
 PoseDefinitions_B2:
+; B2h: Facing clockwise     - grapple
     db $08,$16,$B2,$FF,$10,$00,$11,$00                                   ;91BBB9;
 
 PoseDefinitions_B3:
+; B3h: Facing anticlockwise - grapple
     db $04,$16,$B3,$FF,$10,$00,$11,$00                                   ;91BBC1;
 
 UNUSED_PoseDefinitions_B4_91BBC9:
@@ -4771,42 +5595,55 @@ UNUSED_PoseDefinitions_B7_91BBE1:
     db $04,$16,$28,$06,$00,$00,$10,$00                                   ;91BBE1;
 
 PoseDefinitions_B8:
+; B8h: Facing left  - grapple wall jump pose
     db $08,$16,$FF,$03,$00,$00,$10,$00                                   ;91BBE9;
 
 PoseDefinitions_B9:
+; B9h: Facing right - grapple wall jump pose
     db $04,$16,$FF,$06,$00,$00,$10,$00                                   ;91BBF1;
 
 PoseDefinitions_BA:
+; BAh: Facing left  - grabbed by Draygon - not moving - not aiming
     db $04,$1A,$FF,$07,$06,$00,$15,$00                                   ;91BBF9;
 
 PoseDefinitions_BB:
+; BBh: Facing left  - grabbed by Draygon - not moving - aiming up-left
     db $04,$1A,$BA,$08,$06,$00,$15,$00                                   ;91BC01;
 
 PoseDefinitions_BC:
+; BCh: Facing left  - grabbed by Draygon - firing
     db $04,$1A,$BA,$07,$06,$00,$15,$00                                   ;91BC09;
 
 PoseDefinitions_BD:
+; BDh: Facing left  - grabbed by Draygon - not moving - aiming down-left
     db $04,$1A,$BA,$06,$06,$00,$15,$00                                   ;91BC11;
 
 PoseDefinitions_BE:
+; BEh: Facing left  - grabbed by Draygon - moving
     db $04,$1A,$BA,$FF,$06,$00,$15,$00                                   ;91BC19;
 
 PoseDefinitions_BF:
+; BFh: Facing right - moonwalking - turn/jump left
     db $04,$0E,$FF,$FB,$06,$00,$15,$00                                   ;91BC21;
 
 PoseDefinitions_C0:
+; C0h: Facing left  - moonwalking - turn/jump right
     db $08,$0E,$FF,$FB,$06,$00,$15,$00                                   ;91BC29;
 
 PoseDefinitions_C1:
+; C1h: Facing right - moonwalking - turn/jump left  - aiming up-right
     db $04,$0E,$FF,$FA,$08,$00,$15,$00                                   ;91BC31;
 
 PoseDefinitions_C2:
+; C2h: Facing left  - moonwalking - turn/jump right - aiming up-left
     db $08,$0E,$FF,$FA,$08,$00,$15,$00                                   ;91BC39;
 
 PoseDefinitions_C3:
+; C3h: Facing right - moonwalking - turn/jump left  - aiming down-right
     db $04,$0E,$FF,$FC,$08,$00,$15,$00                                   ;91BC41;
 
 PoseDefinitions_C4:
+; C4h: Facing left  - moonwalking - turn/jump right - aiming down-left
     db $08,$0E,$FF,$FC,$08,$00,$15,$00                                   ;91BC49;
 
 UNUSED_PoseDefinitions_C5_91BC51:
@@ -4816,63 +5653,83 @@ UNUSED_PoseDefinitions_C6_91BC59:
     db $04,$1A,$FF,$FB,$06,$00,$15,$00                                   ;91BC59;
 
 PoseDefinitions_C7:
+; C7h: Facing right - vertical shinespark windup
     db $08,$1B,$FF,$FF,$08,$00,$13,$00                                   ;91BC61;
 
 PoseDefinitions_C8:
+; C8h: Facing left  - vertical shinespark windup
     db $04,$1B,$FF,$FF,$08,$00,$13,$00                                   ;91BC69;
 
 PoseDefinitions_C9:
+; C9h: Facing right - shinespark - horizontal
     db $08,$1B,$FF,$02,$08,$00,$13,$00                                   ;91BC71;
 
 PoseDefinitions_CA:
+; CAh: Facing left  - shinespark - horizontal
     db $04,$1B,$FF,$07,$08,$00,$13,$00                                   ;91BC79;
 
 PoseDefinitions_CB:
+; CBh: Facing right - shinespark - vertical
     db $08,$1B,$FF,$00,$08,$00,$13,$00                                   ;91BC81;
 
 PoseDefinitions_CC:
+; CCh: Facing left  - shinespark - vertical
     db $04,$1B,$FF,$09,$08,$00,$13,$00                                   ;91BC89;
 
 PoseDefinitions_CD:
+; CDh: Facing right - shinespark - diagonal
     db $08,$1B,$FF,$01,$08,$00,$13,$00                                   ;91BC91;
 
 PoseDefinitions_CE:
+; CEh: Facing left  - shinespark - diagonal
     db $04,$1B,$FF,$08,$08,$00,$13,$00                                   ;91BC99;
 
 PoseDefinitions_CF:
+; CFh: Facing right - ran into a wall - aiming up-right
     db $08,$15,$89,$01,$06,$00,$15,$00                                   ;91BCA1;
 
 PoseDefinitions_D0:
+; D0h: Facing left  - ran into a wall - aiming up-left
     db $04,$15,$8A,$08,$06,$00,$15,$00                                   ;91BCA9;
 
 PoseDefinitions_D1:
+; D1h: Facing right - ran into a wall - aiming down-right
     db $08,$15,$89,$03,$06,$00,$15,$00                                   ;91BCB1;
 
 PoseDefinitions_D2:
+; D2h: Facing left  - ran into a wall - aiming down-left
     db $04,$15,$8A,$06,$06,$00,$15,$00                                   ;91BCB9;
 
 PoseDefinitions_D3:
+; D3h: Facing right - crystal flash
     db $08,$1B,$FF,$FF,$06,$00,$15,$00                                   ;91BCC1;
 
 PoseDefinitions_D4:
+; D4h: Facing left  - crystal flash
     db $04,$1B,$FF,$FF,$06,$00,$15,$00                                   ;91BCC9;
 
 PoseDefinitions_D5:
+; D5h: Facing right - x-ray - standing
     db $08,$00,$FF,$02,$06,$00,$15,$00                                   ;91BCD1;
 
 PoseDefinitions_D6:
+; D6h: Facing left  - x-ray - standing
     db $04,$00,$FF,$07,$06,$00,$15,$00                                   ;91BCD9;
 
 PoseDefinitions_D7:
+; D7h: Facing right - crystal flash ending
     db $08,$0A,$FF,$02,$06,$00,$15,$00                                   ;91BCE1;
 
 PoseDefinitions_D8:
+; D8h: Facing left  - crystal flash ending
     db $04,$0A,$FF,$07,$06,$00,$15,$00                                   ;91BCE9;
 
 PoseDefinitions_D9:
+; D9h: Facing right - x-ray - crouching
     db $08,$05,$FF,$02,$00,$00,$10,$00                                   ;91BCF1;
 
 PoseDefinitions_DA:
+; DAh: Facing left  - x-ray - crouching
     db $04,$05,$FF,$07,$00,$00,$10,$00                                   ;91BCF9;
 
 UNUSED_PoseDefinitions_DB_91BD01:
@@ -4891,90 +5748,119 @@ UNUSED_PoseDefinitions_DF_91BD21:
     db $04,$1A,$FF,$FF,$00,$00,$07,$00                                   ;91BD21;
 
 PoseDefinitions_E0:
+; E0h: Facing right - landing from normal jump - aiming up
     db $08,$00,$FF,$00,$03,$00,$15,$00                                   ;91BD29;
 
 PoseDefinitions_E1:
+; E1h: Facing left  - landing from normal jump - aiming up
     db $04,$00,$FF,$09,$03,$00,$15,$00                                   ;91BD31;
 
 PoseDefinitions_E2:
+; E2h: Facing right - landing from normal jump - aiming up-right
     db $08,$00,$FF,$01,$03,$00,$15,$00                                   ;91BD39;
 
 PoseDefinitions_E3:
+; E3h: Facing left  - landing from normal jump - aiming up-left
     db $04,$00,$FF,$08,$03,$00,$15,$00                                   ;91BD41;
 
 PoseDefinitions_E4:
+; E4h: Facing right - landing from normal jump - aiming down-right
     db $08,$00,$FF,$03,$03,$00,$15,$00                                   ;91BD49;
 
 PoseDefinitions_E5:
+; E5h: Facing left  - landing from normal jump - aiming down-left
     db $04,$00,$FF,$06,$03,$00,$15,$00                                   ;91BD51;
 
 PoseDefinitions_E6:
+; E6h: Facing right - landing from normal jump - firing
     db $08,$00,$FF,$02,$03,$00,$15,$00                                   ;91BD59;
 
 PoseDefinitions_E7:
+; E7h: Facing left  - landing from normal jump - firing
     db $04,$00,$FF,$07,$03,$00,$15,$00                                   ;91BD61;
 
 PoseDefinitions_E8:
+; E8h: Facing right - Samus drained - crouching
     db $08,$1B,$FF,$FF,$FC,$00,$15,$00                                   ;91BD69;
 
 PoseDefinitions_E9:
+; E9h: Facing left  - Samus drained - crouching
     db $04,$1B,$FF,$FF,$FC,$00,$15,$00                                   ;91BD71;
 
 PoseDefinitions_EA:
+; EAh: Facing right - Samus drained - standing
     db $08,$1B,$FF,$FF,$FC,$00,$15,$00                                   ;91BD79;
 
 PoseDefinitions_EB:
+; EBh: Facing left  - Samus drained - standing
     db $04,$1B,$FF,$FF,$FC,$00,$15,$00                                   ;91BD81;
 
 PoseDefinitions_EC:
+; ECh: Facing right - grabbed by Draygon - not moving - not aiming
     db $08,$1A,$FF,$02,$06,$00,$15,$00                                   ;91BD89;
 
 PoseDefinitions_ED:
+; EDh: Facing right - grabbed by Draygon - not moving - aiming up-right
     db $08,$1A,$EC,$01,$06,$00,$15,$00                                   ;91BD91;
 
 PoseDefinitions_EE:
+; EEh: Facing right - grabbed by Draygon - firing
     db $08,$1A,$EC,$02,$06,$00,$15,$00                                   ;91BD99;
 
 PoseDefinitionse_EF:
+; EFh: Facing right - grabbed by Draygon - not moving - aiming down-right
     db $08,$1A,$EC,$03,$06,$00,$15,$00                                   ;91BDA1;
 
 PoseDefinitions_F0:
+; F0h: Facing right - grabbed by Draygon - moving
     db $08,$1A,$EC,$FF,$06,$00,$15,$00                                   ;91BDA9;
 
 PoseDefinitions_F1:
+; F1h: Facing right - crouching transition - aiming up
     db $08,$0F,$FF,$00,$08,$00,$10,$00                                   ;91BDB1;
 
 PoseDefinitions_F2:
+; F2h: Facing left  - crouching transition - aiming up
     db $04,$0F,$FF,$09,$08,$00,$10,$00                                   ;91BDB9;
 
 PoseDefinitions_F3:
+; F3h: Facing right - crouching transition - aiming up-right
     db $08,$0F,$FF,$01,$08,$00,$10,$00                                   ;91BDC1;
 
 PoseDefinitions_F4:
+; F4h: Facing left  - crouching transition - aiming up-left
     db $04,$0F,$FF,$08,$08,$00,$10,$00                                   ;91BDC9;
 
 PoseDefinitions_F5:
+; F5h: Facing right - crouching transition - aiming down-right
     db $08,$0F,$FF,$03,$08,$00,$10,$00                                   ;91BDD1;
 
 PoseDefinitions_F6:
+; F6h: Facing left  - crouching transition - aiming down-left
     db $04,$0F,$FF,$06,$08,$00,$10,$00                                   ;91BDD9;
 
 PoseDefinitions_F7:
+; F7h: Facing right - standing transition - aiming up
     db $08,$0F,$FF,$00,$03,$00,$15,$00                                   ;91BDE1;
 
 PoseDefinitions_F8:
+; F8h: Facing left  - standing transition - aiming up
     db $04,$0F,$FF,$09,$03,$00,$15,$00                                   ;91BDE9;
 
 PoseDefinitions_F9:
+; F9h: Facing right - standing transition - aiming up-right
     db $08,$0F,$FF,$01,$03,$00,$15,$00                                   ;91BDF1;
 
 PoseDefinitions_FA:
+; FAh: Facing left  - standing transition - aiming up-left
     db $04,$0F,$FF,$08,$03,$00,$15,$00                                   ;91BDF9;
 
 PoseDefinitions_FB:
+; FBh: Facing right - standing transition - aiming down-right
     db $08,$0F,$FF,$03,$03,$00,$15,$00                                   ;91BE01;
 
 PoseDefinitions_FC:
+; FCh: Facing left  - standing transition - aiming down-left
     db $04,$0F,$FF,$06,$03,$00,$15,$00                                   ;91BE09;
 
 Calc_Xray_HDMADataTable_OffScreen:
@@ -7186,6 +8072,9 @@ Calc_Xray_HDMADataTable_OnScreen_HorizontalLine:
 
 
 AbsoluteTangentTable:
+; |tan(t * pi / 80h)| * 100h
+; Recall that SM angles are measured clockwise with 0 = up
+; So this table provides absolute dx/dy gradients for angle t * pi / 80h
     dw $0000,$0006,$000C,$0012,$0019,$001F,$0025,$002C                   ;91C9D4;
     dw $0032,$0039,$0040,$0046,$004D,$0054,$005B,$0062                   ;91C9E4;
     dw $006A,$0071,$0079,$0080,$0088,$0091,$0099,$00A2                   ;91C9F4;
@@ -8232,10 +9121,8 @@ XraySetup_7_InitializeXray_TransferXrayTilemap_2ndScreen:
 
 
 InstList_HDMAObject_Xray_0:
-    dw Instruction_HDMAObject_HDMATableBank                              ;91D223;
-    db $00                                                               ;91D225;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;91D226;
-    db $7E                                                               ;91D228;
+    dw Instruction_HDMAObject_HDMATableBank : db $00                     ;91D223;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;91D226;
     dw Instruction_HDMAObject_PreInstructionInY                          ;91D229;
     dl PreInstruction_HDMAObject_XraySetup                               ;91D22B;
     dw Instruction_HDMAObject_CallExternalFunctionInY                    ;91D22E;
@@ -8328,353 +9215,252 @@ RTS_91D2D1:
     RTS                                                                  ;91D2D5;
 
 
-RevealedBlockTable_0_blockType:
+RevealedBlockTable_0:
+  .blockType
     dw $0000                                                             ;91D2D6;
-
-RevealedBlockTable_0_pointers:
-    dw RevealedBlockTable_Air_0                                          ;91D2D8;
-
-RevealedBlockTable_1_blockType:
+  .pointers
+    dw       RevealedBlockTable_Air_0                                    ;91D2D8;
+RevealedBlockTable_1:
+  .blockType
     dw $3000                                                             ;91D2DA;
-
-RevealedBlockTable_1_pointers:
-    dw RevealedBlockTable_SpecialAir_0                                   ;91D2DC;
-    dw $5000                                                             ;91D2DE;
-    dw RevealedBlockTable_HorizontalExtension_0                          ;91D2E0;
-    dw $A000                                                             ;91D2E2;
-    dw RevealedBlockTable_SpikeBlock_0                                   ;91D2E4;
-    dw $B000                                                             ;91D2E6;
-    dw RevealedBlockTable_SpecialBlock                                   ;91D2E8;
-    dw $C000                                                             ;91D2EA;
-    dw RevealedBlockTable_ShootableBlock                                 ;91D2EC;
-    dw $D000                                                             ;91D2EE;
-    dw RevealedBlockTable_VerticalExtension_0                            ;91D2F0;
-    dw $E000                                                             ;91D2F2;
-    dw RevealedBlockTable_GrappleBlock                                   ;91D2F4;
-    dw $F000                                                             ;91D2F6;
-    dw RevealedBlockTable_BombableBlock                                  ;91D2F8;
+  .pointers
+    dw       RevealedBlockTable_SpecialAir_0                             ;91D2DC;
+    dw $5000,RevealedBlockTable_HorizontalExtension_0                    ;91D2DE;
+    dw $A000,RevealedBlockTable_SpikeBlock_0                             ;91D2E2;
+    dw $B000,RevealedBlockTable_SpecialBlock                             ;91D2E6;
+    dw $C000,RevealedBlockTable_ShootableBlock                           ;91D2EA;
+    dw $D000,RevealedBlockTable_VerticalExtension_0                      ;91D2EE;
+    dw $E000,RevealedBlockTable_GrappleBlock                             ;91D2F2;
+    dw $F000,RevealedBlockTable_BombableBlock                            ;91D2F6;
     dw $FFFF                                                             ;91D2FA;
 
 RevealedBlockTable_Air_0:
-    dw $FF00                                                             ;91D2FC;
-    dw RevealedBlockTable_Air_1                                          ;91D2FE;
+    dw $FF00,RevealedBlockTable_Air_1                                    ;91D2FC;
     dw $FFFF                                                             ;91D300;
 
 RevealedBlockTable_Air_1:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D302;
-    dw $00FF                                                             ;91D304;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$00FF           ;91D302;
 
 RevealedBlockTable_SpecialAir_0:
-    dw $0046                                                             ;91D306;
-    dw RevealedBlockTable_SpecialAir_1                                   ;91D308;
+    dw $0046,RevealedBlockTable_SpecialAir_1                             ;91D306;
     dw $FFFF                                                             ;91D30A;
 
 RevealedBlockTable_SpecialAir_1:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D30C;
-    dw $00FF                                                             ;91D30E;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$00FF           ;91D30C;
 
 RevealedBlockTable_HorizontalExtension_0:
-    dw $FF00                                                             ;91D310;
-    dw RevealedBlockTable_HorizontalExtension_1                          ;91D312;
+    dw $FF00,RevealedBlockTable_HorizontalExtension_1                    ;91D310;
     dw $FFFF                                                             ;91D314;
 
 RevealedBlockTable_HorizontalExtension_1:
     dw RevealedBlockCommand_HorizontalExtension                          ;91D316;
 
 RevealedBlockTable_SpikeBlock_0:
-    dw $000E                                                             ;91D318;
-    dw RevealedBlockTable_SpikeBlock_1                                   ;91D31A;
+    dw $000E,RevealedBlockTable_SpikeBlock_1                             ;91D318;
     dw $FFFF                                                             ;91D31C;
 
 RevealedBlockTable_SpikeBlock_1:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D31E;
-    dw $005F                                                             ;91D320;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$005F           ;91D31E;
 
 RevealedBlockTable_SpecialBlock:
-    dw $0000                                                             ;91D322;
-    dw RevealedBlockTable_SpecialBlock_0                                 ;91D324;
-    dw $0001                                                             ;91D326;
-    dw RevealedBlockTable_SpecialBlock_1                                 ;91D328;
-    dw $0002                                                             ;91D32A;
-    dw RevealedBlockTable_SpecialBlock_2                                 ;91D32C;
-    dw $0003                                                             ;91D32E;
-    dw RevealedBlockTable_SpecialBlock_3                                 ;91D330;
-    dw $0004                                                             ;91D332;
-    dw RevealedBlockTable_SpecialBlock_4                                 ;91D334;
-    dw $0005                                                             ;91D336;
-    dw RevealedBlockTable_SpecialBlock_5                                 ;91D338;
-    dw $0006                                                             ;91D33A;
-    dw RevealedBlockTable_SpecialBlock_6                                 ;91D33C;
-    dw $0007                                                             ;91D33E;
-    dw RevealedBlockTable_SpecialBlock_7                                 ;91D340;
-    dw $0008                                                             ;91D342;
-    dw RevealedBlockTable_SpecialBlock_8                                 ;91D344;
-    dw $0009                                                             ;91D346;
-    dw RevealedBlockTable_SpecialBlock_9                                 ;91D348;
-    dw $000A                                                             ;91D34A;
-    dw RevealedBlockTable_SpecialBlock_A                                 ;91D34C;
-    dw $000B                                                             ;91D34E;
-    dw RevealedBlockTable_SpecialBlock_B                                 ;91D350;
-    dw $000C                                                             ;91D352;
-    dw RevealedBlockTable_SpecialBlock_C                                 ;91D354;
-    dw $000D                                                             ;91D356;
-    dw RevealedBlockTable_SpecialBlock_D                                 ;91D358;
-    dw $000E                                                             ;91D35A;
-    dw RevealedBlockTable_SpecialBlock_E                                 ;91D35C;
-    dw $000F                                                             ;91D35E;
-    dw RevealedBlockTable_SpecialBlock_F                                 ;91D360;
-    dw $0082                                                             ;91D362;
-    dw RevealedBlockTable_SpecialBlock_Brinstar                          ;91D364;
-    dw $0083                                                             ;91D366;
-    dw RevealedBlockTable_SpecialBlock_Brinstar                          ;91D368;
-    dw $0084                                                             ;91D36A;
-    dw RevealedBlockTable_SpecialBlock_Brinstar                          ;91D36C;
-    dw $0085                                                             ;91D36E;
-    dw RevealedBlockTable_SpecialBlock_Brinstar                          ;91D370;
+    dw $0000,RevealedBlockTable_SpecialBlock_0                           ;91D322;
+    dw $0001,RevealedBlockTable_SpecialBlock_1                           ;91D326;
+    dw $0002,RevealedBlockTable_SpecialBlock_2                           ;91D32A;
+    dw $0003,RevealedBlockTable_SpecialBlock_3                           ;91D32E;
+    dw $0004,RevealedBlockTable_SpecialBlock_4                           ;91D332;
+    dw $0005,RevealedBlockTable_SpecialBlock_5                           ;91D336;
+    dw $0006,RevealedBlockTable_SpecialBlock_6                           ;91D33A;
+    dw $0007,RevealedBlockTable_SpecialBlock_7                           ;91D33E;
+    dw $0008,RevealedBlockTable_SpecialBlock_8                           ;91D342;
+    dw $0009,RevealedBlockTable_SpecialBlock_9                           ;91D346;
+    dw $000A,RevealedBlockTable_SpecialBlock_A                           ;91D34A;
+    dw $000B,RevealedBlockTable_SpecialBlock_B                           ;91D34E;
+    dw $000C,RevealedBlockTable_SpecialBlock_C                           ;91D352;
+    dw $000D,RevealedBlockTable_SpecialBlock_D                           ;91D356;
+    dw $000E,RevealedBlockTable_SpecialBlock_E                           ;91D35A;
+    dw $000F,RevealedBlockTable_SpecialBlock_F                           ;91D35E;
+    dw $0082,RevealedBlockTable_SpecialBlock_Brinstar                    ;91D362;
+    dw $0083,RevealedBlockTable_SpecialBlock_Brinstar                    ;91D366;
+    dw $0084,RevealedBlockTable_SpecialBlock_Brinstar                    ;91D36A;
+    dw $0085,RevealedBlockTable_SpecialBlock_Brinstar                    ;91D36E;
     dw $FFFF                                                             ;91D372;
 
 RevealedBlockTable_SpecialBlock_0:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D374;
-    dw $00BC                                                             ;91D376;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$00BC           ;91D374;
 
 RevealedBlockTable_SpecialBlock_1:
-    dw RevealedBlockCommand_Copy2x1BlockToXrayBG2Tilemap                 ;91D378;
-    dw $00BC,$00BC                                                       ;91D37A;
+    dw RevealedBlockCommand_Copy2x1BlockToXrayBG2Tilemap,$00BC,$00BC     ;91D378;
 
 RevealedBlockTable_SpecialBlock_2:
-    dw RevealedBlockCommand_Copy1x2BlockToXrayBG2Tilemap                 ;91D37E;
-    dw $00BC,$00BC                                                       ;91D380;
+    dw RevealedBlockCommand_Copy1x2BlockToXrayBG2Tilemap,$00BC,$00BC     ;91D37E;
 
 RevealedBlockTable_SpecialBlock_3:
     dw RevealedBlockCommand_Copy2x2BlockToXrayBG2Tilemap                 ;91D384;
     dw $00BC,$00BC,$00BC,$00BC                                           ;91D386;
 
 RevealedBlockTable_SpecialBlock_4:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D38E;
-    dw $00BC                                                             ;91D390;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$00BC           ;91D38E;
 
 RevealedBlockTable_SpecialBlock_5:
-    dw RevealedBlockCommand_Copy2x1BlockToXrayBG2Tilemap                 ;91D392;
-    dw $00BC,$00BC                                                       ;91D394;
+    dw RevealedBlockCommand_Copy2x1BlockToXrayBG2Tilemap,$00BC,$00BC     ;91D392;
 
 RevealedBlockTable_SpecialBlock_6:
-    dw RevealedBlockCommand_Copy1x2BlockToXrayBG2Tilemap                 ;91D398;
-    dw $00BC,$00BC                                                       ;91D39A;
+    dw RevealedBlockCommand_Copy1x2BlockToXrayBG2Tilemap,$00BC,$00BC     ;91D398;
 
 RevealedBlockTable_SpecialBlock_7:
     dw RevealedBlockCommand_Copy2x2BlockToXrayBG2Tilemap                 ;91D39E;
     dw $00BC,$00BC,$00BC,$00BC                                           ;91D3A0;
 
 RevealedBlockTable_SpecialBlock_8:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D3A8;
-    dw $00BC                                                             ;91D3AA;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$00BC           ;91D3A8;
 
 RevealedBlockTable_SpecialBlock_9:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D3AC;
-    dw $00BC                                                             ;91D3AE;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$00BC           ;91D3AC;
 
 RevealedBlockTable_SpecialBlock_A:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D3B0;
-    dw $00BC                                                             ;91D3B2;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$00BC           ;91D3B0;
 
 RevealedBlockTable_SpecialBlock_B:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D3B4;
-    dw $00BC                                                             ;91D3B6;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$00BC           ;91D3B4;
 
 RevealedBlockTable_SpecialBlock_C:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D3B8;
-    dw $00BC                                                             ;91D3BA;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$00BC           ;91D3B8;
 
 RevealedBlockTable_SpecialBlock_D:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D3BC;
-    dw $00BC                                                             ;91D3BE;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$00BC           ;91D3BC;
 
 RevealedBlockTable_SpecialBlock_E:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D3C0;
-    dw $00B6                                                             ;91D3C2;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$00B6           ;91D3C0;
 
 RevealedBlockTable_SpecialBlock_F:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D3C4;
-    dw $00B6                                                             ;91D3C6;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$00B6           ;91D3C4;
 
 RevealedBlockTable_SpecialBlock_Brinstar:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2TilemapIfBrinstar       ;91D3C8;
-    dw $00B6                                                             ;91D3CA;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2TilemapIfBrinstar,$00B6 ;91D3C8;
 
 RevealedBlockTable_ShootableBlock:
-    dw $0000                                                             ;91D3CC;
-    dw RevealedBlockTable_ShootableBlock_0                               ;91D3CE;
-    dw $0001                                                             ;91D3D0;
-    dw RevealedBlockTable_ShootableBlock_1                               ;91D3D2;
-    dw $0002                                                             ;91D3D4;
-    dw RevealedBlockTable_ShootableBlock_2                               ;91D3D6;
-    dw $0003                                                             ;91D3D8;
-    dw RevealedBlockTable_ShootableBlock_3                               ;91D3DA;
-    dw $0004                                                             ;91D3DC;
-    dw RevealedBlockTable_ShootableBlock_4                               ;91D3DE;
-    dw $0005                                                             ;91D3E0;
-    dw RevealedBlockTable_ShootableBlock_5                               ;91D3E2;
-    dw $0006                                                             ;91D3E4;
-    dw RevealedBlockTable_ShootableBlock_6                               ;91D3E6;
-    dw $0007                                                             ;91D3E8;
-    dw RevealedBlockTable_ShootableBlock_7                               ;91D3EA;
-    dw $0008                                                             ;91D3EC;
-    dw RevealedBlockTable_ShootableBlock_8                               ;91D3EE;
-    dw $0009                                                             ;91D3F0;
-    dw RevealedBlockTable_ShootableBlock_9                               ;91D3F2;
-    dw $000A                                                             ;91D3F4;
-    dw RevealedBlockTable_ShootableBlock_A                               ;91D3F6;
-    dw $000B                                                             ;91D3F8;
-    dw RevealedBlockTable_ShootableBlock_B                               ;91D3FA;
-    dw $000C                                                             ;91D3FC;
-    dw RevealedBlockTable_ShootableBlock_C                               ;91D3FE;
-    dw $000D                                                             ;91D400;
-    dw RevealedBlockTable_ShootableBlock_D                               ;91D402;
-    dw $000E                                                             ;91D404;
-    dw RevealedBlockTable_ShootableBlock_E                               ;91D406;
-    dw $000F                                                             ;91D408;
-    dw RevealedBlockTable_ShootableBlock_F                               ;91D40A;
+    dw $0000,RevealedBlockTable_ShootableBlock_0                         ;91D3CC;
+    dw $0001,RevealedBlockTable_ShootableBlock_1                         ;91D3D0;
+    dw $0002,RevealedBlockTable_ShootableBlock_2                         ;91D3D4;
+    dw $0003,RevealedBlockTable_ShootableBlock_3                         ;91D3D8;
+    dw $0004,RevealedBlockTable_ShootableBlock_4                         ;91D3DC;
+    dw $0005,RevealedBlockTable_ShootableBlock_5                         ;91D3E0;
+    dw $0006,RevealedBlockTable_ShootableBlock_6                         ;91D3E4;
+    dw $0007,RevealedBlockTable_ShootableBlock_7                         ;91D3E8;
+    dw $0008,RevealedBlockTable_ShootableBlock_8                         ;91D3EC;
+    dw $0009,RevealedBlockTable_ShootableBlock_9                         ;91D3F0;
+    dw $000A,RevealedBlockTable_ShootableBlock_A                         ;91D3F4;
+    dw $000B,RevealedBlockTable_ShootableBlock_B                         ;91D3F8;
+    dw $000C,RevealedBlockTable_ShootableBlock_C                         ;91D3FC;
+    dw $000D,RevealedBlockTable_ShootableBlock_D                         ;91D400;
+    dw $000E,RevealedBlockTable_ShootableBlock_E                         ;91D404;
+    dw $000F,RevealedBlockTable_ShootableBlock_F                         ;91D408;
     dw $FFFF                                                             ;91D40C;
 
 RevealedBlockTable_ShootableBlock_0:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D40E;
-    dw $0052                                                             ;91D410;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$0052           ;91D40E;
 
 RevealedBlockTable_ShootableBlock_1:
-    dw RevealedBlockCommand_Copy2x1BlockToXrayBG2Tilemap                 ;91D412;
-    dw $0096,$0097                                                       ;91D414;
+    dw RevealedBlockCommand_Copy2x1BlockToXrayBG2Tilemap,$0096,$0097     ;91D412;
 
 RevealedBlockTable_ShootableBlock_2:
-    dw RevealedBlockCommand_Copy1x2BlockToXrayBG2Tilemap                 ;91D418;
-    dw $0098,$00B8                                                       ;91D41A;
+    dw RevealedBlockCommand_Copy1x2BlockToXrayBG2Tilemap,$0098,$00B8     ;91D418;
 
 RevealedBlockTable_ShootableBlock_3:
     dw RevealedBlockCommand_Copy2x2BlockToXrayBG2Tilemap                 ;91D41E;
     dw $0099,$009A,$00B9,$00BA                                           ;91D420;
 
 RevealedBlockTable_ShootableBlock_4:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D428;
-    dw $0052                                                             ;91D42A;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$0052           ;91D428;
 
 RevealedBlockTable_ShootableBlock_5:
-    dw RevealedBlockCommand_Copy2x1BlockToXrayBG2Tilemap                 ;91D42C;
-    dw $0096,$0097                                                       ;91D42E;
+    dw RevealedBlockCommand_Copy2x1BlockToXrayBG2Tilemap,$0096,$0097    ;91D42C;
 
 RevealedBlockTable_ShootableBlock_6:
-    dw RevealedBlockCommand_Copy1x2BlockToXrayBG2Tilemap                 ;91D432;
-    dw $0098,$00B8                                                       ;91D434;
+    dw RevealedBlockCommand_Copy1x2BlockToXrayBG2Tilemap,$0098,$00B8     ;91D432;
 
 RevealedBlockTable_ShootableBlock_7:
     dw RevealedBlockCommand_Copy2x2BlockToXrayBG2Tilemap                 ;91D438;
     dw $0099,$009A,$00B9,$00BA                                           ;91D43A;
 
 RevealedBlockTable_ShootableBlock_8:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D442;
-    dw $0057                                                             ;91D444;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$0057           ;91D442;
 
 RevealedBlockTable_ShootableBlock_9:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D446;
-    dw $0057                                                             ;91D448;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$0057           ;91D446;
 
 RevealedBlockTable_ShootableBlock_A:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D44A;
-    dw $009F                                                             ;91D44C;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$009F           ;91D44A;
 
 RevealedBlockTable_ShootableBlock_B:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D44E;
-    dw $009F                                                             ;91D450;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$009F           ;91D44E;
 
 RevealedBlockTable_ShootableBlock_C:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D452;
-    dw $009F                                                             ;91D454;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$009F           ;91D452;
 
 RevealedBlockTable_ShootableBlock_D:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D456;
-    dw $009F                                                             ;91D458;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$009F           ;91D456;
 
 RevealedBlockTable_ShootableBlock_E:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D45A;
-    dw $009F                                                             ;91D45C;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$009F           ;91D45A;
 
 RevealedBlockTable_ShootableBlock_F:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D45E;
-    dw $009F                                                             ;91D460;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$009F           ;91D45E;
 
 RevealedBlockTable_VerticalExtension_0:
-    dw $FF00                                                             ;91D462;
-    dw RevealedBlockTable_VerticalExtension_1                            ;91D464;
+    dw $FF00,RevealedBlockTable_VerticalExtension_1                      ;91D462;
     dw $FFFF                                                             ;91D466;
 
 RevealedBlockTable_VerticalExtension_1:
     dw RevealedBlockCommand_VerticalExtension                            ;91D468;
 
 RevealedBlockTable_GrappleBlock:
-    dw $0000                                                             ;91D46A;
-    dw RevealedBlockTable_GrappleBlock_0                                 ;91D46C;
-    dw $0001                                                             ;91D46E;
-    dw RevealedBlockTable_GrappleBlock_1                                 ;91D470;
-    dw $0002                                                             ;91D472;
-    dw RevealedBlockTable_GrappleBlock_2                                 ;91D474;
+    dw $0000,RevealedBlockTable_GrappleBlock_0                           ;91D46A;
+    dw $0001,RevealedBlockTable_GrappleBlock_1                           ;91D46E;
+    dw $0002,RevealedBlockTable_GrappleBlock_2                           ;91D472;
     dw $FFFF                                                             ;91D476;
 
 RevealedBlockTable_GrappleBlock_0:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D478;
-    dw $009B                                                             ;91D47A;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$009B           ;91D478;
 
 RevealedBlockTable_GrappleBlock_1:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D47C;
-    dw $00B7                                                             ;91D47E;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$00B7           ;91D47C;
 
 RevealedBlockTable_GrappleBlock_2:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D480;
-    dw $00B7                                                             ;91D482;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$00B7           ;91D480;
 
 RevealedBlockTable_BombableBlock:
-    dw $0000                                                             ;91D484;
-    dw RevealedBlockTable_BombableBlock_0                                ;91D486;
-    dw $0001                                                             ;91D488;
-    dw RevealedBlockTable_BombableBlock_1                                ;91D48A;
-    dw $0002                                                             ;91D48C;
-    dw RevealedBlockTable_BombableBlock_2                                ;91D48E;
-    dw $0003                                                             ;91D490;
-    dw RevealedBlockTable_BombableBlock_3                                ;91D492;
-    dw $0004                                                             ;91D494;
-    dw RevealedBlockTable_BombableBlock_4                                ;91D496;
-    dw $0005                                                             ;91D498;
-    dw RevealedBlockTable_BombableBlock_5                                ;91D49A;
-    dw $0006                                                             ;91D49C;
-    dw RevealedBlockTable_BombableBlock_6                                ;91D49E;
-    dw $0007                                                             ;91D4A0;
-    dw RevealedBlockTable_BombableBlock_7                                ;91D4A2;
+    dw $0000,RevealedBlockTable_BombableBlock_0                          ;91D484;
+    dw $0001,RevealedBlockTable_BombableBlock_1                          ;91D488;
+    dw $0002,RevealedBlockTable_BombableBlock_2                          ;91D48C;
+    dw $0003,RevealedBlockTable_BombableBlock_3                          ;91D490;
+    dw $0004,RevealedBlockTable_BombableBlock_4                          ;91D494;
+    dw $0005,RevealedBlockTable_BombableBlock_5                          ;91D498;
+    dw $0006,RevealedBlockTable_BombableBlock_6                          ;91D49C;
+    dw $0007,RevealedBlockTable_BombableBlock_7                          ;91D4A0;
     dw $FFFF                                                             ;91D4A4;
 
 RevealedBlockTable_BombableBlock_0:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D4A6;
-    dw $0058                                                             ;91D4A8;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$0058           ;91D4A6;
 
 RevealedBlockTable_BombableBlock_1:
-    dw RevealedBlockCommand_Copy2x1BlockToXrayBG2Tilemap                 ;91D4AA;
-    dw $0058,$0058                                                       ;91D4AC;
+    dw RevealedBlockCommand_Copy2x1BlockToXrayBG2Tilemap,$0058,$0058     ;91D4AA;
 
 RevealedBlockTable_BombableBlock_2:
-    dw RevealedBlockCommand_Copy1x2BlockToXrayBG2Tilemap                 ;91D4B0;
-    dw $0058,$0058                                                       ;91D4B2;
+    dw RevealedBlockCommand_Copy1x2BlockToXrayBG2Tilemap,$0058,$0058     ;91D4B0;
 
 RevealedBlockTable_BombableBlock_3:
     dw RevealedBlockCommand_Copy2x2BlockToXrayBG2Tilemap                 ;91D4B6;
     dw $0058,$0058,$0058,$0058                                           ;91D4B8;
 
 RevealedBlockTable_BombableBlock_4:
-    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap                 ;91D4C0;
-    dw $0058                                                             ;91D4C2;
+    dw RevealedBlockCommand_Copy1x1BlockToXrayBG2Tilemap,$0058           ;91D4C0;
 
 RevealedBlockTable_BombableBlock_5:
-    dw RevealedBlockCommand_Copy2x1BlockToXrayBG2Tilemap                 ;91D4C4;
-    dw $0058,$0058                                                       ;91D4C6;
+    dw RevealedBlockCommand_Copy2x1BlockToXrayBG2Tilemap,$0058,$0058     ;91D4C4;
 
 RevealedBlockTable_BombableBlock_6:
-    dw RevealedBlockCommand_Copy1x2BlockToXrayBG2Tilemap                 ;91D4CA;
-    dw $0058,$0058                                                       ;91D4CC;
+    dw RevealedBlockCommand_Copy1x2BlockToXrayBG2Tilemap,$0058,$0058     ;91D4CA;
 
 RevealedBlockTable_BombableBlock_7:
     dw RevealedBlockCommand_Copy2x2BlockToXrayBG2Tilemap                 ;91D4D0;
@@ -8783,10 +9569,8 @@ notSpinning:
 
 
 InstList_HDMAObject_Window1Position_VariaSuitPickup:
-    dw Instruction_HDMAObject_HDMATableBank                              ;91D5A2;
-    db $00                                                               ;91D5A4;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;91D5A5;
-    db $7E                                                               ;91D5A7;
+    dw Instruction_HDMAObject_HDMATableBank : db $00                     ;91D5A2;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;91D5A5;
     dw Instruction_HDMAObject_CallExternalFunctionInY                    ;91D5A8;
     dl InitializeSuitPickupHDMA                                          ;91D5AA;
     dw $0001,$0A88                                                       ;91D5AD;
@@ -8883,10 +9667,8 @@ GravitySuit_Pickup:
 
 
 InstList_HDMAObject_Window1Position_GravitySuitPickup:
-    dw Instruction_HDMAObject_HDMATableBank                              ;91D67A;
-    db $00                                                               ;91D67C;
-    dw Instruction_HDMAObject_IndirectHDMATableBank                      ;91D67D;
-    db $7E                                                               ;91D67F;
+    dw Instruction_HDMAObject_HDMATableBank : db $00                     ;91D67A;
+    dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;91D67D;
     dw Instruction_HDMAObject_CallExternalFunctionInY                    ;91D680;
     dl InitializeSuitPickupHDMA                                          ;91D682;
     dw $0001,$0A88                                                       ;91D685;
@@ -8986,17 +9768,17 @@ HandleSamusPalette:
     dw SamusPalettes_GravitySuit                                         ;91D72B;
 
 .special:
-    dw Handle_ScrewAttack_SpeedBoosting_Palette                          ;91D72D;
-    dw HandleSpeedBoosterShinePalette                                    ;91D72F;
-    dw HandleMiscSamusPalette                                            ;91D731;
+    dw Handle_ScrewAttack_SpeedBoosting_Palette                          ;91D72D; 0: Screw attacking / speed boosting
+    dw HandleSpeedBoosterShinePalette                                    ;91D72F; 1: Speed booster shine
+    dw HandleMiscSamusPalette                                            ;91D731; 2: Unused
     dw $0000                                                             ;91D733;
     dw $0000                                                             ;91D735;
     dw $0000                                                             ;91D737;
-    dw HandleShinesparkingPalette                                        ;91D739;
-    dw HandleCrystalFlashPalette                                         ;91D73B;
-    dw HandleXrayPalette                                                 ;91D73D;
-    dw HandleVisorPalette                                                ;91D73F;
-    dw RTS_91DD31                                                        ;91D741;
+    dw HandleShinesparkingPalette                                        ;91D739; 6: Shinesparking
+    dw HandleCrystalFlashPalette                                         ;91D73B; 7: Crystal flash
+    dw HandleXrayPalette                                                 ;91D73D; 8: X-ray
+    dw HandleVisorPalette                                                ;91D73F; 9: Unused
+    dw RTS_91DD31                                                        ;91D741; Ah: RTS. Unused
 
 HandleBeamChargePalettes:
     LDA.W $0B18                                                          ;91D743;
@@ -9171,7 +9953,6 @@ HandleVisorPalette:
 .return:
     CLC                                                                  ;91D847;
     RTS                                                                  ;91D848;
-
 
   + LDA.W $1982                                                          ;91D849;
     CMP.W #$0028                                                         ;91D84C;
@@ -9371,11 +10152,13 @@ HandleMiscSamusPalette:
 
 
 .pointers:
+; Samus palette pointers. Speed boosting palettes
     dw SamusPalettes_PowerSuit_SpeedBoosting_BabyMetroidDrain_3          ;91D998;
     dw SamusPalettes_VariaSuit_SpeedBoosting_BabyMetroidDrain_3          ;91D99A;
     dw SamusPalettes_GravitySuit_SpeedBoosting_BabyMetroidDrain_3        ;91D99C;
 
 .hyperBeamPalettes:
+; Samus palette pointers. Hyper beam
     dw SamusPalettes_HyperBeam_9                                         ;91D99E;
     dw SamusPalettes_HyperBeam_8                                         ;91D9A0;
     dw SamusPalettes_HyperBeam_7                                         ;91D9A2;
@@ -9484,10 +10267,12 @@ Handle_ScrewAttack_SpeedBoosting_Palette:
 
 
 .screwAttackPaletteTablePointers:
+; Screw attack Samus palette table. Indexed by [Samus suit palette index]
     dw ..powerSuit                                                       ;91DA4A;
     dw ..variaSuit                                                       ;91DA4C;
     dw ..gravitySuit                                                     ;91DA4E;
 
+; Pointers to bank $9B. Indexed by [special Samus palette frame]
 ..powerSuit:
     dw SamusPalettes_PowerSuit_ScrewAttack_0                             ;91DA50;
     dw SamusPalettes_PowerSuit_ScrewAttack_1                             ;91DA52;
@@ -9544,7 +10329,7 @@ Handle_ScrewAttack_SpeedBoosting_Palette:
     SEC                                                                  ;91DAA7;
     RTS                                                                  ;91DAA8;
 
-
+; Samus palette table. Speed boosting
 .speedBoosterPaletteTablePointers:
     dw ..powerSuit                                                       ;91DAA9;
     dw ..variaSuit                                                       ;91DAAB;
@@ -9611,12 +10396,13 @@ HandleSpeedBoosterShinePalette:
     CLC                                                                  ;91DB0E;
     RTS                                                                  ;91DB0F;
 
-
 .speedBoosterShinePaletteTablePointers:
+; Speed booster shine Samus palette table. Indexed by [Samus suit palette index]
     dw ..powerSuit                                                       ;91DB10;
     dw ..variaSuit                                                       ;91DB12;
     dw ..gravitySuit                                                     ;91DB14;
 
+; Pointers to bank $9B. Indexed by [special Samus palette frame]
 ..powerSuit:
     dw SamusPalettes_PowerSuit_SpeedBoosterShine_0                       ;91DB16;
     dw SamusPalettes_PowerSuit_SpeedBoosterShine_1                       ;91DB18;
@@ -9678,10 +10464,12 @@ HandleShinesparkingPalette:
 
 
 .shinesparkPaletteTablePointers:
+; Shinespark Samus palette table. Indexed by [Samus suit palette index]
     dw ..powerSuit                                                       ;91DB75;
     dw ..variaSuit                                                       ;91DB77;
     dw ..gravitySuit                                                     ;91DB79;
 
+; Pointers to bank $9B. Indexed by [special Samus palette frame]
 ..powerSuit:
     dw SamusPalettes_PowerSuit_Shinespark_PseudoScrewAttack_0            ;91DB7B;
     dw SamusPalettes_PowerSuit_Shinespark_PseudoScrewAttack_1            ;91DB7D;
@@ -9762,32 +10550,24 @@ HandleCrystalFlashPalette:
     CLC                                                                  ;91DBFE;
     RTS                                                                  ;91DBFF;
 
-
+; Crystal flash Samus palette table. Bank $9B. Sprite palette 6 colours 0..9
+; [palette pointer], [timer]
 .crystalFlashPaletteTable_pointers:
     dw SamusPalettes_CrystalFlash_0                                      ;91DC00;
-
 .crystalFlashPaletteTable_timers:
-    dw $000A                                                             ;91DC02;
-    dw SamusPalettes_CrystalFlash_1                                      ;91DC04;
-    dw $000A                                                             ;91DC06;
-    dw SamusPalettes_CrystalFlash_2                                      ;91DC08;
-    dw $000A                                                             ;91DC0A;
-    dw SamusPalettes_CrystalFlash_3                                      ;91DC0C;
-    dw $000A                                                             ;91DC0E;
-    dw SamusPalettes_CrystalFlash_4                                      ;91DC10;
-    dw $000A                                                             ;91DC12;
-    dw SamusPalettes_CrystalFlash_5                                      ;91DC14;
-    dw $000A                                                             ;91DC16;
-    dw SamusPalettes_CrystalFlash_4                                      ;91DC18;
-    dw $000A                                                             ;91DC1A;
-    dw SamusPalettes_CrystalFlash_3                                      ;91DC1C;
-    dw $000A                                                             ;91DC1E;
-    dw SamusPalettes_CrystalFlash_2                                      ;91DC20;
-    dw $000A                                                             ;91DC22;
-    dw SamusPalettes_CrystalFlash_1                                      ;91DC24;
-    dw $000A                                                             ;91DC26;
+    dw                              $000A                                ;91DC02;
+    dw SamusPalettes_CrystalFlash_1,$000A                                ;91DC04;
+    dw SamusPalettes_CrystalFlash_2,$000A                                ;91DC08;
+    dw SamusPalettes_CrystalFlash_3,$000A                                ;91DC0C;
+    dw SamusPalettes_CrystalFlash_4,$000A                                ;91DC10;
+    dw SamusPalettes_CrystalFlash_5,$000A                                ;91DC14;
+    dw SamusPalettes_CrystalFlash_4,$000A                                ;91DC18;
+    dw SamusPalettes_CrystalFlash_3,$000A                                ;91DC1C;
+    dw SamusPalettes_CrystalFlash_2,$000A                                ;91DC20;
+    dw SamusPalettes_CrystalFlash_1,$000A                                ;91DC24;
 
 .bubblePaletteTablePointers:
+; Crystal flash bubble palette table. Bank $9B. Sprite palette 6 colours Ah..Fh
     dw SamusPalettes_CrystalFlash_0_bubble                               ;91DC28;
     dw SamusPalettes_CrystalFlash_1_bubble                               ;91DC2A;
     dw SamusPalettes_CrystalFlash_2_bubble                               ;91DC2C;
@@ -9920,6 +10700,7 @@ RTS_91DD31:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_91DD32:
+; Seemingly completely unreferenced
     db $01,$00,$00,$01,$00,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00   ;91DD32;
     db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00                           ;91DD42;
 
@@ -10604,9 +11385,35 @@ XraySetup:
     RTL                                                                  ;91E290;
 
 
-.allowedPoses:
-    db $01,$01,$00,$00,$00,$02,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00   ;91E291;
-    db $00,$00,$00,$00,$00,$01,$00,$00,$00,$00,$00,$00                   ;91E2A1;
+.allowedPoses:                                                           ;91E291;
+    db $01 ; 0: Standing
+    db $01 ; 1: Running
+    db $00 ; 2: Normal jumping
+    db $00 ; 3: Spin jumping
+    db $00 ; 4: Morph ball - on ground
+    db $02 ; 5: Crouching
+    db $00 ; 6: Falling
+    db $00 ; 7: Unused
+    db $00 ; 8: Morph ball - falling
+    db $00 ; 9: Unused
+    db $00 ; Ah: Knockback / crystal flash ending
+    db $00 ; Bh: Unused
+    db $00 ; Ch: Unused
+    db $00 ; Dh: Unused
+    db $00 ; Eh: Turning around - on ground
+    db $00 ; Fh: Crouching/standing/morphing/unmorphing transition
+    db $00 ; 10h: Moonwalking
+    db $00 ; 11h: Spring ball - on ground
+    db $00 ; 12h: Spring ball - in air
+    db $00 ; 13h: Spring ball - falling
+    db $00 ; 14h: Wall jumping
+    db $01 ; 15h: Ran into a wall
+    db $00 ; 16h: Grappling
+    db $00 ; 17h: Turning around - jumping
+    db $00 ; 18h: Turning around - falling
+    db $00 ; 19h: Damage boost
+    db $00 ; 1Ah: Grabbed by Draygon
+    db $00 ; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 Set_NonXray_SamusPose:
     PHP                                                                  ;91E2AD;
@@ -11120,34 +11927,34 @@ UpdateSamusPoseDueToChangeOfEquipment:
 
 
 .pointers:
-    dw UpdateSamusPoseEquipment_Standing                                 ;91E6E1;
-    dw RTS_91E732                                                        ;91E6E3;
-    dw RTS_91E732                                                        ;91E6E5;
-    dw UpdateSamusPoseEquipment_SpinJumping                              ;91E6E7;
-    dw UpdateSamusPoseEquipment_MorphBall                                ;91E6E9;
-    dw RTS_91E732                                                        ;91E6EB;
-    dw RTS_91E732                                                        ;91E6ED;
-    dw RTS_91E732                                                        ;91E6EF;
-    dw UpdateSamusPoseEquipment_MorphBall                                ;91E6F1;
-    dw RTS_91E732                                                        ;91E6F3;
-    dw RTS_91E732                                                        ;91E6F5;
-    dw RTS_91E732                                                        ;91E6F7;
-    dw RTS_91E732                                                        ;91E6F9;
-    dw RTS_91E732                                                        ;91E6FB;
-    dw RTS_91E732                                                        ;91E6FD;
-    dw RTS_91E732                                                        ;91E6FF;
-    dw RTS_91E732                                                        ;91E701;
-    dw UpdateSamusPoseEquipment_SpringBall                               ;91E703;
-    dw UpdateSamusPoseEquipment_SpringBall                               ;91E705;
-    dw UpdateSamusPoseEquipment_SpringBall                               ;91E707;
-    dw UpdateSamusPoseEquipment_WallJumping                              ;91E709;
-    dw RTS_91E732                                                        ;91E70B;
-    dw RTS_91E732                                                        ;91E70D;
-    dw RTS_91E732                                                        ;91E70F;
-    dw RTS_91E732                                                        ;91E711;
-    dw RTS_91E732                                                        ;91E713;
-    dw RTS_91E732                                                        ;91E715;
-    dw RTS_91E732                                                        ;91E717;
+    dw UpdateSamusPoseEquipment_Standing                                 ;91E6E1; *0: Standing
+    dw RTS_91E732                                                        ;91E6E3;  1: Running
+    dw RTS_91E732                                                        ;91E6E5;  2: Normal jumping
+    dw UpdateSamusPoseEquipment_SpinJumping                              ;91E6E7; *3: Spin jumping
+    dw UpdateSamusPoseEquipment_MorphBall                                ;91E6E9; *4: Morph ball - on ground
+    dw RTS_91E732                                                        ;91E6EB;  5: Crouching
+    dw RTS_91E732                                                        ;91E6ED;  6: Falling
+    dw RTS_91E732                                                        ;91E6EF;  7: Unused
+    dw UpdateSamusPoseEquipment_MorphBall                                ;91E6F1; *8: Morph ball - falling
+    dw RTS_91E732                                                        ;91E6F3;  9: Unused
+    dw RTS_91E732                                                        ;91E6F5;  Ah: Knockback / crystal flash ending
+    dw RTS_91E732                                                        ;91E6F7;  Bh: Unused
+    dw RTS_91E732                                                        ;91E6F9;  Ch: Unused
+    dw RTS_91E732                                                        ;91E6FB;  Dh: Unused
+    dw RTS_91E732                                                        ;91E6FD;  Eh: Turning around - on ground
+    dw RTS_91E732                                                        ;91E6FF;  Fh: Crouching/standing/morphing/unmorphing transition
+    dw RTS_91E732                                                        ;91E701;  10h: Moonwalking
+    dw UpdateSamusPoseEquipment_SpringBall                               ;91E703; *11h: Spring ball - on ground
+    dw UpdateSamusPoseEquipment_SpringBall                               ;91E705; *12h: Spring ball - in air
+    dw UpdateSamusPoseEquipment_SpringBall                               ;91E707; *13h: Spring ball - falling
+    dw UpdateSamusPoseEquipment_WallJumping                              ;91E709; *14h: Wall jumping
+    dw RTS_91E732                                                        ;91E70B;  15h: Ran into a wall
+    dw RTS_91E732                                                        ;91E70D;  16h: Grappling
+    dw RTS_91E732                                                        ;91E70F;  17h: Turning around - jumping
+    dw RTS_91E732                                                        ;91E711;  18h: Turning around - falling
+    dw RTS_91E732                                                        ;91E713;  19h: Damage boost
+    dw RTS_91E732                                                        ;91E715;  1Ah: Grabbed by Draygon
+    dw RTS_91E732                                                        ;91E717;  1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 UpdateSamusPreviousPose:
     LDA.W $0A20                                                          ;91E719;
@@ -11419,6 +12226,8 @@ SetProspectiveSamusPoseAccordingToSolidVerticalCollision_PSP:
     dw PSP_WallJumpTriggered                                             ;91E8D6;
 
 UNUSED_PSP_91E8D8:
+; Set pose for unwritten Samus movement
+; Clone of PSP_HitCeiling
     LDA.W $0A1C                                                          ;91E8D8;
     STA.W $0A28                                                          ;91E8DB;
     LDA.W #$0005                                                         ;91E8DE;
@@ -11463,12 +12272,16 @@ PSP_Falling:
     STA.W $0A2E                                                          ;91E91D;
     RTS                                                                  ;91E920;
 
-
-.right:
+;        _________ Facing right
+;       |      ___ Facing left
+;       |     |
+  .right
     dw $0029                                                             ;91E921;
-
-.left:
-    dw $002A,$0031,$0032,$0033,$0034,$007D,$007E                         ;91E923;
+  .left                                                                  ;91E923;
+    dw       $002A ; Falling
+    dw $0031,$0032 ; Morph ball - no spring ball - in air
+    dw $0033,$0034 ; Unused
+    dw $007D,$007E ; Morph ball - spring ball - falling                         
 
 PSP_Landed:
     LDA.W $0DC7                                                          ;91E931;
@@ -11593,11 +12406,24 @@ PSP_Landed_Grounded:
     RTS                                                                  ;91E9F2;
 
 
-.directions:
-    db $E0,$00,$E2,$00,$A4,$00,$E4,$00,$A4,$00,$A5,$00,$E5,$00,$A5,$00   ;91E9F3;
-    db $E3,$00,$E1,$00                                                   ;91EA03;
+.directions:                                                             ;91E9F3;
+    dw $00E0 ; 0: Up, facing right:   Facing right - landing from normal jump - aiming up
+    dw $00E2 ; 1: Up-right:           Facing right - landing from normal jump - aiming up-right
+    dw $00A4 ; 2: Right:              Facing right - landing from normal jump
+    dw $00E4 ; 3: Down-right:         Facing right - landing from normal jump - aiming down-right
+    dw $00A4 ; 4: Down, facing right: Facing right - landing from normal jump
+    dw $00A5 ; 5: Down, facing left:  Facing left  - landing from normal jump
+    dw $00E5 ; 6: Down-left:          Facing left  - landing from normal jump - aiming down-left
+    dw $00A5 ; 7: Left:               Facing left  - landing from normal jump
+    dw $00E3 ; 8: Up-left:            Facing left  - landing from normal jump - aiming up-left
+    dw $00E1 ; 9: Up, facing left:    Facing left  - landing from normal jump - aiming up
 
 PSP_Landed_MorphBallGrounded:
+;; Returns:
+;;     Carry: clear
+
+; TODO: talk about how dequipping spring ball during bounce causes jump table overflow here due to [$0B20] >= 600h
+;       need to check other places like $F1FC too
     LDA.W $0B20                                                          ;91EA07;
     ASL A                                                                ;91EA0A;
     TAX                                                                  ;91EA0B;
@@ -11838,9 +12664,17 @@ CheckIfProspectivePoseRunsIntoAWall:
     RTS                                                                  ;91EB73;
 
 
-.poses:
-    dw $0003,$00CF,$0089,$00D1,$0089,$008A,$00D2,$008A                   ;91EB74;
-    dw $00D0,$0004                                                       ;91EB84;
+.poses:                                                                  ;91EB74;
+    dw $0003 ; 0: Up, facing right:   Facing right - aiming up
+    dw $00CF ; 1: Up-right:           Facing right - ran into a wall - aiming up-right
+    dw $0089 ; 2: Right:              Facing right - ran into a wall
+    dw $00D1 ; 3: Down-right:         Facing right - ran into a wall - aiming down-right
+    dw $0089 ; 4: Down, facing right: Facing right - ran into a wall
+    dw $008A ; 5: Down, facing left:  Facing left  - ran into a wall
+    dw $00D2 ; 6: Down-left:          Facing left  - ran into a wall - aiming down-left
+    dw $008A ; 7: Left:               Facing left  - ran into a wall
+    dw $00D0 ; 8: Up-left:            Facing left  - ran into a wall - aiming up-left
+    dw $0004 ; 9: Up, facing left:    Facing left  - aiming up
 
 UpdateSamusPose:
     PHP                                                                  ;91EB88;
@@ -11929,6 +12763,7 @@ UpdateSamusPose:
 
 
 .prospectivePoseChangeCommand:
+; Prospective pose change command function pointers
     dw RTS_91EFC3                                                        ;91EC16;
     dw ProspectivePoseCmd_1_Decelerate                                   ;91EC18;
     dw ProspectivePoseCmd_2_Stop                                         ;91EC1A;
@@ -11940,6 +12775,7 @@ UpdateSamusPose:
     dw ProspectivePoseCmd_8_KillRunSpeed                                 ;91EC26;
 
 .specialProspectivePoseChangeCommand:
+; Special prospective pose change command function pointers
     dw RTS_91EFC3                                                        ;91EC28;
     dw SpecialProspectivePoseCmd_1_StartKnockback                        ;91EC2A;
     dw UNUSED_SpecialProspectivePoseCmd_2_91EE69                         ;91EC2C;
@@ -11953,6 +12789,7 @@ UpdateSamusPose:
     dw SpecialProspectivePoseCmd_A_ConnectingGrapple_StuckInPlace        ;91EC3C;
 
 .superSpecialProspectivePoseChangeCommand:
+; Super special prospective pose change command function pointers
     dw RTS_91EFC3                                                        ;91EC3E;
     dw SuperSpecialProspectivePoseCmd_1_KnockbackFinished                ;91EC40;
     dw SuperSpecialProspectivePoseCmd_2_ShinesparkFinished               ;91EC42;
@@ -12088,9 +12925,19 @@ ProspectivePoseCmd_7_StartTransitionAnimation:
     BRA .shrinking                                                       ;91ED34;
 
 
-.YRadii:
-    dw $0005,$0005,$0009,$0009,$0000,$0000,$0000,$0000                   ;91ED36;
-    dw $0000,$0000,$0000,$0000                                           ;91ED46;
+.YRadii:                                                                 ;91ED36;
+    dw $0005 ; *35h: Facing right - crouching transition
+    dw $0005 ; *36h: Facing left  - crouching transition
+    dw $0009 ; *37h: Facing right - morphing transition
+    dw $0009 ; *38h: Facing left  - morphing transition
+    dw $0000 ;  39h: Unused
+    dw $0000 ;  3Ah: Unused
+    dw $0000 ;  3Bh: Facing right - standing transition
+    dw $0000 ;  3Ch: Facing left  - standing transition
+    dw $0000 ;  3Dh: Facing right - unmorphing transition
+    dw $0000 ;  3Eh: Facing left  - unmorphing transition
+    dw $0000 ;  3Fh: Unused
+    dw $0000 ;  40h: Unused
 
 SpecialProspectivePoseCmd_1_StartKnockback:
     LDA.W $0A23                                                          ;91ED4E;
@@ -12105,36 +12952,35 @@ SpecialProspectivePoseCmd_1_StartKnockback:
     STA.W $0A48                                                          ;91ED66;
     RTS                                                                  ;91ED69;
 
-
 .pointers:
-    dw DetermineKnockbackDirection_Normal                                ;91ED6A;
-    dw DetermineKnockbackDirection_Normal                                ;91ED6C;
-    dw DetermineKnockbackDirection_Normal                                ;91ED6E;
-    dw DetermineKnockbackDirection_Normal                                ;91ED70;
-    dw DetermineKnockbackDirection_Morphed                               ;91ED72;
-    dw DetermineKnockbackDirection_Normal                                ;91ED74;
-    dw DetermineKnockbackDirection_Falling                               ;91ED76;
-    dw UNUSED_DetermineKnockbackDirection_MovementType7_91EE48           ;91ED78;
-    dw DetermineKnockbackDirection_Morphed                               ;91ED7A;
-    dw DetermineKnockbackDirection_Morphed                               ;91ED7C;
-    dw CLCRTS_91EDA2                                                     ;91ED7E;
-    dw CLCRTS_91EDA4                                                     ;91ED80;
-    dw CLCRTS_91EDA4                                                     ;91ED82;
-    dw DetermineKnockbackDirection_Normal                                ;91ED84;
-    dw CLCRTS_91EDA4                                                     ;91ED86;
-    dw CLCRTS_91EDA4                                                     ;91ED88;
-    dw DetermineKnockbackDirection_Normal                                ;91ED8A;
-    dw DetermineKnockbackDirection_Morphed                               ;91ED8C;
-    dw DetermineKnockbackDirection_Morphed                               ;91ED8E;
-    dw DetermineKnockbackDirection_Morphed                               ;91ED90;
-    dw DetermineKnockbackDirection_Normal                                ;91ED92;
-    dw DetermineKnockbackDirection_Normal                                ;91ED94;
-    dw CLCRTS_91EDA2                                                     ;91ED96;
-    dw CLCRTS_91EDA4                                                     ;91ED98;
-    dw CLCRTS_91EDA4                                                     ;91ED9A;
-    dw CLCRTS_91EDA4                                                     ;91ED9C;
-    dw CLCRTS_91EDA4                                                     ;91ED9E;
-    dw CLCRTS_91EDA4                                                     ;91EDA0;
+    dw DetermineKnockbackDirection_Normal                                ;91ED6A; *0: Standing
+    dw DetermineKnockbackDirection_Normal                                ;91ED6C; *1: Running
+    dw DetermineKnockbackDirection_Normal                                ;91ED6E; *2: Normal jumping
+    dw DetermineKnockbackDirection_Normal                                ;91ED70; *3: Spin jumping
+    dw DetermineKnockbackDirection_Morphed                               ;91ED72; *4: Morph ball - on ground
+    dw DetermineKnockbackDirection_Normal                                ;91ED74; *5: Crouching
+    dw DetermineKnockbackDirection_Falling                               ;91ED76; *6: Falling
+    dw UNUSED_DetermineKnockbackDirection_MovementType7_91EE48           ;91ED78; *7: Unused
+    dw DetermineKnockbackDirection_Morphed                               ;91ED7A; *8: Morph ball - falling
+    dw DetermineKnockbackDirection_Morphed                               ;91ED7C; *9: Unused
+    dw CLCRTS_91EDA2                                                     ;91ED7E;  Ah: Knockback / crystal flash ending
+    dw CLCRTS_91EDA4                                                     ;91ED80;  Bh: Unused
+    dw CLCRTS_91EDA4                                                     ;91ED82;  Ch: Unused
+    dw DetermineKnockbackDirection_Normal                                ;91ED84; *Dh: Unused
+    dw CLCRTS_91EDA4                                                     ;91ED86;  Eh: Turning around - on ground
+    dw CLCRTS_91EDA4                                                     ;91ED88;  Fh: Crouching/standing/morphing/unmorphing transition
+    dw DetermineKnockbackDirection_Normal                                ;91ED8A; *10h: Moonwalking
+    dw DetermineKnockbackDirection_Morphed                               ;91ED8C; *11h: Spring ball - on ground
+    dw DetermineKnockbackDirection_Morphed                               ;91ED8E; *12h: Spring ball - in air
+    dw DetermineKnockbackDirection_Morphed                               ;91ED90; *13h: Spring ball - falling
+    dw DetermineKnockbackDirection_Normal                                ;91ED92; *14h: Wall jumping
+    dw DetermineKnockbackDirection_Normal                                ;91ED94; *15h: Ran into a wall
+    dw CLCRTS_91EDA2                                                     ;91ED96;  16h: Grappling
+    dw CLCRTS_91EDA4                                                     ;91ED98;  17h: Turning around - jumping
+    dw CLCRTS_91EDA4                                                     ;91ED9A;  18h: Turning around - falling
+    dw CLCRTS_91EDA4                                                     ;91ED9C;  19h: Damage boost
+    dw CLCRTS_91EDA4                                                     ;91ED9E;  1Ah: Grabbed by Draygon
+    dw CLCRTS_91EDA4                                                     ;91EDA0;  1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 CLCRTS_91EDA2:
     CLC                                                                  ;91EDA2;
@@ -12599,14 +13445,14 @@ HandleLandingGraphics:
 
 
 .areaPointers:
-    dw HandleLandingGraphics_Crateria                                    ;91F0AE;
-    dw HandleLandingGraphics_Brinstar                                    ;91F0B0;
-    dw HandleLandingGraphics_Norfair_WreckedShip_HandleLandingDust       ;91F0B2;
-    dw HandleLandingGraphics_Norfair_WreckedShip_HandleLandingDust       ;91F0B4;
-    dw HandleLandingGraphics_Maridia_HandleLandingFootstepSplashes       ;91F0B6;
-    dw HandleLandingGraphics_Tourian                                     ;91F0B8;
-    dw DeleteLandingAtmosphericGraphics                                  ;91F0BA;
-    dw DeleteLandingAtmosphericGraphics                                  ;91F0BC;
+    dw HandleLandingGraphics_Crateria                                    ;91F0AE; Crateria
+    dw HandleLandingGraphics_Brinstar                                    ;91F0B0; Brinstar
+    dw HandleLandingGraphics_Norfair_WreckedShip_HandleLandingDust       ;91F0B2; Norfair
+    dw HandleLandingGraphics_Norfair_WreckedShip_HandleLandingDust       ;91F0B4; Wrecked Ship
+    dw HandleLandingGraphics_Maridia_HandleLandingFootstepSplashes       ;91F0B6; Maridia
+    dw HandleLandingGraphics_Tourian                                     ;91F0B8; Tourian
+    dw DeleteLandingAtmosphericGraphics                                  ;91F0BA; Ceres
+    dw DeleteLandingAtmosphericGraphics                                  ;91F0BC; Debug
 
 DeleteLandingAtmosphericGraphics:
     STZ.W $0AF0                                                          ;91F0BE;
@@ -12640,9 +13486,24 @@ HandleLandingGraphics_Crateria:
     JMP.W HandleLandingGraphics_Norfair_WreckedShip_HandleLandingDust    ;91F0F0;
 
 
-.data:
-    db $01,$00,$00,$00,$00,$02,$00,$04,$00,$04,$04,$04,$04,$00,$04,$00   ;91F0F3;
-    db $00                                                               ;91F103;
+.data:                                                                   ;91F0F3;
+    db $01 ; 0: Landing site
+    db $00
+    db $00
+    db $00
+    db $00
+    db $02 ; 5: Wrecked Ship entrance
+    db $00
+    db $04 ; 7: Pre moat room
+    db $00
+    db $04 ; 9: Wrecked Ship back door
+    db $04 ; Ah: East Crateria kago shaft
+    db $04 ; Bh: East Crateria maze
+    db $04 ; Ch: Post Crateria maze yellow door
+    db $00
+    db $04 ; Eh: Moat
+    db $00
+    db $00
 
 .wreckedShipEntrance:
     LDA.W $0AFA                                                          ;91F104;
@@ -13123,7 +13984,7 @@ InitializeSamusPose_1:
     ASL A                                                                ;91F43D;
     ASL A                                                                ;91F43E;
     TAX                                                                  ;91F43F;
-    LDA.W PoseDefinitions_00_XDirection,X                                ;91F440;
+    LDA.W PoseDefinitions_XDirection,X                                   ;91F440;
     STA.W $0A1E                                                          ;91F443;
     JSR.W InitializeSamusPose_2                                          ;91F446;
     LDA.W $0A23                                                          ;91F449;
@@ -13159,7 +14020,7 @@ InitializeSamusPose_2:
     ASL A                                                                ;91F47C;
     ASL A                                                                ;91F47D;
     TAX                                                                  ;91F47E;
-    LDA.W PoseDefinitions_00_XDirection,X                                ;91F47F;
+    LDA.W PoseDefinitions_XDirection,X                                   ;91F47F;
     STA.W $0A1E                                                          ;91F482;
     AND.W #$FF00                                                         ;91F485;
     CMP.W #$0E00                                                         ;91F488;
@@ -13173,7 +14034,7 @@ InitializeSamusPose_2:
     ASL A                                                                ;91F497;
     ASL A                                                                ;91F498;
     TAX                                                                  ;91F499;
-    LDA.W PoseDefinitions_00_XDirection,X                                ;91F49A;
+    LDA.W PoseDefinitions_XDirection,X                                   ;91F49A;
     STA.W $0A1E                                                          ;91F49D;
 
 .return:
@@ -13182,34 +14043,34 @@ InitializeSamusPose_2:
 
 
 .pointers:
-    dw InitializeSamusPose_Standing                                      ;91F4A2;
-    dw InitializeSamusPose_Running                                       ;91F4A4;
-    dw InitializeSamusPose_NormalJumping                                 ;91F4A6;
-    dw InitializeSamusPose_SpinJumping                                   ;91F4A8;
-    dw InitializeSamusPose_MorphBall                                     ;91F4AA;
-    dw InitializeSamusPose_Crouching                                     ;91F4AC;
-    dw InitializeSamusPose_Falling                                       ;91F4AE;
-    dw CLCRTS_91F4DA                                                     ;91F4B0;
-    dw InitializeSamusPose_MorphBall                                     ;91F4B2;
-    dw CLCRTS_91F4DA                                                     ;91F4B4;
-    dw CLCRTS_91F4DA                                                     ;91F4B6;
-    dw CLCRTS_91F4DA                                                     ;91F4B8;
-    dw CLCRTS_91F4DA                                                     ;91F4BA;
-    dw CLCRTS_91F4DA                                                     ;91F4BC;
-    dw InitializeSamusPose_TurningAround_OnGround                        ;91F4BE;
-    dw InitializeSamusPose_TransitionPoses                               ;91F4C0;
-    dw InitializeSamusPose_Moonwalking                                   ;91F4C2;
-    dw InitializeSamusPose_SpringBall                                    ;91F4C4;
-    dw InitializeSamusPose_SpringBall                                    ;91F4C6;
-    dw InitializeSamusPose_SpringBall                                    ;91F4C8;
-    dw InitializeSamusPose_WallJumping                                   ;91F4CA;
-    dw CLCRTS_91F4DA                                                     ;91F4CC;
-    dw CLCRTS_91F4DA                                                     ;91F4CE;
-    dw InitializeSamusPose_TurningAround_Jumping                         ;91F4D0;
-    dw InitializeSamusPose_TurningAround_Falling                         ;91F4D2;
-    dw InitializeSamusPose_DamageBoost                                   ;91F4D4;
-    dw CLCRTS_91F4DA                                                     ;91F4D6;
-    dw InitializeSamusPose_Shinespark_CF_Drained_DamagedMB               ;91F4D8;
+    dw InitializeSamusPose_Standing                                      ;91F4A2; *0: Standing
+    dw InitializeSamusPose_Running                                       ;91F4A4; *1: Running
+    dw InitializeSamusPose_NormalJumping                                 ;91F4A6; *2: Normal jumping
+    dw InitializeSamusPose_SpinJumping                                   ;91F4A8; *3: Spin jumping
+    dw InitializeSamusPose_MorphBall                                     ;91F4AA; *4: Morph ball - on ground
+    dw InitializeSamusPose_Crouching                                     ;91F4AC; *5: Crouching
+    dw InitializeSamusPose_Falling                                       ;91F4AE; *6: Falling
+    dw CLCRTS_91F4DA                                                     ;91F4B0;  7: Unused
+    dw InitializeSamusPose_MorphBall                                     ;91F4B2; *8: Morph ball - falling
+    dw CLCRTS_91F4DA                                                     ;91F4B4;  9: Unused
+    dw CLCRTS_91F4DA                                                     ;91F4B6;  Ah: Knockback / crystal flash ending
+    dw CLCRTS_91F4DA                                                     ;91F4B8;  Bh: Unused
+    dw CLCRTS_91F4DA                                                     ;91F4BA;  Ch: Unused
+    dw CLCRTS_91F4DA                                                     ;91F4BC;  Dh: Unused
+    dw InitializeSamusPose_TurningAround_OnGround                        ;91F4BE; *Eh: Turning around - on ground
+    dw InitializeSamusPose_TransitionPoses                               ;91F4C0; *Fh: Crouching/standing/morphing/unmorphing transition
+    dw InitializeSamusPose_Moonwalking                                   ;91F4C2; *10h: Moonwalking
+    dw InitializeSamusPose_SpringBall                                    ;91F4C4; *11h: Spring ball - on ground
+    dw InitializeSamusPose_SpringBall                                    ;91F4C6; *12h: Spring ball - in air
+    dw InitializeSamusPose_SpringBall                                    ;91F4C8; *13h: Spring ball - falling
+    dw InitializeSamusPose_WallJumping                                   ;91F4CA; *14h: Wall jumping
+    dw CLCRTS_91F4DA                                                     ;91F4CC;  15h: Ran into a wall
+    dw CLCRTS_91F4DA                                                     ;91F4CE;  16h: Grappling
+    dw InitializeSamusPose_TurningAround_Jumping                         ;91F4D0; *17h: Turning around - jumping
+    dw InitializeSamusPose_TurningAround_Falling                         ;91F4D2; *18h: Turning around - falling
+    dw InitializeSamusPose_DamageBoost                                   ;91F4D4; *19h: Damage boost
+    dw CLCRTS_91F4DA                                                     ;91F4D6;  1Ah: Grabbed by Draygon
+    dw InitializeSamusPose_Shinespark_CF_Drained_DamagedMB               ;91F4D8; *1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 CLCRTS_91F4DA:
     CLC                                                                  ;91F4DA;
@@ -13635,21 +14496,22 @@ InitializeSamusPose_TransitionPoses:
 
 
 .pointers:
-    dw InitializeSamusPose_CrouchingTransition                           ;91F790;
-    dw InitializeSamusPose_CrouchingTransition                           ;91F792;
-    dw InitializeSamusPose_MorphingTransition                            ;91F794;
-    dw InitializeSamusPose_MorphingTransition                            ;91F796;
-    dw UNUSED_InitializeSamusPose_UnusedPose39_91F7F4                    ;91F798;
-    dw UNUSED_InitializeSamusPose_UnusedPose3A_91F840                    ;91F79A;
-    dw CLCRTS_91F7CC                                                     ;91F79C;
-    dw CLCRTS_91F7CC                                                     ;91F79E;
-    dw CLCRTS_91F7CC                                                     ;91F7A0;
-    dw CLCRTS_91F7CC                                                     ;91F7A2;
-    dw CLCRTS_91F7CC                                                     ;91F7A4;
-    dw CLCRTS_91F7CC                                                     ;91F7A6;
+    dw InitializeSamusPose_CrouchingTransition                           ;91F790; 35h: Facing right - crouching transition / crouching transition - aiming
+    dw InitializeSamusPose_CrouchingTransition                           ;91F792; 36h: Facing left  - crouching transition
+    dw InitializeSamusPose_MorphingTransition                            ;91F794; 37h: Facing right - morphing transition
+    dw InitializeSamusPose_MorphingTransition                            ;91F796; 38h: Facing left  - morphing transition
+    dw UNUSED_InitializeSamusPose_UnusedPose39_91F7F4                    ;91F798; 39h: Unused
+    dw UNUSED_InitializeSamusPose_UnusedPose3A_91F840                    ;91F79A; 3Ah: Unused
+    dw CLCRTS_91F7CC                                                     ;91F79C; 3Bh: Facing right - standing transition
+    dw CLCRTS_91F7CC                                                     ;91F79E; 3Ch: Facing left  - standing transition
+    dw CLCRTS_91F7CC                                                     ;91F7A0; 3Dh: Facing right - unmorphing transition
+    dw CLCRTS_91F7CC                                                     ;91F7A2; 3Eh: Facing left  - unmorphing transition
+    dw CLCRTS_91F7CC                                                     ;91F7A4; 3Fh: Unused
+    dw CLCRTS_91F7CC                                                     ;91F7A6; 40h: Unused
 
 .unusedPointers:
-    dw InitializeSamusPose_MorphingTransition                            ;91F7A8; Unused poses D8-DE
+; Unused poses DBh..DEh
+    dw InitializeSamusPose_MorphingTransition                            ;91F7A8;
     dw InitializeSamusPose_MorphingTransition                            ;91F7AA;
     dw CLCRTS_91F7CC                                                     ;91F7AC;
     dw CLCRTS_91F7CC                                                     ;91F7AE;
@@ -13968,21 +14830,29 @@ InitializeSamusPose_TurningAround_Falling:
     SEC                                                                  ;91F9C0;
     RTS                                                                  ;91F9C1;
 
-
-TurningSamusPoses_standing:
+TurningSamusPoses:
+;        _____________________________________ Up, facing right
+;       |    _________________________________ Up-right
+;       |   |    _____________________________ Right
+;       |   |   |    _________________________ Down-right, facing right
+;       |   |   |   |    _____________________ Down-right, facing left
+;       |   |   |   |   |    _________________ Down-left
+;       |   |   |   |   |   |    _____________ Down-left
+;       |   |   |   |   |   |   |    _________ Left
+;       |   |   |   |   |   |   |   |    _____ Up-left
+;       |   |   |   |   |   |   |   |   |    _ Up, facing left
+;       |   |   |   |   |   |   |   |   |   |
+  .standing
     db $8B,$9C,$25,$8D,$8D,$8E,$8E,$26,$9D,$8C                           ;91F9C2;
-
-TurningSamusPoses_crouching:
+  .crouching
     db $97,$A2,$43,$99,$99,$9A,$9A,$44,$A3,$98                           ;91F9CC;
-
-TurningSamusPoses_jumpingInAir:
+  .jumpingInAir
     db $8F,$9E,$2F,$91,$91,$92,$92,$30,$9F,$90                           ;91F9D6;
-
-TurningSamusPoses_falling:
+  .falling
     db $93,$A0,$87,$95,$95,$96,$96,$88,$A1,$94                           ;91F9E0;
-
-TurningSamusPoses_moonwalk:
+  .moonwalk
     db $C1,$C1,$BF,$C3,$8D,$8E,$C4,$C0,$C2,$C2                           ;91F9EA;
+
 
 InitializeSamusPose_MorphBall:
     LDA.W $0A23                                                          ;91F9F4;
@@ -14132,12 +15002,12 @@ InitializeSamusPose_Shinespark_CF_Drained_DamagedMB:
 
 
 .pointers:
-    dw SamusMovementHandler_HorizontalShinespark                         ;91FAFC;
-    dw SamusMovementHandler_HorizontalShinespark                         ;91FAFE;
-    dw SamusMovementHandler_VerticalShinespark                           ;91FB00;
-    dw SamusMovementHandler_VerticalShinespark                           ;91FB02;
-    dw SamusMovementHandler_DiagonalShinespark                           ;91FB04;
-    dw SamusMovementHandler_DiagonalShinespark                           ;91FB06;
+    dw SamusMovementHandler_HorizontalShinespark                         ;91FAFC; C9h: Facing right - shinespark - horizontal
+    dw SamusMovementHandler_HorizontalShinespark                         ;91FAFE; CAh: Facing left  - shinespark - horizontal
+    dw SamusMovementHandler_VerticalShinespark                           ;91FB00; CBh: Facing right - shinespark - vertical
+    dw SamusMovementHandler_VerticalShinespark                           ;91FB02; CCh: Facing left  - shinespark - vertical
+    dw SamusMovementHandler_DiagonalShinespark                           ;91FB04; CDh: Facing right - shinespark - diagonal
+    dw SamusMovementHandler_DiagonalShinespark                           ;91FB06; CEh: Facing left  - shinespark - diagonal
 
 Set_Samus_AnimationFrame_if_PoseChanged:
     PHP                                                                  ;91FB08;
@@ -14267,34 +15137,34 @@ HandleJumpTransition:
 
 
 .pointers:
-    dw RTS_91FC07                                                        ;91FBCF;
-    dw RTS_91FC07                                                        ;91FBD1;
-    dw HandleJumpTransition_NormalJumping                                ;91FBD3;
-    dw HandleJumpTransition_SpinJumping                                  ;91FBD5;
-    dw RTS_91FC07                                                        ;91FBD7;
-    dw RTS_91FC07                                                        ;91FBD9;
-    dw RTS_91FC07                                                        ;91FBDB;
-    dw RTS_91FC07                                                        ;91FBDD;
-    dw RTS_91FC07                                                        ;91FBDF;
-    dw RTS_91FC07                                                        ;91FBE1;
-    dw RTS_91FC07                                                        ;91FBE3;
-    dw RTS_91FC07                                                        ;91FBE5;
-    dw RTS_91FC07                                                        ;91FBE7;
-    dw UNUSED_HandleJumpTransition_MovementTypeD_91FC42                  ;91FBE9;
-    dw RTS_91FC07                                                        ;91FBEB;
-    dw RTS_91FC07                                                        ;91FBED;
-    dw RTS_91FC07                                                        ;91FBEF;
-    dw RTS_91FC07                                                        ;91FBF1;
-    dw HandleJumpTransition_SpringBall_InAir                             ;91FBF3;
-    dw RTS_91FC07                                                        ;91FBF5;
-    dw HandleJumpTransition_WallJumping                                  ;91FBF7;
-    dw RTS_91FC07                                                        ;91FBF9;
-    dw RTS_91FC07                                                        ;91FBFB;
-    dw RTS_91FC07                                                        ;91FBFD;
-    dw RTS_91FC07                                                        ;91FBFF;
-    dw RTS_91FCAE                                                        ;91FC01;
-    dw RTS_91FC07                                                        ;91FC03;
-    dw RTS_91FC07                                                        ;91FC05;
+    dw RTS_91FC07                                                        ;91FBCF;  0: Standing
+    dw RTS_91FC07                                                        ;91FBD1;  1: Running
+    dw HandleJumpTransition_NormalJumping                                ;91FBD3; *2: Normal jumping
+    dw HandleJumpTransition_SpinJumping                                  ;91FBD5; *3: Spin jumping
+    dw RTS_91FC07                                                        ;91FBD7;  4: Morph ball - on ground
+    dw RTS_91FC07                                                        ;91FBD9;  5: Crouching
+    dw RTS_91FC07                                                        ;91FBDB;  6: Falling
+    dw RTS_91FC07                                                        ;91FBDD;  7: Unused
+    dw RTS_91FC07                                                        ;91FBDF;  8: Morph ball - falling
+    dw RTS_91FC07                                                        ;91FBE1;  9: Unused
+    dw RTS_91FC07                                                        ;91FBE3;  Ah: Knockback / crystal flash ending
+    dw RTS_91FC07                                                        ;91FBE5;  Bh: Unused
+    dw RTS_91FC07                                                        ;91FBE7;  Ch: Unused
+    dw UNUSED_HandleJumpTransition_MovementTypeD_91FC42                  ;91FBE9; *Dh: Unused
+    dw RTS_91FC07                                                        ;91FBEB;  Eh: Turning around - on ground
+    dw RTS_91FC07                                                        ;91FBED;  Fh: Crouching/standing/morphing/unmorphing transition
+    dw RTS_91FC07                                                        ;91FBEF;  10h: Moonwalking
+    dw RTS_91FC07                                                        ;91FBF1;  11h: Spring ball - on ground
+    dw HandleJumpTransition_SpringBall_InAir                             ;91FBF3; *12h: Spring ball - in air
+    dw RTS_91FC07                                                        ;91FBF5;  13h: Spring ball - falling
+    dw HandleJumpTransition_WallJumping                                  ;91FBF7; *14h: Wall jumping
+    dw RTS_91FC07                                                        ;91FBF9;  15h: Ran into a wall
+    dw RTS_91FC07                                                        ;91FBFB;  16h: Grappling
+    dw RTS_91FC07                                                        ;91FBFD;  17h: Turning around - jumping
+    dw RTS_91FC07                                                        ;91FBFF;  18h: Turning around - falling
+    dw RTS_91FCAE                                                        ;91FC01;  19h: Damage boost
+    dw RTS_91FC07                                                        ;91FC03;  1Ah: Grabbed by Draygon
+    dw RTS_91FC07                                                        ;91FC05;  1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 RTS_91FC07:
     RTS                                                                  ;91FC07;

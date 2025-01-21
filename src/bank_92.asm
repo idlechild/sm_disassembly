@@ -84,8 +84,10 @@ Set_SamusTilesDefinitions_ForCurrentAnimation:
 
 
 SamusSpritemapTable:
+; Indexed by [$92:9263/945D + [Samus pose] * 2] + [Samus animation frame]
     dw UNUSED_Debug_SamusSpritemap_0_9290ED                              ;92808D;
     dw UNUSED_Debug_SamusSpritemap_1_9290F4                              ;92808F;
+; 0002. Top half - 00: Facing forward - power suit
     dw SamusSpritemaps_9A6F                                              ;928091;
     dw $0000                                                             ;928093;
     dw SamusSpritemaps_A13A                                              ;928095;
@@ -182,6 +184,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_A12C                                              ;92814B;
     dw SamusSpritemaps_A2AB                                              ;92814D;
     dw SamusSpritemaps_A12C                                              ;92814F;
+; 0062. Bottom half - 00: Facing forward - power suit
     dw SamusSpritemaps_AE44                                              ;928151;
     dw $0000                                                             ;928153;
     dw SamusSpritemaps_B24E                                              ;928155;
@@ -278,6 +281,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_B24E                                              ;92820B;
     dw SamusSpritemaps_B24E                                              ;92820D;
     dw SamusSpritemaps_B24E                                              ;92820F;
+; 00C2. Top half - 9B: Facing forward - varia/gravity suit
     dw SamusSpritemaps_9976                                              ;928211;
     dw $0000                                                             ;928213;
     dw SamusSpritemaps_A13A                                              ;928215;
@@ -374,6 +378,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_A12C                                              ;9282CB;
     dw SamusSpritemaps_A2AB                                              ;9282CD;
     dw SamusSpritemaps_A12C                                              ;9282CF;
+; 0122. Bottom half - 9B: Facing forward - varia/gravity suit
     dw SamusSpritemaps_AE6E                                              ;9282D1;
     dw $0000                                                             ;9282D3;
     dw SamusSpritemaps_B26E                                              ;9282D5;
@@ -470,10 +475,15 @@ SamusSpritemapTable:
     dw SamusSpritemaps_B26E                                              ;92838B;
     dw SamusSpritemaps_B26E                                              ;92838D;
     dw SamusSpritemaps_B26E                                              ;92838F;
+; 0182. Samus tile viewer - Samus top half
     dw SamusTileViewer_SamusTopHalf                                      ;928391;
+; 0183. Samus tile viewer - Samus bottom half
     dw SamusTileViewer_SamusBottomHalf                                   ;928393;
+; 0184. Samus tile viewer - beam
     dw SamusTileViewer_Beam                                              ;928395;
+; 0185. Samus tile viewer - grapple beam
     dw SamusTileViewer_GrappleBeam                                       ;928397;
+; 0186. Bubbles
     dw SamusSpritemaps_AtmosphericGraphics_Bubbles_0                     ;928399;
     dw SamusSpritemaps_AtmosphericGraphics_Bubbles_1                     ;92839B;
     dw SamusSpritemaps_AtmosphericGraphics_Bubbles_2                     ;92839D;
@@ -483,6 +493,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_AtmosphericGraphics_Bubbles_6                     ;9283A5;
     dw SamusSpritemaps_AtmosphericGraphics_Bubbles_7                     ;9283A7;
     dw SamusSpritemaps_AtmosphericGraphics_Bubbles_8                     ;9283A9;
+; 018F. Diving splash
     dw SamusSpritemaps_AtmosphericGraphics_DivingSplash_0                ;9283AB;
     dw SamusSpritemaps_AtmosphericGraphics_DivingSplash_1                ;9283AD;
     dw SamusSpritemaps_AtmosphericGraphics_DivingSplash_2                ;9283AF;
@@ -492,8 +503,13 @@ SamusSpritemapTable:
     dw SamusSpritemaps_AtmosphericGraphics_DivingSplash_6                ;9283B7;
     dw SamusSpritemaps_AtmosphericGraphics_DivingSplash_7                ;9283B9;
     dw SamusSpritemaps_AtmosphericGraphics_DivingSplash_8                ;9283BB;
+; 0198
     dw SamusSpritemaps_9657                                              ;9283BD;
     dw SamusSpritemaps_9657                                              ;9283BF;
+; Top half - 01: Facing right - normal
+; Top half - 47: Unused
+; Top half - 89: Facing right - ran into a wall
+; 019A. Top half - A8: Unused
     dw SamusSpritemaps_A072                                              ;9283C1;
     dw SamusSpritemaps_A088                                              ;9283C3;
     dw SamusSpritemaps_A09E                                              ;9283C5;
@@ -503,6 +519,10 @@ SamusSpritemapTable:
     dw SamusSpritemaps_A088                                              ;9283CD;
     dw SamusSpritemaps_A0F6                                              ;9283CF;
     dw SamusSpritemaps_A088                                              ;9283D1;
+; Top half - 02: Facing left  - normal
+; Top half - 48: Unused
+; Top half - 8A: Facing left  - ran into a wall
+; 01A3. Top half - A9: Unused
     dw SamusSpritemaps_A0B4                                              ;9283D3;
     dw SamusSpritemaps_A0CA                                              ;9283D5;
     dw SamusSpritemaps_A0E0                                              ;9283D7;
@@ -513,82 +533,133 @@ SamusSpritemapTable:
     dw SamusSpritemaps_A111                                              ;9283E1;
     dw SamusSpritemaps_A0CA                                              ;9283E3;
     dw SamusSpritemaps_9657                                              ;9283E5;
+; 01AD. Top half - 03: Facing right - aiming up
     dw SamusSpritemaps_97B1                                              ;9283E7;
     dw SamusSpritemaps_97FF                                              ;9283E9;
+; 01AF. Top half - 04: Facing left  - aiming up
     dw SamusSpritemaps_97C7                                              ;9283EB;
     dw SamusSpritemaps_981A                                              ;9283ED;
+; Top half - 05: Facing right - aiming up-right
+; Top half - 57: Facing right - normal jump transition - aiming up-right
+; Top half - CF: Facing right - ran into a wall - aiming up-right
+; Top half - E2: Facing right - landing from normal jump - aiming up-right
+; Top half - F3: Facing right - crouching transition - aiming up-right
+; 01B1. Top half - F9: Facing right - standing transition - aiming up-right
     dw SamusSpritemaps_97B1                                              ;9283EF;
     dw SamusSpritemaps_97B1                                              ;9283F1;
+; Top half - 06: Facing left  - aiming up-left
+; Top half - 58: Facing left  - normal jump transition - aiming up-left
+; Top half - D0: Facing left  - ran into a wall - aiming up-left
+; Top half - E3: Facing left  - landing from normal jump - aiming up-left
+; Top half - F4: Facing left  - crouching transition - aiming up-left
+; 01B3. Top half - FA: Facing left  - standing transition - aiming up-left
     dw SamusSpritemaps_97C7                                              ;9283F3;
     dw SamusSpritemaps_97C7                                              ;9283F5;
+; Top half - 07: Facing right - aiming down-right
+; Top half - 59: Facing right - normal jump transition - aiming down-right
+; Top half - AA: Unused
+; Top half - D1: Facing right - ran into a wall - aiming down-right
+; Top half - E4: Facing right - landing from normal jump - aiming down-right
+; Top half - F5: Facing right - crouching transition - aiming down-right
+; 01B5. Top half - FB: Facing right - standing transition - aiming down-right
     dw SamusSpritemaps_9745                                              ;9283F7;
     dw SamusSpritemaps_9745                                              ;9283F9;
+; Top half - 08: Facing left  - aiming down-left
+; Top half - 5A: Facing left  - normal jump transition - aiming down-left
+; Top half - AB: Unused
+; Top half - D2: Facing left  - ran into a wall - aiming down-left
+; Top half - E5: Facing left  - landing from normal jump - aiming down-left
+; Top half - F6: Facing left  - crouching transition - aiming down-left
+; 01B7. Top half - FC: Facing left  - standing transition - aiming down-left
     dw SamusSpritemaps_9760                                              ;9283FB;
     dw SamusSpritemaps_9760                                              ;9283FD;
+; 01B9. Top half - A4: Facing right - landing from normal jump
     dw SamusSpritemaps_9B6F                                              ;9283FF;
     dw SamusSpritemaps_9BAE                                              ;928401;
+; 01BB. Top half - A5: Facing left  - landing from normal jump
     dw SamusSpritemaps_9B80                                              ;928403;
     dw SamusSpritemaps_9BBF                                              ;928405;
+; 01BD. Top half - A6: Facing right - landing from spin jump
     dw SamusSpritemaps_9BAE                                              ;928407;
     dw SamusSpritemaps_9B6F                                              ;928409;
     dw SamusSpritemaps_9BAE                                              ;92840B;
+; 01C0. Top half - A7: Facing left  - landing from spin jump
     dw SamusSpritemaps_9BBF                                              ;92840D;
     dw SamusSpritemaps_9B80                                              ;92840F;
     dw SamusSpritemaps_9BBF                                              ;928411;
+; 01C0. Top half - A7: Facing left  - landing from spin jump
     dw SamusSpritemaps_9C26                                              ;928413;
     dw SamusSpritemaps_9C0B                                              ;928415;
     dw SamusSpritemaps_977B                                              ;928417;
     dw SamusSpritemaps_9C41                                              ;928419;
     dw SamusSpritemaps_9C5C                                              ;92841B;
+; 01C0. Top half - A7: Facing left  - landing from spin jump
     dw SamusSpritemaps_9C92                                              ;92841D;
     dw SamusSpritemaps_9C77                                              ;92841F;
     dw SamusSpritemaps_9796                                              ;928421;
     dw SamusSpritemaps_9CAD                                              ;928423;
     dw SamusSpritemaps_9CC8                                              ;928425;
+; Top half - 55: Facing right - normal jump transition - aiming up
+; Top half - E0: Facing right - landing from normal jump - aiming up
+; Top half - F1: Facing right - crouching transition - aiming up
+; 01CD. Top half - F7: Facing right - standing transition - aiming up
     dw SamusSpritemaps_97FF                                              ;928427;
     dw SamusSpritemaps_97FF                                              ;928429;
+; Top half - 56: Facing left  - normal jump transition - aiming up
+; Top half - E1: Facing left  - landing from normal jump - aiming up
+; Top half - F2: Facing left  - crouching transition - aiming up
+; 01CF. Top half - F8: Facing left  - standing transition - aiming up
     dw SamusSpritemaps_981A                                              ;92842B;
     dw SamusSpritemaps_981A                                              ;92842D;
+; 01D1. Top half - E6: Facing right - landing from normal jump - firing
     dw SamusSpritemaps_977B                                              ;92842F;
     dw SamusSpritemaps_977B                                              ;928431;
+; 01D3. Top half - E7: Facing left  - landing from normal jump - firing
     dw SamusSpritemaps_9796                                              ;928433;
     dw SamusSpritemaps_9796                                              ;928435;
+; 01D5. Top half - 49: Facing left  - moonwalk
     dw SamusSpritemaps_9796                                              ;928437;
     dw SamusSpritemaps_9E48                                              ;928439;
     dw SamusSpritemaps_9E48                                              ;92843B;
     dw SamusSpritemaps_9796                                              ;92843D;
     dw SamusSpritemaps_9E48                                              ;92843F;
     dw SamusSpritemaps_9E48                                              ;928441;
+; 01DB. Top half - 4A: Facing right - moonwalk
     dw SamusSpritemaps_977B                                              ;928443;
     dw SamusSpritemaps_9E2D                                              ;928445;
     dw SamusSpritemaps_9E2D                                              ;928447;
     dw SamusSpritemaps_977B                                              ;928449;
     dw SamusSpritemaps_9E2D                                              ;92844B;
     dw SamusSpritemaps_9E2D                                              ;92844D;
+; 01E1. Top half - 75: Facing left  - moonwalk - aiming up-left
     dw SamusSpritemaps_9872                                              ;92844F;
     dw SamusSpritemaps_9CFE                                              ;928451;
     dw SamusSpritemaps_9CFE                                              ;928453;
     dw SamusSpritemaps_9872                                              ;928455;
     dw SamusSpritemaps_9CFE                                              ;928457;
     dw SamusSpritemaps_9CFE                                              ;928459;
+; 01E7. Top half - 76: Facing right - moonwalk - aiming up-right
     dw SamusSpritemaps_9857                                              ;92845B;
     dw SamusSpritemaps_9CE3                                              ;92845D;
     dw SamusSpritemaps_9CE3                                              ;92845F;
     dw SamusSpritemaps_9857                                              ;928461;
     dw SamusSpritemaps_9CE3                                              ;928463;
     dw SamusSpritemaps_9CE3                                              ;928465;
+; 01ED. Top half - 77: Facing left  - moonwalk - aiming down-left
     dw SamusSpritemaps_9725                                              ;928467;
     dw SamusSpritemaps_9BEB                                              ;928469;
     dw SamusSpritemaps_9BEB                                              ;92846B;
     dw SamusSpritemaps_9725                                              ;92846D;
     dw SamusSpritemaps_9BEB                                              ;92846F;
     dw SamusSpritemaps_9BEB                                              ;928471;
+; 01F3. Top half - 78: Facing right - moonwalk - aiming down-right
     dw SamusSpritemaps_9705                                              ;928473;
     dw SamusSpritemaps_9BCB                                              ;928475;
     dw SamusSpritemaps_9BCB                                              ;928477;
     dw SamusSpritemaps_9705                                              ;928479;
     dw SamusSpritemaps_9BCB                                              ;92847B;
     dw SamusSpritemaps_9BCB                                              ;92847D;
+; 01F9. Top half - 09: Moving right - not aiming
     dw SamusSpritemaps_9657                                              ;92847F;
     dw SamusSpritemaps_9A3F                                              ;928481;
     dw SamusSpritemaps_966F                                              ;928483;
@@ -599,6 +670,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_969D                                              ;92848D;
     dw SamusSpritemaps_9835                                              ;92848F;
     dw SamusSpritemaps_9691                                              ;928491;
+; 0203. Top half - 0A: Moving left  - not aiming
     dw SamusSpritemaps_96AE                                              ;928493;
     dw SamusSpritemaps_9A57                                              ;928495;
     dw SamusSpritemaps_96C6                                              ;928497;
@@ -609,6 +681,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_96F4                                              ;9284A1;
     dw SamusSpritemaps_9846                                              ;9284A3;
     dw SamusSpritemaps_96E8                                              ;9284A5;
+; 020D. Top half - 0B: Moving right - gun extended
     dw SamusSpritemaps_A2D0                                              ;9284A7;
     dw SamusSpritemaps_A440                                              ;9284A9;
     dw SamusSpritemaps_A2F2                                              ;9284AB;
@@ -619,6 +692,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_A334                                              ;9284B5;
     dw SamusSpritemaps_A400                                              ;9284B7;
     dw SamusSpritemaps_A323                                              ;9284B9;
+; 0217. Top half - 0C: Moving left  - gun extended
     dw SamusSpritemaps_A34A                                              ;9284BB;
     dw SamusSpritemaps_A451                                              ;9284BD;
     dw SamusSpritemaps_A3A0                                              ;9284BF;
@@ -629,6 +703,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_A41B                                              ;9284C9;
     dw SamusSpritemaps_A3DB                                              ;9284CB;
     dw SamusSpritemaps_A3C0                                              ;9284CD;
+; 0221. Top half - 0D: Moving right - aiming up (unused)
     dw SamusSpritemaps_97FF                                              ;9284CF;
     dw SamusSpritemaps_97FF                                              ;9284D1;
     dw SamusSpritemaps_9CAD                                              ;9284D3;
@@ -639,6 +714,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_9CAD                                              ;9284DD;
     dw SamusSpritemaps_9E9E                                              ;9284DF;
     dw SamusSpritemaps_9CAD                                              ;9284E1;
+; 022B. Top half - 0E: Moving left  - aiming up (unused)
     dw SamusSpritemaps_981A                                              ;9284E3;
     dw SamusSpritemaps_981A                                              ;9284E5;
     dw SamusSpritemaps_9CC8                                              ;9284E7;
@@ -649,6 +725,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_9CC8                                              ;9284F1;
     dw SamusSpritemaps_9EB9                                              ;9284F3;
     dw SamusSpritemaps_9CC8                                              ;9284F5;
+; 0235. Top half - 0F: Moving right - aiming up-right
     dw SamusSpritemaps_9857                                              ;9284F7;
     dw SamusSpritemaps_9857                                              ;9284F9;
     dw SamusSpritemaps_9CE3                                              ;9284FB;
@@ -659,6 +736,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_9CE3                                              ;928505;
     dw SamusSpritemaps_9DB2                                              ;928507;
     dw SamusSpritemaps_9CE3                                              ;928509;
+; 023F. Top half - 10: Moving left  - aiming up-left
     dw SamusSpritemaps_9872                                              ;92850B;
     dw SamusSpritemaps_9872                                              ;92850D;
     dw SamusSpritemaps_9CFE                                              ;92850F;
@@ -669,6 +747,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_9CFE                                              ;928519;
     dw SamusSpritemaps_9DCD                                              ;92851B;
     dw SamusSpritemaps_9CFE                                              ;92851D;
+; 0249. Top half - 11: Moving right - aiming down-right
     dw SamusSpritemaps_9705                                              ;92851F;
     dw SamusSpritemaps_9705                                              ;928521;
     dw SamusSpritemaps_9BCB                                              ;928523;
@@ -679,6 +758,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_9BCB                                              ;92852D;
     dw SamusSpritemaps_9DED                                              ;92852F;
     dw SamusSpritemaps_9BCB                                              ;928531;
+; 0253. Top half - 12: Moving left  - aiming down-left
     dw SamusSpritemaps_9725                                              ;928533;
     dw SamusSpritemaps_9725                                              ;928535;
     dw SamusSpritemaps_9BEB                                              ;928537;
@@ -689,6 +769,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_9BEB                                              ;928541;
     dw SamusSpritemaps_9E0D                                              ;928543;
     dw SamusSpritemaps_9BEB                                              ;928545;
+; 025D. Top half - 45: Unused
     dw SamusSpritemaps_97EE                                              ;928547;
     dw SamusSpritemaps_97EE                                              ;928549;
     dw SamusSpritemaps_9C92                                              ;92854B;
@@ -699,6 +780,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_9C92                                              ;928555;
     dw SamusSpritemaps_9E83                                              ;928557;
     dw SamusSpritemaps_9C92                                              ;928559;
+; 0267. Top half - 46: Unused
     dw SamusSpritemaps_97DD                                              ;92855B;
     dw SamusSpritemaps_97DD                                              ;92855D;
     dw SamusSpritemaps_9C77                                              ;92855F;
@@ -709,44 +791,69 @@ SamusSpritemapTable:
     dw SamusSpritemaps_9C77                                              ;928569;
     dw SamusSpritemaps_9E63                                              ;92856B;
     dw SamusSpritemaps_9C77                                              ;92856D;
+; Top half - 17: Facing right - normal jump - aiming down
+; 0271. Top half - AE: Unused
     dw SamusSpritemaps_9705                                              ;92856F;
     dw SamusSpritemaps_9B17                                              ;928571;
+; Top half - 18: Facing left  - normal jump - aiming down
+; 0273. Top half - AF: Unused
     dw SamusSpritemaps_9725                                              ;928573;
     dw SamusSpritemaps_9B2D                                              ;928575;
+; Top half - 13: Facing right - normal jump - not aiming - not moving - gun extended
+; 0275. Top half - AC: Unused
     dw SamusSpritemaps_977B                                              ;928577;
     dw SamusSpritemaps_977B                                              ;928579;
+; Top half - 14: Facing left  - normal jump - not aiming - not moving - gun extended
+; 0277. Top half - AD: Unused
     dw SamusSpritemaps_9796                                              ;92857B;
     dw SamusSpritemaps_9796                                              ;92857D;
+; 0279. Top half - 15: Facing right - normal jump - aiming up
     dw SamusSpritemaps_97B1                                              ;92857F;
     dw SamusSpritemaps_97FF                                              ;928581;
+; 027B. Top half - 16: Facing left  - normal jump - aiming up
     dw SamusSpritemaps_97C7                                              ;928583;
     dw SamusSpritemaps_981A                                              ;928585;
+; 027D. Top half - 69: Facing right - normal jump - aiming up-right
     dw SamusSpritemaps_9857                                              ;928587;
     dw SamusSpritemaps_9857                                              ;928589;
+; 027F. Top half - 6A: Facing left  - normal jump - aiming up-left
     dw SamusSpritemaps_9872                                              ;92858B;
     dw SamusSpritemaps_9872                                              ;92858D;
+; Top half - 6B: Facing right - normal jump - aiming down-right
+; 0281. Top half - B0: Unused
     dw SamusSpritemaps_9705                                              ;92858F;
     dw SamusSpritemaps_9705                                              ;928591;
+; Top half - 6C: Facing left  - normal jump - aiming down-left
+; 0283. Top half - B1: Unused
     dw SamusSpritemaps_9725                                              ;928593;
     dw SamusSpritemaps_9725                                              ;928595;
+; 0285. Top half - 51: Facing right - normal jump - not aiming - moving forward
     dw SamusSpritemaps_977B                                              ;928597;
     dw SamusSpritemaps_977B                                              ;928599;
+; 0287. Top half - 52: Facing left  - normal jump - not aiming - moving forward
     dw SamusSpritemaps_9796                                              ;92859B;
     dw SamusSpritemaps_9796                                              ;92859D;
+; 0289. Top half - 4B: Facing right - normal jump transition
     dw SamusSpritemaps_9B6F                                              ;92859F;
+; 028A. Top half - 4C: Facing left  - normal jump transition
     dw SamusSpritemaps_9B80                                              ;9285A1;
+; Top half - 4D: Facing right - normal jump - not aiming - not moving - gun not extended
+; 028B. Top half - C7: Facing right - vertical shinespark windup
     dw SamusSpritemaps_9691                                              ;9285A3;
     dw SamusSpritemaps_969D                                              ;9285A5;
     dw SamusSpritemaps_9691                                              ;9285A7;
     dw SamusSpritemaps_9657                                              ;9285A9;
     dw SamusSpritemaps_9663                                              ;9285AB;
     dw SamusSpritemaps_97DD                                              ;9285AD;
+; Top half - 4E: Facing left  - normal jump - not aiming - not moving - gun not extended
+; 0291. Top half - C8: Facing left  - vertical shinespark windup
     dw SamusSpritemaps_96E8                                              ;9285AF;
     dw SamusSpritemaps_96F4                                              ;9285B1;
     dw SamusSpritemaps_96E8                                              ;9285B3;
     dw SamusSpritemaps_96AE                                              ;9285B5;
     dw SamusSpritemaps_96BA                                              ;9285B7;
     dw SamusSpritemaps_97EE                                              ;9285B9;
+; 0297. Top half - 4F: Facing left  - damage boost
     dw SamusSpritemaps_9BBF                                              ;9285BB;
     dw SamusSpritemaps_9BBF                                              ;9285BD;
     dw SamusSpritemaps_BB94                                              ;9285BF;
@@ -757,6 +864,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_BB44                                              ;9285C9;
     dw SamusSpritemaps_BB2E                                              ;9285CB;
     dw SamusSpritemaps_9EB9                                              ;9285CD;
+; 02A1. Top half - 50: Facing right - damage boost
     dw SamusSpritemaps_9BAE                                              ;9285CF;
     dw SamusSpritemaps_9BAE                                              ;9285D1;
     dw SamusSpritemaps_BDD9                                              ;9285D3;
@@ -767,10 +875,13 @@ SamusSpritemapTable:
     dw SamusSpritemaps_BD89                                              ;9285DD;
     dw SamusSpritemaps_BD73                                              ;9285DF;
     dw SamusSpritemaps_9E83                                              ;9285E1;
+; 02AB. Top half - 63: Unused
     dw SamusSpritemaps_9A93                                              ;9285E3;
     dw SamusSpritemaps_9A1F                                              ;9285E5;
+; 02AD. Top half - 64: Unused
     dw SamusSpritemaps_9AAE                                              ;9285E7;
     dw SamusSpritemaps_99FF                                              ;9285E9;
+; 02AF. Top half - 65: Unused
     dw SamusSpritemaps_9A7B                                              ;9285EB;
     dw SamusSpritemaps_BD67                                              ;9285ED;
     dw SamusSpritemaps_BD73                                              ;9285EF;
@@ -780,6 +891,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_BDB7                                              ;9285F7;
     dw SamusSpritemaps_BDCD                                              ;9285F9;
     dw SamusSpritemaps_BDD9                                              ;9285FB;
+; 02AF. Top half - 65: Unused
     dw SamusSpritemaps_9A87                                              ;9285FD;
     dw SamusSpritemaps_BB22                                              ;9285FF;
     dw SamusSpritemaps_BB2E                                              ;928601;
@@ -789,6 +901,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_BB72                                              ;928609;
     dw SamusSpritemaps_BB88                                              ;92860B;
     dw SamusSpritemaps_BB94                                              ;92860D;
+; 02C1. Top half - 83: Facing right - wall jump
     dw SamusSpritemaps_9A7B                                              ;92860F;
     dw SamusSpritemaps_9BAE                                              ;928611;
     dw $0000                                                             ;928613;
@@ -836,6 +949,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_BEBF                                              ;928667;
     dw SamusSpritemaps_BEBF                                              ;928669;
     dw SamusSpritemaps_BEBF                                              ;92866B;
+; 02F0. Top half - 84: Facing left  - wall jump
     dw SamusSpritemaps_9A87                                              ;92866D;
     dw SamusSpritemaps_9BBF                                              ;92866F;
     dw $0000                                                             ;928671;
@@ -883,8 +997,10 @@ SamusSpritemapTable:
     dw SamusSpritemaps_BC7A                                              ;9286C5;
     dw SamusSpritemaps_BC7A                                              ;9286C7;
     dw SamusSpritemaps_BC7A                                              ;9286C9;
+; 031F. Top half - 53: Facing right - knockback
     dw SamusSpritemaps_98AD                                              ;9286CB;
     dw SamusSpritemaps_98AD                                              ;9286CD;
+; 031F. Top half - 53: Facing right - knockback
     dw SamusSpritemaps_9892                                              ;9286CF;
     dw SamusSpritemaps_9892                                              ;9286D1;
     dw SamusSpritemaps_9892                                              ;9286D3;
@@ -899,10 +1015,20 @@ SamusSpritemapTable:
     dw SamusSpritemaps_99CE                                              ;9286E5;
     dw SamusSpritemaps_9982                                              ;9286E7;
     dw SamusSpritemaps_99AE                                              ;9286E9;
+; Top half - 5B: Unused
+; 032F. Top half - B8: Facing left  - grapple wall jump pose
     dw SamusSpritemaps_9A1F                                              ;9286EB;
+; Top half - 5C: Unused
+; 0330. Top half - B9: Facing right - grapple wall jump pose
     dw SamusSpritemaps_99FF                                              ;9286ED;
+; Top half - 5D: Unused
+; Top half - 5E: Unused
+; 0331. Top half - 5F: Unused
     dw SamusSpritemaps_9B2D                                              ;9286EF;
+; 0332. Top half - 60: Unused
     dw SamusSpritemaps_9B17                                              ;9286F1;
+; Top half - 61: Unused
+; 0333. Top half - B2: Facing clockwise     - grapple
     dw SamusSpritemaps_A96B                                              ;9286F3;
     dw SamusSpritemaps_A955                                              ;9286F5;
     dw SamusSpritemaps_A944                                              ;9286F7;
@@ -969,6 +1095,8 @@ SamusSpritemapTable:
     dw SamusSpritemaps_A981                                              ;928771;
     dw SamusSpritemaps_A503                                              ;928773;
     dw SamusSpritemaps_A503                                              ;928775;
+; Top half - 62: Unused
+; 0375. Top half - B3: Facing anticlockwise - grapple
     dw SamusSpritemaps_AB8B                                              ;928777;
     dw SamusSpritemaps_ABB5                                              ;928779;
     dw SamusSpritemaps_ABDF                                              ;92877B;
@@ -1035,6 +1163,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_AB61                                              ;9287F5;
     dw SamusSpritemaps_A723                                              ;9287F7;
     dw SamusSpritemaps_A723                                              ;9287F9;
+; 03B7. Top half - 29: Facing right - falling
     dw SamusSpritemaps_9BAE                                              ;9287FB;
     dw SamusSpritemaps_9E63                                              ;9287FD;
     dw SamusSpritemaps_9E83                                              ;9287FF;
@@ -1042,6 +1171,7 @@ SamusSpritemapTable:
     dw $0000                                                             ;928803;
     dw SamusSpritemaps_9E63                                              ;928805;
     dw SamusSpritemaps_9BAE                                              ;928807;
+; 03BE. Top half - 2A: Facing left  - falling
     dw SamusSpritemaps_9BBF                                              ;928809;
     dw SamusSpritemaps_9E9E                                              ;92880B;
     dw SamusSpritemaps_9EB9                                              ;92880D;
@@ -1049,6 +1179,7 @@ SamusSpritemapTable:
     dw $0000                                                             ;928811;
     dw SamusSpritemaps_9E9E                                              ;928813;
     dw SamusSpritemaps_9BBF                                              ;928815;
+; 03C5. Top half - 67: Facing right - falling - gun extended
     dw SamusSpritemaps_977B                                              ;928817;
     dw SamusSpritemaps_977B                                              ;928819;
     dw SamusSpritemaps_977B                                              ;92881B;
@@ -1056,6 +1187,7 @@ SamusSpritemapTable:
     dw $0000                                                             ;92881F;
     dw SamusSpritemaps_977B                                              ;928821;
     dw SamusSpritemaps_977B                                              ;928823;
+; 03CC. Top half - 68: Facing left  - falling - gun extended
     dw SamusSpritemaps_9796                                              ;928825;
     dw SamusSpritemaps_9796                                              ;928827;
     dw SamusSpritemaps_9796                                              ;928829;
@@ -1063,36 +1195,54 @@ SamusSpritemapTable:
     dw $0000                                                             ;92882D;
     dw SamusSpritemaps_9796                                              ;92882F;
     dw SamusSpritemaps_9796                                              ;928831;
+; 03D3. Top half - 2B: Facing right - falling - aiming up
     dw SamusSpritemaps_97B1                                              ;928833;
     dw SamusSpritemaps_97FF                                              ;928835;
     dw SamusSpritemaps_97FF                                              ;928837;
+; 03D6. Top half - 2C: Facing left  - falling - aiming up
     dw SamusSpritemaps_97C7                                              ;928839;
     dw SamusSpritemaps_981A                                              ;92883B;
     dw SamusSpritemaps_981A                                              ;92883D;
+; 03D9. Top half - 2D: Facing right - falling - aiming down
     dw SamusSpritemaps_9705                                              ;92883F;
     dw SamusSpritemaps_9B17                                              ;928841;
+; 03DB. Top half - 2E: Facing left  - falling - aiming down
     dw SamusSpritemaps_9725                                              ;928843;
     dw SamusSpritemaps_9B2D                                              ;928845;
+; 03DD. Top half - 6D: Facing right - falling - aiming up-right
     dw SamusSpritemaps_9857                                              ;928847;
     dw SamusSpritemaps_9857                                              ;928849;
     dw SamusSpritemaps_9857                                              ;92884B;
+; 03E0. Top half - 6E: Facing left  - falling - aiming up-left
     dw SamusSpritemaps_9872                                              ;92884D;
     dw SamusSpritemaps_9872                                              ;92884F;
     dw SamusSpritemaps_9872                                              ;928851;
+; 03E3. Top half - 6F: Facing right - falling - aiming down-right
     dw SamusSpritemaps_9705                                              ;928853;
     dw SamusSpritemaps_9705                                              ;928855;
     dw SamusSpritemaps_9705                                              ;928857;
+; 03E6. Top half - 70: Facing left  - falling - aiming down-left
     dw SamusSpritemaps_9725                                              ;928859;
     dw SamusSpritemaps_9725                                              ;92885B;
     dw SamusSpritemaps_9725                                              ;92885D;
+; 03E9. Top half - 71: Facing right - crouching - aiming up-right
     dw SamusSpritemaps_97B1                                              ;92885F;
+; 03EA. Top half - 72: Facing left  - crouching - aiming up-left
     dw SamusSpritemaps_97C7                                              ;928861;
+; Top half - 73: Facing right - crouching - aiming down-right
+; 03EB. Top half - B6: Unused
     dw SamusSpritemaps_9745                                              ;928863;
+; Top half - 74: Facing left  - crouching - aiming down-left
+; 03EC. Top half - B7: Unused
     dw SamusSpritemaps_9760                                              ;928865;
+; 03ED. Top half - 85: Facing right - crouching - aiming up
     dw SamusSpritemaps_97B1                                              ;928867;
     dw SamusSpritemaps_97FF                                              ;928869;
+; 03EF. Top half - 86: Facing left  - crouching - aiming up
     dw SamusSpritemaps_97C7                                              ;92886B;
     dw SamusSpritemaps_981A                                              ;92886D;
+; Top half - 27: Facing right - crouching
+; 03F1. Top half - B4: Unused
     dw SamusSpritemaps_A072                                              ;92886F;
     dw SamusSpritemaps_A088                                              ;928871;
     dw SamusSpritemaps_A09E                                              ;928873;
@@ -1102,6 +1252,8 @@ SamusSpritemapTable:
     dw SamusSpritemaps_A088                                              ;92887B;
     dw SamusSpritemaps_A0F6                                              ;92887D;
     dw SamusSpritemaps_A088                                              ;92887F;
+; Top half - 28: Facing left  - crouching
+; 03FA. Top half - B5: Unused
     dw SamusSpritemaps_A0B4                                              ;928881;
     dw SamusSpritemaps_A0CA                                              ;928883;
     dw SamusSpritemaps_A0E0                                              ;928885;
@@ -1111,70 +1263,140 @@ SamusSpritemapTable:
     dw SamusSpritemaps_A0CA                                              ;92888D;
     dw SamusSpritemaps_A111                                              ;92888F;
     dw SamusSpritemaps_A0CA                                              ;928891;
+; Top half - 35: Facing right - crouching transition
+; 0403. Top half - 3B: Facing right - standing transition
     dw SamusSpritemaps_977B                                              ;928893;
+; Top half - 36: Facing left  - crouching transition
+; 0404. Top half - 3C: Facing left  - standing transition
     dw SamusSpritemaps_9796                                              ;928895;
+; Bottom half - 37: Facing right - morphing transition
+; 0405. Top half - 37: Facing right - morphing transition
     dw SamusSpritemaps_BCDD                                              ;928897;
     dw SamusSpritemaps_BCCC                                              ;928899;
+; Bottom half - 38: Facing left  - morphing transition
+; 0407. Top half - 38: Facing left  - morphing transition
     dw SamusSpritemaps_BCB1                                              ;92889B;
     dw SamusSpritemaps_BCA0                                              ;92889D;
+; Bottom half - 3D: Facing right - unmorphing transition
+; 0409. Top half - 3D: Facing right - unmorphing transition
     dw SamusSpritemaps_BCCC                                              ;92889F;
     dw SamusSpritemaps_BCDD                                              ;9288A1;
+; Bottom half - 3E: Facing left  - unmorphing transition
+; 040B. Top half - 3E: Facing left  - unmorphing transition
     dw SamusSpritemaps_BCA0                                              ;9288A3;
     dw SamusSpritemaps_BCB1                                              ;9288A5;
+; 040D. Top half - DB: Unused
     dw SamusSpritemaps_977B                                              ;9288A7;
     dw SamusSpritemaps_BCDD                                              ;9288A9;
     dw SamusSpritemaps_BCCC                                              ;9288AB;
+; 0410. Top half - DC: Unused
     dw SamusSpritemaps_9796                                              ;9288AD;
     dw SamusSpritemaps_BCB1                                              ;9288AF;
     dw SamusSpritemaps_BCA0                                              ;9288B1;
+; 0413. Top half - DD: Unused
     dw SamusSpritemaps_BCCC                                              ;9288B3;
     dw SamusSpritemaps_BCDD                                              ;9288B5;
     dw SamusSpritemaps_977B                                              ;9288B7;
+; 0416. Top half - DE: Unused
     dw SamusSpritemaps_BCA0                                              ;9288B9;
     dw SamusSpritemaps_BCB1                                              ;9288BB;
     dw SamusSpritemaps_9796                                              ;9288BD;
+; Top half - 25: Facing right - turning - standing
+; Top half - 2F: Facing right - turning - jumping
+; Top half - 43: Facing right - turning - crouching
+; Top half - 87: Facing right - turning - falling
+; Top half - BF: Facing right - moonwalking - turn/jump left
+; 0419. Top half - C6: Unused
     dw SamusSpritemaps_9998                                              ;9288BF;
     dw SamusSpritemaps_99E9                                              ;9288C1;
     dw SamusSpritemaps_9982                                              ;9288C3;
+; Top half - 26: Facing left  - turning - standing
+; Top half - 30: Facing left  - turning - jumping
+; Top half - 44: Facing left  - turning - crouching
+; Top half - 88: Facing left  - turning - falling
+; 041C. Top half - C0: Facing left  - moonwalking - turn/jump right
     dw SamusSpritemaps_9982                                              ;9288C5;
     dw SamusSpritemaps_99E9                                              ;9288C7;
     dw SamusSpritemaps_9998                                              ;9288C9;
+; Top half - 8B: Facing right - turning - standing - aiming up
+; Top half - 8F: Facing right - turning - in air - aiming up
+; Top half - 93: Facing right - turning - falling - aiming up
+; Top half - 97: Facing right - turning - crouching - aiming up
+; Top half - 9C: Facing right - turning - standing - aiming up-right
+; Top half - 9E: Facing right - turning - in air - aiming up-right
+; Top half - A0: Facing right - turning - falling - aiming up-right
+; Top half - A2: Facing right - turning - crouching - aiming up-right
+; 041F. Top half - C1: Facing right - moonwalking - turn/jump left  - aiming up-right
     dw SamusSpritemaps_99CE                                              ;9288CB;
     dw SamusSpritemaps_993E                                              ;9288CD;
     dw SamusSpritemaps_99AE                                              ;9288CF;
+; Top half - 8C: Facing left  - turning - standing - aiming up
+; Top half - 90: Facing left  - turning - in air - aiming up
+; Top half - 94: Facing left  - turning - falling - aiming up
+; Top half - 98: Facing left  - turning - crouching - aiming up
+; Top half - 9D: Facing left  - turning - standing - aiming up-left
+; Top half - 9F: Facing left  - turning - in air - aiming up-left
+; Top half - A1: Facing left  - turning - falling - aiming up-left
+; Top half - A3: Facing left  - turning - crouching - aiming up-left
+; 0422. Top half - C2: Facing left  - moonwalking - turn/jump right - aiming up-left
     dw SamusSpritemaps_99AE                                              ;9288D1;
     dw SamusSpritemaps_993E                                              ;9288D3;
     dw SamusSpritemaps_99CE                                              ;9288D5;
+; Top half - 8D: Facing right - turning - standing - aiming down-right
+; Top half - 91: Facing right - turning - in air - aiming down/down-right
+; Top half - 95: Facing right - turning - falling - aiming down/down-right
+; Top half - 99: Facing right - turning - crouching - aiming down/down-right
+; 0425. Top half - C3: Facing right - moonwalking - turn/jump left  - aiming down-right
     dw SamusSpritemaps_9AF7                                              ;9288D7;
     dw SamusSpritemaps_9954                                              ;9288D9;
     dw SamusSpritemaps_9AD7                                              ;9288DB;
+; Top half - 8E: Facing left  - turning - standing - aiming down-left
+; Top half - 92: Facing left  - turning - in air - aiming down/down-left
+; Top half - 96: Facing left  - turning - falling - aiming down/down-left
+; Top half - 9A: Facing left  - turning - crouching - aiming down/down-left
+; 0428. Top half - C4: Facing left  - moonwalking - turn/jump right - aiming down-left
     dw SamusSpritemaps_9AD7                                              ;9288DD;
     dw SamusSpritemaps_9954                                              ;9288DF;
     dw SamusSpritemaps_9AF7                                              ;9288E1;
+; 042B. Top half - EC: Facing right - grabbed by Draygon - not moving - not aiming
     dw SamusSpritemaps_9BAE                                              ;9288E3;
+; 042C. Top half - ED: Facing right - grabbed by Draygon - not moving - aiming up-right
     dw SamusSpritemaps_9857                                              ;9288E5;
+; 042D. Top half - EE: Facing right - grabbed by Draygon - firing
     dw SamusSpritemaps_977B                                              ;9288E7;
+; 042E. Top half - EF: Facing right - grabbed by Draygon - not moving - aiming down-right
     dw SamusSpritemaps_9705                                              ;9288E9;
+; 042F. Top half - BA: Facing left  - grabbed by Draygon - not moving - not aiming
     dw SamusSpritemaps_9BBF                                              ;9288EB;
+; 0430. Top half - BB: Facing left  - grabbed by Draygon - not moving - aiming up-left
     dw SamusSpritemaps_9872                                              ;9288ED;
+; 0431. Top half - BC: Facing left  - grabbed by Draygon - firing
     dw SamusSpritemaps_9796                                              ;9288EF;
+; 0432. Top half - BD: Facing left  - grabbed by Draygon - not moving - aiming down-left
     dw SamusSpritemaps_9725                                              ;9288F1;
+; 0433. Top half - F0: Facing right - grabbed by Draygon - moving
     dw SamusSpritemaps_9663                                              ;9288F3;
     dw SamusSpritemaps_966F                                              ;9288F5;
     dw SamusSpritemaps_9657                                              ;9288F7;
     dw SamusSpritemaps_9691                                              ;9288F9;
     dw SamusSpritemaps_969D                                              ;9288FB;
     dw SamusSpritemaps_9657                                              ;9288FD;
+; 0439. Top half - BE: Facing left  - grabbed by Draygon - moving
     dw SamusSpritemaps_96BA                                              ;9288FF;
     dw SamusSpritemaps_96C6                                              ;928901;
     dw SamusSpritemaps_96AE                                              ;928903;
     dw SamusSpritemaps_96E8                                              ;928905;
     dw SamusSpritemaps_96F4                                              ;928907;
     dw SamusSpritemaps_96AE                                              ;928909;
+; 043F. Top half - C9: Facing right - shinespark - horizontal
     dw SamusSpritemaps_9A93                                              ;92890B;
+; 0440. Top half - CA: Facing left  - shinespark - horizontal
     dw SamusSpritemaps_9AAE                                              ;92890D;
+; 0441. Top half - CD: Facing right - shinespark - diagonal
     dw SamusSpritemaps_9A93                                              ;92890F;
+; 0442. Top half - CE: Facing left  - shinespark - diagonal
     dw SamusSpritemaps_9AAE                                              ;928911;
+; 0443. Top half - D3: Facing right - crystal flash
     dw SamusSpritemaps_BCCC                                              ;928913;
     dw SamusSpritemaps_BCDD                                              ;928915;
     dw SamusSpritemaps_C207                                              ;928917;
@@ -1190,6 +1412,7 @@ SamusSpritemapTable:
     dw SamusSpritemaps_BCDD                                              ;92892B;
     dw SamusSpritemaps_BCDD                                              ;92892D;
     dw SamusSpritemaps_977B                                              ;92892F;
+; 0452. Top half - D4: Facing left  - crystal flash
     dw SamusSpritemaps_BCA0                                              ;928931;
     dw SamusSpritemaps_BCB1                                              ;928933;
     dw SamusSpritemaps_C198                                              ;928935;
@@ -1205,18 +1428,21 @@ SamusSpritemapTable:
     dw SamusSpritemaps_BCB1                                              ;928949;
     dw SamusSpritemaps_BCB1                                              ;92894B;
     dw SamusSpritemaps_9796                                              ;92894D;
+; 0461. Top half - D7: Facing right - crystal flash ending
     dw SamusSpritemaps_BAB3                                              ;92894F;
     dw SamusSpritemaps_BCCC                                              ;928951;
     dw SamusSpritemaps_BCDD                                              ;928953;
     dw SamusSpritemaps_977B                                              ;928955;
     dw SamusSpritemaps_98AD                                              ;928957;
     dw SamusSpritemaps_98AD                                              ;928959;
+; 0467. Top half - D8: Facing left  - crystal flash ending
     dw SamusSpritemaps_BB16                                              ;92895B;
     dw SamusSpritemaps_BCA0                                              ;92895D;
     dw SamusSpritemaps_BCB1                                              ;92895F;
     dw SamusSpritemaps_9796                                              ;928961;
     dw SamusSpritemaps_9892                                              ;928963;
     dw SamusSpritemaps_9892                                              ;928965;
+; 046D. Top half - E8: Facing right - Samus drained - crouching
     dw SamusSpritemaps_BAB3                                              ;928967;
     dw SamusSpritemaps_BCCC                                              ;928969;
     dw SamusSpritemaps_BCDD                                              ;92896B;
@@ -1232,6 +1458,7 @@ SamusSpritemapTable:
     dw $0000                                                             ;92897F;
     dw $0000                                                             ;928981;
     dw SamusSpritemaps_977B                                              ;928983;
+; 047C. Top half - E9: Facing left  - Samus drained - crouching
     dw SamusSpritemaps_BCA0                                              ;928985;
     dw SamusSpritemaps_BCB1                                              ;928987;
     dw SamusSpritemaps_9892                                              ;928989;
@@ -1264,12 +1491,14 @@ SamusSpritemapTable:
     dw SamusSpritemaps_9ED4                                              ;9289BF;
     dw $0000                                                             ;9289C1;
     dw $0000                                                             ;9289C3;
+; 049C. Top half - EA: Facing right - Samus drained - standing
     dw SamusSpritemaps_A003                                              ;9289C5;
     dw SamusSpritemaps_A028                                              ;9289C7;
     dw SamusSpritemaps_A04D                                              ;9289C9;
     dw SamusSpritemaps_A028                                              ;9289CB;
     dw $0000                                                             ;9289CD;
     dw SamusSpritemaps_977B                                              ;9289CF;
+; 04A2. Top half - EB: Facing left  - Samus drained - standing
     dw SamusSpritemaps_9FA3                                              ;9289D1;
     dw SamusSpritemaps_9FC3                                              ;9289D3;
     dw SamusSpritemaps_9FE3                                              ;9289D5;
@@ -1278,6 +1507,10 @@ SamusSpritemapTable:
     dw SamusSpritemaps_9796                                              ;9289DB;
     dw SamusSpritemaps_AD3C                                              ;9289DD;
     dw SamusSpritemaps_AD3C                                              ;9289DF;
+; Bottom half - 01: Facing right - normal
+; Bottom half - 47: Unused
+; Bottom half - 89: Facing right - ran into a wall
+; 04AA. Bottom half - A8: Unused
     dw SamusSpritemaps_ADBB                                              ;9289E1;
     dw SamusSpritemaps_AE98                                              ;9289E3;
     dw SamusSpritemaps_AEA9                                              ;9289E5;
