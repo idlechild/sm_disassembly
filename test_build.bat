@@ -11,8 +11,9 @@ echo Patching FF file with asar
 set START=%TIME: =0%
 "tools/asar" --no-title-check --symbols=wla --symbols-path=symbols.sym src/main.asm SM.sfc
 set END=%TIME: =0%
+if errorlevel 1 goto error
 
-fc SM.sfc "%sfc_src%"
+fc /B SM.sfc "%sfc_src%"
 if errorlevel 1 goto error
 
 echo Success! This ROM matches vanilla Super Metroid
@@ -47,7 +48,7 @@ endlocal
 goto done
 
 :error
-echo !! FILE MISMATCH !!
+echo !! BUILD ERROR / FILE MISMATCH !!
 
 :done
 PAUSE
