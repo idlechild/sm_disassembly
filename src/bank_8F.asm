@@ -1331,7 +1331,9 @@ RoomState_LandingSite_0:
     dw FXHeader_LandingSite_State0_1                                     ;8F9219;
     dw EnemyPopulations_LandingSite_0_1_2                                ;8F921B;
     dw EnemySets_LandingSite_0_1_2                                       ;8F921D;
-    dw $0181,$9283,$0000                                                 ;8F921F;
+    db $81,$01
+    dw RoomScrolls_LandingSite
+    dw $0000
     dw MainASM_ScrollingSkyLand                                          ;8F9225;
     dw PLMPopulation_LandingSite_State0_1_2                              ;8F9227;
     dw LibBG_ScrollingSky_Tilemaps_LandingSite                           ;8F9229;
@@ -1343,7 +1345,9 @@ RoomState_LandingSite_1:
     dw FXHeader_LandingSite_State0_1                                     ;8F9233;
     dw EnemyPopulations_LandingSite_0_1_2                                ;8F9235;
     dw EnemySets_LandingSite_0_1_2                                       ;8F9237;
-    dw $0181,$9283,$0000                                                 ;8F9239;
+    db $81,$01
+    dw RoomScrolls_LandingSite
+    dw $0000
     dw MainASM_ScrollingSkyLand                                          ;8F923F;
     dw PLMPopulation_LandingSite_State0_1_2                              ;8F9241;
     dw LibBG_ScrollingSky_Tilemaps_LandingSite                           ;8F9243;
@@ -1355,7 +1359,9 @@ RoomState_LandingSite_2:
     dw FXHeader_LandingSite_State2                                       ;8F924D;
     dw EnemyPopulations_LandingSite_0_1_2                                ;8F924F;
     dw EnemySets_LandingSite_0_1_2                                       ;8F9251;
-    dw $0181,$9283,$0000                                                 ;8F9253;
+    db $81,$01
+    dw RoomScrolls_LandingSite
+    dw $0000
     dw MainASM_ScrollingSkyLand                                          ;8F9259;
     dw PLMPopulation_LandingSite_State0_1_2                              ;8F925B;
     dw LibBG_ScrollingSky_Tilemaps_LandingSite                           ;8F925D;
@@ -1367,7 +1373,9 @@ RoomState_LandingSite_3:
     dw FXHeader_LandingSite_State3                                       ;8F9267;
     dw EnemyPopulations_LandingSite_3                                    ;8F9269;
     dw EnemySets_LandingSite_3                                           ;8F926B;
-    dw $0181,$9283,$0000                                                 ;8F926D;
+    db $81,$01
+    dw RoomScrolls_LandingSite
+    dw $0000
     dw MainASM_ScrollingSkyLand_ZebesTimebombSet                         ;8F9273;
     dw PLMPopulation_LandingSite_State3                                  ;8F9275;
     dw LibBG_ScrollingSky_Tilemaps_LandingSite                           ;8F9277;
