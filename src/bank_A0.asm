@@ -94,6 +94,7 @@ ExtendedSpritemap_Common_Nothing:
     dw Hitbox_Common_Nothing                                             ;A08057;
 
 Hitbox_Common_Nothing:
+; [n entries] [[left offset] [top offset] [right offset] [bottom offset] [p touch] [p shot]]...
     dw $0001,$0000,$0000,$0000,$0000                                     ;A08059;
     dw Common_NormalEnemyTouchAI                                         ;A08063;
     dw Common_NormalEnemyShotAI                                          ;A08065;
@@ -102,10 +103,12 @@ InstList_Common_DeleteEnemy:
     dw Instruction_Common_DeleteEnemy                                    ;A08067;
 
 NOPNOP_A08069:
+; Used as palette by respawning enemy placeholder and Draygon's eye o_O
     NOP                                                                  ;A08069;
     NOP                                                                  ;A0806A;
 
 Instruction_Common_Enemy0FB2_InY:
+; Used only by torizos (for enemy movement function) and escape etecoon (for enemy function)
     LDA.W $0000,Y                                                        ;A0806B;
     STA.W $0FB2,X                                                        ;A0806E;
     INY                                                                  ;A08071;
@@ -337,6 +340,7 @@ Instruction_Common_DisableOffScreenProcessing:
 
 
 CommonEnemySpeeds_LinearlyIncreasing:
+; Speed, subspeed, negated speed, negated subspeed
     dw $0000,$0000,$0000,$0000,$0000,$1000,$FFFF,$F000                   ;A08187;
     dw $0000,$2000,$FFFF,$E000,$0000,$3000,$FFFF,$D000                   ;A08197;
     dw $0000,$4000,$FFFF,$C000,$0000,$5000,$FFFF,$B000                   ;A081A7;
@@ -372,6 +376,10 @@ CommonEnemySpeeds_LinearlyIncreasing:
     dw $0004,$0000,$FFFC,$0000                                           ;A08387;
 
 CommonEnemySpeeds_QuadraticallyIncreasing:
+; I.e. gravity
+; Used by e.g. Botwoon when dying and falling to the floor
+
+; Subspeed, speed, negated subspeed, negated speed
     dw $0000,$0000,$0000,$0000,$0109,$0000,$FEF7,$FFFF                   ;A0838F;
     dw $031B,$0000,$FCE5,$FFFF,$0636,$0000,$F9CA,$FFFF                   ;A0839F;
     dw $0A5A,$0000,$F5A6,$FFFF,$0F87,$0000,$F079,$FFFF                   ;A083AF;
@@ -522,34 +530,28 @@ SetAllActiveEnemiesToShakeHorizontallyFor2Frames:
     RTS                                                                  ;A0872C;
 
 
-BGShakeDisplacements_BG1X:
+BGShakeDisplacements:
+;      /------horizontal------\ /------vertical------\   /------diagonal------\
+;       BG1X  BG1Y  BG2X  BG2Y
+  .BG1X
     dw $0001                                                             ;A0872D;
-
-BGShakeDisplacements_BG1Y:
-    dw $0000                                                             ;A0872F;
-
-BGShakeDisplacements_BG2X:
-    dw $0000                                                             ;A08731;
-
-BGShakeDisplacements_BG2Y:
-    dw $0000,$0000,$0001,$0000,$0000,$0001,$0001,$0000                   ;A08733;
-    dw $0000,$0002,$0000,$0000,$0000,$0000,$0002,$0000                   ;A08743;
-    dw $0000,$0002,$0002,$0000,$0000,$0003,$0000,$0000                   ;A08753;
-    dw $0000,$0000,$0003,$0000,$0000,$0003,$0003,$0000                   ;A08763;
-    dw $0000,$0001,$0000,$0001,$0000,$0000,$0001,$0000                   ;A08773;
-    dw $0001,$0001,$0001,$0001,$0001,$0002,$0000,$0002                   ;A08783;
-    dw $0000,$0000,$0002,$0000,$0002,$0002,$0002,$0002                   ;A08793;
-    dw $0002,$0003,$0000,$0003,$0000,$0000,$0003,$0000                   ;A087A3;
-    dw $0003,$0003,$0003,$0003,$0003,$0001,$0000,$0001                   ;A087B3;
-    dw $0000,$0000,$0001,$0000,$0001,$0001,$0001,$0001                   ;A087C3;
-    dw $0001,$0002,$0000,$0002,$0000,$0000,$0002,$0000                   ;A087D3;
-    dw $0002,$0002,$0002,$0002,$0002,$0003,$0000,$0003                   ;A087E3;
-    dw $0000,$0000,$0003,$0000,$0003,$0003,$0003,$0003                   ;A087F3;
-    dw $0003,$0000,$0000,$0001,$0000,$0000,$0000,$0000                   ;A08803;
-    dw $0001,$0000,$0000,$0001,$0001,$0000,$0000,$0002                   ;A08813;
-    dw $0000,$0000,$0000,$0000,$0002,$0000,$0000,$0002                   ;A08823;
-    dw $0002,$0000,$0000,$0003,$0000,$0000,$0000,$0000                   ;A08833;
-    dw $0003,$0000,$0000,$0003,$0003                                     ;A08843;
+  .BG1Y
+    dw       $0000                                                       ;A0872F;
+  .BG2X
+    dw             $0000                                                 ;A08731;
+  .BG2Y                                                                  ;A08733;
+    dw                   $0000, $0000,$0001,$0000,$0000, $0001,$0001,$0000,$0000 ;\
+    dw $0002,$0000,$0000,$0000, $0000,$0002,$0000,$0000, $0002,$0002,$0000,$0000 ;} BG1 only
+    dw $0003,$0000,$0000,$0000, $0000,$0003,$0000,$0000, $0003,$0003,$0000,$0000 ;/
+    dw $0001,$0000,$0001,$0000, $0000,$0001,$0000,$0001, $0001,$0001,$0001,$0001 ;\
+    dw $0002,$0000,$0002,$0000, $0000,$0002,$0000,$0002, $0002,$0002,$0002,$0002 ;} BG1 and BG2
+    dw $0003,$0000,$0003,$0000, $0000,$0003,$0000,$0003, $0003,$0003,$0003,$0003 ;/
+    dw $0001,$0000,$0001,$0000, $0000,$0001,$0000,$0001, $0001,$0001,$0001,$0001 ;\
+    dw $0002,$0000,$0002,$0000, $0000,$0002,$0000,$0002, $0002,$0002,$0002,$0002 ;} BG1 and BG2 and enemies
+    dw $0003,$0000,$0003,$0000, $0000,$0003,$0000,$0003, $0003,$0003,$0003,$0003 ;/
+    dw $0000,$0000,$0001,$0000, $0000,$0000,$0000,$0001, $0000,$0000,$0001,$0001 ;\
+    dw $0000,$0000,$0002,$0000, $0000,$0000,$0000,$0002, $0000,$0000,$0002,$0002 ;} BG2 only and enemies
+    dw $0000,$0000,$0003,$0000, $0000,$0000,$0000,$0003, $0000,$0000,$0003,$0003 ;/
 
 Draw_Samus_Projectiles_Enemies_and_Enemy_Projectiles:
     PHB                                                                  ;A0884D;
@@ -6210,6 +6212,7 @@ EightBitSineMultiplication_A0B0DA:
 
 
 AddressesForEnemyDrawingQueues:
+; Indexed by [enemy layer] * 2
     dw $0E84                                                             ;A0B133;
     dw $0EA4                                                             ;A0B135;
     dw $0EA6                                                             ;A0B137;
@@ -6219,6 +6222,14 @@ AddressesForEnemyDrawingQueues:
     dw $0F28                                                             ;A0B13F;
     dw $0F48                                                             ;A0B141;
 
+
+; Generate 16-bit tables with
+;     [int((0x7FFF+0.5) * math.sin(i * math.pi / 0x80)) for i in range(0x40 * n_quadrants)]
+
+; Generate sign-extended 8-bit tables with
+;     [0x100 * math.sin(i * math.pi / 0x80) for i in range(0x40 * n_quadrants)]
+
+; Unsigned 8-bit table is the same as the signed-extended first half, except cos(0) is capped at FFh
 SineCosineTables_8bitSine:
     db $00,$06,$0C,$12,$19,$1F,$25,$2B,$31,$38,$3E,$44,$4A,$50,$56,$5C   ;A0B143;
     db $61,$67,$6D,$73,$78,$7E,$83,$88,$8E,$93,$98,$9D,$A2,$A7,$AB,$B0   ;A0B153;
@@ -6586,6 +6597,7 @@ CapScrollingSpeed:
 
 
 UnsignedSineTable:
+; sin(t * pi / 80h) * FFFFh
     dw $0000,$0648,$0C8F,$12D5,$1917,$1F56,$258F,$2BC3                   ;A0B7EE;
     dw $31F1,$3816,$3E33,$4447,$4A4F,$504D,$563E,$5C21                   ;A0B7FE;
     dw $61F7,$67BD,$6D73,$7319,$78AC,$7E2E,$839B,$88F5                   ;A0B80E;
@@ -8415,9 +8427,20 @@ EnemyBlockCollisionReaction_Vertical_Slope_Square:
     RTS                                                                  ;A0C434;
 
 
-SquareSlopeDefinitions_BankA0:
-    db $00,$01,$82,$83,$00,$81,$02,$83,$00,$01,$02,$83,$00,$81,$82,$83   ;A0C435;
-    db $80,$81,$82,$83                                                   ;A0C445;
+SquareSlopeDefinitions_BankA0:                                           ;A0C435;
+; Copy of $94:8E54 for enemies
+; 7Fh- = air, 80h+ = solid
+
+;        _____________ Top-left
+;       |    _________ Top-right
+;       |   |    _____ Bottom-left
+;       |   |   |    _ Bottom-right
+;       |   |   |   |
+    db $00,$01,$82,$83 ; 0: Half height
+    db $00,$81,$02,$83 ; 1: Half width
+    db $00,$01,$02,$83 ; 2: Quarter
+    db $00,$81,$82,$83 ; 3: Three-quarters
+    db $80,$81,$82,$83 ; 4: Whole
 
 EnemyBlockCollisionReaction_Horizontal_Slope_NonSquare:
     BIT.B $20                                                            ;A0C449;
@@ -8470,21 +8493,44 @@ EnemyBlockCollisionReaction_Horizontal_Slope_NonSquare:
     CLC                                                                  ;A0C49D;
     RTS                                                                  ;A0C49E;
 
-
-if !FEATURE_KEEP_UNREFERENCED
-.unused:
+;        _________ Unused. Seem to be additive speed modifiers in the $94:8586 version of this table
+;       |      ___ Adjusted distance multiplier * 100h
+;       |     |
+  .unused
     dw $0000                                                             ;A0C49F;
-endif ; !FEATURE_KEEP_UNREFERENCED
-
-.adjustedDistanceMult:
-    dw $0100,$0000,$0100,$0000,$0100,$0000,$0100,$0000                   ;A0C4A1;
-    dw $0100,$0000,$0100,$0000,$0100,$0000,$0100,$0000                   ;A0C4B1;
-    dw $0100,$0000,$0100,$0000,$0100,$0000,$0100,$0000                   ;A0C4C1;
-    dw $0100,$0000,$0100,$1000,$00B0,$1000,$00B0,$0000                   ;A0C4D1;
-    dw $0100,$0000,$0100,$1000,$00C0,$0000,$0100,$1000                   ;A0C4E1;
-    dw $00C0,$1000,$00C0,$0800,$00D8,$0800,$00D8,$0600                   ;A0C4F1;
-    dw $00F0,$0600,$00F0,$0600,$00F0,$4000,$0080,$4000                   ;A0C501;
-    dw $0080,$6000,$0050,$6000,$0050,$6000,$0050                         ;A0C511;
+  .adjustedDistanceMult
+    dw       $0100                                                       ;A0C4A1;
+    dw $0000,$0100
+    dw $0000,$0100
+    dw $0000,$0100
+    dw $0000,$0100
+    dw $0000,$0100 ; 5: Unused. Half height isosceles triangle
+    dw $0000,$0100 ; 6: Unused. Isosceles triangle
+    dw $0000,$0100 ; 7: Half height rectangle
+    dw $0000,$0100 ; 8: Unused. Rectangle
+    dw $0000,$0100 ; 9: Unused. Rectangle
+    dw $0000,$0100 ; Ah: Unused. Rectangle
+    dw $0000,$0100 ; Bh: Unused. Rectangle
+    dw $0000,$0100 ; Ch: Unused. Rectangle
+    dw $0000,$0100 ; Dh: Unused. Rectangle
+    dw $1000,$00B0 ; Eh: Unused. Very bumpy triangle
+    dw $1000,$00B0 ; Fh: Bumpy triangle
+    dw $0000,$0100 ; 10h: Unused
+    dw $0000,$0100 ; 11h: Unused
+    dw $1000,$00C0 ; 12h: Triangle
+    dw $0000,$0100 ; 13h: Rectangle
+    dw $1000,$00C0 ; 14h: Quarter triangle
+    dw $1000,$00C0 ; 15h: Three quarter triangle
+    dw $0800,$00D8 ; 16h: Lower half-height triangle
+    dw $0800,$00D8 ; 17h: Upper half-height triangle
+    dw $0600,$00F0 ; 18h: Unused. Lower third-height triangle
+    dw $0600,$00F0 ; 19h: Unused. Middle third-height triangle
+    dw $0600,$00F0 ; 1Ah: Unused. Upper third-height triangle
+    dw $4000,$0080 ; 1Bh: Upper half-width triangle
+    dw $4000,$0080 ; 1Ch: Lower half-width triangle
+    dw $6000,$0050 ; 1Dh: Unused. Upper third-width triangle
+    dw $6000,$0050 ; 1Eh: Unused. Middle third-width triangle
+    dw $6000,$0050 ; 1Fh: Unused. Lower third-width triangle
 
 EnemyBlockCollisionReaction_Vertical_Slope_NonSquare:
     LDY.W $0E54                                                          ;A0C51F;
@@ -9020,22 +9066,22 @@ EnemyHorizontalBlockReaction:
 
 
 .pointers:
-    dw CLCRTS_A0C2BC                                                     ;A0C859;
-    dw EnemyBlockCollisionReaction_Horizontal_Slope                      ;A0C85B;
-    dw CLCRTS_A0C2BC                                                     ;A0C85D;
-    dw CLCRTS_A0C2BC                                                     ;A0C85F;
-    dw CLCRTS_A0C2BC                                                     ;A0C861;
-    dw EnemyBlockCollisionReaction_HorizontalExtension                   ;A0C863;
-    dw CLCRTS_A0C2BC                                                     ;A0C865;
-    dw CLCRTS_A0C2BC                                                     ;A0C867;
-    dw SECRTS_A0C2BE                                                     ;A0C869;
-    dw SECRTS_A0C2BE                                                     ;A0C86B;
-    dw EnemyBlockCollisionReaction_Spike                                 ;A0C86D;
-    dw SECRTS_A0C2BE                                                     ;A0C86F;
-    dw SECRTS_A0C2BE                                                     ;A0C871;
-    dw EnemyBlockCollisionReaction_VerticalExtension                     ;A0C873;
-    dw SECRTS_A0C2BE                                                     ;A0C875;
-    dw SECRTS_A0C2BE                                                     ;A0C877;
+    dw CLCRTS_A0C2BC                                                     ;A0C859;  0: Air
+    dw EnemyBlockCollisionReaction_Horizontal_Slope                      ;A0C85B; *1: Slope
+    dw CLCRTS_A0C2BC                                                     ;A0C85D;  2: Spike air
+    dw CLCRTS_A0C2BC                                                     ;A0C85F;  3: Special air
+    dw CLCRTS_A0C2BC                                                     ;A0C861;  4: Shootable air
+    dw EnemyBlockCollisionReaction_HorizontalExtension                   ;A0C863; *5: Horizontal extension
+    dw CLCRTS_A0C2BC                                                     ;A0C865;  6: Unused air
+    dw CLCRTS_A0C2BC                                                     ;A0C867;  7: Bombable air
+    dw SECRTS_A0C2BE                                                     ;A0C869;  8: Solid block
+    dw SECRTS_A0C2BE                                                     ;A0C86B;  9: Door block
+    dw EnemyBlockCollisionReaction_Spike                                 ;A0C86D; *Ah: Spike block
+    dw SECRTS_A0C2BE                                                     ;A0C86F;  Bh: Special block
+    dw SECRTS_A0C2BE                                                     ;A0C871;  Ch: Shootable block
+    dw EnemyBlockCollisionReaction_VerticalExtension                     ;A0C873; *Dh: Vertical extension
+    dw SECRTS_A0C2BE                                                     ;A0C875;  Eh: Grapple block
+    dw SECRTS_A0C2BE                                                     ;A0C877;  Fh: Bombable block
 
 EnemyVerticalBlockReaction:
     PHX                                                                  ;A0C879;
@@ -9055,22 +9101,22 @@ EnemyVerticalBlockReaction:
 
 
 .pointers:
-    dw CLCRTS_A0C2BC                                                     ;A0C88D;
-    dw EnemyBlockCollisionReaction_Vertical_Slope                        ;A0C88F;
-    dw CLCRTS_A0C2BC                                                     ;A0C891;
-    dw CLCRTS_A0C2BC                                                     ;A0C893;
-    dw CLCRTS_A0C2BC                                                     ;A0C895;
-    dw EnemyBlockCollisionReaction_HorizontalExtension                   ;A0C897;
-    dw CLCRTS_A0C2BC                                                     ;A0C899;
-    dw CLCRTS_A0C2BC                                                     ;A0C89B;
-    dw SECRTS_A0C2BE                                                     ;A0C89D;
-    dw SECRTS_A0C2BE                                                     ;A0C89F;
-    dw EnemyBlockCollisionReaction_Spike                                 ;A0C8A1;
-    dw SECRTS_A0C2BE                                                     ;A0C8A3;
-    dw SECRTS_A0C2BE                                                     ;A0C8A5;
-    dw EnemyBlockCollisionReaction_VerticalExtension                     ;A0C8A7;
-    dw SECRTS_A0C2BE                                                     ;A0C8A9;
-    dw SECRTS_A0C2BE                                                     ;A0C8AB;
+    dw CLCRTS_A0C2BC                                                     ;A0C88D;  0: Air
+    dw EnemyBlockCollisionReaction_Vertical_Slope                        ;A0C88F; *1: Slope
+    dw CLCRTS_A0C2BC                                                     ;A0C891;  2: Spike air
+    dw CLCRTS_A0C2BC                                                     ;A0C893;  3: Special air
+    dw CLCRTS_A0C2BC                                                     ;A0C895;  4: Shootable air
+    dw EnemyBlockCollisionReaction_HorizontalExtension                   ;A0C897; *5: Horizontal extension
+    dw CLCRTS_A0C2BC                                                     ;A0C899;  6: Unused air
+    dw CLCRTS_A0C2BC                                                     ;A0C89B;  7: Bombable air
+    dw SECRTS_A0C2BE                                                     ;A0C89D;  8: Solid block
+    dw SECRTS_A0C2BE                                                     ;A0C89F;  9: Door block
+    dw EnemyBlockCollisionReaction_Spike                                 ;A0C8A1; *Ah: Spike block
+    dw SECRTS_A0C2BE                                                     ;A0C8A3;  Bh: Special block
+    dw SECRTS_A0C2BE                                                     ;A0C8A5;  Ch: Shootable block
+    dw EnemyBlockCollisionReaction_VerticalExtension                     ;A0C8A7; *Dh: Vertical extension
+    dw SECRTS_A0C2BE                                                     ;A0C8A9;  Eh: Grapple block
+    dw SECRTS_A0C2BE                                                     ;A0C8AB;  Fh: Bombable block
 
 AlignEnemyYPositionWIthNonSquareSlope:
     PHY                                                                  ;A0C8AD;
@@ -9215,6 +9261,9 @@ AlignEnemyYPositionWIthNonSquareSlope:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_CommonEnemyProjectileSpeeds_LinearlyIncreasing_A0C9BF:
+; Clone of CommonEnemySpeeds_LinearlyIncreasing
+
+; Subspeed, speed, negated subspeed, negated speed
     dw $0000,$0000,$0000,$0000,$0000,$1000,$FFFF,$F000                   ;A0C9BF;
     dw $0000,$2000,$FFFF,$E000,$0000,$3000,$FFFF,$D000                   ;A0C9CF;
     dw $0000,$4000,$FFFF,$C000,$0000,$5000,$FFFF,$B000                   ;A0C9DF;
@@ -9251,6 +9300,10 @@ UNUSED_CommonEnemyProjectileSpeeds_LinearlyIncreasing_A0C9BF:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 CommonEnemyProjectileSpeeds_QuadraticallyIncreasing:
+; Clone of CommonEnemySpeeds_QuadraticallyIncreasing
+; Used by Botwoon's body when dying and falling to the floor, and polyp rock
+
+; Subspeed, speed, negated subspeed, negated speed
     dw $0000,$0000,$0000,$0000,$0109,$0000,$FEF7,$FFFF                   ;A0CBC7;
     dw $031B,$0000,$FCE5,$FFFF,$0636,$0000,$F9CA,$FFFF                   ;A0CBD7;
     dw $0A5A,$0000,$F5A6,$FFFF,$0F87,$0000,$F079,$FFFF                   ;A0CBE7;
@@ -9303,97 +9356,67 @@ CommonEnemyProjectileSpeeds_QuadraticallyIncreasing:
 
 EnemyHeaders_Boyon:
 EnemyHeaders:
-  .tileDataSize:
+  .tileDataSize
     dw $0400                                                             ;A0CEBF;
-
-  .palette:
+  .palette
     dw Palette_Boyon                                                     ;A0CEC1;
-
-  .health:
+  .health
     dw $03E8                                                             ;A0CEC3;
-
-  .damage:
+  .damage
     dw $000A                                                             ;A0CEC5;
-
-  .width:
+  .width
     dw $0008                                                             ;A0CEC7;
-
-  .height:
+  .height
     dw $0008                                                             ;A0CEC9;
-
-  .bank:
+  .bank
     db $A2                                                               ;A0CECB;
-
-  .hurtAITime:
+  .hurtAITime
     db $00                                                               ;A0CECC;
-
-  .cry:
+  .cry
     dw $0000                                                             ;A0CECD;
-
-  .bossID:
+  .bossID
     dw $0000                                                             ;A0CECF;
-
-  .initAI:
+  .initAI
     dw InitAI_Boyon                                                      ;A0CED1;
-
-  .numberOfParts:
+  .numberOfParts
     dw $0001                                                             ;A0CED3;
-
-  .unused16:
+  .unused16
     dw $0000                                                             ;A0CED5;
-
-  .mainAI:
+  .mainAI
     dw MainAI_Boyon                                                      ;A0CED7;
-
-  .grappleAI:
+  .grappleAI
     dw CommonA2_GrappleAI_CancelGrappleBeam                              ;A0CED9;
-
-  .hurtAI:
+  .hurtAI
     dw RTL_A2804C                                                        ;A0CEDB;
-
-  .frozenAI:
+  .frozenAI
     dw CommonA2_NormalEnemyFrozenAI                                      ;A0CEDD;
-
-  .timeIsFrozenAI:
+  .timeIsFrozenAI
     dw $0000                                                             ;A0CEDF;
-
-  .deathAnimation:
+  .deathAnimation
     dw $0000                                                             ;A0CEE1;
-
-  .unused24:
+  .unused24
     dd $00000000                                                         ;A0CEE3;
-
-  .powerBombReaction:
+  .powerBombReaction
     dw $0000                                                             ;A0CEE7;
-
-  .sidehopperVariantIndex:
+  .sidehopperVariantIndex
     dw $0000                                                             ;A0CEE9;
-
-  .unused2C:
+  .unused2C
     dd $00000000                                                         ;A0CEEB;
-
-  .enemyTouch:
+  .enemyTouch
     dw Common_NormalEnemyTouchAI                                         ;A0CEEF;
-
-  .enemyShot:
+  .enemyShot
     dw Common_NormalEnemyShotAI                                          ;A0CEF1;
-
-  .unused34SpritemapPointerTable:
+  .unused34SpritemapPointerTable
     dw $0000                                                             ;A0CEF3;
-
-  .tileData:
+  .tileData
     dl Tiles_Boyon                                                       ;A0CEF5;
-
-  .layer:
+  .layer
     db $05                                                               ;A0CEF8;
-
-  .dropChances:
+  .dropChances
     dw EnemyDropChances_Boyon                                            ;A0CEF9;
-
-  .vulnerabilities:
+  .vulnerabilities
     dw EnemyVulnerabilities_Boyon                                        ;A0CEFB;
-
-  .name:
+  .name
     dw EnemyName_Boyon                                                   ;A0CEFD;
 
 EnemyHeaders_Stoke:
@@ -13015,10 +13038,13 @@ EnemyHeaders_Chozo:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_BunchOf2s_A0F13F:
+; Unused. Random bunch of 2s
+; Impossible to speculate on; the only other long list of 2s in the game is scroll data
     dw $0202,$0202,$0202,$0202,$0202,$0202,$0202,$0202                   ;A0F13F;
     dw $0202,$0202                                                       ;A0F14F;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+; Weirdo discontinuity, enemy banks jump from $A2..AA to $B2..B3
 UNUSED_EnemyHeaders_SpinningTurtleEye_A0F153:
     dw $0200                                                             ;A0F153;
     dw UNUSED_Palette_SpinningTurtleEye_B38687                           ;A0F155;

@@ -31,8 +31,8 @@ EnemyPopulations_EastOcean:
     dw EnemyHeaders_Kamer2                                               ;A180B2;
     dw $03C0,$04F0,$0000,$A000,$0000,$0000,$2800                         ;A180B4;
     dw EnemyHeaders_Kamer2                                               ;A180C2;
-    dw $02C8,$04F0,$0000,$A000,$0000,$0000,$2800,$FFFF                   ;A180C4;
-    db $0A                                                               ;A180D4;
+    dw $02C8,$04F0,$0000,$A000,$0000,$0000,$2800                         ;A180C4;
+    dw $FFFF : db $0A                                                    ;A180D2;
 
 EnemyPopulations_CrateriaPowerBombs:
     dw EnemyHeaders_Alcoon                                               ;A180D5;
@@ -40,8 +40,8 @@ EnemyPopulations_CrateriaPowerBombs:
     dw EnemyHeaders_Alcoon                                               ;A180E5;
     dw $0108,$00D8,$0000,$2800,$0000,$0000,$0000                         ;A180E7;
     dw EnemyHeaders_Alcoon                                               ;A180F5;
-    dw $0178,$00D8,$0000,$2800,$0000,$0000,$0000,$FFFF                   ;A180F7;
-    db $03                                                               ;A18107;
+    dw $0178,$00D8,$0000,$2800,$0000,$0000,$0000                         ;A180F7;
+    dw $FFFF : db $03                                                    ;A18105;
 
 EnemyPopulations_Terminator:
     dw EnemyHeaders_Waver                                                ;A18108;
@@ -61,8 +61,8 @@ EnemyPopulations_Terminator:
     dw EnemyHeaders_Zoomer                                               ;A18178;
     dw $0178,$0230,$0003,$2800,$0000,$0002,$0000                         ;A1817A;
     dw EnemyHeaders_Zoomer                                               ;A18188;
-    dw $0298,$01A0,$0003,$2001,$0000,$0002,$0000,$FFFF                   ;A1818A;
-    db $09                                                               ;A1819A;
+    dw $0298,$01A0,$0003,$2001,$0000,$0002,$0000                         ;A1818A;
+    dw $FFFF : db $09                                                    ;A18198;
 
 EnemyPopulations_FinalMissileBombway_1:
     dw EnemyHeaders_FaceBlock                                            ;A1819B;
@@ -76,8 +76,8 @@ EnemyPopulations_FinalMissileBombway_1:
     dw EnemyHeaders_FaceBlock                                            ;A181DB;
     dw $0100,$00B8,$0000,$A000,$0000,$0000,$0000                         ;A181DD;
     dw EnemyHeaders_FaceBlock                                            ;A181EB;
-    dw $0180,$00B8,$0000,$A000,$0000,$0000,$0000,$FFFF                   ;A181ED;
-    db $00                                                               ;A181FD;
+    dw $0180,$00B8,$0000,$A000,$0000,$0000,$0000                         ;A181ED;
+    dw $FFFF : db $00                                                    ;A181FB;
 
 EnemyPopulations_FinalMissileBombway_0:
     dw EnemyHeaders_FaceBlock                                            ;A181FE;
@@ -91,8 +91,8 @@ EnemyPopulations_FinalMissileBombway_0:
     dw EnemyHeaders_FaceBlock                                            ;A1823E;
     dw $0100,$00B8,$0000,$A000,$0000,$0000,$0000                         ;A18240;
     dw EnemyHeaders_FaceBlock                                            ;A1824E;
-    dw $0180,$00B8,$0000,$A000,$0000,$0000,$0000,$FFFF                   ;A18250;
-    db $00                                                               ;A18260;
+    dw $0180,$00B8,$0000,$A000,$0000,$0000,$0000                         ;A18250;
+    dw $FFFF : db $00                                                    ;A1825E;
 
 EnemyPopulations_Parlor_1:
     dw EnemyHeaders_Zoomer                                               ;A18261;
@@ -126,8 +126,8 @@ EnemyPopulations_Parlor_1:
     dw EnemyHeaders_Zoomer                                               ;A18341;
     dw $0181,$0115,$0002,$2001,$0000,$0001,$0000                         ;A18343;
     dw EnemyHeaders_Ripper                                               ;A18351;
-    dw $03AD,$01E8,$0000,$2000,$0000,$0010,$0000,$FFFF                   ;A18353;
-    db $10                                                               ;A18363;
+    dw $03AD,$01E8,$0000,$2000,$0000,$0010,$0000                         ;A18353;
+    dw $FFFF : db $10                                                    ;A18361;
 
 EnemyPopulations_Flyway_0_1:
     dw EnemyHeaders_Mellow                                               ;A18364;
@@ -153,8 +153,8 @@ EnemyPopulations_Flyway_0_1:
     dw EnemyHeaders_Mellow                                               ;A18404;
     dw $017F,$003E,$0000,$2000,$0000,$0000,$0000                         ;A18406;
     dw EnemyHeaders_Mellow                                               ;A18414;
-    dw $01C2,$0041,$0000,$2000,$0000,$0000,$0000,$FFFF                   ;A18416;
-    db $00                                                               ;A18426;
+    dw $01C2,$0041,$0000,$2000,$0000,$0000,$0000                         ;A18416;
+    dw $FFFF : db $00                                                    ;A18424;
 
 EnemyPopulations_Pit_1:
     dw EnemyHeaders_PirateGreyWalking                                    ;A18427;
@@ -166,8 +166,8 @@ EnemyPopulations_Pit_1:
     dw EnemyHeaders_PirateGreyWalking                                    ;A18457;
     dw $0178,$0070,$0000,$2000,$0004,$8001,$0010                         ;A18459;
     dw EnemyHeaders_PirateGreyWalking                                    ;A18467;
-    dw $0068,$0080,$0000,$2000,$0004,$8001,$0020,$FFFF                   ;A18469;
-    db $05                                                               ;A18479;
+    dw $0068,$0080,$0000,$2000,$0004,$8001,$0020                         ;A18469;
+    dw $FFFF : db $05                                                    ;A18477;
 
 EnemyPopulations_GauntletEntrance:
     dw EnemyHeaders_YappingMaw                                           ;A1847A;
@@ -183,13 +183,13 @@ EnemyPopulations_GauntletEntrance:
     dw EnemyHeaders_Waver                                                ;A184CA;
     dw $0166,$0077,$0000,$2000,$0000,$0000,$0000                         ;A184CC;
     dw EnemyHeaders_YappingMaw                                           ;A184DA;
-    dw $0108,$00C8,$0000,$2000,$0000,$0070,$0001,$FFFF                   ;A184DC;
-    db $03                                                               ;A184EC;
+    dw $0108,$00C8,$0000,$2000,$0000,$0070,$0001                         ;A184DC;
+    dw $FFFF : db $03                                                    ;A184EA;
 
 EnemyPopulations_BombTorizo_0_1:
     dw EnemyHeaders_BombTorizo                                           ;A184ED;
-    dw $00DB,$00B3,$0000,$2000,$0000,$0000,$0000,$FFFF                   ;A184EF;
-    db $00                                                               ;A184FF;
+    dw $00DB,$00B3,$0000,$2000,$0000,$0000,$0000                         ;A184EF;
+    dw $FFFF : db $00                                                    ;A184FD;
 
 EnemyPopulations_GreenPiratesShaft:
     dw EnemyHeaders_PirateGreenWalking                                   ;A18500;
@@ -205,59 +205,52 @@ EnemyPopulations_GreenPiratesShaft:
     dw EnemyHeaders_Beetom                                               ;A18550;
     dw $00B8,$03D8,$0000,$2000,$0000,$0000,$0000                         ;A18552;
     dw EnemyHeaders_Beetom                                               ;A18560;
-    dw $0048,$03D8,$0000,$2000,$0000,$0000,$0000,$FFFF                   ;A18562;
-    db $07                                                               ;A18572;
+    dw $0048,$03D8,$0000,$2000,$0000,$0000,$0000                         ;A18562;
+    dw $FFFF : db $07                                                    ;A18570;
 
 EnemyPopulations_GreenBrinstarElev:
     dw EnemyHeaders_Elevator                                             ;A18573;
-    dw $0080,$00A2,$0000,$2C00,$0000,$0000,$0140,$FFFF                   ;A18575;
-    db $00                                                               ;A18585;
+    dw $0080,$00A2,$0000,$2C00,$0000,$0000,$0140                         ;A18575;
+    dw $FFFF : db $00                                                    ;A18583;
 
 EnemyPopulations_FinalMissile_0:
     dw EnemyHeaders_Eye                                                  ;A18586;
     dw $0032,$0078,$0000,$2C00,$0000,$0000,$8000                         ;A18588;
     dw EnemyHeaders_Eye                                                  ;A18596;
-    dw $0032,$0078,$0000,$2C00,$0000,$0000,$0000,$FFFF                   ;A18598;
-    db $00                                                               ;A185A8;
+    dw $0032,$0078,$0000,$2C00,$0000,$0000,$0000                         ;A18598;
+    dw $FFFF : db $00                                                    ;A185A6;
 
 EnemyPopulations_CrateriaMap:
-    dw $FFFF                                                             ;A185A9;
-    db $00                                                               ;A185AB;
+    dw $FFFF : db $00                                                    ;A185A9;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_EnemyPopulations_A185AC:
-    dw $FFFF                                                             ;A185AC;
-    db $00                                                               ;A185AE;
+    dw $FFFF : db $00                                                    ;A185AC;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 EnemyPopulations_FinalMissile_1:
-    dw $FFFF                                                             ;A185AF;
-    db $00                                                               ;A185B1;
+    dw $FFFF : db $00                                                    ;A185AF;
 
 EnemyPopulations_Climb_2:
     dw EnemyHeaders_PirateSilverNinja                                    ;A185B2;
     dw $0080,$0880,$0000,$2800,$0004,$0000,$0000                         ;A185B4;
     dw EnemyHeaders_PirateSilverNinja                                    ;A185C2;
-    dw $00C0,$0880,$0000,$2800,$0004,$0000,$0000,$FFFF                   ;A185C4;
-    db $02                                                               ;A185D4;
+    dw $00C0,$0880,$0000,$2800,$0004,$0000,$0000                         ;A185C4;
+    dw $FFFF : db $02                                                    ;A185D2;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_EnemyPopulations_A185D5:
-    dw $FFFF                                                             ;A185D5;
-    db $00                                                               ;A185D7;
+    dw $FFFF : db $00                                                    ;A185D5;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 EnemyPopulations_CrateriaSave:
-    dw $FFFF                                                             ;A185D8;
-    db $00                                                               ;A185DA;
+    dw $FFFF : db $00                                                    ;A185D8;
 
 EnemyPopulations_ForgottenHighwayElbow:
-    dw $FFFF                                                             ;A185DB;
-    db $00                                                               ;A185DD;
+    dw $FFFF : db $00                                                    ;A185DB;
 
 EnemyPopulations_Moat:
-    dw $FFFF                                                             ;A185DE;
-    db $00                                                               ;A185E0;
+    dw $FFFF : db $00                                                    ;A185DE;
 
 EnemyPopulations_Climb_0:
     dw EnemyHeaders_Sbug                                                 ;A185E1;
@@ -279,8 +272,8 @@ EnemyPopulations_Climb_0:
     dw EnemyHeaders_Sbug                                                 ;A18661;
     dw $01EE,$0217,$0000,$2400,$0000,$F004,$0050                         ;A18663;
     dw EnemyHeaders_Sbug                                                 ;A18671;
-    dw $0116,$06B9,$0000,$2400,$0000,$BC02,$0050,$FFFF                   ;A18673;
-    db $00                                                               ;A18683;
+    dw $0116,$06B9,$0000,$2400,$0000,$BC02,$0050                         ;A18673;
+    dw $FFFF : db $00                                                    ;A18681;
 
 EnemyPopulations_WestOcean:
     dw EnemyHeaders_Skultera                                             ;A18684;
@@ -296,13 +289,12 @@ EnemyPopulations_WestOcean:
     dw EnemyHeaders_Tripper                                              ;A186D4;
     dw $0388,$0058,$0000,$A000,$0000,$0000,$0010                         ;A186D6;
     dw EnemyHeaders_Tripper                                              ;A186E4;
-    dw $0370,$0160,$0000,$A000,$0000,$0001,$0010,$FFFF                   ;A186E6;
-    db $07                                                               ;A186F6;
+    dw $0370,$0160,$0000,$A000,$0000,$0001,$0010                         ;A186E6;
+    dw $FFFF : db $07                                                    ;A186F4;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_EnemyPopulations_A186F7:
-    dw $FFFF                                                             ;A186F7;
-    db $00                                                               ;A186F9;
+    dw $FFFF : db $00                                                    ;A186F7;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 EnemyPopulations_Parlor_0:
@@ -345,8 +337,8 @@ EnemyPopulations_Parlor_0:
     dw EnemyHeaders_Sbug                                                 ;A1881A;
     dw $010D,$02DB,$0000,$2400,$0000,$AC03,$0080                         ;A1881C;
     dw EnemyHeaders_Sbug                                                 ;A1882A;
-    dw $01A5,$04E0,$0000,$2400,$0000,$E804,$0020,$FFFF                   ;A1882C;
-    db $00                                                               ;A1883C;
+    dw $01A5,$04E0,$0000,$2400,$0000,$E804,$0020                         ;A1882C;
+    dw $FFFF : db $00                                                    ;A1883A;
 
 EnemyPopulations_LandingSite_0_1_2:
     dw EnemyHeaders_ShipTop                                              ;A1883D;
@@ -354,8 +346,8 @@ EnemyPopulations_LandingSite_0_1_2:
     dw EnemyHeaders_ShipBottomEntrance                                   ;A1884D;
     dw $0480,$0478,$0000,$2400,$0000,$0000,$0000                         ;A1884F;
     dw EnemyHeaders_ShipBottomEntrance                                   ;A1885D;
-    dw $0480,$0478,$0000,$2400,$0000,$0000,$0001,$FFFF                   ;A1885F;
-    db $00                                                               ;A1886F;
+    dw $0480,$0478,$0000,$2400,$0000,$0000,$0001                         ;A1885F;
+    dw $FFFF : db $00                                                    ;A1886D;
 
 EnemyPopulations_CrateriaSuper:
     dw EnemyHeaders_Boyon                                                ;A18870;
@@ -365,19 +357,18 @@ EnemyPopulations_CrateriaSuper:
     dw EnemyHeaders_Boyon                                                ;A18890;
     dw $0298,$07A8,$0000,$2000,$0000,$0103,$0020                         ;A18892;
     dw EnemyHeaders_Boyon                                                ;A188A0;
-    dw $02B8,$07A8,$0000,$2000,$0000,$0103,$0020,$FFFF                   ;A188A2;
-    db $00                                                               ;A188B2;
+    dw $02B8,$07A8,$0000,$2000,$0000,$0103,$0020                         ;A188A2;
+    dw $FFFF : db $00                                                    ;A188B0;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_EnemyPopulations_A188B3:
-    dw $FFFF                                                             ;A188B3;
-    db $00                                                               ;A188B5;
+    dw $FFFF : db $00                                                    ;A188B3;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 EnemyPopulations_PreBowling:
     dw EnemyHeaders_HZoomer                                              ;A188B6;
-    dw $0080,$0048,$0003,$2001,$0000,$0001,$0000,$FFFF                   ;A188B8;
-    db $01                                                               ;A188C8;
+    dw $0080,$0048,$0003,$2001,$0000,$0001,$0000                         ;A188B8;
+    dw $FFFF : db $01                                                    ;A188C6;
 
 EnemyPopulations_Climb_1:
     dw EnemyHeaders_PirateGreyWall                                       ;A188C9;
@@ -401,8 +392,8 @@ EnemyPopulations_Climb_1:
     dw EnemyHeaders_PirateGreyWall                                       ;A18959;
     dw $01D0,$0708,$0000,$2000,$0004,$8001,$00A0                         ;A1895B;
     dw EnemyHeaders_PirateGreyWall                                       ;A18969;
-    dw $0130,$07C8,$0000,$2000,$0004,$8000,$00A0,$FFFF                   ;A1896B;
-    db $0B                                                               ;A1897B;
+    dw $0130,$07C8,$0000,$2000,$0004,$8000,$00A0                         ;A1896B;
+    dw $FFFF : db $0B                                                    ;A18979;
 
 EnemyPopulations_BowlingAlleyPath:
     dw EnemyHeaders_Choot                                                ;A1897C;
@@ -416,20 +407,20 @@ EnemyPopulations_BowlingAlleyPath:
     dw EnemyHeaders_Waver                                                ;A189BC;
     dw $00E9,$0075,$0000,$2800,$0000,$0001,$0000                         ;A189BE;
     dw EnemyHeaders_Waver                                                ;A189CC;
-    dw $0136,$0063,$0000,$2800,$0000,$0000,$0000,$FFFF                   ;A189CE;
-    db $06                                                               ;A189DE;
+    dw $0136,$0063,$0000,$2800,$0000,$0000,$0000                         ;A189CE;
+    dw $FFFF : db $06                                                    ;A189DC;
 
 EnemyPopulations_RedBinstarElev:
     dw EnemyHeaders_Elevator                                             ;A189DF;
-    dw $0080,$00C2,$0000,$2C00,$0000,$0000,$0140,$FFFF                   ;A189E1;
-    db $00                                                               ;A189F1;
+    dw $0080,$00C2,$0000,$2C00,$0000,$0000,$0140                         ;A189E1;
+    dw $FFFF : db $00                                                    ;A189EF;
 
 EnemyPopulations_GauntletETank:
     dw EnemyHeaders_YappingMaw                                           ;A189F2;
     dw $0088,$0038,$0000,$2000,$0000,$0070,$0000                         ;A189F4;
     dw EnemyHeaders_Zebbo                                                ;A18A02;
-    dw $0088,$00B8,$0000,$6900,$0000,$0002,$0000,$FFFF                   ;A18A04;
-    db $01                                                               ;A18A14;
+    dw $0088,$00B8,$0000,$6900,$0000,$0002,$0000                         ;A18A04;
+    dw $FFFF : db $01                                                    ;A18A12;
 
 EnemyPopulations_Pit_0:
     dw EnemyHeaders_Sbug                                                 ;A18A15;
@@ -451,8 +442,8 @@ EnemyPopulations_Pit_0:
     dw EnemyHeaders_Sbug                                                 ;A18A95;
     dw $02C9,$00A6,$0000,$2400,$0000,$F002,$0050                         ;A18A97;
     dw EnemyHeaders_Sbug                                                 ;A18AA5;
-    dw $02CC,$00AB,$0000,$2400,$0000,$EC04,$0050,$FFFF                   ;A18AA7;
-    db $00                                                               ;A18AB7;
+    dw $02CC,$00AB,$0000,$2400,$0000,$EC04,$0050                         ;A18AA7;
+    dw $FFFF : db $00                                                    ;A18AB5;
 
 EnemyPopulations_CrabMaze:
     dw EnemyHeaders_Sciser                                               ;A18AB8;
@@ -470,29 +461,28 @@ EnemyPopulations_CrabMaze:
     dw EnemyHeaders_Sciser                                               ;A18B18;
     dw $00B2,$01B8,$0003,$2001,$0000,$0001,$0000                         ;A18B1A;
     dw EnemyHeaders_Sciser                                               ;A18B28;
-    dw $02A8,$01C4,$0003,$2800,$0000,$0003,$0000,$FFFF                   ;A18B2A;
-    db $08                                                               ;A18B3A;
+    dw $02A8,$01C4,$0003,$2800,$0000,$0003,$0000                         ;A18B2A;
+    dw $FFFF : db $08                                                    ;A18B38;
 
 EnemyPopulations_CrateriaTube:
-    dw $FFFF                                                             ;A18B3B;
-    db $00                                                               ;A18B3D;
+    dw $FFFF : db $00                                                    ;A18B3B;
 
 EnemyPopulations_ForgottenHighwayKagos:
     dw EnemyHeaders_Kago                                                 ;A18B3E;
     dw $0050,$0340,$0000,$A000,$0000,$000A,$0000                         ;A18B40;
     dw EnemyHeaders_Kago                                                 ;A18B4E;
-    dw $00A8,$0200,$0000,$A000,$0000,$000A,$0000,$FFFF                   ;A18B50;
-    db $02                                                               ;A18B60;
+    dw $00A8,$0200,$0000,$A000,$0000,$000A,$0000                         ;A18B50;
+    dw $FFFF : db $02                                                    ;A18B5E;
 
 EnemyPopulations_ElevToBlueBrinstar:
     dw EnemyHeaders_Elevator                                             ;A18B61;
-    dw $0080,$00A2,$0000,$2C00,$0000,$0000,$0140,$FFFF                   ;A18B63;
-    db $00                                                               ;A18B73;
+    dw $0080,$00A2,$0000,$2C00,$0000,$0000,$0140                         ;A18B63;
+    dw $FFFF : db $00                                                    ;A18B71;
 
 EnemyPopulations_ForgottenHighwayElev:
     dw EnemyHeaders_Elevator                                             ;A18B74;
-    dw $0080,$00C0,$0000,$2C00,$0000,$0000,$0140,$FFFF                   ;A18B76;
-    db $00                                                               ;A18B86;
+    dw $0080,$00C0,$0000,$2C00,$0000,$0000,$0140                         ;A18B76;
+    dw $FFFF : db $00                                                    ;A18B84;
 
 EnemyPopulations_PreMapFlyway:
     dw EnemyHeaders_Mellow                                               ;A18B87;
@@ -502,8 +492,8 @@ EnemyPopulations_PreMapFlyway:
     dw EnemyHeaders_Mellow                                               ;A18BA7;
     dw $01A7,$005A,$0000,$2000,$0000,$0000,$0000                         ;A18BA9;
     dw EnemyHeaders_Rio                                                  ;A18BB7;
-    dw $014B,$0045,$0000,$2000,$0000,$0000,$0000,$FFFF                   ;A18BB9;
-    db $01                                                               ;A18BC9;
+    dw $014B,$0045,$0000,$2000,$0000,$0000,$0000                         ;A18BB9;
+    dw $FFFF : db $01                                                    ;A18BC7;
 
 EnemyPopulations_LowerMushrooms:
     dw EnemyHeaders_Kago                                                 ;A18BCA;
@@ -513,8 +503,8 @@ EnemyPopulations_LowerMushrooms:
     dw EnemyHeaders_MZoomer                                              ;A18BEA;
     dw $02F8,$0070,$0003,$2000,$0000,$0002,$0000                         ;A18BEC;
     dw EnemyHeaders_MZoomer                                              ;A18BFA;
-    dw $01A8,$0070,$0003,$2001,$0000,$0002,$0000,$FFFF                   ;A18BFC;
-    db $04                                                               ;A18C0C;
+    dw $01A8,$0070,$0003,$2001,$0000,$0002,$0000                         ;A18BFC;
+    dw $FFFF : db $04                                                    ;A18C0A;
 
 EnemyPopulations_LandingSite_3:
     dw EnemyHeaders_ShipTop                                              ;A18C0D;
@@ -566,8 +556,8 @@ EnemyPopulations_LandingSite_3:
     dw EnemyHeaders_Steam                                                ;A18D7D;
     dw $05C6,$04D4,$0000,$2000,$0000,$0000,$0000                         ;A18D7F;
     dw EnemyHeaders_Steam                                                ;A18D8D;
-    dw $0624,$04D4,$0000,$2000,$0000,$0000,$0000,$FFFF                   ;A18D8F;
-    db $00                                                               ;A18D9F;
+    dw $0624,$04D4,$0000,$2000,$0000,$0000,$0000                         ;A18D8F;
+    dw $FFFF : db $00                                                    ;A18D9D;
 
 EnemyPopulations_Parlor_2:
     dw EnemyHeaders_Steam                                                ;A18DA0;
@@ -607,8 +597,8 @@ EnemyPopulations_Parlor_2:
     dw EnemyHeaders_Steam                                                ;A18EB0;
     dw $04AA,$00AE,$0000,$2000,$0000,$0000,$0000                         ;A18EB2;
     dw EnemyHeaders_Steam                                                ;A18EC0;
-    dw $04CC,$00A6,$0000,$2000,$0000,$0000,$0000,$FFFF                   ;A18EC2;
-    db $00                                                               ;A18ED2;
+    dw $04CC,$00A6,$0000,$2000,$0000,$0000,$0000                         ;A18EC2;
+    dw $FFFF : db $00                                                    ;A18ED0;
 
 EnemyPopulations_BombTorizo_2:
     dw EnemyHeaders_DachoraEscape                                        ;A18ED3;
@@ -618,12 +608,11 @@ EnemyPopulations_BombTorizo_2:
     dw EnemyHeaders_EtecoonEscape                                        ;A18EF3;
     dw $00E0,$00B8,$0000,$2000,$0000,$0002,$0000                         ;A18EF5;
     dw EnemyHeaders_EtecoonEscape                                        ;A18F03;
-    dw $00E0,$00B8,$0000,$2000,$0000,$0004,$0000,$FFFF                   ;A18F05;
-    db $04                                                               ;A18F15;
+    dw $00E0,$00B8,$0000,$2000,$0000,$0004,$0000                         ;A18F05;
+    dw $FFFF : db $04                                                    ;A18F13;
 
 EnemyPopulations_Flyway_2:
-    dw $FFFF                                                             ;A18F16;
-    db $00                                                               ;A18F18;
+    dw $FFFF : db $00                                                    ;A18F16;
 
 EnemyPopulations_CrateriaKihunter:
     dw EnemyHeaders_KihunterGreen                                        ;A18F19;
@@ -637,8 +626,8 @@ EnemyPopulations_CrateriaKihunter:
     dw EnemyHeaders_Sciser                                               ;A18F59;
     dw $0198,$01D8,$0003,$2801,$0000,$0001,$0000                         ;A18F5B;
     dw EnemyHeaders_Sciser                                               ;A18F69;
-    dw $0165,$021A,$0003,$2000,$0000,$0001,$0000,$FFFF                   ;A18F6B;
-    db $04                                                               ;A18F7B;
+    dw $0165,$021A,$0003,$2000,$0000,$0001,$0000                         ;A18F6B;
+    dw $FFFF : db $04                                                    ;A18F79;
 
 EnemyPopulations_BrinstarPreMap:
     dw EnemyHeaders_Sidehopper                                           ;A18F7C;
@@ -648,16 +637,14 @@ EnemyPopulations_BrinstarPreMap:
     dw EnemyHeaders_Zeela                                                ;A18F9C;
     dw $01A8,$0058,$0003,$2801,$0000,$0001,$0002                         ;A18F9E;
     dw EnemyHeaders_Zeela                                                ;A18FAC;
-    dw $0049,$0040,$0001,$2000,$0000,$0000,$0002,$FFFF                   ;A18FAE;
-    db $04                                                               ;A18FBE;
+    dw $0049,$0040,$0001,$2000,$0000,$0000,$0002                         ;A18FAE;
+    dw $FFFF : db $04                                                    ;A18FBC;
 
 EnemyPopulations_GreenBrinstarMap:
-    dw $FFFF                                                             ;A18FBF;
-    db $00                                                               ;A18FC1;
+    dw $FFFF : db $00                                                    ;A18FDF;
 
 EnemyPopulations_GreenBrinstarMissileRefill:
-    dw $FFFF                                                             ;A18FC2;
-    db $00                                                               ;A18FC4;
+    dw $FFFF : db $00                                                    ;A18FC2;
 
 EnemyPopulations_SporeSpawnKihunters:
     dw EnemyHeaders_KihunterGreen                                        ;A18FC5;
@@ -671,16 +658,14 @@ EnemyPopulations_SporeSpawnKihunters:
     dw EnemyHeaders_KihunterGreen                                        ;A19005;
     dw $03D7,$0068,$0000,$2800,$0000,$003C,$0000                         ;A19007;
     dw EnemyHeaders_KihunterGreenWings                                   ;A19015;
-    dw $03D7,$0068,$0000,$2C00,$0000,$0020,$0000,$FFFF                   ;A19017;
-    db $03                                                               ;A19027;
+    dw $03D7,$0068,$0000,$2C00,$0000,$0020,$0000                         ;A19017;
+    dw $FFFF : db $03                                                    ;A19025;
 
 EnemyPopulations_EtecoonSuper:
-    dw $FFFF                                                             ;A19028;
-    db $00                                                               ;A1902A;
+    dw $FFFF : db $00                                                    ;A19028;
 
 EnemyPopulations_DachoraEnergyRefill:
-    dw $FFFF                                                             ;A1902B;
-    db $00                                                               ;A1902D;
+    dw $FFFF : db $00                                                    ;A1902B;
 
 EnemyPopulations_SporeSpawnFarming:
     dw EnemyHeaders_Zeb                                                  ;A1902E;
@@ -692,8 +677,8 @@ EnemyPopulations_SporeSpawnFarming:
     dw EnemyHeaders_Zeela                                                ;A1905E;
     dw $0080,$0042,$0002,$2001,$0000,$00FF,$0002                         ;A19060;
     dw EnemyHeaders_Zeela                                                ;A1906E;
-    dw $00B0,$0042,$0002,$2001,$0000,$00FF,$0002,$FFFF                   ;A19070;
-    db $05                                                               ;A19080;
+    dw $00B0,$0042,$0002,$2001,$0000,$00FF,$0002                         ;A19070;
+    dw $FFFF : db $05                                                    ;A1907E;
 
 EnemyPopulations_Statues:
     dw EnemyHeaders_Elevator                                             ;A19081;
@@ -703,12 +688,11 @@ EnemyPopulations_Statues:
     dw EnemyHeaders_TourianStatue                                        ;A190A1;
     dw $008E,$0055,$0000,$2000,$0000,$0002,$0000                         ;A190A3;
     dw EnemyHeaders_TourianStatue                                        ;A190B1;
-    dw $0084,$0088,$0000,$2000,$0000,$0004,$0000,$FFFF                   ;A190B3;
-    db $00                                                               ;A190C3;
+    dw $0084,$0088,$0000,$2000,$0000,$0004,$0000                         ;A190B3;
+    dw $FFFF : db $00                                                    ;A190C1;
 
 EnemyPopulations_HopperETank:
-    dw $FFFF                                                             ;A190C4;
-    db $00                                                               ;A190C6;
+    dw $FFFF : db $00                                                    ;A190C4;
 
 EnemyPopulations_BetaPowerBomb:
     dw EnemyHeaders_YappingMaw                                           ;A190C7;
@@ -720,8 +704,8 @@ EnemyPopulations_BetaPowerBomb:
     dw EnemyHeaders_SidehopperLarge                                      ;A190F7;
     dw $0170,$0058,$0000,$2000,$0000,$8000,$0000                         ;A190F9;
     dw EnemyHeaders_SidehopperLarge                                      ;A19107;
-    dw $0078,$0058,$0000,$2000,$0000,$8000,$0000,$FFFF                   ;A19109;
-    db $03                                                               ;A19119;
+    dw $0078,$0058,$0000,$2000,$0000,$8000,$0000                         ;A19109;
+    dw $FFFF : db $03                                                    ;A19117;
 
 EnemyPopulations_WaterwayETank:
     dw EnemyHeaders_Skultera                                             ;A1911A;
@@ -737,8 +721,8 @@ EnemyPopulations_WaterwayETank:
     dw EnemyHeaders_Zero                                                 ;A1916A;
     dw $0430,$00B8,$0003,$2001,$0000,$0000,$0000                         ;A1916C;
     dw EnemyHeaders_Zero                                                 ;A1917A;
-    dw $05F0,$0058,$0002,$2001,$0000,$0000,$0000,$FFFF                   ;A1917C;
-    db $07                                                               ;A1918C;
+    dw $05F0,$0058,$0002,$2001,$0000,$0000,$0000                         ;A1917C;
+    dw $FFFF : db $07                                                    ;A1918A;
 
 EnemyPopulations_ConstructionZone_1:
     dw EnemyHeaders_Zoomer                                               ;A1918D;
@@ -754,8 +738,8 @@ EnemyPopulations_ConstructionZone_1:
     dw EnemyHeaders_FaceBlock                                            ;A191DD;
     dw $00E8,$0166,$0000,$A000,$0000,$0000,$0000                         ;A191DF;
     dw EnemyHeaders_FaceBlock                                            ;A191ED;
-    dw $0018,$0116,$0000,$A000,$0000,$0000,$0000,$FFFF                   ;A191EF;
-    db $02                                                               ;A191FF;
+    dw $0018,$0116,$0000,$A000,$0000,$0000,$0000                         ;A191EF;
+    dw $FFFF : db $02                                                    ;A191FD;
 
 EnemyPopulations_BlueBrinstarETank_1:
     dw EnemyHeaders_Zoomer                                               ;A19200;
@@ -777,8 +761,8 @@ EnemyPopulations_BlueBrinstarETank_1:
     dw EnemyHeaders_FaceBlock                                            ;A19280;
     dw $0268,$0088,$0000,$A000,$0000,$0000,$0000                         ;A19282;
     dw EnemyHeaders_FaceBlock                                            ;A19290;
-    dw $0288,$0088,$0000,$A000,$0000,$0000,$0000,$FFFF                   ;A19292;
-    db $05                                                               ;A192A2;
+    dw $0288,$0088,$0000,$A000,$0000,$0000,$0000                         ;A19292;
+    dw $FFFF : db $05                                                    ;A192A0;
 
 EnemyPopulations_NoobBridge:
     dw EnemyHeaders_Cacatac                                              ;A192A3;
@@ -796,8 +780,8 @@ EnemyPopulations_NoobBridge:
     dw EnemyHeaders_Zeela                                                ;A19303;
     dw $0300,$0076,$0002,$2801,$0000,$0000,$0002                         ;A19305;
     dw EnemyHeaders_Zeela                                                ;A19313;
-    dw $0368,$0076,$0002,$2801,$0000,$0000,$0002,$FFFF                   ;A19315;
-    db $08                                                               ;A19325;
+    dw $0368,$0076,$0002,$2801,$0000,$0000,$0002                         ;A19315;
+    dw $FFFF : db $08                                                    ;A19323;
 
 EnemyPopulations_MorphBall_1:
     dw EnemyHeaders_Elevator                                             ;A19326;
@@ -815,12 +799,11 @@ EnemyPopulations_MorphBall_1:
     dw EnemyHeaders_FaceBlock                                            ;A19386;
     dw $0488,$02B8,$0000,$A000,$0000,$0000,$0000                         ;A19388;
     dw EnemyHeaders_FaceBlock                                            ;A19396;
-    dw $0428,$02B8,$0000,$A000,$0000,$0000,$0000,$FFFF                   ;A19398;
-    db $03                                                               ;A193A8;
+    dw $0428,$02B8,$0000,$A000,$0000,$0000,$0000                         ;A19398;
+    dw $FFFF : db $03                                                    ;A193A6;
 
 EnemyPopulations_WarehouseSave:
-    dw $FFFF                                                             ;A193A9;
-    db $00                                                               ;A193AB;
+    dw $FFFF : db $00                                                    ;A193A9;
 
 EnemyPopulations_MorphBall_0:
     dw EnemyHeaders_Eye                                                  ;A193AC;
@@ -836,8 +819,8 @@ EnemyPopulations_MorphBall_0:
     dw EnemyHeaders_FaceBlock                                            ;A193FC;
     dw $0488,$02B8,$0000,$A000,$0000,$0040,$0000                         ;A193FE;
     dw EnemyHeaders_FaceBlock                                            ;A1940C;
-    dw $0428,$02B8,$0000,$A000,$0000,$0040,$0001,$FFFF                   ;A1940E;
-    db $00                                                               ;A1941E;
+    dw $0428,$02B8,$0000,$A000,$0000,$0040,$0001                         ;A1940E;
+    dw $FFFF : db $00                                                    ;A1941C;
 
 EnemyPopulations_WarehouseZeela:
     dw EnemyHeaders_Zeela                                                ;A1941F;
@@ -845,8 +828,8 @@ EnemyPopulations_WarehouseZeela:
     dw EnemyHeaders_Zeela                                                ;A1942F;
     dw $006A,$0068,$0001,$2800,$0000,$0002,$0002                         ;A19431;
     dw EnemyHeaders_Zeela                                                ;A1943F;
-    dw $002B,$00E8,$0003,$2800,$0000,$0002,$0002,$FFFF                   ;A19441;
-    db $03                                                               ;A19451;
+    dw $002B,$00E8,$0003,$2800,$0000,$0002,$0002                         ;A19441;
+    dw $FFFF : db $03                                                    ;A1944F;
 
 EnemyPopulations_RedTower:
     dw EnemyHeaders_Ripper                                               ;A19452;
@@ -870,8 +853,8 @@ EnemyPopulations_RedTower:
     dw EnemyHeaders_Geega                                                ;A194E2;
     dw $0018,$0530,$0000,$6100,$0000,$0000,$0020                         ;A194E4;
     dw EnemyHeaders_Geega                                                ;A194F2;
-    dw $00C8,$0550,$0000,$6100,$0000,$0001,$0020,$FFFF                   ;A194F4;
-    db $0B                                                               ;A19504;
+    dw $00C8,$0550,$0000,$6100,$0000,$0001,$0020                         ;A194F4;
+    dw $FFFF : db $0B                                                    ;A19502;
 
 EnemyPopulations_BlueBrinstarBoulders:
     dw EnemyHeaders_Boulder                                              ;A19505;
@@ -879,16 +862,14 @@ EnemyPopulations_BlueBrinstarBoulders:
     dw EnemyHeaders_Boulder                                              ;A19515;
     dw $00F0,$00C0,$0080,$2000,$0000,$0200,$A050                         ;A19517;
     dw EnemyHeaders_Boulder                                              ;A19525;
-    dw $0090,$00C0,$0080,$2000,$0000,$0200,$A050,$FFFF                   ;A19527;
-    db $00                                                               ;A19537;
+    dw $0090,$00C0,$0080,$2000,$0000,$0200,$A050                         ;A19527;
+    dw $FFFF : db $00                                                    ;A19535;
 
 EnemyPopulations_BillyMays:
-    dw $FFFF                                                             ;A19538;
-    db $00                                                               ;A1953A;
+    dw $FFFF : db $00                                                    ;A19538;
 
 EnemyPopulations_BigPinkSaveRoom:
-    dw $FFFF                                                             ;A1953B;
-    db $00                                                               ;A1953D;
+    dw $FFFF : db $00                                                    ;A1953B;
 
 EnemyPopulations_BigPink:
     dw EnemyHeaders_Rio                                                  ;A1953E;
@@ -910,12 +891,11 @@ EnemyPopulations_BigPink:
     dw EnemyHeaders_Zeb                                                  ;A195BE;
     dw $02B0,$0228,$0000,$6900,$0000,$0000,$0000                         ;A195C0;
     dw EnemyHeaders_Zeb                                                  ;A195CE;
-    dw $0320,$0549,$0000,$6900,$0000,$0000,$0000,$FFFF                   ;A195D0;
-    db $0A                                                               ;A195E0;
+    dw $0320,$0549,$0000,$6900,$0000,$0000,$0000                         ;A195D0;
+    dw $FFFF : db $0A                                                    ;A195DE;
 
 EnemyPopulations_EtecoonSave:
-    dw $FFFF                                                             ;A195E1;
-    db $00                                                               ;A195E3;
+    dw $FFFF : db $00                                                    ;A195E1;
 
 EnemyPopulations_BelowSpazer:
     dw EnemyHeaders_YappingMaw                                           ;A195E4;
@@ -923,16 +903,14 @@ EnemyPopulations_BelowSpazer:
     dw EnemyHeaders_YappingMaw                                           ;A195F4;
     dw $0080,$01C8,$0000,$2000,$0000,$0030,$0001                         ;A195F6;
     dw EnemyHeaders_Cacatac                                              ;A19604;
-    dw $0108,$0193,$0000,$2000,$0000,$0100,$0200,$FFFF                   ;A19606;
-    db $01                                                               ;A19616;
+    dw $0108,$0193,$0000,$2000,$0000,$0100,$0200                         ;A19606;
+    dw $FFFF : db $01                                                    ;A19614;
 
 EnemyPopulations_GreenBrinstarSave:
-    dw $FFFF                                                             ;A19617;
-    db $00                                                               ;A19619;
+    dw $FFFF : db $00                                                    ;A19617;
 
 EnemyPopulations_Spazer:
-    dw $FFFF                                                             ;A1961A;
-    db $00                                                               ;A1961C;
+    dw $FFFF : db $00                                                    ;A1961A;
 
 EnemyPopulations_PinkBrinstarPowerBombs:
     dw EnemyHeaders_ShutterShootable                                     ;A1961D;
@@ -942,29 +920,24 @@ EnemyPopulations_PinkBrinstarPowerBombs:
     dw EnemyHeaders_SidehopperLarge                                      ;A1963D;
     dw $00F1,$00A6,$0000,$2000,$0000,$0000,$0000                         ;A1963F;
     dw EnemyHeaders_SidehopperLarge                                      ;A1964D;
-    dw $0068,$0064,$0000,$2000,$0000,$8000,$0000,$FFFF                   ;A1964F;
-    db $02                                                               ;A1965F;
+    dw $0068,$0064,$0000,$2000,$0000,$8000,$0000                         ;A1964F;
+    dw $FFFF : db $02                                                    ;A1965D;
 
 EnemyPopulations_RedTowerRefill:
-    dw $FFFF                                                             ;A19660;
-    db $00                                                               ;A19662;
+    dw $FFFF : db $00                                                    ;A19660;
 
 EnemyPopulations_KraidRefill:
-    dw $FFFF                                                             ;A19663;
-    db $00                                                               ;A19665;
+    dw $FFFF : db $00                                                    ;A19663;
 
 EnemyPopulations_VariaSuit:
-    dw $FFFF                                                             ;A19666;
-    db $00                                                               ;A19668;
+    dw $FFFF : db $00                                                    ;A19666;
 
 EnemyPopulations_RedBrinstarSave:
-    dw $FFFF                                                             ;A19669;
-    db $00                                                               ;A1966B;
+    dw $FFFF : db $00                                                    ;A19669;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_EnemyPopulations_A1966C:
-    dw $FFFF                                                             ;A1966C;
-    db $00                                                               ;A1966E;
+    dw $FFFF : db $00                                                    ;A1966C;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 EnemyPopulations_BlueBrinstarETank_0:

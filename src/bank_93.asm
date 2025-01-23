@@ -595,6 +595,7 @@ HyperBeamDamageValue:
     dw $03E8                                                             ;9383BF;
 
 SamusProjectileDataPointers_UnchargedBeams:
+; Uncharged beams. Indexed by beam type
     dw ProjectileDataTable_Uncharged_Power                               ;9383C1;
     dw ProjectileDataTable_Uncharged_Wave                                ;9383C3;
     dw ProjectileDataTable_Uncharged_Ice                                 ;9383C5;
@@ -609,6 +610,7 @@ SamusProjectileDataPointers_UnchargedBeams:
     dw ProjectileDataTable_Uncharged_PlasmaIceWave                       ;9383D7;
 
 SamusProjectileDataPointers_ChargedBeams:
+; Charged beams. Indexed by beam type. Used by ice SBA
     dw ProjectileDataTable_Charged_Power                                 ;9383D9;
     dw ProjectileDataTable_Charged_Wave                                  ;9383DB;
     dw ProjectileDataTable_Charged_Ice                                   ;9383DD;
@@ -623,6 +625,7 @@ SamusProjectileDataPointers_ChargedBeams:
     dw ProjectileDataTable_Charged_PlasmaIceWave                         ;9383EF;
 
 SamusProjectileDataPointers_NonBeam:
+; Non-beam projectiles. Indexed by projectile type. Used for (super) missile, (power) bomb
     dw ProjectileDataTable_NonBeam_Missile                               ;9383F1;
     dw ProjectileDataTable_NonBeam_Missile                               ;9383F3;
     dw ProjectileDataTable_NonBeam_SuperMissile                          ;9383F5;
@@ -634,6 +637,7 @@ SamusProjectileDataPointers_NonBeam:
     dw ProjectileDataTable_NonBeam_MissileExplosion                      ;938401;
 
 SamusProjectileDataPointers_ShinesparkEcho_SpazerSBATrail:
+; Shinespark echo and spazer SBA trail projectile. Indexed by projectile type - 22h
     dw $0000                                                             ;938403;
     dw $0000                                                             ;938405;
     dw ProjectileDataTable_NonBeam_SpazerSBATrail                        ;938407;
@@ -644,6 +648,7 @@ SamusProjectileDataPointers_ShinesparkEcho_SpazerSBATrail:
     dw ProjectileDataTable_NonBeam_ShinesparkEcho                        ;938411;
 
 SamusProjectileDataPointers_SBA:
+; Non-ice SBA projectiles. Indexed by beam type
     dw $0000                                                             ;938413;
     dw ProjectileDataTable_NonBeam_WaveSBA                               ;938415;
     dw $0000                                                             ;938417;
@@ -658,3428 +663,2492 @@ SamusProjectileDataPointers_SBA:
     dw $0000                                                             ;938429;
 
 SamusProjectileDataPointers_SuperMissileLink:
+; Super missile link. Indexed by projectile type (always 2)
     dw $0000                                                             ;93842B;
     dw $0000                                                             ;93842D;
     dw ProjectileDataTable_NonBeam_SuperMissileLink                      ;93842F;
 
 ProjectileDataTable_Uncharged_Power:
-    dw $0014                                                             ;938431;
-    dw InstList_SamusProjectile_Power_Up                                 ;938433;
-    dw InstList_SamusProjectile_Power_UpRight                            ;938435;
-    dw InstList_SamusProjectile_Power_Right                              ;938437;
-    dw InstList_SamusProjectile_Power_DownRight                          ;938439;
-    dw InstList_SamusProjectile_Power_Down                               ;93843B;
-    dw InstList_SamusProjectile_Power_Down                               ;93843D;
-    dw InstList_SamusProjectile_Power_DownLeft                           ;93843F;
-    dw InstList_SamusProjectile_Power_Left                               ;938441;
-    dw InstList_SamusProjectile_Power_UpLeft                             ;938443;
-    dw InstList_SamusProjectile_Power_Up                                 ;938445;
+    dw $0014                                                             ;938431; Damage
+    dw InstList_SamusProjectile_Power_Up                                 ;938433; Up, facing right
+    dw InstList_SamusProjectile_Power_UpRight                            ;938435; Up-right
+    dw InstList_SamusProjectile_Power_Right                              ;938437; Right
+    dw InstList_SamusProjectile_Power_DownRight                          ;938439; Down-right
+    dw InstList_SamusProjectile_Power_Down                               ;93843B; Down, facing right
+    dw InstList_SamusProjectile_Power_Down                               ;93843D; Down, facing left
+    dw InstList_SamusProjectile_Power_DownLeft                           ;93843F; Down-left
+    dw InstList_SamusProjectile_Power_Left                               ;938441; Left
+    dw InstList_SamusProjectile_Power_UpLeft                             ;938443; Up-left
+    dw InstList_SamusProjectile_Power_Up                                 ;938445; Up, facing left
 
 ProjectileDataTable_Uncharged_Spazer:
-    dw $0028                                                             ;938447;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_Up_0                    ;938449;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_UpRight_0               ;93844B;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_Right_0                 ;93844D;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_DownRight_0             ;93844F;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_Down_0                  ;938451;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_Down_0                  ;938453;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_DownLeft_0              ;938455;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_Left_0                  ;938457;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_UpLeft_0                ;938459;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_Up_0                    ;93845B;
+    dw $0028                                                             ;938447; Damage
+    dw InstList_SamusProjectile_Spazer_SpazerIce_Up_0                    ;938449; Up, facing right
+    dw InstList_SamusProjectile_Spazer_SpazerIce_UpRight_0               ;93844B; Up-right
+    dw InstList_SamusProjectile_Spazer_SpazerIce_Right_0                 ;93844D; Right
+    dw InstList_SamusProjectile_Spazer_SpazerIce_DownRight_0             ;93844F; Down-right
+    dw InstList_SamusProjectile_Spazer_SpazerIce_Down_0                  ;938451; Down, facing right
+    dw InstList_SamusProjectile_Spazer_SpazerIce_Down_0                  ;938453; Down, facing left
+    dw InstList_SamusProjectile_Spazer_SpazerIce_DownLeft_0              ;938455; Down-left
+    dw InstList_SamusProjectile_Spazer_SpazerIce_Left_0                  ;938457; Left
+    dw InstList_SamusProjectile_Spazer_SpazerIce_UpLeft_0                ;938459; Up-left
+    dw InstList_SamusProjectile_Spazer_SpazerIce_Up_0                    ;93845B; Up, facing left
 
 ProjectileDataTable_Uncharged_SpazerIce:
-    dw $003C                                                             ;93845D;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_Up_0                    ;93845F;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_UpRight_0               ;938461;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_Right_0                 ;938463;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_DownRight_0             ;938465;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_Down_0                  ;938467;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_Down_0                  ;938469;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_DownLeft_0              ;93846B;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_Left_0                  ;93846D;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_UpLeft_0                ;93846F;
-    dw InstList_SamusProjectile_Spazer_SpazerIce_Up_0                    ;938471;
+    dw $003C                                                             ;93845D; Damage
+    dw InstList_SamusProjectile_Spazer_SpazerIce_Up_0                    ;93845F; Up, facing right
+    dw InstList_SamusProjectile_Spazer_SpazerIce_UpRight_0               ;938461; Up-right
+    dw InstList_SamusProjectile_Spazer_SpazerIce_Right_0                 ;938463; Right
+    dw InstList_SamusProjectile_Spazer_SpazerIce_DownRight_0             ;938465; Down-right
+    dw InstList_SamusProjectile_Spazer_SpazerIce_Down_0                  ;938467; Down, facing right
+    dw InstList_SamusProjectile_Spazer_SpazerIce_Down_0                  ;938469; Down, facing left
+    dw InstList_SamusProjectile_Spazer_SpazerIce_DownLeft_0              ;93846B; Down-left
+    dw InstList_SamusProjectile_Spazer_SpazerIce_Left_0                  ;93846D; Left
+    dw InstList_SamusProjectile_Spazer_SpazerIce_UpLeft_0                ;93846F; Up-left
+    dw InstList_SamusProjectile_Spazer_SpazerIce_Up_0                    ;938471; Up, facing left
 
 ProjectileDataTable_Uncharged_SpazerIceWave:
-    dw $0064                                                             ;938473;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Up              ;938475;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_UpRight         ;938477;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Right           ;938479;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_DownRight       ;93847B;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Down            ;93847D;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Down            ;93847F;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_DownLeft        ;938481;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Left            ;938483;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_UpLeft          ;938485;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Up              ;938487;
+    dw $0064                                                             ;938473; Damage
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Up              ;938475; Up, facing right
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_UpRight         ;938477; Up-right
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Right           ;938479; Right
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_DownRight       ;93847B; Down-right
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Down            ;93847D; Down, facing right
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Down            ;93847F; Down, facing left
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_DownLeft        ;938481; Down-left
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Left            ;938483; Left
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_UpLeft          ;938485; Up-left
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Up              ;938487; Up, facing left
 
 ProjectileDataTable_Uncharged_PlasmaIceWave:
-    dw $012C                                                             ;938489;
-    dw InstList_SamusProjectile_PlasmaIceWave_Down_Up                    ;93848B;
-    dw InstList_SamusProjectile_PlasmaIceWave_DownLeft_UpRight           ;93848D;
-    dw InstList_SamusProj_PlasmaWave_PlasmaIceWave_Left_Right_0          ;93848F;
-    dw InstList_SamusProjectile_PlasmaIceWave_DownRight_UpLeft           ;938491;
-    dw InstList_SamusProjectile_PlasmaIceWave_Down_Up                    ;938493;
-    dw InstList_SamusProjectile_PlasmaIceWave_Down_Up                    ;938495;
-    dw InstList_SamusProjectile_PlasmaIceWave_DownLeft_UpRight           ;938497;
-    dw InstList_SamusProj_PlasmaWave_PlasmaIceWave_Left_Right_0          ;938499;
-    dw InstList_SamusProjectile_PlasmaIceWave_DownRight_UpLeft           ;93849B;
-    dw InstList_SamusProjectile_PlasmaIceWave_Down_Up                    ;93849D;
+    dw $012C                                                             ;938489; Damage
+    dw InstList_SamusProjectile_PlasmaIceWave_Down_Up                    ;93848B; Up, facing right
+    dw InstList_SamusProjectile_PlasmaIceWave_DownLeft_UpRight           ;93848D; Up-right
+    dw InstList_SamusProj_PlasmaWave_PlasmaIceWave_Left_Right_0          ;93848F; Right
+    dw InstList_SamusProjectile_PlasmaIceWave_DownRight_UpLeft           ;938491; Down-right
+    dw InstList_SamusProjectile_PlasmaIceWave_Down_Up                    ;938493; Down, facing right
+    dw InstList_SamusProjectile_PlasmaIceWave_Down_Up                    ;938495; Down, facing left
+    dw InstList_SamusProjectile_PlasmaIceWave_DownLeft_UpRight           ;938497; Down-left
+    dw InstList_SamusProj_PlasmaWave_PlasmaIceWave_Left_Right_0          ;938499; Left
+    dw InstList_SamusProjectile_PlasmaIceWave_DownRight_UpLeft           ;93849B; Up-left
+    dw InstList_SamusProjectile_PlasmaIceWave_Down_Up                    ;93849D; Up, facing left
 
 ProjectileDataTable_Uncharged_Ice:
-    dw $001E                                                             ;93849F;
-    dw InstList_SamusProjectile_Ice                                      ;9384A1;
-    dw InstList_SamusProjectile_Ice                                      ;9384A3;
-    dw InstList_SamusProjectile_Ice                                      ;9384A5;
-    dw InstList_SamusProjectile_Ice                                      ;9384A7;
-    dw InstList_SamusProjectile_Ice                                      ;9384A9;
-    dw InstList_SamusProjectile_Ice                                      ;9384AB;
-    dw InstList_SamusProjectile_Ice                                      ;9384AD;
-    dw InstList_SamusProjectile_Ice                                      ;9384AF;
-    dw InstList_SamusProjectile_Ice                                      ;9384B1;
-    dw InstList_SamusProjectile_Ice                                      ;9384B3;
+    dw $001E                                                             ;93849F; Damage
+    dw InstList_SamusProjectile_Ice                                      ;9384A1; Up, facing right
+    dw InstList_SamusProjectile_Ice                                      ;9384A3; Up-right
+    dw InstList_SamusProjectile_Ice                                      ;9384A5; Right
+    dw InstList_SamusProjectile_Ice                                      ;9384A7; Down-right
+    dw InstList_SamusProjectile_Ice                                      ;9384A9; Down, facing right
+    dw InstList_SamusProjectile_Ice                                      ;9384AB; Down, facing left
+    dw InstList_SamusProjectile_Ice                                      ;9384AD; Down-left
+    dw InstList_SamusProjectile_Ice                                      ;9384AF; Left
+    dw InstList_SamusProjectile_Ice                                      ;9384B1; Up-left
+    dw InstList_SamusProjectile_Ice                                      ;9384B3; Up, facing left
 
 ProjectileDataTable_Uncharged_Wave:
-    dw $0032                                                             ;9384B5;
-    dw InstList_SamusProjectile_Wave_IceWave_Up                          ;9384B7;
-    dw InstList_SamusProjectile_Wave_IceWave_DownLeft_UpRight            ;9384B9;
-    dw InstList_SamusProjectile_Wave_IceWave_Left_Right                  ;9384BB;
-    dw InstList_SamusProjectile_Wave_IceWave_DownRight_UpLeft            ;9384BD;
-    dw InstList_SamusProjectile_Wave_IceWave_Down                        ;9384BF;
-    dw InstList_SamusProjectile_Wave_IceWave_Down                        ;9384C1;
-    dw InstList_SamusProjectile_Wave_IceWave_DownLeft_UpRight            ;9384C3;
-    dw InstList_SamusProjectile_Wave_IceWave_Left_Right                  ;9384C5;
-    dw InstList_SamusProjectile_Wave_IceWave_DownRight_UpLeft            ;9384C7;
-    dw InstList_SamusProjectile_Wave_IceWave_Up                          ;9384C9;
+    dw $0032                                                             ;9384B5; Damage
+    dw InstList_SamusProjectile_Wave_IceWave_Up                          ;9384B7; Up, facing right
+    dw InstList_SamusProjectile_Wave_IceWave_DownLeft_UpRight            ;9384B9; Up-right
+    dw InstList_SamusProjectile_Wave_IceWave_Left_Right                  ;9384BB; Right
+    dw InstList_SamusProjectile_Wave_IceWave_DownRight_UpLeft            ;9384BD; Down-right
+    dw InstList_SamusProjectile_Wave_IceWave_Down                        ;9384BF; Down, facing right
+    dw InstList_SamusProjectile_Wave_IceWave_Down                        ;9384C1; Down, facing left
+    dw InstList_SamusProjectile_Wave_IceWave_DownLeft_UpRight            ;9384C3; Down-left
+    dw InstList_SamusProjectile_Wave_IceWave_Left_Right                  ;9384C5; Left
+    dw InstList_SamusProjectile_Wave_IceWave_DownRight_UpLeft            ;9384C7; Up-left
+    dw InstList_SamusProjectile_Wave_IceWave_Up                          ;9384C9; Up, facing left
 
 ProjectileDataTable_Uncharged_Plasma:
-    dw $0096                                                             ;9384CB;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_Down_Up_0               ;9384CD;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_DownLeft_UpRight_0      ;9384CF;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_Left_Right_0            ;9384D1;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_DownRight_UpLeft_0      ;9384D3;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_Down_Up_0               ;9384D5;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_Down_Up_0               ;9384D7;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_DownLeft_UpRight_0      ;9384D9;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_Left_Right_0            ;9384DB;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_DownRight_UpLeft_0      ;9384DD;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_Down_Up_0               ;9384DF;
+    dw $0096                                                             ;9384CB; Damage
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_Down_Up_0               ;9384CD; Up, facing right
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_DownLeft_UpRight_0      ;9384CF; Up-right
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_Left_Right_0            ;9384D1; Right
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_DownRight_UpLeft_0      ;9384D3; Down-right
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_Down_Up_0               ;9384D5; Down, facing right
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_Down_Up_0               ;9384D7; Down, facing left
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_DownLeft_UpRight_0      ;9384D9; Down-left
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_Left_Right_0            ;9384DB; Left
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_DownRight_UpLeft_0      ;9384DD; Up-left
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_Down_Up_0               ;9384DF; Up, facing left
 
 ProjectileDataTable_Uncharged_IceWave:
-    dw $003C                                                             ;9384E1;
-    dw InstList_SamusProjectile_Wave_IceWave_Up                          ;9384E3;
-    dw InstList_SamusProjectile_Wave_IceWave_DownLeft_UpRight            ;9384E5;
-    dw InstList_SamusProjectile_Wave_IceWave_Left_Right                  ;9384E7;
-    dw InstList_SamusProjectile_Wave_IceWave_DownRight_UpLeft            ;9384E9;
-    dw InstList_SamusProjectile_Wave_IceWave_Down                        ;9384EB;
-    dw InstList_SamusProjectile_Wave_IceWave_Down                        ;9384ED;
-    dw InstList_SamusProjectile_Wave_IceWave_DownLeft_UpRight            ;9384EF;
-    dw InstList_SamusProjectile_Wave_IceWave_Left_Right                  ;9384F1;
-    dw InstList_SamusProjectile_Wave_IceWave_DownRight_UpLeft            ;9384F3;
-    dw InstList_SamusProjectile_Wave_IceWave_Up                          ;9384F5;
+    dw $003C                                                             ;9384E1; Damage
+    dw InstList_SamusProjectile_Wave_IceWave_Up                          ;9384E3; Up, facing right
+    dw InstList_SamusProjectile_Wave_IceWave_DownLeft_UpRight            ;9384E5; Up-right
+    dw InstList_SamusProjectile_Wave_IceWave_Left_Right                  ;9384E7; Right
+    dw InstList_SamusProjectile_Wave_IceWave_DownRight_UpLeft            ;9384E9; Down-right
+    dw InstList_SamusProjectile_Wave_IceWave_Down                        ;9384EB; Down, facing right
+    dw InstList_SamusProjectile_Wave_IceWave_Down                        ;9384ED; Down, facing left
+    dw InstList_SamusProjectile_Wave_IceWave_DownLeft_UpRight            ;9384EF; Down-left
+    dw InstList_SamusProjectile_Wave_IceWave_Left_Right                  ;9384F1; Left
+    dw InstList_SamusProjectile_Wave_IceWave_DownRight_UpLeft            ;9384F3; Up-left
+    dw InstList_SamusProjectile_Wave_IceWave_Up                          ;9384F5; Up, facing left
 
 ProjectileDataTable_Uncharged_SpazerWave:
-    dw $0046                                                             ;9384F7;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Up              ;9384F9;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_UpRight         ;9384FB;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Right           ;9384FD;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_DownRight       ;9384FF;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Down            ;938501;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Down            ;938503;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_DownLeft        ;938505;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Left            ;938507;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_UpLeft          ;938509;
-    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Up              ;93850B;
+    dw $0046                                                             ;9384F7; Damage
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Up              ;9384F9; Up, facing right
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_UpRight         ;9384FB; Up-right
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Right           ;9384FD; Right
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_DownRight       ;9384FF; Down-right
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Down            ;938501; Down, facing right
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Down            ;938503; Down, facing left
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_DownLeft        ;938505; Down-left
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Left            ;938507; Left
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_UpLeft          ;938509; Up-left
+    dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Up              ;93850B; Up, facing left
 
 ProjectileDataTable_Uncharged_PlasmaWave:
-    dw $00FA                                                             ;93850D;
-    dw InstList_SamusProjectile_PlasmaWave_Down_Up                       ;93850F;
-    dw InstList_SamusProjectile_PlasmaWave_DownLeft_UpRight              ;938511;
-    dw InstList_SamusProj_PlasmaWave_PlasmaIceWave_Left_Right_0          ;938513;
-    dw InstList_SamusProjectile_PlasmaWave_DownRight_UpLeft              ;938515;
-    dw InstList_SamusProjectile_PlasmaWave_Down_Up                       ;938517;
-    dw InstList_SamusProjectile_PlasmaWave_Down_Up                       ;938519;
-    dw InstList_SamusProjectile_PlasmaWave_DownLeft_UpRight              ;93851B;
-    dw InstList_SamusProj_PlasmaWave_PlasmaIceWave_Left_Right_0          ;93851D;
-    dw InstList_SamusProjectile_PlasmaWave_DownRight_UpLeft              ;93851F;
-    dw InstList_SamusProjectile_PlasmaWave_Down_Up                       ;938521;
+    dw $00FA                                                             ;93850D; Damage
+    dw InstList_SamusProjectile_PlasmaWave_Down_Up                       ;93850F; Up, facing right
+    dw InstList_SamusProjectile_PlasmaWave_DownLeft_UpRight              ;938511; Up-right
+    dw InstList_SamusProj_PlasmaWave_PlasmaIceWave_Left_Right_0          ;938513; Right
+    dw InstList_SamusProjectile_PlasmaWave_DownRight_UpLeft              ;938515; Down-right
+    dw InstList_SamusProjectile_PlasmaWave_Down_Up                       ;938517; Down, facing right
+    dw InstList_SamusProjectile_PlasmaWave_Down_Up                       ;938519; Down, facing left
+    dw InstList_SamusProjectile_PlasmaWave_DownLeft_UpRight              ;93851B; Down-left
+    dw InstList_SamusProj_PlasmaWave_PlasmaIceWave_Left_Right_0          ;93851D; Left
+    dw InstList_SamusProjectile_PlasmaWave_DownRight_UpLeft              ;93851F; Up-left
+    dw InstList_SamusProjectile_PlasmaWave_Down_Up                       ;938521; Up, facing left
 
 ProjectileDataTable_Uncharged_PlasmaIce:
-    dw $00C8                                                             ;938523;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_Down_Up_0               ;938525;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_DownLeft_UpRight_0      ;938527;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_Left_Right_0            ;938529;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_DownRight_UpLeft_0      ;93852B;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_Down_Up_0               ;93852D;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_Down_Up_0               ;93852F;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_DownLeft_UpRight_0      ;938531;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_Left_Right_0            ;938533;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_DownRight_UpLeft_0      ;938535;
-    dw InstList_SamusProjectile_Plasma_PlasmaIce_Down_Up_0               ;938537;
+    dw $00C8                                                             ;938523; Damage
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_Down_Up_0               ;938525; Up, facing right
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_DownLeft_UpRight_0      ;938527; Up-right
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_Left_Right_0            ;938529; Right
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_DownRight_UpLeft_0      ;93852B; Down-right
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_Down_Up_0               ;93852D; Down, facing right
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_Down_Up_0               ;93852F; Down, facing left
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_DownLeft_UpRight_0      ;938531; Down-left
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_Left_Right_0            ;938533; Left
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_DownRight_UpLeft_0      ;938535; Up-left
+    dw InstList_SamusProjectile_Plasma_PlasmaIce_Down_Up_0               ;938537; Up, facing left
 
 ProjectileDataTable_Charged_Power:
-    dw $003C                                                             ;938539;
-    dw InstList_SamusProjectile_Charged_Power_Up                         ;93853B;
-    dw InstList_SamusProjectile_Charged_Power_UpRight                    ;93853D;
-    dw InstList_SamusProjectile_Charged_Power_Right                      ;93853F;
-    dw InstList_SamusProjectile_Charged_Power_DownRight                  ;938541;
-    dw InstList_SamusProjectile_Charged_Power_Down                       ;938543;
-    dw InstList_SamusProjectile_Charged_Power_Down                       ;938545;
-    dw InstList_SamusProjectile_Charged_Power_DownLeft                   ;938547;
-    dw InstList_SamusProjectile_Charged_Power_Left                       ;938549;
-    dw InstList_SamusProjectile_Charged_Power_UpLeft                     ;93854B;
-    dw InstList_SamusProjectile_Charged_Power_Up                         ;93854D;
+    dw $003C                                                             ;938539; Damage
+    dw InstList_SamusProjectile_Charged_Power_Up                         ;93853B; Up, facing right
+    dw InstList_SamusProjectile_Charged_Power_UpRight                    ;93853D; Up-right
+    dw InstList_SamusProjectile_Charged_Power_Right                      ;93853F; Right
+    dw InstList_SamusProjectile_Charged_Power_DownRight                  ;938541; Down-right
+    dw InstList_SamusProjectile_Charged_Power_Down                       ;938543; Down, facing right
+    dw InstList_SamusProjectile_Charged_Power_Down                       ;938545; Down, facing left
+    dw InstList_SamusProjectile_Charged_Power_DownLeft                   ;938547; Down-left
+    dw InstList_SamusProjectile_Charged_Power_Left                       ;938549; Left
+    dw InstList_SamusProjectile_Charged_Power_UpLeft                     ;93854B; Up-left
+    dw InstList_SamusProjectile_Charged_Power_Up                         ;93854D; Up, facing left
 
 ProjectileDataTable_Charged_Spazer:
-    dw $0078                                                             ;93854F;
-    dw InstList_SamusProjectile_Charged_S_SI_Down_Up_0                   ;938551;
-    dw InstList_SamusProjectile_Charged_S_SI_DownLeft_UpRight_0          ;938553;
-    dw InstList_SamusProjectile_Charged_S_SI_Left_Right_0                ;938555;
-    dw InstList_SamusProjectile_Charged_S_SI_DownRight_UpLeft_0          ;938557;
-    dw InstList_SamusProjectile_Charged_S_SI_Down_Up_0                   ;938559;
-    dw InstList_SamusProjectile_Charged_S_SI_Down_Up_0                   ;93855B;
-    dw InstList_SamusProjectile_Charged_S_SI_DownLeft_UpRight_0          ;93855D;
-    dw InstList_SamusProjectile_Charged_S_SI_Left_Right_0                ;93855F;
-    dw InstList_SamusProjectile_Charged_S_SI_DownRight_UpLeft_0          ;938561;
-    dw InstList_SamusProjectile_Charged_S_SI_Down_Up_0                   ;938563;
+    dw $0078                                                             ;93854F; Damage
+    dw InstList_SamusProjectile_Charged_S_SI_Down_Up_0                   ;938551; Up, facing right
+    dw InstList_SamusProjectile_Charged_S_SI_DownLeft_UpRight_0          ;938553; Up-right
+    dw InstList_SamusProjectile_Charged_S_SI_Left_Right_0                ;938555; Right
+    dw InstList_SamusProjectile_Charged_S_SI_DownRight_UpLeft_0          ;938557; Down-right
+    dw InstList_SamusProjectile_Charged_S_SI_Down_Up_0                   ;938559; Down, facing right
+    dw InstList_SamusProjectile_Charged_S_SI_Down_Up_0                   ;93855B; Down, facing left
+    dw InstList_SamusProjectile_Charged_S_SI_DownLeft_UpRight_0          ;93855D; Down-left
+    dw InstList_SamusProjectile_Charged_S_SI_Left_Right_0                ;93855F; Left
+    dw InstList_SamusProjectile_Charged_S_SI_DownRight_UpLeft_0          ;938561; Up-left
+    dw InstList_SamusProjectile_Charged_S_SI_Down_Up_0                   ;938563; Up, facing left
 
 ProjectileDataTable_Charged_SpazerIce:
-    dw $00B4                                                             ;938565;
-    dw InstList_SamusProjectile_Charged_S_SI_Down_Up_0                   ;938567;
-    dw InstList_SamusProjectile_Charged_S_SI_DownLeft_UpRight_0          ;938569;
-    dw InstList_SamusProjectile_Charged_S_SI_Left_Right_0                ;93856B;
-    dw InstList_SamusProjectile_Charged_S_SI_DownRight_UpLeft_0          ;93856D;
-    dw InstList_SamusProjectile_Charged_S_SI_Down_Up_0                   ;93856F;
-    dw InstList_SamusProjectile_Charged_S_SI_Down_Up_0                   ;938571;
-    dw InstList_SamusProjectile_Charged_S_SI_DownLeft_UpRight_0          ;938573;
-    dw InstList_SamusProjectile_Charged_S_SI_Left_Right_0                ;938575;
-    dw InstList_SamusProjectile_Charged_S_SI_DownRight_UpLeft_0          ;938577;
-    dw InstList_SamusProjectile_Charged_S_SI_Down_Up_0                   ;938579;
+    dw $00B4                                                             ;938565; Damage
+    dw InstList_SamusProjectile_Charged_S_SI_Down_Up_0                   ;938567; Up, facing right
+    dw InstList_SamusProjectile_Charged_S_SI_DownLeft_UpRight_0          ;938569; Up-right
+    dw InstList_SamusProjectile_Charged_S_SI_Left_Right_0                ;93856B; Right
+    dw InstList_SamusProjectile_Charged_S_SI_DownRight_UpLeft_0          ;93856D; Down-right
+    dw InstList_SamusProjectile_Charged_S_SI_Down_Up_0                   ;93856F; Down, facing right
+    dw InstList_SamusProjectile_Charged_S_SI_Down_Up_0                   ;938571; Down, facing left
+    dw InstList_SamusProjectile_Charged_S_SI_DownLeft_UpRight_0          ;938573; Down-left
+    dw InstList_SamusProjectile_Charged_S_SI_Left_Right_0                ;938575; Left
+    dw InstList_SamusProjectile_Charged_S_SI_DownRight_UpLeft_0          ;938577; Up-left
+    dw InstList_SamusProjectile_Charged_S_SI_Down_Up_0                   ;938579; Up, facing left
 
 ProjectileDataTable_Charged_SpazerIceWave:
-    dw $012C                                                             ;93857B;
-    dw InstList_SamusProjectile_Charged_SW_SIW_Up_0                      ;93857D;
-    dw InstList_SamusProjectile_Charged_SW_SIW_UpRight_0                 ;93857F;
-    dw InstList_SamusProjectile_Charged_SW_SIW_Right_0                   ;938581;
-    dw InstList_SamusProjectile_Charged_SW_SIW_DownRight_0               ;938583;
-    dw InstList_SamusProjectile_Charged_SW_SIW_Down_0                    ;938585;
-    dw InstList_SamusProjectile_Charged_SW_SIW_Down_0                    ;938587;
-    dw InstList_SamusProjectile_Charged_SW_SIW_DownLeft_0                ;938589;
-    dw InstList_SamusProjectile_Charged_SW_SIW_Left_0                    ;93858B;
-    dw InstList_SamusProjectile_Charged_SW_SIW_UpLeft_0                  ;93858D;
-    dw InstList_SamusProjectile_Charged_SW_SIW_Up_0                      ;93858F;
+    dw $012C                                                             ;93857B; Damage
+    dw InstList_SamusProjectile_Charged_SW_SIW_Up_0                      ;93857D; Up, facing right
+    dw InstList_SamusProjectile_Charged_SW_SIW_UpRight_0                 ;93857F; Up-right
+    dw InstList_SamusProjectile_Charged_SW_SIW_Right_0                   ;938581; Right
+    dw InstList_SamusProjectile_Charged_SW_SIW_DownRight_0               ;938583; Down-right
+    dw InstList_SamusProjectile_Charged_SW_SIW_Down_0                    ;938585; Down, facing right
+    dw InstList_SamusProjectile_Charged_SW_SIW_Down_0                    ;938587; Down, facing left
+    dw InstList_SamusProjectile_Charged_SW_SIW_DownLeft_0                ;938589; Down-left
+    dw InstList_SamusProjectile_Charged_SW_SIW_Left_0                    ;93858B; Left
+    dw InstList_SamusProjectile_Charged_SW_SIW_UpLeft_0                  ;93858D; Up-left
+    dw InstList_SamusProjectile_Charged_SW_SIW_Up_0                      ;93858F; Up, facing left
 
 ProjectileDataTable_Charged_PlasmaIceWave:
-    dw $0384                                                             ;938591;
-    dw InstList_SamusProjectile_Charged_PW_PIW_Down_Up_0                 ;938593;
-    dw InstList_SamusProjectile_Charged_PW_PIW_DownLeft_UpRight_0        ;938595;
-    dw InstList_SamusProjectile_Charged_PW_PIW_Left_Right_0              ;938597;
-    dw InstList_SamusProjectile_Charged_PW_PIW_DownRight_UpLeft_0        ;938599;
-    dw InstList_SamusProjectile_Charged_PW_PIW_Down_Up_0                 ;93859B;
-    dw InstList_SamusProjectile_Charged_PW_PIW_Down_Up_0                 ;93859D;
-    dw InstList_SamusProjectile_Charged_PW_PIW_DownLeft_UpRight_0        ;93859F;
-    dw InstList_SamusProjectile_Charged_PW_PIW_Left_Right_0              ;9385A1;
-    dw InstList_SamusProjectile_Charged_PW_PIW_DownRight_UpLeft_0        ;9385A3;
-    dw InstList_SamusProjectile_Charged_PW_PIW_Down_Up_0                 ;9385A5;
+    dw $0384                                                             ;938591; Damage
+    dw InstList_SamusProjectile_Charged_PW_PIW_Down_Up_0                 ;938593; Up, facing right
+    dw InstList_SamusProjectile_Charged_PW_PIW_DownLeft_UpRight_0        ;938595; Up-right
+    dw InstList_SamusProjectile_Charged_PW_PIW_Left_Right_0              ;938597; Right
+    dw InstList_SamusProjectile_Charged_PW_PIW_DownRight_UpLeft_0        ;938599; Down-right
+    dw InstList_SamusProjectile_Charged_PW_PIW_Down_Up_0                 ;93859B; Down, facing right
+    dw InstList_SamusProjectile_Charged_PW_PIW_Down_Up_0                 ;93859D; Down, facing left
+    dw InstList_SamusProjectile_Charged_PW_PIW_DownLeft_UpRight_0        ;93859F; Down-left
+    dw InstList_SamusProjectile_Charged_PW_PIW_Left_Right_0              ;9385A1; Left
+    dw InstList_SamusProjectile_Charged_PW_PIW_DownRight_UpLeft_0        ;9385A3; Up-left
+    dw InstList_SamusProjectile_Charged_PW_PIW_Down_Up_0                 ;9385A5; Up, facing left
 
 ProjectileDataTable_Charged_Ice:
-    dw $005A                                                             ;9385A7;
-    dw InstList_SamusProjectile_Charged_Ice                              ;9385A9;
-    dw InstList_SamusProjectile_Charged_Ice                              ;9385AB;
-    dw InstList_SamusProjectile_Charged_Ice                              ;9385AD;
-    dw InstList_SamusProjectile_Charged_Ice                              ;9385AF;
-    dw InstList_SamusProjectile_Charged_Ice                              ;9385B1;
-    dw InstList_SamusProjectile_Charged_Ice                              ;9385B3;
-    dw InstList_SamusProjectile_Charged_Ice                              ;9385B5;
-    dw InstList_SamusProjectile_Charged_Ice                              ;9385B7;
-    dw InstList_SamusProjectile_Charged_Ice                              ;9385B9;
-    dw InstList_SamusProjectile_Charged_Ice                              ;9385BB;
+    dw $005A                                                             ;9385A7; Damage
+    dw InstList_SamusProjectile_Charged_Ice                              ;9385A9; Up, facing right
+    dw InstList_SamusProjectile_Charged_Ice                              ;9385AB; Up-right
+    dw InstList_SamusProjectile_Charged_Ice                              ;9385AD; Right
+    dw InstList_SamusProjectile_Charged_Ice                              ;9385AF; Down-right
+    dw InstList_SamusProjectile_Charged_Ice                              ;9385B1; Down, facing right
+    dw InstList_SamusProjectile_Charged_Ice                              ;9385B3; Down, facing left
+    dw InstList_SamusProjectile_Charged_Ice                              ;9385B5; Down-left
+    dw InstList_SamusProjectile_Charged_Ice                              ;9385B7; Left
+    dw InstList_SamusProjectile_Charged_Ice                              ;9385B9; Up-left
+    dw InstList_SamusProjectile_Charged_Ice                              ;9385BB; Up, facing left
 
 ProjectileDataTable_Charged_Plasma:
-    dw $01C2                                                             ;9385BD;
-    dw InstList_SamusProjectile_Charged_P_PI_Down_Up_0                   ;9385BF;
-    dw InstList_SamusProjectile_Charged_P_PI_DownLeft_UpRight_0          ;9385C1;
-    dw InstList_SamusProjectile_Charged_P_PI_Left_Right_0                ;9385C3;
-    dw InstList_SamusProjectile_Charged_P_PI_DownRight_UpLeft_0          ;9385C5;
-    dw InstList_SamusProjectile_Charged_P_PI_Down_Up_0                   ;9385C7;
-    dw InstList_SamusProjectile_Charged_P_PI_Down_Up_0                   ;9385C9;
-    dw InstList_SamusProjectile_Charged_P_PI_DownLeft_UpRight_0          ;9385CB;
-    dw InstList_SamusProjectile_Charged_P_PI_Left_Right_0                ;9385CD;
-    dw InstList_SamusProjectile_Charged_P_PI_DownRight_UpLeft_0          ;9385CF;
-    dw InstList_SamusProjectile_Charged_P_PI_Down_Up_0                   ;9385D1;
+    dw $01C2                                                             ;9385BD; Damage
+    dw InstList_SamusProjectile_Charged_P_PI_Down_Up_0                   ;9385BF; Up, facing right
+    dw InstList_SamusProjectile_Charged_P_PI_DownLeft_UpRight_0          ;9385C1; Up-right
+    dw InstList_SamusProjectile_Charged_P_PI_Left_Right_0                ;9385C3; Right
+    dw InstList_SamusProjectile_Charged_P_PI_DownRight_UpLeft_0          ;9385C5; Down-right
+    dw InstList_SamusProjectile_Charged_P_PI_Down_Up_0                   ;9385C7; Down, facing right
+    dw InstList_SamusProjectile_Charged_P_PI_Down_Up_0                   ;9385C9; Down, facing left
+    dw InstList_SamusProjectile_Charged_P_PI_DownLeft_UpRight_0          ;9385CB; Down-left
+    dw InstList_SamusProjectile_Charged_P_PI_Left_Right_0                ;9385CD; Left
+    dw InstList_SamusProjectile_Charged_P_PI_DownRight_UpLeft_0          ;9385CF; Up-left
+    dw InstList_SamusProjectile_Charged_P_PI_Down_Up_0                   ;9385D1; Up, facing left
 
 ProjectileDataTable_Charged_Wave:
-    dw $0096                                                             ;9385D3;
-    dw InstList_SamusProjectile_Charged_Wave_Up                          ;9385D5;
-    dw InstList_SamusProjectile_Charged_Wave_DownLeft_UpRight            ;9385D7;
-    dw InstList_SamusProjectile_Charged_Wave_Left_Right                  ;9385D9;
-    dw InstList_SamusProjectile_Charged_Wave_DownRight_UpLeft            ;9385DB;
-    dw InstList_SamusProjectile_Charged_Wave_Down                        ;9385DD;
-    dw InstList_SamusProjectile_Charged_Wave_Down                        ;9385DF;
-    dw InstList_SamusProjectile_Charged_Wave_DownLeft_UpRight            ;9385E1;
-    dw InstList_SamusProjectile_Charged_Wave_Left_Right                  ;9385E3;
-    dw InstList_SamusProjectile_Charged_Wave_DownRight_UpLeft            ;9385E5;
-    dw InstList_SamusProjectile_Charged_Wave_Up                          ;9385E7;
+    dw $0096                                                             ;9385D3; Damage
+    dw InstList_SamusProjectile_Charged_Wave_Up                          ;9385D5; Up, facing right
+    dw InstList_SamusProjectile_Charged_Wave_DownLeft_UpRight            ;9385D7; Up-right
+    dw InstList_SamusProjectile_Charged_Wave_Left_Right                  ;9385D9; Right
+    dw InstList_SamusProjectile_Charged_Wave_DownRight_UpLeft            ;9385DB; Down-right
+    dw InstList_SamusProjectile_Charged_Wave_Down                        ;9385DD; Down, facing right
+    dw InstList_SamusProjectile_Charged_Wave_Down                        ;9385DF; Down, facing left
+    dw InstList_SamusProjectile_Charged_Wave_DownLeft_UpRight            ;9385E1; Down-left
+    dw InstList_SamusProjectile_Charged_Wave_Left_Right                  ;9385E3; Left
+    dw InstList_SamusProjectile_Charged_Wave_DownRight_UpLeft            ;9385E5; Up-left
+    dw InstList_SamusProjectile_Charged_Wave_Up                          ;9385E7; Up, facing left
 
 ProjectileDataTable_Charged_IceWave:
-    dw $00B4                                                             ;9385E9;
-    dw InstList_SamusProjectile_Charged_IW_Up                            ;9385EB;
-    dw InstList_SamusProjectile_Charged_IW_DownLeft_UpRight              ;9385ED;
-    dw InstList_SamusProjectile_Charged_IW_Left_Right                    ;9385EF;
-    dw InstList_SamusProjectile_Charged_IW_DownRight_UpLeft              ;9385F1;
-    dw InstList_SamusProjectile_Charged_IW_Down                          ;9385F3;
-    dw InstList_SamusProjectile_Charged_IW_Down                          ;9385F5;
-    dw InstList_SamusProjectile_Charged_IW_DownLeft_UpRight              ;9385F7;
-    dw InstList_SamusProjectile_Charged_IW_Left_Right                    ;9385F9;
-    dw InstList_SamusProjectile_Charged_IW_DownRight_UpLeft              ;9385FB;
-    dw InstList_SamusProjectile_Charged_IW_Up                            ;9385FD;
+    dw $00B4                                                             ;9385E9; Damage
+    dw InstList_SamusProjectile_Charged_IW_Up                            ;9385EB; Up, facing right
+    dw InstList_SamusProjectile_Charged_IW_DownLeft_UpRight              ;9385ED; Up-right
+    dw InstList_SamusProjectile_Charged_IW_Left_Right                    ;9385EF; Right
+    dw InstList_SamusProjectile_Charged_IW_DownRight_UpLeft              ;9385F1; Down-right
+    dw InstList_SamusProjectile_Charged_IW_Down                          ;9385F3; Down, facing right
+    dw InstList_SamusProjectile_Charged_IW_Down                          ;9385F5; Down, facing left
+    dw InstList_SamusProjectile_Charged_IW_DownLeft_UpRight              ;9385F7; Down-left
+    dw InstList_SamusProjectile_Charged_IW_Left_Right                    ;9385F9; Left
+    dw InstList_SamusProjectile_Charged_IW_DownRight_UpLeft              ;9385FB; Up-left
+    dw InstList_SamusProjectile_Charged_IW_Up                            ;9385FD; Up, facing left
 
 ProjectileDataTable_Charged_SpazerWave:
-    dw $00D2                                                             ;9385FF;
-    dw InstList_SamusProjectile_Charged_SW_SIW_Up_0                      ;938601;
-    dw InstList_SamusProjectile_Charged_SW_SIW_UpRight_0                 ;938603;
-    dw InstList_SamusProjectile_Charged_SW_SIW_Right_0                   ;938605;
-    dw InstList_SamusProjectile_Charged_SW_SIW_DownRight_0               ;938607;
-    dw InstList_SamusProjectile_Charged_SW_SIW_Down_0                    ;938609;
-    dw InstList_SamusProjectile_Charged_SW_SIW_Down_0                    ;93860B;
-    dw InstList_SamusProjectile_Charged_SW_SIW_DownLeft_0                ;93860D;
-    dw InstList_SamusProjectile_Charged_SW_SIW_Left_0                    ;93860F;
-    dw InstList_SamusProjectile_Charged_SW_SIW_UpLeft_0                  ;938611;
-    dw InstList_SamusProjectile_Charged_SW_SIW_Up_0                      ;938613;
+    dw $00D2                                                             ;9385FF; Damage
+    dw InstList_SamusProjectile_Charged_SW_SIW_Up_0                      ;938601; Up, facing right
+    dw InstList_SamusProjectile_Charged_SW_SIW_UpRight_0                 ;938603; Up-right
+    dw InstList_SamusProjectile_Charged_SW_SIW_Right_0                   ;938605; Right
+    dw InstList_SamusProjectile_Charged_SW_SIW_DownRight_0               ;938607; Down-right
+    dw InstList_SamusProjectile_Charged_SW_SIW_Down_0                    ;938609; Down, facing right
+    dw InstList_SamusProjectile_Charged_SW_SIW_Down_0                    ;93860B; Down, facing left
+    dw InstList_SamusProjectile_Charged_SW_SIW_DownLeft_0                ;93860D; Down-left
+    dw InstList_SamusProjectile_Charged_SW_SIW_Left_0                    ;93860F; Left
+    dw InstList_SamusProjectile_Charged_SW_SIW_UpLeft_0                  ;938611; Up-left
+    dw InstList_SamusProjectile_Charged_SW_SIW_Up_0                      ;938613; Up, facing left
 
 ProjectileDataTable_Charged_PlasmaIce:
-    dw $0258                                                             ;938615;
-    dw InstList_SamusProjectile_Charged_P_PI_Down_Up_0                   ;938617;
-    dw InstList_SamusProjectile_Charged_P_PI_DownLeft_UpRight_0          ;938619;
-    dw InstList_SamusProjectile_Charged_P_PI_Left_Right_0                ;93861B;
-    dw InstList_SamusProjectile_Charged_P_PI_DownRight_UpLeft_0          ;93861D;
-    dw InstList_SamusProjectile_Charged_P_PI_Down_Up_0                   ;93861F;
-    dw InstList_SamusProjectile_Charged_P_PI_Down_Up_0                   ;938621;
-    dw InstList_SamusProjectile_Charged_P_PI_DownLeft_UpRight_0          ;938623;
-    dw InstList_SamusProjectile_Charged_P_PI_Left_Right_0                ;938625;
-    dw InstList_SamusProjectile_Charged_P_PI_DownRight_UpLeft_0          ;938627;
-    dw InstList_SamusProjectile_Charged_P_PI_Down_Up_0                   ;938629;
+    dw $0258                                                             ;938615; Damage
+    dw InstList_SamusProjectile_Charged_P_PI_Down_Up_0                   ;938617; Up, facing right
+    dw InstList_SamusProjectile_Charged_P_PI_DownLeft_UpRight_0          ;938619; Up-right
+    dw InstList_SamusProjectile_Charged_P_PI_Left_Right_0                ;93861B; Right
+    dw InstList_SamusProjectile_Charged_P_PI_DownRight_UpLeft_0          ;93861D; Down-right
+    dw InstList_SamusProjectile_Charged_P_PI_Down_Up_0                   ;93861F; Down, facing right
+    dw InstList_SamusProjectile_Charged_P_PI_Down_Up_0                   ;938621; Down, facing left
+    dw InstList_SamusProjectile_Charged_P_PI_DownLeft_UpRight_0          ;938623; Down-left
+    dw InstList_SamusProjectile_Charged_P_PI_Left_Right_0                ;938625; Left
+    dw InstList_SamusProjectile_Charged_P_PI_DownRight_UpLeft_0          ;938627; Up-left
+    dw InstList_SamusProjectile_Charged_P_PI_Down_Up_0                   ;938629; Up, facing left
 
 ProjectileDataTable_Charged_PlasmaWave:
-    dw $02EE                                                             ;93862B;
-    dw InstList_SamusProjectile_Charged_PW_PIW_Down_Up_0                 ;93862D;
-    dw InstList_SamusProjectile_Charged_PW_PIW_DownLeft_UpRight_0        ;93862F;
-    dw InstList_SamusProjectile_Charged_PW_PIW_Left_Right_0              ;938631;
-    dw InstList_SamusProjectile_Charged_PW_PIW_DownRight_UpLeft_0        ;938633;
-    dw InstList_SamusProjectile_Charged_PW_PIW_Down_Up_0                 ;938635;
-    dw InstList_SamusProjectile_Charged_PW_PIW_Down_Up_0                 ;938637;
-    dw InstList_SamusProjectile_Charged_PW_PIW_DownLeft_UpRight_0        ;938639;
-    dw InstList_SamusProjectile_Charged_PW_PIW_Left_Right_0              ;93863B;
-    dw InstList_SamusProjectile_Charged_PW_PIW_DownRight_UpLeft_0        ;93863D;
-    dw InstList_SamusProjectile_Charged_PW_PIW_Down_Up_0                 ;93863F;
+    dw $02EE                                                             ;93862B; Damage
+    dw InstList_SamusProjectile_Charged_PW_PIW_Down_Up_0                 ;93862D; Up, facing right
+    dw InstList_SamusProjectile_Charged_PW_PIW_DownLeft_UpRight_0        ;93862F; Up-right
+    dw InstList_SamusProjectile_Charged_PW_PIW_Left_Right_0              ;938631; Right
+    dw InstList_SamusProjectile_Charged_PW_PIW_DownRight_UpLeft_0        ;938633; Down-right
+    dw InstList_SamusProjectile_Charged_PW_PIW_Down_Up_0                 ;938635; Down, facing right
+    dw InstList_SamusProjectile_Charged_PW_PIW_Down_Up_0                 ;938637; Down, facing left
+    dw InstList_SamusProjectile_Charged_PW_PIW_DownLeft_UpRight_0        ;938639; Down-left
+    dw InstList_SamusProjectile_Charged_PW_PIW_Left_Right_0              ;93863B; Left
+    dw InstList_SamusProjectile_Charged_PW_PIW_DownRight_UpLeft_0        ;93863D; Up-left
+    dw InstList_SamusProjectile_Charged_PW_PIW_Down_Up_0                 ;93863F; Up, facing left
 
 ProjectileDataTable_NonBeam_Missile:
-    dw $0064                                                             ;938641;
-    dw InstList_SamusProjectile_Missiles_Up                              ;938643;
-    dw InstList_SamusProjectile_Missiles_UpRight                         ;938645;
-    dw InstList_SamusProjectile_Missiles_Right                           ;938647;
-    dw InstList_SamusProjectile_Missiles_DownRight                       ;938649;
-    dw InstList_SamusProjectile_Missiles_Down                            ;93864B;
-    dw InstList_SamusProjectile_Missiles_Down                            ;93864D;
-    dw InstList_SamusProjectile_Missiles_DownLeft                        ;93864F;
-    dw InstList_SamusProjectile_Missiles_Left                            ;938651;
-    dw InstList_SamusProjectile_Missiles_UpLeft                          ;938653;
-    dw InstList_SamusProjectile_Missiles_Up                              ;938655;
+    dw $0064                                                             ;938641; Damage
+    dw InstList_SamusProjectile_Missiles_Up                              ;938643; Up, facing right
+    dw InstList_SamusProjectile_Missiles_UpRight                         ;938645; Up-right
+    dw InstList_SamusProjectile_Missiles_Right                           ;938647; Right
+    dw InstList_SamusProjectile_Missiles_DownRight                       ;938649; Down-right
+    dw InstList_SamusProjectile_Missiles_Down                            ;93864B; Down, facing right
+    dw InstList_SamusProjectile_Missiles_Down                            ;93864D; Down, facing left
+    dw InstList_SamusProjectile_Missiles_DownLeft                        ;93864F; Down-left
+    dw InstList_SamusProjectile_Missiles_Left                            ;938651; Left
+    dw InstList_SamusProjectile_Missiles_UpLeft                          ;938653; Up-left
+    dw InstList_SamusProjectile_Missiles_Up                              ;938655; Up, facing left
 
 ProjectileDataTable_NonBeam_SuperMissile:
-    dw $012C                                                             ;938657;
-    dw InstList_SamusProjectile_SuperMissiles_Up                         ;938659;
-    dw InstList_SamusProjectile_SuperMissiles_UpRight                    ;93865B;
-    dw InstList_SamusProjectile_SuperMissiles_Right                      ;93865D;
-    dw InstList_SamusProjectile_SuperMissiles_DownRight                  ;93865F;
-    dw InstList_SamusProjectile_SuperMissiles_Down                       ;938661;
-    dw InstList_SamusProjectile_SuperMissiles_Down                       ;938663;
-    dw InstList_SamusProjectile_SuperMissiles_DownLeft                   ;938665;
-    dw InstList_SamusProjectile_SuperMissiles_Left                       ;938667;
-    dw InstList_SamusProjectile_SuperMissiles_UpLeft                     ;938669;
-    dw InstList_SamusProjectile_SuperMissiles_Up                         ;93866B;
+    dw $012C                                                             ;938657; Damage
+    dw InstList_SamusProjectile_SuperMissiles_Up                         ;938659; Up, facing right
+    dw InstList_SamusProjectile_SuperMissiles_UpRight                    ;93865B; Up-right
+    dw InstList_SamusProjectile_SuperMissiles_Right                      ;93865D; Right
+    dw InstList_SamusProjectile_SuperMissiles_DownRight                  ;93865F; Down-right
+    dw InstList_SamusProjectile_SuperMissiles_Down                       ;938661; Down, facing right
+    dw InstList_SamusProjectile_SuperMissiles_Down                       ;938663; Down, facing left
+    dw InstList_SamusProjectile_SuperMissiles_DownLeft                   ;938665; Down-left
+    dw InstList_SamusProjectile_SuperMissiles_Left                       ;938667; Left
+    dw InstList_SamusProjectile_SuperMissiles_UpLeft                     ;938669; Up-left
+    dw InstList_SamusProjectile_SuperMissiles_Up                         ;93866B; Up, facing left
 
 ProjectileDataTable_NonBeam_SuperMissileLink:
-    dw $012C                                                             ;93866D;
-    dw InstList_SamusProjectile_SuperMissileLink_                        ;93866F;
+    dw $012C                                                             ;93866D; Damage
+    dw InstList_SamusProjectile_SuperMissileLink                         ;93866F;
 
 ProjectileDataTable_NonBeam_PowerBomb:
-    dw $00C8                                                             ;938671;
+    dw $00C8                                                             ;938671; Damage
     dw InstList_SamusProjectile_PowerBomb                                ;938673;
 
 ProjectileDataTable_NonBeam_Bomb:
-    dw $001E                                                             ;938675;
+    dw $001E                                                             ;938675; Damage
     dw InstList_SamusProjectile_Bomb                                     ;938677;
 
 ProjectileDataTable_NonBeam_BeamExplosion:
-    dw $0008                                                             ;938679;
-
-ProjectileDataTable_NonBeam_BeamExplosion_pointer:
+    dw $0008                                                             ;938679; Damage is ignored
+  .pointer
     dw InstList_SamusProjectile_BeamExplosion                            ;93867B;
 
 ProjectileDataTable_NonBeam_MissileExplosion:
-    dw $0008                                                             ;93867D;
-
-ProjectileDataTable_NonBeam_MissileExplosion_pointer:
+    dw $0008                                                             ;93867D; Damage is ignored
+  .pointer
     dw InstList_SamusProjectile_MissileExplosion                         ;93867F;
 
-if !FEATURE_KEEP_UNREFERENCED
-UNUSED_ProjectileDataTable_NonBeam_BombExplosion_938681:
-    dw $0000                                                             ;938681;
-endif ; !FEATURE_KEEP_UNREFERENCED
-
-ProjectileDataTable_NonBeam_BombExplosion_pointer:
+ProjectileDataTable_NonBeam_BombExplosion:
+    dw $0000                                                             ;938681; Damage is ignored
+  .pointer
     dw InstList_SamusProjectile_BombExplosion                            ;938683;
 
 ProjectileDataTable_NonBeam_PlasmaSBA:
-    dw $012C                                                             ;938685;
+    dw $012C                                                             ;938685; Damage
     dw InstList_SamusProjectile_PlasmaSBA                                ;938687;
 
 ProjectileDataTable_NonBeam_WaveSBA:
-    dw $012C                                                             ;938689;
+    dw $012C                                                             ;938689; Damage
     dw InstList_SamusProjectile_WaveSBA                                  ;93868B;
 
 ProjectileDataTable_NonBeam_SpazerSBA:
-    dw $012C                                                             ;93868D;
+    dw $012C                                                             ;93868D; Damage
     dw InstList_SamusProjectile_Spazer_SpazerIce_Up_0                    ;93868F;
 
-if !FEATURE_KEEP_UNREFERENCED
-UNUSED_ProjDataTable_NonBeam_SuperMissileExplosion_938691:
-    dw $0008                                                             ;938691;
-endif ; !FEATURE_KEEP_UNREFERENCED
-
-ProjectileDataTable_NonBeam_SuperMissileExplosion_pointer:
+ProjectileDataTable_NonBeam_SuperMissileExplosion:
+    dw $0008                                                             ;938691; Damage is ignored
+  .pointer
     dw InstList_SamusProjectile_SuperMissileExplosion                    ;938693;
 
 UNUSED_ProjectileDataTable_NonBeam_Projectile25_938695:
-    dw $F000                                                             ;938695;
-    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;938697;
-    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;938699;
-    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;93869B;
-    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;93869D;
-    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;93869F;
-    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;9386A1;
-    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;9386A3;
-    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;9386A5;
-    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;9386A7;
-    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;9386A9;
+    dw $F000                                                             ;938695; Damage
+    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;938697; Up, facing right
+    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;938699; Up-right
+    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;93869B; Right
+    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;93869D; Down-right
+    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;93869F; Down, facing right
+    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;9386A1; Down, facing left
+    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;9386A3; Down-left
+    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;9386A5; Left
+    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;9386A7; Up-left
+    dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;9386A9; Up, facing left
 
 ProjectileDataTable_NonBeam_SpazerSBATrail:
-    dw $012C                                                             ;9386AB;
-    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386AD;
-    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386AF;
-    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386B1;
-    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386B3;
-    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386B5;
-    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386B7;
-    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386B9;
-    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386BB;
-    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386BD;
-    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386BF;
+    dw $012C                                                             ;9386AB; Damage
+    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386AD; Up, facing right
+    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386AF; Up-right
+    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386B1; Right
+    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386B3; Down-right
+    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386B5; Down, facing right
+    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386B7; Down, facing left
+    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386B9; Down-left
+    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386BB; Left
+    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386BD; Up-left
+    dw InstList_SamusProjectile_SpazerSBATrail_0                         ;9386BF; Up, facing left
 
 ProjectileDataTable_NonBeam_ShinesparkEcho:
-    dw $1000                                                             ;9386C1;
-    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386C3;
-    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386C5;
-    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386C7;
-    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386C9;
-    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386CB;
-    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386CD;
-    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386CF;
-    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386D1;
-    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386D3;
-    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386D5;
+    dw $1000                                                             ;9386C1; Damage
+    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386C3; Up, facing right
+    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386C5; Up-right
+    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386C7; Right
+    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386C9; Down-right
+    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386CB; Down, facing right
+    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386CD; Down, facing left
+    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386CF; Down-left
+    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386D1; Left
+    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386D3; Up-left
+    dw InstList_SamusProjectile_ShinesparkEcho                           ;9386D5; Up, facing left
 
 UNUSED_ProjectileDataTable_NonBeam_Projectile27_9386D7:
     dw $0000                                                             ;9386D7;
     dw UNUSED_InstList_SamusProjectile_Projectile27_93A16D               ;9386D9;
 
 InstList_SamusProjectile_Power_Up:
-    dw $000F                                                             ;9386DB;
-    dw ProjectileFlareSpritemaps_Power_2                                 ;9386DD;
-    db $04,$04                                                           ;9386DF;
-    dw $0000                                                             ;9386E1;
+    dw $000F,ProjectileFlareSpritemaps_Power_2                           ;9386DB;
+    db $04,$04 : dw $0000                                                ;9386DF;
     dw Instruction_SamusProjectile_GotoY                                 ;9386E3;
     dw InstList_SamusProjectile_Power_Up                                 ;9386E5;
 
 InstList_SamusProjectile_Power_UpRight:
-    dw $000F                                                             ;9386E7;
-    dw ProjectileFlareSpritemaps_Power_3                                 ;9386E9;
-    db $08,$04                                                           ;9386EB;
-    dw $0000                                                             ;9386ED;
+    dw $000F,ProjectileFlareSpritemaps_Power_3                           ;9386E7;
+    db $08,$04 : dw $0000                                                ;9386EB;
     dw Instruction_SamusProjectile_GotoY                                 ;9386EF;
     dw InstList_SamusProjectile_Power_UpRight                            ;9386F1;
 
 InstList_SamusProjectile_Power_Right:
-    dw $000F                                                             ;9386F3;
-    dw ProjectileFlareSpritemaps_Power_4                                 ;9386F5;
-    db $08,$04                                                           ;9386F7;
-    dw $0000                                                             ;9386F9;
+    dw $000F,ProjectileFlareSpritemaps_Power_4                           ;9386F3;
+    db $08,$04 : dw $0000                                                ;9386F7;
     dw Instruction_SamusProjectile_GotoY                                 ;9386FB;
     dw InstList_SamusProjectile_Power_Right                              ;9386FD;
 
 InstList_SamusProjectile_Power_DownRight:
-    dw $000F                                                             ;9386FF;
-    dw ProjectileFlareSpritemaps_Power_5                                 ;938701;
-    db $08,$04                                                           ;938703;
-    dw $0000                                                             ;938705;
+    dw $000F,ProjectileFlareSpritemaps_Power_5                           ;9386FF;
+    db $08,$04 : dw $0000                                                ;938703;
     dw Instruction_SamusProjectile_GotoY                                 ;938707;
     dw InstList_SamusProjectile_Power_DownRight                          ;938709;
 
 InstList_SamusProjectile_Power_Down:
-    dw $000F                                                             ;93870B;
-    dw ProjectileFlareSpritemaps_Power_6                                 ;93870D;
-    db $04,$04                                                           ;93870F;
-    dw $0000                                                             ;938711;
+    dw $000F,ProjectileFlareSpritemaps_Power_6                           ;93870B;
+    db $04,$04 : dw $0000                                                ;93870F;
     dw Instruction_SamusProjectile_GotoY                                 ;938713;
     dw InstList_SamusProjectile_Power_Down                               ;938715;
 
 InstList_SamusProjectile_Power_DownLeft:
-    dw $000F                                                             ;938717;
-    dw ProjectileFlareSpritemaps_Power_7                                 ;938719;
-    db $08,$04                                                           ;93871B;
-    dw $0000                                                             ;93871D;
+    dw $000F,ProjectileFlareSpritemaps_Power_7                           ;938717;
+    db $08,$04 : dw $0000                                                ;93871B;
     dw Instruction_SamusProjectile_GotoY                                 ;93871F;
     dw InstList_SamusProjectile_Power_DownLeft                           ;938721;
 
 InstList_SamusProjectile_Power_Left:
-    dw $000F                                                             ;938723;
-    dw ProjectileFlareSpritemaps_Power_0                                 ;938725;
-    db $08,$04                                                           ;938727;
-    dw $0000                                                             ;938729;
+    dw $000F,ProjectileFlareSpritemaps_Power_0                           ;938723;
+    db $08,$04 : dw $0000                                                ;938727;
     dw Instruction_SamusProjectile_GotoY                                 ;93872B;
     dw InstList_SamusProjectile_Power_Left                               ;93872D;
 
 InstList_SamusProjectile_Power_UpLeft:
-    dw $000F                                                             ;93872F;
-    dw ProjectileFlareSpritemaps_Power_1                                 ;938731;
-    db $08,$04                                                           ;938733;
-    dw $0000                                                             ;938735;
+    dw $000F,ProjectileFlareSpritemaps_Power_1                           ;93872F;
+    db $08,$04 : dw $0000                                                ;938733;
     dw Instruction_SamusProjectile_GotoY                                 ;938737;
     dw InstList_SamusProjectile_Power_UpLeft                             ;938739;
 
 InstList_SamusProjectile_Wave_IceWave_Up:
-    dw $0004                                                             ;93873B;
-    dw Spritemap_Nothing_93A117                                          ;93873D;
-    db $0C,$04                                                           ;93873F;
-    dw $0000                                                             ;938741;
+    dw $0004,Spritemap_Nothing_93A117                                    ;93873B;
+    db $0C,$04 : dw $0000                                                ;93873F;
 
 InstList_SamusProjectile_Wave_IceWave_Down:
-    dw $0001                                                             ;938743;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_0                          ;938745;
-    db $0C,$04                                                           ;938747;
-    dw $0000,$0001                                                       ;938749;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_11                         ;93874D;
-    db $0C,$04                                                           ;93874F;
-    dw $0001,$0001                                                       ;938751;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_12                         ;938755;
-    db $0C,$04                                                           ;938757;
-    dw $0002,$0001                                                       ;938759;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_13                         ;93875D;
-    db $10,$04                                                           ;93875F;
-    dw $0003,$0001                                                       ;938761;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_14                         ;938765;
-    db $14,$04                                                           ;938767;
-    dw $0004,$0001                                                       ;938769;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_13                         ;93876D;
-    db $10,$04                                                           ;93876F;
-    dw $0005,$0001                                                       ;938771;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_12                         ;938775;
-    db $0C,$04                                                           ;938777;
-    dw $0006,$0001                                                       ;938779;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_11                         ;93877D;
-    db $0C,$04                                                           ;93877F;
-    dw $0007,$0001                                                       ;938781;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_0                          ;938785;
-    db $0C,$04                                                           ;938787;
-    dw $0008,$0001                                                       ;938789;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_15                         ;93878D;
-    db $0C,$04                                                           ;93878F;
-    dw $0009,$0001                                                       ;938791;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_16                         ;938795;
-    db $0C,$04                                                           ;938797;
-    dw $000A,$0001                                                       ;938799;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_17                         ;93879D;
-    db $10,$04                                                           ;93879F;
-    dw $000B,$0001                                                       ;9387A1;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_18                         ;9387A5;
-    db $14,$04                                                           ;9387A7;
-    dw $000C,$0001                                                       ;9387A9;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_17                         ;9387AD;
-    db $10,$04                                                           ;9387AF;
-    dw $000D,$0001                                                       ;9387B1;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_16                         ;9387B5;
-    db $0C,$04                                                           ;9387B7;
-    dw $000E,$0001                                                       ;9387B9;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_15                         ;9387BD;
-    db $0C,$04                                                           ;9387BF;
-    dw $000F                                                             ;9387C1;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_0                    ;938743;
+    db $0C,$04 : dw $0000                                                ;938747;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_11                   ;93874B;
+    db $0C,$04 : dw $0001                                                ;93874F;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_12                   ;938751;
+    db $0C,$04 : dw $0002                                                ;938757;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_13                   ;938759;
+    db $10,$04 : dw $0003                                                ;93875F;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_14                   ;938761;
+    db $14,$04 : dw $0004                                                ;938767;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_13                   ;938769;
+    db $10,$04 : dw $0005                                                ;93876F;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_12                   ;938771;
+    db $0C,$04 : dw $0006                                                ;938777;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_11                   ;938779;
+    db $0C,$04 : dw $0007                                                ;93877F;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_0                    ;938781;
+    db $0C,$04 : dw $0008                                                ;938787;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_15                   ;938789;
+    db $0C,$04 : dw $0009                                                ;93878F;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_16                   ;938791;
+    db $0C,$04 : dw $000A                                                ;938797;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_17                   ;938799;
+    db $10,$04 : dw $000B                                                ;93879F;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_18                   ;9387A1;
+    db $14,$04 : dw $000C                                                ;9387A7;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_17                   ;9387A9;
+    db $10,$04 : dw $000D                                                ;9387AF;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_16                   ;9387B1;
+    db $0C,$04 : dw $000E                                                ;9387B7;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_15                   ;9387B9;
+    db $0C,$04 : dw $000F                                                ;9387BF;
     dw Instruction_SamusProjectile_GotoY                                 ;9387C3;
     dw InstList_SamusProjectile_Wave_IceWave_Down                        ;9387C5;
 
 InstList_SamusProjectile_Wave_IceWave_DownLeft_UpRight:
-    dw $0001                                                             ;9387C7;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_0                          ;9387C9;
-    db $08,$08                                                           ;9387CB;
-    dw $0000,$0001                                                       ;9387CD;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_19                         ;9387D1;
-    db $08,$08                                                           ;9387D3;
-    dw $0001,$0001                                                       ;9387D5;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_1A                         ;9387D9;
-    db $08,$08                                                           ;9387DB;
-    dw $0002,$0001                                                       ;9387DD;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_1B                         ;9387E1;
-    db $0A,$0A                                                           ;9387E3;
-    dw $0003,$0001                                                       ;9387E5;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_1C                         ;9387E9;
-    db $0C,$0C                                                           ;9387EB;
-    dw $0004,$0001                                                       ;9387ED;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_1B                         ;9387F1;
-    db $0A,$0A                                                           ;9387F3;
-    dw $0005,$0001                                                       ;9387F5;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_1A                         ;9387F9;
-    db $08,$08                                                           ;9387FB;
-    dw $0006,$0001                                                       ;9387FD;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_19                         ;938801;
-    db $06,$06                                                           ;938803;
-    dw $0007,$0001                                                       ;938805;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_0                          ;938809;
-    db $04,$04                                                           ;93880B;
-    dw $0008,$0001                                                       ;93880D;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_1D                         ;938811;
-    db $06,$06                                                           ;938813;
-    dw $0009,$0001                                                       ;938815;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_1E                         ;938819;
-    db $08,$08                                                           ;93881B;
-    dw $000A,$0001                                                       ;93881D;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_1F                         ;938821;
-    db $0A,$0A                                                           ;938823;
-    dw $000B,$0001                                                       ;938825;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_20                         ;938829;
-    db $0C,$0C                                                           ;93882B;
-    dw $000C,$0001                                                       ;93882D;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_1F                         ;938831;
-    db $0A,$0A                                                           ;938833;
-    dw $000D,$0001                                                       ;938835;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_1E                         ;938839;
-    db $08,$08                                                           ;93883B;
-    dw $000E,$0001                                                       ;93883D;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_1D                         ;938841;
-    db $08,$08                                                           ;938843;
-    dw $000F                                                             ;938845;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_0                    ;9387C7;
+    db $08,$08 : dw $0000                                                ;9387CB;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_19                   ;9387CD;
+    db $08,$08 : dw $0001                                                ;9387D3;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_1A                   ;9387D5;
+    db $08,$08 : dw $0002                                                ;9387DB;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_1B                   ;9387DD;
+    db $0A,$0A : dw $0003                                                ;9387E3;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_1C                   ;9387E5;
+    db $0C,$0C : dw $0004                                                ;9387EB;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_1B                   ;9387ED;
+    db $0A,$0A : dw $0005                                                ;9387F3;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_1A                   ;9387F5;
+    db $08,$08 : dw $0006                                                ;9387FB;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_19                   ;9387FD;
+    db $06,$06 : dw $0007                                                ;938803;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_0                    ;938805;
+    db $04,$04 : dw $0008                                                ;93880B;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_1D                   ;93880D;
+    db $06,$06 : dw $0009                                                ;938813;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_1E                   ;938815;
+    db $08,$08 : dw $000A                                                ;93881B;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_1F                   ;93881D;
+    db $0A,$0A : dw $000B                                                ;938823;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_20                   ;938825;
+    db $0C,$0C : dw $000C                                                ;93882B;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_1F                   ;93882D;
+    db $0A,$0A : dw $000D                                                ;938833;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_1E                   ;938835;
+    db $08,$08 : dw $000E                                                ;93883B;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_1D                   ;93883D;
+    db $08,$08 : dw $000F                                                ;938843;
     dw Instruction_SamusProjectile_GotoY                                 ;938847;
     dw InstList_SamusProjectile_Wave_IceWave_DownLeft_UpRight            ;938849;
 
 InstList_SamusProjectile_Wave_IceWave_Left_Right:
-    dw $0001                                                             ;93884B;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_0                          ;93884D;
-    db $04,$0C                                                           ;93884F;
-    dw $0000,$0001                                                       ;938851;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_1                          ;938855;
-    db $04,$0C                                                           ;938857;
-    dw $0001,$0001                                                       ;938859;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_2                          ;93885D;
-    db $04,$0C                                                           ;93885F;
-    dw $0002,$0001                                                       ;938861;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_3                          ;938865;
-    db $04,$10                                                           ;938867;
-    dw $0003,$0001                                                       ;938869;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_4                          ;93886D;
-    db $04,$14                                                           ;93886F;
-    dw $0004,$0001                                                       ;938871;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_3                          ;938875;
-    db $04,$10                                                           ;938877;
-    dw $0005,$0001                                                       ;938879;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_2                          ;93887D;
-    db $04,$0C                                                           ;93887F;
-    dw $0006,$0001                                                       ;938881;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_1                          ;938885;
-    db $04,$0C                                                           ;938887;
-    dw $0007,$0001                                                       ;938889;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_0                          ;93888D;
-    db $04,$0C                                                           ;93888F;
-    dw $0008,$0001                                                       ;938891;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_5                          ;938895;
-    db $04,$0C                                                           ;938897;
-    dw $0009,$0001                                                       ;938899;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_6                          ;93889D;
-    db $04,$0C                                                           ;93889F;
-    dw $000A,$0001                                                       ;9388A1;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_7                          ;9388A5;
-    db $04,$10                                                           ;9388A7;
-    dw $000B,$0001                                                       ;9388A9;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_8                          ;9388AD;
-    db $04,$14                                                           ;9388AF;
-    dw $000C,$0001                                                       ;9388B1;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_7                          ;9388B5;
-    db $04,$10                                                           ;9388B7;
-    dw $000D,$0001                                                       ;9388B9;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_6                          ;9388BD;
-    db $04,$0C                                                           ;9388BF;
-    dw $000E,$0001                                                       ;9388C1;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_5                          ;9388C5;
-    db $04,$0C                                                           ;9388C7;
-    dw $000F                                                             ;9388C9;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_0                    ;93884B;
+    db $04,$0C : dw $0000                                                ;93884F;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_1                    ;938851;
+    db $04,$0C : dw $0001                                                ;938857;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_2                    ;938859;
+    db $04,$0C : dw $0002                                                ;93885F;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_3                    ;938861;
+    db $04,$10 : dw $0003                                                ;938867;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_4                    ;938869;
+    db $04,$14 : dw $0004                                                ;93886F;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_3                    ;938871;
+    db $04,$10 : dw $0005                                                ;938877;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_2                    ;938879;
+    db $04,$0C : dw $0006                                                ;93887F;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_1                    ;938881;
+    db $04,$0C : dw $0007                                                ;938887;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_0                    ;938889;
+    db $04,$0C : dw $0008                                                ;93888F;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_5                    ;938891;
+    db $04,$0C : dw $0009                                                ;938897;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_6                    ;938899;
+    db $04,$0C : dw $000A                                                ;93889F;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_7                    ;9388A1;
+    db $04,$10 : dw $000B                                                ;9388A7;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_8                    ;9388A9;
+    db $04,$14 : dw $000C                                                ;9388AF;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_7                    ;9388B1;
+    db $04,$10 : dw $000D                                                ;9388B7;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_6                    ;9388B9;
+    db $04,$0C : dw $000E                                                ;9388BF;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_5                    ;9388C1;
+    db $04,$0C : dw $000F                                                ;9388C7;
     dw Instruction_SamusProjectile_GotoY                                 ;9388CB;
     dw InstList_SamusProjectile_Wave_IceWave_Left_Right                  ;9388CD;
 
 InstList_SamusProjectile_Wave_IceWave_DownRight_UpLeft:
-    dw $0001                                                             ;9388CF;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_0                          ;9388D1;
-    db $08,$08                                                           ;9388D3;
-    dw $0000,$0001                                                       ;9388D5;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_9                          ;9388D9;
-    db $08,$08                                                           ;9388DB;
-    dw $0001,$0001                                                       ;9388DD;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_A                          ;9388E1;
-    db $08,$08                                                           ;9388E3;
-    dw $0002,$0001                                                       ;9388E5;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_B                          ;9388E9;
-    db $0A,$0A                                                           ;9388EB;
-    dw $0003,$0001                                                       ;9388ED;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_C                          ;9388F1;
-    db $0C,$0C                                                           ;9388F3;
-    dw $0004,$0001                                                       ;9388F5;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_B                          ;9388F9;
-    db $0A,$0A                                                           ;9388FB;
-    dw $0005,$0001                                                       ;9388FD;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_A                          ;938901;
-    db $08,$08                                                           ;938903;
-    dw $0006,$0001                                                       ;938905;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_9                          ;938909;
-    db $06,$06                                                           ;93890B;
-    dw $0007,$0001                                                       ;93890D;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_0                          ;938911;
-    db $04,$04                                                           ;938913;
-    dw $0008,$0001                                                       ;938915;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_D                          ;938919;
-    db $06,$06                                                           ;93891B;
-    dw $0009,$0001                                                       ;93891D;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_E                          ;938921;
-    db $08,$08                                                           ;938923;
-    dw $000A,$0001                                                       ;938925;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_F                          ;938929;
-    db $0A,$0A                                                           ;93892B;
-    dw $000B,$0001                                                       ;93892D;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_10                         ;938931;
-    db $0C,$0C                                                           ;938933;
-    dw $000C,$0001                                                       ;938935;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_F                          ;938939;
-    db $0A,$0A                                                           ;93893B;
-    dw $000D,$0001                                                       ;93893D;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_E                          ;938941;
-    db $08,$08                                                           ;938943;
-    dw $000E,$0001                                                       ;938945;
-    dw ProjectileFlareSpritemaps_Wave_IceWave_D                          ;938949;
-    db $08,$08                                                           ;93894B;
-    dw $000F                                                             ;93894D;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_0                    ;9388CF;
+    db $08,$08 : dw $0000                                                ;9388D3;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_9                    ;9388D5;
+    db $08,$08 : dw $0001                                                ;9388DB;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_A                    ;9388DD;
+    db $08,$08 : dw $0002                                                ;9388E3;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_B                    ;9388E5;
+    db $0A,$0A : dw $0003                                                ;9388EB;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_C                    ;9388ED;
+    db $0C,$0C : dw $0004                                                ;9388F3;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_B                    ;9388F5;
+    db $0A,$0A : dw $0005                                                ;9388FB;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_A                    ;9388FD;
+    db $08,$08 : dw $0006                                                ;938903;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_9                    ;938905;
+    db $06,$06 : dw $0007                                                ;93890B;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_0                    ;93890D;
+    db $04,$04 : dw $0008                                                ;938913;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_D                    ;938915;
+    db $06,$06 : dw $0009                                                ;93891B;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_E                    ;93891D;
+    db $08,$08 : dw $000A                                                ;938923;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_F                    ;938925;
+    db $0A,$0A : dw $000B                                                ;93892B;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_10                   ;93892D;
+    db $0C,$0C : dw $000C                                                ;938933;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_F                    ;938935;
+    db $0A,$0A : dw $000D                                                ;93893B;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_E                    ;93893D;
+    db $08,$08 : dw $000E                                                ;938943;
+    dw $0001,ProjectileFlareSpritemaps_Wave_IceWave_D                    ;938945;
+    db $08,$08 : dw $000F                                                ;93894B;
     dw Instruction_SamusProjectile_GotoY                                 ;93894F;
     dw InstList_SamusProjectile_Wave_IceWave_DownRight_UpLeft            ;938951;
 
 InstList_SamusProjectile_Ice:
-    dw $0001                                                             ;938953;
-    dw ProjectileFlareSpritemaps_Ice_0                                   ;938955;
-    db $08,$08                                                           ;938957;
-    dw $0000,$0001                                                       ;938959;
-    dw ProjectileFlareSpritemaps_Ice_1                                   ;93895D;
-    db $08,$08                                                           ;93895F;
-    dw $0001,$0001                                                       ;938961;
-    dw ProjectileFlareSpritemaps_Ice_2                                   ;938965;
-    db $08,$08                                                           ;938967;
-    dw $0002,$0001                                                       ;938969;
-    dw ProjectileFlareSpritemaps_Ice_3                                   ;93896D;
-    db $08,$08                                                           ;93896F;
-    dw $0003                                                             ;938971;
+    dw $0001,ProjectileFlareSpritemaps_Ice_0                             ;938953;
+    db $08,$08 : dw $0000                                                ;938957;
+    dw $0001,ProjectileFlareSpritemaps_Ice_1                             ;938959;
+    db $08,$08 : dw $0001                                                ;93895F;
+    dw $0001,ProjectileFlareSpritemaps_Ice_2                             ;938961;
+    db $08,$08 : dw $0002                                                ;938967;
+    dw $0001,ProjectileFlareSpritemaps_Ice_3                             ;938969;
+    db $08,$08 : dw $0003                                                ;93896F;
     dw Instruction_SamusProjectile_GotoY                                 ;938973;
     dw InstList_SamusProjectile_Ice                                      ;938975;
 
 InstList_SamusProjectile_Spazer_SpazerIce_Up_0:
-    dw $0002                                                             ;938977;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_23                          ;938979;
-    db $0C,$08                                                           ;93897B;
-    dw $0000,$0002                                                       ;93897D;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_25                          ;938981;
-    db $0C,$08                                                           ;938983;
-    dw $0001                                                             ;938985;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_23                    ;938977;
+    db $0C,$08 : dw $0000                                                ;93897B;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_25                    ;93897D;
+    db $0C,$08 : dw $0001                                                ;938983;
 
 InstList_SamusProjectile_Spazer_SpazerIce_Up_1:
-    dw $0002                                                             ;938987;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_28                          ;938989;
-    db $14,$08                                                           ;93898B;
-    dw $0002                                                             ;93898D;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_28                    ;938987;
+    db $14,$08 : dw $0002                                                ;93898B;
     dw Instruction_SamusProjectile_GotoY                                 ;93898F;
     dw InstList_SamusProjectile_Spazer_SpazerIce_Up_1                    ;938991;
 
 InstList_SamusProjectile_Spazer_SpazerIce_UpRight_0:
-    dw $0002                                                             ;938993;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_0                           ;938995;
-    db $08,$08                                                           ;938997;
-    dw $0000,$0002                                                       ;938999;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_1                           ;93899D;
-    db $0C,$0C                                                           ;93899F;
-    dw $0001                                                             ;9389A1;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_0                     ;938993;
+    db $08,$08 : dw $0000                                                ;938997;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_1                     ;938999;
+    db $0C,$0C : dw $0001                                                ;93899F;
 
 InstList_SamusProjectile_Spazer_SpazerIce_UpRight_1:
-    dw $0002                                                             ;9389A3;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_4                           ;9389A5;
-    db $10,$10                                                           ;9389A7;
-    dw $0002                                                             ;9389A9;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_4                     ;9389A3;
+    db $10,$10 : dw $0002                                                ;9389A7;
     dw Instruction_SamusProjectile_GotoY                                 ;9389AB;
     dw InstList_SamusProjectile_Spazer_SpazerIce_UpRight_1               ;9389AD;
 
 InstList_SamusProjectile_Spazer_SpazerIce_Right_0:
-    dw $0002                                                             ;9389AF;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_29                          ;9389B1;
-    db $08,$0C                                                           ;9389B3;
-    dw $0000,$0002                                                       ;9389B5;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_2B                          ;9389B9;
-    db $08,$0C                                                           ;9389BB;
-    dw $0001                                                             ;9389BD;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_29                    ;9389AF;
+    db $08,$0C : dw $0000                                                ;9389B3;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_2B                    ;9389B5;
+    db $08,$0C : dw $0001                                                ;9389BB;
 
 InstList_SamusProjectile_Spazer_SpazerIce_Right_1:
-    dw $0002                                                             ;9389BF;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_2E                          ;9389C1;
-    db $08,$14                                                           ;9389C3;
-    dw $0002                                                             ;9389C5;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_2E                    ;9389BF;
+    db $08,$14 : dw $0002                                                ;9389C3;
     dw Instruction_SamusProjectile_GotoY                                 ;9389C7;
     dw InstList_SamusProjectile_Spazer_SpazerIce_Right_1                 ;9389C9;
 
 InstList_SamusProjectile_Spazer_SpazerIce_DownRight_0:
-    dw $0002                                                             ;9389CB;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_6                           ;9389CD;
-    db $08,$08                                                           ;9389CF;
-    dw $0000,$0002                                                       ;9389D1;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_7                           ;9389D5;
-    db $0C,$0C                                                           ;9389D7;
-    dw $0001                                                             ;9389D9;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_6                     ;9389CB;
+    db $08,$08 : dw $0000                                                ;9389CF;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_7                     ;9389D1;
+    db $0C,$0C : dw $0001                                                ;9389D7;
 
 InstList_SamusProjectile_Spazer_SpazerIce_DownRight_1:
-    dw $0002                                                             ;9389DB;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_A                           ;9389DD;
-    db $10,$10                                                           ;9389DF;
-    dw $0002                                                             ;9389E1;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_A                     ;9389DB;
+    db $10,$10 : dw $0002                                                ;9389DF;
     dw Instruction_SamusProjectile_GotoY                                 ;9389E3;
     dw InstList_SamusProjectile_Spazer_SpazerIce_DownRight_1             ;9389E5;
 
 InstList_SamusProjectile_Spazer_SpazerIce_Down_0:
-    dw $0002                                                             ;9389E7;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_17                          ;9389E9;
-    db $0C,$08                                                           ;9389EB;
-    dw $0000,$0002                                                       ;9389ED;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_19                          ;9389F1;
-    db $0C,$08                                                           ;9389F3;
-    dw $0001                                                             ;9389F5;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_17                    ;9389E7;
+    db $0C,$08 : dw $0000                                                ;9389EB;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_19                    ;9389ED;
+    db $0C,$08 : dw $0001                                                ;9389F3;
 
 InstList_SamusProjectile_Spazer_SpazerIce_Down_1:
-    dw $0002                                                             ;9389F7;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_1C                          ;9389F9;
-    db $14,$08                                                           ;9389FB;
-    dw $0002                                                             ;9389FD;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_1C                    ;9389F7;
+    db $14,$08 : dw $0002                                                ;9389FB;
     dw Instruction_SamusProjectile_GotoY                                 ;9389FF;
     dw InstList_SamusProjectile_Spazer_SpazerIce_Down_1                  ;938A01;
 
 InstList_SamusProjectile_Spazer_SpazerIce_DownLeft_0:
-    dw $0002                                                             ;938A03;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_C                           ;938A05;
-    db $08,$08                                                           ;938A07;
-    dw $0000,$0002                                                       ;938A09;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_D                           ;938A0D;
-    db $0C,$0C                                                           ;938A0F;
-    dw $0001                                                             ;938A11;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_C                     ;938A03;
+    db $08,$08 : dw $0000                                                ;938A07;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_D                     ;938A0D;
+    db $0C,$0C : dw $0001                                                ;938A0F;
 
 InstList_SamusProjectile_Spazer_SpazerIce_DownLeft_1:
-    dw $0002                                                             ;938A13;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_10                          ;938A15;
-    db $10,$10                                                           ;938A17;
-    dw $0002                                                             ;938A19;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_10                    ;938A13;
+    db $10,$10 : dw $0002                                                ;938A17;
     dw Instruction_SamusProjectile_GotoY                                 ;938A1B;
     dw InstList_SamusProjectile_Spazer_SpazerIce_DownLeft_1              ;938A1D;
 
 InstList_SamusProjectile_Spazer_SpazerIce_Left_0:
-    dw $0002                                                             ;938A1F;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_1D                          ;938A21;
-    db $08,$0C                                                           ;938A23;
-    dw $0000,$0002                                                       ;938A25;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_1F                          ;938A29;
-    db $08,$0C                                                           ;938A2B;
-    dw $0001                                                             ;938A2D;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_1D                    ;938A1F;
+    db $08,$0C : dw $0000                                                ;938A23;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_1F                    ;938A29;
+    db $08,$0C : dw $0001                                                ;938A2B;
 
 InstList_SamusProjectile_Spazer_SpazerIce_Left_1:
-    dw $0002                                                             ;938A2F;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_22                          ;938A31;
-    db $08,$14                                                           ;938A33;
-    dw $0002                                                             ;938A35;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_22                    ;938A2F;
+    db $08,$14 : dw $0002                                                ;938A33;
     dw Instruction_SamusProjectile_GotoY                                 ;938A37;
     dw InstList_SamusProjectile_Spazer_SpazerIce_Left_1                  ;938A39;
 
 InstList_SamusProjectile_Spazer_SpazerIce_UpLeft_0:
-    dw $0002                                                             ;938A3B;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_11                          ;938A3D;
-    db $08,$08                                                           ;938A3F;
-    dw $0000,$0002                                                       ;938A41;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_12                          ;938A45;
-    db $0C,$0C                                                           ;938A47;
-    dw $0001                                                             ;938A49;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_11                    ;938A3B;
+    db $08,$08 : dw $0000                                                ;938A3F;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_12                    ;938A41;
+    db $0C,$0C : dw $0001                                                ;938A47;
 
 InstList_SamusProjectile_Spazer_SpazerIce_UpLeft_1:
-    dw $0002                                                             ;938A4B;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_15                          ;938A4D;
-    db $10,$10                                                           ;938A4F;
-    dw $0002                                                             ;938A51;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_15                    ;938A4B;
+    db $10,$10 : dw $0002                                                ;938A4F;
     dw Instruction_SamusProjectile_GotoY                                 ;938A53;
     dw InstList_SamusProjectile_Spazer_SpazerIce_UpLeft_1                ;938A55;
 
 InstList_SamusProjectile_SpazerWave_SpazerIceWave_Up:
-    dw $0002                                                             ;938A57;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_23                          ;938A59;
-    db $0C,$08                                                           ;938A5B;
-    dw $0000,$0002                                                       ;938A5D;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_24                          ;938A61;
-    db $0C,$08                                                           ;938A63;
-    dw $0001,$0002                                                       ;938A65;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_25                          ;938A69;
-    db $0C,$08                                                           ;938A6B;
-    dw $0002,$0002                                                       ;938A6D;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_26                          ;938A71;
-    db $11,$08                                                           ;938A73;
-    dw $0003,$0002                                                       ;938A75;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_27                          ;938A79;
-    db $13,$08                                                           ;938A7B;
-    dw $0004,$0002                                                       ;938A7D;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_28                          ;938A81;
-    db $14,$08                                                           ;938A83;
-    dw $0005,$0002                                                       ;938A85;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_27                          ;938A89;
-    db $13,$08                                                           ;938A8B;
-    dw $0006,$0002                                                       ;938A8D;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_26                          ;938A91;
-    db $11,$08                                                           ;938A93;
-    dw $0007,$0002                                                       ;938A95;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_25                          ;938A99;
-    db $0C,$08                                                           ;938A9B;
-    dw $0008,$0002                                                       ;938A9D;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_24                          ;938AA1;
-    db $0C,$08                                                           ;938AA3;
-    dw $0009                                                             ;938AA5;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_23                    ;938A57;
+    db $0C,$08 : dw $0000                                                ;938A5B;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_24                    ;938A5D;
+    db $0C,$08 : dw $0001                                                ;938A63;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_25                    ;938A65;
+    db $0C,$08 : dw $0002                                                ;938A6B;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_26                    ;938A6D;
+    db $11,$08 : dw $0003                                                ;938A73;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_27                    ;938A75;
+    db $13,$08 : dw $0004                                                ;938A7B;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_28                    ;938A7D;
+    db $14,$08 : dw $0005                                                ;938A83;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_27                    ;938A85;
+    db $13,$08 : dw $0006                                                ;938A8B;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_26                    ;938A8D;
+    db $11,$08 : dw $0007                                                ;938A93;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_25                    ;938A95;
+    db $0C,$08 : dw $0008                                                ;938A9B;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_24                    ;938A9D;
+    db $0C,$08 : dw $0009                                                ;938AA3;
     dw Instruction_SamusProjectile_GotoY                                 ;938AA7;
     dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Up              ;938AA9;
 
 InstList_SamusProjectile_SpazerWave_SpazerIceWave_UpRight:
-    dw $0002                                                             ;938AAB;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_0                           ;938AAD;
-    db $08,$08                                                           ;938AAF;
-    dw $0000,$0002                                                       ;938AB1;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_5                           ;938AB5;
-    db $08,$08                                                           ;938AB7;
-    dw $0001,$0002                                                       ;938AB9;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_1                           ;938ABD;
-    db $0C,$0C                                                           ;938ABF;
-    dw $0002,$0002                                                       ;938AC1;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_2                           ;938AC5;
-    db $10,$10                                                           ;938AC7;
-    dw $0003,$0002                                                       ;938AC9;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_3                           ;938ACD;
-    db $10,$10                                                           ;938ACF;
-    dw $0004,$0002                                                       ;938AD1;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_4                           ;938AD5;
-    db $10,$10                                                           ;938AD7;
-    dw $0005,$0002                                                       ;938AD9;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_3                           ;938ADD;
-    db $10,$10                                                           ;938ADF;
-    dw $0006,$0002                                                       ;938AE1;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_2                           ;938AE5;
-    db $10,$10                                                           ;938AE7;
-    dw $0007,$0002                                                       ;938AE9;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_1                           ;938AED;
-    db $0C,$0C                                                           ;938AEF;
-    dw $0008,$0002                                                       ;938AF1;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_5                           ;938AF5;
-    db $08,$08                                                           ;938AF7;
-    dw $0009                                                             ;938AF9;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_0                     ;938AAB;
+    db $08,$08 : dw $0000                                                ;938AAF;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_5                     ;938AB1;
+    db $08,$08 : dw $0001                                                ;938AB7;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_1                     ;938AB9;
+    db $0C,$0C : dw $0002                                                ;938ABF;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_2                     ;938AC1;
+    db $10,$10 : dw $0003                                                ;938AC7;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_3                     ;938AC9;
+    db $10,$10 : dw $0004                                                ;938ACF;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_4                     ;938AD1;
+    db $10,$10 : dw $0005                                                ;938AD7;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_3                     ;938AD9;
+    db $10,$10 : dw $0006                                                ;938ADF;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_2                     ;938AE1;
+    db $10,$10 : dw $0007                                                ;938AE7;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_1                     ;938AE9;
+    db $0C,$0C : dw $0008                                                ;938AEF;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_5                     ;938AF1;
+    db $08,$08 : dw $0009                                                ;938AF7;
     dw Instruction_SamusProjectile_GotoY                                 ;938AFB;
     dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_UpRight         ;938AFD;
 
 InstList_SamusProjectile_SpazerWave_SpazerIceWave_Right:
-    dw $0002                                                             ;938AFF;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_29                          ;938B01;
-    db $08,$0C                                                           ;938B03;
-    dw $0000,$0002                                                       ;938B05;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_2A                          ;938B09;
-    db $08,$0C                                                           ;938B0B;
-    dw $0001,$0002                                                       ;938B0D;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_2B                          ;938B11;
-    db $08,$0C                                                           ;938B13;
-    dw $0002,$0002                                                       ;938B15;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_2C                          ;938B19;
-    db $08,$11                                                           ;938B1B;
-    dw $0003,$0002                                                       ;938B1D;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_2D                          ;938B21;
-    db $08,$13                                                           ;938B23;
-    dw $0004,$0002                                                       ;938B25;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_2E                          ;938B29;
-    db $08,$14                                                           ;938B2B;
-    dw $0005,$0002                                                       ;938B2D;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_2D                          ;938B31;
-    db $08,$13                                                           ;938B33;
-    dw $0006,$0002                                                       ;938B35;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_2C                          ;938B39;
-    db $08,$11                                                           ;938B3B;
-    dw $0007,$0002                                                       ;938B3D;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_2B                          ;938B41;
-    db $08,$0C                                                           ;938B43;
-    dw $0008,$0002                                                       ;938B45;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_2A                          ;938B49;
-    db $08,$0C                                                           ;938B4B;
-    dw $0009                                                             ;938B4D;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_29                    ;938AFF;
+    db $08,$0C : dw $0000                                                ;938B03;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_2A                    ;938B05;
+    db $08,$0C : dw $0001                                                ;938B0B;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_2B                    ;938B0D;
+    db $08,$0C : dw $0002                                                ;938B13;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_2C                    ;938B15;
+    db $08,$11 : dw $0003                                                ;938B1B;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_2D                    ;938B1D;
+    db $08,$13 : dw $0004                                                ;938B23;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_2E                    ;938B25;
+    db $08,$14 : dw $0005                                                ;938B2B;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_2D                    ;938B2D;
+    db $08,$13 : dw $0006                                                ;938B33;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_2C                    ;938B35;
+    db $08,$11 : dw $0007                                                ;938B3B;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_2B                    ;938B3D;
+    db $08,$0C : dw $0008                                                ;938B43;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_2A                    ;938B45;
+    db $08,$0C : dw $0009                                                ;938B4B;
     dw Instruction_SamusProjectile_GotoY                                 ;938B4F;
     dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Right           ;938B51;
 
 InstList_SamusProjectile_SpazerWave_SpazerIceWave_DownRight:
-    dw $0002                                                             ;938B53;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_6                           ;938B55;
-    db $08,$08                                                           ;938B57;
-    dw $0000,$0002                                                       ;938B59;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_B                           ;938B5D;
-    db $08,$08                                                           ;938B5F;
-    dw $0001,$0002                                                       ;938B61;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_7                           ;938B65;
-    db $0C,$0C                                                           ;938B67;
-    dw $0002,$0002                                                       ;938B69;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_8                           ;938B6D;
-    db $10,$10                                                           ;938B6F;
-    dw $0003,$0002                                                       ;938B71;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_9                           ;938B75;
-    db $10,$10                                                           ;938B77;
-    dw $0004,$0002                                                       ;938B79;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_A                           ;938B7D;
-    db $10,$10                                                           ;938B7F;
-    dw $0005,$0002                                                       ;938B81;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_9                           ;938B85;
-    db $10,$10                                                           ;938B87;
-    dw $0006,$0002                                                       ;938B89;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_8                           ;938B8D;
-    db $10,$10                                                           ;938B8F;
-    dw $0007,$0002                                                       ;938B91;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_7                           ;938B95;
-    db $0C,$0C                                                           ;938B97;
-    dw $0008,$0002                                                       ;938B99;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_B                           ;938B9D;
-    db $08,$08                                                           ;938B9F;
-    dw $0009                                                             ;938BA1;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_6                     ;938B53;
+    db $08,$08 : dw $0000                                                ;938B57;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_B                     ;938B59;
+    db $08,$08 : dw $0001                                                ;938B5F;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_7                     ;938B61;
+    db $0C,$0C : dw $0002                                                ;938B67;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_8                     ;938B69;
+    db $10,$10 : dw $0003                                                ;938B6F;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_9                     ;938B71;
+    db $10,$10 : dw $0004                                                ;938B77;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_A                     ;938B79;
+    db $10,$10 : dw $0005                                                ;938B7F;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_9                     ;938B81;
+    db $10,$10 : dw $0006                                                ;938B87;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_8                     ;938B89;
+    db $10,$10 : dw $0007                                                ;938B8F;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_7                     ;938B91;
+    db $0C,$0C : dw $0008                                                ;938B97;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_B                     ;938B99;
+    db $08,$08 : dw $0009                                                ;938B9F;
     dw Instruction_SamusProjectile_GotoY                                 ;938BA3;
     dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_DownRight       ;938BA5;
 
 InstList_SamusProjectile_SpazerWave_SpazerIceWave_Down:
-    dw $0002                                                             ;938BA7;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_17                          ;938BA9;
-    db $0C,$08                                                           ;938BAB;
-    dw $0000,$0002                                                       ;938BAD;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_18                          ;938BB1;
-    db $0C,$08                                                           ;938BB3;
-    dw $0001,$0002                                                       ;938BB5;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_19                          ;938BB9;
-    db $0C,$08                                                           ;938BBB;
-    dw $0002,$0002                                                       ;938BBD;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_1A                          ;938BC1;
-    db $11,$08                                                           ;938BC3;
-    dw $0003,$0002                                                       ;938BC5;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_1B                          ;938BC9;
-    db $13,$08                                                           ;938BCB;
-    dw $0004,$0002                                                       ;938BCD;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_1C                          ;938BD1;
-    db $14,$08                                                           ;938BD3;
-    dw $0005,$0002                                                       ;938BD5;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_1B                          ;938BD9;
-    db $13,$08                                                           ;938BDB;
-    dw $0006,$0002                                                       ;938BDD;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_1A                          ;938BE1;
-    db $11,$08                                                           ;938BE3;
-    dw $0007,$0002                                                       ;938BE5;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_19                          ;938BE9;
-    db $0C,$08                                                           ;938BEB;
-    dw $0008,$0002                                                       ;938BED;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_18                          ;938BF1;
-    db $0C,$08                                                           ;938BF3;
-    dw $0009                                                             ;938BF5;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_17                    ;938BA7;
+    db $0C,$08 : dw $0000                                                ;938BAB;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_18                    ;938BAD;
+    db $0C,$08 : dw $0001                                                ;938BB3;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_19                    ;938BB5;
+    db $0C,$08 : dw $0002                                                ;938BBB;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_1A                    ;938BBD;
+    db $11,$08 : dw $0003                                                ;938BC3;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_1B                    ;938BC5;
+    db $13,$08 : dw $0004                                                ;938BCB;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_1C                    ;938BCD;
+    db $14,$08 : dw $0005                                                ;938BD3;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_1B                    ;938BD5;
+    db $13,$08 : dw $0006                                                ;938BDB;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_1A                    ;938BDD;
+    db $11,$08 : dw $0007                                                ;938BE3;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_19                    ;938BE5;
+    db $0C,$08 : dw $0008                                                ;938BEB;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_18                    ;938BED;
+    db $0C,$08 : dw $0009                                                ;938BF3;
     dw Instruction_SamusProjectile_GotoY                                 ;938BF7;
     dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Down            ;938BF9;
 
 InstList_SamusProjectile_SpazerWave_SpazerIceWave_DownLeft:
-    dw $0002                                                             ;938BFB;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_C                           ;938BFD;
-    db $08,$08                                                           ;938BFF;
-    dw $0000,$0002                                                       ;938C01;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_D                           ;938C05;
-    db $08,$08                                                           ;938C07;
-    dw $0001,$0002                                                       ;938C09;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_E                           ;938C0D;
-    db $0C,$0C                                                           ;938C0F;
-    dw $0002,$0002                                                       ;938C11;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_F                           ;938C15;
-    db $10,$10                                                           ;938C17;
-    dw $0003,$0002                                                       ;938C19;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_10                          ;938C1D;
-    db $10,$10                                                           ;938C1F;
-    dw $0004,$0002                                                       ;938C21;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_10                          ;938C25;
-    db $10,$10                                                           ;938C27;
-    dw $0005,$0002                                                       ;938C29;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_10                          ;938C2D;
-    db $10,$10                                                           ;938C2F;
-    dw $0006,$0002                                                       ;938C31;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_F                           ;938C35;
-    db $10,$10                                                           ;938C37;
-    dw $0007,$0002                                                       ;938C39;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_E                           ;938C3D;
-    db $0C,$0C                                                           ;938C3F;
-    dw $0008,$0002                                                       ;938C41;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_D                           ;938C45;
-    db $08,$08                                                           ;938C47;
-    dw $0009                                                             ;938C49;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_C                     ;938BFB;
+    db $08,$08 : dw $0000                                                ;938BFF;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_D                     ;938C01;
+    db $08,$08 : dw $0001                                                ;938C07;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_E                     ;938C09;
+    db $0C,$0C : dw $0002                                                ;938C0F;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_F                     ;938C11;
+    db $10,$10 : dw $0003                                                ;938C17;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_10                    ;938C19;
+    db $10,$10 : dw $0004                                                ;938C1F;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_10                    ;938C21;
+    db $10,$10 : dw $0005                                                ;938C27;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_10                    ;938C29;
+    db $10,$10 : dw $0006                                                ;938C2F;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_F                     ;938C31;
+    db $10,$10 : dw $0007                                                ;938C37;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_E                     ;938C39;
+    db $0C,$0C : dw $0008                                                ;938C3F;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_D                     ;938C41;
+    db $08,$08 : dw $0009                                                ;938C47;
     dw Instruction_SamusProjectile_GotoY                                 ;938C4B;
     dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_DownLeft        ;938C4D;
 
 InstList_SamusProjectile_SpazerWave_SpazerIceWave_Left:
-    dw $0002                                                             ;938C4F;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_1D                          ;938C51;
-    db $08,$0C                                                           ;938C53;
-    dw $0000,$0002                                                       ;938C55;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_1E                          ;938C59;
-    db $08,$0C                                                           ;938C5B;
-    dw $0001,$0002                                                       ;938C5D;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_1F                          ;938C61;
-    db $08,$0C                                                           ;938C63;
-    dw $0002,$0002                                                       ;938C65;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_20                          ;938C69;
-    db $08,$11                                                           ;938C6B;
-    dw $0003,$0002                                                       ;938C6D;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_21                          ;938C71;
-    db $08,$13                                                           ;938C73;
-    dw $0004,$0002                                                       ;938C75;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_22                          ;938C79;
-    db $08,$14                                                           ;938C7B;
-    dw $0005,$0002                                                       ;938C7D;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_21                          ;938C81;
-    db $08,$13                                                           ;938C83;
-    dw $0006,$0002                                                       ;938C85;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_20                          ;938C89;
-    db $08,$11                                                           ;938C8B;
-    dw $0007,$0002                                                       ;938C8D;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_1F                          ;938C91;
-    db $08,$0C                                                           ;938C93;
-    dw $0008,$0002                                                       ;938C95;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_1E                          ;938C99;
-    db $08,$0C                                                           ;938C9B;
-    dw $0009                                                             ;938C9D;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_1D                    ;938C4F;
+    db $08,$0C : dw $0000                                                ;938C53;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_1E                    ;938C55;
+    db $08,$0C : dw $0001                                                ;938C5B;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_1F                    ;938C5D;
+    db $08,$0C : dw $0002                                                ;938C63;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_20                    ;938C65;
+    db $08,$11 : dw $0003                                                ;938C6B;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_21                    ;938C6D;
+    db $08,$13 : dw $0004                                                ;938C73;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_22                    ;938C75;
+    db $08,$14 : dw $0005                                                ;938C7B;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_21                    ;938C7D;
+    db $08,$13 : dw $0006                                                ;938C83;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_20                    ;938C85;
+    db $08,$11 : dw $0007                                                ;938C8B;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_1F                    ;938C8D;
+    db $08,$0C : dw $0008                                                ;938C93;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_1E                    ;938C95;
+    db $08,$0C : dw $0009                                                ;938C9B;
     dw Instruction_SamusProjectile_GotoY                                 ;938C9F;
     dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_Left            ;938CA1;
 
 InstList_SamusProjectile_SpazerWave_SpazerIceWave_UpLeft:
-    dw $0002                                                             ;938CA3;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_11                          ;938CA5;
-    db $08,$08                                                           ;938CA7;
-    dw $0000,$0002                                                       ;938CA9;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_16                          ;938CAD;
-    db $08,$08                                                           ;938CAF;
-    dw $0001,$0002                                                       ;938CB1;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_12                          ;938CB5;
-    db $0C,$0C                                                           ;938CB7;
-    dw $0002,$0002                                                       ;938CB9;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_13                          ;938CBD;
-    db $10,$10                                                           ;938CBF;
-    dw $0003,$0002                                                       ;938CC1;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_14                          ;938CC5;
-    db $10,$10                                                           ;938CC7;
-    dw $0004,$0002                                                       ;938CC9;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_15                          ;938CCD;
-    db $10,$10                                                           ;938CCF;
-    dw $0005,$0002                                                       ;938CD1;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_14                          ;938CD5;
-    db $10,$10                                                           ;938CD7;
-    dw $0006,$0002                                                       ;938CD9;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_13                          ;938CDD;
-    db $10,$10                                                           ;938CDF;
-    dw $0007,$0002                                                       ;938CE1;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_12                          ;938CE5;
-    db $0C,$0C                                                           ;938CE7;
-    dw $0008,$0002                                                       ;938CE9;
-    dw ProjectileFlareSpritemaps_S_SI_SW_SIW_16                          ;938CED;
-    db $08,$08                                                           ;938CEF;
-    dw $0009                                                             ;938CF1;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_11                    ;938CA3;
+    db $08,$08 : dw $0000                                                ;938CA7;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_16                    ;938CA9;
+    db $08,$08 : dw $0001                                                ;938CAF;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_12                    ;938CB1;
+    db $0C,$0C : dw $0002                                                ;938CB7;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_13                    ;938CB9;
+    db $10,$10 : dw $0003                                                ;938CBF;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_14                    ;938CC1;
+    db $10,$10 : dw $0004                                                ;938CC7;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_15                    ;938CC9;
+    db $10,$10 : dw $0005                                                ;938CCF;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_14                    ;938CD1;
+    db $10,$10 : dw $0006                                                ;938CD7;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_13                    ;938CD9;
+    db $10,$10 : dw $0007                                                ;938CDF;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_12                    ;938CE1;
+    db $0C,$0C : dw $0008                                                ;938CE7;
+    dw $0002,ProjectileFlareSpritemaps_S_SI_SW_SIW_16                    ;938CE9;
+    db $08,$08 : dw $0009                                                ;938CEF;
     dw Instruction_SamusProjectile_GotoY                                 ;938CF3;
     dw InstList_SamusProjectile_SpazerWave_SpazerIceWave_UpLeft          ;938CF5;
 
 InstList_SamusProjectile_Plasma_PlasmaIce_Down_Up_0:
-    dw $0001                                                             ;938CF7;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_4                   ;938CF9;
-    db $08,$10                                                           ;938CFB;
-    dw $0000                                                             ;938CFD;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_4             ;938CF7;
+    db $08,$10 : dw $0000                                                ;938CFB;
 
 InstList_SamusProjectile_Plasma_PlasmaIce_Down_Up_1:
-    dw $000F                                                             ;938CFF;
-    dw ProjectileFlareSpritemaps_Plasma_PlasmaIce_2                      ;938D01;
-    db $08,$10                                                           ;938D03;
-    dw $0001                                                             ;938D05;
+    dw $000F,ProjectileFlareSpritemaps_Plasma_PlasmaIce_2                ;938CFF;
+    db $08,$10 : dw $0001                                                ;938D03;
     dw Instruction_SamusProjectile_GotoY                                 ;938D07;
     dw InstList_SamusProjectile_Plasma_PlasmaIce_Down_Up_1               ;938D09;
 
 InstList_SamusProjectile_Plasma_PlasmaIce_DownLeft_UpRight_0:
-    dw $0001                                                             ;938D0B;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_C                   ;938D0D;
-    db $08,$08                                                           ;938D0F;
-    dw $0000                                                             ;938D11;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_C             ;938D0B;
+    db $08,$08 : dw $0000                                                ;938D0F;
 
 InstList_SamusProjectile_Plasma_PlasmaIce_DownLeft_UpRight_1:
-    dw $000F                                                             ;938D13;
-    dw ProjectileFlareSpritemaps_Plasma_PlasmaIce_3                      ;938D15;
-    db $08,$08                                                           ;938D17;
-    dw $0001                                                             ;938D19;
+    dw $000F,ProjectileFlareSpritemaps_Plasma_PlasmaIce_3                ;938D13;
+    db $08,$08 : dw $0001                                                ;938D17;
     dw Instruction_SamusProjectile_GotoY                                 ;938D1B;
     dw InstList_SamusProjectile_Plasma_PlasmaIce_DownLeft_UpRight_1      ;938D1D;
 
 InstList_SamusProjectile_Plasma_PlasmaIce_Left_Right_0:
-    dw $0001                                                             ;938D1F;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_0                   ;938D21;
-    db $08,$08                                                           ;938D23;
-    dw $0000                                                             ;938D25;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_0             ;938D1F;
+    db $08,$08 : dw $0000                                                ;938D23;
 
 InstList_SamusProjectile_Plasma_PlasmaIce_Left_Right_1:
-    dw $000F                                                             ;938D27;
-    dw ProjectileFlareSpritemaps_Plasma_PlasmaIce_0                      ;938D29;
-    db $10,$08                                                           ;938D2B;
-    dw $0001                                                             ;938D2D;
+    dw $000F,ProjectileFlareSpritemaps_Plasma_PlasmaIce_0                ;938D27;
+    db $10,$08 : dw $0001                                                ;938D2B;
     dw Instruction_SamusProjectile_GotoY                                 ;938D2F;
     dw InstList_SamusProjectile_Plasma_PlasmaIce_Left_Right_1            ;938D31;
 
 InstList_SamusProjectile_Plasma_PlasmaIce_DownRight_UpLeft_0:
-    dw $0001                                                             ;938D33;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_8                   ;938D35;
-    db $08,$08                                                           ;938D37;
-    dw $0000                                                             ;938D39;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_8             ;938D33;
+    db $08,$08 : dw $0000                                                ;938D37;
 
 InstList_SamusProjectile_Plasma_PlasmaIce_DownRight_UpLeft_1:
-    dw $000F                                                             ;938D3B;
-    dw ProjectileFlareSpritemaps_Plasma_PlasmaIce_1                      ;938D3D;
-    db $08,$08                                                           ;938D3F;
-    dw $0001                                                             ;938D41;
+    dw $000F,ProjectileFlareSpritemaps_Plasma_PlasmaIce_1                ;938D3B;
+    db $08,$08 : dw $0001                                                ;938D3F;
     dw Instruction_SamusProjectile_GotoY                                 ;938D43;
     dw InstList_SamusProjectile_Plasma_PlasmaIce_DownRight_UpLeft_1      ;938D45;
 
 InstList_SamusProjectile_PlasmaIceWave_Down_Up:
-    dw $0001                                                             ;938D47;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_4                   ;938D49;
-    db $0C,$10                                                           ;938D4B;
-    dw $0000                                                             ;938D4D;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_4             ;938D47;
+    db $0C,$10 : dw $0000                                                ;938D4B;
 
 InstList_SamusProjectile_PlasmaWave_Down_Up:
-    dw $0002                                                             ;938D4F;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_14                       ;938D51;
-    db $0C,$10                                                           ;938D53;
-    dw $0001,$0002                                                       ;938D55;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_15                       ;938D59;
-    db $0C,$10                                                           ;938D5B;
-    dw $0002,$0002                                                       ;938D5D;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_16                       ;938D61;
-    db $11,$10                                                           ;938D63;
-    dw $0003,$0002                                                       ;938D65;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_17                       ;938D69;
-    db $13,$10                                                           ;938D6B;
-    dw $0004,$0002                                                       ;938D6D;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_18                       ;938D71;
-    db $14,$10                                                           ;938D73;
-    dw $0005,$0002                                                       ;938D75;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_17                       ;938D79;
-    db $13,$10                                                           ;938D7B;
-    dw $0006,$0002                                                       ;938D7D;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_16                       ;938D81;
-    db $11,$10                                                           ;938D83;
-    dw $0007,$0002                                                       ;938D85;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_15                       ;938D89;
-    db $0C,$10                                                           ;938D8B;
-    dw $0008                                                             ;938D8D;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_14                 ;938D4F;
+    db $0C,$10 : dw $0001                                                ;938D53;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_15                 ;938D55;
+    db $0C,$10 : dw $0002                                                ;938D5B;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_16                 ;938D5D;
+    db $11,$10 : dw $0003                                                ;938D63;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_17                 ;938D65;
+    db $13,$10 : dw $0004                                                ;938D6B;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_18                 ;938D6D;
+    db $14,$10 : dw $0005                                                ;938D73;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_17                 ;938D75;
+    db $13,$10 : dw $0006                                                ;938D7B;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_16                 ;938D7D;
+    db $11,$10 : dw $0007                                                ;938D83;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_15                 ;938D85;
+    db $0C,$10 : dw $0008                                                ;938D8B;
     dw Instruction_SamusProjectile_GotoY                                 ;938D8F;
     dw InstList_SamusProjectile_PlasmaWave_Down_Up                       ;938D91;
 
 InstList_SamusProjectile_PlasmaIceWave_DownLeft_UpRight:
-    dw $0001                                                             ;938D93;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_C                   ;938D95;
-    db $08,$08                                                           ;938D97;
-    dw $0000                                                             ;938D99;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_C             ;938D93;
+    db $08,$08 : dw $0000                                                ;938D97;
 
 InstList_SamusProjectile_PlasmaWave_DownLeft_UpRight:
-    dw $0002                                                             ;938D9B;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_32                       ;938D9D;
-    db $08,$08                                                           ;938D9F;
-    dw $0001,$0002                                                       ;938DA1;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_33                       ;938DA5;
-    db $0C,$0C                                                           ;938DA7;
-    dw $0002,$0002                                                       ;938DA9;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_34                       ;938DAD;
-    db $10,$10                                                           ;938DAF;
-    dw $0003,$0002                                                       ;938DB1;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_35                       ;938DB5;
-    db $10,$10                                                           ;938DB7;
-    dw $0004,$0002                                                       ;938DB9;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_36                       ;938DBD;
-    db $14,$14                                                           ;938DBF;
-    dw $0005,$0002                                                       ;938DC1;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_35                       ;938DC5;
-    db $10,$10                                                           ;938DC7;
-    dw $0006,$0002                                                       ;938DC9;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_34                       ;938DCD;
-    db $10,$10                                                           ;938DCF;
-    dw $0007,$0002                                                       ;938DD1;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_33                       ;938DD5;
-    db $0C,$0C                                                           ;938DD7;
-    dw $0008                                                             ;938DD9;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_32                 ;938D9B;
+    db $08,$08 : dw $0001                                                ;938D9F;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_33                 ;938DA1;
+    db $0C,$0C : dw $0002                                                ;938DA7;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_34                 ;938DA9;
+    db $10,$10 : dw $0003                                                ;938DAF;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_35                 ;938DB1;
+    db $10,$10 : dw $0004                                                ;938DB7;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_36                 ;938DB9;
+    db $14,$14 : dw $0005                                                ;938DBF;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_35                 ;938DC1;
+    db $10,$10 : dw $0006                                                ;938DC7;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_34                 ;938DC9;
+    db $10,$10 : dw $0007                                                ;938DCF;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_33                 ;938DD1;
+    db $0C,$0C : dw $0008                                                ;938DD7;
     dw Instruction_SamusProjectile_GotoY                                 ;938DDB;
     dw InstList_SamusProjectile_PlasmaWave_DownLeft_UpRight              ;938DDD;
 
 InstList_SamusProj_PlasmaWave_PlasmaIceWave_Left_Right_0:
-    dw $0001                                                             ;938DDF;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_0                   ;938DE1;
-    db $08,$0C                                                           ;938DE3;
-    dw $0000                                                             ;938DE5;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_0             ;938DDF;
+    db $08,$0C : dw $0000                                                ;938DE3;
 
 InstList_SamusProj_PlasmaWave_PlasmaIceWave_Left_Right_1:
-    dw $0002                                                             ;938DE7;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_0                        ;938DE9;
-    db $10,$0C                                                           ;938DEB;
-    dw $0001,$0002                                                       ;938DED;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_1                        ;938DF1;
-    db $10,$0C                                                           ;938DF3;
-    dw $0002,$0002                                                       ;938DF5;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_2                        ;938DF9;
-    db $10,$11                                                           ;938DFB;
-    dw $0003,$0002                                                       ;938DFD;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_3                        ;938E01;
-    db $10,$13                                                           ;938E03;
-    dw $0004,$0002                                                       ;938E05;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_4                        ;938E09;
-    db $10,$14                                                           ;938E0B;
-    dw $0005,$0002                                                       ;938E0D;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_3                        ;938E11;
-    db $10,$13                                                           ;938E13;
-    dw $0006,$0002                                                       ;938E15;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_2                        ;938E19;
-    db $10,$11                                                           ;938E1B;
-    dw $0007,$0002                                                       ;938E1D;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_1                        ;938E21;
-    db $10,$0C                                                           ;938E23;
-    dw $0008                                                             ;938E25;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_0                  ;938DE7;
+    db $10,$0C : dw $0001                                                ;938DEB;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_1                  ;938DED;
+    db $10,$0C : dw $0002                                                ;938DF3;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_2                  ;938DF5;
+    db $10,$11 : dw $0003                                                ;938DFB;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_3                  ;938DFD;
+    db $10,$13 : dw $0004                                                ;938E03;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_4                  ;938E05;
+    db $10,$14 : dw $0005                                                ;938E0B;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_3                  ;938E0D;
+    db $10,$13 : dw $0006                                                ;938E13;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_2                  ;938E15;
+    db $10,$11 : dw $0007                                                ;938E1B;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_1                  ;938E1D;
+    db $10,$0C : dw $0008                                                ;938E23;
     dw Instruction_SamusProjectile_GotoY                                 ;938E27;
     dw InstList_SamusProj_PlasmaWave_PlasmaIceWave_Left_Right_1          ;938E29;
 
 InstList_SamusProjectile_PlasmaIceWave_DownRight_UpLeft:
-    dw $0001                                                             ;938E2B;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_8                   ;938E2D;
-    db $08,$08                                                           ;938E2F;
-    dw $0000                                                             ;938E31;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_8             ;938E2B;
+    db $08,$08 : dw $0000                                                ;938E2F;
 
 InstList_SamusProjectile_PlasmaWave_DownRight_UpLeft:
-    dw $0002                                                             ;938E33;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_A                        ;938E35;
-    db $08,$08                                                           ;938E37;
-    dw $0001,$0002                                                       ;938E39;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_B                        ;938E3D;
-    db $0C,$0C                                                           ;938E3F;
-    dw $0002,$0002                                                       ;938E41;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_C                        ;938E45;
-    db $10,$10                                                           ;938E47;
-    dw $0003,$0002                                                       ;938E49;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_D                        ;938E4D;
-    db $10,$10                                                           ;938E4F;
-    dw $0004,$0002                                                       ;938E51;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_E                        ;938E55;
-    db $14,$14                                                           ;938E57;
-    dw $0005,$0002                                                       ;938E59;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_D                        ;938E5D;
-    db $10,$10                                                           ;938E5F;
-    dw $0006,$0002                                                       ;938E61;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_C                        ;938E65;
-    db $10,$10                                                           ;938E67;
-    dw $0007,$0002                                                       ;938E69;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_B                        ;938E6D;
-    db $0C,$0C                                                           ;938E6F;
-    dw $0008                                                             ;938E71;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_A                  ;938E33;
+    db $08,$08 : dw $0001                                                ;938E37;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_B                  ;938E39;
+    db $0C,$0C : dw $0002                                                ;938E3F;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_C                  ;938E41;
+    db $10,$10 : dw $0003                                                ;938E47;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_D                  ;938E49;
+    db $10,$10 : dw $0004                                                ;938E4F;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_E                  ;938E51;
+    db $14,$14 : dw $0005                                                ;938E57;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_D                  ;938E59;
+    db $10,$10 : dw $0006                                                ;938E5F;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_C                  ;938E61;
+    db $10,$10 : dw $0007                                                ;938E67;
+    dw $0002,ProjectileFlareSpritemaps_Charged_PW_PIW_B                  ;938E69;
+    db $0C,$0C : dw $0008                                                ;938E6F;
     dw Instruction_SamusProjectile_GotoY                                 ;938E73;
     dw InstList_SamusProjectile_PlasmaWave_DownRight_UpLeft              ;938E75;
 
 InstList_SamusProjectile_Charged_Power_Up:
-    dw $0001                                                             ;938E77;
-    dw ProjectileFlareSpritemaps_Charged_Power_2                         ;938E79;
-    db $08,$08                                                           ;938E7B;
-    dw $0000,$0001                                                       ;938E7D;
-    dw ProjectileFlareSpritemaps_Charged_Power_A                         ;938E81;
-    db $08,$08                                                           ;938E83;
-    dw $0001                                                             ;938E85;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Power_2                   ;938E77;
+    db $08,$08 : dw $0000                                                ;938E7B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Power_A                   ;938E7D;
+    db $08,$08 : dw $0001                                                ;938E83;
     dw Instruction_SamusProjectile_GotoY                                 ;938E87;
     dw InstList_SamusProjectile_Charged_Power_Up                         ;938E89;
 
 InstList_SamusProjectile_Charged_Power_UpRight:
-    dw $0001                                                             ;938E8B;
-    dw ProjectileFlareSpritemaps_Charged_Power_3                         ;938E8D;
-    db $08,$08                                                           ;938E8F;
-    dw $0000,$0001                                                       ;938E91;
-    dw ProjectileFlareSpritemaps_Charged_Power_B                         ;938E95;
-    db $08,$08                                                           ;938E97;
-    dw $0001                                                             ;938E99;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Power_3                   ;938E8B;
+    db $08,$08 : dw $0000                                                ;938E8F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Power_B                   ;938E91;
+    db $08,$08 : dw $0001                                                ;938E97;
     dw Instruction_SamusProjectile_GotoY                                 ;938E9B;
     dw InstList_SamusProjectile_Charged_Power_UpRight                    ;938E9D;
 
 InstList_SamusProjectile_Charged_Power_Right:
-    dw $0001                                                             ;938E9F;
-    dw ProjectileFlareSpritemaps_Charged_Power_4                         ;938EA1;
-    db $08,$08                                                           ;938EA3;
-    dw $0000,$0001                                                       ;938EA5;
-    dw ProjectileFlareSpritemaps_Charged_Power_C                         ;938EA9;
-    db $08,$08                                                           ;938EAB;
-    dw $0001                                                             ;938EAD;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Power_4                   ;938E9F;
+    db $08,$08 : dw $0000                                                ;938EA3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Power_C                   ;938EA5;
+    db $08,$08 : dw $0001                                                ;938EAB;
     dw Instruction_SamusProjectile_GotoY                                 ;938EAF;
     dw InstList_SamusProjectile_Charged_Power_Right                      ;938EB1;
 
 InstList_SamusProjectile_Charged_Power_DownRight:
-    dw $0001                                                             ;938EB3;
-    dw ProjectileFlareSpritemaps_Charged_Power_5                         ;938EB5;
-    db $08,$08                                                           ;938EB7;
-    dw $0000,$0001                                                       ;938EB9;
-    dw ProjectileFlareSpritemaps_Charged_Power_D                         ;938EBD;
-    db $08,$08                                                           ;938EBF;
-    dw $0001                                                             ;938EC1;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Power_5                   ;938EB3;
+    db $08,$08 : dw $0000                                                ;938EB7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Power_D                   ;938EB9;
+    db $08,$08 : dw $0001                                                ;938EBF;
     dw Instruction_SamusProjectile_GotoY                                 ;938EC3;
     dw InstList_SamusProjectile_Charged_Power_DownRight                  ;938EC5;
 
 InstList_SamusProjectile_Charged_Power_Down:
-    dw $0001                                                             ;938EC7;
-    dw ProjectileFlareSpritemaps_Charged_Power_6                         ;938EC9;
-    db $08,$08                                                           ;938ECB;
-    dw $0000,$0001                                                       ;938ECD;
-    dw ProjectileFlareSpritemaps_Charged_Power_E                         ;938ED1;
-    db $08,$08                                                           ;938ED3;
-    dw $0001                                                             ;938ED5;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Power_6                   ;938EC7;
+    db $08,$08 : dw $0000                                                ;938ECB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Power_E                   ;938ECD;
+    db $08,$08 : dw $0001                                                ;938ED3;
     dw Instruction_SamusProjectile_GotoY                                 ;938ED7;
     dw InstList_SamusProjectile_Charged_Power_Down                       ;938ED9;
 
 InstList_SamusProjectile_Charged_Power_DownLeft:
-    dw $0001                                                             ;938EDB;
-    dw ProjectileFlareSpritemaps_Charged_Power_7                         ;938EDD;
-    db $08,$08                                                           ;938EDF;
-    dw $0000,$0001                                                       ;938EE1;
-    dw ProjectileFlareSpritemaps_Charged_Power_F                         ;938EE5;
-    db $08,$08                                                           ;938EE7;
-    dw $0001                                                             ;938EE9;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Power_7                   ;938EDB;
+    db $08,$08 : dw $0000                                                ;938EDF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Power_F                   ;938EE1;
+    db $08,$08 : dw $0001                                                ;938EE7;
     dw Instruction_SamusProjectile_GotoY                                 ;938EEB;
     dw InstList_SamusProjectile_Charged_Power_DownLeft                   ;938EED;
 
 InstList_SamusProjectile_Charged_Power_Left:
-    dw $0001                                                             ;938EEF;
-    dw ProjectileFlareSpritemaps_Charged_Power_0                         ;938EF1;
-    db $08,$08                                                           ;938EF3;
-    dw $0000,$0001                                                       ;938EF5;
-    dw ProjectileFlareSpritemaps_Charged_Power_8                         ;938EF9;
-    db $08,$08                                                           ;938EFB;
-    dw $0001                                                             ;938EFD;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Power_0                   ;938EEF;
+    db $08,$08 : dw $0000                                                ;938EF3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Power_8                   ;938EF5;
+    db $08,$08 : dw $0001                                                ;938EFB;
     dw Instruction_SamusProjectile_GotoY                                 ;938EFF;
     dw InstList_SamusProjectile_Charged_Power_Left                       ;938F01;
 
 InstList_SamusProjectile_Charged_Power_UpLeft:
-    dw $0001                                                             ;938F03;
-    dw ProjectileFlareSpritemaps_Charged_Power_1                         ;938F05;
-    db $08,$08                                                           ;938F07;
-    dw $0000,$0001                                                       ;938F09;
-    dw ProjectileFlareSpritemaps_Charged_Power_9                         ;938F0D;
-    db $08,$08                                                           ;938F0F;
-    dw $0001                                                             ;938F11;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Power_1                   ;938F03;
+    db $08,$08 : dw $0000                                                ;938F07;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Power_9                   ;938F09;
+    db $08,$08 : dw $0001                                                ;938F0F;
     dw Instruction_SamusProjectile_GotoY                                 ;938F13;
     dw InstList_SamusProjectile_Charged_Power_UpLeft                     ;938F15;
 
 InstList_SamusProjectile_Charged_Wave_Up:
-    dw $0003                                                             ;938F17;
-    dw Spritemap_Nothing_93A117                                          ;938F19;
-    db $0C,$08                                                           ;938F1B;
-    dw $0000                                                             ;938F1D;
+    dw $0003,Spritemap_Nothing_93A117                                    ;938F17;
+    db $0C,$08 : dw $0000                                                ;938F1B;
 
 InstList_SamusProjectile_Charged_Wave_Down:
-    dw $0001                                                             ;938F1F;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_0                   ;938F21;
-    db $0C,$08                                                           ;938F23;
-    dw $0000,$0001                                                       ;938F25;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1                   ;938F29;
-    db $0C,$08                                                           ;938F2B;
-    dw $0001,$0001                                                       ;938F2D;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1A                  ;938F31;
-    db $10,$08                                                           ;938F33;
-    dw $0002,$0001                                                       ;938F35;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1B                  ;938F39;
-    db $10,$08                                                           ;938F3B;
-    dw $0003,$0001                                                       ;938F3D;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1C                  ;938F41;
-    db $14,$08                                                           ;938F43;
-    dw $0004,$0001                                                       ;938F45;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1D                  ;938F49;
-    db $14,$08                                                           ;938F4B;
-    dw $0005,$0001                                                       ;938F4D;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1E                  ;938F51;
-    db $17,$08                                                           ;938F53;
-    dw $0006,$0001                                                       ;938F55;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1F                  ;938F59;
-    db $17,$08                                                           ;938F5B;
-    dw $0007,$0001                                                       ;938F5D;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_20                  ;938F61;
-    db $18,$08                                                           ;938F63;
-    dw $0008,$0001                                                       ;938F65;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_21                  ;938F69;
-    db $18,$08                                                           ;938F6B;
-    dw $0009,$0001                                                       ;938F6D;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1E                  ;938F71;
-    db $17,$08                                                           ;938F73;
-    dw $000A,$0001                                                       ;938F75;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1F                  ;938F79;
-    db $17,$08                                                           ;938F7B;
-    dw $000B,$0001                                                       ;938F7D;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1C                  ;938F81;
-    db $14,$08                                                           ;938F83;
-    dw $000C,$0001                                                       ;938F85;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1D                  ;938F89;
-    db $14,$08                                                           ;938F8B;
-    dw $000D,$0001                                                       ;938F8D;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1B                  ;938F91;
-    db $10,$08                                                           ;938F93;
-    dw $000E,$0001                                                       ;938F95;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1A                  ;938F99;
-    db $10,$08                                                           ;938F9B;
-    dw $000F                                                             ;938F9D;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_0             ;938F1F;
+    db $0C,$08 : dw $0000                                                ;938F23;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1            ;938F25;
+    db $0C,$08 : dw $0001                                                ;938F2B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1A            ;938F2D;
+    db $10,$08 : dw $0002                                                ;938F33;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1B            ;938F35;
+    db $10,$08 : dw $0003                                                ;938F3B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1C            ;938F3D;
+    db $14,$08 : dw $0004                                                ;938F43;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1D            ;938F45;
+    db $14,$08 : dw $0005                                                ;938F4B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1E            ;938F4D;
+    db $17,$08 : dw $0006                                                ;938F53;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1F            ;938F55;
+    db $17,$08 : dw $0007                                                ;938F5B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_20            ;938F5D;
+    db $18,$08 : dw $0008                                                ;938F63;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_21            ;938F65;
+    db $18,$08 : dw $0009                                                ;938F6B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1E            ;938F6D;
+    db $17,$08 : dw $000A                                                ;938F73;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1F            ;938F75;
+    db $17,$08 : dw $000B                                                ;938F7B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1C            ;938F7D;
+    db $14,$08 : dw $000C                                                ;938F83;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1D            ;938F85;
+    db $14,$08 : dw $000D                                                ;938F8B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1B            ;938F8D;
+    db $10,$08 : dw $000E                                                ;938F93;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1A            ;938F95;
+    db $10,$08 : dw $000F                                                ;938F9B;
     dw Instruction_SamusProjectile_GotoY                                 ;938F9F;
     dw InstList_SamusProjectile_Charged_Wave_Down                        ;938FA1;
 
 InstList_SamusProjectile_Charged_Wave_DownLeft_UpRight:
-    dw $0001                                                             ;938FA3;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_0                   ;938FA5;
-    db $08,$08                                                           ;938FA7;
-    dw $0000,$0001                                                       ;938FA9;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1                   ;938FAD;
-    db $08,$08                                                           ;938FAF;
-    dw $0001,$0001                                                       ;938FB1;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_12                  ;938FB5;
-    db $0C,$0C                                                           ;938FB7;
-    dw $0002,$0001                                                       ;938FB9;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_13                  ;938FBD;
-    db $0C,$0C                                                           ;938FBF;
-    dw $0003,$0001                                                       ;938FC1;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_14                  ;938FC5;
-    db $10,$10                                                           ;938FC7;
-    dw $0004,$0001                                                       ;938FC9;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_15                  ;938FCD;
-    db $10,$10                                                           ;938FCF;
-    dw $0005,$0001                                                       ;938FD1;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_16                  ;938FD5;
-    db $11,$11                                                           ;938FD7;
-    dw $0006,$0001                                                       ;938FD9;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_17                  ;938FDD;
-    db $11,$11                                                           ;938FDF;
-    dw $0007,$0001                                                       ;938FE1;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_18                  ;938FE5;
-    db $12,$12                                                           ;938FE7;
-    dw $0008,$0001                                                       ;938FE9;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_19                  ;938FED;
-    db $12,$12                                                           ;938FEF;
-    dw $0009,$0001                                                       ;938FF1;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_16                  ;938FF5;
-    db $11,$11                                                           ;938FF7;
-    dw $000A,$0001                                                       ;938FF9;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_17                  ;938FFD;
-    db $11,$11                                                           ;938FFF;
-    dw $000B,$0001                                                       ;939001;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_14                  ;939005;
-    db $10,$10                                                           ;939007;
-    dw $000C,$0001                                                       ;939009;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_15                  ;93900D;
-    db $10,$10                                                           ;93900F;
-    dw $000D,$0001                                                       ;939011;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_12                  ;939015;
-    db $0C,$0C                                                           ;939017;
-    dw $000E,$0001                                                       ;939019;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_13                  ;93901D;
-    db $0C,$0C                                                           ;93901F;
-    dw $000F                                                             ;939021;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_0             ;938FA3;
+    db $08,$08 : dw $0000                                                ;938FA7;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1             ;938FA9;
+    db $08,$08 : dw $0001                                                ;938FAF;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_12            ;938FB1;
+    db $0C,$0C : dw $0002                                                ;938FB7;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_13            ;938FB9;
+    db $0C,$0C : dw $0003                                                ;938FBF;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_14            ;938FC1;
+    db $10,$10 : dw $0004                                                ;938FC7;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_15            ;938FC9;
+    db $10,$10 : dw $0005                                                ;938FCF;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_16            ;938FD1;
+    db $11,$11 : dw $0006                                                ;938FD7;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_17            ;938FD9;
+    db $11,$11 : dw $0007                                                ;938FDF;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_18            ;938FE1;
+    db $12,$12 : dw $0008                                                ;938FE7;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_19            ;938FE9;
+    db $12,$12 : dw $0009                                                ;938FEF;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_16            ;938FF1;
+    db $11,$11 : dw $000A                                                ;938FF7;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_17            ;938FF9;
+    db $11,$11 : dw $000B                                                ;938FFF;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_14            ;939001;
+    db $10,$10 : dw $000C                                                ;939007;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_15            ;939009;
+    db $10,$10 : dw $000D                                                ;93900F;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_12            ;939011;
+    db $0C,$0C : dw $000E                                                ;939017;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_13            ;939019;
+    db $0C,$0C : dw $000F                                                ;93901F;
     dw Instruction_SamusProjectile_GotoY                                 ;939023;
     dw InstList_SamusProjectile_Charged_Wave_DownLeft_UpRight            ;939025;
 
 InstList_SamusProjectile_Charged_Wave_Left_Right:
-    dw $0001                                                             ;939027;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_0                   ;939029;
-    db $08,$0C                                                           ;93902B;
-    dw $0000,$0001                                                       ;93902D;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1                   ;939031;
-    db $08,$0C                                                           ;939033;
-    dw $0001,$0001                                                       ;939035;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_2                   ;939039;
-    db $08,$10                                                           ;93903B;
-    dw $0002,$0001                                                       ;93903D;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_3                   ;939041;
-    db $08,$10                                                           ;939043;
-    dw $0003,$0001                                                       ;939045;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_4                   ;939049;
-    db $08,$14                                                           ;93904B;
-    dw $0004,$0001                                                       ;93904D;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_5                   ;939051;
-    db $08,$14                                                           ;939053;
-    dw $0005,$0001                                                       ;939055;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_6                   ;939059;
-    db $08,$17                                                           ;93905B;
-    dw $0006,$0001                                                       ;93905D;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_7                   ;939061;
-    db $08,$17                                                           ;939063;
-    dw $0007,$0001                                                       ;939065;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_8                   ;939069;
-    db $08,$18                                                           ;93906B;
-    dw $0008,$0001                                                       ;93906D;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_9                   ;939071;
-    db $08,$18                                                           ;939073;
-    dw $0009,$0001                                                       ;939075;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_6                   ;939079;
-    db $08,$17                                                           ;93907B;
-    dw $000A,$0001                                                       ;93907D;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_7                   ;939081;
-    db $08,$17                                                           ;939083;
-    dw $000B,$0001                                                       ;939085;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_4                   ;939089;
-    db $08,$14                                                           ;93908B;
-    dw $000C,$0001                                                       ;93908D;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_5                   ;939091;
-    db $08,$14                                                           ;939093;
-    dw $000D,$0001                                                       ;939095;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_3                   ;939099;
-    db $08,$10                                                           ;93909B;
-    dw $000E,$0001                                                       ;93909D;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_2                   ;9390A1;
-    db $08,$10                                                           ;9390A3;
-    dw $000F                                                             ;9390A5;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_0             ;939027;
+    db $08,$0C : dw $0000                                                ;93902B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1             ;93902D;
+    db $08,$0C : dw $0001                                                ;939033;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_2             ;939035;
+    db $08,$10 : dw $0002                                                ;93903B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_3             ;93903D;
+    db $08,$10 : dw $0003                                                ;939043;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_4             ;939045;
+    db $08,$14 : dw $0004                                                ;93904B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_5             ;93904D;
+    db $08,$14 : dw $0005                                                ;939053;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_6             ;939055;
+    db $08,$17 : dw $0006                                                ;93905B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_7             ;93905D;
+    db $08,$17 : dw $0007                                                ;939063;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_8             ;939065;
+    db $08,$18 : dw $0008                                                ;93906B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_9             ;93906D;
+    db $08,$18 : dw $0009                                                ;939073;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_6             ;939075;
+    db $08,$17 : dw $000A                                                ;93907B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_7             ;93907D;
+    db $08,$17 : dw $000B                                                ;939083;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_4             ;939085;
+    db $08,$14 : dw $000C                                                ;93908B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_5             ;93908D;
+    db $08,$14 : dw $000D                                                ;939093;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_3             ;939095;
+    db $08,$10 : dw $000E                                                ;93909B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_2             ;93909D;
+    db $08,$10 : dw $000F                                                ;9390A3;
     dw Instruction_SamusProjectile_GotoY                                 ;9390A7;
     dw InstList_SamusProjectile_Charged_Wave_Left_Right                  ;9390A9;
 
 InstList_SamusProjectile_Charged_Wave_DownRight_UpLeft:
-    dw $0001                                                             ;9390AB;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_0                   ;9390AD;
-    db $08,$08                                                           ;9390AF;
-    dw $0000,$0001                                                       ;9390B1;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1                   ;9390B5;
-    db $08,$08                                                           ;9390B7;
-    dw $0001,$0001                                                       ;9390B9;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_A                   ;9390BD;
-    db $0C,$0C                                                           ;9390BF;
-    dw $0002,$0001                                                       ;9390C1;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_B                   ;9390C5;
-    db $0C,$0C                                                           ;9390C7;
-    dw $0003,$0001                                                       ;9390C9;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_C                   ;9390CD;
-    db $10,$10                                                           ;9390CF;
-    dw $0004,$0001                                                       ;9390D1;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_D                   ;9390D5;
-    db $10,$10                                                           ;9390D7;
-    dw $0005,$0001                                                       ;9390D9;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_E                   ;9390DD;
-    db $11,$11                                                           ;9390DF;
-    dw $0006,$0001                                                       ;9390E1;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_F                   ;9390E5;
-    db $11,$11                                                           ;9390E7;
-    dw $0007,$0001                                                       ;9390E9;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_10                  ;9390ED;
-    db $12,$12                                                           ;9390EF;
-    dw $0008,$0001                                                       ;9390F1;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_11                  ;9390F5;
-    db $12,$12                                                           ;9390F7;
-    dw $0009,$0001                                                       ;9390F9;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_E                   ;9390FD;
-    db $11,$11                                                           ;9390FF;
-    dw $000A,$0001                                                       ;939101;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_F                   ;939105;
-    db $11,$11                                                           ;939107;
-    dw $000B,$0001                                                       ;939109;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_C                   ;93910D;
-    db $10,$10                                                           ;93910F;
-    dw $000C,$0001                                                       ;939111;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_D                   ;939115;
-    db $10,$10                                                           ;939117;
-    dw $000D,$0001                                                       ;939119;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_A                   ;93911D;
-    db $0C,$0C                                                           ;93911F;
-    dw $000E,$0001                                                       ;939121;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_B                   ;939125;
-    db $0C,$0C                                                           ;939127;
-    dw $000F                                                             ;939129;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_0             ;9390AB;
+    db $08,$08 : dw $0000                                                ;9390AF;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1             ;9390B1;
+    db $08,$08 : dw $0001                                                ;9390B7;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_A             ;9390B9;
+    db $0C,$0C : dw $0002                                                ;9390BF;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_B             ;9390C1;
+    db $0C,$0C : dw $0003                                                ;9390C7;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_C             ;9390C9;
+    db $10,$10 : dw $0004                                                ;9390CF;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_D             ;9390D1;
+    db $10,$10 : dw $0005                                                ;9390D7;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_E             ;9390D9;
+    db $11,$11 : dw $0006                                                ;9390DF;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_F             ;9390E1;
+    db $11,$11 : dw $0007                                                ;9390E7;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_10            ;9390E9;
+    db $12,$12 : dw $0008                                                ;9390EF;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_11            ;9390F1;
+    db $12,$12 : dw $0009                                                ;9390F7;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_E             ;9390F9;
+    db $11,$11 : dw $000A                                                ;9390FF;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_F             ;939101;
+    db $11,$11 : dw $000B                                                ;939107;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_C             ;939109;
+    db $10,$10 : dw $000C                                                ;93910F;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_D             ;939111;
+    db $10,$10 : dw $000D                                                ;939117;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_A             ;939119;
+    db $0C,$0C : dw $000E                                                ;93911F;
+    dw $0001,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_B             ;939121;
+    db $0C,$0C : dw $000F                                                ;939127;
     dw Instruction_SamusProjectile_GotoY                                 ;93912B;
     dw InstList_SamusProjectile_Charged_Wave_DownRight_UpLeft            ;93912D;
 
 InstList_SamusProjectile_Charged_Ice:
-    dw $0001                                                             ;93912F;
-    dw ProjectileFlareSpritemaps_Charged_Ice_0                           ;939131;
-    db $08,$08                                                           ;939133;
-    dw $0000,$0001                                                       ;939135;
-    dw ProjectileFlareSpritemaps_Charged_Ice_1                           ;939139;
-    db $08,$08                                                           ;93913B;
-    dw $0001,$0001                                                       ;93913D;
-    dw ProjectileFlareSpritemaps_Charged_Ice_2                           ;939141;
-    db $08,$08                                                           ;939143;
-    dw $0002,$0001                                                       ;939145;
-    dw ProjectileFlareSpritemaps_Charged_Ice_3                           ;939149;
-    db $08,$08                                                           ;93914B;
-    dw $0003                                                             ;93914D;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Ice_0                     ;93912F;
+    db $08,$08 : dw $0000                                                ;939133;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Ice_1                     ;939135;
+    db $08,$08 : dw $0001                                                ;93913B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Ice_2                     ;93913D;
+    db $08,$08 : dw $0002                                                ;939143;
+    dw $0001,ProjectileFlareSpritemaps_Charged_Ice_3                     ;939145;
+    db $08,$08 : dw $0003                                                ;93914B;
     dw Instruction_SamusProjectile_GotoY                                 ;93914F;
     dw InstList_SamusProjectile_Charged_Ice                              ;939151;
 
 InstList_SamusProjectile_Charged_IW_Up:
-    dw $0003                                                             ;939153;
-    dw Spritemap_Nothing_93A117                                          ;939155;
-    db $0C,$08                                                           ;939157;
-    dw $0000                                                             ;939159;
+    dw $0003,Spritemap_Nothing_93A117                                    ;939153;
+    db $0C,$08 : dw $0000                                                ;939157;
 
 InstList_SamusProjectile_Charged_IW_Down:
-    dw $0001                                                             ;93915B;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_0                        ;93915D;
-    db $0C,$08                                                           ;93915F;
-    dw $0000,$0001                                                       ;939161;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_1                        ;939165;
-    db $0C,$08                                                           ;939167;
-    dw $0001,$0001                                                       ;939169;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_1C                       ;93916D;
-    db $10,$08                                                           ;93916F;
-    dw $0002,$0001                                                       ;939171;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_1D                       ;939175;
-    db $10,$08                                                           ;939177;
-    dw $0003,$0001                                                       ;939179;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_1E                       ;93917D;
-    db $14,$08                                                           ;93917F;
-    dw $0004,$0001                                                       ;939181;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_1F                       ;939185;
-    db $14,$08                                                           ;939187;
-    dw $0005,$0001                                                       ;939189;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_20                       ;93918D;
-    db $17,$08                                                           ;93918F;
-    dw $0006,$0001                                                       ;939191;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_21                       ;939195;
-    db $17,$08                                                           ;939197;
-    dw $0007,$0001                                                       ;939199;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_22                       ;93919D;
-    db $18,$08                                                           ;93919F;
-    dw $0008,$0001                                                       ;9391A1;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_23                       ;9391A5;
-    db $18,$08                                                           ;9391A7;
-    dw $0009,$0001                                                       ;9391A9;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_20                       ;9391AD;
-    db $17,$08                                                           ;9391AF;
-    dw $000A,$0001                                                       ;9391B1;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_21                       ;9391B5;
-    db $17,$08                                                           ;9391B7;
-    dw $000B,$0001                                                       ;9391B9;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_1E                       ;9391BD;
-    db $14,$08                                                           ;9391BF;
-    dw $000C,$0001                                                       ;9391C1;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_1F                       ;9391C5;
-    db $14,$08                                                           ;9391C7;
-    dw $000D,$0001                                                       ;9391C9;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_1D                       ;9391CD;
-    db $10,$08                                                           ;9391CF;
-    dw $000E,$0001                                                       ;9391D1;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_1C                       ;9391D5;
-    db $10,$08                                                           ;9391D7;
-    dw $000F                                                             ;9391D9;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_0                  ;93915B;
+    db $0C,$08 : dw $0000                                                ;93915F;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_1                  ;939161;
+    db $0C,$08 : dw $0001                                                ;939167;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_1C                 ;939169;
+    db $10,$08 : dw $0002                                                ;93916F;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_1D                 ;939171;
+    db $10,$08 : dw $0003                                                ;939177;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_1E                 ;939179;
+    db $14,$08 : dw $0004                                                ;93917F;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_1F                 ;939181;
+    db $14,$08 : dw $0005                                                ;939187;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_20                 ;939189;
+    db $17,$08 : dw $0006                                                ;93918F;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_21                 ;939191;
+    db $17,$08 : dw $0007                                                ;939197;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_22                 ;939199;
+    db $18,$08 : dw $0008                                                ;93919F;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_23                 ;9391A1;
+    db $18,$08 : dw $0009                                                ;9391A7;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_20                 ;9391A9;
+    db $17,$08 : dw $000A                                                ;9391AF;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_21                 ;9391B1;
+    db $17,$08 : dw $000B                                                ;9391B7;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_1E                 ;9391B9;
+    db $14,$08 : dw $000C                                                ;9391BF;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_1F                 ;9391C1;
+    db $14,$08 : dw $000D                                                ;9391C7;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_1D                 ;9391C9;
+    db $10,$08 : dw $000E                                                ;9391CF;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_1C                 ;9391D1;
+    db $10,$08 : dw $000F                                                ;9391D7;
     dw Instruction_SamusProjectile_GotoY                                 ;9391DB;
     dw InstList_SamusProjectile_Charged_IW_Down                          ;9391DD;
 
 InstList_SamusProjectile_Charged_IW_DownLeft_UpRight:
-    dw $0001                                                             ;9391DF;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_0                        ;9391E1;
-    db $08,$08                                                           ;9391E3;
-    dw $0000,$0001                                                       ;9391E5;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_1                        ;9391E9;
-    db $08,$08                                                           ;9391EB;
-    dw $0001,$0001                                                       ;9391ED;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_12                       ;9391F1;
-    db $0C,$0C                                                           ;9391F3;
-    dw $0002,$0001                                                       ;9391F5;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_13                       ;9391F9;
-    db $0C,$0C                                                           ;9391FB;
-    dw $0003,$0001                                                       ;9391FD;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_14                       ;939201;
-    db $10,$10                                                           ;939203;
-    dw $0004,$0001                                                       ;939205;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_15                       ;939209;
-    db $10,$10                                                           ;93920B;
-    dw $0005,$0001                                                       ;93920D;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_16                       ;939211;
-    db $11,$11                                                           ;939213;
-    dw $0006,$0001                                                       ;939215;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_17                       ;939219;
-    db $11,$11                                                           ;93921B;
-    dw $0007,$0001                                                       ;93921D;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_18                       ;939221;
-    db $12,$12                                                           ;939223;
-    dw $0008,$0001                                                       ;939225;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_19                       ;939229;
-    db $12,$12                                                           ;93922B;
-    dw $0009,$0001                                                       ;93922D;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_16                       ;939231;
-    db $11,$11                                                           ;939233;
-    dw $000A,$0001                                                       ;939235;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_17                       ;939239;
-    db $11,$11                                                           ;93923B;
-    dw $000B,$0001                                                       ;93923D;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_14                       ;939241;
-    db $10,$10                                                           ;939243;
-    dw $000C,$0001                                                       ;939245;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_15                       ;939249;
-    db $10,$10                                                           ;93924B;
-    dw $000D,$0001                                                       ;93924D;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_12                       ;939251;
-    db $0C,$0C                                                           ;939253;
-    dw $000E,$0001                                                       ;939255;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_13                       ;939259;
-    db $0C,$0C                                                           ;93925B;
-    dw $000F                                                             ;93925D;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_0                  ;9391DF;
+    db $08,$08 : dw $0000                                                ;9391E3;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_1                  ;9391E5;
+    db $08,$08 : dw $0001                                                ;9391EB;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_12                 ;9391ED;
+    db $0C,$0C : dw $0002                                                ;9391F3;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_13                 ;9391F5;
+    db $0C,$0C : dw $0003                                                ;9391FB;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_14                 ;9391FD;
+    db $10,$10 : dw $0004                                                ;939203;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_15                 ;939205;
+    db $10,$10 : dw $0005                                                ;93920B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_16                 ;93920D;
+    db $11,$11 : dw $0006                                                ;939213;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_17                 ;939215;
+    db $11,$11 : dw $0007                                                ;93921B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_18                 ;93921D;
+    db $12,$12 : dw $0008                                                ;939223;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_19                 ;939225;
+    db $12,$12 : dw $0009                                                ;93922B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_16                 ;93922D;
+    db $11,$11 : dw $000A                                                ;939233;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_17                 ;939235;
+    db $11,$11 : dw $000B                                                ;93923B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_14                 ;93923D;
+    db $10,$10 : dw $000C                                                ;939243;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_15                 ;939245;
+    db $10,$10 : dw $000D                                                ;93924B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_12                 ;93924D;
+    db $0C,$0C : dw $000E                                                ;939253;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_13                 ;939255;
+    db $0C,$0C : dw $000F                                                ;93925B;
     dw Instruction_SamusProjectile_GotoY                                 ;93925F;
     dw InstList_SamusProjectile_Charged_IW_DownLeft_UpRight              ;939261;
 
 InstList_SamusProjectile_Charged_IW_Left_Right:
-    dw $0001                                                             ;939263;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_0                        ;939265;
-    db $08,$0C                                                           ;939267;
-    dw $0000,$0001                                                       ;939269;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_1                        ;93926D;
-    db $08,$0C                                                           ;93926F;
-    dw $0001,$0001                                                       ;939271;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_2                        ;939275;
-    db $08,$10                                                           ;939277;
-    dw $0002,$0001                                                       ;939279;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_3                        ;93927D;
-    db $08,$10                                                           ;93927F;
-    dw $0003,$0001                                                       ;939281;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_4                        ;939285;
-    db $08,$14                                                           ;939287;
-    dw $0004,$0001                                                       ;939289;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_5                        ;93928D;
-    db $08,$14                                                           ;93928F;
-    dw $0005,$0001                                                       ;939291;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_6                        ;939295;
-    db $08,$17                                                           ;939297;
-    dw $0006,$0001                                                       ;939299;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_7                        ;93929D;
-    db $08,$17                                                           ;93929F;
-    dw $0007,$0001                                                       ;9392A1;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_8                        ;9392A5;
-    db $08,$18                                                           ;9392A7;
-    dw $0008,$0001                                                       ;9392A9;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_9                        ;9392AD;
-    db $08,$18                                                           ;9392AF;
-    dw $0009,$0001                                                       ;9392B1;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_6                        ;9392B5;
-    db $08,$17                                                           ;9392B7;
-    dw $000A,$0001                                                       ;9392B9;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_7                        ;9392BD;
-    db $08,$17                                                           ;9392BF;
-    dw $000B,$0001                                                       ;9392C1;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_4                        ;9392C5;
-    db $08,$14                                                           ;9392C7;
-    dw $000C,$0001                                                       ;9392C9;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_5                        ;9392CD;
-    db $08,$14                                                           ;9392CF;
-    dw $000D,$0001                                                       ;9392D1;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_3                        ;9392D5;
-    db $08,$10                                                           ;9392D7;
-    dw $000E,$0001                                                       ;9392D9;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_2                        ;9392DD;
-    db $08,$10                                                           ;9392DF;
-    dw $000F                                                             ;9392E1;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_0                  ;939263;
+    db $08,$0C : dw $0000                                                ;939267;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_1                  ;939269;
+    db $08,$0C : dw $0001                                                ;93926F;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_2                  ;939271;
+    db $08,$10 : dw $0002                                                ;939277;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_3                  ;939279;
+    db $08,$10 : dw $0003                                                ;93927F;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_4                  ;939281;
+    db $08,$14 : dw $0004                                                ;939287;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_5                  ;939289;
+    db $08,$14 : dw $0005                                                ;93928F;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_6                  ;939291;
+    db $08,$17 : dw $0006                                                ;939297;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_7                  ;939299;
+    db $08,$17 : dw $0007                                                ;93929F;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_8                  ;9392A1;
+    db $08,$18 : dw $0008                                                ;9392A7;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_9                  ;9392A9;
+    db $08,$18 : dw $0009                                                ;9392AF;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_6                  ;9392B1;
+    db $08,$17 : dw $000A                                                ;9392B7;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_7                  ;9392B9;
+    db $08,$17 : dw $000B                                                ;9392BF;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_4                  ;9392C1;
+    db $08,$14 : dw $000C                                                ;9392C7;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_5                  ;9392C9;
+    db $08,$14 : dw $000D                                                ;9392CF;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_3                  ;9392D1;
+    db $08,$10 : dw $000E                                                ;9392D7;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_2                  ;9392D9;
+    db $08,$10 : dw $000F                                                ;9392DF;
     dw Instruction_SamusProjectile_GotoY                                 ;9392E3;
     dw InstList_SamusProjectile_Charged_IW_Left_Right                    ;9392E5;
 
 InstList_SamusProjectile_Charged_IW_DownRight_UpLeft:
-    dw $0001                                                             ;9392E7;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_0                        ;9392E9;
-    db $08,$08                                                           ;9392EB;
-    dw $0000,$0001                                                       ;9392ED;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_1                        ;9392F1;
-    db $08,$08                                                           ;9392F3;
-    dw $0001,$0001                                                       ;9392F5;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_A                        ;9392F9;
-    db $0C,$0C                                                           ;9392FB;
-    dw $0002,$0001                                                       ;9392FD;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_B                        ;939301;
-    db $0C,$0C                                                           ;939303;
-    dw $0003,$0001                                                       ;939305;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_C                        ;939309;
-    db $10,$10                                                           ;93930B;
-    dw $0004,$0001                                                       ;93930D;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_D                        ;939311;
-    db $10,$10                                                           ;939313;
-    dw $0005,$0001                                                       ;939315;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_E                        ;939319;
-    db $11,$11                                                           ;93931B;
-    dw $0006,$0001                                                       ;93931D;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_F                        ;939321;
-    db $11,$11                                                           ;939323;
-    dw $0007,$0001                                                       ;939325;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_10                       ;939329;
-    db $12,$12                                                           ;93932B;
-    dw $0008,$0001                                                       ;93932D;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_11                       ;939331;
-    db $12,$12                                                           ;939333;
-    dw $0009,$0001                                                       ;939335;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_E                        ;939339;
-    db $11,$11                                                           ;93933B;
-    dw $000A,$0001                                                       ;93933D;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_F                        ;939341;
-    db $11,$11                                                           ;939343;
-    dw $000B,$0001                                                       ;939345;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_C                        ;939349;
-    db $10,$10                                                           ;93934B;
-    dw $000C,$0001                                                       ;93934D;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_D                        ;939351;
-    db $10,$10                                                           ;939353;
-    dw $000D,$0001                                                       ;939355;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_A                        ;939359;
-    db $0C,$0C                                                           ;93935B;
-    dw $000E,$0001                                                       ;93935D;
-    dw ProjectileFlareSpritemaps_ChargedIceWave_B                        ;939361;
-    db $0C,$0C                                                           ;939363;
-    dw $000F                                                             ;939365;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_0                  ;9392E7;
+    db $08,$08 : dw $0000                                                ;9392EB;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_1                  ;9392ED;
+    db $08,$08 : dw $0001                                                ;9392F3;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_A                  ;9392F5;
+    db $0C,$0C : dw $0002                                                ;9392FB;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_B                  ;9392FD;
+    db $0C,$0C : dw $0003                                                ;939303;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_C                  ;939305;
+    db $10,$10 : dw $0004                                                ;93930B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_D                  ;93930D;
+    db $10,$10 : dw $0005                                                ;939313;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_E                  ;939315;
+    db $11,$11 : dw $0006                                                ;93931B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_F                  ;93931D;
+    db $11,$11 : dw $0007                                                ;939323;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_10                 ;939325;
+    db $12,$12 : dw $0008                                                ;93932B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_11                 ;93932D;
+    db $12,$12 : dw $0009                                                ;939333;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_E                  ;939335;
+    db $11,$11 : dw $000A                                                ;93933B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_F                  ;93933D;
+    db $11,$11 : dw $000B                                                ;939343;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_C                  ;939345;
+    db $10,$10 : dw $000C                                                ;93934B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_D                  ;93934D;
+    db $10,$10 : dw $000D                                                ;939353;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_A                  ;939355;
+    db $0C,$0C : dw $000E                                                ;93935B;
+    dw $0001,ProjectileFlareSpritemaps_ChargedIceWave_B                  ;93935D;
+    db $0C,$0C : dw $000F                                                ;939363;
     dw Instruction_SamusProjectile_GotoY                                 ;939367;
     dw InstList_SamusProjectile_Charged_IW_DownRight_UpLeft              ;939369;
 
 InstList_SamusProjectile_Charged_S_SI_Down_Up_0:
-    dw $0001                                                             ;93936B;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4C                  ;93936D;
-    db $0C,$08                                                           ;93936F;
-    dw $0000,$0001                                                       ;939371;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5B                  ;939375;
-    db $0C,$08                                                           ;939377;
-    dw $0001,$0001                                                       ;939379;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4D                  ;93937D;
-    db $0C,$08                                                           ;93937F;
-    dw $0002,$0001                                                       ;939381;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5C                  ;939385;
-    db $0C,$08                                                           ;939387;
-    dw $0003,$0001                                                       ;939389;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3C                  ;93938D;
-    db $0C,$10                                                           ;93938F;
-    dw $0004,$0001                                                       ;939391;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_6                   ;939395;
-    db $0C,$10                                                           ;939397;
-    dw $0005,$0001                                                       ;939399;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3E                  ;93939D;
-    db $0C,$10                                                           ;93939F;
-    dw $0006,$0001                                                       ;9393A1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_8                   ;9393A5;
-    db $0C,$10                                                           ;9393A7;
-    dw $0007                                                             ;9393A9;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4C            ;93936B;
+    db $0C,$08 : dw $0000                                                ;93936F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5B            ;939371;
+    db $0C,$08 : dw $0001                                                ;939377;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4D            ;939379;
+    db $0C,$08 : dw $0002                                                ;93937F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5C            ;939381;
+    db $0C,$08 : dw $0003                                                ;939387;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3C            ;939389;
+    db $0C,$10 : dw $0004                                                ;93938F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_6             ;939391;
+    db $0C,$10 : dw $0005                                                ;939397;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3E            ;939399;
+    db $0C,$10 : dw $0006                                                ;93939F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_8             ;9393A1;
+    db $0C,$10 : dw $0007                                                ;9393A7;
 
 InstList_SamusProjectile_Charged_S_SI_Down_Up_1:
-    dw $0001                                                             ;9393AB;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_41                  ;9393AD;
-    db $14,$10                                                           ;9393AF;
-    dw $0008,$0001                                                       ;9393B1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_B                   ;9393B5;
-    db $14,$10                                                           ;9393B7;
-    dw $0009                                                             ;9393B9;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_41            ;9393AB;
+    db $14,$10 : dw $0008                                                ;9393AF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_B             ;9393B1;
+    db $14,$10 : dw $0009                                                ;9393B7;
     dw Instruction_SamusProjectile_GotoY                                 ;9393BB;
     dw InstList_SamusProjectile_Charged_S_SI_Down_Up_1                   ;9393BD;
 
 InstList_SamusProjectile_Charged_S_SI_DownLeft_UpRight_0:
-    dw $0001                                                             ;9393BF;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4E                  ;9393C1;
-    db $08,$08                                                           ;9393C3;
-    dw $0000,$0001                                                       ;9393C5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5D                  ;9393C9;
-    db $08,$08                                                           ;9393CB;
-    dw $0001,$0001                                                       ;9393CD;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4F                  ;9393D1;
-    db $08,$08                                                           ;9393D3;
-    dw $0002,$0001                                                       ;9393D5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5E                  ;9393D9;
-    db $08,$08                                                           ;9393DB;
-    dw $0003,$0001                                                       ;9393DD;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_18                  ;9393E1;
-    db $0C,$0C                                                           ;9393E3;
-    dw $0004,$0001                                                       ;9393E5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_12                  ;9393E9;
-    db $0C,$0C                                                           ;9393EB;
-    dw $0005,$0001                                                       ;9393ED;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_19                  ;9393F1;
-    db $10,$10                                                           ;9393F3;
-    dw $0006,$0001                                                       ;9393F5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_14                  ;9393F9;
-    db $10,$10                                                           ;9393FB;
-    dw $0007                                                             ;9393FD;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4E            ;9393BF;
+    db $08,$08 : dw $0000                                                ;9393C3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5D            ;9393C5;
+    db $08,$08 : dw $0001                                                ;9393CB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4F            ;9393CD;
+    db $08,$08 : dw $0002                                                ;9393D3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5E            ;9393D5;
+    db $08,$08 : dw $0003                                                ;9393DB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_18            ;9393DD;
+    db $0C,$0C : dw $0004                                                ;9393E3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_12            ;9393E5;
+    db $0C,$0C : dw $0005                                                ;9393EB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_19            ;9393ED;
+    db $10,$10 : dw $0006                                                ;9393F3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_14            ;9393F5;
+    db $10,$10 : dw $0007                                                ;9393FB;
 
 InstList_SamusProjectile_Charged_S_SI_DownLeft_UpRight_1:
-    dw $0001                                                             ;9393FF;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1C                  ;939401;
-    db $14,$14                                                           ;939403;
-    dw $0008,$0001                                                       ;939405;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_17                  ;939409;
-    db $14,$14                                                           ;93940B;
-    dw $0009                                                             ;93940D;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1C            ;9393FF;
+    db $14,$14 : dw $0008                                                ;939403;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_17            ;939405;
+    db $14,$14 : dw $0009                                                ;93940B;
     dw Instruction_SamusProjectile_GotoY                                 ;93940F;
     dw InstList_SamusProjectile_Charged_S_SI_DownLeft_UpRight_1          ;939411;
 
 InstList_SamusProjectile_Charged_S_SI_Left_Right_0:
-    dw $0001                                                             ;939413;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_51                  ;939415;
-    db $08,$0C                                                           ;939417;
-    dw $0000,$0001                                                       ;939419;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_57                  ;93941D;
-    db $08,$0C                                                           ;93941F;
-    dw $0001,$0001                                                       ;939421;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_52                  ;939425;
-    db $08,$0C                                                           ;939427;
-    dw $0002,$0001                                                       ;939429;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_58                  ;93942D;
-    db $08,$0C                                                           ;93942F;
-    dw $0003,$0001                                                       ;939431;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_36                  ;939435;
-    db $10,$0C                                                           ;939437;
-    dw $0004,$0001                                                       ;939439;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_0                   ;93943D;
-    db $10,$0C                                                           ;93943F;
-    dw $0005,$0001                                                       ;939441;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_38                  ;939445;
-    db $10,$0C                                                           ;939447;
-    dw $0006,$0001                                                       ;939449;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2                   ;93944D;
-    db $10,$0C                                                           ;93944F;
-    dw $0007                                                             ;939451;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_51            ;939413;
+    db $08,$0C : dw $0000                                                ;939417;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_57            ;939419;
+    db $08,$0C : dw $0001                                                ;93941F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_52            ;939421;
+    db $08,$0C : dw $0002                                                ;939427;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_58            ;939429;
+    db $08,$0C : dw $0003                                                ;93942F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_36            ;939431;
+    db $10,$0C : dw $0004                                                ;939437;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_0             ;939439;
+    db $10,$0C : dw $0005                                                ;93943F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_38            ;939441;
+    db $10,$0C : dw $0006                                                ;939447;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2             ;939449;
+    db $10,$0C : dw $0007                                                ;93944F;
 
 InstList_SamusProjectile_Charged_S_SI_Left_Right_1:
-    dw $0001                                                             ;939453;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3B                  ;939455;
-    db $10,$14                                                           ;939457;
-    dw $0008,$0001                                                       ;939459;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5                   ;93945D;
-    db $10,$14                                                           ;93945F;
-    dw $0009                                                             ;939461;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3B            ;939453;
+    db $10,$14 : dw $0008                                                ;939457;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5             ;939459;
+    db $10,$14 : dw $0009                                                ;93945F;
     dw Instruction_SamusProjectile_GotoY                                 ;939463;
     dw InstList_SamusProjectile_Charged_S_SI_Left_Right_1                ;939465;
 
 InstList_SamusProjectile_Charged_S_SI_DownRight_UpLeft_0:
-    dw $0001                                                             ;939467;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_53                  ;939469;
-    db $08,$08                                                           ;93946B;
-    dw $0000,$0001                                                       ;93946D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_59                  ;939471;
-    db $08,$08                                                           ;939473;
-    dw $0001,$0001                                                       ;939475;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_54                  ;939479;
-    db $08,$08                                                           ;93947B;
-    dw $0002,$0001                                                       ;93947D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5A                  ;939481;
-    db $08,$08                                                           ;939483;
-    dw $0003,$0001                                                       ;939485;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1E                  ;939489;
-    db $0C,$0C                                                           ;93948B;
-    dw $0004,$0001                                                       ;93948D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_C                   ;939491;
-    db $0C,$0C                                                           ;939493;
-    dw $0005,$0001                                                       ;939495;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1F                  ;939499;
-    db $10,$10                                                           ;93949B;
-    dw $0006,$0001                                                       ;93949D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_E                   ;9394A1;
-    db $10,$10                                                           ;9394A3;
-    dw $0007                                                             ;9394A5;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_53            ;939467;
+    db $08,$08 : dw $0000                                                ;93946B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_59            ;93946D;
+    db $08,$08 : dw $0001                                                ;939473;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_54            ;939475;
+    db $08,$08 : dw $0002                                                ;93947B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5A            ;93947D;
+    db $08,$08 : dw $0003                                                ;939483;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1E            ;939485;
+    db $0C,$0C : dw $0004                                                ;93948B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_C             ;93948D;
+    db $0C,$0C : dw $0005                                                ;939493;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1F            ;939495;
+    db $10,$10 : dw $0006                                                ;93949B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_E             ;93949D;
+    db $10,$10 : dw $0007                                                ;9394A3;
 
 InstList_SamusProjectile_Charged_S_SI_DownRight_UpLeft_1:
-    dw $0001                                                             ;9394A7;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_22                  ;9394A9;
-    db $14,$14                                                           ;9394AB;
-    dw $0008,$0001                                                       ;9394AD;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_11                  ;9394B1;
-    db $14,$14                                                           ;9394B3;
-    dw $0009                                                             ;9394B5;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_22            ;9394A7;
+    db $14,$14 : dw $0008                                                ;9394AB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_11            ;9394AD;
+    db $14,$14 : dw $0009                                                ;9394B3;
     dw Instruction_SamusProjectile_GotoY                                 ;9394B7;
     dw InstList_SamusProjectile_Charged_S_SI_DownRight_UpLeft_1          ;9394B9;
 
 InstList_SamusProjectile_Charged_SW_SIW_Up_0:
-    dw $0001                                                             ;9394BB;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4C                  ;9394BD;
-    db $0C,$08                                                           ;9394BF;
-    dw $0000,$0001                                                       ;9394C1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5B                  ;9394C5;
-    db $0C,$08                                                           ;9394C7;
-    dw $0001,$0001                                                       ;9394C9;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4D                  ;9394CD;
-    db $0C,$08                                                           ;9394CF;
-    dw $0002,$0001                                                       ;9394D1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5C                  ;9394D5;
-    db $0C,$08                                                           ;9394D7;
-    dw $0003                                                             ;9394D9;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4C            ;9394BB;
+    db $0C,$08 : dw $0000                                                ;9394BF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5B            ;9394C1;
+    db $0C,$08 : dw $0001                                                ;9394C7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4D            ;9394C9;
+    db $0C,$08 : dw $0002                                                ;9394CF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5C            ;9394D1;
+    db $0C,$08 : dw $0003                                                ;9394D7;
 
 InstList_SamusProjectile_Charged_SW_SIW_Up_1:
-    dw $0001                                                             ;9394DB;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3C                  ;9394DD;
-    db $0C,$10                                                           ;9394DF;
-    dw $0004,$0001                                                       ;9394E1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_6                   ;9394E5;
-    db $0C,$10                                                           ;9394E7;
-    dw $0005,$0001                                                       ;9394E9;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3D                  ;9394ED;
-    db $0C,$10                                                           ;9394EF;
-    dw $0006,$0001                                                       ;9394F1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_7                   ;9394F5;
-    db $0C,$10                                                           ;9394F7;
-    dw $0007,$0001                                                       ;9394F9;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3E                  ;9394FD;
-    db $0C,$10                                                           ;9394FF;
-    dw $0008,$0001                                                       ;939501;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_8                   ;939505;
-    db $0C,$10                                                           ;939507;
-    dw $0009,$0001                                                       ;939509;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3F                  ;93950D;
-    db $10,$10                                                           ;93950F;
-    dw $000A,$0001                                                       ;939511;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_9                   ;939515;
-    db $10,$10                                                           ;939517;
-    dw $000B,$0001                                                       ;939519;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_40                  ;93951D;
-    db $12,$10                                                           ;93951F;
-    dw $000C,$0001                                                       ;939521;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_A                   ;939525;
-    db $12,$10                                                           ;939527;
-    dw $000D,$0001                                                       ;939529;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_41                  ;93952D;
-    db $14,$10                                                           ;93952F;
-    dw $000E,$0001                                                       ;939531;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_B                   ;939535;
-    db $14,$10                                                           ;939537;
-    dw $000F,$0001                                                       ;939539;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_40                  ;93953D;
-    db $12,$10                                                           ;93953F;
-    dw $0010,$0001                                                       ;939541;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_A                   ;939545;
-    db $12,$10                                                           ;939547;
-    dw $0011,$0001                                                       ;939549;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3F                  ;93954D;
-    db $10,$10                                                           ;93954F;
-    dw $0012,$0001                                                       ;939551;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_9                   ;939555;
-    db $10,$10                                                           ;939557;
-    dw $0013,$0001                                                       ;939559;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3E                  ;93955D;
-    db $0C,$10                                                           ;93955F;
-    dw $0014,$0001                                                       ;939561;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_8                   ;939565;
-    db $0C,$10                                                           ;939567;
-    dw $0015,$0001                                                       ;939569;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3D                  ;93956D;
-    db $08,$10                                                           ;93956F;
-    dw $0016,$0001                                                       ;939571;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_7                   ;939575;
-    db $08,$10                                                           ;939577;
-    dw $0017                                                             ;939579;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3C            ;9394DB;
+    db $0C,$10 : dw $0004                                                ;9394DF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_6             ;9394E1;
+    db $0C,$10 : dw $0005                                                ;9394E7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3D            ;9394E9;
+    db $0C,$10 : dw $0006                                                ;9394EF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_7             ;9394F1;
+    db $0C,$10 : dw $0007                                                ;9394F7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3E            ;9394F9;
+    db $0C,$10 : dw $0008                                                ;9394FF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_8             ;939501;
+    db $0C,$10 : dw $0009                                                ;939507;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3F            ;939509;
+    db $10,$10 : dw $000A                                                ;93950F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_9             ;939511;
+    db $10,$10 : dw $000B                                                ;939517;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_40            ;939519;
+    db $12,$10 : dw $000C                                                ;93951F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_A             ;939521;
+    db $12,$10 : dw $000D                                                ;939527;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_41            ;939529;
+    db $14,$10 : dw $000E                                                ;93952F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_B             ;939531;
+    db $14,$10 : dw $000F                                                ;939537;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_40            ;939539;
+    db $12,$10 : dw $0010                                                ;93953F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_A             ;939541;
+    db $12,$10 : dw $0011                                                ;939547;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3F            ;939549;
+    db $10,$10 : dw $0012                                                ;93954F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_9             ;939551;
+    db $10,$10 : dw $0013                                                ;939557;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3E            ;939559;
+    db $0C,$10 : dw $0014                                                ;93955F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_8             ;939561;
+    db $0C,$10 : dw $0015                                                ;939567;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3D            ;939569;
+    db $08,$10 : dw $0016                                                ;93956F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_7             ;939571;
+    db $08,$10 : dw $0017                                                ;939577;
     dw Instruction_SamusProjectile_GotoY                                 ;93957B;
     dw InstList_SamusProjectile_Charged_SW_SIW_Up_1                      ;93957D;
 
 InstList_SamusProjectile_Charged_SW_SIW_UpRight_0:
-    dw $0001                                                             ;93957F;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4E                  ;939581;
-    db $08,$08                                                           ;939583;
-    dw $0000,$0001                                                       ;939585;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5D                  ;939589;
-    db $08,$08                                                           ;93958B;
-    dw $0001,$0001                                                       ;93958D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4F                  ;939591;
-    db $08,$08                                                           ;939593;
-    dw $0002,$0001                                                       ;939595;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5E                  ;939599;
-    db $08,$08                                                           ;93959B;
-    dw $0003                                                             ;93959D;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4E            ;93957F;
+    db $08,$08 : dw $0000                                                ;939583;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5D            ;939585;
+    db $08,$08 : dw $0001                                                ;93958B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4F            ;93958D;
+    db $08,$08 : dw $0002                                                ;939593;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5E            ;939595;
+    db $08,$08 : dw $0003                                                ;93959B;
 
 InstList_SamusProjectile_Charged_SW_SIW_UpRight_1:
-    dw $0001                                                             ;93959F;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_18                  ;9395A1;
-    db $0C,$0C                                                           ;9395A3;
-    dw $0004,$0001                                                       ;9395A5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_12                  ;9395A9;
-    db $0C,$0C                                                           ;9395AB;
-    dw $0005,$0001                                                       ;9395AD;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1D                  ;9395B1;
-    db $0C,$0C                                                           ;9395B3;
-    dw $0006,$0001                                                       ;9395B5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_13                  ;9395B9;
-    db $0C,$0C                                                           ;9395BB;
-    dw $0007,$0001                                                       ;9395BD;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_19                  ;9395C1;
-    db $10,$10                                                           ;9395C3;
-    dw $0008,$0001                                                       ;9395C5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_14                  ;9395C9;
-    db $10,$10                                                           ;9395CB;
-    dw $0009,$0001                                                       ;9395CD;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1A                  ;9395D1;
-    db $10,$10                                                           ;9395D3;
-    dw $000A,$0001                                                       ;9395D5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_15                  ;9395D9;
-    db $10,$10                                                           ;9395DB;
-    dw $000B,$0001                                                       ;9395DD;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1B                  ;9395E1;
-    db $10,$10                                                           ;9395E3;
-    dw $000C,$0001                                                       ;9395E5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_16                  ;9395E9;
-    db $10,$10                                                           ;9395EB;
-    dw $000D,$0001                                                       ;9395ED;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1C                  ;9395F1;
-    db $14,$14                                                           ;9395F3;
-    dw $000E,$0001                                                       ;9395F5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_17                  ;9395F9;
-    db $14,$14                                                           ;9395FB;
-    dw $000F,$0001                                                       ;9395FD;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1B                  ;939601;
-    db $10,$10                                                           ;939603;
-    dw $0010,$0001                                                       ;939605;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_16                  ;939609;
-    db $10,$10                                                           ;93960B;
-    dw $0011,$0001                                                       ;93960D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1A                  ;939611;
-    db $10,$10                                                           ;939613;
-    dw $0012,$0001                                                       ;939615;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_15                  ;939619;
-    db $10,$10                                                           ;93961B;
-    dw $0013,$0001                                                       ;93961D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_19                  ;939621;
-    db $10,$10                                                           ;939623;
-    dw $0014,$0001                                                       ;939625;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_14                  ;939629;
-    db $10,$10                                                           ;93962B;
-    dw $0015,$0001                                                       ;93962D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1D                  ;939631;
-    db $0C,$0C                                                           ;939633;
-    dw $0016,$0001                                                       ;939635;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_13                  ;939639;
-    db $0C,$0C                                                           ;93963B;
-    dw $0017                                                             ;93963D;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_18            ;93959F;
+    db $0C,$0C : dw $0004                                                ;9395A3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_12            ;9395A5;
+    db $0C,$0C : dw $0005                                                ;9395AB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1D            ;9395AD;
+    db $0C,$0C : dw $0006                                                ;9395B3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_13            ;9395B5;
+    db $0C,$0C : dw $0007                                                ;9395BB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_19            ;9395BD;
+    db $10,$10 : dw $0008                                                ;9395C3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_14            ;9395C5;
+    db $10,$10 : dw $0009                                                ;9395CB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1A            ;9395CD;
+    db $10,$10 : dw $000A                                                ;9395D3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_15            ;9395D5;
+    db $10,$10 : dw $000B                                                ;9395DB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1B            ;9395DD;
+    db $10,$10 : dw $000C                                                ;9395E3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_16            ;9395E5;
+    db $10,$10 : dw $000D                                                ;9395EB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1C            ;9395ED;
+    db $14,$14 : dw $000E                                                ;9395F3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_17            ;9395F5;
+    db $14,$14 : dw $000F                                                ;9395FB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1B            ;9395FD;
+    db $10,$10 : dw $0010                                                ;939603;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_16            ;939605;
+    db $10,$10 : dw $0011                                                ;93960B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1A            ;93960D;
+    db $10,$10 : dw $0012                                                ;939613;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_15            ;939615;
+    db $10,$10 : dw $0013                                                ;93961B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_19            ;93961D;
+    db $10,$10 : dw $0014                                                ;939623;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_14            ;939625;
+    db $10,$10 : dw $0015                                                ;93962B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1D            ;93962D;
+    db $0C,$0C : dw $0016                                                ;939633;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_13            ;939635;
+    db $0C,$0C : dw $0017                                                ;93963B;
     dw Instruction_SamusProjectile_GotoY                                 ;93963F;
     dw InstList_SamusProjectile_Charged_SW_SIW_UpRight_1                 ;939641;
 
 InstList_SamusProjectile_Charged_SW_SIW_Right_0:
-    dw $0001                                                             ;939643;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_51                  ;939645;
-    db $08,$0C                                                           ;939647;
-    dw $0000,$0001                                                       ;939649;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_57                  ;93964D;
-    db $08,$0C                                                           ;93964F;
-    dw $0001,$0001                                                       ;939651;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_52                  ;939655;
-    db $08,$0C                                                           ;939657;
-    dw $0002,$0001                                                       ;939659;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_58                  ;93965D;
-    db $08,$0C                                                           ;93965F;
-    dw $0003                                                             ;939661;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_51            ;939643;
+    db $08,$0C : dw $0000                                                ;939647;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_57            ;939649;
+    db $08,$0C : dw $0001                                                ;93964F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_52            ;939651;
+    db $08,$0C : dw $0002                                                ;939657;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_58            ;939659;
+    db $08,$0C : dw $0003                                                ;93965F;
 
 InstList_SamusProjectile_Charged_SW_SIW_Right_1:
-    dw $0001                                                             ;939663;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_42                  ;939665;
-    db $10,$0C                                                           ;939667;
-    dw $0004,$0001                                                       ;939669;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_0                   ;93966D;
-    db $10,$0C                                                           ;93966F;
-    dw $0005,$0001                                                       ;939671;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_43                  ;939675;
-    db $10,$0C                                                           ;939677;
-    dw $0006,$0001                                                       ;939679;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1                   ;93967D;
-    db $10,$0C                                                           ;93967F;
-    dw $0007,$0001                                                       ;939681;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_44                  ;939685;
-    db $10,$0C                                                           ;939687;
-    dw $0008,$0001                                                       ;939689;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2                   ;93968D;
-    db $10,$0C                                                           ;93968F;
-    dw $0009,$0001                                                       ;939691;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_45                  ;939695;
-    db $10,$10                                                           ;939697;
-    dw $000A,$0001                                                       ;939699;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3                   ;93969D;
-    db $10,$10                                                           ;93969F;
-    dw $000B,$0001                                                       ;9396A1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_46                  ;9396A5;
-    db $10,$12                                                           ;9396A7;
-    dw $000C,$0001                                                       ;9396A9;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4                   ;9396AD;
-    db $10,$12                                                           ;9396AF;
-    dw $000D,$0001                                                       ;9396B1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_47                  ;9396B5;
-    db $10,$14                                                           ;9396B7;
-    dw $000E,$0001                                                       ;9396B9;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5                   ;9396BD;
-    db $10,$14                                                           ;9396BF;
-    dw $000F,$0001                                                       ;9396C1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_46                  ;9396C5;
-    db $10,$12                                                           ;9396C7;
-    dw $0010,$0001                                                       ;9396C9;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4                   ;9396CD;
-    db $10,$12                                                           ;9396CF;
-    dw $0011,$0001                                                       ;9396D1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_45                  ;9396D5;
-    db $10,$10                                                           ;9396D7;
-    dw $0012,$0001                                                       ;9396D9;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3                   ;9396DD;
-    db $10,$10                                                           ;9396DF;
-    dw $0013,$0001                                                       ;9396E1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_44                  ;9396E5;
-    db $10,$0C                                                           ;9396E7;
-    dw $0014,$0001                                                       ;9396E9;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2                   ;9396ED;
-    db $10,$0C                                                           ;9396EF;
-    dw $0015,$0001                                                       ;9396F1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_43                  ;9396F5;
-    db $10,$08                                                           ;9396F7;
-    dw $0016,$0001                                                       ;9396F9;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1                   ;9396FD;
-    db $10,$08                                                           ;9396FF;
-    dw $0017                                                             ;939701;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_42            ;939663;
+    db $10,$0C : dw $0004                                                ;939667;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_0             ;939669;
+    db $10,$0C : dw $0005                                                ;93966F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_43            ;939671;
+    db $10,$0C : dw $0006                                                ;939677;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1             ;939679;
+    db $10,$0C : dw $0007                                                ;93967F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_44            ;939681;
+    db $10,$0C : dw $0008                                                ;939687;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2             ;939689;
+    db $10,$0C : dw $0009                                                ;93968F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_45            ;939691;
+    db $10,$10 : dw $000A                                                ;939697;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3             ;939699;
+    db $10,$10 : dw $000B                                                ;93969F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_46            ;9396A1;
+    db $10,$12 : dw $000C                                                ;9396A7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4             ;9396A9;
+    db $10,$12 : dw $000D                                                ;9396AF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_47            ;9396B1;
+    db $10,$14 : dw $000E                                                ;9396B7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5             ;9396B9;
+    db $10,$14 : dw $000F                                                ;9396BF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_46            ;9396C1;
+    db $10,$12 : dw $0010                                                ;9396C7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4             ;9396C9;
+    db $10,$12 : dw $0011                                                ;9396CF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_45            ;9396D1;
+    db $10,$10 : dw $0012                                                ;9396D7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3             ;9396D9;
+    db $10,$10 : dw $0013                                                ;9396DF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_44            ;9396E1;
+    db $10,$0C : dw $0014                                                ;9396E7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2             ;9396E9;
+    db $10,$0C : dw $0015                                                ;9396EF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_43            ;9396F1;
+    db $10,$08 : dw $0016                                                ;9396F7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1             ;9396F9;
+    db $10,$08 : dw $0017                                                ;9396FF;
     dw Instruction_SamusProjectile_GotoY                                 ;939703;
     dw InstList_SamusProjectile_Charged_SW_SIW_Right_1                   ;939705;
 
 InstList_SamusProjectile_Charged_SW_SIW_DownRight_0:
-    dw $0001                                                             ;939707;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_53                  ;939709;
-    db $08,$08                                                           ;93970B;
-    dw $0000,$0001                                                       ;93970D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_59                  ;939711;
-    db $08,$08                                                           ;939713;
-    dw $0001,$0001                                                       ;939715;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_54                  ;939719;
-    db $08,$08                                                           ;93971B;
-    dw $0002,$0001                                                       ;93971D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5A                  ;939721;
-    db $08,$08                                                           ;939723;
-    dw $0003                                                             ;939725;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_53            ;939707;
+    db $08,$08 : dw $0000                                                ;93970B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_59            ;93970D;
+    db $08,$08 : dw $0001                                                ;939713;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_54            ;939715;
+    db $08,$08 : dw $0002                                                ;93971B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5A            ;93971D;
+    db $08,$08 : dw $0003                                                ;939723;
 
 InstList_SamusProjectile_Charged_SW_SIW_DownRight_1:
-    dw $0001                                                             ;939727;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1E                  ;939729;
-    db $0C,$0C                                                           ;93972B;
-    dw $0004,$0001                                                       ;93972D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_C                   ;939731;
-    db $0C,$0C                                                           ;939733;
-    dw $0005,$0001                                                       ;939735;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_23                  ;939739;
-    db $0C,$0C                                                           ;93973B;
-    dw $0006,$0001                                                       ;93973D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_D                   ;939741;
-    db $0C,$0C                                                           ;939743;
-    dw $0007,$0001                                                       ;939745;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1F                  ;939749;
-    db $10,$10                                                           ;93974B;
-    dw $0008,$0001                                                       ;93974D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_E                   ;939751;
-    db $10,$10                                                           ;939753;
-    dw $0009,$0001                                                       ;939755;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_20                  ;939759;
-    db $10,$10                                                           ;93975B;
-    dw $000A,$0001                                                       ;93975D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_F                   ;939761;
-    db $10,$10                                                           ;939763;
-    dw $000B,$0001                                                       ;939765;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_21                  ;939769;
-    db $10,$10                                                           ;93976B;
-    dw $000C,$0001                                                       ;93976D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_10                  ;939771;
-    db $10,$10                                                           ;939773;
-    dw $000D,$0001                                                       ;939775;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_22                  ;939779;
-    db $14,$14                                                           ;93977B;
-    dw $000E,$0001                                                       ;93977D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_11                  ;939781;
-    db $14,$14                                                           ;939783;
-    dw $000F,$0001                                                       ;939785;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_21                  ;939789;
-    db $10,$10                                                           ;93978B;
-    dw $0010,$0001                                                       ;93978D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_10                  ;939791;
-    db $10,$10                                                           ;939793;
-    dw $0011,$0001                                                       ;939795;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_20                  ;939799;
-    db $10,$10                                                           ;93979B;
-    dw $0012,$0001                                                       ;93979D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_F                   ;9397A1;
-    db $10,$10                                                           ;9397A3;
-    dw $0013,$0001                                                       ;9397A5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1F                  ;9397A9;
-    db $10,$10                                                           ;9397AB;
-    dw $0014,$0001                                                       ;9397AD;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_E                   ;9397B1;
-    db $10,$10                                                           ;9397B3;
-    dw $0015,$0001                                                       ;9397B5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_23                  ;9397B9;
-    db $0C,$0C                                                           ;9397BB;
-    dw $0016,$0001                                                       ;9397BD;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_D                   ;9397C1;
-    db $0C,$0C                                                           ;9397C3;
-    dw $0017                                                             ;9397C5;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1E            ;939727;
+    db $0C,$0C : dw $0004                                                ;93972B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_C             ;93972D;
+    db $0C,$0C : dw $0005                                                ;939733;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_23            ;939735;
+    db $0C,$0C : dw $0006                                                ;93973B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_D             ;93973D;
+    db $0C,$0C : dw $0007                                                ;939743;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1F            ;939745;
+    db $10,$10 : dw $0008                                                ;93974B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_E             ;93974D;
+    db $10,$10 : dw $0009                                                ;939753;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_20            ;939755;
+    db $10,$10 : dw $000A                                                ;93975B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_F             ;93975D;
+    db $10,$10 : dw $000B                                                ;939763;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_21            ;939765;
+    db $10,$10 : dw $000C                                                ;93976B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_10            ;93976D;
+    db $10,$10 : dw $000D                                                ;939773;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_22            ;939775;
+    db $14,$14 : dw $000E                                                ;93977B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_11            ;93977D;
+    db $14,$14 : dw $000F                                                ;939783;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_21            ;939785;
+    db $10,$10 : dw $0010                                                ;93978B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_10            ;93978D;
+    db $10,$10 : dw $0011                                                ;939793;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_20            ;939795;
+    db $10,$10 : dw $0012                                                ;93979B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_F             ;93979D;
+    db $10,$10 : dw $0013                                                ;9397A3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1F            ;9397A5;
+    db $10,$10 : dw $0014                                                ;9397AB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_E             ;9397AD;
+    db $10,$10 : dw $0015                                                ;9397B3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_23            ;9397B5;
+    db $0C,$0C : dw $0016                                                ;9397BB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_D             ;9397BD;
+    db $0C,$0C : dw $0017                                                ;9397C3;
     dw Instruction_SamusProjectile_GotoY                                 ;9397C7;
     dw InstList_SamusProjectile_Charged_SW_SIW_DownRight_1               ;9397C9;
 
 InstList_SamusProjectile_Charged_SW_SIW_Down_0:
-    dw $0001                                                             ;9397CB;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_55                  ;9397CD;
-    db $0C,$08                                                           ;9397CF;
-    dw $0000,$0001                                                       ;9397D1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5B                  ;9397D5;
-    db $0C,$08                                                           ;9397D7;
-    dw $0001,$0001                                                       ;9397D9;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_56                  ;9397DD;
-    db $0C,$08                                                           ;9397DF;
-    dw $0002,$0001                                                       ;9397E1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5C                  ;9397E5;
-    db $0C,$08                                                           ;9397E7;
-    dw $0003                                                             ;9397E9;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_55            ;9397CB;
+    db $0C,$08 : dw $0000                                                ;9397CF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5B            ;9397D1;
+    db $0C,$08 : dw $0001                                                ;9397D7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_56            ;9397D9;
+    db $0C,$08 : dw $0002                                                ;9397DF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5C            ;9397E1;
+    db $0C,$08 : dw $0003                                                ;9397E7;
 
 InstList_SamusProjectile_Charged_SW_SIW_Down_1:
-    dw $0001                                                             ;9397EB;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_30                  ;9397ED;
-    db $0C,$10                                                           ;9397EF;
-    dw $0004,$0001                                                       ;9397F1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_6                   ;9397F5;
-    db $0C,$10                                                           ;9397F7;
-    dw $0005,$0001                                                       ;9397F9;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_31                  ;9397FD;
-    db $0C,$10                                                           ;9397FF;
-    dw $0006,$0001                                                       ;939801;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_7                   ;939805;
-    db $0C,$10                                                           ;939807;
-    dw $0007,$0001                                                       ;939809;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_32                  ;93980D;
-    db $0C,$10                                                           ;93980F;
-    dw $0008,$0001                                                       ;939811;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_8                   ;939815;
-    db $0C,$10                                                           ;939817;
-    dw $0009,$0001                                                       ;939819;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_33                  ;93981D;
-    db $10,$10                                                           ;93981F;
-    dw $000A,$0001                                                       ;939821;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_9                   ;939825;
-    db $10,$10                                                           ;939827;
-    dw $000B,$0001                                                       ;939829;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_34                  ;93982D;
-    db $12,$10                                                           ;93982F;
-    dw $000C,$0001                                                       ;939831;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_A                   ;939835;
-    db $12,$10                                                           ;939837;
-    dw $000D,$0001                                                       ;939839;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_35                  ;93983D;
-    db $14,$10                                                           ;93983F;
-    dw $000E,$0001                                                       ;939841;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_B                   ;939845;
-    db $14,$10                                                           ;939847;
-    dw $000F,$0001                                                       ;939849;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_34                  ;93984D;
-    db $12,$10                                                           ;93984F;
-    dw $0010,$0001                                                       ;939851;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_A                   ;939855;
-    db $12,$10                                                           ;939857;
-    dw $0011,$0001                                                       ;939859;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_33                  ;93985D;
-    db $10,$10                                                           ;93985F;
-    dw $0012,$0001                                                       ;939861;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_9                   ;939865;
-    db $10,$10                                                           ;939867;
-    dw $0013,$0001                                                       ;939869;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_32                  ;93986D;
-    db $0C,$10                                                           ;93986F;
-    dw $0014,$0001                                                       ;939871;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_8                   ;939875;
-    db $0C,$10                                                           ;939877;
-    dw $0015,$0001                                                       ;939879;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_31                  ;93987D;
-    db $08,$10                                                           ;93987F;
-    dw $0016,$0001                                                       ;939881;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_7                   ;939885;
-    db $08,$10                                                           ;939887;
-    dw $0017                                                             ;939889;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_30            ;9397EB;
+    db $0C,$10 : dw $0004                                                ;9397EF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_6             ;9397F1;
+    db $0C,$10 : dw $0005                                                ;9397F7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_31            ;9397F9;
+    db $0C,$10 : dw $0006                                                ;9397FF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_7             ;939801;
+    db $0C,$10 : dw $0007                                                ;939807;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_32            ;939809;
+    db $0C,$10 : dw $0008                                                ;93980F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_8             ;939811;
+    db $0C,$10 : dw $0009                                                ;939817;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_33            ;939819;
+    db $10,$10 : dw $000A                                                ;93981F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_9             ;939821;
+    db $10,$10 : dw $000B                                                ;939827;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_34            ;939829;
+    db $12,$10 : dw $000C                                                ;93982F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_A             ;939831;
+    db $12,$10 : dw $000D                                                ;939837;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_35            ;939839;
+    db $14,$10 : dw $000E                                                ;93983F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_B             ;939841;
+    db $14,$10 : dw $000F                                                ;939847;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_34            ;939849;
+    db $12,$10 : dw $0010                                                ;93984F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_A             ;939851;
+    db $12,$10 : dw $0011                                                ;939857;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_33            ;939859;
+    db $10,$10 : dw $0012                                                ;93985F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_9             ;939861;
+    db $10,$10 : dw $0013                                                ;939867;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_32            ;939869;
+    db $0C,$10 : dw $0014                                                ;93986F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_8             ;939871;
+    db $0C,$10 : dw $0015                                                ;939877;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_31            ;939879;
+    db $08,$10 : dw $0016                                                ;93987F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_7             ;939881;
+    db $08,$10 : dw $0017                                                ;939887;
     dw Instruction_SamusProjectile_GotoY                                 ;93988B;
     dw InstList_SamusProjectile_Charged_SW_SIW_Down_1                    ;93988D;
 
 InstList_SamusProjectile_Charged_SW_SIW_DownLeft_0:
-    dw $0001                                                             ;93988F;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4E                  ;939891;
-    db $08,$08                                                           ;939893;
-    dw $0000,$0001                                                       ;939895;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5D                  ;939899;
-    db $08,$08                                                           ;93989B;
-    dw $0001,$0001                                                       ;93989D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4F                  ;9398A1;
-    db $08,$08                                                           ;9398A3;
-    dw $0002,$0001                                                       ;9398A5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5E                  ;9398A9;
-    db $08,$08                                                           ;9398AB;
-    dw $0003                                                             ;9398AD;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4E            ;93988F;
+    db $08,$08 : dw $0000                                                ;939893;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5D            ;939895;
+    db $08,$08 : dw $0001                                                ;93989B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4F            ;93989D;
+    db $08,$08 : dw $0002                                                ;9398A3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5E            ;9398A5;
+    db $08,$08 : dw $0003                                                ;9398AB;
 
 InstList_SamusProjectile_Charged_SW_SIW_DownLeft_1:
-    dw $0001                                                             ;9398AF;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_24                  ;9398B1;
-    db $0C,$0C                                                           ;9398B3;
-    dw $0004,$0001                                                       ;9398B5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_12                  ;9398B9;
-    db $0C,$0C                                                           ;9398BB;
-    dw $0005,$0001                                                       ;9398BD;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_29                  ;9398C1;
-    db $0C,$0C                                                           ;9398C3;
-    dw $0006,$0001                                                       ;9398C5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_13                  ;9398C9;
-    db $0C,$0C                                                           ;9398CB;
-    dw $0007,$0001                                                       ;9398CD;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_25                  ;9398D1;
-    db $10,$10                                                           ;9398D3;
-    dw $0008,$0001                                                       ;9398D5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_14                  ;9398D9;
-    db $10,$10                                                           ;9398DB;
-    dw $0009,$0001                                                       ;9398DD;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_26                  ;9398E1;
-    db $10,$10                                                           ;9398E3;
-    dw $000A,$0001                                                       ;9398E5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_15                  ;9398E9;
-    db $10,$10                                                           ;9398EB;
-    dw $000B,$0001                                                       ;9398ED;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_27                  ;9398F1;
-    db $10,$10                                                           ;9398F3;
-    dw $000C,$0001                                                       ;9398F5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_16                  ;9398F9;
-    db $10,$10                                                           ;9398FB;
-    dw $000D,$0001                                                       ;9398FD;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_28                  ;939901;
-    db $14,$14                                                           ;939903;
-    dw $000E,$0001                                                       ;939905;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_17                  ;939909;
-    db $14,$14                                                           ;93990B;
-    dw $000F,$0001                                                       ;93990D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_27                  ;939911;
-    db $10,$10                                                           ;939913;
-    dw $0010,$0001                                                       ;939915;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_16                  ;939919;
-    db $10,$10                                                           ;93991B;
-    dw $0011,$0001                                                       ;93991D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_26                  ;939921;
-    db $10,$10                                                           ;939923;
-    dw $0012,$0001                                                       ;939925;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_15                  ;939929;
-    db $10,$10                                                           ;93992B;
-    dw $0013,$0001                                                       ;93992D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_25                  ;939931;
-    db $10,$10                                                           ;939933;
-    dw $0014,$0001                                                       ;939935;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_14                  ;939939;
-    db $10,$10                                                           ;93993B;
-    dw $0015,$0001                                                       ;93993D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_29                  ;939941;
-    db $0C,$0C                                                           ;939943;
-    dw $0016,$0001                                                       ;939945;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_13                  ;939949;
-    db $0C,$0C                                                           ;93994B;
-    dw $0017                                                             ;93994D;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_24            ;9398AF;
+    db $0C,$0C : dw $0004                                                ;9398B3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_12            ;9398B5;
+    db $0C,$0C : dw $0005                                                ;9398BB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_29            ;9398BD;
+    db $0C,$0C : dw $0006                                                ;9398C3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_13            ;9398C5;
+    db $0C,$0C : dw $0007                                                ;9398CB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_25            ;9398CD;
+    db $10,$10 : dw $0008                                                ;9398D3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_14            ;9398D5;
+    db $10,$10 : dw $0009                                                ;9398DB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_26            ;9398DD;
+    db $10,$10 : dw $000A                                                ;9398E3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_15            ;9398E5;
+    db $10,$10 : dw $000B                                                ;9398EB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_27            ;9398ED;
+    db $10,$10 : dw $000C                                                ;9398F3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_16            ;9398F5;
+    db $10,$10 : dw $000D                                                ;9398FB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_28            ;9398FD;
+    db $14,$14 : dw $000E                                                ;939903;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_17            ;939905;
+    db $14,$14 : dw $000F                                                ;93990B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_27            ;93990D;
+    db $10,$10 : dw $0010                                                ;939913;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_16            ;939915;
+    db $10,$10 : dw $0011                                                ;93991B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_26            ;93991D;
+    db $10,$10 : dw $0012                                                ;939923;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_15            ;939925;
+    db $10,$10 : dw $0013                                                ;93992B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_25            ;93992D;
+    db $10,$10 : dw $0014                                                ;939933;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_14            ;939935;
+    db $10,$10 : dw $0015                                                ;93993B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_29            ;93993D;
+    db $0C,$0C : dw $0016                                                ;939943;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_13            ;939945;
+    db $0C,$0C : dw $0017                                                ;93994B;
     dw Instruction_SamusProjectile_GotoY                                 ;93994F;
     dw InstList_SamusProjectile_Charged_SW_SIW_DownLeft_1                ;939951;
 
 InstList_SamusProjectile_Charged_SW_SIW_Left_0:
-    dw $0001                                                             ;939953;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_48                  ;939955;
-    db $08,$0C                                                           ;939957;
-    dw $0000,$0001                                                       ;939959;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_57                  ;93995D;
-    db $08,$0C                                                           ;93995F;
-    dw $0001,$0001                                                       ;939961;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_49                  ;939965;
-    db $08,$0C                                                           ;939967;
-    dw $0002,$0001                                                       ;939969;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_58                  ;93996D;
-    db $08,$0C                                                           ;93996F;
-    dw $0003                                                             ;939971;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_48            ;939953;
+    db $08,$0C : dw $0000                                                ;939957;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_57            ;939959;
+    db $08,$0C : dw $0001                                                ;93995F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_49            ;939961;
+    db $08,$0C : dw $0002                                                ;939967;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_58            ;939969;
+    db $08,$0C : dw $0003                                                ;93996F;
 
 InstList_SamusProjectile_Charged_SW_SIW_Left_1:
-    dw $0001                                                             ;939973;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_36                  ;939975;
-    db $10,$0C                                                           ;939977;
-    dw $0004,$0001                                                       ;939979;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_0                   ;93997D;
-    db $10,$0C                                                           ;93997F;
-    dw $0005,$0001                                                       ;939981;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_37                  ;939985;
-    db $10,$0C                                                           ;939987;
-    dw $0006,$0001                                                       ;939989;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1                   ;93998D;
-    db $10,$0C                                                           ;93998F;
-    dw $0007,$0001                                                       ;939991;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_38                  ;939995;
-    db $10,$0C                                                           ;939997;
-    dw $0008,$0001                                                       ;939999;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2                   ;93999D;
-    db $10,$0C                                                           ;93999F;
-    dw $0009,$0001                                                       ;9399A1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_39                  ;9399A5;
-    db $10,$10                                                           ;9399A7;
-    dw $000A,$0001                                                       ;9399A9;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3                   ;9399AD;
-    db $10,$10                                                           ;9399AF;
-    dw $000B,$0001                                                       ;9399B1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3A                  ;9399B5;
-    db $10,$12                                                           ;9399B7;
-    dw $000C,$0001                                                       ;9399B9;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4                   ;9399BD;
-    db $10,$12                                                           ;9399BF;
-    dw $000D,$0001                                                       ;9399C1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3B                  ;9399C5;
-    db $10,$14                                                           ;9399C7;
-    dw $000E,$0001                                                       ;9399C9;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5                   ;9399CD;
-    db $10,$14                                                           ;9399CF;
-    dw $000F,$0001                                                       ;9399D1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3A                  ;9399D5;
-    db $10,$12                                                           ;9399D7;
-    dw $0010,$0001                                                       ;9399D9;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4                   ;9399DD;
-    db $10,$12                                                           ;9399DF;
-    dw $0011,$0001                                                       ;9399E1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_39                  ;9399E5;
-    db $10,$10                                                           ;9399E7;
-    dw $0012,$0001                                                       ;9399E9;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3                   ;9399ED;
-    db $10,$10                                                           ;9399EF;
-    dw $0013,$0001                                                       ;9399F1;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_38                  ;9399F5;
-    db $10,$0C                                                           ;9399F7;
-    dw $0014,$0001                                                       ;9399F9;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2                   ;9399FD;
-    db $10,$0C                                                           ;9399FF;
-    dw $0015,$0001                                                       ;939A01;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_37                  ;939A05;
-    db $10,$08                                                           ;939A07;
-    dw $0016,$0001                                                       ;939A09;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1                   ;939A0D;
-    db $10,$08                                                           ;939A0F;
-    dw $0017                                                             ;939A11;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_36            ;939973;
+    db $10,$0C : dw $0004                                                ;939977;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_0             ;939979;
+    db $10,$0C : dw $0005                                                ;93997F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_37            ;939981;
+    db $10,$0C : dw $0006                                                ;939987;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1             ;939989;
+    db $10,$0C : dw $0007                                                ;93998F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_38            ;939991;
+    db $10,$0C : dw $0008                                                ;939997;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2             ;939999;
+    db $10,$0C : dw $0009                                                ;93999F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_39            ;9399A1;
+    db $10,$10 : dw $000A                                                ;9399A7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3             ;9399A9;
+    db $10,$10 : dw $000B                                                ;9399AF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3A            ;9399B1;
+    db $10,$12 : dw $000C                                                ;9399B7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4             ;9399B9;
+    db $10,$12 : dw $000D                                                ;9399BF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3B            ;9399C1;
+    db $10,$14 : dw $000E                                                ;9399C7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5             ;9399C9;
+    db $10,$14 : dw $000F                                                ;9399CF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3A            ;9399D1;
+    db $10,$12 : dw $0010                                                ;9399D7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4             ;9399D9;
+    db $10,$12 : dw $0011                                                ;9399DF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_39            ;9399E1;
+    db $10,$10 : dw $0012                                                ;9399E7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_3             ;9399E9;
+    db $10,$10 : dw $0013                                                ;9399EF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_38            ;9399F1;
+    db $10,$0C : dw $0014                                                ;9399F7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2             ;9399F9;
+    db $10,$0C : dw $0015                                                ;9399FF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_37            ;939A01;
+    db $10,$08 : dw $0016                                                ;939A07;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_1             ;939A09;
+    db $10,$08 : dw $0017                                                ;939A0F;
     dw Instruction_SamusProjectile_GotoY                                 ;939A13;
     dw InstList_SamusProjectile_Charged_SW_SIW_Left_1                    ;939A15;
 
 InstList_SamusProjectile_Charged_SW_SIW_UpLeft_0:
-    dw $0001                                                             ;939A17;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4A                  ;939A19;
-    db $08,$08                                                           ;939A1B;
-    dw $0000,$0001                                                       ;939A1D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_59                  ;939A21;
-    db $08,$08                                                           ;939A23;
-    dw $0001,$0001                                                       ;939A25;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4B                  ;939A29;
-    db $08,$08                                                           ;939A2B;
-    dw $0002,$0001                                                       ;939A2D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5A                  ;939A31;
-    db $08,$08                                                           ;939A33;
-    dw $0003                                                             ;939A35;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4A            ;939A17;
+    db $08,$08 : dw $0000                                                ;939A1B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_59            ;939A1D;
+    db $08,$08 : dw $0001                                                ;939A23;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_4B            ;939A25;
+    db $08,$08 : dw $0002                                                ;939A2B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_5A            ;939A2D;
+    db $08,$08 : dw $0003                                                ;939A33;
 
 InstList_SamusProjectile_Charged_SW_SIW_UpLeft_1:
-    dw $0001                                                             ;939A37;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2A                  ;939A39;
-    db $0C,$0C                                                           ;939A3B;
-    dw $0004,$0001                                                       ;939A3D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_C                   ;939A41;
-    db $0C,$0C                                                           ;939A43;
-    dw $0005,$0001                                                       ;939A45;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2F                  ;939A49;
-    db $0C,$0C                                                           ;939A4B;
-    dw $0006,$0001                                                       ;939A4D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_D                   ;939A51;
-    db $0C,$0C                                                           ;939A53;
-    dw $0007,$0001                                                       ;939A55;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2B                  ;939A59;
-    db $10,$10                                                           ;939A5B;
-    dw $0008,$0001                                                       ;939A5D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_E                   ;939A61;
-    db $10,$10                                                           ;939A63;
-    dw $0009,$0001                                                       ;939A65;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2C                  ;939A69;
-    db $10,$10                                                           ;939A6B;
-    dw $000A,$0001                                                       ;939A6D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_F                   ;939A71;
-    db $10,$10                                                           ;939A73;
-    dw $000B,$0001                                                       ;939A75;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2D                  ;939A79;
-    db $10,$10                                                           ;939A7B;
-    dw $000C,$0001                                                       ;939A7D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_10                  ;939A81;
-    db $10,$10                                                           ;939A83;
-    dw $000D,$0001                                                       ;939A85;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2E                  ;939A89;
-    db $14,$14                                                           ;939A8B;
-    dw $000E,$0001                                                       ;939A8D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_11                  ;939A91;
-    db $14,$14                                                           ;939A93;
-    dw $000F,$0001                                                       ;939A95;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2D                  ;939A99;
-    db $10,$10                                                           ;939A9B;
-    dw $0010,$0001                                                       ;939A9D;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_10                  ;939AA1;
-    db $10,$10                                                           ;939AA3;
-    dw $0011,$0001                                                       ;939AA5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2C                  ;939AA9;
-    db $10,$10                                                           ;939AAB;
-    dw $0012,$0001                                                       ;939AAD;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_F                   ;939AB1;
-    db $10,$10                                                           ;939AB3;
-    dw $0013,$0001                                                       ;939AB5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2B                  ;939AB9;
-    db $10,$10                                                           ;939ABB;
-    dw $0014,$0001                                                       ;939ABD;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_E                   ;939AC1;
-    db $10,$10                                                           ;939AC3;
-    dw $0015,$0001                                                       ;939AC5;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2F                  ;939AC9;
-    db $0C,$0C                                                           ;939ACB;
-    dw $0016,$0001                                                       ;939ACD;
-    dw ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_D                   ;939AD1;
-    db $0C,$0C                                                           ;939AD3;
-    dw $0017                                                             ;939AD5;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2A            ;939A37;
+    db $0C,$0C : dw $0004                                                ;939A3B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_C             ;939A3D;
+    db $0C,$0C : dw $0005                                                ;939A43;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2F            ;939A45;
+    db $0C,$0C : dw $0006                                                ;939A4B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_D             ;939A4D;
+    db $0C,$0C : dw $0007                                                ;939A53;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2B            ;939A55;
+    db $10,$10 : dw $0008                                                ;939A5B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_E             ;939A5D;
+    db $10,$10 : dw $0009                                                ;939A63;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2C            ;939A65;
+    db $10,$10 : dw $000A                                                ;939A6B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_F             ;939A6D;
+    db $10,$10 : dw $000B                                                ;939A73;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2D            ;939A75;
+    db $10,$10 : dw $000C                                                ;939A7B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_10            ;939A7D;
+    db $10,$10 : dw $000D                                                ;939A83;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2E            ;939A85;
+    db $14,$14 : dw $000E                                                ;939A8B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_11            ;939A8D;
+    db $14,$14 : dw $000F                                                ;939A93;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2D            ;939A95;
+    db $10,$10 : dw $0010                                                ;939A9B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_10            ;939A9D;
+    db $10,$10 : dw $0011                                                ;939AA3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2C            ;939AA5;
+    db $10,$10 : dw $0012                                                ;939AAB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_F             ;939AAD;
+    db $10,$10 : dw $0013                                                ;939AB3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2B            ;939AB5;
+    db $10,$10 : dw $0014                                                ;939ABB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_E             ;939ABD;
+    db $10,$10 : dw $0015                                                ;939AC3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_2F            ;939AC5;
+    db $0C,$0C : dw $0016                                                ;939ACB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_S_SI_SW_SIW_D             ;939ACD;
+    db $0C,$0C : dw $0017                                                ;939AD3;
     dw Instruction_SamusProjectile_GotoY                                 ;939AD7;
     dw InstList_SamusProjectile_Charged_SW_SIW_UpLeft_1                  ;939AD9;
 
 InstList_SamusProjectile_Charged_P_PI_Down_Up_0:
-    dw $0001                                                             ;939ADB;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_4                   ;939ADD;
-    db $08,$08                                                           ;939ADF;
-    dw $0000,$0001                                                       ;939AE1;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_14                  ;939AE5;
-    db $08,$08                                                           ;939AE7;
-    dw $0001,$0001                                                       ;939AE9;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_5                   ;939AED;
-    db $08,$10                                                           ;939AEF;
-    dw $0002,$0001                                                       ;939AF1;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_15                  ;939AF5;
-    db $08,$10                                                           ;939AF7;
-    dw $0003,$0001                                                       ;939AF9;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_6                   ;939AFD;
-    db $08,$18                                                           ;939AFF;
-    dw $0004,$0001                                                       ;939B01;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_16                  ;939B05;
-    db $08,$18                                                           ;939B07;
-    dw $0005                                                             ;939B09;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_4             ;939ADB;
+    db $08,$08 : dw $0000                                                ;939ADF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_14            ;939AE1;
+    db $08,$08 : dw $0001                                                ;939AE7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_5             ;939AE9;
+    db $08,$10 : dw $0002                                                ;939AEF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_15            ;939AF1;
+    db $08,$10 : dw $0003                                                ;939AF7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_6             ;939AF9;
+    db $08,$18 : dw $0004                                                ;939AFF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_16            ;939B01;
+    db $08,$18 : dw $0005                                                ;939B07;
 
 InstList_SamusProjectile_Charged_P_PI_Down_Up_1:
-    dw $0001                                                             ;939B0B;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_7                   ;939B0D;
-    db $08,$1C                                                           ;939B0F;
-    dw $0006,$0001                                                       ;939B11;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_17                  ;939B15;
-    db $08,$1C                                                           ;939B17;
-    dw $0007                                                             ;939B19;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_7             ;939B0B;
+    db $08,$1C : dw $0006                                                ;939B0F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_17            ;939B11;
+    db $08,$1C : dw $0007                                                ;939B17;
     dw Instruction_SamusProjectile_GotoY                                 ;939B1B;
     dw InstList_SamusProjectile_Charged_P_PI_Down_Up_1                   ;939B1D;
 
 InstList_SamusProjectile_Charged_P_PI_DownLeft_UpRight_0:
-    dw $0001                                                             ;939B1F;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_C                   ;939B21;
-    db $08,$08                                                           ;939B23;
-    dw $0000,$0001                                                       ;939B25;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1C                  ;939B29;
-    db $08,$08                                                           ;939B2B;
-    dw $0001,$0001                                                       ;939B2D;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_D                   ;939B31;
-    db $0C,$0C                                                           ;939B33;
-    dw $0002,$0001                                                       ;939B35;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1D                  ;939B39;
-    db $0C,$0C                                                           ;939B3B;
-    dw $0003,$0001                                                       ;939B3D;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_E                   ;939B41;
-    db $10,$10                                                           ;939B43;
-    dw $0004,$0001                                                       ;939B45;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1E                  ;939B49;
-    db $10,$10                                                           ;939B4B;
-    dw $0005                                                             ;939B4D;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_C             ;939B1F;
+    db $08,$08 : dw $0000                                                ;939B23;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1C            ;939B25;
+    db $08,$08 : dw $0001                                                ;939B2B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_D             ;939B2D;
+    db $0C,$0C : dw $0002                                                ;939B33;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1D            ;939B35;
+    db $0C,$0C : dw $0003                                                ;939B3B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_E             ;939B3D;
+    db $10,$10 : dw $0004                                                ;939B43;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1E            ;939B45;
+    db $10,$10 : dw $0005                                                ;939B4B;
 
 InstList_SamusProjectile_Charged_P_PI_DownLeft_UpRight_1:
-    dw $0001                                                             ;939B4F;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_F                   ;939B51;
-    db $14,$14                                                           ;939B53;
-    dw $0006,$0001                                                       ;939B55;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1F                  ;939B59;
-    db $14,$14                                                           ;939B5B;
-    dw $0007                                                             ;939B5D;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_F             ;939B4F;
+    db $14,$14 : dw $0006                                                ;939B53;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1F            ;939B55;
+    db $14,$14 : dw $0007                                                ;939B5B;
     dw Instruction_SamusProjectile_GotoY                                 ;939B5F;
     dw InstList_SamusProjectile_Charged_P_PI_DownLeft_UpRight_1          ;939B61;
 
 InstList_SamusProjectile_Charged_P_PI_Left_Right_0:
-    dw $0001                                                             ;939B63;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_0                   ;939B65;
-    db $08,$08                                                           ;939B67;
-    dw $0000,$0001                                                       ;939B69;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_10                  ;939B6D;
-    db $08,$08                                                           ;939B6F;
-    dw $0001,$0001                                                       ;939B71;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1                   ;939B75;
-    db $10,$08                                                           ;939B77;
-    dw $0002,$0001                                                       ;939B79;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_11                  ;939B7D;
-    db $10,$08                                                           ;939B7F;
-    dw $0003,$0001                                                       ;939B81;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_2                   ;939B85;
-    db $18,$08                                                           ;939B87;
-    dw $0004,$0001                                                       ;939B89;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_12                  ;939B8D;
-    db $18,$08                                                           ;939B8F;
-    dw $0005                                                             ;939B91;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_0             ;939B63;
+    db $08,$08 : dw $0000                                                ;939B67;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_10            ;939B69;
+    db $08,$08 : dw $0001                                                ;939B6F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1             ;939B71;
+    db $10,$08 : dw $0002                                                ;939B77;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_11            ;939B79;
+    db $10,$08 : dw $0003                                                ;939B7F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_2             ;939B81;
+    db $18,$08 : dw $0004                                                ;939B87;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_12            ;939B89;
+    db $18,$08 : dw $0005                                                ;939B8F;
 
 InstList_SamusProjectile_Charged_P_PI_Left_Right_1:
-    dw $0001                                                             ;939B93;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_3                   ;939B95;
-    db $1C,$08                                                           ;939B97;
-    dw $0006,$0001                                                       ;939B99;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_13                  ;939B9D;
-    db $1C,$08                                                           ;939B9F;
-    dw $0007                                                             ;939BA1;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_3             ;939B93;
+    db $1C,$08 : dw $0006                                                ;939B97;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_13            ;939B99;
+    db $1C,$08 : dw $0007                                                ;939B9F;
     dw Instruction_SamusProjectile_GotoY                                 ;939BA3;
     dw InstList_SamusProjectile_Charged_P_PI_Left_Right_1                ;939BA5;
 
 InstList_SamusProjectile_Charged_P_PI_DownRight_UpLeft_0:
-    dw $0001                                                             ;939BA7;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_8                   ;939BA9;
-    db $08,$08                                                           ;939BAB;
-    dw $0000,$0001                                                       ;939BAD;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_18                  ;939BB1;
-    db $08,$08                                                           ;939BB3;
-    dw $0001,$0001                                                       ;939BB5;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_9                   ;939BB9;
-    db $0C,$0C                                                           ;939BBB;
-    dw $0002,$0001                                                       ;939BBD;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_19                  ;939BC1;
-    db $0C,$0C                                                           ;939BC3;
-    dw $0003,$0001                                                       ;939BC5;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_A                   ;939BC9;
-    db $10,$10                                                           ;939BCB;
-    dw $0004,$0001                                                       ;939BCD;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1A                  ;939BD1;
-    db $10,$10                                                           ;939BD3;
-    dw $0005                                                             ;939BD5;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_8             ;939BA7;
+    db $08,$08 : dw $0000                                                ;939BAB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_18            ;939BAD;
+    db $08,$08 : dw $0001                                                ;939BB3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_9             ;939BB5;
+    db $0C,$0C : dw $0002                                                ;939BBB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_19            ;939BBD;
+    db $0C,$0C : dw $0003                                                ;939BC3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_A             ;939BC5;
+    db $10,$10 : dw $0004                                                ;939BCB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1A            ;939BCD;
+    db $10,$10 : dw $0005                                                ;939BD3;
 
 InstList_SamusProjectile_Charged_P_PI_DownRight_UpLeft_1:
-    dw $0001                                                             ;939BD7;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_B                   ;939BD9;
-    db $14,$14                                                           ;939BDB;
-    dw $0006,$0001                                                       ;939BDD;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1B                  ;939BE1;
-    db $14,$14                                                           ;939BE3;
-    dw $0007                                                             ;939BE5;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_B             ;939BD7;
+    db $14,$14 : dw $0006                                                ;939BDB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1B            ;939BDD;
+    db $14,$14 : dw $0007                                                ;939BE3;
     dw Instruction_SamusProjectile_GotoY                                 ;939BE7;
     dw InstList_SamusProjectile_Charged_P_PI_DownRight_UpLeft_1          ;939BE9;
 
 InstList_SamusProjectile_Charged_PW_PIW_Down_Up_0:
-    dw $0001                                                             ;939BEB;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_4                   ;939BED;
-    db $0C,$08                                                           ;939BEF;
-    dw $0000,$0001                                                       ;939BF1;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_14                  ;939BF5;
-    db $0C,$08                                                           ;939BF7;
-    dw $0001,$0001                                                       ;939BF9;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_5                   ;939BFD;
-    db $0C,$08                                                           ;939BFF;
-    dw $0002,$0001                                                       ;939C01;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_15                  ;939C05;
-    db $0C,$08                                                           ;939C07;
-    dw $0003,$0001                                                       ;939C09;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_6                   ;939C0D;
-    db $0C,$18                                                           ;939C0F;
-    dw $0004,$0001                                                       ;939C11;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_16                  ;939C15;
-    db $0C,$18                                                           ;939C17;
-    dw $0005                                                             ;939C19;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_4             ;939BEB;
+    db $0C,$08 : dw $0000                                                ;939BEF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_14            ;939BF1;
+    db $0C,$08 : dw $0001                                                ;939BF7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_5             ;939BF9;
+    db $0C,$08 : dw $0002                                                ;939BFF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_15            ;939C01;
+    db $0C,$08 : dw $0003                                                ;939C07;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_6             ;939C09;
+    db $0C,$18 : dw $0004                                                ;939C0F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_16            ;939C11;
+    db $0C,$18 : dw $0005                                                ;939C17;
 
 InstList_SamusProjectile_Charged_PW_PIW_Down_Up_1:
-    dw $0001                                                             ;939C1B;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_19                       ;939C1D;
-    db $0C,$1E                                                           ;939C1F;
-    dw $0006,$0001                                                       ;939C21;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_28                       ;939C25;
-    db $0C,$1E                                                           ;939C27;
-    dw $0007,$0001                                                       ;939C29;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_1A                       ;939C2D;
-    db $0C,$1E                                                           ;939C2F;
-    dw $0008,$0001                                                       ;939C31;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_29                       ;939C35;
-    db $0C,$1E                                                           ;939C37;
-    dw $0009,$0001                                                       ;939C39;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_1B                       ;939C3D;
-    db $11,$1E                                                           ;939C3F;
-    dw $000A,$0001                                                       ;939C41;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_2A                       ;939C45;
-    db $11,$1E                                                           ;939C47;
-    dw $000B,$0001                                                       ;939C49;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_1C                       ;939C4D;
-    db $13,$1E                                                           ;939C4F;
-    dw $000C,$0001                                                       ;939C51;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_2B                       ;939C55;
-    db $13,$1E                                                           ;939C57;
-    dw $000D,$0001                                                       ;939C59;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_1D                       ;939C5D;
-    db $14,$1E                                                           ;939C5F;
-    dw $000E,$0001                                                       ;939C61;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_2C                       ;939C65;
-    db $14,$1E                                                           ;939C67;
-    dw $000F,$0001                                                       ;939C69;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_1C                       ;939C6D;
-    db $13,$1E                                                           ;939C6F;
-    dw $0010,$0001                                                       ;939C71;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_2B                       ;939C75;
-    db $13,$1E                                                           ;939C77;
-    dw $0011,$0001                                                       ;939C79;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_1B                       ;939C7D;
-    db $11,$1E                                                           ;939C7F;
-    dw $0012,$0001                                                       ;939C81;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_2A                       ;939C85;
-    db $11,$1E                                                           ;939C87;
-    dw $0013,$0001                                                       ;939C89;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_1A                       ;939C8D;
-    db $0C,$1E                                                           ;939C8F;
-    dw $0014,$0001                                                       ;939C91;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_29                       ;939C95;
-    db $0C,$1E                                                           ;939C97;
-    dw $0015                                                             ;939C99;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_19                 ;939C1B;
+    db $0C,$1E : dw $0006                                                ;939C1F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_28                 ;939C21;
+    db $0C,$1E : dw $0007                                                ;939C27;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_1A                 ;939C29;
+    db $0C,$1E : dw $0008                                                ;939C2F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_29                 ;939C31;
+    db $0C,$1E : dw $0009                                                ;939C37;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_1B                 ;939C39;
+    db $11,$1E : dw $000A                                                ;939C3F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_2A                 ;939C41;
+    db $11,$1E : dw $000B                                                ;939C47;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_1C                 ;939C49;
+    db $13,$1E : dw $000C                                                ;939C4F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_2B                 ;939C51;
+    db $13,$1E : dw $000D                                                ;939C57;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_1D                 ;939C59;
+    db $14,$1E : dw $000E                                                ;939C5F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_2C                 ;939C61;
+    db $14,$1E : dw $000F                                                ;939C67;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_1C                 ;939C69;
+    db $13,$1E : dw $0010                                                ;939C6F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_2B                 ;939C71;
+    db $13,$1E : dw $0011                                                ;939C77;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_1B                 ;939C79;
+    db $11,$1E : dw $0012                                                ;939C7F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_2A                 ;939C81;
+    db $11,$1E : dw $0013                                                ;939C87;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_1A                 ;939C89;
+    db $0C,$1E : dw $0014                                                ;939C8F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_29                 ;939C91;
+    db $0C,$1E : dw $0015                                                ;939C97;
     dw Instruction_SamusProjectile_GotoY                                 ;939C9B;
     dw InstList_SamusProjectile_Charged_PW_PIW_Down_Up_1                 ;939C9D;
 
 InstList_SamusProjectile_Charged_PW_PIW_DownLeft_UpRight_0:
-    dw $0001                                                             ;939C9F;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_C                   ;939CA1;
-    db $08,$08                                                           ;939CA3;
-    dw $0000,$0001                                                       ;939CA5;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1C                  ;939CA9;
-    db $08,$08                                                           ;939CAB;
-    dw $0001,$0001                                                       ;939CAD;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_D                   ;939CB1;
-    db $08,$08                                                           ;939CB3;
-    dw $0002,$0001                                                       ;939CB5;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1D                  ;939CB9;
-    db $08,$08                                                           ;939CBB;
-    dw $0003,$0001                                                       ;939CBD;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_E                   ;939CC1;
-    db $0C,$0C                                                           ;939CC3;
-    dw $0004,$0001                                                       ;939CC5;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1E                  ;939CC9;
-    db $0C,$0C                                                           ;939CCB;
-    dw $0005                                                             ;939CCD;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_C             ;939C9F;
+    db $08,$08 : dw $0000                                                ;939CA3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1C            ;939CA5;
+    db $08,$08 : dw $0001                                                ;939CAB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_D             ;939CAD;
+    db $08,$08 : dw $0002                                                ;939CB3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1D            ;939CB5;
+    db $08,$08 : dw $0003                                                ;939CBB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_E             ;939CBD;
+    db $0C,$0C : dw $0004                                                ;939CC3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1E            ;939CC5;
+    db $0C,$0C : dw $0005                                                ;939CCB;
 
 InstList_SamusProjectile_Charged_PW_PIW_DownLeft_UpRight_1:
-    dw $0001                                                             ;939CCF;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_37                       ;939CD1;
-    db $0C,$0C                                                           ;939CD3;
-    dw $0006,$0001                                                       ;939CD5;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_2D                       ;939CD9;
-    db $0C,$0C                                                           ;939CDB;
-    dw $0007,$0001                                                       ;939CDD;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_38                       ;939CE1;
-    db $10,$10                                                           ;939CE3;
-    dw $0008,$0001                                                       ;939CE5;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_2E                       ;939CE9;
-    db $10,$10                                                           ;939CEB;
-    dw $0009,$0001                                                       ;939CED;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_39                       ;939CF1;
-    db $11,$11                                                           ;939CF3;
-    dw $000A,$0001                                                       ;939CF5;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_2F                       ;939CF9;
-    db $11,$11                                                           ;939CFB;
-    dw $000B,$0001                                                       ;939CFD;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_3A                       ;939D01;
-    db $14,$14                                                           ;939D03;
-    dw $000C,$0001                                                       ;939D05;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_30                       ;939D09;
-    db $14,$14                                                           ;939D0B;
-    dw $000D,$0001                                                       ;939D0D;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_3B                       ;939D11;
-    db $18,$18                                                           ;939D13;
-    dw $000E,$0001                                                       ;939D15;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_31                       ;939D19;
-    db $18,$18                                                           ;939D1B;
-    dw $000F,$0001                                                       ;939D1D;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_3A                       ;939D21;
-    db $14,$14                                                           ;939D23;
-    dw $0010,$0001                                                       ;939D25;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_30                       ;939D29;
-    db $14,$14                                                           ;939D2B;
-    dw $0011,$0001                                                       ;939D2D;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_39                       ;939D31;
-    db $11,$11                                                           ;939D33;
-    dw $0012,$0001                                                       ;939D35;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_2F                       ;939D39;
-    db $11,$11                                                           ;939D3B;
-    dw $0013,$0001                                                       ;939D3D;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_38                       ;939D41;
-    db $10,$10                                                           ;939D43;
-    dw $0014,$0001                                                       ;939D45;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_2E                       ;939D49;
-    db $10,$10                                                           ;939D4B;
-    dw $0015                                                             ;939D4D;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_37                 ;939CCF;
+    db $0C,$0C : dw $0006                                                ;939CD3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_2D                 ;939CD5;
+    db $0C,$0C : dw $0007                                                ;939CDB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_38                 ;939CDD;
+    db $10,$10 : dw $0008                                                ;939CE3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_2E                 ;939CE5;
+    db $10,$10 : dw $0009                                                ;939CEB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_39                 ;939CED;
+    db $11,$11 : dw $000A                                                ;939CF3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_2F                 ;939CF5;
+    db $11,$11 : dw $000B                                                ;939CFB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_3A                 ;939CFD;
+    db $14,$14 : dw $000C                                                ;939D03;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_30                 ;939D05;
+    db $14,$14 : dw $000D                                                ;939D0B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_3B                 ;939D0D;
+    db $18,$18 : dw $000E                                                ;939D13;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_31                 ;939D15;
+    db $18,$18 : dw $000F                                                ;939D1B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_3A                 ;939D1D;
+    db $14,$14 : dw $0010                                                ;939D23;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_30                 ;939D25;
+    db $14,$14 : dw $0011                                                ;939D2B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_39                 ;939D2D;
+    db $11,$11 : dw $0012                                                ;939D33;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_2F                 ;939D35;
+    db $11,$11 : dw $0013                                                ;939D3B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_38                 ;939D3D;
+    db $10,$10 : dw $0014                                                ;939D43;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_2E                 ;939D45;
+    db $10,$10 : dw $0015                                                ;939D4B;
     dw Instruction_SamusProjectile_GotoY                                 ;939D4F;
     dw InstList_SamusProjectile_Charged_PW_PIW_DownLeft_UpRight_1        ;939D51;
 
 InstList_SamusProjectile_Charged_PW_PIW_Left_Right_0:
-    dw $0001                                                             ;939D53;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_0                   ;939D55;
-    db $08,$0C                                                           ;939D57;
-    dw $0000,$0001                                                       ;939D59;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_10                  ;939D5D;
-    db $08,$0C                                                           ;939D5F;
-    dw $0001,$0001                                                       ;939D61;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1                   ;939D65;
-    db $08,$0C                                                           ;939D67;
-    dw $0002,$0001                                                       ;939D69;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_11                  ;939D6D;
-    db $08,$0C                                                           ;939D6F;
-    dw $0003,$0001                                                       ;939D71;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_2                   ;939D75;
-    db $18,$0C                                                           ;939D77;
-    dw $0004,$0001                                                       ;939D79;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_12                  ;939D7D;
-    db $18,$0C                                                           ;939D7F;
-    dw $0005                                                             ;939D81;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_0             ;939D53;
+    db $08,$0C : dw $0000                                                ;939D57;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_10            ;939D59;
+    db $08,$0C : dw $0001                                                ;939D5F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1             ;939D61;
+    db $08,$0C : dw $0002                                                ;939D67;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_11            ;939D69;
+    db $08,$0C : dw $0003                                                ;939D6F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_2             ;939D71;
+    db $18,$0C : dw $0004                                                ;939D77;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_12            ;939D79;
+    db $18,$0C : dw $0005                                                ;939D7F;
 
 InstList_SamusProjectile_Charged_PW_PIW_Left_Right_1:
-    dw $0001                                                             ;939D83;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_5                        ;939D85;
-    db $1C,$0C                                                           ;939D87;
-    dw $0006,$0001                                                       ;939D89;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_1E                       ;939D8D;
-    db $1C,$0C                                                           ;939D8F;
-    dw $0007,$0001                                                       ;939D91;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_6                        ;939D95;
-    db $1C,$0C                                                           ;939D97;
-    dw $0008,$0001                                                       ;939D99;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_1F                       ;939D9D;
-    db $1C,$0C                                                           ;939D9F;
-    dw $0009,$0001                                                       ;939DA1;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_7                        ;939DA5;
-    db $1C,$11                                                           ;939DA7;
-    dw $000A,$0001                                                       ;939DA9;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_20                       ;939DAD;
-    db $1C,$11                                                           ;939DAF;
-    dw $000B,$0001                                                       ;939DB1;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_8                        ;939DB5;
-    db $1C,$13                                                           ;939DB7;
-    dw $000C,$0001                                                       ;939DB9;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_21                       ;939DBD;
-    db $1C,$13                                                           ;939DBF;
-    dw $000D,$0001                                                       ;939DC1;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_9                        ;939DC5;
-    db $1C,$14                                                           ;939DC7;
-    dw $000E,$0001                                                       ;939DC9;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_22                       ;939DCD;
-    db $1C,$14                                                           ;939DCF;
-    dw $000F,$0001                                                       ;939DD1;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_8                        ;939DD5;
-    db $1C,$13                                                           ;939DD7;
-    dw $0010,$0001                                                       ;939DD9;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_21                       ;939DDD;
-    db $1C,$13                                                           ;939DDF;
-    dw $0011,$0001                                                       ;939DE1;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_7                        ;939DE5;
-    db $1C,$11                                                           ;939DE7;
-    dw $0012,$0001                                                       ;939DE9;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_20                       ;939DED;
-    db $1C,$11                                                           ;939DEF;
-    dw $0013,$0001                                                       ;939DF1;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_6                        ;939DF5;
-    db $1C,$0C                                                           ;939DF7;
-    dw $0014,$0001                                                       ;939DF9;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_1F                       ;939DFD;
-    db $1C,$0C                                                           ;939DFF;
-    dw $0015                                                             ;939E01;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_5                  ;939D83;
+    db $1C,$0C : dw $0006                                                ;939D87;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_1E                 ;939D89;
+    db $1C,$0C : dw $0007                                                ;939D8F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_6                  ;939D91;
+    db $1C,$0C : dw $0008                                                ;939D97;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_1F                 ;939D99;
+    db $1C,$0C : dw $0009                                                ;939D9F;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_7                  ;939DA1;
+    db $1C,$11 : dw $000A                                                ;939DA7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_20                 ;939DA9;
+    db $1C,$11 : dw $000B                                                ;939DAF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_8                  ;939DB1;
+    db $1C,$13 : dw $000C                                                ;939DB7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_21                 ;939DB9;
+    db $1C,$13 : dw $000D                                                ;939DBF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_9                  ;939DC1;
+    db $1C,$14 : dw $000E                                                ;939DC7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_22                 ;939DC9;
+    db $1C,$14 : dw $000F                                                ;939DCF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_8                  ;939DD1;
+    db $1C,$13 : dw $0010                                                ;939DD7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_21                 ;939DD9;
+    db $1C,$13 : dw $0011                                                ;939DDF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_7                  ;939DE1;
+    db $1C,$11 : dw $0012                                                ;939DE7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_20                 ;939DE9;
+    db $1C,$11 : dw $0013                                                ;939DEF;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_6                  ;939DF1;
+    db $1C,$0C : dw $0014                                                ;939DF7;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_1F                 ;939DF9;
+    db $1C,$0C : dw $0015                                                ;939DFF;
     dw Instruction_SamusProjectile_GotoY                                 ;939E03;
     dw InstList_SamusProjectile_Charged_PW_PIW_Left_Right_1              ;939E05;
 
 InstList_SamusProjectile_Charged_PW_PIW_DownRight_UpLeft_0:
-    dw $0001                                                             ;939E07;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_8                   ;939E09;
-    db $08,$08                                                           ;939E0B;
-    dw $0000,$0001                                                       ;939E0D;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_18                  ;939E11;
-    db $08,$08                                                           ;939E13;
-    dw $0001,$0001                                                       ;939E15;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_9                   ;939E19;
-    db $08,$08                                                           ;939E1B;
-    dw $0002,$0001                                                       ;939E1D;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_19                  ;939E21;
-    db $08,$08                                                           ;939E23;
-    dw $0003,$0001                                                       ;939E25;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_A                   ;939E29;
-    db $0C,$0C                                                           ;939E2B;
-    dw $0004,$0001                                                       ;939E2D;
-    dw ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1A                  ;939E31;
-    db $0C,$0C                                                           ;939E33;
-    dw $0005                                                             ;939E35;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_8             ;939E07;
+    db $08,$08 : dw $0000                                                ;939E0B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_18            ;939E0D;
+    db $08,$08 : dw $0001                                                ;939E13;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_9             ;939E15;
+    db $08,$08 : dw $0002                                                ;939E1B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_19            ;939E1D;
+    db $08,$08 : dw $0003                                                ;939E23;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_A             ;939E25;
+    db $0C,$0C : dw $0004                                                ;939E2B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_P_PI_PW_PIW_1A            ;939E2D;
+    db $0C,$0C : dw $0005                                                ;939E33;
 
 InstList_SamusProjectile_Charged_PW_PIW_DownRight_UpLeft_1:
-    dw $0001                                                             ;939E37;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_F                        ;939E39;
-    db $0C,$0C                                                           ;939E3B;
-    dw $0006,$0001                                                       ;939E3D;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_23                       ;939E41;
-    db $0C,$0C                                                           ;939E43;
-    dw $0007,$0001                                                       ;939E45;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_10                       ;939E49;
-    db $10,$10                                                           ;939E4B;
-    dw $0008,$0001                                                       ;939E4D;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_24                       ;939E51;
-    db $10,$10                                                           ;939E53;
-    dw $0009,$0001                                                       ;939E55;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_11                       ;939E59;
-    db $11,$11                                                           ;939E5B;
-    dw $000A,$0001                                                       ;939E5D;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_25                       ;939E61;
-    db $11,$11                                                           ;939E63;
-    dw $000B,$0001                                                       ;939E65;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_12                       ;939E69;
-    db $14,$14                                                           ;939E6B;
-    dw $000C,$0001                                                       ;939E6D;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_26                       ;939E71;
-    db $14,$14                                                           ;939E73;
-    dw $000D,$0001                                                       ;939E75;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_13                       ;939E79;
-    db $18,$18                                                           ;939E7B;
-    dw $000E,$0001                                                       ;939E7D;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_27                       ;939E81;
-    db $18,$18                                                           ;939E83;
-    dw $000F,$0001                                                       ;939E85;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_12                       ;939E89;
-    db $14,$14                                                           ;939E8B;
-    dw $0010,$0001                                                       ;939E8D;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_26                       ;939E91;
-    db $14,$14                                                           ;939E93;
-    dw $0011,$0001                                                       ;939E95;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_11                       ;939E99;
-    db $11,$11                                                           ;939E9B;
-    dw $0012,$0001                                                       ;939E9D;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_25                       ;939EA1;
-    db $11,$11                                                           ;939EA3;
-    dw $0013,$0001                                                       ;939EA5;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_10                       ;939EA9;
-    db $10,$10                                                           ;939EAB;
-    dw $0014,$0001                                                       ;939EAD;
-    dw ProjectileFlareSpritemaps_Charged_PW_PIW_24                       ;939EB1;
-    db $10,$10                                                           ;939EB3;
-    dw $0015                                                             ;939EB5;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_F                  ;939E37;
+    db $0C,$0C : dw $0006                                                ;939E3B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_23                 ;939E3D;
+    db $0C,$0C : dw $0007                                                ;939E43;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_10                 ;939E45;
+    db $10,$10 : dw $0008                                                ;939E4B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_24                 ;939E4D;
+    db $10,$10 : dw $0009                                                ;939E53;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_11                 ;939E55;
+    db $11,$11 : dw $000A                                                ;939E5B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_25                 ;939E5D;
+    db $11,$11 : dw $000B                                                ;939E63;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_12                 ;939E65;
+    db $14,$14 : dw $000C                                                ;939E6B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_26                 ;939E6D;
+    db $14,$14 : dw $000D                                                ;939E73;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_13                 ;939E75;
+    db $18,$18 : dw $000E                                                ;939E7B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_27                 ;939E7D;
+    db $18,$18 : dw $000F                                                ;939E83;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_12                 ;939E85;
+    db $14,$14 : dw $0010                                                ;939E8B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_26                 ;939E8D;
+    db $14,$14 : dw $0011                                                ;939E93;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_11                 ;939E95;
+    db $11,$11 : dw $0012                                                ;939E9B;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_25                 ;939E9D;
+    db $11,$11 : dw $0013                                                ;939EA3;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_10                 ;939EA5;
+    db $10,$10 : dw $0014                                                ;939EAB;
+    dw $0001,ProjectileFlareSpritemaps_Charged_PW_PIW_24                 ;939EAD;
+    db $10,$10 : dw $0015                                                ;939EB3;
     dw Instruction_SamusProjectile_GotoY                                 ;939EB7;
     dw InstList_SamusProjectile_Charged_PW_PIW_DownRight_UpLeft_1        ;939EB9;
 
 InstList_SamusProjectile_Missiles_Up:
-    dw $000F                                                             ;939EBB;
-    dw ProjectileFlareSpritemaps_Missile_2                               ;939EBD;
-    db $04,$04                                                           ;939EBF;
-    dw $0000                                                             ;939EC1;
+    dw $000F,ProjectileFlareSpritemaps_Missile_2                         ;939EBB;
+    db $04,$04 : dw $0000                                                ;939EBF;
     dw Instruction_SamusProjectile_GotoY                                 ;939EC3;
     dw InstList_SamusProjectile_Missiles_Up                              ;939EC5;
 
 InstList_SamusProjectile_Missiles_UpRight:
-    dw $000F                                                             ;939EC7;
-    dw ProjectileFlareSpritemaps_Missile_3                               ;939EC9;
-    db $04,$04                                                           ;939ECB;
-    dw $0000                                                             ;939ECD;
+    dw $000F,ProjectileFlareSpritemaps_Missile_3                         ;939EC7;
+    db $04,$04 : dw $0000                                                ;939ECB;
     dw Instruction_SamusProjectile_GotoY                                 ;939ECF;
     dw InstList_SamusProjectile_Missiles_UpRight                         ;939ED1;
 
 InstList_SamusProjectile_Missiles_Right:
-    dw $000F                                                             ;939ED3;
-    dw ProjectileFlareSpritemaps_Missile_4                               ;939ED5;
-    db $04,$04                                                           ;939ED7;
-    dw $0000                                                             ;939ED9;
+    dw $000F,ProjectileFlareSpritemaps_Missile_4                         ;939ED3;
+    db $04,$04 : dw $0000                                                ;939ED7;
     dw Instruction_SamusProjectile_GotoY                                 ;939EDB;
     dw InstList_SamusProjectile_Missiles_Right                           ;939EDD;
 
 InstList_SamusProjectile_Missiles_DownRight:
-    dw $000F                                                             ;939EDF;
-    dw ProjectileFlareSpritemaps_Missile_5                               ;939EE1;
-    db $04,$04                                                           ;939EE3;
-    dw $0000                                                             ;939EE5;
+    dw $000F,ProjectileFlareSpritemaps_Missile_5                         ;939EDF;
+    db $04,$04 : dw $0000                                                ;939EE3;
     dw Instruction_SamusProjectile_GotoY                                 ;939EE7;
     dw InstList_SamusProjectile_Missiles_DownRight                       ;939EE9;
 
 InstList_SamusProjectile_Missiles_Down:
-    dw $000F                                                             ;939EEB;
-    dw ProjectileFlareSpritemaps_Missile_6                               ;939EED;
-    db $04,$04                                                           ;939EEF;
-    dw $0000                                                             ;939EF1;
+    dw $000F,ProjectileFlareSpritemaps_Missile_6                         ;939EEB;
+    db $04,$04 : dw $0000                                                ;939EEF;
     dw Instruction_SamusProjectile_GotoY                                 ;939EF3;
     dw InstList_SamusProjectile_Missiles_Down                            ;939EF5;
 
 InstList_SamusProjectile_Missiles_DownLeft:
-    dw $000F                                                             ;939EF7;
-    dw ProjectileFlareSpritemaps_Missile_7                               ;939EF9;
-    db $04,$04                                                           ;939EFB;
-    dw $0000                                                             ;939EFD;
+    dw $000F,ProjectileFlareSpritemaps_Missile_7                         ;939EF7;
+    db $04,$04 : dw $0000                                                ;939EFB;
     dw Instruction_SamusProjectile_GotoY                                 ;939EFF;
     dw InstList_SamusProjectile_Missiles_DownLeft                        ;939F01;
 
 InstList_SamusProjectile_Missiles_Left:
-    dw $000F                                                             ;939F03;
-    dw ProjectileFlareSpritemaps_Missile_0                               ;939F05;
-    db $04,$04                                                           ;939F07;
-    dw $0000                                                             ;939F09;
+    dw $000F,ProjectileFlareSpritemaps_Missile_0                         ;939F03;
+    db $04,$04 : dw $0000                                                ;939F07;
     dw Instruction_SamusProjectile_GotoY                                 ;939F0B;
     dw InstList_SamusProjectile_Missiles_Left                            ;939F0D;
 
 InstList_SamusProjectile_Missiles_UpLeft:
-    dw $000F                                                             ;939F0F;
-    dw ProjectileFlareSpritemaps_Missile_1                               ;939F11;
-    db $04,$04                                                           ;939F13;
-    dw $0000                                                             ;939F15;
+    dw $000F,ProjectileFlareSpritemaps_Missile_1                         ;939F0F;
+    db $04,$04 : dw $0000                                                ;939F13;
     dw Instruction_SamusProjectile_GotoY                                 ;939F17;
     dw InstList_SamusProjectile_Missiles_UpLeft                          ;939F19;
 
 InstList_SamusProjectile_SuperMissiles_Up:
-    dw $000F                                                             ;939F1B;
-    dw ProjectileFlareSpritemaps_SuperMissile_2                          ;939F1D;
-    db $08,$08                                                           ;939F1F;
-    dw $0000                                                             ;939F21;
+    dw $000F,ProjectileFlareSpritemaps_SuperMissile_2                    ;939F1B;
+    db $08,$08 : dw $0000                                                ;939F1F;
     dw Instruction_SamusProjectile_GotoY                                 ;939F23;
     dw InstList_SamusProjectile_SuperMissiles_Up                         ;939F25;
 
 InstList_SamusProjectile_SuperMissiles_UpRight:
-    dw $000F                                                             ;939F27;
-    dw ProjectileFlareSpritemaps_SuperMissile_3                          ;939F29;
-    db $08,$08                                                           ;939F2B;
-    dw $0000                                                             ;939F2D;
+    dw $000F,ProjectileFlareSpritemaps_SuperMissile_3                    ;939F27;
+    db $08,$08 : dw $0000                                                ;939F2B;
     dw Instruction_SamusProjectile_GotoY                                 ;939F2F;
     dw InstList_SamusProjectile_SuperMissiles_UpRight                    ;939F31;
 
 InstList_SamusProjectile_SuperMissiles_Right:
-    dw $000F                                                             ;939F33;
-    dw ProjectileFlareSpritemaps_SuperMissile_4                          ;939F35;
-    db $08,$08                                                           ;939F37;
-    dw $0000                                                             ;939F39;
+    dw $000F,ProjectileFlareSpritemaps_SuperMissile_4                    ;939F33;
+    db $08,$08 : dw $0000                                                ;939F37;
     dw Instruction_SamusProjectile_GotoY                                 ;939F3B;
     dw InstList_SamusProjectile_SuperMissiles_Right                      ;939F3D;
 
 InstList_SamusProjectile_SuperMissiles_DownRight:
-    dw $000F                                                             ;939F3F;
-    dw ProjectileFlareSpritemaps_SuperMissile_5                          ;939F41;
-    db $08,$08                                                           ;939F43;
-    dw $0000                                                             ;939F45;
+    dw $000F,ProjectileFlareSpritemaps_SuperMissile_5                    ;939F3F;
+    db $08,$08 : dw $0000                                                ;939F43;
     dw Instruction_SamusProjectile_GotoY                                 ;939F47;
     dw InstList_SamusProjectile_SuperMissiles_DownRight                  ;939F49;
 
 InstList_SamusProjectile_SuperMissiles_Down:
-    dw $000F                                                             ;939F4B;
-    dw ProjectileFlareSpritemaps_SuperMissile_6                          ;939F4D;
-    db $08,$08                                                           ;939F4F;
-    dw $0000                                                             ;939F51;
+    dw $000F,ProjectileFlareSpritemaps_SuperMissile_6                    ;939F4B;
+    db $08,$08 : dw $0000                                                ;939F4F;
     dw Instruction_SamusProjectile_GotoY                                 ;939F53;
     dw InstList_SamusProjectile_SuperMissiles_Down                       ;939F55;
 
 InstList_SamusProjectile_SuperMissiles_DownLeft:
-    dw $000F                                                             ;939F57;
-    dw ProjectileFlareSpritemaps_SuperMissile_7                          ;939F59;
-    db $08,$08                                                           ;939F5B;
-    dw $0000                                                             ;939F5D;
+    dw $000F,ProjectileFlareSpritemaps_SuperMissile_7                    ;939F57;
+    db $08,$08 : dw $0000                                                ;939F5B;
     dw Instruction_SamusProjectile_GotoY                                 ;939F5F;
     dw InstList_SamusProjectile_SuperMissiles_DownLeft                   ;939F61;
 
 InstList_SamusProjectile_SuperMissiles_Left:
-    dw $000F                                                             ;939F63;
-    dw ProjectileFlareSpritemaps_SuperMissile_0                          ;939F65;
-    db $08,$08                                                           ;939F67;
-    dw $0000                                                             ;939F69;
+    dw $000F,ProjectileFlareSpritemaps_SuperMissile_0                    ;939F63;
+    db $08,$08 : dw $0000                                                ;939F67;
     dw Instruction_SamusProjectile_GotoY                                 ;939F6B;
     dw InstList_SamusProjectile_SuperMissiles_Left                       ;939F6D;
 
 InstList_SamusProjectile_SuperMissiles_UpLeft:
-    dw $000F                                                             ;939F6F;
-    dw ProjectileFlareSpritemaps_SuperMissile_1                          ;939F71;
-    db $08,$08                                                           ;939F73;
-    dw $0000                                                             ;939F75;
+    dw $000F,ProjectileFlareSpritemaps_SuperMissile_1                    ;939F6F;
+    db $08,$08 : dw $0000                                                ;939F73;
     dw Instruction_SamusProjectile_GotoY                                 ;939F77;
     dw InstList_SamusProjectile_SuperMissiles_UpLeft                     ;939F79;
 
-InstList_SamusProjectile_SuperMissileLink_:
-    dw $000F                                                             ;939F7B;
-    dw Spritemap_Nothing_93A117                                          ;939F7D;
-    db $08,$08                                                           ;939F7F;
-    dw $0000                                                             ;939F81;
+InstList_SamusProjectile_SuperMissileLink:
+    dw $000F,Spritemap_Nothing_93A117                                    ;939F7B;
+    db $08,$08 : dw $0000                                                ;939F7F;
     dw Instruction_SamusProjectile_GotoY                                 ;939F83;
-    dw InstList_SamusProjectile_SuperMissileLink_                        ;939F85;
+    dw InstList_SamusProjectile_SuperMissileLink                         ;939F85;
 
 InstList_SamusProjectile_PowerBomb:
-    dw $0005                                                             ;939F87;
-    dw ProjectileFlareSpritemaps_PowerBomb_0                             ;939F89;
-    db $04,$04                                                           ;939F8B;
-    dw $0000,$0005                                                       ;939F8D;
-    dw ProjectileFlareSpritemaps_PowerBomb_1                             ;939F91;
-    db $04,$04                                                           ;939F93;
-    dw $0000,$0005                                                       ;939F95;
-    dw ProjectileFlareSpritemaps_PowerBomb_2                             ;939F99;
-    db $04,$04                                                           ;939F9B;
-    dw $0000                                                             ;939F9D;
+    dw $0005,ProjectileFlareSpritemaps_PowerBomb_0                       ;939F87;
+    db $04,$04 : dw $0000                                                ;939F8B;
+    dw $0005,ProjectileFlareSpritemaps_PowerBomb_1                       ;939F8D;
+    db $04,$04 : dw $0000                                                ;939F93;
+    dw $0005,ProjectileFlareSpritemaps_PowerBomb_2                       ;939F95;
+    db $04,$04 : dw $0000                                                ;939F9B;
     dw Instruction_SamusProjectile_GotoY                                 ;939F9F;
     dw InstList_SamusProjectile_PowerBomb                                ;939FA1;
 
 InstList_SamusProjectile_PowerBomb_FastAnimation:
     dw $0001                                                             ;939FA3;
     dw ProjectileFlareSpritemaps_PowerBomb_0                             ;939FA5;
-    db $04,$04                                                           ;939FA7;
-    dw $0000,$0001                                                       ;939FA9;
-    dw ProjectileFlareSpritemaps_PowerBomb_1                             ;939FAD;
-    db $04,$04                                                           ;939FAF;
-    dw $0000,$0001                                                       ;939FB1;
-    dw ProjectileFlareSpritemaps_PowerBomb_2                             ;939FB5;
-    db $04,$04                                                           ;939FB7;
-    dw $0000                                                             ;939FB9;
+    db $04,$04 : dw $0000                                                ;939FA7;
+    dw $0001,ProjectileFlareSpritemaps_PowerBomb_1                       ;939FA9;
+    db $04,$04 : dw $0000                                                ;939FAF;
+    dw $0001,ProjectileFlareSpritemaps_PowerBomb_2                       ;939FB1;
+    db $04,$04 : dw $0000                                                ;939FB7;
     dw Instruction_SamusProjectile_GotoY                                 ;939FBB;
     dw InstList_SamusProjectile_PowerBomb_FastAnimation                  ;939FBD;
 
 InstList_SamusProjectile_Bomb:
-    dw $0005                                                             ;939FBF;
-    dw ProjectileFlareSpritemaps_Bomb_0                                  ;939FC1;
-    db $04,$04                                                           ;939FC3;
-    dw $0000,$0005                                                       ;939FC5;
-    dw ProjectileFlareSpritemaps_Bomb_1                                  ;939FC9;
-    db $04,$04                                                           ;939FCB;
-    dw $0000,$0005                                                       ;939FCD;
-    dw ProjectileFlareSpritemaps_Bomb_2                                  ;939FD1;
-    db $04,$04                                                           ;939FD3;
-    dw $0000,$0005                                                       ;939FD5;
-    dw ProjectileFlareSpritemaps_Bomb_3                                  ;939FD9;
-    db $04,$04                                                           ;939FDB;
-    dw $0000                                                             ;939FDD;
+    dw $0005,ProjectileFlareSpritemaps_Bomb_0                            ;939FBF;
+    db $04,$04 : dw $0000                                                ;939FC3;
+    dw $0005,ProjectileFlareSpritemaps_Bomb_1                            ;939FC5;
+    db $04,$04 : dw $0000                                                ;939FCB;
+    dw $0005,ProjectileFlareSpritemaps_Bomb_2                            ;939FCD;
+    db $04,$04 : dw $0000                                                ;939FD3;
+    dw $0005,ProjectileFlareSpritemaps_Bomb_3                            ;939FD5;
+    db $04,$04 : dw $0000                                                ;939FDB;
     dw Instruction_SamusProjectile_GotoY                                 ;939FDF;
     dw InstList_SamusProjectile_Bomb                                     ;939FE1;
 
 InstList_SamusProjectile_Bomb_FastAnimation:
-    dw $0001                                                             ;939FE3;
-    dw ProjectileFlareSpritemaps_Bomb_0                                  ;939FE5;
-    db $04,$04                                                           ;939FE7;
-    dw $0000,$0001                                                       ;939FE9;
-    dw ProjectileFlareSpritemaps_Bomb_1                                  ;939FED;
-    db $04,$04                                                           ;939FEF;
-    dw $0000,$0001                                                       ;939FF1;
-    dw ProjectileFlareSpritemaps_Bomb_2                                  ;939FF5;
-    db $04,$04                                                           ;939FF7;
-    dw $0000,$0001                                                       ;939FF9;
-    dw ProjectileFlareSpritemaps_Bomb_3                                  ;939FFD;
-    db $04,$04                                                           ;939FFF;
-    dw $0000                                                             ;93A001;
+    dw $0001,ProjectileFlareSpritemaps_Bomb_0                            ;939FE3;
+    db $04,$04 : dw $0000                                                ;939FE7;
+    dw $0001,ProjectileFlareSpritemaps_Bomb_1                            ;939FE9;
+    db $04,$04 : dw $0000                                                ;939FEF;
+    dw $0001,ProjectileFlareSpritemaps_Bomb_2                            ;939FF1;
+    db $04,$04 : dw $0000                                                ;939FF7;
+    dw $0001,ProjectileFlareSpritemaps_Bomb_3                            ;939FF9;
+    db $04,$04 : dw $0000                                                ;939FFF;
     dw Instruction_SamusProjectile_GotoY                                 ;93A003;
     dw InstList_SamusProjectile_Bomb_FastAnimation                       ;93A005;
 
 InstList_SamusProjectile_BeamExplosion:
-    dw $0003                                                             ;93A007;
-    dw ProjectileFlareSpritemaps_BeamExplosion_0                         ;93A009;
-    db $00,$00                                                           ;93A00B;
-    dw $0000,$0003                                                       ;93A00D;
-    dw ProjectileFlareSpritemaps_BeamExplosion_1                         ;93A011;
-    db $00,$00                                                           ;93A013;
-    dw $0000,$0003                                                       ;93A015;
-    dw ProjectileFlareSpritemaps_BeamExplosion_2                         ;93A019;
-    db $00,$00                                                           ;93A01B;
-    dw $0000,$0003                                                       ;93A01D;
-    dw ProjectileFlareSpritemaps_BeamExplosion_3                         ;93A021;
-    db $00,$00                                                           ;93A023;
-    dw $0000,$0003                                                       ;93A025;
-    dw ProjectileFlareSpritemaps_BeamExplosion_4                         ;93A029;
-    db $00,$00                                                           ;93A02B;
-    dw $0000,$0003                                                       ;93A02D;
-    dw ProjectileFlareSpritemaps_BeamExplosion_5                         ;93A031;
-    db $00,$00                                                           ;93A033;
-    dw $0000                                                             ;93A035;
+    dw $0003,ProjectileFlareSpritemaps_BeamExplosion_0                   ;93A007;
+    db $00,$00 : dw $0000                                                ;93A00B;
+    dw $0003,ProjectileFlareSpritemaps_BeamExplosion_1                   ;93A00D;
+    db $00,$00 : dw $0000                                                ;93A013;
+    dw $0003,ProjectileFlareSpritemaps_BeamExplosion_2                   ;93A015;
+    db $00,$00 : dw $0000                                                ;93A01B;
+    dw $0003,ProjectileFlareSpritemaps_BeamExplosion_3                   ;93A01D;
+    db $00,$00 : dw $0000                                                ;93A023;
+    dw $0003,ProjectileFlareSpritemaps_BeamExplosion_4                   ;93A025;
+    db $00,$00 : dw $0000                                                ;93A02B;
+    dw $0003,ProjectileFlareSpritemaps_BeamExplosion_5                   ;93A02D;
+    db $00,$00 : dw $0000                                                ;93A033;
     dw Instruction_SamusProjectile_Delete                                ;93A037;
 
 InstList_SamusProjectile_MissileExplosion:
-    dw $0003                                                             ;93A039;
-    dw ProjectileFlareSpritemaps_MissileExplosion_0                      ;93A03B;
-    db $08,$08                                                           ;93A03D;
-    dw $0000,$0003                                                       ;93A03F;
-    dw ProjectileFlareSpritemaps_MissileExplosion_1                      ;93A043;
-    db $08,$08                                                           ;93A045;
-    dw $0000,$0003                                                       ;93A047;
-    dw ProjectileFlareSpritemaps_MissileExplosion_2                      ;93A04B;
-    db $08,$08                                                           ;93A04D;
-    dw $0000,$0003                                                       ;93A04F;
-    dw ProjectileFlareSpritemaps_MissileExplosion_3                      ;93A053;
-    db $08,$08                                                           ;93A055;
-    dw $0000,$0003                                                       ;93A057;
-    dw ProjectileFlareSpritemaps_MissileExplosion_4                      ;93A05B;
-    db $08,$08                                                           ;93A05D;
-    dw $0000,$0003                                                       ;93A05F;
-    dw ProjectileFlareSpritemaps_MissileExplosion_5                      ;93A063;
-    db $08,$08                                                           ;93A065;
-    dw $0000                                                             ;93A067;
+    dw $0003,ProjectileFlareSpritemaps_MissileExplosion_0                ;93A039;
+    db $08,$08 : dw $0000                                                ;93A03D;
+    dw $0003,ProjectileFlareSpritemaps_MissileExplosion_1                ;93A03F;
+    db $08,$08 : dw $0000                                                ;93A045;
+    dw $0003,ProjectileFlareSpritemaps_MissileExplosion_2                ;93A047;
+    db $08,$08 : dw $0000                                                ;93A04D;
+    dw $0003,ProjectileFlareSpritemaps_MissileExplosion_3                ;93A04F;
+    db $08,$08 : dw $0000                                                ;93A055;
+    dw $0003,ProjectileFlareSpritemaps_MissileExplosion_4                ;93A057;
+    db $08,$08 : dw $0000                                                ;93A05D;
+    dw $0003,ProjectileFlareSpritemaps_MissileExplosion_5                ;93A05F;
+    db $08,$08 : dw $0000                                                ;93A065;
     dw Instruction_SamusProjectile_Delete                                ;93A069;
 
 InstList_SamusProjectile_BombExplosion:
-    dw $0002                                                             ;93A06B;
-    dw ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_0               ;93A06D;
-    db $08,$08                                                           ;93A06F;
-    dw $0000,$0002                                                       ;93A071;
-    dw ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_1               ;93A075;
-    db $0C,$0C                                                           ;93A077;
-    dw $0000,$0002                                                       ;93A079;
-    dw ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_2               ;93A07D;
-    db $10,$10                                                           ;93A07F;
-    dw $0000,$0002                                                       ;93A081;
-    dw ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_3               ;93A085;
-    db $10,$10                                                           ;93A087;
-    dw $0000,$0002                                                       ;93A089;
-    dw ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_4               ;93A08D;
-    db $10,$10                                                           ;93A08F;
-    dw $0000                                                             ;93A091;
+    dw $0002,ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_0         ;93A06B;
+    db $08,$08 : dw $0000                                                ;93A06F;
+    dw $0002,ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_1         ;93A071;
+    db $0C,$0C : dw $0000                                                ;93A077;
+    dw $0002,ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_2         ;93A079;
+    db $10,$10 : dw $0000                                                ;93A07F;
+    dw $0002,ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_3         ;93A081;
+    db $10,$10 : dw $0000                                                ;93A087;
+    dw $0002,ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_4         ;93A089;
+    db $10,$10 : dw $0000                                                ;93A08F;
     dw Instruction_SamusProjectile_Delete                                ;93A093;
 
 InstList_SamusProjectile_PlasmaSBA:
-    dw $0002                                                             ;93A095;
-    dw ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_0               ;93A097;
-    db $08,$08                                                           ;93A099;
-    dw $0000,$0002                                                       ;93A09B;
-    dw ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_1               ;93A09F;
-    db $0C,$0C                                                           ;93A0A1;
-    dw $0000,$0002                                                       ;93A0A3;
-    dw ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_2               ;93A0A7;
-    db $10,$10                                                           ;93A0A9;
-    dw $0000,$0002                                                       ;93A0AB;
-    dw ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_3               ;93A0AF;
-    db $10,$10                                                           ;93A0B1;
-    dw $0000,$0002                                                       ;93A0B3;
-    dw ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_4               ;93A0B7;
-    db $10,$10                                                           ;93A0B9;
-    dw $0000                                                             ;93A0BB;
+    dw $0002,ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_0         ;93A095;
+    db $08,$08 : dw $0000                                                ;93A099;
+    dw $0002,ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_1         ;93A09B;
+    db $0C,$0C : dw $0000                                                ;93A0A1;
+    dw $0002,ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_2         ;93A0A3;
+    db $10,$10 : dw $0000                                                ;93A0A9;
+    dw $0002,ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_3         ;93A0AB;
+    db $10,$10 : dw $0000                                                ;93A0B1;
+    dw $0002,ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_4         ;93A0B3;
+    db $10,$10 : dw $0000                                                ;93A0B9;
     dw Instruction_SamusProjectile_GotoY                                 ;93A0BD;
     dw InstList_SamusProjectile_PlasmaSBA                                ;93A0BF;
 
 InstList_SamusProjectile_SuperMissileExplosion:
-    dw $0005                                                             ;93A0C1;
-    dw ProjectileFlareSpritemaps_SuperMissileExplosion_0                 ;93A0C3;
-    db $08,$08                                                           ;93A0C5;
-    dw $0000,$0005                                                       ;93A0C7;
-    dw ProjectileFlareSpritemaps_SuperMissileExplosion_1                 ;93A0CB;
-    db $0C,$0C                                                           ;93A0CD;
-    dw $0000,$0005                                                       ;93A0CF;
-    dw ProjectileFlareSpritemaps_SuperMissileExplosion_2                 ;93A0D3;
-    db $10,$10                                                           ;93A0D5;
-    dw $0000,$0005                                                       ;93A0D7;
-    dw ProjectileFlareSpritemaps_SuperMissileExplosion_3                 ;93A0DB;
-    db $10,$10                                                           ;93A0DD;
-    dw $0000,$0005                                                       ;93A0DF;
-    dw ProjectileFlareSpritemaps_SuperMissileExplosion_4                 ;93A0E3;
-    db $10,$10                                                           ;93A0E5;
-    dw $0000,$0005                                                       ;93A0E7;
-    dw ProjectileFlareSpritemaps_SuperMissileExplosion_5                 ;93A0EB;
-    db $10,$10                                                           ;93A0ED;
-    dw $0000                                                             ;93A0EF;
+    dw $0005,ProjectileFlareSpritemaps_SuperMissileExplosion_0           ;93A0C1;
+    db $08,$08 : dw $0000                                                ;93A0C5;
+    dw $0005,ProjectileFlareSpritemaps_SuperMissileExplosion_1           ;93A0C7;
+    db $0C,$0C : dw $0000                                                ;93A0CD;
+    dw $0005,ProjectileFlareSpritemaps_SuperMissileExplosion_2           ;93A0CF;
+    db $10,$10 : dw $0000                                                ;93A0D5;
+    dw $0005,ProjectileFlareSpritemaps_SuperMissileExplosion_3           ;93A0D7;
+    db $10,$10 : dw $0000                                                ;93A0DD;
+    dw $0005,ProjectileFlareSpritemaps_SuperMissileExplosion_4           ;93A0DF;
+    db $10,$10 : dw $0000                                                ;93A0E5;
+    dw $0005,ProjectileFlareSpritemaps_SuperMissileExplosion_5           ;93A0E7;
+    db $10,$10 : dw $0000                                                ;93A0ED;
     dw Instruction_SamusProjectile_Delete                                ;93A0F1;
 
 UNUSED_InstList_SamusProjectile_Projectile25_93A0F3:
-    dw $0002                                                             ;93A0F3;
-    dw Spritemap_Nothing_93A117                                          ;93A0F5;
-    db $10,$20                                                           ;93A0F7;
-    dw $0000,$0002                                                       ;93A0F9;
-    dw Spritemap_Nothing_93A117                                          ;93A0FD;
-    db $10,$20                                                           ;93A0FF;
-    dw $0001,$0002                                                       ;93A101;
-    dw Spritemap_Nothing_93A117                                          ;93A105;
-    db $10,$20                                                           ;93A107;
-    dw $0002,$0002                                                       ;93A109;
-    dw Spritemap_Nothing_93A117                                          ;93A10D;
-    db $10,$20                                                           ;93A10F;
-    dw $0003                                                             ;93A111;
+    dw $0002,Spritemap_Nothing_93A117                                    ;93A0F3;
+    db $10,$20 : dw $0000                                                ;93A0F7;
+    dw $0002,Spritemap_Nothing_93A117                                    ;93A0F9;
+    db $10,$20 : dw $0001                                                ;93A0FF;
+    dw $0002,Spritemap_Nothing_93A117                                    ;93A101;
+    db $10,$20 : dw $0002                                                ;93A107;
+    dw $0002,Spritemap_Nothing_93A117                                    ;93A109;
+    db $10,$20 : dw $0003                                                ;93A10F;
     dw Instruction_SamusProjectile_GotoY                                 ;93A113;
     dw UNUSED_InstList_SamusProjectile_Projectile25_93A0F3               ;93A115;
 
@@ -4087,74 +3156,55 @@ Spritemap_Nothing_93A117:
     dw $0000                                                             ;93A117;
 
 InstList_SamusProjectile_ShinesparkEcho:
-    dw $0002                                                             ;93A119;
-    dw Spritemap_Nothing_93A117                                          ;93A11B;
-    db $20,$20                                                           ;93A11D;
-    dw $0000,$0002                                                       ;93A11F;
-    dw Spritemap_Nothing_93A117                                          ;93A123;
-    db $20,$20                                                           ;93A125;
-    dw $0001,$0002                                                       ;93A127;
-    dw Spritemap_Nothing_93A117                                          ;93A12B;
-    db $20,$20                                                           ;93A12D;
-    dw $0002,$0002                                                       ;93A12F;
-    dw Spritemap_Nothing_93A117                                          ;93A133;
-    db $20,$20                                                           ;93A135;
-    dw $0003                                                             ;93A137;
+    dw $0002,Spritemap_Nothing_93A117                                    ;93A119;
+    db $20,$20 : dw $0000                                                ;93A11D;
+    dw $0002,Spritemap_Nothing_93A117                                    ;93A11F;
+    db $20,$20 : dw $0001                                                ;93A125;
+    dw $0002,Spritemap_Nothing_93A117                                    ;93A127;
+    db $20,$20 : dw $0002                                                ;93A12D;
+    dw $0002,Spritemap_Nothing_93A117                                    ;93A12F;
+    db $20,$20 : dw $0003                                                ;93A135;
     dw Instruction_SamusProjectile_GotoY                                 ;93A139;
     dw InstList_SamusProjectile_ShinesparkEcho                           ;93A13B;
 
 InstList_SamusProjectile_SpazerSBATrail_0:
-    dw $0002                                                             ;93A13D;
-    dw Spritemap_Nothing_93A117                                          ;93A13F;
-    db $04,$08                                                           ;93A141;
-    dw $0000,$0002                                                       ;93A143;
-    dw Spritemap_Nothing_93A117                                          ;93A147;
-    db $0C,$08                                                           ;93A149;
-    dw $0001                                                             ;93A14B;
+    dw $0002,Spritemap_Nothing_93A117                                    ;93A13D;
+    db $04,$08 : dw $0000                                                ;93A141;
+    dw $0002,Spritemap_Nothing_93A117                                    ;93A143;
+    db $0C,$08 : dw $0001                                                ;93A149;
 
 InstList_SamusProjectile_SpazerSBATrail_1:
-    dw $0002                                                             ;93A14D;
-    dw Spritemap_Nothing_93A117                                          ;93A14F;
-    db $14,$08                                                           ;93A151;
-    dw $0002                                                             ;93A153;
+    dw $0002,Spritemap_Nothing_93A117                                    ;93A14D;
+    db $14,$08 : dw $0002                                                ;93A151;
     dw Instruction_SamusProjectile_GotoY                                 ;93A155;
     dw InstList_SamusProjectile_SpazerSBATrail_1                         ;93A157;
 
 InstList_SamusProjectile_WaveSBA:
-    dw $0008                                                             ;93A159;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_0                   ;93A15B;
-    db $04,$04                                                           ;93A15D;
-    dw $0000,$0008                                                       ;93A15F;
-    dw ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1                   ;93A163;
-    db $04,$04                                                           ;93A165;
-    dw $0001                                                             ;93A167;
+    dw $0008,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_0             ;93A159;
+    db $04,$04 : dw $0000                                                ;93A15D;
+    dw $0008,ProjectileFlareSpritemaps_ChargedWave_WaveSBA_1             ;93A15F;
+    db $04,$04 : dw $0001                                                ;93A165;
     dw Instruction_SamusProjectile_GotoY                                 ;93A169;
     dw InstList_SamusProjectile_WaveSBA                                  ;93A16B;
 
 UNUSED_InstList_SamusProjectile_Projectile27_93A16D:
-    dw $0003                                                             ;93A16D;
-    dw ProjectileFlareSpritemaps_BeamExplosion_0                         ;93A16F;
-    db $00,$00                                                           ;93A171;
-    dw $0000,$0003                                                       ;93A173;
-    dw ProjectileFlareSpritemaps_BeamExplosion_1                         ;93A177;
-    db $00,$00                                                           ;93A179;
-    dw $0000,$0003                                                       ;93A17B;
-    dw ProjectileFlareSpritemaps_BeamExplosion_2                         ;93A17F;
-    db $00,$00                                                           ;93A181;
-    dw $0000,$0003                                                       ;93A183;
-    dw ProjectileFlareSpritemaps_BeamExplosion_3                         ;93A187;
-    db $00,$00                                                           ;93A189;
-    dw $0000,$0003                                                       ;93A18B;
-    dw ProjectileFlareSpritemaps_BeamExplosion_4                         ;93A18F;
-    db $00,$00                                                           ;93A191;
-    dw $0000,$0003                                                       ;93A193;
-    dw ProjectileFlareSpritemaps_BeamExplosion_5                         ;93A197;
-    db $00,$00                                                           ;93A199;
-    dw $0000                                                             ;93A19B;
+    dw $0003,ProjectileFlareSpritemaps_BeamExplosion_0                   ;93A16D;
+    db $00,$00 : dw $0000                                                ;93A171;
+    dw $0003,ProjectileFlareSpritemaps_BeamExplosion_1                   ;93A173;
+    db $00,$00 : dw $0000                                                ;93A179;
+    dw $0003,ProjectileFlareSpritemaps_BeamExplosion_2                   ;93A17B;
+    db $00,$00 : dw $0000                                                ;93A181;
+    dw $0003,ProjectileFlareSpritemaps_BeamExplosion_3                   ;93A183;
+    db $00,$00 : dw $0000                                                ;93A189;
+    dw $0003,ProjectileFlareSpritemaps_BeamExplosion_4                   ;93A18B;
+    db $00,$00 : dw $0000                                                ;93A191;
+    dw $0003,ProjectileFlareSpritemaps_BeamExplosion_5                   ;93A193;
+    db $00,$00 : dw $0000                                                ;93A199;
     dw Instruction_SamusProjectile_GotoY                                 ;93A19D;
     dw UNUSED_InstList_SamusProjectile_Projectile27_93A16D               ;93A19F;
 
 FlareSpritemapPointers:
+; Index 3Eh is used for a shinespark windup effect by unused function UNUSED_DrawShinesparkWindupEffectSprite_93F5E2
     dw ProjectileFlareSpritemaps_Flare_Charge_Hyper_Grapple_0            ;93A1A1;
     dw ProjectileFlareSpritemaps_Flare_Charge_Hyper_Grapple_1            ;93A1A3;
     dw ProjectileFlareSpritemaps_Flare_Charge_Hyper_Grapple_0            ;93A1A5;
@@ -4222,10 +3272,15 @@ FlareSpritemapPointers:
     dw ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_4               ;93A221;
     dw ProjectileFlareSpritemaps_BombExplosion_PlasmaSBA_5               ;93A223;
 
-FlareSpritemapTable_IndexOffsets_facingRight:
-    dw $0000,$001E,$0024                                                 ;93A225;
 
-FlareSpritemapTable_IndexOffsets_facingLeft:
+FlareSpritemapTable_IndexOffsets:
+;        _______________ Flare (charge beam / hyper beam / grapple beam)
+;       |      _________ Flare slow sparks (charge beam / hyper beam)
+;       |     |      ___ Flare fast sparks (charge beam / hyper beam)
+;       |     |     |
+  .facingRight
+    dw $0000,$001E,$0024                                                 ;93A225;
+  .facingLeft
     dw $0000,$002A,$0030                                                 ;93A22B;
 
 if !FEATURE_KEEP_UNREFERENCED
