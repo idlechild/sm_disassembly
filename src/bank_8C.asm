@@ -2922,7 +2922,7 @@ EndingSequenceSpritemaps_COMPLETEDS:
     %spritemapEntry(0, $1A8, $10, 0, 0, 3, 0, $122)
 
 
-EndingSequenceSpritemaps_COMPLETESU:
+EndingSequenceSpritemaps_COMPLETEDSU:
     dw $0016                                                             ;8CADA5;
     %spritemapEntry(0, $00, $18, 0, 0, 3, 0, $154)
     %spritemapEntry(0, $00, $10, 0, 0, 3, 0, $144)
@@ -2947,7 +2947,7 @@ EndingSequenceSpritemaps_COMPLETESU:
     %spritemapEntry(0, $1A8, $18, 0, 0, 3, 0, $132)
     %spritemapEntry(0, $1A8, $10, 0, 0, 3, 0, $122)
 
-EndingSequenceSpritemaps_COMPLETESUC:
+EndingSequenceSpritemaps_COMPLETEDSUC:
     dw $0018                                                             ;8CAE15;
     %spritemapEntry(0, $08, $18, 0, 0, 3, 0, $132)
     %spritemapEntry(0, $08, $10, 0, 0, 3, 0, $122)
@@ -2974,7 +2974,7 @@ EndingSequenceSpritemaps_COMPLETESUC:
     %spritemapEntry(0, $1A8, $18, 0, 0, 3, 0, $132)
     %spritemapEntry(0, $1A8, $10, 0, 0, 3, 0, $122)
 
-EndingSequenceSpritemaps_COMPLETESUCC:
+EndingSequenceSpritemaps_COMPLETEDSUCC:
     dw $001A                                                             ;8CAE8F;
     %spritemapEntry(0, $10, $18, 0, 0, 3, 0, $132)
     %spritemapEntry(0, $10, $10, 0, 0, 3, 0, $122)
@@ -3003,7 +3003,7 @@ EndingSequenceSpritemaps_COMPLETESUCC:
     %spritemapEntry(0, $1A8, $18, 0, 0, 3, 0, $132)
     %spritemapEntry(0, $1A8, $10, 0, 0, 3, 0, $122)
 
-EndingSequenceSpritemaps_COMPLETESUCCE:
+EndingSequenceSpritemaps_COMPLETEDSUCCE:
     dw $001C                                                             ;8CAF13;
     %spritemapEntry(0, $18, $18, 0, 0, 3, 0, $134)
     %spritemapEntry(0, $18, $10, 0, 0, 3, 0, $124)
@@ -3034,7 +3034,7 @@ EndingSequenceSpritemaps_COMPLETESUCCE:
     %spritemapEntry(0, $1A8, $18, 0, 0, 3, 0, $132)
     %spritemapEntry(0, $1A8, $10, 0, 0, 3, 0, $122)
 
-EndingSequenceSpritemaps_COMPLETESUCCES:
+EndingSequenceSpritemaps_COMPLETEDSUCCES:
     dw $001E                                                             ;8CAFA1;
     %spritemapEntry(0, $20, $18, 0, 0, 3, 0, $152)
     %spritemapEntry(0, $20, $10, 0, 0, 3, 0, $142)
@@ -3067,7 +3067,7 @@ EndingSequenceSpritemaps_COMPLETESUCCES:
     %spritemapEntry(0, $1A8, $18, 0, 0, 3, 0, $132)
     %spritemapEntry(0, $1A8, $10, 0, 0, 3, 0, $122)
 
-EndingSequenceSpritemaps_COMPLETESUCCESS:
+EndingSequenceSpritemaps_COMPLETEDSUCCESS:
     dw $0020                                                             ;8CB039;
     %spritemapEntry(0, $28, $18, 0, 0, 3, 0, $152)
     %spritemapEntry(0, $28, $10, 0, 0, 3, 0, $142)
@@ -3102,7 +3102,7 @@ EndingSequenceSpritemaps_COMPLETESUCCESS:
     %spritemapEntry(0, $1A8, $18, 0, 0, 3, 0, $132)
     %spritemapEntry(0, $1A8, $10, 0, 0, 3, 0, $122)
 
-EndingSequenceSpritemaps_COMPLETESUCCESSF:
+EndingSequenceSpritemaps_COMPLETEDSUCCESSF:
     dw $0022                                                             ;8CB0DB;
     %spritemapEntry(0, $30, $18, 0, 0, 3, 0, $135)
     %spritemapEntry(0, $30, $10, 0, 0, 3, 0, $125)
@@ -3139,7 +3139,7 @@ EndingSequenceSpritemaps_COMPLETESUCCESSF:
     %spritemapEntry(0, $1A8, $18, 0, 0, 3, 0, $132)
     %spritemapEntry(0, $1A8, $10, 0, 0, 3, 0, $122)
 
-EndingSequenceSpritemaps_COMPLETESUCCESSFU:
+EndingSequenceSpritemaps_COMPLETEDSUCCESSFU:
     dw $0024                                                             ;8CB187;
     %spritemapEntry(0, $38, $18, 0, 0, 3, 0, $154)
     %spritemapEntry(0, $38, $10, 0, 0, 3, 0, $144)
@@ -3178,7 +3178,7 @@ EndingSequenceSpritemaps_COMPLETESUCCESSFU:
     %spritemapEntry(0, $1A8, $18, 0, 0, 3, 0, $132)
     %spritemapEntry(0, $1A8, $10, 0, 0, 3, 0, $122)
 
-EndingSequenceSpritemaps_COMPLETESUCCESSFUL:
+EndingSequenceSpritemaps_COMPLETEDSUCCESSFUL:
     dw $0026                                                             ;8CB23D;
     %spritemapEntry(0, $40, $18, 0, 0, 3, 0, $13B)
     %spritemapEntry(0, $40, $10, 0, 0, 3, 0, $12B)
@@ -3219,7 +3219,7 @@ EndingSequenceSpritemaps_COMPLETESUCCESSFUL:
     %spritemapEntry(0, $1A8, $18, 0, 0, 3, 0, $132)
     %spritemapEntry(0, $1A8, $10, 0, 0, 3, 0, $122)
 
-EndingSequenceSpritemaps_COMPLETESUCCESSFULL:
+EndingSequenceSpritemaps_COMPLETEDSUCCESSFULL:
     dw $0028                                                             ;8CB2FD;
     %spritemapEntry(0, $48, $18, 0, 0, 3, 0, $13B)
     %spritemapEntry(0, $48, $10, 0, 0, 3, 0, $12B)
@@ -3262,7 +3262,7 @@ EndingSequenceSpritemaps_COMPLETESUCCESSFULL:
     %spritemapEntry(0, $1A8, $18, 0, 0, 3, 0, $132)
     %spritemapEntry(0, $1A8, $10, 0, 0, 3, 0, $122)
 
-EndingSequenceSpritemaps_COMPLETESUCCESSFULLY:
+EndingSequenceSpritemaps_COMPLETEDSUCCESSFULLY:
     dw $002A                                                             ;8CB3C7;
     %spritemapEntry(0, $50, $18, 0, 0, 3, 0, $158)
     %spritemapEntry(0, $50, $10, 0, 0, 3, 0, $148)

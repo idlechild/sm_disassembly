@@ -426,36 +426,26 @@ Palette_Waver:
     dw $2C63,$241F,$1C17,$142F,$0C47,$3BE0,$2680,$1580                   ;A38697;
 
 InstList_Waver_Steady_FacingLeft:
-    dw $0001                                                             ;A386A7;
-    dw Spritemap_Waver_2                                                 ;A386A9;
+    dw $0001,Spritemap_Waver_2                                           ;A386A7;
     dw Instruction_Common_Sleep                                          ;A386AB;
 
 InstList_Waver_Steady_FacingRight:
-    dw $0001                                                             ;A386AD;
-    dw Spritemap_Waver_7                                                 ;A386AF;
+    dw $0001,Spritemap_Waver_7                                           ;A386AD;
     dw Instruction_Common_Sleep                                          ;A386B1;
 
 InstList_Waver_Spinning_FacingLeft:
-    dw $0008                                                             ;A386B3;
-    dw Spritemap_Waver_3                                                 ;A386B5;
-    dw $0008                                                             ;A386B7;
-    dw Spritemap_Waver_4                                                 ;A386B9;
-    dw $0008                                                             ;A386BB;
-    dw Spritemap_Waver_0                                                 ;A386BD;
-    dw $0008                                                             ;A386BF;
-    dw Spritemap_Waver_1                                                 ;A386C1;
+    dw $0008,Spritemap_Waver_3                                           ;A386B3;
+    dw $0008,Spritemap_Waver_4                                           ;A386B7;
+    dw $0008,Spritemap_Waver_0                                           ;A386BB;
+    dw $0008,Spritemap_Waver_1                                           ;A386BF;
     dw Instruction_Waver_SetSpinFinishedFlag                             ;A386C3;
     dw Instruction_Common_Sleep                                          ;A386C5;
 
 InstList_Waver_Spinning_FacingRight:
-    dw $0008                                                             ;A386C7;
-    dw Spritemap_Waver_8                                                 ;A386C9;
-    dw $0008                                                             ;A386CB;
-    dw Spritemap_Waver_9                                                 ;A386CD;
-    dw $0008                                                             ;A386CF;
-    dw Spritemap_Waver_5                                                 ;A386D1;
-    dw $0008                                                             ;A386D3;
-    dw Spritemap_Waver_6                                                 ;A386D5;
+    dw $0008,Spritemap_Waver_8                                           ;A386C7;
+    dw $0008,Spritemap_Waver_9                                           ;A386CB;
+    dw $0008,Spritemap_Waver_5                                           ;A386CF;
+    dw $0008,Spritemap_Waver_6                                           ;A386D3;
     dw Instruction_Waver_SetSpinFinishedFlag                             ;A386D7;
     dw Instruction_Common_Sleep                                          ;A386D9;
 
@@ -613,132 +603,88 @@ SetWaverInstList:
 
 
 Spritemap_Waver_0:
-    dw $0004,$0000                                                       ;A3881E;
-    db $08                                                               ;A38822;
-    dw $2122,$01F8                                                       ;A38823;
-    db $08                                                               ;A38827;
-    dw $2121,$8000                                                       ;A38828;
-    db $F8                                                               ;A3882C;
-    dw $2102,$81F0                                                       ;A3882D;
-    db $F8                                                               ;A38831;
-    dw $2100                                                             ;A38832;
+    dw $0004                                                             ;A3881E;
+    %spritemapEntry(0, $00, $08, 0, 0, 2, 0, $122)
+    %spritemapEntry(0, $1F8, $08, 0, 0, 2, 0, $121)
+    %spritemapEntry(1, $00, $F8, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F0, $F8, 0, 0, 2, 0, $100)
 
 Spritemap_Waver_1:
-    dw $0004,$01ED                                                       ;A38834;
-    db $FC                                                               ;A38838;
-    dw $2124,$0005                                                       ;A38839;
-    db $00                                                               ;A3883D;
-    dw $2116,$0005                                                       ;A3883E;
-    db $F8                                                               ;A38842;
-    dw $2106,$81F5                                                       ;A38843;
-    db $F8                                                               ;A38847;
-    dw $2104                                                             ;A38848;
+    dw $0004                                                             ;A38834;
+    %spritemapEntry(0, $1ED, $FC, 0, 0, 2, 0, $124)
+    %spritemapEntry(0, $05, $00, 0, 0, 2, 0, $116)
+    %spritemapEntry(0, $05, $F8, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1F5, $F8, 0, 0, 2, 0, $104)
 
 Spritemap_Waver_2:
-    dw $0003,$01ED                                                       ;A3884A;
-    db $FD                                                               ;A3884E;
-    dw $2126,$01F5                                                       ;A3884F;
-    db $FD                                                               ;A38853;
-    dw $2127,$81FD                                                       ;A38854;
-    db $F8                                                               ;A38858;
-    dw $2107                                                             ;A38859;
+    dw $0003                                                             ;A3884A;
+    %spritemapEntry(0, $1ED, $FD, 0, 0, 2, 0, $126)
+    %spritemapEntry(0, $1F5, $FD, 0, 0, 2, 0, $127)
+    %spritemapEntry(1, $1FD, $F8, 0, 0, 2, 0, $107)
 
 Spritemap_Waver_3:
-    dw $0004,$01EC                                                       ;A3885B;
-    db $FC                                                               ;A3885F;
-    dw $2129,$0004                                                       ;A38860;
-    db $00                                                               ;A38864;
-    dw $211B,$0004                                                       ;A38865;
-    db $F8                                                               ;A38869;
-    dw $210B,$81F4                                                       ;A3886A;
-    db $F8                                                               ;A3886E;
-    dw $2109                                                             ;A3886F;
+    dw $0004                                                             ;A3885B;
+    %spritemapEntry(0, $1EC, $FC, 0, 0, 2, 0, $129)
+    %spritemapEntry(0, $04, $00, 0, 0, 2, 0, $11B)
+    %spritemapEntry(0, $04, $F8, 0, 0, 2, 0, $10B)
+    %spritemapEntry(1, $1F4, $F8, 0, 0, 2, 0, $109)
 
 Spritemap_Waver_4:
-    dw $0004,$0000                                                       ;A38871;
-    db $08                                                               ;A38875;
-    dw $212E,$01F8                                                       ;A38876;
-    db $08                                                               ;A3887A;
-    dw $212D,$8000                                                       ;A3887B;
-    db $F8                                                               ;A3887F;
-    dw $210E,$81F0                                                       ;A38880;
-    db $F8                                                               ;A38884;
-    dw $210C                                                             ;A38885;
+    dw $0004                                                             ;A38871;
+    %spritemapEntry(0, $00, $08, 0, 0, 2, 0, $12E)
+    %spritemapEntry(0, $1F8, $08, 0, 0, 2, 0, $12D)
+    %spritemapEntry(1, $00, $F8, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $1F0, $F8, 0, 0, 2, 0, $10C)
 
 Spritemap_Waver_5:
-    dw $0004,$01F8                                                       ;A38887;
-    db $08                                                               ;A3888B;
-    dw $6122,$0000                                                       ;A3888C;
-    db $08                                                               ;A38890;
-    dw $6121,$81F0                                                       ;A38891;
-    db $F8                                                               ;A38895;
-    dw $6102,$8000                                                       ;A38896;
-    db $F8                                                               ;A3889A;
-    dw $6100                                                             ;A3889B;
+    dw $0004                                                             ;A38887;
+    %spritemapEntry(0, $1F8, $08, 0, 1, 2, 0, $122)
+    %spritemapEntry(0, $00, $08, 0, 1, 2, 0, $121)
+    %spritemapEntry(1, $1F0, $F8, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $00, $F8, 0, 1, 2, 0, $100)
 
 Spritemap_Waver_6:
-    dw $0004,$000B                                                       ;A3889D;
-    db $FC                                                               ;A388A1;
-    dw $6124,$01F3                                                       ;A388A2;
-    db $00                                                               ;A388A6;
-    dw $6116,$01F3                                                       ;A388A7;
-    db $F8                                                               ;A388AB;
-    dw $6106,$81FB                                                       ;A388AC;
-    db $F8                                                               ;A388B0;
-    dw $6104                                                             ;A388B1;
+    dw $0004                                                             ;A3889D;
+    %spritemapEntry(0, $0B, $FC, 0, 1, 2, 0, $124)
+    %spritemapEntry(0, $1F3, $00, 0, 1, 2, 0, $116)
+    %spritemapEntry(0, $1F3, $F8, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $1FB, $F8, 0, 1, 2, 0, $104)
 
 Spritemap_Waver_7:
-    dw $0003,$000B                                                       ;A388B3;
-    db $FD                                                               ;A388B7;
-    dw $6126,$0003                                                       ;A388B8;
-    db $FD                                                               ;A388BC;
-    dw $6127,$81F3                                                       ;A388BD;
-    db $F8                                                               ;A388C1;
-    dw $6107                                                             ;A388C2;
+    dw $0003                                                             ;A388B3;
+    %spritemapEntry(0, $0B, $FD, 0, 1, 2, 0, $126)
+    %spritemapEntry(0, $03, $FD, 0, 1, 2, 0, $127)
+    %spritemapEntry(1, $1F3, $F8, 0, 1, 2, 0, $107)
 
 Spritemap_Waver_8:
-    dw $0004,$000C                                                       ;A388C4;
-    db $FC                                                               ;A388C8;
-    dw $6129,$01F4                                                       ;A388C9;
-    db $00                                                               ;A388CD;
-    dw $611B,$01F4                                                       ;A388CE;
-    db $F8                                                               ;A388D2;
-    dw $610B,$81FC                                                       ;A388D3;
-    db $F8                                                               ;A388D7;
-    dw $6109                                                             ;A388D8;
+    dw $0004                                                             ;A388C4;
+    %spritemapEntry(0, $0C, $FC, 0, 1, 2, 0, $129)
+    %spritemapEntry(0, $1F4, $00, 0, 1, 2, 0, $11B)
+    %spritemapEntry(0, $1F4, $F8, 0, 1, 2, 0, $10B)
+    %spritemapEntry(1, $1FC, $F8, 0, 1, 2, 0, $109)
 
 Spritemap_Waver_9:
-    dw $0004,$01F8                                                       ;A388DA;
-    db $08                                                               ;A388DE;
-    dw $612E,$0000                                                       ;A388DF;
-    db $08                                                               ;A388E3;
-    dw $612D,$81F0                                                       ;A388E4;
-    db $F8                                                               ;A388E8;
-    dw $610E,$8000                                                       ;A388E9;
-    db $F8                                                               ;A388ED;
-    dw $610C                                                             ;A388EE;
+    dw $0004                                                             ;A388DA;
+    %spritemapEntry(0, $1F8, $08, 0, 1, 2, 0, $12E)
+    %spritemapEntry(0, $00, $08, 0, 1, 2, 0, $12D)
+    %spritemapEntry(1, $1F0, $F8, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $00, $F8, 0, 1, 2, 0, $10C)
 
 Palette_Metaree:
     dw $3800,$4D1F,$38B6,$246E,$1448,$47FF,$2EFA,$1616                   ;A388F0;
     dw $0132,$6F39,$5A73,$41AD,$2D08,$1863,$7FFF,$0041                   ;A38900;
 
 InstList_Metaree_Idling:
-    dw $000A                                                             ;A38910;
-    dw Spritemap_Metaree_0                                               ;A38912;
-    dw $000A                                                             ;A38914;
-    dw Spritemap_Metaree_2                                               ;A38916;
-    dw $000A                                                             ;A38918;
-    dw Spritemap_Metaree_3                                               ;A3891A;
-    dw $000A                                                             ;A3891C;
-    dw Spritemap_Metaree_4                                               ;A3891E;
+    dw $000A,Spritemap_Metaree_0                                         ;A38910;
+    dw $000A,Spritemap_Metaree_2                                         ;A38914;
+    dw $000A,Spritemap_Metaree_3                                         ;A38918;
+    dw $000A,Spritemap_Metaree_4                                         ;A3891C;
     dw Instruction_Common_GotoY                                          ;A38920;
     dw InstList_Metaree_Idling                                           ;A38922;
 
 InstList_Metaree_PrepareToLaunchAttack:
-    dw $0010                                                             ;A38924;
-    dw Spritemap_Metaree_0                                               ;A38926;
-    dw $0008                                                             ;A38928;
-    dw Spritemap_Metaree_1                                               ;A3892A;
+    dw $0010,Spritemap_Metaree_0                                         ;A38924;
+    dw $0008,Spritemap_Metaree_1                                         ;A38928;
     dw Instruction_Metaree_SetAttackReadyFlag                            ;A3892C;
     dw Instruction_Common_Sleep                                          ;A3892E;
 
@@ -746,21 +692,16 @@ InstList_Metaree_LaunchedAttack_0:
     dw Instruction_Common_EnableOffScreenProcessing                      ;A38930;
 
 InstList_Metaree_LaunchedAttack_1:
-    dw $0002                                                             ;A38932;
-    dw Spritemap_Metaree_2                                               ;A38934;
-    dw $0002                                                             ;A38936;
-    dw Spritemap_Metaree_3                                               ;A38938;
-    dw $0002                                                             ;A3893A;
-    dw Spritemap_Metaree_4                                               ;A3893C;
-    dw $0002                                                             ;A3893E;
-    dw Spritemap_Metaree_0                                               ;A38940;
+    dw $0002,Spritemap_Metaree_2                                         ;A38932;
+    dw $0002,Spritemap_Metaree_3                                         ;A38936;
+    dw $0002,Spritemap_Metaree_4                                         ;A3893A;
+    dw $0002,Spritemap_Metaree_0                                         ;A3893E;
     dw Instruction_Common_GotoY                                          ;A38942;
     dw InstList_Metaree_LaunchedAttack_1                                 ;A38944;
 
 UNUSED_InstList_Metaree_StopAnimating_A38946:
     dw Instruction_Common_DisableOffScreenProcessing                     ;A38946;
-    dw $0001                                                             ;A38948;
-    dw Spritemap_Metaree_0                                               ;A3894A;
+    dw $0001,Spritemap_Metaree_0                                         ;A38948;
     dw Instruction_Common_Sleep                                          ;A3894C;
 
 InstListPointers_Metaree:
@@ -1027,193 +968,110 @@ EnemyShot_Metaree:
 
 
 Spritemap_Metaree_0:
-    dw $0009,$0004                                                       ;A38B65;
-    db $F5                                                               ;A38B69;
-    dw $6122,$0004                                                       ;A38B6A;
-    db $FD                                                               ;A38B6E;
-    dw $6123,$0004                                                       ;A38B6F;
-    db $05                                                               ;A38B73;
-    dw $6124,$01F4                                                       ;A38B74;
-    db $05                                                               ;A38B78;
-    dw $2124,$01F4                                                       ;A38B79;
-    db $FD                                                               ;A38B7D;
-    dw $2123,$01F4                                                       ;A38B7E;
-    db $F5                                                               ;A38B82;
-    dw $2122,$0000                                                       ;A38B83;
-    db $03                                                               ;A38B87;
-    dw $2121,$01F8                                                       ;A38B88;
-    db $03                                                               ;A38B8C;
-    dw $2120,$81F8                                                       ;A38B8D;
-    db $F3                                                               ;A38B91;
-    dw $2100                                                             ;A38B92;
+    dw $0009                                                             ;A38B65;
+    %spritemapEntry(0, $04, $F5, 0, 1, 2, 0, $122)
+    %spritemapEntry(0, $04, $FD, 0, 1, 2, 0, $123)
+    %spritemapEntry(0, $04, $05, 0, 1, 2, 0, $124)
+    %spritemapEntry(0, $1F4, $05, 0, 0, 2, 0, $124)
+    %spritemapEntry(0, $1F4, $FD, 0, 0, 2, 0, $123)
+    %spritemapEntry(0, $1F4, $F5, 0, 0, 2, 0, $122)
+    %spritemapEntry(0, $00, $03, 0, 0, 2, 0, $121)
+    %spritemapEntry(0, $1F8, $03, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $1F8, $F3, 0, 0, 2, 0, $100)
 
 Spritemap_Metaree_1:
-    dw $0007,$0005                                                       ;A38B94;
-    db $03                                                               ;A38B98;
-    dw $6127,$01F3                                                       ;A38B99;
-    db $03                                                               ;A38B9D;
-    dw $2127,$0005                                                       ;A38B9E;
-    db $FB                                                               ;A38BA2;
-    dw $6126,$01F3                                                       ;A38BA3;
-    db $FB                                                               ;A38BA7;
-    dw $2126,$0005                                                       ;A38BA8;
-    db $F3                                                               ;A38BAC;
-    dw $6125,$01F3                                                       ;A38BAD;
-    db $F3                                                               ;A38BB1;
-    dw $2125,$81F8                                                       ;A38BB2;
-    db $F3                                                               ;A38BB6;
-    dw $2102                                                             ;A38BB7;
+    dw $0007                                                             ;A38B94;
+    %spritemapEntry(0, $05, $03, 0, 1, 2, 0, $127)
+    %spritemapEntry(0, $1F3, $03, 0, 0, 2, 0, $127)
+    %spritemapEntry(0, $05, $FB, 0, 1, 2, 0, $126)
+    %spritemapEntry(0, $1F3, $FB, 0, 0, 2, 0, $126)
+    %spritemapEntry(0, $05, $F3, 0, 1, 2, 0, $125)
+    %spritemapEntry(0, $1F3, $F3, 0, 0, 2, 0, $125)
+    %spritemapEntry(1, $1F8, $F3, 0, 0, 2, 0, $102)
 
 Spritemap_Metaree_2:
-    dw $0007,$81F5                                                       ;A38BB9;
-    db $03                                                               ;A38BBD;
-    dw $2106,$81F5                                                       ;A38BBE;
-    db $F3                                                               ;A38BC2;
-    dw $2104,$0000                                                       ;A38BC3;
-    db $03                                                               ;A38BC7;
-    dw $2121,$81F8                                                       ;A38BC8;
-    db $F3                                                               ;A38BCC;
-    dw $2100,$0000                                                       ;A38BCD;
-    db $03                                                               ;A38BD1;
-    dw $212A,$0000                                                       ;A38BD2;
-    db $FB                                                               ;A38BD6;
-    dw $2129,$0000                                                       ;A38BD7;
-    db $F3                                                               ;A38BDB;
-    dw $2128                                                             ;A38BDC;
+    dw $0007                                                             ;A38BB9;
+    %spritemapEntry(1, $1F5, $03, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1F5, $F3, 0, 0, 2, 0, $104)
+    %spritemapEntry(0, $00, $03, 0, 0, 2, 0, $121)
+    %spritemapEntry(1, $1F8, $F3, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $00, $03, 0, 0, 2, 0, $12A)
+    %spritemapEntry(0, $00, $FB, 0, 0, 2, 0, $129)
+    %spritemapEntry(0, $00, $F3, 0, 0, 2, 0, $128)
 
 Spritemap_Metaree_3:
-    dw $0002,$81F8                                                       ;A38BDE;
-    db $03                                                               ;A38BE2;
-    dw $210E,$81F8                                                       ;A38BE3;
-    db $F3                                                               ;A38BE7;
-    dw $210C                                                             ;A38BE8;
+    dw $0002                                                             ;A38BDE;
+    %spritemapEntry(1, $1F8, $03, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $1F8, $F3, 0, 0, 2, 0, $10C)
 
 Spritemap_Metaree_4:
-    dw $0007,$81FB                                                       ;A38BEA;
-    db $03                                                               ;A38BEE;
-    dw $210A,$81FB                                                       ;A38BEF;
-    db $F3                                                               ;A38BF3;
-    dw $2108,$01F8                                                       ;A38BF4;
-    db $03                                                               ;A38BF8;
-    dw $2120,$81F8                                                       ;A38BF9;
-    db $F3                                                               ;A38BFD;
-    dw $2100,$01F8                                                       ;A38BFE;
-    db $03                                                               ;A38C02;
-    dw $612A,$01F8                                                       ;A38C03;
-    db $FB                                                               ;A38C07;
-    dw $6129,$01F8                                                       ;A38C08;
-    db $F3                                                               ;A38C0C;
-    dw $6128                                                             ;A38C0D;
+    dw $0007                                                             ;A38BEA;
+    %spritemapEntry(1, $1FB, $03, 0, 0, 2, 0, $10A)
+    %spritemapEntry(1, $1FB, $F3, 0, 0, 2, 0, $108)
+    %spritemapEntry(0, $1F8, $03, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $1F8, $F3, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1F8, $03, 0, 1, 2, 0, $12A)
+    %spritemapEntry(0, $1F8, $FB, 0, 1, 2, 0, $129)
+    %spritemapEntry(0, $1F8, $F3, 0, 1, 2, 0, $128)
+
 
 Palette_Fireflea:
     dw $3800,$02FF,$01BF,$000F,$0008,$01BF,$011B,$00BA                   ;A38C0F;
     dw $0011,$7F5A,$5D45,$40C3,$2462,$53E9,$3AC6,$1961                   ;A38C1F;
 
 InstList_Fireflea:
-    dw $0002                                                             ;A38C2F;
-    dw Spritemap_Fireflea_0                                              ;A38C31;
-    dw $0001                                                             ;A38C33;
-    dw Spritemap_Fireflea_1                                              ;A38C35;
-    dw $0002                                                             ;A38C37;
-    dw Spritemap_Fireflea_2                                              ;A38C39;
-    dw $0001                                                             ;A38C3B;
-    dw Spritemap_Fireflea_1                                              ;A38C3D;
-    dw $0002                                                             ;A38C3F;
-    dw Spritemap_Fireflea_0                                              ;A38C41;
-    dw $0001                                                             ;A38C43;
-    dw Spritemap_Fireflea_1                                              ;A38C45;
-    dw $0002                                                             ;A38C47;
-    dw Spritemap_Fireflea_2                                              ;A38C49;
-    dw $0001                                                             ;A38C4B;
-    dw Spritemap_Fireflea_1                                              ;A38C4D;
-    dw $0002                                                             ;A38C4F;
-    dw Spritemap_Fireflea_3                                              ;A38C51;
-    dw $0001                                                             ;A38C53;
-    dw Spritemap_Fireflea_4                                              ;A38C55;
-    dw $0002                                                             ;A38C57;
-    dw Spritemap_Fireflea_5                                              ;A38C59;
-    dw $0001                                                             ;A38C5B;
-    dw Spritemap_Fireflea_4                                              ;A38C5D;
-    dw $0002                                                             ;A38C5F;
-    dw Spritemap_Fireflea_6                                              ;A38C61;
-    dw $0001                                                             ;A38C63;
-    dw Spritemap_Fireflea_7                                              ;A38C65;
-    dw $0002                                                             ;A38C67;
-    dw Spritemap_Fireflea_8                                              ;A38C69;
-    dw $0001                                                             ;A38C6B;
-    dw Spritemap_Fireflea_7                                              ;A38C6D;
-    dw $0002                                                             ;A38C6F;
-    dw Spritemap_Fireflea_9                                              ;A38C71;
-    dw $0001                                                             ;A38C73;
-    dw Spritemap_Fireflea_A                                              ;A38C75;
-    dw $0002                                                             ;A38C77;
-    dw Spritemap_Fireflea_B                                              ;A38C79;
-    dw $0001                                                             ;A38C7B;
-    dw Spritemap_Fireflea_A                                              ;A38C7D;
-    dw $0002                                                             ;A38C7F;
-    dw Spritemap_Fireflea_C                                              ;A38C81;
-    dw $0001                                                             ;A38C83;
-    dw Spritemap_Fireflea_D                                              ;A38C85;
-    dw $0002                                                             ;A38C87;
-    dw Spritemap_Fireflea_E                                              ;A38C89;
-    dw $0001                                                             ;A38C8B;
-    dw Spritemap_Fireflea_D                                              ;A38C8D;
-    dw $0002                                                             ;A38C8F;
-    dw Spritemap_Fireflea_F                                              ;A38C91;
-    dw $0001                                                             ;A38C93;
-    dw Spritemap_Fireflea_10                                             ;A38C95;
-    dw $0002                                                             ;A38C97;
-    dw Spritemap_Fireflea_11                                             ;A38C99;
-    dw $0001                                                             ;A38C9B;
-    dw Spritemap_Fireflea_10                                             ;A38C9D;
-    dw $0002                                                             ;A38C9F;
-    dw Spritemap_Fireflea_12                                             ;A38CA1;
-    dw $0001                                                             ;A38CA3;
-    dw Spritemap_Fireflea_13                                             ;A38CA5;
-    dw $0002                                                             ;A38CA7;
-    dw Spritemap_Fireflea_14                                             ;A38CA9;
-    dw $0001                                                             ;A38CAB;
-    dw Spritemap_Fireflea_13                                             ;A38CAD;
-    dw $0002                                                             ;A38CAF;
-    dw Spritemap_Fireflea_F                                              ;A38CB1;
-    dw $0001                                                             ;A38CB3;
-    dw Spritemap_Fireflea_10                                             ;A38CB5;
-    dw $0002                                                             ;A38CB7;
-    dw Spritemap_Fireflea_11                                             ;A38CB9;
-    dw $0001                                                             ;A38CBB;
-    dw Spritemap_Fireflea_10                                             ;A38CBD;
-    dw $0002                                                             ;A38CBF;
-    dw Spritemap_Fireflea_C                                              ;A38CC1;
-    dw $0001                                                             ;A38CC3;
-    dw Spritemap_Fireflea_D                                              ;A38CC5;
-    dw $0002                                                             ;A38CC7;
-    dw Spritemap_Fireflea_E                                              ;A38CC9;
-    dw $0001                                                             ;A38CCB;
-    dw Spritemap_Fireflea_D                                              ;A38CCD;
-    dw $0002                                                             ;A38CCF;
-    dw Spritemap_Fireflea_9                                              ;A38CD1;
-    dw $0001                                                             ;A38CD3;
-    dw Spritemap_Fireflea_A                                              ;A38CD5;
-    dw $0002                                                             ;A38CD7;
-    dw Spritemap_Fireflea_B                                              ;A38CD9;
-    dw $0001                                                             ;A38CDB;
-    dw Spritemap_Fireflea_A                                              ;A38CDD;
-    dw $0002                                                             ;A38CDF;
-    dw Spritemap_Fireflea_6                                              ;A38CE1;
-    dw $0001                                                             ;A38CE3;
-    dw Spritemap_Fireflea_7                                              ;A38CE5;
-    dw $0002                                                             ;A38CE7;
-    dw Spritemap_Fireflea_8                                              ;A38CE9;
-    dw $0001                                                             ;A38CEB;
-    dw Spritemap_Fireflea_7                                              ;A38CED;
-    dw $0002                                                             ;A38CEF;
-    dw Spritemap_Fireflea_3                                              ;A38CF1;
-    dw $0001                                                             ;A38CF3;
-    dw Spritemap_Fireflea_4                                              ;A38CF5;
-    dw $0002                                                             ;A38CF7;
-    dw Spritemap_Fireflea_5                                              ;A38CF9;
-    dw $0001                                                             ;A38CFB;
-    dw Spritemap_Fireflea_4                                              ;A38CFD;
+    dw $0002,Spritemap_Fireflea_0                                        ;A38C2F;
+    dw $0001,Spritemap_Fireflea_1                                        ;A38C33;
+    dw $0002,Spritemap_Fireflea_2                                        ;A38C37;
+    dw $0001,Spritemap_Fireflea_1                                        ;A38C3B;
+    dw $0002,Spritemap_Fireflea_0                                        ;A38C3F;
+    dw $0001,Spritemap_Fireflea_1                                        ;A38C43;
+    dw $0002,Spritemap_Fireflea_2                                        ;A38C47;
+    dw $0001,Spritemap_Fireflea_1                                        ;A38C4B;
+    dw $0002,Spritemap_Fireflea_3                                        ;A38C4F;
+    dw $0001,Spritemap_Fireflea_4                                        ;A38C53;
+    dw $0002,Spritemap_Fireflea_5                                        ;A38C57;
+    dw $0001,Spritemap_Fireflea_4                                        ;A38C5B;
+    dw $0002,Spritemap_Fireflea_6                                        ;A38C5F;
+    dw $0001,Spritemap_Fireflea_7                                        ;A38C63;
+    dw $0002,Spritemap_Fireflea_8                                        ;A38C67;
+    dw $0001,Spritemap_Fireflea_7                                        ;A38C6B;
+    dw $0002,Spritemap_Fireflea_9                                        ;A38C6F;
+    dw $0001,Spritemap_Fireflea_A                                        ;A38C73;
+    dw $0002,Spritemap_Fireflea_B                                        ;A38C77;
+    dw $0001,Spritemap_Fireflea_A                                        ;A38C7B;
+    dw $0002,Spritemap_Fireflea_C                                        ;A38C7F;
+    dw $0001,Spritemap_Fireflea_D                                        ;A38C83;
+    dw $0002,Spritemap_Fireflea_E                                        ;A38C87;
+    dw $0001,Spritemap_Fireflea_D                                        ;A38C8B;
+    dw $0002,Spritemap_Fireflea_F                                        ;A38C8F;
+    dw $0001,Spritemap_Fireflea_10                                       ;A38C93;
+    dw $0002,Spritemap_Fireflea_11                                       ;A38C97;
+    dw $0001,Spritemap_Fireflea_10                                       ;A38C9B;
+    dw $0002,Spritemap_Fireflea_12                                       ;A38C9F;
+    dw $0001,Spritemap_Fireflea_13                                       ;A38CA3;
+    dw $0002,Spritemap_Fireflea_14                                       ;A38CA7;
+    dw $0001,Spritemap_Fireflea_13                                       ;A38CAB;
+    dw $0002,Spritemap_Fireflea_F                                        ;A38CAF;
+    dw $0001,Spritemap_Fireflea_10                                       ;A38CB3;
+    dw $0002,Spritemap_Fireflea_11                                       ;A38CB7;
+    dw $0001,Spritemap_Fireflea_10                                       ;A38CBB;
+    dw $0002,Spritemap_Fireflea_C                                        ;A38CBF;
+    dw $0001,Spritemap_Fireflea_D                                        ;A38CC3;
+    dw $0002,Spritemap_Fireflea_E                                        ;A38CC7;
+    dw $0001,Spritemap_Fireflea_D                                        ;A38CCB;
+    dw $0002,Spritemap_Fireflea_9                                        ;A38CCF;
+    dw $0001,Spritemap_Fireflea_A                                        ;A38CD3;
+    dw $0002,Spritemap_Fireflea_B                                        ;A38CD7;
+    dw $0001,Spritemap_Fireflea_A                                        ;A38CDB;
+    dw $0002,Spritemap_Fireflea_6                                        ;A38CDF;
+    dw $0001,Spritemap_Fireflea_7                                        ;A38CE3;
+    dw $0002,Spritemap_Fireflea_8                                        ;A38CE7;
+    dw $0001,Spritemap_Fireflea_7                                        ;A38CEB;
+    dw $0002,Spritemap_Fireflea_3                                        ;A38CEF;
+    dw $0001,Spritemap_Fireflea_4                                        ;A38CF3;
+    dw $0002,Spritemap_Fireflea_5                                        ;A38CF7;
+    dw $0001,Spritemap_Fireflea_4                                        ;A38CFB;
     dw Instruction_Common_GotoY                                          ;A38CFF;
     dw InstList_Fireflea                                                 ;A38D01;
 
@@ -1226,6 +1084,7 @@ UNUSED_Fireflea_Data_A38D13:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 FirefleaMovementRadii:
+; Movement radii. Indexed by [enemy parameter 2 high] * 2
     dw $0008,$0010,$0018,$0020,$0028,$0030,$0038,$0040                   ;A38D1D;
 
 InitAI_Fireflea:
@@ -1426,193 +1285,131 @@ ShotReaction_Fireflea_Common:
 
 
 Spritemap_Fireflea_0:
-    dw $0003,$81F8                                                       ;A38EA5;
-    db $F8                                                               ;A38EA9;
-    dw $3100,$0001                                                       ;A38EAA;
-    db $F6                                                               ;A38EAE;
-    dw $3121,$01F7                                                       ;A38EAF;
-    db $F6                                                               ;A38EB3;
-    dw $3120                                                             ;A38EB4;
+    dw $0003                                                             ;A38EA5;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $100)
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $121)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $120)
 
 Spritemap_Fireflea_1:
-    dw $0003,$81F8                                                       ;A38EB6;
-    db $F8                                                               ;A38EBA;
-    dw $3100,$0001                                                       ;A38EBB;
-    db $F6                                                               ;A38EBF;
-    dw $3123,$01F7                                                       ;A38EC0;
-    db $F6                                                               ;A38EC4;
-    dw $3122                                                             ;A38EC5;
+    dw $0003                                                             ;A38EB6;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $100)
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $123)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $122)
 
 Spritemap_Fireflea_2:
-    dw $0003,$81F8                                                       ;A38EC7;
-    db $F8                                                               ;A38ECB;
-    dw $3100,$0001                                                       ;A38ECC;
-    db $F6                                                               ;A38ED0;
-    dw $3125,$01F7                                                       ;A38ED1;
-    db $F6                                                               ;A38ED5;
-    dw $3124                                                             ;A38ED6;
+    dw $0003                                                             ;A38EC7;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $100)
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $125)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $124)
 
 Spritemap_Fireflea_3:
-    dw $0003,$81F8                                                       ;A38ED8;
-    db $F8                                                               ;A38EDC;
-    dw $3102,$0001                                                       ;A38EDD;
-    db $F6                                                               ;A38EE1;
-    dw $3121,$01F7                                                       ;A38EE2;
-    db $F6                                                               ;A38EE6;
-    dw $3120                                                             ;A38EE7;
+    dw $0003                                                             ;A38ED8;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $102)
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $121)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $120)
 
 Spritemap_Fireflea_4:
-    dw $0003,$81F8                                                       ;A38EE9;
-    db $F8                                                               ;A38EED;
-    dw $3102,$0001                                                       ;A38EEE;
-    db $F6                                                               ;A38EF2;
-    dw $3123,$01F7                                                       ;A38EF3;
-    db $F6                                                               ;A38EF7;
-    dw $3122                                                             ;A38EF8;
+    dw $0003                                                             ;A38EE9;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $102)
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $123)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $122)
 
 Spritemap_Fireflea_5:
-    dw $0003,$81F8                                                       ;A38EFA;
-    db $F8                                                               ;A38EFE;
-    dw $3102,$0001                                                       ;A38EFF;
-    db $F6                                                               ;A38F03;
-    dw $3125,$01F7                                                       ;A38F04;
-    db $F6                                                               ;A38F08;
-    dw $3124                                                             ;A38F09;
+    dw $0003                                                             ;A38EFA;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $102)
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $125)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $124)
 
 Spritemap_Fireflea_6:
-    dw $0003,$81F8                                                       ;A38F0B;
-    db $F8                                                               ;A38F0F;
-    dw $3104,$0001                                                       ;A38F10;
-    db $F6                                                               ;A38F14;
-    dw $3127,$01F7                                                       ;A38F15;
-    db $F6                                                               ;A38F19;
-    dw $3126                                                             ;A38F1A;
+    dw $0003                                                             ;A38F0B;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $104)
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $127)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $126)
 
 Spritemap_Fireflea_7:
-    dw $0003,$81F8                                                       ;A38F1C;
-    db $F8                                                               ;A38F20;
-    dw $3104,$0001                                                       ;A38F21;
-    db $F6                                                               ;A38F25;
-    dw $3129,$01F7                                                       ;A38F26;
-    db $F6                                                               ;A38F2A;
-    dw $3128                                                             ;A38F2B;
+    dw $0003                                                             ;A38F1C;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $104)
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $129)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $128)
 
 Spritemap_Fireflea_8:
-    dw $0003,$81F8                                                       ;A38F2D;
-    db $F8                                                               ;A38F31;
-    dw $3104,$0001                                                       ;A38F32;
-    db $F6                                                               ;A38F36;
-    dw $312B,$01F7                                                       ;A38F37;
-    db $F6                                                               ;A38F3B;
-    dw $312A                                                             ;A38F3C;
+    dw $0003                                                             ;A38F2D;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $104)
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $12B)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $12A)
 
 Spritemap_Fireflea_9:
-    dw $0003,$81F8                                                       ;A38F3E;
-    db $F8                                                               ;A38F42;
-    dw $3106,$0001                                                       ;A38F43;
-    db $F6                                                               ;A38F47;
-    dw $3127,$01F7                                                       ;A38F48;
-    db $F6                                                               ;A38F4C;
-    dw $3126                                                             ;A38F4D;
+    dw $0003                                                             ;A38F3E;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $106)
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $127)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $126)
 
 Spritemap_Fireflea_A:
-    dw $0003,$81F8                                                       ;A38F4F;
-    db $F8                                                               ;A38F53;
-    dw $3106,$0001                                                       ;A38F54;
-    db $F6                                                               ;A38F58;
-    dw $3129,$01F7                                                       ;A38F59;
-    db $F6                                                               ;A38F5D;
-    dw $3128                                                             ;A38F5E;
+    dw $0003                                                             ;A38F4F;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $106)
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $129)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $128)
 
 Spritemap_Fireflea_B:
-    dw $0003,$81F8                                                       ;A38F60;
-    db $F8                                                               ;A38F64;
-    dw $3106,$0001                                                       ;A38F65;
-    db $F6                                                               ;A38F69;
-    dw $312B,$01F7                                                       ;A38F6A;
-    db $F6                                                               ;A38F6E;
-    dw $312A                                                             ;A38F6F;
+    dw $0003                                                             ;A38F60;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $106)
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $12B)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $12A)
 
 Spritemap_Fireflea_C:
-    dw $0003,$81F8                                                       ;A38F71;
-    db $F8                                                               ;A38F75;
-    dw $3108,$0001                                                       ;A38F76;
-    db $F6                                                               ;A38F7A;
-    dw $3127,$01F7                                                       ;A38F7B;
-    db $F6                                                               ;A38F7F;
-    dw $3126                                                             ;A38F80;
+    dw $0003                                                             ;A38F71;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $108)
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $127)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $126)
 
 Spritemap_Fireflea_D:
-    dw $0003,$81F8                                                       ;A38F82;
-    db $F8                                                               ;A38F86;
-    dw $3108,$0001                                                       ;A38F87;
-    db $F6                                                               ;A38F8B;
-    dw $3129,$01F7                                                       ;A38F8C;
-    db $F6                                                               ;A38F90;
-    dw $3128                                                             ;A38F91;
+    dw $0003                                                             ;A38F82;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $108)
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $129)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $128)
 
 Spritemap_Fireflea_E:
-    dw $0003,$81F8                                                       ;A38F93;
-    db $F8                                                               ;A38F97;
-    dw $3108,$0001                                                       ;A38F98;
-    db $F6                                                               ;A38F9C;
-    dw $312B,$01F7                                                       ;A38F9D;
-    db $F6                                                               ;A38FA1;
-    dw $312A                                                             ;A38FA2;
+    dw $0003                                                             ;A38F93;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $108)
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $12B)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $12A)
 
 Spritemap_Fireflea_F:
-    dw $0003,$81F8                                                       ;A38FA4;
-    db $F8                                                               ;A38FA8;
-    dw $310A,$0001                                                       ;A38FA9;
-    db $F6                                                               ;A38FAD;
-    dw $312D,$01F7                                                       ;A38FAE;
-    db $F6                                                               ;A38FB2;
-    dw $312C                                                             ;A38FB3;
+    dw $0003                                                             ;A38FA4;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $10A)
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $12D)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $12C)
 
 Spritemap_Fireflea_10:
-    dw $0003,$81F8                                                       ;A38FB5;
-    db $F8                                                               ;A38FB9;
-    dw $310A,$0001                                                       ;A38FBA;
-    db $F6                                                               ;A38FBE;
-    dw $312F,$01F7                                                       ;A38FBF;
-    db $F6                                                               ;A38FC3;
-    dw $312E                                                             ;A38FC4;
+    dw $0003                                                             ;A38FB5;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $10A)
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $12F)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $12E)
 
 Spritemap_Fireflea_11:
-    dw $0003,$81F8                                                       ;A38FC6;
-    db $F8                                                               ;A38FCA;
-    dw $310A,$0001                                                       ;A38FCB;
-    db $F6                                                               ;A38FCF;
-    dw $311F,$01F7                                                       ;A38FD0;
-    db $F6                                                               ;A38FD4;
-    dw $311E                                                             ;A38FD5;
+    dw $0003                                                             ;A38FC6;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $10A)
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $11F)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $11E)
 
 Spritemap_Fireflea_12:
-    dw $0003,$81F8                                                       ;A38FD7;
-    db $F8                                                               ;A38FDB;
-    dw $310C,$0001                                                       ;A38FDC;
-    db $F6                                                               ;A38FE0;
-    dw $312D,$01F7                                                       ;A38FE1;
-    db $F6                                                               ;A38FE5;
-    dw $312C                                                             ;A38FE6;
+    dw $0003                                                             ;A38FD7;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $10C)
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $12D)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $12C)
 
 Spritemap_Fireflea_13:
-    dw $0003,$0001                                                       ;A38FE8;
-    db $F6                                                               ;A38FEC;
-    dw $312F,$01F7                                                       ;A38FED;
-    db $F6                                                               ;A38FF1;
-    dw $312E,$81F8                                                       ;A38FF2;
-    db $F8                                                               ;A38FF6;
-    dw $310C                                                             ;A38FF7;
+    dw $0003                                                             ;A38FE8;
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $12F)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $12E)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $10C)
 
 Spritemap_Fireflea_14:
-    dw $0003,$0001                                                       ;A38FF9;
-    db $F6                                                               ;A38FFD;
-    dw $311F,$01F7                                                       ;A38FFE;
-    db $F6                                                               ;A39002;
-    dw $311E,$81F8                                                       ;A39003;
-    db $F8                                                               ;A39007;
-    dw $310C                                                             ;A39008;
+    dw $0003                                                             ;A38FF9;
+    %spritemapEntry(0, $01, $F6, 0, 0, 3, 0, $11F)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 3, 0, $11E)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 0, $10C)
+
 
 Palette_Skultera:
     dw $3800,$72FA,$55B0,$2845,$1801,$6210,$496B,$38C6                   ;A3900A;
@@ -1622,32 +1419,21 @@ InstList_Skultera_SwimmingLeft_0:
     dw Instruction_Skultera_SetLayerTo2                                  ;A3902A;
 
 InstList_Skultera_SwimmingLeft_1:
-    dw $000E                                                             ;A3902C;
-    dw Spritemap_Skultera_0                                              ;A3902E;
-    dw $000E                                                             ;A39030;
-    dw Spritemap_Skultera_1                                              ;A39032;
-    dw $000E                                                             ;A39034;
-    dw Spritemap_Skultera_2                                              ;A39036;
+    dw $000E,Spritemap_Skultera_0                                        ;A3902C;
+    dw $000E,Spritemap_Skultera_1                                        ;A39030;
+    dw $000E,Spritemap_Skultera_2                                        ;A39034;
     dw Instruction_Common_GotoY                                          ;A39038;
     dw InstList_Skultera_SwimmingLeft_1                                  ;A3903A;
 
 InstList_Skultera_TurningRight:
-    dw $000D                                                             ;A3903C;
-    dw Spritemap_Skultera_3                                              ;A3903E;
-    dw $000A                                                             ;A39040;
-    dw Spritemap_Skultera_4                                              ;A39042;
-    dw $0008                                                             ;A39044;
-    dw Spritemap_Skultera_5                                              ;A39046;
-    dw $0006                                                             ;A39048;
-    dw Spritemap_Skultera_6                                              ;A3904A;
-    dw $0006                                                             ;A3904C;
-    dw Spritemap_Skultera_7                                              ;A3904E;
-    dw $0008                                                             ;A39050;
-    dw Spritemap_Skultera_8                                              ;A39052;
-    dw $000A                                                             ;A39054;
-    dw Spritemap_Skultera_9                                              ;A39056;
-    dw $000D                                                             ;A39058;
-    dw Spritemap_Skultera_A                                              ;A3905A;
+    dw $000D,Spritemap_Skultera_3                                        ;A3903C;
+    dw $000A,Spritemap_Skultera_4                                        ;A39040;
+    dw $0008,Spritemap_Skultera_5                                        ;A39044;
+    dw $0006,Spritemap_Skultera_6                                        ;A39048;
+    dw $0006,Spritemap_Skultera_7                                        ;A3904C;
+    dw $0008,Spritemap_Skultera_8                                        ;A39050;
+    dw $000A,Spritemap_Skultera_9                                        ;A39054;
+    dw $000D,Spritemap_Skultera_A                                        ;A39058;
     dw Instruction_Skultera_SetTurnFinishedFlag                          ;A3905C;
     dw Instruction_Common_Sleep                                          ;A3905E;
 
@@ -1655,32 +1441,21 @@ InstList_Skultera_SwimmingRight_0:
     dw Instruction_Skultera_SetLayerTo6                                  ;A39060;
 
 InstList_Skultera_SwimmingRight_1:
-    dw $000E                                                             ;A39062;
-    dw Spritemap_Skultera_B                                              ;A39064;
-    dw $000E                                                             ;A39066;
-    dw Spritemap_Skultera_C                                              ;A39068;
-    dw $000E                                                             ;A3906A;
-    dw Spritemap_Skultera_D                                              ;A3906C;
+    dw $000E,Spritemap_Skultera_B                                        ;A39062;
+    dw $000E,Spritemap_Skultera_C                                        ;A39066;
+    dw $000E,Spritemap_Skultera_D                                        ;A3906A;
     dw Instruction_Common_GotoY                                          ;A3906E;
     dw InstList_Skultera_SwimmingRight_1                                 ;A39070;
 
 InstList_Skultera_TurningLeft:
-    dw $000D                                                             ;A39072;
-    dw Spritemap_Skultera_E                                              ;A39074;
-    dw $000A                                                             ;A39076;
-    dw Spritemap_Skultera_F                                              ;A39078;
-    dw $0008                                                             ;A3907A;
-    dw Spritemap_Skultera_10                                             ;A3907C;
-    dw $0006                                                             ;A3907E;
-    dw Spritemap_Skultera_11                                             ;A39080;
-    dw $0006                                                             ;A39082;
-    dw Spritemap_Skultera_12                                             ;A39084;
-    dw $0008                                                             ;A39086;
-    dw Spritemap_Skultera_13                                             ;A39088;
-    dw $000A                                                             ;A3908A;
-    dw Spritemap_Skultera_14                                             ;A3908C;
-    dw $000D                                                             ;A3908E;
-    dw Spritemap_Skultera_15                                             ;A39090;
+    dw $000D,Spritemap_Skultera_E                                        ;A39072;
+    dw $000A,Spritemap_Skultera_F                                        ;A39076;
+    dw $0008,Spritemap_Skultera_10                                       ;A3907A;
+    dw $0006,Spritemap_Skultera_11                                       ;A3907E;
+    dw $0006,Spritemap_Skultera_12                                       ;A39082;
+    dw $0008,Spritemap_Skultera_13                                       ;A39086;
+    dw $000A,Spritemap_Skultera_14                                       ;A3908A;
+    dw $000D,Spritemap_Skultera_15                                       ;A3908E;
     dw Instruction_Skultera_SetTurnFinishedFlag                          ;A39092;
     dw Instruction_Common_Sleep                                          ;A39094;
 
@@ -1916,270 +1691,171 @@ RTL_A39289:
 
 
 Spritemap_Skultera_0:
-    dw $0005,$C3F2                                                       ;A3928A;
-    db $00                                                               ;A3928E;
-    dw $2104,$C3F2                                                       ;A3928F;
-    db $F0                                                               ;A39293;
-    dw $2100,$01FE                                                       ;A39294;
-    db $FD                                                               ;A39298;
-    dw $2120,$0003                                                       ;A39299;
-    db $FE                                                               ;A3929D;
-    dw $2121,$0008                                                       ;A3929E;
-    db $FE                                                               ;A392A2;
-    dw $2123                                                             ;A392A3;
+    dw $0005                                                             ;A3928A;
+    %spritemapEntry(1, $43F2, $00, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $43F2, $F0, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1FE, $FD, 0, 0, 2, 0, $120)
+    %spritemapEntry(0, $03, $FE, 0, 0, 2, 0, $121)
+    %spritemapEntry(0, $08, $FE, 0, 0, 2, 0, $123)
 
 Spritemap_Skultera_1:
-    dw $0005,$C3F2                                                       ;A392A5;
-    db $00                                                               ;A392A9;
-    dw $2102,$C3F2                                                       ;A392AA;
-    db $F0                                                               ;A392AE;
-    dw $2100,$01FE                                                       ;A392AF;
-    db $FE                                                               ;A392B3;
-    dw $2121,$0003                                                       ;A392B4;
-    db $00                                                               ;A392B8;
-    dw $2122,$0008                                                       ;A392B9;
-    db $FE                                                               ;A392BD;
-    dw $2124                                                             ;A392BE;
+    dw $0005                                                             ;A392A5;
+    %spritemapEntry(1, $43F2, $00, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $43F2, $F0, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1FE, $FE, 0, 0, 2, 0, $121)
+    %spritemapEntry(0, $03, $00, 0, 0, 2, 0, $122)
+    %spritemapEntry(0, $08, $FE, 0, 0, 2, 0, $124)
 
 Spritemap_Skultera_2:
-    dw $0005,$C3F2                                                       ;A392C0;
-    db $00                                                               ;A392C4;
-    dw $2102,$C3F2                                                       ;A392C5;
-    db $F0                                                               ;A392C9;
-    dw $2100,$01FE                                                       ;A392CA;
-    db $00                                                               ;A392CE;
-    dw $2122,$0003                                                       ;A392CF;
-    db $FD                                                               ;A392D3;
-    dw $2120,$0008                                                       ;A392D4;
-    db $FE                                                               ;A392D8;
-    dw $2125                                                             ;A392D9;
+    dw $0005                                                             ;A392C0;
+    %spritemapEntry(1, $43F2, $00, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $43F2, $F0, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1FE, $00, 0, 0, 2, 0, $122)
+    %spritemapEntry(0, $03, $FD, 0, 0, 2, 0, $120)
+    %spritemapEntry(0, $08, $FE, 0, 0, 2, 0, $125)
 
 Spritemap_Skultera_3:
-    dw $0005,$0008                                                       ;A392DB;
-    db $FE                                                               ;A392DF;
-    dw $2123,$0003                                                       ;A392E0;
-    db $FE                                                               ;A392E4;
-    dw $2121,$01FE                                                       ;A392E5;
-    db $FD                                                               ;A392E9;
-    dw $2120,$C3F2                                                       ;A392EA;
-    db $00                                                               ;A392EE;
-    dw $2102,$C3F2                                                       ;A392EF;
-    db $F0                                                               ;A392F3;
-    dw $2100                                                             ;A392F4;
+    dw $0005                                                             ;A392DB;
+    %spritemapEntry(0, $08, $FE, 0, 0, 2, 0, $123)
+    %spritemapEntry(0, $03, $FE, 0, 0, 2, 0, $121)
+    %spritemapEntry(0, $1FE, $FD, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $43F2, $00, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $43F2, $F0, 0, 0, 2, 0, $100)
 
 Spritemap_Skultera_4:
-    dw $0005,$C3F2                                                       ;A392F6;
-    db $00                                                               ;A392FA;
-    dw $2108,$C3F2                                                       ;A392FB;
-    db $F0                                                               ;A392FF;
-    dw $2106,$01FC                                                       ;A39300;
-    db $FE                                                               ;A39304;
-    dw $2121,$0001                                                       ;A39305;
-    db $00                                                               ;A39309;
-    dw $2122,$0006                                                       ;A3930A;
-    db $FE                                                               ;A3930E;
-    dw $2124                                                             ;A3930F;
+    dw $0005                                                             ;A392F6;
+    %spritemapEntry(1, $43F2, $00, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $43F2, $F0, 0, 0, 2, 0, $106)
+    %spritemapEntry(0, $1FC, $FE, 0, 0, 2, 0, $121)
+    %spritemapEntry(0, $01, $00, 0, 0, 2, 0, $122)
+    %spritemapEntry(0, $06, $FE, 0, 0, 2, 0, $124)
 
 Spritemap_Skultera_5:
-    dw $0004,$C3F2                                                       ;A39311;
-    db $00                                                               ;A39315;
-    dw $210C,$C3F2                                                       ;A39316;
-    db $F0                                                               ;A3931A;
-    dw $210A,$01FE                                                       ;A3931B;
-    db $FD                                                               ;A3931F;
-    dw $2120,$0003                                                       ;A39320;
-    db $FE                                                               ;A39324;
-    dw $2125                                                             ;A39325;
+    dw $0004                                                             ;A39311;
+    %spritemapEntry(1, $43F2, $00, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $43F2, $F0, 0, 0, 2, 0, $10A)
+    %spritemapEntry(0, $1FE, $FD, 0, 0, 2, 0, $120)
+    %spritemapEntry(0, $03, $FE, 0, 0, 2, 0, $125)
 
 Spritemap_Skultera_6:
-    dw $0004,$C3F0                                                       ;A39327;
-    db $00                                                               ;A3932B;
-    dw $6108,$C3F0                                                       ;A3932C;
-    db $F0                                                               ;A39330;
-    dw $6106,$01EE                                                       ;A39331;
-    db $FD                                                               ;A39335;
-    dw $6120,$01FD                                                       ;A39336;
-    db $FE                                                               ;A3933A;
-    dw $2123                                                             ;A3933B;
+    dw $0004                                                             ;A39327;
+    %spritemapEntry(1, $43F0, $00, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $43F0, $F0, 0, 1, 2, 0, $106)
+    %spritemapEntry(0, $1EE, $FD, 0, 1, 2, 0, $120)
+    %spritemapEntry(0, $1FD, $FE, 0, 0, 2, 0, $123)
 
 Spritemap_Skultera_7:
-    dw $0003,$C3F2                                                       ;A3933D;
-    db $F0                                                               ;A39341;
-    dw $6100,$C3F2                                                       ;A39342;
-    db $00                                                               ;A39346;
-    dw $6102,$01EF                                                       ;A39347;
-    db $FD                                                               ;A3934B;
-    dw $6121                                                             ;A3934C;
+    dw $0003                                                             ;A3933D;
+    %spritemapEntry(1, $43F2, $F0, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $43F2, $00, 0, 1, 2, 0, $102)
+    %spritemapEntry(0, $1EF, $FD, 0, 1, 2, 0, $121)
 
 Spritemap_Skultera_8:
-    dw $0004,$C3F5                                                       ;A3934E;
-    db $00                                                               ;A39352;
-    dw $6104,$C3F5                                                       ;A39353;
-    db $F0                                                               ;A39357;
-    dw $6100,$01F1                                                       ;A39358;
-    db $00                                                               ;A3935C;
-    dw $6122,$01EF                                                       ;A3935D;
-    db $FD                                                               ;A39361;
-    dw $6120                                                             ;A39362;
+    dw $0004                                                             ;A3934E;
+    %spritemapEntry(1, $43F5, $00, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $43F5, $F0, 0, 1, 2, 0, $100)
+    %spritemapEntry(0, $1F1, $00, 0, 1, 2, 0, $122)
+    %spritemapEntry(0, $1EF, $FD, 0, 1, 2, 0, $120)
 
 Spritemap_Skultera_9:
-    dw $0005,$C3FB                                                       ;A39364;
-    db $00                                                               ;A39368;
-    dw $6102,$C3FB                                                       ;A39369;
-    db $F0                                                               ;A3936D;
-    dw $6100,$01F7                                                       ;A3936E;
-    db $FD                                                               ;A39372;
-    dw $6120,$01F2                                                       ;A39373;
-    db $00                                                               ;A39377;
-    dw $6122,$01F0                                                       ;A39378;
-    db $FE                                                               ;A3937C;
-    dw $6124                                                             ;A3937D;
+    dw $0005                                                             ;A39364;
+    %spritemapEntry(1, $43FB, $00, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $43FB, $F0, 0, 1, 2, 0, $100)
+    %spritemapEntry(0, $1F7, $FD, 0, 1, 2, 0, $120)
+    %spritemapEntry(0, $1F2, $00, 0, 1, 2, 0, $122)
+    %spritemapEntry(0, $1F0, $FE, 0, 1, 2, 0, $124)
 
 Spritemap_Skultera_A:
-    dw $0005,$C3FF                                                       ;A3937F;
-    db $00                                                               ;A39383;
-    dw $6102,$C3FF                                                       ;A39384;
-    db $F0                                                               ;A39388;
-    dw $6100,$01FB                                                       ;A39389;
-    db $00                                                               ;A3938D;
-    dw $6122,$01F6                                                       ;A3938E;
-    db $FD                                                               ;A39392;
-    dw $6120,$01F1                                                       ;A39393;
-    db $FE                                                               ;A39397;
-    dw $6125                                                             ;A39398;
+    dw $0005                                                             ;A3937F;
+    %spritemapEntry(1, $43FF, $00, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $43FF, $F0, 0, 1, 2, 0, $100)
+    %spritemapEntry(0, $1FB, $00, 0, 1, 2, 0, $122)
+    %spritemapEntry(0, $1F6, $FD, 0, 1, 2, 0, $120)
+    %spritemapEntry(0, $1F1, $FE, 0, 1, 2, 0, $125)
 
 Spritemap_Skultera_B:
-    dw $0005,$C3FE                                                       ;A3939A;
-    db $F0                                                               ;A3939E;
-    dw $6100,$C3FE                                                       ;A3939F;
-    db $00                                                               ;A393A3;
-    dw $6104,$01FA                                                       ;A393A4;
-    db $FD                                                               ;A393A8;
-    dw $6120,$01F5                                                       ;A393A9;
-    db $FE                                                               ;A393AD;
-    dw $6121,$01F0                                                       ;A393AE;
-    db $FE                                                               ;A393B2;
-    dw $6123                                                             ;A393B3;
+    dw $0005                                                             ;A3939A;
+    %spritemapEntry(1, $43FE, $F0, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $43FE, $00, 0, 1, 2, 0, $104)
+    %spritemapEntry(0, $1FA, $FD, 0, 1, 2, 0, $120)
+    %spritemapEntry(0, $1F5, $FE, 0, 1, 2, 0, $121)
+    %spritemapEntry(0, $1F0, $FE, 0, 1, 2, 0, $123)
 
 Spritemap_Skultera_C:
-    dw $0005,$C3FE                                                       ;A393B5;
-    db $00                                                               ;A393B9;
-    dw $6102,$C3FE                                                       ;A393BA;
-    db $F0                                                               ;A393BE;
-    dw $6100,$01FA                                                       ;A393BF;
-    db $FE                                                               ;A393C3;
-    dw $6121,$01F5                                                       ;A393C4;
-    db $00                                                               ;A393C8;
-    dw $6122,$01F0                                                       ;A393C9;
-    db $FE                                                               ;A393CD;
-    dw $6124                                                             ;A393CE;
+    dw $0005                                                             ;A393B5;
+    %spritemapEntry(1, $43FE, $00, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $43FE, $F0, 0, 1, 2, 0, $100)
+    %spritemapEntry(0, $1FA, $FE, 0, 1, 2, 0, $121)
+    %spritemapEntry(0, $1F5, $00, 0, 1, 2, 0, $122)
+    %spritemapEntry(0, $1F0, $FE, 0, 1, 2, 0, $124)
 
 Spritemap_Skultera_D:
-    dw $0005,$C3FE                                                       ;A393D0;
-    db $00                                                               ;A393D4;
-    dw $6102,$C3FE                                                       ;A393D5;
-    db $F0                                                               ;A393D9;
-    dw $6100,$01FA                                                       ;A393DA;
-    db $00                                                               ;A393DE;
-    dw $6122,$01F5                                                       ;A393DF;
-    db $FD                                                               ;A393E3;
-    dw $6120,$01F0                                                       ;A393E4;
-    db $FE                                                               ;A393E8;
-    dw $6125                                                             ;A393E9;
+    dw $0005                                                             ;A393D0;
+    %spritemapEntry(1, $43FE, $00, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $43FE, $F0, 0, 1, 2, 0, $100)
+    %spritemapEntry(0, $1FA, $00, 0, 1, 2, 0, $122)
+    %spritemapEntry(0, $1F5, $FD, 0, 1, 2, 0, $120)
+    %spritemapEntry(0, $1F0, $FE, 0, 1, 2, 0, $125)
 
 Spritemap_Skultera_E:
-    dw $0005,$01F0                                                       ;A393EB;
-    db $FE                                                               ;A393EF;
-    dw $6123,$01F5                                                       ;A393F0;
-    db $FE                                                               ;A393F4;
-    dw $6121,$01FA                                                       ;A393F5;
-    db $FD                                                               ;A393F9;
-    dw $6120,$C3FE                                                       ;A393FA;
-    db $00                                                               ;A393FE;
-    dw $6102,$C3FE                                                       ;A393FF;
-    db $F0                                                               ;A39403;
-    dw $6100                                                             ;A39404;
+    dw $0005                                                             ;A393EB;
+    %spritemapEntry(0, $1F0, $FE, 0, 1, 2, 0, $123)
+    %spritemapEntry(0, $1F5, $FE, 0, 1, 2, 0, $121)
+    %spritemapEntry(0, $1FA, $FD, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $43FE, $00, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $43FE, $F0, 0, 1, 2, 0, $100)
 
 Spritemap_Skultera_F:
-    dw $0005,$C3FE                                                       ;A39406;
-    db $00                                                               ;A3940A;
-    dw $6108,$C3FE                                                       ;A3940B;
-    db $F0                                                               ;A3940F;
-    dw $6106,$01FC                                                       ;A39410;
-    db $FE                                                               ;A39414;
-    dw $6121,$01F7                                                       ;A39415;
-    db $00                                                               ;A39419;
-    dw $6122,$01F2                                                       ;A3941A;
-    db $FE                                                               ;A3941E;
-    dw $6124                                                             ;A3941F;
+    dw $0005                                                             ;A39406;
+    %spritemapEntry(1, $43FE, $00, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $43FE, $F0, 0, 1, 2, 0, $106)
+    %spritemapEntry(0, $1FC, $FE, 0, 1, 2, 0, $121)
+    %spritemapEntry(0, $1F7, $00, 0, 1, 2, 0, $122)
+    %spritemapEntry(0, $1F2, $FE, 0, 1, 2, 0, $124)
 
 Spritemap_Skultera_10:
-    dw $0004,$C3FE                                                       ;A39421;
-    db $00                                                               ;A39425;
-    dw $610C,$C3FE                                                       ;A39426;
-    db $F0                                                               ;A3942A;
-    dw $610A,$01FA                                                       ;A3942B;
-    db $FD                                                               ;A3942F;
-    dw $6120,$01F5                                                       ;A39430;
-    db $FE                                                               ;A39434;
-    dw $6125                                                             ;A39435;
+    dw $0004                                                             ;A39421;
+    %spritemapEntry(1, $43FE, $00, 0, 1, 2, 0, $10C)
+    %spritemapEntry(1, $43FE, $F0, 0, 1, 2, 0, $10A)
+    %spritemapEntry(0, $1FA, $FD, 0, 1, 2, 0, $120)
+    %spritemapEntry(0, $1F5, $FE, 0, 1, 2, 0, $125)
 
 Spritemap_Skultera_11:
-    dw $0004,$C200                                                       ;A39437;
-    db $00                                                               ;A3943B;
-    dw $2108,$C200                                                       ;A3943C;
-    db $F0                                                               ;A39440;
-    dw $2106,$000A                                                       ;A39441;
-    db $FD                                                               ;A39445;
-    dw $2120,$01FB                                                       ;A39446;
-    db $FE                                                               ;A3944A;
-    dw $6123                                                             ;A3944B;
+    dw $0004                                                             ;A39437;
+    %spritemapEntry(1, $4200, $00, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $4200, $F0, 0, 0, 2, 0, $106)
+    %spritemapEntry(0, $0A, $FD, 0, 0, 2, 0, $120)
+    %spritemapEntry(0, $1FB, $FE, 0, 1, 2, 0, $123)
 
 Spritemap_Skultera_12:
-    dw $0003,$C3FE                                                       ;A3944D;
-    db $F0                                                               ;A39451;
-    dw $2100,$C3FE                                                       ;A39452;
-    db $00                                                               ;A39456;
-    dw $2102,$0009                                                       ;A39457;
-    db $FD                                                               ;A3945B;
-    dw $2121                                                             ;A3945C;
+    dw $0003                                                             ;A3944D;
+    %spritemapEntry(1, $43FE, $F0, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $43FE, $00, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $09, $FD, 0, 0, 2, 0, $121)
 
 Spritemap_Skultera_13:
-    dw $0004,$C3FB                                                       ;A3945E;
-    db $00                                                               ;A39462;
-    dw $2104,$C3FB                                                       ;A39463;
-    db $F0                                                               ;A39467;
-    dw $2100,$0007                                                       ;A39468;
-    db $00                                                               ;A3946C;
-    dw $2122,$0009                                                       ;A3946D;
-    db $FD                                                               ;A39471;
-    dw $2120                                                             ;A39472;
+    dw $0004                                                             ;A3945E;
+    %spritemapEntry(1, $43FB, $00, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $43FB, $F0, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $07, $00, 0, 0, 2, 0, $122)
+    %spritemapEntry(0, $09, $FD, 0, 0, 2, 0, $120)
 
 Spritemap_Skultera_14:
-    dw $0005,$C3F5                                                       ;A39474;
-    db $00                                                               ;A39478;
-    dw $2102,$C3F5                                                       ;A39479;
-    db $F0                                                               ;A3947D;
-    dw $2100,$0001                                                       ;A3947E;
-    db $FD                                                               ;A39482;
-    dw $2120,$0006                                                       ;A39483;
-    db $00                                                               ;A39487;
-    dw $2122,$0008                                                       ;A39488;
-    db $FE                                                               ;A3948C;
-    dw $2124                                                             ;A3948D;
+    dw $0005                                                             ;A39474;
+    %spritemapEntry(1, $43F5, $00, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $43F5, $F0, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $01, $FD, 0, 0, 2, 0, $120)
+    %spritemapEntry(0, $06, $00, 0, 0, 2, 0, $122)
+    %spritemapEntry(0, $08, $FE, 0, 0, 2, 0, $124)
 
 Spritemap_Skultera_15:
-    dw $0005,$C3F1                                                       ;A3948F;
-    db $00                                                               ;A39493;
-    dw $2102,$C3F1                                                       ;A39494;
-    db $F0                                                               ;A39498;
-    dw $2100,$01FD                                                       ;A39499;
-    db $00                                                               ;A3949D;
-    dw $2122,$0002                                                       ;A3949E;
-    db $FD                                                               ;A394A2;
-    dw $2120,$0007                                                       ;A394A3;
-    db $FE                                                               ;A394A7;
-    dw $2125                                                             ;A394A8;
+    dw $0005                                                             ;A3948F;
+    %spritemapEntry(1, $43F1, $00, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $43F1, $F0, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1FD, $00, 0, 0, 2, 0, $122)
+    %spritemapEntry(0, $02, $FD, 0, 0, 2, 0, $120)
+    %spritemapEntry(0, $07, $FE, 0, 0, 2, 0, $125)
+
 
 UNUSED_SpritemapPointers_Skultera:
     dw Spritemap_Skultera_0                                              ;A394AA;
