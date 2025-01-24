@@ -1558,7 +1558,7 @@ SpawnDustCloudsForMotherBrainsAscent:
     dw $003D,$0054,$0020,$0035,$005A,$0043,$0067,$0029                   ;A98F7F;
 
 MotherBrainFightSpriteTileTransferEntries:
-  .legs
+  .legs:
     dw $0200                                                             ;A98F8F;
     dl Tiles_MotherBrainLegs                                             ;A98F91;
     dw $7400,$0200                                                       ;A98F94;
@@ -1577,7 +1577,7 @@ MotherBrainFightSpriteTileTransferEntries:
     dl Tiles_MotherBrainLegs+$E00                                        ;A98FC2;
     dw $7B00                                                             ;A98FC5;
 
-  .attacks
+  .attacks:
     dw $0200                                                             ;A98FC7;
     dl Tiles_MotherBrain_BombShells_DeathBeam_UnusedGFX                  ;A98FC9;
     dw $7C00,$0200                                                       ;A98FCC;
@@ -1588,7 +1588,7 @@ MotherBrainFightSpriteTileTransferEntries:
     dl Tiles_MotherBrain_BombShells_DeathBeam_UnusedGFX+$600             ;A98FDE;
     dw $7F00,$0000                                                       ;A98FE1;
 
-  .babyMetroid
+  .babyMetroid:
     dw $0200                                                             ;A98FE5;
     dl Tiles_BabyMetroid+$400                                            ;A98FE7;
     dw $7C00,$0200                                                       ;A98FEA;
@@ -1599,7 +1599,7 @@ MotherBrainFightSpriteTileTransferEntries:
     dl Tiles_BabyMetroid+$A00                                            ;A98FFC;
     dw $7F00,$0000                                                       ;A98FFF;
 
-  .corpse
+  .corpse:
     dw $01C0                                                             ;A99003;
     dl Tiles_CorpseMotherBrain                                           ;A99005;
     dw $7A00,$01C0                                                       ;A99008;
@@ -1614,7 +1614,7 @@ MotherBrainFightSpriteTileTransferEntries:
     dl Tiles_CorpseMotherBrain+$A00                                      ;A99028;
     dw $7F00,$0000                                                       ;A9902B;
 
-  .explodedDoor
+  .explodedDoor:
     dw $0200                                                             ;A9902F;
     dl Tiles_MotherBrainExplodedEscapeDoorParticles                      ;A99031;
     dw $7000,$0200                                                       ;A99034;
@@ -10938,21 +10938,21 @@ EnemyTouch_CorpseSidehopper:
 
 
 CorpseRottingDefinitions_Torizo:
-  .rotTablePointer
+  .rotTablePointer:
     dw $9000                                                             ;A9DD58;
-  .VRAMTransferPointer
+  .VRAMTransferPointer:
     dw $0000                                                             ;A9DD5A;
-  .rotEntryCopyFunction
+  .rotEntryCopyFunction:
     dw CorpseRottingRotEntry_Copy_Torizo                                 ;A9DD5C;
-  .rotEntryMoveFunction
+  .rotEntryMoveFunction:
     dw CorpseRottingRotEntry_Move_Torizo                                 ;A9DD5E;
-  .height
+  .height:
     dw $0060                                                             ;A9DD60;
-  .initFunctionPointer
+  .initFunctionPointer:
     dw CorpseRottingInit_Torizo                                          ;A9DD62;
-  .tileDataRowOffsetsPointer
+  .tileDataRowOffsetsPointer:
     dw CorpseRottingTileRowOffsets_Torizo                                ;A9DD64;
-  .rotEntryFinishedHook
+  .rotEntryFinishedHook:
     dw CorpseRottingRotEntryFinishedHook_CorpseTorizo                    ;A9DD66;
 
 CorpseRottingDefinitions_Sidehopper_Param1_0:

@@ -890,9 +890,9 @@ SamusBlockCollisionDetection_Horizontal_Slope_NonSquare:
 ;        _________ Unused. Seem to be speed modifiers, added to or subtracted from Samus X base subspeed when moving down or up the slope respectively
 ;       |      ___ Adjusted distance multiplier * 100h
 ;       |     |
-  .speedModifiers
+  .speedModifiers:
     dw $0000                                                             ;948586;
-  .adjustedDistanceMultiplier
+  .adjustedDistanceMultiplier:
     dw       $0100                                                       ;948588;
     dw $0000,$0100
     dw $0000,$0100
@@ -3247,13 +3247,13 @@ CLCRTS_949812:
     CLC                                                                  ;94985B;
     RTS                                                                  ;94985C;
 
-  .data1
+  .data1:
     dw $0000                                                             ;94985D;
-  .data2
+  .data2:
     dw       $0005                                                       ;94985F;
-  .data3
+  .data3:
     dw $0000                                                             ;949861;
-  .data4
+  .data4:
     dw       $0002                                                       ;949863;
 
 

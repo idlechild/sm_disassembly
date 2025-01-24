@@ -1876,9 +1876,9 @@ DeathSequenceSuitExplosionPaletteIndexTable:
 ;        _____ Timer
 ;       |    _ Palette table index (for SamusDeathSequencePalettePointers_Suit_power and SamusDeathSequencePalettePointers_Suitless)
 ;       |   |
-  .timer
+  .timer:
     db $15                                                               ;9BB823;
-  .index
+  .index:
     db     $00                                                           ;9BB824;
     db $06,$02
     db $03,$03
@@ -3380,9 +3380,9 @@ GrappleBeamTilesPointers:
 
 ; Indexed by [direction grapple is fired] * 4.
 ConnectingToGrappleBlockPointerTable_Default:
-  .next ; Next grapple beam function
+  .next: ; Next grapple beam function
     dw GrappleBeamFunction_Connected_Swinging                            ;9BC3C6;
-  .function ; Function to execute
+  .function: ; Function to execute
     dw HandleConnectingGrapple_SwingingClockwise                         ;9BC3C8;
     dw GrappleBeamFunction_Connected_Swinging                            ;9BC3CA;
     dw HandleConnectingGrapple_SwingingClockwise                         ;9BC3CC;
@@ -3404,9 +3404,9 @@ ConnectingToGrappleBlockPointerTable_Default:
     dw HandleConnectingGrapple_SwingingAntiClockwise                     ;9BC3EC;
 
 ConnectingToGrappleBlockPointerTable_MovingVertically:
-  .next
+  .next:
     dw GrappleBeamFunction_Connected_Swinging                            ;9BC3EE;
-  .function
+  .function:
     dw HandleConnectingGrapple_SwingingClockwise                         ;9BC3F0;
     dw GrappleBeamFunction_Connected_Swinging                            ;9BC3F2;
     dw HandleConnectingGrapple_SwingingClockwise                         ;9BC3F4;
@@ -3428,9 +3428,9 @@ ConnectingToGrappleBlockPointerTable_MovingVertically:
     dw HandleConnectingGrapple_SwingingAntiClockwise                     ;9BC414;
 
 ConnectingToGrappleBlockPointerTable_Crouching:
-  .next
+  .next:
     dw GrappleBeamFunction_Connected_Swinging                            ;9BC416;
-  .function
+  .function:
     dw HandleConnectingGrapple_SwingingClockwise                         ;9BC418;
     dw GrappleBeamFunction_Connected_Swinging                            ;9BC41A;
     dw HandleConnectingGrapple_SwingingClockwise                         ;9BC41C;
@@ -3458,16 +3458,16 @@ GrappleBeamSpecialAngles:
 ;       |     |      ______________ X offset
 ;       |     |     |      ________ Y offset
 ;       |     |     |     |
-  .angle                                                                 ;9BC43E;
-    dw $D680                                                             
-  .pose                                                                  ;9BC440;
-    dw       $00B6                                                             
-  .XOffset                                                               ;9BC442;
-    dw             $FFE2                                                             
-  .YOffset                                                               ;9BC444;
-    dw                   $FFE8                                                             
+  .angle:                                                                ;9BC43E;
+    dw $D680
+  .pose:                                                                 ;9BC440;
+    dw       $00B6
+  .XOffset:                                                              ;9BC442;
+    dw             $FFE2
+  .YOffset:                                                              ;9BC444;
+    dw                   $FFE8
   .grappleFunction:                                                      ;9BC446;
-    dw GrappleBeamFunction_Connected_LockedInPlace                       
+    dw GrappleBeamFunction_Connected_LockedInPlace
     dw $2A80,$00B7,$001E,$FFE8                                           ;9BC448;
     dw GrappleBeamFunction_Connected_LockedInPlace                       ;9BC450;
     dw $B380,$00B6,$FFE4,$FFF8                                           ;9BC452;

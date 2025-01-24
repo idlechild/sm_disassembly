@@ -14746,7 +14746,7 @@ SpawnTopZebetite:
     JSL.L SpawnEnemy                                                     ;A6FCDC;
     RTS                                                                  ;A6FCE0;
 
-  .enemy
+  .enemy:
     dw EnemyHeaders_Zebetite                                             ;A6FCE1;
     dw $0000,$0000,$0000,$2000,$0000,$0000,$0000                         ;A6FCE3;
 
@@ -14755,7 +14755,7 @@ SpawnBottomZebetite:
     JSL.L SpawnEnemy                                                     ;A6FCF4;
     RTS                                                                  ;A6FCF8;
 
-  .enemy
+  .enemy:
     dw EnemyHeaders_Zebetite                                             ;A6FCF9;
     dw $0000,$0000,$0000,$2000,$0000,$0002,$0000                         ;A6FCFB;
 

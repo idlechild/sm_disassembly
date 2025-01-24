@@ -2326,7 +2326,7 @@ DraygonReaction_Common:
     BEQ ..keepLeft                                                       ;A59625;
     LDY.W #InstList_DraygonArms_FacingRight_Dying_0                      ;A59627;
 
-  ..keepLeft
+  ..keepLeft:
     STY.W $0F92                                                          ;A5962A;
     LDA.W #$0001                                                         ;A5962D;
     STA.W $0F94                                                          ;A59630;
