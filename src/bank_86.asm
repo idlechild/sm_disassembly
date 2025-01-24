@@ -1186,13 +1186,13 @@ SquareSlopeDefinitions_Bank86:                                           ;868729
 ;       |   |    _____ Bottom-left
 ;       |   |   |    _ Bottom-right
 ;       |   |   |   |
-  .topLeft
+  .topLeft:
     db $00
-  .topRight
+  .topRight:
     db     $01
-  .bottomLeft
+  .bottomLeft:
     db         $82
-  .bottomRight
+  .bottomRight:
     db             $83 ; 0: Half height
     db $00,$81,$02,$83 ; 1: Half width
     db $00,$01,$02,$83 ; 2: Quarter
@@ -2581,7 +2581,7 @@ InitAI_EnemyProjectile_CrocomireSpikeWallPieces:
     RTS                                                                  ;869104;
 
 
-  .Ypositions
+  .Ypositions:
 ; Y positions, indexed by [enemy projectile index] - 14h
     dw $0038,$0048,$0058,$0068,$0078,$0088,$0098,$00A8                   ;869105;
 
@@ -2662,19 +2662,19 @@ PreInstruction_EnemyProjectile_CrocomireSpikeWallPieces:
     RTS                                                                  ;8691C2;
 
 
-  .accelerationDelta
+  .accelerationDelta:
 ; X acceleration delta (unit 1/10000h px/frame^3)
     dw $0000,$0000,$0FF0,$0EE0,$0CC0,$0AA0,$0880,$0660                   ;8691C3;
     dw $0440,$0220,$0FF0,$0EE0,$0CC0,$0AA0,$0880,$0660                   ;8691D3;
     dw $0440,$0220                                                       ;8691E3;
 
-  .maxAcceleration
+  .maxAcceleration:
 ; Max X acceleration (unit 1/10000h px/frame^2)
     dw $0000,$0000,$FF00,$EE00,$CC00,$AA00,$8800,$6600                   ;8691E7;
     dw $4400,$2200,$FF00,$EE00,$CC00,$AA00,$8800,$6600                   ;8691F7;
     dw $4400,$2200                                                       ;869207;
 
-  .maxVelocity
+  .maxVelocity:
 ; Max X velocity (unit 1/100h px/frame)
     dw $0000,$0000,$0004,$0004,$0003,$0003,$0002,$0002                   ;86920B;
     dw $0001,$0001,$0006,$0005,$0004,$0003,$0002,$0002                   ;86921B;
@@ -2936,11 +2936,11 @@ Set_RidleyFireball_Afterburn_Properties:
 
 
 EnemyProjectile_PropertyValues:
-  .default
+  .default:
     dw $5003                                                             ;869408;
-  .norfair
+  .norfair:
     dw $503C                                                             ;86940A;
-  .tourian
+  .tourian:
     dw $5050                                                             ;86940C;
 
 PreInstruction_EnemyProjectile_RidleyFireball:
@@ -7498,9 +7498,9 @@ InitAI_EnemyProjectile_EyeDoorSweat:
     STA.W $1ADB,Y                                                        ;86B6AD;
     RTS                                                                  ;86B6B0;
 
-  .Xvelocity
+  .Xvelocity:
     dw $FFC0                                                             ;86B6B1;
-  .Yvelocity
+  .Yvelocity:
     dw       $0200, $0040,$0200                                          ;86B6B3;
 
 
@@ -10801,11 +10801,11 @@ InstList_EnemyProjectile_Delete_duplicate:
     dw Instruction_EnemyProjectile_Delete                                ;86D080;
 
 KagoBug_Constants:
-  .Yacceleration
+  .Yacceleration:
     dw $00E0                                                             ;86D082; Unit 1/100h px/frame²
-  .Xproximity
+  .Xproximity:
     dw $0030                                                             ;86D084; Kago bug will jump towards kago if it's at least this many pixels away
-  .Xvelocity
+  .Xvelocity:
     dw $0200                                                             ;86D086; Unit 1/100h px/frame
 
 InitAI_EnemyProjectile_KagoBug:
@@ -12639,9 +12639,9 @@ InstList_EnemyProjectile_NamiFuneFireball_Right:
     dw InstList_EnemyProjectile_NamiFuneFireball_Right                   ;86DEB4;
 
 NamiFuneFireball_XVelocityTable:
-  .left
+  .left:
     dw $FFC0                                                             ;86DEB6;
-  .right
+  .right:
     dw       $0040, $FF80,$0080, $FF40,$00C0, $FF00,$0100                ;86DEB8;
     dw $FEC0,$0140, $FE80,$0180, $FE40,$01C0, $FE00,$0200                ;86DEC8;
 
@@ -15269,9 +15269,9 @@ InitAI_EnemyProjectile_FallingSpark:
     RTS                                                                  ;86F3D3;
 
 ; This table is one entry too short to be indexed with 1Ch >_<;
-  .distance
+  .distance:
     dw $FFFF                                                             ;86F3D4;
-  .subdistance
+  .subdistance:
     dw       $B800                                                       ;86F3D6;
     dw $FFFF,$C000
     dw $FFFF,$E000

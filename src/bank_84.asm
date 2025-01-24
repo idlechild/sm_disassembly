@@ -1447,7 +1447,7 @@ Instruction_PLM_IncRoomArg_RoomArgFFFF_GotoY:
     INY                                                                  ;848ADE;
     INY                                                                  ;848ADF;
 
-  .return
+  .return:
     RTS                                                                  ;848AE0;
 
 
@@ -6117,7 +6117,7 @@ InsideReaction_QuicksandSurface_SamusIsGrounded:
     LDA.W QuicksandSurface_InsideReaction_distanceOnGround,Y             ;84B453;
     STA.W $0B5B                                                          ;84B456;
 
-  .return
+  .return:
     RTS                                                                  ;84B459;
 
 
@@ -6948,11 +6948,11 @@ PreInst_PLM_AdvanceLavaAsSamusMovesLeft_SetLavaquakeEvent:
 ;       |      _________ Maximum FX Y position
 ;       |     |      ___ FX Y velocity
 ;       |     |     |
-  .targetSamusXpos
+  .targetSamusXpos:
     dw $072B                                                             ;84B876;
-  .maxFXYpos
+  .maxFXYpos:
     dw       $01BF                                                       ;84B878;
-  .FXYVelocity
+  .FXYVelocity:
     dw             $FF50                                                 ;84B87A;
     dw $050A,$0167,$FF20
     dw $0244,$0100,$FF20

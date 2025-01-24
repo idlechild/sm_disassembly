@@ -1020,17 +1020,17 @@ ProjectileDataTable_NonBeam_Bomb:
 
 ProjectileDataTable_NonBeam_BeamExplosion:
     dw $0008                                                             ;938679; Damage is ignored
-  .pointer
+  .pointer:
     dw InstList_SamusProjectile_BeamExplosion                            ;93867B;
 
 ProjectileDataTable_NonBeam_MissileExplosion:
     dw $0008                                                             ;93867D; Damage is ignored
-  .pointer
+  .pointer:
     dw InstList_SamusProjectile_MissileExplosion                         ;93867F;
 
 ProjectileDataTable_NonBeam_BombExplosion:
     dw $0000                                                             ;938681; Damage is ignored
-  .pointer
+  .pointer:
     dw InstList_SamusProjectile_BombExplosion                            ;938683;
 
 ProjectileDataTable_NonBeam_PlasmaSBA:
@@ -1047,7 +1047,7 @@ ProjectileDataTable_NonBeam_SpazerSBA:
 
 ProjectileDataTable_NonBeam_SuperMissileExplosion:
     dw $0008                                                             ;938691; Damage is ignored
-  .pointer
+  .pointer:
     dw InstList_SamusProjectile_SuperMissileExplosion                    ;938693;
 
 UNUSED_ProjectileDataTable_NonBeam_Projectile25_938695:
@@ -3278,9 +3278,9 @@ FlareSpritemapTable_IndexOffsets:
 ;       |      _________ Flare slow sparks (charge beam / hyper beam)
 ;       |     |      ___ Flare fast sparks (charge beam / hyper beam)
 ;       |     |     |
-  .facingRight
+  .facingRight:
     dw $0000,$001E,$0024                                                 ;93A225;
-  .facingLeft
+  .facingLeft:
     dw $0000,$002A,$0030                                                 ;93A22B;
 
 if !FEATURE_KEEP_UNREFERENCED

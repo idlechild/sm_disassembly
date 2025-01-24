@@ -837,15 +837,15 @@ Restore_PPU:
 
 
 MessageDefinitionsPointers:
-  .modifyMessageBox
+  .modifyMessageBox:
     dw Setup_PPU_for_Small_MessageBox                                    ;85869B; 1: Energy tank
-  .drawInitialMessageBox
+  .drawInitialMessageBox:
     dw Write_Small_MessageBox_Tilemap                                    ;85869D;
-  .messageTilemap
+  .messageTilemap:
     dw MessageTilemaps_energyTank                                        ;85869F;
     dw DrawShootButton_SetupPPUForLargeMessageBox                        ;8586A1; 2: Missile
     dw Write_Large_MessageBox_Tilemap                                    ;8586A3;
-  .nextEntryMessageTilemap
+  .nextEntryMessageTilemap:
     dw MessageTilemaps_missile                                           ;8586A5;
     dw DrawShootButton_SetupPPUForLargeMessageBox                        ;8586A7; 3: Super missile
     dw Write_Large_MessageBox_Tilemap                                    ;8586A9;
@@ -959,14 +959,14 @@ Special_Button_Tilemap_Offsets:                                          ;858749
     dw $0000 ; 1Bh: Dummy
 
 MessageTilemaps:
-  .energyTank
+  .energyTank:
 ; '    ENERGY TANK    '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;85877F;
     dw $284E,$284E,$28E4,$28ED,$28E4,$28F1,$28E6,$28F8                   ;85878F;
     dw $284E,$28F3,$28E0,$28ED,$28EA,$284E,$284E,$284E                   ;85879F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;8587AF;
 
-  .missile
+  .missile:
 ; '          MISSILE         '
 ; '                          '
 ; '         |miss|                 '
@@ -988,7 +988,7 @@ MessageTilemaps:
     dw $28B1,$28B2,$28C0,$28C1,$28D1,$28E0,$28D3,$28B5                   ;85889F;
     dw $28B6,$28B7,$28CB,$284E,$284E,$000E,$000E,$000E                   ;8588AF;
 
-  .superMissile
+  .superMissile:
 ; '      SUPER MISSILE       '
 ; '                          '
 ; '         [sup                 '
@@ -1010,7 +1010,7 @@ MessageTilemaps:
     dw $28B1,$28B2,$28C0,$28C1,$28D1,$3CE1,$28D3,$28B5                   ;85899F;
     dw $28B6,$28B7,$28CB,$284E,$284E,$000E,$000E,$000E                   ;8589AF;
 
-  .powerBomb
+  .powerBomb:
 ; '        POWER BOMB        '
 ; '                          '
 ; '       [pow                   '
@@ -1032,7 +1032,7 @@ MessageTilemaps:
     dw $284E,$28BE,$28BF,$28C0,$28C1,$28D1,$38F1,$28D3                   ;858A9F;
     dw $28B5,$28B6,$28B7,$28CB,$284E,$000E,$000E,$000E                   ;858AAF;
 
-  .grapplingBeam
+  .grapplingBeam:
 ; '      GRAPPLING BEAM      '
 ; '                          '
 ; '        [gra                   '
@@ -1054,7 +1054,7 @@ MessageTilemaps:
     dw $284E,$28B3,$28B4,$28C0,$28C1,$28D1,$38F8,$28D3                   ;858B9F;
     dw $28B5,$28B6,$28B7,$28CB,$284E,$000E,$000E,$000E                   ;858BAF;
 
-  .xrayScope
+  .xrayScope:
 ; '        X-RAY SCOPE       '
 ; '                          '
 ; '        [x-                   '
@@ -1076,49 +1076,49 @@ MessageTilemaps:
     dw $284E,$28B3,$28B4,$28C0,$28C1,$28D1,$2CF7,$28D3                   ;858C9F;
     dw $28B5,$28B6,$28B7,$28CB,$284E,$000E,$000E,$000E                   ;858CAF;
 
-  .variaSuit
+  .variaSuit:
 ; '    VARIA SUIT     '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858CBF;
     dw $284E,$284E,$28F5,$28E0,$28F1,$28E8,$28E0,$284E                   ;858CCF;
     dw $28F2,$28F4,$28E8,$28F3,$284E,$284E,$284E,$284E                   ;858CDF;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;858CEF;
 
-  .springBall
+  .springBall:
 ; '    SPRING BALL    '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858CFF;
     dw $284E,$284E,$28F2,$28EF,$28F1,$28E8,$28ED,$28E6                   ;858D0F;
     dw $284E,$28E1,$28E0,$28EB,$28EB,$284E,$284E,$284E                   ;858D1F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;858D2F;
 
-  .morphingBall
+  .morphingBall:
 ; '   MORPHING BALL   '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858D3F;
     dw $284E,$28EC,$28EE,$28F1,$28EF,$28E7,$28E8,$28ED                   ;858D4F;
     dw $28E6,$284E,$28E1,$28E0,$28EB,$28EB,$284E,$284E                   ;858D5F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;858D6F;
 
-  .screwAttack
+  .screwAttack:
 ; '   SCREW ATTACK    '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858D7F;
     dw $284E,$28F2,$28E2,$28F1,$28E4,$28F6,$284E,$28E0                   ;858D8F;
     dw $28F3,$28F3,$28E0,$28E2,$28EA,$284E,$284E,$284E                   ;858D9F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;858DAF;
 
-  .hiJumpBoots
+  .hiJumpBoots:
 ; '   HI-JUMP BOOTS   '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858DBF;
     dw $284E,$28E7,$28E8,$28CF,$28E9,$28F4,$28EC,$28EF                   ;858DCF;
     dw $284E,$28E1,$28EE,$28EE,$28F3,$28F2,$284E,$284E                   ;858DDF;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;858DEF;
 
-  .spaceJump
+  .spaceJump:
 ; '    SPACE JUMP     '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858DFF;
     dw $284E,$284E,$28F2,$28EF,$28E0,$28E2,$28E4,$284E                   ;858E0F;
     dw $28E9,$28F4,$28EC,$28EF,$284E,$284E,$284E,$284E                   ;858E1F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;858E2F;
 
-  .speedBooster
+  .speedBooster:
 ; '      SPEED BOOSTER       '
 ; '                          '
 ; '                          '
@@ -1140,42 +1140,42 @@ MessageTilemaps:
     dw $38D0,$28D3,$28B5,$28B6,$28B7,$284E,$28C2,$284E                   ;858F1F;
     dw $28BC,$28BD,$28CB,$284E,$284E,$000E,$000E,$000E                   ;858F2F;
 
-  .chargeBeam
+  .chargeBeam:
 ; '    CHARGE BEAM    '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858F3F;
     dw $284E,$284E,$28E2,$28E7,$28E0,$28F1,$28E6,$28E4                   ;858F4F;
     dw $284E,$28E1,$28E4,$28E0,$28EC,$284E,$284E,$284E                   ;858F5F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;858F6F;
 
-  .iceBeam
+  .iceBeam:
 ; '     ICE BEAM      '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858F7F;
     dw $284E,$284E,$284E,$28E8,$28E2,$28E4,$284E,$28E1                   ;858F8F;
     dw $28E4,$28E0,$28EC,$284E,$284E,$284E,$284E,$284E                   ;858F9F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;858FAF;
 
-  .waveBeam
+  .waveBeam:
 ; '     WAVE BEAM     '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858FBF;
     dw $284E,$284E,$284E,$28F6,$28E0,$28F5,$28E4,$284E                   ;858FCF;
     dw $28E1,$28E4,$28E0,$28EC,$284E,$284E,$284E,$284E                   ;858FDF;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;858FEF;
 
-  .spazer
+  .spazer:
 ; '      SPAZER       '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;858FFF;
     dw $284E,$284E,$284E,$284E,$28F2,$28EF,$28E0,$28F9                   ;85900F;
     dw $28E4,$28F1,$284E,$284E,$284E,$284E,$284E,$284E                   ;85901F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;85902F;
 
-  .plasmaBeam
+  .plasmaBeam:
 ; '    PLASMA BEAM    '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;85903F;
     dw $284E,$284E,$28EF,$28EB,$28E0,$28F2,$28EC,$28E0                   ;85904F;
     dw $284E,$28E1,$28E4,$28E0,$28EC,$284E,$284E,$284E                   ;85905F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;85906F;
 
-  .bomb
+  .bomb:
 ; '           BOMB           '
 ; '  o                       '
 ; '  T-                      '
@@ -1197,7 +1197,7 @@ MessageTilemaps:
     dw $28BE,$28BF,$28C0,$28C1,$28D1,$38EB,$28D3,$28B5                   ;85915F;
     dw $28B6,$28B7,$28CB,$284E,$284E,$000E,$000E,$000E                   ;85916F;
 
-  .map
+  .map:
 ; '  MAP DATA ACCESS  '
 ; '                   '
 ; '    COMPLETED.     '
@@ -1214,7 +1214,7 @@ MessageTilemaps:
     dw $3CF3,$3CE4,$3CE3,$3CFA,$3C4E,$3C4E,$3C4E,$3C4E                   ;85921F;
     dw $3C4E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;85922F;
 
-  .energyRecharge
+  .energyRecharge:
 ; '  ENERGY RECHARGE  '
 ; '                   '
 ; '    COMPLETED.     '
@@ -1231,7 +1231,7 @@ MessageTilemaps:
     dw $3CF3,$3CE4,$3CE3,$3CFA,$3C4E,$3C4E,$3C4E,$3C4E                   ;8592DF;
     dw $3C4E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;8592EF;
 
-  .missileReload
+  .missileReload:
 ; '  MISSILE RELOAD   '
 ; '                   '
 ; '    COMPLETED.     '
@@ -1248,7 +1248,7 @@ MessageTilemaps:
     dw $3CF3,$3CE4,$3CE3,$3CFA,$384E,$384E,$3C4E,$3C4E                   ;85939F;
     dw $3C4E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;8593AF;
 
-  .save
+  .save:
 ; '  WOULD YOU LIKE   '
 ; '  TO SAVE?         '
 ; '                   '
@@ -1270,28 +1270,28 @@ MessageTilemaps:
     dw $3C4E,$3C4E,$3C4E,$2CED,$2CEE,$3C4E,$3C4E,$3C4E                   ;85949F;
     dw $3C4E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;8594AF;
 
-  .saveCompleted
+  .saveCompleted:
 ; '  SAVE COMPLETED.  '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$3C4E,$3C4E                   ;8594BF;
     dw $3CF2,$3CE0,$3CF5,$3CE4,$3C4E,$3CE2,$3CEE,$3CEC                   ;8594CF;
     dw $3CEF,$3CEB,$3CE4,$3CF3,$3CE4,$3CE3,$3CFA,$3C4E                   ;8594DF;
     dw $3C4E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;8594EF;
 
-  .reserveTank
+  .reserveTank:
 ; '   RESERVE TANK    '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;8594FF;
     dw $284E,$28F1,$28E4,$28F2,$28E4,$28F1,$28F5,$28E4                   ;85950F;
     dw $284E,$28F3,$28E0,$28ED,$28EA,$284E,$284E,$284E                   ;85951F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;85952F;
 
-  .gravitySuit
+  .gravitySuit:
 ; '   GRAVITY SUIT    '
     dw $000E,$000E,$000E,$000E,$000E,$000E,$284E,$284E                   ;85953F;
     dw $284E,$28E6,$28F1,$28E0,$28F5,$28E8,$28F3,$28F8                   ;85954F;
     dw $284E,$28F2,$28F4,$28E8,$28F3,$284E,$284E,$284E                   ;85955F;
     dw $284E,$000E,$000E,$000E,$000E,$000E,$000E,$000E                   ;85956F;
 
-  .Terminator
+  .Terminator:
     dw $0000                                                             ;85957F;
 
 UNUSED_MessageTilemaps_YES_859581:

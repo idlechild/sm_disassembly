@@ -7182,15 +7182,15 @@ Handle_MapScrollArrows:
 
 
 MapScrollArrows:
-  .left
+  .left:
     dw $0010,$0078,$0009,$0200,$0001                                     ;82B9A0;
-  .right
+  .right:
     dw $00F0,$0078,$0008,$0100,$0002                                     ;82B9AA;
-  .up
+  .up:
     dw $0080,$0038,$0006,$0800,$0003                                     ;82B9B4;
-  .down
+  .down:
     dw $0080,$00B8,$0007,$0400                                           ;82B9BE;
-  .downDirection
+  .downDirection:
     dw $0004                                                             ;82B9C6;
 
 MapScreen_DrawSamusPositionIndicator:
@@ -7755,88 +7755,88 @@ ReserveTank_TransferEnergyPerFrame:
     dw $0001                                                             ;82BF04;
 
 EquipmentScreenTilemaps:
-  .modeManual
+  .modeManual:
 ; MODE[MANUAL]
     dw $2519,$251A,$251B,$3D46,$3D47,$3D48,$3D49                         ;82BF06;
 
-  .reserveTank
+  .reserveTank:
 ; RESERVE TANK
     dw $3C80,$3C81,$3C82,$3C83,$3C84,$3C85,$3C86                         ;82BF14;
 
-  .manual
+  .manual:
 ; [MANUAL]
     dw $3D46,$3D47,$3D48,$3D49                                           ;82BF22;
 
-  .auto
+  .auto:
 ; [ AUTO ]
     dw $3D56,$3D57,$3D58,$3D59                                           ;82BF2A;
 
-  .charge
+  .charge:
 ; oCHARGE
     dw $08FF,$08D8,$08D9,$08DA,$08E7                                     ;82BF32;
 
-  .ice
+  .ice:
 ; oICE
     dw $08FF,$08DB,$08DC,$08D4,$08D4                                     ;82BF3C;
 
-  .wave
+  .wave:
 ; oWAVE
     dw $08FF,$08DD,$08DE,$08DF,$08D4                                     ;82BF46;
 
-  .spazer
+  .spazer:
 ; oSPAZER
     dw $08FF,$08E8,$08E9,$08EA,$08EB                                     ;82BF50;
 
-  .plasma
+  .plasma:
 ; oPLASMA
     dw $08FF,$08EC,$08ED,$08EE,$08EF                                     ;82BF5A;
 
-  .variaSuit
+  .variaSuit:
 ; oVARIA SUIT
     dw $08FF,$0900,$0901,$0902,$0903,$0904,$0905,$08D4,$08D4             ;82BF64;
 
-  .gravitySuit
+  .gravitySuit:
 ; oGRAVITY SUIT
     dw $08FF,$08D0,$08D1,$08D2,$08D3,$0903,$0904,$0905,$08D4             ;82BF76;
 
-  .morphingBall
+  .morphingBall:
 ; oMORPHING BALL
     dw $08FF,$0920,$0921,$0922,$0923,$0917,$0918,$090F,$091F             ;82BF88;
 
-  .bombs
+  .bombs:
 ; oBOMBS
     dw $08FF,$08D5,$08D6,$08D7,$08D4,$08D4,$08D4,$08D4,$08D4             ;82BF9A;
 
-  .springBall
+  .springBall:
 ; oSPRING BALL
     dw $08FF,$0910,$0911,$0912,$0913,$0914,$0915,$0916,$08D4             ;82BFAC;
 
 if !FEATURE_KEEP_UNREFERENCED
-  .UNUSED
+  .UNUSED:
     dw $0000                                                             ;82BFBE;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-  .screwAttack
+  .screwAttack:
 ; oSCREW ATTACK
     dw $08FF,$08E0,$08E1,$08E2,$08E3,$08E4,$08E5,$08E6,$08D4             ;82BFC0;
 
-  .hiJumpBoots
+  .hiJumpBoots:
 ; oHI-JUMP BOOTS
     dw $08FF,$0930,$0931,$0932,$0933,$0934,$0935,$0936,$08D4             ;82BFD2;
 
-  .spaceJump
+  .spaceJump:
 ; oSPACE JUMP
     dw $08FF,$08F0,$08F1,$08F2,$08F3,$08F4,$08F5,$08D4,$08D4             ;82BFE4;
 
-  .speedBooster
+  .speedBooster:
 ; oSPEED BOOSTER
     dw $08FF,$0924,$0925,$0926,$0927,$0928,$0929,$092A,$092B             ;82BFF6;
 
-  .hyper
+  .hyper:
 ; oHYPER
     dw $08FF,$0937,$0938,$0939,$092F,$08D4,$08D4,$08D4,$08D4             ;82C008;
 
-  .blankPlaceholder
+  .blankPlaceholder:
     dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000             ;82C01A;
 
 EquipmentScreenDataPointers:
@@ -7870,15 +7870,15 @@ EquipmentScreenDataPointers:
     dw EquipmentScreenData_PointersEquipmentTIlemaps_boots               ;82C04A;
 
 EquipmentScreenData:
-  .EquipmentBitmasks
-  ..weapons                                                              ;82C04C;
+  .EquipmentBitmasks:
+  ..weapons:                                                             ;82C04C;
     dw $1000 ; Weapons - charge
     dw $0002 ; Weapons - ice
     dw $0001 ; Weapons - wave
     dw $0004 ; Weapons - spazer
     dw $0008 ; Weapons - plasma
 
-  ..suitsMisc                                                            ;82C056;
+  ..suitsMisc:                                                           ;82C056;
     dw $0001 ; Suit/misc - varia suit
     dw $0020 ; Suit/misc - gravity suit
     dw $0004 ; Suit/misc - morph ball
@@ -7886,26 +7886,26 @@ EquipmentScreenData:
     dw $0002 ; Suit/misc - spring ball
     dw $0008 ; Suit/misc - screw attack
 
-  ..boots                                                                ;82C062;
+  ..boots:                                                               ;82C062;
     dw $0100 ; Boots - hi-jump boots
     dw $0200 ; Boots - space jump
     dw $2000 ; Boots - speed booster
 
-  .RAMTilemapOffsets                                                     ;82C068;
-  ..tanks
+  .RAMTilemapOffsets:                                                    ;82C068;
+  ..tanks:
     dw $3A88 ; Tanks - mode
     dw $3AC8 ; Tanks - reserve tank
 
-  ..weapons                                                              ;82C06C;
+  ..weapons:                                                             ;82C06C;
     dw $3C08 ; Weapons - char
     dw $3C48 ; Weapons - ice
     dw $3C88 ; Weapons - wave
-  ...spazer                                                              ;82C072;
+  ...spazer:                                                             ;82C072;
     dw $3CC8 ; Weapons - spazer
-  ...plasma                                                              ;82C074;
+  ...plasma:                                                             ;82C074;
     dw $3D08 ; Weapons - plasma
 
-  ..suitsMisc                                                            ;82C076;
+  ..suitsMisc:                                                           ;82C076;
     dw $3A6A ; Suit/misc - varia suit
     dw $3AAA ; Suit/misc - gravity suit
     dw $3B6A ; Suit/misc - morph ball
@@ -7913,7 +7913,7 @@ EquipmentScreenData:
     dw $3BEA ; Suit/misc - spring ball
     dw $3C2A ; Suit/misc - screw attack
 
-  ..boots                                                                ;82C082;
+  ..boots:                                                               ;82C082;
     dw $3CEA ; Boots - hi-jump boots
     dw $3D2A ; Boots - space jump
     dw $3D6A ; Boots - speed booster
@@ -7963,16 +7963,16 @@ PauseScreen_SpriteAnimationData:
 ;       |     |     |     |     |     |     |      _________ 8: Map scroll arrow - right
 ;       |     |     |     |     |     |     |     |      ___ 9: Map scroll arrow - left
 ;       |     |     |     |     |     |     |     |     |
-  .timer                                                                 ;82C0B2;
+  .timer:                                                                ;82C0B2;
 ; Pointers to use for animation timer
     dw $0729,$072B,$072D,$072F,$0731,$0733,$0735,$0737,$0739
-  .frame                                                                 ;82C0C4;
+  .frame:                                                                ;82C0C4;
 ; Pointers to use for animation frame, indexes animation data
     dw $073D,$073F,$0741,$0743,$0745,$0747,$0749,$074B,$074D
-  .mode                                                                  ;82C0D6;
+  .mode:                                                                 ;82C0D6;
 ; Pointers to use for animation mode, indexes [$C1E4 + (animation ID) * 2]
     dw $0751,$0753,$0755,$0757,$0759,$075B,$075D,$075F,$0761
-  .data
+  .data:
 ; Pointers to animation data
     dw Duration_Of_L_R_Button_Pressed_Highlight                          ;82C0E8;
     dw L_R_HighlightAnimationData_PauseScreenPaletteAnimationDelays      ;82C0EA;
@@ -8016,7 +8016,7 @@ ReserveTank_AnimationData:                                               ;82C165
     db $FF
 
 L_R_ButtonPressed_HighlightTable:
-  .spritemapID
+  .spritemapID:
 ; L/R button pressed highlight table
 ;        ________ L button
 ;       |     ___ R button
@@ -8028,7 +8028,7 @@ L_R_ButtonPressed_HighlightTable:
     dw $00D0,$00D0                                                       ;82C18A;
 
 EquipmentScreen_ItemSelectorPositions:
-  .pointers
+  .pointers:
 ; Pointers to lists of equipment screen item selector positions
     dw EquipmentScreen_ItemSelectorPositions_tanks                       ;82C18E;
     dw EquipmentScreen_ItemSelectorPositions_weapons                     ;82C190;
@@ -8042,7 +8042,7 @@ EquipmentScreen_ItemSelectorPositions:
     dw $001B,$0054 ; Tanks - mode
     dw $001B,$005C ; Tanks - reserve tank
 
-  .weapons                                                               ;82C19E;
+  .weapons:                                                              ;82C19E;
     dw $0030,$0084 ; Weapons - charge
     dw $0030,$008C ; Weapons - ice
     dw $0030,$0094 ; Weapons - wave
@@ -8063,11 +8063,11 @@ EquipmentScreen_ItemSelectorPositions:
     dw $00CC,$00AC ; Boots - speed booster
 
 EquipmentScreen_ReserveTank:
-  .Xpositions
+  .Xpositions:
 ; Equipment screen reserve tank X positions
     dw $0018,$0020,$0028,$0030,$0038,$0040                               ;82C1D6;
 
-  .Yposition
+  .Yposition:
 ; Equipment screen reserve tank Y position + 1
     dw $0060                                                             ;82C1E2;
 
@@ -8099,22 +8099,22 @@ ItemSelector_EquipmentScreenCategoryIndex:                               ;82C202
     dw $0016 ; 2: Suit
     dw $0016 ; 3: Boots
 
-  .UNUSED_Anim4
+  .UNUSED_Anim4:
     dw $002C                                                             ;82C20A;
 
-  .UNUSED_Anim5
+  .UNUSED_Anim5:
     dw $0013                                                             ;82C20C;
 
-  .upScrollArrow
+  .upScrollArrow:
     dw $0006                                                             ;82C20E;
 
-  .downScrollArrow
+  .downScrollArrow:
     dw $0007                                                             ;82C210;
 
-  .rightScrollArrow
+  .rightScrollArrow:
     dw $0004                                                             ;82C212;
 
-  .leftScrollArrow
+  .leftScrollArrow:
     dw $0005                                                             ;82C214;
 
 MenuSpritemap_2:
@@ -8598,38 +8598,38 @@ SpritemapIndices:
 ;       |      _________ Y position
 ;       |     |      ___ Spritemap index
 ;       |     |     |
-  .crateria                                                              ;82C759;
+  .crateria:                                                             ;82C759;
     dw $0030,$0070,$005A
     dw $00B8,$00B8,$005A
     dw $0110,$0068,$005A
     dw $0178,$0020,$005C
     dw $01A0,$0080,$005D
     dw $FFFF
-  .brinstar                                                              ;82C779;
+  .brinstar:                                                             ;82C779;
     dw $0048,$0008,$0059
     dw $00D0,$0040,$0059
     dw $0128,$0020,$0059
     dw $0140,$0090,$005D
     dw $0148,$00C0,$005B
     dw $FFFF
-  .norfair                                                               ;82C799;
+  .norfair:                                                              ;82C799;
     dw $0050,$0008,$005A
     dw $FFFF
-  .wreckedShip                                                           ;82C7A1;
+  .wreckedShip:                                                          ;82C7A1;
     dw $0040,$0080,$0059
     dw $00C0,$0080,$0059
     dw $FFFF
-  .maridia                                                               ;82C7AF;
+  .maridia:                                                              ;82C7AF;
     dw $0108,$0008,$0059
     dw $0030,$00A0,$005A
     dw $0078,$00A0,$005A
     dw $FFFF
-  .tourian                                                               ;82C7C3;
+  .tourian:                                                              ;82C7C3;
     dw $0098,$0048,$0059
     dw $FFFF
 
 MapIcon_PositionTablePointers:
-  .bossIcons
+  .bossIcons:
     dw Crateria_MapIconPositions_bossIcons                               ;82C7CB; Crateria
     dw Brinstar_MapIconPositions_bossIcons                               ;82C7CD; Brinstar
     dw Norfair_MapIconPositions_bossIcons                                ;82C7CF; Norfair
@@ -8639,7 +8639,7 @@ MapIcon_PositionTablePointers:
     dw Ceres_MapIconPositions_bossIcons                                  ;82C7D7; Ceres
     dw $0000                                                             ;82C7D9; Debug
 
-  .missileStations
+  .missileStations:
     dw $0000                                                             ;82C7DB; Crateria
     dw Brinstar_MapIconPositions_missileStations                         ;82C7DD; Brinstar
     dw $0000                                                             ;82C7DF; Norfair
@@ -8649,7 +8649,7 @@ MapIcon_PositionTablePointers:
     dw $0000                                                             ;82C7E7; Ceres
     dw $0000                                                             ;82C7E9; Debug
 
-  .energyStations
+  .energyStations:
     dw $0000                                                             ;82C7EB; Crateria
     dw Brinstar_MapIconPositions_energyStations                          ;82C7ED; Brinstar
     dw Norfair_MapIconPositions_energyStations                           ;82C7EF; Norfair
@@ -8659,7 +8659,7 @@ MapIcon_PositionTablePointers:
     dw $0000                                                             ;82C7F7; Ceres
     dw $0000                                                             ;82C7F9; Debug
 
-  .mapStations
+  .mapStations:
     dw Crateria_MapIconPositions_mapStations                             ;82C7FB; Crateria
     dw Brinstar_MapIconPositions_mapStations                             ;82C7FD; Brinstar
     dw Norfair_MapIconPositions_mapStations                              ;82C7FF; Norfair
@@ -8669,7 +8669,7 @@ MapIcon_PositionTablePointers:
     dw $0000                                                             ;82C807; Ceres
     dw $0000                                                             ;82C809; Debug
 
-  .savePoints
+  .savePoints:
     dw Crateria_MapIconPositions_savePoints                              ;82C80B; Crateria
     dw Brinstar_MapIconPositions_savePoints                              ;82C80D; Brinstar
     dw Norfair_MapIconPositions_savePoints                               ;82C80F; Norfair
@@ -8679,7 +8679,7 @@ MapIcon_PositionTablePointers:
     dw $0000                                                             ;82C817; Ceres
     dw $0000                                                             ;82C819; Debug
 
-  .debugElevatorMarkers
+  .debugElevatorMarkers:
     dw Crateria_MapIconPositions_debugElevatorMarkers                    ;82C81B; Crateria
     dw Brinstar_MapIconPositions_debugElevatorMarkers                    ;82C81D; Brinstar
     dw Norfair_MapIconPositions_debugElevatorMarkers                     ;82C81F; Norfair
@@ -8689,7 +8689,7 @@ MapIcon_PositionTablePointers:
     dw $0000                                                             ;82C827; Ceres
     dw $0000                                                             ;82C829; Debug
 
-  .debugSavePoints
+  .debugSavePoints:
     dw Crateria_MapIconPositions_debugSavePoints                         ;82C82B; Crateria
     dw Brinstar_MapIconPositions_debugSaveStations                       ;82C82D; Brinstar
     dw Norfair_MapIconPositions_debugSavePoints                          ;82C82F; Norfair
@@ -8700,133 +8700,133 @@ MapIcon_PositionTablePointers:
     dw $0000                                                             ;82C839; Debug
 
 Crateria_MapIconPositions:
-  .bossIcons
+  .bossIcons:
     dw $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE, $FFFF                      ;82C83B;
-  .missileStations
+  .missileStations:
     dw $FFFF                                                             ;82C849;
-  .energyStations
+  .energyStations:
     dw $FFFF                                                             ;82C84B;
-  .mapStations
+  .mapStations:
     dw $00B8,$0040, $FFFF                                                ;82C84D;
-  .savePoints
+  .savePoints:
     dw $00D8                                                             ;82C853;
-  .savePoints2
+  .savePoints2:
     dw $0028,$0090, $0038,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE                ;82C855;
     dw $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE, $FFFE                      ;82C865;
-  .debugElevatorMarkers
+  .debugElevatorMarkers:
     dw $01A0,$0058, $0110,$0040, $00B8,$0090, $0030,$0048                ;82C873;
     dw $0088,$0050, $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE                ;82C883;
-  .debugSavePoints
+  .debugSavePoints:
     dw $00D8,$0028, $0188,$0028, $FFFF                                   ;82C893;
 
 Brinstar_MapIconPositions:
-  .bossIcons
+  .bossIcons:
     dw $01BC,$009C, $FFFF                                                ;82C89D;
-  .missileStations
+  .missileStations:
     dw $0028,$0040, $FFFF                                                ;82C8A3;
-  .energyStations
+  .energyStations:
     dw $0048,$0068, $0100,$0098, $01B0,$0098, $FFFF                      ;82C8A9;
-  .mapStations
+  .mapStations:
     dw $0028,$0028, $FFFF                                                ;82C8B7;
-  .savePoints
+  .savePoints:
     dw $0078,$0028, $0040,$0030, $0028,$0060, $0188,$0098                ;82C8BD;
     dw $0130,$0048, $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE                ;82C8CD;
-  .debugElevatorMarkers
+  .debugElevatorMarkers:
     dw $0048,$0018, $00D0,$0058, $0128,$0038, $0148,$0098                ;82C8DD;
     dw $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE                ;82C8ED;
-  .debugSaveStations
+  .debugSaveStations:
     dw $0048,$0018, $01B8,$00A0, $0090,$0020, $FFFF                      ;82C8FD;
 
 Norfair_MapIconPositions:
-  .bossIcons
+  .bossIcons:
     dw $00B8,$0090, $FFFF                                                ;82C90B;
-  .missileStations
+  .missileStations:
     dw $FFFF                                                             ;82C911;
-  .energyStations
+  .energyStations:
     dw $00A0,$0050, $00A8,$0080,$FFFF                                    ;82C913;
-  .mapStations
+  .mapStations:
     dw $0048,$0028, $FFFF                                                ;82C91D;
-  .savePoints
+  .savePoints:
     dw $0060,$0060, $00A8,$0020, $0058,$0030, $0080,$0048                ;82C923;
     dw $00A0,$0058, $0120,$0068, $FFFE,$FFFE, $FFFE,$FFFE                ;82C933;
-  .debugElevatorMarkers
+  .debugElevatorMarkers:
     dw $0050,$0018, $00A8,$0058, $00A8,$0070, $FFFE,$FFFE                ;82C943;
     dw $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE                ;82C953;
-  .debugSavePoints
+  .debugSavePoints:
     dw $0050,$0010, $0078,$0050, $00B0,$0088, $0050,$0058                ;82C963;
     dw $00A8,$0070, $00A0,$0080, $0010,$0008, $FFFF                      ;82C973;
 
 WreckedShip_MapIconPositions:
-  .bossIcons
+  .bossIcons:
     dw $0098,$00A0, $FFFF                                                ;82C981;
-  .missileStations
+  .missileStations:
     dw $FFFF                                                             ;82C987;
-  .energyStations
+  .energyStations:
     dw $FFFF                                                             ;82C989;
-  .mapStations
+  .mapStations:
     dw $0068,$00A0, $FFFF                                                ;82C98B;
-  .savePoints
+  .savePoints:
     dw $0088,$0078, $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE                ;82C991;
     dw $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE                ;82C9A1;
-  .debugElevatorMarkers
+  .debugElevatorMarkers:
     dw $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE                ;82C9B1;
     dw $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE                ;82C9C1;
-  .debugSavePoints
+  .debugSavePoints:
     dw $0050,$0078, $0090,$00A0, $FFFF                                   ;82C9D1;
 
 Maridia_MapIconPositions:
-  .bossIcons
+  .bossIcons:
     dw $013C,$0054, $FFFF                                                ;82C9DB;
-  .missileStations
+  .missileStations:
     dw $0130,$0048, $FFFF                                                ;82C9E1;
-  .energyStations
+  .energyStations:
     dw $0150,$0038, $FFFF                                                ;82C9E7;
-  .mapStations
+  .mapStations:
     dw $0088,$0090, $FFFF                                                ;82C9ED;
-  .savePoints
+  .savePoints:
     dw $0060,$00A0, $0118,$0028, $0098,$0060, $0148,$0038                ;82C9F3;
     dw $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE                ;82CA03;
-  .debugElevatorMarkers
+  .debugElevatorMarkers:
     dw $0110,$0018, $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE                ;82CA13;
     dw $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE                ;82CA23;
-  .debugSavePoints
+  .debugSavePoints:
     dw $0090,$0028, $0148,$0050, $00B8,$0048, $00B0,$0088                ;82CA33;
     dw $FFFF                                                             ;82CA43;
 
 Tourian_MapIconPositions:
-  .bossIcons
+  .bossIcons:
     dw $FFFF                                                             ;82CA45;
-  .missileStations
+  .missileStations:
     dw $FFFF                                                             ;82CA47;
-  .energyStations
+  .energyStations:
     dw $0058,$0088, $FFFF                                                ;82CA49;
-  .mapStations
+  .mapStations:
     dw $FFFF                                                             ;82CA4F;
-  .savePoints
+  .savePoints:
     dw $0080,$0090, $00A8,$0068, $FFFE,$FFFE, $FFFE,$FFFE                ;82CA51;
     dw $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE                ;82CA61;
-  .debugElevatorMarkers
+  .debugElevatorMarkers:
     dw $00A0,$0060, $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE                ;82CA71;
     dw $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE                ;82CA81;
-  .debugSavePoints
+  .debugSavePoints:
     dw $0088,$0050, $0068,$00C0, $FFFF                                   ;82CA91;
 
 Ceres_MapIconPositions:
-  .bossIcons
+  .bossIcons:
     dw $00A0,$0088, $FFFF                                                ;82CA9B;
-  .missileStations
+  .missileStations:
     dw $FFFF                                                             ;82CAA1;
-  .energyStations
+  .energyStations:
     dw $FFFF                                                             ;82CAA3;
-  .mapStations
+  .mapStations:
     dw $FFFF                                                             ;82CAA5;
-  .savePoints
+  .savePoints:
     dw $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE                ;82CAA7;
     dw $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE                ;82CAB7;
-  .debugElevatorMarkers
+  .debugElevatorMarkers:
     dw $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE                ;82CAC7;
     dw $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE, $FFFE,$FFFE                ;82CAD7;
-  .debugSavePoints
+  .debugSavePoints:
     dw $FFFF                                                             ;82CAE7;
 
 

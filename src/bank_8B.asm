@@ -2711,7 +2711,7 @@ UNUSED_CinematicSpriteObject_Inst_ClearPreInstruction_8B9457:
     LDA.W #.return                                                       ;8B9459;
     STA.W $1B3D,X                                                        ;8B945C;
 
-  .return
+  .return:
     RTS                                                                  ;8B945F;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -2935,7 +2935,7 @@ UNUSED_Mode7Objects_Instruction_ClearPreInstruction_8B957D:
     LDA.W #.return                                                       ;8B957F;
     STA.W $19A5,X                                                        ;8B9582;
 
-  .return
+  .return:
     RTS                                                                  ;8B9585;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -3168,7 +3168,7 @@ UNUSED_CinematicBGObject_Inst_ClearPreInstruction_8B96B9:
     LDA.W #.return                                                       ;8B96BB;
     STA.W $19D5,X                                                        ;8B96BE;
 
-  .return
+  .return:
     RTS                                                                  ;8B96C1;
 
 
@@ -4589,47 +4589,47 @@ InstList_CinematicSpriteObject_NintendoCopyright_Immediate:
     dw InstList_CinematicSpriteObject_NintendoCopyright_Immediate        ;8BA0ED;
 
 CinematicSpriteObjectDefinitions_TitleSequence:
-  .1994ScrollingText
+  .1994ScrollingText:
     dw InitFunc_CinematicSpriteObject_1994ScrollingText                  ;8BA0EF;
     dw PreInstruction_CinematicSpriteObject_1994ScrollingText            ;8BA0F1;
     dw InstList_CinematicSpriteObject_1994ScrollingText                  ;8BA0F3;
-  .NintendoScrollingText
+  .NintendoScrollingText:
     dw InitFunc_CinematicSpriteObject_NintendoScrollingText              ;8BA0F5;
     dw RTS_8B93D9                                                        ;8BA0F7;
     dw InstList_CinematicSpriteObject_NintendoScrollingText              ;8BA0F9;
-  .PresentsScrollingText
+  .PresentsScrollingText:
     dw InitFunc_CinematicSpriteObject_PresentsScrollingText              ;8BA0FB;
     dw RTS_8B93D9                                                        ;8BA0FD;
     dw InstList_CinematicSpriteObject_PresentsScrollingText              ;8BA0FF;
-  .Metroid3ScrollingText
+  .Metroid3ScrollingText:
     dw InitFunc_CinematicSpriteObject_Metroid3ScrollingText              ;8BA101;
     dw RTS_8B93D9                                                        ;8BA103;
     dw InstList_CinematicSpriteObject_Metroid3ScrollingText              ;8BA105;
-  .SuperMetroidTitleLogo_FadeIn
+  .SuperMetroidTitleLogo_FadeIn:
     dw InitFunc_CinematicSpriteObject_SuperMetroidTitleLogo_FadeIn       ;8BA107;
     dw RTS_8B93D9                                                        ;8BA109;
     dw InstList_CinematicSpriteObject_SuperMetroidTitleLogo_FadeIn       ;8BA10B;
 if !FEATURE_KEEP_UNREFERENCED
-  .UnusedNintendoBootLogo_FadeIn
+  .UnusedNintendoBootLogo_FadeIn:
     dw InitFunc_CinematicSpriteObject_UnusedNintendoBootLogo_FadeIn      ;8BA10D;
     dw RTS_8B93D9                                                        ;8BA10F;
     dw InstList_CinematicSpriteObject_UnusedNintendoBootLogo_FadeIn      ;8BA111;
 endif ; !FEATURE_KEEP_UNREFERENCED
-  .NintendoCopyright_FadeIn
+  .NintendoCopyright_FadeIn:
     dw InitFunc_CinematicSpriteObject_NintendoCopyright_FadeIn           ;8BA113;
     dw RTS_8B93D9                                                        ;8BA115;
     dw InstList_CinematicSpriteObject_NintendoCopyright_FadeIn           ;8BA117;
-  .SuperMetroidLogoImmediate
+  .SuperMetroidLogoImmediate:
     dw InitFunction_CinematicSpriteObject_SuperMetroidLogoImmediate      ;8BA119;
     dw RTS_8B93D9                                                        ;8BA11B;
     dw InstList_CinematicSpriteObject_SuperMetroidTitleLogo_Immediate    ;8BA11D;
 if !FEATURE_KEEP_UNREFERENCED
-  .UnusedNintendoBootLogoImm
+  .UnusedNintendoBootLogoImm:
     dw InitFunction_CinematicSpriteObject_UnusedNintendoBootLogoImm      ;8BA11F;
     dw RTS_8B93D9                                                        ;8BA121;
     dw InstList_CinematicSpriteObject_UnusedNintendoBootLogo_Immediate   ;8BA123;
 endif ; !FEATURE_KEEP_UNREFERENCED
-  .NintendoCopyrightImmediate
+  .NintendoCopyrightImmediate:
     dw InitFunc_CinematicSpriteObject_NintendoCopyrightImmediate         ;8BA125;
     dw RTS_8B93D9                                                        ;8BA127;
     dw InstList_CinematicSpriteObject_NintendoCopyright_Immediate        ;8BA129;
@@ -8685,9 +8685,9 @@ InitFunction_CinematicSpriteObject_CeresExplosion2:
     STA.W $1ABD,Y                                                        ;8BC4E7;
     RTS                                                                  ;8BC4EA;
 
-  .Xoffset
+  .Xoffset:
     dw $000E                                                             ;8BC4EB;
-  .Yoffset
+  .Yoffset:
     dw       $FFF8                                                       ;8BC4ED;
     dw $0008,$000C
     dw $FFF0,$000C
@@ -8747,11 +8747,11 @@ InitFunction_CinematicSpriteObject_CeresExplosion3:
     STA.W $1ABD,Y                                                        ;8BC566;
     RTS                                                                  ;8BC569;
 
-  .timer
+  .timer:
     dw $0001,$0004,$0008,$0010                                           ;8BC56A;
-  .Xoffset
+  .Xoffset:
     dw $0008,$000C,$FFF8,$FFF4                                           ;8BC572;
-  .Yoffset
+  .Yoffset:
     dw $FFFC,$0008,$FFF6,$000C                                           ;8BC57A;
 
 
@@ -12389,12 +12389,12 @@ TransferPostCreditsSuperMetroidIconToVRAM:
     RTS                                                                  ;8BE459;
 
 
-  .size
+  .size:
     dw $0400                                                             ;8BE45A; Item percentage Japanese text
-  .source
+  .source:
     dl $7FD000                                                           ;8BE45C;
     db $00                                                               ;8BE45F;
-  .destination
+  .destination:
     dw $4800                                                             ;8BE460;
     dw $0800                                                             ;8BE462; Super Metroid icon tiles
     dl $7E6000                                                           ;8BE464;
@@ -12610,9 +12610,9 @@ CinematicFunction_PostCredits_GreyOutSuperMetroidIcon:
     RTS                                                                  ;8BE5E6;
 
 ; Pointers to (the last colour of) increasingly grey palettes
-  .BGPalette
+  .BGPalette:
     dw Palettes_EndingSuperMetroidIconFadingToGrey_BG_10                 ;8BE5E7; These pointers read the list backwards :(
-  .spritePalette
+  .spritePalette:
     dw Palettes_EndingSuperMetroidIconFadingToGrey_Sprite_1              ;8BE5E9;
     dw Palettes_EndingSuperMetroidIconFadingToGrey_BG_F                  ;8BE5EB;
     dw Palettes_EndingSuperMetroidIconFadingToGrey_Sprite_2              ;8BE5ED;
@@ -12810,9 +12810,9 @@ Instruction_DrawItemPercentageCount:
 
 
 TilemapValuesForDecimalDigits:
-  .topHalf
+  .topHalf:
     dw $3860                                                             ;8BE741;
-  .bottomHalf                                                            ;8BE743;
+  .bottomHalf:                                                           ;8BE743;
     dw       $3870 ; 0
     dw $3861,$3871 ; 1
     dw $3862,$3872 ; 2

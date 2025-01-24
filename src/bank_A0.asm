@@ -533,13 +533,13 @@ SetAllActiveEnemiesToShakeHorizontallyFor2Frames:
 BGShakeDisplacements:
 ;      /------horizontal------\ /------vertical------\   /------diagonal------\
 ;       BG1X  BG1Y  BG2X  BG2Y
-  .BG1X
+  .BG1X:
     dw $0001                                                             ;A0872D;
-  .BG1Y
+  .BG1Y:
     dw       $0000                                                       ;A0872F;
-  .BG2X
+  .BG2X:
     dw             $0000                                                 ;A08731;
-  .BG2Y                                                                  ;A08733;
+  .BG2Y:                                                                 ;A08733;
     dw                   $0000, $0000,$0001,$0000,$0000, $0001,$0001,$0000,$0000 ;\
     dw $0002,$0000,$0000,$0000, $0000,$0002,$0000,$0000, $0002,$0002,$0000,$0000 ;} BG1 only
     dw $0003,$0000,$0000,$0000, $0000,$0003,$0000,$0000, $0003,$0003,$0000,$0000 ;/
@@ -8170,7 +8170,7 @@ ProcessEnemyInstructions:
     ORA.W #$8000                                                         ;A0C2A9;
     STA.W $0F88,X                                                        ;A0C2AC;
 
-  .return ; sleep, wait, delete
+  .return: ; sleep, wait, delete
     PLB                                                                  ;A0C2AF;
     RTS                                                                  ;A0C2B0;
 
@@ -8496,9 +8496,9 @@ EnemyBlockCollisionReaction_Horizontal_Slope_NonSquare:
 ;        _________ Unused. Seem to be additive speed modifiers in the $94:8586 version of this table
 ;       |      ___ Adjusted distance multiplier * 100h
 ;       |     |
-  .unused
+  .unused:
     dw $0000                                                             ;A0C49F;
-  .adjustedDistanceMult
+  .adjustedDistanceMult:
     dw       $0100                                                       ;A0C4A1;
     dw $0000,$0100
     dw $0000,$0100
@@ -9356,67 +9356,67 @@ CommonEnemyProjectileSpeeds_QuadraticallyIncreasing:
 
 EnemyHeaders_Boyon:
 EnemyHeaders:
-  .tileDataSize
+  .tileDataSize:
     dw $0400                                                             ;A0CEBF;
-  .palette
+  .palette:
     dw Palette_Boyon                                                     ;A0CEC1;
-  .health
+  .health:
     dw $03E8                                                             ;A0CEC3;
-  .damage
+  .damage:
     dw $000A                                                             ;A0CEC5;
-  .width
+  .width:
     dw $0008                                                             ;A0CEC7;
-  .height
+  .height:
     dw $0008                                                             ;A0CEC9;
-  .bank
+  .bank:
     db $A2                                                               ;A0CECB;
-  .hurtAITime
+  .hurtAITime:
     db $00                                                               ;A0CECC;
-  .cry
+  .cry:
     dw $0000                                                             ;A0CECD;
-  .bossID
+  .bossID:
     dw $0000                                                             ;A0CECF;
-  .initAI
+  .initAI:
     dw InitAI_Boyon                                                      ;A0CED1;
-  .numberOfParts
+  .numberOfParts:
     dw $0001                                                             ;A0CED3;
-  .unused16
+  .unused16:
     dw $0000                                                             ;A0CED5;
-  .mainAI
+  .mainAI:
     dw MainAI_Boyon                                                      ;A0CED7;
-  .grappleAI
+  .grappleAI:
     dw CommonA2_GrappleAI_CancelGrappleBeam                              ;A0CED9;
-  .hurtAI
+  .hurtAI:
     dw RTL_A2804C                                                        ;A0CEDB;
-  .frozenAI
+  .frozenAI:
     dw CommonA2_NormalEnemyFrozenAI                                      ;A0CEDD;
-  .timeIsFrozenAI
+  .timeIsFrozenAI:
     dw $0000                                                             ;A0CEDF;
-  .deathAnimation
+  .deathAnimation:
     dw $0000                                                             ;A0CEE1;
-  .unused24
+  .unused24:
     dd $00000000                                                         ;A0CEE3;
-  .powerBombReaction
+  .powerBombReaction:
     dw $0000                                                             ;A0CEE7;
-  .sidehopperVariantIndex
+  .sidehopperVariantIndex:
     dw $0000                                                             ;A0CEE9;
-  .unused2C
+  .unused2C:
     dd $00000000                                                         ;A0CEEB;
-  .enemyTouch
+  .enemyTouch:
     dw Common_NormalEnemyTouchAI                                         ;A0CEEF;
-  .enemyShot
+  .enemyShot:
     dw Common_NormalEnemyShotAI                                          ;A0CEF1;
-  .unused34SpritemapPointerTable
+  .unused34SpritemapPointerTable:
     dw $0000                                                             ;A0CEF3;
-  .tileData
+  .tileData:
     dl Tiles_Boyon                                                       ;A0CEF5;
-  .layer
+  .layer:
     db $05                                                               ;A0CEF8;
-  .dropChances
+  .dropChances:
     dw EnemyDropChances_Boyon                                            ;A0CEF9;
-  .vulnerabilities
+  .vulnerabilities:
     dw EnemyVulnerabilities_Boyon                                        ;A0CEFB;
-  .name
+  .name:
     dw EnemyName_Boyon                                                   ;A0CEFD;
 
 EnemyHeaders_Stoke:

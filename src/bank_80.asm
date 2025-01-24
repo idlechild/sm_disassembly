@@ -3482,13 +3482,13 @@ IRQ:
 
 
 Tilemap_HUD:
-  .topRow
+  .topRow:
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;80988B;
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;80989B;
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;8098AB;
     dw $2C0F,$2C0F,$2C1D,$2C1D,$2C1D,$2C1D,$2C1D,$2C1C                   ;8098BB;
 
-  .rows123
+  .rows123:
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;8098CB;
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;8098DB;
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;8098EB;
@@ -3504,33 +3504,33 @@ Tilemap_HUD:
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;80996B;
     dw $2C0F,$2C0F,$2C12,$2C12,$A824,$2815,$2C16,$2C1E                   ;80997B;
 
-  .autoReserve
+  .autoReserve:
     dw $3C33,$3C46                                                       ;80998B;
     dw $3C47,$3C48                                                       ;80998F;
     dw $BC33,$BC46                                                       ;809993;
 
-  .emptyAutoReserve
+  .emptyAutoReserve:
     dw $2C33,$2C46                                                       ;809997;
     dw $2C47,$2C48                                                       ;80999B;
     dw $AC33,$AC46                                                       ;80999F;
 
-  .missiles
+  .missiles:
     dw $344B,$3449,$744B                                                 ;8099AD;
     dw $344C,$344A,$744C                                                 ;8099B3;
 
-  .superMissiles
+  .superMissiles:
     dw $3434,$7434                                                       ;8099AF;
     dw $3435,$7435                                                       ;8099B3;
 
-  .powerBombs
+  .powerBombs:
     dw $3436,$7436                                                       ;8099B7;
     dw $3437,$7437                                                       ;8099BB;
 
-  .grapple
+  .grapple:
     dw $3438,$7438                                                       ;8099BF;
     dw $3439,$7439                                                       ;8099C3;
 
-  .xray
+  .xray:
     dw $343A,$743A                                                       ;8099C7;
     dw $343B,$743B                                                       ;8099CB;
 
@@ -4037,11 +4037,11 @@ DrawTwoHUDDigits:
 
 
 Tilemap_HUDDigits:
-  .health
+  .health:
     dw $2C09,$2C00,$2C01,$2C02,$2C03,$2C04,$2C05,$2C06                   ;809DBF;
     dw $2C07,$2C08                                                       ;809DCF;
 
-  .ammo
+  .ammo:
     dw $2C09,$2C00,$2C01,$2C02,$2C03,$2C04,$2C05,$2C06                   ;809DD3;
     dw $2C07,$2C08                                                       ;809DE3;
 

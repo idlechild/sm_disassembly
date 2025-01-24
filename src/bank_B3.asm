@@ -3387,7 +3387,7 @@ Function_Botwoon_Head_MovingAround:
     JMP.W .noHeadUpdate                                                  ;B39DE5;
 
 
-  .nonZero
+  .nonZero:
     LDA.L $7E8026,X                                                      ;B39DE8;
     BEQ .notHidden                                                       ;B39DEC;
     LDA.W #$0007                                                         ;B39DEE;
@@ -3402,7 +3402,7 @@ Function_Botwoon_Head_MovingAround:
     BRA +                                                                ;B39E05;
 
 
-  .notHidden
+  .notHidden:
     LDA.W #$0002                                                         ;B39E07;
     STA.W $0F9A,X                                                        ;B39E0A;
     LDA.W $0F86,X                                                        ;B39E0D;
@@ -3426,7 +3426,7 @@ Function_Botwoon_Head_MovingAround:
     STA.W $0F94,X                                                        ;B39E32;
     STZ.W $0F90,X                                                        ;B39E35;
 
-  .noHeadUpdate
+  .noHeadUpdate:
     LDA.L $7E8828,X                                                      ;B39E38;
     STA.L $7E882C,X                                                      ;B39E3C;
     LDA.L $7E882A,X                                                      ;B39E40;

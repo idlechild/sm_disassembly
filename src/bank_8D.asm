@@ -11290,7 +11290,7 @@ PreInstruction_PaletteFXObject_SamusInHeat:
     RTS                                                                  ;8DE3DF;
 
 
-  .InstListPointers
+  .InstListPointers:
   ..gravity:
     dw InstList_PaletteFXObject_SamusInHeat_GravitySuit_2                ;8DE3E0;
     dw InstList_PaletteFXObject_SamusInHeat_GravitySuit_3                ;8DE3E2;

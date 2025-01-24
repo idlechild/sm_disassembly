@@ -750,7 +750,7 @@ Spawn_HDMAObject_to_Slot_X:
     PLP                                                                  ;8884B6;
     CLC                                                                  ;8884B7;
 
-  .return
+  .return:
     RTL                                                                  ;8884B8;
 
 
@@ -884,7 +884,7 @@ UNUSED_Instruction_HDMAObject_ClearPreInstruction_888584:
     LDA.W #.return                                                       ;888584;
     STA.W $18F0,X                                                        ;888587;
 
-  .return
+  .return:
     RTS                                                                  ;88858A;
 
 
@@ -2128,11 +2128,11 @@ PowerBombExplosion_Colors:
 ; Indexed by [power bomb explosion radius] / 800h
 ; Red, green, blue. Range 0..1Fh
 ; Yellow section
-  .red
+  .red:
     db $0E                                                               ;888D85;
-  .green
+  .green:
     db     $0E                                                           ;888D86;
-  .blue
+  .blue:
     db         $0A                                                       ;888D87;
     db $0F,$0F,$09
     db $10,$10,$08
@@ -2572,11 +2572,11 @@ PowerBomb_PreExplosion_Colors:
 ; Indexed by [power bomb pre-explosion radius] / 800h
 ; Red, green, blue. Range 0..1Fh
 ; White section
-  .red
+  .red:
     db $10                                                               ;889079;
-  .green
+  .green:
     db $10                                                               ;88907A;
-  .blue
+  .blue:
     db $10                                                               ;88907B;
     db $04,$04,$04
     db $06,$06,$06
@@ -4357,15 +4357,15 @@ ScrollingSky_ScrollingTable:
 ;                       |    |     ______ Scroll speed
 ;                       |    |    |     _ Pointer to HDMA data table entry
 ;                       |    |    |    |
-  .topPosition
+  .topPosition:
     dw $0000                                                             ;88AEC1;
-  .scrollSubspeed
+  .scrollSubspeed:
     dw $8000                                                             ;88AEC3;
-  .scrollSpeed
+  .scrollSpeed:
     dw $0000                                                             ;88AEC5;
-  .HDMADataTableEntryPointer
+  .HDMADataTableEntryPointer:
     dw $9F80                                                             ;88AEC7;
-  .nextEntry
+  .nextEntry:
     dw $0010,$C000,$0000,$9F84                                           ;88AEC9;
     dw $0038,$8000,$0000,$9F88                                           ;88AED1;
     dw $00D0,$C000,$0000,$9F8C                                           ;88AED9;
@@ -5273,7 +5273,7 @@ Setup_LavaAcid_BG2YScrollDataTable_VerticallyWavy:
     PLX                                                                  ;88B608;
     RTS                                                                  ;88B609;
 
-  .waveDisplacementTable
+  .waveDisplacementTable:
     dw $0000,$0001,$0001,$0000,$0000,$FFFF,$FFFF,$0000                   ;88B60A;
     dw $0000,$0001,$0001,$0000,$0000,$FFFF,$FFFF,$0000                   ;88B61A;
 
@@ -10586,7 +10586,7 @@ Set_RainbowBeam_ColorMathSubscreenBackdropColor:
     REP #$20                                                             ;88E830;
     RTS                                                                  ;88E832;
 
-  .table
+  .table:
 ; Rainbow beam colour table
 ; The table index is incremented by 4 per frame instead of 2, so only entries 2k for some k are used
     dw $001F,$005F, $009F,$00DF, $011F,$015F, $019F,$01DF                 ;88E833;

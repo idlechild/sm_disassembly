@@ -4891,17 +4891,17 @@ PoseDefinitions:
 ;       |   |   |   |   |   |   |    _ $B630: Unused
 ;       |   |   |   |   |   |   |   |
 ; 0: Facing forward - power suit
-  .XDirection                                                            ;91B629;
+  .XDirection:                                                           ;91B629;
     db $00                                                               
-  .movementType                                                          ;91B62A;
+  .movementType:                                                         ;91B62A;
     db     $00                                                               
-  .newPose                                                               ;91B62B;
+  .newPose:                                                              ;91B62B;
     db         $FF                                                               
-  .directionShotsFired                                                   ;91B62C;
+  .directionShotsFired:                                                  ;91B62C;
     db             $FF                                                               
-  .YOffset                                                               ;91B62D;
+  .YOffset:                                                              ;91B62D;
     db                 $08,$00                                                           
-  .YRadius                                                               ;91B62F;
+  .YRadius:                                                              ;91B62F;
     db                         $18,$00                                                           
 
 PoseDefinitions_01:
@@ -9216,14 +9216,14 @@ RTS_91D2D1:
 
 
 RevealedBlockTable_0:
-  .blockType
+  .blockType:
     dw $0000                                                             ;91D2D6;
-  .pointers
+  .pointers:
     dw       RevealedBlockTable_Air_0                                    ;91D2D8;
 RevealedBlockTable_1:
-  .blockType
+  .blockType:
     dw $3000                                                             ;91D2DA;
-  .pointers
+  .pointers:
     dw       RevealedBlockTable_SpecialAir_0                             ;91D2DC;
     dw $5000,RevealedBlockTable_HorizontalExtension_0                    ;91D2DE;
     dw $A000,RevealedBlockTable_SpikeBlock_0                             ;91D2E2;
@@ -12275,9 +12275,9 @@ PSP_Falling:
 ;        _________ Facing right
 ;       |      ___ Facing left
 ;       |     |
-  .right
+  .right:
     dw $0029                                                             ;91E921;
-  .left                                                                  ;91E923;
+  .left:                                                                 ;91E923;
     dw       $002A ; Falling
     dw $0031,$0032 ; Morph ball - no spring ball - in air
     dw $0033,$0034 ; Unused
@@ -14842,15 +14842,15 @@ TurningSamusPoses:
 ;       |   |   |   |   |   |   |   |    _____ Up-left
 ;       |   |   |   |   |   |   |   |   |    _ Up, facing left
 ;       |   |   |   |   |   |   |   |   |   |
-  .standing
+  .standing:
     db $8B,$9C,$25,$8D,$8D,$8E,$8E,$26,$9D,$8C                           ;91F9C2;
-  .crouching
+  .crouching:
     db $97,$A2,$43,$99,$99,$9A,$9A,$44,$A3,$98                           ;91F9CC;
-  .jumpingInAir
+  .jumpingInAir:
     db $8F,$9E,$2F,$91,$91,$92,$92,$30,$9F,$90                           ;91F9D6;
-  .falling
+  .falling:
     db $93,$A0,$87,$95,$95,$96,$96,$88,$A1,$94                           ;91F9E0;
-  .moonwalk
+  .moonwalk:
     db $C1,$C1,$BF,$C3,$8D,$8E,$C4,$C0,$C2,$C2                           ;91F9EA;
 
 

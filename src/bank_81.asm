@@ -493,9 +493,9 @@ SaveMap:
 
 
 MapOfOAMIndex:
-  .highXPosBit
+  .highXPosBit:
     dw $0001                                                             ;81839F;
-  .sizeBit
+  .sizeBit:
     dw       $0002                                                       ;8183A1;
     dw              $0004,$0008, $0010,$0020, $0040,$0080
     dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
@@ -531,9 +531,9 @@ MapOfOAMIndex:
     dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
 
 MapOfOAMIndexToHighOAM:
-  .address
+  .address:
     dw $0570                                                             ;81859F;
-  .bitmask
+  .bitmask:
     dw       $0003                                                       ;8185A1;
     dw              $0570,$000C, $0570,$0030, $0570,$00C0
     dw $0570,$0300, $0570,$0C00, $0570,$3000, $0570,$C000
@@ -1646,25 +1646,25 @@ Debug_GameOverMenu_VRAMTransferDefinitions:
     dw $FFFF
 
 Tilemap_DebugGameOverMenu:
-  .gameQuit
+  .gameQuit:
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818F03;
     dw $000F,$000F,$000F,$000F,$0070,$006A,$0076,$006E                   ;818F13;
     dw $000F,$007A,$007E,$0072,$007D,$000F,$000F,$000F                   ;818F23;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818F33;
 
-  .wouldYouPlay
+  .wouldYouPlay:
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818F43;
     dw $0080,$0078,$007E,$0075,$006D,$000F,$0082,$0078                   ;818F53;
     dw $007E,$000F,$0079,$0075,$006A,$0082,$000F,$0085                   ;818F63;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818F73;
 
-  .end
+  .end:
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818F83;
     dw $000F,$000F,$000F,$000F,$006E,$0077,$006D,$000F                   ;818F93;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818FA3;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818FB3;
 
-  .continue
+  .continue:
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818FC3;
     dw $000F,$000F,$000F,$000F,$006C,$0078,$0077,$007D                   ;818FD3;
     dw $0072,$0077,$007E,$006E,$000F,$000F,$000F,$000F                   ;818FE3;
@@ -3977,7 +3977,7 @@ FileSelectMenu_Index4_Main:
 
 
 FileSelectMenu_SelectionMissile_Coordinates:
-  .Yposition
+  .Yposition:
     dw $0030                                                             ;81A312;
   .Xposition:
     dw       $000E ; Slot A
@@ -4144,19 +4144,19 @@ AreaSelectMap_ForgegroundPaletteTable:
 ;;; $A4CE: Area select map foreground palette table ;;;
 AreaSelectMap_ForegroundPaletteTable:
 ; Area select map foreground palette table indices (relative to $A4E6)
-  .indices
-  ..active
+  .indices:
+  ..active:
     dw $0000,$000A,$0010,$0016,$0024,$002A                               ;81A4CE;
 
-  ..inactive
+  ..inactive:
     dw $0030,$003A,$0040,$0046,$0054,$005A                               ;81A4DA;
 
 ;        _________ Palette data index (relative to $A40E)
 ;       |      ___ Palette RAM index (relative to $7E:C000)
 ;       |     |
-  .data
+  .data:
     dw $000C                                                             ;81A4E6;
-  .RAM
+  .RAM:
     dw       $00AC ; Active - Crateria - orange
     dw $0016,$00B6 ; Active - Crateria - yellow
     dw $FFFF
@@ -4836,10 +4836,10 @@ DrawAreaSelectMapLabels:
 
 
 FileSelectMap_Labels_Positions:
-  .X
+  .X:
     dw $005B                                                             ;81AA1C;
 
-  .Y
+  .Y:
     dw $0032       ; Crateria
     dw $002A,$007F ; Brinstar
     dw $005E,$00B5 ; Norfair
@@ -4848,21 +4848,21 @@ FileSelectMap_Labels_Positions:
     dw $0087,$008B ; Tourian
 
 RoomSelectMap_ExpandingSquare_Velocities:
-  .leftSub
+  .leftSub:
     dw $3C00                                                             ;81AA34; Crateria
-  .left
+  .left:
     dw $FFFE                                                             ;81AA36;
-  .rightSub
+  .rightSub:
     dw $3400                                                             ;81AA38;
-  .right
+  .right:
     dw $0003                                                             ;81AA3A;
-  .topSub
+  .topSub:
     dw $0800                                                             ;81AA3C;
-  .top
+  .top:
     dw $FFFF                                                             ;81AA3E;
-  .bottomSub
+  .bottomSub:
     dw $0000                                                             ;81AA40;
-  .bottom
+  .bottom:
     dw $0004                                                             ;81AA42;
 
     dw $3800,$FFFF,$0000,$0004,$A400,$FFFD,$6800,$0002 ; Brinstar
@@ -5470,19 +5470,19 @@ MapScroll_ArrowData_mapScrollDirection:
 ;       |     |     |      _________ Necessary input
 ;       |     |     |     |      ___ Map scrolling direction
 ;       |     |     |     |     |
-  .left
+  .left:
     dw $0010,$0060,$0009,$0200,$0001                                     ;81AF32;
 
-  .right
+  .right:
     dw $00F0,$0060,$0008,$0100,$0002                                     ;81AF3C;
 
-  .up
+  .up:
     dw $0080,$0020,$0006,$0800,$0003                                     ;81AF46;
 
-  .down
+  .down:
     dw $0080,$00A0,$0007,$0400                                           ;81AF50;
 
-  .end
+  .end:
     dw $0004                                                             ;81AF58;
 
 FileSelectMap_IndexB_C_RoomSelectMapToLoadingGameData:

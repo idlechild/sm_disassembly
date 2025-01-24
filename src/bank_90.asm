@@ -1954,7 +1954,7 @@ CalculateSamusSpritemapPosition_Standing:
     RTS                                                                  ;908D27;
 
 
-  .data                                                                  ;908D28;
+  .data:                                                                 ;908D28;
     db $03,$06,$00,$00 ; Facing right - landing from normal jump
     db $03,$06,$00,$00 ; Facing left  - landing from normal jump
     db $03,$03,$06,$00 ; Facing right - landing from spin jump
@@ -2004,7 +2004,7 @@ CalculateSamusSpritemapPosition_TransitionPoses:
     RTS                                                                  ;908D7F;
 
 
-  .data                                                                  ;908D80;
+  .data:                                                                 ;908D80;
     db $F8,$00 ; Facing right - crouching transition
     db $F8,$00 ; Facing left  - crouching transition
     db $FC,$FE ; Facing right - morphing transition
@@ -3307,9 +3307,9 @@ Handle_Horizontal_Scrolling:
     RTS                                                                  ;90963E;
 
 ; Target distance camera is to the left of Samus
-  .facingRight
+  .facingRight:
     dw $0060,$0040,$0020,$00E0                                           ;90963F;
-  .facingLeft
+  .facingLeft:
     dw $00A0,$0050,$0020,$00E0                                           ;909647;
 
 
@@ -4531,139 +4531,139 @@ WallJump_Check:
 
 
 SamusPhysicsConstants:
-  .LavaSubDamagePerFrame
+  .LavaSubDamagePerFrame:
     dw $8000                                                             ;909E8B;
 
-  .LavaDamagePerFrame
+  .LavaDamagePerFrame:
     dw $0000                                                             ;909E8D;
 
-  .AcidSubDamagePerFrame
+  .AcidSubDamagePerFrame:
     dw $8000                                                             ;909E8F;
 
-  .AcidDamagePerFrame
+  .AcidDamagePerFrame:
     dw $0001                                                             ;909E91;
 
-  .AnimationDelayInWater
+  .AnimationDelayInWater:
     dw $0003                                                             ;909E93;
 
-  .AnimationDelayInLavaAcid
+  .AnimationDelayInLavaAcid:
     dw $0002                                                             ;909E95;
 
-  .SpaceJumpMinimumYVelocityInAir
+  .SpaceJumpMinimumYVelocityInAir:
     dw $0280                                                             ;909E97;
 
-  .SpaceJumpMaximumYVelocityInAir
+  .SpaceJumpMaximumYVelocityInAir:
     dw $0500                                                             ;909E99;
 
-  .SpaceJumpMinimumYVelocityInWater
+  .SpaceJumpMinimumYVelocityInWater:
     dw $0080                                                             ;909E9B;
 
-  .SpaceJumpMaximumYVelocityInWater
+  .SpaceJumpMaximumYVelocityInWater:
     dw $0500                                                             ;909E9D;
 
-  .MaximumDistanceFromWallForWallJump
+  .MaximumDistanceFromWallForWallJump:
     dw $0008                                                             ;909E9F;
 
-  .YSubAccelerationInAir
+  .YSubAccelerationInAir:
     dw $1C00                                                             ;909EA1;
 
-  .YSubAccelerationInWater
+  .YSubAccelerationInWater:
     dw $0800                                                             ;909EA3;
 
-  .YSubAccelerationInAcidLava
+  .YSubAccelerationInAcidLava:
     dw $0900                                                             ;909EA5;
 
-  .YAccelerationInAir
+  .YAccelerationInAir:
     dw $0000                                                             ;909EA7;
 
-  .YAccelerationInWater
+  .YAccelerationInWater:
     dw $0000                                                             ;909EA9;
 
-  .YAccelerationInAcidLava
+  .YAccelerationInAcidLava:
     dw $0000                                                             ;909EAB;
 
-  .CameraXOffsetFromSamusWhenTurning
+  .CameraXOffsetFromSamusWhenTurning:
     dw $0001                                                             ;909EAD;
 
-  .CameraXSubOffsetFromSamusWhenTurning
+  .CameraXSubOffsetFromSamusWhenTurning:
     dw $0000                                                             ;909EAF;
 
-  .CameraYOffsetFromSamusWhenTurning
+  .CameraYOffsetFromSamusWhenTurning:
     dw $0001                                                             ;909EB1;
 
-  .CameraYSubOffsetFromSamusWhenTurning
+  .CameraYSubOffsetFromSamusWhenTurning:
     dw $0000                                                             ;909EB3;
 
-  .YSpeedWhenBouncingInMorphBall
+  .YSpeedWhenBouncingInMorphBall:
     dw $0001                                                             ;909EB5;
 
-  .YSubSpeedWhenBouncingInMorphBall
+  .YSubSpeedWhenBouncingInMorphBall:
     dw $0000                                                             ;909EB7;
 
-  .InitialYSpeeds_Jumping
+  .InitialYSpeeds_Jumping:
     dw $0004,$0001,$0002                                                 ;909EB9;
 
-  .InitialYSubSpeeds_Jumping
+  .InitialYSubSpeeds_Jumping:
     dw $E000,$C000,$C000                                                 ;909EBF;
 
-  .InitialYSpeeds_HiJumpJumping
+  .InitialYSpeeds_HiJumpJumping:
     dw $0006,$0002,$0003                                                 ;909EC5;
 
-  .InitialYSubSpeeds_HiJumpJumping
+  .InitialYSubSpeeds_HiJumpJumping:
     dw $0000,$8000,$8000                                                 ;909ECB;
 
-  .InitialYSpeeds_WallJumping
+  .InitialYSpeeds_WallJumping:
     dw $0004,$0000,$0002                                                 ;909ED1;
 
-  .InitialYSubSpeeds_WallJumping
+  .InitialYSubSpeeds_WallJumping:
     dw $A000,$4000,$A000                                                 ;909ED7;
 
-  .InitialYSpeeds_HiJumpWallJumping
+  .InitialYSpeeds_HiJumpWallJumping:
     dw $0005,$0000,$0003                                                 ;909EDD;
 
-  .InitialYSubSpeeds_HiJumpWallJumping
+  .InitialYSubSpeeds_HiJumpWallJumping:
     dw $8000,$8000,$8000                                                 ;909EE3;
 
-  .InitialYSpeeds_Knockback
+  .InitialYSpeeds_Knockback:
     dw $0005,$0002,$0002                                                 ;909EE9;
 
-  .InitialYSubSpeeds_Knockback
+  .InitialYSubSpeeds_Knockback:
     dw $0000,$0000,$0000                                                 ;909EEF;
 
-  .InitialYSpeeds_BombJump
+  .InitialYSpeeds_BombJump:
     dw $0002,$0000,$0000                                                 ;909EF5;
 
-  .InitialYSubSpeeds_BombJump
+  .InitialYSubSpeeds_BombJump:
     dw $C000,$1000,$1000                                                 ;909EFB;
 
-  .XAccelerations_DashHeld
+  .XAccelerations_DashHeld:
     dw $0000,$0000,$0000                                                 ;909F01;
 
-  .XSubAccelerations_DashHeld
+  .XSubAccelerations_DashHeld:
     dw $1000,$0400,$0400                                                 ;909F07;
 
-  .MaxXExtraRunSpeeds_SpeedBooster
+  .MaxXExtraRunSpeeds_SpeedBooster:
     dw $0007,$0004,$0004                                                 ;909F0D;
 
-  .MaxXExtraRunSubSpeeds_SpeedBooster
+  .MaxXExtraRunSubSpeeds_SpeedBooster:
     dw $0000,$0000,$0000                                                 ;909F13;
 
-  .MaxXExtraRunSpeeds_NoSpeedBooster_0
+  .MaxXExtraRunSpeeds_NoSpeedBooster_0:
     dw $0002,$0001,$0000                                                 ;909F19;
 
-  .MaxXExtraRunSpeeds_NoSpeedBooster_1
+  .MaxXExtraRunSpeeds_NoSpeedBooster_1:
     dw $0000,$0000,$0000                                                 ;909F1F;
 
-  .XAccelSpeeds_DiagonalBombJump
+  .XAccelSpeeds_DiagonalBombJump:
     dw $0000,$3000,$0003,$0000,$0000,$0800                               ;909F25;
 
-  .XAccelSpeeds_DisconnectGrappleInAir
+  .XAccelSpeeds_DisconnectGrappleInAir:
     dw $0000,$3000,$000F,$0000,$0000,$1000                               ;909F31;
 
-  .XAccelSpeeds_DisconnectGrappleInWater
+  .XAccelSpeeds_DisconnectGrappleInWater:
     dw $0000,$3000,$000F,$0000,$0000,$1000                               ;909F3D;
 
-  .XAccelSpeeds_DisconnectGrappleInLavaAcid
+  .XAccelSpeeds_DisconnectGrappleInLavaAcid:
     dw $0000,$3000,$000F,$0000,$0000,$1000                               ;909F49;
 
 SamusXSpeedTable_Normal:                                                 ;909F55;
@@ -5564,9 +5564,9 @@ DisableMinimap_MarkBossRoomTilesExplored:
 ;        ________ Boss ID
 ;       |     ___ Pointer to room map tile offsets
 ;       |    |
-  .bossID
+  .bossID:
     dw $0003                                                             ;90A83A;
-  .pointer
+  .pointer:
     dw       .kraid                                                      ;90A83C;
     dw $0006,.crocomire                                                  ;90A83E;
     dw $0007,.phantoon                                                   ;90A842;
@@ -5577,33 +5577,33 @@ DisableMinimap_MarkBossRoomTilesExplored:
 ;        _________ X offset (in pixels)
 ;       |      ___ Y offset (in pixels)
 ;       |     |
-  .kraid                                                                 ;90A852;
+  .kraid:                                                                ;90A852;
     dw $0000,$0000
     dw $0100,$0000
     dw $0000,$0100
     dw $0100,$0100
     dw $FFFF
-  .crocomire                                                             ;90A864;
+  .crocomire:                                                            ;90A864;
     dw $0300,$0000
     dw $0400,$0000
     dw $0500,$0000
     dw $FFFF
-  .phantoon                                                              ;90A872;
+  .phantoon:                                                             ;90A872;
     dw $0000,$0000
     dw $FFFF
-  .draygon                                                               ;90A878;
+  .draygon:                                                              ;90A878;
     dw $0000,$0000
     dw $0100,$0000
     dw $0000,$0100
     dw $0100,$0100
     dw $FFFF
-  .motherBrain                                                           ;90A88A;
+  .motherBrain:                                                          ;90A88A;
     dw $0000,$0000
     dw $0100,$0000
     dw $0200,$0000
     dw $0300,$0000
     dw $FFFF
-  .ridley                                                                ;90A89C;
+  .ridley:                                                               ;90A89C;
     dw $0000,$0000
     dw $0000,$0100
     dw $FFFF
@@ -6601,7 +6601,7 @@ Beam_NoWaveBeam:
     RTS                                                                  ;90AF35;
 
 
-  .pointers
+  .pointers:
     dw BeamBlockCollision_NoWaveBeam_Vertical                            ;90AF36; 0: Up, facing right
     dw BeamBlockCollision_NoWaveBeam_Diagonal                            ;90AF38; 1: Up-right
     dw BeamBlockCollision_NoWaveBeam_Horizontal                          ;90AF3A; 2: Right
@@ -6675,7 +6675,7 @@ ProjectilePreInstruction_Missile:
     RTS                                                                  ;90AFB2;
 
 
-  .pointers
+  .pointers:
     dw MissileBlockCollision_Vertical                                    ;90AFB3; 0: Up, facing right
     dw MissileBlockCollision_Diagonal                                    ;90AFB5; 1: Up-right
     dw MissileBlockCollision_Horizontal                                  ;90AFB7; 2: Right
@@ -6756,7 +6756,7 @@ ProjectilePreInstruction_SuperMissile:
     RTS                                                                  ;90B032;
 
 
-  .pointers
+  .pointers:
     dw SuperMissileBlockCollision_Vertical                               ;90B033; 0: Up, facing right
     dw SuperMissileBlockCollision_Diagonal                               ;90B035; 1: Up-right
     dw SuperMissileBlockCollision_Horizontal                             ;90B037; 2: Right
@@ -12319,14 +12319,14 @@ BombSpread:
 
 
 BombSpreadData:
-  .timers
+  .timers:
     db $78,$00,$6E,$00,$64,$00,$6E,$00,$78,$00                           ;90D8CF;
-  .XVelocities
+  .XVelocities:
 ; Unit 1/100h px/frame. MSb = direction, set = left, clear = right
     db $00,$81,$80,$80,$00,$00,$80,$00,$00,$01                           ;90D8D9;
-  .YSpeeds
+  .YSpeeds:
     db $00,$00,$01,$00,$02,$00,$01,$00,$00,$00                           ;90D8E3;
-  .YSubSpeeds
+  .YSubSpeeds:
     db $00,$00,$00,$00,$00,$80,$00,$00,$00,$00                           ;90D8ED;
 
 ProjectilePreInstruction_BombSpread:
