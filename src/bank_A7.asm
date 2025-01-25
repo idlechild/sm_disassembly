@@ -3360,22 +3360,22 @@ InitAI_Kraid:
 
 SetupKraidGFXWithTheTilePriorityCleared:
     SEP #$20                                                             ;A7AAC6;
-    LDA.B #$38                                                           ;A7AAC8;
+    LDA.B #Background_Brinstar_1A_Kraid_Upper                            ;A7AAC8;
     STA.L $000047                                                        ;A7AACA;
-    LDA.B #$FA                                                           ;A7AACE;
+    LDA.B #(Background_Brinstar_1A_Kraid_Upper>>8)                       ;A7AACE;
     STA.L $000048                                                        ;A7AAD0;
-    LDA.B #$B9                                                           ;A7AAD4;
+    LDA.B #(Background_Brinstar_1A_Kraid_Upper>>16)                      ;A7AAD4;
     STA.L $000049                                                        ;A7AAD6;
     LDA.B #$00                                                           ;A7AADA;
     STA.L $00004C                                                        ;A7AADC;
     LDA.B #$40                                                           ;A7AAE0;
     STA.L $00004D                                                        ;A7AAE2;
     JSL.L Decompression_VariableDestination                              ;A7AAE6;
-    LDA.B #$3E                                                           ;A7AAEA;
+    LDA.B #Background_Brinstar_1A_Kraid_Lower_0                          ;A7AAEA;
     STA.L $000047                                                        ;A7AAEC;
-    LDA.B #$FE                                                           ;A7AAF0;
+    LDA.B #(Background_Brinstar_1A_Kraid_Lower_0>>8)                     ;A7AAF0;
     STA.L $000048                                                        ;A7AAF2;
-    LDA.B #$B9                                                           ;A7AAF6;
+    LDA.B #(Background_Brinstar_1A_Kraid_Lower_0>>16)                    ;A7AAF6;
     STA.L $000049                                                        ;A7AAF8;
     LDA.B #$00                                                           ;A7AAFC;
     STA.L $00004C                                                        ;A7AAFE;
