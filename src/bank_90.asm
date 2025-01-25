@@ -14485,9 +14485,6 @@ SamusNewStateHandler_Normal:
     JSR.W HandlePeriodicDamageToSamus                                    ;90E74D;
     JSR.W PauseCheck                                                     ;90E750;
     JSR.W LowEnergyCheck                                                 ;90E753;
-    PLB                                                                  ;90E756;
-    PLP                                                                  ;90E757;
-    RTL                                                                  ;90E758;
 
     LDA.W $09E6                                                          ;90E759; Demo recorder. Remove the three instructions above and set DebugConst_DemoRecorder at $808002 to enable
     BNE +                                                                ;90E75C;
