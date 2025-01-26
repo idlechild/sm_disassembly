@@ -336,90 +336,191 @@ Instruction_CommonA6_DisableOffScreenProcessing:
     RTL                                                                  ;A68186;
 
 
+;        _____________________ Speed
+;       |      _______________ Subspeed
+;       |     |      _________ Negated speed
+;       |     |     |      ___ Negated subspeed
+;       |     |     |     |
 CommonA6EnemySpeeds_LinearlyIncreasing:
-    dw $0000,$0000,$0000,$0000,$0000,$1000,$FFFF,$F000                   ;A68187;
-    dw $0000,$2000,$FFFF,$E000,$0000,$3000,$FFFF,$D000                   ;A68197;
-    dw $0000,$4000,$FFFF,$C000,$0000,$5000,$FFFF,$B000                   ;A681A7;
-    dw $0000,$6000,$FFFF,$A000,$0000,$7000,$FFFF,$9000                   ;A681B7;
-    dw $0000,$8000,$FFFF,$8000,$0000,$9000,$FFFF,$7000                   ;A681C7;
-    dw $0000,$A000,$FFFF,$6000,$0000,$B000,$FFFF,$5000                   ;A681D7;
-    dw $0000,$C000,$FFFF,$4000,$0000,$D000,$FFFF,$3000                   ;A681E7;
-    dw $0000,$E000,$FFFF,$2000,$0000,$F000,$FFFF,$1000                   ;A681F7;
-    dw $0001,$0000,$FFFF,$0000,$0001,$1000,$FFFE,$F000                   ;A68207;
-    dw $0001,$2000,$FFFE,$E000,$0001,$3000,$FFFE,$D000                   ;A68217;
-    dw $0001,$4000,$FFFE,$C000,$0001,$5000,$FFFE,$B000                   ;A68227;
-    dw $0001,$6000,$FFFE,$A000,$0001,$7000,$FFFE,$9000                   ;A68237;
-    dw $0001,$8000,$FFFE,$8000,$0001,$9000,$FFFE,$7000                   ;A68247;
-    dw $0001,$A000,$FFFE,$6000,$0001,$B000,$FFFE,$5000                   ;A68257;
-    dw $0001,$C000,$FFFE,$4000,$0001,$D000,$FFFE,$3000                   ;A68267;
-    dw $0001,$E000,$FFFE,$2000,$0001,$F000,$FFFE,$1000                   ;A68277;
-    dw $0002,$0000,$FFFE,$0000,$0002,$1000,$FFFD,$F000                   ;A68287;
-    dw $0002,$2000,$FFFD,$E000,$0002,$3000,$FFFD,$D000                   ;A68297;
-    dw $0002,$4000,$FFFD,$C000,$0002,$5000,$FFFD,$B000                   ;A682A7;
-    dw $0002,$6000,$FFFD,$A000,$0002,$7000,$FFFD,$9000                   ;A682B7;
-    dw $0002,$8000,$FFFD,$8000,$0002,$9000,$FFFD,$7000                   ;A682C7;
-    dw $0002,$A000,$FFFD,$6000,$0002,$B000,$FFFD,$5000                   ;A682D7;
-    dw $0002,$C000,$FFFD,$4000,$0002,$D000,$FFFD,$3000                   ;A682E7;
-    dw $0002,$E000,$FFFD,$2000,$0002,$F000,$FFFD,$1000                   ;A682F7;
-    dw $0003,$0000,$FFFD,$0000,$0003,$1000,$FFFC,$F000                   ;A68307;
-    dw $0003,$2000,$FFFC,$E000,$0003,$3000,$FFFC,$D000                   ;A68317;
-    dw $0003,$4000,$FFFC,$C000,$0003,$5000,$FFFC,$B000                   ;A68327;
-    dw $0003,$6000,$FFFC,$A000,$0003,$7000,$FFFC,$9000                   ;A68337;
-    dw $0003,$8000,$FFFC,$8000,$0003,$9000,$FFFC,$7000                   ;A68347;
-    dw $0003,$A000,$FFFC,$6000,$0003,$B000,$FFFC,$5000                   ;A68357;
-    dw $0003,$C000,$FFFC,$4000,$0003,$D000,$FFFC,$3000                   ;A68367;
-    dw $0003,$E000,$FFFC,$2000,$0003,$F000,$FFFC,$1000                   ;A68377;
-    dw $0004,$0000,$FFFC,$0000                                           ;A68387;
+  .speed:
+    dw $0000                                                             ;A68187;
+  .subspeed:
+    dw       $0000                                                       ;A68189;
+  .negatedSpeed:
+    dw             $0000                                                 ;A6818B;
+  .negatedSubspeed:
+    dw                   $0000                                           ;A6818D;
+    dw $0000,$1000,$FFFF,$F000
+    dw $0000,$2000,$FFFF,$E000
+    dw $0000,$3000,$FFFF,$D000
+    dw $0000,$4000,$FFFF,$C000
+    dw $0000,$5000,$FFFF,$B000
+    dw $0000,$6000,$FFFF,$A000
+    dw $0000,$7000,$FFFF,$9000
+    dw $0000,$8000,$FFFF,$8000
+    dw $0000,$9000,$FFFF,$7000
+    dw $0000,$A000,$FFFF,$6000
+    dw $0000,$B000,$FFFF,$5000
+    dw $0000,$C000,$FFFF,$4000
+    dw $0000,$D000,$FFFF,$3000
+    dw $0000,$E000,$FFFF,$2000
+    dw $0000,$F000,$FFFF,$1000
+    dw $0001,$0000,$FFFF,$0000
+    dw $0001,$1000,$FFFE,$F000
+    dw $0001,$2000,$FFFE,$E000
+    dw $0001,$3000,$FFFE,$D000
+    dw $0001,$4000,$FFFE,$C000
+    dw $0001,$5000,$FFFE,$B000
+    dw $0001,$6000,$FFFE,$A000
+    dw $0001,$7000,$FFFE,$9000
+    dw $0001,$8000,$FFFE,$8000
+    dw $0001,$9000,$FFFE,$7000
+    dw $0001,$A000,$FFFE,$6000
+    dw $0001,$B000,$FFFE,$5000
+    dw $0001,$C000,$FFFE,$4000
+    dw $0001,$D000,$FFFE,$3000
+    dw $0001,$E000,$FFFE,$2000
+    dw $0001,$F000,$FFFE,$1000
+    dw $0002,$0000,$FFFE,$0000
+    dw $0002,$1000,$FFFD,$F000
+    dw $0002,$2000,$FFFD,$E000
+    dw $0002,$3000,$FFFD,$D000
+    dw $0002,$4000,$FFFD,$C000
+    dw $0002,$5000,$FFFD,$B000
+    dw $0002,$6000,$FFFD,$A000
+    dw $0002,$7000,$FFFD,$9000
+    dw $0002,$8000,$FFFD,$8000
+    dw $0002,$9000,$FFFD,$7000
+    dw $0002,$A000,$FFFD,$6000
+    dw $0002,$B000,$FFFD,$5000
+    dw $0002,$C000,$FFFD,$4000
+    dw $0002,$D000,$FFFD,$3000
+    dw $0002,$E000,$FFFD,$2000
+    dw $0002,$F000,$FFFD,$1000
+    dw $0003,$0000,$FFFD,$0000
+    dw $0003,$1000,$FFFC,$F000
+    dw $0003,$2000,$FFFC,$E000
+    dw $0003,$3000,$FFFC,$D000
+    dw $0003,$4000,$FFFC,$C000
+    dw $0003,$5000,$FFFC,$B000
+    dw $0003,$6000,$FFFC,$A000
+    dw $0003,$7000,$FFFC,$9000
+    dw $0003,$8000,$FFFC,$8000
+    dw $0003,$9000,$FFFC,$7000
+    dw $0003,$A000,$FFFC,$6000
+    dw $0003,$B000,$FFFC,$5000
+    dw $0003,$C000,$FFFC,$4000
+    dw $0003,$D000,$FFFC,$3000
+    dw $0003,$E000,$FFFC,$2000
+    dw $0003,$F000,$FFFC,$1000
+    dw $0004,$0000,$FFFC,$0000
 
 CommonA6EnemySpeeds_QuadraticallyIncreasing:
-    dw $0000,$0000,$0000,$0000,$0109,$0000,$FEF7,$FFFF                   ;A6838F;
-    dw $031B,$0000,$FCE5,$FFFF,$0636,$0000,$F9CA,$FFFF                   ;A6839F;
-    dw $0A5A,$0000,$F5A6,$FFFF,$0F87,$0000,$F079,$FFFF                   ;A683AF;
-    dw $15BD,$0000,$EA43,$FFFF,$1CFC,$0000,$E304,$FFFF                   ;A683BF;
-    dw $2544,$0000,$DABC,$FFFF,$2E95,$0000,$D16B,$FFFF                   ;A683CF;
-    dw $38EF,$0000,$C711,$FFFF,$4452,$0000,$BBAE,$FFFF                   ;A683DF;
-    dw $50BE,$0000,$AF42,$FFFF,$5E33,$0000,$A1CD,$FFFF                   ;A683EF;
-    dw $6CB1,$0000,$934F,$FFFF,$7C38,$0000,$83C8,$FFFF                   ;A683FF;
-    dw $8CC8,$0000,$7338,$FFFF,$9E61,$0000,$619F,$FFFF                   ;A6840F;
-    dw $B103,$0000,$4EFD,$FFFF,$C4AE,$0000,$3B52,$FFFF                   ;A6841F;
-    dw $D962,$0000,$269E,$FFFF,$EF1F,$0000,$10E1,$FFFF                   ;A6842F;
-    dw $05E5,$0000,$FA1B,$FFFF,$14B4,$0001,$EB4C,$FFFE                   ;A6843F;
-    dw $2D8C,$0001,$D274,$FFFE,$476D,$0001,$B893,$FFFE                   ;A6844F;
-    dw $6257,$0001,$9DA9,$FFFE,$7E4A,$0001,$81B6,$FFFE                   ;A6845F;
-    dw $9B46,$0001,$64BA,$FFFE,$B94B,$0001,$46B5,$FFFE                   ;A6846F;
-    dw $D859,$0001,$27A7,$FFFE,$F870,$0001,$0790,$FFFE                   ;A6847F;
-    dw $1090,$0002,$EF70,$FFFD,$32B9,$0002,$CD47,$FFFD                   ;A6848F;
-    dw $55EB,$0002,$AA15,$FFFD,$7A26,$0002,$85DA,$FFFD                   ;A6849F;
-    dw $9F6A,$0002,$6096,$FFFD,$C5B7,$0002,$3A49,$FFFD                   ;A684AF;
-    dw $ED0D,$0002,$12F3,$FFFD,$0C6C,$0003,$F394,$FFFC                   ;A684BF;
-    dw $35D4,$0003,$CA2C,$FFFC,$6045,$0003,$9FBB,$FFFC                   ;A684CF;
-    dw $8BBF,$0003,$7441,$FFFC,$B842,$0003,$47BE,$FFFC                   ;A684DF;
-    dw $E5CE,$0003,$1A32,$FFFC,$0B63,$0004,$F49D,$FFFB                   ;A684EF;
-    dw $3B01,$0004,$C4FF,$FFFB,$6BA8,$0004,$9458,$FFFB                   ;A684FF;
-    dw $9D58,$0004,$62A8,$FFFB,$D011,$0004,$2FEF,$FFFB                   ;A6850F;
-    dw $03D3,$0004,$FC2D,$FFFB,$2F9E,$0005,$D062,$FFFA                   ;A6851F;
-    dw $6572,$0005,$9A8E,$FFFA,$9C4F,$0005,$63B1,$FFFA                   ;A6852F;
-    dw $D435,$0005,$2BCB,$FFFA,$0424,$0006,$FBDC,$FFF9                   ;A6853F;
-    dw $3E1C,$0006,$C1E4,$FFF9,$791D,$0006,$86E3,$FFF9                   ;A6854F;
-    dw $B527,$0006,$4AD9,$FFF9,$F23A,$0006,$0DC6,$FFF9                   ;A6855F;
-    dw $2756,$0007,$D8AA,$FFF8,$667B,$0007,$9985,$FFF8                   ;A6856F;
-    dw $A6A9,$0007,$5957,$FFF8,$E7E0,$0007,$1820,$FFF8                   ;A6857F;
-    dw $2120,$0008,$DEE0,$FFF7,$6469,$0008,$9B97,$FFF7                   ;A6858F;
-    dw $A8BB,$0008,$5745,$FFF7,$EE16,$0008,$11EA,$FFF7                   ;A6859F;
-    dw $2B7A,$0009,$D486,$FFF6,$72E7,$0009,$8D19,$FFF6                   ;A685AF;
-    dw $BB5D,$0009,$44A3,$FFF6,$04DC,$0009,$FB24,$FFF6                   ;A685BF;
-    dw $4664,$000A,$B99C,$FFF5,$91F5,$000A,$6E0B,$FFF5                   ;A685CF;
-    dw $DE8F,$000A,$2171,$FFF5,$2332,$000B,$DCCE,$FFF4                   ;A685DF;
-    dw $71DE,$000B,$8E22,$FFF4,$C193,$000B,$3E6D,$FFF4                   ;A685EF;
-    dw $0951,$000C,$F6AF,$FFF3,$5B18,$000C,$A4E8,$FFF3                   ;A685FF;
-    dw $ADE8,$000C,$5218,$FFF3,$01C1,$000C,$FE3F,$FFF3                   ;A6860F;
-    dw $4DA3,$000D,$B25D,$FFF2,$A38E,$000D,$5C72,$FFF2                   ;A6861F;
-    dw $FA82,$000D,$057E,$FFF2,$497F,$000E,$B681,$FFF1                   ;A6862F;
-    dw $A285,$000E,$5D7B,$FFF1,$FC94,$000E,$036C,$FFF1                   ;A6863F;
-    dw $4EAC,$000F,$B154,$FFF0,$AACD,$000F,$5533,$FFF0                   ;A6864F;
-    dw $07F7,$000F,$F809,$FFF0,$5D2A,$0010,$A2D6,$FFEF                   ;A6865F;
-    dw $BC66,$0010,$439A,$FFEF,$13AB,$0011,$EC55,$FFEE                   ;A6866F;
-    dw $74F9,$0011,$8B07,$FFEE                                           ;A6867F;
+; I.e. gravity
+; Used by e.g. Botwoon when dying and falling to the floor
+  .speed:
+    dw $0000                                                             ;A6838F;
+  .subspeed:
+    dw       $0000                                                       ;A68391;
+  .negatedSpeed:
+    dw             $0000                                                 ;A68393;
+  .negatedSubspeed:
+    dw                   $0000                                           ;A68395;
+    dw $0109,$0000,$FEF7,$FFFF
+    dw $031B,$0000,$FCE5,$FFFF
+    dw $0636,$0000,$F9CA,$FFFF
+    dw $0A5A,$0000,$F5A6,$FFFF
+    dw $0F87,$0000,$F079,$FFFF
+    dw $15BD,$0000,$EA43,$FFFF
+    dw $1CFC,$0000,$E304,$FFFF
+    dw $2544,$0000,$DABC,$FFFF
+    dw $2E95,$0000,$D16B,$FFFF
+    dw $38EF,$0000,$C711,$FFFF
+    dw $4452,$0000,$BBAE,$FFFF
+    dw $50BE,$0000,$AF42,$FFFF
+    dw $5E33,$0000,$A1CD,$FFFF
+    dw $6CB1,$0000,$934F,$FFFF
+    dw $7C38,$0000,$83C8,$FFFF
+    dw $8CC8,$0000,$7338,$FFFF
+    dw $9E61,$0000,$619F,$FFFF
+    dw $B103,$0000,$4EFD,$FFFF
+    dw $C4AE,$0000,$3B52,$FFFF
+    dw $D962,$0000,$269E,$FFFF
+    dw $EF1F,$0000,$10E1,$FFFF
+    dw $05E5,$0000,$FA1B,$FFFF
+    dw $14B4,$0001,$EB4C,$FFFE
+    dw $2D8C,$0001,$D274,$FFFE
+    dw $476D,$0001,$B893,$FFFE
+    dw $6257,$0001,$9DA9,$FFFE
+    dw $7E4A,$0001,$81B6,$FFFE
+    dw $9B46,$0001,$64BA,$FFFE
+    dw $B94B,$0001,$46B5,$FFFE
+    dw $D859,$0001,$27A7,$FFFE
+    dw $F870,$0001,$0790,$FFFE
+    dw $1090,$0002,$EF70,$FFFD
+    dw $32B9,$0002,$CD47,$FFFD
+    dw $55EB,$0002,$AA15,$FFFD
+    dw $7A26,$0002,$85DA,$FFFD
+    dw $9F6A,$0002,$6096,$FFFD
+    dw $C5B7,$0002,$3A49,$FFFD
+    dw $ED0D,$0002,$12F3,$FFFD
+    dw $0C6C,$0003,$F394,$FFFC
+    dw $35D4,$0003,$CA2C,$FFFC
+    dw $6045,$0003,$9FBB,$FFFC
+    dw $8BBF,$0003,$7441,$FFFC
+    dw $B842,$0003,$47BE,$FFFC
+    dw $E5CE,$0003,$1A32,$FFFC
+    dw $0B63,$0004,$F49D,$FFFB
+    dw $3B01,$0004,$C4FF,$FFFB
+    dw $6BA8,$0004,$9458,$FFFB
+    dw $9D58,$0004,$62A8,$FFFB
+    dw $D011,$0004,$2FEF,$FFFB
+    dw $03D3,$0004,$FC2D,$FFFB
+    dw $2F9E,$0005,$D062,$FFFA
+    dw $6572,$0005,$9A8E,$FFFA
+    dw $9C4F,$0005,$63B1,$FFFA
+    dw $D435,$0005,$2BCB,$FFFA
+    dw $0424,$0006,$FBDC,$FFF9
+    dw $3E1C,$0006,$C1E4,$FFF9
+    dw $791D,$0006,$86E3,$FFF9
+    dw $B527,$0006,$4AD9,$FFF9
+    dw $F23A,$0006,$0DC6,$FFF9
+    dw $2756,$0007,$D8AA,$FFF8
+    dw $667B,$0007,$9985,$FFF8
+    dw $A6A9,$0007,$5957,$FFF8
+    dw $E7E0,$0007,$1820,$FFF8
+    dw $2120,$0008,$DEE0,$FFF7
+    dw $6469,$0008,$9B97,$FFF7
+    dw $A8BB,$0008,$5745,$FFF7
+    dw $EE16,$0008,$11EA,$FFF7
+    dw $2B7A,$0009,$D486,$FFF6
+    dw $72E7,$0009,$8D19,$FFF6
+    dw $BB5D,$0009,$44A3,$FFF6
+    dw $04DC,$0009,$FB24,$FFF6
+    dw $4664,$000A,$B99C,$FFF5
+    dw $91F5,$000A,$6E0B,$FFF5
+    dw $DE8F,$000A,$2171,$FFF5
+    dw $2332,$000B,$DCCE,$FFF4
+    dw $71DE,$000B,$8E22,$FFF4
+    dw $C193,$000B,$3E6D,$FFF4
+    dw $0951,$000C,$F6AF,$FFF3
+    dw $5B18,$000C,$A4E8,$FFF3
+    dw $ADE8,$000C,$5218,$FFF3
+    dw $01C1,$000C,$FE3F,$FFF3
+    dw $4DA3,$000D,$B25D,$FFF2
+    dw $A38E,$000D,$5C72,$FFF2
+    dw $FA82,$000D,$057E,$FFF2
+    dw $497F,$000E,$B681,$FFF1
+    dw $A285,$000E,$5D7B,$FFF1
+    dw $FC94,$000E,$036C,$FFF1
+    dw $4EAC,$000F,$B154,$FFF0
+    dw $AACD,$000F,$5533,$FFF0
+    dw $07F7,$000F,$F809,$FFF0
+    dw $5D2A,$0010,$A2D6,$FFEF
+    dw $BC66,$0010,$439A,$FFEF
+    dw $13AB,$0011,$EC55,$FFEE
+    dw $74F9,$0011,$8B07,$FFEE
+
 
 Palette_Boulder:
     dw $3800,$49EF,$45CE,$3D8C,$396B,$3529,$2D08,$28C6                   ;A68687;

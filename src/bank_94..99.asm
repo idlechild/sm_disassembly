@@ -2,9 +2,10 @@
 org $94E000
 
 
-Tiles_Title_Background_Mode7:
 check bankcross off
+Tiles_Title_Background_Mode7:
 incbin "../data/Tiles_Title_Background_Mode7.bin" ; $10D7 bytes
+
 Tiles_Title_Sprite:
 incbin "../data/Tiles_Title_Sprite.bin" ; $2509 bytes
 
