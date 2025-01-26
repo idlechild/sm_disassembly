@@ -415,16 +415,22 @@ CommonAAEnemySpeeds_LinearlyIncreasing:
     dw $0003,$F000,$FFFC,$1000
     dw $0004,$0000,$FFFC,$0000
 
+
+;        _____________________ Subspeed
+;       |      _______________ Speed
+;       |     |      _________ Negated subspeed
+;       |     |     |      ___ Negated speed
+;       |     |     |     |
 CommonAAEnemySpeeds_QuadraticallyIncreasing:
 ; I.e. gravity
 ; Used by e.g. Botwoon when dying and falling to the floor
-  .speed:
-    dw $0000                                                             ;AA838F;
   .subspeed:
+    dw $0000                                                             ;AA838F;
+  .speed:
     dw       $0000                                                       ;AA8391;
-  .negatedSpeed:
-    dw             $0000                                                 ;AA8393;
   .negatedSubspeed:
+    dw             $0000                                                 ;AA8393;
+  .negatedSpeed:
     dw                   $0000                                           ;AA8395;
     dw $0109,$0000,$FEF7,$FFFF
     dw $031B,$0000,$FCE5,$FFFF

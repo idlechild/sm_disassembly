@@ -418,16 +418,22 @@ CommonEnemySpeeds_LinearlyIncreasing:
     dw $0003,$F000,$FFFC,$1000
     dw $0004,$0000,$FFFC,$0000
 
+
+;        _____________________ Subspeed
+;       |      _______________ Speed
+;       |     |      _________ Negated subspeed
+;       |     |     |      ___ Negated speed
+;       |     |     |     |
 CommonEnemySpeeds_QuadraticallyIncreasing:
 ; I.e. gravity
 ; Used by e.g. Botwoon when dying and falling to the floor
-  .speed:
-    dw $0000                                                             ;A0838F;
   .subspeed:
+    dw $0000                                                             ;A0838F;
+  .speed:
     dw       $0000                                                       ;A08391;
-  .negatedSpeed:
-    dw             $0000                                                 ;A08393;
   .negatedSubspeed:
+    dw             $0000                                                 ;A08393;
+  .negatedSpeed:
     dw                   $0000                                           ;A08395;
     dw $0109,$0000,$FEF7,$FFFF
     dw $031B,$0000,$FCE5,$FFFF
@@ -9437,16 +9443,22 @@ UNUSED_CommonEnemyProjectileSpeeds_LinearlyIncreasing_A0C9BF:
     dw $0004,$0000,$FFFC,$0000
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;        _____________________ Subspeed
+;       |      _______________ Speed
+;       |     |      _________ Negated subspeed
+;       |     |     |      ___ Negated speed
+;       |     |     |     |
 CommonEnemyProjectileSpeeds_QuadraticallyIncreasing:
 ; Clone of CommonEnemySpeeds_QuadraticallyIncreasing
 ; Used by Botwoon's body when dying and falling to the floor, and polyp rock
-  .speed:
-    dw $0000                                                             ;A0CBC7;
   .subspeed:
+    dw $0000                                                             ;A0CBC7;
+  .speed:
     dw       $0000                                                       ;A0CBC9;
-  .negatedSpeed:
-    dw             $0000                                                 ;A0CBCB;
   .negatedSubspeed:
+    dw             $0000                                                 ;A0CBCB;
+  .negatedSpeed:
     dw                   $0000                                           ;A0CBCD;
     dw $0109,$0000,$FEF7,$FFFF
     dw $031B,$0000,$FCE5,$FFFF
