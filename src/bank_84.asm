@@ -7520,7 +7520,8 @@ InstList_PLM_DownwardsClosedGate:
     dw Instruction_PLM_PreInstruction_inY                                ;84BC40;
     dw PreInst_PLM_WakePLMIfTriggeredOrSamusWithin4BlockColumnBelow      ;84BC42;
     dw Instruction_PLM_Sleep                                             ;84BC44;
-    dw Instruction_PLM_WakeEnemyProjectileAtPLMsPosition,$E566           ;84BC46;
+    dw Instruction_PLM_WakeEnemyProjectileAtPLMsPosition                 ;84BC46;
+    dw InstList_EnemyProjectile_ShotGate_InitialClosedDownwards_sleep    ;84BC48;
     dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $0E                   ;84BC4A;
     dw $0010,DrawInst_DownwardsGateOpenClosed_3                          ;84BC4D;
     dw $0010,DrawInst_DownwardsGateOpenClosed_2                          ;84BC51;
@@ -7552,7 +7553,8 @@ InstList_PLM_UpwardsClosedGate:
 
 InstList_PLM_UpwardsClosedGate_sleep:
     dw Instruction_PLM_Sleep                                             ;84BC92;
-    dw Instruction_PLM_WakeEnemyProjectileAtPLMsPosition,$E5B0           ;84BC94;
+    dw Instruction_PLM_WakeEnemyProjectileAtPLMsPosition                 ;84BC94;
+    dw InstList_EnemyProjectile_ShotGate_InitialClosedUpwards_sleep      ;84BC96;
     dw Instruction_PLM_QueueSound_Y_Lib3_Max6 : db $0E                   ;84BC98;
     dw $0010,DrawInst_UpwardsGateOpenClosed_3                            ;84BC9B;
     dw $0010,DrawInst_UpwardsGateOpenClosed_2                            ;84BC9F;
