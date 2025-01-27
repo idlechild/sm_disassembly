@@ -3028,7 +3028,7 @@ UpdateGrappleBeamTiles:
     DEC A                                                                ;9BBFC0;
     STA.W $0D3E                                                          ;9BBFC1;
     BPL .timerNotExpired                                                 ;9BBFC4;
-    LDA.W #$0005                                                         ;9BBFC6;
+    LDA.W #$0004                                                         ;9BBFC6;
     STA.W $0D3E                                                          ;9BBFC9;
     LDA.W $0D40                                                          ;9BBFCC;
     CLC                                                                  ;9BBFCF;
@@ -3222,23 +3222,23 @@ GrappleBeamFireAngles:                                                   ;9BC104
 
 GrappleSwingConstants_AccelerationDueToAngleOfSwing:
 ; Grapple swing Samus base acceleration due to angle of swing
-    dw $0018                                                             ;9BC118;
+    dw $001C                                                             ;9BC118;
 
 GrappleSwingConstants_AccelerationDueToButtonInput:
 ; Grapple swing Samus base acceleration due to button input
-    dw $000C                                                             ;9BC11A;
+    dw $000E                                                             ;9BC11A;
 
 GrappleSwingConstants_Deceleration:
 ; Grapple swing Samus base deceleration
-    dw $0005                                                             ;9BC11C;
+    dw $0006                                                             ;9BC11C;
 
 GrappleSwingConstants_AbsoluteAngularVelocity:
 ; Absolute grapple swing angular velocity
-    dw $0480                                                             ;9BC11E;
+    dw $0566                                                             ;9BC11E;
 
 GrappleSwingConstants_ExtraAngularVelocity_GrappleKick:
 ; Extra grapple swing angular velocity (for grapple kick)
-    dw $0300                                                             ;9BC120;
+    dw $0399                                                             ;9BC120;
 
 ;        _______________________________________________________ 0: Up, facing right
 ;       |      _________________________________________________ 1: Up-right
@@ -3697,7 +3697,7 @@ GrappleBeamFunction_Fire_GotoCancel:
     LDA.W #$0002                                                         ;9BC63C;
     STA.W $0D3A                                                          ;9BC63F;
     STZ.W $0D3C                                                          ;9BC642;
-    LDA.W #$0005                                                         ;9BC645;
+    LDA.W #$0004                                                         ;9BC645;
     STA.W $0D3E                                                          ;9BC648;
     LDA.W GrappleBeamStartTilesBeginEndPointers_0                        ;9BC64B;
     STA.W $0D40                                                          ;9BC64E;

@@ -23,16 +23,16 @@ FXHeader_LandingSite_State3:
     db $00,$00,$02,$02,$00,$06,$00,$00                                   ;838008;
 
 FXHeader_Parlor_State2:
-    dw $0000,$04E8,$0010,$FF98                                           ;838010;
+    dw $0000,$04E8,$0010,$FF70                                           ;838010;
     db $00,$00,$02,$02,$00,$42,$00,$00                                   ;838018;
 
 FXHeader_Climb_State2:
-    dw $0000,$08E8,$0010,$FF98                                           ;838020;
-    db $28,$04,$02,$1E,$01,$38,$00,$00                                   ;838028;
+    dw $0000,$08E8,$0010,$FF70                                           ;838020;
+    db $1E,$04,$02,$1E,$01,$38,$00,$00                                   ;838028;
 
 FXHeader_BombTorizo_State2:
-    dw $0000,$00F0,$00B8,$FFF0                                           ;838030;
-    db $30,$04,$02,$1E,$00,$00,$00,$00                                   ;838038;
+    dw $0000,$00F0,$00B8,$FFEE                                           ;838030;
+    db $28,$04,$02,$1E,$00,$00,$00,$00                                   ;838038;
 
 FXHeader_Flyway_State2:
     dw $0000,$FFFF,$FFFF,$0000                                           ;838040;
@@ -44,8 +44,8 @@ FXHeader_Parlor_State1:
 
 FXHeader_Climb_State1:
     dw Door_TourianEscape4_1                                             ;838060;
-    dw $0908,$0000,$FF80                                                 ;838062;
-    db $20,$02,$02,$1E,$0B,$1F,$01,$02                                   ;838068;
+    dw $0908,$0000,$FF6A                                                 ;838062;
+    db $19,$02,$02,$1E,$0B,$1F,$01,$02                                   ;838068;
     dw $0000,$FFFF,$FFFF,$0000                                           ;838070;
     db $00,$00,$02,$02,$00,$00,$00,$00                                   ;838078;
 
@@ -476,13 +476,13 @@ FXHeader_BubbleMountain:
 FXHeader_SpeedBoosterHall:
     dw Door_SpeedBooster_0                                               ;8385E0;
     dw $01DA,$00B0,$0000                                                 ;8385E2;
-    db $F0,$02,$02,$1E,$0B,$1F,$02,$02                                   ;8385E8;
+    db $C8,$02,$02,$1E,$0B,$1F,$02,$02                                   ;8385E8;
     dw $0000,$01DA,$FFFF,$0000                                           ;8385F0;
     db $00,$02,$02,$1E,$0B,$1F,$02,$02                                   ;8385F8;
 
 FXHeader_SpeedBooster:
     dw $0000,$00DA,$0000,$0000                                           ;838600;
-    db $20,$02,$02,$1E,$0B,$1F,$00,$02                                   ;838608;
+    db $19,$02,$02,$1E,$0B,$1F,$00,$02                                   ;838608;
 
 FXHeader_SingleChamber:
     dw $0000,$FFFF,$FFFF,$0000                                           ;838610;
@@ -501,8 +501,8 @@ FXHeader_SpikyPlatformsTunnel:
     db $00,$02,$02,$1E,$03,$1F,$02,$02                                   ;838648;
 
 FXHeader_Volcano:
-    dw $9672,$02E0,$0260,$FFF6                                           ;838650;
-    db $40,$02,$02,$1E,$0B,$1F,$00,$02                                   ;838658;
+    dw $9672,$02E0,$0260,$FFF4                                           ;838650;
+    db $32,$02,$02,$1E,$0B,$1F,$00,$02                                   ;838658;
     dw $0000,$0268,$FFFF,$0000                                           ;838660;
     db $00,$02,$02,$1E,$01,$00,$00,$02                                   ;838668;
 
@@ -532,8 +532,8 @@ FXHeader_UpperNorfairFarming:
 
 FXHeader_RisingTide:
     dw Door_Cathedral_1                                                  ;8386D0;
-    dw $0108,$00C0,$FFE0                                                 ;8386D2;
-    db $40,$02,$02,$1E,$0B,$1F,$00,$02                                   ;8386D8;
+    dw $00F0,$00C0,$FFD0                                                 ;8386D2;
+    db $32,$02,$02,$1E,$0B,$1F,$00,$02                                   ;8386D8;
     dw $0000,$00C8,$FFFF,$0000                                           ;8386E0;
     db $00,$02,$02,$1E,$0B,$1F,$00,$02                                   ;8386E8;
 
@@ -624,8 +624,8 @@ FXHeader_MickeyMouse:
     db $00,$04,$02,$1E,$02,$1F,$00,$00                                   ;838804;
 
 FXHeader_Pillar:
-    dw $0000,$00E8,$0010,$FFE0                                           ;83880C;
-    db $50,$04,$02,$1E,$82,$1F,$00,$00                                   ;838814;
+    dw $0000,$00E8,$0010,$FFDC                                           ;83880C;
+    db $41,$04,$02,$1E,$82,$1F,$00,$00                                   ;838814;
 
 FXHeader_Plowerhouse:
     dw $0000,$00CD,$FFFF,$0000                                           ;83881C;
@@ -633,13 +633,13 @@ FXHeader_Plowerhouse:
 
 FXHeader_WorstRoomInTheGame:
     dw $0000,$FFFF,$FFFF,$0000                                           ;83882C;
-    db $20,$04,$02,$1E,$02,$1F,$02,$00                                   ;838834;
+    db $19,$04,$02,$1E,$02,$1F,$02,$00                                   ;838834;
 
 FXHeader_Amphitheatre:
     dw $99F6,$00D0,$FFFF,$0000                                           ;83883C;
     db $00,$04,$02,$1E,$82,$1F,$00,$00                                   ;838844;
-    dw $0000,$04E8,$00D0,$FF80                                           ;83884C;
-    db $60,$04,$02,$1E,$82,$1F,$02,$00                                   ;838854;
+    dw $0000,$04E8,$00D0,$FF6A                                           ;83884C;
+    db $50,$04,$02,$1E,$82,$1F,$02,$00                                   ;838854;
 
 FXHeader_LNSpringballMaze:
     dw $0000,$FFFF,$FFFF,$0000                                           ;83885C;
@@ -3020,7 +3020,7 @@ FXHeader_TourianFirst:
 
 FXHeader_Metroids1_State0_1:
     dw $0000,$00D0,$FFFF,$0000                                           ;83A014;
-    db $10,$04,$02,$1E,$01,$02,$00,$02                                   ;83A01C;
+    db $0A,$04,$02,$1E,$01,$02,$00,$02                                   ;83A01C;
 
 FXHeader_Metroids2_State0_1:
     dw $0000,$FFFF,$FFFF,$0000                                           ;83A024;
@@ -3028,7 +3028,7 @@ FXHeader_Metroids2_State0_1:
 
 FXHeader_Metroids3_State0_1:
     dw $0000,$00D0,$FFFF,$0000                                           ;83A034;
-    db $10,$04,$02,$1E,$01,$02,$00,$02                                   ;83A03C;
+    db $0A,$04,$02,$1E,$01,$02,$00,$02                                   ;83A03C;
 
 FXHeader_Metroids4_State0_1:
     dw $0000,$FFFF,$FFFF,$0000                                           ;83A044;
@@ -3056,15 +3056,15 @@ FXHeader_TourianRecharge:
 
 FXHeader_MotherBrain_State0_1:
     dw $0000,$00E8,$FFFF,$0000                                           ;83A0A4;
-    db $10,$04,$02,$1E,$01,$02,$00,$02                                   ;83A0AC;
+    db $0A,$04,$02,$1E,$01,$02,$00,$02                                   ;83A0AC;
 
 FXHeader_SetByMotherBrain_0:
-    dw $0000,$00E8,$00B8,$FFF0                                           ;83A0B4;
-    db $10,$04,$02,$1E,$01,$02,$00,$02                                   ;83A0BC;
+    dw $0000,$00E8,$00B8,$FFEE                                           ;83A0B4;
+    db $0A,$04,$02,$1E,$01,$02,$00,$02                                   ;83A0BC;
 
 FXHeader_SetByMotherBrain_1:
-    dw $0000,$00B8,$00E8,$0030                                           ;83A0C4;
-    db $10,$04,$02,$1E,$01,$02,$00,$02                                   ;83A0CC;
+    dw $0000,$00B8,$00E8,$0036                                           ;83A0C4;
+    db $0A,$04,$02,$1E,$01,$02,$00,$02                                   ;83A0CC;
 
 FXHeader_TourianEyeDoor:
     dw $0000,$FFFF,$FFFF,$0000                                           ;83A0D4;
@@ -3092,7 +3092,7 @@ FXHeader_TourianEscape3:
 
 FXHeader_ToruianEscaper4:
     dw $0000,$05E0,$0010,$0000                                           ;83A134;
-    db $40,$04,$02,$1E,$01,$70,$02,$00                                   ;83A13C;
+    db $32,$04,$02,$1E,$01,$70,$02,$00                                   ;83A13C;
 
 FXHeader_UpperTourianSave:
     dw $FFFF                                                             ;83A144;
