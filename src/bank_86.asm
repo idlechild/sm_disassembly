@@ -13399,7 +13399,9 @@ InstList_EnemyProjectile_ShotGate_SpawnedDownwards:
 
 InstList_EnemyProjectile_ShotGate_InitialClosedDownwards:
     dw Instruction_EnemyProjectile_ShotGate_EnemyVelocityInY,$FF00       ;86E55E;
-    dw $0001,EnemyProjSpritemaps_DownwardsShotGate_3                     ;86E560;
+    dw $0001,EnemyProjSpritemaps_DownwardsShotGate_3                     ;86E562;
+
+InstList_EnemyProjectile_ShotGate_InitialClosedDownwards_sleep:
     dw Instruction_EnemyProjectile_Sleep                                 ;86E566;
     dw Instruction_EnemyProjectile_PreInstructionInY                     ;86E568;
     dw PreInstruction_EnemyProjectile_ShotGate_InitialClosed             ;86E56A;
@@ -13429,7 +13431,7 @@ InstList_EnemyProjectile_ShotGate_SpawnedUpwards:
 
 InstList_EnemyProjectile_ShotGate_InitialClosedUpwards:
     dw Instruction_EnemyProjectile_ShotGate_EnemyVelocityInY,$0100       ;86E5A8;
-    dw $0001,EnemyProjSpritemaps_UpwardsShotGate_3                       ;86E5AA;
+    dw $0001,EnemyProjSpritemaps_UpwardsShotGate_3                       ;86E5AC;
 
 InstList_EnemyProjectile_ShotGate_InitialClosedUpwards_sleep:
     dw Instruction_EnemyProjectile_Sleep                                 ;86E5B0;
