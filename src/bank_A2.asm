@@ -89,12 +89,14 @@ Spritemap_CommonA2_Nothing:
     dw $0000                                                             ;A2804D;
 
 ExtendedSpritemap_CommonA2_Nothing:
-    dw $0001,$0000,$0000                                                 ;A2804F;
+    dw $0001                                                             ;A2804F;
+    dw $0000,$0000
     dw Spritemap_CommonA2_Nothing                                        ;A28055;
     dw Hitbox_CommonA2_Nothing                                           ;A28057;
 
 Hitbox_CommonA2_Nothing:
-    dw $0001,$0000,$0000,$0000,$0000                                     ;A28059;
+    dw $0001                                                             ;A28059;
+    dw $0000,$0000,$0000,$0000
     dw CommonA2_NormalEnemyTouchAI                                       ;A28063;
     dw CommonA2_NormalEnemyShotAI                                        ;A28065;
 
@@ -4327,7 +4329,7 @@ ProcessShipHover:
     db     $01                                                           ;A2A7D0;
     db $10,$FF
     db $10,$FF
-    db $10,$01                                       
+    db $10,$01
 
 RTL_A2A7D7:
     RTL                                                                  ;A2A7D7;

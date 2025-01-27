@@ -1,10 +1,1 @@
 
-$8FC9EC Pointer at end
-$8FC247 Pointers at ends
-$8FC597 Parameters should be 8bit
-$91E9F3 Should be 16bit
-$8F921F Should be 2x 8bit, pointer, 16bit
-$8F9239 Should be 2x 8bit, pointer, 16bit
-$8F9253 Should be 2x 8bit, pointer, 16bit
-$8F926D Should be 2x 8bit, pointer, 16bit
-$939F7B Remove underscore from label

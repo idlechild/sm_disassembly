@@ -18021,7 +18021,7 @@
 939F57,InstList_SamusProjectile_SuperMissiles_DownLeft,
 939F63,InstList_SamusProjectile_SuperMissiles_Left,
 939F6F,InstList_SamusProjectile_SuperMissiles_UpLeft,
-939F7B,InstList_SamusProjectile_SuperMissileLink_,
+939F7B,InstList_SamusProjectile_SuperMissileLink,
 939F87,InstList_SamusProjectile_PowerBomb,
 939FA3,InstList_SamusProjectile_PowerBomb_FastAnimation,
 939FBF,InstList_SamusProjectile_Bomb,

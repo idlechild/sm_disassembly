@@ -89,12 +89,14 @@ Spritemap_CommonA5_Nothing:
     dw $0000                                                             ;A5804D;
 
 ExtendedSpritemap_CommonA5_Nothing:
-    dw $0001,$0000,$0000                                                 ;A5804F;
+    dw $0001                                                             ;A5804F;
+    dw $0000,$0000                                                 
     dw Spritemap_CommonA5_Nothing                                        ;A58055;
     dw Hitbox_CommonA5_Nothing                                           ;A58057;
 
 Hitbox_CommonA5_Nothing:
-    dw $0001,$0000,$0000,$0000,$0000                                     ;A58059;
+    dw $0001                                                             ;A58059;
+    dw $0000,$0000,$0000,$0000                                     
     dw CommonA5_NormalEnemyTouchAI                                       ;A58063;
     dw CommonA5_NormalEnemyShotAI                                        ;A58065;
 
@@ -682,13 +684,17 @@ HandleFiringWallTurret:
 .return:
     RTS                                                                  ;A587DB;
 
-
-.XPosition:
+; X/Y positions to spawn turret projectiles. First two entries are unused... and last entry is made unused by init AI
+  .XPosition:
     dw $0040                                                             ;A587DC;
+  .YPosition:
+    dw       $0060                                                       ;A587DE;
+    dw $0038,$00C0
+    dw $0034,$012F ; Left turret
+    dw $01CC,$0101 ; Top right turret
+    dw $01CC,$015E ; Bottom right turret
+    dw $01BC,$0188
 
-.YPosition:
-    dw $0060,$0038,$00C0,$0034,$012F,$01CC,$0101,$01CC                   ;A587DE;
-    dw $015E,$01BC,$0188                                                 ;A587EE;
 
 Function_DraygonBody_SwoopRight_Setup:
     JSR.W HandleFiringWallTurret                                         ;A587F4;
@@ -2278,6 +2284,8 @@ Instruction_Draygon_SetInstList_Body_Eye_Tail_Arms:
 
 if !FEATURE_KEEP_UNREFERENCED
 Unused_DraygonInstListPointers_A5950D:
+; Not an exhaustive list of pointers. Assuming they were used for some unknown debug purpose
+    ; Draygon arms
     dw InstList_DraygonArms_FacingLeft_Idle_0                            ;A5950D;
     dw InstList_DraygonArms_FacingLeft_NearSwoopApex                     ;A5950F;
     dw UNUSED_InstList_DraygonArms_A59805                                ;A59511;
@@ -2285,6 +2293,7 @@ Unused_DraygonInstListPointers_A5950D:
     dw InstList_DraygonArms_FacingRight_NearSwoopApex                    ;A59515;
     dw UNUSED_InstList_DraygonArms_A59BF8                                ;A59517;
     dw $0000                                                             ;A59519;
+    ; Draygon body
     dw InstList_DraygonBody_FacingLeft_Idle                              ;A5951B;
     dw InstList_DraygonArms_FacingLeft_Dying                             ;A5951D;
     dw UNUSED_InstList_DraygonBody_A5987B                                ;A5951F;
@@ -2294,6 +2303,7 @@ Unused_DraygonInstListPointers_A5950D:
     dw UNUSED_InstList_DraygonBody_A59C70                                ;A59527;
     dw InstList_DraygonBody_FacingRight_FireGoop                         ;A59529;
     dw $0000                                                             ;A5952B;
+    ; Draygon eye
     dw InstList_DraygonEye_FacingLeft_Idle                               ;A5952D;
     dw InstList_DraygonEye_FacingLeft_LookingLeft                        ;A5952F;
     dw InstList_DraygonEye_FacingLeft_LookingRight                       ;A59531;
@@ -2305,6 +2315,7 @@ Unused_DraygonInstListPointers_A5950D:
     dw InstList_DraygonEye_FacingRight_LookingUp                         ;A5953D;
     dw InstList_DraygonEye_FacingRight_LookingDown                       ;A5953F;
     dw $0000                                                             ;A59541;
+    ; Draygon tail
     dw InstList_DraygonTail_FacingLeft_Idle_0                            ;A59543;
     dw InstList_DraygonTail_FacingLeft_FakeTailWhip                      ;A59545;
     dw InstList_DraygonTail_FacingRight_Idle_0                           ;A59547;
@@ -2488,15 +2499,27 @@ DraygonReaction_Common:
     RTL                                                                  ;A596AE;
 
 
-DraygonHealthBasedPaletteTable:
-    dw $0319,$0254,$018F,$00CA,$02BA,$01F4,$014F,$00AA                   ;A596AF;
-    dw $023B,$01B5,$012F,$0089,$01DC,$0155,$00EF,$0069                   ;A596BF;
-    dw $015C,$0116,$00B0,$0069,$00FD,$00B6,$0070,$0049                   ;A596CF;
-    dw $007E,$0077,$0050,$0028,$001F,$0017,$0010,$0008                   ;A596DF;
+DraygonHealthBasedPaletteTable:                                          ;A596AF;
+; Colours 1..4
+    dw $0319,$0254,$018F,$00CA ; Health >= 5250
+    dw $02BA,$01F4,$014F,$00AA ; Health >= 4500
+    dw $023B,$01B5,$012F,$0089 ; Health >= 3750
+    dw $01DC,$0155,$00EF,$0069 ; Health >= 3000
+    dw $015C,$0116,$00B0,$0069 ; Health >= 2250
+    dw $00FD,$00B6,$0070,$0049 ; Health >= 1500
+    dw $007E,$0077,$0050,$0028 ; Health >= 750
+    dw $001F,$0017,$0010,$0008 ; Health < 750
 
-DraygonHealthBasedPaletteThresholds:
-    dw $1482,$1194,$0EA6,$0BB8,$08CA,$05DC,$02EE,$0000                   ;A596EF;
-    dw $FFFF                                                             ;A596FF;
+DraygonHealthBasedPaletteThresholds:                                     ;A596EF;
+    dw $1482 ; 5250
+    dw $1194 ; 4500
+    dw $0EA6 ; 3750
+    dw $0BB8 ; 3000
+    dw $08CA ; 2250
+    dw $05DC ; 1500
+    dw $02EE ; 750
+    dw $0000 ; 0
+    dw $FFFF ; Terminator
 
 DraygonHealthBasedPaletteHandling:
     LDX.W #$0000                                                         ;A59701;
@@ -2631,8 +2654,7 @@ InstList_DraygonBody_FacingLeft_Reset:
     dw Instruction_Draygon_RoomLoadingInterruptCmd_BeginHUDDraw          ;A597C5;
     dw Instruction_Draygon_EyeFunctionInY                                ;A597C7;
     dw Function_DraygonEye_FacingLeft                                    ;A597C9;
-    dw $0001                                                             ;A597CB;
-    dw ExtendedSpritemap_Draygon_1A                                      ;A597CD;
+    dw $0001,ExtendedSpritemap_Draygon_1A                                ;A597CB;
     dw Instruction_Common_Sleep                                          ;A597CF;
 
 InstList_DraygonBody_FacingRight_Reset:
@@ -2644,23 +2666,16 @@ InstList_DraygonBody_FacingRight_Reset:
     dw Instruction_Draygon_RoomLoadingInterruptCmd_BeginHUDDraw          ;A597DB;
     dw Instruction_Draygon_EyeFunctionInY                                ;A597DD;
     dw Function_DraygonEye_FacingRight                                   ;A597DF;
-    dw $0001                                                             ;A597E1;
-    dw ExtendedSpritemap_Draygon_4A                                      ;A597E3;
+    dw $0001,ExtendedSpritemap_Draygon_4A                                ;A597E1;
     dw Instruction_Common_Sleep                                          ;A597E5;
 
 InstList_DraygonArms_FacingLeft_Idle_0:
-    dw $0005                                                             ;A597E7;
-    dw ExtendedSpritemap_Draygon_4                                       ;A597E9;
-    dw $0005                                                             ;A597EB;
-    dw ExtendedSpritemap_Draygon_5                                       ;A597ED;
-    dw $0005                                                             ;A597EF;
-    dw ExtendedSpritemap_Draygon_6                                       ;A597F1;
-    dw $0005                                                             ;A597F3;
-    dw ExtendedSpritemap_Draygon_7                                       ;A597F5;
-    dw $0005                                                             ;A597F7;
-    dw ExtendedSpritemap_Draygon_8                                       ;A597F9;
-    dw $0005                                                             ;A597FB;
-    dw ExtendedSpritemap_Draygon_9                                       ;A597FD;
+    dw $0005,ExtendedSpritemap_Draygon_4                                 ;A597E7;
+    dw $0005,ExtendedSpritemap_Draygon_5                                 ;A597EB;
+    dw $0005,ExtendedSpritemap_Draygon_6                                 ;A597EF;
+    dw $0005,ExtendedSpritemap_Draygon_7                                 ;A597F3;
+    dw $0005,ExtendedSpritemap_Draygon_8                                 ;A597F7;
+    dw $0005,ExtendedSpritemap_Draygon_9                                 ;A597FB;
     dw Instruction_Common_GotoY                                          ;A597FF;
     dw InstList_DraygonArms_FacingLeft_Idle_0                            ;A59801;
 
@@ -2669,83 +2684,54 @@ InstList_DraygonArms_FacingLeft_Idle_1:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_DraygonArms_A59805:
-    dw $0001                                                             ;A59805;
-    dw ExtendedSpritemap_Draygon_1D                                      ;A59807;
-    dw $0001                                                             ;A59809;
-    dw ExtendedSpritemap_Draygon_1C                                      ;A5980B;
-    dw $0040                                                             ;A5980D;
-    dw ExtendedSpritemap_Draygon_1B                                      ;A5980F;
+    dw $0001,ExtendedSpritemap_Draygon_1D                                ;A59805;
+    dw $0001,ExtendedSpritemap_Draygon_1C                                ;A59809;
+    dw $0040,ExtendedSpritemap_Draygon_1B                                ;A5980D;
     dw Instruction_Common_Sleep                                          ;A59811;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_DraygonArms_FacingLeft_NearSwoopApex:
-    dw $0001                                                             ;A59813;
-    dw ExtendedSpritemap_Draygon_1B                                      ;A59815;
-    dw $0001                                                             ;A59817;
-    dw ExtendedSpritemap_Draygon_1C                                      ;A59819;
-    dw $0001                                                             ;A5981B;
-    dw ExtendedSpritemap_Draygon_1D                                      ;A5981D;
-    dw $0040                                                             ;A5981F;
-    dw ExtendedSpritemap_Draygon_1E                                      ;A59821;
+    dw $0001,ExtendedSpritemap_Draygon_1B                                ;A59813;
+    dw $0001,ExtendedSpritemap_Draygon_1C                                ;A59817;
+    dw $0001,ExtendedSpritemap_Draygon_1D                                ;A5981B;
+    dw $0040,ExtendedSpritemap_Draygon_1E                                ;A5981F;
     dw Instruction_Common_Sleep                                          ;A59823;
 
 Debug_InstList_DraygonArms_FacingLeft_FakeGrab:
-    dw $0001                                                             ;A59825;
-    dw ExtendedSpritemap_Draygon_1B                                      ;A59827;
-    dw $0001                                                             ;A59829;
-    dw ExtendedSpritemap_Draygon_1C                                      ;A5982B;
-    dw $0001                                                             ;A5982D;
-    dw ExtendedSpritemap_Draygon_1D                                      ;A5982F;
-    dw $0040                                                             ;A59831;
-    dw ExtendedSpritemap_Draygon_1E                                      ;A59833;
-    dw $0001                                                             ;A59835;
-    dw ExtendedSpritemap_Draygon_1D                                      ;A59837;
-    dw $0001                                                             ;A59839;
-    dw ExtendedSpritemap_Draygon_1C                                      ;A5983B;
-    dw $0040                                                             ;A5983D;
-    dw ExtendedSpritemap_Draygon_1B                                      ;A5983F;
+    dw $0001,ExtendedSpritemap_Draygon_1B                                ;A59825;
+    dw $0001,ExtendedSpritemap_Draygon_1C                                ;A59829;
+    dw $0001,ExtendedSpritemap_Draygon_1D                                ;A5982D;
+    dw $0040,ExtendedSpritemap_Draygon_1E                                ;A59831;
+    dw $0001,ExtendedSpritemap_Draygon_1D                                ;A59835;
+    dw $0001,ExtendedSpritemap_Draygon_1C                                ;A59839;
+    dw $0040,ExtendedSpritemap_Draygon_1B                                ;A5983D;
     dw Instruction_Common_GotoY                                          ;A59841;
     dw InstList_DraygonArms_FacingLeft_Idle_0                            ;A59843;
 
 InstList_DraygonArms_FacingLeft_Grab:
-    dw $0001                                                             ;A59845;
-    dw ExtendedSpritemap_Draygon_1B                                      ;A59847;
-    dw $0001                                                             ;A59849;
-    dw ExtendedSpritemap_Draygon_1C                                      ;A5984B;
-    dw $0001                                                             ;A5984D;
-    dw ExtendedSpritemap_Draygon_1D                                      ;A5984F;
-    dw $0008                                                             ;A59851;
-    dw ExtendedSpritemap_Draygon_1E                                      ;A59853;
-    dw $0001                                                             ;A59855;
-    dw ExtendedSpritemap_Draygon_1D                                      ;A59857;
-    dw $0001                                                             ;A59859;
-    dw ExtendedSpritemap_Draygon_1C                                      ;A5985B;
-    dw $0001                                                             ;A5985D;
-    dw ExtendedSpritemap_Draygon_1B                                      ;A5985F;
-    dw $0001                                                             ;A59861;
-    dw ExtendedSpritemap_Draygon_1C                                      ;A59863;
+    dw $0001,ExtendedSpritemap_Draygon_1B                                ;A59845;
+    dw $0001,ExtendedSpritemap_Draygon_1C                                ;A59849;
+    dw $0001,ExtendedSpritemap_Draygon_1D                                ;A5984D;
+    dw $0008,ExtendedSpritemap_Draygon_1E                                ;A59851;
+    dw $0001,ExtendedSpritemap_Draygon_1D                                ;A59855;
+    dw $0001,ExtendedSpritemap_Draygon_1C                                ;A59859;
+    dw $0001,ExtendedSpritemap_Draygon_1B                                ;A5985D;
+    dw $0001,ExtendedSpritemap_Draygon_1C                                ;A59861;
     dw Instruction_Common_Sleep                                          ;A59865;
 
 InstList_DraygonArms_FacingLeft_Dying:
-    dw $0005                                                             ;A59867;
-    dw ExtendedSpritemap_Draygon_A                                       ;A59869;
-    dw $0005                                                             ;A5986B;
-    dw ExtendedSpritemap_Draygon_B                                       ;A5986D;
-    dw $0005                                                             ;A5986F;
-    dw ExtendedSpritemap_Draygon_C                                       ;A59871;
-    dw $0005                                                             ;A59873;
-    dw ExtendedSpritemap_Draygon_D                                       ;A59875;
+    dw $0005,ExtendedSpritemap_Draygon_A                                 ;A59867;
+    dw $0005,ExtendedSpritemap_Draygon_B                                 ;A5986B;
+    dw $0005,ExtendedSpritemap_Draygon_C                                 ;A5986F;
+    dw $0005,ExtendedSpritemap_Draygon_D                                 ;A59873;
     dw Instruction_Common_GotoY                                          ;A59877;
     dw InstList_DraygonBody_Dying_0                                      ;A59879;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_DraygonBody_A5987B:
-    dw $0005                                                             ;A5987B;
-    dw ExtendedSpritemap_Draygon_C                                       ;A5987D;
-    dw $0005                                                             ;A5987F;
-    dw ExtendedSpritemap_Draygon_B                                       ;A59881;
-    dw $0005                                                             ;A59883;
-    dw ExtendedSpritemap_Draygon_A                                       ;A59885;
+    dw $0005,ExtendedSpritemap_Draygon_C                                 ;A5987B;
+    dw $0005,ExtendedSpritemap_Draygon_B                                 ;A5987F;
+    dw $0005,ExtendedSpritemap_Draygon_A                                 ;A59883;
     dw Instruction_Common_Sleep                                          ;A59887;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -2753,8 +2739,7 @@ InstList_DraygonBody_FacingLeft_Idle:
     dw Instruction_Draygon_RoomLoadingInterruptCmd_BeginHUDDraw          ;A59889;
     dw Instruction_Draygon_EyeFunctionInY                                ;A5988B;
     dw Function_DraygonEye_FacingLeft                                    ;A5988D;
-    dw $0001                                                             ;A5988F;
-    dw ExtendedSpritemap_Draygon_1A                                      ;A59891;
+    dw $0001,ExtendedSpritemap_Draygon_1A                                ;A5988F;
     dw Instruction_Common_Sleep                                          ;A59893;
 
 Instruction_Draygon_RoomLoadingInterruptCmd_BeginHUDDraw:
@@ -2764,36 +2749,29 @@ Instruction_Draygon_RoomLoadingInterruptCmd_BeginHUDDraw:
 
 
 InstList_DraygonBody_Dying_0:
-    dw Instruction_Draygon_QueueSFXInY_Lib3_Max6                         ;A5989B;
-    dw $001B                                                             ;A5989D;
+    dw Instruction_Draygon_QueueSFXInY_Lib3_Max6,$001B                   ;A5989B;
     dw Instruction_DraygonBody_SetAsIntangible                           ;A5989F;
-    dw Instruction_Common_TimerInY                                       ;A598A1;
-    dw $0008                                                             ;A598A3;
+    dw Instruction_Common_TimerInY,$0008                                 ;A598A1;
 
 InstList_DraygonBody_Dying_1:
-    dw Instruction_Common_WaitYFrames                                    ;A598A5;
-    dw $000C                                                             ;A598A7;
+    dw Instruction_Common_WaitYFrames,$000C                              ;A598A5;
     dw Inst_Draygon_SpawnDyingDraygonSpriteObject_BigExplosion           ;A598A9;
     dw Inst_Draygon_SpawnDyingDraygonSpriteObject_SmallExplosion         ;A598AB;
     dw Inst_Draygon_SpawnDyingDraygonSpriteObject_BigDustCloud           ;A598AD;
     dw Inst_Draygon_SpawnDyingDraygonSpriteObject_BreathBubbles          ;A598AF;
-    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6                         ;A598B1;
-    dw $0025                                                             ;A598B3;
+    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6,$0025                   ;A598B1;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;A598B5;
     dw InstList_DraygonBody_Dying_1                                      ;A598B7;
-    dw Instruction_Common_WaitYFrames                                    ;A598B9;
-    dw $0001                                                             ;A598BB;
+    dw Instruction_Common_WaitYFrames,$0001                              ;A598B9;
     dw Instruction_Draygon_ParalyseDraygonTailAndArms                    ;A598BD;
 
 InstList_DraygonBody_Dying_2:
-    dw Instruction_Common_WaitYFrames                                    ;A598BF;
-    dw $0010                                                             ;A598C1;
+    dw Instruction_Common_WaitYFrames,$0010                              ;A598BF;
     dw Inst_Draygon_SpawnDyingDraygonSpriteObject_BigExplosion           ;A598C3;
     dw Inst_Draygon_SpawnDyingDraygonSpriteObject_SmallExplosion         ;A598C5;
     dw Inst_Draygon_SpawnDyingDraygonSpriteObject_BigDustCloud           ;A598C7;
     dw Inst_Draygon_SpawnDyingDraygonSpriteObject_BreathBubbles          ;A598C9;
-    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6                         ;A598CB;
-    dw $0025                                                             ;A598CD;
+    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6,$0025                   ;A598CB;
     dw Instruction_Common_GotoY                                          ;A598CF;
     dw InstList_DraygonBody_Dying_2                                      ;A598D1;
 
@@ -2826,148 +2804,95 @@ Instruction_DraygonBody_SetAsIntangible:
 
 
 InstList_DraygonBody_FacingLeft_FireGoop:
-    dw $0001                                                             ;A598FE;
-    dw ExtendedSpritemap_Draygon_E                                       ;A59900;
-    dw $0002                                                             ;A59902;
-    dw ExtendedSpritemap_Draygon_F                                       ;A59904;
-    dw $0003                                                             ;A59906;
-    dw ExtendedSpritemap_Draygon_10                                      ;A59908;
+    dw $0001,ExtendedSpritemap_Draygon_E                                 ;A598FE;
+    dw $0002,ExtendedSpritemap_Draygon_F                                 ;A59902;
+    dw $0003,ExtendedSpritemap_Draygon_10                                ;A59906;
     dw Instruction_Draygon_SpawnGoop_Leftwards                           ;A5990A;
-    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6                         ;A5990C;
-    dw $004C,$0003                                                       ;A5990E;
-    dw ExtendedSpritemap_Draygon_11                                      ;A59912;
-    dw $0002                                                             ;A59914;
-    dw ExtendedSpritemap_Draygon_10                                      ;A59916;
-    dw $0002                                                             ;A59918;
-    dw ExtendedSpritemap_Draygon_F                                       ;A5991A;
-    dw $0001                                                             ;A5991C;
-    dw ExtendedSpritemap_Draygon_E                                       ;A5991E;
+    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6,$004C                   ;A5990C;
+    dw $0003,ExtendedSpritemap_Draygon_11                                ;A5990E;
+    dw $0002,ExtendedSpritemap_Draygon_10                                ;A59914;
+    dw $0002,ExtendedSpritemap_Draygon_F                                 ;A59918;
+    dw $0001,ExtendedSpritemap_Draygon_E                                 ;A5991C;
     dw Instruction_Common_Sleep                                          ;A59920;
 
 InstList_DraygonBody_FacingLeft_Roar:
-    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6                         ;A59922;
-    dw $0073,$0006                                                       ;A59924;
-    dw ExtendedSpritemap_Draygon_E                                       ;A59928;
-    dw $0006                                                             ;A5992A;
-    dw ExtendedSpritemap_Draygon_F                                       ;A5992C;
-    dw $0006                                                             ;A5992E;
-    dw ExtendedSpritemap_Draygon_10                                      ;A59930;
-    dw $0006                                                             ;A59932;
-    dw ExtendedSpritemap_Draygon_11                                      ;A59934;
-    dw $0006                                                             ;A59936;
-    dw ExtendedSpritemap_Draygon_10                                      ;A59938;
-    dw $0006                                                             ;A5993A;
-    dw ExtendedSpritemap_Draygon_F                                       ;A5993C;
-    dw $0006                                                             ;A5993E;
-    dw ExtendedSpritemap_Draygon_E                                       ;A59940;
+    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6,$0073                   ;A59922;
+    dw $0006,ExtendedSpritemap_Draygon_E                                 ;A59924;
+    dw $0006,ExtendedSpritemap_Draygon_F                                 ;A5992A;
+    dw $0006,ExtendedSpritemap_Draygon_10                                ;A5992E;
+    dw $0006,ExtendedSpritemap_Draygon_11                                ;A59932;
+    dw $0006,ExtendedSpritemap_Draygon_10                                ;A59936;
+    dw $0006,ExtendedSpritemap_Draygon_F                                 ;A5993A;
+    dw $0006,ExtendedSpritemap_Draygon_E                                 ;A5993E;
     dw Instruction_Common_Sleep                                          ;A59942;
 
 InstList_DraygonEye_FacingLeft_Idle:
-    dw $0015                                                             ;A59944;
-    dw ExtendedSpritemap_Draygon_12                                      ;A59946;
-    dw $0005                                                             ;A59948;
-    dw ExtendedSpritemap_Draygon_13                                      ;A5994A;
-    dw $0005                                                             ;A5994C;
-    dw ExtendedSpritemap_Draygon_14                                      ;A5994E;
-    dw $000A                                                             ;A59950;
-    dw ExtendedSpritemap_Draygon_13                                      ;A59952;
-    dw $000A                                                             ;A59954;
-    dw ExtendedSpritemap_Draygon_16                                      ;A59956;
-    dw $000A                                                             ;A59958;
-    dw ExtendedSpritemap_Draygon_16                                      ;A5995A;
-    dw $000A                                                             ;A5995C;
-    dw ExtendedSpritemap_Draygon_18                                      ;A5995E;
-    dw $000A                                                             ;A59960;
-    dw ExtendedSpritemap_Draygon_18                                      ;A59962;
-    dw $000A                                                             ;A59964;
-    dw ExtendedSpritemap_Draygon_19                                      ;A59966;
-    dw $0005                                                             ;A59968;
-    dw ExtendedSpritemap_Draygon_14                                      ;A5996A;
-    dw $0005                                                             ;A5996C;
-    dw ExtendedSpritemap_Draygon_13                                      ;A5996E;
-    dw $0005                                                             ;A59970;
-    dw ExtendedSpritemap_Draygon_12                                      ;A59972;
+    dw $0015,ExtendedSpritemap_Draygon_12                                ;A59944;
+    dw $0005,ExtendedSpritemap_Draygon_13                                ;A59948;
+    dw $0005,ExtendedSpritemap_Draygon_14                                ;A5994C;
+    dw $000A,ExtendedSpritemap_Draygon_13                                ;A59950;
+    dw $000A,ExtendedSpritemap_Draygon_16                                ;A59954;
+    dw $000A,ExtendedSpritemap_Draygon_16                                ;A59958;
+    dw $000A,ExtendedSpritemap_Draygon_18                                ;A5995C;
+    dw $000A,ExtendedSpritemap_Draygon_18                                ;A59960;
+    dw $000A,ExtendedSpritemap_Draygon_19                                ;A59964;
+    dw $0005,ExtendedSpritemap_Draygon_14                                ;A59968;
+    dw $0005,ExtendedSpritemap_Draygon_13                                ;A5996C;
+    dw $0005,ExtendedSpritemap_Draygon_12                                ;A59970;
     dw Instruction_Draygon_FunctionInY                                   ;A59974;
     dw Function_DraygonEye_FacingLeft                                    ;A59976;
     dw Instruction_Common_Sleep                                          ;A59978;
 
 InstList_DraygonEye_FacingLeft_Dying_0:
-    dw Instruction_Common_TimerInY                                       ;A5997A;
-    dw $0004                                                             ;A5997C;
+    dw Instruction_Common_TimerInY,$0004                                 ;A5997A;
 
 InstList_DraygonEye_FacingLeft_Dying_1:
-    dw $0004                                                             ;A5997E;
-    dw ExtendedSpritemap_Draygon_16                                      ;A59980;
-    dw $0004                                                             ;A59982;
-    dw ExtendedSpritemap_Draygon_18                                      ;A59984;
-    dw $0004                                                             ;A59986;
-    dw ExtendedSpritemap_Draygon_17                                      ;A59988;
-    dw $0004                                                             ;A5998A;
-    dw ExtendedSpritemap_Draygon_19                                      ;A5998C;
+    dw $0004,ExtendedSpritemap_Draygon_16                                ;A5997E;
+    dw $0004,ExtendedSpritemap_Draygon_18                                ;A59982;
+    dw $0004,ExtendedSpritemap_Draygon_17                                ;A59986;
+    dw $0004,ExtendedSpritemap_Draygon_19                                ;A5998A;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;A5998E;
     dw InstList_DraygonEye_FacingLeft_Dying_1                            ;A59990;
-    dw $0020                                                             ;A59992;
-    dw ExtendedSpritemap_Draygon_15                                      ;A59994;
-    dw $0010                                                             ;A59996;
-    dw ExtendedSpritemap_Draygon_14                                      ;A59998;
+    dw $0020,ExtendedSpritemap_Draygon_15                                ;A59992;
+    dw $0010,ExtendedSpritemap_Draygon_14                                ;A59996;
     dw Instruction_Common_Sleep                                          ;A5999A;
 
 InstList_DraygonEye_FacingLeft_Dead:
-    dw $0020                                                             ;A5999C;
-    dw ExtendedSpritemap_Draygon_15                                      ;A5999E;
-    dw $0020                                                             ;A599A0;
-    dw ExtendedSpritemap_Draygon_14                                      ;A599A2;
-    dw $0020                                                             ;A599A4;
-    dw ExtendedSpritemap_Draygon_13                                      ;A599A6;
-    dw $0001                                                             ;A599A8;
-    dw ExtendedSpritemap_Draygon_12                                      ;A599AA;
+    dw $0020,ExtendedSpritemap_Draygon_15                                ;A5999C;
+    dw $0020,ExtendedSpritemap_Draygon_14                                ;A599A0;
+    dw $0020,ExtendedSpritemap_Draygon_13                                ;A599A4;
+    dw $0001,ExtendedSpritemap_Draygon_12                                ;A599A8;
     dw Instruction_Common_Sleep                                          ;A599AC;
 
 InstList_DraygonEye_FacingLeft_LookingLeft:
-    dw $0001                                                             ;A599AE;
-    dw ExtendedSpritemap_Draygon_16                                      ;A599B0;
+    dw $0001,ExtendedSpritemap_Draygon_16                                ;A599AE;
     dw Instruction_Common_Sleep                                          ;A599B2;
 
 InstList_DraygonEye_FacingLeft_LookingRight:
-    dw $0001                                                             ;A599B4;
-    dw ExtendedSpritemap_Draygon_17                                      ;A599B6;
+    dw $0001,ExtendedSpritemap_Draygon_17                                ;A599B4;
     dw Instruction_Common_Sleep                                          ;A599B8;
 
 InstList_DraygonEye_FacingLeft_LookingUp:
-    dw $0001                                                             ;A599BA;
-    dw ExtendedSpritemap_Draygon_18                                      ;A599BC;
+    dw $0001,ExtendedSpritemap_Draygon_18                                ;A599BA;
     dw Instruction_Common_Sleep                                          ;A599BE;
 
 InstList_DraygonEye_FacingLeft_LookingDown:
-    dw $0001                                                             ;A599C0;
-    dw ExtendedSpritemap_Draygon_19                                      ;A599C2;
+    dw $0001,ExtendedSpritemap_Draygon_19                                ;A599C0;
     dw Instruction_Common_Sleep                                          ;A599C4;
 
 InstList_DraygonTail_FacingLeft_Idle_0:
-    dw $0008                                                             ;A599C6;
-    dw ExtendedSpritemap_Draygon_22                                      ;A599C8;
-    dw $0007                                                             ;A599CA;
-    dw ExtendedSpritemap_Draygon_23                                      ;A599CC;
-    dw $0006                                                             ;A599CE;
-    dw ExtendedSpritemap_Draygon_24                                      ;A599D0;
-    dw $0006                                                             ;A599D2;
-    dw ExtendedSpritemap_Draygon_25                                      ;A599D4;
-    dw $0006                                                             ;A599D6;
-    dw ExtendedSpritemap_Draygon_26                                      ;A599D8;
-    dw $0006                                                             ;A599DA;
-    dw ExtendedSpritemap_Draygon_27                                      ;A599DC;
-    dw $0006                                                             ;A599DE;
-    dw ExtendedSpritemap_Draygon_28                                      ;A599E0;
-    dw $0006                                                             ;A599E2;
-    dw ExtendedSpritemap_Draygon_27                                      ;A599E4;
-    dw $0006                                                             ;A599E6;
-    dw ExtendedSpritemap_Draygon_26                                      ;A599E8;
-    dw $0006                                                             ;A599EA;
-    dw ExtendedSpritemap_Draygon_25                                      ;A599EC;
-    dw $0006                                                             ;A599EE;
-    dw ExtendedSpritemap_Draygon_24                                      ;A599F0;
-    dw $0007                                                             ;A599F2;
-    dw ExtendedSpritemap_Draygon_23                                      ;A599F4;
+    dw $0008,ExtendedSpritemap_Draygon_22                                ;A599C6;
+    dw $0007,ExtendedSpritemap_Draygon_23                                ;A599CA;
+    dw $0006,ExtendedSpritemap_Draygon_24                                ;A599CE;
+    dw $0006,ExtendedSpritemap_Draygon_25                                ;A599D2;
+    dw $0006,ExtendedSpritemap_Draygon_26                                ;A599D6;
+    dw $0006,ExtendedSpritemap_Draygon_27                                ;A599DA;
+    dw $0006,ExtendedSpritemap_Draygon_28                                ;A599DE;
+    dw $0006,ExtendedSpritemap_Draygon_27                                ;A599E2;
+    dw $0006,ExtendedSpritemap_Draygon_26                                ;A599E6;
+    dw $0006,ExtendedSpritemap_Draygon_25                                ;A599EA;
+    dw $0006,ExtendedSpritemap_Draygon_24                                ;A599EE;
+    dw $0007,ExtendedSpritemap_Draygon_23                                ;A599F2;
     dw Instruction_Common_GotoY                                          ;A599F6;
     dw InstList_DraygonTail_FacingLeft_Idle_0                            ;A599F8;
 
@@ -2975,89 +2900,59 @@ InstList_DraygonTail_FacingLeft_Idle_1:
     dw Instruction_Common_Sleep                                          ;A599FA;
 
 InstList_DraygonTail_FacingLeft_FakeTailWhip:
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A599FC;
-    dw $FFFF,$FFFF,$0010                                                 ;A599FE;
-    dw ExtendedSpritemap_Draygon_24                                      ;A59A04;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59A06;
-    dw $FFFE,$FFFE,$0006                                                 ;A59A08;
-    dw ExtendedSpritemap_Draygon_29                                      ;A59A0E;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59A10;
-    dw $FFFD,$FFFD,$0005                                                 ;A59A12;
-    dw ExtendedSpritemap_Draygon_2A                                      ;A59A18;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59A1A;
-    dw $FFFC,$FFFC,$0004                                                 ;A59A1C;
-    dw ExtendedSpritemap_Draygon_2B                                      ;A59A22;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59A24;
-    dw $FFFB,$FFFB,$0003                                                 ;A59A26;
-    dw ExtendedSpritemap_Draygon_2C                                      ;A59A2C;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59A2E;
-    dw $FFFA,$FFFA,$0002                                                 ;A59A30;
-    dw ExtendedSpritemap_Draygon_2D                                      ;A59A36;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59A38;
-    dw $FFF8,$FFF8,$0001                                                 ;A59A3A;
-    dw ExtendedSpritemap_Draygon_2E                                      ;A59A40;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59A42;
-    dw $0000,$0000,$0010                                                 ;A59A44;
-    dw ExtendedSpritemap_Draygon_2F                                      ;A59A4A;
-    dw $0001                                                             ;A59A4C;
-    dw ExtendedSpritemap_Draygon_2E                                      ;A59A4E;
-    dw $0002                                                             ;A59A50;
-    dw ExtendedSpritemap_Draygon_2D                                      ;A59A52;
-    dw $0003                                                             ;A59A54;
-    dw ExtendedSpritemap_Draygon_2C                                      ;A59A56;
-    dw $0004                                                             ;A59A58;
-    dw ExtendedSpritemap_Draygon_2B                                      ;A59A5A;
-    dw $0005                                                             ;A59A5C;
-    dw ExtendedSpritemap_Draygon_2A                                      ;A59A5E;
-    dw $0006                                                             ;A59A60;
-    dw ExtendedSpritemap_Draygon_29                                      ;A59A62;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFFF,$FFFF              ;A599FC;
+    dw $0010,ExtendedSpritemap_Draygon_24                                ;A599FE;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFFE,$FFFE              ;A59A06;
+    dw $0006,ExtendedSpritemap_Draygon_29                                ;A59A08;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFFD,$FFFD              ;A59A10;
+    dw $0005,ExtendedSpritemap_Draygon_2A                                ;A59A12;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFFC,$FFFC              ;A59A1A;
+    dw $0004,ExtendedSpritemap_Draygon_2B                                ;A59A1C;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFFB,$FFFB              ;A59A24;
+    dw $0003,ExtendedSpritemap_Draygon_2C                                ;A59A26;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFFA,$FFFA              ;A59A2E;
+    dw $0002,ExtendedSpritemap_Draygon_2D                                ;A59A30;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFF8,$FFF8              ;A59A38;
+    dw $0001,ExtendedSpritemap_Draygon_2E                                ;A59A3A;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0000,$0000              ;A59A42;
+    dw $0010,ExtendedSpritemap_Draygon_2F                                ;A59A44;
+    dw $0001,ExtendedSpritemap_Draygon_2E                                ;A59A4C;
+    dw $0002,ExtendedSpritemap_Draygon_2D                                ;A59A50;
+    dw $0003,ExtendedSpritemap_Draygon_2C                                ;A59A54;
+    dw $0004,ExtendedSpritemap_Draygon_2B                                ;A59A58;
+    dw $0005,ExtendedSpritemap_Draygon_2A                                ;A59A5C;
+    dw $0006,ExtendedSpritemap_Draygon_29                                ;A59A60;
     dw Instruction_Common_GotoY                                          ;A59A64;
     dw InstList_DraygonTail_FacingLeft_Idle_0                            ;A59A66;
 
 InstList_DraygonTail_FacingLeft_FinalTailWhips_0:
-    dw Instruction_Common_TimerInY                                       ;A59A68;
-    dw $0004                                                             ;A59A6A;
+    dw Instruction_Common_TimerInY,$0004                                 ;A59A68;
 
 InstList_DraygonTail_FacingLeft_FinalTailWhips_1:
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59A6C;
-    dw $FFFF,$FFFF,$0002                                                 ;A59A6E;
-    dw ExtendedSpritemap_Draygon_24                                      ;A59A74;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59A76;
-    dw $FFFE,$FFFE,$0006                                                 ;A59A78;
-    dw ExtendedSpritemap_Draygon_29                                      ;A59A7E;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59A80;
-    dw $FFFD,$FFFD,$0005                                                 ;A59A82;
-    dw ExtendedSpritemap_Draygon_2A                                      ;A59A88;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59A8A;
-    dw $FFFC,$FFFC,$0004                                                 ;A59A8C;
-    dw ExtendedSpritemap_Draygon_2B                                      ;A59A92;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59A94;
-    dw $FFFB,$FFFB,$0003                                                 ;A59A96;
-    dw ExtendedSpritemap_Draygon_2C                                      ;A59A9C;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59A9E;
-    dw $FFFA,$FFFA,$0002                                                 ;A59AA0;
-    dw ExtendedSpritemap_Draygon_2D                                      ;A59AA6;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59AA8;
-    dw $FFF8,$FFF8,$0001                                                 ;A59AAA;
-    dw ExtendedSpritemap_Draygon_2E                                      ;A59AB0;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59AB2;
-    dw $0000,$0000                                                       ;A59AB4;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFFF,$FFFF              ;A59A6C;
+    dw $0002,ExtendedSpritemap_Draygon_24                                ;A59A6E;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFFE,$FFFE              ;A59A76;
+    dw $0006,ExtendedSpritemap_Draygon_29                                ;A59A78;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFFD,$FFFD              ;A59A80;
+    dw $0005,ExtendedSpritemap_Draygon_2A                                ;A59A82;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFFC,$FFFC              ;A59A8A;
+    dw $0004,ExtendedSpritemap_Draygon_2B                                ;A59A8C;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFFB,$FFFB              ;A59A94;
+    dw $0003,ExtendedSpritemap_Draygon_2C                                ;A59A96;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFFA,$FFFA              ;A59A9E;
+    dw $0002,ExtendedSpritemap_Draygon_2D                                ;A59AA0;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFF8,$FFF8              ;A59AA8;
+    dw $0001,ExtendedSpritemap_Draygon_2E                                ;A59AAA;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0000,$0000              ;A59AB2;
     dw Instruction_DraygonTail_TailWhipHit                               ;A59AB8;
-    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6                         ;A59ABA;
-    dw $0025,$0003                                                       ;A59ABC;
-    dw ExtendedSpritemap_Draygon_2F                                      ;A59AC0;
-    dw $0001                                                             ;A59AC2;
-    dw ExtendedSpritemap_Draygon_2E                                      ;A59AC4;
-    dw $0002                                                             ;A59AC6;
-    dw ExtendedSpritemap_Draygon_2D                                      ;A59AC8;
-    dw $0003                                                             ;A59ACA;
-    dw ExtendedSpritemap_Draygon_2C                                      ;A59ACC;
-    dw $0004                                                             ;A59ACE;
-    dw ExtendedSpritemap_Draygon_2B                                      ;A59AD0;
-    dw $0005                                                             ;A59AD2;
-    dw ExtendedSpritemap_Draygon_2A                                      ;A59AD4;
-    dw $0006                                                             ;A59AD6;
-    dw ExtendedSpritemap_Draygon_29                                      ;A59AD8;
+    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6,$0025                   ;A59ABA;
+    dw $0003,ExtendedSpritemap_Draygon_2F                                ;A59ABC;
+    dw $0001,ExtendedSpritemap_Draygon_2E                                ;A59AC2;
+    dw $0002,ExtendedSpritemap_Draygon_2D                                ;A59AC6;
+    dw $0003,ExtendedSpritemap_Draygon_2C                                ;A59ACA;
+    dw $0004,ExtendedSpritemap_Draygon_2B                                ;A59ACE;
+    dw $0005,ExtendedSpritemap_Draygon_2A                                ;A59AD2;
+    dw $0006,ExtendedSpritemap_Draygon_29                                ;A59AD6;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;A59ADA;
     dw InstList_DraygonTail_FacingLeft_FinalTailWhips_1                  ;A59ADC;
     dw Instruction_Draygon_BodyFunctionInY                               ;A59ADE;
@@ -3069,78 +2964,49 @@ InstList_DraygonTail_FacingLeft_FinalTailWhips_2:
     dw Instruction_Common_Sleep                                          ;A59AE6;
 
 InstList_DraygonTail_FacingLeft_TailWhip:
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59AE8;
-    dw $FFFF,$FFFF,$0002                                                 ;A59AEA;
-    dw ExtendedSpritemap_Draygon_24                                      ;A59AF0;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59AF2;
-    dw $FFFE,$FFFE,$0006                                                 ;A59AF4;
-    dw ExtendedSpritemap_Draygon_29                                      ;A59AFA;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59AFC;
-    dw $FFFD,$FFFD,$0005                                                 ;A59AFE;
-    dw ExtendedSpritemap_Draygon_2A                                      ;A59B04;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59B06;
-    dw $FFFC,$FFFC,$0004                                                 ;A59B08;
-    dw ExtendedSpritemap_Draygon_2B                                      ;A59B0E;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59B10;
-    dw $FFFB,$FFFB,$0003                                                 ;A59B12;
-    dw ExtendedSpritemap_Draygon_2C                                      ;A59B18;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59B1A;
-    dw $FFFA,$FFFA,$0002                                                 ;A59B1C;
-    dw ExtendedSpritemap_Draygon_2D                                      ;A59B22;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59B24;
-    dw $FFF8,$FFF8,$0001                                                 ;A59B26;
-    dw ExtendedSpritemap_Draygon_2E                                      ;A59B2C;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59B2E;
-    dw $0000,$0000                                                       ;A59B30;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFFF,$FFFF              ;A59AE8;
+    dw $0002,ExtendedSpritemap_Draygon_24                                ;A59AEA;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFFE,$FFFE              ;A59AF2;
+    dw $0006,ExtendedSpritemap_Draygon_29                                ;A59AF4;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFFD,$FFFD              ;A59AFC;
+    dw $0005,ExtendedSpritemap_Draygon_2A                                ;A59AFE;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFFC,$FFFC              ;A59B06;
+    dw $0004,ExtendedSpritemap_Draygon_2B                                ;A59B08;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFFB,$FFFB              ;A59B10;
+    dw $0003,ExtendedSpritemap_Draygon_2C                                ;A59B12;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFFA,$FFFA              ;A59B1A;
+    dw $0002,ExtendedSpritemap_Draygon_2D                                ;A59B1C;
+    dw Instruction_DraygonBody_DisplaceGraphics,$FFF8,$FFF8              ;A59B24;
+    dw $0001,ExtendedSpritemap_Draygon_2E                                ;A59B26;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0000,$0000              ;A59B2E;
     dw Instruction_DraygonTail_TailWhipHit                               ;A59B34;
-    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6                         ;A59B36;
-    dw $0025,$0003                                                       ;A59B38;
-    dw ExtendedSpritemap_Draygon_2F                                      ;A59B3C;
-    dw $0001                                                             ;A59B3E;
-    dw ExtendedSpritemap_Draygon_2E                                      ;A59B40;
-    dw $0002                                                             ;A59B42;
-    dw ExtendedSpritemap_Draygon_2D                                      ;A59B44;
-    dw $0003                                                             ;A59B46;
-    dw ExtendedSpritemap_Draygon_2C                                      ;A59B48;
-    dw $0004                                                             ;A59B4A;
-    dw ExtendedSpritemap_Draygon_2B                                      ;A59B4C;
-    dw $0005                                                             ;A59B4E;
-    dw ExtendedSpritemap_Draygon_2A                                      ;A59B50;
-    dw $0006                                                             ;A59B52;
-    dw ExtendedSpritemap_Draygon_29                                      ;A59B54;
+    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6,$0025                   ;A59B36;
+    dw $0003,ExtendedSpritemap_Draygon_2F                                ;A59B38;
+    dw $0001,ExtendedSpritemap_Draygon_2E                                ;A59B3E;
+    dw $0002,ExtendedSpritemap_Draygon_2D                                ;A59B42;
+    dw $0003,ExtendedSpritemap_Draygon_2C                                ;A59B46;
+    dw $0004,ExtendedSpritemap_Draygon_2B                                ;A59B4A;
+    dw $0005,ExtendedSpritemap_Draygon_2A                                ;A59B4E;
+    dw $0006,ExtendedSpritemap_Draygon_29                                ;A59B52;
     dw Instruction_Common_GotoY                                          ;A59B56;
     dw InstList_DraygonTail_FacingLeft_Idle_0                            ;A59B58;
 
 InstList_DraygonTail_FacingLeft_TailFlail:
-    dw $0002                                                             ;A59B5A;
-    dw ExtendedSpritemap_Draygon_24                                      ;A59B5C;
-    dw $0006                                                             ;A59B5E;
-    dw ExtendedSpritemap_Draygon_29                                      ;A59B60;
-    dw $0005                                                             ;A59B62;
-    dw ExtendedSpritemap_Draygon_2A                                      ;A59B64;
-    dw $0004                                                             ;A59B66;
-    dw ExtendedSpritemap_Draygon_2B                                      ;A59B68;
-    dw $0003                                                             ;A59B6A;
-    dw ExtendedSpritemap_Draygon_2C                                      ;A59B6C;
-    dw $0002                                                             ;A59B6E;
-    dw ExtendedSpritemap_Draygon_2D                                      ;A59B70;
-    dw $0001                                                             ;A59B72;
-    dw ExtendedSpritemap_Draygon_2E                                      ;A59B74;
-    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6                         ;A59B76;
-    dw $0025,$0003                                                       ;A59B78;
-    dw ExtendedSpritemap_Draygon_2F                                      ;A59B7C;
-    dw $0001                                                             ;A59B7E;
-    dw ExtendedSpritemap_Draygon_2E                                      ;A59B80;
-    dw $0002                                                             ;A59B82;
-    dw ExtendedSpritemap_Draygon_2D                                      ;A59B84;
-    dw $0003                                                             ;A59B86;
-    dw ExtendedSpritemap_Draygon_2C                                      ;A59B88;
-    dw $0004                                                             ;A59B8A;
-    dw ExtendedSpritemap_Draygon_2B                                      ;A59B8C;
-    dw $0005                                                             ;A59B8E;
-    dw ExtendedSpritemap_Draygon_2A                                      ;A59B90;
-    dw $0006                                                             ;A59B92;
-    dw ExtendedSpritemap_Draygon_29                                      ;A59B94;
+    dw $0002,ExtendedSpritemap_Draygon_24                                ;A59B5A;
+    dw $0006,ExtendedSpritemap_Draygon_29                                ;A59B5E;
+    dw $0005,ExtendedSpritemap_Draygon_2A                                ;A59B62;
+    dw $0004,ExtendedSpritemap_Draygon_2B                                ;A59B66;
+    dw $0003,ExtendedSpritemap_Draygon_2C                                ;A59B6A;
+    dw $0002,ExtendedSpritemap_Draygon_2D                                ;A59B6E;
+    dw $0001,ExtendedSpritemap_Draygon_2E                                ;A59B72;
+    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6,$0025                   ;A59B76;
+    dw $0003,ExtendedSpritemap_Draygon_2F                                ;A59B78;
+    dw $0001,ExtendedSpritemap_Draygon_2E                                ;A59B7E;
+    dw $0002,ExtendedSpritemap_Draygon_2D                                ;A59B82;
+    dw $0003,ExtendedSpritemap_Draygon_2C                                ;A59B86;
+    dw $0004,ExtendedSpritemap_Draygon_2B                                ;A59B8A;
+    dw $0005,ExtendedSpritemap_Draygon_2A                                ;A59B8E;
+    dw $0006,ExtendedSpritemap_Draygon_29                                ;A59B92;
     dw Instruction_Common_GotoY                                          ;A59B96;
     dw InstList_DraygonTail_FacingLeft_Idle_0                            ;A59B98;
 
@@ -3173,18 +3039,12 @@ Instruction_DraygonTail_TailWhipHit:
 
 
 InstList_DraygonArms_FacingRight_Idle_0:
-    dw $0005                                                             ;A59BDA;
-    dw ExtendedSpritemap_Draygon_34                                      ;A59BDC;
-    dw $0005                                                             ;A59BDE;
-    dw ExtendedSpritemap_Draygon_35                                      ;A59BE0;
-    dw $0005                                                             ;A59BE2;
-    dw ExtendedSpritemap_Draygon_36                                      ;A59BE4;
-    dw $0005                                                             ;A59BE6;
-    dw ExtendedSpritemap_Draygon_37                                      ;A59BE8;
-    dw $0005                                                             ;A59BEA;
-    dw ExtendedSpritemap_Draygon_38                                      ;A59BEC;
-    dw $0005                                                             ;A59BEE;
-    dw ExtendedSpritemap_Draygon_39                                      ;A59BF0;
+    dw $0005,ExtendedSpritemap_Draygon_34                                ;A59BDA;
+    dw $0005,ExtendedSpritemap_Draygon_35                                ;A59BDE;
+    dw $0005,ExtendedSpritemap_Draygon_36                                ;A59BE2;
+    dw $0005,ExtendedSpritemap_Draygon_37                                ;A59BE6;
+    dw $0005,ExtendedSpritemap_Draygon_38                                ;A59BEA;
+    dw $0005,ExtendedSpritemap_Draygon_39                                ;A59BEE;
     dw Instruction_Common_GotoY                                          ;A59BF2;
     dw InstList_DraygonArms_FacingRight_Idle_0                           ;A59BF4;
 
@@ -3193,72 +3053,46 @@ InstList_DraygonArms_FacingRight_Idle_1:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_DraygonArms_A59BF8:
-    dw $0001                                                             ;A59BF8;
-    dw ExtendedSpritemap_Draygon_4D                                      ;A59BFA;
-    dw $0001                                                             ;A59BFC;
-    dw ExtendedSpritemap_Draygon_4C                                      ;A59BFE;
-    dw $0040                                                             ;A59C00;
-    dw ExtendedSpritemap_Draygon_4B                                      ;A59C02;
+    dw $0001,ExtendedSpritemap_Draygon_4D                                ;A59BF8;
+    dw $0001,ExtendedSpritemap_Draygon_4C                                ;A59BFC;
+    dw $0040,ExtendedSpritemap_Draygon_4B                                ;A59C00;
     dw Instruction_Common_Sleep                                          ;A59C04;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_DraygonArms_FacingRight_NearSwoopApex:
-    dw $0001                                                             ;A59C06;
-    dw ExtendedSpritemap_Draygon_4B                                      ;A59C08;
-    dw $0001                                                             ;A59C0A;
-    dw ExtendedSpritemap_Draygon_4C                                      ;A59C0C;
-    dw $0001                                                             ;A59C0E;
-    dw ExtendedSpritemap_Draygon_4D                                      ;A59C10;
-    dw $0040                                                             ;A59C12;
-    dw ExtendedSpritemap_Draygon_4E                                      ;A59C14;
+    dw $0001,ExtendedSpritemap_Draygon_4B                                ;A59C06;
+    dw $0001,ExtendedSpritemap_Draygon_4C                                ;A59C0A;
+    dw $0001,ExtendedSpritemap_Draygon_4D                                ;A59C0E;
+    dw $0040,ExtendedSpritemap_Draygon_4E                                ;A59C12;
     dw Instruction_Common_Sleep                                          ;A59C16;
 
 Debug_InstList_DraygonArms_FacingRight_FakeGrab:
-    dw $0001                                                             ;A59C18;
-    dw ExtendedSpritemap_Draygon_4B                                      ;A59C1A;
-    dw $0001                                                             ;A59C1C;
-    dw ExtendedSpritemap_Draygon_4C                                      ;A59C1E;
-    dw $0001                                                             ;A59C20;
-    dw ExtendedSpritemap_Draygon_4D                                      ;A59C22;
-    dw $0040                                                             ;A59C24;
-    dw ExtendedSpritemap_Draygon_4E                                      ;A59C26;
-    dw $0001                                                             ;A59C28;
-    dw ExtendedSpritemap_Draygon_4D                                      ;A59C2A;
-    dw $0001                                                             ;A59C2C;
-    dw ExtendedSpritemap_Draygon_4C                                      ;A59C2E;
-    dw $0040                                                             ;A59C30;
-    dw ExtendedSpritemap_Draygon_4B                                      ;A59C32;
+    dw $0001,ExtendedSpritemap_Draygon_4B                                ;A59C18;
+    dw $0001,ExtendedSpritemap_Draygon_4C                                ;A59C1C;
+    dw $0001,ExtendedSpritemap_Draygon_4D                                ;A59C20;
+    dw $0040,ExtendedSpritemap_Draygon_4E                                ;A59C24;
+    dw $0001,ExtendedSpritemap_Draygon_4D                                ;A59C28;
+    dw $0001,ExtendedSpritemap_Draygon_4C                                ;A59C2C;
+    dw $0040,ExtendedSpritemap_Draygon_4B                                ;A59C30;
     dw Instruction_Common_GotoY                                          ;A59C34;
     dw InstList_DraygonArms_FacingRight_Idle_0                           ;A59C36;
 
 InstList_DraygonArms_FacingRight_Grab:
-    dw $0001                                                             ;A59C38;
-    dw ExtendedSpritemap_Draygon_4B                                      ;A59C3A;
-    dw $0001                                                             ;A59C3C;
-    dw ExtendedSpritemap_Draygon_4C                                      ;A59C3E;
-    dw $0001                                                             ;A59C40;
-    dw ExtendedSpritemap_Draygon_4D                                      ;A59C42;
-    dw $0008                                                             ;A59C44;
-    dw ExtendedSpritemap_Draygon_4E                                      ;A59C46;
-    dw $0001                                                             ;A59C48;
-    dw ExtendedSpritemap_Draygon_4D                                      ;A59C4A;
-    dw $0001                                                             ;A59C4C;
-    dw ExtendedSpritemap_Draygon_4C                                      ;A59C4E;
-    dw $0001                                                             ;A59C50;
-    dw ExtendedSpritemap_Draygon_4B                                      ;A59C52;
-    dw $0001                                                             ;A59C54;
-    dw ExtendedSpritemap_Draygon_4C                                      ;A59C56;
+    dw $0001,ExtendedSpritemap_Draygon_4B                                ;A59C38;
+    dw $0001,ExtendedSpritemap_Draygon_4C                                ;A59C3C;
+    dw $0001,ExtendedSpritemap_Draygon_4D                                ;A59C40;
+    dw $0008,ExtendedSpritemap_Draygon_4E                                ;A59C44;
+    dw $0001,ExtendedSpritemap_Draygon_4D                                ;A59C48;
+    dw $0001,ExtendedSpritemap_Draygon_4C                                ;A59C4C;
+    dw $0001,ExtendedSpritemap_Draygon_4B                                ;A59C50;
+    dw $0001,ExtendedSpritemap_Draygon_4C                                ;A59C54;
     dw Instruction_Common_Sleep                                          ;A59C58;
 
 InstList_DraygonArms_FacingRight_Dying_0:
-    dw $0005                                                             ;A59C5A;
-    dw ExtendedSpritemap_Draygon_3A                                      ;A59C5C;
-    dw $0005                                                             ;A59C5E;
-    dw ExtendedSpritemap_Draygon_3B                                      ;A59C60;
-    dw $0005                                                             ;A59C62;
-    dw ExtendedSpritemap_Draygon_3C                                      ;A59C64;
-    dw $0005                                                             ;A59C66;
-    dw ExtendedSpritemap_Draygon_3D                                      ;A59C68;
+    dw $0005,ExtendedSpritemap_Draygon_3A                                ;A59C5A;
+    dw $0005,ExtendedSpritemap_Draygon_3B                                ;A59C5E;
+    dw $0005,ExtendedSpritemap_Draygon_3C                                ;A59C62;
+    dw $0005,ExtendedSpritemap_Draygon_3D                                ;A59C66;
     dw Instruction_Common_GotoY                                          ;A59C6A;
     dw InstList_DraygonBody_Dying_0                                      ;A59C6C;
 
@@ -3267,12 +3101,9 @@ InstList_DraygonBody_FacingRight_Dying_1:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_DraygonBody_A59C70:
-    dw $0005                                                             ;A59C70;
-    dw ExtendedSpritemap_Draygon_3C                                      ;A59C72;
-    dw $0005                                                             ;A59C74;
-    dw ExtendedSpritemap_Draygon_3B                                      ;A59C76;
-    dw $0005                                                             ;A59C78;
-    dw ExtendedSpritemap_Draygon_3A                                      ;A59C7A;
+    dw $0005,ExtendedSpritemap_Draygon_3C                                ;A59C70;
+    dw $0005,ExtendedSpritemap_Draygon_3B                                ;A59C74;
+    dw $0005,ExtendedSpritemap_Draygon_3A                                ;A59C78;
     dw Instruction_Common_Sleep                                          ;A59C7C;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -3280,8 +3111,7 @@ InstList_DraygonBody_FacingRight_Idle:
     dw Instruction_Draygon_RoomLoadingInterruptCmd_BeginHUDDraw_dup      ;A59C7E;
     dw Instruction_Draygon_EyeFunctionInY                                ;A59C80;
     dw Function_DraygonEye_FacingRight                                   ;A59C82;
-    dw $0001                                                             ;A59C84;
-    dw ExtendedSpritemap_Draygon_4A                                      ;A59C86;
+    dw $0001,ExtendedSpritemap_Draygon_4A                                ;A59C84;
     dw Instruction_Common_Sleep                                          ;A59C88;
 
 Instruction_Draygon_RoomLoadingInterruptCmd_BeginHUDDraw_dup:
@@ -3291,160 +3121,103 @@ Instruction_Draygon_RoomLoadingInterruptCmd_BeginHUDDraw_dup:
 
 
 InstList_DraygonBody_FacingRight_FireGoop:
-    dw $0001                                                             ;A59C90;
-    dw ExtendedSpritemap_Draygon_3E                                      ;A59C92;
-    dw $0002                                                             ;A59C94;
-    dw ExtendedSpritemap_Draygon_3F                                      ;A59C96;
-    dw $0003                                                             ;A59C98;
-    dw ExtendedSpritemap_Draygon_40                                      ;A59C9A;
+    dw $0001,ExtendedSpritemap_Draygon_3E                                ;A59C90;
+    dw $0002,ExtendedSpritemap_Draygon_3F                                ;A59C94;
+    dw $0003,ExtendedSpritemap_Draygon_40                                ;A59C98;
     dw Instruction_Draygon_SpawnGoop_Rightwards                          ;A59C9C;
-    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6                         ;A59C9E;
-    dw $004C,$0003                                                       ;A59CA0;
-    dw ExtendedSpritemap_Draygon_41                                      ;A59CA4;
-    dw $0002                                                             ;A59CA6;
-    dw ExtendedSpritemap_Draygon_40                                      ;A59CA8;
-    dw $0002                                                             ;A59CAA;
-    dw ExtendedSpritemap_Draygon_3F                                      ;A59CAC;
-    dw $0001                                                             ;A59CAE;
-    dw ExtendedSpritemap_Draygon_3E                                      ;A59CB0;
+    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6,$004C                   ;A59C9E;
+    dw $0003,ExtendedSpritemap_Draygon_41                                ;A59CA0;
+    dw $0002,ExtendedSpritemap_Draygon_40                                ;A59CA6;
+    dw $0002,ExtendedSpritemap_Draygon_3F                                ;A59CAA;
+    dw $0001,ExtendedSpritemap_Draygon_3E                                ;A59CAE;
     dw Instruction_Common_Sleep                                          ;A59CB2;
 
 InstList_DraygonBody_FacingRight_Roar:
-    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6                         ;A59CB4;
-    dw $0073,$0006                                                       ;A59CB6;
-    dw ExtendedSpritemap_Draygon_3E                                      ;A59CBA;
-    dw $0006                                                             ;A59CBC;
-    dw ExtendedSpritemap_Draygon_3F                                      ;A59CBE;
-    dw $0006                                                             ;A59CC0;
-    dw ExtendedSpritemap_Draygon_40                                      ;A59CC2;
-    dw $0006                                                             ;A59CC4;
-    dw ExtendedSpritemap_Draygon_41                                      ;A59CC6;
-    dw $0006                                                             ;A59CC8;
-    dw ExtendedSpritemap_Draygon_40                                      ;A59CCA;
-    dw $0006                                                             ;A59CCC;
-    dw ExtendedSpritemap_Draygon_3F                                      ;A59CCE;
-    dw $0006                                                             ;A59CD0;
-    dw ExtendedSpritemap_Draygon_3E                                      ;A59CD2;
+    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6,$0073                   ;A59CB4;
+    dw $0006,ExtendedSpritemap_Draygon_3E                                ;A59CB6;
+    dw $0006,ExtendedSpritemap_Draygon_3F                                ;A59CBC;
+    dw $0006,ExtendedSpritemap_Draygon_40                                ;A59CC0;
+    dw $0006,ExtendedSpritemap_Draygon_41                                ;A59CC4;
+    dw $0006,ExtendedSpritemap_Draygon_40                                ;A59CC8;
+    dw $0006,ExtendedSpritemap_Draygon_3F                                ;A59CCC;
+    dw $0006,ExtendedSpritemap_Draygon_3E                                ;A59CD0;
     dw Instruction_Common_Sleep                                          ;A59CD4;
 
 InstList_DraygonEye_FacingRight_Idle:
-    dw $0015                                                             ;A59CD6;
-    dw ExtendedSpritemap_Draygon_42                                      ;A59CD8;
-    dw $0005                                                             ;A59CDA;
-    dw ExtendedSpritemap_Draygon_43                                      ;A59CDC;
-    dw $0005                                                             ;A59CDE;
-    dw ExtendedSpritemap_Draygon_44                                      ;A59CE0;
-    dw $000A                                                             ;A59CE2;
-    dw ExtendedSpritemap_Draygon_43                                      ;A59CE4;
-    dw $000A                                                             ;A59CE6;
-    dw ExtendedSpritemap_Draygon_46                                      ;A59CE8;
-    dw $000A                                                             ;A59CEA;
-    dw ExtendedSpritemap_Draygon_46                                      ;A59CEC;
-    dw $000A                                                             ;A59CEE;
-    dw ExtendedSpritemap_Draygon_48                                      ;A59CF0;
-    dw $000A                                                             ;A59CF2;
-    dw ExtendedSpritemap_Draygon_48                                      ;A59CF4;
-    dw $000A                                                             ;A59CF6;
-    dw ExtendedSpritemap_Draygon_49                                      ;A59CF8;
-    dw $0005                                                             ;A59CFA;
-    dw ExtendedSpritemap_Draygon_44                                      ;A59CFC;
-    dw $0005                                                             ;A59CFE;
-    dw ExtendedSpritemap_Draygon_43                                      ;A59D00;
-    dw $0005                                                             ;A59D02;
-    dw ExtendedSpritemap_Draygon_42                                      ;A59D04;
+    dw $0015,ExtendedSpritemap_Draygon_42                                ;A59CD6;
+    dw $0005,ExtendedSpritemap_Draygon_43                                ;A59CDA;
+    dw $0005,ExtendedSpritemap_Draygon_44                                ;A59CDE;
+    dw $000A,ExtendedSpritemap_Draygon_43                                ;A59CE2;
+    dw $000A,ExtendedSpritemap_Draygon_46                                ;A59CE6;
+    dw $000A,ExtendedSpritemap_Draygon_46                                ;A59CEA;
+    dw $000A,ExtendedSpritemap_Draygon_48                                ;A59CEE;
+    dw $000A,ExtendedSpritemap_Draygon_48                                ;A59CF2;
+    dw $000A,ExtendedSpritemap_Draygon_49                                ;A59CF6;
+    dw $0005,ExtendedSpritemap_Draygon_44                                ;A59CFA;
+    dw $0005,ExtendedSpritemap_Draygon_43                                ;A59CFE;
+    dw $0005,ExtendedSpritemap_Draygon_42                                ;A59D02;
     dw Instruction_Draygon_FunctionInY                                   ;A59D06;
     dw Function_DraygonEye_FacingLeft                                    ;A59D08;
     dw Instruction_Common_Sleep                                          ;A59D0A;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_DraygonEye_A59D0C:
-    dw $0015                                                             ;A59D0C;
-    dw ExtendedSpritemap_Draygon_42                                      ;A59D0E;
-    dw $0005                                                             ;A59D10;
-    dw ExtendedSpritemap_Draygon_43                                      ;A59D12;
-    dw $0005                                                             ;A59D14;
-    dw ExtendedSpritemap_Draygon_44                                      ;A59D16;
-    dw $000A                                                             ;A59D18;
-    dw ExtendedSpritemap_Draygon_45                                      ;A59D1A;
+    dw $0015,ExtendedSpritemap_Draygon_42                                ;A59D0C;
+    dw $0005,ExtendedSpritemap_Draygon_43                                ;A59D10;
+    dw $0005,ExtendedSpritemap_Draygon_44                                ;A59D14;
+    dw $000A,ExtendedSpritemap_Draygon_45                                ;A59D18;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_DraygonEye_FacingRight_Dying_0:
-    dw Instruction_Common_TimerInY                                       ;A59D1C;
-    dw $0004                                                             ;A59D1E;
+    dw Instruction_Common_TimerInY,$0004                                 ;A59D1C;
 
 InstList_DraygonEye_FacingRight_Dying_1:
-    dw $0004                                                             ;A59D20;
-    dw ExtendedSpritemap_Draygon_46                                      ;A59D22;
-    dw $0004                                                             ;A59D24;
-    dw ExtendedSpritemap_Draygon_48                                      ;A59D26;
-    dw $0004                                                             ;A59D28;
-    dw ExtendedSpritemap_Draygon_47                                      ;A59D2A;
-    dw $0004                                                             ;A59D2C;
-    dw ExtendedSpritemap_Draygon_49                                      ;A59D2E;
+    dw $0004,ExtendedSpritemap_Draygon_46                                ;A59D20;
+    dw $0004,ExtendedSpritemap_Draygon_48                                ;A59D24;
+    dw $0004,ExtendedSpritemap_Draygon_47                                ;A59D28;
+    dw $0004,ExtendedSpritemap_Draygon_49                                ;A59D2C;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;A59D30;
     dw InstList_DraygonEye_FacingRight_Dying_1                           ;A59D32;
-    dw $0020                                                             ;A59D34;
-    dw ExtendedSpritemap_Draygon_45                                      ;A59D36;
-    dw $0010                                                             ;A59D38;
-    dw ExtendedSpritemap_Draygon_44                                      ;A59D3A;
+    dw $0020,ExtendedSpritemap_Draygon_45                                ;A59D34;
+    dw $0010,ExtendedSpritemap_Draygon_44                                ;A59D38;
     dw Instruction_Common_Sleep                                          ;A59D3C;
 
 InstList_DraygonEye_FacingRight_Dead:
-    dw $0020                                                             ;A59D3E;
-    dw ExtendedSpritemap_Draygon_45                                      ;A59D40;
-    dw $0020                                                             ;A59D42;
-    dw ExtendedSpritemap_Draygon_44                                      ;A59D44;
-    dw $0020                                                             ;A59D46;
-    dw ExtendedSpritemap_Draygon_43                                      ;A59D48;
-    dw $0001                                                             ;A59D4A;
-    dw ExtendedSpritemap_Draygon_42                                      ;A59D4C;
+    dw $0020,ExtendedSpritemap_Draygon_45                                ;A59D3E;
+    dw $0020,ExtendedSpritemap_Draygon_44                                ;A59D42;
+    dw $0020,ExtendedSpritemap_Draygon_43                                ;A59D46;
+    dw $0001,ExtendedSpritemap_Draygon_42                                ;A59D4A;
     dw Instruction_Common_Sleep                                          ;A59D4E;
 
 InstList_DraygonEye_FacingRight_LookingRight:
-    dw $0001                                                             ;A59D50;
-    dw ExtendedSpritemap_Draygon_46                                      ;A59D52;
+    dw $0001,ExtendedSpritemap_Draygon_46                                ;A59D50;
     dw Instruction_Common_Sleep                                          ;A59D54;
 
 InstList_DraygonEye_FacingRight_LookingLeft:
-    dw $0001                                                             ;A59D56;
-    dw ExtendedSpritemap_Draygon_47                                      ;A59D58;
+    dw $0001,ExtendedSpritemap_Draygon_47                                ;A59D56;
     dw Instruction_Common_Sleep                                          ;A59D5A;
 
 InstList_DraygonEye_FacingRight_LookingUp:
-    dw $0001                                                             ;A59D5C;
-    dw ExtendedSpritemap_Draygon_48                                      ;A59D5E;
+    dw $0001,ExtendedSpritemap_Draygon_48                                ;A59D5C;
     dw Instruction_Common_Sleep                                          ;A59D60;
 
 InstList_DraygonEye_FacingRight_LookingDown:
-    dw $0001                                                             ;A59D62;
-    dw ExtendedSpritemap_Draygon_49                                      ;A59D64;
+    dw $0001,ExtendedSpritemap_Draygon_49                                ;A59D62;
     dw Instruction_Common_Sleep                                          ;A59D66;
 
 InstList_DraygonTail_FacingRight_Idle_0:
-    dw $0008                                                             ;A59D68;
-    dw ExtendedSpritemap_Draygon_59                                      ;A59D6A;
-    dw $0007                                                             ;A59D6C;
-    dw ExtendedSpritemap_Draygon_5A                                      ;A59D6E;
-    dw $0006                                                             ;A59D70;
-    dw ExtendedSpritemap_Draygon_5B                                      ;A59D72;
-    dw $0006                                                             ;A59D74;
-    dw ExtendedSpritemap_Draygon_5C                                      ;A59D76;
-    dw $0006                                                             ;A59D78;
-    dw ExtendedSpritemap_Draygon_5D                                      ;A59D7A;
-    dw $0006                                                             ;A59D7C;
-    dw ExtendedSpritemap_Draygon_5E                                      ;A59D7E;
-    dw $0006                                                             ;A59D80;
-    dw ExtendedSpritemap_Draygon_5F                                      ;A59D82;
-    dw $0006                                                             ;A59D84;
-    dw ExtendedSpritemap_Draygon_5E                                      ;A59D86;
-    dw $0006                                                             ;A59D88;
-    dw ExtendedSpritemap_Draygon_5D                                      ;A59D8A;
-    dw $0006                                                             ;A59D8C;
-    dw ExtendedSpritemap_Draygon_5C                                      ;A59D8E;
-    dw $0006                                                             ;A59D90;
-    dw ExtendedSpritemap_Draygon_5B                                      ;A59D92;
-    dw $0007                                                             ;A59D94;
-    dw ExtendedSpritemap_Draygon_5A                                      ;A59D96;
+    dw $0008,ExtendedSpritemap_Draygon_59                                ;A59D68;
+    dw $0007,ExtendedSpritemap_Draygon_5A                                ;A59D6C;
+    dw $0006,ExtendedSpritemap_Draygon_5B                                ;A59D70;
+    dw $0006,ExtendedSpritemap_Draygon_5C                                ;A59D74;
+    dw $0006,ExtendedSpritemap_Draygon_5D                                ;A59D78;
+    dw $0006,ExtendedSpritemap_Draygon_5E                                ;A59D7C;
+    dw $0006,ExtendedSpritemap_Draygon_5F                                ;A59D80;
+    dw $0006,ExtendedSpritemap_Draygon_5E                                ;A59D84;
+    dw $0006,ExtendedSpritemap_Draygon_5D                                ;A59D88;
+    dw $0006,ExtendedSpritemap_Draygon_5C                                ;A59D8C;
+    dw $0006,ExtendedSpritemap_Draygon_5B                                ;A59D90;
+    dw $0007,ExtendedSpritemap_Draygon_5A                                ;A59D94;
     dw Instruction_Common_GotoY                                          ;A59D98;
     dw InstList_DraygonTail_FacingRight_Idle_0                           ;A59D9A;
 
@@ -3452,42 +3225,28 @@ InstList_DraygonTail_FacingRight_Idle_1:
     dw Instruction_Common_Sleep                                          ;A59D9C;
 
 Debug_InstList_DraygonTail_FacingRight_FakeTailWhip:
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59D9E;
-    dw $0001,$FFFF,$0010                                                 ;A59DA0;
-    dw ExtendedSpritemap_Draygon_5B                                      ;A59DA6;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59DA8;
-    dw $0002,$FFFE,$0006                                                 ;A59DAA;
-    dw ExtendedSpritemap_Draygon_60                                      ;A59DB0;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59DB2;
-    dw $0003,$FFFD,$0005                                                 ;A59DB4;
-    dw ExtendedSpritemap_Draygon_61                                      ;A59DBA;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59DBC;
-    dw $0004,$FFFC,$0004                                                 ;A59DBE;
-    dw ExtendedSpritemap_Draygon_62                                      ;A59DC4;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59DC6;
-    dw $0005,$FFFB,$0003                                                 ;A59DC8;
-    dw ExtendedSpritemap_Draygon_63                                      ;A59DCE;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59DD0;
-    dw $0006,$FFFA,$0002                                                 ;A59DD2;
-    dw ExtendedSpritemap_Draygon_64                                      ;A59DD8;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59DDA;
-    dw $0008,$FFF9,$0001                                                 ;A59DDC;
-    dw ExtendedSpritemap_Draygon_65                                      ;A59DE2;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59DE4;
-    dw $0000,$0000,$0010                                                 ;A59DE6;
-    dw ExtendedSpritemap_Draygon_66                                      ;A59DEC;
-    dw $0001                                                             ;A59DEE;
-    dw ExtendedSpritemap_Draygon_65                                      ;A59DF0;
-    dw $0002                                                             ;A59DF2;
-    dw ExtendedSpritemap_Draygon_64                                      ;A59DF4;
-    dw $0003                                                             ;A59DF6;
-    dw ExtendedSpritemap_Draygon_63                                      ;A59DF8;
-    dw $0004                                                             ;A59DFA;
-    dw ExtendedSpritemap_Draygon_62                                      ;A59DFC;
-    dw $0005                                                             ;A59DFE;
-    dw ExtendedSpritemap_Draygon_61                                      ;A59E00;
-    dw $0006                                                             ;A59E02;
-    dw ExtendedSpritemap_Draygon_60                                      ;A59E04;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0001,$FFFF              ;A59D9E;
+    dw $0010,ExtendedSpritemap_Draygon_5B                                ;A59DA0;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0002,$FFFE              ;A59DA8;
+    dw $0006,ExtendedSpritemap_Draygon_60                                ;A59DAA;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0003,$FFFD              ;A59DB2;
+    dw $0005,ExtendedSpritemap_Draygon_61                                ;A59DB4;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0004,$FFFC              ;A59DBC;
+    dw $0004,ExtendedSpritemap_Draygon_62                                ;A59DBE;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0005,$FFFB              ;A59DC6;
+    dw $0003,ExtendedSpritemap_Draygon_63                                ;A59DC8;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0006,$FFFA              ;A59DD0;
+    dw $0002,ExtendedSpritemap_Draygon_64                                ;A59DD2;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0008,$FFF9              ;A59DDA;
+    dw $0001,ExtendedSpritemap_Draygon_65                                ;A59DDC;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0000,$0000              ;A59DE4;
+    dw $0010,ExtendedSpritemap_Draygon_66                                ;A59DE6;
+    dw $0001,ExtendedSpritemap_Draygon_65                                ;A59DEE;
+    dw $0002,ExtendedSpritemap_Draygon_64                                ;A59DF2;
+    dw $0003,ExtendedSpritemap_Draygon_63                                ;A59DF6;
+    dw $0004,ExtendedSpritemap_Draygon_62                                ;A59DFA;
+    dw $0005,ExtendedSpritemap_Draygon_61                                ;A59DFE;
+    dw $0006,ExtendedSpritemap_Draygon_60                                ;A59E02;
     dw Instruction_Common_GotoY                                          ;A59E06;
     dw InstList_DraygonTail_FacingRight_Idle_0                           ;A59E08;
 
@@ -3508,49 +3267,33 @@ Instruction_DraygonBody_DisplaceGraphics:
 
 
 InstList_DraygonTail_FacingRight_FinalTailWhips_0:
-    dw Instruction_Common_TimerInY                                       ;A59E21;
-    dw $0004                                                             ;A59E23;
+    dw Instruction_Common_TimerInY,$0004                                 ;A59E21;
 
 InstList_DraygonTail_FacingRight_FinalTailWhips_1:
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59E25;
-    dw $0001,$FFFF,$0002                                                 ;A59E27;
-    dw ExtendedSpritemap_Draygon_5B                                      ;A59E2D;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59E2F;
-    dw $0002,$FFFE,$0006                                                 ;A59E31;
-    dw ExtendedSpritemap_Draygon_60                                      ;A59E37;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59E39;
-    dw $0003,$FFFD,$0005                                                 ;A59E3B;
-    dw ExtendedSpritemap_Draygon_61                                      ;A59E41;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59E43;
-    dw $0004,$FFFC,$0004                                                 ;A59E45;
-    dw ExtendedSpritemap_Draygon_62                                      ;A59E4B;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59E4D;
-    dw $0005,$FFFB,$0003                                                 ;A59E4F;
-    dw ExtendedSpritemap_Draygon_63                                      ;A59E55;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59E57;
-    dw $0006,$FFFA,$0002                                                 ;A59E59;
-    dw ExtendedSpritemap_Draygon_64                                      ;A59E5F;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59E61;
-    dw $0008,$FFF8,$0001                                                 ;A59E63;
-    dw ExtendedSpritemap_Draygon_65                                      ;A59E69;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59E6B;
-    dw $0000,$0000                                                       ;A59E6D;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0001,$FFFF              ;A59E25;
+    dw $0002,ExtendedSpritemap_Draygon_5B                                ;A59E27;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0002,$FFFE              ;A59E2F;
+    dw $0006,ExtendedSpritemap_Draygon_60                                ;A59E31;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0003,$FFFD              ;A59E39;
+    dw $0005,ExtendedSpritemap_Draygon_61                                ;A59E3B;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0004,$FFFC              ;A59E43;
+    dw $0004,ExtendedSpritemap_Draygon_62                                ;A59E45;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0005,$FFFB              ;A59E4D;
+    dw $0003,ExtendedSpritemap_Draygon_63                                ;A59E4F;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0006,$FFFA              ;A59E57;
+    dw $0002,ExtendedSpritemap_Draygon_64                                ;A59E59;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0008,$FFF8              ;A59E61;
+    dw $0001,ExtendedSpritemap_Draygon_65                                ;A59E63;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0000,$0000              ;A59E6B;
     dw Instruction_DraygonTail_TailWhipHit                               ;A59E71;
-    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6                         ;A59E73;
-    dw $0025,$0003                                                       ;A59E75;
-    dw ExtendedSpritemap_Draygon_66                                      ;A59E79;
-    dw $0001                                                             ;A59E7B;
-    dw ExtendedSpritemap_Draygon_65                                      ;A59E7D;
-    dw $0002                                                             ;A59E7F;
-    dw ExtendedSpritemap_Draygon_64                                      ;A59E81;
-    dw $0003                                                             ;A59E83;
-    dw ExtendedSpritemap_Draygon_63                                      ;A59E85;
-    dw $0004                                                             ;A59E87;
-    dw ExtendedSpritemap_Draygon_62                                      ;A59E89;
-    dw $0005                                                             ;A59E8B;
-    dw ExtendedSpritemap_Draygon_61                                      ;A59E8D;
-    dw $0006                                                             ;A59E8F;
-    dw ExtendedSpritemap_Draygon_60                                      ;A59E91;
+    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6,$0025                   ;A59E73;
+    dw $0003,ExtendedSpritemap_Draygon_66                                ;A59E79;
+    dw $0001,ExtendedSpritemap_Draygon_65                                ;A59E7B;
+    dw $0002,ExtendedSpritemap_Draygon_64                                ;A59E7F;
+    dw $0003,ExtendedSpritemap_Draygon_63                                ;A59E83;
+    dw $0004,ExtendedSpritemap_Draygon_62                                ;A59E87;
+    dw $0005,ExtendedSpritemap_Draygon_61                                ;A59E8B;
+    dw $0006,ExtendedSpritemap_Draygon_60                                ;A59E8F;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;A59E93;
     dw InstList_DraygonTail_FacingRight_FinalTailWhips_1                 ;A59E95;
     dw Instruction_Draygon_BodyFunctionInY                               ;A59E97;
@@ -3562,45 +3305,30 @@ InstList_DraygonTail_FacingRight_FinalTailWhips_2:
     dw Instruction_Common_Sleep                                          ;A59E9F;
 
 InstList_DraygonTail_FacingRight_TailWhip_0:
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59EA1;
-    dw $0001,$FFFF,$0002                                                 ;A59EA3;
-    dw ExtendedSpritemap_Draygon_5B                                      ;A59EA9;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59EAB;
-    dw $0002,$FFFE,$0006                                                 ;A59EAD;
-    dw ExtendedSpritemap_Draygon_60                                      ;A59EB3;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59EB5;
-    dw $0003,$FFFD,$0005                                                 ;A59EB7;
-    dw ExtendedSpritemap_Draygon_61                                      ;A59EBD;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59EBF;
-    dw $0004,$FFFC,$0004                                                 ;A59EC1;
-    dw ExtendedSpritemap_Draygon_62                                      ;A59EC7;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59EC9;
-    dw $0005,$FFFB,$0003                                                 ;A59ECB;
-    dw ExtendedSpritemap_Draygon_63                                      ;A59ED1;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59ED3;
-    dw $0006,$FFFA,$0002                                                 ;A59ED5;
-    dw ExtendedSpritemap_Draygon_64                                      ;A59EDB;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59EDD;
-    dw $0008,$FFF8,$0001                                                 ;A59EDF;
-    dw ExtendedSpritemap_Draygon_65                                      ;A59EE5;
-    dw Instruction_DraygonBody_DisplaceGraphics                          ;A59EE7;
-    dw $0000,$0000                                                       ;A59EE9;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0001,$FFFF              ;A59EA1;
+    dw $0002,ExtendedSpritemap_Draygon_5B                                ;A59EA3;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0002,$FFFE              ;A59EAB;
+    dw $0006,ExtendedSpritemap_Draygon_60                                ;A59EAD;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0003,$FFFD              ;A59EB5;
+    dw $0005,ExtendedSpritemap_Draygon_61                                ;A59EB7;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0004,$FFFC              ;A59EBF;
+    dw $0004,ExtendedSpritemap_Draygon_62                                ;A59EC1;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0005,$FFFB              ;A59EC9;
+    dw $0003,ExtendedSpritemap_Draygon_63                                ;A59ECB;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0006,$FFFA              ;A59ED3;
+    dw $0002,ExtendedSpritemap_Draygon_64                                ;A59ED5;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0008,$FFF8              ;A59EDD;
+    dw $0001,ExtendedSpritemap_Draygon_65                                ;A59EDF;
+    dw Instruction_DraygonBody_DisplaceGraphics,$0000,$0000              ;A59EE7;
     dw Instruction_DraygonTail_TailWhipHit                               ;A59EED;
-    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6                         ;A59EEF;
-    dw $0025,$0003                                                       ;A59EF1;
-    dw ExtendedSpritemap_Draygon_66                                      ;A59EF5;
-    dw $0001                                                             ;A59EF7;
-    dw ExtendedSpritemap_Draygon_65                                      ;A59EF9;
-    dw $0002                                                             ;A59EFB;
-    dw ExtendedSpritemap_Draygon_64                                      ;A59EFD;
-    dw $0003                                                             ;A59EFF;
-    dw ExtendedSpritemap_Draygon_63                                      ;A59F01;
-    dw $0004                                                             ;A59F03;
-    dw ExtendedSpritemap_Draygon_62                                      ;A59F05;
-    dw $0005                                                             ;A59F07;
-    dw ExtendedSpritemap_Draygon_61                                      ;A59F09;
-    dw $0006                                                             ;A59F0B;
-    dw ExtendedSpritemap_Draygon_60                                      ;A59F0D;
+    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6,$0025                   ;A59EEF;
+    dw $0003,ExtendedSpritemap_Draygon_66                                ;A59EF1;
+    dw $0001,ExtendedSpritemap_Draygon_65                                ;A59EF7;
+    dw $0002,ExtendedSpritemap_Draygon_64                                ;A59EFB;
+    dw $0003,ExtendedSpritemap_Draygon_63                                ;A59EFF;
+    dw $0004,ExtendedSpritemap_Draygon_62                                ;A59F03;
+    dw $0005,ExtendedSpritemap_Draygon_61                                ;A59F07;
+    dw $0006,ExtendedSpritemap_Draygon_60                                ;A59F0B;
     dw Instruction_Common_GotoY                                          ;A59F0F;
     dw InstList_DraygonTail_FacingRight_Idle_0                           ;A59F11;
 
@@ -3608,35 +3336,21 @@ InstList_DraygonTail_FacingRight_TailWhip_1:
     dw Instruction_Common_Sleep                                          ;A59F13;
 
 InstList_DraygonTail_FacingRight_TailFlail_0:
-    dw $0002                                                             ;A59F15;
-    dw ExtendedSpritemap_Draygon_5B                                      ;A59F17;
-    dw $0006                                                             ;A59F19;
-    dw ExtendedSpritemap_Draygon_60                                      ;A59F1B;
-    dw $0005                                                             ;A59F1D;
-    dw ExtendedSpritemap_Draygon_61                                      ;A59F1F;
-    dw $0004                                                             ;A59F21;
-    dw ExtendedSpritemap_Draygon_62                                      ;A59F23;
-    dw $0003                                                             ;A59F25;
-    dw ExtendedSpritemap_Draygon_63                                      ;A59F27;
-    dw $0002                                                             ;A59F29;
-    dw ExtendedSpritemap_Draygon_64                                      ;A59F2B;
-    dw $0001                                                             ;A59F2D;
-    dw ExtendedSpritemap_Draygon_65                                      ;A59F2F;
-    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6                         ;A59F31;
-    dw $0025,$0003                                                       ;A59F33;
-    dw ExtendedSpritemap_Draygon_66                                      ;A59F37;
-    dw $0001                                                             ;A59F39;
-    dw ExtendedSpritemap_Draygon_65                                      ;A59F3B;
-    dw $0002                                                             ;A59F3D;
-    dw ExtendedSpritemap_Draygon_64                                      ;A59F3F;
-    dw $0003                                                             ;A59F41;
-    dw ExtendedSpritemap_Draygon_63                                      ;A59F43;
-    dw $0004                                                             ;A59F45;
-    dw ExtendedSpritemap_Draygon_62                                      ;A59F47;
-    dw $0005                                                             ;A59F49;
-    dw ExtendedSpritemap_Draygon_61                                      ;A59F4B;
-    dw $0006                                                             ;A59F4D;
-    dw ExtendedSpritemap_Draygon_60                                      ;A59F4F;
+    dw $0002,ExtendedSpritemap_Draygon_5B                                ;A59F15;
+    dw $0006,ExtendedSpritemap_Draygon_60                                ;A59F19;
+    dw $0005,ExtendedSpritemap_Draygon_61                                ;A59F1D;
+    dw $0004,ExtendedSpritemap_Draygon_62                                ;A59F21;
+    dw $0003,ExtendedSpritemap_Draygon_63                                ;A59F25;
+    dw $0002,ExtendedSpritemap_Draygon_64                                ;A59F29;
+    dw $0001,ExtendedSpritemap_Draygon_65                                ;A59F2D;
+    dw Instruction_Draygon_QueueSFXInY_Lib2_Max6,$0025                   ;A59F31;
+    dw $0003,ExtendedSpritemap_Draygon_66                                ;A59F33;
+    dw $0001,ExtendedSpritemap_Draygon_65                                ;A59F39;
+    dw $0002,ExtendedSpritemap_Draygon_64                                ;A59F3D;
+    dw $0003,ExtendedSpritemap_Draygon_63                                ;A59F41;
+    dw $0004,ExtendedSpritemap_Draygon_62                                ;A59F45;
+    dw $0005,ExtendedSpritemap_Draygon_61                                ;A59F49;
+    dw $0006,ExtendedSpritemap_Draygon_60                                ;A59F4D;
     dw Instruction_Common_GotoY                                          ;A59F51;
     dw InstList_DraygonTail_FacingRight_Idle_0                           ;A59F53;
 
@@ -3959,6 +3673,7 @@ HandleDraygonFightIntroDance:
 
 
 MovementLatencyForEachEvirSpriteObject:
+; Movement latency for each evir sprite object (each evir moves 80h bytes later in the movement table than the next)
     dw $FC80,$FD00,$FD80,$FE00                                           ;A5A19F;
 
 if !FEATURE_KEEP_UNREFERENCED
@@ -3966,95 +3681,131 @@ UNUSED_MovementLatencyForEachEvirSpriteObject_A5A1A7:
     dw $FE80,$FF00,$FF80,$0000                                           ;A5A1A7;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-DraygonDeathSequenceEvirSubSpeeds_X:
+DraygonDeathSequenceEvirSubSpeeds:
+;        _________ X subspeed
+;       |      ___ Y subspeed
+;       |     |
+  .X:
     dw $D4DA                                                             ;A5A1AF;
+  .Y:                                                                    ;A5A1B1;
+    dw       $8E39 ; -0xFFFF * cos(68h * pi / 80h), 0xFFFF * sin(68h * pi / 80h)
+    dw $8E39,$D4DA ; -0xFFFF * cos(58h * pi / 80h), 0xFFFF * sin(58h * pi / 80h)
+    dw $31F1,$FB13 ; -0xFFFF * cos(48h * pi / 80h), 0xFFFF * sin(48h * pi / 80h)
+    dw $31F1,$FB13 ;  0xFFFF * cos(38h * pi / 80h), 0xFFFF * sin(38h * pi / 80h)
+    dw $8E39,$D4DA ;  0xFFFF * cos(28h * pi / 80h), 0xFFFF * sin(28h * pi / 80h)
+    dw $D4DA,$8E39 ;  0xFFFF * cos(18h * pi / 80h), 0xFFFF * sin(18h * pi / 80h)
 
-DraygonDeathSequenceEvirSubSpeeds_Y:
-    dw $8E39,$8E39,$D4DA,$31F1,$FB13,$31F1,$FB13,$8E39                   ;A5A1B1;
-    dw $D4DA,$D4DA,$8E39                                                 ;A5A1C1;
-
-DraygonDeathSequenceEvirSpawnPositions_X:
+DraygonDeathSequenceEvirSpawnPositions:
+;        _________ X position
+;       |      ___ Y position
+;       |     |
+  .X:
     dw $FF59                                                             ;A5A1C7;
-
-DraygonDeathSequenceEvirSpawnPositions_Y:
-    dw $00E5,$FFE5,$0059,$009C,$000D,$0163,$000D,$021A                   ;A5A1C9;
-    dw $0059,$02A6,$00E5                                                 ;A5A1D9;
+  .Y:
+    dw       $00E5                                                       ;A5A1C9;
+    dw $FFE5,$0059
+    dw $009C,$000D
+    dw $0163,$000D
+    dw $021A,$0059
+    dw $02A6,$00E5
 
 DraygonDeathSequenceEvirAngles:
-    dw $0068,$0000,$0058,$0000,$0048,$0000,$0038,$0000                   ;A5A1DF;
-    dw $0028,$0000,$0018,$0000                                           ;A5A1EF;
+; Used *only* to decide the sign of the X/Y subspeeds at DraygonDeathSequenceEvirSubSpeeds
+; 0 = left(!), positive = clockwise
+    dw $0068,$0000                                                       ;A5A1DF;
+    dw $0058,$0000
+    dw $0048,$0000
+    dw $0038,$0000
+    dw $0028,$0000
+    dw $0018,$0000
 
 Palette_Draygon_Sprite7:
+; Sprite palette 7
     dw $3800,$3F57,$2E4D,$00E2,$0060,$3AB0,$220B,$1166                   ;A5A1F7;
     dw $0924,$0319,$0254,$018F,$00CA,$581B,$1892,$0145                   ;A5A207;
 
 Palette_Draygon_Sprite1:
+; Sprite palette 1
     dw $3800,$3F57,$2E4D,$00E2,$0060,$3AB0,$220B,$1166                   ;A5A217;
     dw $0924,$0319,$0254,$018F,$00CA,$581B,$1892,$0145                   ;A5A227;
 
 Palette_Draygon_Sprite2:
+; Sprite palette 2
     dw $3800,$6B5A,$5652,$28E7,$1863,$62B5,$4A10,$396B                   ;A5A237;
     dw $3129,$43FF,$0113,$000F,$175C,$0299,$01D6,$03E0                   ;A5A247;
 
 Palette_Draygon_Sprite3:
+; Sprite palette 3
     dw $3800,$4B9C,$3694,$0929,$0042,$42F7,$2A52,$19AD                   ;A5A257;
     dw $116B,$1420,$1420,$1420,$1420,$1420,$1420,$1420                   ;A5A267;
 
 Palette_Draygon_BG12_5:
+; BG1/2 palette 5
     dw $3800,$3F57,$2E4D,$00E2,$0060,$3AB0,$220B,$1166                   ;A5A277;
     dw $0924,$0319,$0254,$018F,$00CA,$581B,$1892,$0145                   ;A5A287;
 
 Palette_Draygon_WhiteFlash:
+; Flash
     dw $3800,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;A5A297;
     dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;A5A2A7;
 
 ExtendedSpritemap_Draygon_0:
-    dw $0001,$0000,$0000                                                 ;A5A2B7;
+    dw $0001
+    dw $0000,$0000                                                 ;A5A2B7;
     dw Spritemap_Draygon_0                                               ;A5A2BD;
     dw Hitbox_Draygon_1B                                                 ;A5A2BF;
 
 ExtendedSpritemap_Draygon_1:
-    dw $0001,$0000,$0000                                                 ;A5A2C1;
+    dw $0001
+    dw $0000,$0000                                                 ;A5A2C1;
     dw Spritemap_Draygon_0                                               ;A5A2C7;
     dw Hitbox_Draygon_1B                                                 ;A5A2C9;
 
 ExtendedSpritemap_Draygon_2:
-    dw $0001,$0000,$0000                                                 ;A5A2CB;
+    dw $0001
+    dw $0000,$0000                                                 ;A5A2CB;
     dw Spritemap_Draygon_0                                               ;A5A2D1;
     dw Hitbox_Draygon_1B                                                 ;A5A2D3;
 
 ExtendedSpritemap_Draygon_3:
-    dw $0001,$0000,$0000                                                 ;A5A2D5;
+    dw $0001
+    dw $0000,$0000                                                 ;A5A2D5;
     dw Spritemap_Draygon_0                                               ;A5A2DB;
     dw Hitbox_Draygon_1B                                                 ;A5A2DD;
 
 ExtendedSpritemap_Draygon_4:
-    dw $0001,$0000,$0001                                                 ;A5A2DF;
+    dw $0001
+    dw $0000,$0001                                                 ;A5A2DF;
     dw Spritemap_Draygon_B                                               ;A5A2E5;
     dw Hitbox_Draygon_1B                                                 ;A5A2E7;
 
 ExtendedSpritemap_Draygon_5:
-    dw $0001,$0000,$0001                                                 ;A5A2E9;
+    dw $0001
+    dw $0000,$0001                                                 ;A5A2E9;
     dw Spritemap_Draygon_C                                               ;A5A2EF;
     dw Hitbox_Draygon_1B                                                 ;A5A2F1;
 
 ExtendedSpritemap_Draygon_6:
-    dw $0001,$0000,$0001                                                 ;A5A2F3;
+    dw $0001
+    dw $0000,$0001                                                 ;A5A2F3;
     dw Spritemap_Draygon_D                                               ;A5A2F9;
     dw Hitbox_Draygon_1B                                                 ;A5A2FB;
 
 ExtendedSpritemap_Draygon_7:
-    dw $0001,$0000,$0001                                                 ;A5A2FD;
+    dw $0001
+    dw $0000,$0001                                                 ;A5A2FD;
     dw Spritemap_Draygon_E                                               ;A5A303;
     dw Hitbox_Draygon_1B                                                 ;A5A305;
 
 ExtendedSpritemap_Draygon_8:
-    dw $0001,$0000,$0001                                                 ;A5A307;
+    dw $0001
+    dw $0000,$0001                                                 ;A5A307;
     dw Spritemap_Draygon_F                                               ;A5A30D;
     dw Hitbox_Draygon_1B                                                 ;A5A30F;
 
 ExtendedSpritemap_Draygon_9:
-    dw $0001,$0000,$0001                                                 ;A5A311;
+    dw $0001
+    dw $0000,$0001                                                 ;A5A311;
     dw Spritemap_Draygon_10                                              ;A5A317;
     dw Hitbox_Draygon_1B                                                 ;A5A319;
 
