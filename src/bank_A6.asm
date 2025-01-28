@@ -8386,51 +8386,51 @@ SpawnRidleyExplosionEnemies:
 
 
 RidleyExplosionEntry_0:
-    dw Palette_RidleyExplosion_1                                         ;A6C987;
+    dw EnemyHeaders_RidleyExplosion                                      ;A6C987;
     dw $0000,$0000,$0000,$2C00,$0000,$0000,$0000                         ;A6C989;
 
 RidleyExplosionEntry_1:
-    dw Palette_RidleyExplosion_1                                         ;A6C997;
+    dw EnemyHeaders_RidleyExplosion                                      ;A6C997;
     dw $0000,$0000,$0000,$2C00,$0000,$0002,$0000                         ;A6C999;
 
 RidleyExplosionEntry_2:
-    dw Palette_RidleyExplosion_1                                         ;A6C9A7;
+    dw EnemyHeaders_RidleyExplosion                                      ;A6C9A7;
     dw $0000,$0000,$0000,$2C00,$0000,$0004,$0000                         ;A6C9A9;
 
 RidleyExplosionEntry_3:
-    dw Palette_RidleyExplosion_1                                         ;A6C9B7;
+    dw EnemyHeaders_RidleyExplosion                                      ;A6C9B7;
     dw $0000,$0000,$0000,$2C00,$0000,$0006,$0000                         ;A6C9B9;
 
 RidleyExplosionEntry_4:
-    dw Palette_RidleyExplosion_1                                         ;A6C9C7;
+    dw EnemyHeaders_RidleyExplosion                                      ;A6C9C7;
     dw $0000,$0000,$0000,$2C00,$0000,$0008,$0000                         ;A6C9C9;
 
 RidleyExplosionEntry_5:
-    dw Palette_RidleyExplosion_1                                         ;A6C9D7;
+    dw EnemyHeaders_RidleyExplosion                                      ;A6C9D7;
     dw $0000,$0000,$0000,$2C00,$0000,$000A,$0000                         ;A6C9D9;
 
 RidleyExplosionEntry_6:
-    dw Palette_RidleyExplosion_1                                         ;A6C9E7;
+    dw EnemyHeaders_RidleyExplosion                                      ;A6C9E7;
     dw $0000,$0000,$0000,$2C00,$0000,$000C,$0000                         ;A6C9E9;
 
 RidleyExplosionEntry_7:
-    dw Palette_RidleyExplosion_1                                         ;A6C9F7;
+    dw EnemyHeaders_RidleyExplosion                                      ;A6C9F7;
     dw $0000,$0000,$0000,$2C00,$0000,$000E,$0000                         ;A6C9F9;
 
 RidleyExplosionEntry_8:
-    dw Palette_RidleyExplosion_1                                         ;A6CA07;
+    dw EnemyHeaders_RidleyExplosion                                      ;A6CA07;
     dw $0000,$0000,$0000,$2C00,$0000,$0010,$0000                         ;A6CA09;
 
 RidleyExplosionEntry_9:
-    dw Palette_RidleyExplosion_1                                         ;A6CA17;
+    dw EnemyHeaders_RidleyExplosion                                      ;A6CA17;
     dw $0000,$0000,$0000,$2C00,$0000,$0012,$0000                         ;A6CA19;
 
 RidleyExplosionEntry_A:
-    dw Palette_RidleyExplosion_1                                         ;A6CA27;
+    dw EnemyHeaders_RidleyExplosion                                      ;A6CA27;
     dw $0000,$0000,$0000,$2C00,$0000,$0014,$0000                         ;A6CA29;
 
 RidleyExplosionEntry_B:
-    dw Palette_RidleyExplosion_1                                         ;A6CA37;
+    dw EnemyHeaders_RidleyExplosion                                      ;A6CA37;
     dw $0000,$0000,$0000,$2C00,$0000,$0016,$0000                         ;A6CA39;
 
 InstList_RidleyTail_Large:
