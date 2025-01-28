@@ -5533,8 +5533,7 @@ ZoaXSpeedTable:
     dw $0000,$8000
     dw $0000,$A000
     dw $0002,$0000
-    dw $0000
-    dw $0000
+    dw $0000,$0000
 
 Instruction_Zoa_SetXSpeedTableIndexTo4:
     LDX.W $0E54                                                          ;A3B429;
