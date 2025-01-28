@@ -90,13 +90,13 @@ Spritemap_CommonA5_Nothing:
 
 ExtendedSpritemap_CommonA5_Nothing:
     dw $0001                                                             ;A5804F;
-    dw $0000,$0000                                                 
+    dw $0000,$0000
     dw Spritemap_CommonA5_Nothing                                        ;A58055;
     dw Hitbox_CommonA5_Nothing                                           ;A58057;
 
 Hitbox_CommonA5_Nothing:
     dw $0001                                                             ;A58059;
-    dw $0000,$0000,$0000,$0000                                     
+    dw $0000,$0000,$0000,$0000
     dw CommonA5_NormalEnemyTouchAI                                       ;A58063;
     dw CommonA5_NormalEnemyShotAI                                        ;A58065;
 
@@ -3750,187 +3750,212 @@ Palette_Draygon_WhiteFlash:
     dw $7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF,$7FFF                   ;A5A2A7;
 
 ExtendedSpritemap_Draygon_0:
-    dw $0001
-    dw $0000,$0000                                                 ;A5A2B7;
+    dw $0001                                                             ;A5A2B7;
+    dw $0000,$0000
     dw Spritemap_Draygon_0                                               ;A5A2BD;
     dw Hitbox_Draygon_1B                                                 ;A5A2BF;
 
 ExtendedSpritemap_Draygon_1:
-    dw $0001
-    dw $0000,$0000                                                 ;A5A2C1;
+    dw $0001                                                             ;A5A2C1;
+    dw $0000,$0000
     dw Spritemap_Draygon_0                                               ;A5A2C7;
     dw Hitbox_Draygon_1B                                                 ;A5A2C9;
 
 ExtendedSpritemap_Draygon_2:
-    dw $0001
-    dw $0000,$0000                                                 ;A5A2CB;
+    dw $0001                                                             ;A5A2CB;
+    dw $0000,$0000
     dw Spritemap_Draygon_0                                               ;A5A2D1;
     dw Hitbox_Draygon_1B                                                 ;A5A2D3;
 
 ExtendedSpritemap_Draygon_3:
-    dw $0001
-    dw $0000,$0000                                                 ;A5A2D5;
+    dw $0001                                                             ;A5A2D5;
+    dw $0000,$0000
     dw Spritemap_Draygon_0                                               ;A5A2DB;
     dw Hitbox_Draygon_1B                                                 ;A5A2DD;
 
 ExtendedSpritemap_Draygon_4:
-    dw $0001
-    dw $0000,$0001                                                 ;A5A2DF;
+    dw $0001                                                             ;A5A2DF;
+    dw $0000,$0001
     dw Spritemap_Draygon_B                                               ;A5A2E5;
     dw Hitbox_Draygon_1B                                                 ;A5A2E7;
 
 ExtendedSpritemap_Draygon_5:
-    dw $0001
-    dw $0000,$0001                                                 ;A5A2E9;
+    dw $0001                                                             ;A5A2E9;
+    dw $0000,$0001
     dw Spritemap_Draygon_C                                               ;A5A2EF;
     dw Hitbox_Draygon_1B                                                 ;A5A2F1;
 
 ExtendedSpritemap_Draygon_6:
-    dw $0001
-    dw $0000,$0001                                                 ;A5A2F3;
+    dw $0001                                                             ;A5A2F3;
+    dw $0000,$0001
     dw Spritemap_Draygon_D                                               ;A5A2F9;
     dw Hitbox_Draygon_1B                                                 ;A5A2FB;
 
 ExtendedSpritemap_Draygon_7:
-    dw $0001
-    dw $0000,$0001                                                 ;A5A2FD;
+    dw $0001                                                             ;A5A2FD;
+    dw $0000,$0001
     dw Spritemap_Draygon_E                                               ;A5A303;
     dw Hitbox_Draygon_1B                                                 ;A5A305;
 
 ExtendedSpritemap_Draygon_8:
-    dw $0001
-    dw $0000,$0001                                                 ;A5A307;
+    dw $0001                                                             ;A5A307;
+    dw $0000,$0001
     dw Spritemap_Draygon_F                                               ;A5A30D;
     dw Hitbox_Draygon_1B                                                 ;A5A30F;
 
 ExtendedSpritemap_Draygon_9:
-    dw $0001
-    dw $0000,$0001                                                 ;A5A311;
+    dw $0001                                                             ;A5A311;
+    dw $0000,$0001
     dw Spritemap_Draygon_10                                              ;A5A317;
     dw Hitbox_Draygon_1B                                                 ;A5A319;
 
 ExtendedSpritemap_Draygon_A:
-    dw $0001,$0000,$0000                                                 ;A5A31B;
+    dw $0001                                                             ;A5A31B;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_B                                         ;A5A321;
     dw Hitbox_Draygon_1A                                                 ;A5A323;
 
 ExtendedSpritemap_Draygon_B:
-    dw $0001,$0000,$0000                                                 ;A5A325;
+    dw $0001                                                             ;A5A325;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_C                                         ;A5A32B;
     dw Hitbox_Draygon_1A                                                 ;A5A32D;
 
 ExtendedSpritemap_Draygon_C:
-    dw $0001,$0000,$0000                                                 ;A5A32F;
+    dw $0001                                                             ;A5A32F;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_D                                         ;A5A335;
     dw Hitbox_Draygon_1A                                                 ;A5A337;
 
 ExtendedSpritemap_Draygon_D:
-    dw $0001,$0000,$0000                                                 ;A5A339;
+    dw $0001                                                             ;A5A339;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_E                                         ;A5A33F;
     dw Hitbox_Draygon_1A                                                 ;A5A341;
 
 ExtendedSpritemap_Draygon_E:
-    dw $0001,$0000,$0000                                                 ;A5A343;
+    dw $0001                                                             ;A5A343;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_7                                         ;A5A349;
     dw Hitbox_Draygon_1A                                                 ;A5A34B;
 
 ExtendedSpritemap_Draygon_F:
-    dw $0001,$0000,$0000                                                 ;A5A34D;
+    dw $0001                                                             ;A5A34D;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_8                                         ;A5A353;
     dw Hitbox_Draygon_1A                                                 ;A5A355;
 
 ExtendedSpritemap_Draygon_10:
-    dw $0001,$0000,$0000                                                 ;A5A357;
+    dw $0001                                                             ;A5A357;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_9                                         ;A5A35D;
     dw Hitbox_Draygon_1A                                                 ;A5A35F;
 
 ExtendedSpritemap_Draygon_11:
-    dw $0001,$0000,$0000                                                 ;A5A361;
+    dw $0001                                                             ;A5A361;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_A                                         ;A5A367;
     dw Hitbox_Draygon_1A                                                 ;A5A369;
 
 ExtendedSpritemap_Draygon_12:
-    dw $0001,$0000,$0000                                                 ;A5A36B;
+    dw $0001                                                             ;A5A36B;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_F                                         ;A5A371;
     dw Hitbox_Draygon_1B                                                 ;A5A373;
 
 ExtendedSpritemap_Draygon_13:
-    dw $0001,$0000,$0000                                                 ;A5A375;
+    dw $0001                                                             ;A5A375;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_10                                        ;A5A37B;
     dw Hitbox_Draygon_1B                                                 ;A5A37D;
 
 ExtendedSpritemap_Draygon_14:
-    dw $0001,$0000,$0000                                                 ;A5A37F;
+    dw $0001                                                             ;A5A37F;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_11                                        ;A5A385;
     dw Hitbox_Draygon_1B                                                 ;A5A387;
 
 ExtendedSpritemap_Draygon_15:
-    dw $0001,$0000,$0000                                                 ;A5A389;
+    dw $0001                                                             ;A5A389;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_12                                        ;A5A38F;
     dw Hitbox_Draygon_1B                                                 ;A5A391;
 
 ExtendedSpritemap_Draygon_16:
-    dw $0001,$0000,$0000                                                 ;A5A393;
+    dw $0001                                                             ;A5A393;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_13                                        ;A5A399;
     dw Hitbox_Draygon_1B                                                 ;A5A39B;
 
 ExtendedSpritemap_Draygon_17:
-    dw $0001,$0000,$0000                                                 ;A5A39D;
+    dw $0001                                                             ;A5A39D;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_14                                        ;A5A3A3;
     dw Hitbox_Draygon_1B                                                 ;A5A3A5;
 
 ExtendedSpritemap_Draygon_18:
-    dw $0001,$0000,$0000                                                 ;A5A3A7;
+    dw $0001                                                             ;A5A3A7;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_15                                        ;A5A3AD;
     dw Hitbox_Draygon_1B                                                 ;A5A3AF;
 
 ExtendedSpritemap_Draygon_19:
-    dw $0001,$0000,$0000                                                 ;A5A3B1;
+    dw $0001                                                             ;A5A3B1;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_16                                        ;A5A3B7;
     dw Hitbox_Draygon_1B                                                 ;A5A3B9;
 
 ExtendedSpritemap_Draygon_1A:
-    dw $0001,$0000,$0000                                                 ;A5A3BB;
+    dw $0001                                                             ;A5A3BB;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_17                                        ;A5A3C1;
     dw Hitbox_Draygon_1A                                                 ;A5A3C3;
 
 ExtendedSpritemap_Draygon_1B:
-    dw $0001,$0000,$0001                                                 ;A5A3C5;
+    dw $0001                                                             ;A5A3C5;
+    dw $0000,$0001
     dw Spritemap_Draygon_3                                               ;A5A3CB;
     dw Hitbox_Draygon_1B                                                 ;A5A3CD;
 
 ExtendedSpritemap_Draygon_1C:
-    dw $0001,$0000,$0001                                                 ;A5A3CF;
+    dw $0001                                                             ;A5A3CF;
+    dw $0000,$0001
     dw Spritemap_Draygon_4                                               ;A5A3D5;
     dw Hitbox_Draygon_1B                                                 ;A5A3D7;
 
 ExtendedSpritemap_Draygon_1D:
-    dw $0001,$0000,$0001                                                 ;A5A3D9;
+    dw $0001                                                             ;A5A3D9;
+    dw $0000,$0001
     dw Spritemap_Draygon_5                                               ;A5A3DF;
     dw Hitbox_Draygon_1B                                                 ;A5A3E1;
 
 ExtendedSpritemap_Draygon_1E:
-    dw $0001,$0000,$0001                                                 ;A5A3E3;
+    dw $0001                                                             ;A5A3E3;
+    dw $0000,$0001
     dw Spritemap_Draygon_6                                               ;A5A3E9;
     dw Hitbox_Draygon_1B                                                 ;A5A3EB;
 
 ExtendedSpritemap_Draygon_1F:
-    dw $0001,$0029,$0001                                                 ;A5A3ED;
+    dw $0001                                                             ;A5A3ED;
+    dw $0029,$0001
     dw Spritemap_Draygon_0                                               ;A5A3F3;
     dw Hitbox_Draygon_1B                                                 ;A5A3F5;
 
 ExtendedSpritemap_Draygon_20:
-    dw $0001,$0000,$0000                                                 ;A5A3F7;
+    dw $0001                                                             ;A5A3F7;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_5                                         ;A5A3FD;
     dw Hitbox_Draygon_12                                                 ;A5A3FF;
 
 ExtendedSpritemap_Draygon_21:
-    dw $0001,$0000,$0000                                                 ;A5A401;
+    dw $0001                                                             ;A5A401;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_6                                         ;A5A407;
     dw Hitbox_Draygon_12                                                 ;A5A409;
 
 ExtendedSpritemap_Draygon_22:
-    dw $0002,$001B,$003F                                                 ;A5A40B;
+    dw $0002                                                             ;A5A40B;
+    dw $001B,$003F
     dw Spritemap_Draygon_1A                                              ;A5A411;
     dw Hitbox_Draygon_1B                                                 ;A5A413;
     dw $0037,$0021                                                       ;A5A415;
@@ -3938,7 +3963,8 @@ ExtendedSpritemap_Draygon_22:
     dw Hitbox_Draygon_1B                                                 ;A5A41B;
 
 ExtendedSpritemap_Draygon_23:
-    dw $0002,$0017,$003D                                                 ;A5A41D;
+    dw $0002                                                             ;A5A41D;
+    dw $0017,$003D
     dw Spritemap_Draygon_19                                              ;A5A423;
     dw Hitbox_Draygon_1B                                                 ;A5A425;
     dw $0037,$0021                                                       ;A5A427;
@@ -3946,7 +3972,8 @@ ExtendedSpritemap_Draygon_23:
     dw Hitbox_Draygon_1B                                                 ;A5A42D;
 
 ExtendedSpritemap_Draygon_24:
-    dw $0002,$0013,$003A                                                 ;A5A42F;
+    dw $0002                                                             ;A5A42F;
+    dw $0013,$003A
     dw Spritemap_Draygon_18                                              ;A5A435;
     dw Hitbox_Draygon_1B                                                 ;A5A437;
     dw $0037,$0021                                                       ;A5A439;
@@ -3954,7 +3981,8 @@ ExtendedSpritemap_Draygon_24:
     dw Hitbox_Draygon_1B                                                 ;A5A43F;
 
 ExtendedSpritemap_Draygon_25:
-    dw $0002,$000E,$0035                                                 ;A5A441;
+    dw $0002                                                             ;A5A441;
+    dw $000E,$0035
     dw Spritemap_Draygon_17                                              ;A5A447;
     dw Hitbox_Draygon_1B                                                 ;A5A449;
     dw $0037,$0021                                                       ;A5A44B;
@@ -3962,7 +3990,8 @@ ExtendedSpritemap_Draygon_25:
     dw Hitbox_Draygon_1B                                                 ;A5A451;
 
 ExtendedSpritemap_Draygon_26:
-    dw $0002,$000C,$002E                                                 ;A5A453;
+    dw $0002                                                             ;A5A453;
+    dw $000C,$002E
     dw Spritemap_Draygon_16                                              ;A5A459;
     dw Hitbox_Draygon_1B                                                 ;A5A45B;
     dw $0037,$0021                                                       ;A5A45D;
@@ -3970,7 +3999,8 @@ ExtendedSpritemap_Draygon_26:
     dw Hitbox_Draygon_1B                                                 ;A5A463;
 
 ExtendedSpritemap_Draygon_27:
-    dw $0002,$000E,$002D                                                 ;A5A465;
+    dw $0002                                                             ;A5A465;
+    dw $000E,$002D
     dw Spritemap_Draygon_15                                              ;A5A46B;
     dw Hitbox_Draygon_1B                                                 ;A5A46D;
     dw $0037,$0021                                                       ;A5A46F;
@@ -3978,7 +4008,8 @@ ExtendedSpritemap_Draygon_27:
     dw Hitbox_Draygon_1B                                                 ;A5A475;
 
 ExtendedSpritemap_Draygon_28:
-    dw $0002,$0011,$0028                                                 ;A5A477;
+    dw $0002                                                             ;A5A477;
+    dw $0011,$0028
     dw Spritemap_Draygon_14                                              ;A5A47D;
     dw Hitbox_Draygon_1B                                                 ;A5A47F;
     dw $0037,$0021                                                       ;A5A481;
@@ -3986,7 +4017,8 @@ ExtendedSpritemap_Draygon_28:
     dw Hitbox_Draygon_1B                                                 ;A5A487;
 
 ExtendedSpritemap_Draygon_29:
-    dw $0003,$000B,$003C                                                 ;A5A489;
+    dw $0003                                                             ;A5A489;
+    dw $000B,$003C
     dw Spritemap_Draygon_18                                              ;A5A48F;
     dw Hitbox_Draygon_1B                                                 ;A5A491;
     dw $0019,$0032                                                       ;A5A493;
@@ -3997,7 +4029,8 @@ ExtendedSpritemap_Draygon_29:
     dw Hitbox_Draygon_1B                                                 ;A5A4A1;
 
 ExtendedSpritemap_Draygon_2A:
-    dw $0004,$0008,$0043                                                 ;A5A4A3;
+    dw $0004                                                             ;A5A4A3;
+    dw $0008,$0043
     dw Spritemap_Draygon_18                                              ;A5A4A9;
     dw Hitbox_Draygon_1B                                                 ;A5A4AB;
     dw $0014,$0036                                                       ;A5A4AD;
@@ -4011,7 +4044,8 @@ ExtendedSpritemap_Draygon_2A:
     dw Hitbox_Draygon_1B                                                 ;A5A4C3;
 
 ExtendedSpritemap_Draygon_2B:
-    dw $0005,$0009,$004D                                                 ;A5A4C5;
+    dw $0005                                                             ;A5A4C5;
+    dw $0009,$004D
     dw Spritemap_Draygon_19                                              ;A5A4CB;
     dw Hitbox_Draygon_1B                                                 ;A5A4CD;
     dw $000F,$003D                                                       ;A5A4CF;
@@ -4028,7 +4062,8 @@ ExtendedSpritemap_Draygon_2B:
     dw Hitbox_Draygon_1B                                                 ;A5A4ED;
 
 ExtendedSpritemap_Draygon_2C:
-    dw $0006,$FFF8,$004D                                                 ;A5A4EF;
+    dw $0006                                                             ;A5A4EF;
+    dw $FFF8,$004D
     dw Spritemap_Draygon_18                                              ;A5A4F5;
     dw Hitbox_Draygon_1B                                                 ;A5A4F7;
     dw $0007,$0042                                                       ;A5A4F9;
@@ -4048,7 +4083,8 @@ ExtendedSpritemap_Draygon_2C:
     dw Hitbox_Draygon_1B                                                 ;A5A51F;
 
 ExtendedSpritemap_Draygon_2D:
-    dw $0007,$FFEC,$0037                                                 ;A5A521;
+    dw $0007                                                             ;A5A521;
+    dw $FFEC,$0037
     dw Spritemap_Draygon_15                                              ;A5A527;
     dw Hitbox_Draygon_1B                                                 ;A5A529;
     dw $FFFC,$003D                                                       ;A5A52B;
@@ -4071,7 +4107,8 @@ ExtendedSpritemap_Draygon_2D:
     dw Hitbox_Draygon_1B                                                 ;A5A559;
 
 ExtendedSpritemap_Draygon_2E:
-    dw $0008,$FFED,$002E                                                 ;A5A55B;
+    dw $0008                                                             ;A5A55B;
+    dw $FFED,$002E
     dw Spritemap_Draygon_14                                              ;A5A561;
     dw Hitbox_Draygon_1B                                                 ;A5A563;
     dw $FFF9,$003A                                                       ;A5A565;
@@ -4097,7 +4134,8 @@ ExtendedSpritemap_Draygon_2E:
     dw Hitbox_Draygon_1B                                                 ;A5A59B;
 
 ExtendedSpritemap_Draygon_2F:
-    dw $0008,$FFF7,$0025                                                 ;A5A59D;
+    dw $0008                                                             ;A5A59D;
+    dw $FFF7,$0025
     dw Spritemap_Draygon_12                                              ;A5A5A3;
     dw Hitbox_Draygon_1B                                                 ;A5A5A5;
     dw $FFF8,$0038                                                       ;A5A5A7;
@@ -4123,212 +4161,254 @@ ExtendedSpritemap_Draygon_2F:
     dw Hitbox_Draygon_1B                                                 ;A5A5DD;
 
 ExtendedSpritemap_Draygon_30:
-    dw $0001,$0000,$0000                                                 ;A5A5DF;
+    dw $0001                                                             ;A5A5DF;
+    dw $0000,$0000
     dw Spritemap_Draygon_28                                              ;A5A5E5;
     dw Hitbox_Draygon_1B                                                 ;A5A5E7;
 
 ExtendedSpritemap_Draygon_31:
-    dw $0001,$0000,$0000                                                 ;A5A5E9;
+    dw $0001                                                             ;A5A5E9;
+    dw $0000,$0000
     dw Spritemap_Draygon_28                                              ;A5A5EF;
     dw Hitbox_Draygon_1B                                                 ;A5A5F1;
 
 ExtendedSpritemap_Draygon_32:
-    dw $0001,$0000,$0000                                                 ;A5A5F3;
+    dw $0001                                                             ;A5A5F3;
+    dw $0000,$0000
     dw Spritemap_Draygon_28                                              ;A5A5F9;
     dw Hitbox_Draygon_1B                                                 ;A5A5FB;
 
 ExtendedSpritemap_Draygon_33:
-    dw $0001,$0000,$0000                                                 ;A5A5FD;
+    dw $0001                                                             ;A5A5FD;
+    dw $0000,$0000
     dw Spritemap_Draygon_28                                              ;A5A603;
     dw Hitbox_Draygon_1B                                                 ;A5A605;
 
 ExtendedSpritemap_Draygon_34:
-    dw $0001,$0000,$0001                                                 ;A5A607;
+    dw $0001                                                             ;A5A607;
+    dw $0000,$0001
     dw Spritemap_Draygon_41                                              ;A5A60D;
     dw Hitbox_Draygon_1B                                                 ;A5A60F;
 
 ExtendedSpritemap_Draygon_35:
-    dw $0001,$0000,$0001                                                 ;A5A611;
+    dw $0001                                                             ;A5A611;
+    dw $0000,$0001
     dw Spritemap_Draygon_42                                              ;A5A617;
     dw Hitbox_Draygon_1B                                                 ;A5A619;
 
 ExtendedSpritemap_Draygon_36:
-    dw $0001,$0000,$0001                                                 ;A5A61B;
+    dw $0001                                                             ;A5A61B;
+    dw $0000,$0001
     dw Spritemap_Draygon_43                                              ;A5A621;
     dw Hitbox_Draygon_1B                                                 ;A5A623;
 
 ExtendedSpritemap_Draygon_37:
-    dw $0001,$0000,$0001                                                 ;A5A625;
+    dw $0001                                                             ;A5A625;
+    dw $0000,$0001
     dw Spritemap_Draygon_44                                              ;A5A62B;
     dw Hitbox_Draygon_1B                                                 ;A5A62D;
 
 ExtendedSpritemap_Draygon_38:
-    dw $0001,$0000,$0001                                                 ;A5A62F;
+    dw $0001                                                             ;A5A62F;
+    dw $0000,$0001
     dw Spritemap_Draygon_45                                              ;A5A635;
     dw Hitbox_Draygon_1B                                                 ;A5A637;
 
 ExtendedSpritemap_Draygon_39:
-    dw $0001,$0000,$0001                                                 ;A5A639;
+    dw $0001                                                             ;A5A639;
+    dw $0000,$0001
     dw Spritemap_Draygon_46                                              ;A5A63F;
     dw Hitbox_Draygon_1B                                                 ;A5A641;
 
 ExtendedSpritemap_Draygon_3A:
-    dw $0001,$0000,$0000                                                 ;A5A643;
+    dw $0001                                                             ;A5A643;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_23                                        ;A5A649;
     dw Hitbox_Draygon_2D                                                 ;A5A64B;
 
 ExtendedSpritemap_Draygon_3B:
-    dw $0001,$0000,$0000                                                 ;A5A64D;
+    dw $0001                                                             ;A5A64D;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_24                                        ;A5A653;
     dw Hitbox_Draygon_2D                                                 ;A5A655;
 
 ExtendedSpritemap_Draygon_3C:
-    dw $0001,$0000,$0000                                                 ;A5A657;
+    dw $0001                                                             ;A5A657;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_25                                        ;A5A65D;
     dw Hitbox_Draygon_2D                                                 ;A5A65F;
 
 ExtendedSpritemap_Draygon_3D:
-    dw $0001,$0000,$0000                                                 ;A5A661;
+    dw $0001                                                             ;A5A661;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_26                                        ;A5A667;
     dw Hitbox_Draygon_2D                                                 ;A5A669;
 
 ExtendedSpritemap_Draygon_3E:
-    dw $0001,$0000,$0000                                                 ;A5A66B;
+    dw $0001                                                             ;A5A66B;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_1F                                        ;A5A671;
     dw Hitbox_Draygon_2D                                                 ;A5A673;
 
 ExtendedSpritemap_Draygon_3F:
-    dw $0001,$0000,$0000                                                 ;A5A675;
+    dw $0001                                                             ;A5A675;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_20                                        ;A5A67B;
     dw Hitbox_Draygon_2D                                                 ;A5A67D;
 
 ExtendedSpritemap_Draygon_40:
-    dw $0001,$0000,$0000                                                 ;A5A67F;
+    dw $0001                                                             ;A5A67F;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_21                                        ;A5A685;
     dw Hitbox_Draygon_2D                                                 ;A5A687;
 
 ExtendedSpritemap_Draygon_41:
-    dw $0001,$0000,$0000                                                 ;A5A689;
+    dw $0001                                                             ;A5A689;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_22                                        ;A5A68F;
     dw Hitbox_Draygon_2D                                                 ;A5A691;
 
 ExtendedSpritemap_Draygon_42:
-    dw $0001,$0000,$0000                                                 ;A5A693;
+    dw $0001                                                             ;A5A693;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_27                                        ;A5A699;
     dw Hitbox_Draygon_1B                                                 ;A5A69B;
 
 ExtendedSpritemap_Draygon_43:
-    dw $0001,$0000,$0000                                                 ;A5A69D;
+    dw $0001                                                             ;A5A69D;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_28                                        ;A5A6A3;
     dw Hitbox_Draygon_1B                                                 ;A5A6A5;
 
 ExtendedSpritemap_Draygon_44:
-    dw $0001,$0000,$0000                                                 ;A5A6A7;
+    dw $0001                                                             ;A5A6A7;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_29                                        ;A5A6AD;
     dw Hitbox_Draygon_1B                                                 ;A5A6AF;
 
 ExtendedSpritemap_Draygon_45:
-    dw $0001,$0000,$0000                                                 ;A5A6B1;
+    dw $0001                                                             ;A5A6B1;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_2A                                        ;A5A6B7;
     dw Hitbox_Draygon_1B                                                 ;A5A6B9;
 
 ExtendedSpritemap_Draygon_46:
-    dw $0001,$0000,$0000                                                 ;A5A6BB;
+    dw $0001                                                             ;A5A6BB;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_2B                                        ;A5A6C1;
     dw Hitbox_Draygon_1B                                                 ;A5A6C3;
 
 ExtendedSpritemap_Draygon_47:
-    dw $0001,$0000,$0000                                                 ;A5A6C5;
+    dw $0001                                                             ;A5A6C5;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_2C                                        ;A5A6CB;
     dw Hitbox_Draygon_1B                                                 ;A5A6CD;
 
 ExtendedSpritemap_Draygon_48:
-    dw $0001,$0000,$0000                                                 ;A5A6CF;
+    dw $0001                                                             ;A5A6CF;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_2D                                        ;A5A6D5;
     dw Hitbox_Draygon_1B                                                 ;A5A6D7;
 
 ExtendedSpritemap_Draygon_49:
-    dw $0001,$0000,$0000                                                 ;A5A6D9;
+    dw $0001                                                             ;A5A6D9;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_2E                                        ;A5A6DF;
     dw Hitbox_Draygon_1B                                                 ;A5A6E1;
 
 ExtendedSpritemap_Draygon_4A:
-    dw $0001,$0000,$0000                                                 ;A5A6E3;
+    dw $0001                                                             ;A5A6E3;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_2F                                        ;A5A6E9;
     dw Hitbox_Draygon_2D                                                 ;A5A6EB;
 
 ExtendedSpritemap_Draygon_4B:
-    dw $0001,$0000,$0001                                                 ;A5A6ED;
+    dw $0001                                                             ;A5A6ED;
+    dw $0000,$0001
     dw Spritemap_Draygon_2B                                              ;A5A6F3;
     dw Hitbox_Draygon_1B                                                 ;A5A6F5;
 
 ExtendedSpritemap_Draygon_4C:
-    dw $0001,$0000,$0001                                                 ;A5A6F7;
+    dw $0001                                                             ;A5A6F7;
+    dw $0000,$0001
     dw Spritemap_Draygon_2C                                              ;A5A6FD;
     dw Hitbox_Draygon_1B                                                 ;A5A6FF;
 
 ExtendedSpritemap_Draygon_4D:
-    dw $0001,$0000,$0001                                                 ;A5A701;
+    dw $0001                                                             ;A5A701;
+    dw $0000,$0001
     dw Spritemap_Draygon_2D                                              ;A5A707;
     dw Hitbox_Draygon_1B                                                 ;A5A709;
 
 ExtendedSpritemap_Draygon_4E:
-    dw $0001,$0000,$0001                                                 ;A5A70B;
+    dw $0001                                                             ;A5A70B;
+    dw $0000,$0001
     dw Spritemap_Draygon_2E                                              ;A5A711;
     dw Hitbox_Draygon_1B                                                 ;A5A713;
 
 ExtendedSpritemap_Draygon_4F:
-    dw $0001,$0000,$0000                                                 ;A5A715;
+    dw $0001                                                             ;A5A715;
+    dw $0000,$0000
     dw Spritemap_Draygon_28                                              ;A5A71B;
     dw Hitbox_Draygon_1B                                                 ;A5A71D;
 
 ExtendedSpritemap_Draygon_50:
-    dw $0001,$0000,$0000                                                 ;A5A71F;
+    dw $0001                                                             ;A5A71F;
+    dw $0000,$0000
     dw Spritemap_Draygon_28                                              ;A5A725;
     dw Hitbox_Draygon_1B                                                 ;A5A727;
 
 ExtendedSpritemap_Draygon_51:
-    dw $0001,$0000,$0000                                                 ;A5A729;
+    dw $0001                                                             ;A5A729;
+    dw $0000,$0000
     dw Spritemap_Draygon_28                                              ;A5A72F;
     dw Hitbox_Draygon_1B                                                 ;A5A731;
 
 ExtendedSpritemap_Draygon_52:
-    dw $0001,$0000,$0000                                                 ;A5A733;
+    dw $0001                                                             ;A5A733;
+    dw $0000,$0000
     dw Spritemap_Draygon_28                                              ;A5A739;
     dw Hitbox_Draygon_1B                                                 ;A5A73B;
 
 ExtendedSpritemap_Draygon_53:
-    dw $0001,$0000,$0000                                                 ;A5A73D;
+    dw $0001                                                             ;A5A73D;
+    dw $0000,$0000
     dw Spritemap_Draygon_28                                              ;A5A743;
     dw Hitbox_Draygon_1B                                                 ;A5A745;
 
 ExtendedSpritemap_Draygon_54:
-    dw $0001,$0000,$0000                                                 ;A5A747;
+    dw $0001                                                             ;A5A747;
+    dw $0000,$0000
     dw Spritemap_Draygon_28                                              ;A5A74D;
     dw Hitbox_Draygon_1B                                                 ;A5A74F;
 
 ExtendedSpritemap_Draygon_55:
-    dw $0001,$0000,$0000                                                 ;A5A751;
+    dw $0001                                                             ;A5A751;
+    dw $0000,$0000
     dw Spritemap_Draygon_28                                              ;A5A757;
     dw Hitbox_Draygon_1B                                                 ;A5A759;
 
 ExtendedSpritemap_Draygon_56:
-    dw $0001,$0000,$0000                                                 ;A5A75B;
+    dw $0001                                                             ;A5A75B;
+    dw $0000,$0000
     dw Spritemap_Draygon_28                                              ;A5A761;
     dw Hitbox_Draygon_1B                                                 ;A5A763;
 
 ExtendedSpritemap_Draygon_57:
-    dw $0001,$0000,$0000                                                 ;A5A765;
+    dw $0001                                                             ;A5A765;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_1D                                        ;A5A76B;
     dw Hitbox_Draygon_29                                                 ;A5A76D;
 
 ExtendedSpritemap_Draygon_58:
-    dw $0001,$0000,$0000                                                 ;A5A76F;
+    dw $0001                                                             ;A5A76F;
+    dw $0000,$0000
     dw ExtendedTilemap_Draygon_1E                                        ;A5A775;
     dw Hitbox_Draygon_29                                                 ;A5A777;
 
 ExtendedSpritemap_Draygon_59:
-    dw $0002,$FFE5,$003F                                                 ;A5A779;
+    dw $0002                                                             ;A5A779;
+    dw $FFE5,$003F
     dw Spritemap_Draygon_50                                              ;A5A77F;
     dw Hitbox_Draygon_1B                                                 ;A5A781;
     dw $FFCE,$0021                                                       ;A5A783;
@@ -4336,7 +4416,8 @@ ExtendedSpritemap_Draygon_59:
     dw Hitbox_Draygon_1B                                                 ;A5A789;
 
 ExtendedSpritemap_Draygon_5A:
-    dw $0002,$FFE9,$003D                                                 ;A5A78B;
+    dw $0002                                                             ;A5A78B;
+    dw $FFE9,$003D
     dw Spritemap_Draygon_4F                                              ;A5A791;
     dw Hitbox_Draygon_1B                                                 ;A5A793;
     dw $FFCE,$0021                                                       ;A5A795;
@@ -4344,7 +4425,8 @@ ExtendedSpritemap_Draygon_5A:
     dw Hitbox_Draygon_1B                                                 ;A5A79B;
 
 ExtendedSpritemap_Draygon_5B:
-    dw $0002,$FFED,$003A                                                 ;A5A79D;
+    dw $0002                                                             ;A5A79D;
+    dw $FFED,$003A
     dw Spritemap_Draygon_4E                                              ;A5A7A3;
     dw Hitbox_Draygon_1B                                                 ;A5A7A5;
     dw $FFCE,$0021                                                       ;A5A7A7;
@@ -4352,7 +4434,8 @@ ExtendedSpritemap_Draygon_5B:
     dw Hitbox_Draygon_1B                                                 ;A5A7AD;
 
 ExtendedSpritemap_Draygon_5C:
-    dw $0002,$FFF2,$0035                                                 ;A5A7AF;
+    dw $0002                                                             ;A5A7AF;
+    dw $FFF2,$0035
     dw Spritemap_Draygon_4D                                              ;A5A7B5;
     dw Hitbox_Draygon_1B                                                 ;A5A7B7;
     dw $FFCE,$0021                                                       ;A5A7B9;
@@ -4360,7 +4443,8 @@ ExtendedSpritemap_Draygon_5C:
     dw Hitbox_Draygon_1B                                                 ;A5A7BF;
 
 ExtendedSpritemap_Draygon_5D:
-    dw $0002,$FFF4,$002E                                                 ;A5A7C1;
+    dw $0002                                                             ;A5A7C1;
+    dw $FFF4,$002E
     dw Spritemap_Draygon_4C                                              ;A5A7C7;
     dw Hitbox_Draygon_1B                                                 ;A5A7C9;
     dw $FFCE,$0021                                                       ;A5A7CB;
@@ -4368,7 +4452,8 @@ ExtendedSpritemap_Draygon_5D:
     dw Hitbox_Draygon_1B                                                 ;A5A7D1;
 
 ExtendedSpritemap_Draygon_5E:
-    dw $0002,$FFF2,$002D                                                 ;A5A7D3;
+    dw $0002                                                             ;A5A7D3;
+    dw $FFF2,$002D
     dw Spritemap_Draygon_4B                                              ;A5A7D9;
     dw Hitbox_Draygon_1B                                                 ;A5A7DB;
     dw $FFCE,$0021                                                       ;A5A7DD;
@@ -4376,7 +4461,8 @@ ExtendedSpritemap_Draygon_5E:
     dw Hitbox_Draygon_1B                                                 ;A5A7E3;
 
 ExtendedSpritemap_Draygon_5F:
-    dw $0002,$FFEF,$0028                                                 ;A5A7E5;
+    dw $0002                                                             ;A5A7E5;
+    dw $FFEF,$0028
     dw Spritemap_Draygon_4A                                              ;A5A7EB;
     dw Hitbox_Draygon_1B                                                 ;A5A7ED;
     dw $FFCE,$0021                                                       ;A5A7EF;
@@ -4384,7 +4470,8 @@ ExtendedSpritemap_Draygon_5F:
     dw Hitbox_Draygon_1B                                                 ;A5A7F5;
 
 ExtendedSpritemap_Draygon_60:
-    dw $0003,$FFF5,$003C                                                 ;A5A7F7;
+    dw $0003                                                             ;A5A7F7;
+    dw $FFF5,$003C
     dw Spritemap_Draygon_4E                                              ;A5A7FD;
     dw Hitbox_Draygon_2E                                                 ;A5A7FF;
     dw $FFE7,$0032                                                       ;A5A801;
@@ -4395,7 +4482,8 @@ ExtendedSpritemap_Draygon_60:
     dw Hitbox_Draygon_1B                                                 ;A5A80F;
 
 ExtendedSpritemap_Draygon_61:
-    dw $0004,$FFF8,$0043                                                 ;A5A811;
+    dw $0004                                                             ;A5A811;
+    dw $FFF8,$0043
     dw Spritemap_Draygon_4E                                              ;A5A817;
     dw Hitbox_Draygon_2E                                                 ;A5A819;
     dw $FFEC,$0036                                                       ;A5A81B;
@@ -4409,7 +4497,8 @@ ExtendedSpritemap_Draygon_61:
     dw Hitbox_Draygon_1B                                                 ;A5A831;
 
 ExtendedSpritemap_Draygon_62:
-    dw $0005,$FFF7,$004D                                                 ;A5A833;
+    dw $0005                                                             ;A5A833;
+    dw $FFF7,$004D
     dw Spritemap_Draygon_4F                                              ;A5A839;
     dw Hitbox_Draygon_2E                                                 ;A5A83B;
     dw $FFF1,$003D                                                       ;A5A83D;
@@ -4426,7 +4515,8 @@ ExtendedSpritemap_Draygon_62:
     dw Hitbox_Draygon_1B                                                 ;A5A85B;
 
 ExtendedSpritemap_Draygon_63:
-    dw $0006,$0008,$004D                                                 ;A5A85D;
+    dw $0006                                                             ;A5A85D;
+    dw $0008,$004D
     dw Spritemap_Draygon_4E                                              ;A5A863;
     dw Hitbox_Draygon_2E                                                 ;A5A865;
     dw $FFF9,$0042                                                       ;A5A867;
@@ -4446,7 +4536,8 @@ ExtendedSpritemap_Draygon_63:
     dw Hitbox_Draygon_1B                                                 ;A5A88D;
 
 ExtendedSpritemap_Draygon_64:
-    dw $0007,$0014,$0037                                                 ;A5A88F;
+    dw $0007                                                             ;A5A88F;
+    dw $0014,$0037
     dw Spritemap_Draygon_4B                                              ;A5A895;
     dw Hitbox_Draygon_2E                                                 ;A5A897;
     dw $0004,$003D                                                       ;A5A899;
@@ -4469,7 +4560,8 @@ ExtendedSpritemap_Draygon_64:
     dw Hitbox_Draygon_1B                                                 ;A5A8C7;
 
 ExtendedSpritemap_Draygon_65:
-    dw $0008,$0013,$002E                                                 ;A5A8C9;
+    dw $0008                                                             ;A5A8C9;
+    dw $0013,$002E
     dw Spritemap_Draygon_4A                                              ;A5A8CF;
     dw Hitbox_Draygon_2E                                                 ;A5A8D1;
     dw $0007,$003A                                                       ;A5A8D3;
@@ -4495,7 +4587,8 @@ ExtendedSpritemap_Draygon_65:
     dw Hitbox_Draygon_1B                                                 ;A5A909;
 
 ExtendedSpritemap_Draygon_66:
-    dw $0008,$0009,$0025                                                 ;A5A90B;
+    dw $0008                                                             ;A5A90B;
+    dw $0009,$0025
     dw Spritemap_Draygon_48                                              ;A5A911;
     dw Hitbox_Draygon_2E                                                 ;A5A913;
     dw $0008,$0038                                                       ;A5A915;
@@ -4521,42 +4614,50 @@ ExtendedSpritemap_Draygon_66:
     dw Hitbox_Draygon_1B                                                 ;A5A94B;
 
 Hitbox_Draygon_0:
-    dw $0001,$0000,$0000,$0017,$001F                                     ;A5A94D;
+    dw $0001                                                             ;A5A94D;
+    dw $0000,$0000,$0017,$001F
     dw EnemyTouch_Draygon                                                ;A5A957;
     dw CommonA5_NormalEnemyShotAI                                        ;A5A959;
 
 Hitbox_Draygon_1:
-    dw $0001,$0000,$0000,$0015,$001F                                     ;A5A95B;
+    dw $0001                                                             ;A5A95B;
+    dw $0000,$0000,$0015,$001F
     dw EnemyTouch_Draygon                                                ;A5A965;
     dw CommonA5_NormalEnemyShotAI                                        ;A5A967;
 
 Hitbox_Draygon_2:
-    dw $0001,$0000,$0000,$000C,$0021                                     ;A5A969;
+    dw $0001                                                             ;A5A969;
+    dw $0000,$0000,$000C,$0021
     dw EnemyTouch_Draygon                                                ;A5A973;
     dw CommonA5_NormalEnemyShotAI                                        ;A5A975;
 
 Hitbox_Draygon_3:
-    dw $0001,$FFF9,$FFF8,$0006,$0006                                     ;A5A977;
+    dw $0001                                                             ;A5A977;
+    dw $FFF9,$FFF8,$0006,$0006
     dw EnemyTouch_Draygon                                                ;A5A981;
     dw CommonA5_NormalEnemyShotAI                                        ;A5A983;
 
 Hitbox_Draygon_4:
-    dw $0001,$FFF7,$FFF6,$0009,$0008                                     ;A5A985;
+    dw $0001                                                             ;A5A985;
+    dw $FFF7,$FFF6,$0009,$0008
     dw EnemyTouch_Draygon                                                ;A5A98F;
     dw CommonA5_NormalEnemyShotAI                                        ;A5A991;
 
 Hitbox_Draygon_5:
-    dw $0001,$FFF9,$FFF8,$0007,$0007                                     ;A5A993;
+    dw $0001                                                             ;A5A993;
+    dw $FFF9,$FFF8,$0007,$0007
     dw EnemyTouch_Draygon                                                ;A5A99D;
     dw CommonA5_NormalEnemyShotAI                                        ;A5A99F;
 
 Hitbox_Draygon_6:
-    dw $0001,$FFF8,$FFF8,$0006,$0006                                     ;A5A9A1;
+    dw $0001                                                             ;A5A9A1;
+    dw $FFF8,$FFF8,$0006,$0006
     dw EnemyTouch_Draygon                                                ;A5A9AB;
     dw CommonA5_NormalEnemyShotAI                                        ;A5A9AD;
 
 Hitbox_Draygon_7:
-    dw $0001,$FFF7,$FFF7,$0004,$0007                                     ;A5A9AF;
+    dw $0001                                                             ;A5A9AF;
+    dw $FFF7,$FFF7,$0004,$0007
     dw RTL_A5804C                                                        ;A5A9B9;
     dw RTL_A5804C                                                        ;A5A9BB;
 
@@ -4567,37 +4668,44 @@ Hitbox_Draygon_9:
     dw $0000                                                             ;A5A9BF;
 
 Hitbox_Draygon_A:
-    dw $0001,$FFFB,$FFFB,$0004,$0004                                     ;A5A9C1;
+    dw $0001                                                             ;A5A9C1;
+    dw $FFFB,$FFFB,$0004,$0004
     dw EnemyTouch_Draygon                                                ;A5A9CB;
     dw CommonA5_NormalEnemyShotAI                                        ;A5A9CD;
 
 Hitbox_Draygon_B:
-    dw $0001,$FFFB,$FFFB,$0003,$0005                                     ;A5A9CF;
+    dw $0001                                                             ;A5A9CF;
+    dw $FFFB,$FFFB,$0003,$0005
     dw EnemyTouch_Draygon                                                ;A5A9D9;
     dw CommonA5_NormalEnemyShotAI                                        ;A5A9DB;
 
 Hitbox_Draygon_C:
-    dw $0001,$FFFB,$FFFB,$0004,$0004                                     ;A5A9DD;
+    dw $0001                                                             ;A5A9DD;
+    dw $FFFB,$FFFB,$0004,$0004
     dw EnemyTouch_Draygon                                                ;A5A9E7;
     dw CommonA5_NormalEnemyShotAI                                        ;A5A9E9;
 
 Hitbox_Draygon_D:
-    dw $0001,$FFF9,$FFF9,$0007,$0006                                     ;A5A9EB;
+    dw $0001                                                             ;A5A9EB;
+    dw $FFF9,$FFF9,$0007,$0006
     dw EnemyTouch_Draygon                                                ;A5A9F5;
     dw CommonA5_NormalEnemyShotAI                                        ;A5A9F7;
 
 Hitbox_Draygon_E:
-    dw $0001,$FFFB,$FFFB,$0004,$0004                                     ;A5A9F9;
+    dw $0001                                                             ;A5A9F9;
+    dw $FFFB,$FFFB,$0004,$0004
     dw EnemyTouch_Draygon                                                ;A5AA03;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AA05;
 
 Hitbox_Draygon_F:
-    dw $0001,$FFFB,$FFFC,$0004,$0004                                     ;A5AA07;
+    dw $0001                                                             ;A5AA07;
+    dw $FFFB,$FFFC,$0004,$0004
     dw EnemyTouch_Draygon                                                ;A5AA11;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AA13;
 
 Hitbox_Draygon_10:
-    dw $0001,$FFFB,$FFFB,$0004,$0004                                     ;A5AA15;
+    dw $0001                                                             ;A5AA15;
+    dw $FFFB,$FFFB,$0004,$0004
     dw EnemyTouch_Draygon                                                ;A5AA1F;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AA21;
 
@@ -4605,47 +4713,56 @@ Hitbox_Draygon_11:
     dw $0000                                                             ;A5AA23;
 
 Hitbox_Draygon_12:
-    dw $0001,$FFE2,$FFE6,$FFF2,$FFF5                                     ;A5AA25;
+    dw $0001                                                             ;A5AA25;
+    dw $FFE2,$FFE6,$FFF2,$FFF5
     dw EnemyTouch_Draygon                                                ;A5AA2F;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AA31;
 
 Hitbox_Draygon_13:
-    dw $0001,$FFE1,$FFE6,$FFF2,$FFF6                                     ;A5AA33;
+    dw $0001                                                             ;A5AA33;
+    dw $FFE1,$FFE6,$FFF2,$FFF6
     dw EnemyTouch_Draygon                                                ;A5AA3D;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AA3F;
 
 Hitbox_Draygon_14:
-    dw $0001,$FFE1,$FFE6,$FFF2,$FFF6                                     ;A5AA41;
+    dw $0001                                                             ;A5AA41;
+    dw $FFE1,$FFE6,$FFF2,$FFF6
     dw EnemyTouch_Draygon                                                ;A5AA4B;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AA4D;
 
 Hitbox_Draygon_15:
-    dw $0001,$FFE1,$FFE6,$FFF2,$FFF7                                     ;A5AA4F;
+    dw $0001                                                             ;A5AA4F;
+    dw $FFE1,$FFE6,$FFF2,$FFF7
     dw EnemyTouch_Draygon                                                ;A5AA59;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AA5B;
 
 Hitbox_Draygon_16:
-    dw $0001,$FFF3,$0000,$000A,$0017                                     ;A5AA5D;
+    dw $0001                                                             ;A5AA5D;
+    dw $FFF3,$0000,$000A,$0017
     dw EnemyTouch_Draygon                                                ;A5AA67;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AA69;
 
 Hitbox_Draygon_17:
-    dw $0001,$FFF3,$0000,$000A,$0017                                     ;A5AA6B;
+    dw $0001                                                             ;A5AA6B;
+    dw $FFF3,$0000,$000A,$0017
     dw EnemyTouch_Draygon                                                ;A5AA75;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AA77;
 
 Hitbox_Draygon_18:
-    dw $0001,$FFF3,$0000,$000A,$0017                                     ;A5AA79;
+    dw $0001                                                             ;A5AA79;
+    dw $FFF3,$0000,$000A,$0017
     dw EnemyTouch_Draygon                                                ;A5AA83;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AA85;
 
 Hitbox_Draygon_19:
-    dw $0001,$FFF3,$0000,$000A,$0017                                     ;A5AA87;
+    dw $0001                                                             ;A5AA87;
+    dw $FFF3,$0000,$000A,$0017
     dw EnemyTouch_Draygon                                                ;A5AA91;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AA93;
 
 Hitbox_Draygon_1A:
-    dw $0004,$FFEF,$FFF0,$0012,$001E                                     ;A5AA95;
+    dw $0004                                                             ;A5AA95;
+    dw $FFEF,$FFF0,$0012,$001E
     dw RTL_A5804C                                                        ;A5AA9F;
     dw EnemyShot_Draygon                                                 ;A5AAA1;
     dw $FFC5,$FFBE,$0003,$FFE2                                           ;A5AAA3;
@@ -4662,62 +4779,74 @@ Hitbox_Draygon_1B:
     dw $0000                                                             ;A5AAC7;
 
 Hitbox_Draygon_1C:
-    dw $0001,$FFF9,$FFF8,$0006,$0006                                     ;A5AAC9;
+    dw $0001                                                             ;A5AAC9;
+    dw $FFF9,$FFF8,$0006,$0006
     dw EnemyTouch_Draygon                                                ;A5AAD3;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AAD5;
 
 Hitbox_Draygon_1D:
-    dw $0001,$FFF7,$FFF6,$0009,$0008                                     ;A5AAD7;
+    dw $0001                                                             ;A5AAD7;
+    dw $FFF7,$FFF6,$0009,$0008
     dw EnemyTouch_Draygon                                                ;A5AAE1;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AAE3;
 
 Hitbox_Draygon_1E:
-    dw $0001,$FFF9,$FFF8,$0007,$0007                                     ;A5AAE5;
+    dw $0001                                                             ;A5AAE5;
+    dw $FFF9,$FFF8,$0007,$0007
     dw EnemyTouch_Draygon                                                ;A5AAEF;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AAF1;
 
 Hitbox_Draygon_1F:
-    dw $0001,$FFF8,$FFF8,$0006,$0006                                     ;A5AAF3;
+    dw $0001                                                             ;A5AAF3;
+    dw $FFF8,$FFF8,$0006,$0006
     dw EnemyTouch_Draygon                                                ;A5AAFD;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AAFF;
 
 Hitbox_Draygon_20:
-    dw $0001,$FFFB,$FFF7,$0007,$0007                                     ;A5AB01;
+    dw $0001                                                             ;A5AB01;
+    dw $FFFB,$FFF7,$0007,$0007
     dw RTL_A5804C                                                        ;A5AB0B;
     dw RTL_A5804C                                                        ;A5AB0D;
 
 Hitbox_Draygon_21:
-    dw $0001,$FFFB,$FFFB,$0004,$0004                                     ;A5AB0F;
+    dw $0001                                                             ;A5AB0F;
+    dw $FFFB,$FFFB,$0004,$0004
     dw EnemyTouch_Draygon                                                ;A5AB19;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AB1B;
 
 Hitbox_Draygon_22:
-    dw $0001,$FFFB,$FFFB,$0003,$0005                                     ;A5AB1D;
+    dw $0001                                                             ;A5AB1D;
+    dw $FFFB,$FFFB,$0003,$0005
     dw EnemyTouch_Draygon                                                ;A5AB27;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AB29;
 
 Hitbox_Draygon_23:
-    dw $0001,$FFFB,$FFFB,$0004,$0004                                     ;A5AB2B;
+    dw $0001                                                             ;A5AB2B;
+    dw $FFFB,$FFFB,$0004,$0004
     dw EnemyTouch_Draygon                                                ;A5AB35;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AB37;
 
 Hitbox_Draygon_24:
-    dw $0001,$FFF9,$FFF9,$0007,$0006                                     ;A5AB39;
+    dw $0001                                                             ;A5AB39;
+    dw $FFF9,$FFF9,$0007,$0006
     dw EnemyTouch_Draygon                                                ;A5AB43;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AB45;
 
 Hitbox_Draygon_25:
-    dw $0001,$FFFB,$FFFB,$0004,$0004                                     ;A5AB47;
+    dw $0001                                                             ;A5AB47;
+    dw $FFFB,$FFFB,$0004,$0004
     dw EnemyTouch_Draygon                                                ;A5AB51;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AB53;
 
 Hitbox_Draygon_26:
-    dw $0001,$FFFB,$FFFC,$0004,$0004                                     ;A5AB55;
+    dw $0001                                                             ;A5AB55;
+    dw $FFFB,$FFFC,$0004,$0004
     dw EnemyTouch_Draygon                                                ;A5AB5F;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AB61;
 
 Hitbox_Draygon_27:
-    dw $0001,$FFFB,$FFFB,$0004,$0004                                     ;A5AB63;
+    dw $0001                                                             ;A5AB63;
+    dw $FFFB,$FFFB,$0004,$0004
     dw EnemyTouch_Draygon                                                ;A5AB6D;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AB6F;
 
@@ -4725,27 +4854,32 @@ Hitbox_Draygon_28:
     dw $0000                                                             ;A5AB71;
 
 Hitbox_Draygon_29:
-    dw $0001,$FFFA,$0000,$0010,$0017                                     ;A5AB73;
+    dw $0001                                                             ;A5AB73;
+    dw $FFFA,$0000,$0010,$0017
     dw EnemyTouch_Draygon                                                ;A5AB7D;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AB7F;
 
 Hitbox_Draygon_2A:
-    dw $0001,$FFFA,$0000,$0010,$0017                                     ;A5AB81;
+    dw $0001                                                             ;A5AB81;
+    dw $FFFA,$0000,$0010,$0017
     dw EnemyTouch_Draygon                                                ;A5AB8B;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AB8D;
 
 Hitbox_Draygon_2B:
-    dw $0001,$FFFA,$0000,$0010,$0017                                     ;A5AB8F;
+    dw $0001                                                             ;A5AB8F;
+    dw $FFFA,$0000,$0010,$0017
     dw EnemyTouch_Draygon                                                ;A5AB99;
     dw CommonA5_NormalEnemyShotAI                                        ;A5AB9B;
 
 Hitbox_Draygon_2C:
-    dw $0001,$FFFA,$0000,$0010,$0017                                     ;A5AB9D;
+    dw $0001                                                             ;A5AB9D;
+    dw $FFFA,$0000,$0010,$0017
     dw EnemyTouch_Draygon                                                ;A5ABA7;
     dw CommonA5_NormalEnemyShotAI                                        ;A5ABA9;
 
 Hitbox_Draygon_2D:
-    dw $0004,$FFEE,$FFF9,$0012,$001E                                     ;A5ABAB;
+    dw $0004                                                             ;A5ABAB;
+    dw $FFEE,$FFF9,$0012,$001E
     dw RTL_A5804C                                                        ;A5ABB5;
     dw EnemyShot_Draygon                                                 ;A5ABB7;
     dw $FFF6,$FFC1,$003E,$FFE6                                           ;A5ABB9;
@@ -4762,1858 +4896,1309 @@ Hitbox_Draygon_2E:
     dw $0000                                                             ;A5ABDD;
 
 Spritemap_Draygon_0:
-    dw $0004,$8008                                                       ;A5ABDF;
-    db $10                                                               ;A5ABE3;
-    dw $0721,$8008                                                       ;A5ABE4;
-    db $00                                                               ;A5ABE8;
-    dw $0701,$8000                                                       ;A5ABE9;
-    db $10                                                               ;A5ABED;
-    dw $0720,$8000                                                       ;A5ABEE;
-    db $00                                                               ;A5ABF2;
-    dw $0700                                                             ;A5ABF3;
+    dw $0004                                                             ;A5ABDF;
+    %spritemapEntry(1, $08, $10, 0, 0, 0, 3, $121)
+    %spritemapEntry(1, $08, $00, 0, 0, 0, 3, $101)
+    %spritemapEntry(1, $00, $10, 0, 0, 0, 3, $120)
+    %spritemapEntry(1, $00, $00, 0, 0, 0, 3, $100)
 
 Spritemap_Draygon_1:
-    dw $0004,$0000                                                       ;A5ABF5;
-    db $10                                                               ;A5ABF9;
-    dw $2723,$8000                                                       ;A5ABFA;
-    db $00                                                               ;A5ABFE;
-    dw $2703,$8008                                                       ;A5ABFF;
-    db $10                                                               ;A5AC03;
-    dw $2724,$8008                                                       ;A5AC04;
-    db $00                                                               ;A5AC08;
-    dw $2704                                                             ;A5AC09;
+    dw $0004                                                             ;A5ABF5;
+    %spritemapEntry(0, $00, $10, 0, 0, 2, 3, $123)
+    %spritemapEntry(1, $00, $00, 0, 0, 2, 3, $103)
+    %spritemapEntry(1, $08, $10, 0, 0, 2, 3, $124)
+    %spritemapEntry(1, $08, $00, 0, 0, 2, 3, $104)
 
 Spritemap_Draygon_2:
-    dw $0002,$8000                                                       ;A5AC0B;
-    db $10                                                               ;A5AC0F;
-    dw $2726,$8000                                                       ;A5AC10;
-    db $00                                                               ;A5AC14;
-    dw $2706                                                             ;A5AC15;
+    dw $0002                                                             ;A5AC0B;
+    %spritemapEntry(1, $00, $10, 0, 0, 2, 3, $126)
+    %spritemapEntry(1, $00, $00, 0, 0, 2, 3, $106)
 
 Spritemap_Draygon_3:
-    dw $0018,$81E5                                                       ;A5AC17;
-    db $02                                                               ;A5AC1B;
-    dw $271C,$81DD                                                       ;A5AC1C;
-    db $0A                                                               ;A5AC20;
-    dw $272B,$81ED                                                       ;A5AC21;
-    db $FA                                                               ;A5AC25;
-    dw $270D,$01F4                                                       ;A5AC26;
-    db $EC                                                               ;A5AC2A;
-    dw $2750,$81FC                                                       ;A5AC2B;
-    db $E4                                                               ;A5AC2F;
-    dw $2741,$81F4                                                       ;A5AC30;
-    db $F4                                                               ;A5AC34;
-    dw $2760,$81ED                                                       ;A5AC35;
-    db $0A                                                               ;A5AC39;
-    dw $271C,$81E5                                                       ;A5AC3A;
-    db $12                                                               ;A5AC3E;
-    dw $272B,$81F5                                                       ;A5AC3F;
-    db $02                                                               ;A5AC43;
-    dw $270D,$01FC                                                       ;A5AC44;
-    db $F4                                                               ;A5AC48;
-    dw $2750,$8004                                                       ;A5AC49;
-    db $EC                                                               ;A5AC4D;
-    dw $2741,$81FC                                                       ;A5AC4E;
-    db $FC                                                               ;A5AC52;
-    dw $2760,$81F5                                                       ;A5AC53;
-    db $12                                                               ;A5AC57;
-    dw $271C,$81ED                                                       ;A5AC58;
-    db $1A                                                               ;A5AC5C;
-    dw $272B,$81FD                                                       ;A5AC5D;
-    db $0A                                                               ;A5AC61;
-    dw $270D,$0004                                                       ;A5AC62;
-    db $FC                                                               ;A5AC66;
-    dw $2750,$800C                                                       ;A5AC67;
-    db $F4                                                               ;A5AC6B;
-    dw $2741,$8004                                                       ;A5AC6C;
-    db $04                                                               ;A5AC70;
-    dw $2760,$81FC                                                       ;A5AC71;
-    db $1B                                                               ;A5AC75;
-    dw $271C,$81F4                                                       ;A5AC76;
-    db $23                                                               ;A5AC7A;
-    dw $272B,$8004                                                       ;A5AC7B;
-    db $13                                                               ;A5AC7F;
-    dw $270D,$000B                                                       ;A5AC80;
-    db $05                                                               ;A5AC84;
-    dw $2750,$8013                                                       ;A5AC85;
-    db $FD                                                               ;A5AC89;
-    dw $2741,$800B                                                       ;A5AC8A;
-    db $0D                                                               ;A5AC8E;
-    dw $2760                                                             ;A5AC8F;
+    dw $0018                                                             ;A5AC17;
+    %spritemapEntry(1, $1E5, $02, 0, 0, 2, 3, $11C)
+    %spritemapEntry(1, $1DD, $0A, 0, 0, 2, 3, $12B)
+    %spritemapEntry(1, $1ED, $FA, 0, 0, 2, 3, $10D)
+    %spritemapEntry(0, $1F4, $EC, 0, 0, 2, 3, $150)
+    %spritemapEntry(1, $1FC, $E4, 0, 0, 2, 3, $141)
+    %spritemapEntry(1, $1F4, $F4, 0, 0, 2, 3, $160)
+    %spritemapEntry(1, $1ED, $0A, 0, 0, 2, 3, $11C)
+    %spritemapEntry(1, $1E5, $12, 0, 0, 2, 3, $12B)
+    %spritemapEntry(1, $1F5, $02, 0, 0, 2, 3, $10D)
+    %spritemapEntry(0, $1FC, $F4, 0, 0, 2, 3, $150)
+    %spritemapEntry(1, $04, $EC, 0, 0, 2, 3, $141)
+    %spritemapEntry(1, $1FC, $FC, 0, 0, 2, 3, $160)
+    %spritemapEntry(1, $1F5, $12, 0, 0, 2, 3, $11C)
+    %spritemapEntry(1, $1ED, $1A, 0, 0, 2, 3, $12B)
+    %spritemapEntry(1, $1FD, $0A, 0, 0, 2, 3, $10D)
+    %spritemapEntry(0, $04, $FC, 0, 0, 2, 3, $150)
+    %spritemapEntry(1, $0C, $F4, 0, 0, 2, 3, $141)
+    %spritemapEntry(1, $04, $04, 0, 0, 2, 3, $160)
+    %spritemapEntry(1, $1FC, $1B, 0, 0, 2, 3, $11C)
+    %spritemapEntry(1, $1F4, $23, 0, 0, 2, 3, $12B)
+    %spritemapEntry(1, $04, $13, 0, 0, 2, 3, $10D)
+    %spritemapEntry(0, $0B, $05, 0, 0, 2, 3, $150)
+    %spritemapEntry(1, $13, $FD, 0, 0, 2, 3, $141)
+    %spritemapEntry(1, $0B, $0D, 0, 0, 2, 3, $160)
 
 Spritemap_Draygon_4:
-    dw $0014,$81F8                                                       ;A5AC91;
-    db $F9                                                               ;A5AC95;
-    dw $272E,$01E8                                                       ;A5AC96;
-    db $09                                                               ;A5AC9A;
-    dw $274C,$81F0                                                       ;A5AC9B;
-    db $01                                                               ;A5AC9F;
-    dw $273D,$81FC                                                       ;A5ACA0;
-    db $F4                                                               ;A5ACA4;
-    dw $2762,$81FC                                                       ;A5ACA5;
-    db $E4                                                               ;A5ACA9;
-    dw $2743,$8000                                                       ;A5ACAA;
-    db $01                                                               ;A5ACAE;
-    dw $272E,$01F0                                                       ;A5ACAF;
-    db $11                                                               ;A5ACB3;
-    dw $274C,$81F8                                                       ;A5ACB4;
-    db $09                                                               ;A5ACB8;
-    dw $273D,$8004                                                       ;A5ACB9;
-    db $FC                                                               ;A5ACBD;
-    dw $2762,$8004                                                       ;A5ACBE;
-    db $EC                                                               ;A5ACC2;
-    dw $2743,$8008                                                       ;A5ACC3;
-    db $09                                                               ;A5ACC7;
-    dw $272E,$01F8                                                       ;A5ACC8;
-    db $19                                                               ;A5ACCC;
-    dw $274C,$8000                                                       ;A5ACCD;
-    db $11                                                               ;A5ACD1;
-    dw $273D,$800C                                                       ;A5ACD2;
-    db $04                                                               ;A5ACD6;
-    dw $2762,$800C                                                       ;A5ACD7;
-    db $F4                                                               ;A5ACDB;
-    dw $2743,$800F                                                       ;A5ACDC;
-    db $12                                                               ;A5ACE0;
-    dw $272E,$01FF                                                       ;A5ACE1;
-    db $22                                                               ;A5ACE5;
-    dw $274C,$8007                                                       ;A5ACE6;
-    db $1A                                                               ;A5ACEA;
-    dw $273D,$8013                                                       ;A5ACEB;
-    db $0D                                                               ;A5ACEF;
-    dw $2762,$8013                                                       ;A5ACF0;
-    db $FD                                                               ;A5ACF4;
-    dw $2743                                                             ;A5ACF5;
+    dw $0014                                                             ;A5AC91;
+    %spritemapEntry(1, $1F8, $F9, 0, 0, 2, 3, $12E)
+    %spritemapEntry(0, $1E8, $09, 0, 0, 2, 3, $14C)
+    %spritemapEntry(1, $1F0, $01, 0, 0, 2, 3, $13D)
+    %spritemapEntry(1, $1FC, $F4, 0, 0, 2, 3, $162)
+    %spritemapEntry(1, $1FC, $E4, 0, 0, 2, 3, $143)
+    %spritemapEntry(1, $00, $01, 0, 0, 2, 3, $12E)
+    %spritemapEntry(0, $1F0, $11, 0, 0, 2, 3, $14C)
+    %spritemapEntry(1, $1F8, $09, 0, 0, 2, 3, $13D)
+    %spritemapEntry(1, $04, $FC, 0, 0, 2, 3, $162)
+    %spritemapEntry(1, $04, $EC, 0, 0, 2, 3, $143)
+    %spritemapEntry(1, $08, $09, 0, 0, 2, 3, $12E)
+    %spritemapEntry(0, $1F8, $19, 0, 0, 2, 3, $14C)
+    %spritemapEntry(1, $00, $11, 0, 0, 2, 3, $13D)
+    %spritemapEntry(1, $0C, $04, 0, 0, 2, 3, $162)
+    %spritemapEntry(1, $0C, $F4, 0, 0, 2, 3, $143)
+    %spritemapEntry(1, $0F, $12, 0, 0, 2, 3, $12E)
+    %spritemapEntry(0, $1FF, $22, 0, 0, 2, 3, $14C)
+    %spritemapEntry(1, $07, $1A, 0, 0, 2, 3, $13D)
+    %spritemapEntry(1, $13, $0D, 0, 0, 2, 3, $162)
+    %spritemapEntry(1, $13, $FD, 0, 0, 2, 3, $143)
 
 Spritemap_Draygon_5:
-    dw $0010,$81F9                                                       ;A5ACF7;
-    db $F9                                                               ;A5ACFB;
-    dw $2738,$8001                                                       ;A5ACFC;
-    db $F1                                                               ;A5AD00;
-    dw $2729,$8004                                                       ;A5AD01;
-    db $EC                                                               ;A5AD05;
-    dw $2756,$81FC                                                       ;A5AD06;
-    db $E4                                                               ;A5AD0A;
-    dw $2745,$8000                                                       ;A5AD0B;
-    db $00                                                               ;A5AD0F;
-    dw $2738,$8008                                                       ;A5AD10;
-    db $F8                                                               ;A5AD14;
-    dw $2729,$800B                                                       ;A5AD15;
-    db $F3                                                               ;A5AD19;
-    dw $2756,$8003                                                       ;A5AD1A;
-    db $EB                                                               ;A5AD1E;
-    dw $2745,$8007                                                       ;A5AD1F;
-    db $07                                                               ;A5AD23;
-    dw $2738,$800F                                                       ;A5AD24;
-    db $FF                                                               ;A5AD28;
-    dw $2729,$8012                                                       ;A5AD29;
-    db $FA                                                               ;A5AD2D;
-    dw $2756,$800A                                                       ;A5AD2E;
-    db $F2                                                               ;A5AD32;
-    dw $2745,$800E                                                       ;A5AD33;
-    db $0E                                                               ;A5AD37;
-    dw $2738,$8016                                                       ;A5AD38;
-    db $06                                                               ;A5AD3C;
-    dw $2729,$8019                                                       ;A5AD3D;
-    db $01                                                               ;A5AD41;
-    dw $2756,$8011                                                       ;A5AD42;
-    db $F9                                                               ;A5AD46;
-    dw $2745                                                             ;A5AD47;
+    dw $0010                                                             ;A5ACF7;
+    %spritemapEntry(1, $1F9, $F9, 0, 0, 2, 3, $138)
+    %spritemapEntry(1, $01, $F1, 0, 0, 2, 3, $129)
+    %spritemapEntry(1, $04, $EC, 0, 0, 2, 3, $156)
+    %spritemapEntry(1, $1FC, $E4, 0, 0, 2, 3, $145)
+    %spritemapEntry(1, $00, $00, 0, 0, 2, 3, $138)
+    %spritemapEntry(1, $08, $F8, 0, 0, 2, 3, $129)
+    %spritemapEntry(1, $0B, $F3, 0, 0, 2, 3, $156)
+    %spritemapEntry(1, $03, $EB, 0, 0, 2, 3, $145)
+    %spritemapEntry(1, $07, $07, 0, 0, 2, 3, $138)
+    %spritemapEntry(1, $0F, $FF, 0, 0, 2, 3, $129)
+    %spritemapEntry(1, $12, $FA, 0, 0, 2, 3, $156)
+    %spritemapEntry(1, $0A, $F2, 0, 0, 2, 3, $145)
+    %spritemapEntry(1, $0E, $0E, 0, 0, 2, 3, $138)
+    %spritemapEntry(1, $16, $06, 0, 0, 2, 3, $129)
+    %spritemapEntry(1, $19, $01, 0, 0, 2, 3, $156)
+    %spritemapEntry(1, $11, $F9, 0, 0, 2, 3, $145)
 
 Spritemap_Draygon_6:
-    dw $0010,$8000                                                       ;A5AD49;
-    db $F4                                                               ;A5AD4D;
-    dw $2768,$8000                                                       ;A5AD4E;
-    db $EC                                                               ;A5AD52;
-    dw $2758,$8004                                                       ;A5AD53;
-    db $E4                                                               ;A5AD57;
-    dw $2709,$81FC                                                       ;A5AD58;
-    db $E4                                                               ;A5AD5C;
-    dw $2708,$8007                                                       ;A5AD5D;
-    db $FC                                                               ;A5AD61;
-    dw $2768,$8007                                                       ;A5AD62;
-    db $F4                                                               ;A5AD66;
-    dw $2758,$800B                                                       ;A5AD67;
-    db $EC                                                               ;A5AD6B;
-    dw $2709,$8003                                                       ;A5AD6C;
-    db $EC                                                               ;A5AD70;
-    dw $2708,$800E                                                       ;A5AD71;
-    db $03                                                               ;A5AD75;
-    dw $2768,$800E                                                       ;A5AD76;
-    db $FB                                                               ;A5AD7A;
-    dw $2758,$8012                                                       ;A5AD7B;
-    db $F3                                                               ;A5AD7F;
-    dw $2709,$800A                                                       ;A5AD80;
-    db $F3                                                               ;A5AD84;
-    dw $2708,$8015                                                       ;A5AD85;
-    db $0A                                                               ;A5AD89;
-    dw $2768,$8015                                                       ;A5AD8A;
-    db $02                                                               ;A5AD8E;
-    dw $2758,$8019                                                       ;A5AD8F;
-    db $FA                                                               ;A5AD93;
-    dw $2709,$8011                                                       ;A5AD94;
-    db $FA                                                               ;A5AD98;
-    dw $2708                                                             ;A5AD99;
+    dw $0010                                                             ;A5AD49;
+    %spritemapEntry(1, $00, $F4, 0, 0, 2, 3, $168)
+    %spritemapEntry(1, $00, $EC, 0, 0, 2, 3, $158)
+    %spritemapEntry(1, $04, $E4, 0, 0, 2, 3, $109)
+    %spritemapEntry(1, $1FC, $E4, 0, 0, 2, 3, $108)
+    %spritemapEntry(1, $07, $FC, 0, 0, 2, 3, $168)
+    %spritemapEntry(1, $07, $F4, 0, 0, 2, 3, $158)
+    %spritemapEntry(1, $0B, $EC, 0, 0, 2, 3, $109)
+    %spritemapEntry(1, $03, $EC, 0, 0, 2, 3, $108)
+    %spritemapEntry(1, $0E, $03, 0, 0, 2, 3, $168)
+    %spritemapEntry(1, $0E, $FB, 0, 0, 2, 3, $158)
+    %spritemapEntry(1, $12, $F3, 0, 0, 2, 3, $109)
+    %spritemapEntry(1, $0A, $F3, 0, 0, 2, 3, $108)
+    %spritemapEntry(1, $15, $0A, 0, 0, 2, 3, $168)
+    %spritemapEntry(1, $15, $02, 0, 0, 2, 3, $158)
+    %spritemapEntry(1, $19, $FA, 0, 0, 2, 3, $109)
+    %spritemapEntry(1, $11, $FA, 0, 0, 2, 3, $108)
 
 Spritemap_Draygon_7:
-    dw $000A,$81FC                                                       ;A5AD9B;
-    db $F0                                                               ;A5AD9F;
-    dw $0721,$81FC                                                       ;A5ADA0;
-    db $E0                                                               ;A5ADA4;
-    dw $0701,$81F4                                                       ;A5ADA5;
-    db $F0                                                               ;A5ADA9;
-    dw $0720,$81F4                                                       ;A5ADAA;
-    db $E0                                                               ;A5ADAE;
-    dw $0700,$01F4                                                       ;A5ADAF;
-    db $04                                                               ;A5ADB3;
-    dw $2723,$81F4                                                       ;A5ADB4;
-    db $F4                                                               ;A5ADB8;
-    dw $2703,$81FC                                                       ;A5ADB9;
-    db $04                                                               ;A5ADBD;
-    dw $2724,$81FC                                                       ;A5ADBE;
-    db $F4                                                               ;A5ADC2;
-    dw $2704,$81F4                                                       ;A5ADC3;
-    db $14                                                               ;A5ADC7;
-    dw $2726,$81F4                                                       ;A5ADC8;
-    db $04                                                               ;A5ADCC;
-    dw $2706                                                             ;A5ADCD;
+    dw $000A                                                             ;A5AD9B;
+    %spritemapEntry(1, $1FC, $F0, 0, 0, 0, 3, $121)
+    %spritemapEntry(1, $1FC, $E0, 0, 0, 0, 3, $101)
+    %spritemapEntry(1, $1F4, $F0, 0, 0, 0, 3, $120)
+    %spritemapEntry(1, $1F4, $E0, 0, 0, 0, 3, $100)
+    %spritemapEntry(0, $1F4, $04, 0, 0, 2, 3, $123)
+    %spritemapEntry(1, $1F4, $F4, 0, 0, 2, 3, $103)
+    %spritemapEntry(1, $1FC, $04, 0, 0, 2, 3, $124)
+    %spritemapEntry(1, $1FC, $F4, 0, 0, 2, 3, $104)
+    %spritemapEntry(1, $1F4, $14, 0, 0, 2, 3, $126)
+    %spritemapEntry(1, $1F4, $04, 0, 0, 2, 3, $106)
 
 Spritemap_Draygon_8:
-    dw $000A,$81FB                                                       ;A5ADCF;
-    db $F0                                                               ;A5ADD3;
-    dw $0721,$81FB                                                       ;A5ADD4;
-    db $E0                                                               ;A5ADD8;
-    dw $0701,$81F3                                                       ;A5ADD9;
-    db $F0                                                               ;A5ADDD;
-    dw $0720,$81F3                                                       ;A5ADDE;
-    db $E0                                                               ;A5ADE2;
-    dw $0700,$01F3                                                       ;A5ADE3;
-    db $04                                                               ;A5ADE7;
-    dw $2723,$81F3                                                       ;A5ADE8;
-    db $F4                                                               ;A5ADEC;
-    dw $2703,$81FB                                                       ;A5ADED;
-    db $04                                                               ;A5ADF1;
-    dw $2724,$81FB                                                       ;A5ADF2;
-    db $F4                                                               ;A5ADF6;
-    dw $2704,$81F3                                                       ;A5ADF7;
-    db $14                                                               ;A5ADFB;
-    dw $2726,$81F3                                                       ;A5ADFC;
-    db $04                                                               ;A5AE00;
-    dw $2706                                                             ;A5AE01;
+    dw $000A                                                             ;A5ADCF;
+    %spritemapEntry(1, $1FB, $F0, 0, 0, 0, 3, $121)
+    %spritemapEntry(1, $1FB, $E0, 0, 0, 0, 3, $101)
+    %spritemapEntry(1, $1F3, $F0, 0, 0, 0, 3, $120)
+    %spritemapEntry(1, $1F3, $E0, 0, 0, 0, 3, $100)
+    %spritemapEntry(0, $1F3, $04, 0, 0, 2, 3, $123)
+    %spritemapEntry(1, $1F3, $F4, 0, 0, 2, 3, $103)
+    %spritemapEntry(1, $1FB, $04, 0, 0, 2, 3, $124)
+    %spritemapEntry(1, $1FB, $F4, 0, 0, 2, 3, $104)
+    %spritemapEntry(1, $1F3, $14, 0, 0, 2, 3, $126)
+    %spritemapEntry(1, $1F3, $04, 0, 0, 2, 3, $106)
 
 Spritemap_Draygon_9:
-    dw $000A,$81FB                                                       ;A5AE03;
-    db $F0                                                               ;A5AE07;
-    dw $0721,$81FB                                                       ;A5AE08;
-    db $E0                                                               ;A5AE0C;
-    dw $0701,$81F3                                                       ;A5AE0D;
-    db $F0                                                               ;A5AE11;
-    dw $0720,$81F3                                                       ;A5AE12;
-    db $E0                                                               ;A5AE16;
-    dw $0700,$01F2                                                       ;A5AE17;
-    db $04                                                               ;A5AE1B;
-    dw $2723,$81F2                                                       ;A5AE1C;
-    db $F4                                                               ;A5AE20;
-    dw $2703,$81FA                                                       ;A5AE21;
-    db $04                                                               ;A5AE25;
-    dw $2724,$81FA                                                       ;A5AE26;
-    db $F4                                                               ;A5AE2A;
-    dw $2704,$81F2                                                       ;A5AE2B;
-    db $14                                                               ;A5AE2F;
-    dw $2726,$81F2                                                       ;A5AE30;
-    db $04                                                               ;A5AE34;
-    dw $2706                                                             ;A5AE35;
+    dw $000A                                                             ;A5AE03;
+    %spritemapEntry(1, $1FB, $F0, 0, 0, 0, 3, $121)
+    %spritemapEntry(1, $1FB, $E0, 0, 0, 0, 3, $101)
+    %spritemapEntry(1, $1F3, $F0, 0, 0, 0, 3, $120)
+    %spritemapEntry(1, $1F3, $E0, 0, 0, 0, 3, $100)
+    %spritemapEntry(0, $1F2, $04, 0, 0, 2, 3, $123)
+    %spritemapEntry(1, $1F2, $F4, 0, 0, 2, 3, $103)
+    %spritemapEntry(1, $1FA, $04, 0, 0, 2, 3, $124)
+    %spritemapEntry(1, $1FA, $F4, 0, 0, 2, 3, $104)
+    %spritemapEntry(1, $1F2, $14, 0, 0, 2, 3, $126)
+    %spritemapEntry(1, $1F2, $04, 0, 0, 2, 3, $106)
 
 Spritemap_Draygon_A:
-    dw $000A,$81FB                                                       ;A5AE37;
-    db $F0                                                               ;A5AE3B;
-    dw $0721,$81FB                                                       ;A5AE3C;
-    db $E0                                                               ;A5AE40;
-    dw $0701,$81F3                                                       ;A5AE41;
-    db $F0                                                               ;A5AE45;
-    dw $0720,$81F3                                                       ;A5AE46;
-    db $E0                                                               ;A5AE4A;
-    dw $0700,$01F2                                                       ;A5AE4B;
-    db $04                                                               ;A5AE4F;
-    dw $2723,$81F2                                                       ;A5AE50;
-    db $F4                                                               ;A5AE54;
-    dw $2703,$81FA                                                       ;A5AE55;
-    db $04                                                               ;A5AE59;
-    dw $2724,$81FA                                                       ;A5AE5A;
-    db $F4                                                               ;A5AE5E;
-    dw $2704,$81F1                                                       ;A5AE5F;
-    db $14                                                               ;A5AE63;
-    dw $2726,$81F1                                                       ;A5AE64;
-    db $04                                                               ;A5AE68;
-    dw $2706                                                             ;A5AE69;
+    dw $000A                                                             ;A5AE37;
+    %spritemapEntry(1, $1FB, $F0, 0, 0, 0, 3, $121)
+    %spritemapEntry(1, $1FB, $E0, 0, 0, 0, 3, $101)
+    %spritemapEntry(1, $1F3, $F0, 0, 0, 0, 3, $120)
+    %spritemapEntry(1, $1F3, $E0, 0, 0, 0, 3, $100)
+    %spritemapEntry(0, $1F2, $04, 0, 0, 2, 3, $123)
+    %spritemapEntry(1, $1F2, $F4, 0, 0, 2, 3, $103)
+    %spritemapEntry(1, $1FA, $04, 0, 0, 2, 3, $124)
+    %spritemapEntry(1, $1FA, $F4, 0, 0, 2, 3, $104)
+    %spritemapEntry(1, $1F1, $14, 0, 0, 2, 3, $126)
+    %spritemapEntry(1, $1F1, $04, 0, 0, 2, 3, $106)
 
 Spritemap_Draygon_B:
-    dw $0013,$81E5                                                       ;A5AE6B;
-    db $02                                                               ;A5AE6F;
-    dw $271C,$81DD                                                       ;A5AE70;
-    db $0A                                                               ;A5AE74;
-    dw $272B,$81ED                                                       ;A5AE75;
-    db $FA                                                               ;A5AE79;
-    dw $270D,$01F4                                                       ;A5AE7A;
-    db $EC                                                               ;A5AE7E;
-    dw $2750,$81FC                                                       ;A5AE7F;
-    db $E4                                                               ;A5AE83;
-    dw $2741,$81F4                                                       ;A5AE84;
-    db $F4                                                               ;A5AE88;
-    dw $2760,$8000                                                       ;A5AE89;
-    db $01                                                               ;A5AE8D;
-    dw $272E,$01F0                                                       ;A5AE8E;
-    db $11                                                               ;A5AE92;
-    dw $274C,$81F8                                                       ;A5AE93;
-    db $09                                                               ;A5AE97;
-    dw $273D,$8004                                                       ;A5AE98;
-    db $FC                                                               ;A5AE9C;
-    dw $2762,$8004                                                       ;A5AE9D;
-    db $EC                                                               ;A5AEA1;
-    dw $2743,$8009                                                       ;A5AEA2;
-    db $09                                                               ;A5AEA6;
-    dw $2738,$8011                                                       ;A5AEA7;
-    db $01                                                               ;A5AEAB;
-    dw $2729,$8014                                                       ;A5AEAC;
-    db $FC                                                               ;A5AEB0;
-    dw $2756,$800C                                                       ;A5AEB1;
-    db $F4                                                               ;A5AEB5;
-    dw $2745,$8018                                                       ;A5AEB6;
-    db $0C                                                               ;A5AEBA;
-    dw $2768,$8018                                                       ;A5AEBB;
-    db $04                                                               ;A5AEBF;
-    dw $2758,$801C                                                       ;A5AEC0;
-    db $FC                                                               ;A5AEC4;
-    dw $2709,$8014                                                       ;A5AEC5;
-    db $FC                                                               ;A5AEC9;
-    dw $2708                                                             ;A5AECA;
+    dw $0013                                                             ;A5AE6B;
+    %spritemapEntry(1, $1E5, $02, 0, 0, 2, 3, $11C)
+    %spritemapEntry(1, $1DD, $0A, 0, 0, 2, 3, $12B)
+    %spritemapEntry(1, $1ED, $FA, 0, 0, 2, 3, $10D)
+    %spritemapEntry(0, $1F4, $EC, 0, 0, 2, 3, $150)
+    %spritemapEntry(1, $1FC, $E4, 0, 0, 2, 3, $141)
+    %spritemapEntry(1, $1F4, $F4, 0, 0, 2, 3, $160)
+    %spritemapEntry(1, $00, $01, 0, 0, 2, 3, $12E)
+    %spritemapEntry(0, $1F0, $11, 0, 0, 2, 3, $14C)
+    %spritemapEntry(1, $1F8, $09, 0, 0, 2, 3, $13D)
+    %spritemapEntry(1, $04, $FC, 0, 0, 2, 3, $162)
+    %spritemapEntry(1, $04, $EC, 0, 0, 2, 3, $143)
+    %spritemapEntry(1, $09, $09, 0, 0, 2, 3, $138)
+    %spritemapEntry(1, $11, $01, 0, 0, 2, 3, $129)
+    %spritemapEntry(1, $14, $FC, 0, 0, 2, 3, $156)
+    %spritemapEntry(1, $0C, $F4, 0, 0, 2, 3, $145)
+    %spritemapEntry(1, $18, $0C, 0, 0, 2, 3, $168)
+    %spritemapEntry(1, $18, $04, 0, 0, 2, 3, $158)
+    %spritemapEntry(1, $1C, $FC, 0, 0, 2, 3, $109)
+    %spritemapEntry(1, $14, $FC, 0, 0, 2, 3, $108)
 
 Spritemap_Draygon_C:
-    dw $0011,$81F8                                                       ;A5AECC;
-    db $F9                                                               ;A5AED0;
-    dw $272E,$01E8                                                       ;A5AED1;
-    db $09                                                               ;A5AED5;
-    dw $274C,$81F0                                                       ;A5AED6;
-    db $01                                                               ;A5AEDA;
-    dw $273D,$81FC                                                       ;A5AEDB;
-    db $F4                                                               ;A5AEDF;
-    dw $2762,$81FC                                                       ;A5AEE0;
-    db $E4                                                               ;A5AEE4;
-    dw $2743,$8001                                                       ;A5AEE5;
-    db $01                                                               ;A5AEE9;
-    dw $2738,$8009                                                       ;A5AEEA;
-    db $F9                                                               ;A5AEEE;
-    dw $2729,$800C                                                       ;A5AEEF;
-    db $F4                                                               ;A5AEF3;
-    dw $2756,$8004                                                       ;A5AEF4;
-    db $EC                                                               ;A5AEF8;
-    dw $2745,$8010                                                       ;A5AEF9;
-    db $04                                                               ;A5AEFD;
-    dw $2768,$8010                                                       ;A5AEFE;
-    db $FC                                                               ;A5AF02;
-    dw $2758,$8014                                                       ;A5AF03;
-    db $F4                                                               ;A5AF07;
-    dw $2709,$800C                                                       ;A5AF08;
-    db $F4                                                               ;A5AF0C;
-    dw $2708,$8011                                                       ;A5AF0D;
-    db $11                                                               ;A5AF11;
-    dw $2738,$8019                                                       ;A5AF12;
-    db $09                                                               ;A5AF16;
-    dw $2729,$801C                                                       ;A5AF17;
-    db $04                                                               ;A5AF1B;
-    dw $2756,$8014                                                       ;A5AF1C;
-    db $FC                                                               ;A5AF20;
-    dw $2745                                                             ;A5AF21;
+    dw $0011                                                             ;A5AECC;
+    %spritemapEntry(1, $1F8, $F9, 0, 0, 2, 3, $12E)
+    %spritemapEntry(0, $1E8, $09, 0, 0, 2, 3, $14C)
+    %spritemapEntry(1, $1F0, $01, 0, 0, 2, 3, $13D)
+    %spritemapEntry(1, $1FC, $F4, 0, 0, 2, 3, $162)
+    %spritemapEntry(1, $1FC, $E4, 0, 0, 2, 3, $143)
+    %spritemapEntry(1, $01, $01, 0, 0, 2, 3, $138)
+    %spritemapEntry(1, $09, $F9, 0, 0, 2, 3, $129)
+    %spritemapEntry(1, $0C, $F4, 0, 0, 2, 3, $156)
+    %spritemapEntry(1, $04, $EC, 0, 0, 2, 3, $145)
+    %spritemapEntry(1, $10, $04, 0, 0, 2, 3, $168)
+    %spritemapEntry(1, $10, $FC, 0, 0, 2, 3, $158)
+    %spritemapEntry(1, $14, $F4, 0, 0, 2, 3, $109)
+    %spritemapEntry(1, $0C, $F4, 0, 0, 2, 3, $108)
+    %spritemapEntry(1, $11, $11, 0, 0, 2, 3, $138)
+    %spritemapEntry(1, $19, $09, 0, 0, 2, 3, $129)
+    %spritemapEntry(1, $1C, $04, 0, 0, 2, 3, $156)
+    %spritemapEntry(1, $14, $FC, 0, 0, 2, 3, $145)
 
 Spritemap_Draygon_D:
-    dw $0011,$81F9                                                       ;A5AF23;
-    db $F9                                                               ;A5AF27;
-    dw $2738,$8001                                                       ;A5AF28;
-    db $F1                                                               ;A5AF2C;
-    dw $2729,$8004                                                       ;A5AF2D;
-    db $EC                                                               ;A5AF31;
-    dw $2756,$81FC                                                       ;A5AF32;
-    db $E4                                                               ;A5AF36;
-    dw $2745,$8008                                                       ;A5AF37;
-    db $FC                                                               ;A5AF3B;
-    dw $2768,$8008                                                       ;A5AF3C;
-    db $F4                                                               ;A5AF40;
-    dw $2758,$800C                                                       ;A5AF41;
-    db $EC                                                               ;A5AF45;
-    dw $2709,$8004                                                       ;A5AF46;
-    db $EC                                                               ;A5AF4A;
-    dw $2708,$8009                                                       ;A5AF4B;
-    db $09                                                               ;A5AF4F;
-    dw $2738,$8011                                                       ;A5AF50;
-    db $01                                                               ;A5AF54;
-    dw $2729,$8014                                                       ;A5AF55;
-    db $FC                                                               ;A5AF59;
-    dw $2756,$800C                                                       ;A5AF5A;
-    db $F4                                                               ;A5AF5E;
-    dw $2745,$8010                                                       ;A5AF5F;
-    db $11                                                               ;A5AF63;
-    dw $272E,$0000                                                       ;A5AF64;
-    db $21                                                               ;A5AF68;
-    dw $274C,$8008                                                       ;A5AF69;
-    db $19                                                               ;A5AF6D;
-    dw $273D,$8014                                                       ;A5AF6E;
-    db $0C                                                               ;A5AF72;
-    dw $2762,$8014                                                       ;A5AF73;
-    db $FC                                                               ;A5AF77;
-    dw $2743                                                             ;A5AF78;
+    dw $0011                                                             ;A5AF23;
+    %spritemapEntry(1, $1F9, $F9, 0, 0, 2, 3, $138)
+    %spritemapEntry(1, $01, $F1, 0, 0, 2, 3, $129)
+    %spritemapEntry(1, $04, $EC, 0, 0, 2, 3, $156)
+    %spritemapEntry(1, $1FC, $E4, 0, 0, 2, 3, $145)
+    %spritemapEntry(1, $08, $FC, 0, 0, 2, 3, $168)
+    %spritemapEntry(1, $08, $F4, 0, 0, 2, 3, $158)
+    %spritemapEntry(1, $0C, $EC, 0, 0, 2, 3, $109)
+    %spritemapEntry(1, $04, $EC, 0, 0, 2, 3, $108)
+    %spritemapEntry(1, $09, $09, 0, 0, 2, 3, $138)
+    %spritemapEntry(1, $11, $01, 0, 0, 2, 3, $129)
+    %spritemapEntry(1, $14, $FC, 0, 0, 2, 3, $156)
+    %spritemapEntry(1, $0C, $F4, 0, 0, 2, 3, $145)
+    %spritemapEntry(1, $10, $11, 0, 0, 2, 3, $12E)
+    %spritemapEntry(0, $00, $21, 0, 0, 2, 3, $14C)
+    %spritemapEntry(1, $08, $19, 0, 0, 2, 3, $13D)
+    %spritemapEntry(1, $14, $0C, 0, 0, 2, 3, $162)
+    %spritemapEntry(1, $14, $FC, 0, 0, 2, 3, $143)
 
 Spritemap_Draygon_E:
-    dw $0013,$8000                                                       ;A5AF7A;
-    db $F4                                                               ;A5AF7E;
-    dw $2768,$8000                                                       ;A5AF7F;
-    db $EC                                                               ;A5AF83;
-    dw $2758,$8004                                                       ;A5AF84;
-    db $E4                                                               ;A5AF88;
-    dw $2709,$81FC                                                       ;A5AF89;
-    db $E4                                                               ;A5AF8D;
-    dw $2708,$8001                                                       ;A5AF8E;
-    db $01                                                               ;A5AF92;
-    dw $2738,$8009                                                       ;A5AF93;
-    db $F9                                                               ;A5AF97;
-    dw $2729,$800C                                                       ;A5AF98;
-    db $F4                                                               ;A5AF9C;
-    dw $2756,$8004                                                       ;A5AF9D;
-    db $EC                                                               ;A5AFA1;
-    dw $2745,$8008                                                       ;A5AFA2;
-    db $09                                                               ;A5AFA6;
-    dw $272E,$01F8                                                       ;A5AFA7;
-    db $19                                                               ;A5AFAB;
-    dw $274C,$8000                                                       ;A5AFAC;
-    db $11                                                               ;A5AFB0;
-    dw $273D,$800C                                                       ;A5AFB1;
-    db $04                                                               ;A5AFB5;
-    dw $2762,$800C                                                       ;A5AFB6;
-    db $F4                                                               ;A5AFBA;
-    dw $2743,$81FD                                                       ;A5AFBB;
-    db $1A                                                               ;A5AFBF;
-    dw $271C,$81F5                                                       ;A5AFC0;
-    db $22                                                               ;A5AFC4;
-    dw $272B,$8005                                                       ;A5AFC5;
-    db $12                                                               ;A5AFC9;
-    dw $270D,$000C                                                       ;A5AFCA;
-    db $04                                                               ;A5AFCE;
-    dw $2750,$8014                                                       ;A5AFCF;
-    db $FC                                                               ;A5AFD3;
-    dw $2741,$800C                                                       ;A5AFD4;
-    db $0C                                                               ;A5AFD8;
-    dw $2760                                                             ;A5AFD9;
+    dw $0013                                                             ;A5AF7A;
+    %spritemapEntry(1, $00, $F4, 0, 0, 2, 3, $168)
+    %spritemapEntry(1, $00, $EC, 0, 0, 2, 3, $158)
+    %spritemapEntry(1, $04, $E4, 0, 0, 2, 3, $109)
+    %spritemapEntry(1, $1FC, $E4, 0, 0, 2, 3, $108)
+    %spritemapEntry(1, $01, $01, 0, 0, 2, 3, $138)
+    %spritemapEntry(1, $09, $F9, 0, 0, 2, 3, $129)
+    %spritemapEntry(1, $0C, $F4, 0, 0, 2, 3, $156)
+    %spritemapEntry(1, $04, $EC, 0, 0, 2, 3, $145)
+    %spritemapEntry(1, $08, $09, 0, 0, 2, 3, $12E)
+    %spritemapEntry(0, $1F8, $19, 0, 0, 2, 3, $14C)
+    %spritemapEntry(1, $00, $11, 0, 0, 2, 3, $13D)
+    %spritemapEntry(1, $0C, $04, 0, 0, 2, 3, $162)
+    %spritemapEntry(1, $0C, $F4, 0, 0, 2, 3, $143)
+    %spritemapEntry(1, $1FD, $1A, 0, 0, 2, 3, $11C)
+    %spritemapEntry(1, $1F5, $22, 0, 0, 2, 3, $12B)
+    %spritemapEntry(1, $05, $12, 0, 0, 2, 3, $10D)
+    %spritemapEntry(0, $0C, $04, 0, 0, 2, 3, $150)
+    %spritemapEntry(1, $14, $FC, 0, 0, 2, 3, $141)
+    %spritemapEntry(1, $0C, $0C, 0, 0, 2, 3, $160)
 
 Spritemap_Draygon_F:
-    dw $0014,$81F9                                                       ;A5AFDB;
-    db $F9                                                               ;A5AFDF;
-    dw $2738,$8001                                                       ;A5AFE0;
-    db $F1                                                               ;A5AFE4;
-    dw $2729,$8004                                                       ;A5AFE5;
-    db $EC                                                               ;A5AFE9;
-    dw $2756,$81FC                                                       ;A5AFEA;
-    db $E4                                                               ;A5AFEE;
-    dw $2745,$8000                                                       ;A5AFEF;
-    db $01                                                               ;A5AFF3;
-    dw $272E,$01F0                                                       ;A5AFF4;
-    db $11                                                               ;A5AFF8;
-    dw $274C,$81F8                                                       ;A5AFF9;
-    db $09                                                               ;A5AFFD;
-    dw $273D,$8004                                                       ;A5AFFE;
-    db $FC                                                               ;A5B002;
-    dw $2762,$8004                                                       ;A5B003;
-    db $EC                                                               ;A5B007;
-    dw $2743,$81F5                                                       ;A5B008;
-    db $12                                                               ;A5B00C;
-    dw $271C,$81ED                                                       ;A5B00D;
-    db $1A                                                               ;A5B011;
-    dw $272B,$81FD                                                       ;A5B012;
-    db $0A                                                               ;A5B016;
-    dw $270D,$0004                                                       ;A5B017;
-    db $FC                                                               ;A5B01B;
-    dw $2750,$800C                                                       ;A5B01C;
-    db $F4                                                               ;A5B020;
-    dw $2741,$8004                                                       ;A5B021;
-    db $04                                                               ;A5B025;
-    dw $2760,$8010                                                       ;A5B026;
-    db $11                                                               ;A5B02A;
-    dw $272E,$0000                                                       ;A5B02B;
-    db $21                                                               ;A5B02F;
-    dw $274C,$8008                                                       ;A5B030;
-    db $19                                                               ;A5B034;
-    dw $273D,$8014                                                       ;A5B035;
-    db $0C                                                               ;A5B039;
-    dw $2762,$8014                                                       ;A5B03A;
-    db $FC                                                               ;A5B03E;
-    dw $2743                                                             ;A5B03F;
+    dw $0014                                                             ;A5AFDB;
+    %spritemapEntry(1, $1F9, $F9, 0, 0, 2, 3, $138)
+    %spritemapEntry(1, $01, $F1, 0, 0, 2, 3, $129)
+    %spritemapEntry(1, $04, $EC, 0, 0, 2, 3, $156)
+    %spritemapEntry(1, $1FC, $E4, 0, 0, 2, 3, $145)
+    %spritemapEntry(1, $00, $01, 0, 0, 2, 3, $12E)
+    %spritemapEntry(0, $1F0, $11, 0, 0, 2, 3, $14C)
+    %spritemapEntry(1, $1F8, $09, 0, 0, 2, 3, $13D)
+    %spritemapEntry(1, $04, $FC, 0, 0, 2, 3, $162)
+    %spritemapEntry(1, $04, $EC, 0, 0, 2, 3, $143)
+    %spritemapEntry(1, $1F5, $12, 0, 0, 2, 3, $11C)
+    %spritemapEntry(1, $1ED, $1A, 0, 0, 2, 3, $12B)
+    %spritemapEntry(1, $1FD, $0A, 0, 0, 2, 3, $10D)
+    %spritemapEntry(0, $04, $FC, 0, 0, 2, 3, $150)
+    %spritemapEntry(1, $0C, $F4, 0, 0, 2, 3, $141)
+    %spritemapEntry(1, $04, $04, 0, 0, 2, 3, $160)
+    %spritemapEntry(1, $10, $11, 0, 0, 2, 3, $12E)
+    %spritemapEntry(0, $00, $21, 0, 0, 2, 3, $14C)
+    %spritemapEntry(1, $08, $19, 0, 0, 2, 3, $13D)
+    %spritemapEntry(1, $14, $0C, 0, 0, 2, 3, $162)
+    %spritemapEntry(1, $14, $FC, 0, 0, 2, 3, $143)
 
 Spritemap_Draygon_10:
-    dw $0014,$81F8                                                       ;A5B041;
-    db $F9                                                               ;A5B045;
-    dw $272E,$01E8                                                       ;A5B046;
-    db $09                                                               ;A5B04A;
-    dw $274C,$81F0                                                       ;A5B04B;
-    db $01                                                               ;A5B04F;
-    dw $273D,$81FC                                                       ;A5B050;
-    db $F4                                                               ;A5B054;
-    dw $2762,$81FC                                                       ;A5B055;
-    db $E4                                                               ;A5B059;
-    dw $2743,$81ED                                                       ;A5B05A;
-    db $0A                                                               ;A5B05E;
-    dw $271C,$81E5                                                       ;A5B05F;
-    db $12                                                               ;A5B063;
-    dw $272B,$81F5                                                       ;A5B064;
-    db $02                                                               ;A5B068;
-    dw $270D,$01FC                                                       ;A5B069;
-    db $F4                                                               ;A5B06D;
-    dw $2750,$8004                                                       ;A5B06E;
-    db $EC                                                               ;A5B072;
-    dw $2741,$81FC                                                       ;A5B073;
-    db $FC                                                               ;A5B077;
-    dw $2760,$8008                                                       ;A5B078;
-    db $09                                                               ;A5B07C;
-    dw $272E,$01F8                                                       ;A5B07D;
-    db $19                                                               ;A5B081;
-    dw $274C,$8000                                                       ;A5B082;
-    db $11                                                               ;A5B086;
-    dw $273D,$800C                                                       ;A5B087;
-    db $04                                                               ;A5B08B;
-    dw $2762,$800C                                                       ;A5B08C;
-    db $F4                                                               ;A5B090;
-    dw $2743,$8011                                                       ;A5B091;
-    db $11                                                               ;A5B095;
-    dw $2738,$8019                                                       ;A5B096;
-    db $09                                                               ;A5B09A;
-    dw $2729,$801C                                                       ;A5B09B;
-    db $04                                                               ;A5B09F;
-    dw $2756,$8014                                                       ;A5B0A0;
-    db $FC                                                               ;A5B0A4;
-    dw $2745                                                             ;A5B0A5;
+    dw $0014                                                             ;A5B041;
+    %spritemapEntry(1, $1F8, $F9, 0, 0, 2, 3, $12E)
+    %spritemapEntry(0, $1E8, $09, 0, 0, 2, 3, $14C)
+    %spritemapEntry(1, $1F0, $01, 0, 0, 2, 3, $13D)
+    %spritemapEntry(1, $1FC, $F4, 0, 0, 2, 3, $162)
+    %spritemapEntry(1, $1FC, $E4, 0, 0, 2, 3, $143)
+    %spritemapEntry(1, $1ED, $0A, 0, 0, 2, 3, $11C)
+    %spritemapEntry(1, $1E5, $12, 0, 0, 2, 3, $12B)
+    %spritemapEntry(1, $1F5, $02, 0, 0, 2, 3, $10D)
+    %spritemapEntry(0, $1FC, $F4, 0, 0, 2, 3, $150)
+    %spritemapEntry(1, $04, $EC, 0, 0, 2, 3, $141)
+    %spritemapEntry(1, $1FC, $FC, 0, 0, 2, 3, $160)
+    %spritemapEntry(1, $08, $09, 0, 0, 2, 3, $12E)
+    %spritemapEntry(0, $1F8, $19, 0, 0, 2, 3, $14C)
+    %spritemapEntry(1, $00, $11, 0, 0, 2, 3, $13D)
+    %spritemapEntry(1, $0C, $04, 0, 0, 2, 3, $162)
+    %spritemapEntry(1, $0C, $F4, 0, 0, 2, 3, $143)
+    %spritemapEntry(1, $11, $11, 0, 0, 2, 3, $138)
+    %spritemapEntry(1, $19, $09, 0, 0, 2, 3, $129)
+    %spritemapEntry(1, $1C, $04, 0, 0, 2, 3, $156)
+    %spritemapEntry(1, $14, $FC, 0, 0, 2, 3, $145)
 
 Spritemap_Draygon_11:
-    dw $0013,$81BB                                                       ;A5B0A7;
-    db $E5                                                               ;A5B0AB;
-    dw $271C,$81B3                                                       ;A5B0AC;
-    db $ED                                                               ;A5B0B0;
-    dw $272B,$81C3                                                       ;A5B0B1;
-    db $DD                                                               ;A5B0B5;
-    dw $270D,$01CA                                                       ;A5B0B6;
-    db $CF                                                               ;A5B0BA;
-    dw $2750,$81D2                                                       ;A5B0BB;
-    db $C7                                                               ;A5B0BF;
-    dw $2741,$81CA                                                       ;A5B0C0;
-    db $D7                                                               ;A5B0C4;
-    dw $2760,$800E                                                       ;A5B0C5;
-    db $05                                                               ;A5B0C9;
-    dw $2768,$800E                                                       ;A5B0CA;
-    db $FD                                                               ;A5B0CE;
-    dw $2758,$8012                                                       ;A5B0CF;
-    db $F5                                                               ;A5B0D3;
-    dw $2709,$800A                                                       ;A5B0D4;
-    db $F5                                                               ;A5B0D8;
-    dw $2708,$81F7                                                       ;A5B0D9;
-    db $F0                                                               ;A5B0DD;
-    dw $2738,$81FF                                                       ;A5B0DE;
-    db $E8                                                               ;A5B0E2;
-    dw $2729,$8002                                                       ;A5B0E3;
-    db $E3                                                               ;A5B0E7;
-    dw $2756,$81FA                                                       ;A5B0E8;
-    db $DB                                                               ;A5B0EC;
-    dw $2745,$81D8                                                       ;A5B0ED;
-    db $ED                                                               ;A5B0F1;
-    dw $272E,$01C8                                                       ;A5B0F2;
-    db $FD                                                               ;A5B0F6;
-    dw $274C,$81D0                                                       ;A5B0F7;
-    db $F5                                                               ;A5B0FB;
-    dw $273D,$81DC                                                       ;A5B0FC;
-    db $E8                                                               ;A5B100;
-    dw $2762,$81DC                                                       ;A5B101;
-    db $D8                                                               ;A5B105;
-    dw $2743                                                             ;A5B106;
+    dw $0013                                                             ;A5B0A7;
+    %spritemapEntry(1, $1BB, $E5, 0, 0, 2, 3, $11C)
+    %spritemapEntry(1, $1B3, $ED, 0, 0, 2, 3, $12B)
+    %spritemapEntry(1, $1C3, $DD, 0, 0, 2, 3, $10D)
+    %spritemapEntry(0, $1CA, $CF, 0, 0, 2, 3, $150)
+    %spritemapEntry(1, $1D2, $C7, 0, 0, 2, 3, $141)
+    %spritemapEntry(1, $1CA, $D7, 0, 0, 2, 3, $160)
+    %spritemapEntry(1, $0E, $05, 0, 0, 2, 3, $168)
+    %spritemapEntry(1, $0E, $FD, 0, 0, 2, 3, $158)
+    %spritemapEntry(1, $12, $F5, 0, 0, 2, 3, $109)
+    %spritemapEntry(1, $0A, $F5, 0, 0, 2, 3, $108)
+    %spritemapEntry(1, $1F7, $F0, 0, 0, 2, 3, $138)
+    %spritemapEntry(1, $1FF, $E8, 0, 0, 2, 3, $129)
+    %spritemapEntry(1, $02, $E3, 0, 0, 2, 3, $156)
+    %spritemapEntry(1, $1FA, $DB, 0, 0, 2, 3, $145)
+    %spritemapEntry(1, $1D8, $ED, 0, 0, 2, 3, $12E)
+    %spritemapEntry(0, $1C8, $FD, 0, 0, 2, 3, $14C)
+    %spritemapEntry(1, $1D0, $F5, 0, 0, 2, 3, $13D)
+    %spritemapEntry(1, $1DC, $E8, 0, 0, 2, 3, $162)
+    %spritemapEntry(1, $1DC, $D8, 0, 0, 2, 3, $143)
 
-ExtendedTilemap_Draygon_0:
-    dw $FFFE,$2316,$0002,$159F,$15A0,$2356,$0002,$15AC                   ;A5B108;
-    dw $15AD,$2394,$0003,$15B9,$15BA,$15BB,$23D4,$0003                   ;A5B118;
-    dw $15C8,$15C9,$15CA,$2414,$0003,$15D7,$15D8,$15D9                   ;A5B128;
-    dw $2454,$0003,$15DF,$15E0,$1547,$2496,$0002,$1547                   ;A5B138;
-    dw $1547,$FFFF                                                       ;A5B148;
 
-ExtendedTilemap_Draygon_1:
-    dw $FFFE,$2316,$0002,$1559,$155A,$2356,$0002,$1569                   ;A5B14C;
-    dw $156A,$2394,$0003,$1576,$1577,$1578,$23D2,$0004                   ;A5B15C;
-    dw $1585,$1586,$1587,$1588,$2412,$0004,$1592,$1593                   ;A5B16C;
-    dw $1594,$1595,$2452,$0004,$15A1,$15A2,$15A3,$0147                   ;A5B17C;
-    dw $2496,$0002,$0147,$0147,$FFFF                                     ;A5B18C;
+ExtendedTilemap_Draygon_0:                                               ;A5B108;
+    dw $FFFE
+    dw $2316,$0002, $159F,$15A0
+    dw $2356,$0002, $15AC,$15AD
+    dw $2394,$0003, $15B9,$15BA,$15BB
+    dw $23D4,$0003, $15C8,$15C9,$15CA
+    dw $2414,$0003, $15D7,$15D8,$15D9
+    dw $2454,$0003, $15DF,$15E0,$1547
+    dw $2496,$0002, $1547,$1547
+    dw $FFFF
 
-ExtendedTilemap_Draygon_2:
-    dw $FFFE,$2316,$0002,$1596,$1597,$2356,$0002,$15A4                   ;A5B196;
-    dw $15A5,$2390,$0005,$15AE,$15AF,$15B0,$15B1,$15B2                   ;A5B1A6;
-    dw $23CE,$0006,$15BC,$15BD,$15BE,$15BF,$15C0,$15C1                   ;A5B1B6;
-    dw $240E,$0006,$15CB,$15CC,$15CD,$15CE,$15CF,$15D0                   ;A5B1C6;
-    dw $2452,$0003,$0147,$0147,$0147,$FFFF                               ;A5B1D6;
+ExtendedTilemap_Draygon_1:                                               ;A5B14C;
+    dw $FFFE
+    dw $2316,$0002, $1559,$155A
+    dw $2356,$0002, $1569,$156A
+    dw $2394,$0003, $1576,$1577,$1578
+    dw $23D2,$0004, $1585,$1586,$1587,$1588
+    dw $2412,$0004, $1592,$1593,$1594,$1595
+    dw $2452,$0004, $15A1,$15A2,$15A3,$0147
+    dw $2496,$0002, $0147,$0147
+    dw $FFFF
 
-ExtendedTilemap_Draygon_3:
-    dw $FFFE,$230A,$0003,$15DA,$15DB,$1547,$2316,$0002                   ;A5B1E2;
-    dw $15DC,$15DD,$234C,$0003,$15E1,$15E2,$15E3,$2354                   ;A5B1F2;
-    dw $0003,$15AE,$15E4,$15E5,$238C,$0007,$15E9,$15EA                   ;A5B202;
-    dw $15EB,$15EC,$15ED,$15EE,$15EF,$23CC,$0007,$15F3                   ;A5B212;
-    dw $15F4,$15F5,$15F6,$15F7,$15F8,$15F9,$240E,$0005                   ;A5B222;
-    dw $1600,$1601,$1602,$1603,$1604,$FFFF                               ;A5B232;
+ExtendedTilemap_Draygon_2:                                               ;A5B196;
+    dw $FFFE
+    dw $2316,$0002, $1596,$1597
+    dw $2356,$0002, $15A4,$15A5
+    dw $2390,$0005, $15AE,$15AF,$15B0,$15B1,$15B2
+    dw $23CE,$0006, $15BC,$15BD,$15BE,$15BF,$15C0,$15C1
+    dw $240E,$0006, $15CB,$15CC,$15CD,$15CE,$15CF,$15D0
+    dw $2452,$0003, $0147,$0147,$0147
+    dw $FFFF
 
-ExtendedTilemap_Draygon_4:
-    dw $FFFE,$230A,$0003,$0147,$0147,$0147,$2316,$0002                   ;A5B23E;
-    dw $1596,$1597,$234C,$0003,$0147,$0147,$0147,$2354                   ;A5B24E;
-    dw $0003,$0147,$15A4,$15A5,$238C,$0007,$0147,$0147                   ;A5B25E;
-    dw $15AE,$15AF,$15B0,$15B1,$15B2,$23CC,$0007,$0147                   ;A5B26E;
-    dw $15BC,$15BD,$15BE,$15BF,$15C0,$15C1,$240E,$0005                   ;A5B27E;
-    dw $15CB,$15CC,$15CD,$15CE,$15CF,$FFFF                               ;A5B28E;
+ExtendedTilemap_Draygon_3:                                               ;A5B1E2;
+    dw $FFFE
+    dw $230A,$0003, $15DA,$15DB,$1547
+    dw $2316,$0002, $15DC,$15DD
+    dw $234C,$0003, $15E1,$15E2,$15E3
+    dw $2354,$0003, $15AE,$15E4,$15E5
+    dw $238C,$0007, $15E9,$15EA,$15EB,$15EC,$15ED,$15EE,$15EF
+    dw $23CC,$0007, $15F3,$15F4,$15F5,$15F6,$15F7,$15F8,$15F9
+    dw $240E,$0005, $1600,$1601,$1602,$1603,$1604
+    dw $FFFF
 
-ExtendedTilemap_Draygon_5:
-    dw $FFFE,$2316,$0002,$1559,$155A,$2356,$0002,$1569                   ;A5B29A;
-    dw $156A,$2390,$0005,$0147,$0147,$1576,$1577,$1578                   ;A5B2AA;
-    dw $23CE,$0006,$0147,$0147,$1585,$1586,$1587,$1588                   ;A5B2BA;
-    dw $240E,$0006,$0147,$0147,$1592,$1593,$1594,$1595                   ;A5B2CA;
-    dw $2452,$0003,$15A1,$15A2,$15A3,$FFFF                               ;A5B2DA;
+ExtendedTilemap_Draygon_4:                                               ;A5B23E;
+    dw $FFFE
+    dw $230A,$0003, $0147,$0147,$0147
+    dw $2316,$0002, $1596,$1597
+    dw $234C,$0003, $0147,$0147,$0147
+    dw $2354,$0003, $0147,$15A4,$15A5
+    dw $238C,$0007, $0147,$0147,$15AE,$15AF,$15B0,$15B1,$15B2
+    dw $23CC,$0007, $0147,$15BC,$15BD,$15BE,$15BF,$15C0,$15C1
+    dw $240E,$0005, $15CB,$15CC,$15CD,$15CE,$15CF
+    dw $FFFF
 
-ExtendedTilemap_Draygon_6:
-    dw $FFFE,$2316,$0002,$159F,$15A0,$2356,$0002,$15AC                   ;A5B2E6;
-    dw $15AD,$2394,$0003,$15B9,$15BA,$15BB,$23D2,$0004                   ;A5B2F6;
-    dw $0147,$15C8,$15C9,$15CA,$2412,$0004,$0147,$15D7                   ;A5B306;
-    dw $15D8,$15D9,$2452,$0004,$0147,$15DF,$15E0,$1547                   ;A5B316;
-    dw $2496,$0002,$1547,$1547,$FFFF                                     ;A5B326;
+ExtendedTilemap_Draygon_5:                                               ;A5B29A;
+    dw $FFFE
+    dw $2316,$0002, $1559,$155A
+    dw $2356,$0002, $1569,$156A
+    dw $2390,$0005, $0147,$0147,$1576,$1577,$1578
+    dw $23CE,$0006, $0147,$0147,$1585,$1586,$1587,$1588
+    dw $240E,$0006, $0147,$0147,$1592,$1593,$1594,$1595
+    dw $2452,$0003, $15A1,$15A2,$15A3
+    dw $FFFF
 
-ExtendedTilemap_Draygon_7:
-    dw $FFFE,$2148,$0002,$1554,$1555,$2188,$0002,$1564                   ;A5B330;
-    dw $1565,$FFFF                                                       ;A5B340;
+ExtendedTilemap_Draygon_6:                                               ;A5B2E6;
+    dw $FFFE
+    dw $2316,$0002, $159F,$15A0
+    dw $2356,$0002, $15AC,$15AD
+    dw $2394,$0003, $15B9,$15BA,$15BB
+    dw $23D2,$0004, $0147,$15C8,$15C9,$15CA
+    dw $2412,$0004, $0147,$15D7,$15D8,$15D9
+    dw $2452,$0004, $0147,$15DF,$15E0,$1547
+    dw $2496,$0002, $1547,$1547
+    dw $FFFF
 
-ExtendedTilemap_Draygon_8:
-    dw $FFFE,$2148,$0002,$1580,$1581,$2188,$0002,$1590                   ;A5B344;
-    dw $1591,$FFFF                                                       ;A5B354;
+ExtendedTilemap_Draygon_7:                                               ;A5B330;
+    dw $FFFE
+    dw $2148,$0002, $1554,$1555
+    dw $2188,$0002, $1564,$1565
+    dw $FFFF
 
-ExtendedTilemap_Draygon_9:
-    dw $FFFE,$2148,$0002,$1582,$1583,$2188,$0002,$1592                   ;A5B358;
-    dw $1593,$FFFF                                                       ;A5B368;
+ExtendedTilemap_Draygon_8:                                               ;A5B344;
+    dw $FFFE
+    dw $2148,$0002, $1580,$1581
+    dw $2188,$0002, $1590,$1591
+    dw $FFFF
 
-ExtendedTilemap_Draygon_A:
-    dw $FFFE,$2148,$0002,$1562,$1563,$2188,$0002,$1572                   ;A5B36C;
-    dw $1573,$FFFF                                                       ;A5B37C;
+ExtendedTilemap_Draygon_9:                                               ;A5B358;
+    dw $FFFE
+    dw $2148,$0002, $1582,$1583
+    dw $2188,$0002, $1592,$1593
+    dw $FFFF
 
-ExtendedTilemap_Draygon_B:
-    dw $FFFE,$220C,$0003,$1586,$159E,$159F,$224C,$0003                   ;A5B380;
-    dw $1596,$1597,$1598,$228C,$0003,$15A6,$15A7,$15A8                   ;A5B390;
-    dw $FFFF                                                             ;A5B3A0;
+ExtendedTilemap_Draygon_A:                                               ;A5B36C;
+    dw $FFFE
+    dw $2148,$0002, $1562,$1563
+    dw $2188,$0002, $1572,$1573
+    dw $FFFF
 
-ExtendedTilemap_Draygon_C:
-    dw $FFFE,$220C,$0001,$159D,$224C,$0003,$15AD,$15AE                   ;A5B3A2;
-    dw $15AF,$228C,$0003,$15BD,$15BE,$15BF,$FFFF                         ;A5B3B2;
+ExtendedTilemap_Draygon_B:                                               ;A5B380;
+    dw $FFFE
+    dw $220C,$0003, $1586,$159E,$159F
+    dw $224C,$0003, $1596,$1597,$1598
+    dw $228C,$0003, $15A6,$15A7,$15A8
+    dw $FFFF
 
-ExtendedTilemap_Draygon_D:
-    dw $FFFE,$220C,$0003,$15A0,$15A1,$15A2,$224C,$0003                   ;A5B3C0;
-    dw $15B0,$15B1,$15B2,$228C,$0003,$15B4,$15B5,$15B6                   ;A5B3D0;
-    dw $FFFF                                                             ;A5B3E0;
+ExtendedTilemap_Draygon_C:                                               ;A5B3A2;
+    dw $FFFE
+    dw $220C,$0001, $159D
+    dw $224C,$0003, $15AD,$15AE,$15AF
+    dw $228C,$0003, $15BD,$15BE,$15BF
+    dw $FFFF
 
-ExtendedTilemap_Draygon_E:
-    dw $FFFE,$220C,$0003,$15A3,$1584,$1585,$224C,$0003                   ;A5B3E2;
-    dw $15B3,$1594,$1595,$228C,$0003,$1574,$15A4,$15A5                   ;A5B3F2;
-    dw $FFFF                                                             ;A5B402;
+ExtendedTilemap_Draygon_D:                                               ;A5B3C0;
+    dw $FFFE
+    dw $220C,$0003, $15A0,$15A1,$15A2
+    dw $224C,$0003, $15B0,$15B1,$15B2
+    dw $228C,$0003, $15B4,$15B5,$15B6
+    dw $FFFF
 
-ExtendedTilemap_Draygon_F:
-    dw $FFFE,$20C8,$0002,$1540,$1541,$2108,$0002,$1550                   ;A5B404;
-    dw $1551,$FFFF                                                       ;A5B414;
+ExtendedTilemap_Draygon_E:                                               ;A5B3E2;
+    dw $FFFE
+    dw $220C,$0003, $15A3,$1584,$1585
+    dw $224C,$0003, $15B3,$1594,$1595
+    dw $228C,$0003, $1574,$15A4,$15A5
+    dw $FFFF
 
-ExtendedTilemap_Draygon_10:
-    dw $FFFE,$20C8,$0002,$1560,$1561,$2108,$0002,$1570                   ;A5B418;
-    dw $1571,$FFFF                                                       ;A5B428;
+ExtendedTilemap_Draygon_F:                                               ;A5B404;
+    dw $FFFE
+    dw $20C8,$0002, $1540,$1541
+    dw $2108,$0002, $1550,$1551
+    dw $FFFF
 
-ExtendedTilemap_Draygon_11:
-    dw $FFFE,$20C8,$0002,$150A,$150B,$2108,$0002,$151A                   ;A5B42C;
-    dw $151B,$FFFF                                                       ;A5B43C;
+ExtendedTilemap_Draygon_10:                                              ;A5B418;
+    dw $FFFE
+    dw $20C8,$0002, $1560,$1561
+    dw $2108,$0002, $1570,$1571
+    dw $FFFF
 
-ExtendedTilemap_Draygon_12:
-    dw $FFFE,$20C8,$0002,$150C,$150D,$2108,$0002,$151C                   ;A5B440;
-    dw $151D,$FFFF                                                       ;A5B450;
+ExtendedTilemap_Draygon_11:                                              ;A5B42C;
+    dw $FFFE
+    dw $20C8,$0002, $150A,$150B
+    dw $2108,$0002, $151A,$151B
+    dw $FFFF
 
-ExtendedTilemap_Draygon_13:
-    dw $FFFE,$20C8,$0002,$1534,$1535,$2108,$0002,$1544                   ;A5B454;
-    dw $1545,$FFFF                                                       ;A5B464;
+ExtendedTilemap_Draygon_12:                                              ;A5B440;
+    dw $FFFE
+    dw $20C8,$0002, $150C,$150D
+    dw $2108,$0002, $151C,$151D
+    dw $FFFF
 
-ExtendedTilemap_Draygon_14:
-    dw $FFFE,$20C8,$0002,$150E,$150F,$2108,$0002,$151E                   ;A5B468;
-    dw $151F,$FFFF                                                       ;A5B478;
+ExtendedTilemap_Draygon_13:                                              ;A5B454;
+    dw $FFFE
+    dw $20C8,$0002, $1534,$1535
+    dw $2108,$0002, $1544,$1545
+    dw $FFFF
 
-ExtendedTilemap_Draygon_15:
-    dw $FFFE,$20C8,$0002,$152C,$152D,$2108,$0002,$153C                   ;A5B47C;
-    dw $153D,$FFFF                                                       ;A5B48C;
+ExtendedTilemap_Draygon_14:                                              ;A5B468;
+    dw $FFFE
+    dw $20C8,$0002, $150E,$150F
+    dw $2108,$0002, $151E,$151F
+    dw $FFFF
 
-ExtendedTilemap_Draygon_16:
-    dw $FFFE,$20C8,$0002,$152E,$152F,$2108,$0002,$153E                   ;A5B490;
-    dw $153F,$FFFF                                                       ;A5B4A0;
+ExtendedTilemap_Draygon_15:                                              ;A5B47C;
+    dw $FFFE
+    dw $20C8,$0002, $152C,$152D
+    dw $2108,$0002, $153C,$153D
+    dw $FFFF
 
-ExtendedTilemap_Draygon_17:
-    dw $FFFE,$2000,$0010,$1500,$1501,$1502,$1503,$1504                   ;A5B4A4;
-    dw $1505,$1506,$1507,$0338,$0338,$0338,$0338,$0338                   ;A5B4B4;
-    dw $0338,$0338,$0338,$2040,$0010,$1510,$1511,$1512                   ;A5B4C4;
-    dw $1513,$1514,$1515,$1516,$1517,$1518,$0338,$0338                   ;A5B4D4;
-    dw $0338,$0338,$0338,$0338,$0338,$2080,$0010,$1520                   ;A5B4E4;
-    dw $1521,$1522,$1523,$1524,$1525,$1526,$1527,$1528                   ;A5B4F4;
-    dw $1529,$0338,$0338,$0338,$0338,$0338,$0338,$20C0                   ;A5B504;
-    dw $0010,$1530,$1531,$1532,$1533,$02FF,$02FF,$1536                   ;A5B514;
-    dw $1537,$1538,$1539,$153A,$0338,$0338,$0338,$0338                   ;A5B524;
-    dw $0338,$2100,$0010,$0338,$0338,$1542,$1543,$02FF                   ;A5B534;
-    dw $02FF,$1546,$1547,$1548,$1549,$154A,$154B,$154C                   ;A5B544;
-    dw $154D,$154E,$1738,$2140,$0010,$0338,$0338,$0338                   ;A5B554;
-    dw $1553,$1554,$1555,$1556,$1557,$1558,$1559,$155A                   ;A5B564;
-    dw $155B,$155C,$155D,$155E,$155F,$2180,$0010,$0338                   ;A5B574;
-    dw $0338,$0338,$0338,$1564,$1565,$1566,$1567,$1568                   ;A5B584;
-    dw $1569,$156A,$156B,$156C,$156D,$156E,$156F,$21C0                   ;A5B594;
-    dw $0010,$0338,$0338,$0338,$0338,$0338,$1575,$1576                   ;A5B5A4;
-    dw $1577,$1578,$1579,$157A,$157B,$157C,$157D,$157E                   ;A5B5B4;
-    dw $157F,$2200,$0010,$0338,$0338,$0338,$0338,$0338                   ;A5B5C4;
-    dw $0338,$1586,$159E,$159F,$1589,$158A,$158B,$158C                   ;A5B5D4;
-    dw $158D,$158E,$158F,$2240,$0010,$0338,$0338,$0338                   ;A5B5E4;
-    dw $0338,$0338,$0338,$1596,$1597,$1598,$1599,$159A                   ;A5B5F4;
-    dw $159B,$159C,$0338,$0338,$0338,$2280,$0010,$0338                   ;A5B604;
-    dw $0338,$0338,$0338,$0338,$0338,$15A6,$15A7,$15A8                   ;A5B614;
-    dw $15A9,$15AA,$15AB,$15AC,$0338,$0338,$0338,$22C0                   ;A5B624;
-    dw $0010,$0338,$0338,$0338,$0338,$0338,$0338,$0338                   ;A5B634;
-    dw $15B7,$15B8,$15B9,$15BA,$15BB,$15BC,$0338,$0338                   ;A5B644;
-    dw $0338,$2300,$0010,$8338,$8338,$8338,$8338,$8338                   ;A5B654;
-    dw $8338,$8338,$8338,$8338,$8338,$8338,$1508,$1509                   ;A5B664;
-    dw $8338,$8338,$8338,$2340,$0010,$8338,$8338,$8338                   ;A5B674;
-    dw $8338,$8338,$8338,$8338,$8338,$8338,$8338,$8338                   ;A5B684;
-    dw $153B,$1519,$8338,$8338,$8338,$2380,$0010,$8338                   ;A5B694;
-    dw $8338,$8338,$8338,$8338,$8338,$8338,$8338,$8338                   ;A5B6A4;
-    dw $8338,$8338,$152A,$152B,$8338,$8338,$8338,$FFFF                   ;A5B6B4;
+ExtendedTilemap_Draygon_16:                                              ;A5B490;
+    dw $FFFE
+    dw $20C8,$0002, $152E,$152F
+    dw $2108,$0002, $153E,$153F
+    dw $FFFF
+
+ExtendedTilemap_Draygon_17:                                              ;A5B4A4;
+    dw $FFFE
+    dw $2000,$0010, $1500,$1501,$1502,$1503,$1504,$1505,$1506,$1507,$0338,$0338,$0338,$0338,$0338,$0338,$0338,$0338
+    dw $2040,$0010, $1510,$1511,$1512,$1513,$1514,$1515,$1516,$1517,$1518,$0338,$0338,$0338,$0338,$0338,$0338,$0338
+    dw $2080,$0010, $1520,$1521,$1522,$1523,$1524,$1525,$1526,$1527,$1528,$1529,$0338,$0338,$0338,$0338,$0338,$0338
+    dw $20C0,$0010, $1530,$1531,$1532,$1533,$02FF,$02FF,$1536,$1537,$1538,$1539,$153A,$0338,$0338,$0338,$0338,$0338
+    dw $2100,$0010, $0338,$0338,$1542,$1543,$02FF,$02FF,$1546,$1547,$1548,$1549,$154A,$154B,$154C,$154D,$154E,$1738
+    dw $2140,$0010, $0338,$0338,$0338,$1553,$1554,$1555,$1556,$1557,$1558,$1559,$155A,$155B,$155C,$155D,$155E,$155F
+    dw $2180,$0010, $0338,$0338,$0338,$0338,$1564,$1565,$1566,$1567,$1568,$1569,$156A,$156B,$156C,$156D,$156E,$156F
+    dw $21C0,$0010, $0338,$0338,$0338,$0338,$0338,$1575,$1576,$1577,$1578,$1579,$157A,$157B,$157C,$157D,$157E,$157F
+    dw $2200,$0010, $0338,$0338,$0338,$0338,$0338,$0338,$1586,$159E,$159F,$1589,$158A,$158B,$158C,$158D,$158E,$158F
+    dw $2240,$0010, $0338,$0338,$0338,$0338,$0338,$0338,$1596,$1597,$1598,$1599,$159A,$159B,$159C,$0338,$0338,$0338
+    dw $2280,$0010, $0338,$0338,$0338,$0338,$0338,$0338,$15A6,$15A7,$15A8,$15A9,$15AA,$15AB,$15AC,$0338,$0338,$0338
+    dw $22C0,$0010, $0338,$0338,$0338,$0338,$0338,$0338,$0338,$15B7,$15B8,$15B9,$15BA,$15BB,$15BC,$0338,$0338,$0338
+    dw $2300,$0010, $8338,$8338,$8338,$8338,$8338,$8338,$8338,$8338,$8338,$8338,$8338,$1508,$1509,$8338,$8338,$8338
+    dw $2340,$0010, $8338,$8338,$8338,$8338,$8338,$8338,$8338,$8338,$8338,$8338,$8338,$153B,$1519,$8338,$8338,$8338
+    dw $2380,$0010, $8338,$8338,$8338,$8338,$8338,$8338,$8338,$8338,$8338,$8338,$8338,$152A,$152B,$8338,$8338,$8338
+    dw $FFFF
 
 Spritemap_Draygon_12:
-    dw $0003,$01F8                                                       ;A5B6C4;
-    db $F8                                                               ;A5B6C8;
-    dw $27BD,$01F8                                                       ;A5B6C9;
-    db $F0                                                               ;A5B6CD;
-    dw $27AD,$81F8                                                       ;A5B6CE;
-    db $00                                                               ;A5B6D2;
-    dw $27A9                                                             ;A5B6D3;
+    dw $0003                                                             ;A5B6C4;
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 3, $1BD)
+    %spritemapEntry(0, $1F8, $F0, 0, 0, 2, 3, $1AD)
+    %spritemapEntry(1, $1F8, $00, 0, 0, 2, 3, $1A9)
 
 Spritemap_Draygon_13:
-    dw $0003,$01F8                                                       ;A5B6D5;
-    db $F8                                                               ;A5B6D9;
-    dw $27BC,$01F8                                                       ;A5B6DA;
-    db $F0                                                               ;A5B6DE;
-    dw $27AC,$81F8                                                       ;A5B6DF;
-    db $00                                                               ;A5B6E3;
-    dw $27A7                                                             ;A5B6E4;
+    dw $0003                                                             ;A5B6D5;
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 3, $1BC)
+    %spritemapEntry(0, $1F8, $F0, 0, 0, 2, 3, $1AC)
+    %spritemapEntry(1, $1F8, $00, 0, 0, 2, 3, $1A7)
 
 Spritemap_Draygon_14:
-    dw $0004,$01F4                                                       ;A5B6E6;
-    db $F4                                                               ;A5B6EA;
-    dw $27BB,$01F4                                                       ;A5B6EB;
-    db $EC                                                               ;A5B6EF;
-    dw $27AB,$01F4                                                       ;A5B6F0;
-    db $FC                                                               ;A5B6F4;
-    dw $27A4,$81FC                                                       ;A5B6F5;
-    db $FC                                                               ;A5B6F9;
-    dw $27A5                                                             ;A5B6FA;
+    dw $0004                                                             ;A5B6E6;
+    %spritemapEntry(0, $1F4, $F4, 0, 0, 2, 3, $1BB)
+    %spritemapEntry(0, $1F4, $EC, 0, 0, 2, 3, $1AB)
+    %spritemapEntry(0, $1F4, $FC, 0, 0, 2, 3, $1A4)
+    %spritemapEntry(1, $1FC, $FC, 0, 0, 2, 3, $1A5)
 
 Spritemap_Draygon_15:
-    dw $0002,$81F0                                                       ;A5B6FC;
-    db $F8                                                               ;A5B700;
-    dw $27A0,$8000                                                       ;A5B701;
-    db $F8                                                               ;A5B705;
-    dw $27A2                                                             ;A5B706;
+    dw $0002                                                             ;A5B6FC;
+    %spritemapEntry(1, $1F0, $F8, 0, 0, 2, 3, $1A0)
+    %spritemapEntry(1, $00, $F8, 0, 0, 2, 3, $1A2)
 
 Spritemap_Draygon_16:
-    dw $0003,$01F8                                                       ;A5B708;
-    db $00                                                               ;A5B70C;
-    dw $2797,$01F0                                                       ;A5B70D;
-    db $00                                                               ;A5B711;
-    dw $2796,$8000                                                       ;A5B712;
-    db $F8                                                               ;A5B716;
-    dw $27AE                                                             ;A5B717;
+    dw $0003                                                             ;A5B708;
+    %spritemapEntry(0, $1F8, $00, 0, 0, 2, 3, $197)
+    %spritemapEntry(0, $1F0, $00, 0, 0, 2, 3, $196)
+    %spritemapEntry(1, $00, $F8, 0, 0, 2, 3, $1AE)
 
 Spritemap_Draygon_17:
-    dw $0003,$01F8                                                       ;A5B719;
-    db $00                                                               ;A5B71D;
-    dw $27D1,$01F0                                                       ;A5B71E;
-    db $00                                                               ;A5B722;
-    dw $27D0,$8000                                                       ;A5B723;
-    db $F8                                                               ;A5B727;
-    dw $27C2                                                             ;A5B728;
+    dw $0003                                                             ;A5B719;
+    %spritemapEntry(0, $1F8, $00, 0, 0, 2, 3, $1D1)
+    %spritemapEntry(0, $1F0, $00, 0, 0, 2, 3, $1D0)
+    %spritemapEntry(1, $00, $F8, 0, 0, 2, 3, $1C2)
 
 Spritemap_Draygon_18:
-    dw $0003,$01FC                                                       ;A5B72A;
-    db $04                                                               ;A5B72E;
-    dw $2787,$01F4                                                       ;A5B72F;
-    db $04                                                               ;A5B733;
-    dw $2786,$81FC                                                       ;A5B734;
-    db $F4                                                               ;A5B738;
-    dw $27C4                                                             ;A5B739;
+    dw $0003                                                             ;A5B72A;
+    %spritemapEntry(0, $1FC, $04, 0, 0, 2, 3, $187)
+    %spritemapEntry(0, $1F4, $04, 0, 0, 2, 3, $186)
+    %spritemapEntry(1, $1FC, $F4, 0, 0, 2, 3, $1C4)
 
 Spritemap_Draygon_19:
-    dw $0002,$81F8                                                       ;A5B73B;
-    db $00                                                               ;A5B73F;
-    dw $2788,$81F8                                                       ;A5B740;
-    db $F0                                                               ;A5B744;
-    dw $27C6                                                             ;A5B745;
+    dw $0002                                                             ;A5B73B;
+    %spritemapEntry(1, $1F8, $00, 0, 0, 2, 3, $188)
+    %spritemapEntry(1, $1F8, $F0, 0, 0, 2, 3, $1C6)
 
 Spritemap_Draygon_1A:
-    dw $0003,$0000                                                       ;A5B747;
-    db $00                                                               ;A5B74B;
-    dw $E1BD,$0000                                                       ;A5B74C;
-    db $08                                                               ;A5B750;
-    dw $E1AD,$81F8                                                       ;A5B751;
-    db $F0                                                               ;A5B755;
-    dw $21C8                                                             ;A5B756;
+    dw $0003                                                             ;A5B747;
+    %spritemapEntry(0, $00, $00, 1, 1, 2, 0, $1BD)
+    %spritemapEntry(0, $00, $08, 1, 1, 2, 0, $1AD)
+    %spritemapEntry(1, $1F8, $F0, 0, 0, 2, 0, $1C8)
 
 Spritemap_Draygon_1B:
-    dw $0003,$0000                                                       ;A5B758;
-    db $00                                                               ;A5B75C;
-    dw $E7BC,$0000                                                       ;A5B75D;
-    db $08                                                               ;A5B761;
-    dw $E7AC,$81F8                                                       ;A5B762;
-    db $F0                                                               ;A5B766;
-    dw $E7A7                                                             ;A5B767;
+    dw $0003                                                             ;A5B758;
+    %spritemapEntry(0, $00, $00, 1, 1, 2, 3, $1BC)
+    %spritemapEntry(0, $00, $08, 1, 1, 2, 3, $1AC)
+    %spritemapEntry(1, $1F8, $F0, 1, 1, 2, 3, $1A7)
 
 Spritemap_Draygon_1C:
-    dw $0004,$0004                                                       ;A5B769;
-    db $04                                                               ;A5B76D;
-    dw $E7BB,$0004                                                       ;A5B76E;
-    db $0C                                                               ;A5B772;
-    dw $E7AB,$0004                                                       ;A5B773;
-    db $FC                                                               ;A5B777;
-    dw $E7A4,$81F4                                                       ;A5B778;
-    db $F4                                                               ;A5B77C;
-    dw $E7A5                                                             ;A5B77D;
+    dw $0004                                                             ;A5B769;
+    %spritemapEntry(0, $04, $04, 1, 1, 2, 3, $1BB)
+    %spritemapEntry(0, $04, $0C, 1, 1, 2, 3, $1AB)
+    %spritemapEntry(0, $04, $FC, 1, 1, 2, 3, $1A4)
+    %spritemapEntry(1, $1F4, $F4, 1, 1, 2, 3, $1A5)
 
 Spritemap_Draygon_1D:
-    dw $0002,$8000                                                       ;A5B77F;
-    db $F8                                                               ;A5B783;
-    dw $E7A0,$81F0                                                       ;A5B784;
-    db $F8                                                               ;A5B788;
-    dw $E7A2                                                             ;A5B789;
+    dw $0002                                                             ;A5B77F;
+    %spritemapEntry(1, $00, $F8, 1, 1, 2, 3, $1A0)
+    %spritemapEntry(1, $1F0, $F8, 1, 1, 2, 3, $1A2)
 
 Spritemap_Draygon_1E:
-    dw $0003,$0000                                                       ;A5B78B;
-    db $F8                                                               ;A5B78F;
-    dw $E797,$0008                                                       ;A5B790;
-    db $F8                                                               ;A5B794;
-    dw $E796,$81F0                                                       ;A5B795;
-    db $F8                                                               ;A5B799;
-    dw $E7AE                                                             ;A5B79A;
+    dw $0003                                                             ;A5B78B;
+    %spritemapEntry(0, $00, $F8, 1, 1, 2, 3, $197)
+    %spritemapEntry(0, $08, $F8, 1, 1, 2, 3, $196)
+    %spritemapEntry(1, $1F0, $F8, 1, 1, 2, 3, $1AE)
 
 Spritemap_Draygon_1F:
-    dw $0003,$0000                                                       ;A5B79C;
-    db $F8                                                               ;A5B7A0;
-    dw $E7D1,$0008                                                       ;A5B7A1;
-    db $F8                                                               ;A5B7A5;
-    dw $E7D0,$81F0                                                       ;A5B7A6;
-    db $F8                                                               ;A5B7AA;
-    dw $E7C2                                                             ;A5B7AB;
+    dw $0003                                                             ;A5B79C;
+    %spritemapEntry(0, $00, $F8, 1, 1, 2, 3, $1D1)
+    %spritemapEntry(0, $08, $F8, 1, 1, 2, 3, $1D0)
+    %spritemapEntry(1, $1F0, $F8, 1, 1, 2, 3, $1C2)
 
 Spritemap_Draygon_20:
-    dw $0003,$01FC                                                       ;A5B7AD;
-    db $F4                                                               ;A5B7B1;
-    dw $E787,$0004                                                       ;A5B7B2;
-    db $F4                                                               ;A5B7B6;
-    dw $E786,$81F4                                                       ;A5B7B7;
-    db $FC                                                               ;A5B7BB;
-    dw $E7C4                                                             ;A5B7BC;
+    dw $0003                                                             ;A5B7AD;
+    %spritemapEntry(0, $1FC, $F4, 1, 1, 2, 3, $187)
+    %spritemapEntry(0, $04, $F4, 1, 1, 2, 3, $186)
+    %spritemapEntry(1, $1F4, $FC, 1, 1, 2, 3, $1C4)
 
 Spritemap_Draygon_21:
-    dw $0002,$81F8                                                       ;A5B7BE;
-    db $F0                                                               ;A5B7C2;
-    dw $E788,$81F8                                                       ;A5B7C3;
-    db $00                                                               ;A5B7C7;
-    dw $E7C6                                                             ;A5B7C8;
+    dw $0002                                                             ;A5B7BE;
+    %spritemapEntry(1, $1F8, $F0, 1, 1, 2, 3, $188)
+    %spritemapEntry(1, $1F8, $00, 1, 1, 2, 3, $1C6)
 
 Spritemap_Draygon_22:
-    dw $0001,$81F8                                                       ;A5B7CA;
-    db $F8                                                               ;A5B7CE;
-    dw $2784                                                             ;A5B7CF;
+    dw $0001                                                             ;A5B7CA;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 3, $184)
 
 Spritemap_Draygon_23:
-    dw $0001,$81F8                                                       ;A5B7D1;
-    db $F8                                                               ;A5B7D5;
-    dw $2782                                                             ;A5B7D6;
+    dw $0001                                                             ;A5B7D1;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 3, $182)
 
 Spritemap_Draygon_24:
-    dw $0001,$81F8                                                       ;A5B7D8;
-    db $F8                                                               ;A5B7DC;
-    dw $2780                                                             ;A5B7DD;
+    dw $0001                                                             ;A5B7D8;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 3, $180)
 
 Spritemap_Draygon_25:
-    dw $0001,$81F8                                                       ;A5B7DF;
-    db $F8                                                               ;A5B7E3;
-    dw $6784                                                             ;A5B7E4;
+    dw $0001                                                             ;A5B7DF;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 3, $184)
 
 Spritemap_Draygon_26:
-    dw $0001,$81F8                                                       ;A5B7E6;
-    db $F8                                                               ;A5B7EA;
-    dw $6782                                                             ;A5B7EB;
+    dw $0001                                                             ;A5B7E6;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 3, $182)
 
 Spritemap_Draygon_27:
-    dw $0001,$81F8                                                       ;A5B7ED;
-    db $F8                                                               ;A5B7F1;
-    dw $6780                                                             ;A5B7F2;
+    dw $0001                                                             ;A5B7ED;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 3, $180)
 
 Spritemap_Draygon_28:
-    dw $0004,$81E8                                                       ;A5B7F4;
-    db $10                                                               ;A5B7F8;
-    dw $4721,$81E8                                                       ;A5B7F9;
-    db $00                                                               ;A5B7FD;
-    dw $6701,$81F0                                                       ;A5B7FE;
-    db $10                                                               ;A5B802;
-    dw $6720,$81F0                                                       ;A5B803;
-    db $00                                                               ;A5B807;
-    dw $6700                                                             ;A5B808;
+    dw $0004                                                             ;A5B7F4;
+    %spritemapEntry(1, $1E8, $10, 0, 1, 0, 3, $121)
+    %spritemapEntry(1, $1E8, $00, 0, 1, 2, 3, $101)
+    %spritemapEntry(1, $1F0, $10, 0, 1, 2, 3, $120)
+    %spritemapEntry(1, $1F0, $00, 0, 1, 2, 3, $100)
 
 Spritemap_Draygon_29:
-    dw $0004,$01F8                                                       ;A5B80A;
-    db $10                                                               ;A5B80E;
-    dw $6723,$81F0                                                       ;A5B80F;
-    db $00                                                               ;A5B813;
-    dw $6703,$81E8                                                       ;A5B814;
-    db $10                                                               ;A5B818;
-    dw $6724,$81E8                                                       ;A5B819;
-    db $00                                                               ;A5B81D;
-    dw $6704                                                             ;A5B81E;
+    dw $0004                                                             ;A5B80A;
+    %spritemapEntry(0, $1F8, $10, 0, 1, 2, 3, $123)
+    %spritemapEntry(1, $1F0, $00, 0, 1, 2, 3, $103)
+    %spritemapEntry(1, $1E8, $10, 0, 1, 2, 3, $124)
+    %spritemapEntry(1, $1E8, $00, 0, 1, 2, 3, $104)
 
 Spritemap_Draygon_2A:
-    dw $0002,$81F0                                                       ;A5B820;
-    db $10                                                               ;A5B824;
-    dw $6726,$81F0                                                       ;A5B825;
-    db $00                                                               ;A5B829;
-    dw $6706                                                             ;A5B82A;
+    dw $0002                                                             ;A5B820;
+    %spritemapEntry(1, $1F0, $10, 0, 1, 2, 3, $126)
+    %spritemapEntry(1, $1F0, $00, 0, 1, 2, 3, $106)
 
 Spritemap_Draygon_2B:
-    dw $0018,$800B                                                       ;A5B82C;
-    db $02                                                               ;A5B830;
-    dw $671C,$8013                                                       ;A5B831;
-    db $0A                                                               ;A5B835;
-    dw $672B,$8003                                                       ;A5B836;
-    db $FA                                                               ;A5B83A;
-    dw $670D,$0004                                                       ;A5B83B;
-    db $EC                                                               ;A5B83F;
-    dw $6750,$81F4                                                       ;A5B840;
-    db $E4                                                               ;A5B844;
-    dw $6741,$81FC                                                       ;A5B845;
-    db $F4                                                               ;A5B849;
-    dw $6760,$8003                                                       ;A5B84A;
-    db $0A                                                               ;A5B84E;
-    dw $671C,$800B                                                       ;A5B84F;
-    db $12                                                               ;A5B853;
-    dw $672B,$81FB                                                       ;A5B854;
-    db $02                                                               ;A5B858;
-    dw $670D,$01FC                                                       ;A5B859;
-    db $F4                                                               ;A5B85D;
-    dw $6750,$81EC                                                       ;A5B85E;
-    db $EC                                                               ;A5B862;
-    dw $6741,$81F4                                                       ;A5B863;
-    db $FC                                                               ;A5B867;
-    dw $6760,$81FB                                                       ;A5B868;
-    db $12                                                               ;A5B86C;
-    dw $671C,$8003                                                       ;A5B86D;
-    db $1A                                                               ;A5B871;
-    dw $672B,$81F3                                                       ;A5B872;
-    db $0A                                                               ;A5B876;
-    dw $670D,$01F4                                                       ;A5B877;
-    db $FC                                                               ;A5B87B;
-    dw $6750,$81E4                                                       ;A5B87C;
-    db $F4                                                               ;A5B880;
-    dw $6741,$81EC                                                       ;A5B881;
-    db $04                                                               ;A5B885;
-    dw $6760,$81F4                                                       ;A5B886;
-    db $1B                                                               ;A5B88A;
-    dw $671C,$81FC                                                       ;A5B88B;
-    db $23                                                               ;A5B88F;
-    dw $672B,$81EC                                                       ;A5B890;
-    db $13                                                               ;A5B894;
-    dw $670D,$01ED                                                       ;A5B895;
-    db $05                                                               ;A5B899;
-    dw $6750,$81DD                                                       ;A5B89A;
-    db $FD                                                               ;A5B89E;
-    dw $6741,$81E5                                                       ;A5B89F;
-    db $0D                                                               ;A5B8A3;
-    dw $6760                                                             ;A5B8A4;
+    dw $0018                                                             ;A5B82C;
+    %spritemapEntry(1, $0B, $02, 0, 1, 2, 3, $11C)
+    %spritemapEntry(1, $13, $0A, 0, 1, 2, 3, $12B)
+    %spritemapEntry(1, $03, $FA, 0, 1, 2, 3, $10D)
+    %spritemapEntry(0, $04, $EC, 0, 1, 2, 3, $150)
+    %spritemapEntry(1, $1F4, $E4, 0, 1, 2, 3, $141)
+    %spritemapEntry(1, $1FC, $F4, 0, 1, 2, 3, $160)
+    %spritemapEntry(1, $03, $0A, 0, 1, 2, 3, $11C)
+    %spritemapEntry(1, $0B, $12, 0, 1, 2, 3, $12B)
+    %spritemapEntry(1, $1FB, $02, 0, 1, 2, 3, $10D)
+    %spritemapEntry(0, $1FC, $F4, 0, 1, 2, 3, $150)
+    %spritemapEntry(1, $1EC, $EC, 0, 1, 2, 3, $141)
+    %spritemapEntry(1, $1F4, $FC, 0, 1, 2, 3, $160)
+    %spritemapEntry(1, $1FB, $12, 0, 1, 2, 3, $11C)
+    %spritemapEntry(1, $03, $1A, 0, 1, 2, 3, $12B)
+    %spritemapEntry(1, $1F3, $0A, 0, 1, 2, 3, $10D)
+    %spritemapEntry(0, $1F4, $FC, 0, 1, 2, 3, $150)
+    %spritemapEntry(1, $1E4, $F4, 0, 1, 2, 3, $141)
+    %spritemapEntry(1, $1EC, $04, 0, 1, 2, 3, $160)
+    %spritemapEntry(1, $1F4, $1B, 0, 1, 2, 3, $11C)
+    %spritemapEntry(1, $1FC, $23, 0, 1, 2, 3, $12B)
+    %spritemapEntry(1, $1EC, $13, 0, 1, 2, 3, $10D)
+    %spritemapEntry(0, $1ED, $05, 0, 1, 2, 3, $150)
+    %spritemapEntry(1, $1DD, $FD, 0, 1, 2, 3, $141)
+    %spritemapEntry(1, $1E5, $0D, 0, 1, 2, 3, $160)
 
 Spritemap_Draygon_2C:
-    dw $0014,$81F8                                                       ;A5B8A6;
-    db $F9                                                               ;A5B8AA;
-    dw $672E,$0010                                                       ;A5B8AB;
-    db $09                                                               ;A5B8AF;
-    dw $674C,$8000                                                       ;A5B8B0;
-    db $01                                                               ;A5B8B4;
-    dw $673D,$81F4                                                       ;A5B8B5;
-    db $F4                                                               ;A5B8B9;
-    dw $6762,$81F4                                                       ;A5B8BA;
-    db $E4                                                               ;A5B8BE;
-    dw $6743,$81F0                                                       ;A5B8BF;
-    db $01                                                               ;A5B8C3;
-    dw $672E,$0008                                                       ;A5B8C4;
-    db $11                                                               ;A5B8C8;
-    dw $674C,$81F8                                                       ;A5B8C9;
-    db $09                                                               ;A5B8CD;
-    dw $673D,$81EC                                                       ;A5B8CE;
-    db $FC                                                               ;A5B8D2;
-    dw $6762,$81EC                                                       ;A5B8D3;
-    db $EC                                                               ;A5B8D7;
-    dw $6743,$81E8                                                       ;A5B8D8;
-    db $09                                                               ;A5B8DC;
-    dw $672E,$0000                                                       ;A5B8DD;
-    db $19                                                               ;A5B8E1;
-    dw $674C,$81F0                                                       ;A5B8E2;
-    db $11                                                               ;A5B8E6;
-    dw $673D,$81E4                                                       ;A5B8E7;
-    db $04                                                               ;A5B8EB;
-    dw $6762,$81E4                                                       ;A5B8EC;
-    db $F4                                                               ;A5B8F0;
-    dw $6743,$81E1                                                       ;A5B8F1;
-    db $12                                                               ;A5B8F5;
-    dw $672E,$01F9                                                       ;A5B8F6;
-    db $22                                                               ;A5B8FA;
-    dw $674C,$81E9                                                       ;A5B8FB;
-    db $1A                                                               ;A5B8FF;
-    dw $673D,$81DD                                                       ;A5B900;
-    db $0D                                                               ;A5B904;
-    dw $6762,$81DD                                                       ;A5B905;
-    db $FD                                                               ;A5B909;
-    dw $6743                                                             ;A5B90A;
+    dw $0014                                                             ;A5B8A6;
+    %spritemapEntry(1, $1F8, $F9, 0, 1, 2, 3, $12E)
+    %spritemapEntry(0, $10, $09, 0, 1, 2, 3, $14C)
+    %spritemapEntry(1, $00, $01, 0, 1, 2, 3, $13D)
+    %spritemapEntry(1, $1F4, $F4, 0, 1, 2, 3, $162)
+    %spritemapEntry(1, $1F4, $E4, 0, 1, 2, 3, $143)
+    %spritemapEntry(1, $1F0, $01, 0, 1, 2, 3, $12E)
+    %spritemapEntry(0, $08, $11, 0, 1, 2, 3, $14C)
+    %spritemapEntry(1, $1F8, $09, 0, 1, 2, 3, $13D)
+    %spritemapEntry(1, $1EC, $FC, 0, 1, 2, 3, $162)
+    %spritemapEntry(1, $1EC, $EC, 0, 1, 2, 3, $143)
+    %spritemapEntry(1, $1E8, $09, 0, 1, 2, 3, $12E)
+    %spritemapEntry(0, $00, $19, 0, 1, 2, 3, $14C)
+    %spritemapEntry(1, $1F0, $11, 0, 1, 2, 3, $13D)
+    %spritemapEntry(1, $1E4, $04, 0, 1, 2, 3, $162)
+    %spritemapEntry(1, $1E4, $F4, 0, 1, 2, 3, $143)
+    %spritemapEntry(1, $1E1, $12, 0, 1, 2, 3, $12E)
+    %spritemapEntry(0, $1F9, $22, 0, 1, 2, 3, $14C)
+    %spritemapEntry(1, $1E9, $1A, 0, 1, 2, 3, $13D)
+    %spritemapEntry(1, $1DD, $0D, 0, 1, 2, 3, $162)
+    %spritemapEntry(1, $1DD, $FD, 0, 1, 2, 3, $143)
 
 Spritemap_Draygon_2D:
-    dw $0010,$81F7                                                       ;A5B90C;
-    db $F9                                                               ;A5B910;
-    dw $6738,$81EF                                                       ;A5B911;
-    db $F1                                                               ;A5B915;
-    dw $6729,$81EC                                                       ;A5B916;
-    db $EC                                                               ;A5B91A;
-    dw $6756,$81F4                                                       ;A5B91B;
-    db $E4                                                               ;A5B91F;
-    dw $6745,$81F0                                                       ;A5B920;
-    db $00                                                               ;A5B924;
-    dw $6738,$81E8                                                       ;A5B925;
-    db $F8                                                               ;A5B929;
-    dw $6729,$81E5                                                       ;A5B92A;
-    db $F3                                                               ;A5B92E;
-    dw $6756,$81ED                                                       ;A5B92F;
-    db $EB                                                               ;A5B933;
-    dw $6745,$81E9                                                       ;A5B934;
-    db $07                                                               ;A5B938;
-    dw $6738,$81E1                                                       ;A5B939;
-    db $FF                                                               ;A5B93D;
-    dw $6729,$81DE                                                       ;A5B93E;
-    db $FA                                                               ;A5B942;
-    dw $6756,$81E6                                                       ;A5B943;
-    db $F2                                                               ;A5B947;
-    dw $6745,$81E2                                                       ;A5B948;
-    db $0E                                                               ;A5B94C;
-    dw $6738,$81DA                                                       ;A5B94D;
-    db $06                                                               ;A5B951;
-    dw $6729,$81D7                                                       ;A5B952;
-    db $01                                                               ;A5B956;
-    dw $6756,$81DF                                                       ;A5B957;
-    db $F9                                                               ;A5B95B;
-    dw $6745                                                             ;A5B95C;
+    dw $0010                                                             ;A5B90C;
+    %spritemapEntry(1, $1F7, $F9, 0, 1, 2, 3, $138)
+    %spritemapEntry(1, $1EF, $F1, 0, 1, 2, 3, $129)
+    %spritemapEntry(1, $1EC, $EC, 0, 1, 2, 3, $156)
+    %spritemapEntry(1, $1F4, $E4, 0, 1, 2, 3, $145)
+    %spritemapEntry(1, $1F0, $00, 0, 1, 2, 3, $138)
+    %spritemapEntry(1, $1E8, $F8, 0, 1, 2, 3, $129)
+    %spritemapEntry(1, $1E5, $F3, 0, 1, 2, 3, $156)
+    %spritemapEntry(1, $1ED, $EB, 0, 1, 2, 3, $145)
+    %spritemapEntry(1, $1E9, $07, 0, 1, 2, 3, $138)
+    %spritemapEntry(1, $1E1, $FF, 0, 1, 2, 3, $129)
+    %spritemapEntry(1, $1DE, $FA, 0, 1, 2, 3, $156)
+    %spritemapEntry(1, $1E6, $F2, 0, 1, 2, 3, $145)
+    %spritemapEntry(1, $1E2, $0E, 0, 1, 2, 3, $138)
+    %spritemapEntry(1, $1DA, $06, 0, 1, 2, 3, $129)
+    %spritemapEntry(1, $1D7, $01, 0, 1, 2, 3, $156)
+    %spritemapEntry(1, $1DF, $F9, 0, 1, 2, 3, $145)
 
 Spritemap_Draygon_2E:
-    dw $0010,$81F0                                                       ;A5B95E;
-    db $F4                                                               ;A5B962;
-    dw $6768,$81F0                                                       ;A5B963;
-    db $EC                                                               ;A5B967;
-    dw $6758,$81EC                                                       ;A5B968;
-    db $E4                                                               ;A5B96C;
-    dw $6709,$81F4                                                       ;A5B96D;
-    db $E4                                                               ;A5B971;
-    dw $6708,$81E9                                                       ;A5B972;
-    db $FC                                                               ;A5B976;
-    dw $6768,$81E9                                                       ;A5B977;
-    db $F4                                                               ;A5B97B;
-    dw $6758,$81E5                                                       ;A5B97C;
-    db $EC                                                               ;A5B980;
-    dw $6709,$81ED                                                       ;A5B981;
-    db $EC                                                               ;A5B985;
-    dw $6708,$81E2                                                       ;A5B986;
-    db $03                                                               ;A5B98A;
-    dw $6768,$81E2                                                       ;A5B98B;
-    db $FB                                                               ;A5B98F;
-    dw $6758,$81DE                                                       ;A5B990;
-    db $F3                                                               ;A5B994;
-    dw $6709,$81E6                                                       ;A5B995;
-    db $F3                                                               ;A5B999;
-    dw $6708,$81DB                                                       ;A5B99A;
-    db $0A                                                               ;A5B99E;
-    dw $6768,$81DB                                                       ;A5B99F;
-    db $02                                                               ;A5B9A3;
-    dw $6758,$81D7                                                       ;A5B9A4;
-    db $FA                                                               ;A5B9A8;
-    dw $6709,$81DF                                                       ;A5B9A9;
-    db $FA                                                               ;A5B9AD;
-    dw $6708                                                             ;A5B9AE;
+    dw $0010                                                             ;A5B95E;
+    %spritemapEntry(1, $1F0, $F4, 0, 1, 2, 3, $168)
+    %spritemapEntry(1, $1F0, $EC, 0, 1, 2, 3, $158)
+    %spritemapEntry(1, $1EC, $E4, 0, 1, 2, 3, $109)
+    %spritemapEntry(1, $1F4, $E4, 0, 1, 2, 3, $108)
+    %spritemapEntry(1, $1E9, $FC, 0, 1, 2, 3, $168)
+    %spritemapEntry(1, $1E9, $F4, 0, 1, 2, 3, $158)
+    %spritemapEntry(1, $1E5, $EC, 0, 1, 2, 3, $109)
+    %spritemapEntry(1, $1ED, $EC, 0, 1, 2, 3, $108)
+    %spritemapEntry(1, $1E2, $03, 0, 1, 2, 3, $168)
+    %spritemapEntry(1, $1E2, $FB, 0, 1, 2, 3, $158)
+    %spritemapEntry(1, $1DE, $F3, 0, 1, 2, 3, $109)
+    %spritemapEntry(1, $1E6, $F3, 0, 1, 2, 3, $108)
+    %spritemapEntry(1, $1DB, $0A, 0, 1, 2, 3, $168)
+    %spritemapEntry(1, $1DB, $02, 0, 1, 2, 3, $158)
+    %spritemapEntry(1, $1D7, $FA, 0, 1, 2, 3, $109)
+    %spritemapEntry(1, $1DF, $FA, 0, 1, 2, 3, $108)
 
 Spritemap_Draygon_2F:
-    dw $0001,$81F8                                                       ;A5B9B0;
-    db $F8                                                               ;A5B9B4;
-    dw $2764                                                             ;A5B9B5;
+    dw $0001                                                             ;A5B9B0;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 3, $164)
 
 Spritemap_Draygon_30:
-    dw $0001,$81F8                                                       ;A5B9B7;
-    db $F8                                                               ;A5B9BB;
-    dw $276A                                                             ;A5B9BC;
+    dw $0001                                                             ;A5B9B7;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 3, $16A)
 
 Spritemap_Draygon_31:
-    dw $0001,$81F8                                                       ;A5B9BE;
-    db $F8                                                               ;A5B9C2;
-    dw $275E                                                             ;A5B9C3;
+    dw $0001                                                             ;A5B9BE;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 3, $15E)
 
 Spritemap_Draygon_32:
-    dw $0001,$81F8                                                       ;A5B9C5;
-    db $F8                                                               ;A5B9C9;
-    dw $275C                                                             ;A5B9CA;
+    dw $0001                                                             ;A5B9C5;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 3, $15C)
 
 Spritemap_Draygon_33:
-    dw $0001,$81F8                                                       ;A5B9CC;
-    db $F8                                                               ;A5B9D0;
-    dw $274A                                                             ;A5B9D1;
+    dw $0001                                                             ;A5B9CC;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 3, $14A)
 
 Spritemap_Draygon_34:
-    dw $000A,$81F4                                                       ;A5B9D3;
-    db $F0                                                               ;A5B9D7;
-    dw $4721,$81F4                                                       ;A5B9D8;
-    db $E0                                                               ;A5B9DC;
-    dw $4701,$81FC                                                       ;A5B9DD;
-    db $F0                                                               ;A5B9E1;
-    dw $4720,$81FC                                                       ;A5B9E2;
-    db $E0                                                               ;A5B9E6;
-    dw $4700,$0004                                                       ;A5B9E7;
-    db $04                                                               ;A5B9EB;
-    dw $6723,$81FC                                                       ;A5B9EC;
-    db $F4                                                               ;A5B9F0;
-    dw $6703,$81F4                                                       ;A5B9F1;
-    db $04                                                               ;A5B9F5;
-    dw $6724,$81F4                                                       ;A5B9F6;
-    db $F4                                                               ;A5B9FA;
-    dw $6704,$81FC                                                       ;A5B9FB;
-    db $14                                                               ;A5B9FF;
-    dw $6726,$81FC                                                       ;A5BA00;
-    db $04                                                               ;A5BA04;
-    dw $6706                                                             ;A5BA05;
+    dw $000A                                                             ;A5B9D3;
+    %spritemapEntry(1, $1F4, $F0, 0, 1, 0, 3, $121)
+    %spritemapEntry(1, $1F4, $E0, 0, 1, 0, 3, $101)
+    %spritemapEntry(1, $1FC, $F0, 0, 1, 0, 3, $120)
+    %spritemapEntry(1, $1FC, $E0, 0, 1, 0, 3, $100)
+    %spritemapEntry(0, $04, $04, 0, 1, 2, 3, $123)
+    %spritemapEntry(1, $1FC, $F4, 0, 1, 2, 3, $103)
+    %spritemapEntry(1, $1F4, $04, 0, 1, 2, 3, $124)
+    %spritemapEntry(1, $1F4, $F4, 0, 1, 2, 3, $104)
+    %spritemapEntry(1, $1FC, $14, 0, 1, 2, 3, $126)
+    %spritemapEntry(1, $1FC, $04, 0, 1, 2, 3, $106)
 
 Spritemap_Draygon_35:
-    dw $000A,$81F5                                                       ;A5BA07;
-    db $F0                                                               ;A5BA0B;
-    dw $4721,$81F5                                                       ;A5BA0C;
-    db $E0                                                               ;A5BA10;
-    dw $4701,$81FD                                                       ;A5BA11;
-    db $F0                                                               ;A5BA15;
-    dw $4720,$81FD                                                       ;A5BA16;
-    db $E0                                                               ;A5BA1A;
-    dw $4700,$0005                                                       ;A5BA1B;
-    db $04                                                               ;A5BA1F;
-    dw $6723,$81FD                                                       ;A5BA20;
-    db $F4                                                               ;A5BA24;
-    dw $6703,$81F5                                                       ;A5BA25;
-    db $04                                                               ;A5BA29;
-    dw $6724,$81F5                                                       ;A5BA2A;
-    db $F4                                                               ;A5BA2E;
-    dw $6704,$81FD                                                       ;A5BA2F;
-    db $14                                                               ;A5BA33;
-    dw $6726,$81FD                                                       ;A5BA34;
-    db $04                                                               ;A5BA38;
-    dw $6706                                                             ;A5BA39;
+    dw $000A                                                             ;A5BA07;
+    %spritemapEntry(1, $1F5, $F0, 0, 1, 0, 3, $121)
+    %spritemapEntry(1, $1F5, $E0, 0, 1, 0, 3, $101)
+    %spritemapEntry(1, $1FD, $F0, 0, 1, 0, 3, $120)
+    %spritemapEntry(1, $1FD, $E0, 0, 1, 0, 3, $100)
+    %spritemapEntry(0, $05, $04, 0, 1, 2, 3, $123)
+    %spritemapEntry(1, $1FD, $F4, 0, 1, 2, 3, $103)
+    %spritemapEntry(1, $1F5, $04, 0, 1, 2, 3, $124)
+    %spritemapEntry(1, $1F5, $F4, 0, 1, 2, 3, $104)
+    %spritemapEntry(1, $1FD, $14, 0, 1, 2, 3, $126)
+    %spritemapEntry(1, $1FD, $04, 0, 1, 2, 3, $106)
 
 Spritemap_Draygon_36:
-    dw $0001,$01FC                                                       ;A5BA3B;
-    db $FC                                                               ;A5BA3F;
-    dw $277E                                                             ;A5BA40;
+    dw $0001                                                             ;A5BA3B;
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 3, $17E)
 
 Spritemap_Draygon_37:
-    dw $0001,$01FC                                                       ;A5BA42;
-    db $FC                                                               ;A5BA46;
-    dw $277D                                                             ;A5BA47;
+    dw $0001                                                             ;A5BA42;
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 3, $17D)
 
 Spritemap_Draygon_38:
-    dw $0001,$01FC                                                       ;A5BA49;
-    db $FC                                                               ;A5BA4D;
-    dw $277C                                                             ;A5BA4E;
+    dw $0001                                                             ;A5BA49;
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 3, $17C)
 
 Spritemap_Draygon_39:
-    dw $0001,$81F8                                                       ;A5BA50;
-    db $F8                                                               ;A5BA54;
-    dw $278A                                                             ;A5BA55;
+    dw $0001                                                             ;A5BA50;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 3, $18A)
 
 Spritemap_Draygon_3A:
-    dw $0001,$01FC                                                       ;A5BA57;
-    db $FC                                                               ;A5BA5B;
-    dw $277F                                                             ;A5BA5C;
+    dw $0001                                                             ;A5BA57;
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 3, $17F)
 
 Spritemap_Draygon_3B:
-    dw $0001,$01FC                                                       ;A5BA5E;
-    db $FC                                                               ;A5BA62;
-    dw $2777                                                             ;A5BA63;
+    dw $0001                                                             ;A5BA5E;
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 3, $177)
 
 Spritemap_Draygon_3C:
-    dw $0001,$01FC                                                       ;A5BA65;
-    db $FC                                                               ;A5BA69;
-    dw $2776                                                             ;A5BA6A;
+    dw $0001                                                             ;A5BA65;
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 3, $176)
 
 Spritemap_Draygon_3D:
-    dw $0001,$81F8                                                       ;A5BA6C;
-    db $F8                                                               ;A5BA70;
-    dw $278C                                                             ;A5BA71;
+    dw $0001                                                             ;A5BA6C;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 3, $18C)
 
 Spritemap_Draygon_3E:
-    dw $0001,$81F8                                                       ;A5BA73;
-    db $F8                                                               ;A5BA77;
-    dw $278E                                                             ;A5BA78;
+    dw $0001                                                             ;A5BA73;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 3, $18E)
 
 Spritemap_Draygon_3F:
-    dw $000A,$81F5                                                       ;A5BA7A;
-    db $F0                                                               ;A5BA7E;
-    dw $4721,$81F5                                                       ;A5BA7F;
-    db $E0                                                               ;A5BA83;
-    dw $4701,$81FD                                                       ;A5BA84;
-    db $F0                                                               ;A5BA88;
-    dw $4720,$81FD                                                       ;A5BA89;
-    db $E0                                                               ;A5BA8D;
-    dw $4700,$0006                                                       ;A5BA8E;
-    db $04                                                               ;A5BA92;
-    dw $6723,$81FE                                                       ;A5BA93;
-    db $F4                                                               ;A5BA97;
-    dw $6703,$81F6                                                       ;A5BA98;
-    db $04                                                               ;A5BA9C;
-    dw $6724,$81F6                                                       ;A5BA9D;
-    db $F4                                                               ;A5BAA1;
-    dw $6704,$81FE                                                       ;A5BAA2;
-    db $14                                                               ;A5BAA6;
-    dw $6726,$81FE                                                       ;A5BAA7;
-    db $04                                                               ;A5BAAB;
-    dw $6706                                                             ;A5BAAC;
+    dw $000A                                                             ;A5BA7A;
+    %spritemapEntry(1, $1F5, $F0, 0, 1, 0, 3, $121)
+    %spritemapEntry(1, $1F5, $E0, 0, 1, 0, 3, $101)
+    %spritemapEntry(1, $1FD, $F0, 0, 1, 0, 3, $120)
+    %spritemapEntry(1, $1FD, $E0, 0, 1, 0, 3, $100)
+    %spritemapEntry(0, $06, $04, 0, 1, 2, 3, $123)
+    %spritemapEntry(1, $1FE, $F4, 0, 1, 2, 3, $103)
+    %spritemapEntry(1, $1F6, $04, 0, 1, 2, 3, $124)
+    %spritemapEntry(1, $1F6, $F4, 0, 1, 2, 3, $104)
+    %spritemapEntry(1, $1FE, $14, 0, 1, 2, 3, $126)
+    %spritemapEntry(1, $1FE, $04, 0, 1, 2, 3, $106)
 
 Spritemap_Draygon_40:
-    dw $000A,$81F5                                                       ;A5BAAE;
-    db $F0                                                               ;A5BAB2;
-    dw $4721,$81F5                                                       ;A5BAB3;
-    db $E0                                                               ;A5BAB7;
-    dw $4701,$81FD                                                       ;A5BAB8;
-    db $F0                                                               ;A5BABC;
-    dw $4720,$81FD                                                       ;A5BABD;
-    db $E0                                                               ;A5BAC1;
-    dw $4700,$0006                                                       ;A5BAC2;
-    db $04                                                               ;A5BAC6;
-    dw $6723,$81FE                                                       ;A5BAC7;
-    db $F4                                                               ;A5BACB;
-    dw $6703,$81F6                                                       ;A5BACC;
-    db $04                                                               ;A5BAD0;
-    dw $6724,$81F6                                                       ;A5BAD1;
-    db $F4                                                               ;A5BAD5;
-    dw $6704,$81FF                                                       ;A5BAD6;
-    db $14                                                               ;A5BADA;
-    dw $6726,$81FF                                                       ;A5BADB;
-    db $04                                                               ;A5BADF;
-    dw $6706                                                             ;A5BAE0;
+    dw $000A                                                             ;A5BAAE;
+    %spritemapEntry(1, $1F5, $F0, 0, 1, 0, 3, $121)
+    %spritemapEntry(1, $1F5, $E0, 0, 1, 0, 3, $101)
+    %spritemapEntry(1, $1FD, $F0, 0, 1, 0, 3, $120)
+    %spritemapEntry(1, $1FD, $E0, 0, 1, 0, 3, $100)
+    %spritemapEntry(0, $06, $04, 0, 1, 2, 3, $123)
+    %spritemapEntry(1, $1FE, $F4, 0, 1, 2, 3, $103)
+    %spritemapEntry(1, $1F6, $04, 0, 1, 2, 3, $124)
+    %spritemapEntry(1, $1F6, $F4, 0, 1, 2, 3, $104)
+    %spritemapEntry(1, $1FF, $14, 0, 1, 2, 3, $126)
+    %spritemapEntry(1, $1FF, $04, 0, 1, 2, 3, $106)
 
 Spritemap_Draygon_41:
-    dw $0013,$800B                                                       ;A5BAE2;
-    db $02                                                               ;A5BAE6;
-    dw $671C,$8013                                                       ;A5BAE7;
-    db $0A                                                               ;A5BAEB;
-    dw $672B,$8003                                                       ;A5BAEC;
-    db $FA                                                               ;A5BAF0;
-    dw $670D,$0004                                                       ;A5BAF1;
-    db $EC                                                               ;A5BAF5;
-    dw $6750,$81F4                                                       ;A5BAF6;
-    db $E4                                                               ;A5BAFA;
-    dw $6741,$81FC                                                       ;A5BAFB;
-    db $F4                                                               ;A5BAFF;
-    dw $6760,$81F0                                                       ;A5BB00;
-    db $01                                                               ;A5BB04;
-    dw $672E,$0008                                                       ;A5BB05;
-    db $11                                                               ;A5BB09;
-    dw $674C,$81F8                                                       ;A5BB0A;
-    db $09                                                               ;A5BB0E;
-    dw $673D,$81EC                                                       ;A5BB0F;
-    db $FC                                                               ;A5BB13;
-    dw $6762,$81EC                                                       ;A5BB14;
-    db $EC                                                               ;A5BB18;
-    dw $6743,$81E7                                                       ;A5BB19;
-    db $09                                                               ;A5BB1D;
-    dw $6738,$81DF                                                       ;A5BB1E;
-    db $01                                                               ;A5BB22;
-    dw $6729,$81DC                                                       ;A5BB23;
-    db $FC                                                               ;A5BB27;
-    dw $6756,$81E4                                                       ;A5BB28;
-    db $F4                                                               ;A5BB2C;
-    dw $6745,$81D8                                                       ;A5BB2D;
-    db $0C                                                               ;A5BB31;
-    dw $6768,$81D8                                                       ;A5BB32;
-    db $04                                                               ;A5BB36;
-    dw $6758,$81D4                                                       ;A5BB37;
-    db $FC                                                               ;A5BB3B;
-    dw $6709,$81DC                                                       ;A5BB3C;
-    db $FC                                                               ;A5BB40;
-    dw $6708                                                             ;A5BB41;
+    dw $0013                                                             ;A5BAE2;
+    %spritemapEntry(1, $0B, $02, 0, 1, 2, 3, $11C)
+    %spritemapEntry(1, $13, $0A, 0, 1, 2, 3, $12B)
+    %spritemapEntry(1, $03, $FA, 0, 1, 2, 3, $10D)
+    %spritemapEntry(0, $04, $EC, 0, 1, 2, 3, $150)
+    %spritemapEntry(1, $1F4, $E4, 0, 1, 2, 3, $141)
+    %spritemapEntry(1, $1FC, $F4, 0, 1, 2, 3, $160)
+    %spritemapEntry(1, $1F0, $01, 0, 1, 2, 3, $12E)
+    %spritemapEntry(0, $08, $11, 0, 1, 2, 3, $14C)
+    %spritemapEntry(1, $1F8, $09, 0, 1, 2, 3, $13D)
+    %spritemapEntry(1, $1EC, $FC, 0, 1, 2, 3, $162)
+    %spritemapEntry(1, $1EC, $EC, 0, 1, 2, 3, $143)
+    %spritemapEntry(1, $1E7, $09, 0, 1, 2, 3, $138)
+    %spritemapEntry(1, $1DF, $01, 0, 1, 2, 3, $129)
+    %spritemapEntry(1, $1DC, $FC, 0, 1, 2, 3, $156)
+    %spritemapEntry(1, $1E4, $F4, 0, 1, 2, 3, $145)
+    %spritemapEntry(1, $1D8, $0C, 0, 1, 2, 3, $168)
+    %spritemapEntry(1, $1D8, $04, 0, 1, 2, 3, $158)
+    %spritemapEntry(1, $1D4, $FC, 0, 1, 2, 3, $109)
+    %spritemapEntry(1, $1DC, $FC, 0, 1, 2, 3, $108)
 
 Spritemap_Draygon_42:
-    dw $0011,$81F8                                                       ;A5BB43;
-    db $F9                                                               ;A5BB47;
-    dw $672E,$0010                                                       ;A5BB48;
-    db $09                                                               ;A5BB4C;
-    dw $674C,$8000                                                       ;A5BB4D;
-    db $01                                                               ;A5BB51;
-    dw $673D,$81F4                                                       ;A5BB52;
-    db $F4                                                               ;A5BB56;
-    dw $6762,$81F4                                                       ;A5BB57;
-    db $E4                                                               ;A5BB5B;
-    dw $6743,$81EF                                                       ;A5BB5C;
-    db $01                                                               ;A5BB60;
-    dw $6738,$81E7                                                       ;A5BB61;
-    db $F9                                                               ;A5BB65;
-    dw $6729,$81E4                                                       ;A5BB66;
-    db $F4                                                               ;A5BB6A;
-    dw $6756,$81EC                                                       ;A5BB6B;
-    db $EC                                                               ;A5BB6F;
-    dw $6745,$81E0                                                       ;A5BB70;
-    db $04                                                               ;A5BB74;
-    dw $6768,$81E0                                                       ;A5BB75;
-    db $FC                                                               ;A5BB79;
-    dw $6758,$81DC                                                       ;A5BB7A;
-    db $F4                                                               ;A5BB7E;
-    dw $6709,$81E4                                                       ;A5BB7F;
-    db $F4                                                               ;A5BB83;
-    dw $6708,$81DF                                                       ;A5BB84;
-    db $11                                                               ;A5BB88;
-    dw $6738,$81D7                                                       ;A5BB89;
-    db $09                                                               ;A5BB8D;
-    dw $6729,$81D4                                                       ;A5BB8E;
-    db $04                                                               ;A5BB92;
-    dw $6756,$81DC                                                       ;A5BB93;
-    db $FC                                                               ;A5BB97;
-    dw $6745                                                             ;A5BB98;
+    dw $0011                                                             ;A5BB43;
+    %spritemapEntry(1, $1F8, $F9, 0, 1, 2, 3, $12E)
+    %spritemapEntry(0, $10, $09, 0, 1, 2, 3, $14C)
+    %spritemapEntry(1, $00, $01, 0, 1, 2, 3, $13D)
+    %spritemapEntry(1, $1F4, $F4, 0, 1, 2, 3, $162)
+    %spritemapEntry(1, $1F4, $E4, 0, 1, 2, 3, $143)
+    %spritemapEntry(1, $1EF, $01, 0, 1, 2, 3, $138)
+    %spritemapEntry(1, $1E7, $F9, 0, 1, 2, 3, $129)
+    %spritemapEntry(1, $1E4, $F4, 0, 1, 2, 3, $156)
+    %spritemapEntry(1, $1EC, $EC, 0, 1, 2, 3, $145)
+    %spritemapEntry(1, $1E0, $04, 0, 1, 2, 3, $168)
+    %spritemapEntry(1, $1E0, $FC, 0, 1, 2, 3, $158)
+    %spritemapEntry(1, $1DC, $F4, 0, 1, 2, 3, $109)
+    %spritemapEntry(1, $1E4, $F4, 0, 1, 2, 3, $108)
+    %spritemapEntry(1, $1DF, $11, 0, 1, 2, 3, $138)
+    %spritemapEntry(1, $1D7, $09, 0, 1, 2, 3, $129)
+    %spritemapEntry(1, $1D4, $04, 0, 1, 2, 3, $156)
+    %spritemapEntry(1, $1DC, $FC, 0, 1, 2, 3, $145)
 
 Spritemap_Draygon_43:
-    dw $0011,$81F7                                                       ;A5BB9A;
-    db $F9                                                               ;A5BB9E;
-    dw $6738,$81EF                                                       ;A5BB9F;
-    db $F1                                                               ;A5BBA3;
-    dw $6729,$81EC                                                       ;A5BBA4;
-    db $EC                                                               ;A5BBA8;
-    dw $6756,$81F4                                                       ;A5BBA9;
-    db $E4                                                               ;A5BBAD;
-    dw $6745,$81E8                                                       ;A5BBAE;
-    db $FC                                                               ;A5BBB2;
-    dw $6768,$81E8                                                       ;A5BBB3;
-    db $F4                                                               ;A5BBB7;
-    dw $6758,$81E4                                                       ;A5BBB8;
-    db $EC                                                               ;A5BBBC;
-    dw $6709,$81EC                                                       ;A5BBBD;
-    db $EC                                                               ;A5BBC1;
-    dw $6708,$81E7                                                       ;A5BBC2;
-    db $09                                                               ;A5BBC6;
-    dw $6738,$81DF                                                       ;A5BBC7;
-    db $01                                                               ;A5BBCB;
-    dw $6729,$81DC                                                       ;A5BBCC;
-    db $FC                                                               ;A5BBD0;
-    dw $6756,$81E4                                                       ;A5BBD1;
-    db $F4                                                               ;A5BBD5;
-    dw $6745,$81E0                                                       ;A5BBD6;
-    db $11                                                               ;A5BBDA;
-    dw $672E,$01F8                                                       ;A5BBDB;
-    db $21                                                               ;A5BBDF;
-    dw $674C,$81E8                                                       ;A5BBE0;
-    db $19                                                               ;A5BBE4;
-    dw $673D,$81DC                                                       ;A5BBE5;
-    db $0C                                                               ;A5BBE9;
-    dw $6762,$81DC                                                       ;A5BBEA;
-    db $FC                                                               ;A5BBEE;
-    dw $6743                                                             ;A5BBEF;
+    dw $0011                                                             ;A5BB9A;
+    %spritemapEntry(1, $1F7, $F9, 0, 1, 2, 3, $138)
+    %spritemapEntry(1, $1EF, $F1, 0, 1, 2, 3, $129)
+    %spritemapEntry(1, $1EC, $EC, 0, 1, 2, 3, $156)
+    %spritemapEntry(1, $1F4, $E4, 0, 1, 2, 3, $145)
+    %spritemapEntry(1, $1E8, $FC, 0, 1, 2, 3, $168)
+    %spritemapEntry(1, $1E8, $F4, 0, 1, 2, 3, $158)
+    %spritemapEntry(1, $1E4, $EC, 0, 1, 2, 3, $109)
+    %spritemapEntry(1, $1EC, $EC, 0, 1, 2, 3, $108)
+    %spritemapEntry(1, $1E7, $09, 0, 1, 2, 3, $138)
+    %spritemapEntry(1, $1DF, $01, 0, 1, 2, 3, $129)
+    %spritemapEntry(1, $1DC, $FC, 0, 1, 2, 3, $156)
+    %spritemapEntry(1, $1E4, $F4, 0, 1, 2, 3, $145)
+    %spritemapEntry(1, $1E0, $11, 0, 1, 2, 3, $12E)
+    %spritemapEntry(0, $1F8, $21, 0, 1, 2, 3, $14C)
+    %spritemapEntry(1, $1E8, $19, 0, 1, 2, 3, $13D)
+    %spritemapEntry(1, $1DC, $0C, 0, 1, 2, 3, $162)
+    %spritemapEntry(1, $1DC, $FC, 0, 1, 2, 3, $143)
 
 Spritemap_Draygon_44:
-    dw $0013,$81F0                                                       ;A5BBF1;
-    db $F4                                                               ;A5BBF5;
-    dw $6768,$81F0                                                       ;A5BBF6;
-    db $EC                                                               ;A5BBFA;
-    dw $6758,$81EC                                                       ;A5BBFB;
-    db $E4                                                               ;A5BBFF;
-    dw $6709,$81F4                                                       ;A5BC00;
-    db $E4                                                               ;A5BC04;
-    dw $6708,$81EF                                                       ;A5BC05;
-    db $01                                                               ;A5BC09;
-    dw $6738,$81E7                                                       ;A5BC0A;
-    db $F9                                                               ;A5BC0E;
-    dw $6729,$81E4                                                       ;A5BC0F;
-    db $F4                                                               ;A5BC13;
-    dw $6756,$81EC                                                       ;A5BC14;
-    db $EC                                                               ;A5BC18;
-    dw $6745,$81E8                                                       ;A5BC19;
-    db $09                                                               ;A5BC1D;
-    dw $672E,$0000                                                       ;A5BC1E;
-    db $19                                                               ;A5BC22;
-    dw $674C,$81F0                                                       ;A5BC23;
-    db $11                                                               ;A5BC27;
-    dw $673D,$81E4                                                       ;A5BC28;
-    db $04                                                               ;A5BC2C;
-    dw $6762,$81E4                                                       ;A5BC2D;
-    db $F4                                                               ;A5BC31;
-    dw $6743,$81F3                                                       ;A5BC32;
-    db $1A                                                               ;A5BC36;
-    dw $671C,$81FB                                                       ;A5BC37;
-    db $22                                                               ;A5BC3B;
-    dw $672B,$81EB                                                       ;A5BC3C;
-    db $12                                                               ;A5BC40;
-    dw $670D,$01EC                                                       ;A5BC41;
-    db $04                                                               ;A5BC45;
-    dw $6750,$81DC                                                       ;A5BC46;
-    db $FC                                                               ;A5BC4A;
-    dw $6741,$81E4                                                       ;A5BC4B;
-    db $0C                                                               ;A5BC4F;
-    dw $6760                                                             ;A5BC50;
+    dw $0013                                                             ;A5BBF1;
+    %spritemapEntry(1, $1F0, $F4, 0, 1, 2, 3, $168)
+    %spritemapEntry(1, $1F0, $EC, 0, 1, 2, 3, $158)
+    %spritemapEntry(1, $1EC, $E4, 0, 1, 2, 3, $109)
+    %spritemapEntry(1, $1F4, $E4, 0, 1, 2, 3, $108)
+    %spritemapEntry(1, $1EF, $01, 0, 1, 2, 3, $138)
+    %spritemapEntry(1, $1E7, $F9, 0, 1, 2, 3, $129)
+    %spritemapEntry(1, $1E4, $F4, 0, 1, 2, 3, $156)
+    %spritemapEntry(1, $1EC, $EC, 0, 1, 2, 3, $145)
+    %spritemapEntry(1, $1E8, $09, 0, 1, 2, 3, $12E)
+    %spritemapEntry(0, $00, $19, 0, 1, 2, 3, $14C)
+    %spritemapEntry(1, $1F0, $11, 0, 1, 2, 3, $13D)
+    %spritemapEntry(1, $1E4, $04, 0, 1, 2, 3, $162)
+    %spritemapEntry(1, $1E4, $F4, 0, 1, 2, 3, $143)
+    %spritemapEntry(1, $1F3, $1A, 0, 1, 2, 3, $11C)
+    %spritemapEntry(1, $1FB, $22, 0, 1, 2, 3, $12B)
+    %spritemapEntry(1, $1EB, $12, 0, 1, 2, 3, $10D)
+    %spritemapEntry(0, $1EC, $04, 0, 1, 2, 3, $150)
+    %spritemapEntry(1, $1DC, $FC, 0, 1, 2, 3, $141)
+    %spritemapEntry(1, $1E4, $0C, 0, 1, 2, 3, $160)
 
 Spritemap_Draygon_45:
-    dw $0014,$81F7                                                       ;A5BC52;
-    db $F9                                                               ;A5BC56;
-    dw $6738,$81EF                                                       ;A5BC57;
-    db $F1                                                               ;A5BC5B;
-    dw $6729,$81EC                                                       ;A5BC5C;
-    db $EC                                                               ;A5BC60;
-    dw $6756,$81F4                                                       ;A5BC61;
-    db $E4                                                               ;A5BC65;
-    dw $6745,$81F0                                                       ;A5BC66;
-    db $01                                                               ;A5BC6A;
-    dw $672E,$0008                                                       ;A5BC6B;
-    db $11                                                               ;A5BC6F;
-    dw $674C,$81F8                                                       ;A5BC70;
-    db $09                                                               ;A5BC74;
-    dw $673D,$81EC                                                       ;A5BC75;
-    db $FC                                                               ;A5BC79;
-    dw $6762,$81EC                                                       ;A5BC7A;
-    db $EC                                                               ;A5BC7E;
-    dw $6743,$81FB                                                       ;A5BC7F;
-    db $12                                                               ;A5BC83;
-    dw $671C,$8003                                                       ;A5BC84;
-    db $1A                                                               ;A5BC88;
-    dw $672B,$81F3                                                       ;A5BC89;
-    db $0A                                                               ;A5BC8D;
-    dw $670D,$01F4                                                       ;A5BC8E;
-    db $FC                                                               ;A5BC92;
-    dw $6750,$81E4                                                       ;A5BC93;
-    db $F4                                                               ;A5BC97;
-    dw $6741,$81EC                                                       ;A5BC98;
-    db $04                                                               ;A5BC9C;
-    dw $6760,$81E0                                                       ;A5BC9D;
-    db $11                                                               ;A5BCA1;
-    dw $672E,$01F8                                                       ;A5BCA2;
-    db $21                                                               ;A5BCA6;
-    dw $674C,$81E8                                                       ;A5BCA7;
-    db $19                                                               ;A5BCAB;
-    dw $673D,$81DC                                                       ;A5BCAC;
-    db $0C                                                               ;A5BCB0;
-    dw $6762,$81DC                                                       ;A5BCB1;
-    db $FC                                                               ;A5BCB5;
-    dw $6743                                                             ;A5BCB6;
+    dw $0014                                                             ;A5BC52;
+    %spritemapEntry(1, $1F7, $F9, 0, 1, 2, 3, $138)
+    %spritemapEntry(1, $1EF, $F1, 0, 1, 2, 3, $129)
+    %spritemapEntry(1, $1EC, $EC, 0, 1, 2, 3, $156)
+    %spritemapEntry(1, $1F4, $E4, 0, 1, 2, 3, $145)
+    %spritemapEntry(1, $1F0, $01, 0, 1, 2, 3, $12E)
+    %spritemapEntry(0, $08, $11, 0, 1, 2, 3, $14C)
+    %spritemapEntry(1, $1F8, $09, 0, 1, 2, 3, $13D)
+    %spritemapEntry(1, $1EC, $FC, 0, 1, 2, 3, $162)
+    %spritemapEntry(1, $1EC, $EC, 0, 1, 2, 3, $143)
+    %spritemapEntry(1, $1FB, $12, 0, 1, 2, 3, $11C)
+    %spritemapEntry(1, $03, $1A, 0, 1, 2, 3, $12B)
+    %spritemapEntry(1, $1F3, $0A, 0, 1, 2, 3, $10D)
+    %spritemapEntry(0, $1F4, $FC, 0, 1, 2, 3, $150)
+    %spritemapEntry(1, $1E4, $F4, 0, 1, 2, 3, $141)
+    %spritemapEntry(1, $1EC, $04, 0, 1, 2, 3, $160)
+    %spritemapEntry(1, $1E0, $11, 0, 1, 2, 3, $12E)
+    %spritemapEntry(0, $1F8, $21, 0, 1, 2, 3, $14C)
+    %spritemapEntry(1, $1E8, $19, 0, 1, 2, 3, $13D)
+    %spritemapEntry(1, $1DC, $0C, 0, 1, 2, 3, $162)
+    %spritemapEntry(1, $1DC, $FC, 0, 1, 2, 3, $143)
 
 Spritemap_Draygon_46:
-    dw $0014,$81F8                                                       ;A5BCB8;
-    db $F9                                                               ;A5BCBC;
-    dw $672E,$0010                                                       ;A5BCBD;
-    db $09                                                               ;A5BCC1;
-    dw $674C,$8000                                                       ;A5BCC2;
-    db $01                                                               ;A5BCC6;
-    dw $673D,$81F4                                                       ;A5BCC7;
-    db $F4                                                               ;A5BCCB;
-    dw $6762,$81F4                                                       ;A5BCCC;
-    db $E4                                                               ;A5BCD0;
-    dw $6743,$8003                                                       ;A5BCD1;
-    db $0A                                                               ;A5BCD5;
-    dw $671C,$800B                                                       ;A5BCD6;
-    db $12                                                               ;A5BCDA;
-    dw $672B,$81FB                                                       ;A5BCDB;
-    db $02                                                               ;A5BCDF;
-    dw $670D,$01FC                                                       ;A5BCE0;
-    db $F4                                                               ;A5BCE4;
-    dw $6750,$81EC                                                       ;A5BCE5;
-    db $EC                                                               ;A5BCE9;
-    dw $6741,$81F4                                                       ;A5BCEA;
-    db $FC                                                               ;A5BCEE;
-    dw $6760,$81E8                                                       ;A5BCEF;
-    db $09                                                               ;A5BCF3;
-    dw $672E,$0000                                                       ;A5BCF4;
-    db $19                                                               ;A5BCF8;
-    dw $674C,$81F0                                                       ;A5BCF9;
-    db $11                                                               ;A5BCFD;
-    dw $673D,$81E4                                                       ;A5BCFE;
-    db $04                                                               ;A5BD02;
-    dw $6762,$81E4                                                       ;A5BD03;
-    db $F4                                                               ;A5BD07;
-    dw $6743,$81DF                                                       ;A5BD08;
-    db $11                                                               ;A5BD0C;
-    dw $6738,$81D7                                                       ;A5BD0D;
-    db $09                                                               ;A5BD11;
-    dw $6729,$81D4                                                       ;A5BD12;
-    db $04                                                               ;A5BD16;
-    dw $6756,$81DC                                                       ;A5BD17;
-    db $FC                                                               ;A5BD1B;
-    dw $6745                                                             ;A5BD1C;
+    dw $0014                                                             ;A5BCB8;
+    %spritemapEntry(1, $1F8, $F9, 0, 1, 2, 3, $12E)
+    %spritemapEntry(0, $10, $09, 0, 1, 2, 3, $14C)
+    %spritemapEntry(1, $00, $01, 0, 1, 2, 3, $13D)
+    %spritemapEntry(1, $1F4, $F4, 0, 1, 2, 3, $162)
+    %spritemapEntry(1, $1F4, $E4, 0, 1, 2, 3, $143)
+    %spritemapEntry(1, $03, $0A, 0, 1, 2, 3, $11C)
+    %spritemapEntry(1, $0B, $12, 0, 1, 2, 3, $12B)
+    %spritemapEntry(1, $1FB, $02, 0, 1, 2, 3, $10D)
+    %spritemapEntry(0, $1FC, $F4, 0, 1, 2, 3, $150)
+    %spritemapEntry(1, $1EC, $EC, 0, 1, 2, 3, $141)
+    %spritemapEntry(1, $1F4, $FC, 0, 1, 2, 3, $160)
+    %spritemapEntry(1, $1E8, $09, 0, 1, 2, 3, $12E)
+    %spritemapEntry(0, $00, $19, 0, 1, 2, 3, $14C)
+    %spritemapEntry(1, $1F0, $11, 0, 1, 2, 3, $13D)
+    %spritemapEntry(1, $1E4, $04, 0, 1, 2, 3, $162)
+    %spritemapEntry(1, $1E4, $F4, 0, 1, 2, 3, $143)
+    %spritemapEntry(1, $1DF, $11, 0, 1, 2, 3, $138)
+    %spritemapEntry(1, $1D7, $09, 0, 1, 2, 3, $129)
+    %spritemapEntry(1, $1D4, $04, 0, 1, 2, 3, $156)
+    %spritemapEntry(1, $1DC, $FC, 0, 1, 2, 3, $145)
 
 Spritemap_Draygon_47:
-    dw $0013,$8035                                                       ;A5BD1E;
-    db $E5                                                               ;A5BD22;
-    dw $671C,$803D                                                       ;A5BD23;
-    db $ED                                                               ;A5BD27;
-    dw $672B,$802D                                                       ;A5BD28;
-    db $DD                                                               ;A5BD2C;
-    dw $670D,$002E                                                       ;A5BD2D;
-    db $CF                                                               ;A5BD31;
-    dw $6750,$801E                                                       ;A5BD32;
-    db $C7                                                               ;A5BD36;
-    dw $6741,$8026                                                       ;A5BD37;
-    db $D7                                                               ;A5BD3B;
-    dw $6760,$81E2                                                       ;A5BD3C;
-    db $05                                                               ;A5BD40;
-    dw $6768,$81E2                                                       ;A5BD41;
-    db $FD                                                               ;A5BD45;
-    dw $6758,$81DE                                                       ;A5BD46;
-    db $F5                                                               ;A5BD4A;
-    dw $6709,$81E6                                                       ;A5BD4B;
-    db $F5                                                               ;A5BD4F;
-    dw $6708,$81F9                                                       ;A5BD50;
-    db $F0                                                               ;A5BD54;
-    dw $6738,$81F1                                                       ;A5BD55;
-    db $E8                                                               ;A5BD59;
-    dw $6729,$81EE                                                       ;A5BD5A;
-    db $E3                                                               ;A5BD5E;
-    dw $6756,$81F6                                                       ;A5BD5F;
-    db $DB                                                               ;A5BD63;
-    dw $6745,$8018                                                       ;A5BD64;
-    db $ED                                                               ;A5BD68;
-    dw $672E,$0030                                                       ;A5BD69;
-    db $FD                                                               ;A5BD6D;
-    dw $674C,$8020                                                       ;A5BD6E;
-    db $F5                                                               ;A5BD72;
-    dw $673D,$8014                                                       ;A5BD73;
-    db $E8                                                               ;A5BD77;
-    dw $6762,$8014                                                       ;A5BD78;
-    db $D8                                                               ;A5BD7C;
-    dw $6743                                                             ;A5BD7D;
+    dw $0013                                                             ;A5BD1E;
+    %spritemapEntry(1, $35, $E5, 0, 1, 2, 3, $11C)
+    %spritemapEntry(1, $3D, $ED, 0, 1, 2, 3, $12B)
+    %spritemapEntry(1, $2D, $DD, 0, 1, 2, 3, $10D)
+    %spritemapEntry(0, $2E, $CF, 0, 1, 2, 3, $150)
+    %spritemapEntry(1, $1E, $C7, 0, 1, 2, 3, $141)
+    %spritemapEntry(1, $26, $D7, 0, 1, 2, 3, $160)
+    %spritemapEntry(1, $1E2, $05, 0, 1, 2, 3, $168)
+    %spritemapEntry(1, $1E2, $FD, 0, 1, 2, 3, $158)
+    %spritemapEntry(1, $1DE, $F5, 0, 1, 2, 3, $109)
+    %spritemapEntry(1, $1E6, $F5, 0, 1, 2, 3, $108)
+    %spritemapEntry(1, $1F9, $F0, 0, 1, 2, 3, $138)
+    %spritemapEntry(1, $1F1, $E8, 0, 1, 2, 3, $129)
+    %spritemapEntry(1, $1EE, $E3, 0, 1, 2, 3, $156)
+    %spritemapEntry(1, $1F6, $DB, 0, 1, 2, 3, $145)
+    %spritemapEntry(1, $18, $ED, 0, 1, 2, 3, $12E)
+    %spritemapEntry(0, $30, $FD, 0, 1, 2, 3, $14C)
+    %spritemapEntry(1, $20, $F5, 0, 1, 2, 3, $13D)
+    %spritemapEntry(1, $14, $E8, 0, 1, 2, 3, $162)
+    %spritemapEntry(1, $14, $D8, 0, 1, 2, 3, $143)
 
-ExtendedTilemap_Draygon_18:
-    dw $FFFE,$2316,$0002,$159F,$15A0,$2356,$0002,$15AC                   ;A5BD7F;
-    dw $15AD,$2394,$0003,$15B9,$15BA,$15BB,$23D4,$0003                   ;A5BD8F;
-    dw $15C8,$15C9,$15CA,$2414,$0003,$15D7,$15D8,$15D9                   ;A5BD9F;
-    dw $2454,$0003,$15DF,$15E0,$1547,$2496,$0002,$1547                   ;A5BDAF;
-    dw $1547,$FFFF                                                       ;A5BDBF;
 
-ExtendedTilemap_Draygon_19:
-    dw $FFFE,$2316,$0002,$1559,$155A,$2356,$0002,$1569                   ;A5BDC3;
-    dw $156A,$2394,$0003,$1576,$1577,$1578,$23D2,$0004                   ;A5BDD3;
-    dw $1585,$1586,$1587,$1588,$2412,$0004,$1592,$1593                   ;A5BDE3;
-    dw $1594,$1595,$2452,$0004,$15A1,$15A2,$15A3,$0147                   ;A5BDF3;
-    dw $2496,$0002,$0147,$0147,$FFFF                                     ;A5BE03;
+ExtendedTilemap_Draygon_18:                                              ;A5BD7F;
+    dw $FFFE
+    dw $2316,$0002, $159F,$15A0
+    dw $2356,$0002, $15AC,$15AD
+    dw $2394,$0003, $15B9,$15BA,$15BB
+    dw $23D4,$0003, $15C8,$15C9,$15CA
+    dw $2414,$0003, $15D7,$15D8,$15D9
+    dw $2454,$0003, $15DF,$15E0,$1547
+    dw $2496,$0002, $1547,$1547
+    dw $FFFF
 
-ExtendedTilemap_Draygon_1A:
-    dw $FFFE,$2316,$0002,$1596,$1597,$2356,$0002,$15A4                   ;A5BE0D;
-    dw $15A5,$2390,$0005,$15AE,$15AF,$15B0,$15B1,$15B2                   ;A5BE1D;
-    dw $23CE,$0006,$15BC,$15BD,$15BE,$15BF,$15C0,$15C1                   ;A5BE2D;
-    dw $240E,$0006,$15CB,$15CC,$15CD,$15CE,$15CF,$15D0                   ;A5BE3D;
-    dw $2452,$0003,$0147,$0147,$0147,$FFFF                               ;A5BE4D;
+ExtendedTilemap_Draygon_19:                                              ;A5BDC3;
+    dw $FFFE
+    dw $2316,$0002, $1559,$155A
+    dw $2356,$0002, $1569,$156A
+    dw $2394,$0003, $1576,$1577,$1578
+    dw $23D2,$0004, $1585,$1586,$1587,$1588
+    dw $2412,$0004, $1592,$1593,$1594,$1595
+    dw $2452,$0004, $15A1,$15A2,$15A3,$0147
+    dw $2496,$0002, $0147,$0147
+    dw $FFFF
 
-ExtendedTilemap_Draygon_1B:
-    dw $FFFE,$230A,$0003,$15DA,$15DB,$1547,$2316,$0002                   ;A5BE59;
-    dw $15DC,$15DD,$234C,$0003,$15E1,$15E2,$15E3,$2354                   ;A5BE69;
-    dw $0003,$15AE,$15E4,$15E5,$238C,$0007,$15E9,$15EA                   ;A5BE79;
-    dw $15EB,$15EC,$15ED,$15EE,$15EF,$23CC,$0007,$15F3                   ;A5BE89;
-    dw $15F4,$15F5,$15F6,$15F7,$15F8,$15F9,$240E,$0005                   ;A5BE99;
-    dw $1600,$1601,$1602,$1603,$1604,$FFFF                               ;A5BEA9;
+ExtendedTilemap_Draygon_1A:                                              ;A5BE0D;
+    dw $FFFE
+    dw $2316,$0002, $1596,$1597
+    dw $2356,$0002, $15A4,$15A5
+    dw $2390,$0005, $15AE,$15AF,$15B0,$15B1,$15B2
+    dw $23CE,$0006, $15BC,$15BD,$15BE,$15BF,$15C0,$15C1
+    dw $240E,$0006, $15CB,$15CC,$15CD,$15CE,$15CF,$15D0
+    dw $2452,$0003, $0147,$0147,$0147
+    dw $FFFF
 
-ExtendedTilemap_Draygon_1C:
-    dw $FFFE,$230A,$0003,$0147,$0147,$0147,$2316,$0002                   ;A5BEB5;
-    dw $1596,$1597,$234C,$0003,$0147,$0147,$0147,$2354                   ;A5BEC5;
-    dw $0003,$0147,$15A4,$15A5,$238C,$0007,$0147,$0147                   ;A5BED5;
-    dw $15AE,$15AF,$15B0,$15B1,$15B2,$23CC,$0007,$0147                   ;A5BEE5;
-    dw $15BC,$15BD,$15BE,$15BF,$15C0,$15C1,$240E,$0005                   ;A5BEF5;
-    dw $15CB,$15CC,$15CD,$15CE,$15CF,$FFFF                               ;A5BF05;
+ExtendedTilemap_Draygon_1B:                                              ;A5BE59;
+    dw $FFFE
+    dw $230A,$0003, $15DA,$15DB,$1547
+    dw $2316,$0002, $15DC,$15DD
+    dw $234C,$0003, $15E1,$15E2,$15E3
+    dw $2354,$0003, $15AE,$15E4,$15E5
+    dw $238C,$0007, $15E9,$15EA,$15EB,$15EC,$15ED,$15EE,$15EF
+    dw $23CC,$0007, $15F3,$15F4,$15F5,$15F6,$15F7,$15F8,$15F9
+    dw $240E,$0005, $1600,$1601,$1602,$1603,$1604
+    dw $FFFF
 
-ExtendedTilemap_Draygon_1D:
-    dw $FFFE,$2316,$0002,$1559,$155A,$2356,$0002,$1569                   ;A5BF11;
-    dw $156A,$2390,$0005,$0147,$0147,$1576,$1577,$1578                   ;A5BF21;
-    dw $23CE,$0006,$0147,$0147,$1585,$1586,$1587,$1588                   ;A5BF31;
-    dw $240E,$0006,$0147,$0147,$1592,$1593,$1594,$1595                   ;A5BF41;
-    dw $2452,$0003,$15A1,$15A2,$15A3,$FFFF                               ;A5BF51;
+ExtendedTilemap_Draygon_1C:                                              ;A5BEB5;
+    dw $FFFE
+    dw $230A,$0003, $0147,$0147,$0147
+    dw $2316,$0002, $1596,$1597
+    dw $234C,$0003, $0147,$0147,$0147
+    dw $2354,$0003, $0147,$15A4,$15A5
+    dw $238C,$0007, $0147,$0147,$15AE,$15AF,$15B0,$15B1,$15B2
+    dw $23CC,$0007, $0147,$15BC,$15BD,$15BE,$15BF,$15C0,$15C1
+    dw $240E,$0005, $15CB,$15CC,$15CD,$15CE,$15CF
+    dw $FFFF
 
-ExtendedTilemap_Draygon_1E:
-    dw $FFFE,$2316,$0002,$159F,$15A0,$2356,$0002,$15AC                   ;A5BF5D;
-    dw $15AD,$2394,$0003,$15B9,$15BA,$15BB,$23D2,$0004                   ;A5BF6D;
-    dw $0147,$15C8,$15C9,$15CA,$2412,$0004,$0147,$15D7                   ;A5BF7D;
-    dw $15D8,$15D9,$2452,$0004,$0147,$15DF,$15E0,$1547                   ;A5BF8D;
-    dw $2496,$0002,$1547,$1547,$FFFF                                     ;A5BF9D;
+ExtendedTilemap_Draygon_1D:                                              ;A5BF11;
+    dw $FFFE
+    dw $2316,$0002, $1559,$155A
+    dw $2356,$0002, $1569,$156A
+    dw $2390,$0005, $0147,$0147,$1576,$1577,$1578
+    dw $23CE,$0006, $0147,$0147,$1585,$1586,$1587,$1588
+    dw $240E,$0006, $0147,$0147,$1592,$1593,$1594,$1595
+    dw $2452,$0003, $15A1,$15A2,$15A3
+    dw $FFFF
 
-ExtendedTilemap_Draygon_1F:
-    dw $FFFE,$2154,$0002,$5555,$5554,$2194,$0002,$5565                   ;A5BFA7;
-    dw $5564,$FFFF                                                       ;A5BFB7;
+ExtendedTilemap_Draygon_1E:                                              ;A5BF5D;
+    dw $FFFE
+    dw $2316,$0002, $159F,$15A0
+    dw $2356,$0002, $15AC,$15AD
+    dw $2394,$0003, $15B9,$15BA,$15BB
+    dw $23D2,$0004, $0147,$15C8,$15C9,$15CA
+    dw $2412,$0004, $0147,$15D7,$15D8,$15D9
+    dw $2452,$0004, $0147,$15DF,$15E0,$1547
+    dw $2496,$0002, $1547,$1547
+    dw $FFFF
 
-ExtendedTilemap_Draygon_20:
-    dw $FFFE,$2154,$0002,$5581,$5580,$2194,$0002,$5591                   ;A5BFBB;
-    dw $5590,$FFFF                                                       ;A5BFCB;
+ExtendedTilemap_Draygon_1F:                                              ;A5BFA7;
+    dw $FFFE
+    dw $2154,$0002, $5555,$5554
+    dw $2194,$0002, $5565,$5564
+    dw $FFFF
 
-ExtendedTilemap_Draygon_21:
-    dw $FFFE,$2154,$0002,$5583,$5582,$2194,$0002,$5593                   ;A5BFCF;
-    dw $5592,$FFFF                                                       ;A5BFDF;
+ExtendedTilemap_Draygon_20:                                              ;A5BFBB;
+    dw $FFFE
+    dw $2154,$0002, $5581,$5580
+    dw $2194,$0002, $5591,$5590
+    dw $FFFF
 
-ExtendedTilemap_Draygon_22:
-    dw $FFFE,$2154,$0002,$5563,$5562,$2194,$0002,$5573                   ;A5BFE3;
-    dw $5572,$FFFF                                                       ;A5BFF3;
+ExtendedTilemap_Draygon_21:                                              ;A5BFCF;
+    dw $FFFE
+    dw $2154,$0002, $5583,$5582
+    dw $2194,$0002, $5593,$5592
+    dw $FFFF
 
-ExtendedTilemap_Draygon_23:
-    dw $FFFE,$220E,$0003,$559F,$559E,$5586,$224E,$0003                   ;A5BFF7;
-    dw $5598,$5597,$5596,$228E,$0003,$55A8,$55A7,$55A6                   ;A5C007;
-    dw $FFFF                                                             ;A5C017;
+ExtendedTilemap_Draygon_22:                                              ;A5BFE3;
+    dw $FFFE
+    dw $2154,$0002, $5563,$5562
+    dw $2194,$0002, $5573,$5572
+    dw $FFFF
 
-ExtendedTilemap_Draygon_24:
-    dw $FFFE,$2212,$0001,$559D,$224E,$0003,$55AF,$55AE                   ;A5C019;
-    dw $55AD,$228E,$0003,$55BF,$55BE,$55BD,$FFFF                         ;A5C029;
+ExtendedTilemap_Draygon_23:                                              ;A5BFF7;
+    dw $FFFE
+    dw $220E,$0003, $559F,$559E,$5586
+    dw $224E,$0003, $5598,$5597,$5596
+    dw $228E,$0003, $55A8,$55A7,$55A6
+    dw $FFFF
 
-ExtendedTilemap_Draygon_25:
-    dw $FFFE,$220E,$0003,$55A2,$55A1,$55A0,$224E,$0003                   ;A5C037;
-    dw $55B2,$55B1,$55B0,$228E,$0003,$55B6,$55B5,$55B4                   ;A5C047;
-    dw $FFFF                                                             ;A5C057;
+ExtendedTilemap_Draygon_24:                                              ;A5C019;
+    dw $FFFE
+    dw $2212,$0001, $559D
+    dw $224E,$0003, $55AF,$55AE,$55AD
+    dw $228E,$0003, $55BF,$55BE,$55BD
+    dw $FFFF
 
-ExtendedTilemap_Draygon_26:
-    dw $FFFE,$220E,$0003,$5585,$5584,$55A3,$224E,$0003                   ;A5C059;
-    dw $5595,$5594,$55B3,$228E,$0003,$55A5,$55A4,$5574                   ;A5C069;
-    dw $FFFF                                                             ;A5C079;
+ExtendedTilemap_Draygon_25:                                              ;A5C037;
+    dw $FFFE
+    dw $220E,$0003, $55A2,$55A1,$55A0
+    dw $224E,$0003, $55B2,$55B1,$55B0
+    dw $228E,$0003, $55B6,$55B5,$55B4
+    dw $FFFF
 
-ExtendedTilemap_Draygon_27:
-    dw $FFFE,$20D4,$0002,$5541,$5540,$2114,$0002,$5551                   ;A5C07B;
-    dw $5550,$FFFF                                                       ;A5C08B;
+ExtendedTilemap_Draygon_26:                                              ;A5C059;
+    dw $FFFE
+    dw $220E,$0003, $5585,$5584,$55A3
+    dw $224E,$0003, $5595,$5594,$55B3
+    dw $228E,$0003, $55A5,$55A4,$5574
+    dw $FFFF
 
-ExtendedTilemap_Draygon_28:
-    dw $FFFE,$20D4,$0002,$5561,$5560,$2114,$0002,$5571                   ;A5C08F;
-    dw $5570,$FFFF                                                       ;A5C09F;
+ExtendedTilemap_Draygon_27:                                              ;A5C07B;
+    dw $FFFE
+    dw $20D4,$0002, $5541,$5540
+    dw $2114,$0002, $5551,$5550
+    dw $FFFF
 
-ExtendedTilemap_Draygon_29:
-    dw $FFFE,$20D4,$0002,$550B,$550A,$2114,$0002,$551B                   ;A5C0A3;
-    dw $551A,$FFFF                                                       ;A5C0B3;
+ExtendedTilemap_Draygon_28:                                              ;A5C08F;
+    dw $FFFE
+    dw $20D4,$0002, $5561,$5560
+    dw $2114,$0002, $5571,$5570
+    dw $FFFF
 
-ExtendedTilemap_Draygon_2A:
-    dw $FFFE,$20D4,$0002,$550D,$550C,$2114,$0002,$551D                   ;A5C0B7;
-    dw $551C,$FFFF                                                       ;A5C0C7;
+ExtendedTilemap_Draygon_29:                                              ;A5C0A3;
+    dw $FFFE
+    dw $20D4,$0002, $550B,$550A
+    dw $2114,$0002, $551B,$551A
+    dw $FFFF
 
-ExtendedTilemap_Draygon_2B:
-    dw $FFFE,$20D4,$0002,$5535,$5534,$2114,$0002,$5545                   ;A5C0CB;
-    dw $5544,$FFFF                                                       ;A5C0DB;
+ExtendedTilemap_Draygon_2A:                                              ;A5C0B7;
+    dw $FFFE
+    dw $20D4,$0002, $550D,$550C
+    dw $2114,$0002, $551D,$551C
+    dw $FFFF
 
-ExtendedTilemap_Draygon_2C:
-    dw $FFFE,$20D4,$0002,$550F,$550E,$2114,$0002,$551F                   ;A5C0DF;
-    dw $551E,$FFFF                                                       ;A5C0EF;
+ExtendedTilemap_Draygon_2B:                                              ;A5C0CB;
+    dw $FFFE
+    dw $20D4,$0002, $5535,$5534
+    dw $2114,$0002, $5545,$5544
+    dw $FFFF
 
-ExtendedTilemap_Draygon_2D:
-    dw $FFFE,$20D4,$0002,$552D,$552C,$2114,$0002,$553D                   ;A5C0F3;
-    dw $553C,$FFFF                                                       ;A5C103;
+ExtendedTilemap_Draygon_2C:                                              ;A5C0DF;
+    dw $FFFE
+    dw $20D4,$0002, $550F,$550E
+    dw $2114,$0002, $551F,$551E
+    dw $FFFF
 
-ExtendedTilemap_Draygon_2E:
-    dw $FFFE,$20D4,$0002,$552F,$552E,$2114,$0002,$553F                   ;A5C107;
-    dw $553E,$FFFF                                                       ;A5C117;
+ExtendedTilemap_Draygon_2D:                                              ;A5C0F3;
+    dw $FFFE
+    dw $20D4,$0002, $552D,$552C
+    dw $2114,$0002, $553D,$553C
+    dw $FFFF
 
-ExtendedTilemap_Draygon_2F:
-    dw $FFFE,$2000,$0010,$4338,$4338,$4338,$4338,$4338                   ;A5C11B;
-    dw $4338,$4338,$4338,$5507,$5506,$5505,$5504,$5503                   ;A5C12B;
-    dw $5502,$5501,$5500,$2040,$0010,$4338,$4338,$4338                   ;A5C13B;
-    dw $4338,$4338,$4338,$4338,$5518,$5517,$5516,$5515                   ;A5C14B;
-    dw $5514,$5513,$5512,$5511,$5510,$2080,$0010,$4338                   ;A5C15B;
-    dw $4338,$4338,$4338,$4338,$4338,$5529,$5528,$5527                   ;A5C16B;
-    dw $5526,$5525,$5524,$5523,$5522,$5521,$5520,$20C0                   ;A5C17B;
-    dw $0010,$4338,$4338,$4338,$4338,$4338,$553A,$5539                   ;A5C18B;
-    dw $5538,$5537,$5536,$02FF,$02FF,$5533,$5532,$5531                   ;A5C19B;
-    dw $5530,$2100,$0010,$5738,$554E,$554D,$554C,$554B                   ;A5C1AB;
-    dw $554A,$5549,$5548,$5547,$5546,$02FF,$02FF,$5543                   ;A5C1BB;
-    dw $5542,$4338,$4338,$2140,$0010,$555F,$555E,$555D                   ;A5C1CB;
-    dw $555C,$555B,$555A,$5559,$5558,$5557,$5556,$5555                   ;A5C1DB;
-    dw $5554,$5553,$4338,$4338,$4338,$2180,$0010,$556F                   ;A5C1EB;
-    dw $556E,$556D,$556C,$556B,$556A,$5569,$5568,$5567                   ;A5C1FB;
-    dw $5566,$5565,$5564,$4338,$4338,$4338,$4338,$21C0                   ;A5C20B;
-    dw $0010,$557F,$557E,$557D,$557C,$557B,$557A,$5579                   ;A5C21B;
-    dw $5578,$5577,$5576,$5575,$4338,$4338,$4338,$4338                   ;A5C22B;
-    dw $4338,$2200,$0010,$558F,$558E,$558D,$558C,$558B                   ;A5C23B;
-    dw $558A,$5589,$559F,$559E,$5586,$4338,$4338,$4338                   ;A5C24B;
-    dw $4338,$4338,$4338,$2240,$0010,$4338,$4338,$4338                   ;A5C25B;
-    dw $559C,$559B,$559A,$5599,$5598,$5597,$5596,$4338                   ;A5C26B;
-    dw $4338,$4338,$4338,$4338,$4338,$2280,$0010,$4338                   ;A5C27B;
-    dw $4338,$4338,$55AC,$55AB,$55AA,$55A9,$55A8,$55A7                   ;A5C28B;
-    dw $55A6,$4338,$4338,$4338,$4338,$4338,$4338,$22C0                   ;A5C29B;
-    dw $0010,$4338,$4338,$4338,$55BC,$55BB,$55BA,$55B9                   ;A5C2AB;
-    dw $55B8,$55B7,$4338,$4338,$4338,$4338,$4338,$4338                   ;A5C2BB;
-    dw $4338,$2300,$0010,$C338,$C338,$C338,$5509,$5508                   ;A5C2CB;
-    dw $C338,$C338,$C338,$C338,$C338,$C338,$C338,$C338                   ;A5C2DB;
-    dw $C338,$C338,$C338,$2340,$0010,$C338,$C338,$C338                   ;A5C2EB;
-    dw $5519,$553B,$C338,$C338,$C338,$C338,$C338,$C338                   ;A5C2FB;
-    dw $C338,$C338,$C338,$C338,$C338,$2380,$0010,$C338                   ;A5C30B;
-    dw $C338,$C338,$552B,$552A,$C338,$C338,$C338,$C338                   ;A5C31B;
-    dw $C338,$C338,$C338,$C338,$C338,$C338,$C338,$FFFF                   ;A5C32B;
+ExtendedTilemap_Draygon_2E:                                              ;A5C107;
+    dw $FFFE
+    dw $20D4,$0002, $552F,$552E
+    dw $2114,$0002, $553F,$553E
+    dw $FFFF
+
+ExtendedTilemap_Draygon_2F:                                              ;A5C11B;
+    dw $FFFE
+    dw $2000,$0010, $4338,$4338,$4338,$4338,$4338,$4338,$4338,$4338,$5507,$5506,$5505,$5504,$5503,$5502,$5501,$5500
+    dw $2040,$0010, $4338,$4338,$4338,$4338,$4338,$4338,$4338,$5518,$5517,$5516,$5515,$5514,$5513,$5512,$5511,$5510
+    dw $2080,$0010, $4338,$4338,$4338,$4338,$4338,$4338,$5529,$5528,$5527,$5526,$5525,$5524,$5523,$5522,$5521,$5520
+    dw $20C0,$0010, $4338,$4338,$4338,$4338,$4338,$553A,$5539,$5538,$5537,$5536,$02FF,$02FF,$5533,$5532,$5531,$5530
+    dw $2100,$0010, $5738,$554E,$554D,$554C,$554B,$554A,$5549,$5548,$5547,$5546,$02FF,$02FF,$5543,$5542,$4338,$4338
+    dw $2140,$0010, $555F,$555E,$555D,$555C,$555B,$555A,$5559,$5558,$5557,$5556,$5555,$5554,$5553,$4338,$4338,$4338
+    dw $2180,$0010, $556F,$556E,$556D,$556C,$556B,$556A,$5569,$5568,$5567,$5566,$5565,$5564,$4338,$4338,$4338,$4338
+    dw $21C0,$0010, $557F,$557E,$557D,$557C,$557B,$557A,$5579,$5578,$5577,$5576,$5575,$4338,$4338,$4338,$4338,$4338
+    dw $2200,$0010, $558F,$558E,$558D,$558C,$558B,$558A,$5589,$559F,$559E,$5586,$4338,$4338,$4338,$4338,$4338,$4338
+    dw $2240,$0010, $4338,$4338,$4338,$559C,$559B,$559A,$5599,$5598,$5597,$5596,$4338,$4338,$4338,$4338,$4338,$4338
+    dw $2280,$0010, $4338,$4338,$4338,$55AC,$55AB,$55AA,$55A9,$55A8,$55A7,$55A6,$4338,$4338,$4338,$4338,$4338,$4338
+    dw $22C0,$0010, $4338,$4338,$4338,$55BC,$55BB,$55BA,$55B9,$55B8,$55B7,$4338,$4338,$4338,$4338,$4338,$4338,$4338
+    dw $2300,$0010, $C338,$C338,$C338,$5509,$5508,$C338,$C338,$C338,$C338,$C338,$C338,$C338,$C338,$C338,$C338,$C338
+    dw $2340,$0010, $C338,$C338,$C338,$5519,$553B,$C338,$C338,$C338,$C338,$C338,$C338,$C338,$C338,$C338,$C338,$C338
+    dw $2380,$0010, $C338,$C338,$C338,$552B,$552A,$C338,$C338,$C338,$C338,$C338,$C338,$C338,$C338,$C338,$C338,$C338
+    dw $FFFF
 
 Spritemap_Draygon_48:
-    dw $0003,$0000                                                       ;A5C33B;
-    db $F8                                                               ;A5C33F;
-    dw $67BD,$0000                                                       ;A5C340;
-    db $F0                                                               ;A5C344;
-    dw $67AD,$81F8                                                       ;A5C345;
-    db $00                                                               ;A5C349;
-    dw $67A9                                                             ;A5C34A;
+    dw $0003                                                             ;A5C33B;
+    %spritemapEntry(0, $00, $F8, 0, 1, 2, 3, $1BD)
+    %spritemapEntry(0, $00, $F0, 0, 1, 2, 3, $1AD)
+    %spritemapEntry(1, $1F8, $00, 0, 1, 2, 3, $1A9)
 
 Spritemap_Draygon_49:
-    dw $0003,$0000                                                       ;A5C34C;
-    db $F8                                                               ;A5C350;
-    dw $67BC,$0000                                                       ;A5C351;
-    db $F0                                                               ;A5C355;
-    dw $67AC,$81F8                                                       ;A5C356;
-    db $00                                                               ;A5C35A;
-    dw $67A7                                                             ;A5C35B;
+    dw $0003                                                             ;A5C34C;
+    %spritemapEntry(0, $00, $F8, 0, 1, 2, 3, $1BC)
+    %spritemapEntry(0, $00, $F0, 0, 1, 2, 3, $1AC)
+    %spritemapEntry(1, $1F8, $00, 0, 1, 2, 3, $1A7)
 
 Spritemap_Draygon_4A:
-    dw $0004,$0004                                                       ;A5C35D;
-    db $F4                                                               ;A5C361;
-    dw $67BB,$0004                                                       ;A5C362;
-    db $EC                                                               ;A5C366;
-    dw $67AB,$0004                                                       ;A5C367;
-    db $FC                                                               ;A5C36B;
-    dw $67A4,$81F4                                                       ;A5C36C;
-    db $FC                                                               ;A5C370;
-    dw $67A5                                                             ;A5C371;
+    dw $0004                                                             ;A5C35D;
+    %spritemapEntry(0, $04, $F4, 0, 1, 2, 3, $1BB)
+    %spritemapEntry(0, $04, $EC, 0, 1, 2, 3, $1AB)
+    %spritemapEntry(0, $04, $FC, 0, 1, 2, 3, $1A4)
+    %spritemapEntry(1, $1F4, $FC, 0, 1, 2, 3, $1A5)
 
 Spritemap_Draygon_4B:
-    dw $0002,$8000                                                       ;A5C373;
-    db $F8                                                               ;A5C377;
-    dw $67A0,$81F0                                                       ;A5C378;
-    db $F8                                                               ;A5C37C;
-    dw $67A2                                                             ;A5C37D;
+    dw $0002                                                             ;A5C373;
+    %spritemapEntry(1, $00, $F8, 0, 1, 2, 3, $1A0)
+    %spritemapEntry(1, $1F0, $F8, 0, 1, 2, 3, $1A2)
 
 Spritemap_Draygon_4C:
-    dw $0003,$0000                                                       ;A5C37F;
-    db $00                                                               ;A5C383;
-    dw $6797,$0008                                                       ;A5C384;
-    db $00                                                               ;A5C388;
-    dw $6796,$81F0                                                       ;A5C389;
-    db $F8                                                               ;A5C38D;
-    dw $67AE                                                             ;A5C38E;
+    dw $0003                                                             ;A5C37F;
+    %spritemapEntry(0, $00, $00, 0, 1, 2, 3, $197)
+    %spritemapEntry(0, $08, $00, 0, 1, 2, 3, $196)
+    %spritemapEntry(1, $1F0, $F8, 0, 1, 2, 3, $1AE)
 
 Spritemap_Draygon_4D:
-    dw $0003,$0000                                                       ;A5C390;
-    db $00                                                               ;A5C394;
-    dw $67D1,$0008                                                       ;A5C395;
-    db $00                                                               ;A5C399;
-    dw $67D0,$81F0                                                       ;A5C39A;
-    db $F8                                                               ;A5C39E;
-    dw $67C2                                                             ;A5C39F;
+    dw $0003                                                             ;A5C390;
+    %spritemapEntry(0, $00, $00, 0, 1, 2, 3, $1D1)
+    %spritemapEntry(0, $08, $00, 0, 1, 2, 3, $1D0)
+    %spritemapEntry(1, $1F0, $F8, 0, 1, 2, 3, $1C2)
 
 Spritemap_Draygon_4E:
-    dw $0003,$01FC                                                       ;A5C3A1;
-    db $04                                                               ;A5C3A5;
-    dw $6787,$0004                                                       ;A5C3A6;
-    db $04                                                               ;A5C3AA;
-    dw $6786,$81F4                                                       ;A5C3AB;
-    db $F4                                                               ;A5C3AF;
-    dw $67C4                                                             ;A5C3B0;
+    dw $0003                                                             ;A5C3A1;
+    %spritemapEntry(0, $1FC, $04, 0, 1, 2, 3, $187)
+    %spritemapEntry(0, $04, $04, 0, 1, 2, 3, $186)
+    %spritemapEntry(1, $1F4, $F4, 0, 1, 2, 3, $1C4)
 
 Spritemap_Draygon_4F:
-    dw $0002,$81F8                                                       ;A5C3B2;
-    db $00                                                               ;A5C3B6;
-    dw $6788,$81F8                                                       ;A5C3B7;
-    db $F0                                                               ;A5C3BB;
-    dw $67C6                                                             ;A5C3BC;
+    dw $0002                                                             ;A5C3B2;
+    %spritemapEntry(1, $1F8, $00, 0, 1, 2, 3, $188)
+    %spritemapEntry(1, $1F8, $F0, 0, 1, 2, 3, $1C6)
 
 Spritemap_Draygon_50:
-    dw $0003,$0000                                                       ;A5C3BE;
-    db $00                                                               ;A5C3C2;
-    dw $E1BD,$0000                                                       ;A5C3C3;
-    db $08                                                               ;A5C3C7;
-    dw $E1AD,$81F8                                                       ;A5C3C8;
-    db $F0                                                               ;A5C3CC;
-    dw $21C8                                                             ;A5C3CD;
+    dw $0003                                                             ;A5C3BE;
+    %spritemapEntry(0, $00, $00, 1, 1, 2, 0, $1BD)
+    %spritemapEntry(0, $00, $08, 1, 1, 2, 0, $1AD)
+    %spritemapEntry(1, $1F8, $F0, 0, 0, 2, 0, $1C8)
 
 Spritemap_Draygon_51:
-    dw $0003,$01F8                                                       ;A5C3CF;
-    db $00                                                               ;A5C3D3;
-    dw $A7BC,$01F8                                                       ;A5C3D4;
-    db $08                                                               ;A5C3D8;
-    dw $A7AC,$81F8                                                       ;A5C3D9;
-    db $F0                                                               ;A5C3DD;
-    dw $A7A7                                                             ;A5C3DE;
+    dw $0003                                                             ;A5C3CF;
+    %spritemapEntry(0, $1F8, $00, 1, 0, 2, 3, $1BC)
+    %spritemapEntry(0, $1F8, $08, 1, 0, 2, 3, $1AC)
+    %spritemapEntry(1, $1F8, $F0, 1, 0, 2, 3, $1A7)
 
 Spritemap_Draygon_52:
-    dw $0004,$01F4                                                       ;A5C3E0;
-    db $04                                                               ;A5C3E4;
-    dw $A7BB,$01F4                                                       ;A5C3E5;
-    db $0C                                                               ;A5C3E9;
-    dw $A7AB,$01F4                                                       ;A5C3EA;
-    db $FC                                                               ;A5C3EE;
-    dw $A7A4,$81FC                                                       ;A5C3EF;
-    db $F4                                                               ;A5C3F3;
-    dw $A7A5                                                             ;A5C3F4;
+    dw $0004                                                             ;A5C3E0;
+    %spritemapEntry(0, $1F4, $04, 1, 0, 2, 3, $1BB)
+    %spritemapEntry(0, $1F4, $0C, 1, 0, 2, 3, $1AB)
+    %spritemapEntry(0, $1F4, $FC, 1, 0, 2, 3, $1A4)
+    %spritemapEntry(1, $1FC, $F4, 1, 0, 2, 3, $1A5)
 
 Spritemap_Draygon_53:
-    dw $0002,$81F0                                                       ;A5C3F6;
-    db $F8                                                               ;A5C3FA;
-    dw $A7A0,$8000                                                       ;A5C3FB;
-    db $F8                                                               ;A5C3FF;
-    dw $A7A2                                                             ;A5C400;
+    dw $0002                                                             ;A5C3F6;
+    %spritemapEntry(1, $1F0, $F8, 1, 0, 2, 3, $1A0)
+    %spritemapEntry(1, $00, $F8, 1, 0, 2, 3, $1A2)
 
 Spritemap_Draygon_54:
-    dw $0003,$01F8                                                       ;A5C402;
-    db $F8                                                               ;A5C406;
-    dw $A797,$01F0                                                       ;A5C407;
-    db $F8                                                               ;A5C40B;
-    dw $A796,$8000                                                       ;A5C40C;
-    db $F8                                                               ;A5C410;
-    dw $A7AE                                                             ;A5C411;
+    dw $0003                                                             ;A5C402;
+    %spritemapEntry(0, $1F8, $F8, 1, 0, 2, 3, $197)
+    %spritemapEntry(0, $1F0, $F8, 1, 0, 2, 3, $196)
+    %spritemapEntry(1, $00, $F8, 1, 0, 2, 3, $1AE)
 
 Spritemap_Draygon_55:
-    dw $0003,$01F8                                                       ;A5C413;
-    db $F8                                                               ;A5C417;
-    dw $A7D1,$01F0                                                       ;A5C418;
-    db $F8                                                               ;A5C41C;
-    dw $A7D0,$8000                                                       ;A5C41D;
-    db $F8                                                               ;A5C421;
-    dw $A7C2                                                             ;A5C422;
+    dw $0003                                                             ;A5C413;
+    %spritemapEntry(0, $1F8, $F8, 1, 0, 2, 3, $1D1)
+    %spritemapEntry(0, $1F0, $F8, 1, 0, 2, 3, $1D0)
+    %spritemapEntry(1, $00, $F8, 1, 0, 2, 3, $1C2)
 
 Spritemap_Draygon_56:
-    dw $0003,$01FC                                                       ;A5C424;
-    db $F4                                                               ;A5C428;
-    dw $A787,$01F4                                                       ;A5C429;
-    db $F4                                                               ;A5C42D;
-    dw $A786,$81FC                                                       ;A5C42E;
-    db $FC                                                               ;A5C432;
-    dw $A7C4                                                             ;A5C433;
+    dw $0003                                                             ;A5C424;
+    %spritemapEntry(0, $1FC, $F4, 1, 0, 2, 3, $187)
+    %spritemapEntry(0, $1F4, $F4, 1, 0, 2, 3, $186)
+    %spritemapEntry(1, $1FC, $FC, 1, 0, 2, 3, $1C4)
 
 Spritemap_Draygon_57:
-    dw $0002,$81F8                                                       ;A5C435;
-    db $F0                                                               ;A5C439;
-    dw $A788,$81F8                                                       ;A5C43A;
-    db $00                                                               ;A5C43E;
-    dw $A7C6                                                             ;A5C43F;
+    dw $0002                                                             ;A5C435;
+    %spritemapEntry(1, $1F8, $F0, 1, 0, 2, 3, $188)
+    %spritemapEntry(1, $1F8, $00, 1, 0, 2, 3, $1C6)
 
 Spritemap_Draygon_58:
-    dw $0001,$81F8                                                       ;A5C441;
-    db $F8                                                               ;A5C445;
-    dw $6784                                                             ;A5C446;
+    dw $0001                                                             ;A5C441;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 3, $184)
 
 Spritemap_Draygon_59:
-    dw $0001,$81F8                                                       ;A5C448;
-    db $F8                                                               ;A5C44C;
-    dw $6782                                                             ;A5C44D;
+    dw $0001                                                             ;A5C448;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 3, $182)
 
 Spritemap_Draygon_5A:
-    dw $0001,$81F8                                                       ;A5C44F;
-    db $F8                                                               ;A5C453;
-    dw $6780                                                             ;A5C454;
+    dw $0001                                                             ;A5C44F;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 3, $180)
 
 Spritemap_Draygon_5B:
-    dw $0001,$81F8                                                       ;A5C456;
-    db $F8                                                               ;A5C45A;
-    dw $2784                                                             ;A5C45B;
+    dw $0001                                                             ;A5C456;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 3, $184)
 
 Spritemap_Draygon_5C:
-    dw $0001,$81F8                                                       ;A5C45D;
-    db $F8                                                               ;A5C461;
-    dw $2782                                                             ;A5C462;
+    dw $0001                                                             ;A5C45D;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 3, $182)
 
 Spritemap_Draygon_5D:
-    dw $0001,$81F8                                                       ;A5C464;
-    db $F8                                                               ;A5C468;
-    dw $2780                                                             ;A5C469;
+    dw $0001                                                             ;A5C464;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 3, $180)
+
 
 InitAI_DraygonEye:
     LDX.W $0E54                                                          ;A5C46B;
@@ -6814,510 +6399,510 @@ RTL_A5C5C6:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DraygonFightIntroDanceData_KeikoLove_A5C5C7:
-    db $01,$FF,$01,$00,$00,$FF,$01,$00,$01,$FF,$01,$00,$00,$FF,$01,$00   ;A5C5C7;
-    db $01,$FF,$01,$00,$00,$FF,$01,$00,$01,$FF,$00,$FF,$01,$00,$01,$FF   ;A5C5D7;
-    db $01,$FF,$01,$FF,$01,$FF,$00,$FF,$01,$00,$00,$FF,$01,$FF,$00,$FF   ;A5C5E7;
-    db $01,$00,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF   ;A5C5F7;
-    db $00,$FF,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FE   ;A5C607;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FE,$FF,$FF,$00,$FF,$00,$FF   ;A5C617;
-    db $00,$FE,$FF,$FF,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$00,$FF,$FF,$FF   ;A5C627;
-    db $00,$FF,$FF,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF   ;A5C637;
-    db $FF,$00,$FF,$00,$FF,$01,$00,$01,$FF,$00,$00,$01,$FF,$01,$00,$01   ;A5C647;
-    db $00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$00,$01,$FF,$01,$00,$01   ;A5C657;
-    db $00,$01,$00,$02,$00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$00,$01   ;A5C667;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$01,$00,$01   ;A5C677;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5C687;
-    db $00,$01,$01,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5C697;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$00,$01   ;A5C6A7;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$02,$00,$01,$00,$01,$00,$01   ;A5C6B7;
-    db $00,$01,$00,$01,$00,$02,$00,$01,$00,$01,$00,$01,$00,$02,$00,$01   ;A5C6C7;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5C6D7;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$FF,$01,$FF,$00,$FF   ;A5C6E7;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF   ;A5C6F7;
-    db $00,$FE,$00,$FF,$00,$FF,$01,$FF,$00,$FE,$00,$FF,$00,$FF,$00,$FF   ;A5C707;
-    db $00,$FE,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FE,$01,$FF,$00,$FF   ;A5C717;
-    db $00,$FF,$00,$FF,$01,$FF,$00,$FF,$01,$FF,$00,$FF,$01,$FF,$01,$FF   ;A5C727;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$FF,$01,$00,$01,$00   ;A5C737;
-    db $01,$01,$01,$00,$01,$01,$01,$00,$01,$01,$01,$01,$00,$01,$01,$01   ;A5C747;
-    db $00,$01,$01,$00,$00,$01,$00,$01,$00,$01,$01,$02,$00,$01,$00,$01   ;A5C757;
-    db $FF,$01,$00,$01,$00,$01,$00,$01,$FF,$01,$00,$01,$FF,$01,$00,$01   ;A5C767;
-    db $FF,$01,$FF,$01,$FF,$01,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$00   ;A5C777;
-    db $FF,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$FF,$FF,$00,$FF,$FF,$00,$01   ;A5C787;
-    db $01,$01,$01,$01,$01,$01,$00,$01,$01,$01,$01,$01,$01,$01,$01,$00   ;A5C797;
-    db $01,$01,$01,$01,$01,$01,$02,$01,$01,$00,$00,$01,$01,$00,$01,$01   ;A5C7A7;
-    db $01,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;A5C7B7;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$02,$00   ;A5C7C7;
-    db $01,$00,$02,$FF,$01,$00,$02,$00,$01,$00,$02,$FF,$01,$00,$02,$00   ;A5C7D7;
-    db $01,$FF,$02,$00,$01,$00,$01,$FF,$02,$00,$01,$FF,$01,$00,$01,$FF   ;A5C7E7;
-    db $02,$FF,$01,$00,$01,$FF,$01,$FF,$01,$FF,$01,$00,$00,$FF,$01,$FF   ;A5C7F7;
-    db $01,$FF,$01,$FE,$00,$FF,$01,$FF,$01,$FF,$00,$FF,$00,$FE,$01,$FF   ;A5C807;
-    db $00,$FE,$00,$FF,$01,$FF,$00,$FE,$00,$FF,$00,$FE,$00,$FE,$00,$FF   ;A5C817;
-    db $00,$FE,$00,$FF,$00,$FE,$FF,$FE,$00,$FF,$00,$FE,$FF,$FE,$00,$FF   ;A5C827;
-    db $00,$FE,$FF,$FE,$FF,$FE,$00,$FF,$FF,$FE,$FF,$FE,$00,$FE,$FF,$FF   ;A5C837;
-    db $FF,$FE,$FF,$FF,$FF,$FE,$FF,$FF,$00,$FF,$FF,$FE,$FF,$FF,$FF,$FF   ;A5C847;
-    db $FF,$FF,$FF,$00,$FF,$FF,$FF,$00,$FF,$FF,$FF,$00,$FF,$00,$FF,$00   ;A5C857;
-    db $FF,$01,$FF,$00,$FF,$01,$FF,$01,$FF,$01,$FF,$02,$FF,$01,$00,$01   ;A5C867;
-    db $FF,$02,$FF,$01,$00,$02,$FF,$01,$FF,$02,$00,$02,$FF,$01,$00,$02   ;A5C877;
-    db $00,$02,$FF,$02,$00,$01,$00,$02,$FF,$02,$00,$02,$00,$01,$00,$02   ;A5C887;
-    db $00,$01,$00,$02,$00,$02,$00,$01,$00,$02,$00,$01,$01,$02,$00,$01   ;A5C897;
-    db $00,$01,$01,$02,$00,$01,$01,$02,$00,$01,$01,$01,$00,$01,$01,$02   ;A5C8A7;
-    db $01,$01,$00,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01   ;A5C8B7;
-    db $01,$01,$01,$01,$02,$00,$01,$01,$01,$01,$01,$01,$02,$00,$01,$01   ;A5C8C7;
-    db $01,$00,$02,$01,$01,$00,$01,$01,$02,$00,$01,$00,$02,$01,$01,$00   ;A5C8D7;
-    db $02,$00,$01,$00,$01,$00,$02,$00,$01,$00,$02,$00,$01,$00,$02,$00   ;A5C8E7;
-    db $01,$00,$01,$00,$02,$00,$01,$FF,$01,$00,$02,$00,$01,$00,$01,$FF   ;A5C8F7;
-    db $01,$00,$01,$FF,$01,$00,$01,$FF,$01,$00,$01,$FF,$01,$FF,$01,$FF   ;A5C907;
-    db $00,$FF,$01,$FF,$00,$FF,$00,$FF,$01,$FE,$00,$FF,$00,$FF,$00,$FF   ;A5C917;
-    db $00,$FE,$00,$FF,$00,$FE,$00,$FF,$00,$FE,$00,$FF,$00,$FE,$00,$FF   ;A5C927;
-    db $00,$FE,$00,$FE,$00,$FF,$00,$FE,$00,$FE,$00,$FE,$00,$FF,$00,$FE   ;A5C937;
-    db $00,$FE,$00,$FF,$00,$FE,$00,$FE,$00,$FF,$00,$FE,$00,$FE,$00,$FF   ;A5C947;
-    db $00,$FE,$00,$FF,$00,$FF,$00,$FE,$00,$FF,$00,$FF,$00,$FF,$01,$FF   ;A5C957;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5C967;
-    db $00,$01,$00,$01,$00,$01,$01,$02,$00,$01,$00,$02,$00,$01,$00,$02   ;A5C977;
-    db $00,$01,$00,$02,$FF,$01,$00,$02,$00,$02,$00,$02,$00,$01,$00,$02   ;A5C987;
-    db $00,$02,$00,$01,$00,$02,$00,$02,$00,$02,$00,$01,$00,$02,$00,$01   ;A5C997;
-    db $00,$02,$FF,$01,$00,$02,$00,$01,$00,$02,$00,$01,$01,$01,$00,$01   ;A5C9A7;
-    db $00,$02,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$01,$01,$01,$01   ;A5C9B7;
-    db $01,$01,$01,$01,$01,$00,$01,$01,$01,$00,$01,$01,$01,$00,$02,$00   ;A5C9C7;
-    db $01,$01,$01,$00,$02,$00,$01,$01,$01,$FF,$01,$00,$00,$FF,$01,$00   ;A5C9D7;
-    db $01,$FF,$01,$00,$00,$FF,$01,$00,$01,$FF,$01,$00,$00,$FF,$01,$00   ;A5C9E7;
-    db $01,$FF,$00,$FF,$01,$00,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$00,$FF   ;A5C9F7;
-    db $01,$00,$00,$FF,$01,$FF,$00,$FF,$01,$00,$00,$FF,$01,$FF,$00,$FF   ;A5CA07;
-    db $00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF   ;A5CA17;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FE,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;A5CA27;
-    db $00,$FE,$FF,$FF,$00,$FF,$00,$FF,$00,$FE,$FF,$FF,$00,$FF,$00,$FF   ;A5CA37;
-    db $FF,$FF,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$FF,$FF,$00,$FF,$00,$FF   ;A5CA47;
-    db $FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$01,$00,$01   ;A5CA57;
-    db $FF,$00,$00,$01,$FF,$01,$00,$01,$00,$01,$00,$01,$FF,$01,$00,$01   ;A5CA67;
-    db $00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$00,$02,$00,$01,$00,$01   ;A5CA77;
-    db $FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5CA87;
-    db $00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5CA97;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01   ;A5CAA7;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5CAB7;
-    db $01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5CAC7;
-    db $00,$02,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$02,$00,$01   ;A5CAD7;
-    db $00,$01,$00,$01,$00,$02,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5CAE7;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5CAF7;
-    db $00,$01,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;A5CB07;
-    db $00,$FF,$01,$FF,$00,$FF,$00,$FF,$00,$FE,$00,$FF,$00,$FF,$01,$FF   ;A5CB17;
-    db $00,$FE,$00,$FF,$00,$FF,$00,$FF,$00,$FE,$01,$FF,$00,$FF,$00,$FF   ;A5CB27;
-    db $00,$FF,$00,$FE,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF   ;A5CB37;
-    db $01,$FF,$00,$FF,$01,$FF,$01,$FF,$01,$00,$00,$FF,$01,$00,$01,$00   ;A5CB47;
-    db $01,$00,$01,$FF,$01,$00,$01,$00,$01,$01,$01,$00,$01,$01,$01,$00   ;A5CB57;
-    db $01,$01,$01,$01,$00,$01,$01,$01,$00,$01,$01,$00,$00,$01,$00,$01   ;A5CB67;
-    db $00,$01,$01,$02,$00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$00,$01   ;A5CB77;
-    db $FF,$01,$00,$01,$FF,$01,$00,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$00   ;A5CB87;
-    db $FF,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$FF,$00   ;A5CB97;
-    db $FF,$FF,$FF,$00,$FF,$FF,$00,$01,$01,$01,$01,$01,$01,$01,$00,$01   ;A5CBA7;
-    db $01,$01,$01,$01,$01,$01,$01,$00,$01,$01,$01,$01,$01,$01,$02,$01   ;A5CBB7;
-    db $01,$00,$00,$01,$01,$00,$01,$01,$01,$00,$01,$00,$01,$01,$01,$00   ;A5CBC7;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;A5CBD7;
-    db $01,$00,$01,$00,$01,$00,$01,$FF,$01,$FF,$00,$FF,$01,$00,$01,$FF   ;A5CBE7;
-    db $00,$FF,$01,$00,$01,$FF,$00,$FF,$01,$00,$00,$FF,$01,$FF,$01,$FF   ;A5CBF7;
-    db $01,$FF,$01,$FF,$00,$FF,$01,$FF,$00,$FF,$01,$FF,$01,$FF,$00,$FF   ;A5CC07;
-    db $01,$FF,$01,$FF,$00,$FF,$01,$FF,$00,$FF,$01,$FF,$01,$FF,$00,$FF   ;A5CC17;
-    db $01,$FE,$01,$FF,$00,$FF,$01,$FE,$00,$FF,$01,$FF,$00,$FF,$01,$FE   ;A5CC27;
-    db $01,$FF,$00,$FF,$00,$FE,$01,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FE   ;A5CC37;
-    db $00,$FF,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;A5CC47;
-    db $00,$FF,$FF,$00,$00,$FF,$FF,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;A5CC57;
-    db $FF,$00,$00,$01,$FF,$00,$FF,$01,$FF,$00,$FF,$01,$FF,$00,$FF,$01   ;A5CC67;
-    db $FF,$01,$FF,$00,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$01   ;A5CC77;
-    db $FF,$01,$00,$01,$FF,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$FF,$01   ;A5CC87;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$00,$01   ;A5CC97;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5CCA7;
-    db $00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$01   ;A5CCB7;
-    db $00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01   ;A5CCC7;
-    db $01,$01,$00,$01,$01,$01,$01,$01,$00,$01,$01,$01,$00,$01,$01,$01   ;A5CCD7;
-    db $01,$01,$01,$01,$01,$00,$01,$01,$01,$00,$01,$00,$01,$00,$01,$FF   ;A5CCE7;
-    db $01,$00,$01,$FF,$01,$00,$01,$FF,$00,$FF,$01,$00,$01,$FF,$01,$FF   ;A5CCF7;
-    db $01,$FF,$00,$FF,$01,$FF,$01,$FF,$00,$FF,$01,$FF,$01,$FE,$00,$FF   ;A5CD07;
-    db $01,$FF,$00,$FF,$01,$FF,$00,$FF,$01,$FF,$01,$FF,$00,$FF,$00,$FF   ;A5CD17;
-    db $01,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$00,$FF   ;A5CD27;
-    db $01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF   ;A5CD37;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;A5CD47;
-    db $00,$FF,$00,$FE,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$00,$FF,$FF,$FF   ;A5CD57;
-    db $FF,$FF,$00,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$00,$FF,$FF,$00,$FF,$FF   ;A5CD67;
-    db $FF,$00,$FF,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01   ;A5CD77;
-    db $FF,$00,$FF,$01,$FF,$01,$FF,$01,$FF,$00,$FF,$01,$00,$01,$FF,$02   ;A5CD87;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$01,$01,$01,$01,$01,$00,$01,$01   ;A5CD97;
-    db $01,$00,$01,$00,$02,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;A5CDA7;
-    db $01,$FF,$01,$00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$FF,$01,$00   ;A5CDB7;
-    db $01,$FF,$01,$00,$01,$FF,$01,$FF,$01,$FF,$01,$00,$01,$FF,$01,$00   ;A5CDC7;
-    db $01,$FF,$01,$FF,$01,$00,$01,$FF,$01,$00,$01,$FF,$01,$00,$01,$FF   ;A5CDD7;
-    db $01,$00,$00,$FF,$01,$00,$01,$FF,$01,$00,$01,$FF,$01,$00,$01,$FF   ;A5CDE7;
-    db $01,$00,$01,$FF,$01,$FF,$01,$00,$01,$FF,$01,$00,$01,$FF,$01,$00   ;A5CDF7;
+    db $01,$FF, $01,$00, $00,$FF, $01,$00, $01,$FF, $01,$00, $00,$FF, $01,$00 ;A5C5C7;
+    db $01,$FF, $01,$00, $00,$FF, $01,$00, $01,$FF, $00,$FF, $01,$00, $01,$FF ;A5C5D7;
+    db $01,$FF, $01,$FF, $01,$FF, $00,$FF, $01,$00, $00,$FF, $01,$FF, $00,$FF ;A5C5E7;
+    db $01,$00, $00,$FF, $01,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF ;A5C5F7;
+    db $00,$FF, $01,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FE ;A5C607;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FE, $FF,$FF, $00,$FF, $00,$FF ;A5C617;
+    db $00,$FE, $FF,$FF, $00,$FF, $00,$FF, $FF,$FF, $00,$FF, $00,$FF, $FF,$FF ;A5C627;
+    db $00,$FF, $FF,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF ;A5C637;
+    db $FF,$00, $FF,$00, $FF,$01, $00,$01, $FF,$00, $00,$01, $FF,$01, $00,$01 ;A5C647;
+    db $00,$01, $00,$01, $FF,$01, $00,$01, $00,$01, $00,$01, $FF,$01, $00,$01 ;A5C657;
+    db $00,$01, $00,$02, $00,$01, $00,$01, $FF,$01, $00,$01, $00,$01, $00,$01 ;A5C667;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $01,$01, $00,$01 ;A5C677;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5C687;
+    db $00,$01, $01,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5C697;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $01,$01, $00,$01, $00,$01, $00,$01 ;A5C6A7;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$02, $00,$01, $00,$01, $00,$01 ;A5C6B7;
+    db $00,$01, $00,$01, $00,$02, $00,$01, $00,$01, $00,$01, $00,$02, $00,$01 ;A5C6C7;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5C6D7;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$FF, $01,$FF, $00,$FF ;A5C6E7;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$FF, $00,$FF, $00,$FF ;A5C6F7;
+    db $00,$FE, $00,$FF, $00,$FF, $01,$FF, $00,$FE, $00,$FF, $00,$FF, $00,$FF ;A5C707;
+    db $00,$FE, $01,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FE, $01,$FF, $00,$FF ;A5C717;
+    db $00,$FF, $00,$FF, $01,$FF, $00,$FF, $01,$FF, $00,$FF, $01,$FF, $01,$FF ;A5C727;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$FF, $01,$00, $01,$00 ;A5C737;
+    db $01,$01, $01,$00, $01,$01, $01,$00, $01,$01, $01,$01, $00,$01, $01,$01 ;A5C747;
+    db $00,$01, $01,$00, $00,$01, $00,$01, $00,$01, $01,$02, $00,$01, $00,$01 ;A5C757;
+    db $FF,$01, $00,$01, $00,$01, $00,$01, $FF,$01, $00,$01, $FF,$01, $00,$01 ;A5C767;
+    db $FF,$01, $FF,$01, $FF,$01, $FF,$00, $FF,$01, $FF,$00, $FF,$00, $FF,$00 ;A5C777;
+    db $FF,$00, $FF,$00, $FF,$FF, $FF,$00, $FF,$FF, $FF,$00, $FF,$FF, $00,$01 ;A5C787;
+    db $01,$01, $01,$01, $01,$01, $00,$01, $01,$01, $01,$01, $01,$01, $01,$00 ;A5C797;
+    db $01,$01, $01,$01, $01,$01, $02,$01, $01,$00, $00,$01, $01,$00, $01,$01 ;A5C7A7;
+    db $01,$00, $01,$00, $01,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;A5C7B7;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $02,$00 ;A5C7C7;
+    db $01,$00, $02,$FF, $01,$00, $02,$00, $01,$00, $02,$FF, $01,$00, $02,$00 ;A5C7D7;
+    db $01,$FF, $02,$00, $01,$00, $01,$FF, $02,$00, $01,$FF, $01,$00, $01,$FF ;A5C7E7;
+    db $02,$FF, $01,$00, $01,$FF, $01,$FF, $01,$FF, $01,$00, $00,$FF, $01,$FF ;A5C7F7;
+    db $01,$FF, $01,$FE, $00,$FF, $01,$FF, $01,$FF, $00,$FF, $00,$FE, $01,$FF ;A5C807;
+    db $00,$FE, $00,$FF, $01,$FF, $00,$FE, $00,$FF, $00,$FE, $00,$FE, $00,$FF ;A5C817;
+    db $00,$FE, $00,$FF, $00,$FE, $FF,$FE, $00,$FF, $00,$FE, $FF,$FE, $00,$FF ;A5C827;
+    db $00,$FE, $FF,$FE, $FF,$FE, $00,$FF, $FF,$FE, $FF,$FE, $00,$FE, $FF,$FF ;A5C837;
+    db $FF,$FE, $FF,$FF, $FF,$FE, $FF,$FF, $00,$FF, $FF,$FE, $FF,$FF, $FF,$FF ;A5C847;
+    db $FF,$FF, $FF,$00, $FF,$FF, $FF,$00, $FF,$FF, $FF,$00, $FF,$00, $FF,$00 ;A5C857;
+    db $FF,$01, $FF,$00, $FF,$01, $FF,$01, $FF,$01, $FF,$02, $FF,$01, $00,$01 ;A5C867;
+    db $FF,$02, $FF,$01, $00,$02, $FF,$01, $FF,$02, $00,$02, $FF,$01, $00,$02 ;A5C877;
+    db $00,$02, $FF,$02, $00,$01, $00,$02, $FF,$02, $00,$02, $00,$01, $00,$02 ;A5C887;
+    db $00,$01, $00,$02, $00,$02, $00,$01, $00,$02, $00,$01, $01,$02, $00,$01 ;A5C897;
+    db $00,$01, $01,$02, $00,$01, $01,$02, $00,$01, $01,$01, $00,$01, $01,$02 ;A5C8A7;
+    db $01,$01, $00,$01, $01,$01, $01,$01, $01,$01, $01,$01, $01,$01, $01,$01 ;A5C8B7;
+    db $01,$01, $01,$01, $02,$00, $01,$01, $01,$01, $01,$01, $02,$00, $01,$01 ;A5C8C7;
+    db $01,$00, $02,$01, $01,$00, $01,$01, $02,$00, $01,$00, $02,$01, $01,$00 ;A5C8D7;
+    db $02,$00, $01,$00, $01,$00, $02,$00, $01,$00, $02,$00, $01,$00, $02,$00 ;A5C8E7;
+    db $01,$00, $01,$00, $02,$00, $01,$FF, $01,$00, $02,$00, $01,$00, $01,$FF ;A5C8F7;
+    db $01,$00, $01,$FF, $01,$00, $01,$FF, $01,$00, $01,$FF, $01,$FF, $01,$FF ;A5C907;
+    db $00,$FF, $01,$FF, $00,$FF, $00,$FF, $01,$FE, $00,$FF, $00,$FF, $00,$FF ;A5C917;
+    db $00,$FE, $00,$FF, $00,$FE, $00,$FF, $00,$FE, $00,$FF, $00,$FE, $00,$FF ;A5C927;
+    db $00,$FE, $00,$FE, $00,$FF, $00,$FE, $00,$FE, $00,$FE, $00,$FF, $00,$FE ;A5C937;
+    db $00,$FE, $00,$FF, $00,$FE, $00,$FE, $00,$FF, $00,$FE, $00,$FE, $00,$FF ;A5C947;
+    db $00,$FE, $00,$FF, $00,$FF, $00,$FE, $00,$FF, $00,$FF, $00,$FF, $01,$FF ;A5C957;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5C967;
+    db $00,$01, $00,$01, $00,$01, $01,$02, $00,$01, $00,$02, $00,$01, $00,$02 ;A5C977;
+    db $00,$01, $00,$02, $FF,$01, $00,$02, $00,$02, $00,$02, $00,$01, $00,$02 ;A5C987;
+    db $00,$02, $00,$01, $00,$02, $00,$02, $00,$02, $00,$01, $00,$02, $00,$01 ;A5C997;
+    db $00,$02, $FF,$01, $00,$02, $00,$01, $00,$02, $00,$01, $01,$01, $00,$01 ;A5C9A7;
+    db $00,$02, $00,$01, $00,$01, $01,$01, $00,$01, $00,$01, $01,$01, $01,$01 ;A5C9B7;
+    db $01,$01, $01,$01, $01,$00, $01,$01, $01,$00, $01,$01, $01,$00, $02,$00 ;A5C9C7;
+    db $01,$01, $01,$00, $02,$00, $01,$01, $01,$FF, $01,$00, $00,$FF, $01,$00 ;A5C9D7;
+    db $01,$FF, $01,$00, $00,$FF, $01,$00, $01,$FF, $01,$00, $00,$FF, $01,$00 ;A5C9E7;
+    db $01,$FF, $00,$FF, $01,$00, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $00,$FF ;A5C9F7;
+    db $01,$00, $00,$FF, $01,$FF, $00,$FF, $01,$00, $00,$FF, $01,$FF, $00,$FF ;A5CA07;
+    db $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $01,$FF, $00,$FF, $00,$FF ;A5CA17;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FE, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;A5CA27;
+    db $00,$FE, $FF,$FF, $00,$FF, $00,$FF, $00,$FE, $FF,$FF, $00,$FF, $00,$FF ;A5CA37;
+    db $FF,$FF, $00,$FF, $00,$FF, $FF,$FF, $00,$FF, $FF,$FF, $00,$FF, $00,$FF ;A5CA47;
+    db $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$01, $00,$01 ;A5CA57;
+    db $FF,$00, $00,$01, $FF,$01, $00,$01, $00,$01, $00,$01, $FF,$01, $00,$01 ;A5CA67;
+    db $00,$01, $00,$01, $FF,$01, $00,$01, $00,$01, $00,$02, $00,$01, $00,$01 ;A5CA77;
+    db $FF,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5CA87;
+    db $00,$01, $00,$01, $01,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5CA97;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01 ;A5CAA7;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5CAB7;
+    db $01,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5CAC7;
+    db $00,$02, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$02, $00,$01 ;A5CAD7;
+    db $00,$01, $00,$01, $00,$02, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5CAE7;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5CAF7;
+    db $00,$01, $00,$FF, $01,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;A5CB07;
+    db $00,$FF, $01,$FF, $00,$FF, $00,$FF, $00,$FE, $00,$FF, $00,$FF, $01,$FF ;A5CB17;
+    db $00,$FE, $00,$FF, $00,$FF, $00,$FF, $00,$FE, $01,$FF, $00,$FF, $00,$FF ;A5CB27;
+    db $00,$FF, $00,$FE, $01,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$FF, $00,$FF ;A5CB37;
+    db $01,$FF, $00,$FF, $01,$FF, $01,$FF, $01,$00, $00,$FF, $01,$00, $01,$00 ;A5CB47;
+    db $01,$00, $01,$FF, $01,$00, $01,$00, $01,$01, $01,$00, $01,$01, $01,$00 ;A5CB57;
+    db $01,$01, $01,$01, $00,$01, $01,$01, $00,$01, $01,$00, $00,$01, $00,$01 ;A5CB67;
+    db $00,$01, $01,$02, $00,$01, $00,$01, $FF,$01, $00,$01, $00,$01, $00,$01 ;A5CB77;
+    db $FF,$01, $00,$01, $FF,$01, $00,$01, $FF,$01, $FF,$01, $FF,$01, $FF,$00 ;A5CB87;
+    db $FF,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$FF, $FF,$00 ;A5CB97;
+    db $FF,$FF, $FF,$00, $FF,$FF, $00,$01, $01,$01, $01,$01, $01,$01, $00,$01 ;A5CBA7;
+    db $01,$01, $01,$01, $01,$01, $01,$00, $01,$01, $01,$01, $01,$01, $02,$01 ;A5CBB7;
+    db $01,$00, $00,$01, $01,$00, $01,$01, $01,$00, $01,$00, $01,$01, $01,$00 ;A5CBC7;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;A5CBD7;
+    db $01,$00, $01,$00, $01,$00, $01,$FF, $01,$FF, $00,$FF, $01,$00, $01,$FF ;A5CBE7;
+    db $00,$FF, $01,$00, $01,$FF, $00,$FF, $01,$00, $00,$FF, $01,$FF, $01,$FF ;A5CBF7;
+    db $01,$FF, $01,$FF, $00,$FF, $01,$FF, $00,$FF, $01,$FF, $01,$FF, $00,$FF ;A5CC07;
+    db $01,$FF, $01,$FF, $00,$FF, $01,$FF, $00,$FF, $01,$FF, $01,$FF, $00,$FF ;A5CC17;
+    db $01,$FE, $01,$FF, $00,$FF, $01,$FE, $00,$FF, $01,$FF, $00,$FF, $01,$FE ;A5CC27;
+    db $01,$FF, $00,$FF, $00,$FE, $01,$FF, $00,$FF, $01,$FF, $00,$FF, $00,$FE ;A5CC37;
+    db $00,$FF, $01,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;A5CC47;
+    db $00,$FF, $FF,$00, $00,$FF, $FF,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;A5CC57;
+    db $FF,$00, $00,$01, $FF,$00, $FF,$01, $FF,$00, $FF,$01, $FF,$00, $FF,$01 ;A5CC67;
+    db $FF,$01, $FF,$00, $FF,$01, $FF,$01, $FF,$01, $FF,$01, $FF,$01, $FF,$01 ;A5CC77;
+    db $FF,$01, $00,$01, $FF,$01, $00,$01, $FF,$01, $00,$01, $00,$01, $FF,$01 ;A5CC87;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $FF,$01, $00,$01, $00,$01, $00,$01 ;A5CC97;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5CCA7;
+    db $00,$01, $00,$01, $01,$01, $00,$01, $00,$01, $00,$01, $00,$01, $01,$01 ;A5CCB7;
+    db $00,$01, $00,$01, $01,$01, $00,$01, $00,$01, $01,$01, $00,$01, $00,$01 ;A5CCC7;
+    db $01,$01, $00,$01, $01,$01, $01,$01, $00,$01, $01,$01, $00,$01, $01,$01 ;A5CCD7;
+    db $01,$01, $01,$01, $01,$00, $01,$01, $01,$00, $01,$00, $01,$00, $01,$FF ;A5CCE7;
+    db $01,$00, $01,$FF, $01,$00, $01,$FF, $00,$FF, $01,$00, $01,$FF, $01,$FF ;A5CCF7;
+    db $01,$FF, $00,$FF, $01,$FF, $01,$FF, $00,$FF, $01,$FF, $01,$FE, $00,$FF ;A5CD07;
+    db $01,$FF, $00,$FF, $01,$FF, $00,$FF, $01,$FF, $01,$FF, $00,$FF, $00,$FF ;A5CD17;
+    db $01,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$FF, $00,$FF, $00,$FF, $00,$FF ;A5CD27;
+    db $01,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$FF, $00,$FF ;A5CD37;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;A5CD47;
+    db $00,$FF, $00,$FE, $00,$FF, $00,$FF, $FF,$FF, $00,$FF, $00,$FF, $FF,$FF ;A5CD57;
+    db $FF,$FF, $00,$FF, $FF,$FF, $FF,$FF, $FF,$FF, $00,$FF, $FF,$00, $FF,$FF ;A5CD67;
+    db $FF,$00, $FF,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$01 ;A5CD77;
+    db $FF,$00, $FF,$01, $FF,$01, $FF,$01, $FF,$00, $FF,$01, $00,$01, $FF,$02 ;A5CD87;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $01,$01, $01,$01, $01,$00, $01,$01 ;A5CD97;
+    db $01,$00, $01,$00, $02,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;A5CDA7;
+    db $01,$FF, $01,$00, $01,$00, $01,$FF, $01,$00, $01,$00, $01,$FF, $01,$00 ;A5CDB7;
+    db $01,$FF, $01,$00, $01,$FF, $01,$FF, $01,$FF, $01,$00, $01,$FF, $01,$00 ;A5CDC7;
+    db $01,$FF, $01,$FF, $01,$00, $01,$FF, $01,$00, $01,$FF, $01,$00, $01,$FF ;A5CDD7;
+    db $01,$00, $00,$FF, $01,$00, $01,$FF, $01,$00, $01,$FF, $01,$00, $01,$FF ;A5CDE7;
+    db $01,$00, $01,$FF, $01,$FF, $01,$00, $01,$FF, $01,$00, $01,$FF, $01,$00 ;A5CDF7;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 DraygonFightIntroDanceData_KeikoLove:
-    db $03,$00,$03,$00,$03,$00,$02,$FF,$03,$00,$03,$FF,$03,$00,$02,$FF   ;A5CE07;
-    db $03,$FF,$02,$FE,$02,$FF,$02,$FE,$02,$FE,$02,$FD,$02,$FE,$01,$FD   ;A5CE17;
-    db $02,$FD,$01,$FE,$01,$FD,$02,$FE,$01,$FE,$00,$FE,$01,$FE,$01,$FF   ;A5CE27;
-    db $01,$00,$00,$FF,$01,$00,$01,$01,$00,$01,$00,$01,$00,$02,$00,$02   ;A5CE37;
-    db $00,$02,$00,$02,$00,$02,$00,$03,$FF,$03,$00,$03,$00,$03,$FF,$04   ;A5CE47;
-    db $00,$03,$FF,$04,$00,$04,$FF,$04,$00,$04,$FF,$04,$FF,$04,$00,$05   ;A5CE57;
-    db $FF,$04,$FF,$04,$00,$05,$FF,$04,$FF,$04,$FF,$05,$FF,$04,$00,$04   ;A5CE67;
-    db $FF,$05,$FF,$04,$FF,$04,$FF,$04,$FF,$04,$00,$04,$FF,$03,$FF,$04   ;A5CE77;
-    db $FF,$03,$00,$03,$FF,$03,$FF,$03,$FF,$03,$00,$02,$FF,$02,$FF,$02   ;A5CE87;
-    db $00,$01,$FF,$02,$00,$01,$FF,$01,$FF,$00,$00,$FF,$00,$FF,$00,$FF   ;A5CE97;
-    db $00,$FF,$00,$FE,$00,$FF,$00,$FD,$00,$FE,$00,$FE,$00,$FD,$00,$FD   ;A5CEA7;
-    db $01,$FD,$00,$FD,$00,$FD,$01,$FD,$00,$FC,$01,$FD,$01,$FC,$00,$FD   ;A5CEB7;
-    db $01,$FC,$01,$FD,$00,$FC,$01,$FC,$01,$FD,$01,$FC,$01,$FD,$01,$FC   ;A5CEC7;
-    db $01,$FD,$01,$FD,$02,$FD,$01,$FD,$01,$FD,$02,$FD,$01,$FD,$01,$FE   ;A5CED7;
-    db $02,$FE,$02,$FE,$01,$FD,$02,$FF,$02,$FE,$02,$FE,$01,$FE,$02,$FF   ;A5CEE7;
-    db $02,$FE,$03,$FE,$02,$FF,$02,$FE,$03,$FE,$02,$FF,$03,$FE,$02,$FF   ;A5CEF7;
-    db $03,$FE,$03,$FE,$03,$FE,$03,$FE,$03,$FE,$02,$FF,$03,$FE,$03,$FE   ;A5CF07;
-    db $03,$FF,$03,$FE,$02,$FF,$03,$FF,$02,$FF,$03,$FF,$02,$00,$01,$FF   ;A5CF17;
-    db $02,$00,$01,$01,$02,$00,$00,$01,$01,$01,$00,$02,$00,$02,$00,$02   ;A5CF27;
-    db $00,$02,$FF,$02,$00,$03,$FF,$02,$FF,$03,$FE,$03,$FF,$03,$FF,$03   ;A5CF37;
-    db $FE,$03,$FE,$03,$FE,$03,$FE,$04,$FE,$03,$FE,$03,$FE,$03,$FE,$02   ;A5CF47;
-    db $FE,$03,$FD,$03,$FE,$02,$FE,$03,$FD,$02,$FE,$02,$FE,$01,$FD,$02   ;A5CF57;
-    db $FE,$01,$FD,$02,$FE,$01,$FD,$01,$FD,$01,$FE,$00,$FD,$01,$FD,$00   ;A5CF67;
-    db $FE,$00,$FD,$00,$FD,$FF,$FD,$00,$FD,$FF,$FD,$FF,$FD,$FF,$FD,$FE   ;A5CF77;
-    db $FD,$FF,$FD,$FE,$FE,$FE,$FE,$FE,$FF,$FE,$00,$FF,$01,$FE,$01,$FE   ;A5CF87;
-    db $02,$FE,$02,$FF,$03,$FE,$03,$FF,$04,$FF,$03,$FF,$03,$00,$03,$00   ;A5CF97;
-    db $03,$00,$03,$01,$03,$00,$02,$01,$02,$02,$03,$01,$02,$02,$02,$02   ;A5CFA7;
-    db $02,$02,$01,$02,$02,$02,$02,$03,$01,$03,$02,$02,$01,$03,$02,$03   ;A5CFB7;
-    db $01,$03,$01,$03,$02,$03,$01,$03,$01,$02,$01,$03,$01,$03,$02,$03   ;A5CFC7;
-    db $01,$03,$01,$02,$01,$03,$02,$03,$01,$02,$01,$03,$02,$02,$01,$02   ;A5CFD7;
-    db $02,$02,$01,$02,$02,$02,$02,$02,$02,$02,$02,$02,$02,$01,$02,$02   ;A5CFE7;
-    db $02,$01,$02,$01,$03,$01,$02,$01,$03,$01,$02,$01,$03,$00,$03,$01   ;A5CFF7;
-    db $03,$01,$01,$FF,$02,$00,$01,$FF,$02,$00,$01,$FF,$02,$00,$01,$FF   ;A5D007;
-    db $01,$00,$02,$FF,$01,$FF,$02,$00,$01,$FF,$02,$00,$01,$FF,$01,$FF   ;A5D017;
-    db $02,$00,$01,$FF,$01,$FF,$02,$FF,$01,$FF,$01,$00,$02,$FF,$01,$FF   ;A5D027;
-    db $01,$FF,$01,$FF,$02,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$02,$FF   ;A5D037;
-    db $01,$FF,$01,$FE,$01,$FF,$01,$FF,$01,$FF,$01,$FE,$01,$FF,$01,$FF   ;A5D047;
-    db $01,$FE,$00,$FF,$01,$FE,$01,$FF,$01,$FE,$00,$FF,$01,$FE,$01,$FF   ;A5D057;
-    db $00,$FE,$01,$FF,$00,$FE,$00,$FF,$01,$FE,$00,$FE,$00,$FF,$00,$FE   ;A5D067;
-    db $00,$FF,$00,$FE,$00,$FE,$00,$FF,$00,$FE,$00,$FF,$FF,$FE,$00,$FE   ;A5D077;
-    db $00,$FF,$FF,$FE,$FF,$FE,$00,$FF,$FF,$FE,$FF,$FF,$FF,$FE,$FF,$FF   ;A5D087;
-    db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FE,$FF,$FF,$00,$FF,$00,$FE,$00   ;A5D097;
-    db $FF,$00,$FF,$00,$FE,$01,$FF,$00,$FE,$01,$FF,$01,$FE,$01,$FF,$01   ;A5D0A7;
-    db $FF,$01,$FE,$01,$FF,$01,$FF,$02,$FF,$01,$FF,$01,$FF,$02,$FF,$01   ;A5D0B7;
-    db $FF,$01,$00,$02,$FF,$01,$FF,$02,$00,$01,$FF,$01,$00,$02,$00,$01   ;A5D0C7;
-    db $FF,$02,$00,$01,$00,$02,$00,$01,$00,$02,$FF,$01,$00,$02,$00,$02   ;A5D0D7;
-    db $00,$01,$00,$02,$00,$01,$00,$02,$00,$02,$00,$01,$00,$02,$00,$02   ;A5D0E7;
-    db $00,$01,$00,$02,$00,$02,$00,$01,$00,$02,$00,$02,$01,$01,$00,$02   ;A5D0F7;
-    db $00,$01,$01,$02,$00,$01,$01,$01,$00,$02,$01,$01,$01,$01,$00,$01   ;A5D107;
-    db $01,$01,$01,$02,$02,$00,$01,$01,$01,$01,$01,$01,$02,$01,$01,$00   ;A5D117;
-    db $02,$01,$01,$00,$02,$01,$01,$00,$02,$01,$01,$00,$02,$00,$02,$01   ;A5D127;
-    db $01,$00,$02,$00,$01,$00,$02,$00,$02,$00,$01,$00,$02,$00,$01,$00   ;A5D137;
-    db $02,$00,$01,$00,$02,$00,$01,$00,$02,$00,$01,$00,$01,$00,$02,$FF   ;A5D147;
-    db $01,$00,$02,$00,$01,$FF,$01,$00,$02,$FF,$01,$00,$01,$00,$02,$FF   ;A5D157;
-    db $01,$00,$01,$FF,$01,$FF,$01,$00,$02,$FF,$01,$00,$01,$FF,$01,$FF   ;A5D167;
-    db $01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$00,$FF,$01,$FF,$01,$FF   ;A5D177;
-    db $01,$FE,$00,$FF,$01,$FF,$00,$FF,$01,$FE,$01,$FF,$00,$FE,$01,$FF   ;A5D187;
-    db $00,$FE,$01,$FF,$00,$FE,$01,$FE,$00,$FF,$01,$FE,$00,$FE,$01,$FE   ;A5D197;
-    db $01,$FE,$00,$FE,$01,$FE,$00,$FF,$01,$FE,$00,$FE,$01,$FE,$00,$FE   ;A5D1A7;
-    db $01,$FE,$00,$FE,$01,$FE,$00,$FE,$01,$FE,$00,$FE,$00,$FE,$01,$FF   ;A5D1B7;
-    db $00,$FE,$01,$FE,$00,$FF,$01,$FE,$00,$FF,$00,$FE,$01,$FF,$00,$FF   ;A5D1C7;
-    db $00,$FE,$01,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$01,$00   ;A5D1D7;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5D1E7;
-    db $00,$02,$00,$01,$00,$02,$FF,$01,$00,$02,$00,$02,$00,$01,$00,$02   ;A5D1F7;
-    db $00,$02,$FF,$01,$00,$02,$00,$02,$00,$01,$FF,$02,$00,$02,$00,$01   ;A5D207;
-    db $00,$02,$FF,$01,$00,$02,$00,$01,$00,$02,$FF,$01,$00,$01,$00,$02   ;A5D217;
-    db $00,$01,$00,$01,$00,$02,$FF,$01,$00,$01,$00,$02,$00,$01,$00,$01   ;A5D227;
-    db $00,$02,$00,$01,$00,$01,$00,$01,$00,$02,$00,$01,$00,$01,$01,$02   ;A5D237;
-    db $00,$01,$00,$01,$01,$01,$00,$02,$00,$01,$01,$01,$00,$02,$01,$01   ;A5D247;
-    db $00,$01,$01,$01,$01,$02,$01,$01,$00,$01,$01,$01,$01,$01,$01,$01   ;A5D257;
-    db $01,$01,$01,$01,$01,$01,$01,$01,$01,$00,$02,$01,$01,$01,$01,$00   ;A5D267;
-    db $01,$01,$02,$00,$01,$00,$01,$01,$02,$00,$01,$00,$02,$00,$01,$01   ;A5D277;
-    db $01,$00,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$02,$FF   ;A5D287;
-    db $01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF   ;A5D297;
-    db $01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF   ;A5D2A7;
-    db $01,$FF,$01,$FF,$01,$FF,$00,$FF,$01,$FF,$01,$FE,$01,$FF,$01,$FF   ;A5D2B7;
-    db $01,$FF,$00,$FF,$01,$FF,$01,$FF,$01,$FF,$00,$FF,$01,$FF,$01,$FF   ;A5D2C7;
-    db $00,$FF,$01,$FF,$01,$FF,$00,$FE,$01,$FF,$01,$FF,$00,$FF,$01,$FF   ;A5D2D7;
-    db $00,$FF,$01,$FE,$01,$FF,$00,$FF,$01,$FF,$00,$FE,$01,$FF,$00,$FF   ;A5D2E7;
-    db $01,$FE,$00,$FF,$00,$FE,$01,$FF,$00,$FF,$01,$FE,$00,$FF,$00,$FE   ;A5D2F7;
-    db $01,$FE,$00,$FF,$01,$FE,$00,$FF,$00,$FE,$00,$FE,$01,$FE,$00,$FF   ;A5D307;
-    db $00,$FE,$01,$FE,$00,$FE,$00,$FE,$00,$FE,$01,$FE,$00,$FE,$00,$FE   ;A5D317;
-    db $00,$FE,$00,$FE,$00,$FE,$01,$FE,$00,$FE,$00,$FE,$00,$FE,$00,$FE   ;A5D327;
-    db $00,$FE,$00,$FE,$00,$FE,$00,$FF,$00,$FE,$00,$FE,$00,$FF,$00,$FE   ;A5D337;
-    db $00,$FF,$00,$FE,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$FF   ;A5D347;
-    db $00,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$01   ;A5D357;
-    db $FF,$01,$00,$01,$FF,$01,$FF,$01,$00,$02,$FF,$01,$FF,$02,$00,$01   ;A5D367;
-    db $FF,$02,$00,$02,$FF,$01,$FF,$02,$00,$02,$FF,$02,$FF,$01,$00,$02   ;A5D377;
-    db $FF,$02,$00,$02,$FF,$01,$00,$02,$00,$02,$FF,$01,$00,$02,$FF,$01   ;A5D387;
-    db $00,$02,$00,$02,$00,$01,$FF,$02,$00,$01,$00,$02,$00,$01,$00,$02   ;A5D397;
-    db $FF,$01,$00,$02,$00,$01,$00,$01,$00,$02,$00,$01,$00,$02,$00,$01   ;A5D3A7;
-    db $00,$01,$00,$02,$00,$01,$00,$01,$00,$02,$00,$01,$00,$01,$00,$02   ;A5D3B7;
-    db $00,$01,$00,$01,$01,$01,$00,$02,$00,$01,$00,$01,$00,$02,$00,$01   ;A5D3C7;
-    db $00,$01,$00,$02,$00,$01,$00,$01,$00,$02,$01,$01,$00,$01,$00,$02   ;A5D3D7;
-    db $00,$01,$00,$01,$00,$02,$00,$01,$00,$01,$00,$02,$00,$01,$00,$02   ;A5D3E7;
-    db $00,$01,$00,$01,$00,$02,$00,$01,$00,$02,$00,$01,$00,$02,$00,$01   ;A5D3F7;
-    db $00,$02,$00,$01,$00,$02,$FF,$02,$00,$01,$00,$02,$00,$02,$00,$01   ;A5D407;
-    db $FF,$02,$00,$02,$00,$01,$00,$02,$FF,$01,$00,$01,$00,$01,$00,$01   ;A5D417;
-    db $FF,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FE,$00,$FF   ;A5D427;
-    db $00,$FE,$00,$FF,$00,$FE,$01,$FE,$00,$FE,$00,$FE,$00,$FE,$00,$FE   ;A5D437;
-    db $01,$FE,$00,$FE,$00,$FD,$01,$FE,$00,$FE,$01,$FE,$00,$FE,$01,$FE   ;A5D447;
-    db $00,$FD,$01,$FE,$01,$FE,$00,$FE,$01,$FE,$01,$FE,$00,$FF,$01,$FE   ;A5D457;
-    db $01,$FE,$01,$FF,$01,$FF,$01,$FE,$01,$FF,$01,$FF,$01,$FF,$01,$FF   ;A5D467;
-    db $01,$FF,$01,$00,$01,$FF,$01,$00,$01,$00,$02,$00,$01,$00,$01,$00   ;A5D477;
-    db $02,$01,$01,$00,$01,$01,$02,$01,$01,$01,$01,$01,$01,$01,$01,$01   ;A5D487;
-    db $02,$01,$01,$01,$01,$01,$00,$02,$01,$01,$01,$01,$01,$02,$00,$01   ;A5D497;
-    db $01,$02,$00,$01,$00,$02,$01,$01,$00,$02,$00,$01,$00,$02,$00,$01   ;A5D4A7;
-    db $00,$02,$FF,$01,$00,$02,$00,$01,$FF,$02,$00,$01,$FF,$01,$FF,$02   ;A5D4B7;
-    db $FF,$01,$FF,$01,$FF,$02,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FE,$01   ;A5D4C7;
-    db $FF,$00,$FF,$00,$FE,$00,$FF,$00,$FE,$FF,$FF,$FF,$FE,$00,$FF,$FF   ;A5D4D7;
-    db $FF,$FF,$FF,$FF,$FF,$00,$FF,$00,$00,$01,$00,$02,$01,$01,$00,$01   ;A5D4E7;
-    db $01,$02,$01,$02,$01,$02,$01,$01,$01,$02,$02,$02,$01,$01,$01,$01   ;A5D4F7;
-    db $02,$01,$01,$01,$01,$01,$02,$01,$01,$00,$02,$00,$01,$00,$01,$01   ;A5D507;
-    db $02,$00,$01,$00,$02,$FF,$01,$00,$02,$00,$01,$00,$01,$00,$02,$FF   ;A5D517;
-    db $01,$00,$02,$00,$01,$FF,$01,$00,$02,$00,$01,$FF,$02,$00,$02,$FF   ;A5D527;
-    db $01,$FE,$02,$FF,$02,$FF,$02,$FF,$01,$FE,$02,$FF,$02,$FE,$01,$FE   ;A5D537;
-    db $02,$FF,$02,$FE,$01,$FE,$02,$FE,$02,$FE,$01,$FD,$02,$FE,$01,$FD   ;A5D547;
-    db $02,$FE,$01,$FD,$02,$FD,$01,$FE,$02,$FD,$01,$FD,$01,$FD,$02,$FD   ;A5D557;
-    db $01,$FD,$01,$FD,$01,$FD,$01,$FD,$01,$FD,$01,$FD,$01,$FD,$01,$FE   ;A5D567;
-    db $00,$FD,$01,$FE,$01,$FD,$00,$FE,$01,$FD,$00,$FE,$00,$FE,$01,$FF   ;A5D577;
-    db $00,$FE,$00,$FF,$00,$FE,$FF,$FF,$00,$FF,$FF,$FF,$FF,$00,$FF,$00   ;A5D587;
-    db $00,$01,$FF,$01,$FF,$01,$FE,$01,$FF,$01,$FF,$02,$FF,$02,$FF,$02   ;A5D597;
-    db $FE,$02,$FF,$02,$FF,$02,$FF,$03,$FF,$03,$FE,$02,$FF,$03,$FF,$03   ;A5D5A7;
-    db $00,$03,$FF,$03,$FF,$03,$00,$03,$FF,$03,$00,$03,$00,$03,$00,$03   ;A5D5B7;
-    db $00,$03,$00,$03,$00,$03,$01,$03,$00,$03,$01,$03,$00,$03,$01,$02   ;A5D5C7;
-    db $01,$03,$01,$02,$01,$02,$01,$03,$01,$02,$01,$01,$01,$02,$01,$02   ;A5D5D7;
-    db $02,$01,$01,$01,$01,$01,$02,$01,$01,$01,$01,$00,$02,$00,$01,$00   ;A5D5E7;
-    db $02,$00,$01,$FF,$02,$FF,$02,$FF,$01,$FF,$02,$FF,$01,$FE,$02,$FF   ;A5D5F7;
-    db $01,$FE,$02,$FE,$01,$FE,$02,$FE,$01,$FD,$01,$FE,$02,$FD,$01,$FE   ;A5D607;
-    db $01,$FD,$02,$FD,$01,$FD,$01,$FD,$01,$FD,$01,$FD,$01,$FD,$01,$FD   ;A5D617;
-    db $01,$FD,$00,$FD,$01,$FD,$01,$FC,$00,$FD,$00,$FD,$01,$FE,$00,$FD   ;A5D627;
-    db $00,$FD,$00,$FD,$FF,$FE,$00,$FD,$FF,$FE,$00,$FE,$FF,$FE,$FF,$FE   ;A5D637;
-    db $FF,$FE,$FE,$FE,$FF,$FF,$FE,$FF,$FE,$FF,$FE,$00,$FE,$FF,$FD,$00   ;A5D647;
-    db $FD,$00,$FE,$00,$FD,$01,$FD,$01,$FE,$01,$FE,$01,$FE,$01,$FF,$01   ;A5D657;
-    db $FF,$02,$00,$01,$01,$02,$01,$02,$02,$01,$02,$02,$02,$01,$03,$02   ;A5D667;
-    db $02,$01,$03,$01,$03,$00,$02,$01,$03,$00,$02,$00,$02,$00,$03,$00   ;A5D677;
-    db $02,$00,$02,$FF,$02,$00,$02,$FF,$02,$00,$03,$FF,$01,$00,$01,$00   ;A5D687;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$02,$00,$01,$00   ;A5D697;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;A5D6A7;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;A5D6B7;
-    db $01,$00,$01,$FF,$01,$00,$01,$00,$02,$00,$01,$00,$01,$00,$01,$00   ;A5D6C7;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$00   ;A5D6D7;
-    db $01,$00,$01,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$01,$00   ;A5D6E7;
-    db $01,$00,$01,$00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$FF,$01,$00   ;A5D6F7;
-    db $01,$00,$01,$FF,$01,$00,$01,$00,$01,$FF,$01,$00,$01,$FF,$01,$00   ;A5D707;
-    db $01,$00,$00,$FF,$01,$00,$01,$FF,$01,$00,$01,$FF,$01,$00,$01,$00   ;A5D717;
-    db $01,$FF,$01,$FF,$01,$FF,$01,$00,$01,$FF,$01,$00,$01,$FF,$01,$FF   ;A5D727;
-    db $01,$FF,$01,$00,$01,$FF,$01,$00,$01,$FF,$01,$FF,$01,$00,$01,$FF   ;A5D737;
-    db $00,$FF,$01,$FF,$01,$00,$01,$FF,$01,$FF,$01,$FF,$01,$00,$01,$FF   ;A5D747;
-    db $01,$FF,$01,$FF,$01,$FF,$00,$FF,$01,$00,$01,$FF,$01,$FF,$01,$FF   ;A5D757;
-    db $01,$FF,$00,$FF,$01,$FF,$01,$FF,$00,$FF,$01,$FF,$01,$FF,$00,$FF   ;A5D767;
-    db $01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;A5D777;
-    db $00,$FF,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$FF,$FF,$FF,$FF,$00,$FF   ;A5D787;
-    db $FF,$00,$FF,$FF,$FF,$FF,$FF,$00,$FF,$FF,$FF,$00,$FF,$00,$FF,$00   ;A5D797;
-    db $FF,$01,$FF,$00,$00,$01,$FF,$00,$FF,$01,$00,$01,$FF,$01,$FF,$01   ;A5D7A7;
-    db $00,$01,$FF,$01,$00,$01,$FF,$01,$00,$02,$00,$01,$FF,$01,$00,$01   ;A5D7B7;
-    db $00,$01,$00,$01,$FF,$02,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5D7C7;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$01,$00,$01   ;A5D7D7;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5D7E7;
-    db $01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5D7F7;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$02,$00,$01   ;A5D807;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5D817;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5D827;
-    db $FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5D837;
-    db $00,$02,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5D847;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$00,$01   ;A5D857;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5D867;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5D877;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5D887;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;A5D897;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$02,$00,$01   ;A5D8A7;
-    db $00,$01,$00,$01,$00,$01,$FF,$01,$00,$02,$00,$01,$00,$01,$FF,$01   ;A5D8B7;
-    db $00,$01,$00,$01,$FF,$01,$00,$01,$FF,$00,$00,$01,$FF,$01,$FF,$00   ;A5D8C7;
-    db $FF,$01,$FF,$00,$FE,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$FF,$00   ;A5D8D7;
-    db $FF,$00,$FF,$FF,$FE,$00,$FF,$FF,$FF,$00,$FF,$FF,$FF,$FF,$FF,$FF   ;A5D8E7;
-    db $00,$FF,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$FF   ;A5D8F7;
-    db $00,$FF,$01,$FF,$00,$FF,$01,$FF,$01,$FF,$01,$FF,$00,$FF,$01,$00   ;A5D907;
-    db $01,$FF,$01,$FF,$01,$00,$01,$FF,$01,$FF,$01,$00,$01,$00,$01,$FF   ;A5D917;
-    db $01,$00,$01,$00,$01,$00,$01,$FF,$02,$00,$01,$00,$01,$00,$01,$00   ;A5D927;
-    db $01,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$00,$01,$01,$01,$00   ;A5D937;
-    db $01,$00,$01,$01,$01,$00,$01,$01,$01,$01,$01,$00,$01,$01,$01,$01   ;A5D947;
-    db $01,$01,$01,$01,$01,$00,$00,$01,$01,$01,$01,$00,$01,$01,$00,$01   ;A5D957;
-    db $01,$01,$01,$00,$01,$01,$01,$01,$01,$01,$01,$01,$01,$00,$01,$01   ;A5D967;
-    db $00,$01,$01,$00,$01,$01,$01,$00,$01,$01,$01,$00,$01,$01,$01,$00   ;A5D977;
-    db $01,$01,$01,$00,$00,$01,$01,$00,$01,$00,$01,$01,$01,$00,$01,$00   ;A5D987;
-    db $01,$00,$01,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;A5D997;
-    db $01,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$01,$00   ;A5D9A7;
-    db $02,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$FE,$00,$FF,$01,$FE   ;A5D9B7;
-    db $00,$FF,$01,$FE,$01,$FF,$00,$FE,$01,$FF,$00,$FE,$01,$FF,$00,$FE   ;A5D9C7;
-    db $01,$FF,$01,$FE,$00,$FF,$01,$FE,$00,$FF,$01,$FF,$00,$FE,$01,$FF   ;A5D9D7;
-    db $00,$FE,$01,$FF,$00,$FF,$01,$FE,$00,$FF,$01,$FF,$00,$FF,$00,$FF   ;A5D9E7;
-    db $01,$FE,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF   ;A5D9F7;
-    db $01,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$00,$FF   ;A5DA07;
-    db $00,$FF,$00,$FF,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$00,$01,$FF,$00   ;A5DA17;
-    db $00,$01,$FF,$01,$FF,$01,$00,$01,$FF,$01,$00,$01,$FF,$00,$FF,$01   ;A5DA27;
-    db $00,$01,$FF,$01,$00,$01,$FF,$01,$00,$01,$FF,$02,$00,$01,$FF,$01   ;A5DA37;
-    db $00,$01,$FF,$01,$00,$01,$00,$02,$FF,$01,$00,$01,$00,$01,$00,$02   ;A5DA47;
-    db $00,$01,$FF,$01,$00,$02,$00,$01,$00,$01,$00,$01,$00,$02,$00,$01   ;A5DA57;
-    db $00,$01,$01,$01,$00,$02,$00,$01,$00,$01,$00,$01,$01,$01,$00,$01   ;A5DA67;
-    db $00,$02,$01,$01,$00,$01,$01,$01,$00,$01,$01,$01,$00,$01,$01,$01   ;A5DA77;
-    db $01,$01,$01,$01,$01,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;A5DA87;
-    db $00,$FF,$01,$00,$01,$FF,$01,$00,$00,$FF,$01,$FF,$01,$00,$00,$FF   ;A5DA97;
-    db $01,$FF,$00,$FF,$01,$FF,$00,$FF,$01,$FF,$01,$FF,$00,$FF,$01,$FF   ;A5DAA7;
-    db $00,$FF,$01,$FF,$00,$FF,$01,$FE,$00,$FF,$00,$FF,$01,$FE,$00,$FF   ;A5DAB7;
-    db $01,$FF,$00,$FE,$00,$FF,$01,$FE,$00,$FF,$00,$FF,$00,$FE,$00,$FF   ;A5DAC7;
-    db $01,$FE,$00,$FF,$00,$FE,$00,$FF,$00,$FE,$00,$FF,$00,$FF,$00,$FE   ;A5DAD7;
-    db $00,$FF,$FF,$FF,$00,$FE,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$00,$FF   ;A5DAE7;
-    db $FF,$FF,$00,$FF,$FF,$FF,$FF,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;A5DAF7;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$01,$FF,$00,$FF,$01   ;A5DB07;
-    db $FF,$01,$FF,$00,$FF,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$01,$00   ;A5DB17;
-    db $00,$01,$01,$00,$01,$01,$01,$00,$01,$00,$01,$01,$01,$00,$01,$00   ;A5DB27;
-    db $01,$00,$02,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;A5DB37;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$FF   ;A5DB47;
-    db $01,$FF,$01,$00,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF   ;A5DB57;
-    db $01,$FF,$01,$FF,$00,$FF,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$01   ;A5DB67;
-    db $00,$01,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$02,$00,$01   ;A5DB77;
-    db $00,$01,$00,$02,$00,$01,$00,$02,$00,$01,$00,$02,$00,$02,$00,$01   ;A5DB87;
-    db $00,$02,$00,$01,$FF,$02,$00,$01,$00,$02,$00,$01,$00,$02,$FF,$01   ;A5DB97;
-    db $00,$01,$00,$02,$00,$01,$FF,$01,$00,$01,$00,$02,$00,$01,$00,$01   ;A5DBA7;
-    db $FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$01   ;A5DBB7;
-    db $00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$01,$00,$01,$00,$01,$00   ;A5DBC7;
-    db $01,$00,$01,$FF,$01,$00,$00,$FF,$01,$00,$01,$FF,$01,$00,$00,$FF   ;A5DBD7;
-    db $01,$00,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF   ;A5DBE7;
-    db $00,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FE,$00,$FF,$01,$FF,$01,$FF   ;A5DBF7;
-    db $00,$FE,$01,$FF,$01,$FF,$00,$FE,$01,$FF,$00,$FF,$01,$FE,$00,$FF   ;A5DC07;
-    db $00,$FF,$01,$FE,$00,$FF,$01,$FE,$00,$FF,$00,$FF,$01,$FE,$00,$FF   ;A5DC17;
-    db $00,$FF,$00,$FF,$00,$FE,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;A5DC27;
-    db $00,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$01,$00,$01   ;A5DC37;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01   ;A5DC47;
-    db $00,$01,$00,$01,$00,$01,$00,$02,$01,$01,$00,$01,$00,$01,$00,$02   ;A5DC57;
-    db $01,$01,$00,$01,$00,$01,$01,$02,$00,$01,$00,$01,$01,$01,$00,$01   ;A5DC67;
-    db $01,$01,$01,$01,$00,$01,$01,$01,$01,$01,$01,$01,$00,$01,$01,$00   ;A5DC77;
-    db $01,$01,$00,$01,$01,$00,$01,$01,$01,$01,$01,$01,$01,$01,$00,$01   ;A5DC87;
-    db $01,$00,$00,$01,$01,$01,$00,$01,$01,$01,$00,$01,$01,$01,$00,$01   ;A5DC97;
-    db $01,$01,$00,$01,$01,$01,$00,$01,$01,$00,$00,$01,$01,$01,$00,$01   ;A5DCA7;
-    db $01,$00,$01,$01,$01,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;A5DCB7;
-    db $01,$00,$01,$FF,$01,$00,$01,$00,$01,$FF,$01,$00,$01,$FF,$01,$00   ;A5DCC7;
-    db $01,$FF,$01,$00,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF   ;A5DCD7;
-    db $00,$FF,$01,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF   ;A5DCE7;
-    db $00,$FF,$00,$FE,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FE   ;A5DCF7;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FE,$00,$FF,$00,$FF,$00,$FF,$00,$FE   ;A5DD07;
-    db $FF,$FF,$00,$FF,$00,$FE,$00,$FF,$00,$FF,$FF,$FF,$00,$FE,$00,$FF   ;A5DD17;
-    db $00,$FF,$FF,$FF,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$FF,$FF,$00,$FF   ;A5DD27;
-    db $00,$FF,$FF,$FF,$00,$FF,$FF,$FF,$FF,$FF,$00,$FF,$FF,$00,$00,$FF   ;A5DD37;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00   ;A5DD47;
-    db $FF,$01,$FF,$01,$00,$01,$FF,$00,$00,$01,$FF,$01,$00,$01,$00,$01   ;A5DD57;
-    db $FF,$01,$00,$01,$FF,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$FF,$01   ;A5DD67;
-    db $00,$01,$00,$02,$FF,$01,$00,$01,$00,$01,$00,$02,$00,$01,$FF,$01   ;A5DD77;
-    db $00,$02,$00,$01,$00,$01,$00,$01,$00,$02,$00,$01,$00,$01,$00,$02   ;A5DD87;
-    db $00,$01,$00,$01,$00,$01,$01,$01,$00,$02,$00,$01,$00,$01,$01,$01   ;A5DD97;
-    db $00,$01,$01,$01,$00,$01,$00,$01,$01,$01,$00,$01,$01,$01,$00,$01   ;A5DDA7;
-    db $01,$01,$01,$00,$00,$01,$01,$01,$80,$80,$80,$80,$80,$80,$80,$80   ;A5DDB7;
+; The Keiko love dance
+; The table index is incremented by 4 per movement instead of 2, so only entries 2k for some k are used
+    db $03,$00, $03,$00, $03,$00, $02,$FF, $03,$00, $03,$FF, $03,$00, $02,$FF ;A5CE07;
+    db $03,$FF, $02,$FE, $02,$FF, $02,$FE, $02,$FE, $02,$FD, $02,$FE, $01,$FD ;A5CE17;
+    db $02,$FD, $01,$FE, $01,$FD, $02,$FE, $01,$FE, $00,$FE, $01,$FE, $01,$FF ;A5CE27;
+    db $01,$00, $00,$FF, $01,$00, $01,$01, $00,$01, $00,$01, $00,$02, $00,$02 ;A5CE37;
+    db $00,$02, $00,$02, $00,$02, $00,$03, $FF,$03, $00,$03, $00,$03, $FF,$04 ;A5CE47;
+    db $00,$03, $FF,$04, $00,$04, $FF,$04, $00,$04, $FF,$04, $FF,$04, $00,$05 ;A5CE57;
+    db $FF,$04, $FF,$04, $00,$05, $FF,$04, $FF,$04, $FF,$05, $FF,$04, $00,$04 ;A5CE67;
+    db $FF,$05, $FF,$04, $FF,$04, $FF,$04, $FF,$04, $00,$04, $FF,$03, $FF,$04 ;A5CE77;
+    db $FF,$03, $00,$03, $FF,$03, $FF,$03, $FF,$03, $00,$02, $FF,$02, $FF,$02 ;A5CE87;
+    db $00,$01, $FF,$02, $00,$01, $FF,$01, $FF,$00, $00,$FF, $00,$FF, $00,$FF ;A5CE97;
+    db $00,$FF, $00,$FE, $00,$FF, $00,$FD, $00,$FE, $00,$FE, $00,$FD, $00,$FD ;A5CEA7;
+    db $01,$FD, $00,$FD, $00,$FD, $01,$FD, $00,$FC, $01,$FD, $01,$FC, $00,$FD ;A5CEB7;
+    db $01,$FC, $01,$FD, $00,$FC, $01,$FC, $01,$FD, $01,$FC, $01,$FD, $01,$FC ;A5CEC7;
+    db $01,$FD, $01,$FD, $02,$FD, $01,$FD, $01,$FD, $02,$FD, $01,$FD, $01,$FE ;A5CED7;
+    db $02,$FE, $02,$FE, $01,$FD, $02,$FF, $02,$FE, $02,$FE, $01,$FE, $02,$FF ;A5CEE7;
+    db $02,$FE, $03,$FE, $02,$FF, $02,$FE, $03,$FE, $02,$FF, $03,$FE, $02,$FF ;A5CEF7;
+    db $03,$FE, $03,$FE, $03,$FE, $03,$FE, $03,$FE, $02,$FF, $03,$FE, $03,$FE ;A5CF07;
+    db $03,$FF, $03,$FE, $02,$FF, $03,$FF, $02,$FF, $03,$FF, $02,$00, $01,$FF ;A5CF17;
+    db $02,$00, $01,$01, $02,$00, $00,$01, $01,$01, $00,$02, $00,$02, $00,$02 ;A5CF27;
+    db $00,$02, $FF,$02, $00,$03, $FF,$02, $FF,$03, $FE,$03, $FF,$03, $FF,$03 ;A5CF37;
+    db $FE,$03, $FE,$03, $FE,$03, $FE,$04, $FE,$03, $FE,$03, $FE,$03, $FE,$02 ;A5CF47;
+    db $FE,$03, $FD,$03, $FE,$02, $FE,$03, $FD,$02, $FE,$02, $FE,$01, $FD,$02 ;A5CF57;
+    db $FE,$01, $FD,$02, $FE,$01, $FD,$01, $FD,$01, $FE,$00, $FD,$01, $FD,$00 ;A5CF67;
+    db $FE,$00, $FD,$00, $FD,$FF, $FD,$00, $FD,$FF, $FD,$FF, $FD,$FF, $FD,$FE ;A5CF77;
+    db $FD,$FF, $FD,$FE, $FE,$FE, $FE,$FE, $FF,$FE, $00,$FF, $01,$FE, $01,$FE ;A5CF87;
+    db $02,$FE, $02,$FF, $03,$FE, $03,$FF, $04,$FF, $03,$FF, $03,$00, $03,$00 ;A5CF97;
+    db $03,$00, $03,$01, $03,$00, $02,$01, $02,$02, $03,$01, $02,$02, $02,$02 ;A5CFA7;
+    db $02,$02, $01,$02, $02,$02, $02,$03, $01,$03, $02,$02, $01,$03, $02,$03 ;A5CFB7;
+    db $01,$03, $01,$03, $02,$03, $01,$03, $01,$02, $01,$03, $01,$03, $02,$03 ;A5CFC7;
+    db $01,$03, $01,$02, $01,$03, $02,$03, $01,$02, $01,$03, $02,$02, $01,$02 ;A5CFD7;
+    db $02,$02, $01,$02, $02,$02, $02,$02, $02,$02, $02,$02, $02,$01, $02,$02 ;A5CFE7;
+    db $02,$01, $02,$01, $03,$01, $02,$01, $03,$01, $02,$01, $03,$00, $03,$01 ;A5CFF7;
+    db $03,$01, $01,$FF, $02,$00, $01,$FF, $02,$00, $01,$FF, $02,$00, $01,$FF ;A5D007;
+    db $01,$00, $02,$FF, $01,$FF, $02,$00, $01,$FF, $02,$00, $01,$FF, $01,$FF ;A5D017;
+    db $02,$00, $01,$FF, $01,$FF, $02,$FF, $01,$FF, $01,$00, $02,$FF, $01,$FF ;A5D027;
+    db $01,$FF, $01,$FF, $02,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $02,$FF ;A5D037;
+    db $01,$FF, $01,$FE, $01,$FF, $01,$FF, $01,$FF, $01,$FE, $01,$FF, $01,$FF ;A5D047;
+    db $01,$FE, $00,$FF, $01,$FE, $01,$FF, $01,$FE, $00,$FF, $01,$FE, $01,$FF ;A5D057;
+    db $00,$FE, $01,$FF, $00,$FE, $00,$FF, $01,$FE, $00,$FE, $00,$FF, $00,$FE ;A5D067;
+    db $00,$FF, $00,$FE, $00,$FE, $00,$FF, $00,$FE, $00,$FF, $FF,$FE, $00,$FE ;A5D077;
+    db $00,$FF, $FF,$FE, $FF,$FE, $00,$FF, $FF,$FE, $FF,$FF, $FF,$FE, $FF,$FF ;A5D087;
+    db $FF,$FF, $FF,$FF, $FF,$FF, $FF,$FF, $FE,$FF, $FF,$00, $FF,$00, $FE,$00 ;A5D097;
+    db $FF,$00, $FF,$00, $FE,$01, $FF,$00, $FE,$01, $FF,$01, $FE,$01, $FF,$01 ;A5D0A7;
+    db $FF,$01, $FE,$01, $FF,$01, $FF,$02, $FF,$01, $FF,$01, $FF,$02, $FF,$01 ;A5D0B7;
+    db $FF,$01, $00,$02, $FF,$01, $FF,$02, $00,$01, $FF,$01, $00,$02, $00,$01 ;A5D0C7;
+    db $FF,$02, $00,$01, $00,$02, $00,$01, $00,$02, $FF,$01, $00,$02, $00,$02 ;A5D0D7;
+    db $00,$01, $00,$02, $00,$01, $00,$02, $00,$02, $00,$01, $00,$02, $00,$02 ;A5D0E7;
+    db $00,$01, $00,$02, $00,$02, $00,$01, $00,$02, $00,$02, $01,$01, $00,$02 ;A5D0F7;
+    db $00,$01, $01,$02, $00,$01, $01,$01, $00,$02, $01,$01, $01,$01, $00,$01 ;A5D107;
+    db $01,$01, $01,$02, $02,$00, $01,$01, $01,$01, $01,$01, $02,$01, $01,$00 ;A5D117;
+    db $02,$01, $01,$00, $02,$01, $01,$00, $02,$01, $01,$00, $02,$00, $02,$01 ;A5D127;
+    db $01,$00, $02,$00, $01,$00, $02,$00, $02,$00, $01,$00, $02,$00, $01,$00 ;A5D137;
+    db $02,$00, $01,$00, $02,$00, $01,$00, $02,$00, $01,$00, $01,$00, $02,$FF ;A5D147;
+    db $01,$00, $02,$00, $01,$FF, $01,$00, $02,$FF, $01,$00, $01,$00, $02,$FF ;A5D157;
+    db $01,$00, $01,$FF, $01,$FF, $01,$00, $02,$FF, $01,$00, $01,$FF, $01,$FF ;A5D167;
+    db $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $00,$FF, $01,$FF, $01,$FF ;A5D177;
+    db $01,$FE, $00,$FF, $01,$FF, $00,$FF, $01,$FE, $01,$FF, $00,$FE, $01,$FF ;A5D187;
+    db $00,$FE, $01,$FF, $00,$FE, $01,$FE, $00,$FF, $01,$FE, $00,$FE, $01,$FE ;A5D197;
+    db $01,$FE, $00,$FE, $01,$FE, $00,$FF, $01,$FE, $00,$FE, $01,$FE, $00,$FE ;A5D1A7;
+    db $01,$FE, $00,$FE, $01,$FE, $00,$FE, $01,$FE, $00,$FE, $00,$FE, $01,$FF ;A5D1B7;
+    db $00,$FE, $01,$FE, $00,$FF, $01,$FE, $00,$FF, $00,$FE, $01,$FF, $00,$FF ;A5D1C7;
+    db $00,$FE, $01,$FF, $00,$FF, $00,$FF, $01,$FF, $00,$FF, $00,$FF, $01,$00 ;A5D1D7;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5D1E7;
+    db $00,$02, $00,$01, $00,$02, $FF,$01, $00,$02, $00,$02, $00,$01, $00,$02 ;A5D1F7;
+    db $00,$02, $FF,$01, $00,$02, $00,$02, $00,$01, $FF,$02, $00,$02, $00,$01 ;A5D207;
+    db $00,$02, $FF,$01, $00,$02, $00,$01, $00,$02, $FF,$01, $00,$01, $00,$02 ;A5D217;
+    db $00,$01, $00,$01, $00,$02, $FF,$01, $00,$01, $00,$02, $00,$01, $00,$01 ;A5D227;
+    db $00,$02, $00,$01, $00,$01, $00,$01, $00,$02, $00,$01, $00,$01, $01,$02 ;A5D237;
+    db $00,$01, $00,$01, $01,$01, $00,$02, $00,$01, $01,$01, $00,$02, $01,$01 ;A5D247;
+    db $00,$01, $01,$01, $01,$02, $01,$01, $00,$01, $01,$01, $01,$01, $01,$01 ;A5D257;
+    db $01,$01, $01,$01, $01,$01, $01,$01, $01,$00, $02,$01, $01,$01, $01,$00 ;A5D267;
+    db $01,$01, $02,$00, $01,$00, $01,$01, $02,$00, $01,$00, $02,$00, $01,$01 ;A5D277;
+    db $01,$00, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $02,$FF ;A5D287;
+    db $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF ;A5D297;
+    db $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF ;A5D2A7;
+    db $01,$FF, $01,$FF, $01,$FF, $00,$FF, $01,$FF, $01,$FE, $01,$FF, $01,$FF ;A5D2B7;
+    db $01,$FF, $00,$FF, $01,$FF, $01,$FF, $01,$FF, $00,$FF, $01,$FF, $01,$FF ;A5D2C7;
+    db $00,$FF, $01,$FF, $01,$FF, $00,$FE, $01,$FF, $01,$FF, $00,$FF, $01,$FF ;A5D2D7;
+    db $00,$FF, $01,$FE, $01,$FF, $00,$FF, $01,$FF, $00,$FE, $01,$FF, $00,$FF ;A5D2E7;
+    db $01,$FE, $00,$FF, $00,$FE, $01,$FF, $00,$FF, $01,$FE, $00,$FF, $00,$FE ;A5D2F7;
+    db $01,$FE, $00,$FF, $01,$FE, $00,$FF, $00,$FE, $00,$FE, $01,$FE, $00,$FF ;A5D307;
+    db $00,$FE, $01,$FE, $00,$FE, $00,$FE, $00,$FE, $01,$FE, $00,$FE, $00,$FE ;A5D317;
+    db $00,$FE, $00,$FE, $00,$FE, $01,$FE, $00,$FE, $00,$FE, $00,$FE, $00,$FE ;A5D327;
+    db $00,$FE, $00,$FE, $00,$FE, $00,$FF, $00,$FE, $00,$FE, $00,$FF, $00,$FE ;A5D337;
+    db $00,$FF, $00,$FE, $FF,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$FF ;A5D347;
+    db $00,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$01 ;A5D357;
+    db $FF,$01, $00,$01, $FF,$01, $FF,$01, $00,$02, $FF,$01, $FF,$02, $00,$01 ;A5D367;
+    db $FF,$02, $00,$02, $FF,$01, $FF,$02, $00,$02, $FF,$02, $FF,$01, $00,$02 ;A5D377;
+    db $FF,$02, $00,$02, $FF,$01, $00,$02, $00,$02, $FF,$01, $00,$02, $FF,$01 ;A5D387;
+    db $00,$02, $00,$02, $00,$01, $FF,$02, $00,$01, $00,$02, $00,$01, $00,$02 ;A5D397;
+    db $FF,$01, $00,$02, $00,$01, $00,$01, $00,$02, $00,$01, $00,$02, $00,$01 ;A5D3A7;
+    db $00,$01, $00,$02, $00,$01, $00,$01, $00,$02, $00,$01, $00,$01, $00,$02 ;A5D3B7;
+    db $00,$01, $00,$01, $01,$01, $00,$02, $00,$01, $00,$01, $00,$02, $00,$01 ;A5D3C7;
+    db $00,$01, $00,$02, $00,$01, $00,$01, $00,$02, $01,$01, $00,$01, $00,$02 ;A5D3D7;
+    db $00,$01, $00,$01, $00,$02, $00,$01, $00,$01, $00,$02, $00,$01, $00,$02 ;A5D3E7;
+    db $00,$01, $00,$01, $00,$02, $00,$01, $00,$02, $00,$01, $00,$02, $00,$01 ;A5D3F7;
+    db $00,$02, $00,$01, $00,$02, $FF,$02, $00,$01, $00,$02, $00,$02, $00,$01 ;A5D407;
+    db $FF,$02, $00,$02, $00,$01, $00,$02, $FF,$01, $00,$01, $00,$01, $00,$01 ;A5D417;
+    db $FF,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FE, $00,$FF ;A5D427;
+    db $00,$FE, $00,$FF, $00,$FE, $01,$FE, $00,$FE, $00,$FE, $00,$FE, $00,$FE ;A5D437;
+    db $01,$FE, $00,$FE, $00,$FD, $01,$FE, $00,$FE, $01,$FE, $00,$FE, $01,$FE ;A5D447;
+    db $00,$FD, $01,$FE, $01,$FE, $00,$FE, $01,$FE, $01,$FE, $00,$FF, $01,$FE ;A5D457;
+    db $01,$FE, $01,$FF, $01,$FF, $01,$FE, $01,$FF, $01,$FF, $01,$FF, $01,$FF ;A5D467;
+    db $01,$FF, $01,$00, $01,$FF, $01,$00, $01,$00, $02,$00, $01,$00, $01,$00 ;A5D477;
+    db $02,$01, $01,$00, $01,$01, $02,$01, $01,$01, $01,$01, $01,$01, $01,$01 ;A5D487;
+    db $02,$01, $01,$01, $01,$01, $00,$02, $01,$01, $01,$01, $01,$02, $00,$01 ;A5D497;
+    db $01,$02, $00,$01, $00,$02, $01,$01, $00,$02, $00,$01, $00,$02, $00,$01 ;A5D4A7;
+    db $00,$02, $FF,$01, $00,$02, $00,$01, $FF,$02, $00,$01, $FF,$01, $FF,$02 ;A5D4B7;
+    db $FF,$01, $FF,$01, $FF,$02, $FF,$01, $FF,$01, $FF,$01, $FF,$01, $FE,$01 ;A5D4C7;
+    db $FF,$00, $FF,$00, $FE,$00, $FF,$00, $FE,$FF, $FF,$FF, $FE,$00, $FF,$FF ;A5D4D7;
+    db $FF,$FF, $FF,$FF, $FF,$00, $FF,$00, $00,$01, $00,$02, $01,$01, $00,$01 ;A5D4E7;
+    db $01,$02, $01,$02, $01,$02, $01,$01, $01,$02, $02,$02, $01,$01, $01,$01 ;A5D4F7;
+    db $02,$01, $01,$01, $01,$01, $02,$01, $01,$00, $02,$00, $01,$00, $01,$01 ;A5D507;
+    db $02,$00, $01,$00, $02,$FF, $01,$00, $02,$00, $01,$00, $01,$00, $02,$FF ;A5D517;
+    db $01,$00, $02,$00, $01,$FF, $01,$00, $02,$00, $01,$FF, $02,$00, $02,$FF ;A5D527;
+    db $01,$FE, $02,$FF, $02,$FF, $02,$FF, $01,$FE, $02,$FF, $02,$FE, $01,$FE ;A5D537;
+    db $02,$FF, $02,$FE, $01,$FE, $02,$FE, $02,$FE, $01,$FD, $02,$FE, $01,$FD ;A5D547;
+    db $02,$FE, $01,$FD, $02,$FD, $01,$FE, $02,$FD, $01,$FD, $01,$FD, $02,$FD ;A5D557;
+    db $01,$FD, $01,$FD, $01,$FD, $01,$FD, $01,$FD, $01,$FD, $01,$FD, $01,$FE ;A5D567;
+    db $00,$FD, $01,$FE, $01,$FD, $00,$FE, $01,$FD, $00,$FE, $00,$FE, $01,$FF ;A5D577;
+    db $00,$FE, $00,$FF, $00,$FE, $FF,$FF, $00,$FF, $FF,$FF, $FF,$00, $FF,$00 ;A5D587;
+    db $00,$01, $FF,$01, $FF,$01, $FE,$01, $FF,$01, $FF,$02, $FF,$02, $FF,$02 ;A5D597;
+    db $FE,$02, $FF,$02, $FF,$02, $FF,$03, $FF,$03, $FE,$02, $FF,$03, $FF,$03 ;A5D5A7;
+    db $00,$03, $FF,$03, $FF,$03, $00,$03, $FF,$03, $00,$03, $00,$03, $00,$03 ;A5D5B7;
+    db $00,$03, $00,$03, $00,$03, $01,$03, $00,$03, $01,$03, $00,$03, $01,$02 ;A5D5C7;
+    db $01,$03, $01,$02, $01,$02, $01,$03, $01,$02, $01,$01, $01,$02, $01,$02 ;A5D5D7;
+    db $02,$01, $01,$01, $01,$01, $02,$01, $01,$01, $01,$00, $02,$00, $01,$00 ;A5D5E7;
+    db $02,$00, $01,$FF, $02,$FF, $02,$FF, $01,$FF, $02,$FF, $01,$FE, $02,$FF ;A5D5F7;
+    db $01,$FE, $02,$FE, $01,$FE, $02,$FE, $01,$FD, $01,$FE, $02,$FD, $01,$FE ;A5D607;
+    db $01,$FD, $02,$FD, $01,$FD, $01,$FD, $01,$FD, $01,$FD, $01,$FD, $01,$FD ;A5D617;
+    db $01,$FD, $00,$FD, $01,$FD, $01,$FC, $00,$FD, $00,$FD, $01,$FE, $00,$FD ;A5D627;
+    db $00,$FD, $00,$FD, $FF,$FE, $00,$FD, $FF,$FE, $00,$FE, $FF,$FE, $FF,$FE ;A5D637;
+    db $FF,$FE, $FE,$FE, $FF,$FF, $FE,$FF, $FE,$FF, $FE,$00, $FE,$FF, $FD,$00 ;A5D647;
+    db $FD,$00, $FE,$00, $FD,$01, $FD,$01, $FE,$01, $FE,$01, $FE,$01, $FF,$01 ;A5D657;
+    db $FF,$02, $00,$01, $01,$02, $01,$02, $02,$01, $02,$02, $02,$01, $03,$02 ;A5D667;
+    db $02,$01, $03,$01, $03,$00, $02,$01, $03,$00, $02,$00, $02,$00, $03,$00 ;A5D677;
+    db $02,$00, $02,$FF, $02,$00, $02,$FF, $02,$00, $03,$FF, $01,$00, $01,$00 ;A5D687;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $02,$00, $01,$00 ;A5D697;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;A5D6A7;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;A5D6B7;
+    db $01,$00, $01,$FF, $01,$00, $01,$00, $02,$00, $01,$00, $01,$00, $01,$00 ;A5D6C7;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$FF, $01,$00, $01,$00, $01,$00 ;A5D6D7;
+    db $01,$00, $01,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$FF, $01,$00 ;A5D6E7;
+    db $01,$00, $01,$00, $01,$00, $01,$FF, $01,$00, $01,$00, $01,$FF, $01,$00 ;A5D6F7;
+    db $01,$00, $01,$FF, $01,$00, $01,$00, $01,$FF, $01,$00, $01,$FF, $01,$00 ;A5D707;
+    db $01,$00, $00,$FF, $01,$00, $01,$FF, $01,$00, $01,$FF, $01,$00, $01,$00 ;A5D717;
+    db $01,$FF, $01,$FF, $01,$FF, $01,$00, $01,$FF, $01,$00, $01,$FF, $01,$FF ;A5D727;
+    db $01,$FF, $01,$00, $01,$FF, $01,$00, $01,$FF, $01,$FF, $01,$00, $01,$FF ;A5D737;
+    db $00,$FF, $01,$FF, $01,$00, $01,$FF, $01,$FF, $01,$FF, $01,$00, $01,$FF ;A5D747;
+    db $01,$FF, $01,$FF, $01,$FF, $00,$FF, $01,$00, $01,$FF, $01,$FF, $01,$FF ;A5D757;
+    db $01,$FF, $00,$FF, $01,$FF, $01,$FF, $00,$FF, $01,$FF, $01,$FF, $00,$FF ;A5D767;
+    db $01,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;A5D777;
+    db $00,$FF, $00,$FF, $00,$FF, $FF,$FF, $00,$FF, $FF,$FF, $FF,$FF, $00,$FF ;A5D787;
+    db $FF,$00, $FF,$FF, $FF,$FF, $FF,$00, $FF,$FF, $FF,$00, $FF,$00, $FF,$00 ;A5D797;
+    db $FF,$01, $FF,$00, $00,$01, $FF,$00, $FF,$01, $00,$01, $FF,$01, $FF,$01 ;A5D7A7;
+    db $00,$01, $FF,$01, $00,$01, $FF,$01, $00,$02, $00,$01, $FF,$01, $00,$01 ;A5D7B7;
+    db $00,$01, $00,$01, $FF,$02, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5D7C7;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $01,$01, $00,$01 ;A5D7D7;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5D7E7;
+    db $01,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5D7F7;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$02, $00,$01 ;A5D807;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5D817;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5D827;
+    db $FF,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5D837;
+    db $00,$02, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5D847;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $FF,$01, $00,$01, $00,$01, $00,$01 ;A5D857;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5D867;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5D877;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5D887;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;A5D897;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$02, $00,$01 ;A5D8A7;
+    db $00,$01, $00,$01, $00,$01, $FF,$01, $00,$02, $00,$01, $00,$01, $FF,$01 ;A5D8B7;
+    db $00,$01, $00,$01, $FF,$01, $00,$01, $FF,$00, $00,$01, $FF,$01, $FF,$00 ;A5D8C7;
+    db $FF,$01, $FF,$00, $FE,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$FF, $FF,$00 ;A5D8D7;
+    db $FF,$00, $FF,$FF, $FE,$00, $FF,$FF, $FF,$00, $FF,$FF, $FF,$FF, $FF,$FF ;A5D8E7;
+    db $00,$FF, $FF,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$FF ;A5D8F7;
+    db $00,$FF, $01,$FF, $00,$FF, $01,$FF, $01,$FF, $01,$FF, $00,$FF, $01,$00 ;A5D907;
+    db $01,$FF, $01,$FF, $01,$00, $01,$FF, $01,$FF, $01,$00, $01,$00, $01,$FF ;A5D917;
+    db $01,$00, $01,$00, $01,$00, $01,$FF, $02,$00, $01,$00, $01,$00, $01,$00 ;A5D927;
+    db $01,$00, $01,$00, $01,$01, $01,$00, $01,$00, $01,$00, $01,$01, $01,$00 ;A5D937;
+    db $01,$00, $01,$01, $01,$00, $01,$01, $01,$01, $01,$00, $01,$01, $01,$01 ;A5D947;
+    db $01,$01, $01,$01, $01,$00, $00,$01, $01,$01, $01,$00, $01,$01, $00,$01 ;A5D957;
+    db $01,$01, $01,$00, $01,$01, $01,$01, $01,$01, $01,$01, $01,$00, $01,$01 ;A5D967;
+    db $00,$01, $01,$00, $01,$01, $01,$00, $01,$01, $01,$00, $01,$01, $01,$00 ;A5D977;
+    db $01,$01, $01,$00, $00,$01, $01,$00, $01,$00, $01,$01, $01,$00, $01,$00 ;A5D987;
+    db $01,$00, $01,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;A5D997;
+    db $01,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$FF, $01,$00 ;A5D9A7;
+    db $02,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$FE, $00,$FF, $01,$FE ;A5D9B7;
+    db $00,$FF, $01,$FE, $01,$FF, $00,$FE, $01,$FF, $00,$FE, $01,$FF, $00,$FE ;A5D9C7;
+    db $01,$FF, $01,$FE, $00,$FF, $01,$FE, $00,$FF, $01,$FF, $00,$FE, $01,$FF ;A5D9D7;
+    db $00,$FE, $01,$FF, $00,$FF, $01,$FE, $00,$FF, $01,$FF, $00,$FF, $00,$FF ;A5D9E7;
+    db $01,$FE, $00,$FF, $01,$FF, $00,$FF, $00,$FF, $01,$FF, $00,$FF, $00,$FF ;A5D9F7;
+    db $01,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$FF, $00,$FF, $00,$FF, $00,$FF ;A5DA07;
+    db $00,$FF, $00,$FF, $FF,$00, $FF,$00, $FF,$01, $FF,$00, $00,$01, $FF,$00 ;A5DA17;
+    db $00,$01, $FF,$01, $FF,$01, $00,$01, $FF,$01, $00,$01, $FF,$00, $FF,$01 ;A5DA27;
+    db $00,$01, $FF,$01, $00,$01, $FF,$01, $00,$01, $FF,$02, $00,$01, $FF,$01 ;A5DA37;
+    db $00,$01, $FF,$01, $00,$01, $00,$02, $FF,$01, $00,$01, $00,$01, $00,$02 ;A5DA47;
+    db $00,$01, $FF,$01, $00,$02, $00,$01, $00,$01, $00,$01, $00,$02, $00,$01 ;A5DA57;
+    db $00,$01, $01,$01, $00,$02, $00,$01, $00,$01, $00,$01, $01,$01, $00,$01 ;A5DA67;
+    db $00,$02, $01,$01, $00,$01, $01,$01, $00,$01, $01,$01, $00,$01, $01,$01 ;A5DA77;
+    db $01,$01, $01,$01, $01,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;A5DA87;
+    db $00,$FF, $01,$00, $01,$FF, $01,$00, $00,$FF, $01,$FF, $01,$00, $00,$FF ;A5DA97;
+    db $01,$FF, $00,$FF, $01,$FF, $00,$FF, $01,$FF, $01,$FF, $00,$FF, $01,$FF ;A5DAA7;
+    db $00,$FF, $01,$FF, $00,$FF, $01,$FE, $00,$FF, $00,$FF, $01,$FE, $00,$FF ;A5DAB7;
+    db $01,$FF, $00,$FE, $00,$FF, $01,$FE, $00,$FF, $00,$FF, $00,$FE, $00,$FF ;A5DAC7;
+    db $01,$FE, $00,$FF, $00,$FE, $00,$FF, $00,$FE, $00,$FF, $00,$FF, $00,$FE ;A5DAD7;
+    db $00,$FF, $FF,$FF, $00,$FE, $00,$FF, $00,$FF, $FF,$FF, $00,$FF, $00,$FF ;A5DAE7;
+    db $FF,$FF, $00,$FF, $FF,$FF, $FF,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;A5DAF7;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$01, $FF,$01, $FF,$00, $FF,$01 ;A5DB07;
+    db $FF,$01, $FF,$00, $FF,$01, $00,$01, $FF,$01, $00,$01, $00,$01, $01,$00 ;A5DB17;
+    db $00,$01, $01,$00, $01,$01, $01,$00, $01,$00, $01,$01, $01,$00, $01,$00 ;A5DB27;
+    db $01,$00, $02,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;A5DB37;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$FF, $01,$00, $01,$00, $01,$FF ;A5DB47;
+    db $01,$FF, $01,$00, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF ;A5DB57;
+    db $01,$FF, $01,$FF, $00,$FF, $01,$00, $01,$FF, $01,$00, $01,$00, $01,$01 ;A5DB67;
+    db $00,$01, $01,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$02, $00,$01 ;A5DB77;
+    db $00,$01, $00,$02, $00,$01, $00,$02, $00,$01, $00,$02, $00,$02, $00,$01 ;A5DB87;
+    db $00,$02, $00,$01, $FF,$02, $00,$01, $00,$02, $00,$01, $00,$02, $FF,$01 ;A5DB97;
+    db $00,$01, $00,$02, $00,$01, $FF,$01, $00,$01, $00,$02, $00,$01, $00,$01 ;A5DBA7;
+    db $FF,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $FF,$01 ;A5DBB7;
+    db $00,$01, $00,$01, $01,$01, $00,$01, $00,$01, $01,$00, $01,$00, $01,$00 ;A5DBC7;
+    db $01,$00, $01,$FF, $01,$00, $00,$FF, $01,$00, $01,$FF, $01,$00, $00,$FF ;A5DBD7;
+    db $01,$00, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF ;A5DBE7;
+    db $00,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FE, $00,$FF, $01,$FF, $01,$FF ;A5DBF7;
+    db $00,$FE, $01,$FF, $01,$FF, $00,$FE, $01,$FF, $00,$FF, $01,$FE, $00,$FF ;A5DC07;
+    db $00,$FF, $01,$FE, $00,$FF, $01,$FE, $00,$FF, $00,$FF, $01,$FE, $00,$FF ;A5DC17;
+    db $00,$FF, $00,$FF, $00,$FE, $01,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;A5DC27;
+    db $00,$FF, $00,$FF, $01,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$01, $00,$01 ;A5DC37;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $01,$01, $00,$01, $00,$01 ;A5DC47;
+    db $00,$01, $00,$01, $00,$01, $00,$02, $01,$01, $00,$01, $00,$01, $00,$02 ;A5DC57;
+    db $01,$01, $00,$01, $00,$01, $01,$02, $00,$01, $00,$01, $01,$01, $00,$01 ;A5DC67;
+    db $01,$01, $01,$01, $00,$01, $01,$01, $01,$01, $01,$01, $00,$01, $01,$00 ;A5DC77;
+    db $01,$01, $00,$01, $01,$00, $01,$01, $01,$01, $01,$01, $01,$01, $00,$01 ;A5DC87;
+    db $01,$00, $00,$01, $01,$01, $00,$01, $01,$01, $00,$01, $01,$01, $00,$01 ;A5DC97;
+    db $01,$01, $00,$01, $01,$01, $00,$01, $01,$00, $00,$01, $01,$01, $00,$01 ;A5DCA7;
+    db $01,$00, $01,$01, $01,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;A5DCB7;
+    db $01,$00, $01,$FF, $01,$00, $01,$00, $01,$FF, $01,$00, $01,$FF, $01,$00 ;A5DCC7;
+    db $01,$FF, $01,$00, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF ;A5DCD7;
+    db $00,$FF, $01,$FF, $00,$FF, $01,$FF, $00,$FF, $00,$FF, $01,$FF, $00,$FF ;A5DCE7;
+    db $00,$FF, $00,$FE, $01,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FE ;A5DCF7;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FE, $00,$FF, $00,$FF, $00,$FF, $00,$FE ;A5DD07;
+    db $FF,$FF, $00,$FF, $00,$FE, $00,$FF, $00,$FF, $FF,$FF, $00,$FE, $00,$FF ;A5DD17;
+    db $00,$FF, $FF,$FF, $00,$FF, $00,$FF, $FF,$FF, $00,$FF, $FF,$FF, $00,$FF ;A5DD27;
+    db $00,$FF, $FF,$FF, $00,$FF, $FF,$FF, $FF,$FF, $00,$FF, $FF,$00, $00,$FF ;A5DD37;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00 ;A5DD47;
+    db $FF,$01, $FF,$01, $00,$01, $FF,$00, $00,$01, $FF,$01, $00,$01, $00,$01 ;A5DD57;
+    db $FF,$01, $00,$01, $FF,$01, $00,$01, $FF,$01, $00,$01, $00,$01, $FF,$01 ;A5DD67;
+    db $00,$01, $00,$02, $FF,$01, $00,$01, $00,$01, $00,$02, $00,$01, $FF,$01 ;A5DD77;
+    db $00,$02, $00,$01, $00,$01, $00,$01, $00,$02, $00,$01, $00,$01, $00,$02 ;A5DD87;
+    db $00,$01, $00,$01, $00,$01, $01,$01, $00,$02, $00,$01, $00,$01, $01,$01 ;A5DD97;
+    db $00,$01, $01,$01, $00,$01, $00,$01, $01,$01, $00,$01, $01,$01, $00,$01 ;A5DDA7;
+    db $01,$01, $01,$00, $00,$01, $01,$01, $80,$80, $80,$80, $80,$80, $80,$80 ;A5DDB7;
 
 DraygonFightIntroDanceData_KeikoLove_EvirsAlreadyDeleted:
-    db $01,$FF,$02,$FE,$01,$FF,$02,$FE,$01,$FF,$01,$FE,$02,$FF,$01,$FE   ;A5DDC7;
-    db $02,$FF,$01,$FE,$01,$FF,$02,$FE,$01,$FE,$01,$FF,$02,$FE,$01,$FE   ;A5DDD7;
-    db $01,$FF,$02,$FE,$01,$FE,$01,$FE,$01,$FE,$02,$FF,$01,$FE,$01,$FE   ;A5DDE7;
-    db $01,$FD,$02,$FE,$01,$FE,$01,$FE,$01,$FE,$01,$FD,$01,$FE,$01,$FE   ;A5DDF7;
-    db $01,$FD,$01,$FD,$01,$FE,$01,$FD,$01,$FD,$01,$FE,$01,$FD,$01,$FD   ;A5DE07;
-    db $01,$FD,$00,$FE,$01,$FD,$01,$FE,$00,$FD,$00,$FE,$01,$FE,$00,$FE   ;A5DE17;
-    db $00,$FF,$00,$FE,$FF,$FF,$00,$FF,$FF,$FF,$FF,$00,$FF,$00,$FF,$01   ;A5DE27;
-    db $FF,$01,$FF,$01,$FF,$01,$FE,$01,$FF,$02,$FF,$01,$FE,$02,$FF,$02   ;A5DE37;
-    db $FE,$03,$FF,$02,$FE,$02,$FF,$03,$FE,$03,$FF,$03,$FE,$02,$FF,$03   ;A5DE47;
-    db $FF,$03,$FF,$03,$FF,$04,$FF,$03,$FF,$03,$FF,$03,$FF,$03,$00,$03   ;A5DE57;
-    db $00,$03,$FF,$03,$00,$03,$00,$03,$00,$03,$01,$03,$00,$03,$00,$02   ;A5DE67;
-    db $01,$03,$01,$03,$00,$02,$01,$02,$01,$03,$01,$02,$01,$02,$01,$02   ;A5DE77;
-    db $01,$02,$02,$01,$01,$02,$01,$01,$02,$01,$01,$01,$02,$01,$01,$01   ;A5DE87;
-    db $02,$01,$01,$00,$02,$00,$02,$00,$01,$00,$02,$00,$02,$FF,$02,$00   ;A5DE97;
-    db $01,$FF,$02,$FF,$02,$FF,$02,$FE,$01,$FF,$02,$FE,$02,$FF,$01,$FE   ;A5DEA7;
-    db $02,$FE,$01,$FE,$02,$FE,$01,$FD,$02,$FE,$01,$FE,$01,$FD,$01,$FD   ;A5DEB7;
-    db $01,$FE,$01,$FD,$01,$FD,$01,$FD,$01,$FD,$00,$FD,$01,$FD,$00,$FD   ;A5DEC7;
-    db $00,$FC,$01,$FD,$00,$FD,$FF,$FD,$00,$FD,$00,$FC,$00,$FD,$FF,$FD   ;A5DED7;
-    db $00,$FD,$FF,$FD,$FF,$FD,$FF,$FD,$00,$FE,$FF,$FD,$FF,$FE,$FF,$FD   ;A5DEE7;
-    db $FE,$FE,$FF,$FE,$FF,$FE,$FF,$FF,$FE,$FE,$FF,$FF,$FF,$FF,$FE,$00   ;A5DEF7;
-    db $FF,$FF,$FE,$00,$FF,$00,$FE,$01,$FF,$01,$FF,$01,$FE,$01,$FF,$01   ;A5DF07;
-    db $FE,$02,$FF,$02,$FF,$02,$FE,$02,$FF,$03,$FF,$02,$00,$03,$FF,$02   ;A5DF17;
-    db $FF,$02,$00,$03,$00,$02,$00,$02,$00,$03,$00,$02,$01,$02,$01,$02   ;A5DF27;
-    db $01,$02,$00,$02,$02,$02,$01,$01,$01,$02,$01,$02,$02,$02,$02,$01   ;A5DF37;
+; This section is read even though the evirs are deleted at this point
+; (deleted due to the 80,80 terminator, but the movement routine sets their position anyway)
+    db $01,$FF, $02,$FE, $01,$FF, $02,$FE, $01,$FF, $01,$FE, $02,$FF, $01,$FE ;A5DDC7;
+    db $02,$FF, $01,$FE, $01,$FF, $02,$FE, $01,$FE, $01,$FF, $02,$FE, $01,$FE ;A5DDD7;
+    db $01,$FF, $02,$FE, $01,$FE, $01,$FE, $01,$FE, $02,$FF, $01,$FE, $01,$FE ;A5DDE7;
+    db $01,$FD, $02,$FE, $01,$FE, $01,$FE, $01,$FE, $01,$FD, $01,$FE, $01,$FE ;A5DDF7;
+    db $01,$FD, $01,$FD, $01,$FE, $01,$FD, $01,$FD, $01,$FE, $01,$FD, $01,$FD ;A5DE07;
+    db $01,$FD, $00,$FE, $01,$FD, $01,$FE, $00,$FD, $00,$FE, $01,$FE, $00,$FE ;A5DE17;
+    db $00,$FF, $00,$FE, $FF,$FF, $00,$FF, $FF,$FF, $FF,$00, $FF,$00, $FF,$01 ;A5DE27;
+    db $FF,$01, $FF,$01, $FF,$01, $FE,$01, $FF,$02, $FF,$01, $FE,$02, $FF,$02 ;A5DE37;
+    db $FE,$03, $FF,$02, $FE,$02, $FF,$03, $FE,$03, $FF,$03, $FE,$02, $FF,$03 ;A5DE47;
+    db $FF,$03, $FF,$03, $FF,$04, $FF,$03, $FF,$03, $FF,$03, $FF,$03, $00,$03 ;A5DE57;
+    db $00,$03, $FF,$03, $00,$03, $00,$03, $00,$03, $01,$03, $00,$03, $00,$02 ;A5DE67;
+    db $01,$03, $01,$03, $00,$02, $01,$02, $01,$03, $01,$02, $01,$02, $01,$02 ;A5DE77;
+    db $01,$02, $02,$01, $01,$02, $01,$01, $02,$01, $01,$01, $02,$01, $01,$01 ;A5DE87;
+    db $02,$01, $01,$00, $02,$00, $02,$00, $01,$00, $02,$00, $02,$FF, $02,$00 ;A5DE97;
+    db $01,$FF, $02,$FF, $02,$FF, $02,$FE, $01,$FF, $02,$FE, $02,$FF, $01,$FE ;A5DEA7;
+    db $02,$FE, $01,$FE, $02,$FE, $01,$FD, $02,$FE, $01,$FE, $01,$FD, $01,$FD ;A5DEB7;
+    db $01,$FE, $01,$FD, $01,$FD, $01,$FD, $01,$FD, $00,$FD, $01,$FD, $00,$FD ;A5DEC7;
+    db $00,$FC, $01,$FD, $00,$FD, $FF,$FD, $00,$FD, $00,$FC, $00,$FD, $FF,$FD ;A5DED7;
+    db $00,$FD, $FF,$FD, $FF,$FD, $FF,$FD, $00,$FE, $FF,$FD, $FF,$FE, $FF,$FD ;A5DEE7;
+    db $FE,$FE, $FF,$FE, $FF,$FE, $FF,$FF, $FE,$FE, $FF,$FF, $FF,$FF, $FE,$00 ;A5DEF7;
+    db $FF,$FF, $FE,$00, $FF,$00, $FE,$01, $FF,$01, $FF,$01, $FE,$01, $FF,$01 ;A5DF07;
+    db $FE,$02, $FF,$02, $FF,$02, $FE,$02, $FF,$03, $FF,$02, $00,$03, $FF,$02 ;A5DF17;
+    db $FF,$02, $00,$03, $00,$02, $00,$02, $00,$03, $00,$02, $01,$02, $01,$02 ;A5DF27;
+    db $01,$02, $00,$02, $02,$02, $01,$01, $01,$02, $01,$02, $02,$02, $02,$01 ;A5DF37;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_DraygonFightIntroDanceData_KeikoLove_A5DF47:
-    db $01,$02,$02,$02,$02,$01,$01,$02,$02,$02,$02,$01,$02,$02,$02,$01   ;A5DF47;
-    db $02,$02,$02,$02,$02,$01,$02,$02,$01,$02,$02,$01,$02,$02,$02,$02   ;A5DF57;
-    db $01,$01,$02,$02,$01,$02,$02,$02,$01,$02,$02,$01,$01,$02,$02,$02   ;A5DF67;
-    db $01,$02,$02,$01,$01,$02,$02,$02,$01,$01,$02,$01,$02,$02,$02,$01   ;A5DF77;
-    db $01,$01,$02,$01,$02,$01,$02,$01,$03,$01,$02,$00,$02,$01,$00,$FF   ;A5DF87;
-    db $00,$FE,$00,$FF,$01,$FF,$00,$FF,$00,$FE,$00,$FF,$00,$FF,$01,$FE   ;A5DF97;
-    db $00,$FF,$00,$FF,$00,$FE,$00,$FF,$01,$FF,$00,$FE,$00,$FF,$00,$FF   ;A5DFA7;
-    db $01,$FE,$00,$FF,$00,$FE,$01,$FF,$00,$FF,$00,$FE,$01,$FF,$00,$FE   ;A5DFB7;
-    db $00,$FF,$01,$FE,$00,$FF,$01,$FE,$00,$FF,$01,$FE,$00,$FF,$01,$FE   ;A5DFC7;
-    db $01,$FE,$00,$FF,$01,$FE,$00,$FF,$01,$FE,$01,$FE,$01,$FE,$01,$FF   ;A5DFD7;
-    db $00,$FE,$01,$FE,$01,$FE,$01,$FF,$01,$FE,$01,$FE,$01,$FE,$01,$FE   ;A5DFE7;
-    db $01,$FE,$01,$FE,$01,$FF,$02,$FE,$01,$FF,$01,$FF,$01,$FF,$01,$FF   ;A5DFF7;
-    db $01,$00,$01,$00,$01,$01,$01,$01,$00,$01,$01,$02,$00,$01,$00,$02   ;A5E007;
-    db $01,$02,$00,$02,$00,$02,$00,$02,$00,$02,$00,$01,$00,$02,$00,$02   ;A5E017;
-    db $00,$01,$00,$02,$FF,$02,$00,$01,$00,$02,$00,$01,$FF,$02,$00,$01   ;A5E027;
-    db $00,$02,$00,$01,$FF,$01,$00,$02,$00,$01,$FF,$02,$00,$01,$00,$01   ;A5E037;
-    db $FF,$02,$00,$01,$00,$02,$00,$01,$00,$02,$00,$01,$00,$02,$00,$01   ;A5E047;
-    db $00,$02,$00,$02,$00,$01,$00,$02,$00,$02,$01,$02,$00,$02,$01,$02   ;A5E057;
-    db $00,$01,$01,$02,$00,$02,$01,$02,$01,$01,$00,$02,$01,$01,$01,$02   ;A5E067;
-    db $01,$01,$00,$01,$01,$01,$01,$01,$01,$00,$01,$01,$01,$00,$01,$00   ;A5E077;
-    db $01,$00,$01,$FF,$01,$FF,$01,$00,$01,$FF,$01,$FE,$00,$FF,$01,$FF   ;A5E087;
-    db $01,$FE,$01,$FF,$01,$FE,$00,$FE,$01,$FE,$01,$FE,$01,$FE,$00,$FE   ;A5E097;
-    db $01,$FD,$00,$FE,$01,$FE,$01,$FD,$00,$FE,$01,$FD,$00,$FE,$00,$FE   ;A5E0A7;
-    db $01,$FD,$00,$FE,$01,$FD,$00,$FE,$00,$FD,$01,$FE,$00,$FE,$00,$FD   ;A5E0B7;
-    db $00,$FE,$01,$FE,$00,$FE,$00,$FE,$00,$FE,$01,$FE,$00,$FE,$00,$FF   ;A5E0C7;
-    db $00,$FE,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF   ;A5E0D7;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$00,$01,$01,$01,$00,$01,$01,$02   ;A5E0E7;
-    db $00,$01,$01,$02,$00,$01,$00,$02,$01,$02,$00,$02,$00,$01,$01,$02   ;A5E0F7;
-    db $00,$02,$00,$01,$01,$02,$00,$02,$00,$01,$00,$02,$00,$01,$00,$02   ;A5E107;
-    db $01,$01,$00,$02,$00,$01,$00,$02,$00,$01,$00,$02,$00,$01,$01,$02   ;A5E117;
-    db $00,$01,$00,$02,$00,$01,$00,$02,$01,$01,$00,$02,$00,$01,$01,$02   ;A5E127;
-    db $00,$01,$00,$02,$01,$01,$00,$02,$01,$01,$00,$02,$01,$01,$01,$02   ;A5E137;
-    db $00,$01,$01,$01,$01,$02,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01   ;A5E147;
-    db $02,$01,$01,$01,$01,$01,$01,$01,$02,$00,$01,$01,$02,$01,$01,$01   ;A5E157;
-    db $02,$00,$02,$00,$02,$00,$01,$00,$02,$00,$02,$00,$01,$00,$02,$00   ;A5E167;
-    db $02,$00,$02,$00,$01,$00,$02,$00,$01,$00,$02,$00,$02,$00,$01,$FF   ;A5E177;
-    db $02,$00,$01,$00,$02,$FF,$01,$00,$02,$FF,$01,$00,$01,$FF,$02,$FF   ;A5E187;
-    db $01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$02,$FF,$01,$FF,$01,$FF   ;A5E197;
-    db $01,$FF,$01,$FE,$01,$FF,$01,$FF,$00,$FE,$01,$FF,$01,$FE,$01,$FF   ;A5E1A7;
-    db $01,$FE,$01,$FF,$01,$FE,$01,$FF,$01,$FE,$00,$FF,$01,$FE,$01,$FF   ;A5E1B7;
-    db $01,$FE,$01,$FF,$01,$FE,$01,$FF,$01,$FE,$00,$FF,$01,$FE,$01,$FF   ;A5E1C7;
-    db $01,$FE,$01,$FF,$00,$FE,$01,$FF,$01,$FE,$00,$FF,$01,$FE,$00,$FF   ;A5E1D7;
-    db $01,$FE,$00,$FF,$00,$FE,$01,$FF,$00,$FE,$00,$FE,$00,$FF,$00,$FE   ;A5E1E7;
-    db $00,$FF,$00,$FE,$FF,$FE,$00,$FF,$00,$FE,$FF,$FE,$00,$FE,$FF,$FF   ;A5E1F7;
-    db $FF,$FE,$FF,$FE,$FF,$FF,$FF,$FE,$FF,$FE,$FF,$FF,$FF,$FE,$FF,$FF   ;A5E207;
-    db $FF,$FF,$FF,$FE,$FE,$FF,$FF,$FF,$FF,$FF,$FE,$FF,$FF,$00,$FF,$FF   ;A5E217;
-    db $FE,$FF,$FF,$00,$FF,$00,$FE,$00,$FF,$00,$FF,$01,$FF,$00,$FE,$01   ;A5E227;
-    db $FF,$00,$FF,$01,$FF,$01,$FF,$01,$FE,$01,$FF,$02,$FF,$01,$FF,$02   ;A5E237;
-    db $FF,$01,$FF,$02,$FF,$01,$FF,$02,$00,$02,$FF,$01,$FF,$02,$FF,$02   ;A5E247;
-    db $00,$02,$FF,$02,$FF,$02,$00,$01,$FF,$02,$00,$02,$00,$02,$FF,$01   ;A5E257;
-    db $00,$02,$00,$02,$00,$01,$00,$02,$00,$02,$00,$01,$00,$02,$00,$01   ;A5E267;
-    db $00,$02,$00,$02,$00,$01,$00,$02,$01,$01,$00,$02,$00,$01,$01,$02   ;A5E277;
-    db $00,$02,$01,$01,$00,$02,$01,$01,$00,$02,$01,$01,$00,$02,$01,$01   ;A5E287;
-    db $00,$02,$01,$01,$01,$02,$00,$02,$01,$01,$01,$02,$01,$01,$00,$02   ;A5E297;
-    db $01,$01,$01,$02,$01,$01,$01,$02,$01,$01,$01,$01,$01,$02,$01,$01   ;A5E2A7;
-    db $01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$02,$01,$01,$01,$01,$01   ;A5E2B7;
-    db $01,$01,$02,$00,$01,$01,$02,$01,$01,$00,$02,$01,$01,$00,$02,$00   ;A5E2C7;
-    db $01,$01,$02,$00,$01,$00,$02,$00,$02,$00,$01,$00,$02,$00,$02,$00   ;A5E2D7;
-    db $02,$00,$01,$00,$02,$00,$02,$00,$01,$00,$02,$00,$02,$00,$01,$FF   ;A5E2E7;
-    db $02,$00,$02,$00,$02,$00,$01,$00,$02,$00,$02,$FF,$01,$00,$02,$00   ;A5E2F7;
-    db $01,$00,$02,$00,$02,$FF,$01,$00,$02,$00,$02,$00,$01,$00,$02,$00   ;A5E307;
-    db $01,$FF,$02,$00,$01,$00,$02,$00,$02,$00,$01,$00,$02,$00,$01,$FF   ;A5E317;
-    db $02,$00,$02,$00,$01,$00,$02,$00,$01,$00,$02,$00,$02,$00,$01,$00   ;A5E327;
-    db $02,$00,$01,$00,$02,$00,$02,$00,$01,$00,$02,$00,$01,$00,$02,$00   ;A5E337;
-    db $02,$00,$01,$00,$02,$00,$02,$00,$01,$00,$02,$00,$01,$00,$02,$00   ;A5E347;
+    db $01,$02, $02,$02, $02,$01, $01,$02, $02,$02, $02,$01, $02,$02, $02,$01 ;A5DF47;
+    db $02,$02, $02,$02, $02,$01, $02,$02, $01,$02, $02,$01, $02,$02, $02,$02 ;A5DF57;
+    db $01,$01, $02,$02, $01,$02, $02,$02, $01,$02, $02,$01, $01,$02, $02,$02 ;A5DF67;
+    db $01,$02, $02,$01, $01,$02, $02,$02, $01,$01, $02,$01, $02,$02, $02,$01 ;A5DF77;
+    db $01,$01, $02,$01, $02,$01, $02,$01, $03,$01, $02,$00, $02,$01, $00,$FF ;A5DF87;
+    db $00,$FE, $00,$FF, $01,$FF, $00,$FF, $00,$FE, $00,$FF, $00,$FF, $01,$FE ;A5DF97;
+    db $00,$FF, $00,$FF, $00,$FE, $00,$FF, $01,$FF, $00,$FE, $00,$FF, $00,$FF ;A5DFA7;
+    db $01,$FE, $00,$FF, $00,$FE, $01,$FF, $00,$FF, $00,$FE, $01,$FF, $00,$FE ;A5DFB7;
+    db $00,$FF, $01,$FE, $00,$FF, $01,$FE, $00,$FF, $01,$FE, $00,$FF, $01,$FE ;A5DFC7;
+    db $01,$FE, $00,$FF, $01,$FE, $00,$FF, $01,$FE, $01,$FE, $01,$FE, $01,$FF ;A5DFD7;
+    db $00,$FE, $01,$FE, $01,$FE, $01,$FF, $01,$FE, $01,$FE, $01,$FE, $01,$FE ;A5DFE7;
+    db $01,$FE, $01,$FE, $01,$FF, $02,$FE, $01,$FF, $01,$FF, $01,$FF, $01,$FF ;A5DFF7;
+    db $01,$00, $01,$00, $01,$01, $01,$01, $00,$01, $01,$02, $00,$01, $00,$02 ;A5E007;
+    db $01,$02, $00,$02, $00,$02, $00,$02, $00,$02, $00,$01, $00,$02, $00,$02 ;A5E017;
+    db $00,$01, $00,$02, $FF,$02, $00,$01, $00,$02, $00,$01, $FF,$02, $00,$01 ;A5E027;
+    db $00,$02, $00,$01, $FF,$01, $00,$02, $00,$01, $FF,$02, $00,$01, $00,$01 ;A5E037;
+    db $FF,$02, $00,$01, $00,$02, $00,$01, $00,$02, $00,$01, $00,$02, $00,$01 ;A5E047;
+    db $00,$02, $00,$02, $00,$01, $00,$02, $00,$02, $01,$02, $00,$02, $01,$02 ;A5E057;
+    db $00,$01, $01,$02, $00,$02, $01,$02, $01,$01, $00,$02, $01,$01, $01,$02 ;A5E067;
+    db $01,$01, $00,$01, $01,$01, $01,$01, $01,$00, $01,$01, $01,$00, $01,$00 ;A5E077;
+    db $01,$00, $01,$FF, $01,$FF, $01,$00, $01,$FF, $01,$FE, $00,$FF, $01,$FF ;A5E087;
+    db $01,$FE, $01,$FF, $01,$FE, $00,$FE, $01,$FE, $01,$FE, $01,$FE, $00,$FE ;A5E097;
+    db $01,$FD, $00,$FE, $01,$FE, $01,$FD, $00,$FE, $01,$FD, $00,$FE, $00,$FE ;A5E0A7;
+    db $01,$FD, $00,$FE, $01,$FD, $00,$FE, $00,$FD, $01,$FE, $00,$FE, $00,$FD ;A5E0B7;
+    db $00,$FE, $01,$FE, $00,$FE, $00,$FE, $00,$FE, $01,$FE, $00,$FE, $00,$FF ;A5E0C7;
+    db $00,$FE, $00,$FF, $01,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$FF, $00,$FF ;A5E0D7;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $00,$01, $01,$01, $00,$01, $01,$02 ;A5E0E7;
+    db $00,$01, $01,$02, $00,$01, $00,$02, $01,$02, $00,$02, $00,$01, $01,$02 ;A5E0F7;
+    db $00,$02, $00,$01, $01,$02, $00,$02, $00,$01, $00,$02, $00,$01, $00,$02 ;A5E107;
+    db $01,$01, $00,$02, $00,$01, $00,$02, $00,$01, $00,$02, $00,$01, $01,$02 ;A5E117;
+    db $00,$01, $00,$02, $00,$01, $00,$02, $01,$01, $00,$02, $00,$01, $01,$02 ;A5E127;
+    db $00,$01, $00,$02, $01,$01, $00,$02, $01,$01, $00,$02, $01,$01, $01,$02 ;A5E137;
+    db $00,$01, $01,$01, $01,$02, $01,$01, $01,$01, $01,$01, $01,$01, $01,$01 ;A5E147;
+    db $02,$01, $01,$01, $01,$01, $01,$01, $02,$00, $01,$01, $02,$01, $01,$01 ;A5E157;
+    db $02,$00, $02,$00, $02,$00, $01,$00, $02,$00, $02,$00, $01,$00, $02,$00 ;A5E167;
+    db $02,$00, $02,$00, $01,$00, $02,$00, $01,$00, $02,$00, $02,$00, $01,$FF ;A5E177;
+    db $02,$00, $01,$00, $02,$FF, $01,$00, $02,$FF, $01,$00, $01,$FF, $02,$FF ;A5E187;
+    db $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $02,$FF, $01,$FF, $01,$FF ;A5E197;
+    db $01,$FF, $01,$FE, $01,$FF, $01,$FF, $00,$FE, $01,$FF, $01,$FE, $01,$FF ;A5E1A7;
+    db $01,$FE, $01,$FF, $01,$FE, $01,$FF, $01,$FE, $00,$FF, $01,$FE, $01,$FF ;A5E1B7;
+    db $01,$FE, $01,$FF, $01,$FE, $01,$FF, $01,$FE, $00,$FF, $01,$FE, $01,$FF ;A5E1C7;
+    db $01,$FE, $01,$FF, $00,$FE, $01,$FF, $01,$FE, $00,$FF, $01,$FE, $00,$FF ;A5E1D7;
+    db $01,$FE, $00,$FF, $00,$FE, $01,$FF, $00,$FE, $00,$FE, $00,$FF, $00,$FE ;A5E1E7;
+    db $00,$FF, $00,$FE, $FF,$FE, $00,$FF, $00,$FE, $FF,$FE, $00,$FE, $FF,$FF ;A5E1F7;
+    db $FF,$FE, $FF,$FE, $FF,$FF, $FF,$FE, $FF,$FE, $FF,$FF, $FF,$FE, $FF,$FF ;A5E207;
+    db $FF,$FF, $FF,$FE, $FE,$FF, $FF,$FF, $FF,$FF, $FE,$FF, $FF,$00, $FF,$FF ;A5E217;
+    db $FE,$FF, $FF,$00, $FF,$00, $FE,$00, $FF,$00, $FF,$01, $FF,$00, $FE,$01 ;A5E227;
+    db $FF,$00, $FF,$01, $FF,$01, $FF,$01, $FE,$01, $FF,$02, $FF,$01, $FF,$02 ;A5E237;
+    db $FF,$01, $FF,$02, $FF,$01, $FF,$02, $00,$02, $FF,$01, $FF,$02, $FF,$02 ;A5E247;
+    db $00,$02, $FF,$02, $FF,$02, $00,$01, $FF,$02, $00,$02, $00,$02, $FF,$01 ;A5E257;
+    db $00,$02, $00,$02, $00,$01, $00,$02, $00,$02, $00,$01, $00,$02, $00,$01 ;A5E267;
+    db $00,$02, $00,$02, $00,$01, $00,$02, $01,$01, $00,$02, $00,$01, $01,$02 ;A5E277;
+    db $00,$02, $01,$01, $00,$02, $01,$01, $00,$02, $01,$01, $00,$02, $01,$01 ;A5E287;
+    db $00,$02, $01,$01, $01,$02, $00,$02, $01,$01, $01,$02, $01,$01, $00,$02 ;A5E297;
+    db $01,$01, $01,$02, $01,$01, $01,$02, $01,$01, $01,$01, $01,$02, $01,$01 ;A5E2A7;
+    db $01,$01, $01,$01, $01,$01, $01,$01, $01,$01, $02,$01, $01,$01, $01,$01 ;A5E2B7;
+    db $01,$01, $02,$00, $01,$01, $02,$01, $01,$00, $02,$01, $01,$00, $02,$00 ;A5E2C7;
+    db $01,$01, $02,$00, $01,$00, $02,$00, $02,$00, $01,$00, $02,$00, $02,$00 ;A5E2D7;
+    db $02,$00, $01,$00, $02,$00, $02,$00, $01,$00, $02,$00, $02,$00, $01,$FF ;A5E2E7;
+    db $02,$00, $02,$00, $02,$00, $01,$00, $02,$00, $02,$FF, $01,$00, $02,$00 ;A5E2F7;
+    db $01,$00, $02,$00, $02,$FF, $01,$00, $02,$00, $02,$00, $01,$00, $02,$00 ;A5E307;
+    db $01,$FF, $02,$00, $01,$00, $02,$00, $02,$00, $01,$00, $02,$00, $01,$FF ;A5E317;
+    db $02,$00, $02,$00, $01,$00, $02,$00, $01,$00, $02,$00, $02,$00, $01,$00 ;A5E327;
+    db $02,$00, $01,$00, $02,$00, $02,$00, $01,$00, $02,$00, $01,$00, $02,$00 ;A5E337;
+    db $02,$00, $01,$00, $02,$00, $02,$00, $01,$00, $02,$00, $01,$00, $02,$00 ;A5E347;
     db $02,$00                                                           ;A5E357;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Palette_SporeSpawn:
+; Sprite palette 7. Spores
     dw $0000,$3F57,$2E4D,$00E2,$0060,$3AB0,$220B,$1166                   ;A5E359;
     dw $0924,$57FF,$3AB5,$1DCE,$00E7,$03FF,$0216,$00B0                   ;A5E369;
 
-Palette_SporeSpawn_HealthBased_0:
-    dw $0000,$3F57,$2E4D,$00E2,$0060,$3AB0,$220B,$1166                   ;A5E379;
-    dw $0924,$57FF,$3AB5,$1DCE,$00E7,$03FF,$0216,$00B0                   ;A5E389;
+; Sprite palette 1. Spore Spawn and spore spawner
+Palette_SporeSpawn_HealthBased_0:                                        ;A5E379;
+    dw $0000,$3F57,$2E4D,$00E2,$0060,$3AB0,$220B,$1166,$0924,$57FF,$3AB5,$1DCE,$00E7,$03FF,$0216,$00B0 ; Health >= 770
+Palette_SporeSpawn_HealthBased_1:                                        ;A5E399;
+    dw $3800,$2A92,$21CC,$00C4,$0062,$260E,$15AA,$0D27,$04E5,$475A,$2E52,$198C,$00C6,$033F,$01B6,$008F ; Health < 770
+Palette_SporeSpawn_HealthBased_2:                                        ;A5E3B9;
+    dw $3800,$15EF,$156B,$00A5,$0063,$15AC,$0D49,$0907,$04C6,$36D6,$21D0,$114B,$00A6,$025F,$0137,$008D ; Health < 410
+Palette_SporeSpawn_HealthBased_3:                                        ;A5E3D9;
+    dw $3800,$094A,$0908,$0463,$0000,$0929,$04C6,$04A5,$0484,$2631,$156D,$0D09,$0085,$019F,$00D7,$006C ; Health < 70
 
-Palette_SporeSpawn_HealthBased_1:
-    dw $3800,$2A92,$21CC,$00C4,$0062,$260E,$15AA,$0D27                   ;A5E399;
-    dw $04E5,$475A,$2E52,$198C,$00C6,$033F,$01B6,$008F                   ;A5E3A9;
-
-Palette_SporeSpawn_HealthBased_2:
-    dw $3800,$15EF,$156B,$00A5,$0063,$15AC,$0D49,$0907                   ;A5E3B9;
-    dw $04C6,$36D6,$21D0,$114B,$00A6,$025F,$0137,$008D                   ;A5E3C9;
-
-Palette_SporeSpawn_HealthBased_3:
-    dw $3800,$094A,$0908,$0463,$0000,$0929,$04C6,$04A5                   ;A5E3D9;
-    dw $0484,$2631,$156D,$0D09,$0085,$019F,$00D7,$006C                   ;A5E3E9;
-
+; Sprite palette 1. Spore Spawn and spore spawner
 Palette_SporeSpawn_DeathSequence_0:
     dw $3800,$094A,$0908,$0463,$0000,$0929,$04C6,$04A5                   ;A5E3F9;
     dw $0484,$2631,$156D,$0D09,$0085,$019F,$00D7,$006C                   ;A5E409;
@@ -7350,6 +6935,7 @@ Palette_SporeSpawn_DeathSequence_7:
     dw $3800,$36BA,$29F4,$0089,$0002,$3236,$1DB2,$0D0D                   ;A5E4D9;
     dw $04CB,$36FC,$19B2,$00CB,$0004,$36FC,$19B2,$00CB                   ;A5E4E9;
 
+; BG1/2 palette 4. Level graphics (green)
 Palette_SporeSpawn_DeathSequence_Level_0:
     dw $2003,$6318,$6318,$1CE1,$1DA9,$2923,$24A1,$1400                   ;A5E4F9;
     dw $2269,$21C9,$1544,$0420,$268B,$04C5,$2731,$0000                   ;A5E509;
@@ -7378,6 +6964,7 @@ Palette_SporeSpawn_DeathSequence_Level_6:
     dw $0000,$6318,$6318,$0089,$19B2,$0D0D,$0089,$0002                   ;A5E5B9;
     dw $04CB,$04CB,$092E,$0004,$3236,$29F4,$19B2,$0002                   ;A5E5C9;
 
+; BG1/2 palette 7. Background graphics (blue)
 Palette_SporeSpawn_DeathSequence_Background_0:
     dw $3800,$5544,$3C84,$1441,$24E3,$18A2,$1081,$0C40                   ;A5E5D9;
     dw $129C,$11B5,$14EE,$1066,$7FFF,$7FFF,$16BD,$0800                   ;A5E5E9;
@@ -7407,94 +6994,64 @@ Palette_SporeSpawn_DeathSequence_Background_6:
     dw $04CB,$04CB,$092E,$0004,$7FFF,$7FFF,$19B2,$0002                   ;A5E6A9;
 
 InstList_SporeSpawn_Initial_Dead:
-    dw Instruction_SporeSpawn_LoadDeathSequenceTargetPalette             ;A5E6B9;
-    dw $00C0                                                             ;A5E6BB;
+    dw Instruction_SporeSpawn_LoadDeathSequenceTargetPalette,$00C0       ;A5E6B9;
     dw Instruction_SporeSpawn_FunctionInY                                ;A5E6BD;
     dw RTS_A5EB1A                                                        ;A5E6BF;
-    dw $0001                                                             ;A5E6C1;
-    dw ExtendedSpritemap_SporeSpawn_Dead                                 ;A5E6C3;
+    dw $0001,ExtendedSpritemap_SporeSpawn_Dead                           ;A5E6C1;
     dw Instruction_Common_Sleep                                          ;A5E6C5;
 
 InstList_SporeSpawn_Initial_Alive:
-    dw $0100                                                             ;A5E6C7;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_0             ;A5E6C9;
+    dw $0100,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_0       ;A5E6C7;
     dw Instruction_SporeSpawn_FunctionInY                                ;A5E6CB;
     dw Function_SporeSpawn_Descent                                       ;A5E6CD;
-    dw $0001                                                             ;A5E6CF;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_0             ;A5E6D1;
+    dw $0001,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_0       ;A5E6CF;
     dw Instruction_Common_Sleep                                          ;A5E6D3;
 
 InstList_SporeSpawn_FightHasStarted:
-    dw Instruction_SporeSpawn_SetMaxXRadiusAndAngleDelta                 ;A5E6D5;
-    dw $0040,$0001                                                       ;A5E6D7;
-    dw Instruction_SporeSpawn_FunctionInY                                ;A5E6DB;
+    dw Instruction_SporeSpawn_SetMaxXRadiusAndAngleDelta,$0040,$0001     ;A5E6D5;
+    dw Instruction_SporeSpawn_FunctionInY                                ;A5E6D7;
     dw Function_SporeSpawn_Moving                                        ;A5E6DD;
-    dw $0300                                                             ;A5E6DF;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_0             ;A5E6E1;
+    dw $0300,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_0       ;A5E6DF;
 
 InstList_SporeSpawn_OpenAndStop_0:
-    dw Instruction_SporeSpawn_SporeGenerationFlagInY                     ;A5E6E3;
-    dw $0001                                                             ;A5E6E5;
-    dw Instruction_SporeSpawn_QueueSFXInY_Lib2_Max6                      ;A5E6E7;
-    dw $002C,$0001                                                       ;A5E6E9;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_0             ;A5E6ED;
-    dw $0008                                                             ;A5E6EF;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_1             ;A5E6F1;
-    dw $0008                                                             ;A5E6F3;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_2             ;A5E6F5;
-    dw $0008                                                             ;A5E6F7;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_3             ;A5E6F9;
-    dw $0007                                                             ;A5E6FB;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_4             ;A5E6FD;
-    dw $0007                                                             ;A5E6FF;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_5             ;A5E701;
-    dw $0006                                                             ;A5E703;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_6             ;A5E705;
-    dw $0001                                                             ;A5E707;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_7             ;A5E709;
+    dw Instruction_SporeSpawn_SporeGenerationFlagInY,$0001               ;A5E6E3;
+    dw Instruction_SporeSpawn_QueueSFXInY_Lib2_Max6,$002C                ;A5E6E7;
+    dw $0001,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_0       ;A5E6E9;
+    dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_1       ;A5E6EF;
+    dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_2       ;A5E6F3;
+    dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_3       ;A5E6F7;
+    dw $0007,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_4       ;A5E6FB;
+    dw $0007,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_5       ;A5E6FF;
+    dw $0006,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_6       ;A5E703;
+    dw $0001,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_7       ;A5E707;
     dw Instruction_SporeSpawn_ClearDamagedFlag                           ;A5E70B;
     dw Instruction_SporeSpawn_FunctionInY                                ;A5E70D;
     dw RTS_A5EB1A                                                        ;A5E70F;
-    dw Instruction_Common_TimerInY                                       ;A5E711;
-    dw $0005                                                             ;A5E713;
+    dw Instruction_Common_TimerInY,$0005                                 ;A5E711;
 
 InstList_SporeSpawn_OpenAndStop_1:
-    dw $0008                                                             ;A5E715;
-    dw ExtendedSpritemap_SporeSpawn_FullyOpen_0                          ;A5E717;
-    dw $0008                                                             ;A5E719;
-    dw ExtendedSpritemap_SporeSpawn_FullyOpen_1                          ;A5E71B;
-    dw $0008                                                             ;A5E71D;
-    dw ExtendedSpritemap_SporeSpawn_FullyOpen_2                          ;A5E71F;
-    dw $0008                                                             ;A5E721;
-    dw ExtendedSpritemap_SporeSpawn_FullyOpen_1                          ;A5E723;
+    dw $0008,ExtendedSpritemap_SporeSpawn_FullyOpen_0                    ;A5E715;
+    dw $0008,ExtendedSpritemap_SporeSpawn_FullyOpen_1                    ;A5E719;
+    dw $0008,ExtendedSpritemap_SporeSpawn_FullyOpen_2                    ;A5E71D;
+    dw $0008,ExtendedSpritemap_SporeSpawn_FullyOpen_1                    ;A5E721;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;A5E725;
     dw InstList_SporeSpawn_OpenAndStop_1                                 ;A5E727;
 
 InstList_SporeSpawn_CloseAndMove:
-    dw $0008                                                             ;A5E729;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_6             ;A5E72B;
-    dw $0008                                                             ;A5E72D;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_5             ;A5E72F;
-    dw $0008                                                             ;A5E731;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_4             ;A5E733;
-    dw $0008                                                             ;A5E735;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_3             ;A5E737;
-    dw $0008                                                             ;A5E739;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_2             ;A5E73B;
-    dw $0008                                                             ;A5E73D;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_1             ;A5E73F;
-    dw $0001                                                             ;A5E741;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_0             ;A5E743;
+    dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_6       ;A5E729;
+    dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_5       ;A5E72D;
+    dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_4       ;A5E731;
+    dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_3       ;A5E735;
+    dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_2       ;A5E739;
+    dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_1       ;A5E73D;
+    dw $0001,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_0       ;A5E741;
     dw Instruction_SporeSpawn_FunctionInY                                ;A5E745;
     dw Function_SporeSpawn_Moving                                        ;A5E747;
-    dw Instruction_SporeSpawn_SporeGenerationFlagInY                     ;A5E749;
-    dw $0000                                                             ;A5E74B;
+    dw Instruction_SporeSpawn_SporeGenerationFlagInY,$0000               ;A5E749;
     dw Instruction_SporeSpawn_IncreaseMaxXRadius                         ;A5E74D;
-    dw $0200                                                             ;A5E74F;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_0             ;A5E751;
-    dw Instruction_SporeSpawn_SporeGenerationFlagInY                     ;A5E753;
-    dw $0001,$00D0                                                       ;A5E755;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_0             ;A5E759;
+    dw $0200,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_0       ;A5E74F;
+    dw Instruction_SporeSpawn_SporeGenerationFlagInY,$0001               ;A5E753;
+    dw $00D0,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_0       ;A5E755;
     dw Instruction_Common_GotoY                                          ;A5E75B;
     dw InstList_SporeSpawn_OpenAndStop_0                                 ;A5E75D;
 
@@ -7523,80 +7080,53 @@ Instruction_SporeSpawn_ClearDamagedFlag:
 InstList_SporeSpawn_DeathSequence_0:
     dw Instruction_SporeSpawn_FunctionInY                                ;A5E77D;
     dw Function_SporeSpawn_SetupDeath                                    ;A5E77F;
-    dw $0001                                                             ;A5E781;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_6             ;A5E783;
+    dw $0001,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_6       ;A5E781;
     dw Instruction_SporeSpawn_FunctionInY                                ;A5E785;
     dw Function_SporeSpawn_Dying                                         ;A5E787;
-    dw Instruction_Common_TimerInY                                       ;A5E789;
-    dw $000A                                                             ;A5E78B;
+    dw Instruction_Common_TimerInY,$000A                                 ;A5E789;
 
 InstList_SporeSpawn_DeathSequence_1:
-    dw $0001                                                             ;A5E78D;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_6             ;A5E78F;
+    dw $0001,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_6       ;A5E78D;
     dw Instruction_SporeSpawn_SpawnDyingExplosion                        ;A5E791;
-    dw Instruction_Common_WaitYFrames                                    ;A5E793;
-    dw $0008                                                             ;A5E795;
+    dw Instruction_Common_WaitYFrames,$0008                              ;A5E793;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;A5E797;
     dw InstList_SporeSpawn_DeathSequence_1                               ;A5E799;
-    dw $0008                                                             ;A5E79B;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_6             ;A5E79D;
-    dw $0008                                                             ;A5E79F;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_5             ;A5E7A1;
-    dw $0008                                                             ;A5E7A3;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_4             ;A5E7A5;
-    dw $0008                                                             ;A5E7A7;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_3             ;A5E7A9;
-    dw $0008                                                             ;A5E7AB;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_2             ;A5E7AD;
-    dw $0008                                                             ;A5E7AF;
-    dw ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_1             ;A5E7B1;
-    dw $0001                                                             ;A5E7B3;
-    dw ExtendedSpritemap_SporeSpawn_Dead                                 ;A5E7B5;
+    dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_6       ;A5E79B;
+    dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_5       ;A5E79F;
+    dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_4       ;A5E7A3;
+    dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_3       ;A5E7A7;
+    dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_2       ;A5E7AB;
+    dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_1       ;A5E7AF;
+    dw $0001,ExtendedSpritemap_SporeSpawn_Dead                           ;A5E7B3;
     dw Instruction_SporeSpawn_Harden                                     ;A5E7B7;
-    dw Instruction_Common_TimerInY                                       ;A5E7B9;
-    dw $000A                                                             ;A5E7BB;
+    dw Instruction_Common_TimerInY,$000A                                 ;A5E7B9;
 
 InstList_SporeSpawn_DeathSequence_2:
     dw Instruction_SporeSpawn_SpawnHardeningDustCloud                    ;A5E7BD;
-    dw Instruction_Common_WaitYFrames                                    ;A5E7BF;
-    dw $0008                                                             ;A5E7C1;
+    dw Instruction_Common_WaitYFrames,$0008                              ;A5E7BF;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;A5E7C3;
     dw InstList_SporeSpawn_DeathSequence_2                               ;A5E7C5;
-    dw Instruction_SporeSpawn_LoadDeathSequencePalette                   ;A5E7C7;
-    dw $0000                                                             ;A5E7C9;
+    dw Instruction_SporeSpawn_LoadDeathSequencePalette,$0000             ;A5E7C7;
     dw Instruction_SporeSpawn_SpawnHardeningDustCloud                    ;A5E7CB;
-    dw $0010                                                             ;A5E7CD;
-    dw ExtendedSpritemap_SporeSpawn_Dead                                 ;A5E7CF;
-    dw Instruction_SporeSpawn_LoadDeathSequencePalette                   ;A5E7D1;
-    dw $0020                                                             ;A5E7D3;
+    dw $0010,ExtendedSpritemap_SporeSpawn_Dead                           ;A5E7CD;
+    dw Instruction_SporeSpawn_LoadDeathSequencePalette,$0020             ;A5E7D1;
     dw Instruction_SporeSpawn_SpawnHardeningDustCloud                    ;A5E7D5;
-    dw $0010                                                             ;A5E7D7;
-    dw ExtendedSpritemap_SporeSpawn_Dead                                 ;A5E7D9;
-    dw Instruction_SporeSpawn_LoadDeathSequencePalette                   ;A5E7DB;
-    dw $0040                                                             ;A5E7DD;
+    dw $0010,ExtendedSpritemap_SporeSpawn_Dead                           ;A5E7D7;
+    dw Instruction_SporeSpawn_LoadDeathSequencePalette,$0040             ;A5E7DB;
     dw Instruction_SporeSpawn_SpawnHardeningDustCloud                    ;A5E7DF;
-    dw $0010                                                             ;A5E7E1;
-    dw ExtendedSpritemap_SporeSpawn_Dead                                 ;A5E7E3;
-    dw Instruction_SporeSpawn_LoadDeathSequencePalette                   ;A5E7E5;
-    dw $0060                                                             ;A5E7E7;
+    dw $0010,ExtendedSpritemap_SporeSpawn_Dead                           ;A5E7E1;
+    dw Instruction_SporeSpawn_LoadDeathSequencePalette,$0060             ;A5E7E5;
     dw Instruction_SporeSpawn_SpawnHardeningDustCloud                    ;A5E7E9;
-    dw $0010                                                             ;A5E7EB;
-    dw ExtendedSpritemap_SporeSpawn_Dead                                 ;A5E7ED;
-    dw Instruction_SporeSpawn_LoadDeathSequencePalette                   ;A5E7EF;
-    dw $0080                                                             ;A5E7F1;
+    dw $0010,ExtendedSpritemap_SporeSpawn_Dead                           ;A5E7EB;
+    dw Instruction_SporeSpawn_LoadDeathSequencePalette,$0080             ;A5E7EF;
     dw Instruction_SporeSpawn_SpawnHardeningDustCloud                    ;A5E7F3;
-    dw $0010                                                             ;A5E7F5;
-    dw ExtendedSpritemap_SporeSpawn_Dead                                 ;A5E7F7;
-    dw Instruction_SporeSpawn_LoadDeathSequencePalette                   ;A5E7F9;
-    dw $00A0                                                             ;A5E7FB;
+    dw $0010,ExtendedSpritemap_SporeSpawn_Dead                           ;A5E7F5;
+    dw Instruction_SporeSpawn_LoadDeathSequencePalette,$00A0             ;A5E7F9;
     dw Instruction_SporeSpawn_SpawnHardeningDustCloud                    ;A5E7FD;
-    dw $0010                                                             ;A5E7FF;
-    dw ExtendedSpritemap_SporeSpawn_Dead                                 ;A5E801;
-    dw Instruction_SporeSpawn_LoadDeathSequencePalette                   ;A5E803;
-    dw $00C0                                                             ;A5E805;
+    dw $0010,ExtendedSpritemap_SporeSpawn_Dead                           ;A5E7FF;
+    dw Instruction_SporeSpawn_LoadDeathSequencePalette,$00C0             ;A5E803;
     dw Instruction_SporeSpawn_SpawnHardeningDustCloud                    ;A5E807;
-    dw $0010                                                             ;A5E809;
-    dw ExtendedSpritemap_SporeSpawn_Dead                                 ;A5E80B;
+    dw $0010,ExtendedSpritemap_SporeSpawn_Dead                           ;A5E809;
     dw Instruction_SporeSpawn_CallSporeSpawnDeathItemDropRoutine         ;A5E80D;
     dw Instruction_Common_Sleep                                          ;A5E80F;
 
@@ -8422,12 +7952,14 @@ ExtendedSpritemap_SporeSpawn_Dead:
     dw Hitbox_SporeSpawn_0                                               ;A5EE6D;
 
 ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_0:
-    dw $0001,$0000,$0000                                                 ;A5EE6F;
+    dw $0001                                                             ;A5EE6F;
+    dw $0000,$0000
     dw Spritemap_SporeSpawn_0                                            ;A5EE75;
     dw Hitbox_SporeSpawn_1                                               ;A5EE77;
 
 ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_1:
-    dw $0002,$0000,$0000                                                 ;A5EE79;
+    dw $0002                                                             ;A5EE79;
+    dw $0000,$0000
     dw Spritemap_SporeSpawn_1                                            ;A5EE7F;
     dw Hitbox_SporeSpawn_2                                               ;A5EE81;
     dw $0000,$0000                                                       ;A5EE83;
@@ -8435,7 +7967,8 @@ ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_1:
     dw Hitbox_SporeSpawn_B                                               ;A5EE89;
 
 ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_2:
-    dw $0002,$0000,$0000                                                 ;A5EE8B;
+    dw $0002                                                             ;A5EE8B;
+    dw $0000,$0000
     dw Spritemap_SporeSpawn_2                                            ;A5EE91;
     dw Hitbox_SporeSpawn_3                                               ;A5EE93;
     dw $0000,$0000                                                       ;A5EE95;
@@ -8443,7 +7976,8 @@ ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_2:
     dw Hitbox_SporeSpawn_C                                               ;A5EE9B;
 
 ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_3:
-    dw $0002,$0000,$0000                                                 ;A5EE9D;
+    dw $0002                                                             ;A5EE9D;
+    dw $0000,$0000
     dw Spritemap_SporeSpawn_3                                            ;A5EEA3;
     dw Hitbox_SporeSpawn_4                                               ;A5EEA5;
     dw $0000,$0000                                                       ;A5EEA7;
@@ -8451,7 +7985,8 @@ ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_3:
     dw Hitbox_SporeSpawn_D                                               ;A5EEAD;
 
 ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_4:
-    dw $0002,$0000,$0000                                                 ;A5EEAF;
+    dw $0002                                                             ;A5EEAF;
+    dw $0000,$0000
     dw Spritemap_SporeSpawn_4                                            ;A5EEB5;
     dw Hitbox_SporeSpawn_5                                               ;A5EEB7;
     dw $0000,$0000                                                       ;A5EEB9;
@@ -8459,7 +7994,8 @@ ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_4:
     dw Hitbox_SporeSpawn_C                                               ;A5EEBF;
 
 ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_5:
-    dw $0002,$0000,$0000                                                 ;A5EEC1;
+    dw $0002                                                             ;A5EEC1;
+    dw $0000,$0000
     dw Spritemap_SporeSpawn_5                                            ;A5EEC7;
     dw Hitbox_SporeSpawn_6                                               ;A5EEC9;
     dw $0000,$0000                                                       ;A5EECB;
@@ -8467,7 +8003,8 @@ ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_5:
     dw Hitbox_SporeSpawn_B                                               ;A5EED1;
 
 ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_6:
-    dw $0002,$0000,$0000                                                 ;A5EED3;
+    dw $0002                                                             ;A5EED3;
+    dw $0000,$0000
     dw Spritemap_SporeSpawn_15                                           ;A5EED9;
     dw Hitbox_SporeSpawn_13                                              ;A5EEDB;
     dw $0000,$0000                                                       ;A5EEDD;
@@ -8475,7 +8012,8 @@ ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_6:
     dw Hitbox_SporeSpawn_C                                               ;A5EEE3;
 
 ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_7:
-    dw $0002,$0000,$0000                                                 ;A5EEE5;
+    dw $0002                                                             ;A5EEE5;
+    dw $0000,$0000
     dw Spritemap_SporeSpawn_16                                           ;A5EEEB;
     dw Hitbox_SporeSpawn_14                                              ;A5EEED;
     dw $0000,$0000                                                       ;A5EEEF;
@@ -8484,43 +8022,51 @@ ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_7:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_ExtendedSpritemap_SporeSpawn_A5EEF7:
-    dw $0001,$0000,$0000                                                 ;A5EEF7;
+    dw $0001                                                             ;A5EEF7;
+    dw $0000,$0000
     dw Spritemap_SporeSpawn_F                                            ;A5EEFD;
     dw Hitbox_SporeSpawn_F                                               ;A5EEFF;
 
 UNUSED_ExtendedSpritemap_SporeSpawn_A5EF01:
-    dw $0001,$0000,$0000                                                 ;A5EF01;
+    dw $0001                                                             ;A5EF01;
+    dw $0000,$0000
     dw Spritemap_SporeSpawn_10                                           ;A5EF07;
     dw Hitbox_SporeSpawn_10                                              ;A5EF09;
 
 UNUSED_ExtendedSpritemap_SporeSpawn_A5EF0B:
-    dw $0001,$0000,$0000                                                 ;A5EF0B;
+    dw $0001                                                             ;A5EF0B;
+    dw $0000,$0000
     dw Spritemap_SporeSpawn_11                                           ;A5EF11;
     dw Hitbox_SporeSpawn_11                                              ;A5EF13;
 
 UNUSED_ExtendedSpritemap_SporeSpawn_A5EF15:
-    dw $0001,$0000,$0000                                                 ;A5EF15;
+    dw $0001                                                             ;A5EF15;
+    dw $0000,$0000
     dw Spritemap_SporeSpawn_12                                           ;A5EF1B;
     dw Hitbox_SporeSpawn_12                                              ;A5EF1D;
 
 UNUSED_ExtendedSpritemap_SporeSpawn_A5EF1F:
-    dw $0001,$0000,$0000                                                 ;A5EF1F;
+    dw $0001                                                             ;A5EF1F;
+    dw $0000,$0000
     dw Spritemap_SporeSpawn_13                                           ;A5EF25;
     dw Hitbox_SporeSpawn_13                                              ;A5EF27;
 
 UNUSED_ExtendedSpritemap_SporeSpawn_A5EF29:
-    dw $0001,$0000,$0000                                                 ;A5EF29;
+    dw $0001                                                             ;A5EF29;
+    dw $0000,$0000
     dw Spritemap_SporeSpawn_14                                           ;A5EF2F;
     dw Hitbox_SporeSpawn_13                                              ;A5EF31;
 
 UNUSED_ExtendedSpritemap_SporeSpawn_A5EF33:
-    dw $0001,$0000,$0000                                                 ;A5EF33;
+    dw $0001                                                             ;A5EF33;
+    dw $0000,$0000
     dw Spritemap_SporeSpawn_E                                            ;A5EF39;
     dw Hitbox_SporeSpawn_E                                               ;A5EF3B;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 ExtendedSpritemap_SporeSpawn_FullyOpen_0:
-    dw $0002,$0000,$0000                                                 ;A5EF3D;
+    dw $0002                                                             ;A5EF3D;
+    dw $0000,$0000
     dw Spritemap_SporeSpawn_16                                           ;A5EF43;
     dw Hitbox_SporeSpawn_14                                              ;A5EF45;
     dw $0000,$0000                                                       ;A5EF47;
@@ -8528,7 +8074,8 @@ ExtendedSpritemap_SporeSpawn_FullyOpen_0:
     dw Hitbox_SporeSpawn_B                                               ;A5EF4D;
 
 ExtendedSpritemap_SporeSpawn_FullyOpen_1:
-    dw $0002,$0000,$0000                                                 ;A5EF4F;
+    dw $0002                                                             ;A5EF4F;
+    dw $0000,$0000
     dw Spritemap_SporeSpawn_16                                           ;A5EF55;
     dw Hitbox_SporeSpawn_14                                              ;A5EF57;
     dw $0000,$0000                                                       ;A5EF59;
@@ -8536,7 +8083,8 @@ ExtendedSpritemap_SporeSpawn_FullyOpen_1:
     dw Hitbox_SporeSpawn_C                                               ;A5EF5F;
 
 ExtendedSpritemap_SporeSpawn_FullyOpen_2:
-    dw $0002,$0000,$0000                                                 ;A5EF61;
+    dw $0002                                                             ;A5EF61;
+    dw $0000,$0000
     dw Spritemap_SporeSpawn_16                                           ;A5EF67;
     dw Hitbox_SporeSpawn_14                                              ;A5EF69;
     dw $0000,$0000                                                       ;A5EF6B;
@@ -8544,7 +8092,8 @@ ExtendedSpritemap_SporeSpawn_FullyOpen_2:
     dw Hitbox_SporeSpawn_D                                               ;A5EF71;
 
 Hitbox_SporeSpawn_0:
-    dw $0002,$FFD7,$FFE2,$0029,$001E                                     ;A5EF73;
+    dw $0002                                                             ;A5EF73;
+    dw $FFD7,$FFE2,$0029,$001E
     dw RTL_A5804C                                                        ;A5EF7D;
     dw CommonA5_CreateADudShot                                           ;A5EF7F;
     dw $FFF0,$FFD3,$000F,$FFE2                                           ;A5EF81;
@@ -8552,7 +8101,8 @@ Hitbox_SporeSpawn_0:
     dw CommonA5_CreateADudShot                                           ;A5EF8B;
 
 Hitbox_SporeSpawn_1:
-    dw $0002,$FFD7,$FFE2,$0029,$001E                                     ;A5EF8D;
+    dw $0002                                                             ;A5EF8D;
+    dw $FFD7,$FFE2,$0029,$001E
     dw EnemyTouch_SporeSpawn                                             ;A5EF97;
     dw CommonA5_CreateADudShot                                           ;A5EF99;
     dw $FFF0,$FFD3,$000F,$FFE2                                           ;A5EF9B;
@@ -8560,7 +8110,8 @@ Hitbox_SporeSpawn_1:
     dw CommonA5_CreateADudShot                                           ;A5EFA5;
 
 Hitbox_SporeSpawn_2:
-    dw $0002,$FFD4,$FFDD,$002B,$0021                                     ;A5EFA7;
+    dw $0002                                                             ;A5EFA7;
+    dw $FFD4,$FFDD,$002B,$0021
     dw EnemyTouch_SporeSpawn                                             ;A5EFB1;
     dw CommonA5_CreateADudShot                                           ;A5EFB3;
     dw $FFF0,$FFCF,$000F,$FFDD                                           ;A5EFB5;
@@ -8568,7 +8119,8 @@ Hitbox_SporeSpawn_2:
     dw CommonA5_CreateADudShot                                           ;A5EFBF;
 
 Hitbox_SporeSpawn_3:
-    dw $0004,$FFD3,$FFDA,$002C,$FFF7                                     ;A5EFC1;
+    dw $0004                                                             ;A5EFC1;
+    dw $FFD3,$FFDA,$002C,$FFF7
     dw EnemyTouch_SporeSpawn                                             ;A5EFCB;
     dw CommonA5_CreateADudShot                                           ;A5EFCD;
     dw $FFD3,$0008,$002C,$0023                                           ;A5EFCF;
@@ -8582,7 +8134,8 @@ Hitbox_SporeSpawn_3:
     dw CommonA5_CreateADudShot                                           ;A5EFF1;
 
 Hitbox_SporeSpawn_4:
-    dw $0004,$FFD5,$FFD4,$002A,$FFF3                                     ;A5EFF3;
+    dw $0004                                                             ;A5EFF3;
+    dw $FFD5,$FFD4,$002A,$FFF3
     dw EnemyTouch_SporeSpawn                                             ;A5EFFD;
     dw CommonA5_CreateADudShot                                           ;A5EFFF;
     dw $FFD4,$000C,$002A,$002A                                           ;A5F001;
@@ -8596,7 +8149,8 @@ Hitbox_SporeSpawn_4:
     dw CommonA5_CreateADudShot                                           ;A5F023;
 
 Hitbox_SporeSpawn_5:
-    dw $0004,$FFD3,$FFD1,$002C,$FFEF                                     ;A5F025;
+    dw $0004                                                             ;A5F025;
+    dw $FFD3,$FFD1,$002C,$FFEF
     dw EnemyTouch_SporeSpawn                                             ;A5F02F;
     dw CommonA5_CreateADudShot                                           ;A5F031;
     dw $FFD4,$0010,$002B,$002E                                           ;A5F033;
@@ -8610,7 +8164,8 @@ Hitbox_SporeSpawn_5:
     dw CommonA5_CreateADudShot                                           ;A5F055;
 
 Hitbox_SporeSpawn_6:
-    dw $0004,$FFD4,$FFCE,$002D,$FFEB                                     ;A5F057;
+    dw $0004                                                             ;A5F057;
+    dw $FFD4,$FFCE,$002D,$FFEB
     dw EnemyTouch_SporeSpawn                                             ;A5F061;
     dw CommonA5_CreateADudShot                                           ;A5F063;
     dw $FFD5,$0014,$002B,$0032                                           ;A5F065;
@@ -8624,7 +8179,8 @@ Hitbox_SporeSpawn_6:
     dw CommonA5_CreateADudShot                                           ;A5F087;
 
 Hitbox_SporeSpawn_7:
-    dw $0002,$FFD2,$FFDD,$002C,$0023                                     ;A5F089;
+    dw $0002                                                             ;A5F089;
+    dw $FFD2,$FFDD,$002C,$0023
     dw EnemyTouch_SporeSpawn                                             ;A5F093;
     dw CommonA5_CreateADudShot                                           ;A5F095;
     dw $FFF0,$FFD0,$0010,$FFE0                                           ;A5F097;
@@ -8632,7 +8188,8 @@ Hitbox_SporeSpawn_7:
     dw CommonA5_CreateADudShot                                           ;A5F0A1;
 
 Hitbox_SporeSpawn_8:
-    dw $0004,$FFD3,$FFD9,$002D,$FFF7                                     ;A5F0A3;
+    dw $0004                                                             ;A5F0A3;
+    dw $FFD3,$FFD9,$002D,$FFF7
     dw EnemyTouch_SporeSpawn                                             ;A5F0AD;
     dw CommonA5_CreateADudShot                                           ;A5F0AF;
     dw $FFD4,$0008,$002C,$0026                                           ;A5F0B1;
@@ -8646,7 +8203,8 @@ Hitbox_SporeSpawn_8:
     dw CommonA5_CreateADudShot                                           ;A5F0D3;
 
 Hitbox_SporeSpawn_9:
-    dw $0004,$FFD3,$FFD4,$002D,$FFF3                                     ;A5F0D5;
+    dw $0004                                                             ;A5F0D5;
+    dw $FFD3,$FFD4,$002D,$FFF3
     dw EnemyTouch_SporeSpawn                                             ;A5F0DF;
     dw CommonA5_CreateADudShot                                           ;A5F0E1;
     dw $FFD6,$000C,$002A,$002B                                           ;A5F0E3;
@@ -8660,7 +8218,8 @@ Hitbox_SporeSpawn_9:
     dw CommonA5_CreateADudShot                                           ;A5F105;
 
 Hitbox_SporeSpawn_A:
-    dw $0004,$FFD4,$FFD1,$0029,$FFEF                                     ;A5F107;
+    dw $0004                                                             ;A5F107;
+    dw $FFD4,$FFD1,$0029,$FFEF
     dw EnemyTouch_SporeSpawn                                             ;A5F111;
     dw CommonA5_CreateADudShot                                           ;A5F113;
     dw $FFD4,$0010,$002C,$002D                                           ;A5F115;
@@ -8674,47 +8233,56 @@ Hitbox_SporeSpawn_A:
     dw CommonA5_CreateADudShot                                           ;A5F137;
 
 Hitbox_SporeSpawn_B:
-    dw $0001,$FFF1,$FFE8,$000E,$0017                                     ;A5F139;
+    dw $0001                                                             ;A5F139;
+    dw $FFF1,$FFE8,$000E,$0017
     dw EnemyTouch_SporeSpawn                                             ;A5F143;
     dw EnemyShot_SporeSpawn_Vulnerable                                   ;A5F145;
 
 Hitbox_SporeSpawn_C:
-    dw $0001,$FFF1,$FFE8,$000E,$0017                                     ;A5F147;
+    dw $0001                                                             ;A5F147;
+    dw $FFF1,$FFE8,$000E,$0017
     dw EnemyTouch_SporeSpawn                                             ;A5F151;
     dw EnemyShot_SporeSpawn_Vulnerable                                   ;A5F153;
 
 Hitbox_SporeSpawn_D:
-    dw $0001,$FFF1,$FFE8,$000E,$0017                                     ;A5F155;
+    dw $0001                                                             ;A5F155;
+    dw $FFF1,$FFE8,$000E,$0017
     dw EnemyTouch_SporeSpawn                                             ;A5F15F;
     dw CommonA5_CreateADudShot                                           ;A5F161;
 
 Hitbox_SporeSpawn_E:
-    dw $0001,$FFF8,$FFF8,$0007,$0007                                     ;A5F163;
+    dw $0001                                                             ;A5F163;
+    dw $FFF8,$FFF8,$0007,$0007
     dw EnemyTouch_SporeSpawn                                             ;A5F16D;
     dw CommonA5_CreateADudShot                                           ;A5F16F;
 
 Hitbox_SporeSpawn_F:
-    dw $0001,$FFF8,$FFF8,$0007,$0006                                     ;A5F171;
+    dw $0001                                                             ;A5F171;
+    dw $FFF8,$FFF8,$0007,$0006
     dw EnemyTouch_SporeSpawn                                             ;A5F17B;
     dw CommonA5_CreateADudShot                                           ;A5F17D;
 
 Hitbox_SporeSpawn_10:
-    dw $0001,$FFF8,$FFF8,$0007,$0006                                     ;A5F17F;
+    dw $0001                                                             ;A5F17F;
+    dw $FFF8,$FFF8,$0007,$0006
     dw EnemyTouch_SporeSpawn                                             ;A5F189;
     dw CommonA5_CreateADudShot                                           ;A5F18B;
 
 Hitbox_SporeSpawn_11:
-    dw $0001,$FFF8,$FFF8,$0007,$0006                                     ;A5F18D;
+    dw $0001                                                             ;A5F18D;
+    dw $FFF8,$FFF8,$0007,$0006
     dw EnemyTouch_SporeSpawn                                             ;A5F197;
     dw EnemyShot_SporeSpawn_Vulnerable                                   ;A5F199;
 
 Hitbox_SporeSpawn_12:
-    dw $0001,$FFFC,$FFFC,$0003,$0003                                     ;A5F19B;
+    dw $0001                                                             ;A5F19B;
+    dw $FFFC,$FFFC,$0003,$0003
     dw EnemyTouch_SporeSpawn                                             ;A5F1A5;
     dw EnemyShot_SporeSpawn_Vulnerable                                   ;A5F1A7;
 
 Hitbox_SporeSpawn_13:
-    dw $0004,$FFD4,$FFCB,$002C,$FFE9                                     ;A5F1A9;
+    dw $0004                                                             ;A5F1A9;
+    dw $FFD4,$FFCB,$002C,$FFE9
     dw EnemyTouch_SporeSpawn                                             ;A5F1B3;
     dw CommonA5_CreateADudShot                                           ;A5F1B5;
     dw $FFD4,$0016,$002B,$0034                                           ;A5F1B7;
@@ -8728,7 +8296,8 @@ Hitbox_SporeSpawn_13:
     dw CommonA5_CreateADudShot                                           ;A5F1D9;
 
 Hitbox_SporeSpawn_14:
-    dw $0004,$FFD4,$FFC9,$002B,$FFE7                                     ;A5F1DB;
+    dw $0004                                                             ;A5F1DB;
+    dw $FFD4,$FFC9,$002B,$FFE7
     dw EnemyTouch_SporeSpawn                                             ;A5F1E5;
     dw CommonA5_CreateADudShot                                           ;A5F1E7;
     dw $FFD3,$0018,$002B,$0037                                           ;A5F1E9;
@@ -8742,800 +8311,436 @@ Hitbox_SporeSpawn_14:
     dw CommonA5_CreateADudShot                                           ;A5F20B;
 
 Spritemap_SporeSpawn_0:
-    dw $001A,$8000                                                       ;A5F20D;
-    db $F0                                                               ;A5F211;
-    dw $6124,$8010                                                       ;A5F212;
-    db $F0                                                               ;A5F216;
-    dw $6122,$8020                                                       ;A5F217;
-    db $F0                                                               ;A5F21B;
-    dw $6120,$8000                                                       ;A5F21C;
-    db $E0                                                               ;A5F220;
-    dw $6104,$8010                                                       ;A5F221;
-    db $E0                                                               ;A5F225;
-    dw $6102,$8020                                                       ;A5F226;
-    db $E0                                                               ;A5F22A;
-    dw $6100,$81F0                                                       ;A5F22B;
-    db $F0                                                               ;A5F22F;
-    dw $2124,$81E0                                                       ;A5F230;
-    db $F0                                                               ;A5F234;
-    dw $2122,$81D0                                                       ;A5F235;
-    db $F0                                                               ;A5F239;
-    dw $2120,$81F0                                                       ;A5F23A;
-    db $E0                                                               ;A5F23E;
-    dw $2104,$81E0                                                       ;A5F23F;
-    db $E0                                                               ;A5F243;
-    dw $2102,$81D0                                                       ;A5F244;
-    db $E0                                                               ;A5F248;
-    dw $2100,$8000                                                       ;A5F249;
-    db $D2                                                               ;A5F24D;
-    dw $6142,$81F0                                                       ;A5F24E;
-    db $D2                                                               ;A5F252;
-    dw $2142,$8000                                                       ;A5F253;
-    db $10                                                               ;A5F257;
-    dw $614E,$8010                                                       ;A5F258;
-    db $10                                                               ;A5F25C;
-    dw $614C,$8020                                                       ;A5F25D;
-    db $10                                                               ;A5F261;
-    dw $614A,$8000                                                       ;A5F262;
-    db $00                                                               ;A5F266;
-    dw $6148,$8010                                                       ;A5F267;
-    db $00                                                               ;A5F26B;
-    dw $6146,$8020                                                       ;A5F26C;
-    db $00                                                               ;A5F270;
-    dw $6144,$81F0                                                       ;A5F271;
-    db $10                                                               ;A5F275;
-    dw $214E,$81E0                                                       ;A5F276;
-    db $10                                                               ;A5F27A;
-    dw $214C,$81D0                                                       ;A5F27B;
-    db $10                                                               ;A5F27F;
-    dw $214A,$81F0                                                       ;A5F280;
-    db $00                                                               ;A5F284;
-    dw $2148,$81E0                                                       ;A5F285;
-    db $00                                                               ;A5F289;
-    dw $2146,$81D0                                                       ;A5F28A;
-    db $00                                                               ;A5F28E;
-    dw $2144                                                             ;A5F28F;
+    dw $001A                                                             ;A5F20D;
+    %spritemapEntry(1, $00, $F0, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $10, $F0, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $20, $F0, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $00, $E0, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $10, $E0, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $20, $E0, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $1F0, $F0, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1E0, $F0, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1D0, $F0, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $1F0, $E0, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1E0, $E0, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1D0, $E0, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $00, $D2, 0, 1, 2, 0, $142)
+    %spritemapEntry(1, $1F0, $D2, 0, 0, 2, 0, $142)
+    %spritemapEntry(1, $00, $10, 0, 1, 2, 0, $14E)
+    %spritemapEntry(1, $10, $10, 0, 1, 2, 0, $14C)
+    %spritemapEntry(1, $20, $10, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $00, $00, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $10, $00, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $20, $00, 0, 1, 2, 0, $144)
+    %spritemapEntry(1, $1F0, $10, 0, 0, 2, 0, $14E)
+    %spritemapEntry(1, $1E0, $10, 0, 0, 2, 0, $14C)
+    %spritemapEntry(1, $1D0, $10, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F0, $00, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1E0, $00, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1D0, $00, 0, 0, 2, 0, $144)
 
 Spritemap_SporeSpawn_1:
-    dw $001E,$8000                                                       ;A5F291;
-    db $EC                                                               ;A5F295;
-    dw $6124,$8010                                                       ;A5F296;
-    db $EC                                                               ;A5F29A;
-    dw $6122,$8020                                                       ;A5F29B;
-    db $EC                                                               ;A5F29F;
-    dw $6120,$8000                                                       ;A5F2A0;
-    db $DC                                                               ;A5F2A4;
-    dw $6104,$8010                                                       ;A5F2A5;
-    db $DC                                                               ;A5F2A9;
-    dw $6102,$8020                                                       ;A5F2AA;
-    db $DC                                                               ;A5F2AE;
-    dw $6100,$81F0                                                       ;A5F2AF;
-    db $EC                                                               ;A5F2B3;
-    dw $2124,$81E0                                                       ;A5F2B4;
-    db $EC                                                               ;A5F2B8;
-    dw $2122,$81D0                                                       ;A5F2B9;
-    db $EC                                                               ;A5F2BD;
-    dw $2120,$81F0                                                       ;A5F2BE;
-    db $DC                                                               ;A5F2C2;
-    dw $2104,$81E0                                                       ;A5F2C3;
-    db $DC                                                               ;A5F2C7;
-    dw $2102,$81D0                                                       ;A5F2C8;
-    db $DC                                                               ;A5F2CC;
-    dw $2100,$8000                                                       ;A5F2CD;
-    db $CE                                                               ;A5F2D1;
-    dw $6142,$81F0                                                       ;A5F2D2;
-    db $CE                                                               ;A5F2D6;
-    dw $2142,$8000                                                       ;A5F2D7;
-    db $14                                                               ;A5F2DB;
-    dw $614E,$8010                                                       ;A5F2DC;
-    db $14                                                               ;A5F2E0;
-    dw $614C,$8020                                                       ;A5F2E1;
-    db $14                                                               ;A5F2E5;
-    dw $614A,$8000                                                       ;A5F2E6;
-    db $04                                                               ;A5F2EA;
-    dw $6148,$8010                                                       ;A5F2EB;
-    db $04                                                               ;A5F2EF;
-    dw $6146,$8020                                                       ;A5F2F0;
-    db $04                                                               ;A5F2F4;
-    dw $6144,$81F0                                                       ;A5F2F5;
-    db $14                                                               ;A5F2F9;
-    dw $214E,$81E0                                                       ;A5F2FA;
-    db $14                                                               ;A5F2FE;
-    dw $214C,$81D0                                                       ;A5F2FF;
-    db $14                                                               ;A5F303;
-    dw $214A,$81F0                                                       ;A5F304;
-    db $04                                                               ;A5F308;
-    dw $2148,$81E0                                                       ;A5F309;
-    db $04                                                               ;A5F30D;
-    dw $2146,$81D0                                                       ;A5F30E;
-    db $04                                                               ;A5F312;
-    dw $2144,$0010                                                       ;A5F313;
-    db $FC                                                               ;A5F317;
-    dw $613F,$0024                                                       ;A5F318;
-    db $FC                                                               ;A5F31C;
-    dw $613F,$01D4                                                       ;A5F31D;
-    db $FC                                                               ;A5F321;
-    dw $213F,$01E8                                                       ;A5F322;
-    db $FC                                                               ;A5F326;
-    dw $213F                                                             ;A5F327;
+    dw $001E                                                             ;A5F291;
+    %spritemapEntry(1, $00, $EC, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $10, $EC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $20, $EC, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $00, $DC, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $10, $DC, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $20, $DC, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $1F0, $EC, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1E0, $EC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1D0, $EC, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $1F0, $DC, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1E0, $DC, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1D0, $DC, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $00, $CE, 0, 1, 2, 0, $142)
+    %spritemapEntry(1, $1F0, $CE, 0, 0, 2, 0, $142)
+    %spritemapEntry(1, $00, $14, 0, 1, 2, 0, $14E)
+    %spritemapEntry(1, $10, $14, 0, 1, 2, 0, $14C)
+    %spritemapEntry(1, $20, $14, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $00, $04, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $10, $04, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $20, $04, 0, 1, 2, 0, $144)
+    %spritemapEntry(1, $1F0, $14, 0, 0, 2, 0, $14E)
+    %spritemapEntry(1, $1E0, $14, 0, 0, 2, 0, $14C)
+    %spritemapEntry(1, $1D0, $14, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F0, $04, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1E0, $04, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1D0, $04, 0, 0, 2, 0, $144)
+    %spritemapEntry(0, $10, $FC, 0, 1, 2, 0, $13F)
+    %spritemapEntry(0, $24, $FC, 0, 1, 2, 0, $13F)
+    %spritemapEntry(0, $1D4, $FC, 0, 0, 2, 0, $13F)
+    %spritemapEntry(0, $1E8, $FC, 0, 0, 2, 0, $13F)
 
 Spritemap_SporeSpawn_2:
-    dw $0022,$8000                                                       ;A5F329;
-    db $E8                                                               ;A5F32D;
-    dw $6124,$8010                                                       ;A5F32E;
-    db $E8                                                               ;A5F332;
-    dw $6122,$8020                                                       ;A5F333;
-    db $E8                                                               ;A5F337;
-    dw $6120,$8000                                                       ;A5F338;
-    db $D8                                                               ;A5F33C;
-    dw $6104,$8010                                                       ;A5F33D;
-    db $D8                                                               ;A5F341;
-    dw $6102,$8020                                                       ;A5F342;
-    db $D8                                                               ;A5F346;
-    dw $6100,$81F0                                                       ;A5F347;
-    db $E8                                                               ;A5F34B;
-    dw $2124,$81E0                                                       ;A5F34C;
-    db $E8                                                               ;A5F350;
-    dw $2122,$81D0                                                       ;A5F351;
-    db $E8                                                               ;A5F355;
-    dw $2120,$81F0                                                       ;A5F356;
-    db $D8                                                               ;A5F35A;
-    dw $2104,$81E0                                                       ;A5F35B;
-    db $D8                                                               ;A5F35F;
-    dw $2102,$81D0                                                       ;A5F360;
-    db $D8                                                               ;A5F364;
-    dw $2100,$8000                                                       ;A5F365;
-    db $CA                                                               ;A5F369;
-    dw $6142,$81F0                                                       ;A5F36A;
-    db $CA                                                               ;A5F36E;
-    dw $2142,$0024                                                       ;A5F36F;
-    db $00                                                               ;A5F373;
-    dw $6161,$000E                                                       ;A5F374;
-    db $00                                                               ;A5F378;
-    dw $6161,$01EA                                                       ;A5F379;
-    db $00                                                               ;A5F37D;
-    dw $2161,$01D5                                                       ;A5F37E;
-    db $00                                                               ;A5F382;
-    dw $2161,$0024                                                       ;A5F383;
-    db $F8                                                               ;A5F387;
-    dw $6160,$000E                                                       ;A5F388;
-    db $F8                                                               ;A5F38C;
-    dw $6160,$01EA                                                       ;A5F38D;
-    db $F8                                                               ;A5F391;
-    dw $2160,$01D5                                                       ;A5F392;
-    db $F8                                                               ;A5F396;
-    dw $2160,$8000                                                       ;A5F397;
-    db $18                                                               ;A5F39B;
-    dw $614E,$8010                                                       ;A5F39C;
-    db $18                                                               ;A5F3A0;
-    dw $614C,$8020                                                       ;A5F3A1;
-    db $18                                                               ;A5F3A5;
-    dw $614A,$8000                                                       ;A5F3A6;
-    db $08                                                               ;A5F3AA;
-    dw $6148,$8010                                                       ;A5F3AB;
-    db $08                                                               ;A5F3AF;
-    dw $6146,$8020                                                       ;A5F3B0;
-    db $08                                                               ;A5F3B4;
-    dw $6144,$81F0                                                       ;A5F3B5;
-    db $18                                                               ;A5F3B9;
-    dw $214E,$81E0                                                       ;A5F3BA;
-    db $18                                                               ;A5F3BE;
-    dw $214C,$81D0                                                       ;A5F3BF;
-    db $18                                                               ;A5F3C3;
-    dw $214A,$81F0                                                       ;A5F3C4;
-    db $08                                                               ;A5F3C8;
-    dw $2148,$81E0                                                       ;A5F3C9;
-    db $08                                                               ;A5F3CD;
-    dw $2146,$81D0                                                       ;A5F3CE;
-    db $08                                                               ;A5F3D2;
-    dw $2144                                                             ;A5F3D3;
+    dw $0022                                                             ;A5F329;
+    %spritemapEntry(1, $00, $E8, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $10, $E8, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $20, $E8, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $00, $D8, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $10, $D8, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $20, $D8, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $1F0, $E8, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1E0, $E8, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1D0, $E8, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $1F0, $D8, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1E0, $D8, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1D0, $D8, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $00, $CA, 0, 1, 2, 0, $142)
+    %spritemapEntry(1, $1F0, $CA, 0, 0, 2, 0, $142)
+    %spritemapEntry(0, $24, $00, 0, 1, 2, 0, $161)
+    %spritemapEntry(0, $0E, $00, 0, 1, 2, 0, $161)
+    %spritemapEntry(0, $1EA, $00, 0, 0, 2, 0, $161)
+    %spritemapEntry(0, $1D5, $00, 0, 0, 2, 0, $161)
+    %spritemapEntry(0, $24, $F8, 0, 1, 2, 0, $160)
+    %spritemapEntry(0, $0E, $F8, 0, 1, 2, 0, $160)
+    %spritemapEntry(0, $1EA, $F8, 0, 0, 2, 0, $160)
+    %spritemapEntry(0, $1D5, $F8, 0, 0, 2, 0, $160)
+    %spritemapEntry(1, $00, $18, 0, 1, 2, 0, $14E)
+    %spritemapEntry(1, $10, $18, 0, 1, 2, 0, $14C)
+    %spritemapEntry(1, $20, $18, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $00, $08, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $10, $08, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $20, $08, 0, 1, 2, 0, $144)
+    %spritemapEntry(1, $1F0, $18, 0, 0, 2, 0, $14E)
+    %spritemapEntry(1, $1E0, $18, 0, 0, 2, 0, $14C)
+    %spritemapEntry(1, $1D0, $18, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F0, $08, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1E0, $08, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1D0, $08, 0, 0, 2, 0, $144)
 
 Spritemap_SporeSpawn_3:
-    dw $0022,$8000                                                       ;A5F3D5;
-    db $E4                                                               ;A5F3D9;
-    dw $6124,$8010                                                       ;A5F3DA;
-    db $E4                                                               ;A5F3DE;
-    dw $6122,$8020                                                       ;A5F3DF;
-    db $E4                                                               ;A5F3E3;
-    dw $6120,$8000                                                       ;A5F3E4;
-    db $D4                                                               ;A5F3E8;
-    dw $6104,$8010                                                       ;A5F3E9;
-    db $D4                                                               ;A5F3ED;
-    dw $6102,$8020                                                       ;A5F3EE;
-    db $D4                                                               ;A5F3F2;
-    dw $6100,$81F0                                                       ;A5F3F3;
-    db $E4                                                               ;A5F3F7;
-    dw $2124,$81E0                                                       ;A5F3F8;
-    db $E4                                                               ;A5F3FC;
-    dw $2122,$81D0                                                       ;A5F3FD;
-    db $E4                                                               ;A5F401;
-    dw $2120,$81F0                                                       ;A5F402;
-    db $D4                                                               ;A5F406;
-    dw $2104,$81E0                                                       ;A5F407;
-    db $D4                                                               ;A5F40B;
-    dw $2102,$81D0                                                       ;A5F40C;
-    db $D4                                                               ;A5F410;
-    dw $2100,$8000                                                       ;A5F411;
-    db $C6                                                               ;A5F415;
-    dw $6142,$81F0                                                       ;A5F416;
-    db $C6                                                               ;A5F41A;
-    dw $2142,$0020                                                       ;A5F41B;
-    db $04                                                               ;A5F41F;
-    dw $6163,$000C                                                       ;A5F420;
-    db $04                                                               ;A5F424;
-    dw $6163,$01EC                                                       ;A5F425;
-    db $04                                                               ;A5F429;
-    dw $2163,$01D8                                                       ;A5F42A;
-    db $04                                                               ;A5F42E;
-    dw $2163,$0020                                                       ;A5F42F;
-    db $F4                                                               ;A5F433;
-    dw $6162,$000C                                                       ;A5F434;
-    db $F4                                                               ;A5F438;
-    dw $6162,$01EC                                                       ;A5F439;
-    db $F4                                                               ;A5F43D;
-    dw $2162,$01D8                                                       ;A5F43E;
-    db $F4                                                               ;A5F442;
-    dw $2162,$8000                                                       ;A5F443;
-    db $1C                                                               ;A5F447;
-    dw $614E,$8010                                                       ;A5F448;
-    db $1C                                                               ;A5F44C;
-    dw $614C,$8020                                                       ;A5F44D;
-    db $1C                                                               ;A5F451;
-    dw $614A,$8000                                                       ;A5F452;
-    db $0C                                                               ;A5F456;
-    dw $6148,$8010                                                       ;A5F457;
-    db $0C                                                               ;A5F45B;
-    dw $6146,$8020                                                       ;A5F45C;
-    db $0C                                                               ;A5F460;
-    dw $6144,$81F0                                                       ;A5F461;
-    db $1C                                                               ;A5F465;
-    dw $214E,$81E0                                                       ;A5F466;
-    db $1C                                                               ;A5F46A;
-    dw $214C,$81D0                                                       ;A5F46B;
-    db $1C                                                               ;A5F46F;
-    dw $214A,$81F0                                                       ;A5F470;
-    db $0C                                                               ;A5F474;
-    dw $2148,$81E0                                                       ;A5F475;
-    db $0C                                                               ;A5F479;
-    dw $2146,$81D0                                                       ;A5F47A;
-    db $0C                                                               ;A5F47E;
-    dw $2144                                                             ;A5F47F;
+    dw $0022                                                             ;A5F3D5;
+    %spritemapEntry(1, $00, $E4, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $10, $E4, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $20, $E4, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $00, $D4, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $10, $D4, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $20, $D4, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $1F0, $E4, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1E0, $E4, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1D0, $E4, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $1F0, $D4, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1E0, $D4, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1D0, $D4, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $00, $C6, 0, 1, 2, 0, $142)
+    %spritemapEntry(1, $1F0, $C6, 0, 0, 2, 0, $142)
+    %spritemapEntry(0, $20, $04, 0, 1, 2, 0, $163)
+    %spritemapEntry(0, $0C, $04, 0, 1, 2, 0, $163)
+    %spritemapEntry(0, $1EC, $04, 0, 0, 2, 0, $163)
+    %spritemapEntry(0, $1D8, $04, 0, 0, 2, 0, $163)
+    %spritemapEntry(0, $20, $F4, 0, 1, 2, 0, $162)
+    %spritemapEntry(0, $0C, $F4, 0, 1, 2, 0, $162)
+    %spritemapEntry(0, $1EC, $F4, 0, 0, 2, 0, $162)
+    %spritemapEntry(0, $1D8, $F4, 0, 0, 2, 0, $162)
+    %spritemapEntry(1, $00, $1C, 0, 1, 2, 0, $14E)
+    %spritemapEntry(1, $10, $1C, 0, 1, 2, 0, $14C)
+    %spritemapEntry(1, $20, $1C, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $00, $0C, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $10, $0C, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $20, $0C, 0, 1, 2, 0, $144)
+    %spritemapEntry(1, $1F0, $1C, 0, 0, 2, 0, $14E)
+    %spritemapEntry(1, $1E0, $1C, 0, 0, 2, 0, $14C)
+    %spritemapEntry(1, $1D0, $1C, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F0, $0C, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1E0, $0C, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1D0, $0C, 0, 0, 2, 0, $144)
 
 Spritemap_SporeSpawn_4:
-    dw $0022,$8000                                                       ;A5F481;
-    db $D0                                                               ;A5F485;
-    dw $6104,$8010                                                       ;A5F486;
-    db $D0                                                               ;A5F48A;
-    dw $6102,$8020                                                       ;A5F48B;
-    db $D0                                                               ;A5F48F;
-    dw $6100,$81F0                                                       ;A5F490;
-    db $D0                                                               ;A5F494;
-    dw $2104,$81E0                                                       ;A5F495;
-    db $D0                                                               ;A5F499;
-    dw $2102,$81D0                                                       ;A5F49A;
-    db $D0                                                               ;A5F49E;
-    dw $2100,$8000                                                       ;A5F49F;
-    db $E0                                                               ;A5F4A3;
-    dw $6124,$8010                                                       ;A5F4A4;
-    db $E0                                                               ;A5F4A8;
-    dw $6122,$8020                                                       ;A5F4A9;
-    db $E0                                                               ;A5F4AD;
-    dw $6120,$81F0                                                       ;A5F4AE;
-    db $E0                                                               ;A5F4B2;
-    dw $2124,$81E0                                                       ;A5F4B3;
-    db $E0                                                               ;A5F4B7;
-    dw $2122,$81D0                                                       ;A5F4B8;
-    db $E0                                                               ;A5F4BC;
-    dw $2120,$8000                                                       ;A5F4BD;
-    db $C2                                                               ;A5F4C1;
-    dw $6142,$81F0                                                       ;A5F4C2;
-    db $C2                                                               ;A5F4C6;
-    dw $2142,$001F                                                       ;A5F4C7;
-    db $08                                                               ;A5F4CB;
-    dw $6165,$000B                                                       ;A5F4CC;
-    db $08                                                               ;A5F4D0;
-    dw $6165,$01ED                                                       ;A5F4D1;
-    db $08                                                               ;A5F4D5;
-    dw $2165,$01D9                                                       ;A5F4D6;
-    db $08                                                               ;A5F4DA;
-    dw $2165,$001F                                                       ;A5F4DB;
-    db $F0                                                               ;A5F4DF;
-    dw $6164,$000B                                                       ;A5F4E0;
-    db $F0                                                               ;A5F4E4;
-    dw $6164,$01ED                                                       ;A5F4E5;
-    db $F0                                                               ;A5F4E9;
-    dw $2164,$01D9                                                       ;A5F4EA;
-    db $F0                                                               ;A5F4EE;
-    dw $2164,$8000                                                       ;A5F4EF;
-    db $20                                                               ;A5F4F3;
-    dw $614E,$8010                                                       ;A5F4F4;
-    db $20                                                               ;A5F4F8;
-    dw $614C,$8020                                                       ;A5F4F9;
-    db $20                                                               ;A5F4FD;
-    dw $614A,$8000                                                       ;A5F4FE;
-    db $10                                                               ;A5F502;
-    dw $6148,$8010                                                       ;A5F503;
-    db $10                                                               ;A5F507;
-    dw $6146,$8020                                                       ;A5F508;
-    db $10                                                               ;A5F50C;
-    dw $6144,$81F0                                                       ;A5F50D;
-    db $20                                                               ;A5F511;
-    dw $214E,$81E0                                                       ;A5F512;
-    db $20                                                               ;A5F516;
-    dw $214C,$81D0                                                       ;A5F517;
-    db $20                                                               ;A5F51B;
-    dw $214A,$81F0                                                       ;A5F51C;
-    db $10                                                               ;A5F520;
-    dw $2148,$81E0                                                       ;A5F521;
-    db $10                                                               ;A5F525;
-    dw $2146,$81D0                                                       ;A5F526;
-    db $10                                                               ;A5F52A;
-    dw $2144                                                             ;A5F52B;
+    dw $0022                                                             ;A5F481;
+    %spritemapEntry(1, $00, $D0, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $10, $D0, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $20, $D0, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $1F0, $D0, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1E0, $D0, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1D0, $D0, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $00, $E0, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $10, $E0, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $20, $E0, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $1F0, $E0, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1E0, $E0, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1D0, $E0, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $00, $C2, 0, 1, 2, 0, $142)
+    %spritemapEntry(1, $1F0, $C2, 0, 0, 2, 0, $142)
+    %spritemapEntry(0, $1F, $08, 0, 1, 2, 0, $165)
+    %spritemapEntry(0, $0B, $08, 0, 1, 2, 0, $165)
+    %spritemapEntry(0, $1ED, $08, 0, 0, 2, 0, $165)
+    %spritemapEntry(0, $1D9, $08, 0, 0, 2, 0, $165)
+    %spritemapEntry(0, $1F, $F0, 0, 1, 2, 0, $164)
+    %spritemapEntry(0, $0B, $F0, 0, 1, 2, 0, $164)
+    %spritemapEntry(0, $1ED, $F0, 0, 0, 2, 0, $164)
+    %spritemapEntry(0, $1D9, $F0, 0, 0, 2, 0, $164)
+    %spritemapEntry(1, $00, $20, 0, 1, 2, 0, $14E)
+    %spritemapEntry(1, $10, $20, 0, 1, 2, 0, $14C)
+    %spritemapEntry(1, $20, $20, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $00, $10, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $10, $10, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $20, $10, 0, 1, 2, 0, $144)
+    %spritemapEntry(1, $1F0, $20, 0, 0, 2, 0, $14E)
+    %spritemapEntry(1, $1E0, $20, 0, 0, 2, 0, $14C)
+    %spritemapEntry(1, $1D0, $20, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F0, $10, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1E0, $10, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1D0, $10, 0, 0, 2, 0, $144)
 
 Spritemap_SporeSpawn_5:
-    dw $001A,$8000                                                       ;A5F52D;
-    db $CC                                                               ;A5F531;
-    dw $6104,$8010                                                       ;A5F532;
-    db $CC                                                               ;A5F536;
-    dw $6102,$8020                                                       ;A5F537;
-    db $CC                                                               ;A5F53B;
-    dw $6100,$81F0                                                       ;A5F53C;
-    db $CC                                                               ;A5F540;
-    dw $2104,$81E0                                                       ;A5F541;
-    db $CC                                                               ;A5F545;
-    dw $2102,$81D0                                                       ;A5F546;
-    db $CC                                                               ;A5F54A;
-    dw $2100,$8000                                                       ;A5F54B;
-    db $BE                                                               ;A5F54F;
-    dw $6142,$81F0                                                       ;A5F550;
-    db $BE                                                               ;A5F554;
-    dw $2142,$8000                                                       ;A5F555;
-    db $24                                                               ;A5F559;
-    dw $614E,$8010                                                       ;A5F55A;
-    db $24                                                               ;A5F55E;
-    dw $614C,$8020                                                       ;A5F55F;
-    db $24                                                               ;A5F563;
-    dw $614A,$8000                                                       ;A5F564;
-    db $14                                                               ;A5F568;
-    dw $6148,$8010                                                       ;A5F569;
-    db $14                                                               ;A5F56D;
-    dw $6146,$8020                                                       ;A5F56E;
-    db $14                                                               ;A5F572;
-    dw $6144,$81F0                                                       ;A5F573;
-    db $24                                                               ;A5F577;
-    dw $214E,$81E0                                                       ;A5F578;
-    db $24                                                               ;A5F57C;
-    dw $214C,$81D0                                                       ;A5F57D;
-    db $24                                                               ;A5F581;
-    dw $214A,$81F0                                                       ;A5F582;
-    db $14                                                               ;A5F586;
-    dw $2148,$81E0                                                       ;A5F587;
-    db $14                                                               ;A5F58B;
-    dw $2146,$81D0                                                       ;A5F58C;
-    db $14                                                               ;A5F590;
-    dw $2144,$8000                                                       ;A5F591;
-    db $DC                                                               ;A5F595;
-    dw $6124,$8010                                                       ;A5F596;
-    db $DC                                                               ;A5F59A;
-    dw $6122,$8020                                                       ;A5F59B;
-    db $DC                                                               ;A5F59F;
-    dw $6120,$81F0                                                       ;A5F5A0;
-    db $DC                                                               ;A5F5A4;
-    dw $2124,$81E0                                                       ;A5F5A5;
-    db $DC                                                               ;A5F5A9;
-    dw $2122,$81D0                                                       ;A5F5AA;
-    db $DC                                                               ;A5F5AE;
-    dw $2120                                                             ;A5F5AF;
+    dw $001A                                                             ;A5F52D;
+    %spritemapEntry(1, $00, $CC, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $10, $CC, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $20, $CC, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $1F0, $CC, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1E0, $CC, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1D0, $CC, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $00, $BE, 0, 1, 2, 0, $142)
+    %spritemapEntry(1, $1F0, $BE, 0, 0, 2, 0, $142)
+    %spritemapEntry(1, $00, $24, 0, 1, 2, 0, $14E)
+    %spritemapEntry(1, $10, $24, 0, 1, 2, 0, $14C)
+    %spritemapEntry(1, $20, $24, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $00, $14, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $10, $14, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $20, $14, 0, 1, 2, 0, $144)
+    %spritemapEntry(1, $1F0, $24, 0, 0, 2, 0, $14E)
+    %spritemapEntry(1, $1E0, $24, 0, 0, 2, 0, $14C)
+    %spritemapEntry(1, $1D0, $24, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F0, $14, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1E0, $14, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1D0, $14, 0, 0, 2, 0, $144)
+    %spritemapEntry(1, $00, $DC, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $10, $DC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $20, $DC, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $1F0, $DC, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1E0, $DC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1D0, $DC, 0, 0, 2, 0, $120)
 
 Spritemap_SporeSpawn_6:
-    dw $001A,$8000                                                       ;A5F5B1;
-    db $DC                                                               ;A5F5B5;
-    dw $6104,$8010                                                       ;A5F5B6;
-    db $DC                                                               ;A5F5BA;
-    dw $6102,$8020                                                       ;A5F5BB;
-    db $DC                                                               ;A5F5BF;
-    dw $6100,$81F0                                                       ;A5F5C0;
-    db $DC                                                               ;A5F5C4;
-    dw $2104,$81E0                                                       ;A5F5C5;
-    db $DC                                                               ;A5F5C9;
-    dw $2102,$81D0                                                       ;A5F5CA;
-    db $DC                                                               ;A5F5CE;
-    dw $2100,$8000                                                       ;A5F5CF;
-    db $CE                                                               ;A5F5D3;
-    dw $6142,$81F0                                                       ;A5F5D4;
-    db $CE                                                               ;A5F5D8;
-    dw $2142,$8000                                                       ;A5F5D9;
-    db $14                                                               ;A5F5DD;
-    dw $614E,$8010                                                       ;A5F5DE;
-    db $14                                                               ;A5F5E2;
-    dw $614C,$8020                                                       ;A5F5E3;
-    db $14                                                               ;A5F5E7;
-    dw $614A,$8000                                                       ;A5F5E8;
-    db $04                                                               ;A5F5EC;
-    dw $6148,$8010                                                       ;A5F5ED;
-    db $04                                                               ;A5F5F1;
-    dw $6146,$8020                                                       ;A5F5F2;
-    db $04                                                               ;A5F5F6;
-    dw $6144,$81F0                                                       ;A5F5F7;
-    db $14                                                               ;A5F5FB;
-    dw $214E,$81E0                                                       ;A5F5FC;
-    db $14                                                               ;A5F600;
-    dw $214C,$81D0                                                       ;A5F601;
-    db $14                                                               ;A5F605;
-    dw $214A,$81F0                                                       ;A5F606;
-    db $04                                                               ;A5F60A;
-    dw $2148,$81E0                                                       ;A5F60B;
-    db $04                                                               ;A5F60F;
-    dw $2146,$81D0                                                       ;A5F610;
-    db $04                                                               ;A5F614;
-    dw $2144,$8000                                                       ;A5F615;
-    db $EC                                                               ;A5F619;
-    dw $6124,$8010                                                       ;A5F61A;
-    db $EC                                                               ;A5F61E;
-    dw $6122,$8020                                                       ;A5F61F;
-    db $EC                                                               ;A5F623;
-    dw $6120,$81F0                                                       ;A5F624;
-    db $EC                                                               ;A5F628;
-    dw $2124,$81E0                                                       ;A5F629;
-    db $EC                                                               ;A5F62D;
-    dw $2122,$81D0                                                       ;A5F62E;
-    db $EC                                                               ;A5F632;
-    dw $2120                                                             ;A5F633;
+    dw $001A                                                             ;A5F5B1;
+    %spritemapEntry(1, $00, $DC, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $10, $DC, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $20, $DC, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $1F0, $DC, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1E0, $DC, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1D0, $DC, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $00, $CE, 0, 1, 2, 0, $142)
+    %spritemapEntry(1, $1F0, $CE, 0, 0, 2, 0, $142)
+    %spritemapEntry(1, $00, $14, 0, 1, 2, 0, $14E)
+    %spritemapEntry(1, $10, $14, 0, 1, 2, 0, $14C)
+    %spritemapEntry(1, $20, $14, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $00, $04, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $10, $04, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $20, $04, 0, 1, 2, 0, $144)
+    %spritemapEntry(1, $1F0, $14, 0, 0, 2, 0, $14E)
+    %spritemapEntry(1, $1E0, $14, 0, 0, 2, 0, $14C)
+    %spritemapEntry(1, $1D0, $14, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F0, $04, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1E0, $04, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1D0, $04, 0, 0, 2, 0, $144)
+    %spritemapEntry(1, $00, $EC, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $10, $EC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $20, $EC, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $1F0, $EC, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1E0, $EC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1D0, $EC, 0, 0, 2, 0, $120)
 
 Spritemap_SporeSpawn_7:
-    dw $001A,$8000                                                       ;A5F635;
-    db $D8                                                               ;A5F639;
-    dw $6104,$8010                                                       ;A5F63A;
-    db $D8                                                               ;A5F63E;
-    dw $6102,$8020                                                       ;A5F63F;
-    db $D8                                                               ;A5F643;
-    dw $6100,$81F0                                                       ;A5F644;
-    db $D8                                                               ;A5F648;
-    dw $2104,$81E0                                                       ;A5F649;
-    db $D8                                                               ;A5F64D;
-    dw $2102,$81D0                                                       ;A5F64E;
-    db $D8                                                               ;A5F652;
-    dw $2100,$8000                                                       ;A5F653;
-    db $CA                                                               ;A5F657;
-    dw $6142,$81F0                                                       ;A5F658;
-    db $CA                                                               ;A5F65C;
-    dw $2142,$8000                                                       ;A5F65D;
-    db $18                                                               ;A5F661;
-    dw $614E,$8010                                                       ;A5F662;
-    db $18                                                               ;A5F666;
-    dw $614C,$8020                                                       ;A5F667;
-    db $18                                                               ;A5F66B;
-    dw $614A,$8000                                                       ;A5F66C;
-    db $08                                                               ;A5F670;
-    dw $6148,$8010                                                       ;A5F671;
-    db $08                                                               ;A5F675;
-    dw $6146,$8020                                                       ;A5F676;
-    db $08                                                               ;A5F67A;
-    dw $6144,$81F0                                                       ;A5F67B;
-    db $18                                                               ;A5F67F;
-    dw $214E,$81E0                                                       ;A5F680;
-    db $18                                                               ;A5F684;
-    dw $214C,$81D0                                                       ;A5F685;
-    db $18                                                               ;A5F689;
-    dw $214A,$81F0                                                       ;A5F68A;
-    db $08                                                               ;A5F68E;
-    dw $2148,$81E0                                                       ;A5F68F;
-    db $08                                                               ;A5F693;
-    dw $2146,$81D0                                                       ;A5F694;
-    db $08                                                               ;A5F698;
-    dw $2144,$8000                                                       ;A5F699;
-    db $E8                                                               ;A5F69D;
-    dw $6124,$8010                                                       ;A5F69E;
-    db $E8                                                               ;A5F6A2;
-    dw $6122,$8020                                                       ;A5F6A3;
-    db $E8                                                               ;A5F6A7;
-    dw $6120,$81F0                                                       ;A5F6A8;
-    db $E8                                                               ;A5F6AC;
-    dw $2124,$81E0                                                       ;A5F6AD;
-    db $E8                                                               ;A5F6B1;
-    dw $2122,$81D0                                                       ;A5F6B2;
-    db $E8                                                               ;A5F6B6;
-    dw $2120                                                             ;A5F6B7;
+    dw $001A                                                             ;A5F635;
+    %spritemapEntry(1, $00, $D8, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $10, $D8, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $20, $D8, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $1F0, $D8, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1E0, $D8, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1D0, $D8, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $00, $CA, 0, 1, 2, 0, $142)
+    %spritemapEntry(1, $1F0, $CA, 0, 0, 2, 0, $142)
+    %spritemapEntry(1, $00, $18, 0, 1, 2, 0, $14E)
+    %spritemapEntry(1, $10, $18, 0, 1, 2, 0, $14C)
+    %spritemapEntry(1, $20, $18, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $00, $08, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $10, $08, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $20, $08, 0, 1, 2, 0, $144)
+    %spritemapEntry(1, $1F0, $18, 0, 0, 2, 0, $14E)
+    %spritemapEntry(1, $1E0, $18, 0, 0, 2, 0, $14C)
+    %spritemapEntry(1, $1D0, $18, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F0, $08, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1E0, $08, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1D0, $08, 0, 0, 2, 0, $144)
+    %spritemapEntry(1, $00, $E8, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $10, $E8, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $20, $E8, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $1F0, $E8, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1E0, $E8, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1D0, $E8, 0, 0, 2, 0, $120)
 
 Spritemap_SporeSpawn_8:
-    dw $001A,$8000                                                       ;A5F6B9;
-    db $E4                                                               ;A5F6BD;
-    dw $6124,$8010                                                       ;A5F6BE;
-    db $E4                                                               ;A5F6C2;
-    dw $6122,$8020                                                       ;A5F6C3;
-    db $E4                                                               ;A5F6C7;
-    dw $6120,$8000                                                       ;A5F6C8;
-    db $D4                                                               ;A5F6CC;
-    dw $6104,$8010                                                       ;A5F6CD;
-    db $D4                                                               ;A5F6D1;
-    dw $6102,$8020                                                       ;A5F6D2;
-    db $D4                                                               ;A5F6D6;
-    dw $6100,$81F0                                                       ;A5F6D7;
-    db $E4                                                               ;A5F6DB;
-    dw $2124,$81E0                                                       ;A5F6DC;
-    db $E4                                                               ;A5F6E0;
-    dw $2122,$81D0                                                       ;A5F6E1;
-    db $E4                                                               ;A5F6E5;
-    dw $2120,$81F0                                                       ;A5F6E6;
-    db $D4                                                               ;A5F6EA;
-    dw $2104,$81E0                                                       ;A5F6EB;
-    db $D4                                                               ;A5F6EF;
-    dw $2102,$81D0                                                       ;A5F6F0;
-    db $D4                                                               ;A5F6F4;
-    dw $2100,$8000                                                       ;A5F6F5;
-    db $C6                                                               ;A5F6F9;
-    dw $6142,$81F0                                                       ;A5F6FA;
-    db $C6                                                               ;A5F6FE;
-    dw $2142,$8000                                                       ;A5F6FF;
-    db $1C                                                               ;A5F703;
-    dw $614E,$8010                                                       ;A5F704;
-    db $1C                                                               ;A5F708;
-    dw $614C,$8020                                                       ;A5F709;
-    db $1C                                                               ;A5F70D;
-    dw $614A,$8000                                                       ;A5F70E;
-    db $0C                                                               ;A5F712;
-    dw $6148,$8010                                                       ;A5F713;
-    db $0C                                                               ;A5F717;
-    dw $6146,$8020                                                       ;A5F718;
-    db $0C                                                               ;A5F71C;
-    dw $6144,$81F0                                                       ;A5F71D;
-    db $1C                                                               ;A5F721;
-    dw $214E,$81E0                                                       ;A5F722;
-    db $1C                                                               ;A5F726;
-    dw $214C,$81D0                                                       ;A5F727;
-    db $1C                                                               ;A5F72B;
-    dw $214A,$81F0                                                       ;A5F72C;
-    db $0C                                                               ;A5F730;
-    dw $2148,$81E0                                                       ;A5F731;
-    db $0C                                                               ;A5F735;
-    dw $2146,$81D0                                                       ;A5F736;
-    db $0C                                                               ;A5F73A;
-    dw $2144                                                             ;A5F73B;
+    dw $001A                                                             ;A5F6B9;
+    %spritemapEntry(1, $00, $E4, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $10, $E4, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $20, $E4, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $00, $D4, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $10, $D4, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $20, $D4, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $1F0, $E4, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1E0, $E4, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1D0, $E4, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $1F0, $D4, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1E0, $D4, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1D0, $D4, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $00, $C6, 0, 1, 2, 0, $142)
+    %spritemapEntry(1, $1F0, $C6, 0, 0, 2, 0, $142)
+    %spritemapEntry(1, $00, $1C, 0, 1, 2, 0, $14E)
+    %spritemapEntry(1, $10, $1C, 0, 1, 2, 0, $14C)
+    %spritemapEntry(1, $20, $1C, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $00, $0C, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $10, $0C, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $20, $0C, 0, 1, 2, 0, $144)
+    %spritemapEntry(1, $1F0, $1C, 0, 0, 2, 0, $14E)
+    %spritemapEntry(1, $1E0, $1C, 0, 0, 2, 0, $14C)
+    %spritemapEntry(1, $1D0, $1C, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F0, $0C, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1E0, $0C, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1D0, $0C, 0, 0, 2, 0, $144)
 
 Spritemap_SporeSpawn_A:
-    dw $001A,$8000                                                       ;A5F73D;
-    db $E0                                                               ;A5F741;
-    dw $6124,$8010                                                       ;A5F742;
-    db $E0                                                               ;A5F746;
-    dw $6122,$8020                                                       ;A5F747;
-    db $E0                                                               ;A5F74B;
-    dw $6120,$8000                                                       ;A5F74C;
-    db $D0                                                               ;A5F750;
-    dw $6104,$8010                                                       ;A5F751;
-    db $D0                                                               ;A5F755;
-    dw $6102,$8020                                                       ;A5F756;
-    db $D0                                                               ;A5F75A;
-    dw $6100,$81F0                                                       ;A5F75B;
-    db $E0                                                               ;A5F75F;
-    dw $2124,$81E0                                                       ;A5F760;
-    db $E0                                                               ;A5F764;
-    dw $2122,$81D0                                                       ;A5F765;
-    db $E0                                                               ;A5F769;
-    dw $2120,$81F0                                                       ;A5F76A;
-    db $D0                                                               ;A5F76E;
-    dw $2104,$81E0                                                       ;A5F76F;
-    db $D0                                                               ;A5F773;
-    dw $2102,$81D0                                                       ;A5F774;
-    db $D0                                                               ;A5F778;
-    dw $2100,$8000                                                       ;A5F779;
-    db $C2                                                               ;A5F77D;
-    dw $6142,$81F0                                                       ;A5F77E;
-    db $C2                                                               ;A5F782;
-    dw $2142,$8000                                                       ;A5F783;
-    db $20                                                               ;A5F787;
-    dw $614E,$8010                                                       ;A5F788;
-    db $20                                                               ;A5F78C;
-    dw $614C,$8020                                                       ;A5F78D;
-    db $20                                                               ;A5F791;
-    dw $614A,$8000                                                       ;A5F792;
-    db $10                                                               ;A5F796;
-    dw $6148,$8010                                                       ;A5F797;
-    db $10                                                               ;A5F79B;
-    dw $6146,$8020                                                       ;A5F79C;
-    db $10                                                               ;A5F7A0;
-    dw $6144,$81F0                                                       ;A5F7A1;
-    db $20                                                               ;A5F7A5;
-    dw $214E,$81E0                                                       ;A5F7A6;
-    db $20                                                               ;A5F7AA;
-    dw $214C,$81D0                                                       ;A5F7AB;
-    db $20                                                               ;A5F7AF;
-    dw $214A,$81F0                                                       ;A5F7B0;
-    db $10                                                               ;A5F7B4;
-    dw $2148,$81E0                                                       ;A5F7B5;
-    db $10                                                               ;A5F7B9;
-    dw $2146,$81D0                                                       ;A5F7BA;
-    db $10                                                               ;A5F7BE;
-    dw $2144                                                             ;A5F7BF;
+    dw $001A                                                             ;A5F73D;
+    %spritemapEntry(1, $00, $E0, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $10, $E0, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $20, $E0, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $00, $D0, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $10, $D0, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $20, $D0, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $1F0, $E0, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1E0, $E0, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1D0, $E0, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $1F0, $D0, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1E0, $D0, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1D0, $D0, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $00, $C2, 0, 1, 2, 0, $142)
+    %spritemapEntry(1, $1F0, $C2, 0, 0, 2, 0, $142)
+    %spritemapEntry(1, $00, $20, 0, 1, 2, 0, $14E)
+    %spritemapEntry(1, $10, $20, 0, 1, 2, 0, $14C)
+    %spritemapEntry(1, $20, $20, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $00, $10, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $10, $10, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $20, $10, 0, 1, 2, 0, $144)
+    %spritemapEntry(1, $1F0, $20, 0, 0, 2, 0, $14E)
+    %spritemapEntry(1, $1E0, $20, 0, 0, 2, 0, $14C)
+    %spritemapEntry(1, $1D0, $20, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F0, $10, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1E0, $10, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1D0, $10, 0, 0, 2, 0, $144)
 
 Spritemap_SporeSpawn_B:
-    dw $0006,$8000                                                       ;A5F7C1;
-    db $F8                                                               ;A5F7C5;
-    dw $6106,$81F0                                                       ;A5F7C6;
-    db $F8                                                               ;A5F7CA;
-    dw $2106,$8000                                                       ;A5F7CB;
-    db $E8                                                               ;A5F7CF;
-    dw $E126,$8000                                                       ;A5F7D0;
-    db $08                                                               ;A5F7D4;
-    dw $6126,$81F0                                                       ;A5F7D5;
-    db $E8                                                               ;A5F7D9;
-    dw $A126,$81F0                                                       ;A5F7DA;
-    db $08                                                               ;A5F7DE;
-    dw $2126                                                             ;A5F7DF;
+    dw $0006                                                             ;A5F7C1;
+    %spritemapEntry(1, $00, $F8, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $1F0, $F8, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $00, $E8, 1, 1, 2, 0, $126)
+    %spritemapEntry(1, $00, $08, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $1F0, $E8, 1, 0, 2, 0, $126)
+    %spritemapEntry(1, $1F0, $08, 0, 0, 2, 0, $126)
 
 Spritemap_SporeSpawn_C:
-    dw $0006,$8000                                                       ;A5F7E1;
-    db $F8                                                               ;A5F7E5;
-    dw $6108,$81F0                                                       ;A5F7E6;
-    db $F8                                                               ;A5F7EA;
-    dw $2108,$8000                                                       ;A5F7EB;
-    db $E8                                                               ;A5F7EF;
-    dw $E128,$81F0                                                       ;A5F7F0;
-    db $E8                                                               ;A5F7F4;
-    dw $A128,$8000                                                       ;A5F7F5;
-    db $08                                                               ;A5F7F9;
-    dw $6128,$81F0                                                       ;A5F7FA;
-    db $08                                                               ;A5F7FE;
-    dw $2128                                                             ;A5F7FF;
+    dw $0006                                                             ;A5F7E1;
+    %spritemapEntry(1, $00, $F8, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $1F0, $F8, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $00, $E8, 1, 1, 2, 0, $128)
+    %spritemapEntry(1, $1F0, $E8, 1, 0, 2, 0, $128)
+    %spritemapEntry(1, $00, $08, 0, 1, 2, 0, $128)
+    %spritemapEntry(1, $1F0, $08, 0, 0, 2, 0, $128)
 
 Spritemap_SporeSpawn_D:
-    dw $0006,$8000                                                       ;A5F801;
-    db $F8                                                               ;A5F805;
-    dw $610A,$81F0                                                       ;A5F806;
-    db $F8                                                               ;A5F80A;
-    dw $210A,$8000                                                       ;A5F80B;
-    db $E8                                                               ;A5F80F;
-    dw $E12A,$81F0                                                       ;A5F810;
-    db $E8                                                               ;A5F814;
-    dw $A12A,$8000                                                       ;A5F815;
-    db $08                                                               ;A5F819;
-    dw $612A,$81F0                                                       ;A5F81A;
-    db $08                                                               ;A5F81E;
-    dw $212A                                                             ;A5F81F;
+    dw $0006                                                             ;A5F801;
+    %spritemapEntry(1, $00, $F8, 0, 1, 2, 0, $10A)
+    %spritemapEntry(1, $1F0, $F8, 0, 0, 2, 0, $10A)
+    %spritemapEntry(1, $00, $E8, 1, 1, 2, 0, $12A)
+    %spritemapEntry(1, $1F0, $E8, 1, 0, 2, 0, $12A)
+    %spritemapEntry(1, $00, $08, 0, 1, 2, 0, $12A)
+    %spritemapEntry(1, $1F0, $08, 0, 0, 2, 0, $12A)
 
 Spritemap_SporeSpawn_E:
-    dw $0001,$81F8                                                       ;A5F821;
-    db $F8                                                               ;A5F825;
-    dw $2140                                                             ;A5F826;
+    dw $0001                                                             ;A5F821;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $140)
 
 Spritemap_SporeSpawn_F:
-    dw $0001,$81F8                                                       ;A5F828;
-    db $F8                                                               ;A5F82C;
-    dw $210C                                                             ;A5F82D;
+    dw $0001                                                             ;A5F828;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10C)
 
 Spritemap_SporeSpawn_10:
-    dw $0001,$81F8                                                       ;A5F82F;
-    db $F8                                                               ;A5F833;
-    dw $210E                                                             ;A5F834;
+    dw $0001                                                             ;A5F82F;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10E)
 
 Spritemap_SporeSpawn_11:
-    dw $0001,$81F8                                                       ;A5F836;
-    db $F8                                                               ;A5F83A;
-    dw $212C                                                             ;A5F83B;
+    dw $0001                                                             ;A5F836;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $12C)
 
 Spritemap_SporeSpawn_12:
-    dw $0001,$01FC                                                       ;A5F83D;
-    db $FC                                                               ;A5F841;
-    dw $213E                                                             ;A5F842;
+    dw $0001                                                             ;A5F83D;
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 0, $13E)
 
 Spritemap_SporeSpawn_13:
-    dw $0001,$01FC                                                       ;A5F844;
-    db $FC                                                               ;A5F848;
-    dw $212F                                                             ;A5F849;
+    dw $0001                                                             ;A5F844;
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 0, $12F)
 
 Spritemap_SporeSpawn_14:
-    dw $0001,$01FC                                                       ;A5F84B;
-    db $FC                                                               ;A5F84F;
-    dw $212E                                                             ;A5F850;
+    dw $0001                                                             ;A5F84B;
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 0, $12E)
 
 Spritemap_SporeSpawn_15:
-    dw $001A,$8000                                                       ;A5F852;
-    db $DA                                                               ;A5F856;
-    dw $6124,$8010                                                       ;A5F857;
-    db $DA                                                               ;A5F85B;
-    dw $6122,$8020                                                       ;A5F85C;
-    db $DA                                                               ;A5F860;
-    dw $6120,$8000                                                       ;A5F861;
-    db $CA                                                               ;A5F865;
-    dw $6104,$8010                                                       ;A5F866;
-    db $CA                                                               ;A5F86A;
-    dw $6102,$8020                                                       ;A5F86B;
-    db $CA                                                               ;A5F86F;
-    dw $6100,$81F0                                                       ;A5F870;
-    db $DA                                                               ;A5F874;
-    dw $2124,$81E0                                                       ;A5F875;
-    db $DA                                                               ;A5F879;
-    dw $2122,$81D0                                                       ;A5F87A;
-    db $DA                                                               ;A5F87E;
-    dw $2120,$81F0                                                       ;A5F87F;
-    db $CA                                                               ;A5F883;
-    dw $2104,$81E0                                                       ;A5F884;
-    db $CA                                                               ;A5F888;
-    dw $2102,$81D0                                                       ;A5F889;
-    db $CA                                                               ;A5F88D;
-    dw $2100,$8000                                                       ;A5F88E;
-    db $BC                                                               ;A5F892;
-    dw $6142,$81F0                                                       ;A5F893;
-    db $BC                                                               ;A5F897;
-    dw $2142,$8000                                                       ;A5F898;
-    db $26                                                               ;A5F89C;
-    dw $614E,$8010                                                       ;A5F89D;
-    db $26                                                               ;A5F8A1;
-    dw $614C,$8020                                                       ;A5F8A2;
-    db $26                                                               ;A5F8A6;
-    dw $614A,$8000                                                       ;A5F8A7;
-    db $16                                                               ;A5F8AB;
-    dw $6148,$8010                                                       ;A5F8AC;
-    db $16                                                               ;A5F8B0;
-    dw $6146,$8020                                                       ;A5F8B1;
-    db $16                                                               ;A5F8B5;
-    dw $6144,$81F0                                                       ;A5F8B6;
-    db $26                                                               ;A5F8BA;
-    dw $214E,$81E0                                                       ;A5F8BB;
-    db $26                                                               ;A5F8BF;
-    dw $214C,$81D0                                                       ;A5F8C0;
-    db $26                                                               ;A5F8C4;
-    dw $214A,$81F0                                                       ;A5F8C5;
-    db $16                                                               ;A5F8C9;
-    dw $2148,$81E0                                                       ;A5F8CA;
-    db $16                                                               ;A5F8CE;
-    dw $2146,$81D0                                                       ;A5F8CF;
-    db $16                                                               ;A5F8D3;
-    dw $2144                                                             ;A5F8D4;
+    dw $001A                                                             ;A5F852;
+    %spritemapEntry(1, $00, $DA, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $10, $DA, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $20, $DA, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $00, $CA, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $10, $CA, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $20, $CA, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $1F0, $DA, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1E0, $DA, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1D0, $DA, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $1F0, $CA, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1E0, $CA, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1D0, $CA, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $00, $BC, 0, 1, 2, 0, $142)
+    %spritemapEntry(1, $1F0, $BC, 0, 0, 2, 0, $142)
+    %spritemapEntry(1, $00, $26, 0, 1, 2, 0, $14E)
+    %spritemapEntry(1, $10, $26, 0, 1, 2, 0, $14C)
+    %spritemapEntry(1, $20, $26, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $00, $16, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $10, $16, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $20, $16, 0, 1, 2, 0, $144)
+    %spritemapEntry(1, $1F0, $26, 0, 0, 2, 0, $14E)
+    %spritemapEntry(1, $1E0, $26, 0, 0, 2, 0, $14C)
+    %spritemapEntry(1, $1D0, $26, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F0, $16, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1E0, $16, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1D0, $16, 0, 0, 2, 0, $144)
 
 Spritemap_SporeSpawn_16:
-    dw $001A,$8000                                                       ;A5F8D6;
-    db $C8                                                               ;A5F8DA;
-    dw $6104,$8010                                                       ;A5F8DB;
-    db $C8                                                               ;A5F8DF;
-    dw $6102,$81F0                                                       ;A5F8E0;
-    db $C8                                                               ;A5F8E4;
-    dw $2104,$81E0                                                       ;A5F8E5;
-    db $C8                                                               ;A5F8E9;
-    dw $2102,$81D0                                                       ;A5F8EA;
-    db $C8                                                               ;A5F8EE;
-    dw $2100,$8000                                                       ;A5F8EF;
-    db $BA                                                               ;A5F8F3;
-    dw $6142,$81F0                                                       ;A5F8F4;
-    db $BA                                                               ;A5F8F8;
-    dw $2142,$8000                                                       ;A5F8F9;
-    db $28                                                               ;A5F8FD;
-    dw $614E,$8010                                                       ;A5F8FE;
-    db $28                                                               ;A5F902;
-    dw $614C,$8020                                                       ;A5F903;
-    db $28                                                               ;A5F907;
-    dw $614A,$8000                                                       ;A5F908;
-    db $18                                                               ;A5F90C;
-    dw $6148,$8010                                                       ;A5F90D;
-    db $18                                                               ;A5F911;
-    dw $6146,$8020                                                       ;A5F912;
-    db $18                                                               ;A5F916;
-    dw $6144,$81F0                                                       ;A5F917;
-    db $28                                                               ;A5F91B;
-    dw $214E,$81E0                                                       ;A5F91C;
-    db $28                                                               ;A5F920;
-    dw $214C,$81D0                                                       ;A5F921;
-    db $28                                                               ;A5F925;
-    dw $214A,$81F0                                                       ;A5F926;
-    db $18                                                               ;A5F92A;
-    dw $2148,$81E0                                                       ;A5F92B;
-    db $18                                                               ;A5F92F;
-    dw $2146,$81D0                                                       ;A5F930;
-    db $18                                                               ;A5F934;
-    dw $2144,$8000                                                       ;A5F935;
-    db $D8                                                               ;A5F939;
-    dw $6124,$8010                                                       ;A5F93A;
-    db $D8                                                               ;A5F93E;
-    dw $6122,$8020                                                       ;A5F93F;
-    db $D8                                                               ;A5F943;
-    dw $6120,$8020                                                       ;A5F944;
-    db $C8                                                               ;A5F948;
-    dw $6100,$81F0                                                       ;A5F949;
-    db $D8                                                               ;A5F94D;
-    dw $2124,$81E0                                                       ;A5F94E;
-    db $D8                                                               ;A5F952;
-    dw $2122,$81D0                                                       ;A5F953;
-    db $D8                                                               ;A5F957;
-    dw $2120                                                             ;A5F958;
+    dw $001A                                                             ;A5F8D6;
+    %spritemapEntry(1, $00, $C8, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $10, $C8, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $1F0, $C8, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1E0, $C8, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1D0, $C8, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $00, $BA, 0, 1, 2, 0, $142)
+    %spritemapEntry(1, $1F0, $BA, 0, 0, 2, 0, $142)
+    %spritemapEntry(1, $00, $28, 0, 1, 2, 0, $14E)
+    %spritemapEntry(1, $10, $28, 0, 1, 2, 0, $14C)
+    %spritemapEntry(1, $20, $28, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $00, $18, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $10, $18, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $20, $18, 0, 1, 2, 0, $144)
+    %spritemapEntry(1, $1F0, $28, 0, 0, 2, 0, $14E)
+    %spritemapEntry(1, $1E0, $28, 0, 0, 2, 0, $14C)
+    %spritemapEntry(1, $1D0, $28, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F0, $18, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1E0, $18, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1D0, $18, 0, 0, 2, 0, $144)
+    %spritemapEntry(1, $00, $D8, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $10, $D8, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $20, $D8, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $20, $C8, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $1F0, $D8, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1E0, $D8, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1D0, $D8, 0, 0, 2, 0, $120)
+
 
 Freespace_BankA5_F95A:                                                   ;A5F95A;
 ; $6A6 bytes
