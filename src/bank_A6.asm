@@ -11461,11 +11461,11 @@ endif ; !FEATURE_KEEP_UNREFERENCED
 InstList_RidleyCeres_FacingLeft_ExtendLegs:
     dw Instruction_Ridley_GotoYIfNotFacingLeft                           ;A6E658;
     dw InstList_RidleyCeres_FacingRight_ExtendLegs                       ;A6E65A;
-    dw Inst_RidleyCeres_UpdateSamusPrevPosition_HeldYDisplacement,$0004  ;A6E65C;
+    dw Inst_RidleyCeres_UpdateSamusPrevPosition_HeldYDisplacement,$0000  ;A6E65C;
     dw $0004,ExtendedSpritemap_Ridley_FacingLeft                         ;A6E65E;
     dw Inst_RidleyCeres_UpdateSamusPrevPosition_HeldYDisplacement,$0002  ;A6E664;
     dw $0006,ExtendedSpritemap_Ridley_FacingLeft_LegsHalfExtended        ;A6E666;
-    dw Inst_RidleyCeres_UpdateSamusPrevPosition_HeldYDisplacement,$0000  ;A6E66C;
+    dw Inst_RidleyCeres_UpdateSamusPrevPosition_HeldYDisplacement,$0004  ;A6E66C;
     dw $0001,ExtendedSpritemap_Ridley_FacingLeft_LegsExtended            ;A6E66E;
     dw Instruction_Common_Sleep                                          ;A6E674;
 
