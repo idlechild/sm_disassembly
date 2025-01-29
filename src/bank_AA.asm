@@ -89,12 +89,14 @@ Spritemap_CommonAA_Nothing:
     dw $0000                                                             ;AA804D;
 
 ExtendedSpritemap_CommonAA_Nothing:
-    dw $0001,$0000,$0000                                                 ;AA804F;
+    dw $0001                                                             ;AA804F;
+    dw $0000,$0000                                                 
     dw Spritemap_CommonAA_Nothing                                        ;AA8055;
     dw Hitbox_CommonAA_Nothing                                           ;AA8057;
 
 Hitbox_CommonAA_Nothing:
-    dw $0001,$0000,$0000,$0000,$0000                                     ;AA8059;
+    dw $0001                                                             ;AA8059;
+    dw $0000,$0000,$0000,$0000                                     
     dw CommonAA_NormalEnemyTouchAI                                       ;AA8063;
     dw CommonAA_NormalEnemyShotAI                                        ;AA8065;
 
@@ -528,14 +530,17 @@ CommonAAEnemySpeeds_QuadraticallyIncreasing:
     dw $74F9,$0011,$8B07,$FFEE
 
 
+; Orb projectile
 Palette_Torizo_OrbProjectile:
-    dw $3800,$03FF,$033B,$0216,$0113,$6B1E,$4A16,$3591                   ;AA8687;
+    dw $3800,$03FF,$033B,$0216,$0113,$6B1E,$4A16,$3591                   ;AA8687; Sprite palette 3
     dw $20E9,$1580,$1580,$1580,$1580,$1580,$1580,$1580                   ;AA8697;
 
+; Bomb Torizo statue
 Palette_Torizo_BombTorizoStatue:
-    dw $3800,$02DF,$01D7,$00AC,$5A73,$41AD,$2D08,$1863                   ;AA86A7;
+    dw $3800,$02DF,$01D7,$00AC,$5A73,$41AD,$2D08,$1863                   ;AA86A7; Sprite palette 7
     dw $1486,$0145,$0145,$0145,$7FFF,$0145,$0145,$0000                   ;AA86B7;
 
+; Initial Bomb Torizo
 Palette_Torizo_InitialBombTorizo_SpritePalette1:
     dw $3800,$679F,$5299,$252E,$14AA,$5EFC,$4657,$35B2                   ;AA86C7;
     dw $2D70,$5B7F,$3DF8,$2D0E,$5F5F,$5E1A,$5D35,$0C63                   ;AA86D7;
@@ -544,6 +549,7 @@ Palette_Torizo_InitialBombTorizo_SpritePalette2:
     dw $3800,$4ABA,$35B2,$0847,$0003,$4215,$2970,$18CB                   ;AA86E7;
     dw $1089,$463A,$28B3,$1809,$6F7F,$51FD,$4113,$0C63                   ;AA86F7;
 
+; Normal Torizo (Bomb Torizo after coming to life, Golden Torizo transitions to this from damage, the hatched Golden Torizo egg)
 Palette_Torizo_Normal_SpritePalette1:
     dw $3800,$56BA,$41B2,$1447,$0403,$4E15,$3570,$24CB                   ;AA8707;
     dw $1868,$6F7F,$51F8,$410E,$031F,$01DA,$00F5,$0C63                   ;AA8717;
@@ -552,6 +558,7 @@ Palette_Torizo_Normal_SpritePalette2:
     dw $3800,$4215,$2D0D,$0002,$0000,$3970,$20CB,$0C26                   ;AA8727;
     dw $0403,$463A,$28B3,$1809,$6F7F,$51FD,$4113,$0C63                   ;AA8737;
 
+; Initial Golden Torizo
 Palette_Torizo_InitialGoldenTorizo_SpritePalette1:
     dw $3800,$6AB5,$49B0,$1C45,$0C01,$5613,$416D,$2CC9                   ;AA8747;
     dw $2066,$5714,$31CC,$14E3,$5630,$3569,$1883,$0C66                   ;AA8757;
@@ -560,6 +567,7 @@ Palette_Torizo_InitialGoldenTorizo_SpritePalette2:
     dw $3800,$5610,$350B,$0800,$0000,$416E,$2CC8,$1823                   ;AA8767;
     dw $0C01,$6A31,$4CAA,$2406,$7F7B,$75F4,$4D10,$0C63                   ;AA8777;
 
+; Golden Torizo (after coming to life)
 Palette_Torizo_GoldenTorizo_SpritePalette1:
     dw $3800,$4BBE,$06B9,$00A8,$0000,$173A,$0276,$01F2                   ;AA8787;
     dw $014D,$73E0,$4F20,$2A20,$7FE0,$5AA0,$5920,$0043                   ;AA8797;
@@ -572,59 +580,68 @@ Hitboxes_Torizo_Blank:
     dw $0000                                                             ;AA87C7;
 
 Spritemap_Torizo_Blank:
-    dw $0001,$0100                                                       ;AA87C9;
-    db $00                                                               ;AA87CD;
-    dw $4200                                                             ;AA87CE;
+    dw $0001                                                             ;AA87C9;
+    %spritemapEntry(0, $100, $00, 0, 1, 0, 1, $00)
 
 ExtendedSpritemap_Torizo_Blank:
-    dw $0001,$0000,$0000                                                 ;AA87D0;
+    dw $0001                                                             ;AA87D0;
+    dw $0000,$0000
     dw Spritemap_Torizo_Blank                                            ;AA87D6;
     dw Hitboxes_Torizo_Blank                                             ;AA87D8;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Hitboxes_Torizo_AA87DA:
-    dw $0001,$FFF5,$FFD6,$000A,$0003                                     ;AA87DA;
+    dw $0001                                                             ;AA87DA;
+    dw $FFF5,$FFD6,$000A,$0003
     dw EnemyTouch_Torizo                                                 ;AA87E4;
     dw EnemyShot_Torizo_Normal                                           ;AA87E6;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Hitboxes_Torizo_StandUp_SitDown_FacingLeft_0:
-    dw $0001,$FFF0,$FFE5,$0010,$001B                                     ;AA87E8;
+    dw $0001                                                             ;AA87E8;
+    dw $FFF0,$FFE5,$0010,$001B
     dw EnemyTouch_Torizo                                                 ;AA87F2;
     dw EnemyShot_Torizo_StandUp_SitDown                                  ;AA87F4;
 
 Hitboxes_Torizo_StandUp_SitDown_FacingLeft_1:
-    dw $0001,$FFF2,$FFE5,$000D,$001B                                     ;AA87F6;
+    dw $0001                                                             ;AA87F6;
+    dw $FFF2,$FFE5,$000D,$001B
     dw EnemyTouch_Torizo                                                 ;AA8800;
     dw EnemyShot_Torizo_StandUp_SitDown                                  ;AA8802;
 
 Hitboxes_Torizo_StandUp_SitDown_FacingLeft_2:
-    dw $0001,$FFF3,$FFDE,$0009,$0021                                     ;AA8804;
+    dw $0001                                                             ;AA8804;
+    dw $FFF3,$FFDE,$0009,$0021
     dw EnemyTouch_Torizo                                                 ;AA880E;
     dw EnemyShot_Torizo_StandUp_SitDown                                  ;AA8810;
 
 Hitboxes_Torizo_StandUp_SitDown_FacingLeft_3:
-    dw $0001,$FFF5,$FFDA,$000B,$0027                                     ;AA8812;
+    dw $0001                                                             ;AA8812;
+    dw $FFF5,$FFDA,$000B,$0027
     dw EnemyTouch_Torizo                                                 ;AA881C;
     dw EnemyShot_Torizo_StandUp_SitDown                                  ;AA881E;
 
 Hitboxes_Torizo_StandUp_SitDown_FacingLeft_4:
-    dw $0001,$FFF1,$FFD4,$0008,$002F                                     ;AA8820;
+    dw $0001                                                             ;AA8820;
+    dw $FFF1,$FFD4,$0008,$002F
     dw EnemyTouch_Torizo                                                 ;AA882A;
     dw EnemyShot_Torizo_StandUp_SitDown                                  ;AA882C;
 
 Hitboxes_Torizo_StandUp_SitDown_FacingLeft_5:
-    dw $0001,$FFEE,$FFD5,$0003,$0018                                     ;AA882E;
+    dw $0001                                                             ;AA882E;
+    dw $FFEE,$FFD5,$0003,$0018
     dw EnemyTouch_Torizo                                                 ;AA8838;
     dw EnemyShot_Torizo_StandUp_SitDown                                  ;AA883A;
 
 Hitboxes_Torizo_StandUp_SitDown_FacingLeft_6:
-    dw $0001,$FFEF,$FFD6,$0005,$000F                                     ;AA883C;
+    dw $0001                                                             ;AA883C;
+    dw $FFEF,$FFD6,$0005,$000F
     dw EnemyTouch_Torizo                                                 ;AA8846;
     dw EnemyShot_Torizo_StandUp_SitDown                                  ;AA8848;
 
 Hitboxes_Torizo_StandUp_SitDown_FacingLeft_7:
-    dw $0001,$FFF1,$FFD9,$0007,$0015                                     ;AA884A;
+    dw $0001                                                             ;AA884A;
+    dw $FFF1,$FFD9,$0007,$0015
     dw EnemyTouch_Torizo                                                 ;AA8854;
     dw EnemyShot_Torizo_Normal                                           ;AA8856;
 
@@ -636,7 +653,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingLeft_9:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Hitboxes_Torizo_StandUp_SitDown_FacingLeft_AA885C:
-    dw $0001,$FFF0,$0027,$FFFF,$0037                                     ;AA885C;
+    dw $0001                                                             ;AA885C;
+    dw $FFF0,$0027,$FFFF,$0037                                     
     dw EnemyTouch_Torizo                                                 ;AA8866;
     dw RTL_AAC9C1                                                        ;AA8868;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -646,7 +664,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingLeft_A:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Hitboxes_Torizo_StandUp_SitDown_FacingLeft_AA886C:
-    dw $0001,$FFE0,$0029,$FFF3,$0040                                     ;AA886C;
+    dw $0001                                                             ;AA886C;
+    dw $FFE0,$0029,$FFF3,$0040                                     
     dw EnemyTouch_Torizo                                                 ;AA8876;
     dw RTL_AAC9C1                                                        ;AA8878;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -656,7 +675,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingLeft_B:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Hitboxes_Torizo_StandUp_SitDown_FacingLeft_AA887C:
-    dw $0001,$FFD8,$001C,$FFEC,$0030                                     ;AA887C;
+    dw $0001                                                             ;AA887C;
+    dw $FFD8,$001C,$FFEC,$0030                                     
     dw EnemyTouch_Torizo                                                 ;AA8886;
     dw RTL_AAC9C1                                                        ;AA8888;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -666,7 +686,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingLeft_C:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Hitboxes_Torizo_StandUp_SitDown_FacingLeft_AA888C:
-    dw $0001,$FFC8,$0009,$FFEB,$0014                                     ;AA888C;
+    dw $0001                                                             ;AA888C;
+    dw $FFC8,$0009,$FFEB,$0014                                     
     dw EnemyTouch_Torizo                                                 ;AA8896;
     dw RTL_AAC9C1                                                        ;AA8898;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -676,7 +697,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingLeft_D:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Hitboxes_Torizo_StandUp_SitDown_FacingLeft_AA889C:
-    dw $0001,$FFD3,$FFF3,$FFE5,$0003                                     ;AA889C;
+    dw $0001                                                             ;AA889C;
+    dw $FFD3,$FFF3,$FFE5,$0003                                     
     dw EnemyTouch_Torizo                                                 ;AA88A6;
     dw RTL_AAC9C1                                                        ;AA88A8;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -686,7 +708,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingLeft_E:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Hitboxes_Torizo_StandUp_SitDown_FacingLeft_AA88AC:
-    dw $0001,$FFE3,$FFDB,$FFF0,$FFF1                                     ;AA88AC;
+    dw $0001                                                             ;AA88AC;
+    dw $FFE3,$FFDB,$FFF0,$FFF1                                     
     dw EnemyTouch_Torizo                                                 ;AA88B6;
     dw RTL_AAC9C1                                                        ;AA88B8;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -699,7 +722,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingLeft_10:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Hitboxes_Torizo_StandUp_SitDown_FacingLeft_AA88BE:
-    dw $0001,$FFEF,$0028,$0000,$0039                                     ;AA88BE;
+    dw $0001                                                             ;AA88BE;
+    dw $FFEF,$0028,$0000,$0039                                     
     dw EnemyTouch_Torizo                                                 ;AA88C8;
     dw RTL_AAC9C1                                                        ;AA88CA;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -709,7 +733,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingLeft_11:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Hitboxes_Torizo_StandUp_SitDown_FacingLeft_AA88CE:
-    dw $0001,$FFE6,$0021,$FFF4,$0032                                     ;AA88CE;
+    dw $0001                                                             ;AA88CE;
+    dw $FFE6,$0021,$FFF4,$0032                                     
     dw EnemyTouch_Torizo                                                 ;AA88D8;
     dw RTL_AAC9C1                                                        ;AA88DA;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -719,7 +744,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingLeft_12:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Hitboxes_Torizo_StandUp_SitDown_FacingLeft_AA88DE:
-    dw $0001,$FFDD,$0018,$FFEA,$0025                                     ;AA88DE;
+    dw $0001                                                             ;AA88DE;
+    dw $FFDD,$0018,$FFEA,$0025                                     
     dw EnemyTouch_Torizo                                                 ;AA88E8;
     dw RTL_AAC9C1                                                        ;AA88EA;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -729,7 +755,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingLeft_13:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Hitboxes_Torizo_StandUp_SitDown_FacingLeft_AA88EE:
-    dw $0001,$FFCA,$0008,$FFE9,$0012                                     ;AA88EE;
+    dw $0001                                                             ;AA88EE;
+    dw $FFCA,$0008,$FFE9,$0012                                     
     dw EnemyTouch_Torizo                                                 ;AA88F8;
     dw RTL_AAC9C1                                                        ;AA88FA;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -739,7 +766,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingLeft_14:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Hitboxes_Torizo_StandUp_SitDown_FacingLeft_AA88FE:
-    dw $0001,$FFD3,$FFF3,$FFE3,$0000                                     ;AA88FE;
+    dw $0001                                                             ;AA88FE;
+    dw $FFD3,$FFF3,$FFE3,$0000                                     
     dw EnemyTouch_Torizo                                                 ;AA8908;
     dw RTL_AAC9C1                                                        ;AA890A;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -749,65 +777,77 @@ Hitboxes_Torizo_StandUp_SitDown_FacingLeft_15:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Hitboxes_Torizo_StandUp_SitDown_FacingLeft_AA890E:
-    dw $0001,$FFE4,$FFDA,$FFEF,$FFEE                                     ;AA890E;
+    dw $0001                                                             ;AA890E;
+    dw $FFE4,$FFDA,$FFEF,$FFEE                                     
     dw EnemyTouch_Torizo                                                 ;AA8918;
     dw RTL_AAC9C1                                                        ;AA891A;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Hitboxes_Torizo_StandUp_SitDown_FacingLeft_16:
-    dw $0001,$FFEE,$FFDA,$0007,$0009                                     ;AA891C;
+    dw $0001                                                             ;AA891C;
+    dw $FFEE,$FFDA,$0007,$0009                                     
     dw EnemyTouch_Torizo                                                 ;AA8926;
     dw EnemyShot_Torizo_Normal                                           ;AA8928;
 
 Hitboxes_Torizo_StandUp_SitDown_FacingLeft_17:
-    dw $0001,$FFEE,$FFDB,$0007,$0012                                     ;AA892A;
+    dw $0001                                                             ;AA892A;
+    dw $FFEE,$FFDB,$0007,$0012                                     
     dw EnemyTouch_Torizo                                                 ;AA8934;
     dw EnemyShot_Torizo_Normal                                           ;AA8936;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Hitboxes_Torizo_StandUp_SitDown_FacingLeft_AA8938:
-    dw $0001,$FFF5,$FFD6,$000A,$0007                                     ;AA8938;
+    dw $0001                                                             ;AA8938;
+    dw $FFF5,$FFD6,$000A,$0007                                     
     dw EnemyTouch_Torizo                                                 ;AA8942;
     dw EnemyShot_Torizo_Normal                                           ;AA8944;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Hitboxes_Torizo_StandUp_SitDown_FacingRight_0:
-    dw $0001,$FFF1,$FFE5,$000D,$001B                                     ;AA8946;
+    dw $0001                                                             ;AA8946;
+    dw $FFF1,$FFE5,$000D,$001B                                     
     dw EnemyTouch_Torizo                                                 ;AA8950;
     dw EnemyShot_Torizo_StandUp_SitDown                                  ;AA8952;
 
 Hitboxes_Torizo_StandUp_SitDown_FacingRight_1:
-    dw $0001,$FFF3,$FFE5,$000D,$001B                                     ;AA8954;
+    dw $0001                                                             ;AA8954;
+    dw $FFF3,$FFE5,$000D,$001B                                     
     dw EnemyTouch_Torizo                                                 ;AA895E;
     dw EnemyShot_Torizo_StandUp_SitDown                                  ;AA8960;
 
 Hitboxes_Torizo_StandUp_SitDown_FacingRight_2:
-    dw $0001,$FFF2,$FFE0,$000D,$0021                                     ;AA8962;
+    dw $0001                                                             ;AA8962;
+    dw $FFF2,$FFE0,$000D,$0021                                     
     dw EnemyTouch_Torizo                                                 ;AA896C;
     dw EnemyShot_Torizo_StandUp_SitDown                                  ;AA896E;
 
 Hitboxes_Torizo_StandUp_SitDown_FacingRight_3:
-    dw $0001,$FFF2,$FFDD,$000B,$0027                                     ;AA8970;
+    dw $0001                                                             ;AA8970;
+    dw $FFF2,$FFDD,$000B,$0027                                     
     dw EnemyTouch_Torizo                                                 ;AA897A;
     dw EnemyShot_Torizo_StandUp_SitDown                                  ;AA897C;
 
 Hitboxes_Torizo_StandUp_SitDown_FacingRight_4:
-    dw $0001,$FFFA,$FFD6,$000D,$002F                                     ;AA897E;
+    dw $0001                                                             ;AA897E;
+    dw $FFFA,$FFD6,$000D,$002F                                     
     dw EnemyTouch_Torizo                                                 ;AA8988;
     dw EnemyShot_Torizo_StandUp_SitDown                                  ;AA898A;
 
 Hitboxes_Torizo_StandUp_SitDown_FacingRight_5:
-    dw $0001,$FFF9,$FFD7,$000B,$002F                                     ;AA898C;
+    dw $0001                                                             ;AA898C;
+    dw $FFF9,$FFD7,$000B,$002F                                     
     dw EnemyTouch_Torizo                                                 ;AA8996;
     dw EnemyShot_Torizo_StandUp_SitDown                                  ;AA8998;
 
 Hitboxes_Torizo_StandUp_SitDown_FacingRight_6:
-    dw $0001,$FFF8,$FFD7,$0016,$002F                                     ;AA899A;
+    dw $0001                                                             ;AA899A;
+    dw $FFF8,$FFD7,$0016,$002F                                     
     dw EnemyTouch_Torizo                                                 ;AA89A4;
     dw EnemyShot_Torizo_StandUp_SitDown                                  ;AA89A6;
 
 Hitboxes_Torizo_StandUp_SitDown_FacingRight_7:
-    dw $0001,$FFF6,$FFDA,$000D,$0017                                     ;AA89A8;
+    dw $0001                                                             ;AA89A8;
+    dw $FFF6,$FFDA,$000D,$0017                                     
     dw EnemyTouch_Torizo                                                 ;AA89B2;
     dw EnemyShot_Torizo_Normal                                           ;AA89B4;
 
@@ -818,7 +858,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingRight_9:
     dw $0000                                                             ;AA89B8;
 
 UNSUED_Hitboxes_Torizo_StandUp_SitDown_FacingRight_AA89BA:
-    dw $0001,$0000,$002B,$0016,$0040                                     ;AA89BA;
+    dw $0001                                                             ;AA89BA;
+    dw $0000,$002B,$0016,$0040                                     
     dw EnemyTouch_Torizo                                                 ;AA89C4;
     dw RTL_AAC9C1                                                        ;AA89C6;
 
@@ -826,7 +867,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingRight_A:
     dw $0000                                                             ;AA89C8;
 
 UNSUED_Hitboxes_Torizo_StandUp_SitDown_FacingRight_AA89CA:
-    dw $0001,$000A,$0026,$001F,$003C                                     ;AA89CA;
+    dw $0001                                                             ;AA89CA;
+    dw $000A,$0026,$001F,$003C                                     
     dw EnemyTouch_Torizo                                                 ;AA89D4;
     dw RTL_AAC9C1                                                        ;AA89D6;
 
@@ -834,7 +876,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingRight_B:
     dw $0000                                                             ;AA89D8;
 
 UNSUED_Hitboxes_Torizo_StandUp_SitDown_FacingRight_AA89DA:
-    dw $0001,$0014,$0018,$0022,$0025                                     ;AA89DA;
+    dw $0001                                                             ;AA89DA;
+    dw $0014,$0018,$0022,$0025                                     
     dw EnemyTouch_Torizo                                                 ;AA89E4;
     dw RTL_AAC9C1                                                        ;AA89E6;
 
@@ -842,7 +885,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingRight_C:
     dw $0000                                                             ;AA89E8;
 
 UNSUED_Hitboxes_Torizo_StandUp_SitDown_FacingRight_AA89EA:
-    dw $0001,$0015,$0008,$003B,$0014                                     ;AA89EA;
+    dw $0001                                                             ;AA89EA;
+    dw $0015,$0008,$003B,$0014                                     
     dw EnemyTouch_Torizo                                                 ;AA89F4;
     dw RTL_AAC9C1                                                        ;AA89F6;
 
@@ -850,7 +894,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingRight_D:
     dw $0000                                                             ;AA89F8;
 
 UNSUED_Hitboxes_Torizo_StandUp_SitDown_FacingRight_AA89FA:
-    dw $0001,$0017,$FFF9,$002D,$0004                                     ;AA89FA;
+    dw $0001                                                             ;AA89FA;
+    dw $0017,$FFF9,$002D,$0004                                     
     dw EnemyTouch_Torizo                                                 ;AA8A04;
     dw RTL_AAC9C1                                                        ;AA8A06;
 
@@ -858,7 +903,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingRight_E:
     dw $0000                                                             ;AA8A08;
 
 UNSUED_Hitboxes_Torizo_StandUp_SitDown_FacingRight_AA8A0A:
-    dw $0001,$000F,$FFDB,$001C,$FFED                                     ;AA8A0A;
+    dw $0001                                                             ;AA8A0A;
+    dw $000F,$FFDB,$001C,$FFED                                     
     dw EnemyTouch_Torizo                                                 ;AA8A14;
     dw RTL_AAC9C1                                                        ;AA8A16;
 
@@ -869,7 +915,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingRight_10:
     dw $0000                                                             ;AA8A1A;
 
 UNSUED_Hitboxes_Torizo_StandUp_SitDown_FacingRight_AA8A1C:
-    dw $0001,$FFFF,$0027,$000F,$003B                                     ;AA8A1C;
+    dw $0001                                                             ;AA8A1C;
+    dw $FFFF,$0027,$000F,$003B                                     
     dw EnemyTouch_Torizo                                                 ;AA8A26;
     dw RTL_AAC9C1                                                        ;AA8A28;
 
@@ -877,7 +924,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingRight_11:
     dw $0000                                                             ;AA8A2A;
 
 UNSUED_Hitboxes_Torizo_StandUp_SitDown_FacingRight_AA8A2C:
-    dw $0001,$0009,$0023,$001A,$0034                                     ;AA8A2C;
+    dw $0001                                                             ;AA8A2C;
+    dw $0009,$0023,$001A,$0034                                     
     dw EnemyTouch_Torizo                                                 ;AA8A36;
     dw RTL_AAC9C1                                                        ;AA8A38;
 
@@ -885,7 +933,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingRight_12:
     dw $0000                                                             ;AA8A3A;
 
 UNSUED_Hitboxes_Torizo_StandUp_SitDown_FacingRight_AA8A3C:
-    dw $0001,$0016,$0018,$0023,$0024                                     ;AA8A3C;
+    dw $0001                                                             ;AA8A3C;
+    dw $0016,$0018,$0023,$0024                                     
     dw EnemyTouch_Torizo                                                 ;AA8A46;
     dw RTL_AAC9C1                                                        ;AA8A48;
 
@@ -893,7 +942,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingRight_13:
     dw $0000                                                             ;AA8A4A;
 
 UNSUED_Hitboxes_Torizo_StandUp_SitDown_FacingRight_AA8A4C:
-    dw $0001,$0016,$0007,$0034,$0012                                     ;AA8A4C;
+    dw $0001                                                             ;AA8A4C;
+    dw $0016,$0007,$0034,$0012                                     
     dw EnemyTouch_Torizo                                                 ;AA8A56;
     dw RTL_AAC9C1                                                        ;AA8A58;
 
@@ -901,7 +951,8 @@ Hitboxes_Torizo_StandUp_SitDown_FacingRight_14:
     dw $0000                                                             ;AA8A5A;
 
 UNSUED_Hitboxes_Torizo_StandUp_SitDown_FacingRight_AA8A5C:
-    dw $0001,$0018,$FFF6,$002C,$0005                                     ;AA8A5C;
+    dw $0001                                                             ;AA8A5C;
+    dw $0018,$FFF6,$002C,$0005                                     
     dw EnemyTouch_Torizo                                                 ;AA8A66;
     dw RTL_AAC9C1                                                        ;AA8A68;
 
@@ -909,2979 +960,1684 @@ Hitboxes_Torizo_StandUp_SitDown_FacingRight_15:
     dw $0000                                                             ;AA8A6A;
 
 UNSUED_Hitboxes_Torizo_StandUp_SitDown_FacingRight_AA8A6C:
-    dw $0001,$000F,$FFDA,$001C,$FFF1                                     ;AA8A6C;
+    dw $0001                                                             ;AA8A6C;
+    dw $000F,$FFDA,$001C,$FFF1                                     
     dw EnemyTouch_Torizo                                                 ;AA8A76;
     dw RTL_AAC9C1                                                        ;AA8A78;
 
 Hitboxes_Torizo_StandUp_SitDown_FacingRight_16:
-    dw $0001,$FFF8,$FFDB,$000F,$000E                                     ;AA8A7A;
+    dw $0001                                                             ;AA8A7A;
+    dw $FFF8,$FFDB,$000F,$000E                                     
     dw EnemyTouch_Torizo                                                 ;AA8A84;
     dw EnemyShot_Torizo_Normal                                           ;AA8A86;
 
 Hitboxes_Torizo_StandUp_SitDown_FacingRight_17:
-    dw $0001,$FFF7,$FFD8,$0010,$0019                                     ;AA8A88;
+    dw $0001                                                             ;AA8A88;
+    dw $FFF7,$FFD8,$0010,$0019                                     
     dw EnemyTouch_Torizo                                                 ;AA8A92;
     dw EnemyShot_Torizo_Normal                                           ;AA8A94;
 
+
 Spritemaps_Torizo_0:
-    dw $0004,$000C                                                       ;AA8A96;
-    db $F4                                                               ;AA8A9A;
-    dw $23CB,$0004                                                       ;AA8A9B;
-    db $F4                                                               ;AA8A9F;
-    dw $23CA,$81F4                                                       ;AA8AA0;
-    db $F4                                                               ;AA8AA4;
-    dw $23C8,$81F4                                                       ;AA8AA5;
-    db $04                                                               ;AA8AA9;
-    dw $23E8                                                             ;AA8AAA;
+    dw $0004                                                             ;AA8A96;
+    %spritemapEntry(0, $0C, $F4, 0, 0, 2, 1, $1CB)
+    %spritemapEntry(0, $04, $F4, 0, 0, 2, 1, $1CA)
+    %spritemapEntry(1, $1F4, $F4, 0, 0, 2, 1, $1C8)
+    %spritemapEntry(1, $1F4, $04, 0, 0, 2, 1, $1E8)
 
 Spritemaps_Torizo_1:
-    dw $0004,$01F8                                                       ;AA8AAC;
-    db $04                                                               ;AA8AB0;
-    dw $23DB,$01F0                                                       ;AA8AB1;
-    db $04                                                               ;AA8AB5;
-    dw $23DA,$8000                                                       ;AA8AB6;
-    db $F4                                                               ;AA8ABA;
-    dw $23C6,$81F0                                                       ;AA8ABB;
-    db $F4                                                               ;AA8ABF;
-    dw $23C4                                                             ;AA8AC0;
+    dw $0004                                                             ;AA8AAC;
+    %spritemapEntry(0, $1F8, $04, 0, 0, 2, 1, $1DB)
+    %spritemapEntry(0, $1F0, $04, 0, 0, 2, 1, $1DA)
+    %spritemapEntry(1, $00, $F4, 0, 0, 2, 1, $1C6)
+    %spritemapEntry(1, $1F0, $F4, 0, 0, 2, 1, $1C4)
 
 Spritemaps_Torizo_2:
-    dw $0003,$81E8                                                       ;AA8AC2;
-    db $FC                                                               ;AA8AC6;
-    dw $23C0,$8000                                                       ;AA8AC7;
-    db $F4                                                               ;AA8ACB;
-    dw $23C6,$81F0                                                       ;AA8ACC;
-    db $F4                                                               ;AA8AD0;
-    dw $23C4                                                             ;AA8AD1;
+    dw $0003                                                             ;AA8AC2;
+    %spritemapEntry(1, $1E8, $FC, 0, 0, 2, 1, $1C0)
+    %spritemapEntry(1, $00, $F4, 0, 0, 2, 1, $1C6)
+    %spritemapEntry(1, $1F0, $F4, 0, 0, 2, 1, $1C4)
 
 Spritemaps_Torizo_3:
-    dw $0003,$81E8                                                       ;AA8AD3;
-    db $FC                                                               ;AA8AD7;
-    dw $23C2,$8000                                                       ;AA8AD8;
-    db $F4                                                               ;AA8ADC;
-    dw $23C6,$81F0                                                       ;AA8ADD;
-    db $F4                                                               ;AA8AE1;
-    dw $23C4                                                             ;AA8AE2;
+    dw $0003                                                             ;AA8AD3;
+    %spritemapEntry(1, $1E8, $FC, 0, 0, 2, 1, $1C2)
+    %spritemapEntry(1, $00, $F4, 0, 0, 2, 1, $1C6)
+    %spritemapEntry(1, $1F0, $F4, 0, 0, 2, 1, $1C4)
 
 Spritemaps_Torizo_4:
-    dw $0003,$81E8                                                       ;AA8AE4;
-    db $FC                                                               ;AA8AE8;
-    dw $23E0,$8000                                                       ;AA8AE9;
-    db $F4                                                               ;AA8AED;
-    dw $23C6,$81F0                                                       ;AA8AEE;
-    db $F4                                                               ;AA8AF2;
-    dw $23C4                                                             ;AA8AF3;
+    dw $0003                                                             ;AA8AE4;
+    %spritemapEntry(1, $1E8, $FC, 0, 0, 2, 1, $1E0)
+    %spritemapEntry(1, $00, $F4, 0, 0, 2, 1, $1C6)
+    %spritemapEntry(1, $1F0, $F4, 0, 0, 2, 1, $1C4)
 
 Spritemaps_Torizo_5:
-    dw $0008,$01E0                                                       ;AA8AF5;
-    db $F4                                                               ;AA8AF9;
-    dw $2372,$01E8                                                       ;AA8AFA;
-    db $F4                                                               ;AA8AFE;
-    dw $2371,$01F0                                                       ;AA8AFF;
-    db $0C                                                               ;AA8B03;
-    dw $23F2,$01F0                                                       ;AA8B04;
-    db $04                                                               ;AA8B08;
-    dw $23F3,$01F0                                                       ;AA8B09;
-    db $FC                                                               ;AA8B0D;
-    dw $23E3,$01E8                                                       ;AA8B0E;
-    db $FC                                                               ;AA8B12;
-    dw $23E2,$8000                                                       ;AA8B13;
-    db $F4                                                               ;AA8B17;
-    dw $23C6,$81F0                                                       ;AA8B18;
-    db $F4                                                               ;AA8B1C;
-    dw $23C4                                                             ;AA8B1D;
+    dw $0008                                                             ;AA8AF5;
+    %spritemapEntry(0, $1E0, $F4, 0, 0, 2, 1, $172)
+    %spritemapEntry(0, $1E8, $F4, 0, 0, 2, 1, $171)
+    %spritemapEntry(0, $1F0, $0C, 0, 0, 2, 1, $1F2)
+    %spritemapEntry(0, $1F0, $04, 0, 0, 2, 1, $1F3)
+    %spritemapEntry(0, $1F0, $FC, 0, 0, 2, 1, $1E3)
+    %spritemapEntry(0, $1E8, $FC, 0, 0, 2, 1, $1E2)
+    %spritemapEntry(1, $00, $F4, 0, 0, 2, 1, $1C6)
+    %spritemapEntry(1, $1F0, $F4, 0, 0, 2, 1, $1C4)
 
 Spritemaps_Torizo_6:
-    dw $0013,$01F5                                                       ;AA8B1F;
-    db $18                                                               ;AA8B23;
-    dw $234C,$0003                                                       ;AA8B24;
-    db $18                                                               ;AA8B28;
-    dw $634C,$01FC                                                       ;AA8B29;
-    db $00                                                               ;AA8B2D;
-    dw $635F,$01F8                                                       ;AA8B2E;
-    db $D8                                                               ;AA8B32;
-    dw $239F,$01F5                                                       ;AA8B33;
-    db $28                                                               ;AA8B37;
-    dw $23DF,$01F5                                                       ;AA8B38;
-    db $20                                                               ;AA8B3C;
-    dw $23CF,$01F5                                                       ;AA8B3D;
-    db $10                                                               ;AA8B41;
-    dw $239E,$01F6                                                       ;AA8B42;
-    db $08                                                               ;AA8B46;
-    dw $23DE,$01F7                                                       ;AA8B47;
-    db $00                                                               ;AA8B4B;
-    dw $23CE,$81F0                                                       ;AA8B4C;
-    db $F0                                                               ;AA8B50;
-    dw $23E6,$81F0                                                       ;AA8B51;
-    db $E0                                                               ;AA8B55;
-    dw $23E4,$0000                                                       ;AA8B56;
-    db $D8                                                               ;AA8B5A;
-    dw $639F,$0003                                                       ;AA8B5B;
-    db $28                                                               ;AA8B5F;
-    dw $63DF,$0003                                                       ;AA8B60;
-    db $20                                                               ;AA8B64;
-    dw $63CF,$0003                                                       ;AA8B65;
-    db $10                                                               ;AA8B69;
-    dw $639E,$0002                                                       ;AA8B6A;
-    db $08                                                               ;AA8B6E;
-    dw $63DE,$0001                                                       ;AA8B6F;
-    db $00                                                               ;AA8B73;
-    dw $63CE,$8000                                                       ;AA8B74;
-    db $F0                                                               ;AA8B78;
-    dw $63E6,$8000                                                       ;AA8B79;
-    db $E0                                                               ;AA8B7D;
-    dw $63E4                                                             ;AA8B7E;
+    dw $0013                                                             ;AA8B1F;
+    %spritemapEntry(0, $1F5, $18, 0, 0, 2, 1, $14C)
+    %spritemapEntry(0, $03, $18, 0, 1, 2, 1, $14C)
+    %spritemapEntry(0, $1FC, $00, 0, 1, 2, 1, $15F)
+    %spritemapEntry(0, $1F8, $D8, 0, 0, 2, 1, $19F)
+    %spritemapEntry(0, $1F5, $28, 0, 0, 2, 1, $1DF)
+    %spritemapEntry(0, $1F5, $20, 0, 0, 2, 1, $1CF)
+    %spritemapEntry(0, $1F5, $10, 0, 0, 2, 1, $19E)
+    %spritemapEntry(0, $1F6, $08, 0, 0, 2, 1, $1DE)
+    %spritemapEntry(0, $1F7, $00, 0, 0, 2, 1, $1CE)
+    %spritemapEntry(1, $1F0, $F0, 0, 0, 2, 1, $1E6)
+    %spritemapEntry(1, $1F0, $E0, 0, 0, 2, 1, $1E4)
+    %spritemapEntry(0, $00, $D8, 0, 1, 2, 1, $19F)
+    %spritemapEntry(0, $03, $28, 0, 1, 2, 1, $1DF)
+    %spritemapEntry(0, $03, $20, 0, 1, 2, 1, $1CF)
+    %spritemapEntry(0, $03, $10, 0, 1, 2, 1, $19E)
+    %spritemapEntry(0, $02, $08, 0, 1, 2, 1, $1DE)
+    %spritemapEntry(0, $01, $00, 0, 1, 2, 1, $1CE)
+    %spritemapEntry(1, $00, $F0, 0, 1, 2, 1, $1E6)
+    %spritemapEntry(1, $00, $E0, 0, 1, 2, 1, $1E4)
 
 Spritemaps_Torizo_7:
-    dw $001B,$0000                                                       ;AA8B80;
-    db $F8                                                               ;AA8B84;
-    dw $63DC,$0000                                                       ;AA8B85;
-    db $F0                                                               ;AA8B89;
-    dw $63CC,$01F8                                                       ;AA8B8A;
-    db $F8                                                               ;AA8B8E;
-    dw $23DC,$01F8                                                       ;AA8B8F;
-    db $F0                                                               ;AA8B93;
-    dw $23CC,$0003                                                       ;AA8B94;
-    db $18                                                               ;AA8B98;
-    dw $634C,$01F5                                                       ;AA8B99;
-    db $18                                                               ;AA8B9D;
-    dw $234C,$01F0                                                       ;AA8B9E;
-    db $E8                                                               ;AA8BA2;
-    dw $23F4,$01F0                                                       ;AA8BA3;
-    db $E0                                                               ;AA8BA7;
-    dw $23E4,$0000                                                       ;AA8BA8;
-    db $E8                                                               ;AA8BAC;
-    dw $63DD,$0000                                                       ;AA8BAD;
-    db $E0                                                               ;AA8BB1;
-    dw $63CD,$01F8                                                       ;AA8BB2;
-    db $E8                                                               ;AA8BB6;
-    dw $23DD,$01F8                                                       ;AA8BB7;
-    db $E0                                                               ;AA8BBB;
-    dw $23CD,$0008                                                       ;AA8BBC;
-    db $E8                                                               ;AA8BC0;
-    dw $63F4,$0008                                                       ;AA8BC1;
-    db $E0                                                               ;AA8BC5;
-    dw $63E4,$01FC                                                       ;AA8BC6;
-    db $00                                                               ;AA8BCA;
-    dw $635F,$01F5                                                       ;AA8BCB;
-    db $28                                                               ;AA8BCF;
-    dw $23DF,$01F5                                                       ;AA8BD0;
-    db $20                                                               ;AA8BD4;
-    dw $23CF,$01F5                                                       ;AA8BD5;
-    db $10                                                               ;AA8BD9;
-    dw $239E,$01F6                                                       ;AA8BDA;
-    db $08                                                               ;AA8BDE;
-    dw $23DE,$01F7                                                       ;AA8BDF;
-    db $00                                                               ;AA8BE3;
-    dw $23CE,$81F0                                                       ;AA8BE4;
-    db $F0                                                               ;AA8BE8;
-    dw $23E6,$0003                                                       ;AA8BE9;
-    db $28                                                               ;AA8BED;
-    dw $63DF,$0003                                                       ;AA8BEE;
-    db $20                                                               ;AA8BF2;
-    dw $63CF,$0003                                                       ;AA8BF3;
-    db $10                                                               ;AA8BF7;
-    dw $639E,$0002                                                       ;AA8BF8;
-    db $08                                                               ;AA8BFC;
-    dw $63DE,$0001                                                       ;AA8BFD;
-    db $00                                                               ;AA8C01;
-    dw $63CE,$8000                                                       ;AA8C02;
-    db $F0                                                               ;AA8C06;
-    dw $63E6                                                             ;AA8C07;
+    dw $001B                                                             ;AA8B80;
+    %spritemapEntry(0, $00, $F8, 0, 1, 2, 1, $1DC)
+    %spritemapEntry(0, $00, $F0, 0, 1, 2, 1, $1CC)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 1, $1DC)
+    %spritemapEntry(0, $1F8, $F0, 0, 0, 2, 1, $1CC)
+    %spritemapEntry(0, $03, $18, 0, 1, 2, 1, $14C)
+    %spritemapEntry(0, $1F5, $18, 0, 0, 2, 1, $14C)
+    %spritemapEntry(0, $1F0, $E8, 0, 0, 2, 1, $1F4)
+    %spritemapEntry(0, $1F0, $E0, 0, 0, 2, 1, $1E4)
+    %spritemapEntry(0, $00, $E8, 0, 1, 2, 1, $1DD)
+    %spritemapEntry(0, $00, $E0, 0, 1, 2, 1, $1CD)
+    %spritemapEntry(0, $1F8, $E8, 0, 0, 2, 1, $1DD)
+    %spritemapEntry(0, $1F8, $E0, 0, 0, 2, 1, $1CD)
+    %spritemapEntry(0, $08, $E8, 0, 1, 2, 1, $1F4)
+    %spritemapEntry(0, $08, $E0, 0, 1, 2, 1, $1E4)
+    %spritemapEntry(0, $1FC, $00, 0, 1, 2, 1, $15F)
+    %spritemapEntry(0, $1F5, $28, 0, 0, 2, 1, $1DF)
+    %spritemapEntry(0, $1F5, $20, 0, 0, 2, 1, $1CF)
+    %spritemapEntry(0, $1F5, $10, 0, 0, 2, 1, $19E)
+    %spritemapEntry(0, $1F6, $08, 0, 0, 2, 1, $1DE)
+    %spritemapEntry(0, $1F7, $00, 0, 0, 2, 1, $1CE)
+    %spritemapEntry(1, $1F0, $F0, 0, 0, 2, 1, $1E6)
+    %spritemapEntry(0, $03, $28, 0, 1, 2, 1, $1DF)
+    %spritemapEntry(0, $03, $20, 0, 1, 2, 1, $1CF)
+    %spritemapEntry(0, $03, $10, 0, 1, 2, 1, $19E)
+    %spritemapEntry(0, $02, $08, 0, 1, 2, 1, $1DE)
+    %spritemapEntry(0, $01, $00, 0, 1, 2, 1, $1CE)
+    %spritemapEntry(1, $00, $F0, 0, 1, 2, 1, $1E6)
 
 Spritemaps_Torizo_8:
-    dw $0001,$01FC                                                       ;AA8C09;
-    db $FC                                                               ;AA8C0D;
-    dw $6B70                                                             ;AA8C0E;
+    dw $0001                                                             ;AA8C09;
+    %spritemapEntry(0, $1FC, $FC, 0, 1, 2, 5, $170)
 
 Spritemaps_Torizo_9:
-    dw $0001,$01FC                                                       ;AA8C10;
-    db $FC                                                               ;AA8C14;
-    dw $6B63                                                             ;AA8C15;
+    dw $0001                                                             ;AA8C10;
+    %spritemapEntry(0, $1FC, $FC, 0, 1, 2, 5, $163)
 
 Spritemaps_Torizo_A:
-    dw $0001,$01FC                                                       ;AA8C17;
-    db $FC                                                               ;AA8C1B;
-    dw $6B67                                                             ;AA8C1C;
+    dw $0001                                                             ;AA8C17;
+    %spritemapEntry(0, $1FC, $FC, 0, 1, 2, 5, $167)
 
 Spritemaps_Torizo_B:
-    dw $0001,$01FC                                                       ;AA8C1E;
-    db $FC                                                               ;AA8C22;
-    dw $6B6A                                                             ;AA8C23;
+    dw $0001                                                             ;AA8C1E;
+    %spritemapEntry(0, $1FC, $FC, 0, 1, 2, 5, $16A)
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemaps_Torizo_AA8C25:
-    dw $0001,$81F8                                                       ;AA8C25;
-    db $F8                                                               ;AA8C29;
-    dw $6B2E                                                             ;AA8C2A;
+    dw $0001                                                             ;AA8C25;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 5, $12E)
 
 UNUSED_Spritemaps_Torizo_AA8C2C:
-    dw $0001,$81F8                                                       ;AA8C2C;
-    db $F8                                                               ;AA8C30;
-    dw $2304                                                             ;AA8C31;
+    dw $0001                                                             ;AA8C2C;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 1, $104)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Spritemaps_Torizo_C:
-    dw $001A,$01E9                                                       ;AA8C33;
-    db $FA                                                               ;AA8C37;
-    dw $23FB,$01E1                                                       ;AA8C38;
-    db $FA                                                               ;AA8C3C;
-    dw $23FA,$81FC                                                       ;AA8C3D;
-    db $EE                                                               ;AA8C41;
-    dw $2328,$81F8                                                       ;AA8C42;
-    db $FB                                                               ;AA8C46;
-    dw $6308,$01F2                                                       ;AA8C47;
-    db $15                                                               ;AA8C4B;
-    dw $2362,$01EA                                                       ;AA8C4C;
-    db $15                                                               ;AA8C50;
-    dw $2361,$01E2                                                       ;AA8C51;
-    db $15                                                               ;AA8C55;
-    dw $2360,$81E7                                                       ;AA8C56;
-    db $F7                                                               ;AA8C5A;
-    dw $E358,$81EF                                                       ;AA8C5B;
-    db $FF                                                               ;AA8C5F;
-    dw $E347,$01F9                                                       ;AA8C60;
-    db $12                                                               ;AA8C64;
-    dw $2394,$01F1                                                       ;AA8C65;
-    db $12                                                               ;AA8C69;
-    dw $2393,$81F1                                                       ;AA8C6A;
-    db $02                                                               ;AA8C6E;
-    dw $2373,$0005                                                       ;AA8C6F;
-    db $16                                                               ;AA8C73;
-    dw $23EF,$000D                                                       ;AA8C74;
-    db $16                                                               ;AA8C78;
-    dw $23FC,$000D                                                       ;AA8C79;
-    db $0E                                                               ;AA8C7D;
-    dw $23FF,$81FD                                                       ;AA8C7E;
-    db $06                                                               ;AA8C82;
-    dw $23ED,$0007                                                       ;AA8C83;
-    db $E3                                                               ;AA8C87;
-    dw $23CB,$01FF                                                       ;AA8C88;
-    db $E3                                                               ;AA8C8C;
-    dw $23CA,$81EF                                                       ;AA8C8D;
-    db $E3                                                               ;AA8C91;
-    dw $23C8,$81EF                                                       ;AA8C92;
-    db $F3                                                               ;AA8C96;
-    dw $23E8,$8008                                                       ;AA8C97;
-    db $06                                                               ;AA8C9B;
-    dw $2342,$81F8                                                       ;AA8C9C;
-    db $06                                                               ;AA8CA0;
-    dw $2340,$8008                                                       ;AA8CA1;
-    db $F6                                                               ;AA8CA5;
-    dw $2322,$81F8                                                       ;AA8CA6;
-    db $F6                                                               ;AA8CAA;
-    dw $2320,$8008                                                       ;AA8CAB;
-    db $E6                                                               ;AA8CAF;
-    dw $2302,$81F8                                                       ;AA8CB0;
-    db $E6                                                               ;AA8CB4;
-    dw $2300                                                             ;AA8CB5;
+    dw $001A                                                             ;AA8C33;
+    %spritemapEntry(0, $1E9, $FA, 0, 0, 2, 1, $1FB)
+    %spritemapEntry(0, $1E1, $FA, 0, 0, 2, 1, $1FA)
+    %spritemapEntry(1, $1FC, $EE, 0, 0, 2, 1, $128)
+    %spritemapEntry(1, $1F8, $FB, 0, 1, 2, 1, $108)
+    %spritemapEntry(0, $1F2, $15, 0, 0, 2, 1, $162)
+    %spritemapEntry(0, $1EA, $15, 0, 0, 2, 1, $161)
+    %spritemapEntry(0, $1E2, $15, 0, 0, 2, 1, $160)
+    %spritemapEntry(1, $1E7, $F7, 1, 1, 2, 1, $158)
+    %spritemapEntry(1, $1EF, $FF, 1, 1, 2, 1, $147)
+    %spritemapEntry(0, $1F9, $12, 0, 0, 2, 1, $194)
+    %spritemapEntry(0, $1F1, $12, 0, 0, 2, 1, $193)
+    %spritemapEntry(1, $1F1, $02, 0, 0, 2, 1, $173)
+    %spritemapEntry(0, $05, $16, 0, 0, 2, 1, $1EF)
+    %spritemapEntry(0, $0D, $16, 0, 0, 2, 1, $1FC)
+    %spritemapEntry(0, $0D, $0E, 0, 0, 2, 1, $1FF)
+    %spritemapEntry(1, $1FD, $06, 0, 0, 2, 1, $1ED)
+    %spritemapEntry(0, $07, $E3, 0, 0, 2, 1, $1CB)
+    %spritemapEntry(0, $1FF, $E3, 0, 0, 2, 1, $1CA)
+    %spritemapEntry(1, $1EF, $E3, 0, 0, 2, 1, $1C8)
+    %spritemapEntry(1, $1EF, $F3, 0, 0, 2, 1, $1E8)
+    %spritemapEntry(1, $08, $06, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1F8, $06, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $08, $F6, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1F8, $F6, 0, 0, 2, 1, $120)
+    %spritemapEntry(1, $08, $E6, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1F8, $E6, 0, 0, 2, 1, $100)
 
 Spritemaps_Torizo_D:
-    dw $001A,$81FD                                                       ;AA8CB7;
-    db $F9                                                               ;AA8CBB;
-    dw $2306,$81FD                                                       ;AA8CBC;
-    db $EC                                                               ;AA8CC0;
-    dw $2326,$01E3                                                       ;AA8CC1;
-    db $03                                                               ;AA8CC5;
-    dw $638F,$01EB                                                       ;AA8CC6;
-    db $03                                                               ;AA8CCA;
-    dw $638E,$01EF                                                       ;AA8CCB;
-    db $04                                                               ;AA8CCF;
-    dw $634F,$01F7                                                       ;AA8CD0;
-    db $04                                                               ;AA8CD4;
-    dw $634E,$01FF                                                       ;AA8CD5;
-    db $04                                                               ;AA8CD9;
-    dw $634D,$01FB                                                       ;AA8CDA;
-    db $10                                                               ;AA8CDE;
-    dw $2396,$01F3                                                       ;AA8CDF;
-    db $10                                                               ;AA8CE3;
-    dw $2395,$81F3                                                       ;AA8CE4;
-    db $00                                                               ;AA8CE8;
-    dw $2375,$0002                                                       ;AA8CE9;
-    db $01                                                               ;AA8CED;
-    dw $A3AE,$01FA                                                       ;AA8CEE;
-    db $01                                                               ;AA8CF2;
-    dw $A3AD,$81FA                                                       ;AA8CF3;
-    db $09                                                               ;AA8CF7;
-    dw $A3A6,$01FB                                                       ;AA8CF8;
-    db $15                                                               ;AA8CFC;
-    dw $2362,$01F3                                                       ;AA8CFD;
-    db $15                                                               ;AA8D01;
-    dw $2361,$01EB                                                       ;AA8D02;
-    db $15                                                               ;AA8D06;
-    dw $2360,$0006                                                       ;AA8D07;
-    db $E4                                                               ;AA8D0B;
-    dw $23CB,$01FE                                                       ;AA8D0C;
-    db $E4                                                               ;AA8D10;
-    dw $23CA,$81EE                                                       ;AA8D11;
-    db $E4                                                               ;AA8D15;
-    dw $23C8,$81EE                                                       ;AA8D16;
-    db $F4                                                               ;AA8D1A;
-    dw $23E8,$8007                                                       ;AA8D1B;
-    db $07                                                               ;AA8D1F;
-    dw $2342,$81F7                                                       ;AA8D20;
-    db $07                                                               ;AA8D24;
-    dw $2340,$8007                                                       ;AA8D25;
-    db $F7                                                               ;AA8D29;
-    dw $2322,$81F7                                                       ;AA8D2A;
-    db $F7                                                               ;AA8D2E;
-    dw $2320,$8007                                                       ;AA8D2F;
-    db $E7                                                               ;AA8D33;
-    dw $2302,$81F7                                                       ;AA8D34;
-    db $E7                                                               ;AA8D38;
-    dw $2300                                                             ;AA8D39;
+    dw $001A                                                             ;AA8CB7;
+    %spritemapEntry(1, $1FD, $F9, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $1FD, $EC, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1E3, $03, 0, 1, 2, 1, $18F)
+    %spritemapEntry(0, $1EB, $03, 0, 1, 2, 1, $18E)
+    %spritemapEntry(0, $1EF, $04, 0, 1, 2, 1, $14F)
+    %spritemapEntry(0, $1F7, $04, 0, 1, 2, 1, $14E)
+    %spritemapEntry(0, $1FF, $04, 0, 1, 2, 1, $14D)
+    %spritemapEntry(0, $1FB, $10, 0, 0, 2, 1, $196)
+    %spritemapEntry(0, $1F3, $10, 0, 0, 2, 1, $195)
+    %spritemapEntry(1, $1F3, $00, 0, 0, 2, 1, $175)
+    %spritemapEntry(0, $02, $01, 1, 0, 2, 1, $1AE)
+    %spritemapEntry(0, $1FA, $01, 1, 0, 2, 1, $1AD)
+    %spritemapEntry(1, $1FA, $09, 1, 0, 2, 1, $1A6)
+    %spritemapEntry(0, $1FB, $15, 0, 0, 2, 1, $162)
+    %spritemapEntry(0, $1F3, $15, 0, 0, 2, 1, $161)
+    %spritemapEntry(0, $1EB, $15, 0, 0, 2, 1, $160)
+    %spritemapEntry(0, $06, $E4, 0, 0, 2, 1, $1CB)
+    %spritemapEntry(0, $1FE, $E4, 0, 0, 2, 1, $1CA)
+    %spritemapEntry(1, $1EE, $E4, 0, 0, 2, 1, $1C8)
+    %spritemapEntry(1, $1EE, $F4, 0, 0, 2, 1, $1E8)
+    %spritemapEntry(1, $07, $07, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1F7, $07, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $07, $F7, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1F7, $F7, 0, 0, 2, 1, $120)
+    %spritemapEntry(1, $07, $E7, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1F7, $E7, 0, 0, 2, 1, $100)
 
 Spritemaps_Torizo_E:
-    dw $001B,$81E7                                                       ;AA8D3B;
-    db $0D                                                               ;AA8D3F;
-    dw $636C,$81FA                                                       ;AA8D40;
-    db $F4                                                               ;AA8D44;
-    dw $2306,$81FA                                                       ;AA8D45;
-    db $E7                                                               ;AA8D49;
-    dw $2326,$81EE                                                       ;AA8D4A;
-    db $07                                                               ;AA8D4E;
-    dw $6358,$81F5                                                       ;AA8D4F;
-    db $FF                                                               ;AA8D53;
-    dw $6347,$01FB                                                       ;AA8D54;
-    db $16                                                               ;AA8D58;
-    dw $2398,$01F3                                                       ;AA8D59;
-    db $16                                                               ;AA8D5D;
-    dw $2397,$81F3                                                       ;AA8D5E;
-    db $06                                                               ;AA8D62;
-    dw $2377,$0001                                                       ;AA8D63;
-    db $1B                                                               ;AA8D67;
-    dw $2362,$01F9                                                       ;AA8D68;
-    db $1B                                                               ;AA8D6C;
-    dw $2361,$01F1                                                       ;AA8D6D;
-    db $1B                                                               ;AA8D71;
-    dw $2360,$0007                                                       ;AA8D72;
-    db $0B                                                               ;AA8D76;
-    dw $A3EC,$01FF                                                       ;AA8D77;
-    db $0B                                                               ;AA8D7B;
-    dw $A3EB,$01F7                                                       ;AA8D7C;
-    db $0B                                                               ;AA8D80;
-    dw $A3EA,$0007                                                       ;AA8D81;
-    db $03                                                               ;AA8D85;
-    dw $23EC,$01FF                                                       ;AA8D86;
-    db $03                                                               ;AA8D8A;
-    dw $23EB,$01F7                                                       ;AA8D8B;
-    db $03                                                               ;AA8D8F;
-    dw $23EA,$0006                                                       ;AA8D90;
-    db $DE                                                               ;AA8D94;
-    dw $23CB,$01FE                                                       ;AA8D95;
-    db $DE                                                               ;AA8D99;
-    dw $23CA,$81EE                                                       ;AA8D9A;
-    db $DE                                                               ;AA8D9E;
-    dw $23C8,$81EE                                                       ;AA8D9F;
-    db $EE                                                               ;AA8DA3;
-    dw $23E8,$8007                                                       ;AA8DA4;
-    db $01                                                               ;AA8DA8;
-    dw $2342,$81F7                                                       ;AA8DA9;
-    db $01                                                               ;AA8DAD;
-    dw $2340,$8007                                                       ;AA8DAE;
-    db $F1                                                               ;AA8DB2;
-    dw $2322,$81F7                                                       ;AA8DB3;
-    db $F1                                                               ;AA8DB7;
-    dw $2320,$8007                                                       ;AA8DB8;
-    db $E1                                                               ;AA8DBC;
-    dw $2302,$81F7                                                       ;AA8DBD;
-    db $E1                                                               ;AA8DC1;
-    dw $2300                                                             ;AA8DC2;
+    dw $001B                                                             ;AA8D3B;
+    %spritemapEntry(1, $1E7, $0D, 0, 1, 2, 1, $16C)
+    %spritemapEntry(1, $1FA, $F4, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $1FA, $E7, 0, 0, 2, 1, $126)
+    %spritemapEntry(1, $1EE, $07, 0, 1, 2, 1, $158)
+    %spritemapEntry(1, $1F5, $FF, 0, 1, 2, 1, $147)
+    %spritemapEntry(0, $1FB, $16, 0, 0, 2, 1, $198)
+    %spritemapEntry(0, $1F3, $16, 0, 0, 2, 1, $197)
+    %spritemapEntry(1, $1F3, $06, 0, 0, 2, 1, $177)
+    %spritemapEntry(0, $01, $1B, 0, 0, 2, 1, $162)
+    %spritemapEntry(0, $1F9, $1B, 0, 0, 2, 1, $161)
+    %spritemapEntry(0, $1F1, $1B, 0, 0, 2, 1, $160)
+    %spritemapEntry(0, $07, $0B, 1, 0, 2, 1, $1EC)
+    %spritemapEntry(0, $1FF, $0B, 1, 0, 2, 1, $1EB)
+    %spritemapEntry(0, $1F7, $0B, 1, 0, 2, 1, $1EA)
+    %spritemapEntry(0, $07, $03, 0, 0, 2, 1, $1EC)
+    %spritemapEntry(0, $1FF, $03, 0, 0, 2, 1, $1EB)
+    %spritemapEntry(0, $1F7, $03, 0, 0, 2, 1, $1EA)
+    %spritemapEntry(0, $06, $DE, 0, 0, 2, 1, $1CB)
+    %spritemapEntry(0, $1FE, $DE, 0, 0, 2, 1, $1CA)
+    %spritemapEntry(1, $1EE, $DE, 0, 0, 2, 1, $1C8)
+    %spritemapEntry(1, $1EE, $EE, 0, 0, 2, 1, $1E8)
+    %spritemapEntry(1, $07, $01, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1F7, $01, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $07, $F1, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1F7, $F1, 0, 0, 2, 1, $120)
+    %spritemapEntry(1, $07, $E1, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1F7, $E1, 0, 0, 2, 1, $100)
 
 Spritemaps_Torizo_E_miscount:
-    dw $0019,$81FB                                                       ;AA8DC4;
-    db $F1                                                               ;AA8DC8;
-    dw $2306,$81FB                                                       ;AA8DC9;
-    db $E4                                                               ;AA8DCD;
-    dw $2326,$81E6                                                       ;AA8DCE;
-    db $0A                                                               ;AA8DD2;
-    dw $636C,$81ED                                                       ;AA8DD3;
-    db $05                                                               ;AA8DD7;
-    dw $6358,$81F4                                                       ;AA8DD8;
-    db $FD                                                               ;AA8DDC;
-    dw $6347,$8002                                                       ;AA8DDD;
-    db $FB                                                               ;AA8DE1;
-    dw $23A9,$0002                                                       ;AA8DE2;
-    db $0B                                                               ;AA8DE6;
-    dw $23BB,$01FA                                                       ;AA8DE7;
-    db $0B                                                               ;AA8DEB;
-    dw $23AF,$81FA                                                       ;AA8DEC;
-    db $FB                                                               ;AA8DF0;
-    dw $23A8,$0006                                                       ;AA8DF1;
-    db $D9                                                               ;AA8DF5;
-    dw $23CB,$01FE                                                       ;AA8DF6;
-    db $D9                                                               ;AA8DFA;
-    dw $23CA,$81EE                                                       ;AA8DFB;
-    db $D9                                                               ;AA8DFF;
-    dw $23C8,$81EE                                                       ;AA8E00;
-    db $E9                                                               ;AA8E04;
-    dw $23E8,$8007                                                       ;AA8E05;
-    db $FC                                                               ;AA8E09;
-    dw $2342,$81F7                                                       ;AA8E0A;
-    db $FC                                                               ;AA8E0E;
-    dw $2340,$8007                                                       ;AA8E0F;
-    db $EC                                                               ;AA8E13;
-    dw $2322,$81F7                                                       ;AA8E14;
-    db $EC                                                               ;AA8E18;
-    dw $2320,$8007                                                       ;AA8E19;
-    db $DC                                                               ;AA8E1D;
-    dw $2302,$81F7                                                       ;AA8E1E;
-    db $DC                                                               ;AA8E22;
-    dw $2300,$0001                                                       ;AA8E23;
-    db $1B                                                               ;AA8E27;
-    dw $2398,$01F9                                                       ;AA8E28;
-    db $1B                                                               ;AA8E2C;
-    dw $2397,$81F9                                                       ;AA8E2D;
-    db $0B                                                               ;AA8E31;
-    dw $2377,$0008                                                       ;AA8E32;
-    db $21                                                               ;AA8E36;
-    dw $2362,$0000                                                       ;AA8E37;
-    db $21                                                               ;AA8E3B;
-    dw $2361,$01F8                                                       ;AA8E3C;
-    db $21                                                               ;AA8E40;
-    dw $2360                                                             ;AA8E41;
+    dw $0019                                                             ;AA8DC4;
+    %spritemapEntry(1, $1FB, $F1, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $1FB, $E4, 0, 0, 2, 1, $126)
+    %spritemapEntry(1, $1E6, $0A, 0, 1, 2, 1, $16C)
+    %spritemapEntry(1, $1ED, $05, 0, 1, 2, 1, $158)
+    %spritemapEntry(1, $1F4, $FD, 0, 1, 2, 1, $147)
+    %spritemapEntry(1, $02, $FB, 0, 0, 2, 1, $1A9)
+    %spritemapEntry(0, $02, $0B, 0, 0, 2, 1, $1BB)
+    %spritemapEntry(0, $1FA, $0B, 0, 0, 2, 1, $1AF)
+    %spritemapEntry(1, $1FA, $FB, 0, 0, 2, 1, $1A8)
+    %spritemapEntry(0, $06, $D9, 0, 0, 2, 1, $1CB)
+    %spritemapEntry(0, $1FE, $D9, 0, 0, 2, 1, $1CA)
+    %spritemapEntry(1, $1EE, $D9, 0, 0, 2, 1, $1C8)
+    %spritemapEntry(1, $1EE, $E9, 0, 0, 2, 1, $1E8)
+    %spritemapEntry(1, $07, $FC, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1F7, $FC, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $07, $EC, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1F7, $EC, 0, 0, 2, 1, $120)
+    %spritemapEntry(1, $07, $DC, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1F7, $DC, 0, 0, 2, 1, $100)
+    %spritemapEntry(0, $01, $1B, 0, 0, 2, 1, $198)
+    %spritemapEntry(0, $1F9, $1B, 0, 0, 2, 1, $197)
+    %spritemapEntry(1, $1F9, $0B, 0, 0, 2, 1, $177)
+    %spritemapEntry(0, $08, $21, 0, 0, 2, 1, $162)
+    %spritemapEntry(0, $00, $21, 0, 0, 2, 1, $161)
+    %spritemapEntry(0, $1F8, $21, 0, 0, 2, 1, $160)
 
 Spritemaps_Torizo_F:
-    dw $0019,$01FD                                                       ;AA8E43;
-    db $D3                                                               ;AA8E47;
-    dw $23CB,$01F5                                                       ;AA8E48;
-    db $D3                                                               ;AA8E4C;
-    dw $23CA,$81E5                                                       ;AA8E4D;
-    db $E3                                                               ;AA8E51;
-    dw $23E8,$81E5                                                       ;AA8E52;
-    db $D3                                                               ;AA8E56;
-    dw $23C8,$0001                                                       ;AA8E57;
-    db $0F                                                               ;AA8E5B;
-    dw $23AC,$01F9                                                       ;AA8E5C;
-    db $0F                                                               ;AA8E60;
-    dw $23AB,$81F9                                                       ;AA8E61;
-    db $FF                                                               ;AA8E65;
-    dw $23A4,$0003                                                       ;AA8E66;
-    db $28                                                               ;AA8E6A;
-    dw $2362,$01FB                                                       ;AA8E6B;
-    db $28                                                               ;AA8E6F;
-    dw $2361,$01F3                                                       ;AA8E70;
-    db $28                                                               ;AA8E74;
-    dw $2360,$0002                                                       ;AA8E75;
-    db $21                                                               ;AA8E79;
-    dw $2396,$01FA                                                       ;AA8E7A;
-    db $21                                                               ;AA8E7E;
-    dw $2395,$81FA                                                       ;AA8E7F;
-    db $11                                                               ;AA8E83;
-    dw $2375,$01FB                                                       ;AA8E84;
-    db $0E                                                               ;AA8E88;
-    dw $25AE,$01F3                                                       ;AA8E89;
-    db $0E                                                               ;AA8E8D;
-    dw $25AD,$81F3                                                       ;AA8E8E;
-    db $FE                                                               ;AA8E92;
-    dw $25A6,$81FD                                                       ;AA8E93;
-    db $15                                                               ;AA8E97;
-    dw $258A,$81F5                                                       ;AA8E98;
-    db $0D                                                               ;AA8E9C;
-    dw $2579,$81FF                                                       ;AA8E9D;
-    db $1F                                                               ;AA8EA1;
-    dw $25A2,$81FE                                                       ;AA8EA2;
-    db $F7                                                               ;AA8EA6;
-    dw $2342,$81EE                                                       ;AA8EA7;
-    db $F7                                                               ;AA8EAB;
-    dw $2340,$81FE                                                       ;AA8EAC;
-    db $E7                                                               ;AA8EB0;
-    dw $2322,$81EE                                                       ;AA8EB1;
-    db $E7                                                               ;AA8EB5;
-    dw $2320,$81FE                                                       ;AA8EB6;
-    db $D7                                                               ;AA8EBA;
-    dw $2302,$81EE                                                       ;AA8EBB;
-    db $D7                                                               ;AA8EBF;
-    dw $2300                                                             ;AA8EC0;
+    dw $0019                                                             ;AA8E43;
+    %spritemapEntry(0, $1FD, $D3, 0, 0, 2, 1, $1CB)
+    %spritemapEntry(0, $1F5, $D3, 0, 0, 2, 1, $1CA)
+    %spritemapEntry(1, $1E5, $E3, 0, 0, 2, 1, $1E8)
+    %spritemapEntry(1, $1E5, $D3, 0, 0, 2, 1, $1C8)
+    %spritemapEntry(0, $01, $0F, 0, 0, 2, 1, $1AC)
+    %spritemapEntry(0, $1F9, $0F, 0, 0, 2, 1, $1AB)
+    %spritemapEntry(1, $1F9, $FF, 0, 0, 2, 1, $1A4)
+    %spritemapEntry(0, $03, $28, 0, 0, 2, 1, $162)
+    %spritemapEntry(0, $1FB, $28, 0, 0, 2, 1, $161)
+    %spritemapEntry(0, $1F3, $28, 0, 0, 2, 1, $160)
+    %spritemapEntry(0, $02, $21, 0, 0, 2, 1, $196)
+    %spritemapEntry(0, $1FA, $21, 0, 0, 2, 1, $195)
+    %spritemapEntry(1, $1FA, $11, 0, 0, 2, 1, $175)
+    %spritemapEntry(0, $1FB, $0E, 0, 0, 2, 2, $1AE)
+    %spritemapEntry(0, $1F3, $0E, 0, 0, 2, 2, $1AD)
+    %spritemapEntry(1, $1F3, $FE, 0, 0, 2, 2, $1A6)
+    %spritemapEntry(1, $1FD, $15, 0, 0, 2, 2, $18A)
+    %spritemapEntry(1, $1F5, $0D, 0, 0, 2, 2, $179)
+    %spritemapEntry(1, $1FF, $1F, 0, 0, 2, 2, $1A2)
+    %spritemapEntry(1, $1FE, $F7, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1EE, $F7, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $1FE, $E7, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1EE, $E7, 0, 0, 2, 1, $120)
+    %spritemapEntry(1, $1FE, $D7, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1EE, $D7, 0, 0, 2, 1, $100)
 
 Spritemaps_Torizo_10:
-    dw $001A,$01FD                                                       ;AA8EC2;
-    db $D4                                                               ;AA8EC6;
-    dw $23CB,$01F5                                                       ;AA8EC7;
-    db $D4                                                               ;AA8ECB;
-    dw $23CA,$81E5                                                       ;AA8ECC;
-    db $E4                                                               ;AA8ED0;
-    dw $23E8,$81E5                                                       ;AA8ED1;
-    db $D4                                                               ;AA8ED5;
-    dw $23C8,$01FC                                                       ;AA8ED6;
-    db $0E                                                               ;AA8EDA;
-    dw $63AE,$0004                                                       ;AA8EDB;
-    db $0E                                                               ;AA8EDF;
-    dw $63AD,$81FC                                                       ;AA8EE0;
-    db $FE                                                               ;AA8EE4;
-    dw $63A6,$0013                                                       ;AA8EE5;
-    db $28                                                               ;AA8EE9;
-    dw $2362,$000B                                                       ;AA8EEA;
-    db $28                                                               ;AA8EEE;
-    dw $2361,$0003                                                       ;AA8EEF;
-    db $28                                                               ;AA8EF3;
-    dw $2360,$000D                                                       ;AA8EF4;
-    db $22                                                               ;AA8EF8;
-    dw $2398,$0005                                                       ;AA8EF9;
-    db $22                                                               ;AA8EFD;
-    dw $2397,$8005                                                       ;AA8EFE;
-    db $12                                                               ;AA8F02;
-    dw $2377,$81F6                                                       ;AA8F03;
-    db $FC                                                               ;AA8F07;
-    dw $25A9,$01F6                                                       ;AA8F08;
-    db $0C                                                               ;AA8F0C;
-    dw $25BB,$01EE                                                       ;AA8F0D;
-    db $0C                                                               ;AA8F11;
-    dw $25AF,$81EE                                                       ;AA8F12;
-    db $FC                                                               ;AA8F16;
-    dw $25A8,$81F2                                                       ;AA8F17;
-    db $1F                                                               ;AA8F1B;
-    dw $25A2,$01EF                                                       ;AA8F1C;
-    db $1F                                                               ;AA8F20;
-    dw $2597,$81EF                                                       ;AA8F21;
-    db $0F                                                               ;AA8F25;
-    dw $2577,$81FE                                                       ;AA8F26;
-    db $F8                                                               ;AA8F2A;
-    dw $2342,$81EE                                                       ;AA8F2B;
-    db $F8                                                               ;AA8F2F;
-    dw $2340,$81FE                                                       ;AA8F30;
-    db $E8                                                               ;AA8F34;
-    dw $2322,$81EE                                                       ;AA8F35;
-    db $E8                                                               ;AA8F39;
-    dw $2320,$81FE                                                       ;AA8F3A;
-    db $D8                                                               ;AA8F3E;
-    dw $2302,$81EE                                                       ;AA8F3F;
-    db $D8                                                               ;AA8F43;
-    dw $2300                                                             ;AA8F44;
+    dw $001A                                                             ;AA8EC2;
+    %spritemapEntry(0, $1FD, $D4, 0, 0, 2, 1, $1CB)
+    %spritemapEntry(0, $1F5, $D4, 0, 0, 2, 1, $1CA)
+    %spritemapEntry(1, $1E5, $E4, 0, 0, 2, 1, $1E8)
+    %spritemapEntry(1, $1E5, $D4, 0, 0, 2, 1, $1C8)
+    %spritemapEntry(0, $1FC, $0E, 0, 1, 2, 1, $1AE)
+    %spritemapEntry(0, $04, $0E, 0, 1, 2, 1, $1AD)
+    %spritemapEntry(1, $1FC, $FE, 0, 1, 2, 1, $1A6)
+    %spritemapEntry(0, $13, $28, 0, 0, 2, 1, $162)
+    %spritemapEntry(0, $0B, $28, 0, 0, 2, 1, $161)
+    %spritemapEntry(0, $03, $28, 0, 0, 2, 1, $160)
+    %spritemapEntry(0, $0D, $22, 0, 0, 2, 1, $198)
+    %spritemapEntry(0, $05, $22, 0, 0, 2, 1, $197)
+    %spritemapEntry(1, $05, $12, 0, 0, 2, 1, $177)
+    %spritemapEntry(1, $1F6, $FC, 0, 0, 2, 2, $1A9)
+    %spritemapEntry(0, $1F6, $0C, 0, 0, 2, 2, $1BB)
+    %spritemapEntry(0, $1EE, $0C, 0, 0, 2, 2, $1AF)
+    %spritemapEntry(1, $1EE, $FC, 0, 0, 2, 2, $1A8)
+    %spritemapEntry(1, $1F2, $1F, 0, 0, 2, 2, $1A2)
+    %spritemapEntry(0, $1EF, $1F, 0, 0, 2, 2, $197)
+    %spritemapEntry(1, $1EF, $0F, 0, 0, 2, 2, $177)
+    %spritemapEntry(1, $1FE, $F8, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1EE, $F8, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $1FE, $E8, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1EE, $E8, 0, 0, 2, 1, $120)
+    %spritemapEntry(1, $1FE, $D8, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1EE, $D8, 0, 0, 2, 1, $100)
 
 Spritemaps_Torizo_12:
-    dw $001C,$01FD                                                       ;AA8F46;
-    db $D5                                                               ;AA8F4A;
-    dw $23CB,$01F5                                                       ;AA8F4B;
-    db $D5                                                               ;AA8F4F;
-    dw $23CA,$81E5                                                       ;AA8F50;
-    db $E5                                                               ;AA8F54;
-    dw $23E8,$81E5                                                       ;AA8F55;
-    db $D5                                                               ;AA8F59;
-    dw $23C8,$001A                                                       ;AA8F5A;
-    db $28                                                               ;AA8F5E;
-    dw $2362,$0012                                                       ;AA8F5F;
-    db $28                                                               ;AA8F63;
-    dw $2361,$000A                                                       ;AA8F64;
-    db $28                                                               ;AA8F68;
-    dw $2360,$01FD                                                       ;AA8F69;
-    db $10                                                               ;AA8F6D;
-    dw $63AE,$0005                                                       ;AA8F6E;
-    db $10                                                               ;AA8F72;
-    dw $63AD,$81FD                                                       ;AA8F73;
-    db $00                                                               ;AA8F77;
-    dw $63A6,$800F                                                       ;AA8F78;
-    db $1C                                                               ;AA8F7C;
-    dw $238A,$8007                                                       ;AA8F7D;
-    db $14                                                               ;AA8F81;
-    dw $2379,$01EB                                                       ;AA8F82;
-    db $28                                                               ;AA8F86;
-    dw $2562,$01E3                                                       ;AA8F87;
-    db $28                                                               ;AA8F8B;
-    dw $2561,$01DB                                                       ;AA8F8C;
-    db $28                                                               ;AA8F90;
-    dw $2560,$81F7                                                       ;AA8F91;
-    db $FE                                                               ;AA8F95;
-    dw $25A9,$01F7                                                       ;AA8F96;
-    db $0E                                                               ;AA8F9A;
-    dw $25BB,$01EF                                                       ;AA8F9B;
-    db $0E                                                               ;AA8F9F;
-    dw $25AF,$81EF                                                       ;AA8FA0;
-    db $FE                                                               ;AA8FA4;
-    dw $25A8,$01EF                                                       ;AA8FA5;
-    db $22                                                               ;AA8FA9;
-    dw $2594,$01E7                                                       ;AA8FAA;
-    db $22                                                               ;AA8FAE;
-    dw $2593,$81E7                                                       ;AA8FAF;
-    db $12                                                               ;AA8FB3;
-    dw $2573,$81FE                                                       ;AA8FB4;
-    db $F9                                                               ;AA8FB8;
-    dw $2342,$81EE                                                       ;AA8FB9;
-    db $F9                                                               ;AA8FBD;
-    dw $2340,$81FE                                                       ;AA8FBE;
-    db $E9                                                               ;AA8FC2;
-    dw $2322,$81EE                                                       ;AA8FC3;
-    db $E9                                                               ;AA8FC7;
-    dw $2320,$81FE                                                       ;AA8FC8;
-    db $D9                                                               ;AA8FCC;
-    dw $2302,$81EE                                                       ;AA8FCD;
-    db $D9                                                               ;AA8FD1;
-    dw $2300                                                             ;AA8FD2;
+    dw $001C                                                             ;AA8F46;
+    %spritemapEntry(0, $1FD, $D5, 0, 0, 2, 1, $1CB)
+    %spritemapEntry(0, $1F5, $D5, 0, 0, 2, 1, $1CA)
+    %spritemapEntry(1, $1E5, $E5, 0, 0, 2, 1, $1E8)
+    %spritemapEntry(1, $1E5, $D5, 0, 0, 2, 1, $1C8)
+    %spritemapEntry(0, $1A, $28, 0, 0, 2, 1, $162)
+    %spritemapEntry(0, $12, $28, 0, 0, 2, 1, $161)
+    %spritemapEntry(0, $0A, $28, 0, 0, 2, 1, $160)
+    %spritemapEntry(0, $1FD, $10, 0, 1, 2, 1, $1AE)
+    %spritemapEntry(0, $05, $10, 0, 1, 2, 1, $1AD)
+    %spritemapEntry(1, $1FD, $00, 0, 1, 2, 1, $1A6)
+    %spritemapEntry(1, $0F, $1C, 0, 0, 2, 1, $18A)
+    %spritemapEntry(1, $07, $14, 0, 0, 2, 1, $179)
+    %spritemapEntry(0, $1EB, $28, 0, 0, 2, 2, $162)
+    %spritemapEntry(0, $1E3, $28, 0, 0, 2, 2, $161)
+    %spritemapEntry(0, $1DB, $28, 0, 0, 2, 2, $160)
+    %spritemapEntry(1, $1F7, $FE, 0, 0, 2, 2, $1A9)
+    %spritemapEntry(0, $1F7, $0E, 0, 0, 2, 2, $1BB)
+    %spritemapEntry(0, $1EF, $0E, 0, 0, 2, 2, $1AF)
+    %spritemapEntry(1, $1EF, $FE, 0, 0, 2, 2, $1A8)
+    %spritemapEntry(0, $1EF, $22, 0, 0, 2, 2, $194)
+    %spritemapEntry(0, $1E7, $22, 0, 0, 2, 2, $193)
+    %spritemapEntry(1, $1E7, $12, 0, 0, 2, 2, $173)
+    %spritemapEntry(1, $1FE, $F9, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1EE, $F9, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $1FE, $E9, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1EE, $E9, 0, 0, 2, 1, $120)
+    %spritemapEntry(1, $1FE, $D9, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1EE, $D9, 0, 0, 2, 1, $100)
 
 Spritemaps_Torizo_13:
-    dw $0016,$01EB                                                       ;AA8FD4;
-    db $28                                                               ;AA8FD8;
-    dw $2362,$01E3                                                       ;AA8FD9;
-    db $28                                                               ;AA8FDD;
-    dw $2361,$01DB                                                       ;AA8FDE;
-    db $28                                                               ;AA8FE2;
-    dw $2360,$81F7                                                       ;AA8FE3;
-    db $FE                                                               ;AA8FE7;
-    dw $23A9,$01F7                                                       ;AA8FE8;
-    db $0E                                                               ;AA8FEC;
-    dw $23BB,$01EF                                                       ;AA8FED;
-    db $0E                                                               ;AA8FF1;
-    dw $23AF,$81EF                                                       ;AA8FF2;
-    db $FE                                                               ;AA8FF6;
-    dw $23A8,$01EF                                                       ;AA8FF7;
-    db $22                                                               ;AA8FFB;
-    dw $2394,$01E7                                                       ;AA8FFC;
-    db $22                                                               ;AA9000;
-    dw $2393,$81E7                                                       ;AA9001;
-    db $12                                                               ;AA9005;
-    dw $2373,$01FC                                                       ;AA9006;
-    db $0D                                                               ;AA900A;
-    dw $65AE,$0004                                                       ;AA900B;
-    db $0D                                                               ;AA900F;
-    dw $65AD,$81FC                                                       ;AA9010;
-    db $FD                                                               ;AA9014;
-    dw $65A6,$800D                                                       ;AA9015;
-    db $16                                                               ;AA9019;
-    dw $258A,$8005                                                       ;AA901A;
-    db $0E                                                               ;AA901E;
-    dw $2579,$8013                                                       ;AA901F;
-    db $1F                                                               ;AA9023;
-    dw $25A0,$81FE                                                       ;AA9024;
-    db $F9                                                               ;AA9028;
-    dw $2342,$81EE                                                       ;AA9029;
-    db $F9                                                               ;AA902D;
-    dw $2340,$81FE                                                       ;AA902E;
-    db $E9                                                               ;AA9032;
-    dw $2322,$81EE                                                       ;AA9033;
-    db $E9                                                               ;AA9037;
-    dw $2320,$81FE                                                       ;AA9038;
-    db $D9                                                               ;AA903C;
-    dw $2302,$81EE                                                       ;AA903D;
-    db $D9                                                               ;AA9041;
-    dw $2300                                                             ;AA9042;
+    dw $0016                                                             ;AA8FD4;
+    %spritemapEntry(0, $1EB, $28, 0, 0, 2, 1, $162)
+    %spritemapEntry(0, $1E3, $28, 0, 0, 2, 1, $161)
+    %spritemapEntry(0, $1DB, $28, 0, 0, 2, 1, $160)
+    %spritemapEntry(1, $1F7, $FE, 0, 0, 2, 1, $1A9)
+    %spritemapEntry(0, $1F7, $0E, 0, 0, 2, 1, $1BB)
+    %spritemapEntry(0, $1EF, $0E, 0, 0, 2, 1, $1AF)
+    %spritemapEntry(1, $1EF, $FE, 0, 0, 2, 1, $1A8)
+    %spritemapEntry(0, $1EF, $22, 0, 0, 2, 1, $194)
+    %spritemapEntry(0, $1E7, $22, 0, 0, 2, 1, $193)
+    %spritemapEntry(1, $1E7, $12, 0, 0, 2, 1, $173)
+    %spritemapEntry(0, $1FC, $0D, 0, 1, 2, 2, $1AE)
+    %spritemapEntry(0, $04, $0D, 0, 1, 2, 2, $1AD)
+    %spritemapEntry(1, $1FC, $FD, 0, 1, 2, 2, $1A6)
+    %spritemapEntry(1, $0D, $16, 0, 0, 2, 2, $18A)
+    %spritemapEntry(1, $05, $0E, 0, 0, 2, 2, $179)
+    %spritemapEntry(1, $13, $1F, 0, 0, 2, 2, $1A0)
+    %spritemapEntry(1, $1FE, $F9, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1EE, $F9, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $1FE, $E9, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1EE, $E9, 0, 0, 2, 1, $120)
+    %spritemapEntry(1, $1FE, $D9, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1EE, $D9, 0, 0, 2, 1, $100)
 
 Spritemaps_Torizo_14:
-    dw $0015,$01FB                                                       ;AA9044;
-    db $0F                                                               ;AA9048;
-    dw $23AE,$01F3                                                       ;AA9049;
-    db $0F                                                               ;AA904D;
-    dw $23AD,$81F3                                                       ;AA904E;
-    db $FF                                                               ;AA9052;
-    dw $23A6,$01F0                                                       ;AA9053;
-    db $28                                                               ;AA9057;
-    dw $2362,$01E8                                                       ;AA9058;
-    db $28                                                               ;AA905C;
-    dw $2361,$01E0                                                       ;AA905D;
-    db $28                                                               ;AA9061;
-    dw $2360,$01F4                                                       ;AA9062;
-    db $23                                                               ;AA9066;
-    dw $2394,$01EC                                                       ;AA9067;
-    db $23                                                               ;AA906B;
-    dw $2393,$81EC                                                       ;AA906C;
-    db $13                                                               ;AA9070;
-    dw $2373,$8009                                                       ;AA9071;
-    db $1E                                                               ;AA9075;
-    dw $25A0,$01FF                                                       ;AA9076;
-    db $10                                                               ;AA907A;
-    dw $25AC,$01F7                                                       ;AA907B;
-    db $10                                                               ;AA907F;
-    dw $25AB,$81F7                                                       ;AA9080;
-    db $00                                                               ;AA9084;
-    dw $25A4,$8005                                                       ;AA9085;
-    db $18                                                               ;AA9089;
-    dw $258A,$81FD                                                       ;AA908A;
-    db $10                                                               ;AA908E;
-    dw $2579,$81FE                                                       ;AA908F;
-    db $F8                                                               ;AA9093;
-    dw $2342,$81EE                                                       ;AA9094;
-    db $F8                                                               ;AA9098;
-    dw $2340,$81FE                                                       ;AA9099;
-    db $E8                                                               ;AA909D;
-    dw $2322,$81EE                                                       ;AA909E;
-    db $E8                                                               ;AA90A2;
-    dw $2320,$81FE                                                       ;AA90A3;
-    db $D8                                                               ;AA90A7;
-    dw $2302,$81EE                                                       ;AA90A8;
-    db $D8                                                               ;AA90AC;
-    dw $2300                                                             ;AA90AD;
+    dw $0015                                                             ;AA9044;
+    %spritemapEntry(0, $1FB, $0F, 0, 0, 2, 1, $1AE)
+    %spritemapEntry(0, $1F3, $0F, 0, 0, 2, 1, $1AD)
+    %spritemapEntry(1, $1F3, $FF, 0, 0, 2, 1, $1A6)
+    %spritemapEntry(0, $1F0, $28, 0, 0, 2, 1, $162)
+    %spritemapEntry(0, $1E8, $28, 0, 0, 2, 1, $161)
+    %spritemapEntry(0, $1E0, $28, 0, 0, 2, 1, $160)
+    %spritemapEntry(0, $1F4, $23, 0, 0, 2, 1, $194)
+    %spritemapEntry(0, $1EC, $23, 0, 0, 2, 1, $193)
+    %spritemapEntry(1, $1EC, $13, 0, 0, 2, 1, $173)
+    %spritemapEntry(1, $09, $1E, 0, 0, 2, 2, $1A0)
+    %spritemapEntry(0, $1FF, $10, 0, 0, 2, 2, $1AC)
+    %spritemapEntry(0, $1F7, $10, 0, 0, 2, 2, $1AB)
+    %spritemapEntry(1, $1F7, $00, 0, 0, 2, 2, $1A4)
+    %spritemapEntry(1, $05, $18, 0, 0, 2, 2, $18A)
+    %spritemapEntry(1, $1FD, $10, 0, 0, 2, 2, $179)
+    %spritemapEntry(1, $1FE, $F8, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1EE, $F8, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $1FE, $E8, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1EE, $E8, 0, 0, 2, 1, $120)
+    %spritemapEntry(1, $1FE, $D8, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1EE, $D8, 0, 0, 2, 1, $100)
 
 Spritemaps_Torizo_15:
-    dw $0015,$0001                                                       ;AA90AF;
-    db $0F                                                               ;AA90B3;
-    dw $23AC,$01F9                                                       ;AA90B4;
-    db $0F                                                               ;AA90B8;
-    dw $23AB,$81F9                                                       ;AA90B9;
-    db $FF                                                               ;AA90BD;
-    dw $23A4,$0003                                                       ;AA90BE;
-    db $28                                                               ;AA90C2;
-    dw $2362,$01FB                                                       ;AA90C3;
-    db $28                                                               ;AA90C7;
-    dw $2361,$01F3                                                       ;AA90C8;
-    db $28                                                               ;AA90CC;
-    dw $2360,$0002                                                       ;AA90CD;
-    db $21                                                               ;AA90D1;
-    dw $2396,$01FA                                                       ;AA90D2;
-    db $21                                                               ;AA90D6;
-    dw $2395,$81FA                                                       ;AA90D7;
-    db $11                                                               ;AA90DB;
-    dw $2375,$01FB                                                       ;AA90DC;
-    db $0E                                                               ;AA90E0;
-    dw $25AE,$01F3                                                       ;AA90E1;
-    db $0E                                                               ;AA90E5;
-    dw $25AD,$81F3                                                       ;AA90E6;
-    db $FE                                                               ;AA90EA;
-    dw $25A6,$81FD                                                       ;AA90EB;
-    db $15                                                               ;AA90EF;
-    dw $258A,$81F5                                                       ;AA90F0;
-    db $0D                                                               ;AA90F4;
-    dw $2579,$81FF                                                       ;AA90F5;
-    db $1F                                                               ;AA90F9;
-    dw $25A2,$81FE                                                       ;AA90FA;
-    db $F7                                                               ;AA90FE;
-    dw $2342,$81EE                                                       ;AA90FF;
-    db $F7                                                               ;AA9103;
-    dw $2340,$81FE                                                       ;AA9104;
-    db $E7                                                               ;AA9108;
-    dw $2322,$81EE                                                       ;AA9109;
-    db $E7                                                               ;AA910D;
-    dw $2320,$81FE                                                       ;AA910E;
-    db $D7                                                               ;AA9112;
-    dw $2302,$81EE                                                       ;AA9113;
-    db $D7                                                               ;AA9117;
-    dw $2300                                                             ;AA9118;
+    dw $0015                                                             ;AA90AF;
+    %spritemapEntry(0, $01, $0F, 0, 0, 2, 1, $1AC)
+    %spritemapEntry(0, $1F9, $0F, 0, 0, 2, 1, $1AB)
+    %spritemapEntry(1, $1F9, $FF, 0, 0, 2, 1, $1A4)
+    %spritemapEntry(0, $03, $28, 0, 0, 2, 1, $162)
+    %spritemapEntry(0, $1FB, $28, 0, 0, 2, 1, $161)
+    %spritemapEntry(0, $1F3, $28, 0, 0, 2, 1, $160)
+    %spritemapEntry(0, $02, $21, 0, 0, 2, 1, $196)
+    %spritemapEntry(0, $1FA, $21, 0, 0, 2, 1, $195)
+    %spritemapEntry(1, $1FA, $11, 0, 0, 2, 1, $175)
+    %spritemapEntry(0, $1FB, $0E, 0, 0, 2, 2, $1AE)
+    %spritemapEntry(0, $1F3, $0E, 0, 0, 2, 2, $1AD)
+    %spritemapEntry(1, $1F3, $FE, 0, 0, 2, 2, $1A6)
+    %spritemapEntry(1, $1FD, $15, 0, 0, 2, 2, $18A)
+    %spritemapEntry(1, $1F5, $0D, 0, 0, 2, 2, $179)
+    %spritemapEntry(1, $1FF, $1F, 0, 0, 2, 2, $1A2)
+    %spritemapEntry(1, $1FE, $F7, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1EE, $F7, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $1FE, $E7, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1EE, $E7, 0, 0, 2, 1, $120)
+    %spritemapEntry(1, $1FE, $D7, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1EE, $D7, 0, 0, 2, 1, $100)
 
 Spritemaps_Torizo_16:
-    dw $0016,$01FC                                                       ;AA911A;
-    db $0E                                                               ;AA911E;
-    dw $63AE,$0004                                                       ;AA911F;
-    db $0E                                                               ;AA9123;
-    dw $63AD,$81FC                                                       ;AA9124;
-    db $FE                                                               ;AA9128;
-    dw $63A6,$0013                                                       ;AA9129;
-    db $28                                                               ;AA912D;
-    dw $2362,$000B                                                       ;AA912E;
-    db $28                                                               ;AA9132;
-    dw $2361,$0003                                                       ;AA9133;
-    db $28                                                               ;AA9137;
-    dw $2360,$000D                                                       ;AA9138;
-    db $22                                                               ;AA913C;
-    dw $2398,$0005                                                       ;AA913D;
-    db $22                                                               ;AA9141;
-    dw $2397,$8005                                                       ;AA9142;
-    db $12                                                               ;AA9146;
-    dw $2377,$81F6                                                       ;AA9147;
-    db $FC                                                               ;AA914B;
-    dw $25A9,$01F6                                                       ;AA914C;
-    db $0C                                                               ;AA9150;
-    dw $25BB,$01EE                                                       ;AA9151;
-    db $0C                                                               ;AA9155;
-    dw $25AF,$81EE                                                       ;AA9156;
-    db $FC                                                               ;AA915A;
-    dw $25A8,$81F2                                                       ;AA915B;
-    db $1F                                                               ;AA915F;
-    dw $25A2,$01EF                                                       ;AA9160;
-    db $1F                                                               ;AA9164;
-    dw $2597,$81EF                                                       ;AA9165;
-    db $0F                                                               ;AA9169;
-    dw $2577,$81FE                                                       ;AA916A;
-    db $F8                                                               ;AA916E;
-    dw $2342,$81EE                                                       ;AA916F;
-    db $F8                                                               ;AA9173;
-    dw $2340,$81FE                                                       ;AA9174;
-    db $E8                                                               ;AA9178;
-    dw $2322,$81EE                                                       ;AA9179;
-    db $E8                                                               ;AA917D;
-    dw $2320,$81FE                                                       ;AA917E;
-    db $D8                                                               ;AA9182;
-    dw $2302,$81EE                                                       ;AA9183;
-    db $D8                                                               ;AA9187;
-    dw $2300                                                             ;AA9188;
+    dw $0016                                                             ;AA911A;
+    %spritemapEntry(0, $1FC, $0E, 0, 1, 2, 1, $1AE)
+    %spritemapEntry(0, $04, $0E, 0, 1, 2, 1, $1AD)
+    %spritemapEntry(1, $1FC, $FE, 0, 1, 2, 1, $1A6)
+    %spritemapEntry(0, $13, $28, 0, 0, 2, 1, $162)
+    %spritemapEntry(0, $0B, $28, 0, 0, 2, 1, $161)
+    %spritemapEntry(0, $03, $28, 0, 0, 2, 1, $160)
+    %spritemapEntry(0, $0D, $22, 0, 0, 2, 1, $198)
+    %spritemapEntry(0, $05, $22, 0, 0, 2, 1, $197)
+    %spritemapEntry(1, $05, $12, 0, 0, 2, 1, $177)
+    %spritemapEntry(1, $1F6, $FC, 0, 0, 2, 2, $1A9)
+    %spritemapEntry(0, $1F6, $0C, 0, 0, 2, 2, $1BB)
+    %spritemapEntry(0, $1EE, $0C, 0, 0, 2, 2, $1AF)
+    %spritemapEntry(1, $1EE, $FC, 0, 0, 2, 2, $1A8)
+    %spritemapEntry(1, $1F2, $1F, 0, 0, 2, 2, $1A2)
+    %spritemapEntry(0, $1EF, $1F, 0, 0, 2, 2, $197)
+    %spritemapEntry(1, $1EF, $0F, 0, 0, 2, 2, $177)
+    %spritemapEntry(1, $1FE, $F8, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1EE, $F8, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $1FE, $E8, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1EE, $E8, 0, 0, 2, 1, $120)
+    %spritemapEntry(1, $1FE, $D8, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1EE, $D8, 0, 0, 2, 1, $100)
 
 Spritemaps_Torizo_17:
-    dw $0016,$01FC                                                       ;AA918A;
-    db $0E                                                               ;AA918E;
-    dw $63AE,$0004                                                       ;AA918F;
-    db $0E                                                               ;AA9193;
-    dw $63AD,$81FC                                                       ;AA9194;
-    db $FE                                                               ;AA9198;
-    dw $63A6,$800D                                                       ;AA9199;
-    db $17                                                               ;AA919D;
-    dw $238A,$8005                                                       ;AA919E;
-    db $0F                                                               ;AA91A2;
-    dw $2379,$8013                                                       ;AA91A3;
-    db $20                                                               ;AA91A7;
-    dw $23A0,$01EB                                                       ;AA91A8;
-    db $28                                                               ;AA91AC;
-    dw $2562,$01E3                                                       ;AA91AD;
-    db $28                                                               ;AA91B1;
-    dw $2561,$01DB                                                       ;AA91B2;
-    db $28                                                               ;AA91B6;
-    dw $2560,$81F7                                                       ;AA91B7;
-    db $FE                                                               ;AA91BB;
-    dw $25A9,$01F7                                                       ;AA91BC;
-    db $0E                                                               ;AA91C0;
-    dw $25BB,$01EF                                                       ;AA91C1;
-    db $0E                                                               ;AA91C5;
-    dw $25AF,$81EF                                                       ;AA91C6;
-    db $FE                                                               ;AA91CA;
-    dw $25A8,$01EF                                                       ;AA91CB;
-    db $22                                                               ;AA91CF;
-    dw $2594,$01E7                                                       ;AA91D0;
-    db $22                                                               ;AA91D4;
-    dw $2593,$81E7                                                       ;AA91D5;
-    db $12                                                               ;AA91D9;
-    dw $2573,$81FE                                                       ;AA91DA;
-    db $F9                                                               ;AA91DE;
-    dw $2342,$81EE                                                       ;AA91DF;
-    db $F9                                                               ;AA91E3;
-    dw $2340,$81FE                                                       ;AA91E4;
-    db $E9                                                               ;AA91E8;
-    dw $2322,$81EE                                                       ;AA91E9;
-    db $E9                                                               ;AA91ED;
-    dw $2320,$81FE                                                       ;AA91EE;
-    db $D9                                                               ;AA91F2;
-    dw $2302,$81EE                                                       ;AA91F3;
-    db $D9                                                               ;AA91F7;
-    dw $2300                                                             ;AA91F8;
+    dw $0016                                                             ;AA918A;
+    %spritemapEntry(0, $1FC, $0E, 0, 1, 2, 1, $1AE)
+    %spritemapEntry(0, $04, $0E, 0, 1, 2, 1, $1AD)
+    %spritemapEntry(1, $1FC, $FE, 0, 1, 2, 1, $1A6)
+    %spritemapEntry(1, $0D, $17, 0, 0, 2, 1, $18A)
+    %spritemapEntry(1, $05, $0F, 0, 0, 2, 1, $179)
+    %spritemapEntry(1, $13, $20, 0, 0, 2, 1, $1A0)
+    %spritemapEntry(0, $1EB, $28, 0, 0, 2, 2, $162)
+    %spritemapEntry(0, $1E3, $28, 0, 0, 2, 2, $161)
+    %spritemapEntry(0, $1DB, $28, 0, 0, 2, 2, $160)
+    %spritemapEntry(1, $1F7, $FE, 0, 0, 2, 2, $1A9)
+    %spritemapEntry(0, $1F7, $0E, 0, 0, 2, 2, $1BB)
+    %spritemapEntry(0, $1EF, $0E, 0, 0, 2, 2, $1AF)
+    %spritemapEntry(1, $1EF, $FE, 0, 0, 2, 2, $1A8)
+    %spritemapEntry(0, $1EF, $22, 0, 0, 2, 2, $194)
+    %spritemapEntry(0, $1E7, $22, 0, 0, 2, 2, $193)
+    %spritemapEntry(1, $1E7, $12, 0, 0, 2, 2, $173)
+    %spritemapEntry(1, $1FE, $F9, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1EE, $F9, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $1FE, $E9, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1EE, $E9, 0, 0, 2, 1, $120)
+    %spritemapEntry(1, $1FE, $D9, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1EE, $D9, 0, 0, 2, 1, $100)
 
 Spritemaps_Torizo_18:
-    dw $0015,$800A                                                       ;AA91FA;
-    db $1D                                                               ;AA91FE;
-    dw $23A0,$0000                                                       ;AA91FF;
-    db $0F                                                               ;AA9203;
-    dw $23AC,$01F8                                                       ;AA9204;
-    db $0F                                                               ;AA9208;
-    dw $23AB,$81F8                                                       ;AA9209;
-    db $FF                                                               ;AA920D;
-    dw $23A4,$8006                                                       ;AA920E;
-    db $17                                                               ;AA9212;
-    dw $238A,$81FE                                                       ;AA9213;
-    db $0F                                                               ;AA9217;
-    dw $2379,$01FD                                                       ;AA9218;
-    db $0F                                                               ;AA921C;
-    dw $25AE,$01F5                                                       ;AA921D;
-    db $0F                                                               ;AA9221;
-    dw $25AD,$81F5                                                       ;AA9222;
-    db $FF                                                               ;AA9226;
-    dw $25A6,$01F2                                                       ;AA9227;
-    db $28                                                               ;AA922B;
-    dw $2562,$01EA                                                       ;AA922C;
-    db $28                                                               ;AA9230;
-    dw $2561,$01E2                                                       ;AA9231;
-    db $28                                                               ;AA9235;
-    dw $2560,$01F6                                                       ;AA9236;
-    db $23                                                               ;AA923A;
-    dw $2594,$01EE                                                       ;AA923B;
-    db $23                                                               ;AA923F;
-    dw $2593,$81EE                                                       ;AA9240;
-    db $13                                                               ;AA9244;
-    dw $2573,$81FE                                                       ;AA9245;
-    db $F8                                                               ;AA9249;
-    dw $2342,$81EE                                                       ;AA924A;
-    db $F8                                                               ;AA924E;
-    dw $2340,$81FE                                                       ;AA924F;
-    db $E8                                                               ;AA9253;
-    dw $2322,$81EE                                                       ;AA9254;
-    db $E8                                                               ;AA9258;
-    dw $2320,$81FE                                                       ;AA9259;
-    db $D8                                                               ;AA925D;
-    dw $2302,$81EE                                                       ;AA925E;
-    db $D8                                                               ;AA9262;
-    dw $2300                                                             ;AA9263;
+    dw $0015                                                             ;AA91FA;
+    %spritemapEntry(1, $0A, $1D, 0, 0, 2, 1, $1A0)
+    %spritemapEntry(0, $00, $0F, 0, 0, 2, 1, $1AC)
+    %spritemapEntry(0, $1F8, $0F, 0, 0, 2, 1, $1AB)
+    %spritemapEntry(1, $1F8, $FF, 0, 0, 2, 1, $1A4)
+    %spritemapEntry(1, $06, $17, 0, 0, 2, 1, $18A)
+    %spritemapEntry(1, $1FE, $0F, 0, 0, 2, 1, $179)
+    %spritemapEntry(0, $1FD, $0F, 0, 0, 2, 2, $1AE)
+    %spritemapEntry(0, $1F5, $0F, 0, 0, 2, 2, $1AD)
+    %spritemapEntry(1, $1F5, $FF, 0, 0, 2, 2, $1A6)
+    %spritemapEntry(0, $1F2, $28, 0, 0, 2, 2, $162)
+    %spritemapEntry(0, $1EA, $28, 0, 0, 2, 2, $161)
+    %spritemapEntry(0, $1E2, $28, 0, 0, 2, 2, $160)
+    %spritemapEntry(0, $1F6, $23, 0, 0, 2, 2, $194)
+    %spritemapEntry(0, $1EE, $23, 0, 0, 2, 2, $193)
+    %spritemapEntry(1, $1EE, $13, 0, 0, 2, 2, $173)
+    %spritemapEntry(1, $1FE, $F8, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1EE, $F8, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $1FE, $E8, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1EE, $E8, 0, 0, 2, 1, $120)
+    %spritemapEntry(1, $1FE, $D8, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1EE, $D8, 0, 0, 2, 1, $100)
 
 Spritemaps_Torizo_19:
-    dw $0015,$01FB                                                       ;AA9265;
-    db $0E                                                               ;AA9269;
-    dw $23AE,$01F3                                                       ;AA926A;
-    db $0E                                                               ;AA926E;
-    dw $23AD,$81F3                                                       ;AA926F;
-    db $FE                                                               ;AA9273;
-    dw $23A6,$81FD                                                       ;AA9274;
-    db $15                                                               ;AA9278;
-    dw $238A,$81F5                                                       ;AA9279;
-    db $0D                                                               ;AA927D;
-    dw $2379,$81FF                                                       ;AA927E;
-    db $1F                                                               ;AA9282;
-    dw $23A2,$0001                                                       ;AA9283;
-    db $0F                                                               ;AA9287;
-    dw $25AC,$01F9                                                       ;AA9288;
-    db $0F                                                               ;AA928C;
-    dw $25AB,$81F9                                                       ;AA928D;
-    db $FF                                                               ;AA9291;
-    dw $25A4,$0003                                                       ;AA9292;
-    db $28                                                               ;AA9296;
-    dw $2562,$01FB                                                       ;AA9297;
-    db $28                                                               ;AA929B;
-    dw $2561,$01F3                                                       ;AA929C;
-    db $28                                                               ;AA92A0;
-    dw $2560,$0002                                                       ;AA92A1;
-    db $21                                                               ;AA92A5;
-    dw $2596,$01FA                                                       ;AA92A6;
-    db $21                                                               ;AA92AA;
-    dw $2595,$81FA                                                       ;AA92AB;
-    db $11                                                               ;AA92AF;
-    dw $2575,$81FE                                                       ;AA92B0;
-    db $F7                                                               ;AA92B4;
-    dw $2342,$81EE                                                       ;AA92B5;
-    db $F7                                                               ;AA92B9;
-    dw $2340,$81FE                                                       ;AA92BA;
-    db $E7                                                               ;AA92BE;
-    dw $2322,$81EE                                                       ;AA92BF;
-    db $E7                                                               ;AA92C3;
-    dw $2320,$81FE                                                       ;AA92C4;
-    db $D7                                                               ;AA92C8;
-    dw $2302,$81EE                                                       ;AA92C9;
-    db $D7                                                               ;AA92CD;
-    dw $2300                                                             ;AA92CE;
+    dw $0015                                                             ;AA9265;
+    %spritemapEntry(0, $1FB, $0E, 0, 0, 2, 1, $1AE)
+    %spritemapEntry(0, $1F3, $0E, 0, 0, 2, 1, $1AD)
+    %spritemapEntry(1, $1F3, $FE, 0, 0, 2, 1, $1A6)
+    %spritemapEntry(1, $1FD, $15, 0, 0, 2, 1, $18A)
+    %spritemapEntry(1, $1F5, $0D, 0, 0, 2, 1, $179)
+    %spritemapEntry(1, $1FF, $1F, 0, 0, 2, 1, $1A2)
+    %spritemapEntry(0, $01, $0F, 0, 0, 2, 2, $1AC)
+    %spritemapEntry(0, $1F9, $0F, 0, 0, 2, 2, $1AB)
+    %spritemapEntry(1, $1F9, $FF, 0, 0, 2, 2, $1A4)
+    %spritemapEntry(0, $03, $28, 0, 0, 2, 2, $162)
+    %spritemapEntry(0, $1FB, $28, 0, 0, 2, 2, $161)
+    %spritemapEntry(0, $1F3, $28, 0, 0, 2, 2, $160)
+    %spritemapEntry(0, $02, $21, 0, 0, 2, 2, $196)
+    %spritemapEntry(0, $1FA, $21, 0, 0, 2, 2, $195)
+    %spritemapEntry(1, $1FA, $11, 0, 0, 2, 2, $175)
+    %spritemapEntry(1, $1FE, $F7, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1EE, $F7, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $1FE, $E7, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1EE, $E7, 0, 0, 2, 1, $120)
+    %spritemapEntry(1, $1FE, $D7, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1EE, $D7, 0, 0, 2, 1, $100)
 
 Spritemaps_Torizo_1A:
-    dw $0016,$81F7                                                       ;AA92D0;
-    db $FC                                                               ;AA92D4;
-    dw $23A9,$01F7                                                       ;AA92D5;
-    db $0C                                                               ;AA92D9;
-    dw $23BB,$01EF                                                       ;AA92DA;
-    db $0C                                                               ;AA92DE;
-    dw $23AF,$81EF                                                       ;AA92DF;
-    db $FC                                                               ;AA92E3;
-    dw $23A8,$81F3                                                       ;AA92E4;
-    db $1F                                                               ;AA92E8;
-    dw $23A2,$01F0                                                       ;AA92E9;
-    db $1F                                                               ;AA92ED;
-    dw $2397,$81F0                                                       ;AA92EE;
-    db $0F                                                               ;AA92F2;
-    dw $2377,$01FE                                                       ;AA92F3;
-    db $0E                                                               ;AA92F7;
-    dw $65AE,$0006                                                       ;AA92F8;
-    db $0E                                                               ;AA92FC;
-    dw $65AD,$81FE                                                       ;AA92FD;
-    db $FE                                                               ;AA9301;
-    dw $65A6,$0015                                                       ;AA9302;
-    db $28                                                               ;AA9306;
-    dw $2562,$000D                                                       ;AA9307;
-    db $28                                                               ;AA930B;
-    dw $2561,$0005                                                       ;AA930C;
-    db $28                                                               ;AA9310;
-    dw $2560,$000F                                                       ;AA9311;
-    db $22                                                               ;AA9315;
-    dw $2598,$0007                                                       ;AA9316;
-    db $22                                                               ;AA931A;
-    dw $2597,$8007                                                       ;AA931B;
-    db $12                                                               ;AA931F;
-    dw $2577,$81FE                                                       ;AA9320;
-    db $F8                                                               ;AA9324;
-    dw $2342,$81EE                                                       ;AA9325;
-    db $F8                                                               ;AA9329;
-    dw $2340,$81FE                                                       ;AA932A;
-    db $E8                                                               ;AA932E;
-    dw $2322,$81EE                                                       ;AA932F;
-    db $E8                                                               ;AA9333;
-    dw $2320,$81FE                                                       ;AA9334;
-    db $D8                                                               ;AA9338;
-    dw $2302,$81EE                                                       ;AA9339;
-    db $D8                                                               ;AA933D;
-    dw $2300                                                             ;AA933E;
+    dw $0016                                                             ;AA92D0;
+    %spritemapEntry(1, $1F7, $FC, 0, 0, 2, 1, $1A9)
+    %spritemapEntry(0, $1F7, $0C, 0, 0, 2, 1, $1BB)
+    %spritemapEntry(0, $1EF, $0C, 0, 0, 2, 1, $1AF)
+    %spritemapEntry(1, $1EF, $FC, 0, 0, 2, 1, $1A8)
+    %spritemapEntry(1, $1F3, $1F, 0, 0, 2, 1, $1A2)
+    %spritemapEntry(0, $1F0, $1F, 0, 0, 2, 1, $197)
+    %spritemapEntry(1, $1F0, $0F, 0, 0, 2, 1, $177)
+    %spritemapEntry(0, $1FE, $0E, 0, 1, 2, 2, $1AE)
+    %spritemapEntry(0, $06, $0E, 0, 1, 2, 2, $1AD)
+    %spritemapEntry(1, $1FE, $FE, 0, 1, 2, 2, $1A6)
+    %spritemapEntry(0, $15, $28, 0, 0, 2, 2, $162)
+    %spritemapEntry(0, $0D, $28, 0, 0, 2, 2, $161)
+    %spritemapEntry(0, $05, $28, 0, 0, 2, 2, $160)
+    %spritemapEntry(0, $0F, $22, 0, 0, 2, 2, $198)
+    %spritemapEntry(0, $07, $22, 0, 0, 2, 2, $197)
+    %spritemapEntry(1, $07, $12, 0, 0, 2, 2, $177)
+    %spritemapEntry(1, $1FE, $F8, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1EE, $F8, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $1FE, $E8, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1EE, $E8, 0, 0, 2, 1, $120)
+    %spritemapEntry(1, $1FE, $D8, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1EE, $D8, 0, 0, 2, 1, $100)
 
 Spritemaps_Torizo_1B:
-    dw $0007,$0010                                                       ;AA9340;
-    db $25                                                               ;AA9344;
-    dw $637B,$0010                                                       ;AA9345;
-    db $1D                                                               ;AA9349;
-    dw $636B,$8005                                                       ;AA934A;
-    db $FB                                                               ;AA934E;
-    dw $230C,$0010                                                       ;AA934F;
-    db $16                                                               ;AA9353;
-    dw $2364,$0010                                                       ;AA9354;
-    db $0E                                                               ;AA9358;
-    dw $2354,$0010                                                       ;AA9359;
-    db $06                                                               ;AA935D;
-    dw $2344,$81F8                                                       ;AA935E;
-    db $F8                                                               ;AA9362;
-    dw $632A                                                             ;AA9363;
+    dw $0007                                                             ;AA9340;
+    %spritemapEntry(0, $10, $25, 0, 1, 2, 1, $17B)
+    %spritemapEntry(0, $10, $1D, 0, 1, 2, 1, $16B)
+    %spritemapEntry(1, $05, $FB, 0, 0, 2, 1, $10C)
+    %spritemapEntry(0, $10, $16, 0, 0, 2, 1, $164)
+    %spritemapEntry(0, $10, $0E, 0, 0, 2, 1, $154)
+    %spritemapEntry(0, $10, $06, 0, 0, 2, 1, $144)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 1, $12A)
 
 Spritemaps_Torizo_1C:
-    dw $0005,$81FA                                                       ;AA9365;
-    db $23                                                               ;AA9369;
-    dw $236C,$8001                                                       ;AA936A;
-    db $02                                                               ;AA936E;
-    dw $230A,$0002                                                       ;AA936F;
-    db $1F                                                               ;AA9373;
-    dw $6366,$8002                                                       ;AA9374;
-    db $0F                                                               ;AA9378;
-    dw $6345,$81F8                                                       ;AA9379;
-    db $F8                                                               ;AA937D;
-    dw $2324                                                             ;AA937E;
+    dw $0005                                                             ;AA9365;
+    %spritemapEntry(1, $1FA, $23, 0, 0, 2, 1, $16C)
+    %spritemapEntry(1, $01, $02, 0, 0, 2, 1, $10A)
+    %spritemapEntry(0, $02, $1F, 0, 1, 2, 1, $166)
+    %spritemapEntry(1, $02, $0F, 0, 1, 2, 1, $145)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 1, $124)
 
 Spritemaps_Torizo_1D:
-    dw $0005,$81F0                                                       ;AA9380;
-    db $28                                                               ;AA9384;
-    dw $236C,$01F9                                                       ;AA9385;
-    db $24                                                               ;AA9389;
-    dw $6366,$81F9                                                       ;AA938A;
-    db $14                                                               ;AA938E;
-    dw $6345,$81FC                                                       ;AA938F;
-    db $05                                                               ;AA9393;
-    dw $2308,$81F8                                                       ;AA9394;
-    db $F8                                                               ;AA9398;
-    dw $6328                                                             ;AA9399;
+    dw $0005                                                             ;AA9380;
+    %spritemapEntry(1, $1F0, $28, 0, 0, 2, 1, $16C)
+    %spritemapEntry(0, $1F9, $24, 0, 1, 2, 1, $166)
+    %spritemapEntry(1, $1F9, $14, 0, 1, 2, 1, $145)
+    %spritemapEntry(1, $1FC, $05, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 1, $128)
 
 Spritemaps_Torizo_1E:
-    dw $0005,$81E7                                                       ;AA939B;
-    db $24                                                               ;AA939F;
-    dw $236C,$81F8                                                       ;AA93A0;
-    db $06                                                               ;AA93A4;
-    dw $2306,$81EC                                                       ;AA93A5;
-    db $1B                                                               ;AA93A9;
-    dw $6358,$81F4                                                       ;AA93AA;
-    db $13                                                               ;AA93AE;
-    dw $6347,$81F8                                                       ;AA93AF;
-    db $F8                                                               ;AA93B3;
-    dw $2326                                                             ;AA93B4;
+    dw $0005                                                             ;AA939B;
+    %spritemapEntry(1, $1E7, $24, 0, 0, 2, 1, $16C)
+    %spritemapEntry(1, $1F8, $06, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $1EC, $1B, 0, 1, 2, 1, $158)
+    %spritemapEntry(1, $1F4, $13, 0, 1, 2, 1, $147)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 1, $126)
 
 Spritemaps_Torizo_1F:
-    dw $0005,$81DE                                                       ;AA93B6;
-    db $19                                                               ;AA93BA;
-    dw $236C,$81F4                                                       ;AA93BB;
-    db $05                                                               ;AA93BF;
-    dw $6308,$01E4                                                       ;AA93C0;
-    db $16                                                               ;AA93C4;
-    dw $635C,$81EC                                                       ;AA93C5;
-    db $0E                                                               ;AA93C9;
-    dw $634A,$81F8                                                       ;AA93CA;
-    db $F8                                                               ;AA93CE;
-    dw $2328                                                             ;AA93CF;
+    dw $0005                                                             ;AA93B6;
+    %spritemapEntry(1, $1DE, $19, 0, 0, 2, 1, $16C)
+    %spritemapEntry(1, $1F4, $05, 0, 1, 2, 1, $108)
+    %spritemapEntry(0, $1E4, $16, 0, 1, 2, 1, $15C)
+    %spritemapEntry(1, $1EC, $0E, 0, 1, 2, 1, $14A)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 1, $128)
 
 Spritemaps_Torizo_20:
-    dw $0007,$81EF                                                       ;AA93D1;
-    db $02                                                               ;AA93D5;
-    dw $630A,$01CE                                                       ;AA93D6;
-    db $0B                                                               ;AA93DA;
-    dw $638F,$01D6                                                       ;AA93DB;
-    db $0B                                                               ;AA93DF;
-    dw $638E,$01DA                                                       ;AA93E0;
-    db $0B                                                               ;AA93E4;
-    dw $634F,$01E2                                                       ;AA93E5;
-    db $0B                                                               ;AA93E9;
-    dw $634E,$01EA                                                       ;AA93EA;
-    db $0B                                                               ;AA93EE;
-    dw $634D,$81F8                                                       ;AA93EF;
-    db $F8                                                               ;AA93F3;
-    dw $6324                                                             ;AA93F4;
+    dw $0007                                                             ;AA93D1;
+    %spritemapEntry(1, $1EF, $02, 0, 1, 2, 1, $10A)
+    %spritemapEntry(0, $1CE, $0B, 0, 1, 2, 1, $18F)
+    %spritemapEntry(0, $1D6, $0B, 0, 1, 2, 1, $18E)
+    %spritemapEntry(0, $1DA, $0B, 0, 1, 2, 1, $14F)
+    %spritemapEntry(0, $1E2, $0B, 0, 1, 2, 1, $14E)
+    %spritemapEntry(0, $1EA, $0B, 0, 1, 2, 1, $14D)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 1, $124)
 
 Spritemaps_Torizo_21:
-    dw $0005,$81D4                                                       ;AA93F6;
-    db $F6                                                               ;AA93FA;
-    dw $E36E,$81EF                                                       ;AA93FB;
-    db $02                                                               ;AA93FF;
-    dw $630A,$81DB                                                       ;AA9400;
-    db $FA                                                               ;AA9404;
-    dw $E358,$81E3                                                       ;AA9405;
-    db $02                                                               ;AA9409;
-    dw $E347,$81F8                                                       ;AA940A;
-    db $F8                                                               ;AA940E;
-    dw $6324                                                             ;AA940F;
+    dw $0005                                                             ;AA93F6;
+    %spritemapEntry(1, $1D4, $F6, 1, 1, 2, 1, $16E)
+    %spritemapEntry(1, $1EF, $02, 0, 1, 2, 1, $10A)
+    %spritemapEntry(1, $1DB, $FA, 1, 1, 2, 1, $158)
+    %spritemapEntry(1, $1E3, $02, 1, 1, 2, 1, $147)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 1, $124)
 
 Spritemaps_Torizo_22:
-    dw $0007,$01E6                                                       ;AA9411;
-    db $DD                                                               ;AA9415;
-    dw $A37B,$01E6                                                       ;AA9416;
-    db $E5                                                               ;AA941A;
-    dw $A36B,$81EA                                                       ;AA941B;
-    db $F8                                                               ;AA941F;
-    dw $630E,$01E6                                                       ;AA9420;
-    db $EB                                                               ;AA9424;
-    dw $E364,$01E6                                                       ;AA9425;
-    db $F3                                                               ;AA9429;
-    dw $E354,$01E6                                                       ;AA942A;
-    db $FB                                                               ;AA942E;
-    dw $E344,$81F8                                                       ;AA942F;
-    db $F8                                                               ;AA9433;
-    dw $232A                                                             ;AA9434;
+    dw $0007                                                             ;AA9411;
+    %spritemapEntry(0, $1E6, $DD, 1, 0, 2, 1, $17B)
+    %spritemapEntry(0, $1E6, $E5, 1, 0, 2, 1, $16B)
+    %spritemapEntry(1, $1EA, $F8, 0, 1, 2, 1, $10E)
+    %spritemapEntry(0, $1E6, $EB, 1, 1, 2, 1, $164)
+    %spritemapEntry(0, $1E6, $F3, 1, 1, 2, 1, $154)
+    %spritemapEntry(0, $1E6, $FB, 1, 1, 2, 1, $144)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 1, $12A)
 
 Spritemaps_Torizo_23:
-    dw $0007,$000F                                                       ;AA9436;
-    db $25                                                               ;AA943A;
-    dw $657B,$000F                                                       ;AA943B;
-    db $1D                                                               ;AA943F;
-    dw $656B,$8005                                                       ;AA9440;
-    db $FB                                                               ;AA9444;
-    dw $250C,$0010                                                       ;AA9445;
-    db $16                                                               ;AA9449;
-    dw $2564,$0010                                                       ;AA944A;
-    db $0E                                                               ;AA944E;
-    dw $2554,$0010                                                       ;AA944F;
-    db $06                                                               ;AA9453;
-    dw $2544,$81F8                                                       ;AA9454;
-    db $F8                                                               ;AA9458;
-    dw $652A                                                             ;AA9459;
+    dw $0007                                                             ;AA9436;
+    %spritemapEntry(0, $0F, $25, 0, 1, 2, 2, $17B)
+    %spritemapEntry(0, $0F, $1D, 0, 1, 2, 2, $16B)
+    %spritemapEntry(1, $05, $FB, 0, 0, 2, 2, $10C)
+    %spritemapEntry(0, $10, $16, 0, 0, 2, 2, $164)
+    %spritemapEntry(0, $10, $0E, 0, 0, 2, 2, $154)
+    %spritemapEntry(0, $10, $06, 0, 0, 2, 2, $144)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 2, $12A)
 
 Spritemaps_Torizo_24:
-    dw $0005,$81FA                                                       ;AA945B;
-    db $23                                                               ;AA945F;
-    dw $256C,$8001                                                       ;AA9460;
-    db $02                                                               ;AA9464;
-    dw $250A,$0002                                                       ;AA9465;
-    db $1F                                                               ;AA9469;
-    dw $6566,$8002                                                       ;AA946A;
-    db $0F                                                               ;AA946E;
-    dw $6545,$81F8                                                       ;AA946F;
-    db $F8                                                               ;AA9473;
-    dw $2524                                                             ;AA9474;
+    dw $0005                                                             ;AA945B;
+    %spritemapEntry(1, $1FA, $23, 0, 0, 2, 2, $16C)
+    %spritemapEntry(1, $01, $02, 0, 0, 2, 2, $10A)
+    %spritemapEntry(0, $02, $1F, 0, 1, 2, 2, $166)
+    %spritemapEntry(1, $02, $0F, 0, 1, 2, 2, $145)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 2, $124)
 
 Spritemaps_Torizo_25:
-    dw $0005,$81F0                                                       ;AA9476;
-    db $28                                                               ;AA947A;
-    dw $256C,$01F9                                                       ;AA947B;
-    db $24                                                               ;AA947F;
-    dw $6566,$81F9                                                       ;AA9480;
-    db $14                                                               ;AA9484;
-    dw $6545,$81FC                                                       ;AA9485;
-    db $05                                                               ;AA9489;
-    dw $2508,$81F8                                                       ;AA948A;
-    db $F8                                                               ;AA948E;
-    dw $6528                                                             ;AA948F;
+    dw $0005                                                             ;AA9476;
+    %spritemapEntry(1, $1F0, $28, 0, 0, 2, 2, $16C)
+    %spritemapEntry(0, $1F9, $24, 0, 1, 2, 2, $166)
+    %spritemapEntry(1, $1F9, $14, 0, 1, 2, 2, $145)
+    %spritemapEntry(1, $1FC, $05, 0, 0, 2, 2, $108)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 2, $128)
 
 Spritemaps_Torizo_26:
-    dw $0005,$81E6                                                       ;AA9491;
-    db $23                                                               ;AA9495;
-    dw $256C,$81F8                                                       ;AA9496;
-    db $06                                                               ;AA949A;
-    dw $2506,$81EC                                                       ;AA949B;
-    db $1B                                                               ;AA949F;
-    dw $6558,$81F4                                                       ;AA94A0;
-    db $13                                                               ;AA94A4;
-    dw $6547,$81F8                                                       ;AA94A5;
-    db $F8                                                               ;AA94A9;
-    dw $2526                                                             ;AA94AA;
+    dw $0005                                                             ;AA9491;
+    %spritemapEntry(1, $1E6, $23, 0, 0, 2, 2, $16C)
+    %spritemapEntry(1, $1F8, $06, 0, 0, 2, 2, $106)
+    %spritemapEntry(1, $1EC, $1B, 0, 1, 2, 2, $158)
+    %spritemapEntry(1, $1F4, $13, 0, 1, 2, 2, $147)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 2, $126)
 
 Spritemaps_Torizo_27:
-    dw $0005,$81DC                                                       ;AA94AC;
-    db $19                                                               ;AA94B0;
-    dw $256C,$81F4                                                       ;AA94B1;
-    db $05                                                               ;AA94B5;
-    dw $6508,$01E4                                                       ;AA94B6;
-    db $16                                                               ;AA94BA;
-    dw $655C,$81EC                                                       ;AA94BB;
-    db $0E                                                               ;AA94BF;
-    dw $654A,$81F8                                                       ;AA94C0;
-    db $F8                                                               ;AA94C4;
-    dw $2528                                                             ;AA94C5;
+    dw $0005                                                             ;AA94AC;
+    %spritemapEntry(1, $1DC, $19, 0, 0, 2, 2, $16C)
+    %spritemapEntry(1, $1F4, $05, 0, 1, 2, 2, $108)
+    %spritemapEntry(0, $1E4, $16, 0, 1, 2, 2, $15C)
+    %spritemapEntry(1, $1EC, $0E, 0, 1, 2, 2, $14A)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 2, $128)
 
 Spritemaps_Torizo_28:
-    dw $0007,$81EF                                                       ;AA94C7;
-    db $02                                                               ;AA94CB;
-    dw $650A,$01CB                                                       ;AA94CC;
-    db $0B                                                               ;AA94D0;
-    dw $658F,$01D3                                                       ;AA94D1;
-    db $0B                                                               ;AA94D5;
-    dw $658E,$01DA                                                       ;AA94D6;
-    db $0B                                                               ;AA94DA;
-    dw $654F,$01E2                                                       ;AA94DB;
-    db $0B                                                               ;AA94DF;
-    dw $654E,$01EA                                                       ;AA94E0;
-    db $0B                                                               ;AA94E4;
-    dw $654D,$81F8                                                       ;AA94E5;
-    db $F8                                                               ;AA94E9;
-    dw $6524                                                             ;AA94EA;
+    dw $0007                                                             ;AA94C7;
+    %spritemapEntry(1, $1EF, $02, 0, 1, 2, 2, $10A)
+    %spritemapEntry(0, $1CB, $0B, 0, 1, 2, 2, $18F)
+    %spritemapEntry(0, $1D3, $0B, 0, 1, 2, 2, $18E)
+    %spritemapEntry(0, $1DA, $0B, 0, 1, 2, 2, $14F)
+    %spritemapEntry(0, $1E2, $0B, 0, 1, 2, 2, $14E)
+    %spritemapEntry(0, $1EA, $0B, 0, 1, 2, 2, $14D)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 2, $124)
 
 Spritemaps_Torizo_29:
-    dw $0005,$81D3                                                       ;AA94EC;
-    db $F4                                                               ;AA94F0;
-    dw $E56E,$81EF                                                       ;AA94F1;
-    db $02                                                               ;AA94F5;
-    dw $650A,$81DB                                                       ;AA94F6;
-    db $FA                                                               ;AA94FA;
-    dw $E558,$81E3                                                       ;AA94FB;
-    db $02                                                               ;AA94FF;
-    dw $E547,$81F8                                                       ;AA9500;
-    db $F8                                                               ;AA9504;
-    dw $6524                                                             ;AA9505;
+    dw $0005                                                             ;AA94EC;
+    %spritemapEntry(1, $1D3, $F4, 1, 1, 2, 2, $16E)
+    %spritemapEntry(1, $1EF, $02, 0, 1, 2, 2, $10A)
+    %spritemapEntry(1, $1DB, $FA, 1, 1, 2, 2, $158)
+    %spritemapEntry(1, $1E3, $02, 1, 1, 2, 2, $147)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 2, $124)
 
 Spritemaps_Torizo_2A:
-    dw $0007,$01E6                                                       ;AA9507;
-    db $DD                                                               ;AA950B;
-    dw $A57B,$01E6                                                       ;AA950C;
-    db $E5                                                               ;AA9510;
-    dw $A56B,$81EA                                                       ;AA9511;
-    db $F8                                                               ;AA9515;
-    dw $650E,$01E6                                                       ;AA9516;
-    db $EB                                                               ;AA951A;
-    dw $E564,$01E6                                                       ;AA951B;
-    db $F3                                                               ;AA951F;
-    dw $E554,$01E6                                                       ;AA9520;
-    db $FB                                                               ;AA9524;
-    dw $E544,$81F8                                                       ;AA9525;
-    db $F8                                                               ;AA9529;
-    dw $252A                                                             ;AA952A;
+    dw $0007                                                             ;AA9507;
+    %spritemapEntry(0, $1E6, $DD, 1, 0, 2, 2, $17B)
+    %spritemapEntry(0, $1E6, $E5, 1, 0, 2, 2, $16B)
+    %spritemapEntry(1, $1EA, $F8, 0, 1, 2, 2, $10E)
+    %spritemapEntry(0, $1E6, $EB, 1, 1, 2, 2, $164)
+    %spritemapEntry(0, $1E6, $F3, 1, 1, 2, 2, $154)
+    %spritemapEntry(0, $1E6, $FB, 1, 1, 2, 2, $144)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 2, $12A)
 
 Spritemaps_Torizo_2B:
-    dw $0018,$81EE                                                       ;AA952C;
-    db $F3                                                               ;AA9530;
-    dw $2330,$81F9                                                       ;AA9531;
-    db $FD                                                               ;AA9535;
-    dw $23A9,$01F9                                                       ;AA9536;
-    db $0D                                                               ;AA953A;
-    dw $23BB,$01F1                                                       ;AA953B;
-    db $0D                                                               ;AA953F;
-    dw $23AF,$81F1                                                       ;AA9540;
-    db $FD                                                               ;AA9544;
-    dw $23A8,$81FA                                                       ;AA9545;
-    db $15                                                               ;AA9549;
-    dw $238A,$81F2                                                       ;AA954A;
-    db $0D                                                               ;AA954E;
-    dw $2379,$0005                                                       ;AA954F;
-    db $20                                                               ;AA9553;
-    dw $2362,$01FD                                                       ;AA9554;
-    db $20                                                               ;AA9558;
-    dw $2361,$01F5                                                       ;AA9559;
-    db $20                                                               ;AA955D;
-    dw $2360,$81F5                                                       ;AA955E;
-    db $FD                                                               ;AA9562;
-    dw $25A9,$01F5                                                       ;AA9563;
-    db $0D                                                               ;AA9567;
-    dw $25BB,$01ED                                                       ;AA9568;
-    db $0D                                                               ;AA956C;
-    dw $25AF,$81ED                                                       ;AA956D;
-    db $FD                                                               ;AA9571;
-    dw $25A8,$81F6                                                       ;AA9572;
-    db $15                                                               ;AA9576;
-    dw $258A,$81EE                                                       ;AA9577;
-    db $0D                                                               ;AA957B;
-    dw $2579,$0001                                                       ;AA957C;
-    db $20                                                               ;AA9580;
-    dw $2562,$01F9                                                       ;AA9581;
-    db $20                                                               ;AA9585;
-    dw $2561,$01F1                                                       ;AA9586;
-    db $20                                                               ;AA958A;
-    dw $2560,$81EE                                                       ;AA958B;
-    db $E3                                                               ;AA958F;
-    dw $2310,$81FE                                                       ;AA9590;
-    db $FB                                                               ;AA9594;
-    dw $2342,$81FE                                                       ;AA9595;
-    db $EB                                                               ;AA9599;
-    dw $2322,$81FE                                                       ;AA959A;
-    db $DB                                                               ;AA959E;
-    dw $2302,$81EE                                                       ;AA959F;
-    db $DB                                                               ;AA95A3;
-    dw $2300                                                             ;AA95A4;
+    dw $0018                                                             ;AA952C;
+    %spritemapEntry(1, $1EE, $F3, 0, 0, 2, 1, $130)
+    %spritemapEntry(1, $1F9, $FD, 0, 0, 2, 1, $1A9)
+    %spritemapEntry(0, $1F9, $0D, 0, 0, 2, 1, $1BB)
+    %spritemapEntry(0, $1F1, $0D, 0, 0, 2, 1, $1AF)
+    %spritemapEntry(1, $1F1, $FD, 0, 0, 2, 1, $1A8)
+    %spritemapEntry(1, $1FA, $15, 0, 0, 2, 1, $18A)
+    %spritemapEntry(1, $1F2, $0D, 0, 0, 2, 1, $179)
+    %spritemapEntry(0, $05, $20, 0, 0, 2, 1, $162)
+    %spritemapEntry(0, $1FD, $20, 0, 0, 2, 1, $161)
+    %spritemapEntry(0, $1F5, $20, 0, 0, 2, 1, $160)
+    %spritemapEntry(1, $1F5, $FD, 0, 0, 2, 2, $1A9)
+    %spritemapEntry(0, $1F5, $0D, 0, 0, 2, 2, $1BB)
+    %spritemapEntry(0, $1ED, $0D, 0, 0, 2, 2, $1AF)
+    %spritemapEntry(1, $1ED, $FD, 0, 0, 2, 2, $1A8)
+    %spritemapEntry(1, $1F6, $15, 0, 0, 2, 2, $18A)
+    %spritemapEntry(1, $1EE, $0D, 0, 0, 2, 2, $179)
+    %spritemapEntry(0, $01, $20, 0, 0, 2, 2, $162)
+    %spritemapEntry(0, $1F9, $20, 0, 0, 2, 2, $161)
+    %spritemapEntry(0, $1F1, $20, 0, 0, 2, 2, $160)
+    %spritemapEntry(1, $1EE, $E3, 0, 0, 2, 1, $110)
+    %spritemapEntry(1, $1FE, $FB, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1FE, $EB, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1FE, $DB, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1EE, $DB, 0, 0, 2, 1, $100)
 
 Spritemaps_Torizo_2C:
-    dw $0013,$81EE                                                       ;AA95A6;
-    db $F2                                                               ;AA95AA;
-    dw $2330,$01FC                                                       ;AA95AB;
-    db $0F                                                               ;AA95AF;
-    dw $23AE,$01F4                                                       ;AA95B0;
-    db $0F                                                               ;AA95B4;
-    dw $23AD,$81F4                                                       ;AA95B5;
-    db $FF                                                               ;AA95B9;
-    dw $23A6,$8002                                                       ;AA95BA;
-    db $22                                                               ;AA95BE;
-    dw $23A0,$81FD                                                       ;AA95BF;
-    db $19                                                               ;AA95C3;
-    dw $238A,$81F5                                                       ;AA95C4;
-    db $11                                                               ;AA95C8;
-    dw $2379,$81EE                                                       ;AA95C9;
-    db $FA                                                               ;AA95CD;
-    dw $2340,$81EE                                                       ;AA95CE;
-    db $E2                                                               ;AA95D2;
-    dw $2310,$81FE                                                       ;AA95D3;
-    db $FA                                                               ;AA95D7;
-    dw $2342,$81FE                                                       ;AA95D8;
-    db $EA                                                               ;AA95DC;
-    dw $2322,$81FE                                                       ;AA95DD;
-    db $DA                                                               ;AA95E1;
-    dw $2302,$81EE                                                       ;AA95E2;
-    db $DA                                                               ;AA95E6;
-    dw $2300,$01F8                                                       ;AA95E7;
-    db $10                                                               ;AA95EB;
-    dw $65AC,$0000                                                       ;AA95EC;
-    db $10                                                               ;AA95F0;
-    dw $65AB,$81F8                                                       ;AA95F1;
-    db $00                                                               ;AA95F5;
-    dw $65A4,$8009                                                       ;AA95F6;
-    db $24                                                               ;AA95FA;
-    dw $25A0,$8004                                                       ;AA95FB;
-    db $1B                                                               ;AA95FF;
-    dw $258A,$81FC                                                       ;AA9600;
-    db $13                                                               ;AA9604;
-    dw $2579                                                             ;AA9605;
+    dw $0013                                                             ;AA95A6;
+    %spritemapEntry(1, $1EE, $F2, 0, 0, 2, 1, $130)
+    %spritemapEntry(0, $1FC, $0F, 0, 0, 2, 1, $1AE)
+    %spritemapEntry(0, $1F4, $0F, 0, 0, 2, 1, $1AD)
+    %spritemapEntry(1, $1F4, $FF, 0, 0, 2, 1, $1A6)
+    %spritemapEntry(1, $02, $22, 0, 0, 2, 1, $1A0)
+    %spritemapEntry(1, $1FD, $19, 0, 0, 2, 1, $18A)
+    %spritemapEntry(1, $1F5, $11, 0, 0, 2, 1, $179)
+    %spritemapEntry(1, $1EE, $FA, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $1EE, $E2, 0, 0, 2, 1, $110)
+    %spritemapEntry(1, $1FE, $FA, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1FE, $EA, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1FE, $DA, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1EE, $DA, 0, 0, 2, 1, $100)
+    %spritemapEntry(0, $1F8, $10, 0, 1, 2, 2, $1AC)
+    %spritemapEntry(0, $00, $10, 0, 1, 2, 2, $1AB)
+    %spritemapEntry(1, $1F8, $00, 0, 1, 2, 2, $1A4)
+    %spritemapEntry(1, $09, $24, 0, 0, 2, 2, $1A0)
+    %spritemapEntry(1, $04, $1B, 0, 0, 2, 2, $18A)
+    %spritemapEntry(1, $1FC, $13, 0, 0, 2, 2, $179)
 
 Spritemaps_Torizo_2D:
-    dw $0015,$81EE                                                       ;AA9607;
-    db $F2                                                               ;AA960B;
-    dw $2330,$8003                                                       ;AA960C;
-    db $27                                                               ;AA9610;
-    dw $23A2,$8006                                                       ;AA9611;
-    db $27                                                               ;AA9615;
-    dw $23A2,$01F8                                                       ;AA9616;
-    db $10                                                               ;AA961A;
-    dw $23AB,$0000                                                       ;AA961B;
-    db $10                                                               ;AA961F;
-    dw $23AC,$81F8                                                       ;AA9620;
-    db $00                                                               ;AA9624;
-    dw $23A4,$81FD                                                       ;AA9625;
-    db $13                                                               ;AA9629;
-    dw $2377,$0005                                                       ;AA962A;
-    db $23                                                               ;AA962E;
-    dw $2398,$01FD                                                       ;AA962F;
-    db $23                                                               ;AA9633;
-    dw $2397,$01FB                                                       ;AA9634;
-    db $10                                                               ;AA9638;
-    dw $25AB,$0003                                                       ;AA9639;
-    db $10                                                               ;AA963D;
-    dw $25AC,$81FB                                                       ;AA963E;
-    db $00                                                               ;AA9642;
-    dw $25A4,$8000                                                       ;AA9643;
-    db $13                                                               ;AA9647;
-    dw $2577,$0008                                                       ;AA9648;
-    db $23                                                               ;AA964C;
-    dw $2598,$0000                                                       ;AA964D;
-    db $23                                                               ;AA9651;
-    dw $2597,$81EE                                                       ;AA9652;
-    db $FA                                                               ;AA9656;
-    dw $2340,$81EE                                                       ;AA9657;
-    db $E2                                                               ;AA965B;
-    dw $2310,$81FE                                                       ;AA965C;
-    db $FA                                                               ;AA9660;
-    dw $2342,$81FE                                                       ;AA9661;
-    db $EA                                                               ;AA9665;
-    dw $2322,$81FE                                                       ;AA9666;
-    db $DA                                                               ;AA966A;
-    dw $2302,$81EE                                                       ;AA966B;
-    db $DA                                                               ;AA966F;
-    dw $2300                                                             ;AA9670;
+    dw $0015                                                             ;AA9607;
+    %spritemapEntry(1, $1EE, $F2, 0, 0, 2, 1, $130)
+    %spritemapEntry(1, $03, $27, 0, 0, 2, 1, $1A2)
+    %spritemapEntry(1, $06, $27, 0, 0, 2, 1, $1A2)
+    %spritemapEntry(0, $1F8, $10, 0, 0, 2, 1, $1AB)
+    %spritemapEntry(0, $00, $10, 0, 0, 2, 1, $1AC)
+    %spritemapEntry(1, $1F8, $00, 0, 0, 2, 1, $1A4)
+    %spritemapEntry(1, $1FD, $13, 0, 0, 2, 1, $177)
+    %spritemapEntry(0, $05, $23, 0, 0, 2, 1, $198)
+    %spritemapEntry(0, $1FD, $23, 0, 0, 2, 1, $197)
+    %spritemapEntry(0, $1FB, $10, 0, 0, 2, 2, $1AB)
+    %spritemapEntry(0, $03, $10, 0, 0, 2, 2, $1AC)
+    %spritemapEntry(1, $1FB, $00, 0, 0, 2, 2, $1A4)
+    %spritemapEntry(1, $00, $13, 0, 0, 2, 2, $177)
+    %spritemapEntry(0, $08, $23, 0, 0, 2, 2, $198)
+    %spritemapEntry(0, $00, $23, 0, 0, 2, 2, $197)
+    %spritemapEntry(1, $1EE, $FA, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $1EE, $E2, 0, 0, 2, 1, $110)
+    %spritemapEntry(1, $1FE, $FA, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1FE, $EA, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1FE, $DA, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1EE, $DA, 0, 0, 2, 1, $100)
 
 Spritemaps_Torizo_2E:
-    dw $0018,$001A                                                       ;AA9672;
-    db $28                                                               ;AA9676;
-    dw $2562,$0012                                                       ;AA9677;
-    db $28                                                               ;AA967B;
-    dw $2561,$000A                                                       ;AA967C;
-    db $28                                                               ;AA9680;
-    dw $2560,$01EB                                                       ;AA9681;
-    db $28                                                               ;AA9685;
-    dw $2362,$01E3                                                       ;AA9686;
-    db $28                                                               ;AA968A;
-    dw $2361,$01DB                                                       ;AA968B;
-    db $28                                                               ;AA968F;
-    dw $2360,$81F7                                                       ;AA9690;
-    db $FE                                                               ;AA9694;
-    dw $23A9,$01F7                                                       ;AA9695;
-    db $0E                                                               ;AA9699;
-    dw $23BB,$01EF                                                       ;AA969A;
-    db $0E                                                               ;AA969E;
-    dw $23AF,$81EF                                                       ;AA969F;
-    db $FE                                                               ;AA96A3;
-    dw $23A8,$01EF                                                       ;AA96A4;
-    db $22                                                               ;AA96A8;
-    dw $2394,$01E7                                                       ;AA96A9;
-    db $22                                                               ;AA96AD;
-    dw $2393,$81E7                                                       ;AA96AE;
-    db $12                                                               ;AA96B2;
-    dw $2373,$01FD                                                       ;AA96B3;
-    db $10                                                               ;AA96B7;
-    dw $65AE,$0005                                                       ;AA96B8;
-    db $10                                                               ;AA96BC;
-    dw $65AD,$81FD                                                       ;AA96BD;
-    db $00                                                               ;AA96C1;
-    dw $65A6,$800F                                                       ;AA96C2;
-    db $1C                                                               ;AA96C6;
-    dw $258A,$8007                                                       ;AA96C7;
-    db $14                                                               ;AA96CB;
-    dw $2579,$81FE                                                       ;AA96CC;
-    db $F9                                                               ;AA96D0;
-    dw $2342,$81EE                                                       ;AA96D1;
-    db $F9                                                               ;AA96D5;
-    dw $2340,$81FE                                                       ;AA96D6;
-    db $E9                                                               ;AA96DA;
-    dw $2322,$81EE                                                       ;AA96DB;
-    db $E9                                                               ;AA96DF;
-    dw $2320,$81FE                                                       ;AA96E0;
-    db $D9                                                               ;AA96E4;
-    dw $2302,$81EE                                                       ;AA96E5;
-    db $D9                                                               ;AA96E9;
-    dw $2300                                                             ;AA96EA;
+    dw $0018                                                             ;AA9672;
+    %spritemapEntry(0, $1A, $28, 0, 0, 2, 2, $162)
+    %spritemapEntry(0, $12, $28, 0, 0, 2, 2, $161)
+    %spritemapEntry(0, $0A, $28, 0, 0, 2, 2, $160)
+    %spritemapEntry(0, $1EB, $28, 0, 0, 2, 1, $162)
+    %spritemapEntry(0, $1E3, $28, 0, 0, 2, 1, $161)
+    %spritemapEntry(0, $1DB, $28, 0, 0, 2, 1, $160)
+    %spritemapEntry(1, $1F7, $FE, 0, 0, 2, 1, $1A9)
+    %spritemapEntry(0, $1F7, $0E, 0, 0, 2, 1, $1BB)
+    %spritemapEntry(0, $1EF, $0E, 0, 0, 2, 1, $1AF)
+    %spritemapEntry(1, $1EF, $FE, 0, 0, 2, 1, $1A8)
+    %spritemapEntry(0, $1EF, $22, 0, 0, 2, 1, $194)
+    %spritemapEntry(0, $1E7, $22, 0, 0, 2, 1, $193)
+    %spritemapEntry(1, $1E7, $12, 0, 0, 2, 1, $173)
+    %spritemapEntry(0, $1FD, $10, 0, 1, 2, 2, $1AE)
+    %spritemapEntry(0, $05, $10, 0, 1, 2, 2, $1AD)
+    %spritemapEntry(1, $1FD, $00, 0, 1, 2, 2, $1A6)
+    %spritemapEntry(1, $0F, $1C, 0, 0, 2, 2, $18A)
+    %spritemapEntry(1, $07, $14, 0, 0, 2, 2, $179)
+    %spritemapEntry(1, $1FE, $F9, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1EE, $F9, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $1FE, $E9, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1EE, $E9, 0, 0, 2, 1, $120)
+    %spritemapEntry(1, $1FE, $D9, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1EE, $D9, 0, 0, 2, 1, $100)
 
 Spritemaps_Torizo_2F:
-    dw $0018,$001A                                                       ;AA96EC;
-    db $28                                                               ;AA96F0;
-    dw $2362,$0012                                                       ;AA96F1;
-    db $28                                                               ;AA96F5;
-    dw $2361,$000A                                                       ;AA96F6;
-    db $28                                                               ;AA96FA;
-    dw $2360,$01FD                                                       ;AA96FB;
-    db $10                                                               ;AA96FF;
-    dw $63AE,$0005                                                       ;AA9700;
-    db $10                                                               ;AA9704;
-    dw $63AD,$81FD                                                       ;AA9705;
-    db $00                                                               ;AA9709;
-    dw $63A6,$800F                                                       ;AA970A;
-    db $1C                                                               ;AA970E;
-    dw $238A,$8007                                                       ;AA970F;
-    db $14                                                               ;AA9713;
-    dw $2379,$01EB                                                       ;AA9714;
-    db $28                                                               ;AA9718;
-    dw $2562,$01E3                                                       ;AA9719;
-    db $28                                                               ;AA971D;
-    dw $2561,$01DB                                                       ;AA971E;
-    db $28                                                               ;AA9722;
-    dw $2560,$81F7                                                       ;AA9723;
-    db $FE                                                               ;AA9727;
-    dw $25A9,$01F7                                                       ;AA9728;
-    db $0E                                                               ;AA972C;
-    dw $25BB,$01EF                                                       ;AA972D;
-    db $0E                                                               ;AA9731;
-    dw $25AF,$81EF                                                       ;AA9732;
-    db $FE                                                               ;AA9736;
-    dw $25A8,$01EF                                                       ;AA9737;
-    db $22                                                               ;AA973B;
-    dw $2594,$01E7                                                       ;AA973C;
-    db $22                                                               ;AA9740;
-    dw $2593,$81E7                                                       ;AA9741;
-    db $12                                                               ;AA9745;
-    dw $2573,$81FE                                                       ;AA9746;
-    db $F9                                                               ;AA974A;
-    dw $2342,$81EE                                                       ;AA974B;
-    db $F9                                                               ;AA974F;
-    dw $2340,$81FE                                                       ;AA9750;
-    db $E9                                                               ;AA9754;
-    dw $2322,$81EE                                                       ;AA9755;
-    db $E9                                                               ;AA9759;
-    dw $2320,$81FE                                                       ;AA975A;
-    db $D9                                                               ;AA975E;
-    dw $2302,$81EE                                                       ;AA975F;
-    db $D9                                                               ;AA9763;
-    dw $2300                                                             ;AA9764;
+    dw $0018                                                             ;AA96EC;
+    %spritemapEntry(0, $1A, $28, 0, 0, 2, 1, $162)
+    %spritemapEntry(0, $12, $28, 0, 0, 2, 1, $161)
+    %spritemapEntry(0, $0A, $28, 0, 0, 2, 1, $160)
+    %spritemapEntry(0, $1FD, $10, 0, 1, 2, 1, $1AE)
+    %spritemapEntry(0, $05, $10, 0, 1, 2, 1, $1AD)
+    %spritemapEntry(1, $1FD, $00, 0, 1, 2, 1, $1A6)
+    %spritemapEntry(1, $0F, $1C, 0, 0, 2, 1, $18A)
+    %spritemapEntry(1, $07, $14, 0, 0, 2, 1, $179)
+    %spritemapEntry(0, $1EB, $28, 0, 0, 2, 2, $162)
+    %spritemapEntry(0, $1E3, $28, 0, 0, 2, 2, $161)
+    %spritemapEntry(0, $1DB, $28, 0, 0, 2, 2, $160)
+    %spritemapEntry(1, $1F7, $FE, 0, 0, 2, 2, $1A9)
+    %spritemapEntry(0, $1F7, $0E, 0, 0, 2, 2, $1BB)
+    %spritemapEntry(0, $1EF, $0E, 0, 0, 2, 2, $1AF)
+    %spritemapEntry(1, $1EF, $FE, 0, 0, 2, 2, $1A8)
+    %spritemapEntry(0, $1EF, $22, 0, 0, 2, 2, $194)
+    %spritemapEntry(0, $1E7, $22, 0, 0, 2, 2, $193)
+    %spritemapEntry(1, $1E7, $12, 0, 0, 2, 2, $173)
+    %spritemapEntry(1, $1FE, $F9, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1EE, $F9, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $1FE, $E9, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1EE, $E9, 0, 0, 2, 1, $120)
+    %spritemapEntry(1, $1FE, $D9, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1EE, $D9, 0, 0, 2, 1, $100)
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemaps_Torizo_AA9766:
-    dw $0006,$8000                                                       ;AA9766;
-    db $0C                                                               ;AA976A;
-    dw $2342,$81F0                                                       ;AA976B;
-    db $0C                                                               ;AA976F;
-    dw $2340,$8000                                                       ;AA9770;
-    db $FC                                                               ;AA9774;
-    dw $2322,$81F0                                                       ;AA9775;
-    db $FC                                                               ;AA9779;
-    dw $2320,$8000                                                       ;AA977A;
-    db $EC                                                               ;AA977E;
-    dw $2302,$81F0                                                       ;AA977F;
-    db $EC                                                               ;AA9783;
-    dw $2300                                                             ;AA9784;
+    dw $0006                                                             ;AA9766;
+    %spritemapEntry(1, $00, $0C, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $1F0, $0C, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $00, $FC, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $1F0, $FC, 0, 0, 2, 1, $120)
+    %spritemapEntry(1, $00, $EC, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $1F0, $EC, 0, 0, 2, 1, $100)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Spritemaps_Torizo_30:
-    dw $0004,$01EC                                                       ;AA9786;
-    db $F4                                                               ;AA978A;
-    dw $63CB,$01F4                                                       ;AA978B;
-    db $F4                                                               ;AA978F;
-    dw $63CA,$81FC                                                       ;AA9790;
-    db $F4                                                               ;AA9794;
-    dw $63C8,$81FC                                                       ;AA9795;
-    db $04                                                               ;AA9799;
-    dw $63E8                                                             ;AA979A;
+    dw $0004                                                             ;AA9786;
+    %spritemapEntry(0, $1EC, $F4, 0, 1, 2, 1, $1CB)
+    %spritemapEntry(0, $1F4, $F4, 0, 1, 2, 1, $1CA)
+    %spritemapEntry(1, $1FC, $F4, 0, 1, 2, 1, $1C8)
+    %spritemapEntry(1, $1FC, $04, 0, 1, 2, 1, $1E8)
 
 Spritemaps_Torizo_31:
-    dw $0004,$0000                                                       ;AA979C;
-    db $04                                                               ;AA97A0;
-    dw $63DB,$0008                                                       ;AA97A1;
-    db $04                                                               ;AA97A5;
-    dw $63DA,$81F0                                                       ;AA97A6;
-    db $F4                                                               ;AA97AA;
-    dw $63C6,$8000                                                       ;AA97AB;
-    db $F4                                                               ;AA97AF;
-    dw $63C4                                                             ;AA97B0;
+    dw $0004                                                             ;AA979C;
+    %spritemapEntry(0, $00, $04, 0, 1, 2, 1, $1DB)
+    %spritemapEntry(0, $08, $04, 0, 1, 2, 1, $1DA)
+    %spritemapEntry(1, $1F0, $F4, 0, 1, 2, 1, $1C6)
+    %spritemapEntry(1, $00, $F4, 0, 1, 2, 1, $1C4)
 
 Spritemaps_Torizo_32:
-    dw $0003,$8008                                                       ;AA97B2;
-    db $FC                                                               ;AA97B6;
-    dw $63C0,$81F0                                                       ;AA97B7;
-    db $F4                                                               ;AA97BB;
-    dw $63C6,$8000                                                       ;AA97BC;
-    db $F4                                                               ;AA97C0;
-    dw $63C4                                                             ;AA97C1;
+    dw $0003                                                             ;AA97B2;
+    %spritemapEntry(1, $08, $FC, 0, 1, 2, 1, $1C0)
+    %spritemapEntry(1, $1F0, $F4, 0, 1, 2, 1, $1C6)
+    %spritemapEntry(1, $00, $F4, 0, 1, 2, 1, $1C4)
 
 Spritemaps_Torizo_33:
-    dw $0003,$8008                                                       ;AA97C3;
-    db $FC                                                               ;AA97C7;
-    dw $63C2,$81F0                                                       ;AA97C8;
-    db $F4                                                               ;AA97CC;
-    dw $63C6,$8000                                                       ;AA97CD;
-    db $F4                                                               ;AA97D1;
-    dw $63C4                                                             ;AA97D2;
+    dw $0003                                                             ;AA97C3;
+    %spritemapEntry(1, $08, $FC, 0, 1, 2, 1, $1C2)
+    %spritemapEntry(1, $1F0, $F4, 0, 1, 2, 1, $1C6)
+    %spritemapEntry(1, $00, $F4, 0, 1, 2, 1, $1C4)
 
 Spritemaps_Torizo_34:
-    dw $0003,$8008                                                       ;AA97D4;
-    db $FC                                                               ;AA97D8;
-    dw $63E0,$81F0                                                       ;AA97D9;
-    db $F4                                                               ;AA97DD;
-    dw $63C6,$8000                                                       ;AA97DE;
-    db $F4                                                               ;AA97E2;
-    dw $63C4                                                             ;AA97E3;
+    dw $0003                                                             ;AA97D4;
+    %spritemapEntry(1, $08, $FC, 0, 1, 2, 1, $1E0)
+    %spritemapEntry(1, $1F0, $F4, 0, 1, 2, 1, $1C6)
+    %spritemapEntry(1, $00, $F4, 0, 1, 2, 1, $1C4)
 
 Spritemaps_Torizo_35:
-    dw $0008,$0018                                                       ;AA97E5;
-    db $F4                                                               ;AA97E9;
-    dw $6372,$0010                                                       ;AA97EA;
-    db $F4                                                               ;AA97EE;
-    dw $6371,$0008                                                       ;AA97EF;
-    db $0C                                                               ;AA97F3;
-    dw $63F2,$0008                                                       ;AA97F4;
-    db $04                                                               ;AA97F8;
-    dw $63F3,$0008                                                       ;AA97F9;
-    db $FC                                                               ;AA97FD;
-    dw $63E3,$0010                                                       ;AA97FE;
-    db $FC                                                               ;AA9802;
-    dw $63E2,$81F0                                                       ;AA9803;
-    db $F4                                                               ;AA9807;
-    dw $63C6,$8000                                                       ;AA9808;
-    db $F4                                                               ;AA980C;
-    dw $63C4                                                             ;AA980D;
+    dw $0008                                                             ;AA97E5;
+    %spritemapEntry(0, $18, $F4, 0, 1, 2, 1, $172)
+    %spritemapEntry(0, $10, $F4, 0, 1, 2, 1, $171)
+    %spritemapEntry(0, $08, $0C, 0, 1, 2, 1, $1F2)
+    %spritemapEntry(0, $08, $04, 0, 1, 2, 1, $1F3)
+    %spritemapEntry(0, $08, $FC, 0, 1, 2, 1, $1E3)
+    %spritemapEntry(0, $10, $FC, 0, 1, 2, 1, $1E2)
+    %spritemapEntry(1, $1F0, $F4, 0, 1, 2, 1, $1C6)
+    %spritemapEntry(1, $00, $F4, 0, 1, 2, 1, $1C4)
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemaps_Torizo_AA980F:
-    dw $0013,$01F5                                                       ;AA980F;
-    db $10                                                               ;AA9813;
-    dw $234C,$0003                                                       ;AA9814;
-    db $10                                                               ;AA9818;
-    dw $634C,$01FC                                                       ;AA9819;
-    db $F8                                                               ;AA981D;
-    dw $635F,$01F8                                                       ;AA981E;
-    db $D0                                                               ;AA9822;
-    dw $239F,$01F5                                                       ;AA9823;
-    db $20                                                               ;AA9827;
-    dw $23DF,$01F5                                                       ;AA9828;
-    db $18                                                               ;AA982C;
-    dw $23CF,$01F5                                                       ;AA982D;
-    db $08                                                               ;AA9831;
-    dw $239E,$01F6                                                       ;AA9832;
-    db $00                                                               ;AA9836;
-    dw $23DE,$01F7                                                       ;AA9837;
-    db $F8                                                               ;AA983B;
-    dw $23CE,$81F0                                                       ;AA983C;
-    db $E8                                                               ;AA9840;
-    dw $23E6,$81F0                                                       ;AA9841;
-    db $D8                                                               ;AA9845;
-    dw $23E4,$0000                                                       ;AA9846;
-    db $D0                                                               ;AA984A;
-    dw $639F,$0003                                                       ;AA984B;
-    db $20                                                               ;AA984F;
-    dw $63DF,$0003                                                       ;AA9850;
-    db $18                                                               ;AA9854;
-    dw $63CF,$0003                                                       ;AA9855;
-    db $08                                                               ;AA9859;
-    dw $639E,$0002                                                       ;AA985A;
-    db $00                                                               ;AA985E;
-    dw $63DE,$0001                                                       ;AA985F;
-    db $F8                                                               ;AA9863;
-    dw $63CE,$8000                                                       ;AA9864;
-    db $E8                                                               ;AA9868;
-    dw $63E6,$8000                                                       ;AA9869;
-    db $D8                                                               ;AA986D;
-    dw $63E4                                                             ;AA986E;
+    dw $0013                                                             ;AA980F;
+    %spritemapEntry(0, $1F5, $10, 0, 0, 2, 1, $14C)
+    %spritemapEntry(0, $03, $10, 0, 1, 2, 1, $14C)
+    %spritemapEntry(0, $1FC, $F8, 0, 1, 2, 1, $15F)
+    %spritemapEntry(0, $1F8, $D0, 0, 0, 2, 1, $19F)
+    %spritemapEntry(0, $1F5, $20, 0, 0, 2, 1, $1DF)
+    %spritemapEntry(0, $1F5, $18, 0, 0, 2, 1, $1CF)
+    %spritemapEntry(0, $1F5, $08, 0, 0, 2, 1, $19E)
+    %spritemapEntry(0, $1F6, $00, 0, 0, 2, 1, $1DE)
+    %spritemapEntry(0, $1F7, $F8, 0, 0, 2, 1, $1CE)
+    %spritemapEntry(1, $1F0, $E8, 0, 0, 2, 1, $1E6)
+    %spritemapEntry(1, $1F0, $D8, 0, 0, 2, 1, $1E4)
+    %spritemapEntry(0, $00, $D0, 0, 1, 2, 1, $19F)
+    %spritemapEntry(0, $03, $20, 0, 1, 2, 1, $1DF)
+    %spritemapEntry(0, $03, $18, 0, 1, 2, 1, $1CF)
+    %spritemapEntry(0, $03, $08, 0, 1, 2, 1, $19E)
+    %spritemapEntry(0, $02, $00, 0, 1, 2, 1, $1DE)
+    %spritemapEntry(0, $01, $F8, 0, 1, 2, 1, $1CE)
+    %spritemapEntry(1, $00, $E8, 0, 1, 2, 1, $1E6)
+    %spritemapEntry(1, $00, $D8, 0, 1, 2, 1, $1E4)
 
 UNUSED_Spritemaps_Torizo_AA9870:
-    dw $001B,$0000                                                       ;AA9870;
-    db $F0                                                               ;AA9874;
-    dw $63DC,$0000                                                       ;AA9875;
-    db $E8                                                               ;AA9879;
-    dw $63CC,$01F8                                                       ;AA987A;
-    db $F0                                                               ;AA987E;
-    dw $23DC,$01F8                                                       ;AA987F;
-    db $E8                                                               ;AA9883;
-    dw $23CC,$0003                                                       ;AA9884;
-    db $10                                                               ;AA9888;
-    dw $634C,$01F5                                                       ;AA9889;
-    db $10                                                               ;AA988D;
-    dw $234C,$01F0                                                       ;AA988E;
-    db $E0                                                               ;AA9892;
-    dw $23F4,$01F0                                                       ;AA9893;
-    db $D8                                                               ;AA9897;
-    dw $23E4,$0000                                                       ;AA9898;
-    db $E0                                                               ;AA989C;
-    dw $63DD,$0000                                                       ;AA989D;
-    db $D8                                                               ;AA98A1;
-    dw $63CD,$01F8                                                       ;AA98A2;
-    db $E0                                                               ;AA98A6;
-    dw $23DD,$01F8                                                       ;AA98A7;
-    db $D8                                                               ;AA98AB;
-    dw $23CD,$0008                                                       ;AA98AC;
-    db $E0                                                               ;AA98B0;
-    dw $63F4,$0008                                                       ;AA98B1;
-    db $D8                                                               ;AA98B5;
-    dw $63E4,$01FC                                                       ;AA98B6;
-    db $F8                                                               ;AA98BA;
-    dw $635F,$01F5                                                       ;AA98BB;
-    db $20                                                               ;AA98BF;
-    dw $23DF,$01F5                                                       ;AA98C0;
-    db $18                                                               ;AA98C4;
-    dw $23CF,$01F5                                                       ;AA98C5;
-    db $08                                                               ;AA98C9;
-    dw $239E,$01F6                                                       ;AA98CA;
-    db $00                                                               ;AA98CE;
-    dw $23DE,$01F7                                                       ;AA98CF;
-    db $F8                                                               ;AA98D3;
-    dw $23CE,$81F0                                                       ;AA98D4;
-    db $E8                                                               ;AA98D8;
-    dw $23E6,$0003                                                       ;AA98D9;
-    db $20                                                               ;AA98DD;
-    dw $63DF,$0003                                                       ;AA98DE;
-    db $18                                                               ;AA98E2;
-    dw $63CF,$0003                                                       ;AA98E3;
-    db $08                                                               ;AA98E7;
-    dw $639E,$0002                                                       ;AA98E8;
-    db $00                                                               ;AA98EC;
-    dw $63DE,$0001                                                       ;AA98ED;
-    db $F8                                                               ;AA98F1;
-    dw $63CE,$8000                                                       ;AA98F2;
-    db $E8                                                               ;AA98F6;
-    dw $63E6                                                             ;AA98F7;
+    dw $001B                                                             ;AA9870;
+    %spritemapEntry(0, $00, $F0, 0, 1, 2, 1, $1DC)
+    %spritemapEntry(0, $00, $E8, 0, 1, 2, 1, $1CC)
+    %spritemapEntry(0, $1F8, $F0, 0, 0, 2, 1, $1DC)
+    %spritemapEntry(0, $1F8, $E8, 0, 0, 2, 1, $1CC)
+    %spritemapEntry(0, $03, $10, 0, 1, 2, 1, $14C)
+    %spritemapEntry(0, $1F5, $10, 0, 0, 2, 1, $14C)
+    %spritemapEntry(0, $1F0, $E0, 0, 0, 2, 1, $1F4)
+    %spritemapEntry(0, $1F0, $D8, 0, 0, 2, 1, $1E4)
+    %spritemapEntry(0, $00, $E0, 0, 1, 2, 1, $1DD)
+    %spritemapEntry(0, $00, $D8, 0, 1, 2, 1, $1CD)
+    %spritemapEntry(0, $1F8, $E0, 0, 0, 2, 1, $1DD)
+    %spritemapEntry(0, $1F8, $D8, 0, 0, 2, 1, $1CD)
+    %spritemapEntry(0, $08, $E0, 0, 1, 2, 1, $1F4)
+    %spritemapEntry(0, $08, $D8, 0, 1, 2, 1, $1E4)
+    %spritemapEntry(0, $1FC, $F8, 0, 1, 2, 1, $15F)
+    %spritemapEntry(0, $1F5, $20, 0, 0, 2, 1, $1DF)
+    %spritemapEntry(0, $1F5, $18, 0, 0, 2, 1, $1CF)
+    %spritemapEntry(0, $1F5, $08, 0, 0, 2, 1, $19E)
+    %spritemapEntry(0, $1F6, $00, 0, 0, 2, 1, $1DE)
+    %spritemapEntry(0, $1F7, $F8, 0, 0, 2, 1, $1CE)
+    %spritemapEntry(1, $1F0, $E8, 0, 0, 2, 1, $1E6)
+    %spritemapEntry(0, $03, $20, 0, 1, 2, 1, $1DF)
+    %spritemapEntry(0, $03, $18, 0, 1, 2, 1, $1CF)
+    %spritemapEntry(0, $03, $08, 0, 1, 2, 1, $19E)
+    %spritemapEntry(0, $02, $00, 0, 1, 2, 1, $1DE)
+    %spritemapEntry(0, $01, $F8, 0, 1, 2, 1, $1CE)
+    %spritemapEntry(1, $00, $E8, 0, 1, 2, 1, $1E6)
 
 UNUSED_Spritemaps_Torizo_AA98F9:
-    dw $0001,$01FC                                                       ;AA98F9;
-    db $FC                                                               ;AA98FD;
-    dw $6B70                                                             ;AA98FE;
+    dw $0001                                                             ;AA98F9;
+    %spritemapEntry(0, $1FC, $FC, 0, 1, 2, 5, $170)
 
 UNUSED_Spritemaps_Torizo_AA9900:
-    dw $0001,$01FC                                                       ;AA9900;
-    db $FC                                                               ;AA9904;
-    dw $6B63                                                             ;AA9905;
+    dw $0001                                                             ;AA9900;
+    %spritemapEntry(0, $1FC, $FC, 0, 1, 2, 5, $163)
 
 UNUSED_Spritemaps_Torizo_AA9907:
-    dw $0001,$01FC                                                       ;AA9907;
-    db $FC                                                               ;AA990B;
-    dw $6B67                                                             ;AA990C;
+    dw $0001                                                             ;AA9907;
+    %spritemapEntry(0, $1FC, $FC, 0, 1, 2, 5, $167)
 
 UNUSED_Spritemaps_Torizo_AA990E:
-    dw $0001,$01FC                                                       ;AA990E;
-    db $FC                                                               ;AA9912;
-    dw $6B6A                                                             ;AA9913;
+    dw $0001                                                             ;AA990E;
+    %spritemapEntry(0, $1FC, $FC, 0, 1, 2, 5, $16A)
 
 UNUSED_Spritemaps_Torizo_AA9915:
-    dw $0001,$81F8                                                       ;AA9915;
-    db $F8                                                               ;AA9919;
-    dw $672C                                                             ;AA991A;
+    dw $0001                                                             ;AA9915;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 3, $12C)
 
 UNUSED_Spritemaps_Torizo_AA991C:
-    dw $0001,$81F8                                                       ;AA991C;
-    db $F8                                                               ;AA9920;
-    dw $6B2E                                                             ;AA9921;
+    dw $0001                                                             ;AA991C;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 5, $12E)
 
 UNUSED_Spritemaps_Torizo_AA9923:
-    dw $0001,$81F8                                                       ;AA9923;
-    db $F8                                                               ;AA9927;
-    dw $6304                                                             ;AA9928;
+    dw $0001                                                             ;AA9923;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 1, $104)
 
 UNUSED_Spritemaps_Torizo_AA992A:
-    dw $0006,$01F8                                                       ;AA992A;
-    db $08                                                               ;AA992E;
-    dw $EB52,$0000                                                       ;AA992F;
-    db $08                                                               ;AA9933;
-    dw $AB52,$01F8                                                       ;AA9934;
-    db $F8                                                               ;AA9938;
-    dw $2B92,$01F8                                                       ;AA9939;
-    db $F0                                                               ;AA993D;
-    dw $2B82,$0000                                                       ;AA993E;
-    db $F8                                                               ;AA9942;
-    dw $6B92,$0000                                                       ;AA9943;
-    db $F0                                                               ;AA9947;
-    dw $6B82                                                             ;AA9948;
+    dw $0006                                                             ;AA992A;
+    %spritemapEntry(0, $1F8, $08, 1, 1, 2, 5, $152)
+    %spritemapEntry(0, $00, $08, 1, 0, 2, 5, $152)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 5, $192)
+    %spritemapEntry(0, $1F8, $F0, 0, 0, 2, 5, $182)
+    %spritemapEntry(0, $00, $F8, 0, 1, 2, 5, $192)
+    %spritemapEntry(0, $00, $F0, 0, 1, 2, 5, $182)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Spritemaps_Torizo_36:
-    dw $001A,$000F                                                       ;AA994A;
-    db $FA                                                               ;AA994E;
-    dw $63FB,$0017                                                       ;AA994F;
-    db $FA                                                               ;AA9953;
-    dw $63FA,$0017                                                       ;AA9954;
-    db $FA                                                               ;AA9958;
-    dw $63FA,$81F4                                                       ;AA9959;
-    db $EE                                                               ;AA995D;
-    dw $6328,$81F8                                                       ;AA995E;
-    db $FB                                                               ;AA9962;
-    dw $2308,$0006                                                       ;AA9963;
-    db $15                                                               ;AA9967;
-    dw $6362,$000E                                                       ;AA9968;
-    db $15                                                               ;AA996C;
-    dw $6361,$0016                                                       ;AA996D;
-    db $15                                                               ;AA9971;
-    dw $6360,$8009                                                       ;AA9972;
-    db $F7                                                               ;AA9976;
-    dw $A358,$8001                                                       ;AA9977;
-    db $FF                                                               ;AA997B;
-    dw $A347,$01FF                                                       ;AA997C;
-    db $12                                                               ;AA9980;
-    dw $6394,$0007                                                       ;AA9981;
-    db $12                                                               ;AA9985;
-    dw $6393,$81FF                                                       ;AA9986;
-    db $02                                                               ;AA998A;
-    dw $6373,$01F3                                                       ;AA998B;
-    db $16                                                               ;AA998F;
-    dw $63EF,$01EB                                                       ;AA9990;
-    db $16                                                               ;AA9994;
-    dw $63FC,$01EB                                                       ;AA9995;
-    db $0E                                                               ;AA9999;
-    dw $63FF,$81F3                                                       ;AA999A;
-    db $06                                                               ;AA999E;
-    dw $63ED,$01F1                                                       ;AA999F;
-    db $E3                                                               ;AA99A3;
-    dw $63CB,$01F9                                                       ;AA99A4;
-    db $E3                                                               ;AA99A8;
-    dw $63CA,$8001                                                       ;AA99A9;
-    db $E3                                                               ;AA99AD;
-    dw $63C8,$8001                                                       ;AA99AE;
-    db $F3                                                               ;AA99B2;
-    dw $63E8,$81E8                                                       ;AA99B3;
-    db $06                                                               ;AA99B7;
-    dw $6342,$81F8                                                       ;AA99B8;
-    db $06                                                               ;AA99BC;
-    dw $6340,$81E8                                                       ;AA99BD;
-    db $F6                                                               ;AA99C1;
-    dw $6322,$81F8                                                       ;AA99C2;
-    db $F6                                                               ;AA99C6;
-    dw $6320,$81E8                                                       ;AA99C7;
-    db $E6                                                               ;AA99CB;
-    dw $6302                                                             ;AA99CC;
+    dw $001A                                                             ;AA994A;
+    %spritemapEntry(0, $0F, $FA, 0, 1, 2, 1, $1FB)
+    %spritemapEntry(0, $17, $FA, 0, 1, 2, 1, $1FA)
+    %spritemapEntry(0, $17, $FA, 0, 1, 2, 1, $1FA)
+    %spritemapEntry(1, $1F4, $EE, 0, 1, 2, 1, $128)
+    %spritemapEntry(1, $1F8, $FB, 0, 0, 2, 1, $108)
+    %spritemapEntry(0, $06, $15, 0, 1, 2, 1, $162)
+    %spritemapEntry(0, $0E, $15, 0, 1, 2, 1, $161)
+    %spritemapEntry(0, $16, $15, 0, 1, 2, 1, $160)
+    %spritemapEntry(1, $09, $F7, 1, 0, 2, 1, $158)
+    %spritemapEntry(1, $01, $FF, 1, 0, 2, 1, $147)
+    %spritemapEntry(0, $1FF, $12, 0, 1, 2, 1, $194)
+    %spritemapEntry(0, $07, $12, 0, 1, 2, 1, $193)
+    %spritemapEntry(1, $1FF, $02, 0, 1, 2, 1, $173)
+    %spritemapEntry(0, $1F3, $16, 0, 1, 2, 1, $1EF)
+    %spritemapEntry(0, $1EB, $16, 0, 1, 2, 1, $1FC)
+    %spritemapEntry(0, $1EB, $0E, 0, 1, 2, 1, $1FF)
+    %spritemapEntry(1, $1F3, $06, 0, 1, 2, 1, $1ED)
+    %spritemapEntry(0, $1F1, $E3, 0, 1, 2, 1, $1CB)
+    %spritemapEntry(0, $1F9, $E3, 0, 1, 2, 1, $1CA)
+    %spritemapEntry(1, $01, $E3, 0, 1, 2, 1, $1C8)
+    %spritemapEntry(1, $01, $F3, 0, 1, 2, 1, $1E8)
+    %spritemapEntry(1, $1E8, $06, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $1F8, $06, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $1E8, $F6, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $1F8, $F6, 0, 1, 2, 1, $120)
+    %spritemapEntry(1, $1E8, $E6, 0, 1, 2, 1, $102)
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemaps_Torizo_UnusedEntry_AA99CE:
+; Missing count
     dw $81F8                                                             ;AA99CE;
     db $E6                                                               ;AA99D0;
     dw $6300                                                             ;AA99D1;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Spritemaps_Torizo_37:
-    dw $001A,$81F3                                                       ;AA99D3;
-    db $F9                                                               ;AA99D7;
-    dw $6306,$81F3                                                       ;AA99D8;
-    db $EC                                                               ;AA99DC;
-    dw $6326,$0015                                                       ;AA99DD;
-    db $03                                                               ;AA99E1;
-    dw $238F,$000D                                                       ;AA99E2;
-    db $03                                                               ;AA99E6;
-    dw $238E,$0009                                                       ;AA99E7;
-    db $04                                                               ;AA99EB;
-    dw $234F,$0001                                                       ;AA99EC;
-    db $04                                                               ;AA99F0;
-    dw $234E,$01F9                                                       ;AA99F1;
-    db $04                                                               ;AA99F5;
-    dw $234D,$01FD                                                       ;AA99F6;
-    db $10                                                               ;AA99FA;
-    dw $6396,$0005                                                       ;AA99FB;
-    db $10                                                               ;AA99FF;
-    dw $6395,$81FD                                                       ;AA9A00;
-    db $00                                                               ;AA9A04;
-    dw $6375,$01F6                                                       ;AA9A05;
-    db $01                                                               ;AA9A09;
-    dw $E3AE,$01FE                                                       ;AA9A0A;
-    db $01                                                               ;AA9A0E;
-    dw $E3AD,$81F6                                                       ;AA9A0F;
-    db $09                                                               ;AA9A13;
-    dw $E3A6,$01FD                                                       ;AA9A14;
-    db $15                                                               ;AA9A18;
-    dw $6362,$0005                                                       ;AA9A19;
-    db $15                                                               ;AA9A1D;
-    dw $6361,$000D                                                       ;AA9A1E;
-    db $15                                                               ;AA9A22;
-    dw $6360,$01F2                                                       ;AA9A23;
-    db $E4                                                               ;AA9A27;
-    dw $63CB,$01FA                                                       ;AA9A28;
-    db $E4                                                               ;AA9A2C;
-    dw $63CA,$8002                                                       ;AA9A2D;
-    db $E4                                                               ;AA9A31;
-    dw $63C8,$8002                                                       ;AA9A32;
-    db $F4                                                               ;AA9A36;
-    dw $63E8,$81E9                                                       ;AA9A37;
-    db $07                                                               ;AA9A3B;
-    dw $6342,$81F9                                                       ;AA9A3C;
-    db $07                                                               ;AA9A40;
-    dw $6340,$81E9                                                       ;AA9A41;
-    db $F7                                                               ;AA9A45;
-    dw $6322,$81F9                                                       ;AA9A46;
-    db $F7                                                               ;AA9A4A;
-    dw $6320,$81E9                                                       ;AA9A4B;
-    db $E7                                                               ;AA9A4F;
-    dw $6302,$81F9                                                       ;AA9A50;
-    db $E7                                                               ;AA9A54;
-    dw $6300                                                             ;AA9A55;
+    dw $001A                                                             ;AA99D3;
+    %spritemapEntry(1, $1F3, $F9, 0, 1, 2, 1, $106)
+    %spritemapEntry(1, $1F3, $EC, 0, 1, 2, 1, $126)
+    %spritemapEntry(0, $15, $03, 0, 0, 2, 1, $18F)
+    %spritemapEntry(0, $0D, $03, 0, 0, 2, 1, $18E)
+    %spritemapEntry(0, $09, $04, 0, 0, 2, 1, $14F)
+    %spritemapEntry(0, $01, $04, 0, 0, 2, 1, $14E)
+    %spritemapEntry(0, $1F9, $04, 0, 0, 2, 1, $14D)
+    %spritemapEntry(0, $1FD, $10, 0, 1, 2, 1, $196)
+    %spritemapEntry(0, $05, $10, 0, 1, 2, 1, $195)
+    %spritemapEntry(1, $1FD, $00, 0, 1, 2, 1, $175)
+    %spritemapEntry(0, $1F6, $01, 1, 1, 2, 1, $1AE)
+    %spritemapEntry(0, $1FE, $01, 1, 1, 2, 1, $1AD)
+    %spritemapEntry(1, $1F6, $09, 1, 1, 2, 1, $1A6)
+    %spritemapEntry(0, $1FD, $15, 0, 1, 2, 1, $162)
+    %spritemapEntry(0, $05, $15, 0, 1, 2, 1, $161)
+    %spritemapEntry(0, $0D, $15, 0, 1, 2, 1, $160)
+    %spritemapEntry(0, $1F2, $E4, 0, 1, 2, 1, $1CB)
+    %spritemapEntry(0, $1FA, $E4, 0, 1, 2, 1, $1CA)
+    %spritemapEntry(1, $02, $E4, 0, 1, 2, 1, $1C8)
+    %spritemapEntry(1, $02, $F4, 0, 1, 2, 1, $1E8)
+    %spritemapEntry(1, $1E9, $07, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $1F9, $07, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $1E9, $F7, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $1F9, $F7, 0, 1, 2, 1, $120)
+    %spritemapEntry(1, $1E9, $E7, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $1F9, $E7, 0, 1, 2, 1, $100)
 
 Spritemaps_Torizo_38:
-    dw $001B,$8009                                                       ;AA9A57;
-    db $0D                                                               ;AA9A5B;
-    dw $236C,$81F6                                                       ;AA9A5C;
-    db $F4                                                               ;AA9A60;
-    dw $6306,$81F6                                                       ;AA9A61;
-    db $E7                                                               ;AA9A65;
-    dw $6326,$8002                                                       ;AA9A66;
-    db $07                                                               ;AA9A6A;
-    dw $2358,$81FB                                                       ;AA9A6B;
-    db $FF                                                               ;AA9A6F;
-    dw $2347,$01FD                                                       ;AA9A70;
-    db $16                                                               ;AA9A74;
-    dw $6398,$0005                                                       ;AA9A75;
-    db $16                                                               ;AA9A79;
-    dw $6397,$81FD                                                       ;AA9A7A;
-    db $06                                                               ;AA9A7E;
-    dw $6377,$01F7                                                       ;AA9A7F;
-    db $1B                                                               ;AA9A83;
-    dw $6362,$01FF                                                       ;AA9A84;
-    db $1B                                                               ;AA9A88;
-    dw $6361,$0007                                                       ;AA9A89;
-    db $1B                                                               ;AA9A8D;
-    dw $6360,$01F1                                                       ;AA9A8E;
-    db $0B                                                               ;AA9A92;
-    dw $E3EC,$01F9                                                       ;AA9A93;
-    db $0B                                                               ;AA9A97;
-    dw $E3EB,$0001                                                       ;AA9A98;
-    db $0B                                                               ;AA9A9C;
-    dw $E3EA,$01F1                                                       ;AA9A9D;
-    db $03                                                               ;AA9AA1;
-    dw $63EC,$01F9                                                       ;AA9AA2;
-    db $03                                                               ;AA9AA6;
-    dw $63EB,$0001                                                       ;AA9AA7;
-    db $03                                                               ;AA9AAB;
-    dw $63EA,$01F2                                                       ;AA9AAC;
-    db $DE                                                               ;AA9AB0;
-    dw $63CB,$01FA                                                       ;AA9AB1;
-    db $DE                                                               ;AA9AB5;
-    dw $63CA,$8002                                                       ;AA9AB6;
-    db $DE                                                               ;AA9ABA;
-    dw $63C8,$8002                                                       ;AA9ABB;
-    db $EE                                                               ;AA9ABF;
-    dw $63E8,$81E9                                                       ;AA9AC0;
-    db $01                                                               ;AA9AC4;
-    dw $6342,$81F9                                                       ;AA9AC5;
-    db $01                                                               ;AA9AC9;
-    dw $6340,$81E9                                                       ;AA9ACA;
-    db $F1                                                               ;AA9ACE;
-    dw $6322,$81F9                                                       ;AA9ACF;
-    db $F1                                                               ;AA9AD3;
-    dw $6320,$81E9                                                       ;AA9AD4;
-    db $E1                                                               ;AA9AD8;
-    dw $6302,$81F9                                                       ;AA9AD9;
-    db $E1                                                               ;AA9ADD;
-    dw $6300                                                             ;AA9ADE;
+    dw $001B                                                             ;AA9A57;
+    %spritemapEntry(1, $09, $0D, 0, 0, 2, 1, $16C)
+    %spritemapEntry(1, $1F6, $F4, 0, 1, 2, 1, $106)
+    %spritemapEntry(1, $1F6, $E7, 0, 1, 2, 1, $126)
+    %spritemapEntry(1, $02, $07, 0, 0, 2, 1, $158)
+    %spritemapEntry(1, $1FB, $FF, 0, 0, 2, 1, $147)
+    %spritemapEntry(0, $1FD, $16, 0, 1, 2, 1, $198)
+    %spritemapEntry(0, $05, $16, 0, 1, 2, 1, $197)
+    %spritemapEntry(1, $1FD, $06, 0, 1, 2, 1, $177)
+    %spritemapEntry(0, $1F7, $1B, 0, 1, 2, 1, $162)
+    %spritemapEntry(0, $1FF, $1B, 0, 1, 2, 1, $161)
+    %spritemapEntry(0, $07, $1B, 0, 1, 2, 1, $160)
+    %spritemapEntry(0, $1F1, $0B, 1, 1, 2, 1, $1EC)
+    %spritemapEntry(0, $1F9, $0B, 1, 1, 2, 1, $1EB)
+    %spritemapEntry(0, $01, $0B, 1, 1, 2, 1, $1EA)
+    %spritemapEntry(0, $1F1, $03, 0, 1, 2, 1, $1EC)
+    %spritemapEntry(0, $1F9, $03, 0, 1, 2, 1, $1EB)
+    %spritemapEntry(0, $01, $03, 0, 1, 2, 1, $1EA)
+    %spritemapEntry(0, $1F2, $DE, 0, 1, 2, 1, $1CB)
+    %spritemapEntry(0, $1FA, $DE, 0, 1, 2, 1, $1CA)
+    %spritemapEntry(1, $02, $DE, 0, 1, 2, 1, $1C8)
+    %spritemapEntry(1, $02, $EE, 0, 1, 2, 1, $1E8)
+    %spritemapEntry(1, $1E9, $01, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $1F9, $01, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $1E9, $F1, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $1F9, $F1, 0, 1, 2, 1, $120)
+    %spritemapEntry(1, $1E9, $E1, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $1F9, $E1, 0, 1, 2, 1, $100)
 
 Spritemaps_Torizo_39:
-    dw $0019,$81F5                                                       ;AA9AE0;
-    db $F1                                                               ;AA9AE4;
-    dw $6306,$81F5                                                       ;AA9AE5;
-    db $E4                                                               ;AA9AE9;
-    dw $6326,$800A                                                       ;AA9AEA;
-    db $0A                                                               ;AA9AEE;
-    dw $236C,$8003                                                       ;AA9AEF;
-    db $05                                                               ;AA9AF3;
-    dw $2358,$81FC                                                       ;AA9AF4;
-    db $FD                                                               ;AA9AF8;
-    dw $2347,$81EE                                                       ;AA9AF9;
-    db $FB                                                               ;AA9AFD;
-    dw $63A9,$01F6                                                       ;AA9AFE;
-    db $0B                                                               ;AA9B02;
-    dw $63BB,$01FE                                                       ;AA9B03;
-    db $0B                                                               ;AA9B07;
-    dw $63AF,$81F6                                                       ;AA9B08;
-    db $FB                                                               ;AA9B0C;
-    dw $63A8,$01F2                                                       ;AA9B0D;
-    db $D9                                                               ;AA9B11;
-    dw $63CB,$01FA                                                       ;AA9B12;
-    db $D9                                                               ;AA9B16;
-    dw $63CA,$8002                                                       ;AA9B17;
-    db $D9                                                               ;AA9B1B;
-    dw $63C8,$8002                                                       ;AA9B1C;
-    db $E9                                                               ;AA9B20;
-    dw $63E8,$81E9                                                       ;AA9B21;
-    db $FC                                                               ;AA9B25;
-    dw $6342,$81F9                                                       ;AA9B26;
-    db $FC                                                               ;AA9B2A;
-    dw $6340,$81E9                                                       ;AA9B2B;
-    db $EC                                                               ;AA9B2F;
-    dw $6322,$81F9                                                       ;AA9B30;
-    db $EC                                                               ;AA9B34;
-    dw $6320,$81E9                                                       ;AA9B35;
-    db $DC                                                               ;AA9B39;
-    dw $6302,$81F9                                                       ;AA9B3A;
-    db $DC                                                               ;AA9B3E;
-    dw $6300,$01F7                                                       ;AA9B3F;
-    db $1B                                                               ;AA9B43;
-    dw $6398,$01FF                                                       ;AA9B44;
-    db $1B                                                               ;AA9B48;
-    dw $6397,$81F7                                                       ;AA9B49;
-    db $0B                                                               ;AA9B4D;
-    dw $6377,$01F0                                                       ;AA9B4E;
-    db $21                                                               ;AA9B52;
-    dw $6362,$01F8                                                       ;AA9B53;
-    db $21                                                               ;AA9B57;
-    dw $6361,$0000                                                       ;AA9B58;
-    db $21                                                               ;AA9B5C;
-    dw $6360                                                             ;AA9B5D;
+    dw $0019                                                             ;AA9AE0;
+    %spritemapEntry(1, $1F5, $F1, 0, 1, 2, 1, $106)
+    %spritemapEntry(1, $1F5, $E4, 0, 1, 2, 1, $126)
+    %spritemapEntry(1, $0A, $0A, 0, 0, 2, 1, $16C)
+    %spritemapEntry(1, $03, $05, 0, 0, 2, 1, $158)
+    %spritemapEntry(1, $1FC, $FD, 0, 0, 2, 1, $147)
+    %spritemapEntry(1, $1EE, $FB, 0, 1, 2, 1, $1A9)
+    %spritemapEntry(0, $1F6, $0B, 0, 1, 2, 1, $1BB)
+    %spritemapEntry(0, $1FE, $0B, 0, 1, 2, 1, $1AF)
+    %spritemapEntry(1, $1F6, $FB, 0, 1, 2, 1, $1A8)
+    %spritemapEntry(0, $1F2, $D9, 0, 1, 2, 1, $1CB)
+    %spritemapEntry(0, $1FA, $D9, 0, 1, 2, 1, $1CA)
+    %spritemapEntry(1, $02, $D9, 0, 1, 2, 1, $1C8)
+    %spritemapEntry(1, $02, $E9, 0, 1, 2, 1, $1E8)
+    %spritemapEntry(1, $1E9, $FC, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $1F9, $FC, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $1E9, $EC, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $1F9, $EC, 0, 1, 2, 1, $120)
+    %spritemapEntry(1, $1E9, $DC, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $1F9, $DC, 0, 1, 2, 1, $100)
+    %spritemapEntry(0, $1F7, $1B, 0, 1, 2, 1, $198)
+    %spritemapEntry(0, $1FF, $1B, 0, 1, 2, 1, $197)
+    %spritemapEntry(1, $1F7, $0B, 0, 1, 2, 1, $177)
+    %spritemapEntry(0, $1F0, $21, 0, 1, 2, 1, $162)
+    %spritemapEntry(0, $1F8, $21, 0, 1, 2, 1, $161)
+    %spritemapEntry(0, $00, $21, 0, 1, 2, 1, $160)
 
 Spritemaps_Torizo_3A:
-    dw $0019,$01FB                                                       ;AA9B5F;
-    db $D3                                                               ;AA9B63;
-    dw $63CB,$0003                                                       ;AA9B64;
-    db $D3                                                               ;AA9B68;
-    dw $63CA,$800B                                                       ;AA9B69;
-    db $E3                                                               ;AA9B6D;
-    dw $63E8,$800B                                                       ;AA9B6E;
-    db $D3                                                               ;AA9B72;
-    dw $63C8,$01F7                                                       ;AA9B73;
-    db $0F                                                               ;AA9B77;
-    dw $63AC,$01FF                                                       ;AA9B78;
-    db $0F                                                               ;AA9B7C;
-    dw $63AB,$81F7                                                       ;AA9B7D;
-    db $FF                                                               ;AA9B81;
-    dw $63A4,$01F5                                                       ;AA9B82;
-    db $28                                                               ;AA9B86;
-    dw $6362,$01FD                                                       ;AA9B87;
-    db $28                                                               ;AA9B8B;
-    dw $6361,$0005                                                       ;AA9B8C;
-    db $28                                                               ;AA9B90;
-    dw $6360,$01F6                                                       ;AA9B91;
-    db $21                                                               ;AA9B95;
-    dw $6396,$01FE                                                       ;AA9B96;
-    db $21                                                               ;AA9B9A;
-    dw $6395,$81F6                                                       ;AA9B9B;
-    db $11                                                               ;AA9B9F;
-    dw $6375,$01FD                                                       ;AA9BA0;
-    db $0E                                                               ;AA9BA4;
-    dw $65AE,$0005                                                       ;AA9BA5;
-    db $0E                                                               ;AA9BA9;
-    dw $65AD,$81FD                                                       ;AA9BAA;
-    db $FE                                                               ;AA9BAE;
-    dw $65A6,$81F3                                                       ;AA9BAF;
-    db $15                                                               ;AA9BB3;
-    dw $658A,$81FB                                                       ;AA9BB4;
-    db $0D                                                               ;AA9BB8;
-    dw $6579,$81F1                                                       ;AA9BB9;
-    db $1F                                                               ;AA9BBD;
-    dw $65A2,$81F2                                                       ;AA9BBE;
-    db $F7                                                               ;AA9BC2;
-    dw $6342,$8002                                                       ;AA9BC3;
-    db $F7                                                               ;AA9BC7;
-    dw $6340,$81F2                                                       ;AA9BC8;
-    db $E7                                                               ;AA9BCC;
-    dw $6322,$8002                                                       ;AA9BCD;
-    db $E7                                                               ;AA9BD1;
-    dw $6320,$81F2                                                       ;AA9BD2;
-    db $D7                                                               ;AA9BD6;
-    dw $6302,$8002                                                       ;AA9BD7;
-    db $D7                                                               ;AA9BDB;
-    dw $6300                                                             ;AA9BDC;
+    dw $0019                                                             ;AA9B5F;
+    %spritemapEntry(0, $1FB, $D3, 0, 1, 2, 1, $1CB)
+    %spritemapEntry(0, $03, $D3, 0, 1, 2, 1, $1CA)
+    %spritemapEntry(1, $0B, $E3, 0, 1, 2, 1, $1E8)
+    %spritemapEntry(1, $0B, $D3, 0, 1, 2, 1, $1C8)
+    %spritemapEntry(0, $1F7, $0F, 0, 1, 2, 1, $1AC)
+    %spritemapEntry(0, $1FF, $0F, 0, 1, 2, 1, $1AB)
+    %spritemapEntry(1, $1F7, $FF, 0, 1, 2, 1, $1A4)
+    %spritemapEntry(0, $1F5, $28, 0, 1, 2, 1, $162)
+    %spritemapEntry(0, $1FD, $28, 0, 1, 2, 1, $161)
+    %spritemapEntry(0, $05, $28, 0, 1, 2, 1, $160)
+    %spritemapEntry(0, $1F6, $21, 0, 1, 2, 1, $196)
+    %spritemapEntry(0, $1FE, $21, 0, 1, 2, 1, $195)
+    %spritemapEntry(1, $1F6, $11, 0, 1, 2, 1, $175)
+    %spritemapEntry(0, $1FD, $0E, 0, 1, 2, 2, $1AE)
+    %spritemapEntry(0, $05, $0E, 0, 1, 2, 2, $1AD)
+    %spritemapEntry(1, $1FD, $FE, 0, 1, 2, 2, $1A6)
+    %spritemapEntry(1, $1F3, $15, 0, 1, 2, 2, $18A)
+    %spritemapEntry(1, $1FB, $0D, 0, 1, 2, 2, $179)
+    %spritemapEntry(1, $1F1, $1F, 0, 1, 2, 2, $1A2)
+    %spritemapEntry(1, $1F2, $F7, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $02, $F7, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $1F2, $E7, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $02, $E7, 0, 1, 2, 1, $120)
+    %spritemapEntry(1, $1F2, $D7, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $02, $D7, 0, 1, 2, 1, $100)
 
 Spritemaps_Torizo_3B:
-    dw $001A,$01FB                                                       ;AA9BDE;
-    db $D4                                                               ;AA9BE2;
-    dw $63CB,$0003                                                       ;AA9BE3;
-    db $D4                                                               ;AA9BE7;
-    dw $63CA,$800B                                                       ;AA9BE8;
-    db $E4                                                               ;AA9BEC;
-    dw $63E8,$800B                                                       ;AA9BED;
-    db $D4                                                               ;AA9BF1;
-    dw $63C8,$01FC                                                       ;AA9BF2;
-    db $0E                                                               ;AA9BF6;
-    dw $23AE,$01F4                                                       ;AA9BF7;
-    db $0E                                                               ;AA9BFB;
-    dw $23AD,$81F4                                                       ;AA9BFC;
-    db $FE                                                               ;AA9C00;
-    dw $23A6,$01E5                                                       ;AA9C01;
-    db $28                                                               ;AA9C05;
-    dw $6362,$01ED                                                       ;AA9C06;
-    db $28                                                               ;AA9C0A;
-    dw $6361,$01F5                                                       ;AA9C0B;
-    db $28                                                               ;AA9C0F;
-    dw $6360,$01EB                                                       ;AA9C10;
-    db $22                                                               ;AA9C14;
-    dw $6398,$01F3                                                       ;AA9C15;
-    db $22                                                               ;AA9C19;
-    dw $6397,$81EB                                                       ;AA9C1A;
-    db $12                                                               ;AA9C1E;
-    dw $6377,$81FA                                                       ;AA9C1F;
-    db $FC                                                               ;AA9C23;
-    dw $65A9,$0002                                                       ;AA9C24;
-    db $0C                                                               ;AA9C28;
-    dw $65BB,$000A                                                       ;AA9C29;
-    db $0C                                                               ;AA9C2D;
-    dw $65AF,$8002                                                       ;AA9C2E;
-    db $FC                                                               ;AA9C32;
-    dw $65A8,$81FE                                                       ;AA9C33;
-    db $1F                                                               ;AA9C37;
-    dw $65A2,$0009                                                       ;AA9C38;
-    db $1F                                                               ;AA9C3C;
-    dw $6597,$8001                                                       ;AA9C3D;
-    db $0F                                                               ;AA9C41;
-    dw $6577,$81F2                                                       ;AA9C42;
-    db $F8                                                               ;AA9C46;
-    dw $6342,$8002                                                       ;AA9C47;
-    db $F8                                                               ;AA9C4B;
-    dw $6340,$81F2                                                       ;AA9C4C;
-    db $E8                                                               ;AA9C50;
-    dw $6322,$8002                                                       ;AA9C51;
-    db $E8                                                               ;AA9C55;
-    dw $6320,$81F2                                                       ;AA9C56;
-    db $D8                                                               ;AA9C5A;
-    dw $6302,$8002                                                       ;AA9C5B;
-    db $D8                                                               ;AA9C5F;
-    dw $6300                                                             ;AA9C60;
+    dw $001A                                                             ;AA9BDE;
+    %spritemapEntry(0, $1FB, $D4, 0, 1, 2, 1, $1CB)
+    %spritemapEntry(0, $03, $D4, 0, 1, 2, 1, $1CA)
+    %spritemapEntry(1, $0B, $E4, 0, 1, 2, 1, $1E8)
+    %spritemapEntry(1, $0B, $D4, 0, 1, 2, 1, $1C8)
+    %spritemapEntry(0, $1FC, $0E, 0, 0, 2, 1, $1AE)
+    %spritemapEntry(0, $1F4, $0E, 0, 0, 2, 1, $1AD)
+    %spritemapEntry(1, $1F4, $FE, 0, 0, 2, 1, $1A6)
+    %spritemapEntry(0, $1E5, $28, 0, 1, 2, 1, $162)
+    %spritemapEntry(0, $1ED, $28, 0, 1, 2, 1, $161)
+    %spritemapEntry(0, $1F5, $28, 0, 1, 2, 1, $160)
+    %spritemapEntry(0, $1EB, $22, 0, 1, 2, 1, $198)
+    %spritemapEntry(0, $1F3, $22, 0, 1, 2, 1, $197)
+    %spritemapEntry(1, $1EB, $12, 0, 1, 2, 1, $177)
+    %spritemapEntry(1, $1FA, $FC, 0, 1, 2, 2, $1A9)
+    %spritemapEntry(0, $02, $0C, 0, 1, 2, 2, $1BB)
+    %spritemapEntry(0, $0A, $0C, 0, 1, 2, 2, $1AF)
+    %spritemapEntry(1, $02, $FC, 0, 1, 2, 2, $1A8)
+    %spritemapEntry(1, $1FE, $1F, 0, 1, 2, 2, $1A2)
+    %spritemapEntry(0, $09, $1F, 0, 1, 2, 2, $197)
+    %spritemapEntry(1, $01, $0F, 0, 1, 2, 2, $177)
+    %spritemapEntry(1, $1F2, $F8, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $02, $F8, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $1F2, $E8, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $02, $E8, 0, 1, 2, 1, $120)
+    %spritemapEntry(1, $1F2, $D8, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $02, $D8, 0, 1, 2, 1, $100)
 
 Spritemaps_Torizo_3C:
-    dw $001C,$01FB                                                       ;AA9C62;
-    db $D5                                                               ;AA9C66;
-    dw $63CB,$0003                                                       ;AA9C67;
-    db $D5                                                               ;AA9C6B;
-    dw $63CA,$800B                                                       ;AA9C6C;
-    db $E5                                                               ;AA9C70;
-    dw $63E8,$800B                                                       ;AA9C71;
-    db $D5                                                               ;AA9C75;
-    dw $63C8,$01DE                                                       ;AA9C76;
-    db $28                                                               ;AA9C7A;
-    dw $6362,$01E6                                                       ;AA9C7B;
-    db $28                                                               ;AA9C7F;
-    dw $6361,$01EE                                                       ;AA9C80;
-    db $28                                                               ;AA9C84;
-    dw $6360,$01FB                                                       ;AA9C85;
-    db $10                                                               ;AA9C89;
-    dw $23AE,$01F3                                                       ;AA9C8A;
-    db $10                                                               ;AA9C8E;
-    dw $23AD,$81F3                                                       ;AA9C8F;
-    db $00                                                               ;AA9C93;
-    dw $23A6,$81E1                                                       ;AA9C94;
-    db $1C                                                               ;AA9C98;
-    dw $638A,$81E9                                                       ;AA9C99;
-    db $14                                                               ;AA9C9D;
-    dw $6379,$000D                                                       ;AA9C9E;
-    db $28                                                               ;AA9CA2;
-    dw $6562,$0015                                                       ;AA9CA3;
-    db $28                                                               ;AA9CA7;
-    dw $6561,$001D                                                       ;AA9CA8;
-    db $28                                                               ;AA9CAC;
-    dw $6560,$81F9                                                       ;AA9CAD;
-    db $FE                                                               ;AA9CB1;
-    dw $65A9,$0001                                                       ;AA9CB2;
-    db $0E                                                               ;AA9CB6;
-    dw $65BB,$0009                                                       ;AA9CB7;
-    db $0E                                                               ;AA9CBB;
-    dw $65AF,$8001                                                       ;AA9CBC;
-    db $FE                                                               ;AA9CC0;
-    dw $65A8,$0009                                                       ;AA9CC1;
-    db $22                                                               ;AA9CC5;
-    dw $6594,$0011                                                       ;AA9CC6;
-    db $22                                                               ;AA9CCA;
-    dw $6593,$8009                                                       ;AA9CCB;
-    db $12                                                               ;AA9CCF;
-    dw $6573,$81F2                                                       ;AA9CD0;
-    db $F9                                                               ;AA9CD4;
-    dw $6342,$8002                                                       ;AA9CD5;
-    db $F9                                                               ;AA9CD9;
-    dw $6340,$81F2                                                       ;AA9CDA;
-    db $E9                                                               ;AA9CDE;
-    dw $6322,$8002                                                       ;AA9CDF;
-    db $E9                                                               ;AA9CE3;
-    dw $6320,$81F2                                                       ;AA9CE4;
-    db $D9                                                               ;AA9CE8;
-    dw $6302,$8002                                                       ;AA9CE9;
-    db $D9                                                               ;AA9CED;
-    dw $6300                                                             ;AA9CEE;
+    dw $001C                                                             ;AA9C62;
+    %spritemapEntry(0, $1FB, $D5, 0, 1, 2, 1, $1CB)
+    %spritemapEntry(0, $03, $D5, 0, 1, 2, 1, $1CA)
+    %spritemapEntry(1, $0B, $E5, 0, 1, 2, 1, $1E8)
+    %spritemapEntry(1, $0B, $D5, 0, 1, 2, 1, $1C8)
+    %spritemapEntry(0, $1DE, $28, 0, 1, 2, 1, $162)
+    %spritemapEntry(0, $1E6, $28, 0, 1, 2, 1, $161)
+    %spritemapEntry(0, $1EE, $28, 0, 1, 2, 1, $160)
+    %spritemapEntry(0, $1FB, $10, 0, 0, 2, 1, $1AE)
+    %spritemapEntry(0, $1F3, $10, 0, 0, 2, 1, $1AD)
+    %spritemapEntry(1, $1F3, $00, 0, 0, 2, 1, $1A6)
+    %spritemapEntry(1, $1E1, $1C, 0, 1, 2, 1, $18A)
+    %spritemapEntry(1, $1E9, $14, 0, 1, 2, 1, $179)
+    %spritemapEntry(0, $0D, $28, 0, 1, 2, 2, $162)
+    %spritemapEntry(0, $15, $28, 0, 1, 2, 2, $161)
+    %spritemapEntry(0, $1D, $28, 0, 1, 2, 2, $160)
+    %spritemapEntry(1, $1F9, $FE, 0, 1, 2, 2, $1A9)
+    %spritemapEntry(0, $01, $0E, 0, 1, 2, 2, $1BB)
+    %spritemapEntry(0, $09, $0E, 0, 1, 2, 2, $1AF)
+    %spritemapEntry(1, $01, $FE, 0, 1, 2, 2, $1A8)
+    %spritemapEntry(0, $09, $22, 0, 1, 2, 2, $194)
+    %spritemapEntry(0, $11, $22, 0, 1, 2, 2, $193)
+    %spritemapEntry(1, $09, $12, 0, 1, 2, 2, $173)
+    %spritemapEntry(1, $1F2, $F9, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $02, $F9, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $1F2, $E9, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $02, $E9, 0, 1, 2, 1, $120)
+    %spritemapEntry(1, $1F2, $D9, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $02, $D9, 0, 1, 2, 1, $100)
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemaps_Torizo_AA9CF0:
-    dw $0002,$01F8                                                       ;AA9CF0;
-    db $FC                                                               ;AA9CF4;
-    dw $2B80,$0000                                                       ;AA9CF5;
-    db $FC                                                               ;AA9CF9;
-    dw $6B80                                                             ;AA9CFA;
+    dw $0002                                                             ;AA9CF0;
+    %spritemapEntry(0, $1F8, $FC, 0, 0, 2, 5, $180)
+    %spritemapEntry(0, $00, $FC, 0, 1, 2, 5, $180)
 
 UNUSED_Spritemaps_Torizo_AA9CFC:
-    dw $0004,$01F8                                                       ;AA9CFC;
-    db $00                                                               ;AA9D00;
-    dw $2B90,$01F8                                                       ;AA9D01;
-    db $F8                                                               ;AA9D05;
-    dw $2B80,$0000                                                       ;AA9D06;
-    db $00                                                               ;AA9D0A;
-    dw $6B90,$0000                                                       ;AA9D0B;
-    db $F8                                                               ;AA9D0F;
-    dw $6B80                                                             ;AA9D10;
+    dw $0004                                                             ;AA9CFC;
+    %spritemapEntry(0, $1F8, $00, 0, 0, 2, 5, $190)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 5, $180)
+    %spritemapEntry(0, $00, $00, 0, 1, 2, 5, $190)
+    %spritemapEntry(0, $00, $F8, 0, 1, 2, 5, $180)
 
 UNUSED_Spritemaps_Torizo_AA9D12:
-    dw $0003,$81F8                                                       ;AA9D12;
-    db $F4                                                               ;AA9D16;
-    dw $6B80,$01F8                                                       ;AA9D17;
-    db $04                                                               ;AA9D1B;
-    dw $2B99,$0000                                                       ;AA9D1C;
-    db $04                                                               ;AA9D20;
-    dw $6B99                                                             ;AA9D21;
+    dw $0003                                                             ;AA9D12;
+    %spritemapEntry(1, $1F8, $F4, 0, 1, 2, 5, $180)
+    %spritemapEntry(0, $1F8, $04, 0, 0, 2, 5, $199)
+    %spritemapEntry(0, $00, $04, 0, 1, 2, 5, $199)
 
 UNUSED_Spritemaps_Torizo_AA9D23:
-    dw $0003,$0000                                                       ;AA9D23;
-    db $06                                                               ;AA9D27;
-    dw $6B80,$01F8                                                       ;AA9D28;
-    db $06                                                               ;AA9D2C;
-    dw $2B80,$81F8                                                       ;AA9D2D;
-    db $F2                                                               ;AA9D31;
-    dw $2B2E                                                             ;AA9D32;
+    dw $0003                                                             ;AA9D23;
+    %spritemapEntry(0, $00, $06, 0, 1, 2, 5, $180)
+    %spritemapEntry(0, $1F8, $06, 0, 0, 2, 5, $180)
+    %spritemapEntry(1, $1F8, $F2, 0, 0, 2, 5, $12E)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Spritemaps_Torizo_3D:
-    dw $0016,$000D                                                       ;AA9D34;
-    db $28                                                               ;AA9D38;
-    dw $6362,$0015                                                       ;AA9D39;
-    db $28                                                               ;AA9D3D;
-    dw $6361,$001D                                                       ;AA9D3E;
-    db $28                                                               ;AA9D42;
-    dw $6360,$81F9                                                       ;AA9D43;
-    db $FE                                                               ;AA9D47;
-    dw $63A9,$0001                                                       ;AA9D48;
-    db $0E                                                               ;AA9D4C;
-    dw $63BB,$0009                                                       ;AA9D4D;
-    db $0E                                                               ;AA9D51;
-    dw $63AF,$8001                                                       ;AA9D52;
-    db $FE                                                               ;AA9D56;
-    dw $63A8,$0009                                                       ;AA9D57;
-    db $22                                                               ;AA9D5B;
-    dw $6394,$0011                                                       ;AA9D5C;
-    db $22                                                               ;AA9D60;
-    dw $6393,$8009                                                       ;AA9D61;
-    db $12                                                               ;AA9D65;
-    dw $6373,$01FC                                                       ;AA9D66;
-    db $0D                                                               ;AA9D6A;
-    dw $25AE,$01F4                                                       ;AA9D6B;
-    db $0D                                                               ;AA9D6F;
-    dw $25AD,$81F4                                                       ;AA9D70;
-    db $FD                                                               ;AA9D74;
-    dw $25A6,$81E3                                                       ;AA9D75;
-    db $16                                                               ;AA9D79;
-    dw $658A,$81EB                                                       ;AA9D7A;
-    db $0E                                                               ;AA9D7E;
-    dw $6579,$81DD                                                       ;AA9D7F;
-    db $1F                                                               ;AA9D83;
-    dw $65A0,$81F2                                                       ;AA9D84;
-    db $F9                                                               ;AA9D88;
-    dw $6342,$8002                                                       ;AA9D89;
-    db $F9                                                               ;AA9D8D;
-    dw $6340,$81F2                                                       ;AA9D8E;
-    db $E9                                                               ;AA9D92;
-    dw $6322,$8002                                                       ;AA9D93;
-    db $E9                                                               ;AA9D97;
-    dw $6320,$81F2                                                       ;AA9D98;
-    db $D9                                                               ;AA9D9C;
-    dw $6302,$8002                                                       ;AA9D9D;
-    db $D9                                                               ;AA9DA1;
-    dw $6300                                                             ;AA9DA2;
+    dw $0016                                                             ;AA9D34;
+    %spritemapEntry(0, $0D, $28, 0, 1, 2, 1, $162)
+    %spritemapEntry(0, $15, $28, 0, 1, 2, 1, $161)
+    %spritemapEntry(0, $1D, $28, 0, 1, 2, 1, $160)
+    %spritemapEntry(1, $1F9, $FE, 0, 1, 2, 1, $1A9)
+    %spritemapEntry(0, $01, $0E, 0, 1, 2, 1, $1BB)
+    %spritemapEntry(0, $09, $0E, 0, 1, 2, 1, $1AF)
+    %spritemapEntry(1, $01, $FE, 0, 1, 2, 1, $1A8)
+    %spritemapEntry(0, $09, $22, 0, 1, 2, 1, $194)
+    %spritemapEntry(0, $11, $22, 0, 1, 2, 1, $193)
+    %spritemapEntry(1, $09, $12, 0, 1, 2, 1, $173)
+    %spritemapEntry(0, $1FC, $0D, 0, 0, 2, 2, $1AE)
+    %spritemapEntry(0, $1F4, $0D, 0, 0, 2, 2, $1AD)
+    %spritemapEntry(1, $1F4, $FD, 0, 0, 2, 2, $1A6)
+    %spritemapEntry(1, $1E3, $16, 0, 1, 2, 2, $18A)
+    %spritemapEntry(1, $1EB, $0E, 0, 1, 2, 2, $179)
+    %spritemapEntry(1, $1DD, $1F, 0, 1, 2, 2, $1A0)
+    %spritemapEntry(1, $1F2, $F9, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $02, $F9, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $1F2, $E9, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $02, $E9, 0, 1, 2, 1, $120)
+    %spritemapEntry(1, $1F2, $D9, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $02, $D9, 0, 1, 2, 1, $100)
 
 Spritemaps_Torizo_3E:
-    dw $0015,$01FD                                                       ;AA9DA4;
-    db $0F                                                               ;AA9DA8;
-    dw $63AE,$0005                                                       ;AA9DA9;
-    db $0F                                                               ;AA9DAD;
-    dw $63AD,$81FD                                                       ;AA9DAE;
-    db $FF                                                               ;AA9DB2;
-    dw $63A6,$0008                                                       ;AA9DB3;
-    db $28                                                               ;AA9DB7;
-    dw $6362,$0010                                                       ;AA9DB8;
-    db $28                                                               ;AA9DBC;
-    dw $6361,$0018                                                       ;AA9DBD;
-    db $28                                                               ;AA9DC1;
-    dw $6360,$0004                                                       ;AA9DC2;
-    db $23                                                               ;AA9DC6;
-    dw $6394,$000C                                                       ;AA9DC7;
-    db $23                                                               ;AA9DCB;
-    dw $6393,$8004                                                       ;AA9DCC;
-    db $13                                                               ;AA9DD0;
-    dw $6373,$81E7                                                       ;AA9DD1;
-    db $1E                                                               ;AA9DD5;
-    dw $65A0,$01F9                                                       ;AA9DD6;
-    db $10                                                               ;AA9DDA;
-    dw $65AC,$0001                                                       ;AA9DDB;
-    db $10                                                               ;AA9DDF;
-    dw $65AB,$81F9                                                       ;AA9DE0;
-    db $00                                                               ;AA9DE4;
-    dw $65A4,$81EB                                                       ;AA9DE5;
-    db $18                                                               ;AA9DE9;
-    dw $658A,$81F3                                                       ;AA9DEA;
-    db $10                                                               ;AA9DEE;
-    dw $6579,$81F2                                                       ;AA9DEF;
-    db $F8                                                               ;AA9DF3;
-    dw $6342,$8002                                                       ;AA9DF4;
-    db $F8                                                               ;AA9DF8;
-    dw $6340,$81F2                                                       ;AA9DF9;
-    db $E8                                                               ;AA9DFD;
-    dw $6322,$8002                                                       ;AA9DFE;
-    db $E8                                                               ;AA9E02;
-    dw $6320,$81F2                                                       ;AA9E03;
-    db $D8                                                               ;AA9E07;
-    dw $6302,$8002                                                       ;AA9E08;
-    db $D8                                                               ;AA9E0C;
-    dw $6300                                                             ;AA9E0D;
+    dw $0015                                                             ;AA9DA4;
+    %spritemapEntry(0, $1FD, $0F, 0, 1, 2, 1, $1AE)
+    %spritemapEntry(0, $05, $0F, 0, 1, 2, 1, $1AD)
+    %spritemapEntry(1, $1FD, $FF, 0, 1, 2, 1, $1A6)
+    %spritemapEntry(0, $08, $28, 0, 1, 2, 1, $162)
+    %spritemapEntry(0, $10, $28, 0, 1, 2, 1, $161)
+    %spritemapEntry(0, $18, $28, 0, 1, 2, 1, $160)
+    %spritemapEntry(0, $04, $23, 0, 1, 2, 1, $194)
+    %spritemapEntry(0, $0C, $23, 0, 1, 2, 1, $193)
+    %spritemapEntry(1, $04, $13, 0, 1, 2, 1, $173)
+    %spritemapEntry(1, $1E7, $1E, 0, 1, 2, 2, $1A0)
+    %spritemapEntry(0, $1F9, $10, 0, 1, 2, 2, $1AC)
+    %spritemapEntry(0, $01, $10, 0, 1, 2, 2, $1AB)
+    %spritemapEntry(1, $1F9, $00, 0, 1, 2, 2, $1A4)
+    %spritemapEntry(1, $1EB, $18, 0, 1, 2, 2, $18A)
+    %spritemapEntry(1, $1F3, $10, 0, 1, 2, 2, $179)
+    %spritemapEntry(1, $1F2, $F8, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $02, $F8, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $1F2, $E8, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $02, $E8, 0, 1, 2, 1, $120)
+    %spritemapEntry(1, $1F2, $D8, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $02, $D8, 0, 1, 2, 1, $100)
 
 Spritemaps_Torizo_3F:
-    dw $0015,$01F7                                                       ;AA9E0F;
-    db $0F                                                               ;AA9E13;
-    dw $63AC,$01FF                                                       ;AA9E14;
-    db $0F                                                               ;AA9E18;
-    dw $63AB,$81F7                                                       ;AA9E19;
-    db $FF                                                               ;AA9E1D;
-    dw $63A4,$01F5                                                       ;AA9E1E;
-    db $28                                                               ;AA9E22;
-    dw $6362,$01FD                                                       ;AA9E23;
-    db $28                                                               ;AA9E27;
-    dw $6361,$0005                                                       ;AA9E28;
-    db $28                                                               ;AA9E2C;
-    dw $6360,$01F6                                                       ;AA9E2D;
-    db $21                                                               ;AA9E31;
-    dw $6396,$01FE                                                       ;AA9E32;
-    db $21                                                               ;AA9E36;
-    dw $6395,$81F6                                                       ;AA9E37;
-    db $11                                                               ;AA9E3B;
-    dw $6375,$01FD                                                       ;AA9E3C;
-    db $0E                                                               ;AA9E40;
-    dw $65AE,$0005                                                       ;AA9E41;
-    db $0E                                                               ;AA9E45;
-    dw $65AD,$81FD                                                       ;AA9E46;
-    db $FE                                                               ;AA9E4A;
-    dw $65A6,$81F3                                                       ;AA9E4B;
-    db $15                                                               ;AA9E4F;
-    dw $658A,$81FB                                                       ;AA9E50;
-    db $0D                                                               ;AA9E54;
-    dw $6579,$81F1                                                       ;AA9E55;
-    db $1F                                                               ;AA9E59;
-    dw $65A2,$81F2                                                       ;AA9E5A;
-    db $F7                                                               ;AA9E5E;
-    dw $6342,$8002                                                       ;AA9E5F;
-    db $F7                                                               ;AA9E63;
-    dw $6340,$81F2                                                       ;AA9E64;
-    db $E7                                                               ;AA9E68;
-    dw $6322,$8002                                                       ;AA9E69;
-    db $E7                                                               ;AA9E6D;
-    dw $6320,$81F2                                                       ;AA9E6E;
-    db $D7                                                               ;AA9E72;
-    dw $6302,$8002                                                       ;AA9E73;
-    db $D7                                                               ;AA9E77;
-    dw $6300                                                             ;AA9E78;
+    dw $0015                                                             ;AA9E0F;
+    %spritemapEntry(0, $1F7, $0F, 0, 1, 2, 1, $1AC)
+    %spritemapEntry(0, $1FF, $0F, 0, 1, 2, 1, $1AB)
+    %spritemapEntry(1, $1F7, $FF, 0, 1, 2, 1, $1A4)
+    %spritemapEntry(0, $1F5, $28, 0, 1, 2, 1, $162)
+    %spritemapEntry(0, $1FD, $28, 0, 1, 2, 1, $161)
+    %spritemapEntry(0, $05, $28, 0, 1, 2, 1, $160)
+    %spritemapEntry(0, $1F6, $21, 0, 1, 2, 1, $196)
+    %spritemapEntry(0, $1FE, $21, 0, 1, 2, 1, $195)
+    %spritemapEntry(1, $1F6, $11, 0, 1, 2, 1, $175)
+    %spritemapEntry(0, $1FD, $0E, 0, 1, 2, 2, $1AE)
+    %spritemapEntry(0, $05, $0E, 0, 1, 2, 2, $1AD)
+    %spritemapEntry(1, $1FD, $FE, 0, 1, 2, 2, $1A6)
+    %spritemapEntry(1, $1F3, $15, 0, 1, 2, 2, $18A)
+    %spritemapEntry(1, $1FB, $0D, 0, 1, 2, 2, $179)
+    %spritemapEntry(1, $1F1, $1F, 0, 1, 2, 2, $1A2)
+    %spritemapEntry(1, $1F2, $F7, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $02, $F7, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $1F2, $E7, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $02, $E7, 0, 1, 2, 1, $120)
+    %spritemapEntry(1, $1F2, $D7, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $02, $D7, 0, 1, 2, 1, $100)
 
 Spritemaps_Torizo_40:
-    dw $0016,$01FC                                                       ;AA9E7A;
-    db $0E                                                               ;AA9E7E;
-    dw $23AE,$01F4                                                       ;AA9E7F;
-    db $0E                                                               ;AA9E83;
-    dw $23AD,$81F4                                                       ;AA9E84;
-    db $FE                                                               ;AA9E88;
-    dw $23A6,$01E5                                                       ;AA9E89;
-    db $28                                                               ;AA9E8D;
-    dw $6362,$01ED                                                       ;AA9E8E;
-    db $28                                                               ;AA9E92;
-    dw $6361,$01F5                                                       ;AA9E93;
-    db $28                                                               ;AA9E97;
-    dw $6360,$01EB                                                       ;AA9E98;
-    db $22                                                               ;AA9E9C;
-    dw $6398,$01F3                                                       ;AA9E9D;
-    db $22                                                               ;AA9EA1;
-    dw $6397,$81EB                                                       ;AA9EA2;
-    db $12                                                               ;AA9EA6;
-    dw $6377,$81FA                                                       ;AA9EA7;
-    db $FC                                                               ;AA9EAB;
-    dw $65A9,$0002                                                       ;AA9EAC;
-    db $0C                                                               ;AA9EB0;
-    dw $65BB,$000A                                                       ;AA9EB1;
-    db $0C                                                               ;AA9EB5;
-    dw $65AF,$8002                                                       ;AA9EB6;
-    db $FC                                                               ;AA9EBA;
-    dw $65A8,$81FE                                                       ;AA9EBB;
-    db $1F                                                               ;AA9EBF;
-    dw $65A2,$0009                                                       ;AA9EC0;
-    db $1F                                                               ;AA9EC4;
-    dw $6597,$8001                                                       ;AA9EC5;
-    db $0F                                                               ;AA9EC9;
-    dw $6577,$81F2                                                       ;AA9ECA;
-    db $F8                                                               ;AA9ECE;
-    dw $6342,$8002                                                       ;AA9ECF;
-    db $F8                                                               ;AA9ED3;
-    dw $6340,$81F2                                                       ;AA9ED4;
-    db $E8                                                               ;AA9ED8;
-    dw $6322,$8002                                                       ;AA9ED9;
-    db $E8                                                               ;AA9EDD;
-    dw $6320,$81F2                                                       ;AA9EDE;
-    db $D8                                                               ;AA9EE2;
-    dw $6302,$8002                                                       ;AA9EE3;
-    db $D8                                                               ;AA9EE7;
-    dw $6300                                                             ;AA9EE8;
+    dw $0016                                                             ;AA9E7A;
+    %spritemapEntry(0, $1FC, $0E, 0, 0, 2, 1, $1AE)
+    %spritemapEntry(0, $1F4, $0E, 0, 0, 2, 1, $1AD)
+    %spritemapEntry(1, $1F4, $FE, 0, 0, 2, 1, $1A6)
+    %spritemapEntry(0, $1E5, $28, 0, 1, 2, 1, $162)
+    %spritemapEntry(0, $1ED, $28, 0, 1, 2, 1, $161)
+    %spritemapEntry(0, $1F5, $28, 0, 1, 2, 1, $160)
+    %spritemapEntry(0, $1EB, $22, 0, 1, 2, 1, $198)
+    %spritemapEntry(0, $1F3, $22, 0, 1, 2, 1, $197)
+    %spritemapEntry(1, $1EB, $12, 0, 1, 2, 1, $177)
+    %spritemapEntry(1, $1FA, $FC, 0, 1, 2, 2, $1A9)
+    %spritemapEntry(0, $02, $0C, 0, 1, 2, 2, $1BB)
+    %spritemapEntry(0, $0A, $0C, 0, 1, 2, 2, $1AF)
+    %spritemapEntry(1, $02, $FC, 0, 1, 2, 2, $1A8)
+    %spritemapEntry(1, $1FE, $1F, 0, 1, 2, 2, $1A2)
+    %spritemapEntry(0, $09, $1F, 0, 1, 2, 2, $197)
+    %spritemapEntry(1, $01, $0F, 0, 1, 2, 2, $177)
+    %spritemapEntry(1, $1F2, $F8, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $02, $F8, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $1F2, $E8, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $02, $E8, 0, 1, 2, 1, $120)
+    %spritemapEntry(1, $1F2, $D8, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $02, $D8, 0, 1, 2, 1, $100)
 
 Spritemaps_Torizo_41:
-    dw $0016,$01FC                                                       ;AA9EEA;
-    db $0E                                                               ;AA9EEE;
-    dw $23AE,$01F4                                                       ;AA9EEF;
-    db $0E                                                               ;AA9EF3;
-    dw $23AD,$81F4                                                       ;AA9EF4;
-    db $FE                                                               ;AA9EF8;
-    dw $23A6,$81E3                                                       ;AA9EF9;
-    db $17                                                               ;AA9EFD;
-    dw $638A,$81EB                                                       ;AA9EFE;
-    db $0F                                                               ;AA9F02;
-    dw $6379,$81DD                                                       ;AA9F03;
-    db $20                                                               ;AA9F07;
-    dw $63A0,$000D                                                       ;AA9F08;
-    db $28                                                               ;AA9F0C;
-    dw $6562,$0015                                                       ;AA9F0D;
-    db $28                                                               ;AA9F11;
-    dw $6561,$001D                                                       ;AA9F12;
-    db $28                                                               ;AA9F16;
-    dw $6560,$81F9                                                       ;AA9F17;
-    db $FE                                                               ;AA9F1B;
-    dw $65A9,$0001                                                       ;AA9F1C;
-    db $0E                                                               ;AA9F20;
-    dw $65BB,$0009                                                       ;AA9F21;
-    db $0E                                                               ;AA9F25;
-    dw $65AF,$8001                                                       ;AA9F26;
-    db $FE                                                               ;AA9F2A;
-    dw $65A8,$0009                                                       ;AA9F2B;
-    db $22                                                               ;AA9F2F;
-    dw $6594,$0011                                                       ;AA9F30;
-    db $22                                                               ;AA9F34;
-    dw $6593,$8009                                                       ;AA9F35;
-    db $12                                                               ;AA9F39;
-    dw $6573,$81F2                                                       ;AA9F3A;
-    db $F9                                                               ;AA9F3E;
-    dw $6342,$8002                                                       ;AA9F3F;
-    db $F9                                                               ;AA9F43;
-    dw $6340,$81F2                                                       ;AA9F44;
-    db $E9                                                               ;AA9F48;
-    dw $6322,$8002                                                       ;AA9F49;
-    db $E9                                                               ;AA9F4D;
-    dw $6320,$81F2                                                       ;AA9F4E;
-    db $D9                                                               ;AA9F52;
-    dw $6302,$8002                                                       ;AA9F53;
-    db $D9                                                               ;AA9F57;
-    dw $6300                                                             ;AA9F58;
+    dw $0016                                                             ;AA9EEA;
+    %spritemapEntry(0, $1FC, $0E, 0, 0, 2, 1, $1AE)
+    %spritemapEntry(0, $1F4, $0E, 0, 0, 2, 1, $1AD)
+    %spritemapEntry(1, $1F4, $FE, 0, 0, 2, 1, $1A6)
+    %spritemapEntry(1, $1E3, $17, 0, 1, 2, 1, $18A)
+    %spritemapEntry(1, $1EB, $0F, 0, 1, 2, 1, $179)
+    %spritemapEntry(1, $1DD, $20, 0, 1, 2, 1, $1A0)
+    %spritemapEntry(0, $0D, $28, 0, 1, 2, 2, $162)
+    %spritemapEntry(0, $15, $28, 0, 1, 2, 2, $161)
+    %spritemapEntry(0, $1D, $28, 0, 1, 2, 2, $160)
+    %spritemapEntry(1, $1F9, $FE, 0, 1, 2, 2, $1A9)
+    %spritemapEntry(0, $01, $0E, 0, 1, 2, 2, $1BB)
+    %spritemapEntry(0, $09, $0E, 0, 1, 2, 2, $1AF)
+    %spritemapEntry(1, $01, $FE, 0, 1, 2, 2, $1A8)
+    %spritemapEntry(0, $09, $22, 0, 1, 2, 2, $194)
+    %spritemapEntry(0, $11, $22, 0, 1, 2, 2, $193)
+    %spritemapEntry(1, $09, $12, 0, 1, 2, 2, $173)
+    %spritemapEntry(1, $1F2, $F9, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $02, $F9, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $1F2, $E9, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $02, $E9, 0, 1, 2, 1, $120)
+    %spritemapEntry(1, $1F2, $D9, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $02, $D9, 0, 1, 2, 1, $100)
 
 Spritemaps_Torizo_42:
-    dw $0015,$81E6                                                       ;AA9F5A;
-    db $1D                                                               ;AA9F5E;
-    dw $63A0,$01F8                                                       ;AA9F5F;
-    db $0F                                                               ;AA9F63;
-    dw $63AC,$0000                                                       ;AA9F64;
-    db $0F                                                               ;AA9F68;
-    dw $63AB,$81F8                                                       ;AA9F69;
-    db $FF                                                               ;AA9F6D;
-    dw $63A4,$81EA                                                       ;AA9F6E;
-    db $17                                                               ;AA9F72;
-    dw $638A,$81F2                                                       ;AA9F73;
-    db $0F                                                               ;AA9F77;
-    dw $6379,$01FB                                                       ;AA9F78;
-    db $0F                                                               ;AA9F7C;
-    dw $65AE,$0003                                                       ;AA9F7D;
-    db $0F                                                               ;AA9F81;
-    dw $65AD,$81FB                                                       ;AA9F82;
-    db $FF                                                               ;AA9F86;
-    dw $65A6,$0006                                                       ;AA9F87;
-    db $28                                                               ;AA9F8B;
-    dw $6562,$000E                                                       ;AA9F8C;
-    db $28                                                               ;AA9F90;
-    dw $6561,$0016                                                       ;AA9F91;
-    db $28                                                               ;AA9F95;
-    dw $6560,$0002                                                       ;AA9F96;
-    db $23                                                               ;AA9F9A;
-    dw $6594,$000A                                                       ;AA9F9B;
-    db $23                                                               ;AA9F9F;
-    dw $6593,$8002                                                       ;AA9FA0;
-    db $13                                                               ;AA9FA4;
-    dw $6573,$81F2                                                       ;AA9FA5;
-    db $F8                                                               ;AA9FA9;
-    dw $6342,$8002                                                       ;AA9FAA;
-    db $F8                                                               ;AA9FAE;
-    dw $6340,$81F2                                                       ;AA9FAF;
-    db $E8                                                               ;AA9FB3;
-    dw $6322,$8002                                                       ;AA9FB4;
-    db $E8                                                               ;AA9FB8;
-    dw $6320,$81F2                                                       ;AA9FB9;
-    db $D8                                                               ;AA9FBD;
-    dw $6302,$8002                                                       ;AA9FBE;
-    db $D8                                                               ;AA9FC2;
-    dw $6300                                                             ;AA9FC3;
+    dw $0015                                                             ;AA9F5A;
+    %spritemapEntry(1, $1E6, $1D, 0, 1, 2, 1, $1A0)
+    %spritemapEntry(0, $1F8, $0F, 0, 1, 2, 1, $1AC)
+    %spritemapEntry(0, $00, $0F, 0, 1, 2, 1, $1AB)
+    %spritemapEntry(1, $1F8, $FF, 0, 1, 2, 1, $1A4)
+    %spritemapEntry(1, $1EA, $17, 0, 1, 2, 1, $18A)
+    %spritemapEntry(1, $1F2, $0F, 0, 1, 2, 1, $179)
+    %spritemapEntry(0, $1FB, $0F, 0, 1, 2, 2, $1AE)
+    %spritemapEntry(0, $03, $0F, 0, 1, 2, 2, $1AD)
+    %spritemapEntry(1, $1FB, $FF, 0, 1, 2, 2, $1A6)
+    %spritemapEntry(0, $06, $28, 0, 1, 2, 2, $162)
+    %spritemapEntry(0, $0E, $28, 0, 1, 2, 2, $161)
+    %spritemapEntry(0, $16, $28, 0, 1, 2, 2, $160)
+    %spritemapEntry(0, $02, $23, 0, 1, 2, 2, $194)
+    %spritemapEntry(0, $0A, $23, 0, 1, 2, 2, $193)
+    %spritemapEntry(1, $02, $13, 0, 1, 2, 2, $173)
+    %spritemapEntry(1, $1F2, $F8, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $02, $F8, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $1F2, $E8, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $02, $E8, 0, 1, 2, 1, $120)
+    %spritemapEntry(1, $1F2, $D8, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $02, $D8, 0, 1, 2, 1, $100)
 
 Spritemaps_Torizo_43:
-    dw $0015,$01FD                                                       ;AA9FC5;
-    db $0E                                                               ;AA9FC9;
-    dw $63AE,$0005                                                       ;AA9FCA;
-    db $0E                                                               ;AA9FCE;
-    dw $63AD,$81FD                                                       ;AA9FCF;
-    db $FE                                                               ;AA9FD3;
-    dw $63A6,$81F3                                                       ;AA9FD4;
-    db $15                                                               ;AA9FD8;
-    dw $638A,$81FB                                                       ;AA9FD9;
-    db $0D                                                               ;AA9FDD;
-    dw $6379,$81F1                                                       ;AA9FDE;
-    db $1F                                                               ;AA9FE2;
-    dw $63A2,$01F7                                                       ;AA9FE3;
-    db $0F                                                               ;AA9FE7;
-    dw $65AC,$01FF                                                       ;AA9FE8;
-    db $0F                                                               ;AA9FEC;
-    dw $65AB,$81F7                                                       ;AA9FED;
-    db $FF                                                               ;AA9FF1;
-    dw $65A4,$01F5                                                       ;AA9FF2;
-    db $28                                                               ;AA9FF6;
-    dw $6562,$01FD                                                       ;AA9FF7;
-    db $28                                                               ;AA9FFB;
-    dw $6561,$0005                                                       ;AA9FFC;
-    db $28                                                               ;AAA000;
-    dw $6560,$01F6                                                       ;AAA001;
-    db $21                                                               ;AAA005;
-    dw $6596,$01FE                                                       ;AAA006;
-    db $21                                                               ;AAA00A;
-    dw $6595,$81F6                                                       ;AAA00B;
-    db $11                                                               ;AAA00F;
-    dw $6575,$81F2                                                       ;AAA010;
-    db $F7                                                               ;AAA014;
-    dw $6342,$8002                                                       ;AAA015;
-    db $F7                                                               ;AAA019;
-    dw $6340,$81F2                                                       ;AAA01A;
-    db $E7                                                               ;AAA01E;
-    dw $6322,$8002                                                       ;AAA01F;
-    db $E7                                                               ;AAA023;
-    dw $6320,$81F2                                                       ;AAA024;
-    db $D7                                                               ;AAA028;
-    dw $6302,$8002                                                       ;AAA029;
-    db $D7                                                               ;AAA02D;
-    dw $6300                                                             ;AAA02E;
+    dw $0015                                                             ;AA9FC5;
+    %spritemapEntry(0, $1FD, $0E, 0, 1, 2, 1, $1AE)
+    %spritemapEntry(0, $05, $0E, 0, 1, 2, 1, $1AD)
+    %spritemapEntry(1, $1FD, $FE, 0, 1, 2, 1, $1A6)
+    %spritemapEntry(1, $1F3, $15, 0, 1, 2, 1, $18A)
+    %spritemapEntry(1, $1FB, $0D, 0, 1, 2, 1, $179)
+    %spritemapEntry(1, $1F1, $1F, 0, 1, 2, 1, $1A2)
+    %spritemapEntry(0, $1F7, $0F, 0, 1, 2, 2, $1AC)
+    %spritemapEntry(0, $1FF, $0F, 0, 1, 2, 2, $1AB)
+    %spritemapEntry(1, $1F7, $FF, 0, 1, 2, 2, $1A4)
+    %spritemapEntry(0, $1F5, $28, 0, 1, 2, 2, $162)
+    %spritemapEntry(0, $1FD, $28, 0, 1, 2, 2, $161)
+    %spritemapEntry(0, $05, $28, 0, 1, 2, 2, $160)
+    %spritemapEntry(0, $1F6, $21, 0, 1, 2, 2, $196)
+    %spritemapEntry(0, $1FE, $21, 0, 1, 2, 2, $195)
+    %spritemapEntry(1, $1F6, $11, 0, 1, 2, 2, $175)
+    %spritemapEntry(1, $1F2, $F7, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $02, $F7, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $1F2, $E7, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $02, $E7, 0, 1, 2, 1, $120)
+    %spritemapEntry(1, $1F2, $D7, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $02, $D7, 0, 1, 2, 1, $100)
 
 Spritemaps_Torizo_44:
-    dw $0016,$81F9                                                       ;AAA030;
-    db $FC                                                               ;AAA034;
-    dw $63A9,$0001                                                       ;AAA035;
-    db $0C                                                               ;AAA039;
-    dw $63BB,$0009                                                       ;AAA03A;
-    db $0C                                                               ;AAA03E;
-    dw $63AF,$8001                                                       ;AAA03F;
-    db $FC                                                               ;AAA043;
-    dw $63A8,$81FD                                                       ;AAA044;
-    db $1F                                                               ;AAA048;
-    dw $63A2,$0008                                                       ;AAA049;
-    db $1F                                                               ;AAA04D;
-    dw $6397,$8000                                                       ;AAA04E;
-    db $0F                                                               ;AAA052;
-    dw $6377,$01FA                                                       ;AAA053;
-    db $0E                                                               ;AAA057;
-    dw $25AE,$01F2                                                       ;AAA058;
-    db $0E                                                               ;AAA05C;
-    dw $25AD,$81F2                                                       ;AAA05D;
-    db $FE                                                               ;AAA061;
-    dw $25A6,$01E3                                                       ;AAA062;
-    db $28                                                               ;AAA066;
-    dw $6562,$01EB                                                       ;AAA067;
-    db $28                                                               ;AAA06B;
-    dw $6561,$01F3                                                       ;AAA06C;
-    db $28                                                               ;AAA070;
-    dw $6560,$01E9                                                       ;AAA071;
-    db $22                                                               ;AAA075;
-    dw $6598,$01F1                                                       ;AAA076;
-    db $22                                                               ;AAA07A;
-    dw $6597,$81E9                                                       ;AAA07B;
-    db $12                                                               ;AAA07F;
-    dw $6577,$81F2                                                       ;AAA080;
-    db $F8                                                               ;AAA084;
-    dw $6342,$8002                                                       ;AAA085;
-    db $F8                                                               ;AAA089;
-    dw $6340,$81F2                                                       ;AAA08A;
-    db $E8                                                               ;AAA08E;
-    dw $6322,$8002                                                       ;AAA08F;
-    db $E8                                                               ;AAA093;
-    dw $6320,$81F2                                                       ;AAA094;
-    db $D8                                                               ;AAA098;
-    dw $6302,$8002                                                       ;AAA099;
-    db $D8                                                               ;AAA09D;
-    dw $6300                                                             ;AAA09E;
+    dw $0016                                                             ;AAA030;
+    %spritemapEntry(1, $1F9, $FC, 0, 1, 2, 1, $1A9)
+    %spritemapEntry(0, $01, $0C, 0, 1, 2, 1, $1BB)
+    %spritemapEntry(0, $09, $0C, 0, 1, 2, 1, $1AF)
+    %spritemapEntry(1, $01, $FC, 0, 1, 2, 1, $1A8)
+    %spritemapEntry(1, $1FD, $1F, 0, 1, 2, 1, $1A2)
+    %spritemapEntry(0, $08, $1F, 0, 1, 2, 1, $197)
+    %spritemapEntry(1, $00, $0F, 0, 1, 2, 1, $177)
+    %spritemapEntry(0, $1FA, $0E, 0, 0, 2, 2, $1AE)
+    %spritemapEntry(0, $1F2, $0E, 0, 0, 2, 2, $1AD)
+    %spritemapEntry(1, $1F2, $FE, 0, 0, 2, 2, $1A6)
+    %spritemapEntry(0, $1E3, $28, 0, 1, 2, 2, $162)
+    %spritemapEntry(0, $1EB, $28, 0, 1, 2, 2, $161)
+    %spritemapEntry(0, $1F3, $28, 0, 1, 2, 2, $160)
+    %spritemapEntry(0, $1E9, $22, 0, 1, 2, 2, $198)
+    %spritemapEntry(0, $1F1, $22, 0, 1, 2, 2, $197)
+    %spritemapEntry(1, $1E9, $12, 0, 1, 2, 2, $177)
+    %spritemapEntry(1, $1F2, $F8, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $02, $F8, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $1F2, $E8, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $02, $E8, 0, 1, 2, 1, $120)
+    %spritemapEntry(1, $1F2, $D8, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $02, $D8, 0, 1, 2, 1, $100)
 
 Spritemaps_Torizo_45:
-    dw $0007,$01E8                                                       ;AAA0A0;
-    db $25                                                               ;AAA0A4;
-    dw $237B,$01E8                                                       ;AAA0A5;
-    db $1D                                                               ;AAA0A9;
-    dw $236B,$81EB                                                       ;AAA0AA;
-    db $FB                                                               ;AAA0AE;
-    dw $630C,$01E8                                                       ;AAA0AF;
-    db $16                                                               ;AAA0B3;
-    dw $6364,$01E8                                                       ;AAA0B4;
-    db $0E                                                               ;AAA0B8;
-    dw $6354,$01E8                                                       ;AAA0B9;
-    db $06                                                               ;AAA0BD;
-    dw $6344,$81F8                                                       ;AAA0BE;
-    db $F8                                                               ;AAA0C2;
-    dw $232A                                                             ;AAA0C3;
+    dw $0007                                                             ;AAA0A0;
+    %spritemapEntry(0, $1E8, $25, 0, 0, 2, 1, $17B)
+    %spritemapEntry(0, $1E8, $1D, 0, 0, 2, 1, $16B)
+    %spritemapEntry(1, $1EB, $FB, 0, 1, 2, 1, $10C)
+    %spritemapEntry(0, $1E8, $16, 0, 1, 2, 1, $164)
+    %spritemapEntry(0, $1E8, $0E, 0, 1, 2, 1, $154)
+    %spritemapEntry(0, $1E8, $06, 0, 1, 2, 1, $144)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 1, $12A)
 
 Spritemaps_Torizo_46:
-    dw $0005,$81F6                                                       ;AAA0C5;
-    db $23                                                               ;AAA0C9;
-    dw $636C,$81EF                                                       ;AAA0CA;
-    db $02                                                               ;AAA0CE;
-    dw $630A,$01F6                                                       ;AAA0CF;
-    db $1F                                                               ;AAA0D3;
-    dw $2366,$81EE                                                       ;AAA0D4;
-    db $0F                                                               ;AAA0D8;
-    dw $2345,$81F8                                                       ;AAA0D9;
-    db $F8                                                               ;AAA0DD;
-    dw $6324                                                             ;AAA0DE;
+    dw $0005                                                             ;AAA0C5;
+    %spritemapEntry(1, $1F6, $23, 0, 1, 2, 1, $16C)
+    %spritemapEntry(1, $1EF, $02, 0, 1, 2, 1, $10A)
+    %spritemapEntry(0, $1F6, $1F, 0, 0, 2, 1, $166)
+    %spritemapEntry(1, $1EE, $0F, 0, 0, 2, 1, $145)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 1, $124)
 
 Spritemaps_Torizo_47:
-    dw $0005,$8000                                                       ;AAA0E0;
-    db $28                                                               ;AAA0E4;
-    dw $636C,$01FF                                                       ;AAA0E5;
-    db $24                                                               ;AAA0E9;
-    dw $2366,$81F7                                                       ;AAA0EA;
-    db $14                                                               ;AAA0EE;
-    dw $2345,$81F4                                                       ;AAA0EF;
-    db $05                                                               ;AAA0F3;
-    dw $6308,$81F8                                                       ;AAA0F4;
-    db $F8                                                               ;AAA0F8;
-    dw $2328                                                             ;AAA0F9;
+    dw $0005                                                             ;AAA0E0;
+    %spritemapEntry(1, $00, $28, 0, 1, 2, 1, $16C)
+    %spritemapEntry(0, $1FF, $24, 0, 0, 2, 1, $166)
+    %spritemapEntry(1, $1F7, $14, 0, 0, 2, 1, $145)
+    %spritemapEntry(1, $1F4, $05, 0, 1, 2, 1, $108)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 1, $128)
 
 Spritemaps_Torizo_48:
-    dw $0005,$8009                                                       ;AAA0FB;
-    db $24                                                               ;AAA0FF;
-    dw $636C,$81F8                                                       ;AAA100;
-    db $06                                                               ;AAA104;
-    dw $6306,$8004                                                       ;AAA105;
-    db $1B                                                               ;AAA109;
-    dw $2358,$81FC                                                       ;AAA10A;
-    db $13                                                               ;AAA10E;
-    dw $2347,$81F8                                                       ;AAA10F;
-    db $F8                                                               ;AAA113;
-    dw $6326                                                             ;AAA114;
+    dw $0005                                                             ;AAA0FB;
+    %spritemapEntry(1, $09, $24, 0, 1, 2, 1, $16C)
+    %spritemapEntry(1, $1F8, $06, 0, 1, 2, 1, $106)
+    %spritemapEntry(1, $04, $1B, 0, 0, 2, 1, $158)
+    %spritemapEntry(1, $1FC, $13, 0, 0, 2, 1, $147)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 1, $126)
 
 Spritemaps_Torizo_49:
-    dw $0005,$8012                                                       ;AAA116;
-    db $19                                                               ;AAA11A;
-    dw $636C,$81FC                                                       ;AAA11B;
-    db $05                                                               ;AAA11F;
-    dw $2308,$0014                                                       ;AAA120;
-    db $16                                                               ;AAA124;
-    dw $235C,$8004                                                       ;AAA125;
-    db $0E                                                               ;AAA129;
-    dw $234A,$81F8                                                       ;AAA12A;
-    db $F8                                                               ;AAA12E;
-    dw $6328                                                             ;AAA12F;
+    dw $0005                                                             ;AAA116;
+    %spritemapEntry(1, $12, $19, 0, 1, 2, 1, $16C)
+    %spritemapEntry(1, $1FC, $05, 0, 0, 2, 1, $108)
+    %spritemapEntry(0, $14, $16, 0, 0, 2, 1, $15C)
+    %spritemapEntry(1, $04, $0E, 0, 0, 2, 1, $14A)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 1, $128)
 
 Spritemaps_Torizo_4A:
-    dw $0007,$8001                                                       ;AAA131;
-    db $02                                                               ;AAA135;
-    dw $230A,$002A                                                       ;AAA136;
-    db $0B                                                               ;AAA13A;
-    dw $238F,$0022                                                       ;AAA13B;
-    db $0B                                                               ;AAA13F;
-    dw $238E,$001E                                                       ;AAA140;
-    db $0B                                                               ;AAA144;
-    dw $234F,$0016                                                       ;AAA145;
-    db $0B                                                               ;AAA149;
-    dw $234E,$000E                                                       ;AAA14A;
-    db $0B                                                               ;AAA14E;
-    dw $234D,$81F8                                                       ;AAA14F;
-    db $F8                                                               ;AAA153;
-    dw $2324                                                             ;AAA154;
+    dw $0007                                                             ;AAA131;
+    %spritemapEntry(1, $01, $02, 0, 0, 2, 1, $10A)
+    %spritemapEntry(0, $2A, $0B, 0, 0, 2, 1, $18F)
+    %spritemapEntry(0, $22, $0B, 0, 0, 2, 1, $18E)
+    %spritemapEntry(0, $1E, $0B, 0, 0, 2, 1, $14F)
+    %spritemapEntry(0, $16, $0B, 0, 0, 2, 1, $14E)
+    %spritemapEntry(0, $0E, $0B, 0, 0, 2, 1, $14D)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 1, $124)
 
 Spritemaps_Torizo_4B:
-    dw $0005,$801C                                                       ;AAA156;
-    db $F6                                                               ;AAA15A;
-    dw $A36E,$8001                                                       ;AAA15B;
-    db $02                                                               ;AAA15F;
-    dw $230A,$8015                                                       ;AAA160;
-    db $FA                                                               ;AAA164;
-    dw $A358,$800D                                                       ;AAA165;
-    db $02                                                               ;AAA169;
-    dw $A347,$81F8                                                       ;AAA16A;
-    db $F8                                                               ;AAA16E;
-    dw $2324                                                             ;AAA16F;
+    dw $0005                                                             ;AAA156;
+    %spritemapEntry(1, $1C, $F6, 1, 0, 2, 1, $16E)
+    %spritemapEntry(1, $01, $02, 0, 0, 2, 1, $10A)
+    %spritemapEntry(1, $15, $FA, 1, 0, 2, 1, $158)
+    %spritemapEntry(1, $0D, $02, 1, 0, 2, 1, $147)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 1, $124)
 
 Spritemaps_Torizo_4C:
-    dw $0007,$0012                                                       ;AAA171;
-    db $DD                                                               ;AAA175;
-    dw $E37B,$0012                                                       ;AAA176;
-    db $E5                                                               ;AAA17A;
-    dw $E36B,$8006                                                       ;AAA17B;
-    db $F8                                                               ;AAA17F;
-    dw $230E,$0012                                                       ;AAA180;
-    db $EB                                                               ;AAA184;
-    dw $A364,$0012                                                       ;AAA185;
-    db $F3                                                               ;AAA189;
-    dw $A354,$0012                                                       ;AAA18A;
-    db $FB                                                               ;AAA18E;
-    dw $A344,$81F8                                                       ;AAA18F;
-    db $F8                                                               ;AAA193;
-    dw $632A                                                             ;AAA194;
+    dw $0007                                                             ;AAA171;
+    %spritemapEntry(0, $12, $DD, 1, 1, 2, 1, $17B)
+    %spritemapEntry(0, $12, $E5, 1, 1, 2, 1, $16B)
+    %spritemapEntry(1, $06, $F8, 0, 0, 2, 1, $10E)
+    %spritemapEntry(0, $12, $EB, 1, 0, 2, 1, $164)
+    %spritemapEntry(0, $12, $F3, 1, 0, 2, 1, $154)
+    %spritemapEntry(0, $12, $FB, 1, 0, 2, 1, $144)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 1, $12A)
 
 Spritemaps_Torizo_4D:
-    dw $0007,$01E9                                                       ;AAA196;
-    db $25                                                               ;AAA19A;
-    dw $257B,$01E9                                                       ;AAA19B;
-    db $1D                                                               ;AAA19F;
-    dw $256B,$81EB                                                       ;AAA1A0;
-    db $FB                                                               ;AAA1A4;
-    dw $650C,$01E8                                                       ;AAA1A5;
-    db $16                                                               ;AAA1A9;
-    dw $6564,$01E8                                                       ;AAA1AA;
-    db $0E                                                               ;AAA1AE;
-    dw $6554,$01E8                                                       ;AAA1AF;
-    db $06                                                               ;AAA1B3;
-    dw $6544,$81F8                                                       ;AAA1B4;
-    db $F8                                                               ;AAA1B8;
-    dw $252A                                                             ;AAA1B9;
+    dw $0007                                                             ;AAA196;
+    %spritemapEntry(0, $1E9, $25, 0, 0, 2, 2, $17B)
+    %spritemapEntry(0, $1E9, $1D, 0, 0, 2, 2, $16B)
+    %spritemapEntry(1, $1EB, $FB, 0, 1, 2, 2, $10C)
+    %spritemapEntry(0, $1E8, $16, 0, 1, 2, 2, $164)
+    %spritemapEntry(0, $1E8, $0E, 0, 1, 2, 2, $154)
+    %spritemapEntry(0, $1E8, $06, 0, 1, 2, 2, $144)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 2, $12A)
 
 Spritemaps_Torizo_4E:
-    dw $0005,$81F6                                                       ;AAA1BB;
-    db $23                                                               ;AAA1BF;
-    dw $656C,$81EF                                                       ;AAA1C0;
-    db $02                                                               ;AAA1C4;
-    dw $650A,$01F6                                                       ;AAA1C5;
-    db $1F                                                               ;AAA1C9;
-    dw $2566,$81EE                                                       ;AAA1CA;
-    db $0F                                                               ;AAA1CE;
-    dw $2545,$81F8                                                       ;AAA1CF;
-    db $F8                                                               ;AAA1D3;
-    dw $6524                                                             ;AAA1D4;
+    dw $0005                                                             ;AAA1BB;
+    %spritemapEntry(1, $1F6, $23, 0, 1, 2, 2, $16C)
+    %spritemapEntry(1, $1EF, $02, 0, 1, 2, 2, $10A)
+    %spritemapEntry(0, $1F6, $1F, 0, 0, 2, 2, $166)
+    %spritemapEntry(1, $1EE, $0F, 0, 0, 2, 2, $145)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 2, $124)
 
 Spritemaps_Torizo_4F:
-    dw $0005,$8000                                                       ;AAA1D6;
-    db $28                                                               ;AAA1DA;
-    dw $656C,$01FF                                                       ;AAA1DB;
-    db $24                                                               ;AAA1DF;
-    dw $2566,$81F7                                                       ;AAA1E0;
-    db $14                                                               ;AAA1E4;
-    dw $2545,$81F4                                                       ;AAA1E5;
-    db $05                                                               ;AAA1E9;
-    dw $6508,$81F8                                                       ;AAA1EA;
-    db $F8                                                               ;AAA1EE;
-    dw $2528                                                             ;AAA1EF;
+    dw $0005                                                             ;AAA1D6;
+    %spritemapEntry(1, $00, $28, 0, 1, 2, 2, $16C)
+    %spritemapEntry(0, $1FF, $24, 0, 0, 2, 2, $166)
+    %spritemapEntry(1, $1F7, $14, 0, 0, 2, 2, $145)
+    %spritemapEntry(1, $1F4, $05, 0, 1, 2, 2, $108)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 2, $128)
 
 Spritemaps_Torizo_50:
-    dw $0005,$800A                                                       ;AAA1F1;
-    db $23                                                               ;AAA1F5;
-    dw $656C,$81F8                                                       ;AAA1F6;
-    db $06                                                               ;AAA1FA;
-    dw $6506,$8004                                                       ;AAA1FB;
-    db $1B                                                               ;AAA1FF;
-    dw $2558,$81FC                                                       ;AAA200;
-    db $13                                                               ;AAA204;
-    dw $2547,$81F8                                                       ;AAA205;
-    db $F8                                                               ;AAA209;
-    dw $6526                                                             ;AAA20A;
+    dw $0005                                                             ;AAA1F1;
+    %spritemapEntry(1, $0A, $23, 0, 1, 2, 2, $16C)
+    %spritemapEntry(1, $1F8, $06, 0, 1, 2, 2, $106)
+    %spritemapEntry(1, $04, $1B, 0, 0, 2, 2, $158)
+    %spritemapEntry(1, $1FC, $13, 0, 0, 2, 2, $147)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 2, $126)
 
 Spritemaps_Torizo_51:
-    dw $0005,$8014                                                       ;AAA20C;
-    db $19                                                               ;AAA210;
-    dw $656C,$81FC                                                       ;AAA211;
-    db $05                                                               ;AAA215;
-    dw $2508,$0014                                                       ;AAA216;
-    db $16                                                               ;AAA21A;
-    dw $255C,$8004                                                       ;AAA21B;
-    db $0E                                                               ;AAA21F;
-    dw $254A,$81F8                                                       ;AAA220;
-    db $F8                                                               ;AAA224;
-    dw $6528                                                             ;AAA225;
+    dw $0005                                                             ;AAA20C;
+    %spritemapEntry(1, $14, $19, 0, 1, 2, 2, $16C)
+    %spritemapEntry(1, $1FC, $05, 0, 0, 2, 2, $108)
+    %spritemapEntry(0, $14, $16, 0, 0, 2, 2, $15C)
+    %spritemapEntry(1, $04, $0E, 0, 0, 2, 2, $14A)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 2, $128)
 
 Spritemaps_Torizo_52:
-    dw $0007,$8001                                                       ;AAA227;
-    db $02                                                               ;AAA22B;
-    dw $250A,$002D                                                       ;AAA22C;
-    db $0B                                                               ;AAA230;
-    dw $258F,$0025                                                       ;AAA231;
-    db $0B                                                               ;AAA235;
-    dw $258E,$001E                                                       ;AAA236;
-    db $0B                                                               ;AAA23A;
-    dw $254F,$0016                                                       ;AAA23B;
-    db $0B                                                               ;AAA23F;
-    dw $254E,$000E                                                       ;AAA240;
-    db $0B                                                               ;AAA244;
-    dw $254D,$81F8                                                       ;AAA245;
-    db $F8                                                               ;AAA249;
-    dw $2524                                                             ;AAA24A;
+    dw $0007                                                             ;AAA227;
+    %spritemapEntry(1, $01, $02, 0, 0, 2, 2, $10A)
+    %spritemapEntry(0, $2D, $0B, 0, 0, 2, 2, $18F)
+    %spritemapEntry(0, $25, $0B, 0, 0, 2, 2, $18E)
+    %spritemapEntry(0, $1E, $0B, 0, 0, 2, 2, $14F)
+    %spritemapEntry(0, $16, $0B, 0, 0, 2, 2, $14E)
+    %spritemapEntry(0, $0E, $0B, 0, 0, 2, 2, $14D)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 2, $124)
 
 Spritemaps_Torizo_53:
-    dw $0005,$801D                                                       ;AAA24C;
-    db $F4                                                               ;AAA250;
-    dw $A56E,$8001                                                       ;AAA251;
-    db $02                                                               ;AAA255;
-    dw $250A,$8015                                                       ;AAA256;
-    db $FA                                                               ;AAA25A;
-    dw $A558,$800D                                                       ;AAA25B;
-    db $02                                                               ;AAA25F;
-    dw $A547,$81F8                                                       ;AAA260;
-    db $F8                                                               ;AAA264;
-    dw $2524                                                             ;AAA265;
+    dw $0005                                                             ;AAA24C;
+    %spritemapEntry(1, $1D, $F4, 1, 0, 2, 2, $16E)
+    %spritemapEntry(1, $01, $02, 0, 0, 2, 2, $10A)
+    %spritemapEntry(1, $15, $FA, 1, 0, 2, 2, $158)
+    %spritemapEntry(1, $0D, $02, 1, 0, 2, 2, $147)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 2, $124)
 
 Spritemaps_Torizo_54:
-    dw $0007,$0012                                                       ;AAA267;
-    db $DD                                                               ;AAA26B;
-    dw $E57B,$0012                                                       ;AAA26C;
-    db $E5                                                               ;AAA270;
-    dw $E56B,$8006                                                       ;AAA271;
-    db $F8                                                               ;AAA275;
-    dw $250E,$0012                                                       ;AAA276;
-    db $EB                                                               ;AAA27A;
-    dw $A564,$0012                                                       ;AAA27B;
-    db $F3                                                               ;AAA27F;
-    dw $A554,$0012                                                       ;AAA280;
-    db $FB                                                               ;AAA284;
-    dw $A544,$81F8                                                       ;AAA285;
-    db $F8                                                               ;AAA289;
-    dw $652A                                                             ;AAA28A;
+    dw $0007                                                             ;AAA267;
+    %spritemapEntry(0, $12, $DD, 1, 1, 2, 2, $17B)
+    %spritemapEntry(0, $12, $E5, 1, 1, 2, 2, $16B)
+    %spritemapEntry(1, $06, $F8, 0, 0, 2, 2, $10E)
+    %spritemapEntry(0, $12, $EB, 1, 0, 2, 2, $164)
+    %spritemapEntry(0, $12, $F3, 1, 0, 2, 2, $154)
+    %spritemapEntry(0, $12, $FB, 1, 0, 2, 2, $144)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 2, $12A)
 
 Spritemaps_Torizo_55:
-    dw $0018,$8002                                                       ;AAA28C;
-    db $F3                                                               ;AAA290;
-    dw $6330,$81F7                                                       ;AAA291;
-    db $FD                                                               ;AAA295;
-    dw $63A9,$01FF                                                       ;AAA296;
-    db $0D                                                               ;AAA29A;
-    dw $63BB,$0007                                                       ;AAA29B;
-    db $0D                                                               ;AAA29F;
-    dw $63AF,$81FF                                                       ;AAA2A0;
-    db $FD                                                               ;AAA2A4;
-    dw $63A8,$81F6                                                       ;AAA2A5;
-    db $15                                                               ;AAA2A9;
-    dw $638A,$81FE                                                       ;AAA2AA;
-    db $0D                                                               ;AAA2AE;
-    dw $6379,$01F3                                                       ;AAA2AF;
-    db $20                                                               ;AAA2B3;
-    dw $6362,$01FB                                                       ;AAA2B4;
-    db $20                                                               ;AAA2B8;
-    dw $6361,$0003                                                       ;AAA2B9;
-    db $20                                                               ;AAA2BD;
-    dw $6360,$81FB                                                       ;AAA2BE;
-    db $FD                                                               ;AAA2C2;
-    dw $65A9,$0003                                                       ;AAA2C3;
-    db $0D                                                               ;AAA2C7;
-    dw $65BB,$000B                                                       ;AAA2C8;
-    db $0D                                                               ;AAA2CC;
-    dw $65AF,$8003                                                       ;AAA2CD;
-    db $FD                                                               ;AAA2D1;
-    dw $65A8,$81FA                                                       ;AAA2D2;
-    db $15                                                               ;AAA2D6;
-    dw $658A,$8002                                                       ;AAA2D7;
-    db $0D                                                               ;AAA2DB;
-    dw $6579,$01F7                                                       ;AAA2DC;
-    db $20                                                               ;AAA2E0;
-    dw $6562,$01FF                                                       ;AAA2E1;
-    db $20                                                               ;AAA2E5;
-    dw $6561,$0007                                                       ;AAA2E6;
-    db $20                                                               ;AAA2EA;
-    dw $6560,$8002                                                       ;AAA2EB;
-    db $E3                                                               ;AAA2EF;
-    dw $6310,$81F2                                                       ;AAA2F0;
-    db $FB                                                               ;AAA2F4;
-    dw $6342,$81F2                                                       ;AAA2F5;
-    db $EB                                                               ;AAA2F9;
-    dw $6322,$81F2                                                       ;AAA2FA;
-    db $DB                                                               ;AAA2FE;
-    dw $6302,$8002                                                       ;AAA2FF;
-    db $DB                                                               ;AAA303;
-    dw $6300                                                             ;AAA304;
+    dw $0018                                                             ;AAA28C;
+    %spritemapEntry(1, $02, $F3, 0, 1, 2, 1, $130)
+    %spritemapEntry(1, $1F7, $FD, 0, 1, 2, 1, $1A9)
+    %spritemapEntry(0, $1FF, $0D, 0, 1, 2, 1, $1BB)
+    %spritemapEntry(0, $07, $0D, 0, 1, 2, 1, $1AF)
+    %spritemapEntry(1, $1FF, $FD, 0, 1, 2, 1, $1A8)
+    %spritemapEntry(1, $1F6, $15, 0, 1, 2, 1, $18A)
+    %spritemapEntry(1, $1FE, $0D, 0, 1, 2, 1, $179)
+    %spritemapEntry(0, $1F3, $20, 0, 1, 2, 1, $162)
+    %spritemapEntry(0, $1FB, $20, 0, 1, 2, 1, $161)
+    %spritemapEntry(0, $03, $20, 0, 1, 2, 1, $160)
+    %spritemapEntry(1, $1FB, $FD, 0, 1, 2, 2, $1A9)
+    %spritemapEntry(0, $03, $0D, 0, 1, 2, 2, $1BB)
+    %spritemapEntry(0, $0B, $0D, 0, 1, 2, 2, $1AF)
+    %spritemapEntry(1, $03, $FD, 0, 1, 2, 2, $1A8)
+    %spritemapEntry(1, $1FA, $15, 0, 1, 2, 2, $18A)
+    %spritemapEntry(1, $02, $0D, 0, 1, 2, 2, $179)
+    %spritemapEntry(0, $1F7, $20, 0, 1, 2, 2, $162)
+    %spritemapEntry(0, $1FF, $20, 0, 1, 2, 2, $161)
+    %spritemapEntry(0, $07, $20, 0, 1, 2, 2, $160)
+    %spritemapEntry(1, $02, $E3, 0, 1, 2, 1, $110)
+    %spritemapEntry(1, $1F2, $FB, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $1F2, $EB, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $1F2, $DB, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $02, $DB, 0, 1, 2, 1, $100)
 
 Spritemaps_Torizo_56:
-    dw $0013,$8002                                                       ;AAA306;
-    db $F2                                                               ;AAA30A;
-    dw $6330,$01FC                                                       ;AAA30B;
-    db $0F                                                               ;AAA30F;
-    dw $63AE,$0004                                                       ;AAA310;
-    db $0F                                                               ;AAA314;
-    dw $63AD,$81FC                                                       ;AAA315;
-    db $FF                                                               ;AAA319;
-    dw $63A6,$81EE                                                       ;AAA31A;
-    db $22                                                               ;AAA31E;
-    dw $63A0,$81F3                                                       ;AAA31F;
-    db $19                                                               ;AAA323;
-    dw $638A,$81FB                                                       ;AAA324;
-    db $11                                                               ;AAA328;
-    dw $6379,$8002                                                       ;AAA329;
-    db $FA                                                               ;AAA32D;
-    dw $6340,$8002                                                       ;AAA32E;
-    db $E2                                                               ;AAA332;
-    dw $6310,$81F2                                                       ;AAA333;
-    db $FA                                                               ;AAA337;
-    dw $6342,$81F2                                                       ;AAA338;
-    db $EA                                                               ;AAA33C;
-    dw $6322,$81F2                                                       ;AAA33D;
-    db $DA                                                               ;AAA341;
-    dw $6302,$8002                                                       ;AAA342;
-    db $DA                                                               ;AAA346;
-    dw $6300,$0000                                                       ;AAA347;
-    db $10                                                               ;AAA34B;
-    dw $25AC,$01F8                                                       ;AAA34C;
-    db $10                                                               ;AAA350;
-    dw $25AB,$81F8                                                       ;AAA351;
-    db $00                                                               ;AAA355;
-    dw $25A4,$81E7                                                       ;AAA356;
-    db $24                                                               ;AAA35A;
-    dw $65A0,$81EC                                                       ;AAA35B;
-    db $1B                                                               ;AAA35F;
-    dw $658A,$81F4                                                       ;AAA360;
-    db $13                                                               ;AAA364;
-    dw $6579                                                             ;AAA365;
+    dw $0013                                                             ;AAA306;
+    %spritemapEntry(1, $02, $F2, 0, 1, 2, 1, $130)
+    %spritemapEntry(0, $1FC, $0F, 0, 1, 2, 1, $1AE)
+    %spritemapEntry(0, $04, $0F, 0, 1, 2, 1, $1AD)
+    %spritemapEntry(1, $1FC, $FF, 0, 1, 2, 1, $1A6)
+    %spritemapEntry(1, $1EE, $22, 0, 1, 2, 1, $1A0)
+    %spritemapEntry(1, $1F3, $19, 0, 1, 2, 1, $18A)
+    %spritemapEntry(1, $1FB, $11, 0, 1, 2, 1, $179)
+    %spritemapEntry(1, $02, $FA, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $02, $E2, 0, 1, 2, 1, $110)
+    %spritemapEntry(1, $1F2, $FA, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $1F2, $EA, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $1F2, $DA, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $02, $DA, 0, 1, 2, 1, $100)
+    %spritemapEntry(0, $00, $10, 0, 0, 2, 2, $1AC)
+    %spritemapEntry(0, $1F8, $10, 0, 0, 2, 2, $1AB)
+    %spritemapEntry(1, $1F8, $00, 0, 0, 2, 2, $1A4)
+    %spritemapEntry(1, $1E7, $24, 0, 1, 2, 2, $1A0)
+    %spritemapEntry(1, $1EC, $1B, 0, 1, 2, 2, $18A)
+    %spritemapEntry(1, $1F4, $13, 0, 1, 2, 2, $179)
 
 Spritemaps_Torizo_57:
-    dw $0015,$8002                                                       ;AAA367;
-    db $F2                                                               ;AAA36B;
-    dw $6330,$81ED                                                       ;AAA36C;
-    db $27                                                               ;AAA370;
-    dw $63A2,$81EA                                                       ;AAA371;
-    db $27                                                               ;AAA375;
-    dw $63A2,$0000                                                       ;AAA376;
-    db $10                                                               ;AAA37A;
-    dw $63AB,$01F8                                                       ;AAA37B;
-    db $10                                                               ;AAA37F;
-    dw $63AC,$81F8                                                       ;AAA380;
-    db $00                                                               ;AAA384;
-    dw $63A4,$81F3                                                       ;AAA385;
-    db $13                                                               ;AAA389;
-    dw $6377,$01F3                                                       ;AAA38A;
-    db $23                                                               ;AAA38E;
-    dw $6398,$01FB                                                       ;AAA38F;
-    db $23                                                               ;AAA393;
-    dw $6397,$01FD                                                       ;AAA394;
-    db $10                                                               ;AAA398;
-    dw $65AB,$01F5                                                       ;AAA399;
-    db $10                                                               ;AAA39D;
-    dw $65AC,$81F5                                                       ;AAA39E;
-    db $00                                                               ;AAA3A2;
-    dw $65A4,$81F0                                                       ;AAA3A3;
-    db $13                                                               ;AAA3A7;
-    dw $6577,$01F0                                                       ;AAA3A8;
-    db $23                                                               ;AAA3AC;
-    dw $6598,$01F8                                                       ;AAA3AD;
-    db $23                                                               ;AAA3B1;
-    dw $6597,$8002                                                       ;AAA3B2;
-    db $FA                                                               ;AAA3B6;
-    dw $6340,$8002                                                       ;AAA3B7;
-    db $E2                                                               ;AAA3BB;
-    dw $6310,$81F2                                                       ;AAA3BC;
-    db $FA                                                               ;AAA3C0;
-    dw $6342,$81F2                                                       ;AAA3C1;
-    db $EA                                                               ;AAA3C5;
-    dw $6322,$81F2                                                       ;AAA3C6;
-    db $DA                                                               ;AAA3CA;
-    dw $6302,$8002                                                       ;AAA3CB;
-    db $DA                                                               ;AAA3CF;
-    dw $6300                                                             ;AAA3D0;
+    dw $0015                                                             ;AAA367;
+    %spritemapEntry(1, $02, $F2, 0, 1, 2, 1, $130)
+    %spritemapEntry(1, $1ED, $27, 0, 1, 2, 1, $1A2)
+    %spritemapEntry(1, $1EA, $27, 0, 1, 2, 1, $1A2)
+    %spritemapEntry(0, $00, $10, 0, 1, 2, 1, $1AB)
+    %spritemapEntry(0, $1F8, $10, 0, 1, 2, 1, $1AC)
+    %spritemapEntry(1, $1F8, $00, 0, 1, 2, 1, $1A4)
+    %spritemapEntry(1, $1F3, $13, 0, 1, 2, 1, $177)
+    %spritemapEntry(0, $1F3, $23, 0, 1, 2, 1, $198)
+    %spritemapEntry(0, $1FB, $23, 0, 1, 2, 1, $197)
+    %spritemapEntry(0, $1FD, $10, 0, 1, 2, 2, $1AB)
+    %spritemapEntry(0, $1F5, $10, 0, 1, 2, 2, $1AC)
+    %spritemapEntry(1, $1F5, $00, 0, 1, 2, 2, $1A4)
+    %spritemapEntry(1, $1F0, $13, 0, 1, 2, 2, $177)
+    %spritemapEntry(0, $1F0, $23, 0, 1, 2, 2, $198)
+    %spritemapEntry(0, $1F8, $23, 0, 1, 2, 2, $197)
+    %spritemapEntry(1, $02, $FA, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $02, $E2, 0, 1, 2, 1, $110)
+    %spritemapEntry(1, $1F2, $FA, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $1F2, $EA, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $1F2, $DA, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $02, $DA, 0, 1, 2, 1, $100)
 
 Spritemaps_Torizo_58:
-    dw $0018,$01DE                                                       ;AAA3D2;
-    db $28                                                               ;AAA3D6;
-    dw $6562,$01E6                                                       ;AAA3D7;
-    db $28                                                               ;AAA3DB;
-    dw $6561,$01EE                                                       ;AAA3DC;
-    db $28                                                               ;AAA3E0;
-    dw $6560,$000D                                                       ;AAA3E1;
-    db $28                                                               ;AAA3E5;
-    dw $6362,$0015                                                       ;AAA3E6;
-    db $28                                                               ;AAA3EA;
-    dw $6361,$001D                                                       ;AAA3EB;
-    db $28                                                               ;AAA3EF;
-    dw $6360,$81F9                                                       ;AAA3F0;
-    db $FE                                                               ;AAA3F4;
-    dw $63A9,$0001                                                       ;AAA3F5;
-    db $0E                                                               ;AAA3F9;
-    dw $63BB,$0009                                                       ;AAA3FA;
-    db $0E                                                               ;AAA3FE;
-    dw $63AF,$8001                                                       ;AAA3FF;
-    db $FE                                                               ;AAA403;
-    dw $63A8,$0009                                                       ;AAA404;
-    db $22                                                               ;AAA408;
-    dw $6394,$0011                                                       ;AAA409;
-    db $22                                                               ;AAA40D;
-    dw $6393,$8009                                                       ;AAA40E;
-    db $12                                                               ;AAA412;
-    dw $6373,$01FB                                                       ;AAA413;
-    db $10                                                               ;AAA417;
-    dw $25AE,$01F3                                                       ;AAA418;
-    db $10                                                               ;AAA41C;
-    dw $25AD,$81F3                                                       ;AAA41D;
-    db $00                                                               ;AAA421;
-    dw $25A6,$81E1                                                       ;AAA422;
-    db $1C                                                               ;AAA426;
-    dw $658A,$81E9                                                       ;AAA427;
-    db $14                                                               ;AAA42B;
-    dw $6579,$81F2                                                       ;AAA42C;
-    db $F9                                                               ;AAA430;
-    dw $6342,$8002                                                       ;AAA431;
-    db $F9                                                               ;AAA435;
-    dw $6340,$81F2                                                       ;AAA436;
-    db $E9                                                               ;AAA43A;
-    dw $6322,$8002                                                       ;AAA43B;
-    db $E9                                                               ;AAA43F;
-    dw $6320,$81F2                                                       ;AAA440;
-    db $D9                                                               ;AAA444;
-    dw $6302,$8002                                                       ;AAA445;
-    db $D9                                                               ;AAA449;
-    dw $6300                                                             ;AAA44A;
+    dw $0018                                                             ;AAA3D2;
+    %spritemapEntry(0, $1DE, $28, 0, 1, 2, 2, $162)
+    %spritemapEntry(0, $1E6, $28, 0, 1, 2, 2, $161)
+    %spritemapEntry(0, $1EE, $28, 0, 1, 2, 2, $160)
+    %spritemapEntry(0, $0D, $28, 0, 1, 2, 1, $162)
+    %spritemapEntry(0, $15, $28, 0, 1, 2, 1, $161)
+    %spritemapEntry(0, $1D, $28, 0, 1, 2, 1, $160)
+    %spritemapEntry(1, $1F9, $FE, 0, 1, 2, 1, $1A9)
+    %spritemapEntry(0, $01, $0E, 0, 1, 2, 1, $1BB)
+    %spritemapEntry(0, $09, $0E, 0, 1, 2, 1, $1AF)
+    %spritemapEntry(1, $01, $FE, 0, 1, 2, 1, $1A8)
+    %spritemapEntry(0, $09, $22, 0, 1, 2, 1, $194)
+    %spritemapEntry(0, $11, $22, 0, 1, 2, 1, $193)
+    %spritemapEntry(1, $09, $12, 0, 1, 2, 1, $173)
+    %spritemapEntry(0, $1FB, $10, 0, 0, 2, 2, $1AE)
+    %spritemapEntry(0, $1F3, $10, 0, 0, 2, 2, $1AD)
+    %spritemapEntry(1, $1F3, $00, 0, 0, 2, 2, $1A6)
+    %spritemapEntry(1, $1E1, $1C, 0, 1, 2, 2, $18A)
+    %spritemapEntry(1, $1E9, $14, 0, 1, 2, 2, $179)
+    %spritemapEntry(1, $1F2, $F9, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $02, $F9, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $1F2, $E9, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $02, $E9, 0, 1, 2, 1, $120)
+    %spritemapEntry(1, $1F2, $D9, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $02, $D9, 0, 1, 2, 1, $100)
 
 Spritemaps_Torizo_59:
-    dw $0018,$01DE                                                       ;AAA44C;
-    db $28                                                               ;AAA450;
-    dw $6362,$01E6                                                       ;AAA451;
-    db $28                                                               ;AAA455;
-    dw $6361,$01EE                                                       ;AAA456;
-    db $28                                                               ;AAA45A;
-    dw $6360,$01FB                                                       ;AAA45B;
-    db $10                                                               ;AAA45F;
-    dw $23AE,$01F3                                                       ;AAA460;
-    db $10                                                               ;AAA464;
-    dw $23AD,$81F3                                                       ;AAA465;
-    db $00                                                               ;AAA469;
-    dw $23A6,$81E1                                                       ;AAA46A;
-    db $1C                                                               ;AAA46E;
-    dw $638A,$81E9                                                       ;AAA46F;
-    db $14                                                               ;AAA473;
-    dw $6379,$000D                                                       ;AAA474;
-    db $28                                                               ;AAA478;
-    dw $6562,$0015                                                       ;AAA479;
-    db $28                                                               ;AAA47D;
-    dw $6561,$001D                                                       ;AAA47E;
-    db $28                                                               ;AAA482;
-    dw $6560,$81F9                                                       ;AAA483;
-    db $FE                                                               ;AAA487;
-    dw $65A9,$0001                                                       ;AAA488;
-    db $0E                                                               ;AAA48C;
-    dw $65BB,$0009                                                       ;AAA48D;
-    db $0E                                                               ;AAA491;
-    dw $65AF,$8001                                                       ;AAA492;
-    db $FE                                                               ;AAA496;
-    dw $65A8,$0009                                                       ;AAA497;
-    db $22                                                               ;AAA49B;
-    dw $6594,$0011                                                       ;AAA49C;
-    db $22                                                               ;AAA4A0;
-    dw $6593,$8009                                                       ;AAA4A1;
-    db $12                                                               ;AAA4A5;
-    dw $6573,$81F2                                                       ;AAA4A6;
-    db $F9                                                               ;AAA4AA;
-    dw $6342,$8002                                                       ;AAA4AB;
-    db $F9                                                               ;AAA4AF;
-    dw $6340,$81F2                                                       ;AAA4B0;
-    db $E9                                                               ;AAA4B4;
-    dw $6322,$8002                                                       ;AAA4B5;
-    db $E9                                                               ;AAA4B9;
-    dw $6320,$81F2                                                       ;AAA4BA;
-    db $D9                                                               ;AAA4BE;
-    dw $6302,$8002                                                       ;AAA4BF;
-    db $D9                                                               ;AAA4C3;
-    dw $6300                                                             ;AAA4C4;
+    dw $0018                                                             ;AAA44C;
+    %spritemapEntry(0, $1DE, $28, 0, 1, 2, 1, $162)
+    %spritemapEntry(0, $1E6, $28, 0, 1, 2, 1, $161)
+    %spritemapEntry(0, $1EE, $28, 0, 1, 2, 1, $160)
+    %spritemapEntry(0, $1FB, $10, 0, 0, 2, 1, $1AE)
+    %spritemapEntry(0, $1F3, $10, 0, 0, 2, 1, $1AD)
+    %spritemapEntry(1, $1F3, $00, 0, 0, 2, 1, $1A6)
+    %spritemapEntry(1, $1E1, $1C, 0, 1, 2, 1, $18A)
+    %spritemapEntry(1, $1E9, $14, 0, 1, 2, 1, $179)
+    %spritemapEntry(0, $0D, $28, 0, 1, 2, 2, $162)
+    %spritemapEntry(0, $15, $28, 0, 1, 2, 2, $161)
+    %spritemapEntry(0, $1D, $28, 0, 1, 2, 2, $160)
+    %spritemapEntry(1, $1F9, $FE, 0, 1, 2, 2, $1A9)
+    %spritemapEntry(0, $01, $0E, 0, 1, 2, 2, $1BB)
+    %spritemapEntry(0, $09, $0E, 0, 1, 2, 2, $1AF)
+    %spritemapEntry(1, $01, $FE, 0, 1, 2, 2, $1A8)
+    %spritemapEntry(0, $09, $22, 0, 1, 2, 2, $194)
+    %spritemapEntry(0, $11, $22, 0, 1, 2, 2, $193)
+    %spritemapEntry(1, $09, $12, 0, 1, 2, 2, $173)
+    %spritemapEntry(1, $1F2, $F9, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $02, $F9, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $1F2, $E9, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $02, $E9, 0, 1, 2, 1, $120)
+    %spritemapEntry(1, $1F2, $D9, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $02, $D9, 0, 1, 2, 1, $100)
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemaps_Torizo_AAA4C6:
-    dw $0006,$81F0                                                       ;AAA4C6;
-    db $0C                                                               ;AAA4CA;
-    dw $6342,$8000                                                       ;AAA4CB;
-    db $0C                                                               ;AAA4CF;
-    dw $6340,$81F0                                                       ;AAA4D0;
-    db $FC                                                               ;AAA4D4;
-    dw $6322,$8000                                                       ;AAA4D5;
-    db $FC                                                               ;AAA4D9;
-    dw $6320,$81F0                                                       ;AAA4DA;
-    db $EC                                                               ;AAA4DE;
-    dw $6302,$8000                                                       ;AAA4DF;
-    db $EC                                                               ;AAA4E3;
-    dw $6300                                                             ;AAA4E4;
+    dw $0006                                                             ;AAA4C6;
+    %spritemapEntry(1, $1F0, $0C, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $00, $0C, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $1F0, $FC, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $00, $FC, 0, 1, 2, 1, $120)
+    %spritemapEntry(1, $1F0, $EC, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $00, $EC, 0, 1, 2, 1, $100)
 
 UNUSED_ExtendedSpritemaps_Torizo_AAA4E6:
-    dw $0001,$0000,$0000                                                 ;AAA4E6;
+    dw $0001                                                             ;AAA4E6;
+    dw $0000,$0000
     dw Spritemaps_Torizo_7                                               ;AAA4EC;
     dw UNUSED_Hitboxes_Torizo_AA87DA                                     ;AAA4EE;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 ExtendedSpritemaps_Torizo_FacingScreen_Turning_Dodging:
-    dw $0001,$0000,$0000                                                 ;AAA4F0;
+    dw $0001                                                             ;AAA4F0;
+    dw $0000,$0000                                                 
     dw Spritemaps_Torizo_6                                               ;AAA4F6;
     dw Hitboxes_Torizo_Blank                                             ;AAA4F8;
 
 ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_0:
-    dw $0004,$FFF1,$FFE2                                                 ;AAA4FA;
+    dw $0004                                                             ;AAA4FA;
+    dw $FFF1,$FFE2                                                 
     dw Spritemaps_Torizo_0                                               ;AAA500;
     dw Hitboxes_Torizo_Blank                                             ;AAA502;
     dw $FFFB,$FFE8                                                       ;AAA504;
@@ -3895,7 +2651,8 @@ ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_0:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_12                     ;AAA51A;
 
 ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_1:
-    dw $0004,$FFF1,$FFE2                                                 ;AAA51C;
+    dw $0004                                                             ;AAA51C;
+    dw $FFF1,$FFE2                                                 
     dw Spritemaps_Torizo_0                                               ;AAA522;
     dw Hitboxes_Torizo_Blank                                             ;AAA524;
     dw $FFFB,$FFE7                                                       ;AAA526;
@@ -3909,7 +2666,8 @@ ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_1:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_11                     ;AAA53C;
 
 ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_2:
-    dw $0004,$FFF1,$FFE1                                                 ;AAA53E;
+    dw $0004                                                             ;AAA53E;
+    dw $FFF1,$FFE1                                                 
     dw Spritemaps_Torizo_0                                               ;AAA544;
     dw Hitboxes_Torizo_Blank                                             ;AAA546;
     dw $FFFB,$FFE6                                                       ;AAA548;
@@ -3923,7 +2681,8 @@ ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_2:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_10                     ;AAA55E;
 
 ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_3:
-    dw $0004,$FFF1,$FFE0                                                 ;AAA560;
+    dw $0004                                                             ;AAA560;
+    dw $FFF1,$FFE0                                                 
     dw Spritemaps_Torizo_0                                               ;AAA566;
     dw Hitboxes_Torizo_Blank                                             ;AAA568;
     dw $FFFB,$FFE7                                                       ;AAA56A;
@@ -3937,7 +2696,8 @@ ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_3:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_F                      ;AAA580;
 
 ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_4:
-    dw $0004,$FFF1,$FFE0                                                 ;AAA582;
+    dw $0004                                                             ;AAA582;
+    dw $FFF1,$FFE0                                                 
     dw Spritemaps_Torizo_0                                               ;AAA588;
     dw Hitboxes_Torizo_Blank                                             ;AAA58A;
     dw $FFFB,$FFE8                                                       ;AAA58C;
@@ -3951,7 +2711,8 @@ ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_4:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_F                      ;AAA5A2;
 
 ExtendedSpritemaps_Torizo_WalkingLeft_LeftLegMoving_0:
-    dw $0004,$FFF1,$FFE2                                                 ;AAA5A4;
+    dw $0004                                                             ;AAA5A4;
+    dw $FFF1,$FFE2                                                 
     dw Spritemaps_Torizo_0                                               ;AAA5AA;
     dw Hitboxes_Torizo_Blank                                             ;AAA5AC;
     dw $FFFB,$FFE8                                                       ;AAA5AE;
@@ -3965,7 +2726,8 @@ ExtendedSpritemaps_Torizo_WalkingLeft_LeftLegMoving_0:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_F                      ;AAA5C4;
 
 ExtendedSpritemaps_Torizo_WalkingLeft_LeftLegMoving_1:
-    dw $0004,$FFF1,$FFE1                                                 ;AAA5C6;
+    dw $0004                                                             ;AAA5C6;
+    dw $FFF1,$FFE1                                                 
     dw Spritemaps_Torizo_0                                               ;AAA5CC;
     dw Hitboxes_Torizo_Blank                                             ;AAA5CE;
     dw $FFFB,$FFE7                                                       ;AAA5D0;
@@ -3979,7 +2741,8 @@ ExtendedSpritemaps_Torizo_WalkingLeft_LeftLegMoving_1:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_F                      ;AAA5E6;
 
 ExtendedSpritemaps_Torizo_WalkingLeft_LeftLegMoving_2:
-    dw $0004,$FFF1,$FFE1                                                 ;AAA5E8;
+    dw $0004                                                             ;AAA5E8;
+    dw $FFF1,$FFE1                                                 
     dw Spritemaps_Torizo_0                                               ;AAA5EE;
     dw Hitboxes_Torizo_Blank                                             ;AAA5F0;
     dw $FFFB,$FFE6                                                       ;AAA5F2;
@@ -3993,7 +2756,8 @@ ExtendedSpritemaps_Torizo_WalkingLeft_LeftLegMoving_2:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_10                     ;AAA608;
 
 ExtendedSpritemaps_Torizo_WalkingLeft_LeftLegMoving_3:
-    dw $0004,$FFF1,$FFE0                                                 ;AAA60A;
+    dw $0004                                                             ;AAA60A;
+    dw $FFF1,$FFE0                                                 
     dw Spritemaps_Torizo_0                                               ;AAA610;
     dw Hitboxes_Torizo_Blank                                             ;AAA612;
     dw $FFFB,$FFE7                                                       ;AAA614;
@@ -4007,7 +2771,8 @@ ExtendedSpritemaps_Torizo_WalkingLeft_LeftLegMoving_3:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_11                     ;AAA62A;
 
 ExtendedSpritemaps_Torizo_WalkingLeft_LeftLegMoving_4:
-    dw $0004,$FFF1,$FFE1                                                 ;AAA62C;
+    dw $0004                                                             ;AAA62C;
+    dw $FFF1,$FFE1                                                 
     dw Spritemaps_Torizo_0                                               ;AAA632;
     dw Hitboxes_Torizo_Blank                                             ;AAA634;
     dw $FFFB,$FFE8                                                       ;AAA636;
@@ -4021,7 +2786,8 @@ ExtendedSpritemaps_Torizo_WalkingLeft_LeftLegMoving_4:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_12                     ;AAA64C;
 
 ExtendedSpritemaps_Torizo_Attacks_FaceLeft_RightFootForward:
-    dw $0003,$FFF1,$FFE1                                                 ;AAA64E;
+    dw $0003                                                             ;AAA64E;
+    dw $FFF1,$FFE1                                                 
     dw Spritemaps_Torizo_0                                               ;AAA654;
     dw Hitboxes_Torizo_Blank                                             ;AAA656;
     dw $FFFC,$FFE7                                                       ;AAA658;
@@ -4032,7 +2798,8 @@ ExtendedSpritemaps_Torizo_Attacks_FaceLeft_RightFootForward:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_17                     ;AAA666;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_RightFootForward_0:
-    dw $0003,$FFF7,$FFE1                                                 ;AAA668;
+    dw $0003                                                             ;AAA668;
+    dw $FFF7,$FFE1                                                 
     dw Spritemaps_Torizo_1                                               ;AAA66E;
     dw Hitboxes_Torizo_Blank                                             ;AAA670;
     dw $FFFC,$FFE7                                                       ;AAA672;
@@ -4043,7 +2810,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_RightFootForward_0:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_17                     ;AAA680;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_RightFootForward_1:
-    dw $0003,$FFF7,$FFE1                                                 ;AAA682;
+    dw $0003                                                             ;AAA682;
+    dw $FFF7,$FFE1                                                 
     dw Spritemaps_Torizo_2                                               ;AAA688;
     dw Hitboxes_Torizo_Blank                                             ;AAA68A;
     dw $FFFC,$FFE7                                                       ;AAA68C;
@@ -4054,7 +2822,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_RightFootForward_1:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_17                     ;AAA69A;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_RightFootForward_2:
-    dw $0003,$FFF7,$FFE1                                                 ;AAA69C;
+    dw $0003                                                             ;AAA69C;
+    dw $FFF7,$FFE1                                                 
     dw Spritemaps_Torizo_3                                               ;AAA6A2;
     dw Hitboxes_Torizo_Blank                                             ;AAA6A4;
     dw $FFFC,$FFE7                                                       ;AAA6A6;
@@ -4065,7 +2834,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_RightFootForward_2:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_17                     ;AAA6B4;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_RightFootForward_3:
-    dw $0003,$FFFC,$FFE7                                                 ;AAA6B6;
+    dw $0003                                                             ;AAA6B6;
+    dw $FFFC,$FFE7                                                 
     dw Spritemaps_Torizo_21                                              ;AAA6BC;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_D                      ;AAA6BE;
     dw $FFF7,$FFE1                                                       ;AAA6C0;
@@ -4076,7 +2846,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_RightFootForward_3:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_17                     ;AAA6CE;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_RightFootForward_4:
-    dw $0003,$FFFC,$FFE7                                                 ;AAA6D0;
+    dw $0003                                                             ;AAA6D0;
+    dw $FFFC,$FFE7                                                 
     dw Spritemaps_Torizo_21                                              ;AAA6D6;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_D                      ;AAA6D8;
     dw $FFF7,$FFE1                                                       ;AAA6DA;
@@ -4087,7 +2858,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_RightFootForward_4:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_17                     ;AAA6E8;
 
 ExtendedSpritemaps_Torizo_Attacks_FaceLeft_LeftFootForward:
-    dw $0003,$FFF1,$FFE1                                                 ;AAA6EA;
+    dw $0003                                                             ;AAA6EA;
+    dw $FFF1,$FFE1                                                 
     dw Spritemaps_Torizo_0                                               ;AAA6F0;
     dw Hitboxes_Torizo_Blank                                             ;AAA6F2;
     dw $FFFC,$FFE7                                                       ;AAA6F4;
@@ -4098,7 +2870,8 @@ ExtendedSpritemaps_Torizo_Attacks_FaceLeft_LeftFootForward:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_17                     ;AAA702;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_LeftFootForward_0:
-    dw $0003,$FFF7,$FFE1                                                 ;AAA704;
+    dw $0003                                                             ;AAA704;
+    dw $FFF7,$FFE1                                                 
     dw Spritemaps_Torizo_1                                               ;AAA70A;
     dw Hitboxes_Torizo_Blank                                             ;AAA70C;
     dw $FFFC,$FFE7                                                       ;AAA70E;
@@ -4109,7 +2882,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_LeftFootForward_0:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_17                     ;AAA71C;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_LeftFootForward_1:
-    dw $0003,$FFF7,$FFE1                                                 ;AAA71E;
+    dw $0003                                                             ;AAA71E;
+    dw $FFF7,$FFE1                                                 
     dw Spritemaps_Torizo_2                                               ;AAA724;
     dw Hitboxes_Torizo_Blank                                             ;AAA726;
     dw $FFFC,$FFE7                                                       ;AAA728;
@@ -4120,7 +2894,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_LeftFootForward_1:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_17                     ;AAA736;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_LeftFootForward_2:
-    dw $0003,$FFF7,$FFE1                                                 ;AAA738;
+    dw $0003                                                             ;AAA738;
+    dw $FFF7,$FFE1                                                 
     dw Spritemaps_Torizo_3                                               ;AAA73E;
     dw Hitboxes_Torizo_Blank                                             ;AAA740;
     dw $FFFC,$FFE7                                                       ;AAA742;
@@ -4131,7 +2906,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_LeftFootForward_2:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_17                     ;AAA750;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_LeftFootForward_3:
-    dw $0003,$FFFC,$FFE7                                                 ;AAA752;
+    dw $0003                                                             ;AAA752;
+    dw $FFFC,$FFE7                                                 
     dw Spritemaps_Torizo_21                                              ;AAA758;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_D                      ;AAA75A;
     dw $FFF7,$FFE1                                                       ;AAA75C;
@@ -4142,7 +2918,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_LeftFootForward_3:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_17                     ;AAA76A;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_LeftFootForward_4:
-    dw $0003,$FFFC,$FFE7                                                 ;AAA76C;
+    dw $0003                                                             ;AAA76C;
+    dw $FFFC,$FFE7                                                 
     dw Spritemaps_Torizo_21                                              ;AAA772;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_D                      ;AAA774;
     dw $FFF7,$FFE1                                                       ;AAA776;
@@ -4153,7 +2930,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceLeft_LeftFootForward_4:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_17                     ;AAA784;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceLeft_LeftFootForward_0:
-    dw $0003,$FFF1,$FFE1                                                 ;AAA786;
+    dw $0003                                                             ;AAA786;
+    dw $FFF1,$FFE1                                                 
     dw Spritemaps_Torizo_0                                               ;AAA78C;
     dw Hitboxes_Torizo_Blank                                             ;AAA78E;
     dw $FFFC,$FFE7                                                       ;AAA790;
@@ -4164,7 +2942,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceLeft_LeftFootForward_0:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_17                     ;AAA79E;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceLeft_LeftFootForward_1:
-    dw $0004,$FFF1,$FFE1                                                 ;AAA7A0;
+    dw $0004                                                             ;AAA7A0;
+    dw $FFF1,$FFE1                                                 
     dw Spritemaps_Torizo_0                                               ;AAA7A6;
     dw Hitboxes_Torizo_Blank                                             ;AAA7A8;
     dw $FFFC,$FFE7                                                       ;AAA7AA;
@@ -4178,7 +2957,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceLeft_LeftFootForward_1:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_12                     ;AAA7C0;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceLeft_LeftFootForward_2:
-    dw $0004,$FFFC,$FFE7                                                 ;AAA7C2;
+    dw $0004                                                             ;AAA7C2;
+    dw $FFFC,$FFE7                                                 
     dw Spritemaps_Torizo_1E                                              ;AAA7C8;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_A                      ;AAA7CA;
     dw $FFF1,$FFE1                                                       ;AAA7CC;
@@ -4192,7 +2972,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceLeft_LeftFootForward_2:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_13                     ;AAA7E2;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceLeft_LeftFootForward_3:
-    dw $0004,$FFFC,$FFE7                                                 ;AAA7E4;
+    dw $0004                                                             ;AAA7E4;
+    dw $FFFC,$FFE7                                                 
     dw Spritemaps_Torizo_1E                                              ;AAA7EA;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_A                      ;AAA7EC;
     dw $FFF1,$FFE1                                                       ;AAA7EE;
@@ -4206,7 +2987,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceLeft_LeftFootForward_3:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_14                     ;AAA804;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceLeft_LeftFootForward_4:
-    dw $0004,$FFFC,$FFE7                                                 ;AAA806;
+    dw $0004                                                             ;AAA806;
+    dw $FFFC,$FFE7                                                 
     dw Spritemaps_Torizo_1E                                              ;AAA80C;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_A                      ;AAA80E;
     dw $FFF1,$FFE1                                                       ;AAA810;
@@ -4220,7 +3002,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceLeft_LeftFootForward_4:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_15                     ;AAA826;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceLeft_LeftFootForward_5:
-    dw $0004,$FFF1,$FFE1                                                 ;AAA828;
+    dw $0004                                                             ;AAA828;
+    dw $FFF1,$FFE1                                                 
     dw Spritemaps_Torizo_0                                               ;AAA82E;
     dw Hitboxes_Torizo_Blank                                             ;AAA830;
     dw $FFFC,$FFE7                                                       ;AAA832;
@@ -4234,7 +3017,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceLeft_LeftFootForward_5:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_F                      ;AAA848;
 
 ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_RightFootForward_0:
-    dw $0004,$FFF1,$FFE1                                                 ;AAA84A;
+    dw $0004                                                             ;AAA84A;
+    dw $FFF1,$FFE1                                                 
     dw Spritemaps_Torizo_0                                               ;AAA850;
     dw Hitboxes_Torizo_Blank                                             ;AAA852;
     dw $FFFC,$FFE7                                                       ;AAA854;
@@ -4248,7 +3032,8 @@ ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_RightFootForward_0:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_F                      ;AAA86A;
 
 ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_RightFootForward_1:
-    dw $0004,$FFF1,$FFE1                                                 ;AAA86C;
+    dw $0004                                                             ;AAA86C;
+    dw $FFF1,$FFE1                                                 
     dw Spritemaps_Torizo_0                                               ;AAA872;
     dw Hitboxes_Torizo_Blank                                             ;AAA874;
     dw $FFFC,$FFE7                                                       ;AAA876;
@@ -4262,7 +3047,8 @@ ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_RightFootForward_1:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_F                      ;AAA88C;
 
 ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_RightFootForward_2:
-    dw $0004,$FFFC,$FFE7                                                 ;AAA88E;
+    dw $0004                                                             ;AAA88E;
+    dw $FFFC,$FFE7                                                 
     dw Spritemaps_Torizo_21                                              ;AAA894;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_D                      ;AAA896;
     dw $FFF1,$FFE1                                                       ;AAA898;
@@ -4276,7 +3062,8 @@ ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_RightFootForward_2:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_F                      ;AAA8AE;
 
 ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_RightFootForward_3:
-    dw $0004,$FFFC,$FFE7                                                 ;AAA8B0;
+    dw $0004                                                             ;AAA8B0;
+    dw $FFFC,$FFE7                                                 
     dw Spritemaps_Torizo_22                                              ;AAA8B6;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_E                      ;AAA8B8;
     dw $FFF1,$FFE1                                                       ;AAA8BA;
@@ -4290,7 +3077,8 @@ ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_RightFootForward_3:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_F                      ;AAA8D0;
 
 ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_LeftFootForward_0:
-    dw $0003,$FFF1,$FFE1                                                 ;AAA8D2;
+    dw $0003                                                             ;AAA8D2;
+    dw $FFF1,$FFE1                                                 
     dw Spritemaps_Torizo_0                                               ;AAA8D8;
     dw Hitboxes_Torizo_Blank                                             ;AAA8DA;
     dw $FFFC,$FFE7                                                       ;AAA8DC;
@@ -4301,7 +3089,8 @@ ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_LeftFootForward_0:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_17                     ;AAA8EA;
 
 ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_LeftFootForward_1:
-    dw $0003,$FFF1,$FFE1                                                 ;AAA8EC;
+    dw $0003                                                             ;AAA8EC;
+    dw $FFF1,$FFE1                                                 
     dw Spritemaps_Torizo_0                                               ;AAA8F2;
     dw Hitboxes_Torizo_Blank                                             ;AAA8F4;
     dw $FFFC,$FFE7                                                       ;AAA8F6;
@@ -4312,7 +3101,8 @@ ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_LeftFootForward_1:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_17                     ;AAA904;
 
 ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_LeftFootForward_2:
-    dw $0003,$FFFC,$FFE7                                                 ;AAA906;
+    dw $0003                                                             ;AAA906;
+    dw $FFFC,$FFE7                                                 
     dw Spritemaps_Torizo_20                                              ;AAA90C;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_C                      ;AAA90E;
     dw $FFF1,$FFE1                                                       ;AAA910;
@@ -4323,7 +3113,8 @@ ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_LeftFootForward_2:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_17                     ;AAA91E;
 
 ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_LeftFootForward_3:
-    dw $0003,$FFFC,$FFE7                                                 ;AAA920;
+    dw $0003                                                             ;AAA920;
+    dw $FFFC,$FFE7                                                 
     dw Spritemaps_Torizo_21                                              ;AAA926;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_D                      ;AAA928;
     dw $FFF1,$FFE1                                                       ;AAA92A;
@@ -4334,7 +3125,8 @@ ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_LeftFootForward_3:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_17                     ;AAA938;
 
 ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_LeftFootForward_4:
-    dw $0003,$FFFC,$FFE7                                                 ;AAA93A;
+    dw $0003                                                             ;AAA93A;
+    dw $FFFC,$FFE7                                                 
     dw Spritemaps_Torizo_22                                              ;AAA940;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_E                      ;AAA942;
     dw $FFF1,$FFE1                                                       ;AAA944;
@@ -4345,7 +3137,8 @@ ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_LeftFootForward_4:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_17                     ;AAA952;
 
 ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_LeftFootForward_5:
-    dw $0004,$FFF1,$FFE1                                                 ;AAA954;
+    dw $0004                                                             ;AAA954;
+    dw $FFF1,$FFE1                                                 
     dw Spritemaps_Torizo_0                                               ;AAA95A;
     dw Hitboxes_Torizo_Blank                                             ;AAA95C;
     dw $FFFC,$FFE7                                                       ;AAA95E;
@@ -4359,7 +3152,8 @@ ExtSpritemap_Torizo_NonOrbAttack_FaceLeft_LeftFootForward_5:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_11                     ;AAA974;
 
 ExtSpritemap_Torizo_SonicBoom_Swipe_FaceLeft_LeftFootFwd_0:
-    dw $0004,$FFF1,$FFE1                                                 ;AAA976;
+    dw $0004                                                             ;AAA976;
+    dw $FFF1,$FFE1                                                 
     dw Spritemaps_Torizo_0                                               ;AAA97C;
     dw Hitboxes_Torizo_Blank                                             ;AAA97E;
     dw $FFFC,$FFE7                                                       ;AAA980;
@@ -4373,7 +3167,8 @@ ExtSpritemap_Torizo_SonicBoom_Swipe_FaceLeft_LeftFootFwd_0:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_12                     ;AAA996;
 
 ExtSpritemap_Torizo_SonicBoom_Swipe_FaceLeft_LeftFootFwd_1:
-    dw $0004,$FFF1,$FFE1                                                 ;AAA998;
+    dw $0004                                                             ;AAA998;
+    dw $FFF1,$FFE1                                                 
     dw Spritemaps_Torizo_0                                               ;AAA99E;
     dw Hitboxes_Torizo_Blank                                             ;AAA9A0;
     dw $FFFC,$FFE7                                                       ;AAA9A2;
@@ -4387,7 +3182,8 @@ ExtSpritemap_Torizo_SonicBoom_Swipe_FaceLeft_LeftFootFwd_1:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_13                     ;AAA9B8;
 
 ExtSpritemap_Torizo_SonicBoom_Swipe_FaceLeft_LeftFootFwd_2:
-    dw $0004,$FFFC,$FFE7                                                 ;AAA9BA;
+    dw $0004                                                             ;AAA9BA;
+    dw $FFFC,$FFE7                                                 
     dw Spritemaps_Torizo_1D                                              ;AAA9C0;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_9                      ;AAA9C2;
     dw $FFF1,$FFE1                                                       ;AAA9C4;
@@ -4401,7 +3197,8 @@ ExtSpritemap_Torizo_SonicBoom_Swipe_FaceLeft_LeftFootFwd_2:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_14                     ;AAA9DA;
 
 ExtSpritemap_Torizo_SonicBoom_Swipe_FaceLeft_LeftFootFwd_3:
-    dw $0004,$FFFC,$FFE7                                                 ;AAA9DC;
+    dw $0004                                                             ;AAA9DC;
+    dw $FFFC,$FFE7                                                 
     dw Spritemaps_Torizo_1D                                              ;AAA9E2;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_9                      ;AAA9E4;
     dw $FFF1,$FFE1                                                       ;AAA9E6;
@@ -4416,38 +3213,45 @@ ExtSpritemap_Torizo_SonicBoom_Swipe_FaceLeft_LeftFootFwd_3:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_ExtendedSpritemaps_Torizo_AAA9FE:
-    dw $0001,$0000,$0008                                                 ;AAA9FE;
+    dw $0001                                                             ;AAA9FE;
+    dw $0000,$0008                                                 
     dw Spritemaps_Torizo_6                                               ;AAAA04;
     dw UNUSED_Hitboxes_Torizo_AA87DA                                     ;AAAA06;
 
 UNUSED_ExtendedSpritemaps_Torizo_AAAA08:
-    dw $0001,$0000,$0008                                                 ;AAAA08;
+    dw $0001                                                             ;AAAA08;
+    dw $0000,$0008                                                 
     dw Spritemaps_Torizo_7                                               ;AAAA0E;
     dw UNUSED_Hitboxes_Torizo_AA87DA                                     ;AAAA10;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0:
-    dw $0001,$0000,$0000                                                 ;AAAA12;
+    dw $0001                                                             ;AAAA12;
+    dw $0000,$0000                                                 
     dw Spritemaps_Torizo_C                                               ;AAAA18;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_0                      ;AAAA1A;
 
 ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_1:
-    dw $0001,$0000,$0000                                                 ;AAAA1C;
+    dw $0001                                                             ;AAAA1C;
+    dw $0000,$0000                                                 
     dw Spritemaps_Torizo_D                                               ;AAAA22;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_1                      ;AAAA24;
 
 ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_2:
-    dw $0001,$0000,$0000                                                 ;AAAA26;
+    dw $0001                                                             ;AAAA26;
+    dw $0000,$0000                                                 
     dw Spritemaps_Torizo_E                                               ;AAAA2C;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_2                      ;AAAA2E;
 
 ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_3:
-    dw $0001,$0000,$0000                                                 ;AAAA30;
+    dw $0001                                                             ;AAAA30;
+    dw $0000,$0000                                                 
     dw Spritemaps_Torizo_E_miscount                                      ;AAAA36;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_3                      ;AAAA38;
 
 ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_4:
-    dw $0002,$FFFB,$FFE8                                                 ;AAAA3A;
+    dw $0002                                                             ;AAAA3A;
+    dw $FFFB,$FFE8                                                 
     dw Spritemaps_Torizo_1D                                              ;AAAA40;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_9                      ;AAAA42;
     dw $0000,$0000                                                       ;AAAA44;
@@ -4455,7 +3259,8 @@ ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_4:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_4                      ;AAAA4A;
 
 ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_5:
-    dw $0002,$FFFB,$FFE8                                                 ;AAAA4C;
+    dw $0002                                                             ;AAAA4C;
+    dw $FFFB,$FFE8                                                 
     dw Spritemaps_Torizo_1E                                              ;AAAA52;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_A                      ;AAAA54;
     dw $0000,$0000                                                       ;AAAA56;
@@ -4463,7 +3268,8 @@ ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_5:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_5                      ;AAAA5C;
 
 ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_6:
-    dw $0002,$FFFB,$FFE8                                                 ;AAAA5E;
+    dw $0002                                                             ;AAAA5E;
+    dw $FFFB,$FFE8                                                 
     dw Spritemaps_Torizo_1E                                              ;AAAA64;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_A                      ;AAAA66;
     dw $0000,$0000                                                       ;AAAA68;
@@ -4472,28 +3278,33 @@ ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_6:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_ExtendedSpritemaps_Torizo_AAAA70:
-    dw $0001,$0000,$0000                                                 ;AAAA70;
+    dw $0001                                                             ;AAAA70;
+    dw $0000,$0000                                                 
     dw Spritemaps_Torizo_8                                               ;AAAA76;
     dw Hitboxes_Torizo_Blank                                             ;AAAA78;
 
 UNUSED_ExtendedSpritemaps_Torizo_AAAA7A:
-    dw $0001,$0000,$0000                                                 ;AAAA7A;
+    dw $0001                                                             ;AAAA7A;
+    dw $0000,$0000                                                 
     dw Spritemaps_Torizo_9                                               ;AAAA80;
     dw Hitboxes_Torizo_Blank                                             ;AAAA82;
 
 UNUSED_ExtendedSpritemaps_Torizo_AAAA84:
-    dw $0001,$0000,$0000                                                 ;AAAA84;
+    dw $0001                                                             ;AAAA84;
+    dw $0000,$0000                                                 
     dw Spritemaps_Torizo_A                                               ;AAAA8A;
     dw Hitboxes_Torizo_Blank                                             ;AAAA8C;
 
 UNUSED_ExtendedSpritemaps_Torizo_AAAA8E:
-    dw $0001,$0000,$0000                                                 ;AAAA8E;
+    dw $0001                                                             ;AAAA8E;
+    dw $0000,$0000                                                 
     dw Spritemaps_Torizo_B                                               ;AAAA94;
     dw Hitboxes_Torizo_Blank                                             ;AAAA96;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 ExtendedSpritemaps_Torizo_WalkingRight_LeftLegMoving_0:
-    dw $0004,$000F,$FFE2                                                 ;AAAA98;
+    dw $0004                                                             ;AAAA98;
+    dw $000F,$FFE2                                                 
     dw Spritemaps_Torizo_30                                              ;AAAA9E;
     dw Hitboxes_Torizo_Blank                                             ;AAAAA0;
     dw $0005,$FFE8                                                       ;AAAAA2;
@@ -4507,7 +3318,8 @@ ExtendedSpritemaps_Torizo_WalkingRight_LeftLegMoving_0:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_12                    ;AAAAB8;
 
 ExtendedSpritemaps_Torizo_WalkingRight_LeftLegMoving_1:
-    dw $0004,$000F,$FFE2                                                 ;AAAABA;
+    dw $0004                                                             ;AAAABA;
+    dw $000F,$FFE2                                                 
     dw Spritemaps_Torizo_30                                              ;AAAAC0;
     dw Hitboxes_Torizo_Blank                                             ;AAAAC2;
     dw $0005,$FFE7                                                       ;AAAAC4;
@@ -4521,7 +3333,8 @@ ExtendedSpritemaps_Torizo_WalkingRight_LeftLegMoving_1:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_11                    ;AAAADA;
 
 ExtendedSpritemaps_Torizo_WalkingRight_LeftLegMoving_2:
-    dw $0004,$000F,$FFE1                                                 ;AAAADC;
+    dw $0004                                                             ;AAAADC;
+    dw $000F,$FFE1                                                 
     dw Spritemaps_Torizo_30                                              ;AAAAE2;
     dw Hitboxes_Torizo_Blank                                             ;AAAAE4;
     dw $0005,$FFE6                                                       ;AAAAE6;
@@ -4535,7 +3348,8 @@ ExtendedSpritemaps_Torizo_WalkingRight_LeftLegMoving_2:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_10                    ;AAAAFC;
 
 ExtendedSpritemaps_Torizo_WalkingRight_LeftLegMoving_3:
-    dw $0004,$000F,$FFE0                                                 ;AAAAFE;
+    dw $0004                                                             ;AAAAFE;
+    dw $000F,$FFE0                                                 
     dw Spritemaps_Torizo_30                                              ;AAAB04;
     dw Hitboxes_Torizo_Blank                                             ;AAAB06;
     dw $0005,$FFE7                                                       ;AAAB08;
@@ -4549,7 +3363,8 @@ ExtendedSpritemaps_Torizo_WalkingRight_LeftLegMoving_3:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_F                     ;AAAB1E;
 
 ExtendedSpritemaps_Torizo_WalkingRight_LeftLegMoving_4:
-    dw $0004,$000F,$FFE0                                                 ;AAAB20;
+    dw $0004                                                             ;AAAB20;
+    dw $000F,$FFE0                                                 
     dw Spritemaps_Torizo_30                                              ;AAAB26;
     dw Hitboxes_Torizo_Blank                                             ;AAAB28;
     dw $0005,$FFE8                                                       ;AAAB2A;
@@ -4563,7 +3378,8 @@ ExtendedSpritemaps_Torizo_WalkingRight_LeftLegMoving_4:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_F                     ;AAAB40;
 
 ExtendedSpritemaps_Torizo_WalkingRight_RightLegMoving_0:
-    dw $0004,$000F,$FFE2                                                 ;AAAB42;
+    dw $0004                                                             ;AAAB42;
+    dw $000F,$FFE2                                                 
     dw Spritemaps_Torizo_30                                              ;AAAB48;
     dw Hitboxes_Torizo_Blank                                             ;AAAB4A;
     dw $0005,$FFE8                                                       ;AAAB4C;
@@ -4577,7 +3393,8 @@ ExtendedSpritemaps_Torizo_WalkingRight_RightLegMoving_0:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_F                     ;AAAB62;
 
 ExtendedSpritemaps_Torizo_WalkingRight_RightLegMoving_1:
-    dw $0004,$000F,$FFE1                                                 ;AAAB64;
+    dw $0004                                                             ;AAAB64;
+    dw $000F,$FFE1                                                 
     dw Spritemaps_Torizo_30                                              ;AAAB6A;
     dw Hitboxes_Torizo_Blank                                             ;AAAB6C;
     dw $0005,$FFE7                                                       ;AAAB6E;
@@ -4591,7 +3408,8 @@ ExtendedSpritemaps_Torizo_WalkingRight_RightLegMoving_1:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_F                     ;AAAB84;
 
 ExtendedSpritemaps_Torizo_WalkingRight_RightLegMoving_2:
-    dw $0004,$000F,$FFE1                                                 ;AAAB86;
+    dw $0004                                                             ;AAAB86;
+    dw $000F,$FFE1                                                 
     dw Spritemaps_Torizo_30                                              ;AAAB8C;
     dw Hitboxes_Torizo_Blank                                             ;AAAB8E;
     dw $0005,$FFE6                                                       ;AAAB90;
@@ -4605,7 +3423,8 @@ ExtendedSpritemaps_Torizo_WalkingRight_RightLegMoving_2:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_10                    ;AAABA6;
 
 ExtendedSpritemaps_Torizo_WalkingRight_RightLegMoving_3:
-    dw $0004,$000F,$FFE0                                                 ;AAABA8;
+    dw $0004                                                             ;AAABA8;
+    dw $000F,$FFE0                                                 
     dw Spritemaps_Torizo_30                                              ;AAABAE;
     dw Hitboxes_Torizo_Blank                                             ;AAABB0;
     dw $0005,$FFE7                                                       ;AAABB2;
@@ -4619,7 +3438,8 @@ ExtendedSpritemaps_Torizo_WalkingRight_RightLegMoving_3:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_11                    ;AAABC8;
 
 ExtendedSpritemaps_Torizo_WalkingRight_RightLegMoving_4:
-    dw $0004,$000F,$FFE1                                                 ;AAABCA;
+    dw $0004                                                             ;AAABCA;
+    dw $000F,$FFE1                                                 
     dw Spritemaps_Torizo_30                                              ;AAABD0;
     dw Hitboxes_Torizo_Blank                                             ;AAABD2;
     dw $0005,$FFE8                                                       ;AAABD4;
@@ -4633,7 +3453,8 @@ ExtendedSpritemaps_Torizo_WalkingRight_RightLegMoving_4:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_12                    ;AAABEA;
 
 ExtendedSpritemaps_Torizo_Attacks_FaceRight_LeftFootForward:
-    dw $0003,$000F,$FFE1                                                 ;AAABEC;
+    dw $0003                                                             ;AAABEC;
+    dw $000F,$FFE1                                                 
     dw Spritemaps_Torizo_30                                              ;AAABF2;
     dw Hitboxes_Torizo_Blank                                             ;AAABF4;
     dw $0004,$FFE7                                                       ;AAABF6;
@@ -4644,7 +3465,8 @@ ExtendedSpritemaps_Torizo_Attacks_FaceRight_LeftFootForward:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_17                    ;AAAC04;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_LeftFootForward_0:
-    dw $0003,$0009,$FFE1                                                 ;AAAC06;
+    dw $0003                                                             ;AAAC06;
+    dw $0009,$FFE1                                                 
     dw Spritemaps_Torizo_31                                              ;AAAC0C;
     dw Hitboxes_Torizo_Blank                                             ;AAAC0E;
     dw $0004,$FFE7                                                       ;AAAC10;
@@ -4655,7 +3477,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_LeftFootForward_0:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_17                    ;AAAC1E;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_LeftFootForward_1:
-    dw $0003,$0009,$FFE1                                                 ;AAAC20;
+    dw $0003                                                             ;AAAC20;
+    dw $0009,$FFE1                                                 
     dw Spritemaps_Torizo_32                                              ;AAAC26;
     dw Hitboxes_Torizo_Blank                                             ;AAAC28;
     dw $0004,$FFE7                                                       ;AAAC2A;
@@ -4666,7 +3489,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_LeftFootForward_1:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_17                    ;AAAC38;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_LeftFootForward_2:
-    dw $0003,$0009,$FFE1                                                 ;AAAC3A;
+    dw $0003                                                             ;AAAC3A;
+    dw $0009,$FFE1                                                 
     dw Spritemaps_Torizo_33                                              ;AAAC40;
     dw Hitboxes_Torizo_Blank                                             ;AAAC42;
     dw $0004,$FFE7                                                       ;AAAC44;
@@ -4677,7 +3501,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_LeftFootForward_2:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_17                    ;AAAC52;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_LeftFootForward_3:
-    dw $0003,$0004,$FFE7                                                 ;AAAC54;
+    dw $0003                                                             ;AAAC54;
+    dw $0004,$FFE7                                                 
     dw Spritemaps_Torizo_4B                                              ;AAAC5A;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_D                     ;AAAC5C;
     dw $0009,$FFE1                                                       ;AAAC5E;
@@ -4688,7 +3513,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_LeftFootForward_3:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_17                    ;AAAC6C;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_LeftFootForward_4:
-    dw $0003,$0004,$FFE7                                                 ;AAAC6E;
+    dw $0003                                                             ;AAAC6E;
+    dw $0004,$FFE7                                                 
     dw Spritemaps_Torizo_4B                                              ;AAAC74;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_D                     ;AAAC76;
     dw $0009,$FFE1                                                       ;AAAC78;
@@ -4699,7 +3525,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_LeftFootForward_4:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_17                    ;AAAC86;
 
 ExtendedSpritemaps_Torizo_Attacks_FaceRight_RightFootForward:
-    dw $0003,$000F,$FFE1                                                 ;AAAC88;
+    dw $0003                                                             ;AAAC88;
+    dw $000F,$FFE1                                                 
     dw Spritemaps_Torizo_30                                              ;AAAC8E;
     dw Hitboxes_Torizo_Blank                                             ;AAAC90;
     dw $0004,$FFE7                                                       ;AAAC92;
@@ -4710,7 +3537,8 @@ ExtendedSpritemaps_Torizo_Attacks_FaceRight_RightFootForward:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_17                    ;AAACA0;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_RightFootForward_0:
-    dw $0003,$0009,$FFE1                                                 ;AAACA2;
+    dw $0003                                                             ;AAACA2;
+    dw $0009,$FFE1                                                 
     dw Spritemaps_Torizo_31                                              ;AAACA8;
     dw Hitboxes_Torizo_Blank                                             ;AAACAA;
     dw $0004,$FFE7                                                       ;AAACAC;
@@ -4721,7 +3549,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_RightFootForward_0:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_17                    ;AAACBA;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_RightFootForward_1:
-    dw $0003,$0009,$FFE1                                                 ;AAACBC;
+    dw $0003                                                             ;AAACBC;
+    dw $0009,$FFE1                                                 
     dw Spritemaps_Torizo_32                                              ;AAACC2;
     dw Hitboxes_Torizo_Blank                                             ;AAACC4;
     dw $0004,$FFE7                                                       ;AAACC6;
@@ -4732,7 +3561,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_RightFootForward_1:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_17                    ;AAACD4;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_RightFootForward_2:
-    dw $0003,$0009,$FFE1                                                 ;AAACD6;
+    dw $0003                                                             ;AAACD6;
+    dw $0009,$FFE1                                                 
     dw Spritemaps_Torizo_33                                              ;AAACDC;
     dw Hitboxes_Torizo_Blank                                             ;AAACDE;
     dw $0004,$FFE7                                                       ;AAACE0;
@@ -4743,7 +3573,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_RightFootForward_2:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_17                    ;AAACEE;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_RightFootForward_3:
-    dw $0003,$0004,$FFE7                                                 ;AAACF0;
+    dw $0003                                                             ;AAACF0;
+    dw $0004,$FFE7                                                 
     dw Spritemaps_Torizo_4B                                              ;AAACF6;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_D                     ;AAACF8;
     dw $0009,$FFE1                                                       ;AAACFA;
@@ -4754,7 +3585,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_RightFootForward_3:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_17                    ;AAAD08;
 
 ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_RightFootForward_4:
-    dw $0003,$0004,$FFE7                                                 ;AAAD0A;
+    dw $0003                                                             ;AAAD0A;
+    dw $0004,$FFE7                                                 
     dw Spritemaps_Torizo_4B                                              ;AAAD10;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_D                     ;AAAD12;
     dw $0009,$FFE1                                                       ;AAAD14;
@@ -4765,7 +3597,8 @@ ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_RightFootForward_4:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_17                    ;AAAD22;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_0:
-    dw $0003,$000F,$FFE1                                                 ;AAAD24;
+    dw $0003                                                             ;AAAD24;
+    dw $000F,$FFE1                                                 
     dw Spritemaps_Torizo_30                                              ;AAAD2A;
     dw Hitboxes_Torizo_Blank                                             ;AAAD2C;
     dw $0004,$FFE7                                                       ;AAAD2E;
@@ -4776,7 +3609,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_0:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_17                    ;AAAD3C;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_1:
-    dw $0004,$000F,$FFE1                                                 ;AAAD3E;
+    dw $0004                                                             ;AAAD3E;
+    dw $000F,$FFE1                                                 
     dw Spritemaps_Torizo_30                                              ;AAAD44;
     dw Hitboxes_Torizo_Blank                                             ;AAAD46;
     dw $0004,$FFE7                                                       ;AAAD48;
@@ -4790,7 +3624,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_1:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_12                    ;AAAD5E;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_2:
-    dw $0004,$0004,$FFE7                                                 ;AAAD60;
+    dw $0004                                                             ;AAAD60;
+    dw $0004,$FFE7                                                 
     dw Spritemaps_Torizo_48                                              ;AAAD66;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_A                     ;AAAD68;
     dw $000F,$FFE1                                                       ;AAAD6A;
@@ -4804,7 +3639,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_2:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_13                    ;AAAD80;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_3:
-    dw $0004,$0004,$FFE7                                                 ;AAAD82;
+    dw $0004                                                             ;AAAD82;
+    dw $0004,$FFE7                                                 
     dw Spritemaps_Torizo_48                                              ;AAAD88;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_A                     ;AAAD8A;
     dw $000F,$FFE1                                                       ;AAAD8C;
@@ -4818,7 +3654,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_3:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_14                    ;AAADA2;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_4:
-    dw $0004,$0004,$FFE7                                                 ;AAADA4;
+    dw $0004                                                             ;AAADA4;
+    dw $0004,$FFE7                                                 
     dw Spritemaps_Torizo_48                                              ;AAADAA;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_A                     ;AAADAC;
     dw $000F,$FFE1                                                       ;AAADAE;
@@ -4832,7 +3669,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_4:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_15                    ;AAADC4;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_5:
-    dw $0004,$000F,$FFE1                                                 ;AAADC6;
+    dw $0004                                                             ;AAADC6;
+    dw $000F,$FFE1                                                 
     dw Spritemaps_Torizo_30                                              ;AAADCC;
     dw Hitboxes_Torizo_Blank                                             ;AAADCE;
     dw $0004,$FFE7                                                       ;AAADD0;
@@ -4846,7 +3684,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_5:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_F                     ;AAADE6;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_6:
-    dw $0004,$000F,$FFE1                                                 ;AAADE8;
+    dw $0004                                                             ;AAADE8;
+    dw $000F,$FFE1                                                 
     dw Spritemaps_Torizo_30                                              ;AAADEE;
     dw Hitboxes_Torizo_Blank                                             ;AAADF0;
     dw $0004,$FFE7                                                       ;AAADF2;
@@ -4860,7 +3699,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_6:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_F                     ;AAAE08;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_7:
-    dw $0004,$000F,$FFE1                                                 ;AAAE0A;
+    dw $0004                                                             ;AAAE0A;
+    dw $000F,$FFE1                                                 
     dw Spritemaps_Torizo_30                                              ;AAAE10;
     dw Hitboxes_Torizo_Blank                                             ;AAAE12;
     dw $0004,$FFE7                                                       ;AAAE14;
@@ -4874,7 +3714,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_7:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_F                     ;AAAE2A;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_8:
-    dw $0004,$0004,$FFE7                                                 ;AAAE2C;
+    dw $0004                                                             ;AAAE2C;
+    dw $0004,$FFE7                                                 
     dw Spritemaps_Torizo_4B                                              ;AAAE32;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_D                     ;AAAE34;
     dw $000F,$FFE1                                                       ;AAAE36;
@@ -4888,7 +3729,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_8:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_F                     ;AAAE4C;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_9:
-    dw $0004,$0004,$FFE7                                                 ;AAAE4E;
+    dw $0004                                                             ;AAAE4E;
+    dw $0004,$FFE7                                                 
     dw Spritemaps_Torizo_4C                                              ;AAAE54;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_E                     ;AAAE56;
     dw $000F,$FFE1                                                       ;AAAE58;
@@ -4902,7 +3744,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_9:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_F                     ;AAAE6E;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_0:
-    dw $0003,$000F,$FFE1                                                 ;AAAE70;
+    dw $0003                                                             ;AAAE70;
+    dw $000F,$FFE1                                                 
     dw Spritemaps_Torizo_30                                              ;AAAE76;
     dw Hitboxes_Torizo_Blank                                             ;AAAE78;
     dw $0004,$FFE7                                                       ;AAAE7A;
@@ -4913,7 +3756,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_0:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_17                    ;AAAE88;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_1:
-    dw $0003,$000F,$FFE1                                                 ;AAAE8A;
+    dw $0003                                                             ;AAAE8A;
+    dw $000F,$FFE1                                                 
     dw Spritemaps_Torizo_30                                              ;AAAE90;
     dw Hitboxes_Torizo_Blank                                             ;AAAE92;
     dw $0004,$FFE7                                                       ;AAAE94;
@@ -4924,7 +3768,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_1:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_17                    ;AAAEA2;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_2:
-    dw $0003,$0004,$FFE7                                                 ;AAAEA4;
+    dw $0003                                                             ;AAAEA4;
+    dw $0004,$FFE7                                                 
     dw Spritemaps_Torizo_4A                                              ;AAAEAA;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_C                     ;AAAEAC;
     dw $000F,$FFE1                                                       ;AAAEAE;
@@ -4935,7 +3780,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_2:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_17                    ;AAAEBC;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_3:
-    dw $0003,$0004,$FFE7                                                 ;AAAEBE;
+    dw $0003                                                             ;AAAEBE;
+    dw $0004,$FFE7                                                 
     dw Spritemaps_Torizo_4B                                              ;AAAEC4;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_D                     ;AAAEC6;
     dw $000F,$FFE1                                                       ;AAAEC8;
@@ -4946,7 +3792,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_3:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_17                    ;AAAED6;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_4:
-    dw $0003,$0004,$FFE7                                                 ;AAAED8;
+    dw $0003                                                             ;AAAED8;
+    dw $0004,$FFE7                                                 
     dw Spritemaps_Torizo_4C                                              ;AAAEDE;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_E                     ;AAAEE0;
     dw $000F,$FFE1                                                       ;AAAEE2;
@@ -4957,7 +3804,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_4:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_17                    ;AAAEF0;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_5:
-    dw $0004,$000F,$FFE1                                                 ;AAAEF2;
+    dw $0004                                                             ;AAAEF2;
+    dw $000F,$FFE1                                                 
     dw Spritemaps_Torizo_30                                              ;AAAEF8;
     dw Hitboxes_Torizo_Blank                                             ;AAAEFA;
     dw $0004,$FFE7                                                       ;AAAEFC;
@@ -4971,7 +3819,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_5:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_11                    ;AAAF12;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_6:
-    dw $0004,$000F,$FFE1                                                 ;AAAF14;
+    dw $0004                                                             ;AAAF14;
+    dw $000F,$FFE1                                                 
     dw Spritemaps_Torizo_30                                              ;AAAF1A;
     dw Hitboxes_Torizo_Blank                                             ;AAAF1C;
     dw $0004,$FFE7                                                       ;AAAF1E;
@@ -4985,7 +3834,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_6:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_12                    ;AAAF34;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_7:
-    dw $0004,$000F,$FFE1                                                 ;AAAF36;
+    dw $0004                                                             ;AAAF36;
+    dw $000F,$FFE1                                                 
     dw Spritemaps_Torizo_30                                              ;AAAF3C;
     dw Hitboxes_Torizo_Blank                                             ;AAAF3E;
     dw $0004,$FFE7                                                       ;AAAF40;
@@ -4999,7 +3849,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_7:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_13                    ;AAAF56;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_8:
-    dw $0004,$0004,$FFE7                                                 ;AAAF58;
+    dw $0004                                                             ;AAAF58;
+    dw $0004,$FFE7                                                 
     dw Spritemaps_Torizo_47                                              ;AAAF5E;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_9                     ;AAAF60;
     dw $000F,$FFE1                                                       ;AAAF62;
@@ -5013,7 +3864,8 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_8:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_14                    ;AAAF78;
 
 ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_9:
-    dw $0004,$0004,$FFE7                                                 ;AAAF7A;
+    dw $0004                                                             ;AAAF7A;
+    dw $0004,$FFE7                                                 
     dw Spritemaps_Torizo_47                                              ;AAAF80;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_9                     ;AAAF82;
     dw $000F,$FFE1                                                       ;AAAF84;
@@ -5027,27 +3879,32 @@ ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_9:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_15                    ;AAAF9A;
 
 ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingRight_0:
-    dw $0001,$0000,$0000                                                 ;AAAF9C;
+    dw $0001                                                             ;AAAF9C;
+    dw $0000,$0000                                                 
     dw Spritemaps_Torizo_36                                              ;AAAFA2;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_0                     ;AAAFA4;
 
 ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingRight_1:
-    dw $0001,$0000,$0000                                                 ;AAAFA6;
+    dw $0001                                                             ;AAAFA6;
+    dw $0000,$0000                                                 
     dw Spritemaps_Torizo_37                                              ;AAAFAC;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_1                     ;AAAFAE;
 
 ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingRight_2:
-    dw $0001,$0000,$0000                                                 ;AAAFB0;
+    dw $0001                                                             ;AAAFB0;
+    dw $0000,$0000                                                 
     dw Spritemaps_Torizo_38                                              ;AAAFB6;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_2                     ;AAAFB8;
 
 ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingRight_3:
-    dw $0001,$0000,$0000                                                 ;AAAFBA;
+    dw $0001                                                             ;AAAFBA;
+    dw $0000,$0000                                                 
     dw Spritemaps_Torizo_39                                              ;AAAFC0;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_3                     ;AAAFC2;
 
 ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingRight_4:
-    dw $0002,$0005,$FFE8                                                 ;AAAFC4;
+    dw $0002                                                             ;AAAFC4;
+    dw $0005,$FFE8                                                 
     dw Spritemaps_Torizo_47                                              ;AAAFCA;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_9                     ;AAAFCC;
     dw $0000,$0000                                                       ;AAAFCE;
@@ -5055,7 +3912,8 @@ ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingRight_4:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_4                     ;AAAFD4;
 
 ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingRight_5:
-    dw $0002,$0005,$FFE8                                                 ;AAAFD6;
+    dw $0002                                                             ;AAAFD6;
+    dw $0005,$FFE8                                                 
     dw Spritemaps_Torizo_48                                              ;AAAFDC;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_A                     ;AAAFDE;
     dw $0000,$0000                                                       ;AAAFE0;
@@ -5063,7 +3921,8 @@ ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingRight_5:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_5                     ;AAAFE6;
 
 ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingRight_6:
-    dw $0002,$0005,$FFE8                                                 ;AAAFE8;
+    dw $0002                                                             ;AAAFE8;
+    dw $0005,$FFE8                                                 
     dw Spritemaps_Torizo_48                                              ;AAAFEE;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_A                     ;AAAFF0;
     dw $0000,$0000                                                       ;AAAFF2;
@@ -5071,7 +3930,8 @@ ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingRight_6:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_6                     ;AAAFF8;
 
 ExtendedSpritemaps_Torizo_Jumping_Falling_FacingLeft_0:
-    dw $0003,$FFF0,$FFE3                                                 ;AAAFFA;
+    dw $0003                                                             ;AAAFFA;
+    dw $FFF0,$FFE3                                                 
     dw Spritemaps_Torizo_0                                               ;AAB000;
     dw Hitboxes_Torizo_Blank                                             ;AAB002;
     dw $FFFC,$FFEA                                                       ;AAB004;
@@ -5082,7 +3942,8 @@ ExtendedSpritemaps_Torizo_Jumping_Falling_FacingLeft_0:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_16                     ;AAB012;
 
 ExtendedSpritemaps_Torizo_Jumping_Falling_FacingLeft_1:
-    dw $0003,$FFF0,$FFE2                                                 ;AAB014;
+    dw $0003                                                             ;AAB014;
+    dw $FFF0,$FFE2                                                 
     dw Spritemaps_Torizo_0                                               ;AAB01A;
     dw Hitboxes_Torizo_Blank                                             ;AAB01C;
     dw $FFFC,$FFE8                                                       ;AAB01E;
@@ -5093,7 +3954,8 @@ ExtendedSpritemaps_Torizo_Jumping_Falling_FacingLeft_1:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_16                     ;AAB02C;
 
 ExtendedSpritemaps_Torizo_Jumping_Falling_FacingLeft_2:
-    dw $0003,$FFF0,$FFE2                                                 ;AAB02E;
+    dw $0003                                                             ;AAB02E;
+    dw $FFF0,$FFE2                                                 
     dw Spritemaps_Torizo_0                                               ;AAB034;
     dw Hitboxes_Torizo_Blank                                             ;AAB036;
     dw $FFFD,$FFE8                                                       ;AAB038;
@@ -5104,7 +3966,8 @@ ExtendedSpritemaps_Torizo_Jumping_Falling_FacingLeft_2:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingLeft_16                     ;AAB046;
 
 ExtendedSpritemaps_Torizo_Jumping_Falling_FacingRight_0:
-    dw $0003,$000F,$FFE4                                                 ;AAB048;
+    dw $0003                                                             ;AAB048;
+    dw $000F,$FFE4                                                 
     dw Spritemaps_Torizo_30                                              ;AAB04E;
     dw Hitboxes_Torizo_Blank                                             ;AAB050;
     dw $0004,$FFEA                                                       ;AAB052;
@@ -5115,7 +3978,8 @@ ExtendedSpritemaps_Torizo_Jumping_Falling_FacingRight_0:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_16                    ;AAB060;
 
 ExtendedSpritemaps_Torizo_Jumping_Falling_FacingRight_1:
-    dw $0003,$000F,$FFE3                                                 ;AAB062;
+    dw $0003                                                             ;AAB062;
+    dw $000F,$FFE3                                                 
     dw Spritemaps_Torizo_30                                              ;AAB068;
     dw Hitboxes_Torizo_Blank                                             ;AAB06A;
     dw $0004,$FFE8                                                       ;AAB06C;
@@ -5126,7 +3990,8 @@ ExtendedSpritemaps_Torizo_Jumping_Falling_FacingRight_1:
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_16                    ;AAB07A;
 
 ExtendedSpritemaps_Torizo_Jumping_Falling_FacingRight_2:
-    dw $0003,$000F,$FFE3                                                 ;AAB07C;
+    dw $0003                                                             ;AAB07C;
+    dw $000F,$FFE3                                                 
     dw Spritemaps_Torizo_30                                              ;AAB082;
     dw Hitboxes_Torizo_Blank                                             ;AAB084;
     dw $0003,$FFE8                                                       ;AAB086;
@@ -5136,14 +4001,17 @@ ExtendedSpritemaps_Torizo_Jumping_Falling_FacingRight_2:
     dw Spritemaps_Torizo_57                                              ;AAB092;
     dw Hitboxes_Torizo_StandUp_SitDown_FacingRight_16                    ;AAB094;
 
-TorizoMusicTracks_song1:
+TorizoMusicTracks:
+  .song1:
+; Song 1 - pre-fight music. Music track to queue when Bomb Torizo is revealed
     dw $0006                                                             ;AAB096;
-
-TorizoMusicTracks_song0:
+  .song0:
+; Song 0 - fight music. Music track to queue when Bomb Torizo fight starts
     dw $0005                                                             ;AAB098;
-
-TorizoMusicTracks_elevator:
+  .elevator:
+; Elevator. Music track to queue when torizo dies
     dw $0003                                                             ;AAB09A;
+
 
 Instruction_Torizo_FunctionInY:
     LDA.W $0000,Y                                                        ;AAB09C;
@@ -5159,33 +4027,27 @@ Tiles_Blank:
     db $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00   ;AAB0C5;
     db $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00   ;AAB0D5;
 
+
 InstList_Torizo_SpecialCallable_BlowUpBombTorizosGut:
+; "special" because the usual link instruction isn't being used for returning
     dw Instruction_Torizo_FunctionInY                                    ;AAB0E5;
     dw RTS_AAC6AB                                                        ;AAB0E7;
     dw Instruction_Torizo_SetAnimationLock                               ;AAB0E9;
-    dw Instruction_Torizo_Spawn5LowHealthExplosion_SleepFor28Frames      ;AAB0EB;
-    dw $0000                                                             ;AAB0ED;
+    dw Instruction_Torizo_Spawn5LowHealthExplosion_SleepFor28Frames,$0000 ;AAB0EB;
     dw Instruction_Torizo_MarkBTGutBlownUp_Spawn6BTDroolProjectiles      ;AAB0EF;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB0F1;
-    dw $0040                                                             ;AAB0F3;
-    dl Tiles_Torizo_AAB479                                               ;AAB0F5;
-    dw $7300                                                             ;AAB0F8;
+    dw $0040 : dl Tiles_Torizo_AAB479 : dw $7300                         ;AAB0F3;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB0FA;
-    dw $0040                                                             ;AAB0FC;
-    dl Tiles_Torizo_AAB679                                               ;AAB0FE;
-    dw $7400                                                             ;AAB101;
+    dw $0040 : dl Tiles_Torizo_AAB679 : dw $7400                         ;AAB0FC;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB103;
-    dw $0020                                                             ;AAB105;
-    dl Tiles_Torizo_AAB4B9                                               ;AAB107;
-    dw $7E70                                                             ;AAB10A;
+    dw $0020 : dl Tiles_Torizo_AAB4B9 : dw $7E70                         ;AAB105;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB10C;
-    dw $0020                                                             ;AAB10E;
-    dl Tiles_Torizo_AAB6B9                                               ;AAB110;
-    dw $7F70                                                             ;AAB113;
+    dw $0020 : dl Tiles_Torizo_AAB6B9 : dw $7F70                         ;AAB10E;
     dw Instruction_Torizo_FunctionInY                                    ;AAB115;
     dw Function_Torizo_NormalMovement                                    ;AAB117;
     dw Instruction_Torizo_ClearAnimationLock                             ;AAB119;
     dw Instruction_Torizo_GotoGutExplosionLinkInstruction                ;AAB11B;
+
 
 Instruction_Torizo_MarkBTGutBlownUp_Spawn6BTDroolProjectiles:
     LDA.W $0FB6,X                                                        ;AAB11D;
@@ -5214,47 +4076,27 @@ InstList_Torizo_Callable_BlowUpBombTorizosFace:
     dw Instruction_Torizo_FunctionInY                                    ;AAB155;
     dw RTS_AAC6AB                                                        ;AAB157;
     dw Instruction_Torizo_SetAnimationLock                               ;AAB159;
-    dw Instruction_Torizo_Spawn5LowHealthExplosion_SleepFor28Frames      ;AAB15B;
-    dw $0006                                                             ;AAB15D;
+    dw Instruction_Torizo_Spawn5LowHealthExplosion_SleepFor28Frames,$0006 ;AAB15B;
     dw Instruction_Torizo_MarkBombTorizoFaceBlownUp                      ;AAB15F;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB161;
-    dw $0020                                                             ;AAB163;
-    dl Tiles_Torizo_AAB4D9                                               ;AAB165;
-    dw $7E50                                                             ;AAB168;
+    dw $0020 : dl Tiles_Torizo_AAB4D9 : dw $7E50                         ;AAB163;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB16A;
-    dw $0020                                                             ;AAB16C;
-    dl Tiles_Torizo_AAB6D9                                               ;AAB16E;
-    dw $7F50                                                             ;AAB171;
+    dw $0020 : dl Tiles_Torizo_AAB6D9 : dw $7F50                         ;AAB16C;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB173;
-    dw $0040                                                             ;AAB175;
-    dl Tiles_Blank                                                       ;AAB177;
-    dw $7C80                                                             ;AAB17A;
+    dw $0040 : dl Tiles_Blank : dw $7C80                                 ;AAB175;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB17C;
-    dw $0040                                                             ;AAB17E;
-    dl Tiles_Blank                                                       ;AAB180;
-    dw $7CA0                                                             ;AAB183;
-    dw Instruction_Common_WaitYFrames                                    ;AAB185;
-    dw $0001                                                             ;AAB187;
+    dw $0040 : dl Tiles_Blank : dw $7CA0                                 ;AAB17E;
+    dw Instruction_Common_WaitYFrames,$0001                              ;AAB185;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB189;
-    dw $0040                                                             ;AAB18B;
-    dl Tiles_Blank                                                       ;AAB18D;
-    dw $7D80                                                             ;AAB190;
+    dw $0040 : dl Tiles_Blank : dw $7D80                                 ;AAB18B;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB192;
-    dw $0040                                                             ;AAB194;
-    dl Tiles_Blank                                                       ;AAB196;
-    dw $7DA0                                                             ;AAB199;
+    dw $0040 : dl Tiles_Blank : dw $7DA0                                 ;AAB194;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB19B;
-    dw $0040                                                             ;AAB19D;
-    dl Tiles_Blank                                                       ;AAB19F;
-    dw $7E80                                                             ;AAB1A2;
+    dw $0040 : dl Tiles_Blank : dw $7E80                                 ;AAB19D;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB1A4;
-    dw $0040                                                             ;AAB1A6;
-    dl Tiles_Blank                                                       ;AAB1A8;
-    dw $7F80                                                             ;AAB1AB;
+    dw $0040 : dl Tiles_Blank : dw $7F80                                 ;AAB1A6;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB1AD;
-    dw $0020                                                             ;AAB1AF;
-    dl Tiles_Blank                                                       ;AAB1B1;
-    dw $79F0                                                             ;AAB1B4;
+    dw $0020 : dl Tiles_Blank : dw $79F0                                 ;AAB1AF;
     dw Instruction_Torizo_FunctionInY                                    ;AAB1B6;
     dw Function_Torizo_NormalMovement                                    ;AAB1B8;
     dw Instruction_Torizo_ClearAnimationLock                             ;AAB1BA;
@@ -5271,51 +4113,39 @@ InstList_Torizo_DeathSequence_0:
     dw Instruction_Torizo_FunctionInY                                    ;AAB1C8;
     dw RTS_AAC6AB                                                        ;AAB1CA;
     dw Instruction_Torizo_SetAnimationLock                               ;AAB1CC;
-    dw Instruction_Common_TimerInY                                       ;AAB1CE;
-    dw $0008                                                             ;AAB1D0;
+    dw Instruction_Common_TimerInY,$0008                                 ;AAB1CE;
 
 InstList_Torizo_DeathSequence_1:
     dw Instruction_Torizo_SpawnTorizoDeathExplosion_SleepFor1IFrame      ;AAB1D2;
-    dw Instruction_Common_WaitYFrames                                    ;AAB1D4;
-    dw $0006                                                             ;AAB1D6;
+    dw Instruction_Common_WaitYFrames,$0006                              ;AAB1D4;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;AAB1D8;
     dw InstList_Torizo_DeathSequence_1                                   ;AAB1DA;
     dw Instruction_Torizo_SetupPaletteTransitionToBlack                  ;AAB1DC;
-    dw Instruction_Common_TimerInY                                       ;AAB1DE;
-    dw $000E                                                             ;AAB1E0;
+    dw Instruction_Common_TimerInY,$000E                                 ;AAB1DE;
 
 InstList_Torizo_DeathSequence_2:
     dw Instruction_Torizo_SpawnTorizoDeathExplosion_SleepFor1IFrame      ;AAB1E2;
     dw Instruction_Torizo_SetAsVisible                                   ;AAB1E4;
-    dw Instruction_Common_WaitYFrames                                    ;AAB1E6;
-    dw $0002                                                             ;AAB1E8;
+    dw Instruction_Common_WaitYFrames,$0002                              ;AAB1E6;
     dw Instruction_Torizo_SetAsInvisible                                 ;AAB1EA;
-    dw Instruction_Common_WaitYFrames                                    ;AAB1EC;
-    dw $0002                                                             ;AAB1EE;
+    dw Instruction_Common_WaitYFrames,$0002                              ;AAB1EC;
     dw Instruction_Torizo_SpawnTorizoDeathExplosion_SleepFor1IFrame      ;AAB1F0;
     dw Instruction_Torizo_SetAsVisible                                   ;AAB1F2;
-    dw Instruction_Common_WaitYFrames                                    ;AAB1F4;
-    dw $0002                                                             ;AAB1F6;
+    dw Instruction_Common_WaitYFrames,$0002                              ;AAB1F4;
     dw Instruction_Torizo_SetAsInvisible                                 ;AAB1F8;
-    dw Instruction_Common_WaitYFrames                                    ;AAB1FA;
-    dw $0002                                                             ;AAB1FC;
+    dw Instruction_Common_WaitYFrames,$0002                              ;AAB1FA;
     dw Instruction_Torizo_SetAsVisible                                   ;AAB1FE;
-    dw Instruction_Common_WaitYFrames                                    ;AAB200;
-    dw $0002                                                             ;AAB202;
+    dw Instruction_Common_WaitYFrames,$0002                              ;AAB200;
     dw Instruction_Torizo_SetAsInvisible                                 ;AAB204;
-    dw Instruction_Common_WaitYFrames                                    ;AAB206;
-    dw $0002                                                             ;AAB208;
+    dw Instruction_Common_WaitYFrames,$0002                              ;AAB206;
     dw Instruction_Torizo_SetAsVisible                                   ;AAB20A;
-    dw Instruction_Common_WaitYFrames                                    ;AAB20C;
-    dw $0002                                                             ;AAB20E;
+    dw Instruction_Common_WaitYFrames,$0002                              ;AAB20C;
     dw Instruction_Torizo_SetAsInvisible                                 ;AAB210;
-    dw Instruction_Common_WaitYFrames                                    ;AAB212;
-    dw $0002                                                             ;AAB214;
+    dw Instruction_Common_WaitYFrames,$0002                              ;AAB212;
     dw Instruction_Torizo_AdvanceGradualColorChange                      ;AAB216;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;AAB218;
     dw InstList_Torizo_DeathSequence_2                                   ;AAB21A;
-    dw Instruction_Common_WaitYFrames                                    ;AAB21C;
-    dw $0040                                                             ;AAB21E;
+    dw Instruction_Common_WaitYFrames,$0040                              ;AAB21C;
     dw Instruction_Torizo_SetBossBit_QueueElevatorMusic_SpawnDrops       ;AAB220;
     dw Instruction_Common_DeleteEnemy                                    ;AAB222;
 
@@ -5378,6 +4208,10 @@ Instruction_Torizo_AdvanceGradualColorChange:
     RTL                                                                  ;AAB278;
 
 
+; Torizo eyes opening / blinking
+; Bomb Torizo gut blown up
+; Bomb Torizo face blown up
+; Golden Torizo releasing eggs
 Tiles_Torizo:
     db $34,$2C,$4D,$7D,$5F,$7F,$1E,$7F,$9C,$FF,$B9,$FE,$BB,$FD,$7B,$BE   ;AAB279;
     db $7F,$00,$3A,$00,$DB,$00,$D7,$00,$37,$00,$EE,$00,$AF,$00,$ED,$00   ;AAB289;
@@ -5509,98 +4343,69 @@ Tiles_Torizo_AAB779:
 InstList_Torizo_BombTorizo_Initial_0:
     dw Instruction_Torizo_SetSteppedLeftWithRightFootState               ;AAB879;
     dw Instruction_Torizo_SetAnimationLock                               ;AAB87B;
-    dw $0001                                                             ;AAB87D;
-    dw ExtendedSpritemap_Torizo_Blank                                    ;AAB87F;
+    dw $0001,ExtendedSpritemap_Torizo_Blank                              ;AAB87D;
     dw Instruction_Torizo_FunctionInY                                    ;AAB881;
     dw Function_Torizo_WakeWhenBombTorizoChozoFinishesCrumbling          ;AAB883;
     dw Instruction_Common_Sleep                                          ;AAB885;
     dw Instruction_Torizo_FunctionInY                                    ;AAB887;
     dw Function_Torizo_SimpleMovement                                    ;AAB889;
-    dw $0030                                                             ;AAB88B;
-    dw ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0            ;AAB88D;
+    dw $0030,ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0      ;AAB88B;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB88F;
-    dw $0040                                                             ;AAB891;
-    dl Tiles_Torizo                                                      ;AAB893;
-    dw $7D80,$0020                                                       ;AAB896;
-    dw ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0            ;AAB89A;
+    dw $0040 : dl Tiles_Torizo : dw $7D80                                ;AAB891;
+    dw $0020,ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0      ;AAB896;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB89C;
-    dw $0040                                                             ;AAB89E;
-    dl Tiles_Torizo_AAB2B9                                               ;AAB8A0;
-    dw $7D80,$0010                                                       ;AAB8A3;
-    dw ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0            ;AAB8A7;
+    dw $0040 : dl Tiles_Torizo_AAB2B9 : dw $7D80                         ;AAB89E;
+    dw $0010,ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0      ;AAB8A3;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB8A9;
-    dw $0040                                                             ;AAB8AB;
-    dl Tiles_Torizo_AAB2F9                                               ;AAB8AD;
-    dw $7D80,$0008                                                       ;AAB8B0;
-    dw ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0            ;AAB8B4;
+    dw $0040 : dl Tiles_Torizo_AAB2F9 : dw $7D80                         ;AAB8AB;
+    dw $0008,ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0      ;AAB8B0;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB8B6;
-    dw $0040                                                             ;AAB8B8;
-    dl Tiles_Torizo_AAB339                                               ;AAB8BA;
-    dw $7D80,$0020                                                       ;AAB8BD;
-    dw ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0            ;AAB8C1;
-    dw Instruction_Common_TimerInY                                       ;AAB8C3;
-    dw $0002                                                             ;AAB8C5;
+    dw $0040 : dl Tiles_Torizo_AAB339 : dw $7D80                         ;AAB8B8;
+    dw $0020,ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0      ;AAB8BD;
+    dw Instruction_Common_TimerInY,$0002                                 ;AAB8C3;
 
 InstList_Torizo_BombTorizo_Initial_1:
-    dw $0004                                                             ;AAB8C7;
-    dw ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0            ;AAB8C9;
+    dw $0004,ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0      ;AAB8C7;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB8CB;
-    dw $0040                                                             ;AAB8CD;
-    dl Tiles_Torizo                                                      ;AAB8CF;
-    dw $7D80,$0004                                                       ;AAB8D2;
-    dw ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0            ;AAB8D6;
+    dw $0040 : dl Tiles_Torizo : dw $7D80                                ;AAB8CD;
+    dw $0004,ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0      ;AAB8D6;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB8D8;
-    dw $0040                                                             ;AAB8DA;
-    dl Tiles_Torizo_AAB2B9                                               ;AAB8DC;
-    dw $7D80,$0004                                                       ;AAB8DF;
-    dw ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0            ;AAB8E3;
+    dw $0040 : dl Tiles_Torizo_AAB2B9 : dw $7D80                         ;AAB8DA;
+    dw $0004,ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0      ;AAB8E3;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB8E5;
-    dw $0040                                                             ;AAB8E7;
-    dl Tiles_Torizo_AAB2F9                                               ;AAB8E9;
-    dw $7D80,$0004                                                       ;AAB8EC;
-    dw ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0            ;AAB8F0;
+    dw $0040 : dl Tiles_Torizo_AAB2F9 : dw $7D80                         ;AAB8E7;
+    dw $0004,ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0      ;AAB8F0;
     dw Instruction_Common_TransferYBytesInYToVRAM                        ;AAB8F2;
-    dw $0040                                                             ;AAB8F4;
-    dl Tiles_Torizo_AAB339                                               ;AAB8F6;
-    dw $7D80                                                             ;AAB8F9;
+    dw $0040 : dl Tiles_Torizo_AAB339 : dw $7D80                         ;AAB8F4;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;AAB8FB;
     dw InstList_Torizo_BombTorizo_Initial_1                              ;AAB8FD;
-    dw $0030                                                             ;AAB8FF;
-    dw ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0            ;AAB901;
-    dw Instruction_Torizo_StandingUpMovement_IndexInY                    ;AAB903;
-    dw $0000,$0010                                                       ;AAB905;
-    dw ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_1            ;AAB909;
-    dw Instruction_Torizo_StandingUpMovement_IndexInY                    ;AAB90B;
-    dw $0002,$0008                                                       ;AAB90D;
-    dw ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_2            ;AAB911;
-    dw Instruction_Torizo_StandingUpMovement_IndexInY                    ;AAB913;
-    dw $0004,$0008                                                       ;AAB915;
-    dw ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_3            ;AAB919;
-    dw Instruction_Torizo_StandingUpMovement_IndexInY                    ;AAB91B;
-    dw $0006,$0008                                                       ;AAB91D;
-    dw ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_4            ;AAB921;
-    dw Instruction_Torizo_StandingUpMovement_IndexInY                    ;AAB923;
-    dw $0008,$0008                                                       ;AAB925;
-    dw ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_5            ;AAB929;
-    dw Instruction_Torizo_StandingUpMovement_IndexInY                    ;AAB92B;
-    dw $000A                                                             ;AAB92D;
+    dw $0030,ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_0      ;AAB8FF;
+    dw Instruction_Torizo_StandingUpMovement_IndexInY,$0000              ;AAB903;
+    dw $0010,ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_1      ;AAB905;
+    dw Instruction_Torizo_StandingUpMovement_IndexInY,$0002              ;AAB90B;
+    dw $0008,ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_2      ;AAB90D;
+    dw Instruction_Torizo_StandingUpMovement_IndexInY,$0004              ;AAB913;
+    dw $0008,ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_3      ;AAB915;
+    dw Instruction_Torizo_StandingUpMovement_IndexInY,$0006              ;AAB91B;
+    dw $0008,ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_4      ;AAB91D;
+    dw Instruction_Torizo_StandingUpMovement_IndexInY,$0008              ;AAB923;
+    dw $0008,ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_5      ;AAB925;
+    dw Instruction_Torizo_StandingUpMovement_IndexInY,$000A              ;AAB92B;
     dw Instruction_Torizo_SetupPaletteTransitionToNormalTorizo           ;AAB92F;
-    dw Instruction_Common_TimerInY                                       ;AAB931;
-    dw $0010                                                             ;AAB933;
+    dw Instruction_Common_TimerInY,$0010                                 ;AAB931;
 
 InstList_Torizo_BombTorizo_Initial_2:
-    dw $0004                                                             ;AAB935;
-    dw ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_6            ;AAB937;
+    dw $0004,ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_6      ;AAB935;
     dw Instruction_Torizo_AdvanceGradualColorChange                      ;AAB939;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;AAB93B;
     dw InstList_Torizo_BombTorizo_Initial_2                              ;AAB93D;
     dw RTL_AAC2C8                                                        ;AAB93F;
     dw Instruction_Torizo_ClearAnimationLock                             ;AAB941;
     dw Instruction_Torizo_StartFightMusic_BombTorizoBellyPaletteFX       ;AAB943;
-    dw $0010                                                             ;AAB945;
-    dw ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_6            ;AAB947;
+    dw $0010,ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_6      ;AAB945;
     dw Instruction_Common_GotoY                                          ;AAB949;
     dw InstList_Torizo_FacingLeft_Walking_LeftLegMoving                  ;AAB94B;
+
 
 Instruction_Torizo_SetupPaletteTransitionToNormalTorizo:
     JSR.W LoadNormalTorizoTargetPalettes                                 ;AAB94D;
@@ -5621,8 +4426,7 @@ InstList_Torizo_FacingLeft_TurningLeft:
     dw Instruction_Torizo_FunctionInY                                    ;AAB962;
     dw Function_Torizo_SimpleMovement                                    ;AAB964;
     dw Instruction_Torizo_SetTorizoTurningAroundFlag                     ;AAB966;
-    dw $0018                                                             ;AAB968;
-    dw ExtendedSpritemaps_Torizo_FacingScreen_Turning_Dodging            ;AAB96A;
+    dw $0018,ExtendedSpritemaps_Torizo_FacingScreen_Turning_Dodging      ;AAB968;
 
 InstList_Torizo_FacingLeft_Walking_RightLegMoving:
     dw Instruction_Torizo_SetSteppedLeftWithLeftFootState                ;AAB96C;
@@ -5632,32 +4436,26 @@ InstList_Torizo_FacingLeft_Walking_RightLegMoving:
     dw Function_Torizo_Movement_Walking                                  ;AAB974;
     dw Instruction_Torizo_SpawnLowHealthInitialDroolIfHealthIsLow        ;AAB976;
     dw Instruction_Torizo_PlayTorizoFootstepsSFX                         ;AAB978;
-    dw $000A                                                             ;AAB97A;
-    dw ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_0            ;AAB97C;
+    dw $000A,ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_0      ;AAB97A;
     dw Instruction_Torizo_CallYIfSamusIsLessThan38PixelsInFront          ;AAB97E;
     dw InstList_Torizo_FacingLeft_ExplosiveSwipe_LeftFootForward_        ;AAB980;
     dw Instruction_Torizo_GotoYAndJumpBackwardsIfLessThan20Pixels        ;AAB982;
     dw InstList_Torizo_FacingLeft_JumpingBackward_LandLeftFootFwd_0      ;AAB984;
-    dw Instruction_Torizo_BombTorizoWalkingMovement_Normal_IndexInY      ;AAB986;
-    dw $0002,$0006                                                       ;AAB988;
-    dw ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_1            ;AAB98C;
+    dw Instruction_Torizo_BombTorizoWalkingMovement_Normal_IndexInY,$0002 ;AAB986;
+    dw $0006,ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_1      ;AAB988;
     dw Instruction_Torizo_GotoYAndJumpBackwardsIfLessThan20Pixels        ;AAB98E;
     dw InstList_Torizo_FacingLeft_JumpingBackward_LandLeftFootFwd_0      ;AAB990;
-    dw Instruction_Torizo_BombTorizoWalkingMovement_Normal_IndexInY      ;AAB992;
-    dw $0004,$0006                                                       ;AAB994;
-    dw ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_2            ;AAB998;
+    dw Instruction_Torizo_BombTorizoWalkingMovement_Normal_IndexInY,$0004 ;AAB992;
+    dw $0006,ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_2      ;AAB994;
     dw Instruction_Torizo_GotoYAndJumpBackwardsIfLessThan20Pixels        ;AAB99A;
     dw InstList_Torizo_FacingLeft_JumpingBackward_LandLeftFootFwd_0      ;AAB99C;
-    dw Instruction_Torizo_BombTorizoWalkingMovement_Normal_IndexInY      ;AAB99E;
-    dw $0006,$0006                                                       ;AAB9A0;
-    dw ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_3            ;AAB9A4;
+    dw Instruction_Torizo_BombTorizoWalkingMovement_Normal_IndexInY,$0006 ;AAB99E;
+    dw $0006,ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_3      ;AAB9A0;
     dw Instruction_Torizo_GotoYAndJumpBackwardsIfLessThan20Pixels        ;AAB9A6;
     dw InstList_Torizo_FacingLeft_JumpingBackward_LandLeftFootFwd_0      ;AAB9A8;
-    dw Instruction_Torizo_BombTorizoWalkingMovement_Normal_IndexInY      ;AAB9AA;
-    dw $0008,$0006                                                       ;AAB9AC;
-    dw ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_4            ;AAB9B0;
-    dw Instruction_Torizo_BombTorizoWalkingMovement_Normal_IndexInY      ;AAB9B2;
-    dw $000A                                                             ;AAB9B4;
+    dw Instruction_Torizo_BombTorizoWalkingMovement_Normal_IndexInY,$0008 ;AAB9AA;
+    dw $0006,ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_4      ;AAB9AC;
+    dw Instruction_Torizo_BombTorizoWalkingMovement_Normal_IndexInY,$000A ;AAB9B2;
 
 InstList_Torizo_FacingLeft_Walking_LeftLegMoving:
     dw Instruction_Torizo_SetSteppedLeftWithRightFootState               ;AAB9B6;
