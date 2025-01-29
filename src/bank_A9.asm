@@ -89,12 +89,14 @@ Spritemap_CommonA9_Nothing:
     dw $0000                                                             ;A9804D;
 
 ExtendedSpritemap_CommonA9_Nothing:
-    dw $0001,$0000,$0000                                                 ;A9804F;
+    dw $0001                                                             ;A9804F;
+    dw $0000,$0000
     dw Spritemap_CommonA9_Nothing                                        ;A98055;
     dw Hitbox_CommonA9_Nothing                                           ;A98057;
 
 Hitbox_CommonA9_Nothing:
-    dw $0001,$0000,$0000,$0000,$0000                                     ;A98059;
+    dw $0001                                                             ;A98059;
+    dw $0000,$0000,$0000,$0000
     dw CommonA9_NormalEnemyTouchAI                                       ;A98063;
     dw CommonA9_NormalEnemyShotAI                                        ;A98065;
 
@@ -856,13 +858,18 @@ HandleFakeDeathExplosions:
     JSL.L QueueSound_Lib2_Max3                                           ;A98924;
     RTS                                                                  ;A98928;
 
-
 .XPosition:
     dw $0088                                                             ;A98929;
-
 .YPosition:
-    dw $0074,$0078,$0084,$007C,$005A,$008A,$0092,$0078                   ;A9892B;
-    dw $0034,$007C,$00AA,$008A,$0048,$0078,$00CE                         ;A9893B;
+    dw       $0074                                                       ;A9892B;
+    dw $0078,$0084
+    dw $007C,$005A
+    dw $008A,$0092
+    dw $0078,$0034
+    dw $007C,$00AA
+    dw $008A,$0048
+    dw $0078,$00CE
+
 
 Function_MotherBrainBody_SpawnTubesFallingWhenLessThan4Proj:
     LDY.W #$0000                                                         ;A98949;
@@ -1102,6 +1109,22 @@ RTS_A98AE4:
     RTS                                                                  ;A98AE4;
 
 
+; Enemy population format is:
+; ____________________________________________ Enemy ID
+;        _____________________________________ X position
+;       |      _______________________________ Y position
+;       |     |      _________________________ Initialisation parameter (orientation in SMILE)
+;       |     |     |      ___________________ Properties (special in SMILE)
+;       |     |     |     |      _____________ Extra properties (special graphics bitset in SMILE)
+;       |     |     |     |     |      _______ Parameter 1 (speed in SMILE)
+;       |     |     |     |     |     |      _ Parameter 2 (speed2 in SMILE)
+;       |     |     |     |     |     |     |
+;       xxxx  yyyy  oooo  pppp  gggg  aaaa  bbbb
+
+;  ______ Terminator
+; |     _ Number of enemy deaths needed to clear current room
+; |    |
+; FFFF nn
 EnemyPopulations_MotherBrainFallingTubes_BottomLeft:
     dw EnemyHeaders_MotherBrainTubes                                     ;A98AE5;
     dw $0060,$00B3                                                       ;A98AE7;
@@ -1132,6 +1155,7 @@ EnemyPopulations_MotherBrainFallingTubes_MainTube:
     dw InstList_MotherBrainTubes_4                                       ;A98B2B;
     dw $A800,$0000,$0008,$0020                                           ;A98B2D;
 
+
 InitAI_MotherBrainTubes:
     LDX.W $0E54                                                          ;A98B35;
     LDY.W $0FB4,X                                                        ;A98B38;
@@ -1148,7 +1172,6 @@ InitAI_MotherBrainTubes:
     STA.W $0FA8,X                                                        ;A98B59;
     RTL                                                                  ;A98B5C;
 
-
 .XRadius:
     dw $0010,$0010,$0008,$0008,$0010                                     ;A98B5D;
 
@@ -1164,6 +1187,7 @@ InitAI_MotherBrainTubes:
     dw Function_MotherBrainTubes_NonMainTube                             ;A98B7F;
     dw Function_MotherBrainTubes_NonMainTube                             ;A98B81;
     dw Function_MotherBrainTubes_MainTube_WaitingToFall                  ;A98B83;
+
 
 MainAI_MotherBrainTubes:
     JMP.W ($0FA8,X)                                                      ;A98B85;
@@ -1279,28 +1303,23 @@ SpawnFallingTubeSmoke:
     dw $FFF8,$0002,$FFFC,$0006                                           ;A98C61;
 
 InstList_MotherBrainTubes_0:
-    dw $0001                                                             ;A98C69;
-    dw Spritemaps_MotherBrainTubes_0                                     ;A98C6B;
+    dw $0001,Spritemaps_MotherBrainTubes_0                               ;A98C69;
     dw Instruction_Common_Sleep                                          ;A98C6D;
 
 InstList_MotherBrainTubes_1:
-    dw $0001                                                             ;A98C6F;
-    dw Spritemaps_MotherBrainTubes_1                                     ;A98C71;
+    dw $0001,Spritemaps_MotherBrainTubes_1                               ;A98C6F;
     dw Instruction_Common_Sleep                                          ;A98C73;
 
 InstList_MotherBrainTubes_2:
-    dw $0001                                                             ;A98C75;
-    dw Spritemaps_MotherBrainTubes_2                                     ;A98C77;
+    dw $0001,Spritemaps_MotherBrainTubes_2                               ;A98C75;
     dw Instruction_Common_Sleep                                          ;A98C79;
 
 InstList_MotherBrainTubes_3:
-    dw $0001                                                             ;A98C7B;
-    dw Spritemaps_MotherBrainTubes_3                                     ;A98C7D;
+    dw $0001,Spritemaps_MotherBrainTubes_3                               ;A98C7B;
     dw Instruction_Common_Sleep                                          ;A98C7F;
 
 InstList_MotherBrainTubes_4:
-    dw $0001                                                             ;A98C81;
-    dw Spritemaps_MotherBrainTubes_4                                     ;A98C83;
+    dw $0001,Spritemaps_MotherBrainTubes_4                               ;A98C81;
     dw Instruction_Common_Sleep                                          ;A98C85;
 
 Function_MotherBrainBody_FakeDeath_Ascent_DrawRoomBG_Rows2_3:
@@ -1659,74 +1678,128 @@ SpawnDustCloudsForMotherBrainsAscent:
 
 
 .explosionType:
+; Explosion type. 9 = small dust cloud, Ch = smoke
     db $09,$12                                                           ;A98F7D;
 
 .XPositions:
+; Explosion X positions
     dw $003D,$0054,$0020,$0035,$005A,$0043,$0067,$0029                   ;A98F7F;
 
 MotherBrainFightSpriteTileTransferEntries:
   .legs:
+; Mother Brain's legs
     dw $0200                                                             ;A98F8F;
-    dl Tiles_MotherBrainLegs                                             ;A98F91;
-    dw $7400,$0200                                                       ;A98F94;
-    dl Tiles_MotherBrainLegs+$200                                        ;A98F98;
-    dw $7500,$0200                                                       ;A98F9B;
-    dl Tiles_MotherBrainLegs+$400                                        ;A98F9F;
-    dw $7600,$0200                                                       ;A98FA2;
-    dl Tiles_MotherBrainLegs+$600                                        ;A98FA6;
-    dw $7700,$0200                                                       ;A98FA9;
-    dl Tiles_MotherBrainLegs+$800                                        ;A98FAD;
-    dw $7800,$0200                                                       ;A98FB0;
-    dl Tiles_MotherBrainLegs+$A00                                        ;A98FB4;
-    dw $7900,$0200                                                       ;A98FB7;
-    dl Tiles_MotherBrainLegs+$C00                                        ;A98FBB;
-    dw $7A00,$0200                                                       ;A98FBE;
-    dl Tiles_MotherBrainLegs+$E00                                        ;A98FC2;
-    dw $7B00                                                             ;A98FC5;
+    dl Tiles_MotherBrainLegs
+    dw $7400
+
+    dw $0200
+    dl Tiles_MotherBrainLegs+$200
+    dw $7500
+
+    dw $0200
+    dl Tiles_MotherBrainLegs+$400
+    dw $7600
+
+    dw $0200
+    dl Tiles_MotherBrainLegs+$600
+    dw $7700
+
+    dw $0200
+    dl Tiles_MotherBrainLegs+$800
+    dw $7800
+
+    dw $0200
+    dl Tiles_MotherBrainLegs+$A00
+    dw $7900
+
+    dw $0200
+    dl Tiles_MotherBrainLegs+$C00
+    dw $7A00
+
+    dw $0200
+    dl Tiles_MotherBrainLegs+$E00
+    dw $7B00
 
   .attacks:
+; Bomb shells, death beam, unused graphics
     dw $0200                                                             ;A98FC7;
-    dl Tiles_MotherBrain_BombShells_DeathBeam_UnusedGFX                  ;A98FC9;
-    dw $7C00,$0200                                                       ;A98FCC;
-    dl Tiles_MotherBrain_BombShells_DeathBeam_UnusedGFX+$200             ;A98FD0;
-    dw $7D00,$0200                                                       ;A98FD3;
-    dl Tiles_MotherBrain_BombShells_DeathBeam_UnusedGFX+$400             ;A98FD7;
-    dw $7E00,$0200                                                       ;A98FDA;
-    dl Tiles_MotherBrain_BombShells_DeathBeam_UnusedGFX+$600             ;A98FDE;
-    dw $7F00,$0000                                                       ;A98FE1;
+    dl Tiles_MotherBrain_BombShells_DeathBeam_UnusedGFX
+    dw $7C00
+
+    dw $0200
+    dl Tiles_MotherBrain_BombShells_DeathBeam_UnusedGFX+$200
+    dw $7D00
+
+    dw $0200
+    dl Tiles_MotherBrain_BombShells_DeathBeam_UnusedGFX+$400
+    dw $7E00
+
+    dw $0200
+    dl Tiles_MotherBrain_BombShells_DeathBeam_UnusedGFX+$600
+    dw $7F00
+
+    dw $0000
 
   .babyMetroid:
+; Baby Metroid
     dw $0200                                                             ;A98FE5;
-    dl Tiles_BabyMetroid+$400                                            ;A98FE7;
-    dw $7C00,$0200                                                       ;A98FEA;
-    dl Tiles_BabyMetroid+$600                                            ;A98FEE;
-    dw $7D00,$0200                                                       ;A98FF1;
-    dl Tiles_BabyMetroid+$800                                            ;A98FF5;
-    dw $7E00,$0200                                                       ;A98FF8;
-    dl Tiles_BabyMetroid+$A00                                            ;A98FFC;
-    dw $7F00,$0000                                                       ;A98FFF;
+    dl Tiles_BabyMetroid+$400
+    dw $7C00
+
+    dw $0200
+    dl Tiles_BabyMetroid+$600
+    dw $7D00
+
+    dw $0200
+    dl Tiles_BabyMetroid+$800
+    dw $7E00
+
+    dw $0200
+    dl Tiles_BabyMetroid+$A00
+    dw $7F00
+
+    dw $0000
 
   .corpse:
+; Mother Brain's corpse
     dw $01C0                                                             ;A99003;
-    dl Tiles_CorpseMotherBrain                                           ;A99005;
-    dw $7A00,$01C0                                                       ;A99008;
-    dl Tiles_CorpseMotherBrain+$200                                      ;A9900C;
-    dw $7B00,$01C0                                                       ;A9900F;
-    dl Tiles_CorpseMotherBrain+$400                                      ;A99013;
-    dw $7C00,$01C0                                                       ;A99016;
-    dl Tiles_CorpseMotherBrain+$600                                      ;A9901A;
-    dw $7D00,$01C0                                                       ;A9901D;
-    dl Tiles_CorpseMotherBrain+$800                                      ;A99021;
-    dw $7E00,$01C0                                                       ;A99024;
-    dl Tiles_CorpseMotherBrain+$A00                                      ;A99028;
-    dw $7F00,$0000                                                       ;A9902B;
+    dl Tiles_CorpseMotherBrain
+    dw $7A00
+
+    dw $01C0
+    dl Tiles_CorpseMotherBrain+$200
+    dw $7B00
+
+    dw $01C0
+    dl Tiles_CorpseMotherBrain+$400
+    dw $7C00
+
+    dw $01C0
+    dl Tiles_CorpseMotherBrain+$600
+    dw $7D00
+
+    dw $01C0
+    dl Tiles_CorpseMotherBrain+$800
+    dw $7E00
+
+    dw $01C0
+    dl Tiles_CorpseMotherBrain+$A00
+    dw $7F00
+
+    dw $0000
 
   .explodedDoor:
+; Exploded escape door particles
     dw $0200                                                             ;A9902F;
-    dl Tiles_MotherBrainExplodedEscapeDoorParticles                      ;A99031;
-    dw $7000,$0200                                                       ;A99034;
-    dl Tiles_MotherBrainExplodedEscapeDoorParticles+$200                 ;A99038;
-    dw $7100,$0000                                                       ;A9903B;
+    dl Tiles_MotherBrainExplodedEscapeDoorParticles
+    dw $7000
+
+    dw $0200
+    dl Tiles_MotherBrainExplodedEscapeDoorParticles+$200
+    dw $7100
+
+    dw $0000
+
 
 SetupMotherBrainsNeckForFakeDeathAscent:
     LDA.W #$0002                                                         ;A9903F;
@@ -2155,11 +2228,13 @@ DrawMotherBrainHead:
     RTS                                                                  ;A993BA;
 
 
+; Used for Mother Brain brain shaking and when Shitroid shakes
 ShakingOffsets_X:
     dw $0000,$FFFF,$0000,$0001                                           ;A993BB;
 
 ShakingOffsets_Y:
     dw $0000,$0001,$FFFF,$0001                                           ;A993C3;
+
 
 DrawMotherBrainNeckSegment:
     LDA.W $0FDC                                                          ;A993CB;
@@ -2258,29 +2333,37 @@ Palette_MotherBrain:
     dw $3800,$269F,$0159,$004C,$0004,$5739,$4273,$2DAD                   ;A99472;
     dw $14C6,$367F,$29F9,$2173,$150C,$0C86,$7FFF,$0000                   ;A99482;
 
+; Colour 0 is never read
 Palette_MotherBrain_BackLeg:
+; Sprite palette 3 - Mother Brain's back leg
     dw $3800,$0000,$0000,$0000,$0024,$29AD,$214A,$14E7                   ;A99492;
     dw $0C63,$0000,$0000,$0000,$0000,$0000,$29AD,$0000                   ;A994A2;
 
 Palette_MotherBrain_Attacks:
+; Sprite palette 2 - Mother Brain's attacks
     dw $3800,$7FE0,$6B20,$5640,$03FF,$02BF,$015F,$001F                   ;A994B2;
     dw $29F9,$2173,$150C,$6318,$4631,$294A,$7FFF,$0C63                   ;A994C2;
 
 Palette_MotherBrain_BabyMetroid:
+; Sprite palette 7 - Baby Metroid
     dw $3800,$57B8,$0B11,$1646,$00E3,$72FF,$2CDF,$24B9                   ;A994D2;
     dw $1CAF,$18A9,$4F9F,$3ED8,$2E12,$08CD,$7FFF,$0000                   ;A994E2;
 
 Palette_MotherBrain_TubeProjectiles:
+; Sprite palette 7 - tube enemy projectiles
     dw $3800,$6318,$6318,$0802,$5294,$39CE,$2108,$1084                   ;A994F2;
     dw $0019,$0012,$5C00,$4000,$1084,$197F,$7FFF,$0000                   ;A99502;
 
 Palette_MotherBrain_GlassShards:
+; Sprite palette 3 - glass shards
     dw $3800,$5294,$39CE,$2108,$7F8B,$6F0A,$5E88,$4E07                   ;A99512;
     dw $3986,$2905,$1883,$0802,$1084,$6318,$7FFF,$0000                   ;A99522;
 
 Palette_MotherBrain_ExplodedDoor:
+; Sprite palette 1 - exploded escape door particles
     dw $3800,$4D1F,$38B6,$246E,$1448,$47FF,$2EFA,$1616                   ;A99532;
     dw $0132,$5294,$4210,$318C,$2108,$1084,$7FFF,$0000                   ;A99542;
+
 
 MoveMotherBrainBodyDownByA_ScrollLeftByX:
     PHA                                                                  ;A99552;
@@ -2575,474 +2658,348 @@ Instruction_MotherBrainBody_SetPoseToLeaningDown:
 
 InstList_MotherBrainBody_WalkingForwards_ReallyFast:
     dw Instruction_MotherBrainBody_SetPoseToWalking                      ;A99730;
-    dw $0002                                                             ;A99732;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A99734;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_Standing                  ;A99732;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_ScrollRightBy1          ;A99736;
-    dw $0002                                                             ;A99738;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_0                       ;A9973A;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_Walking_0                 ;A99738;
     dw Instruction_MotherBrainBody_MoveBodyRightBy2                      ;A9973C;
-    dw $0002                                                             ;A9973E;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_1                       ;A99740;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_Walking_1                 ;A9973E;
     dw Instruction_MotherBrainBody_MoveBodyUpBy1                         ;A99742;
-    dw $0002                                                             ;A99744;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_2                       ;A99746;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_Walking_2                 ;A99744;
     dw Instruction_MotherBrainBody_MoveBodyUpBy1_RightBy3_Footstep       ;A99748;
-    dw $0002                                                             ;A9974A;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_3                       ;A9974C;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_Walking_3                 ;A9974A;
     dw Instruction_MotherBrainBody_MoveBodyDownBy2_RightBy15             ;A9974E;
-    dw $0002                                                             ;A99750;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_4                       ;A99752;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_Walking_4                 ;A99750;
     dw Instruction_MotherBrainBody_MoveBodyDownBy4_RightBy6              ;A99754;
-    dw $0002                                                             ;A99756;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_5                       ;A99758;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_Walking_5                 ;A99756;
     dw Instruction_MotherBrainBody_MoveBodyUpBy4_LeftBy2                 ;A9975A;
-    dw $0002                                                             ;A9975C;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_6                       ;A9975E;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_Walking_6                 ;A9975C;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_LeftBy1_Footstep        ;A99760;
     dw Instruction_MotherBrainBody_SetPoseToStanding                     ;A99762;
-    dw $0002                                                             ;A99764;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_7                       ;A99766;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_Walking_7                 ;A99764;
     dw Instruction_Common_Sleep                                          ;A99768;
 
 InstList_MotherBrainBody_WalkingForwards_Fast:
     dw Instruction_MotherBrainBody_SetPoseToWalking                      ;A9976A;
-    dw $0004                                                             ;A9976C;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A9976E;
+    dw $0004,ExtendedSpritemap_MotherBrainBody_Standing                  ;A9976C;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_ScrollRightBy1          ;A99770;
-    dw $0004                                                             ;A99772;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_0                       ;A99774;
+    dw $0004,ExtendedSpritemap_MotherBrainBody_Walking_0                 ;A99772;
     dw Instruction_MotherBrainBody_MoveBodyRightBy2                      ;A99776;
-    dw $0004                                                             ;A99778;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_1                       ;A9977A;
+    dw $0004,ExtendedSpritemap_MotherBrainBody_Walking_1                 ;A99778;
     dw Instruction_MotherBrainBody_MoveBodyUpBy1                         ;A9977C;
-    dw $0004                                                             ;A9977E;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_2                       ;A99780;
+    dw $0004,ExtendedSpritemap_MotherBrainBody_Walking_2                 ;A9977E;
     dw Instruction_MotherBrainBody_MoveBodyUpBy1_RightBy3_Footstep       ;A99782;
-    dw $0004                                                             ;A99784;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_3                       ;A99786;
+    dw $0004,ExtendedSpritemap_MotherBrainBody_Walking_3                 ;A99784;
     dw Instruction_MotherBrainBody_MoveBodyDownBy2_RightBy15             ;A99788;
-    dw $0004                                                             ;A9978A;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_4                       ;A9978C;
+    dw $0004,ExtendedSpritemap_MotherBrainBody_Walking_4                 ;A9978A;
     dw Instruction_MotherBrainBody_MoveBodyDownBy4_RightBy6              ;A9978E;
-    dw $0004                                                             ;A99790;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_5                       ;A99792;
+    dw $0004,ExtendedSpritemap_MotherBrainBody_Walking_5                 ;A99790;
     dw Instruction_MotherBrainBody_MoveBodyUpBy4_LeftBy2                 ;A99794;
-    dw $0004                                                             ;A99796;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_6                       ;A99798;
+    dw $0004,ExtendedSpritemap_MotherBrainBody_Walking_6                 ;A99796;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_LeftBy1_Footstep        ;A9979A;
     dw Instruction_MotherBrainBody_SetPoseToStanding                     ;A9979C;
-    dw $0004                                                             ;A9979E;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_7                       ;A997A0;
+    dw $0004,ExtendedSpritemap_MotherBrainBody_Walking_7                 ;A9979E;
     dw Instruction_Common_Sleep                                          ;A997A2;
 
 InstList_MotherBrainBody_WalkingForwards_Medium:
     dw Instruction_MotherBrainBody_SetPoseToWalking                      ;A997A4;
-    dw $0006                                                             ;A997A6;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A997A8;
+    dw $0006,ExtendedSpritemap_MotherBrainBody_Standing                  ;A997A6;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_ScrollRightBy1          ;A997AA;
-    dw $0006                                                             ;A997AC;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_0                       ;A997AE;
+    dw $0006,ExtendedSpritemap_MotherBrainBody_Walking_0                 ;A997AC;
     dw Instruction_MotherBrainBody_MoveBodyRightBy2                      ;A997B0;
-    dw $0006                                                             ;A997B2;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_1                       ;A997B4;
+    dw $0006,ExtendedSpritemap_MotherBrainBody_Walking_1                 ;A997B2;
     dw Instruction_MotherBrainBody_MoveBodyUpBy1                         ;A997B6;
-    dw $0006                                                             ;A997B8;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_2                       ;A997BA;
+    dw $0006,ExtendedSpritemap_MotherBrainBody_Walking_2                 ;A997B8;
     dw Instruction_MotherBrainBody_MoveBodyUpBy1_RightBy3_Footstep       ;A997BC;
-    dw $0006                                                             ;A997BE;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_3                       ;A997C0;
+    dw $0006,ExtendedSpritemap_MotherBrainBody_Walking_3                 ;A997BE;
     dw Instruction_MotherBrainBody_MoveBodyDownBy2_RightBy15             ;A997C2;
-    dw $0006                                                             ;A997C4;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_4                       ;A997C6;
+    dw $0006,ExtendedSpritemap_MotherBrainBody_Walking_4                 ;A997C4;
     dw Instruction_MotherBrainBody_MoveBodyDownBy4_RightBy6              ;A997C8;
-    dw $0006                                                             ;A997CA;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_5                       ;A997CC;
+    dw $0006,ExtendedSpritemap_MotherBrainBody_Walking_5                 ;A997CA;
     dw Instruction_MotherBrainBody_MoveBodyUpBy4_LeftBy2                 ;A997CE;
-    dw $0006                                                             ;A997D0;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_6                       ;A997D2;
+    dw $0006,ExtendedSpritemap_MotherBrainBody_Walking_6                 ;A997D0;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_LeftBy1_Footstep        ;A997D4;
     dw Instruction_MotherBrainBody_SetPoseToStanding                     ;A997D6;
-    dw $0006                                                             ;A997D8;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_7                       ;A997DA;
+    dw $0006,ExtendedSpritemap_MotherBrainBody_Walking_7                 ;A997D8;
     dw Instruction_Common_Sleep                                          ;A997DC;
 
 InstList_MotherBrainBody_WalkingForwards_Slow:
     dw Instruction_MotherBrainBody_SetPoseToWalking                      ;A997DE;
-    dw $0008                                                             ;A997E0;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A997E2;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Standing                  ;A997E0;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_ScrollRightBy1          ;A997E4;
-    dw $0008                                                             ;A997E6;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_0                       ;A997E8;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Walking_0                 ;A997E6;
     dw Instruction_MotherBrainBody_MoveBodyRightBy2                      ;A997EA;
-    dw $0008                                                             ;A997EC;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_1                       ;A997EE;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Walking_1                 ;A997EC;
     dw Instruction_MotherBrainBody_MoveBodyUpBy1                         ;A997F0;
-    dw $0008                                                             ;A997F2;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_2                       ;A997F4;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Walking_2                 ;A997F2;
     dw Instruction_MotherBrainBody_MoveBodyUpBy1_RightBy3_Footstep       ;A997F6;
-    dw $0008                                                             ;A997F8;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_3                       ;A997FA;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Walking_3                 ;A997F8;
     dw Instruction_MotherBrainBody_MoveBodyDownBy2_RightBy15             ;A997FC;
-    dw $0008                                                             ;A997FE;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_4                       ;A99800;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Walking_4                 ;A997FE;
     dw Instruction_MotherBrainBody_MoveBodyDownBy4_RightBy6              ;A99802;
-    dw $0008                                                             ;A99804;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_5                       ;A99806;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Walking_5                 ;A99804;
     dw Instruction_MotherBrainBody_MoveBodyUpBy4_LeftBy2                 ;A99808;
-    dw $0008                                                             ;A9980A;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_6                       ;A9980C;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Walking_6                 ;A9980A;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_LeftBy1_Footstep        ;A9980E;
     dw Instruction_MotherBrainBody_SetPoseToStanding                     ;A99810;
-    dw $0008                                                             ;A99812;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_7                       ;A99814;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Walking_7                 ;A99812;
     dw Instruction_Common_Sleep                                          ;A99816;
 
 InstList_MotherBrainBody_WalkingForwards_ReallySlow:
     dw Instruction_MotherBrainBody_SetPoseToWalking                      ;A99818;
-    dw $000A                                                             ;A9981A;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A9981C;
+    dw $000A,ExtendedSpritemap_MotherBrainBody_Standing                  ;A9981A;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_ScrollRightBy1          ;A9981E;
-    dw $000A                                                             ;A99820;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_0                       ;A99822;
+    dw $000A,ExtendedSpritemap_MotherBrainBody_Walking_0                 ;A99820;
     dw Instruction_MotherBrainBody_MoveBodyRightBy2                      ;A99824;
-    dw $000A                                                             ;A99826;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_1                       ;A99828;
+    dw $000A,ExtendedSpritemap_MotherBrainBody_Walking_1                 ;A99826;
     dw Instruction_MotherBrainBody_MoveBodyUpBy1                         ;A9982A;
-    dw $000A                                                             ;A9982C;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_2                       ;A9982E;
+    dw $000A,ExtendedSpritemap_MotherBrainBody_Walking_2                 ;A9982C;
     dw Instruction_MotherBrainBody_MoveBodyUpBy1_RightBy3_Footstep       ;A99830;
-    dw $000A                                                             ;A99832;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_3                       ;A99834;
+    dw $000A,ExtendedSpritemap_MotherBrainBody_Walking_3                 ;A99832;
     dw Instruction_MotherBrainBody_MoveBodyDownBy2_RightBy15             ;A99836;
-    dw $000A                                                             ;A99838;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_4                       ;A9983A;
+    dw $000A,ExtendedSpritemap_MotherBrainBody_Walking_4                 ;A99838;
     dw Instruction_MotherBrainBody_MoveBodyDownBy4_RightBy6              ;A9983C;
-    dw $000A                                                             ;A9983E;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_5                       ;A99840;
+    dw $000A,ExtendedSpritemap_MotherBrainBody_Walking_5                 ;A9983E;
     dw Instruction_MotherBrainBody_MoveBodyUpBy4_LeftBy2                 ;A99842;
-    dw $000A                                                             ;A99844;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_6                       ;A99846;
+    dw $000A,ExtendedSpritemap_MotherBrainBody_Walking_6                 ;A99844;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_LeftBy1_Footstep        ;A99848;
     dw Instruction_MotherBrainBody_SetPoseToStanding                     ;A9984A;
-    dw $000A                                                             ;A9984C;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_7                       ;A9984E;
+    dw $000A,ExtendedSpritemap_MotherBrainBody_Walking_7                 ;A9984C;
     dw Instruction_Common_Sleep                                          ;A99850;
 
 InstList_MotherBrainBody_WalkingBackwards_Slow:
     dw Instruction_MotherBrainBody_SetPoseToWalking                      ;A99852;
-    dw $0008                                                             ;A99854;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_7                       ;A99856;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Walking_7                 ;A99854;
     dw Instruction_MotherBrainBody_MoveBodyDownBy2_RightBy1              ;A99858;
-    dw $0008                                                             ;A9985A;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_6                       ;A9985C;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Walking_6                 ;A9985A;
     dw Instruction_MotherBrainBody_MoveBodyDownBy4_RightBy2              ;A9985E;
-    dw $0008                                                             ;A99860;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_5                       ;A99862;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Walking_5                 ;A99860;
     dw Instruction_MotherBrainBody_MoveBodyUpBy4_LeftBy6                 ;A99864;
-    dw $0008                                                             ;A99866;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_4                       ;A99868;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Walking_4                 ;A99866;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_LeftBy15_Footstep       ;A9986A;
-    dw $0008                                                             ;A9986C;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_3                       ;A9986E;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Walking_3                 ;A9986C;
     dw Instruction_MotherBrainBody_MoveBodyDownBy1_LeftBy3               ;A99870;
-    dw $0008                                                             ;A99872;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_2                       ;A99874;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Walking_2                 ;A99872;
     dw Instruction_MotherBrainBody_MoveBodyDownBy1                       ;A99876;
-    dw $0008                                                             ;A99878;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_1                       ;A9987A;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Walking_1                 ;A99878;
     dw Instruction_MotherBrainBody_MoveBodyLeftBy2                       ;A9987C;
-    dw $0008                                                             ;A9987E;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_0                       ;A99880;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Walking_0                 ;A9987E;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_LeftBy1_Footstep_duplicate ;A99882;
     dw Instruction_MotherBrainBody_SetPoseToStanding                     ;A99884;
-    dw $0008                                                             ;A99886;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A99888;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Standing                  ;A99886;
     dw Instruction_Common_Sleep                                          ;A9988A;
 
 InstList_MotherBrainBody_WalkingBackwards_ReallyFast:
     dw Instruction_MotherBrainBody_SetPoseToWalking                      ;A9988C;
-    dw $0002                                                             ;A9988E;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_7                       ;A99890;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_Walking_7                 ;A9988E;
     dw Instruction_MotherBrainBody_MoveBodyDownBy2_RightBy1              ;A99892;
-    dw $0002                                                             ;A99894;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_6                       ;A99896;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_Walking_6                 ;A99894;
     dw Instruction_MotherBrainBody_MoveBodyDownBy4_RightBy2              ;A99898;
-    dw $0002                                                             ;A9989A;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_5                       ;A9989C;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_Walking_5                 ;A9989A;
     dw Instruction_MotherBrainBody_MoveBodyUpBy4_LeftBy6                 ;A9989E;
-    dw $0002                                                             ;A998A0;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_4                       ;A998A2;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_Walking_4                 ;A998A0;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_LeftBy15_Footstep       ;A998A4;
-    dw $0002                                                             ;A998A6;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_3                       ;A998A8;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_Walking_3                 ;A998A6;
     dw Instruction_MotherBrainBody_MoveBodyDownBy1_LeftBy3               ;A998AA;
-    dw $0002                                                             ;A998AC;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_2                       ;A998AE;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_Walking_2                 ;A998AC;
     dw Instruction_MotherBrainBody_MoveBodyDownBy1                       ;A998B0;
-    dw $0002                                                             ;A998B2;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_1                       ;A998B4;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_Walking_1                 ;A998B2;
     dw Instruction_MotherBrainBody_MoveBodyLeftBy2                       ;A998B6;
-    dw $0002                                                             ;A998B8;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_0                       ;A998BA;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_Walking_0                 ;A998B8;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_LeftBy1_Footstep_duplicate ;A998BC;
     dw Instruction_MotherBrainBody_SetPoseToStanding                     ;A998BE;
-    dw $0002                                                             ;A998C0;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A998C2;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_Standing                  ;A998C0;
     dw Instruction_Common_Sleep                                          ;A998C4;
 
 InstList_MotherBrainBody_WalkingBackwards_Fast:
     dw Instruction_MotherBrainBody_SetPoseToWalking                      ;A998C6;
-    dw $0004                                                             ;A998C8;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_7                       ;A998CA;
+    dw $0004,ExtendedSpritemap_MotherBrainBody_Walking_7                 ;A998C8;
     dw Instruction_MotherBrainBody_MoveBodyDownBy2_RightBy1              ;A998CC;
-    dw $0004                                                             ;A998CE;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_6                       ;A998D0;
+    dw $0004,ExtendedSpritemap_MotherBrainBody_Walking_6                 ;A998CE;
     dw Instruction_MotherBrainBody_MoveBodyDownBy4_RightBy2              ;A998D2;
-    dw $0004                                                             ;A998D4;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_5                       ;A998D6;
+    dw $0004,ExtendedSpritemap_MotherBrainBody_Walking_5                 ;A998D4;
     dw Instruction_MotherBrainBody_MoveBodyUpBy4_LeftBy6                 ;A998D8;
-    dw $0004                                                             ;A998DA;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_4                       ;A998DC;
+    dw $0004,ExtendedSpritemap_MotherBrainBody_Walking_4                 ;A998DA;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_LeftBy15_Footstep       ;A998DE;
-    dw $0004                                                             ;A998E0;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_3                       ;A998E2;
+    dw $0004,ExtendedSpritemap_MotherBrainBody_Walking_3                 ;A998E0;
     dw Instruction_MotherBrainBody_MoveBodyDownBy1_LeftBy3               ;A998E4;
-    dw $0004                                                             ;A998E6;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_2                       ;A998E8;
+    dw $0004,ExtendedSpritemap_MotherBrainBody_Walking_2                 ;A998E6;
     dw Instruction_MotherBrainBody_MoveBodyDownBy1                       ;A998EA;
-    dw $0004                                                             ;A998EC;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_1                       ;A998EE;
+    dw $0004,ExtendedSpritemap_MotherBrainBody_Walking_1                 ;A998EC;
     dw Instruction_MotherBrainBody_MoveBodyLeftBy2                       ;A998F0;
-    dw $0004                                                             ;A998F2;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_0                       ;A998F4;
+    dw $0004,ExtendedSpritemap_MotherBrainBody_Walking_0                 ;A998F2;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_LeftBy1_Footstep_duplicate ;A998F6;
     dw Instruction_MotherBrainBody_SetPoseToStanding                     ;A998F8;
-    dw $0004                                                             ;A998FA;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A998FC;
+    dw $0004,ExtendedSpritemap_MotherBrainBody_Standing                  ;A998FA;
     dw Instruction_Common_Sleep                                          ;A998FE;
 
 InstList_MotherBrainBody_WalkingBackwards_Medium:
     dw Instruction_MotherBrainBody_SetPoseToWalking                      ;A99900;
-    dw $0006                                                             ;A99902;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_7                       ;A99904;
+    dw $0006,ExtendedSpritemap_MotherBrainBody_Walking_7                 ;A99902;
     dw Instruction_MotherBrainBody_MoveBodyDownBy2_RightBy1              ;A99906;
-    dw $0006                                                             ;A99908;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_6                       ;A9990A;
+    dw $0006,ExtendedSpritemap_MotherBrainBody_Walking_6                 ;A99908;
     dw Instruction_MotherBrainBody_MoveBodyDownBy4_RightBy2              ;A9990C;
-    dw $0006                                                             ;A9990E;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_5                       ;A99910;
+    dw $0006,ExtendedSpritemap_MotherBrainBody_Walking_5                 ;A9990E;
     dw Instruction_MotherBrainBody_MoveBodyUpBy4_LeftBy6                 ;A99912;
-    dw $0006                                                             ;A99914;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_4                       ;A99916;
+    dw $0006,ExtendedSpritemap_MotherBrainBody_Walking_4                 ;A99914;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_LeftBy15_Footstep       ;A99918;
-    dw $0006                                                             ;A9991A;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_3                       ;A9991C;
+    dw $0006,ExtendedSpritemap_MotherBrainBody_Walking_3                 ;A9991A;
     dw Instruction_MotherBrainBody_MoveBodyDownBy1_LeftBy3               ;A9991E;
-    dw $0006                                                             ;A99920;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_2                       ;A99922;
+    dw $0006,ExtendedSpritemap_MotherBrainBody_Walking_2                 ;A99920;
     dw Instruction_MotherBrainBody_MoveBodyDownBy1                       ;A99924;
-    dw $0006                                                             ;A99926;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_1                       ;A99928;
+    dw $0006,ExtendedSpritemap_MotherBrainBody_Walking_1                 ;A99926;
     dw Instruction_MotherBrainBody_MoveBodyLeftBy2                       ;A9992A;
-    dw $0006                                                             ;A9992C;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_0                       ;A9992E;
+    dw $0006,ExtendedSpritemap_MotherBrainBody_Walking_0                 ;A9992C;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_LeftBy1_Footstep_duplicate ;A99930;
     dw Instruction_MotherBrainBody_SetPoseToStanding                     ;A99932;
-    dw $0006                                                             ;A99934;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A99936;
+    dw $0006,ExtendedSpritemap_MotherBrainBody_Standing                  ;A99934;
     dw Instruction_Common_Sleep                                          ;A99938;
 
 InstList_MotherBrainBody_WalkingBackwards_ReallySlow:
     dw Instruction_MotherBrainBody_SetPoseToWalking                      ;A9993A;
-    dw $000A                                                             ;A9993C;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_7                       ;A9993E;
+    dw $000A,ExtendedSpritemap_MotherBrainBody_Walking_7                 ;A9993C;
     dw Instruction_MotherBrainBody_MoveBodyDownBy2_RightBy1              ;A99940;
-    dw $000A                                                             ;A99942;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_6                       ;A99944;
+    dw $000A,ExtendedSpritemap_MotherBrainBody_Walking_6                 ;A99942;
     dw Instruction_MotherBrainBody_MoveBodyDownBy4_RightBy2              ;A99946;
-    dw $000A                                                             ;A99948;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_5                       ;A9994A;
+    dw $000A,ExtendedSpritemap_MotherBrainBody_Walking_5                 ;A99948;
     dw Instruction_MotherBrainBody_MoveBodyUpBy4_LeftBy6                 ;A9994C;
-    dw $000A                                                             ;A9994E;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_4                       ;A99950;
+    dw $000A,ExtendedSpritemap_MotherBrainBody_Walking_4                 ;A9994E;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_LeftBy15_Footstep       ;A99952;
-    dw $000A                                                             ;A99954;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_3                       ;A99956;
+    dw $000A,ExtendedSpritemap_MotherBrainBody_Walking_3                 ;A99954;
     dw Instruction_MotherBrainBody_MoveBodyDownBy1_LeftBy3               ;A99958;
-    dw $000A                                                             ;A9995A;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_2                       ;A9995C;
+    dw $000A,ExtendedSpritemap_MotherBrainBody_Walking_2                 ;A9995A;
     dw Instruction_MotherBrainBody_MoveBodyDownBy1                       ;A9995E;
-    dw $000A                                                             ;A99960;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_1                       ;A99962;
+    dw $000A,ExtendedSpritemap_MotherBrainBody_Walking_1                 ;A99960;
     dw Instruction_MotherBrainBody_MoveBodyLeftBy2                       ;A99964;
-    dw $000A                                                             ;A99966;
-    dw ExtendedSpritemap_MotherBrainBody_Walking_0                       ;A99968;
+    dw $000A,ExtendedSpritemap_MotherBrainBody_Walking_0                 ;A99966;
     dw Instruction_MotherBrainBody_MoveBodyUpBy2_LeftBy1_Footstep_duplicate ;A9996A;
     dw Instruction_MotherBrainBody_SetPoseToStanding                     ;A9996C;
-    dw $000A                                                             ;A9996E;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A99970;
+    dw $000A,ExtendedSpritemap_MotherBrainBody_Standing                  ;A9996E;
     dw Instruction_Common_Sleep                                          ;A99972;
 
 InstList_MotherBrainBody_CrouchAndThenStandUp:
     dw Instruction_MotherBrainBody_SetPoseToCrouchingTransition          ;A99974;
-    dw $0008                                                             ;A99976;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A99978;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Standing                  ;A99976;
     dw Instruction_MotherBrainBody_MoveBodyDownBy12_ScrollLeftBy4        ;A9997A;
-    dw $0008                                                             ;A9997C;
-    dw ExtendedSpritemap_MotherBrainBody_LeaningDown                     ;A9997E;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_LeaningDown               ;A9997C;
     dw Instruction_MotherBrainBody_MoveBodyDownBy16_ScrollRightBy2       ;A99980;
-    dw $0008                                                             ;A99982;
-    dw ExtendedSpritemap_MotherBrainBody_Uncrouching                     ;A99984;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Uncrouching               ;A99982;
     dw Instruction_MotherBrainBody_MoveBodyDownBy10_ScrollRightBy2       ;A99986;
     dw Instruction_MotherBrainBody_SetPoseToCrouching                    ;A99988;
-    dw $0008                                                             ;A9998A;
-    dw ExtendedSpritemap_MotherBrainBody_Crouched                        ;A9998C;
-    dw $0008                                                             ;A9998E;
-    dw ExtendedSpritemap_MotherBrainBody_Crouched                        ;A99990;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Crouched                  ;A9998A;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Crouched                  ;A9998E;
     dw Instruction_MotherBrainBody_MoveBodyUpBy10_ScrollLeftBy4          ;A99992;
     dw Instruction_MotherBrainBody_SetPoseToCrouchingTransition          ;A99994;
-    dw $0008                                                             ;A99996;
-    dw ExtendedSpritemap_MotherBrainBody_Uncrouching                     ;A99998;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Uncrouching               ;A99996;
     dw Instruction_MotherBrainBody_MoveBodyUpBy16_ScrollLeftBy4          ;A9999A;
-    dw $0008                                                             ;A9999C;
-    dw ExtendedSpritemap_MotherBrainBody_LeaningDown                     ;A9999E;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_LeaningDown               ;A9999C;
     dw Instruction_MotherBrainBody_MoveBodyUpBy12_ScrollRightBy2         ;A999A0;
-    dw $0008                                                             ;A999A2;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A999A4;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Standing                  ;A999A2;
     dw Instruction_MotherBrainBody_SetPoseToStanding                     ;A999A6;
     dw Instruction_Common_Sleep                                          ;A999A8;
 
 InstList_MotherBrainBody_StandingUpAfterCrouching_Slow:
     dw Instruction_MotherBrainBody_SetPoseToCrouchingTransition          ;A999AA;
-    dw $0010                                                             ;A999AC;
-    dw ExtendedSpritemap_MotherBrainBody_Crouched                        ;A999AE;
+    dw $0010,ExtendedSpritemap_MotherBrainBody_Crouched                  ;A999AC;
     dw Instruction_MotherBrainBody_MoveBodyUpBy10_ScrollLeftBy4          ;A999B0;
-    dw $0010                                                             ;A999B2;
-    dw ExtendedSpritemap_MotherBrainBody_Uncrouching                     ;A999B4;
+    dw $0010,ExtendedSpritemap_MotherBrainBody_Uncrouching               ;A999B2;
     dw Instruction_MotherBrainBody_MoveBodyUpBy16_ScrollLeftBy4          ;A999B6;
-    dw $0010                                                             ;A999B8;
-    dw ExtendedSpritemap_MotherBrainBody_LeaningDown                     ;A999BA;
+    dw $0010,ExtendedSpritemap_MotherBrainBody_LeaningDown               ;A999B8;
     dw Instruction_MotherBrainBody_MoveBodyUpBy12_ScrollRightBy2         ;A999BC;
-    dw $0010                                                             ;A999BE;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A999C0;
+    dw $0010,ExtendedSpritemap_MotherBrainBody_Standing                  ;A999BE;
     dw Instruction_MotherBrainBody_SetPoseToStanding                     ;A999C2;
     dw Instruction_Common_Sleep                                          ;A999C4;
 
 InstList_MotherBrainBody_StandingUpAfterCrouching_Fast:
     dw Instruction_MotherBrainBody_SetPoseToCrouchingTransition          ;A999C6;
-    dw $0008                                                             ;A999C8;
-    dw ExtendedSpritemap_MotherBrainBody_Crouched                        ;A999CA;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Crouched                  ;A999C8;
     dw Instruction_MotherBrainBody_MoveBodyUpBy10_ScrollLeftBy4          ;A999CC;
-    dw $0008                                                             ;A999CE;
-    dw ExtendedSpritemap_MotherBrainBody_Uncrouching                     ;A999D0;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Uncrouching               ;A999CE;
     dw Instruction_MotherBrainBody_MoveBodyUpBy16_ScrollLeftBy4          ;A999D2;
-    dw $0008                                                             ;A999D4;
-    dw ExtendedSpritemap_MotherBrainBody_LeaningDown                     ;A999D6;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_LeaningDown               ;A999D4;
     dw Instruction_MotherBrainBody_MoveBodyUpBy12_ScrollRightBy2         ;A999D8;
-    dw $0008                                                             ;A999DA;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A999DC;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Standing                  ;A999DA;
     dw Instruction_MotherBrainBody_SetPoseToStanding                     ;A999DE;
     dw Instruction_Common_Sleep                                          ;A999E0;
 
 InstList_MotherBrainBody_StandingUpAfterLeaningDown:
     dw Instruction_MotherBrainBody_SetPoseToCrouchingTransition          ;A999E2;
-    dw $0008                                                             ;A999E4;
-    dw ExtendedSpritemap_MotherBrainBody_LeaningDown                     ;A999E6;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_LeaningDown               ;A999E4;
     dw Instruction_MotherBrainBody_MoveBodyUpBy12_ScrollRightBy2         ;A999E8;
-    dw $0008                                                             ;A999EA;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A999EC;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Standing                  ;A999EA;
     dw Instruction_MotherBrainBody_SetPoseToStanding                     ;A999EE;
     dw Instruction_Common_Sleep                                          ;A999F0;
 
 InstList_MotherBrainBody_LeaningDown:
     dw Instruction_MotherBrainBody_SetPoseToCrouchingTransition          ;A999F2;
-    dw $0008                                                             ;A999F4;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A999F6;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Standing                  ;A999F4;
     dw Instruction_MotherBrainBody_MoveBodyDownBy12_ScrollLeftBy4        ;A999F8;
     dw Instruction_MotherBrainBody_SetPoseToLeaningDown                  ;A999FA;
-    dw $0008                                                             ;A999FC;
-    dw ExtendedSpritemap_MotherBrainBody_LeaningDown                     ;A999FE;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_LeaningDown               ;A999FC;
     dw Instruction_Common_Sleep                                          ;A99A00;
 
 InstList_MotherBrainBody_Crouched:
     dw Instruction_MotherBrainBody_SetPoseToCrouching                    ;A99A02;
-    dw $0008                                                             ;A99A04;
-    dw ExtendedSpritemap_MotherBrainBody_Crouched                        ;A99A06;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Crouched                  ;A99A04;
     dw Instruction_Common_Sleep                                          ;A99A08;
 
 InstList_MotherBrainBody_Crouch_Slow:
     dw Instruction_MotherBrainBody_SetPoseToCrouchingTransition          ;A99A0A;
-    dw $0008                                                             ;A99A0C;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A99A0E;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Standing                  ;A99A0C;
     dw Instruction_MotherBrainBody_MoveBodyDownBy12_ScrollLeftBy4        ;A99A10;
-    dw $0008                                                             ;A99A12;
-    dw ExtendedSpritemap_MotherBrainBody_LeaningDown                     ;A99A14;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_LeaningDown               ;A99A12;
     dw Instruction_MotherBrainBody_MoveBodyDownBy16_ScrollRightBy2       ;A99A16;
-    dw $0008                                                             ;A99A18;
-    dw ExtendedSpritemap_MotherBrainBody_Uncrouching                     ;A99A1A;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Uncrouching               ;A99A18;
     dw Instruction_MotherBrainBody_MoveBodyDownBy10_ScrollRightBy2       ;A99A1C;
     dw Instruction_MotherBrainBody_SetPoseToCrouching                    ;A99A1E;
-    dw $0008                                                             ;A99A20;
-    dw ExtendedSpritemap_MotherBrainBody_Crouched                        ;A99A22;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Crouched                  ;A99A20;
     dw Instruction_Common_Sleep                                          ;A99A24;
 
 InstList_MotherBrainBody_Crouch_Fast:
     dw Instruction_MotherBrainBody_SetPoseToCrouchingTransition          ;A99A26;
-    dw $0008                                                             ;A99A28;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A99A2A;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Standing                  ;A99A28;
     dw Instruction_MotherBrainBody_MoveBodyDownBy12_ScrollLeftBy4        ;A99A2C;
-    dw $0002                                                             ;A99A2E;
-    dw ExtendedSpritemap_MotherBrainBody_LeaningDown                     ;A99A30;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_LeaningDown               ;A99A2E;
     dw Instruction_MotherBrainBody_MoveBodyDownBy16_ScrollRightBy2       ;A99A32;
-    dw $0002                                                             ;A99A34;
-    dw ExtendedSpritemap_MotherBrainBody_Uncrouching                     ;A99A36;
+    dw $0002,ExtendedSpritemap_MotherBrainBody_Uncrouching               ;A99A34;
     dw Instruction_MotherBrainBody_MoveBodyDownBy10_ScrollRightBy2       ;A99A38;
     dw Instruction_MotherBrainBody_SetPoseToCrouching                    ;A99A3A;
-    dw $0008                                                             ;A99A3C;
-    dw ExtendedSpritemap_MotherBrainBody_Crouched                        ;A99A3E;
+    dw $0008,ExtendedSpritemap_MotherBrainBody_Crouched                  ;A99A3C;
     dw Instruction_Common_Sleep                                          ;A99A40;
 
 InstList_MotherBrainBody_DeathBeamMode:
     dw Instruction_MotherBrainBody_SetPoseToDeathBeamMode                ;A99A42;
-    dw $0001                                                             ;A99A44;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A99A46;
-    dw $0001                                                             ;A99A48;
-    dw ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_0                ;A99A4A;
-    dw $0001                                                             ;A99A4C;
-    dw ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1                ;A99A4E;
+    dw $0001,ExtendedSpritemap_MotherBrainBody_Standing                  ;A99A44;
+    dw $0001,ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_0          ;A99A48;
+    dw $0001,ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1          ;A99A4C;
     dw Instruction_MotherBrainBody_SpawnDustCloudExplosionProj           ;A99A50;
-    dw $0024,$FFD8,$0001,$0001                                           ;A99A52;
-    dw ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1                ;A99A5A;
+    dw $0024,$FFD8,$0001                                                 ;A99A52;
+    dw $0001,ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1
     dw Instruction_MotherBrainBody_SpawnDustCloudExplosionProj           ;A99A5C;
-    dw $0022,$FFD6,$0002,$0001                                           ;A99A5E;
-    dw ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1                ;A99A66;
+    dw $0022,$FFD6,$0002                                                 ;A99A5E;
+    dw $0001,ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1
     dw Instruction_MotherBrainBody_SpawnDustCloudExplosionProj           ;A99A68;
-    dw $0024,$FFD8,$0001,$0001                                           ;A99A6A;
-    dw ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1                ;A99A72;
+    dw $0024,$FFD8,$0001                                                 ;A99A6A;
+    dw $0001,ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1
     dw Instruction_MotherBrainBody_SpawnDustCloudExplosionProj           ;A99A74;
-    dw $0022,$FFD6,$0002,$0001                                           ;A99A76;
-    dw ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1                ;A99A7E;
+    dw $0022,$FFD6,$0002                                                 ;A99A76;
+    dw $0001,ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1
     dw Instruction_MotherBrainBody_SpawnDustCloudExplosionProj           ;A99A80;
-    dw $0024,$FFD8,$0001,$0001                                           ;A99A82;
-    dw ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1                ;A99A8A;
+    dw $0024,$FFD8,$0001                                                 ;A99A82;
+    dw $0001,ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1
     dw Instruction_MotherBrainBody_SpawnDustCloudExplosionProj           ;A99A8C;
-    dw $0022,$FFD6,$0002,$0001                                           ;A99A8E;
-    dw ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1                ;A99A96;
+    dw $0022,$FFD6,$0002                                                 ;A99A8E;
+    dw $0001,ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1
     dw Instruction_MotherBrainBody_SpawnDustCloudExplosionProj           ;A99A98;
-    dw $0024,$FFD8,$0001,$0001                                           ;A99A9A;
-    dw ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1                ;A99AA2;
+    dw $0024,$FFD8,$0001                                                 ;A99A9A;
+    dw $0001,ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1
     dw Instruction_MotherBrainBody_SpawnDustCloudExplosionProj           ;A99AA4;
-    dw $0022,$FFD6,$0002,$0001                                           ;A99AA6;
-    dw ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1                ;A99AAE;
-    dw $0001                                                             ;A99AB0;
-    dw ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1                ;A99AB2;
+    dw $0022,$FFD6,$0002                                                 ;A99AA6;
+    dw $0001,ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1
+    dw $0001,ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1          ;A99AB0;
     dw Instruction_MotherBrainBody_SpawnDeathBeamProjectile              ;A99AB4;
-    dw $0001                                                             ;A99AB6;
-    dw ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_2                ;A99AB8;
-    dw $0001                                                             ;A99ABA;
-    dw ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_3                ;A99ABC;
-    dw $00F0                                                             ;A99ABE;
-    dw ExtendedSpritemap_MotherBrainBody_Standing                        ;A99AC0;
+    dw $0001,ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_2          ;A99AB6;
+    dw $0001,ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_3          ;A99ABA;
+    dw $00F0,ExtendedSpritemap_MotherBrainBody_Standing                  ;A99ABE;
     dw Instruction_MotherBrainBody_IncrementDeathBeamAttackPhase         ;A99AC2;
     dw Instruction_MotherBrainBody_SetPoseToStanding                     ;A99AC4;
     dw Instruction_Common_Sleep                                          ;A99AC6;
@@ -3170,146 +3127,105 @@ Instruction_MotherBrainHead_SetMainShakeTimerTo50:
 
 InstList_MotherBrainHead_Stretching_Phase2_0:
     dw Instruction_MotherBrainHead_SetMainShakeTimerTo50                 ;A99B7F;
-    dw $0002                                                             ;A99B81;
-    dw Spritemaps_MotherBrain_2                                          ;A99B83;
-    dw $0002                                                             ;A99B85;
-    dw Spritemaps_MotherBrain_3                                          ;A99B87;
+    dw $0002,Spritemaps_MotherBrain_2                                    ;A99B81;
+    dw $0002,Spritemaps_MotherBrain_3                                    ;A99B85;
     dw Instruction_MotherBrainHead_SpawnDroolProjectile                  ;A99B89;
-    dw $0002                                                             ;A99B8B;
-    dw Spritemaps_MotherBrain_3                                          ;A99B8D;
+    dw $0002,Spritemaps_MotherBrain_3                                    ;A99B8B;
     dw Instruction_MotherBrainHead_SpawnPurpleBreathBigProjectile        ;A99B8F;
-    dw Instruction_MotherBrainHead_QueueSoundX_Lib2_Max6                 ;A99B91;
-    dw $007E                                                             ;A99B93;
+    dw Instruction_MotherBrainHead_QueueSoundX_Lib2_Max6,$007E           ;A99B91;
     dw Instruction_MotherBrainHead_SpawnDroolProjectile                  ;A99B95;
-    dw $0010                                                             ;A99B97;
-    dw Spritemaps_MotherBrain_4                                          ;A99B99;
+    dw $0010,Spritemaps_MotherBrain_4                                    ;A99B97;
     dw Instruction_MotherBrainHead_SpawnDroolProjectile                  ;A99B9B;
-    dw $0010                                                             ;A99B9D;
-    dw Spritemaps_MotherBrain_4                                          ;A99B9F;
+    dw $0010,Spritemaps_MotherBrain_4                                    ;A99B9D;
     dw Instruction_MotherBrainHead_SpawnDroolProjectile                  ;A99BA1;
-    dw $0020                                                             ;A99BA3;
-    dw Spritemaps_MotherBrain_4                                          ;A99BA5;
-    dw $0004                                                             ;A99BA7;
-    dw Spritemaps_MotherBrain_3                                          ;A99BA9;
+    dw $0020,Spritemaps_MotherBrain_4                                    ;A99BA3;
+    dw $0004,Spritemaps_MotherBrain_3                                    ;A99BA7;
 
 InstList_MotherBrainHead_Stretching_Phase2_1:
-    dw $0001                                                             ;A99BAB;
-    dw Spritemaps_MotherBrain_2                                          ;A99BAD;
+    dw $0001,Spritemaps_MotherBrain_2                                    ;A99BAB;
     dw Instruction_MotherBrain_GotoX                                     ;A99BAF;
     dw InstList_MotherBrainHead_Stretching_Phase2_1                      ;A99BB1;
 
 InstList_MotherBrainHead_Stretching_Phase3_0:
     dw Instruction_MotherBrainHead_SetMainShakeTimerTo50                 ;A99BB3;
-    dw $0002                                                             ;A99BB5;
-    dw Spritemaps_MotherBrain_8                                          ;A99BB7;
-    dw $0002                                                             ;A99BB9;
-    dw Spritemaps_MotherBrain_9                                          ;A99BBB;
+    dw $0002,Spritemaps_MotherBrain_8                                    ;A99BB5;
+    dw $0002,Spritemaps_MotherBrain_9                                    ;A99BB9;
     dw Instruction_MotherBrainHead_SpawnDroolProjectile                  ;A99BBD;
-    dw $0002                                                             ;A99BBF;
-    dw Spritemaps_MotherBrain_9                                          ;A99BC1;
+    dw $0002,Spritemaps_MotherBrain_9                                    ;A99BBF;
     dw Instruction_MotherBrainHead_SpawnPurpleBreathBigProjectile        ;A99BC3;
-    dw Instruction_MotherBrainHead_QueueSoundX_Lib2_Max6                 ;A99BC5;
-    dw $007E                                                             ;A99BC7;
+    dw Instruction_MotherBrainHead_QueueSoundX_Lib2_Max6,$007E           ;A99BC5;
     dw Instruction_MotherBrainHead_SpawnDroolProjectile                  ;A99BC9;
-    dw $0010                                                             ;A99BCB;
-    dw Spritemaps_MotherBrain_A                                          ;A99BCD;
+    dw $0010,Spritemaps_MotherBrain_A                                    ;A99BCB;
     dw Instruction_MotherBrainHead_SpawnDroolProjectile                  ;A99BCF;
-    dw $0010                                                             ;A99BD1;
-    dw Spritemaps_MotherBrain_A                                          ;A99BD3;
+    dw $0010,Spritemaps_MotherBrain_A                                    ;A99BD1;
     dw Instruction_MotherBrainHead_SpawnDroolProjectile                  ;A99BD5;
-    dw $0020                                                             ;A99BD7;
-    dw Spritemaps_MotherBrain_A                                          ;A99BD9;
-    dw $0004                                                             ;A99BDB;
-    dw Spritemaps_MotherBrain_9                                          ;A99BDD;
+    dw $0020,Spritemaps_MotherBrain_A                                    ;A99BD7;
+    dw $0004,Spritemaps_MotherBrain_9                                    ;A99BDB;
 
 InstList_MotherBrainHead_Stretching_Phase3_1:
-    dw $0001                                                             ;A99BDF;
-    dw Spritemaps_MotherBrain_8                                          ;A99BE1;
+    dw $0001,Spritemaps_MotherBrain_8                                    ;A99BDF;
     dw Instruction_MotherBrain_GotoX                                     ;A99BE3;
     dw InstList_MotherBrainHead_Stretching_Phase3_1                      ;A99BE5;
 
 InstList_MotherBrainHead_HyperBeamRecoil_0:
     dw Instruction_MotherBrainHead_SetMainShakeTimerTo50                 ;A99BE7;
-    dw $0002                                                             ;A99BE9;
-    dw Spritemaps_MotherBrain_8                                          ;A99BEB;
-    dw $0002                                                             ;A99BED;
-    dw Spritemaps_MotherBrain_9                                          ;A99BEF;
-    dw $0002                                                             ;A99BF1;
-    dw Spritemaps_MotherBrain_9                                          ;A99BF3;
+    dw $0002,Spritemaps_MotherBrain_8                                    ;A99BE9;
+    dw $0002,Spritemaps_MotherBrain_9                                    ;A99BED;
+    dw $0002,Spritemaps_MotherBrain_9                                    ;A99BF1;
     dw Instruction_MotherBrainHead_SpawnPurpleBreathBigProjectile        ;A99BF5;
-    dw Instruction_MotherBrainHead_QueueSoundX_Lib2_Max6                 ;A99BF7;
-    dw $007E,$0010                                                       ;A99BF9;
-    dw Spritemaps_MotherBrain_A                                          ;A99BFD;
-    dw $0010                                                             ;A99BFF;
-    dw Spritemaps_MotherBrain_A                                          ;A99C01;
-    dw $0020                                                             ;A99C03;
-    dw Spritemaps_MotherBrain_A                                          ;A99C05;
-    dw $0004                                                             ;A99C07;
-    dw Spritemaps_MotherBrain_9                                          ;A99C09;
+    dw Instruction_MotherBrainHead_QueueSoundX_Lib2_Max6,$007E           ;A99BF7;
+    dw $0010,Spritemaps_MotherBrain_A                                    ;A99BF9;
+    dw $0010,Spritemaps_MotherBrain_A                                    ;A99BFF;
+    dw $0020,Spritemaps_MotherBrain_A                                    ;A99C03;
+    dw $0004,Spritemaps_MotherBrain_9                                    ;A99C07;
 
 InstList_MotherBrainHead_HyperBeamRecoil_1:
-    dw $0001                                                             ;A99C0B;
-    dw Spritemaps_MotherBrain_8                                          ;A99C0D;
+    dw $0001,Spritemaps_MotherBrain_8                                    ;A99C0B;
     dw Instruction_MotherBrain_GotoX                                     ;A99C0F;
     dw InstList_MotherBrainHead_HyperBeamRecoil_1                        ;A99C11;
 
 InstList_MotherBrainHead_InitialDummy:
-    dw $0000                                                             ;A99C13;
-    dw UNUSED_ExtendedSpritemap_MotherBrainBrain_A9A320                  ;A99C15;
+    dw $0000,UNUSED_ExtendedSpritemap_MotherBrainBrain_A9A320            ;A99C13;
     dw Instruction_Common_Sleep                                          ;A99C17;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_MotherBrainHead_A99C19:
-    dw $0008                                                             ;A99C19;
-    dw Spritemaps_MotherBrain_2                                          ;A99C1B;
-    dw $0004                                                             ;A99C1D;
-    dw Spritemaps_MotherBrain_1                                          ;A99C1F;
+    dw $0008,Spritemaps_MotherBrain_2                                    ;A99C19;
+    dw $0004,Spritemaps_MotherBrain_1                                    ;A99C1D;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_MotherBrainHead_Initial:
-    dw $0004                                                             ;A99C21;
-    dw Spritemaps_MotherBrain_0                                          ;A99C23;
+    dw $0004,Spritemaps_MotherBrain_0                                    ;A99C21;
     dw Instruction_MotherBrain_GotoX                                     ;A99C25;
     dw InstList_MotherBrainHead_Initial                                  ;A99C27;
 
 InstList_MotherBrainHead_Decapitated_0:
-    dw $0008                                                             ;A99C29;
-    dw Spritemaps_MotherBrain_8                                          ;A99C2B;
-    dw $0004                                                             ;A99C2D;
-    dw Spritemaps_MotherBrain_7                                          ;A99C2F;
+    dw $0008,Spritemaps_MotherBrain_8                                    ;A99C29;
+    dw $0004,Spritemaps_MotherBrain_7                                    ;A99C2D;
 
 InstList_MotherBrainHead_Decapitated_1:
-    dw $0004                                                             ;A99C31;
-    dw Spritemaps_MotherBrain_6                                          ;A99C33;
+    dw $0004,Spritemaps_MotherBrain_6                                    ;A99C31;
     dw Instruction_MotherBrain_GotoX                                     ;A99C35;
     dw InstList_MotherBrainHead_Decapitated_1                            ;A99C37;
 
 InstList_MotherBrainHead_DyingDrool_0:
     dw Instruction_MotherBrainHead_SetMainShakeTimerTo50                 ;A99C39;
-    dw $0004                                                             ;A99C3B;
-    dw Spritemaps_MotherBrain_8                                          ;A99C3D;
-    dw $0004                                                             ;A99C3F;
-    dw Spritemaps_MotherBrain_9                                          ;A99C41;
-    dw Instruction_MotherBrainHead_QueueSoundX_Lib2_Max6                 ;A99C43;
-    dw $007E                                                             ;A99C45;
+    dw $0004,Spritemaps_MotherBrain_8                                    ;A99C3B;
+    dw $0004,Spritemaps_MotherBrain_9                                    ;A99C3F;
+    dw Instruction_MotherBrainHead_QueueSoundX_Lib2_Max6,$007E           ;A99C43;
 
 InstList_MotherBrainHead_DyingDrool_1:
-    dw $0002                                                             ;A99C47;
-    dw Spritemaps_MotherBrain_A                                          ;A99C49;
+    dw $0002,Spritemaps_MotherBrain_A                                    ;A99C47;
     dw Instruction_MotherBrainHead_SpawnDroolProjectile                  ;A99C4B;
-    dw $0002                                                             ;A99C4D;
-    dw Spritemaps_MotherBrain_A                                          ;A99C4F;
+    dw $0002,Spritemaps_MotherBrain_A                                    ;A99C4D;
     dw Instruction_MotherBrainHead_SpawnDroolProjectile                  ;A99C51;
-    dw $0002                                                             ;A99C53;
-    dw Spritemaps_MotherBrain_A                                          ;A99C55;
+    dw $0002,Spritemaps_MotherBrain_A                                    ;A99C53;
     dw Instruction_MotherBrainHead_SpawnDroolProjectile                  ;A99C57;
-    dw $0002                                                             ;A99C59;
-    dw Spritemaps_MotherBrain_A                                          ;A99C5B;
+    dw $0002,Spritemaps_MotherBrain_A                                    ;A99C59;
     dw Instruction_MotherBrainHead_SpawnDroolProjectile                  ;A99C5D;
 
 InstList_MotherBrainHead_DyingDrool_2:
-    dw $0002                                                             ;A99C5F;
-    dw Spritemaps_MotherBrain_A                                          ;A99C61;
+    dw $0002,Spritemaps_MotherBrain_A                                    ;A99C5F;
     dw Instruction_MotherBrainHead_GotoDyingDroolInstList                ;A99C63;
 
 Instruction_MotherBrainHead_GotoDyingDroolInstList:
@@ -3325,39 +3241,29 @@ Instruction_MotherBrainHead_GotoDyingDroolInstList:
 
 
 InstList_MotherBrainHead_FiringRainbowBeam:
-    dw $0001                                                             ;A99C77;
-    dw Spritemaps_MotherBrain_2                                          ;A99C79;
+    dw $0001,Spritemaps_MotherBrain_2                                    ;A99C77;
     dw Instruction_MotherBrain_GotoX                                     ;A99C7B;
     dw InstList_MotherBrainHead_FiringRainbowBeam                        ;A99C7D;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_MotherBrainHead_A99C7F:
-    dw $0001                                                             ;A99C7F;
-    dw Spritemaps_MotherBrain_8                                          ;A99C81;
+    dw $0001,Spritemaps_MotherBrain_8                                    ;A99C7F;
     dw Instruction_MotherBrain_GotoX                                     ;A99C83;
     dw UNUSED_InstList_MotherBrainHead_A99C7F                            ;A99C85;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_MotherBrainHead_Neutral_Phase2_0:
-    dw $0004                                                             ;A99C87;
-    dw Spritemaps_MotherBrain_0                                          ;A99C89;
-    dw $0004                                                             ;A99C8B;
-    dw Spritemaps_MotherBrain_1                                          ;A99C8D;
-    dw $0008                                                             ;A99C8F;
-    dw Spritemaps_MotherBrain_2                                          ;A99C91;
-    dw $0004                                                             ;A99C93;
-    dw Spritemaps_MotherBrain_1                                          ;A99C95;
-    dw $0004                                                             ;A99C97;
-    dw Spritemaps_MotherBrain_0                                          ;A99C99;
-    dw $0004                                                             ;A99C9B;
-    dw Spritemaps_MotherBrain_1                                          ;A99C9D;
+    dw $0004,Spritemaps_MotherBrain_0                                    ;A99C87;
+    dw $0004,Spritemaps_MotherBrain_1                                    ;A99C8B;
+    dw $0008,Spritemaps_MotherBrain_2                                    ;A99C8F;
+    dw $0004,Spritemaps_MotherBrain_1                                    ;A99C93;
+    dw $0004,Spritemaps_MotherBrain_0                                    ;A99C97;
+    dw $0004,Spritemaps_MotherBrain_1                                    ;A99C9B;
 
 InstList_MotherBrainHead_Neutral_Phase2_1:
-    dw $0008                                                             ;A99C9F;
-    dw Spritemaps_MotherBrain_2                                          ;A99CA1;
+    dw $0008,Spritemaps_MotherBrain_2                                    ;A99C9F;
     dw Instruction_MotherBrainHead_MaybeGotoNeutralPhase2                ;A99CA3;
-    dw $0004                                                             ;A99CA5;
-    dw Spritemaps_MotherBrain_1                                          ;A99CA7;
+    dw $0004,Spritemaps_MotherBrain_1                                    ;A99CA5;
     dw Instruction_MotherBrain_GotoX                                     ;A99CA9;
     dw InstList_MotherBrainHead_Neutral_Phase2_0                         ;A99CAB;
 
@@ -3372,51 +3278,33 @@ Instruction_MotherBrainHead_MaybeGotoNeutralPhase2:
 
 
 InstList_MotherBrainHead_Neutral_Phase3_0:
-    dw $0004                                                             ;A99CB9;
-    dw Spritemaps_MotherBrain_6                                          ;A99CBB;
-    dw $0004                                                             ;A99CBD;
-    dw Spritemaps_MotherBrain_7                                          ;A99CBF;
-    dw $0008                                                             ;A99CC1;
-    dw Spritemaps_MotherBrain_8                                          ;A99CC3;
-    dw $0004                                                             ;A99CC5;
-    dw Spritemaps_MotherBrain_7                                          ;A99CC7;
-    dw $0004                                                             ;A99CC9;
-    dw Spritemaps_MotherBrain_6                                          ;A99CCB;
-    dw $0004                                                             ;A99CCD;
-    dw Spritemaps_MotherBrain_7                                          ;A99CCF;
+    dw $0004,Spritemaps_MotherBrain_6                                    ;A99CB9;
+    dw $0004,Spritemaps_MotherBrain_7                                    ;A99CBD;
+    dw $0008,Spritemaps_MotherBrain_8                                    ;A99CC1;
+    dw $0004,Spritemaps_MotherBrain_7                                    ;A99CC5;
+    dw $0004,Spritemaps_MotherBrain_6                                    ;A99CC9;
+    dw $0004,Spritemaps_MotherBrain_7                                    ;A99CCD;
 
 InstList_MotherBrainHead_Neutral_Phase3_1:
-    dw $0008                                                             ;A99CD1;
-    dw Spritemaps_MotherBrain_8                                          ;A99CD3;
-    dw $0008                                                             ;A99CD5;
-    dw Spritemaps_MotherBrain_7                                          ;A99CD7;
+    dw $0008,Spritemaps_MotherBrain_8                                    ;A99CD1;
+    dw $0008,Spritemaps_MotherBrain_7                                    ;A99CD5;
     dw Instruction_MotherBrainHead_MaybeGotoNeutralPhase3                ;A99CD9;
-    dw $0004                                                             ;A99CDB;
-    dw Spritemaps_MotherBrain_6                                          ;A99CDD;
+    dw $0004,Spritemaps_MotherBrain_6                                    ;A99CDB;
     dw Instruction_MotherBrain_GotoX                                     ;A99CDF;
     dw InstList_MotherBrainHead_Neutral_Phase3_0                         ;A99CE1;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_MotherBrainHead_Neutral_Phase3_A99CE3:
-    dw $0004                                                             ;A99CE3;
-    dw Spritemaps_MotherBrain_8                                          ;A99CE5;
-    dw $0004                                                             ;A99CE7;
-    dw Spritemaps_MotherBrain_9                                          ;A99CE9;
-    dw $0002                                                             ;A99CEB;
-    dw Spritemaps_MotherBrain_A                                          ;A99CED;
-    dw Instruction_MotherBrainHead_QueueSoundX_Lib2_Max6                 ;A99CEF;
-    dw $006F,$0002                                                       ;A99CF1;
-    dw Spritemaps_MotherBrain_A                                          ;A99CF5;
-    dw $0002                                                             ;A99CF7;
-    dw Spritemaps_MotherBrain_A                                          ;A99CF9;
-    dw $0002                                                             ;A99CFB;
-    dw Spritemaps_MotherBrain_A                                          ;A99CFD;
-    dw $0002                                                             ;A99CFF;
-    dw Spritemaps_MotherBrain_A                                          ;A99D01;
-    dw $0004                                                             ;A99D03;
-    dw Spritemaps_MotherBrain_9                                          ;A99D05;
-    dw $0004                                                             ;A99D07;
-    dw Spritemaps_MotherBrain_8                                          ;A99D09;
+    dw $0004,Spritemaps_MotherBrain_8                                    ;A99CE3;
+    dw $0004,Spritemaps_MotherBrain_9                                    ;A99CE7;
+    dw $0002,Spritemaps_MotherBrain_A                                    ;A99CEB;
+    dw Instruction_MotherBrainHead_QueueSoundX_Lib2_Max6,$006F           ;A99CEF;
+    dw $0002,Spritemaps_MotherBrain_A                                    ;A99CF1;
+    dw $0002,Spritemaps_MotherBrain_A                                    ;A99CF7;
+    dw $0002,Spritemaps_MotherBrain_A                                    ;A99CFB;
+    dw $0002,Spritemaps_MotherBrain_A                                    ;A99CFF;
+    dw $0004,Spritemaps_MotherBrain_9                                    ;A99D03;
+    dw $0004,Spritemaps_MotherBrain_8                                    ;A99D07;
     dw Instruction_MotherBrainHead_GotoNeutralPhase3                     ;A99D0B;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -3443,76 +3331,55 @@ Instruction_MotherBrainHead_GotoNeutralPhase3_return:
 
 
 InstList_MotherBrainHead_Corpse_0:
-    dw $0002                                                             ;A99D25;
-    dw Spritemaps_MotherBrain_6                                          ;A99D27;
-    dw $0002                                                             ;A99D29;
-    dw Spritemaps_MotherBrain_7                                          ;A99D2B;
-    dw $0040                                                             ;A99D2D;
-    dw Spritemaps_MotherBrain_8                                          ;A99D2F;
-    dw $0040                                                             ;A99D31;
-    dw Spritemaps_MotherBrain_18                                         ;A99D33;
+    dw $0002,Spritemaps_MotherBrain_6                                    ;A99D25;
+    dw $0002,Spritemaps_MotherBrain_7                                    ;A99D29;
+    dw $0040,Spritemaps_MotherBrain_8                                    ;A99D2D;
+    dw $0040,Spritemaps_MotherBrain_18                                   ;A99D31;
 
 InstList_MotherBrainHead_Corpse_1:
-    dw $0002                                                             ;A99D35;
-    dw Spritemaps_MotherBrain_19                                         ;A99D37;
+    dw $0002,Spritemaps_MotherBrain_19                                   ;A99D35;
     dw Instruction_MotherBrain_GotoX                                     ;A99D39;
     dw InstList_MotherBrainHead_Corpse_1                                 ;A99D3B;
 
 InstList_MotherBrainHead_Attacking_4OnionRings_Phase2:
     dw Instruction_MotherBrainHead_DisableNeckMovement                   ;A99D3D;
-    dw $0004                                                             ;A99D3F;
-    dw Spritemaps_MotherBrain_2                                          ;A99D41;
-    dw $0004                                                             ;A99D43;
-    dw Spritemaps_MotherBrain_3                                          ;A99D45;
-    dw Instruction_MotherBrainHead_QueueSoundX_Lib2_Max6                 ;A99D47;
-    dw $006F,$0008                                                       ;A99D49;
-    dw Spritemaps_MotherBrain_4                                          ;A99D4D;
+    dw $0004,Spritemaps_MotherBrain_2                                    ;A99D3F;
+    dw $0004,Spritemaps_MotherBrain_3                                    ;A99D43;
+    dw Instruction_MotherBrainHead_QueueSoundX_Lib2_Max6,$006F           ;A99D47;
+    dw $0008,Spritemaps_MotherBrain_4                                    ;A99D49;
     dw Instruction_MotherBrainHead_AimOnionRingsAtSamus                  ;A99D4F;
     dw Instruction_MotherBrainHead_SpawnOnionRingsProjectile             ;A99D51;
-    dw Instruction_MotherBrainHead_QueueSoundX_Lib3_Max6                 ;A99D53;
-    dw $0017,$0003                                                       ;A99D55;
-    dw Spritemaps_MotherBrain_4                                          ;A99D59;
+    dw Instruction_MotherBrainHead_QueueSoundX_Lib3_Max6,$0017           ;A99D53;
+    dw $0003,Spritemaps_MotherBrain_4                                    ;A99D55;
     dw Instruction_MotherBrainHead_AimOnionRingsAtSamus                  ;A99D5B;
     dw Instruction_MotherBrainHead_SpawnOnionRingsProjectile             ;A99D5D;
-    dw $0003                                                             ;A99D5F;
-    dw Spritemaps_MotherBrain_4                                          ;A99D61;
+    dw $0003,Spritemaps_MotherBrain_4                                    ;A99D5F;
     dw Instruction_MotherBrainHead_AimOnionRingsAtSamus                  ;A99D63;
     dw Instruction_MotherBrainHead_SpawnOnionRingsProjectile             ;A99D65;
-    dw $0003                                                             ;A99D67;
-    dw Spritemaps_MotherBrain_4                                          ;A99D69;
+    dw $0003,Spritemaps_MotherBrain_4                                    ;A99D67;
     dw Instruction_MotherBrainHead_AimOnionRingsAtSamus                  ;A99D6B;
     dw Instruction_MotherBrainHead_SpawnOnionRingsProjectile             ;A99D6D;
-    dw $0010                                                             ;A99D6F;
-    dw Spritemaps_MotherBrain_4                                          ;A99D71;
-    dw $0004                                                             ;A99D73;
-    dw Spritemaps_MotherBrain_3                                          ;A99D75;
-    dw $0010                                                             ;A99D77;
-    dw Spritemaps_MotherBrain_2                                          ;A99D79;
+    dw $0010,Spritemaps_MotherBrain_4                                    ;A99D6F;
+    dw $0004,Spritemaps_MotherBrain_3                                    ;A99D73;
+    dw $0010,Spritemaps_MotherBrain_2                                    ;A99D77;
     dw Instruction_MotherBrainHead_EnableNeckMovement_GotoX              ;A99D7B;
     dw InstList_MotherBrainHead_Neutral_Phase2_0                         ;A99D7D;
 
 InstList_MotherBrainHead_Attacking_2OnionRings_Phase2:
     dw Instruction_MotherBrainHead_DisableNeckMovement                   ;A99D7F;
-    dw $0004                                                             ;A99D81;
-    dw Spritemaps_MotherBrain_2                                          ;A99D83;
-    dw $0004                                                             ;A99D85;
-    dw Spritemaps_MotherBrain_3                                          ;A99D87;
-    dw Instruction_MotherBrainHead_QueueSoundX_Lib2_Max6                 ;A99D89;
-    dw $006F,$0008                                                       ;A99D8B;
-    dw Spritemaps_MotherBrain_4                                          ;A99D8F;
+    dw $0004,Spritemaps_MotherBrain_2                                    ;A99D81;
+    dw $0004,Spritemaps_MotherBrain_3                                    ;A99D85;
+    dw Instruction_MotherBrainHead_QueueSoundX_Lib2_Max6,$006F           ;A99D89;
+    dw $0008,Spritemaps_MotherBrain_4                                    ;A99D8B;
     dw Instruction_MotherBrainHead_AimOnionRingsAtSamus                  ;A99D91;
     dw Instruction_MotherBrainHead_SpawnOnionRingsProjectile             ;A99D93;
-    dw Instruction_MotherBrainHead_QueueSoundX_Lib3_Max6                 ;A99D95;
-    dw $0017,$0003                                                       ;A99D97;
-    dw Spritemaps_MotherBrain_4                                          ;A99D9B;
+    dw Instruction_MotherBrainHead_QueueSoundX_Lib3_Max6,$0017           ;A99D95;
+    dw $0003,Spritemaps_MotherBrain_4                                    ;A99D97;
     dw Instruction_MotherBrainHead_AimOnionRingsAtSamus                  ;A99D9D;
     dw Instruction_MotherBrainHead_SpawnOnionRingsProjectile             ;A99D9F;
-    dw $0010                                                             ;A99DA1;
-    dw Spritemaps_MotherBrain_4                                          ;A99DA3;
-    dw $0004                                                             ;A99DA5;
-    dw Spritemaps_MotherBrain_3                                          ;A99DA7;
-    dw $0010                                                             ;A99DA9;
-    dw Spritemaps_MotherBrain_2                                          ;A99DAB;
+    dw $0010,Spritemaps_MotherBrain_4                                    ;A99DA1;
+    dw $0004,Spritemaps_MotherBrain_3                                    ;A99DA5;
+    dw $0010,Spritemaps_MotherBrain_2                                    ;A99DA9;
     dw Instruction_MotherBrainHead_EnableNeckMovement_GotoX              ;A99DAD;
     dw InstList_MotherBrainHead_Neutral_Phase2_0                         ;A99DAF;
 
@@ -3529,30 +3396,21 @@ InstList_MotherBrainHead_AttackingSamus_4OnionRings_Phase3:
     dw Instruction_MotherBrainHead_AimOnionRingsAtSamus                  ;A99DBF;
 
 InstList_MotherBrainHead_Attacking_4OnionRings_Phase3:
-    dw $0004                                                             ;A99DC1;
-    dw Spritemaps_MotherBrain_8                                          ;A99DC3;
-    dw $0004                                                             ;A99DC5;
-    dw Spritemaps_MotherBrain_9                                          ;A99DC7;
+    dw $0004,Spritemaps_MotherBrain_8                                    ;A99DC1;
+    dw $0004,Spritemaps_MotherBrain_9                                    ;A99DC5;
     dw Instruction_MotherBrainHead_QueueBabyMetroidAttackSFX             ;A99DC9;
-    dw $0008                                                             ;A99DCB;
-    dw Spritemaps_MotherBrain_A                                          ;A99DCD;
+    dw $0008,Spritemaps_MotherBrain_A                                    ;A99DCB;
     dw Instruction_MotherBrainHead_SpawnOnionRingsProjectile             ;A99DCF;
-    dw Instruction_MotherBrainHead_QueueSoundX_Lib3_Max6                 ;A99DD1;
-    dw $0017,$0003                                                       ;A99DD3;
-    dw Spritemaps_MotherBrain_A                                          ;A99DD7;
+    dw Instruction_MotherBrainHead_QueueSoundX_Lib3_Max6,$0017           ;A99DD1;
+    dw $0003,Spritemaps_MotherBrain_A                                    ;A99DD3;
     dw Instruction_MotherBrainHead_SpawnOnionRingsProjectile             ;A99DD9;
-    dw $0003                                                             ;A99DDB;
-    dw Spritemaps_MotherBrain_A                                          ;A99DDD;
+    dw $0003,Spritemaps_MotherBrain_A                                    ;A99DDB;
     dw Instruction_MotherBrainHead_SpawnOnionRingsProjectile             ;A99DDF;
-    dw $0003                                                             ;A99DE1;
-    dw Spritemaps_MotherBrain_A                                          ;A99DE3;
+    dw $0003,Spritemaps_MotherBrain_A                                    ;A99DE1;
     dw Instruction_MotherBrainHead_SpawnOnionRingsProjectile             ;A99DE5;
-    dw $0010                                                             ;A99DE7;
-    dw Spritemaps_MotherBrain_A                                          ;A99DE9;
-    dw $0004                                                             ;A99DEB;
-    dw Spritemaps_MotherBrain_9                                          ;A99DED;
-    dw $0010                                                             ;A99DEF;
-    dw Spritemaps_MotherBrain_8                                          ;A99DF1;
+    dw $0010,Spritemaps_MotherBrain_A                                    ;A99DE7;
+    dw $0004,Spritemaps_MotherBrain_9                                    ;A99DEB;
+    dw $0010,Spritemaps_MotherBrain_8                                    ;A99DEF;
     dw Instruction_MotherBrainHead_EnableNeckMovement_GotoX              ;A99DF3;
     dw InstList_MotherBrainHead_Neutral_Phase3_0                         ;A99DF5;
 
@@ -3573,6 +3431,9 @@ Instruction_MotherBrainHead_QueueBabyMetroidAttackSFX:
 
 
 .sfx:
+; (Should be) indexed by [Mother Brain Baby Metroid attack counter]
+; 6Fh: Mother Brain's cry - low pitch
+; 7Eh: Mother Brain's cry - high pitch
     dw $006F,$006F,$006F,$007E,$006F,$006F,$007E,$006F                   ;A99E0F;
     dw $006F,$007E,$007E,$006F,$006F                                     ;A99E1F;
 
@@ -3681,67 +3542,44 @@ Instruction_MotherBrainHead_SpawnBombProjectileWithParamX:
 
 
 InstList_MotherBrainHead_Attacking_Bomb_Phase2:
-    dw $0004                                                             ;A99ECC;
-    dw Spritemaps_MotherBrain_0                                          ;A99ECE;
-    dw $0004                                                             ;A99ED0;
-    dw Spritemaps_MotherBrain_1                                          ;A99ED2;
-    dw $0008                                                             ;A99ED4;
-    dw Spritemaps_MotherBrain_2                                          ;A99ED6;
+    dw $0004,Spritemaps_MotherBrain_0                                    ;A99ECC;
+    dw $0004,Spritemaps_MotherBrain_1                                    ;A99ED0;
+    dw $0008,Spritemaps_MotherBrain_2                                    ;A99ED4;
     dw Instruction_MotherBrainHead_DisableNeckMovement                   ;A99ED8;
-    dw $0004                                                             ;A99EDA;
-    dw Spritemaps_MotherBrain_2                                          ;A99EDC;
-    dw $0004                                                             ;A99EDE;
-    dw Spritemaps_MotherBrain_3                                          ;A99EE0;
-    dw Instruction_MotherBrainHead_QueueSoundX_Lib2_Max6                 ;A99EE2;
-    dw $006F,$0008                                                       ;A99EE4;
-    dw Spritemaps_MotherBrain_4                                          ;A99EE8;
-    dw Instruction_MotherBrainHead_SpawnBombProjectileWithParamX         ;A99EEA;
-    dw $0007                                                             ;A99EEC;
+    dw $0004,Spritemaps_MotherBrain_2                                    ;A99EDA;
+    dw $0004,Spritemaps_MotherBrain_3                                    ;A99EDE;
+    dw Instruction_MotherBrainHead_QueueSoundX_Lib2_Max6,$006F           ;A99EE2;
+    dw $0008,Spritemaps_MotherBrain_4                                    ;A99EE4;
+    dw Instruction_MotherBrainHead_SpawnBombProjectileWithParamX,$0007   ;A99EEA;
     dw Instruction_MotherBrainHead_SpawnPurpleBreathBigProjectile        ;A99EEE;
-    dw $0020                                                             ;A99EF0;
-    dw Spritemaps_MotherBrain_4                                          ;A99EF2;
-    dw $0004                                                             ;A99EF4;
-    dw Spritemaps_MotherBrain_3                                          ;A99EF6;
-    dw $0010                                                             ;A99EF8;
-    dw Spritemaps_MotherBrain_2                                          ;A99EFA;
+    dw $0020,Spritemaps_MotherBrain_4                                    ;A99EF0;
+    dw $0004,Spritemaps_MotherBrain_3                                    ;A99EF4;
+    dw $0010,Spritemaps_MotherBrain_2                                    ;A99EF8;
     dw Instruction_MotherBrainHead_EnableNeckMovement_GotoX              ;A99EFC;
     dw InstList_MotherBrainHead_Neutral_Phase2_0                         ;A99EFE;
 
 InstList_MotherBrainHead_Attacking_Bomb_Phase3:
-    dw $0004                                                             ;A99F00;
-    dw Spritemaps_MotherBrain_6                                          ;A99F02;
-    dw $0004                                                             ;A99F04;
-    dw Spritemaps_MotherBrain_7                                          ;A99F06;
-    dw $0008                                                             ;A99F08;
-    dw Spritemaps_MotherBrain_8                                          ;A99F0A;
+    dw $0004,Spritemaps_MotherBrain_6                                    ;A99F00;
+    dw $0004,Spritemaps_MotherBrain_7                                    ;A99F04;
+    dw $0008,Spritemaps_MotherBrain_8                                    ;A99F08;
     dw Instruction_MotherBrainHead_DisableNeckMovement                   ;A99F0C;
-    dw $0004                                                             ;A99F0E;
-    dw Spritemaps_MotherBrain_8                                          ;A99F10;
-    dw $0004                                                             ;A99F12;
-    dw Spritemaps_MotherBrain_9                                          ;A99F14;
-    dw Instruction_MotherBrainHead_QueueSoundX_Lib2_Max6                 ;A99F16;
-    dw $006F,$0008                                                       ;A99F18;
-    dw Spritemaps_MotherBrain_A                                          ;A99F1C;
-    dw Instruction_MotherBrainHead_SpawnBombProjectileWithParamX         ;A99F1E;
-    dw $0001                                                             ;A99F20;
+    dw $0004,Spritemaps_MotherBrain_8                                    ;A99F0E;
+    dw $0004,Spritemaps_MotherBrain_9                                    ;A99F12;
+    dw Instruction_MotherBrainHead_QueueSoundX_Lib2_Max6,$006F           ;A99F16;
+    dw $0008,Spritemaps_MotherBrain_A                                    ;A99F18;
+    dw Instruction_MotherBrainHead_SpawnBombProjectileWithParamX,$0001   ;A99F1E;
     dw Instruction_MotherBrainHead_SpawnPurpleBreathBigProjectile        ;A99F22;
-    dw $0020                                                             ;A99F24;
-    dw Spritemaps_MotherBrain_A                                          ;A99F26;
-    dw $0004                                                             ;A99F28;
-    dw Spritemaps_MotherBrain_9                                          ;A99F2A;
-    dw $0010                                                             ;A99F2C;
-    dw Spritemaps_MotherBrain_8                                          ;A99F2E;
+    dw $0020,Spritemaps_MotherBrain_A                                    ;A99F24;
+    dw $0004,Spritemaps_MotherBrain_9                                    ;A99F28;
+    dw $0010,Spritemaps_MotherBrain_8                                    ;A99F2C;
     dw Instruction_MotherBrainHead_EnableNeckMovement_GotoX              ;A99F30;
     dw InstList_MotherBrainHead_Neutral_Phase3_0                         ;A99F32;
 
 InstList_MotherBrainHead_Attacking_Laser:
-    dw $0010                                                             ;A99F34;
-    dw Spritemaps_MotherBrain_1                                          ;A99F36;
-    dw $0004                                                             ;A99F38;
-    dw Spritemaps_MotherBrain_2                                          ;A99F3A;
+    dw $0010,Spritemaps_MotherBrain_1                                    ;A99F34;
+    dw $0004,Spritemaps_MotherBrain_2                                    ;A99F38;
     dw InstList_MotherBrainHead_SpawnLaserProjectile                     ;A99F3C;
-    dw $0020                                                             ;A99F3E;
-    dw Spritemaps_MotherBrain_2                                          ;A99F40;
+    dw $0020,Spritemaps_MotherBrain_2                                    ;A99F3E;
     dw Instruction_MotherBrainHead_EnableNeckMovement_GotoX              ;A99F42;
     dw InstList_MotherBrainHead_Neutral_Phase2_0                         ;A99F44;
 
@@ -3766,17 +3604,13 @@ InstList_MotherBrainHead_SpawnLaserProjectile:
 
 InstList_MotherBrainHead_ChargingRainbowBeam_0:
     dw Instruction_MotherBrainHead_SetupEffectsForRainbowBeamCharge      ;A99F6C;
-    dw $0004                                                             ;A99F6E;
-    dw Spritemaps_MotherBrain_2                                          ;A99F70;
-    dw $0004                                                             ;A99F72;
-    dw Spritemaps_MotherBrain_1                                          ;A99F74;
-    dw $0002                                                             ;A99F76;
-    dw Spritemaps_MotherBrain_0                                          ;A99F78;
+    dw $0004,Spritemaps_MotherBrain_2                                    ;A99F6E;
+    dw $0004,Spritemaps_MotherBrain_1                                    ;A99F72;
+    dw $0002,Spritemaps_MotherBrain_0                                    ;A99F76;
 
 InstList_MotherBrainHead_ChargingRainbowBeam_1:
     dw Instruction_MotherBrainHead_SpawnRainbowBeamChargingProj          ;A99F7A;
-    dw $001E                                                             ;A99F7C;
-    dw Spritemaps_MotherBrain_0                                          ;A99F7E;
+    dw $001E,Spritemaps_MotherBrain_0                                    ;A99F7C;
     dw Instruction_MotherBrain_GotoX                                     ;A99F80;
     dw InstList_MotherBrainHead_ChargingRainbowBeam_1                    ;A99F82;
 
@@ -3798,7 +3632,8 @@ Instruction_MotherBrainHead_SetupEffectsForRainbowBeamCharge:
 
 
 ExtendedSpritemap_MotherBrainBody_Standing:
-    dw $0009,$0012,$003A                                                 ;A99FA0;
+    dw $0009                                                             ;A99FA0;
+    dw $0012,$003A
     dw Spritemaps_MotherBrain_13                                         ;A99FA6;
     dw Hitbox_MotherBrainBody_3                                          ;A99FA8;
     dw $001E,$001D                                                       ;A99FAA;
@@ -3827,7 +3662,8 @@ ExtendedSpritemap_MotherBrainBody_Standing:
     dw Hitbox_MotherBrainBody_4                                          ;A99FE8;
 
 ExtendedSpritemap_MotherBrainBody_Walking_0:
-    dw $000A,$001C,$002F                                                 ;A99FEA;
+    dw $000A                                                             ;A99FEA;
+    dw $001C,$002F
     dw Spritemaps_MotherBrain_13                                         ;A99FF0;
     dw Hitbox_MotherBrainBody_3                                          ;A99FF2;
     dw $0026,$0013                                                       ;A99FF4;
@@ -3859,7 +3695,8 @@ ExtendedSpritemap_MotherBrainBody_Walking_0:
     dw Hitbox_MotherBrainBody_4                                          ;A9A03A;
 
 ExtendedSpritemap_MotherBrainBody_Walking_1:
-    dw $000A,$0028,$0030                                                 ;A9A03C;
+    dw $000A                                                             ;A9A03C;
+    dw $0028,$0030
     dw Spritemaps_MotherBrain_13                                         ;A9A042;
     dw Hitbox_MotherBrainBody_3                                          ;A9A044;
     dw $0026,$0013                                                       ;A9A046;
@@ -3891,7 +3728,8 @@ ExtendedSpritemap_MotherBrainBody_Walking_1:
     dw Hitbox_MotherBrainBody_4                                          ;A9A08C;
 
 ExtendedSpritemap_MotherBrainBody_Walking_2:
-    dw $000A,$0028,$0033                                                 ;A9A08E;
+    dw $000A                                                             ;A9A08E;
+    dw $0028,$0033
     dw Spritemaps_MotherBrain_13                                         ;A9A094;
     dw Hitbox_MotherBrainBody_3                                          ;A9A096;
     dw $0026,$0015                                                       ;A9A098;
@@ -3923,7 +3761,8 @@ ExtendedSpritemap_MotherBrainBody_Walking_2:
     dw Hitbox_MotherBrainBody_4                                          ;A9A0DE;
 
 ExtendedSpritemap_MotherBrainBody_Walking_3:
-    dw $0009,$0024,$003A                                                 ;A9A0E0;
+    dw $0009                                                             ;A9A0E0;
+    dw $0024,$003A
     dw Spritemaps_MotherBrain_13                                         ;A9A0E6;
     dw Hitbox_MotherBrainBody_3                                          ;A9A0E8;
     dw $0021,$001D                                                       ;A9A0EA;
@@ -3952,7 +3791,8 @@ ExtendedSpritemap_MotherBrainBody_Walking_3:
     dw Hitbox_MotherBrainBody_4                                          ;A9A128;
 
 ExtendedSpritemap_MotherBrainBody_Walking_4:
-    dw $0009,$0015,$003C                                                 ;A9A12A;
+    dw $0009                                                             ;A9A12A;
+    dw $0015,$003C
     dw Spritemaps_MotherBrain_13                                         ;A9A130;
     dw Hitbox_MotherBrainBody_3                                          ;A9A132;
     dw $001D,$001F                                                       ;A9A134;
@@ -3981,7 +3821,8 @@ ExtendedSpritemap_MotherBrainBody_Walking_4:
     dw Hitbox_MotherBrainBody_4                                          ;A9A172;
 
 ExtendedSpritemap_MotherBrainBody_Walking_5:
-    dw $0009,$000F,$0040                                                 ;A9A174;
+    dw $0009                                                             ;A9A174;
+    dw $000F,$0040
     dw Spritemaps_MotherBrain_13                                         ;A9A17A;
     dw Hitbox_MotherBrainBody_3                                          ;A9A17C;
     dw $001E,$0023                                                       ;A9A17E;
@@ -4010,7 +3851,8 @@ ExtendedSpritemap_MotherBrainBody_Walking_5:
     dw Hitbox_MotherBrainBody_4                                          ;A9A1BC;
 
 ExtendedSpritemap_MotherBrainBody_Walking_6:
-    dw $0009,$0011,$003C                                                 ;A9A1BE;
+    dw $0009                                                             ;A9A1BE;
+    dw $0011,$003C
     dw Spritemaps_MotherBrain_13                                         ;A9A1C4;
     dw Hitbox_MotherBrainBody_3                                          ;A9A1C6;
     dw $001E,$0020                                                       ;A9A1C8;
@@ -4039,7 +3881,8 @@ ExtendedSpritemap_MotherBrainBody_Walking_6:
     dw Hitbox_MotherBrainBody_4                                          ;A9A206;
 
 ExtendedSpritemap_MotherBrainBody_Walking_7:
-    dw $0009,$0012,$003A                                                 ;A9A208;
+    dw $0009                                                             ;A9A208;
+    dw $0012,$003A
     dw Spritemaps_MotherBrain_13                                         ;A9A20E;
     dw Hitbox_MotherBrainBody_3                                          ;A9A210;
     dw $001F,$001E                                                       ;A9A212;
@@ -4068,7 +3911,8 @@ ExtendedSpritemap_MotherBrainBody_Walking_7:
     dw Hitbox_MotherBrainBody_4                                          ;A9A250;
 
 ExtendedSpritemap_MotherBrainBody_Crouched:
-    dw $0007,$0012,$0014                                                 ;A9A252;
+    dw $0007                                                             ;A9A252;
+    dw $0012,$0014
     dw Spritemaps_MotherBrain_13                                         ;A9A258;
     dw Hitbox_MotherBrainBody_3                                          ;A9A25A;
     dw $0022,$FFF7                                                       ;A9A25C;
@@ -4091,7 +3935,8 @@ ExtendedSpritemap_MotherBrainBody_Crouched:
     dw Hitbox_MotherBrainBody_5                                          ;A9A28A;
 
 ExtendedSpritemap_MotherBrainBody_Uncrouching:
-    dw $0009,$0012,$001E                                                 ;A9A28C;
+    dw $0009                                                             ;A9A28C;
+    dw $0012,$001E
     dw Spritemaps_MotherBrain_13                                         ;A9A292;
     dw Hitbox_MotherBrainBody_3                                          ;A9A294;
     dw $0024,$0002                                                       ;A9A296;
@@ -4120,7 +3965,8 @@ ExtendedSpritemap_MotherBrainBody_Uncrouching:
     dw Hitbox_MotherBrainBody_4                                          ;A9A2D4;
 
 ExtendedSpritemap_MotherBrainBody_LeaningDown:
-    dw $0009,$0012,$002E                                                 ;A9A2D6;
+    dw $0009                                                             ;A9A2D6;
+    dw $0012,$002E
     dw Spritemaps_MotherBrain_13                                         ;A9A2DC;
     dw Hitbox_MotherBrainBody_3                                          ;A9A2DE;
     dw $001F,$0011                                                       ;A9A2E0;
@@ -4149,59 +3995,70 @@ ExtendedSpritemap_MotherBrainBody_LeaningDown:
     dw Hitbox_MotherBrainBody_4                                          ;A9A31E;
 
 UNUSED_ExtendedSpritemap_MotherBrainBrain_A9A320:
-    dw $0001,$0000,$0000                                                 ;A9A320;
+    dw $0001                                                             ;A9A320;
+    dw $0000,$0000
     dw Spritemaps_MotherBrain_0                                          ;A9A326;
     dw Hitbox_MotherBrainBody_0                                          ;A9A328;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_ExtendedSpritemap_MotherBrainBrain_A9A32A:
-    dw $0001,$0000,$0000                                                 ;A9A32A;
+    dw $0001                                                             ;A9A32A;
+    dw $0000,$0000
     dw Spritemaps_MotherBrain_1                                          ;A9A330;
     dw Hitbox_MotherBrainBody_0                                          ;A9A332;
 
 UNUSED_ExtendedSpritemap_MotherBrainBrain_A9A334:
-    dw $0001,$0000,$0000                                                 ;A9A334;
+    dw $0001                                                             ;A9A334;
+    dw $0000,$0000
     dw Spritemaps_MotherBrain_2                                          ;A9A33A;
     dw Hitbox_MotherBrainBody_0                                          ;A9A33C;
 
 UNUSED_ExtendedSpritemap_MotherBrainBrain_A9A33E:
-    dw $0001,$0000,$0000                                                 ;A9A33E;
+    dw $0001                                                             ;A9A33E;
+    dw $0000,$0000
     dw Spritemaps_MotherBrain_3                                          ;A9A344;
     dw Hitbox_MotherBrainBody_0                                          ;A9A346;
 
 UNUSED_ExtendedSpritemap_MotherBrainBrain_A9A348:
-    dw $0001,$0000,$0000                                                 ;A9A348;
+    dw $0001                                                             ;A9A348;
+    dw $0000,$0000
     dw Spritemaps_MotherBrain_4                                          ;A9A34E;
     dw Hitbox_MotherBrainBody_0                                          ;A9A350;
 
 UNUSED_ExtendedSpritemap_MotherBrainBrain_A9A352:
-    dw $0001,$0000,$0000                                                 ;A9A352;
+    dw $0001                                                             ;A9A352;
+    dw $0000,$0000
     dw Spritemaps_MotherBrain_6                                          ;A9A358;
     dw Hitbox_MotherBrainBody_1                                          ;A9A35A;
 
 UNUSED_ExtendedSpritemap_MotherBrainBrain_A9A35C:
-    dw $0001,$0000,$0000                                                 ;A9A35C;
+    dw $0001                                                             ;A9A35C;
+    dw $0000,$0000
     dw Spritemaps_MotherBrain_7                                          ;A9A362;
     dw Hitbox_MotherBrainBody_1                                          ;A9A364;
 
 UNUSED_ExtendedSpritemap_MotherBrainBrain_A9A366:
-    dw $0001,$0000,$0000                                                 ;A9A366;
+    dw $0001                                                             ;A9A366;
+    dw $0000,$0000
     dw Spritemaps_MotherBrain_8                                          ;A9A36C;
     dw Hitbox_MotherBrainBody_1                                          ;A9A36E;
 
 UNUSED_ExtendedSpritemap_MotherBrainBrain_A9A370:
-    dw $0001,$0000,$0000                                                 ;A9A370;
+    dw $0001                                                             ;A9A370;
+    dw $0000,$0000
     dw Spritemaps_MotherBrain_9                                          ;A9A376;
     dw Hitbox_MotherBrainBody_1                                          ;A9A378;
 
 UNUSED_ExtendedSpritemap_MotherBrainBrain_A9A37A:
-    dw $0001,$0000,$0000                                                 ;A9A37A;
+    dw $0001                                                             ;A9A37A;
+    dw $0000,$0000
     dw Spritemaps_MotherBrain_A                                          ;A9A380;
     dw Hitbox_MotherBrainBody_1                                          ;A9A382;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_0:
-    dw $0009,$0012,$003A                                                 ;A9A384;
+    dw $0009                                                             ;A9A384;
+    dw $0012,$003A
     dw Spritemaps_MotherBrain_13                                         ;A9A38A;
     dw Hitbox_MotherBrainBody_3                                          ;A9A38C;
     dw $001E,$001D                                                       ;A9A38E;
@@ -4230,7 +4087,8 @@ ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_0:
     dw Hitbox_MotherBrainBody_4                                          ;A9A3CC;
 
 ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1:
-    dw $0009,$0012,$003A                                                 ;A9A3CE;
+    dw $0009                                                             ;A9A3CE;
+    dw $0012,$003A
     dw Spritemaps_MotherBrain_13                                         ;A9A3D4;
     dw Hitbox_MotherBrainBody_3                                          ;A9A3D6;
     dw $001E,$001D                                                       ;A9A3D8;
@@ -4259,7 +4117,8 @@ ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_1:
     dw Hitbox_MotherBrainBody_4                                          ;A9A416;
 
 ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_2:
-    dw $0009,$0012,$003A                                                 ;A9A418;
+    dw $0009                                                             ;A9A418;
+    dw $0012,$003A
     dw Spritemaps_MotherBrain_13                                         ;A9A41E;
     dw Hitbox_MotherBrainBody_3                                          ;A9A420;
     dw $001E,$001D                                                       ;A9A422;
@@ -4288,7 +4147,8 @@ ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_2:
     dw Hitbox_MotherBrainBody_4                                          ;A9A460;
 
 ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_3:
-    dw $0009,$0012,$003A                                                 ;A9A462;
+    dw $0009                                                             ;A9A462;
+    dw $0012,$003A
     dw Spritemaps_MotherBrain_13                                         ;A9A468;
     dw Hitbox_MotherBrainBody_3                                          ;A9A46A;
     dw $001E,$001D                                                       ;A9A46C;
@@ -4317,12 +4177,14 @@ ExtendedSpritemap_MotherBrainBrain_DeathBeamMode_3:
     dw Hitbox_MotherBrainBody_4                                          ;A9A4AA;
 
 Hitbox_MotherBrainBody_0:
-    dw $0001,$FFEC,$FFEB,$0010,$0017                                     ;A9A4AC;
+    dw $0001                                                             ;A9A4AC;
+    dw $FFEC,$FFEB,$0010,$0017
     dw EnemyTouch_MotherBrainHead                                        ;A9A4B6;
     dw EnemyShot_MotherBrainHead                                         ;A9A4B8;
 
 Hitbox_MotherBrainBody_1:
-    dw $0001,$FFEC,$FFEB,$0013,$0017                                     ;A9A4BA;
+    dw $0001                                                             ;A9A4BA;
+    dw $FFEC,$FFEB,$0013,$0017
     dw EnemyTouch_MotherBrainHead                                        ;A9A4C4;
     dw EnemyShot_MotherBrainHead                                         ;A9A4C6;
 
@@ -4330,7 +4192,8 @@ Hitbox_MotherBrainBody_2:
     dw $0000                                                             ;A9A4C8;
 
 Hitbox_MotherBrainBody_3:
-    dw $0001,$FFE9,$FFFF,$0017,$0007                                     ;A9A4CA;
+    dw $0001                                                             ;A9A4CA;
+    dw $FFE9,$FFFF,$0017,$0007
     dw RTL_A9B5C5                                                        ;A9A4D4;
     dw EnemyShot_MotherBrainBody                                         ;A9A4D6;
 
@@ -4338,12 +4201,14 @@ Hitbox_MotherBrainBody_4:
     dw $0000                                                             ;A9A4D8;
 
 Hitbox_MotherBrainBody_5:
-    dw $0001,$FFE9,$FFFE,$0017,$0007                                     ;A9A4DA;
+    dw $0001                                                             ;A9A4DA;
+    dw $FFE9,$FFFE,$0017,$0007
     dw RTL_A9B5C5                                                        ;A9A4E4;
     dw EnemyShot_MotherBrainBody                                         ;A9A4E6;
 
 Hitbox_MotherBrainBody_6:
-    dw $0002,$FFE0,$FFE8,$0014,$0034                                     ;A9A4E8;
+    dw $0002                                                             ;A9A4E8;
+    dw $FFE0,$FFE8,$0014,$0034
     dw RTL_A9B5C5                                                        ;A9A4F2;
     dw EnemyShot_MotherBrainBody                                         ;A9A4F4;
     dw $FFE8,$FFD6,$000D,$FFE7                                           ;A9A4F6;
@@ -4354,7 +4219,8 @@ Hitbox_MotherBrainBody_7:
     dw $0000                                                             ;A9A502;
 
 Hitbox_MotherBrainBody_8:
-    dw $0002,$0004,$FFC5,$001C,$FFE8                                     ;A9A504;
+    dw $0002                                                             ;A9A504;
+    dw $0004,$FFC5,$001C,$FFE8
     dw RTL_A9B5C5                                                        ;A9A50E;
     dw EnemyShot_MotherBrainBody                                         ;A9A510;
     dw $001C,$FFD7,$0039,$FFE2                                           ;A9A512;
@@ -4362,7 +4228,8 @@ Hitbox_MotherBrainBody_8:
     dw EnemyShot_MotherBrainBody                                         ;A9A51C;
 
 Hitbox_MotherBrainBody_9:
-    dw $0002,$0004,$FFC5,$001C,$FFE8                                     ;A9A51E;
+    dw $0002                                                             ;A9A51E;
+    dw $0004,$FFC5,$001C,$FFE8
     dw RTL_A9B5C5                                                        ;A9A528;
     dw EnemyShot_MotherBrainBody                                         ;A9A52A;
     dw $001C,$FFD7,$0036,$FFE2                                           ;A9A52C;
@@ -4370,7 +4237,8 @@ Hitbox_MotherBrainBody_9:
     dw EnemyShot_MotherBrainBody                                         ;A9A536;
 
 Hitbox_MotherBrainBody_A:
-    dw $0002,$0004,$FFC5,$001C,$FFE8                                     ;A9A538;
+    dw $0002                                                             ;A9A538;
+    dw $0004,$FFC5,$001C,$FFE8
     dw RTL_A9B5C5                                                        ;A9A542;
     dw EnemyShot_MotherBrainBody                                         ;A9A544;
     dw $001D,$FFD5,$002D,$FFE8                                           ;A9A546;
@@ -4378,7 +4246,8 @@ Hitbox_MotherBrainBody_A:
     dw EnemyShot_MotherBrainBody                                         ;A9A550;
 
 Hitbox_MotherBrainBody_B:
-    dw $0002,$0004,$FFC5,$001C,$FFE8                                     ;A9A552;
+    dw $0002                                                             ;A9A552;
+    dw $0004,$FFC5,$001C,$FFE8
     dw RTL_A9B5C5                                                        ;A9A55C;
     dw EnemyShot_MotherBrainBody                                         ;A9A55E;
     dw $001D,$FFD0,$0044,$FFD8                                           ;A9A560;
@@ -4386,752 +4255,490 @@ Hitbox_MotherBrainBody_B:
     dw EnemyShot_MotherBrainBody                                         ;A9A56A;
 
 Hitbox_MotherBrainBody_C:
-    dw $0002,$0004,$FFC5,$001C,$FFE8                                     ;A9A56C;
+    dw $0002                                                             ;A9A56C;
+    dw $0004,$FFC5,$001C,$FFE8
     dw RTL_A9B5C5                                                        ;A9A576;
     dw EnemyShot_MotherBrainBody                                         ;A9A578;
     dw $001C,$FFD7,$003A,$FFE1                                           ;A9A57A;
     dw RTL_A9B5C5                                                        ;A9A582;
     dw EnemyShot_MotherBrainBody                                         ;A9A584;
 
+
 Spritemaps_MotherBrain_0:
-    dw $000B,$000C                                                       ;A9A586;
-    db $01                                                               ;A9A58A;
-    dw $2133,$8002                                                       ;A9A58B;
-    db $09                                                               ;A9A58F;
-    dw $2100,$81E8                                                       ;A9A590;
-    db $04                                                               ;A9A594;
-    dw $2108,$81F8                                                       ;A9A595;
-    db $04                                                               ;A9A599;
-    dw $2102,$81F8                                                       ;A9A59A;
-    db $F4                                                               ;A9A59E;
-    dw $2120,$8008                                                       ;A9A59F;
-    db $00                                                               ;A9A5A3;
-    dw $2104,$8008                                                       ;A9A5A4;
-    db $F0                                                               ;A9A5A8;
-    dw $211E,$8008                                                       ;A9A5A9;
-    db $E8                                                               ;A9A5AD;
-    dw $210E,$81F8                                                       ;A9A5AE;
-    db $E4                                                               ;A9A5B2;
-    dw $210A,$01F0                                                       ;A9A5B3;
-    db $EC                                                               ;A9A5B7;
-    dw $2122,$81E8                                                       ;A9A5B8;
-    db $F4                                                               ;A9A5BC;
-    dw $2106                                                             ;A9A5BD;
+    dw $000B                                                             ;A9A586;
+    %spritemapEntry(0, $0C, $01, 0, 0, 2, 0, $133)
+    %spritemapEntry(1, $02, $09, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $1E8, $04, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $1F8, $04, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F8, $F4, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $08, $00, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $08, $F0, 0, 0, 2, 0, $11E)
+    %spritemapEntry(1, $08, $E8, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $1F8, $E4, 0, 0, 2, 0, $10A)
+    %spritemapEntry(0, $1F0, $EC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1E8, $F4, 0, 0, 2, 0, $106)
 
 Spritemaps_MotherBrain_1:
-    dw $000B,$000C                                                       ;A9A5BF;
-    db $01                                                               ;A9A5C3;
-    dw $2132,$8002                                                       ;A9A5C4;
-    db $09                                                               ;A9A5C8;
-    dw $2100,$81E8                                                       ;A9A5C9;
-    db $04                                                               ;A9A5CD;
-    dw $2108,$81F8                                                       ;A9A5CE;
-    db $04                                                               ;A9A5D2;
-    dw $2102,$81F8                                                       ;A9A5D3;
-    db $F4                                                               ;A9A5D7;
-    dw $2120,$8008                                                       ;A9A5D8;
-    db $00                                                               ;A9A5DC;
-    dw $2104,$8008                                                       ;A9A5DD;
-    db $F0                                                               ;A9A5E1;
-    dw $211E,$8008                                                       ;A9A5E2;
-    db $E8                                                               ;A9A5E6;
-    dw $210E,$81F8                                                       ;A9A5E7;
-    db $E4                                                               ;A9A5EB;
-    dw $210A,$01F0                                                       ;A9A5EC;
-    db $EC                                                               ;A9A5F0;
-    dw $2122,$81E8                                                       ;A9A5F1;
-    db $F4                                                               ;A9A5F5;
-    dw $2106                                                             ;A9A5F6;
+    dw $000B                                                             ;A9A5BF;
+    %spritemapEntry(0, $0C, $01, 0, 0, 2, 0, $132)
+    %spritemapEntry(1, $02, $09, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $1E8, $04, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $1F8, $04, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F8, $F4, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $08, $00, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $08, $F0, 0, 0, 2, 0, $11E)
+    %spritemapEntry(1, $08, $E8, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $1F8, $E4, 0, 0, 2, 0, $10A)
+    %spritemapEntry(0, $1F0, $EC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1E8, $F4, 0, 0, 2, 0, $106)
 
 Spritemaps_MotherBrain_2:
-    dw $000A,$8002                                                       ;A9A5F8;
-    db $09                                                               ;A9A5FC;
-    dw $2100,$81E8                                                       ;A9A5FD;
-    db $04                                                               ;A9A601;
-    dw $2108,$81F8                                                       ;A9A602;
-    db $04                                                               ;A9A606;
-    dw $2102,$81F8                                                       ;A9A607;
-    db $F4                                                               ;A9A60B;
-    dw $2120,$8008                                                       ;A9A60C;
-    db $00                                                               ;A9A610;
-    dw $2104,$8008                                                       ;A9A611;
-    db $F0                                                               ;A9A615;
-    dw $211E,$8008                                                       ;A9A616;
-    db $E8                                                               ;A9A61A;
-    dw $210E,$81F8                                                       ;A9A61B;
-    db $E4                                                               ;A9A61F;
-    dw $210A,$01F0                                                       ;A9A620;
-    db $EC                                                               ;A9A624;
-    dw $2122,$81E8                                                       ;A9A625;
-    db $F4                                                               ;A9A629;
-    dw $2106                                                             ;A9A62A;
+    dw $000A                                                             ;A9A5F8;
+    %spritemapEntry(1, $02, $09, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $1E8, $04, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $1F8, $04, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F8, $F4, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $08, $00, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $08, $F0, 0, 0, 2, 0, $11E)
+    %spritemapEntry(1, $08, $E8, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $1F8, $E4, 0, 0, 2, 0, $10A)
+    %spritemapEntry(0, $1F0, $EC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1E8, $F4, 0, 0, 2, 0, $106)
 
 Spritemaps_MotherBrain_3:
-    dw $000A,$81FF                                                       ;A9A62C;
-    db $0E                                                               ;A9A630;
-    dw $2124,$81E8                                                       ;A9A631;
-    db $04                                                               ;A9A635;
-    dw $2108,$81F8                                                       ;A9A636;
-    db $04                                                               ;A9A63A;
-    dw $2102,$81F8                                                       ;A9A63B;
-    db $F4                                                               ;A9A63F;
-    dw $2120,$8008                                                       ;A9A640;
-    db $00                                                               ;A9A644;
-    dw $2104,$8008                                                       ;A9A645;
-    db $F0                                                               ;A9A649;
-    dw $211E,$8008                                                       ;A9A64A;
-    db $E8                                                               ;A9A64E;
-    dw $210E,$81F8                                                       ;A9A64F;
-    db $E4                                                               ;A9A653;
-    dw $210A,$01F0                                                       ;A9A654;
-    db $EC                                                               ;A9A658;
-    dw $2122,$81E8                                                       ;A9A659;
-    db $F4                                                               ;A9A65D;
-    dw $2106                                                             ;A9A65E;
+    dw $000A                                                             ;A9A62C;
+    %spritemapEntry(1, $1FF, $0E, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1E8, $04, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $1F8, $04, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F8, $F4, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $08, $00, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $08, $F0, 0, 0, 2, 0, $11E)
+    %spritemapEntry(1, $08, $E8, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $1F8, $E4, 0, 0, 2, 0, $10A)
+    %spritemapEntry(0, $1F0, $EC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1E8, $F4, 0, 0, 2, 0, $106)
 
 Spritemaps_MotherBrain_4:
-    dw $000A,$81FC                                                       ;A9A660;
-    db $10                                                               ;A9A664;
-    dw $2126,$81E8                                                       ;A9A665;
-    db $04                                                               ;A9A669;
-    dw $2108,$81F8                                                       ;A9A66A;
-    db $04                                                               ;A9A66E;
-    dw $2102,$81F8                                                       ;A9A66F;
-    db $F4                                                               ;A9A673;
-    dw $2120,$8008                                                       ;A9A674;
-    db $00                                                               ;A9A678;
-    dw $2104,$8008                                                       ;A9A679;
-    db $F0                                                               ;A9A67D;
-    dw $211E,$8008                                                       ;A9A67E;
-    db $E8                                                               ;A9A682;
-    dw $210E,$81F8                                                       ;A9A683;
-    db $E4                                                               ;A9A687;
-    dw $210A,$01F0                                                       ;A9A688;
-    db $EC                                                               ;A9A68C;
-    dw $2122,$81E8                                                       ;A9A68D;
-    db $F4                                                               ;A9A691;
-    dw $2106                                                             ;A9A692;
+    dw $000A                                                             ;A9A660;
+    %spritemapEntry(1, $1FC, $10, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1E8, $04, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $1F8, $04, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F8, $F4, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $08, $00, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $08, $F0, 0, 0, 2, 0, $11E)
+    %spritemapEntry(1, $08, $E8, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $1F8, $E4, 0, 0, 2, 0, $10A)
+    %spritemapEntry(0, $1F0, $EC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1E8, $F4, 0, 0, 2, 0, $106)
 
 Spritemaps_MotherBrain_5:
-    dw $0001,$81F8                                                       ;A9A694;
-    db $F8                                                               ;A9A698;
-    dw $212A                                                             ;A9A699;
+    dw $0001                                                             ;A9A694;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $12A)
 
 Spritemaps_MotherBrain_6:
-    dw $000C,$000C                                                       ;A9A69B;
-    db $01                                                               ;A9A69F;
-    dw $2133,$8002                                                       ;A9A6A0;
-    db $09                                                               ;A9A6A4;
-    dw $2100,$8008                                                       ;A9A6A5;
-    db $00                                                               ;A9A6A9;
-    dw $2104,$0008                                                       ;A9A6AA;
-    db $E8                                                               ;A9A6AE;
-    dw $2123,$8008                                                       ;A9A6AF;
-    db $F0                                                               ;A9A6B3;
-    dw $213E,$81F8                                                       ;A9A6B4;
-    db $E4                                                               ;A9A6B8;
-    dw $213C,$81F8                                                       ;A9A6B9;
-    db $F4                                                               ;A9A6BD;
-    dw $2128,$81F8                                                       ;A9A6BE;
-    db $04                                                               ;A9A6C2;
-    dw $2102,$01F0                                                       ;A9A6C3;
-    db $0C                                                               ;A9A6C7;
-    dw $214B,$01F0                                                       ;A9A6C8;
-    db $EC                                                               ;A9A6CC;
-    dw $214A,$81E8                                                       ;A9A6CD;
-    db $F4                                                               ;A9A6D1;
-    dw $210C,$81E8                                                       ;A9A6D2;
-    db $FC                                                               ;A9A6D6;
-    dw $211C                                                             ;A9A6D7;
+    dw $000C                                                             ;A9A69B;
+    %spritemapEntry(0, $0C, $01, 0, 0, 2, 0, $133)
+    %spritemapEntry(1, $02, $09, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $08, $00, 0, 0, 2, 0, $104)
+    %spritemapEntry(0, $08, $E8, 0, 0, 2, 0, $123)
+    %spritemapEntry(1, $08, $F0, 0, 0, 2, 0, $13E)
+    %spritemapEntry(1, $1F8, $E4, 0, 0, 2, 0, $13C)
+    %spritemapEntry(1, $1F8, $F4, 0, 0, 2, 0, $128)
+    %spritemapEntry(1, $1F8, $04, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $1F0, $0C, 0, 0, 2, 0, $14B)
+    %spritemapEntry(0, $1F0, $EC, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1E8, $F4, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1E8, $FC, 0, 0, 2, 0, $11C)
 
 Spritemaps_MotherBrain_7:
-    dw $000C,$000C                                                       ;A9A6D9;
-    db $01                                                               ;A9A6DD;
-    dw $2132,$8002                                                       ;A9A6DE;
-    db $09                                                               ;A9A6E2;
-    dw $2100,$8008                                                       ;A9A6E3;
-    db $00                                                               ;A9A6E7;
-    dw $2104,$0008                                                       ;A9A6E8;
-    db $E8                                                               ;A9A6EC;
-    dw $2123,$8008                                                       ;A9A6ED;
-    db $F0                                                               ;A9A6F1;
-    dw $213E,$81F8                                                       ;A9A6F2;
-    db $E4                                                               ;A9A6F6;
-    dw $213C,$81F8                                                       ;A9A6F7;
-    db $F4                                                               ;A9A6FB;
-    dw $2128,$81F8                                                       ;A9A6FC;
-    db $04                                                               ;A9A700;
-    dw $2102,$01F0                                                       ;A9A701;
-    db $0C                                                               ;A9A705;
-    dw $214B,$01F0                                                       ;A9A706;
-    db $EC                                                               ;A9A70A;
-    dw $214A,$81E8                                                       ;A9A70B;
-    db $F4                                                               ;A9A70F;
-    dw $210C,$81E8                                                       ;A9A710;
-    db $FC                                                               ;A9A714;
-    dw $211C                                                             ;A9A715;
+    dw $000C                                                             ;A9A6D9;
+    %spritemapEntry(0, $0C, $01, 0, 0, 2, 0, $132)
+    %spritemapEntry(1, $02, $09, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $08, $00, 0, 0, 2, 0, $104)
+    %spritemapEntry(0, $08, $E8, 0, 0, 2, 0, $123)
+    %spritemapEntry(1, $08, $F0, 0, 0, 2, 0, $13E)
+    %spritemapEntry(1, $1F8, $E4, 0, 0, 2, 0, $13C)
+    %spritemapEntry(1, $1F8, $F4, 0, 0, 2, 0, $128)
+    %spritemapEntry(1, $1F8, $04, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $1F0, $0C, 0, 0, 2, 0, $14B)
+    %spritemapEntry(0, $1F0, $EC, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1E8, $F4, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1E8, $FC, 0, 0, 2, 0, $11C)
 
 Spritemaps_MotherBrain_8:
-    dw $000B,$8002                                                       ;A9A717;
-    db $09                                                               ;A9A71B;
-    dw $2100,$8008                                                       ;A9A71C;
-    db $00                                                               ;A9A720;
-    dw $2104,$0008                                                       ;A9A721;
-    db $E8                                                               ;A9A725;
-    dw $2123,$8008                                                       ;A9A726;
-    db $F0                                                               ;A9A72A;
-    dw $213E,$81F8                                                       ;A9A72B;
-    db $E4                                                               ;A9A72F;
-    dw $213C,$81F8                                                       ;A9A730;
-    db $F4                                                               ;A9A734;
-    dw $2128,$81F8                                                       ;A9A735;
-    db $04                                                               ;A9A739;
-    dw $2102,$01F0                                                       ;A9A73A;
-    db $0C                                                               ;A9A73E;
-    dw $214B,$01F0                                                       ;A9A73F;
-    db $EC                                                               ;A9A743;
-    dw $214A,$81E8                                                       ;A9A744;
-    db $F4                                                               ;A9A748;
-    dw $210C,$81E8                                                       ;A9A749;
-    db $FC                                                               ;A9A74D;
-    dw $211C                                                             ;A9A74E;
+    dw $000B                                                             ;A9A717;
+    %spritemapEntry(1, $02, $09, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $08, $00, 0, 0, 2, 0, $104)
+    %spritemapEntry(0, $08, $E8, 0, 0, 2, 0, $123)
+    %spritemapEntry(1, $08, $F0, 0, 0, 2, 0, $13E)
+    %spritemapEntry(1, $1F8, $E4, 0, 0, 2, 0, $13C)
+    %spritemapEntry(1, $1F8, $F4, 0, 0, 2, 0, $128)
+    %spritemapEntry(1, $1F8, $04, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $1F0, $0C, 0, 0, 2, 0, $14B)
+    %spritemapEntry(0, $1F0, $EC, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1E8, $F4, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1E8, $FC, 0, 0, 2, 0, $11C)
 
 Spritemaps_MotherBrain_9:
-    dw $000B,$81FF                                                       ;A9A750;
-    db $0E                                                               ;A9A754;
-    dw $2124,$8008                                                       ;A9A755;
-    db $00                                                               ;A9A759;
-    dw $2104,$0008                                                       ;A9A75A;
-    db $E8                                                               ;A9A75E;
-    dw $2123,$8008                                                       ;A9A75F;
-    db $F0                                                               ;A9A763;
-    dw $213E,$81F8                                                       ;A9A764;
-    db $E4                                                               ;A9A768;
-    dw $213C,$81F8                                                       ;A9A769;
-    db $F4                                                               ;A9A76D;
-    dw $2128,$81F8                                                       ;A9A76E;
-    db $04                                                               ;A9A772;
-    dw $2102,$01F0                                                       ;A9A773;
-    db $0C                                                               ;A9A777;
-    dw $214B,$01F0                                                       ;A9A778;
-    db $EC                                                               ;A9A77C;
-    dw $214A,$81E8                                                       ;A9A77D;
-    db $F4                                                               ;A9A781;
-    dw $210C,$81E8                                                       ;A9A782;
-    db $FC                                                               ;A9A786;
-    dw $211C                                                             ;A9A787;
+    dw $000B                                                             ;A9A750;
+    %spritemapEntry(1, $1FF, $0E, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $08, $00, 0, 0, 2, 0, $104)
+    %spritemapEntry(0, $08, $E8, 0, 0, 2, 0, $123)
+    %spritemapEntry(1, $08, $F0, 0, 0, 2, 0, $13E)
+    %spritemapEntry(1, $1F8, $E4, 0, 0, 2, 0, $13C)
+    %spritemapEntry(1, $1F8, $F4, 0, 0, 2, 0, $128)
+    %spritemapEntry(1, $1F8, $04, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $1F0, $0C, 0, 0, 2, 0, $14B)
+    %spritemapEntry(0, $1F0, $EC, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1E8, $F4, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1E8, $FC, 0, 0, 2, 0, $11C)
 
 Spritemaps_MotherBrain_A:
-    dw $000B,$81FC                                                       ;A9A789;
-    db $10                                                               ;A9A78D;
-    dw $2126,$8008                                                       ;A9A78E;
-    db $00                                                               ;A9A792;
-    dw $2104,$0008                                                       ;A9A793;
-    db $E8                                                               ;A9A797;
-    dw $2123,$8008                                                       ;A9A798;
-    db $F0                                                               ;A9A79C;
-    dw $213E,$81F8                                                       ;A9A79D;
-    db $E4                                                               ;A9A7A1;
-    dw $213C,$81F8                                                       ;A9A7A2;
-    db $F4                                                               ;A9A7A6;
-    dw $2128,$81F8                                                       ;A9A7A7;
-    db $04                                                               ;A9A7AB;
-    dw $2102,$01F0                                                       ;A9A7AC;
-    db $0C                                                               ;A9A7B0;
-    dw $214B,$01F0                                                       ;A9A7B1;
-    db $EC                                                               ;A9A7B5;
-    dw $214A,$81E8                                                       ;A9A7B6;
-    db $F4                                                               ;A9A7BA;
-    dw $210C,$81E8                                                       ;A9A7BB;
-    db $FC                                                               ;A9A7BF;
-    dw $211C                                                             ;A9A7C0;
+    dw $000B                                                             ;A9A789;
+    %spritemapEntry(1, $1FC, $10, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $08, $00, 0, 0, 2, 0, $104)
+    %spritemapEntry(0, $08, $E8, 0, 0, 2, 0, $123)
+    %spritemapEntry(1, $08, $F0, 0, 0, 2, 0, $13E)
+    %spritemapEntry(1, $1F8, $E4, 0, 0, 2, 0, $13C)
+    %spritemapEntry(1, $1F8, $F4, 0, 0, 2, 0, $128)
+    %spritemapEntry(1, $1F8, $04, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $1F0, $0C, 0, 0, 2, 0, $14B)
+    %spritemapEntry(0, $1F0, $EC, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1E8, $F4, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1E8, $FC, 0, 0, 2, 0, $11C)
 
 Spritemaps_MotherBrain_B:
-    dw $0009,$001C                                                       ;A9A7C2;
-    db $1C                                                               ;A9A7C6;
-    dw $337B,$8014                                                       ;A9A7C7;
-    db $0C                                                               ;A9A7CB;
-    dw $335A,$800C                                                       ;A9A7CC;
-    db $14                                                               ;A9A7D0;
-    dw $3369,$000C                                                       ;A9A7D1;
-    db $0C                                                               ;A9A7D5;
-    dw $3366,$0014                                                       ;A9A7D6;
-    db $04                                                               ;A9A7DA;
-    dw $F378,$0004                                                       ;A9A7DB;
-    db $14                                                               ;A9A7DF;
-    dw $3378,$01FC                                                       ;A9A7E0;
-    db $FC                                                               ;A9A7E4;
-    dw $3347,$81FC                                                       ;A9A7E5;
-    db $04                                                               ;A9A7E9;
-    dw $3357,$8004                                                       ;A9A7EA;
-    db $FC                                                               ;A9A7EE;
-    dw $3348                                                             ;A9A7EF;
+    dw $0009                                                             ;A9A7C2;
+    %spritemapEntry(0, $1C, $1C, 0, 0, 3, 1, $17B)
+    %spritemapEntry(1, $14, $0C, 0, 0, 3, 1, $15A)
+    %spritemapEntry(1, $0C, $14, 0, 0, 3, 1, $169)
+    %spritemapEntry(0, $0C, $0C, 0, 0, 3, 1, $166)
+    %spritemapEntry(0, $14, $04, 1, 1, 3, 1, $178)
+    %spritemapEntry(0, $04, $14, 0, 0, 3, 1, $178)
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 3, 1, $147)
+    %spritemapEntry(1, $1FC, $04, 0, 0, 3, 1, $157)
+    %spritemapEntry(1, $04, $FC, 0, 0, 3, 1, $148)
 
 Spritemaps_MotherBrain_C:
-    dw $0006,$801D                                                       ;A9A7F1;
-    db $03                                                               ;A9A7F5;
-    dw $335E,$801D                                                       ;A9A7F6;
-    db $0B                                                               ;A9A7FA;
-    dw $336E,$800D                                                       ;A9A7FB;
-    db $0B                                                               ;A9A7FF;
-    dw $3362,$800D                                                       ;A9A800;
-    db $FB                                                               ;A9A804;
-    dw $3360,$81FD                                                       ;A9A805;
-    db $03                                                               ;A9A809;
-    dw $336C,$81FD                                                       ;A9A80A;
-    db $FB                                                               ;A9A80E;
-    dw $335C                                                             ;A9A80F;
+    dw $0006                                                             ;A9A7F1;
+    %spritemapEntry(1, $1D, $03, 0, 0, 3, 1, $15E)
+    %spritemapEntry(1, $1D, $0B, 0, 0, 3, 1, $16E)
+    %spritemapEntry(1, $0D, $0B, 0, 0, 3, 1, $162)
+    %spritemapEntry(1, $0D, $FB, 0, 0, 3, 1, $160)
+    %spritemapEntry(1, $1FD, $03, 0, 0, 3, 1, $16C)
+    %spritemapEntry(1, $1FD, $FB, 0, 0, 3, 1, $15C)
 
 Spritemaps_MotherBrain_D:
-    dw $0008,$0028                                                       ;A9A811;
-    db $00                                                               ;A9A815;
-    dw $B377,$0028                                                       ;A9A816;
-    db $F8                                                               ;A9A81A;
-    dw $3377,$8018                                                       ;A9A81B;
-    db $00                                                               ;A9A81F;
-    dw $B343,$8018                                                       ;A9A820;
-    db $F0                                                               ;A9A824;
-    dw $3343,$8010                                                       ;A9A825;
-    db $00                                                               ;A9A829;
-    dw $B342,$8000                                                       ;A9A82A;
-    db $00                                                               ;A9A82E;
-    dw $B340,$8010                                                       ;A9A82F;
-    db $F0                                                               ;A9A833;
-    dw $3342,$8000                                                       ;A9A834;
-    db $F0                                                               ;A9A838;
-    dw $3340                                                             ;A9A839;
+    dw $0008                                                             ;A9A811;
+    %spritemapEntry(0, $28, $00, 1, 0, 3, 1, $177)
+    %spritemapEntry(0, $28, $F8, 0, 0, 3, 1, $177)
+    %spritemapEntry(1, $18, $00, 1, 0, 3, 1, $143)
+    %spritemapEntry(1, $18, $F0, 0, 0, 3, 1, $143)
+    %spritemapEntry(1, $10, $00, 1, 0, 3, 1, $142)
+    %spritemapEntry(1, $00, $00, 1, 0, 3, 1, $140)
+    %spritemapEntry(1, $10, $F0, 0, 0, 3, 1, $142)
+    %spritemapEntry(1, $00, $F0, 0, 0, 3, 1, $140)
 
 Spritemaps_MotherBrain_E:
-    dw $0006,$801D                                                       ;A9A83B;
-    db $ED                                                               ;A9A83F;
-    dw $B35E,$801D                                                       ;A9A840;
-    db $E5                                                               ;A9A844;
-    dw $B36E,$800D                                                       ;A9A845;
-    db $E5                                                               ;A9A849;
-    dw $B362,$800D                                                       ;A9A84A;
-    db $F5                                                               ;A9A84E;
-    dw $B360,$81FD                                                       ;A9A84F;
-    db $ED                                                               ;A9A853;
-    dw $B36C,$81FD                                                       ;A9A854;
-    db $F5                                                               ;A9A858;
-    dw $B35C                                                             ;A9A859;
+    dw $0006                                                             ;A9A83B;
+    %spritemapEntry(1, $1D, $ED, 1, 0, 3, 1, $15E)
+    %spritemapEntry(1, $1D, $E5, 1, 0, 3, 1, $16E)
+    %spritemapEntry(1, $0D, $E5, 1, 0, 3, 1, $162)
+    %spritemapEntry(1, $0D, $F5, 1, 0, 3, 1, $160)
+    %spritemapEntry(1, $1FD, $ED, 1, 0, 3, 1, $16C)
+    %spritemapEntry(1, $1FD, $F5, 1, 0, 3, 1, $15C)
 
 Spritemaps_MotherBrain_F:
-    dw $0001,$81F8                                                       ;A9A85B;
-    db $F8                                                               ;A9A85F;
-    dw $3364                                                             ;A9A860;
+    dw $0001                                                             ;A9A85B;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 1, $164)
 
 Spritemaps_MotherBrain_10:
-    dw $0002,$81F8                                                       ;A9A862;
-    db $10                                                               ;A9A866;
-    dw $3388,$81F8                                                       ;A9A867;
-    db $00                                                               ;A9A86B;
-    dw $3345                                                             ;A9A86C;
+    dw $0002                                                             ;A9A862;
+    %spritemapEntry(1, $1F8, $10, 0, 0, 3, 1, $188)
+    %spritemapEntry(1, $1F8, $00, 0, 0, 3, 1, $145)
 
 Spritemaps_MotherBrain_11:
-    dw $0002,$81F3                                                       ;A9A86E;
-    db $10                                                               ;A9A872;
-    dw $338A,$81F7                                                       ;A9A873;
-    db $00                                                               ;A9A877;
-    dw $3381                                                             ;A9A878;
+    dw $0002                                                             ;A9A86E;
+    %spritemapEntry(1, $1F3, $10, 0, 0, 3, 1, $18A)
+    %spritemapEntry(1, $1F7, $00, 0, 0, 3, 1, $181)
 
 Spritemaps_MotherBrain_12:
-    dw $0004,$01FB                                                       ;A9A87A;
-    db $0E                                                               ;A9A87E;
-    dw $3376,$81EB                                                       ;A9A87F;
-    db $0E                                                               ;A9A883;
-    dw $3386,$81FB                                                       ;A9A884;
-    db $FE                                                               ;A9A888;
-    dw $3384,$81F3                                                       ;A9A889;
-    db $FE                                                               ;A9A88D;
-    dw $3383                                                             ;A9A88E;
+    dw $0004                                                             ;A9A87A;
+    %spritemapEntry(0, $1FB, $0E, 0, 0, 3, 1, $176)
+    %spritemapEntry(1, $1EB, $0E, 0, 0, 3, 1, $186)
+    %spritemapEntry(1, $1FB, $FE, 0, 0, 3, 1, $184)
+    %spritemapEntry(1, $1F3, $FE, 0, 0, 3, 1, $183)
 
 Spritemaps_MotherBrain_13:
-    dw $0004,$0010                                                       ;A9A890;
-    db $00                                                               ;A9A894;
-    dw $3390,$0008                                                       ;A9A895;
-    db $00                                                               ;A9A899;
-    dw $3380,$81F8                                                       ;A9A89A;
-    db $F8                                                               ;A9A89E;
-    dw $338E,$81E8                                                       ;A9A89F;
-    db $F8                                                               ;A9A8A3;
-    dw $338C                                                             ;A9A8A4;
+    dw $0004                                                             ;A9A890;
+    %spritemapEntry(0, $10, $00, 0, 0, 3, 1, $190)
+    %spritemapEntry(0, $08, $00, 0, 0, 3, 1, $180)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 3, 1, $18E)
+    %spritemapEntry(1, $1E8, $F8, 0, 0, 3, 1, $18C)
 
 Spritemaps_MotherBrain_14:
-    dw $0009,$001C                                                       ;A9A8A6;
-    db $1C                                                               ;A9A8AA;
-    dw $277B,$8014                                                       ;A9A8AB;
-    db $0C                                                               ;A9A8AF;
-    dw $275A,$800C                                                       ;A9A8B0;
-    db $14                                                               ;A9A8B4;
-    dw $2769,$000C                                                       ;A9A8B5;
-    db $0C                                                               ;A9A8B9;
-    dw $2766,$0014                                                       ;A9A8BA;
-    db $04                                                               ;A9A8BE;
-    dw $E778,$0004                                                       ;A9A8BF;
-    db $14                                                               ;A9A8C3;
-    dw $2778,$01FC                                                       ;A9A8C4;
-    db $FC                                                               ;A9A8C8;
-    dw $2747,$81FC                                                       ;A9A8C9;
-    db $04                                                               ;A9A8CD;
-    dw $2757,$8004                                                       ;A9A8CE;
-    db $FC                                                               ;A9A8D2;
-    dw $2748                                                             ;A9A8D3;
+    dw $0009                                                             ;A9A8A6;
+    %spritemapEntry(0, $1C, $1C, 0, 0, 2, 3, $17B)
+    %spritemapEntry(1, $14, $0C, 0, 0, 2, 3, $15A)
+    %spritemapEntry(1, $0C, $14, 0, 0, 2, 3, $169)
+    %spritemapEntry(0, $0C, $0C, 0, 0, 2, 3, $166)
+    %spritemapEntry(0, $14, $04, 1, 1, 2, 3, $178)
+    %spritemapEntry(0, $04, $14, 0, 0, 2, 3, $178)
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 3, $147)
+    %spritemapEntry(1, $1FC, $04, 0, 0, 2, 3, $157)
+    %spritemapEntry(1, $04, $FC, 0, 0, 2, 3, $148)
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemaps_MotherBrain_A9A8D5:
-    dw $0006,$801D                                                       ;A9A8D5;
-    db $03                                                               ;A9A8D9;
-    dw $275E,$801D                                                       ;A9A8DA;
-    db $0B                                                               ;A9A8DE;
-    dw $276E,$800D                                                       ;A9A8DF;
-    db $0B                                                               ;A9A8E3;
-    dw $2762,$800D                                                       ;A9A8E4;
-    db $FB                                                               ;A9A8E8;
-    dw $2760,$81FD                                                       ;A9A8E9;
-    db $03                                                               ;A9A8ED;
-    dw $276C,$81FD                                                       ;A9A8EE;
-    db $FB                                                               ;A9A8F2;
-    dw $275C                                                             ;A9A8F3;
+    dw $0006                                                             ;A9A8D5;
+    %spritemapEntry(1, $1D, $03, 0, 0, 2, 3, $15E)
+    %spritemapEntry(1, $1D, $0B, 0, 0, 2, 3, $16E)
+    %spritemapEntry(1, $0D, $0B, 0, 0, 2, 3, $162)
+    %spritemapEntry(1, $0D, $FB, 0, 0, 2, 3, $160)
+    %spritemapEntry(1, $1FD, $03, 0, 0, 2, 3, $16C)
+    %spritemapEntry(1, $1FD, $FB, 0, 0, 2, 3, $15C)
 
 UNUSED_Spritemaps_MotherBrain_A9A8F5:
-    dw $0008,$0028                                                       ;A9A8F5;
-    db $00                                                               ;A9A8F9;
-    dw $A777,$0028                                                       ;A9A8FA;
-    db $F8                                                               ;A9A8FE;
-    dw $2777,$8018                                                       ;A9A8FF;
-    db $00                                                               ;A9A903;
-    dw $A743,$8018                                                       ;A9A904;
-    db $F0                                                               ;A9A908;
-    dw $2743,$8010                                                       ;A9A909;
-    db $00                                                               ;A9A90D;
-    dw $A742,$8000                                                       ;A9A90E;
-    db $00                                                               ;A9A912;
-    dw $A740,$8010                                                       ;A9A913;
-    db $F0                                                               ;A9A917;
-    dw $2742,$8000                                                       ;A9A918;
-    db $F0                                                               ;A9A91C;
-    dw $2740                                                             ;A9A91D;
+    dw $0008                                                             ;A9A8F5;
+    %spritemapEntry(0, $28, $00, 1, 0, 2, 3, $177)
+    %spritemapEntry(0, $28, $F8, 0, 0, 2, 3, $177)
+    %spritemapEntry(1, $18, $00, 1, 0, 2, 3, $143)
+    %spritemapEntry(1, $18, $F0, 0, 0, 2, 3, $143)
+    %spritemapEntry(1, $10, $00, 1, 0, 2, 3, $142)
+    %spritemapEntry(1, $00, $00, 1, 0, 2, 3, $140)
+    %spritemapEntry(1, $10, $F0, 0, 0, 2, 3, $142)
+    %spritemapEntry(1, $00, $F0, 0, 0, 2, 3, $140)
 
 UNUSED_Spritemaps_MotherBrain_A9A91F:
-    dw $0006,$801D                                                       ;A9A91F;
-    db $ED                                                               ;A9A923;
-    dw $A75E,$801D                                                       ;A9A924;
-    db $E5                                                               ;A9A928;
-    dw $A76E,$800D                                                       ;A9A929;
-    db $E5                                                               ;A9A92D;
-    dw $A762,$800D                                                       ;A9A92E;
-    db $F5                                                               ;A9A932;
-    dw $A760,$81FD                                                       ;A9A933;
-    db $ED                                                               ;A9A937;
-    dw $A76C,$81FD                                                       ;A9A938;
-    db $F5                                                               ;A9A93C;
-    dw $A75C                                                             ;A9A93D;
+    dw $0006                                                             ;A9A91F;
+    %spritemapEntry(1, $1D, $ED, 1, 0, 2, 3, $15E)
+    %spritemapEntry(1, $1D, $E5, 1, 0, 2, 3, $16E)
+    %spritemapEntry(1, $0D, $E5, 1, 0, 2, 3, $162)
+    %spritemapEntry(1, $0D, $F5, 1, 0, 2, 3, $160)
+    %spritemapEntry(1, $1FD, $ED, 1, 0, 2, 3, $16C)
+    %spritemapEntry(1, $1FD, $F5, 1, 0, 2, 3, $15C)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Spritemaps_MotherBrain_15:
-    dw $0001,$81F8                                                       ;A9A93F;
-    db $F8                                                               ;A9A943;
-    dw $2764                                                             ;A9A944;
+    dw $0001                                                             ;A9A93F;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 3, $164)
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemaps_MotherBrain_A9A946:
-    dw $0002,$81F8                                                       ;A9A946;
-    db $10                                                               ;A9A94A;
-    dw $2788,$81F8                                                       ;A9A94B;
-    db $00                                                               ;A9A94F;
-    dw $2745                                                             ;A9A950;
+    dw $0002                                                             ;A9A946;
+    %spritemapEntry(1, $1F8, $10, 0, 0, 2, 3, $188)
+    %spritemapEntry(1, $1F8, $00, 0, 0, 2, 3, $145)
 
 UNUSED_Spritemaps_MotherBrain_A9A952:
-    dw $0002,$81F3                                                       ;A9A952;
-    db $10                                                               ;A9A956;
-    dw $278A,$81F7                                                       ;A9A957;
-    db $00                                                               ;A9A95B;
-    dw $2781                                                             ;A9A95C;
+    dw $0002                                                             ;A9A952;
+    %spritemapEntry(1, $1F3, $10, 0, 0, 2, 3, $18A)
+    %spritemapEntry(1, $1F7, $00, 0, 0, 2, 3, $181)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Spritemaps_MotherBrain_16:
-    dw $0004,$01FB                                                       ;A9A95E;
-    db $0E                                                               ;A9A962;
-    dw $2776,$81EB                                                       ;A9A963;
-    db $0E                                                               ;A9A967;
-    dw $2786,$81FB                                                       ;A9A968;
-    db $FE                                                               ;A9A96C;
-    dw $2784,$81F3                                                       ;A9A96D;
-    db $FE                                                               ;A9A971;
-    dw $2783                                                             ;A9A972;
+    dw $0004                                                             ;A9A95E;
+    %spritemapEntry(0, $1FB, $0E, 0, 0, 2, 3, $176)
+    %spritemapEntry(1, $1EB, $0E, 0, 0, 2, 3, $186)
+    %spritemapEntry(1, $1FB, $FE, 0, 0, 2, 3, $184)
+    %spritemapEntry(1, $1F3, $FE, 0, 0, 2, 3, $183)
 
 Spritemaps_MotherBrain_17:
-    dw $0004,$0010                                                       ;A9A974;
-    db $00                                                               ;A9A978;
-    dw $2790,$0008                                                       ;A9A979;
-    db $00                                                               ;A9A97D;
-    dw $2780,$81F8                                                       ;A9A97E;
-    db $F8                                                               ;A9A982;
-    dw $278E,$81E8                                                       ;A9A983;
-    db $F8                                                               ;A9A987;
-    dw $278C                                                             ;A9A988;
+    dw $0004                                                             ;A9A974;
+    %spritemapEntry(0, $10, $00, 0, 0, 2, 3, $190)
+    %spritemapEntry(0, $08, $00, 0, 0, 2, 3, $180)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 3, $18E)
+    %spritemapEntry(1, $1E8, $F8, 0, 0, 2, 3, $18C)
 
-ExtendedTilemaps_MotherBrain_0:
-    dw $FFFE,$2080,$0004,$2338,$2338,$31B7,$31B8,$20C0                   ;A9A98A;
-    dw $0004,$2338,$31B9,$31BA,$31BB,$2100,$0004,$2338                   ;A9A99A;
-    dw $31BC,$31BD,$31BE,$2140,$000A,$31BF,$31C0,$31C1                   ;A9A9AA;
-    dw $31C2,$31C3,$31C4,$31C5,$31C6,$31C7,$31C8,$2180                   ;A9A9BA;
-    dw $000A,$31CA,$31CB,$31CC,$31CD,$31CE,$31CF,$31D0                   ;A9A9CA;
-    dw $2338,$2338,$2338,$21C0,$000A,$31D1,$31D2,$31D3                   ;A9A9DA;
-    dw $31D4,$31D5,$31D6,$31D7,$31D8,$2338,$2338,$2200                   ;A9A9EA;
-    dw $000A,$31D9,$31DA,$31DB,$31DC,$31DD,$31DE,$31DF                   ;A9A9FA;
-    dw $31E0,$2338,$2338,$2240,$000A,$31E1,$31E2,$31E3                   ;A9AA0A;
-    dw $31E4,$31E5,$31E6,$31E7,$2338,$2338,$2338,$2280                   ;A9AA1A;
-    dw $000A,$2338,$31E8,$31E9,$31EA,$31EB,$31EC,$31ED                   ;A9AA2A;
-    dw $2338,$2338,$2338,$22C0,$0004,$2338,$2338,$31EE                   ;A9AA3A;
-    dw $31EF,$FFFF                                                       ;A9AA4A;
+
+ExtendedTilemaps_MotherBrain_0:                                          ;A9A98A;
+    dw $FFFE
+    dw $2080,$0004, $2338,$2338,$31B7,$31B8
+    dw $20C0,$0004, $2338,$31B9,$31BA,$31BB
+    dw $2100,$0004, $2338,$31BC,$31BD,$31BE
+    dw $2140,$000A, $31BF,$31C0,$31C1,$31C2,$31C3,$31C4,$31C5,$31C6,$31C7,$31C8
+    dw $2180,$000A, $31CA,$31CB,$31CC,$31CD,$31CE,$31CF,$31D0,$2338,$2338,$2338
+    dw $21C0,$000A, $31D1,$31D2,$31D3,$31D4,$31D5,$31D6,$31D7,$31D8,$2338,$2338
+    dw $2200,$000A, $31D9,$31DA,$31DB,$31DC,$31DD,$31DE,$31DF,$31E0,$2338,$2338
+    dw $2240,$000A, $31E1,$31E2,$31E3,$31E4,$31E5,$31E6,$31E7,$2338,$2338,$2338
+    dw $2280,$000A, $2338,$31E8,$31E9,$31EA,$31EB,$31EC,$31ED,$2338,$2338,$2338
+    dw $22C0,$0004, $2338,$2338,$31EE,$31EF
+    dw $FFFF
 
 if !FEATURE_KEEP_UNREFERENCED
-UNUSED_ExtendedTilemaps_MotherBrain_A9AA4E:
-    dw $FFFE,$2084,$0002,$2338,$2338,$20C2,$0003,$2338                   ;A9AA4E;
-    dw $2338,$2338,$2102,$0003,$2338,$2338,$2338,$2140                   ;A9AA5E;
-    dw $000A,$2338,$2338,$2338,$2338,$2338,$2338,$2338                   ;A9AA6E;
-    dw $2338,$2338,$2338,$2180,$0007,$2338,$2338,$2338                   ;A9AA7E;
-    dw $2338,$2338,$2338,$2338,$21C0,$0008,$2338,$2338                   ;A9AA8E;
-    dw $2338,$2338,$2338,$2338,$2338,$2338,$2200,$0008                   ;A9AA9E;
-    dw $2338,$2338,$2338,$2338,$2338,$2338,$2338,$2338                   ;A9AAAE;
-    dw $2240,$0007,$2338,$2338,$2338,$2338,$2338,$2338                   ;A9AABE;
-    dw $2338,$2282,$0006,$2338,$2338,$2338,$2338,$2338                   ;A9AACE;
-    dw $2338,$22C4,$0002,$2338,$2338,$FFFF                               ;A9AADE;
+UNUSED_ExtendedTilemaps_MotherBrain_A9AA4E:                              ;A9AA4E;
+    dw $FFFE
+    dw $2084,$0002, $2338,$2338
+    dw $20C2,$0003, $2338,$2338,$2338
+    dw $2102,$0003, $2338,$2338,$2338
+    dw $2140,$000A, $2338,$2338,$2338,$2338,$2338,$2338,$2338,$2338,$2338,$2338
+    dw $2180,$0007, $2338,$2338,$2338,$2338,$2338,$2338,$2338
+    dw $21C0,$0008, $2338,$2338,$2338,$2338,$2338,$2338,$2338,$2338
+    dw $2200,$0008, $2338,$2338,$2338,$2338,$2338,$2338,$2338,$2338
+    dw $2240,$0007, $2338,$2338,$2338,$2338,$2338,$2338,$2338
+    dw $2282,$0006, $2338,$2338,$2338,$2338,$2338,$2338
+    dw $22C4,$0002, $2338,$2338
+    dw $FFFF
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-ExtendedTilemaps_MotherBrain_1:
-    dw $FFFE,$2006,$000B,$2338,$2338,$3167,$3168,$3169                   ;A9AAEA;
-    dw $2338,$2338,$2338,$2338,$2338,$2338,$2046,$000B                   ;A9AAFA;
-    dw $2338,$316A,$316B,$316C,$316D,$316E,$2338,$2338                   ;A9AB0A;
-    dw $2338,$2338,$2338,$2086,$000B,$31B8,$316F,$3170                   ;A9AB1A;
-    dw $3171,$3172,$3173,$3174,$3186,$3187,$2338,$2338                   ;A9AB2A;
-    dw $20C6,$000B,$31BB,$3177,$3178,$3179,$317A,$317B                   ;A9AB3A;
-    dw $317C,$3188,$3189,$2338,$2338,$2106,$000B,$31BE                   ;A9AB4A;
-    dw $317F,$3180,$3181,$3182,$3183,$3184,$3185,$2338                   ;A9AB5A;
-    dw $2338,$2338,$FFFF                                                 ;A9AB6A;
+ExtendedTilemaps_MotherBrain_1:                                          ;A9AAEA;
+    dw $FFFE
+    dw $2006,$000B, $2338,$2338,$3167,$3168,$3169,$2338,$2338,$2338,$2338,$2338,$2338
+    dw $2046,$000B, $2338,$316A,$316B,$316C,$316D,$316E,$2338,$2338,$2338,$2338,$2338
+    dw $2086,$000B, $31B8,$316F,$3170,$3171,$3172,$3173,$3174,$3186,$3187,$2338,$2338
+    dw $20C6,$000B, $31BB,$3177,$3178,$3179,$317A,$317B,$317C,$3188,$3189,$2338,$2338
+    dw $2106,$000B, $31BE,$317F,$3180,$3181,$3182,$3183,$3184,$3185,$2338,$2338,$2338
+    dw $FFFF
 
-ExtendedTilemaps_MotherBrain_2:
-    dw $FFFE,$2006,$000B,$2338,$2338,$3167,$3168,$3169                   ;A9AB70;
-    dw $2338,$2338,$2338,$2338,$2338,$2338,$2046,$000B                   ;A9AB80;
-    dw $2338,$316A,$316B,$316C,$316D,$316E,$2338,$2338                   ;A9AB90;
-    dw $2338,$2338,$2338,$2086,$000B,$31B8,$316F,$3170                   ;A9ABA0;
-    dw $3171,$3172,$3173,$3174,$3175,$3176,$2338,$2338                   ;A9ABB0;
-    dw $20C6,$000B,$31BB,$3177,$3178,$3179,$317A,$317B                   ;A9ABC0;
-    dw $317C,$317D,$317E,$2338,$2338,$2106,$000B,$31BE                   ;A9ABD0;
-    dw $317F,$3180,$3181,$3182,$3183,$3184,$3185,$2338                   ;A9ABE0;
-    dw $2338,$2338,$FFFF                                                 ;A9ABF0;
+ExtendedTilemaps_MotherBrain_2:                                          ;A9AB70;
+    dw $FFFE
+    dw $2006,$000B, $2338,$2338,$3167,$3168,$3169,$2338,$2338,$2338,$2338,$2338,$2338
+    dw $2046,$000B, $2338,$316A,$316B,$316C,$316D,$316E,$2338,$2338,$2338,$2338,$2338
+    dw $2086,$000B, $31B8,$316F,$3170,$3171,$3172,$3173,$3174,$3175,$3176,$2338,$2338
+    dw $20C6,$000B, $31BB,$3177,$3178,$3179,$317A,$317B,$317C,$317D,$317E,$2338,$2338
+    dw $2106,$000B, $31BE,$317F,$3180,$3181,$3182,$3183,$3184,$3185,$2338,$2338,$2338
+    dw $FFFF
 
-ExtendedTilemaps_MotherBrain_3:
-    dw $FFFE,$2006,$0001,$2338,$200A,$0002,$318A,$318B                   ;A9ABF6;
-    dw $2018,$0002,$2338,$2338,$2046,$0001,$2338,$204A                   ;A9AC06;
-    dw $0003,$318C,$318D,$318E,$2058,$0002,$2338,$2338                   ;A9AC16;
-    dw $2086,$000B,$31B8,$318F,$3190,$3191,$3192,$3193                   ;A9AC26;
-    dw $3194,$2338,$2338,$2338,$2338,$20C6,$000B,$31BB                   ;A9AC36;
-    dw $3195,$3196,$3197,$3198,$3199,$319A,$319B,$2338                   ;A9AC46;
-    dw $2338,$2338,$2106,$0001,$31BE,$210C,$0004,$319C                   ;A9AC56;
-    dw $319D,$319E,$319F,$2118,$0002,$2338,$2338,$FFFF                   ;A9AC66;
+ExtendedTilemaps_MotherBrain_3:                                          ;A9ABF6;
+    dw $FFFE
+    dw $2006,$0001, $2338
+    dw $200A,$0002, $318A,$318B
+    dw $2018,$0002, $2338,$2338
+    dw $2046,$0001, $2338
+    dw $204A,$0003, $318C,$318D,$318E
+    dw $2058,$0002, $2338,$2338
+    dw $2086,$000B, $31B8,$318F,$3190,$3191,$3192,$3193,$3194,$2338,$2338,$2338,$2338
+    dw $20C6,$000B, $31BB,$3195,$3196,$3197,$3198,$3199,$319A,$319B,$2338,$2338,$2338
+    dw $2106,$0001, $31BE
+    dw $210C,$0004, $319C,$319D,$319E,$319F
+    dw $2118,$0002, $2338,$2338
+    dw $FFFF
 
-ExtendedTilemaps_MotherBrain_4:
-    dw $FFFE,$200A,$0003,$3167,$31A0,$31A1,$2046,$0001                   ;A9AC76;
-    dw $31B6,$204A,$0004,$31A2,$31A3,$31A4,$31A5,$2056                   ;A9AC86;
-    dw $0003,$31A6,$31A7,$31A8,$2088,$000A,$316F,$31A9                   ;A9AC96;
-    dw $31AA,$31AB,$31AC,$31AD,$31AE,$31AF,$31B0,$31B1                   ;A9ACA6;
-    dw $20C8,$0007,$3177,$3178,$3178,$31B2,$31B3,$31B4                   ;A9ACB6;
-    dw $31B5,$2106,$0001,$31BE,$210C,$0004,$319C,$319D                   ;A9ACC6;
-    dw $319E,$319F,$2118,$0002,$2338,$2338,$FFFF                         ;A9ACD6;
+ExtendedTilemaps_MotherBrain_4:                                          ;A9AC76;
+    dw $FFFE
+    dw $200A,$0003, $3167,$31A0,$31A1
+    dw $2046,$0001, $31B6
+    dw $204A,$0004, $31A2,$31A3,$31A4,$31A5
+    dw $2056,$0003, $31A6,$31A7,$31A8
+    dw $2088,$000A, $316F,$31A9,$31AA,$31AB,$31AC,$31AD,$31AE,$31AF,$31B0,$31B1
+    dw $20C8,$0007, $3177,$3178,$3178,$31B2,$31B3,$31B4,$31B5
+    dw $2106,$0001, $31BE
+    dw $210C,$0004, $319C,$319D,$319E,$319F
+    dw $2118,$0002, $2338,$2338
+    dw $FFFF
 
-ExtendedTilemaps_MotherBrain_5:
-    dw $FFFE,$200C,$0002,$3168,$3169,$2046,$0001,$2338                   ;A9ACE4;
-    dw $204A,$0004,$316B,$316C,$316D,$316E,$2056,$0003                   ;A9ACF4;
-    dw $2338,$2338,$2338,$208A,$0009,$3170,$3171,$3172                   ;A9AD04;
-    dw $3173,$3174,$3186,$3187,$2338,$2338,$20CC,$0006                   ;A9AD14;
-    dw $3179,$317A,$317B,$317C,$3188,$3189,$210C,$0004                   ;A9AD24;
-    dw $3181,$3182,$3183,$3184,$FFFF                                     ;A9AD34;
+ExtendedTilemaps_MotherBrain_5:                                          ;A9ACE4;
+    dw $FFFE
+    dw $200C,$0002, $3168,$3169
+    dw $2046,$0001, $2338
+    dw $204A,$0004, $316B,$316C,$316D,$316E
+    dw $2056,$0003, $2338,$2338,$2338
+    dw $208A,$0009, $3170,$3171,$3172,$3173,$3174,$3186,$3187,$2338,$2338
+    dw $20CC,$0006, $3179,$317A,$317B,$317C,$3188,$3189
+    dw $210C,$0004, $3181,$3182,$3183,$3184
+    dw $FFFF
 
 Spritemaps_MotherBrain_18:
-    dw $0009,$8008                                                       ;A9AD3E;
-    db $08                                                               ;A9AD42;
-    dw $21E4,$81F8                                                       ;A9AD43;
-    db $08                                                               ;A9AD47;
-    dw $21E2,$81E8                                                       ;A9AD48;
-    db $08                                                               ;A9AD4C;
-    dw $21E0,$8008                                                       ;A9AD4D;
-    db $F8                                                               ;A9AD51;
-    dw $21C4,$81F8                                                       ;A9AD52;
-    db $F8                                                               ;A9AD56;
-    dw $21C2,$81E8                                                       ;A9AD57;
-    db $F8                                                               ;A9AD5B;
-    dw $21C0,$8008                                                       ;A9AD5C;
-    db $E8                                                               ;A9AD60;
-    dw $21A4,$81F8                                                       ;A9AD61;
-    db $E8                                                               ;A9AD65;
-    dw $21A2,$81E8                                                       ;A9AD66;
-    db $E8                                                               ;A9AD6A;
-    dw $21A0                                                             ;A9AD6B;
+    dw $0009                                                             ;A9AD3E;
+    %spritemapEntry(1, $08, $08, 0, 0, 2, 0, $1E4)
+    %spritemapEntry(1, $1F8, $08, 0, 0, 2, 0, $1E2)
+    %spritemapEntry(1, $1E8, $08, 0, 0, 2, 0, $1E0)
+    %spritemapEntry(1, $08, $F8, 0, 0, 2, 0, $1C4)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $1C2)
+    %spritemapEntry(1, $1E8, $F8, 0, 0, 2, 0, $1C0)
+    %spritemapEntry(1, $08, $E8, 0, 0, 2, 0, $1A4)
+    %spritemapEntry(1, $1F8, $E8, 0, 0, 2, 0, $1A2)
+    %spritemapEntry(1, $1E8, $E8, 0, 0, 2, 0, $1A0)
 
 Spritemaps_MotherBrain_19:
-    dw $000A,$8014                                                       ;A9AD6D;
-    db $08                                                               ;A9AD71;
-    dw $21EC,$8004                                                       ;A9AD72;
-    db $08                                                               ;A9AD76;
-    dw $21EA,$81F4                                                       ;A9AD77;
-    db $08                                                               ;A9AD7B;
-    dw $21E8,$81E4                                                       ;A9AD7C;
-    db $08                                                               ;A9AD80;
-    dw $21E6,$8004                                                       ;A9AD81;
-    db $F8                                                               ;A9AD85;
-    dw $21CA,$81F4                                                       ;A9AD86;
-    db $F8                                                               ;A9AD8A;
-    dw $21C8,$81E4                                                       ;A9AD8B;
-    db $F8                                                               ;A9AD8F;
-    dw $21C6,$8004                                                       ;A9AD90;
-    db $E8                                                               ;A9AD94;
-    dw $21AA,$81F4                                                       ;A9AD95;
-    db $E8                                                               ;A9AD99;
-    dw $21A8,$81E4                                                       ;A9AD9A;
-    db $E8                                                               ;A9AD9E;
-    dw $21A6                                                             ;A9AD9F;
+    dw $000A                                                             ;A9AD6D;
+    %spritemapEntry(1, $14, $08, 0, 0, 2, 0, $1EC)
+    %spritemapEntry(1, $04, $08, 0, 0, 2, 0, $1EA)
+    %spritemapEntry(1, $1F4, $08, 0, 0, 2, 0, $1E8)
+    %spritemapEntry(1, $1E4, $08, 0, 0, 2, 0, $1E6)
+    %spritemapEntry(1, $04, $F8, 0, 0, 2, 0, $1CA)
+    %spritemapEntry(1, $1F4, $F8, 0, 0, 2, 0, $1C8)
+    %spritemapEntry(1, $1E4, $F8, 0, 0, 2, 0, $1C6)
+    %spritemapEntry(1, $04, $E8, 0, 0, 2, 0, $1AA)
+    %spritemapEntry(1, $1F4, $E8, 0, 0, 2, 0, $1A8)
+    %spritemapEntry(1, $1E4, $E8, 0, 0, 2, 0, $1A6)
 
 Spritemaps_MotherBrainTubes_0:
-    dw $000A,$0008                                                       ;A9ADA1;
-    db $E4                                                               ;A9ADA5;
-    dw $2F5D,$0008                                                       ;A9ADA6;
-    db $DC                                                               ;A9ADAA;
-    dw $2F4D,$0000                                                       ;A9ADAB;
-    db $E4                                                               ;A9ADAF;
-    dw $2F5D,$0000                                                       ;A9ADB0;
-    db $DC                                                               ;A9ADB4;
-    dw $2F4D,$C3F0                                                       ;A9ADB5;
-    db $DC                                                               ;A9ADB9;
-    dw $2F42,$01F8                                                       ;A9ADBA;
-    db $1C                                                               ;A9ADBE;
-    dw $2F51,$01F0                                                       ;A9ADBF;
-    db $1C                                                               ;A9ADC3;
-    dw $2F50,$C3F0                                                       ;A9ADC4;
-    db $FC                                                               ;A9ADC8;
-    dw $2F47,$C3F0                                                       ;A9ADC9;
-    db $EC                                                               ;A9ADCD;
-    dw $AF40,$C3F0                                                       ;A9ADCE;
-    db $0C                                                               ;A9ADD2;
-    dw $2F40                                                             ;A9ADD3;
+    dw $000A                                                             ;A9ADA1;
+    %spritemapEntry(0, $08, $E4, 0, 0, 2, 7, $15D)
+    %spritemapEntry(0, $08, $DC, 0, 0, 2, 7, $14D)
+    %spritemapEntry(0, $00, $E4, 0, 0, 2, 7, $15D)
+    %spritemapEntry(0, $00, $DC, 0, 0, 2, 7, $14D)
+    %spritemapEntry(1, $43F0, $DC, 0, 0, 2, 7, $142)
+    %spritemapEntry(0, $1F8, $1C, 0, 0, 2, 7, $151)
+    %spritemapEntry(0, $1F0, $1C, 0, 0, 2, 7, $150)
+    %spritemapEntry(1, $43F0, $FC, 0, 0, 2, 7, $147)
+    %spritemapEntry(1, $43F0, $EC, 1, 0, 2, 7, $140)
+    %spritemapEntry(1, $43F0, $0C, 0, 0, 2, 7, $140)
 
 Spritemaps_MotherBrainTubes_1:
-    dw $000A,$01F0                                                       ;A9ADD5;
-    db $E4                                                               ;A9ADD9;
-    dw $6F5D,$01F0                                                       ;A9ADDA;
-    db $DC                                                               ;A9ADDE;
-    dw $6F4D,$01F8                                                       ;A9ADDF;
-    db $E4                                                               ;A9ADE3;
-    dw $6F5D,$01F8                                                       ;A9ADE4;
-    db $DC                                                               ;A9ADE8;
-    dw $6F4D,$C200                                                       ;A9ADE9;
-    db $DC                                                               ;A9ADED;
-    dw $6F42,$0000                                                       ;A9ADEE;
-    db $1C                                                               ;A9ADF2;
-    dw $6F51,$0008                                                       ;A9ADF3;
-    db $1C                                                               ;A9ADF7;
-    dw $6F50,$C200                                                       ;A9ADF8;
-    db $FC                                                               ;A9ADFC;
-    dw $6F47,$C200                                                       ;A9ADFD;
-    db $EC                                                               ;A9AE01;
-    dw $EF40,$C200                                                       ;A9AE02;
-    db $0C                                                               ;A9AE06;
-    dw $6F40                                                             ;A9AE07;
+    dw $000A                                                             ;A9ADD5;
+    %spritemapEntry(0, $1F0, $E4, 0, 1, 2, 7, $15D)
+    %spritemapEntry(0, $1F0, $DC, 0, 1, 2, 7, $14D)
+    %spritemapEntry(0, $1F8, $E4, 0, 1, 2, 7, $15D)
+    %spritemapEntry(0, $1F8, $DC, 0, 1, 2, 7, $14D)
+    %spritemapEntry(1, $4200, $DC, 0, 1, 2, 7, $142)
+    %spritemapEntry(0, $00, $1C, 0, 1, 2, 7, $151)
+    %spritemapEntry(0, $08, $1C, 0, 1, 2, 7, $150)
+    %spritemapEntry(1, $4200, $FC, 0, 1, 2, 7, $147)
+    %spritemapEntry(1, $4200, $EC, 1, 1, 2, 7, $140)
+    %spritemapEntry(1, $4200, $0C, 0, 1, 2, 7, $140)
 
 Spritemaps_MotherBrainTubes_2:
-    dw $0008,$C3F8                                                       ;A9AE09;
-    db $E4                                                               ;A9AE0D;
-    dw $2F44,$0000                                                       ;A9AE0E;
-    db $14                                                               ;A9AE12;
-    dw $2F51,$01F8                                                       ;A9AE13;
-    db $14                                                               ;A9AE17;
-    dw $2F50,$C3F8                                                       ;A9AE18;
-    db $04                                                               ;A9AE1C;
-    dw $2F4B,$0000                                                       ;A9AE1D;
-    db $FC                                                               ;A9AE21;
-    dw $2F51,$01F8                                                       ;A9AE22;
-    db $FC                                                               ;A9AE26;
-    dw $2F50,$0000                                                       ;A9AE27;
-    db $F4                                                               ;A9AE2B;
-    dw $2F51,$01F8                                                       ;A9AE2C;
-    db $F4                                                               ;A9AE30;
-    dw $2F50                                                             ;A9AE31;
+    dw $0008                                                             ;A9AE09;
+    %spritemapEntry(1, $43F8, $E4, 0, 0, 2, 7, $144)
+    %spritemapEntry(0, $00, $14, 0, 0, 2, 7, $151)
+    %spritemapEntry(0, $1F8, $14, 0, 0, 2, 7, $150)
+    %spritemapEntry(1, $43F8, $04, 0, 0, 2, 7, $14B)
+    %spritemapEntry(0, $00, $FC, 0, 0, 2, 7, $151)
+    %spritemapEntry(0, $1F8, $FC, 0, 0, 2, 7, $150)
+    %spritemapEntry(0, $00, $F4, 0, 0, 2, 7, $151)
+    %spritemapEntry(0, $1F8, $F4, 0, 0, 2, 7, $150)
 
 Spritemaps_MotherBrainTubes_3:
-    dw $0008,$C3F8                                                       ;A9AE33;
-    db $E4                                                               ;A9AE37;
-    dw $6F44,$01F8                                                       ;A9AE38;
-    db $14                                                               ;A9AE3C;
-    dw $6F51,$0000                                                       ;A9AE3D;
-    db $14                                                               ;A9AE41;
-    dw $6F50,$C3F8                                                       ;A9AE42;
-    db $04                                                               ;A9AE46;
-    dw $2F4B,$01F8                                                       ;A9AE47;
-    db $FC                                                               ;A9AE4B;
-    dw $6F51,$0000                                                       ;A9AE4C;
-    db $FC                                                               ;A9AE50;
-    dw $6F50,$01F8                                                       ;A9AE51;
-    db $F4                                                               ;A9AE55;
-    dw $6F51,$0000                                                       ;A9AE56;
-    db $F4                                                               ;A9AE5A;
-    dw $6F50                                                             ;A9AE5B;
+    dw $0008                                                             ;A9AE33;
+    %spritemapEntry(1, $43F8, $E4, 0, 1, 2, 7, $144)
+    %spritemapEntry(0, $1F8, $14, 0, 1, 2, 7, $151)
+    %spritemapEntry(0, $00, $14, 0, 1, 2, 7, $150)
+    %spritemapEntry(1, $43F8, $04, 0, 0, 2, 7, $14B)
+    %spritemapEntry(0, $1F8, $FC, 0, 1, 2, 7, $151)
+    %spritemapEntry(0, $00, $FC, 0, 1, 2, 7, $150)
+    %spritemapEntry(0, $1F8, $F4, 0, 1, 2, 7, $151)
+    %spritemapEntry(0, $00, $F4, 0, 1, 2, 7, $150)
 
 Spritemaps_MotherBrainTubes_4:
-    dw $001A,$0000                                                       ;A9AE5D;
-    db $E0                                                               ;A9AE61;
-    dw $6F70,$01F8                                                       ;A9AE62;
-    db $E0                                                               ;A9AE66;
-    dw $2F70,$0000                                                       ;A9AE67;
-    db $D8                                                               ;A9AE6B;
-    dw $6F60,$01F8                                                       ;A9AE6C;
-    db $D8                                                               ;A9AE70;
-    dw $2F60,$0008                                                       ;A9AE71;
-    db $28                                                               ;A9AE75;
-    dw $2F6D,$0000                                                       ;A9AE76;
-    db $28                                                               ;A9AE7A;
-    dw $2F6D,$01F8                                                       ;A9AE7B;
-    db $28                                                               ;A9AE7F;
-    dw $2F6D,$01F0                                                       ;A9AE80;
-    db $28                                                               ;A9AE84;
-    dw $2F6D,$0008                                                       ;A9AE85;
-    db $20                                                               ;A9AE89;
-    dw $2F6D,$0000                                                       ;A9AE8A;
-    db $20                                                               ;A9AE8E;
-    dw $2F6D,$01F8                                                       ;A9AE8F;
-    db $20                                                               ;A9AE93;
-    dw $2F6D,$01F0                                                       ;A9AE94;
-    db $20                                                               ;A9AE98;
-    dw $2F6D,$0008                                                       ;A9AE99;
-    db $18                                                               ;A9AE9D;
-    dw $2F6C,$0000                                                       ;A9AE9E;
-    db $18                                                               ;A9AEA2;
-    dw $2F6C,$01F8                                                       ;A9AEA3;
-    db $18                                                               ;A9AEA7;
-    dw $2F6C,$01F0                                                       ;A9AEA8;
-    db $18                                                               ;A9AEAC;
-    dw $2F6C,$C200                                                       ;A9AEAD;
-    db $F8                                                               ;A9AEB1;
-    dw $6F49,$C3F0                                                       ;A9AEB2;
-    db $F8                                                               ;A9AEB6;
-    dw $2F49,$C200                                                       ;A9AEB7;
-    db $08                                                               ;A9AEBB;
-    dw $6F46,$C3F0                                                       ;A9AEBC;
-    db $08                                                               ;A9AEC0;
-    dw $2F46,$C200                                                       ;A9AEC1;
-    db $E8                                                               ;A9AEC5;
-    dw $2F40,$C3F0                                                       ;A9AEC6;
-    db $E8                                                               ;A9AECA;
-    dw $2F40,$C200                                                       ;A9AECB;
-    db $D8                                                               ;A9AECF;
-    dw $EF4E,$C3F0                                                       ;A9AED0;
-    db $D8                                                               ;A9AED4;
-    dw $AF4E,$C200                                                       ;A9AED5;
-    db $D0                                                               ;A9AED9;
-    dw $EF5E,$C3F0                                                       ;A9AEDA;
-    db $D0                                                               ;A9AEDE;
-    dw $AF5E                                                             ;A9AEDF;
+    dw $001A                                                             ;A9AE5D;
+    %spritemapEntry(0, $00, $E0, 0, 1, 2, 7, $170)
+    %spritemapEntry(0, $1F8, $E0, 0, 0, 2, 7, $170)
+    %spritemapEntry(0, $00, $D8, 0, 1, 2, 7, $160)
+    %spritemapEntry(0, $1F8, $D8, 0, 0, 2, 7, $160)
+    %spritemapEntry(0, $08, $28, 0, 0, 2, 7, $16D)
+    %spritemapEntry(0, $00, $28, 0, 0, 2, 7, $16D)
+    %spritemapEntry(0, $1F8, $28, 0, 0, 2, 7, $16D)
+    %spritemapEntry(0, $1F0, $28, 0, 0, 2, 7, $16D)
+    %spritemapEntry(0, $08, $20, 0, 0, 2, 7, $16D)
+    %spritemapEntry(0, $00, $20, 0, 0, 2, 7, $16D)
+    %spritemapEntry(0, $1F8, $20, 0, 0, 2, 7, $16D)
+    %spritemapEntry(0, $1F0, $20, 0, 0, 2, 7, $16D)
+    %spritemapEntry(0, $08, $18, 0, 0, 2, 7, $16C)
+    %spritemapEntry(0, $00, $18, 0, 0, 2, 7, $16C)
+    %spritemapEntry(0, $1F8, $18, 0, 0, 2, 7, $16C)
+    %spritemapEntry(0, $1F0, $18, 0, 0, 2, 7, $16C)
+    %spritemapEntry(1, $4200, $F8, 0, 1, 2, 7, $149)
+    %spritemapEntry(1, $43F0, $F8, 0, 0, 2, 7, $149)
+    %spritemapEntry(1, $4200, $08, 0, 1, 2, 7, $146)
+    %spritemapEntry(1, $43F0, $08, 0, 0, 2, 7, $146)
+    %spritemapEntry(1, $4200, $E8, 0, 0, 2, 7, $140)
+    %spritemapEntry(1, $43F0, $E8, 0, 0, 2, 7, $140)
+    %spritemapEntry(1, $4200, $D8, 1, 1, 2, 7, $14E)
+    %spritemapEntry(1, $43F0, $D8, 1, 0, 2, 7, $14E)
+    %spritemapEntry(1, $4200, $D0, 1, 1, 2, 7, $15E)
+    %spritemapEntry(1, $43F0, $D0, 1, 0, 2, 7, $15E)
+
 
 Function_MBBody_Phase3_DeathSequence_MoveToBackOfRoom:
     LDA.W $0F86                                                          ;A9AEE1;
@@ -5353,24 +4960,32 @@ GenerateExplosionsAroundMotherBrainBody:
     JSL.L QueueSound_Lib3_Max3                                           ;A9B094;
     RTS                                                                  ;A9B098;
 
-
-.XOffset:
+  .XOffset:
     dw $0024                                                             ;A9B099;
+  .YOffset:
+    dw $FFDB                                                             ;A9B09B;
+    dw              $FFED,$FFF1, $FFFC,$000D, $001D,$0019
+    dw $0011,$FFC9, $001E,$FFEA, $FFFD,$FFFB, $0000,$0028
+    dw $0034,$FFDE, $FFFD,$FFF1, $000C,$0013, $0019,$002C
+    dw $0004,$FFD5, $FFF4,$FFEA, $000D,$FFFE, $FFF8,$0034
+    dw $FFFE,$FFDF, $000A,$FFF6, $FFF2,$0010, $0006,$003B
+    dw $0014,$FFD7, $0004,$FFEA, $FFEC,$0003, $FFE5,$0039
+    dw $000A,$FFE1, $FFEC,$FFF8, $0000,$0017, $001E,$003D
 
-.YOffset:
-    dw $FFDB,$FFED,$FFF1,$FFFC,$000D,$001D,$0019,$0011                   ;A9B09B;
-    dw $FFC9,$001E,$FFEA,$FFFD,$FFFB,$0000,$0028,$0034                   ;A9B0AB;
-    dw $FFDE,$FFFD,$FFF1,$000C,$0013,$0019,$002C,$0004                   ;A9B0BB;
-    dw $FFD5,$FFF4,$FFEA,$000D,$FFFE,$FFF8,$0034,$FFFE                   ;A9B0CB;
-    dw $FFDF,$000A,$FFF6,$FFF2,$0010,$0006,$003B,$0014                   ;A9B0DB;
-    dw $FFD7,$0004,$FFEA,$FFEC,$0003,$FFE5,$0039,$000A                   ;A9B0EB;
-    dw $FFE1,$FFEC,$FFF8,$0000,$0017,$001E,$003D                         ;A9B0FB;
 
-MotherBrainExplosionParameters_0:
+MotherBrainExplosionParameters:; Enemy projectile parameters
+;     0: small explosion
+;     1: smoke
+;     2: big explosion
+;        _______________ 25% chance
+;       |      _________ 62.5% chance
+;       |     |      ___ 12.5% chance
+;       |     |     |
+  .0:
     dw $0000,$0001,$0002                                                 ;A9B109;
-
-MotherBrainExplosionParameters_1:
+  .1:
     dw $0001,$0001,$0001                                                 ;A9B10F;
+
 
 Function_MBBody_Phase3_DeathSequence_RealizeDecapitation:
     LDA.W #InstList_MotherBrainHead_Decapitated_0                        ;A9B115;
@@ -5692,9 +5307,9 @@ GenerateEscapeDoorExplosion:
 
 .data0:
     dw $0008                                                             ;A9B393;
-
 .data1:
-    dw $006C,$0018,$0080,$0009,$0090,$0018,$0074                         ;A9B395;
+    dw       $006C                                                       ;A9B395;
+    dw $0018,$0080, $0009,$0090, $0018,$0074
 
 ExplodeMotherBrainEscapeDoor:
     LDA.W #$0000                                                         ;A9B3A3;
@@ -5762,16 +5377,29 @@ MotherBrain_vs_Samus_CollisionDetection:
     RTS                                                                  ;A9B426;
 
 
+; Used to detect collision with Samus
+
+; Hitbox format is:
+;      ________________________ Number of entries
+;     |      __________________ Left offset
+;     |     |     _____________ Top offset
+;     |     |    |     ________ Right offset
+;     |     |    |    |     ___ Bottom offset
+;     |     |    |    |    |
+;     nnnn, llll,tttt,rrrr,bbbb, ...
 HitboxDefinitions_MotherBrainBody:
-    dw $0002,$FFE0,$FFE8,$002A,$0038,$FFE8,$FFD6,$001C                   ;A9B427;
-    dw $FFE7                                                             ;A9B437;
+    dw $0002                                                             ;A9B427;
+    dw $FFE0,$FFE8,$002A,$0038
+    dw $FFE8,$FFD6,$001C,$FFE7
 
 HitboxDefinitions_MotherBrainHead:
-    dw $0002,$FFE8,$FFEA,$0016,$0000,$FFEA,$0001,$0010                   ;A9B439;
-    dw $0014                                                             ;A9B449;
+    dw $0002                                                             ;A9B439;
+    dw $FFE8,$FFEA,$0016,$0000
+    dw $FFEA,$0001,$0010,$0014
 
 HitboxDefinitions_MotherBrainNeck:
-    dw $0001,$FFF8,$FFF8,$0008,$0008                                     ;A9B44B;
+    dw $0001                                                             ;A9B44B;
+    dw $FFF8,$FFF8,$0008,$0008
 
 MotherBrainPart_vs_Samus_CollisionDetection:
     LDA.W $0000,X                                                        ;A9B455;
@@ -5917,8 +5545,15 @@ EnemyShot_MotherBrainHead:
     RTL                                                                  ;A9B545;
 
 
-.projectileType:
-    db $00,$01,$01,$00,$00,$00,$00,$00                                   ;A9B546;
+.projectileType:                                                         ;A9B546;
+    db $00 ; Beam
+    db $01 ; Missile
+    db $01 ; Super missile
+    db $00 ; Power bomb
+    db $00 ; Unused
+    db $00 ; Bomb
+    db $00 ; Unused
+    db $00 ; Beam explosion
 
 .notFirstPhase:
     JSR.W MotherBrainShotReaction_Phase2_3                               ;A9B54E;
@@ -5970,9 +5605,16 @@ DetermineMotherBrainShotReactionType:
     AND.W #$00FF                                                         ;A9B59D;
     RTS                                                                  ;A9B5A0;
 
+.projectileTypes:                                                        ;A9B5A1;
+    db $02 ; Beam
+    db $01 ; Missile
+    db $01 ; Super missile
+    db $00 ; Power bomb
+    db $00 ; Unused
+    db $00 ; Bomb
+    db $00 ; Unused
+    db $00 ; Beam explosion
 
-.projectileTypes:
-    db $02,$01,$01,$00,$00,$00,$00,$00                                   ;A9B5A1;
 
 MotherBrainBeamShotReaction_Phase3:
     LDA.L $7E780E                                                        ;A9B5A9;
@@ -6153,15 +5795,18 @@ TryMotherBrainAttack_Phase2_TryAttack:
 
 
 .instListPointers:
+; Mother Brain brain instruction list pointers
     dw InstList_MotherBrainHead_Neutral_Phase2_0                         ;A9B6D4;
     dw InstList_MotherBrainHead_Attacking_4OnionRings_Phase2             ;A9B6D6;
     dw InstList_MotherBrainHead_Attacking_Laser                          ;A9B6D8;
     dw InstList_MotherBrainHead_Attacking_Bomb_Phase2                    ;A9B6DA;
 
+; RNG thresholds
 .default:
+; Default
     db $40,$80,$C0                                                       ;A9B6DC;
-
 .SamusClose:
+; Samus Y position is within 2 rows of Mother Brain's Y position + 4
     db $10,$20,$D0                                                       ;A9B6DF;
 
 DecideMotherBrainPhase2AttackStrategy:
@@ -6208,12 +5853,36 @@ DecideMotherBrainPhase2AttackStrategy:
 .return:
     RTS                                                                  ;A9B72B;
 
+.poses:                                                                  ;A9B72C;
+    dw $FFFF ; 0: Standing
+    dw $FFEF ; 1: Running
+    dw $0000 ; 2: Normal jumping
+    dw $0000 ; 3: Spin jumping
+    dw $FFFF ; 4: Morph ball - on ground
+    dw $FFFF ; 5: Crouching
+    dw $0000 ; 6: Falling
+    dw $FFFF ; 7: Unused
+    dw $0000 ; 8: Morph ball - falling
+    dw $0000 ; 9: Unused
+    dw $FFFF ; Ah: Knockback / crystal flash ending
+    dw $0000 ; Bh: Unused
+    dw $0000 ; Ch: Unused
+    dw $0000 ; Dh: Unused
+    dw $FFEF ; Eh: Turning around - on ground
+    dw $FFFF ; Fh: Crouching/standing/morphing/unmorphing transition
+    dw $FFFF ; 10h: Moonwalking
+    dw $FFFF ; 11h: Spring ball - on ground
+    dw $0000 ; 12h: Spring ball - in air
+    dw $0000 ; 13h: Spring ball - falling
+    dw $0000 ; 14h: Wall jumping
+    dw $FFEF ; 15h: Ran into a wall
+    dw $FFFF ; 16h: Grappling
+    dw $FFFF ; 17h: Turning around - jumping
+    dw $FFFF ; 18h: Turning around - falling
+    dw $FFFF ; 19h: Damage boost
+    dw $FFFF ; 1Ah: Grabbed by Draygon
+    dw $FFFF ; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
-.poses:
-    dw $FFFF,$FFEF,$0000,$0000,$FFFF,$FFFF,$0000,$FFFF                   ;A9B72C;
-    dw $0000,$0000,$FFFF,$0000,$0000,$0000,$FFEF,$FFFF                   ;A9B73C;
-    dw $FFFF,$FFFF,$0000,$0000,$0000,$FFEF,$FFFF,$FFFF                   ;A9B74C;
-    dw $FFFF,$FFFF,$FFFF,$FFFF                                           ;A9B75C;
 
 TryMotherBrainPhase2Attack_Cooldown:
     DEC.W $0FB4                                                          ;A9B764;
@@ -7092,11 +6761,28 @@ SpawnBabyMetroidCutscene:
     RTS                                                                  ;A9BE27;
 
 
+; Enemy population format is:
+; ____________________________________________ Enemy ID
+;        _____________________________________ X position
+;       |      _______________________________ Y position
+;       |     |      _________________________ Initialisation parameter (orientation in SMILE)
+;       |     |     |      ___________________ Properties (special in SMILE)
+;       |     |     |     |      _____________ Extra properties (special graphics bitset in SMILE)
+;       |     |     |     |     |      _______ Parameter 1 (speed in SMILE)
+;       |     |     |     |     |     |      _ Parameter 2 (speed2 in SMILE)
+;       |     |     |     |     |     |     |
+;       xxxx  yyyy  oooo  pppp  gggg  aaaa  bbbb
+
+;  ______ Terminator
+; |     _ Number of enemy deaths needed to clear current room
+; |    |
+; FFFF nn
 PopulationData_BabyMetroidCutscene:
     dw EnemyHeaders_BabyMetroidCutscene                                  ;A9BE28;
     dw $0180,$0040                                                       ;A9BE2A;
     dw InstList_BabyMetroid_Initial                                      ;A9BE2E;
     dw $2800,$0000,$0000,$0000                                           ;A9BE30;
+
 
 Function_MotherBrainBody_DrainedByBabyMetroid_TakenAback:
     LDA.W #$0003                                                         ;A9BE38;
@@ -7171,12 +6857,12 @@ Function_MBBody_DrainedByBabyMetroid_FiringRainbowBeam:
 .return:
     RTS                                                                  ;A9BEED;
 
-
 .walkingAnimationDelays:
     dw $0002,$0002,$0006,$0006,$0008,$0008,$000A,$000A                   ;A9BEEE;
 
 .neckAngleDeltas:
     dw $0500,$0500,$0200,$0200,$00C0,$00C0,$0040,$0040                   ;A9BEFE;
+
 
 Function_MBBody_DrainedByBabyMetroid_RainbowBeamHasRunOut:
     LDA.L $7E7850                                                        ;A9BF0E;
@@ -7327,9 +7013,9 @@ SetMotherBrainPainfulWalkingFunctionTimer:
     STA.L $7E7852                                                        ;A9C044;
     RTS                                                                  ;A9C048;
 
-
 .timers:
     dw $0010,$0010,$0020,$0020,$0030,$0030,$0040,$0040                   ;A9C049;
+
 
 Function_MotherBrainBody_Phase2_ReviveSelf_InanimateGrey:
     LDA.W #Function_MotherBrainBody_Phase2_ReviveSelf_ShowSignsOfLife    ;A9C059;
@@ -7985,9 +7671,10 @@ DecrementAmmoDueToRainbowBeam:
 .return:
     RTS                                                                  ;A9C543;
 
-
 .decrementValue:
+; Amount of ammo to decrement
     dw $0001                                                             ;A9C544;
+
 
 HandlePlayingGainingLosingIncrementalEnergySFX:
     PHA                                                                  ;A9C546;
@@ -8166,23 +7853,22 @@ MakeMotherBrainWalkBackwards:
     LDA.W MakeMotherBrainWalkBackwards_pointers,Y                        ;A9C65A;
     JSR.W SetMotherBrainBodyInstList                                     ;A9C65D;
 
-.returnNotReached:
+  .returnNotReached:
     CLC                                                                  ;A9C660;
     RTS                                                                  ;A9C661;
 
-
-.returnTargetReached:
+  .returnTargetReached:
     SEC                                                                  ;A9C662;
     RTS                                                                  ;A9C663;
 
-
-MakeMotherBrainWalkBackwards_pointers:
-    dw MakeMotherBrainWalkBackwards_pointers                             ;A9C664;
+  .pointers:
+    dw .pointers                                                         ;A9C664;
     dw InstList_MotherBrainBody_WalkingBackwards_ReallyFast              ;A9C666;
     dw InstList_MotherBrainBody_WalkingBackwards_Fast                    ;A9C668;
     dw InstList_MotherBrainBody_WalkingBackwards_Medium                  ;A9C66A;
     dw InstList_MotherBrainBody_WalkingBackwards_Slow                    ;A9C66C;
     dw InstList_MotherBrainBody_WalkingBackwards_ReallySlow              ;A9C66E;
+
 
 MakeMotherBrainStandUp:
     LDA.L $7E7804                                                        ;A9C670;
@@ -8679,6 +8365,10 @@ Function_BabyMetroidCutscene_MoveToSamus:
 
 
 BabyMetroidCutscene_MovementTable_CeilingToSamus:
+;        ____________________ Target X position (or next enemy function if $8000+)
+;       |      ______________ Target Y position
+;       |     |      ________ Acceleration divisor table index (0 is slowest acceleration)
+;       |     |     |
     dw $00A0,$0078,$0000                                                 ;A9CA24;
     dw GradduallyAccelerateTowardsPoint_1A_10                            ;A9CA2A;
     dw $0130,$007A,$0000                                                 ;A9CA2C;
@@ -8696,6 +8386,7 @@ BabyMetroidCutscene_MovementTable_CeilingToSamus:
     dw $00CB,$00B0,$0000                                                 ;A9CA5C;
     dw GradduallyAccelerateTowardsPoint_1A_8                             ;A9CA62;
     dw Function_BabyMetroidCutscene_LatchOntoSamus                       ;A9CA64;
+
 
 Function_BabyMetroidCutscene_LatchOntoSamus:
     LDA.W $0AF6                                                          ;A9CA66;
@@ -9149,14 +8840,23 @@ HandleBabyMetroidCutsceneDeathExplosions:
     JSL.L QueueSound_Lib3_Max3                                           ;A9CDF7;
     RTS                                                                  ;A9CDFB;
 
-
-.XOffsets:
+; Explosion offset table
+;        __________ X offset
+;       |      ____ Y offset
+;       |     |
+  .XOffsets:
     dw $FFE8                                                             ;A9CDFC;
-
-.YOffsets:
-    dw $FFE8,$FFEC,$0014,$0010,$FFE2,$001E,$FFFD,$000E                   ;A9CDFE;
-    dw $FFF3,$FFFE,$0012,$FFFE,$FFE0,$FFE1,$0008,$FFFC                   ;A9CE0E;
-    dw $FFF6,$0013,$0013                                                 ;A9CE1E;
+  .YOffsets:
+    dw $FFE8                                                             ;A9CDFE;
+    dw $FFEC,$0014
+    dw $0010,$FFE2
+    dw $001E,$FFFD
+    dw $000E,$FFF3
+    dw $FFFE,$0012
+    dw $FFFE,$FFE0
+    dw $FFE1,$0008
+    dw $FFFC,$FFF6
+    dw $0013,$0013
 
 HandleEnemyBlinking:
     LDA.W $0FA4,X                                                        ;A9CE24;
@@ -9361,14 +9061,10 @@ UpdateBabyMetroidCutsceneSpeedAndAngle:
 
 
 InstList_BabyMetroid_Initial:
-    dw $0010                                                             ;A9CFA2;
-    dw Spritemap_BabyMetroid_0                                           ;A9CFA4;
-    dw $0010                                                             ;A9CFA6;
-    dw Spritemap_BabyMetroid_1                                           ;A9CFA8;
-    dw $0010                                                             ;A9CFAA;
-    dw Spritemap_BabyMetroid_2                                           ;A9CFAC;
-    dw $0010                                                             ;A9CFAE;
-    dw Spritemap_BabyMetroid_1                                           ;A9CFB0;
+    dw $0010,Spritemap_BabyMetroid_0                                     ;A9CFA2;
+    dw $0010,Spritemap_BabyMetroid_1                                     ;A9CFA6;
+    dw $0010,Spritemap_BabyMetroid_2                                     ;A9CFAA;
+    dw $0010,Spritemap_BabyMetroid_1                                     ;A9CFAE;
     dw Instruction_BabyMetroid_GotoInitial                               ;A9CFB2;
 
 Instruction_BabyMetroid_GotoInitial:
@@ -9377,14 +9073,10 @@ Instruction_BabyMetroid_GotoInitial:
 
 
 InstList_BabyMetroid_DrainingMotherBrain:
-    dw $0008                                                             ;A9CFB8;
-    dw Spritemap_BabyMetroid_0                                           ;A9CFBA;
-    dw $0008                                                             ;A9CFBC;
-    dw Spritemap_BabyMetroid_1                                           ;A9CFBE;
-    dw $0005                                                             ;A9CFC0;
-    dw Spritemap_BabyMetroid_2                                           ;A9CFC2;
-    dw $0002                                                             ;A9CFC4;
-    dw Spritemap_BabyMetroid_1                                           ;A9CFC6;
+    dw $0008,Spritemap_BabyMetroid_0                                     ;A9CFB8;
+    dw $0008,Spritemap_BabyMetroid_1                                     ;A9CFBC;
+    dw $0005,Spritemap_BabyMetroid_2                                     ;A9CFC0;
+    dw $0002,Spritemap_BabyMetroid_1                                     ;A9CFC4;
     dw Instruction_BabyMetroid_GotoDrainingMotherBrain                   ;A9CFC8;
 
 Instruction_BabyMetroid_GotoDrainingMotherBrain:
@@ -9393,8 +9085,7 @@ Instruction_BabyMetroid_GotoDrainingMotherBrain:
 
 
 InstList_BabyMetroid_TookFatalBlow:
-    dw $0080                                                             ;A9CFCE;
-    dw Spritemap_BabyMetroid_2                                           ;A9CFD0;
+    dw $0080,Spritemap_BabyMetroid_2                                     ;A9CFCE;
     dw Instruction_CommonA9_Sleep                                        ;A9CFD2;
 
 ProcessMotherBrainInvincibilityPalette:
@@ -9459,56 +9150,42 @@ MotherBrainPalette_WriteRoomPalette:
 
 
 InstList_RoomPalette_FirstPhaseEnded:
-    dw $0002                                                             ;A9D046;
-    dw RoomPalettes_Phase1Ended_0                                        ;A9D048;
-    dw $0002                                                             ;A9D04A;
-    dw RoomPalettes_Phase1Ended_1                                        ;A9D04C;
-    dw $0002                                                             ;A9D04E;
-    dw RoomPalettes_Phase1Ended_2                                        ;A9D050;
-    dw $0002                                                             ;A9D052;
-    dw RoomPalettes_Phase1Ended_3                                        ;A9D054;
-    dw $0002                                                             ;A9D056;
-    dw RoomPalettes_Phase1Ended_0                                        ;A9D058;
-    dw $0002                                                             ;A9D05A;
-    dw RoomPalettes_Phase1Ended_1                                        ;A9D05C;
-    dw $0002                                                             ;A9D05E;
-    dw RoomPalettes_Phase1Ended_0                                        ;A9D060;
-    dw $0002                                                             ;A9D062;
-    dw RoomPalettes_Phase1Ended_3                                        ;A9D064;
-    dw $0002                                                             ;A9D066;
-    dw RoomPalettes_Phase1Ended_1                                        ;A9D068;
-    dw $0002                                                             ;A9D06A;
-    dw RoomPalettes_Phase1Ended_0                                        ;A9D06C;
-    dw $0002                                                             ;A9D06E;
-    dw RoomPalettes_Phase1Ended_3                                        ;A9D070;
-    dw $0002                                                             ;A9D072;
-    dw RoomPalettes_Phase1Ended_2                                        ;A9D074;
-    dw $0002                                                             ;A9D076;
-    dw RoomPalettes_Phase1Ended_0                                        ;A9D078;
-    dw $0002                                                             ;A9D07A;
-    dw RoomPalettes_Phase1Ended_2                                        ;A9D07C;
+    dw $0002,RoomPalettes_Phase1Ended_0                                  ;A9D046;
+    dw $0002,RoomPalettes_Phase1Ended_1                                  ;A9D04A;
+    dw $0002,RoomPalettes_Phase1Ended_2                                  ;A9D04E;
+    dw $0002,RoomPalettes_Phase1Ended_3                                  ;A9D052;
+    dw $0002,RoomPalettes_Phase1Ended_0                                  ;A9D056;
+    dw $0002,RoomPalettes_Phase1Ended_1                                  ;A9D05A;
+    dw $0002,RoomPalettes_Phase1Ended_0                                  ;A9D05E;
+    dw $0002,RoomPalettes_Phase1Ended_3                                  ;A9D062;
+    dw $0002,RoomPalettes_Phase1Ended_1                                  ;A9D066;
+    dw $0002,RoomPalettes_Phase1Ended_0                                  ;A9D06A;
+    dw $0002,RoomPalettes_Phase1Ended_3                                  ;A9D06E;
+    dw $0002,RoomPalettes_Phase1Ended_2                                  ;A9D072;
+    dw $0002,RoomPalettes_Phase1Ended_0                                  ;A9D076;
+    dw $0002,RoomPalettes_Phase1Ended_2                                  ;A9D07A;
     dw Instruction_MotherBrain_GotoX                                     ;A9D07E;
     dw InstList_RoomPalette_FirstPhaseEnded                              ;A9D080;
 
-RoomPalettes_Phase1Ended_0:
-    dw $4A16,$3991,$2D2C,$1CA7,$20E5,$18A4,$1083,$0841                   ;A9D082;
-    dw $0000,$0000,$02DF,$0000,$0802,$5294,$39CE,$2108                   ;A9D092;
-    dw $1084,$0019,$0012,$5C00,$4000,$1084,$197F,$7FFF                   ;A9D0A2;
 
-RoomPalettes_Phase1Ended_1:
-    dw $4EB9,$4656,$3E12,$31CF,$35EE,$2DCD,$29AC,$258B                   ;A9D0B2;
-    dw $1D4A,$1D4A,$1F3F,$1D4A,$254C,$3DEF,$2D6B,$18C6                   ;A9D0C2;
-    dw $0C63,$0013,$000E,$4400,$3000,$0C63,$1517,$5EF7                   ;A9D0D2;
+; Line 0: Room background (BG1/2 palette 3 colours 4..Fh)
+; Line 1: Room level graphics (BG1/2 palette 5/7 colours 3..Eh)
+RoomPalettes_Phase1Ended_0:                                              ;A9D082;
+    dw $4A16,$3991,$2D2C,$1CA7,$20E5,$18A4,$1083,$0841,$0000,$0000,$02DF,$0000
+    dw $0802,$5294,$39CE,$2108,$1084,$0019,$0012,$5C00,$4000,$1084,$197F,$7FFF
 
-RoomPalettes_Phase1Ended_2:
-    dw $575C,$4F3A,$4B19,$46D7,$46F6,$46D6,$42D6,$3EB5                   ;A9D0E2;
-    dw $3EB5,$3EB5,$3F9F,$3EB5,$3EB5,$294A,$1CE7,$1084                   ;A9D0F2;
-    dw $0842,$000D,$0009,$3000,$2000,$0842,$0CD0,$4210                   ;A9D102;
+RoomPalettes_Phase1Ended_1:                                              ;A9D0B2;
+    dw $4EB9,$4656,$3E12,$31CF,$35EE,$2DCD,$29AC,$258B,$1D4A,$1D4A,$1F3F,$1D4A
+    dw $254C,$3DEF,$2D6B,$18C6,$0C63,$0013,$000E,$4400,$3000,$0C63,$1517,$5EF7
 
-RoomPalettes_Phase1Ended_3:
-    dw $5BFF,$5BFF,$5BFF,$5BFF,$5BFF,$5BFF,$5BFF,$5BFF                   ;A9D112;
-    dw $5BFF,$5BFF,$5BFF,$5BFF,$5BFF,$14A5,$1084,$0842                   ;A9D122;
-    dw $0421,$0006,$0005,$1800,$1000,$0421,$0868,$2108                   ;A9D132;
+RoomPalettes_Phase1Ended_2:                                              ;A9D0E2;
+    dw $575C,$4F3A,$4B19,$46D7,$46F6,$46D6,$42D6,$3EB5,$3EB5,$3EB5,$3F9F,$3EB5
+    dw $3EB5,$294A,$1CE7,$1084,$0842,$000D,$0009,$3000,$2000,$0842,$0CD0,$4210
+
+RoomPalettes_Phase1Ended_3:                                              ;A9D112;
+    dw $5BFF,$5BFF,$5BFF,$5BFF,$5BFF,$5BFF,$5BFF,$5BFF,$5BFF,$5BFF,$5BFF,$5BFF
+    dw $5BFF,$14A5,$1084,$0842,$0421,$0006,$0005,$1800,$1000,$0421,$0868,$2108
+
 
 UNSUED_SetInvalidRoomPaletteInstructionList_A9D142:
     LDA.W #MotherBrainPalettes_TransitionToGrey                          ;A9D142;
@@ -9698,17 +9375,25 @@ HandleMotherBrainHeadPalette:
     dw .normalPaletteSet                                                 ;A9D260;
     dw .chargingLaserPaletteSet                                          ;A9D262;
 
-.normalPaletteSet:
-    dw $2EDF,$019B,$008E,$0006,$269F,$0159,$004C,$0004                   ;A9D264;
-    dw $1E5D,$0117,$000A,$0002,$161B,$00D5,$0008,$0000                   ;A9D274;
-    dw $161B,$00D5,$0008,$0000,$1E5D,$0117,$000A,$0002                   ;A9D284;
-    dw $269F,$0159,$004C,$0004,$2EDF,$019B,$008E,$0006                   ;A9D294;
+.normalPaletteSet:                                                       ;A9D264;
+    dw $2EDF,$019B,$008E, $0006
+    dw $269F,$0159,$004C, $0004
+    dw $1E5D,$0117,$000A, $0002
+    dw $161B,$00D5,$0008, $0000
+    dw $161B,$00D5,$0008, $0000
+    dw $1E5D,$0117,$000A, $0002
+    dw $269F,$0159,$004C, $0004
+    dw $2EDF,$019B,$008E, $0006
 
-.chargingLaserPaletteSet:
-    dw $269F,$0159,$004C,$0004,$229F,$0179,$008E,$0067                   ;A9D2A4;
-    dw $1A9F,$01BA,$00F1,$00CB,$16BF,$01FB,$0153,$012E                   ;A9D2B4;
-    dw $16BF,$01FB,$0153,$012E,$1A9F,$01BA,$00F1,$00CB                   ;A9D2C4;
-    dw $229F,$0179,$008E,$0067,$269F,$0159,$004C,$0004                   ;A9D2D4;
+.chargingLaserPaletteSet:                                                ;A9D2A4;
+    dw $269F,$0159,$004C, $0004
+    dw $229F,$0179,$008E, $0067
+    dw $1A9F,$01BA,$00F1, $00CB
+    dw $16BF,$01FB,$0153, $012E
+    dw $16BF,$01FB,$0153, $012E
+    dw $1A9F,$01BA,$00F1, $00CB
+    dw $229F,$0179,$008E, $0067
+    dw $269F,$0159,$004C, $0004
 
 WriteAColorsFromYtoColorIndexX:
     STA.B $12                                                            ;A9D2E4;
@@ -10051,35 +9736,43 @@ ProcessCorpseTorizoRottingVRAMTransfers:
     RTS                                                                  ;A9D548;
 
 
-.size0:
+; Corpse rotting VRAM transfers
+;                        __________________ Size
+;                       |     _____________ Source bank * 100h
+;                       |    |     ________ Source address
+;                       |    |    |     ___ VRAM address
+;                       |    |    |    |
+  .size0:
     dw $00C0                                                             ;A9D549;
+  .bank0:
+    dw       $7E00                                                       ;A9D54B;
+  .src0:
+    dw             $2060                                                 ;A9D54D;
+  .dest0:
+    dw                   $7090                                           ;A9D54F;
+    dw $00C0,$7E00,$21A0,$7190
+    dw $0100,$7E00,$22C0,$7280
+    dw $0100,$7E00,$2400,$7380
+    dw $0100,$7E00,$2540,$7480
+    dw $0100,$7E00,$2680,$7580
+    dw $0120,$7E00,$9620,$7100
+    dw $0000
 
-.bank0:
-    dw $7E00                                                             ;A9D54B;
-
-.src0:
-    dw $2060                                                             ;A9D54D;
-
-.dest0:
-    dw $7090,$00C0,$7E00,$21A0,$7190,$0100,$7E00,$22C0                   ;A9D54F;
-    dw $7280,$0100,$7E00,$2400,$7380,$0100,$7E00,$2540                   ;A9D55F;
-    dw $7480,$0100,$7E00,$2680,$7580,$0120,$7E00,$9620                   ;A9D56F;
-    dw $7100,$0000                                                       ;A9D57F;
-
-.size1:
+  .size1:
     dw $0100                                                             ;A9D583;
-
-.bank1:
-    dw $7E00                                                             ;A9D585;
-
-.src1:
-    dw $27C0                                                             ;A9D587;
-
-.dest1:
-    dw $7680,$0100,$7E00,$2900,$7780,$0100,$7E00,$2A40                   ;A9D589;
-    dw $7880,$0120,$7E00,$2B60,$7970,$0140,$7E00,$2C80                   ;A9D599;
-    dw $7A60,$0140,$7E00,$2DC0,$7B60,$0100,$7E00,$9500                   ;A9D5A9;
-    dw $7000,$0000                                                       ;A9D5B9;
+  .bank1:
+    dw       $7E00                                                       ;A9D585;
+  .src1:
+    dw             $27C0                                                 ;A9D587;
+  .dest1:
+    dw                   $7680                                           ;A9D589;
+    dw $0100,$7E00,$2900,$7780
+    dw $0100,$7E00,$2A40,$7880
+    dw $0120,$7E00,$2B60,$7970
+    dw $0140,$7E00,$2C80,$7A60
+    dw $0140,$7E00,$2DC0,$7B60
+    dw $0100,$7E00,$9500,$7000
+    dw $0000
 
 CorpseRottingRotEntryFinishedHook_CorpseTorizo:
     PHX                                                                  ;A9D5BD;
@@ -10156,7 +9849,6 @@ CopyLineOfSandHeapTileData:
     PLB                                                                  ;A9D67A;
     RTS                                                                  ;A9D67B;
 
-
 .destOffsets:
     dw $0000,$0002,$0004,$0006,$0008,$000A,$000C,$000E                   ;A9D67C;
     dw $0120,$0122,$0124,$0126,$0128,$012A,$012C,$012E                   ;A9D68C;
@@ -10165,86 +9857,63 @@ CopyLineOfSandHeapTileData:
     dw $0000,$0002,$0004,$0006,$0008,$000A,$000C,$000E                   ;A9D69C;
     dw $0200,$0202,$0204,$0206,$0208,$020A,$020C,$020E                   ;A9D6AC;
 
+
 Palette_CorpseTorizo:
     dw $3800,$4F38,$3A52,$0CA5,$0042,$42D5,$2DEF,$218B                   ;A9D6BC;
     dw $1528,$4F38,$42B4,$3631,$29CD,$1949,$0CC6,$0042                   ;A9D6CC;
 
+
 InstList_CorpseTorizo:
-    dw $0001                                                             ;A9D6DC;
-    dw Spritemaps_CorpseTorizo                                           ;A9D6DE;
+    dw $0001,Spritemaps_CorpseTorizo                                     ;A9D6DC;
     dw Instruction_Common_Sleep                                          ;A9D6E0;
 
+
 Spritemaps_CorpseTorizo:
-    dw $0019,$01E8                                                       ;A9D6E2;
-    db $14                                                               ;A9D6E6;
-    dw $2397,$C218                                                       ;A9D6E7;
-    db $CC                                                               ;A9D6EB;
-    dw $230D,$C208                                                       ;A9D6EC;
-    db $CC                                                               ;A9D6F0;
-    dw $230B,$C3F8                                                       ;A9D6F1;
-    db $CC                                                               ;A9D6F5;
-    dw $2309,$C220                                                       ;A9D6F6;
-    db $DC                                                               ;A9D6FA;
-    dw $232E,$C210                                                       ;A9D6FB;
-    db $DC                                                               ;A9D6FF;
-    dw $232C,$C200                                                       ;A9D700;
-    db $DC                                                               ;A9D704;
-    dw $232A,$C3F0                                                       ;A9D705;
-    db $DC                                                               ;A9D709;
-    dw $2328,$C220                                                       ;A9D70A;
-    db $EC                                                               ;A9D70E;
-    dw $234E,$C210                                                       ;A9D70F;
-    db $EC                                                               ;A9D713;
-    dw $234C,$C200                                                       ;A9D714;
-    db $EC                                                               ;A9D718;
-    dw $234A,$C3F0                                                       ;A9D719;
-    db $EC                                                               ;A9D71D;
-    dw $2348,$C220                                                       ;A9D71E;
-    db $FC                                                               ;A9D722;
-    dw $236E,$C210                                                       ;A9D723;
-    db $FC                                                               ;A9D727;
-    dw $236C,$C200                                                       ;A9D728;
-    db $FC                                                               ;A9D72C;
-    dw $236A,$C3F0                                                       ;A9D72D;
-    db $FC                                                               ;A9D731;
-    dw $2368,$C220                                                       ;A9D732;
-    db $0C                                                               ;A9D736;
-    dw $238E,$C210                                                       ;A9D737;
-    db $0C                                                               ;A9D73B;
-    dw $238C,$C200                                                       ;A9D73C;
-    db $0C                                                               ;A9D740;
-    dw $238A,$C3F0                                                       ;A9D741;
-    db $0C                                                               ;A9D745;
-    dw $2388,$C220                                                       ;A9D746;
-    db $1C                                                               ;A9D74A;
-    dw $23AE,$C210                                                       ;A9D74B;
-    db $1C                                                               ;A9D74F;
-    dw $23AC,$C200                                                       ;A9D750;
-    db $1C                                                               ;A9D754;
-    dw $23AA,$C3F0                                                       ;A9D755;
-    db $1C                                                               ;A9D759;
-    dw $23A8,$C3E0                                                       ;A9D75A;
-    db $1C                                                               ;A9D75E;
-    dw $23A6                                                             ;A9D75F;
+    dw $0019                                                             ;A9D6E2;
+    %spritemapEntry(0, $1E8, $14, 0, 0, 2, 1, $197)
+    %spritemapEntry(1, $4218, $CC, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $4208, $CC, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43F8, $CC, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $4220, $DC, 0, 0, 2, 1, $12E)
+    %spritemapEntry(1, $4210, $DC, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $4200, $DC, 0, 0, 2, 1, $12A)
+    %spritemapEntry(1, $43F0, $DC, 0, 0, 2, 1, $128)
+    %spritemapEntry(1, $4220, $EC, 0, 0, 2, 1, $14E)
+    %spritemapEntry(1, $4210, $EC, 0, 0, 2, 1, $14C)
+    %spritemapEntry(1, $4200, $EC, 0, 0, 2, 1, $14A)
+    %spritemapEntry(1, $43F0, $EC, 0, 0, 2, 1, $148)
+    %spritemapEntry(1, $4220, $FC, 0, 0, 2, 1, $16E)
+    %spritemapEntry(1, $4210, $FC, 0, 0, 2, 1, $16C)
+    %spritemapEntry(1, $4200, $FC, 0, 0, 2, 1, $16A)
+    %spritemapEntry(1, $43F0, $FC, 0, 0, 2, 1, $168)
+    %spritemapEntry(1, $4220, $0C, 0, 0, 2, 1, $18E)
+    %spritemapEntry(1, $4210, $0C, 0, 0, 2, 1, $18C)
+    %spritemapEntry(1, $4200, $0C, 0, 0, 2, 1, $18A)
+    %spritemapEntry(1, $43F0, $0C, 0, 0, 2, 1, $188)
+    %spritemapEntry(1, $4220, $1C, 0, 0, 2, 1, $1AE)
+    %spritemapEntry(1, $4210, $1C, 0, 0, 2, 1, $1AC)
+    %spritemapEntry(1, $4200, $1C, 0, 0, 2, 1, $1AA)
+    %spritemapEntry(1, $43F0, $1C, 0, 0, 2, 1, $1A8)
+    %spritemapEntry(1, $43E0, $1C, 0, 0, 2, 1, $1A6)
 
 Spritemaps_CorpseTorizo_SandHeap:
-    dw $0005,$0018                                                       ;A9D761;
-    db $FE                                                               ;A9D765;
-    dw $2318,$C208                                                       ;A9D766;
-    db $F6                                                               ;A9D76A;
-    dw $2306,$C3F8                                                       ;A9D76B;
-    db $F6                                                               ;A9D76F;
-    dw $2304,$C3E8                                                       ;A9D770;
-    db $F6                                                               ;A9D774;
-    dw $2302,$C3D8                                                       ;A9D775;
-    db $F6                                                               ;A9D779;
-    dw $2300                                                             ;A9D77A;
+    dw $0005                                                             ;A9D761;
+    %spritemapEntry(0, $18, $FE, 0, 0, 2, 1, $118)
+    %spritemapEntry(1, $4208, $F6, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43F8, $F6, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43E8, $F6, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43D8, $F6, 0, 0, 2, 1, $100)
+
 
 HitboxDefinition_CorpseTorizo:
-    dw $0007,$FFE1,$0025,$FFF5,$002B,$0010,$0025,$0026                   ;A9D77C;
-    dw $002B,$FFE8,$0012,$FFF3,$0024,$000B,$001A,$0019                   ;A9D78C;
-    dw $0024,$FFF6,$FFE2,$0010,$0018,$FFF9,$FFD4,$0022                   ;A9D79C;
-    dw $FFE1,$0011,$FFE1,$0028,$FFF9                                     ;A9D7AC;
+    dw $0007                                                             ;A9D77C;
+    dw $FFE1,$0025,$FFF5,$002B
+    dw $0010,$0025,$0026,$002B
+    dw $FFE8,$0012,$FFF3,$0024
+    dw $000B,$001A,$0019,$0024
+    dw $FFF6,$FFE2,$0010,$0018
+    dw $FFF9,$FFD4,$0022,$FFE1
+    dw $0011,$FFE1,$0028,$FFF9
 
 InitAI_CorpseSidehopper:
     LDX.W $0E54                                                          ;A9D7B6;
@@ -10325,11 +9994,13 @@ InitAI_CorpseZoomer:
 
 
 .instListPointers:
+; Enemy instruction list pointers
     dw InstList_CorpseZoomer_Param1_0                                    ;A9D86A;
     dw InstList_CorpseZoomer_Param1_2                                    ;A9D86C;
     dw InstList_CorpseZoomer_Param1_4                                    ;A9D86E;
 
 .corpseRottingDefinitionPointers:
+; Corpse rotting definition pointers
     dw CorpseRottingDefinitions_Zoomer_Param1_0                          ;A9D870;
     dw CorpseRottingDefinitions_Zoomer_Param1_2                          ;A9D872;
     dw CorpseRottingDefinitions_Zoomer_Param1_4                          ;A9D874;
@@ -10350,10 +10021,12 @@ InitAI_CorpseRipper:
 
 
 .instListPointers:
+; Enemy instruction list pointers
     dw InstList_CorpseRipper_Param1_0                                    ;A9D897;
     dw InstList_CorpseRipper_Param1_2                                    ;A9D899;
 
 .corpseRottingDefinitionPointers:
+; Corpse rotting definition pointers
     dw CorpseRottingDefinitions_Ripper_Param1_0                          ;A9D89B;
     dw CorpseRottingDefinitions_Ripper_Param1_2                          ;A9D89D;
 
@@ -10373,11 +10046,13 @@ InitAI_CorpseSkree:
 
 
 .instListPointers:
+; Enemy instruction list pointers
     dw InstList_CorpseSkree_Param1_0                                     ;A9D8C0;
     dw InstList_CorpseSkree_Param1_2                                     ;A9D8C2;
     dw InstList_CorpseSkree_Param1_4                                     ;A9D8C4;
 
 .corpseRottingDefinitionPointers:
+; Corpse rotting definition pointers
     dw CorpseRottingDefinitions_Skree_Param1_0                           ;A9D8C6;
     dw CorpseRottingDefinitions_Skree_Param1_2                           ;A9D8C8;
     dw CorpseRottingDefinitions_Skree_Param1_4                           ;A9D8CA;
@@ -10457,12 +10132,12 @@ Function_CorpseSidehopper_Idling:
 .return:
     RTS                                                                  ;A9D950;
 
-
+; Hop initial velocities
 .YVelocity:
     dw $FE00,$FE00,$FE00,$FC00                                           ;A9D951;
-
 .XVelocity:
     dw $01C0,$0120,$0120,$0300                                           ;A9D959;
+
 
 CorpseSidehopperMovement:
     LDA.L $7E7814,X                                                      ;A9D961;
@@ -11045,6 +10720,15 @@ EnemyTouch_CorpseSidehopper:
 
 
 CorpseRottingDefinitions_Torizo:
+;                        ______________________________________ 0: Corpse rotting rot table pointer (bank $7E)
+;                       |     _________________________________ 2: Corpse rotting VRAM transfers pointer
+;                       |    |     ____________________________ 4: Corpse rotting rot entry copy function
+;                       |    |    |     _______________________ 6: Corpse rotting rot entry move function
+;                       |    |    |    |     __________________ 8: Height
+;                       |    |    |    |    |     _____________ Ah: Initialisation function pointer
+;                       |    |    |    |    |    |     ________ Ch: Tile data row offsets pointer
+;                       |    |    |    |    |    |    |     ___ Eh: Corpse rotting rot entry finished hook
+;                       |    |    |    |    |    |    |    |
   .rotTablePointer:
     dw $9000                                                             ;A9DD58;
   .VRAMTransferPointer:
@@ -11063,114 +10747,114 @@ CorpseRottingDefinitions_Torizo:
     dw CorpseRottingRotEntryFinishedHook_CorpseTorizo                    ;A9DD66;
 
 CorpseRottingDefinitions_Sidehopper_Param1_0:
-    dw $9000                                                             ;A9DD68;
-    dw CorpseRottingVRAMTransferDefinitions_Sidehopper_Param1_0          ;A9DD6A;
-    dw CorpseRottingRotEntry_Copy_Sidehopper_Param1_0                    ;A9DD6C;
-    dw CorpseRottingRotEntry_Move_Sidehopper_Param1_0                    ;A9DD6E;
-    dw $0028                                                             ;A9DD70;
-    dw CorpseRottingInit_Sidehopper_Param1_0                             ;A9DD72;
-    dw CorpseRottingTileRowOffsets_Sidehopper                            ;A9DD74;
-    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DD76;
+    dw $9000                                                             ;A9DD68; 0: Corpse rotting rot table pointer (bank $7E)
+    dw CorpseRottingVRAMTransferDefinitions_Sidehopper_Param1_0          ;A9DD6A; 2: Corpse rotting VRAM transfers pointer
+    dw CorpseRottingRotEntry_Copy_Sidehopper_Param1_0                    ;A9DD6C; 4: Corpse rotting rot entry copy function
+    dw CorpseRottingRotEntry_Move_Sidehopper_Param1_0                    ;A9DD6E; 6: Corpse rotting rot entry move function
+    dw $0028                                                             ;A9DD70; 8: Height
+    dw CorpseRottingInit_Sidehopper_Param1_0                             ;A9DD72; Ah: Initialisation function pointer
+    dw CorpseRottingTileRowOffsets_Sidehopper                            ;A9DD74; Ch: Tile data row offsets pointer
+    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DD76; Eh: Corpse rotting rot entry finished hook
 
 CorpseRottingDefinitions_Sidehopper_Param1_2:
-    dw $90A0                                                             ;A9DD78;
-    dw CorpseRottingVRAMTransferDefinitions_Sidehopper_Param1_2          ;A9DD7A;
-    dw CorpseRottingRotEntry_Copy_Sidehopper_Param1_2                    ;A9DD7C;
-    dw CorpseRottingRotEntry_Move_Sidehopper_Param1_2                    ;A9DD7E;
-    dw $0028                                                             ;A9DD80;
-    dw CorpseRottingInit_Sidehopper_Param1_2                             ;A9DD82;
-    dw CorpseRottingTileRowOffsets_Sidehopper                            ;A9DD84;
-    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DD86;
+    dw $90A0                                                             ;A9DD78; 0: Corpse rotting rot table pointer (bank $7E)
+    dw CorpseRottingVRAMTransferDefinitions_Sidehopper_Param1_2          ;A9DD7A; 2: Corpse rotting VRAM transfers pointer
+    dw CorpseRottingRotEntry_Copy_Sidehopper_Param1_2                    ;A9DD7C; 4: Corpse rotting rot entry copy function
+    dw CorpseRottingRotEntry_Move_Sidehopper_Param1_2                    ;A9DD7E; 6: Corpse rotting rot entry move function
+    dw $0028                                                             ;A9DD80; 8: Height
+    dw CorpseRottingInit_Sidehopper_Param1_2                             ;A9DD82; Ah: Initialisation function pointer
+    dw CorpseRottingTileRowOffsets_Sidehopper                            ;A9DD84; Ch: Tile data row offsets pointer
+    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DD86; Eh: Corpse rotting rot entry finished hook
 
 CorpseRottingDefinitions_Zoomer_Param1_0:
-    dw $92C0                                                             ;A9DD88;
-    dw CorpseRottingVRAMTransferDefinitions_Zoomer_Param1_0              ;A9DD8A;
-    dw CorpseRottingRotEntry_Copy_Zoomer_Param1_0                        ;A9DD8C;
-    dw CorpseRottingRotEntry_Move_Zoomer_Param1_0                        ;A9DD8E;
-    dw $0010                                                             ;A9DD90;
-    dw CorpseRottingInit_Zoomer_Param1_0                                 ;A9DD92;
-    dw CorpseRottingTileRowOffsets_Zoomer                                ;A9DD94;
-    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DD96;
+    dw $92C0                                                             ;A9DD88; 0: Corpse rotting rot table pointer (bank $7E)
+    dw CorpseRottingVRAMTransferDefinitions_Zoomer_Param1_0              ;A9DD8A; 2: Corpse rotting VRAM transfers pointer
+    dw CorpseRottingRotEntry_Copy_Zoomer_Param1_0                        ;A9DD8C; 4: Corpse rotting rot entry copy function
+    dw CorpseRottingRotEntry_Move_Zoomer_Param1_0                        ;A9DD8E; 6: Corpse rotting rot entry move function
+    dw $0010                                                             ;A9DD90; 8: Height
+    dw CorpseRottingInit_Zoomer_Param1_0                                 ;A9DD92; Ah: Initialisation function pointer
+    dw CorpseRottingTileRowOffsets_Zoomer                                ;A9DD94; Ch: Tile data row offsets pointer
+    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DD96; Eh: Corpse rotting rot entry finished hook
 
 CorpseRottingDefinitions_Zoomer_Param1_2:
-    dw $9300                                                             ;A9DD98;
-    dw CorpseRottingVRAMTransferDefinitions_Zoomer_Param1_2              ;A9DD9A;
-    dw CorpseRottingRotEntry_Copy_Zoomer_Param1_2                        ;A9DD9C;
-    dw CorpseRottingRotEntry_Move_Zoomer_Param1_2                        ;A9DD9E;
-    dw $0010                                                             ;A9DDA0;
-    dw CorpseRottingInit_Zoomer_Param1_2                                 ;A9DDA2;
-    dw CorpseRottingTileRowOffsets_Zoomer                                ;A9DDA4;
-    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DDA6;
+    dw $9300                                                             ;A9DD98; 0: Corpse rotting rot table pointer (bank $7E)
+    dw CorpseRottingVRAMTransferDefinitions_Zoomer_Param1_2              ;A9DD9A; 2: Corpse rotting VRAM transfers pointer
+    dw CorpseRottingRotEntry_Copy_Zoomer_Param1_2                        ;A9DD9C; 4: Corpse rotting rot entry copy function
+    dw CorpseRottingRotEntry_Move_Zoomer_Param1_2                        ;A9DD9E; 6: Corpse rotting rot entry move function
+    dw $0010                                                             ;A9DDA0; 8: Height
+    dw CorpseRottingInit_Zoomer_Param1_2                                 ;A9DDA2; Ah: Initialisation function pointer
+    dw CorpseRottingTileRowOffsets_Zoomer                                ;A9DDA4; Ch: Tile data row offsets pointer
+    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DDA6; Eh: Corpse rotting rot entry finished hook
 
 CorpseRottingDefinitions_Zoomer_Param1_4:
-    dw $9340                                                             ;A9DDA8;
-    dw CorpseRottingVRAMTransferDefinitions_Zoomer_Param1_4              ;A9DDAA;
-    dw CorpseRottingRotEntry_Copy_Zoomer_Param1_4                        ;A9DDAC;
-    dw CorpseRottingRotEntry_Move_Zoomer_Param1_4                        ;A9DDAE;
-    dw $0010                                                             ;A9DDB0;
-    dw CorpseRottingInit_Zoomer_Param1_4                                 ;A9DDB2;
-    dw CorpseRottingTileRowOffsets_Zoomer                                ;A9DDB4;
-    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DDB6;
+    dw $9340                                                             ;A9DDA8; 0: Corpse rotting rot table pointer (bank $7E)
+    dw CorpseRottingVRAMTransferDefinitions_Zoomer_Param1_4              ;A9DDAA; 2: Corpse rotting VRAM transfers pointer
+    dw CorpseRottingRotEntry_Copy_Zoomer_Param1_4                        ;A9DDAC; 4: Corpse rotting rot entry copy function
+    dw CorpseRottingRotEntry_Move_Zoomer_Param1_4                        ;A9DDAE; 6: Corpse rotting rot entry move function
+    dw $0010                                                             ;A9DDB0; 8: Height
+    dw CorpseRottingInit_Zoomer_Param1_4                                 ;A9DDB2; Ah: Initialisation function pointer
+    dw CorpseRottingTileRowOffsets_Zoomer                                ;A9DDB4; Ch: Tile data row offsets pointer
+    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DDB6; Eh: Corpse rotting rot entry finished hook
 
 CorpseRottingDefinitions_Ripper_Param1_0:
-    dw $9380                                                             ;A9DDB8;
-    dw CorpseRottingVRAMTransferDefinitions_Ripper_Param1_0              ;A9DDBA;
-    dw CorpseRottingRotEntry_Copy_Ripper_Param1_0                        ;A9DDBC;
-    dw CorpseRottingRotEntry_Move_Ripper_Param1_0                        ;A9DDBE;
-    dw $0010                                                             ;A9DDC0;
-    dw CorpseRottingInit_Ripper_Param1_0                                 ;A9DDC2;
-    dw CorpseRottingTileRowOffsets_Ripper                                ;A9DDC4;
-    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DDC6;
+    dw $9380                                                             ;A9DDB8; 0: Corpse rotting rot table pointer (bank $7E)
+    dw CorpseRottingVRAMTransferDefinitions_Ripper_Param1_0              ;A9DDBA; 2: Corpse rotting VRAM transfers pointer
+    dw CorpseRottingRotEntry_Copy_Ripper_Param1_0                        ;A9DDBC; 4: Corpse rotting rot entry copy function
+    dw CorpseRottingRotEntry_Move_Ripper_Param1_0                        ;A9DDBE; 6: Corpse rotting rot entry move function
+    dw $0010                                                             ;A9DDC0; 8: Height
+    dw CorpseRottingInit_Ripper_Param1_0                                 ;A9DDC2; Ah: Initialisation function pointer
+    dw CorpseRottingTileRowOffsets_Ripper                                ;A9DDC4; Ch: Tile data row offsets pointer
+    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DDC6; Eh: Corpse rotting rot entry finished hook
 
 CorpseRottingDefinitions_Ripper_Param1_2:
-    dw $93C0                                                             ;A9DDC8;
-    dw CorpseRottingVRAMTransferDefinitions_Ripper_Param1_2              ;A9DDCA;
-    dw CorpseRottingRotEntry_Copy_Ripper_Param1_2                        ;A9DDCC;
-    dw CorpseRottingRotEntry_Move_Ripper_Param1_2                        ;A9DDCE;
-    dw $0010                                                             ;A9DDD0;
-    dw CorpseRottingInit_Ripper_Param1_2                                 ;A9DDD2;
-    dw CorpseRottingTileRowOffsets_Ripper                                ;A9DDD4;
-    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DDD6;
+    dw $93C0                                                             ;A9DDC8; 0: Corpse rotting rot table pointer (bank $7E)
+    dw CorpseRottingVRAMTransferDefinitions_Ripper_Param1_2              ;A9DDCA; 2: Corpse rotting VRAM transfers pointer
+    dw CorpseRottingRotEntry_Copy_Ripper_Param1_2                        ;A9DDCC; 4: Corpse rotting rot entry copy function
+    dw CorpseRottingRotEntry_Move_Ripper_Param1_2                        ;A9DDCE; 6: Corpse rotting rot entry move function
+    dw $0010                                                             ;A9DDD0; 8: Height
+    dw CorpseRottingInit_Ripper_Param1_2                                 ;A9DDD2; Ah: Initialisation function pointer
+    dw CorpseRottingTileRowOffsets_Ripper                                ;A9DDD4; Ch: Tile data row offsets pointer
+    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DDD6; Eh: Corpse rotting rot entry finished hook
 
 CorpseRottingDefinitions_Skree_Param1_0:
-    dw $9140                                                             ;A9DDD8;
-    dw CorpseRottingVRAMTransferDefinitions_Skree_Param1_0               ;A9DDDA;
-    dw CorpseRottingRotEntry_Copy_Skree_Param1_0                         ;A9DDDC;
-    dw CorpseRottingRotEntry_Move_Skree_Param1_0                         ;A9DDDE;
-    dw $0020                                                             ;A9DDE0;
-    dw CorpseRottingInit_Skree_Param1_0                                  ;A9DDE2;
-    dw CorpseRottingTileRowOffsets_Skree                                 ;A9DDE4;
-    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DDE6;
+    dw $9140                                                             ;A9DDD8; 0: Corpse rotting rot table pointer (bank $7E)
+    dw CorpseRottingVRAMTransferDefinitions_Skree_Param1_0               ;A9DDDA; 2: Corpse rotting VRAM transfers pointer
+    dw CorpseRottingRotEntry_Copy_Skree_Param1_0                         ;A9DDDC; 4: Corpse rotting rot entry copy function
+    dw CorpseRottingRotEntry_Move_Skree_Param1_0                         ;A9DDDE; 6: Corpse rotting rot entry move function
+    dw $0020                                                             ;A9DDE0; 8: Height
+    dw CorpseRottingInit_Skree_Param1_0                                  ;A9DDE2; Ah: Initialisation function pointer
+    dw CorpseRottingTileRowOffsets_Skree                                 ;A9DDE4; Ch: Tile data row offsets pointer
+    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DDE6; Eh: Corpse rotting rot entry finished hook
 
 CorpseRottingDefinitions_Skree_Param1_2:
-    dw $91C0                                                             ;A9DDE8;
-    dw CorpseRottingVRAMTransferDefinitions_Skree_Param1_2               ;A9DDEA;
-    dw CorpseRottingRotEntry_Copy_Skree_Param1_2                         ;A9DDEC;
-    dw CorpseRottingRotEntry_Move_Skree_Param1_2                         ;A9DDEE;
-    dw $0020                                                             ;A9DDF0;
-    dw CorpseRottingInit_Skree_Param1_2                                  ;A9DDF2;
-    dw CorpseRottingTileRowOffsets_Skree                                 ;A9DDF4;
-    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DDF6;
+    dw $91C0                                                             ;A9DDE8; 0: Corpse rotting rot table pointer (bank $7E)
+    dw CorpseRottingVRAMTransferDefinitions_Skree_Param1_2               ;A9DDEA; 2: Corpse rotting VRAM transfers pointer
+    dw CorpseRottingRotEntry_Copy_Skree_Param1_2                         ;A9DDEC; 4: Corpse rotting rot entry copy function
+    dw CorpseRottingRotEntry_Move_Skree_Param1_2                         ;A9DDEE; 6: Corpse rotting rot entry move function
+    dw $0020                                                             ;A9DDF0; 8: Height
+    dw CorpseRottingInit_Skree_Param1_2                                  ;A9DDF2; Ah: Initialisation function pointer
+    dw CorpseRottingTileRowOffsets_Skree                                 ;A9DDF4; Ch: Tile data row offsets pointer
+    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DDF6; Eh: Corpse rotting rot entry finished hook
 
 CorpseRottingDefinitions_Skree_Param1_4:
-    dw $9240                                                             ;A9DDF8;
-    dw CorpseRottingVRAMTransferDefinitions_Skree_Param1_4               ;A9DDFA;
-    dw CorpseRottingRotEntry_Copy_Skree_Param1_4                         ;A9DDFC;
-    dw CorpseRottingRotEntry_Move_Skree_Param1_4                         ;A9DDFE;
-    dw $0020                                                             ;A9DE00;
-    dw CorpseRottingInit_Skree_Param1_4                                  ;A9DE02;
-    dw CorpseRottingTileRowOffsets_Skree                                 ;A9DE04;
-    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DE06;
+    dw $9240                                                             ;A9DDF8; 0: Corpse rotting rot table pointer (bank $7E)
+    dw CorpseRottingVRAMTransferDefinitions_Skree_Param1_4               ;A9DDFA; 2: Corpse rotting VRAM transfers pointer
+    dw CorpseRottingRotEntry_Copy_Skree_Param1_4                         ;A9DDFC; 4: Corpse rotting rot entry copy function
+    dw CorpseRottingRotEntry_Move_Skree_Param1_4                         ;A9DDFE; 6: Corpse rotting rot entry move function
+    dw $0020                                                             ;A9DE00; 8: Height
+    dw CorpseRottingInit_Skree_Param1_4                                  ;A9DE02; Ah: Initialisation function pointer
+    dw CorpseRottingTileRowOffsets_Skree                                 ;A9DE04; Ch: Tile data row offsets pointer
+    dw CorpseRotEntryFinishedHook_Normal                                 ;A9DE06; Eh: Corpse rotting rot entry finished hook
 
 CorpseRottingDefinitions_MotherBrain:
-    dw $9700                                                             ;A9DE08;
-    dw CorpseRottingVRAMTransferDefinitions_MotherBrain                  ;A9DE0A;
-    dw CorpseRottingRotEntry_Copy_MotherBrain                            ;A9DE0C;
-    dw CorpseRottingRotEntry_Move_MotherBrain                            ;A9DE0E;
-    dw $0030                                                             ;A9DE10;
-    dw CorpseRottingInit_MotherBrain                                     ;A9DE12;
-    dw CorpseRottingTileRowOffsets_MotherBrain                           ;A9DE14;
-    dw CorpseRottingRotEntryFinishedHook_MotherBrain                     ;A9DE16;
+    dw $9700                                                             ;A9DE08; 0: Corpse rotting rot table pointer (bank $7E)
+    dw CorpseRottingVRAMTransferDefinitions_MotherBrain                  ;A9DE0A; 2: Corpse rotting VRAM transfers pointer
+    dw CorpseRottingRotEntry_Copy_MotherBrain                            ;A9DE0C; 4: Corpse rotting rot entry copy function
+    dw CorpseRottingRotEntry_Move_MotherBrain                            ;A9DE0E; 6: Corpse rotting rot entry move function
+    dw $0030                                                             ;A9DE10; 8: Height
+    dw CorpseRottingInit_MotherBrain                                     ;A9DE12; Ah: Initialisation function pointer
+    dw CorpseRottingTileRowOffsets_MotherBrain                           ;A9DE14; Ch: Tile data row offsets pointer
+    dw CorpseRottingRotEntryFinishedHook_MotherBrain                     ;A9DE16; Eh: Corpse rotting rot entry finished hook
 
 CorpseRottingInit_Torizo:
     PHB                                                                  ;A9DE18;
@@ -11520,56 +11204,76 @@ CorpseRottingInit_MotherBrain:
     RTS                                                                  ;A9E0DF;
 
 
-CorpseRottingVRAMTransferDefinitions_Sidehopper_Param1_0:
-    dw $0060,$7E00,$2040,$7020,$00A0,$7E00,$20A0,$7100                   ;A9E0E0;
-    dw $00A0,$7E00,$2140,$7200,$00A0,$7E00,$21E0,$7300                   ;A9E0F0;
-    dw $00A0,$7E00,$2280,$7400,$0000                                     ;A9E100;
+CorpseRottingVRAMTransferDefinitions_Sidehopper_Param1_0:                ;A9E0E0;
+    dw $0060,$7E00,$2040,$7020
+    dw $00A0,$7E00,$20A0,$7100
+    dw $00A0,$7E00,$2140,$7200
+    dw $00A0,$7E00,$21E0,$7300
+    dw $00A0,$7E00,$2280,$7400
+    dw $0000
 
 CorpseRottingVRAMTransferDefinitions_Sidehopper_Param1_2:
-    dw $0040,$7E00,$2320,$7090,$00A0,$7E00,$23C0,$7190                   ;A9E10A;
-    dw $00A0,$7E00,$2460,$7290,$00A0,$7E00,$2500,$7390                   ;A9E11A;
-    dw $00A0,$7E00,$25A0,$7490,$0000                                     ;A9E12A;
+    dw $0040,$7E00,$2320,$7090                                           ;A9E10A;
+    dw $00A0,$7E00,$23C0,$7190
+    dw $00A0,$7E00,$2460,$7290
+    dw $00A0,$7E00,$2500,$7390
+    dw $00A0,$7E00,$25A0,$7490
+    dw $0000
 
 CorpseRottingVRAMTransferDefinitions_Zoomer_Param1_0:
-    dw $0060,$7E00,$2940,$7530,$0060,$7E00,$29A0,$7630                   ;A9E134;
-    dw $0000                                                             ;A9E144;
+    dw $0060,$7E00,$2940,$7530                                           ;A9E134;
+    dw $0060,$7E00,$29A0,$7630
+    dw $0000
 
 CorpseRottingVRAMTransferDefinitions_Zoomer_Param1_2:
-    dw $0060,$7E00,$2A00,$7560,$0060,$7E00,$2A60,$7660                   ;A9E146;
-    dw $0000                                                             ;A9E156;
+    dw $0060,$7E00,$2A00,$7560                                           ;A9E146;
+    dw $0060,$7E00,$2A60,$7660
+    dw $0000
 
 CorpseRottingVRAMTransferDefinitions_Zoomer_Param1_4:
-    dw $0060,$7E00,$2AC0,$7590,$0060,$7E00,$2B20,$7690                   ;A9E158;
-    dw $0000                                                             ;A9E168;
+    dw $0060,$7E00,$2AC0,$7590                                           ;A9E158;
+    dw $0060,$7E00,$2B20,$7690
+    dw $0000
 
 CorpseRottingVRAMTransferDefinitions_Ripper_Param1_0:
-    dw $0060,$7E00,$2B80,$7500,$0060,$7E00,$2BE0,$7600                   ;A9E16A;
-    dw $0000                                                             ;A9E17A;
+    dw $0060,$7E00,$2B80,$7500                                           ;A9E16A;
+    dw $0060,$7E00,$2BE0,$7600
+    dw $0000
 
 CorpseRottingVRAMTransferDefinitions_Ripper_Param1_2:
-    dw $0060,$7E00,$2C40,$75C0,$0060,$7E00,$2CA0,$76C0                   ;A9E17C;
-    dw $0000                                                             ;A9E18C;
+    dw $0060,$7E00,$2C40,$75C0                                           ;A9E17C;
+    dw $0060,$7E00,$2CA0,$76C0
+    dw $0000
 
 CorpseRottingVRAMTransferDefinitions_Skree_Param1_0:
-    dw $0040,$7E00,$2640,$7150,$0040,$7E00,$2680,$7250                   ;A9E18E;
-    dw $0040,$7E00,$26C0,$7350,$0040,$7E00,$2700,$7450                   ;A9E19E;
-    dw $0000                                                             ;A9E1AE;
+    dw $0040,$7E00,$2640,$7150                                           ;A9E18E;
+    dw $0040,$7E00,$2680,$7250
+    dw $0040,$7E00,$26C0,$7350
+    dw $0040,$7E00,$2700,$7450
+    dw $0000
 
 CorpseRottingVRAMTransferDefinitions_Skree_Param1_2:
-    dw $0040,$7E00,$2740,$7070,$0040,$7E00,$2780,$7170                   ;A9E1B0;
-    dw $0040,$7E00,$27C0,$7270,$0040,$7E00,$2800,$7370                   ;A9E1C0;
-    dw $0000                                                             ;A9E1D0;
+    dw $0040,$7E00,$2740,$7070                                           ;A9E1B0;
+    dw $0040,$7E00,$2780,$7170
+    dw $0040,$7E00,$27C0,$7270
+    dw $0040,$7E00,$2800,$7370
+    dw $0000
 
 CorpseRottingVRAMTransferDefinitions_Skree_Param1_4:
-    dw $0040,$7E00,$2840,$70E0,$0040,$7E00,$2880,$71E0                   ;A9E1D2;
-    dw $0040,$7E00,$28C0,$72E0,$0040,$7E00,$2900,$73E0                   ;A9E1E2;
-    dw $0000                                                             ;A9E1F2;
+    dw $0040,$7E00,$2840,$70E0                                           ;A9E1D2;
+    dw $0040,$7E00,$2880,$71E0
+    dw $0040,$7E00,$28C0,$72E0
+    dw $0040,$7E00,$2900,$73E0
+    dw $0000
 
 CorpseRottingVRAMTransferDefinitions_MotherBrain:
-    dw $0060,$7E00,$9040,$7A80,$00A0,$7E00,$9100,$7B70                   ;A9E1F4;
-    dw $00C0,$7E00,$91C0,$7C60,$00C0,$7E00,$92A0,$7D60                   ;A9E204;
-    dw $00E0,$7E00,$9380,$7E60,$00E0,$7E00,$9460,$7F60                   ;A9E214;
-    dw $0000                                                             ;A9E224;
+    dw $0060,$7E00,$9040,$7A80                                           ;A9E1F4;
+    dw $00A0,$7E00,$9100,$7B70
+    dw $00C0,$7E00,$91C0,$7C60
+    dw $00C0,$7E00,$92A0,$7D60
+    dw $00E0,$7E00,$9380,$7E60
+    dw $00E0,$7E00,$9460,$7F60
+    dw $0000
 
 CorpseRottingTileRowOffsets_Torizo:
     dw $0000,$0140,$0280,$03C0,$0500,$0640,$0780,$08C0                   ;A9E226;
@@ -12647,6 +12351,7 @@ CorpseRottingRotEntry_Copy_MotherBrain:
 
 
 Palette_CorpseSidehopper2:
+; This palette is loaded by the enemy set of the Baby Metroid room, but that palette is overwritten by Baby Metroid init AI, making this effectively unused
     dw $3800,$4EDA,$3A35,$2990,$14EB,$77E9,$5706,$3A44                   ;A9EBAC;
     dw $1D62,$2FBA,$22F6,$1A33,$1170,$08CD,$639F,$0446                   ;A9EBBC;
 
@@ -12679,22 +12384,14 @@ Palette_SidehopperCorpseBeingDrained_6:
     dw $4B3F,$42DB,$3678,$2E14,$2190,$192C,$0CC9,$0465                   ;A9EC9C;
 
 InstList_CorpseSidehopper_Alive_Hopping:
-    dw $0002                                                             ;A9ECAC;
-    dw Spritemap_CorpseSidehopper_Alive_0                                ;A9ECAE;
-    dw $0004                                                             ;A9ECB0;
-    dw Spritemap_CorpseSidehopper_Alive_1                                ;A9ECB2;
-    dw $0005                                                             ;A9ECB4;
-    dw Spritemap_CorpseSidehopper_Alive_0                                ;A9ECB6;
-    dw $0030                                                             ;A9ECB8;
-    dw Spritemap_CorpseSidehopper_Alive_1                                ;A9ECBA;
-    dw $0005                                                             ;A9ECBC;
-    dw Spritemap_CorpseSidehopper_Alive_0                                ;A9ECBE;
-    dw $0004                                                             ;A9ECC0;
-    dw Spritemap_CorpseSidehopper_Alive_1                                ;A9ECC2;
-    dw $0005                                                             ;A9ECC4;
-    dw Spritemap_CorpseSidehopper_Alive_0                                ;A9ECC6;
-    dw $0004                                                             ;A9ECC8;
-    dw Spritemap_CorpseSidehopper_Alive_1                                ;A9ECCA;
+    dw $0002,Spritemap_CorpseSidehopper_Alive_0                          ;A9ECAC;
+    dw $0004,Spritemap_CorpseSidehopper_Alive_1                          ;A9ECB0;
+    dw $0005,Spritemap_CorpseSidehopper_Alive_0                          ;A9ECB4;
+    dw $0030,Spritemap_CorpseSidehopper_Alive_1                          ;A9ECB8;
+    dw $0005,Spritemap_CorpseSidehopper_Alive_0                          ;A9ECBC;
+    dw $0004,Spritemap_CorpseSidehopper_Alive_1                          ;A9ECC0;
+    dw $0005,Spritemap_CorpseSidehopper_Alive_0                          ;A9ECC4;
+    dw $0004,Spritemap_CorpseSidehopper_Alive_1                          ;A9ECC8;
     dw Instruction_SidehopperCorpse_EndHop                               ;A9ECCC;
     dw Instruction_Common_Sleep                                          ;A9ECCE;
 
@@ -12713,258 +12410,172 @@ Instruction_SidehopperCorpse_EndHop:
 
 
 InstList_CorpseSidehopper_Alive_Idle:
-    dw $0001                                                             ;A9ECE3;
-    dw Spritemap_CorpseSidehopper_Alive_2                                ;A9ECE5;
+    dw $0001,Spritemap_CorpseSidehopper_Alive_2                          ;A9ECE3;
     dw Instruction_Common_Sleep                                          ;A9ECE7;
 
 InstList_CorpseSidehopper_Alive_Corpse:
-    dw $0001                                                             ;A9ECE9;
-    dw Spritemap_CorpseSidehopper_Dead_0                                 ;A9ECEB;
+    dw $0001,Spritemap_CorpseSidehopper_Dead_0                           ;A9ECE9;
     dw Instruction_Common_Sleep                                          ;A9ECED;
 
 InstList_CorpseSidehopper_Alive_Dead:
-    dw $0001                                                             ;A9ECEF;
-    dw Spritemap_CorpseSidehopper_Dead_1                                 ;A9ECF1;
+    dw $0001,Spritemap_CorpseSidehopper_Dead_1                           ;A9ECEF;
     dw Instruction_Common_Sleep                                          ;A9ECF3;
 
 InstList_CorpseZoomer_Param1_0:
-    dw $0001                                                             ;A9ECF5;
-    dw Spritemap_CorpseZoomer_0                                          ;A9ECF7;
+    dw $0001,Spritemap_CorpseZoomer_0                                    ;A9ECF5;
     dw Instruction_Common_Sleep                                          ;A9ECF9;
 
 InstList_CorpseZoomer_Param1_2:
-    dw $0001                                                             ;A9ECFB;
-    dw Spritemap_CorpseZoomer_1                                          ;A9ECFD;
+    dw $0001,Spritemap_CorpseZoomer_1                                    ;A9ECFB;
     dw Instruction_Common_Sleep                                          ;A9ECFF;
 
 InstList_CorpseZoomer_Param1_4:
-    dw $0001                                                             ;A9ED01;
-    dw Spritemap_CorpseZoomer_2                                          ;A9ED03;
+    dw $0001,Spritemap_CorpseZoomer_2                                    ;A9ED01;
     dw Instruction_Common_Sleep                                          ;A9ED05;
 
 InstList_CorpseRipper_Param1_0:
-    dw $0001                                                             ;A9ED07;
-    dw Spritemap_CorpseRipper_0                                          ;A9ED09;
+    dw $0001,Spritemap_CorpseRipper_0                                    ;A9ED07;
     dw Instruction_Common_Sleep                                          ;A9ED0B;
 
 InstList_CorpseRipper_Param1_2:
-    dw $0001                                                             ;A9ED0D;
-    dw Spritemap_CorpseRipper_1                                          ;A9ED0F;
+    dw $0001,Spritemap_CorpseRipper_1                                    ;A9ED0D;
     dw Instruction_Common_Sleep                                          ;A9ED11;
 
 InstList_CorpseSkree_Param1_0:
-    dw $0001                                                             ;A9ED13;
-    dw Spritemap_CorpseSkree_0                                           ;A9ED15;
+    dw $0001,Spritemap_CorpseSkree_0                                     ;A9ED13;
     dw Instruction_Common_Sleep                                          ;A9ED17;
 
 InstList_CorpseSkree_Param1_2:
-    dw $0001                                                             ;A9ED19;
-    dw Spritemap_CorpseSkree_1                                           ;A9ED1B;
+    dw $0001,Spritemap_CorpseSkree_1                                     ;A9ED19;
     dw Instruction_Common_Sleep                                          ;A9ED1D;
 
 InstList_CorpseSkree_Param1_4:
-    dw $0001                                                             ;A9ED1F;
-    dw Spritemap_CorpseSkree_2                                           ;A9ED21;
+    dw $0001,Spritemap_CorpseSkree_2                                     ;A9ED1F;
     dw Instruction_Common_Sleep                                          ;A9ED23;
 
 Spritemap_CorpseSidehopper_Dead_0:
-    dw $0008,$C20C                                                       ;A9ED25;
-    db $02                                                               ;A9ED29;
-    dw $6130,$C20C                                                       ;A9ED2A;
-    db $F2                                                               ;A9ED2E;
-    dw $6110,$C3FC                                                       ;A9ED2F;
-    db $FA                                                               ;A9ED33;
-    dw $2123,$C3FC                                                       ;A9ED34;
-    db $EA                                                               ;A9ED38;
-    dw $2103,$C3F4                                                       ;A9ED39;
-    db $FA                                                               ;A9ED3D;
-    dw $2122,$C3F4                                                       ;A9ED3E;
-    db $EA                                                               ;A9ED42;
-    dw $2102,$C3E4                                                       ;A9ED43;
-    db $02                                                               ;A9ED47;
-    dw $2130,$C3E4                                                       ;A9ED48;
-    db $F2                                                               ;A9ED4C;
-    dw $2110                                                             ;A9ED4D;
+    dw $0008                                                             ;A9ED25;
+    %spritemapEntry(1, $420C, $02, 0, 1, 2, 0, $130)
+    %spritemapEntry(1, $420C, $F2, 0, 1, 2, 0, $110)
+    %spritemapEntry(1, $43FC, $FA, 0, 0, 2, 0, $123)
+    %spritemapEntry(1, $43FC, $EA, 0, 0, 2, 0, $103)
+    %spritemapEntry(1, $43F4, $FA, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $43F4, $EA, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $43E4, $02, 0, 0, 2, 0, $130)
+    %spritemapEntry(1, $43E4, $F2, 0, 0, 2, 0, $110)
 
 Spritemap_CorpseSidehopper_Dead_1:
-    dw $0008,$C20C                                                       ;A9ED4F;
-    db $FE                                                               ;A9ED53;
-    dw $6129,$C20C                                                       ;A9ED54;
-    db $EE                                                               ;A9ED58;
-    dw $6109,$C3F4                                                       ;A9ED59;
-    db $06                                                               ;A9ED5D;
-    dw $213B,$C3F4                                                       ;A9ED5E;
-    db $F6                                                               ;A9ED62;
-    dw $211B,$C3FC                                                       ;A9ED63;
-    db $06                                                               ;A9ED67;
-    dw $213C,$C3FC                                                       ;A9ED68;
-    db $F6                                                               ;A9ED6C;
-    dw $211C,$C3E4                                                       ;A9ED6D;
-    db $FE                                                               ;A9ED71;
-    dw $2129,$C3E4                                                       ;A9ED72;
-    db $EE                                                               ;A9ED76;
-    dw $2109                                                             ;A9ED77;
+    dw $0008                                                             ;A9ED4F;
+    %spritemapEntry(1, $420C, $FE, 0, 1, 2, 0, $129)
+    %spritemapEntry(1, $420C, $EE, 0, 1, 2, 0, $109)
+    %spritemapEntry(1, $43F4, $06, 0, 0, 2, 0, $13B)
+    %spritemapEntry(1, $43F4, $F6, 0, 0, 2, 0, $11B)
+    %spritemapEntry(1, $43FC, $06, 0, 0, 2, 0, $13C)
+    %spritemapEntry(1, $43FC, $F6, 0, 0, 2, 0, $11C)
+    %spritemapEntry(1, $43E4, $FE, 0, 0, 2, 0, $129)
+    %spritemapEntry(1, $43E4, $EE, 0, 0, 2, 0, $109)
 
 Spritemap_CorpseZoomer_0:
-    dw $0002,$C3FC                                                       ;A9ED79;
-    db $F8                                                               ;A9ED7D;
-    dw $2154,$C3F4                                                       ;A9ED7E;
-    db $F8                                                               ;A9ED82;
-    dw $2153                                                             ;A9ED83;
+    dw $0002                                                             ;A9ED79;
+    %spritemapEntry(1, $43FC, $F8, 0, 0, 2, 0, $154)
+    %spritemapEntry(1, $43F4, $F8, 0, 0, 2, 0, $153)
 
 Spritemap_CorpseZoomer_1:
-    dw $0002,$C3FC                                                       ;A9ED85;
-    db $F8                                                               ;A9ED89;
-    dw $2157,$C3F4                                                       ;A9ED8A;
-    db $F8                                                               ;A9ED8E;
-    dw $2156                                                             ;A9ED8F;
+    dw $0002                                                             ;A9ED85;
+    %spritemapEntry(1, $43FC, $F8, 0, 0, 2, 0, $157)
+    %spritemapEntry(1, $43F4, $F8, 0, 0, 2, 0, $156)
 
 Spritemap_CorpseZoomer_2:
-    dw $0002,$C3FC                                                       ;A9ED91;
-    db $F8                                                               ;A9ED95;
-    dw $215A,$C3F4                                                       ;A9ED96;
-    db $F8                                                               ;A9ED9A;
-    dw $2159                                                             ;A9ED9B;
+    dw $0002                                                             ;A9ED91;
+    %spritemapEntry(1, $43FC, $F8, 0, 0, 2, 0, $15A)
+    %spritemapEntry(1, $43F4, $F8, 0, 0, 2, 0, $159)
 
 Spritemap_CorpseRipper_0:
-    dw $0002,$C3FC                                                       ;A9ED9D;
-    db $F8                                                               ;A9EDA1;
-    dw $2151,$C3F4                                                       ;A9EDA2;
-    db $F8                                                               ;A9EDA6;
-    dw $2150                                                             ;A9EDA7;
+    dw $0002                                                             ;A9ED9D;
+    %spritemapEntry(1, $43FC, $F8, 0, 0, 2, 0, $151)
+    %spritemapEntry(1, $43F4, $F8, 0, 0, 2, 0, $150)
 
 Spritemap_CorpseRipper_1:
-    dw $0002,$C3FC                                                       ;A9EDA9;
-    db $F8                                                               ;A9EDAD;
-    dw $215D,$C3F4                                                       ;A9EDAE;
-    db $F8                                                               ;A9EDB2;
-    dw $215C                                                             ;A9EDB3;
+    dw $0002                                                             ;A9EDA9;
+    %spritemapEntry(1, $43FC, $F8, 0, 0, 2, 0, $15D)
+    %spritemapEntry(1, $43F4, $F8, 0, 0, 2, 0, $15C)
 
 Spritemap_CorpseSkree_0:
-    dw $0004,$C3FC                                                       ;A9EDB5;
-    db $04                                                               ;A9EDB9;
-    dw $7135,$C3FC                                                       ;A9EDBA;
-    db $F4                                                               ;A9EDBE;
-    dw $7115,$C3F4                                                       ;A9EDBF;
-    db $04                                                               ;A9EDC3;
-    dw $3135,$C3F4                                                       ;A9EDC4;
-    db $F4                                                               ;A9EDC8;
-    dw $3115                                                             ;A9EDC9;
+    dw $0004                                                             ;A9EDB5;
+    %spritemapEntry(1, $43FC, $04, 0, 1, 3, 0, $135)
+    %spritemapEntry(1, $43FC, $F4, 0, 1, 3, 0, $115)
+    %spritemapEntry(1, $43F4, $04, 0, 0, 3, 0, $135)
+    %spritemapEntry(1, $43F4, $F4, 0, 0, 3, 0, $115)
 
 Spritemap_CorpseSkree_1:
-    dw $0004,$C3FC                                                       ;A9EDCB;
-    db $04                                                               ;A9EDCF;
-    dw $7127,$C3FC                                                       ;A9EDD0;
-    db $F4                                                               ;A9EDD4;
-    dw $7107,$C3F4                                                       ;A9EDD5;
-    db $04                                                               ;A9EDD9;
-    dw $3127,$C3F4                                                       ;A9EDDA;
-    db $F4                                                               ;A9EDDE;
-    dw $3107                                                             ;A9EDDF;
+    dw $0004                                                             ;A9EDCB;
+    %spritemapEntry(1, $43FC, $04, 0, 1, 3, 0, $127)
+    %spritemapEntry(1, $43FC, $F4, 0, 1, 3, 0, $107)
+    %spritemapEntry(1, $43F4, $04, 0, 0, 3, 0, $127)
+    %spritemapEntry(1, $43F4, $F4, 0, 0, 3, 0, $107)
 
 Spritemap_CorpseSkree_2:
-    dw $0004,$C3FC                                                       ;A9EDE1;
-    db $04                                                               ;A9EDE5;
-    dw $712E,$C3FC                                                       ;A9EDE6;
-    db $F4                                                               ;A9EDEA;
-    dw $710E,$C3F4                                                       ;A9EDEB;
-    db $04                                                               ;A9EDEF;
-    dw $312E,$C3F4                                                       ;A9EDF0;
-    db $F4                                                               ;A9EDF4;
-    dw $310E                                                             ;A9EDF5;
+    dw $0004                                                             ;A9EDE1;
+    %spritemapEntry(1, $43FC, $04, 0, 1, 3, 0, $12E)
+    %spritemapEntry(1, $43FC, $F4, 0, 1, 3, 0, $10E)
+    %spritemapEntry(1, $43F4, $04, 0, 0, 3, 0, $12E)
+    %spritemapEntry(1, $43F4, $F4, 0, 0, 3, 0, $10E)
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemap_Corpse_A9EDF7:
-    dw $000A,$000C                                                       ;A9EDF7;
-    db $FC                                                               ;A9EDFB;
-    dw $2F0C,$0014                                                       ;A9EDFC;
-    db $FC                                                               ;A9EE00;
-    dw $2F0D,$0004                                                       ;A9EE01;
-    db $FC                                                               ;A9EE05;
-    dw $2F0B,$01F4                                                       ;A9EE06;
-    db $FC                                                               ;A9EE0A;
-    dw $2F0D,$01EC                                                       ;A9EE0B;
-    db $FC                                                               ;A9EE0F;
-    dw $2F0C,$01E4                                                       ;A9EE10;
-    db $FC                                                               ;A9EE14;
-    dw $2F0B,$0008                                                       ;A9EE15;
-    db $FC                                                               ;A9EE19;
-    dw $2F06,$0000                                                       ;A9EE1A;
-    db $FC                                                               ;A9EE1E;
-    dw $2F05,$01F8                                                       ;A9EE1F;
-    db $FC                                                               ;A9EE23;
-    dw $2F01,$01F0                                                       ;A9EE24;
-    db $FC                                                               ;A9EE28;
-    dw $2F00                                                             ;A9EE29;
+    dw $000A                                                             ;A9EDF7;
+    %spritemapEntry(0, $0C, $FC, 0, 0, 2, 7, $10C)
+    %spritemapEntry(0, $14, $FC, 0, 0, 2, 7, $10D)
+    %spritemapEntry(0, $04, $FC, 0, 0, 2, 7, $10B)
+    %spritemapEntry(0, $1F4, $FC, 0, 0, 2, 7, $10D)
+    %spritemapEntry(0, $1EC, $FC, 0, 0, 2, 7, $10C)
+    %spritemapEntry(0, $1E4, $FC, 0, 0, 2, 7, $10B)
+    %spritemapEntry(0, $08, $FC, 0, 0, 2, 7, $106)
+    %spritemapEntry(0, $00, $FC, 0, 0, 2, 7, $105)
+    %spritemapEntry(0, $1F8, $FC, 0, 0, 2, 7, $101)
+    %spritemapEntry(0, $1F0, $FC, 0, 0, 2, 7, $100)
 
 UNUSED_Spritemap_Corpse_A9EE2B:
-    dw $0003,$0004                                                       ;A9EE2B;
-    db $FA                                                               ;A9EE2F;
-    dw $2F0D,$01FC                                                       ;A9EE30;
-    db $FA                                                               ;A9EE34;
-    dw $2F0C,$01F4                                                       ;A9EE35;
-    db $FA                                                               ;A9EE39;
-    dw $2F0B                                                             ;A9EE3A;
+    dw $0003                                                             ;A9EE2B;
+    %spritemapEntry(0, $04, $FA, 0, 0, 2, 7, $10D)
+    %spritemapEntry(0, $1FC, $FA, 0, 0, 2, 7, $10C)
+    %spritemapEntry(0, $1F4, $FA, 0, 0, 2, 7, $10B)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Spritemap_CorpseSidehopper_Alive_0:
-    dw $0007,$0000                                                       ;A9EE3C;
-    db $EC                                                               ;A9EE40;
-    dw $2171,$01F8                                                       ;A9EE41;
-    db $EC                                                               ;A9EE45;
-    dw $2170,$C20C                                                       ;A9EE46;
-    db $04                                                               ;A9EE4A;
-    dw $6176,$C3E4                                                       ;A9EE4B;
-    db $04                                                               ;A9EE4F;
-    dw $2176,$C208                                                       ;A9EE50;
-    db $F4                                                               ;A9EE54;
-    dw $6174,$C3E8                                                       ;A9EE55;
-    db $F4                                                               ;A9EE59;
-    dw $2174,$C3F8                                                       ;A9EE5A;
-    db $F4                                                               ;A9EE5E;
-    dw $2180                                                             ;A9EE5F;
+    dw $0007                                                             ;A9EE3C;
+    %spritemapEntry(0, $00, $EC, 0, 0, 2, 0, $171)
+    %spritemapEntry(0, $1F8, $EC, 0, 0, 2, 0, $170)
+    %spritemapEntry(1, $420C, $04, 0, 1, 2, 0, $176)
+    %spritemapEntry(1, $43E4, $04, 0, 0, 2, 0, $176)
+    %spritemapEntry(1, $4208, $F4, 0, 1, 2, 0, $174)
+    %spritemapEntry(1, $43E8, $F4, 0, 0, 2, 0, $174)
+    %spritemapEntry(1, $43F8, $F4, 0, 0, 2, 0, $180)
 
 Spritemap_CorpseSidehopper_Alive_1:
-    dw $0007,$C3F8                                                       ;A9EE61;
-    db $F6                                                               ;A9EE65;
-    dw $2182,$C20D                                                       ;A9EE66;
-    db $04                                                               ;A9EE6A;
-    dw $617A,$C3E3                                                       ;A9EE6B;
-    db $04                                                               ;A9EE6F;
-    dw $217A,$C208                                                       ;A9EE70;
-    db $F4                                                               ;A9EE74;
-    dw $6178,$C3E8                                                       ;A9EE75;
-    db $F4                                                               ;A9EE79;
-    dw $2178,$0000                                                       ;A9EE7A;
-    db $EE                                                               ;A9EE7E;
-    dw $2171,$01F8                                                       ;A9EE7F;
-    db $EE                                                               ;A9EE83;
-    dw $2170                                                             ;A9EE84;
+    dw $0007                                                             ;A9EE61;
+    %spritemapEntry(1, $43F8, $F6, 0, 0, 2, 0, $182)
+    %spritemapEntry(1, $420D, $04, 0, 1, 2, 0, $17A)
+    %spritemapEntry(1, $43E3, $04, 0, 0, 2, 0, $17A)
+    %spritemapEntry(1, $4208, $F4, 0, 1, 2, 0, $178)
+    %spritemapEntry(1, $43E8, $F4, 0, 0, 2, 0, $178)
+    %spritemapEntry(0, $00, $EE, 0, 0, 2, 0, $171)
+    %spritemapEntry(0, $1F8, $EE, 0, 0, 2, 0, $170)
 
 Spritemap_CorpseSidehopper_Alive_2:
-    dw $000B,$0010                                                       ;A9EE86;
-    db $0C                                                               ;A9EE8A;
-    dw $6172,$0008                                                       ;A9EE8B;
-    db $0C                                                               ;A9EE8F;
-    dw $6173,$01F0                                                       ;A9EE90;
-    db $0C                                                               ;A9EE94;
-    dw $2173,$01E8                                                       ;A9EE95;
-    db $0C                                                               ;A9EE99;
-    dw $2172,$C208                                                       ;A9EE9A;
-    db $FC                                                               ;A9EE9E;
-    dw $617E,$C3E8                                                       ;A9EE9F;
-    db $FC                                                               ;A9EEA3;
-    dw $217E,$C208                                                       ;A9EEA4;
-    db $EC                                                               ;A9EEA8;
-    dw $617C,$C3E8                                                       ;A9EEA9;
-    db $EC                                                               ;A9EEAD;
-    dw $217C,$0000                                                       ;A9EEAE;
-    db $E3                                                               ;A9EEB2;
-    dw $2171,$01F8                                                       ;A9EEB3;
-    db $E3                                                               ;A9EEB7;
-    dw $2170,$C3F8                                                       ;A9EEB8;
-    db $EB                                                               ;A9EEBC;
-    dw $2180                                                             ;A9EEBD;
+    dw $000B                                                             ;A9EE86;
+    %spritemapEntry(0, $10, $0C, 0, 1, 2, 0, $172)
+    %spritemapEntry(0, $08, $0C, 0, 1, 2, 0, $173)
+    %spritemapEntry(0, $1F0, $0C, 0, 0, 2, 0, $173)
+    %spritemapEntry(0, $1E8, $0C, 0, 0, 2, 0, $172)
+    %spritemapEntry(1, $4208, $FC, 0, 1, 2, 0, $17E)
+    %spritemapEntry(1, $43E8, $FC, 0, 0, 2, 0, $17E)
+    %spritemapEntry(1, $4208, $EC, 0, 1, 2, 0, $17C)
+    %spritemapEntry(1, $43E8, $EC, 0, 0, 2, 0, $17C)
+    %spritemapEntry(0, $00, $E3, 0, 0, 2, 0, $171)
+    %spritemapEntry(0, $1F8, $E3, 0, 0, 2, 0, $170)
+    %spritemapEntry(1, $43F8, $EB, 0, 0, 2, 0, $180)
+
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_GetYDividedByA_A9EEBF:
@@ -14076,17 +13687,26 @@ HandleBabyMetroidPalette:
     RTS                                                                  ;A9F6D0;
 
 
-BabyMetroidColors_Normal:
-    dw $72FF,$2CDF,$24B9,$1CAF,$5E5F,$183F,$1014,$080A                   ;A9F6D1;
-    dw $49BA,$041A,$000F,$0005,$3515,$0015,$000A,$0005                   ;A9F6E1;
-    dw $3515,$0015,$000A,$0005,$49BA,$041A,$000F,$0005                   ;A9F6F1;
-    dw $5E5F,$183F,$1014,$080A,$72FF,$2CDF,$24B9,$1CAF                   ;A9F701;
+BabyMetroidColors_Normal:                                                ;A9F6D1;
+    dw $72FF,$2CDF,$24B9,$1CAF
+    dw $5E5F,$183F,$1014,$080A
+    dw $49BA,$041A,$000F,$0005
+    dw $3515,$0015,$000A,$0005
+    dw $3515,$0015,$000A,$0005
+    dw $49BA,$041A,$000F,$0005
+    dw $5E5F,$183F,$1014,$080A
+    dw $72FF,$2CDF,$24B9,$1CAF
 
-BabyMetroidColors_LowHealth:
-    dw $5990,$3870,$346D,$3068,$494D,$306D,$284A,$2446                   ;A9F711;
-    dw $3D0B,$244B,$2048,$1844,$2CC8,$1C48,$1425,$0C22                   ;A9F721;
-    dw $2CC8,$1C48,$1425,$0C22,$3D0B,$244B,$2048,$1844                   ;A9F731;
-    dw $494D,$306D,$284A,$2446,$5990,$3870,$346D,$3068                   ;A9F741;
+BabyMetroidColors_LowHealth:                                             ;A9F711;
+    dw $5990,$3870,$346D,$3068
+    dw $494D,$306D,$284A,$2446
+    dw $3D0B,$244B,$2048,$1844
+    dw $2CC8,$1C48,$1425,$0C22
+    dw $2CC8,$1C48,$1425,$0C22
+    dw $3D0B,$244B,$2048,$1844
+    dw $494D,$306D,$284A,$2446
+    dw $5990,$3870,$346D,$3068
+
 
 HandleBabyMetroidCrySFX:
     CMP.W #$0005                                                         ;A9F751;
@@ -14269,22 +13889,18 @@ Palette_BabyMetroid:
     dw $3800,$57B8,$0B11,$1646,$00E3,$72FF,$2CDF,$24B9                   ;A9F8E6;
     dw $1CAF,$18A9,$4F9F,$3ED8,$2E12,$08CD,$7FFF,$0000                   ;A9F8F6;
 
+
 InstList_BabyMetroid_FinishDraining:
-    dw $0080                                                             ;A9F906;
-    dw Spritemap_BabyMetroid_2                                           ;A9F908;
-    dw $0010                                                             ;A9F90A;
-    dw Spritemap_BabyMetroid_1                                           ;A9F90C;
+    dw $0080,Spritemap_BabyMetroid_2                                     ;A9F906;
+    dw $0010,Spritemap_BabyMetroid_1                                     ;A9F90A;
 
 InstList_BabyMetroid_Normal:
-    dw $0010                                                             ;A9F90E;
-    dw Spritemap_BabyMetroid_0                                           ;A9F910;
-    dw $0010                                                             ;A9F912;
-    dw Spritemap_BabyMetroid_1                                           ;A9F914;
-    dw $0010                                                             ;A9F916;
-    dw Spritemap_BabyMetroid_2                                           ;A9F918;
-    dw $0010                                                             ;A9F91A;
-    dw Spritemap_BabyMetroid_1                                           ;A9F91C;
+    dw $0010,Spritemap_BabyMetroid_0                                     ;A9F90E;
+    dw $0010,Spritemap_BabyMetroid_1                                     ;A9F912;
+    dw $0010,Spritemap_BabyMetroid_2                                     ;A9F916;
+    dw $0010,Spritemap_BabyMetroid_1                                     ;A9F91A;
     dw Instruction_BabyMetroid_GotoNormal                                ;A9F91E;
+
 
 Instruction_BabyMetroid_GotoNormal:
     LDY.W #InstList_BabyMetroid_Normal                                   ;A9F920;
@@ -14292,15 +13908,12 @@ Instruction_BabyMetroid_GotoNormal:
 
 
 InstList_BabyMetroid_LatchedOn:
-    dw $0008                                                             ;A9F924;
-    dw Spritemap_BabyMetroid_0                                           ;A9F926;
-    dw $0008                                                             ;A9F928;
-    dw Spritemap_BabyMetroid_1                                           ;A9F92A;
-    dw $0005                                                             ;A9F92C;
-    dw Spritemap_BabyMetroid_2                                           ;A9F92E;
-    dw $0002                                                             ;A9F930;
-    dw Spritemap_BabyMetroid_1                                           ;A9F932;
+    dw $0008,Spritemap_BabyMetroid_0                                     ;A9F924;
+    dw $0008,Spritemap_BabyMetroid_1                                     ;A9F928;
+    dw $0005,Spritemap_BabyMetroid_2                                     ;A9F92C;
+    dw $0002,Spritemap_BabyMetroid_1                                     ;A9F930;
     dw Instruction_GotoLatchedOn                                         ;A9F934;
+
 
 Instruction_GotoLatchedOn:
     LDY.W #InstList_BabyMetroid_LatchedOn                                ;A9F936;
@@ -14308,49 +13921,30 @@ Instruction_GotoLatchedOn:
 
 
 InstList_BabyMetroid_Remorse:
-    dw $000A                                                             ;A9F93A;
-    dw Spritemap_BabyMetroid_0                                           ;A9F93C;
-    dw $000A                                                             ;A9F93E;
-    dw Spritemap_BabyMetroid_1                                           ;A9F940;
-    dw $000A                                                             ;A9F942;
-    dw Spritemap_BabyMetroid_2                                           ;A9F944;
-    dw $000A                                                             ;A9F946;
-    dw Spritemap_BabyMetroid_1                                           ;A9F948;
-    dw $000A                                                             ;A9F94A;
-    dw Spritemap_BabyMetroid_0                                           ;A9F94C;
-    dw $000A                                                             ;A9F94E;
-    dw Spritemap_BabyMetroid_1                                           ;A9F950;
-    dw $000A                                                             ;A9F952;
-    dw Spritemap_BabyMetroid_2                                           ;A9F954;
-    dw $000A                                                             ;A9F956;
-    dw Spritemap_BabyMetroid_1                                           ;A9F958;
+    dw $000A,Spritemap_BabyMetroid_0                                     ;A9F93A;
+    dw $000A,Spritemap_BabyMetroid_1                                     ;A9F93E;
+    dw $000A,Spritemap_BabyMetroid_2                                     ;A9F942;
+    dw $000A,Spritemap_BabyMetroid_1                                     ;A9F946;
+    dw $000A,Spritemap_BabyMetroid_0                                     ;A9F94A;
+    dw $000A,Spritemap_BabyMetroid_1                                     ;A9F94E;
+    dw $000A,Spritemap_BabyMetroid_2                                     ;A9F952;
+    dw $000A,Spritemap_BabyMetroid_1                                     ;A9F956;
     dw Instruction_BabyMetroid_GotoY_OrPlayRemorseSFX                    ;A9F95A;
     dw InstList_BabyMetroid_Remorse                                      ;A9F95C;
-    dw $0006                                                             ;A9F95E;
-    dw Spritemap_BabyMetroid_0                                           ;A9F960;
-    dw $0005                                                             ;A9F962;
-    dw Spritemap_BabyMetroid_1                                           ;A9F964;
-    dw $0004                                                             ;A9F966;
-    dw Spritemap_BabyMetroid_2                                           ;A9F968;
-    dw $0003                                                             ;A9F96A;
-    dw Spritemap_BabyMetroid_1                                           ;A9F96C;
-    dw $0002                                                             ;A9F96E;
-    dw Spritemap_BabyMetroid_0                                           ;A9F970;
-    dw $0003                                                             ;A9F972;
-    dw Spritemap_BabyMetroid_1                                           ;A9F974;
-    dw $0004                                                             ;A9F976;
-    dw Spritemap_BabyMetroid_2                                           ;A9F978;
-    dw $0005                                                             ;A9F97A;
-    dw Spritemap_BabyMetroid_1                                           ;A9F97C;
-    dw $0006                                                             ;A9F97E;
-    dw Spritemap_BabyMetroid_0                                           ;A9F980;
-    dw $0007                                                             ;A9F982;
-    dw Spritemap_BabyMetroid_1                                           ;A9F984;
-    dw $0008                                                             ;A9F986;
-    dw Spritemap_BabyMetroid_2                                           ;A9F988;
-    dw $0009                                                             ;A9F98A;
-    dw Spritemap_BabyMetroid_1                                           ;A9F98C;
+    dw $0006,Spritemap_BabyMetroid_0                                     ;A9F95E;
+    dw $0005,Spritemap_BabyMetroid_1                                     ;A9F962;
+    dw $0004,Spritemap_BabyMetroid_2                                     ;A9F966;
+    dw $0003,Spritemap_BabyMetroid_1                                     ;A9F96A;
+    dw $0002,Spritemap_BabyMetroid_0                                     ;A9F96E;
+    dw $0003,Spritemap_BabyMetroid_1                                     ;A9F972;
+    dw $0004,Spritemap_BabyMetroid_2                                     ;A9F976;
+    dw $0005,Spritemap_BabyMetroid_1                                     ;A9F97A;
+    dw $0006,Spritemap_BabyMetroid_0                                     ;A9F97E;
+    dw $0007,Spritemap_BabyMetroid_1                                     ;A9F982;
+    dw $0008,Spritemap_BabyMetroid_2                                     ;A9F986;
+    dw $0009,Spritemap_BabyMetroid_1                                     ;A9F98A;
     dw Instruction_BabyMetroid_GotoRemorse                               ;A9F98E;
+
 
 Instruction_BabyMetroid_GotoRemorse:
     LDY.W #InstList_BabyMetroid_Remorse                                  ;A9F990;
@@ -14374,193 +13968,104 @@ Instruction_BabyMetroid_GotoY_OrPlayRemorseSFX:
 
 
 Spritemap_BabyMetroid_0:
-    dw $001E,$0000                                                       ;A9F9A8;
-    db $18                                                               ;A9F9AC;
-    dw $6120,$01F8                                                       ;A9F9AD;
-    db $18                                                               ;A9F9B1;
-    dw $2120,$C208                                                       ;A9F9B2;
-    db $18                                                               ;A9F9B6;
-    dw $6105,$C3E8                                                       ;A9F9B7;
-    db $18                                                               ;A9F9BB;
-    dw $2105,$C210                                                       ;A9F9BC;
-    db $18                                                               ;A9F9C0;
-    dw $6104,$C3E0                                                       ;A9F9C1;
-    db $18                                                               ;A9F9C5;
-    dw $2104,$C200                                                       ;A9F9C6;
-    db $08                                                               ;A9F9CA;
-    dw $6148,$C3F0                                                       ;A9F9CB;
-    db $08                                                               ;A9F9CF;
-    dw $2148,$C208                                                       ;A9F9D0;
-    db $08                                                               ;A9F9D4;
-    dw $6147,$C218                                                       ;A9F9D5;
-    db $08                                                               ;A9F9D9;
-    dw $6145,$C3E8                                                       ;A9F9DA;
-    db $08                                                               ;A9F9DE;
-    dw $2147,$C3D8                                                       ;A9F9DF;
-    db $08                                                               ;A9F9E3;
-    dw $2145,$C218                                                       ;A9F9E4;
-    db $F8                                                               ;A9F9E8;
-    dw $6125,$C208                                                       ;A9F9E9;
-    db $F8                                                               ;A9F9ED;
-    dw $6127,$C200                                                       ;A9F9EE;
-    db $F8                                                               ;A9F9F2;
-    dw $6128,$C3F0                                                       ;A9F9F3;
-    db $F8                                                               ;A9F9F7;
-    dw $2128,$C3E8                                                       ;A9F9F8;
-    db $F8                                                               ;A9F9FC;
-    dw $2127,$C3D8                                                       ;A9F9FD;
-    db $F8                                                               ;A9FA01;
-    dw $2125,$0018                                                       ;A9FA02;
-    db $E0                                                               ;A9FA06;
-    dw $6131,$C218                                                       ;A9FA07;
-    db $E8                                                               ;A9FA0B;
-    dw $6140,$C208                                                       ;A9FA0C;
-    db $E8                                                               ;A9FA10;
-    dw $6142,$C208                                                       ;A9FA11;
-    db $D8                                                               ;A9FA15;
-    dw $6122,$C200                                                       ;A9FA16;
-    db $D8                                                               ;A9FA1A;
-    dw $6123,$C200                                                       ;A9FA1B;
-    db $E8                                                               ;A9FA1F;
-    dw $6143,$C3F0                                                       ;A9FA20;
-    db $E8                                                               ;A9FA24;
-    dw $2143,$C3F0                                                       ;A9FA25;
-    db $D8                                                               ;A9FA29;
-    dw $2123,$01E0                                                       ;A9FA2A;
-    db $E0                                                               ;A9FA2E;
-    dw $2131,$C3D8                                                       ;A9FA2F;
-    db $E8                                                               ;A9FA33;
-    dw $2140,$C3E8                                                       ;A9FA34;
-    db $E8                                                               ;A9FA38;
-    dw $2142,$C3E8                                                       ;A9FA39;
-    db $D8                                                               ;A9FA3D;
-    dw $2122                                                             ;A9FA3E;
+    dw $001E                                                             ;A9F9A8;
+    %spritemapEntry(0, $00, $18, 0, 1, 2, 0, $120)
+    %spritemapEntry(0, $1F8, $18, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $4208, $18, 0, 1, 2, 0, $105)
+    %spritemapEntry(1, $43E8, $18, 0, 0, 2, 0, $105)
+    %spritemapEntry(1, $4210, $18, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $43E0, $18, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $4200, $08, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $43F0, $08, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $4208, $08, 0, 1, 2, 0, $147)
+    %spritemapEntry(1, $4218, $08, 0, 1, 2, 0, $145)
+    %spritemapEntry(1, $43E8, $08, 0, 0, 2, 0, $147)
+    %spritemapEntry(1, $43D8, $08, 0, 0, 2, 0, $145)
+    %spritemapEntry(1, $4218, $F8, 0, 1, 2, 0, $125)
+    %spritemapEntry(1, $4208, $F8, 0, 1, 2, 0, $127)
+    %spritemapEntry(1, $4200, $F8, 0, 1, 2, 0, $128)
+    %spritemapEntry(1, $43F0, $F8, 0, 0, 2, 0, $128)
+    %spritemapEntry(1, $43E8, $F8, 0, 0, 2, 0, $127)
+    %spritemapEntry(1, $43D8, $F8, 0, 0, 2, 0, $125)
+    %spritemapEntry(0, $18, $E0, 0, 1, 2, 0, $131)
+    %spritemapEntry(1, $4218, $E8, 0, 1, 2, 0, $140)
+    %spritemapEntry(1, $4208, $E8, 0, 1, 2, 0, $142)
+    %spritemapEntry(1, $4208, $D8, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $4200, $D8, 0, 1, 2, 0, $123)
+    %spritemapEntry(1, $4200, $E8, 0, 1, 2, 0, $143)
+    %spritemapEntry(1, $43F0, $E8, 0, 0, 2, 0, $143)
+    %spritemapEntry(1, $43F0, $D8, 0, 0, 2, 0, $123)
+    %spritemapEntry(0, $1E0, $E0, 0, 0, 2, 0, $131)
+    %spritemapEntry(1, $43D8, $E8, 0, 0, 2, 0, $140)
+    %spritemapEntry(1, $43E8, $E8, 0, 0, 2, 0, $142)
+    %spritemapEntry(1, $43E8, $D8, 0, 0, 2, 0, $122)
 
 Spritemap_BabyMetroid_1:
-    dw $001E,$C200                                                       ;A9FA40;
-    db $08                                                               ;A9FA44;
-    dw $614E,$C3F0                                                       ;A9FA45;
-    db $08                                                               ;A9FA49;
-    dw $214E,$C218                                                       ;A9FA4A;
-    db $08                                                               ;A9FA4E;
-    dw $6145,$C210                                                       ;A9FA4F;
-    db $08                                                               ;A9FA53;
-    dw $612E,$C3E0                                                       ;A9FA54;
-    db $08                                                               ;A9FA58;
-    dw $212E,$C3D8                                                       ;A9FA59;
-    db $08                                                               ;A9FA5D;
-    dw $2145,$000D                                                       ;A9FA5E;
-    db $28                                                               ;A9FA62;
-    dw $6130,$01EB                                                       ;A9FA63;
-    db $28                                                               ;A9FA67;
-    dw $2130,$C200                                                       ;A9FA68;
-    db $18                                                               ;A9FA6C;
-    dw $6102,$C210                                                       ;A9FA6D;
-    db $18                                                               ;A9FA71;
-    dw $6100,$C3F0                                                       ;A9FA72;
-    db $18                                                               ;A9FA76;
-    dw $2102,$C3E0                                                       ;A9FA77;
-    db $18                                                               ;A9FA7B;
-    dw $2100,$C200                                                       ;A9FA7C;
-    db $F8                                                               ;A9FA80;
-    dw $6128,$C3F0                                                       ;A9FA81;
-    db $F8                                                               ;A9FA85;
-    dw $2128,$C208                                                       ;A9FA86;
-    db $F8                                                               ;A9FA8A;
-    dw $6127,$C218                                                       ;A9FA8B;
-    db $F8                                                               ;A9FA8F;
-    dw $6125,$C3E8                                                       ;A9FA90;
-    db $F8                                                               ;A9FA94;
-    dw $2127,$C3D8                                                       ;A9FA95;
-    db $F8                                                               ;A9FA99;
-    dw $2125,$C200                                                       ;A9FA9A;
-    db $E8                                                               ;A9FA9E;
-    dw $6143,$C200                                                       ;A9FA9F;
-    db $D8                                                               ;A9FAA3;
-    dw $6123,$C3F0                                                       ;A9FAA4;
-    db $E8                                                               ;A9FAA8;
-    dw $2143,$C3F0                                                       ;A9FAA9;
-    db $D8                                                               ;A9FAAD;
-    dw $2123,$C218                                                       ;A9FAAE;
-    db $E8                                                               ;A9FAB2;
-    dw $6140,$C208                                                       ;A9FAB3;
-    db $E8                                                               ;A9FAB7;
-    dw $6142,$C208                                                       ;A9FAB8;
-    db $D8                                                               ;A9FABC;
-    dw $6122,$C3E8                                                       ;A9FABD;
-    db $E8                                                               ;A9FAC1;
-    dw $2142,$C3E8                                                       ;A9FAC2;
-    db $D8                                                               ;A9FAC6;
-    dw $2122,$C3D8                                                       ;A9FAC7;
-    db $E8                                                               ;A9FACB;
-    dw $2140,$0018                                                       ;A9FACC;
-    db $E0                                                               ;A9FAD0;
-    dw $6131,$01E0                                                       ;A9FAD1;
-    db $E0                                                               ;A9FAD5;
-    dw $2131                                                             ;A9FAD6;
+    dw $001E                                                             ;A9FA40;
+    %spritemapEntry(1, $4200, $08, 0, 1, 2, 0, $14E)
+    %spritemapEntry(1, $43F0, $08, 0, 0, 2, 0, $14E)
+    %spritemapEntry(1, $4218, $08, 0, 1, 2, 0, $145)
+    %spritemapEntry(1, $4210, $08, 0, 1, 2, 0, $12E)
+    %spritemapEntry(1, $43E0, $08, 0, 0, 2, 0, $12E)
+    %spritemapEntry(1, $43D8, $08, 0, 0, 2, 0, $145)
+    %spritemapEntry(0, $0D, $28, 0, 1, 2, 0, $130)
+    %spritemapEntry(0, $1EB, $28, 0, 0, 2, 0, $130)
+    %spritemapEntry(1, $4200, $18, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $4210, $18, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $43F0, $18, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $43E0, $18, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $4200, $F8, 0, 1, 2, 0, $128)
+    %spritemapEntry(1, $43F0, $F8, 0, 0, 2, 0, $128)
+    %spritemapEntry(1, $4208, $F8, 0, 1, 2, 0, $127)
+    %spritemapEntry(1, $4218, $F8, 0, 1, 2, 0, $125)
+    %spritemapEntry(1, $43E8, $F8, 0, 0, 2, 0, $127)
+    %spritemapEntry(1, $43D8, $F8, 0, 0, 2, 0, $125)
+    %spritemapEntry(1, $4200, $E8, 0, 1, 2, 0, $143)
+    %spritemapEntry(1, $4200, $D8, 0, 1, 2, 0, $123)
+    %spritemapEntry(1, $43F0, $E8, 0, 0, 2, 0, $143)
+    %spritemapEntry(1, $43F0, $D8, 0, 0, 2, 0, $123)
+    %spritemapEntry(1, $4218, $E8, 0, 1, 2, 0, $140)
+    %spritemapEntry(1, $4208, $E8, 0, 1, 2, 0, $142)
+    %spritemapEntry(1, $4208, $D8, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $43E8, $E8, 0, 0, 2, 0, $142)
+    %spritemapEntry(1, $43E8, $D8, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $43D8, $E8, 0, 0, 2, 0, $140)
+    %spritemapEntry(0, $18, $E0, 0, 1, 2, 0, $131)
+    %spritemapEntry(0, $1E0, $E0, 0, 0, 2, 0, $131)
 
 Spritemap_BabyMetroid_2:
-    dw $001E,$C208                                                       ;A9FAD8;
-    db $F8                                                               ;A9FADC;
-    dw $6127,$C3E8                                                       ;A9FADD;
-    db $F8                                                               ;A9FAE1;
-    dw $2127,$0015                                                       ;A9FAE2;
-    db $28                                                               ;A9FAE6;
-    dw $6121,$01E3                                                       ;A9FAE7;
-    db $28                                                               ;A9FAEB;
-    dw $2121,$C200                                                       ;A9FAEC;
-    db $18                                                               ;A9FAF0;
-    dw $614C,$C210                                                       ;A9FAF1;
-    db $18                                                               ;A9FAF5;
-    dw $614A,$C200                                                       ;A9FAF6;
-    db $08                                                               ;A9FAFA;
-    dw $612C,$C210                                                       ;A9FAFB;
-    db $08                                                               ;A9FAFF;
-    dw $612A,$C3F0                                                       ;A9FB00;
-    db $18                                                               ;A9FB04;
-    dw $214C,$C3E0                                                       ;A9FB05;
-    db $18                                                               ;A9FB09;
-    dw $214A,$C3F0                                                       ;A9FB0A;
-    db $08                                                               ;A9FB0E;
-    dw $212C,$C3E0                                                       ;A9FB0F;
-    db $08                                                               ;A9FB13;
-    dw $212A,$C218                                                       ;A9FB14;
-    db $08                                                               ;A9FB18;
-    dw $6145,$C3D8                                                       ;A9FB19;
-    db $08                                                               ;A9FB1D;
-    dw $2145,$C200                                                       ;A9FB1E;
-    db $F8                                                               ;A9FB22;
-    dw $6128,$C3F0                                                       ;A9FB23;
-    db $F8                                                               ;A9FB27;
-    dw $2128,$C218                                                       ;A9FB28;
-    db $F8                                                               ;A9FB2C;
-    dw $6125,$C3D8                                                       ;A9FB2D;
-    db $F8                                                               ;A9FB31;
-    dw $2125,$0018                                                       ;A9FB32;
-    db $E0                                                               ;A9FB36;
-    dw $6131,$01E0                                                       ;A9FB37;
-    db $E0                                                               ;A9FB3B;
-    dw $2131,$C200                                                       ;A9FB3C;
-    db $E8                                                               ;A9FB40;
-    dw $6143,$C200                                                       ;A9FB41;
-    db $D8                                                               ;A9FB45;
-    dw $6123,$C3F0                                                       ;A9FB46;
-    db $E8                                                               ;A9FB4A;
-    dw $2143,$C3F0                                                       ;A9FB4B;
-    db $D8                                                               ;A9FB4F;
-    dw $2123,$C208                                                       ;A9FB50;
-    db $E8                                                               ;A9FB54;
-    dw $6142,$C208                                                       ;A9FB55;
-    db $D8                                                               ;A9FB59;
-    dw $6122,$C3E8                                                       ;A9FB5A;
-    db $E8                                                               ;A9FB5E;
-    dw $2142,$C3E8                                                       ;A9FB5F;
-    db $D8                                                               ;A9FB63;
-    dw $2122,$C218                                                       ;A9FB64;
-    db $E8                                                               ;A9FB68;
-    dw $6140,$C3D8                                                       ;A9FB69;
-    db $E8                                                               ;A9FB6D;
-    dw $2140                                                             ;A9FB6E;
+    dw $001E                                                             ;A9FAD8;
+    %spritemapEntry(1, $4208, $F8, 0, 1, 2, 0, $127)
+    %spritemapEntry(1, $43E8, $F8, 0, 0, 2, 0, $127)
+    %spritemapEntry(0, $15, $28, 0, 1, 2, 0, $121)
+    %spritemapEntry(0, $1E3, $28, 0, 0, 2, 0, $121)
+    %spritemapEntry(1, $4200, $18, 0, 1, 2, 0, $14C)
+    %spritemapEntry(1, $4210, $18, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $4200, $08, 0, 1, 2, 0, $12C)
+    %spritemapEntry(1, $4210, $08, 0, 1, 2, 0, $12A)
+    %spritemapEntry(1, $43F0, $18, 0, 0, 2, 0, $14C)
+    %spritemapEntry(1, $43E0, $18, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $43F0, $08, 0, 0, 2, 0, $12C)
+    %spritemapEntry(1, $43E0, $08, 0, 0, 2, 0, $12A)
+    %spritemapEntry(1, $4218, $08, 0, 1, 2, 0, $145)
+    %spritemapEntry(1, $43D8, $08, 0, 0, 2, 0, $145)
+    %spritemapEntry(1, $4200, $F8, 0, 1, 2, 0, $128)
+    %spritemapEntry(1, $43F0, $F8, 0, 0, 2, 0, $128)
+    %spritemapEntry(1, $4218, $F8, 0, 1, 2, 0, $125)
+    %spritemapEntry(1, $43D8, $F8, 0, 0, 2, 0, $125)
+    %spritemapEntry(0, $18, $E0, 0, 1, 2, 0, $131)
+    %spritemapEntry(0, $1E0, $E0, 0, 0, 2, 0, $131)
+    %spritemapEntry(1, $4200, $E8, 0, 1, 2, 0, $143)
+    %spritemapEntry(1, $4200, $D8, 0, 1, 2, 0, $123)
+    %spritemapEntry(1, $43F0, $E8, 0, 0, 2, 0, $143)
+    %spritemapEntry(1, $43F0, $D8, 0, 0, 2, 0, $123)
+    %spritemapEntry(1, $4208, $E8, 0, 1, 2, 0, $142)
+    %spritemapEntry(1, $4208, $D8, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $43E8, $E8, 0, 0, 2, 0, $142)
+    %spritemapEntry(1, $43E8, $D8, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $4218, $E8, 0, 1, 2, 0, $140)
+    %spritemapEntry(1, $43D8, $E8, 0, 0, 2, 0, $140)
+
 
 Freespace_BankA9_FB70:                                                   ;A9FB70;
 ; $490 bytes
