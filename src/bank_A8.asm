@@ -89,12 +89,14 @@ Spritemap_CommonA8_Nothing:
     dw $0000                                                             ;A8804D;
 
 ExtendedSpritemap_CommonA8_Nothing:
-    dw $0001,$0000,$0000                                                 ;A8804F;
+    dw $0001                                                             ;A8804F;
+    dw $0000,$0000
     dw Spritemap_CommonA8_Nothing                                        ;A88055;
     dw Hitbox_CommonA8_Nothing                                           ;A88057;
 
 Hitbox_CommonA8_Nothing:
-    dw $0001,$0000,$0000,$0000,$0000                                     ;A88059;
+    dw $0001                                                             ;A88059;
+    dw $0000,$0000,$0000,$0000
     dw CommonA8_NormalEnemyTouchAI                                       ;A88063;
     dw CommonA8_NormalEnemyShotAI                                        ;A88065;
 
@@ -533,132 +535,82 @@ Palette_Evir:
     dw $158C,$03FF,$02B9,$0170,$0069,$0BB1,$1EA9,$0145                   ;A88697;
 
 InstList_Evir_Body_FacingLeft:
-    dw $000A                                                             ;A886A7;
-    dw Spritemap_Evir_0                                                  ;A886A9;
-    dw $000A                                                             ;A886AB;
-    dw Spritemap_Evir_1                                                  ;A886AD;
-    dw $000A                                                             ;A886AF;
-    dw Spritemap_Evir_2                                                  ;A886B1;
-    dw $000A                                                             ;A886B3;
-    dw Spritemap_Evir_3                                                  ;A886B5;
-    dw $000A                                                             ;A886B7;
-    dw Spritemap_Evir_4                                                  ;A886B9;
-    dw $000A                                                             ;A886BB;
-    dw Spritemap_Evir_5                                                  ;A886BD;
+    dw $000A,Spritemap_Evir_0                                            ;A886A7;
+    dw $000A,Spritemap_Evir_1                                            ;A886AB;
+    dw $000A,Spritemap_Evir_2                                            ;A886AF;
+    dw $000A,Spritemap_Evir_3                                            ;A886B3;
+    dw $000A,Spritemap_Evir_4                                            ;A886B7;
+    dw $000A,Spritemap_Evir_5                                            ;A886BB;
     dw Instruction_Common_GotoY                                          ;A886BF;
     dw InstList_Evir_Body_FacingLeft                                     ;A886C1;
 
 InstList_Evir_Arms_FacingLeft:
-    dw $000A                                                             ;A886C3;
-    dw Spritemap_Evir_6                                                  ;A886C5;
-    dw $000A                                                             ;A886C7;
-    dw Spritemap_Evir_7                                                  ;A886C9;
-    dw $000A                                                             ;A886CB;
-    dw Spritemap_Evir_8                                                  ;A886CD;
-    dw $000A                                                             ;A886CF;
-    dw Spritemap_Evir_9                                                  ;A886D1;
-    dw $000A                                                             ;A886D3;
-    dw Spritemap_Evir_6                                                  ;A886D5;
-    dw $000A                                                             ;A886D7;
-    dw Spritemap_Evir_7                                                  ;A886D9;
-    dw $000A                                                             ;A886DB;
-    dw Spritemap_Evir_8                                                  ;A886DD;
-    dw $000A                                                             ;A886DF;
-    dw Spritemap_Evir_9                                                  ;A886E1;
-    dw $000A                                                             ;A886E3;
-    dw Spritemap_Evir_6                                                  ;A886E5;
-    dw $000A                                                             ;A886E7;
-    dw Spritemap_Evir_7                                                  ;A886E9;
-    dw $000A                                                             ;A886EB;
-    dw Spritemap_Evir_8                                                  ;A886ED;
-    dw $000A                                                             ;A886EF;
-    dw Spritemap_Evir_9                                                  ;A886F1;
-    dw $000A                                                             ;A886F3;
-    dw Spritemap_Evir_6                                                  ;A886F5;
-    dw $000A                                                             ;A886F7;
-    dw Spritemap_Evir_7                                                  ;A886F9;
-    dw $000A                                                             ;A886FB;
-    dw Spritemap_Evir_8                                                  ;A886FD;
-    dw $000A                                                             ;A886FF;
-    dw Spritemap_Evir_9                                                  ;A88701;
-    dw $0030                                                             ;A88703;
-    dw Spritemap_Evir_A                                                  ;A88705;
+    dw $000A,Spritemap_Evir_6                                            ;A886C3;
+    dw $000A,Spritemap_Evir_7                                            ;A886C7;
+    dw $000A,Spritemap_Evir_8                                            ;A886CB;
+    dw $000A,Spritemap_Evir_9                                            ;A886CF;
+    dw $000A,Spritemap_Evir_6                                            ;A886D3;
+    dw $000A,Spritemap_Evir_7                                            ;A886D7;
+    dw $000A,Spritemap_Evir_8                                            ;A886DB;
+    dw $000A,Spritemap_Evir_9                                            ;A886DF;
+    dw $000A,Spritemap_Evir_6                                            ;A886E3;
+    dw $000A,Spritemap_Evir_7                                            ;A886E7;
+    dw $000A,Spritemap_Evir_8                                            ;A886EB;
+    dw $000A,Spritemap_Evir_9                                            ;A886EF;
+    dw $000A,Spritemap_Evir_6                                            ;A886F3;
+    dw $000A,Spritemap_Evir_7                                            ;A886F7;
+    dw $000A,Spritemap_Evir_8                                            ;A886FB;
+    dw $000A,Spritemap_Evir_9                                            ;A886FF;
+    dw $0030,Spritemap_Evir_A                                            ;A88703;
     dw Instruction_Common_GotoY                                          ;A88707;
     dw InstList_Evir_Arms_FacingLeft                                     ;A88709;
 
 InstList_Evir_Body_FacingRight:
-    dw $000A                                                             ;A8870B;
-    dw Spritemap_Evir_D                                                  ;A8870D;
-    dw $000A                                                             ;A8870F;
-    dw Spritemap_Evir_E                                                  ;A88711;
-    dw $000A                                                             ;A88713;
-    dw Spritemap_Evir_F                                                  ;A88715;
-    dw $000A                                                             ;A88717;
-    dw Spritemap_Evir_10                                                 ;A88719;
-    dw $000A                                                             ;A8871B;
-    dw Spritemap_Evir_11                                                 ;A8871D;
-    dw $000A                                                             ;A8871F;
-    dw Spritemap_Evir_12                                                 ;A88721;
+    dw $000A,Spritemap_Evir_D                                            ;A8870B;
+    dw $000A,Spritemap_Evir_E                                            ;A8870F;
+    dw $000A,Spritemap_Evir_F                                            ;A88713;
+    dw $000A,Spritemap_Evir_10                                           ;A88717;
+    dw $000A,Spritemap_Evir_11                                           ;A8871B;
+    dw $000A,Spritemap_Evir_12                                           ;A8871F;
     dw Instruction_CommonA8_GotoY                                        ;A88723;
     dw InstList_Evir_Body_FacingRight                                    ;A88725;
 
 InstList_Evir_Arms_FacingRight:
-    dw $000A                                                             ;A88727;
-    dw Spritemap_Evir_13                                                 ;A88729;
-    dw $000A                                                             ;A8872B;
-    dw Spritemap_Evir_14                                                 ;A8872D;
-    dw $000A                                                             ;A8872F;
-    dw Spritemap_Evir_15                                                 ;A88731;
-    dw $000A                                                             ;A88733;
-    dw Spritemap_Evir_16                                                 ;A88735;
-    dw $000A                                                             ;A88737;
-    dw Spritemap_Evir_13                                                 ;A88739;
-    dw $000A                                                             ;A8873B;
-    dw Spritemap_Evir_14                                                 ;A8873D;
-    dw $000A                                                             ;A8873F;
-    dw Spritemap_Evir_15                                                 ;A88741;
-    dw $000A                                                             ;A88743;
-    dw Spritemap_Evir_16                                                 ;A88745;
-    dw $000A                                                             ;A88747;
-    dw Spritemap_Evir_13                                                 ;A88749;
-    dw $000A                                                             ;A8874B;
-    dw Spritemap_Evir_14                                                 ;A8874D;
-    dw $000A                                                             ;A8874F;
-    dw Spritemap_Evir_15                                                 ;A88751;
-    dw $000A                                                             ;A88753;
-    dw Spritemap_Evir_16                                                 ;A88755;
-    dw $000A                                                             ;A88757;
-    dw Spritemap_Evir_13                                                 ;A88759;
-    dw $000A                                                             ;A8875B;
-    dw Spritemap_Evir_14                                                 ;A8875D;
-    dw $000A                                                             ;A8875F;
-    dw Spritemap_Evir_15                                                 ;A88761;
-    dw $000A                                                             ;A88763;
-    dw Spritemap_Evir_16                                                 ;A88765;
-    dw $0030                                                             ;A88767;
-    dw Spritemap_Evir_17                                                 ;A88769;
+    dw $000A,Spritemap_Evir_13                                           ;A88727;
+    dw $000A,Spritemap_Evir_14                                           ;A8872B;
+    dw $000A,Spritemap_Evir_15                                           ;A8872F;
+    dw $000A,Spritemap_Evir_16                                           ;A88733;
+    dw $000A,Spritemap_Evir_13                                           ;A88737;
+    dw $000A,Spritemap_Evir_14                                           ;A8873B;
+    dw $000A,Spritemap_Evir_15                                           ;A8873F;
+    dw $000A,Spritemap_Evir_16                                           ;A88743;
+    dw $000A,Spritemap_Evir_13                                           ;A88747;
+    dw $000A,Spritemap_Evir_14                                           ;A8874B;
+    dw $000A,Spritemap_Evir_15                                           ;A8874F;
+    dw $000A,Spritemap_Evir_16                                           ;A88753;
+    dw $000A,Spritemap_Evir_13                                           ;A88757;
+    dw $000A,Spritemap_Evir_14                                           ;A8875B;
+    dw $000A,Spritemap_Evir_15                                           ;A8875F;
+    dw $000A,Spritemap_Evir_16                                           ;A88763;
+    dw $0030,Spritemap_Evir_17                                           ;A88767;
     dw Instruction_Common_GotoY                                          ;A8876B;
     dw InstList_Evir_Arms_FacingRight                                    ;A8876D;
 
 InstList_Evir_Projectile_Normal:
-    dw $0001                                                             ;A8876F;
-    dw Spritemap_Evir_C                                                  ;A88771;
+    dw $0001,Spritemap_Evir_C                                            ;A8876F;
     dw Instruction_Common_Sleep                                          ;A88773;
 
 InstList_Evir_Projectile_Regenerating_0:
     dw Instruction_Evir_SetInitialRegenerationXOffset                    ;A88775;
-    dw Instruction_Common_TimerInY                                       ;A88777;
-    dw $0008                                                             ;A88779;
+    dw Instruction_Common_TimerInY,$0008                                 ;A88777;
     dw Instruction_Evir_PlaySpitSFX                                      ;A8877B;
 
 InstList_Evir_Projectile_Regenerating_1:
-    dw $0008                                                             ;A8877D;
-    dw Spritemap_Evir_B                                                  ;A8877F;
+    dw $0008,Spritemap_Evir_B                                            ;A8877D;
     dw Instruction_Evir_AdvanceRegenerationXOffset                       ;A88781;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;A88783;
     dw InstList_Evir_Projectile_Regenerating_1                           ;A88785;
-    dw $0010                                                             ;A88787;
-    dw Spritemap_Evir_C                                                  ;A88789;
+    dw $0010,Spritemap_Evir_C                                            ;A88787;
     dw Instruction_Evir_FinishRegeneration                               ;A8878B;
     dw Instruction_Common_Sleep                                          ;A8878D;
 
@@ -1157,628 +1109,394 @@ ContactReaction_Evir_Common:
 
 
 Spritemap_Evir_0:
-    dw $0009,$81FE                                                       ;A88B59;
-    db $FB                                                               ;A88B5D;
-    dw $2106,$81EE                                                       ;A88B5E;
-    db $FB                                                               ;A88B62;
-    dw $2104,$81FE                                                       ;A88B63;
-    db $EB                                                               ;A88B67;
-    dw $2102,$81EE                                                       ;A88B68;
-    db $EB                                                               ;A88B6C;
-    dw $2100,$8002                                                       ;A88B6D;
-    db $FB                                                               ;A88B71;
-    dw $2108,$8001                                                       ;A88B72;
-    db $01                                                               ;A88B76;
-    dw $2108,$81FF                                                       ;A88B77;
-    db $07                                                               ;A88B7B;
-    dw $210C,$01FE                                                       ;A88B7C;
-    db $10                                                               ;A88B80;
-    dw $2126,$01FE                                                       ;A88B81;
-    db $08                                                               ;A88B85;
-    dw $2125                                                             ;A88B86;
+    dw $0009                                                             ;A88B59;
+    %spritemapEntry(1, $1FE, $FB, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1EE, $FB, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1FE, $EB, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1EE, $EB, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $02, $FB, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $01, $01, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $1FF, $07, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $1FE, $10, 0, 0, 2, 0, $126)
+    %spritemapEntry(0, $1FE, $08, 0, 0, 2, 0, $125)
 
 Spritemap_Evir_1:
-    dw $0009,$81FE                                                       ;A88B88;
-    db $FB                                                               ;A88B8C;
-    dw $2106,$81EE                                                       ;A88B8D;
-    db $FB                                                               ;A88B91;
-    dw $2104,$81FE                                                       ;A88B92;
-    db $EB                                                               ;A88B96;
-    dw $2102,$81EE                                                       ;A88B97;
-    db $EB                                                               ;A88B9B;
-    dw $2100,$8002                                                       ;A88B9C;
-    db $FC                                                               ;A88BA0;
-    dw $2108,$8001                                                       ;A88BA1;
-    db $02                                                               ;A88BA5;
-    dw $2108,$81FF                                                       ;A88BA6;
-    db $07                                                               ;A88BAA;
-    dw $210C,$01FE                                                       ;A88BAB;
-    db $10                                                               ;A88BAF;
-    dw $2126,$01FE                                                       ;A88BB0;
-    db $08                                                               ;A88BB4;
-    dw $2125                                                             ;A88BB5;
+    dw $0009                                                             ;A88B88;
+    %spritemapEntry(1, $1FE, $FB, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1EE, $FB, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1FE, $EB, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1EE, $EB, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $02, $FC, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $01, $02, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $1FF, $07, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $1FE, $10, 0, 0, 2, 0, $126)
+    %spritemapEntry(0, $1FE, $08, 0, 0, 2, 0, $125)
 
 Spritemap_Evir_2:
-    dw $0009,$81FE                                                       ;A88BB7;
-    db $FB                                                               ;A88BBB;
-    dw $2106,$81EE                                                       ;A88BBC;
-    db $FB                                                               ;A88BC0;
-    dw $2104,$81FE                                                       ;A88BC1;
-    db $EB                                                               ;A88BC5;
-    dw $2102,$81EE                                                       ;A88BC6;
-    db $EB                                                               ;A88BCA;
-    dw $2100,$8002                                                       ;A88BCB;
-    db $FD                                                               ;A88BCF;
-    dw $2108,$8001                                                       ;A88BD0;
-    db $03                                                               ;A88BD4;
-    dw $2108,$81FF                                                       ;A88BD5;
-    db $08                                                               ;A88BD9;
-    dw $210C,$01FE                                                       ;A88BDA;
-    db $11                                                               ;A88BDE;
-    dw $2126,$01FE                                                       ;A88BDF;
-    db $09                                                               ;A88BE3;
-    dw $2125                                                             ;A88BE4;
+    dw $0009                                                             ;A88BB7;
+    %spritemapEntry(1, $1FE, $FB, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1EE, $FB, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1FE, $EB, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1EE, $EB, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $02, $FD, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $01, $03, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $1FF, $08, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $1FE, $11, 0, 0, 2, 0, $126)
+    %spritemapEntry(0, $1FE, $09, 0, 0, 2, 0, $125)
 
 Spritemap_Evir_3:
-    dw $0009,$81FE                                                       ;A88BE6;
-    db $FB                                                               ;A88BEA;
-    dw $2106,$81EE                                                       ;A88BEB;
-    db $FB                                                               ;A88BEF;
-    dw $2104,$81FE                                                       ;A88BF0;
-    db $EB                                                               ;A88BF4;
-    dw $2102,$81EE                                                       ;A88BF5;
-    db $EB                                                               ;A88BF9;
-    dw $2100,$8002                                                       ;A88BFA;
-    db $FD                                                               ;A88BFE;
-    dw $2108,$8001                                                       ;A88BFF;
-    db $04                                                               ;A88C03;
-    dw $2108,$81FF                                                       ;A88C04;
-    db $09                                                               ;A88C08;
-    dw $210C,$01FE                                                       ;A88C09;
-    db $12                                                               ;A88C0D;
-    dw $2126,$01FE                                                       ;A88C0E;
-    db $0A                                                               ;A88C12;
-    dw $2125                                                             ;A88C13;
+    dw $0009                                                             ;A88BE6;
+    %spritemapEntry(1, $1FE, $FB, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1EE, $FB, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1FE, $EB, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1EE, $EB, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $02, $FD, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $01, $04, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $1FF, $09, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $1FE, $12, 0, 0, 2, 0, $126)
+    %spritemapEntry(0, $1FE, $0A, 0, 0, 2, 0, $125)
 
 Spritemap_Evir_4:
-    dw $0009,$81FE                                                       ;A88C15;
-    db $FB                                                               ;A88C19;
-    dw $2106,$81EE                                                       ;A88C1A;
-    db $FB                                                               ;A88C1E;
-    dw $2104,$81FE                                                       ;A88C1F;
-    db $EB                                                               ;A88C23;
-    dw $2102,$81EE                                                       ;A88C24;
-    db $EB                                                               ;A88C28;
-    dw $2100,$8002                                                       ;A88C29;
-    db $FD                                                               ;A88C2D;
-    dw $2108,$8001                                                       ;A88C2E;
-    db $04                                                               ;A88C32;
-    dw $2108,$81FF                                                       ;A88C33;
-    db $0A                                                               ;A88C37;
-    dw $210C,$01FE                                                       ;A88C38;
-    db $11                                                               ;A88C3C;
-    dw $2126,$01FE                                                       ;A88C3D;
-    db $09                                                               ;A88C41;
-    dw $2125                                                             ;A88C42;
+    dw $0009                                                             ;A88C15;
+    %spritemapEntry(1, $1FE, $FB, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1EE, $FB, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1FE, $EB, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1EE, $EB, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $02, $FD, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $01, $04, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $1FF, $0A, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $1FE, $11, 0, 0, 2, 0, $126)
+    %spritemapEntry(0, $1FE, $09, 0, 0, 2, 0, $125)
 
 Spritemap_Evir_5:
-    dw $0009,$81FE                                                       ;A88C44;
-    db $FB                                                               ;A88C48;
-    dw $2106,$81EE                                                       ;A88C49;
-    db $FB                                                               ;A88C4D;
-    dw $2104,$81FE                                                       ;A88C4E;
-    db $EB                                                               ;A88C52;
-    dw $2102,$81EE                                                       ;A88C53;
-    db $EB                                                               ;A88C57;
-    dw $2100,$8002                                                       ;A88C58;
-    db $FC                                                               ;A88C5C;
-    dw $2108,$8001                                                       ;A88C5D;
-    db $03                                                               ;A88C61;
-    dw $2108,$81FF                                                       ;A88C62;
-    db $09                                                               ;A88C66;
-    dw $210C,$01FE                                                       ;A88C67;
-    db $10                                                               ;A88C6B;
-    dw $2126,$01FE                                                       ;A88C6C;
-    db $08                                                               ;A88C70;
-    dw $2125                                                             ;A88C71;
+    dw $0009                                                             ;A88C44;
+    %spritemapEntry(1, $1FE, $FB, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1EE, $FB, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1FE, $EB, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1EE, $EB, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $02, $FC, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $01, $03, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $1FF, $09, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $1FE, $10, 0, 0, 2, 0, $126)
+    %spritemapEntry(0, $1FE, $08, 0, 0, 2, 0, $125)
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemap_Evir_A88C73:
-    dw $0009,$81FE                                                       ;A88C73;
-    db $FB                                                               ;A88C77;
-    dw $2106,$81EE                                                       ;A88C78;
-    db $FB                                                               ;A88C7C;
-    dw $2104,$81FE                                                       ;A88C7D;
-    db $EB                                                               ;A88C81;
-    dw $2102,$81EE                                                       ;A88C82;
-    db $EB                                                               ;A88C86;
-    dw $2100,$8002                                                       ;A88C87;
-    db $FB                                                               ;A88C8B;
-    dw $2108,$8001                                                       ;A88C8C;
-    db $01                                                               ;A88C90;
-    dw $2108,$81FF                                                       ;A88C91;
-    db $07                                                               ;A88C95;
-    dw $210C,$01FE                                                       ;A88C96;
-    db $10                                                               ;A88C9A;
-    dw $2126,$01FE                                                       ;A88C9B;
-    db $08                                                               ;A88C9F;
-    dw $2125                                                             ;A88CA0;
+    dw $0009                                                             ;A88C73;
+    %spritemapEntry(1, $1FE, $FB, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1EE, $FB, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1FE, $EB, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1EE, $EB, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $02, $FB, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $01, $01, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $1FF, $07, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $1FE, $10, 0, 0, 2, 0, $126)
+    %spritemapEntry(0, $1FE, $08, 0, 0, 2, 0, $125)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Spritemap_Evir_6:
-    dw $0005,$0000                                                       ;A88CA2;
-    db $F8                                                               ;A88CA6;
-    dw $2123,$01F8                                                       ;A88CA7;
-    db $F8                                                               ;A88CAB;
-    dw $2122,$0002                                                       ;A88CAC;
-    db $FC                                                               ;A88CB0;
-    dw $2124,$01FE                                                       ;A88CB1;
-    db $F4                                                               ;A88CB5;
-    dw $2121,$01F6                                                       ;A88CB6;
-    db $F4                                                               ;A88CBA;
-    dw $2120                                                             ;A88CBB;
+    dw $0005                                                             ;A88CA2;
+    %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $123)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 0, $122)
+    %spritemapEntry(0, $02, $FC, 0, 0, 2, 0, $124)
+    %spritemapEntry(0, $1FE, $F4, 0, 0, 2, 0, $121)
+    %spritemapEntry(0, $1F6, $F4, 0, 0, 2, 0, $120)
 
 Spritemap_Evir_7:
-    dw $0005,$01FE                                                       ;A88CBD;
-    db $F4                                                               ;A88CC1;
-    dw $2123,$01F6                                                       ;A88CC2;
-    db $F4                                                               ;A88CC6;
-    dw $2122,$0000                                                       ;A88CC7;
-    db $F8                                                               ;A88CCB;
-    dw $2124,$0002                                                       ;A88CCC;
-    db $FC                                                               ;A88CD0;
-    dw $2123,$01FA                                                       ;A88CD1;
-    db $FC                                                               ;A88CD5;
-    dw $2122                                                             ;A88CD6;
+    dw $0005                                                             ;A88CBD;
+    %spritemapEntry(0, $1FE, $F4, 0, 0, 2, 0, $123)
+    %spritemapEntry(0, $1F6, $F4, 0, 0, 2, 0, $122)
+    %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $124)
+    %spritemapEntry(0, $02, $FC, 0, 0, 2, 0, $123)
+    %spritemapEntry(0, $1FA, $FC, 0, 0, 2, 0, $122)
 
 Spritemap_Evir_8:
-    dw $0005,$01FE                                                       ;A88CD8;
-    db $F4                                                               ;A88CDC;
-    dw $2124,$01F8                                                       ;A88CDD;
-    db $F8                                                               ;A88CE1;
-    dw $2122,$0000                                                       ;A88CE2;
-    db $F8                                                               ;A88CE6;
-    dw $2123,$0002                                                       ;A88CE7;
-    db $FC                                                               ;A88CEB;
-    dw $2121,$01FA                                                       ;A88CEC;
-    db $FC                                                               ;A88CF0;
-    dw $2120                                                             ;A88CF1;
+    dw $0005                                                             ;A88CD8;
+    %spritemapEntry(0, $1FE, $F4, 0, 0, 2, 0, $124)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 0, $122)
+    %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $123)
+    %spritemapEntry(0, $02, $FC, 0, 0, 2, 0, $121)
+    %spritemapEntry(0, $1FA, $FC, 0, 0, 2, 0, $120)
 
 Spritemap_Evir_9:
-    dw $0006,$01FE                                                       ;A88CF3;
-    db $F4                                                               ;A88CF7;
-    dw $2123,$01F6                                                       ;A88CF8;
-    db $F4                                                               ;A88CFC;
-    dw $2122,$01F8                                                       ;A88CFD;
-    db $F8                                                               ;A88D01;
-    dw $2120,$0000                                                       ;A88D02;
-    db $F8                                                               ;A88D06;
-    dw $2121,$0002                                                       ;A88D07;
-    db $FC                                                               ;A88D0B;
-    dw $2123,$01FA                                                       ;A88D0C;
-    db $FC                                                               ;A88D10;
-    dw $2122                                                             ;A88D11;
+    dw $0006                                                             ;A88CF3;
+    %spritemapEntry(0, $1FE, $F4, 0, 0, 2, 0, $123)
+    %spritemapEntry(0, $1F6, $F4, 0, 0, 2, 0, $122)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 0, $120)
+    %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $121)
+    %spritemapEntry(0, $02, $FC, 0, 0, 2, 0, $123)
+    %spritemapEntry(0, $1FA, $FC, 0, 0, 2, 0, $122)
 
 Spritemap_Evir_A:
-    dw $0003,$01FE                                                       ;A88D13;
-    db $F4                                                               ;A88D17;
-    dw $2124,$0000                                                       ;A88D18;
-    db $F8                                                               ;A88D1C;
-    dw $2124,$0002                                                       ;A88D1D;
-    db $FC                                                               ;A88D21;
-    dw $2124                                                             ;A88D22;
+    dw $0003                                                             ;A88D13;
+    %spritemapEntry(0, $1FE, $F4, 0, 0, 2, 0, $124)
+    %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $124)
+    %spritemapEntry(0, $02, $FC, 0, 0, 2, 0, $124)
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemap_Evir_A88D24:
-    dw $0006,$01FE                                                       ;A88D24;
-    db $F4                                                               ;A88D28;
-    dw $2123,$01F6                                                       ;A88D29;
-    db $F4                                                               ;A88D2D;
-    dw $2122,$01F8                                                       ;A88D2E;
-    db $F8                                                               ;A88D32;
-    dw $2122,$0000                                                       ;A88D33;
-    db $F8                                                               ;A88D37;
-    dw $2123,$0002                                                       ;A88D38;
-    db $FC                                                               ;A88D3C;
-    dw $2123,$01FA                                                       ;A88D3D;
-    db $FC                                                               ;A88D41;
-    dw $2122                                                             ;A88D42;
+    dw $0006                                                             ;A88D24;
+    %spritemapEntry(0, $1FE, $F4, 0, 0, 2, 0, $123)
+    %spritemapEntry(0, $1F6, $F4, 0, 0, 2, 0, $122)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 0, $122)
+    %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $123)
+    %spritemapEntry(0, $02, $FC, 0, 0, 2, 0, $123)
+    %spritemapEntry(0, $1FA, $FC, 0, 0, 2, 0, $122)
 
 UNUSED_Spritemap_Evir_A88D44:
-    dw $0006,$01FE                                                       ;A88D44;
-    db $F4                                                               ;A88D48;
-    dw $2121,$01F6                                                       ;A88D49;
-    db $F4                                                               ;A88D4D;
-    dw $2120,$0000                                                       ;A88D4E;
-    db $F8                                                               ;A88D52;
-    dw $2121,$01F8                                                       ;A88D53;
-    db $F8                                                               ;A88D57;
-    dw $2120,$0002                                                       ;A88D58;
-    db $FC                                                               ;A88D5C;
-    dw $2121,$01FA                                                       ;A88D5D;
-    db $FC                                                               ;A88D61;
-    dw $2120                                                             ;A88D62;
+    dw $0006                                                             ;A88D44;
+    %spritemapEntry(0, $1FE, $F4, 0, 0, 2, 0, $121)
+    %spritemapEntry(0, $1F6, $F4, 0, 0, 2, 0, $120)
+    %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $121)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 0, $120)
+    %spritemapEntry(0, $02, $FC, 0, 0, 2, 0, $121)
+    %spritemapEntry(0, $1FA, $FC, 0, 0, 2, 0, $120)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Spritemap_Evir_B:
-    dw $0004,$0000                                                       ;A88D64;
-    db $00                                                               ;A88D68;
-    dw $A128,$01F8                                                       ;A88D69;
-    db $00                                                               ;A88D6D;
-    dw $A127,$0000                                                       ;A88D6E;
-    db $F8                                                               ;A88D72;
-    dw $2128,$01F8                                                       ;A88D73;
-    db $F8                                                               ;A88D77;
-    dw $2127                                                             ;A88D78;
+    dw $0004                                                             ;A88D64;
+    %spritemapEntry(0, $00, $00, 1, 0, 2, 0, $128)
+    %spritemapEntry(0, $1F8, $00, 1, 0, 2, 0, $127)
+    %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $128)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 0, $127)
 
 Spritemap_Evir_C:
-    dw $0001,$81F8                                                       ;A88D7A;
-    db $F8                                                               ;A88D7E;
-    dw $210E                                                             ;A88D7F;
+    dw $0001                                                             ;A88D7A;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10E)
 
 Spritemap_Evir_D:
-    dw $0009,$81F2                                                       ;A88D81;
-    db $FB                                                               ;A88D85;
-    dw $6106,$8002                                                       ;A88D86;
-    db $FB                                                               ;A88D8A;
-    dw $6104,$81F2                                                       ;A88D8B;
-    db $EB                                                               ;A88D8F;
-    dw $6102,$8002                                                       ;A88D90;
-    db $EB                                                               ;A88D94;
-    dw $6100,$81EE                                                       ;A88D95;
-    db $FB                                                               ;A88D99;
-    dw $6108,$81EF                                                       ;A88D9A;
-    db $01                                                               ;A88D9E;
-    dw $6108,$81F1                                                       ;A88D9F;
-    db $07                                                               ;A88DA3;
-    dw $610C,$01FA                                                       ;A88DA4;
-    db $10                                                               ;A88DA8;
-    dw $6126,$01FA                                                       ;A88DA9;
-    db $08                                                               ;A88DAD;
-    dw $6125                                                             ;A88DAE;
+    dw $0009                                                             ;A88D81;
+    %spritemapEntry(1, $1F2, $FB, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $02, $FB, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $1F2, $EB, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $02, $EB, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $1EE, $FB, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $1EF, $01, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $1F1, $07, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1FA, $10, 0, 1, 2, 0, $126)
+    %spritemapEntry(0, $1FA, $08, 0, 1, 2, 0, $125)
 
 Spritemap_Evir_E:
-    dw $0009,$81F2                                                       ;A88DB0;
-    db $FB                                                               ;A88DB4;
-    dw $6106,$8002                                                       ;A88DB5;
-    db $FB                                                               ;A88DB9;
-    dw $6104,$81F2                                                       ;A88DBA;
-    db $EB                                                               ;A88DBE;
-    dw $6102,$8002                                                       ;A88DBF;
-    db $EB                                                               ;A88DC3;
-    dw $6100,$81EE                                                       ;A88DC4;
-    db $FC                                                               ;A88DC8;
-    dw $6108,$81EF                                                       ;A88DC9;
-    db $02                                                               ;A88DCD;
-    dw $6108,$81F1                                                       ;A88DCE;
-    db $07                                                               ;A88DD2;
-    dw $610C,$01FA                                                       ;A88DD3;
-    db $10                                                               ;A88DD7;
-    dw $6126,$01FA                                                       ;A88DD8;
-    db $08                                                               ;A88DDC;
-    dw $6125                                                             ;A88DDD;
+    dw $0009                                                             ;A88DB0;
+    %spritemapEntry(1, $1F2, $FB, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $02, $FB, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $1F2, $EB, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $02, $EB, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $1EE, $FC, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $1EF, $02, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $1F1, $07, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1FA, $10, 0, 1, 2, 0, $126)
+    %spritemapEntry(0, $1FA, $08, 0, 1, 2, 0, $125)
 
 Spritemap_Evir_F:
-    dw $0009,$81F2                                                       ;A88DDF;
-    db $FB                                                               ;A88DE3;
-    dw $6106,$8002                                                       ;A88DE4;
-    db $FB                                                               ;A88DE8;
-    dw $6104,$81F2                                                       ;A88DE9;
-    db $EB                                                               ;A88DED;
-    dw $6102,$8002                                                       ;A88DEE;
-    db $EB                                                               ;A88DF2;
-    dw $6100,$81EE                                                       ;A88DF3;
-    db $FD                                                               ;A88DF7;
-    dw $6108,$81EF                                                       ;A88DF8;
-    db $03                                                               ;A88DFC;
-    dw $6108,$81F1                                                       ;A88DFD;
-    db $08                                                               ;A88E01;
-    dw $610C,$01FA                                                       ;A88E02;
-    db $11                                                               ;A88E06;
-    dw $6126,$01FA                                                       ;A88E07;
-    db $09                                                               ;A88E0B;
-    dw $6125                                                             ;A88E0C;
+    dw $0009                                                             ;A88DDF;
+    %spritemapEntry(1, $1F2, $FB, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $02, $FB, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $1F2, $EB, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $02, $EB, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $1EE, $FD, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $1EF, $03, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $1F1, $08, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1FA, $11, 0, 1, 2, 0, $126)
+    %spritemapEntry(0, $1FA, $09, 0, 1, 2, 0, $125)
 
 Spritemap_Evir_10:
-    dw $0009,$81F2                                                       ;A88E0E;
-    db $FB                                                               ;A88E12;
-    dw $6106,$8002                                                       ;A88E13;
-    db $FB                                                               ;A88E17;
-    dw $6104,$81F2                                                       ;A88E18;
-    db $EB                                                               ;A88E1C;
-    dw $6102,$8002                                                       ;A88E1D;
-    db $EB                                                               ;A88E21;
-    dw $6100,$81EE                                                       ;A88E22;
-    db $FD                                                               ;A88E26;
-    dw $6108,$81EF                                                       ;A88E27;
-    db $04                                                               ;A88E2B;
-    dw $6108,$81F1                                                       ;A88E2C;
-    db $09                                                               ;A88E30;
-    dw $610C,$01FA                                                       ;A88E31;
-    db $12                                                               ;A88E35;
-    dw $6126,$01FA                                                       ;A88E36;
-    db $0A                                                               ;A88E3A;
-    dw $6125                                                             ;A88E3B;
+    dw $0009                                                             ;A88E0E;
+    %spritemapEntry(1, $1F2, $FB, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $02, $FB, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $1F2, $EB, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $02, $EB, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $1EE, $FD, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $1EF, $04, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $1F1, $09, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1FA, $12, 0, 1, 2, 0, $126)
+    %spritemapEntry(0, $1FA, $0A, 0, 1, 2, 0, $125)
 
 Spritemap_Evir_11:
-    dw $0009,$81F2                                                       ;A88E3D;
-    db $FB                                                               ;A88E41;
-    dw $6106,$8002                                                       ;A88E42;
-    db $FB                                                               ;A88E46;
-    dw $6104,$81F2                                                       ;A88E47;
-    db $EB                                                               ;A88E4B;
-    dw $6102,$8002                                                       ;A88E4C;
-    db $EB                                                               ;A88E50;
-    dw $6100,$81EE                                                       ;A88E51;
-    db $FD                                                               ;A88E55;
-    dw $6108,$81EF                                                       ;A88E56;
-    db $04                                                               ;A88E5A;
-    dw $6108,$81F1                                                       ;A88E5B;
-    db $0A                                                               ;A88E5F;
-    dw $610C,$01FA                                                       ;A88E60;
-    db $11                                                               ;A88E64;
-    dw $6126,$01FA                                                       ;A88E65;
-    db $09                                                               ;A88E69;
-    dw $6125                                                             ;A88E6A;
+    dw $0009                                                             ;A88E3D;
+    %spritemapEntry(1, $1F2, $FB, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $02, $FB, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $1F2, $EB, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $02, $EB, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $1EE, $FD, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $1EF, $04, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $1F1, $0A, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1FA, $11, 0, 1, 2, 0, $126)
+    %spritemapEntry(0, $1FA, $09, 0, 1, 2, 0, $125)
 
 Spritemap_Evir_12:
-    dw $0009,$81F2                                                       ;A88E6C;
-    db $FB                                                               ;A88E70;
-    dw $6106,$8002                                                       ;A88E71;
-    db $FB                                                               ;A88E75;
-    dw $6104,$81F2                                                       ;A88E76;
-    db $EB                                                               ;A88E7A;
-    dw $6102,$8002                                                       ;A88E7B;
-    db $EB                                                               ;A88E7F;
-    dw $6100,$81EE                                                       ;A88E80;
-    db $FC                                                               ;A88E84;
-    dw $6108,$81EF                                                       ;A88E85;
-    db $03                                                               ;A88E89;
-    dw $6108,$81F1                                                       ;A88E8A;
-    db $09                                                               ;A88E8E;
-    dw $610C,$01FA                                                       ;A88E8F;
-    db $10                                                               ;A88E93;
-    dw $6126,$01FA                                                       ;A88E94;
-    db $08                                                               ;A88E98;
-    dw $6125                                                             ;A88E99;
+    dw $0009                                                             ;A88E6C;
+    %spritemapEntry(1, $1F2, $FB, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $02, $FB, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $1F2, $EB, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $02, $EB, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $1EE, $FC, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $1EF, $03, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $1F1, $09, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1FA, $10, 0, 1, 2, 0, $126)
+    %spritemapEntry(0, $1FA, $08, 0, 1, 2, 0, $125)
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemap_Evir_A88E9B:
-    dw $0009,$81F2                                                       ;A88E9B;
-    db $FB                                                               ;A88E9F;
-    dw $6106,$8002                                                       ;A88EA0;
-    db $FB                                                               ;A88EA4;
-    dw $6104,$81F2                                                       ;A88EA5;
-    db $EB                                                               ;A88EA9;
-    dw $6102,$8002                                                       ;A88EAA;
-    db $EB                                                               ;A88EAE;
-    dw $6100,$81EE                                                       ;A88EAF;
-    db $FB                                                               ;A88EB3;
-    dw $6108,$81EF                                                       ;A88EB4;
-    db $01                                                               ;A88EB8;
-    dw $6108,$81F1                                                       ;A88EB9;
-    db $07                                                               ;A88EBD;
-    dw $610C,$01FA                                                       ;A88EBE;
-    db $10                                                               ;A88EC2;
-    dw $6126,$01FA                                                       ;A88EC3;
-    db $08                                                               ;A88EC7;
-    dw $6125                                                             ;A88EC8;
+    dw $0009                                                             ;A88E9B;
+    %spritemapEntry(1, $1F2, $FB, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $02, $FB, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $1F2, $EB, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $02, $EB, 0, 1, 2, 0, $100)
+    %spritemapEntry(1, $1EE, $FB, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $1EF, $01, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $1F1, $07, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1FA, $10, 0, 1, 2, 0, $126)
+    %spritemapEntry(0, $1FA, $08, 0, 1, 2, 0, $125)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Spritemap_Evir_13:
-    dw $0005,$01F8                                                       ;A88ECA;
-    db $F8                                                               ;A88ECE;
-    dw $6123,$0000                                                       ;A88ECF;
-    db $F8                                                               ;A88ED3;
-    dw $6122,$01FA                                                       ;A88ED4;
-    db $F4                                                               ;A88ED8;
-    dw $6121,$0002                                                       ;A88ED9;
-    db $F4                                                               ;A88EDD;
-    dw $6120,$01F6                                                       ;A88EDE;
-    db $FC                                                               ;A88EE2;
-    dw $6124                                                             ;A88EE3;
+    dw $0005                                                             ;A88ECA;
+    %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $123)
+    %spritemapEntry(0, $00, $F8, 0, 1, 2, 0, $122)
+    %spritemapEntry(0, $1FA, $F4, 0, 1, 2, 0, $121)
+    %spritemapEntry(0, $02, $F4, 0, 1, 2, 0, $120)
+    %spritemapEntry(0, $1F6, $FC, 0, 1, 2, 0, $124)
 
 Spritemap_Evir_14:
-    dw $0005,$01FA                                                       ;A88EE5;
-    db $F4                                                               ;A88EE9;
-    dw $6123,$0002                                                       ;A88EEA;
-    db $F4                                                               ;A88EEE;
-    dw $6122,$01F8                                                       ;A88EEF;
-    db $F8                                                               ;A88EF3;
-    dw $6124,$01F6                                                       ;A88EF4;
-    db $FC                                                               ;A88EF8;
-    dw $6123,$01FE                                                       ;A88EF9;
-    db $FC                                                               ;A88EFD;
-    dw $6122                                                             ;A88EFE;
+    dw $0005                                                             ;A88EE5;
+    %spritemapEntry(0, $1FA, $F4, 0, 1, 2, 0, $123)
+    %spritemapEntry(0, $02, $F4, 0, 1, 2, 0, $122)
+    %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $124)
+    %spritemapEntry(0, $1F6, $FC, 0, 1, 2, 0, $123)
+    %spritemapEntry(0, $1FE, $FC, 0, 1, 2, 0, $122)
 
 Spritemap_Evir_15:
-    dw $0005,$01FA                                                       ;A88F00;
-    db $F4                                                               ;A88F04;
-    dw $6124,$01F8                                                       ;A88F05;
-    db $F8                                                               ;A88F09;
-    dw $6123,$0000                                                       ;A88F0A;
-    db $F8                                                               ;A88F0E;
-    dw $6122,$01F6                                                       ;A88F0F;
-    db $FC                                                               ;A88F13;
-    dw $6121,$01FE                                                       ;A88F14;
-    db $FC                                                               ;A88F18;
-    dw $6120                                                             ;A88F19;
+    dw $0005                                                             ;A88F00;
+    %spritemapEntry(0, $1FA, $F4, 0, 1, 2, 0, $124)
+    %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $123)
+    %spritemapEntry(0, $00, $F8, 0, 1, 2, 0, $122)
+    %spritemapEntry(0, $1F6, $FC, 0, 1, 2, 0, $121)
+    %spritemapEntry(0, $1FE, $FC, 0, 1, 2, 0, $120)
 
 Spritemap_Evir_16:
-    dw $0006,$01FA                                                       ;A88F1B;
-    db $F4                                                               ;A88F1F;
-    dw $6123,$0002                                                       ;A88F20;
-    db $F4                                                               ;A88F24;
-    dw $6122,$0000                                                       ;A88F25;
-    db $F8                                                               ;A88F29;
-    dw $6120,$01F8                                                       ;A88F2A;
-    db $F8                                                               ;A88F2E;
-    dw $6121,$01F6                                                       ;A88F2F;
-    db $FC                                                               ;A88F33;
-    dw $6123,$01FE                                                       ;A88F34;
-    db $FC                                                               ;A88F38;
-    dw $6122                                                             ;A88F39;
+    dw $0006                                                             ;A88F1B;
+    %spritemapEntry(0, $1FA, $F4, 0, 1, 2, 0, $123)
+    %spritemapEntry(0, $02, $F4, 0, 1, 2, 0, $122)
+    %spritemapEntry(0, $00, $F8, 0, 1, 2, 0, $120)
+    %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $121)
+    %spritemapEntry(0, $1F6, $FC, 0, 1, 2, 0, $123)
+    %spritemapEntry(0, $1FE, $FC, 0, 1, 2, 0, $122)
 
 Spritemap_Evir_17:
-    dw $0003,$01F6                                                       ;A88F3B;
-    db $FC                                                               ;A88F3F;
-    dw $6124,$01F8                                                       ;A88F40;
-    db $F8                                                               ;A88F44;
-    dw $6124,$01FA                                                       ;A88F45;
-    db $F4                                                               ;A88F49;
-    dw $6124                                                             ;A88F4A;
+    dw $0003                                                             ;A88F3B;
+    %spritemapEntry(0, $1F6, $FC, 0, 1, 2, 0, $124)
+    %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $124)
+    %spritemapEntry(0, $1FA, $F4, 0, 1, 2, 0, $124)
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemap_Evir_A88F4C:
-    dw $0006,$01FA                                                       ;A88F4C;
-    db $F4                                                               ;A88F50;
-    dw $6123,$0002                                                       ;A88F51;
-    db $F4                                                               ;A88F55;
-    dw $6122,$01F8                                                       ;A88F56;
-    db $F8                                                               ;A88F5A;
-    dw $6123,$0000                                                       ;A88F5B;
-    db $F8                                                               ;A88F5F;
-    dw $6122,$01F6                                                       ;A88F60;
-    db $FC                                                               ;A88F64;
-    dw $6123,$01FE                                                       ;A88F65;
-    db $FC                                                               ;A88F69;
-    dw $6122                                                             ;A88F6A;
+    dw $0006                                                             ;A88F4C;
+    %spritemapEntry(0, $1FA, $F4, 0, 1, 2, 0, $123)
+    %spritemapEntry(0, $02, $F4, 0, 1, 2, 0, $122)
+    %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $123)
+    %spritemapEntry(0, $00, $F8, 0, 1, 2, 0, $122)
+    %spritemapEntry(0, $1F6, $FC, 0, 1, 2, 0, $123)
+    %spritemapEntry(0, $1FE, $FC, 0, 1, 2, 0, $122)
 
 UNUSED_Spritemap_Evir_A88F6C:
-    dw $0006,$01FA                                                       ;A88F6C;
-    db $F4                                                               ;A88F70;
-    dw $6121,$0002                                                       ;A88F71;
-    db $F4                                                               ;A88F75;
-    dw $6120,$0000                                                       ;A88F76;
-    db $F8                                                               ;A88F7A;
-    dw $6120,$01F8                                                       ;A88F7B;
-    db $F8                                                               ;A88F7F;
-    dw $6121,$01F6                                                       ;A88F80;
-    db $FC                                                               ;A88F84;
-    dw $6121,$01FE                                                       ;A88F85;
-    db $FC                                                               ;A88F89;
-    dw $6120                                                             ;A88F8A;
+    dw $0006                                                             ;A88F6C;
+    %spritemapEntry(0, $1FA, $F4, 0, 1, 2, 0, $121)
+    %spritemapEntry(0, $02, $F4, 0, 1, 2, 0, $120)
+    %spritemapEntry(0, $00, $F8, 0, 1, 2, 0, $120)
+    %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $121)
+    %spritemapEntry(0, $1F6, $FC, 0, 1, 2, 0, $121)
+    %spritemapEntry(0, $1FE, $FC, 0, 1, 2, 0, $120)
 endif ; !FEATURE_KEEP_UNREFERENCED
+
 
 Palette_Eye:
     dw $3800,$72B2,$71C7,$2461,$1840,$7A8E,$660B,$4D03                   ;A88F8C;
     dw $4900,$7FE0,$7E80,$44E0,$2C20,$0000,$0000,$0000                   ;A88F9C;
 
+
 InstList_Eye_Active:
-    dw $000A                                                             ;A88FAC;
-    dw Spritemap_Eye_7                                                   ;A88FAE;
-    dw $000A                                                             ;A88FB0;
-    dw Spritemap_Eye_7                                                   ;A88FB2;
-    dw $000A                                                             ;A88FB4;
-    dw Spritemap_Eye_8                                                   ;A88FB6;
-    dw $000A                                                             ;A88FB8;
-    dw Spritemap_Eye_9                                                   ;A88FBA;
-    dw $000A                                                             ;A88FBC;
-    dw Spritemap_Eye_A                                                   ;A88FBE;
-    dw $000A                                                             ;A88FC0;
-    dw Spritemap_Eye_B                                                   ;A88FC2;
-    dw $000A                                                             ;A88FC4;
-    dw Spritemap_Eye_C                                                   ;A88FC6;
-    dw $000A                                                             ;A88FC8;
-    dw Spritemap_Eye_D                                                   ;A88FCA;
-    dw $000A                                                             ;A88FCC;
-    dw Spritemap_Eye_6                                                   ;A88FCE;
-    dw $000A                                                             ;A88FD0;
-    dw Spritemap_Eye_5                                                   ;A88FD2;
-    dw $000A                                                             ;A88FD4;
-    dw Spritemap_Eye_4                                                   ;A88FD6;
-    dw $000A                                                             ;A88FD8;
-    dw Spritemap_Eye_3                                                   ;A88FDA;
-    dw $000A                                                             ;A88FDC;
-    dw Spritemap_Eye_2                                                   ;A88FDE;
-    dw $000A                                                             ;A88FE0;
-    dw Spritemap_Eye_1                                                   ;A88FE2;
-    dw $000A                                                             ;A88FE4;
-    dw Spritemap_Eye_0                                                   ;A88FE6;
-    dw $000A                                                             ;A88FE8;
-    dw Spritemap_Eye_0                                                   ;A88FEA;
+    dw $000A,Spritemap_Eye_7                                             ;A88FAC;
+    dw $000A,Spritemap_Eye_7                                             ;A88FB0;
+    dw $000A,Spritemap_Eye_8                                             ;A88FB4;
+    dw $000A,Spritemap_Eye_9                                             ;A88FB8;
+    dw $000A,Spritemap_Eye_A                                             ;A88FBC;
+    dw $000A,Spritemap_Eye_B                                             ;A88FC0;
+    dw $000A,Spritemap_Eye_C                                             ;A88FC4;
+    dw $000A,Spritemap_Eye_D                                             ;A88FC8;
+    dw $000A,Spritemap_Eye_6                                             ;A88FCC;
+    dw $000A,Spritemap_Eye_5                                             ;A88FD0;
+    dw $000A,Spritemap_Eye_4                                             ;A88FD4;
+    dw $000A,Spritemap_Eye_3                                             ;A88FD8;
+    dw $000A,Spritemap_Eye_2                                             ;A88FDC;
+    dw $000A,Spritemap_Eye_1                                             ;A88FE0;
+    dw $000A,Spritemap_Eye_0                                             ;A88FE4;
+    dw $000A,Spritemap_Eye_0                                             ;A88FE8;
     dw Instruction_Common_GotoY                                          ;A88FEC;
     dw InstList_Eye_Active                                               ;A88FEE;
 
 InstList_Eye_FacingRight_Deactivating:
-    dw $0008                                                             ;A88FF0;
-    dw Spritemap_Eye_F                                                   ;A88FF2;
-    dw $0030                                                             ;A88FF4;
-    dw Spritemap_Eye_3                                                   ;A88FF6;
-    dw $0005                                                             ;A88FF8;
-    dw Spritemap_Eye_F                                                   ;A88FFA;
+    dw $0008,Spritemap_Eye_F                                             ;A88FF0;
+    dw $0030,Spritemap_Eye_3                                             ;A88FF4;
+    dw $0005,Spritemap_Eye_F                                             ;A88FF8;
 
 InstList_Eye_FacingRight_Closed:
-    dw $0030                                                             ;A88FFC;
-    dw Spritemap_Eye_E                                                   ;A88FFE;
+    dw $0030,Spritemap_Eye_E                                             ;A88FFC;
     dw Instruction_Common_Sleep                                          ;A89000;
 
 InstList_Eye_FacingLeft_Deactivating:
-    dw $0008                                                             ;A89002;
-    dw Spritemap_Eye_11                                                  ;A89004;
-    dw $0030                                                             ;A89006;
-    dw Spritemap_Eye_A                                                   ;A89008;
-    dw $0005                                                             ;A8900A;
-    dw Spritemap_Eye_11                                                  ;A8900C;
+    dw $0008,Spritemap_Eye_11                                            ;A89002;
+    dw $0030,Spritemap_Eye_A                                             ;A89006;
+    dw $0005,Spritemap_Eye_11                                            ;A8900A;
 
 InstList_Eye_FacingLeft_Closed:
-    dw $0030                                                             ;A8900E;
-    dw Spritemap_Eye_10                                                  ;A89010;
+    dw $0030,Spritemap_Eye_10                                            ;A8900E;
     dw Instruction_Common_Sleep                                          ;A89012;
 
 InstList_Eye_FacingRight_Activating:
-    dw $0020                                                             ;A89014;
-    dw Spritemap_Eye_E                                                   ;A89016;
-    dw $0005                                                             ;A89018;
-    dw Spritemap_Eye_F                                                   ;A8901A;
-    dw $0030                                                             ;A8901C;
-    dw Spritemap_Eye_3                                                   ;A8901E;
-    dw $0008                                                             ;A89020;
-    dw Spritemap_Eye_F                                                   ;A89022;
+    dw $0020,Spritemap_Eye_E                                             ;A89014;
+    dw $0005,Spritemap_Eye_F                                             ;A89018;
+    dw $0030,Spritemap_Eye_3                                             ;A8901C;
+    dw $0008,Spritemap_Eye_F                                             ;A89020;
     dw Instruction_Common_Sleep                                          ;A89024;
 
 InstList_Eye_FacingLeft_Activating:
-    dw $0020                                                             ;A89026;
-    dw Spritemap_Eye_10                                                  ;A89028;
-    dw $0005                                                             ;A8902A;
-    dw Spritemap_Eye_11                                                  ;A8902C;
-    dw $0030                                                             ;A8902E;
-    dw Spritemap_Eye_A                                                   ;A89030;
-    dw $0008                                                             ;A89032;
-    dw Spritemap_Eye_11                                                  ;A89034;
+    dw $0020,Spritemap_Eye_10                                            ;A89026;
+    dw $0005,Spritemap_Eye_11                                            ;A8902A;
+    dw $0030,Spritemap_Eye_A                                             ;A8902E;
+    dw $0008,Spritemap_Eye_11                                            ;A89032;
     dw Instruction_Common_Sleep                                          ;A89036;
 
 InstList_Eye_Mount_FacingRight:
-    dw $0001                                                             ;A89038;
-    dw Spritemap_Eye_12                                                  ;A8903A;
+    dw $0001,Spritemap_Eye_12                                            ;A89038;
     dw Instruction_Common_Sleep                                          ;A8903C;
 
 InstList_Eye_Mount_FacingDown:
-    dw $0001                                                             ;A8903E;
-    dw Spritemap_Eye_13                                                  ;A89040;
+    dw $0001,Spritemap_Eye_13                                            ;A8903E;
     dw Instruction_Common_Sleep                                          ;A89042;
 
 InstList_Eye_Mount_FacingLeft:
-    dw $0001                                                             ;A89044;
-    dw Spritemap_Eye_14                                                  ;A89046;
+    dw $0001,Spritemap_Eye_14                                            ;A89044;
     dw Instruction_CommonA8_Sleep                                        ;A89048;
 
 InstList_Eye_Mount_FacingUp:
-    dw $0001                                                             ;A8904A;
-    dw Spritemap_Eye_15                                                  ;A8904C;
+    dw $0001,Spritemap_Eye_15                                            ;A8904A;
     dw Instruction_CommonA8_Sleep                                        ;A8904E;
 
-EyeConstants_XProximityToActivate:
+
+EyeConstants:
+  .XProximityToActivate:
     dw $0080                                                             ;A89050;
 
-EyeConstants_XProximityToDeactivate:
+  .XProximityToDeactivate:
     dw $00B0                                                             ;A89052;
 
-EyeConstants_YProximityToActivate:
+  .YProximityToActivate:
     dw $0080                                                             ;A89054;
 
-EyeConstants_YProximityToDeactivate:
+  .YProximityToDeactivate:
     dw $0080                                                             ;A89056;
+
 
 InitAI_Eye:
     LDX.W $0E54                                                          ;A89058;
@@ -2002,545 +1720,361 @@ RTL_A891DE:
 
 
 Spritemap_Eye_0:
-    dw $0001,$81F8                                                       ;A891DF;
-    db $F8                                                               ;A891E3;
-    dw $2100                                                             ;A891E4;
+    dw $0001                                                             ;A891DF;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
 
 Spritemap_Eye_1:
-    dw $0001,$81F8                                                       ;A891E6;
-    db $F8                                                               ;A891EA;
-    dw $2102                                                             ;A891EB;
+    dw $0001                                                             ;A891E6;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $102)
 
 Spritemap_Eye_2:
-    dw $0001,$81F8                                                       ;A891ED;
-    db $F8                                                               ;A891F1;
-    dw $2104                                                             ;A891F2;
+    dw $0001                                                             ;A891ED;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $104)
 
 Spritemap_Eye_3:
-    dw $0001,$81F8                                                       ;A891F4;
-    db $F8                                                               ;A891F8;
-    dw $2106                                                             ;A891F9;
+    dw $0001                                                             ;A891F4;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $106)
 
 Spritemap_Eye_4:
-    dw $0001,$81F8                                                       ;A891FB;
-    db $F8                                                               ;A891FF;
-    dw $2108                                                             ;A89200;
+    dw $0001                                                             ;A891FB;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $108)
 
 Spritemap_Eye_5:
-    dw $0001,$81F8                                                       ;A89202;
-    db $F8                                                               ;A89206;
-    dw $210A                                                             ;A89207;
+    dw $0001                                                             ;A89202;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10A)
 
 Spritemap_Eye_6:
-    dw $0001,$81F8                                                       ;A89209;
-    db $F8                                                               ;A8920D;
-    dw $210C                                                             ;A8920E;
+    dw $0001                                                             ;A89209;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10C)
 
 Spritemap_Eye_7:
-    dw $0001,$81F8                                                       ;A89210;
-    db $F8                                                               ;A89214;
-    dw $6100                                                             ;A89215;
+    dw $0001                                                             ;A89210;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $100)
 
 Spritemap_Eye_8:
-    dw $0001,$81F8                                                       ;A89217;
-    db $F8                                                               ;A8921B;
-    dw $6102                                                             ;A8921C;
+    dw $0001                                                             ;A89217;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $102)
 
 Spritemap_Eye_9:
-    dw $0001,$81F8                                                       ;A8921E;
-    db $F8                                                               ;A89222;
-    dw $6104                                                             ;A89223;
+    dw $0001                                                             ;A8921E;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $104)
 
 Spritemap_Eye_A:
-    dw $0001,$81F8                                                       ;A89225;
-    db $F8                                                               ;A89229;
-    dw $6106                                                             ;A8922A;
+    dw $0001                                                             ;A89225;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $106)
 
 Spritemap_Eye_B:
-    dw $0001,$81F8                                                       ;A8922C;
-    db $F8                                                               ;A89230;
-    dw $6108                                                             ;A89231;
+    dw $0001                                                             ;A8922C;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $108)
 
 Spritemap_Eye_C:
-    dw $0001,$81F8                                                       ;A89233;
-    db $F8                                                               ;A89237;
-    dw $610A                                                             ;A89238;
+    dw $0001                                                             ;A89233;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10A)
 
 Spritemap_Eye_D:
-    dw $0001,$81F8                                                       ;A8923A;
-    db $F8                                                               ;A8923E;
-    dw $610C                                                             ;A8923F;
+    dw $0001                                                             ;A8923A;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10C)
 
 Spritemap_Eye_E:
-    dw $0004,$01F8                                                       ;A89241;
-    db $00                                                               ;A89245;
-    dw $A11F,$01F8                                                       ;A89246;
-    db $F8                                                               ;A8924A;
-    dw $211F,$0000                                                       ;A8924B;
-    db $00                                                               ;A8924F;
-    dw $2117,$0000                                                       ;A89250;
-    db $F8                                                               ;A89254;
-    dw $2107                                                             ;A89255;
+    dw $0004                                                             ;A89241;
+    %spritemapEntry(0, $1F8, $00, 1, 0, 2, 0, $11F)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $117)
+    %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $107)
 
 Spritemap_Eye_F:
-    dw $0004,$01F8                                                       ;A89257;
-    db $00                                                               ;A8925B;
-    dw $A11E,$01F8                                                       ;A8925C;
-    db $F8                                                               ;A89260;
-    dw $211E,$0000                                                       ;A89261;
-    db $00                                                               ;A89265;
-    dw $2117,$0000                                                       ;A89266;
-    db $F8                                                               ;A8926A;
-    dw $2107                                                             ;A8926B;
+    dw $0004                                                             ;A89257;
+    %spritemapEntry(0, $1F8, $00, 1, 0, 2, 0, $11E)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 0, $11E)
+    %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $117)
+    %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $107)
 
 Spritemap_Eye_10:
-    dw $0004,$0000                                                       ;A8926D;
-    db $00                                                               ;A89271;
-    dw $E11F,$0000                                                       ;A89272;
-    db $F8                                                               ;A89276;
-    dw $611F,$01F8                                                       ;A89277;
-    db $00                                                               ;A8927B;
-    dw $6117,$01F8                                                       ;A8927C;
-    db $F8                                                               ;A89280;
-    dw $6107                                                             ;A89281;
+    dw $0004                                                             ;A8926D;
+    %spritemapEntry(0, $00, $00, 1, 1, 2, 0, $11F)
+    %spritemapEntry(0, $00, $F8, 0, 1, 2, 0, $11F)
+    %spritemapEntry(0, $1F8, $00, 0, 1, 2, 0, $117)
+    %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $107)
 
 Spritemap_Eye_11:
-    dw $0004,$0000                                                       ;A89283;
-    db $00                                                               ;A89287;
-    dw $E11E,$0000                                                       ;A89288;
-    db $F8                                                               ;A8928C;
-    dw $611E,$01F8                                                       ;A8928D;
-    db $00                                                               ;A89291;
-    dw $6117,$01F8                                                       ;A89292;
-    db $F8                                                               ;A89296;
-    dw $6107                                                             ;A89297;
+    dw $0004                                                             ;A89283;
+    %spritemapEntry(0, $00, $00, 1, 1, 2, 0, $11E)
+    %spritemapEntry(0, $00, $F8, 0, 1, 2, 0, $11E)
+    %spritemapEntry(0, $1F8, $00, 0, 1, 2, 0, $117)
+    %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $107)
 
 Spritemap_Eye_12:
-    dw $0002,$01FC                                                       ;A89299;
-    db $00                                                               ;A8929D;
-    dw $A10E,$01FC                                                       ;A8929E;
-    db $F8                                                               ;A892A2;
-    dw $210E                                                             ;A892A3;
+    dw $0002                                                             ;A89299;
+    %spritemapEntry(0, $1FC, $00, 1, 0, 2, 0, $10E)
+    %spritemapEntry(0, $1FC, $F8, 0, 0, 2, 0, $10E)
 
 Spritemap_Eye_13:
-    dw $0002,$0000                                                       ;A892A5;
-    db $FC                                                               ;A892A9;
-    dw $610F,$01F8                                                       ;A892AA;
-    db $FC                                                               ;A892AE;
-    dw $210F                                                             ;A892AF;
+    dw $0002                                                             ;A892A5;
+    %spritemapEntry(0, $00, $FC, 0, 1, 2, 0, $10F)
+    %spritemapEntry(0, $1F8, $FC, 0, 0, 2, 0, $10F)
 
 Spritemap_Eye_14:
-    dw $0002,$01FC                                                       ;A892B1;
-    db $00                                                               ;A892B5;
-    dw $E10E,$01FC                                                       ;A892B6;
-    db $F8                                                               ;A892BA;
-    dw $610E                                                             ;A892BB;
+    dw $0002                                                             ;A892B1;
+    %spritemapEntry(0, $1FC, $00, 1, 1, 2, 0, $10E)
+    %spritemapEntry(0, $1FC, $F8, 0, 1, 2, 0, $10E)
 
 Spritemap_Eye_15:
-    dw $0002,$0000                                                       ;A892BD;
-    db $FC                                                               ;A892C1;
-    dw $E10F,$01F8                                                       ;A892C2;
-    db $FC                                                               ;A892C6;
-    dw $A10F                                                             ;A892C7;
+    dw $0002                                                             ;A892BD;
+    %spritemapEntry(0, $00, $FC, 1, 1, 2, 0, $10F)
+    %spritemapEntry(0, $1F8, $FC, 1, 0, 2, 0, $10F)
 
 Spritemap_Eye_16:
-    dw $0004,$01F8                                                       ;A892C9;
-    db $00                                                               ;A892CD;
-    dw $A11F,$01F8                                                       ;A892CE;
-    db $F8                                                               ;A892D2;
-    dw $211F,$0000                                                       ;A892D3;
-    db $00                                                               ;A892D7;
-    dw $2117,$0000                                                       ;A892D8;
-    db $F8                                                               ;A892DC;
-    dw $2107                                                             ;A892DD;
+    dw $0004                                                             ;A892C9;
+    %spritemapEntry(0, $1F8, $00, 1, 0, 2, 0, $11F)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $117)
+    %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $107)
 
 Spritemap_Eye_17:
-    dw $0004,$01F8                                                       ;A892DF;
-    db $00                                                               ;A892E3;
-    dw $A11E,$01F8                                                       ;A892E4;
-    db $F8                                                               ;A892E8;
-    dw $211E,$0000                                                       ;A892E9;
-    db $00                                                               ;A892ED;
-    dw $2117,$0000                                                       ;A892EE;
-    db $F8                                                               ;A892F2;
-    dw $2107                                                             ;A892F3;
+    dw $0004                                                             ;A892DF;
+    %spritemapEntry(0, $1F8, $00, 1, 0, 2, 0, $11E)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 0, $11E)
+    %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $117)
+    %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $107)
 
 Spritemap_Eye_18:
-    dw $0004,$0000                                                       ;A892F5;
-    db $00                                                               ;A892F9;
-    dw $E11F,$0000                                                       ;A892FA;
-    db $F8                                                               ;A892FE;
-    dw $611F,$01F8                                                       ;A892FF;
-    db $00                                                               ;A89303;
-    dw $6117,$01F8                                                       ;A89304;
-    db $F8                                                               ;A89308;
-    dw $6107                                                             ;A89309;
+    dw $0004                                                             ;A892F5;
+    %spritemapEntry(0, $00, $00, 1, 1, 2, 0, $11F)
+    %spritemapEntry(0, $00, $F8, 0, 1, 2, 0, $11F)
+    %spritemapEntry(0, $1F8, $00, 0, 1, 2, 0, $117)
+    %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $107)
 
 Spritemap_Eye_19:
-    dw $0004,$0000                                                       ;A8930B;
-    db $00                                                               ;A8930F;
-    dw $E11E,$0000                                                       ;A89310;
-    db $F8                                                               ;A89314;
-    dw $611E,$01F8                                                       ;A89315;
-    db $00                                                               ;A89319;
-    dw $6117,$01F8                                                       ;A8931A;
-    db $F8                                                               ;A8931E;
-    dw $6107                                                             ;A8931F;
+    dw $0004                                                             ;A8930B;
+    %spritemapEntry(0, $00, $00, 1, 1, 2, 0, $11E)
+    %spritemapEntry(0, $00, $F8, 0, 1, 2, 0, $11E)
+    %spritemapEntry(0, $1F8, $00, 0, 1, 2, 0, $117)
+    %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $107)
 
 Spritemap_Eye_1A:
-    dw $0004,$0000                                                       ;A89321;
-    db $00                                                               ;A89325;
-    dw $E11F,$0000                                                       ;A89326;
-    db $F8                                                               ;A8932A;
-    dw $611F,$01F8                                                       ;A8932B;
-    db $00                                                               ;A8932F;
-    dw $6117,$01F8                                                       ;A89330;
-    db $F8                                                               ;A89334;
-    dw $6107                                                             ;A89335;
+    dw $0004                                                             ;A89321;
+    %spritemapEntry(0, $00, $00, 1, 1, 2, 0, $11F)
+    %spritemapEntry(0, $00, $F8, 0, 1, 2, 0, $11F)
+    %spritemapEntry(0, $1F8, $00, 0, 1, 2, 0, $117)
+    %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $107)
 
 Spritemap_Eye_1B:
-    dw $0004,$0000                                                       ;A89337;
-    db $00                                                               ;A8933B;
-    dw $E11E,$0000                                                       ;A8933C;
-    db $F8                                                               ;A89340;
-    dw $611E,$01F8                                                       ;A89341;
-    db $00                                                               ;A89345;
-    dw $6117,$01F8                                                       ;A89346;
-    db $F8                                                               ;A8934A;
-    dw $6107                                                             ;A8934B;
+    dw $0004                                                             ;A89337;
+    %spritemapEntry(0, $00, $00, 1, 1, 2, 0, $11E)
+    %spritemapEntry(0, $00, $F8, 0, 1, 2, 0, $11E)
+    %spritemapEntry(0, $1F8, $00, 0, 1, 2, 0, $117)
+    %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $107)
 
 Spritemap_Eye_1C:
-    dw $0004,$01F8                                                       ;A8934D;
-    db $00                                                               ;A89351;
-    dw $A11F,$01F8                                                       ;A89352;
-    db $F8                                                               ;A89356;
-    dw $211F,$0000                                                       ;A89357;
-    db $00                                                               ;A8935B;
-    dw $2117,$0000                                                       ;A8935C;
-    db $F8                                                               ;A89360;
-    dw $2107                                                             ;A89361;
+    dw $0004                                                             ;A8934D;
+    %spritemapEntry(0, $1F8, $00, 1, 0, 2, 0, $11F)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $117)
+    %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $107)
 
 Spritemap_Eye_1D:
-    dw $0004,$01F8                                                       ;A89363;
-    db $00                                                               ;A89367;
-    dw $A11E,$01F8                                                       ;A89368;
-    db $F8                                                               ;A8936C;
-    dw $211E,$0000                                                       ;A8936D;
-    db $00                                                               ;A89371;
-    dw $2117,$0000                                                       ;A89372;
-    db $F8                                                               ;A89376;
-    dw $2107                                                             ;A89377;
+    dw $0004                                                             ;A89363;
+    %spritemapEntry(0, $1F8, $00, 1, 0, 2, 0, $11E)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 0, $11E)
+    %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $117)
+    %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $107)
+
 
 Palette_Fune:
     dw $3800,$4B9C,$3694,$0929,$0042,$3B18,$2A52,$19AD                   ;A89379;
     dw $116B,$7F5A,$7EC0,$6DE0,$54E0,$001D,$0014,$000A                   ;A89389;
 
+
 InstList_Fune_FacingLeft_Idling:
-    dw $0001                                                             ;A89399;
-    dw Spritemap_Fune_FacingLeft_Idle_MouthClosed                        ;A8939B;
+    dw $0001,Spritemap_Fune_FacingLeft_Idle_MouthClosed                  ;A89399;
     dw Instruction_Common_Sleep                                          ;A8939D;
 
 InstList_Fune_FacingLeft_Active:
-    dw $0010                                                             ;A8939F;
-    dw Spritemap_Fune_FacingLeft_Idle_MouthClosed                        ;A893A1;
-    dw $0008                                                             ;A893A3;
-    dw Spritemap_Fune_FacingLeft_StartOpeningMouth                       ;A893A5;
-    dw $0008                                                             ;A893A7;
-    dw Spritemap_Fune_FacingLeft_MouthOpening1                           ;A893A9;
-    dw $0008                                                             ;A893AB;
-    dw Spritemap_Fune_FacingLeft_MouthOpening2                           ;A893AD;
+    dw $0010,Spritemap_Fune_FacingLeft_Idle_MouthClosed                  ;A8939F;
+    dw $0008,Spritemap_Fune_FacingLeft_StartOpeningMouth                 ;A893A3;
+    dw $0008,Spritemap_Fune_FacingLeft_MouthOpening1                     ;A893A7;
+    dw $0008,Spritemap_Fune_FacingLeft_MouthOpening2                     ;A893AB;
     dw Instruction_Fune_SpawnFireball_FacingLeft                         ;A893AF;
     dw Instruction_FuneNamihe_QueueSpitSFX                               ;A893B1;
-    dw $0010                                                             ;A893B3;
-    dw Spritemap_Fune_FacingLeft_MouthMostOpen                           ;A893B5;
-    dw $0008                                                             ;A893B7;
-    dw Spritemap_Fune_FacingLeft_MouthOpening2                           ;A893B9;
-    dw $0008                                                             ;A893BB;
-    dw Spritemap_Fune_FacingLeft_MouthOpening1                           ;A893BD;
-    dw $0008                                                             ;A893BF;
-    dw Spritemap_Fune_FacingLeft_StartOpeningMouth                       ;A893C1;
+    dw $0010,Spritemap_Fune_FacingLeft_MouthMostOpen                     ;A893B3;
+    dw $0008,Spritemap_Fune_FacingLeft_MouthOpening2                     ;A893B7;
+    dw $0008,Spritemap_Fune_FacingLeft_MouthOpening1                     ;A893BB;
+    dw $0008,Spritemap_Fune_FacingLeft_StartOpeningMouth                 ;A893BF;
     dw Instruction_FuneNamihe_FinishActivity                             ;A893C3;
     dw Instruction_Common_GotoY                                          ;A893C5;
     dw InstList_Fune_FacingLeft_Idling                                   ;A893C7;
 
 InstList_Fune_FacingRight_Idling:
-    dw $0001                                                             ;A893C9;
-    dw Spritemap_Fune_FacingRight_Idle_MouthClosed                       ;A893CB;
+    dw $0001,Spritemap_Fune_FacingRight_Idle_MouthClosed                 ;A893C9;
     dw Instruction_Common_Sleep                                          ;A893CD;
 
 InstList_Fune_FacingRight_Active:
-    dw $0010                                                             ;A893CF;
-    dw Spritemap_Fune_FacingRight_Idle_MouthClosed                       ;A893D1;
-    dw $0008                                                             ;A893D3;
-    dw Spritemap_Fune_FacingRight_StartOpeningMouth                      ;A893D5;
-    dw $0008                                                             ;A893D7;
-    dw Spritemap_Fune_FacingRight_MouthOpening1                          ;A893D9;
-    dw $0008                                                             ;A893DB;
-    dw Spritemap_Fune_FacingRight_MouthOpening2                          ;A893DD;
+    dw $0010,Spritemap_Fune_FacingRight_Idle_MouthClosed                 ;A893CF;
+    dw $0008,Spritemap_Fune_FacingRight_StartOpeningMouth                ;A893D3;
+    dw $0008,Spritemap_Fune_FacingRight_MouthOpening1                    ;A893D7;
+    dw $0008,Spritemap_Fune_FacingRight_MouthOpening2                    ;A893DB;
     dw Instruction_Fune_SpawnFireball_FacingRight                        ;A893DF;
     dw Instruction_FuneNamihe_QueueSpitSFX                               ;A893E1;
-    dw $0010                                                             ;A893E3;
-    dw Spritemap_Fune_FacingRight_MouthMostOpen                          ;A893E5;
-    dw $0008                                                             ;A893E7;
-    dw Spritemap_Fune_FacingRight_MouthOpening2                          ;A893E9;
-    dw $0008                                                             ;A893EB;
-    dw Spritemap_Fune_FacingRight_MouthOpening1                          ;A893ED;
-    dw $0008                                                             ;A893EF;
-    dw Spritemap_Fune_FacingRight_StartOpeningMouth                      ;A893F1;
+    dw $0010,Spritemap_Fune_FacingRight_MouthMostOpen                    ;A893E3;
+    dw $0008,Spritemap_Fune_FacingRight_MouthOpening2                    ;A893E7;
+    dw $0008,Spritemap_Fune_FacingRight_MouthOpening1                    ;A893EB;
+    dw $0008,Spritemap_Fune_FacingRight_StartOpeningMouth                ;A893EF;
     dw Instruction_FuneNamihe_FinishActivity_duplicate                   ;A893F3;
     dw Instruction_Common_GotoY                                          ;A893F5;
     dw InstList_Fune_FacingRight_Idling                                  ;A893F7;
 
 Spritemap_Fune_FacingLeft_Idle_MouthClosed:
-    dw $0008,$0008                                                       ;A893F9;
-    db $0C                                                               ;A893FD;
-    dw $2127,$0000                                                       ;A893FE;
-    db $0C                                                               ;A89402;
-    dw $2126,$8000                                                       ;A89403;
-    db $FC                                                               ;A89407;
-    dw $2122,$8000                                                       ;A89408;
-    db $EC                                                               ;A8940C;
-    dw $2120,$81F0                                                       ;A8940D;
-    db $FC                                                               ;A89411;
-    dw $2102,$01F8                                                       ;A89412;
-    db $FC                                                               ;A89416;
-    dw $2125,$01F0                                                       ;A89417;
-    db $FC                                                               ;A8941B;
-    dw $2124,$81F0                                                       ;A8941C;
-    db $EC                                                               ;A89420;
-    dw $2100                                                             ;A89421;
+    dw $0008                                                             ;A893F9;
+    %spritemapEntry(0, $08, $0C, 0, 0, 2, 0, $127)
+    %spritemapEntry(0, $00, $0C, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $00, $FC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $00, $EC, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $1F0, $FC, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $1F8, $FC, 0, 0, 2, 0, $125)
+    %spritemapEntry(0, $1F0, $FC, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1F0, $EC, 0, 0, 2, 0, $100)
 
 Spritemap_Fune_FacingLeft_StartOpeningMouth:
-    dw $0008,$0006                                                       ;A89423;
-    db $0C                                                               ;A89427;
-    dw $2127,$01FE                                                       ;A89428;
-    db $0C                                                               ;A8942C;
-    dw $2126,$81FE                                                       ;A8942D;
-    db $FC                                                               ;A89431;
-    dw $2122,$81FE                                                       ;A89432;
-    db $EC                                                               ;A89436;
-    dw $2120,$81EE                                                       ;A89437;
-    db $FE                                                               ;A8943B;
-    dw $2102,$01F6                                                       ;A8943C;
-    db $FC                                                               ;A89440;
-    dw $2125,$01EE                                                       ;A89441;
-    db $FC                                                               ;A89445;
-    dw $2124,$81EE                                                       ;A89446;
-    db $EC                                                               ;A8944A;
-    dw $2100                                                             ;A8944B;
+    dw $0008                                                             ;A89423;
+    %spritemapEntry(0, $06, $0C, 0, 0, 2, 0, $127)
+    %spritemapEntry(0, $1FE, $0C, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1FE, $FC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1FE, $EC, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $1EE, $FE, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $1F6, $FC, 0, 0, 2, 0, $125)
+    %spritemapEntry(0, $1EE, $FC, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1EE, $EC, 0, 0, 2, 0, $100)
 
 Spritemap_Fune_FacingLeft_MouthOpening1:
-    dw $0008,$0004                                                       ;A8944D;
-    db $0C                                                               ;A89451;
-    dw $2127,$01FC                                                       ;A89452;
-    db $0C                                                               ;A89456;
-    dw $2126,$81FC                                                       ;A89457;
-    db $FC                                                               ;A8945B;
-    dw $2122,$81FC                                                       ;A8945C;
-    db $EC                                                               ;A89460;
-    dw $2120,$81EC                                                       ;A89461;
-    db $00                                                               ;A89465;
-    dw $2102,$01F4                                                       ;A89466;
-    db $FC                                                               ;A8946A;
-    dw $2125,$01EC                                                       ;A8946B;
-    db $FC                                                               ;A8946F;
-    dw $2124,$81EC                                                       ;A89470;
-    db $EC                                                               ;A89474;
-    dw $2100                                                             ;A89475;
+    dw $0008                                                             ;A8944D;
+    %spritemapEntry(0, $04, $0C, 0, 0, 2, 0, $127)
+    %spritemapEntry(0, $1FC, $0C, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1FC, $FC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1FC, $EC, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $1EC, $00, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $1F4, $FC, 0, 0, 2, 0, $125)
+    %spritemapEntry(0, $1EC, $FC, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1EC, $EC, 0, 0, 2, 0, $100)
 
 Spritemap_Fune_FacingLeft_MouthOpening2:
-    dw $0008,$0002                                                       ;A89477;
-    db $0C                                                               ;A8947B;
-    dw $2127,$01FA                                                       ;A8947C;
-    db $0C                                                               ;A89480;
-    dw $2126,$81FA                                                       ;A89481;
-    db $FC                                                               ;A89485;
-    dw $2122,$81FA                                                       ;A89486;
-    db $EC                                                               ;A8948A;
-    dw $2120,$81EA                                                       ;A8948B;
-    db $01                                                               ;A8948F;
-    dw $2102,$01F2                                                       ;A89490;
-    db $FC                                                               ;A89494;
-    dw $2125,$01EA                                                       ;A89495;
-    db $FC                                                               ;A89499;
-    dw $2124,$81EA                                                       ;A8949A;
-    db $EC                                                               ;A8949E;
-    dw $2100                                                             ;A8949F;
+    dw $0008                                                             ;A89477;
+    %spritemapEntry(0, $02, $0C, 0, 0, 2, 0, $127)
+    %spritemapEntry(0, $1FA, $0C, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1FA, $FC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1FA, $EC, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $1EA, $01, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $1F2, $FC, 0, 0, 2, 0, $125)
+    %spritemapEntry(0, $1EA, $FC, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1EA, $EC, 0, 0, 2, 0, $100)
 
 Spritemap_Fune_FacingLeft_MouthMostOpen:
-    dw $0008,$0000                                                       ;A894A1;
-    db $0C                                                               ;A894A5;
-    dw $2127,$01F8                                                       ;A894A6;
-    db $0C                                                               ;A894AA;
-    dw $2126,$81F8                                                       ;A894AB;
-    db $FC                                                               ;A894AF;
-    dw $2122,$81F8                                                       ;A894B0;
-    db $EC                                                               ;A894B4;
-    dw $2120,$81E8                                                       ;A894B5;
-    db $03                                                               ;A894B9;
-    dw $2102,$01F0                                                       ;A894BA;
-    db $FC                                                               ;A894BE;
-    dw $2125,$01E8                                                       ;A894BF;
-    db $FC                                                               ;A894C3;
-    dw $2124,$81E8                                                       ;A894C4;
-    db $EC                                                               ;A894C8;
-    dw $2100                                                             ;A894C9;
+    dw $0008                                                             ;A894A1;
+    %spritemapEntry(0, $00, $0C, 0, 0, 2, 0, $127)
+    %spritemapEntry(0, $1F8, $0C, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1F8, $FC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1F8, $EC, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $1E8, $03, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $1F0, $FC, 0, 0, 2, 0, $125)
+    %spritemapEntry(0, $1E8, $FC, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1E8, $EC, 0, 0, 2, 0, $100)
 
 Spritemap_Fune_FacingRight_Idle_MouthClosed:
-    dw $0008,$01F0                                                       ;A894CB;
-    db $0C                                                               ;A894CF;
-    dw $6127,$01F8                                                       ;A894D0;
-    db $0C                                                               ;A894D4;
-    dw $6126,$81F0                                                       ;A894D5;
-    db $FC                                                               ;A894D9;
-    dw $6122,$81F0                                                       ;A894DA;
-    db $EC                                                               ;A894DE;
-    dw $6120,$8000                                                       ;A894DF;
-    db $FC                                                               ;A894E3;
-    dw $6102,$0000                                                       ;A894E4;
-    db $FC                                                               ;A894E8;
-    dw $6125,$0008                                                       ;A894E9;
-    db $FC                                                               ;A894ED;
-    dw $6124,$8000                                                       ;A894EE;
-    db $EC                                                               ;A894F2;
-    dw $6100                                                             ;A894F3;
+    dw $0008                                                             ;A894CB;
+    %spritemapEntry(0, $1F0, $0C, 0, 1, 2, 0, $127)
+    %spritemapEntry(0, $1F8, $0C, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $1F0, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $1F0, $EC, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $00, $FC, 0, 1, 2, 0, $102)
+    %spritemapEntry(0, $00, $FC, 0, 1, 2, 0, $125)
+    %spritemapEntry(0, $08, $FC, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $00, $EC, 0, 1, 2, 0, $100)
 
 Spritemap_Fune_FacingRight_StartOpeningMouth:
-    dw $0008,$01F2                                                       ;A894F5;
-    db $0C                                                               ;A894F9;
-    dw $6127,$01FA                                                       ;A894FA;
-    db $0C                                                               ;A894FE;
-    dw $6126,$81F2                                                       ;A894FF;
-    db $FC                                                               ;A89503;
-    dw $6122,$81F2                                                       ;A89504;
-    db $EC                                                               ;A89508;
-    dw $6120,$8002                                                       ;A89509;
-    db $FE                                                               ;A8950D;
-    dw $6102,$0002                                                       ;A8950E;
-    db $FC                                                               ;A89512;
-    dw $6125,$000A                                                       ;A89513;
-    db $FC                                                               ;A89517;
-    dw $6124,$8002                                                       ;A89518;
-    db $EC                                                               ;A8951C;
-    dw $6100                                                             ;A8951D;
+    dw $0008                                                             ;A894F5;
+    %spritemapEntry(0, $1F2, $0C, 0, 1, 2, 0, $127)
+    %spritemapEntry(0, $1FA, $0C, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $1F2, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $1F2, $EC, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $02, $FE, 0, 1, 2, 0, $102)
+    %spritemapEntry(0, $02, $FC, 0, 1, 2, 0, $125)
+    %spritemapEntry(0, $0A, $FC, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $02, $EC, 0, 1, 2, 0, $100)
 
 Spritemap_Fune_FacingRight_MouthOpening1:
-    dw $0008,$01F4                                                       ;A8951F;
-    db $0C                                                               ;A89523;
-    dw $6127,$01FC                                                       ;A89524;
-    db $0C                                                               ;A89528;
-    dw $6126,$81F4                                                       ;A89529;
-    db $FC                                                               ;A8952D;
-    dw $6122,$81F4                                                       ;A8952E;
-    db $EC                                                               ;A89532;
-    dw $6120,$8004                                                       ;A89533;
-    db $00                                                               ;A89537;
-    dw $6102,$0004                                                       ;A89538;
-    db $FC                                                               ;A8953C;
-    dw $6125,$000C                                                       ;A8953D;
-    db $FC                                                               ;A89541;
-    dw $6124,$8004                                                       ;A89542;
-    db $EC                                                               ;A89546;
-    dw $6100                                                             ;A89547;
+    dw $0008                                                             ;A8951F;
+    %spritemapEntry(0, $1F4, $0C, 0, 1, 2, 0, $127)
+    %spritemapEntry(0, $1FC, $0C, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $1F4, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $1F4, $EC, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $04, $00, 0, 1, 2, 0, $102)
+    %spritemapEntry(0, $04, $FC, 0, 1, 2, 0, $125)
+    %spritemapEntry(0, $0C, $FC, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $04, $EC, 0, 1, 2, 0, $100)
 
 Spritemap_Fune_FacingRight_MouthOpening2:
-    dw $0008,$01F6                                                       ;A89549;
-    db $0C                                                               ;A8954D;
-    dw $6127,$01FE                                                       ;A8954E;
-    db $0C                                                               ;A89552;
-    dw $6126,$81F6                                                       ;A89553;
-    db $FC                                                               ;A89557;
-    dw $6122,$81F6                                                       ;A89558;
-    db $EC                                                               ;A8955C;
-    dw $6120,$8006                                                       ;A8955D;
-    db $01                                                               ;A89561;
-    dw $6102,$0006                                                       ;A89562;
-    db $FC                                                               ;A89566;
-    dw $6125,$000E                                                       ;A89567;
-    db $FC                                                               ;A8956B;
-    dw $6124,$8006                                                       ;A8956C;
-    db $EC                                                               ;A89570;
-    dw $6100                                                             ;A89571;
+    dw $0008                                                             ;A89549;
+    %spritemapEntry(0, $1F6, $0C, 0, 1, 2, 0, $127)
+    %spritemapEntry(0, $1FE, $0C, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $1F6, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $1F6, $EC, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $06, $01, 0, 1, 2, 0, $102)
+    %spritemapEntry(0, $06, $FC, 0, 1, 2, 0, $125)
+    %spritemapEntry(0, $0E, $FC, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $06, $EC, 0, 1, 2, 0, $100)
 
 Spritemap_Fune_FacingRight_MouthMostOpen:
-    dw $0008,$01F8                                                       ;A89573;
-    db $0C                                                               ;A89577;
-    dw $6127,$0000                                                       ;A89578;
-    db $0C                                                               ;A8957C;
-    dw $6126,$81F8                                                       ;A8957D;
-    db $FC                                                               ;A89581;
-    dw $6122,$81F8                                                       ;A89582;
-    db $EC                                                               ;A89586;
-    dw $6120,$8007                                                       ;A89587;
-    db $02                                                               ;A8958B;
-    dw $6102,$0008                                                       ;A8958C;
-    db $FC                                                               ;A89590;
-    dw $6125,$0010                                                       ;A89591;
-    db $FC                                                               ;A89595;
-    dw $6124,$8008                                                       ;A89596;
-    db $EC                                                               ;A8959A;
-    dw $6100                                                             ;A8959B;
+    dw $0008                                                             ;A89573;
+    %spritemapEntry(0, $1F8, $0C, 0, 1, 2, 0, $127)
+    %spritemapEntry(0, $00, $0C, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $1F8, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $1F8, $EC, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $07, $02, 0, 1, 2, 0, $102)
+    %spritemapEntry(0, $08, $FC, 0, 1, 2, 0, $125)
+    %spritemapEntry(0, $10, $FC, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $08, $EC, 0, 1, 2, 0, $100)
+
 
 Palette_Namihe:
     dw $3800,$4B9C,$3694,$0929,$0042,$3B18,$2A52,$19AD                   ;A8959D;
     dw $116B,$7F5A,$7EC0,$6DE0,$54E0,$001D,$0014,$000A                   ;A895AD;
 
+
 InstList_Namihe_FacingLeft_Idling:
-    dw $0001                                                             ;A895BD;
-    dw Spritemap_Namihe_FacingLeft_Idle_MouthEyeOpened                   ;A895BF;
+    dw $0001,Spritemap_Namihe_FacingLeft_Idle_MouthEyeOpened             ;A895BD;
     dw Instruction_Common_Sleep                                          ;A895C1;
 
 InstList_Namihe_FacingLeft_Active:
-    dw $0008                                                             ;A895C3;
-    dw Spritemap_Namihe_FacingLeft_Idle_MouthEyeOpened                   ;A895C5;
-    dw $0008                                                             ;A895C7;
-    dw Spritemap_Namihe_FacingLeft_EyeOpened                             ;A895C9;
-    dw $0008                                                             ;A895CB;
-    dw Spritemap_Namihe_FacingLeft_StartOpeningMouth                     ;A895CD;
-    dw $0008                                                             ;A895CF;
-    dw Spritemap_Namihe_FacingLeft_MouthOpening1                         ;A895D1;
-    dw $0008                                                             ;A895D3;
-    dw Spritemap_Namihe_FacingLeft_MouthOpening2                         ;A895D5;
+    dw $0008,Spritemap_Namihe_FacingLeft_Idle_MouthEyeOpened             ;A895C3;
+    dw $0008,Spritemap_Namihe_FacingLeft_EyeOpened                       ;A895C7;
+    dw $0008,Spritemap_Namihe_FacingLeft_StartOpeningMouth               ;A895CB;
+    dw $0008,Spritemap_Namihe_FacingLeft_MouthOpening1                   ;A895CF;
+    dw $0008,Spritemap_Namihe_FacingLeft_MouthOpening2                   ;A895D3;
     dw Instruction_Namihe_SpawnFireball_FacingLeft                       ;A895D7;
     dw Instruction_FuneNamihe_QueueSpitSFX                               ;A895D9;
-    dw $0008                                                             ;A895DB;
-    dw Spritemap_Namihe_FacingLeft_MouthMostOpen                         ;A895DD;
-    dw $0008                                                             ;A895DF;
-    dw Spritemap_Namihe_FacingLeft_MouthOpening2                         ;A895E1;
-    dw $0008                                                             ;A895E3;
-    dw Spritemap_Namihe_FacingLeft_MouthOpening1                         ;A895E5;
-    dw $0008                                                             ;A895E7;
-    dw Spritemap_Namihe_FacingLeft_StartOpeningMouth                     ;A895E9;
+    dw $0008,Spritemap_Namihe_FacingLeft_MouthMostOpen                   ;A895DB;
+    dw $0008,Spritemap_Namihe_FacingLeft_MouthOpening2                   ;A895DF;
+    dw $0008,Spritemap_Namihe_FacingLeft_MouthOpening1                   ;A895E3;
+    dw $0008,Spritemap_Namihe_FacingLeft_StartOpeningMouth               ;A895E7;
     dw Instruction_FuneNamihe_FinishActivity                             ;A895EB;
     dw Instruction_Common_GotoY                                          ;A895ED;
     dw InstList_Namihe_FacingLeft_Idling                                 ;A895EF;
 
 InstList_Namihe_FacingRight_Idling:
-    dw $0001                                                             ;A895F1;
-    dw Spritemap_Namihe_FacingRight_Idle_MouthEyeClosed                  ;A895F3;
+    dw $0001,Spritemap_Namihe_FacingRight_Idle_MouthEyeClosed            ;A895F1;
     dw Instruction_Common_Sleep                                          ;A895F5;
 
 InstList_Namihe_FacingRight_Active:
-    dw $0008                                                             ;A895F7;
-    dw Spritemap_Namihe_FacingRight_Idle_MouthEyeClosed                  ;A895F9;
-    dw $0008                                                             ;A895FB;
-    dw Spritemap_Namihe_FacingRight_EyeOpened                            ;A895FD;
-    dw $0008                                                             ;A895FF;
-    dw Spritemap_Namihe_FacingRight_StartOpeningMouth                    ;A89601;
-    dw $0008                                                             ;A89603;
-    dw Spritemap_Namihe_FacingRight_MouthOpening1                        ;A89605;
-    dw $0008                                                             ;A89607;
-    dw Spritemap_Namihe_FacingRight_MouthOpening2                        ;A89609;
+    dw $0008,Spritemap_Namihe_FacingRight_Idle_MouthEyeClosed            ;A895F7;
+    dw $0008,Spritemap_Namihe_FacingRight_EyeOpened                      ;A895FB;
+    dw $0008,Spritemap_Namihe_FacingRight_StartOpeningMouth              ;A895FF;
+    dw $0008,Spritemap_Namihe_FacingRight_MouthOpening1                  ;A89603;
+    dw $0008,Spritemap_Namihe_FacingRight_MouthOpening2                  ;A89607;
     dw Instruction_Namihe_SpawnFireball_FacingRight                      ;A8960B;
     dw Instruction_FuneNamihe_QueueSpitSFX                               ;A8960D;
-    dw $0008                                                             ;A8960F;
-    dw Spritemap_Namihe_FacingRight_MouthMostOpen                        ;A89611;
-    dw $0008                                                             ;A89613;
-    dw Spritemap_Namihe_FacingRight_MouthOpening2                        ;A89615;
-    dw $0008                                                             ;A89617;
-    dw Spritemap_Namihe_FacingRight_MouthOpening1                        ;A89619;
-    dw $0008                                                             ;A8961B;
-    dw Spritemap_Namihe_FacingRight_StartOpeningMouth                    ;A8961D;
+    dw $0008,Spritemap_Namihe_FacingRight_MouthMostOpen                  ;A8960F;
+    dw $0008,Spritemap_Namihe_FacingRight_MouthOpening2                  ;A89613;
+    dw $0008,Spritemap_Namihe_FacingRight_MouthOpening1                  ;A89617;
+    dw $0008,Spritemap_Namihe_FacingRight_StartOpeningMouth              ;A8961B;
     dw Instruction_FuneNamihe_FinishActivity_duplicate                   ;A8961F;
     dw Instruction_Common_GotoY                                          ;A89621;
     dw InstList_Namihe_FacingRight_Idling                                ;A89623;
@@ -2776,236 +2310,142 @@ RTL_A897B3:
 
 
 Spritemap_Namihe_FacingLeft_Idle_MouthEyeOpened:
-    dw $0008,$0008                                                       ;A897B4;
-    db $0C                                                               ;A897B8;
-    dw $2127,$0000                                                       ;A897B9;
-    db $0C                                                               ;A897BD;
-    dw $2126,$8000                                                       ;A897BE;
-    db $FC                                                               ;A897C2;
-    dw $2122,$8000                                                       ;A897C3;
-    db $EC                                                               ;A897C7;
-    dw $2120,$81F0                                                       ;A897C8;
-    db $00                                                               ;A897CC;
-    dw $2106,$01F8                                                       ;A897CD;
-    db $FC                                                               ;A897D1;
-    dw $2135,$01F0                                                       ;A897D2;
-    db $FC                                                               ;A897D6;
-    dw $2134,$81F0                                                       ;A897D7;
-    db $EC                                                               ;A897DB;
-    dw $2104                                                             ;A897DC;
+    dw $0008                                                             ;A897B4;
+    %spritemapEntry(0, $08, $0C, 0, 0, 2, 0, $127)
+    %spritemapEntry(0, $00, $0C, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $00, $FC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $00, $EC, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $1F0, $00, 0, 0, 2, 0, $106)
+    %spritemapEntry(0, $1F8, $FC, 0, 0, 2, 0, $135)
+    %spritemapEntry(0, $1F0, $FC, 0, 0, 2, 0, $134)
+    %spritemapEntry(1, $1F0, $EC, 0, 0, 2, 0, $104)
 
 Spritemap_Namihe_FacingLeft_EyeOpened:
-    dw $0008,$81F0                                                       ;A897DE;
-    db $00                                                               ;A897E2;
-    dw $2106,$01F8                                                       ;A897E3;
-    db $EC                                                               ;A897E7;
-    dw $2105,$01F0                                                       ;A897E8;
-    db $EC                                                               ;A897EC;
-    dw $2104,$81F0                                                       ;A897ED;
-    db $F4                                                               ;A897F1;
-    dw $2108,$0008                                                       ;A897F2;
-    db $0C                                                               ;A897F6;
-    dw $2127,$0000                                                       ;A897F7;
-    db $0C                                                               ;A897FB;
-    dw $2126,$8000                                                       ;A897FC;
-    db $FC                                                               ;A89800;
-    dw $2122,$8000                                                       ;A89801;
-    db $EC                                                               ;A89805;
-    dw $2120                                                             ;A89806;
+    dw $0008                                                             ;A897DE;
+    %spritemapEntry(1, $1F0, $00, 0, 0, 2, 0, $106)
+    %spritemapEntry(0, $1F8, $EC, 0, 0, 2, 0, $105)
+    %spritemapEntry(0, $1F0, $EC, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1F0, $F4, 0, 0, 2, 0, $108)
+    %spritemapEntry(0, $08, $0C, 0, 0, 2, 0, $127)
+    %spritemapEntry(0, $00, $0C, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $00, $FC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $00, $EC, 0, 0, 2, 0, $120)
 
 Spritemap_Namihe_FacingLeft_StartOpeningMouth:
-    dw $0008,$81EE                                                       ;A89808;
-    db $02                                                               ;A8980C;
-    dw $2106,$01F6                                                       ;A8980D;
-    db $EC                                                               ;A89811;
-    dw $2105,$01EE                                                       ;A89812;
-    db $EC                                                               ;A89816;
-    dw $2104,$81EE                                                       ;A89817;
-    db $F4                                                               ;A8981B;
-    dw $2108,$0006                                                       ;A8981C;
-    db $0C                                                               ;A89820;
-    dw $2127,$01FE                                                       ;A89821;
-    db $0C                                                               ;A89825;
-    dw $2126,$81FE                                                       ;A89826;
-    db $FC                                                               ;A8982A;
-    dw $2122,$81FE                                                       ;A8982B;
-    db $EC                                                               ;A8982F;
-    dw $2120                                                             ;A89830;
+    dw $0008                                                             ;A89808;
+    %spritemapEntry(1, $1EE, $02, 0, 0, 2, 0, $106)
+    %spritemapEntry(0, $1F6, $EC, 0, 0, 2, 0, $105)
+    %spritemapEntry(0, $1EE, $EC, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1EE, $F4, 0, 0, 2, 0, $108)
+    %spritemapEntry(0, $06, $0C, 0, 0, 2, 0, $127)
+    %spritemapEntry(0, $1FE, $0C, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1FE, $FC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1FE, $EC, 0, 0, 2, 0, $120)
 
 Spritemap_Namihe_FacingLeft_MouthOpening1:
-    dw $0008,$81EC                                                       ;A89832;
-    db $03                                                               ;A89836;
-    dw $2106,$01F4                                                       ;A89837;
-    db $EC                                                               ;A8983B;
-    dw $2105,$01EC                                                       ;A8983C;
-    db $EC                                                               ;A89840;
-    dw $2104,$81EC                                                       ;A89841;
-    db $F4                                                               ;A89845;
-    dw $2108,$0004                                                       ;A89846;
-    db $0C                                                               ;A8984A;
-    dw $2127,$01FC                                                       ;A8984B;
-    db $0C                                                               ;A8984F;
-    dw $2126,$81FC                                                       ;A89850;
-    db $FC                                                               ;A89854;
-    dw $2122,$81FC                                                       ;A89855;
-    db $EC                                                               ;A89859;
-    dw $2120                                                             ;A8985A;
+    dw $0008                                                             ;A89832;
+    %spritemapEntry(1, $1EC, $03, 0, 0, 2, 0, $106)
+    %spritemapEntry(0, $1F4, $EC, 0, 0, 2, 0, $105)
+    %spritemapEntry(0, $1EC, $EC, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1EC, $F4, 0, 0, 2, 0, $108)
+    %spritemapEntry(0, $04, $0C, 0, 0, 2, 0, $127)
+    %spritemapEntry(0, $1FC, $0C, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1FC, $FC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1FC, $EC, 0, 0, 2, 0, $120)
 
 Spritemap_Namihe_FacingLeft_MouthOpening2:
-    dw $0008,$81EA                                                       ;A8985C;
-    db $04                                                               ;A89860;
-    dw $2106,$01F2                                                       ;A89861;
-    db $EC                                                               ;A89865;
-    dw $2105,$01EA                                                       ;A89866;
-    db $EC                                                               ;A8986A;
-    dw $2104,$81EA                                                       ;A8986B;
-    db $F4                                                               ;A8986F;
-    dw $2108,$0002                                                       ;A89870;
-    db $0C                                                               ;A89874;
-    dw $2127,$01FA                                                       ;A89875;
-    db $0C                                                               ;A89879;
-    dw $2126,$81FA                                                       ;A8987A;
-    db $FC                                                               ;A8987E;
-    dw $2122,$81FA                                                       ;A8987F;
-    db $EC                                                               ;A89883;
-    dw $2120                                                             ;A89884;
+    dw $0008                                                             ;A8985C;
+    %spritemapEntry(1, $1EA, $04, 0, 0, 2, 0, $106)
+    %spritemapEntry(0, $1F2, $EC, 0, 0, 2, 0, $105)
+    %spritemapEntry(0, $1EA, $EC, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1EA, $F4, 0, 0, 2, 0, $108)
+    %spritemapEntry(0, $02, $0C, 0, 0, 2, 0, $127)
+    %spritemapEntry(0, $1FA, $0C, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1FA, $FC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1FA, $EC, 0, 0, 2, 0, $120)
 
 Spritemap_Namihe_FacingLeft_MouthMostOpen:
-    dw $0008,$81E9                                                       ;A89886;
-    db $05                                                               ;A8988A;
-    dw $2106,$01F0                                                       ;A8988B;
-    db $EC                                                               ;A8988F;
-    dw $2105,$01E8                                                       ;A89890;
-    db $EC                                                               ;A89894;
-    dw $2104,$81E8                                                       ;A89895;
-    db $F4                                                               ;A89899;
-    dw $2108,$0000                                                       ;A8989A;
-    db $0C                                                               ;A8989E;
-    dw $2127,$01F8                                                       ;A8989F;
-    db $0C                                                               ;A898A3;
-    dw $2126,$81F8                                                       ;A898A4;
-    db $FC                                                               ;A898A8;
-    dw $2122,$81F8                                                       ;A898A9;
-    db $EC                                                               ;A898AD;
-    dw $2120                                                             ;A898AE;
+    dw $0008                                                             ;A89886;
+    %spritemapEntry(1, $1E9, $05, 0, 0, 2, 0, $106)
+    %spritemapEntry(0, $1F0, $EC, 0, 0, 2, 0, $105)
+    %spritemapEntry(0, $1E8, $EC, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1E8, $F4, 0, 0, 2, 0, $108)
+    %spritemapEntry(0, $00, $0C, 0, 0, 2, 0, $127)
+    %spritemapEntry(0, $1F8, $0C, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1F8, $FC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1F8, $EC, 0, 0, 2, 0, $120)
 
 Spritemap_Namihe_FacingRight_Idle_MouthEyeClosed:
-    dw $0008,$01F0                                                       ;A898B0;
-    db $0C                                                               ;A898B4;
-    dw $6127,$01F8                                                       ;A898B5;
-    db $0C                                                               ;A898B9;
-    dw $6126,$81F0                                                       ;A898BA;
-    db $FC                                                               ;A898BE;
-    dw $6122,$81F0                                                       ;A898BF;
-    db $EC                                                               ;A898C3;
-    dw $6120,$8000                                                       ;A898C4;
-    db $00                                                               ;A898C8;
-    dw $6106,$0000                                                       ;A898C9;
-    db $FC                                                               ;A898CD;
-    dw $6135,$0008                                                       ;A898CE;
-    db $FC                                                               ;A898D2;
-    dw $6134,$8000                                                       ;A898D3;
-    db $EC                                                               ;A898D7;
-    dw $6104                                                             ;A898D8;
+    dw $0008                                                             ;A898B0;
+    %spritemapEntry(0, $1F0, $0C, 0, 1, 2, 0, $127)
+    %spritemapEntry(0, $1F8, $0C, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $1F0, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $1F0, $EC, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $00, $00, 0, 1, 2, 0, $106)
+    %spritemapEntry(0, $00, $FC, 0, 1, 2, 0, $135)
+    %spritemapEntry(0, $08, $FC, 0, 1, 2, 0, $134)
+    %spritemapEntry(1, $00, $EC, 0, 1, 2, 0, $104)
 
 Spritemap_Namihe_FacingRight_EyeOpened:
-    dw $0008,$8000                                                       ;A898DA;
-    db $00                                                               ;A898DE;
-    dw $6106,$0000                                                       ;A898DF;
-    db $EC                                                               ;A898E3;
-    dw $6105,$0008                                                       ;A898E4;
-    db $EC                                                               ;A898E8;
-    dw $6104,$8000                                                       ;A898E9;
-    db $F4                                                               ;A898ED;
-    dw $6108,$01F0                                                       ;A898EE;
-    db $0C                                                               ;A898F2;
-    dw $6127,$01F8                                                       ;A898F3;
-    db $0C                                                               ;A898F7;
-    dw $6126,$81F0                                                       ;A898F8;
-    db $FC                                                               ;A898FC;
-    dw $6122,$81F0                                                       ;A898FD;
-    db $EC                                                               ;A89901;
-    dw $6120                                                             ;A89902;
+    dw $0008                                                             ;A898DA;
+    %spritemapEntry(1, $00, $00, 0, 1, 2, 0, $106)
+    %spritemapEntry(0, $00, $EC, 0, 1, 2, 0, $105)
+    %spritemapEntry(0, $08, $EC, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $00, $F4, 0, 1, 2, 0, $108)
+    %spritemapEntry(0, $1F0, $0C, 0, 1, 2, 0, $127)
+    %spritemapEntry(0, $1F8, $0C, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $1F0, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $1F0, $EC, 0, 1, 2, 0, $120)
 
 Spritemap_Namihe_FacingRight_StartOpeningMouth:
-    dw $0008,$8002                                                       ;A89904;
-    db $02                                                               ;A89908;
-    dw $6106,$0002                                                       ;A89909;
-    db $EC                                                               ;A8990D;
-    dw $6105,$000A                                                       ;A8990E;
-    db $EC                                                               ;A89912;
-    dw $6104,$8002                                                       ;A89913;
-    db $F4                                                               ;A89917;
-    dw $6108,$01F2                                                       ;A89918;
-    db $0C                                                               ;A8991C;
-    dw $6127,$01FA                                                       ;A8991D;
-    db $0C                                                               ;A89921;
-    dw $6126,$81F2                                                       ;A89922;
-    db $FC                                                               ;A89926;
-    dw $6122,$81F2                                                       ;A89927;
-    db $EC                                                               ;A8992B;
-    dw $6120                                                             ;A8992C;
+    dw $0008                                                             ;A89904;
+    %spritemapEntry(1, $02, $02, 0, 1, 2, 0, $106)
+    %spritemapEntry(0, $02, $EC, 0, 1, 2, 0, $105)
+    %spritemapEntry(0, $0A, $EC, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $02, $F4, 0, 1, 2, 0, $108)
+    %spritemapEntry(0, $1F2, $0C, 0, 1, 2, 0, $127)
+    %spritemapEntry(0, $1FA, $0C, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $1F2, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $1F2, $EC, 0, 1, 2, 0, $120)
 
 Spritemap_Namihe_FacingRight_MouthOpening1:
-    dw $0008,$8004                                                       ;A8992E;
-    db $03                                                               ;A89932;
-    dw $6106,$0004                                                       ;A89933;
-    db $EC                                                               ;A89937;
-    dw $6105,$000C                                                       ;A89938;
-    db $EC                                                               ;A8993C;
-    dw $6104,$8004                                                       ;A8993D;
-    db $F4                                                               ;A89941;
-    dw $6108,$01F4                                                       ;A89942;
-    db $0C                                                               ;A89946;
-    dw $6127,$01FC                                                       ;A89947;
-    db $0C                                                               ;A8994B;
-    dw $6126,$81F4                                                       ;A8994C;
-    db $FC                                                               ;A89950;
-    dw $6122,$81F4                                                       ;A89951;
-    db $EC                                                               ;A89955;
-    dw $6120                                                             ;A89956;
+    dw $0008                                                             ;A8992E;
+    %spritemapEntry(1, $04, $03, 0, 1, 2, 0, $106)
+    %spritemapEntry(0, $04, $EC, 0, 1, 2, 0, $105)
+    %spritemapEntry(0, $0C, $EC, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $04, $F4, 0, 1, 2, 0, $108)
+    %spritemapEntry(0, $1F4, $0C, 0, 1, 2, 0, $127)
+    %spritemapEntry(0, $1FC, $0C, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $1F4, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $1F4, $EC, 0, 1, 2, 0, $120)
 
 Spritemap_Namihe_FacingRight_MouthOpening2:
-    dw $0008,$8006                                                       ;A89958;
-    db $04                                                               ;A8995C;
-    dw $6106,$0006                                                       ;A8995D;
-    db $EC                                                               ;A89961;
-    dw $6105,$000E                                                       ;A89962;
-    db $EC                                                               ;A89966;
-    dw $6104,$8006                                                       ;A89967;
-    db $F4                                                               ;A8996B;
-    dw $6108,$01F6                                                       ;A8996C;
-    db $0C                                                               ;A89970;
-    dw $6127,$01FE                                                       ;A89971;
-    db $0C                                                               ;A89975;
-    dw $6126,$81F6                                                       ;A89976;
-    db $FC                                                               ;A8997A;
-    dw $6122,$81F6                                                       ;A8997B;
-    db $EC                                                               ;A8997F;
-    dw $6120                                                             ;A89980;
+    dw $0008                                                             ;A89958;
+    %spritemapEntry(1, $06, $04, 0, 1, 2, 0, $106)
+    %spritemapEntry(0, $06, $EC, 0, 1, 2, 0, $105)
+    %spritemapEntry(0, $0E, $EC, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $06, $F4, 0, 1, 2, 0, $108)
+    %spritemapEntry(0, $1F6, $0C, 0, 1, 2, 0, $127)
+    %spritemapEntry(0, $1FE, $0C, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $1F6, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $1F6, $EC, 0, 1, 2, 0, $120)
 
 Spritemap_Namihe_FacingRight_MouthMostOpen:
-    dw $0008,$8007                                                       ;A89982;
-    db $05                                                               ;A89986;
-    dw $6106,$0008                                                       ;A89987;
-    db $EC                                                               ;A8998B;
-    dw $6105,$0010                                                       ;A8998C;
-    db $EC                                                               ;A89990;
-    dw $6104,$8008                                                       ;A89991;
-    db $F4                                                               ;A89995;
-    dw $6108,$01F8                                                       ;A89996;
-    db $0C                                                               ;A8999A;
-    dw $6127,$0000                                                       ;A8999B;
-    db $0C                                                               ;A8999F;
-    dw $6126,$81F8                                                       ;A899A0;
-    db $FC                                                               ;A899A4;
-    dw $6122,$81F8                                                       ;A899A5;
-    db $EC                                                               ;A899A9;
-    dw $6120                                                             ;A899AA;
+    dw $0008                                                             ;A89982;
+    %spritemapEntry(1, $07, $05, 0, 1, 2, 0, $106)
+    %spritemapEntry(0, $08, $EC, 0, 1, 2, 0, $105)
+    %spritemapEntry(0, $10, $EC, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $08, $F4, 0, 1, 2, 0, $108)
+    %spritemapEntry(0, $1F8, $0C, 0, 1, 2, 0, $127)
+    %spritemapEntry(0, $00, $0C, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $1F8, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $1F8, $EC, 0, 1, 2, 0, $120)
+
 
 Palette_Coven:
     dw $3800,$57FF,$42F7,$0929,$00A5,$4F5A,$36B5,$2610                   ;A899AC;
     dw $1DCE,$01DF,$001F,$0018,$000A,$06B9,$00EA,$0045                   ;A899BC;
+
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Coven_BlackPalettes_A899CC:
@@ -3024,42 +2464,54 @@ UNUSED_Coven_BlackPalettes_A899CC:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_Coven:
-    dw $0010                                                             ;A89A8C;
-    dw Spritemap_Coven_0                                                 ;A89A8E;
-    dw $0010                                                             ;A89A90;
-    dw Spritemap_Coven_1                                                 ;A89A92;
-    dw $0010                                                             ;A89A94;
-    dw Spritemap_Coven_2                                                 ;A89A96;
+    dw $0010,Spritemap_Coven_0                                           ;A89A8C;
+    dw $0010,Spritemap_Coven_1                                           ;A89A90;
+    dw $0010,Spritemap_Coven_2                                           ;A89A94;
     dw Instruction_Common_GotoY                                          ;A89A98;
     dw InstList_Coven                                                    ;A89A9A;
 
 CovenConstants_SamusMovementCounterThreshold:
+; Number of times Samus has to move in the same direction to materialise
     dw $0010                                                             ;A89A9C;
 
 CovenConstants_SamusStationaryFramesThreshold:
+; Number of frames Samus has to remain stationary to materialise
     dw $0040                                                             ;A89A9E;
 
 CovenConstants_HoveringYAccelerationDeceleration:
+; Hovering Y acceleration/deceleration
     dw $1800                                                             ;A89AA0;
 
 CovenConstants_InitialHoveringYVelocity:
+; Initial hovering Y velocity
     dw $0001                                                             ;A89AA2;
 
 CovenConstants_SleepTimer:
+; Number of frames to sleep after dematerialising
     dw $0078                                                             ;A89AA4;
 
 CovenConstants_MaterializeTimer:
+; Number of frames to be materialised for
     dw $0078                                                             ;A89AA6;
 
-CovenConstants_OffsetsFromSamusToMaterialize_X:
+CovenConstants_OffsetsFromSamusToMaterialize:
+; X/Y offsets from Samus position to materialise when Samus has been moving a given direction
+  .X:
     dw $FFC0                                                             ;A89AA8;
+  .Y:                                                                    ;A89AAA;
+    dw       $FFC0 ; 0: Up-left
+    dw $0000,$FFC0 ; 4: Up
+    dw $0040,$0000 ; 8: Up-right
+    dw $FFC0,$0000 ; Ch: Left
+    dw $0000,$0000 ; 10h: None (dummy)
+    dw $0040,$0000 ; 14h: Right
+    dw $FFC0,$0040 ; 18h: Down-left
+    dw $0000,$0040 ; 1Ch: Down
+    dw $0040,$0040 ; 20h: Down-right
 
-CovenConstants_OffsetsFromSamusToMaterialize_Y:
-    dw $FFC0,$0000,$FFC0,$0040,$0000,$FFC0,$0000,$0000                   ;A89AAA;
-    dw $0000,$0040,$0000,$FFC0,$0040,$0000,$0040,$0040                   ;A89ABA;
-    dw $0040                                                             ;A89ACA;
 
 CovenPaletteTransitionDelayTable:
+; Palette transition delay table
     dw $0001,$0008,$0001,$0008,$0001,$0007,$0001,$0007                   ;A89ACC;
     dw $0002,$0006,$0002,$0006,$0003,$0005,$0003,$0005                   ;A89ADC;
     dw $FFFF                                                             ;A89AEC;
@@ -3360,6 +2812,7 @@ RTL_A89D31:
     RTL                                                                  ;A89D31;
 
 
+; Number of pixels of tolerance to consider Samus stationary for the materialisation check
 CovenStationaryZoneXRadius:
     dw $0001                                                             ;A89D32;
 
@@ -3502,37 +2955,26 @@ RTL_A89E45:
 
 
 Spritemap_Coven_0:
-    dw $0004,$8000                                                       ;A89E46;
-    db $00                                                               ;A89E4A;
-    dw $3106,$81F0                                                       ;A89E4B;
-    db $00                                                               ;A89E4F;
-    dw $3104,$8000                                                       ;A89E50;
-    db $F0                                                               ;A89E54;
-    dw $3102,$81F0                                                       ;A89E55;
-    db $F0                                                               ;A89E59;
-    dw $3100                                                             ;A89E5A;
+    dw $0004                                                             ;A89E46;
+    %spritemapEntry(1, $00, $00, 0, 0, 3, 0, $106)
+    %spritemapEntry(1, $1F0, $00, 0, 0, 3, 0, $104)
+    %spritemapEntry(1, $00, $F0, 0, 0, 3, 0, $102)
+    %spritemapEntry(1, $1F0, $F0, 0, 0, 3, 0, $100)
 
 Spritemap_Coven_1:
-    dw $0004,$8000                                                       ;A89E5C;
-    db $00                                                               ;A89E60;
-    dw $310A,$81F0                                                       ;A89E61;
-    db $00                                                               ;A89E65;
-    dw $3108,$8000                                                       ;A89E66;
-    db $F0                                                               ;A89E6A;
-    dw $3102,$81F0                                                       ;A89E6B;
-    db $F0                                                               ;A89E6F;
-    dw $3100                                                             ;A89E70;
+    dw $0004                                                             ;A89E5C;
+    %spritemapEntry(1, $00, $00, 0, 0, 3, 0, $10A)
+    %spritemapEntry(1, $1F0, $00, 0, 0, 3, 0, $108)
+    %spritemapEntry(1, $00, $F0, 0, 0, 3, 0, $102)
+    %spritemapEntry(1, $1F0, $F0, 0, 0, 3, 0, $100)
 
 Spritemap_Coven_2:
-    dw $0004,$8000                                                       ;A89E72;
-    db $00                                                               ;A89E76;
-    dw $310E,$81F0                                                       ;A89E77;
-    db $00                                                               ;A89E7B;
-    dw $310C,$8000                                                       ;A89E7C;
-    db $F0                                                               ;A89E80;
-    dw $3102,$81F0                                                       ;A89E81;
-    db $F0                                                               ;A89E85;
-    dw $3100                                                             ;A89E86;
+    dw $0004                                                             ;A89E72;
+    %spritemapEntry(1, $00, $00, 0, 0, 3, 0, $10E)
+    %spritemapEntry(1, $1F0, $00, 0, 0, 3, 0, $10C)
+    %spritemapEntry(1, $00, $F0, 0, 0, 3, 0, $102)
+    %spritemapEntry(1, $1F0, $F0, 0, 0, 3, 0, $100)
+
 
 AdvanceCovenPaletteTransition:
     PHP                                                                  ;A89E88;
@@ -3659,186 +3101,135 @@ Palette_YappingMaw:
     dw $3800,$57FF,$42F7,$0929,$00A5,$4F5A,$36B5,$2610                   ;A89F4F;
     dw $1DCE,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;A89F5F;
 
+
 InstList_YappingMaw_Attacking_FacingUp:
-    dw $0005                                                             ;A89F6F;
-    dw Spritemap_YappingMaw_0                                            ;A89F71;
-    dw $0003                                                             ;A89F73;
-    dw Spritemap_YappingMaw_1                                            ;A89F75;
+    dw $0005,Spritemap_YappingMaw_0                                      ;A89F6F;
+    dw $0003,Spritemap_YappingMaw_1                                      ;A89F73;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A89F77;
-    dw $0050                                                             ;A89F79;
-    dw Spritemap_YappingMaw_2                                            ;A89F7B;
-    dw $0003                                                             ;A89F7D;
-    dw Spritemap_YappingMaw_1                                            ;A89F7F;
+    dw $0050,Spritemap_YappingMaw_2                                      ;A89F79;
+    dw $0003,Spritemap_YappingMaw_1                                      ;A89F7D;
     dw Instruction_Common_GotoY                                          ;A89F81;
     dw InstList_YappingMaw_Attacking_FacingUp                            ;A89F83;
 
 InstList_YappingMaw_Attacking_FacingUpRight:
-    dw $0005                                                             ;A89F85;
-    dw Spritemap_YappingMaw_3                                            ;A89F87;
-    dw $0003                                                             ;A89F89;
-    dw Spritemap_YappingMaw_4                                            ;A89F8B;
+    dw $0005,Spritemap_YappingMaw_3                                      ;A89F85;
+    dw $0003,Spritemap_YappingMaw_4                                      ;A89F89;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A89F8D;
-    dw $0050                                                             ;A89F8F;
-    dw Spritemap_YappingMaw_5                                            ;A89F91;
-    dw $0003                                                             ;A89F93;
-    dw Spritemap_YappingMaw_4                                            ;A89F95;
+    dw $0050,Spritemap_YappingMaw_5                                      ;A89F8F;
+    dw $0003,Spritemap_YappingMaw_4                                      ;A89F93;
     dw Instruction_Common_GotoY                                          ;A89F97;
     dw InstList_YappingMaw_Attacking_FacingUpRight                       ;A89F99;
 
 InstList_YappingMaw_Attacking_FacingRight:
-    dw $0005                                                             ;A89F9B;
-    dw Spritemap_YappingMaw_6                                            ;A89F9D;
-    dw $0003                                                             ;A89F9F;
-    dw Spritemap_YappingMaw_7                                            ;A89FA1;
+    dw $0005,Spritemap_YappingMaw_6                                      ;A89F9B;
+    dw $0003,Spritemap_YappingMaw_7                                      ;A89F9F;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A89FA3;
-    dw $0050                                                             ;A89FA5;
-    dw Spritemap_YappingMaw_8                                            ;A89FA7;
-    dw $0003                                                             ;A89FA9;
-    dw Spritemap_YappingMaw_7                                            ;A89FAB;
+    dw $0050,Spritemap_YappingMaw_8                                      ;A89FA5;
+    dw $0003,Spritemap_YappingMaw_7                                      ;A89FA9;
     dw Instruction_Common_GotoY                                          ;A89FAD;
     dw InstList_YappingMaw_Attacking_FacingRight                         ;A89FAF;
 
 InstList_YappingMaw_Attacking_FacingDownRight:
-    dw $0005                                                             ;A89FB1;
-    dw Spritemap_YappingMaw_9                                            ;A89FB3;
-    dw $0003                                                             ;A89FB5;
-    dw Spritemap_YappingMaw_A                                            ;A89FB7;
+    dw $0005,Spritemap_YappingMaw_9                                      ;A89FB1;
+    dw $0003,Spritemap_YappingMaw_A                                      ;A89FB5;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A89FB9;
-    dw $0050                                                             ;A89FBB;
-    dw Spritemap_YappingMaw_B                                            ;A89FBD;
-    dw $0003                                                             ;A89FBF;
-    dw Spritemap_YappingMaw_A                                            ;A89FC1;
+    dw $0050,Spritemap_YappingMaw_B                                      ;A89FBB;
+    dw $0003,Spritemap_YappingMaw_A                                      ;A89FBF;
     dw Instruction_Common_GotoY                                          ;A89FC3;
     dw InstList_YappingMaw_Attacking_FacingDownRight                     ;A89FC5;
 
 InstList_YappingMaw_Attacking_FacingDown:
-    dw $0005                                                             ;A89FC7;
-    dw Spritemap_YappingMaw_C                                            ;A89FC9;
-    dw $0003                                                             ;A89FCB;
-    dw Spritemap_YappingMaw_D                                            ;A89FCD;
+    dw $0005,Spritemap_YappingMaw_C                                      ;A89FC7;
+    dw $0003,Spritemap_YappingMaw_D                                      ;A89FCB;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A89FCF;
-    dw $0050                                                             ;A89FD1;
-    dw Spritemap_YappingMaw_E                                            ;A89FD3;
-    dw $0003                                                             ;A89FD5;
-    dw Spritemap_YappingMaw_D                                            ;A89FD7;
+    dw $0050,Spritemap_YappingMaw_E                                      ;A89FD1;
+    dw $0003,Spritemap_YappingMaw_D                                      ;A89FD5;
     dw Instruction_Common_GotoY                                          ;A89FD9;
     dw InstList_YappingMaw_Attacking_FacingDown                          ;A89FDB;
 
 InstList_YappingMaw_Attacking_FacingDownLeft:
-    dw $0005                                                             ;A89FDD;
-    dw Spritemap_YappingMaw_F                                            ;A89FDF;
-    dw $0003                                                             ;A89FE1;
-    dw Spritemap_YappingMaw_10                                           ;A89FE3;
+    dw $0005,Spritemap_YappingMaw_F                                      ;A89FDD;
+    dw $0003,Spritemap_YappingMaw_10                                     ;A89FE1;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A89FE5;
-    dw $0050                                                             ;A89FE7;
-    dw Spritemap_YappingMaw_11                                           ;A89FE9;
-    dw $0003                                                             ;A89FEB;
-    dw Spritemap_YappingMaw_10                                           ;A89FED;
+    dw $0050,Spritemap_YappingMaw_11                                     ;A89FE7;
+    dw $0003,Spritemap_YappingMaw_10                                     ;A89FEB;
     dw Instruction_Common_GotoY                                          ;A89FEF;
     dw InstList_YappingMaw_Attacking_FacingDownLeft                      ;A89FF1;
 
 InstList_YappingMaw_Attacking_FacingLeft:
-    dw $0005                                                             ;A89FF3;
-    dw Spritemap_YappingMaw_12                                           ;A89FF5;
-    dw $0003                                                             ;A89FF7;
-    dw Spritemap_YappingMaw_13                                           ;A89FF9;
+    dw $0005,Spritemap_YappingMaw_12                                     ;A89FF3;
+    dw $0003,Spritemap_YappingMaw_13                                     ;A89FF7;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A89FFB;
-    dw $0050                                                             ;A89FFD;
-    dw Spritemap_YappingMaw_14                                           ;A89FFF;
-    dw $0003                                                             ;A8A001;
-    dw Spritemap_YappingMaw_13                                           ;A8A003;
+    dw $0050,Spritemap_YappingMaw_14                                     ;A89FFD;
+    dw $0003,Spritemap_YappingMaw_13                                     ;A8A001;
     dw Instruction_Common_GotoY                                          ;A8A005;
     dw InstList_YappingMaw_Attacking_FacingLeft                          ;A8A007;
 
 InstList_YappingMaw_Attacking_FacingUpLeft:
-    dw $0005                                                             ;A8A009;
-    dw Spritemap_YappingMaw_15                                           ;A8A00B;
-    dw $0003                                                             ;A8A00D;
-    dw Spritemap_YappingMaw_16                                           ;A8A00F;
+    dw $0005,Spritemap_YappingMaw_15                                     ;A8A009;
+    dw $0003,Spritemap_YappingMaw_16                                     ;A8A00D;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A8A011;
-    dw $0050                                                             ;A8A013;
-    dw Spritemap_YappingMaw_17                                           ;A8A015;
-    dw $0003                                                             ;A8A017;
-    dw Spritemap_YappingMaw_16                                           ;A8A019;
+    dw $0050,Spritemap_YappingMaw_17                                     ;A8A013;
+    dw $0003,Spritemap_YappingMaw_16                                     ;A8A017;
     dw Instruction_Common_GotoY                                          ;A8A01B;
     dw InstList_YappingMaw_Attacking_FacingUpLeft                        ;A8A01D;
 
 InstList_YappingMaw_Cooldown_FacingUpRight:
     dw Instruction_YappingMaw_OffsetSamusUpRight                         ;A8A01F;
-    dw $0004                                                             ;A8A021;
-    dw Spritemap_YappingMaw_5                                            ;A8A023;
+    dw $0004,Spritemap_YappingMaw_5                                      ;A8A021;
 
 InstList_YappingMaw_Cooldown_FacingUp_0:
     dw Instruction_YappingMaw_OffsetSamusUp                              ;A8A025;
 
 InstList_YappingMaw_Cooldown_FacingUp_1:
-    dw $0050                                                             ;A8A027;
-    dw Spritemap_YappingMaw_2                                            ;A8A029;
-    dw $0003                                                             ;A8A02B;
-    dw Spritemap_YappingMaw_1                                            ;A8A02D;
-    dw $0005                                                             ;A8A02F;
-    dw Spritemap_YappingMaw_0                                            ;A8A031;
-    dw $0003                                                             ;A8A033;
-    dw Spritemap_YappingMaw_1                                            ;A8A035;
+    dw $0050,Spritemap_YappingMaw_2                                      ;A8A027;
+    dw $0003,Spritemap_YappingMaw_1                                      ;A8A02B;
+    dw $0005,Spritemap_YappingMaw_0                                      ;A8A02F;
+    dw $0003,Spritemap_YappingMaw_1                                      ;A8A033;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A8A037;
     dw Instruction_Common_GotoY                                          ;A8A039;
     dw InstList_YappingMaw_Cooldown_FacingUp_1                           ;A8A03B;
 
 InstList_YappingMaw_Cooldown_FacingUpLeft_0:
     dw Instruction_YappingMaw_OffsetSamusUpLeft                          ;A8A03D;
-    dw $0004                                                             ;A8A03F;
-    dw Spritemap_YappingMaw_17                                           ;A8A041;
+    dw $0004,Spritemap_YappingMaw_17                                     ;A8A03F;
     dw Instruction_YappingMaw_OffsetSamusUp                              ;A8A043;
 
 InstList_YappingMaw_Cooldown_FacingUpLeft_1:
-    dw $0050                                                             ;A8A045;
-    dw Spritemap_YappingMaw_2                                            ;A8A047;
-    dw $0003                                                             ;A8A049;
-    dw Spritemap_YappingMaw_1                                            ;A8A04B;
-    dw $0005                                                             ;A8A04D;
-    dw Spritemap_YappingMaw_0                                            ;A8A04F;
-    dw $0003                                                             ;A8A051;
-    dw Spritemap_YappingMaw_1                                            ;A8A053;
+    dw $0050,Spritemap_YappingMaw_2                                      ;A8A045;
+    dw $0003,Spritemap_YappingMaw_1                                      ;A8A049;
+    dw $0005,Spritemap_YappingMaw_0                                      ;A8A04D;
+    dw $0003,Spritemap_YappingMaw_1                                      ;A8A051;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A8A055;
     dw Instruction_CommonA8_GotoY                                        ;A8A057;
     dw InstList_YappingMaw_Cooldown_FacingUpLeft_1                       ;A8A059;
 
 InstList_YappingMaw_Cooldown_FacingDownRight:
     dw Instruction_YappingMaw_OffsetSamusDownRight                       ;A8A05B;
-    dw $0004                                                             ;A8A05D;
-    dw Spritemap_YappingMaw_B                                            ;A8A05F;
+    dw $0004,Spritemap_YappingMaw_B                                      ;A8A05D;
 
 InstList_YappingMaw_Cooldown_FacingDown_0:
     dw Instruction_YappingMaw_OffsetSamusDown                            ;A8A061;
 
 InstList_YappingMaw_Cooldown_FacingDown_1:
-    dw $0050                                                             ;A8A063;
-    dw Spritemap_YappingMaw_E                                            ;A8A065;
-    dw $0003                                                             ;A8A067;
-    dw Spritemap_YappingMaw_D                                            ;A8A069;
-    dw $0005                                                             ;A8A06B;
-    dw Spritemap_YappingMaw_C                                            ;A8A06D;
-    dw $0003                                                             ;A8A06F;
-    dw Spritemap_YappingMaw_D                                            ;A8A071;
+    dw $0050,Spritemap_YappingMaw_E                                      ;A8A063;
+    dw $0003,Spritemap_YappingMaw_D                                      ;A8A067;
+    dw $0005,Spritemap_YappingMaw_C                                      ;A8A06B;
+    dw $0003,Spritemap_YappingMaw_D                                      ;A8A06F;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A8A073;
     dw Instruction_Common_GotoY                                          ;A8A075;
     dw InstList_YappingMaw_Cooldown_FacingDown_1                         ;A8A077;
 
 InstList_YappingMaw_Cooldown_FacingDownLeft_0:
     dw Instruction_YappingMaw_OffsetSamusDownLeft                        ;A8A079;
-    dw $0004                                                             ;A8A07B;
-    dw Spritemap_YappingMaw_11                                           ;A8A07D;
+    dw $0004,Spritemap_YappingMaw_11                                     ;A8A07B;
     dw Instruction_YappingMaw_OffsetSamusDown                            ;A8A07F;
 
 InstList_YappingMaw_Cooldown_FacingDownLeft_1:
-    dw $0050                                                             ;A8A081;
-    dw Spritemap_YappingMaw_E                                            ;A8A083;
-    dw $0003                                                             ;A8A085;
-    dw Spritemap_YappingMaw_D                                            ;A8A087;
-    dw $0005                                                             ;A8A089;
-    dw Spritemap_YappingMaw_C                                            ;A8A08B;
-    dw $0003                                                             ;A8A08D;
-    dw Spritemap_YappingMaw_D                                            ;A8A08F;
+    dw $0050,Spritemap_YappingMaw_E                                      ;A8A081;
+    dw $0003,Spritemap_YappingMaw_D                                      ;A8A085;
+    dw $0005,Spritemap_YappingMaw_C                                      ;A8A089;
+    dw $0003,Spritemap_YappingMaw_D                                      ;A8A08D;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A8A091;
     dw Instruction_Common_GotoY                                          ;A8A093;
     dw InstList_YappingMaw_Cooldown_FacingDownLeft_1                     ;A8A095;
@@ -3853,55 +3244,49 @@ InstListPointers_YappingMaw:
     dw InstList_YappingMaw_Attacking_FacingLeft                          ;A8A0A3;
     dw InstList_YappingMaw_Attacking_FacingUpLeft                        ;A8A0A5;
 
+
+; Offset from enemy position to place Samus when grabbed
 YappingMawSamusOffsets_X_Up:
     dw $0000                                                             ;A8A0A7;
-
 YappingMawSamusOffsets_Y_Up:
     dw $FFF0                                                             ;A8A0A9;
 
 YappingMawSamusOffsets_X_UpRight:
     dw $0008                                                             ;A8A0AB;
-
 YappingMawSamusOffsets_Y_UpRight:
     dw $FFF8                                                             ;A8A0AD;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_YappingMawSamusOffsets_X_Right_A8A0AF:
     dw $0010                                                             ;A8A0AF;
-
 UNUSED_YappingMawSamusOffsets_Y_Right_A8A0B1:
     dw $0000                                                             ;A8A0B1;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 YappingMawSamusOffsets_X_DownRight:
     dw $0008                                                             ;A8A0B3;
-
 YappingMawSamusOffsets_Y_DownRight:
     dw $0008                                                             ;A8A0B5;
 
 YappingMawSamusOffsets_X_Down:
     dw $0000                                                             ;A8A0B7;
-
 YappingMawSamusOffsets_Y_Down:
     dw $0010                                                             ;A8A0B9;
 
 YappingMawSamusOffsets_X_DownLeft:
     dw $FFF8                                                             ;A8A0BB;
-
 YappingMawSamusOffsets_Y_DownLeft:
     dw $0008                                                             ;A8A0BD;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_YappingMawSamusOffsets_X_Left_A8A0BF:
     dw $FFF0                                                             ;A8A0BF;
-
 UNUSED_YappingMawSamusOffsets_Y_Left_A8A0C1:
     dw $0000                                                             ;A8A0C1;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 YappingMawSamusOffsets_X_UpLeft:
     dw $FFF8                                                             ;A8A0C3;
-
 YappingMawSamusOffsets_Y_UpLeft:
     dw $FFF8                                                             ;A8A0C5;
 
@@ -4795,296 +4180,195 @@ SetYappingMawBaseFrozenPalette:
 
 
 Spritemap_YappingMaw_0:
-    dw $0005,$81F8                                                       ;A8A8EE;
-    db $F8                                                               ;A8A8F2;
-    dw $2100,$01F4                                                       ;A8A8F3;
-    db $FA                                                               ;A8A8F7;
-    dw $210F,$01EC                                                       ;A8A8F8;
-    db $FA                                                               ;A8A8FC;
-    dw $210E,$0004                                                       ;A8A8FD;
-    db $FA                                                               ;A8A901;
-    dw $610F,$000C                                                       ;A8A902;
-    db $FA                                                               ;A8A906;
-    dw $610E                                                             ;A8A907;
+    dw $0005                                                             ;A8A8EE;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1F4, $FA, 0, 0, 2, 0, $10F)
+    %spritemapEntry(0, $1EC, $FA, 0, 0, 2, 0, $10E)
+    %spritemapEntry(0, $04, $FA, 0, 1, 2, 0, $10F)
+    %spritemapEntry(0, $0C, $FA, 0, 1, 2, 0, $10E)
 
 Spritemap_YappingMaw_1:
-    dw $0003,$81F8                                                       ;A8A909;
-    db $F8                                                               ;A8A90D;
-    dw $2100,$8004                                                       ;A8A90E;
-    db $F0                                                               ;A8A912;
-    dw $6106,$81EC                                                       ;A8A913;
-    db $F0                                                               ;A8A917;
-    dw $2106                                                             ;A8A918;
+    dw $0003                                                             ;A8A909;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
+    %spritemapEntry(1, $04, $F0, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $1EC, $F0, 0, 0, 2, 0, $106)
 
 Spritemap_YappingMaw_2:
-    dw $0005,$81F8                                                       ;A8A91A;
-    db $F8                                                               ;A8A91E;
-    dw $2100,$0000                                                       ;A8A91F;
-    db $F6                                                               ;A8A923;
-    dw $610D,$0000                                                       ;A8A924;
-    db $EE                                                               ;A8A928;
-    dw $610C,$01F8                                                       ;A8A929;
-    db $F6                                                               ;A8A92D;
-    dw $210D,$01F8                                                       ;A8A92E;
-    db $EE                                                               ;A8A932;
-    dw $210C                                                             ;A8A933;
+    dw $0005                                                             ;A8A91A;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $00, $F6, 0, 1, 2, 0, $10D)
+    %spritemapEntry(0, $00, $EE, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1F8, $F6, 0, 0, 2, 0, $10D)
+    %spritemapEntry(0, $1F8, $EE, 0, 0, 2, 0, $10C)
 
 Spritemap_YappingMaw_3:
-    dw $0003,$81F8                                                       ;A8A935;
-    db $F8                                                               ;A8A939;
-    dw $2102,$81F2                                                       ;A8A93A;
-    db $EE                                                               ;A8A93E;
-    dw $2106,$8002                                                       ;A8A93F;
-    db $FE                                                               ;A8A943;
-    dw $E108                                                             ;A8A944;
+    dw $0003                                                             ;A8A935;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F2, $EE, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $02, $FE, 1, 1, 2, 0, $108)
 
 Spritemap_YappingMaw_4:
-    dw $0005,$81F8                                                       ;A8A946;
-    db $F8                                                               ;A8A94A;
-    dw $2102,$0005                                                       ;A8A94B;
-    db $FD                                                               ;A8A94F;
-    dw $610F,$000D                                                       ;A8A950;
-    db $FD                                                               ;A8A954;
-    dw $610E,$01FB                                                       ;A8A955;
-    db $F3                                                               ;A8A959;
-    dw $210D,$01FB                                                       ;A8A95A;
-    db $EB                                                               ;A8A95E;
-    dw $210C                                                             ;A8A95F;
+    dw $0005                                                             ;A8A946;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $05, $FD, 0, 1, 2, 0, $10F)
+    %spritemapEntry(0, $0D, $FD, 0, 1, 2, 0, $10E)
+    %spritemapEntry(0, $1FB, $F3, 0, 0, 2, 0, $10D)
+    %spritemapEntry(0, $1FB, $EB, 0, 0, 2, 0, $10C)
 
 Spritemap_YappingMaw_5:
-    dw $0003,$81F8                                                       ;A8A961;
-    db $F8                                                               ;A8A965;
-    dw $2102,$8001                                                       ;A8A966;
-    db $F4                                                               ;A8A96A;
-    dw $6106,$81FC                                                       ;A8A96B;
-    db $EF                                                               ;A8A96F;
-    dw $6108                                                             ;A8A970;
+    dw $0003                                                             ;A8A961;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $01, $F4, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $1FC, $EF, 0, 1, 2, 0, $108)
 
 Spritemap_YappingMaw_6:
-    dw $0005,$81F8                                                       ;A8A972;
-    db $F8                                                               ;A8A976;
-    dw $2104,$01FE                                                       ;A8A977;
-    db $04                                                               ;A8A97B;
-    dw $A10D,$01FE                                                       ;A8A97C;
-    db $0C                                                               ;A8A980;
-    dw $A10C,$01FE                                                       ;A8A981;
-    db $F4                                                               ;A8A985;
-    dw $210D,$01FE                                                       ;A8A986;
-    db $EC                                                               ;A8A98A;
-    dw $210C                                                             ;A8A98B;
+    dw $0005                                                             ;A8A972;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $104)
+    %spritemapEntry(0, $1FE, $04, 1, 0, 2, 0, $10D)
+    %spritemapEntry(0, $1FE, $0C, 1, 0, 2, 0, $10C)
+    %spritemapEntry(0, $1FE, $F4, 0, 0, 2, 0, $10D)
+    %spritemapEntry(0, $1FE, $EC, 0, 0, 2, 0, $10C)
 
 Spritemap_YappingMaw_7:
-    dw $0003,$81F8                                                       ;A8A98D;
-    db $F8                                                               ;A8A991;
-    dw $2104,$8000                                                       ;A8A992;
-    db $EC                                                               ;A8A996;
-    dw $6108,$8000                                                       ;A8A997;
-    db $04                                                               ;A8A99B;
-    dw $E108                                                             ;A8A99C;
+    dw $0003                                                             ;A8A98D;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $00, $EC, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $00, $04, 1, 1, 2, 0, $108)
 
 Spritemap_YappingMaw_8:
-    dw $0005,$81F8                                                       ;A8A99E;
-    db $F8                                                               ;A8A9A2;
-    dw $2104,$0003                                                       ;A8A9A3;
-    db $F8                                                               ;A8A9A7;
-    dw $E10F,$000B                                                       ;A8A9A8;
-    db $F8                                                               ;A8A9AC;
-    dw $E10E,$0003                                                       ;A8A9AD;
-    db $00                                                               ;A8A9B1;
-    dw $610F,$000B                                                       ;A8A9B2;
-    db $00                                                               ;A8A9B6;
-    dw $610E                                                             ;A8A9B7;
+    dw $0005                                                             ;A8A99E;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $104)
+    %spritemapEntry(0, $03, $F8, 1, 1, 2, 0, $10F)
+    %spritemapEntry(0, $0B, $F8, 1, 1, 2, 0, $10E)
+    %spritemapEntry(0, $03, $00, 0, 1, 2, 0, $10F)
+    %spritemapEntry(0, $0B, $00, 0, 1, 2, 0, $10E)
 
 Spritemap_YappingMaw_9:
-    dw $0003,$81F8                                                       ;A8A9B9;
-    db $F8                                                               ;A8A9BD;
-    dw $A102,$81F2                                                       ;A8A9BE;
-    db $02                                                               ;A8A9C2;
-    dw $A106,$8002                                                       ;A8A9C3;
-    db $F2                                                               ;A8A9C7;
-    dw $6108                                                             ;A8A9C8;
+    dw $0003                                                             ;A8A9B9;
+    %spritemapEntry(1, $1F8, $F8, 1, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F2, $02, 1, 0, 2, 0, $106)
+    %spritemapEntry(1, $02, $F2, 0, 1, 2, 0, $108)
 
 Spritemap_YappingMaw_A:
-    dw $0005,$81F8                                                       ;A8A9CA;
-    db $F8                                                               ;A8A9CE;
-    dw $A102,$0005                                                       ;A8A9CF;
-    db $FB                                                               ;A8A9D3;
-    dw $E10F,$000D                                                       ;A8A9D4;
-    db $FB                                                               ;A8A9D8;
-    dw $E10E,$01FB                                                       ;A8A9D9;
-    db $05                                                               ;A8A9DD;
-    dw $A10D,$01FB                                                       ;A8A9DE;
-    db $0D                                                               ;A8A9E2;
-    dw $A10C                                                             ;A8A9E3;
+    dw $0005                                                             ;A8A9CA;
+    %spritemapEntry(1, $1F8, $F8, 1, 0, 2, 0, $102)
+    %spritemapEntry(0, $05, $FB, 1, 1, 2, 0, $10F)
+    %spritemapEntry(0, $0D, $FB, 1, 1, 2, 0, $10E)
+    %spritemapEntry(0, $1FB, $05, 1, 0, 2, 0, $10D)
+    %spritemapEntry(0, $1FB, $0D, 1, 0, 2, 0, $10C)
 
 Spritemap_YappingMaw_B:
-    dw $0003,$81F8                                                       ;A8A9E5;
-    db $F8                                                               ;A8A9E9;
-    dw $A102,$8001                                                       ;A8A9EA;
-    db $FC                                                               ;A8A9EE;
-    dw $E106,$81FC                                                       ;A8A9EF;
-    db $01                                                               ;A8A9F3;
-    dw $E108                                                             ;A8A9F4;
+    dw $0003                                                             ;A8A9E5;
+    %spritemapEntry(1, $1F8, $F8, 1, 0, 2, 0, $102)
+    %spritemapEntry(1, $01, $FC, 1, 1, 2, 0, $106)
+    %spritemapEntry(1, $1FC, $01, 1, 1, 2, 0, $108)
 
 Spritemap_YappingMaw_C:
-    dw $0005,$81F8                                                       ;A8A9F6;
-    db $F8                                                               ;A8A9FA;
-    dw $A100,$01F4                                                       ;A8A9FB;
-    db $FE                                                               ;A8A9FF;
-    dw $A10F,$01EC                                                       ;A8AA00;
-    db $FE                                                               ;A8AA04;
-    dw $A10E,$0004                                                       ;A8AA05;
-    db $FE                                                               ;A8AA09;
-    dw $E10F,$000C                                                       ;A8AA0A;
-    db $FE                                                               ;A8AA0E;
-    dw $E10E                                                             ;A8AA0F;
+    dw $0005                                                             ;A8A9F6;
+    %spritemapEntry(1, $1F8, $F8, 1, 0, 2, 0, $100)
+    %spritemapEntry(0, $1F4, $FE, 1, 0, 2, 0, $10F)
+    %spritemapEntry(0, $1EC, $FE, 1, 0, 2, 0, $10E)
+    %spritemapEntry(0, $04, $FE, 1, 1, 2, 0, $10F)
+    %spritemapEntry(0, $0C, $FE, 1, 1, 2, 0, $10E)
 
 Spritemap_YappingMaw_D:
-    dw $0003,$81F8                                                       ;A8AA11;
-    db $F8                                                               ;A8AA15;
-    dw $A100,$8004                                                       ;A8AA16;
-    db $00                                                               ;A8AA1A;
-    dw $E106,$81EC                                                       ;A8AA1B;
-    db $00                                                               ;A8AA1F;
-    dw $A106                                                             ;A8AA20;
+    dw $0003                                                             ;A8AA11;
+    %spritemapEntry(1, $1F8, $F8, 1, 0, 2, 0, $100)
+    %spritemapEntry(1, $04, $00, 1, 1, 2, 0, $106)
+    %spritemapEntry(1, $1EC, $00, 1, 0, 2, 0, $106)
 
 Spritemap_YappingMaw_E:
-    dw $0005,$81F8                                                       ;A8AA22;
-    db $F8                                                               ;A8AA26;
-    dw $A100,$0000                                                       ;A8AA27;
-    db $02                                                               ;A8AA2B;
-    dw $E10D,$0000                                                       ;A8AA2C;
-    db $0A                                                               ;A8AA30;
-    dw $E10C,$01F8                                                       ;A8AA31;
-    db $02                                                               ;A8AA35;
-    dw $A10D,$01F8                                                       ;A8AA36;
-    db $0A                                                               ;A8AA3A;
-    dw $A10C                                                             ;A8AA3B;
+    dw $0005                                                             ;A8AA22;
+    %spritemapEntry(1, $1F8, $F8, 1, 0, 2, 0, $100)
+    %spritemapEntry(0, $00, $02, 1, 1, 2, 0, $10D)
+    %spritemapEntry(0, $00, $0A, 1, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1F8, $02, 1, 0, 2, 0, $10D)
+    %spritemapEntry(0, $1F8, $0A, 1, 0, 2, 0, $10C)
 
 Spritemap_YappingMaw_F:
-    dw $0003,$81F8                                                       ;A8AA3D;
-    db $F8                                                               ;A8AA41;
-    dw $E102,$81FE                                                       ;A8AA42;
-    db $02                                                               ;A8AA46;
-    dw $E106,$81EE                                                       ;A8AA47;
-    db $F2                                                               ;A8AA4B;
-    dw $2108                                                             ;A8AA4C;
+    dw $0003                                                             ;A8AA3D;
+    %spritemapEntry(1, $1F8, $F8, 1, 1, 2, 0, $102)
+    %spritemapEntry(1, $1FE, $02, 1, 1, 2, 0, $106)
+    %spritemapEntry(1, $1EE, $F2, 0, 0, 2, 0, $108)
 
 Spritemap_YappingMaw_10:
-    dw $0005,$81F8                                                       ;A8AA4E;
-    db $F8                                                               ;A8AA52;
-    dw $E102,$01F3                                                       ;A8AA53;
-    db $FB                                                               ;A8AA57;
-    dw $A10F,$01EB                                                       ;A8AA58;
-    db $FB                                                               ;A8AA5C;
-    dw $A10E,$01FD                                                       ;A8AA5D;
-    db $05                                                               ;A8AA61;
-    dw $E10D,$01FD                                                       ;A8AA62;
-    db $0D                                                               ;A8AA66;
-    dw $E10C                                                             ;A8AA67;
+    dw $0005                                                             ;A8AA4E;
+    %spritemapEntry(1, $1F8, $F8, 1, 1, 2, 0, $102)
+    %spritemapEntry(0, $1F3, $FB, 1, 0, 2, 0, $10F)
+    %spritemapEntry(0, $1EB, $FB, 1, 0, 2, 0, $10E)
+    %spritemapEntry(0, $1FD, $05, 1, 1, 2, 0, $10D)
+    %spritemapEntry(0, $1FD, $0D, 1, 1, 2, 0, $10C)
 
 Spritemap_YappingMaw_11:
-    dw $0003,$81F8                                                       ;A8AA69;
-    db $F8                                                               ;A8AA6D;
-    dw $E102,$81EF                                                       ;A8AA6E;
-    db $FC                                                               ;A8AA72;
-    dw $A106,$81F4                                                       ;A8AA73;
-    db $01                                                               ;A8AA77;
-    dw $A108                                                             ;A8AA78;
+    dw $0003                                                             ;A8AA69;
+    %spritemapEntry(1, $1F8, $F8, 1, 1, 2, 0, $102)
+    %spritemapEntry(1, $1EF, $FC, 1, 0, 2, 0, $106)
+    %spritemapEntry(1, $1F4, $01, 1, 0, 2, 0, $108)
 
 Spritemap_YappingMaw_12:
-    dw $0005,$81F8                                                       ;A8AA7A;
-    db $F8                                                               ;A8AA7E;
-    dw $6104,$01FA                                                       ;A8AA7F;
-    db $04                                                               ;A8AA83;
-    dw $E10D,$01FA                                                       ;A8AA84;
-    db $0C                                                               ;A8AA88;
-    dw $E10C,$01FA                                                       ;A8AA89;
-    db $F4                                                               ;A8AA8D;
-    dw $610D,$01FA                                                       ;A8AA8E;
-    db $EC                                                               ;A8AA92;
-    dw $610C                                                             ;A8AA93;
+    dw $0005                                                             ;A8AA7A;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $104)
+    %spritemapEntry(0, $1FA, $04, 1, 1, 2, 0, $10D)
+    %spritemapEntry(0, $1FA, $0C, 1, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1FA, $F4, 0, 1, 2, 0, $10D)
+    %spritemapEntry(0, $1FA, $EC, 0, 1, 2, 0, $10C)
 
 Spritemap_YappingMaw_13:
-    dw $0003,$81F8                                                       ;A8AA95;
-    db $F8                                                               ;A8AA99;
-    dw $6104,$81F0                                                       ;A8AA9A;
-    db $EC                                                               ;A8AA9E;
-    dw $2108,$81F0                                                       ;A8AA9F;
-    db $04                                                               ;A8AAA3;
-    dw $A108                                                             ;A8AAA4;
+    dw $0003                                                             ;A8AA95;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $1F0, $EC, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $1F0, $04, 1, 0, 2, 0, $108)
 
 Spritemap_YappingMaw_14:
-    dw $0005,$81F8                                                       ;A8AAA6;
-    db $F8                                                               ;A8AAAA;
-    dw $6104,$01F5                                                       ;A8AAAB;
-    db $F8                                                               ;A8AAAF;
-    dw $A10F,$01ED                                                       ;A8AAB0;
-    db $F8                                                               ;A8AAB4;
-    dw $A10E,$01F5                                                       ;A8AAB5;
-    db $00                                                               ;A8AAB9;
-    dw $210F,$01ED                                                       ;A8AABA;
-    db $00                                                               ;A8AABE;
-    dw $210E                                                             ;A8AABF;
+    dw $0005                                                             ;A8AAA6;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $104)
+    %spritemapEntry(0, $1F5, $F8, 1, 0, 2, 0, $10F)
+    %spritemapEntry(0, $1ED, $F8, 1, 0, 2, 0, $10E)
+    %spritemapEntry(0, $1F5, $00, 0, 0, 2, 0, $10F)
+    %spritemapEntry(0, $1ED, $00, 0, 0, 2, 0, $10E)
 
 Spritemap_YappingMaw_15:
-    dw $0003,$81F8                                                       ;A8AAC1;
-    db $F8                                                               ;A8AAC5;
-    dw $6102,$81FE                                                       ;A8AAC6;
-    db $EE                                                               ;A8AACA;
-    dw $6106,$81EE                                                       ;A8AACB;
-    db $FE                                                               ;A8AACF;
-    dw $A108                                                             ;A8AAD0;
+    dw $0003                                                             ;A8AAC1;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $1FE, $EE, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $1EE, $FE, 1, 0, 2, 0, $108)
 
 Spritemap_YappingMaw_16:
-    dw $0005,$81F8                                                       ;A8AAD2;
-    db $F8                                                               ;A8AAD6;
-    dw $6102,$01F3                                                       ;A8AAD7;
-    db $FD                                                               ;A8AADB;
-    dw $210F,$01EB                                                       ;A8AADC;
-    db $FD                                                               ;A8AAE0;
-    dw $210E,$01FD                                                       ;A8AAE1;
-    db $F3                                                               ;A8AAE5;
-    dw $610D,$01FD                                                       ;A8AAE6;
-    db $EB                                                               ;A8AAEA;
-    dw $610C                                                             ;A8AAEB;
+    dw $0005                                                             ;A8AAD2;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $102)
+    %spritemapEntry(0, $1F3, $FD, 0, 0, 2, 0, $10F)
+    %spritemapEntry(0, $1EB, $FD, 0, 0, 2, 0, $10E)
+    %spritemapEntry(0, $1FD, $F3, 0, 1, 2, 0, $10D)
+    %spritemapEntry(0, $1FD, $EB, 0, 1, 2, 0, $10C)
 
 Spritemap_YappingMaw_17:
-    dw $0003,$81F8                                                       ;A8AAED;
-    db $F8                                                               ;A8AAF1;
-    dw $6102,$81EF                                                       ;A8AAF2;
-    db $F4                                                               ;A8AAF6;
-    dw $2106,$81F4                                                       ;A8AAF7;
-    db $EF                                                               ;A8AAFB;
-    dw $2108                                                             ;A8AAFC;
+    dw $0003                                                             ;A8AAED;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $1EF, $F4, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1F4, $EF, 0, 0, 2, 0, $108)
+
 
 Palette_Kago:
     dw $3800,$57FF,$42F7,$0929,$00A5,$4F5A,$36B5,$2610                   ;A8AAFE;
     dw $1DCE,$01DF,$001F,$0018,$000A,$06B9,$00EA,$0045                   ;A8AB0E;
 
+
 InstList_Kago_Initial_SlowAnimation:
-    dw $000A                                                             ;A8AB1E;
-    dw Spritemap_Kago_0                                                  ;A8AB20;
-    dw $000A                                                             ;A8AB22;
-    dw Spritemap_Kago_1                                                  ;A8AB24;
-    dw $000A                                                             ;A8AB26;
-    dw Spritemap_Kago_2                                                  ;A8AB28;
-    dw $000A                                                             ;A8AB2A;
-    dw Spritemap_Kago_1                                                  ;A8AB2C;
+    dw $000A,Spritemap_Kago_0                                            ;A8AB1E;
+    dw $000A,Spritemap_Kago_1                                            ;A8AB22;
+    dw $000A,Spritemap_Kago_2                                            ;A8AB26;
+    dw $000A,Spritemap_Kago_1                                            ;A8AB2A;
     dw Instruction_Common_GotoY                                          ;A8AB2E;
     dw InstList_Kago_Initial_SlowAnimation                               ;A8AB30;
 
 InstList_Kago_TakenHit_FastAnimation:
-    dw $0003                                                             ;A8AB32;
-    dw Spritemap_Kago_0                                                  ;A8AB34;
-    dw $0003                                                             ;A8AB36;
-    dw Spritemap_Kago_1                                                  ;A8AB38;
-    dw $0003                                                             ;A8AB3A;
-    dw Spritemap_Kago_2                                                  ;A8AB3C;
-    dw $0003                                                             ;A8AB3E;
-    dw Spritemap_Kago_1                                                  ;A8AB40;
+    dw $0003,Spritemap_Kago_0                                            ;A8AB32;
+    dw $0003,Spritemap_Kago_1                                            ;A8AB36;
+    dw $0003,Spritemap_Kago_2                                            ;A8AB3A;
+    dw $0003,Spritemap_Kago_1                                            ;A8AB3E;
     dw Instruction_Common_GotoY                                          ;A8AB42;
     dw InstList_Kago_TakenHit_FastAnimation                              ;A8AB44;
+
 
 InitAI_Kago:
     LDX.W $0E54                                                          ;A8AB46;
@@ -5162,69 +4446,51 @@ EnemyShot_Kago:
 
 
 Spritemap_Kago_0:
-    dw $0004,$8000                                                       ;A8ABDA;
-    db $00                                                               ;A8ABDE;
-    dw $210E,$81F0                                                       ;A8ABDF;
-    db $00                                                               ;A8ABE3;
-    dw $210C,$8000                                                       ;A8ABE4;
-    db $F0                                                               ;A8ABE8;
-    dw $2102,$81F0                                                       ;A8ABE9;
-    db $F0                                                               ;A8ABED;
-    dw $2100                                                             ;A8ABEE;
+    dw $0004                                                             ;A8ABDA;
+    %spritemapEntry(1, $00, $00, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $1F0, $00, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $00, $F0, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F0, $F0, 0, 0, 2, 0, $100)
 
 Spritemap_Kago_1:
-    dw $0004,$8000                                                       ;A8ABF0;
-    db $00                                                               ;A8ABF4;
-    dw $2122,$81F0                                                       ;A8ABF5;
-    db $00                                                               ;A8ABF9;
-    dw $2120,$8000                                                       ;A8ABFA;
-    db $F0                                                               ;A8ABFE;
-    dw $2106,$81F0                                                       ;A8ABFF;
-    db $F0                                                               ;A8AC03;
-    dw $2104                                                             ;A8AC04;
+    dw $0004                                                             ;A8ABF0;
+    %spritemapEntry(1, $00, $00, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1F0, $00, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $00, $F0, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1F0, $F0, 0, 0, 2, 0, $104)
 
 Spritemap_Kago_2:
-    dw $0004,$8000                                                       ;A8AC06;
-    db $00                                                               ;A8AC0A;
-    dw $2126,$81F0                                                       ;A8AC0B;
-    db $00                                                               ;A8AC0F;
-    dw $2124,$8000                                                       ;A8AC10;
-    db $F0                                                               ;A8AC14;
-    dw $210A,$81F0                                                       ;A8AC15;
-    db $F0                                                               ;A8AC19;
-    dw $2108                                                             ;A8AC1A;
+    dw $0004                                                             ;A8AC06;
+    %spritemapEntry(1, $00, $00, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1F0, $00, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $00, $F0, 0, 0, 2, 0, $10A)
+    %spritemapEntry(1, $1F0, $F0, 0, 0, 2, 0, $108)
+
 
 Palette_Magdollite:
-    dw $3800,$001F,$001C,$0018,$0015,$7FFF,$3BE0,$2680                   ;A8AC1C;
-    dw $1580                                                             ;A8AC2C;
+    dw $3800,$001F,$001C,$0018,$0015,$7FFF,$3BE0,$2680,$1580             ;A8AC1C;
 
 Palette_Magdollite_Glow_0:
     dw $023F                                                             ;A8AC2E;
-
 Palette_Magdollite_Glow_1:
     dw $00BD                                                             ;A8AC30;
-
 Palette_Magdollite_Glow_2:
     dw $0014                                                             ;A8AC32;
-
 Palette_Magdollite_Glow_3:
-    dw $0010,$0000,$0000,$0000,$3800,$0000,$0000,$0000                   ;A8AC34;
-    dw $0000,$0000,$0000,$0000,$0000,$00BD,$0014,$0010                   ;A8AC44;
-    dw $023F,$0000,$0000,$0000,$3800,$0000,$0000,$0000                   ;A8AC54;
-    dw $0000,$0000,$0000,$0000,$0000,$0014,$0010,$023F                   ;A8AC64;
-    dw $00BD,$0000,$0000,$0000,$3800,$0000,$0000,$0000                   ;A8AC74;
-    dw $0000,$0000,$0000,$0000,$0000,$0010,$023F,$00BD                   ;A8AC84;
-    dw $0014,$0000,$0000,$0000                                           ;A8AC94;
+    dw $0010                                                             ;A8AC34;
+    dw $0000,$0000,$0000
+
+;                                                              Only these four colours are actually used
+;                                                              |
+    dw $3800,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000, $00BD,$0014,$0010,$023F, $0000,$0000,$0000
+    dw $3800,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000, $0014,$0010,$023F,$00BD, $0000,$0000,$0000
+    dw $3800,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000, $0010,$023F,$00BD,$0014, $0000,$0000,$0000
 
 InstList_Magdollite_Idling_FacingLeft:
-    dw $000D                                                             ;A8AC9C;
-    dw Spritemap_Magdollite_FacingLeft_Head_0                            ;A8AC9E;
-    dw $000D                                                             ;A8ACA0;
-    dw Spritemap_Magdollite_FacingLeft_Head_1                            ;A8ACA2;
-    dw $000D                                                             ;A8ACA4;
-    dw Spritemap_Magdollite_FacingLeft_Head_2                            ;A8ACA6;
-    dw $000D                                                             ;A8ACA8;
-    dw Spritemap_Magdollite_FacingLeft_Head_1                            ;A8ACAA;
+    dw $000D,Spritemap_Magdollite_FacingLeft_Head_0                      ;A8AC9C;
+    dw $000D,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8ACA0;
+    dw $000D,Spritemap_Magdollite_FacingLeft_Head_2                      ;A8ACA4;
+    dw $000D,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8ACA8;
     dw Instruction_CommonA8_GotoY                                        ;A8ACAC;
     dw InstList_Magdollite_Idling_FacingLeft                             ;A8ACAE;
 
@@ -5233,48 +4499,36 @@ InstList_Magdollite_Slave2_ThrowFireballs_FacingLeft:
     dw $0061                                                             ;A8ACB2;
     dw Instruction_Magdollite_SetWaitingFlag                             ;A8ACB4;
     dw Instruction_Magdollite_SetCooldownTimerTo100                      ;A8ACB6;
-    dw $001A                                                             ;A8ACB8;
-    dw Spritemap_Magdollite_FacingLeft_Fist_0                            ;A8ACBA;
-    dw $0008                                                             ;A8ACBC;
-    dw Spritemap_Magdollite_FacingLeft_Fist_1                            ;A8ACBE;
+    dw $001A,Spritemap_Magdollite_FacingLeft_Fist_0                      ;A8ACB8;
+    dw $0008,Spritemap_Magdollite_FacingLeft_Fist_1                      ;A8ACBC;
     dw Instruction_Magdollite_ShiftLeft8Pixels_Up4Pixels_FacingLeft      ;A8ACC0;
-    dw $0005                                                             ;A8ACC2;
-    dw Spritemap_Magdollite_FacingLeft_Hand_FingersStraight              ;A8ACC4;
+    dw $0005,Spritemap_Magdollite_FacingLeft_Hand_FingersStraight        ;A8ACC2;
     dw Instruction_Magdollite_SpawnLavaProjectile                        ;A8ACC6;
-    dw $0005                                                             ;A8ACC8;
-    dw Spritemap_Magdollite_FacingLeft_Hand_FingersStraight              ;A8ACCA;
+    dw $0005,Spritemap_Magdollite_FacingLeft_Hand_FingersStraight        ;A8ACC8;
     dw Instruction_Magdollite_SpawnLavaProjectile                        ;A8ACCC;
-    dw $0005                                                             ;A8ACCE;
-    dw Spritemap_Magdollite_FacingLeft_Hand_FingersStraight              ;A8ACD0;
+    dw $0005,Spritemap_Magdollite_FacingLeft_Hand_FingersStraight        ;A8ACCE;
     dw Instruction_Magdollite_SpawnLavaProjectile                        ;A8ACD2;
     dw Instruction_Magdollite_ShiftLeft8Pixels_Up4Pixels_Left_dup        ;A8ACD4;
-    dw $0005                                                             ;A8ACD6;
-    dw Spritemap_Magdollite_FacingLeft_Hand_FingersCurled                ;A8ACD8;
+    dw $0005,Spritemap_Magdollite_FacingLeft_Hand_FingersCurled          ;A8ACD6;
     dw Instruction_Magdollite_ResetWaitingFlag                           ;A8ACDA;
     dw Instruction_Common_Sleep                                          ;A8ACDC;
 
 InstList_Magdollite_SplashIntoLavaAndFormBasePillar_Left_0:
     dw Instruction_Magdollite_SetWaitingFlag                             ;A8ACDE;
-    dw $0005                                                             ;A8ACE0;
-    dw Spritemap_Magdollite_FacingLeft_Head_1                            ;A8ACE2;
+    dw $0005,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8ACE0;
     dw Instruction_Magdollite_MoveDown2Pixels                            ;A8ACE4;
-    dw $0005                                                             ;A8ACE6;
-    dw Spritemap_Magdollite_FacingLeft_Head_1                            ;A8ACE8;
-    dw $0005                                                             ;A8ACEA;
-    dw Spritemap_Magdollite_FacingLeft_Head_PokingOutOfLava              ;A8ACEC;
-    dw $0005                                                             ;A8ACEE;
-    dw Spritemap_Magdollite_FacingLeft_Head_BarelyPokingOutOfLava        ;A8ACF0;
+    dw $0005,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8ACE6;
+    dw $0005,Spritemap_Magdollite_FacingLeft_Head_PokingOutOfLava        ;A8ACEA;
+    dw $0005,Spritemap_Magdollite_FacingLeft_Head_BarelyPokingOutOfLava  ;A8ACEE;
     dw Instruction_Magdollite_MoveDown2Pixels                            ;A8ACF2;
-    dw $0005                                                             ;A8ACF4;
-    dw Spritemap_Magdollite_FacingLeft_Head_BarelyPokingOutOfLava        ;A8ACF6;
+    dw $0005,Spritemap_Magdollite_FacingLeft_Head_BarelyPokingOutOfLava  ;A8ACF4;
     dw Instruction_Magdollite_MoveDownBy18Pixels_SetSlavesAsVisible      ;A8ACF8;
     dw Instruction_Common_TimerInY                                       ;A8ACFA;
     dw $0018                                                             ;A8ACFC;
 
 InstList_Magdollite_SplashIntoLavaAndFormBasePillar_Left_1:
     dw Instruction_Magdollite_MoveBaseAndPillarUp1Pixel                  ;A8ACFE;
-    dw $0001                                                             ;A8AD00;
-    dw Spritemap_Magdollite_FacingLeft_WidePillarSection                 ;A8AD02;
+    dw $0001,Spritemap_Magdollite_FacingLeft_WidePillarSection           ;A8AD00;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;A8AD04;
     dw InstList_Magdollite_SplashIntoLavaAndFormBasePillar_Left_1        ;A8AD06;
     dw Instruction_Magdollite_ResetWaitingFlag                           ;A8AD08;
@@ -5288,35 +4542,25 @@ InstList_Magdollite_UnformBasePillar_SplashBackToIdle_Left_0:
 
 InstList_Magdollite_UnformBasePillar_SplashBackToIdle_Left_1:
     dw Instruction_Magdollite_MoveBaseAndPillarDown1Pixel                ;A8AD14;
-    dw $0001                                                             ;A8AD16;
-    dw Spritemap_Magdollite_FacingLeft_WidePillarSection                 ;A8AD18;
+    dw $0001,Spritemap_Magdollite_FacingLeft_WidePillarSection           ;A8AD16;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;A8AD1A;
     dw InstList_Magdollite_UnformBasePillar_SplashBackToIdle_Left_1      ;A8AD1C;
     dw Instruction_Magdollite_MoveDown4Pixels_SetSlavesAsInvisible       ;A8AD1E;
-    dw $0005                                                             ;A8AD20;
-    dw Spritemap_Magdollite_FacingLeft_Head_BarelyPokingOutOfLava        ;A8AD22;
+    dw $0005,Spritemap_Magdollite_FacingLeft_Head_BarelyPokingOutOfLava  ;A8AD20;
     dw Instruction_Magdollite_MoveUp2Pixels                              ;A8AD24;
-    dw $0005                                                             ;A8AD26;
-    dw Spritemap_Magdollite_FacingLeft_Head_BarelyPokingOutOfLava        ;A8AD28;
-    dw $0005                                                             ;A8AD2A;
-    dw Spritemap_Magdollite_FacingLeft_Head_PokingOutOfLava              ;A8AD2C;
-    dw $0005                                                             ;A8AD2E;
-    dw Spritemap_Magdollite_FacingLeft_Head_1                            ;A8AD30;
+    dw $0005,Spritemap_Magdollite_FacingLeft_Head_BarelyPokingOutOfLava  ;A8AD26;
+    dw $0005,Spritemap_Magdollite_FacingLeft_Head_PokingOutOfLava        ;A8AD2A;
+    dw $0005,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8AD2E;
     dw Instruction_Magdollite_MoveUp2Pixels                              ;A8AD32;
-    dw $0005                                                             ;A8AD34;
-    dw Spritemap_Magdollite_FacingLeft_Head_1                            ;A8AD36;
+    dw $0005,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8AD34;
     dw Instruction_Magdollite_ResetWaitingFlag                           ;A8AD38;
     dw Instruction_Common_Sleep                                          ;A8AD3A;
 
 InstList_Magdollite_Idling_FacingRight:
-    dw $000D                                                             ;A8AD3C;
-    dw Spritemap_Magdollite_FacingRight_Head_0                           ;A8AD3E;
-    dw $000D                                                             ;A8AD40;
-    dw Spritemap_Magdollite_FacingRight_Head_1                           ;A8AD42;
-    dw $000D                                                             ;A8AD44;
-    dw Spritemap_Magdollite_FacingRight_Head_2                           ;A8AD46;
-    dw $000D                                                             ;A8AD48;
-    dw Spritemap_Magdollite_FacingRight_Head_1                           ;A8AD4A;
+    dw $000D,Spritemap_Magdollite_FacingRight_Head_0                     ;A8AD3C;
+    dw $000D,Spritemap_Magdollite_FacingRight_Head_1                     ;A8AD40;
+    dw $000D,Spritemap_Magdollite_FacingRight_Head_2                     ;A8AD44;
+    dw $000D,Spritemap_Magdollite_FacingRight_Head_1                     ;A8AD48;
     dw Instruction_Common_GotoY                                          ;A8AD4C;
     dw InstList_Magdollite_Idling_FacingRight                            ;A8AD4E;
 
@@ -5325,48 +4569,36 @@ InstList_Magdollite_ThrowFireballs_FacingRight:
     dw $0061                                                             ;A8AD52;
     dw Instruction_Magdollite_SetWaitingFlag                             ;A8AD54;
     dw Instruction_Magdollite_SetCooldownTimerTo100                      ;A8AD56;
-    dw $001A                                                             ;A8AD58;
-    dw Spritemap_Magdollite_FacingRight_Fist_0                           ;A8AD5A;
-    dw $0008                                                             ;A8AD5C;
-    dw Spritemap_Magdollite_FacingRight_Fist_1                           ;A8AD5E;
+    dw $001A,Spritemap_Magdollite_FacingRight_Fist_0                     ;A8AD58;
+    dw $0008,Spritemap_Magdollite_FacingRight_Fist_1                     ;A8AD5C;
     dw Instruction_Magdollite_ShiftRight8Pixels_Up4Pixels_FaceRight      ;A8AD60;
-    dw $0005                                                             ;A8AD62;
-    dw Spritemap_Magdollite_FacingRight_Hand_FingersStraight             ;A8AD64;
+    dw $0005,Spritemap_Magdollite_FacingRight_Hand_FingersStraight       ;A8AD62;
     dw Instruction_Magdollite_SpawnLavaProjectile                        ;A8AD66;
-    dw $0005                                                             ;A8AD68;
-    dw Spritemap_Magdollite_FacingRight_Hand_FingersStraight             ;A8AD6A;
+    dw $0005,Spritemap_Magdollite_FacingRight_Hand_FingersStraight       ;A8AD68;
     dw Instruction_Magdollite_SpawnLavaProjectile                        ;A8AD6C;
-    dw $0005                                                             ;A8AD6E;
-    dw Spritemap_Magdollite_FacingRight_Hand_FingersStraight             ;A8AD70;
+    dw $0005,Spritemap_Magdollite_FacingRight_Hand_FingersStraight       ;A8AD6E;
     dw Instruction_Magdollite_SpawnLavaProjectile                        ;A8AD72;
     dw Instruction_Magdollite_ShiftRight8Pixels_Up4Pixels_Right_dup      ;A8AD74;
-    dw $0005                                                             ;A8AD76;
-    dw Spritemap_Magdollite_FacingRight_Hand_FingersCurled               ;A8AD78;
+    dw $0005,Spritemap_Magdollite_FacingRight_Hand_FingersCurled         ;A8AD76;
     dw Instruction_Magdollite_ResetWaitingFlag                           ;A8AD7A;
     dw Instruction_Common_Sleep                                          ;A8AD7C;
 
 InstList_Magdollite_SplashIntoLavaAndFormBasePillar_Right_0:
     dw Instruction_Magdollite_SetWaitingFlag                             ;A8AD7E;
-    dw $0005                                                             ;A8AD80;
-    dw Spritemap_Magdollite_FacingRight_Head_1                           ;A8AD82;
+    dw $0005,Spritemap_Magdollite_FacingRight_Head_1                     ;A8AD80;
     dw Instruction_Magdollite_MoveDown2Pixels                            ;A8AD84;
-    dw $0005                                                             ;A8AD86;
-    dw Spritemap_Magdollite_FacingRight_Head_1                           ;A8AD88;
-    dw $0005                                                             ;A8AD8A;
-    dw Spritemap_Magdollite_FacingRight_Head_PokingOutOfLava             ;A8AD8C;
-    dw $0005                                                             ;A8AD8E;
-    dw Spritemap_Magdollite_FacingRight_Head_BarelyPokingOutOfLava       ;A8AD90;
+    dw $0005,Spritemap_Magdollite_FacingRight_Head_1                     ;A8AD86;
+    dw $0005,Spritemap_Magdollite_FacingRight_Head_PokingOutOfLava       ;A8AD8A;
+    dw $0005,Spritemap_Magdollite_FacingRight_Head_BarelyPokingOutOfLava ;A8AD8E;
     dw Instruction_Magdollite_MoveDown2Pixels                            ;A8AD92;
-    dw $0005                                                             ;A8AD94;
-    dw Spritemap_Magdollite_FacingRight_Head_BarelyPokingOutOfLava       ;A8AD96;
+    dw $0005,Spritemap_Magdollite_FacingRight_Head_BarelyPokingOutOfLava ;A8AD94;
     dw Instruction_Magdollite_MoveDownBy18Pixels_SetSlavesAsVisible      ;A8AD98;
     dw Instruction_Common_TimerInY                                       ;A8AD9A;
     dw $0018                                                             ;A8AD9C;
 
 InstList_Magdollite_SplashIntoLavaAndFormBasePillar_Right_1:
     dw Instruction_Magdollite_MoveBaseAndPillarUp1Pixel                  ;A8AD9E;
-    dw $0001                                                             ;A8ADA0;
-    dw Spritemap_Magdollite_FacingRight_WidePillarSection                ;A8ADA2;
+    dw $0001,Spritemap_Magdollite_FacingRight_WidePillarSection          ;A8ADA0;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;A8ADA4;
     dw InstList_Magdollite_SplashIntoLavaAndFormBasePillar_Right_1       ;A8ADA6;
     dw Instruction_Magdollite_ResetWaitingFlag                           ;A8ADA8;
@@ -5380,70 +4612,56 @@ InstList_Magdollite_UnformBasePillar_SplashBackToIdle_Right_0:
 
 InstList_Magdollite_UnformBasePillar_SplashBackToIdle_Right_1:
     dw Instruction_Magdollite_MoveBaseAndPillarDown1Pixel                ;A8ADB4;
-    dw $0001                                                             ;A8ADB6;
-    dw Spritemap_Magdollite_FacingRight_WidePillarSection                ;A8ADB8;
+    dw $0001,Spritemap_Magdollite_FacingRight_WidePillarSection          ;A8ADB6;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;A8ADBA;
     dw InstList_Magdollite_UnformBasePillar_SplashBackToIdle_Right_1     ;A8ADBC;
     dw Instruction_Magdollite_MoveDown4Pixels_SetSlavesAsInvisible       ;A8ADBE;
-    dw $0005                                                             ;A8ADC0;
-    dw Spritemap_Magdollite_FacingRight_Head_BarelyPokingOutOfLava       ;A8ADC2;
+    dw $0005,Spritemap_Magdollite_FacingRight_Head_BarelyPokingOutOfLava ;A8ADC0;
     dw Instruction_Magdollite_MoveUp2Pixels                              ;A8ADC4;
-    dw $0005                                                             ;A8ADC6;
-    dw Spritemap_Magdollite_FacingRight_Head_BarelyPokingOutOfLava       ;A8ADC8;
-    dw $0005                                                             ;A8ADCA;
-    dw Spritemap_Magdollite_FacingRight_Head_PokingOutOfLava             ;A8ADCC;
-    dw $0005                                                             ;A8ADCE;
-    dw Spritemap_Magdollite_FacingRight_Head_1                           ;A8ADD0;
+    dw $0005,Spritemap_Magdollite_FacingRight_Head_BarelyPokingOutOfLava ;A8ADC6;
+    dw $0005,Spritemap_Magdollite_FacingRight_Head_PokingOutOfLava       ;A8ADCA;
+    dw $0005,Spritemap_Magdollite_FacingRight_Head_1                     ;A8ADCE;
     dw Instruction_Magdollite_MoveUp2Pixels                              ;A8ADD2;
-    dw $0005                                                             ;A8ADD4;
-    dw Spritemap_Magdollite_FacingRight_Head_1                           ;A8ADD6;
+    dw $0005,Spritemap_Magdollite_FacingRight_Head_1                     ;A8ADD4;
     dw Instruction_Magdollite_ResetWaitingFlag                           ;A8ADD8;
     dw Instruction_Common_Sleep                                          ;A8ADDA;
 
 InstList_Magdollite_Slave1_NarrowPillar_FacingLeft:
-    dw $0001                                                             ;A8ADDC;
-    dw Spritemap_Magdollite_FacingLeft_NarrowPillarSection               ;A8ADDE;
+    dw $0001,Spritemap_Magdollite_FacingLeft_NarrowPillarSection         ;A8ADDC;
     dw Instruction_Common_Sleep                                          ;A8ADE0;
 
 InstList_Magdollite_Slave1_NarrowPillar_FacingRight:
-    dw $0001                                                             ;A8ADE2;
-    dw Spritemap_Magdollite_FacingRight_NarrowPillarSection              ;A8ADE4;
+    dw $0001,Spritemap_Magdollite_FacingRight_NarrowPillarSection        ;A8ADE2;
     dw Instruction_Common_Sleep                                          ;A8ADE6;
 
 InstList_Magdollite_Slave1_3xPillarStack:
-    dw $0001                                                             ;A8ADE8;
-    dw Spritemap_Magdollite_NarrowPillarStacks_3x                        ;A8ADEA;
+    dw $0001,Spritemap_Magdollite_NarrowPillarStacks_3x                  ;A8ADE8;
     dw Instruction_Common_Sleep                                          ;A8ADEC;
 
 InstList_Magdollite_Slave1_4xPillarStack:
-    dw $0001                                                             ;A8ADEE;
-    dw Spritemap_Magdollite_NarrowPillarStacks_4x                        ;A8ADF0;
+    dw $0001,Spritemap_Magdollite_NarrowPillarStacks_4x                  ;A8ADEE;
     dw Instruction_Common_Sleep                                          ;A8ADF2;
 
 InstList_Magdollite_Slave1_5xPillarStack:
-    dw $0001                                                             ;A8ADF4;
-    dw Spritemap_Magdollite_NarrowPillarStacks_5x                        ;A8ADF6;
+    dw $0001,Spritemap_Magdollite_NarrowPillarStacks_5x                  ;A8ADF4;
     dw Instruction_Common_Sleep                                          ;A8ADF8;
 
 InstList_Magdollite_Slave1_6xPillarStack:
-    dw $0001                                                             ;A8ADFA;
-    dw Spritemap_Magdollite_NarrowPillarStacks_6x                        ;A8ADFC;
+    dw $0001,Spritemap_Magdollite_NarrowPillarStacks_6x                  ;A8ADFA;
     dw Instruction_Common_Sleep                                          ;A8ADFE;
 
 InstList_Magdollite_Slave1_7xPillarStack:
-    dw $0001                                                             ;A8AE00;
-    dw Spritemap_Magdollite_NarrowPillarStacks_7x                        ;A8AE02;
+    dw $0001,Spritemap_Magdollite_NarrowPillarStacks_7x                  ;A8AE00;
     dw Instruction_Common_Sleep                                          ;A8AE04;
 
 InstList_Magdollite_Slave1_8xPillarStack:
-    dw $0001                                                             ;A8AE06;
-    dw Spritemap_Magdollite_NarrowPillarStacks_8x                        ;A8AE08;
+    dw $0001,Spritemap_Magdollite_NarrowPillarStacks_8x                  ;A8AE06;
     dw Instruction_Common_Sleep                                          ;A8AE0A;
 
 InstList_Magdollite_Slave2_PillarCap:
-    dw $0001                                                             ;A8AE0C;
-    dw Spritemap_Magdollite_FacingLeft_PillarCap                         ;A8AE0E;
+    dw $0001,Spritemap_Magdollite_FacingLeft_PillarCap                   ;A8AE0C;
     dw Instruction_CommonA8_Sleep                                        ;A8AE10;
+
 
 Instruction_Magdollite_QueueSFXInY_Lib2_Max6_IfOnScreen:
     PHX                                                                  ;A8AE12;
@@ -5629,6 +4847,7 @@ InitAIFunctionPointers:
     dw Function_Magdollite_Init_Slave2                                   ;A8AF53;
 
 MagdolliteArmHeightThreshold:
+; Indexed by [enemy $0FAA]. First entry is unused
     dw $0000,$0010,$0020,$0030,$0040,$0050,$0060,$0070                   ;A8AF55;
     dw $0080                                                             ;A8AF65;
 
@@ -5644,6 +4863,7 @@ MagdolliteSlave1InstListPointers:
     dw InstList_Magdollite_Slave1_8xPillarStack                          ;A8AF77;
 
 MagdolliteYOffsetAimingAtSamus:
+; Hand Y offset
     dw $000C,$000C,$0014,$001C,$0024,$002C,$0034,$003C                   ;A8AF79;
     dw $0044                                                             ;A8AF89;
 
@@ -6241,294 +5461,201 @@ ContactReaction_Magdollite_Common:
 
 
 Spritemap_Magdollite_FacingLeft_Head_0:
-    dw $0003,$0004                                                       ;A8B448;
-    db $FF                                                               ;A8B44C;
-    dw $2123,$0004                                                       ;A8B44D;
-    db $F7                                                               ;A8B451;
-    dw $2122,$81F4                                                       ;A8B452;
-    db $F7                                                               ;A8B456;
-    dw $210A                                                             ;A8B457;
+    dw $0003                                                             ;A8B448;
+    %spritemapEntry(0, $04, $FF, 0, 0, 2, 0, $123)
+    %spritemapEntry(0, $04, $F7, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1F4, $F7, 0, 0, 2, 0, $10A)
 
 Spritemap_Magdollite_FacingLeft_Head_1:
-    dw $0003,$0004                                                       ;A8B459;
-    db $00                                                               ;A8B45D;
-    dw $2123,$0004                                                       ;A8B45E;
-    db $F8                                                               ;A8B462;
-    dw $2122,$81F4                                                       ;A8B463;
-    db $F8                                                               ;A8B467;
-    dw $210A                                                             ;A8B468;
+    dw $0003                                                             ;A8B459;
+    %spritemapEntry(0, $04, $00, 0, 0, 2, 0, $123)
+    %spritemapEntry(0, $04, $F8, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1F4, $F8, 0, 0, 2, 0, $10A)
 
 Spritemap_Magdollite_FacingLeft_Head_2:
-    dw $0003,$0004                                                       ;A8B46A;
-    db $01                                                               ;A8B46E;
-    dw $2123,$0004                                                       ;A8B46F;
-    db $F9                                                               ;A8B473;
-    dw $2122,$81F4                                                       ;A8B474;
-    db $F9                                                               ;A8B478;
-    dw $210A                                                             ;A8B479;
+    dw $0003                                                             ;A8B46A;
+    %spritemapEntry(0, $04, $01, 0, 0, 2, 0, $123)
+    %spritemapEntry(0, $04, $F9, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1F4, $F9, 0, 0, 2, 0, $10A)
 
 Spritemap_Magdollite_FacingLeft_Fist_0:
-    dw $0003,$0000                                                       ;A8B47B;
-    db $04                                                               ;A8B47F;
-    dw $2121,$01F8                                                       ;A8B480;
-    db $04                                                               ;A8B484;
-    dw $2120,$81F8                                                       ;A8B485;
-    db $F4                                                               ;A8B489;
-    dw $2108                                                             ;A8B48A;
+    dw $0003                                                             ;A8B47B;
+    %spritemapEntry(0, $00, $04, 0, 0, 2, 0, $121)
+    %spritemapEntry(0, $1F8, $04, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $1F8, $F4, 0, 0, 2, 0, $108)
 
 Spritemap_Magdollite_FacingLeft_Fist_1:
-    dw $0003,$01FD                                                       ;A8B48C;
-    db $04                                                               ;A8B490;
-    dw $2121,$01F5                                                       ;A8B491;
-    db $04                                                               ;A8B495;
-    dw $2120,$81F9                                                       ;A8B496;
-    db $F5                                                               ;A8B49A;
-    dw $2108                                                             ;A8B49B;
+    dw $0003                                                             ;A8B48C;
+    %spritemapEntry(0, $1FD, $04, 0, 0, 2, 0, $121)
+    %spritemapEntry(0, $1F5, $04, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $1F9, $F5, 0, 0, 2, 0, $108)
 
 Spritemap_Magdollite_FacingLeft_Hand_FingersStraight:
-    dw $0002,$8000                                                       ;A8B49D;
-    db $FC                                                               ;A8B4A1;
-    dw $2106,$81F0                                                       ;A8B4A2;
-    db $F9                                                               ;A8B4A6;
-    dw $2104                                                             ;A8B4A7;
+    dw $0002                                                             ;A8B49D;
+    %spritemapEntry(1, $00, $FC, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1F0, $F9, 0, 0, 2, 0, $104)
 
 Spritemap_Magdollite_FacingLeft_Hand_FingersCurled:
-    dw $0002,$8000                                                       ;A8B4A9;
-    db $F8                                                               ;A8B4AD;
-    dw $2102,$81F0                                                       ;A8B4AE;
-    db $F8                                                               ;A8B4B2;
-    dw $2100                                                             ;A8B4B3;
+    dw $0002                                                             ;A8B4A9;
+    %spritemapEntry(1, $00, $F8, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F0, $F8, 0, 0, 2, 0, $100)
 
 Spritemap_Magdollite_FacingLeft_PillarCap:
-    dw $0002,$0000                                                       ;A8B4B5;
-    db $FC                                                               ;A8B4B9;
-    dw $2125,$01F8                                                       ;A8B4BA;
-    db $FC                                                               ;A8B4BE;
-    dw $2124                                                             ;A8B4BF;
+    dw $0002                                                             ;A8B4B5;
+    %spritemapEntry(0, $00, $FC, 0, 0, 2, 0, $125)
+    %spritemapEntry(0, $1F8, $FC, 0, 0, 2, 0, $124)
 
 Spritemap_Magdollite_FacingLeft_WidePillarSection:
-    dw $0001,$81F8                                                       ;A8B4C1;
-    db $F8                                                               ;A8B4C5;
-    dw $210E                                                             ;A8B4C6;
+    dw $0001                                                             ;A8B4C1;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10E)
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemap_Magdollite_Blank_A8B4C8:
-    dw $0001,$81F8                                                       ;A8B4C8;
-    db $F8                                                               ;A8B4CC;
-    dw $210C                                                             ;A8B4CD;
+    dw $0001                                                             ;A8B4C8;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10C)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Spritemap_Magdollite_FacingLeft_Head_PokingOutOfLava:
-    dw $0003,$0004                                                       ;A8B4CF;
-    db $FC                                                               ;A8B4D3;
-    dw $2128,$01FC                                                       ;A8B4D4;
-    db $FC                                                               ;A8B4D8;
-    dw $2127,$01F4                                                       ;A8B4D9;
-    db $FC                                                               ;A8B4DD;
-    dw $2126                                                             ;A8B4DE;
+    dw $0003                                                             ;A8B4CF;
+    %spritemapEntry(0, $04, $FC, 0, 0, 2, 0, $128)
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 0, $127)
+    %spritemapEntry(0, $1F4, $FC, 0, 0, 2, 0, $126)
 
 Spritemap_Magdollite_FacingLeft_Head_BarelyPokingOutOfLava:
-    dw $0003,$0004                                                       ;A8B4E0;
-    db $FC                                                               ;A8B4E4;
-    dw $212B,$01FC                                                       ;A8B4E5;
-    db $FC                                                               ;A8B4E9;
-    dw $212A,$01F4                                                       ;A8B4EA;
-    db $FC                                                               ;A8B4EE;
-    dw $2129                                                             ;A8B4EF;
+    dw $0003                                                             ;A8B4E0;
+    %spritemapEntry(0, $04, $FC, 0, 0, 2, 0, $12B)
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 0, $12A)
+    %spritemapEntry(0, $1F4, $FC, 0, 0, 2, 0, $129)
 
 Spritemap_Magdollite_FacingRight_Head_0:
-    dw $0003,$01F4                                                       ;A8B4F1;
-    db $FF                                                               ;A8B4F5;
-    dw $6123,$01F4                                                       ;A8B4F6;
-    db $F7                                                               ;A8B4FA;
-    dw $6122,$81FC                                                       ;A8B4FB;
-    db $F7                                                               ;A8B4FF;
-    dw $610A                                                             ;A8B500;
+    dw $0003                                                             ;A8B4F1;
+    %spritemapEntry(0, $1F4, $FF, 0, 1, 2, 0, $123)
+    %spritemapEntry(0, $1F4, $F7, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $1FC, $F7, 0, 1, 2, 0, $10A)
 
 Spritemap_Magdollite_FacingRight_Head_1:
-    dw $0003,$01F4                                                       ;A8B502;
-    db $00                                                               ;A8B506;
-    dw $6123,$01F4                                                       ;A8B507;
-    db $F8                                                               ;A8B50B;
-    dw $6122,$81FC                                                       ;A8B50C;
-    db $F8                                                               ;A8B510;
-    dw $610A                                                             ;A8B511;
+    dw $0003                                                             ;A8B502;
+    %spritemapEntry(0, $1F4, $00, 0, 1, 2, 0, $123)
+    %spritemapEntry(0, $1F4, $F8, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $1FC, $F8, 0, 1, 2, 0, $10A)
 
 Spritemap_Magdollite_FacingRight_Head_2:
-    dw $0003,$01F4                                                       ;A8B513;
-    db $01                                                               ;A8B517;
-    dw $6123,$01F4                                                       ;A8B518;
-    db $F9                                                               ;A8B51C;
-    dw $6122,$81FC                                                       ;A8B51D;
-    db $F9                                                               ;A8B521;
-    dw $610A                                                             ;A8B522;
+    dw $0003                                                             ;A8B513;
+    %spritemapEntry(0, $1F4, $01, 0, 1, 2, 0, $123)
+    %spritemapEntry(0, $1F4, $F9, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $1FC, $F9, 0, 1, 2, 0, $10A)
 
 Spritemap_Magdollite_FacingRight_Fist_0:
-    dw $0003,$01F8                                                       ;A8B524;
-    db $04                                                               ;A8B528;
-    dw $6121,$0000                                                       ;A8B529;
-    db $04                                                               ;A8B52D;
-    dw $6120,$81F8                                                       ;A8B52E;
-    db $F4                                                               ;A8B532;
-    dw $6108                                                             ;A8B533;
+    dw $0003                                                             ;A8B524;
+    %spritemapEntry(0, $1F8, $04, 0, 1, 2, 0, $121)
+    %spritemapEntry(0, $00, $04, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $1F8, $F4, 0, 1, 2, 0, $108)
 
 Spritemap_Magdollite_FacingRight_Fist_1:
-    dw $0003,$01FB                                                       ;A8B535;
-    db $04                                                               ;A8B539;
-    dw $6121,$0003                                                       ;A8B53A;
-    db $04                                                               ;A8B53E;
-    dw $6120,$81F7                                                       ;A8B53F;
-    db $F5                                                               ;A8B543;
-    dw $6108                                                             ;A8B544;
+    dw $0003                                                             ;A8B535;
+    %spritemapEntry(0, $1FB, $04, 0, 1, 2, 0, $121)
+    %spritemapEntry(0, $03, $04, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $1F7, $F5, 0, 1, 2, 0, $108)
 
 Spritemap_Magdollite_FacingRight_Hand_FingersStraight:
-    dw $0002,$81F0                                                       ;A8B546;
-    db $FC                                                               ;A8B54A;
-    dw $6106,$8000                                                       ;A8B54B;
-    db $F9                                                               ;A8B54F;
-    dw $6104                                                             ;A8B550;
+    dw $0002                                                             ;A8B546;
+    %spritemapEntry(1, $1F0, $FC, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $00, $F9, 0, 1, 2, 0, $104)
 
 Spritemap_Magdollite_FacingRight_Hand_FingersCurled:
-    dw $0002,$81F0                                                       ;A8B552;
-    db $F8                                                               ;A8B556;
-    dw $6102,$8000                                                       ;A8B557;
-    db $F8                                                               ;A8B55B;
-    dw $6100                                                             ;A8B55C;
+    dw $0002                                                             ;A8B552;
+    %spritemapEntry(1, $1F0, $F8, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $00, $F8, 0, 1, 2, 0, $100)
 
-if !FEATURE_KEEP_UNREFERENCED
+if  !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemap_Magdollite_FacingRight_PillarCap_A8B55E:
-    dw $0002,$01F8                                                       ;A8B55E;
-    db $FC                                                               ;A8B562;
-    dw $6125,$0000                                                       ;A8B563;
-    db $FC                                                               ;A8B567;
-    dw $6124                                                             ;A8B568;
+    dw $0002                                                             ;A8B55E;
+    %spritemapEntry(0, $1F8, $FC, 0, 1, 2, 0, $125)
+    %spritemapEntry(0, $00, $FC, 0, 1, 2, 0, $124)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Spritemap_Magdollite_FacingRight_WidePillarSection:
-    dw $0001,$81F8                                                       ;A8B56A;
-    db $F8                                                               ;A8B56E;
-    dw $610E                                                             ;A8B56F;
+    dw $0001                                                             ;A8B56A;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10E)
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemap_Magdollite_FacingRight_NarrowPillar_A8B571:
-    dw $0001,$81F8                                                       ;A8B571;
-    db $F8                                                               ;A8B575;
-    dw $610C                                                             ;A8B576;
+    dw $0001                                                             ;A8B571;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10C)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 Spritemap_Magdollite_FacingRight_Head_PokingOutOfLava:
-    dw $0003,$01F4                                                       ;A8B578;
-    db $FC                                                               ;A8B57C;
-    dw $6128,$01FC                                                       ;A8B57D;
-    db $FC                                                               ;A8B581;
-    dw $6127,$0004                                                       ;A8B582;
-    db $FC                                                               ;A8B586;
-    dw $6126                                                             ;A8B587;
+    dw $0003                                                             ;A8B578;
+    %spritemapEntry(0, $1F4, $FC, 0, 1, 2, 0, $128)
+    %spritemapEntry(0, $1FC, $FC, 0, 1, 2, 0, $127)
+    %spritemapEntry(0, $04, $FC, 0, 1, 2, 0, $126)
 
 Spritemap_Magdollite_FacingRight_Head_BarelyPokingOutOfLava:
-    dw $0003,$01F4                                                       ;A8B589;
-    db $FC                                                               ;A8B58D;
-    dw $612B,$01FC                                                       ;A8B58E;
-    db $FC                                                               ;A8B592;
-    dw $612A,$0004                                                       ;A8B593;
-    db $FC                                                               ;A8B597;
-    dw $6129                                                             ;A8B598;
+    dw $0003                                                             ;A8B589;
+    %spritemapEntry(0, $1F4, $FC, 0, 1, 2, 0, $12B)
+    %spritemapEntry(0, $1FC, $FC, 0, 1, 2, 0, $12A)
+    %spritemapEntry(0, $04, $FC, 0, 1, 2, 0, $129)
 
 Spritemap_Magdollite_FacingLeft_NarrowPillarSection:
-    dw $0001,$81F8                                                       ;A8B59A;
-    db $F8                                                               ;A8B59E;
-    dw $210C                                                             ;A8B59F;
+    dw $0001                                                             ;A8B59A;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10C)
 
 Spritemap_Magdollite_FacingRight_NarrowPillarSection:
-    dw $0002,$81F8                                                       ;A8B5A1;
-    db $00                                                               ;A8B5A5;
-    dw $210C,$81F8                                                       ;A8B5A6;
-    db $F0                                                               ;A8B5AA;
-    dw $210C                                                             ;A8B5AB;
+    dw $0002                                                             ;A8B5A1;
+    %spritemapEntry(1, $1F8, $00, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $F0, 0, 0, 2, 0, $10C)
 
 Spritemap_Magdollite_NarrowPillarStacks_3x:
-    dw $0003,$81F8                                                       ;A8B5AD;
-    db $08                                                               ;A8B5B1;
-    dw $210C,$81F8                                                       ;A8B5B2;
-    db $E8                                                               ;A8B5B6;
-    dw $210C,$81F8                                                       ;A8B5B7;
-    db $F8                                                               ;A8B5BB;
-    dw $210C                                                             ;A8B5BC;
+    dw $0003                                                             ;A8B5AD;
+    %spritemapEntry(1, $1F8, $08, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $E8, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10C)
 
 Spritemap_Magdollite_NarrowPillarStacks_4x:
-    dw $0004,$81F8                                                       ;A8B5BE;
-    db $10                                                               ;A8B5C2;
-    dw $210C,$81F8                                                       ;A8B5C3;
-    db $00                                                               ;A8B5C7;
-    dw $210C,$81F8                                                       ;A8B5C8;
-    db $F0                                                               ;A8B5CC;
-    dw $210C,$81F8                                                       ;A8B5CD;
-    db $E0                                                               ;A8B5D1;
-    dw $210C                                                             ;A8B5D2;
+    dw $0004                                                             ;A8B5BE;
+    %spritemapEntry(1, $1F8, $10, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $00, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $F0, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $E0, 0, 0, 2, 0, $10C)
 
 Spritemap_Magdollite_NarrowPillarStacks_5x:
-    dw $0005,$81F8                                                       ;A8B5D4;
-    db $18                                                               ;A8B5D8;
-    dw $210C,$81F8                                                       ;A8B5D9;
-    db $08                                                               ;A8B5DD;
-    dw $210C,$81F8                                                       ;A8B5DE;
-    db $D8                                                               ;A8B5E2;
-    dw $210C,$81F8                                                       ;A8B5E3;
-    db $F8                                                               ;A8B5E7;
-    dw $210C,$81F8                                                       ;A8B5E8;
-    db $E8                                                               ;A8B5EC;
-    dw $210C                                                             ;A8B5ED;
+    dw $0005                                                             ;A8B5D4;
+    %spritemapEntry(1, $1F8, $18, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $08, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $D8, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $E8, 0, 0, 2, 0, $10C)
 
 Spritemap_Magdollite_NarrowPillarStacks_6x:
-    dw $0006,$81F8                                                       ;A8B5EF;
-    db $10                                                               ;A8B5F3;
-    dw $210C,$81F8                                                       ;A8B5F4;
-    db $20                                                               ;A8B5F8;
-    dw $210C,$81F8                                                       ;A8B5F9;
-    db $00                                                               ;A8B5FD;
-    dw $210C,$81F8                                                       ;A8B5FE;
-    db $F0                                                               ;A8B602;
-    dw $210C,$81F8                                                       ;A8B603;
-    db $E0                                                               ;A8B607;
-    dw $210C,$81F8                                                       ;A8B608;
-    db $D0                                                               ;A8B60C;
-    dw $210C                                                             ;A8B60D;
+    dw $0006                                                             ;A8B5EF;
+    %spritemapEntry(1, $1F8, $10, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $20, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $00, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $F0, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $E0, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $D0, 0, 0, 2, 0, $10C)
 
 Spritemap_Magdollite_NarrowPillarStacks_7x:
-    dw $0007,$81F8                                                       ;A8B60F;
-    db $28                                                               ;A8B613;
-    dw $210C,$81F8                                                       ;A8B614;
-    db $18                                                               ;A8B618;
-    dw $210C,$81F8                                                       ;A8B619;
-    db $08                                                               ;A8B61D;
-    dw $210C,$81F8                                                       ;A8B61E;
-    db $F8                                                               ;A8B622;
-    dw $210C,$81F8                                                       ;A8B623;
-    db $E8                                                               ;A8B627;
-    dw $210C,$81F8                                                       ;A8B628;
-    db $D8                                                               ;A8B62C;
-    dw $210C,$81F8                                                       ;A8B62D;
-    db $C8                                                               ;A8B631;
-    dw $210C                                                             ;A8B632;
+    dw $0007                                                             ;A8B60F;
+    %spritemapEntry(1, $1F8, $28, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $18, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $08, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $E8, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $D8, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $C8, 0, 0, 2, 0, $10C)
 
 Spritemap_Magdollite_NarrowPillarStacks_8x:
-    dw $0008,$81F8                                                       ;A8B634;
-    db $30                                                               ;A8B638;
-    dw $210C,$81F8                                                       ;A8B639;
-    db $00                                                               ;A8B63D;
-    dw $210C,$81F8                                                       ;A8B63E;
-    db $20                                                               ;A8B642;
-    dw $210C,$81F8                                                       ;A8B643;
-    db $10                                                               ;A8B647;
-    dw $210C,$81F8                                                       ;A8B648;
-    db $F0                                                               ;A8B64C;
-    dw $210C,$81F8                                                       ;A8B64D;
-    db $E0                                                               ;A8B651;
-    dw $210C,$81F8                                                       ;A8B652;
-    db $D0                                                               ;A8B656;
-    dw $210C,$81F8                                                       ;A8B657;
-    db $C0                                                               ;A8B65B;
-    dw $210C                                                             ;A8B65C;
+    dw $0008                                                             ;A8B634;
+    %spritemapEntry(1, $1F8, $30, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $00, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $20, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $10, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $F0, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $E0, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $D0, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $C0, 0, 0, 2, 0, $10C)
+
 
 Palette_Beetom:
     dw $3800,$57FF,$42F7,$158C,$00A5,$4F5A,$36B5,$2610                   ;A8B65E;
@@ -6536,6 +5663,7 @@ Palette_Beetom:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_BeetomEyeColors_A8B67E:
+; Colours Ah..Ch
     dw $4FE0,$3B20,$2A20,$3BE0,$2680,$1580,$2740,$11E0                   ;A8B67E;
     dw $00E0,$12A0,$0140,$0040                                           ;A8B68E;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -6544,59 +5672,41 @@ InstList_Beetom_Crawling_FacingLeft_0:
     dw Instruction_Common_DisableOffScreenProcessing                     ;A8B696;
 
 InstList_Beetom_Crawling_FacingLeft_1:
-    dw $000A                                                             ;A8B698;
-    dw Spritemap_Beetom_0                                                ;A8B69A;
-    dw $000A                                                             ;A8B69C;
-    dw Spritemap_Beetom_1                                                ;A8B69E;
-    dw $000A                                                             ;A8B6A0;
-    dw Spritemap_Beetom_2                                                ;A8B6A2;
-    dw $000A                                                             ;A8B6A4;
-    dw Spritemap_Beetom_1                                                ;A8B6A6;
+    dw $000A,Spritemap_Beetom_0                                          ;A8B698;
+    dw $000A,Spritemap_Beetom_1                                          ;A8B69C;
+    dw $000A,Spritemap_Beetom_2                                          ;A8B6A0;
+    dw $000A,Spritemap_Beetom_1                                          ;A8B6A4;
     dw Instruction_Common_GotoY                                          ;A8B6A8;
     dw InstList_Beetom_Crawling_FacingLeft_1                             ;A8B6AA;
 
 InstList_Beetom_Hop_FacingLeft:
     dw Instruction_Common_EnableOffScreenProcessing                      ;A8B6AC;
-    dw $0004                                                             ;A8B6AE;
-    dw Spritemap_Beetom_3                                                ;A8B6B0;
-    dw $0008                                                             ;A8B6B2;
-    dw Spritemap_Beetom_4                                                ;A8B6B4;
-    dw $0004                                                             ;A8B6B6;
-    dw Spritemap_Beetom_3                                                ;A8B6B8;
-    dw $0001                                                             ;A8B6BA;
-    dw Spritemap_Beetom_0                                                ;A8B6BC;
+    dw $0004,Spritemap_Beetom_3                                          ;A8B6AE;
+    dw $0008,Spritemap_Beetom_4                                          ;A8B6B2;
+    dw $0004,Spritemap_Beetom_3                                          ;A8B6B6;
+    dw $0001,Spritemap_Beetom_0                                          ;A8B6BA;
     dw Instruction_Common_Sleep                                          ;A8B6BE;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_Beetom_SmallHop_FacingLeft_A8B6C0:
     dw Instruction_Common_EnableOffScreenProcessing                      ;A8B6C0;
-    dw $0004                                                             ;A8B6C2;
-    dw Spritemap_Beetom_3                                                ;A8B6C4;
-    dw $0001                                                             ;A8B6C6;
-    dw Spritemap_Beetom_0                                                ;A8B6C8;
+    dw $0004,Spritemap_Beetom_3                                          ;A8B6C2;
+    dw $0001,Spritemap_Beetom_0                                          ;A8B6C6;
     dw Instruction_Common_Sleep                                          ;A8B6CA;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_Beetom_DrainingSamus_FacingLeft_0:
-    dw $0005                                                             ;A8B6CC;
-    dw Spritemap_Beetom_5                                                ;A8B6CE;
-    dw $0005                                                             ;A8B6D0;
-    dw Spritemap_Beetom_6                                                ;A8B6D2;
-    dw $0005                                                             ;A8B6D4;
-    dw Spritemap_Beetom_7                                                ;A8B6D6;
-    dw $0030                                                             ;A8B6D8;
-    dw Spritemap_Beetom_6                                                ;A8B6DA;
+    dw $0005,Spritemap_Beetom_5                                          ;A8B6CC;
+    dw $0005,Spritemap_Beetom_6                                          ;A8B6D0;
+    dw $0005,Spritemap_Beetom_7                                          ;A8B6D4;
+    dw $0030,Spritemap_Beetom_6                                          ;A8B6D8;
     dw Instruction_Beetom_Nothing                                        ;A8B6DC;
 
 InstList_Beetom_DrainingSamus_FacingLeft_1:
-    dw $0005                                                             ;A8B6DE;
-    dw Spritemap_Beetom_8                                                ;A8B6E0;
-    dw $0005                                                             ;A8B6E2;
-    dw Spritemap_Beetom_9                                                ;A8B6E4;
-    dw $0005                                                             ;A8B6E6;
-    dw Spritemap_Beetom_A                                                ;A8B6E8;
-    dw $0005                                                             ;A8B6EA;
-    dw Spritemap_Beetom_9                                                ;A8B6EC;
+    dw $0005,Spritemap_Beetom_8                                          ;A8B6DE;
+    dw $0005,Spritemap_Beetom_9                                          ;A8B6E2;
+    dw $0005,Spritemap_Beetom_A                                          ;A8B6E6;
+    dw $0005,Spritemap_Beetom_9                                          ;A8B6EA;
     dw Instruction_Common_GotoY                                          ;A8B6EE;
     dw InstList_Beetom_DrainingSamus_FacingLeft_1                        ;A8B6F0;
 
@@ -6604,71 +5714,53 @@ InstList_Beetom_Crawling_FacingRight_0:
     dw Instruction_Common_DisableOffScreenProcessing                     ;A8B6F2;
 
 InstList_Beetom_Crawling_FacingRight_1:
-    dw $000A                                                             ;A8B6F4;
-    dw Spritemap_Beetom_B                                                ;A8B6F6;
-    dw $000A                                                             ;A8B6F8;
-    dw Spritemap_Beetom_C                                                ;A8B6FA;
-    dw $000A                                                             ;A8B6FC;
-    dw Spritemap_Beetom_D                                                ;A8B6FE;
-    dw $000A                                                             ;A8B700;
-    dw Spritemap_Beetom_C                                                ;A8B702;
+    dw $000A,Spritemap_Beetom_B                                          ;A8B6F4;
+    dw $000A,Spritemap_Beetom_C                                          ;A8B6F8;
+    dw $000A,Spritemap_Beetom_D                                          ;A8B6FC;
+    dw $000A,Spritemap_Beetom_C                                          ;A8B700;
     dw Instruction_Common_GotoY                                          ;A8B704;
     dw InstList_Beetom_Crawling_FacingRight_1                            ;A8B706;
 
 InstList_Beetom_Hop_FacingRight:
     dw Instruction_Common_EnableOffScreenProcessing                      ;A8B708;
-    dw $0004                                                             ;A8B70A;
-    dw Spritemap_Beetom_E                                                ;A8B70C;
-    dw $0008                                                             ;A8B70E;
-    dw Spritemap_Beetom_F                                                ;A8B710;
-    dw $0004                                                             ;A8B712;
-    dw Spritemap_Beetom_E                                                ;A8B714;
-    dw $0001                                                             ;A8B716;
-    dw Spritemap_Beetom_B                                                ;A8B718;
+    dw $0004,Spritemap_Beetom_E                                          ;A8B70A;
+    dw $0008,Spritemap_Beetom_F                                          ;A8B70E;
+    dw $0004,Spritemap_Beetom_E                                          ;A8B712;
+    dw $0001,Spritemap_Beetom_B                                          ;A8B716;
     dw Instruction_Common_Sleep                                          ;A8B71A;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_Beetom_SmallHop_FacingRight_A8B71C:
     dw Instruction_Common_EnableOffScreenProcessing                      ;A8B71C;
-    dw $0004                                                             ;A8B71E;
-    dw Spritemap_Beetom_E                                                ;A8B720;
-    dw $0001                                                             ;A8B722;
-    dw Spritemap_Beetom_B                                                ;A8B724;
+    dw $0004,Spritemap_Beetom_E                                          ;A8B71E;
+    dw $0001,Spritemap_Beetom_B                                          ;A8B722;
     dw Instruction_CommonA8_Sleep                                        ;A8B726;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_Beetom_DrainingSamus_FacingRight_0:
-    dw $0005                                                             ;A8B728;
-    dw Spritemap_Beetom_10                                               ;A8B72A;
-    dw $0005                                                             ;A8B72C;
-    dw Spritemap_Beetom_11                                               ;A8B72E;
-    dw $0005                                                             ;A8B730;
-    dw Spritemap_Beetom_12                                               ;A8B732;
-    dw $0030                                                             ;A8B734;
-    dw Spritemap_Beetom_11                                               ;A8B736;
+    dw $0005,Spritemap_Beetom_10                                         ;A8B728;
+    dw $0005,Spritemap_Beetom_11                                         ;A8B72C;
+    dw $0005,Spritemap_Beetom_12                                         ;A8B730;
+    dw $0030,Spritemap_Beetom_11                                         ;A8B734;
     dw Instruction_Beetom_Nothing                                        ;A8B738;
 
 InstList_Beetom_DrainingSamus_FacingRight_1:
-    dw $0005                                                             ;A8B73A;
-    dw Spritemap_Beetom_13                                               ;A8B73C;
-    dw $0005                                                             ;A8B73E;
-    dw Spritemap_Beetom_14                                               ;A8B740;
-    dw $0005                                                             ;A8B742;
-    dw Spritemap_Beetom_15                                               ;A8B744;
-    dw $0005                                                             ;A8B746;
-    dw Spritemap_Beetom_14                                               ;A8B748;
+    dw $0005,Spritemap_Beetom_13                                         ;A8B73A;
+    dw $0005,Spritemap_Beetom_14                                         ;A8B73E;
+    dw $0005,Spritemap_Beetom_15                                         ;A8B742;
+    dw $0005,Spritemap_Beetom_14                                         ;A8B746;
     dw Instruction_Common_GotoY                                          ;A8B74A;
     dw InstList_Beetom_DrainingSamus_FacingRight_1                       ;A8B74C;
 
 SamusNotInProximityBeetomFunctionPointers:
-    dw Function_Beetom_StartIdling                                       ;A8B74E;
-    dw Function_Beetom_StartIdling                                       ;A8B750;
-    dw Function_Beetom_StartShortHopRight                                ;A8B752;
-    dw Function_Beetom_StartLongHopRight                                 ;A8B754;
-    dw Function_Beetom_StartShortHopRight                                ;A8B756;
-    dw Function_Beetom_StartShortHopLeft                                 ;A8B758;
-    dw Function_Beetom_StartLongHopLeft                                  ;A8B75A;
-    dw Function_Beetom_StartLongHopRight                                 ;A8B75C;
+    dw Function_Beetom_StartIdling                                       ;A8B74E; Facing left
+    dw Function_Beetom_StartIdling                                       ;A8B750; Facing right
+    dw Function_Beetom_StartShortHopRight                                ;A8B752; Facing left
+    dw Function_Beetom_StartLongHopRight                                 ;A8B754; Facing right
+    dw Function_Beetom_StartShortHopRight                                ;A8B756; Facing left
+    dw Function_Beetom_StartShortHopLeft                                 ;A8B758; Facing right
+    dw Function_Beetom_StartLongHopLeft                                  ;A8B75A; Facing left
+    dw Function_Beetom_StartLongHopRight                                 ;A8B75C; Facing right
 
 Instruction_Beetom_Nothing:
     LDX.W $0E54                                                          ;A8B75E;
@@ -7655,355 +6747,230 @@ EnemyShot_Beetom:
 
 
 Spritemap_Beetom_0:
-    dw $0005,$0000                                                       ;A8BED3;
-    db $FE                                                               ;A8BED7;
-    dw $211E,$0000                                                       ;A8BED8;
-    db $F6                                                               ;A8BEDC;
-    dw $210E,$0005                                                       ;A8BEDD;
-    db $00                                                               ;A8BEE1;
-    dw $211F,$0005                                                       ;A8BEE2;
-    db $F8                                                               ;A8BEE6;
-    dw $210F,$81F8                                                       ;A8BEE7;
-    db $F8                                                               ;A8BEEB;
-    dw $2100                                                             ;A8BEEC;
+    dw $0005                                                             ;A8BED3;
+    %spritemapEntry(0, $00, $FE, 0, 0, 2, 0, $11E)
+    %spritemapEntry(0, $00, $F6, 0, 0, 2, 0, $10E)
+    %spritemapEntry(0, $05, $00, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $05, $F8, 0, 0, 2, 0, $10F)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
 
 Spritemap_Beetom_1:
-    dw $0005,$0000                                                       ;A8BEEE;
-    db $FF                                                               ;A8BEF2;
-    dw $211E,$0000                                                       ;A8BEF3;
-    db $F7                                                               ;A8BEF7;
-    dw $210E,$0006                                                       ;A8BEF8;
-    db $00                                                               ;A8BEFC;
-    dw $211F,$0005                                                       ;A8BEFD;
-    db $F9                                                               ;A8BF01;
-    dw $210F,$81F8                                                       ;A8BF02;
-    db $F8                                                               ;A8BF06;
-    dw $2102                                                             ;A8BF07;
+    dw $0005                                                             ;A8BEEE;
+    %spritemapEntry(0, $00, $FF, 0, 0, 2, 0, $11E)
+    %spritemapEntry(0, $00, $F7, 0, 0, 2, 0, $10E)
+    %spritemapEntry(0, $06, $00, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $05, $F9, 0, 0, 2, 0, $10F)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $102)
 
 Spritemap_Beetom_2:
-    dw $0005,$0000                                                       ;A8BF09;
-    db $00                                                               ;A8BF0D;
-    dw $211E,$0001                                                       ;A8BF0E;
-    db $F8                                                               ;A8BF12;
-    dw $210E,$0007                                                       ;A8BF13;
-    db $00                                                               ;A8BF17;
-    dw $211F,$0006                                                       ;A8BF18;
-    db $FA                                                               ;A8BF1C;
-    dw $210F,$81F8                                                       ;A8BF1D;
-    db $F8                                                               ;A8BF21;
-    dw $2104                                                             ;A8BF22;
+    dw $0005                                                             ;A8BF09;
+    %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $11E)
+    %spritemapEntry(0, $01, $F8, 0, 0, 2, 0, $10E)
+    %spritemapEntry(0, $07, $00, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $06, $FA, 0, 0, 2, 0, $10F)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $104)
 
 Spritemap_Beetom_3:
-    dw $0005,$0007                                                       ;A8BF24;
-    db $FE                                                               ;A8BF28;
-    dw $A10D,$01FF                                                       ;A8BF29;
-    db $FE                                                               ;A8BF2D;
-    dw $A10C,$000C                                                       ;A8BF2E;
-    db $FF                                                               ;A8BF32;
-    dw $210F,$000D                                                       ;A8BF33;
-    db $07                                                               ;A8BF37;
-    dw $211F,$81F8                                                       ;A8BF38;
-    db $F8                                                               ;A8BF3C;
-    dw $2100                                                             ;A8BF3D;
+    dw $0005                                                             ;A8BF24;
+    %spritemapEntry(0, $07, $FE, 1, 0, 2, 0, $10D)
+    %spritemapEntry(0, $1FF, $FE, 1, 0, 2, 0, $10C)
+    %spritemapEntry(0, $0C, $FF, 0, 0, 2, 0, $10F)
+    %spritemapEntry(0, $0D, $07, 0, 0, 2, 0, $11F)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
 
 Spritemap_Beetom_4:
-    dw $0005,$000E                                                       ;A8BF3F;
-    db $0F                                                               ;A8BF43;
-    dw $211F,$000C                                                       ;A8BF44;
-    db $07                                                               ;A8BF48;
-    dw $210F,$0008                                                       ;A8BF49;
-    db $02                                                               ;A8BF4D;
-    dw $210D,$0000                                                       ;A8BF4E;
-    db $02                                                               ;A8BF52;
-    dw $210C,$81F8                                                       ;A8BF53;
-    db $F8                                                               ;A8BF57;
-    dw $2100                                                             ;A8BF58;
+    dw $0005                                                             ;A8BF3F;
+    %spritemapEntry(0, $0E, $0F, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $0C, $07, 0, 0, 2, 0, $10F)
+    %spritemapEntry(0, $08, $02, 0, 0, 2, 0, $10D)
+    %spritemapEntry(0, $00, $02, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
 
 Spritemap_Beetom_5:
-    dw $0005,$0002                                                       ;A8BF5A;
-    db $00                                                               ;A8BF5E;
-    dw $210D,$01FA                                                       ;A8BF5F;
-    db $00                                                               ;A8BF63;
-    dw $210C,$0000                                                       ;A8BF64;
-    db $05                                                               ;A8BF68;
-    dw $211D,$01F8                                                       ;A8BF69;
-    db $05                                                               ;A8BF6D;
-    dw $211C,$81F8                                                       ;A8BF6E;
-    db $F8                                                               ;A8BF72;
-    dw $2106                                                             ;A8BF73;
+    dw $0005                                                             ;A8BF5A;
+    %spritemapEntry(0, $02, $00, 0, 0, 2, 0, $10D)
+    %spritemapEntry(0, $1FA, $00, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $00, $05, 0, 0, 2, 0, $11D)
+    %spritemapEntry(0, $1F8, $05, 0, 0, 2, 0, $11C)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $106)
 
 Spritemap_Beetom_6:
-    dw $0005,$0001                                                       ;A8BF75;
-    db $00                                                               ;A8BF79;
-    dw $210D,$01F9                                                       ;A8BF7A;
-    db $00                                                               ;A8BF7E;
-    dw $210C,$01FF                                                       ;A8BF7F;
-    db $05                                                               ;A8BF83;
-    dw $211D,$01F8                                                       ;A8BF84;
-    db $05                                                               ;A8BF88;
-    dw $211C,$81F8                                                       ;A8BF89;
-    db $F8                                                               ;A8BF8D;
-    dw $2108                                                             ;A8BF8E;
+    dw $0005                                                             ;A8BF75;
+    %spritemapEntry(0, $01, $00, 0, 0, 2, 0, $10D)
+    %spritemapEntry(0, $1F9, $00, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $1FF, $05, 0, 0, 2, 0, $11D)
+    %spritemapEntry(0, $1F8, $05, 0, 0, 2, 0, $11C)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $108)
 
 Spritemap_Beetom_7:
-    dw $0005,$0000                                                       ;A8BF90;
-    db $00                                                               ;A8BF94;
-    dw $210D,$01F8                                                       ;A8BF95;
-    db $00                                                               ;A8BF99;
-    dw $210C,$01FE                                                       ;A8BF9A;
-    db $05                                                               ;A8BF9E;
-    dw $211D,$01F8                                                       ;A8BF9F;
-    db $05                                                               ;A8BFA3;
-    dw $211C,$81F8                                                       ;A8BFA4;
-    db $F8                                                               ;A8BFA8;
-    dw $210A                                                             ;A8BFA9;
+    dw $0005                                                             ;A8BF90;
+    %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $10D)
+    %spritemapEntry(0, $1F8, $00, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $1FE, $05, 0, 0, 2, 0, $11D)
+    %spritemapEntry(0, $1F8, $05, 0, 0, 2, 0, $11C)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10A)
 
 Spritemap_Beetom_8:
-    dw $0006,$01FA                                                       ;A8BFAB;
-    db $F8                                                               ;A8BFAF;
-    dw $2120,$0002                                                       ;A8BFB0;
-    db $00                                                               ;A8BFB4;
-    dw $210D,$01FA                                                       ;A8BFB5;
-    db $00                                                               ;A8BFB9;
-    dw $210C,$0000                                                       ;A8BFBA;
-    db $05                                                               ;A8BFBE;
-    dw $211D,$01F8                                                       ;A8BFBF;
-    db $05                                                               ;A8BFC3;
-    dw $211C,$81F8                                                       ;A8BFC4;
-    db $F8                                                               ;A8BFC8;
-    dw $2106                                                             ;A8BFC9;
+    dw $0006                                                             ;A8BFAB;
+    %spritemapEntry(0, $1FA, $F8, 0, 0, 2, 0, $120)
+    %spritemapEntry(0, $02, $00, 0, 0, 2, 0, $10D)
+    %spritemapEntry(0, $1FA, $00, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $00, $05, 0, 0, 2, 0, $11D)
+    %spritemapEntry(0, $1F8, $05, 0, 0, 2, 0, $11C)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $106)
 
 Spritemap_Beetom_9:
-    dw $0006,$01FA                                                       ;A8BFCB;
-    db $F8                                                               ;A8BFCF;
-    dw $2121,$0001                                                       ;A8BFD0;
-    db $00                                                               ;A8BFD4;
-    dw $210D,$01F9                                                       ;A8BFD5;
-    db $00                                                               ;A8BFD9;
-    dw $210C,$01FF                                                       ;A8BFDA;
-    db $05                                                               ;A8BFDE;
-    dw $211D,$01F8                                                       ;A8BFDF;
-    db $05                                                               ;A8BFE3;
-    dw $211C,$81F8                                                       ;A8BFE4;
-    db $F8                                                               ;A8BFE8;
-    dw $2108                                                             ;A8BFE9;
+    dw $0006                                                             ;A8BFCB;
+    %spritemapEntry(0, $1FA, $F8, 0, 0, 2, 0, $121)
+    %spritemapEntry(0, $01, $00, 0, 0, 2, 0, $10D)
+    %spritemapEntry(0, $1F9, $00, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $1FF, $05, 0, 0, 2, 0, $11D)
+    %spritemapEntry(0, $1F8, $05, 0, 0, 2, 0, $11C)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $108)
 
 Spritemap_Beetom_A:
-    dw $0006,$01FA                                                       ;A8BFEB;
-    db $F8                                                               ;A8BFEF;
-    dw $2122,$0000                                                       ;A8BFF0;
-    db $00                                                               ;A8BFF4;
-    dw $210D,$01F8                                                       ;A8BFF5;
-    db $00                                                               ;A8BFF9;
-    dw $210C,$01FE                                                       ;A8BFFA;
-    db $05                                                               ;A8BFFE;
-    dw $211D,$01F8                                                       ;A8BFFF;
-    db $05                                                               ;A8C003;
-    dw $211C,$81F8                                                       ;A8C004;
-    db $F8                                                               ;A8C008;
-    dw $210A                                                             ;A8C009;
+    dw $0006                                                             ;A8BFEB;
+    %spritemapEntry(0, $1FA, $F8, 0, 0, 2, 0, $122)
+    %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $10D)
+    %spritemapEntry(0, $1F8, $00, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $1FE, $05, 0, 0, 2, 0, $11D)
+    %spritemapEntry(0, $1F8, $05, 0, 0, 2, 0, $11C)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10A)
 
 Spritemap_Beetom_B:
-    dw $0005,$01F8                                                       ;A8C00B;
-    db $FE                                                               ;A8C00F;
-    dw $611E,$01F8                                                       ;A8C010;
-    db $F6                                                               ;A8C014;
-    dw $610E,$01F3                                                       ;A8C015;
-    db $00                                                               ;A8C019;
-    dw $611F,$01F3                                                       ;A8C01A;
-    db $F8                                                               ;A8C01E;
-    dw $610F,$81F8                                                       ;A8C01F;
-    db $F8                                                               ;A8C023;
-    dw $6100                                                             ;A8C024;
+    dw $0005                                                             ;A8C00B;
+    %spritemapEntry(0, $1F8, $FE, 0, 1, 2, 0, $11E)
+    %spritemapEntry(0, $1F8, $F6, 0, 1, 2, 0, $10E)
+    %spritemapEntry(0, $1F3, $00, 0, 1, 2, 0, $11F)
+    %spritemapEntry(0, $1F3, $F8, 0, 1, 2, 0, $10F)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $100)
 
 Spritemap_Beetom_C:
-    dw $0005,$01F8                                                       ;A8C026;
-    db $FF                                                               ;A8C02A;
-    dw $611E,$01F8                                                       ;A8C02B;
-    db $F7                                                               ;A8C02F;
-    dw $610E,$01F2                                                       ;A8C030;
-    db $00                                                               ;A8C034;
-    dw $611F,$01F3                                                       ;A8C035;
-    db $F9                                                               ;A8C039;
-    dw $610F,$81F8                                                       ;A8C03A;
-    db $F8                                                               ;A8C03E;
-    dw $6102                                                             ;A8C03F;
+    dw $0005                                                             ;A8C026;
+    %spritemapEntry(0, $1F8, $FF, 0, 1, 2, 0, $11E)
+    %spritemapEntry(0, $1F8, $F7, 0, 1, 2, 0, $10E)
+    %spritemapEntry(0, $1F2, $00, 0, 1, 2, 0, $11F)
+    %spritemapEntry(0, $1F3, $F9, 0, 1, 2, 0, $10F)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $102)
 
 Spritemap_Beetom_D:
-    dw $0005,$01F8                                                       ;A8C041;
-    db $00                                                               ;A8C045;
-    dw $611E,$01F7                                                       ;A8C046;
-    db $F8                                                               ;A8C04A;
-    dw $610E,$01F1                                                       ;A8C04B;
-    db $00                                                               ;A8C04F;
-    dw $611F,$01F2                                                       ;A8C050;
-    db $FA                                                               ;A8C054;
-    dw $610F,$81F8                                                       ;A8C055;
-    db $F8                                                               ;A8C059;
-    dw $6104                                                             ;A8C05A;
+    dw $0005                                                             ;A8C041;
+    %spritemapEntry(0, $1F8, $00, 0, 1, 2, 0, $11E)
+    %spritemapEntry(0, $1F7, $F8, 0, 1, 2, 0, $10E)
+    %spritemapEntry(0, $1F1, $00, 0, 1, 2, 0, $11F)
+    %spritemapEntry(0, $1F2, $FA, 0, 1, 2, 0, $10F)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $104)
 
 Spritemap_Beetom_E:
-    dw $0005,$01F1                                                       ;A8C05C;
-    db $FE                                                               ;A8C060;
-    dw $E10D,$01F9                                                       ;A8C061;
-    db $FE                                                               ;A8C065;
-    dw $E10C,$01EC                                                       ;A8C066;
-    db $FF                                                               ;A8C06A;
-    dw $610F,$01EB                                                       ;A8C06B;
-    db $07                                                               ;A8C06F;
-    dw $611F,$81F8                                                       ;A8C070;
-    db $F8                                                               ;A8C074;
-    dw $6100                                                             ;A8C075;
+    dw $0005                                                             ;A8C05C;
+    %spritemapEntry(0, $1F1, $FE, 1, 1, 2, 0, $10D)
+    %spritemapEntry(0, $1F9, $FE, 1, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1EC, $FF, 0, 1, 2, 0, $10F)
+    %spritemapEntry(0, $1EB, $07, 0, 1, 2, 0, $11F)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $100)
 
 Spritemap_Beetom_F:
-    dw $0005,$01EA                                                       ;A8C077;
-    db $0F                                                               ;A8C07B;
-    dw $611F,$01EC                                                       ;A8C07C;
-    db $07                                                               ;A8C080;
-    dw $610F,$01F0                                                       ;A8C081;
-    db $02                                                               ;A8C085;
-    dw $610D,$01F8                                                       ;A8C086;
-    db $02                                                               ;A8C08A;
-    dw $610C,$81F8                                                       ;A8C08B;
-    db $F8                                                               ;A8C08F;
-    dw $6100                                                             ;A8C090;
+    dw $0005                                                             ;A8C077;
+    %spritemapEntry(0, $1EA, $0F, 0, 1, 2, 0, $11F)
+    %spritemapEntry(0, $1EC, $07, 0, 1, 2, 0, $10F)
+    %spritemapEntry(0, $1F0, $02, 0, 1, 2, 0, $10D)
+    %spritemapEntry(0, $1F8, $02, 0, 1, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $100)
 
 Spritemap_Beetom_10:
-    dw $0005,$01F6                                                       ;A8C092;
-    db $00                                                               ;A8C096;
-    dw $610D,$01FE                                                       ;A8C097;
-    db $00                                                               ;A8C09B;
-    dw $610C,$01F8                                                       ;A8C09C;
-    db $05                                                               ;A8C0A0;
-    dw $611D,$0000                                                       ;A8C0A1;
-    db $05                                                               ;A8C0A5;
-    dw $611C,$81F8                                                       ;A8C0A6;
-    db $F8                                                               ;A8C0AA;
-    dw $6106                                                             ;A8C0AB;
+    dw $0005                                                             ;A8C092;
+    %spritemapEntry(0, $1F6, $00, 0, 1, 2, 0, $10D)
+    %spritemapEntry(0, $1FE, $00, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1F8, $05, 0, 1, 2, 0, $11D)
+    %spritemapEntry(0, $00, $05, 0, 1, 2, 0, $11C)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $106)
 
 Spritemap_Beetom_11:
-    dw $0005,$01F7                                                       ;A8C0AD;
-    db $00                                                               ;A8C0B1;
-    dw $610D,$01FF                                                       ;A8C0B2;
-    db $00                                                               ;A8C0B6;
-    dw $610C,$01F9                                                       ;A8C0B7;
-    db $05                                                               ;A8C0BB;
-    dw $611D,$0000                                                       ;A8C0BC;
-    db $05                                                               ;A8C0C0;
-    dw $611C,$81F8                                                       ;A8C0C1;
-    db $F8                                                               ;A8C0C5;
-    dw $6108                                                             ;A8C0C6;
+    dw $0005                                                             ;A8C0AD;
+    %spritemapEntry(0, $1F7, $00, 0, 1, 2, 0, $10D)
+    %spritemapEntry(0, $1FF, $00, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1F9, $05, 0, 1, 2, 0, $11D)
+    %spritemapEntry(0, $00, $05, 0, 1, 2, 0, $11C)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $108)
 
 Spritemap_Beetom_12:
-    dw $0005,$01F8                                                       ;A8C0C8;
-    db $00                                                               ;A8C0CC;
-    dw $610D,$0000                                                       ;A8C0CD;
-    db $00                                                               ;A8C0D1;
-    dw $610C,$01FA                                                       ;A8C0D2;
-    db $05                                                               ;A8C0D6;
-    dw $611D,$0000                                                       ;A8C0D7;
-    db $05                                                               ;A8C0DB;
-    dw $611C,$81F8                                                       ;A8C0DC;
-    db $F8                                                               ;A8C0E0;
-    dw $610A                                                             ;A8C0E1;
+    dw $0005                                                             ;A8C0C8;
+    %spritemapEntry(0, $1F8, $00, 0, 1, 2, 0, $10D)
+    %spritemapEntry(0, $00, $00, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1FA, $05, 0, 1, 2, 0, $11D)
+    %spritemapEntry(0, $00, $05, 0, 1, 2, 0, $11C)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10A)
 
 Spritemap_Beetom_13:
-    dw $0006,$01FE                                                       ;A8C0E3;
-    db $F8                                                               ;A8C0E7;
-    dw $6120,$01F6                                                       ;A8C0E8;
-    db $00                                                               ;A8C0EC;
-    dw $610D,$01FE                                                       ;A8C0ED;
-    db $00                                                               ;A8C0F1;
-    dw $610C,$01F8                                                       ;A8C0F2;
-    db $05                                                               ;A8C0F6;
-    dw $611D,$0000                                                       ;A8C0F7;
-    db $05                                                               ;A8C0FB;
-    dw $611C,$81F8                                                       ;A8C0FC;
-    db $F8                                                               ;A8C100;
-    dw $6106                                                             ;A8C101;
+    dw $0006                                                             ;A8C0E3;
+    %spritemapEntry(0, $1FE, $F8, 0, 1, 2, 0, $120)
+    %spritemapEntry(0, $1F6, $00, 0, 1, 2, 0, $10D)
+    %spritemapEntry(0, $1FE, $00, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1F8, $05, 0, 1, 2, 0, $11D)
+    %spritemapEntry(0, $00, $05, 0, 1, 2, 0, $11C)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $106)
 
 Spritemap_Beetom_14:
-    dw $0006,$01FE                                                       ;A8C103;
-    db $F8                                                               ;A8C107;
-    dw $6121,$01F7                                                       ;A8C108;
-    db $00                                                               ;A8C10C;
-    dw $610D,$01FF                                                       ;A8C10D;
-    db $00                                                               ;A8C111;
-    dw $610C,$01F9                                                       ;A8C112;
-    db $05                                                               ;A8C116;
-    dw $611D,$0000                                                       ;A8C117;
-    db $05                                                               ;A8C11B;
-    dw $611C,$81F8                                                       ;A8C11C;
-    db $F8                                                               ;A8C120;
-    dw $6108                                                             ;A8C121;
+    dw $0006                                                             ;A8C103;
+    %spritemapEntry(0, $1FE, $F8, 0, 1, 2, 0, $121)
+    %spritemapEntry(0, $1F7, $00, 0, 1, 2, 0, $10D)
+    %spritemapEntry(0, $1FF, $00, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1F9, $05, 0, 1, 2, 0, $11D)
+    %spritemapEntry(0, $00, $05, 0, 1, 2, 0, $11C)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $108)
 
 Spritemap_Beetom_15:
-    dw $0006,$01FE                                                       ;A8C123;
-    db $F8                                                               ;A8C127;
-    dw $6122,$01F8                                                       ;A8C128;
-    db $00                                                               ;A8C12C;
-    dw $610D,$0000                                                       ;A8C12D;
-    db $00                                                               ;A8C131;
-    dw $610C,$01FA                                                       ;A8C132;
-    db $05                                                               ;A8C136;
-    dw $611D,$0000                                                       ;A8C137;
-    db $05                                                               ;A8C13B;
-    dw $611C,$81F8                                                       ;A8C13C;
-    db $F8                                                               ;A8C140;
-    dw $610A                                                             ;A8C141;
+    dw $0006                                                             ;A8C123;
+    %spritemapEntry(0, $1FE, $F8, 0, 1, 2, 0, $122)
+    %spritemapEntry(0, $1F8, $00, 0, 1, 2, 0, $10D)
+    %spritemapEntry(0, $00, $00, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1FA, $05, 0, 1, 2, 0, $11D)
+    %spritemapEntry(0, $00, $05, 0, 1, 2, 0, $11C)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10A)
+
 
 Palette_Powamp:
     dw $3800,$57FF,$42F7,$0929,$00A5,$4F5A,$36B5,$2610                   ;A8C143;
     dw $1DCE,$02FF,$01BF,$000F,$0008,$03FF,$0237,$00D1                   ;A8C153;
 
+
 InstList_Powamp_Body_FastAnimation:
-    dw $0005                                                             ;A8C163;
-    dw Spritemap_Powamp_Body_CheeksLowered                               ;A8C165;
-    dw $0005                                                             ;A8C167;
-    dw Spritemap_Powamp_Body_CheeksLifting                               ;A8C169;
-    dw $0005                                                             ;A8C16B;
-    dw Spritemap_Powamp_Body_CheeksRaised                                ;A8C16D;
+    dw $0005,Spritemap_Powamp_Body_CheeksLowered                         ;A8C163;
+    dw $0005,Spritemap_Powamp_Body_CheeksLifting                         ;A8C167;
+    dw $0005,Spritemap_Powamp_Body_CheeksRaised                          ;A8C16B;
     dw Instruction_Common_GotoY                                          ;A8C16F;
     dw InstList_Powamp_Body_FastAnimation                                ;A8C171;
 
 InstList_Powamp_Body_SlowAnimation:
-    dw $0009                                                             ;A8C173;
-    dw Spritemap_Powamp_Body_CheeksLowered                               ;A8C175;
-    dw $0009                                                             ;A8C177;
-    dw Spritemap_Powamp_Body_CheeksLifting                               ;A8C179;
-    dw $0009                                                             ;A8C17B;
-    dw Spritemap_Powamp_Body_CheeksRaised                                ;A8C17D;
+    dw $0009,Spritemap_Powamp_Body_CheeksLowered                         ;A8C173;
+    dw $0009,Spritemap_Powamp_Body_CheeksLifting                         ;A8C177;
+    dw $0009,Spritemap_Powamp_Body_CheeksRaised                          ;A8C17B;
     dw Instruction_Common_GotoY                                          ;A8C17F;
     dw InstList_Powamp_Body_SlowAnimation                                ;A8C181;
 
 InstList_Powamp_Balloon_StartingToRise:
-    dw $0001                                                             ;A8C183;
-    dw Spritemap_Powamp_Balloon_Deflated                                 ;A8C185;
+    dw $0001,Spritemap_Powamp_Balloon_Deflated                           ;A8C183;
 
 InstList_Powamp_Balloon_Inflating:
-    dw $0006                                                             ;A8C187;
-    dw Spritemap_Powamp_Balloon_Inflating                                ;A8C189;
+    dw $0006,Spritemap_Powamp_Balloon_Inflating                          ;A8C187;
 
 InstList_Powamp_Balloon_Inflated:
-    dw $00A0                                                             ;A8C18B;
-    dw Spritemap_Powamp_Balloon_FullyInflated                            ;A8C18D;
+    dw $00A0,Spritemap_Powamp_Balloon_FullyInflated                      ;A8C18B;
     dw Instruction_Common_Sleep                                          ;A8C18F;
 
 InstList_Powamp_Balloon_StartSinking:
-    dw $0001                                                             ;A8C191;
-    dw Spritemap_Powamp_Balloon_FullyInflated                            ;A8C193;
-    dw $0006                                                             ;A8C195;
-    dw Spritemap_Powamp_Balloon_Inflating                                ;A8C197;
+    dw $0001,Spritemap_Powamp_Balloon_FullyInflated                      ;A8C191;
+    dw $0006,Spritemap_Powamp_Balloon_Inflating                          ;A8C195;
 
 InstList_Powamp_Balloon_Deflated:
-    dw $00A0                                                             ;A8C199;
-    dw Spritemap_Powamp_Balloon_Deflated                                 ;A8C19B;
+    dw $00A0,Spritemap_Powamp_Balloon_Deflated                           ;A8C199;
     dw Instruction_Common_Sleep                                          ;A8C19D;
 
 PowampTravelDistanceWhenNotGrappled:
     dw $0040                                                             ;A8C19F;
 
 PowampWiggleTable:
+; Wiggle table. X offsets applied for 5 frames each in a loop
     dw $0000,$0001,$0002,$0003,$0002,$0001,$0000,$FFFF                   ;A8C1A1;
     dw $FFFE,$FFFD,$FFFE,$FFFF                                           ;A8C1B1;
 
@@ -8119,12 +7086,13 @@ HandlePowampBalloonYOffset:
 .return:
     RTS                                                                  ;A8C276;
 
-
+; Balloon Y offsets. Indexed by animation frame into inflate/deflate instruction list
 .risingYOffsets:
     dw $FFF4,$FFF0,$FFEC                                                 ;A8C277;
 
 .sinkingYOffsets:
     dw $FFEC,$FFF0,$FFF4                                                 ;A8C27D;
+
 
 Function_Powamp_Deflated_Resting:
     DEC.W $0FB0,X                                                        ;A8C283;
@@ -8542,6 +7510,7 @@ Function_Powamp_FatalDamage:
 
 
 .instListPointers:
+; Pointers to animation frames in inflate instruction list
     dw InstList_Powamp_Balloon_Inflated                                  ;A8C599;
     dw InstList_Powamp_Balloon_Inflating                                 ;A8C59B;
     dw InstList_Powamp_Balloon_StartingToRise                            ;A8C59D;
@@ -8665,685 +7634,449 @@ PowerBombReaction_Powamp:
 
 
 Spritemap_Powamp_Body_CheeksLowered:
-    dw $0001,$81F8                                                       ;A8C675;
-    db $F8                                                               ;A8C679;
-    dw $2100                                                             ;A8C67A;
+    dw $0001                                                             ;A8C675;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
 
 Spritemap_Powamp_Body_CheeksLifting:
-    dw $0001,$81F8                                                       ;A8C67C;
-    db $F8                                                               ;A8C680;
-    dw $2102                                                             ;A8C681;
+    dw $0001                                                             ;A8C67C;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $102)
 
 Spritemap_Powamp_Body_CheeksRaised:
-    dw $0001,$81F8                                                       ;A8C683;
-    db $F8                                                               ;A8C687;
-    dw $2104                                                             ;A8C688;
+    dw $0001                                                             ;A8C683;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $104)
 
 Spritemap_Powamp_Balloon_Deflated:
-    dw $0001,$01FC                                                       ;A8C68A;
-    db $FC                                                               ;A8C68E;
-    dw $210E                                                             ;A8C68F;
+    dw $0001                                                             ;A8C68A;
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 0, $10E)
 
 Spritemap_Powamp_Balloon_Inflating:
-    dw $0001,$81F8                                                       ;A8C691;
-    db $F8                                                               ;A8C695;
-    dw $2106                                                             ;A8C696;
+    dw $0001                                                             ;A8C691;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $106)
 
 Spritemap_Powamp_Balloon_FullyInflated:
-    dw $0005,$0004                                                       ;A8C698;
-    db $04                                                               ;A8C69C;
-    dw $210D,$01FC                                                       ;A8C69D;
-    db $04                                                               ;A8C6A1;
-    dw $210C,$01F4                                                       ;A8C6A2;
-    db $04                                                               ;A8C6A6;
-    dw $210B,$81FC                                                       ;A8C6A7;
-    db $F4                                                               ;A8C6AB;
-    dw $2109,$81F4                                                       ;A8C6AC;
-    db $F4                                                               ;A8C6B0;
-    dw $2108                                                             ;A8C6B1;
+    dw $0005                                                             ;A8C698;
+    %spritemapEntry(0, $04, $04, 0, 0, 2, 0, $10D)
+    %spritemapEntry(0, $1FC, $04, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $1F4, $04, 0, 0, 2, 0, $10B)
+    %spritemapEntry(1, $1FC, $F4, 0, 0, 2, 0, $109)
+    %spritemapEntry(1, $1F4, $F4, 0, 0, 2, 0, $108)
+
 
 Palette_Robot:
     dw $3800,$57FF,$42F7,$0929,$00A5,$4F5A,$36B5,$2610                   ;A8C6B3;
     dw $1DCE,$001F,$0018,$000F,$0008,$000A,$03FF,$02B5                   ;A8C6C3;
 
 InstList_RobotNoPower_Neutral:
-    dw $7FFF                                                             ;A8C6D3;
-    dw Spritemap_Robot_19                                                ;A8C6D5;
+    dw $7FFF,Spritemap_Robot_19                                          ;A8C6D3;
     dw Instruction_Common_Sleep                                          ;A8C6D7;
 
 InstList_RobotNoPower_LeaningLeft:
-    dw $7FFF                                                             ;A8C6D9;
-    dw Spritemap_Robot_18                                                ;A8C6DB;
+    dw $7FFF,Spritemap_Robot_18                                          ;A8C6D9;
     dw Instruction_Common_Sleep                                          ;A8C6DD;
 
 InstList_RobotNoPower_LeaningRIght:
-    dw $7FFF                                                             ;A8C6DF;
-    dw Spritemap_Robot_1A                                                ;A8C6E1;
+    dw $7FFF,Spritemap_Robot_1A                                          ;A8C6DF;
     dw Instruction_CommonA8_Sleep                                        ;A8C6E3;
 
 InstList_Robot_Initial:
-    dw $0020                                                             ;A8C6E5;
-    dw Spritemap_Robot_1                                                 ;A8C6E7;
+    dw $0020,Spritemap_Robot_1                                           ;A8C6E5;
 
 InstList_Robot_FacingLeft_WalkingForwards_0:
-    dw $0001                                                             ;A8C6E9;
-    dw Spritemap_Robot_1                                                 ;A8C6EB;
+    dw $0001,Spritemap_Robot_1                                           ;A8C6E9;
 
 InstList_Robot_FacingLeft_WalkingForwards_1:
-    dw $000A                                                             ;A8C6ED;
-    dw Spritemap_Robot_1                                                 ;A8C6EF;
-    dw $0001                                                             ;A8C6F1;
-    dw Spritemap_Robot_2                                                 ;A8C6F3;
+    dw $000A,Spritemap_Robot_1                                           ;A8C6ED;
+    dw $0001,Spritemap_Robot_2                                           ;A8C6F1;
     dw Instruction_Robot_TryShootingLaserLeft                            ;A8C6F5;
-    dw $0009                                                             ;A8C6F7;
-    dw Spritemap_Robot_2                                                 ;A8C6F9;
-    dw $0001                                                             ;A8C6FB;
-    dw Spritemap_Robot_3                                                 ;A8C6FD;
+    dw $0009,Spritemap_Robot_2                                           ;A8C6F7;
+    dw $0001,Spritemap_Robot_3                                           ;A8C6FB;
     dw Instruction_Robot_TryShootingLaserUpLeft                          ;A8C6FF;
-    dw $0009                                                             ;A8C701;
-    dw Spritemap_Robot_3                                                 ;A8C703;
-    dw $000A                                                             ;A8C705;
-    dw Spritemap_Robot_4                                                 ;A8C707;
+    dw $0009,Spritemap_Robot_3                                           ;A8C701;
+    dw $000A,Spritemap_Robot_4                                           ;A8C705;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C709;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleWallOrFall         ;A8C70B;
-    dw $000A                                                             ;A8C70D;
-    dw Spritemap_Robot_5                                                 ;A8C70F;
+    dw $000A,Spritemap_Robot_5                                           ;A8C70D;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleWallOrFall         ;A8C711;
-    dw $000A                                                             ;A8C713;
-    dw Spritemap_Robot_6                                                 ;A8C715;
-    dw $000A                                                             ;A8C717;
-    dw Spritemap_Robot_7                                                 ;A8C719;
-    dw $000A                                                             ;A8C71B;
-    dw Spritemap_Robot_8                                                 ;A8C71D;
-    dw $000A                                                             ;A8C71F;
-    dw Spritemap_Robot_9                                                 ;A8C721;
-    dw $000A                                                             ;A8C723;
-    dw Spritemap_Robot_A                                                 ;A8C725;
+    dw $000A,Spritemap_Robot_6                                           ;A8C713;
+    dw $000A,Spritemap_Robot_7                                           ;A8C717;
+    dw $000A,Spritemap_Robot_8                                           ;A8C71B;
+    dw $000A,Spritemap_Robot_9                                           ;A8C71F;
+    dw $000A,Spritemap_Robot_A                                           ;A8C723;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleWallOrFall         ;A8C727;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C729;
-    dw $000A                                                             ;A8C72B;
-    dw Spritemap_Robot_B                                                 ;A8C72D;
+    dw $000A,Spritemap_Robot_B                                           ;A8C72B;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleWallOrFall         ;A8C72F;
-    dw $0001                                                             ;A8C731;
-    dw Spritemap_Robot_0                                                 ;A8C733;
+    dw $0001,Spritemap_Robot_0                                           ;A8C731;
     dw Instruction_Robot_TryShootingLaserDownLeft                        ;A8C735;
-    dw $0009                                                             ;A8C737;
-    dw Spritemap_Robot_0                                                 ;A8C739;
+    dw $0009,Spritemap_Robot_0                                           ;A8C737;
     dw Instruction_Common_GotoY                                          ;A8C73B;
     dw InstList_Robot_FacingLeft_WalkingForwards_1                       ;A8C73D;
 
 InstList_Robot_FacingLeft_HitWallMovingForwards:
-    dw $0001                                                             ;A8C73F;
-    dw Spritemap_Robot_B                                                 ;A8C741;
-    dw $000A                                                             ;A8C743;
-    dw Spritemap_Robot_B                                                 ;A8C745;
+    dw $0001,Spritemap_Robot_B                                           ;A8C73F;
+    dw $000A,Spritemap_Robot_B                                           ;A8C743;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C747;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C749;
-    dw $000A                                                             ;A8C74B;
-    dw Spritemap_Robot_A                                                 ;A8C74D;
-    dw $000A                                                             ;A8C74F;
-    dw Spritemap_Robot_9                                                 ;A8C751;
-    dw $000A                                                             ;A8C753;
-    dw Spritemap_Robot_8                                                 ;A8C755;
-    dw $000A                                                             ;A8C757;
-    dw Spritemap_Robot_7                                                 ;A8C759;
-    dw $000A                                                             ;A8C75B;
-    dw Spritemap_Robot_6                                                 ;A8C75D;
+    dw $000A,Spritemap_Robot_A                                           ;A8C74B;
+    dw $000A,Spritemap_Robot_9                                           ;A8C74F;
+    dw $000A,Spritemap_Robot_8                                           ;A8C753;
+    dw $000A,Spritemap_Robot_7                                           ;A8C757;
+    dw $000A,Spritemap_Robot_6                                           ;A8C75B;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C75F;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C761;
-    dw $000A                                                             ;A8C763;
-    dw Spritemap_Robot_5                                                 ;A8C765;
+    dw $000A,Spritemap_Robot_5                                           ;A8C763;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C767;
-    dw $000A                                                             ;A8C769;
-    dw Spritemap_Robot_4                                                 ;A8C76B;
-    dw $000A                                                             ;A8C76D;
-    dw Spritemap_Robot_3                                                 ;A8C76F;
-    dw $000A                                                             ;A8C771;
-    dw Spritemap_Robot_2                                                 ;A8C773;
-    dw $000A                                                             ;A8C775;
-    dw Spritemap_Robot_1                                                 ;A8C777;
-    dw $000A                                                             ;A8C779;
-    dw Spritemap_Robot_0                                                 ;A8C77B;
+    dw $000A,Spritemap_Robot_4                                           ;A8C769;
+    dw $000A,Spritemap_Robot_3                                           ;A8C76D;
+    dw $000A,Spritemap_Robot_2                                           ;A8C771;
+    dw $000A,Spritemap_Robot_1                                           ;A8C775;
+    dw $000A,Spritemap_Robot_0                                           ;A8C779;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C77D;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C77F;
-    dw $000A                                                             ;A8C781;
-    dw Spritemap_Robot_B                                                 ;A8C783;
+    dw $000A,Spritemap_Robot_B                                           ;A8C781;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C785;
-    dw $000A                                                             ;A8C787;
-    dw Spritemap_Robot_A                                                 ;A8C789;
-    dw $000A                                                             ;A8C78B;
-    dw Spritemap_Robot_9                                                 ;A8C78D;
-    dw $000A                                                             ;A8C78F;
-    dw Spritemap_Robot_8                                                 ;A8C791;
-    dw $000A                                                             ;A8C793;
-    dw Spritemap_Robot_7                                                 ;A8C795;
-    dw $000A                                                             ;A8C797;
-    dw Spritemap_Robot_6                                                 ;A8C799;
+    dw $000A,Spritemap_Robot_A                                           ;A8C787;
+    dw $000A,Spritemap_Robot_9                                           ;A8C78B;
+    dw $000A,Spritemap_Robot_8                                           ;A8C78F;
+    dw $000A,Spritemap_Robot_7                                           ;A8C793;
+    dw $000A,Spritemap_Robot_6                                           ;A8C797;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C79B;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C79D;
-    dw $000A                                                             ;A8C79F;
-    dw Spritemap_Robot_5                                                 ;A8C7A1;
+    dw $000A,Spritemap_Robot_5                                           ;A8C79F;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C7A3;
-    dw $000A                                                             ;A8C7A5;
-    dw Spritemap_Robot_4                                                 ;A8C7A7;
-    dw $000A                                                             ;A8C7A9;
-    dw Spritemap_Robot_3                                                 ;A8C7AB;
-    dw $000A                                                             ;A8C7AD;
-    dw Spritemap_Robot_2                                                 ;A8C7AF;
-    dw $000A                                                             ;A8C7B1;
-    dw Spritemap_Robot_1                                                 ;A8C7B3;
-    dw $000A                                                             ;A8C7B5;
-    dw Spritemap_Robot_0                                                 ;A8C7B7;
+    dw $000A,Spritemap_Robot_4                                           ;A8C7A5;
+    dw $000A,Spritemap_Robot_3                                           ;A8C7A9;
+    dw $000A,Spritemap_Robot_2                                           ;A8C7AD;
+    dw $000A,Spritemap_Robot_1                                           ;A8C7B1;
+    dw $000A,Spritemap_Robot_0                                           ;A8C7B5;
     dw Instruction_Robot_SetInstListTo_FacingRight_WalkingForwards       ;A8C7B9;
 
 InstList_Robot_FacingLeft_Shot_SamusIsAhead:
-    dw $0005                                                             ;A8C7BB;
-    dw Spritemap_Robot_B                                                 ;A8C7BD;
+    dw $0005,Spritemap_Robot_B                                           ;A8C7BB;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C7BF;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleHittingWall       ;A8C7C1;
-    dw $0005                                                             ;A8C7C3;
-    dw Spritemap_Robot_A                                                 ;A8C7C5;
-    dw $0005                                                             ;A8C7C7;
-    dw Spritemap_Robot_9                                                 ;A8C7C9;
-    dw $0005                                                             ;A8C7CB;
-    dw Spritemap_Robot_8                                                 ;A8C7CD;
-    dw $0005                                                             ;A8C7CF;
-    dw Spritemap_Robot_7                                                 ;A8C7D1;
-    dw $0005                                                             ;A8C7D3;
-    dw Spritemap_Robot_6                                                 ;A8C7D5;
+    dw $0005,Spritemap_Robot_A                                           ;A8C7C3;
+    dw $0005,Spritemap_Robot_9                                           ;A8C7C7;
+    dw $0005,Spritemap_Robot_8                                           ;A8C7CB;
+    dw $0005,Spritemap_Robot_7                                           ;A8C7CF;
+    dw $0005,Spritemap_Robot_6                                           ;A8C7D3;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C7D7;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleHittingWall       ;A8C7D9;
-    dw $0005                                                             ;A8C7DB;
-    dw Spritemap_Robot_5                                                 ;A8C7DD;
+    dw $0005,Spritemap_Robot_5                                           ;A8C7DB;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleHittingWall       ;A8C7DF;
-    dw $0005                                                             ;A8C7E1;
-    dw Spritemap_Robot_4                                                 ;A8C7E3;
-    dw $0005                                                             ;A8C7E5;
-    dw Spritemap_Robot_3                                                 ;A8C7E7;
-    dw $0005                                                             ;A8C7E9;
-    dw Spritemap_Robot_2                                                 ;A8C7EB;
-    dw $0005                                                             ;A8C7ED;
-    dw Spritemap_Robot_1                                                 ;A8C7EF;
-    dw $0005                                                             ;A8C7F1;
-    dw Spritemap_Robot_0                                                 ;A8C7F3;
+    dw $0005,Spritemap_Robot_4                                           ;A8C7E1;
+    dw $0005,Spritemap_Robot_3                                           ;A8C7E5;
+    dw $0005,Spritemap_Robot_2                                           ;A8C7E9;
+    dw $0005,Spritemap_Robot_1                                           ;A8C7ED;
+    dw $0005,Spritemap_Robot_0                                           ;A8C7F1;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleHittingWall       ;A8C7F5;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C7F7;
-    dw $0005                                                             ;A8C7F9;
-    dw Spritemap_Robot_B                                                 ;A8C7FB;
+    dw $0005,Spritemap_Robot_B                                           ;A8C7F9;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleHittingWall       ;A8C7FD;
-    dw $0005                                                             ;A8C7FF;
-    dw Spritemap_Robot_A                                                 ;A8C801;
-    dw $0005                                                             ;A8C803;
-    dw Spritemap_Robot_9                                                 ;A8C805;
-    dw $0005                                                             ;A8C807;
-    dw Spritemap_Robot_8                                                 ;A8C809;
-    dw $0005                                                             ;A8C80B;
-    dw Spritemap_Robot_7                                                 ;A8C80D;
-    dw $0005                                                             ;A8C80F;
-    dw Spritemap_Robot_6                                                 ;A8C811;
+    dw $0005,Spritemap_Robot_A                                           ;A8C7FF;
+    dw $0005,Spritemap_Robot_9                                           ;A8C803;
+    dw $0005,Spritemap_Robot_8                                           ;A8C807;
+    dw $0005,Spritemap_Robot_7                                           ;A8C80B;
+    dw $0005,Spritemap_Robot_6                                           ;A8C80F;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C813;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleHittingWall       ;A8C815;
-    dw $0005                                                             ;A8C817;
-    dw Spritemap_Robot_5                                                 ;A8C819;
+    dw $0005,Spritemap_Robot_5                                           ;A8C817;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleHittingWall       ;A8C81B;
-    dw $0005                                                             ;A8C81D;
-    dw Spritemap_Robot_4                                                 ;A8C81F;
-    dw $0005                                                             ;A8C821;
-    dw Spritemap_Robot_3                                                 ;A8C823;
-    dw $0005                                                             ;A8C825;
-    dw Spritemap_Robot_2                                                 ;A8C827;
-    dw $0005                                                             ;A8C829;
-    dw Spritemap_Robot_1                                                 ;A8C82B;
-    dw $0005                                                             ;A8C82D;
-    dw Spritemap_Robot_0                                                 ;A8C82F;
+    dw $0005,Spritemap_Robot_4                                           ;A8C81D;
+    dw $0005,Spritemap_Robot_3                                           ;A8C821;
+    dw $0005,Spritemap_Robot_2                                           ;A8C825;
+    dw $0005,Spritemap_Robot_1                                           ;A8C829;
+    dw $0005,Spritemap_Robot_0                                           ;A8C82D;
     dw Instruction_Robot_SetInstListTo_FacingRight_WalkingForwards       ;A8C831;
 
 InstList_Robot_FacingLeft_Shot_SamusIsBehind:
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C833;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall        ;A8C835;
-    dw $0005                                                             ;A8C837;
-    dw Spritemap_Robot_1                                                 ;A8C839;
-    dw $0005                                                             ;A8C83B;
-    dw Spritemap_Robot_2                                                 ;A8C83D;
-    dw $0005                                                             ;A8C83F;
-    dw Spritemap_Robot_3                                                 ;A8C841;
-    dw $0005                                                             ;A8C843;
-    dw Spritemap_Robot_4                                                 ;A8C845;
+    dw $0005,Spritemap_Robot_1                                           ;A8C837;
+    dw $0005,Spritemap_Robot_2                                           ;A8C83B;
+    dw $0005,Spritemap_Robot_3                                           ;A8C83F;
+    dw $0005,Spritemap_Robot_4                                           ;A8C843;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C847;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall        ;A8C849;
-    dw $0005                                                             ;A8C84B;
-    dw Spritemap_Robot_5                                                 ;A8C84D;
+    dw $0005,Spritemap_Robot_5                                           ;A8C84B;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall        ;A8C84F;
-    dw $0005                                                             ;A8C851;
-    dw Spritemap_Robot_6                                                 ;A8C853;
-    dw $0005                                                             ;A8C855;
-    dw Spritemap_Robot_7                                                 ;A8C857;
-    dw $0005                                                             ;A8C859;
-    dw Spritemap_Robot_8                                                 ;A8C85B;
-    dw $0005                                                             ;A8C85D;
-    dw Spritemap_Robot_9                                                 ;A8C85F;
-    dw $0005                                                             ;A8C861;
-    dw Spritemap_Robot_A                                                 ;A8C863;
+    dw $0005,Spritemap_Robot_6                                           ;A8C851;
+    dw $0005,Spritemap_Robot_7                                           ;A8C855;
+    dw $0005,Spritemap_Robot_8                                           ;A8C859;
+    dw $0005,Spritemap_Robot_9                                           ;A8C85D;
+    dw $0005,Spritemap_Robot_A                                           ;A8C861;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall        ;A8C865;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C867;
-    dw $0005                                                             ;A8C869;
-    dw Spritemap_Robot_B                                                 ;A8C86B;
+    dw $0005,Spritemap_Robot_B                                           ;A8C869;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall        ;A8C86D;
-    dw $0005                                                             ;A8C86F;
-    dw Spritemap_Robot_0                                                 ;A8C871;
-    dw $0005                                                             ;A8C873;
-    dw Spritemap_Robot_1                                                 ;A8C875;
-    dw $0005                                                             ;A8C877;
-    dw Spritemap_Robot_2                                                 ;A8C879;
-    dw $0005                                                             ;A8C87B;
-    dw Spritemap_Robot_3                                                 ;A8C87D;
-    dw $0005                                                             ;A8C87F;
-    dw Spritemap_Robot_4                                                 ;A8C881;
+    dw $0005,Spritemap_Robot_0                                           ;A8C86F;
+    dw $0005,Spritemap_Robot_1                                           ;A8C873;
+    dw $0005,Spritemap_Robot_2                                           ;A8C877;
+    dw $0005,Spritemap_Robot_3                                           ;A8C87B;
+    dw $0005,Spritemap_Robot_4                                           ;A8C87F;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C883;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall        ;A8C885;
-    dw $0005                                                             ;A8C887;
-    dw Spritemap_Robot_5                                                 ;A8C889;
+    dw $0005,Spritemap_Robot_5                                           ;A8C887;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall        ;A8C88B;
-    dw $0005                                                             ;A8C88D;
-    dw Spritemap_Robot_6                                                 ;A8C88F;
-    dw $0005                                                             ;A8C891;
-    dw Spritemap_Robot_7                                                 ;A8C893;
-    dw $0005                                                             ;A8C895;
-    dw Spritemap_Robot_8                                                 ;A8C897;
-    dw $0005                                                             ;A8C899;
-    dw Spritemap_Robot_9                                                 ;A8C89B;
-    dw $0005                                                             ;A8C89D;
-    dw Spritemap_Robot_A                                                 ;A8C89F;
+    dw $0005,Spritemap_Robot_6                                           ;A8C88D;
+    dw $0005,Spritemap_Robot_7                                           ;A8C891;
+    dw $0005,Spritemap_Robot_8                                           ;A8C895;
+    dw $0005,Spritemap_Robot_9                                           ;A8C899;
+    dw $0005,Spritemap_Robot_A                                           ;A8C89D;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall        ;A8C8A1;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C8A3;
-    dw $0005                                                             ;A8C8A5;
-    dw Spritemap_Robot_B                                                 ;A8C8A7;
+    dw $0005,Spritemap_Robot_B                                           ;A8C8A5;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall        ;A8C8A9;
-    dw $0005                                                             ;A8C8AB;
-    dw Spritemap_Robot_0                                                 ;A8C8AD;
+    dw $0005,Spritemap_Robot_0                                           ;A8C8AB;
     dw Instruction_Robot_Goto_FacingLeft_WalkingForwards                 ;A8C8AF;
 
 InstList_Robot_FacingLeft_ShotLaserDownLeft:
-    dw $0005                                                             ;A8C8B1;
-    dw Spritemap_Robot_0                                                 ;A8C8B3;
-    dw $0002                                                             ;A8C8B5;
-    dw Spritemap_Robot_B                                                 ;A8C8B7;
+    dw $0005,Spritemap_Robot_0                                           ;A8C8B1;
+    dw $0002,Spritemap_Robot_B                                           ;A8C8B5;
     dw Instruction_Common_GotoY                                          ;A8C8B9;
     dw InstList_Robot_FacingLeft_LaserShotRecoil                         ;A8C8BB;
 
 InstList_Robot_FacingLeft_ShotLaserLeft:
-    dw $0005                                                             ;A8C8BD;
-    dw Spritemap_Robot_1                                                 ;A8C8BF;
-    dw $0002                                                             ;A8C8C1;
-    dw Spritemap_Robot_0                                                 ;A8C8C3;
+    dw $0005,Spritemap_Robot_1                                           ;A8C8BD;
+    dw $0002,Spritemap_Robot_0                                           ;A8C8C1;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C8C5;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C8C7;
-    dw $000A                                                             ;A8C8C9;
-    dw Spritemap_Robot_B                                                 ;A8C8CB;
+    dw $000A,Spritemap_Robot_B                                           ;A8C8C9;
     dw Instruction_Common_GotoY                                          ;A8C8CD;
     dw InstList_Robot_FacingLeft_LaserShotRecoil                         ;A8C8CF;
 
 InstList_Robot_FacingLeft_ShotLaserUpLeft:
-    dw $0005                                                             ;A8C8D1;
-    dw Spritemap_Robot_3                                                 ;A8C8D3;
-    dw $0002                                                             ;A8C8D5;
-    dw Spritemap_Robot_2                                                 ;A8C8D7;
-    dw $0002                                                             ;A8C8D9;
-    dw Spritemap_Robot_1                                                 ;A8C8DB;
-    dw $0004                                                             ;A8C8DD;
-    dw Spritemap_Robot_0                                                 ;A8C8DF;
+    dw $0005,Spritemap_Robot_3                                           ;A8C8D1;
+    dw $0002,Spritemap_Robot_2                                           ;A8C8D5;
+    dw $0002,Spritemap_Robot_1                                           ;A8C8D9;
+    dw $0004,Spritemap_Robot_0                                           ;A8C8DD;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C8E1;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C8E3;
-    dw $0004                                                             ;A8C8E5;
-    dw Spritemap_Robot_B                                                 ;A8C8E7;
+    dw $0004,Spritemap_Robot_B                                           ;A8C8E5;
 
 InstList_Robot_FacingLeft_LaserShotRecoil:
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C8E9;
-    dw $0010                                                             ;A8C8EB;
-    dw Spritemap_Robot_A                                                 ;A8C8ED;
-    dw $0005                                                             ;A8C8EF;
-    dw Spritemap_Robot_9                                                 ;A8C8F1;
-    dw $0005                                                             ;A8C8F3;
-    dw Spritemap_Robot_8                                                 ;A8C8F5;
-    dw $0005                                                             ;A8C8F7;
-    dw Spritemap_Robot_7                                                 ;A8C8F9;
-    dw $0005                                                             ;A8C8FB;
-    dw Spritemap_Robot_6                                                 ;A8C8FD;
+    dw $0010,Spritemap_Robot_A                                           ;A8C8EB;
+    dw $0005,Spritemap_Robot_9                                           ;A8C8EF;
+    dw $0005,Spritemap_Robot_8                                           ;A8C8F3;
+    dw $0005,Spritemap_Robot_7                                           ;A8C8F7;
+    dw $0005,Spritemap_Robot_6                                           ;A8C8FB;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C8FF;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C901;
-    dw $000A                                                             ;A8C903;
-    dw Spritemap_Robot_5                                                 ;A8C905;
+    dw $000A,Spritemap_Robot_5                                           ;A8C903;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C907;
-    dw $000A                                                             ;A8C909;
-    dw Spritemap_Robot_4                                                 ;A8C90B;
-    dw $000A                                                             ;A8C90D;
-    dw Spritemap_Robot_3                                                 ;A8C90F;
-    dw $0060                                                             ;A8C911;
-    dw Spritemap_Robot_2                                                 ;A8C913;
+    dw $000A,Spritemap_Robot_4                                           ;A8C909;
+    dw $000A,Spritemap_Robot_3                                           ;A8C90D;
+    dw $0060,Spritemap_Robot_2                                           ;A8C911;
     dw Instruction_Robot_DecrementLaserCooldown                          ;A8C915;
     dw Instruction_CommonA8_GotoY                                        ;A8C917;
     dw InstList_Robot_FacingLeft_WalkingForwards_0                       ;A8C919;
 
 InstList_Robot_ApproachingAFallToTheRight:
-    dw $0080                                                             ;A8C91B;
-    dw Spritemap_Robot_C                                                 ;A8C91D;
-    dw $000A                                                             ;A8C91F;
-    dw Spritemap_Robot_D                                                 ;A8C921;
-    dw $000A                                                             ;A8C923;
-    dw Spritemap_Robot_E                                                 ;A8C925;
+    dw $0080,Spritemap_Robot_C                                           ;A8C91B;
+    dw $000A,Spritemap_Robot_D                                           ;A8C91F;
+    dw $000A,Spritemap_Robot_E                                           ;A8C923;
     dw Instruction_Robot_DecrementLaserCooldown                          ;A8C927;
     dw Instruction_Common_GotoY                                          ;A8C929;
     dw InstList_Robot_FacingLeft_WalkingForwards_0                       ;A8C92B;
 
 InstList_Robot_FacingRight_WalkingForwards_0:
-    dw $0001                                                             ;A8C92D;
-    dw Spritemap_Robot_C                                                 ;A8C92F;
+    dw $0001,Spritemap_Robot_C                                           ;A8C92D;
 
 InstList_Robot_FacingRight_WalkingForwards_1:
-    dw $0001                                                             ;A8C931;
-    dw Spritemap_Robot_C                                                 ;A8C933;
+    dw $0001,Spritemap_Robot_C                                           ;A8C931;
     dw Instruction_Robot_TryShootingLaserDownRight                       ;A8C935;
-    dw $0009                                                             ;A8C937;
-    dw Spritemap_Robot_C                                                 ;A8C939;
+    dw $0009,Spritemap_Robot_C                                           ;A8C937;
     dw Instruction_Robot_DecrementLaserCooldown                          ;A8C93B;
-    dw $000A                                                             ;A8C93D;
-    dw Spritemap_Robot_D                                                 ;A8C93F;
-    dw $0001                                                             ;A8C941;
-    dw Spritemap_Robot_E                                                 ;A8C943;
+    dw $000A,Spritemap_Robot_D                                           ;A8C93D;
+    dw $0001,Spritemap_Robot_E                                           ;A8C941;
     dw Instruction_Robot_TryShootingLaserRight                           ;A8C945;
-    dw $0009                                                             ;A8C947;
-    dw Spritemap_Robot_E                                                 ;A8C949;
-    dw $0001                                                             ;A8C94B;
-    dw Spritemap_Robot_F                                                 ;A8C94D;
+    dw $0009,Spritemap_Robot_E                                           ;A8C947;
+    dw $0001,Spritemap_Robot_F                                           ;A8C94B;
     dw Instruction_Robot_TryShootingLaserUpRight                         ;A8C94F;
-    dw $0009                                                             ;A8C951;
-    dw Spritemap_Robot_F                                                 ;A8C953;
-    dw $000A                                                             ;A8C955;
-    dw Spritemap_Robot_10                                                ;A8C957;
+    dw $0009,Spritemap_Robot_F                                           ;A8C951;
+    dw $000A,Spritemap_Robot_10                                          ;A8C955;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C959;
     dw Instruction_Robot_FacingRight_MoveForward_HandleWallOrFall        ;A8C95B;
-    dw $000A                                                             ;A8C95D;
-    dw Spritemap_Robot_11                                                ;A8C95F;
+    dw $000A,Spritemap_Robot_11                                          ;A8C95D;
     dw Instruction_Robot_FacingRight_MoveForward_HandleWallOrFall        ;A8C961;
-    dw $000A                                                             ;A8C963;
-    dw Spritemap_Robot_12                                                ;A8C965;
-    dw $000A                                                             ;A8C967;
-    dw Spritemap_Robot_13                                                ;A8C969;
-    dw $000A                                                             ;A8C96B;
-    dw Spritemap_Robot_14                                                ;A8C96D;
-    dw $000A                                                             ;A8C96F;
-    dw Spritemap_Robot_15                                                ;A8C971;
-    dw $000A                                                             ;A8C973;
-    dw Spritemap_Robot_16                                                ;A8C975;
+    dw $000A,Spritemap_Robot_12                                          ;A8C963;
+    dw $000A,Spritemap_Robot_13                                          ;A8C967;
+    dw $000A,Spritemap_Robot_14                                          ;A8C96B;
+    dw $000A,Spritemap_Robot_15                                          ;A8C96F;
+    dw $000A,Spritemap_Robot_16                                          ;A8C973;
     dw Instruction_Robot_FacingRight_MoveForward_HandleWallOrFall        ;A8C977;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C979;
-    dw $000A                                                             ;A8C97B;
-    dw Spritemap_Robot_17                                                ;A8C97D;
+    dw $000A,Spritemap_Robot_17                                          ;A8C97B;
     dw Instruction_Robot_FacingRight_MoveForward_HandleWallOrFall        ;A8C97F;
     dw Instruction_Common_GotoY                                          ;A8C981;
     dw InstList_Robot_FacingRight_WalkingForwards_1                      ;A8C983;
 
 InstList_Robot_FacingRight_HitWallMovingForwards:
-    dw $0001                                                             ;A8C985;
-    dw Spritemap_Robot_17                                                ;A8C987;
-    dw $000A                                                             ;A8C989;
-    dw Spritemap_Robot_17                                                ;A8C98B;
+    dw $0001,Spritemap_Robot_17                                          ;A8C985;
+    dw $000A,Spritemap_Robot_17                                          ;A8C989;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C98D;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8C98F;
-    dw $000A                                                             ;A8C991;
-    dw Spritemap_Robot_16                                                ;A8C993;
-    dw $000A                                                             ;A8C995;
-    dw Spritemap_Robot_15                                                ;A8C997;
-    dw $000A                                                             ;A8C999;
-    dw Spritemap_Robot_14                                                ;A8C99B;
-    dw $000A                                                             ;A8C99D;
-    dw Spritemap_Robot_13                                                ;A8C99F;
-    dw $000A                                                             ;A8C9A1;
-    dw Spritemap_Robot_12                                                ;A8C9A3;
+    dw $000A,Spritemap_Robot_16                                          ;A8C991;
+    dw $000A,Spritemap_Robot_15                                          ;A8C995;
+    dw $000A,Spritemap_Robot_14                                          ;A8C999;
+    dw $000A,Spritemap_Robot_13                                          ;A8C99D;
+    dw $000A,Spritemap_Robot_12                                          ;A8C9A1;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C9A5;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8C9A7;
-    dw $000A                                                             ;A8C9A9;
-    dw Spritemap_Robot_11                                                ;A8C9AB;
+    dw $000A,Spritemap_Robot_11                                          ;A8C9A9;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8C9AD;
-    dw $000A                                                             ;A8C9AF;
-    dw Spritemap_Robot_10                                                ;A8C9B1;
-    dw $000A                                                             ;A8C9B3;
-    dw Spritemap_Robot_F                                                 ;A8C9B5;
-    dw $000A                                                             ;A8C9B7;
-    dw Spritemap_Robot_E                                                 ;A8C9B9;
-    dw $000A                                                             ;A8C9BB;
-    dw Spritemap_Robot_D                                                 ;A8C9BD;
-    dw $000A                                                             ;A8C9BF;
-    dw Spritemap_Robot_C                                                 ;A8C9C1;
+    dw $000A,Spritemap_Robot_10                                          ;A8C9AF;
+    dw $000A,Spritemap_Robot_F                                           ;A8C9B3;
+    dw $000A,Spritemap_Robot_E                                           ;A8C9B7;
+    dw $000A,Spritemap_Robot_D                                           ;A8C9BB;
+    dw $000A,Spritemap_Robot_C                                           ;A8C9BF;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C9C3;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8C9C5;
-    dw $000A                                                             ;A8C9C7;
-    dw Spritemap_Robot_17                                                ;A8C9C9;
+    dw $000A,Spritemap_Robot_17                                          ;A8C9C7;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8C9CB;
-    dw $000A                                                             ;A8C9CD;
-    dw Spritemap_Robot_16                                                ;A8C9CF;
-    dw $000A                                                             ;A8C9D1;
-    dw Spritemap_Robot_15                                                ;A8C9D3;
-    dw $000A                                                             ;A8C9D5;
-    dw Spritemap_Robot_14                                                ;A8C9D7;
-    dw $000A                                                             ;A8C9D9;
-    dw Spritemap_Robot_13                                                ;A8C9DB;
-    dw $000A                                                             ;A8C9DD;
-    dw Spritemap_Robot_12                                                ;A8C9DF;
+    dw $000A,Spritemap_Robot_16                                          ;A8C9CD;
+    dw $000A,Spritemap_Robot_15                                          ;A8C9D1;
+    dw $000A,Spritemap_Robot_14                                          ;A8C9D5;
+    dw $000A,Spritemap_Robot_13                                          ;A8C9D9;
+    dw $000A,Spritemap_Robot_12                                          ;A8C9DD;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C9E1;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8C9E3;
-    dw $000A                                                             ;A8C9E5;
-    dw Spritemap_Robot_11                                                ;A8C9E7;
+    dw $000A,Spritemap_Robot_11                                          ;A8C9E5;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8C9E9;
-    dw $000A                                                             ;A8C9EB;
-    dw Spritemap_Robot_10                                                ;A8C9ED;
-    dw $000A                                                             ;A8C9EF;
-    dw Spritemap_Robot_F                                                 ;A8C9F1;
-    dw $000A                                                             ;A8C9F3;
-    dw Spritemap_Robot_E                                                 ;A8C9F5;
-    dw $000A                                                             ;A8C9F7;
-    dw Spritemap_Robot_D                                                 ;A8C9F9;
-    dw $000A                                                             ;A8C9FB;
-    dw Spritemap_Robot_C                                                 ;A8C9FD;
+    dw $000A,Spritemap_Robot_10                                          ;A8C9EB;
+    dw $000A,Spritemap_Robot_F                                           ;A8C9EF;
+    dw $000A,Spritemap_Robot_E                                           ;A8C9F3;
+    dw $000A,Spritemap_Robot_D                                           ;A8C9F7;
+    dw $000A,Spritemap_Robot_C                                           ;A8C9FB;
     dw Instruction_Robot_Goto_FacingLeft_WalkingForwards                 ;A8C9FF;
 
 InstList_Robot_FacingRight_Shot_SamusIsAhead:
-    dw $0001                                                             ;A8CA01;
-    dw Spritemap_Robot_17                                                ;A8CA03;
-    dw $0005                                                             ;A8CA05;
-    dw Spritemap_Robot_17                                                ;A8CA07;
+    dw $0001,Spritemap_Robot_17                                          ;A8CA01;
+    dw $0005,Spritemap_Robot_17                                          ;A8CA05;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CA09;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleHittingWall      ;A8CA0B;
-    dw $0005                                                             ;A8CA0D;
-    dw Spritemap_Robot_16                                                ;A8CA0F;
-    dw $0005                                                             ;A8CA11;
-    dw Spritemap_Robot_15                                                ;A8CA13;
-    dw $0005                                                             ;A8CA15;
-    dw Spritemap_Robot_14                                                ;A8CA17;
-    dw $0005                                                             ;A8CA19;
-    dw Spritemap_Robot_13                                                ;A8CA1B;
-    dw $0005                                                             ;A8CA1D;
-    dw Spritemap_Robot_12                                                ;A8CA1F;
+    dw $0005,Spritemap_Robot_16                                          ;A8CA0D;
+    dw $0005,Spritemap_Robot_15                                          ;A8CA11;
+    dw $0005,Spritemap_Robot_14                                          ;A8CA15;
+    dw $0005,Spritemap_Robot_13                                          ;A8CA19;
+    dw $0005,Spritemap_Robot_12                                          ;A8CA1D;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CA21;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleHittingWall      ;A8CA23;
-    dw $0005                                                             ;A8CA25;
-    dw Spritemap_Robot_11                                                ;A8CA27;
+    dw $0005,Spritemap_Robot_11                                          ;A8CA25;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleHittingWall      ;A8CA29;
-    dw $0005                                                             ;A8CA2B;
-    dw Spritemap_Robot_10                                                ;A8CA2D;
-    dw $0005                                                             ;A8CA2F;
-    dw Spritemap_Robot_F                                                 ;A8CA31;
-    dw $0005                                                             ;A8CA33;
-    dw Spritemap_Robot_E                                                 ;A8CA35;
-    dw $0005                                                             ;A8CA37;
-    dw Spritemap_Robot_D                                                 ;A8CA39;
-    dw $0005                                                             ;A8CA3B;
-    dw Spritemap_Robot_C                                                 ;A8CA3D;
+    dw $0005,Spritemap_Robot_10                                          ;A8CA2B;
+    dw $0005,Spritemap_Robot_F                                           ;A8CA2F;
+    dw $0005,Spritemap_Robot_E                                           ;A8CA33;
+    dw $0005,Spritemap_Robot_D                                           ;A8CA37;
+    dw $0005,Spritemap_Robot_C                                           ;A8CA3B;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleHittingWall      ;A8CA3F;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CA41;
-    dw $0005                                                             ;A8CA43;
-    dw Spritemap_Robot_17                                                ;A8CA45;
+    dw $0005,Spritemap_Robot_17                                          ;A8CA43;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleHittingWall      ;A8CA47;
-    dw $0005                                                             ;A8CA49;
-    dw Spritemap_Robot_16                                                ;A8CA4B;
-    dw $0005                                                             ;A8CA4D;
-    dw Spritemap_Robot_15                                                ;A8CA4F;
-    dw $0005                                                             ;A8CA51;
-    dw Spritemap_Robot_14                                                ;A8CA53;
-    dw $0005                                                             ;A8CA55;
-    dw Spritemap_Robot_13                                                ;A8CA57;
-    dw $0005                                                             ;A8CA59;
-    dw Spritemap_Robot_12                                                ;A8CA5B;
+    dw $0005,Spritemap_Robot_16                                          ;A8CA49;
+    dw $0005,Spritemap_Robot_15                                          ;A8CA4D;
+    dw $0005,Spritemap_Robot_14                                          ;A8CA51;
+    dw $0005,Spritemap_Robot_13                                          ;A8CA55;
+    dw $0005,Spritemap_Robot_12                                          ;A8CA59;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CA5D;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleHittingWall      ;A8CA5F;
-    dw $000A                                                             ;A8CA61;
-    dw Spritemap_Robot_11                                                ;A8CA63;
+    dw $000A,Spritemap_Robot_11                                          ;A8CA61;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleHittingWall      ;A8CA65;
-    dw $0005                                                             ;A8CA67;
-    dw Spritemap_Robot_10                                                ;A8CA69;
-    dw $0005                                                             ;A8CA6B;
-    dw Spritemap_Robot_F                                                 ;A8CA6D;
-    dw $0005                                                             ;A8CA6F;
-    dw Spritemap_Robot_E                                                 ;A8CA71;
-    dw $0005                                                             ;A8CA73;
-    dw Spritemap_Robot_D                                                 ;A8CA75;
-    dw $0005                                                             ;A8CA77;
-    dw Spritemap_Robot_C                                                 ;A8CA79;
+    dw $0005,Spritemap_Robot_10                                          ;A8CA67;
+    dw $0005,Spritemap_Robot_F                                           ;A8CA6B;
+    dw $0005,Spritemap_Robot_E                                           ;A8CA6F;
+    dw $0005,Spritemap_Robot_D                                           ;A8CA73;
+    dw $0005,Spritemap_Robot_C                                           ;A8CA77;
     dw Instruction_Robot_Goto_FacingLeft_WalkingForwards                 ;A8CA7B;
 
 InstList_Robot_FacingRight_Shot_SamusIsBehind:
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CA7D;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CA7F;
-    dw $0005                                                             ;A8CA81;
-    dw Spritemap_Robot_C                                                 ;A8CA83;
-    dw $0005                                                             ;A8CA85;
-    dw Spritemap_Robot_D                                                 ;A8CA87;
-    dw $0005                                                             ;A8CA89;
-    dw Spritemap_Robot_E                                                 ;A8CA8B;
-    dw $0005                                                             ;A8CA8D;
-    dw Spritemap_Robot_F                                                 ;A8CA8F;
-    dw $0005                                                             ;A8CA91;
-    dw Spritemap_Robot_10                                                ;A8CA93;
+    dw $0005,Spritemap_Robot_C                                           ;A8CA81;
+    dw $0005,Spritemap_Robot_D                                           ;A8CA85;
+    dw $0005,Spritemap_Robot_E                                           ;A8CA89;
+    dw $0005,Spritemap_Robot_F                                           ;A8CA8D;
+    dw $0005,Spritemap_Robot_10                                          ;A8CA91;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CA95;
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CA97;
-    dw $0005                                                             ;A8CA99;
-    dw Spritemap_Robot_11                                                ;A8CA9B;
+    dw $0005,Spritemap_Robot_11                                          ;A8CA99;
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CA9D;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CA9F;
-    dw $0005                                                             ;A8CAA1;
-    dw Spritemap_Robot_12                                                ;A8CAA3;
-    dw $0005                                                             ;A8CAA5;
-    dw Spritemap_Robot_13                                                ;A8CAA7;
-    dw $0005                                                             ;A8CAA9;
-    dw Spritemap_Robot_14                                                ;A8CAAB;
-    dw $0005                                                             ;A8CAAD;
-    dw Spritemap_Robot_15                                                ;A8CAAF;
-    dw $0005                                                             ;A8CAB1;
-    dw Spritemap_Robot_16                                                ;A8CAB3;
+    dw $0005,Spritemap_Robot_12                                          ;A8CAA1;
+    dw $0005,Spritemap_Robot_13                                          ;A8CAA5;
+    dw $0005,Spritemap_Robot_14                                          ;A8CAA9;
+    dw $0005,Spritemap_Robot_15                                          ;A8CAAD;
+    dw $0005,Spritemap_Robot_16                                          ;A8CAB1;
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CAB5;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CAB7;
-    dw $0005                                                             ;A8CAB9;
-    dw Spritemap_Robot_17                                                ;A8CABB;
+    dw $0005,Spritemap_Robot_17                                          ;A8CAB9;
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CABD;
-    dw $0005                                                             ;A8CABF;
-    dw Spritemap_Robot_C                                                 ;A8CAC1;
-    dw $0005                                                             ;A8CAC3;
-    dw Spritemap_Robot_D                                                 ;A8CAC5;
-    dw $0005                                                             ;A8CAC7;
-    dw Spritemap_Robot_E                                                 ;A8CAC9;
-    dw $0005                                                             ;A8CACB;
-    dw Spritemap_Robot_F                                                 ;A8CACD;
-    dw $0005                                                             ;A8CACF;
-    dw Spritemap_Robot_10                                                ;A8CAD1;
+    dw $0005,Spritemap_Robot_C                                           ;A8CABF;
+    dw $0005,Spritemap_Robot_D                                           ;A8CAC3;
+    dw $0005,Spritemap_Robot_E                                           ;A8CAC7;
+    dw $0005,Spritemap_Robot_F                                           ;A8CACB;
+    dw $0005,Spritemap_Robot_10                                          ;A8CACF;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CAD3;
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CAD5;
-    dw $0005                                                             ;A8CAD7;
-    dw Spritemap_Robot_11                                                ;A8CAD9;
+    dw $0005,Spritemap_Robot_11                                          ;A8CAD7;
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CADB;
-    dw $0005                                                             ;A8CADD;
-    dw Spritemap_Robot_12                                                ;A8CADF;
-    dw $0005                                                             ;A8CAE1;
-    dw Spritemap_Robot_13                                                ;A8CAE3;
-    dw $0005                                                             ;A8CAE5;
-    dw Spritemap_Robot_14                                                ;A8CAE7;
-    dw $0005                                                             ;A8CAE9;
-    dw Spritemap_Robot_15                                                ;A8CAEB;
-    dw $0005                                                             ;A8CAED;
-    dw Spritemap_Robot_16                                                ;A8CAEF;
+    dw $0005,Spritemap_Robot_12                                          ;A8CADD;
+    dw $0005,Spritemap_Robot_13                                          ;A8CAE1;
+    dw $0005,Spritemap_Robot_14                                          ;A8CAE5;
+    dw $0005,Spritemap_Robot_15                                          ;A8CAE9;
+    dw $0005,Spritemap_Robot_16                                          ;A8CAED;
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CAF1;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CAF3;
-    dw $0005                                                             ;A8CAF5;
-    dw Spritemap_Robot_17                                                ;A8CAF7;
+    dw $0005,Spritemap_Robot_17                                          ;A8CAF5;
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CAF9;
     dw Instruction_Robot_SetInstListTo_FacingRight_WalkingForwards       ;A8CAFB;
 
 InstList_Robot_FacingRight_ShotLaserDownRight:
-    dw $0005                                                             ;A8CAFD;
-    dw Spritemap_Robot_C                                                 ;A8CAFF;
-    dw $0002                                                             ;A8CB01;
-    dw Spritemap_Robot_17                                                ;A8CB03;
+    dw $0005,Spritemap_Robot_C                                           ;A8CAFD;
+    dw $0002,Spritemap_Robot_17                                          ;A8CB01;
     dw Instruction_Common_GotoY                                          ;A8CB05;
     dw InstList_Robot_FacingRight_LaserShotRecoil                        ;A8CB07;
 
 InstList_Robot_FacingRight_ShotLaserRight:
-    dw $0005                                                             ;A8CB09;
-    dw Spritemap_Robot_D                                                 ;A8CB0B;
-    dw $0002                                                             ;A8CB0D;
-    dw Spritemap_Robot_C                                                 ;A8CB0F;
+    dw $0005,Spritemap_Robot_D                                           ;A8CB09;
+    dw $0002,Spritemap_Robot_C                                           ;A8CB0D;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CB11;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8CB13;
-    dw $000A                                                             ;A8CB15;
-    dw Spritemap_Robot_17                                                ;A8CB17;
+    dw $000A,Spritemap_Robot_17                                          ;A8CB15;
     dw Instruction_Common_GotoY                                          ;A8CB19;
     dw InstList_Robot_FacingRight_LaserShotRecoil                        ;A8CB1B;
 
 InstList_Robot_FacingRight_ShotLaserUpRight:
-    dw $0005                                                             ;A8CB1D;
-    dw Spritemap_Robot_F                                                 ;A8CB1F;
-    dw $0002                                                             ;A8CB21;
-    dw Spritemap_Robot_E                                                 ;A8CB23;
-    dw $0002                                                             ;A8CB25;
-    dw Spritemap_Robot_D                                                 ;A8CB27;
-    dw $0004                                                             ;A8CB29;
-    dw Spritemap_Robot_C                                                 ;A8CB2B;
+    dw $0005,Spritemap_Robot_F                                           ;A8CB1D;
+    dw $0002,Spritemap_Robot_E                                           ;A8CB21;
+    dw $0002,Spritemap_Robot_D                                           ;A8CB25;
+    dw $0004,Spritemap_Robot_C                                           ;A8CB29;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CB2D;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8CB2F;
-    dw $0004                                                             ;A8CB31;
-    dw Spritemap_Robot_17                                                ;A8CB33;
+    dw $0004,Spritemap_Robot_17                                          ;A8CB31;
 
 InstList_Robot_FacingRight_LaserShotRecoil:
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8CB35;
-    dw $0010                                                             ;A8CB37;
-    dw Spritemap_Robot_16                                                ;A8CB39;
-    dw $0005                                                             ;A8CB3B;
-    dw Spritemap_Robot_15                                                ;A8CB3D;
-    dw $0005                                                             ;A8CB3F;
-    dw Spritemap_Robot_14                                                ;A8CB41;
-    dw $0005                                                             ;A8CB43;
-    dw Spritemap_Robot_13                                                ;A8CB45;
-    dw $0005                                                             ;A8CB47;
-    dw Spritemap_Robot_12                                                ;A8CB49;
+    dw $0010,Spritemap_Robot_16                                          ;A8CB37;
+    dw $0005,Spritemap_Robot_15                                          ;A8CB3B;
+    dw $0005,Spritemap_Robot_14                                          ;A8CB3F;
+    dw $0005,Spritemap_Robot_13                                          ;A8CB43;
+    dw $0005,Spritemap_Robot_12                                          ;A8CB47;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CB4B;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8CB4D;
-    dw $000A                                                             ;A8CB4F;
-    dw Spritemap_Robot_11                                                ;A8CB51;
+    dw $000A,Spritemap_Robot_11                                          ;A8CB4F;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8CB53;
-    dw $000A                                                             ;A8CB55;
-    dw Spritemap_Robot_10                                                ;A8CB57;
-    dw $000A                                                             ;A8CB59;
-    dw Spritemap_Robot_F                                                 ;A8CB5B;
-    dw $0060                                                             ;A8CB5D;
-    dw Spritemap_Robot_E                                                 ;A8CB5F;
+    dw $000A,Spritemap_Robot_10                                          ;A8CB55;
+    dw $000A,Spritemap_Robot_F                                           ;A8CB59;
+    dw $0060,Spritemap_Robot_E                                           ;A8CB5D;
     dw Instruction_Common_GotoY                                          ;A8CB61;
     dw InstList_Robot_FacingRight_WalkingForwards_0                      ;A8CB63;
 
 InstList_Robot_ApproachingAFallToTheLeft:
-    dw $0080                                                             ;A8CB65;
-    dw Spritemap_Robot_0                                                 ;A8CB67;
-    dw $000A                                                             ;A8CB69;
-    dw Spritemap_Robot_1                                                 ;A8CB6B;
-    dw $000A                                                             ;A8CB6D;
-    dw Spritemap_Robot_2                                                 ;A8CB6F;
+    dw $0080,Spritemap_Robot_0                                           ;A8CB65;
+    dw $000A,Spritemap_Robot_1                                           ;A8CB69;
+    dw $000A,Spritemap_Robot_2                                           ;A8CB6D;
     dw Instruction_Robot_DecrementLaserCooldown                          ;A8CB71;
     dw Instruction_Common_GotoY                                          ;A8CB73;
     dw InstList_Robot_FacingRight_WalkingForwards_0                      ;A8CB75;
@@ -9426,6 +8159,7 @@ InitAI_RobotNoPower:
 
 
 .pointers:
+; Instruction list pointers. Indexed by [enemy parameter 1] * 2
     dw InstList_RobotNoPower_Neutral                                     ;A8CC30;
     dw InstList_RobotNoPower_LeaningLeft                                 ;A8CC32;
     dw InstList_RobotNoPower_LeaningRIght                                ;A8CC34;
@@ -9500,24 +8234,26 @@ EnemyGraphicsDrawnHook_Robot_PeriodicallyCyclePalettes:
     LDY.W #$0000                                                         ;A8CCBC;
     BRA .again                                                           ;A8CCBF;
 
-
+; Robot palette animation table
+;        ____________________________ Palette colours 9..Ch. Negative = terminator
+;       |                         ___ Timer
+;       |                        |
 .paletteColor9:
     dw $001F                                                             ;A8CCC1;
-
 .paletteColorA:
-    dw $0018                                                             ;A8CCC3;
-
+    dw       $0018                                                       ;A8CCC3;
 .paletteColorB:
-    dw $000F                                                             ;A8CCC5;
-
+    dw             $000F                                                 ;A8CCC5;
 .paletteColorC:
-    dw $0008                                                             ;A8CCC7;
-
+    dw                   $0008                                           ;A8CCC7;
 .timer:
-    dw $0040,$0018,$000F,$0008,$001F,$0010,$000F,$0008                   ;A8CCC9;
-    dw $001F,$0018,$0010,$0008,$001F,$0018,$000F,$0040                   ;A8CCD9;
-    dw $000F,$0008,$001F,$0018,$0010,$0018,$000F,$0008                   ;A8CCE9;
-    dw $001F,$0010,$FFFF                                                 ;A8CCF9;
+    dw                          $0040                                    ;A8CCC9;
+    dw $0018,$000F,$0008,$001F, $0010
+    dw $000F,$0008,$001F,$0018, $0010
+    dw $0008,$001F,$0018,$000F, $0040
+    dw $000F,$0008,$001F,$0018, $0010
+    dw $0018,$000F,$0008,$001F, $0010
+    dw $FFFF
 
 DecrementRobotLaserCooldown:
     LDA.W $0FAA,X                                                        ;A8CCFF;
@@ -10205,773 +8941,468 @@ EnemyShot_Robot:
 
 
 Spritemap_Robot_0:
-    dw $000C,$8000                                                       ;A8D1F1;
-    db $01                                                               ;A8D1F5;
-    dw $212E,$81F0                                                       ;A8D1F6;
-    db $01                                                               ;A8D1FA;
-    dw $212C,$0008                                                       ;A8D1FB;
-    db $17                                                               ;A8D1FF;
-    dw $2149,$0000                                                       ;A8D200;
-    db $17                                                               ;A8D204;
-    dw $2148,$8000                                                       ;A8D205;
-    db $07                                                               ;A8D209;
-    dw $210C,$0000                                                       ;A8D20A;
-    db $19                                                               ;A8D20E;
-    dw $214B,$01F8                                                       ;A8D20F;
-    db $19                                                               ;A8D213;
-    dw $214A,$81F8                                                       ;A8D214;
-    db $09                                                               ;A8D218;
-    dw $210E,$8000                                                       ;A8D219;
-    db $F1                                                               ;A8D21D;
-    dw $2122,$81F0                                                       ;A8D21E;
-    db $F1                                                               ;A8D222;
-    dw $2120,$8000                                                       ;A8D223;
-    db $E1                                                               ;A8D227;
-    dw $2102,$81F0                                                       ;A8D228;
-    db $E1                                                               ;A8D22C;
-    dw $2100                                                             ;A8D22D;
+    dw $000C                                                             ;A8D1F1;
+    %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $12E)
+    %spritemapEntry(1, $1F0, $01, 0, 0, 2, 0, $12C)
+    %spritemapEntry(0, $08, $17, 0, 0, 2, 0, $149)
+    %spritemapEntry(0, $00, $17, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $00, $07, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $00, $19, 0, 0, 2, 0, $14B)
+    %spritemapEntry(0, $1F8, $19, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F8, $09, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $00, $F1, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1F0, $F1, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $100)
 
 Spritemap_Robot_1:
-    dw $000C,$8001                                                       ;A8D22F;
-    db $01                                                               ;A8D233;
-    dw $2146,$81F1                                                       ;A8D234;
-    db $01                                                               ;A8D238;
-    dw $2144,$0003                                                       ;A8D239;
-    db $18                                                               ;A8D23D;
-    dw $2149,$01FB                                                       ;A8D23E;
-    db $18                                                               ;A8D242;
-    dw $2148,$81FB                                                       ;A8D243;
-    db $08                                                               ;A8D247;
-    dw $210C,$0000                                                       ;A8D248;
-    db $19                                                               ;A8D24C;
-    dw $214B,$01F8                                                       ;A8D24D;
-    db $19                                                               ;A8D251;
-    dw $214A,$81F8                                                       ;A8D252;
-    db $09                                                               ;A8D256;
-    dw $210E,$8000                                                       ;A8D257;
-    db $F1                                                               ;A8D25B;
-    dw $2126,$81F0                                                       ;A8D25C;
-    db $F1                                                               ;A8D260;
-    dw $2124,$81FF                                                       ;A8D261;
-    db $E1                                                               ;A8D265;
-    dw $2106,$81EF                                                       ;A8D266;
-    db $E1                                                               ;A8D26A;
-    dw $2104                                                             ;A8D26B;
+    dw $000C                                                             ;A8D22F;
+    %spritemapEntry(1, $01, $01, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1F1, $01, 0, 0, 2, 0, $144)
+    %spritemapEntry(0, $03, $18, 0, 0, 2, 0, $149)
+    %spritemapEntry(0, $1FB, $18, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1FB, $08, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $00, $19, 0, 0, 2, 0, $14B)
+    %spritemapEntry(0, $1F8, $19, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F8, $09, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $00, $F1, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1F0, $F1, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1FF, $E1, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1EF, $E1, 0, 0, 2, 0, $104)
 
 Spritemap_Robot_2:
-    dw $000C,$8000                                                       ;A8D26D;
-    db $01                                                               ;A8D271;
-    dw $2146,$81F0                                                       ;A8D272;
-    db $01                                                               ;A8D276;
-    dw $2144,$01FF                                                       ;A8D277;
-    db $19                                                               ;A8D27B;
-    dw $2149,$01F7                                                       ;A8D27C;
-    db $19                                                               ;A8D280;
-    dw $2148,$81F7                                                       ;A8D281;
-    db $09                                                               ;A8D285;
-    dw $210C,$0001                                                       ;A8D286;
-    db $19                                                               ;A8D28A;
-    dw $214B,$01F9                                                       ;A8D28B;
-    db $19                                                               ;A8D28F;
-    dw $214A,$81F9                                                       ;A8D290;
-    db $09                                                               ;A8D294;
-    dw $210E,$8000                                                       ;A8D295;
-    db $F1                                                               ;A8D299;
-    dw $2126,$81F0                                                       ;A8D29A;
-    db $F1                                                               ;A8D29E;
-    dw $2124,$8000                                                       ;A8D29F;
-    db $E1                                                               ;A8D2A3;
-    dw $2106,$81F0                                                       ;A8D2A4;
-    db $E1                                                               ;A8D2A8;
-    dw $2104                                                             ;A8D2A9;
+    dw $000C                                                             ;A8D26D;
+    %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1F0, $01, 0, 0, 2, 0, $144)
+    %spritemapEntry(0, $1FF, $19, 0, 0, 2, 0, $149)
+    %spritemapEntry(0, $1F7, $19, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1F7, $09, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $01, $19, 0, 0, 2, 0, $14B)
+    %spritemapEntry(0, $1F9, $19, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F9, $09, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $00, $F1, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1F0, $F1, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $104)
 
 Spritemap_Robot_3:
-    dw $000C,$81FF                                                       ;A8D2AB;
-    db $01                                                               ;A8D2AF;
-    dw $2146,$81EF                                                       ;A8D2B0;
-    db $01                                                               ;A8D2B4;
-    dw $2144,$01FC                                                       ;A8D2B5;
-    db $18                                                               ;A8D2B9;
-    dw $2149,$01F4                                                       ;A8D2BA;
-    db $18                                                               ;A8D2BE;
-    dw $2148,$81F4                                                       ;A8D2BF;
-    db $08                                                               ;A8D2C3;
-    dw $210C,$0000                                                       ;A8D2C4;
-    db $19                                                               ;A8D2C8;
-    dw $214B,$01F8                                                       ;A8D2C9;
-    db $19                                                               ;A8D2CD;
-    dw $214A,$81F8                                                       ;A8D2CE;
-    db $09                                                               ;A8D2D2;
-    dw $210E,$8000                                                       ;A8D2D3;
-    db $F1                                                               ;A8D2D7;
-    dw $2126,$81F0                                                       ;A8D2D8;
-    db $F1                                                               ;A8D2DC;
-    dw $2124,$8001                                                       ;A8D2DD;
-    db $E1                                                               ;A8D2E1;
-    dw $2106,$81F1                                                       ;A8D2E2;
-    db $E1                                                               ;A8D2E6;
-    dw $2104                                                             ;A8D2E7;
+    dw $000C                                                             ;A8D2AB;
+    %spritemapEntry(1, $1FF, $01, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1EF, $01, 0, 0, 2, 0, $144)
+    %spritemapEntry(0, $1FC, $18, 0, 0, 2, 0, $149)
+    %spritemapEntry(0, $1F4, $18, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1F4, $08, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $00, $19, 0, 0, 2, 0, $14B)
+    %spritemapEntry(0, $1F8, $19, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F8, $09, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $00, $F1, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1F0, $F1, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $01, $E1, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1F1, $E1, 0, 0, 2, 0, $104)
 
 Spritemap_Robot_4:
-    dw $000C,$8000                                                       ;A8D2E9;
-    db $01                                                               ;A8D2ED;
-    dw $2142,$81F0                                                       ;A8D2EE;
-    db $01                                                               ;A8D2F2;
-    dw $2140,$01F7                                                       ;A8D2F3;
-    db $16                                                               ;A8D2F7;
-    dw $2149,$01EF                                                       ;A8D2F8;
-    db $16                                                               ;A8D2FC;
-    dw $2148,$81EF                                                       ;A8D2FD;
-    db $06                                                               ;A8D301;
-    dw $210C,$0001                                                       ;A8D302;
-    db $19                                                               ;A8D306;
-    dw $214B,$01F9                                                       ;A8D307;
-    db $19                                                               ;A8D30B;
-    dw $214A,$81F9                                                       ;A8D30C;
-    db $09                                                               ;A8D310;
-    dw $210E,$8000                                                       ;A8D311;
-    db $F1                                                               ;A8D315;
-    dw $212A,$81F0                                                       ;A8D316;
-    db $F1                                                               ;A8D31A;
-    dw $2128,$8000                                                       ;A8D31B;
-    db $E1                                                               ;A8D31F;
-    dw $210A,$81F0                                                       ;A8D320;
-    db $E1                                                               ;A8D324;
-    dw $2108                                                             ;A8D325;
+    dw $000C                                                             ;A8D2E9;
+    %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $142)
+    %spritemapEntry(1, $1F0, $01, 0, 0, 2, 0, $140)
+    %spritemapEntry(0, $1F7, $16, 0, 0, 2, 0, $149)
+    %spritemapEntry(0, $1EF, $16, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1EF, $06, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $01, $19, 0, 0, 2, 0, $14B)
+    %spritemapEntry(0, $1F9, $19, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F9, $09, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $00, $F1, 0, 0, 2, 0, $12A)
+    %spritemapEntry(1, $1F0, $F1, 0, 0, 2, 0, $128)
+    %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $10A)
+    %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $108)
 
 Spritemap_Robot_5:
-    dw $000C,$8000                                                       ;A8D327;
-    db $01                                                               ;A8D32B;
-    dw $2146,$81F0                                                       ;A8D32C;
-    db $01                                                               ;A8D330;
-    dw $2144,$01FC                                                       ;A8D331;
-    db $17                                                               ;A8D335;
-    dw $2149,$01F4                                                       ;A8D336;
-    db $17                                                               ;A8D33A;
-    dw $2148,$81F4                                                       ;A8D33B;
-    db $07                                                               ;A8D33F;
-    dw $210C,$0004                                                       ;A8D340;
-    db $19                                                               ;A8D344;
-    dw $214B,$01FC                                                       ;A8D345;
-    db $19                                                               ;A8D349;
-    dw $214A,$81FC                                                       ;A8D34A;
-    db $09                                                               ;A8D34E;
-    dw $210E,$8000                                                       ;A8D34F;
-    db $F1                                                               ;A8D353;
-    dw $2126,$81F0                                                       ;A8D354;
-    db $F1                                                               ;A8D358;
-    dw $2124,$8000                                                       ;A8D359;
-    db $E1                                                               ;A8D35D;
-    dw $2106,$81F0                                                       ;A8D35E;
-    db $E1                                                               ;A8D362;
-    dw $2104                                                             ;A8D363;
+    dw $000C                                                             ;A8D327;
+    %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1F0, $01, 0, 0, 2, 0, $144)
+    %spritemapEntry(0, $1FC, $17, 0, 0, 2, 0, $149)
+    %spritemapEntry(0, $1F4, $17, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1F4, $07, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $04, $19, 0, 0, 2, 0, $14B)
+    %spritemapEntry(0, $1FC, $19, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1FC, $09, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $00, $F1, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1F0, $F1, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $104)
 
 Spritemap_Robot_6:
-    dw $000C,$8000                                                       ;A8D365;
-    db $01                                                               ;A8D369;
-    dw $212E,$81F0                                                       ;A8D36A;
-    db $01                                                               ;A8D36E;
-    dw $212C,$0000                                                       ;A8D36F;
-    db $19                                                               ;A8D373;
-    dw $2149,$01F8                                                       ;A8D374;
-    db $19                                                               ;A8D378;
-    dw $2148,$81F8                                                       ;A8D379;
-    db $09                                                               ;A8D37D;
-    dw $210C,$0008                                                       ;A8D37E;
-    db $17                                                               ;A8D382;
-    dw $214B,$0000                                                       ;A8D383;
-    db $17                                                               ;A8D387;
-    dw $214A,$8000                                                       ;A8D388;
-    db $07                                                               ;A8D38C;
-    dw $210E,$8000                                                       ;A8D38D;
-    db $F1                                                               ;A8D391;
-    dw $2122,$81F0                                                       ;A8D392;
-    db $F1                                                               ;A8D396;
-    dw $2120,$8000                                                       ;A8D397;
-    db $E1                                                               ;A8D39B;
-    dw $2102,$81F0                                                       ;A8D39C;
-    db $E1                                                               ;A8D3A0;
-    dw $2100                                                             ;A8D3A1;
+    dw $000C                                                             ;A8D365;
+    %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $12E)
+    %spritemapEntry(1, $1F0, $01, 0, 0, 2, 0, $12C)
+    %spritemapEntry(0, $00, $19, 0, 0, 2, 0, $149)
+    %spritemapEntry(0, $1F8, $19, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1F8, $09, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $08, $17, 0, 0, 2, 0, $14B)
+    %spritemapEntry(0, $00, $17, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $00, $07, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $00, $F1, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1F0, $F1, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $100)
 
 Spritemap_Robot_7:
-    dw $000C,$8001                                                       ;A8D3A3;
-    db $01                                                               ;A8D3A7;
-    dw $2146,$81F1                                                       ;A8D3A8;
-    db $01                                                               ;A8D3AC;
-    dw $2144,$0000                                                       ;A8D3AD;
-    db $19                                                               ;A8D3B1;
-    dw $2149,$01F8                                                       ;A8D3B2;
-    db $19                                                               ;A8D3B6;
-    dw $2148,$81F8                                                       ;A8D3B7;
-    db $09                                                               ;A8D3BB;
-    dw $210C,$0003                                                       ;A8D3BC;
-    db $18                                                               ;A8D3C0;
-    dw $214B,$01FB                                                       ;A8D3C1;
-    db $18                                                               ;A8D3C5;
-    dw $214A,$81FB                                                       ;A8D3C6;
-    db $08                                                               ;A8D3CA;
-    dw $210E,$8000                                                       ;A8D3CB;
-    db $F1                                                               ;A8D3CF;
-    dw $2126,$81F0                                                       ;A8D3D0;
-    db $F1                                                               ;A8D3D4;
-    dw $2124,$81FF                                                       ;A8D3D5;
-    db $E1                                                               ;A8D3D9;
-    dw $2106,$81EF                                                       ;A8D3DA;
-    db $E1                                                               ;A8D3DE;
-    dw $2104                                                             ;A8D3DF;
+    dw $000C                                                             ;A8D3A3;
+    %spritemapEntry(1, $01, $01, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1F1, $01, 0, 0, 2, 0, $144)
+    %spritemapEntry(0, $00, $19, 0, 0, 2, 0, $149)
+    %spritemapEntry(0, $1F8, $19, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1F8, $09, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $03, $18, 0, 0, 2, 0, $14B)
+    %spritemapEntry(0, $1FB, $18, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1FB, $08, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $00, $F1, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1F0, $F1, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $1FF, $E1, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1EF, $E1, 0, 0, 2, 0, $104)
 
 Spritemap_Robot_8:
-    dw $000C,$8000                                                       ;A8D3E1;
-    db $01                                                               ;A8D3E5;
-    dw $2146,$81F0                                                       ;A8D3E6;
-    db $01                                                               ;A8D3EA;
-    dw $2144,$01F8                                                       ;A8D3EB;
-    db $19                                                               ;A8D3EF;
-    dw $2148,$0000                                                       ;A8D3F0;
-    db $19                                                               ;A8D3F4;
-    dw $2149,$81F8                                                       ;A8D3F5;
-    db $09                                                               ;A8D3F9;
-    dw $210C,$01FE                                                       ;A8D3FA;
-    db $19                                                               ;A8D3FE;
-    dw $214B,$01F6                                                       ;A8D3FF;
-    db $19                                                               ;A8D403;
-    dw $214A,$81F6                                                       ;A8D404;
-    db $09                                                               ;A8D408;
-    dw $210E,$8000                                                       ;A8D409;
-    db $F1                                                               ;A8D40D;
-    dw $2126,$81F0                                                       ;A8D40E;
-    db $F1                                                               ;A8D412;
-    dw $2124,$8000                                                       ;A8D413;
-    db $E1                                                               ;A8D417;
-    dw $2106,$81F0                                                       ;A8D418;
-    db $E1                                                               ;A8D41C;
-    dw $2104                                                             ;A8D41D;
+    dw $000C                                                             ;A8D3E1;
+    %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1F0, $01, 0, 0, 2, 0, $144)
+    %spritemapEntry(0, $1F8, $19, 0, 0, 2, 0, $148)
+    %spritemapEntry(0, $00, $19, 0, 0, 2, 0, $149)
+    %spritemapEntry(1, $1F8, $09, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $1FE, $19, 0, 0, 2, 0, $14B)
+    %spritemapEntry(0, $1F6, $19, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F6, $09, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $00, $F1, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1F0, $F1, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $104)
 
 Spritemap_Robot_9:
-    dw $000C,$81FF                                                       ;A8D41F;
-    db $01                                                               ;A8D423;
-    dw $2146,$81EF                                                       ;A8D424;
-    db $01                                                               ;A8D428;
-    dw $2144,$0000                                                       ;A8D429;
-    db $19                                                               ;A8D42D;
-    dw $2149,$01F8                                                       ;A8D42E;
-    db $19                                                               ;A8D432;
-    dw $2148,$81F8                                                       ;A8D433;
-    db $09                                                               ;A8D437;
-    dw $210C,$01FC                                                       ;A8D438;
-    db $18                                                               ;A8D43C;
-    dw $214B,$01F4                                                       ;A8D43D;
-    db $18                                                               ;A8D441;
-    dw $214A,$81F4                                                       ;A8D442;
-    db $08                                                               ;A8D446;
-    dw $210E,$8000                                                       ;A8D447;
-    db $F1                                                               ;A8D44B;
-    dw $2126,$81F0                                                       ;A8D44C;
-    db $F1                                                               ;A8D450;
-    dw $2124,$8001                                                       ;A8D451;
-    db $E1                                                               ;A8D455;
-    dw $2106,$81F1                                                       ;A8D456;
-    db $E1                                                               ;A8D45A;
-    dw $2104                                                             ;A8D45B;
+    dw $000C                                                             ;A8D41F;
+    %spritemapEntry(1, $1FF, $01, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1EF, $01, 0, 0, 2, 0, $144)
+    %spritemapEntry(0, $00, $19, 0, 0, 2, 0, $149)
+    %spritemapEntry(0, $1F8, $19, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1F8, $09, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $1FC, $18, 0, 0, 2, 0, $14B)
+    %spritemapEntry(0, $1F4, $18, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F4, $08, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $00, $F1, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1F0, $F1, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $01, $E1, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1F1, $E1, 0, 0, 2, 0, $104)
 
 Spritemap_Robot_A:
-    dw $000C,$8000                                                       ;A8D45D;
-    db $01                                                               ;A8D461;
-    dw $2142,$81F0                                                       ;A8D462;
-    db $01                                                               ;A8D466;
-    dw $2140,$0001                                                       ;A8D467;
-    db $19                                                               ;A8D46B;
-    dw $2149,$01F9                                                       ;A8D46C;
-    db $19                                                               ;A8D470;
-    dw $2148,$81F9                                                       ;A8D471;
-    db $09                                                               ;A8D475;
-    dw $210C,$01F7                                                       ;A8D476;
-    db $16                                                               ;A8D47A;
-    dw $214B,$01EF                                                       ;A8D47B;
-    db $16                                                               ;A8D47F;
-    dw $214A,$81EF                                                       ;A8D480;
-    db $06                                                               ;A8D484;
-    dw $210E,$8000                                                       ;A8D485;
-    db $F1                                                               ;A8D489;
-    dw $212A,$81F0                                                       ;A8D48A;
-    db $F1                                                               ;A8D48E;
-    dw $2128,$8000                                                       ;A8D48F;
-    db $E1                                                               ;A8D493;
-    dw $210A,$81F0                                                       ;A8D494;
-    db $E1                                                               ;A8D498;
-    dw $2108                                                             ;A8D499;
+    dw $000C                                                             ;A8D45D;
+    %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $142)
+    %spritemapEntry(1, $1F0, $01, 0, 0, 2, 0, $140)
+    %spritemapEntry(0, $01, $19, 0, 0, 2, 0, $149)
+    %spritemapEntry(0, $1F9, $19, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1F9, $09, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $1F7, $16, 0, 0, 2, 0, $14B)
+    %spritemapEntry(0, $1EF, $16, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1EF, $06, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $00, $F1, 0, 0, 2, 0, $12A)
+    %spritemapEntry(1, $1F0, $F1, 0, 0, 2, 0, $128)
+    %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $10A)
+    %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $108)
 
 Spritemap_Robot_B:
-    dw $000C,$8000                                                       ;A8D49B;
-    db $01                                                               ;A8D49F;
-    dw $2146,$81F0                                                       ;A8D4A0;
-    db $01                                                               ;A8D4A4;
-    dw $2144,$0004                                                       ;A8D4A5;
-    db $19                                                               ;A8D4A9;
-    dw $2149,$01FC                                                       ;A8D4AA;
-    db $19                                                               ;A8D4AE;
-    dw $2148,$81FC                                                       ;A8D4AF;
-    db $09                                                               ;A8D4B3;
-    dw $210C,$01FC                                                       ;A8D4B4;
-    db $17                                                               ;A8D4B8;
-    dw $214B,$01F4                                                       ;A8D4B9;
-    db $17                                                               ;A8D4BD;
-    dw $214A,$81F4                                                       ;A8D4BE;
-    db $07                                                               ;A8D4C2;
-    dw $210E,$8000                                                       ;A8D4C3;
-    db $F1                                                               ;A8D4C7;
-    dw $2126,$81F0                                                       ;A8D4C8;
-    db $F1                                                               ;A8D4CC;
-    dw $2124,$8000                                                       ;A8D4CD;
-    db $E1                                                               ;A8D4D1;
-    dw $2106,$81F0                                                       ;A8D4D2;
-    db $E1                                                               ;A8D4D6;
-    dw $2104                                                             ;A8D4D7;
+    dw $000C                                                             ;A8D49B;
+    %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1F0, $01, 0, 0, 2, 0, $144)
+    %spritemapEntry(0, $04, $19, 0, 0, 2, 0, $149)
+    %spritemapEntry(0, $1FC, $19, 0, 0, 2, 0, $148)
+    %spritemapEntry(1, $1FC, $09, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $1FC, $17, 0, 0, 2, 0, $14B)
+    %spritemapEntry(0, $1F4, $17, 0, 0, 2, 0, $14A)
+    %spritemapEntry(1, $1F4, $07, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $00, $F1, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1F0, $F1, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $104)
 
 Spritemap_Robot_C:
-    dw $000C,$81F0                                                       ;A8D4D9;
-    db $01                                                               ;A8D4DD;
-    dw $612E,$8000                                                       ;A8D4DE;
-    db $01                                                               ;A8D4E2;
-    dw $612C,$01F0                                                       ;A8D4E3;
-    db $17                                                               ;A8D4E7;
-    dw $6149,$01F8                                                       ;A8D4E8;
-    db $17                                                               ;A8D4EC;
-    dw $6148,$81F0                                                       ;A8D4ED;
-    db $07                                                               ;A8D4F1;
-    dw $610C,$01F8                                                       ;A8D4F2;
-    db $19                                                               ;A8D4F6;
-    dw $614B,$0000                                                       ;A8D4F7;
-    db $19                                                               ;A8D4FB;
-    dw $614A,$81F8                                                       ;A8D4FC;
-    db $09                                                               ;A8D500;
-    dw $610E,$81F0                                                       ;A8D501;
-    db $F1                                                               ;A8D505;
-    dw $6122,$8000                                                       ;A8D506;
-    db $F1                                                               ;A8D50A;
-    dw $6120,$81F0                                                       ;A8D50B;
-    db $E1                                                               ;A8D50F;
-    dw $6102,$8000                                                       ;A8D510;
-    db $E1                                                               ;A8D514;
-    dw $6100                                                             ;A8D515;
+    dw $000C                                                             ;A8D4D9;
+    %spritemapEntry(1, $1F0, $01, 0, 1, 2, 0, $12E)
+    %spritemapEntry(1, $00, $01, 0, 1, 2, 0, $12C)
+    %spritemapEntry(0, $1F0, $17, 0, 1, 2, 0, $149)
+    %spritemapEntry(0, $1F8, $17, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $1F0, $07, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1F8, $19, 0, 1, 2, 0, $14B)
+    %spritemapEntry(0, $00, $19, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $1F8, $09, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $1F0, $F1, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $00, $F1, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $1F0, $E1, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $00, $E1, 0, 1, 2, 0, $100)
 
 Spritemap_Robot_D:
-    dw $000C,$81EF                                                       ;A8D517;
-    db $01                                                               ;A8D51B;
-    dw $6146,$81FF                                                       ;A8D51C;
-    db $01                                                               ;A8D520;
-    dw $6144,$01F5                                                       ;A8D521;
-    db $18                                                               ;A8D525;
-    dw $6149,$01FD                                                       ;A8D526;
-    db $18                                                               ;A8D52A;
-    dw $6148,$81F5                                                       ;A8D52B;
-    db $08                                                               ;A8D52F;
-    dw $610C,$01F8                                                       ;A8D530;
-    db $19                                                               ;A8D534;
-    dw $614B,$0000                                                       ;A8D535;
-    db $19                                                               ;A8D539;
-    dw $614A,$81F8                                                       ;A8D53A;
-    db $09                                                               ;A8D53E;
-    dw $610E,$81F0                                                       ;A8D53F;
-    db $F1                                                               ;A8D543;
-    dw $6126,$8000                                                       ;A8D544;
-    db $F1                                                               ;A8D548;
-    dw $6124,$81F1                                                       ;A8D549;
-    db $E1                                                               ;A8D54D;
-    dw $6106,$8001                                                       ;A8D54E;
-    db $E1                                                               ;A8D552;
-    dw $6104                                                             ;A8D553;
+    dw $000C                                                             ;A8D517;
+    %spritemapEntry(1, $1EF, $01, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $1FF, $01, 0, 1, 2, 0, $144)
+    %spritemapEntry(0, $1F5, $18, 0, 1, 2, 0, $149)
+    %spritemapEntry(0, $1FD, $18, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $1F5, $08, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1F8, $19, 0, 1, 2, 0, $14B)
+    %spritemapEntry(0, $00, $19, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $1F8, $09, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $1F0, $F1, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $00, $F1, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $1F1, $E1, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $01, $E1, 0, 1, 2, 0, $104)
 
 Spritemap_Robot_E:
-    dw $000C,$81F0                                                       ;A8D555;
-    db $01                                                               ;A8D559;
-    dw $6146,$8000                                                       ;A8D55A;
-    db $01                                                               ;A8D55E;
-    dw $6144,$01F9                                                       ;A8D55F;
-    db $19                                                               ;A8D563;
-    dw $6149,$0001                                                       ;A8D564;
-    db $19                                                               ;A8D568;
-    dw $6148,$81F9                                                       ;A8D569;
-    db $09                                                               ;A8D56D;
-    dw $610C,$01F7                                                       ;A8D56E;
-    db $19                                                               ;A8D572;
-    dw $614B,$01FF                                                       ;A8D573;
-    db $19                                                               ;A8D577;
-    dw $614A,$81F7                                                       ;A8D578;
-    db $09                                                               ;A8D57C;
-    dw $610E,$81F0                                                       ;A8D57D;
-    db $F1                                                               ;A8D581;
-    dw $6126,$8000                                                       ;A8D582;
-    db $F1                                                               ;A8D586;
-    dw $6124,$81F0                                                       ;A8D587;
-    db $E1                                                               ;A8D58B;
-    dw $6106,$8000                                                       ;A8D58C;
-    db $E1                                                               ;A8D590;
-    dw $6104                                                             ;A8D591;
+    dw $000C                                                             ;A8D555;
+    %spritemapEntry(1, $1F0, $01, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $00, $01, 0, 1, 2, 0, $144)
+    %spritemapEntry(0, $1F9, $19, 0, 1, 2, 0, $149)
+    %spritemapEntry(0, $01, $19, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $1F9, $09, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1F7, $19, 0, 1, 2, 0, $14B)
+    %spritemapEntry(0, $1FF, $19, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $1F7, $09, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $1F0, $F1, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $00, $F1, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $1F0, $E1, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $00, $E1, 0, 1, 2, 0, $104)
 
 Spritemap_Robot_F:
-    dw $000C,$81F1                                                       ;A8D593;
-    db $01                                                               ;A8D597;
-    dw $6146,$8001                                                       ;A8D598;
-    db $01                                                               ;A8D59C;
-    dw $6144,$01FC                                                       ;A8D59D;
-    db $18                                                               ;A8D5A1;
-    dw $6149,$0004                                                       ;A8D5A2;
-    db $18                                                               ;A8D5A6;
-    dw $6148,$81FC                                                       ;A8D5A7;
-    db $08                                                               ;A8D5AB;
-    dw $610C,$01F8                                                       ;A8D5AC;
-    db $19                                                               ;A8D5B0;
-    dw $614B,$0000                                                       ;A8D5B1;
-    db $19                                                               ;A8D5B5;
-    dw $614A,$81F8                                                       ;A8D5B6;
-    db $09                                                               ;A8D5BA;
-    dw $610E,$81F0                                                       ;A8D5BB;
-    db $F1                                                               ;A8D5BF;
-    dw $6126,$8000                                                       ;A8D5C0;
-    db $F1                                                               ;A8D5C4;
-    dw $6124,$81EF                                                       ;A8D5C5;
-    db $E1                                                               ;A8D5C9;
-    dw $6106,$81FF                                                       ;A8D5CA;
-    db $E1                                                               ;A8D5CE;
-    dw $6104                                                             ;A8D5CF;
+    dw $000C                                                             ;A8D593;
+    %spritemapEntry(1, $1F1, $01, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $01, $01, 0, 1, 2, 0, $144)
+    %spritemapEntry(0, $1FC, $18, 0, 1, 2, 0, $149)
+    %spritemapEntry(0, $04, $18, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $1FC, $08, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1F8, $19, 0, 1, 2, 0, $14B)
+    %spritemapEntry(0, $00, $19, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $1F8, $09, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $1F0, $F1, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $00, $F1, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $1EF, $E1, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $1FF, $E1, 0, 1, 2, 0, $104)
 
 Spritemap_Robot_10:
-    dw $000C,$81F0                                                       ;A8D5D1;
-    db $01                                                               ;A8D5D5;
-    dw $6142,$8000                                                       ;A8D5D6;
-    db $01                                                               ;A8D5DA;
-    dw $6140,$0001                                                       ;A8D5DB;
-    db $16                                                               ;A8D5DF;
-    dw $6149,$0009                                                       ;A8D5E0;
-    db $16                                                               ;A8D5E4;
-    dw $6148,$8001                                                       ;A8D5E5;
-    db $06                                                               ;A8D5E9;
-    dw $610C,$01F7                                                       ;A8D5EA;
-    db $19                                                               ;A8D5EE;
-    dw $614B,$01FF                                                       ;A8D5EF;
-    db $19                                                               ;A8D5F3;
-    dw $614A,$81F7                                                       ;A8D5F4;
-    db $09                                                               ;A8D5F8;
-    dw $610E,$81F0                                                       ;A8D5F9;
-    db $F1                                                               ;A8D5FD;
-    dw $612A,$8000                                                       ;A8D5FE;
-    db $F1                                                               ;A8D602;
-    dw $6128,$81F0                                                       ;A8D603;
-    db $E1                                                               ;A8D607;
-    dw $610A,$8000                                                       ;A8D608;
-    db $E1                                                               ;A8D60C;
-    dw $6108                                                             ;A8D60D;
+    dw $000C                                                             ;A8D5D1;
+    %spritemapEntry(1, $1F0, $01, 0, 1, 2, 0, $142)
+    %spritemapEntry(1, $00, $01, 0, 1, 2, 0, $140)
+    %spritemapEntry(0, $01, $16, 0, 1, 2, 0, $149)
+    %spritemapEntry(0, $09, $16, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $01, $06, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1F7, $19, 0, 1, 2, 0, $14B)
+    %spritemapEntry(0, $1FF, $19, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $1F7, $09, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $1F0, $F1, 0, 1, 2, 0, $12A)
+    %spritemapEntry(1, $00, $F1, 0, 1, 2, 0, $128)
+    %spritemapEntry(1, $1F0, $E1, 0, 1, 2, 0, $10A)
+    %spritemapEntry(1, $00, $E1, 0, 1, 2, 0, $108)
 
 Spritemap_Robot_11:
-    dw $000C,$81F0                                                       ;A8D60F;
-    db $01                                                               ;A8D613;
-    dw $6146,$8000                                                       ;A8D614;
-    db $01                                                               ;A8D618;
-    dw $6144,$01FC                                                       ;A8D619;
-    db $17                                                               ;A8D61D;
-    dw $6149,$0004                                                       ;A8D61E;
-    db $17                                                               ;A8D622;
-    dw $6148,$81FC                                                       ;A8D623;
-    db $07                                                               ;A8D627;
-    dw $610C,$01F4                                                       ;A8D628;
-    db $19                                                               ;A8D62C;
-    dw $614B,$01FC                                                       ;A8D62D;
-    db $19                                                               ;A8D631;
-    dw $614A,$81F4                                                       ;A8D632;
-    db $09                                                               ;A8D636;
-    dw $610E,$81F0                                                       ;A8D637;
-    db $F1                                                               ;A8D63B;
-    dw $6126,$8000                                                       ;A8D63C;
-    db $F1                                                               ;A8D640;
-    dw $6124,$81F0                                                       ;A8D641;
-    db $E1                                                               ;A8D645;
-    dw $6106,$8000                                                       ;A8D646;
-    db $E1                                                               ;A8D64A;
-    dw $6104                                                             ;A8D64B;
+    dw $000C                                                             ;A8D60F;
+    %spritemapEntry(1, $1F0, $01, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $00, $01, 0, 1, 2, 0, $144)
+    %spritemapEntry(0, $1FC, $17, 0, 1, 2, 0, $149)
+    %spritemapEntry(0, $04, $17, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $1FC, $07, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1F4, $19, 0, 1, 2, 0, $14B)
+    %spritemapEntry(0, $1FC, $19, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $1F4, $09, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $1F0, $F1, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $00, $F1, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $1F0, $E1, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $00, $E1, 0, 1, 2, 0, $104)
 
 Spritemap_Robot_12:
-    dw $000C,$81F0                                                       ;A8D64D;
-    db $01                                                               ;A8D651;
-    dw $612E,$8000                                                       ;A8D652;
-    db $01                                                               ;A8D656;
-    dw $612C,$01F8                                                       ;A8D657;
-    db $19                                                               ;A8D65B;
-    dw $6149,$0000                                                       ;A8D65C;
-    db $19                                                               ;A8D660;
-    dw $6148,$81F8                                                       ;A8D661;
-    db $09                                                               ;A8D665;
-    dw $610C,$01F0                                                       ;A8D666;
-    db $17                                                               ;A8D66A;
-    dw $614B,$01F8                                                       ;A8D66B;
-    db $17                                                               ;A8D66F;
-    dw $614A,$81F0                                                       ;A8D670;
-    db $07                                                               ;A8D674;
-    dw $610E,$81F0                                                       ;A8D675;
-    db $F1                                                               ;A8D679;
-    dw $6122,$8000                                                       ;A8D67A;
-    db $F1                                                               ;A8D67E;
-    dw $6120,$81F0                                                       ;A8D67F;
-    db $E1                                                               ;A8D683;
-    dw $6102,$8000                                                       ;A8D684;
-    db $E1                                                               ;A8D688;
-    dw $6100                                                             ;A8D689;
+    dw $000C                                                             ;A8D64D;
+    %spritemapEntry(1, $1F0, $01, 0, 1, 2, 0, $12E)
+    %spritemapEntry(1, $00, $01, 0, 1, 2, 0, $12C)
+    %spritemapEntry(0, $1F8, $19, 0, 1, 2, 0, $149)
+    %spritemapEntry(0, $00, $19, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $1F8, $09, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1F0, $17, 0, 1, 2, 0, $14B)
+    %spritemapEntry(0, $1F8, $17, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $1F0, $07, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $1F0, $F1, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $00, $F1, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $1F0, $E1, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $00, $E1, 0, 1, 2, 0, $100)
 
 Spritemap_Robot_13:
-    dw $000C,$81EF                                                       ;A8D68B;
-    db $01                                                               ;A8D68F;
-    dw $6146,$81FF                                                       ;A8D690;
-    db $01                                                               ;A8D694;
-    dw $6144,$01F8                                                       ;A8D695;
-    db $19                                                               ;A8D699;
-    dw $6149,$0000                                                       ;A8D69A;
-    db $19                                                               ;A8D69E;
-    dw $6148,$81F8                                                       ;A8D69F;
-    db $09                                                               ;A8D6A3;
-    dw $610C,$01F5                                                       ;A8D6A4;
-    db $18                                                               ;A8D6A8;
-    dw $614B,$01FD                                                       ;A8D6A9;
-    db $18                                                               ;A8D6AD;
-    dw $614A,$81F5                                                       ;A8D6AE;
-    db $08                                                               ;A8D6B2;
-    dw $610E,$81F0                                                       ;A8D6B3;
-    db $F1                                                               ;A8D6B7;
-    dw $6126,$8000                                                       ;A8D6B8;
-    db $F1                                                               ;A8D6BC;
-    dw $6124,$81F1                                                       ;A8D6BD;
-    db $E1                                                               ;A8D6C1;
-    dw $6106,$8001                                                       ;A8D6C2;
-    db $E1                                                               ;A8D6C6;
-    dw $6104                                                             ;A8D6C7;
+    dw $000C                                                             ;A8D68B;
+    %spritemapEntry(1, $1EF, $01, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $1FF, $01, 0, 1, 2, 0, $144)
+    %spritemapEntry(0, $1F8, $19, 0, 1, 2, 0, $149)
+    %spritemapEntry(0, $00, $19, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $1F8, $09, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1F5, $18, 0, 1, 2, 0, $14B)
+    %spritemapEntry(0, $1FD, $18, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $1F5, $08, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $1F0, $F1, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $00, $F1, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $1F1, $E1, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $01, $E1, 0, 1, 2, 0, $104)
 
 Spritemap_Robot_14:
-    dw $000C,$81F0                                                       ;A8D6C9;
-    db $01                                                               ;A8D6CD;
-    dw $6146,$8000                                                       ;A8D6CE;
-    db $01                                                               ;A8D6D2;
-    dw $6144,$0000                                                       ;A8D6D3;
-    db $19                                                               ;A8D6D7;
-    dw $6148,$01F8                                                       ;A8D6D8;
-    db $19                                                               ;A8D6DC;
-    dw $6149,$81F8                                                       ;A8D6DD;
-    db $09                                                               ;A8D6E1;
-    dw $610C,$01FA                                                       ;A8D6E2;
-    db $19                                                               ;A8D6E6;
-    dw $614B,$0002                                                       ;A8D6E7;
-    db $19                                                               ;A8D6EB;
-    dw $614A,$81FA                                                       ;A8D6EC;
-    db $09                                                               ;A8D6F0;
-    dw $610E,$81F0                                                       ;A8D6F1;
-    db $F1                                                               ;A8D6F5;
-    dw $6126,$8000                                                       ;A8D6F6;
-    db $F1                                                               ;A8D6FA;
-    dw $6124,$81F0                                                       ;A8D6FB;
-    db $E1                                                               ;A8D6FF;
-    dw $6106,$8000                                                       ;A8D700;
-    db $E1                                                               ;A8D704;
-    dw $6104                                                             ;A8D705;
+    dw $000C                                                             ;A8D6C9;
+    %spritemapEntry(1, $1F0, $01, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $00, $01, 0, 1, 2, 0, $144)
+    %spritemapEntry(0, $00, $19, 0, 1, 2, 0, $148)
+    %spritemapEntry(0, $1F8, $19, 0, 1, 2, 0, $149)
+    %spritemapEntry(1, $1F8, $09, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1FA, $19, 0, 1, 2, 0, $14B)
+    %spritemapEntry(0, $02, $19, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $1FA, $09, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $1F0, $F1, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $00, $F1, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $1F0, $E1, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $00, $E1, 0, 1, 2, 0, $104)
 
 Spritemap_Robot_15:
-    dw $000C,$81F1                                                       ;A8D707;
-    db $01                                                               ;A8D70B;
-    dw $6146,$8001                                                       ;A8D70C;
-    db $01                                                               ;A8D710;
-    dw $6144,$01F8                                                       ;A8D711;
-    db $19                                                               ;A8D715;
-    dw $6149,$0000                                                       ;A8D716;
-    db $19                                                               ;A8D71A;
-    dw $6148,$81F8                                                       ;A8D71B;
-    db $09                                                               ;A8D71F;
-    dw $610C,$01FC                                                       ;A8D720;
-    db $18                                                               ;A8D724;
-    dw $614B,$0004                                                       ;A8D725;
-    db $18                                                               ;A8D729;
-    dw $614A,$81FC                                                       ;A8D72A;
-    db $08                                                               ;A8D72E;
-    dw $610E,$81F0                                                       ;A8D72F;
-    db $F1                                                               ;A8D733;
-    dw $6126,$8000                                                       ;A8D734;
-    db $F1                                                               ;A8D738;
-    dw $6124,$81EF                                                       ;A8D739;
-    db $E1                                                               ;A8D73D;
-    dw $6106,$81FF                                                       ;A8D73E;
-    db $E1                                                               ;A8D742;
-    dw $6104                                                             ;A8D743;
+    dw $000C                                                             ;A8D707;
+    %spritemapEntry(1, $1F1, $01, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $01, $01, 0, 1, 2, 0, $144)
+    %spritemapEntry(0, $1F8, $19, 0, 1, 2, 0, $149)
+    %spritemapEntry(0, $00, $19, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $1F8, $09, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1FC, $18, 0, 1, 2, 0, $14B)
+    %spritemapEntry(0, $04, $18, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $1FC, $08, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $1F0, $F1, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $00, $F1, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $1EF, $E1, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $1FF, $E1, 0, 1, 2, 0, $104)
 
 Spritemap_Robot_16:
-    dw $000C,$81F0                                                       ;A8D745;
-    db $01                                                               ;A8D749;
-    dw $6142,$8000                                                       ;A8D74A;
-    db $01                                                               ;A8D74E;
-    dw $6140,$01F7                                                       ;A8D74F;
-    db $19                                                               ;A8D753;
-    dw $6149,$01FF                                                       ;A8D754;
-    db $19                                                               ;A8D758;
-    dw $6148,$81F7                                                       ;A8D759;
-    db $09                                                               ;A8D75D;
-    dw $610C,$0001                                                       ;A8D75E;
-    db $16                                                               ;A8D762;
-    dw $614B,$0009                                                       ;A8D763;
-    db $16                                                               ;A8D767;
-    dw $614A,$8001                                                       ;A8D768;
-    db $06                                                               ;A8D76C;
-    dw $610E,$81F0                                                       ;A8D76D;
-    db $F1                                                               ;A8D771;
-    dw $612A,$8000                                                       ;A8D772;
-    db $F1                                                               ;A8D776;
-    dw $6128,$81F0                                                       ;A8D777;
-    db $E1                                                               ;A8D77B;
-    dw $610A,$8000                                                       ;A8D77C;
-    db $E1                                                               ;A8D780;
-    dw $6108                                                             ;A8D781;
+    dw $000C                                                             ;A8D745;
+    %spritemapEntry(1, $1F0, $01, 0, 1, 2, 0, $142)
+    %spritemapEntry(1, $00, $01, 0, 1, 2, 0, $140)
+    %spritemapEntry(0, $1F7, $19, 0, 1, 2, 0, $149)
+    %spritemapEntry(0, $1FF, $19, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $1F7, $09, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $01, $16, 0, 1, 2, 0, $14B)
+    %spritemapEntry(0, $09, $16, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $01, $06, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $1F0, $F1, 0, 1, 2, 0, $12A)
+    %spritemapEntry(1, $00, $F1, 0, 1, 2, 0, $128)
+    %spritemapEntry(1, $1F0, $E1, 0, 1, 2, 0, $10A)
+    %spritemapEntry(1, $00, $E1, 0, 1, 2, 0, $108)
 
 Spritemap_Robot_17:
-    dw $000C,$81F0                                                       ;A8D783;
-    db $01                                                               ;A8D787;
-    dw $6146,$8000                                                       ;A8D788;
-    db $01                                                               ;A8D78C;
-    dw $6144,$01F4                                                       ;A8D78D;
-    db $19                                                               ;A8D791;
-    dw $6149,$01FC                                                       ;A8D792;
-    db $19                                                               ;A8D796;
-    dw $6148,$81F4                                                       ;A8D797;
-    db $09                                                               ;A8D79B;
-    dw $610C,$01FC                                                       ;A8D79C;
-    db $17                                                               ;A8D7A0;
-    dw $614B,$0004                                                       ;A8D7A1;
-    db $17                                                               ;A8D7A5;
-    dw $614A,$81FC                                                       ;A8D7A6;
-    db $07                                                               ;A8D7AA;
-    dw $610E,$81F0                                                       ;A8D7AB;
-    db $F1                                                               ;A8D7AF;
-    dw $6126,$8000                                                       ;A8D7B0;
-    db $F1                                                               ;A8D7B4;
-    dw $6124,$81F0                                                       ;A8D7B5;
-    db $E1                                                               ;A8D7B9;
-    dw $6106,$8000                                                       ;A8D7BA;
-    db $E1                                                               ;A8D7BE;
-    dw $6104                                                             ;A8D7BF;
+    dw $000C                                                             ;A8D783;
+    %spritemapEntry(1, $1F0, $01, 0, 1, 2, 0, $146)
+    %spritemapEntry(1, $00, $01, 0, 1, 2, 0, $144)
+    %spritemapEntry(0, $1F4, $19, 0, 1, 2, 0, $149)
+    %spritemapEntry(0, $1FC, $19, 0, 1, 2, 0, $148)
+    %spritemapEntry(1, $1F4, $09, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $1FC, $17, 0, 1, 2, 0, $14B)
+    %spritemapEntry(0, $04, $17, 0, 1, 2, 0, $14A)
+    %spritemapEntry(1, $1FC, $07, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $1F0, $F1, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $00, $F1, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $1F0, $E1, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $00, $E1, 0, 1, 2, 0, $104)
 
 Spritemap_Robot_18:
-    dw $0006,$8000                                                       ;A8D7C1;
-    db $01                                                               ;A8D7C5;
-    dw $212E,$81F0                                                       ;A8D7C6;
-    db $01                                                               ;A8D7CA;
-    dw $212C,$8000                                                       ;A8D7CB;
-    db $F1                                                               ;A8D7CF;
-    dw $2122,$81F0                                                       ;A8D7D0;
-    db $F1                                                               ;A8D7D4;
-    dw $2120,$8000                                                       ;A8D7D5;
-    db $E1                                                               ;A8D7D9;
-    dw $2102,$81F0                                                       ;A8D7DA;
-    db $E1                                                               ;A8D7DE;
-    dw $2100                                                             ;A8D7DF;
+    dw $0006                                                             ;A8D7C1;
+    %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $12E)
+    %spritemapEntry(1, $1F0, $01, 0, 0, 2, 0, $12C)
+    %spritemapEntry(1, $00, $F1, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1F0, $F1, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $100)
 
 Spritemap_Robot_19:
-    dw $0006,$8000                                                       ;A8D7E1;
-    db $01                                                               ;A8D7E5;
-    dw $2146,$81F0                                                       ;A8D7E6;
-    db $01                                                               ;A8D7EA;
-    dw $2144,$8000                                                       ;A8D7EB;
-    db $F1                                                               ;A8D7EF;
-    dw $2126,$81F0                                                       ;A8D7F0;
-    db $F1                                                               ;A8D7F4;
-    dw $2124,$8000                                                       ;A8D7F5;
-    db $E1                                                               ;A8D7F9;
-    dw $2106,$81F0                                                       ;A8D7FA;
-    db $E1                                                               ;A8D7FE;
-    dw $2104                                                             ;A8D7FF;
+    dw $0006                                                             ;A8D7E1;
+    %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $146)
+    %spritemapEntry(1, $1F0, $01, 0, 0, 2, 0, $144)
+    %spritemapEntry(1, $00, $F1, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1F0, $F1, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $104)
 
 Spritemap_Robot_1A:
-    dw $0006,$8000                                                       ;A8D801;
-    db $01                                                               ;A8D805;
-    dw $2142,$81F0                                                       ;A8D806;
-    db $01                                                               ;A8D80A;
-    dw $2140,$8000                                                       ;A8D80B;
-    db $F1                                                               ;A8D80F;
-    dw $212A,$81F0                                                       ;A8D810;
-    db $F1                                                               ;A8D814;
-    dw $2128,$8000                                                       ;A8D815;
-    db $E1                                                               ;A8D819;
-    dw $210A,$81F0                                                       ;A8D81A;
-    db $E1                                                               ;A8D81E;
-    dw $2108                                                             ;A8D81F;
+    dw $0006                                                             ;A8D801;
+    %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $142)
+    %spritemapEntry(1, $1F0, $01, 0, 0, 2, 0, $140)
+    %spritemapEntry(1, $00, $F1, 0, 0, 2, 0, $12A)
+    %spritemapEntry(1, $1F0, $F1, 0, 0, 2, 0, $128)
+    %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $10A)
+    %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $108)
+
 
 Palette_Bull:
     dw $3800,$3F57,$2E4D,$00E2,$0060,$3AB0,$220B,$1166                   ;A8D821;
     dw $0924,$435A,$3694,$15AD,$0508,$03FF,$0237,$00D1                   ;A8D831;
 
+
 InstList_Bull_Normal:
-    dw $000A                                                             ;A8D841;
-    dw Spritemap_Bull_0                                                  ;A8D843;
-    dw $000A                                                             ;A8D845;
-    dw Spritemap_Bull_1                                                  ;A8D847;
-    dw $000A                                                             ;A8D849;
-    dw Spritemap_Bull_0                                                  ;A8D84B;
-    dw $000A                                                             ;A8D84D;
-    dw Spritemap_Bull_2                                                  ;A8D84F;
+    dw $000A,Spritemap_Bull_0                                            ;A8D841;
+    dw $000A,Spritemap_Bull_1                                            ;A8D845;
+    dw $000A,Spritemap_Bull_0                                            ;A8D849;
+    dw $000A,Spritemap_Bull_2                                            ;A8D84D;
     dw Instruction_Common_GotoY                                          ;A8D851;
     dw InstList_Bull_Normal                                              ;A8D853;
 
 InstList_Bull_Shot_0:
-    dw Instruction_Common_TimerInY                                       ;A8D855;
-    dw $0005                                                             ;A8D857;
+    dw Instruction_Common_TimerInY,$0005                                 ;A8D855;
 
 InstList_Bull_Shot_1:
-    dw $0003                                                             ;A8D859;
-    dw Spritemap_Bull_0                                                  ;A8D85B;
-    dw $0003                                                             ;A8D85D;
-    dw Spritemap_Bull_1                                                  ;A8D85F;
-    dw $0003                                                             ;A8D861;
-    dw Spritemap_Bull_0                                                  ;A8D863;
-    dw $0003                                                             ;A8D865;
-    dw Spritemap_Bull_2                                                  ;A8D867;
+    dw $0003,Spritemap_Bull_0                                            ;A8D859;
+    dw $0003,Spritemap_Bull_1                                            ;A8D85D;
+    dw $0003,Spritemap_Bull_0                                            ;A8D861;
+    dw $0003,Spritemap_Bull_2                                            ;A8D865;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;A8D869;
     dw InstList_Bull_Shot_1                                              ;A8D86B;
     dw Instruction_Common_GotoY                                          ;A8D86D;
     dw InstList_Bull_Normal                                              ;A8D86F;
 
-BullConstants_AngleToMove_upFacingRight:
+BullConstants_AngleToMove:
+; Angle to move when shot by non-damaging projectile
+  .upFacingRight:
     dw $00C0                                                             ;A8D871;
-
-BullConstants_AngleToMove_upRight:
+  .upRight:
     dw $00E0                                                             ;A8D873;
-
-BullConstants_AngleToMove_right:
+  .right:
     dw $0000                                                             ;A8D875;
-
-BullConstants_AngleToMove_downRight:
+  .downRight:
     dw $0020                                                             ;A8D877;
-
-BullConstants_AngleToMove_downFacingRight:
+  .downFacingRight:
     dw $0040                                                             ;A8D879;
-
-BullConstants_AngleToMove_downFacingLeft:
+  .downFacingLeft:
     dw $0040                                                             ;A8D87B;
-
-BullConstants_AngleToMove_downLeft:
+  .downLeft:
     dw $0060                                                             ;A8D87D;
-
-BullConstants_AngleToMove_left:
+  .left:
     dw $0080                                                             ;A8D87F;
-
-BullConstants_AngleToMove_upLeft:
+  .upLeft:
     dw $00A0                                                             ;A8D881;
-
-BullConstants_AngleToMove_upFacingLeft:
+  .upFacingLeft:
     dw $00C0                                                             ;A8D883;
 
 BullConstants_MaxSpeeds:
+; Max speeds. Indexed by [enemy parameter 2] * 2
     dw $03FF,$04FF,$05FF,$06FF,$07FF,$08FF,$09FF,$0AFF                   ;A8D885;
 
-BullAccelerationIntervalTable_accel:
+BullAccelerationIntervalTable:
+; Indexed by [enemy parameter 1] * 4
+;        _________ Acceleration interval timer reset value
+;       |      ___ Deceleration interval timer reset value
+;       |     |
+  .accel:
     dw $0003                                                             ;A8D895;
+  .decel:
+    dw       $0001                                                       ;A8D897;
+    dw $0004,$0001
+    dw $0005,$0002
+    dw $0006,$0002
+    dw $0007,$0002
+    dw $0008,$0003
+    dw $0009,$0003
+    dw $000A,$0004
+    dw $000B,$0004
+    dw $000C,$0005
+    dw $000D,$0005
+    dw $000E,$0006
+    dw $000F,$0006
 
-BullAccelerationIntervalTable_decel:
-    dw $0001,$0004,$0001,$0005,$0002,$0006,$0002,$0007                   ;A8D897;
-    dw $0002,$0008,$0003,$0009,$0003,$000A,$0004,$000B                   ;A8D8A7;
-    dw $0004,$000C,$0005,$000D,$0005,$000E,$0006,$000F                   ;A8D8B7;
-    dw $0006                                                             ;A8D8C7;
 
 InitAI_Bull:
     LDX.W $0E54                                                          ;A8D8C9;
@@ -11331,43 +9762,29 @@ EnemyShot_Bull:
 
 
 Spritemap_Bull_0:
-    dw $0004,$81F8                                                       ;A8DB76;
-    db $00                                                               ;A8DB7A;
-    dw $210A,$81F0                                                       ;A8DB7B;
-    db $00                                                               ;A8DB7F;
-    dw $2109,$81F8                                                       ;A8DB80;
-    db $F0                                                               ;A8DB84;
-    dw $2107,$81F0                                                       ;A8DB85;
-    db $F0                                                               ;A8DB89;
-    dw $2106                                                             ;A8DB8A;
+    dw $0004                                                             ;A8DB76;
+    %spritemapEntry(1, $1F8, $00, 0, 0, 2, 0, $10A)
+    %spritemapEntry(1, $1F0, $00, 0, 0, 2, 0, $109)
+    %spritemapEntry(1, $1F8, $F0, 0, 0, 2, 0, $107)
+    %spritemapEntry(1, $1F0, $F0, 0, 0, 2, 0, $106)
 
 Spritemap_Bull_1:
-    dw $0004,$81F8                                                       ;A8DB8C;
-    db $00                                                               ;A8DB90;
-    dw $210D,$81F0                                                       ;A8DB91;
-    db $00                                                               ;A8DB95;
-    dw $210C,$81F8                                                       ;A8DB96;
-    db $F0                                                               ;A8DB9A;
-    dw $2104,$81F0                                                       ;A8DB9B;
-    db $F0                                                               ;A8DB9F;
-    dw $2103                                                             ;A8DBA0;
+    dw $0004                                                             ;A8DB8C;
+    %spritemapEntry(1, $1F8, $00, 0, 0, 2, 0, $10D)
+    %spritemapEntry(1, $1F0, $00, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $F0, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1F0, $F0, 0, 0, 2, 0, $103)
 
 Spritemap_Bull_2:
-    dw $0007,$0000                                                       ;A8DBA2;
-    db $08                                                               ;A8DBA6;
-    dw $211F,$0000                                                       ;A8DBA7;
-    db $00                                                               ;A8DBAB;
-    dw $210F,$01F8                                                       ;A8DBAC;
-    db $08                                                               ;A8DBB0;
-    dw $2123,$01F0                                                       ;A8DBB1;
-    db $08                                                               ;A8DBB5;
-    dw $2122,$81F0                                                       ;A8DBB6;
-    db $F8                                                               ;A8DBBA;
-    dw $2110,$81F8                                                       ;A8DBBB;
-    db $F0                                                               ;A8DBBF;
-    dw $2101,$81F0                                                       ;A8DBC0;
-    db $F0                                                               ;A8DBC4;
-    dw $2100                                                             ;A8DBC5;
+    dw $0007                                                             ;A8DBA2;
+    %spritemapEntry(0, $00, $08, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $10F)
+    %spritemapEntry(0, $1F8, $08, 0, 0, 2, 0, $123)
+    %spritemapEntry(0, $1F0, $08, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1F0, $F8, 0, 0, 2, 0, $110)
+    %spritemapEntry(1, $1F8, $F0, 0, 0, 2, 0, $101)
+    %spritemapEntry(1, $1F0, $F0, 0, 0, 2, 0, $100)
+
 
 Palette_Alcoon:
     dw $3800,$02FF,$01BF,$000F,$0008,$01BF,$011B,$00BA                   ;A8DBC7;
@@ -11377,132 +9794,88 @@ InstList_Alcoon_FacingLeft_Walking_0:
     dw Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision           ;A8DBE7;
 
 InstList_Alcoon_FacingLeft_Walking_1:
-    dw $000A                                                             ;A8DBE9;
-    dw Spritemap_Alcoon_FacingLeft_FrontFootForward                      ;A8DBEB;
+    dw $000A,Spritemap_Alcoon_FacingLeft_FrontFootForward                ;A8DBE9;
     dw Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision           ;A8DBED;
-    dw $000A                                                             ;A8DBEF;
-    dw Spritemap_Alcoon_FacingLeft_FeetTogether_FrontFootDown            ;A8DBF1;
+    dw $000A,Spritemap_Alcoon_FacingLeft_FeetTogether_FrontFootDown      ;A8DBEF;
     dw Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision           ;A8DBF3;
-    dw $000A                                                             ;A8DBF5;
-    dw Spritemap_Alcoon_FacingLeft_FrontFootBack                         ;A8DBF7;
+    dw $000A,Spritemap_Alcoon_FacingLeft_FrontFootBack                   ;A8DBF5;
     dw Instruction_Alcoon_DecrementStepCounter_MoveHorizontally          ;A8DBF9;
-    dw $000A                                                             ;A8DBFB;
-    dw Spritemap_Alcoon_FacingLeft_FeetTogether_BackFootForward          ;A8DBFD;
+    dw $000A,Spritemap_Alcoon_FacingLeft_FeetTogether_BackFootForward    ;A8DBFB;
     dw Instruction_Common_GotoY                                          ;A8DBFF;
     dw InstList_Alcoon_FacingLeft_Walking_0                              ;A8DC01;
 
 InstList_Alcoon_FacingLeft_SpawnFireballs:
-    dw $0014                                                             ;A8DC03;
-    dw Spritemap_Alcoon_FacingLeft_WingFullyExtended_BackFootFoward      ;A8DC05;
-    dw $0009                                                             ;A8DC07;
-    dw Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging      ;A8DC09;
-    dw $0010                                                             ;A8DC0B;
-    dw Spritemap_Alcoon_FacingLeft_WingForward_AboutToSpit               ;A8DC0D;
-    dw $0003                                                             ;A8DC0F;
-    dw Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging      ;A8DC11;
+    dw $0014,Spritemap_Alcoon_FacingLeft_WingFullyExtended_BackFootFoward ;A8DC03;
+    dw $0009,Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging ;A8DC07;
+    dw $0010,Spritemap_Alcoon_FacingLeft_WingForward_AboutToSpit         ;A8DC0B;
+    dw $0003,Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging ;A8DC0F;
     dw Instruction_Alcoon_SpawnAlcoonFireballHorizontally                ;A8DC13;
-    dw $000A                                                             ;A8DC15;
-    dw Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit            ;A8DC17;
-    dw $000A                                                             ;A8DC19;
-    dw Spritemap_Alcoon_FacingLeft_WingFullyExtended_BackFootFoward      ;A8DC1B;
-    dw $0009                                                             ;A8DC1D;
-    dw Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging      ;A8DC1F;
-    dw $0010                                                             ;A8DC21;
-    dw Spritemap_Alcoon_FacingLeft_WingForward_AboutToSpit               ;A8DC23;
-    dw $0003                                                             ;A8DC25;
-    dw Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging      ;A8DC27;
+    dw $000A,Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit      ;A8DC15;
+    dw $000A,Spritemap_Alcoon_FacingLeft_WingFullyExtended_BackFootFoward ;A8DC19;
+    dw $0009,Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging ;A8DC1D;
+    dw $0010,Spritemap_Alcoon_FacingLeft_WingForward_AboutToSpit         ;A8DC21;
+    dw $0003,Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging ;A8DC25;
     dw Instruction_Alcoon_SpawnAlcoonFireballUpward                      ;A8DC29;
-    dw $000A                                                             ;A8DC2B;
-    dw Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit            ;A8DC2D;
-    dw $000A                                                             ;A8DC2F;
-    dw Spritemap_Alcoon_FacingLeft_WingFullyExtended_BackFootFoward      ;A8DC31;
-    dw $0009                                                             ;A8DC33;
-    dw Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging      ;A8DC35;
-    dw $0010                                                             ;A8DC37;
-    dw Spritemap_Alcoon_FacingLeft_WingForward_AboutToSpit               ;A8DC39;
-    dw $0003                                                             ;A8DC3B;
-    dw Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging      ;A8DC3D;
+    dw $000A,Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit      ;A8DC2B;
+    dw $000A,Spritemap_Alcoon_FacingLeft_WingFullyExtended_BackFootFoward ;A8DC2F;
+    dw $0009,Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging ;A8DC33;
+    dw $0010,Spritemap_Alcoon_FacingLeft_WingForward_AboutToSpit         ;A8DC37;
+    dw $0003,Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging ;A8DC3B;
     dw Instruction_Alcoon_SpawnAlcoonFireballDownward                    ;A8DC3F;
-    dw $0028                                                             ;A8DC41;
-    dw Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit            ;A8DC43;
+    dw $0028,Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit      ;A8DC41;
     dw Instruction_Alcoon_StartWalking                                   ;A8DC45;
-    dw $0001                                                             ;A8DC47;
-    dw Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit            ;A8DC49;
+    dw $0001,Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit      ;A8DC47;
 
 InstList_Alcoon_FacingLeft_Airborne_LookingUp:
-    dw $7FFF                                                             ;A8DC4B;
-    dw UNUSED_Spritemap_Alcoon_FacingLeft_LookingUp_A8E0BB               ;A8DC4D;
+    dw $7FFF,UNUSED_Spritemap_Alcoon_FacingLeft_LookingUp_A8E0BB         ;A8DC4B;
     dw Instruction_Common_Sleep                                          ;A8DC4F;
 
 InstList_Alcoon_FacingLeft_Airborne_LookingForward:
-    dw $7FFF                                                             ;A8DC51;
-    dw Spritemap_Alcoon_FacingLeft_FeetTogether_BackFootForward          ;A8DC53;
+    dw $7FFF,Spritemap_Alcoon_FacingLeft_FeetTogether_BackFootForward    ;A8DC51;
     dw Instruction_Common_Sleep                                          ;A8DC55;
 
 InstList_Alcoon_FacingRight_Walking_0:
     dw Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision           ;A8DC57;
 
 InstList_Alcoon_FacingRight_Walking_1:
-    dw $000A                                                             ;A8DC59;
-    dw Spritemap_Alcoon_FacingRight_FrontFootFoward                      ;A8DC5B;
+    dw $000A,Spritemap_Alcoon_FacingRight_FrontFootFoward                ;A8DC59;
     dw Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision           ;A8DC5D;
-    dw $000A                                                             ;A8DC5F;
-    dw Spritemap_Alcoon_FacingRight_FeetTogether_FrontFootBack           ;A8DC61;
+    dw $000A,Spritemap_Alcoon_FacingRight_FeetTogether_FrontFootBack     ;A8DC5F;
     dw Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision           ;A8DC63;
-    dw $000A                                                             ;A8DC65;
-    dw Spritemap_Alcoon_FacingRight_FrontFootBack                        ;A8DC67;
+    dw $000A,Spritemap_Alcoon_FacingRight_FrontFootBack                  ;A8DC65;
     dw Instruction_Alcoon_DecrementStepCounter_MoveHorizontally          ;A8DC69;
-    dw $000A                                                             ;A8DC6B;
-    dw Spritemap_Alcoon_FacingRight_FrontFootUp                          ;A8DC6D;
+    dw $000A,Spritemap_Alcoon_FacingRight_FrontFootUp                    ;A8DC6B;
     dw Instruction_Common_GotoY                                          ;A8DC6F;
     dw InstList_Alcoon_FacingRight_Walking_0                             ;A8DC71;
 
 InstList_Alcoon_FacingRight_SpawnFireballs:
-    dw $0014                                                             ;A8DC73;
-    dw Spritemap_Alcoon_FaceRight_WingFullyExtended_BackFootForward      ;A8DC75;
-    dw $0009                                                             ;A8DC77;
-    dw Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging       ;A8DC79;
-    dw $0010                                                             ;A8DC7B;
-    dw Spritemap_Alcoon_FacingRight_WingForward_AboutToSpit              ;A8DC7D;
-    dw $0003                                                             ;A8DC7F;
-    dw Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging       ;A8DC81;
+    dw $0014,Spritemap_Alcoon_FaceRight_WingFullyExtended_BackFootForward ;A8DC73;
+    dw $0009,Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging ;A8DC77;
+    dw $0010,Spritemap_Alcoon_FacingRight_WingForward_AboutToSpit        ;A8DC7B;
+    dw $0003,Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging ;A8DC7F;
     dw Instruction_Alcoon_SpawnAlcoonFireballHorizontally                ;A8DC83;
-    dw $000A                                                             ;A8DC85;
-    dw Spritemap_Alcoon_FacingRight_WingExtended_MouthJustSpit           ;A8DC87;
-    dw $000A                                                             ;A8DC89;
-    dw Spritemap_Alcoon_FaceRight_WingFullyExtended_BackFootForward      ;A8DC8B;
-    dw $0009                                                             ;A8DC8D;
-    dw Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging       ;A8DC8F;
-    dw $0010                                                             ;A8DC91;
-    dw Spritemap_Alcoon_FacingRight_WingForward_AboutToSpit              ;A8DC93;
-    dw $0003                                                             ;A8DC95;
-    dw Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging       ;A8DC97;
+    dw $000A,Spritemap_Alcoon_FacingRight_WingExtended_MouthJustSpit     ;A8DC85;
+    dw $000A,Spritemap_Alcoon_FaceRight_WingFullyExtended_BackFootForward ;A8DC89;
+    dw $0009,Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging ;A8DC8D;
+    dw $0010,Spritemap_Alcoon_FacingRight_WingForward_AboutToSpit        ;A8DC91;
+    dw $0003,Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging ;A8DC95;
     dw Instruction_Alcoon_SpawnAlcoonFireballUpward                      ;A8DC99;
-    dw $000A                                                             ;A8DC9B;
-    dw Spritemap_Alcoon_FacingRight_WingExtended_MouthJustSpit           ;A8DC9D;
-    dw $000A                                                             ;A8DC9F;
-    dw Spritemap_Alcoon_FaceRight_WingFullyExtended_BackFootForward      ;A8DCA1;
-    dw $0009                                                             ;A8DCA3;
-    dw Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging       ;A8DCA5;
-    dw $0010                                                             ;A8DCA7;
-    dw Spritemap_Alcoon_FacingRight_WingForward_AboutToSpit              ;A8DCA9;
-    dw $0003                                                             ;A8DCAB;
-    dw Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging       ;A8DCAD;
+    dw $000A,Spritemap_Alcoon_FacingRight_WingExtended_MouthJustSpit     ;A8DC9B;
+    dw $000A,Spritemap_Alcoon_FaceRight_WingFullyExtended_BackFootForward ;A8DC9F;
+    dw $0009,Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging ;A8DCA3;
+    dw $0010,Spritemap_Alcoon_FacingRight_WingForward_AboutToSpit        ;A8DCA7;
+    dw $0003,Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging ;A8DCAB;
     dw Instruction_Alcoon_SpawnAlcoonFireballDownward                    ;A8DCAF;
-    dw $0028                                                             ;A8DCB1;
-    dw Spritemap_Alcoon_FacingRight_WingExtended_MouthJustSpit           ;A8DCB3;
+    dw $0028,Spritemap_Alcoon_FacingRight_WingExtended_MouthJustSpit     ;A8DCB1;
     dw Instruction_Alcoon_StartWalking                                   ;A8DCB5;
-    dw $0001                                                             ;A8DCB7;
-    dw Spritemap_Alcoon_FacingRight_WingExtended_MouthJustSpit           ;A8DCB9;
+    dw $0001,Spritemap_Alcoon_FacingRight_WingExtended_MouthJustSpit     ;A8DCB7;
 
 InstList_Alcoon_FacingRight_Airborne_LookingUp:
-    dw $7FFF                                                             ;A8DCBB;
-    dw Spritemap_Alcoon_FacingRight_LookingUp                            ;A8DCBD;
+    dw $7FFF,Spritemap_Alcoon_FacingRight_LookingUp                      ;A8DCBB;
     dw Instruction_Common_Sleep                                          ;A8DCBF;
 
 InstList_Alcoon_FacingRight_Airborne_LookingForward:
-    dw $7FFF                                                             ;A8DCC1;
-    dw Spritemap_Alcoon_FacingRight_FrontFootUp                          ;A8DCC3;
+    dw $7FFF,Spritemap_Alcoon_FacingRight_FrontFootUp                    ;A8DCC1;
     dw Instruction_Common_Sleep                                          ;A8DCC5;
 
 AlcoonConstants_XThresholdToEmerge:
@@ -11920,316 +10293,197 @@ endif ; !FEATURE_KEEP_UNREFERENCED
 
 
 Spritemap_Alcoon_FacingLeft_FrontFootForward:
-    dw $0006,$81FD                                                       ;A8DFA2;
-    db $F3                                                               ;A8DFA6;
-    dw $2124,$8004                                                       ;A8DFA7;
-    db $FC                                                               ;A8DFAB;
-    dw $210C,$81F8                                                       ;A8DFAC;
-    db $F8                                                               ;A8DFB0;
-    dw $210A,$81F8                                                       ;A8DFB1;
-    db $08                                                               ;A8DFB5;
-    dw $2102,$01ED                                                       ;A8DFB6;
-    db $F0                                                               ;A8DFBA;
-    dw $212A,$81F5                                                       ;A8DFBB;
-    db $E8                                                               ;A8DFBF;
-    dw $2100                                                             ;A8DFC0;
+    dw $0006                                                             ;A8DFA2;
+    %spritemapEntry(1, $1FD, $F3, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $04, $FC, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10A)
+    %spritemapEntry(1, $1F8, $08, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $1ED, $F0, 0, 0, 2, 0, $12A)
+    %spritemapEntry(1, $1F5, $E8, 0, 0, 2, 0, $100)
 
 Spritemap_Alcoon_FacingLeft_FeetTogether_FrontFootDown:
-    dw $0006,$8004                                                       ;A8DFC2;
-    db $FB                                                               ;A8DFC6;
-    dw $210E,$81FD                                                       ;A8DFC7;
-    db $F2                                                               ;A8DFCB;
-    dw $2126,$81F8                                                       ;A8DFCC;
-    db $07                                                               ;A8DFD0;
-    dw $2104,$81F8                                                       ;A8DFD1;
-    db $F7                                                               ;A8DFD5;
-    dw $210A,$01EE                                                       ;A8DFD6;
-    db $EF                                                               ;A8DFDA;
-    dw $212A,$81F6                                                       ;A8DFDB;
-    db $E7                                                               ;A8DFDF;
-    dw $2100                                                             ;A8DFE0;
+    dw $0006                                                             ;A8DFC2;
+    %spritemapEntry(1, $04, $FB, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $1FD, $F2, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1F8, $07, 0, 0, 2, 0, $104)
+    %spritemapEntry(1, $1F8, $F7, 0, 0, 2, 0, $10A)
+    %spritemapEntry(0, $1EE, $EF, 0, 0, 2, 0, $12A)
+    %spritemapEntry(1, $1F6, $E7, 0, 0, 2, 0, $100)
 
 Spritemap_Alcoon_FacingLeft_FrontFootBack:
-    dw $0007,$01FD                                                       ;A8DFE2;
-    db $FB                                                               ;A8DFE6;
-    dw $213D,$01FD                                                       ;A8DFE7;
-    db $F3                                                               ;A8DFEB;
-    dw $213C,$8004                                                       ;A8DFEC;
-    db $FC                                                               ;A8DFF0;
-    dw $2120,$81F8                                                       ;A8DFF1;
-    db $08                                                               ;A8DFF5;
-    dw $2106,$81F8                                                       ;A8DFF6;
-    db $F8                                                               ;A8DFFA;
-    dw $210A,$01EF                                                       ;A8DFFB;
-    db $F0                                                               ;A8DFFF;
-    dw $212A,$81F7                                                       ;A8E000;
-    db $E8                                                               ;A8E004;
-    dw $2100                                                             ;A8E005;
+    dw $0007                                                             ;A8DFE2;
+    %spritemapEntry(0, $1FD, $FB, 0, 0, 2, 0, $13D)
+    %spritemapEntry(0, $1FD, $F3, 0, 0, 2, 0, $13C)
+    %spritemapEntry(1, $04, $FC, 0, 0, 2, 0, $120)
+    %spritemapEntry(1, $1F8, $08, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10A)
+    %spritemapEntry(0, $1EF, $F0, 0, 0, 2, 0, $12A)
+    %spritemapEntry(1, $1F7, $E8, 0, 0, 2, 0, $100)
 
 Spritemap_Alcoon_FacingLeft_FeetTogether_BackFootForward:
-    dw $0006,$8004                                                       ;A8E007;
-    db $FB                                                               ;A8E00B;
-    dw $2122,$81FD                                                       ;A8E00C;
-    db $F2                                                               ;A8E010;
-    dw $2126,$81F8                                                       ;A8E011;
-    db $07                                                               ;A8E015;
-    dw $2108,$81F8                                                       ;A8E016;
-    db $F7                                                               ;A8E01A;
-    dw $210A,$01EE                                                       ;A8E01B;
-    db $EF                                                               ;A8E01F;
-    dw $212A,$81F6                                                       ;A8E020;
-    db $E7                                                               ;A8E024;
-    dw $2100                                                             ;A8E025;
+    dw $0006                                                             ;A8E007;
+    %spritemapEntry(1, $04, $FB, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1FD, $F2, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1F8, $07, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $1F8, $F7, 0, 0, 2, 0, $10A)
+    %spritemapEntry(0, $1EE, $EF, 0, 0, 2, 0, $12A)
+    %spritemapEntry(1, $1F6, $E7, 0, 0, 2, 0, $100)
 
 Spritemap_Alcoon_FacingLeft_WingFullyExtended_BackFootFoward:
-    dw $0006,$81FD                                                       ;A8E027;
-    db $F3                                                               ;A8E02B;
-    dw $2124,$8004                                                       ;A8E02C;
-    db $FC                                                               ;A8E030;
-    dw $210C,$81F8                                                       ;A8E031;
-    db $08                                                               ;A8E035;
-    dw $2106,$81F8                                                       ;A8E036;
-    db $F8                                                               ;A8E03A;
-    dw $210A,$01EE                                                       ;A8E03B;
-    db $F0                                                               ;A8E03F;
-    dw $212A,$81F6                                                       ;A8E040;
-    db $E8                                                               ;A8E044;
-    dw $2100                                                             ;A8E045;
+    dw $0006                                                             ;A8E027;
+    %spritemapEntry(1, $1FD, $F3, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $04, $FC, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $08, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10A)
+    %spritemapEntry(0, $1EE, $F0, 0, 0, 2, 0, $12A)
+    %spritemapEntry(1, $1F6, $E8, 0, 0, 2, 0, $100)
 
 Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging:
-    dw $0007,$81FE                                                       ;A8E047;
-    db $F3                                                               ;A8E04B;
-    dw $2126,$8005                                                       ;A8E04C;
-    db $FC                                                               ;A8E050;
-    dw $210E,$01F7                                                       ;A8E051;
-    db $F0                                                               ;A8E055;
-    dw $212E,$81F8                                                       ;A8E056;
-    db $08                                                               ;A8E05A;
-    dw $2106,$81F9                                                       ;A8E05B;
-    db $F8                                                               ;A8E05F;
-    dw $210A,$01F0                                                       ;A8E060;
-    db $F0                                                               ;A8E064;
-    dw $212A,$81F7                                                       ;A8E065;
-    db $E8                                                               ;A8E069;
-    dw $2100                                                             ;A8E06A;
+    dw $0007                                                             ;A8E047;
+    %spritemapEntry(1, $1FE, $F3, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $05, $FC, 0, 0, 2, 0, $10E)
+    %spritemapEntry(0, $1F7, $F0, 0, 0, 2, 0, $12E)
+    %spritemapEntry(1, $1F8, $08, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1F9, $F8, 0, 0, 2, 0, $10A)
+    %spritemapEntry(0, $1F0, $F0, 0, 0, 2, 0, $12A)
+    %spritemapEntry(1, $1F7, $E8, 0, 0, 2, 0, $100)
 
 Spritemap_Alcoon_FacingLeft_WingForward_AboutToSpit:
-    dw $0009,$0000                                                       ;A8E06C;
-    db $F0                                                               ;A8E070;
-    dw $213B,$01FE                                                       ;A8E071;
-    db $FB                                                               ;A8E075;
-    dw $213D,$01FE                                                       ;A8E076;
-    db $F3                                                               ;A8E07A;
-    dw $213C,$8005                                                       ;A8E07B;
-    db $FC                                                               ;A8E07F;
-    dw $2120,$01F8                                                       ;A8E080;
-    db $F0                                                               ;A8E084;
-    dw $212F,$81F8                                                       ;A8E085;
-    db $08                                                               ;A8E089;
-    dw $2106,$81F9                                                       ;A8E08A;
-    db $F8                                                               ;A8E08E;
-    dw $210A,$01F2                                                       ;A8E08F;
-    db $F0                                                               ;A8E093;
-    dw $212A,$81F8                                                       ;A8E094;
-    db $E8                                                               ;A8E098;
-    dw $2100                                                             ;A8E099;
+    dw $0009                                                             ;A8E06C;
+    %spritemapEntry(0, $00, $F0, 0, 0, 2, 0, $13B)
+    %spritemapEntry(0, $1FE, $FB, 0, 0, 2, 0, $13D)
+    %spritemapEntry(0, $1FE, $F3, 0, 0, 2, 0, $13C)
+    %spritemapEntry(1, $05, $FC, 0, 0, 2, 0, $120)
+    %spritemapEntry(0, $1F8, $F0, 0, 0, 2, 0, $12F)
+    %spritemapEntry(1, $1F8, $08, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1F9, $F8, 0, 0, 2, 0, $10A)
+    %spritemapEntry(0, $1F2, $F0, 0, 0, 2, 0, $12A)
+    %spritemapEntry(1, $1F8, $E8, 0, 0, 2, 0, $100)
 
 Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit:
-    dw $0006,$81FD                                                       ;A8E09B;
-    db $F3                                                               ;A8E09F;
-    dw $2124,$8004                                                       ;A8E0A0;
-    db $FC                                                               ;A8E0A4;
-    dw $2122,$01EE                                                       ;A8E0A5;
-    db $F0                                                               ;A8E0A9;
-    dw $212B,$81F8                                                       ;A8E0AA;
-    db $08                                                               ;A8E0AE;
-    dw $2106,$81F8                                                       ;A8E0AF;
-    db $F8                                                               ;A8E0B3;
-    dw $210A,$81F6                                                       ;A8E0B4;
-    db $E8                                                               ;A8E0B8;
-    dw $2100                                                             ;A8E0B9;
+    dw $0006                                                             ;A8E09B;
+    %spritemapEntry(1, $1FD, $F3, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $04, $FC, 0, 0, 2, 0, $122)
+    %spritemapEntry(0, $1EE, $F0, 0, 0, 2, 0, $12B)
+    %spritemapEntry(1, $1F8, $08, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10A)
+    %spritemapEntry(1, $1F6, $E8, 0, 0, 2, 0, $100)
 
+if  !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemap_Alcoon_FacingLeft_LookingUp_A8E0BB:
-    dw $0006,$81FD                                                       ;A8E0BB;
-    db $F3                                                               ;A8E0BF;
-    dw $2124,$01FA                                                       ;A8E0C0;
-    db $E4                                                               ;A8E0C4;
-    dw $613A,$81FA                                                       ;A8E0C5;
-    db $EC                                                               ;A8E0C9;
-    dw $2128,$8004                                                       ;A8E0CA;
-    db $FC                                                               ;A8E0CE;
-    dw $2122,$81F8                                                       ;A8E0CF;
-    db $08                                                               ;A8E0D3;
-    dw $2108,$81F8                                                       ;A8E0D4;
-    db $F8                                                               ;A8E0D8;
-    dw $210A                                                             ;A8E0D9;
+    dw $0006                                                             ;A8E0BB;
+    %spritemapEntry(1, $1FD, $F3, 0, 0, 2, 0, $124)
+    %spritemapEntry(0, $1FA, $E4, 0, 1, 2, 0, $13A)
+    %spritemapEntry(1, $1FA, $EC, 0, 0, 2, 0, $128)
+    %spritemapEntry(1, $04, $FC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1F8, $08, 0, 0, 2, 0, $108)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10A)
+endif ; !FEATURE_KEEP_UNREFERENCED
 
 Spritemap_Alcoon_FacingRight_FrontFootFoward:
-    dw $0006,$81F3                                                       ;A8E0DB;
-    db $F3                                                               ;A8E0DF;
-    dw $6124,$81EC                                                       ;A8E0E0;
-    db $FC                                                               ;A8E0E4;
-    dw $610C,$81F8                                                       ;A8E0E5;
-    db $F8                                                               ;A8E0E9;
-    dw $610A,$81F8                                                       ;A8E0EA;
-    db $08                                                               ;A8E0EE;
-    dw $6102,$000B                                                       ;A8E0EF;
-    db $F0                                                               ;A8E0F3;
-    dw $612A,$81FB                                                       ;A8E0F4;
-    db $E8                                                               ;A8E0F8;
-    dw $6100                                                             ;A8E0F9;
+    dw $0006                                                             ;A8E0DB;
+    %spritemapEntry(1, $1F3, $F3, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $1EC, $FC, 0, 1, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10A)
+    %spritemapEntry(1, $1F8, $08, 0, 1, 2, 0, $102)
+    %spritemapEntry(0, $0B, $F0, 0, 1, 2, 0, $12A)
+    %spritemapEntry(1, $1FB, $E8, 0, 1, 2, 0, $100)
 
 Spritemap_Alcoon_FacingRight_FeetTogether_FrontFootBack:
-    dw $0006,$81EC                                                       ;A8E0FB;
-    db $FB                                                               ;A8E0FF;
-    dw $610E,$81F3                                                       ;A8E100;
-    db $F2                                                               ;A8E104;
-    dw $6126,$81F8                                                       ;A8E105;
-    db $07                                                               ;A8E109;
-    dw $6104,$81F8                                                       ;A8E10A;
-    db $F7                                                               ;A8E10E;
-    dw $610A,$000A                                                       ;A8E10F;
-    db $EF                                                               ;A8E113;
-    dw $612A,$81FA                                                       ;A8E114;
-    db $E7                                                               ;A8E118;
-    dw $6100                                                             ;A8E119;
+    dw $0006                                                             ;A8E0FB;
+    %spritemapEntry(1, $1EC, $FB, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $1F3, $F2, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $1F8, $07, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $1F8, $F7, 0, 1, 2, 0, $10A)
+    %spritemapEntry(0, $0A, $EF, 0, 1, 2, 0, $12A)
+    %spritemapEntry(1, $1FA, $E7, 0, 1, 2, 0, $100)
 
 Spritemap_Alcoon_FacingRight_FrontFootBack:
-    dw $0007,$01FB                                                       ;A8E11B;
-    db $FB                                                               ;A8E11F;
-    dw $613D,$01FB                                                       ;A8E120;
-    db $F3                                                               ;A8E124;
-    dw $613C,$81EC                                                       ;A8E125;
-    db $FC                                                               ;A8E129;
-    dw $6120,$81F8                                                       ;A8E12A;
-    db $08                                                               ;A8E12E;
-    dw $6106,$81F8                                                       ;A8E12F;
-    db $F8                                                               ;A8E133;
-    dw $610A,$0009                                                       ;A8E134;
-    db $F0                                                               ;A8E138;
-    dw $612A,$81F9                                                       ;A8E139;
-    db $E8                                                               ;A8E13D;
-    dw $6100                                                             ;A8E13E;
+    dw $0007                                                             ;A8E11B;
+    %spritemapEntry(0, $1FB, $FB, 0, 1, 2, 0, $13D)
+    %spritemapEntry(0, $1FB, $F3, 0, 1, 2, 0, $13C)
+    %spritemapEntry(1, $1EC, $FC, 0, 1, 2, 0, $120)
+    %spritemapEntry(1, $1F8, $08, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10A)
+    %spritemapEntry(0, $09, $F0, 0, 1, 2, 0, $12A)
+    %spritemapEntry(1, $1F9, $E8, 0, 1, 2, 0, $100)
 
 Spritemap_Alcoon_FacingRight_FrontFootUp:
-    dw $0006,$81EC                                                       ;A8E140;
-    db $FB                                                               ;A8E144;
-    dw $6122,$81F3                                                       ;A8E145;
-    db $F2                                                               ;A8E149;
-    dw $6126,$81F8                                                       ;A8E14A;
-    db $07                                                               ;A8E14E;
-    dw $6108,$81F8                                                       ;A8E14F;
-    db $F7                                                               ;A8E153;
-    dw $610A,$000A                                                       ;A8E154;
-    db $EF                                                               ;A8E158;
-    dw $612A,$81FA                                                       ;A8E159;
-    db $E7                                                               ;A8E15D;
-    dw $6100                                                             ;A8E15E;
+    dw $0006                                                             ;A8E140;
+    %spritemapEntry(1, $1EC, $FB, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $1F3, $F2, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $1F8, $07, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $1F8, $F7, 0, 1, 2, 0, $10A)
+    %spritemapEntry(0, $0A, $EF, 0, 1, 2, 0, $12A)
+    %spritemapEntry(1, $1FA, $E7, 0, 1, 2, 0, $100)
 
 Spritemap_Alcoon_FaceRight_WingFullyExtended_BackFootForward:
-    dw $0006,$81F3                                                       ;A8E160;
-    db $F3                                                               ;A8E164;
-    dw $6124,$81EC                                                       ;A8E165;
-    db $FC                                                               ;A8E169;
-    dw $610C,$81F8                                                       ;A8E16A;
-    db $08                                                               ;A8E16E;
-    dw $6106,$81F8                                                       ;A8E16F;
-    db $F8                                                               ;A8E173;
-    dw $610A,$000A                                                       ;A8E174;
-    db $F0                                                               ;A8E178;
-    dw $612A,$81FA                                                       ;A8E179;
-    db $E8                                                               ;A8E17D;
-    dw $6100                                                             ;A8E17E;
+    dw $0006                                                             ;A8E160;
+    %spritemapEntry(1, $1F3, $F3, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $1EC, $FC, 0, 1, 2, 0, $10C)
+    %spritemapEntry(1, $1F8, $08, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10A)
+    %spritemapEntry(0, $0A, $F0, 0, 1, 2, 0, $12A)
+    %spritemapEntry(1, $1FA, $E8, 0, 1, 2, 0, $100)
 
 Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging:
-    dw $0007,$81F2                                                       ;A8E180;
-    db $F3                                                               ;A8E184;
-    dw $6126,$81EB                                                       ;A8E185;
-    db $FC                                                               ;A8E189;
-    dw $610E,$0001                                                       ;A8E18A;
-    db $F0                                                               ;A8E18E;
-    dw $612E,$81F8                                                       ;A8E18F;
-    db $08                                                               ;A8E193;
-    dw $6106,$81F7                                                       ;A8E194;
-    db $F8                                                               ;A8E198;
-    dw $610A,$0008                                                       ;A8E199;
-    db $F0                                                               ;A8E19D;
-    dw $612A,$81F9                                                       ;A8E19E;
-    db $E8                                                               ;A8E1A2;
-    dw $6100                                                             ;A8E1A3;
+    dw $0007                                                             ;A8E180;
+    %spritemapEntry(1, $1F2, $F3, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $1EB, $FC, 0, 1, 2, 0, $10E)
+    %spritemapEntry(0, $01, $F0, 0, 1, 2, 0, $12E)
+    %spritemapEntry(1, $1F8, $08, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $1F7, $F8, 0, 1, 2, 0, $10A)
+    %spritemapEntry(0, $08, $F0, 0, 1, 2, 0, $12A)
+    %spritemapEntry(1, $1F9, $E8, 0, 1, 2, 0, $100)
 
 Spritemap_Alcoon_FacingRight_WingForward_AboutToSpit:
-    dw $0009,$01F8                                                       ;A8E1A5;
-    db $F0                                                               ;A8E1A9;
-    dw $613B,$01FA                                                       ;A8E1AA;
-    db $FB                                                               ;A8E1AE;
-    dw $613D,$01FA                                                       ;A8E1AF;
-    db $F3                                                               ;A8E1B3;
-    dw $613C,$81EB                                                       ;A8E1B4;
-    db $FC                                                               ;A8E1B8;
-    dw $6120,$0000                                                       ;A8E1B9;
-    db $F0                                                               ;A8E1BD;
-    dw $612F,$81F8                                                       ;A8E1BE;
-    db $08                                                               ;A8E1C2;
-    dw $6106,$81F7                                                       ;A8E1C3;
-    db $F8                                                               ;A8E1C7;
-    dw $610A,$0006                                                       ;A8E1C8;
-    db $F0                                                               ;A8E1CC;
-    dw $612A,$81F8                                                       ;A8E1CD;
-    db $E8                                                               ;A8E1D1;
-    dw $6100                                                             ;A8E1D2;
+    dw $0009                                                             ;A8E1A5;
+    %spritemapEntry(0, $1F8, $F0, 0, 1, 2, 0, $13B)
+    %spritemapEntry(0, $1FA, $FB, 0, 1, 2, 0, $13D)
+    %spritemapEntry(0, $1FA, $F3, 0, 1, 2, 0, $13C)
+    %spritemapEntry(1, $1EB, $FC, 0, 1, 2, 0, $120)
+    %spritemapEntry(0, $00, $F0, 0, 1, 2, 0, $12F)
+    %spritemapEntry(1, $1F8, $08, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $1F7, $F8, 0, 1, 2, 0, $10A)
+    %spritemapEntry(0, $06, $F0, 0, 1, 2, 0, $12A)
+    %spritemapEntry(1, $1F8, $E8, 0, 1, 2, 0, $100)
 
 Spritemap_Alcoon_FacingRight_WingExtended_MouthJustSpit:
-    dw $0006,$81F3                                                       ;A8E1D4;
-    db $F3                                                               ;A8E1D8;
-    dw $6124,$81EC                                                       ;A8E1D9;
-    db $FC                                                               ;A8E1DD;
-    dw $6122,$000A                                                       ;A8E1DE;
-    db $F0                                                               ;A8E1E2;
-    dw $612B,$81F8                                                       ;A8E1E3;
-    db $08                                                               ;A8E1E7;
-    dw $6106,$81F8                                                       ;A8E1E8;
-    db $F8                                                               ;A8E1EC;
-    dw $610A,$81FA                                                       ;A8E1ED;
-    db $E8                                                               ;A8E1F1;
-    dw $6100                                                             ;A8E1F2;
+    dw $0006                                                             ;A8E1D4;
+    %spritemapEntry(1, $1F3, $F3, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $1EC, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(0, $0A, $F0, 0, 1, 2, 0, $12B)
+    %spritemapEntry(1, $1F8, $08, 0, 1, 2, 0, $106)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10A)
+    %spritemapEntry(1, $1FA, $E8, 0, 1, 2, 0, $100)
 
 Spritemap_Alcoon_FacingRight_LookingUp:
-    dw $0006,$81F3                                                       ;A8E1F4;
-    db $F3                                                               ;A8E1F8;
-    dw $6124,$01FE                                                       ;A8E1F9;
-    db $E4                                                               ;A8E1FD;
-    dw $213A,$81F6                                                       ;A8E1FE;
-    db $EC                                                               ;A8E202;
-    dw $6128,$81EC                                                       ;A8E203;
-    db $FC                                                               ;A8E207;
-    dw $6122,$81F8                                                       ;A8E208;
-    db $08                                                               ;A8E20C;
-    dw $6108,$81F8                                                       ;A8E20D;
-    db $F8                                                               ;A8E211;
-    dw $610A                                                             ;A8E212;
+    dw $0006                                                             ;A8E1F4;
+    %spritemapEntry(1, $1F3, $F3, 0, 1, 2, 0, $124)
+    %spritemapEntry(0, $1FE, $E4, 0, 0, 2, 0, $13A)
+    %spritemapEntry(1, $1F6, $EC, 0, 1, 2, 0, $128)
+    %spritemapEntry(1, $1EC, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $1F8, $08, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10A)
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemap_Alcoon_FireballProjectile_0_A8E214:
-    dw $0001,$01FC                                                       ;A8E214;
-    db $FC                                                               ;A8E218;
-    dw $612C                                                             ;A8E219;
+    dw $0001                                                             ;A8E214;
+    %spritemapEntry(0, $1FC, $FC, 0, 1, 2, 0, $12C)
 
 UNUSED_Spritemap_Alcoon_FireballProjectile_1_A8E21B:
-    dw $0001,$01FC                                                       ;A8E21B;
-    db $FC                                                               ;A8E21F;
-    dw $E12D                                                             ;A8E220;
+    dw $0001                                                             ;A8E21B;
+    %spritemapEntry(0, $1FC, $FC, 1, 1, 2, 0, $12D)
 
 UNUSED_Spritemap_Alcoon_FireballProjectile_2_A8E222:
-    dw $0001,$01FC                                                       ;A8E222;
-    db $FC                                                               ;A8E226;
-    dw $A12C                                                             ;A8E227;
+    dw $0001                                                             ;A8E222;
+    %spritemapEntry(0, $1FC, $FC, 1, 0, 2, 0, $12C)
 
 UNUSED_Spritemap_Alcoon_FireballProjectile_3_A8E229:
-    dw $0001,$01FC                                                       ;A8E229;
-    db $FC                                                               ;A8E22D;
-    dw $212D                                                             ;A8E22E;
+    dw $0001                                                             ;A8E229;
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 0, $12D)
 endif ; !FEATURE_KEEP_UNREFERENCED
+
 
 Palette_Atomic:
     dw $3800,$7FFF,$56E0,$3180,$18C0,$6BC0,$5EC0,$4A20                   ;A8E230;
@@ -12252,74 +10506,52 @@ UNUSED_Palettes_Atomic_A8E250:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_Atomic_SpinningUpRight:
-    dw $0008                                                             ;A8E310;
-    dw Spritemap_Atomic_0                                                ;A8E312;
-    dw $0008                                                             ;A8E314;
-    dw Spritemap_Atomic_1                                                ;A8E316;
-    dw $0008                                                             ;A8E318;
-    dw Spritemap_Atomic_2                                                ;A8E31A;
-    dw $0008                                                             ;A8E31C;
-    dw Spritemap_Atomic_3                                                ;A8E31E;
-    dw $0008                                                             ;A8E320;
-    dw Spritemap_Atomic_4                                                ;A8E322;
-    dw $0008                                                             ;A8E324;
-    dw Spritemap_Atomic_5                                                ;A8E326;
+    dw $0008,Spritemap_Atomic_0                                          ;A8E310;
+    dw $0008,Spritemap_Atomic_1                                          ;A8E314;
+    dw $0008,Spritemap_Atomic_2                                          ;A8E318;
+    dw $0008,Spritemap_Atomic_3                                          ;A8E31C;
+    dw $0008,Spritemap_Atomic_4                                          ;A8E320;
+    dw $0008,Spritemap_Atomic_5                                          ;A8E324;
     dw Instruction_Common_GotoY                                          ;A8E328;
     dw InstList_Atomic_SpinningUpRight                                   ;A8E32A;
 
 InstList_Atomic_SpinningUpLeft:
-    dw $0008                                                             ;A8E32C;
-    dw Spritemap_Atomic_6                                                ;A8E32E;
-    dw $0008                                                             ;A8E330;
-    dw Spritemap_Atomic_7                                                ;A8E332;
-    dw $0008                                                             ;A8E334;
-    dw Spritemap_Atomic_8                                                ;A8E336;
-    dw $0008                                                             ;A8E338;
-    dw Spritemap_Atomic_9                                                ;A8E33A;
-    dw $0008                                                             ;A8E33C;
-    dw Spritemap_Atomic_A                                                ;A8E33E;
-    dw $0008                                                             ;A8E340;
-    dw Spritemap_Atomic_B                                                ;A8E342;
+    dw $0008,Spritemap_Atomic_6                                          ;A8E32C;
+    dw $0008,Spritemap_Atomic_7                                          ;A8E330;
+    dw $0008,Spritemap_Atomic_8                                          ;A8E334;
+    dw $0008,Spritemap_Atomic_9                                          ;A8E338;
+    dw $0008,Spritemap_Atomic_A                                          ;A8E33C;
+    dw $0008,Spritemap_Atomic_B                                          ;A8E340;
     dw Instruction_Common_GotoY                                          ;A8E344;
     dw InstList_Atomic_SpinningUpLeft                                    ;A8E346;
 
 InstList_Atomic_SpinningDownLeft:
-    dw $0008                                                             ;A8E348;
-    dw Spritemap_Atomic_5                                                ;A8E34A;
-    dw $0008                                                             ;A8E34C;
-    dw Spritemap_Atomic_4                                                ;A8E34E;
-    dw $0008                                                             ;A8E350;
-    dw Spritemap_Atomic_3                                                ;A8E352;
-    dw $0008                                                             ;A8E354;
-    dw Spritemap_Atomic_2                                                ;A8E356;
-    dw $0008                                                             ;A8E358;
-    dw Spritemap_Atomic_1                                                ;A8E35A;
-    dw $0008                                                             ;A8E35C;
-    dw Spritemap_Atomic_0                                                ;A8E35E;
+    dw $0008,Spritemap_Atomic_5                                          ;A8E348;
+    dw $0008,Spritemap_Atomic_4                                          ;A8E34C;
+    dw $0008,Spritemap_Atomic_3                                          ;A8E350;
+    dw $0008,Spritemap_Atomic_2                                          ;A8E354;
+    dw $0008,Spritemap_Atomic_1                                          ;A8E358;
+    dw $0008,Spritemap_Atomic_0                                          ;A8E35C;
     dw Instruction_Common_GotoY                                          ;A8E360;
     dw InstList_Atomic_SpinningDownLeft                                  ;A8E362;
 
 InstList_Atomic_SpinningDownRight:
-    dw $0008                                                             ;A8E364;
-    dw Spritemap_Atomic_B                                                ;A8E366;
-    dw $0008                                                             ;A8E368;
-    dw Spritemap_Atomic_A                                                ;A8E36A;
-    dw $0008                                                             ;A8E36C;
-    dw Spritemap_Atomic_9                                                ;A8E36E;
-    dw $0008                                                             ;A8E370;
-    dw Spritemap_Atomic_8                                                ;A8E372;
-    dw $0008                                                             ;A8E374;
-    dw Spritemap_Atomic_7                                                ;A8E376;
-    dw $0008                                                             ;A8E378;
-    dw Spritemap_Atomic_6                                                ;A8E37A;
+    dw $0008,Spritemap_Atomic_B                                          ;A8E364;
+    dw $0008,Spritemap_Atomic_A                                          ;A8E368;
+    dw $0008,Spritemap_Atomic_9                                          ;A8E36C;
+    dw $0008,Spritemap_Atomic_8                                          ;A8E370;
+    dw $0008,Spritemap_Atomic_7                                          ;A8E374;
+    dw $0008,Spritemap_Atomic_6                                          ;A8E378;
     dw Instruction_Common_GotoY                                          ;A8E37C;
     dw InstList_Atomic_SpinningDownRight                                 ;A8E37E;
 
 AtomicInstListPointers:
+; Indexed by [enemy parameter 1] * 2
     dw InstList_Atomic_SpinningUpRight                                   ;A8E380;
     dw InstList_Atomic_SpinningUpLeft                                    ;A8E382;
     dw InstList_Atomic_SpinningDownLeft                                  ;A8E384;
     dw InstList_Atomic_SpinningDownRight                                 ;A8E386;
+
 
 InitAI_Atomic:
     LDX.W $0E54                                                          ;A8E388;
@@ -12465,132 +10697,87 @@ endif ; !FEATURE_KEEP_UNREFERENCED
 
 
 Spritemap_Atomic_0:
-    dw $0004,$01F8                                                       ;A8E489;
-    db $00                                                               ;A8E48D;
-    dw $2102,$81F8                                                       ;A8E48E;
-    db $F8                                                               ;A8E492;
-    dw $2100,$01FC                                                       ;A8E493;
-    db $F4                                                               ;A8E497;
-    dw $2103,$0004                                                       ;A8E498;
-    db $FC                                                               ;A8E49C;
-    dw $2103                                                             ;A8E49D;
+    dw $0004                                                             ;A8E489;
+    %spritemapEntry(0, $1F8, $00, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1FC, $F4, 0, 0, 2, 0, $103)
+    %spritemapEntry(0, $04, $FC, 0, 0, 2, 0, $103)
 
 Spritemap_Atomic_1:
-    dw $0004,$01FC                                                       ;A8E49F;
-    db $FC                                                               ;A8E4A3;
-    dw $2102,$81F8                                                       ;A8E4A4;
-    db $F8                                                               ;A8E4A8;
-    dw $2100,$01F8                                                       ;A8E4A9;
-    db $F8                                                               ;A8E4AD;
-    dw $2103,$0000                                                       ;A8E4AE;
-    db $00                                                               ;A8E4B2;
-    dw $2103                                                             ;A8E4B3;
+    dw $0004                                                             ;A8E49F;
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 0, $103)
+    %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $103)
 
 Spritemap_Atomic_2:
-    dw $0004,$0000                                                       ;A8E4B5;
-    db $F8                                                               ;A8E4B9;
-    dw $2102,$81F8                                                       ;A8E4BA;
-    db $F8                                                               ;A8E4BE;
-    dw $2100,$01F4                                                       ;A8E4BF;
-    db $FC                                                               ;A8E4C3;
-    dw $2103,$01FC                                                       ;A8E4C4;
-    db $04                                                               ;A8E4C8;
-    dw $2103                                                             ;A8E4C9;
+    dw $0004                                                             ;A8E4B5;
+    %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1F4, $FC, 0, 0, 2, 0, $103)
+    %spritemapEntry(0, $1FC, $04, 0, 0, 2, 0, $103)
 
 Spritemap_Atomic_3:
-    dw $0004,$01F4                                                       ;A8E4CB;
-    db $FC                                                               ;A8E4CF;
-    dw $2102,$01FC                                                       ;A8E4D0;
-    db $04                                                               ;A8E4D4;
-    dw $2102,$81F8                                                       ;A8E4D5;
-    db $F8                                                               ;A8E4D9;
-    dw $2100,$0001                                                       ;A8E4DA;
-    db $F7                                                               ;A8E4DE;
-    dw $2103                                                             ;A8E4DF;
+    dw $0004                                                             ;A8E4CB;
+    %spritemapEntry(0, $1F4, $FC, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $1FC, $04, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $01, $F7, 0, 0, 2, 0, $103)
 
 Spritemap_Atomic_4:
-    dw $0003,$01F8                                                       ;A8E4E1;
-    db $F8                                                               ;A8E4E5;
-    dw $2102,$0000                                                       ;A8E4E6;
-    db $00                                                               ;A8E4EA;
-    dw $2102,$81F8                                                       ;A8E4EB;
-    db $F8                                                               ;A8E4EF;
-    dw $2100                                                             ;A8E4F0;
+    dw $0003                                                             ;A8E4E1;
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
 
 Spritemap_Atomic_5:
-    dw $0004,$01FC                                                       ;A8E4F2;
-    db $F4                                                               ;A8E4F6;
-    dw $2102,$0004                                                       ;A8E4F7;
-    db $FC                                                               ;A8E4FB;
-    dw $2102,$81F8                                                       ;A8E4FC;
-    db $F8                                                               ;A8E500;
-    dw $2100,$01F7                                                       ;A8E501;
-    db $01                                                               ;A8E505;
-    dw $2103                                                             ;A8E506;
+    dw $0004                                                             ;A8E4F2;
+    %spritemapEntry(0, $1FC, $F4, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $04, $FC, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1F7, $01, 0, 0, 2, 0, $103)
 
 Spritemap_Atomic_6:
-    dw $0004,$0000                                                       ;A8E508;
-    db $00                                                               ;A8E50C;
-    dw $2102,$81F8                                                       ;A8E50D;
-    db $F8                                                               ;A8E511;
-    dw $2100,$01FC                                                       ;A8E512;
-    db $F4                                                               ;A8E516;
-    dw $2103,$01F4                                                       ;A8E517;
-    db $FC                                                               ;A8E51B;
-    dw $2103                                                             ;A8E51C;
+    dw $0004                                                             ;A8E508;
+    %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1FC, $F4, 0, 0, 2, 0, $103)
+    %spritemapEntry(0, $1F4, $FC, 0, 0, 2, 0, $103)
 
 Spritemap_Atomic_7:
-    dw $0004,$01FC                                                       ;A8E51E;
-    db $FC                                                               ;A8E522;
-    dw $2102,$81F8                                                       ;A8E523;
-    db $F8                                                               ;A8E527;
-    dw $2100,$0000                                                       ;A8E528;
-    db $F8                                                               ;A8E52C;
-    dw $6103,$01F8                                                       ;A8E52D;
-    db $00                                                               ;A8E531;
-    dw $6103                                                             ;A8E532;
+    dw $0004                                                             ;A8E51E;
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $00, $F8, 0, 1, 2, 0, $103)
+    %spritemapEntry(0, $1F8, $00, 0, 1, 2, 0, $103)
 
 Spritemap_Atomic_8:
-    dw $0004,$01F8                                                       ;A8E534;
-    db $F8                                                               ;A8E538;
-    dw $2102,$81F8                                                       ;A8E539;
-    db $F8                                                               ;A8E53D;
-    dw $2100,$0004                                                       ;A8E53E;
-    db $FC                                                               ;A8E542;
-    dw $2103,$01FC                                                       ;A8E543;
-    db $04                                                               ;A8E547;
-    dw $2103                                                             ;A8E548;
+    dw $0004                                                             ;A8E534;
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $04, $FC, 0, 0, 2, 0, $103)
+    %spritemapEntry(0, $1FC, $04, 0, 0, 2, 0, $103)
 
 Spritemap_Atomic_9:
-    dw $0004,$0004                                                       ;A8E54A;
-    db $FC                                                               ;A8E54E;
-    dw $2102,$01FC                                                       ;A8E54F;
-    db $04                                                               ;A8E553;
-    dw $2102,$81F8                                                       ;A8E554;
-    db $F8                                                               ;A8E558;
-    dw $2100,$01F7                                                       ;A8E559;
-    db $F7                                                               ;A8E55D;
-    dw $2103                                                             ;A8E55E;
+    dw $0004                                                             ;A8E54A;
+    %spritemapEntry(0, $04, $FC, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $1FC, $04, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1F7, $F7, 0, 0, 2, 0, $103)
 
 Spritemap_Atomic_A:
-    dw $0003,$0000                                                       ;A8E560;
-    db $F8                                                               ;A8E564;
-    dw $2102,$01F8                                                       ;A8E565;
-    db $00                                                               ;A8E569;
-    dw $2102,$81F8                                                       ;A8E56A;
-    db $F8                                                               ;A8E56E;
-    dw $2100                                                             ;A8E56F;
+    dw $0003                                                             ;A8E560;
+    %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $1F8, $00, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
 
 Spritemap_Atomic_B:
-    dw $0004,$01FC                                                       ;A8E571;
-    db $F4                                                               ;A8E575;
-    dw $2102,$01F4                                                       ;A8E576;
-    db $FC                                                               ;A8E57A;
-    dw $2102,$81F8                                                       ;A8E57B;
-    db $F8                                                               ;A8E57F;
-    dw $2100,$0001                                                       ;A8E580;
-    db $01                                                               ;A8E584;
-    dw $2103                                                             ;A8E585;
+    dw $0004                                                             ;A8E571;
+    %spritemapEntry(0, $1FC, $F4, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $1F4, $FC, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $01, $01, 0, 0, 2, 0, $103)
+
 
 Palette_Spark:
     dw $3800,$7FFF,$3BE0,$2680,$1580,$6BFA,$4BF2,$2BEA                   ;A8E587;
@@ -12598,68 +10785,42 @@ Palette_Spark:
 
 InstList_Spark_FlickerOn:
     dw Instruction_Spark_SetAsTangible                                   ;A8E5A7;
-    dw $0001                                                             ;A8E5A9;
-    dw Spritemap_Spark_Flickering_0                                      ;A8E5AB;
-    dw $0002                                                             ;A8E5AD;
-    dw Spritemap_CommonA8_Nothing                                        ;A8E5AF;
-    dw $0001                                                             ;A8E5B1;
-    dw Spritemap_Spark_Flickering_0                                      ;A8E5B3;
-    dw $0002                                                             ;A8E5B5;
-    dw Spritemap_CommonA8_Nothing                                        ;A8E5B7;
-    dw $0001                                                             ;A8E5B9;
-    dw Spritemap_Spark_Flickering_1                                      ;A8E5BB;
-    dw $0002                                                             ;A8E5BD;
-    dw Spritemap_CommonA8_Nothing                                        ;A8E5BF;
-    dw $0001                                                             ;A8E5C1;
-    dw Spritemap_Spark_Flickering_1                                      ;A8E5C3;
-    dw $0001                                                             ;A8E5C5;
-    dw Spritemap_CommonA8_Nothing                                        ;A8E5C7;
-    dw $0002                                                             ;A8E5C9;
-    dw Spritemap_Spark_Flickering_2                                      ;A8E5CB;
-    dw $0002                                                             ;A8E5CD;
-    dw Spritemap_Spark_Flickering_3                                      ;A8E5CF;
+    dw $0001,Spritemap_Spark_Flickering_0                                ;A8E5A9;
+    dw $0002,Spritemap_CommonA8_Nothing                                  ;A8E5AD;
+    dw $0001,Spritemap_Spark_Flickering_0                                ;A8E5B1;
+    dw $0002,Spritemap_CommonA8_Nothing                                  ;A8E5B5;
+    dw $0001,Spritemap_Spark_Flickering_1                                ;A8E5B9;
+    dw $0002,Spritemap_CommonA8_Nothing                                  ;A8E5BD;
+    dw $0001,Spritemap_Spark_Flickering_1                                ;A8E5C1;
+    dw $0001,Spritemap_CommonA8_Nothing                                  ;A8E5C5;
+    dw $0002,Spritemap_Spark_Flickering_2                                ;A8E5C9;
+    dw $0002,Spritemap_Spark_Flickering_3                                ;A8E5CD;
 
 InstList_Spark_Constant:
-    dw $0003                                                             ;A8E5D1;
-    dw Spritemap_Spark_Constant_0                                        ;A8E5D3;
-    dw $0003                                                             ;A8E5D5;
-    dw Spritemap_Spark_Constant_1                                        ;A8E5D7;
-    dw $0003                                                             ;A8E5D9;
-    dw Spritemap_Spark_Constant_2                                        ;A8E5DB;
-    dw $0003                                                             ;A8E5DD;
-    dw Spritemap_Spark_Constant_3                                        ;A8E5DF;
+    dw $0003,Spritemap_Spark_Constant_0                                  ;A8E5D1;
+    dw $0003,Spritemap_Spark_Constant_1                                  ;A8E5D5;
+    dw $0003,Spritemap_Spark_Constant_2                                  ;A8E5D9;
+    dw $0003,Spritemap_Spark_Constant_3                                  ;A8E5DD;
     dw Instruction_Common_GotoY                                          ;A8E5E1;
     dw InstList_Spark_Constant                                           ;A8E5E3;
 
 InstList_Spark_FlickerOut:
-    dw $0001                                                             ;A8E5E5;
-    dw Spritemap_Spark_Flickering_0                                      ;A8E5E7;
-    dw $0001                                                             ;A8E5E9;
-    dw Spritemap_Spark_Flickering_0                                      ;A8E5EB;
-    dw $0001                                                             ;A8E5ED;
-    dw Spritemap_Spark_Flickering_1                                      ;A8E5EF;
-    dw $0001                                                             ;A8E5F1;
-    dw Spritemap_Spark_Flickering_1                                      ;A8E5F3;
-    dw $0001                                                             ;A8E5F5;
-    dw Spritemap_Spark_Flickering_2                                      ;A8E5F7;
-    dw $0001                                                             ;A8E5F9;
-    dw Spritemap_CommonA8_Nothing                                        ;A8E5FB;
-    dw $0001                                                             ;A8E5FD;
-    dw Spritemap_Spark_Flickering_2                                      ;A8E5FF;
-    dw $0001                                                             ;A8E601;
-    dw Spritemap_CommonA8_Nothing                                        ;A8E603;
+    dw $0001,Spritemap_Spark_Flickering_0                                ;A8E5E5;
+    dw $0001,Spritemap_Spark_Flickering_0                                ;A8E5E9;
+    dw $0001,Spritemap_Spark_Flickering_1                                ;A8E5ED;
+    dw $0001,Spritemap_Spark_Flickering_1                                ;A8E5F1;
+    dw $0001,Spritemap_Spark_Flickering_2                                ;A8E5F5;
+    dw $0001,Spritemap_CommonA8_Nothing                                  ;A8E5F9;
+    dw $0001,Spritemap_Spark_Flickering_2                                ;A8E5FD;
+    dw $0001,Spritemap_CommonA8_Nothing                                  ;A8E601;
     dw Instruction_Spark_SetAsIntangible                                 ;A8E605;
     dw Instruction_CommonA8_Sleep                                        ;A8E607;
 
 InstList_Spark_EmitFallingSparks:
-    dw $0003                                                             ;A8E609;
-    dw Spritemap_Spark_Flickering_0                                      ;A8E60B;
-    dw $0003                                                             ;A8E60D;
-    dw Spritemap_Spark_Flickering_1                                      ;A8E60F;
-    dw $0003                                                             ;A8E611;
-    dw Spritemap_Spark_Flickering_2                                      ;A8E613;
-    dw $0003                                                             ;A8E615;
-    dw Spritemap_Spark_Flickering_3                                      ;A8E617;
+    dw $0003,Spritemap_Spark_Flickering_0                                ;A8E609;
+    dw $0003,Spritemap_Spark_Flickering_1                                ;A8E60D;
+    dw $0003,Spritemap_Spark_Flickering_2                                ;A8E611;
+    dw $0003,Spritemap_Spark_Flickering_3                                ;A8E615;
     dw Instruction_Common_GotoY                                          ;A8E619;
     dw InstList_Spark_EmitFallingSparks                                  ;A8E61B;
 
@@ -12822,110 +10983,83 @@ EnemyShot_Spark:
 
 
 Spritemap_Spark_Constant_0:
-    dw $0002,$01FC                                                       ;A8E71F;
-    db $01                                                               ;A8E723;
-    dw $3103,$01FC                                                       ;A8E724;
-    db $FC                                                               ;A8E728;
-    dw $3100                                                             ;A8E729;
+    dw $0002                                                             ;A8E71F;
+    %spritemapEntry(0, $1FC, $01, 0, 0, 3, 0, $103)
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 3, 0, $100)
 
 Spritemap_Spark_Constant_1:
-    dw $0002,$01FC                                                       ;A8E72B;
-    db $06                                                               ;A8E72F;
-    dw $7104,$01FC                                                       ;A8E730;
-    db $FC                                                               ;A8E734;
-    dw $3101                                                             ;A8E735;
+    dw $0002                                                             ;A8E72B;
+    %spritemapEntry(0, $1FC, $06, 0, 1, 3, 0, $104)
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 3, 0, $101)
 
 Spritemap_Spark_Constant_2:
-    dw $0002,$01FC                                                       ;A8E737;
-    db $08                                                               ;A8E73B;
-    dw $3105,$01FC                                                       ;A8E73C;
-    db $FC                                                               ;A8E740;
-    dw $3102                                                             ;A8E741;
+    dw $0002                                                             ;A8E737;
+    %spritemapEntry(0, $1FC, $08, 0, 0, 3, 0, $105)
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 3, 0, $102)
 
 Spritemap_Spark_Constant_3:
-    dw $0002,$01FC                                                       ;A8E743;
-    db $0A                                                               ;A8E747;
-    dw $3106,$01FC                                                       ;A8E748;
-    db $FC                                                               ;A8E74C;
-    dw $7101                                                             ;A8E74D;
+    dw $0002                                                             ;A8E743;
+    %spritemapEntry(0, $1FC, $0A, 0, 0, 3, 0, $106)
+    %spritemapEntry(0, $1FC, $FC, 0, 1, 3, 0, $101)
 
 Spritemap_Spark_Flickering_0:
-    dw $0005,$0002                                                       ;A8E74F;
-    db $FE                                                               ;A8E753;
-    dw $3109,$01F6                                                       ;A8E754;
-    db $FC                                                               ;A8E758;
-    dw $3108,$0000                                                       ;A8E759;
-    db $F8                                                               ;A8E75D;
-    dw $3107,$01FC                                                       ;A8E75E;
-    db $03                                                               ;A8E762;
-    dw $3103,$01FC                                                       ;A8E763;
-    db $FC                                                               ;A8E767;
-    dw $3100                                                             ;A8E768;
+    dw $0005                                                             ;A8E74F;
+    %spritemapEntry(0, $02, $FE, 0, 0, 3, 0, $109)
+    %spritemapEntry(0, $1F6, $FC, 0, 0, 3, 0, $108)
+    %spritemapEntry(0, $00, $F8, 0, 0, 3, 0, $107)
+    %spritemapEntry(0, $1FC, $03, 0, 0, 3, 0, $103)
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 3, 0, $100)
 
 Spritemap_Spark_Flickering_1:
-    dw $0005,$01F4                                                       ;A8E76A;
-    db $FC                                                               ;A8E76E;
-    dw $3109,$0004                                                       ;A8E76F;
-    db $00                                                               ;A8E773;
-    dw $310A,$0002                                                       ;A8E774;
-    db $F6                                                               ;A8E778;
-    dw $3108,$01FC                                                       ;A8E779;
-    db $06                                                               ;A8E77D;
-    dw $7104,$01FC                                                       ;A8E77E;
-    db $FC                                                               ;A8E782;
-    dw $3101                                                             ;A8E783;
+    dw $0005                                                             ;A8E76A;
+    %spritemapEntry(0, $1F4, $FC, 0, 0, 3, 0, $109)
+    %spritemapEntry(0, $04, $00, 0, 0, 3, 0, $10A)
+    %spritemapEntry(0, $02, $F6, 0, 0, 3, 0, $108)
+    %spritemapEntry(0, $1FC, $06, 0, 1, 3, 0, $104)
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 3, 0, $101)
 
 Spritemap_Spark_Flickering_2:
-    dw $0004,$01F4                                                       ;A8E785;
-    db $FC                                                               ;A8E789;
-    dw $310A,$0004                                                       ;A8E78A;
-    db $F4                                                               ;A8E78E;
-    dw $3109,$01FC                                                       ;A8E78F;
-    db $09                                                               ;A8E793;
-    dw $3105,$01FC                                                       ;A8E794;
-    db $FC                                                               ;A8E798;
-    dw $3102                                                             ;A8E799;
+    dw $0004                                                             ;A8E785;
+    %spritemapEntry(0, $1F4, $FC, 0, 0, 3, 0, $10A)
+    %spritemapEntry(0, $04, $F4, 0, 0, 3, 0, $109)
+    %spritemapEntry(0, $1FC, $09, 0, 0, 3, 0, $105)
+    %spritemapEntry(0, $1FC, $FC, 0, 0, 3, 0, $102)
 
 Spritemap_Spark_Flickering_3:
-    dw $0003,$0004                                                       ;A8E79B;
-    db $F4                                                               ;A8E79F;
-    dw $310A,$01FC                                                       ;A8E7A0;
-    db $0E                                                               ;A8E7A4;
-    dw $3106,$01FC                                                       ;A8E7A5;
-    db $FC                                                               ;A8E7A9;
-    dw $7101                                                             ;A8E7AA;
+    dw $0003                                                             ;A8E79B;
+    %spritemapEntry(0, $04, $F4, 0, 0, 3, 0, $10A)
+    %spritemapEntry(0, $1FC, $0E, 0, 0, 3, 0, $106)
+    %spritemapEntry(0, $1FC, $FC, 0, 1, 3, 0, $101)
+
 
 Palette_FaceBlock:
     dw $3800,$72B2,$71C7,$2461,$1840,$7A8E,$660B,$4D03                   ;A8E7AC;
     dw $30A4,$30A4,$2461,$1840,$0800,$0000,$0000,$0000                   ;A8E7BC;
 
-FaceBlockGlowColors:
-    dw $001F,$0012,$000A,$002B,$051F,$0096,$0011,$0007                   ;A8E7CC;
-    dw $0A3F,$013B,$0018,$000D,$0F3F,$01BF,$001F,$0012                   ;A8E7DC;
-    dw $0F3F,$01BF,$001F,$0012,$0A3F,$013B,$0018,$000D                   ;A8E7EC;
-    dw $051F,$0096,$0011,$0007,$001F,$0012,$000A,$002B                   ;A8E7FC;
+FaceBlockGlowColors:                                                     ;A8E7CC;
+    dw $001F,$0012,$000A,$002B
+    dw $051F,$0096,$0011,$0007
+    dw $0A3F,$013B,$0018,$000D
+    dw $0F3F,$01BF,$001F,$0012
+    dw $0F3F,$01BF,$001F,$0012
+    dw $0A3F,$013B,$0018,$000D
+    dw $051F,$0096,$0011,$0007
+    dw $001F,$0012,$000A,$002B
 
 InstList_FaceBlock_TurningLeft:
-    dw $0030                                                             ;A8E80C;
-    dw Spritemap_FaceBlock_FacingForward                                 ;A8E80E;
-    dw $0010                                                             ;A8E810;
-    dw Spritemap_FaceBlock_TurningLeft                                   ;A8E812;
-    dw $0010                                                             ;A8E814;
-    dw Spritemap_FaceBlock_FacingLeft                                    ;A8E816;
+    dw $0030,Spritemap_FaceBlock_FacingForward                           ;A8E80C;
+    dw $0010,Spritemap_FaceBlock_TurningLeft                             ;A8E810;
+    dw $0010,Spritemap_FaceBlock_FacingLeft                              ;A8E814;
     dw Instruction_Common_Sleep                                          ;A8E818;
 
 InstList_FaceBlock_TurningRight:
-    dw $0030                                                             ;A8E81A;
-    dw Spritemap_FaceBlock_FacingForward                                 ;A8E81C;
-    dw $0010                                                             ;A8E81E;
-    dw Spritemap_FaceBlock_TurningRight                                  ;A8E820;
-    dw $0010                                                             ;A8E822;
-    dw Spritemap_FaceBlock_FacingRight                                   ;A8E824;
+    dw $0030,Spritemap_FaceBlock_FacingForward                           ;A8E81A;
+    dw $0010,Spritemap_FaceBlock_TurningRight                            ;A8E81E;
+    dw $0010,Spritemap_FaceBlock_FacingRight                             ;A8E822;
     dw Instruction_Common_Sleep                                          ;A8E826;
 
 InstList_FaceBlock_FacingForward:
-    dw $0001                                                             ;A8E828;
-    dw Spritemap_FaceBlock_FacingForward                                 ;A8E82A;
+    dw $0001,Spritemap_FaceBlock_FacingForward                           ;A8E828;
     dw Instruction_Common_Sleep                                          ;A8E82C;
 
 InitAI_FaceBlock:
@@ -13061,59 +11195,40 @@ EnemyShot_FaceBlock:
 
 
 Spritemap_FaceBlock_FacingForward:
-    dw $0004,$0000                                                       ;A8E92C;
-    db $00                                                               ;A8E930;
-    dw $3107,$01F8                                                       ;A8E931;
-    db $00                                                               ;A8E935;
-    dw $3106,$0000                                                       ;A8E936;
-    db $F8                                                               ;A8E93A;
-    dw $3101,$01F8                                                       ;A8E93B;
-    db $F8                                                               ;A8E93F;
-    dw $3100                                                             ;A8E940;
+    dw $0004                                                             ;A8E92C;
+    %spritemapEntry(0, $00, $00, 0, 0, 3, 0, $107)
+    %spritemapEntry(0, $1F8, $00, 0, 0, 3, 0, $106)
+    %spritemapEntry(0, $00, $F8, 0, 0, 3, 0, $101)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 0, $100)
 
 Spritemap_FaceBlock_TurningLeft:
-    dw $0004,$0000                                                       ;A8E942;
-    db $00                                                               ;A8E946;
-    dw $3109,$01F8                                                       ;A8E947;
-    db $00                                                               ;A8E94B;
-    dw $3108,$0000                                                       ;A8E94C;
-    db $F8                                                               ;A8E950;
-    dw $3103,$01F8                                                       ;A8E951;
-    db $F8                                                               ;A8E955;
-    dw $3102                                                             ;A8E956;
+    dw $0004                                                             ;A8E942;
+    %spritemapEntry(0, $00, $00, 0, 0, 3, 0, $109)
+    %spritemapEntry(0, $1F8, $00, 0, 0, 3, 0, $108)
+    %spritemapEntry(0, $00, $F8, 0, 0, 3, 0, $103)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 0, $102)
 
 Spritemap_FaceBlock_FacingLeft:
-    dw $0004,$0000                                                       ;A8E958;
-    db $00                                                               ;A8E95C;
-    dw $310B,$01F8                                                       ;A8E95D;
-    db $00                                                               ;A8E961;
-    dw $310A,$0000                                                       ;A8E962;
-    db $F8                                                               ;A8E966;
-    dw $3105,$01F8                                                       ;A8E967;
-    db $F8                                                               ;A8E96B;
-    dw $3104                                                             ;A8E96C;
+    dw $0004                                                             ;A8E958;
+    %spritemapEntry(0, $00, $00, 0, 0, 3, 0, $10B)
+    %spritemapEntry(0, $1F8, $00, 0, 0, 3, 0, $10A)
+    %spritemapEntry(0, $00, $F8, 0, 0, 3, 0, $105)
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 0, $104)
 
 Spritemap_FaceBlock_TurningRight:
-    dw $0004,$01F8                                                       ;A8E96E;
-    db $00                                                               ;A8E972;
-    dw $7109,$0000                                                       ;A8E973;
-    db $00                                                               ;A8E977;
-    dw $7108,$01F8                                                       ;A8E978;
-    db $F8                                                               ;A8E97C;
-    dw $7103,$0000                                                       ;A8E97D;
-    db $F8                                                               ;A8E981;
-    dw $7102                                                             ;A8E982;
+    dw $0004                                                             ;A8E96E;
+    %spritemapEntry(0, $1F8, $00, 0, 1, 3, 0, $109)
+    %spritemapEntry(0, $00, $00, 0, 1, 3, 0, $108)
+    %spritemapEntry(0, $1F8, $F8, 0, 1, 3, 0, $103)
+    %spritemapEntry(0, $00, $F8, 0, 1, 3, 0, $102)
 
 Spritemap_FaceBlock_FacingRight:
-    dw $0004,$01F8                                                       ;A8E984;
-    db $00                                                               ;A8E988;
-    dw $710B,$0000                                                       ;A8E989;
-    db $00                                                               ;A8E98D;
-    dw $710A,$01F8                                                       ;A8E98E;
-    db $F8                                                               ;A8E992;
-    dw $7105,$0000                                                       ;A8E993;
-    db $F8                                                               ;A8E997;
-    dw $7104                                                             ;A8E998;
+    dw $0004                                                             ;A8E984;
+    %spritemapEntry(0, $1F8, $00, 0, 1, 3, 0, $10B)
+    %spritemapEntry(0, $00, $00, 0, 1, 3, 0, $10A)
+    %spritemapEntry(0, $1F8, $F8, 0, 1, 3, 0, $105)
+    %spritemapEntry(0, $00, $F8, 0, 1, 3, 0, $104)
+
 
 Palette_KihunterGreen:
     dw $3800,$4B57,$3A4D,$0CE2,$0040,$46B0,$2E0B,$1D66                   ;A8E99A;
@@ -13128,949 +11243,580 @@ Palette_KihunterRed:
     dw $102B,$6F11,$522A,$3124,$1824,$02FF,$01BF,$000F                   ;A8E9EA;
 
 InstList_Kihunter_Idling_FacingLeft:
-    dw $0002                                                             ;A8E9FA;
-    dw Spritemap_Kihunter_0                                              ;A8E9FC;
-    dw $0002                                                             ;A8E9FE;
-    dw Spritemap_Kihunter_1                                              ;A8EA00;
-    dw $0001                                                             ;A8EA02;
-    dw Spritemap_Kihunter_2                                              ;A8EA04;
+    dw $0002,Spritemap_Kihunter_0                                        ;A8E9FA;
+    dw $0002,Spritemap_Kihunter_1                                        ;A8E9FE;
+    dw $0001,Spritemap_Kihunter_2                                        ;A8EA02;
     dw Instruction_Kihunter_SetIdlingInstListsFacingForwards             ;A8EA06;
 
 InstList_Kihunter_Swiping_FacingLeft:
-    dw $0002                                                             ;A8EA08;
-    dw Spritemap_Kihunter_11                                             ;A8EA0A;
-    dw $0006                                                             ;A8EA0C;
-    dw Spritemap_Kihunter_12                                             ;A8EA0E;
-    dw $0002                                                             ;A8EA10;
-    dw Spritemap_Kihunter_11                                             ;A8EA12;
-    dw $0002                                                             ;A8EA14;
-    dw Spritemap_Kihunter_10                                             ;A8EA16;
-    dw $0002                                                             ;A8EA18;
-    dw Spritemap_Kihunter_13                                             ;A8EA1A;
-    dw $0020                                                             ;A8EA1C;
-    dw Spritemap_Kihunter_14                                             ;A8EA1E;
+    dw $0002,Spritemap_Kihunter_11                                       ;A8EA08;
+    dw $0006,Spritemap_Kihunter_12                                       ;A8EA0C;
+    dw $0002,Spritemap_Kihunter_11                                       ;A8EA10;
+    dw $0002,Spritemap_Kihunter_10                                       ;A8EA14;
+    dw $0002,Spritemap_Kihunter_13                                       ;A8EA18;
+    dw $0020,Spritemap_Kihunter_14                                       ;A8EA1C;
     dw Instruction_Common_GotoY                                          ;A8EA20;
     dw InstList_Kihunter_Idling_FacingLeft                               ;A8EA22;
 
 InstList_Kihunter_Idling_FacingRight:
-    dw $0002                                                             ;A8EA24;
-    dw Spritemap_Kihunter_8                                              ;A8EA26;
-    dw $0002                                                             ;A8EA28;
-    dw Spritemap_Kihunter_9                                              ;A8EA2A;
-    dw $0001                                                             ;A8EA2C;
-    dw Spritemap_Kihunter_A                                              ;A8EA2E;
+    dw $0002,Spritemap_Kihunter_8                                        ;A8EA24;
+    dw $0002,Spritemap_Kihunter_9                                        ;A8EA28;
+    dw $0001,Spritemap_Kihunter_A                                        ;A8EA2C;
     dw Instruction_Kihunter_SetIdlingInstListsFacingForwards             ;A8EA30;
 
 InstList_Kihunter_Swiping_FacingRight:
-    dw $0002                                                             ;A8EA32;
-    dw Spritemap_Kihunter_16                                             ;A8EA34;
-    dw $0006                                                             ;A8EA36;
-    dw Spritemap_Kihunter_17                                             ;A8EA38;
-    dw $0002                                                             ;A8EA3A;
-    dw Spritemap_Kihunter_16                                             ;A8EA3C;
-    dw $0002                                                             ;A8EA3E;
-    dw Spritemap_Kihunter_15                                             ;A8EA40;
-    dw $0002                                                             ;A8EA42;
-    dw Spritemap_Kihunter_18                                             ;A8EA44;
-    dw $0020                                                             ;A8EA46;
-    dw Spritemap_Kihunter_19                                             ;A8EA48;
+    dw $0002,Spritemap_Kihunter_16                                       ;A8EA32;
+    dw $0006,Spritemap_Kihunter_17                                       ;A8EA36;
+    dw $0002,Spritemap_Kihunter_16                                       ;A8EA3A;
+    dw $0002,Spritemap_Kihunter_15                                       ;A8EA3E;
+    dw $0002,Spritemap_Kihunter_18                                       ;A8EA42;
+    dw $0020,Spritemap_Kihunter_19                                       ;A8EA46;
     dw Instruction_Common_GotoY                                          ;A8EA4A;
     dw InstList_Kihunter_Idling_FacingRight                              ;A8EA4C;
 
 InstList_KihunterWings_FacingLeft:
-    dw $0002                                                             ;A8EA4E;
-    dw Spritemap_Kihunter_3                                              ;A8EA50;
-    dw $0002                                                             ;A8EA52;
-    dw Spritemap_Kihunter_4                                              ;A8EA54;
-    dw $0001                                                             ;A8EA56;
-    dw Spritemap_Kihunter_5                                              ;A8EA58;
+    dw $0002,Spritemap_Kihunter_3                                        ;A8EA4E;
+    dw $0002,Spritemap_Kihunter_4                                        ;A8EA52;
+    dw $0001,Spritemap_Kihunter_5                                        ;A8EA56;
     dw Instruction_CommonA8_GotoY                                        ;A8EA5A;
     dw InstList_KihunterWings_FacingLeft                                 ;A8EA5C;
 
 InstList_KihunterWings_FacingRight:
-    dw $0002                                                             ;A8EA5E;
-    dw Spritemap_Kihunter_B                                              ;A8EA60;
-    dw $0002                                                             ;A8EA62;
-    dw Spritemap_Kihunter_C                                              ;A8EA64;
-    dw $0001                                                             ;A8EA66;
-    dw Spritemap_Kihunter_D                                              ;A8EA68;
+    dw $0002,Spritemap_Kihunter_B                                        ;A8EA5E;
+    dw $0002,Spritemap_Kihunter_C                                        ;A8EA62;
+    dw $0001,Spritemap_Kihunter_D                                        ;A8EA66;
     dw Instruction_Common_GotoY                                          ;A8EA6A;
     dw InstList_KihunterWings_FacingRight                                ;A8EA6C;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_KihunterWings_Falling_XFlipped_A8EA6E:
-    dw $0010                                                             ;A8EA6E;
-    dw Spritemap_Kihunter_6                                              ;A8EA70;
+    dw $0010,Spritemap_Kihunter_6                                        ;A8EA6E;
     dw Instruction_Common_GotoY                                          ;A8EA72;
     dw UNUSED_InstList_KihunterWings_Falling_XFlipped_A8EA6E             ;A8EA74;
 
 UNUSED_InstList_KihunterWings_Falling_XFlipped_A8EA76:
-    dw $0010                                                             ;A8EA76;
-    dw Spritemap_Kihunter_7                                              ;A8EA78;
+    dw $0010,Spritemap_Kihunter_7                                        ;A8EA76;
     dw Instruction_Common_GotoY                                          ;A8EA7A;
     dw UNUSED_InstList_KihunterWings_Falling_XFlipped_A8EA76             ;A8EA7C;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_KihunterWings_Falling:
-    dw $0001                                                             ;A8EA7E;
-    dw Spritemap_Kihunter_E                                              ;A8EA80;
+    dw $0001,Spritemap_Kihunter_E                                        ;A8EA7E;
     dw Instruction_Common_Sleep                                          ;A8EA82;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_KihunterWings_Falling_A8EA84:
-    dw $0001                                                             ;A8EA84;
-    dw Spritemap_Kihunter_F                                              ;A8EA86;
+    dw $0001,Spritemap_Kihunter_F                                        ;A8EA84;
     dw Instruction_Common_Sleep                                          ;A8EA88;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_Kihunter_Hop_FacingLeft:
-    dw $0008                                                             ;A8EA8A;
-    dw Spritemap_Kihunter_1A                                             ;A8EA8C;
-    dw $0008                                                             ;A8EA8E;
-    dw Spritemap_Kihunter_1B                                             ;A8EA90;
-    dw $000B                                                             ;A8EA92;
-    dw Spritemap_Kihunter_1C                                             ;A8EA94;
-    dw $0002                                                             ;A8EA96;
-    dw Spritemap_Kihunter_1B                                             ;A8EA98;
-    dw $0002                                                             ;A8EA9A;
-    dw Spritemap_Kihunter_1A                                             ;A8EA9C;
+    dw $0008,Spritemap_Kihunter_1A                                       ;A8EA8A;
+    dw $0008,Spritemap_Kihunter_1B                                       ;A8EA8E;
+    dw $000B,Spritemap_Kihunter_1C                                       ;A8EA92;
+    dw $0002,Spritemap_Kihunter_1B                                       ;A8EA96;
+    dw $0002,Spritemap_Kihunter_1A                                       ;A8EA9A;
     dw Instruction_Kihunter_SetFunctionToHop                             ;A8EA9E;
-    dw $0001                                                             ;A8EAA0;
-    dw Spritemap_Kihunter_1D                                             ;A8EAA2;
+    dw $0001,Spritemap_Kihunter_1D                                       ;A8EAA0;
     dw Instruction_Common_Sleep                                          ;A8EAA4;
 
 InstList_Kihunter_Hop_FacingRight:
-    dw $0008                                                             ;A8EAA6;
-    dw Spritemap_Kihunter_1E                                             ;A8EAA8;
-    dw $0008                                                             ;A8EAAA;
-    dw Spritemap_Kihunter_1F                                             ;A8EAAC;
-    dw $000B                                                             ;A8EAAE;
-    dw Spritemap_Kihunter_20                                             ;A8EAB0;
-    dw $0002                                                             ;A8EAB2;
-    dw Spritemap_Kihunter_1F                                             ;A8EAB4;
-    dw $0002                                                             ;A8EAB6;
-    dw Spritemap_Kihunter_1E                                             ;A8EAB8;
+    dw $0008,Spritemap_Kihunter_1E                                       ;A8EAA6;
+    dw $0008,Spritemap_Kihunter_1F                                       ;A8EAAA;
+    dw $000B,Spritemap_Kihunter_20                                       ;A8EAAE;
+    dw $0002,Spritemap_Kihunter_1F                                       ;A8EAB2;
+    dw $0002,Spritemap_Kihunter_1E                                       ;A8EAB6;
     dw Instruction_Kihunter_SetFunctionToHop                             ;A8EABA;
-    dw $0001                                                             ;A8EABC;
-    dw Spritemap_Kihunter_21                                             ;A8EABE;
+    dw $0001,Spritemap_Kihunter_21                                       ;A8EABC;
     dw Instruction_Common_Sleep                                          ;A8EAC0;
 
 InstList_Kihunter_LandedFromHop_FacingLeft:
-    dw $0008                                                             ;A8EAC2;
-    dw Spritemap_Kihunter_1A                                             ;A8EAC4;
-    dw $0008                                                             ;A8EAC6;
-    dw Spritemap_Kihunter_1B                                             ;A8EAC8;
-    dw $000B                                                             ;A8EACA;
-    dw Spritemap_Kihunter_1C                                             ;A8EACC;
-    dw $0008                                                             ;A8EACE;
-    dw Spritemap_Kihunter_1B                                             ;A8EAD0;
+    dw $0008,Spritemap_Kihunter_1A                                       ;A8EAC2;
+    dw $0008,Spritemap_Kihunter_1B                                       ;A8EAC6;
+    dw $000B,Spritemap_Kihunter_1C                                       ;A8EACA;
+    dw $0008,Spritemap_Kihunter_1B                                       ;A8EACE;
     dw Instruction_Kihunter_SetFunctionTo_Wingless_Thinking              ;A8EAD2;
-    dw $0001                                                             ;A8EAD4;
-    dw Spritemap_Kihunter_1A                                             ;A8EAD6;
+    dw $0001,Spritemap_Kihunter_1A                                       ;A8EAD4;
     dw Instruction_Common_Sleep                                          ;A8EAD8;
 
 InstList_Kihunter_LandedFromHop_FacingRight:
-    dw $0008                                                             ;A8EADA;
-    dw Spritemap_Kihunter_1E                                             ;A8EADC;
-    dw $0008                                                             ;A8EADE;
-    dw Spritemap_Kihunter_1F                                             ;A8EAE0;
-    dw $000B                                                             ;A8EAE2;
-    dw Spritemap_Kihunter_20                                             ;A8EAE4;
-    dw $0008                                                             ;A8EAE6;
-    dw Spritemap_Kihunter_1F                                             ;A8EAE8;
+    dw $0008,Spritemap_Kihunter_1E                                       ;A8EADA;
+    dw $0008,Spritemap_Kihunter_1F                                       ;A8EADE;
+    dw $000B,Spritemap_Kihunter_20                                       ;A8EAE2;
+    dw $0008,Spritemap_Kihunter_1F                                       ;A8EAE6;
     dw Instruction_Kihunter_SetFunctionTo_Wingless_Thinking              ;A8EAEA;
-    dw $0001                                                             ;A8EAEC;
-    dw Spritemap_Kihunter_1E                                             ;A8EAEE;
+    dw $0001,Spritemap_Kihunter_1E                                       ;A8EAEC;
     dw Instruction_Common_Sleep                                          ;A8EAF0;
 
 InstList_Kihunter_AcidSpitAttack_FacingLeft:
-    dw $0020                                                             ;A8EAF2;
-    dw Spritemap_Kihunter_22                                             ;A8EAF4;
-    dw $0006                                                             ;A8EAF6;
-    dw Spritemap_Kihunter_23                                             ;A8EAF8;
-    dw $0010                                                             ;A8EAFA;
-    dw Spritemap_Kihunter_24                                             ;A8EAFC;
-    dw $0002                                                             ;A8EAFE;
-    dw Spritemap_Kihunter_25                                             ;A8EB00;
+    dw $0020,Spritemap_Kihunter_22                                       ;A8EAF2;
+    dw $0006,Spritemap_Kihunter_23                                       ;A8EAF6;
+    dw $0010,Spritemap_Kihunter_24                                       ;A8EAFA;
+    dw $0002,Spritemap_Kihunter_25                                       ;A8EAFE;
     dw Instruction_Kihunter_FireAcidSpitLeft                             ;A8EB02;
-    dw $0018                                                             ;A8EB04;
-    dw Spritemap_Kihunter_26                                             ;A8EB06;
+    dw $0018,Spritemap_Kihunter_26                                       ;A8EB04;
     dw Instruction_Kihunter_SetFunctionTo_Wingless_Thinking              ;A8EB08;
-    dw $0001                                                             ;A8EB0A;
-    dw Spritemap_Kihunter_22                                             ;A8EB0C;
+    dw $0001,Spritemap_Kihunter_22                                       ;A8EB0A;
     dw Instruction_Common_Sleep                                          ;A8EB0E;
 
 InstList_Kihunter_AcidSpitAttack_FacingRight:
-    dw $0020                                                             ;A8EB10;
-    dw Spritemap_Kihunter_27                                             ;A8EB12;
-    dw $0006                                                             ;A8EB14;
-    dw Spritemap_Kihunter_28                                             ;A8EB16;
-    dw $0010                                                             ;A8EB18;
-    dw Spritemap_Kihunter_29                                             ;A8EB1A;
-    dw $0002                                                             ;A8EB1C;
-    dw Spritemap_Kihunter_2A                                             ;A8EB1E;
+    dw $0020,Spritemap_Kihunter_27                                       ;A8EB10;
+    dw $0006,Spritemap_Kihunter_28                                       ;A8EB14;
+    dw $0010,Spritemap_Kihunter_29                                       ;A8EB18;
+    dw $0002,Spritemap_Kihunter_2A                                       ;A8EB1C;
     dw Instruction_Kihunter_FireAcidSpitRight                            ;A8EB20;
-    dw $0018                                                             ;A8EB22;
-    dw Spritemap_Kihunter_2B                                             ;A8EB24;
+    dw $0018,Spritemap_Kihunter_2B                                       ;A8EB22;
     dw Instruction_Kihunter_SetFunctionTo_Wingless_Thinking              ;A8EB26;
-    dw $0001                                                             ;A8EB28;
-    dw Spritemap_Kihunter_27                                             ;A8EB2A;
+    dw $0001,Spritemap_Kihunter_27                                       ;A8EB28;
     dw Instruction_Common_Sleep                                          ;A8EB2C;
 
 Spritemap_Kihunter_0:
-    dw $0008,$01E5                                                       ;A8EB2E;
-    db $03                                                               ;A8EB32;
-    dw $210E,$C3EB                                                       ;A8EB33;
-    db $FE                                                               ;A8EB37;
-    dw $2126,$C3F4                                                       ;A8EB38;
-    db $F8                                                               ;A8EB3C;
-    dw $212C,$C3FD                                                       ;A8EB3D;
-    db $01                                                               ;A8EB41;
-    dw $211E,$C3FD                                                       ;A8EB42;
-    db $09                                                               ;A8EB46;
-    dw $212E,$C200                                                       ;A8EB47;
-    db $00                                                               ;A8EB4B;
-    dw $2122,$C3EF                                                       ;A8EB4C;
-    db $F0                                                               ;A8EB50;
-    dw $2100,$01E2                                                       ;A8EB51;
-    db $02                                                               ;A8EB55;
-    dw $210E                                                             ;A8EB56;
+    dw $0008                                                             ;A8EB2E;
+    %spritemapEntry(0, $1E5, $03, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $43EB, $FE, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $43F4, $F8, 0, 0, 2, 0, $12C)
+    %spritemapEntry(1, $43FD, $01, 0, 0, 2, 0, $11E)
+    %spritemapEntry(1, $43FD, $09, 0, 0, 2, 0, $12E)
+    %spritemapEntry(1, $4200, $00, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $43EF, $F0, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1E2, $02, 0, 0, 2, 0, $10E)
 
 Spritemap_Kihunter_1:
-    dw $0008,$01E5                                                       ;A8EB58;
-    db $02                                                               ;A8EB5C;
-    dw $210E,$C3EB                                                       ;A8EB5D;
-    db $FD                                                               ;A8EB61;
-    dw $2126,$C3F4                                                       ;A8EB62;
-    db $F7                                                               ;A8EB66;
-    dw $212C,$C3FD                                                       ;A8EB67;
-    db $00                                                               ;A8EB6B;
-    dw $211E,$C3FD                                                       ;A8EB6C;
-    db $08                                                               ;A8EB70;
-    dw $212E,$C200                                                       ;A8EB71;
-    db $FF                                                               ;A8EB75;
-    dw $2122,$C3EF                                                       ;A8EB76;
-    db $EF                                                               ;A8EB7A;
-    dw $2100,$01E2                                                       ;A8EB7B;
-    db $01                                                               ;A8EB7F;
-    dw $210E                                                             ;A8EB80;
+    dw $0008                                                             ;A8EB58;
+    %spritemapEntry(0, $1E5, $02, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $43EB, $FD, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $43F4, $F7, 0, 0, 2, 0, $12C)
+    %spritemapEntry(1, $43FD, $00, 0, 0, 2, 0, $11E)
+    %spritemapEntry(1, $43FD, $08, 0, 0, 2, 0, $12E)
+    %spritemapEntry(1, $4200, $FF, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $43EF, $EF, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1E2, $01, 0, 0, 2, 0, $10E)
 
 Spritemap_Kihunter_2:
-    dw $0008,$01E5                                                       ;A8EB82;
-    db $03                                                               ;A8EB86;
-    dw $210E,$C3EB                                                       ;A8EB87;
-    db $FE                                                               ;A8EB8B;
-    dw $2126,$C3F4                                                       ;A8EB8C;
-    db $F8                                                               ;A8EB90;
-    dw $212C,$C3FD                                                       ;A8EB91;
-    db $01                                                               ;A8EB95;
-    dw $211E,$C3FD                                                       ;A8EB96;
-    db $09                                                               ;A8EB9A;
-    dw $212E,$C200                                                       ;A8EB9B;
-    db $00                                                               ;A8EB9F;
-    dw $2122,$C3EF                                                       ;A8EBA0;
-    db $F0                                                               ;A8EBA4;
-    dw $2100,$01E2                                                       ;A8EBA5;
-    db $02                                                               ;A8EBA9;
-    dw $210E                                                             ;A8EBAA;
+    dw $0008                                                             ;A8EB82;
+    %spritemapEntry(0, $1E5, $03, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $43EB, $FE, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $43F4, $F8, 0, 0, 2, 0, $12C)
+    %spritemapEntry(1, $43FD, $01, 0, 0, 2, 0, $11E)
+    %spritemapEntry(1, $43FD, $09, 0, 0, 2, 0, $12E)
+    %spritemapEntry(1, $4200, $00, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $43EF, $F0, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1E2, $02, 0, 0, 2, 0, $10E)
 
 Spritemap_Kihunter_3:
-    dw $0004,$000B                                                       ;A8EBAC;
-    db $E3                                                               ;A8EBB0;
-    dw $2144,$0001                                                       ;A8EBB1;
-    db $E3                                                               ;A8EBB5;
-    dw $2143,$C209                                                       ;A8EBB6;
-    db $EB                                                               ;A8EBBA;
-    dw $2141,$C201                                                       ;A8EBBB;
-    db $EB                                                               ;A8EBBF;
-    dw $2140                                                             ;A8EBC0;
+    dw $0004                                                             ;A8EBAC;
+    %spritemapEntry(0, $0B, $E3, 0, 0, 2, 0, $144)
+    %spritemapEntry(0, $01, $E3, 0, 0, 2, 0, $143)
+    %spritemapEntry(1, $4209, $EB, 0, 0, 2, 0, $141)
+    %spritemapEntry(1, $4201, $EB, 0, 0, 2, 0, $140)
 
 Spritemap_Kihunter_4:
-    dw $0002,$0012                                                       ;A8EBC2;
-    db $FB                                                               ;A8EBC6;
-    dw $2145,$C202                                                       ;A8EBC7;
-    db $F3                                                               ;A8EBCB;
-    dw $2146                                                             ;A8EBCC;
+    dw $0002                                                             ;A8EBC2;
+    %spritemapEntry(0, $12, $FB, 0, 0, 2, 0, $145)
+    %spritemapEntry(1, $4202, $F3, 0, 0, 2, 0, $146)
 
 Spritemap_Kihunter_5:
-    dw $0003,$0011                                                       ;A8EBCE;
-    db $F3                                                               ;A8EBD2;
-    dw $2155,$0009                                                       ;A8EBD3;
-    db $F3                                                               ;A8EBD7;
-    dw $2154,$0001                                                       ;A8EBD8;
-    db $F3                                                               ;A8EBDC;
-    dw $2153                                                             ;A8EBDD;
+    dw $0003                                                             ;A8EBCE;
+    %spritemapEntry(0, $11, $F3, 0, 0, 2, 0, $155)
+    %spritemapEntry(0, $09, $F3, 0, 0, 2, 0, $154)
+    %spritemapEntry(0, $01, $F3, 0, 0, 2, 0, $153)
 
 Spritemap_Kihunter_6:
-    dw $0002,$C3FC                                                       ;A8EBDF;
-    db $F8                                                               ;A8EBE3;
-    dw $2149,$C3F4                                                       ;A8EBE4;
-    db $F8                                                               ;A8EBE8;
-    dw $2148                                                             ;A8EBE9;
+    dw $0002                                                             ;A8EBDF;
+    %spritemapEntry(1, $43FC, $F8, 0, 0, 2, 0, $149)
+    %spritemapEntry(1, $43F4, $F8, 0, 0, 2, 0, $148)
 
 Spritemap_Kihunter_7:
-    dw $0002,$C3FC                                                       ;A8EBEB;
-    db $F8                                                               ;A8EBEF;
-    dw $2149,$C3F4                                                       ;A8EBF0;
-    db $F8                                                               ;A8EBF4;
-    dw $2148                                                             ;A8EBF5;
+    dw $0002                                                             ;A8EBEB;
+    %spritemapEntry(1, $43FC, $F8, 0, 0, 2, 0, $149)
+    %spritemapEntry(1, $43F4, $F8, 0, 0, 2, 0, $148)
 
 Spritemap_Kihunter_8:
-    dw $0008,$0013                                                       ;A8EBF7;
-    db $03                                                               ;A8EBFB;
-    dw $610E,$C205                                                       ;A8EBFC;
-    db $FE                                                               ;A8EC00;
-    dw $6126,$C3FC                                                       ;A8EC01;
-    db $F8                                                               ;A8EC05;
-    dw $612C,$C3F3                                                       ;A8EC06;
-    db $01                                                               ;A8EC0A;
-    dw $611E,$C3F3                                                       ;A8EC0B;
-    db $09                                                               ;A8EC0F;
-    dw $612E,$C3F0                                                       ;A8EC10;
-    db $00                                                               ;A8EC14;
-    dw $6122,$C201                                                       ;A8EC15;
-    db $F0                                                               ;A8EC19;
-    dw $6100,$0016                                                       ;A8EC1A;
-    db $02                                                               ;A8EC1E;
-    dw $610E                                                             ;A8EC1F;
+    dw $0008                                                             ;A8EBF7;
+    %spritemapEntry(0, $13, $03, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $4205, $FE, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $43FC, $F8, 0, 1, 2, 0, $12C)
+    %spritemapEntry(1, $43F3, $01, 0, 1, 2, 0, $11E)
+    %spritemapEntry(1, $43F3, $09, 0, 1, 2, 0, $12E)
+    %spritemapEntry(1, $43F0, $00, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $4201, $F0, 0, 1, 2, 0, $100)
+    %spritemapEntry(0, $16, $02, 0, 1, 2, 0, $10E)
 
 Spritemap_Kihunter_9:
-    dw $0008,$0013                                                       ;A8EC21;
-    db $02                                                               ;A8EC25;
-    dw $610E,$C205                                                       ;A8EC26;
-    db $FD                                                               ;A8EC2A;
-    dw $6126,$C3FC                                                       ;A8EC2B;
-    db $F7                                                               ;A8EC2F;
-    dw $612C,$C3F3                                                       ;A8EC30;
-    db $00                                                               ;A8EC34;
-    dw $611E,$C3F3                                                       ;A8EC35;
-    db $08                                                               ;A8EC39;
-    dw $612E,$C3F0                                                       ;A8EC3A;
-    db $FF                                                               ;A8EC3E;
-    dw $6122,$C201                                                       ;A8EC3F;
-    db $EF                                                               ;A8EC43;
-    dw $6100,$0016                                                       ;A8EC44;
-    db $01                                                               ;A8EC48;
-    dw $610E                                                             ;A8EC49;
+    dw $0008                                                             ;A8EC21;
+    %spritemapEntry(0, $13, $02, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $4205, $FD, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $43FC, $F7, 0, 1, 2, 0, $12C)
+    %spritemapEntry(1, $43F3, $00, 0, 1, 2, 0, $11E)
+    %spritemapEntry(1, $43F3, $08, 0, 1, 2, 0, $12E)
+    %spritemapEntry(1, $43F0, $FF, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $4201, $EF, 0, 1, 2, 0, $100)
+    %spritemapEntry(0, $16, $01, 0, 1, 2, 0, $10E)
 
 Spritemap_Kihunter_A:
-    dw $0008,$0013                                                       ;A8EC4B;
-    db $03                                                               ;A8EC4F;
-    dw $610E,$C205                                                       ;A8EC50;
-    db $FE                                                               ;A8EC54;
-    dw $6126,$C3FC                                                       ;A8EC55;
-    db $F8                                                               ;A8EC59;
-    dw $612C,$C3F3                                                       ;A8EC5A;
-    db $01                                                               ;A8EC5E;
-    dw $611E,$C3F3                                                       ;A8EC5F;
-    db $09                                                               ;A8EC63;
-    dw $612E,$C3F0                                                       ;A8EC64;
-    db $00                                                               ;A8EC68;
-    dw $6122,$C201                                                       ;A8EC69;
-    db $F0                                                               ;A8EC6D;
-    dw $6100,$0016                                                       ;A8EC6E;
-    db $02                                                               ;A8EC72;
-    dw $610E                                                             ;A8EC73;
+    dw $0008                                                             ;A8EC4B;
+    %spritemapEntry(0, $13, $03, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $4205, $FE, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $43FC, $F8, 0, 1, 2, 0, $12C)
+    %spritemapEntry(1, $43F3, $01, 0, 1, 2, 0, $11E)
+    %spritemapEntry(1, $43F3, $09, 0, 1, 2, 0, $12E)
+    %spritemapEntry(1, $43F0, $00, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $4201, $F0, 0, 1, 2, 0, $100)
+    %spritemapEntry(0, $16, $02, 0, 1, 2, 0, $10E)
 
 Spritemap_Kihunter_B:
-    dw $0004,$01ED                                                       ;A8EC75;
-    db $E3                                                               ;A8EC79;
-    dw $6144,$01F7                                                       ;A8EC7A;
-    db $E3                                                               ;A8EC7E;
-    dw $6143,$C3E7                                                       ;A8EC7F;
-    db $EB                                                               ;A8EC83;
-    dw $6141,$C3EF                                                       ;A8EC84;
-    db $EB                                                               ;A8EC88;
-    dw $6140                                                             ;A8EC89;
+    dw $0004                                                             ;A8EC75;
+    %spritemapEntry(0, $1ED, $E3, 0, 1, 2, 0, $144)
+    %spritemapEntry(0, $1F7, $E3, 0, 1, 2, 0, $143)
+    %spritemapEntry(1, $43E7, $EB, 0, 1, 2, 0, $141)
+    %spritemapEntry(1, $43EF, $EB, 0, 1, 2, 0, $140)
 
 Spritemap_Kihunter_C:
-    dw $0002,$01E6                                                       ;A8EC8B;
-    db $FB                                                               ;A8EC8F;
-    dw $6145,$C3EE                                                       ;A8EC90;
-    db $F3                                                               ;A8EC94;
-    dw $6146                                                             ;A8EC95;
+    dw $0002                                                             ;A8EC8B;
+    %spritemapEntry(0, $1E6, $FB, 0, 1, 2, 0, $145)
+    %spritemapEntry(1, $43EE, $F3, 0, 1, 2, 0, $146)
 
 Spritemap_Kihunter_D:
-    dw $0003,$01E7                                                       ;A8EC97;
-    db $F3                                                               ;A8EC9B;
-    dw $6155,$01EF                                                       ;A8EC9C;
-    db $F3                                                               ;A8ECA0;
-    dw $6154,$01F7                                                       ;A8ECA1;
-    db $F3                                                               ;A8ECA5;
-    dw $6153                                                             ;A8ECA6;
+    dw $0003                                                             ;A8EC97;
+    %spritemapEntry(0, $1E7, $F3, 0, 1, 2, 0, $155)
+    %spritemapEntry(0, $1EF, $F3, 0, 1, 2, 0, $154)
+    %spritemapEntry(0, $1F7, $F3, 0, 1, 2, 0, $153)
 
 Spritemap_Kihunter_E:
-    dw $0002,$C3F4                                                       ;A8ECA8;
-    db $F8                                                               ;A8ECAC;
-    dw $6149,$C3FC                                                       ;A8ECAD;
-    db $F8                                                               ;A8ECB1;
-    dw $6148                                                             ;A8ECB2;
+    dw $0002                                                             ;A8ECA8;
+    %spritemapEntry(1, $43F4, $F8, 0, 1, 2, 0, $149)
+    %spritemapEntry(1, $43FC, $F8, 0, 1, 2, 0, $148)
 
 Spritemap_Kihunter_F:
-    dw $0002,$C3F4                                                       ;A8ECB4;
-    db $F8                                                               ;A8ECB8;
-    dw $6149,$C3FC                                                       ;A8ECB9;
-    db $F8                                                               ;A8ECBD;
-    dw $6148                                                             ;A8ECBE;
+    dw $0002                                                             ;A8ECB4;
+    %spritemapEntry(1, $43F4, $F8, 0, 1, 2, 0, $149)
+    %spritemapEntry(1, $43FC, $F8, 0, 1, 2, 0, $148)
 
 Spritemap_Kihunter_10:
-    dw $0008,$01E5                                                       ;A8ECC0;
-    db $03                                                               ;A8ECC4;
-    dw $210E,$C3EB                                                       ;A8ECC5;
-    db $FE                                                               ;A8ECC9;
-    dw $2126,$C3F4                                                       ;A8ECCA;
-    db $F8                                                               ;A8ECCE;
-    dw $212C,$C3FD                                                       ;A8ECCF;
-    db $01                                                               ;A8ECD3;
-    dw $211E,$C3FD                                                       ;A8ECD4;
-    db $09                                                               ;A8ECD8;
-    dw $212E,$C200                                                       ;A8ECD9;
-    db $00                                                               ;A8ECDD;
-    dw $2122,$C3EF                                                       ;A8ECDE;
-    db $F0                                                               ;A8ECE2;
-    dw $2100,$01E2                                                       ;A8ECE3;
-    db $02                                                               ;A8ECE7;
-    dw $210E                                                             ;A8ECE8;
+    dw $0008                                                             ;A8ECC0;
+    %spritemapEntry(0, $1E5, $03, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $43EB, $FE, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $43F4, $F8, 0, 0, 2, 0, $12C)
+    %spritemapEntry(1, $43FD, $01, 0, 0, 2, 0, $11E)
+    %spritemapEntry(1, $43FD, $09, 0, 0, 2, 0, $12E)
+    %spritemapEntry(1, $4200, $00, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $43EF, $F0, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1E2, $02, 0, 0, 2, 0, $10E)
 
 Spritemap_Kihunter_11:
-    dw $0008,$01E9                                                       ;A8ECEA;
-    db $F5                                                               ;A8ECEE;
-    dw $210F,$C3EC                                                       ;A8ECEF;
-    db $FA                                                               ;A8ECF3;
-    dw $2128,$C3F4                                                       ;A8ECF4;
-    db $F8                                                               ;A8ECF8;
-    dw $212C,$C3FD                                                       ;A8ECF9;
-    db $01                                                               ;A8ECFD;
-    dw $211E,$C3FD                                                       ;A8ECFE;
-    db $09                                                               ;A8ED02;
-    dw $212E,$C200                                                       ;A8ED03;
-    db $00                                                               ;A8ED07;
-    dw $2122,$C3EF                                                       ;A8ED08;
-    db $F0                                                               ;A8ED0C;
-    dw $2100,$01E6                                                       ;A8ED0D;
-    db $F4                                                               ;A8ED11;
-    dw $210F                                                             ;A8ED12;
+    dw $0008                                                             ;A8ECEA;
+    %spritemapEntry(0, $1E9, $F5, 0, 0, 2, 0, $10F)
+    %spritemapEntry(1, $43EC, $FA, 0, 0, 2, 0, $128)
+    %spritemapEntry(1, $43F4, $F8, 0, 0, 2, 0, $12C)
+    %spritemapEntry(1, $43FD, $01, 0, 0, 2, 0, $11E)
+    %spritemapEntry(1, $43FD, $09, 0, 0, 2, 0, $12E)
+    %spritemapEntry(1, $4200, $00, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $43EF, $F0, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1E6, $F4, 0, 0, 2, 0, $10F)
 
 Spritemap_Kihunter_12:
-    dw $0008,$01F0                                                       ;A8ED14;
-    db $F5                                                               ;A8ED18;
-    dw $214F,$C3EC                                                       ;A8ED19;
-    db $FA                                                               ;A8ED1D;
-    dw $2128,$C3F4                                                       ;A8ED1E;
-    db $F8                                                               ;A8ED22;
-    dw $212C,$C3FD                                                       ;A8ED23;
-    db $01                                                               ;A8ED27;
-    dw $211E,$C3FD                                                       ;A8ED28;
-    db $09                                                               ;A8ED2C;
-    dw $212E,$C200                                                       ;A8ED2D;
-    db $00                                                               ;A8ED31;
-    dw $2122,$C3EF                                                       ;A8ED32;
-    db $F0                                                               ;A8ED36;
-    dw $2100,$01ED                                                       ;A8ED37;
-    db $F4                                                               ;A8ED3B;
-    dw $214F                                                             ;A8ED3C;
+    dw $0008                                                             ;A8ED14;
+    %spritemapEntry(0, $1F0, $F5, 0, 0, 2, 0, $14F)
+    %spritemapEntry(1, $43EC, $FA, 0, 0, 2, 0, $128)
+    %spritemapEntry(1, $43F4, $F8, 0, 0, 2, 0, $12C)
+    %spritemapEntry(1, $43FD, $01, 0, 0, 2, 0, $11E)
+    %spritemapEntry(1, $43FD, $09, 0, 0, 2, 0, $12E)
+    %spritemapEntry(1, $4200, $00, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $43EF, $F0, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1ED, $F4, 0, 0, 2, 0, $14F)
 
 Spritemap_Kihunter_13:
-    dw $0008,$01E8                                                       ;A8ED3E;
-    db $0F                                                               ;A8ED42;
-    dw $210E,$C3ED                                                       ;A8ED43;
-    db $03                                                               ;A8ED47;
-    dw $2124,$C3F4                                                       ;A8ED48;
-    db $F9                                                               ;A8ED4C;
-    dw $212C,$C3FD                                                       ;A8ED4D;
-    db $01                                                               ;A8ED51;
-    dw $211E,$C3FD                                                       ;A8ED52;
-    db $09                                                               ;A8ED56;
-    dw $212E,$C200                                                       ;A8ED57;
-    db $00                                                               ;A8ED5B;
-    dw $2122,$C3EF                                                       ;A8ED5C;
-    db $F1                                                               ;A8ED60;
-    dw $2100,$01E5                                                       ;A8ED61;
-    db $0E                                                               ;A8ED65;
-    dw $210E                                                             ;A8ED66;
+    dw $0008                                                             ;A8ED3E;
+    %spritemapEntry(0, $1E8, $0F, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $43ED, $03, 0, 0, 2, 0, $124)
+    %spritemapEntry(1, $43F4, $F9, 0, 0, 2, 0, $12C)
+    %spritemapEntry(1, $43FD, $01, 0, 0, 2, 0, $11E)
+    %spritemapEntry(1, $43FD, $09, 0, 0, 2, 0, $12E)
+    %spritemapEntry(1, $4200, $00, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $43EF, $F1, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1E5, $0E, 0, 0, 2, 0, $10E)
 
 Spritemap_Kihunter_14:
-    dw $0008,$C3ED                                                       ;A8ED68;
-    db $03                                                               ;A8ED6C;
-    dw $2124,$01F0                                                       ;A8ED6D;
-    db $0F                                                               ;A8ED71;
-    dw $214E,$C3F4                                                       ;A8ED72;
-    db $F9                                                               ;A8ED76;
-    dw $212C,$C3FD                                                       ;A8ED77;
-    db $02                                                               ;A8ED7B;
-    dw $211E,$C3FD                                                       ;A8ED7C;
-    db $0A                                                               ;A8ED80;
-    dw $212E,$C200                                                       ;A8ED81;
-    db $01                                                               ;A8ED85;
-    dw $2122,$C3EF                                                       ;A8ED86;
-    db $F2                                                               ;A8ED8A;
-    dw $2100,$01ED                                                       ;A8ED8B;
-    db $0E                                                               ;A8ED8F;
-    dw $214E                                                             ;A8ED90;
+    dw $0008                                                             ;A8ED68;
+    %spritemapEntry(1, $43ED, $03, 0, 0, 2, 0, $124)
+    %spritemapEntry(0, $1F0, $0F, 0, 0, 2, 0, $14E)
+    %spritemapEntry(1, $43F4, $F9, 0, 0, 2, 0, $12C)
+    %spritemapEntry(1, $43FD, $02, 0, 0, 2, 0, $11E)
+    %spritemapEntry(1, $43FD, $0A, 0, 0, 2, 0, $12E)
+    %spritemapEntry(1, $4200, $01, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $43EF, $F2, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1ED, $0E, 0, 0, 2, 0, $14E)
 
 Spritemap_Kihunter_15:
-    dw $0008,$0013                                                       ;A8ED92;
-    db $03                                                               ;A8ED96;
-    dw $610E,$C205                                                       ;A8ED97;
-    db $FE                                                               ;A8ED9B;
-    dw $6126,$C3FC                                                       ;A8ED9C;
-    db $F8                                                               ;A8EDA0;
-    dw $612C,$C3F3                                                       ;A8EDA1;
-    db $01                                                               ;A8EDA5;
-    dw $611E,$C3F3                                                       ;A8EDA6;
-    db $09                                                               ;A8EDAA;
-    dw $612E,$C3F0                                                       ;A8EDAB;
-    db $00                                                               ;A8EDAF;
-    dw $6122,$C201                                                       ;A8EDB0;
-    db $F0                                                               ;A8EDB4;
-    dw $6100,$0016                                                       ;A8EDB5;
-    db $02                                                               ;A8EDB9;
-    dw $610E                                                             ;A8EDBA;
+    dw $0008                                                             ;A8ED92;
+    %spritemapEntry(0, $13, $03, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $4205, $FE, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $43FC, $F8, 0, 1, 2, 0, $12C)
+    %spritemapEntry(1, $43F3, $01, 0, 1, 2, 0, $11E)
+    %spritemapEntry(1, $43F3, $09, 0, 1, 2, 0, $12E)
+    %spritemapEntry(1, $43F0, $00, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $4201, $F0, 0, 1, 2, 0, $100)
+    %spritemapEntry(0, $16, $02, 0, 1, 2, 0, $10E)
 
 Spritemap_Kihunter_16:
-    dw $0008,$000F                                                       ;A8EDBC;
-    db $F5                                                               ;A8EDC0;
-    dw $610F,$C204                                                       ;A8EDC1;
-    db $FA                                                               ;A8EDC5;
-    dw $6128,$C3FC                                                       ;A8EDC6;
-    db $F8                                                               ;A8EDCA;
-    dw $612C,$C3F3                                                       ;A8EDCB;
-    db $01                                                               ;A8EDCF;
-    dw $611E,$C3F3                                                       ;A8EDD0;
-    db $09                                                               ;A8EDD4;
-    dw $612E,$C3F0                                                       ;A8EDD5;
-    db $00                                                               ;A8EDD9;
-    dw $6122,$C201                                                       ;A8EDDA;
-    db $F0                                                               ;A8EDDE;
-    dw $6100,$0012                                                       ;A8EDDF;
-    db $F4                                                               ;A8EDE3;
-    dw $610F                                                             ;A8EDE4;
+    dw $0008                                                             ;A8EDBC;
+    %spritemapEntry(0, $0F, $F5, 0, 1, 2, 0, $10F)
+    %spritemapEntry(1, $4204, $FA, 0, 1, 2, 0, $128)
+    %spritemapEntry(1, $43FC, $F8, 0, 1, 2, 0, $12C)
+    %spritemapEntry(1, $43F3, $01, 0, 1, 2, 0, $11E)
+    %spritemapEntry(1, $43F3, $09, 0, 1, 2, 0, $12E)
+    %spritemapEntry(1, $43F0, $00, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $4201, $F0, 0, 1, 2, 0, $100)
+    %spritemapEntry(0, $12, $F4, 0, 1, 2, 0, $10F)
 
 Spritemap_Kihunter_17:
-    dw $0008,$0008                                                       ;A8EDE6;
-    db $F5                                                               ;A8EDEA;
-    dw $614F,$C204                                                       ;A8EDEB;
-    db $FA                                                               ;A8EDEF;
-    dw $6128,$C3FC                                                       ;A8EDF0;
-    db $F8                                                               ;A8EDF4;
-    dw $612C,$C3F3                                                       ;A8EDF5;
-    db $01                                                               ;A8EDF9;
-    dw $611E,$C3F3                                                       ;A8EDFA;
-    db $09                                                               ;A8EDFE;
-    dw $612E,$C3F0                                                       ;A8EDFF;
-    db $00                                                               ;A8EE03;
-    dw $6122,$C201                                                       ;A8EE04;
-    db $F0                                                               ;A8EE08;
-    dw $6100,$000B                                                       ;A8EE09;
-    db $F4                                                               ;A8EE0D;
-    dw $614F                                                             ;A8EE0E;
+    dw $0008                                                             ;A8EDE6;
+    %spritemapEntry(0, $08, $F5, 0, 1, 2, 0, $14F)
+    %spritemapEntry(1, $4204, $FA, 0, 1, 2, 0, $128)
+    %spritemapEntry(1, $43FC, $F8, 0, 1, 2, 0, $12C)
+    %spritemapEntry(1, $43F3, $01, 0, 1, 2, 0, $11E)
+    %spritemapEntry(1, $43F3, $09, 0, 1, 2, 0, $12E)
+    %spritemapEntry(1, $43F0, $00, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $4201, $F0, 0, 1, 2, 0, $100)
+    %spritemapEntry(0, $0B, $F4, 0, 1, 2, 0, $14F)
 
 Spritemap_Kihunter_18:
-    dw $0008,$0010                                                       ;A8EE10;
-    db $0F                                                               ;A8EE14;
-    dw $610E,$C203                                                       ;A8EE15;
-    db $03                                                               ;A8EE19;
-    dw $6124,$C3FC                                                       ;A8EE1A;
-    db $F9                                                               ;A8EE1E;
-    dw $612C,$C3F3                                                       ;A8EE1F;
-    db $01                                                               ;A8EE23;
-    dw $611E,$C3F3                                                       ;A8EE24;
-    db $09                                                               ;A8EE28;
-    dw $612E,$C3F0                                                       ;A8EE29;
-    db $00                                                               ;A8EE2D;
-    dw $6122,$C201                                                       ;A8EE2E;
-    db $F1                                                               ;A8EE32;
-    dw $6100,$0013                                                       ;A8EE33;
-    db $0E                                                               ;A8EE37;
-    dw $610E                                                             ;A8EE38;
+    dw $0008                                                             ;A8EE10;
+    %spritemapEntry(0, $10, $0F, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $4203, $03, 0, 1, 2, 0, $124)
+    %spritemapEntry(1, $43FC, $F9, 0, 1, 2, 0, $12C)
+    %spritemapEntry(1, $43F3, $01, 0, 1, 2, 0, $11E)
+    %spritemapEntry(1, $43F3, $09, 0, 1, 2, 0, $12E)
+    %spritemapEntry(1, $43F0, $00, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $4201, $F1, 0, 1, 2, 0, $100)
+    %spritemapEntry(0, $13, $0E, 0, 1, 2, 0, $10E)
 
 Spritemap_Kihunter_19:
-    dw $0008,$C203                                                       ;A8EE3A;
-    db $03                                                               ;A8EE3E;
-    dw $6124,$0008                                                       ;A8EE3F;
-    db $0F                                                               ;A8EE43;
-    dw $614E,$C3FC                                                       ;A8EE44;
-    db $F9                                                               ;A8EE48;
-    dw $612C,$C3F3                                                       ;A8EE49;
-    db $02                                                               ;A8EE4D;
-    dw $611E,$C3F3                                                       ;A8EE4E;
-    db $0A                                                               ;A8EE52;
-    dw $612E,$C3F0                                                       ;A8EE53;
-    db $01                                                               ;A8EE57;
-    dw $6122,$C201                                                       ;A8EE58;
-    db $F2                                                               ;A8EE5C;
-    dw $6100,$000B                                                       ;A8EE5D;
-    db $0E                                                               ;A8EE61;
-    dw $614E                                                             ;A8EE62;
+    dw $0008                                                             ;A8EE3A;
+    %spritemapEntry(1, $4203, $03, 0, 1, 2, 0, $124)
+    %spritemapEntry(0, $08, $0F, 0, 1, 2, 0, $14E)
+    %spritemapEntry(1, $43FC, $F9, 0, 1, 2, 0, $12C)
+    %spritemapEntry(1, $43F3, $02, 0, 1, 2, 0, $11E)
+    %spritemapEntry(1, $43F3, $0A, 0, 1, 2, 0, $12E)
+    %spritemapEntry(1, $43F0, $01, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $4201, $F2, 0, 1, 2, 0, $100)
+    %spritemapEntry(0, $0B, $0E, 0, 1, 2, 0, $14E)
 
 Spritemap_Kihunter_1A:
-    dw $0008,$01E3                                                       ;A8EE64;
-    db $FF                                                               ;A8EE68;
-    dw $210E,$C3E9                                                       ;A8EE69;
-    db $FA                                                               ;A8EE6D;
-    dw $2126,$C3F2                                                       ;A8EE6E;
-    db $F4                                                               ;A8EE72;
-    dw $212C,$C3FA                                                       ;A8EE73;
-    db $F8                                                               ;A8EE77;
-    dw $215E,$C3FA                                                       ;A8EE78;
-    db $00                                                               ;A8EE7C;
-    dw $216E,$C3FE                                                       ;A8EE7D;
-    db $FC                                                               ;A8EE81;
-    dw $2122,$C3EE                                                       ;A8EE82;
-    db $ED                                                               ;A8EE86;
-    dw $2100,$01E0                                                       ;A8EE87;
-    db $FE                                                               ;A8EE8B;
-    dw $210E                                                             ;A8EE8C;
+    dw $0008                                                             ;A8EE64;
+    %spritemapEntry(0, $1E3, $FF, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $43E9, $FA, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $43F2, $F4, 0, 0, 2, 0, $12C)
+    %spritemapEntry(1, $43FA, $F8, 0, 0, 2, 0, $15E)
+    %spritemapEntry(1, $43FA, $00, 0, 0, 2, 0, $16E)
+    %spritemapEntry(1, $43FE, $FC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $43EE, $ED, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1E0, $FE, 0, 0, 2, 0, $10E)
 
 Spritemap_Kihunter_1B:
-    dw $0008,$01E3                                                       ;A8EE8E;
-    db $04                                                               ;A8EE92;
-    dw $210E,$C3E9                                                       ;A8EE93;
-    db $FF                                                               ;A8EE97;
-    dw $2126,$C3F2                                                       ;A8EE98;
-    db $F9                                                               ;A8EE9C;
-    dw $212C,$C3FB                                                       ;A8EE9D;
-    db $00                                                               ;A8EEA1;
-    dw $2162,$C3FE                                                       ;A8EEA2;
-    db $01                                                               ;A8EEA6;
-    dw $2122,$C3ED                                                       ;A8EEA7;
-    db $F1                                                               ;A8EEAB;
-    dw $2100,$01E0                                                       ;A8EEAC;
-    db $03                                                               ;A8EEB0;
-    dw $210E,$C3F9                                                       ;A8EEB1;
-    db $FF                                                               ;A8EEB5;
-    dw $2162                                                             ;A8EEB6;
+    dw $0008                                                             ;A8EE8E;
+    %spritemapEntry(0, $1E3, $04, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $43E9, $FF, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $43F2, $F9, 0, 0, 2, 0, $12C)
+    %spritemapEntry(1, $43FB, $00, 0, 0, 2, 0, $162)
+    %spritemapEntry(1, $43FE, $01, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $43ED, $F1, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1E0, $03, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $43F9, $FF, 0, 0, 2, 0, $162)
 
 Spritemap_Kihunter_1C:
-    dw $0008,$01E3                                                       ;A8EEB8;
-    db $07                                                               ;A8EEBC;
-    dw $210E,$C3E9                                                       ;A8EEBD;
-    db $02                                                               ;A8EEC1;
-    dw $2126,$C3F2                                                       ;A8EEC2;
-    db $FC                                                               ;A8EEC6;
-    dw $212C,$C3FB                                                       ;A8EEC7;
-    db $00                                                               ;A8EECB;
-    dw $2160,$C3FE                                                       ;A8EECC;
-    db $04                                                               ;A8EED0;
-    dw $2122,$C3ED                                                       ;A8EED1;
-    db $F4                                                               ;A8EED5;
-    dw $2100,$01E0                                                       ;A8EED6;
-    db $06                                                               ;A8EEDA;
-    dw $210E,$C3F9                                                       ;A8EEDB;
-    db $FF                                                               ;A8EEDF;
-    dw $2160                                                             ;A8EEE0;
+    dw $0008                                                             ;A8EEB8;
+    %spritemapEntry(0, $1E3, $07, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $43E9, $02, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $43F2, $FC, 0, 0, 2, 0, $12C)
+    %spritemapEntry(1, $43FB, $00, 0, 0, 2, 0, $160)
+    %spritemapEntry(1, $43FE, $04, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $43ED, $F4, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1E0, $06, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $43F9, $FF, 0, 0, 2, 0, $160)
 
 Spritemap_Kihunter_1D:
-    dw $0008,$01E8                                                       ;A8EEE2;
-    db $00                                                               ;A8EEE6;
-    dw $210E,$C3EE                                                       ;A8EEE7;
-    db $FB                                                               ;A8EEEB;
-    dw $2126,$C3F7                                                       ;A8EEEC;
-    db $F5                                                               ;A8EEF0;
-    dw $212C,$C200                                                       ;A8EEF1;
-    db $FE                                                               ;A8EEF5;
-    dw $211E,$C200                                                       ;A8EEF6;
-    db $06                                                               ;A8EEFA;
-    dw $212E,$C203                                                       ;A8EEFB;
-    db $FD                                                               ;A8EEFF;
-    dw $2122,$C3F3                                                       ;A8EF00;
-    db $EE                                                               ;A8EF04;
-    dw $2100,$01E5                                                       ;A8EF05;
-    db $FF                                                               ;A8EF09;
-    dw $210E                                                             ;A8EF0A;
+    dw $0008                                                             ;A8EEE2;
+    %spritemapEntry(0, $1E8, $00, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $43EE, $FB, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $43F7, $F5, 0, 0, 2, 0, $12C)
+    %spritemapEntry(1, $4200, $FE, 0, 0, 2, 0, $11E)
+    %spritemapEntry(1, $4200, $06, 0, 0, 2, 0, $12E)
+    %spritemapEntry(1, $4203, $FD, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $43F3, $EE, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1E5, $FF, 0, 0, 2, 0, $10E)
 
 Spritemap_Kihunter_1E:
-    dw $0008,$0015                                                       ;A8EF0C;
-    db $FF                                                               ;A8EF10;
-    dw $610E,$C207                                                       ;A8EF11;
-    db $FA                                                               ;A8EF15;
-    dw $6126,$C3FE                                                       ;A8EF16;
-    db $F4                                                               ;A8EF1A;
-    dw $612C,$C3F6                                                       ;A8EF1B;
-    db $F8                                                               ;A8EF1F;
-    dw $615E,$C3F6                                                       ;A8EF20;
-    db $00                                                               ;A8EF24;
-    dw $616E,$C3F2                                                       ;A8EF25;
-    db $FC                                                               ;A8EF29;
-    dw $6122,$C202                                                       ;A8EF2A;
-    db $ED                                                               ;A8EF2E;
-    dw $6100,$0018                                                       ;A8EF2F;
-    db $FE                                                               ;A8EF33;
-    dw $610E                                                             ;A8EF34;
+    dw $0008                                                             ;A8EF0C;
+    %spritemapEntry(0, $15, $FF, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $4207, $FA, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $43FE, $F4, 0, 1, 2, 0, $12C)
+    %spritemapEntry(1, $43F6, $F8, 0, 1, 2, 0, $15E)
+    %spritemapEntry(1, $43F6, $00, 0, 1, 2, 0, $16E)
+    %spritemapEntry(1, $43F2, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $4202, $ED, 0, 1, 2, 0, $100)
+    %spritemapEntry(0, $18, $FE, 0, 1, 2, 0, $10E)
 
 Spritemap_Kihunter_1F:
-    dw $0008,$0015                                                       ;A8EF36;
-    db $04                                                               ;A8EF3A;
-    dw $610E,$C207                                                       ;A8EF3B;
-    db $FF                                                               ;A8EF3F;
-    dw $6126,$C3FE                                                       ;A8EF40;
-    db $F9                                                               ;A8EF44;
-    dw $612C,$C3F5                                                       ;A8EF45;
-    db $00                                                               ;A8EF49;
-    dw $6162,$C3F2                                                       ;A8EF4A;
-    db $01                                                               ;A8EF4E;
-    dw $6122,$C203                                                       ;A8EF4F;
-    db $F1                                                               ;A8EF53;
-    dw $6100,$0018                                                       ;A8EF54;
-    db $03                                                               ;A8EF58;
-    dw $610E,$C3F7                                                       ;A8EF59;
-    db $FF                                                               ;A8EF5D;
-    dw $6162                                                             ;A8EF5E;
+    dw $0008                                                             ;A8EF36;
+    %spritemapEntry(0, $15, $04, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $4207, $FF, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $43FE, $F9, 0, 1, 2, 0, $12C)
+    %spritemapEntry(1, $43F5, $00, 0, 1, 2, 0, $162)
+    %spritemapEntry(1, $43F2, $01, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $4203, $F1, 0, 1, 2, 0, $100)
+    %spritemapEntry(0, $18, $03, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $43F7, $FF, 0, 1, 2, 0, $162)
 
 Spritemap_Kihunter_20:
-    dw $0008,$0015                                                       ;A8EF60;
-    db $07                                                               ;A8EF64;
-    dw $610E,$C207                                                       ;A8EF65;
-    db $02                                                               ;A8EF69;
-    dw $6126,$C3FE                                                       ;A8EF6A;
-    db $FC                                                               ;A8EF6E;
-    dw $612C,$C3F5                                                       ;A8EF6F;
-    db $00                                                               ;A8EF73;
-    dw $6160,$C3F2                                                       ;A8EF74;
-    db $04                                                               ;A8EF78;
-    dw $6122,$C203                                                       ;A8EF79;
-    db $F4                                                               ;A8EF7D;
-    dw $6100,$0018                                                       ;A8EF7E;
-    db $06                                                               ;A8EF82;
-    dw $610E,$C3F7                                                       ;A8EF83;
-    db $FF                                                               ;A8EF87;
-    dw $6160                                                             ;A8EF88;
+    dw $0008                                                             ;A8EF60;
+    %spritemapEntry(0, $15, $07, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $4207, $02, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $43FE, $FC, 0, 1, 2, 0, $12C)
+    %spritemapEntry(1, $43F5, $00, 0, 1, 2, 0, $160)
+    %spritemapEntry(1, $43F2, $04, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $4203, $F4, 0, 1, 2, 0, $100)
+    %spritemapEntry(0, $18, $06, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $43F7, $FF, 0, 1, 2, 0, $160)
 
 Spritemap_Kihunter_21:
-    dw $0008,$0012                                                       ;A8EF8A;
-    db $FF                                                               ;A8EF8E;
-    dw $610E,$C204                                                       ;A8EF8F;
-    db $FA                                                               ;A8EF93;
-    dw $6126,$C3FB                                                       ;A8EF94;
-    db $F4                                                               ;A8EF98;
-    dw $612C,$C3F0                                                       ;A8EF99;
-    db $FE                                                               ;A8EF9D;
-    dw $611E,$C3F0                                                       ;A8EF9E;
-    db $06                                                               ;A8EFA2;
-    dw $612E,$C3EF                                                       ;A8EFA3;
-    db $FC                                                               ;A8EFA7;
-    dw $6122,$C3FF                                                       ;A8EFA8;
-    db $ED                                                               ;A8EFAC;
-    dw $6100,$0015                                                       ;A8EFAD;
-    db $FE                                                               ;A8EFB1;
-    dw $610E                                                             ;A8EFB2;
+    dw $0008                                                             ;A8EF8A;
+    %spritemapEntry(0, $12, $FF, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $4204, $FA, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $43FB, $F4, 0, 1, 2, 0, $12C)
+    %spritemapEntry(1, $43F0, $FE, 0, 1, 2, 0, $11E)
+    %spritemapEntry(1, $43F0, $06, 0, 1, 2, 0, $12E)
+    %spritemapEntry(1, $43EF, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $43FF, $ED, 0, 1, 2, 0, $100)
+    %spritemapEntry(0, $15, $FE, 0, 1, 2, 0, $10E)
 
 Spritemap_Kihunter_22:
-    dw $0008,$01E3                                                       ;A8EFB4;
-    db $FF                                                               ;A8EFB8;
-    dw $210E,$C3E9                                                       ;A8EFB9;
-    db $FA                                                               ;A8EFBD;
-    dw $2126,$C3F2                                                       ;A8EFBE;
-    db $F4                                                               ;A8EFC2;
-    dw $212C,$C3FA                                                       ;A8EFC3;
-    db $F8                                                               ;A8EFC7;
-    dw $215E,$C3FA                                                       ;A8EFC8;
-    db $00                                                               ;A8EFCC;
-    dw $216E,$C3FE                                                       ;A8EFCD;
-    db $FC                                                               ;A8EFD1;
-    dw $2122,$C3EE                                                       ;A8EFD2;
-    db $ED                                                               ;A8EFD6;
-    dw $2100,$01E0                                                       ;A8EFD7;
-    db $FE                                                               ;A8EFDB;
-    dw $210E                                                             ;A8EFDC;
+    dw $0008                                                             ;A8EFB4;
+    %spritemapEntry(0, $1E3, $FF, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $43E9, $FA, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $43F2, $F4, 0, 0, 2, 0, $12C)
+    %spritemapEntry(1, $43FA, $F8, 0, 0, 2, 0, $15E)
+    %spritemapEntry(1, $43FA, $00, 0, 0, 2, 0, $16E)
+    %spritemapEntry(1, $43FE, $FC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $43EE, $ED, 0, 0, 2, 0, $100)
+    %spritemapEntry(0, $1E0, $FE, 0, 0, 2, 0, $10E)
 
 Spritemap_Kihunter_23:
-    dw $0009,$01E4                                                       ;A8EFDE;
-    db $FF                                                               ;A8EFE2;
-    dw $210E,$C3EA                                                       ;A8EFE3;
-    db $FA                                                               ;A8EFE7;
-    dw $2126,$C3F3                                                       ;A8EFE8;
-    db $F4                                                               ;A8EFEC;
-    dw $212C,$C3FA                                                       ;A8EFED;
-    db $F8                                                               ;A8EFF1;
-    dw $215E,$C3FA                                                       ;A8EFF2;
-    db $00                                                               ;A8EFF6;
-    dw $216E,$C3FE                                                       ;A8EFF7;
-    db $FC                                                               ;A8EFFB;
-    dw $2122,$C3F2                                                       ;A8EFFC;
-    db $EC                                                               ;A8F000;
-    dw $2103,$C3EA                                                       ;A8F001;
-    db $EC                                                               ;A8F005;
-    dw $2102,$01E1                                                       ;A8F006;
-    db $FE                                                               ;A8F00A;
-    dw $210E                                                             ;A8F00B;
+    dw $0009                                                             ;A8EFDE;
+    %spritemapEntry(0, $1E4, $FF, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $43EA, $FA, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $43F3, $F4, 0, 0, 2, 0, $12C)
+    %spritemapEntry(1, $43FA, $F8, 0, 0, 2, 0, $15E)
+    %spritemapEntry(1, $43FA, $00, 0, 0, 2, 0, $16E)
+    %spritemapEntry(1, $43FE, $FC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $43F2, $EC, 0, 0, 2, 0, $103)
+    %spritemapEntry(1, $43EA, $EC, 0, 0, 2, 0, $102)
+    %spritemapEntry(0, $1E1, $FE, 0, 0, 2, 0, $10E)
 
 Spritemap_Kihunter_24:
-    dw $0009,$01E5                                                       ;A8F00D;
-    db $FF                                                               ;A8F011;
-    dw $210E,$C3EB                                                       ;A8F012;
-    db $FA                                                               ;A8F016;
-    dw $2126,$C3F4                                                       ;A8F017;
-    db $F4                                                               ;A8F01B;
-    dw $212C,$C3FA                                                       ;A8F01C;
-    db $F8                                                               ;A8F020;
-    dw $215E,$C3FA                                                       ;A8F021;
-    db $00                                                               ;A8F025;
-    dw $216E,$C3FD                                                       ;A8F026;
-    db $FC                                                               ;A8F02A;
-    dw $2122,$C3FC                                                       ;A8F02B;
-    db $EC                                                               ;A8F02F;
-    dw $2107,$C3EC                                                       ;A8F030;
-    db $EC                                                               ;A8F034;
-    dw $2105,$01E2                                                       ;A8F035;
-    db $FE                                                               ;A8F039;
-    dw $210E                                                             ;A8F03A;
+    dw $0009                                                             ;A8F00D;
+    %spritemapEntry(0, $1E5, $FF, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $43EB, $FA, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $43F4, $F4, 0, 0, 2, 0, $12C)
+    %spritemapEntry(1, $43FA, $F8, 0, 0, 2, 0, $15E)
+    %spritemapEntry(1, $43FA, $00, 0, 0, 2, 0, $16E)
+    %spritemapEntry(1, $43FD, $FC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $43FC, $EC, 0, 0, 2, 0, $107)
+    %spritemapEntry(1, $43EC, $EC, 0, 0, 2, 0, $105)
+    %spritemapEntry(0, $1E2, $FE, 0, 0, 2, 0, $10E)
 
 Spritemap_Kihunter_25:
-    dw $0009,$01E5                                                       ;A8F03C;
-    db $FF                                                               ;A8F040;
-    dw $210E,$C3EB                                                       ;A8F041;
-    db $FA                                                               ;A8F045;
-    dw $2126,$C3F4                                                       ;A8F046;
-    db $F4                                                               ;A8F04A;
-    dw $212C,$C3FA                                                       ;A8F04B;
-    db $F8                                                               ;A8F04F;
-    dw $215E,$C3FA                                                       ;A8F050;
-    db $00                                                               ;A8F054;
-    dw $216E,$C3EB                                                       ;A8F055;
-    db $EC                                                               ;A8F059;
-    dw $210A,$C3FB                                                       ;A8F05A;
-    db $EC                                                               ;A8F05E;
-    dw $2107,$C3FF                                                       ;A8F05F;
-    db $FC                                                               ;A8F063;
-    dw $2122,$01E2                                                       ;A8F064;
-    db $FE                                                               ;A8F068;
-    dw $210E                                                             ;A8F069;
+    dw $0009                                                             ;A8F03C;
+    %spritemapEntry(0, $1E5, $FF, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $43EB, $FA, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $43F4, $F4, 0, 0, 2, 0, $12C)
+    %spritemapEntry(1, $43FA, $F8, 0, 0, 2, 0, $15E)
+    %spritemapEntry(1, $43FA, $00, 0, 0, 2, 0, $16E)
+    %spritemapEntry(1, $43EB, $EC, 0, 0, 2, 0, $10A)
+    %spritemapEntry(1, $43FB, $EC, 0, 0, 2, 0, $107)
+    %spritemapEntry(1, $43FF, $FC, 0, 0, 2, 0, $122)
+    %spritemapEntry(0, $1E2, $FE, 0, 0, 2, 0, $10E)
 
 Spritemap_Kihunter_26:
-    dw $0009,$01E4                                                       ;A8F06B;
-    db $FF                                                               ;A8F06F;
-    dw $210E,$C3EA                                                       ;A8F070;
-    db $FA                                                               ;A8F074;
-    dw $2126,$C3F3                                                       ;A8F075;
-    db $F4                                                               ;A8F079;
-    dw $212C,$C3FA                                                       ;A8F07A;
-    db $F8                                                               ;A8F07E;
-    dw $215E,$C3FA                                                       ;A8F07F;
-    db $00                                                               ;A8F083;
-    dw $216E,$C3FD                                                       ;A8F084;
-    db $FC                                                               ;A8F088;
-    dw $2122,$C3EA                                                       ;A8F089;
-    db $EC                                                               ;A8F08D;
-    dw $210C,$C3FA                                                       ;A8F08E;
-    db $EC                                                               ;A8F092;
-    dw $2107,$01E1                                                       ;A8F093;
-    db $FE                                                               ;A8F097;
-    dw $210E                                                             ;A8F098;
+    dw $0009                                                             ;A8F06B;
+    %spritemapEntry(0, $1E4, $FF, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $43EA, $FA, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $43F3, $F4, 0, 0, 2, 0, $12C)
+    %spritemapEntry(1, $43FA, $F8, 0, 0, 2, 0, $15E)
+    %spritemapEntry(1, $43FA, $00, 0, 0, 2, 0, $16E)
+    %spritemapEntry(1, $43FD, $FC, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $43EA, $EC, 0, 0, 2, 0, $10C)
+    %spritemapEntry(1, $43FA, $EC, 0, 0, 2, 0, $107)
+    %spritemapEntry(0, $1E1, $FE, 0, 0, 2, 0, $10E)
 
 Spritemap_Kihunter_27:
-    dw $0008,$0015                                                       ;A8F09A;
-    db $FF                                                               ;A8F09E;
-    dw $610E,$C207                                                       ;A8F09F;
-    db $FA                                                               ;A8F0A3;
-    dw $6126,$C3FE                                                       ;A8F0A4;
-    db $F4                                                               ;A8F0A8;
-    dw $612C,$C3F6                                                       ;A8F0A9;
-    db $F8                                                               ;A8F0AD;
-    dw $615E,$C3F6                                                       ;A8F0AE;
-    db $00                                                               ;A8F0B2;
-    dw $616E,$C3F2                                                       ;A8F0B3;
-    db $FC                                                               ;A8F0B7;
-    dw $6122,$C202                                                       ;A8F0B8;
-    db $ED                                                               ;A8F0BC;
-    dw $6100,$0018                                                       ;A8F0BD;
-    db $FE                                                               ;A8F0C1;
-    dw $610E                                                             ;A8F0C2;
+    dw $0008                                                             ;A8F09A;
+    %spritemapEntry(0, $15, $FF, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $4207, $FA, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $43FE, $F4, 0, 1, 2, 0, $12C)
+    %spritemapEntry(1, $43F6, $F8, 0, 1, 2, 0, $15E)
+    %spritemapEntry(1, $43F6, $00, 0, 1, 2, 0, $16E)
+    %spritemapEntry(1, $43F2, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $4202, $ED, 0, 1, 2, 0, $100)
+    %spritemapEntry(0, $18, $FE, 0, 1, 2, 0, $10E)
 
 Spritemap_Kihunter_28:
-    dw $0009,$0014                                                       ;A8F0C4;
-    db $FF                                                               ;A8F0C8;
-    dw $610E,$C206                                                       ;A8F0C9;
-    db $FA                                                               ;A8F0CD;
-    dw $6126,$C3FD                                                       ;A8F0CE;
-    db $F4                                                               ;A8F0D2;
-    dw $612C,$C3F6                                                       ;A8F0D3;
-    db $F8                                                               ;A8F0D7;
-    dw $615E,$C3F6                                                       ;A8F0D8;
-    db $00                                                               ;A8F0DC;
-    dw $616E,$C3F2                                                       ;A8F0DD;
-    db $FC                                                               ;A8F0E1;
-    dw $6122,$C3FE                                                       ;A8F0E2;
-    db $EC                                                               ;A8F0E6;
-    dw $6103,$C206                                                       ;A8F0E7;
-    db $EC                                                               ;A8F0EB;
-    dw $6102,$0017                                                       ;A8F0EC;
-    db $FE                                                               ;A8F0F0;
-    dw $610E                                                             ;A8F0F1;
+    dw $0009                                                             ;A8F0C4;
+    %spritemapEntry(0, $14, $FF, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $4206, $FA, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $43FD, $F4, 0, 1, 2, 0, $12C)
+    %spritemapEntry(1, $43F6, $F8, 0, 1, 2, 0, $15E)
+    %spritemapEntry(1, $43F6, $00, 0, 1, 2, 0, $16E)
+    %spritemapEntry(1, $43F2, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $43FE, $EC, 0, 1, 2, 0, $103)
+    %spritemapEntry(1, $4206, $EC, 0, 1, 2, 0, $102)
+    %spritemapEntry(0, $17, $FE, 0, 1, 2, 0, $10E)
 
 Spritemap_Kihunter_29:
-    dw $0009,$0013                                                       ;A8F0F3;
-    db $FF                                                               ;A8F0F7;
-    dw $610E,$C205                                                       ;A8F0F8;
-    db $FA                                                               ;A8F0FC;
-    dw $6126,$C3FC                                                       ;A8F0FD;
-    db $F4                                                               ;A8F101;
-    dw $612C,$C3F6                                                       ;A8F102;
-    db $F8                                                               ;A8F106;
-    dw $615E,$C3F6                                                       ;A8F107;
-    db $00                                                               ;A8F10B;
-    dw $616E,$C3F3                                                       ;A8F10C;
-    db $FC                                                               ;A8F110;
-    dw $6122,$C3F4                                                       ;A8F111;
-    db $EC                                                               ;A8F115;
-    dw $6107,$C204                                                       ;A8F116;
-    db $EC                                                               ;A8F11A;
-    dw $6105,$0016                                                       ;A8F11B;
-    db $FE                                                               ;A8F11F;
-    dw $610E                                                             ;A8F120;
+    dw $0009                                                             ;A8F0F3;
+    %spritemapEntry(0, $13, $FF, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $4205, $FA, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $43FC, $F4, 0, 1, 2, 0, $12C)
+    %spritemapEntry(1, $43F6, $F8, 0, 1, 2, 0, $15E)
+    %spritemapEntry(1, $43F6, $00, 0, 1, 2, 0, $16E)
+    %spritemapEntry(1, $43F3, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $43F4, $EC, 0, 1, 2, 0, $107)
+    %spritemapEntry(1, $4204, $EC, 0, 1, 2, 0, $105)
+    %spritemapEntry(0, $16, $FE, 0, 1, 2, 0, $10E)
 
 Spritemap_Kihunter_2A:
-    dw $0009,$0013                                                       ;A8F122;
-    db $FF                                                               ;A8F126;
-    dw $610E,$C205                                                       ;A8F127;
-    db $FA                                                               ;A8F12B;
-    dw $6126,$C3FC                                                       ;A8F12C;
-    db $F4                                                               ;A8F130;
-    dw $612C,$C3F6                                                       ;A8F131;
-    db $F8                                                               ;A8F135;
-    dw $615E,$C3F6                                                       ;A8F136;
-    db $00                                                               ;A8F13A;
-    dw $616E,$C205                                                       ;A8F13B;
-    db $EC                                                               ;A8F13F;
-    dw $610A,$C3F5                                                       ;A8F140;
-    db $EC                                                               ;A8F144;
-    dw $6107,$C3F1                                                       ;A8F145;
-    db $FC                                                               ;A8F149;
-    dw $6122,$0016                                                       ;A8F14A;
-    db $FE                                                               ;A8F14E;
-    dw $610E                                                             ;A8F14F;
+    dw $0009                                                             ;A8F122;
+    %spritemapEntry(0, $13, $FF, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $4205, $FA, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $43FC, $F4, 0, 1, 2, 0, $12C)
+    %spritemapEntry(1, $43F6, $F8, 0, 1, 2, 0, $15E)
+    %spritemapEntry(1, $43F6, $00, 0, 1, 2, 0, $16E)
+    %spritemapEntry(1, $4205, $EC, 0, 1, 2, 0, $10A)
+    %spritemapEntry(1, $43F5, $EC, 0, 1, 2, 0, $107)
+    %spritemapEntry(1, $43F1, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(0, $16, $FE, 0, 1, 2, 0, $10E)
 
 Spritemap_Kihunter_2B:
-    dw $0009,$0014                                                       ;A8F151;
-    db $FF                                                               ;A8F155;
-    dw $610E,$C206                                                       ;A8F156;
-    db $FA                                                               ;A8F15A;
-    dw $6126,$C3FD                                                       ;A8F15B;
-    db $F4                                                               ;A8F15F;
-    dw $612C,$C3F6                                                       ;A8F160;
-    db $F8                                                               ;A8F164;
-    dw $615E,$C3F6                                                       ;A8F165;
-    db $00                                                               ;A8F169;
-    dw $616E,$C3F3                                                       ;A8F16A;
-    db $FC                                                               ;A8F16E;
-    dw $6122,$C206                                                       ;A8F16F;
-    db $EC                                                               ;A8F173;
-    dw $610C,$C3F6                                                       ;A8F174;
-    db $EC                                                               ;A8F178;
-    dw $6107,$0017                                                       ;A8F179;
-    db $FE                                                               ;A8F17D;
-    dw $610E                                                             ;A8F17E;
+    dw $0009                                                             ;A8F151;
+    %spritemapEntry(0, $14, $FF, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $4206, $FA, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $43FD, $F4, 0, 1, 2, 0, $12C)
+    %spritemapEntry(1, $43F6, $F8, 0, 1, 2, 0, $15E)
+    %spritemapEntry(1, $43F6, $00, 0, 1, 2, 0, $16E)
+    %spritemapEntry(1, $43F3, $FC, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $4206, $EC, 0, 1, 2, 0, $10C)
+    %spritemapEntry(1, $43F6, $EC, 0, 1, 2, 0, $107)
+    %spritemapEntry(0, $17, $FE, 0, 1, 2, 0, $10E)
 
-KihunterConstants_XProximityToActivateSwoop:
+
+KihunterConstants:
+  .XProximityToActivateSwoop:
     dw $0060                                                             ;A8F180;
-
-KihunterConstants_fallingAcceleration_hop:
+  .fallingAcceleration_hop:
     dw $E000                                                             ;A8F182;
-
-KihunterConstants_fallingAcceleration_wingsClipped:
+  .fallingAcceleration_wingsClipped:
     dw $0000                                                             ;A8F184;
-
-KihunterConstants_fallingWingsArcRadius:
+  .fallingWingsArcRadius:
     dw $0030                                                             ;A8F186;
 
 InitAI_Kihunter:
@@ -14305,7 +12051,6 @@ Function_Kihunter_Winged_IdleFlying:
 
 .instListPointers_kihunter:
     dw InstList_Kihunter_Idling_FacingLeft                               ;A8F3B0;
-
 .instListPointers_wings:
     dw InstList_KihunterWings_FacingLeft                                 ;A8F3B2;
     dw InstList_Kihunter_Idling_FacingRight                              ;A8F3B4;
