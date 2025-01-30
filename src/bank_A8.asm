@@ -2,111 +2,134 @@
 org $A88000
 
 
+%anchor($A88000)
 CommonA8_GrappleAI_NoInteraction:
     JSL.L GrappleAI_SwitchEnemyAIToMainAI                                ;A88000;
     RTL                                                                  ;A88004;
 
 
+%anchor($A88005)
 CommonA8_GrappleAI_SamusLatchesOn:
     JSL.L GrappleAI_SamusLatchesOnWithGrapple                            ;A88005;
     RTL                                                                  ;A88009;
 
 
+%anchor($A8800A)
 CommonA8_GrappleAI_KillEnemy:
     JSL.L GrappleAI_EnemyGrappleDeath                                    ;A8800A;
     RTL                                                                  ;A8800E;
 
 
+%anchor($A8800F)
 CommonA8_GrappleAI_CancelGrappleBeam:
     JSL.L GrappleAI_SwitchToFrozenAI                                     ;A8800F;
     RTL                                                                  ;A88013;
 
 
+%anchor($A88014)
 CommonA8_GrappleAI_SamusLatchesOn_NoInvincibility:
     JSL.L GrappleAI_SamusLatchesOnWithGrapple_NoInvincibility            ;A88014;
     RTL                                                                  ;A88018;
 
 
+%anchor($A88019)
 UNUSED_CommonA8_GrappleAI_SamusLatchesOn_ParalyzeEnemy_A88019:
     JSL.L GrappleAI_SamusLatchesOnWithGrapple_ParalyzeEnemy              ;A88019;
     RTL                                                                  ;A8801D;
 
 
+%anchor($A8801E)
 CommonA8_GrappleAI_HurtSamus:
     JSL.L GrappleAI_SwitchToFrozenAI_duplicate                           ;A8801E;
     RTL                                                                  ;A88022;
 
 
+%anchor($A88023)
 CommonA8_NormalEnemyTouchAI:
     JSL.L NormalEnemyTouchAI                                             ;A88023;
     RTL                                                                  ;A88027;
 
 
+%anchor($A88028)
 CommonA8_NormalTouchAI_NoDeathCheck:
     JSL.L NormalEnemyTouchAI_NoDeathCheck_External                       ;A88028;
     RTL                                                                  ;A8802C;
 
 
+%anchor($A8802D)
 CommonA8_NormalEnemyShotAI:
     JSL.L NormalEnemyShotAI                                              ;A8802D;
     RTL                                                                  ;A88031;
 
 
+%anchor($A88032)
 CommonA8_NormalEnemyShotAI_NoDeathCheck_NoEnemyShotGraphic:
     JSL.L NormalEnemyShotAI_NoDeathCheck_NoEnemyShotGraphic_External     ;A88032;
     RTL                                                                  ;A88036;
 
 
+%anchor($A88037)
 CommonA8_NormalEnemyPowerBombAI:
     JSL.L NormalEnemyPowerBombAI                                         ;A88037;
     RTL                                                                  ;A8803B;
 
 
+%anchor($A8803C)
 CommonA8_NormalEnemyPowerBombAI_NoDeathCheck:
     JSL.L NormalEnemyPowerBombAI_NoDeathCheck_External                   ;A8803C;
     RTL                                                                  ;A88040;
 
 
+%anchor($A88041)
 CommonA8_NormalEnemyFrozenAI:
     JSL.L NormalEnemyFrozenAI                                            ;A88041;
     RTL                                                                  ;A88045;
 
 
+%anchor($A88046)
 CommonA8_CreateADudShot:
     JSL.L CreateADudShot                                                 ;A88046;
     RTL                                                                  ;A8804A;
 
 
+%anchor($A8804B)
 RTS_A8804B:
     RTS                                                                  ;A8804B;
 
 
+%anchor($A8804C)
 RTL_A8804C:
     RTL                                                                  ;A8804C;
 
 
+%anchor($A8804D)
 Spritemap_CommonA8_Nothing:
     dw $0000                                                             ;A8804D;
 
+%anchor($A8804F)
 ExtendedSpritemap_CommonA8_Nothing:
     dw $0001                                                             ;A8804F;
     dw $0000,$0000
     dw Spritemap_CommonA8_Nothing                                        ;A88055;
     dw Hitbox_CommonA8_Nothing                                           ;A88057;
 
+%anchor($A88059)
 Hitbox_CommonA8_Nothing:
     dw $0001                                                             ;A88059;
     dw $0000,$0000,$0000,$0000
     dw CommonA8_NormalEnemyTouchAI                                       ;A88063;
     dw CommonA8_NormalEnemyShotAI                                        ;A88065;
 
+%anchor($A88067)
 InstList_CommonA8_DeleteEnemy:
     dw Instruction_CommonA8_DeleteEnemy                                  ;A88067;
 
+%anchor($A88069)
 NOPNOP_A88069:
     NOP                                                                  ;A88069;
     NOP                                                                  ;A8806A;
 
+%anchor($A8806B)
 Instruction_CommonA8_Enemy0FB2_InY:
     LDA.W $0000,Y                                                        ;A8806B;
     STA.W $0FB2,X                                                        ;A8806E;
@@ -115,16 +138,19 @@ Instruction_CommonA8_Enemy0FB2_InY:
     RTL                                                                  ;A88073;
 
 
+%anchor($A88074)
 Instruction_CommonA8_SetEnemy0FB2ToRTS:
     LDA.W #RTS_A8807B                                                    ;A88074;
     STA.W $0FB2,X                                                        ;A88077;
     RTL                                                                  ;A8807A;
 
 
+%anchor($A8807B)
 RTS_A8807B:
     RTS                                                                  ;A8807B;
 
 
+%anchor($A8807C)
 Instruction_CommonA8_DeleteEnemy:
     LDA.W $0F86,X                                                        ;A8807C;
     ORA.W #$0200                                                         ;A8807F;
@@ -134,6 +160,7 @@ Instruction_CommonA8_DeleteEnemy:
     RTL                                                                  ;A88089;
 
 
+%anchor($A8808A)
 Instruction_CommonA8_CallFunctionInY:
     LDA.W $0000,Y                                                        ;A8808A;
     STA.B $12                                                            ;A8808D;
@@ -151,6 +178,7 @@ Instruction_CommonA8_CallFunctionInY:
     RTL                                                                  ;A8809B;
 
 
+%anchor($A8809C)
 Instruction_CommonA8_CallFunctionInY_WithA:
     LDA.W $0000,Y                                                        ;A8809C;
     STA.B $12                                                            ;A8809F;
@@ -172,6 +200,7 @@ Instruction_CommonA8_CallFunctionInY_WithA:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A880B5)
 UNUSED_Instruction_CommonA8_CallExternalFunctionInY_A880B5:
     LDA.W $0000,Y                                                        ;A880B5;
     STA.B $12                                                            ;A880B8;
@@ -192,6 +221,7 @@ UNUSED_Instruction_CommonA8_CallExternalFunctionInY_A880B5:
     JML.W [$0012]                                                        ;A880CB;
 
 
+%anchor($A880CE)
 UNUSED_Inst_CommonA8_CallExternalFunctionInY_WithA_A880CE:
     LDA.W $0000,Y                                                        ;A880CE;
     STA.B $12                                                            ;A880D1;
@@ -215,12 +245,14 @@ UNUSED_Inst_CommonA8_CallExternalFunctionInY_WithA_A880CE:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+%anchor($A880ED)
 Instruction_CommonA8_GotoY:
     LDA.W $0000,Y                                                        ;A880ED;
     TAY                                                                  ;A880F0;
     RTL                                                                  ;A880F1;
 
 
+%anchor($A880F2)
 Instruction_CommonA8_GotoY_PlusY:
     STY.B $12                                                            ;A880F2;
     DEY                                                                  ;A880F4;
@@ -240,6 +272,7 @@ Instruction_CommonA8_GotoY_PlusY:
     RTL                                                                  ;A88107;
 
 
+%anchor($A88108)
 Instruction_CommonA8_DecrementTimer_GotoYIfNonZero:
     DEC.W $0F90,X                                                        ;A88108;
     BNE Instruction_CommonA8_GotoY                                       ;A8810B;
@@ -248,6 +281,7 @@ Instruction_CommonA8_DecrementTimer_GotoYIfNonZero:
     RTL                                                                  ;A8810F;
 
 
+%anchor($A88110)
 Instruction_CommonA8_DecrementTimer_GotoYIfNonZero_duplicate:
     DEC.W $0F90,X                                                        ;A88110;
     BNE Instruction_CommonA8_GotoY                                       ;A88113;
@@ -256,6 +290,7 @@ Instruction_CommonA8_DecrementTimer_GotoYIfNonZero_duplicate:
     RTL                                                                  ;A88117;
 
 
+%anchor($A88118)
 Instruction_CommonA8_DecrementTimer_GotoY_PlusY_IfNonZero:
     SEP #$20                                                             ;A88118;
     DEC.W $0F90,X                                                        ;A8811A;
@@ -265,6 +300,7 @@ Instruction_CommonA8_DecrementTimer_GotoY_PlusY_IfNonZero:
     RTL                                                                  ;A88122;
 
 
+%anchor($A88123)
 Instruction_CommonA8_TimerInY:
     LDA.W $0000,Y                                                        ;A88123;
     STA.W $0F90,X                                                        ;A88126;
@@ -273,12 +309,14 @@ Instruction_CommonA8_TimerInY:
     RTL                                                                  ;A8812B;
 
 
+%anchor($A8812C)
 Instruction_CommonA8_SkipNextInstruction:
     INY                                                                  ;A8812C;
     INY                                                                  ;A8812D;
     RTL                                                                  ;A8812E;
 
 
+%anchor($A8812F)
 Instruction_CommonA8_Sleep:
     DEY                                                                  ;A8812F;
     DEY                                                                  ;A88130;
@@ -289,6 +327,7 @@ Instruction_CommonA8_Sleep:
     RTL                                                                  ;A88139;
 
 
+%anchor($A8813A)
 Instruction_CommonA8_WaitYFrames:
     LDA.W $0000,Y                                                        ;A8813A;
     STA.W $0F94,X                                                        ;A8813D;
@@ -301,6 +340,7 @@ Instruction_CommonA8_WaitYFrames:
     RTL                                                                  ;A8814A;
 
 
+%anchor($A8814B)
 Instruction_CommonA8_TransferYBytesInYToVRAM:
     PHX                                                                  ;A8814B;
     LDX.W $0330                                                          ;A8814C;
@@ -324,6 +364,7 @@ Instruction_CommonA8_TransferYBytesInYToVRAM:
     RTL                                                                  ;A88172;
 
 
+%anchor($A88173)
 Instruction_CommonA8_EnableOffScreenProcessing:
     LDA.W $0F86,X                                                        ;A88173;
     ORA.W #$0800                                                         ;A88176;
@@ -331,6 +372,7 @@ Instruction_CommonA8_EnableOffScreenProcessing:
     RTL                                                                  ;A8817C;
 
 
+%anchor($A8817D)
 Instruction_CommonA8_DisableOffScreenProcessing:
     LDA.W $0F86,X                                                        ;A8817D;
     AND.W #$F7FF                                                         ;A88180;
@@ -343,6 +385,7 @@ Instruction_CommonA8_DisableOffScreenProcessing:
 ;       |     |      _________ Negated speed
 ;       |     |     |      ___ Negated subspeed
 ;       |     |     |     |
+%anchor($A88187)
 CommonA8EnemySpeeds_LinearlyIncreasing:
   .speed:
     dw $0000                                                             ;A88187;
@@ -423,6 +466,7 @@ CommonA8EnemySpeeds_LinearlyIncreasing:
 ;       |     |      _________ Negated subspeed
 ;       |     |     |      ___ Negated speed
 ;       |     |     |     |
+%anchor($A8838F)
 CommonA8EnemySpeeds_QuadraticallyIncreasing:
 ; I.e. gravity
 ; Used by e.g. Botwoon when dying and falling to the floor
@@ -530,10 +574,12 @@ CommonA8EnemySpeeds_QuadraticallyIncreasing:
     dw $74F9,$0011,$8B07,$FFEE
 
 
+%anchor($A88687)
 Palette_Evir:
     dw $3800,$57FF,$42F7,$0929,$00A5,$4F5A,$36B5,$2610                   ;A88687;
     dw $158C,$03FF,$02B9,$0170,$0069,$0BB1,$1EA9,$0145                   ;A88697;
 
+%anchor($A886A7)
 InstList_Evir_Body_FacingLeft:
     dw $000A,Spritemap_Evir_0                                            ;A886A7;
     dw $000A,Spritemap_Evir_1                                            ;A886AB;
@@ -544,6 +590,7 @@ InstList_Evir_Body_FacingLeft:
     dw Instruction_Common_GotoY                                          ;A886BF;
     dw InstList_Evir_Body_FacingLeft                                     ;A886C1;
 
+%anchor($A886C3)
 InstList_Evir_Arms_FacingLeft:
     dw $000A,Spritemap_Evir_6                                            ;A886C3;
     dw $000A,Spritemap_Evir_7                                            ;A886C7;
@@ -565,6 +612,7 @@ InstList_Evir_Arms_FacingLeft:
     dw Instruction_Common_GotoY                                          ;A88707;
     dw InstList_Evir_Arms_FacingLeft                                     ;A88709;
 
+%anchor($A8870B)
 InstList_Evir_Body_FacingRight:
     dw $000A,Spritemap_Evir_D                                            ;A8870B;
     dw $000A,Spritemap_Evir_E                                            ;A8870F;
@@ -575,6 +623,7 @@ InstList_Evir_Body_FacingRight:
     dw Instruction_CommonA8_GotoY                                        ;A88723;
     dw InstList_Evir_Body_FacingRight                                    ;A88725;
 
+%anchor($A88727)
 InstList_Evir_Arms_FacingRight:
     dw $000A,Spritemap_Evir_13                                           ;A88727;
     dw $000A,Spritemap_Evir_14                                           ;A8872B;
@@ -596,15 +645,18 @@ InstList_Evir_Arms_FacingRight:
     dw Instruction_Common_GotoY                                          ;A8876B;
     dw InstList_Evir_Arms_FacingRight                                    ;A8876D;
 
+%anchor($A8876F)
 InstList_Evir_Projectile_Normal:
     dw $0001,Spritemap_Evir_C                                            ;A8876F;
     dw Instruction_Common_Sleep                                          ;A88773;
 
+%anchor($A88775)
 InstList_Evir_Projectile_Regenerating_0:
     dw Instruction_Evir_SetInitialRegenerationXOffset                    ;A88775;
     dw Instruction_Common_TimerInY,$0008                                 ;A88777;
     dw Instruction_Evir_PlaySpitSFX                                      ;A8877B;
 
+%anchor($A8877D)
 InstList_Evir_Projectile_Regenerating_1:
     dw $0008,Spritemap_Evir_B                                            ;A8877D;
     dw Instruction_Evir_AdvanceRegenerationXOffset                       ;A88781;
@@ -614,6 +666,7 @@ InstList_Evir_Projectile_Regenerating_1:
     dw Instruction_Evir_FinishRegeneration                               ;A8878B;
     dw Instruction_Common_Sleep                                          ;A8878D;
 
+%anchor($A8878F)
 Instruction_Evir_PlaySpitSFX:
     PHX                                                                  ;A8878F;
     PHY                                                                  ;A88790;
@@ -624,6 +677,7 @@ Instruction_Evir_PlaySpitSFX:
     RTL                                                                  ;A8879A;
 
 
+%anchor($A8879B)
 Instruction_Evir_SetInitialRegenerationXOffset:
     LDX.W $0E54                                                          ;A8879B;
     LDA.L $7E7782,X                                                      ;A8879E;
@@ -642,6 +696,7 @@ Instruction_Evir_SetInitialRegenerationXOffset:
     RTL                                                                  ;A887B5;
 
 
+%anchor($A887B6)
 Instruction_Evir_AdvanceRegenerationXOffset:
     LDX.W $0E54                                                          ;A887B6;
     LDA.L $7E7782,X                                                      ;A887B9;
@@ -658,6 +713,7 @@ Instruction_Evir_AdvanceRegenerationXOffset:
     RTL                                                                  ;A887CA;
 
 
+%anchor($A887CB)
 Instruction_Evir_FinishRegeneration:
     LDX.W $0E54                                                          ;A887CB;
     LDA.W #$0000                                                         ;A887CE;
@@ -668,6 +724,7 @@ Instruction_Evir_FinishRegeneration:
     RTL                                                                  ;A887DF;
 
 
+%anchor($A887E0)
 InitAI_Evir:
     LDX.W $0E54                                                          ;A887E0;
     LDA.W $0FB4,X                                                        ;A887E3;
@@ -707,6 +764,7 @@ InitAI_Evir:
     RTL                                                                  ;A88837;
 
 
+%anchor($A88838)
 SetEvirFacingDirection:
     LDX.W $0E54                                                          ;A88838;
     JSL.L Get_SamusX_minus_EnemyX                                        ;A8883B;
@@ -732,6 +790,7 @@ SetEvirFacingDirection:
     RTS                                                                  ;A88865;
 
 
+%anchor($A88866)
 HandleEvirArms:
     LDX.W $0E54                                                          ;A88866;
     LDA.W $0F6A,X                                                        ;A88869;
@@ -768,6 +827,7 @@ HandleEvirArms:
     RTS                                                                  ;A888AF;
 
 
+%anchor($A888B0)
 InitAI_EvirProjectile:
     LDX.W $0E54                                                          ;A888B0;
     LDA.W #InstList_Evir_Projectile_Normal                               ;A888B3;
@@ -788,6 +848,7 @@ InitAI_EvirProjectile:
     RTL                                                                  ;A888E4;
 
 
+%anchor($A888E5)
 ResetEvirProjectilePosition:
     LDX.W $0E54                                                          ;A888E5;
     LDA.W $0F2A,X                                                        ;A888E8;
@@ -818,12 +879,14 @@ ResetEvirProjectilePosition:
     RTS                                                                  ;A8891A;
 
 
+%anchor($A8891B)
 MainAI_Evir:
     LDX.W $0E54                                                          ;A8891B;
     JSR.W ($0FAC,X)                                                      ;A8891E;
     RTL                                                                  ;A88921;
 
 
+%anchor($A88922)
 Function_Evir_HandleBodyArms:
     LDX.W $0E54                                                          ;A88922;
     LDA.W $0FB4,X                                                        ;A88925;
@@ -839,6 +902,7 @@ Function_Evir_HandleBodyArms:
     RTS                                                                  ;A88932;
 
 
+%anchor($A88933)
 HandleEvirBody:
     LDX.W $0E54                                                          ;A88933;
     LDA.L $7E7898,X                                                      ;A88936;
@@ -890,12 +954,14 @@ HandleEvirBody:
     RTS                                                                  ;A88996;
 
 
+%anchor($A88997)
 Call_HandleEvirArms:
     LDX.W $0E54                                                          ;A88997; >.<
     JSR.W HandleEvirArms                                                 ;A8899A;
     RTS                                                                  ;A8899D;
 
 
+%anchor($A8899E)
 MainAI_EvirProjectile:
     LDX.W $0E54                                                          ;A8899E;
     LDA.W $0F9E,X                                                        ;A889A1;
@@ -926,6 +992,7 @@ MainAI_EvirProjectile:
     RTL                                                                  ;A889D3;
 
 
+%anchor($A889D4)
 ShootEvirProjectileAtSamus:
     LDA.W $0E54                                                          ;A889D4;
     SEC                                                                  ;A889D7;
@@ -964,12 +1031,14 @@ ShootEvirProjectileAtSamus:
     RTS                                                                  ;A88A33;
 
 
+%anchor($A88A34)
 Function_EvirProjectile_Idle:
     LDX.W $0E54                                                          ;A88A34;
     JSR.W ResetEvirProjectilePosition                                    ;A88A37;
     RTS                                                                  ;A88A3A;
 
 
+%anchor($A88A3B)
 Function_EvirProjectile_Moving:
     LDX.W $0E54                                                          ;A88A3B;
     JSR.W StartEvirProjectileRegeneratingIfFarOffScreen                  ;A88A3E;
@@ -998,6 +1067,7 @@ Function_EvirProjectile_Moving:
     RTS                                                                  ;A88A77;
 
 
+%anchor($A88A78)
 Function_EvirProjectile_Regenerating:
     LDX.W $0E54                                                          ;A88A78;
     LDA.W $0F1E,X                                                        ;A88A7B;
@@ -1026,6 +1096,7 @@ Function_EvirProjectile_Regenerating:
     RTS                                                                  ;A88AB0;
 
 
+%anchor($A88AB1)
 StartEvirProjectileRegeneratingIfFarOffScreen:
     LDX.W $0E54                                                          ;A88AB1;
     LDA.W #$0100                                                         ;A88AB4;
@@ -1049,6 +1120,7 @@ StartEvirProjectileRegeneratingIfFarOffScreen:
     RTS                                                                  ;A88AE7;
 
 
+%anchor($A88AE8)
 SetEvirInstList:
     LDX.W $0E54                                                          ;A88AE8;
     LDA.L $7E7804,X                                                      ;A88AEB;
@@ -1064,19 +1136,23 @@ SetEvirInstList:
     RTS                                                                  ;A88B05;
 
 
+%anchor($A88B06)
 EnemyShot_Evir:
     JSL.L CommonA8_NormalEnemyTouchAI                                    ;A88B06;
     BRA ContactReaction_Evir_Common                                      ;A88B0A;
 
 
+%anchor($A88B0C)
 PowerBombReaction_Evir:
     JSL.L CommonA8_NormalEnemyPowerBombAI                                ;A88B0C;
     BRA ContactReaction_Evir_Common                                      ;A88B10;
 
 
+%anchor($A88B12)
 EnemyTouch_Evir:
     JSL.L NormalEnemyShotAI                                              ;A88B12; fallthrough to ContactReaction_Evir_Common
 
+%anchor($A88B16)
 ContactReaction_Evir_Common:
     LDX.W $0E54                                                          ;A88B16;
     LDA.W $0F8C,X                                                        ;A88B19;
@@ -1108,6 +1184,7 @@ ContactReaction_Evir_Common:
     RTL                                                                  ;A88B58;
 
 
+%anchor($A88B59)
 Spritemap_Evir_0:
     dw $0009                                                             ;A88B59;
     %spritemapEntry(1, $1FE, $FB, 0, 0, 2, 0, $106)
@@ -1120,6 +1197,7 @@ Spritemap_Evir_0:
     %spritemapEntry(0, $1FE, $10, 0, 0, 2, 0, $126)
     %spritemapEntry(0, $1FE, $08, 0, 0, 2, 0, $125)
 
+%anchor($A88B88)
 Spritemap_Evir_1:
     dw $0009                                                             ;A88B88;
     %spritemapEntry(1, $1FE, $FB, 0, 0, 2, 0, $106)
@@ -1132,6 +1210,7 @@ Spritemap_Evir_1:
     %spritemapEntry(0, $1FE, $10, 0, 0, 2, 0, $126)
     %spritemapEntry(0, $1FE, $08, 0, 0, 2, 0, $125)
 
+%anchor($A88BB7)
 Spritemap_Evir_2:
     dw $0009                                                             ;A88BB7;
     %spritemapEntry(1, $1FE, $FB, 0, 0, 2, 0, $106)
@@ -1144,6 +1223,7 @@ Spritemap_Evir_2:
     %spritemapEntry(0, $1FE, $11, 0, 0, 2, 0, $126)
     %spritemapEntry(0, $1FE, $09, 0, 0, 2, 0, $125)
 
+%anchor($A88BE6)
 Spritemap_Evir_3:
     dw $0009                                                             ;A88BE6;
     %spritemapEntry(1, $1FE, $FB, 0, 0, 2, 0, $106)
@@ -1156,6 +1236,7 @@ Spritemap_Evir_3:
     %spritemapEntry(0, $1FE, $12, 0, 0, 2, 0, $126)
     %spritemapEntry(0, $1FE, $0A, 0, 0, 2, 0, $125)
 
+%anchor($A88C15)
 Spritemap_Evir_4:
     dw $0009                                                             ;A88C15;
     %spritemapEntry(1, $1FE, $FB, 0, 0, 2, 0, $106)
@@ -1168,6 +1249,7 @@ Spritemap_Evir_4:
     %spritemapEntry(0, $1FE, $11, 0, 0, 2, 0, $126)
     %spritemapEntry(0, $1FE, $09, 0, 0, 2, 0, $125)
 
+%anchor($A88C44)
 Spritemap_Evir_5:
     dw $0009                                                             ;A88C44;
     %spritemapEntry(1, $1FE, $FB, 0, 0, 2, 0, $106)
@@ -1181,6 +1263,7 @@ Spritemap_Evir_5:
     %spritemapEntry(0, $1FE, $08, 0, 0, 2, 0, $125)
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A88C73)
 UNUSED_Spritemap_Evir_A88C73:
     dw $0009                                                             ;A88C73;
     %spritemapEntry(1, $1FE, $FB, 0, 0, 2, 0, $106)
@@ -1194,6 +1277,7 @@ UNUSED_Spritemap_Evir_A88C73:
     %spritemapEntry(0, $1FE, $08, 0, 0, 2, 0, $125)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+%anchor($A88CA2)
 Spritemap_Evir_6:
     dw $0005                                                             ;A88CA2;
     %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $123)
@@ -1202,6 +1286,7 @@ Spritemap_Evir_6:
     %spritemapEntry(0, $1FE, $F4, 0, 0, 2, 0, $121)
     %spritemapEntry(0, $1F6, $F4, 0, 0, 2, 0, $120)
 
+%anchor($A88CBD)
 Spritemap_Evir_7:
     dw $0005                                                             ;A88CBD;
     %spritemapEntry(0, $1FE, $F4, 0, 0, 2, 0, $123)
@@ -1210,6 +1295,7 @@ Spritemap_Evir_7:
     %spritemapEntry(0, $02, $FC, 0, 0, 2, 0, $123)
     %spritemapEntry(0, $1FA, $FC, 0, 0, 2, 0, $122)
 
+%anchor($A88CD8)
 Spritemap_Evir_8:
     dw $0005                                                             ;A88CD8;
     %spritemapEntry(0, $1FE, $F4, 0, 0, 2, 0, $124)
@@ -1218,6 +1304,7 @@ Spritemap_Evir_8:
     %spritemapEntry(0, $02, $FC, 0, 0, 2, 0, $121)
     %spritemapEntry(0, $1FA, $FC, 0, 0, 2, 0, $120)
 
+%anchor($A88CF3)
 Spritemap_Evir_9:
     dw $0006                                                             ;A88CF3;
     %spritemapEntry(0, $1FE, $F4, 0, 0, 2, 0, $123)
@@ -1227,6 +1314,7 @@ Spritemap_Evir_9:
     %spritemapEntry(0, $02, $FC, 0, 0, 2, 0, $123)
     %spritemapEntry(0, $1FA, $FC, 0, 0, 2, 0, $122)
 
+%anchor($A88D13)
 Spritemap_Evir_A:
     dw $0003                                                             ;A88D13;
     %spritemapEntry(0, $1FE, $F4, 0, 0, 2, 0, $124)
@@ -1234,6 +1322,7 @@ Spritemap_Evir_A:
     %spritemapEntry(0, $02, $FC, 0, 0, 2, 0, $124)
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A88D24)
 UNUSED_Spritemap_Evir_A88D24:
     dw $0006                                                             ;A88D24;
     %spritemapEntry(0, $1FE, $F4, 0, 0, 2, 0, $123)
@@ -1243,6 +1332,7 @@ UNUSED_Spritemap_Evir_A88D24:
     %spritemapEntry(0, $02, $FC, 0, 0, 2, 0, $123)
     %spritemapEntry(0, $1FA, $FC, 0, 0, 2, 0, $122)
 
+%anchor($A88D44)
 UNUSED_Spritemap_Evir_A88D44:
     dw $0006                                                             ;A88D44;
     %spritemapEntry(0, $1FE, $F4, 0, 0, 2, 0, $121)
@@ -1253,6 +1343,7 @@ UNUSED_Spritemap_Evir_A88D44:
     %spritemapEntry(0, $1FA, $FC, 0, 0, 2, 0, $120)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+%anchor($A88D64)
 Spritemap_Evir_B:
     dw $0004                                                             ;A88D64;
     %spritemapEntry(0, $00, $00, 1, 0, 2, 0, $128)
@@ -1260,10 +1351,12 @@ Spritemap_Evir_B:
     %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $128)
     %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 0, $127)
 
+%anchor($A88D7A)
 Spritemap_Evir_C:
     dw $0001                                                             ;A88D7A;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10E)
 
+%anchor($A88D81)
 Spritemap_Evir_D:
     dw $0009                                                             ;A88D81;
     %spritemapEntry(1, $1F2, $FB, 0, 1, 2, 0, $106)
@@ -1276,6 +1369,7 @@ Spritemap_Evir_D:
     %spritemapEntry(0, $1FA, $10, 0, 1, 2, 0, $126)
     %spritemapEntry(0, $1FA, $08, 0, 1, 2, 0, $125)
 
+%anchor($A88DB0)
 Spritemap_Evir_E:
     dw $0009                                                             ;A88DB0;
     %spritemapEntry(1, $1F2, $FB, 0, 1, 2, 0, $106)
@@ -1288,6 +1382,7 @@ Spritemap_Evir_E:
     %spritemapEntry(0, $1FA, $10, 0, 1, 2, 0, $126)
     %spritemapEntry(0, $1FA, $08, 0, 1, 2, 0, $125)
 
+%anchor($A88DDF)
 Spritemap_Evir_F:
     dw $0009                                                             ;A88DDF;
     %spritemapEntry(1, $1F2, $FB, 0, 1, 2, 0, $106)
@@ -1300,6 +1395,7 @@ Spritemap_Evir_F:
     %spritemapEntry(0, $1FA, $11, 0, 1, 2, 0, $126)
     %spritemapEntry(0, $1FA, $09, 0, 1, 2, 0, $125)
 
+%anchor($A88E0E)
 Spritemap_Evir_10:
     dw $0009                                                             ;A88E0E;
     %spritemapEntry(1, $1F2, $FB, 0, 1, 2, 0, $106)
@@ -1312,6 +1408,7 @@ Spritemap_Evir_10:
     %spritemapEntry(0, $1FA, $12, 0, 1, 2, 0, $126)
     %spritemapEntry(0, $1FA, $0A, 0, 1, 2, 0, $125)
 
+%anchor($A88E3D)
 Spritemap_Evir_11:
     dw $0009                                                             ;A88E3D;
     %spritemapEntry(1, $1F2, $FB, 0, 1, 2, 0, $106)
@@ -1324,6 +1421,7 @@ Spritemap_Evir_11:
     %spritemapEntry(0, $1FA, $11, 0, 1, 2, 0, $126)
     %spritemapEntry(0, $1FA, $09, 0, 1, 2, 0, $125)
 
+%anchor($A88E6C)
 Spritemap_Evir_12:
     dw $0009                                                             ;A88E6C;
     %spritemapEntry(1, $1F2, $FB, 0, 1, 2, 0, $106)
@@ -1337,6 +1435,7 @@ Spritemap_Evir_12:
     %spritemapEntry(0, $1FA, $08, 0, 1, 2, 0, $125)
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A88E9B)
 UNUSED_Spritemap_Evir_A88E9B:
     dw $0009                                                             ;A88E9B;
     %spritemapEntry(1, $1F2, $FB, 0, 1, 2, 0, $106)
@@ -1350,6 +1449,7 @@ UNUSED_Spritemap_Evir_A88E9B:
     %spritemapEntry(0, $1FA, $08, 0, 1, 2, 0, $125)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+%anchor($A88ECA)
 Spritemap_Evir_13:
     dw $0005                                                             ;A88ECA;
     %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $123)
@@ -1358,6 +1458,7 @@ Spritemap_Evir_13:
     %spritemapEntry(0, $02, $F4, 0, 1, 2, 0, $120)
     %spritemapEntry(0, $1F6, $FC, 0, 1, 2, 0, $124)
 
+%anchor($A88EE5)
 Spritemap_Evir_14:
     dw $0005                                                             ;A88EE5;
     %spritemapEntry(0, $1FA, $F4, 0, 1, 2, 0, $123)
@@ -1366,6 +1467,7 @@ Spritemap_Evir_14:
     %spritemapEntry(0, $1F6, $FC, 0, 1, 2, 0, $123)
     %spritemapEntry(0, $1FE, $FC, 0, 1, 2, 0, $122)
 
+%anchor($A88F00)
 Spritemap_Evir_15:
     dw $0005                                                             ;A88F00;
     %spritemapEntry(0, $1FA, $F4, 0, 1, 2, 0, $124)
@@ -1374,6 +1476,7 @@ Spritemap_Evir_15:
     %spritemapEntry(0, $1F6, $FC, 0, 1, 2, 0, $121)
     %spritemapEntry(0, $1FE, $FC, 0, 1, 2, 0, $120)
 
+%anchor($A88F1B)
 Spritemap_Evir_16:
     dw $0006                                                             ;A88F1B;
     %spritemapEntry(0, $1FA, $F4, 0, 1, 2, 0, $123)
@@ -1383,6 +1486,7 @@ Spritemap_Evir_16:
     %spritemapEntry(0, $1F6, $FC, 0, 1, 2, 0, $123)
     %spritemapEntry(0, $1FE, $FC, 0, 1, 2, 0, $122)
 
+%anchor($A88F3B)
 Spritemap_Evir_17:
     dw $0003                                                             ;A88F3B;
     %spritemapEntry(0, $1F6, $FC, 0, 1, 2, 0, $124)
@@ -1390,6 +1494,7 @@ Spritemap_Evir_17:
     %spritemapEntry(0, $1FA, $F4, 0, 1, 2, 0, $124)
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A88F4C)
 UNUSED_Spritemap_Evir_A88F4C:
     dw $0006                                                             ;A88F4C;
     %spritemapEntry(0, $1FA, $F4, 0, 1, 2, 0, $123)
@@ -1399,6 +1504,7 @@ UNUSED_Spritemap_Evir_A88F4C:
     %spritemapEntry(0, $1F6, $FC, 0, 1, 2, 0, $123)
     %spritemapEntry(0, $1FE, $FC, 0, 1, 2, 0, $122)
 
+%anchor($A88F6C)
 UNUSED_Spritemap_Evir_A88F6C:
     dw $0006                                                             ;A88F6C;
     %spritemapEntry(0, $1FA, $F4, 0, 1, 2, 0, $121)
@@ -1410,11 +1516,13 @@ UNUSED_Spritemap_Evir_A88F6C:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+%anchor($A88F8C)
 Palette_Eye:
     dw $3800,$72B2,$71C7,$2461,$1840,$7A8E,$660B,$4D03                   ;A88F8C;
     dw $4900,$7FE0,$7E80,$44E0,$2C20,$0000,$0000,$0000                   ;A88F9C;
 
 
+%anchor($A88FAC)
 InstList_Eye_Active:
     dw $000A,Spritemap_Eye_7                                             ;A88FAC;
     dw $000A,Spritemap_Eye_7                                             ;A88FB0;
@@ -1435,24 +1543,29 @@ InstList_Eye_Active:
     dw Instruction_Common_GotoY                                          ;A88FEC;
     dw InstList_Eye_Active                                               ;A88FEE;
 
+%anchor($A88FF0)
 InstList_Eye_FacingRight_Deactivating:
     dw $0008,Spritemap_Eye_F                                             ;A88FF0;
     dw $0030,Spritemap_Eye_3                                             ;A88FF4;
     dw $0005,Spritemap_Eye_F                                             ;A88FF8;
 
+%anchor($A88FFC)
 InstList_Eye_FacingRight_Closed:
     dw $0030,Spritemap_Eye_E                                             ;A88FFC;
     dw Instruction_Common_Sleep                                          ;A89000;
 
+%anchor($A89002)
 InstList_Eye_FacingLeft_Deactivating:
     dw $0008,Spritemap_Eye_11                                            ;A89002;
     dw $0030,Spritemap_Eye_A                                             ;A89006;
     dw $0005,Spritemap_Eye_11                                            ;A8900A;
 
+%anchor($A8900E)
 InstList_Eye_FacingLeft_Closed:
     dw $0030,Spritemap_Eye_10                                            ;A8900E;
     dw Instruction_Common_Sleep                                          ;A89012;
 
+%anchor($A89014)
 InstList_Eye_FacingRight_Activating:
     dw $0020,Spritemap_Eye_E                                             ;A89014;
     dw $0005,Spritemap_Eye_F                                             ;A89018;
@@ -1460,6 +1573,7 @@ InstList_Eye_FacingRight_Activating:
     dw $0008,Spritemap_Eye_F                                             ;A89020;
     dw Instruction_Common_Sleep                                          ;A89024;
 
+%anchor($A89026)
 InstList_Eye_FacingLeft_Activating:
     dw $0020,Spritemap_Eye_10                                            ;A89026;
     dw $0005,Spritemap_Eye_11                                            ;A8902A;
@@ -1467,23 +1581,28 @@ InstList_Eye_FacingLeft_Activating:
     dw $0008,Spritemap_Eye_11                                            ;A89032;
     dw Instruction_Common_Sleep                                          ;A89036;
 
+%anchor($A89038)
 InstList_Eye_Mount_FacingRight:
     dw $0001,Spritemap_Eye_12                                            ;A89038;
     dw Instruction_Common_Sleep                                          ;A8903C;
 
+%anchor($A8903E)
 InstList_Eye_Mount_FacingDown:
     dw $0001,Spritemap_Eye_13                                            ;A8903E;
     dw Instruction_Common_Sleep                                          ;A89042;
 
+%anchor($A89044)
 InstList_Eye_Mount_FacingLeft:
     dw $0001,Spritemap_Eye_14                                            ;A89044;
     dw Instruction_CommonA8_Sleep                                        ;A89048;
 
+%anchor($A8904A)
 InstList_Eye_Mount_FacingUp:
     dw $0001,Spritemap_Eye_15                                            ;A8904A;
     dw Instruction_CommonA8_Sleep                                        ;A8904E;
 
 
+%anchor($A89050)
 EyeConstants:
   .XProximityToActivate:
     dw $0080                                                             ;A89050;
@@ -1498,6 +1617,7 @@ EyeConstants:
     dw $0080                                                             ;A89056;
 
 
+%anchor($A89058)
 InitAI_Eye:
     LDX.W $0E54                                                          ;A89058;
     LDA.W $0F86,X                                                        ;A8905B;
@@ -1567,6 +1687,7 @@ InitAI_Eye:
     dw InstList_Eye_Mount_FacingUp                                       ;A890DE;
     dw InstList_Eye_Mount_FacingDown                                     ;A890E0;
 
+%anchor($A890E2)
 MainAI_Eye:
     LDX.W $0E54                                                          ;A890E2;
     LDA.W $09A4                                                          ;A890E5;
@@ -1579,6 +1700,7 @@ MainAI_Eye:
     RTL                                                                  ;A890F0;
 
 
+%anchor($A890F1)
 Function_Eye_WaitForSamusToGetNear:
     LDA.W EyeConstants_YProximityToActivate                              ;A890F1;
     JSL.L IsSamusWithingAPixelRowsOfEnemy                                ;A890F4;
@@ -1611,6 +1733,7 @@ Function_Eye_WaitForSamusToGetNear:
     RTL                                                                  ;A8912D;
 
 
+%anchor($A8912E)
 Function_Eye_Activating:
     DEC.W $0FB0,X                                                        ;A8912E;
     BEQ .timerExpired                                                    ;A89131;
@@ -1637,6 +1760,7 @@ Function_Eye_Activating:
     RTL                                                                  ;A8915F;
 
 
+%anchor($A89160)
 Function_Eye_Active:
     LDA.W EyeConstants_YProximityToDeactivate                            ;A89160;
     JSL.L IsSamusWithingAPixelRowsOfEnemy                                ;A89163;
@@ -1694,6 +1818,7 @@ Function_Eye_Active:
     RTL                                                                  ;A891CD;
 
 
+%anchor($A891CE)
 Function_Eye_Deactivating:
     DEC.W $0FB0,X                                                        ;A891CE;
     BEQ .timerExpired                                                    ;A891D1;
@@ -1707,74 +1832,92 @@ Function_Eye_Deactivating:
     RTL                                                                  ;A891DB;
 
 
+%anchor($A891DC)
 RTL_A891DC:
     RTL                                                                  ;A891DC;
 
 
+%anchor($A891DD)
 RTL_A891DD:
     RTL                                                                  ;A891DD;
 
 
+%anchor($A891DE)
 RTL_A891DE:
     RTL                                                                  ;A891DE;
 
 
+%anchor($A891DF)
 Spritemap_Eye_0:
     dw $0001                                                             ;A891DF;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
 
+%anchor($A891E6)
 Spritemap_Eye_1:
     dw $0001                                                             ;A891E6;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $102)
 
+%anchor($A891ED)
 Spritemap_Eye_2:
     dw $0001                                                             ;A891ED;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $104)
 
+%anchor($A891F4)
 Spritemap_Eye_3:
     dw $0001                                                             ;A891F4;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $106)
 
+%anchor($A891FB)
 Spritemap_Eye_4:
     dw $0001                                                             ;A891FB;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $108)
 
+%anchor($A89202)
 Spritemap_Eye_5:
     dw $0001                                                             ;A89202;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10A)
 
+%anchor($A89209)
 Spritemap_Eye_6:
     dw $0001                                                             ;A89209;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10C)
 
+%anchor($A89210)
 Spritemap_Eye_7:
     dw $0001                                                             ;A89210;
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $100)
 
+%anchor($A89217)
 Spritemap_Eye_8:
     dw $0001                                                             ;A89217;
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $102)
 
+%anchor($A8921E)
 Spritemap_Eye_9:
     dw $0001                                                             ;A8921E;
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $104)
 
+%anchor($A89225)
 Spritemap_Eye_A:
     dw $0001                                                             ;A89225;
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $106)
 
+%anchor($A8922C)
 Spritemap_Eye_B:
     dw $0001                                                             ;A8922C;
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $108)
 
+%anchor($A89233)
 Spritemap_Eye_C:
     dw $0001                                                             ;A89233;
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10A)
 
+%anchor($A8923A)
 Spritemap_Eye_D:
     dw $0001                                                             ;A8923A;
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10C)
 
+%anchor($A89241)
 Spritemap_Eye_E:
     dw $0004                                                             ;A89241;
     %spritemapEntry(0, $1F8, $00, 1, 0, 2, 0, $11F)
@@ -1782,6 +1925,7 @@ Spritemap_Eye_E:
     %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $117)
     %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $107)
 
+%anchor($A89257)
 Spritemap_Eye_F:
     dw $0004                                                             ;A89257;
     %spritemapEntry(0, $1F8, $00, 1, 0, 2, 0, $11E)
@@ -1789,6 +1933,7 @@ Spritemap_Eye_F:
     %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $117)
     %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $107)
 
+%anchor($A8926D)
 Spritemap_Eye_10:
     dw $0004                                                             ;A8926D;
     %spritemapEntry(0, $00, $00, 1, 1, 2, 0, $11F)
@@ -1796,6 +1941,7 @@ Spritemap_Eye_10:
     %spritemapEntry(0, $1F8, $00, 0, 1, 2, 0, $117)
     %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $107)
 
+%anchor($A89283)
 Spritemap_Eye_11:
     dw $0004                                                             ;A89283;
     %spritemapEntry(0, $00, $00, 1, 1, 2, 0, $11E)
@@ -1803,26 +1949,31 @@ Spritemap_Eye_11:
     %spritemapEntry(0, $1F8, $00, 0, 1, 2, 0, $117)
     %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $107)
 
+%anchor($A89299)
 Spritemap_Eye_12:
     dw $0002                                                             ;A89299;
     %spritemapEntry(0, $1FC, $00, 1, 0, 2, 0, $10E)
     %spritemapEntry(0, $1FC, $F8, 0, 0, 2, 0, $10E)
 
+%anchor($A892A5)
 Spritemap_Eye_13:
     dw $0002                                                             ;A892A5;
     %spritemapEntry(0, $00, $FC, 0, 1, 2, 0, $10F)
     %spritemapEntry(0, $1F8, $FC, 0, 0, 2, 0, $10F)
 
+%anchor($A892B1)
 Spritemap_Eye_14:
     dw $0002                                                             ;A892B1;
     %spritemapEntry(0, $1FC, $00, 1, 1, 2, 0, $10E)
     %spritemapEntry(0, $1FC, $F8, 0, 1, 2, 0, $10E)
 
+%anchor($A892BD)
 Spritemap_Eye_15:
     dw $0002                                                             ;A892BD;
     %spritemapEntry(0, $00, $FC, 1, 1, 2, 0, $10F)
     %spritemapEntry(0, $1F8, $FC, 1, 0, 2, 0, $10F)
 
+%anchor($A892C9)
 Spritemap_Eye_16:
     dw $0004                                                             ;A892C9;
     %spritemapEntry(0, $1F8, $00, 1, 0, 2, 0, $11F)
@@ -1830,6 +1981,7 @@ Spritemap_Eye_16:
     %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $117)
     %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $107)
 
+%anchor($A892DF)
 Spritemap_Eye_17:
     dw $0004                                                             ;A892DF;
     %spritemapEntry(0, $1F8, $00, 1, 0, 2, 0, $11E)
@@ -1837,6 +1989,7 @@ Spritemap_Eye_17:
     %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $117)
     %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $107)
 
+%anchor($A892F5)
 Spritemap_Eye_18:
     dw $0004                                                             ;A892F5;
     %spritemapEntry(0, $00, $00, 1, 1, 2, 0, $11F)
@@ -1844,6 +1997,7 @@ Spritemap_Eye_18:
     %spritemapEntry(0, $1F8, $00, 0, 1, 2, 0, $117)
     %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $107)
 
+%anchor($A8930B)
 Spritemap_Eye_19:
     dw $0004                                                             ;A8930B;
     %spritemapEntry(0, $00, $00, 1, 1, 2, 0, $11E)
@@ -1851,6 +2005,7 @@ Spritemap_Eye_19:
     %spritemapEntry(0, $1F8, $00, 0, 1, 2, 0, $117)
     %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $107)
 
+%anchor($A89321)
 Spritemap_Eye_1A:
     dw $0004                                                             ;A89321;
     %spritemapEntry(0, $00, $00, 1, 1, 2, 0, $11F)
@@ -1858,6 +2013,7 @@ Spritemap_Eye_1A:
     %spritemapEntry(0, $1F8, $00, 0, 1, 2, 0, $117)
     %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $107)
 
+%anchor($A89337)
 Spritemap_Eye_1B:
     dw $0004                                                             ;A89337;
     %spritemapEntry(0, $00, $00, 1, 1, 2, 0, $11E)
@@ -1865,6 +2021,7 @@ Spritemap_Eye_1B:
     %spritemapEntry(0, $1F8, $00, 0, 1, 2, 0, $117)
     %spritemapEntry(0, $1F8, $F8, 0, 1, 2, 0, $107)
 
+%anchor($A8934D)
 Spritemap_Eye_1C:
     dw $0004                                                             ;A8934D;
     %spritemapEntry(0, $1F8, $00, 1, 0, 2, 0, $11F)
@@ -1872,6 +2029,7 @@ Spritemap_Eye_1C:
     %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $117)
     %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $107)
 
+%anchor($A89363)
 Spritemap_Eye_1D:
     dw $0004                                                             ;A89363;
     %spritemapEntry(0, $1F8, $00, 1, 0, 2, 0, $11E)
@@ -1880,15 +2038,18 @@ Spritemap_Eye_1D:
     %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $107)
 
 
+%anchor($A89379)
 Palette_Fune:
     dw $3800,$4B9C,$3694,$0929,$0042,$3B18,$2A52,$19AD                   ;A89379;
     dw $116B,$7F5A,$7EC0,$6DE0,$54E0,$001D,$0014,$000A                   ;A89389;
 
 
+%anchor($A89399)
 InstList_Fune_FacingLeft_Idling:
     dw $0001,Spritemap_Fune_FacingLeft_Idle_MouthClosed                  ;A89399;
     dw Instruction_Common_Sleep                                          ;A8939D;
 
+%anchor($A8939F)
 InstList_Fune_FacingLeft_Active:
     dw $0010,Spritemap_Fune_FacingLeft_Idle_MouthClosed                  ;A8939F;
     dw $0008,Spritemap_Fune_FacingLeft_StartOpeningMouth                 ;A893A3;
@@ -1904,10 +2065,12 @@ InstList_Fune_FacingLeft_Active:
     dw Instruction_Common_GotoY                                          ;A893C5;
     dw InstList_Fune_FacingLeft_Idling                                   ;A893C7;
 
+%anchor($A893C9)
 InstList_Fune_FacingRight_Idling:
     dw $0001,Spritemap_Fune_FacingRight_Idle_MouthClosed                 ;A893C9;
     dw Instruction_Common_Sleep                                          ;A893CD;
 
+%anchor($A893CF)
 InstList_Fune_FacingRight_Active:
     dw $0010,Spritemap_Fune_FacingRight_Idle_MouthClosed                 ;A893CF;
     dw $0008,Spritemap_Fune_FacingRight_StartOpeningMouth                ;A893D3;
@@ -1923,6 +2086,7 @@ InstList_Fune_FacingRight_Active:
     dw Instruction_Common_GotoY                                          ;A893F5;
     dw InstList_Fune_FacingRight_Idling                                  ;A893F7;
 
+%anchor($A893F9)
 Spritemap_Fune_FacingLeft_Idle_MouthClosed:
     dw $0008                                                             ;A893F9;
     %spritemapEntry(0, $08, $0C, 0, 0, 2, 0, $127)
@@ -1934,6 +2098,7 @@ Spritemap_Fune_FacingLeft_Idle_MouthClosed:
     %spritemapEntry(0, $1F0, $FC, 0, 0, 2, 0, $124)
     %spritemapEntry(1, $1F0, $EC, 0, 0, 2, 0, $100)
 
+%anchor($A89423)
 Spritemap_Fune_FacingLeft_StartOpeningMouth:
     dw $0008                                                             ;A89423;
     %spritemapEntry(0, $06, $0C, 0, 0, 2, 0, $127)
@@ -1945,6 +2110,7 @@ Spritemap_Fune_FacingLeft_StartOpeningMouth:
     %spritemapEntry(0, $1EE, $FC, 0, 0, 2, 0, $124)
     %spritemapEntry(1, $1EE, $EC, 0, 0, 2, 0, $100)
 
+%anchor($A8944D)
 Spritemap_Fune_FacingLeft_MouthOpening1:
     dw $0008                                                             ;A8944D;
     %spritemapEntry(0, $04, $0C, 0, 0, 2, 0, $127)
@@ -1956,6 +2122,7 @@ Spritemap_Fune_FacingLeft_MouthOpening1:
     %spritemapEntry(0, $1EC, $FC, 0, 0, 2, 0, $124)
     %spritemapEntry(1, $1EC, $EC, 0, 0, 2, 0, $100)
 
+%anchor($A89477)
 Spritemap_Fune_FacingLeft_MouthOpening2:
     dw $0008                                                             ;A89477;
     %spritemapEntry(0, $02, $0C, 0, 0, 2, 0, $127)
@@ -1967,6 +2134,7 @@ Spritemap_Fune_FacingLeft_MouthOpening2:
     %spritemapEntry(0, $1EA, $FC, 0, 0, 2, 0, $124)
     %spritemapEntry(1, $1EA, $EC, 0, 0, 2, 0, $100)
 
+%anchor($A894A1)
 Spritemap_Fune_FacingLeft_MouthMostOpen:
     dw $0008                                                             ;A894A1;
     %spritemapEntry(0, $00, $0C, 0, 0, 2, 0, $127)
@@ -1978,6 +2146,7 @@ Spritemap_Fune_FacingLeft_MouthMostOpen:
     %spritemapEntry(0, $1E8, $FC, 0, 0, 2, 0, $124)
     %spritemapEntry(1, $1E8, $EC, 0, 0, 2, 0, $100)
 
+%anchor($A894CB)
 Spritemap_Fune_FacingRight_Idle_MouthClosed:
     dw $0008                                                             ;A894CB;
     %spritemapEntry(0, $1F0, $0C, 0, 1, 2, 0, $127)
@@ -1989,6 +2158,7 @@ Spritemap_Fune_FacingRight_Idle_MouthClosed:
     %spritemapEntry(0, $08, $FC, 0, 1, 2, 0, $124)
     %spritemapEntry(1, $00, $EC, 0, 1, 2, 0, $100)
 
+%anchor($A894F5)
 Spritemap_Fune_FacingRight_StartOpeningMouth:
     dw $0008                                                             ;A894F5;
     %spritemapEntry(0, $1F2, $0C, 0, 1, 2, 0, $127)
@@ -2000,6 +2170,7 @@ Spritemap_Fune_FacingRight_StartOpeningMouth:
     %spritemapEntry(0, $0A, $FC, 0, 1, 2, 0, $124)
     %spritemapEntry(1, $02, $EC, 0, 1, 2, 0, $100)
 
+%anchor($A8951F)
 Spritemap_Fune_FacingRight_MouthOpening1:
     dw $0008                                                             ;A8951F;
     %spritemapEntry(0, $1F4, $0C, 0, 1, 2, 0, $127)
@@ -2011,6 +2182,7 @@ Spritemap_Fune_FacingRight_MouthOpening1:
     %spritemapEntry(0, $0C, $FC, 0, 1, 2, 0, $124)
     %spritemapEntry(1, $04, $EC, 0, 1, 2, 0, $100)
 
+%anchor($A89549)
 Spritemap_Fune_FacingRight_MouthOpening2:
     dw $0008                                                             ;A89549;
     %spritemapEntry(0, $1F6, $0C, 0, 1, 2, 0, $127)
@@ -2022,6 +2194,7 @@ Spritemap_Fune_FacingRight_MouthOpening2:
     %spritemapEntry(0, $0E, $FC, 0, 1, 2, 0, $124)
     %spritemapEntry(1, $06, $EC, 0, 1, 2, 0, $100)
 
+%anchor($A89573)
 Spritemap_Fune_FacingRight_MouthMostOpen:
     dw $0008                                                             ;A89573;
     %spritemapEntry(0, $1F8, $0C, 0, 1, 2, 0, $127)
@@ -2034,15 +2207,18 @@ Spritemap_Fune_FacingRight_MouthMostOpen:
     %spritemapEntry(1, $08, $EC, 0, 1, 2, 0, $100)
 
 
+%anchor($A8959D)
 Palette_Namihe:
     dw $3800,$4B9C,$3694,$0929,$0042,$3B18,$2A52,$19AD                   ;A8959D;
     dw $116B,$7F5A,$7EC0,$6DE0,$54E0,$001D,$0014,$000A                   ;A895AD;
 
 
+%anchor($A895BD)
 InstList_Namihe_FacingLeft_Idling:
     dw $0001,Spritemap_Namihe_FacingLeft_Idle_MouthEyeOpened             ;A895BD;
     dw Instruction_Common_Sleep                                          ;A895C1;
 
+%anchor($A895C3)
 InstList_Namihe_FacingLeft_Active:
     dw $0008,Spritemap_Namihe_FacingLeft_Idle_MouthEyeOpened             ;A895C3;
     dw $0008,Spritemap_Namihe_FacingLeft_EyeOpened                       ;A895C7;
@@ -2059,10 +2235,12 @@ InstList_Namihe_FacingLeft_Active:
     dw Instruction_Common_GotoY                                          ;A895ED;
     dw InstList_Namihe_FacingLeft_Idling                                 ;A895EF;
 
+%anchor($A895F1)
 InstList_Namihe_FacingRight_Idling:
     dw $0001,Spritemap_Namihe_FacingRight_Idle_MouthEyeClosed            ;A895F1;
     dw Instruction_Common_Sleep                                          ;A895F5;
 
+%anchor($A895F7)
 InstList_Namihe_FacingRight_Active:
     dw $0008,Spritemap_Namihe_FacingRight_Idle_MouthEyeClosed            ;A895F7;
     dw $0008,Spritemap_Namihe_FacingRight_EyeOpened                      ;A895FB;
@@ -2079,6 +2257,7 @@ InstList_Namihe_FacingRight_Active:
     dw Instruction_Common_GotoY                                          ;A89621;
     dw InstList_Namihe_FacingRight_Idling                                ;A89623;
 
+%anchor($A89625)
 Instruction_FuneNamihe_QueueSpitSFX:
     PHY                                                                  ;A89625;
     PHX                                                                  ;A89626;
@@ -2089,6 +2268,7 @@ Instruction_FuneNamihe_QueueSpitSFX:
     RTL                                                                  ;A89630;
 
 
+%anchor($A89631)
 Instruction_Namihe_SpawnFireball_FacingLeft:
     PHY                                                                  ;A89631;
     LDX.W $0E54                                                          ;A89632;
@@ -2102,6 +2282,7 @@ Instruction_Namihe_SpawnFireball_FacingLeft:
     RTL                                                                  ;A89649;
 
 
+%anchor($A8964A)
 Instruction_Namihe_SpawnFireball_FacingRight:
     PHY                                                                  ;A8964A;
     LDX.W $0E54                                                          ;A8964B;
@@ -2115,6 +2296,7 @@ Instruction_Namihe_SpawnFireball_FacingRight:
     RTL                                                                  ;A89662;
 
 
+%anchor($A89663)
 Instruction_Fune_SpawnFireball_FacingLeft:
     PHY                                                                  ;A89663;
     LDX.W $0E54                                                          ;A89664;
@@ -2128,6 +2310,7 @@ Instruction_Fune_SpawnFireball_FacingLeft:
     RTL                                                                  ;A8967B;
 
 
+%anchor($A8967C)
 Instruction_Fune_SpawnFireball_FacingRight:
     PHY                                                                  ;A8967C;
     LDX.W $0E54                                                          ;A8967D;
@@ -2141,6 +2324,7 @@ Instruction_Fune_SpawnFireball_FacingRight:
     RTL                                                                  ;A89694;
 
 
+%anchor($A89695)
 Instruction_FuneNamihe_FinishActivity:
     LDX.W $0E54                                                          ;A89695;
     LDA.W $0FA8,X                                                        ;A89698;
@@ -2160,6 +2344,7 @@ Instruction_FuneNamihe_FinishActivity:
     RTL                                                                  ;A896B3;
 
 
+%anchor($A896B4)
 Instruction_FuneNamihe_FinishActivity_duplicate:
     LDX.W $0E54                                                          ;A896B4;
     LDA.W $0FA8,X                                                        ;A896B7;
@@ -2179,6 +2364,7 @@ Instruction_FuneNamihe_FinishActivity_duplicate:
     RTL                                                                  ;A896D2;
 
 
+%anchor($A896D3)
 InstListPointers_Fune_Namihe:
     dw InstList_Fune_FacingLeft_Active                                   ;A896D3;
     dw InstList_Fune_FacingRight_Active                                  ;A896D5;
@@ -2189,6 +2375,7 @@ InstListPointers_Fune_Namihe:
     dw InstList_Namihe_FacingLeft_Idling                                 ;A896DF;
     dw InstList_Namihe_FacingRight_Idling                                ;A896E1;
 
+%anchor($A896E3)
 InitAI_Fune_Namihe:
     LDX.W $0E54                                                          ;A896E3;
     LDA.W #InstListPointers_Fune_Namihe+$4                               ;A896E6;
@@ -2223,12 +2410,14 @@ InitAI_Fune_Namihe:
     RTL                                                                  ;A8972F;
 
 
+%anchor($A89730)
 MainAI_Fune_Namihe:
     LDX.W $0E54                                                          ;A89730;
     JSR.W ($0FAA,X)                                                      ;A89733;
     RTL                                                                  ;A89736;
 
 
+%anchor($A89737)
 Function_Fune_WaitForTimer:
     LDX.W $0E54                                                          ;A89737;
     INC.W $0FB0,X                                                        ;A8973A;
@@ -2250,6 +2439,7 @@ Function_Fune_WaitForTimer:
     RTS                                                                  ;A8975B;
 
 
+%anchor($A8975C)
 Function_Namihe_WaitForSamusToGetNear:
     LDX.W $0E54                                                          ;A8975C;
     LDA.W $0FA8,X                                                        ;A8975F;
@@ -2274,14 +2464,17 @@ Function_Namihe_WaitForSamusToGetNear:
     RTS                                                                  ;A8978D;
 
 
+%anchor($A8978E)
 RTS_A8978E:
     RTS                                                                  ;A8978E;
 
 
+%anchor($A8978F)
 RTS_A8978F:
     RTS                                                                  ;A8978F;
 
 
+%anchor($A89790)
 Namihe_CheckIfSamusIsInProximity:
     LDX.W $0E54                                                          ;A89790;
     LDA.W $0FAC,X                                                        ;A89793;
@@ -2289,6 +2482,7 @@ Namihe_CheckIfSamusIsInProximity:
     RTS                                                                  ;A8979A;
 
 
+%anchor($A8979B)
 SetFuneNamiheInstList:
     LDX.W $0E54                                                          ;A8979B;
     LDA.W #$0001                                                         ;A8979E;
@@ -2301,14 +2495,17 @@ SetFuneNamiheInstList:
     RTS                                                                  ;A897B1;
 
 
+%anchor($A897B2)
 RTL_A897B2:
     RTL                                                                  ;A897B2;
 
 
+%anchor($A897B3)
 RTL_A897B3:
     RTL                                                                  ;A897B3;
 
 
+%anchor($A897B4)
 Spritemap_Namihe_FacingLeft_Idle_MouthEyeOpened:
     dw $0008                                                             ;A897B4;
     %spritemapEntry(0, $08, $0C, 0, 0, 2, 0, $127)
@@ -2320,6 +2517,7 @@ Spritemap_Namihe_FacingLeft_Idle_MouthEyeOpened:
     %spritemapEntry(0, $1F0, $FC, 0, 0, 2, 0, $134)
     %spritemapEntry(1, $1F0, $EC, 0, 0, 2, 0, $104)
 
+%anchor($A897DE)
 Spritemap_Namihe_FacingLeft_EyeOpened:
     dw $0008                                                             ;A897DE;
     %spritemapEntry(1, $1F0, $00, 0, 0, 2, 0, $106)
@@ -2331,6 +2529,7 @@ Spritemap_Namihe_FacingLeft_EyeOpened:
     %spritemapEntry(1, $00, $FC, 0, 0, 2, 0, $122)
     %spritemapEntry(1, $00, $EC, 0, 0, 2, 0, $120)
 
+%anchor($A89808)
 Spritemap_Namihe_FacingLeft_StartOpeningMouth:
     dw $0008                                                             ;A89808;
     %spritemapEntry(1, $1EE, $02, 0, 0, 2, 0, $106)
@@ -2342,6 +2541,7 @@ Spritemap_Namihe_FacingLeft_StartOpeningMouth:
     %spritemapEntry(1, $1FE, $FC, 0, 0, 2, 0, $122)
     %spritemapEntry(1, $1FE, $EC, 0, 0, 2, 0, $120)
 
+%anchor($A89832)
 Spritemap_Namihe_FacingLeft_MouthOpening1:
     dw $0008                                                             ;A89832;
     %spritemapEntry(1, $1EC, $03, 0, 0, 2, 0, $106)
@@ -2353,6 +2553,7 @@ Spritemap_Namihe_FacingLeft_MouthOpening1:
     %spritemapEntry(1, $1FC, $FC, 0, 0, 2, 0, $122)
     %spritemapEntry(1, $1FC, $EC, 0, 0, 2, 0, $120)
 
+%anchor($A8985C)
 Spritemap_Namihe_FacingLeft_MouthOpening2:
     dw $0008                                                             ;A8985C;
     %spritemapEntry(1, $1EA, $04, 0, 0, 2, 0, $106)
@@ -2364,6 +2565,7 @@ Spritemap_Namihe_FacingLeft_MouthOpening2:
     %spritemapEntry(1, $1FA, $FC, 0, 0, 2, 0, $122)
     %spritemapEntry(1, $1FA, $EC, 0, 0, 2, 0, $120)
 
+%anchor($A89886)
 Spritemap_Namihe_FacingLeft_MouthMostOpen:
     dw $0008                                                             ;A89886;
     %spritemapEntry(1, $1E9, $05, 0, 0, 2, 0, $106)
@@ -2375,6 +2577,7 @@ Spritemap_Namihe_FacingLeft_MouthMostOpen:
     %spritemapEntry(1, $1F8, $FC, 0, 0, 2, 0, $122)
     %spritemapEntry(1, $1F8, $EC, 0, 0, 2, 0, $120)
 
+%anchor($A898B0)
 Spritemap_Namihe_FacingRight_Idle_MouthEyeClosed:
     dw $0008                                                             ;A898B0;
     %spritemapEntry(0, $1F0, $0C, 0, 1, 2, 0, $127)
@@ -2386,6 +2589,7 @@ Spritemap_Namihe_FacingRight_Idle_MouthEyeClosed:
     %spritemapEntry(0, $08, $FC, 0, 1, 2, 0, $134)
     %spritemapEntry(1, $00, $EC, 0, 1, 2, 0, $104)
 
+%anchor($A898DA)
 Spritemap_Namihe_FacingRight_EyeOpened:
     dw $0008                                                             ;A898DA;
     %spritemapEntry(1, $00, $00, 0, 1, 2, 0, $106)
@@ -2397,6 +2601,7 @@ Spritemap_Namihe_FacingRight_EyeOpened:
     %spritemapEntry(1, $1F0, $FC, 0, 1, 2, 0, $122)
     %spritemapEntry(1, $1F0, $EC, 0, 1, 2, 0, $120)
 
+%anchor($A89904)
 Spritemap_Namihe_FacingRight_StartOpeningMouth:
     dw $0008                                                             ;A89904;
     %spritemapEntry(1, $02, $02, 0, 1, 2, 0, $106)
@@ -2408,6 +2613,7 @@ Spritemap_Namihe_FacingRight_StartOpeningMouth:
     %spritemapEntry(1, $1F2, $FC, 0, 1, 2, 0, $122)
     %spritemapEntry(1, $1F2, $EC, 0, 1, 2, 0, $120)
 
+%anchor($A8992E)
 Spritemap_Namihe_FacingRight_MouthOpening1:
     dw $0008                                                             ;A8992E;
     %spritemapEntry(1, $04, $03, 0, 1, 2, 0, $106)
@@ -2419,6 +2625,7 @@ Spritemap_Namihe_FacingRight_MouthOpening1:
     %spritemapEntry(1, $1F4, $FC, 0, 1, 2, 0, $122)
     %spritemapEntry(1, $1F4, $EC, 0, 1, 2, 0, $120)
 
+%anchor($A89958)
 Spritemap_Namihe_FacingRight_MouthOpening2:
     dw $0008                                                             ;A89958;
     %spritemapEntry(1, $06, $04, 0, 1, 2, 0, $106)
@@ -2430,6 +2637,7 @@ Spritemap_Namihe_FacingRight_MouthOpening2:
     %spritemapEntry(1, $1F6, $FC, 0, 1, 2, 0, $122)
     %spritemapEntry(1, $1F6, $EC, 0, 1, 2, 0, $120)
 
+%anchor($A89982)
 Spritemap_Namihe_FacingRight_MouthMostOpen:
     dw $0008                                                             ;A89982;
     %spritemapEntry(1, $07, $05, 0, 1, 2, 0, $106)
@@ -2442,12 +2650,14 @@ Spritemap_Namihe_FacingRight_MouthMostOpen:
     %spritemapEntry(1, $1F8, $EC, 0, 1, 2, 0, $120)
 
 
+%anchor($A899AC)
 Palette_Coven:
     dw $3800,$57FF,$42F7,$0929,$00A5,$4F5A,$36B5,$2610                   ;A899AC;
     dw $1DCE,$01DF,$001F,$0018,$000A,$06B9,$00EA,$0045                   ;A899BC;
 
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A899CC)
 UNUSED_Coven_BlackPalettes_A899CC:
     dw $3800,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;A899CC;
     dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;A899DC;
@@ -2463,6 +2673,7 @@ UNUSED_Coven_BlackPalettes_A899CC:
     dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;A89A7C;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+%anchor($A89A8C)
 InstList_Coven:
     dw $0010,Spritemap_Coven_0                                           ;A89A8C;
     dw $0010,Spritemap_Coven_1                                           ;A89A90;
@@ -2470,30 +2681,37 @@ InstList_Coven:
     dw Instruction_Common_GotoY                                          ;A89A98;
     dw InstList_Coven                                                    ;A89A9A;
 
+%anchor($A89A9C)
 CovenConstants_SamusMovementCounterThreshold:
 ; Number of times Samus has to move in the same direction to materialise
     dw $0010                                                             ;A89A9C;
 
+%anchor($A89A9E)
 CovenConstants_SamusStationaryFramesThreshold:
 ; Number of frames Samus has to remain stationary to materialise
     dw $0040                                                             ;A89A9E;
 
+%anchor($A89AA0)
 CovenConstants_HoveringYAccelerationDeceleration:
 ; Hovering Y acceleration/deceleration
     dw $1800                                                             ;A89AA0;
 
+%anchor($A89AA2)
 CovenConstants_InitialHoveringYVelocity:
 ; Initial hovering Y velocity
     dw $0001                                                             ;A89AA2;
 
+%anchor($A89AA4)
 CovenConstants_SleepTimer:
 ; Number of frames to sleep after dematerialising
     dw $0078                                                             ;A89AA4;
 
+%anchor($A89AA6)
 CovenConstants_MaterializeTimer:
 ; Number of frames to be materialised for
     dw $0078                                                             ;A89AA6;
 
+%anchor($A89AA8)
 CovenConstants_OffsetsFromSamusToMaterialize:
 ; X/Y offsets from Samus position to materialise when Samus has been moving a given direction
   .X:
@@ -2510,12 +2728,14 @@ CovenConstants_OffsetsFromSamusToMaterialize:
     dw $0040,$0040 ; 20h: Down-right
 
 
+%anchor($A89ACC)
 CovenPaletteTransitionDelayTable:
 ; Palette transition delay table
     dw $0001,$0008,$0001,$0008,$0001,$0007,$0001,$0007                   ;A89ACC;
     dw $0002,$0006,$0002,$0006,$0003,$0005,$0003,$0005                   ;A89ADC;
     dw $FFFF                                                             ;A89AEC;
 
+%anchor($A89AEE)
 InitAI_Coven:
     LDX.W $0E54                                                          ;A89AEE;
     LDA.W $0F86,X                                                        ;A89AF1;
@@ -2555,11 +2775,13 @@ InitAI_Coven:
     RTL                                                                  ;A89B3B;
 
 
+%anchor($A89B3C)
 MainAI_Coven:
     LDX.W $0E54                                                          ;A89B3C;
     JMP.W ($0FA8,X)                                                      ;A89B3F;
 
 
+%anchor($A89B42)
 Function_Coven_Materialize_FadeToWhite:
     PHX                                                                  ;A89B42;
     JSR.W HandleFadeInTimerAndIndex                                      ;A89B43;
@@ -2624,6 +2846,7 @@ Function_Coven_Materialize_FadeToWhite:
     RTL                                                                  ;A89BAC;
 
 
+%anchor($A89BAD)
 Function_Coven_Materialize_FadeFromWhite:
     JSR.W AdvanceCovenPaletteTransition                                  ;A89BAD;
     PHA                                                                  ;A89BB0;
@@ -2671,6 +2894,7 @@ Function_Coven_Materialize_FadeFromWhite:
     RTL                                                                  ;A89C30;
 
 
+%anchor($A89C31)
 HandleFadeInTimerAndIndex:
     LDA.W $0FAA,X                                                        ;A89C31;
     BEQ .timerExpired                                                    ;A89C34;
@@ -2708,6 +2932,7 @@ HandleFadeInTimerAndIndex:
     RTS                                                                  ;A89C68;
 
 
+%anchor($A89C69)
 Function_Coven_Dematerializing:
     JSR.W AdvanceCovenPaletteTransition                                  ;A89C69;
     CMP.W #$0000                                                         ;A89C6C;
@@ -2725,6 +2950,7 @@ Function_Coven_Dematerializing:
     RTL                                                                  ;A89C89;
 
 
+%anchor($A89C8A)
 Function_Coven_Materialized:
     LDA.W $0F80,X                                                        ;A89C8A;
     CLC                                                                  ;A89C8D;
@@ -2789,6 +3015,7 @@ Function_Coven_Materialized:
     RTL                                                                  ;A89D12;
 
 
+%anchor($A89D13)
 Function_Coven_Dematerialized_Asleep:
     LDA.W $0FAA,X                                                        ;A89D13;
     BEQ .timerExpired                                                    ;A89D16;
@@ -2808,17 +3035,21 @@ Function_Coven_Dematerialized_Asleep:
     RTL                                                                  ;A89D30;
 
 
+%anchor($A89D31)
 RTL_A89D31:
     RTL                                                                  ;A89D31;
 
 
 ; Number of pixels of tolerance to consider Samus stationary for the materialisation check
+%anchor($A89D32)
 CovenStationaryZoneXRadius:
     dw $0001                                                             ;A89D32;
 
+%anchor($A89D34)
 CovenStationaryZoneYRadius:
     dw $0001                                                             ;A89D34;
 
+%anchor($A89D36)
 Function_Coven_Dematerialized_Awake:
     LDA.W $0AF6                                                          ;A89D36;
     CMP.L $7E780E,X                                                      ;A89D39;
@@ -2946,14 +3177,17 @@ Function_Coven_Dematerialized_Awake:
     RTL                                                                  ;A89E43;
 
 
+%anchor($A89E44)
 RTL_A89E44:
     RTL                                                                  ;A89E44;
 
 
+%anchor($A89E45)
 RTL_A89E45:
     RTL                                                                  ;A89E45;
 
 
+%anchor($A89E46)
 Spritemap_Coven_0:
     dw $0004                                                             ;A89E46;
     %spritemapEntry(1, $00, $00, 0, 0, 3, 0, $106)
@@ -2961,6 +3195,7 @@ Spritemap_Coven_0:
     %spritemapEntry(1, $00, $F0, 0, 0, 3, 0, $102)
     %spritemapEntry(1, $1F0, $F0, 0, 0, 3, 0, $100)
 
+%anchor($A89E5C)
 Spritemap_Coven_1:
     dw $0004                                                             ;A89E5C;
     %spritemapEntry(1, $00, $00, 0, 0, 3, 0, $10A)
@@ -2968,6 +3203,7 @@ Spritemap_Coven_1:
     %spritemapEntry(1, $00, $F0, 0, 0, 3, 0, $102)
     %spritemapEntry(1, $1F0, $F0, 0, 0, 3, 0, $100)
 
+%anchor($A89E72)
 Spritemap_Coven_2:
     dw $0004                                                             ;A89E72;
     %spritemapEntry(1, $00, $00, 0, 0, 3, 0, $10E)
@@ -2976,6 +3212,7 @@ Spritemap_Coven_2:
     %spritemapEntry(1, $1F0, $F0, 0, 0, 3, 0, $100)
 
 
+%anchor($A89E88)
 AdvanceCovenPaletteTransition:
     PHP                                                                  ;A89E88;
     PHX                                                                  ;A89E89;
@@ -3097,11 +3334,13 @@ AdvanceCovenPaletteTransition:
     RTS                                                                  ;A89F4E;
 
 
+%anchor($A89F4F)
 Palette_YappingMaw:
     dw $3800,$57FF,$42F7,$0929,$00A5,$4F5A,$36B5,$2610                   ;A89F4F;
     dw $1DCE,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;A89F5F;
 
 
+%anchor($A89F6F)
 InstList_YappingMaw_Attacking_FacingUp:
     dw $0005,Spritemap_YappingMaw_0                                      ;A89F6F;
     dw $0003,Spritemap_YappingMaw_1                                      ;A89F73;
@@ -3111,6 +3350,7 @@ InstList_YappingMaw_Attacking_FacingUp:
     dw Instruction_Common_GotoY                                          ;A89F81;
     dw InstList_YappingMaw_Attacking_FacingUp                            ;A89F83;
 
+%anchor($A89F85)
 InstList_YappingMaw_Attacking_FacingUpRight:
     dw $0005,Spritemap_YappingMaw_3                                      ;A89F85;
     dw $0003,Spritemap_YappingMaw_4                                      ;A89F89;
@@ -3120,6 +3360,7 @@ InstList_YappingMaw_Attacking_FacingUpRight:
     dw Instruction_Common_GotoY                                          ;A89F97;
     dw InstList_YappingMaw_Attacking_FacingUpRight                       ;A89F99;
 
+%anchor($A89F9B)
 InstList_YappingMaw_Attacking_FacingRight:
     dw $0005,Spritemap_YappingMaw_6                                      ;A89F9B;
     dw $0003,Spritemap_YappingMaw_7                                      ;A89F9F;
@@ -3129,6 +3370,7 @@ InstList_YappingMaw_Attacking_FacingRight:
     dw Instruction_Common_GotoY                                          ;A89FAD;
     dw InstList_YappingMaw_Attacking_FacingRight                         ;A89FAF;
 
+%anchor($A89FB1)
 InstList_YappingMaw_Attacking_FacingDownRight:
     dw $0005,Spritemap_YappingMaw_9                                      ;A89FB1;
     dw $0003,Spritemap_YappingMaw_A                                      ;A89FB5;
@@ -3138,6 +3380,7 @@ InstList_YappingMaw_Attacking_FacingDownRight:
     dw Instruction_Common_GotoY                                          ;A89FC3;
     dw InstList_YappingMaw_Attacking_FacingDownRight                     ;A89FC5;
 
+%anchor($A89FC7)
 InstList_YappingMaw_Attacking_FacingDown:
     dw $0005,Spritemap_YappingMaw_C                                      ;A89FC7;
     dw $0003,Spritemap_YappingMaw_D                                      ;A89FCB;
@@ -3147,6 +3390,7 @@ InstList_YappingMaw_Attacking_FacingDown:
     dw Instruction_Common_GotoY                                          ;A89FD9;
     dw InstList_YappingMaw_Attacking_FacingDown                          ;A89FDB;
 
+%anchor($A89FDD)
 InstList_YappingMaw_Attacking_FacingDownLeft:
     dw $0005,Spritemap_YappingMaw_F                                      ;A89FDD;
     dw $0003,Spritemap_YappingMaw_10                                     ;A89FE1;
@@ -3156,6 +3400,7 @@ InstList_YappingMaw_Attacking_FacingDownLeft:
     dw Instruction_Common_GotoY                                          ;A89FEF;
     dw InstList_YappingMaw_Attacking_FacingDownLeft                      ;A89FF1;
 
+%anchor($A89FF3)
 InstList_YappingMaw_Attacking_FacingLeft:
     dw $0005,Spritemap_YappingMaw_12                                     ;A89FF3;
     dw $0003,Spritemap_YappingMaw_13                                     ;A89FF7;
@@ -3165,6 +3410,7 @@ InstList_YappingMaw_Attacking_FacingLeft:
     dw Instruction_Common_GotoY                                          ;A8A005;
     dw InstList_YappingMaw_Attacking_FacingLeft                          ;A8A007;
 
+%anchor($A8A009)
 InstList_YappingMaw_Attacking_FacingUpLeft:
     dw $0005,Spritemap_YappingMaw_15                                     ;A8A009;
     dw $0003,Spritemap_YappingMaw_16                                     ;A8A00D;
@@ -3174,13 +3420,16 @@ InstList_YappingMaw_Attacking_FacingUpLeft:
     dw Instruction_Common_GotoY                                          ;A8A01B;
     dw InstList_YappingMaw_Attacking_FacingUpLeft                        ;A8A01D;
 
+%anchor($A8A01F)
 InstList_YappingMaw_Cooldown_FacingUpRight:
     dw Instruction_YappingMaw_OffsetSamusUpRight                         ;A8A01F;
     dw $0004,Spritemap_YappingMaw_5                                      ;A8A021;
 
+%anchor($A8A025)
 InstList_YappingMaw_Cooldown_FacingUp_0:
     dw Instruction_YappingMaw_OffsetSamusUp                              ;A8A025;
 
+%anchor($A8A027)
 InstList_YappingMaw_Cooldown_FacingUp_1:
     dw $0050,Spritemap_YappingMaw_2                                      ;A8A027;
     dw $0003,Spritemap_YappingMaw_1                                      ;A8A02B;
@@ -3190,11 +3439,13 @@ InstList_YappingMaw_Cooldown_FacingUp_1:
     dw Instruction_Common_GotoY                                          ;A8A039;
     dw InstList_YappingMaw_Cooldown_FacingUp_1                           ;A8A03B;
 
+%anchor($A8A03D)
 InstList_YappingMaw_Cooldown_FacingUpLeft_0:
     dw Instruction_YappingMaw_OffsetSamusUpLeft                          ;A8A03D;
     dw $0004,Spritemap_YappingMaw_17                                     ;A8A03F;
     dw Instruction_YappingMaw_OffsetSamusUp                              ;A8A043;
 
+%anchor($A8A045)
 InstList_YappingMaw_Cooldown_FacingUpLeft_1:
     dw $0050,Spritemap_YappingMaw_2                                      ;A8A045;
     dw $0003,Spritemap_YappingMaw_1                                      ;A8A049;
@@ -3204,13 +3455,16 @@ InstList_YappingMaw_Cooldown_FacingUpLeft_1:
     dw Instruction_CommonA8_GotoY                                        ;A8A057;
     dw InstList_YappingMaw_Cooldown_FacingUpLeft_1                       ;A8A059;
 
+%anchor($A8A05B)
 InstList_YappingMaw_Cooldown_FacingDownRight:
     dw Instruction_YappingMaw_OffsetSamusDownRight                       ;A8A05B;
     dw $0004,Spritemap_YappingMaw_B                                      ;A8A05D;
 
+%anchor($A8A061)
 InstList_YappingMaw_Cooldown_FacingDown_0:
     dw Instruction_YappingMaw_OffsetSamusDown                            ;A8A061;
 
+%anchor($A8A063)
 InstList_YappingMaw_Cooldown_FacingDown_1:
     dw $0050,Spritemap_YappingMaw_E                                      ;A8A063;
     dw $0003,Spritemap_YappingMaw_D                                      ;A8A067;
@@ -3220,11 +3474,13 @@ InstList_YappingMaw_Cooldown_FacingDown_1:
     dw Instruction_Common_GotoY                                          ;A8A075;
     dw InstList_YappingMaw_Cooldown_FacingDown_1                         ;A8A077;
 
+%anchor($A8A079)
 InstList_YappingMaw_Cooldown_FacingDownLeft_0:
     dw Instruction_YappingMaw_OffsetSamusDownLeft                        ;A8A079;
     dw $0004,Spritemap_YappingMaw_11                                     ;A8A07B;
     dw Instruction_YappingMaw_OffsetSamusDown                            ;A8A07F;
 
+%anchor($A8A081)
 InstList_YappingMaw_Cooldown_FacingDownLeft_1:
     dw $0050,Spritemap_YappingMaw_E                                      ;A8A081;
     dw $0003,Spritemap_YappingMaw_D                                      ;A8A085;
@@ -3234,6 +3490,7 @@ InstList_YappingMaw_Cooldown_FacingDownLeft_1:
     dw Instruction_Common_GotoY                                          ;A8A093;
     dw InstList_YappingMaw_Cooldown_FacingDownLeft_1                     ;A8A095;
 
+%anchor($A8A097)
 InstListPointers_YappingMaw:
     dw InstList_YappingMaw_Attacking_FacingUp                            ;A8A097;
     dw InstList_YappingMaw_Attacking_FacingUpRight                       ;A8A099;
@@ -3246,50 +3503,67 @@ InstListPointers_YappingMaw:
 
 
 ; Offset from enemy position to place Samus when grabbed
+%anchor($A8A0A7)
 YappingMawSamusOffsets_X_Up:
     dw $0000                                                             ;A8A0A7;
+%anchor($A8A0A9)
 YappingMawSamusOffsets_Y_Up:
     dw $FFF0                                                             ;A8A0A9;
 
+%anchor($A8A0AB)
 YappingMawSamusOffsets_X_UpRight:
     dw $0008                                                             ;A8A0AB;
+%anchor($A8A0AD)
 YappingMawSamusOffsets_Y_UpRight:
     dw $FFF8                                                             ;A8A0AD;
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A8A0AF)
 UNUSED_YappingMawSamusOffsets_X_Right_A8A0AF:
     dw $0010                                                             ;A8A0AF;
+%anchor($A8A0B1)
 UNUSED_YappingMawSamusOffsets_Y_Right_A8A0B1:
     dw $0000                                                             ;A8A0B1;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+%anchor($A8A0B3)
 YappingMawSamusOffsets_X_DownRight:
     dw $0008                                                             ;A8A0B3;
+%anchor($A8A0B5)
 YappingMawSamusOffsets_Y_DownRight:
     dw $0008                                                             ;A8A0B5;
 
+%anchor($A8A0B7)
 YappingMawSamusOffsets_X_Down:
     dw $0000                                                             ;A8A0B7;
+%anchor($A8A0B9)
 YappingMawSamusOffsets_Y_Down:
     dw $0010                                                             ;A8A0B9;
 
+%anchor($A8A0BB)
 YappingMawSamusOffsets_X_DownLeft:
     dw $FFF8                                                             ;A8A0BB;
+%anchor($A8A0BD)
 YappingMawSamusOffsets_Y_DownLeft:
     dw $0008                                                             ;A8A0BD;
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A8A0BF)
 UNUSED_YappingMawSamusOffsets_X_Left_A8A0BF:
     dw $FFF0                                                             ;A8A0BF;
+%anchor($A8A0C1)
 UNUSED_YappingMawSamusOffsets_Y_Left_A8A0C1:
     dw $0000                                                             ;A8A0C1;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+%anchor($A8A0C3)
 YappingMawSamusOffsets_X_UpLeft:
     dw $FFF8                                                             ;A8A0C3;
+%anchor($A8A0C5)
 YappingMawSamusOffsets_Y_UpLeft:
     dw $FFF8                                                             ;A8A0C5;
 
+%anchor($A8A0C7)
 Instruction_YappingMaw_OffsetSamusUpRight:
     LDX.W $0E54                                                          ;A8A0C7;
     LDA.W YappingMawSamusOffsets_X_UpRight                               ;A8A0CA;
@@ -3299,6 +3573,7 @@ Instruction_YappingMaw_OffsetSamusUpRight:
     RTL                                                                  ;A8A0D8;
 
 
+%anchor($A8A0D9)
 Instruction_YappingMaw_OffsetSamusUpLeft:
     LDX.W $0E54                                                          ;A8A0D9;
     LDA.W YappingMawSamusOffsets_X_UpLeft                                ;A8A0DC;
@@ -3308,6 +3583,7 @@ Instruction_YappingMaw_OffsetSamusUpLeft:
     RTL                                                                  ;A8A0EA;
 
 
+%anchor($A8A0EB)
 Instruction_YappingMaw_OffsetSamusDownRight:
     LDX.W $0E54                                                          ;A8A0EB;
     LDA.W YappingMawSamusOffsets_X_DownRight                             ;A8A0EE;
@@ -3317,6 +3593,7 @@ Instruction_YappingMaw_OffsetSamusDownRight:
     RTL                                                                  ;A8A0FC;
 
 
+%anchor($A8A0FD)
 Instruction_YappingMaw_OffsetSamusDownLeft:
     LDX.W $0E54                                                          ;A8A0FD;
     LDA.W YappingMawSamusOffsets_X_DownLeft                              ;A8A100;
@@ -3326,6 +3603,7 @@ Instruction_YappingMaw_OffsetSamusDownLeft:
     RTL                                                                  ;A8A10E;
 
 
+%anchor($A8A10F)
 Instruction_YappingMaw_OffsetSamusUp:
     LDX.W $0E54                                                          ;A8A10F;
     LDA.W YappingMawSamusOffsets_X_Up                                    ;A8A112;
@@ -3335,6 +3613,7 @@ Instruction_YappingMaw_OffsetSamusUp:
     RTL                                                                  ;A8A120;
 
 
+%anchor($A8A121)
 Instruction_YappingMaw_OffsetSamusDown:
     LDX.W $0E54                                                          ;A8A121;
     LDA.W YappingMawSamusOffsets_X_Down                                  ;A8A124;
@@ -3344,6 +3623,7 @@ Instruction_YappingMaw_OffsetSamusDown:
     RTL                                                                  ;A8A132;
 
 
+%anchor($A8A133)
 Instruction_YappingMaw_QueueSFXIfOnScreen:
     PHY                                                                  ;A8A133;
     PHX                                                                  ;A8A134;
@@ -3359,6 +3639,7 @@ Instruction_YappingMaw_QueueSFXIfOnScreen:
     RTL                                                                  ;A8A147;
 
 
+%anchor($A8A148)
 InitAI_YappingMaw:
     LDX.W $0E54                                                          ;A8A148;
     LDA.W $0F7A,X                                                        ;A8A14B;
@@ -3433,6 +3714,7 @@ InitAI_YappingMaw:
     RTL                                                                  ;A8A210;
 
 
+%anchor($A8A211)
 MainAI_YappingMaw:
     LDX.W $0E54                                                          ;A8A211;
     LDA.L $7E802A,X                                                      ;A8A214;
@@ -3448,6 +3730,7 @@ MainAI_YappingMaw:
     RTL                                                                  ;A8A234;
 
 
+%anchor($A8A235)
 Function_YappingMaw_Neutral:
     LDX.W $0E54                                                          ;A8A235;
     LDA.W $0F7A,X                                                        ;A8A238;
@@ -3486,6 +3769,7 @@ Function_YappingMaw_Neutral:
     RTS                                                                  ;A8A28B;
 
 
+%anchor($A8A28C)
 Function_YappingMaw_Attack:
     LDX.W $0E54                                                          ;A8A28C;
     STZ.W $0FAA,X                                                        ;A8A28F;
@@ -3545,6 +3829,7 @@ Function_YappingMaw_Attack:
     RTS                                                                  ;A8A30F;
 
 
+%anchor($A8A310)
 CalculateYappingMawOriginPosition:
     LDX.W $0E54                                                          ;A8A310;
     LDA.L $7E7812,X                                                      ;A8A313;
@@ -3561,6 +3846,7 @@ CalculateYappingMawOriginPosition:
     RTS                                                                  ;A8A338;
 
 
+%anchor($A8A339)
 CalculateBodySegment1Velocities:
     LDX.W $0E54                                                          ;A8A339;
     LDA.L $7E7800,X                                                      ;A8A33C;
@@ -3584,6 +3870,7 @@ CalculateBodySegment1Velocities:
     RTS                                                                  ;A8A37B;
 
 
+%anchor($A8A37C)
 CalculateBodySegment2Velocities:
     LDX.W $0E54                                                          ;A8A37C;
     LDA.L $7E7804,X                                                      ;A8A37F;
@@ -3607,6 +3894,7 @@ CalculateBodySegment2Velocities:
     RTS                                                                  ;A8A3BE;
 
 
+%anchor($A8A3BF)
 CalculateBodySegment3Velocities:
     LDX.W $0E54                                                          ;A8A3BF;
     LDA.L $7E7808,X                                                      ;A8A3C2;
@@ -3630,6 +3918,7 @@ CalculateBodySegment3Velocities:
     RTS                                                                  ;A8A401;
 
 
+%anchor($A8A402)
 CalculateHeadSegmentVelocities:
     LDX.W $0E54                                                          ;A8A402;
     LDA.L $7E780C,X                                                      ;A8A405;
@@ -3653,6 +3942,7 @@ CalculateHeadSegmentVelocities:
     RTS                                                                  ;A8A444;
 
 
+%anchor($A8A445)
 Function_YappingMaw_Attacking:
     LDX.W $0E54                                                          ;A8A445;
     LDA.W $0FAA,X                                                        ;A8A448;
@@ -3855,6 +4145,7 @@ Function_YappingMaw_Attacking:
     RTS                                                                  ;A8A63D;
 
 
+%anchor($A8A63E)
 UpdateYappingMawAngularSpeed:
     LDY.W $0FAE,X                                                        ;A8A63E;
     LDA.W $0FAA,X                                                        ;A8A641;
@@ -3875,6 +4166,7 @@ UpdateYappingMawAngularSpeed:
     RTS                                                                  ;A8A664;
 
 
+%anchor($A8A665)
 MoveSamusWithYappingMawPincers:
     LDX.W $0E54                                                          ;A8A665;
     LDA.W #$0003                                                         ;A8A668;
@@ -3891,6 +4183,7 @@ MoveSamusWithYappingMawPincers:
     RTS                                                                  ;A8A689;
 
 
+%anchor($A8A68A)
 Function_YappingMaw_Cooldown:
     LDX.W $0E54                                                          ;A8A68A;
     LDA.L $7E8020,X                                                      ;A8A68D;
@@ -3918,6 +4211,7 @@ Function_YappingMaw_Cooldown:
     RTS                                                                  ;A8A6C3;
 
 
+%anchor($A8A6C4)
 SetBodySegmentPosition_0:
     LDX.W $0E54                                                          ;A8A6C4;
     LDA.L $7E8800,X                                                      ;A8A6C7;
@@ -3929,6 +4223,7 @@ SetBodySegmentPosition_0:
     RTS                                                                  ;A8A6DA;
 
 
+%anchor($A8A6DB)
 SetBodySegmentPosition_1:
     LDX.W $0E54                                                          ;A8A6DB;
     LDA.L $7E8802,X                                                      ;A8A6DE;
@@ -3944,6 +4239,7 @@ SetBodySegmentPosition_1:
     RTS                                                                  ;A8A6FB;
 
 
+%anchor($A8A6FC)
 SetBodySegmentPosition_2:
     LDX.W $0E54                                                          ;A8A6FC;
     LDA.L $7E8804,X                                                      ;A8A6FF;
@@ -3959,6 +4255,7 @@ SetBodySegmentPosition_2:
     RTS                                                                  ;A8A71C;
 
 
+%anchor($A8A71D)
 SetBodySegmentPosition_3:
     LDX.W $0E54                                                          ;A8A71D;
     LDA.L $7E8806,X                                                      ;A8A720;
@@ -3974,10 +4271,12 @@ SetBodySegmentPosition_3:
     RTS                                                                  ;A8A73D;
 
 
+%anchor($A8A73E)
 Math_Cosine_A8A73E:
     SEC                                                                  ;A8A73E;
     SBC.W #$0040                                                         ;A8A73F;
 
+%anchor($A8A742)
 Math_Sine_A8A742:
     STA.B $12                                                            ;A8A742;
     LDA.W #$0100                                                         ;A8A744;
@@ -4027,6 +4326,7 @@ Math_Sine_A8A742:
     RTL                                                                  ;A8A798;
 
 
+%anchor($A8A799)
 EnemyTouch_YappingMaw:
     LDX.W $0E54                                                          ;A8A799;
     LDA.L $7E802A,X                                                      ;A8A79C;
@@ -4044,6 +4344,7 @@ EnemyTouch_YappingMaw:
     RTL                                                                  ;A8A7BC;
 
 
+%anchor($A8A7BD)
 EnemyShot_YappingMaw:
     JSL.L NormalEnemyShotAI                                              ;A8A7BD;
     LDX.W $0E54                                                          ;A8A7C1;
@@ -4100,6 +4401,7 @@ EnemyShot_YappingMaw:
     RTL                                                                  ;A8A834;
 
 
+%anchor($A8A835)
 FrozenAI_YappingMaw:
     JSL.L CommonA8_NormalEnemyFrozenAI                                   ;A8A835;
     LDA.L $7E8800,X                                                      ;A8A839;
@@ -4118,6 +4420,7 @@ FrozenAI_YappingMaw:
     RTL                                                                  ;A8A85C;
 
 
+%anchor($A8A85D)
 SetYappingMawBodySegmentFrozenPalette:
     LDX.W $0E54                                                          ;A8A85D;
     LDA.W $19BB,Y                                                        ;A8A860;
@@ -4144,6 +4447,7 @@ SetYappingMawBodySegmentFrozenPalette:
     RTS                                                                  ;A8A898;
 
 
+%anchor($A8A899)
 SetYappingMawBaseFrozenPalette:
     LDX.W $0E54                                                          ;A8A899;
     LDA.L $7E880A,X                                                      ;A8A89C;
@@ -4179,6 +4483,7 @@ SetYappingMawBaseFrozenPalette:
     RTS                                                                  ;A8A8ED;
 
 
+%anchor($A8A8EE)
 Spritemap_YappingMaw_0:
     dw $0005                                                             ;A8A8EE;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
@@ -4187,12 +4492,14 @@ Spritemap_YappingMaw_0:
     %spritemapEntry(0, $04, $FA, 0, 1, 2, 0, $10F)
     %spritemapEntry(0, $0C, $FA, 0, 1, 2, 0, $10E)
 
+%anchor($A8A909)
 Spritemap_YappingMaw_1:
     dw $0003                                                             ;A8A909;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
     %spritemapEntry(1, $04, $F0, 0, 1, 2, 0, $106)
     %spritemapEntry(1, $1EC, $F0, 0, 0, 2, 0, $106)
 
+%anchor($A8A91A)
 Spritemap_YappingMaw_2:
     dw $0005                                                             ;A8A91A;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
@@ -4201,12 +4508,14 @@ Spritemap_YappingMaw_2:
     %spritemapEntry(0, $1F8, $F6, 0, 0, 2, 0, $10D)
     %spritemapEntry(0, $1F8, $EE, 0, 0, 2, 0, $10C)
 
+%anchor($A8A935)
 Spritemap_YappingMaw_3:
     dw $0003                                                             ;A8A935;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $102)
     %spritemapEntry(1, $1F2, $EE, 0, 0, 2, 0, $106)
     %spritemapEntry(1, $02, $FE, 1, 1, 2, 0, $108)
 
+%anchor($A8A946)
 Spritemap_YappingMaw_4:
     dw $0005                                                             ;A8A946;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $102)
@@ -4215,12 +4524,14 @@ Spritemap_YappingMaw_4:
     %spritemapEntry(0, $1FB, $F3, 0, 0, 2, 0, $10D)
     %spritemapEntry(0, $1FB, $EB, 0, 0, 2, 0, $10C)
 
+%anchor($A8A961)
 Spritemap_YappingMaw_5:
     dw $0003                                                             ;A8A961;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $102)
     %spritemapEntry(1, $01, $F4, 0, 1, 2, 0, $106)
     %spritemapEntry(1, $1FC, $EF, 0, 1, 2, 0, $108)
 
+%anchor($A8A972)
 Spritemap_YappingMaw_6:
     dw $0005                                                             ;A8A972;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $104)
@@ -4229,12 +4540,14 @@ Spritemap_YappingMaw_6:
     %spritemapEntry(0, $1FE, $F4, 0, 0, 2, 0, $10D)
     %spritemapEntry(0, $1FE, $EC, 0, 0, 2, 0, $10C)
 
+%anchor($A8A98D)
 Spritemap_YappingMaw_7:
     dw $0003                                                             ;A8A98D;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $104)
     %spritemapEntry(1, $00, $EC, 0, 1, 2, 0, $108)
     %spritemapEntry(1, $00, $04, 1, 1, 2, 0, $108)
 
+%anchor($A8A99E)
 Spritemap_YappingMaw_8:
     dw $0005                                                             ;A8A99E;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $104)
@@ -4243,12 +4556,14 @@ Spritemap_YappingMaw_8:
     %spritemapEntry(0, $03, $00, 0, 1, 2, 0, $10F)
     %spritemapEntry(0, $0B, $00, 0, 1, 2, 0, $10E)
 
+%anchor($A8A9B9)
 Spritemap_YappingMaw_9:
     dw $0003                                                             ;A8A9B9;
     %spritemapEntry(1, $1F8, $F8, 1, 0, 2, 0, $102)
     %spritemapEntry(1, $1F2, $02, 1, 0, 2, 0, $106)
     %spritemapEntry(1, $02, $F2, 0, 1, 2, 0, $108)
 
+%anchor($A8A9CA)
 Spritemap_YappingMaw_A:
     dw $0005                                                             ;A8A9CA;
     %spritemapEntry(1, $1F8, $F8, 1, 0, 2, 0, $102)
@@ -4257,12 +4572,14 @@ Spritemap_YappingMaw_A:
     %spritemapEntry(0, $1FB, $05, 1, 0, 2, 0, $10D)
     %spritemapEntry(0, $1FB, $0D, 1, 0, 2, 0, $10C)
 
+%anchor($A8A9E5)
 Spritemap_YappingMaw_B:
     dw $0003                                                             ;A8A9E5;
     %spritemapEntry(1, $1F8, $F8, 1, 0, 2, 0, $102)
     %spritemapEntry(1, $01, $FC, 1, 1, 2, 0, $106)
     %spritemapEntry(1, $1FC, $01, 1, 1, 2, 0, $108)
 
+%anchor($A8A9F6)
 Spritemap_YappingMaw_C:
     dw $0005                                                             ;A8A9F6;
     %spritemapEntry(1, $1F8, $F8, 1, 0, 2, 0, $100)
@@ -4271,12 +4588,14 @@ Spritemap_YappingMaw_C:
     %spritemapEntry(0, $04, $FE, 1, 1, 2, 0, $10F)
     %spritemapEntry(0, $0C, $FE, 1, 1, 2, 0, $10E)
 
+%anchor($A8AA11)
 Spritemap_YappingMaw_D:
     dw $0003                                                             ;A8AA11;
     %spritemapEntry(1, $1F8, $F8, 1, 0, 2, 0, $100)
     %spritemapEntry(1, $04, $00, 1, 1, 2, 0, $106)
     %spritemapEntry(1, $1EC, $00, 1, 0, 2, 0, $106)
 
+%anchor($A8AA22)
 Spritemap_YappingMaw_E:
     dw $0005                                                             ;A8AA22;
     %spritemapEntry(1, $1F8, $F8, 1, 0, 2, 0, $100)
@@ -4285,12 +4604,14 @@ Spritemap_YappingMaw_E:
     %spritemapEntry(0, $1F8, $02, 1, 0, 2, 0, $10D)
     %spritemapEntry(0, $1F8, $0A, 1, 0, 2, 0, $10C)
 
+%anchor($A8AA3D)
 Spritemap_YappingMaw_F:
     dw $0003                                                             ;A8AA3D;
     %spritemapEntry(1, $1F8, $F8, 1, 1, 2, 0, $102)
     %spritemapEntry(1, $1FE, $02, 1, 1, 2, 0, $106)
     %spritemapEntry(1, $1EE, $F2, 0, 0, 2, 0, $108)
 
+%anchor($A8AA4E)
 Spritemap_YappingMaw_10:
     dw $0005                                                             ;A8AA4E;
     %spritemapEntry(1, $1F8, $F8, 1, 1, 2, 0, $102)
@@ -4299,12 +4620,14 @@ Spritemap_YappingMaw_10:
     %spritemapEntry(0, $1FD, $05, 1, 1, 2, 0, $10D)
     %spritemapEntry(0, $1FD, $0D, 1, 1, 2, 0, $10C)
 
+%anchor($A8AA69)
 Spritemap_YappingMaw_11:
     dw $0003                                                             ;A8AA69;
     %spritemapEntry(1, $1F8, $F8, 1, 1, 2, 0, $102)
     %spritemapEntry(1, $1EF, $FC, 1, 0, 2, 0, $106)
     %spritemapEntry(1, $1F4, $01, 1, 0, 2, 0, $108)
 
+%anchor($A8AA7A)
 Spritemap_YappingMaw_12:
     dw $0005                                                             ;A8AA7A;
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $104)
@@ -4313,12 +4636,14 @@ Spritemap_YappingMaw_12:
     %spritemapEntry(0, $1FA, $F4, 0, 1, 2, 0, $10D)
     %spritemapEntry(0, $1FA, $EC, 0, 1, 2, 0, $10C)
 
+%anchor($A8AA95)
 Spritemap_YappingMaw_13:
     dw $0003                                                             ;A8AA95;
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $104)
     %spritemapEntry(1, $1F0, $EC, 0, 0, 2, 0, $108)
     %spritemapEntry(1, $1F0, $04, 1, 0, 2, 0, $108)
 
+%anchor($A8AAA6)
 Spritemap_YappingMaw_14:
     dw $0005                                                             ;A8AAA6;
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $104)
@@ -4327,12 +4652,14 @@ Spritemap_YappingMaw_14:
     %spritemapEntry(0, $1F5, $00, 0, 0, 2, 0, $10F)
     %spritemapEntry(0, $1ED, $00, 0, 0, 2, 0, $10E)
 
+%anchor($A8AAC1)
 Spritemap_YappingMaw_15:
     dw $0003                                                             ;A8AAC1;
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $102)
     %spritemapEntry(1, $1FE, $EE, 0, 1, 2, 0, $106)
     %spritemapEntry(1, $1EE, $FE, 1, 0, 2, 0, $108)
 
+%anchor($A8AAD2)
 Spritemap_YappingMaw_16:
     dw $0005                                                             ;A8AAD2;
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $102)
@@ -4341,6 +4668,7 @@ Spritemap_YappingMaw_16:
     %spritemapEntry(0, $1FD, $F3, 0, 1, 2, 0, $10D)
     %spritemapEntry(0, $1FD, $EB, 0, 1, 2, 0, $10C)
 
+%anchor($A8AAED)
 Spritemap_YappingMaw_17:
     dw $0003                                                             ;A8AAED;
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $102)
@@ -4348,11 +4676,13 @@ Spritemap_YappingMaw_17:
     %spritemapEntry(1, $1F4, $EF, 0, 0, 2, 0, $108)
 
 
+%anchor($A8AAFE)
 Palette_Kago:
     dw $3800,$57FF,$42F7,$0929,$00A5,$4F5A,$36B5,$2610                   ;A8AAFE;
     dw $1DCE,$01DF,$001F,$0018,$000A,$06B9,$00EA,$0045                   ;A8AB0E;
 
 
+%anchor($A8AB1E)
 InstList_Kago_Initial_SlowAnimation:
     dw $000A,Spritemap_Kago_0                                            ;A8AB1E;
     dw $000A,Spritemap_Kago_1                                            ;A8AB22;
@@ -4361,6 +4691,7 @@ InstList_Kago_Initial_SlowAnimation:
     dw Instruction_Common_GotoY                                          ;A8AB2E;
     dw InstList_Kago_Initial_SlowAnimation                               ;A8AB30;
 
+%anchor($A8AB32)
 InstList_Kago_TakenHit_FastAnimation:
     dw $0003,Spritemap_Kago_0                                            ;A8AB32;
     dw $0003,Spritemap_Kago_1                                            ;A8AB36;
@@ -4370,6 +4701,7 @@ InstList_Kago_TakenHit_FastAnimation:
     dw InstList_Kago_TakenHit_FastAnimation                              ;A8AB44;
 
 
+%anchor($A8AB46)
 InitAI_Kago:
     LDX.W $0E54                                                          ;A8AB46;
     LDA.W $0F86,X                                                        ;A8AB49;
@@ -4389,23 +4721,28 @@ InitAI_Kago:
     RTL                                                                  ;A8AB74;
 
 
+%anchor($A8AB75)
 MainAI_Kago:
     LDX.W $0E54                                                          ;A8AB75;
     JMP.W ($0FA8,X)                                                      ;A8AB78;
 
 
+%anchor($A8AB7B)
 Function_Kago_Nothing:
     LDA.W #RTL_A8AB81                                                    ;A8AB7B;
     STA.W $0FA8,X                                                        ;A8AB7E; fallthrough to RTL_A8AB81
 
+%anchor($A8AB81)
 RTL_A8AB81:
     RTL                                                                  ;A8AB81;
 
 
+%anchor($A8AB82)
 RTL_A8AB82:
     RTL                                                                  ;A8AB82;
 
 
+%anchor($A8AB83)
 EnemyShot_Kago:
     PHX                                                                  ;A8AB83;
     PHY                                                                  ;A8AB84;
@@ -4445,6 +4782,7 @@ EnemyShot_Kago:
     RTL                                                                  ;A8ABD9;
 
 
+%anchor($A8ABDA)
 Spritemap_Kago_0:
     dw $0004                                                             ;A8ABDA;
     %spritemapEntry(1, $00, $00, 0, 0, 2, 0, $10E)
@@ -4452,6 +4790,7 @@ Spritemap_Kago_0:
     %spritemapEntry(1, $00, $F0, 0, 0, 2, 0, $102)
     %spritemapEntry(1, $1F0, $F0, 0, 0, 2, 0, $100)
 
+%anchor($A8ABF0)
 Spritemap_Kago_1:
     dw $0004                                                             ;A8ABF0;
     %spritemapEntry(1, $00, $00, 0, 0, 2, 0, $122)
@@ -4459,6 +4798,7 @@ Spritemap_Kago_1:
     %spritemapEntry(1, $00, $F0, 0, 0, 2, 0, $106)
     %spritemapEntry(1, $1F0, $F0, 0, 0, 2, 0, $104)
 
+%anchor($A8AC06)
 Spritemap_Kago_2:
     dw $0004                                                             ;A8AC06;
     %spritemapEntry(1, $00, $00, 0, 0, 2, 0, $126)
@@ -4467,15 +4807,20 @@ Spritemap_Kago_2:
     %spritemapEntry(1, $1F0, $F0, 0, 0, 2, 0, $108)
 
 
+%anchor($A8AC1C)
 Palette_Magdollite:
     dw $3800,$001F,$001C,$0018,$0015,$7FFF,$3BE0,$2680,$1580             ;A8AC1C;
 
+%anchor($A8AC2E)
 Palette_Magdollite_Glow_0:
     dw $023F                                                             ;A8AC2E;
+%anchor($A8AC30)
 Palette_Magdollite_Glow_1:
     dw $00BD                                                             ;A8AC30;
+%anchor($A8AC32)
 Palette_Magdollite_Glow_2:
     dw $0014                                                             ;A8AC32;
+%anchor($A8AC34)
 Palette_Magdollite_Glow_3:
     dw $0010                                                             ;A8AC34;
     dw $0000,$0000,$0000
@@ -4486,6 +4831,7 @@ Palette_Magdollite_Glow_3:
     dw $3800,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000, $0014,$0010,$023F,$00BD, $0000,$0000,$0000
     dw $3800,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000, $0010,$023F,$00BD,$0014, $0000,$0000,$0000
 
+%anchor($A8AC9C)
 InstList_Magdollite_Idling_FacingLeft:
     dw $000D,Spritemap_Magdollite_FacingLeft_Head_0                      ;A8AC9C;
     dw $000D,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8ACA0;
@@ -4494,6 +4840,7 @@ InstList_Magdollite_Idling_FacingLeft:
     dw Instruction_CommonA8_GotoY                                        ;A8ACAC;
     dw InstList_Magdollite_Idling_FacingLeft                             ;A8ACAE;
 
+%anchor($A8ACB0)
 InstList_Magdollite_Slave2_ThrowFireballs_FacingLeft:
     dw Instruction_Magdollite_QueueSFXInY_Lib2_Max6_IfOnScreen           ;A8ACB0;
     dw $0061                                                             ;A8ACB2;
@@ -4513,6 +4860,7 @@ InstList_Magdollite_Slave2_ThrowFireballs_FacingLeft:
     dw Instruction_Magdollite_ResetWaitingFlag                           ;A8ACDA;
     dw Instruction_Common_Sleep                                          ;A8ACDC;
 
+%anchor($A8ACDE)
 InstList_Magdollite_SplashIntoLavaAndFormBasePillar_Left_0:
     dw Instruction_Magdollite_SetWaitingFlag                             ;A8ACDE;
     dw $0005,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8ACE0;
@@ -4526,6 +4874,7 @@ InstList_Magdollite_SplashIntoLavaAndFormBasePillar_Left_0:
     dw Instruction_Common_TimerInY                                       ;A8ACFA;
     dw $0018                                                             ;A8ACFC;
 
+%anchor($A8ACFE)
 InstList_Magdollite_SplashIntoLavaAndFormBasePillar_Left_1:
     dw Instruction_Magdollite_MoveBaseAndPillarUp1Pixel                  ;A8ACFE;
     dw $0001,Spritemap_Magdollite_FacingLeft_WidePillarSection           ;A8AD00;
@@ -4534,12 +4883,14 @@ InstList_Magdollite_SplashIntoLavaAndFormBasePillar_Left_1:
     dw Instruction_Magdollite_ResetWaitingFlag                           ;A8AD08;
     dw Instruction_Common_Sleep                                          ;A8AD0A;
 
+%anchor($A8AD0C)
 InstList_Magdollite_UnformBasePillar_SplashBackToIdle_Left_0:
     dw Instruction_Magdollite_SetWaitingFlag                             ;A8AD0C;
     dw Instruction_Magdollite_RestoreInitialYPositions                   ;A8AD0E;
     dw Instruction_Common_TimerInY                                       ;A8AD10;
     dw $0018                                                             ;A8AD12;
 
+%anchor($A8AD14)
 InstList_Magdollite_UnformBasePillar_SplashBackToIdle_Left_1:
     dw Instruction_Magdollite_MoveBaseAndPillarDown1Pixel                ;A8AD14;
     dw $0001,Spritemap_Magdollite_FacingLeft_WidePillarSection           ;A8AD16;
@@ -4556,6 +4907,7 @@ InstList_Magdollite_UnformBasePillar_SplashBackToIdle_Left_1:
     dw Instruction_Magdollite_ResetWaitingFlag                           ;A8AD38;
     dw Instruction_Common_Sleep                                          ;A8AD3A;
 
+%anchor($A8AD3C)
 InstList_Magdollite_Idling_FacingRight:
     dw $000D,Spritemap_Magdollite_FacingRight_Head_0                     ;A8AD3C;
     dw $000D,Spritemap_Magdollite_FacingRight_Head_1                     ;A8AD40;
@@ -4564,6 +4916,7 @@ InstList_Magdollite_Idling_FacingRight:
     dw Instruction_Common_GotoY                                          ;A8AD4C;
     dw InstList_Magdollite_Idling_FacingRight                            ;A8AD4E;
 
+%anchor($A8AD50)
 InstList_Magdollite_ThrowFireballs_FacingRight:
     dw Instruction_Magdollite_QueueSFXInY_Lib2_Max6_IfOnScreen           ;A8AD50;
     dw $0061                                                             ;A8AD52;
@@ -4583,6 +4936,7 @@ InstList_Magdollite_ThrowFireballs_FacingRight:
     dw Instruction_Magdollite_ResetWaitingFlag                           ;A8AD7A;
     dw Instruction_Common_Sleep                                          ;A8AD7C;
 
+%anchor($A8AD7E)
 InstList_Magdollite_SplashIntoLavaAndFormBasePillar_Right_0:
     dw Instruction_Magdollite_SetWaitingFlag                             ;A8AD7E;
     dw $0005,Spritemap_Magdollite_FacingRight_Head_1                     ;A8AD80;
@@ -4596,6 +4950,7 @@ InstList_Magdollite_SplashIntoLavaAndFormBasePillar_Right_0:
     dw Instruction_Common_TimerInY                                       ;A8AD9A;
     dw $0018                                                             ;A8AD9C;
 
+%anchor($A8AD9E)
 InstList_Magdollite_SplashIntoLavaAndFormBasePillar_Right_1:
     dw Instruction_Magdollite_MoveBaseAndPillarUp1Pixel                  ;A8AD9E;
     dw $0001,Spritemap_Magdollite_FacingRight_WidePillarSection          ;A8ADA0;
@@ -4604,12 +4959,14 @@ InstList_Magdollite_SplashIntoLavaAndFormBasePillar_Right_1:
     dw Instruction_Magdollite_ResetWaitingFlag                           ;A8ADA8;
     dw Instruction_Common_Sleep                                          ;A8ADAA;
 
+%anchor($A8ADAC)
 InstList_Magdollite_UnformBasePillar_SplashBackToIdle_Right_0:
     dw Instruction_Magdollite_SetWaitingFlag                             ;A8ADAC;
     dw Instruction_Magdollite_RestoreInitialYPositions                   ;A8ADAE;
     dw Instruction_Common_TimerInY                                       ;A8ADB0;
     dw $0018                                                             ;A8ADB2;
 
+%anchor($A8ADB4)
 InstList_Magdollite_UnformBasePillar_SplashBackToIdle_Right_1:
     dw Instruction_Magdollite_MoveBaseAndPillarDown1Pixel                ;A8ADB4;
     dw $0001,Spritemap_Magdollite_FacingRight_WidePillarSection          ;A8ADB6;
@@ -4626,43 +4983,53 @@ InstList_Magdollite_UnformBasePillar_SplashBackToIdle_Right_1:
     dw Instruction_Magdollite_ResetWaitingFlag                           ;A8ADD8;
     dw Instruction_Common_Sleep                                          ;A8ADDA;
 
+%anchor($A8ADDC)
 InstList_Magdollite_Slave1_NarrowPillar_FacingLeft:
     dw $0001,Spritemap_Magdollite_FacingLeft_NarrowPillarSection         ;A8ADDC;
     dw Instruction_Common_Sleep                                          ;A8ADE0;
 
+%anchor($A8ADE2)
 InstList_Magdollite_Slave1_NarrowPillar_FacingRight:
     dw $0001,Spritemap_Magdollite_FacingRight_NarrowPillarSection        ;A8ADE2;
     dw Instruction_Common_Sleep                                          ;A8ADE6;
 
+%anchor($A8ADE8)
 InstList_Magdollite_Slave1_3xPillarStack:
     dw $0001,Spritemap_Magdollite_NarrowPillarStacks_3x                  ;A8ADE8;
     dw Instruction_Common_Sleep                                          ;A8ADEC;
 
+%anchor($A8ADEE)
 InstList_Magdollite_Slave1_4xPillarStack:
     dw $0001,Spritemap_Magdollite_NarrowPillarStacks_4x                  ;A8ADEE;
     dw Instruction_Common_Sleep                                          ;A8ADF2;
 
+%anchor($A8ADF4)
 InstList_Magdollite_Slave1_5xPillarStack:
     dw $0001,Spritemap_Magdollite_NarrowPillarStacks_5x                  ;A8ADF4;
     dw Instruction_Common_Sleep                                          ;A8ADF8;
 
+%anchor($A8ADFA)
 InstList_Magdollite_Slave1_6xPillarStack:
     dw $0001,Spritemap_Magdollite_NarrowPillarStacks_6x                  ;A8ADFA;
     dw Instruction_Common_Sleep                                          ;A8ADFE;
 
+%anchor($A8AE00)
 InstList_Magdollite_Slave1_7xPillarStack:
     dw $0001,Spritemap_Magdollite_NarrowPillarStacks_7x                  ;A8AE00;
     dw Instruction_Common_Sleep                                          ;A8AE04;
 
+%anchor($A8AE06)
 InstList_Magdollite_Slave1_8xPillarStack:
     dw $0001,Spritemap_Magdollite_NarrowPillarStacks_8x                  ;A8AE06;
     dw Instruction_Common_Sleep                                          ;A8AE0A;
 
+%anchor($A8AE0C)
 InstList_Magdollite_Slave2_PillarCap:
     dw $0001,Spritemap_Magdollite_FacingLeft_PillarCap                   ;A8AE0C;
     dw Instruction_CommonA8_Sleep                                        ;A8AE10;
 
 
+%anchor($A8AE12)
 Instruction_Magdollite_QueueSFXInY_Lib2_Max6_IfOnScreen:
     PHX                                                                  ;A8AE12;
     PHY                                                                  ;A8AE13;
@@ -4679,6 +5046,7 @@ Instruction_Magdollite_QueueSFXInY_Lib2_Max6_IfOnScreen:
     RTL                                                                  ;A8AE25;
 
 
+%anchor($A8AE26)
 Instruction_Magdollite_MoveDown2Pixels:
     LDX.W $0E54                                                          ;A8AE26;
     INC.W $0F7E,X                                                        ;A8AE29;
@@ -4686,6 +5054,7 @@ Instruction_Magdollite_MoveDown2Pixels:
     RTL                                                                  ;A8AE2F;
 
 
+%anchor($A8AE30)
 Instruction_Magdollite_MoveUp2Pixels:
     LDX.W $0E54                                                          ;A8AE30;
     DEC.W $0F7E,X                                                        ;A8AE33;
@@ -4693,6 +5062,7 @@ Instruction_Magdollite_MoveUp2Pixels:
     RTL                                                                  ;A8AE39;
 
 
+%anchor($A8AE3A)
 Instruction_Magdollite_SetWaitingFlag:
     LDX.W $0E54                                                          ;A8AE3A;
     LDA.W #$0001                                                         ;A8AE3D;
@@ -4700,6 +5070,7 @@ Instruction_Magdollite_SetWaitingFlag:
     RTL                                                                  ;A8AE44;
 
 
+%anchor($A8AE45)
 Instruction_Magdollite_ResetWaitingFlag:
     LDX.W $0E54                                                          ;A8AE45;
     LDA.W #$0000                                                         ;A8AE48;
@@ -4707,6 +5078,7 @@ Instruction_Magdollite_ResetWaitingFlag:
     RTL                                                                  ;A8AE4F;
 
 
+%anchor($A8AE50)
 Instruction_Magdollite_MoveBaseAndPillarUp1Pixel:
     LDX.W $0E54                                                          ;A8AE50;
     DEC.W $0F7E,X                                                        ;A8AE53;
@@ -4714,6 +5086,7 @@ Instruction_Magdollite_MoveBaseAndPillarUp1Pixel:
     RTL                                                                  ;A8AE59;
 
 
+%anchor($A8AE5A)
 Instruction_Magdollite_MoveBaseAndPillarDown1Pixel:
     LDX.W $0E54                                                          ;A8AE5A;
     INC.W $0F7E,X                                                        ;A8AE5D;
@@ -4721,6 +5094,7 @@ Instruction_Magdollite_MoveBaseAndPillarDown1Pixel:
     RTL                                                                  ;A8AE63;
 
 
+%anchor($A8AE64)
 Instruction_Magdollite_MoveDownBy18Pixels_SetSlavesAsVisible:
     LDX.W $0E54                                                          ;A8AE64;
     LDA.L $7E7806,X                                                      ;A8AE67;
@@ -4737,6 +5111,7 @@ Instruction_Magdollite_MoveDownBy18Pixels_SetSlavesAsVisible:
     RTL                                                                  ;A8AE87;
 
 
+%anchor($A8AE88)
 Instruction_Magdollite_RestoreInitialYPositions:
     LDX.W $0E54                                                          ;A8AE88;
     LDA.L $7E7806,X                                                      ;A8AE8B;
@@ -4745,6 +5120,7 @@ Instruction_Magdollite_RestoreInitialYPositions:
     RTL                                                                  ;A8AE95;
 
 
+%anchor($A8AE96)
 Instruction_Magdollite_MoveDown4Pixels_SetSlavesAsInvisible:
     LDX.W $0E54                                                          ;A8AE96;
     LDA.L $7E7806,X                                                      ;A8AE99;
@@ -4761,6 +5137,7 @@ Instruction_Magdollite_MoveDown4Pixels_SetSlavesAsInvisible:
     RTL                                                                  ;A8AEB9;
 
 
+%anchor($A8AEBA)
 Instruction_Magdollite_SpawnLavaProjectile:
     PHY                                                                  ;A8AEBA;
     LDX.W $0E54                                                          ;A8AEBB;
@@ -4771,6 +5148,7 @@ Instruction_Magdollite_SpawnLavaProjectile:
     RTL                                                                  ;A8AEC9;
 
 
+%anchor($A8AECA)
 Instruction_Magdollite_ShiftRight8Pixels_Up4Pixels_FaceRight:
     LDX.W $0E54                                                          ;A8AECA;
     LDA.L $7E7824,X                                                      ;A8AECD;
@@ -4784,6 +5162,7 @@ Instruction_Magdollite_ShiftRight8Pixels_Up4Pixels_FaceRight:
     RTL                                                                  ;A8AEE3;
 
 
+%anchor($A8AEE4)
 Instruction_Magdollite_ShiftLeft8Pixels_Up4Pixels_FacingLeft:
     LDX.W $0E54                                                          ;A8AEE4;
     LDA.L $7E7824,X                                                      ;A8AEE7;
@@ -4797,6 +5176,7 @@ Instruction_Magdollite_ShiftLeft8Pixels_Up4Pixels_FacingLeft:
     RTL                                                                  ;A8AEFD;
 
 
+%anchor($A8AEFE)
 Instruction_Magdollite_ShiftRight8Pixels_Up4Pixels_Right_dup:
     LDX.W $0E54                                                          ;A8AEFE;
     LDA.L $7E7824,X                                                      ;A8AF01;
@@ -4810,6 +5190,7 @@ Instruction_Magdollite_ShiftRight8Pixels_Up4Pixels_Right_dup:
     RTL                                                                  ;A8AF17;
 
 
+%anchor($A8AF18)
 Instruction_Magdollite_ShiftLeft8Pixels_Up4Pixels_Left_dup:
     LDX.W $0E54                                                          ;A8AF18;
     LDA.L $7E7824,X                                                      ;A8AF1B;
@@ -4824,6 +5205,7 @@ Instruction_Magdollite_ShiftLeft8Pixels_Up4Pixels_Left_dup:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A8AF32)
 UNUSED_Magdollite_RestoreXYPositions_A8AF32:
     LDX.W $0E54                                                          ;A8AF32;
     LDA.L $7E7824,X                                                      ;A8AF35;
@@ -4834,6 +5216,7 @@ UNUSED_Magdollite_RestoreXYPositions_A8AF32:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+%anchor($A8AF44)
 Instruction_Magdollite_SetCooldownTimerTo100:
     LDX.W $0E54                                                          ;A8AF44;
     LDA.W #$0100                                                         ;A8AF47;
@@ -4841,16 +5224,19 @@ Instruction_Magdollite_SetCooldownTimerTo100:
     RTL                                                                  ;A8AF4E;
 
 
+%anchor($A8AF4F)
 InitAIFunctionPointers:
     dw Function_Magdollite_Init_Master                                   ;A8AF4F;
     dw Function_Magdollite_Init_Slave1                                   ;A8AF51;
     dw Function_Magdollite_Init_Slave2                                   ;A8AF53;
 
+%anchor($A8AF55)
 MagdolliteArmHeightThreshold:
 ; Indexed by [enemy $0FAA]. First entry is unused
     dw $0000,$0010,$0020,$0030,$0040,$0050,$0060,$0070                   ;A8AF55;
     dw $0080                                                             ;A8AF65;
 
+%anchor($A8AF67)
 MagdolliteSlave1InstListPointers:
     dw InstList_Magdollite_Slave1_NarrowPillar_FacingLeft                ;A8AF67;
     dw InstList_Magdollite_Slave1_NarrowPillar_FacingLeft                ;A8AF69;
@@ -4862,11 +5248,13 @@ MagdolliteSlave1InstListPointers:
     dw InstList_Magdollite_Slave1_7xPillarStack                          ;A8AF75;
     dw InstList_Magdollite_Slave1_8xPillarStack                          ;A8AF77;
 
+%anchor($A8AF79)
 MagdolliteYOffsetAimingAtSamus:
 ; Hand Y offset
     dw $000C,$000C,$0014,$001C,$0024,$002C,$0034,$003C                   ;A8AF79;
     dw $0044                                                             ;A8AF89;
 
+%anchor($A8AF8B)
 InitAI_Magdollite:
     LDX.W $0E54                                                          ;A8AF8B;
     LDA.W $0FB4,X                                                        ;A8AF8E;
@@ -4878,6 +5266,7 @@ InitAI_Magdollite:
     RTL                                                                  ;A8AF9C;
 
 
+%anchor($A8AF9D)
 Function_Magdollite_Init_Master:
     LDX.W $0E54                                                          ;A8AF9D;
     LDA.W #$0000                                                         ;A8AFA0;
@@ -4907,6 +5296,7 @@ Function_Magdollite_Init_Master:
     RTS                                                                  ;A8AFE1;
 
 
+%anchor($A8AFE2)
 Function_Magdollite_Init_Slave1:
     LDX.W $0E54                                                          ;A8AFE2;
     LDA.W $0F7E,X                                                        ;A8AFE5;
@@ -4931,6 +5321,7 @@ Function_Magdollite_Init_Slave1:
     RTS                                                                  ;A8B01F;
 
 
+%anchor($A8B020)
 Function_Magdollite_Init_Slave2:
     LDX.W $0E54                                                          ;A8B020;
     LDA.W $0F7E,X                                                        ;A8B023;
@@ -4955,6 +5346,7 @@ Function_Magdollite_Init_Slave2:
     RTS                                                                  ;A8B05D;
 
 
+%anchor($A8B05E)
 GetMagdolliteSpeeds:
     LDX.W $0E54                                                          ;A8B05E;
     LDA.W $0FB7,X                                                        ;A8B061;
@@ -4974,6 +5366,7 @@ GetMagdolliteSpeeds:
     RTS                                                                  ;A8B087;
 
 
+%anchor($A8B088)
 SetMagdolliteGraphicsDrawnHook:
     LDA.W #EnemyGraphicsDrawnHook_Magdollite_PeriodicallyCyclePalettes   ;A8B088;
     STA.W $178C                                                          ;A8B08B;
@@ -4995,6 +5388,7 @@ SetMagdolliteGraphicsDrawnHook:
     RTS                                                                  ;A8B0B1;
 
 
+%anchor($A8B0B2)
 EnemyGraphicsDrawnHook_Magdollite_PeriodicallyCyclePalettes:
     LDA.W $0797                                                          ;A8B0B2;
     BNE .return                                                          ;A8B0B5;
@@ -5038,6 +5432,7 @@ EnemyGraphicsDrawnHook_Magdollite_PeriodicallyCyclePalettes:
     RTL                                                                  ;A8B109;
 
 
+%anchor($A8B10A)
 MainAI_Magdollite:
     LDX.W $0E54                                                          ;A8B10A;
     LDA.L $7E7808,X                                                      ;A8B10D;
@@ -5047,6 +5442,7 @@ MainAI_Magdollite:
     RTL                                                                  ;A8B119;
 
 
+%anchor($A8B11A)
 Function_Magdollite_WaitForSamusToGetNear:
     LDX.W $0E54                                                          ;A8B11A;
     LDA.W #$0000                                                         ;A8B11D;
@@ -5086,6 +5482,7 @@ Function_Magdollite_WaitForSamusToGetNear:
     RTS                                                                  ;A8B174;
 
 
+%anchor($A8B175)
 Function_Magdollite_WaitUntilBasePillarFormed:
     LDX.W $0E54                                                          ;A8B175;
     LDA.L $7E7802,X                                                      ;A8B178;
@@ -5101,6 +5498,7 @@ Function_Magdollite_WaitUntilBasePillarFormed:
     RTS                                                                  ;A8B192;
 
 
+%anchor($A8B193)
 Function_Magdollite_WaitForOtherPartsToFinish:
     LDX.W $0E54                                                          ;A8B193;
     LDA.L $7E7804,X                                                      ;A8B196;
@@ -5121,6 +5519,7 @@ Function_Magdollite_WaitForOtherPartsToFinish:
     RTS                                                                  ;A8B1B7;
 
 
+%anchor($A8B1B8)
 Function_Magdollite_UnformBasePillarBackToHeadIdling:
     LDX.W $0E54                                                          ;A8B1B8;
     LDA.L $7E7802,X                                                      ;A8B1BB;
@@ -5141,6 +5540,7 @@ Function_Magdollite_UnformBasePillarBackToHeadIdling:
     RTS                                                                  ;A8B1DC;
 
 
+%anchor($A8B1DD)
 Function_Magdollite_Slave1_WaitForAttackToBeTriggered:
     LDX.W $0E54                                                          ;A8B1DD;
     LDA.L $7E781A,X                                                      ;A8B1E0;
@@ -5159,6 +5559,7 @@ Function_Magdollite_Slave1_WaitForAttackToBeTriggered:
     RTS                                                                  ;A8B203;
 
 
+%anchor($A8B204)
 Function_Magdollite_Slave1_HandlePillarGrowth:
     LDX.W $0E54                                                          ;A8B204;
     CLC                                                                  ;A8B207;
@@ -5179,6 +5580,7 @@ Function_Magdollite_Slave1_HandlePillarGrowth:
     RTS                                                                  ;A8B22F;
 
 
+%anchor($A8B230)
 Function_Magdollite_Slave1_AddPillarStacksToReachSamusHeight:
     LDA.W $0FB0,X                                                        ;A8B230;
     EOR.W #$FFFF                                                         ;A8B233;
@@ -5228,11 +5630,13 @@ Function_Magdollite_Slave1_AddPillarStacksToReachSamusHeight:
     RTS                                                                  ;A8B290;
 
 
+%anchor($A8B291)
 Function_Magdollite_Slave1_GetEnemyIndex:
     LDX.W $0E54                                                          ;A8B291;
     RTS                                                                  ;A8B294;
 
 
+%anchor($A8B295)
 Function_Magdollite_Slave1_HandlePillarShrinking:
     LDX.W $0E54                                                          ;A8B295;
     LDA.W $0F7E,X                                                        ;A8B298;
@@ -5255,6 +5659,7 @@ Function_Magdollite_Slave1_HandlePillarShrinking:
     RTS                                                                  ;A8B2C4;
 
 
+%anchor($A8B2C5)
 RemoveMagdollitePillarStacksUntilBackToBaseHeight:
     LDY.W $0FAA,X                                                        ;A8B2C5;
     DEY                                                                  ;A8B2C8;
@@ -5294,6 +5699,7 @@ RemoveMagdollitePillarStacksUntilBackToBaseHeight:
     RTS                                                                  ;A8B30C;
 
 
+%anchor($A8B30D)
 Function_Magdollite_Slave2_Idling_WaitingForTrigger:
     LDX.W $0E54                                                          ;A8B30D;
     LDA.W $0F32,X                                                        ;A8B310;
@@ -5306,6 +5712,7 @@ Function_Magdollite_Slave2_Idling_WaitingForTrigger:
     RTS                                                                  ;A8B31E;
 
 
+%anchor($A8B31F)
 Function_Magdollite_Slave2_SetSlave1ToShrinkAfterFireballs:
     LDX.W $0E54                                                          ;A8B31F;
     LDA.L $7E7802,X                                                      ;A8B322;
@@ -5329,6 +5736,7 @@ Function_Magdollite_Slave2_SetSlave1ToShrinkAfterFireballs:
     RTS                                                                  ;A8B355;
 
 
+%anchor($A8B356)
 Function_Magdollite_Slave2_SetToThrowFireballsAfterGrowing:
     LDX.W $0E54                                                          ;A8B356;
     LDA.L $7E77D8,X                                                      ;A8B359;
@@ -5367,6 +5775,7 @@ Function_Magdollite_Slave2_SetToThrowFireballsAfterGrowing:
     RTS                                                                  ;A8B3A6;
 
 
+%anchor($A8B3A7)
 Function_Magdollite_Slave2_GoBackToIdlingAfterPillarShrinks:
     LDX.W $0E54                                                          ;A8B3A7;
     LDA.W $0F32,X                                                        ;A8B3AA;
@@ -5389,6 +5798,7 @@ Function_Magdollite_Slave2_GoBackToIdlingAfterPillarShrinks:
     RTS                                                                  ;A8B3CA;
 
 
+%anchor($A8B3CB)
 SetMagdolliteYRadius:
     LDA.W $0EFE,X                                                        ;A8B3CB;
     SEC                                                                  ;A8B3CE;
@@ -5405,6 +5815,7 @@ SetMagdolliteYRadius:
     RTS                                                                  ;A8B3E4;
 
 
+%anchor($A8B3E5)
 CheckIfMagdolliteInstListChanged:
     LDX.W $0E54                                                          ;A8B3E5;
     LDA.W $0FAE,X                                                        ;A8B3E8;
@@ -5420,19 +5831,23 @@ CheckIfMagdolliteInstListChanged:
     RTS                                                                  ;A8B3FF;
 
 
+%anchor($A8B400)
 PowerBombReaction_Magdollite:
     JSL.L CommonA8_NormalEnemyPowerBombAI                                ;A8B400;
     BRA ContactReaction_Magdollite_Common                                ;A8B404;
 
 
+%anchor($A8B406)
 EnemyTouch_Magdollite:
     JSL.L CommonA8_NormalEnemyTouchAI                                    ;A8B406;
     BRA ContactReaction_Magdollite_Common                                ;A8B40A;
 
 
+%anchor($A8B40C)
 EnemyShot_Magdollite:
     JSL.L NormalEnemyShotAI                                              ;A8B40C;
 
+%anchor($A8B410)
 ContactReaction_Magdollite_Common:
     LDX.W $0E54                                                          ;A8B410;
     LDA.W $0F8C,X                                                        ;A8B413;
@@ -5460,157 +5875,185 @@ ContactReaction_Magdollite_Common:
     RTL                                                                  ;A8B447;
 
 
+%anchor($A8B448)
 Spritemap_Magdollite_FacingLeft_Head_0:
     dw $0003                                                             ;A8B448;
     %spritemapEntry(0, $04, $FF, 0, 0, 2, 0, $123)
     %spritemapEntry(0, $04, $F7, 0, 0, 2, 0, $122)
     %spritemapEntry(1, $1F4, $F7, 0, 0, 2, 0, $10A)
 
+%anchor($A8B459)
 Spritemap_Magdollite_FacingLeft_Head_1:
     dw $0003                                                             ;A8B459;
     %spritemapEntry(0, $04, $00, 0, 0, 2, 0, $123)
     %spritemapEntry(0, $04, $F8, 0, 0, 2, 0, $122)
     %spritemapEntry(1, $1F4, $F8, 0, 0, 2, 0, $10A)
 
+%anchor($A8B46A)
 Spritemap_Magdollite_FacingLeft_Head_2:
     dw $0003                                                             ;A8B46A;
     %spritemapEntry(0, $04, $01, 0, 0, 2, 0, $123)
     %spritemapEntry(0, $04, $F9, 0, 0, 2, 0, $122)
     %spritemapEntry(1, $1F4, $F9, 0, 0, 2, 0, $10A)
 
+%anchor($A8B47B)
 Spritemap_Magdollite_FacingLeft_Fist_0:
     dw $0003                                                             ;A8B47B;
     %spritemapEntry(0, $00, $04, 0, 0, 2, 0, $121)
     %spritemapEntry(0, $1F8, $04, 0, 0, 2, 0, $120)
     %spritemapEntry(1, $1F8, $F4, 0, 0, 2, 0, $108)
 
+%anchor($A8B48C)
 Spritemap_Magdollite_FacingLeft_Fist_1:
     dw $0003                                                             ;A8B48C;
     %spritemapEntry(0, $1FD, $04, 0, 0, 2, 0, $121)
     %spritemapEntry(0, $1F5, $04, 0, 0, 2, 0, $120)
     %spritemapEntry(1, $1F9, $F5, 0, 0, 2, 0, $108)
 
+%anchor($A8B49D)
 Spritemap_Magdollite_FacingLeft_Hand_FingersStraight:
     dw $0002                                                             ;A8B49D;
     %spritemapEntry(1, $00, $FC, 0, 0, 2, 0, $106)
     %spritemapEntry(1, $1F0, $F9, 0, 0, 2, 0, $104)
 
+%anchor($A8B4A9)
 Spritemap_Magdollite_FacingLeft_Hand_FingersCurled:
     dw $0002                                                             ;A8B4A9;
     %spritemapEntry(1, $00, $F8, 0, 0, 2, 0, $102)
     %spritemapEntry(1, $1F0, $F8, 0, 0, 2, 0, $100)
 
+%anchor($A8B4B5)
 Spritemap_Magdollite_FacingLeft_PillarCap:
     dw $0002                                                             ;A8B4B5;
     %spritemapEntry(0, $00, $FC, 0, 0, 2, 0, $125)
     %spritemapEntry(0, $1F8, $FC, 0, 0, 2, 0, $124)
 
+%anchor($A8B4C1)
 Spritemap_Magdollite_FacingLeft_WidePillarSection:
     dw $0001                                                             ;A8B4C1;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10E)
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A8B4C8)
 UNUSED_Spritemap_Magdollite_Blank_A8B4C8:
     dw $0001                                                             ;A8B4C8;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10C)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+%anchor($A8B4CF)
 Spritemap_Magdollite_FacingLeft_Head_PokingOutOfLava:
     dw $0003                                                             ;A8B4CF;
     %spritemapEntry(0, $04, $FC, 0, 0, 2, 0, $128)
     %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 0, $127)
     %spritemapEntry(0, $1F4, $FC, 0, 0, 2, 0, $126)
 
+%anchor($A8B4E0)
 Spritemap_Magdollite_FacingLeft_Head_BarelyPokingOutOfLava:
     dw $0003                                                             ;A8B4E0;
     %spritemapEntry(0, $04, $FC, 0, 0, 2, 0, $12B)
     %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 0, $12A)
     %spritemapEntry(0, $1F4, $FC, 0, 0, 2, 0, $129)
 
+%anchor($A8B4F1)
 Spritemap_Magdollite_FacingRight_Head_0:
     dw $0003                                                             ;A8B4F1;
     %spritemapEntry(0, $1F4, $FF, 0, 1, 2, 0, $123)
     %spritemapEntry(0, $1F4, $F7, 0, 1, 2, 0, $122)
     %spritemapEntry(1, $1FC, $F7, 0, 1, 2, 0, $10A)
 
+%anchor($A8B502)
 Spritemap_Magdollite_FacingRight_Head_1:
     dw $0003                                                             ;A8B502;
     %spritemapEntry(0, $1F4, $00, 0, 1, 2, 0, $123)
     %spritemapEntry(0, $1F4, $F8, 0, 1, 2, 0, $122)
     %spritemapEntry(1, $1FC, $F8, 0, 1, 2, 0, $10A)
 
+%anchor($A8B513)
 Spritemap_Magdollite_FacingRight_Head_2:
     dw $0003                                                             ;A8B513;
     %spritemapEntry(0, $1F4, $01, 0, 1, 2, 0, $123)
     %spritemapEntry(0, $1F4, $F9, 0, 1, 2, 0, $122)
     %spritemapEntry(1, $1FC, $F9, 0, 1, 2, 0, $10A)
 
+%anchor($A8B524)
 Spritemap_Magdollite_FacingRight_Fist_0:
     dw $0003                                                             ;A8B524;
     %spritemapEntry(0, $1F8, $04, 0, 1, 2, 0, $121)
     %spritemapEntry(0, $00, $04, 0, 1, 2, 0, $120)
     %spritemapEntry(1, $1F8, $F4, 0, 1, 2, 0, $108)
 
+%anchor($A8B535)
 Spritemap_Magdollite_FacingRight_Fist_1:
     dw $0003                                                             ;A8B535;
     %spritemapEntry(0, $1FB, $04, 0, 1, 2, 0, $121)
     %spritemapEntry(0, $03, $04, 0, 1, 2, 0, $120)
     %spritemapEntry(1, $1F7, $F5, 0, 1, 2, 0, $108)
 
+%anchor($A8B546)
 Spritemap_Magdollite_FacingRight_Hand_FingersStraight:
     dw $0002                                                             ;A8B546;
     %spritemapEntry(1, $1F0, $FC, 0, 1, 2, 0, $106)
     %spritemapEntry(1, $00, $F9, 0, 1, 2, 0, $104)
 
+%anchor($A8B552)
 Spritemap_Magdollite_FacingRight_Hand_FingersCurled:
     dw $0002                                                             ;A8B552;
     %spritemapEntry(1, $1F0, $F8, 0, 1, 2, 0, $102)
     %spritemapEntry(1, $00, $F8, 0, 1, 2, 0, $100)
 
 if  !FEATURE_KEEP_UNREFERENCED
+%anchor($A8B55E)
 UNUSED_Spritemap_Magdollite_FacingRight_PillarCap_A8B55E:
     dw $0002                                                             ;A8B55E;
     %spritemapEntry(0, $1F8, $FC, 0, 1, 2, 0, $125)
     %spritemapEntry(0, $00, $FC, 0, 1, 2, 0, $124)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+%anchor($A8B56A)
 Spritemap_Magdollite_FacingRight_WidePillarSection:
     dw $0001                                                             ;A8B56A;
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10E)
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A8B571)
 UNUSED_Spritemap_Magdollite_FacingRight_NarrowPillar_A8B571:
     dw $0001                                                             ;A8B571;
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10C)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+%anchor($A8B578)
 Spritemap_Magdollite_FacingRight_Head_PokingOutOfLava:
     dw $0003                                                             ;A8B578;
     %spritemapEntry(0, $1F4, $FC, 0, 1, 2, 0, $128)
     %spritemapEntry(0, $1FC, $FC, 0, 1, 2, 0, $127)
     %spritemapEntry(0, $04, $FC, 0, 1, 2, 0, $126)
 
+%anchor($A8B589)
 Spritemap_Magdollite_FacingRight_Head_BarelyPokingOutOfLava:
     dw $0003                                                             ;A8B589;
     %spritemapEntry(0, $1F4, $FC, 0, 1, 2, 0, $12B)
     %spritemapEntry(0, $1FC, $FC, 0, 1, 2, 0, $12A)
     %spritemapEntry(0, $04, $FC, 0, 1, 2, 0, $129)
 
+%anchor($A8B59A)
 Spritemap_Magdollite_FacingLeft_NarrowPillarSection:
     dw $0001                                                             ;A8B59A;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10C)
 
+%anchor($A8B5A1)
 Spritemap_Magdollite_FacingRight_NarrowPillarSection:
     dw $0002                                                             ;A8B5A1;
     %spritemapEntry(1, $1F8, $00, 0, 0, 2, 0, $10C)
     %spritemapEntry(1, $1F8, $F0, 0, 0, 2, 0, $10C)
 
+%anchor($A8B5AD)
 Spritemap_Magdollite_NarrowPillarStacks_3x:
     dw $0003                                                             ;A8B5AD;
     %spritemapEntry(1, $1F8, $08, 0, 0, 2, 0, $10C)
     %spritemapEntry(1, $1F8, $E8, 0, 0, 2, 0, $10C)
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10C)
 
+%anchor($A8B5BE)
 Spritemap_Magdollite_NarrowPillarStacks_4x:
     dw $0004                                                             ;A8B5BE;
     %spritemapEntry(1, $1F8, $10, 0, 0, 2, 0, $10C)
@@ -5618,6 +6061,7 @@ Spritemap_Magdollite_NarrowPillarStacks_4x:
     %spritemapEntry(1, $1F8, $F0, 0, 0, 2, 0, $10C)
     %spritemapEntry(1, $1F8, $E0, 0, 0, 2, 0, $10C)
 
+%anchor($A8B5D4)
 Spritemap_Magdollite_NarrowPillarStacks_5x:
     dw $0005                                                             ;A8B5D4;
     %spritemapEntry(1, $1F8, $18, 0, 0, 2, 0, $10C)
@@ -5626,6 +6070,7 @@ Spritemap_Magdollite_NarrowPillarStacks_5x:
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10C)
     %spritemapEntry(1, $1F8, $E8, 0, 0, 2, 0, $10C)
 
+%anchor($A8B5EF)
 Spritemap_Magdollite_NarrowPillarStacks_6x:
     dw $0006                                                             ;A8B5EF;
     %spritemapEntry(1, $1F8, $10, 0, 0, 2, 0, $10C)
@@ -5635,6 +6080,7 @@ Spritemap_Magdollite_NarrowPillarStacks_6x:
     %spritemapEntry(1, $1F8, $E0, 0, 0, 2, 0, $10C)
     %spritemapEntry(1, $1F8, $D0, 0, 0, 2, 0, $10C)
 
+%anchor($A8B60F)
 Spritemap_Magdollite_NarrowPillarStacks_7x:
     dw $0007                                                             ;A8B60F;
     %spritemapEntry(1, $1F8, $28, 0, 0, 2, 0, $10C)
@@ -5645,6 +6091,7 @@ Spritemap_Magdollite_NarrowPillarStacks_7x:
     %spritemapEntry(1, $1F8, $D8, 0, 0, 2, 0, $10C)
     %spritemapEntry(1, $1F8, $C8, 0, 0, 2, 0, $10C)
 
+%anchor($A8B634)
 Spritemap_Magdollite_NarrowPillarStacks_8x:
     dw $0008                                                             ;A8B634;
     %spritemapEntry(1, $1F8, $30, 0, 0, 2, 0, $10C)
@@ -5657,20 +6104,24 @@ Spritemap_Magdollite_NarrowPillarStacks_8x:
     %spritemapEntry(1, $1F8, $C0, 0, 0, 2, 0, $10C)
 
 
+%anchor($A8B65E)
 Palette_Beetom:
     dw $3800,$57FF,$42F7,$158C,$00A5,$4F5A,$36B5,$2610                   ;A8B65E;
     dw $1DCE,$1CDF,$4FE0,$3B20,$2A20,$1097,$6BDF,$042E                   ;A8B66E;
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A8B67E)
 UNUSED_BeetomEyeColors_A8B67E:
 ; Colours Ah..Ch
     dw $4FE0,$3B20,$2A20,$3BE0,$2680,$1580,$2740,$11E0                   ;A8B67E;
     dw $00E0,$12A0,$0140,$0040                                           ;A8B68E;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+%anchor($A8B696)
 InstList_Beetom_Crawling_FacingLeft_0:
     dw Instruction_Common_DisableOffScreenProcessing                     ;A8B696;
 
+%anchor($A8B698)
 InstList_Beetom_Crawling_FacingLeft_1:
     dw $000A,Spritemap_Beetom_0                                          ;A8B698;
     dw $000A,Spritemap_Beetom_1                                          ;A8B69C;
@@ -5679,6 +6130,7 @@ InstList_Beetom_Crawling_FacingLeft_1:
     dw Instruction_Common_GotoY                                          ;A8B6A8;
     dw InstList_Beetom_Crawling_FacingLeft_1                             ;A8B6AA;
 
+%anchor($A8B6AC)
 InstList_Beetom_Hop_FacingLeft:
     dw Instruction_Common_EnableOffScreenProcessing                      ;A8B6AC;
     dw $0004,Spritemap_Beetom_3                                          ;A8B6AE;
@@ -5688,6 +6140,7 @@ InstList_Beetom_Hop_FacingLeft:
     dw Instruction_Common_Sleep                                          ;A8B6BE;
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A8B6C0)
 UNUSED_InstList_Beetom_SmallHop_FacingLeft_A8B6C0:
     dw Instruction_Common_EnableOffScreenProcessing                      ;A8B6C0;
     dw $0004,Spritemap_Beetom_3                                          ;A8B6C2;
@@ -5695,6 +6148,7 @@ UNUSED_InstList_Beetom_SmallHop_FacingLeft_A8B6C0:
     dw Instruction_Common_Sleep                                          ;A8B6CA;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+%anchor($A8B6CC)
 InstList_Beetom_DrainingSamus_FacingLeft_0:
     dw $0005,Spritemap_Beetom_5                                          ;A8B6CC;
     dw $0005,Spritemap_Beetom_6                                          ;A8B6D0;
@@ -5702,6 +6156,7 @@ InstList_Beetom_DrainingSamus_FacingLeft_0:
     dw $0030,Spritemap_Beetom_6                                          ;A8B6D8;
     dw Instruction_Beetom_Nothing                                        ;A8B6DC;
 
+%anchor($A8B6DE)
 InstList_Beetom_DrainingSamus_FacingLeft_1:
     dw $0005,Spritemap_Beetom_8                                          ;A8B6DE;
     dw $0005,Spritemap_Beetom_9                                          ;A8B6E2;
@@ -5710,9 +6165,11 @@ InstList_Beetom_DrainingSamus_FacingLeft_1:
     dw Instruction_Common_GotoY                                          ;A8B6EE;
     dw InstList_Beetom_DrainingSamus_FacingLeft_1                        ;A8B6F0;
 
+%anchor($A8B6F2)
 InstList_Beetom_Crawling_FacingRight_0:
     dw Instruction_Common_DisableOffScreenProcessing                     ;A8B6F2;
 
+%anchor($A8B6F4)
 InstList_Beetom_Crawling_FacingRight_1:
     dw $000A,Spritemap_Beetom_B                                          ;A8B6F4;
     dw $000A,Spritemap_Beetom_C                                          ;A8B6F8;
@@ -5721,6 +6178,7 @@ InstList_Beetom_Crawling_FacingRight_1:
     dw Instruction_Common_GotoY                                          ;A8B704;
     dw InstList_Beetom_Crawling_FacingRight_1                            ;A8B706;
 
+%anchor($A8B708)
 InstList_Beetom_Hop_FacingRight:
     dw Instruction_Common_EnableOffScreenProcessing                      ;A8B708;
     dw $0004,Spritemap_Beetom_E                                          ;A8B70A;
@@ -5730,6 +6188,7 @@ InstList_Beetom_Hop_FacingRight:
     dw Instruction_Common_Sleep                                          ;A8B71A;
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A8B71C)
 UNUSED_InstList_Beetom_SmallHop_FacingRight_A8B71C:
     dw Instruction_Common_EnableOffScreenProcessing                      ;A8B71C;
     dw $0004,Spritemap_Beetom_E                                          ;A8B71E;
@@ -5737,6 +6196,7 @@ UNUSED_InstList_Beetom_SmallHop_FacingRight_A8B71C:
     dw Instruction_CommonA8_Sleep                                        ;A8B726;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+%anchor($A8B728)
 InstList_Beetom_DrainingSamus_FacingRight_0:
     dw $0005,Spritemap_Beetom_10                                         ;A8B728;
     dw $0005,Spritemap_Beetom_11                                         ;A8B72C;
@@ -5744,6 +6204,7 @@ InstList_Beetom_DrainingSamus_FacingRight_0:
     dw $0030,Spritemap_Beetom_11                                         ;A8B734;
     dw Instruction_Beetom_Nothing                                        ;A8B738;
 
+%anchor($A8B73A)
 InstList_Beetom_DrainingSamus_FacingRight_1:
     dw $0005,Spritemap_Beetom_13                                         ;A8B73A;
     dw $0005,Spritemap_Beetom_14                                         ;A8B73E;
@@ -5752,6 +6213,7 @@ InstList_Beetom_DrainingSamus_FacingRight_1:
     dw Instruction_Common_GotoY                                          ;A8B74A;
     dw InstList_Beetom_DrainingSamus_FacingRight_1                       ;A8B74C;
 
+%anchor($A8B74E)
 SamusNotInProximityBeetomFunctionPointers:
     dw Function_Beetom_StartIdling                                       ;A8B74E; Facing left
     dw Function_Beetom_StartIdling                                       ;A8B750; Facing right
@@ -5762,11 +6224,13 @@ SamusNotInProximityBeetomFunctionPointers:
     dw Function_Beetom_StartLongHopLeft                                  ;A8B75A; Facing left
     dw Function_Beetom_StartLongHopRight                                 ;A8B75C; Facing right
 
+%anchor($A8B75E)
 Instruction_Beetom_Nothing:
     LDX.W $0E54                                                          ;A8B75E;
     RTL                                                                  ;A8B761;
 
 
+%anchor($A8B762)
 SetBeetomInstList:
     LDX.W $0E54                                                          ;A8B762;
     LDA.L $7E7800,X                                                      ;A8B765;
@@ -5777,6 +6241,7 @@ SetBeetomInstList:
     RTS                                                                  ;A8B775;
 
 
+%anchor($A8B776)
 InitAI_Beetom:
     LDX.W $0E54                                                          ;A8B776;
     LDA.W #$0000                                                         ;A8B779;
@@ -5823,6 +6288,7 @@ InitAI_Beetom:
     RTL                                                                  ;A8B7EE;
 
 
+%anchor($A8B7EF)
 Beetom_CalculateInitialHopSpeed:
     STZ.B $12                                                            ;A8B7EF;
     STZ.B $14                                                            ;A8B7F1;
@@ -5846,12 +6312,14 @@ Beetom_CalculateInitialHopSpeed:
     RTS                                                                  ;A8B80C;
 
 
+%anchor($A8B80D)
 MainAI_Beetom:
     LDX.W $0E54                                                          ;A8B80D;
     JSR.W ($0FAC,X)                                                      ;A8B810;
     RTL                                                                  ;A8B813;
 
 
+%anchor($A8B814)
 Function_Beetom_DecideAction:
     LDX.W $0E54                                                          ;A8B814;
     LDA.W #$0060                                                         ;A8B817;
@@ -5870,6 +6338,7 @@ Function_Beetom_DecideAction:
     RTS                                                                  ;A8B82E;
 
 
+%anchor($A8B82F)
 Function_Beetom_DecideAction_SamusNotInProximity:
     LDX.W $0E54                                                          ;A8B82F;
     JSL.L GenerateRandomNumber                                           ;A8B832;
@@ -5885,6 +6354,7 @@ Function_Beetom_DecideAction_SamusNotInProximity:
     RTS                                                                  ;A8B84E;
 
 
+%anchor($A8B84F)
 Function_Beetom_StartIdling:
     LDX.W $0E54                                                          ;A8B84F;
     LDA.W #$0020                                                         ;A8B852;
@@ -5894,6 +6364,7 @@ Function_Beetom_StartIdling:
     RTS                                                                  ;A8B85E;
 
 
+%anchor($A8B85F)
 Function_Beetom_StartCrawlingLeft:
     LDX.W $0E54                                                          ;A8B85F;
     LDA.W #Function_Beetom_CrawlingLeft                                  ;A8B862;
@@ -5904,6 +6375,7 @@ Function_Beetom_StartCrawlingLeft:
     RTS                                                                  ;A8B872;
 
 
+%anchor($A8B873)
 Function_Beetom_StartCrawlingRight:
     LDX.W $0E54                                                          ;A8B873;
     LDA.W #Function_Beetom_CrawlingRight                                 ;A8B876;
@@ -5914,6 +6386,7 @@ Function_Beetom_StartCrawlingRight:
     RTS                                                                  ;A8B886;
 
 
+%anchor($A8B887)
 Function_Beetom_StartShortHopRight:
     LDX.W $0E54                                                          ;A8B887;
     LDA.L $7E7804,X                                                      ;A8B88A;
@@ -5928,6 +6401,7 @@ Function_Beetom_StartShortHopRight:
     RTS                                                                  ;A8B8A8;
 
 
+%anchor($A8B8A9)
 Function_Beetom_StartShortHopLeft:
     LDX.W $0E54                                                          ;A8B8A9;
     LDA.L $7E7804,X                                                      ;A8B8AC;
@@ -5942,6 +6416,7 @@ Function_Beetom_StartShortHopLeft:
     RTS                                                                  ;A8B8CA;
 
 
+%anchor($A8B8CB)
 Function_Beetom_StartLongHopLeft:
     LDX.W $0E54                                                          ;A8B8CB;
     LDA.L $7E7806,X                                                      ;A8B8CE;
@@ -5956,6 +6431,7 @@ Function_Beetom_StartLongHopLeft:
     RTS                                                                  ;A8B8EC;
 
 
+%anchor($A8B8ED)
 Function_Beetom_StartLongHopRight:
     LDX.W $0E54                                                          ;A8B8ED;
     LDA.L $7E7806,X                                                      ;A8B8F0;
@@ -5970,6 +6446,7 @@ Function_Beetom_StartLongHopRight:
     RTS                                                                  ;A8B90E;
 
 
+%anchor($A8B90F)
 Function_Beetom_DecideAction_SamusInProximity:
     LDX.W $0E54                                                          ;A8B90F;
     LDA.L $7E7808,X                                                      ;A8B912;
@@ -5996,6 +6473,7 @@ Function_Beetom_DecideAction_SamusInProximity:
     RTS                                                                  ;A8B951;
 
 
+%anchor($A8B952)
 Function_Beetom_StartDrainingSamus_FacingLeft:
     LDX.W $0E54                                                          ;A8B952;
     LDA.W #InstList_Beetom_DrainingSamus_FacingLeft_0                    ;A8B955;
@@ -6006,6 +6484,7 @@ Function_Beetom_StartDrainingSamus_FacingLeft:
     RTS                                                                  ;A8B965;
 
 
+%anchor($A8B966)
 Function_Beetom_StartDrainingSamus_FacingRight:
     LDX.W $0E54                                                          ;A8B966;
     LDA.W #InstList_Beetom_DrainingSamus_FacingRight_0                   ;A8B969;
@@ -6016,6 +6495,7 @@ Function_Beetom_StartDrainingSamus_FacingRight:
     RTS                                                                  ;A8B979;
 
 
+%anchor($A8B97A)
 Function_Beetom_StartDropping:
     LDX.W $0E54                                                          ;A8B97A;
     LDA.W #InstList_Beetom_Crawling_FacingLeft_0                         ;A8B97D;
@@ -6034,6 +6514,7 @@ Function_Beetom_StartDropping:
     RTS                                                                  ;A8B9A1;
 
 
+%anchor($A8B9A2)
 Function_Beetom_StartBeingFlung:
     LDX.W $0E54                                                          ;A8B9A2;
     LDA.W #$0000                                                         ;A8B9A5;
@@ -6043,6 +6524,7 @@ Function_Beetom_StartBeingFlung:
     RTS                                                                  ;A8B9B1;
 
 
+%anchor($A8B9B2)
 Function_Beetom_Idling:
     LDX.W $0E54                                                          ;A8B9B2;
     DEC.W $0FAE,X                                                        ;A8B9B5;
@@ -6054,6 +6536,7 @@ Function_Beetom_Idling:
     RTS                                                                  ;A8B9C0;
 
 
+%anchor($A8B9C1)
 Function_Beetom_CrawlingLeft:
     LDX.W $0E54                                                          ;A8B9C1;
     DEC.W $0FAE,X                                                        ;A8B9C4;
@@ -6103,6 +6586,7 @@ Function_Beetom_CrawlingLeft:
     RTS                                                                  ;A8BA23;
 
 
+%anchor($A8BA24)
 Function_Beetom_CrawlingRight:
     LDX.W $0E54                                                          ;A8BA24;
     DEC.W $0FAE,X                                                        ;A8BA27;
@@ -6151,6 +6635,7 @@ Function_Beetom_CrawlingRight:
     RTS                                                                  ;A8BA83;
 
 
+%anchor($A8BA84)
 Function_Beetom_ShortHopLeft:
     LDX.W $0E54                                                          ;A8BA84;
     LDA.L $7E780A,X                                                      ;A8BA87;
@@ -6178,6 +6663,7 @@ Function_Beetom_ShortHopLeft:
     RTS                                                                  ;A8BAB6;
 
 
+%anchor($A8BAB7)
 Function_Beetom_ShortHopRight:
     LDX.W $0E54                                                          ;A8BAB7;
     LDA.L $7E780A,X                                                      ;A8BABA;
@@ -6204,6 +6690,7 @@ Function_Beetom_ShortHopRight:
     RTS                                                                  ;A8BAE6;
 
 
+%anchor($A8BAE7)
 Function_Beetom_YMovement_ShortHop_Rising:
     LDA.W $0FAA,X                                                        ;A8BAE7;
     ASL A                                                                ;A8BAEA;
@@ -6236,6 +6723,7 @@ Function_Beetom_YMovement_ShortHop_Rising:
     RTS                                                                  ;A8BB1F;
 
 
+%anchor($A8BB20)
 Function_Beetom_YMovement_ShortHop_Falling:
     LDA.W $0FAA,X                                                        ;A8BB20;
     ASL A                                                                ;A8BB23;
@@ -6267,6 +6755,7 @@ Function_Beetom_YMovement_ShortHop_Falling:
     RTS                                                                  ;A8BB54;
 
 
+%anchor($A8BB55)
 Function_Beetom_LongHopLeft:
     LDX.W $0E54                                                          ;A8BB55;
     LDA.L $7E780A,X                                                      ;A8BB58;
@@ -6294,6 +6783,7 @@ Function_Beetom_LongHopLeft:
     RTS                                                                  ;A8BB87;
 
 
+%anchor($A8BB88)
 Function_Beetom_LongHopRight:
     LDX.W $0E54                                                          ;A8BB88;
     LDA.L $7E780A,X                                                      ;A8BB8B;
@@ -6320,6 +6810,7 @@ Function_Beetom_LongHopRight:
     RTS                                                                  ;A8BBB7;
 
 
+%anchor($A8BBB8)
 Function_Beetom_YMovement_LongHop_Rising:
     LDA.W $0FAA,X                                                        ;A8BBB8;
     ASL A                                                                ;A8BBBB;
@@ -6352,6 +6843,7 @@ Function_Beetom_YMovement_LongHop_Rising:
     RTS                                                                  ;A8BBF0;
 
 
+%anchor($A8BBF1)
 Function_Beetom_YMovement_LongHop_Falling:
     LDA.W $0FAA,X                                                        ;A8BBF1;
     ASL A                                                                ;A8BBF4;
@@ -6383,6 +6875,7 @@ Function_Beetom_YMovement_LongHop_Falling:
     RTS                                                                  ;A8BC25;
 
 
+%anchor($A8BC26)
 Function_Beetom_LungeLeft:
     LDX.W $0E54                                                          ;A8BC26;
     LDA.L $7E780A,X                                                      ;A8BC29;
@@ -6411,6 +6904,7 @@ Function_Beetom_LungeLeft:
     RTS                                                                  ;A8BC59;
 
 
+%anchor($A8BC5A)
 Function_Beetom_LungeRight:
     LDX.W $0E54                                                          ;A8BC5A;
     LDA.L $7E780A,X                                                      ;A8BC5D;
@@ -6437,6 +6931,7 @@ Function_Beetom_LungeRight:
     RTS                                                                  ;A8BC89;
 
 
+%anchor($A8BC8A)
 Function_Beetom_YMovement_Lunge_Rising:
     LDA.W $0FAA,X                                                        ;A8BC8A;
     ASL A                                                                ;A8BC8D;
@@ -6469,6 +6964,7 @@ Function_Beetom_YMovement_Lunge_Rising:
     RTS                                                                  ;A8BCC2;
 
 
+%anchor($A8BCC3)
 Function_Beetom_YMovement_Lunge_Falling:
     LDA.W $0FAA,X                                                        ;A8BCC3;
     ASL A                                                                ;A8BCC6;
@@ -6500,6 +6996,7 @@ Function_Beetom_YMovement_Lunge_Falling:
     RTS                                                                  ;A8BCF7;
 
 
+%anchor($A8BCF8)
 Function_Beetom_DrainingSamus_FacingLeft:
     LDX.W $0E54                                                          ;A8BCF8;
     LDA.W $0FB0,X                                                        ;A8BCFB;
@@ -6537,6 +7034,7 @@ Function_Beetom_DrainingSamus_FacingLeft:
     RTS                                                                  ;A8BD41;
 
 
+%anchor($A8BD42)
 Function_Beetom_DrainingSamus_FacingRight:
     LDX.W $0E54                                                          ;A8BD42;
     LDA.W $0FB0,X                                                        ;A8BD45;
@@ -6574,6 +7072,7 @@ Function_Beetom_DrainingSamus_FacingRight:
     RTS                                                                  ;A8BD8B;
 
 
+%anchor($A8BD8C)
 UpdateBeetomButtonCounter:
     LDX.W $0E54                                                          ;A8BD8C;
     LDA.B $8B                                                            ;A8BD8F;
@@ -6586,6 +7085,7 @@ UpdateBeetomButtonCounter:
     RTS                                                                  ;A8BD9C;
 
 
+%anchor($A8BD9D)
 Function_Beetom_Dropping:
     LDX.W $0E54                                                          ;A8BD9D;
     LDA.W #$0003                                                         ;A8BDA0;
@@ -6609,12 +7109,14 @@ Function_Beetom_Dropping:
     RTS                                                                  ;A8BDC4;
 
 
+%anchor($A8BDC5)
 Function_Beetom_BeingFlung:
     LDX.W $0E54                                                          ;A8BDC5;
     JSR.W Function_Beetom_Movement_BeingFlung                            ;A8BDC8;
     RTS                                                                  ;A8BDCB;
 
 
+%anchor($A8BDCC)
 Function_Beetom_Movement_BeingFlung:
     LDA.W $0FAA,X                                                        ;A8BDCC;
     ASL A                                                                ;A8BDCF;
@@ -6667,6 +7169,7 @@ Function_Beetom_Movement_BeingFlung:
     RTS                                                                  ;A8BE2D;
 
 
+%anchor($A8BE2E)
 EnemyTouch_Beetom:
     LDX.W $0E54                                                          ;A8BE2E;
     LDA.L $7E7810,X                                                      ;A8BE31;
@@ -6725,6 +7228,7 @@ EnemyTouch_Beetom:
     RTL                                                                  ;A8BEAB;
 
 
+%anchor($A8BEAC)
 EnemyShot_Beetom:
     JSL.L CommonA8_NormalEnemyShotAI                                     ;A8BEAC;
     LDX.W $0E54                                                          ;A8BEB0;
@@ -6746,6 +7250,7 @@ EnemyShot_Beetom:
     RTL                                                                  ;A8BED2;
 
 
+%anchor($A8BED3)
 Spritemap_Beetom_0:
     dw $0005                                                             ;A8BED3;
     %spritemapEntry(0, $00, $FE, 0, 0, 2, 0, $11E)
@@ -6754,6 +7259,7 @@ Spritemap_Beetom_0:
     %spritemapEntry(0, $05, $F8, 0, 0, 2, 0, $10F)
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
 
+%anchor($A8BEEE)
 Spritemap_Beetom_1:
     dw $0005                                                             ;A8BEEE;
     %spritemapEntry(0, $00, $FF, 0, 0, 2, 0, $11E)
@@ -6762,6 +7268,7 @@ Spritemap_Beetom_1:
     %spritemapEntry(0, $05, $F9, 0, 0, 2, 0, $10F)
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $102)
 
+%anchor($A8BF09)
 Spritemap_Beetom_2:
     dw $0005                                                             ;A8BF09;
     %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $11E)
@@ -6770,6 +7277,7 @@ Spritemap_Beetom_2:
     %spritemapEntry(0, $06, $FA, 0, 0, 2, 0, $10F)
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $104)
 
+%anchor($A8BF24)
 Spritemap_Beetom_3:
     dw $0005                                                             ;A8BF24;
     %spritemapEntry(0, $07, $FE, 1, 0, 2, 0, $10D)
@@ -6778,6 +7286,7 @@ Spritemap_Beetom_3:
     %spritemapEntry(0, $0D, $07, 0, 0, 2, 0, $11F)
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
 
+%anchor($A8BF3F)
 Spritemap_Beetom_4:
     dw $0005                                                             ;A8BF3F;
     %spritemapEntry(0, $0E, $0F, 0, 0, 2, 0, $11F)
@@ -6786,6 +7295,7 @@ Spritemap_Beetom_4:
     %spritemapEntry(0, $00, $02, 0, 0, 2, 0, $10C)
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
 
+%anchor($A8BF5A)
 Spritemap_Beetom_5:
     dw $0005                                                             ;A8BF5A;
     %spritemapEntry(0, $02, $00, 0, 0, 2, 0, $10D)
@@ -6794,6 +7304,7 @@ Spritemap_Beetom_5:
     %spritemapEntry(0, $1F8, $05, 0, 0, 2, 0, $11C)
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $106)
 
+%anchor($A8BF75)
 Spritemap_Beetom_6:
     dw $0005                                                             ;A8BF75;
     %spritemapEntry(0, $01, $00, 0, 0, 2, 0, $10D)
@@ -6802,6 +7313,7 @@ Spritemap_Beetom_6:
     %spritemapEntry(0, $1F8, $05, 0, 0, 2, 0, $11C)
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $108)
 
+%anchor($A8BF90)
 Spritemap_Beetom_7:
     dw $0005                                                             ;A8BF90;
     %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $10D)
@@ -6810,6 +7322,7 @@ Spritemap_Beetom_7:
     %spritemapEntry(0, $1F8, $05, 0, 0, 2, 0, $11C)
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10A)
 
+%anchor($A8BFAB)
 Spritemap_Beetom_8:
     dw $0006                                                             ;A8BFAB;
     %spritemapEntry(0, $1FA, $F8, 0, 0, 2, 0, $120)
@@ -6819,6 +7332,7 @@ Spritemap_Beetom_8:
     %spritemapEntry(0, $1F8, $05, 0, 0, 2, 0, $11C)
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $106)
 
+%anchor($A8BFCB)
 Spritemap_Beetom_9:
     dw $0006                                                             ;A8BFCB;
     %spritemapEntry(0, $1FA, $F8, 0, 0, 2, 0, $121)
@@ -6828,6 +7342,7 @@ Spritemap_Beetom_9:
     %spritemapEntry(0, $1F8, $05, 0, 0, 2, 0, $11C)
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $108)
 
+%anchor($A8BFEB)
 Spritemap_Beetom_A:
     dw $0006                                                             ;A8BFEB;
     %spritemapEntry(0, $1FA, $F8, 0, 0, 2, 0, $122)
@@ -6837,6 +7352,7 @@ Spritemap_Beetom_A:
     %spritemapEntry(0, $1F8, $05, 0, 0, 2, 0, $11C)
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10A)
 
+%anchor($A8C00B)
 Spritemap_Beetom_B:
     dw $0005                                                             ;A8C00B;
     %spritemapEntry(0, $1F8, $FE, 0, 1, 2, 0, $11E)
@@ -6845,6 +7361,7 @@ Spritemap_Beetom_B:
     %spritemapEntry(0, $1F3, $F8, 0, 1, 2, 0, $10F)
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $100)
 
+%anchor($A8C026)
 Spritemap_Beetom_C:
     dw $0005                                                             ;A8C026;
     %spritemapEntry(0, $1F8, $FF, 0, 1, 2, 0, $11E)
@@ -6853,6 +7370,7 @@ Spritemap_Beetom_C:
     %spritemapEntry(0, $1F3, $F9, 0, 1, 2, 0, $10F)
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $102)
 
+%anchor($A8C041)
 Spritemap_Beetom_D:
     dw $0005                                                             ;A8C041;
     %spritemapEntry(0, $1F8, $00, 0, 1, 2, 0, $11E)
@@ -6861,6 +7379,7 @@ Spritemap_Beetom_D:
     %spritemapEntry(0, $1F2, $FA, 0, 1, 2, 0, $10F)
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $104)
 
+%anchor($A8C05C)
 Spritemap_Beetom_E:
     dw $0005                                                             ;A8C05C;
     %spritemapEntry(0, $1F1, $FE, 1, 1, 2, 0, $10D)
@@ -6869,6 +7388,7 @@ Spritemap_Beetom_E:
     %spritemapEntry(0, $1EB, $07, 0, 1, 2, 0, $11F)
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $100)
 
+%anchor($A8C077)
 Spritemap_Beetom_F:
     dw $0005                                                             ;A8C077;
     %spritemapEntry(0, $1EA, $0F, 0, 1, 2, 0, $11F)
@@ -6877,6 +7397,7 @@ Spritemap_Beetom_F:
     %spritemapEntry(0, $1F8, $02, 0, 1, 2, 0, $10C)
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $100)
 
+%anchor($A8C092)
 Spritemap_Beetom_10:
     dw $0005                                                             ;A8C092;
     %spritemapEntry(0, $1F6, $00, 0, 1, 2, 0, $10D)
@@ -6885,6 +7406,7 @@ Spritemap_Beetom_10:
     %spritemapEntry(0, $00, $05, 0, 1, 2, 0, $11C)
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $106)
 
+%anchor($A8C0AD)
 Spritemap_Beetom_11:
     dw $0005                                                             ;A8C0AD;
     %spritemapEntry(0, $1F7, $00, 0, 1, 2, 0, $10D)
@@ -6893,6 +7415,7 @@ Spritemap_Beetom_11:
     %spritemapEntry(0, $00, $05, 0, 1, 2, 0, $11C)
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $108)
 
+%anchor($A8C0C8)
 Spritemap_Beetom_12:
     dw $0005                                                             ;A8C0C8;
     %spritemapEntry(0, $1F8, $00, 0, 1, 2, 0, $10D)
@@ -6901,6 +7424,7 @@ Spritemap_Beetom_12:
     %spritemapEntry(0, $00, $05, 0, 1, 2, 0, $11C)
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10A)
 
+%anchor($A8C0E3)
 Spritemap_Beetom_13:
     dw $0006                                                             ;A8C0E3;
     %spritemapEntry(0, $1FE, $F8, 0, 1, 2, 0, $120)
@@ -6910,6 +7434,7 @@ Spritemap_Beetom_13:
     %spritemapEntry(0, $00, $05, 0, 1, 2, 0, $11C)
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $106)
 
+%anchor($A8C103)
 Spritemap_Beetom_14:
     dw $0006                                                             ;A8C103;
     %spritemapEntry(0, $1FE, $F8, 0, 1, 2, 0, $121)
@@ -6919,6 +7444,7 @@ Spritemap_Beetom_14:
     %spritemapEntry(0, $00, $05, 0, 1, 2, 0, $11C)
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $108)
 
+%anchor($A8C123)
 Spritemap_Beetom_15:
     dw $0006                                                             ;A8C123;
     %spritemapEntry(0, $1FE, $F8, 0, 1, 2, 0, $122)
@@ -6929,11 +7455,13 @@ Spritemap_Beetom_15:
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10A)
 
 
+%anchor($A8C143)
 Palette_Powamp:
     dw $3800,$57FF,$42F7,$0929,$00A5,$4F5A,$36B5,$2610                   ;A8C143;
     dw $1DCE,$02FF,$01BF,$000F,$0008,$03FF,$0237,$00D1                   ;A8C153;
 
 
+%anchor($A8C163)
 InstList_Powamp_Body_FastAnimation:
     dw $0005,Spritemap_Powamp_Body_CheeksLowered                         ;A8C163;
     dw $0005,Spritemap_Powamp_Body_CheeksLifting                         ;A8C167;
@@ -6941,6 +7469,7 @@ InstList_Powamp_Body_FastAnimation:
     dw Instruction_Common_GotoY                                          ;A8C16F;
     dw InstList_Powamp_Body_FastAnimation                                ;A8C171;
 
+%anchor($A8C173)
 InstList_Powamp_Body_SlowAnimation:
     dw $0009,Spritemap_Powamp_Body_CheeksLowered                         ;A8C173;
     dw $0009,Spritemap_Powamp_Body_CheeksLifting                         ;A8C177;
@@ -6948,44 +7477,56 @@ InstList_Powamp_Body_SlowAnimation:
     dw Instruction_Common_GotoY                                          ;A8C17F;
     dw InstList_Powamp_Body_SlowAnimation                                ;A8C181;
 
+%anchor($A8C183)
 InstList_Powamp_Balloon_StartingToRise:
     dw $0001,Spritemap_Powamp_Balloon_Deflated                           ;A8C183;
 
+%anchor($A8C187)
 InstList_Powamp_Balloon_Inflating:
     dw $0006,Spritemap_Powamp_Balloon_Inflating                          ;A8C187;
 
+%anchor($A8C18B)
 InstList_Powamp_Balloon_Inflated:
     dw $00A0,Spritemap_Powamp_Balloon_FullyInflated                      ;A8C18B;
     dw Instruction_Common_Sleep                                          ;A8C18F;
 
+%anchor($A8C191)
 InstList_Powamp_Balloon_StartSinking:
     dw $0001,Spritemap_Powamp_Balloon_FullyInflated                      ;A8C191;
     dw $0006,Spritemap_Powamp_Balloon_Inflating                          ;A8C195;
 
+%anchor($A8C199)
 InstList_Powamp_Balloon_Deflated:
     dw $00A0,Spritemap_Powamp_Balloon_Deflated                           ;A8C199;
     dw Instruction_Common_Sleep                                          ;A8C19D;
 
+%anchor($A8C19F)
 PowampTravelDistanceWhenNotGrappled:
     dw $0040                                                             ;A8C19F;
 
+%anchor($A8C1A1)
 PowampWiggleTable:
 ; Wiggle table. X offsets applied for 5 frames each in a loop
     dw $0000,$0001,$0002,$0003,$0002,$0001,$0000,$FFFF                   ;A8C1A1;
     dw $FFFE,$FFFD,$FFFE,$FFFF                                           ;A8C1B1;
 
+%anchor($A8C1B9)
 Powamp_YAccel_Rising:
     dw $0000,$0000                                                       ;A8C1B9;
 
+%anchor($A8C1BD)
 Powamp_YAccel_Sinking:
     dw $0000,$0000                                                       ;A8C1BD;
 
+%anchor($A8C1C1)
 Powamp_InitialYVelocity_Sinking:
     dw $0001,$0000                                                       ;A8C1C1;
 
+%anchor($A8C1C5)
 Powamp_InitialYVelocity_Rising:
     dw $FFFF,$8000                                                       ;A8C1C5;
 
+%anchor($A8C1C9)
 InitAI_Powamp:
     LDX.W $0E54                                                          ;A8C1C9;
     LDA.W $0F86,X                                                        ;A8C1CC;
@@ -7023,15 +7564,18 @@ InitAI_Powamp:
     RTL                                                                  ;A8C21B;
 
 
+%anchor($A8C21C)
 MainAI_Powamp:
     LDX.W $0E54                                                          ;A8C21C;
     JMP.W ($0FB2,X)                                                      ;A8C21F;
 
 
+%anchor($A8C222)
 RTL_A8C222:
     RTL                                                                  ;A8C222;
 
 
+%anchor($A8C223)
 FirePowampSpikesIn8Directions:
     LDY.W #$0007                                                         ;A8C223;
 
@@ -7046,6 +7590,7 @@ FirePowampSpikesIn8Directions:
     RTS                                                                  ;A8C233;
 
 
+%anchor($A8C234)
 HandlePowampBalloonYOffset:
     LDA.W $0F52,X                                                        ;A8C234;
     CMP.W #InstList_Powamp_Balloon_StartSinking                          ;A8C237;
@@ -7094,6 +7639,7 @@ HandlePowampBalloonYOffset:
     dw $FFEC,$FFF0,$FFF4                                                 ;A8C27D;
 
 
+%anchor($A8C283)
 Function_Powamp_Deflated_Resting:
     DEC.W $0FB0,X                                                        ;A8C283;
     BEQ .timerExpired                                                    ;A8C286;
@@ -7114,6 +7660,7 @@ Function_Powamp_Deflated_Resting:
     RTL                                                                  ;A8C2A5;
 
 
+%anchor($A8C2A6)
 Function_Powamp_Inflating:
     DEC.W $0FB0,X                                                        ;A8C2A6;
     BEQ .timerExpired                                                    ;A8C2A9;
@@ -7136,6 +7683,7 @@ Function_Powamp_Inflating:
     RTL                                                                  ;A8C2CE;
 
 
+%anchor($A8C2CF)
 Function_Powamp_Inflated_RiseToTargetHeight:
     LDA.W $0F8A,X                                                        ;A8C2CF;
     BIT.W #$0001                                                         ;A8C2D2;
@@ -7215,6 +7763,7 @@ Function_Powamp_Inflated_RiseToTargetHeight:
     RTL                                                                  ;A8C36A;
 
 
+%anchor($A8C36B)
 Function_Powamp_Inflated_FinishWiggle:
     DEC.W $0FAE,X                                                        ;A8C36B;
     BEQ .timerExpired                                                    ;A8C36E;
@@ -7276,6 +7825,7 @@ Function_Powamp_Inflated_FinishWiggle:
     RTL                                                                  ;A8C3E0;
 
 
+%anchor($A8C3E1)
 Function_Powamp_Grappled_RiseToTargetHeight:
     LDA.W $0F8A,X                                                        ;A8C3E1;
     BIT.W #$0001                                                         ;A8C3E4;
@@ -7349,6 +7899,7 @@ Function_Powamp_Grappled_RiseToTargetHeight:
     RTL                                                                  ;A8C468;
 
 
+%anchor($A8C469)
 Function_Powamp_Grappled_FinishWiggle:
     LDA.W $0F8A,X                                                        ;A8C469;
     BIT.W #$0001                                                         ;A8C46C;
@@ -7413,6 +7964,7 @@ Function_Powamp_Grappled_FinishWiggle:
     RTL                                                                  ;A8C4DB;
 
 
+%anchor($A8C4DC)
 Function_Powamp_Grappled_Resting:
     LDA.W $0F8A,X                                                        ;A8C4DC;
     BIT.W #$0001                                                         ;A8C4DF;
@@ -7431,6 +7983,7 @@ Function_Powamp_Grappled_Resting:
     RTL                                                                  ;A8C4FF;
 
 
+%anchor($A8C500)
 Function_Powamp_Deflating:
     DEC.W $0FB0,X                                                        ;A8C500;
     BEQ .timerExpired                                                    ;A8C503;
@@ -7449,6 +8002,7 @@ Function_Powamp_Deflating:
     RTL                                                                  ;A8C51C;
 
 
+%anchor($A8C51D)
 Function_Powamp_Deflated_Sinking:
     LDA.W $0FAA,X                                                        ;A8C51D;
     CLC                                                                  ;A8C520;
@@ -7481,10 +8035,12 @@ Function_Powamp_Deflated_Sinking:
     RTL                                                                  ;A8C567;
 
 
+%anchor($A8C568)
 RTL_A8C568:
     RTL                                                                  ;A8C568;
 
 
+%anchor($A8C569)
 Function_Powamp_FatalDamage:
     LDA.W $0F52,X                                                        ;A8C569;
     CMP.W #InstList_Powamp_Balloon_StartSinking                          ;A8C56C;
@@ -7515,6 +8071,7 @@ Function_Powamp_FatalDamage:
     dw InstList_Powamp_Balloon_Inflating                                 ;A8C59B;
     dw InstList_Powamp_Balloon_StartingToRise                            ;A8C59D;
 
+%anchor($A8C59F)
 Function_Powamp_DeathSequence:
     DEC.W $0FB0,X                                                        ;A8C59F;
     BEQ .timerExpired                                                    ;A8C5A2;
@@ -7535,6 +8092,7 @@ Function_Powamp_DeathSequence:
     RTL                                                                  ;A8C5BD;
 
 
+%anchor($A8C5BE)
 EnemyTouch_Powamp:
     LDX.W $0E54                                                          ;A8C5BE;
     LDA.W $0FB6,X                                                        ;A8C5C1;
@@ -7563,6 +8121,7 @@ EnemyTouch_Powamp:
     RTL                                                                  ;A8C5EE;
 
 
+%anchor($A8C5EF)
 EnemyShot_Powamp:
     PHB                                                                  ;A8C5EF;
     LDX.W $0E54                                                          ;A8C5F0;
@@ -7606,6 +8165,7 @@ EnemyShot_Powamp:
     RTL                                                                  ;A8C63E;
 
 
+%anchor($A8C63F)
 PowerBombReaction_Powamp:
     JSL.L CommonA8_NormalEnemyPowerBombAI                                ;A8C63F;
     LDX.W $0E54                                                          ;A8C643;
@@ -7633,26 +8193,32 @@ PowerBombReaction_Powamp:
     RTL                                                                  ;A8C674;
 
 
+%anchor($A8C675)
 Spritemap_Powamp_Body_CheeksLowered:
     dw $0001                                                             ;A8C675;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
 
+%anchor($A8C67C)
 Spritemap_Powamp_Body_CheeksLifting:
     dw $0001                                                             ;A8C67C;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $102)
 
+%anchor($A8C683)
 Spritemap_Powamp_Body_CheeksRaised:
     dw $0001                                                             ;A8C683;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $104)
 
+%anchor($A8C68A)
 Spritemap_Powamp_Balloon_Deflated:
     dw $0001                                                             ;A8C68A;
     %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 0, $10E)
 
+%anchor($A8C691)
 Spritemap_Powamp_Balloon_Inflating:
     dw $0001                                                             ;A8C691;
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $106)
 
+%anchor($A8C698)
 Spritemap_Powamp_Balloon_FullyInflated:
     dw $0005                                                             ;A8C698;
     %spritemapEntry(0, $04, $04, 0, 0, 2, 0, $10D)
@@ -7662,28 +8228,35 @@ Spritemap_Powamp_Balloon_FullyInflated:
     %spritemapEntry(1, $1F4, $F4, 0, 0, 2, 0, $108)
 
 
+%anchor($A8C6B3)
 Palette_Robot:
     dw $3800,$57FF,$42F7,$0929,$00A5,$4F5A,$36B5,$2610                   ;A8C6B3;
     dw $1DCE,$001F,$0018,$000F,$0008,$000A,$03FF,$02B5                   ;A8C6C3;
 
+%anchor($A8C6D3)
 InstList_RobotNoPower_Neutral:
     dw $7FFF,Spritemap_Robot_19                                          ;A8C6D3;
     dw Instruction_Common_Sleep                                          ;A8C6D7;
 
+%anchor($A8C6D9)
 InstList_RobotNoPower_LeaningLeft:
     dw $7FFF,Spritemap_Robot_18                                          ;A8C6D9;
     dw Instruction_Common_Sleep                                          ;A8C6DD;
 
+%anchor($A8C6DF)
 InstList_RobotNoPower_LeaningRIght:
     dw $7FFF,Spritemap_Robot_1A                                          ;A8C6DF;
     dw Instruction_CommonA8_Sleep                                        ;A8C6E3;
 
+%anchor($A8C6E5)
 InstList_Robot_Initial:
     dw $0020,Spritemap_Robot_1                                           ;A8C6E5;
 
+%anchor($A8C6E9)
 InstList_Robot_FacingLeft_WalkingForwards_0:
     dw $0001,Spritemap_Robot_1                                           ;A8C6E9;
 
+%anchor($A8C6ED)
 InstList_Robot_FacingLeft_WalkingForwards_1:
     dw $000A,Spritemap_Robot_1                                           ;A8C6ED;
     dw $0001,Spritemap_Robot_2                                           ;A8C6F1;
@@ -7712,6 +8285,7 @@ InstList_Robot_FacingLeft_WalkingForwards_1:
     dw Instruction_Common_GotoY                                          ;A8C73B;
     dw InstList_Robot_FacingLeft_WalkingForwards_1                       ;A8C73D;
 
+%anchor($A8C73F)
 InstList_Robot_FacingLeft_HitWallMovingForwards:
     dw $0001,Spritemap_Robot_B                                           ;A8C73F;
     dw $000A,Spritemap_Robot_B                                           ;A8C743;
@@ -7751,6 +8325,7 @@ InstList_Robot_FacingLeft_HitWallMovingForwards:
     dw $000A,Spritemap_Robot_0                                           ;A8C7B5;
     dw Instruction_Robot_SetInstListTo_FacingRight_WalkingForwards       ;A8C7B9;
 
+%anchor($A8C7BB)
 InstList_Robot_FacingLeft_Shot_SamusIsAhead:
     dw $0005,Spritemap_Robot_B                                           ;A8C7BB;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C7BF;
@@ -7789,6 +8364,7 @@ InstList_Robot_FacingLeft_Shot_SamusIsAhead:
     dw $0005,Spritemap_Robot_0                                           ;A8C82D;
     dw Instruction_Robot_SetInstListTo_FacingRight_WalkingForwards       ;A8C831;
 
+%anchor($A8C833)
 InstList_Robot_FacingLeft_Shot_SamusIsBehind:
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C833;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall        ;A8C835;
@@ -7830,12 +8406,14 @@ InstList_Robot_FacingLeft_Shot_SamusIsBehind:
     dw $0005,Spritemap_Robot_0                                           ;A8C8AB;
     dw Instruction_Robot_Goto_FacingLeft_WalkingForwards                 ;A8C8AF;
 
+%anchor($A8C8B1)
 InstList_Robot_FacingLeft_ShotLaserDownLeft:
     dw $0005,Spritemap_Robot_0                                           ;A8C8B1;
     dw $0002,Spritemap_Robot_B                                           ;A8C8B5;
     dw Instruction_Common_GotoY                                          ;A8C8B9;
     dw InstList_Robot_FacingLeft_LaserShotRecoil                         ;A8C8BB;
 
+%anchor($A8C8BD)
 InstList_Robot_FacingLeft_ShotLaserLeft:
     dw $0005,Spritemap_Robot_1                                           ;A8C8BD;
     dw $0002,Spritemap_Robot_0                                           ;A8C8C1;
@@ -7845,6 +8423,7 @@ InstList_Robot_FacingLeft_ShotLaserLeft:
     dw Instruction_Common_GotoY                                          ;A8C8CD;
     dw InstList_Robot_FacingLeft_LaserShotRecoil                         ;A8C8CF;
 
+%anchor($A8C8D1)
 InstList_Robot_FacingLeft_ShotLaserUpLeft:
     dw $0005,Spritemap_Robot_3                                           ;A8C8D1;
     dw $0002,Spritemap_Robot_2                                           ;A8C8D5;
@@ -7854,6 +8433,7 @@ InstList_Robot_FacingLeft_ShotLaserUpLeft:
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C8E3;
     dw $0004,Spritemap_Robot_B                                           ;A8C8E5;
 
+%anchor($A8C8E9)
 InstList_Robot_FacingLeft_LaserShotRecoil:
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C8E9;
     dw $0010,Spritemap_Robot_A                                           ;A8C8EB;
@@ -7872,6 +8452,7 @@ InstList_Robot_FacingLeft_LaserShotRecoil:
     dw Instruction_CommonA8_GotoY                                        ;A8C917;
     dw InstList_Robot_FacingLeft_WalkingForwards_0                       ;A8C919;
 
+%anchor($A8C91B)
 InstList_Robot_ApproachingAFallToTheRight:
     dw $0080,Spritemap_Robot_C                                           ;A8C91B;
     dw $000A,Spritemap_Robot_D                                           ;A8C91F;
@@ -7880,9 +8461,11 @@ InstList_Robot_ApproachingAFallToTheRight:
     dw Instruction_Common_GotoY                                          ;A8C929;
     dw InstList_Robot_FacingLeft_WalkingForwards_0                       ;A8C92B;
 
+%anchor($A8C92D)
 InstList_Robot_FacingRight_WalkingForwards_0:
     dw $0001,Spritemap_Robot_C                                           ;A8C92D;
 
+%anchor($A8C931)
 InstList_Robot_FacingRight_WalkingForwards_1:
     dw $0001,Spritemap_Robot_C                                           ;A8C931;
     dw Instruction_Robot_TryShootingLaserDownRight                       ;A8C935;
@@ -7912,6 +8495,7 @@ InstList_Robot_FacingRight_WalkingForwards_1:
     dw Instruction_Common_GotoY                                          ;A8C981;
     dw InstList_Robot_FacingRight_WalkingForwards_1                      ;A8C983;
 
+%anchor($A8C985)
 InstList_Robot_FacingRight_HitWallMovingForwards:
     dw $0001,Spritemap_Robot_17                                          ;A8C985;
     dw $000A,Spritemap_Robot_17                                          ;A8C989;
@@ -7951,6 +8535,7 @@ InstList_Robot_FacingRight_HitWallMovingForwards:
     dw $000A,Spritemap_Robot_C                                           ;A8C9FB;
     dw Instruction_Robot_Goto_FacingLeft_WalkingForwards                 ;A8C9FF;
 
+%anchor($A8CA01)
 InstList_Robot_FacingRight_Shot_SamusIsAhead:
     dw $0001,Spritemap_Robot_17                                          ;A8CA01;
     dw $0005,Spritemap_Robot_17                                          ;A8CA05;
@@ -7990,6 +8575,7 @@ InstList_Robot_FacingRight_Shot_SamusIsAhead:
     dw $0005,Spritemap_Robot_C                                           ;A8CA77;
     dw Instruction_Robot_Goto_FacingLeft_WalkingForwards                 ;A8CA7B;
 
+%anchor($A8CA7D)
 InstList_Robot_FacingRight_Shot_SamusIsBehind:
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CA7D;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CA7F;
@@ -8032,12 +8618,14 @@ InstList_Robot_FacingRight_Shot_SamusIsBehind:
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CAF9;
     dw Instruction_Robot_SetInstListTo_FacingRight_WalkingForwards       ;A8CAFB;
 
+%anchor($A8CAFD)
 InstList_Robot_FacingRight_ShotLaserDownRight:
     dw $0005,Spritemap_Robot_C                                           ;A8CAFD;
     dw $0002,Spritemap_Robot_17                                          ;A8CB01;
     dw Instruction_Common_GotoY                                          ;A8CB05;
     dw InstList_Robot_FacingRight_LaserShotRecoil                        ;A8CB07;
 
+%anchor($A8CB09)
 InstList_Robot_FacingRight_ShotLaserRight:
     dw $0005,Spritemap_Robot_D                                           ;A8CB09;
     dw $0002,Spritemap_Robot_C                                           ;A8CB0D;
@@ -8047,6 +8635,7 @@ InstList_Robot_FacingRight_ShotLaserRight:
     dw Instruction_Common_GotoY                                          ;A8CB19;
     dw InstList_Robot_FacingRight_LaserShotRecoil                        ;A8CB1B;
 
+%anchor($A8CB1D)
 InstList_Robot_FacingRight_ShotLaserUpRight:
     dw $0005,Spritemap_Robot_F                                           ;A8CB1D;
     dw $0002,Spritemap_Robot_E                                           ;A8CB21;
@@ -8056,6 +8645,7 @@ InstList_Robot_FacingRight_ShotLaserUpRight:
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8CB2F;
     dw $0004,Spritemap_Robot_17                                          ;A8CB31;
 
+%anchor($A8CB35)
 InstList_Robot_FacingRight_LaserShotRecoil:
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8CB35;
     dw $0010,Spritemap_Robot_16                                          ;A8CB37;
@@ -8073,6 +8663,7 @@ InstList_Robot_FacingRight_LaserShotRecoil:
     dw Instruction_Common_GotoY                                          ;A8CB61;
     dw InstList_Robot_FacingRight_WalkingForwards_0                      ;A8CB63;
 
+%anchor($A8CB65)
 InstList_Robot_ApproachingAFallToTheLeft:
     dw $0080,Spritemap_Robot_0                                           ;A8CB65;
     dw $000A,Spritemap_Robot_1                                           ;A8CB69;
@@ -8081,6 +8672,7 @@ InstList_Robot_ApproachingAFallToTheLeft:
     dw Instruction_Common_GotoY                                          ;A8CB73;
     dw InstList_Robot_FacingRight_WalkingForwards_0                      ;A8CB75;
 
+%anchor($A8CB77)
 InitAI_Robot:
     LDX.W $079F                                                          ;A8CB77;
     LDA.L $7ED828,X                                                      ;A8CB7A;
@@ -8113,6 +8705,7 @@ InitAI_Robot:
     RTL                                                                  ;A8CBCB;
 
 
+%anchor($A8CBCC)
 InitAI_RobotNoPower:
     LDX.W $0E54                                                          ;A8CBCC;
     LDA.W $0FB4,X                                                        ;A8CBCF;
@@ -8164,6 +8757,7 @@ InitAI_RobotNoPower:
     dw InstList_RobotNoPower_LeaningLeft                                 ;A8CC32;
     dw InstList_RobotNoPower_LeaningRIght                                ;A8CC34;
 
+%anchor($A8CC36)
 MainAI_Robot:
     LDX.W $0E54                                                          ;A8CC36;
     LDA.W $0FB0,X                                                        ;A8CC39;
@@ -8184,10 +8778,12 @@ MainAI_Robot:
     ADC.W #$0000                                                         ;A8CC60;
     STA.W $0FB2,X                                                        ;A8CC63; fallthrough to MainAI_RobotNoPower
 
+%anchor($A8CC66)
 RTL_A8CC66:
     RTL                                                                  ;A8CC66;
 
 
+%anchor($A8CC67)
 EnemyGraphicsDrawnHook_Robot_PeriodicallyCyclePalettes:
     LDA.W $0797                                                          ;A8CC67;
     BNE .return                                                          ;A8CC6A;
@@ -8255,6 +8851,7 @@ EnemyGraphicsDrawnHook_Robot_PeriodicallyCyclePalettes:
     dw $0018,$000F,$0008,$001F, $0010
     dw $FFFF
 
+%anchor($A8CCFF)
 DecrementRobotLaserCooldown:
     LDA.W $0FAA,X                                                        ;A8CCFF;
     BEQ .return                                                          ;A8CD02;
@@ -8265,6 +8862,7 @@ DecrementRobotLaserCooldown:
     RTS                                                                  ;A8CD08;
 
 
+%anchor($A8CD09)
 Instruction_Robot_FacingLeft_MoveForward_HandleWallOrFall:
     PHX                                                                  ;A8CD09;
     PHY                                                                  ;A8CD0A;
@@ -8339,6 +8937,7 @@ Instruction_Robot_FacingLeft_MoveForward_HandleWallOrFall:
     RTL                                                                  ;A8CDA3;
 
 
+%anchor($A8CDA4)
 Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall:
     PHX                                                                  ;A8CDA4;
     PHY                                                                  ;A8CDA5;
@@ -8377,6 +8976,7 @@ Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall:
     RTL                                                                  ;A8CDE9;
 
 
+%anchor($A8CDEA)
 Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall:
     PHX                                                                  ;A8CDEA;
     PHY                                                                  ;A8CDEB;
@@ -8451,6 +9051,7 @@ Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall:
     RTL                                                                  ;A8CE84;
 
 
+%anchor($A8CE85)
 Instruction_Robot_FacingLeft_MoveBackward_HandleHittingWall:
     PHX                                                                  ;A8CE85;
     PHY                                                                  ;A8CE86;
@@ -8489,11 +9090,13 @@ Instruction_Robot_FacingLeft_MoveBackward_HandleHittingWall:
     RTL                                                                  ;A8CECA;
 
 
+%anchor($A8CECB)
 Instruction_Robot_SetInstListTo_FacingRight_WalkingForwards:
     LDY.W #InstList_Robot_FacingRight_WalkingForwards_0                  ;A8CECB;
     RTL                                                                  ;A8CECE;
 
 
+%anchor($A8CECF)
 Instruction_Robot_FacingRight_MoveForward_HandleWallOrFall:
     PHX                                                                  ;A8CECF;
     PHY                                                                  ;A8CED0;
@@ -8568,6 +9171,7 @@ Instruction_Robot_FacingRight_MoveForward_HandleWallOrFall:
     RTL                                                                  ;A8CF69;
 
 
+%anchor($A8CF6A)
 Instruction_Robot_FacingRight_MoveForward_HandleHittingWall:
     PHX                                                                  ;A8CF6A;
     PHY                                                                  ;A8CF6B;
@@ -8606,6 +9210,7 @@ Instruction_Robot_FacingRight_MoveForward_HandleHittingWall:
     RTL                                                                  ;A8CFAF;
 
 
+%anchor($A8CFB0)
 Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall:
     PHX                                                                  ;A8CFB0;
     PHY                                                                  ;A8CFB1;
@@ -8680,6 +9285,7 @@ Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall:
     RTL                                                                  ;A8D04A;
 
 
+%anchor($A8D04B)
 Instruction_Robot_FacingRight_MoveBackward_HandleHittingWall:
     PHX                                                                  ;A8D04B;
     PHY                                                                  ;A8D04C;
@@ -8718,6 +9324,7 @@ Instruction_Robot_FacingRight_MoveBackward_HandleHittingWall:
     RTL                                                                  ;A8D090;
 
 
+%anchor($A8D091)
 Instruction_Robot_PlaySFXIfOnScreen:
     PHX                                                                  ;A8D091;
     PHY                                                                  ;A8D092;
@@ -8745,11 +9352,13 @@ Instruction_Robot_PlaySFXIfOnScreen:
     RTL                                                                  ;A8D0C1;
 
 
+%anchor($A8D0C2)
 Instruction_Robot_Goto_FacingLeft_WalkingForwards:
     LDY.W #InstList_Robot_FacingLeft_WalkingForwards_0                   ;A8D0C2;
     RTL                                                                  ;A8D0C5;
 
 
+%anchor($A8D0C6)
 Instruction_Robot_TryShootingLaserUpRight:
     LDA.W #InstList_Robot_FacingRight_ShotLaserUpRight                   ;A8D0C6;
     STA.B $32                                                            ;A8D0C9;
@@ -8758,12 +9367,14 @@ Instruction_Robot_TryShootingLaserUpRight:
     BRA HandleFiringLaser_Upwards                                        ;A8D0D0;
 
 
+%anchor($A8D0D2)
 Instruction_Robot_TryShootingLaserUpLeft:
     LDA.W #InstList_Robot_FacingLeft_ShotLaserUpLeft                     ;A8D0D2;
     STA.B $32                                                            ;A8D0D5;
     LDA.W #EnemyProjectile_RobotLaser_UpLeft                             ;A8D0D7;
     STA.B $30                                                            ;A8D0DA; fallthrough to HandleFiringLaser_Upwards
 
+%anchor($A8D0DC)
 HandleFiringLaser_Upwards:
     LDA.W $0FAA,X                                                        ;A8D0DC;
     BNE .timerNotExpired                                                 ;A8D0DF;
@@ -8786,16 +9397,19 @@ HandleFiringLaser_Upwards:
     RTL                                                                  ;A8D0FF;
 
 
+%anchor($A8D100)
 Instruction_Robot_TryShootingLaserRight:
     LDA.W #InstList_Robot_FacingRight_ShotLaserRight                     ;A8D100;
     STA.B $32                                                            ;A8D103;
     BRA HandleFiringLaser_Horizontal                                     ;A8D105;
 
 
+%anchor($A8D107)
 Instruction_Robot_TryShootingLaserLeft:
     LDA.W #InstList_Robot_FacingLeft_ShotLaserLeft                       ;A8D107;
     STA.B $32                                                            ;A8D10A;
 
+%anchor($A8D10C)
 HandleFiringLaser_Horizontal:
     LDA.W $0FAA,X                                                        ;A8D10C;
     BNE .timerNotExpired                                                 ;A8D10F;
@@ -8818,6 +9432,7 @@ HandleFiringLaser_Horizontal:
     RTL                                                                  ;A8D130;
 
 
+%anchor($A8D131)
 Instruction_Robot_TryShootingLaserDownRight:
     LDA.W #EnemyProjectile_RobotLaser_DownRight                          ;A8D131;
     STA.B $30                                                            ;A8D134;
@@ -8826,12 +9441,14 @@ Instruction_Robot_TryShootingLaserDownRight:
     BRA HandleFiringLaser_Downwards                                      ;A8D13B;
 
 
+%anchor($A8D13D)
 Instruction_Robot_TryShootingLaserDownLeft:
     LDA.W #EnemyProjectile_RobotLaser_DownLeft                           ;A8D13D;
     STA.B $30                                                            ;A8D140;
     LDA.W #InstList_Robot_FacingLeft_ShotLaserDownLeft                   ;A8D142;
     STA.B $32                                                            ;A8D145;
 
+%anchor($A8D147)
 HandleFiringLaser_Downwards:
     LDA.W $0FAA,X                                                        ;A8D147;
     BNE .timerNotExpired                                                 ;A8D14A;
@@ -8854,6 +9471,7 @@ HandleFiringLaser_Downwards:
     RTL                                                                  ;A8D16A;
 
 
+%anchor($A8D16B)
 Instruction_Robot_DecrementLaserCooldown:
     PHX                                                                  ;A8D16B;
     LDX.W $0E54                                                          ;A8D16C;
@@ -8862,6 +9480,7 @@ Instruction_Robot_DecrementLaserCooldown:
     RTL                                                                  ;A8D173;
 
 
+%anchor($A8D174)
 EnemyTouch_Robot:
     LDX.W $0E54                                                          ;A8D174;
     LDA.W $0F7A,X                                                        ;A8D177;
@@ -8878,11 +9497,13 @@ EnemyTouch_Robot:
     RTL                                                                  ;A8D18C;
 
 
+%anchor($A8D18D)
 EnemyShot_RobotNoPower:
     JSL.L NormalEnemyShotAI                                              ;A8D18D;
     RTL                                                                  ;A8D191;
 
 
+%anchor($A8D192)
 EnemyShot_Robot:
     REP #$30                                                             ;A8D192;
     PHX                                                                  ;A8D194;
@@ -8940,6 +9561,7 @@ EnemyShot_Robot:
     BRA .merge                                                           ;A8D1EF;
 
 
+%anchor($A8D1F1)
 Spritemap_Robot_0:
     dw $000C                                                             ;A8D1F1;
     %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $12E)
@@ -8955,6 +9577,7 @@ Spritemap_Robot_0:
     %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $102)
     %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $100)
 
+%anchor($A8D22F)
 Spritemap_Robot_1:
     dw $000C                                                             ;A8D22F;
     %spritemapEntry(1, $01, $01, 0, 0, 2, 0, $146)
@@ -8970,6 +9593,7 @@ Spritemap_Robot_1:
     %spritemapEntry(1, $1FF, $E1, 0, 0, 2, 0, $106)
     %spritemapEntry(1, $1EF, $E1, 0, 0, 2, 0, $104)
 
+%anchor($A8D26D)
 Spritemap_Robot_2:
     dw $000C                                                             ;A8D26D;
     %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $146)
@@ -8985,6 +9609,7 @@ Spritemap_Robot_2:
     %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $106)
     %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $104)
 
+%anchor($A8D2AB)
 Spritemap_Robot_3:
     dw $000C                                                             ;A8D2AB;
     %spritemapEntry(1, $1FF, $01, 0, 0, 2, 0, $146)
@@ -9000,6 +9625,7 @@ Spritemap_Robot_3:
     %spritemapEntry(1, $01, $E1, 0, 0, 2, 0, $106)
     %spritemapEntry(1, $1F1, $E1, 0, 0, 2, 0, $104)
 
+%anchor($A8D2E9)
 Spritemap_Robot_4:
     dw $000C                                                             ;A8D2E9;
     %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $142)
@@ -9015,6 +9641,7 @@ Spritemap_Robot_4:
     %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $10A)
     %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $108)
 
+%anchor($A8D327)
 Spritemap_Robot_5:
     dw $000C                                                             ;A8D327;
     %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $146)
@@ -9030,6 +9657,7 @@ Spritemap_Robot_5:
     %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $106)
     %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $104)
 
+%anchor($A8D365)
 Spritemap_Robot_6:
     dw $000C                                                             ;A8D365;
     %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $12E)
@@ -9045,6 +9673,7 @@ Spritemap_Robot_6:
     %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $102)
     %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $100)
 
+%anchor($A8D3A3)
 Spritemap_Robot_7:
     dw $000C                                                             ;A8D3A3;
     %spritemapEntry(1, $01, $01, 0, 0, 2, 0, $146)
@@ -9060,6 +9689,7 @@ Spritemap_Robot_7:
     %spritemapEntry(1, $1FF, $E1, 0, 0, 2, 0, $106)
     %spritemapEntry(1, $1EF, $E1, 0, 0, 2, 0, $104)
 
+%anchor($A8D3E1)
 Spritemap_Robot_8:
     dw $000C                                                             ;A8D3E1;
     %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $146)
@@ -9075,6 +9705,7 @@ Spritemap_Robot_8:
     %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $106)
     %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $104)
 
+%anchor($A8D41F)
 Spritemap_Robot_9:
     dw $000C                                                             ;A8D41F;
     %spritemapEntry(1, $1FF, $01, 0, 0, 2, 0, $146)
@@ -9090,6 +9721,7 @@ Spritemap_Robot_9:
     %spritemapEntry(1, $01, $E1, 0, 0, 2, 0, $106)
     %spritemapEntry(1, $1F1, $E1, 0, 0, 2, 0, $104)
 
+%anchor($A8D45D)
 Spritemap_Robot_A:
     dw $000C                                                             ;A8D45D;
     %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $142)
@@ -9105,6 +9737,7 @@ Spritemap_Robot_A:
     %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $10A)
     %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $108)
 
+%anchor($A8D49B)
 Spritemap_Robot_B:
     dw $000C                                                             ;A8D49B;
     %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $146)
@@ -9120,6 +9753,7 @@ Spritemap_Robot_B:
     %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $106)
     %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $104)
 
+%anchor($A8D4D9)
 Spritemap_Robot_C:
     dw $000C                                                             ;A8D4D9;
     %spritemapEntry(1, $1F0, $01, 0, 1, 2, 0, $12E)
@@ -9135,6 +9769,7 @@ Spritemap_Robot_C:
     %spritemapEntry(1, $1F0, $E1, 0, 1, 2, 0, $102)
     %spritemapEntry(1, $00, $E1, 0, 1, 2, 0, $100)
 
+%anchor($A8D517)
 Spritemap_Robot_D:
     dw $000C                                                             ;A8D517;
     %spritemapEntry(1, $1EF, $01, 0, 1, 2, 0, $146)
@@ -9150,6 +9785,7 @@ Spritemap_Robot_D:
     %spritemapEntry(1, $1F1, $E1, 0, 1, 2, 0, $106)
     %spritemapEntry(1, $01, $E1, 0, 1, 2, 0, $104)
 
+%anchor($A8D555)
 Spritemap_Robot_E:
     dw $000C                                                             ;A8D555;
     %spritemapEntry(1, $1F0, $01, 0, 1, 2, 0, $146)
@@ -9165,6 +9801,7 @@ Spritemap_Robot_E:
     %spritemapEntry(1, $1F0, $E1, 0, 1, 2, 0, $106)
     %spritemapEntry(1, $00, $E1, 0, 1, 2, 0, $104)
 
+%anchor($A8D593)
 Spritemap_Robot_F:
     dw $000C                                                             ;A8D593;
     %spritemapEntry(1, $1F1, $01, 0, 1, 2, 0, $146)
@@ -9180,6 +9817,7 @@ Spritemap_Robot_F:
     %spritemapEntry(1, $1EF, $E1, 0, 1, 2, 0, $106)
     %spritemapEntry(1, $1FF, $E1, 0, 1, 2, 0, $104)
 
+%anchor($A8D5D1)
 Spritemap_Robot_10:
     dw $000C                                                             ;A8D5D1;
     %spritemapEntry(1, $1F0, $01, 0, 1, 2, 0, $142)
@@ -9195,6 +9833,7 @@ Spritemap_Robot_10:
     %spritemapEntry(1, $1F0, $E1, 0, 1, 2, 0, $10A)
     %spritemapEntry(1, $00, $E1, 0, 1, 2, 0, $108)
 
+%anchor($A8D60F)
 Spritemap_Robot_11:
     dw $000C                                                             ;A8D60F;
     %spritemapEntry(1, $1F0, $01, 0, 1, 2, 0, $146)
@@ -9210,6 +9849,7 @@ Spritemap_Robot_11:
     %spritemapEntry(1, $1F0, $E1, 0, 1, 2, 0, $106)
     %spritemapEntry(1, $00, $E1, 0, 1, 2, 0, $104)
 
+%anchor($A8D64D)
 Spritemap_Robot_12:
     dw $000C                                                             ;A8D64D;
     %spritemapEntry(1, $1F0, $01, 0, 1, 2, 0, $12E)
@@ -9225,6 +9865,7 @@ Spritemap_Robot_12:
     %spritemapEntry(1, $1F0, $E1, 0, 1, 2, 0, $102)
     %spritemapEntry(1, $00, $E1, 0, 1, 2, 0, $100)
 
+%anchor($A8D68B)
 Spritemap_Robot_13:
     dw $000C                                                             ;A8D68B;
     %spritemapEntry(1, $1EF, $01, 0, 1, 2, 0, $146)
@@ -9240,6 +9881,7 @@ Spritemap_Robot_13:
     %spritemapEntry(1, $1F1, $E1, 0, 1, 2, 0, $106)
     %spritemapEntry(1, $01, $E1, 0, 1, 2, 0, $104)
 
+%anchor($A8D6C9)
 Spritemap_Robot_14:
     dw $000C                                                             ;A8D6C9;
     %spritemapEntry(1, $1F0, $01, 0, 1, 2, 0, $146)
@@ -9255,6 +9897,7 @@ Spritemap_Robot_14:
     %spritemapEntry(1, $1F0, $E1, 0, 1, 2, 0, $106)
     %spritemapEntry(1, $00, $E1, 0, 1, 2, 0, $104)
 
+%anchor($A8D707)
 Spritemap_Robot_15:
     dw $000C                                                             ;A8D707;
     %spritemapEntry(1, $1F1, $01, 0, 1, 2, 0, $146)
@@ -9270,6 +9913,7 @@ Spritemap_Robot_15:
     %spritemapEntry(1, $1EF, $E1, 0, 1, 2, 0, $106)
     %spritemapEntry(1, $1FF, $E1, 0, 1, 2, 0, $104)
 
+%anchor($A8D745)
 Spritemap_Robot_16:
     dw $000C                                                             ;A8D745;
     %spritemapEntry(1, $1F0, $01, 0, 1, 2, 0, $142)
@@ -9285,6 +9929,7 @@ Spritemap_Robot_16:
     %spritemapEntry(1, $1F0, $E1, 0, 1, 2, 0, $10A)
     %spritemapEntry(1, $00, $E1, 0, 1, 2, 0, $108)
 
+%anchor($A8D783)
 Spritemap_Robot_17:
     dw $000C                                                             ;A8D783;
     %spritemapEntry(1, $1F0, $01, 0, 1, 2, 0, $146)
@@ -9300,6 +9945,7 @@ Spritemap_Robot_17:
     %spritemapEntry(1, $1F0, $E1, 0, 1, 2, 0, $106)
     %spritemapEntry(1, $00, $E1, 0, 1, 2, 0, $104)
 
+%anchor($A8D7C1)
 Spritemap_Robot_18:
     dw $0006                                                             ;A8D7C1;
     %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $12E)
@@ -9309,6 +9955,7 @@ Spritemap_Robot_18:
     %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $102)
     %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $100)
 
+%anchor($A8D7E1)
 Spritemap_Robot_19:
     dw $0006                                                             ;A8D7E1;
     %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $146)
@@ -9318,6 +9965,7 @@ Spritemap_Robot_19:
     %spritemapEntry(1, $00, $E1, 0, 0, 2, 0, $106)
     %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $104)
 
+%anchor($A8D801)
 Spritemap_Robot_1A:
     dw $0006                                                             ;A8D801;
     %spritemapEntry(1, $00, $01, 0, 0, 2, 0, $142)
@@ -9328,11 +9976,13 @@ Spritemap_Robot_1A:
     %spritemapEntry(1, $1F0, $E1, 0, 0, 2, 0, $108)
 
 
+%anchor($A8D821)
 Palette_Bull:
     dw $3800,$3F57,$2E4D,$00E2,$0060,$3AB0,$220B,$1166                   ;A8D821;
     dw $0924,$435A,$3694,$15AD,$0508,$03FF,$0237,$00D1                   ;A8D831;
 
 
+%anchor($A8D841)
 InstList_Bull_Normal:
     dw $000A,Spritemap_Bull_0                                            ;A8D841;
     dw $000A,Spritemap_Bull_1                                            ;A8D845;
@@ -9341,9 +9991,11 @@ InstList_Bull_Normal:
     dw Instruction_Common_GotoY                                          ;A8D851;
     dw InstList_Bull_Normal                                              ;A8D853;
 
+%anchor($A8D855)
 InstList_Bull_Shot_0:
     dw Instruction_Common_TimerInY,$0005                                 ;A8D855;
 
+%anchor($A8D859)
 InstList_Bull_Shot_1:
     dw $0003,Spritemap_Bull_0                                            ;A8D859;
     dw $0003,Spritemap_Bull_1                                            ;A8D85D;
@@ -9354,6 +10006,7 @@ InstList_Bull_Shot_1:
     dw Instruction_Common_GotoY                                          ;A8D86D;
     dw InstList_Bull_Normal                                              ;A8D86F;
 
+%anchor($A8D871)
 BullConstants_AngleToMove:
 ; Angle to move when shot by non-damaging projectile
   .upFacingRight:
@@ -9377,10 +10030,12 @@ BullConstants_AngleToMove:
   .upFacingLeft:
     dw $00C0                                                             ;A8D883;
 
+%anchor($A8D885)
 BullConstants_MaxSpeeds:
 ; Max speeds. Indexed by [enemy parameter 2] * 2
     dw $03FF,$04FF,$05FF,$06FF,$07FF,$08FF,$09FF,$0AFF                   ;A8D885;
 
+%anchor($A8D895)
 BullAccelerationIntervalTable:
 ; Indexed by [enemy parameter 1] * 4
 ;        _________ Acceleration interval timer reset value
@@ -9404,6 +10059,7 @@ BullAccelerationIntervalTable:
     dw $000F,$0006
 
 
+%anchor($A8D8C9)
 InitAI_Bull:
     LDX.W $0E54                                                          ;A8D8C9;
     LDA.W #$0001                                                         ;A8D8CC;
@@ -9432,6 +10088,7 @@ InitAI_Bull:
     RTL                                                                  ;A8D90A;
 
 
+%anchor($A8D90B)
 MainAI_Bull:
     LDX.W $0E54                                                          ;A8D90B;
     LDA.L $7E780E,X                                                      ;A8D90E;
@@ -9448,6 +10105,7 @@ MainAI_Bull:
     RTL                                                                  ;A8D92A;
 
 
+%anchor($A8D92B)
 Function_Bull_MovementDelay:
     LDX.W $0E54                                                          ;A8D92B;
     DEC.W $0FB0,X                                                        ;A8D92E;
@@ -9461,6 +10119,7 @@ Function_Bull_MovementDelay:
     RTS                                                                  ;A8D93F;
 
 
+%anchor($A8D940)
 Function_Bull_TargetSamus:
     LDX.W $0E54                                                          ;A8D940;
     JSL.L CalculateAngleOfSamusFromEnemy                                 ;A8D943;
@@ -9476,6 +10135,7 @@ Function_Bull_TargetSamus:
     RTS                                                                  ;A8D962;
 
 
+%anchor($A8D963)
 Function_Bull_Accelerating:
     LDX.W $0E54                                                          ;A8D963;
     LDA.W $0FAE,X                                                        ;A8D966;
@@ -9490,6 +10150,7 @@ Function_Bull_Accelerating:
     RTS                                                                  ;A8D97B;
 
 
+%anchor($A8D97C)
 Function_Bull_Decelerating:
     LDX.W $0E54                                                          ;A8D97C;
     LDA.W $0FAE,X                                                        ;A8D97F;
@@ -9516,6 +10177,7 @@ Function_Bull_Decelerating:
     RTS                                                                  ;A8D9A9;
 
 
+%anchor($A8D9AA)
 TriggerBullDecelerationIfTooFarOffTarget:
     LDX.W $0E54                                                          ;A8D9AA;
     JSL.L CalculateAngleOfSamusFromEnemy                                 ;A8D9AD;
@@ -9538,6 +10200,7 @@ TriggerBullDecelerationIfTooFarOffTarget:
     RTS                                                                  ;A8D9DA;
 
 
+%anchor($A8D9DB)
 BullXMovement:
     LDX.W $0E54                                                          ;A8D9DB;
     STZ.B $1A                                                            ;A8D9DE;
@@ -9579,6 +10242,7 @@ BullXMovement:
     RTS                                                                  ;A8DA27;
 
 
+%anchor($A8DA28)
 BullYMovement:
     LDX.W $0E54                                                          ;A8DA28;
     STZ.B $1A                                                            ;A8DA2B;
@@ -9618,6 +10282,7 @@ BullYMovement:
     RTS                                                                  ;A8DA70;
 
 
+%anchor($A8DA71)
 AccelerateBull:
     DEC.W $0FB2,X                                                        ;A8DA71;
     BNE .return                                                          ;A8DA74;
@@ -9636,6 +10301,7 @@ AccelerateBull:
     RTS                                                                  ;A8DA91;
 
 
+%anchor($A8DA92)
 DecelerateBull:
     DEC.W $0FB2,X                                                        ;A8DA92;
     BNE .return                                                          ;A8DA95;
@@ -9654,6 +10320,7 @@ DecelerateBull:
     RTS                                                                  ;A8DAB2;
 
 
+%anchor($A8DAB3)
 Math_24Bit_UnsignedMultiplication_A8DAB3:
     PHP                                                                  ;A8DAB3;
     SEP #$20                                                             ;A8DAB4;
@@ -9694,6 +10361,7 @@ Math_24Bit_UnsignedMultiplication_A8DAB3:
     RTS                                                                  ;A8DAF5;
 
 
+%anchor($A8DAF6)
 Negate_1E_1C_A8DAF6:
     LDA.B $1C                                                            ;A8DAF6;
     BNE .nonZero                                                         ;A8DAF8;
@@ -9718,6 +10386,7 @@ Negate_1E_1C_A8DAF6:
     RTS                                                                  ;A8DB13;
 
 
+%anchor($A8DB14)
 EnemyShot_Bull:
     LDX.W $0E54                                                          ;A8DB14;
     LDA.W $0F8C,X                                                        ;A8DB17;
@@ -9761,6 +10430,7 @@ EnemyShot_Bull:
     RTL                                                                  ;A8DB75;
 
 
+%anchor($A8DB76)
 Spritemap_Bull_0:
     dw $0004                                                             ;A8DB76;
     %spritemapEntry(1, $1F8, $00, 0, 0, 2, 0, $10A)
@@ -9768,6 +10438,7 @@ Spritemap_Bull_0:
     %spritemapEntry(1, $1F8, $F0, 0, 0, 2, 0, $107)
     %spritemapEntry(1, $1F0, $F0, 0, 0, 2, 0, $106)
 
+%anchor($A8DB8C)
 Spritemap_Bull_1:
     dw $0004                                                             ;A8DB8C;
     %spritemapEntry(1, $1F8, $00, 0, 0, 2, 0, $10D)
@@ -9775,6 +10446,7 @@ Spritemap_Bull_1:
     %spritemapEntry(1, $1F8, $F0, 0, 0, 2, 0, $104)
     %spritemapEntry(1, $1F0, $F0, 0, 0, 2, 0, $103)
 
+%anchor($A8DBA2)
 Spritemap_Bull_2:
     dw $0007                                                             ;A8DBA2;
     %spritemapEntry(0, $00, $08, 0, 0, 2, 0, $11F)
@@ -9786,13 +10458,16 @@ Spritemap_Bull_2:
     %spritemapEntry(1, $1F0, $F0, 0, 0, 2, 0, $100)
 
 
+%anchor($A8DBC7)
 Palette_Alcoon:
     dw $3800,$02FF,$01BF,$000F,$0008,$01BF,$011B,$00BA                   ;A8DBC7;
     dw $0011,$5A5C,$41B4,$290D,$1065,$03FF,$0237,$00D1                   ;A8DBD7;
 
+%anchor($A8DBE7)
 InstList_Alcoon_FacingLeft_Walking_0:
     dw Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision           ;A8DBE7;
 
+%anchor($A8DBE9)
 InstList_Alcoon_FacingLeft_Walking_1:
     dw $000A,Spritemap_Alcoon_FacingLeft_FrontFootForward                ;A8DBE9;
     dw Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision           ;A8DBED;
@@ -9804,6 +10479,7 @@ InstList_Alcoon_FacingLeft_Walking_1:
     dw Instruction_Common_GotoY                                          ;A8DBFF;
     dw InstList_Alcoon_FacingLeft_Walking_0                              ;A8DC01;
 
+%anchor($A8DC03)
 InstList_Alcoon_FacingLeft_SpawnFireballs:
     dw $0014,Spritemap_Alcoon_FacingLeft_WingFullyExtended_BackFootFoward ;A8DC03;
     dw $0009,Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging ;A8DC07;
@@ -9826,17 +10502,21 @@ InstList_Alcoon_FacingLeft_SpawnFireballs:
     dw Instruction_Alcoon_StartWalking                                   ;A8DC45;
     dw $0001,Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit      ;A8DC47;
 
+%anchor($A8DC4B)
 InstList_Alcoon_FacingLeft_Airborne_LookingUp:
     dw $7FFF,UNUSED_Spritemap_Alcoon_FacingLeft_LookingUp_A8E0BB         ;A8DC4B;
     dw Instruction_Common_Sleep                                          ;A8DC4F;
 
+%anchor($A8DC51)
 InstList_Alcoon_FacingLeft_Airborne_LookingForward:
     dw $7FFF,Spritemap_Alcoon_FacingLeft_FeetTogether_BackFootForward    ;A8DC51;
     dw Instruction_Common_Sleep                                          ;A8DC55;
 
+%anchor($A8DC57)
 InstList_Alcoon_FacingRight_Walking_0:
     dw Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision           ;A8DC57;
 
+%anchor($A8DC59)
 InstList_Alcoon_FacingRight_Walking_1:
     dw $000A,Spritemap_Alcoon_FacingRight_FrontFootFoward                ;A8DC59;
     dw Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision           ;A8DC5D;
@@ -9848,6 +10528,7 @@ InstList_Alcoon_FacingRight_Walking_1:
     dw Instruction_Common_GotoY                                          ;A8DC6F;
     dw InstList_Alcoon_FacingRight_Walking_0                             ;A8DC71;
 
+%anchor($A8DC73)
 InstList_Alcoon_FacingRight_SpawnFireballs:
     dw $0014,Spritemap_Alcoon_FaceRight_WingFullyExtended_BackFootForward ;A8DC73;
     dw $0009,Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging ;A8DC77;
@@ -9870,25 +10551,31 @@ InstList_Alcoon_FacingRight_SpawnFireballs:
     dw Instruction_Alcoon_StartWalking                                   ;A8DCB5;
     dw $0001,Spritemap_Alcoon_FacingRight_WingExtended_MouthJustSpit     ;A8DCB7;
 
+%anchor($A8DCBB)
 InstList_Alcoon_FacingRight_Airborne_LookingUp:
     dw $7FFF,Spritemap_Alcoon_FacingRight_LookingUp                      ;A8DCBB;
     dw Instruction_Common_Sleep                                          ;A8DCBF;
 
+%anchor($A8DCC1)
 InstList_Alcoon_FacingRight_Airborne_LookingForward:
     dw $7FFF,Spritemap_Alcoon_FacingRight_FrontFootUp                    ;A8DCC1;
     dw Instruction_Common_Sleep                                          ;A8DCC5;
 
+%anchor($A8DCC7)
 AlcoonConstants_XThresholdToEmerge:
     dw $0050                                                             ;A8DCC7;
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A8DCC9)
 UNUSED_AlcoonConstants_A8DCC9:
     dw $0040                                                             ;A8DCC9;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+%anchor($A8DCCB)
 AlcoonConstants_XThresholdToHide:
     dw $0070                                                             ;A8DCCB;
 
+%anchor($A8DCCD)
 InitAI_Alcoon:
     LDX.W $0E54                                                          ;A8DCCD;
     LDA.W #$0000                                                         ;A8DCD0;
@@ -9936,6 +10623,7 @@ InitAI_Alcoon:
     RTL                                                                  ;A8DD36;
 
 
+%anchor($A8DD37)
 SetupAlcoonJumpMovement:
     LDA.W #$FFF4                                                         ;A8DD37;
     STA.W $0FAA,X                                                        ;A8DD3A;
@@ -9949,6 +10637,7 @@ SetupAlcoonJumpMovement:
     RTS                                                                  ;A8DD54;
 
 
+%anchor($A8DD55)
 AlcoonYAcceleration:
     LDA.W $0FAC,X                                                        ;A8DD55;
     CLC                                                                  ;A8DD58;
@@ -9960,11 +10649,13 @@ AlcoonYAcceleration:
     RTS                                                                  ;A8DD6A;
 
 
+%anchor($A8DD6B)
 MainAI_Alcoon:
     LDX.W $0E54                                                          ;A8DD6B;
     JMP.W ($0FA8,X)                                                      ;A8DD6E;
 
 
+%anchor($A8DD71)
 Function_Alcoon_WaitForSamusToGetNear:
     LDA.L $7E7806,X                                                      ;A8DD71;
     SEC                                                                  ;A8DD75;
@@ -10014,6 +10705,7 @@ Function_Alcoon_WaitForSamusToGetNear:
     RTL                                                                  ;A8DDC5;
 
 
+%anchor($A8DDC6)
 Function_Alcoon_Emerging_Rising:
     LDA.W $0FAC,X                                                        ;A8DDC6;
     CLC                                                                  ;A8DDC9;
@@ -10048,6 +10740,7 @@ Function_Alcoon_Emerging_Rising:
     BRA .falling                                                         ;A8DE03;
 
 
+%anchor($A8DE05)
 Function_Alcoon_Emerging_Falling:
     LDA.W $0FAC,X                                                        ;A8DE05;
     STA.B $12                                                            ;A8DE08;
@@ -10084,6 +10777,7 @@ Function_Alcoon_Emerging_Falling:
     RTL                                                                  ;A8DE4A;
 
 
+%anchor($A8DE4B)
 Function_Alcoon_MoveHorizontally_SpitFireballsAtSamus:
     STZ.B $12                                                            ;A8DE4B;
     LDA.W #$0002                                                         ;A8DE4D;
@@ -10157,10 +10851,12 @@ Function_Alcoon_MoveHorizontally_SpitFireballsAtSamus:
     RTL                                                                  ;A8DECB;
 
 
+%anchor($A8DECC)
 RTL_A8DECC:
     RTL                                                                  ;A8DECC;
 
 
+%anchor($A8DECD)
 Function_Alcoon_Hiding_Rising:
     LDA.W $0FAC,X                                                        ;A8DECD;
     CLC                                                                  ;A8DED0;
@@ -10178,6 +10874,7 @@ Function_Alcoon_Hiding_Rising:
     RTL                                                                  ;A8DEEB;
 
 
+%anchor($A8DEEC)
 Function_Alcoon_Hiding_Falling:
     LDA.W $0FAC,X                                                        ;A8DEEC;
     CLC                                                                  ;A8DEEF;
@@ -10202,10 +10899,12 @@ Function_Alcoon_Hiding_Falling:
     RTL                                                                  ;A8DF1B;
 
 
+%anchor($A8DF1C)
 Instruction_Alcoon_SpawnAlcoonFireballUpward:
     PHY                                                                  ;A8DF1C;
     LDA.W #$0000                                                         ;A8DF1D;
 
+%anchor($A8DF20)
 Instruction_Alcoon_SpawnAlcoonFireballUpward_loop:
     LDY.W #EnemyProjectile_AlcoonFireball                                ;A8DF20;
     LDX.W $0E54                                                          ;A8DF23;
@@ -10216,18 +10915,21 @@ Instruction_Alcoon_SpawnAlcoonFireballUpward_loop:
     RTL                                                                  ;A8DF32;
 
 
+%anchor($A8DF33)
 Instruction_Alcoon_SpawnAlcoonFireballHorizontally:
     PHY                                                                  ;A8DF33;
     LDA.W #$0002                                                         ;A8DF34;
     BRA Instruction_Alcoon_SpawnAlcoonFireballUpward_loop                ;A8DF37;
 
 
+%anchor($A8DF39)
 Instruction_Alcoon_SpawnAlcoonFireballDownward:
     PHY                                                                  ;A8DF39;
     LDA.W #$0004                                                         ;A8DF3A;
     BRA Instruction_Alcoon_SpawnAlcoonFireballUpward_loop                ;A8DF3D;
 
 
+%anchor($A8DF3F)
 Instruction_Alcoon_StartWalking:
     LDX.W $0E54                                                          ;A8DF3F;
     LDA.W #Function_Alcoon_MoveHorizontally_SpitFireballsAtSamus         ;A8DF42;
@@ -10247,6 +10949,7 @@ Instruction_Alcoon_StartWalking:
     RTL                                                                  ;A8DF62;
 
 
+%anchor($A8DF63)
 Instruction_Alcoon_DecrementStepCounter_MoveHorizontally:
     LDX.W $0E54                                                          ;A8DF63;
     LDA.L $7E7808,X                                                      ;A8DF66;
@@ -10254,6 +10957,7 @@ Instruction_Alcoon_DecrementStepCounter_MoveHorizontally:
     DEC A                                                                ;A8DF6C;
     STA.L $7E7808,X                                                      ;A8DF6D; fallthrough to Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision
 
+%anchor($A8DF71)
 Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision:
     PHY                                                                  ;A8DF71;
     LDX.W $0E54                                                          ;A8DF72;
@@ -10281,17 +10985,20 @@ Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision:
     RTL                                                                  ;A8DF9B;
 
 
+%anchor($A8DF9C)
 RTL_A8DF9C:
     RTL                                                                  ;A8DF9C;
 
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A8DF9D)
 UNUSED_NormalEnemyShotAI_A8DF9D:
     JSL.L NormalEnemyShotAI                                              ;A8DF9D;
     RTL                                                                  ;A8DFA1;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+%anchor($A8DFA2)
 Spritemap_Alcoon_FacingLeft_FrontFootForward:
     dw $0006                                                             ;A8DFA2;
     %spritemapEntry(1, $1FD, $F3, 0, 0, 2, 0, $124)
@@ -10301,6 +11008,7 @@ Spritemap_Alcoon_FacingLeft_FrontFootForward:
     %spritemapEntry(0, $1ED, $F0, 0, 0, 2, 0, $12A)
     %spritemapEntry(1, $1F5, $E8, 0, 0, 2, 0, $100)
 
+%anchor($A8DFC2)
 Spritemap_Alcoon_FacingLeft_FeetTogether_FrontFootDown:
     dw $0006                                                             ;A8DFC2;
     %spritemapEntry(1, $04, $FB, 0, 0, 2, 0, $10E)
@@ -10310,6 +11018,7 @@ Spritemap_Alcoon_FacingLeft_FeetTogether_FrontFootDown:
     %spritemapEntry(0, $1EE, $EF, 0, 0, 2, 0, $12A)
     %spritemapEntry(1, $1F6, $E7, 0, 0, 2, 0, $100)
 
+%anchor($A8DFE2)
 Spritemap_Alcoon_FacingLeft_FrontFootBack:
     dw $0007                                                             ;A8DFE2;
     %spritemapEntry(0, $1FD, $FB, 0, 0, 2, 0, $13D)
@@ -10320,6 +11029,7 @@ Spritemap_Alcoon_FacingLeft_FrontFootBack:
     %spritemapEntry(0, $1EF, $F0, 0, 0, 2, 0, $12A)
     %spritemapEntry(1, $1F7, $E8, 0, 0, 2, 0, $100)
 
+%anchor($A8E007)
 Spritemap_Alcoon_FacingLeft_FeetTogether_BackFootForward:
     dw $0006                                                             ;A8E007;
     %spritemapEntry(1, $04, $FB, 0, 0, 2, 0, $122)
@@ -10329,6 +11039,7 @@ Spritemap_Alcoon_FacingLeft_FeetTogether_BackFootForward:
     %spritemapEntry(0, $1EE, $EF, 0, 0, 2, 0, $12A)
     %spritemapEntry(1, $1F6, $E7, 0, 0, 2, 0, $100)
 
+%anchor($A8E027)
 Spritemap_Alcoon_FacingLeft_WingFullyExtended_BackFootFoward:
     dw $0006                                                             ;A8E027;
     %spritemapEntry(1, $1FD, $F3, 0, 0, 2, 0, $124)
@@ -10338,6 +11049,7 @@ Spritemap_Alcoon_FacingLeft_WingFullyExtended_BackFootFoward:
     %spritemapEntry(0, $1EE, $F0, 0, 0, 2, 0, $12A)
     %spritemapEntry(1, $1F6, $E8, 0, 0, 2, 0, $100)
 
+%anchor($A8E047)
 Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging:
     dw $0007                                                             ;A8E047;
     %spritemapEntry(1, $1FE, $F3, 0, 0, 2, 0, $126)
@@ -10348,6 +11060,7 @@ Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging:
     %spritemapEntry(0, $1F0, $F0, 0, 0, 2, 0, $12A)
     %spritemapEntry(1, $1F7, $E8, 0, 0, 2, 0, $100)
 
+%anchor($A8E06C)
 Spritemap_Alcoon_FacingLeft_WingForward_AboutToSpit:
     dw $0009                                                             ;A8E06C;
     %spritemapEntry(0, $00, $F0, 0, 0, 2, 0, $13B)
@@ -10360,6 +11073,7 @@ Spritemap_Alcoon_FacingLeft_WingForward_AboutToSpit:
     %spritemapEntry(0, $1F2, $F0, 0, 0, 2, 0, $12A)
     %spritemapEntry(1, $1F8, $E8, 0, 0, 2, 0, $100)
 
+%anchor($A8E09B)
 Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit:
     dw $0006                                                             ;A8E09B;
     %spritemapEntry(1, $1FD, $F3, 0, 0, 2, 0, $124)
@@ -10370,6 +11084,7 @@ Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit:
     %spritemapEntry(1, $1F6, $E8, 0, 0, 2, 0, $100)
 
 if  !FEATURE_KEEP_UNREFERENCED
+%anchor($A8E0BB)
 UNUSED_Spritemap_Alcoon_FacingLeft_LookingUp_A8E0BB:
     dw $0006                                                             ;A8E0BB;
     %spritemapEntry(1, $1FD, $F3, 0, 0, 2, 0, $124)
@@ -10380,6 +11095,7 @@ UNUSED_Spritemap_Alcoon_FacingLeft_LookingUp_A8E0BB:
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10A)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+%anchor($A8E0DB)
 Spritemap_Alcoon_FacingRight_FrontFootFoward:
     dw $0006                                                             ;A8E0DB;
     %spritemapEntry(1, $1F3, $F3, 0, 1, 2, 0, $124)
@@ -10389,6 +11105,7 @@ Spritemap_Alcoon_FacingRight_FrontFootFoward:
     %spritemapEntry(0, $0B, $F0, 0, 1, 2, 0, $12A)
     %spritemapEntry(1, $1FB, $E8, 0, 1, 2, 0, $100)
 
+%anchor($A8E0FB)
 Spritemap_Alcoon_FacingRight_FeetTogether_FrontFootBack:
     dw $0006                                                             ;A8E0FB;
     %spritemapEntry(1, $1EC, $FB, 0, 1, 2, 0, $10E)
@@ -10398,6 +11115,7 @@ Spritemap_Alcoon_FacingRight_FeetTogether_FrontFootBack:
     %spritemapEntry(0, $0A, $EF, 0, 1, 2, 0, $12A)
     %spritemapEntry(1, $1FA, $E7, 0, 1, 2, 0, $100)
 
+%anchor($A8E11B)
 Spritemap_Alcoon_FacingRight_FrontFootBack:
     dw $0007                                                             ;A8E11B;
     %spritemapEntry(0, $1FB, $FB, 0, 1, 2, 0, $13D)
@@ -10408,6 +11126,7 @@ Spritemap_Alcoon_FacingRight_FrontFootBack:
     %spritemapEntry(0, $09, $F0, 0, 1, 2, 0, $12A)
     %spritemapEntry(1, $1F9, $E8, 0, 1, 2, 0, $100)
 
+%anchor($A8E140)
 Spritemap_Alcoon_FacingRight_FrontFootUp:
     dw $0006                                                             ;A8E140;
     %spritemapEntry(1, $1EC, $FB, 0, 1, 2, 0, $122)
@@ -10417,6 +11136,7 @@ Spritemap_Alcoon_FacingRight_FrontFootUp:
     %spritemapEntry(0, $0A, $EF, 0, 1, 2, 0, $12A)
     %spritemapEntry(1, $1FA, $E7, 0, 1, 2, 0, $100)
 
+%anchor($A8E160)
 Spritemap_Alcoon_FaceRight_WingFullyExtended_BackFootForward:
     dw $0006                                                             ;A8E160;
     %spritemapEntry(1, $1F3, $F3, 0, 1, 2, 0, $124)
@@ -10426,6 +11146,7 @@ Spritemap_Alcoon_FaceRight_WingFullyExtended_BackFootForward:
     %spritemapEntry(0, $0A, $F0, 0, 1, 2, 0, $12A)
     %spritemapEntry(1, $1FA, $E8, 0, 1, 2, 0, $100)
 
+%anchor($A8E180)
 Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging:
     dw $0007                                                             ;A8E180;
     %spritemapEntry(1, $1F2, $F3, 0, 1, 2, 0, $126)
@@ -10436,6 +11157,7 @@ Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging:
     %spritemapEntry(0, $08, $F0, 0, 1, 2, 0, $12A)
     %spritemapEntry(1, $1F9, $E8, 0, 1, 2, 0, $100)
 
+%anchor($A8E1A5)
 Spritemap_Alcoon_FacingRight_WingForward_AboutToSpit:
     dw $0009                                                             ;A8E1A5;
     %spritemapEntry(0, $1F8, $F0, 0, 1, 2, 0, $13B)
@@ -10448,6 +11170,7 @@ Spritemap_Alcoon_FacingRight_WingForward_AboutToSpit:
     %spritemapEntry(0, $06, $F0, 0, 1, 2, 0, $12A)
     %spritemapEntry(1, $1F8, $E8, 0, 1, 2, 0, $100)
 
+%anchor($A8E1D4)
 Spritemap_Alcoon_FacingRight_WingExtended_MouthJustSpit:
     dw $0006                                                             ;A8E1D4;
     %spritemapEntry(1, $1F3, $F3, 0, 1, 2, 0, $124)
@@ -10457,6 +11180,7 @@ Spritemap_Alcoon_FacingRight_WingExtended_MouthJustSpit:
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10A)
     %spritemapEntry(1, $1FA, $E8, 0, 1, 2, 0, $100)
 
+%anchor($A8E1F4)
 Spritemap_Alcoon_FacingRight_LookingUp:
     dw $0006                                                             ;A8E1F4;
     %spritemapEntry(1, $1F3, $F3, 0, 1, 2, 0, $124)
@@ -10467,29 +11191,35 @@ Spritemap_Alcoon_FacingRight_LookingUp:
     %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10A)
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A8E214)
 UNUSED_Spritemap_Alcoon_FireballProjectile_0_A8E214:
     dw $0001                                                             ;A8E214;
     %spritemapEntry(0, $1FC, $FC, 0, 1, 2, 0, $12C)
 
+%anchor($A8E21B)
 UNUSED_Spritemap_Alcoon_FireballProjectile_1_A8E21B:
     dw $0001                                                             ;A8E21B;
     %spritemapEntry(0, $1FC, $FC, 1, 1, 2, 0, $12D)
 
+%anchor($A8E222)
 UNUSED_Spritemap_Alcoon_FireballProjectile_2_A8E222:
     dw $0001                                                             ;A8E222;
     %spritemapEntry(0, $1FC, $FC, 1, 0, 2, 0, $12C)
 
+%anchor($A8E229)
 UNUSED_Spritemap_Alcoon_FireballProjectile_3_A8E229:
     dw $0001                                                             ;A8E229;
     %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 0, $12D)
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+%anchor($A8E230)
 Palette_Atomic:
     dw $3800,$7FFF,$56E0,$3180,$18C0,$6BC0,$5EC0,$4A20                   ;A8E230;
     dw $35A0,$7FFF,$039C,$0237,$00D1,$03FF,$0237,$00D1                   ;A8E240;
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A8E250)
 UNUSED_Palettes_Atomic_A8E250:
     dw $3800,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;A8E250;
     dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;A8E260;
@@ -10505,6 +11235,7 @@ UNUSED_Palettes_Atomic_A8E250:
     dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;A8E300;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+%anchor($A8E310)
 InstList_Atomic_SpinningUpRight:
     dw $0008,Spritemap_Atomic_0                                          ;A8E310;
     dw $0008,Spritemap_Atomic_1                                          ;A8E314;
@@ -10515,6 +11246,7 @@ InstList_Atomic_SpinningUpRight:
     dw Instruction_Common_GotoY                                          ;A8E328;
     dw InstList_Atomic_SpinningUpRight                                   ;A8E32A;
 
+%anchor($A8E32C)
 InstList_Atomic_SpinningUpLeft:
     dw $0008,Spritemap_Atomic_6                                          ;A8E32C;
     dw $0008,Spritemap_Atomic_7                                          ;A8E330;
@@ -10525,6 +11257,7 @@ InstList_Atomic_SpinningUpLeft:
     dw Instruction_Common_GotoY                                          ;A8E344;
     dw InstList_Atomic_SpinningUpLeft                                    ;A8E346;
 
+%anchor($A8E348)
 InstList_Atomic_SpinningDownLeft:
     dw $0008,Spritemap_Atomic_5                                          ;A8E348;
     dw $0008,Spritemap_Atomic_4                                          ;A8E34C;
@@ -10535,6 +11268,7 @@ InstList_Atomic_SpinningDownLeft:
     dw Instruction_Common_GotoY                                          ;A8E360;
     dw InstList_Atomic_SpinningDownLeft                                  ;A8E362;
 
+%anchor($A8E364)
 InstList_Atomic_SpinningDownRight:
     dw $0008,Spritemap_Atomic_B                                          ;A8E364;
     dw $0008,Spritemap_Atomic_A                                          ;A8E368;
@@ -10545,6 +11279,7 @@ InstList_Atomic_SpinningDownRight:
     dw Instruction_Common_GotoY                                          ;A8E37C;
     dw InstList_Atomic_SpinningDownRight                                 ;A8E37E;
 
+%anchor($A8E380)
 AtomicInstListPointers:
 ; Indexed by [enemy parameter 1] * 2
     dw InstList_Atomic_SpinningUpRight                                   ;A8E380;
@@ -10553,6 +11288,7 @@ AtomicInstListPointers:
     dw InstList_Atomic_SpinningDownRight                                 ;A8E386;
 
 
+%anchor($A8E388)
 InitAI_Atomic:
     LDX.W $0E54                                                          ;A8E388;
     LDA.W #$0001                                                         ;A8E38B;
@@ -10579,6 +11315,7 @@ InitAI_Atomic:
     RTL                                                                  ;A8E3C2;
 
 
+%anchor($A8E3C3)
 MainAI_Atomic:
     LDX.W $0E54                                                          ;A8E3C3;
     JSR.W ChooseAtomicYMovementFunction                                  ;A8E3C6;
@@ -10590,6 +11327,7 @@ MainAI_Atomic:
     RTL                                                                  ;A8E3D8;
 
 
+%anchor($A8E3D9)
 ChooseAtomicYMovementFunction:
     LDX.W $0E54                                                          ;A8E3D9;
     LDA.W #Function_Atomic_MoveUp                                        ;A8E3DC;
@@ -10603,6 +11341,7 @@ ChooseAtomicYMovementFunction:
     RTS                                                                  ;A8E3EE;
 
 
+%anchor($A8E3EF)
 ChooseAtomicXMovementFunction:
     LDX.W $0E54                                                          ;A8E3EF;
     LDA.W #Function_Atomic_MoveLeft                                      ;A8E3F2;
@@ -10616,6 +11355,7 @@ ChooseAtomicXMovementFunction:
     RTS                                                                  ;A8E404;
 
 
+%anchor($A8E405)
 Function_Atomic_MoveUp:
     LDX.W $0E54                                                          ;A8E405;
     LDA.W $0F7E,X                                                        ;A8E408;
@@ -10633,6 +11373,7 @@ Function_Atomic_MoveUp:
     RTS                                                                  ;A8E423;
 
 
+%anchor($A8E424)
 Function_Atomic_MoveDown:
     LDX.W $0E54                                                          ;A8E424;
     LDA.W $0F7E,X                                                        ;A8E427;
@@ -10650,6 +11391,7 @@ Function_Atomic_MoveDown:
     RTS                                                                  ;A8E442;
 
 
+%anchor($A8E443)
 Function_Atomic_MoveLeft:
     LDX.W $0E54                                                          ;A8E443;
     LDA.W $0F7A,X                                                        ;A8E446;
@@ -10667,6 +11409,7 @@ Function_Atomic_MoveLeft:
     RTS                                                                  ;A8E461;
 
 
+%anchor($A8E462)
 Function_Atomic_MoveRight:
     LDX.W $0E54                                                          ;A8E462;
     LDA.W $0F7A,X                                                        ;A8E465;
@@ -10685,17 +11428,20 @@ Function_Atomic_MoveRight:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A8E481)
 UNUSED_Atomic_GetEnemyIndex_A8E481:
     LDX.W $0E54                                                          ;A8E481;
     RTL                                                                  ;A8E484;
 
 
+%anchor($A8E485)
 UNUSED_Atomic_GetEnemyIndex_A8E485:
     LDX.W $0E54                                                          ;A8E485;
     RTL                                                                  ;A8E488;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+%anchor($A8E489)
 Spritemap_Atomic_0:
     dw $0004                                                             ;A8E489;
     %spritemapEntry(0, $1F8, $00, 0, 0, 2, 0, $102)
@@ -10703,6 +11449,7 @@ Spritemap_Atomic_0:
     %spritemapEntry(0, $1FC, $F4, 0, 0, 2, 0, $103)
     %spritemapEntry(0, $04, $FC, 0, 0, 2, 0, $103)
 
+%anchor($A8E49F)
 Spritemap_Atomic_1:
     dw $0004                                                             ;A8E49F;
     %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 0, $102)
@@ -10710,6 +11457,7 @@ Spritemap_Atomic_1:
     %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 0, $103)
     %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $103)
 
+%anchor($A8E4B5)
 Spritemap_Atomic_2:
     dw $0004                                                             ;A8E4B5;
     %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $102)
@@ -10717,6 +11465,7 @@ Spritemap_Atomic_2:
     %spritemapEntry(0, $1F4, $FC, 0, 0, 2, 0, $103)
     %spritemapEntry(0, $1FC, $04, 0, 0, 2, 0, $103)
 
+%anchor($A8E4CB)
 Spritemap_Atomic_3:
     dw $0004                                                             ;A8E4CB;
     %spritemapEntry(0, $1F4, $FC, 0, 0, 2, 0, $102)
@@ -10724,12 +11473,14 @@ Spritemap_Atomic_3:
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
     %spritemapEntry(0, $01, $F7, 0, 0, 2, 0, $103)
 
+%anchor($A8E4E1)
 Spritemap_Atomic_4:
     dw $0003                                                             ;A8E4E1;
     %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 0, $102)
     %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $102)
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
 
+%anchor($A8E4F2)
 Spritemap_Atomic_5:
     dw $0004                                                             ;A8E4F2;
     %spritemapEntry(0, $1FC, $F4, 0, 0, 2, 0, $102)
@@ -10737,6 +11488,7 @@ Spritemap_Atomic_5:
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
     %spritemapEntry(0, $1F7, $01, 0, 0, 2, 0, $103)
 
+%anchor($A8E508)
 Spritemap_Atomic_6:
     dw $0004                                                             ;A8E508;
     %spritemapEntry(0, $00, $00, 0, 0, 2, 0, $102)
@@ -10744,6 +11496,7 @@ Spritemap_Atomic_6:
     %spritemapEntry(0, $1FC, $F4, 0, 0, 2, 0, $103)
     %spritemapEntry(0, $1F4, $FC, 0, 0, 2, 0, $103)
 
+%anchor($A8E51E)
 Spritemap_Atomic_7:
     dw $0004                                                             ;A8E51E;
     %spritemapEntry(0, $1FC, $FC, 0, 0, 2, 0, $102)
@@ -10751,6 +11504,7 @@ Spritemap_Atomic_7:
     %spritemapEntry(0, $00, $F8, 0, 1, 2, 0, $103)
     %spritemapEntry(0, $1F8, $00, 0, 1, 2, 0, $103)
 
+%anchor($A8E534)
 Spritemap_Atomic_8:
     dw $0004                                                             ;A8E534;
     %spritemapEntry(0, $1F8, $F8, 0, 0, 2, 0, $102)
@@ -10758,6 +11512,7 @@ Spritemap_Atomic_8:
     %spritemapEntry(0, $04, $FC, 0, 0, 2, 0, $103)
     %spritemapEntry(0, $1FC, $04, 0, 0, 2, 0, $103)
 
+%anchor($A8E54A)
 Spritemap_Atomic_9:
     dw $0004                                                             ;A8E54A;
     %spritemapEntry(0, $04, $FC, 0, 0, 2, 0, $102)
@@ -10765,12 +11520,14 @@ Spritemap_Atomic_9:
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
     %spritemapEntry(0, $1F7, $F7, 0, 0, 2, 0, $103)
 
+%anchor($A8E560)
 Spritemap_Atomic_A:
     dw $0003                                                             ;A8E560;
     %spritemapEntry(0, $00, $F8, 0, 0, 2, 0, $102)
     %spritemapEntry(0, $1F8, $00, 0, 0, 2, 0, $102)
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
 
+%anchor($A8E571)
 Spritemap_Atomic_B:
     dw $0004                                                             ;A8E571;
     %spritemapEntry(0, $1FC, $F4, 0, 0, 2, 0, $102)
@@ -10779,10 +11536,12 @@ Spritemap_Atomic_B:
     %spritemapEntry(0, $01, $01, 0, 0, 2, 0, $103)
 
 
+%anchor($A8E587)
 Palette_Spark:
     dw $3800,$7FFF,$3BE0,$2680,$1580,$6BFA,$4BF2,$2BEA                   ;A8E587;
     dw $03E0,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;A8E597;
 
+%anchor($A8E5A7)
 InstList_Spark_FlickerOn:
     dw Instruction_Spark_SetAsTangible                                   ;A8E5A7;
     dw $0001,Spritemap_Spark_Flickering_0                                ;A8E5A9;
@@ -10796,6 +11555,7 @@ InstList_Spark_FlickerOn:
     dw $0002,Spritemap_Spark_Flickering_2                                ;A8E5C9;
     dw $0002,Spritemap_Spark_Flickering_3                                ;A8E5CD;
 
+%anchor($A8E5D1)
 InstList_Spark_Constant:
     dw $0003,Spritemap_Spark_Constant_0                                  ;A8E5D1;
     dw $0003,Spritemap_Spark_Constant_1                                  ;A8E5D5;
@@ -10804,6 +11564,7 @@ InstList_Spark_Constant:
     dw Instruction_Common_GotoY                                          ;A8E5E1;
     dw InstList_Spark_Constant                                           ;A8E5E3;
 
+%anchor($A8E5E5)
 InstList_Spark_FlickerOut:
     dw $0001,Spritemap_Spark_Flickering_0                                ;A8E5E5;
     dw $0001,Spritemap_Spark_Flickering_0                                ;A8E5E9;
@@ -10816,6 +11577,7 @@ InstList_Spark_FlickerOut:
     dw Instruction_Spark_SetAsIntangible                                 ;A8E605;
     dw Instruction_CommonA8_Sleep                                        ;A8E607;
 
+%anchor($A8E609)
 InstList_Spark_EmitFallingSparks:
     dw $0003,Spritemap_Spark_Flickering_0                                ;A8E609;
     dw $0003,Spritemap_Spark_Flickering_1                                ;A8E60D;
@@ -10824,6 +11586,7 @@ InstList_Spark_EmitFallingSparks:
     dw Instruction_Common_GotoY                                          ;A8E619;
     dw InstList_Spark_EmitFallingSparks                                  ;A8E61B;
 
+%anchor($A8E61D)
 Instruction_Spark_SetAsIntangible:
     LDX.W $0E54                                                          ;A8E61D;
     LDA.W $0F86,X                                                        ;A8E620;
@@ -10832,6 +11595,7 @@ Instruction_Spark_SetAsIntangible:
     RTL                                                                  ;A8E629;
 
 
+%anchor($A8E62A)
 Instruction_Spark_SetAsTangible:
     LDX.W $0E54                                                          ;A8E62A;
     LDA.W $0F86,X                                                        ;A8E62D;
@@ -10840,6 +11604,7 @@ Instruction_Spark_SetAsTangible:
     RTL                                                                  ;A8E636;
 
 
+%anchor($A8E637)
 InitAI_Spark:
     LDX.W $0E54                                                          ;A8E637;
     LDA.W $0FB4,X                                                        ;A8E63A;
@@ -10884,15 +11649,18 @@ InitAI_Spark:
     dw Function_Spark_Intermittent_Active                                ;A8E68A;
     dw Function_Spark_EmitFallingSparks                                  ;A8E68C;
 
+%anchor($A8E68E)
 MainAI_Spark:
     LDX.W $0E54                                                          ;A8E68E;
     JMP.W ($0FAA,X)                                                      ;A8E691;
 
 
+%anchor($A8E694)
 RTL_A8E694:
     RTL                                                                  ;A8E694;
 
 
+%anchor($A8E695)
 Function_Spark_Intermittent_Inactive:
     LDA.W $0FB2,X                                                        ;A8E695;
     DEC A                                                                ;A8E698;
@@ -10913,6 +11681,7 @@ Function_Spark_Intermittent_Inactive:
     RTL                                                                  ;A8E6B6;
 
 
+%anchor($A8E6B7)
 Function_Spark_Intermittent_Active:
     LDA.W $0FB2,X                                                        ;A8E6B7;
     DEC A                                                                ;A8E6BA;
@@ -10934,6 +11703,7 @@ Function_Spark_Intermittent_Active:
     RTL                                                                  ;A8E6DB;
 
 
+%anchor($A8E6DC)
 Function_Spark_EmitFallingSparks:
     LDA.W $0FB2,X                                                        ;A8E6DC;
     DEC A                                                                ;A8E6DF;
@@ -10951,6 +11721,7 @@ Function_Spark_EmitFallingSparks:
     RTL                                                                  ;A8E6F5;
 
 
+%anchor($A8E6F6)
 SetSparkFunctionTimer:
     LDA.W $0FB0,X                                                        ;A8E6F6;
     BPL .noRNG                                                           ;A8E6F9;
@@ -10966,10 +11737,12 @@ SetSparkFunctionTimer:
     RTS                                                                  ;A8E70C;
 
 
+%anchor($A8E70D)
 RTL_A8E70D:
     RTL                                                                  ;A8E70D;
 
 
+%anchor($A8E70E)
 EnemyShot_Spark:
     PHX                                                                  ;A8E70E;
     LDA.W $18A6                                                          ;A8E70F;
@@ -10982,26 +11755,31 @@ EnemyShot_Spark:
     RTL                                                                  ;A8E71E;
 
 
+%anchor($A8E71F)
 Spritemap_Spark_Constant_0:
     dw $0002                                                             ;A8E71F;
     %spritemapEntry(0, $1FC, $01, 0, 0, 3, 0, $103)
     %spritemapEntry(0, $1FC, $FC, 0, 0, 3, 0, $100)
 
+%anchor($A8E72B)
 Spritemap_Spark_Constant_1:
     dw $0002                                                             ;A8E72B;
     %spritemapEntry(0, $1FC, $06, 0, 1, 3, 0, $104)
     %spritemapEntry(0, $1FC, $FC, 0, 0, 3, 0, $101)
 
+%anchor($A8E737)
 Spritemap_Spark_Constant_2:
     dw $0002                                                             ;A8E737;
     %spritemapEntry(0, $1FC, $08, 0, 0, 3, 0, $105)
     %spritemapEntry(0, $1FC, $FC, 0, 0, 3, 0, $102)
 
+%anchor($A8E743)
 Spritemap_Spark_Constant_3:
     dw $0002                                                             ;A8E743;
     %spritemapEntry(0, $1FC, $0A, 0, 0, 3, 0, $106)
     %spritemapEntry(0, $1FC, $FC, 0, 1, 3, 0, $101)
 
+%anchor($A8E74F)
 Spritemap_Spark_Flickering_0:
     dw $0005                                                             ;A8E74F;
     %spritemapEntry(0, $02, $FE, 0, 0, 3, 0, $109)
@@ -11010,6 +11788,7 @@ Spritemap_Spark_Flickering_0:
     %spritemapEntry(0, $1FC, $03, 0, 0, 3, 0, $103)
     %spritemapEntry(0, $1FC, $FC, 0, 0, 3, 0, $100)
 
+%anchor($A8E76A)
 Spritemap_Spark_Flickering_1:
     dw $0005                                                             ;A8E76A;
     %spritemapEntry(0, $1F4, $FC, 0, 0, 3, 0, $109)
@@ -11018,6 +11797,7 @@ Spritemap_Spark_Flickering_1:
     %spritemapEntry(0, $1FC, $06, 0, 1, 3, 0, $104)
     %spritemapEntry(0, $1FC, $FC, 0, 0, 3, 0, $101)
 
+%anchor($A8E785)
 Spritemap_Spark_Flickering_2:
     dw $0004                                                             ;A8E785;
     %spritemapEntry(0, $1F4, $FC, 0, 0, 3, 0, $10A)
@@ -11025,6 +11805,7 @@ Spritemap_Spark_Flickering_2:
     %spritemapEntry(0, $1FC, $09, 0, 0, 3, 0, $105)
     %spritemapEntry(0, $1FC, $FC, 0, 0, 3, 0, $102)
 
+%anchor($A8E79B)
 Spritemap_Spark_Flickering_3:
     dw $0003                                                             ;A8E79B;
     %spritemapEntry(0, $04, $F4, 0, 0, 3, 0, $10A)
@@ -11032,10 +11813,12 @@ Spritemap_Spark_Flickering_3:
     %spritemapEntry(0, $1FC, $FC, 0, 1, 3, 0, $101)
 
 
+%anchor($A8E7AC)
 Palette_FaceBlock:
     dw $3800,$72B2,$71C7,$2461,$1840,$7A8E,$660B,$4D03                   ;A8E7AC;
     dw $30A4,$30A4,$2461,$1840,$0800,$0000,$0000,$0000                   ;A8E7BC;
 
+%anchor($A8E7CC)
 FaceBlockGlowColors:                                                     ;A8E7CC;
     dw $001F,$0012,$000A,$002B
     dw $051F,$0096,$0011,$0007
@@ -11046,22 +11829,26 @@ FaceBlockGlowColors:                                                     ;A8E7CC
     dw $051F,$0096,$0011,$0007
     dw $001F,$0012,$000A,$002B
 
+%anchor($A8E80C)
 InstList_FaceBlock_TurningLeft:
     dw $0030,Spritemap_FaceBlock_FacingForward                           ;A8E80C;
     dw $0010,Spritemap_FaceBlock_TurningLeft                             ;A8E810;
     dw $0010,Spritemap_FaceBlock_FacingLeft                              ;A8E814;
     dw Instruction_Common_Sleep                                          ;A8E818;
 
+%anchor($A8E81A)
 InstList_FaceBlock_TurningRight:
     dw $0030,Spritemap_FaceBlock_FacingForward                           ;A8E81A;
     dw $0010,Spritemap_FaceBlock_TurningRight                            ;A8E81E;
     dw $0010,Spritemap_FaceBlock_FacingRight                             ;A8E822;
     dw Instruction_Common_Sleep                                          ;A8E826;
 
+%anchor($A8E828)
 InstList_FaceBlock_FacingForward:
     dw $0001,Spritemap_FaceBlock_FacingForward                           ;A8E828;
     dw Instruction_Common_Sleep                                          ;A8E82C;
 
+%anchor($A8E82E)
 InitAI_FaceBlock:
     LDX.W $0E54                                                          ;A8E82E;
     LDA.W #InstList_FaceBlock_FacingForward                              ;A8E831;
@@ -11094,6 +11881,7 @@ InitAI_FaceBlock:
     RTL                                                                  ;A8E86D;
 
 
+%anchor($A8E86E)
 EnemyGraphicsDrawnHook_FaceBlock_PeriodicallyCyclePalettes:
     LDA.W $0797                                                          ;A8E86E;
     BNE .return                                                          ;A8E871;
@@ -11131,6 +11919,7 @@ EnemyGraphicsDrawnHook_FaceBlock_PeriodicallyCyclePalettes:
     RTL                                                                  ;A8E8AD;
 
 
+%anchor($A8E8AE)
 MainAI_FaceBlock:
     LDX.W $0E54                                                          ;A8E8AE;
     LDA.W $09A4                                                          ;A8E8B1;
@@ -11180,10 +11969,12 @@ MainAI_FaceBlock:
     RTL                                                                  ;A8E91B;
 
 
+%anchor($A8E91C)
 RTL_A8E91C:
     RTL                                                                  ;A8E91C;
 
 
+%anchor($A8E91D)
 EnemyShot_FaceBlock:
     LDA.W $18A6                                                          ;A8E91D;
     ASL A                                                                ;A8E920;
@@ -11194,6 +11985,7 @@ EnemyShot_FaceBlock:
     RTL                                                                  ;A8E92B;
 
 
+%anchor($A8E92C)
 Spritemap_FaceBlock_FacingForward:
     dw $0004                                                             ;A8E92C;
     %spritemapEntry(0, $00, $00, 0, 0, 3, 0, $107)
@@ -11201,6 +11993,7 @@ Spritemap_FaceBlock_FacingForward:
     %spritemapEntry(0, $00, $F8, 0, 0, 3, 0, $101)
     %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 0, $100)
 
+%anchor($A8E942)
 Spritemap_FaceBlock_TurningLeft:
     dw $0004                                                             ;A8E942;
     %spritemapEntry(0, $00, $00, 0, 0, 3, 0, $109)
@@ -11208,6 +12001,7 @@ Spritemap_FaceBlock_TurningLeft:
     %spritemapEntry(0, $00, $F8, 0, 0, 3, 0, $103)
     %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 0, $102)
 
+%anchor($A8E958)
 Spritemap_FaceBlock_FacingLeft:
     dw $0004                                                             ;A8E958;
     %spritemapEntry(0, $00, $00, 0, 0, 3, 0, $10B)
@@ -11215,6 +12009,7 @@ Spritemap_FaceBlock_FacingLeft:
     %spritemapEntry(0, $00, $F8, 0, 0, 3, 0, $105)
     %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 0, $104)
 
+%anchor($A8E96E)
 Spritemap_FaceBlock_TurningRight:
     dw $0004                                                             ;A8E96E;
     %spritemapEntry(0, $1F8, $00, 0, 1, 3, 0, $109)
@@ -11222,6 +12017,7 @@ Spritemap_FaceBlock_TurningRight:
     %spritemapEntry(0, $1F8, $F8, 0, 1, 3, 0, $103)
     %spritemapEntry(0, $00, $F8, 0, 1, 3, 0, $102)
 
+%anchor($A8E984)
 Spritemap_FaceBlock_FacingRight:
     dw $0004                                                             ;A8E984;
     %spritemapEntry(0, $1F8, $00, 0, 1, 3, 0, $10B)
@@ -11230,24 +12026,29 @@ Spritemap_FaceBlock_FacingRight:
     %spritemapEntry(0, $00, $F8, 0, 1, 3, 0, $104)
 
 
+%anchor($A8E99A)
 Palette_KihunterGreen:
     dw $3800,$4B57,$3A4D,$0CE2,$0040,$46B0,$2E0B,$1D66                   ;A8E99A;
     dw $1524,$48FF,$38B6,$246E,$1448,$03FF,$0237,$00D1                   ;A8E9AA;
 
+%anchor($A8E9BA)
 Palette_KihunterYellow:
     dw $3800,$57FF,$42F7,$158C,$00A5,$4F5A,$36B5,$2610                   ;A8E9BA;
     dw $1DCE,$03E0,$0301,$01A1,$00C1,$6BFA,$42B0,$1545                   ;A8E9CA;
 
+%anchor($A8E9DA)
 Palette_KihunterRed:
     dw $3800,$5ADF,$3975,$0C0A,$0006,$4E1A,$2D33,$1C8E                   ;A8E9DA;
     dw $102B,$6F11,$522A,$3124,$1824,$02FF,$01BF,$000F                   ;A8E9EA;
 
+%anchor($A8E9FA)
 InstList_Kihunter_Idling_FacingLeft:
     dw $0002,Spritemap_Kihunter_0                                        ;A8E9FA;
     dw $0002,Spritemap_Kihunter_1                                        ;A8E9FE;
     dw $0001,Spritemap_Kihunter_2                                        ;A8EA02;
     dw Instruction_Kihunter_SetIdlingInstListsFacingForwards             ;A8EA06;
 
+%anchor($A8EA08)
 InstList_Kihunter_Swiping_FacingLeft:
     dw $0002,Spritemap_Kihunter_11                                       ;A8EA08;
     dw $0006,Spritemap_Kihunter_12                                       ;A8EA0C;
@@ -11258,12 +12059,14 @@ InstList_Kihunter_Swiping_FacingLeft:
     dw Instruction_Common_GotoY                                          ;A8EA20;
     dw InstList_Kihunter_Idling_FacingLeft                               ;A8EA22;
 
+%anchor($A8EA24)
 InstList_Kihunter_Idling_FacingRight:
     dw $0002,Spritemap_Kihunter_8                                        ;A8EA24;
     dw $0002,Spritemap_Kihunter_9                                        ;A8EA28;
     dw $0001,Spritemap_Kihunter_A                                        ;A8EA2C;
     dw Instruction_Kihunter_SetIdlingInstListsFacingForwards             ;A8EA30;
 
+%anchor($A8EA32)
 InstList_Kihunter_Swiping_FacingRight:
     dw $0002,Spritemap_Kihunter_16                                       ;A8EA32;
     dw $0006,Spritemap_Kihunter_17                                       ;A8EA36;
@@ -11274,6 +12077,7 @@ InstList_Kihunter_Swiping_FacingRight:
     dw Instruction_Common_GotoY                                          ;A8EA4A;
     dw InstList_Kihunter_Idling_FacingRight                              ;A8EA4C;
 
+%anchor($A8EA4E)
 InstList_KihunterWings_FacingLeft:
     dw $0002,Spritemap_Kihunter_3                                        ;A8EA4E;
     dw $0002,Spritemap_Kihunter_4                                        ;A8EA52;
@@ -11281,6 +12085,7 @@ InstList_KihunterWings_FacingLeft:
     dw Instruction_CommonA8_GotoY                                        ;A8EA5A;
     dw InstList_KihunterWings_FacingLeft                                 ;A8EA5C;
 
+%anchor($A8EA5E)
 InstList_KihunterWings_FacingRight:
     dw $0002,Spritemap_Kihunter_B                                        ;A8EA5E;
     dw $0002,Spritemap_Kihunter_C                                        ;A8EA62;
@@ -11289,27 +12094,32 @@ InstList_KihunterWings_FacingRight:
     dw InstList_KihunterWings_FacingRight                                ;A8EA6C;
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A8EA6E)
 UNUSED_InstList_KihunterWings_Falling_XFlipped_A8EA6E:
     dw $0010,Spritemap_Kihunter_6                                        ;A8EA6E;
     dw Instruction_Common_GotoY                                          ;A8EA72;
     dw UNUSED_InstList_KihunterWings_Falling_XFlipped_A8EA6E             ;A8EA74;
 
+%anchor($A8EA76)
 UNUSED_InstList_KihunterWings_Falling_XFlipped_A8EA76:
     dw $0010,Spritemap_Kihunter_7                                        ;A8EA76;
     dw Instruction_Common_GotoY                                          ;A8EA7A;
     dw UNUSED_InstList_KihunterWings_Falling_XFlipped_A8EA76             ;A8EA7C;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+%anchor($A8EA7E)
 InstList_KihunterWings_Falling:
     dw $0001,Spritemap_Kihunter_E                                        ;A8EA7E;
     dw Instruction_Common_Sleep                                          ;A8EA82;
 
 if !FEATURE_KEEP_UNREFERENCED
+%anchor($A8EA84)
 UNUSED_InstList_KihunterWings_Falling_A8EA84:
     dw $0001,Spritemap_Kihunter_F                                        ;A8EA84;
     dw Instruction_Common_Sleep                                          ;A8EA88;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+%anchor($A8EA8A)
 InstList_Kihunter_Hop_FacingLeft:
     dw $0008,Spritemap_Kihunter_1A                                       ;A8EA8A;
     dw $0008,Spritemap_Kihunter_1B                                       ;A8EA8E;
@@ -11320,6 +12130,7 @@ InstList_Kihunter_Hop_FacingLeft:
     dw $0001,Spritemap_Kihunter_1D                                       ;A8EAA0;
     dw Instruction_Common_Sleep                                          ;A8EAA4;
 
+%anchor($A8EAA6)
 InstList_Kihunter_Hop_FacingRight:
     dw $0008,Spritemap_Kihunter_1E                                       ;A8EAA6;
     dw $0008,Spritemap_Kihunter_1F                                       ;A8EAAA;
@@ -11330,6 +12141,7 @@ InstList_Kihunter_Hop_FacingRight:
     dw $0001,Spritemap_Kihunter_21                                       ;A8EABC;
     dw Instruction_Common_Sleep                                          ;A8EAC0;
 
+%anchor($A8EAC2)
 InstList_Kihunter_LandedFromHop_FacingLeft:
     dw $0008,Spritemap_Kihunter_1A                                       ;A8EAC2;
     dw $0008,Spritemap_Kihunter_1B                                       ;A8EAC6;
@@ -11339,6 +12151,7 @@ InstList_Kihunter_LandedFromHop_FacingLeft:
     dw $0001,Spritemap_Kihunter_1A                                       ;A8EAD4;
     dw Instruction_Common_Sleep                                          ;A8EAD8;
 
+%anchor($A8EADA)
 InstList_Kihunter_LandedFromHop_FacingRight:
     dw $0008,Spritemap_Kihunter_1E                                       ;A8EADA;
     dw $0008,Spritemap_Kihunter_1F                                       ;A8EADE;
@@ -11348,6 +12161,7 @@ InstList_Kihunter_LandedFromHop_FacingRight:
     dw $0001,Spritemap_Kihunter_1E                                       ;A8EAEC;
     dw Instruction_Common_Sleep                                          ;A8EAF0;
 
+%anchor($A8EAF2)
 InstList_Kihunter_AcidSpitAttack_FacingLeft:
     dw $0020,Spritemap_Kihunter_22                                       ;A8EAF2;
     dw $0006,Spritemap_Kihunter_23                                       ;A8EAF6;
@@ -11359,6 +12173,7 @@ InstList_Kihunter_AcidSpitAttack_FacingLeft:
     dw $0001,Spritemap_Kihunter_22                                       ;A8EB0A;
     dw Instruction_Common_Sleep                                          ;A8EB0E;
 
+%anchor($A8EB10)
 InstList_Kihunter_AcidSpitAttack_FacingRight:
     dw $0020,Spritemap_Kihunter_27                                       ;A8EB10;
     dw $0006,Spritemap_Kihunter_28                                       ;A8EB14;
@@ -11370,6 +12185,7 @@ InstList_Kihunter_AcidSpitAttack_FacingRight:
     dw $0001,Spritemap_Kihunter_27                                       ;A8EB28;
     dw Instruction_Common_Sleep                                          ;A8EB2C;
 
+%anchor($A8EB2E)
 Spritemap_Kihunter_0:
     dw $0008                                                             ;A8EB2E;
     %spritemapEntry(0, $1E5, $03, 0, 0, 2, 0, $10E)
@@ -11381,6 +12197,7 @@ Spritemap_Kihunter_0:
     %spritemapEntry(1, $43EF, $F0, 0, 0, 2, 0, $100)
     %spritemapEntry(0, $1E2, $02, 0, 0, 2, 0, $10E)
 
+%anchor($A8EB58)
 Spritemap_Kihunter_1:
     dw $0008                                                             ;A8EB58;
     %spritemapEntry(0, $1E5, $02, 0, 0, 2, 0, $10E)
@@ -11392,6 +12209,7 @@ Spritemap_Kihunter_1:
     %spritemapEntry(1, $43EF, $EF, 0, 0, 2, 0, $100)
     %spritemapEntry(0, $1E2, $01, 0, 0, 2, 0, $10E)
 
+%anchor($A8EB82)
 Spritemap_Kihunter_2:
     dw $0008                                                             ;A8EB82;
     %spritemapEntry(0, $1E5, $03, 0, 0, 2, 0, $10E)
@@ -11403,6 +12221,7 @@ Spritemap_Kihunter_2:
     %spritemapEntry(1, $43EF, $F0, 0, 0, 2, 0, $100)
     %spritemapEntry(0, $1E2, $02, 0, 0, 2, 0, $10E)
 
+%anchor($A8EBAC)
 Spritemap_Kihunter_3:
     dw $0004                                                             ;A8EBAC;
     %spritemapEntry(0, $0B, $E3, 0, 0, 2, 0, $144)
@@ -11410,27 +12229,32 @@ Spritemap_Kihunter_3:
     %spritemapEntry(1, $4209, $EB, 0, 0, 2, 0, $141)
     %spritemapEntry(1, $4201, $EB, 0, 0, 2, 0, $140)
 
+%anchor($A8EBC2)
 Spritemap_Kihunter_4:
     dw $0002                                                             ;A8EBC2;
     %spritemapEntry(0, $12, $FB, 0, 0, 2, 0, $145)
     %spritemapEntry(1, $4202, $F3, 0, 0, 2, 0, $146)
 
+%anchor($A8EBCE)
 Spritemap_Kihunter_5:
     dw $0003                                                             ;A8EBCE;
     %spritemapEntry(0, $11, $F3, 0, 0, 2, 0, $155)
     %spritemapEntry(0, $09, $F3, 0, 0, 2, 0, $154)
     %spritemapEntry(0, $01, $F3, 0, 0, 2, 0, $153)
 
+%anchor($A8EBDF)
 Spritemap_Kihunter_6:
     dw $0002                                                             ;A8EBDF;
     %spritemapEntry(1, $43FC, $F8, 0, 0, 2, 0, $149)
     %spritemapEntry(1, $43F4, $F8, 0, 0, 2, 0, $148)
 
+%anchor($A8EBEB)
 Spritemap_Kihunter_7:
     dw $0002                                                             ;A8EBEB;
     %spritemapEntry(1, $43FC, $F8, 0, 0, 2, 0, $149)
     %spritemapEntry(1, $43F4, $F8, 0, 0, 2, 0, $148)
 
+%anchor($A8EBF7)
 Spritemap_Kihunter_8:
     dw $0008                                                             ;A8EBF7;
     %spritemapEntry(0, $13, $03, 0, 1, 2, 0, $10E)
@@ -11442,6 +12266,7 @@ Spritemap_Kihunter_8:
     %spritemapEntry(1, $4201, $F0, 0, 1, 2, 0, $100)
     %spritemapEntry(0, $16, $02, 0, 1, 2, 0, $10E)
 
+%anchor($A8EC21)
 Spritemap_Kihunter_9:
     dw $0008                                                             ;A8EC21;
     %spritemapEntry(0, $13, $02, 0, 1, 2, 0, $10E)
@@ -11453,6 +12278,7 @@ Spritemap_Kihunter_9:
     %spritemapEntry(1, $4201, $EF, 0, 1, 2, 0, $100)
     %spritemapEntry(0, $16, $01, 0, 1, 2, 0, $10E)
 
+%anchor($A8EC4B)
 Spritemap_Kihunter_A:
     dw $0008                                                             ;A8EC4B;
     %spritemapEntry(0, $13, $03, 0, 1, 2, 0, $10E)
@@ -11464,6 +12290,7 @@ Spritemap_Kihunter_A:
     %spritemapEntry(1, $4201, $F0, 0, 1, 2, 0, $100)
     %spritemapEntry(0, $16, $02, 0, 1, 2, 0, $10E)
 
+%anchor($A8EC75)
 Spritemap_Kihunter_B:
     dw $0004                                                             ;A8EC75;
     %spritemapEntry(0, $1ED, $E3, 0, 1, 2, 0, $144)
@@ -11471,27 +12298,32 @@ Spritemap_Kihunter_B:
     %spritemapEntry(1, $43E7, $EB, 0, 1, 2, 0, $141)
     %spritemapEntry(1, $43EF, $EB, 0, 1, 2, 0, $140)
 
+%anchor($A8EC8B)
 Spritemap_Kihunter_C:
     dw $0002                                                             ;A8EC8B;
     %spritemapEntry(0, $1E6, $FB, 0, 1, 2, 0, $145)
     %spritemapEntry(1, $43EE, $F3, 0, 1, 2, 0, $146)
 
+%anchor($A8EC97)
 Spritemap_Kihunter_D:
     dw $0003                                                             ;A8EC97;
     %spritemapEntry(0, $1E7, $F3, 0, 1, 2, 0, $155)
     %spritemapEntry(0, $1EF, $F3, 0, 1, 2, 0, $154)
     %spritemapEntry(0, $1F7, $F3, 0, 1, 2, 0, $153)
 
+%anchor($A8ECA8)
 Spritemap_Kihunter_E:
     dw $0002                                                             ;A8ECA8;
     %spritemapEntry(1, $43F4, $F8, 0, 1, 2, 0, $149)
     %spritemapEntry(1, $43FC, $F8, 0, 1, 2, 0, $148)
 
+%anchor($A8ECB4)
 Spritemap_Kihunter_F:
     dw $0002                                                             ;A8ECB4;
     %spritemapEntry(1, $43F4, $F8, 0, 1, 2, 0, $149)
     %spritemapEntry(1, $43FC, $F8, 0, 1, 2, 0, $148)
 
+%anchor($A8ECC0)
 Spritemap_Kihunter_10:
     dw $0008                                                             ;A8ECC0;
     %spritemapEntry(0, $1E5, $03, 0, 0, 2, 0, $10E)
@@ -11503,6 +12335,7 @@ Spritemap_Kihunter_10:
     %spritemapEntry(1, $43EF, $F0, 0, 0, 2, 0, $100)
     %spritemapEntry(0, $1E2, $02, 0, 0, 2, 0, $10E)
 
+%anchor($A8ECEA)
 Spritemap_Kihunter_11:
     dw $0008                                                             ;A8ECEA;
     %spritemapEntry(0, $1E9, $F5, 0, 0, 2, 0, $10F)
@@ -11514,6 +12347,7 @@ Spritemap_Kihunter_11:
     %spritemapEntry(1, $43EF, $F0, 0, 0, 2, 0, $100)
     %spritemapEntry(0, $1E6, $F4, 0, 0, 2, 0, $10F)
 
+%anchor($A8ED14)
 Spritemap_Kihunter_12:
     dw $0008                                                             ;A8ED14;
     %spritemapEntry(0, $1F0, $F5, 0, 0, 2, 0, $14F)
@@ -11525,6 +12359,7 @@ Spritemap_Kihunter_12:
     %spritemapEntry(1, $43EF, $F0, 0, 0, 2, 0, $100)
     %spritemapEntry(0, $1ED, $F4, 0, 0, 2, 0, $14F)
 
+%anchor($A8ED3E)
 Spritemap_Kihunter_13:
     dw $0008                                                             ;A8ED3E;
     %spritemapEntry(0, $1E8, $0F, 0, 0, 2, 0, $10E)
@@ -11536,6 +12371,7 @@ Spritemap_Kihunter_13:
     %spritemapEntry(1, $43EF, $F1, 0, 0, 2, 0, $100)
     %spritemapEntry(0, $1E5, $0E, 0, 0, 2, 0, $10E)
 
+%anchor($A8ED68)
 Spritemap_Kihunter_14:
     dw $0008                                                             ;A8ED68;
     %spritemapEntry(1, $43ED, $03, 0, 0, 2, 0, $124)
@@ -11547,6 +12383,7 @@ Spritemap_Kihunter_14:
     %spritemapEntry(1, $43EF, $F2, 0, 0, 2, 0, $100)
     %spritemapEntry(0, $1ED, $0E, 0, 0, 2, 0, $14E)
 
+%anchor($A8ED92)
 Spritemap_Kihunter_15:
     dw $0008                                                             ;A8ED92;
     %spritemapEntry(0, $13, $03, 0, 1, 2, 0, $10E)
@@ -11558,6 +12395,7 @@ Spritemap_Kihunter_15:
     %spritemapEntry(1, $4201, $F0, 0, 1, 2, 0, $100)
     %spritemapEntry(0, $16, $02, 0, 1, 2, 0, $10E)
 
+%anchor($A8EDBC)
 Spritemap_Kihunter_16:
     dw $0008                                                             ;A8EDBC;
     %spritemapEntry(0, $0F, $F5, 0, 1, 2, 0, $10F)
@@ -11569,6 +12407,7 @@ Spritemap_Kihunter_16:
     %spritemapEntry(1, $4201, $F0, 0, 1, 2, 0, $100)
     %spritemapEntry(0, $12, $F4, 0, 1, 2, 0, $10F)
 
+%anchor($A8EDE6)
 Spritemap_Kihunter_17:
     dw $0008                                                             ;A8EDE6;
     %spritemapEntry(0, $08, $F5, 0, 1, 2, 0, $14F)
@@ -11580,6 +12419,7 @@ Spritemap_Kihunter_17:
     %spritemapEntry(1, $4201, $F0, 0, 1, 2, 0, $100)
     %spritemapEntry(0, $0B, $F4, 0, 1, 2, 0, $14F)
 
+%anchor($A8EE10)
 Spritemap_Kihunter_18:
     dw $0008                                                             ;A8EE10;
     %spritemapEntry(0, $10, $0F, 0, 1, 2, 0, $10E)
@@ -11591,6 +12431,7 @@ Spritemap_Kihunter_18:
     %spritemapEntry(1, $4201, $F1, 0, 1, 2, 0, $100)
     %spritemapEntry(0, $13, $0E, 0, 1, 2, 0, $10E)
 
+%anchor($A8EE3A)
 Spritemap_Kihunter_19:
     dw $0008                                                             ;A8EE3A;
     %spritemapEntry(1, $4203, $03, 0, 1, 2, 0, $124)
@@ -11602,6 +12443,7 @@ Spritemap_Kihunter_19:
     %spritemapEntry(1, $4201, $F2, 0, 1, 2, 0, $100)
     %spritemapEntry(0, $0B, $0E, 0, 1, 2, 0, $14E)
 
+%anchor($A8EE64)
 Spritemap_Kihunter_1A:
     dw $0008                                                             ;A8EE64;
     %spritemapEntry(0, $1E3, $FF, 0, 0, 2, 0, $10E)
@@ -11613,6 +12455,7 @@ Spritemap_Kihunter_1A:
     %spritemapEntry(1, $43EE, $ED, 0, 0, 2, 0, $100)
     %spritemapEntry(0, $1E0, $FE, 0, 0, 2, 0, $10E)
 
+%anchor($A8EE8E)
 Spritemap_Kihunter_1B:
     dw $0008                                                             ;A8EE8E;
     %spritemapEntry(0, $1E3, $04, 0, 0, 2, 0, $10E)
@@ -11624,6 +12467,7 @@ Spritemap_Kihunter_1B:
     %spritemapEntry(0, $1E0, $03, 0, 0, 2, 0, $10E)
     %spritemapEntry(1, $43F9, $FF, 0, 0, 2, 0, $162)
 
+%anchor($A8EEB8)
 Spritemap_Kihunter_1C:
     dw $0008                                                             ;A8EEB8;
     %spritemapEntry(0, $1E3, $07, 0, 0, 2, 0, $10E)
@@ -11635,6 +12479,7 @@ Spritemap_Kihunter_1C:
     %spritemapEntry(0, $1E0, $06, 0, 0, 2, 0, $10E)
     %spritemapEntry(1, $43F9, $FF, 0, 0, 2, 0, $160)
 
+%anchor($A8EEE2)
 Spritemap_Kihunter_1D:
     dw $0008                                                             ;A8EEE2;
     %spritemapEntry(0, $1E8, $00, 0, 0, 2, 0, $10E)
@@ -11646,6 +12491,7 @@ Spritemap_Kihunter_1D:
     %spritemapEntry(1, $43F3, $EE, 0, 0, 2, 0, $100)
     %spritemapEntry(0, $1E5, $FF, 0, 0, 2, 0, $10E)
 
+%anchor($A8EF0C)
 Spritemap_Kihunter_1E:
     dw $0008                                                             ;A8EF0C;
     %spritemapEntry(0, $15, $FF, 0, 1, 2, 0, $10E)
@@ -11657,6 +12503,7 @@ Spritemap_Kihunter_1E:
     %spritemapEntry(1, $4202, $ED, 0, 1, 2, 0, $100)
     %spritemapEntry(0, $18, $FE, 0, 1, 2, 0, $10E)
 
+%anchor($A8EF36)
 Spritemap_Kihunter_1F:
     dw $0008                                                             ;A8EF36;
     %spritemapEntry(0, $15, $04, 0, 1, 2, 0, $10E)
@@ -11668,6 +12515,7 @@ Spritemap_Kihunter_1F:
     %spritemapEntry(0, $18, $03, 0, 1, 2, 0, $10E)
     %spritemapEntry(1, $43F7, $FF, 0, 1, 2, 0, $162)
 
+%anchor($A8EF60)
 Spritemap_Kihunter_20:
     dw $0008                                                             ;A8EF60;
     %spritemapEntry(0, $15, $07, 0, 1, 2, 0, $10E)
@@ -11679,6 +12527,7 @@ Spritemap_Kihunter_20:
     %spritemapEntry(0, $18, $06, 0, 1, 2, 0, $10E)
     %spritemapEntry(1, $43F7, $FF, 0, 1, 2, 0, $160)
 
+%anchor($A8EF8A)
 Spritemap_Kihunter_21:
     dw $0008                                                             ;A8EF8A;
     %spritemapEntry(0, $12, $FF, 0, 1, 2, 0, $10E)
@@ -11690,6 +12539,7 @@ Spritemap_Kihunter_21:
     %spritemapEntry(1, $43FF, $ED, 0, 1, 2, 0, $100)
     %spritemapEntry(0, $15, $FE, 0, 1, 2, 0, $10E)
 
+%anchor($A8EFB4)
 Spritemap_Kihunter_22:
     dw $0008                                                             ;A8EFB4;
     %spritemapEntry(0, $1E3, $FF, 0, 0, 2, 0, $10E)
@@ -11701,6 +12551,7 @@ Spritemap_Kihunter_22:
     %spritemapEntry(1, $43EE, $ED, 0, 0, 2, 0, $100)
     %spritemapEntry(0, $1E0, $FE, 0, 0, 2, 0, $10E)
 
+%anchor($A8EFDE)
 Spritemap_Kihunter_23:
     dw $0009                                                             ;A8EFDE;
     %spritemapEntry(0, $1E4, $FF, 0, 0, 2, 0, $10E)
@@ -11713,6 +12564,7 @@ Spritemap_Kihunter_23:
     %spritemapEntry(1, $43EA, $EC, 0, 0, 2, 0, $102)
     %spritemapEntry(0, $1E1, $FE, 0, 0, 2, 0, $10E)
 
+%anchor($A8F00D)
 Spritemap_Kihunter_24:
     dw $0009                                                             ;A8F00D;
     %spritemapEntry(0, $1E5, $FF, 0, 0, 2, 0, $10E)
@@ -11725,6 +12577,7 @@ Spritemap_Kihunter_24:
     %spritemapEntry(1, $43EC, $EC, 0, 0, 2, 0, $105)
     %spritemapEntry(0, $1E2, $FE, 0, 0, 2, 0, $10E)
 
+%anchor($A8F03C)
 Spritemap_Kihunter_25:
     dw $0009                                                             ;A8F03C;
     %spritemapEntry(0, $1E5, $FF, 0, 0, 2, 0, $10E)
@@ -11737,6 +12590,7 @@ Spritemap_Kihunter_25:
     %spritemapEntry(1, $43FF, $FC, 0, 0, 2, 0, $122)
     %spritemapEntry(0, $1E2, $FE, 0, 0, 2, 0, $10E)
 
+%anchor($A8F06B)
 Spritemap_Kihunter_26:
     dw $0009                                                             ;A8F06B;
     %spritemapEntry(0, $1E4, $FF, 0, 0, 2, 0, $10E)
@@ -11749,6 +12603,7 @@ Spritemap_Kihunter_26:
     %spritemapEntry(1, $43FA, $EC, 0, 0, 2, 0, $107)
     %spritemapEntry(0, $1E1, $FE, 0, 0, 2, 0, $10E)
 
+%anchor($A8F09A)
 Spritemap_Kihunter_27:
     dw $0008                                                             ;A8F09A;
     %spritemapEntry(0, $15, $FF, 0, 1, 2, 0, $10E)
@@ -11760,6 +12615,7 @@ Spritemap_Kihunter_27:
     %spritemapEntry(1, $4202, $ED, 0, 1, 2, 0, $100)
     %spritemapEntry(0, $18, $FE, 0, 1, 2, 0, $10E)
 
+%anchor($A8F0C4)
 Spritemap_Kihunter_28:
     dw $0009                                                             ;A8F0C4;
     %spritemapEntry(0, $14, $FF, 0, 1, 2, 0, $10E)
@@ -11772,6 +12628,7 @@ Spritemap_Kihunter_28:
     %spritemapEntry(1, $4206, $EC, 0, 1, 2, 0, $102)
     %spritemapEntry(0, $17, $FE, 0, 1, 2, 0, $10E)
 
+%anchor($A8F0F3)
 Spritemap_Kihunter_29:
     dw $0009                                                             ;A8F0F3;
     %spritemapEntry(0, $13, $FF, 0, 1, 2, 0, $10E)
@@ -11784,6 +12641,7 @@ Spritemap_Kihunter_29:
     %spritemapEntry(1, $4204, $EC, 0, 1, 2, 0, $105)
     %spritemapEntry(0, $16, $FE, 0, 1, 2, 0, $10E)
 
+%anchor($A8F122)
 Spritemap_Kihunter_2A:
     dw $0009                                                             ;A8F122;
     %spritemapEntry(0, $13, $FF, 0, 1, 2, 0, $10E)
@@ -11796,6 +12654,7 @@ Spritemap_Kihunter_2A:
     %spritemapEntry(1, $43F1, $FC, 0, 1, 2, 0, $122)
     %spritemapEntry(0, $16, $FE, 0, 1, 2, 0, $10E)
 
+%anchor($A8F151)
 Spritemap_Kihunter_2B:
     dw $0009                                                             ;A8F151;
     %spritemapEntry(0, $14, $FF, 0, 1, 2, 0, $10E)
@@ -11809,6 +12668,7 @@ Spritemap_Kihunter_2B:
     %spritemapEntry(0, $17, $FE, 0, 1, 2, 0, $10E)
 
 
+%anchor($A8F180)
 KihunterConstants:
   .XProximityToActivateSwoop:
     dw $0060                                                             ;A8F180;
@@ -11819,6 +12679,7 @@ KihunterConstants:
   .fallingWingsArcRadius:
     dw $0030                                                             ;A8F186;
 
+%anchor($A8F188)
 InitAI_Kihunter:
     LDX.W $0E54                                                          ;A8F188;
     LDA.W $0F86,X                                                        ;A8F18B;
@@ -11869,6 +12730,7 @@ InitAI_Kihunter:
     RTL                                                                  ;A8F213;
 
 
+%anchor($A8F214)
 InitAI_KihunterWings:
     LDX.W $0E54                                                          ;A8F214;
     LDA.W $0F86,X                                                        ;A8F217;
@@ -11899,16 +12761,19 @@ InitAI_KihunterWings:
     RTL                                                                  ;A8F25B;
 
 
+%anchor($A8F25C)
 MainAI_Kihunter:
     LDX.W $0E54                                                          ;A8F25C;
     JMP.W ($0FA8,X)                                                      ;A8F25F;
 
 
+%anchor($A8F262)
 MainAI_KihunterWings:
     LDX.W $0E54                                                          ;A8F262;
     JMP.W ($0FA8,X)                                                      ;A8F265;
 
 
+%anchor($A8F268)
 Function_Kihunter_Winged_IdleFlying:
     LDA.L $7E7810,X                                                      ;A8F268;
     STA.B $12                                                            ;A8F26C;
@@ -12056,6 +12921,7 @@ Function_Kihunter_Winged_IdleFlying:
     dw InstList_Kihunter_Idling_FacingRight                              ;A8F3B4;
     dw InstList_KihunterWings_FacingRight                                ;A8F3B6;
 
+%anchor($A8F3B8)
 Function_Kihunter_Winged_Swoop:
     LDA.L $7E7808,X                                                      ;A8F3B8;
     BPL .arcingRight                                                     ;A8F3BC;
@@ -12188,6 +13054,7 @@ Function_Kihunter_Winged_Swoop:
     RTL                                                                  ;A8F4EC;
 
 
+%anchor($A8F4ED)
 Function_Kihunter_Winged_BackOff:
     LDA.L $7E780C,X                                                      ;A8F4ED;
     STA.B $12                                                            ;A8F4F1;
@@ -12214,6 +13081,7 @@ Function_Kihunter_Winged_BackOff:
     RTL                                                                  ;A8F525;
 
 
+%anchor($A8F526)
 Instruction_Kihunter_SetIdlingInstListsFacingForwards:
     LDY.W #InstList_Kihunter_Idling_FacingLeft                           ;A8F526;
     LDA.W #InstList_KihunterWings_FacingLeft                             ;A8F529;
@@ -12241,6 +13109,7 @@ Instruction_Kihunter_SetIdlingInstListsFacingForwards:
     RTL                                                                  ;A8F559;
 
 
+%anchor($A8F55A)
 Function_Kihunter_Wingless_InitialFalling:
     LDA.L $7E7810,X                                                      ;A8F55A;
     STA.B $12                                                            ;A8F55E;
@@ -12264,6 +13133,7 @@ Function_Kihunter_Wingless_InitialFalling:
     RTL                                                                  ;A8F58A;
 
 
+%anchor($A8F58B)
 Function_Kihunter_Wingless_PrepareToHop:
     LDA.W #RTL_A8F5E3                                                    ;A8F58B;
     STA.W $0FA8,X                                                        ;A8F58E;
@@ -12298,10 +13168,12 @@ Function_Kihunter_Wingless_PrepareToHop:
     LDA.W #$0001                                                         ;A8F5DD;
     STA.W $0F94,X                                                        ;A8F5E0; fallthrough to RTL_A8F5E3
 
+%anchor($A8F5E3)
 RTL_A8F5E3:
     RTL                                                                  ;A8F5E3;
 
 
+%anchor($A8F5E4)
 Instruction_Kihunter_SetFunctionToHop:
     PHX                                                                  ;A8F5E4;
     LDX.W $0E54                                                          ;A8F5E5;
@@ -12311,6 +13183,7 @@ Instruction_Kihunter_SetFunctionToHop:
     RTL                                                                  ;A8F5EF;
 
 
+%anchor($A8F5F0)
 Function_Kihunter_Wingless_Hop:
     LDA.L $7E7810,X                                                      ;A8F5F0;
     STA.B $12                                                            ;A8F5F4;
@@ -12374,6 +13247,7 @@ Function_Kihunter_Wingless_Hop:
     RTL                                                                  ;A8F67E;
 
 
+%anchor($A8F67F)
 Instruction_Kihunter_SetFunctionTo_Wingless_Thinking:
     PHX                                                                  ;A8F67F;
     LDX.W $0E54                                                          ;A8F680;
@@ -12383,6 +13257,7 @@ Instruction_Kihunter_SetFunctionTo_Wingless_Thinking:
     RTL                                                                  ;A8F68A;
 
 
+%anchor($A8F68B)
 Function_Kihunter_Wingless_Thinking:
     LDA.L $7E781E,X                                                      ;A8F68B;
     DEC A                                                                ;A8F68F;
@@ -12408,6 +13283,7 @@ Function_Kihunter_Wingless_Thinking:
     RTL                                                                  ;A8F6B2;
 
 
+%anchor($A8F6B3)
 Function_Kihunter_Wingless_FireAcidSpit:
     LDY.W #InstList_Kihunter_AcidSpitAttack_FacingLeft                   ;A8F6B3;
     LDA.W $0F7A,X                                                        ;A8F6B6;
@@ -12425,16 +13301,19 @@ Function_Kihunter_Wingless_FireAcidSpit:
     RTL                                                                  ;A8F6D1;
 
 
+%anchor($A8F6D2)
 Instruction_Kihunter_FireAcidSpitLeft:
     PHY                                                                  ;A8F6D2;
     LDY.W #EnemyProjectile_KiHunterAcidSpit_Left                         ;A8F6D3;
     BRA FireAcidSpit                                                     ;A8F6D6;
 
 
+%anchor($A8F6D8)
 Instruction_Kihunter_FireAcidSpitRight:
     PHY                                                                  ;A8F6D8;
     LDY.W #EnemyProjectile_KiHunterAcidSpit_Right                        ;A8F6D9; fallthrough to FireAcidSpit
 
+%anchor($A8F6DC)
 FireAcidSpit:
     LDA.W #$004C                                                         ;A8F6DC;
     JSL.L QueueSound_Lib2_Max6                                           ;A8F6DF;
@@ -12446,6 +13325,7 @@ FireAcidSpit:
     RTL                                                                  ;A8F6F2;
 
 
+%anchor($A8F6F3)
 Function_KihunterWings_Attached:
     LDA.W $0F3A,X                                                        ;A8F6F3;
     STA.W $0F7A,X                                                        ;A8F6F6;
@@ -12454,10 +13334,12 @@ Function_KihunterWings_Attached:
     RTL                                                                  ;A8F6FF;
 
 
+%anchor($A8F700)
 RTL_A8F700:
     RTL                                                                  ;A8F700;
 
 
+%anchor($A8F701)
 EnemyShot_Kihunter:
     JSL.L NormalEnemyShotAI                                              ;A8F701;
     LDX.W $0E54                                                          ;A8F705;
@@ -12543,6 +13425,7 @@ EnemyShot_Kihunter:
     RTL                                                                  ;A8F7CE;
 
 
+%anchor($A8F7CF)
 Function_KihunterWings_Falling:
     LDX.W $0E54                                                          ;A8F7CF;
     LDA.L $7E7800,X                                                      ;A8F7D2;
@@ -12550,6 +13433,7 @@ Function_KihunterWings_Falling:
     JMP.W ($0012)                                                        ;A8F7D8;
 
 
+%anchor($A8F7DB)
 Function_KihunterWings_Falling_DriftingLeft:
     LDX.W $0E54                                                          ;A8F7DB;
     LDA.W $0FAA,X                                                        ;A8F7DE;
@@ -12605,6 +13489,7 @@ Function_KihunterWings_Falling_DriftingLeft:
     RTL                                                                  ;A8F850;
 
 
+%anchor($A8F851)
 DetermineFallingKihunterWingsLeftArcCenterOffsets:
     LDX.W $0E54                                                          ;A8F851;
     LDA.W KihunterConstants_fallingWingsArcRadius                        ;A8F854;
@@ -12624,6 +13509,7 @@ DetermineFallingKihunterWingsLeftArcCenterOffsets:
     RTS                                                                  ;A8F87E;
 
 
+%anchor($A8F87F)
 DetermineFallingKihunterWingsRightArcCenterOffsets:
     LDX.W $0E54                                                          ;A8F87F;
     LDA.W KihunterConstants_fallingWingsArcRadius                        ;A8F882;
@@ -12643,6 +13529,7 @@ DetermineFallingKihunterWingsRightArcCenterOffsets:
     RTS                                                                  ;A8F8AC;
 
 
+%anchor($A8F8AD)
 Function_KihunterWings_Falling_DriftingRight:
     LDX.W $0E54                                                          ;A8F8AD;
     LDA.W $0FAA,X                                                        ;A8F8B0;
@@ -12714,6 +13601,7 @@ Function_KihunterWings_Falling_DriftingRight:
     BRA .return                                                          ;A8F945;
 
 
+%anchor($A8F947)
 SetupFallingKihunterWingsDriftingLeft:
     LDA.W #Function_KihunterWings_Falling_DriftingLeft                   ;A8F947;
     STA.L $7E7800,X                                                      ;A8F94A;
@@ -12728,6 +13616,7 @@ SetupFallingKihunterWingsDriftingLeft:
     RTS                                                                  ;A8F969;
 
 
+%anchor($A8F96A)
 SetupFallingKihunterWingsDriftingRight:
     LDA.W #Function_KihunterWings_Falling_DriftingRight                  ;A8F96A;
     STA.L $7E7800,X                                                      ;A8F96D;
@@ -12742,6 +13631,7 @@ SetupFallingKihunterWingsDriftingRight:
     RTS                                                                  ;A8F98C;
 
 
+%anchor($A8F98D)
 DetermineFallingKihunterWingsSpeedTableIndexResetValue:
     LDX.W $0E54                                                          ;A8F98D;
     LDA.W #$0000                                                         ;A8F990;
@@ -12768,5 +13658,6 @@ DetermineFallingKihunterWingsSpeedTableIndexResetValue:
     RTS                                                                  ;A8F9BD;
 
 
+%anchor($A8F9BE)
 Freespace_BankA8_F9BE:                                                   ;A8F9BE;
 ; $642 bytes
