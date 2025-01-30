@@ -2600,7 +2600,7 @@ RoomState_GreenBrinstarElev:
 
 %anchor($8F995F)
 RoomDoors_GreenBrinstarElev:
-    dw Door_GreenBrinstarElev_                                           ;8F995F;
+    dw Door_GreenBrinstarElev_0                                          ;8F995F;
     dw Door_GreenBrinstarElev_1                                          ;8F9961;
     dw Door_VariousRooms_Elevator                                        ;8F9963;
 
