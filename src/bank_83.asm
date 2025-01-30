@@ -1029,7 +1029,7 @@ Door_Terminator_1:
     dw $8000                                                             ;838BFA;
     dw DoorASM_Scroll_0_Blue                                             ;838BFC;
 
-Door_GreenBrinstarElev_:
+Door_GreenBrinstarElev_0:
     dw RoomHeader_LowerMushrooms                                         ;838BFE;
     db $00,$04,$01,$06,$00,$00                                           ;838C00;
     dw $8000,$0000                                                       ;838C06;

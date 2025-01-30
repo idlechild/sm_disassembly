@@ -2276,7 +2276,7 @@ RoomState_GreenBrinstarElev:
     dw RTS_8F91D4                                                        ;8F995D;
 
 RoomDoors_GreenBrinstarElev:
-    dw Door_GreenBrinstarElev_                                           ;8F995F;
+    dw Door_GreenBrinstarElev_0                                          ;8F995F;
     dw Door_GreenBrinstarElev_1                                          ;8F9961;
     dw Door_VariousRooms_Elevator                                        ;8F9963;
 

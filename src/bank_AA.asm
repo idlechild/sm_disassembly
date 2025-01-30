@@ -4438,7 +4438,7 @@ InstList_Torizo_FacingLeft_Walking_RightLegMoving:
     dw Instruction_Torizo_PlayTorizoFootstepsSFX                         ;AAB978;
     dw $000A,ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_0      ;AAB97A;
     dw Instruction_Torizo_CallYIfSamusIsLessThan38PixelsInFront          ;AAB97E;
-    dw InstList_Torizo_FacingLeft_ExplosiveSwipe_LeftFootForward_        ;AAB980;
+    dw InstList_Torizo_FacingLeft_ExplosiveSwipe_LeftFootForward         ;AAB980;
     dw Instruction_Torizo_GotoYAndJumpBackwardsIfLessThan20Pixels        ;AAB982;
     dw InstList_Torizo_FacingLeft_JumpingBackward_LandLeftFootFwd_0      ;AAB984;
     dw Instruction_Torizo_BombTorizoWalkingMovement_Normal_IndexInY,$0002 ;AAB986;
@@ -4736,7 +4736,7 @@ InstList_Torizo_FacingLeft_ExplosiveSwipe_RightFootForward:
     dw Function_Torizo_Movement_Walking                                  ;AABBDA;
     dw Instruction_Torizo_Return                                         ;AABBDC;
 
-InstList_Torizo_FacingLeft_ExplosiveSwipe_LeftFootForward_:
+InstList_Torizo_FacingLeft_ExplosiveSwipe_LeftFootForward:
     dw Instruction_Common_Enemy0FB2_InY                                  ;AABBDE;
     dw Function_Torizo_Movement_Attacking                                ;AABBE0;
     dw $0003                                                             ;AABBE2;
@@ -4928,7 +4928,7 @@ InstList_Torizo_FacingLeft_Faceless_Walking_RightLegMoving:
     dw $0001                                                             ;AABD26;
     dw ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_0            ;AABD28;
     dw Instruction_Torizo_CallYIfSamusIsLessThan38PixelsInFront          ;AABD2A;
-    dw InstList_Torizo_FacingLeft_ExplosiveSwipe_LeftFootForward_        ;AABD2C;
+    dw InstList_Torizo_FacingLeft_ExplosiveSwipe_LeftFootForward         ;AABD2C;
     dw Instruction_Torizo_BTWalkingMovement_Faceless_IndexInY            ;AABD2E;
     dw $0002,$0005                                                       ;AABD30;
     dw ExtendedSpritemaps_Torizo_WalkingLeft_RightLegMoving_1            ;AABD34;
