@@ -2,7 +2,6 @@
 org $B58000
 
 
-%anchor($B58000)
 MapTilemaps_brinstar:
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B58000;
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B58010;
@@ -261,7 +260,6 @@ MapTilemaps_brinstar:
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B58FE0;
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B58FF0;
 
-%anchor($B59000)
 MapTilemaps_crateria:
     dw $0C1F,$0C1F,$0C1F,$0C1F,$0C1F,$0C1F,$0C1F,$0C1F                   ;B59000;
     dw $0C1F,$0C1F,$0C1F,$0C1F,$0C1F,$0C1F,$0C1F,$0C1F                   ;B59010;
@@ -520,7 +518,6 @@ MapTilemaps_crateria:
     dw $0C1F,$0C1F,$0C1F,$0C1F,$0C1F,$0C1F,$0C1F,$0C1F                   ;B59FE0;
     dw $0C1F,$0C1F,$0C1F,$0C1F,$0C1F,$0C1F,$0C1F,$0C1F                   ;B59FF0;
 
-%anchor($B5A000)
 MapTilemaps_norfair:
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5A000;
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5A010;
@@ -779,7 +776,6 @@ MapTilemaps_norfair:
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5AFE0;
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5AFF0;
 
-%anchor($B5B000)
 MapTilemaps_wreckedShip:
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5B000;
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5B010;
@@ -1038,7 +1034,6 @@ MapTilemaps_wreckedShip:
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5BFE0;
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5BFF0;
 
-%anchor($B5C000)
 MapTilemaps_maridia:
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5C000;
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5C010;
@@ -1297,7 +1292,6 @@ MapTilemaps_maridia:
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5CFE0;
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5CFF0;
 
-%anchor($B5D000)
 MapTilemaps_tourian:
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5D000;
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5D010;
@@ -1556,7 +1550,6 @@ MapTilemaps_tourian:
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5DFE0;
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5DFF0;
 
-%anchor($B5E000)
 UNUSED_MapTilemaps_ceres_B5E000:
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5E000;
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5E010;
@@ -1815,6 +1808,5 @@ UNUSED_MapTilemaps_ceres_B5E000:
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5EFE0;
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B5EFF0;
 
-%anchor($B5F000)
 Freespace_BankB5_F000:                                                   ;B5F000;
 ; $1000 bytes

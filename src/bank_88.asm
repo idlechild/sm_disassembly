@@ -2,7 +2,6 @@
 org $888000
 
 
-%anchor($888000)
 LayerBlending_Handler:
     PHP                                                                  ;888000;
     SEP #$30                                                             ;888001;
@@ -76,12 +75,10 @@ LayerBlending_Handler:
     dw LayerBlending_32                                                  ;888070;
     dw LayerBlending_34                                                  ;888072;
 
-%anchor($888074)
 RTS_888074:
     RTS                                                                  ;888074;
 
 
-%anchor($888075)
 Initialize_LayerBlending:
     STZ.B $60                                                            ;888075;
     STZ.B $61                                                            ;888077;
@@ -99,7 +96,6 @@ Initialize_LayerBlending:
     RTS                                                                  ;88808F;
 
 
-%anchor($888090)
 LayerBlending_4_Phantoon:
     LDA.B #$11                                                           ;888090;
     STA.B $69                                                            ;888092;
@@ -108,7 +104,6 @@ LayerBlending_4_Phantoon:
     RTS                                                                  ;888098;
 
 
-%anchor($888099)
 UNUSED_LayerBlending_6_888099:
     LDA.B #$14                                                           ;888099;
     STA.B $6B                                                            ;88809B;
@@ -117,7 +112,6 @@ UNUSED_LayerBlending_6_888099:
     RTS                                                                  ;8880A1;
 
 
-%anchor($8880A2)
 LayerBlending_8_WreckedShipPowerOff:
     LDA.B #$14                                                           ;8880A2;
     STA.B $6B                                                            ;8880A4;
@@ -126,14 +120,12 @@ LayerBlending_8_WreckedShipPowerOff:
     RTS                                                                  ;8880AA;
 
 
-%anchor($8880AB)
 LayerBlending_A_Spores:
     LDA.B #$32                                                           ;8880AB;
     STA.B $71                                                            ;8880AD;
     RTS                                                                  ;8880AF;
 
 
-%anchor($8880B0)
 LayerBlending_C_Fireflea:
     STZ.B $6E                                                            ;8880B0;
     LDA.B #$A2                                                           ;8880B2;
@@ -141,12 +133,10 @@ LayerBlending_C_Fireflea:
     RTS                                                                  ;8880B6;
 
 
-%anchor($8880B7)
 RTS_8880B7:
     RTS                                                                  ;8880B7;
 
 
-%anchor($8880B8)
 LayerBlending_10_12_MorphBallEye_SuitPickup:
     LDA.B #$02                                                           ;8880B8;
     STA.B $61                                                            ;8880BA;
@@ -157,14 +147,12 @@ LayerBlending_10_12_MorphBallEye_SuitPickup:
     RTS                                                                  ;8880C4;
 
 
-%anchor($8880C5)
 LayerBlending_14_22_Water:
     LDA.B #$B3                                                           ;8880C5;
     STA.B $71                                                            ;8880C7;
     RTS                                                                  ;8880C9;
 
 
-%anchor($8880CA)
 LayerBlending_16_Water:
     LDY.B #$04                                                           ;8880CA;
     LDA.B #$11                                                           ;8880CC;
@@ -176,7 +164,6 @@ LayerBlending_16_Water:
     RTS                                                                  ;8880D8;
 
 
-%anchor($8880D9)
 LayerBlending_1A_Phantoon:
     LDY.B #$04                                                           ;8880D9;
     LDA.B #$15                                                           ;8880DB;
@@ -188,7 +175,6 @@ LayerBlending_1A_Phantoon:
     RTS                                                                  ;8880E7;
 
 
-%anchor($8880E8)
 LayerBlending_1C:
     LDA.B #$15                                                           ;8880E8;
     STA.B $69                                                            ;8880EA;
@@ -199,7 +185,6 @@ LayerBlending_1C:
     RTS                                                                  ;8880F4;
 
 
-%anchor($8880F5)
 LayerBlending_18_1E_30_Water_LavaAcid_Fog:
     LDY.B #$02                                                           ;8880F5;
     LDA.B $84                                                            ;8880F7;
@@ -217,19 +202,16 @@ LayerBlending_18_1E_30_Water_LavaAcid_Fog:
     RTS                                                                  ;88810B;
 
 
-%anchor($88810C)
 RTS_88810C:
     RTS                                                                  ;88810C;
 
 
-%anchor($88810D)
 LayerBlending_26:
     LDA.B #$77                                                           ;88810D;
     STA.B $71                                                            ;88810F;
     RTS                                                                  ;888111;
 
 
-%anchor($888112)
 LayerBlending_28:
     STZ.B $6E                                                            ;888112;
     LDA.B #$B3                                                           ;888114;
@@ -247,7 +229,6 @@ LayerBlending_28:
     RTS                                                                  ;888129;
 
 
-%anchor($88812A)
 LayerBlending_2A:
     STZ.B $6E                                                            ;88812A;
     LDA.B #$B3                                                           ;88812C;
@@ -265,20 +246,17 @@ LayerBlending_2A:
     RTS                                                                  ;888141;
 
 
-%anchor($888142)
 LayerBlending_2C:
     STZ.B $6E                                                            ;888142;
     RTS                                                                  ;888144;
 
 
-%anchor($888145)
 LayerBlending_2E:
     LDA.B #$B3                                                           ;888145;
     STA.B $71                                                            ;888147;
     RTS                                                                  ;888149;
 
 
-%anchor($88814A)
 LayerBlending_32:
     LDA.B #$44                                                           ;88814A;
     STA.B $6B                                                            ;88814C;
@@ -287,13 +265,11 @@ LayerBlending_32:
     RTS                                                                  ;888152;
 
 
-%anchor($888153)
 LayerBlending_34:
     LDY.B #$06                                                           ;888153;
     RTS                                                                  ;888155;
 
 
-%anchor($888156)
 LayerBlending_24_MotherBrain:
     LDA.B #$00                                                           ;888156;
     STA.B $60                                                            ;888158;
@@ -316,7 +292,6 @@ LayerBlending_24_MotherBrain:
     RTS                                                                  ;88817A;
 
 
-%anchor($88817B)
 Handle_LayerBlending_Xray_CanShowBlocks:
     LDA.B #$C8                                                           ;88817B;
     STA.B $60                                                            ;88817D;
@@ -341,7 +316,6 @@ Handle_LayerBlending_Xray_CanShowBlocks:
     RTS                                                                  ;8881A3;
 
 
-%anchor($8881A4)
 Handle_LayerBlending_Xray_CantShowBlocks:
     STZ.B $60                                                            ;8881A4;
     LDA.B #$08                                                           ;8881A6;
@@ -374,7 +348,6 @@ Handle_LayerBlending_Xray_CantShowBlocks:
     RTS                                                                  ;8881DA;
 
 
-%anchor($8881DB)
 Handle_LayerBlending_Xray_FirefleaRoom:
     STZ.B $60                                                            ;8881DB;
     LDA.B #$08                                                           ;8881DD;
@@ -396,7 +369,6 @@ Handle_LayerBlending_Xray_FirefleaRoom:
     RTS                                                                  ;8881FD;
 
 
-%anchor($8881FE)
 Handle_LayerBlending_PowerBomb:
     REP #$30                                                             ;8881FE;
     LDA.W $079B                                                          ;888200;
@@ -416,7 +388,6 @@ Handle_LayerBlending_PowerBomb:
     dw Handle_LayerBlending_PowerBomb_4                                  ;888215;
     dw Handle_LayerBlending_PowerBomb_6                                  ;888217;
 
-%anchor($888219)
 Handle_LayerBlending_PowerBomb_0_2:
     LDA.B #$00                                                           ;888219;
     STA.B $60                                                            ;88821B;
@@ -439,7 +410,6 @@ Handle_LayerBlending_PowerBomb_0_2:
     RTS                                                                  ;88823D;
 
 
-%anchor($88823E)
 Handle_LayerBlending_PowerBomb_4:
     LDA.B #$80                                                           ;88823E;
     STA.B $60                                                            ;888240;
@@ -462,7 +432,6 @@ Handle_LayerBlending_PowerBomb_4:
     RTS                                                                  ;888262;
 
 
-%anchor($888263)
 Handle_LayerBlending_PowerBomb_6:
     LDA.B #$00                                                           ;888263;
     STA.B $60                                                            ;888265;
@@ -485,7 +454,6 @@ Handle_LayerBlending_PowerBomb_6:
     RTS                                                                  ;888287;
 
 
-%anchor($888288)
 Enable_HDMAObjects:
     PHP                                                                  ;888288;
     REP #$20                                                             ;888289;
@@ -495,7 +463,6 @@ Enable_HDMAObjects:
     RTL                                                                  ;888292;
 
 
-%anchor($888293)
 Disable_HDMAObjects:
     PHP                                                                  ;888293;
     REP #$20                                                             ;888294;
@@ -505,7 +472,6 @@ Disable_HDMAObjects:
     RTL                                                                  ;88829D;
 
 
-%anchor($88829E)
 Wait_End_VBlank_Clear_HDMA:
     PHP                                                                  ;88829E;
     SEP #$20                                                             ;88829F;
@@ -514,7 +480,6 @@ Wait_End_VBlank_Clear_HDMA:
     STZ.W $420C                                                          ;8882A8;
     PLP                                                                  ;8882AB; fallthrough to Delete_HDMA_Objects
 
-%anchor($8882AC)
 Delete_HDMAObjects:
     PHP                                                                  ;8882AC;
     SEP #$20                                                             ;8882AD;
@@ -533,7 +498,6 @@ Delete_HDMAObjects:
     RTL                                                                  ;8882C0;
 
 
-%anchor($8882C1)
 Initialise_Special_Effects_for_New_Room:
     PHP                                                                  ;8882C1;
     REP #$20                                                             ;8882C2;
@@ -655,13 +619,11 @@ Initialise_Special_Effects_for_New_Room:
     STA.B $5B                                                            ;8883DE;
     PLP                                                                  ;8883E0; fallthrough to RTL_8883E1
 
-%anchor($8883E1)
 RTL_8883E1:
     RTL                                                                  ;8883E1;
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($8883E2)
 UNUSED_SpawnHDMAObject_Slot0_Channel4_Index20_8883E2:
     PHP                                                                  ;8883E2;
     PHB                                                                  ;8883E3;
@@ -674,7 +636,6 @@ UNUSED_SpawnHDMAObject_Slot0_Channel4_Index20_8883E2:
     JMP.W SpawnHDMAObject_SlotX_Hardcoded                                ;8883F3;
 
 
-%anchor($8883F6)
 UNUSED_SpawnHDMAObject_Slot8_Channel40_Index60_8883F6:
     PHP                                                                  ;8883F6;
     PHB                                                                  ;8883F7;
@@ -688,7 +649,6 @@ UNUSED_SpawnHDMAObject_Slot8_Channel40_Index60_8883F6:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($88840A)
 SpawnHDMAObject_SlotA_Channel80_Index70:
     PHP                                                                  ;88840A;
     PHB                                                                  ;88840B;
@@ -699,7 +659,6 @@ SpawnHDMAObject_SlotA_Channel80_Index70:
     STA.B $14                                                            ;888416;
     LDX.W #$000A                                                         ;888418;
 
-%anchor($88841B)
 SpawnHDMAObject_SlotX_Hardcoded:
     SEP #$20                                                             ;88841B;
     LDA.B $05,S                                                          ;88841D;
@@ -718,7 +677,6 @@ SpawnHDMAObject_SlotX_Hardcoded:
     JMP.W Spawn_HDMAObject_to_Slot_X                                     ;888432;
 
 
-%anchor($888435)
 Spawn_HDMAObject:
     PHP                                                                  ;888435;
     PHB                                                                  ;888436;
@@ -763,7 +721,6 @@ Spawn_HDMAObject:
     RTL                                                                  ;888476;
 
 
-%anchor($888477)
 Spawn_HDMAObject_to_Slot_X:
     LDA.W #.return                                                       ;888477;
     STA.W $18F0,X                                                        ;88847A;
@@ -797,7 +754,6 @@ Spawn_HDMAObject_to_Slot_X:
     RTL                                                                  ;8884B8;
 
 
-%anchor($8884B9)
 HDMAObjectHandler_HandleMusicQueue:
     PHP                                                                  ;8884B9;
     PHB                                                                  ;8884BA;
@@ -855,7 +811,6 @@ HDMAObjectHandler_HandleMusicQueue:
     RTL                                                                  ;88851B;
 
 
-%anchor($88851C)
 HDMAObject_Instruction_Handler:
     REP #$20                                                             ;88851C;
     LDA.W $18F0,X                                                        ;88851E;
@@ -904,7 +859,6 @@ HDMAObject_Instruction_Handler:
     RTS                                                                  ;888568;
 
 
-%anchor($888569)
 Instruction_HDMAObject_Delete:
     STZ.W $18B4,X                                                        ;888569;
     PLA                                                                  ;88856C;
@@ -912,7 +866,6 @@ Instruction_HDMAObject_Delete:
     RTS                                                                  ;88856F;
 
 
-%anchor($888570)
 Instruction_HDMAObject_PreInstructionInY:
     LDA.W $0000,Y                                                        ;888570;
     STA.W $18F0,X                                                        ;888573;
@@ -927,7 +880,6 @@ Instruction_HDMAObject_PreInstructionInY:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($888584)
 UNUSED_Instruction_HDMAObject_ClearPreInstruction_888584:
     LDA.W #.return                                                       ;888584;
     STA.W $18F0,X                                                        ;888587;
@@ -936,7 +888,6 @@ UNUSED_Instruction_HDMAObject_ClearPreInstruction_888584:
     RTS                                                                  ;88858A;
 
 
-%anchor($88858B)
 UNUSED_Instruction_HDMAObject_CallFunctionY_88858B:
     LDA.W $0000,Y                                                        ;88858B;
     STA.B $12                                                            ;88858E;
@@ -954,7 +905,6 @@ UNUSED_Instruction_HDMAObject_CallFunctionY_88858B:
     RTS                                                                  ;88859C;
 
 
-%anchor($88859D)
 UNUSED_Instruction_HDMAObject_CallFunctionYWithA_88859D:
     LDA.W $0000,Y                                                        ;88859D;
     STA.B $12                                                            ;8885A0;
@@ -976,7 +926,6 @@ UNUSED_Instruction_HDMAObject_CallFunctionYWithA_88859D:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($8885B4)
 Instruction_HDMAObject_CallExternalFunctionInY:
     LDA.W $0000,Y                                                        ;8885B4;
     STA.B $12                                                            ;8885B7;
@@ -998,7 +947,6 @@ Instruction_HDMAObject_CallExternalFunctionInY:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($8885CD)
 UNUSED_Instruction_HDMAObject_CallExternalFuncYWithA_8885CD:
     LDA.W $0000,Y                                                        ;8885CD;
     STA.B $12                                                            ;8885D0;
@@ -1022,7 +970,6 @@ UNUSED_Instruction_HDMAObject_CallExternalFuncYWithA_8885CD:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($8885EC)
 Instruction_HDMAObject_GotoY:
     LDA.W $0000,Y                                                        ;8885EC;
     TAY                                                                  ;8885EF;
@@ -1030,7 +977,6 @@ Instruction_HDMAObject_GotoY:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($8885F1)
 UNUSED_Instruction_HDMAObject_GotoY_Y_8885F1:
     STY.B $12                                                            ;8885F1;
     DEY                                                                  ;8885F3;
@@ -1056,7 +1002,6 @@ UNUSED_Instruction_HDMAObject_GotoY_Y_8885F1:
     RTS                                                                  ;88860E;
 
 
-%anchor($88860F)
 UNUSED_Instruction_HDMAObject_DecTimer_GotoYIfNonZero_88860F:
     DEC.W $1908,X                                                        ;88860F;
     BNE UNUSED_Instruction_HDMAObject_GotoY_Y_8885F1                     ;888612;
@@ -1064,7 +1009,6 @@ UNUSED_Instruction_HDMAObject_DecTimer_GotoYIfNonZero_88860F:
     RTS                                                                  ;888615;
 
 
-%anchor($888616)
 UNUSED_Instruction_HDMAObject_TimerInY_888616:
     SEP #$20                                                             ;888616;
     LDA.W $0000,Y                                                        ;888618;
@@ -1074,7 +1018,6 @@ UNUSED_Instruction_HDMAObject_TimerInY_888616:
     RTS                                                                  ;888621;
 
 
-%anchor($888622)
 UNUSED_Instruction_HDMAObject_HDMAControlInY_888622:
     PHX                                                                  ;888622;
     LDA.W $18C0,X                                                        ;888623;
@@ -1089,7 +1032,6 @@ UNUSED_Instruction_HDMAObject_HDMAControlInY_888622:
     RTS                                                                  ;888636;
 
 
-%anchor($888637)
 UNUSED_Instruction_HDMAObject_HDMATargetInY:
     PHX                                                                  ;888637;
     LDA.W $18C0,X                                                        ;888638;
@@ -1104,7 +1046,6 @@ UNUSED_Instruction_HDMAObject_HDMATargetInY:
     RTS                                                                  ;88864B;
 
 
-%anchor($88864C)
 UNUSED_Instruction_HDMAObject_HDMATablePointerInY_88864C:
     LDA.W $0000,Y                                                        ;88864C;
     STA.W $18D8,X                                                        ;88864F;
@@ -1114,7 +1055,6 @@ UNUSED_Instruction_HDMAObject_HDMATablePointerInY_88864C:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($888655)
 Instruction_HDMAObject_HDMATableBank:
     PHX                                                                  ;888655;
     LDA.W $18C0,X                                                        ;888656;
@@ -1129,7 +1069,6 @@ Instruction_HDMAObject_HDMATableBank:
     RTS                                                                  ;888669;
 
 
-%anchor($88866A)
 Instruction_HDMAObject_IndirectHDMATableBank:
     PHX                                                                  ;88866A;
     LDA.W $18C0,X                                                        ;88866B;
@@ -1145,7 +1084,6 @@ Instruction_HDMAObject_IndirectHDMATableBank:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($88867F)
 UNUSED_Instruction_HDMAObject_SkipNextInstruction_88867F:
     INY                                                                  ;88867F;
     INY                                                                  ;888680;
@@ -1153,7 +1091,6 @@ UNUSED_Instruction_HDMAObject_SkipNextInstruction_88867F:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($888682)
 Instruction_HDMAObject_Sleep:
     DEY                                                                  ;888682;
     DEY                                                                  ;888683;
@@ -1164,7 +1101,6 @@ Instruction_HDMAObject_Sleep:
     RTS                                                                  ;88868B;
 
 
-%anchor($88868C)
 RaiseOrLower_FX:
     LDA.W $197A                                                          ;88868C;
     BMI .returnCarrySet                                                  ;88868F;
@@ -1225,7 +1161,6 @@ RaiseOrLower_FX:
     RTS                                                                  ;8886EE;
 
 
-%anchor($8886EF)
 PreInstruction_Xray_Main:
     PHP                                                                  ;8886EF;
     REP #$30                                                             ;8886F0;
@@ -1262,7 +1197,6 @@ PreInstruction_Xray_Main:
     dw HandleXrayScope_State4_DeactivateBeam_RestoreBG2_SecondHalf       ;88872E;
     dw HandleXrayScope_State5_DeactivateBeam_Finish                      ;888730;
 
-%anchor($888732)
 HandleXrayScope_State0_NoBeam:
     PHP                                                                  ;888732;
     REP #$30                                                             ;888733;
@@ -1286,12 +1220,10 @@ HandleXrayScope_State0_NoBeam:
     RTS                                                                  ;888752;
 
 
-%anchor($888753)
 RTS_888753:
     RTS                                                                  ;888753;
 
 
-%anchor($888754)
 HandleXrayScope_State1_BeamIsWidening:
     PHP                                                                  ;888754;
     REP #$30                                                             ;888755;
@@ -1336,7 +1268,6 @@ HandleXrayScope_State1_BeamIsWidening:
     RTS                                                                  ;8887AA;
 
 
-%anchor($8887AB)
 HandleXrayScope_State2_FullBeam:
     PHP                                                                  ;8887AB;
     REP #$30                                                             ;8887AC;
@@ -1356,7 +1287,6 @@ HandleXrayScope_State2_FullBeam:
     RTS                                                                  ;8887C4;
 
 
-%anchor($8887C5)
 HandleMovingXray_UpDown:
     PHP                                                                  ;8887C5;
     REP #$30                                                             ;8887C6;
@@ -1381,7 +1311,6 @@ HandleMovingXray_UpDown:
     RTS                                                                  ;8887DF;
 
 
-%anchor($8887E0)
 MoveXray_Up:
     PHP                                                                  ;8887E0;
     REP #$30                                                             ;8887E1;
@@ -1431,7 +1360,6 @@ MoveXray_Up:
     RTS                                                                  ;888834;
 
 
-%anchor($888835)
 MoveXray_Down:
     PHP                                                                  ;888835;
     REP #$30                                                             ;888836;
@@ -1485,7 +1413,6 @@ MoveXray_Down:
     RTS                                                                  ;888895;
 
 
-%anchor($888896)
 Calculate_Xray_HDMADataTable:
     PHP                                                                  ;888896;
     REP #$30                                                             ;888897;
@@ -1582,7 +1509,6 @@ Calculate_Xray_HDMADataTable:
     RTS                                                                  ;888933;
 
 
-%anchor($888934)
 HandleXrayScope_State3_DeactivateBeam_RestoreBG2_FirstHalf:
     PHP                                                                  ;888934;
     REP #$30                                                             ;888935;
@@ -1642,7 +1568,6 @@ HandleXrayScope_State3_DeactivateBeam_RestoreBG2_FirstHalf:
     RTS                                                                  ;8889B9;
 
 
-%anchor($8889BA)
 HandleXrayScope_State4_DeactivateBeam_RestoreBG2_SecondHalf:
     PHP                                                                  ;8889BA;
     REP #$30                                                             ;8889BB;
@@ -1683,7 +1608,6 @@ HandleXrayScope_State4_DeactivateBeam_RestoreBG2_SecondHalf:
     RTS                                                                  ;888A07;
 
 
-%anchor($888A08)
 HandleXrayScope_State5_DeactivateBeam_Finish:
     PHP                                                                  ;888A08;
     REP #$30                                                             ;888A09;
@@ -1759,7 +1683,6 @@ HandleXrayScope_State5_DeactivateBeam_Finish:
     RTS                                                                  ;888AA3;
 
 
-%anchor($888AA4)
 Spawn_PowerBombExplosion:
     LDA.W $0A78                                                          ;888AA4;
     BNE .pending                                                         ;888AA7;
@@ -1782,7 +1705,6 @@ Spawn_PowerBombExplosion:
     RTL                                                                  ;888ACD;
 
 
-%anchor($888ACE)
 InstList_PowerBombExplosion_Window2_LeftPosition:
     dw Instruction_HDMAObject_HDMATableBank : db $89                     ;888ACE;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;888AD1;
@@ -1814,7 +1736,6 @@ InstList_PowerBombExplosion_Window2_LeftPosition:
     dw Instruction_HDMAObject_Sleep                                      ;888B10;
     dw Instruction_HDMAObject_Delete                                     ;888B12;
 
-%anchor($888B14)
 PowerBombExplosion_Setup1_PreExplosion_White:
     SEP #$20                                                             ;888B14;
     LDA.B #$FF                                                           ;888B16;
@@ -1829,14 +1750,12 @@ PowerBombExplosion_Setup1_PreExplosion_White:
     RTL                                                                  ;888B31;
 
 
-%anchor($888B32)
 PowerBombExplosion_Setup2_PreExplosion_Yellow:
     LDA.W #PowerBomb_PreExplosion_ShapeDefinitionTables_PreScaled        ;888B32;
     STA.W $0CF2                                                          ;888B35;
     RTL                                                                  ;888B38;
 
 
-%anchor($888B39)
 PowerBombExplosion_Setup3_Explosion_Yellow:
     LDA.W #$0400                                                         ;888B39;
     STA.W $0CEA                                                          ;888B3C;
@@ -1845,14 +1764,12 @@ PowerBombExplosion_Setup3_Explosion_Yellow:
     RTL                                                                  ;888B46;
 
 
-%anchor($888B47)
 PowerBombExplosion_Setup4_Explosion_White:
     LDA.W #PowerBomb_Explosion_ShapeDefinitionTiles_PreScaled            ;888B47;
     STA.W $0CF2                                                          ;888B4A;
     RTL                                                                  ;888B4D;
 
 
-%anchor($888B4E)
 PowerBombExplosion_ClearnUp_TryCrystalFlash:
     LDA.W $0AF6                                                          ;888B4E;
     CMP.W $0CE2                                                          ;888B51;
@@ -1879,7 +1796,6 @@ PowerBombExplosion_ClearnUp_TryCrystalFlash:
     RTL                                                                  ;888B7F;
 
 
-%anchor($888B80)
 InstList_PowerBombExplosion_Window2_RightPosition:
     dw Instruction_HDMAObject_HDMATableBank : db $89                     ;888B80;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;888B83;
@@ -1888,18 +1804,15 @@ InstList_PowerBombExplosion_Window2_RightPosition:
     dw Instruction_HDMAObject_Sleep                                      ;888B8B;
     dw Instruction_HDMAObject_Delete                                     ;888B8D;
 
-%anchor($888B8F)
 PreInstruction_PowerBombExplosion_SetLayerBlendingWindow2:
     LDA.W #$8000                                                         ;888B8F;
     TSB.W $1986                                                          ;888B92;
     RTL                                                                  ;888B95;
 
 
-%anchor($888B96)
 PowerBomb_Stage5_HDMAObjectTimer:
     dw $0003                                                             ;888B96;
 
-%anchor($888B98)
 PreInstruction_PowerBombExplosion_5_AfterGlow:
     LDA.W $0592                                                          ;888B98;
     BMI .exploding                                                       ;888B9B;
@@ -1953,7 +1866,6 @@ PreInstruction_PowerBombExplosion_5_AfterGlow:
     RTL                                                                  ;888BE9;
 
 
-%anchor($888BEA)
 Calc_PowerBombExplo_HDMADataTables_PreScaled_LeftOfScreen:
     LDA.W $0CE6                                                          ;888BEA;
     CLC                                                                  ;888BED;
@@ -1978,7 +1890,6 @@ Calc_PowerBombExplo_HDMADataTables_PreScaled_LeftOfScreen:
     RTS                                                                  ;888C11;
 
 
-%anchor($888C12)
 Calculate_PowerBombExplo_HDMADataTables_PreScaled_OnScreen:
     LDA.W $0000,Y                                                        ;888C12;
     BEQ .return                                                          ;888C15;
@@ -2005,7 +1916,6 @@ Calculate_PowerBombExplo_HDMADataTables_PreScaled_OnScreen:
     RTS                                                                  ;888C39;
 
 
-%anchor($888C3A)
 Calc_PowerBombExplo_HDMADataTables_PreScaled_RightOfScreen:
     LDA.W $0CE6                                                          ;888C3A;
     SEC                                                                  ;888C3D;
@@ -2030,7 +1940,6 @@ Calc_PowerBombExplo_HDMADataTables_PreScaled_RightOfScreen:
     RTS                                                                  ;888C61;
 
 
-%anchor($888C62)
 Calculate_PowerBombExplosion_HDMADataTablePointers:
     LDA.W $0592                                                          ;888C62;
     BMI .exploding                                                       ;888C65;
@@ -2087,7 +1996,6 @@ Calculate_PowerBombExplosion_HDMADataTablePointers:
     RTL                                                                  ;888CC5;
 
 
-%anchor($888CC6)
 Calculate_PowerBombExplo_HDMADataTables_Scaled_LeftOfScreen:
     LDA.W PowerBomb_ShapeDefinitionTiles_Optimization_A226,Y             ;888CC6;
     STA.W $4203                                                          ;888CC9;
@@ -2130,7 +2038,6 @@ Calculate_PowerBombExplo_HDMADataTables_Scaled_LeftOfScreen:
     RTS                                                                  ;888D03;
 
 
-%anchor($888D04)
 Calculate_PowerBombExplosion_HDMADataTables_Scaled_OnScreen:
     LDA.W PowerBomb_ShapeDefinitionTiles_Optimization_A226,Y             ;888D04;
     STA.W $4203                                                          ;888D07;
@@ -2173,7 +2080,6 @@ Calculate_PowerBombExplosion_HDMADataTables_Scaled_OnScreen:
     RTS                                                                  ;888D45;
 
 
-%anchor($888D46)
 Calculate_PowerBombExplo_HDMADataTables_Scaled_RightOfScreen:
     LDA.W PowerBomb_ShapeDefinitionTiles_Optimization_A226,Y             ;888D46;
     STA.W $4203                                                          ;888D49;
@@ -2218,7 +2124,6 @@ Calculate_PowerBombExplo_HDMADataTables_Scaled_RightOfScreen:
     RTS                                                                  ;888D84;
 
 
-%anchor($888D85)
 PowerBombExplosion_Colors:
 ; Indexed by [power bomb explosion radius] / 800h
 ; Red, green, blue. Range 0..1Fh
@@ -2262,15 +2167,12 @@ PowerBombExplosion_Colors:
     db $12,$0D,$0D
     db $12,$0D,$0D
 
-%anchor($888DE5)
 PowerBombExplosion_InitialRadiusSpeed:
     dw $0000                                                             ;888DE5;
 
-%anchor($888DE7)
 PowerBombExplosion_RadiusAcceleration:
     dw $0030                                                             ;888DE7;
 
-%anchor($888DE9)
 PreInstruction_PowerBombExplosion_3_Explosion_Yellow:
     LDA.W $0592                                                          ;888DE9;
     BMI .exploding                                                       ;888DEC;
@@ -2389,7 +2291,6 @@ PreInstruction_PowerBombExplosion_3_Explosion_Yellow:
     RTL                                                                  ;888EB1;
 
 
-%anchor($888EB2)
 PreInstruction_PowerBombExplosion_4_Explosion_White:
     LDA.W $0592                                                          ;888EB2;
     BMI .exploding                                                       ;888EB5;
@@ -2483,7 +2384,6 @@ PreInstruction_PowerBombExplosion_4_Explosion_White:
     RTL                                                                  ;888F55;
 
 
-%anchor($888F56)
 Calculate_PowerBombPreExplosion_HDMAObjectTablePointers:
     LDA.W $0592                                                          ;888F56;
     BMI .exploding                                                       ;888F59;
@@ -2541,7 +2441,6 @@ Calculate_PowerBombPreExplosion_HDMAObjectTablePointers:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($888FBA)
 UNUSED_CalcPowerBombRelatedHDMATables_Scaled_Left_888FBA:
     LDA.W PowerBomb_ShapeDefinitionTiles_Optimization_A226,Y             ;888FBA;
     STA.W $4203                                                          ;888FBD;
@@ -2583,7 +2482,6 @@ UNUSED_CalcPowerBombRelatedHDMATables_Scaled_Left_888FBA:
     RTS                                                                  ;888FF7;
 
 
-%anchor($888FF8)
 UNUSED_CalcPBRelatedHDMADataTables_Scaled_OnScreen_888FF8:
     LDA.W PowerBomb_ShapeDefinitionTiles_Optimization_A226,Y             ;888FF8;
     STA.W $4203                                                          ;888FFB;
@@ -2625,7 +2523,6 @@ UNUSED_CalcPBRelatedHDMADataTables_Scaled_OnScreen_888FF8:
     RTS                                                                  ;889039;
 
 
-%anchor($88903A)
 UNUSED_CalPBRelatedHDMADataTables_Scaled_OnScreen_88903A:
     LDA.W PowerBomb_ShapeDefinitionTiles_Optimization_A226,Y             ;88903A;
     STA.W $4203                                                          ;88903D;
@@ -2671,7 +2568,6 @@ UNUSED_CalPBRelatedHDMADataTables_Scaled_OnScreen_88903A:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($889079)
 PowerBomb_PreExplosion_Colors:
 ; Indexed by [power bomb pre-explosion radius] / 800h
 ; Red, green, blue. Range 0..1Fh
@@ -2700,7 +2596,6 @@ PowerBomb_PreExplosion_Colors:
     db $14,$14,$04
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($8890A9)
 UNUSED_PowerBomb_ExplosionRelated_Colors_8890A9:
 ; These might have been used for the after-glow in earlier development
     db $13,$13,$0F                                                       ;8890A9;
@@ -2720,20 +2615,16 @@ UNUSED_PowerBomb_ExplosionRelated_Colors_8890A9:
     db $01,$01,$01
     db $00,$00,$00
 
-%anchor($8890D9)
 UNUSED_PowerBombColors_8890D9:
     dw $0001                                                             ;8890D9;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-%anchor($8890DB)
 PowerBomb_PreExplosion_InitialRadiusSpeed:
     dw $3000                                                             ;8890DB;
 
-%anchor($8890DD)
 PowerBomb_PreExplosion_RadiusAcceleration:
     dw $0080                                                             ;8890DD;
 
-%anchor($8890DF)
 PreInstruction_PowerBombExplosion_1_PreExplosion_White:
     LDA.W $0592                                                          ;8890DF;
     BMI .exploding                                                       ;8890E2;
@@ -2852,7 +2743,6 @@ PreInstruction_PowerBombExplosion_1_PreExplosion_White:
     RTL                                                                  ;8891A7;
 
 
-%anchor($8891A8)
 PreInstruction_PowerBombExplosion_2_PreExplosion_Yellow:
     LDA.W $0592                                                          ;8891A8;
     BMI .exploding                                                       ;8891AB;
@@ -2944,7 +2834,6 @@ PreInstruction_PowerBombExplosion_2_PreExplosion_Yellow:
     RTL                                                                  ;889245;
 
 
-%anchor($889246)
 PowerBomb_Explosion_ShapeDefinitionTiles_PreScaled:
 ; Defines the shape of (the bottom) half of a power bomb explosion
 ; Each byte defines the width of the power bomb explosion for that pixel-row, C0h pixel-rows total
@@ -3154,7 +3043,6 @@ PowerBomb_Explosion_ShapeDefinitionTiles_PreScaled:
     db $8A,$89,$86,$85,$82,$7F,$7E,$7B,$79,$76,$73,$72,$6F,$6C,$69,$66   ;889EE6;
     db $62,$5F,$5C,$58,$55,$50,$4D,$49,$44,$3E,$3A,$34,$2C,$24,$19,$00   ;889EF6;
 
-%anchor($889F06)
 PowerBomb_PreExplosion_ShapeDefinitionTables_PreScaled:
 ; Defines the shape of (the bottom) half of a power bomb explosion
 ; Each byte defines the width of the power bomb explosion for that pixel-row, C0h pixel-rows total
@@ -3208,7 +3096,6 @@ PowerBomb_PreExplosion_ShapeDefinitionTables_PreScaled:
     db $8A,$89,$86,$85,$82,$7F,$7E,$7B,$79,$76,$73,$72,$6F,$6C,$69,$66   ;88A1E6;
     db $62,$5F,$5C,$58,$55,$50,$4D,$49,$44,$3E,$3A,$34,$2C,$24,$19,$00   ;88A1F6;
 
-%anchor($88A206)
 PowerBomb_ShapeDefinitionTiles_Optimization_A206:
 ; PJ believes this padding exists purely because of the "optimisation" done in the
 ; "calculate power bomb explosion HDMA data tables - stage 1/3" routines ($8CC6/$8D04/$8D46)
@@ -3216,14 +3103,12 @@ PowerBomb_ShapeDefinitionTiles_Optimization_A206:
     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;88A206;
     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;88A216;
 
-%anchor($88A226)
 PowerBomb_ShapeDefinitionTiles_Optimization_A226:
     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;88A226;
     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;88A236;
     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;88A246;
     db $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF   ;88A256;
 
-%anchor($88A266)
 PowerBombExplosion_ShapeDefinitionTable_Unscaled_width:
 ; This table gives the shape of (the bottom) half of a power bomb explosion with X radius = 100h (Y radius C0h),
 ; starting from the bottom and ending at the centre
@@ -3231,13 +3116,11 @@ PowerBombExplosion_ShapeDefinitionTable_Unscaled_width:
     db $00,$0C,$19,$25,$31,$3E,$4A,$56,$61,$6D,$78,$83,$8E,$98,$A2,$AB   ;88A266;
     db $B5,$BD,$C5,$CD,$D4,$DB,$E1,$E7,$EC,$F1,$F4,$F8,$FB,$FD,$FE,$FF   ;88A276;
 
-%anchor($88A286)
 PowerBombExplosion_ShapeDefinitionTable_Unscaled_topOffset:
 ; Top offset (previous entry used as bottom offset)
     db $BF,$BF,$BE,$BD,$BA,$B8,$B6,$B2,$AF,$AB,$A6,$A2,$9C,$96,$90,$8A   ;88A286;
     db $84,$7D,$75,$6E,$66,$5E,$56,$4D,$45,$3C,$33,$2A,$20,$17,$0D,$04   ;88A296;
 
-%anchor($88A2A6)
 Spawn_CrystalFlash_HDMAObjects:
     LDA.W #$8000                                                         ;88A2A6;
     STA.W $0592                                                          ;88A2A9;
@@ -3250,7 +3133,6 @@ Spawn_CrystalFlash_HDMAObjects:
     RTL                                                                  ;88A2BC;
 
 
-%anchor($88A2BD)
 InstList_CrystalFlash_Window2_LeftPosition:
     dw Instruction_HDMAObject_HDMATableBank : db $89                     ;88A2BD;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88A2C0;
@@ -3269,7 +3151,6 @@ InstList_CrystalFlash_Window2_LeftPosition:
     dw Instruction_HDMAObject_Sleep                                      ;88A2E0;
     dw Instruction_HDMAObject_Delete                                     ;88A2E2;
 
-%anchor($88A2E4)
 CrystalFlash_Setup_1:
     SEP #$20                                                             ;88A2E4;
     LDA.B #$FF                                                           ;88A2E6;
@@ -3286,7 +3167,6 @@ CrystalFlash_Setup_1:
     RTL                                                                  ;88A308;
 
 
-%anchor($88A309)
 CrystalFlash_Setup_2:
     LDA.W #$0400                                                         ;88A309;
     STA.W $0CEA                                                          ;88A30C;
@@ -3295,7 +3175,6 @@ CrystalFlash_Setup_2:
     RTL                                                                  ;88A316;
 
 
-%anchor($88A317)
 CrystalFlash_Cleanup:
     STZ.W $0CEE                                                          ;88A317;
     STZ.W $0592                                                          ;88A31A;
@@ -3306,7 +3185,6 @@ CrystalFlash_Cleanup:
     RTL                                                                  ;88A329;
 
 
-%anchor($88A32A)
 InstList_CrystalFlash_Window2_RightPosition:
     dw Instruction_HDMAObject_HDMATableBank : db $89                     ;88A32A;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88A32D;
@@ -3315,7 +3193,6 @@ InstList_CrystalFlash_Window2_RightPosition:
     dw Instruction_HDMAObject_Sleep                                      ;88A335;
     dw Instruction_HDMAObject_Delete                                     ;88A337;
 
-%anchor($88A339)
 PreInstruction_CrystalFlash_CustomLayerBlendingWindow2Config:
     SEP #$20                                                             ;88A339;
     STZ.W $0060                                                          ;88A33B;
@@ -3334,7 +3211,6 @@ PreInstruction_CrystalFlash_CustomLayerBlendingWindow2Config:
     RTL                                                                  ;88A35C;
 
 
-%anchor($88A35D)
 PreInstruction_CrystalFlash_2_AfterGlow:
     LDA.W $0592                                                          ;88A35D;
     BMI .exploding                                                       ;88A360;
@@ -3392,7 +3268,6 @@ PreInstruction_CrystalFlash_2_AfterGlow:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($88A3B7)
 UNUSED_CalcCrystalFlashHDMADataTables_PreScaled_Left_88A3B7:
     LDA.W $0CE6                                                          ;88A3B7;
     CLC                                                                  ;88A3BA;
@@ -3417,7 +3292,6 @@ UNUSED_CalcCrystalFlashHDMADataTables_PreScaled_Left_88A3B7:
     RTS                                                                  ;88A3DE;
 
 
-%anchor($88A3DF)
 UNUSED_Calc_CF_HDMADataTables_PreScaled_OnScreen_88A3DF:
     LDA.W $0000,Y                                                        ;88A3DF;
     BEQ .return                                                          ;88A3E2;
@@ -3443,7 +3317,6 @@ UNUSED_Calc_CF_HDMADataTables_PreScaled_OnScreen_88A3DF:
     RTS                                                                  ;88A406;
 
 
-%anchor($88A407)
 UNUSED_Calc_CF_HDMADataTables_PreScaled_RightOfScreen_88A407:
     LDA.W $0CE6                                                          ;88A407;
     SEC                                                                  ;88A40A;
@@ -3469,7 +3342,6 @@ UNUSED_Calc_CF_HDMADataTables_PreScaled_RightOfScreen_88A407:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($88A42F)
 Calculate_CrystalFlash_HDMAObjectTablePointers:
     LDA.W $0592                                                          ;88A42F;
     BMI .exploding                                                       ;88A432;
@@ -3526,7 +3398,6 @@ Calculate_CrystalFlash_HDMAObjectTablePointers:
     RTL                                                                  ;88A492;
 
 
-%anchor($88A493)
 Calculate_CrystalFlash_HDMADataTables_Scaled_LeftOfScreen:
     LDA.W PowerBomb_ShapeDefinitionTiles_Optimization_A226,Y             ;88A493;
     STA.W $4203                                                          ;88A496;
@@ -3569,7 +3440,6 @@ Calculate_CrystalFlash_HDMADataTables_Scaled_LeftOfScreen:
     RTS                                                                  ;88A4D0;
 
 
-%anchor($88A4D1)
 Calculate_CrystalFlash_HDMADataTables_Scaled_OnScreen:
     LDA.W PowerBomb_ShapeDefinitionTiles_Optimization_A226,Y             ;88A4D1;
     STA.W $4203                                                          ;88A4D4;
@@ -3611,7 +3481,6 @@ Calculate_CrystalFlash_HDMADataTables_Scaled_OnScreen:
     RTS                                                                  ;88A512;
 
 
-%anchor($88A513)
 Calculate_CrystalFlash_HDMADataTables_Scaled_RightOfScreen:
     LDA.W PowerBomb_ShapeDefinitionTiles_Optimization_A226,Y             ;88A513;
     STA.W $4203                                                          ;88A516;
@@ -3656,7 +3525,6 @@ Calculate_CrystalFlash_HDMADataTables_Scaled_RightOfScreen:
     RTS                                                                  ;88A551;
 
 
-%anchor($88A552)
 PreInstruction_CrystalFlash_1_Explosion:
     LDA.W $0592                                                          ;88A552;
     BMI .exploding                                                       ;88A555;
@@ -3775,7 +3643,6 @@ PreInstruction_CrystalFlash_1_Explosion:
     RTL                                                                  ;88A61A;
 
 
-%anchor($88A61B)
 FXType_20_22_ScrollingSky:
     PHP                                                                  ;88A61B;
     REP #$30                                                             ;88A61C;
@@ -3794,7 +3661,6 @@ FXType_20_22_ScrollingSky:
     dw InstList_FXType_22_BG1XScroll_0                                   ;88A640;
     PLP                                                                  ;88A642;
 
-%anchor($88A643)
 PreInstruction_FXType_22_BG3Yscroll:
     REP #$30                                                             ;88A643;
     JSR.W Damage_Samus_IfSheIsInTheTopRow                                ;88A645;
@@ -3814,14 +3680,12 @@ PreInstruction_FXType_22_BG3Yscroll:
     RTL                                                                  ;88A66B;
 
 
-%anchor($88A66C)
 Instruction_HDMAObjectPhaseIncreaseTimer_1:
     LDA.W #$0001                                                         ;88A66C;
     STA.W $1920,X                                                        ;88A66F;
     RTS                                                                  ;88A672;
 
 
-%anchor($88A673)
 PreInstruction_FXType_22_BG3XScroll:
     PHP                                                                  ;88A673;
     REP #$30                                                             ;88A674;
@@ -3961,7 +3825,6 @@ PreInstruction_FXType_22_BG3XScroll:
     RTL                                                                  ;88A785;
 
 
-%anchor($88A786)
 Calculate_FXType_22_IndirectHDMATable:
     LDA.W #$04C0                                                         ;88A786;
     SEC                                                                  ;88A789;
@@ -4014,7 +3877,6 @@ Calculate_FXType_22_IndirectHDMATable:
     RTS                                                                  ;88A7D7;
 
 
-%anchor($88A7D8)
 FXType_20_ScrollingSky_RoomSetupASM_ScrollingSkyLand:
     PHP                                                                  ;88A7D8;
     SEP #$30                                                             ;88A7D9;
@@ -4035,7 +3897,6 @@ FXType_20_ScrollingSky_RoomSetupASM_ScrollingSkyLand:
     RTL                                                                  ;88A7FF;
 
 
-%anchor($88A800)
 RoomSetupASM_ScrollingSkyOcean:
     PHP                                                                  ;88A800;
     SEP #$30                                                             ;88A801;
@@ -4052,7 +3913,6 @@ RoomSetupASM_ScrollingSkyOcean:
     RTL                                                                  ;88A81B;
 
 
-%anchor($88A81C)
 Calculate_FXType_22_BG3YScrollHDMATable:
     PHB                                                                  ;88A81C;
     PHK                                                                  ;88A81D;
@@ -4162,7 +4022,6 @@ Calculate_FXType_22_BG3YScrollHDMATable:
     RTS                                                                  ;88A8C3;
 
 
-%anchor($88A8C4)
 Damage_Samus_IfSheIsInTheTopRow:
     LDA.W $0AFA                                                          ;88A8C4;
     SEC                                                                  ;88A8C7;
@@ -4180,13 +4039,11 @@ Damage_Samus_IfSheIsInTheTopRow:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($88A8DA)
 UNUSED_Table_88A8DA:
 ; Looks like the format of FXType_22_RepeatingBG3StripsTable below
     dw $0000,$0010,$0020,$0020,$0010,$0030,$0040                         ;88A8DA;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-%anchor($88A8E8)
 FXType_22_RepeatingBG3StripsTable:
 ; This table defines sections of repeating strips of BG3
 ;        _______________ Section top position
@@ -4208,7 +4065,6 @@ FXType_22_RepeatingBG3StripsTable:
     dw $0500,$0020,$00F0
     dw $0600
 
-%anchor($88A938)
 FXType_22_BG3XScrollHDMAData:
 ; Looks like only the first line is used (see PreInstruction_FXType_22_BG3XScroll)
     dw $0000,$0001,$0002,$0003,$0003,$0002,$0001,$0000                   ;88A938;
@@ -4276,12 +4132,10 @@ FXType_22_BG3XScrollHDMAData:
     dw $0000,$0001,$0002,$0003,$0003,$0002,$0001,$0000                   ;88AD18;
     dw $0000,$FFFF,$FFFE,$FFFD,$FFFD,$FFFE,$FFFF,$0000                   ;88AD28;
 
-%anchor($88AD38)
 RTL_88AD38:
     RTL                                                                  ;88AD38;
 
 
-%anchor($88AD39)
 InstList_FXType_22_BG1XScroll_0:
     dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88AD39;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88AD3C;
@@ -4289,13 +4143,11 @@ InstList_FXType_22_BG1XScroll_0:
     dw Instruction_HDMAObject_PreInstructionInY                          ;88AD41;
     dl RTL_88AD38                                                        ;88AD43;
 
-%anchor($88AD46)
 InstList_FXType_22_BG1XScroll_1:
     dw $7000,$9F02                                                       ;88AD46; $7E9F02
     dw Instruction_HDMAObject_GotoY                                      ;88AD4A;
     dw InstList_FXType_22_BG1XScroll_1                                   ;88AD4C;
 
-%anchor($88AD4E)
 InstList_FXType_22_BG3XScroll_0:
     dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88AD4E;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88AD51;
@@ -4303,52 +4155,44 @@ InstList_FXType_22_BG3XScroll_0:
     dw Instruction_HDMAObject_PreInstructionInY                          ;88AD56;
     dl PreInstruction_FXType_22_BG3XScroll                               ;88AD58;
 
-%anchor($88AD5B)
 InstList_FXType_22_BG3XScroll_1:
     dw $7000,$9E02                                                       ;88AD5B; $7E9E02
     dw Instruction_HDMAObject_GotoY                                      ;88AD5F;
     dw InstList_FXType_22_BG3XScroll_1                                   ;88AD61;
 
-%anchor($88AD63)
 InstList_FXType_22_BG3YScroll_0:
     dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88AD63;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88AD66;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88AD69;
     dl PreInstruction_FXType_22_BG3Yscroll                               ;88AD6B;
 
-%anchor($88AD6E)
 InstList_FXType_22_BG3YScroll_1:
     dw $7000,$9C00                                                       ;88AD6E; $7E9C00
     dw Instruction_HDMAObject_GotoY                                      ;88AD72;
     dw InstList_FXType_22_BG3YScroll_1                                   ;88AD74;
 
-%anchor($88AD76)
 InstList_ScrollingSkyLand_BG2XScroll_0:
     dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88AD76;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88AD79;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88AD7C;
     dl PreInstruction_ScrollingSkyLand_BG2XScroll                        ;88AD7E;
 
-%anchor($88AD81)
 InstList_ScrollingSkyLand_BG2XScroll_1:
     dw $7000,$9F00                                                       ;88AD81; $7E9F00
     dw Instruction_HDMAObject_GotoY                                      ;88AD85;
     dw InstList_ScrollingSkyLand_BG2XScroll_1                            ;88AD87;
 
-%anchor($88AD89)
 InstList_ScrollingSkyOcean_BG2XScroll_0:
     dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88AD89;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88AD8C;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88AD8F;
     dl PreInstruction_ScrollingSkyOcean_BG2XScroll                       ;88AD91;
 
-%anchor($88AD94)
 InstList_ScrollingSkyOcean_BG2XScroll_1:
     dw $7000,$9F00                                                       ;88AD94; $7E9F00
     dw Instruction_HDMAObject_GotoY                                      ;88AD98;
     dw InstList_ScrollingSkyOcean_BG2XScroll_1                           ;88AD9A;
 
-%anchor($88AD9C)
 ScrollingSkyLand_ChunkPointers:
     dw ScrollingSky_Tilemaps_0                                           ;88AD9C;
     dw ScrollingSky_Tilemaps_1                                           ;88AD9E;
@@ -4356,7 +4200,6 @@ ScrollingSkyLand_ChunkPointers:
     dw ScrollingSky_Tilemaps_3                                           ;88ADA2;
     dw ScrollingSky_Tilemaps_4                                           ;88ADA4;
 
-%anchor($88ADA6)
 ScrollingSkyOcean_ChunkPointesr:
     dw ScrollingSky_Tilemaps_0                                           ;88ADA6;
     dw ScrollingSky_Tilemaps_1                                           ;88ADA8;
@@ -4365,7 +4208,6 @@ ScrollingSkyOcean_ChunkPointesr:
     dw ScrollingSky_Tilemaps_5                                           ;88ADAE;
     dw ScrollingSky_Tilemaps_8AE180                                      ;88ADB0;
 
-%anchor($88ADB2)
 PreInstruction_ScrollingSkyLand_BG2XScroll:
     REP #$30                                                             ;88ADB2;
     LDA.W $0A78                                                          ;88ADB4;
@@ -4373,7 +4215,6 @@ PreInstruction_ScrollingSkyLand_BG2XScroll:
     RTL                                                                  ;88ADB9;
 
 
-%anchor($88ADBA)
 PreInstruction_ScrollingSkyOcean_BG2XScroll:
     REP #$30                                                             ;88ADBA;
     LDA.W $0A78                                                          ;88ADBC;
@@ -4381,7 +4222,6 @@ PreInstruction_ScrollingSkyOcean_BG2XScroll:
     RTL                                                                  ;88ADC1;
 
 
-%anchor($88ADC2)
 Handle_ScrollingSky_BG2XScroll_HDMATables:
     SEP #$30                                                             ;88ADC2;
     LDA.B #$4A                                                           ;88ADC4;
@@ -4510,7 +4350,6 @@ Handle_ScrollingSky_BG2XScroll_HDMATables:
     RTL                                                                  ;88AEC0;
 
 
-%anchor($88AEC1)
 ScrollingSky_ScrollingTable:
 ; Scrolling sky scroll table
 ;                        ________________ Top position of scrolling section
@@ -4555,7 +4394,6 @@ ScrollingSky_ScrollingTable:
     dw $0578,$0000,$0000,$9FE0                                           ;88AF83;
     dw $05F0                                                             ;88AF8B;
 
-%anchor($88AF8D)
 RoomMainASM_ScrollingSkyLand:
     LDA.W #ScrollingSkyLand_ChunkPointers                                ;88AF8D;
     STA.B $00                                                            ;88AF90;
@@ -4564,14 +4402,12 @@ RoomMainASM_ScrollingSkyLand:
     BRA RoomMainASM_ScrollingSky                                         ;88AF97;
 
 
-%anchor($88AF99)
 RoomMainASM_ScrollingSkyOcean:
     LDA.W #ScrollingSkyOcean_ChunkPointesr                               ;88AF99;
     STA.B $00                                                            ;88AF9C;
     LDA.W #$0088                                                         ;88AF9E;
     STA.B $02                                                            ;88AFA1;
 
-%anchor($88AFA3)
 RoomMainASM_ScrollingSky:
     LDA.W $0A78                                                          ;88AFA3;
     BEQ .timeNotFrozen                                                   ;88AFA6;
@@ -4672,18 +4508,15 @@ RoomMainASM_ScrollingSky:
     RTL                                                                  ;88B057;
 
 
-%anchor($88B058)
 Fireflea_Flashing_Shades:
 ; Indexed by [fireflea flashing index] * 2
     dw $0000,$0100,$0200,$0300,$0400,$0500,$0600,$0500                   ;88B058;
     dw $0400,$0300,$0200,$0100                                           ;88B068;
 
-%anchor($88B070)
 Fireflea_Darkness_Shades:
 ; Indexed by [fireflea darkness level]
     dw $0000,$0600,$0C00,$1200,$1800,$1900                               ;88B070;
 
-%anchor($88B07C)
 FXType_24_Fireflea:
     PHP                                                                  ;88B07C;
     REP #$30                                                             ;88B07D;
@@ -4705,19 +4538,16 @@ FXType_24_Fireflea:
     RTL                                                                  ;88B0AB;
 
 
-%anchor($88B0AC)
 InstList_Fireflea_BG3XScroll_0:
     dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88B0AC;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88B0AF;
     dl PreInstruction_Fireflea_BG3XScroll                                ;88B0B1;
 
-%anchor($88B0B4)
 InstList_Fireflea_BG3XScroll_1:
     dw $0001,$9E00                                                       ;88B0B4; $7E9E00
     dw Instruction_HDMAObject_GotoY                                      ;88B0B8;
     dw InstList_Fireflea_BG3XScroll_1                                    ;88B0BA;
 
-%anchor($88B0BC)
 PreInstruction_Fireflea_BG3XScroll:
     PHP                                                                  ;88B0BC;
     REP #$30                                                             ;88B0BD;
@@ -4775,7 +4605,6 @@ PreInstruction_Fireflea_BG3XScroll:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($88B11E)
 UNUSED_Spawn_ExpandingContractingEffect_HDMAObject_88B11E:
     PHP                                                                  ;88B11E;
     REP #$30                                                             ;88B11F;
@@ -4807,20 +4636,17 @@ UNUSED_Spawn_ExpandingContractingEffect_HDMAObject_88B11E:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($88B16C)
 InstList_ExpandingContractingEffect_BG2YScroll_0:
     dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88B16C;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88B16F;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88B172;
     dl PreInstruction_ExpandingContractingEffect_BG2YScroll              ;88B174;
 
-%anchor($88B177)
 InstList_ExpandingContractingEffect_BG2YScroll_1:
     dw $7777,$9E00                                                       ;88B177; $7E9E00
     dw Instruction_HDMAObject_GotoY                                      ;88B17B;
     dw InstList_ExpandingContractingEffect_BG2YScroll_1                  ;88B17D;
 
-%anchor($88B17F)
 PreInstruction_ExpandingContractingEffect_BG2YScroll:
     PHP                                                                  ;88B17F;
     REP #$30                                                             ;88B180;
@@ -4902,7 +4728,6 @@ PreInstruction_ExpandingContractingEffect_BG2YScroll:
     RTL                                                                  ;88B21C;
 
 
-%anchor($88B21D)
 Handle_Earthquake_SoundEffect:
     PHX                                                                  ;88B21D;
     PHY                                                                  ;88B21E;
@@ -4954,12 +4779,10 @@ Handle_Earthquake_SoundEffect:
     dw $8000
 
 
-%anchor($88B278)
 RTL_88B278:
     RTL                                                                  ;88B278;
 
 
-%anchor($88B279)
 FXType_2_Lava:
     LDA.W #FXRisingFunction_LavaAcid_Normal                              ;88B279;
     STA.W $196C                                                          ;88B27C;
@@ -4977,7 +4800,6 @@ FXType_2_Lava:
     RTL                                                                  ;88B2A0;
 
 
-%anchor($88B2A1)
 FXType_4_Acid:
     LDA.W #FXRisingFunction_LavaAcid_Normal                              ;88B2A1;
     STA.W $196C                                                          ;88B2A4;
@@ -4995,7 +4817,6 @@ FXType_4_Acid:
     RTL                                                                  ;88B2C8;
 
 
-%anchor($88B2C9)
 Handle_Tide:
     BIT.W $197D                                                          ;88B2C9;
     BMI .smallTide                                                       ;88B2CC;
@@ -5071,17 +4892,14 @@ Handle_Tide:
     RTS                                                                  ;88B340;
 
 
-%anchor($88B341)
 RTS_88B341:
     RTS                                                                  ;88B341;
 
 
-%anchor($88B342)
 RTS_88B342:
     RTS                                                                  ;88B342;
 
 
-%anchor($88B343)
 FXRisingFunction_LavaAcid_Normal:
     LDA.W $197C                                                          ;88B343;
     BEQ .return3                                                         ;88B346;
@@ -5113,7 +4931,6 @@ FXRisingFunction_LavaAcid_Normal:
     RTS                                                                  ;88B366;
 
 
-%anchor($88B367)
 FXRisingFunction_LavaAcid_WaitToRise:
     JSR.W Handle_Earthquake_SoundEffect                                  ;88B367;
     LDA.W #$0015                                                         ;88B36A;
@@ -5129,7 +4946,6 @@ FXRisingFunction_LavaAcid_WaitToRise:
     RTS                                                                  ;88B381;
 
 
-%anchor($88B382)
 FXRisingFunction_LavaAcid_Rising:
     JSR.W Handle_Earthquake_SoundEffect                                  ;88B382;
     LDA.W #$0015                                                         ;88B385;
@@ -5148,19 +4964,16 @@ FXRisingFunction_LavaAcid_Rising:
     RTS                                                                  ;88B3A0;
 
 
-%anchor($88B3A1)
 Lava_SoundEffects:
 ; Sound library 2. Chosen randomly from the following
     db $12,$13,$14,$12,$13,$14,$12,$13                                   ;88B3A1;
 
-%anchor($88B3A9)
 Instruction_LavaSoundTimer_70:
     LDA.W #$0070                                                         ;88B3A9;
     STA.W $192C,X                                                        ;88B3AC;
     RTS                                                                  ;88B3AF;
 
 
-%anchor($88B3B0)
 PreInstruction_LavaAcid_BG3YScroll:
     PHB                                                                  ;88B3B0;
     LDA.W $1984                                                          ;88B3B1;
@@ -5278,7 +5091,6 @@ PreInstruction_LavaAcid_BG3YScroll:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($88B48E)
 UNUSED_WaveDisplacementTable_88B48E:
 ; Wave displacement table. Same as the data at Setup_LavaAcid_BG2YScrollDataTable_VerticallyWavy_waveDisplacementTable
     dw $0000,$0001,$0001,$0000,$0000,$FFFF,$FFFF,$0000                   ;88B48E;
@@ -5287,14 +5099,12 @@ UNUSED_WaveDisplacementTable_88B48E:
     dw $0000,$0001,$0001,$0000,$0000,$FFFF,$FFFF,$0000                   ;88B4BE;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-%anchor($88B4CE)
 Instruction_HDMAObject_PhaseDecreaseTimer_1:
     LDA.W #$0001                                                         ;88B4CE;
     STA.W $1920,X                                                        ;88B4D1;
     RTS                                                                  ;88B4D4;
 
 
-%anchor($88B4D5)
 PreInstruction_LavaAcid_BG2YScroll:
     PHB                                                                  ;88B4D5;
     LDA.B $B7                                                            ;88B4D6;
@@ -5339,7 +5149,6 @@ PreInstruction_LavaAcid_BG2YScroll:
     RTL                                                                  ;88B51C;
 
 
-%anchor($88B51D)
 Setup_LavaAcid_BG2YScrollDataTable_NotWavy:
     SEP #$20                                                             ;88B51D;
     LDY.W $18C0,X                                                        ;88B51F;
@@ -5360,7 +5169,6 @@ Setup_LavaAcid_BG2YScrollDataTable_NotWavy:
     RTS                                                                  ;88B53A;
 
 
-%anchor($88B53B)
 Setup_LavaAcid_BG2YScrollDataTable_HorizontallyWavy:
     SEP #$20                                                             ;88B53B;
     LDY.W $18C0,X                                                        ;88B53D;
@@ -5410,7 +5218,6 @@ Setup_LavaAcid_BG2YScrollDataTable_HorizontallyWavy:
     dw $0000,$0000,$0001,$0001,$0001,$0001,$0000,$0000                   ;88B589;
     dw $FFFF,$FFFF,$FFFF,$FFFF,$0000,$0000,$0000,$0000                   ;88B599;
 
-%anchor($88B5A9)
 Setup_LavaAcid_BG2YScrollDataTable_VerticallyWavy:
     SEP #$20                                                             ;88B5A9;
     LDY.W $18C0,X                                                        ;88B5AB;
@@ -5471,7 +5278,6 @@ Setup_LavaAcid_BG2YScrollDataTable_VerticallyWavy:
     dw $0000,$0001,$0001,$0000,$0000,$FFFF,$FFFF,$0000                   ;88B61A;
 
 
-%anchor($88B62A)
 IndirectHDMATable_LavaAcid_BG3Yscroll:
 ; 81h,$9C00 x F0h
 ; 81h,$9C02 x 190h
@@ -6125,7 +5931,6 @@ IndirectHDMATable_LavaAcid_BG3Yscroll:
     db $00
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($88BDB1)
 UNUSED_IndirectHDMATable_88BDB1:
     db $81 : dw $9C44                                                    ;88BDB1;
     db $81 : dw $9C44
@@ -6385,7 +6190,6 @@ UNUSED_IndirectHDMATable_88BDB1:
     db $81 : dw $9C44
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-%anchor($88C0B1)
 IndirectHDMATable_LavaAcidBG2_Yscroll:
     db $81 : dw $9C46                                                    ;88C0B1;
     db $81 : dw $9C48
@@ -6661,7 +6465,6 @@ IndirectHDMATable_LavaAcidBG2_Yscroll:
     db $81 : dw $9C64
 
 
-%anchor($88C3E1)
 InstList_LavaAcidBG3_Yscroll:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88C3E1;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88C3E4;
@@ -6670,7 +6473,6 @@ InstList_LavaAcidBG3_Yscroll:
     dl PreInstruction_LavaAcid_BG3YScroll                                ;88C3EB;
     dw Instruction_HDMAObject_Sleep                                      ;88C3EE;
 
-%anchor($88C3F0)
 InstList_LavaAcidBG2_Yscroll:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88C3F0;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88C3F3;
@@ -6679,7 +6481,6 @@ InstList_LavaAcidBG2_Yscroll:
     dl PreInstruction_LavaAcid_BG2YScroll                                ;88C3FA;
     dw Instruction_HDMAObject_Sleep                                      ;88C3FD;
 
-%anchor($88C3FF)
 FXType_6_Water:
     LDA.W #FXRisingFunction_Water_Normal                                 ;88C3FF;
     STA.W $196C                                                          ;88C402;
@@ -6700,7 +6501,6 @@ FXType_6_Water:
     RTL                                                                  ;88C427;
 
 
-%anchor($88C428)
 FXRisingFunction_Water_Normal:
     LDA.W $197C                                                          ;88C428;
     BEQ .return3                                                         ;88C42B;
@@ -6732,7 +6532,6 @@ FXRisingFunction_Water_Normal:
     RTS                                                                  ;88C44B;
 
 
-%anchor($88C44C)
 FXRisingFunction_Water_WaitToRise:
     DEC.W $1980                                                          ;88C44C;
     BNE .return                                                          ;88C44F;
@@ -6743,7 +6542,6 @@ FXRisingFunction_Water_WaitToRise:
     RTS                                                                  ;88C457;
 
 
-%anchor($88C458)
 FXRisingFunction_Water_Rising:
     JSR.W RaiseOrLower_FX                                                ;88C458;
     BCC .return                                                          ;88C45B;
@@ -6755,19 +6553,16 @@ FXRisingFunction_Water_Rising:
     RTS                                                                  ;88C466;
 
 
-%anchor($88C467)
 Instruction_HDMA_Object_Phase_Increase_Timer_1:
     LDA.W #$0001                                                         ;88C467;
     STA.W $1920,X                                                        ;88C46A;
     RTS                                                                  ;88C46D;
 
 
-%anchor($88C46E)
 WaveDisplacementTable_Water:
     dw $0000,$0001,$0001,$0000,$0000,$FFFF,$FFFF,$0000                   ;88C46E;
     dw $0000,$0001,$0001,$0000,$0000,$FFFF,$FFFF,$0000                   ;88C47E;
 
-%anchor($88C48E)
 PreInstruction_Water_BG3_Xscroll:
     PHB                                                                  ;88C48E;
     LDA.W $1984                                                          ;88C48F;
@@ -6912,14 +6707,12 @@ PreInstruction_Water_BG3_Xscroll:
     RTL                                                                  ;88C581;
 
 
-%anchor($88C582)
 Instruction_HDMA_Object_Phase_Increase_Timer_1_duplicate:
     LDA.W #$0001                                                         ;88C582;
     STA.W $1920,X                                                        ;88C585;
     RTS                                                                  ;88C588;
 
 
-%anchor($88C589)
 PreInstruction_Water_BG2_Xscroll:
     PHB                                                                  ;88C589;
     LDA.B $B5                                                            ;88C58A;
@@ -6976,7 +6769,6 @@ PreInstruction_Water_BG2_Xscroll:
     RTL                                                                  ;88C5E3;
 
 
-%anchor($88C5E4)
 Setup_Water_BG2_Xscroll_DataTable_Wavy:
     DEC.W $1920,X                                                        ;88C5E4;
     BNE +                                                                ;88C5E7;
@@ -7026,7 +6818,6 @@ Setup_Water_BG2_Xscroll_DataTable_Wavy:
     RTS                                                                  ;88C635;
 
 
-%anchor($88C636)
 Setup_Water_BG2_Xscroll_DataTable_NotWavy:
     PHX                                                                  ;88C636;
     LDX.B #$1E                                                           ;88C637;
@@ -7041,7 +6832,6 @@ Setup_Water_BG2_Xscroll_DataTable_NotWavy:
     RTS                                                                  ;88C644;
 
 
-%anchor($88C645)
 IndirectHDMATable_WaterBG3XScroll_0:
     db $81 : dw $9C00                                                    ;88C645;
     db $81 : dw $9C00
@@ -7300,7 +7090,6 @@ IndirectHDMATable_WaterBG3XScroll_0:
     db $81 : dw $9C00
     db $81 : dw $9C00
 
-%anchor($88C945)
 IndirectHDMATable_WaterBG3XScroll_1:
     db $81 : dw $9C04                                                    ;88C945;
     db $81 : dw $9C06
@@ -7816,7 +7605,6 @@ IndirectHDMATable_WaterBG3XScroll_1:
     db $81 : dw $9C22
     db $00
 
-%anchor($88CF46)
 IndirectHDMATable_WaterBG2XScroll:
     db $81 : dw $9C44                                                    ;88CF46;
     db $81 : dw $9C44
@@ -8588,7 +8376,6 @@ IndirectHDMATable_WaterBG2XScroll:
     db $81 : dw $9C66
     db $00
 
-%anchor($88D847)
 InstList_Water_BG2_Xscroll:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88D847;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88D84A;
@@ -8597,7 +8384,6 @@ InstList_Water_BG2_Xscroll:
     dl PreInstruction_Water_BG2_Xscroll                                  ;88D851;
     dw Instruction_HDMAObject_Sleep                                      ;88D854;
 
-%anchor($88D856)
 InstList_Water_BG3_Xscroll:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88D856;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88D859;
@@ -8606,7 +8392,6 @@ InstList_Water_BG3_Xscroll:
     dl PreInstruction_Water_BG3_Xscroll                                  ;88D860;
     dw Instruction_HDMAObject_Sleep                                      ;88D863;
 
-%anchor($88D865)
 Spawn_BG3_Scroll_HDMA_Object:
     JSL.L SpawnHDMAObject_SlotA_Channel80_Index70                        ;88D865;
     db $43,$11                                                           ;88D869;
@@ -8614,12 +8399,10 @@ Spawn_BG3_Scroll_HDMA_Object:
     RTL                                                                  ;88D86D;
 
 
-%anchor($88D86E)
 RTL_88D86E:
     RTL                                                                  ;88D86E;
 
 
-%anchor($88D86F)
 IndirectHDMATable_BG3Scroll:                                             ;88D86F;
     db $81 : dw $CAD8
     db $81 : dw $CAD8
@@ -8655,18 +8438,15 @@ IndirectHDMATable_BG3Scroll:                                             ;88D86F
     db $81 : dw $CADC
     db $00
 
-%anchor($88D8D0)
 InstList_BG3Scroll_0:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88D8D0;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88D8D3;
 
-%anchor($88D8D6)
 InstList_BG3Scroll_1:
     dw $7FFF,IndirectHDMATable_BG3Scroll                                 ;88D8D6;
     dw Instruction_HDMAObject_GotoY                                      ;88D8DA;
     dw InstList_BG3Scroll_1                                              ;88D8DC;
 
-%anchor($88D8DE)
 FXType_28_CeresRidley:
     JSL.L Spawn_HDMAObject                                               ;88D8DE;
     db $40,$05                                                           ;88D8E2;
@@ -8677,12 +8457,10 @@ FXType_28_CeresRidley:
     RTL                                                                  ;88D8EE;
 
 
-%anchor($88D8EF)
 RTL_88D8EF:
     RTL                                                                  ;88D8EF;
 
 
-%anchor($88D8F0)
 IndirectHDMATable_CeresRidleyMode_BGTileSize:
     db $1F : dw $07EB                                                    ;88D8F0;
     db $60 : dw $07EC
@@ -8690,7 +8468,6 @@ IndirectHDMATable_CeresRidleyMode_BGTileSize:
     db $10 : dw $07EB
     db $00
 
-%anchor($88D8FD)
 IndirectHDMATable_CeresRidleyMainScreenLayers:                           ;88D8FD;
     db $1F,$04 ;         BG3
     db $60,$13 ; BG1/BG2/    sprites
@@ -8698,36 +8475,30 @@ IndirectHDMATable_CeresRidleyMainScreenLayers:                           ;88D8FD
     db $10,$12 ;     BG2/    sprites
     db $00
 
-%anchor($88D906)
 InstList_CeresRidleyMode_BGTileSize_0:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88D906;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $00             ;88D909;
     dw Instruction_VideoMode_for_HUD_and_Floor_1                         ;88D90C;
 
-%anchor($88D90E)
 InstList_CeresRidleyMode_BGTileSize_1:
     dw $7FFF,IndirectHDMATable_CeresRidleyMode_BGTileSize                ;88D90E;
     dw Instruction_HDMAObject_GotoY                                      ;88D912;
     dw InstList_CeresRidleyMode_BGTileSize_1                             ;88D914;
 
-%anchor($88D916)
 Instruction_VideoMode_for_HUD_and_Floor_1:
     LDA.W #$0009                                                         ;88D916;
     STA.W $07EB                                                          ;88D919;
     RTS                                                                  ;88D91C;
 
 
-%anchor($88D91D)
 InstList_CeresRidley_MainScreenLayers_0:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88D91D;
 
-%anchor($88D920)
 InstList_CeresRidley_MainScreenLayers_1:
     dw $7FFF,IndirectHDMATable_CeresRidleyMainScreenLayers               ;88D920;
     dw Instruction_HDMAObject_GotoY                                      ;88D924;
     dw InstList_CeresRidley_MainScreenLayers_1                           ;88D926;
 
-%anchor($88D928)
 FXType_2A_CeresElevator:
     JSL.L Spawn_HDMAObject                                               ;88D928;
     db $40,$05                                                           ;88D92C;
@@ -8735,37 +8506,31 @@ FXType_2A_CeresElevator:
     RTL                                                                  ;88D930;
 
 
-%anchor($88D931)
 RTL_88D931:
     RTL                                                                  ;88D931;
 
 
-%anchor($88D932)
 IndirectHDMATable_CeresElevatorMode_BGTileSize:                          ;88D932;
     db $1F : dw $07EB
     db $70 : dw $07EC
     db $00
 
-%anchor($88D939)
 InstList_CeresElevatorMode_BGTileSize_0:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88D939;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $00             ;88D93C;
     dw Instruction_VideoMode_for_HUD_1                                   ;88D93F;
 
-%anchor($88D941)
 InstList_CeresElevatorMode_BGTileSize_1:
     dw $7FFF,IndirectHDMATable_CeresElevatorMode_BGTileSize              ;88D941;
     dw Instruction_HDMAObject_GotoY                                      ;88D945;
     dw InstList_CeresElevatorMode_BGTileSize_1                           ;88D947;
 
-%anchor($88D949)
 Instruction_VideoMode_for_HUD_1:
     LDA.W #$0009                                                         ;88D949;
     STA.W $07EB                                                          ;88D94C;
     RTS                                                                  ;88D94F;
 
 
-%anchor($88D950)
 FXType_A_Rain:
     SEP #$20                                                             ;88D950;
     LDA.B #$5C                                                           ;88D952;
@@ -8780,7 +8545,6 @@ FXType_A_Rain:
     RTL                                                                  ;88D96B;
 
 
-%anchor($88D96C)
 InstList_Rain_BG3Scroll_0:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88D96C;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88D96F;
@@ -8788,13 +8552,11 @@ InstList_Rain_BG3Scroll_0:
     dw Instruction_HDMAObject_PreInstructionInY                          ;88D974;
     dl PreInstruction_RainBG3Scroll                                      ;88D976;
 
-%anchor($88D979)
 InstList_Rain_BG3Scroll_1:
     dw $7FFF,IndirectHDMATable_BG3Scroll                                 ;88D979;
     dw Instruction_HDMAObject_GotoY                                      ;88D97D;
     dw InstList_Rain_BG3Scroll_1                                         ;88D97F;
 
-%anchor($88D981)
 Instruction_HDMAObjectBG3XVelocity:
     PHX                                                                  ;88D981;
     LDA.W $05E5                                                          ;88D982;
@@ -8811,14 +8573,12 @@ Instruction_HDMAObjectBG3XVelocity:
     dw $FA00,$0600,$FC00,$0400                                           ;88D992;
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($88D99A)
 UNUSED_IndirectHDMATable_88D99A:
     db $1F : dw $CAD8                                                    ;88D99A;
     db $81 : dw $CADC
     db $00
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-%anchor($88D9A1)
 PreInstruction_RainBG3Scroll:
     PHB                                                                  ;88D9A1;
     LDY.B #$5C                                                           ;88D9A2;
@@ -8882,7 +8642,6 @@ PreInstruction_RainBG3Scroll:
     RTL                                                                  ;88DA10;
 
 
-%anchor($88DA11)
 FXType_8_Spores:
     SEP #$20                                                             ;88DA11;
     LDA.B #$5C                                                           ;88DA13;
@@ -8897,28 +8656,24 @@ FXType_8_Spores:
     RTL                                                                  ;88DA2C;
 
 
-%anchor($88DA2D)
 InstList_Spores_BG3_Xscroll_0:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88DA2D;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88DA30;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88DA33;
     dl PreInstruction_Spores_BG3_Xsscroll                                ;88DA35;
 
-%anchor($88DA38)
 InstList_Spores_BG3_Xscroll_1:
     dw $7FFF,IndirectHDMATable_BG3Scroll                                 ;88DA38;
     dw Instruction_HDMAObject_GotoY                                      ;88DA3C;
     dw InstList_Spores_BG3_Xscroll_1                                     ;88DA3E;
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($88DA40)
 UNUSED_IndirectHDMATable_88DA40:
     db $1F : dw $CAD8                                                    ;88DA40;
     db $81 : dw $CADC
     db $00
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-%anchor($88DA47)
 PreInstruction_Spores_BG3_Xsscroll:
     PHB                                                                  ;88DA47;
     LDY.B #$5C                                                           ;88DA48;
@@ -8973,7 +8728,6 @@ PreInstruction_Spores_BG3_Xsscroll:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($88DA9F)
 UNUSED_HandleSporesWaviness_88DA9F:
     DEC.W $1920,X                                                        ;88DA9F;
     BNE .setupLoop                                                       ;88DAA2;
@@ -9022,7 +8776,6 @@ UNUSED_HandleSporesWaviness_88DA9F:
     dw $0000,$0001,$0001,$0000,$0000,$FFFF,$FFFF,$0000                   ;88DAF8;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-%anchor($88DB08)
 FXType_C_Fog:
     SEP #$20                                                             ;88DB08;
     LDA.B #$5C                                                           ;88DB0A;
@@ -9034,7 +8787,6 @@ FXType_C_Fog:
     RTL                                                                  ;88DB18;
 
 
-%anchor($88DB19)
 InstList_Fog_BG3_Scroll_0:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88DB19;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88DB1C;
@@ -9042,26 +8794,22 @@ InstList_Fog_BG3_Scroll_0:
     dw Instruction_HDMAObject_PreInstructionInY                          ;88DB21;
     dl PreInstruction_Fog_BG3Scroll                                      ;88DB23;
 
-%anchor($88DB26)
 InstList_Fog_BG3_Scroll_1:
     dw $7FFF,IndirectHDMATable_BG3Scroll                                 ;88DB26;
     dw Instruction_HDMAObject_GotoY                                      ;88DB2A;
     dw InstList_Fog_BG3_Scroll_1                                         ;88DB2C;
 
-%anchor($88DB2E)
 RTS_88DB2E:
     RTS                                                                  ;88DB2E;
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($88DB2F)
 UNUSED_IndirectHDMATable_88DB2F:
     db $1F : dw $CAD8                                                    ;88DB2F;
     db $81 : dw $CADC
     db $00
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-%anchor($88DB36)
 PreInstruction_Fog_BG3Scroll:
     PHB                                                                  ;88DB36;
     LDY.B #$5C                                                           ;88DB37;
@@ -9113,7 +8861,6 @@ PreInstruction_Fog_BG3Scroll:
     RTL                                                                  ;88DB89;
 
 
-%anchor($88DB8A)
 FXType_26_TourianEntranceStatue:
     LDA.W #$000A                                                         ;88DB8A;
     JSL.L CheckIfEvent_inA_HasHappened                                   ;88DB8D;
@@ -9143,7 +8890,6 @@ FXType_26_TourianEntranceStatue:
     RTL                                                                  ;88DBCA;
 
 
-%anchor($88DBCB)
 Set_TourianEntranceStatue_BG2_Yscroll:
     LDA.W $1920,X                                                        ;88DBCB;
     CLC                                                                  ;88DBCE;
@@ -9152,7 +8898,6 @@ Set_TourianEntranceStatue_BG2_Yscroll:
     RTS                                                                  ;88DBD6;
 
 
-%anchor($88DBD7)
 PreInst_TourianEntranceStatue_BG2_Yscroll_WaitForUnlock:
     PHP                                                                  ;88DBD7;
     REP #$30                                                             ;88DBD8;
@@ -9186,7 +8931,6 @@ PreInst_TourianEntranceStatue_BG2_Yscroll_WaitForUnlock:
     RTL                                                                  ;88DC22;
 
 
-%anchor($88DC23)
 PreInst_TourianEntranceStatue_BG2Yscroll_DescentDelay:
     JSR.W Handle_Earthquake_SoundEffect                                  ;88DC23;
     LDA.W #$000D                                                         ;88DC26;
@@ -9216,7 +8960,6 @@ PreInst_TourianEntranceStatue_BG2Yscroll_DescentDelay:
     RTL                                                                  ;88DC68;
 
 
-%anchor($88DC69)
 PreInstruction_TourianEntranceStatue_BG2_Yscroll_Descending:
     JSR.W Handle_Earthquake_SoundEffect                                  ;88DC69;
     LDA.W #$000D                                                         ;88DC6C;
@@ -9256,7 +8999,6 @@ PreInstruction_TourianEntranceStatue_BG2_Yscroll_Descending:
     RTL                                                                  ;88DCB9;
 
 
-%anchor($88DCBA)
 PreInst_TourianEntranceStatue_BG2Yscroll_EnableScrolling:
     LDA.W #$8000                                                         ;88DCBA;
     STA.W $1E6D                                                          ;88DCBD;
@@ -9266,7 +9008,6 @@ PreInst_TourianEntranceStatue_BG2Yscroll_EnableScrolling:
     RTL                                                                  ;88DCCA;
 
 
-%anchor($88DCCB)
 Instruction_GotoY_ifEntranceToTourianUnlocked:
     STZ.W $192C,X                                                        ;88DCCB;
     STZ.W $1914,X                                                        ;88DCCE;
@@ -9291,7 +9032,6 @@ Instruction_GotoY_ifEntranceToTourianUnlocked:
     RTS                                                                  ;88DCF9;
 
 
-%anchor($88DCFA)
 InstList_TourianEntranceStatue_BG2Yscroll_0:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88DCFA;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88DCFD;
@@ -9308,21 +9048,18 @@ InstList_TourianEntranceStatue_BG2Yscroll_0:
     dl PreInstruction_TourianEntranceStatue_BG2_Yscroll_Descending       ;88DD18;
     dw Instruction_HDMAObject_Sleep                                      ;88DD1B;
 
-%anchor($88DD1D)
 InstList_TourianEntranceStatue_BG2Yscroll_1:
     dw Instruction_HDMAObject_PreInstructionInY                          ;88DD1D;
     dl PreInst_TourianEntranceStatue_BG2Yscroll_EnableScrolling          ;88DD1F;
     dw $0001,IndirectHDMATable_TourianEntranceStatue_BG2YScroll          ;88DD22;
     dw Instruction_HDMAObject_Sleep                                      ;88DD26;
 
-%anchor($88DD28)
 IndirectHDMATable_TourianEntranceStatue_BG2YScroll:                      ;88DD28;
     db $1F : dw $9E00
     db $01 : dw $9E00
     db $01 : dw $9E00
     db $00
 
-%anchor($88DD32)
 Spawn_BombTorizoHaze:
     JSL.L Spawn_HDMAObject                                               ;88DD32;
     db $02,$32                                                           ;88DD36;
@@ -9333,14 +9070,12 @@ Spawn_BombTorizoHaze:
     RTL                                                                  ;88DD42;
 
 
-%anchor($88DD43)
 PreInst_BombTorizoHaze_ColorMathSubScnBackdropColor:
     LDA.W #$002C                                                         ;88DD43;
     STA.W $1986                                                          ;88DD46;
     RTL                                                                  ;88DD49;
 
 
-%anchor($88DD4A)
 PreInst_BombTorizoHaze_ColorMathSubScnBackColor_GreenRed_0:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88DD4A;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $88             ;88DD4D;
@@ -9348,33 +9083,27 @@ PreInst_BombTorizoHaze_ColorMathSubScnBackColor_GreenRed_0:
     dl PreInst_BombTorizoHaze_ColorMathSubScnBackdropColor               ;88DD52;
     dw $0001,HDMATable_Nothing_88DD61                                    ;88DD55;
 
-%anchor($88DD59)
 PreInst_BombTorizoHaze_ColorMathSubScnBackColor_GreenRed_1:
     dw $7777,HDMATable_BombTorizoHaze_ColorMathSubScnBackColor_GreenRed  ;88DD59;
     dw Instruction_HDMAObject_GotoY                                      ;88DD5D;
     dw PreInst_BombTorizoHaze_ColorMathSubScnBackColor_GreenRed_1        ;88DD5F;
 
-%anchor($88DD61)
 HDMATable_Nothing_88DD61:
     db $00                                                               ;88DD61;
 
-%anchor($88DD62)
 PreInst_BombTorizoHaze_ColorMathSubScnBackdropColor_Blue_0:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88DD62;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $88             ;88DD65;
     dw $0001,HDMATable_Nothing_88DD74                                    ;88DD68;
 
-%anchor($88DD6C)
 PreInst_BombTorizoHaze_ColorMathSubScnBackdropColor_Blue_1:
     dw $7777,HDMATable_BombTorizoHaze_ColorMathSubScnBackdropColor_Blue  ;88DD6C;
     dw Instruction_HDMAObject_GotoY                                      ;88DD70;
     dw PreInst_BombTorizoHaze_ColorMathSubScnBackdropColor_Blue_1        ;88DD72;
 
-%anchor($88DD74)
 HDMATable_Nothing_88DD74:
     db $00                                                               ;88DD74;
 
-%anchor($88DD75)
 HDMATable_BombTorizoHaze_ColorMathSubScnBackColor_GreenRed:
     db $48,$20,$40                                                       ;88DD75;
     db $0A,$21,$41
@@ -9394,7 +9123,6 @@ HDMATable_BombTorizoHaze_ColorMathSubScnBackColor_GreenRed:
     db $0A,$25,$45
     db $00
 
-%anchor($88DDA6)
 HDMATable_BombTorizoHaze_ColorMathSubScnBackdropColor_Blue:
     db $48,$80                                                           ;88DDA6;
     db $0A,$81
@@ -9414,7 +9142,6 @@ HDMATable_BombTorizoHaze_ColorMathSubScnBackdropColor_Blue:
     db $0A,$88
     db $00
 
-%anchor($88DDC7)
 FXType_2C_CeresHaze:
     LDA.W #$0001                                                         ;88DDC7;
     JSL.L CheckIfBossBitsForCurrentAreaMatchAnyBitsInA                   ;88DDCA;
@@ -9433,12 +9160,10 @@ FXType_2C_CeresHaze:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($88DDE2)
 UNUSED_Set_CeresHaze_PreInstruction_for_NoFade_88DDE2:
     LDA.W #UNUSED_PreInst_CeresHaze_ColorMathSubScnBackdropColor_NoFade  ;88DDE2;
     STA.W $18F0,X                                                        ;88DDE5;
 
-%anchor($88DDE8)
 UNUSED_PreInst_CeresHaze_ColorMathSubScnBackdropColor_NoFade:
     LDY.B #$20                                                           ;88DDE8;
     STY.B $74                                                            ;88DDEA;
@@ -9465,17 +9190,14 @@ UNUSED_PreInst_CeresHaze_ColorMathSubScnBackdropColor_NoFade:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($88DE10)
 PreInst_CeresHaze_ColorMathSubScnBackdropColor_RidleyIsAlive:
     LDA.W #$0080                                                         ;88DE10;
     BRA Setup_CeresHaze_ColorMathSubScnBackColor_HDMAObject_FadingIn     ;88DE13;
 
 
-%anchor($88DE15)
 PreInst_CeresHaze_ColorMathSubScnBackdropColor_RidleyIsDead:
     LDA.W #$0020                                                         ;88DE15;
 
-%anchor($88DE18)
 Setup_CeresHaze_ColorMathSubScnBackColor_HDMAObject_FadingIn:
     STA.W $1920,X                                                        ;88DE18;
     STZ.W $1914,X                                                        ;88DE1B;
@@ -9489,7 +9211,6 @@ Setup_CeresHaze_ColorMathSubScnBackColor_HDMAObject_FadingIn:
     LDA.W #PreInstruction_CeresHaze_ColorMathSubScnBackColor_FadingIn    ;88DE27;
     STA.W $18F0,X                                                        ;88DE2A;
 
-%anchor($88DE2D)
 PreInstruction_CeresHaze_ColorMathSubScnBackColor_FadingIn:
     LDY.B #$20                                                           ;88DE2D;
     STY.B $74                                                            ;88DE2F;
@@ -9534,7 +9255,6 @@ PreInstruction_CeresHaze_ColorMathSubScnBackColor_FadingIn:
     RTL                                                                  ;88DE73;
 
 
-%anchor($88DE74)
 PreInstruction_CeresHaze_ColorMathSubScnBackColor_FadedIn:
     LDY.B #$20                                                           ;88DE74;
     STY.B $74                                                            ;88DE76;
@@ -9556,7 +9276,6 @@ PreInstruction_CeresHaze_ColorMathSubScnBackColor_FadedIn:
     RTL                                                                  ;88DE95;
 
 
-%anchor($88DE96)
 PreInstruction_CeresHaze_ColorMathSubScnBackColor_FadingOut:
     LDY.B #$20                                                           ;88DE96;
     STY.B $74                                                            ;88DE98;
@@ -9596,7 +9315,6 @@ PreInstruction_CeresHaze_ColorMathSubScnBackColor_FadingOut:
     RTL                                                                  ;88DED2;
 
 
-%anchor($88DED3)
 InstList_CeresHaze_ColorMathSubScnBackColor_RidleyAlive_0:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88DED3;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88DED6;
@@ -9604,17 +9322,14 @@ InstList_CeresHaze_ColorMathSubScnBackColor_RidleyAlive_0:
     dl PreInst_CeresHaze_ColorMathSubScnBackdropColor_RidleyIsAlive      ;88DEDB;
     dw $0001,Empty_HDMATable_88DEEA                                      ;88DEDE;
 
-%anchor($88DEE2)
 InstList_CeresHaze_ColorMathSubScnBackColor_RidleyAlive_1:
     dw $7777,IndirectHDMATable_CeresHaze_ColorMathSubScnBackdropColor    ;88DEE2;
     dw Instruction_HDMAObject_GotoY                                      ;88DEE6;
     dw InstList_CeresHaze_ColorMathSubScnBackColor_RidleyAlive_1         ;88DEE8;
 
-%anchor($88DEEA)
 Empty_HDMATable_88DEEA:
     db $00                                                               ;88DEEA;
 
-%anchor($88DEEB)
 InstList_CeresHaze_ColorMathSubScnBackColor_RidleyDead_0:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88DEEB;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88DEEE;
@@ -9622,17 +9337,14 @@ InstList_CeresHaze_ColorMathSubScnBackColor_RidleyDead_0:
     dl PreInst_CeresHaze_ColorMathSubScnBackdropColor_RidleyIsDead       ;88DEF3;
     dw $0001,Empty_HDMATable_88DF02                                      ;88DEF6;
 
-%anchor($88DEFA)
 InstList_CeresHaze_ColorMathSubScnBackColor_RidleyDead_1:
     dw $7777,IndirectHDMATable_CeresHaze_ColorMathSubScnBackdropColor    ;88DEFA;
     dw Instruction_HDMAObject_GotoY                                      ;88DEFE;
     dw InstList_CeresHaze_ColorMathSubScnBackColor_RidleyDead_1          ;88DF00;
 
-%anchor($88DF02)
 Empty_HDMATable_88DF02:
     db $00                                                               ;88DF02;
 
-%anchor($88DF03)
 IndirectHDMATable_CeresHaze_ColorMathSubScnBackdropColor:
     db $40 : dw $9D00                                                    ;88DF03;
     db $08 : dw $9D01
@@ -9652,7 +9364,6 @@ IndirectHDMATable_CeresHaze_ColorMathSubScnBackdropColor:
     db $08 : dw $9D0F
     db $00
 
-%anchor($88DF34)
 Spawn_DraygonMainScreenLayers_HDMAObject:
     JSL.L Spawn_HDMAObject                                               ;88DF34;
     db $00,$2C                                                           ;88DF38;
@@ -9661,7 +9372,6 @@ Spawn_DraygonMainScreenLayers_HDMAObject:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($88DF3D)
 UNUSED_SpawnHDMAObject_88DF3D:
     JSL.L Spawn_HDMAObject                                               ;88DF3D;
     db $00,$2C                                                           ;88DF41;
@@ -9669,7 +9379,6 @@ UNUSED_SpawnHDMAObject_88DF3D:
     RTL                                                                  ;88DF45;
 
 
-%anchor($88DF46)
 UNUSED_SpawnHDMAObject_88DF46:
     JSL.L Spawn_HDMAObject                                               ;88DF46;
     db $02,$12                                                           ;88DF4A;
@@ -9678,7 +9387,6 @@ UNUSED_SpawnHDMAObject_88DF46:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($88DF4F)
 InstList_DraygonMainScreenLayers_Initial:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88DF4F;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $88             ;88DF52;
@@ -9687,28 +9395,23 @@ InstList_DraygonMainScreenLayers_Initial:
     dw Instruction_HDMAObject_PreInstructionInY                          ;88DF5A;
     dl PreInstruction_DraygonMainScreenLayers                            ;88DF5C;
 
-%anchor($88DF5F)
 InstList_DraygonMainScreenLayers_DraygonAroundMiddle:
     dw $0001,HDMATable_DraygonMainScreenLayers_DraygonAroundMiddle       ;88DF5F;
     dw Instruction_HDMAObject_Sleep                                      ;88DF63;
 
-%anchor($88DF65)
 InstList_DraygonMainScreenLayers_DraygonAroundBottom:
     dw $0001,HDMATable_DraygonMainScreenLayers_DraygonAroundBottom       ;88DF65;
     dw Instruction_HDMAObject_Sleep                                      ;88DF69;
 
-%anchor($88DF6B)
 InstList_DraygonMainScreenLayers_DraygonAroundTop:
     dw $0001,HDMATable_DraygonMainScreenLayers_DraygonAroundTop          ;88DF6B;
     dw Instruction_HDMAObject_Sleep                                      ;88DF6F;
 
-%anchor($88DF71)
 InstList_DraygonMainScreenLayers_DraygonOffScreen:
     dw $0001,HDMATable_DraygonMainScreenLayers_DraygonOffScreen          ;88DF71;
     dw Instruction_HDMAObject_Sleep                                      ;88DF75;
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($88DF77)
 UNUSED_InstList_BG3_Yscroll_0_88DF77:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88DF77;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $88             ;88DF7A;
@@ -9717,7 +9420,6 @@ UNUSED_InstList_BG3_Yscroll_0_88DF77:
     dw Instruction_HDMAObject_PreInstructionInY                          ;88DF82;
     dl RTL_88DF93                                                        ;88DF84;
 
-%anchor($88DF87)
 UNUSED_InstList_BG3_Yscroll_1_88DF87:
     dw $0001,UNUSED_HDMATable_BG3_Yscroll                                ;88DF87;
     dw Instruction_HDMAObject_GotoY                                      ;88DF8B;
@@ -9725,22 +9427,18 @@ UNUSED_InstList_BG3_Yscroll_1_88DF87:
     dw Instruction_HDMAObject_Sleep                                      ;88DF8F;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-%anchor($88DF91)
 RTL_88DF91:
     RTL                                                                  ;88DF91;
 
 
-%anchor($88DF92)
 RTL_88DF92:
     RTL                                                                  ;88DF92;
 
 
-%anchor($88DF93)
 RTL_88DF93:
     RTL                                                                  ;88DF93;
 
 
-%anchor($88DF94)
 PreInstruction_DraygonMainScreenLayers:
     LDA.W $0F86                                                          ;88DF94;
     BIT.W #$0200                                                         ;88DF97;
@@ -9803,41 +9501,35 @@ PreInstruction_DraygonMainScreenLayers:
     RTL                                                                  ;88E006;
 
 
-%anchor($88E007)
 HDMATable_DraygonMainScreenLayers_DraygonAroundMiddle:                   ;88E007;
     db $1F,$04 ;         BG3
     db $81,$13 ; BG1/BG2/    sprites
     db $00
 
-%anchor($88E00C)
 HDMATable_DraygonMainScreenLayers_DraygonAroundBottom:                   ;88E00C;
     db $1F,$04 ;         BG3
     db $60,$11 ; BG1/        sprites
     db $81,$13 ; BG1/BG2/    sprites
     db $00
 
-%anchor($88E013)
 HDMATable_DraygonMainScreenLayers_DraygonAroundTop:                      ;88E013;
     db $1F,$04 ;         BG3
     db $40,$13 ; BG1/BG2/    sprites
     db $81,$11 ; BG1/        sprites
     db $00
 
-%anchor($88E01A)
 HDMATable_DraygonMainScreenLayers_DraygonOffScreen:                      ;88E01A;
     db $1F,$04 ;         BG3
     db $81,$11 ; BG1/        sprites
     db $00
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($88E01F)
 UNUSED_HDMATable_BG3_Yscroll:
     db $40 : dw $0000                                                    ;88E01F;
     db $81 : dw $0020
     db $00
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-%anchor($88E026)
 PreInstruction_VariaSuitPickup:
     PHP                                                                  ;88E026;
     REP #$30                                                             ;88E027;
@@ -9871,7 +9563,6 @@ PreInstruction_VariaSuitPickup:
     dw SuitPickup_Stage5_LightBeamDissipates                             ;88E058;
     dw VariaSuitPickup_Stage6                                            ;88E05A;
 
-%anchor($88E05C)
 PreInstruction_GravitySuitPickup:
     PHP                                                                  ;88E05C;
     REP #$30                                                             ;88E05D;
@@ -9905,7 +9596,6 @@ PreInstruction_GravitySuitPickup:
     dw SuitPickup_Stage5_LightBeamDissipates                             ;88E08E;
     dw GravitySuitPickup_Stage6                                          ;88E090;
 
-%anchor($88E092)
 SuitPickup_Stage0_LightBeamAppears:
     LDA.W $0DEE                                                          ;88E092;
     CLC                                                                  ;88E095;
@@ -9950,7 +9640,6 @@ SuitPickup_Stage0_LightBeamAppears:
 .positions:
     db $78,$78                                                           ;88E0D5;
 
-%anchor($88E0D7)
 SuitPickup_Stage1_LightBeamWidens_Linear:
     SEP #$20                                                             ;88E0D7;
     LDA.W $0DEE                                                          ;88E0D9;
@@ -9983,7 +9672,6 @@ SuitPickup_Stage1_LightBeamWidens_Linear:
     RTS                                                                  ;88E112;
 
 
-%anchor($88E113)
 SuitPickup_Stage3_LightBeamWidens_Curved:
     JSR.W AdvanceSuitPickup_ColorMathSubScnBackdrop_TransitionToWhite    ;88E113;
     REP #$10                                                             ;88E116;
@@ -10077,7 +9765,6 @@ SuitPickup_Stage3_LightBeamWidens_Curved:
     RTS                                                                  ;88E1B9;
 
 
-%anchor($88E1BA)
 SuitPickup_Stage4_LightBeamShrinks:
     LDA.W $0DF2                                                          ;88E1BA;
     BIT.W #$FF00                                                         ;88E1BD;
@@ -10144,7 +9831,6 @@ SuitPickup_Stage4_LightBeamShrinks:
     RTS                                                                  ;88E22A;
 
 
-%anchor($88E22B)
 SuitPickup_Stage5_LightBeamDissipates:
     SEP #$20                                                             ;88E22B;
     LDA.W $0DEE                                                          ;88E22D;
@@ -10169,12 +9855,10 @@ SuitPickup_Stage5_LightBeamDissipates:
     RTS                                                                  ;88E257;
 
 
-%anchor($88E258)
 VariaSuitPickup_Stage6:
     LDA.W #$0003                                                         ;88E258;
     JSL.L QueueMusicDataOrTrack_8FrameDelay                              ;88E25B;
 
-%anchor($88E25F)
 GravitySuitPickup_Stage6:
     SEP #$20                                                             ;88E25F;
     LDA.B #$80                                                           ;88E261;
@@ -10211,7 +9895,6 @@ GravitySuitPickup_Stage6:
     RTS                                                                  ;88E2B3;
 
 
-%anchor($88E2B4)
 AdvanceSuitPickup_ColorMathSubScnBackdrop_TransitionToWhite:
     SEP #$20                                                             ;88E2B4;
     LDA.W $0DF0                                                          ;88E2B6;
@@ -10255,7 +9938,6 @@ AdvanceSuitPickup_ColorMathSubScnBackdrop_TransitionToWhite:
     RTS                                                                  ;88E2F8;
 
 
-%anchor($88E2F9)
 AdvanceSuitPickup_ColorMathSubScnBackdrop_TransitionToOrange:
     SEP #$20                                                             ;88E2F9;
     LDA.W $0DF0                                                          ;88E2FB;
@@ -10284,7 +9966,6 @@ AdvanceSuitPickup_ColorMathSubScnBackdrop_TransitionToOrange:
     RTS                                                                  ;88E31F;
 
 
-%anchor($88E320)
 VariaSuitPickup_Stage3_GiveSamusVariaSuit:
     LDA.W $09A2                                                          ;88E320;
     ORA.W #$0001                                                         ;88E323;
@@ -10310,7 +9991,6 @@ VariaSuitPickup_Stage3_GiveSamusVariaSuit:
     RTS                                                                  ;88E360;
 
 
-%anchor($88E361)
 GravitySuitPickup_Stage3_GiveSamusGravitySuit:
     LDA.W $09A2                                                          ;88E361;
     ORA.W #$0020                                                         ;88E364;
@@ -10336,7 +10016,6 @@ GravitySuitPickup_Stage3_GiveSamusGravitySuit:
     RTS                                                                  ;88E3A1;
 
 
-%anchor($88E3A2)
 AdvanceSuitPickup_ColorMathSubScnBackdrop_TransitionToBlue:
     SEP #$20                                                             ;88E3A2;
     LDA.W $0DF0                                                          ;88E3A4;
@@ -10365,7 +10044,6 @@ AdvanceSuitPickup_ColorMathSubScnBackdrop_TransitionToBlue:
     RTS                                                                  ;88E3C8;
 
 
-%anchor($88E3C9)
 SuitPickup_LightBeam_CurveWidths:
 ; Indexed by scanline for upper half (`FFh - scanline` for lower half)
     db $01,$02,$03,$04,$05,$06,$07,$07,$08,$08,$09,$09,$0A,$0A,$0B,$0B   ;88E3C9;
@@ -10377,7 +10055,6 @@ SuitPickup_LightBeam_CurveWidths:
     db $17,$17,$17,$17,$17,$17,$17,$18,$18,$18,$18,$18,$18,$18,$18,$18   ;88E429;
     db $18,$18,$18,$18,$18,$18,$18,$18,$18,$18,$18,$18,$18,$18,$18,$18   ;88E439;
 
-%anchor($88E449)
 PreInstruction_PhantoonSemiTransparency:
     PHP                                                                  ;88E449;
     SEP #$10                                                             ;88E44A;
@@ -10420,7 +10097,6 @@ PreInstruction_PhantoonSemiTransparency:
     RTL                                                                  ;88E486;
 
 
-%anchor($88E487)
 Spawn_WavyPhantoon_HDMAObject:
     PHP                                                                  ;88E487;
     PHB                                                                  ;88E488;
@@ -10442,7 +10118,6 @@ Spawn_WavyPhantoon_HDMAObject:
     RTL                                                                  ;88E4A7;
 
 
-%anchor($88E4A8)
 InstList_WavyPhantoon_BG2_Xscroll:
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88E4A8;
                                                                    ;88E4AA;
@@ -10455,7 +10130,6 @@ InstList_WavyPhantoon_BG2_Xscroll:
     dw Instruction_HDMAObject_Sleep                                      ;88E4B9;
     dw Instruction_HDMAObject_Delete                                     ;88E4BB;
 
-%anchor($88E4BD)
 Instruction_Setup_WavyPhantoon:
     PHP                                                                  ;88E4BD;
     REP #$30                                                             ;88E4BE;
@@ -10515,7 +10189,6 @@ Instruction_Setup_WavyPhantoon:
     RTS                                                                  ;88E566;
 
 
-%anchor($88E567)
 PreInstruction_WavyPhantoon:
     PHP                                                                  ;88E567;
     REP #$30                                                             ;88E568;
@@ -10757,18 +10430,15 @@ PreInstruction_WavyPhantoon:
     RTL                                                                  ;88E71D;
 
 
-%anchor($88E71E)
 Spawn_MotherBrainRising_HDMAObject:
     JSL.L Spawn_HDMAObject                                               ;88E71E;
     db $00,$2C                                                           ;88E722;
     dw InstList_MotherBrainRising_MainScreenLayers                       ;88E724;
 
-%anchor($88E726)
 RTL_88E726:
     RTL                                                                  ;88E726;
 
 
-%anchor($88E727)
 InstList_MotherBrainRising_MainScreenLayers:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88E727;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $88             ;88E72A;
@@ -10779,7 +10449,6 @@ InstList_MotherBrainRising_MainScreenLayers:
     dw $0001,HDMATable_MotherBrainRising_MainScreenLayers                ;88E737;
     dw Instruction_HDMAObject_Sleep                                      ;88E73B;
 
-%anchor($88E73D)
 HDMATable_MotherBrainRising_MainScreenLayers:                            ;88E73D;
     db $20,$04 ;         BG3
     db $18,$15 ; BG1/    BG3/sprites
@@ -10788,7 +10457,6 @@ HDMATable_MotherBrainRising_MainScreenLayers:                            ;88E73D
     db $08,$05 ; BG1/    BG3
     db $00
 
-%anchor($88E748)
 Spawn_MotherBrainRainbowBeam_HDMAObject:
     JSL.L Spawn_HDMAObject                                               ;88E748;
     db $41,$26                                                           ;88E74C;
@@ -10796,7 +10464,6 @@ Spawn_MotherBrainRainbowBeam_HDMAObject:
     RTL                                                                  ;88E750;
 
 
-%anchor($88E751)
 InstList_MotherBrainRainbowBeam_Window1Position:
     dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88E751;
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88E754;
@@ -10807,7 +10474,6 @@ InstList_MotherBrainRainbowBeam_Window1Position:
     dw $0001,$9C00                                                       ;88E761;
     dw Instruction_HDMAObject_Sleep                                      ;88E765;
 
-%anchor($88E767)
 Initialise_Rainbow_Beam:
     PHP                                                                  ;88E767;
     SEP #$20                                                             ;88E768;
@@ -10846,7 +10512,6 @@ Initialise_Rainbow_Beam:
     RTL                                                                  ;88E7BB;
 
 
-%anchor($88E7BC)
 PreInstruction_MotherBrainRainbowBeam:
     PHP                                                                  ;88E7BC;
     REP #$30                                                             ;88E7BD;
@@ -10878,7 +10543,6 @@ PreInstruction_MotherBrainRainbowBeam:
     RTL                                                                  ;88E7EC;
 
 
-%anchor($88E7ED)
 Set_RainbowBeam_ColorMathSubscreenBackdropColor:
     LDX.W $1914                                                          ;88E7ED;
     LDA.W .table,X                                                       ;88E7F0;
@@ -10938,7 +10602,6 @@ Set_RainbowBeam_ColorMathSubscreenBackdropColor:
     dw $FFFF,$FFFF,$FFFF,$FFFF,$FFFF,$FFFF ; Excess terminators
 
 
-%anchor($88E8D9)
 Spawn_MorphBallEyeBeam_HDMAObject:
     PHP                                                                  ;88E8D9;
     PHB                                                                  ;88E8DA;
@@ -10955,7 +10618,6 @@ Spawn_MorphBallEyeBeam_HDMAObject:
     RTL                                                                  ;88E8EB;
 
 
-%anchor($88E8EC)
 InstList_MorphBallEyeBeam_Window1Position:
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88E8EC;
     dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88E8EF;
@@ -10974,7 +10636,6 @@ InstList_MorphBallEyeBeam_Window1Position:
     dw Instruction_HDMAObject_Sleep                                      ;88E913;
     dw Instruction_HDMAObject_Delete                                     ;88E915;
 
-%anchor($88E917)
 Instruction_Initialise_MorphBallEyeBeam_HDMA:
     PHP                                                                  ;88E917;
     SEP #$20                                                             ;88E918;
@@ -11017,7 +10678,6 @@ Instruction_Initialise_MorphBallEyeBeam_HDMA:
     RTS                                                                  ;88E986;
 
 
-%anchor($88E987)
 Update_MorphBallEyeBeam_HDMATable_ColorMathSubScnBackColor:
     PHP                                                                  ;88E987;
     REP #$30                                                             ;88E988;
@@ -11070,7 +10730,6 @@ Update_MorphBallEyeBeam_HDMATable_ColorMathSubScnBackColor:
     RTS                                                                  ;88E9E5;
 
 
-%anchor($88E9E6)
 PreInstruction_MorphBallEyeBeam_BeamIsWidening:
     PHP                                                                  ;88E9E6;
     REP #$30                                                             ;88E9E7;
@@ -11108,7 +10767,6 @@ PreInstruction_MorphBallEyeBeam_BeamIsWidening:
     RTL                                                                  ;88EA3B;
 
 
-%anchor($88EA3C)
 PreInstruction_MorphBallEyeBeamHDMA_FullBeam:
     PHP                                                                  ;88EA3C;
     REP #$30                                                             ;88EA3D;
@@ -11174,7 +10832,6 @@ PreInstruction_MorphBallEyeBeamHDMA_FullBeam:
     db $2E,$4E,$80, $00
     db $2F,$4F,$80, $00
 
-%anchor($88EACB)
 PreInstruction_MorphBallEyeBeamHDMA_DeactivateBeam:
     PHP                                                                  ;88EACB;
     REP #$30                                                             ;88EACC;
@@ -11250,7 +10907,6 @@ PreInstruction_MorphBallEyeBeamHDMA_DeactivateBeam:
     RTL                                                                  ;88EB57;
 
 
-%anchor($88EB58)
 Spawn_TitleSequenceGradient_HDMAObjects:
     PHP                                                                  ;88EB58;
     PHB                                                                  ;88EB59;
@@ -11270,7 +10926,6 @@ Spawn_TitleSequenceGradient_HDMAObjects:
     RTL                                                                  ;88EB72;
 
 
-%anchor($88EB73)
 InstList_ColorMathSubScnBackdropColor_TitleSequenceGradient:
     dw Instruction_HDMAObject_HDMATableBank : db $7E                     ;88EB73;
     dw Instruction_Setup_TitleSequenceGradient_HDMATable                 ;88EB76;
@@ -11280,7 +10935,6 @@ InstList_ColorMathSubScnBackdropColor_TitleSequenceGradient:
     dw Instruction_HDMAObject_Sleep                                      ;88EB81;
     dw Instruction_HDMAObject_Delete                                     ;88EB83;
 
-%anchor($88EB85)
 InstList_ColorMathControlRegB_TitleSequenceGradient:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88EB85;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88EB88;
@@ -11289,7 +10943,6 @@ InstList_ColorMathControlRegB_TitleSequenceGradient:
     dw Instruction_HDMAObject_Sleep                                      ;88EB91;
     dw Instruction_HDMAObject_Delete                                     ;88EB93;
 
-%anchor($88EB95)
 HDMATable_ColorMathControlRegB_TitleSequenceGradient:                    ;88EB95;
     db $40,$A1 ;\
     db $3A,$A1 ;} Enable subtractive colour math on BG1/backdrop
@@ -11297,7 +10950,6 @@ HDMATable_ColorMathControlRegB_TitleSequenceGradient:                    ;88EB95
     db $40,$31 ;} Enable colour math on BG1/sprites/backdrop
     db $00,$00
 
-%anchor($88EB9F)
 Instruction_Setup_TitleSequenceGradient_HDMATable:
     PHP                                                                  ;88EB9F;
     SEP #$20                                                             ;88EBA0;
@@ -11312,7 +10964,6 @@ Instruction_Setup_TitleSequenceGradient_HDMATable:
     RTS                                                                  ;88EBAF;
 
 
-%anchor($88EBB0)
 PreInst_ColorMathSubScnBackdropColor_TitleSequenceGradient:
     PHP                                                                  ;88EBB0;
     REP #$30                                                             ;88EBB1;
@@ -11333,7 +10984,6 @@ PreInst_ColorMathSubScnBackdropColor_TitleSequenceGradient:
     RTL                                                                  ;88EBD1;
 
 
-%anchor($88EBD2)
 PreInstruction_ColorMathControlRegB_TitleSequenceGradient:
     PHP                                                                  ;88EBD2;
     REP #$30                                                             ;88EBD3;
@@ -11353,7 +11003,6 @@ PreInstruction_ColorMathControlRegB_TitleSequenceGradient:
     RTL                                                                  ;88EBEF;
 
 
-%anchor($88EBF0)
 SpawnIntroCutsceneCrossFade_HDMAObject:
     PHP                                                                  ;88EBF0;
     PHB                                                                  ;88EBF1;
@@ -11370,7 +11019,6 @@ SpawnIntroCutsceneCrossFade_HDMAObject:
     RTL                                                                  ;88EC02;
 
 
-%anchor($88EC03)
 InstList_IntroCutsceneCrossFade:
     dw Instruction_HDMAObject_HDMATableBank : db $88                     ;88EC03;
     dw Instruction_HDMAObject_PreInstructionInY                          ;88EC06;
@@ -11379,7 +11027,6 @@ InstList_IntroCutsceneCrossFade:
     dw Instruction_HDMAObject_Sleep                                      ;88EC0F;
     dw Instruction_HDMAObject_Delete                                     ;88EC11;
 
-%anchor($88EC13)
 HDMATable_IntroCutsceneCrossFade_ColorMathControlRegB:                   ;88EC13;
     db $17,$02 ; Enable colour math on BG2
     db $60,$06 ; Enable colour math on BG2/BG3
@@ -11387,7 +11034,6 @@ HDMATable_IntroCutsceneCrossFade_ColorMathControlRegB:                   ;88EC13
     db $48,$02 ; Enable colour math on BG2
     db $00,$00
 
-%anchor($88EC1D)
 PreInstruction_IntroCutsceneCrossFade:
     PHP                                                                  ;88EC1D;
     REP #$30                                                             ;88EC1E;
@@ -11407,7 +11053,6 @@ PreInstruction_IntroCutsceneCrossFade:
     RTL                                                                  ;88EC3A;
 
 
-%anchor($88EC3B)
 Spawn_WavySamus_HDMAObject:
     PHP                                                                  ;88EC3B;
     PHB                                                                  ;88EC3C;
@@ -11444,7 +11089,6 @@ Spawn_WavySamus_HDMAObject:
     RTL                                                                  ;88EC89;
 
 
-%anchor($88EC8A)
 InstList_WavySamus:
     dw Instruction_HDMAObject_IndirectHDMATableBank : db $7E             ;88EC8A;
     dw Instruction_HDMAObject_HDMATableBank : db $00                     ;88EC8D;
@@ -11455,7 +11099,6 @@ InstList_WavySamus:
     dw Instruction_HDMAObject_Sleep                                      ;88EC9B;
     dw Instruction_HDMAObject_Delete                                     ;88EC9D;
 
-%anchor($88EC9F)
 Instruction_Setup_WavySamus:
     PHP                                                                  ;88EC9F;
     REP #$30                                                             ;88ECA0;
@@ -11469,7 +11112,6 @@ Instruction_Setup_WavySamus:
     RTS                                                                  ;88ECB5;
 
 
-%anchor($88ECB6)
 PreInstruction_WavySamus:
     PHP                                                                  ;88ECB6;
     REP #$30                                                             ;88ECB7;
@@ -11672,6 +11314,5 @@ PreInstruction_WavySamus:
     RTL                                                                  ;88EE31;
 
 
-%anchor($88EE32)
 Freespace_Bank88_EE32:                                                   ;88EE32;
 ; $11CE bytes

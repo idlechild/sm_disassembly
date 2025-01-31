@@ -2,134 +2,111 @@
 org $A08000
 
 
-%anchor($A08000)
 Common_GrappleAI_NoInteraction:
     JSL.L GrappleAI_SwitchEnemyAIToMainAI                                ;A08000;
     RTL                                                                  ;A08004;
 
 
-%anchor($A08005)
 Common_GrappleAI_SamusLatchesOn:
     JSL.L GrappleAI_SamusLatchesOnWithGrapple                            ;A08005;
     RTL                                                                  ;A08009;
 
 
-%anchor($A0800A)
 Common_GrappleAI_KillEnemy:
     JSL.L GrappleAI_EnemyGrappleDeath                                    ;A0800A;
     RTL                                                                  ;A0800E;
 
 
-%anchor($A0800F)
 Common_GrappleAI_CancelGrappleBeam:
     JSL.L GrappleAI_SwitchToFrozenAI                                     ;A0800F;
     RTL                                                                  ;A08013;
 
 
-%anchor($A08014)
 Common_GrappleAI_SamusLatchesOn_NoInvincibility:
     JSL.L GrappleAI_SamusLatchesOnWithGrapple_NoInvincibility            ;A08014;
     RTL                                                                  ;A08018;
 
 
-%anchor($A08019)
 UNUSED_Common_GrappleAI_SamusLatchesOn_ParalyzeEnemy_A08019:
     JSL.L GrappleAI_SamusLatchesOnWithGrapple_ParalyzeEnemy              ;A08019;
     RTL                                                                  ;A0801D;
 
 
-%anchor($A0801E)
 Common_GrappleAI_HurtSamus:
     JSL.L GrappleAI_SwitchToFrozenAI_duplicate                           ;A0801E;
     RTL                                                                  ;A08022;
 
 
-%anchor($A08023)
 Common_NormalEnemyTouchAI:
     JSL.L NormalEnemyTouchAI                                             ;A08023;
     RTL                                                                  ;A08027;
 
 
-%anchor($A08028)
 Common_NormalTouchAI_NoDeathCheck:
     JSL.L NormalEnemyTouchAI_NoDeathCheck_External                       ;A08028;
     RTL                                                                  ;A0802C;
 
 
-%anchor($A0802D)
 Common_NormalEnemyShotAI:
     JSL.L NormalEnemyShotAI                                              ;A0802D;
     RTL                                                                  ;A08031;
 
 
-%anchor($A08032)
 Common_NormalEnemyShotAI_NoDeathCheck_NoEnemyShotGraphic:
     JSL.L NormalEnemyShotAI_NoDeathCheck_NoEnemyShotGraphic_External     ;A08032;
     RTL                                                                  ;A08036;
 
 
-%anchor($A08037)
 Common_NormalEnemyPowerBombAI:
     JSL.L NormalEnemyPowerBombAI                                         ;A08037;
     RTL                                                                  ;A0803B;
 
 
-%anchor($A0803C)
 Common_NormalEnemyPowerBombAI_NoDeathCheck:
     JSL.L NormalEnemyPowerBombAI_NoDeathCheck_External                   ;A0803C;
     RTL                                                                  ;A08040;
 
 
-%anchor($A08041)
 Common_NormalEnemyFrozenAI:
     JSL.L NormalEnemyFrozenAI                                            ;A08041;
     RTL                                                                  ;A08045;
 
 
-%anchor($A08046)
 Common_CreateADudShot:
     JSL.L CreateADudShot                                                 ;A08046;
     RTL                                                                  ;A0804A;
 
 
-%anchor($A0804B)
 RTS_A0804B:
     RTS                                                                  ;A0804B;
 
 
-%anchor($A0804C)
 RTL_A0804C:
     RTL                                                                  ;A0804C;
 
 
-%anchor($A0804D)
 Spritemap_Common_Nothing:
     dw $0000                                                             ;A0804D;
 
-%anchor($A0804F)
 ExtendedSpritemap_Common_Nothing:
     dw $0001,$0000,$0000                                                 ;A0804F;
     dw Spritemap_Common_Nothing                                          ;A08055;
     dw Hitbox_Common_Nothing                                             ;A08057;
 
-%anchor($A08059)
 Hitbox_Common_Nothing:
 ; [n entries] [[left offset] [top offset] [right offset] [bottom offset] [p touch] [p shot]]...
     dw $0001,$0000,$0000,$0000,$0000                                     ;A08059;
     dw Common_NormalEnemyTouchAI                                         ;A08063;
     dw Common_NormalEnemyShotAI                                          ;A08065;
 
-%anchor($A08067)
 InstList_Common_DeleteEnemy:
     dw Instruction_Common_DeleteEnemy                                    ;A08067;
 
-%anchor($A08069)
 NOPNOP_A08069:
 ; Used as palette by respawning enemy placeholder and Draygon's eye o_O
     NOP                                                                  ;A08069;
     NOP                                                                  ;A0806A;
 
-%anchor($A0806B)
 Instruction_Common_Enemy0FB2_InY:
 ; Used only by torizos (for enemy movement function) and escape etecoon (for enemy function)
     LDA.W $0000,Y                                                        ;A0806B;
@@ -139,19 +116,16 @@ Instruction_Common_Enemy0FB2_InY:
     RTL                                                                  ;A08073;
 
 
-%anchor($A08074)
 Instruction_Common_SetEnemy0FB2ToRTS:
     LDA.W #RTS_A0807B                                                    ;A08074;
     STA.W $0FB2,X                                                        ;A08077;
     RTL                                                                  ;A0807A;
 
 
-%anchor($A0807B)
 RTS_A0807B:
     RTS                                                                  ;A0807B;
 
 
-%anchor($A0807C)
 Instruction_Common_DeleteEnemy:
     LDA.W $0F86,X                                                        ;A0807C;
     ORA.W #$0200                                                         ;A0807F;
@@ -161,7 +135,6 @@ Instruction_Common_DeleteEnemy:
     RTL                                                                  ;A08089;
 
 
-%anchor($A0808A)
 Instruction_Common_CallFunctionInY:
     LDA.W $0000,Y                                                        ;A0808A;
     STA.B $12                                                            ;A0808D;
@@ -179,7 +152,6 @@ Instruction_Common_CallFunctionInY:
     RTL                                                                  ;A0809B;
 
 
-%anchor($A0809C)
 Instruction_Common_CallFunctionInY_WithA:
     LDA.W $0000,Y                                                        ;A0809C;
     STA.B $12                                                            ;A0809F;
@@ -201,7 +173,6 @@ Instruction_Common_CallFunctionInY_WithA:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($A080B5)
 UNUSED_Instruction_Common_CallExternalFunctionInY_A080B5:
     LDA.W $0000,Y                                                        ;A080B5;
     STA.B $12                                                            ;A080B8;
@@ -222,7 +193,6 @@ UNUSED_Instruction_Common_CallExternalFunctionInY_A080B5:
     JML.W [$0012]                                                        ;A080CB;
 
 
-%anchor($A080CE)
 UNUSED_Inst_Common_CallExternalFunctionInY_WithA_A080CE:
     LDA.W $0000,Y                                                        ;A080CE;
     STA.B $12                                                            ;A080D1;
@@ -246,14 +216,12 @@ UNUSED_Inst_Common_CallExternalFunctionInY_WithA_A080CE:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($A080ED)
 Instruction_Common_GotoY:
     LDA.W $0000,Y                                                        ;A080ED;
     TAY                                                                  ;A080F0;
     RTL                                                                  ;A080F1;
 
 
-%anchor($A080F2)
 Instruction_Common_GotoY_PlusY:
     STY.B $12                                                            ;A080F2;
     DEY                                                                  ;A080F4;
@@ -273,7 +241,6 @@ Instruction_Common_GotoY_PlusY:
     RTL                                                                  ;A08107;
 
 
-%anchor($A08108)
 Instruction_Common_DecrementTimer_GotoYIfNonZero:
     DEC.W $0F90,X                                                        ;A08108;
     BNE Instruction_Common_GotoY                                         ;A0810B;
@@ -282,7 +249,6 @@ Instruction_Common_DecrementTimer_GotoYIfNonZero:
     RTL                                                                  ;A0810F;
 
 
-%anchor($A08110)
 Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate:
     DEC.W $0F90,X                                                        ;A08110;
     BNE Instruction_Common_GotoY                                         ;A08113;
@@ -291,7 +257,6 @@ Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate:
     RTL                                                                  ;A08117;
 
 
-%anchor($A08118)
 Instruction_Common_DecrementTimer_GotoY_PlusY_IfNonZero:
     SEP #$20                                                             ;A08118;
     DEC.W $0F90,X                                                        ;A0811A;
@@ -301,7 +266,6 @@ Instruction_Common_DecrementTimer_GotoY_PlusY_IfNonZero:
     RTL                                                                  ;A08122;
 
 
-%anchor($A08123)
 Instruction_Common_TimerInY:
     LDA.W $0000,Y                                                        ;A08123;
     STA.W $0F90,X                                                        ;A08126;
@@ -310,14 +274,12 @@ Instruction_Common_TimerInY:
     RTL                                                                  ;A0812B;
 
 
-%anchor($A0812C)
 Instruction_Common_SkipNextInstruction:
     INY                                                                  ;A0812C;
     INY                                                                  ;A0812D;
     RTL                                                                  ;A0812E;
 
 
-%anchor($A0812F)
 Instruction_Common_Sleep:
     DEY                                                                  ;A0812F;
     DEY                                                                  ;A08130;
@@ -328,7 +290,6 @@ Instruction_Common_Sleep:
     RTL                                                                  ;A08139;
 
 
-%anchor($A0813A)
 Instruction_Common_WaitYFrames:
     LDA.W $0000,Y                                                        ;A0813A;
     STA.W $0F94,X                                                        ;A0813D;
@@ -341,7 +302,6 @@ Instruction_Common_WaitYFrames:
     RTL                                                                  ;A0814A;
 
 
-%anchor($A0814B)
 Instruction_Common_TransferYBytesInYToVRAM:
     PHX                                                                  ;A0814B;
     LDX.W $0330                                                          ;A0814C;
@@ -365,7 +325,6 @@ Instruction_Common_TransferYBytesInYToVRAM:
     RTL                                                                  ;A08172;
 
 
-%anchor($A08173)
 Instruction_Common_EnableOffScreenProcessing:
     LDA.W $0F86,X                                                        ;A08173;
     ORA.W #$0800                                                         ;A08176;
@@ -373,7 +332,6 @@ Instruction_Common_EnableOffScreenProcessing:
     RTL                                                                  ;A0817C;
 
 
-%anchor($A0817D)
 Instruction_Common_DisableOffScreenProcessing:
     LDA.W $0F86,X                                                        ;A0817D;
     AND.W #$F7FF                                                         ;A08180;
@@ -386,7 +344,6 @@ Instruction_Common_DisableOffScreenProcessing:
 ;       |     |      _________ Negated speed
 ;       |     |     |      ___ Negated subspeed
 ;       |     |     |     |
-%anchor($A08187)
 CommonEnemySpeeds_LinearlyIncreasing:
   .speed:
     dw $0000                                                             ;A08187;
@@ -467,7 +424,6 @@ CommonEnemySpeeds_LinearlyIncreasing:
 ;       |     |      _________ Negated subspeed
 ;       |     |     |      ___ Negated speed
 ;       |     |     |     |
-%anchor($A0838F)
 CommonEnemySpeeds_QuadraticallyIncreasing:
 ; I.e. gravity
 ; Used by e.g. Botwoon when dying and falling to the floor
@@ -575,7 +531,6 @@ CommonEnemySpeeds_QuadraticallyIncreasing:
     dw $74F9,$0011,$8B07,$FFEE
 
 
-%anchor($A08687)
 Handle_Room_Shaking:
     PHB                                                                  ;A08687;
     PEA.W $A000                                                          ;A08688;
@@ -654,7 +609,6 @@ Handle_Room_Shaking:
     RTL                                                                  ;A08711;
 
 
-%anchor($A08712)
 SetAllActiveEnemiesToShakeHorizontallyFor2Frames:
     PHY                                                                  ;A08712;
     PHX                                                                  ;A08713;
@@ -678,7 +632,6 @@ SetAllActiveEnemiesToShakeHorizontallyFor2Frames:
     RTS                                                                  ;A0872C;
 
 
-%anchor($A0872D)
 BGShakeDisplacements:
 ;      /------horizontal------\ /------vertical------\   /------diagonal------\
 ;       BG1X  BG1Y  BG2X  BG2Y
@@ -702,7 +655,6 @@ BGShakeDisplacements:
     dw $0000,$0000,$0002,$0000, $0000,$0000,$0000,$0002, $0000,$0000,$0002,$0002 ;} BG2 only and enemies
     dw $0000,$0000,$0003,$0000, $0000,$0000,$0000,$0003, $0000,$0000,$0003,$0003 ;/
 
-%anchor($A0884D)
 Draw_Samus_Projectiles_Enemies_and_Enemy_Projectiles:
     PHB                                                                  ;A0884D;
     PEA.W $A000                                                          ;A0884E;
@@ -782,7 +734,6 @@ Draw_Samus_Projectiles_Enemies_and_Enemy_Projectiles:
     RTL                                                                  ;A088CF;
 
 
-%anchor($A088D0)
 Record_EnemySpawnData:
     PHX                                                                  ;A088D0;
     PHY                                                                  ;A088D1;
@@ -847,7 +798,6 @@ Record_EnemySpawnData:
     RTL                                                                  ;A0896E;
 
 
-%anchor($A0896F)
 Debug_LoadEnemySetData:
     LDA.W #$0000                                                         ;A0896F;
     LDX.W #$0000                                                         ;A08972;
@@ -930,7 +880,6 @@ Debug_LoadEnemySetData:
     RTL                                                                  ;A08A1D;
 
 
-%anchor($A08A1E)
 Load_Enemies:
     PHP                                                                  ;A08A1E;
     PHB                                                                  ;A08A1F;
@@ -964,7 +913,6 @@ Load_Enemies:
     RTL                                                                  ;A08A6C;
 
 
-%anchor($A08A6D)
 ClearEnemyData_ProcessEnemySet:
     PHP                                                                  ;A08A6D;
     PHB                                                                  ;A08A6E;
@@ -999,7 +947,6 @@ ClearEnemyData_ProcessEnemySet:
     RTL                                                                  ;A08A9D;
 
 
-%anchor($A08A9E)
 Initialise_Enemies:
     PHP                                                                  ;A08A9E;
     PHB                                                                  ;A08A9F;
@@ -1165,7 +1112,6 @@ Initialise_Enemies:
     JML.W [$1784]                                                        ;A08BF0;
 
 
-%anchor($A08BF3)
 LoadEnemyGFXIndices:
     PHX                                                                  ;A08BF3;
     PHY                                                                  ;A08BF4;
@@ -1232,7 +1178,6 @@ LoadEnemyGFXIndices:
     RTS                                                                  ;A08C6B;
 
 
-%anchor($A08C6C)
 LoadEnemyTileData:
     REP #$30                                                             ;A08C6C;
     LDX.W #$01FE                                                         ;A08C6E;
@@ -1294,7 +1239,6 @@ LoadEnemyTileData:
     RTL                                                                  ;A08CD6;
 
 
-%anchor($A08CD7)
 TransferEnemyTilesToVRAM_InitialiseEnemies:
     REP #$30                                                             ;A08CD7;
     LDA.W $0E7C                                                          ;A08CD9;
@@ -1351,7 +1295,6 @@ TransferEnemyTilesToVRAM_InitialiseEnemies:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($A08D3A)
 UNUSED_LoadEnemyWidthHeightHealthLayerBank_A08D3A:
     PHX                                                                  ;A08D3A;
     PHY                                                                  ;A08D3B;
@@ -1374,7 +1317,6 @@ UNUSED_LoadEnemyWidthHeightHealthLayerBank_A08D3A:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($A08D64)
 ProcessEnemySet_LoadPalettesAndEnemyLoadingData:
     PHX                                                                  ;A08D64;
     PHY                                                                  ;A08D65;
@@ -1532,7 +1474,6 @@ ProcessEnemySet_LoadPalettesAndEnemyLoadingData:
     RTS                                                                  ;A08EB5;
 
 
-%anchor($A08EB6)
 Determine_Which_Enemies_to_Process:
     PHB                                                                  ;A08EB6;
     PEA.W $A000                                                          ;A08EB7;
@@ -1678,7 +1619,6 @@ Determine_Which_Enemies_to_Process:
     RTL                                                                  ;A08FD3;
 
 
-%anchor($A08FD4)
 Main_Enemy_Routine:
     PHB                                                                  ;A08FD4;
     PEA.W $A000                                                          ;A08FD5;
@@ -1884,7 +1824,6 @@ Main_Enemy_Routine:
     RTL                                                                  ;A09168;
 
 
-%anchor($A09169)
 DecrementSamusHurtTimers_ClearActiveEnemyIndicesLists:
     LDA.W $18A8                                                          ;A09169;
     BEQ +                                                                ;A0916C;
@@ -1905,7 +1844,6 @@ DecrementSamusHurtTimers_ClearActiveEnemyIndicesLists:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($A0918B)
 UNUSED_LoggingRoutineForASpecificVertcalEnemyReaction_A0918B:
     PHB                                                                  ;A0918B;
     LDA.W $1848                                                          ;A0918C;
@@ -1957,7 +1895,6 @@ UNUSED_LoggingRoutineForASpecificVertcalEnemyReaction_A0918B:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($A0920E)
 Spawn_Enemy_Drops:
     PHP                                                                  ;A0920E;
     PHB                                                                  ;A0920F;
@@ -1978,7 +1915,6 @@ Spawn_Enemy_Drops:
     RTL                                                                  ;A0922A;
 
 
-%anchor($A0922B)
 DeleteEnemyAndAnyConnectedEnemies:
     PHB                                                                  ;A0922B;
     LDX.W $0E54                                                          ;A0922C;
@@ -2004,7 +1940,6 @@ DeleteEnemyAndAnyConnectedEnemies:
     RTL                                                                  ;A0924A;
 
 
-%anchor($A0924B)
 Debug_SpawnEnemy_ToEnemyIndex_inY:
     PHB                                                                  ;A0924B;
     STX.W $0E20                                                          ;A0924C;
@@ -2023,7 +1958,6 @@ Debug_SpawnEnemy_ToEnemyIndex_inY:
     JMP.W SpawnEnemy_AlwaysSucceed                                       ;A09272;
 
 
-%anchor($A09275)
 SpawnEnemy:
     PHB                                                                  ;A09275;
     STX.W $0E20                                                          ;A09276;
@@ -2081,7 +2015,6 @@ SpawnEnemy:
     RTL                                                                  ;A092DA;
 
 
-%anchor($A092DB)
 SpawnEnemy_AlwaysSucceed:
     LDY.W $0E4A                                                          ;A092DB;
     LDX.W $0E20                                                          ;A092DE;
@@ -2217,7 +2150,6 @@ SpawnEnemy_AlwaysSucceed:
     JML.W [$1784]                                                        ;A09420;
 
 
-%anchor($A09423)
 AddEnemyToDrawingQueue:
     PHX                                                                  ;A09423;
     PHY                                                                  ;A09424;
@@ -2240,7 +2172,6 @@ AddEnemyToDrawingQueue:
     RTS                                                                  ;A09449;
 
 
-%anchor($A0944A)
 WriteEnemyOAM_IfNotFrozenOrInvincibleFrame:
     PHB                                                                  ;A0944A;
     LDX.W $0E54                                                          ;A0944B;
@@ -2406,7 +2337,6 @@ WriteEnemyOAM_IfNotFrozenOrInvincibleFrame:
     RTS                                                                  ;A0957D;
 
 
-%anchor($A0957E)
 NormalEnemyFrozenAI:
     PHX                                                                  ;A0957E;
     PHY                                                                  ;A0957F;
@@ -2436,7 +2366,6 @@ NormalEnemyFrozenAI:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($A095AD)
 UNUSED_ExecuteEnemyAI_A095AD:
     PHB                                                                  ;A095AD;
     PHP                                                                  ;A095AE;
@@ -2482,7 +2411,6 @@ UNUSED_ExecuteEnemyAI_A095AD:
     JML.W [$1784]                                                        ;A095EE;
 
 
-%anchor($A095F1)
 UNUSED_RespawnEnemy_A095F1:
     PHB                                                                  ;A095F1;
     PEA.W $A000                                                          ;A095F2;
@@ -2571,7 +2499,6 @@ UNUSED_RespawnEnemy_A095F1:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($A096CA)
 ProcessExtendedTilemap:
     PHY                                                                  ;A096CA;
     LDY.B $16                                                            ;A096CB;
@@ -2634,7 +2561,6 @@ ProcessExtendedTilemap:
     RTS                                                                  ;A09725;
 
 
-%anchor($A09726)
 Handle_Queuing_Enemy_BG2_Tilemap_VRAM_Transfer:
     LDA.W $0E1E                                                          ;A09726;
     BEQ .clearTransferFlag                                               ;A09729;
@@ -2660,7 +2586,6 @@ Handle_Queuing_Enemy_BG2_Tilemap_VRAM_Transfer:
     RTL                                                                  ;A09757;
 
 
-%anchor($A09758)
 EnemyCollisionHandling:
     PHP                                                                  ;A09758;
     PHB                                                                  ;A09759;
@@ -2689,12 +2614,10 @@ EnemyCollisionHandling:
     RTS                                                                  ;A09783;
 
 
-%anchor($A09784)
 RTL_A09784:
     RTL                                                                  ;A09784;
 
 
-%anchor($A09785)
 Samus_Projectiles_Interaction_Handling:
     PHB                                                                  ;A09785;
     PEA.W $A000                                                          ;A09786;
@@ -2860,7 +2783,6 @@ Samus_Projectiles_Interaction_Handling:
     RTL                                                                  ;A09893;
 
 
-%anchor($A09894)
 EnemyProjectile_Samus_Collision_Handling:
     PHP                                                                  ;A09894;
     PHB                                                                  ;A09895;
@@ -2946,7 +2868,6 @@ EnemyProjectile_Samus_Collision_Handling:
     RTL                                                                  ;A09922;
 
 
-%anchor($A09923)
 HandleEnemyProjectileCollisionWithSamus:
     LDA.W #$0060                                                         ;A09923;
     STA.W $18A8                                                          ;A09926;
@@ -2983,7 +2904,6 @@ HandleEnemyProjectileCollisionWithSamus:
     RTS                                                                  ;A0996B;
 
 
-%anchor($A0996C)
 Projectile_vs_Projectile_Collision_Handling:
     PHP                                                                  ;A0996C;
     PHB                                                                  ;A0996D;
@@ -3061,7 +2981,6 @@ Projectile_vs_Projectile_Collision_Handling:
     RTL                                                                  ;A099F8;
 
 
-%anchor($A099F9)
 HandleEnemyProjectileCollisionWithProjectile:
     LDA.W $0C18,Y                                                        ;A099F9;
     BIT.W #$0008                                                         ;A099FC;
@@ -3107,7 +3026,6 @@ HandleEnemyProjectileCollisionWithProjectile:
     RTS                                                                  ;A09A59;
 
 
-%anchor($A09A5A)
 EnemySamusCollisionHandling_ExtendedSpritemap:
     PHB                                                                  ;A09A5A;
     LDX.W $0E54                                                          ;A09A5B;
@@ -3258,7 +3176,6 @@ EnemySamusCollisionHandling_ExtendedSpritemap:
     RTS                                                                  ;A09B7E;
 
 
-%anchor($A09B7F)
 Enemy_vs_Projectile_CollisionHandling_ExtendedSpritemap:
     PHB                                                                  ;A09B7F;
     LDX.W $0E54                                                          ;A09B80;
@@ -3478,7 +3395,6 @@ Enemy_vs_Projectile_CollisionHandling_ExtendedSpritemap:
     JML.W [$1784]                                                        ;A09D20;
 
 
-%anchor($A09D23)
 Enemy_vs_Bomb_CollisionHandling_ExtendedSpritemap:
     PHB                                                                  ;A09D23;
     LDX.W $0E54                                                          ;A09D24;
@@ -3676,7 +3592,6 @@ Enemy_vs_Bomb_CollisionHandling_ExtendedSpritemap:
     JML.W [$1784]                                                        ;A09E97;
 
 
-%anchor($A09E9A)
 EnemyGrappleBeamCollisionDetection:
     PHB                                                                  ;A09E9A;
     PHX                                                                  ;A09E9B;
@@ -3798,7 +3713,6 @@ EnemyGrappleBeamCollisionDetection:
     BRA .return                                                          ;A09F6B;
 
 
-%anchor($A09F6D)
 GrappleAI_SwitchEnemyAIToMainAI:
     LDX.W $0E54                                                          ;A09F6D;
     STZ.W $0F8A,X                                                        ;A09F70;
@@ -3808,7 +3722,6 @@ GrappleAI_SwitchEnemyAIToMainAI:
     RTL                                                                  ;A09F7C;
 
 
-%anchor($A09F7D)
 GrappleAI_SamusLatchesOnWithGrapple:
     LDX.W $0E54                                                          ;A09F7D;
     LDX.W $0E54                                                          ;A09F80; >_<
@@ -3843,7 +3756,6 @@ GrappleAI_SamusLatchesOnWithGrapple:
     RTL                                                                  ;A09FC3;
 
 
-%anchor($A09FC4)
 GrappleAI_EnemyGrappleDeath:
     LDX.W $0E54                                                          ;A09FC4;
     LDX.W $0E54                                                          ;A09FC7;
@@ -3856,7 +3768,6 @@ GrappleAI_EnemyGrappleDeath:
     RTL                                                                  ;A09FDE;
 
 
-%anchor($A09FDF)
 GrappleAI_SwitchToFrozenAI:
     LDX.W $0E54                                                          ;A09FDF;
     LDA.W #$0004                                                         ;A09FE2;
@@ -3864,7 +3775,6 @@ GrappleAI_SwitchToFrozenAI:
     RTL                                                                  ;A09FE8;
 
 
-%anchor($A09FE9)
 GrappleAI_SamusLatchesOnWithGrapple_NoInvincibility:
     LDX.W $0E54                                                          ;A09FE9;
     LDA.W $0F9E,X                                                        ;A09FEC;
@@ -3908,7 +3818,6 @@ GrappleAI_SamusLatchesOnWithGrapple_NoInvincibility:
     RTL                                                                  ;A0A03D;
 
 
-%anchor($A0A03E)
 GrappleAI_SamusLatchesOnWithGrapple_ParalyzeEnemy:
     LDX.W $0E54                                                          ;A0A03E;
     LDX.W $0E54                                                          ;A0A041;
@@ -3931,7 +3840,6 @@ GrappleAI_SamusLatchesOnWithGrapple_ParalyzeEnemy:
     RTL                                                                  ;A0A06F;
 
 
-%anchor($A0A070)
 GrappleAI_SwitchToFrozenAI_duplicate:
     LDX.W $0E54                                                          ;A0A070;
     LDA.W #$0004                                                         ;A0A073;
@@ -3939,7 +3847,6 @@ GrappleAI_SwitchToFrozenAI_duplicate:
     RTL                                                                  ;A0A079;
 
 
-%anchor($A0A07A)
 Enemy_vs_Samus_CollisionHandling:
     PHB                                                                  ;A0A07A;
     REP #$30                                                             ;A0A07B;
@@ -4058,7 +3965,6 @@ Enemy_vs_Samus_CollisionHandling:
     JML.W [$1784]                                                        ;A0A140;
 
 
-%anchor($A0A143)
 Enemy_vs_ProjectileCollisionHandling:
     PHB                                                                  ;A0A143;
     LDX.W $0E54                                                          ;A0A144;
@@ -4196,7 +4102,6 @@ Enemy_vs_ProjectileCollisionHandling:
     JML.W [$1784]                                                        ;A0A233;
 
 
-%anchor($A0A236)
 Enemy_vs_Bomb_CollisionHandling:
     PHB                                                                  ;A0A236;
     LDX.W $0E54                                                          ;A0A237;
@@ -4315,7 +4220,6 @@ Enemy_vs_Bomb_CollisionHandling:
     JML.W [$1784]                                                        ;A0A303;
 
 
-%anchor($A0A306)
 Process_Enemy_PowerBomb_Interaction:
     PHB                                                                  ;A0A306;
     LDA.W #$0005                                                         ;A0A307;
@@ -4407,7 +4311,6 @@ Process_Enemy_PowerBomb_Interaction:
     JML.W [$1784]                                                        ;A0A3AC;
 
 
-%anchor($A0A3AF)
 EnemyDeath:
     PHP                                                                  ;A0A3AF;
     PHB                                                                  ;A0A3B0;
@@ -4462,7 +4365,6 @@ EnemyDeath:
     RTL                                                                  ;A0A40F;
 
 
-%anchor($A0A410)
 RinkaDeath:
     PHP                                                                  ;A0A410;
     PHB                                                                  ;A0A411;
@@ -4507,7 +4409,6 @@ RinkaDeath:
     RTL                                                                  ;A0A45D;
 
 
-%anchor($A0A45E)
 Suit_Damage_Division:
     STA.B $12                                                            ;A0A45E;
     LDA.W $09A2                                                          ;A0A460;
@@ -4529,7 +4430,6 @@ Suit_Damage_Division:
     RTL                                                                  ;A0A476;
 
 
-%anchor($A0A477)
 NormalEnemyTouchAI:
     LDX.W $0E54                                                          ;A0A477;
     JSR.W NormalEnemyTouchAI_NoDeathCheck                                ;A0A47A;
@@ -4546,7 +4446,6 @@ NormalEnemyTouchAI:
     RTL                                                                  ;A0A496;
 
 
-%anchor($A0A497)
 NormalEnemyTouchAI_NoDeathCheck_External:
     LDX.W $0E54                                                          ;A0A497;
     JSR.W NormalEnemyTouchAI_NoDeathCheck                                ;A0A49A;
@@ -4554,7 +4453,6 @@ NormalEnemyTouchAI_NoDeathCheck_External:
     RTL                                                                  ;A0A4A0;
 
 
-%anchor($A0A4A1)
 NormalEnemyTouchAI_NoDeathCheck:
     LDA.W $0A6E                                                          ;A0A4A1;
     BNE .notNormal                                                       ;A0A4A4;
@@ -4678,7 +4576,6 @@ NormalEnemyTouchAI_NoDeathCheck:
     RTS                                                                  ;A0A596;
 
 
-%anchor($A0A597)
 NormalEnemyPowerBombAI:
     LDX.W $0E54                                                          ;A0A597;
     JSR.W NormalEnemyPowerBombAI_NoDeathCheck                            ;A0A59A;
@@ -4695,7 +4592,6 @@ NormalEnemyPowerBombAI:
     RTL                                                                  ;A0A5B6;
 
 
-%anchor($A0A5B7)
 NormalEnemyPowerBombAI_NoDeathCheck_External:
     LDX.W $0E54                                                          ;A0A5B7;
     JSR.W NormalEnemyPowerBombAI_NoDeathCheck                            ;A0A5BA;
@@ -4703,7 +4599,6 @@ NormalEnemyPowerBombAI_NoDeathCheck_External:
     RTL                                                                  ;A0A5C0;
 
 
-%anchor($A0A5C1)
 NormalEnemyPowerBombAI_NoDeathCheck:
     LDX.W $0E54                                                          ;A0A5C1;
     LDA.W $0F78,X                                                        ;A0A5C4;
@@ -4765,7 +4660,6 @@ NormalEnemyPowerBombAI_NoDeathCheck:
     RTS                                                                  ;A0A63C;
 
 
-%anchor($A0A63D)
 NormalEnemyShotAI:
     STZ.W $0E2E                                                          ;A0A63D;
     LDX.W $0E54                                                          ;A0A640;
@@ -4823,7 +4717,6 @@ NormalEnemyShotAI:
     RTL                                                                  ;A0A6A6;
 
 
-%anchor($A0A6A7)
 NormalEnemyShotAI_NoDeathCheck_NoEnemyShotGraphic_External:
     STZ.W $0E2E                                                          ;A0A6A7;
     LDX.W $0E54                                                          ;A0A6AA;
@@ -4832,7 +4725,6 @@ NormalEnemyShotAI_NoDeathCheck_NoEnemyShotGraphic_External:
     RTL                                                                  ;A0A6B3;
 
 
-%anchor($A0A6B4)
 NormalEnemyShotAI_NoDeathCheck:
     STZ.W $0E2E                                                          ;A0A6B4;
     LDX.W $0E54                                                          ;A0A6B7;
@@ -4854,7 +4746,6 @@ NormalEnemyShotAI_NoDeathCheck:
     RTL                                                                  ;A0A6DD;
 
 
-%anchor($A0A6DE)
 NormalEnemyShotAI_NoDeathCheck_NoEnemyShotGraphic:
     PHB                                                                  ;A0A6DE;
     LDA.W $18A6                                                          ;A0A6DF;
@@ -5098,7 +4989,6 @@ NormalEnemyShotAI_NoDeathCheck_NoEnemyShotGraphic:
     RTS                                                                  ;A0A8BB;
 
 
-%anchor($A0A8BC)
 CreateADudShot:
     PHX                                                                  ;A0A8BC;
     PHY                                                                  ;A0A8BD;
@@ -5126,7 +5016,6 @@ CreateADudShot:
     RTL                                                                  ;A0A8EF;
 
 
-%anchor($A0A8F0)
 Samus_vs_SolidEnemy_CollisionDetection:
     PHP                                                                  ;A0A8F0;
     PHB                                                                  ;A0A8F1;
@@ -5554,7 +5443,6 @@ if !FEATURE_KEEP_UNREFERENCED
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($A0ABE7)
 CheckIfEnemyIsTouchingSamusFromBelow:
     LDA.W $0AF6                                                          ;A0ABE7;
     SEC                                                                  ;A0ABEA;
@@ -5599,7 +5487,6 @@ CheckIfEnemyIsTouchingSamusFromBelow:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($A0AC29)
 UNUSED_CheckIfEnemyIsTouchingSamusFromAbove_A0AC29:
     LDA.W $0AF6                                                          ;A0AC29;
     SEC                                                                  ;A0AC2C;
@@ -5642,7 +5529,6 @@ UNUSED_CheckIfEnemyIsTouchingSamusFromAbove_A0AC29:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($A0AC67)
 CheckIfEnemyIsTouchingSamus:
     LDA.W $0AF6                                                          ;A0AC67;
     SEC                                                                  ;A0AC6A;
@@ -5684,7 +5570,6 @@ CheckIfEnemyIsTouchingSamus:
     RTL                                                                  ;A0ACA7;
 
 
-%anchor($A0ACA8)
 CalculateDistanceAndAngleOfSamusFromEnemy:
     PHX                                                                  ;A0ACA8;
     PHY                                                                  ;A0ACA9;
@@ -5757,7 +5642,6 @@ CalculateDistanceAndAngleOfSamusFromEnemy:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($A0AD33)
 UNUSED_EnemyVariable_ZeroOrMax_A0AD33:
     PHB                                                                  ;A0AD33;
     SEP #$20                                                             ;A0AD34;
@@ -5773,7 +5657,6 @@ UNUSED_EnemyVariable_ZeroOrMax_A0AD33:
     RTL                                                                  ;A0AD49;
 
 
-%anchor($A0AD4A)
 UNUSED_SignedA_ZeroIsSpecialCase_A0AD4A:
     LDA.W #$0001                                                         ;A0AD4A;
     PLB                                                                  ;A0AD4D;
@@ -5796,7 +5679,6 @@ UNUSED_SignedA_ZeroIsSpecialCase_A0AD4A:
     RTL                                                                  ;A0AD61;
 
 
-%anchor($A0AD62)
 UNUSED_NegateA_A0AD62:
     TAY                                                                  ;A0AD62;
     AND.W #$8000                                                         ;A0AD63;
@@ -5812,7 +5694,6 @@ UNUSED_NegateA_A0AD62:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($A0AD70)
 CheckIfEnemyCenterIsOnScreen:
     LDX.W $0E54                                                          ;A0AD70;
     LDA.W $0F7A,X                                                        ;A0AD73;
@@ -5840,7 +5721,6 @@ CheckIfEnemyCenterIsOnScreen:
     RTL                                                                  ;A0ADA2;
 
 
-%anchor($A0ADA3)
 CheckIfEnemyCenterIsOverAPixelsOffScreen:
     PHX                                                                  ;A0ADA3;
     STA.B $12                                                            ;A0ADA4;
@@ -5880,7 +5760,6 @@ CheckIfEnemyCenterIsOverAPixelsOffScreen:
     RTL                                                                  ;A0ADE6;
 
 
-%anchor($A0ADE7)
 CheckIfEnemyIsOnScreen:
     PHX                                                                  ;A0ADE7;
     LDX.W $0E54                                                          ;A0ADE8;
@@ -5917,7 +5796,6 @@ CheckIfEnemyIsOnScreen:
     RTL                                                                  ;A0AE28;
 
 
-%anchor($A0AE29)
 DetermineDirectionOfSamusFromEnemy:
     LDX.W $0E54                                                          ;A0AE29;
     LDA.W #$0020                                                         ;A0AE2C;
@@ -5932,7 +5810,6 @@ DetermineDirectionOfSamusFromEnemy:
     RTL                                                                  ;A0AE42;
 
 
-%anchor($A0AE43)
 notLeftNorRight:
     LDA.W #$0020                                                         ;A0AE43;
     JSL.L IsSamusWithinAPixelColumnsOfEnemy                              ;A0AE46;
@@ -5946,7 +5823,6 @@ notLeftNorRight:
     RTL                                                                  ;A0AE59;
 
 
-%anchor($A0AE5A)
 notAboveOrBelow:
     JSL.L Get_SamusX_minus_EnemyX                                        ;A0AE5A;
     BMI .notDiagonallyRight                                              ;A0AE5E;
@@ -5970,7 +5846,6 @@ notAboveOrBelow:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($A0AE7C)
 UNUSED_ProtoInstructionListHandler_A0AE7C:
     LDX.W $0E54                                                          ;A0AE7C;
     LDA.W $0F78,X                                                        ;A0AE7F;
@@ -6028,7 +5903,6 @@ UNUSED_ProtoInstructionListHandler_A0AE7C:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($A0AEDD)
 Get_SamusY_minus_EnemyY:
     LDA.W $0AFA                                                          ;A0AEDD;
     SEC                                                                  ;A0AEE0;
@@ -6036,7 +5910,6 @@ Get_SamusY_minus_EnemyY:
     RTL                                                                  ;A0AEE4;
 
 
-%anchor($A0AEE5)
 Get_SamusX_minus_EnemyX:
     LDA.W $0AF6                                                          ;A0AEE5;
     SEC                                                                  ;A0AEE8;
@@ -6044,7 +5917,6 @@ Get_SamusX_minus_EnemyX:
     RTL                                                                  ;A0AEEC;
 
 
-%anchor($A0AEED)
 IsSamusWithingAPixelRowsOfEnemy:
     STA.W $0E20                                                          ;A0AEED;
     LDY.W $0AFA                                                          ;A0AEF0;
@@ -6063,7 +5935,6 @@ IsSamusWithingAPixelRowsOfEnemy:
     RTL                                                                  ;A0AF0A;
 
 
-%anchor($A0AF0B)
 IsSamusWithinAPixelColumnsOfEnemy:
     STA.W $0E20                                                          ;A0AF0B;
     LDY.W $0AF6                                                          ;A0AF0E;
@@ -6083,7 +5954,6 @@ IsSamusWithinAPixelColumnsOfEnemy:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($A0AF29)
 UNUSED_MoveEnemyX_NoCollision_A0AF29:
     LDA.W $0F7C,X                                                        ;A0AF29;
     CLC                                                                  ;A0AF2C;
@@ -6095,7 +5965,6 @@ UNUSED_MoveEnemyX_NoCollision_A0AF29:
     RTL                                                                  ;A0AF3A;
 
 
-%anchor($A0AF3B)
 UNUSED_MoveEnemyY_NoCollision_A0AF3B:
     LDA.W $0F80,X                                                        ;A0AF3B;
     CLC                                                                  ;A0AF3E;
@@ -6107,7 +5976,6 @@ UNUSED_MoveEnemyY_NoCollision_A0AF3B:
     RTL                                                                  ;A0AF4C;
 
 
-%anchor($A0AF4D)
 UNUSED_MoveEnemy_12_14_A0AF4D:
     ASL A                                                                ;A0AF4D;
     TAX                                                                  ;A0AF4E;
@@ -6121,7 +5989,6 @@ UNUSED_MoveEnemy_12_14_A0AF4D:
     dw MoveEnemyY_plus_12_14                                             ;A0AF58;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
-%anchor($A0AF5A)
 MoveEnemyX_minus_12_14:
     LDA.W $0F7C,X                                                        ;A0AF5A;
     SEC                                                                  ;A0AF5D;
@@ -6133,7 +6000,6 @@ MoveEnemyX_minus_12_14:
     RTL                                                                  ;A0AF6B;
 
 
-%anchor($A0AF6C)
 MoveEnemyX_plus_12_14:
     LDA.W $0F7C,X                                                        ;A0AF6C;
     CLC                                                                  ;A0AF6F;
@@ -6145,7 +6011,6 @@ MoveEnemyX_plus_12_14:
     RTL                                                                  ;A0AF7D;
 
 
-%anchor($A0AF7E)
 MoveEnemyY_minus_12_14:
     LDA.W $0F80,X                                                        ;A0AF7E;
     SEC                                                                  ;A0AF81;
@@ -6157,7 +6022,6 @@ MoveEnemyY_minus_12_14:
     RTL                                                                  ;A0AF8F;
 
 
-%anchor($A0AF90)
 MoveEnemyY_plus_12_14:
     LDA.W $0F80,X                                                        ;A0AF90;
     CLC                                                                  ;A0AF93;
@@ -6170,7 +6034,6 @@ MoveEnemyY_plus_12_14:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($A0AFA2)
 UNUSED_MoveSamus_ExtraXDisplacement_minus_12_14_A0AFA2:
     LDA.W $0AF8                                                          ;A0AFA2;
     SEC                                                                  ;A0AFA5;
@@ -6182,7 +6045,6 @@ UNUSED_MoveSamus_ExtraXDisplacement_minus_12_14_A0AFA2:
     RTL                                                                  ;A0AFB3;
 
 
-%anchor($A0AFB4)
 UNUSED_MoveSamus_ExtraXDisplacement_plus_12_14_A0AFB4:
     LDA.W $0AF8                                                          ;A0AFB4;
     CLC                                                                  ;A0AFB7;
@@ -6194,7 +6056,6 @@ UNUSED_MoveSamus_ExtraXDisplacement_plus_12_14_A0AFB4:
     RTL                                                                  ;A0AFC5;
 
 
-%anchor($A0AFC6)
 UNUSED_MoveSamus_ExtraYDisplacement_minus_12_14_A0AFC6:
     LDA.W $0AFC                                                          ;A0AFC6;
     SEC                                                                  ;A0AFC9;
@@ -6206,7 +6067,6 @@ UNUSED_MoveSamus_ExtraYDisplacement_minus_12_14_A0AFC6:
     RTL                                                                  ;A0AFD7;
 
 
-%anchor($A0AFD8)
 UNUSED_MoveSamus_ExtraYDisplacement_plus_12_14_A0AFD8:
     LDA.W $0AFC                                                          ;A0AFD8;
     CLC                                                                  ;A0AFDB;
@@ -6219,7 +6079,6 @@ UNUSED_MoveSamus_ExtraYDisplacement_plus_12_14_A0AFD8:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($A0AFEA)
 Sign_Extend_A:
     STA.W $0E32                                                          ;A0AFEA;
     AND.W #$0080                                                         ;A0AFED;
@@ -6234,7 +6093,6 @@ Sign_Extend_A:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($A0AFFD)
 UNUSED_MultiplyBy10_A0AFFD:
     ASL A                                                                ;A0AFFD;
     ASL A                                                                ;A0AFFE;
@@ -6244,7 +6102,6 @@ UNUSED_MultiplyBy10_A0AFFD:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($A0B002)
 MultiplyBy20_A0B002:
     ASL A                                                                ;A0B002;
     ASL A                                                                ;A0B003;
@@ -6255,7 +6112,6 @@ MultiplyBy20_A0B002:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($A0B008)
 UNUSED_MultiplyBy30_A0B008:
     ASL A                                                                ;A0B008;
     ASL A                                                                ;A0B009;
@@ -6269,7 +6125,6 @@ UNUSED_MultiplyBy30_A0B008:
     RTL                                                                  ;A0B017;
 
 
-%anchor($A0B018)
 UNUSED_MultiplyBy40_A0B018:
     ASL A                                                                ;A0B018;
     ASL A                                                                ;A0B019;
@@ -6280,7 +6135,6 @@ UNUSED_MultiplyBy40_A0B018:
     RTL                                                                  ;A0B01E;
 
 
-%anchor($A0B01F)
 UNUSED_SwapLowByteNybbles_A0B01F:
     PHA                                                                  ;A0B01F;
     AND.W #$FF00                                                         ;A0B020;
@@ -6301,7 +6155,6 @@ UNUSED_SwapLowByteNybbles_A0B01F:
     RTL                                                                  ;A0B03F;
 
 
-%anchor($A0B040)
 UNUSED_SwapHighByteNybbles_A0B040:
     PHA                                                                  ;A0B040;
     AND.W #$00FF                                                         ;A0B041;
@@ -6320,7 +6173,6 @@ UNUSED_SwapHighByteNybbles_A0B040:
     AND.W #$FF00                                                         ;A0B05A;
     ORA.W $0E34                                                          ;A0B05D;
 
-%anchor($A0B060)
 UNUSED_XBA_A0B060:
     RTL                                                                  ;A0B060;
 
@@ -6331,7 +6183,6 @@ UNUSED_XBA_A0B060:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($A0B067)
 NegateA_A0B067:
     STA.W $0E32                                                          ;A0B067;
     AND.W #$8000                                                         ;A0B06A;
@@ -6345,7 +6196,6 @@ NegateA_A0B067:
     RTL                                                                  ;A0B07C;
 
 
-%anchor($A0B07D)
 GetSignedYMinusX_A0B07D:
     PHX                                                                  ;A0B07D;
     PHY                                                                  ;A0B07E;
@@ -6369,14 +6219,12 @@ GetSignedYMinusX_A0B07D:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($A0B0A0)
 UNUSED_GetNegativeA_A0B0A0:
     EOR.W #$FFFF                                                         ;A0B0A0;
     INC A                                                                ;A0B0A3;
     RTL                                                                  ;A0B0A4;
 
 
-%anchor($A0B0A5)
 UNUSED_SignedA_ZeroCountsAsPositive_A0B0A5:
     AND.W #$8000                                                         ;A0B0A5;
     BEQ +                                                                ;A0B0A8;
@@ -6389,7 +6237,6 @@ UNUSED_SignedA_ZeroCountsAsPositive_A0B0A5:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($A0B0B2)
 EightBitCosineMultiplication_A0B0B2:
     CLC                                                                  ;A0B0B2;
     ADC.W #$0040                                                         ;A0B0B3;
@@ -6405,7 +6252,6 @@ EightBitCosineMultiplication_A0B0B2:
     RTL                                                                  ;A0B0C5;
 
 
-%anchor($A0B0C6)
 EightBitNegativeSineMultiplication_A0B0C6:
     CLC                                                                  ;A0B0C6;
     ADC.W #$0080                                                         ;A0B0C7;
@@ -6421,7 +6267,6 @@ EightBitNegativeSineMultiplication_A0B0C6:
     RTL                                                                  ;A0B0D9;
 
 
-%anchor($A0B0DA)
 EightBitSineMultiplication_A0B0DA:
     SEP #$20                                                             ;A0B0DA;
     LDA.B #$A0                                                           ;A0B0DC;
@@ -6468,7 +6313,6 @@ EightBitSineMultiplication_A0B0DA:
     RTS                                                                  ;A0B132;
 
 
-%anchor($A0B133)
 AddressesForEnemyDrawingQueues:
 ; Indexed by [enemy layer] * 2
     dw $0E84                                                             ;A0B133;
@@ -6488,21 +6332,18 @@ AddressesForEnemyDrawingQueues:
 ;     [0x100 * math.sin(i * math.pi / 0x80) for i in range(0x40 * n_quadrants)]
 
 ; Unsigned 8-bit table is the same as the signed-extended first half, except cos(0) is capped at FFh
-%anchor($A0B143)
 SineCosineTables_8bitSine:
     db $00,$06,$0C,$12,$19,$1F,$25,$2B,$31,$38,$3E,$44,$4A,$50,$56,$5C   ;A0B143;
     db $61,$67,$6D,$73,$78,$7E,$83,$88,$8E,$93,$98,$9D,$A2,$A7,$AB,$B0   ;A0B153;
     db $B5,$B9,$BD,$C1,$C5,$C9,$CD,$D1,$D4,$D8,$DB,$DE,$E1,$E4,$E7,$EA   ;A0B163;
     db $EC,$EE,$F1,$F3,$F4,$F6,$F8,$F9,$FB,$FC,$FD,$FE,$FE,$FF,$FF,$FF   ;A0B173;
 
-%anchor($A0B183)
 SineCosineTables_8bitCosine:
     db $FF,$FF,$FF,$FF,$FE,$FE,$FD,$FC,$FB,$F9,$F8,$F6,$F4,$F3,$F1,$EE   ;A0B183;
     db $EC,$EA,$E7,$E4,$E1,$DE,$DB,$D8,$D4,$D1,$CD,$C9,$C5,$C1,$BD,$B9   ;A0B193;
     db $B5,$B0,$AB,$A7,$A2,$9D,$98,$93,$8E,$88,$83,$7E,$78,$73,$6D,$67   ;A0B1A3;
     db $61,$5C,$56,$50,$4A,$44,$3E,$38,$31,$2B,$25,$1F,$19,$12,$0C,$06   ;A0B1B3;
 
-%anchor($A0B1C3)
 SineCosineTables_16bitSine:
     dw $0000,$0324,$0647,$096A,$0C8B,$0FAB,$12C7,$15E1                   ;A0B1C3;
     dw $18F8,$1C0B,$1F19,$2223,$2527,$2826,$2B1F,$2E10                   ;A0B1D3;
@@ -6513,7 +6354,6 @@ SineCosineTables_16bitSine:
     dw $7641,$776B,$7884,$7989,$7A7C,$7B5C,$7C29,$7CE3                   ;A0B223;
     dw $7D89,$7E1D,$7E9C,$7F09,$7F61,$7FA6,$7FD8,$7FF5                   ;A0B233;
 
-%anchor($A0B243)
 SineCosineTables_16bitCosine:
     dw $7FFF,$7FF5,$7FD8,$7FA6,$7F61,$7F09,$7E9C,$7E1D                   ;A0B243;
     dw $7D89,$7CE3,$7C29,$7B5C,$7A7C,$7989,$7884,$776B                   ;A0B253;
@@ -6524,7 +6364,6 @@ SineCosineTables_16bitCosine:
     dw $30FB,$2E10,$2B1F,$2826,$2527,$2223,$1F19,$1C0B                   ;A0B2A3;
     dw $18F8,$15E1,$12C7,$0FAB,$0C8B,$096A,$0647,$0324                   ;A0B2B3;
 
-%anchor($A0B2C3)
 SineCosineTables_16bitNegativeSine:
     dw $0000,$FCDC,$F9B9,$F696,$F375,$F055,$ED39,$EA1F                   ;A0B2C3;
     dw $E708,$E3F5,$E0E7,$DDDD,$DAD9,$D7DA,$D4E1,$D1F0                   ;A0B2D3;
@@ -6535,7 +6374,6 @@ SineCosineTables_16bitNegativeSine:
     dw $89BF,$8895,$877C,$8677,$8584,$84A4,$83D7,$831D                   ;A0B323;
     dw $8277,$81E3,$8164,$80F7,$809F,$805A,$8028,$800B                   ;A0B333;
 
-%anchor($A0B343)
 SineCosineTables_16bitNegativeCosine:
     dw $8001,$800B,$8028,$805A,$809F,$80F7,$8164,$81E3                   ;A0B343;
     dw $8277,$831D,$83D7,$84A4,$8584,$8677,$877C,$8895                   ;A0B353;
@@ -6546,7 +6384,6 @@ SineCosineTables_16bitNegativeCosine:
     dw $CF05,$D1F0,$D4E1,$D7DA,$DAD9,$DDDD,$E0E7,$E3F5                   ;A0B3A3;
     dw $E708,$EA1F,$ED39,$F055,$F375,$F696,$F9B9,$FCDC                   ;A0B3B3;
 
-%anchor($A0B3C3)
 SineCosineTables_NegativeCosine_SignExtended:
     dw $FF00,$FF01,$FF01,$FF01,$FF02,$FF02,$FF03,$FF04                   ;A0B3C3;
     dw $FF05,$FF07,$FF08,$FF0A,$FF0C,$FF0D,$FF0F,$FF12                   ;A0B3D3;
@@ -6557,7 +6394,6 @@ SineCosineTables_NegativeCosine_SignExtended:
     dw $FF9F,$FFA4,$FFAA,$FFB0,$FFB6,$FFBC,$FFC2,$FFC8                   ;A0B423;
     dw $FFCF,$FFD5,$FFDB,$FFE1,$FFE7,$FFEE,$FFF4,$FFFA                   ;A0B433;
 
-%anchor($A0B443)
 SineCosineTables_8bitSine_SignExtended:
     dw $0000,$0006,$000C,$0012,$0019,$001F,$0025,$002B                   ;A0B443;
     dw $0031,$0038,$003E,$0044,$004A,$0050,$0056,$005C                   ;A0B453;
@@ -6568,7 +6404,6 @@ SineCosineTables_8bitSine_SignExtended:
     dw $00EC,$00EE,$00F1,$00F3,$00F4,$00F6,$00F8,$00F9                   ;A0B4A3;
     dw $00FB,$00FC,$00FD,$00FE,$00FE,$00FF,$00FF,$00FF                   ;A0B4B3;
 
-%anchor($A0B4C3)
 SineCosineTables_8bitCosine_SignExtended:
     dw $0100,$00FF,$00FF,$00FF,$00FE,$00FE,$00FD,$00FC                   ;A0B4C3;
     dw $00FB,$00F9,$00F8,$00F6,$00F4,$00F3,$00F1,$00EE                   ;A0B4D3;
@@ -6579,7 +6414,6 @@ SineCosineTables_8bitCosine_SignExtended:
     dw $0061,$005C,$0056,$0050,$004A,$0044,$003E,$0038                   ;A0B523;
     dw $0031,$002B,$0025,$001F,$0019,$0012,$000C,$0006                   ;A0B533;
 
-%anchor($A0B543)
 SineCosineTables_8bitNegativeSign_SignExtended:
     dw $0000,$FFFA,$FFF4,$FFEE,$FFE7,$FFE1,$FFDB,$FFD5                   ;A0B543;
     dw $FFCF,$FFC8,$FFC2,$FFBC,$FFB6,$FFB0,$FFAA,$FFA4                   ;A0B553;
@@ -6590,7 +6424,6 @@ SineCosineTables_8bitNegativeSign_SignExtended:
     dw $FF14,$FF12,$FF0F,$FF0D,$FF0C,$FF0A,$FF08,$FF07                   ;A0B5A3;
     dw $FF05,$FF04,$FF03,$FF02,$FF02,$FF01,$FF01,$FF01                   ;A0B5B3;
 
-%anchor($A0B5C3)
 SineCosineTables_8bitNegativeCosign_SignExtended:
     dw $FF00,$FF01,$FF01,$FF01,$FF02,$FF02,$FF03,$FF04                   ;A0B5C3;
     dw $FF05,$FF07,$FF08,$FF0A,$FF0C,$FF0D,$FF0F,$FF12                   ;A0B5D3;
@@ -6603,7 +6436,6 @@ SineCosineTables_8bitNegativeCosign_SignExtended:
 
 
 ;;; $B643: ($16.$18, $1A.$1C) = ([$14] * |cos([$12] * pi / 80h)|, [$14] * |sin([$12] * pi / 80h)|) ;;;
-%anchor($A0B643)
 Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name:
 ; All arithmetic done here is unsigned, so [$14] should be positive
 ; Uses the standard maths convention for angle(!)
@@ -6657,7 +6489,6 @@ Do_Some_Math_With_Sine_Cosine_Terrible_Label_Name:
     RTL                                                                  ;A0B690;
 
 
-%anchor($A0B691)
 MoveEnemyAccordingToAngleAndXYSpeeds:
     PHX                                                                  ;A0B691;
     LDX.W $0E54                                                          ;A0B692;
@@ -6714,7 +6545,6 @@ MoveEnemyAccordingToAngleAndXYSpeeds:
     RTL                                                                  ;A0B6FE;
 
 
-%anchor($A0B6FF)
 Multiplication_32bit_A0B6FF:
     PHX                                                                  ;A0B6FF;
     PHY                                                                  ;A0B700;
@@ -6775,7 +6605,6 @@ Multiplication_32bit_A0B6FF:
     RTL                                                                  ;A0B760;
 
 
-%anchor($A0B761)
 UnsignedDivision_32bit_A0B761:
     PHP                                                                  ;A0B761;
     PHB                                                                  ;A0B762;
@@ -6824,7 +6653,6 @@ UnsignedDivision_32bit_A0B761:
     RTL                                                                  ;A0B7A0;
 
 
-%anchor($A0B7A1)
 CapScrollingSpeed:
     PHX                                                                  ;A0B7A1;
     PHY                                                                  ;A0B7A2;
@@ -6870,7 +6698,6 @@ CapScrollingSpeed:
     RTL                                                                  ;A0B7ED;
 
 
-%anchor($A0B7EE)
 UnsignedSineTable:
 ; sin(t * pi / 80h) * FFFFh
     dw $0000,$0648,$0C8F,$12D5,$1917,$1F56,$258F,$2BC3                   ;A0B7EE;
@@ -6890,7 +6717,6 @@ UnsignedSineTable:
     dw $61F7,$5C21,$563E,$504D,$4A4F,$4447,$3E33,$3816                   ;A0B8CE;
     dw $31F1,$2BC3,$258F,$1F56,$1917,$12D5,$0C8F,$0648                   ;A0B8DE;
 
-%anchor($A0B8EE)
 MiniKraidDeathItemDropRoutine:
     PHX                                                                  ;A0B8EE;
     PHY                                                                  ;A0B8EF;
@@ -6924,7 +6750,6 @@ MiniKraidDeathItemDropRoutine:
     RTL                                                                  ;A0B92A;
 
 
-%anchor($A0B92B)
 MetalNinjaPirateDeathItemDropRoutine:
     PHX                                                                  ;A0B92B;
     PHY                                                                  ;A0B92C;
@@ -6958,7 +6783,6 @@ MetalNinjaPirateDeathItemDropRoutine:
     RTL                                                                  ;A0B967;
 
 
-%anchor($A0B968)
 MetroidDeathItemDropRoutine:
     PHX                                                                  ;A0B968;
     PHY                                                                  ;A0B969;
@@ -6992,7 +6816,6 @@ MetroidDeathItemDropRoutine:
     RTL                                                                  ;A0B9A4;
 
 
-%anchor($A0B9A5)
 RidleyDeathItemDropRoutine:
     PHX                                                                  ;A0B9A5;
     PHY                                                                  ;A0B9A6;
@@ -7022,7 +6845,6 @@ RidleyDeathItemDropRoutine:
     RTL                                                                  ;A0B9D7;
 
 
-%anchor($A0B9D8)
 CrocomireDeathItemDropRoutine:
     PHX                                                                  ;A0B9D8;
     PHY                                                                  ;A0B9D9;
@@ -7052,7 +6874,6 @@ CrocomireDeathItemDropRoutine:
     RTL                                                                  ;A0BA0A;
 
 
-%anchor($A0BA0B)
 PhantoonDeathItemDropRoutine:
     PHX                                                                  ;A0BA0B;
     PHY                                                                  ;A0BA0C;
@@ -7082,7 +6903,6 @@ PhantoonDeathItemDropRoutine:
     RTL                                                                  ;A0BA3D;
 
 
-%anchor($A0BA3E)
 BotwoonDeathItemDropRoutine:
     PHX                                                                  ;A0BA3E;
     PHY                                                                  ;A0BA3F;
@@ -7112,7 +6932,6 @@ BotwoonDeathItemDropRoutine:
     RTL                                                                  ;A0BA70;
 
 
-%anchor($A0BA71)
 KraidDeathItemDropRoutine:
     PHX                                                                  ;A0BA71;
     PHY                                                                  ;A0BA72;
@@ -7142,7 +6961,6 @@ KraidDeathItemDropRoutine:
     RTL                                                                  ;A0BAA3;
 
 
-%anchor($A0BAA4)
 BombTorizoDeathItemDropRoutine:
     PHX                                                                  ;A0BAA4;
     PHY                                                                  ;A0BAA5;
@@ -7172,7 +6990,6 @@ BombTorizoDeathItemDropRoutine:
     RTL                                                                  ;A0BAD6;
 
 
-%anchor($A0BAD7)
 GoldenTorizoDeathItemDropRoutine:
     PHX                                                                  ;A0BAD7;
     PHY                                                                  ;A0BAD8;
@@ -7202,7 +7019,6 @@ GoldenTorizoDeathItemDropRoutine:
     RTL                                                                  ;A0BB09;
 
 
-%anchor($A0BB0A)
 SporeSpawnDeathItemDropRoutine:
     PHX                                                                  ;A0BB0A;
     PHY                                                                  ;A0BB0B;
@@ -7232,7 +7048,6 @@ SporeSpawnDeathItemDropRoutine:
     RTL                                                                  ;A0BB3C;
 
 
-%anchor($A0BB3D)
 DraygonDeathItemDropRoutine:
     PHX                                                                  ;A0BB3D;
     PHY                                                                  ;A0BB3E;
@@ -7262,7 +7077,6 @@ DraygonDeathItemDropRoutine:
     RTL                                                                  ;A0BB6F;
 
 
-%anchor($A0BB70)
 CalculateTheBlockContainingAPixelPosition:
     LDA.B $04,S                                                          ;A0BB70;
     LSR A                                                                ;A0BB72;
@@ -7291,7 +7105,6 @@ CalculateTheBlockContainingAPixelPosition:
     RTL                                                                  ;A0BB9A;
 
 
-%anchor($A0BB9B)
 CheckIfXDistanceBetweenEnemyAndSamusIsAtLeastA:
     PHA                                                                  ;A0BB9B;
     LDA.W $0AF6                                                          ;A0BB9C;
@@ -7307,7 +7120,6 @@ CheckIfXDistanceBetweenEnemyAndSamusIsAtLeastA:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($A0BBAD)
 UNUSED_CheckIfYDistanceBetweenEnemyAndSamusIsAtLeastA_A0BBAD:
     PHA                                                                  ;A0BBAD;
     LDA.W $0AFA                                                          ;A0BBAE;
@@ -7323,7 +7135,6 @@ UNUSED_CheckIfYDistanceBetweenEnemyAndSamusIsAtLeastA_A0BBAD:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($A0BBBF)
 CheckForHorizontalSolidBlockCollision:
     PHB                                                                  ;A0BBBF;
     SEP #$20                                                             ;A0BBC0;
@@ -7441,7 +7252,6 @@ CheckForHorizontalSolidBlockCollision:
     RTL                                                                  ;A0BC75;
 
 
-%anchor($A0BC76)
 CheckForVerticalSolidBlockCollision:
     PHB                                                                  ;A0BC76;
     SEP #$20                                                             ;A0BC77;
@@ -7558,7 +7368,6 @@ CheckForVerticalSolidBlockCollision:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($A0BD26)
 UNUSED_MoveEnemyRight_NoBlockCollisionReactions_A0BD26:
     PHB                                                                  ;A0BD26;
     SEP #$20                                                             ;A0BD27;
@@ -7691,7 +7500,6 @@ UNUSED_MoveEnemyRight_NoBlockCollisionReactions_A0BD26:
     RTL                                                                  ;A0BDF5;
 
 
-%anchor($A0BDF6)
 UNUSED_MoveEnemyDown_NoBlockCollisionReactions_A0BDF6:
     PHB                                                                  ;A0BDF6;
     SEP #$20                                                             ;A0BDF7;
@@ -7821,7 +7629,6 @@ UNUSED_MoveEnemyDown_NoBlockCollisionReactions_A0BDF6:
     RTL                                                                  ;A0BEBE;
 
 
-%anchor($A0BEBF)
 UNUSED_CheckForHorizontalSolidBlockCollision_A0BEBF:
     STA.B $1C                                                            ;A0BEBF;
     PHB                                                                  ;A0BEC1;
@@ -7950,7 +7757,6 @@ UNUSED_CheckForHorizontalSolidBlockCollision_A0BEBF:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($A0BF8A)
 CheckForVerticalSolidBlockCollision_SkreeMetaree:
     STA.B $1C                                                            ;A0BF8A;
     PHB                                                                  ;A0BF8C;
@@ -8075,7 +7881,6 @@ CheckForVerticalSolidBlockCollision_SkreeMetaree:
     RTL                                                                  ;A0C04D;
 
 
-%anchor($A0C04E)
 CalculateAngleOfSamusFromEnemyProjectile:
     PHP                                                                  ;A0C04E;
     REP #$30                                                             ;A0C04F;
@@ -8090,7 +7895,6 @@ CalculateAngleOfSamusFromEnemyProjectile:
     JMP.W CalculateAngleOfXYOffset                                       ;A0C063;
 
 
-%anchor($A0C066)
 CalculateAngleOfSamusFromEnemy:
     PHP                                                                  ;A0C066;
     REP #$30                                                             ;A0C067;
@@ -8106,7 +7910,6 @@ CalculateAngleOfSamusFromEnemy:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($A0C07E)
 UNUSED_CalculateAngleOfEnemyYFromEnemyX_A0C07E:
     PHP                                                                  ;A0C07E;
     REP #$30                                                             ;A0C07F;
@@ -8122,7 +7925,6 @@ UNUSED_CalculateAngleOfEnemyYFromEnemyX_A0C07E:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($A0C096)
 CalculateAngleOfEnemyYFromEnemyX:
     PHP                                                                  ;A0C096;
     REP #$30                                                             ;A0C097;
@@ -8137,12 +7939,10 @@ CalculateAngleOfEnemyYFromEnemyX:
     JMP.W CalculateAngleOfXYOffset                                       ;A0C0AB;
 
 
-%anchor($A0C0AE)
 CalculateAngleOf_12_14_Offset:
     PHP                                                                  ;A0C0AE;
     REP #$30                                                             ;A0C0AF;
 
-%anchor($A0C0B1)
 CalculateAngleOfXYOffset:
     PHX                                                                  ;A0C0B1;
     LDX.W #$0000                                                         ;A0C0B2;
@@ -8206,7 +8006,6 @@ CalculateAngleOfXYOffset:
     dw CalculateAngleOfXYOffset_BottomLeftUpperOctant                    ;A0C10E;
     dw CalculateAngleOfXYOffset_TopLeftLowerOctant                       ;A0C110;
 
-%anchor($A0C112)
 CalculateAngleOfXYOffset_BottomRightUpperOctant:
     LDA.W $4214                                                          ;A0C112;
     LSR A                                                                ;A0C115;
@@ -8218,7 +8017,6 @@ CalculateAngleOfXYOffset_BottomRightUpperOctant:
     RTS                                                                  ;A0C11F;
 
 
-%anchor($A0C120)
 CalculateAngleOfXYOffset_BottomRightLowerOctant:
     LDA.W $4214                                                          ;A0C120;
     LSR A                                                                ;A0C123;
@@ -8232,7 +8030,6 @@ CalculateAngleOfXYOffset_BottomRightLowerOctant:
     RTS                                                                  ;A0C131;
 
 
-%anchor($A0C132)
 CalculateAngleOfXYOffset_TopRightUpperOctant:
     LDA.W $4214                                                          ;A0C132;
     LSR A                                                                ;A0C135;
@@ -8242,7 +8039,6 @@ CalculateAngleOfXYOffset_TopRightUpperOctant:
     RTS                                                                  ;A0C13B;
 
 
-%anchor($A0C13C)
 CalculateAngleOfXYOffset_TopRightLowerOctant:
     LDA.W $4214                                                          ;A0C13C;
     LSR A                                                                ;A0C13F;
@@ -8256,7 +8052,6 @@ CalculateAngleOfXYOffset_TopRightLowerOctant:
     RTS                                                                  ;A0C14D;
 
 
-%anchor($A0C14E)
 CalculateAngleOfXYOffset_BottomLeftLowerOctant:
     LDA.W $4214                                                          ;A0C14E;
     LSR A                                                                ;A0C151;
@@ -8268,7 +8063,6 @@ CalculateAngleOfXYOffset_BottomLeftLowerOctant:
     RTS                                                                  ;A0C15B;
 
 
-%anchor($A0C15C)
 CalculateAngleOfXYOffset_BottomLeftUpperOctant:
     LDA.W $4214                                                          ;A0C15C;
     LSR A                                                                ;A0C15F;
@@ -8282,7 +8076,6 @@ CalculateAngleOfXYOffset_BottomLeftUpperOctant:
     RTS                                                                  ;A0C16D;
 
 
-%anchor($A0C16E)
 CalculateAngleOfXYOffset_TopLeftLowerOctant:
     LDA.W $4214                                                          ;A0C16E;
     LSR A                                                                ;A0C171;
@@ -8294,7 +8087,6 @@ CalculateAngleOfXYOffset_TopLeftLowerOctant:
     RTS                                                                  ;A0C17B;
 
 
-%anchor($A0C17C)
 CalculateAngleOfXYOffset_TopLeftUpperOctant:
     LDA.W $4214                                                          ;A0C17C;
     LSR A                                                                ;A0C17F;
@@ -8308,7 +8100,6 @@ CalculateAngleOfXYOffset_TopLeftUpperOctant:
     RTS                                                                  ;A0C18D;
 
 
-%anchor($A0C18E)
 CheckIfEnemyIsHorizontallyOffScreen:
     LDA.W $0F7A,X                                                        ;A0C18E;
     BMI .offScreen                                                       ;A0C191;
@@ -8334,7 +8125,6 @@ CheckIfEnemyIsHorizontallyOffScreen:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($A0C1B1)
 UNUSED_CheckIfEnemyIsVerticallyOffScreen_A0C1B1:
     LDA.W $0F7E,X                                                        ;A0C1B1;
     BMI .offScreen                                                       ;A0C1B4;
@@ -8359,7 +8149,6 @@ UNUSED_CheckIfEnemyIsVerticallyOffScreen_A0C1B1:
     RTL                                                                  ;A0C1D3;
 
 
-%anchor($A0C1D4)
 UNUSED_AssessSamusThreatLevel_A0C1D4:
     LDA.W $09C4                                                          ;A0C1D4;
     STA.W $4204                                                          ;A0C1D7;
@@ -8446,7 +8235,6 @@ UNUSED_AssessSamusThreatLevel_A0C1D4:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($A0C26A)
 ProcessEnemyInstructions:
     PHB                                                                  ;A0C26A;
     LDX.W $0E54                                                          ;A0C26B;
@@ -8489,7 +8277,6 @@ ProcessEnemyInstructions:
     RTS                                                                  ;A0C2B0;
 
 
-%anchor($A0C2B1)
 ProcessEnemyInstructions_noUpdate:
     LDA.W $0F88,X                                                        ;A0C2B1;
     AND.W #$7FFF                                                         ;A0C2B4;
@@ -8498,19 +8285,16 @@ ProcessEnemyInstructions_noUpdate:
     RTS                                                                  ;A0C2BB;
 
 
-%anchor($A0C2BC)
 CLCRTS_A0C2BC:
     CLC                                                                  ;A0C2BC;
     RTS                                                                  ;A0C2BD;
 
 
-%anchor($A0C2BE)
 SECRTS_A0C2BE:
     SEC                                                                  ;A0C2BE;
     RTS                                                                  ;A0C2BF;
 
 
-%anchor($A0C2C0)
 EnemyBlockCollisionReaction_Spike:
     LDX.W $0DC4                                                          ;A0C2C0;
     LDA.L $7F6402,X                                                      ;A0C2C3;
@@ -8547,7 +8331,6 @@ EnemyBlockCollisionReaction_Spike:
     dw $0000                                                             ;A0C2F6;
     dw PLMEntries_EnemyBreakableBlock                                    ;A0C2F8;
 
-%anchor($A0C2FA)
 EnemyBlockCollisionReaction_Horizontal_Slope:
     LDX.W $0DC4                                                          ;A0C2FA;
     LDA.L $7F6402,X                                                      ;A0C2FD;
@@ -8564,7 +8347,6 @@ EnemyBlockCollisionReaction_Horizontal_Slope:
     JMP.W EnemyBlockCollisionReaction_Horizontal_Slope_NonSquare         ;A0C316;
 
 
-%anchor($A0C319)
 EnemyBlockCollisionReaction_Vertical_Slope:
     LDX.W $0DC4                                                          ;A0C319;
     LDA.L $7F6402,X                                                      ;A0C31C;
@@ -8578,7 +8360,6 @@ EnemyBlockCollisionReaction_Vertical_Slope:
     JMP.W EnemyBlockCollisionReaction_Vertical_Slope_NonSquare           ;A0C32B;
 
 
-%anchor($A0C32E)
 EnemyBlockCollisionReaction_Horizontal_Slope_Square:
     ASL A                                                                ;A0C32E;
     ASL A                                                                ;A0C32F;
@@ -8664,7 +8445,6 @@ EnemyBlockCollisionReaction_Horizontal_Slope_Square:
     RTS                                                                  ;A0C3B1;
 
 
-%anchor($A0C3B2)
 EnemyBlockCollisionReaction_Vertical_Slope_Square:
     ASL A                                                                ;A0C3B2;
     ASL A                                                                ;A0C3B3;
@@ -8749,7 +8529,6 @@ EnemyBlockCollisionReaction_Vertical_Slope_Square:
     RTS                                                                  ;A0C434;
 
 
-%anchor($A0C435)
 SquareSlopeDefinitions_BankA0:                                           ;A0C435;
 ; Copy of $94:8E54 for enemies
 ; 7Fh- = air, 80h+ = solid
@@ -8765,7 +8544,6 @@ SquareSlopeDefinitions_BankA0:                                           ;A0C435
     db $00,$81,$82,$83 ; 3: Three-quarters
     db $80,$81,$82,$83 ; 4: Whole
 
-%anchor($A0C449)
 EnemyBlockCollisionReaction_Horizontal_Slope_NonSquare:
     BIT.B $20                                                            ;A0C449;
     BMI .processSlopes                                                   ;A0C44B;
@@ -8856,7 +8634,6 @@ EnemyBlockCollisionReaction_Horizontal_Slope_NonSquare:
     dw $6000,$0050 ; 1Eh: Unused. Middle third-width triangle
     dw $6000,$0050 ; 1Fh: Unused. Lower third-width triangle
 
-%anchor($A0C51F)
 EnemyBlockCollisionReaction_Vertical_Slope_NonSquare:
     LDY.W $0E54                                                          ;A0C51F;
     LDA.B $14                                                            ;A0C522;
@@ -9003,7 +8780,6 @@ EnemyBlockCollisionReaction_Vertical_Slope_NonSquare:
     RTS                                                                  ;A0C618;
 
 
-%anchor($A0C619)
 EnemyBlockCollisionReaction_HorizontalExtension:
     LDX.W $0DC4                                                          ;A0C619;
     LDA.L $7F6402,X                                                      ;A0C61C;
@@ -9040,7 +8816,6 @@ EnemyBlockCollisionReaction_HorizontalExtension:
     RTS                                                                  ;A0C64E;
 
 
-%anchor($A0C64F)
 EnemyBlockCollisionReaction_VerticalExtension:
     LDX.W $0DC4                                                          ;A0C64F;
     LDA.L $7F6402,X                                                      ;A0C652;
@@ -9089,25 +8864,21 @@ EnemyBlockCollisionReaction_VerticalExtension:
     RTS                                                                  ;A0C69C;
 
 
-%anchor($A0C69D)
 MoveEnemyRightBy_14_12_TreatSlopesAsWalls:
     LDA.W #$4000                                                         ;A0C69D;
     STA.B $20                                                            ;A0C6A0;
     BRA MoveEnemyRightBy_14_12_Common                                    ;A0C6A2;
 
 
-%anchor($A0C6A4)
 MoveEnemyRightBy_14_12_ProcessSlopes:
     LDA.W #$8000                                                         ;A0C6A4;
     STA.B $20                                                            ;A0C6A7;
     BRA MoveEnemyRightBy_14_12_Common                                    ;A0C6A9;
 
 
-%anchor($A0C6AB)
 MoveEnemyRightBy_14_12_IgnoreSlopes:
     STZ.B $20                                                            ;A0C6AB;
 
-%anchor($A0C6AD)
 MoveEnemyRightBy_14_12_Common:
     LDA.B $12                                                            ;A0C6AD;
     ORA.B $14                                                            ;A0C6AF;
@@ -9239,14 +9010,12 @@ MoveEnemyRightBy_14_12_Common:
 
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($A0C778)
 UNUSED_MoveEnemyDownBy_14_12_A0C778:
     LDA.W #$4000                                                         ;A0C778;
     STA.B $20                                                            ;A0C77B;
     BRA MoveEnemyDownBy_14_12_BranchEntry                                ;A0C77D;
 
 
-%anchor($A0C77F)
 UNUSED_MoveEnemyDownBy_14_12_A0C77F:
     LDA.W #$8000                                                         ;A0C77F;
     STA.B $20                                                            ;A0C782;
@@ -9254,11 +9023,9 @@ UNUSED_MoveEnemyDownBy_14_12_A0C77F:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-%anchor($A0C786)
 MoveEnemyDownBy_14_12:
     STZ.B $20                                                            ;A0C786;
 
-%anchor($A0C788)
 MoveEnemyDownBy_14_12_BranchEntry:
     LDA.B $12                                                            ;A0C788;
     ORA.B $14                                                            ;A0C78A;
@@ -9383,7 +9150,6 @@ MoveEnemyDownBy_14_12_BranchEntry:
     RTL                                                                  ;A0C844;
 
 
-%anchor($A0C845)
 EnemyHorizontalBlockReaction:
     PHX                                                                  ;A0C845;
     TXY                                                                  ;A0C846;
@@ -9419,7 +9185,6 @@ EnemyHorizontalBlockReaction:
     dw SECRTS_A0C2BE                                                     ;A0C875;  Eh: Grapple block
     dw SECRTS_A0C2BE                                                     ;A0C877;  Fh: Bombable block
 
-%anchor($A0C879)
 EnemyVerticalBlockReaction:
     PHX                                                                  ;A0C879;
     TXY                                                                  ;A0C87A;
@@ -9455,7 +9220,6 @@ EnemyVerticalBlockReaction:
     dw SECRTS_A0C2BE                                                     ;A0C8A9;  Eh: Grapple block
     dw SECRTS_A0C2BE                                                     ;A0C8AB;  Fh: Bombable block
 
-%anchor($A0C8AD)
 AlignEnemyYPositionWIthNonSquareSlope:
     PHY                                                                  ;A0C8AD;
     PHX                                                                  ;A0C8AE;
@@ -9603,7 +9367,6 @@ if !FEATURE_KEEP_UNREFERENCED
 ;       |     |      _________ Negated speed
 ;       |     |     |      ___ Negated subspeed
 ;       |     |     |     |
-%anchor($A0C9BF)
 UNUSED_CommonEnemyProjectileSpeeds_LinearlyIncreasing_A0C9BF:
 ; Clone of CommonEnemySpeeds_LinearlyIncreasing
   .speed:
@@ -9686,7 +9449,6 @@ endif ; !FEATURE_KEEP_UNREFERENCED
 ;       |     |      _________ Negated subspeed
 ;       |     |     |      ___ Negated speed
 ;       |     |     |     |
-%anchor($A0CBC7)
 CommonEnemyProjectileSpeeds_QuadraticallyIncreasing:
 ; Clone of CommonEnemySpeeds_QuadraticallyIncreasing
 ; Used by Botwoon's body when dying and falling to the floor, and polyp rock
@@ -9794,9 +9556,7 @@ CommonEnemyProjectileSpeeds_QuadraticallyIncreasing:
     dw $74F9,$0011,$8B07,$FFEE
 
 
-%anchor($A0CEBF)
 EnemyHeaders_Boyon:
-%anchor($A0CEBF)
 EnemyHeaders:
   .tileDataSize:
     dw $0400                                                             ;A0CEBF;
@@ -9861,7 +9621,6 @@ EnemyHeaders:
   .name:
     dw EnemyName_Boyon                                                   ;A0CEFD;
 
-%anchor($A0CEFF)
 EnemyHeaders_Stoke:
     dw $0400                                                             ;A0CEFF;
     dw Palette_Stoke                                                     ;A0CF01;
@@ -9888,7 +9647,6 @@ EnemyHeaders_Stoke:
     dw EnemyVulnerabilities_Default                                      ;A0CF3B;
     dw EnemyName_Stoke                                                   ;A0CF3D;
 
-%anchor($A0CF3F)
 EnemyHeaders_MamaTurtle:
     dw $0C00                                                             ;A0CF3F;
     dw Palette_MamaTurtle_BabyTurtle                                     ;A0CF41;
@@ -9915,7 +9673,6 @@ EnemyHeaders_MamaTurtle:
     dw EnemyVulnerabilities_Indestructible                               ;A0CF7B;
     dw EnemyName_MamaTurtle                                              ;A0CF7D;
 
-%anchor($A0CF7F)
 EnemyHeaders_BabyTurtle:
     dw $0C00                                                             ;A0CF7F;
     dw Palette_MamaTurtle_BabyTurtle                                     ;A0CF81;
@@ -9942,7 +9699,6 @@ EnemyHeaders_BabyTurtle:
     dw EnemyVulnerabilities_Indestructible                               ;A0CFBB;
     dw $0000                                                             ;A0CFBD;
 
-%anchor($A0CFBF)
 EnemyHeaders_Puyo:
     dw $0200                                                             ;A0CFBF;
     dw Palette_Puyo                                                      ;A0CFC1;
@@ -9969,7 +9725,6 @@ EnemyHeaders_Puyo:
     dw EnemyVulnerabilities_Default                                      ;A0CFFB;
     dw EnemyName_Puyo                                                    ;A0CFFD;
 
-%anchor($A0CFFF)
 EnemyHeaders_Cacatac:
     dw $0400                                                             ;A0CFFF;
     dw Palette_Cacatac                                                   ;A0D001;
@@ -9996,7 +9751,6 @@ EnemyHeaders_Cacatac:
     dw EnemyVulnerabilities_Default                                      ;A0D03B;
     dw EnemyName_Cacatac                                                 ;A0D03D;
 
-%anchor($A0D03F)
 EnemyHeaders_Owtch:
     dw $0400                                                             ;A0D03F;
     dw Palette_Owtch                                                     ;A0D041;
@@ -10023,7 +9777,6 @@ EnemyHeaders_Owtch:
     dw EnemyVulnerabilities_Owtch                                        ;A0D07B;
     dw EnemyName_Owtch                                                   ;A0D07D;
 
-%anchor($A0D07F)
 EnemyHeaders_ShipTop:
     dw $1000                                                             ;A0D07F;
     dw Palette_Ship                                                      ;A0D081;
@@ -10051,7 +9804,6 @@ EnemyHeaders_ShipTop:
     dw EnemyVulnerabilities_Default                                      ;A0D0BB;
     dw $0000                                                             ;A0D0BD;
 
-%anchor($A0D0BF)
 EnemyHeaders_ShipBottomEntrance:
     dw $0200                                                             ;A0D0BF;
     dw Palette_Ship                                                      ;A0D0C1;
@@ -10079,7 +9831,6 @@ EnemyHeaders_ShipBottomEntrance:
     dw EnemyVulnerabilities_Default                                      ;A0D0FB;
     dw $0000                                                             ;A0D0FD;
 
-%anchor($A0D0FF)
 EnemyHeaders_Mellow:
     dw $0400                                                             ;A0D0FF;
     dw Palette_Mellow                                                    ;A0D101;
@@ -10107,7 +9858,6 @@ EnemyHeaders_Mellow:
     dw EnemyVulnerabilities_Default                                      ;A0D13B;
     dw EnemyName_Mellow                                                  ;A0D13D;
 
-%anchor($A0D13F)
 EnemyHeaders_Mella:
     dw $0400                                                             ;A0D13F;
     dw Palette_Mella                                                     ;A0D141;
@@ -10135,7 +9885,6 @@ EnemyHeaders_Mella:
     dw EnemyVulnerabilities_Mella                                        ;A0D17B;
     dw EnemyName_Mella                                                   ;A0D17D;
 
-%anchor($A0D17F)
 EnemyHeaders_Menu:
     dw $0400                                                             ;A0D17F;
     dw Palette_Menu                                                      ;A0D181;
@@ -10163,7 +9912,6 @@ EnemyHeaders_Menu:
     dw EnemyVulnerabilities_Default                                      ;A0D1BB;
     dw EnemyName_Menu                                                    ;A0D1BD;
 
-%anchor($A0D1BF)
 EnemyHeaders_Multiviola:
     dw $0400                                                             ;A0D1BF;
     dw Palette_Multiviola                                                ;A0D1C1;
@@ -10191,7 +9939,6 @@ EnemyHeaders_Multiviola:
     dw EnemyVulnerabilities_Multiviola                                   ;A0D1FB;
     dw EnemyName_Multiviola                                              ;A0D1FD;
 
-%anchor($A0D1FF)
 EnemyHeaders_LavaRocks:
     dw $0600                                                             ;A0D1FF;
     dw Palette_Polyp_Rinka                                               ;A0D201;
@@ -10218,7 +9965,6 @@ EnemyHeaders_LavaRocks:
     dw EnemyVulnerabilities_Indestructible                               ;A0D23B;
     dw EnemyName_Polyp                                                   ;A0D23D;
 
-%anchor($A0D23F)
 EnemyHeaders_Rinka:
     dw $0600                                                             ;A0D23F;
     dw Palette_Polyp_Rinka                                               ;A0D241;
@@ -10246,7 +9992,6 @@ EnemyHeaders_Rinka:
     dw EnemyVulnerabilities_Default                                      ;A0D27B;
     dw EnemyName_Rinka                                                   ;A0D27D;
 
-%anchor($A0D27F)
 EnemyHeaders_Rio:
     dw $0400                                                             ;A0D27F;
     dw Palette_Rio                                                       ;A0D281;
@@ -10273,7 +10018,6 @@ EnemyHeaders_Rio:
     dw EnemyVulnerabilities_Default                                      ;A0D2BB;
     dw EnemyName_Rio                                                     ;A0D2BD;
 
-%anchor($A0D2BF)
 EnemyHeaders_Squeept:
     dw $0400                                                             ;A0D2BF;
     dw Palette_Squeept                                                   ;A0D2C1;
@@ -10300,7 +10044,6 @@ EnemyHeaders_Squeept:
     dw EnemyVulnerabilities_Squeept_Ripper2_Ripper_Tripper               ;A0D2FB;
     dw EnemyName_Squeept                                                 ;A0D2FD;
 
-%anchor($A0D2FF)
 EnemyHeaders_Geruta:
     dw $0600                                                             ;A0D2FF;
     dw Palette_Geruta                                                    ;A0D301;
@@ -10327,7 +10070,6 @@ EnemyHeaders_Geruta:
     dw EnemyVulnerabilities_Geruta                                       ;A0D33B;
     dw EnemyName_Geruta                                                  ;A0D33D;
 
-%anchor($A0D33F)
 EnemyHeaders_Holtz:
     dw $0800                                                             ;A0D33F;
     dw Palette_Holtz                                                     ;A0D341;
@@ -10354,7 +10096,6 @@ EnemyHeaders_Holtz:
     dw EnemyVulnerabilities_Holtz                                        ;A0D37B;
     dw EnemyName_Holtz                                                   ;A0D37D;
 
-%anchor($A0D37F)
 EnemyHeaders_Oum:
     dw $0800                                                             ;A0D37F;
     dw Palette_Oum                                                       ;A0D381;
@@ -10381,7 +10122,6 @@ EnemyHeaders_Oum:
     dw EnemyVulnerabilities_Indestructible                               ;A0D3BB;
     dw EnemyName_Oum                                                     ;A0D3BD;
 
-%anchor($A0D3BF)
 EnemyHeaders_Choot:
     dw $0400                                                             ;A0D3BF;
     dw Palette_Choot                                                     ;A0D3C1;
@@ -10408,7 +10148,6 @@ EnemyHeaders_Choot:
     dw EnemyVulnerabilities_Default                                      ;A0D3FB;
     dw EnemyName_Choot                                                   ;A0D3FD;
 
-%anchor($A0D3FF)
 EnemyHeaders_GRipper:
     dw $0400                                                             ;A0D3FF;
     dw Palette_GRipper                                                   ;A0D401;
@@ -10435,7 +10174,6 @@ EnemyHeaders_GRipper:
     dw EnemyVulnerabilities_GRipper                                      ;A0D43B;
     dw EnemyName_GRipper_Ripper2                                         ;A0D43D;
 
-%anchor($A0D43F)
 EnemyHeaders_Ripper2:
     dw $0400                                                             ;A0D43F;
     dw Palette_Ripper2                                                   ;A0D441;
@@ -10463,7 +10201,6 @@ EnemyHeaders_Ripper2:
     dw EnemyVulnerabilities_Squeept_Ripper2_Ripper_Tripper               ;A0D47B;
     dw EnemyName_GRipper_Ripper2                                         ;A0D47D;
 
-%anchor($A0D47F)
 EnemyHeaders_Ripper:
     dw $0400                                                             ;A0D47F;
     dw Palette_Ripper                                                    ;A0D481;
@@ -10491,7 +10228,6 @@ EnemyHeaders_Ripper:
     dw EnemyVulnerabilities_Squeept_Ripper2_Ripper_Tripper               ;A0D4BB;
     dw EnemyName_Ripper                                                  ;A0D4BD;
 
-%anchor($A0D4BF)
 EnemyHeaders_Dragon:
     dw $0600                                                             ;A0D4BF;
     dw Palette_Dragon                                                    ;A0D4C1;
@@ -10519,7 +10255,6 @@ EnemyHeaders_Dragon:
     dw EnemyVulnerabilities_Dragon                                       ;A0D4FB;
     dw EnemyName_Dragon                                                  ;A0D4FD;
 
-%anchor($A0D4FF)
 EnemyHeaders_ShutterGrowing:
     dw $0400                                                             ;A0D4FF;
     dw Palette_Shutters                                                  ;A0D501;
@@ -10547,7 +10282,6 @@ EnemyHeaders_ShutterGrowing:
     dw EnemyVulnerabilities_NonDestructibleShutter                       ;A0D53B;
     dw EnemyName_ShutterGrowing                                          ;A0D53D;
 
-%anchor($A0D53F)
 EnemyHeaders_ShutterShootable:
     dw $0400                                                             ;A0D53F;
     dw Palette_Shutters                                                  ;A0D541;
@@ -10575,7 +10309,6 @@ EnemyHeaders_ShutterShootable:
     dw EnemyVulnerabilities_NonDestructibleShutter                       ;A0D57B;
     dw EnemyName_Shutter2_Kamer                                          ;A0D57D;
 
-%anchor($A0D57F)
 EnemyHeaders_ShutterHorizShootable:
     dw $0400                                                             ;A0D57F;
     dw Palette_Shutters                                                  ;A0D581;
@@ -10603,7 +10336,6 @@ EnemyHeaders_ShutterHorizShootable:
     dw EnemyVulnerabilities_NonDestructibleShutter                       ;A0D5BB;
     dw EnemyName_Shutter2_Kamer                                          ;A0D5BD;
 
-%anchor($A0D5BF)
 EnemyHeaders_ShutterDestroyable:
     dw $0400                                                             ;A0D5BF;
     dw Palette_Shutters                                                  ;A0D5C1;
@@ -10631,7 +10363,6 @@ EnemyHeaders_ShutterDestroyable:
     dw EnemyVulnerabilities_ShutterDestroyable                           ;A0D5FB;
     dw EnemyName_Shutter2_Kamer                                          ;A0D5FD;
 
-%anchor($A0D5FF)
 EnemyHeaders_Kamer:
     dw $0400                                                             ;A0D5FF;
     dw Palette_Kamer                                                     ;A0D601;
@@ -10659,7 +10390,6 @@ EnemyHeaders_Kamer:
     dw EnemyVulnerabilities_NonDestructibleShutter                       ;A0D63B;
     dw EnemyName_Shutter2_Kamer                                          ;A0D63D;
 
-%anchor($A0D63F)
 EnemyHeaders_Waver:
     dw $0600                                                             ;A0D63F;
     dw Palette_Waver                                                     ;A0D641;
@@ -10686,7 +10416,6 @@ EnemyHeaders_Waver:
     dw EnemyVulnerabilities_Default                                      ;A0D67B;
     dw EnemyName_Waver                                                   ;A0D67D;
 
-%anchor($A0D67F)
 EnemyHeaders_Metaree:
     dw $0600                                                             ;A0D67F;
     dw Palette_Metaree                                                   ;A0D681;
@@ -10713,7 +10442,6 @@ EnemyHeaders_Metaree:
     dw EnemyVulnerabilities_Metaree                                      ;A0D6BB;
     dw EnemyName_Metaree                                                 ;A0D6BD;
 
-%anchor($A0D6BF)
 EnemyHeaders_Fireflea:
     dw $0600                                                             ;A0D6BF;
     dw Palette_Fireflea                                                  ;A0D6C1;
@@ -10741,7 +10469,6 @@ EnemyHeaders_Fireflea:
     dw EnemyVulnerabilities_Default                                      ;A0D6FB;
     dw EnemyName_Fireflea                                                ;A0D6FD;
 
-%anchor($A0D6FF)
 EnemyHeaders_Skultera:
     dw $0600                                                             ;A0D6FF;
     dw Palette_Skultera                                                  ;A0D701;
@@ -10768,7 +10495,6 @@ EnemyHeaders_Skultera:
     dw EnemyVulnerabilities_Default                                      ;A0D73B;
     dw EnemyName_Skultera                                                ;A0D73D;
 
-%anchor($A0D73F)
 EnemyHeaders_Elevator:
     dw $0000                                                             ;A0D73F;
     dw $0000                                                             ;A0D741;
@@ -10796,7 +10522,6 @@ EnemyHeaders_Elevator:
     dw $0000                                                             ;A0D77B;
     dw $0000                                                             ;A0D77D;
 
-%anchor($A0D77F)
 EnemyHeaders_Sciser:
     dw $0400                                                             ;A0D77F;
     dw Palette_Sciser                                                    ;A0D781;
@@ -10823,7 +10548,6 @@ EnemyHeaders_Sciser:
     dw EnemyVulnerabilities_Sciser_Zero                                  ;A0D7BB;
     dw EnemyName_Sciser                                                  ;A0D7BD;
 
-%anchor($A0D7BF)
 EnemyHeaders_Zero:
     dw $0400                                                             ;A0D7BF;
     dw Palette_Zero                                                      ;A0D7C1;
@@ -10850,7 +10574,6 @@ EnemyHeaders_Zero:
     dw EnemyVulnerabilities_Sciser_Zero                                  ;A0D7FB;
     dw EnemyName_Zero                                                    ;A0D7FD;
 
-%anchor($A0D7FF)
 EnemyHeaders_Tripper:
     dw $0400                                                             ;A0D7FF;
     dw Palette_Tripper                                                   ;A0D801;
@@ -10877,7 +10600,6 @@ EnemyHeaders_Tripper:
     dw EnemyVulnerabilities_Squeept_Ripper2_Ripper_Tripper               ;A0D83B;
     dw EnemyName_Tripper                                                 ;A0D83D;
 
-%anchor($A0D83F)
 EnemyHeaders_Kamer2:
     dw $0400                                                             ;A0D83F;
     dw Palette_Kamer2                                                    ;A0D841;
@@ -10904,7 +10626,6 @@ EnemyHeaders_Kamer2:
     dw EnemyVulnerabilities_Indestructible                               ;A0D87B;
     dw EnemyName_Tripper                                                 ;A0D87D;
 
-%anchor($A0D87F)
 EnemyHeaders_Sbug:
     dw $0200                                                             ;A0D87F;
     dw Palette_Sbug                                                      ;A0D881;
@@ -10931,7 +10652,6 @@ EnemyHeaders_Sbug:
     dw EnemyVulnerabilities_Indestructible                               ;A0D8BB;
     dw EnemyName_Sbug                                                    ;A0D8BD;
 
-%anchor($A0D8BF)
 EnemyHeaders_Sbug2:
     dw $8200                                                             ;A0D8BF;
     dw Palette_Sbug                                                      ;A0D8C1;
@@ -10958,7 +10678,6 @@ EnemyHeaders_Sbug2:
     dw EnemyVulnerabilities_Indestructible                               ;A0D8FB;
     dw EnemyName_Sbug                                                    ;A0D8FD;
 
-%anchor($A0D8FF)
 EnemyHeaders_Mochtroid:
     dw $0400                                                             ;A0D8FF;
     dw Palette_Mochtroid                                                 ;A0D901;
@@ -10985,7 +10704,6 @@ EnemyHeaders_Mochtroid:
     dw EnemyVulnerabilities_Default                                      ;A0D93B;
     dw EnemyName_Mochtroid                                               ;A0D93D;
 
-%anchor($A0D93F)
 EnemyHeaders_Sidehopper:
     dw $0400                                                             ;A0D93F;
     dw Palette_Sidehopper                                                ;A0D941;
@@ -11012,7 +10730,6 @@ EnemyHeaders_Sidehopper:
     dw EnemyVulnerabilities_Default                                      ;A0D97B;
     dw EnemyName_Sidehopper                                              ;A0D97D;
 
-%anchor($A0D97F)
 EnemyHeaders_Dessgeega:
     dw $0400                                                             ;A0D97F;
     dw Palette_Dessgeega                                                 ;A0D981;
@@ -11039,7 +10756,6 @@ EnemyHeaders_Dessgeega:
     dw EnemyVulnerabilities_Default                                      ;A0D9BB;
     dw EnemyName_Dessgeega                                               ;A0D9BD;
 
-%anchor($A0D9BF)
 EnemyHeaders_SidehopperLarge:
     dw $0600                                                             ;A0D9BF;
     dw Palette_SidehopperLarge                                           ;A0D9C1;
@@ -11066,7 +10782,6 @@ EnemyHeaders_SidehopperLarge:
     dw EnemyVulnerabilities_Default                                      ;A0D9FB;
     dw EnemyName_SidehopperLarge_SidehopperTourian                       ;A0D9FD;
 
-%anchor($A0D9FF)
 EnemyHeaders_SidehopperTourian:
     dw $0600                                                             ;A0D9FF;
     dw Palette_SidehopperTourian                                         ;A0DA01;
@@ -11093,7 +10808,6 @@ EnemyHeaders_SidehopperTourian:
     dw EnemyVulnerabilities_SidehopperTourian                            ;A0DA3B;
     dw EnemyName_SidehopperLarge_SidehopperTourian                       ;A0DA3D;
 
-%anchor($A0DA3F)
 EnemyHeaders_DessgeegaLarge:
     dw $0400                                                             ;A0DA3F;
     dw Palette_DessgeegaLarge                                            ;A0DA41;
@@ -11120,7 +10834,6 @@ EnemyHeaders_DessgeegaLarge:
     dw EnemyVulnerabilities_DessgeegaLarge                               ;A0DA7B;
     dw EnemyName_DessgeegaLarge                                          ;A0DA7D;
 
-%anchor($A0DA7F)
 EnemyHeaders_Zoa:
     dw $0400                                                             ;A0DA7F;
     dw Palette_Zoa                                                       ;A0DA81;
@@ -11147,7 +10860,6 @@ EnemyHeaders_Zoa:
     dw EnemyVulnerabilities_Default                                      ;A0DABB;
     dw EnemyName_Zoa                                                     ;A0DABD;
 
-%anchor($A0DABF)
 EnemyHeaders_Viola:
     dw $0400                                                             ;A0DABF;
     dw Palette_Viola                                                     ;A0DAC1;
@@ -11175,7 +10887,6 @@ EnemyHeaders_Viola:
     dw EnemyVulnerabilities_Viola_Yard_HZoomer_Zeela_Sova_Zoomer         ;A0DAFB;
     dw EnemyName_Viola                                                   ;A0DAFD;
 
-%anchor($A0DAFF)
 EnemyHeaders_Respawn:
     dw $0000                                                             ;A0DAFF;
     dw NOPNOP_A38069                                                     ;A0DB01;
@@ -11202,7 +10913,6 @@ EnemyHeaders_Respawn:
     dw $0000                                                             ;A0DB3B;
     dw $0000                                                             ;A0DB3D;
 
-%anchor($A0DB3F)
 EnemyHeaders_Bang:
     dw $1000                                                             ;A0DB3F;
     dw Palette_Bang                                                      ;A0DB41;
@@ -11229,7 +10939,6 @@ EnemyHeaders_Bang:
     dw EnemyVulnerabilities_Bang                                         ;A0DB7B;
     dw EnemyName_Bang                                                    ;A0DB7D;
 
-%anchor($A0DB7F)
 EnemyHeaders_Skree:
     dw $0400                                                             ;A0DB7F;
     dw Palette_Skree                                                     ;A0DB81;
@@ -11256,7 +10965,6 @@ EnemyHeaders_Skree:
     dw EnemyVulnerabilities_Default                                      ;A0DBBB;
     dw EnemyName_Skree                                                   ;A0DBBD;
 
-%anchor($A0DBBF)
 EnemyHeaders_Yard:
     dw $0800                                                             ;A0DBBF;
     dw Palette_Yard                                                      ;A0DBC1;
@@ -11283,7 +10991,6 @@ EnemyHeaders_Yard:
     dw EnemyVulnerabilities_Viola_Yard_HZoomer_Zeela_Sova_Zoomer         ;A0DBFB;
     dw EnemyName_Yard                                                    ;A0DBFD;
 
-%anchor($A0DBFF)
 EnemyHeaders_Reflec:
     dw $0600                                                             ;A0DBFF;
     dw Palette_Reflec                                                    ;A0DC01;
@@ -11310,7 +11017,6 @@ EnemyHeaders_Reflec:
     dw EnemyVulnerabilities_Indestructible                               ;A0DC3B;
     dw EnemyName_Reflec                                                  ;A0DC3D;
 
-%anchor($A0DC3F)
 EnemyHeaders_HZoomer:
     dw $0600                                                             ;A0DC3F;
     dw Palette_HZoomer                                                   ;A0DC41;
@@ -11337,7 +11043,6 @@ EnemyHeaders_HZoomer:
     dw EnemyVulnerabilities_Viola_Yard_HZoomer_Zeela_Sova_Zoomer         ;A0DC7B;
     dw EnemyName_HZoomer                                                 ;A0DC7D;
 
-%anchor($A0DC7F)
 EnemyHeaders_Zeela:
     dw $0600                                                             ;A0DC7F;
     dw Palette_Zeela                                                     ;A0DC81;
@@ -11364,7 +11069,6 @@ EnemyHeaders_Zeela:
     dw EnemyVulnerabilities_Viola_Yard_HZoomer_Zeela_Sova_Zoomer         ;A0DCBB;
     dw EnemyName_Zeela                                                   ;A0DCBD;
 
-%anchor($A0DCBF)
 EnemyHeaders_Sova:
     dw $0600                                                             ;A0DCBF;
     dw Palette_Sova                                                      ;A0DCC1;
@@ -11391,7 +11095,6 @@ EnemyHeaders_Sova:
     dw EnemyVulnerabilities_Viola_Yard_HZoomer_Zeela_Sova_Zoomer         ;A0DCFB;
     dw EnemyName_Sova                                                    ;A0DCFD;
 
-%anchor($A0DCFF)
 EnemyHeaders_Zoomer:
     dw $0600                                                             ;A0DCFF;
     dw Palette_Zoomer                                                    ;A0DD01;
@@ -11418,7 +11121,6 @@ EnemyHeaders_Zoomer:
     dw EnemyVulnerabilities_Viola_Yard_HZoomer_Zeela_Sova_Zoomer         ;A0DD3B;
     dw EnemyName_Zoomer                                                  ;A0DD3D;
 
-%anchor($A0DD3F)
 EnemyHeaders_MZoomer:
     dw $0600                                                             ;A0DD3F;
     dw Palette_MZoomer                                                   ;A0DD41;
@@ -11445,7 +11147,6 @@ EnemyHeaders_MZoomer:
     dw EnemyVulnerabilities_MZoomer                                      ;A0DD7B;
     dw EnemyName_MZoomer                                                 ;A0DD7D;
 
-%anchor($A0DD7F)
 EnemyHeaders_Metroid:
     dw $1000                                                             ;A0DD7F;
     dw Palette_Metroid                                                   ;A0DD81;
@@ -11473,7 +11174,6 @@ EnemyHeaders_Metroid:
     dw EnemyVulnerabilities_Metroid                                      ;A0DDBB;
     dw EnemyName_Metroid                                                 ;A0DDBD;
 
-%anchor($A0DDBF)
 EnemyHeaders_Crocomire:
     dw $A600                                                             ;A0DDBF;
     dw Palette_Crocomire                                                 ;A0DDC1;
@@ -11501,7 +11201,6 @@ EnemyHeaders_Crocomire:
     dw EnemyVulnerabilities_Crocomire_CrocomireTongue                    ;A0DDFB;
     dw $0000                                                             ;A0DDFD;
 
-%anchor($A0DDFF)
 EnemyHeaders_CrocomireTongue:
     dw $2000                                                             ;A0DDFF;
     dw Palette_Crocomire                                                 ;A0DE01;
@@ -11528,7 +11227,6 @@ EnemyHeaders_CrocomireTongue:
     dw EnemyVulnerabilities_Crocomire_CrocomireTongue                    ;A0DE3B;
     dw $0000                                                             ;A0DE3D;
 
-%anchor($A0DE3F)
 EnemyHeaders_DraygonBody:
     dw $2000                                                             ;A0DE3F;
     dw Palette_Draygon_Sprite7                                           ;A0DE41;
@@ -11556,7 +11254,6 @@ EnemyHeaders_DraygonBody:
     dw EnemyVulnerabilities_Draygon_Body_Eye_Tail_Arms                   ;A0DE7B;
     dw $0000                                                             ;A0DE7D;
 
-%anchor($A0DE7F)
 EnemyHeaders_DraygonEye:
     dw $1800                                                             ;A0DE7F;
     dw NOPNOP_A58069                                                     ;A0DE81;
@@ -11584,7 +11281,6 @@ EnemyHeaders_DraygonEye:
     dw EnemyVulnerabilities_Draygon_Body_Eye_Tail_Arms                   ;A0DEBB;
     dw $0000                                                             ;A0DEBD;
 
-%anchor($A0DEBF)
 EnemyHeaders_DraygonTail:
     dw $1800                                                             ;A0DEBF;
     dw Palette_Draygon_Sprite7                                           ;A0DEC1;
@@ -11612,7 +11308,6 @@ EnemyHeaders_DraygonTail:
     dw EnemyVulnerabilities_Draygon_Body_Eye_Tail_Arms                   ;A0DEFB;
     dw $0000                                                             ;A0DEFD;
 
-%anchor($A0DEFF)
 EnemyHeaders_DraygonArms:
     dw $1800                                                             ;A0DEFF;
     dw Palette_Draygon_Sprite7                                           ;A0DF01;
@@ -11640,7 +11335,6 @@ EnemyHeaders_DraygonArms:
     dw EnemyVulnerabilities_Draygon_Body_Eye_Tail_Arms                   ;A0DF3B;
     dw $0000                                                             ;A0DF3D;
 
-%anchor($A0DF3F)
 EnemyHeaders_SporeSpawn:
     dw $0E00                                                             ;A0DF3F;
     dw Palette_SporeSpawn                                                ;A0DF41;
@@ -11668,7 +11362,6 @@ EnemyHeaders_SporeSpawn:
     dw EnemyVulnerabilities_SporeSpawn                                   ;A0DF7B;
     dw $0000                                                             ;A0DF7D;
 
-%anchor($A0DF7F)
 EnemyHeaders_SporeSpawnStalk:
     dw $0E00                                                             ;A0DF7F;
     dw Palette_SporeSpawn                                                ;A0DF81;
@@ -11695,7 +11388,6 @@ EnemyHeaders_SporeSpawnStalk:
     dw EnemyVulnerabilities_SporeSpawn                                   ;A0DFBB;
     dw $0000                                                             ;A0DFBD;
 
-%anchor($A0DFBF)
 EnemyHeaders_Boulder:
     dw $1000                                                             ;A0DFBF;
     dw Palette_Boulder                                                   ;A0DFC1;
@@ -11722,7 +11414,6 @@ EnemyHeaders_Boulder:
     dw EnemyVulnerabilities_Boulder                                      ;A0DFFB;
     dw EnemyName_Boulder                                                 ;A0DFFD;
 
-%anchor($A0DFFF)
 EnemyHeaders_KzanTop:
     dw $0400                                                             ;A0DFFF;
     dw Palette_Kzan                                                      ;A0E001;
@@ -11749,7 +11440,6 @@ EnemyHeaders_KzanTop:
     dw EnemyVulnerabilities_Indestructible                               ;A0E03B;
     dw EnemyName_KzanTop                                                 ;A0E03D;
 
-%anchor($A0E03F)
 EnemyHeaders_KzanBottom:
     dw $0200                                                             ;A0E03F;
     dw Palette_Kzan                                                      ;A0E041;
@@ -11776,7 +11466,6 @@ EnemyHeaders_KzanBottom:
     dw EnemyVulnerabilities_Indestructible                               ;A0E07B;
     dw $0000                                                             ;A0E07D;
 
-%anchor($A0E07F)
 EnemyHeaders_Hibashi:
     dw $0800                                                             ;A0E07F;
     dw Palette_Hibashi                                                   ;A0E081;
@@ -11803,7 +11492,6 @@ EnemyHeaders_Hibashi:
     dw EnemyVulnerabilities_Indestructible                               ;A0E0BB;
     dw EnemyName_Hibashi                                                 ;A0E0BD;
 
-%anchor($A0E0BF)
 EnemyHeaders_Puromi:
     dw $0800                                                             ;A0E0BF;
     dw Palette_Puromi                                                    ;A0E0C1;
@@ -11830,7 +11518,6 @@ EnemyHeaders_Puromi:
     dw EnemyVulnerabilities_Indestructible                               ;A0E0FB;
     dw EnemyName_Puromi                                                  ;A0E0FD;
 
-%anchor($A0E0FF)
 EnemyHeaders_MiniKraid:
     dw $1000                                                             ;A0E0FF;
     dw Palette_MiniKraid                                                 ;A0E101;
@@ -11858,7 +11545,6 @@ EnemyHeaders_MiniKraid:
     dw EnemyVulnerabilities_MiniKraid                                    ;A0E13B;
     dw EnemyName_MiniKraid                                               ;A0E13D;
 
-%anchor($A0E13F)
 EnemyHeaders_RidleyCeres:
     dw $2000                                                             ;A0E13F;
     dw Palette_Ridley                                                    ;A0E141;
@@ -11886,7 +11572,6 @@ EnemyHeaders_RidleyCeres:
     dw EnemyVulnerabilities_Ridley_RidleyCeres                           ;A0E17B;
     dw $0000                                                             ;A0E17D;
 
-%anchor($A0E17F)
 EnemyHeaders_Ridley:
     dw $2000                                                             ;A0E17F;
     dw Palette_Ridley                                                    ;A0E181;
@@ -11914,7 +11599,6 @@ EnemyHeaders_Ridley:
     dw EnemyVulnerabilities_Ridley_RidleyCeres                           ;A0E1BB;
     dw $0000                                                             ;A0E1BD;
 
-%anchor($A0E1BF)
 EnemyHeaders_RidleyExplosion:
     dw $8400                                                             ;A0E1BF;
     dw Palette_RidleyExplosion_0                                         ;A0E1C1;
@@ -11942,7 +11626,6 @@ EnemyHeaders_RidleyExplosion:
     dw EnemyVulnerabilities_Indestructible                               ;A0E1FB;
     dw $0000                                                             ;A0E1FD;
 
-%anchor($A0E1FF)
 EnemyHeaders_Steam:
     dw $0000                                                             ;A0E1FF;
     dw Palette_CeresSteam                                                ;A0E201;
@@ -11969,7 +11652,6 @@ EnemyHeaders_Steam:
     dw EnemyVulnerabilities_Indestructible                               ;A0E23B;
     dw $0000                                                             ;A0E23D;
 
-%anchor($A0E23F)
 EnemyHeaders_CeresDoor:
     dw $8600                                                             ;A0E23F;
     dw Palette_CeresDoor_BeforeEscape                                    ;A0E241;
@@ -11997,7 +11679,6 @@ EnemyHeaders_CeresDoor:
     dw $0000                                                             ;A0E27B;
     dw $0000                                                             ;A0E27D;
 
-%anchor($A0E27F)
 EnemyHeaders_Zebetite:
     dw $0000                                                             ;A0E27F;
     dw $0000                                                             ;A0E281;
@@ -12024,7 +11705,6 @@ EnemyHeaders_Zebetite:
     dw EnemyVulnerabilities_Zebetite                                     ;A0E2BB;
     dw $0000                                                             ;A0E2BD;
 
-%anchor($A0E2BF)
 EnemyHeaders_Kraid:
     dw $1E00                                                             ;A0E2BF;
     dw Palette_Kraid                                                     ;A0E2C1;
@@ -12052,7 +11732,6 @@ EnemyHeaders_Kraid:
     dw EnemyVulnerabilities_Kraid                                        ;A0E2FB;
     dw $0000                                                             ;A0E2FD;
 
-%anchor($A0E2FF)
 EnemyHeaders_KraidArm:
     dw $1E00                                                             ;A0E2FF;
     dw Palette_Kraid                                                     ;A0E301;
@@ -12079,7 +11758,6 @@ EnemyHeaders_KraidArm:
     dw EnemyVulnerabilities_KraidArm_KraidFoot                           ;A0E33B;
     dw $0000                                                             ;A0E33D;
 
-%anchor($A0E33F)
 EnemyHeaders_LintTop:
     dw $1E00                                                             ;A0E33F;
     dw Palette_Kraid                                                     ;A0E341;
@@ -12106,7 +11784,6 @@ EnemyHeaders_LintTop:
     dw EnemyVulnerabilities_Kraid_LintTop_LintMiddle_LintBottom          ;A0E37B;
     dw $0000                                                             ;A0E37D;
 
-%anchor($A0E37F)
 EnemyHeaders_LintMiddle:
     dw $1E00                                                             ;A0E37F;
     dw Palette_Kraid                                                     ;A0E381;
@@ -12133,7 +11810,6 @@ EnemyHeaders_LintMiddle:
     dw EnemyVulnerabilities_Kraid_LintTop_LintMiddle_LintBottom          ;A0E3BB;
     dw $0000                                                             ;A0E3BD;
 
-%anchor($A0E3BF)
 EnemyHeaders_LintBottom:
     dw $1E00                                                             ;A0E3BF;
     dw Palette_Kraid                                                     ;A0E3C1;
@@ -12160,7 +11836,6 @@ EnemyHeaders_LintBottom:
     dw EnemyVulnerabilities_Kraid_LintTop_LintMiddle_LintBottom          ;A0E3FB;
     dw $0000                                                             ;A0E3FD;
 
-%anchor($A0E3FF)
 EnemyHeaders_KraidFoot:
     dw $1E00                                                             ;A0E3FF;
     dw Palette_Kraid                                                     ;A0E401;
@@ -12187,7 +11862,6 @@ EnemyHeaders_KraidFoot:
     dw EnemyVulnerabilities_KraidArm_KraidFoot                           ;A0E43B;
     dw $0000                                                             ;A0E43D;
 
-%anchor($A0E43F)
 EnemyHeaders_KraidNail:
     dw $1E00                                                             ;A0E43F;
     dw Palette_Kraid                                                     ;A0E441;
@@ -12214,7 +11888,6 @@ EnemyHeaders_KraidNail:
     dw EnemyVulnerabilities_KraidNail_KraidNailBad                       ;A0E47B;
     dw $0000                                                             ;A0E47D;
 
-%anchor($A0E47F)
 EnemyHeaders_KraidNailBad:
     dw $1E00                                                             ;A0E47F;
     dw Palette_Kraid                                                     ;A0E481;
@@ -12241,7 +11914,6 @@ EnemyHeaders_KraidNailBad:
     dw EnemyVulnerabilities_KraidNail_KraidNailBad                       ;A0E4BB;
     dw $0000                                                             ;A0E4BD;
 
-%anchor($A0E4BF)
 EnemyHeaders_PhantoonBody:
     dw $0C00                                                             ;A0E4BF;
     dw Palette_Phantoon                                                  ;A0E4C1;
@@ -12269,7 +11941,6 @@ EnemyHeaders_PhantoonBody:
     dw EnemyVulnerabilities_Phantoon_Body_Eye_Tentacles_Mouth            ;A0E4FB;
     dw $0000                                                             ;A0E4FD;
 
-%anchor($A0E4FF)
 EnemyHeaders_PhantoonEye:
     dw $0400                                                             ;A0E4FF;
     dw Palette_Phantoon                                                  ;A0E501;
@@ -12297,7 +11968,6 @@ EnemyHeaders_PhantoonEye:
     dw EnemyVulnerabilities_Phantoon_Body_Eye_Tentacles_Mouth            ;A0E53B;
     dw $0000                                                             ;A0E53D;
 
-%anchor($A0E53F)
 EnemyHeaders_PhantoonTentacles:
     dw $0400                                                             ;A0E53F;
     dw Palette_Phantoon                                                  ;A0E541;
@@ -12325,7 +11995,6 @@ EnemyHeaders_PhantoonTentacles:
     dw EnemyVulnerabilities_Phantoon_Body_Eye_Tentacles_Mouth            ;A0E57B;
     dw $0000                                                             ;A0E57D;
 
-%anchor($A0E57F)
 EnemyHeaders_PhantoonMouth:
     dw $0400                                                             ;A0E57F;
     dw Palette_Phantoon                                                  ;A0E581;
@@ -12353,7 +12022,6 @@ EnemyHeaders_PhantoonMouth:
     dw EnemyVulnerabilities_Phantoon_Body_Eye_Tentacles_Mouth            ;A0E5BB;
     dw $0000                                                             ;A0E5BD;
 
-%anchor($A0E5BF)
 EnemyHeaders_Etecoon:
     dw $0600                                                             ;A0E5BF;
     dw Palette_Etecoon                                                   ;A0E5C1;
@@ -12381,7 +12049,6 @@ EnemyHeaders_Etecoon:
     dw $0000                                                             ;A0E5FB;
     dw $0000                                                             ;A0E5FD;
 
-%anchor($A0E5FF)
 EnemyHeaders_Dachora:
     dw $0C00                                                             ;A0E5FF;
     dw Palette_Dachora                                                   ;A0E601;
@@ -12409,7 +12076,6 @@ EnemyHeaders_Dachora:
     dw $0000                                                             ;A0E63B;
     dw $0000                                                             ;A0E63D;
 
-%anchor($A0E63F)
 EnemyHeaders_Evir:
     dw $0600                                                             ;A0E63F;
     dw Palette_Evir                                                      ;A0E641;
@@ -12437,7 +12103,6 @@ EnemyHeaders_Evir:
     dw EnemyVulnerabilities_Evir                                         ;A0E67B;
     dw EnemyName_Evir                                                    ;A0E67D;
 
-%anchor($A0E67F)
 EnemyHeaders_EvirProjectile:
     dw $0600                                                             ;A0E67F;
     dw Palette_Evir                                                      ;A0E681;
@@ -12465,7 +12130,6 @@ EnemyHeaders_EvirProjectile:
     dw EnemyVulnerabilities_EvirProjectile                               ;A0E6BB;
     dw $0000                                                             ;A0E6BD;
 
-%anchor($A0E6BF)
 EnemyHeaders_Eye:
     dw $0400                                                             ;A0E6BF;
     dw Palette_Eye                                                       ;A0E6C1;
@@ -12492,7 +12156,6 @@ EnemyHeaders_Eye:
     dw EnemyVulnerabilities_Indestructible                               ;A0E6FB;
     dw EnemyName_Eye                                                     ;A0E6FD;
 
-%anchor($A0E6FF)
 EnemyHeaders_Fune:
     dw $0800                                                             ;A0E6FF;
     dw Palette_Fune                                                      ;A0E701;
@@ -12519,7 +12182,6 @@ EnemyHeaders_Fune:
     dw EnemyVulnerabilities_Fune_Magdollite                              ;A0E73B;
     dw EnemyName_Fune                                                    ;A0E73D;
 
-%anchor($A0E73F)
 EnemyHeaders_Namihe:
     dw $0800                                                             ;A0E73F;
     dw Palette_Namihe                                                    ;A0E741;
@@ -12546,7 +12208,6 @@ EnemyHeaders_Namihe:
     dw EnemyVulnerabilities_Namihe                                       ;A0E77B;
     dw EnemyName_Namihe                                                  ;A0E77D;
 
-%anchor($A0E77F)
 EnemyHeaders_Coven:
     dw $0400                                                             ;A0E77F;
     dw Palette_Coven                                                     ;A0E781;
@@ -12573,7 +12234,6 @@ EnemyHeaders_Coven:
     dw EnemyVulnerabilities_Default                                      ;A0E7BB;
     dw EnemyName_Coven                                                   ;A0E7BD;
 
-%anchor($A0E7BF)
 EnemyHeaders_YappingMaw:
     dw $0400                                                             ;A0E7BF;
     dw Palette_YappingMaw                                                ;A0E7C1;
@@ -12600,7 +12260,6 @@ EnemyHeaders_YappingMaw:
     dw EnemyVulnerabilities_YappingMaw                                   ;A0E7FB;
     dw EnemyName_YappingMaw                                              ;A0E7FD;
 
-%anchor($A0E7FF)
 EnemyHeaders_Kago:
     dw $0800                                                             ;A0E7FF;
     dw Palette_Kago                                                      ;A0E801;
@@ -12627,7 +12286,6 @@ EnemyHeaders_Kago:
     dw EnemyVulnerabilities_Kago                                         ;A0E83B;
     dw EnemyName_Kago                                                    ;A0E83D;
 
-%anchor($A0E83F)
 EnemyHeaders_Magdollite:
     dw $0600                                                             ;A0E83F;
     dw Palette_Magdollite                                                ;A0E841;
@@ -12655,7 +12313,6 @@ EnemyHeaders_Magdollite:
     dw EnemyVulnerabilities_Fune_Magdollite                              ;A0E87B;
     dw EnemyName_Magdollite                                              ;A0E87D;
 
-%anchor($A0E87F)
 EnemyHeaders_Beetom:
     dw $0600                                                             ;A0E87F;
     dw Palette_Beetom                                                    ;A0E881;
@@ -12682,7 +12339,6 @@ EnemyHeaders_Beetom:
     dw EnemyVulnerabilities_Beetom                                       ;A0E8BB;
     dw EnemyName_Beetom                                                  ;A0E8BD;
 
-%anchor($A0E8BF)
 EnemyHeaders_Powamp:
     dw $0400                                                             ;A0E8BF;
     dw Palette_Powamp                                                    ;A0E8C1;
@@ -12710,7 +12366,6 @@ EnemyHeaders_Powamp:
     dw EnemyVulnerabilities_Powamp                                       ;A0E8FB;
     dw EnemyName_Powamp                                                  ;A0E8FD;
 
-%anchor($A0E8FF)
 EnemyHeaders_Robot:
     dw $0C00                                                             ;A0E8FF;
     dw Palette_Robot                                                     ;A0E901;
@@ -12737,7 +12392,6 @@ EnemyHeaders_Robot:
     dw EnemyVulnerabilities_Indestructible                               ;A0E93B;
     dw EnemyName_Robot                                                   ;A0E93D;
 
-%anchor($A0E93F)
 EnemyHeaders_RobotNoPower:
     dw $0C00                                                             ;A0E93F;
     dw Palette_Robot                                                     ;A0E941;
@@ -12764,7 +12418,6 @@ EnemyHeaders_RobotNoPower:
     dw EnemyVulnerabilities_Indestructible                               ;A0E97B;
     dw EnemyName_RobotNoPower                                            ;A0E97D;
 
-%anchor($A0E97F)
 EnemyHeaders_Bull:
     dw $0600                                                             ;A0E97F;
     dw Palette_Bull                                                      ;A0E981;
@@ -12791,7 +12444,6 @@ EnemyHeaders_Bull:
     dw EnemyVulnerabilities_Bull                                         ;A0E9BB;
     dw EnemyName_Bull                                                    ;A0E9BD;
 
-%anchor($A0E9BF)
 EnemyHeaders_Alcoon:
     dw $0800                                                             ;A0E9BF;
     dw Palette_Alcoon                                                    ;A0E9C1;
@@ -12818,7 +12470,6 @@ EnemyHeaders_Alcoon:
     dw EnemyVulnerabilities_Alcoon                                       ;A0E9FB;
     dw EnemyName_Alcoon                                                  ;A0E9FD;
 
-%anchor($A0E9FF)
 EnemyHeaders_Atomic:
     dw $0400                                                             ;A0E9FF;
     dw Palette_Atomic                                                    ;A0EA01;
@@ -12845,7 +12496,6 @@ EnemyHeaders_Atomic:
     dw EnemyVulnerabilities_Default                                      ;A0EA3B;
     dw EnemyName_Atomic                                                  ;A0EA3D;
 
-%anchor($A0EA3F)
 EnemyHeaders_Spark:
     dw $0200                                                             ;A0EA3F;
     dw Palette_Spark                                                     ;A0EA41;
@@ -12872,7 +12522,6 @@ EnemyHeaders_Spark:
     dw EnemyVulnerabilities_Indestructible                               ;A0EA7B;
     dw EnemyName_Spark                                                   ;A0EA7D;
 
-%anchor($A0EA7F)
 EnemyHeaders_FaceBlock:
     dw $0200                                                             ;A0EA7F;
     dw Palette_FaceBlock                                                 ;A0EA81;
@@ -12899,7 +12548,6 @@ EnemyHeaders_FaceBlock:
     dw EnemyVulnerabilities_Indestructible                               ;A0EABB;
     dw EnemyName_FaceBlock                                               ;A0EABD;
 
-%anchor($A0EABF)
 EnemyHeaders_KihunterGreen:
     dw $1000                                                             ;A0EABF;
     dw Palette_KihunterGreen                                             ;A0EAC1;
@@ -12926,7 +12574,6 @@ EnemyHeaders_KihunterGreen:
     dw EnemyVulnerabilities_KihunterGreen_KihunterGreenWings             ;A0EAFB;
     dw EnemyName_KihunterGreen                                           ;A0EAFD;
 
-%anchor($A0EAFF)
 EnemyHeaders_KihunterGreenWings:
     dw $0200                                                             ;A0EAFF;
     dw Palette_KihunterGreen                                             ;A0EB01;
@@ -12954,7 +12601,6 @@ EnemyHeaders_KihunterGreenWings:
     dw EnemyVulnerabilities_KihunterGreen_KihunterGreenWings             ;A0EB3B;
     dw $0000                                                             ;A0EB3D;
 
-%anchor($A0EB3F)
 EnemyHeaders_KihunterYellow:
     dw $1000                                                             ;A0EB3F;
     dw Palette_KihunterYellow                                            ;A0EB41;
@@ -12981,7 +12627,6 @@ EnemyHeaders_KihunterYellow:
     dw EnemyVulnerabilities_KihunterYellow_KihunterYellowWings           ;A0EB7B;
     dw EnemyName_KihunterYellow                                          ;A0EB7D;
 
-%anchor($A0EB7F)
 EnemyHeaders_KihunterYellowWings:
     dw $0200                                                             ;A0EB7F;
     dw Palette_KihunterYellow                                            ;A0EB81;
@@ -13009,7 +12654,6 @@ EnemyHeaders_KihunterYellowWings:
     dw EnemyVulnerabilities_KihunterYellow_KihunterYellowWings           ;A0EBBB;
     dw $0000                                                             ;A0EBBD;
 
-%anchor($A0EBBF)
 EnemyHeaders_KihunterRed:
     dw $1000                                                             ;A0EBBF;
     dw Palette_KihunterRed                                               ;A0EBC1;
@@ -13036,7 +12680,6 @@ EnemyHeaders_KihunterRed:
     dw EnemyVulnerabilities_KihunterRed_KihunterRedWings                 ;A0EBFB;
     dw EnemyName_KihunterRed                                             ;A0EBFD;
 
-%anchor($A0EBFF)
 EnemyHeaders_KihunterRedWings:
     dw $0200                                                             ;A0EBFF;
     dw Palette_KihunterRed                                               ;A0EC01;
@@ -13064,7 +12707,6 @@ EnemyHeaders_KihunterRedWings:
     dw EnemyVulnerabilities_KihunterRed_KihunterRedWings                 ;A0EC3B;
     dw $0000                                                             ;A0EC3D;
 
-%anchor($A0EC3F)
 EnemyHeaders_MotherBrainHead:
     dw $1000                                                             ;A0EC3F;
     dw Palette_MotherBrain                                               ;A0EC41;
@@ -13092,7 +12734,6 @@ EnemyHeaders_MotherBrainHead:
     dw EnemyVulnerabilities_MotherBrainHead                              ;A0EC7B;
     dw $0000                                                             ;A0EC7D;
 
-%anchor($A0EC7F)
 EnemyHeaders_MotherBrainBody:
     dw $8600                                                             ;A0EC7F;
     dw Palette_MotherBrain                                               ;A0EC81;
@@ -13120,7 +12761,6 @@ EnemyHeaders_MotherBrainBody:
     dw EnemyVulnerabilities_MotherBrainBody                              ;A0ECBB;
     dw $0000                                                             ;A0ECBD;
 
-%anchor($A0ECBF)
 EnemyHeaders_BabyMetroidCutscene:
     dw $0000                                                             ;A0ECBF;
     dw Palette_BabyMetroid                                               ;A0ECC1;
@@ -13147,7 +12787,6 @@ EnemyHeaders_BabyMetroidCutscene:
     dw EnemyVulnerabilities_Default                                      ;A0ECFB;
     dw $0000                                                             ;A0ECFD;
 
-%anchor($A0ECFF)
 EnemyHeaders_MotherBrainTubes:
     dw $0000                                                             ;A0ECFF;
     dw Palette_MotherBrain                                               ;A0ED01;
@@ -13174,7 +12813,6 @@ EnemyHeaders_MotherBrainTubes:
     dw EnemyVulnerabilities_Default                                      ;A0ED3B;
     dw $0000                                                             ;A0ED3D;
 
-%anchor($A0ED3F)
 EnemyHeaders_CorpseTorizo:
     dw $1800                                                             ;A0ED3F;
     dw Palette_CorpseTorizo                                              ;A0ED41;
@@ -13202,7 +12840,6 @@ EnemyHeaders_CorpseTorizo:
     dw EnemyVulnerabilities_Corpse_BabyMetroid                           ;A0ED7B;
     dw $0000                                                             ;A0ED7D;
 
-%anchor($A0ED7F)
 EnemyHeaders_CorpseSidehopper:
     dw $0E00                                                             ;A0ED7F;
     dw Palette_CorpseCommon                                              ;A0ED81;
@@ -13230,7 +12867,6 @@ EnemyHeaders_CorpseSidehopper:
     dw EnemyVulnerabilities_Corpse_BabyMetroid                           ;A0EDBB;
     dw $0000                                                             ;A0EDBD;
 
-%anchor($A0EDBF)
 EnemyHeaders_CorpseSidehopper2:
     dw $0600                                                             ;A0EDBF;
     dw Palette_CorpseSidehopper2                                         ;A0EDC1;
@@ -13258,7 +12894,6 @@ EnemyHeaders_CorpseSidehopper2:
     dw EnemyVulnerabilities_Corpse_BabyMetroid                           ;A0EDFB;
     dw $0000                                                             ;A0EDFD;
 
-%anchor($A0EDFF)
 EnemyHeaders_CorpseZoomer:
     dw $0000                                                             ;A0EDFF;
     dw Palette_CorpseCommon                                              ;A0EE01;
@@ -13286,7 +12921,6 @@ EnemyHeaders_CorpseZoomer:
     dw EnemyVulnerabilities_Corpse_BabyMetroid                           ;A0EE3B;
     dw $0000                                                             ;A0EE3D;
 
-%anchor($A0EE3F)
 EnemyHeaders_CorpseRipper:
     dw $0000                                                             ;A0EE3F;
     dw Palette_CorpseCommon                                              ;A0EE41;
@@ -13314,7 +12948,6 @@ EnemyHeaders_CorpseRipper:
     dw EnemyVulnerabilities_Corpse_BabyMetroid                           ;A0EE7B;
     dw $0000                                                             ;A0EE7D;
 
-%anchor($A0EE7F)
 EnemyHeaders_CorpseSkree:
     dw $0000                                                             ;A0EE7F;
     dw Palette_CorpseCommon                                              ;A0EE81;
@@ -13342,7 +12975,6 @@ EnemyHeaders_CorpseSkree:
     dw EnemyVulnerabilities_Corpse_BabyMetroid                           ;A0EEBB;
     dw $0000                                                             ;A0EEBD;
 
-%anchor($A0EEBF)
 EnemyHeaders_BabyMetroid:
     dw $0C00                                                             ;A0EEBF;
     dw Palette_BabyMetroid                                               ;A0EEC1;
@@ -13370,7 +13002,6 @@ EnemyHeaders_BabyMetroid:
     dw EnemyVulnerabilities_Corpse_BabyMetroid                           ;A0EEFB;
     dw $0000                                                             ;A0EEFD;
 
-%anchor($A0EEFF)
 EnemyHeaders_BombTorizo:
     dw $2000                                                             ;A0EEFF;
     dw Palette_Torizo_OrbProjectile                                      ;A0EF01;
@@ -13397,7 +13028,6 @@ EnemyHeaders_BombTorizo:
     dw EnemyVulnerabilities_BombTorizo_BombTorizoOrb                     ;A0EF3B;
     dw $0000                                                             ;A0EF3D;
 
-%anchor($A0EF3F)
 EnemyHeaders_BombTorizoOrb:
     dw $2000                                                             ;A0EF3F;
     dw Palette_Torizo_OrbProjectile                                      ;A0EF41;
@@ -13424,7 +13054,6 @@ EnemyHeaders_BombTorizoOrb:
     dw EnemyVulnerabilities_BombTorizo_BombTorizoOrb                     ;A0EF7B;
     dw $0000                                                             ;A0EF7D;
 
-%anchor($A0EF7F)
 EnemyHeaders_GoldenTorizo:
     dw $2000                                                             ;A0EF7F;
     dw Palette_Torizo_OrbProjectile                                      ;A0EF81;
@@ -13451,7 +13080,6 @@ EnemyHeaders_GoldenTorizo:
     dw EnemyVulnerabilities_GoldenTorizo_GoldenTorizoOrb                 ;A0EFBB;
     dw $0000                                                             ;A0EFBD;
 
-%anchor($A0EFBF)
 EnemyHeaders_GoldenTorizoOrb:
     dw $2000                                                             ;A0EFBF;
     dw Palette_Torizo_OrbProjectile                                      ;A0EFC1;
@@ -13478,7 +13106,6 @@ EnemyHeaders_GoldenTorizoOrb:
     dw EnemyVulnerabilities_GoldenTorizo_GoldenTorizoOrb                 ;A0EFFB;
     dw $0000                                                             ;A0EFFD;
 
-%anchor($A0EFFF)
 EnemyHeaders_TourianStatue:
     dw $1600                                                             ;A0EFFF;
     dw Palettes_TourianStatue_Ridley                                     ;A0F001;
@@ -13506,7 +13133,6 @@ EnemyHeaders_TourianStatue:
     dw EnemyVulnerabilities_Default                                      ;A0F03B;
     dw $0000                                                             ;A0F03D;
 
-%anchor($A0F03F)
 EnemyHeaders_TourianStatueGhost:
     dw $8600                                                             ;A0F03F;
     dw Palettes_TourianStatue_Ridley                                     ;A0F041;
@@ -13534,7 +13160,6 @@ EnemyHeaders_TourianStatueGhost:
     dw EnemyVulnerabilities_Default                                      ;A0F07B;
     dw $0000                                                             ;A0F07D;
 
-%anchor($A0F07F)
 EnemyHeaders_Shaktool:
     dw $0400                                                             ;A0F07F;
     dw Palette_Shaktool                                                  ;A0F081;
@@ -13561,7 +13186,6 @@ EnemyHeaders_Shaktool:
     dw EnemyVulnerabilities_Shaktool                                     ;A0F0BB;
     dw EnemyName_GoldenTorizo                                            ;A0F0BD;
 
-%anchor($A0F0BF)
 EnemyHeaders_NoobTubeCrack:
     dw $1800                                                             ;A0F0BF;
     dw Palette_NoobTubeCrack_Initial                                     ;A0F0C1;
@@ -13588,7 +13212,6 @@ EnemyHeaders_NoobTubeCrack:
     dw EnemyVulnerabilities_Default                                      ;A0F0FB;
     dw $0000                                                             ;A0F0FD;
 
-%anchor($A0F0FF)
 EnemyHeaders_Chozo:
     dw $1200                                                             ;A0F0FF;
     dw Palette_Chozo_WreckedShip_SpritePalette1                          ;A0F101;
@@ -13616,7 +13239,6 @@ EnemyHeaders_Chozo:
     dw $0000                                                             ;A0F13D;
 
 if !FEATURE_KEEP_UNREFERENCED
-%anchor($A0F13F)
 UNUSED_BunchOf2s_A0F13F:
 ; Unused. Random bunch of 2s
 ; Impossible to speculate on; the only other long list of 2s in the game is scroll data
@@ -13625,7 +13247,6 @@ UNUSED_BunchOf2s_A0F13F:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 ; Weirdo discontinuity, enemy banks jump from $A2..AA to $B2..B3
-%anchor($A0F153)
 UNUSED_EnemyHeaders_SpinningTurtleEye_A0F153:
     dw $0200                                                             ;A0F153;
     dw UNUSED_Palette_SpinningTurtleEye_B38687                           ;A0F155;
@@ -13652,7 +13273,6 @@ UNUSED_EnemyHeaders_SpinningTurtleEye_A0F153:
     dw $0000                                                             ;A0F18F;
     dw $0000                                                             ;A0F191;
 
-%anchor($A0F193)
 EnemyHeaders_Zeb:
     dw $0400                                                             ;A0F193;
     dw Palette_Zeb                                                       ;A0F195;
@@ -13679,7 +13299,6 @@ EnemyHeaders_Zeb:
     dw EnemyVulnerabilities_Default                                      ;A0F1CF;
     dw EnemyName_Zeb                                                     ;A0F1D1;
 
-%anchor($A0F1D3)
 EnemyHeaders_Zebbo:
     dw $0400                                                             ;A0F1D3;
     dw Palette_Zebbo                                                     ;A0F1D5;
@@ -13706,7 +13325,6 @@ EnemyHeaders_Zebbo:
     dw EnemyVulnerabilities_Default                                      ;A0F20F;
     dw EnemyName_Zebbo                                                   ;A0F211;
 
-%anchor($A0F213)
 EnemyHeaders_Gamet:
     dw $0400                                                             ;A0F213;
     dw Palette_Gamet                                                     ;A0F215;
@@ -13733,7 +13351,6 @@ EnemyHeaders_Gamet:
     dw EnemyVulnerabilities_Default                                      ;A0F24F;
     dw EnemyName_Gamet                                                   ;A0F251;
 
-%anchor($A0F253)
 EnemyHeaders_Geega:
     dw $0400                                                             ;A0F253;
     dw Palette_Geega                                                     ;A0F255;
@@ -13760,7 +13377,6 @@ EnemyHeaders_Geega:
     dw EnemyVulnerabilities_Default                                      ;A0F28F;
     dw EnemyName_Geega                                                   ;A0F291;
 
-%anchor($A0F293)
 EnemyHeaders_Botwoon:
     dw $1800                                                             ;A0F293;
     dw Palette_Botwoon                                                   ;A0F295;
@@ -13788,7 +13404,6 @@ EnemyHeaders_Botwoon:
     dw EnemyVulnerabilities_Botwoon                                      ;A0F2CF;
     dw EnemyName_Botwoon                                                 ;A0F2D1;
 
-%anchor($A0F2D3)
 EnemyHeaders_EtecoonEscape:
     dw $0600                                                             ;A0F2D3;
     dw Palette_EtecoonEscape                                             ;A0F2D5;
@@ -13816,7 +13431,6 @@ EnemyHeaders_EtecoonEscape:
     dw $0000                                                             ;A0F30F;
     dw $0000                                                             ;A0F311;
 
-%anchor($A0F313)
 EnemyHeaders_DachoraEscape:
     dw $0C00                                                             ;A0F313;
     dw Palette_DachoraEscape                                             ;A0F315;
@@ -13844,7 +13458,6 @@ EnemyHeaders_DachoraEscape:
     dw $0000                                                             ;A0F34F;
     dw $0000                                                             ;A0F351;
 
-%anchor($A0F353)
 EnemyHeaders_PirateGreyWall:
     dw $0C00                                                             ;A0F353;
     dw Palette_Pirate_Grey                                               ;A0F355;
@@ -13872,7 +13485,6 @@ EnemyHeaders_PirateGreyWall:
     dw EnemyVulnerabilities_PirateGreyWall                               ;A0F38F;
     dw EnemyName_PirateGreyWall                                          ;A0F391;
 
-%anchor($A0F393)
 EnemyHeaders_PirateGreenWall:
     dw $0C00                                                             ;A0F393;
     dw Palette_Pirate_Green                                              ;A0F395;
@@ -13899,7 +13511,6 @@ EnemyHeaders_PirateGreenWall:
     dw EnemyVulnerabilities_PirateGreyWall                               ;A0F3CF;
     dw EnemyName_PirateGreenWall                                         ;A0F3D1;
 
-%anchor($A0F3D3)
 EnemyHeaders_PirateRedWall:
     dw $0C00                                                             ;A0F3D3;
     dw Palette_Pirate_Red                                                ;A0F3D5;
@@ -13926,7 +13537,6 @@ EnemyHeaders_PirateRedWall:
     dw EnemyVulnerabilities_PirateRedWall                                ;A0F40F;
     dw EnemyName_PirateRedWall                                           ;A0F411;
 
-%anchor($A0F413)
 EnemyHeaders_PirateGoldWall:
     dw $0C00                                                             ;A0F413;
     dw Palette_Pirate_Gold_NonNinja                                      ;A0F415;
@@ -13953,7 +13563,6 @@ EnemyHeaders_PirateGoldWall:
     dw EnemyVulnerabilities_PirateGoldWall_PirateGoldWalking             ;A0F44F;
     dw EnemyName_PirateGoldWall                                          ;A0F451;
 
-%anchor($A0F453)
 EnemyHeaders_PirateMagentaWall:
     dw $0C00                                                             ;A0F453;
     dw Palette_Pirate_Magenta                                            ;A0F455;
@@ -13980,7 +13589,6 @@ EnemyHeaders_PirateMagentaWall:
     dw EnemyVulnerabilities_PirateMagentaWall                            ;A0F48F;
     dw EnemyName_PirateMagentaWall                                       ;A0F491;
 
-%anchor($A0F493)
 EnemyHeaders_PirateSilverWall:
     dw $0C00                                                             ;A0F493;
     dw Palette_Pirate_Silver_GoldNinja                                   ;A0F495;
@@ -14007,7 +13615,6 @@ EnemyHeaders_PirateSilverWall:
     dw EnemyVulnerabilities_PirateSilverWall_PirateSilverWalking         ;A0F4CF;
     dw EnemyName_PirateSilverWall                                        ;A0F4D1;
 
-%anchor($A0F4D3)
 EnemyHeaders_PirateGreyNinja:
     dw $1800                                                             ;A0F4D3;
     dw Palette_Pirate_Grey                                               ;A0F4D5;
@@ -14035,7 +13642,6 @@ EnemyHeaders_PirateGreyNinja:
     dw EnemyVulnerabilities_PirateNinja_Grey_Green_Red_Magenta           ;A0F50F;
     dw EnemyName_PirateGreyNinja                                         ;A0F511;
 
-%anchor($A0F513)
 EnemyHeaders_PirateGreenNinja:
     dw $1800                                                             ;A0F513;
     dw Palette_Pirate_Green                                              ;A0F515;
@@ -14063,7 +13669,6 @@ EnemyHeaders_PirateGreenNinja:
     dw EnemyVulnerabilities_PirateNinja_Grey_Green_Red_Magenta           ;A0F54F;
     dw EnemyName_PirateGreenNinja                                        ;A0F551;
 
-%anchor($A0F553)
 EnemyHeaders_PirateRedNinja:
     dw $1800                                                             ;A0F553;
     dw Palette_Pirate_Red                                                ;A0F555;
@@ -14091,7 +13696,6 @@ EnemyHeaders_PirateRedNinja:
     dw EnemyVulnerabilities_PirateNinja_Grey_Green_Red_Magenta           ;A0F58F;
     dw EnemyName_PirateRedNinja                                          ;A0F591;
 
-%anchor($A0F593)
 EnemyHeaders_PirateGoldNinja:
     dw $1800                                                             ;A0F593;
     dw Palette_Pirate_Silver_GoldNinja                                   ;A0F595;
@@ -14119,7 +13723,6 @@ EnemyHeaders_PirateGoldNinja:
     dw EnemyVulnerabilities_PirateGoldNinja                              ;A0F5CF;
     dw EnemyName_PirateGoldNinja                                         ;A0F5D1;
 
-%anchor($A0F5D3)
 EnemyHeaders_PirateMagentaNinja:
     dw $1800                                                             ;A0F5D3;
     dw Palette_Pirate_Magenta                                            ;A0F5D5;
@@ -14147,7 +13750,6 @@ EnemyHeaders_PirateMagentaNinja:
     dw EnemyVulnerabilities_PirateNinja_Grey_Green_Red_Magenta           ;A0F60F;
     dw EnemyName_PirateMagentaNinja                                      ;A0F611;
 
-%anchor($A0F613)
 EnemyHeaders_PirateSilverNinja:
     dw $1800                                                             ;A0F613;
     dw Palette_Pirate_Silver_GoldNinja                                   ;A0F615;
@@ -14175,7 +13777,6 @@ EnemyHeaders_PirateSilverNinja:
     dw EnemyVulnerabilities_PirateSilverNinja                            ;A0F64F;
     dw EnemyName_PirateSilverNinja                                       ;A0F651;
 
-%anchor($A0F653)
 EnemyHeaders_PirateGreyWalking:
     dw $0C00                                                             ;A0F653;
     dw Palette_Pirate_Grey                                               ;A0F655;
@@ -14203,7 +13804,6 @@ EnemyHeaders_PirateGreyWalking:
     dw EnemyVulnerabilities_PirateGreyWalking                            ;A0F68F;
     dw EnemyName_PirateGreyWalking                                       ;A0F691;
 
-%anchor($A0F693)
 EnemyHeaders_PirateGreenWalking:
     dw $0C00                                                             ;A0F693;
     dw Palette_Pirate_Green                                              ;A0F695;
@@ -14231,7 +13831,6 @@ EnemyHeaders_PirateGreenWalking:
     dw EnemyVulnerabilities_PirateGreenWalking                           ;A0F6CF;
     dw EnemyName_PirateGreenWalking                                      ;A0F6D1;
 
-%anchor($A0F6D3)
 EnemyHeaders_PirateRedWalking:
     dw $0C00                                                             ;A0F6D3;
     dw Palette_Pirate_Red                                                ;A0F6D5;
@@ -14259,7 +13858,6 @@ EnemyHeaders_PirateRedWalking:
     dw EnemyVulnerabilities_PirateRedWalking                             ;A0F70F;
     dw EnemyName_PirateRedWalking                                        ;A0F711;
 
-%anchor($A0F713)
 EnemyHeaders_PirateGoldWalking:
     dw $0C00                                                             ;A0F713;
     dw Palette_Pirate_Gold_NonNinja                                      ;A0F715;
@@ -14287,7 +13885,6 @@ EnemyHeaders_PirateGoldWalking:
     dw EnemyVulnerabilities_PirateGoldWall_PirateGoldWalking             ;A0F74F;
     dw EnemyName_PirateGoldWalking                                       ;A0F751;
 
-%anchor($A0F753)
 EnemyHeaders_PirateMagentaWalking:
     dw $0C00                                                             ;A0F753;
     dw Palette_Pirate_Magenta                                            ;A0F755;
@@ -14315,7 +13912,6 @@ EnemyHeaders_PirateMagentaWalking:
     dw EnemyVulnerabilities_PirateMagentaWalking                         ;A0F78F;
     dw EnemyName_PirateMagentaWalking                                    ;A0F791;
 
-%anchor($A0F793)
 EnemyHeaders_PirateSilverWalking:
     dw $0C00                                                             ;A0F793;
     dw Palette_Pirate_Silver_GoldNinja                                   ;A0F795;
@@ -14343,6 +13939,5 @@ EnemyHeaders_PirateSilverWalking:
     dw EnemyVulnerabilities_PirateSilverWall_PirateSilverWalking         ;A0F7CF;
     dw EnemyName_PirateSilverWalking                                     ;A0F7D1;
 
-%anchor($A0F7D3)
 Freespace_BankA0_F7D3:                                                   ;A0F7D3;
 ; $82D bytes
