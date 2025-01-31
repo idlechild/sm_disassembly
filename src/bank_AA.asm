@@ -4972,14 +4972,10 @@ InstList_Torizo_FacingRight_SpewingChozoOrbs_RightFootFwd_1:
     dw Instruction_Common_WaitYFrames,$0010                              ;AABEE4;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;AABEE8;
     dw InstList_Torizo_FacingRight_SpewingChozoOrbs_RightFootFwd_1       ;AABEEA;
-    dw $0008                                                             ;AABEEC;
-    dw ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_RightFootForward_3       ;AABEEE;
-    dw $0008                                                             ;AABEF0;
-    dw ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_RightFootForward_2       ;AABEF2;
-    dw $0008                                                             ;AABEF4;
-    dw ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_RightFootForward_1       ;AABEF6;
-    dw $0048                                                             ;AABEF8;
-    dw ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_RightFootForward_0       ;AABEFA;
+    dw $0008,ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_RightFootForward_3 ;AABEEC;
+    dw $0008,ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_RightFootForward_2 ;AABEF0;
+    dw $0008,ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_RightFootForward_1 ;AABEF4;
+    dw $0048,ExtSpritemaps_Torizo_ChozoOrbs_FaceRight_RightFootForward_0 ;AABEF8;
     dw Instruction_Common_Enemy0FB2_InY                                  ;AABEFC;
     dw Function_Torizo_Movement_Walking                                  ;AABEFE;
     dw Instruction_Torizo_Return                                         ;AABF00;
@@ -4990,48 +4986,28 @@ InstList_Torizo_FacingRight_SonicBooms_LeftFootForward_0:
     dw Instruction_Common_TimerInY,$0004                                 ;AABF06;
 
 InstList_Torizo_FacingRight_SonicBooms_LeftFootForward_1:
-    dw $0006                                                             ;AABF0A;
-    dw ExtendedSpritemaps_Torizo_Attacks_FaceRight_LeftFootForward       ;AABF0C;
-    dw $0006                                                             ;AABF0E;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_0         ;AABF10;
-    dw $0006                                                             ;AABF12;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_1         ;AABF14;
-    dw $0006                                                             ;AABF16;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_2         ;AABF18;
-    dw $0006                                                             ;AABF1A;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_3         ;AABF1C;
-    dw $0006                                                             ;AABF1E;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_4         ;AABF20;
-    dw $0002                                                             ;AABF22;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_3         ;AABF24;
-    dw $0002                                                             ;AABF26;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_2         ;AABF28;
+    dw $0006,ExtendedSpritemaps_Torizo_Attacks_FaceRight_LeftFootForward ;AABF0A;
+    dw $0006,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_0   ;AABF0E;
+    dw $0006,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_1   ;AABF12;
+    dw $0006,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_2   ;AABF16;
+    dw $0006,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_3   ;AABF1A;
+    dw $0006,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_4   ;AABF1E;
+    dw $0002,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_3   ;AABF22;
+    dw $0002,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_2   ;AABF26;
     dw Instruction_Torizo_SpawnBombTorizoSonicBoomWithParameterY,$0000   ;AABF2A;
-    dw $0002                                                             ;AABF2C;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_1         ;AABF30;
-    dw $0018                                                             ;AABF32;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_0         ;AABF34;
-    dw $0006                                                             ;AABF36;
-    dw ExtendedSpritemaps_Torizo_Attacks_FaceRight_LeftFootForward       ;AABF38;
-    dw $0006                                                             ;AABF3A;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_5         ;AABF3C;
-    dw $0006                                                             ;AABF3E;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_6         ;AABF40;
-    dw $0006                                                             ;AABF42;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_7         ;AABF44;
-    dw $0006                                                             ;AABF46;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_8         ;AABF48;
-    dw $0006                                                             ;AABF4A;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_9         ;AABF4C;
-    dw $0002                                                             ;AABF4E;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_8         ;AABF50;
-    dw $0002                                                             ;AABF52;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_7         ;AABF54;
+    dw $0002,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_1   ;AABF2C;
+    dw $0018,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_0   ;AABF32;
+    dw $0006,ExtendedSpritemaps_Torizo_Attacks_FaceRight_LeftFootForward ;AABF36;
+    dw $0006,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_5   ;AABF3A;
+    dw $0006,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_6   ;AABF3E;
+    dw $0006,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_7   ;AABF42;
+    dw $0006,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_8   ;AABF46;
+    dw $0006,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_9   ;AABF4A;
+    dw $0002,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_8   ;AABF4E;
+    dw $0002,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_7   ;AABF52;
     dw Instruction_Torizo_SpawnBombTorizoSonicBoomWithParameterY,$0001   ;AABF56;
-    dw $0002                                                             ;AABF58;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_6         ;AABF5C;
-    dw $0038                                                             ;AABF5E;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_5         ;AABF60;
+    dw $0002,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_6   ;AABF58;
+    dw $0038,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_LeftFootFwd_5   ;AABF5E;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;AABF62;
     dw InstList_Torizo_FacingRight_SonicBooms_LeftFootForward_1          ;AABF64;
     dw Instruction_Common_Enemy0FB2_InY                                  ;AABF66;
@@ -6435,8 +6411,7 @@ InstList_GoldenTorizo_Initial_0:
     dw Instruction_Torizo_SetAnimationLock                               ;AAC9D6;
     dw Instruction_Torizo_FunctionInY                                    ;AAC9D8;
     dw Function_GoldenTorizo_WakeIfSamusIsBelowAndRightOfTargetPos       ;AAC9DA;
-    dw $0001                                                             ;AAC9DC;
-    dw ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_3            ;AAC9DE;
+    dw $0001,ExtendedSpritemaps_Torizo_StandUp_SitDown_FacingLeft_3      ;AAC9DC;
     dw Instruction_Common_Sleep                                          ;AAC9E0;
     dw Instruction_Torizo_FunctionInY                                    ;AAC9E2;
     dw Function_Torizo_SimpleMovement                                    ;AAC9E4;
@@ -6753,48 +6728,28 @@ InstList_GoldenTorizo_SonicBooms_FacingRight_RightFootFwd_0:
     dw Instruction_Common_TimerInY,$0004                                 ;AACD49;
 
 InstList_GoldenTorizo_SonicBooms_FacingRight_RightFootFwd_1:
-    dw $0003                                                             ;AACD4D;
-    dw ExtendedSpritemaps_Torizo_Attacks_FaceRight_RightFootForward      ;AACD4F;
-    dw $0003                                                             ;AACD51;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_0        ;AACD53;
-    dw $0003                                                             ;AACD55;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_1        ;AACD57;
-    dw $0003                                                             ;AACD59;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_2        ;AACD5B;
-    dw $0003                                                             ;AACD5D;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_3        ;AACD5F;
-    dw $0003                                                             ;AACD61;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_4        ;AACD63;
-    dw $0001                                                             ;AACD65;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_3        ;AACD67;
-    dw $0001                                                             ;AACD69;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_2        ;AACD6B;
+    dw $0003,ExtendedSpritemaps_Torizo_Attacks_FaceRight_RightFootForward ;AACD4D;
+    dw $0003,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_0  ;AACD51;
+    dw $0003,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_1  ;AACD55;
+    dw $0003,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_2  ;AACD59;
+    dw $0003,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_3  ;AACD5D;
+    dw $0003,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_4  ;AACD61;
+    dw $0001,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_3  ;AACD65;
+    dw $0001,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_2  ;AACD69;
     dw Instruction_Torizo_SpawnGoldenTorizoSonicBoomWithParameterY,$0000 ;AACD6D;
-    dw $0001                                                             ;AACD6F;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_1        ;AACD73;
-    dw $0004                                                             ;AACD75;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_0        ;AACD77;
-    dw $0003                                                             ;AACD79;
-    dw ExtendedSpritemaps_Torizo_Attacks_FaceRight_RightFootForward      ;AACD7B;
-    dw $0003                                                             ;AACD7D;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_5        ;AACD7F;
-    dw $0003                                                             ;AACD81;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_6        ;AACD83;
-    dw $0003                                                             ;AACD85;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_7        ;AACD87;
-    dw $0003                                                             ;AACD89;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_8        ;AACD8B;
-    dw $0003                                                             ;AACD8D;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_9        ;AACD8F;
-    dw $0001                                                             ;AACD91;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_8        ;AACD93;
-    dw $0001                                                             ;AACD95;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_7        ;AACD97;
+    dw $0001,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_1  ;AACD6F;
+    dw $0004,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_0  ;AACD75;
+    dw $0003,ExtendedSpritemaps_Torizo_Attacks_FaceRight_RightFootForward ;AACD79;
+    dw $0003,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_5  ;AACD7D;
+    dw $0003,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_6  ;AACD81;
+    dw $0003,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_7  ;AACD85;
+    dw $0003,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_8  ;AACD89;
+    dw $0003,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_9  ;AACD8D;
+    dw $0001,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_8  ;AACD91;
+    dw $0001,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_7  ;AACD95;
     dw Instruction_Torizo_SpawnGoldenTorizoSonicBoomWithParameterY,$0001 ;AACD99;
-    dw $0001                                                             ;AACD9B;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_6        ;AACD9F;
-    dw $0004                                                             ;AACDA1;
-    dw ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_5        ;AACDA3;
+    dw $0001,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_6  ;AACD9B;
+    dw $0004,ExtSpritemap_Torizo_NonOrbAttacks_FaceRight_RightFootFwd_5  ;AACDA1;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;AACDA5;
     dw InstList_GoldenTorizo_SonicBooms_FacingRight_RightFootFwd_1       ;AACDA7;
     dw Instruction_Common_Enemy0FB2_InY                                  ;AACDA9;
@@ -8893,127 +8848,88 @@ EnemyShot_Shaktool:
 
 
 Spritemaps_Shaktool_SawHand_FinalPiece_0:
-    dw $0001,$81F8                                                       ;AADF5C;
-    db $F8                                                               ;AADF60;
-    dw $2100                                                             ;AADF61;
+    dw $0001                                                             ;AADF5C;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
 
 Spritemaps_Shaktool_SawHand_FinalPiece_1:
-    dw $0001,$81F8                                                       ;AADF63;
-    db $F8                                                               ;AADF67;
-    dw $2102                                                             ;AADF68;
+    dw $0001                                                             ;AADF63;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $102)
 
 Spritemaps_Shaktool_SawHand_FinalPiece_2:
-    dw $0001,$81F8                                                       ;AADF6A;
-    db $F8                                                               ;AADF6E;
-    dw $2104                                                             ;AADF6F;
+    dw $0001                                                             ;AADF6A;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $104)
 
 Spritemaps_Shaktool_ArmPiece:
-    dw $0001,$81F8                                                       ;AADF71;
-    db $F8                                                               ;AADF75;
-    dw $2106                                                             ;AADF76;
+    dw $0001                                                             ;AADF71;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $106)
 
 Spritemaps_Shaktool_Head_0:
-    dw $0004,$81F8                                                       ;AADF78;
-    db $F8                                                               ;AADF7C;
-    dw $2108,$0001                                                       ;AADF7D;
-    db $F6                                                               ;AADF81;
-    dw $211F,$0001                                                       ;AADF82;
-    db $02                                                               ;AADF86;
-    dw $211F,$01F0                                                       ;AADF87;
-    db $FC                                                               ;AADF8B;
-    dw $210E                                                             ;AADF8C;
+    dw $0004                                                             ;AADF78;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $108)
+    %spritemapEntry(0, $01, $F6, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $01, $02, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $1F0, $FC, 0, 0, 2, 0, $10E)
 
 Spritemaps_Shaktool_Head_1:
-    dw $0004,$01F4                                                       ;AADF8E;
-    db $F4                                                               ;AADF92;
-    dw $210F,$81F8                                                       ;AADF93;
-    db $F8                                                               ;AADF97;
-    dw $610C,$0004                                                       ;AADF98;
-    db $FC                                                               ;AADF9C;
-    dw $211F,$01FC                                                       ;AADF9D;
-    db $04                                                               ;AADFA1;
-    dw $211F                                                             ;AADFA2;
+    dw $0004                                                             ;AADF8E;
+    %spritemapEntry(0, $1F4, $F4, 0, 0, 2, 0, $10F)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10C)
+    %spritemapEntry(0, $04, $FC, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $1FC, $04, 0, 0, 2, 0, $11F)
 
 Spritemaps_Shaktool_Head_2:
-    dw $0004,$81F8                                                       ;AADFA4;
-    db $F8                                                               ;AADFA8;
-    dw $210A,$0002                                                       ;AADFA9;
-    db $01                                                               ;AADFAD;
-    dw $211F,$01F6                                                       ;AADFAE;
-    db $01                                                               ;AADFB2;
-    dw $211F,$01FC                                                       ;AADFB3;
-    db $F0                                                               ;AADFB7;
-    dw $211E                                                             ;AADFB8;
+    dw $0004                                                             ;AADFA4;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10A)
+    %spritemapEntry(0, $02, $01, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $1F6, $01, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $1FC, $F0, 0, 0, 2, 0, $11E)
 
 Spritemaps_Shaktool_Head_3:
-    dw $0004,$0004                                                       ;AADFBA;
-    db $F4                                                               ;AADFBE;
-    dw $610F,$81F8                                                       ;AADFBF;
-    db $F8                                                               ;AADFC3;
-    dw $210C,$01FC                                                       ;AADFC4;
-    db $04                                                               ;AADFC8;
-    dw $211F,$01F4                                                       ;AADFC9;
-    db $FC                                                               ;AADFCD;
-    dw $211F                                                             ;AADFCE;
+    dw $0004                                                             ;AADFBA;
+    %spritemapEntry(0, $04, $F4, 0, 1, 2, 0, $10F)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10C)
+    %spritemapEntry(0, $1FC, $04, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $1F4, $FC, 0, 0, 2, 0, $11F)
 
 Spritemaps_Shaktool_Head_4:
-    dw $0004,$81F8                                                       ;AADFD0;
-    db $F8                                                               ;AADFD4;
-    dw $6108,$01F7                                                       ;AADFD5;
-    db $02                                                               ;AADFD9;
-    dw $211F,$01F7                                                       ;AADFDA;
-    db $F6                                                               ;AADFDE;
-    dw $211F,$0008                                                       ;AADFDF;
-    db $FC                                                               ;AADFE3;
-    dw $610E                                                             ;AADFE4;
+    dw $0004                                                             ;AADFD0;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $108)
+    %spritemapEntry(0, $1F7, $02, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $1F7, $F6, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $08, $FC, 0, 1, 2, 0, $10E)
 
 Spritemaps_Shaktool_Head_5:
-    dw $0004,$0004                                                       ;AADFE6;
-    db $04                                                               ;AADFEA;
-    dw $E10F,$81F8                                                       ;AADFEB;
-    db $F8                                                               ;AADFEF;
-    dw $A10C,$01F4                                                       ;AADFF0;
-    db $FC                                                               ;AADFF4;
-    dw $211F,$01FC                                                       ;AADFF5;
-    db $F4                                                               ;AADFF9;
-    dw $211F                                                             ;AADFFA;
+    dw $0004                                                             ;AADFE6;
+    %spritemapEntry(0, $04, $04, 1, 1, 2, 0, $10F)
+    %spritemapEntry(1, $1F8, $F8, 1, 0, 2, 0, $10C)
+    %spritemapEntry(0, $1F4, $FC, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $1FC, $F4, 0, 0, 2, 0, $11F)
 
 Spritemaps_Shaktool_Head_6:
-    dw $0004,$81F8                                                       ;AADFFC;
-    db $F8                                                               ;AAE000;
-    dw $A10A,$0002                                                       ;AAE001;
-    db $F7                                                               ;AAE005;
-    dw $211F,$01F6                                                       ;AAE006;
-    db $F7                                                               ;AAE00A;
-    dw $211F,$01FC                                                       ;AAE00B;
-    db $08                                                               ;AAE00F;
-    dw $A11E                                                             ;AAE010;
+    dw $0004                                                             ;AADFFC;
+    %spritemapEntry(1, $1F8, $F8, 1, 0, 2, 0, $10A)
+    %spritemapEntry(0, $02, $F7, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $1F6, $F7, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $1FC, $08, 1, 0, 2, 0, $11E)
 
 Spritemaps_Shaktool_Head_7:
-    dw $0004,$01F4                                                       ;AAE012;
-    db $04                                                               ;AAE016;
-    dw $A10F,$81F8                                                       ;AAE017;
-    db $F8                                                               ;AAE01B;
-    dw $E10C,$0004                                                       ;AAE01C;
-    db $FC                                                               ;AAE020;
-    dw $211F,$01FC                                                       ;AAE021;
-    db $F4                                                               ;AAE025;
-    dw $211F                                                             ;AAE026;
+    dw $0004                                                             ;AAE012;
+    %spritemapEntry(0, $1F4, $04, 1, 0, 2, 0, $10F)
+    %spritemapEntry(1, $1F8, $F8, 1, 1, 2, 0, $10C)
+    %spritemapEntry(0, $04, $FC, 0, 0, 2, 0, $11F)
+    %spritemapEntry(0, $1FC, $F4, 0, 0, 2, 0, $11F)
 
 Spritemaps_Shaktool_SawHand_PrimaryPiece_0:
-    dw $0001,$81F8                                                       ;AAE028;
-    db $F8                                                               ;AAE02C;
-    dw $6100                                                             ;AAE02D;
+    dw $0001                                                             ;AAE028;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $100)
 
 Spritemaps_Shaktool_SawHand_PrimaryPiece_1:
-    dw $0001,$81F8                                                       ;AAE02F;
-    db $F8                                                               ;AAE033;
-    dw $6102                                                             ;AAE034;
+    dw $0001                                                             ;AAE02F;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $102)
 
 Spritemaps_Shaktool_SawHand_PrimaryPiece_2:
-    dw $0001,$81F8                                                       ;AAE036;
-    db $F8                                                               ;AAE03A;
-    dw $6104                                                             ;AAE03B;
+    dw $0001                                                             ;AAE036;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $104)
 
 SineCosineTables_negativeCosine:
     dw $F401,$F401,$F404,$F409,$F40F,$F418,$F422,$F42E                   ;AAE03D;
@@ -9177,50 +9093,34 @@ Function_Chozo_LowerNorfair:
 InstList_Chozo_WreckedShip_Initial:
     dw Instruction_Common_Enemy0FB2_InY                                  ;AAE457;
     dw Function_Chozo_WreckedShip                                        ;AAE459;
-    dw $0001                                                             ;AAE45B;
-    dw Spritemaps_Chozo_0                                                ;AAE45D;
+    dw $0001,Spritemaps_Chozo_0                                          ;AAE45B;
     dw Instruction_Common_Sleep                                          ;AAE45F;
 
 InstList_Chozo_WreckedShip_Activated_0:
     dw Instruction_Common_SetEnemy0FB2ToRTS                              ;AAE461;
     dw Instruction_Chozo_Movement_IndexInY,$0000                         ;AAE463;
-    dw $0020                                                             ;AAE465;
-    dw Spritemaps_Chozo_0                                                ;AAE469;
+    dw $0020,Spritemaps_Chozo_0                                          ;AAE465;
     dw Instruction_Chozo_Movement_IndexInY,$0002                         ;AAE46B;
-    dw $0008                                                             ;AAE46D;
-    dw Spritemaps_Chozo_1                                                ;AAE471;
+    dw $0008,Spritemaps_Chozo_1                                          ;AAE46D;
     dw Instruction_Chozo_Movement_IndexInY,$0004                         ;AAE473;
-    dw $0050                                                             ;AAE475;
-    dw Spritemaps_Chozo_2                                                ;AAE479;
+    dw $0050,Spritemaps_Chozo_2                                          ;AAE475;
     dw Instruction_Chozo_PlayChozoGrabsSamusSFX                          ;AAE47B;
     dw Instruction_Chozo_Movement_IndexInY,$0006                         ;AAE47D;
-    dw $0080                                                             ;AAE47F;
-    dw Spritemaps_Chozo_3                                                ;AAE483;
-    dw $0006                                                             ;AAE485;
-    dw Spritemaps_Chozo_C                                                ;AAE487;
-    dw $0008                                                             ;AAE489;
-    dw Spritemaps_Chozo_D                                                ;AAE48B;
-    dw $000A                                                             ;AAE48D;
-    dw Spritemaps_Chozo_E                                                ;AAE48F;
-    dw $000C                                                             ;AAE491;
-    dw Spritemaps_Chozo_F                                                ;AAE493;
-    dw $0080                                                             ;AAE495;
-    dw Spritemaps_Chozo_10                                               ;AAE497;
+    dw $0080,Spritemaps_Chozo_3                                          ;AAE47F;
+    dw $0006,Spritemaps_Chozo_C                                          ;AAE485;
+    dw $0008,Spritemaps_Chozo_D                                          ;AAE489;
+    dw $000A,Spritemaps_Chozo_E                                          ;AAE48D;
+    dw $000C,Spritemaps_Chozo_F                                          ;AAE491;
+    dw $0080,Spritemaps_Chozo_10                                         ;AAE495;
     dw Instruction_Common_TimerInY,$0004                                 ;AAE499;
 
 InstList_Chozo_WreckedShip_Activated_1:
-    dw $000B                                                             ;AAE49D;
-    dw Spritemaps_Chozo_D                                                ;AAE49F;
-    dw $0008                                                             ;AAE4A1;
-    dw Spritemaps_Chozo_E                                                ;AAE4A3;
-    dw $0006                                                             ;AAE4A5;
-    dw Spritemaps_Chozo_F                                                ;AAE4A7;
-    dw $0008                                                             ;AAE4A9;
-    dw Spritemaps_Chozo_10                                               ;AAE4AB;
-    dw $0006                                                             ;AAE4AD;
-    dw Spritemaps_Chozo_F                                                ;AAE4AF;
-    dw $0008                                                             ;AAE4B1;
-    dw Spritemaps_Chozo_E                                                ;AAE4B3;
+    dw $000B,Spritemaps_Chozo_D                                          ;AAE49D;
+    dw $0008,Spritemaps_Chozo_E                                          ;AAE4A1;
+    dw $0006,Spritemaps_Chozo_F                                          ;AAE4A5;
+    dw $0008,Spritemaps_Chozo_10                                         ;AAE4A9;
+    dw $0006,Spritemaps_Chozo_F                                          ;AAE4AD;
+    dw $0008,Spritemaps_Chozo_E                                          ;AAE4B1;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;AAE4B5;
     dw InstList_Chozo_WreckedShip_Activated_1                            ;AAE4B7;
     dw Instruction_Common_Enemy0FB2_InY                                  ;AAE4B9;
@@ -9535,1722 +9435,921 @@ RTL_AAE7DC:
 
 
 Spritemaps_Chozo_0:
-    dw $0012,$01FA                                                       ;AAE7DD;
-    db $DF                                                               ;AAE7E1;
-    dw $237D,$C3D6                                                       ;AAE7E2;
-    db $E7                                                               ;AAE7E6;
-    dw $2320,$01E6                                                       ;AAE7E7;
-    db $E7                                                               ;AAE7EB;
-    dw $230F,$C3E6                                                       ;AAE7EC;
-    db $EF                                                               ;AAE7F0;
-    dw $2322,$C3ED                                                       ;AAE7F1;
-    db $EC                                                               ;AAE7F5;
-    dw $230D,$C3F5                                                       ;AAE7F6;
-    db $E4                                                               ;AAE7FA;
-    dw $230B,$C3F2                                                       ;AAE7FB;
-    db $1F                                                               ;AAE7FF;
-    dw $2370,$C3FA                                                       ;AAE800;
-    db $1F                                                               ;AAE804;
-    dw $2371,$C3FA                                                       ;AAE805;
-    db $0D                                                               ;AAE809;
-    dw $234C,$C3FA                                                       ;AAE80A;
-    db $15                                                               ;AAE80E;
-    dw $235C,$C3F9                                                       ;AAE80F;
-    db $05                                                               ;AAE813;
-    dw $2350,$C3F9                                                       ;AAE814;
-    db $FD                                                               ;AAE818;
-    dw $2340,$C3F4                                                       ;AAE819;
-    db $F7                                                               ;AAE81D;
-    dw $2308,$C3FC                                                       ;AAE81E;
-    db $F7                                                               ;AAE822;
-    dw $2309,$C3FC                                                       ;AAE823;
-    db $E7                                                               ;AAE827;
-    dw $2306,$C3EC                                                       ;AAE828;
-    db $E7                                                               ;AAE82C;
-    dw $2304,$C3FC                                                       ;AAE82D;
-    db $D7                                                               ;AAE831;
-    dw $2302,$C3EC                                                       ;AAE832;
-    db $D7                                                               ;AAE836;
-    dw $2300                                                             ;AAE837;
+    dw $0012                                                             ;AAE7DD;
+    %spritemapEntry(0, $1FA, $DF, 0, 0, 2, 1, $17D)
+    %spritemapEntry(1, $43D6, $E7, 0, 0, 2, 1, $120)
+    %spritemapEntry(0, $1E6, $E7, 0, 0, 2, 1, $10F)
+    %spritemapEntry(1, $43E6, $EF, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $43ED, $EC, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E4, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43F2, $1F, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $43FA, $1F, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43FA, $0D, 0, 0, 2, 1, $14C)
+    %spritemapEntry(1, $43FA, $15, 0, 0, 2, 1, $15C)
+    %spritemapEntry(1, $43F9, $05, 0, 0, 2, 1, $150)
+    %spritemapEntry(1, $43F9, $FD, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $43F4, $F7, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F7, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43FC, $E7, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E7, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D7, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D7, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_1:
-    dw $0011,$01FA                                                       ;AAE839;
-    db $DF                                                               ;AAE83D;
-    dw $237D,$C3E9                                                       ;AAE83E;
-    db $ED                                                               ;AAE842;
-    dw $232A,$C3D9                                                       ;AAE843;
-    db $ED                                                               ;AAE847;
-    dw $2328,$C3ED                                                       ;AAE848;
-    db $EC                                                               ;AAE84C;
-    dw $230D,$C3F5                                                       ;AAE84D;
-    db $E4                                                               ;AAE851;
-    dw $230B,$C3F2                                                       ;AAE852;
-    db $1F                                                               ;AAE856;
-    dw $2370,$C3FA                                                       ;AAE857;
-    db $1F                                                               ;AAE85B;
-    dw $2371,$C3FA                                                       ;AAE85C;
-    db $0D                                                               ;AAE860;
-    dw $234C,$C3FA                                                       ;AAE861;
-    db $15                                                               ;AAE865;
-    dw $235C,$C3F9                                                       ;AAE866;
-    db $05                                                               ;AAE86A;
-    dw $2350,$C3F9                                                       ;AAE86B;
-    db $FD                                                               ;AAE86F;
-    dw $2340,$C3F4                                                       ;AAE870;
-    db $F7                                                               ;AAE874;
-    dw $2308,$C3FC                                                       ;AAE875;
-    db $F7                                                               ;AAE879;
-    dw $2309,$C3FC                                                       ;AAE87A;
-    db $E7                                                               ;AAE87E;
-    dw $2306,$C3EC                                                       ;AAE87F;
-    db $E7                                                               ;AAE883;
-    dw $2304,$C3FC                                                       ;AAE884;
-    db $D7                                                               ;AAE888;
-    dw $2302,$C3EC                                                       ;AAE889;
-    db $D7                                                               ;AAE88D;
-    dw $2300                                                             ;AAE88E;
+    dw $0011                                                             ;AAE839;
+    %spritemapEntry(0, $1FA, $DF, 0, 0, 2, 1, $17D)
+    %spritemapEntry(1, $43E9, $ED, 0, 0, 2, 1, $12A)
+    %spritemapEntry(1, $43D9, $ED, 0, 0, 2, 1, $128)
+    %spritemapEntry(1, $43ED, $EC, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E4, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43F2, $1F, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $43FA, $1F, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43FA, $0D, 0, 0, 2, 1, $14C)
+    %spritemapEntry(1, $43FA, $15, 0, 0, 2, 1, $15C)
+    %spritemapEntry(1, $43F9, $05, 0, 0, 2, 1, $150)
+    %spritemapEntry(1, $43F9, $FD, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $43F4, $F7, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F7, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43FC, $E7, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E7, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D7, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D7, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_2:
-    dw $0011,$C3E8                                                       ;AAE890;
-    db $ED                                                               ;AAE894;
-    dw $2326,$C3D8                                                       ;AAE895;
-    db $ED                                                               ;AAE899;
-    dw $2324,$01FA                                                       ;AAE89A;
-    db $DF                                                               ;AAE89E;
-    dw $237D,$C3ED                                                       ;AAE89F;
-    db $EC                                                               ;AAE8A3;
-    dw $230D,$C3F5                                                       ;AAE8A4;
-    db $E4                                                               ;AAE8A8;
-    dw $230B,$C3F2                                                       ;AAE8A9;
-    db $1F                                                               ;AAE8AD;
-    dw $2370,$C3FA                                                       ;AAE8AE;
-    db $1F                                                               ;AAE8B2;
-    dw $2371,$C3FA                                                       ;AAE8B3;
-    db $0D                                                               ;AAE8B7;
-    dw $234C,$C3FA                                                       ;AAE8B8;
-    db $15                                                               ;AAE8BC;
-    dw $235C,$C3F9                                                       ;AAE8BD;
-    db $05                                                               ;AAE8C1;
-    dw $2350,$C3F9                                                       ;AAE8C2;
-    db $FD                                                               ;AAE8C6;
-    dw $2340,$C3F4                                                       ;AAE8C7;
-    db $F7                                                               ;AAE8CB;
-    dw $2308,$C3FC                                                       ;AAE8CC;
-    db $F7                                                               ;AAE8D0;
-    dw $2309,$C3FC                                                       ;AAE8D1;
-    db $E7                                                               ;AAE8D5;
-    dw $2306,$C3EC                                                       ;AAE8D6;
-    db $E7                                                               ;AAE8DA;
-    dw $2304,$C3FC                                                       ;AAE8DB;
-    db $D7                                                               ;AAE8DF;
-    dw $2302,$C3EC                                                       ;AAE8E0;
-    db $D7                                                               ;AAE8E4;
-    dw $2300                                                             ;AAE8E5;
+    dw $0011                                                             ;AAE890;
+    %spritemapEntry(1, $43E8, $ED, 0, 0, 2, 1, $126)
+    %spritemapEntry(1, $43D8, $ED, 0, 0, 2, 1, $124)
+    %spritemapEntry(0, $1FA, $DF, 0, 0, 2, 1, $17D)
+    %spritemapEntry(1, $43ED, $EC, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E4, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43F2, $1F, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $43FA, $1F, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43FA, $0D, 0, 0, 2, 1, $14C)
+    %spritemapEntry(1, $43FA, $15, 0, 0, 2, 1, $15C)
+    %spritemapEntry(1, $43F9, $05, 0, 0, 2, 1, $150)
+    %spritemapEntry(1, $43F9, $FD, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $43F4, $F7, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F7, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43FC, $E7, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E7, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D7, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D7, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_3:
-    dw $0012,$C3E8                                                       ;AAE8E7;
-    db $ED                                                               ;AAE8EB;
-    dw $2326,$C3D8                                                       ;AAE8EC;
-    db $E9                                                               ;AAE8F0;
-    dw $232C,$01E0                                                       ;AAE8F1;
-    db $F9                                                               ;AAE8F5;
-    dw $231F,$01FA                                                       ;AAE8F6;
-    db $DF                                                               ;AAE8FA;
-    dw $237D,$C3ED                                                       ;AAE8FB;
-    db $EC                                                               ;AAE8FF;
-    dw $230D,$C3F5                                                       ;AAE900;
-    db $E4                                                               ;AAE904;
-    dw $230B,$C3F2                                                       ;AAE905;
-    db $1F                                                               ;AAE909;
-    dw $2370,$C3FA                                                       ;AAE90A;
-    db $1F                                                               ;AAE90E;
-    dw $2371,$C3FA                                                       ;AAE90F;
-    db $0D                                                               ;AAE913;
-    dw $234C,$C3FA                                                       ;AAE914;
-    db $15                                                               ;AAE918;
-    dw $235C,$C3F9                                                       ;AAE919;
-    db $05                                                               ;AAE91D;
-    dw $2350,$C3F9                                                       ;AAE91E;
-    db $FD                                                               ;AAE922;
-    dw $2340,$C3F4                                                       ;AAE923;
-    db $F7                                                               ;AAE927;
-    dw $2308,$C3FC                                                       ;AAE928;
-    db $F7                                                               ;AAE92C;
-    dw $2309,$C3FC                                                       ;AAE92D;
-    db $E7                                                               ;AAE931;
-    dw $2306,$C3EC                                                       ;AAE932;
-    db $E7                                                               ;AAE936;
-    dw $2304,$C3FC                                                       ;AAE937;
-    db $D7                                                               ;AAE93B;
-    dw $2302,$C3EC                                                       ;AAE93C;
-    db $D7                                                               ;AAE940;
-    dw $2300                                                             ;AAE941;
+    dw $0012                                                             ;AAE8E7;
+    %spritemapEntry(1, $43E8, $ED, 0, 0, 2, 1, $126)
+    %spritemapEntry(1, $43D8, $E9, 0, 0, 2, 1, $12C)
+    %spritemapEntry(0, $1E0, $F9, 0, 0, 2, 1, $11F)
+    %spritemapEntry(0, $1FA, $DF, 0, 0, 2, 1, $17D)
+    %spritemapEntry(1, $43ED, $EC, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E4, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43F2, $1F, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $43FA, $1F, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43FA, $0D, 0, 0, 2, 1, $14C)
+    %spritemapEntry(1, $43FA, $15, 0, 0, 2, 1, $15C)
+    %spritemapEntry(1, $43F9, $05, 0, 0, 2, 1, $150)
+    %spritemapEntry(1, $43F9, $FD, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $43F4, $F7, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F7, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43FC, $E7, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E7, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D7, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D7, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_4:
-    dw $0015,$01E0                                                       ;AAE943;
-    db $F9                                                               ;AAE947;
-    dw $231F,$C3E8                                                       ;AAE948;
-    db $ED                                                               ;AAE94C;
-    dw $2326,$01FA                                                       ;AAE94D;
-    db $DF                                                               ;AAE951;
-    dw $2379,$C3E9                                                       ;AAE952;
-    db $1B                                                               ;AAE956;
-    dw $2371,$C3E1                                                       ;AAE957;
-    db $1B                                                               ;AAE95B;
-    dw $2370,$C3EE                                                       ;AAE95C;
-    db $10                                                               ;AAE960;
-    dw $2358,$C3EE                                                       ;AAE961;
-    db $08                                                               ;AAE965;
-    dw $2348,$C3F4                                                       ;AAE966;
-    db $FD                                                               ;AAE96A;
-    dw $2344,$C3F4                                                       ;AAE96B;
-    db $F7                                                               ;AAE96F;
-    dw $2308,$C3FC                                                       ;AAE970;
-    db $F7                                                               ;AAE974;
-    dw $2309,$C210                                                       ;AAE975;
-    db $15                                                               ;AAE979;
-    dw $2575,$C204                                                       ;AAE97A;
-    db $09                                                               ;AAE97E;
-    dw $254E,$C3FB                                                       ;AAE97F;
-    db $FD                                                               ;AAE983;
-    dw $6542,$C3FB                                                       ;AAE984;
-    db $05                                                               ;AAE988;
-    dw $6552,$C3D8                                                       ;AAE989;
-    db $E9                                                               ;AAE98D;
-    dw $232C,$C3ED                                                       ;AAE98E;
-    db $EC                                                               ;AAE992;
-    dw $230D,$C3F5                                                       ;AAE993;
-    db $E4                                                               ;AAE997;
-    dw $230B,$C3FC                                                       ;AAE998;
-    db $E7                                                               ;AAE99C;
-    dw $2306,$C3EC                                                       ;AAE99D;
-    db $E7                                                               ;AAE9A1;
-    dw $2304,$C3FC                                                       ;AAE9A2;
-    db $D7                                                               ;AAE9A6;
-    dw $2302,$C3EC                                                       ;AAE9A7;
-    db $D7                                                               ;AAE9AB;
-    dw $2300                                                             ;AAE9AC;
+    dw $0015                                                             ;AAE943;
+    %spritemapEntry(0, $1E0, $F9, 0, 0, 2, 1, $11F)
+    %spritemapEntry(1, $43E8, $ED, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1FA, $DF, 0, 0, 2, 1, $179)
+    %spritemapEntry(1, $43E9, $1B, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43E1, $1B, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $43EE, $10, 0, 0, 2, 1, $158)
+    %spritemapEntry(1, $43EE, $08, 0, 0, 2, 1, $148)
+    %spritemapEntry(1, $43F4, $FD, 0, 0, 2, 1, $144)
+    %spritemapEntry(1, $43F4, $F7, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F7, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $4210, $15, 0, 0, 2, 2, $175)
+    %spritemapEntry(1, $4204, $09, 0, 0, 2, 2, $14E)
+    %spritemapEntry(1, $43FB, $FD, 0, 1, 2, 2, $142)
+    %spritemapEntry(1, $43FB, $05, 0, 1, 2, 2, $152)
+    %spritemapEntry(1, $43D8, $E9, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43ED, $EC, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E4, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43FC, $E7, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E7, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D7, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D7, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_5:
-    dw $0016,$01E0                                                       ;AAE9AE;
-    db $F8                                                               ;AAE9B2;
-    dw $231F,$C3E8                                                       ;AAE9B3;
-    db $EC                                                               ;AAE9B7;
-    dw $2326,$01FA                                                       ;AAE9B8;
-    db $DE                                                               ;AAE9BC;
-    dw $237A,$C3EC                                                       ;AAE9BD;
-    db $1C                                                               ;AAE9C1;
-    dw $2371,$C3E4                                                       ;AAE9C2;
-    db $1C                                                               ;AAE9C6;
-    dw $2370,$C3F1                                                       ;AAE9C7;
-    db $11                                                               ;AAE9CB;
-    dw $2358,$C3F1                                                       ;AAE9CC;
-    db $09                                                               ;AAE9D0;
-    dw $2348,$C3F7                                                       ;AAE9D1;
-    db $04                                                               ;AAE9D5;
-    dw $2352,$C3F7                                                       ;AAE9D6;
-    db $FC                                                               ;AAE9DA;
-    dw $2342,$C3F4                                                       ;AAE9DB;
-    db $F6                                                               ;AAE9DF;
-    dw $2308,$C3FC                                                       ;AAE9E0;
-    db $F6                                                               ;AAE9E4;
-    dw $2309,$C209                                                       ;AAE9E5;
-    db $16                                                               ;AAE9E9;
-    dw $2575,$C3FC                                                       ;AAE9EA;
-    db $09                                                               ;AAE9EE;
-    dw $254E,$C3F9                                                       ;AAE9EF;
-    db $04                                                               ;AAE9F3;
-    dw $2550,$C3F9                                                       ;AAE9F4;
-    db $FC                                                               ;AAE9F8;
-    dw $2540,$C3D8                                                       ;AAE9F9;
-    db $E8                                                               ;AAE9FD;
-    dw $232C,$C3ED                                                       ;AAE9FE;
-    db $EB                                                               ;AAEA02;
-    dw $230D,$C3F5                                                       ;AAEA03;
-    db $E3                                                               ;AAEA07;
-    dw $230B,$C3FC                                                       ;AAEA08;
-    db $E6                                                               ;AAEA0C;
-    dw $2306,$C3EC                                                       ;AAEA0D;
-    db $E6                                                               ;AAEA11;
-    dw $2304,$C3FC                                                       ;AAEA12;
-    db $D6                                                               ;AAEA16;
-    dw $2302,$C3EC                                                       ;AAEA17;
-    db $D6                                                               ;AAEA1B;
-    dw $2300                                                             ;AAEA1C;
+    dw $0016                                                             ;AAE9AE;
+    %spritemapEntry(0, $1E0, $F8, 0, 0, 2, 1, $11F)
+    %spritemapEntry(1, $43E8, $EC, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1FA, $DE, 0, 0, 2, 1, $17A)
+    %spritemapEntry(1, $43EC, $1C, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43E4, $1C, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $43F1, $11, 0, 0, 2, 1, $158)
+    %spritemapEntry(1, $43F1, $09, 0, 0, 2, 1, $148)
+    %spritemapEntry(1, $43F7, $04, 0, 0, 2, 1, $152)
+    %spritemapEntry(1, $43F7, $FC, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $43F4, $F6, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F6, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $4209, $16, 0, 0, 2, 2, $175)
+    %spritemapEntry(1, $43FC, $09, 0, 0, 2, 2, $14E)
+    %spritemapEntry(1, $43F9, $04, 0, 0, 2, 2, $150)
+    %spritemapEntry(1, $43F9, $FC, 0, 0, 2, 2, $140)
+    %spritemapEntry(1, $43D8, $E8, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43ED, $EB, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E3, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43FC, $E6, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E6, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D6, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D6, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_6:
-    dw $0016,$C3E8                                                       ;AAEA1E;
-    db $EB                                                               ;AAEA22;
-    dw $2326,$01E0                                                       ;AAEA23;
-    db $F7                                                               ;AAEA27;
-    dw $231F,$01FA                                                       ;AAEA28;
-    db $DD                                                               ;AAEA2C;
-    dw $237B,$C3FA                                                       ;AAEA2D;
-    db $1E                                                               ;AAEA31;
-    dw $2371,$C3F2                                                       ;AAEA32;
-    db $1E                                                               ;AAEA36;
-    dw $2370,$C3FA                                                       ;AAEA37;
-    db $13                                                               ;AAEA3B;
-    dw $235C,$C3FA                                                       ;AAEA3C;
-    db $0B                                                               ;AAEA40;
-    dw $234C,$C3FD                                                       ;AAEA41;
-    db $17                                                               ;AAEA45;
-    dw $2573,$C3F9                                                       ;AAEA46;
-    db $03                                                               ;AAEA4A;
-    dw $2350,$C3F9                                                       ;AAEA4B;
-    db $FB                                                               ;AAEA4F;
-    dw $2340,$C3FA                                                       ;AAEA50;
-    db $08                                                               ;AAEA54;
-    dw $254E,$C3F4                                                       ;AAEA55;
-    db $F5                                                               ;AAEA59;
-    dw $2308,$C3FC                                                       ;AAEA5A;
-    db $F5                                                               ;AAEA5E;
-    dw $2309,$C3F7                                                       ;AAEA5F;
-    db $03                                                               ;AAEA63;
-    dw $2552,$C3F7                                                       ;AAEA64;
-    db $FB                                                               ;AAEA68;
-    dw $2542,$C3D8                                                       ;AAEA69;
-    db $E7                                                               ;AAEA6D;
-    dw $232C,$C3ED                                                       ;AAEA6E;
-    db $EA                                                               ;AAEA72;
-    dw $230D,$C3F5                                                       ;AAEA73;
-    db $E2                                                               ;AAEA77;
-    dw $230B,$C3FC                                                       ;AAEA78;
-    db $E5                                                               ;AAEA7C;
-    dw $2306,$C3EC                                                       ;AAEA7D;
-    db $E5                                                               ;AAEA81;
-    dw $2304,$C3FC                                                       ;AAEA82;
-    db $D5                                                               ;AAEA86;
-    dw $2302,$C3EC                                                       ;AAEA87;
-    db $D5                                                               ;AAEA8B;
-    dw $2300                                                             ;AAEA8C;
+    dw $0016                                                             ;AAEA1E;
+    %spritemapEntry(1, $43E8, $EB, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1E0, $F7, 0, 0, 2, 1, $11F)
+    %spritemapEntry(0, $1FA, $DD, 0, 0, 2, 1, $17B)
+    %spritemapEntry(1, $43FA, $1E, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43F2, $1E, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $43FA, $13, 0, 0, 2, 1, $15C)
+    %spritemapEntry(1, $43FA, $0B, 0, 0, 2, 1, $14C)
+    %spritemapEntry(1, $43FD, $17, 0, 0, 2, 2, $173)
+    %spritemapEntry(1, $43F9, $03, 0, 0, 2, 1, $150)
+    %spritemapEntry(1, $43F9, $FB, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $43FA, $08, 0, 0, 2, 2, $14E)
+    %spritemapEntry(1, $43F4, $F5, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F5, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43F7, $03, 0, 0, 2, 2, $152)
+    %spritemapEntry(1, $43F7, $FB, 0, 0, 2, 2, $142)
+    %spritemapEntry(1, $43D8, $E7, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43ED, $EA, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E2, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43FC, $E5, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E5, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D5, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D5, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_7:
-    dw $0016,$01E0                                                       ;AAEA8E;
-    db $F8                                                               ;AAEA92;
-    dw $231F,$C3E8                                                       ;AAEA93;
-    db $EC                                                               ;AAEA97;
-    dw $2326,$01FA                                                       ;AAEA98;
-    db $DE                                                               ;AAEA9C;
-    dw $237C,$C201                                                       ;AAEA9D;
-    db $1D                                                               ;AAEAA1;
-    dw $2371,$C3F9                                                       ;AAEAA2;
-    db $1D                                                               ;AAEAA6;
-    dw $2370,$C201                                                       ;AAEAA7;
-    db $12                                                               ;AAEAAB;
-    dw $2356,$C201                                                       ;AAEAAC;
-    db $0A                                                               ;AAEAB0;
-    dw $2346,$C3FB                                                       ;AAEAB1;
-    db $04                                                               ;AAEAB5;
-    dw $6352,$C3FB                                                       ;AAEAB6;
-    db $FC                                                               ;AAEABA;
-    dw $6342,$C3F2                                                       ;AAEABB;
-    db $1B                                                               ;AAEABF;
-    dw $2573,$C3F3                                                       ;AAEAC0;
-    db $10                                                               ;AAEAC4;
-    dw $2556,$C3F3                                                       ;AAEAC5;
-    db $08                                                               ;AAEAC9;
-    dw $2546,$C3F4                                                       ;AAEACA;
-    db $F6                                                               ;AAEACE;
-    dw $2308,$C3FC                                                       ;AAEACF;
-    db $F6                                                               ;AAEAD3;
-    dw $2309,$C3F4                                                       ;AAEAD4;
-    db $FC                                                               ;AAEAD8;
-    dw $2544,$C3D8                                                       ;AAEAD9;
-    db $E8                                                               ;AAEADD;
-    dw $232C,$C3ED                                                       ;AAEADE;
-    db $EB                                                               ;AAEAE2;
-    dw $230D,$C3F5                                                       ;AAEAE3;
-    db $E3                                                               ;AAEAE7;
-    dw $230B,$C3FC                                                       ;AAEAE8;
-    db $E6                                                               ;AAEAEC;
-    dw $2306,$C3EC                                                       ;AAEAED;
-    db $E6                                                               ;AAEAF1;
-    dw $2304,$C3FC                                                       ;AAEAF2;
-    db $D6                                                               ;AAEAF6;
-    dw $2302,$C3EC                                                       ;AAEAF7;
-    db $D6                                                               ;AAEAFB;
-    dw $2300                                                             ;AAEAFC;
+    dw $0016                                                             ;AAEA8E;
+    %spritemapEntry(0, $1E0, $F8, 0, 0, 2, 1, $11F)
+    %spritemapEntry(1, $43E8, $EC, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1FA, $DE, 0, 0, 2, 1, $17C)
+    %spritemapEntry(1, $4201, $1D, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43F9, $1D, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $4201, $12, 0, 0, 2, 1, $156)
+    %spritemapEntry(1, $4201, $0A, 0, 0, 2, 1, $146)
+    %spritemapEntry(1, $43FB, $04, 0, 1, 2, 1, $152)
+    %spritemapEntry(1, $43FB, $FC, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $43F2, $1B, 0, 0, 2, 2, $173)
+    %spritemapEntry(1, $43F3, $10, 0, 0, 2, 2, $156)
+    %spritemapEntry(1, $43F3, $08, 0, 0, 2, 2, $146)
+    %spritemapEntry(1, $43F4, $F6, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F6, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43F4, $FC, 0, 0, 2, 2, $144)
+    %spritemapEntry(1, $43D8, $E8, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43ED, $EB, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E3, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43FC, $E6, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E6, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D6, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D6, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_8:
-    dw $0015,$C3E8                                                       ;AAEAFE;
-    db $ED                                                               ;AAEB02;
-    dw $2326,$01E0                                                       ;AAEB03;
-    db $F9                                                               ;AAEB07;
-    dw $231F,$01FA                                                       ;AAEB08;
-    db $DF                                                               ;AAEB0C;
-    dw $2379,$C210                                                       ;AAEB0D;
-    db $15                                                               ;AAEB11;
-    dw $2375,$C204                                                       ;AAEB12;
-    db $09                                                               ;AAEB16;
-    dw $234E,$C3FB                                                       ;AAEB17;
-    db $05                                                               ;AAEB1B;
-    dw $6352,$C3FB                                                       ;AAEB1C;
-    db $FD                                                               ;AAEB20;
-    dw $6342,$C3F4                                                       ;AAEB21;
-    db $F7                                                               ;AAEB25;
-    dw $2308,$C3FC                                                       ;AAEB26;
-    db $F7                                                               ;AAEB2A;
-    dw $2309,$C3E1                                                       ;AAEB2B;
-    db $1B                                                               ;AAEB2F;
-    dw $2570,$C3E9                                                       ;AAEB30;
-    db $1B                                                               ;AAEB34;
-    dw $2571,$C3EE                                                       ;AAEB35;
-    db $10                                                               ;AAEB39;
-    dw $2558,$C3EE                                                       ;AAEB3A;
-    db $08                                                               ;AAEB3E;
-    dw $2548,$C3F4                                                       ;AAEB3F;
-    db $FD                                                               ;AAEB43;
-    dw $2544,$C3D8                                                       ;AAEB44;
-    db $E9                                                               ;AAEB48;
-    dw $232C,$C3ED                                                       ;AAEB49;
-    db $EC                                                               ;AAEB4D;
-    dw $230D,$C3F5                                                       ;AAEB4E;
-    db $E4                                                               ;AAEB52;
-    dw $230B,$C3FC                                                       ;AAEB53;
-    db $E7                                                               ;AAEB57;
-    dw $2306,$C3EC                                                       ;AAEB58;
-    db $E7                                                               ;AAEB5C;
-    dw $2304,$C3FC                                                       ;AAEB5D;
-    db $D7                                                               ;AAEB61;
-    dw $2302,$C3EC                                                       ;AAEB62;
-    db $D7                                                               ;AAEB66;
-    dw $2300                                                             ;AAEB67;
+    dw $0015                                                             ;AAEAFE;
+    %spritemapEntry(1, $43E8, $ED, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1E0, $F9, 0, 0, 2, 1, $11F)
+    %spritemapEntry(0, $1FA, $DF, 0, 0, 2, 1, $179)
+    %spritemapEntry(1, $4210, $15, 0, 0, 2, 1, $175)
+    %spritemapEntry(1, $4204, $09, 0, 0, 2, 1, $14E)
+    %spritemapEntry(1, $43FB, $05, 0, 1, 2, 1, $152)
+    %spritemapEntry(1, $43FB, $FD, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $43F4, $F7, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F7, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43E1, $1B, 0, 0, 2, 2, $170)
+    %spritemapEntry(1, $43E9, $1B, 0, 0, 2, 2, $171)
+    %spritemapEntry(1, $43EE, $10, 0, 0, 2, 2, $158)
+    %spritemapEntry(1, $43EE, $08, 0, 0, 2, 2, $148)
+    %spritemapEntry(1, $43F4, $FD, 0, 0, 2, 2, $144)
+    %spritemapEntry(1, $43D8, $E9, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43ED, $EC, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E4, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43FC, $E7, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E7, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D7, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D7, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_9:
-    dw $0016,$01E0                                                       ;AAEB69;
-    db $F8                                                               ;AAEB6D;
-    dw $231F,$C3E8                                                       ;AAEB6E;
-    db $EC                                                               ;AAEB72;
-    dw $2326,$01FA                                                       ;AAEB73;
-    db $DE                                                               ;AAEB77;
-    dw $237A,$C209                                                       ;AAEB78;
-    db $16                                                               ;AAEB7C;
-    dw $2375,$C3FC                                                       ;AAEB7D;
-    db $09                                                               ;AAEB81;
-    dw $234E,$C3F9                                                       ;AAEB82;
-    db $04                                                               ;AAEB86;
-    dw $2350,$C3F9                                                       ;AAEB87;
-    db $FC                                                               ;AAEB8B;
-    dw $2340,$C3D8                                                       ;AAEB8C;
-    db $E8                                                               ;AAEB90;
-    dw $232C,$C3F5                                                       ;AAEB91;
-    db $E3                                                               ;AAEB95;
-    dw $230B,$C3ED                                                       ;AAEB96;
-    db $EB                                                               ;AAEB9A;
-    dw $230D,$C3F4                                                       ;AAEB9B;
-    db $F6                                                               ;AAEB9F;
-    dw $2308,$C3FC                                                       ;AAEBA0;
-    db $F6                                                               ;AAEBA4;
-    dw $2309,$C3FC                                                       ;AAEBA5;
-    db $E6                                                               ;AAEBA9;
-    dw $2306,$C3EC                                                       ;AAEBAA;
-    db $E6                                                               ;AAEBAE;
-    dw $2304,$C3FC                                                       ;AAEBAF;
-    db $D6                                                               ;AAEBB3;
-    dw $2302,$C3EC                                                       ;AAEBB4;
-    db $D6                                                               ;AAEBB8;
-    dw $2300,$C3E4                                                       ;AAEBB9;
-    db $1C                                                               ;AAEBBD;
-    dw $2570,$C3EC                                                       ;AAEBBE;
-    db $1C                                                               ;AAEBC2;
-    dw $2571,$C3F1                                                       ;AAEBC3;
-    db $11                                                               ;AAEBC7;
-    dw $2558,$C3F1                                                       ;AAEBC8;
-    db $09                                                               ;AAEBCC;
-    dw $2548,$C3F7                                                       ;AAEBCD;
-    db $04                                                               ;AAEBD1;
-    dw $2552,$C3F7                                                       ;AAEBD2;
-    db $FC                                                               ;AAEBD6;
-    dw $2542                                                             ;AAEBD7;
+    dw $0016                                                             ;AAEB69;
+    %spritemapEntry(0, $1E0, $F8, 0, 0, 2, 1, $11F)
+    %spritemapEntry(1, $43E8, $EC, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1FA, $DE, 0, 0, 2, 1, $17A)
+    %spritemapEntry(1, $4209, $16, 0, 0, 2, 1, $175)
+    %spritemapEntry(1, $43FC, $09, 0, 0, 2, 1, $14E)
+    %spritemapEntry(1, $43F9, $04, 0, 0, 2, 1, $150)
+    %spritemapEntry(1, $43F9, $FC, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $43D8, $E8, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43F5, $E3, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43ED, $EB, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F4, $F6, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F6, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43FC, $E6, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E6, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D6, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D6, 0, 0, 2, 1, $100)
+    %spritemapEntry(1, $43E4, $1C, 0, 0, 2, 2, $170)
+    %spritemapEntry(1, $43EC, $1C, 0, 0, 2, 2, $171)
+    %spritemapEntry(1, $43F1, $11, 0, 0, 2, 2, $158)
+    %spritemapEntry(1, $43F1, $09, 0, 0, 2, 2, $148)
+    %spritemapEntry(1, $43F7, $04, 0, 0, 2, 2, $152)
+    %spritemapEntry(1, $43F7, $FC, 0, 0, 2, 2, $142)
 
 Spritemaps_Chozo_A:
-    dw $0016,$C3E8                                                       ;AAEBD9;
-    db $EB                                                               ;AAEBDD;
-    dw $2326,$01E0                                                       ;AAEBDE;
-    db $F7                                                               ;AAEBE2;
-    dw $231F,$01FA                                                       ;AAEBE3;
-    db $DD                                                               ;AAEBE7;
-    dw $237B,$C3FD                                                       ;AAEBE8;
-    db $17                                                               ;AAEBEC;
-    dw $2373,$C3FA                                                       ;AAEBED;
-    db $08                                                               ;AAEBF1;
-    dw $234E,$C3F7                                                       ;AAEBF2;
-    db $03                                                               ;AAEBF6;
-    dw $2352,$C3F7                                                       ;AAEBF7;
-    db $FB                                                               ;AAEBFB;
-    dw $2342,$C3F2                                                       ;AAEBFC;
-    db $1E                                                               ;AAEC00;
-    dw $2570,$C3FA                                                       ;AAEC01;
-    db $1E                                                               ;AAEC05;
-    dw $2571,$C3FA                                                       ;AAEC06;
-    db $13                                                               ;AAEC0A;
-    dw $255C,$C3FA                                                       ;AAEC0B;
-    db $0B                                                               ;AAEC0F;
-    dw $254C,$C3F9                                                       ;AAEC10;
-    db $03                                                               ;AAEC14;
-    dw $2550,$C3F9                                                       ;AAEC15;
-    db $FB                                                               ;AAEC19;
-    dw $2540,$C3D8                                                       ;AAEC1A;
-    db $E7                                                               ;AAEC1E;
-    dw $232C,$C3ED                                                       ;AAEC1F;
-    db $EA                                                               ;AAEC23;
-    dw $230D,$C3F5                                                       ;AAEC24;
-    db $E2                                                               ;AAEC28;
-    dw $230B,$C3F4                                                       ;AAEC29;
-    db $F5                                                               ;AAEC2D;
-    dw $2308,$C3FC                                                       ;AAEC2E;
-    db $F5                                                               ;AAEC32;
-    dw $2309,$C3FC                                                       ;AAEC33;
-    db $E5                                                               ;AAEC37;
-    dw $2306,$C3EC                                                       ;AAEC38;
-    db $E5                                                               ;AAEC3C;
-    dw $2304,$C3FC                                                       ;AAEC3D;
-    db $D5                                                               ;AAEC41;
-    dw $2302,$C3EC                                                       ;AAEC42;
-    db $D5                                                               ;AAEC46;
-    dw $2300                                                             ;AAEC47;
+    dw $0016                                                             ;AAEBD9;
+    %spritemapEntry(1, $43E8, $EB, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1E0, $F7, 0, 0, 2, 1, $11F)
+    %spritemapEntry(0, $1FA, $DD, 0, 0, 2, 1, $17B)
+    %spritemapEntry(1, $43FD, $17, 0, 0, 2, 1, $173)
+    %spritemapEntry(1, $43FA, $08, 0, 0, 2, 1, $14E)
+    %spritemapEntry(1, $43F7, $03, 0, 0, 2, 1, $152)
+    %spritemapEntry(1, $43F7, $FB, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $43F2, $1E, 0, 0, 2, 2, $170)
+    %spritemapEntry(1, $43FA, $1E, 0, 0, 2, 2, $171)
+    %spritemapEntry(1, $43FA, $13, 0, 0, 2, 2, $15C)
+    %spritemapEntry(1, $43FA, $0B, 0, 0, 2, 2, $14C)
+    %spritemapEntry(1, $43F9, $03, 0, 0, 2, 2, $150)
+    %spritemapEntry(1, $43F9, $FB, 0, 0, 2, 2, $140)
+    %spritemapEntry(1, $43D8, $E7, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43ED, $EA, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E2, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43F4, $F5, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F5, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43FC, $E5, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E5, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D5, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D5, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_B:
-    dw $0016,$01E0                                                       ;AAEC49;
-    db $F8                                                               ;AAEC4D;
-    dw $231F,$C3E8                                                       ;AAEC4E;
-    db $EC                                                               ;AAEC52;
-    dw $2326,$01FA                                                       ;AAEC53;
-    db $DE                                                               ;AAEC57;
-    dw $237C,$C3F2                                                       ;AAEC58;
-    db $1B                                                               ;AAEC5C;
-    dw $2373,$C3F3                                                       ;AAEC5D;
-    db $10                                                               ;AAEC61;
-    dw $2356,$C3F3                                                       ;AAEC62;
-    db $08                                                               ;AAEC66;
-    dw $2346,$C3F4                                                       ;AAEC67;
-    db $FC                                                               ;AAEC6B;
-    dw $2344,$C3F9                                                       ;AAEC6C;
-    db $1D                                                               ;AAEC70;
-    dw $2570,$C201                                                       ;AAEC71;
-    db $1D                                                               ;AAEC75;
-    dw $2571,$C201                                                       ;AAEC76;
-    db $12                                                               ;AAEC7A;
-    dw $2556,$C201                                                       ;AAEC7B;
-    db $0A                                                               ;AAEC7F;
-    dw $2546,$C3F4                                                       ;AAEC80;
-    db $F6                                                               ;AAEC84;
-    dw $2308,$C3FC                                                       ;AAEC85;
-    db $F6                                                               ;AAEC89;
-    dw $2309,$C3FB                                                       ;AAEC8A;
-    db $FC                                                               ;AAEC8E;
-    dw $6542,$C3FB                                                       ;AAEC8F;
-    db $04                                                               ;AAEC93;
-    dw $6552,$C3D8                                                       ;AAEC94;
-    db $E8                                                               ;AAEC98;
-    dw $232C,$C3ED                                                       ;AAEC99;
-    db $EB                                                               ;AAEC9D;
-    dw $230D,$C3F5                                                       ;AAEC9E;
-    db $E3                                                               ;AAECA2;
-    dw $230B,$C3FC                                                       ;AAECA3;
-    db $E6                                                               ;AAECA7;
-    dw $2306,$C3EC                                                       ;AAECA8;
-    db $E6                                                               ;AAECAC;
-    dw $2304,$C3FC                                                       ;AAECAD;
-    db $D6                                                               ;AAECB1;
-    dw $2302,$C3EC                                                       ;AAECB2;
-    db $D6                                                               ;AAECB6;
-    dw $2300                                                             ;AAECB7;
+    dw $0016                                                             ;AAEC49;
+    %spritemapEntry(0, $1E0, $F8, 0, 0, 2, 1, $11F)
+    %spritemapEntry(1, $43E8, $EC, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1FA, $DE, 0, 0, 2, 1, $17C)
+    %spritemapEntry(1, $43F2, $1B, 0, 0, 2, 1, $173)
+    %spritemapEntry(1, $43F3, $10, 0, 0, 2, 1, $156)
+    %spritemapEntry(1, $43F3, $08, 0, 0, 2, 1, $146)
+    %spritemapEntry(1, $43F4, $FC, 0, 0, 2, 1, $144)
+    %spritemapEntry(1, $43F9, $1D, 0, 0, 2, 2, $170)
+    %spritemapEntry(1, $4201, $1D, 0, 0, 2, 2, $171)
+    %spritemapEntry(1, $4201, $12, 0, 0, 2, 2, $156)
+    %spritemapEntry(1, $4201, $0A, 0, 0, 2, 2, $146)
+    %spritemapEntry(1, $43F4, $F6, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F6, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43FB, $FC, 0, 1, 2, 2, $142)
+    %spritemapEntry(1, $43FB, $04, 0, 1, 2, 2, $152)
+    %spritemapEntry(1, $43D8, $E8, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43ED, $EB, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E3, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43FC, $E6, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E6, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D6, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D6, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_C:
-    dw $0012,$C3E8                                                       ;AAECB9;
-    db $ED                                                               ;AAECBD;
-    dw $2326,$01E0                                                       ;AAECBE;
-    db $F9                                                               ;AAECC2;
-    dw $231F,$01FA                                                       ;AAECC3;
-    db $DF                                                               ;AAECC7;
-    dw $237D,$C3D8                                                       ;AAECC8;
-    db $E9                                                               ;AAECCC;
-    dw $232C,$C3ED                                                       ;AAECCD;
-    db $EC                                                               ;AAECD1;
-    dw $230D,$C3F5                                                       ;AAECD2;
-    db $E4                                                               ;AAECD6;
-    dw $230B,$C3F2                                                       ;AAECD7;
-    db $1F                                                               ;AAECDB;
-    dw $2370,$C3FA                                                       ;AAECDC;
-    db $1F                                                               ;AAECE0;
-    dw $2371,$C3FA                                                       ;AAECE1;
-    db $0D                                                               ;AAECE5;
-    dw $234C,$C3FA                                                       ;AAECE6;
-    db $15                                                               ;AAECEA;
-    dw $235C,$C3F9                                                       ;AAECEB;
-    db $05                                                               ;AAECEF;
-    dw $2350,$C3F9                                                       ;AAECF0;
-    db $FD                                                               ;AAECF4;
-    dw $2340,$C3F4                                                       ;AAECF5;
-    db $F7                                                               ;AAECF9;
-    dw $2308,$C3FC                                                       ;AAECFA;
-    db $F7                                                               ;AAECFE;
-    dw $2309,$C3FC                                                       ;AAECFF;
-    db $E7                                                               ;AAED03;
-    dw $2306,$C3EC                                                       ;AAED04;
-    db $E7                                                               ;AAED08;
-    dw $2304,$C3FC                                                       ;AAED09;
-    db $D7                                                               ;AAED0D;
-    dw $2302,$C3EC                                                       ;AAED0E;
-    db $D7                                                               ;AAED12;
-    dw $2300                                                             ;AAED13;
+    dw $0012                                                             ;AAECB9;
+    %spritemapEntry(1, $43E8, $ED, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1E0, $F9, 0, 0, 2, 1, $11F)
+    %spritemapEntry(0, $1FA, $DF, 0, 0, 2, 1, $17D)
+    %spritemapEntry(1, $43D8, $E9, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43ED, $EC, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E4, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43F2, $1F, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $43FA, $1F, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43FA, $0D, 0, 0, 2, 1, $14C)
+    %spritemapEntry(1, $43FA, $15, 0, 0, 2, 1, $15C)
+    %spritemapEntry(1, $43F9, $05, 0, 0, 2, 1, $150)
+    %spritemapEntry(1, $43F9, $FD, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $43F4, $F7, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F7, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43FC, $E7, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E7, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D7, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D7, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_D:
-    dw $0012,$01E0                                                       ;AAED15;
-    db $F9                                                               ;AAED19;
-    dw $231F,$C3E8                                                       ;AAED1A;
-    db $ED                                                               ;AAED1E;
-    dw $2326,$01FA                                                       ;AAED1F;
-    db $DF                                                               ;AAED23;
-    dw $237C,$C3D8                                                       ;AAED24;
-    db $E9                                                               ;AAED28;
-    dw $232C,$C3ED                                                       ;AAED29;
-    db $EC                                                               ;AAED2D;
-    dw $230D,$C3F5                                                       ;AAED2E;
-    db $E4                                                               ;AAED32;
-    dw $230B,$C3F2                                                       ;AAED33;
-    db $1F                                                               ;AAED37;
-    dw $2370,$C3FA                                                       ;AAED38;
-    db $1F                                                               ;AAED3C;
-    dw $2371,$C3FA                                                       ;AAED3D;
-    db $0D                                                               ;AAED41;
-    dw $234C,$C3FA                                                       ;AAED42;
-    db $15                                                               ;AAED46;
-    dw $235C,$C3F9                                                       ;AAED47;
-    db $05                                                               ;AAED4B;
-    dw $2350,$C3F9                                                       ;AAED4C;
-    db $FD                                                               ;AAED50;
-    dw $2340,$C3F4                                                       ;AAED51;
-    db $F7                                                               ;AAED55;
-    dw $2308,$C3FC                                                       ;AAED56;
-    db $F7                                                               ;AAED5A;
-    dw $2309,$C3FC                                                       ;AAED5B;
-    db $E7                                                               ;AAED5F;
-    dw $2306,$C3EC                                                       ;AAED60;
-    db $E7                                                               ;AAED64;
-    dw $2304,$C3FC                                                       ;AAED65;
-    db $D7                                                               ;AAED69;
-    dw $2302,$C3EC                                                       ;AAED6A;
-    db $D7                                                               ;AAED6E;
-    dw $2300                                                             ;AAED6F;
+    dw $0012                                                             ;AAED15;
+    %spritemapEntry(0, $1E0, $F9, 0, 0, 2, 1, $11F)
+    %spritemapEntry(1, $43E8, $ED, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1FA, $DF, 0, 0, 2, 1, $17C)
+    %spritemapEntry(1, $43D8, $E9, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43ED, $EC, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E4, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43F2, $1F, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $43FA, $1F, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43FA, $0D, 0, 0, 2, 1, $14C)
+    %spritemapEntry(1, $43FA, $15, 0, 0, 2, 1, $15C)
+    %spritemapEntry(1, $43F9, $05, 0, 0, 2, 1, $150)
+    %spritemapEntry(1, $43F9, $FD, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $43F4, $F7, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F7, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43FC, $E7, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E7, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D7, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D7, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_E:
-    dw $0012,$C3D8                                                       ;AAED71;
-    db $E9                                                               ;AAED75;
-    dw $232C,$C3E8                                                       ;AAED76;
-    db $ED                                                               ;AAED7A;
-    dw $2326,$01E0                                                       ;AAED7B;
-    db $F9                                                               ;AAED7F;
-    dw $231F,$01FA                                                       ;AAED80;
-    db $DF                                                               ;AAED84;
-    dw $237B,$C3ED                                                       ;AAED85;
-    db $EC                                                               ;AAED89;
-    dw $230D,$C3F5                                                       ;AAED8A;
-    db $E4                                                               ;AAED8E;
-    dw $230B,$C3F2                                                       ;AAED8F;
-    db $1F                                                               ;AAED93;
-    dw $2370,$C3FA                                                       ;AAED94;
-    db $1F                                                               ;AAED98;
-    dw $2371,$C3FA                                                       ;AAED99;
-    db $0D                                                               ;AAED9D;
-    dw $234C,$C3FA                                                       ;AAED9E;
-    db $15                                                               ;AAEDA2;
-    dw $235C,$C3F9                                                       ;AAEDA3;
-    db $05                                                               ;AAEDA7;
-    dw $2350,$C3F9                                                       ;AAEDA8;
-    db $FD                                                               ;AAEDAC;
-    dw $2340,$C3F4                                                       ;AAEDAD;
-    db $F7                                                               ;AAEDB1;
-    dw $2308,$C3FC                                                       ;AAEDB2;
-    db $F7                                                               ;AAEDB6;
-    dw $2309,$C3FC                                                       ;AAEDB7;
-    db $E7                                                               ;AAEDBB;
-    dw $2306,$C3EC                                                       ;AAEDBC;
-    db $E7                                                               ;AAEDC0;
-    dw $2304,$C3FC                                                       ;AAEDC1;
-    db $D7                                                               ;AAEDC5;
-    dw $2302,$C3EC                                                       ;AAEDC6;
-    db $D7                                                               ;AAEDCA;
-    dw $2300                                                             ;AAEDCB;
+    dw $0012                                                             ;AAED71;
+    %spritemapEntry(1, $43D8, $E9, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43E8, $ED, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1E0, $F9, 0, 0, 2, 1, $11F)
+    %spritemapEntry(0, $1FA, $DF, 0, 0, 2, 1, $17B)
+    %spritemapEntry(1, $43ED, $EC, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E4, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43F2, $1F, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $43FA, $1F, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43FA, $0D, 0, 0, 2, 1, $14C)
+    %spritemapEntry(1, $43FA, $15, 0, 0, 2, 1, $15C)
+    %spritemapEntry(1, $43F9, $05, 0, 0, 2, 1, $150)
+    %spritemapEntry(1, $43F9, $FD, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $43F4, $F7, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F7, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43FC, $E7, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E7, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D7, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D7, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_F:
-    dw $0012,$01E0                                                       ;AAEDCD;
-    db $F9                                                               ;AAEDD1;
-    dw $231F,$C3E8                                                       ;AAEDD2;
-    db $ED                                                               ;AAEDD6;
-    dw $2326,$01FA                                                       ;AAEDD7;
-    db $DF                                                               ;AAEDDB;
-    dw $237A,$C3D8                                                       ;AAEDDC;
-    db $E9                                                               ;AAEDE0;
-    dw $232C,$C3ED                                                       ;AAEDE1;
-    db $EC                                                               ;AAEDE5;
-    dw $230D,$C3F5                                                       ;AAEDE6;
-    db $E4                                                               ;AAEDEA;
-    dw $230B,$C3F2                                                       ;AAEDEB;
-    db $1F                                                               ;AAEDEF;
-    dw $2370,$C3FA                                                       ;AAEDF0;
-    db $1F                                                               ;AAEDF4;
-    dw $2371,$C3FA                                                       ;AAEDF5;
-    db $0D                                                               ;AAEDF9;
-    dw $234C,$C3FA                                                       ;AAEDFA;
-    db $15                                                               ;AAEDFE;
-    dw $235C,$C3F9                                                       ;AAEDFF;
-    db $05                                                               ;AAEE03;
-    dw $2350,$C3F9                                                       ;AAEE04;
-    db $FD                                                               ;AAEE08;
-    dw $2340,$C3F4                                                       ;AAEE09;
-    db $F7                                                               ;AAEE0D;
-    dw $2308,$C3FC                                                       ;AAEE0E;
-    db $F7                                                               ;AAEE12;
-    dw $2309,$C3FC                                                       ;AAEE13;
-    db $E7                                                               ;AAEE17;
-    dw $2306,$C3EC                                                       ;AAEE18;
-    db $E7                                                               ;AAEE1C;
-    dw $2304,$C3FC                                                       ;AAEE1D;
-    db $D7                                                               ;AAEE21;
-    dw $2302,$C3EC                                                       ;AAEE22;
-    db $D7                                                               ;AAEE26;
-    dw $2300                                                             ;AAEE27;
+    dw $0012                                                             ;AAEDCD;
+    %spritemapEntry(0, $1E0, $F9, 0, 0, 2, 1, $11F)
+    %spritemapEntry(1, $43E8, $ED, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1FA, $DF, 0, 0, 2, 1, $17A)
+    %spritemapEntry(1, $43D8, $E9, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43ED, $EC, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E4, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43F2, $1F, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $43FA, $1F, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43FA, $0D, 0, 0, 2, 1, $14C)
+    %spritemapEntry(1, $43FA, $15, 0, 0, 2, 1, $15C)
+    %spritemapEntry(1, $43F9, $05, 0, 0, 2, 1, $150)
+    %spritemapEntry(1, $43F9, $FD, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $43F4, $F7, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F7, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43FC, $E7, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E7, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D7, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D7, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_10:
-    dw $0012,$C3D8                                                       ;AAEE29;
-    db $E9                                                               ;AAEE2D;
-    dw $232C,$01E0                                                       ;AAEE2E;
-    db $F9                                                               ;AAEE32;
-    dw $231F,$C3E8                                                       ;AAEE33;
-    db $ED                                                               ;AAEE37;
-    dw $2326,$01FA                                                       ;AAEE38;
-    db $DF                                                               ;AAEE3C;
-    dw $2379,$C3ED                                                       ;AAEE3D;
-    db $EC                                                               ;AAEE41;
-    dw $230D,$C3F5                                                       ;AAEE42;
-    db $E4                                                               ;AAEE46;
-    dw $230B,$C3F2                                                       ;AAEE47;
-    db $1F                                                               ;AAEE4B;
-    dw $2370,$C3FA                                                       ;AAEE4C;
-    db $1F                                                               ;AAEE50;
-    dw $2371,$C3FA                                                       ;AAEE51;
-    db $0D                                                               ;AAEE55;
-    dw $234C,$C3FA                                                       ;AAEE56;
-    db $15                                                               ;AAEE5A;
-    dw $235C,$C3F9                                                       ;AAEE5B;
-    db $05                                                               ;AAEE5F;
-    dw $2350,$C3F9                                                       ;AAEE60;
-    db $FD                                                               ;AAEE64;
-    dw $2340,$C3F4                                                       ;AAEE65;
-    db $F7                                                               ;AAEE69;
-    dw $2308,$C3FC                                                       ;AAEE6A;
-    db $F7                                                               ;AAEE6E;
-    dw $2309,$C3FC                                                       ;AAEE6F;
-    db $E7                                                               ;AAEE73;
-    dw $2306,$C3EC                                                       ;AAEE74;
-    db $E7                                                               ;AAEE78;
-    dw $2304,$C3FC                                                       ;AAEE79;
-    db $D7                                                               ;AAEE7D;
-    dw $2302,$C3EC                                                       ;AAEE7E;
-    db $D7                                                               ;AAEE82;
-    dw $2300                                                             ;AAEE83;
+    dw $0012                                                             ;AAEE29;
+    %spritemapEntry(1, $43D8, $E9, 0, 0, 2, 1, $12C)
+    %spritemapEntry(0, $1E0, $F9, 0, 0, 2, 1, $11F)
+    %spritemapEntry(1, $43E8, $ED, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1FA, $DF, 0, 0, 2, 1, $179)
+    %spritemapEntry(1, $43ED, $EC, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E4, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43F2, $1F, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $43FA, $1F, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43FA, $0D, 0, 0, 2, 1, $14C)
+    %spritemapEntry(1, $43FA, $15, 0, 0, 2, 1, $15C)
+    %spritemapEntry(1, $43F9, $05, 0, 0, 2, 1, $150)
+    %spritemapEntry(1, $43F9, $FD, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $43F4, $F7, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F7, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43FC, $E7, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E7, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D7, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D7, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_11:
-    dw $002A,$C3E0                                                       ;AAEE85;
-    db $98                                                               ;AAEE89;
-    dw $2344,$C242                                                       ;AAEE8A;
-    db $98                                                               ;AAEE8E;
-    dw $234A,$C232                                                       ;AAEE8F;
-    db $A0                                                               ;AAEE93;
-    dw $2358,$C232                                                       ;AAEE94;
-    db $98                                                               ;AAEE98;
-    dw $2348,$C222                                                       ;AAEE99;
-    db $A0                                                               ;AAEE9D;
-    dw $235C,$C222                                                       ;AAEE9E;
-    db $98                                                               ;AAEEA2;
-    dw $234C,$C202                                                       ;AAEEA3;
-    db $98                                                               ;AAEEA7;
-    dw $234E,$C212                                                       ;AAEEA8;
-    db $A0                                                               ;AAEEAC;
-    dw $2356,$C212                                                       ;AAEEAD;
-    db $98                                                               ;AAEEB1;
-    dw $2346,$C201                                                       ;AAEEB2;
-    db $B8                                                               ;AAEEB6;
-    dw $254E,$C211                                                       ;AAEEB7;
-    db $C0                                                               ;AAEEBB;
-    dw $2556,$C211                                                       ;AAEEBC;
-    db $B8                                                               ;AAEEC0;
-    dw $2546,$C241                                                       ;AAEEC1;
-    db $B8                                                               ;AAEEC5;
-    dw $254A,$C231                                                       ;AAEEC6;
-    db $C0                                                               ;AAEECA;
-    dw $2558,$C231                                                       ;AAEECB;
-    db $B8                                                               ;AAEECF;
-    dw $2548,$C221                                                       ;AAEED0;
-    db $C0                                                               ;AAEED4;
-    dw $255C,$C221                                                       ;AAEED5;
-    db $B8                                                               ;AAEED9;
-    dw $254C,$C3D8                                                       ;AAEEDA;
-    db $F0                                                               ;AAEEDE;
-    dw $2577,$C3C8                                                       ;AAEEDF;
-    db $F0                                                               ;AAEEE3;
-    dw $2575,$C3B8                                                       ;AAEEE4;
-    db $F0                                                               ;AAEEE8;
-    dw $2573,$C3A0                                                       ;AAEEE9;
-    db $F0                                                               ;AAEEED;
-    dw $2570,$C3A8                                                       ;AAEEEE;
-    db $F0                                                               ;AAEEF2;
-    dw $2571,$C3D8                                                       ;AAEEF3;
-    db $E0                                                               ;AAEEF7;
-    dw $2377,$C3C8                                                       ;AAEEF8;
-    db $E0                                                               ;AAEEFC;
-    dw $2375,$C3B8                                                       ;AAEEFD;
-    db $E0                                                               ;AAEF01;
-    dw $2373,$C3A8                                                       ;AAEF02;
-    db $E0                                                               ;AAEF06;
-    dw $2371,$C3A0                                                       ;AAEF07;
-    db $E0                                                               ;AAEF0B;
-    dw $2370,$C3D0                                                       ;AAEF0C;
-    db $A0                                                               ;AAEF10;
-    dw $2352,$C3D0                                                       ;AAEF11;
-    db $98                                                               ;AAEF15;
-    dw $2342,$C3B0                                                       ;AAEF16;
-    db $A0                                                               ;AAEF1A;
-    dw $6352,$C3B0                                                       ;AAEF1B;
-    db $98                                                               ;AAEF1F;
-    dw $6342,$C3C0                                                       ;AAEF20;
-    db $A0                                                               ;AAEF24;
-    dw $2350,$C3C0                                                       ;AAEF25;
-    db $98                                                               ;AAEF29;
-    dw $2340,$C3A0                                                       ;AAEF2A;
-    db $98                                                               ;AAEF2E;
-    dw $6344,$C3A1                                                       ;AAEF2F;
-    db $B8                                                               ;AAEF33;
-    dw $6544,$C3B0                                                       ;AAEF34;
-    db $B8                                                               ;AAEF38;
-    dw $6542,$C3B0                                                       ;AAEF39;
-    db $C0                                                               ;AAEF3D;
-    dw $6552,$C3D0                                                       ;AAEF3E;
-    db $C0                                                               ;AAEF42;
-    dw $2552,$C3C0                                                       ;AAEF43;
-    db $C0                                                               ;AAEF47;
-    dw $2550,$C3E0                                                       ;AAEF48;
-    db $B8                                                               ;AAEF4C;
-    dw $2544,$C3D0                                                       ;AAEF4D;
-    db $B8                                                               ;AAEF51;
-    dw $2542,$C3C0                                                       ;AAEF52;
-    db $B8                                                               ;AAEF56;
-    dw $2540                                                             ;AAEF57;
+    dw $002A                                                             ;AAEE85;
+    %spritemapEntry(1, $43E0, $98, 0, 0, 2, 1, $144)
+    %spritemapEntry(1, $4242, $98, 0, 0, 2, 1, $14A)
+    %spritemapEntry(1, $4232, $A0, 0, 0, 2, 1, $158)
+    %spritemapEntry(1, $4232, $98, 0, 0, 2, 1, $148)
+    %spritemapEntry(1, $4222, $A0, 0, 0, 2, 1, $15C)
+    %spritemapEntry(1, $4222, $98, 0, 0, 2, 1, $14C)
+    %spritemapEntry(1, $4202, $98, 0, 0, 2, 1, $14E)
+    %spritemapEntry(1, $4212, $A0, 0, 0, 2, 1, $156)
+    %spritemapEntry(1, $4212, $98, 0, 0, 2, 1, $146)
+    %spritemapEntry(1, $4201, $B8, 0, 0, 2, 2, $14E)
+    %spritemapEntry(1, $4211, $C0, 0, 0, 2, 2, $156)
+    %spritemapEntry(1, $4211, $B8, 0, 0, 2, 2, $146)
+    %spritemapEntry(1, $4241, $B8, 0, 0, 2, 2, $14A)
+    %spritemapEntry(1, $4231, $C0, 0, 0, 2, 2, $158)
+    %spritemapEntry(1, $4231, $B8, 0, 0, 2, 2, $148)
+    %spritemapEntry(1, $4221, $C0, 0, 0, 2, 2, $15C)
+    %spritemapEntry(1, $4221, $B8, 0, 0, 2, 2, $14C)
+    %spritemapEntry(1, $43D8, $F0, 0, 0, 2, 2, $177)
+    %spritemapEntry(1, $43C8, $F0, 0, 0, 2, 2, $175)
+    %spritemapEntry(1, $43B8, $F0, 0, 0, 2, 2, $173)
+    %spritemapEntry(1, $43A0, $F0, 0, 0, 2, 2, $170)
+    %spritemapEntry(1, $43A8, $F0, 0, 0, 2, 2, $171)
+    %spritemapEntry(1, $43D8, $E0, 0, 0, 2, 1, $177)
+    %spritemapEntry(1, $43C8, $E0, 0, 0, 2, 1, $175)
+    %spritemapEntry(1, $43B8, $E0, 0, 0, 2, 1, $173)
+    %spritemapEntry(1, $43A8, $E0, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43A0, $E0, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $43D0, $A0, 0, 0, 2, 1, $152)
+    %spritemapEntry(1, $43D0, $98, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $43B0, $A0, 0, 1, 2, 1, $152)
+    %spritemapEntry(1, $43B0, $98, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $43C0, $A0, 0, 0, 2, 1, $150)
+    %spritemapEntry(1, $43C0, $98, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $43A0, $98, 0, 1, 2, 1, $144)
+    %spritemapEntry(1, $43A1, $B8, 0, 1, 2, 2, $144)
+    %spritemapEntry(1, $43B0, $B8, 0, 1, 2, 2, $142)
+    %spritemapEntry(1, $43B0, $C0, 0, 1, 2, 2, $152)
+    %spritemapEntry(1, $43D0, $C0, 0, 0, 2, 2, $152)
+    %spritemapEntry(1, $43C0, $C0, 0, 0, 2, 2, $150)
+    %spritemapEntry(1, $43E0, $B8, 0, 0, 2, 2, $144)
+    %spritemapEntry(1, $43D0, $B8, 0, 0, 2, 2, $142)
+    %spritemapEntry(1, $43C0, $B8, 0, 0, 2, 2, $140)
 
 Spritemaps_Chozo_12:
-    dw $0019,$C238                                                       ;AAEF59;
-    db $88                                                               ;AAEF5D;
-    dw $230D,$C240                                                       ;AAEF5E;
-    db $80                                                               ;AAEF62;
-    dw $230B,$003E                                                       ;AAEF63;
-    db $EF                                                               ;AAEF67;
-    dw $2339,$C236                                                       ;AAEF68;
-    db $DF                                                               ;AAEF6C;
-    dw $232C,$C246                                                       ;AAEF6D;
-    db $E7                                                               ;AAEF71;
-    dw $232A,$C220                                                       ;AAEF72;
-    db $DB                                                               ;AAEF76;
-    dw $232A,$C210                                                       ;AAEF77;
-    db $DB                                                               ;AAEF7B;
-    dw $2328,$C245                                                       ;AAEF7C;
-    db $C8                                                               ;AAEF80;
-    dw $2326,$0045                                                       ;AAEF81;
-    db $C0                                                               ;AAEF85;
-    dw $231F,$C235                                                       ;AAEF86;
-    db $C0                                                               ;AAEF8A;
-    dw $2324,$C211                                                       ;AAEF8B;
-    db $C0                                                               ;AAEF8F;
-    dw $2320,$0021                                                       ;AAEF90;
-    db $C0                                                               ;AAEF94;
-    dw $230F,$C221                                                       ;AAEF95;
-    db $C8                                                               ;AAEF99;
-    dw $2322,$C3B7                                                       ;AAEF9A;
-    db $BD                                                               ;AAEF9E;
-    dw $234C,$C3B7                                                       ;AAEF9F;
-    db $C5                                                               ;AAEFA3;
-    dw $235C,$C399                                                       ;AAEFA4;
-    db $D7                                                               ;AAEFA8;
-    dw $2350,$C399                                                       ;AAEFA9;
-    db $CF                                                               ;AAEFAD;
-    dw $2340,$C3DA                                                       ;AAEFAE;
-    db $CA                                                               ;AAEFB2;
-    dw $2370,$C3E2                                                       ;AAEFB3;
-    db $CA                                                               ;AAEFB7;
-    dw $2371,$C3F1                                                       ;AAEFB8;
-    db $A8                                                               ;AAEFBC;
-    dw $2308,$C3F9                                                       ;AAEFBD;
-    db $A8                                                               ;AAEFC1;
-    dw $2309,$C3F9                                                       ;AAEFC2;
-    db $98                                                               ;AAEFC6;
-    dw $2306,$C3E9                                                       ;AAEFC7;
-    db $98                                                               ;AAEFCB;
-    dw $2304,$C3F9                                                       ;AAEFCC;
-    db $88                                                               ;AAEFD0;
-    dw $2302,$C3E9                                                       ;AAEFD1;
-    db $88                                                               ;AAEFD5;
-    dw $2300                                                             ;AAEFD6;
+    dw $0019                                                             ;AAEF59;
+    %spritemapEntry(1, $4238, $88, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $4240, $80, 0, 0, 2, 1, $10B)
+    %spritemapEntry(0, $3E, $EF, 0, 0, 2, 1, $139)
+    %spritemapEntry(1, $4236, $DF, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $4246, $E7, 0, 0, 2, 1, $12A)
+    %spritemapEntry(1, $4220, $DB, 0, 0, 2, 1, $12A)
+    %spritemapEntry(1, $4210, $DB, 0, 0, 2, 1, $128)
+    %spritemapEntry(1, $4245, $C8, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $45, $C0, 0, 0, 2, 1, $11F)
+    %spritemapEntry(1, $4235, $C0, 0, 0, 2, 1, $124)
+    %spritemapEntry(1, $4211, $C0, 0, 0, 2, 1, $120)
+    %spritemapEntry(0, $21, $C0, 0, 0, 2, 1, $10F)
+    %spritemapEntry(1, $4221, $C8, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $43B7, $BD, 0, 0, 2, 1, $14C)
+    %spritemapEntry(1, $43B7, $C5, 0, 0, 2, 1, $15C)
+    %spritemapEntry(1, $4399, $D7, 0, 0, 2, 1, $150)
+    %spritemapEntry(1, $4399, $CF, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $43DA, $CA, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $43E2, $CA, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43F1, $A8, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43F9, $A8, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43F9, $98, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43E9, $98, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43F9, $88, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43E9, $88, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_13:
-    dw $0012,$01FE                                                       ;AAEFD8;
-    db $DF                                                               ;AAEFDC;
-    dw $637D,$C21A                                                       ;AAEFDD;
-    db $E7                                                               ;AAEFE1;
-    dw $6320,$0012                                                       ;AAEFE2;
-    db $E7                                                               ;AAEFE6;
-    dw $630F,$C20A                                                       ;AAEFE7;
-    db $EF                                                               ;AAEFEB;
-    dw $6322,$C203                                                       ;AAEFEC;
-    db $EC                                                               ;AAEFF0;
-    dw $630D,$C3FB                                                       ;AAEFF1;
-    db $E4                                                               ;AAEFF5;
-    dw $630B,$C3FE                                                       ;AAEFF6;
-    db $1F                                                               ;AAEFFA;
-    dw $6370,$C3F6                                                       ;AAEFFB;
-    db $1F                                                               ;AAEFFF;
-    dw $6371,$C3F6                                                       ;AAF000;
-    db $0D                                                               ;AAF004;
-    dw $634C,$C3F6                                                       ;AAF005;
-    db $15                                                               ;AAF009;
-    dw $635C,$C3F7                                                       ;AAF00A;
-    db $05                                                               ;AAF00E;
-    dw $6350,$C3F7                                                       ;AAF00F;
-    db $FD                                                               ;AAF013;
-    dw $6340,$C3FC                                                       ;AAF014;
-    db $F7                                                               ;AAF018;
-    dw $6308,$C3F4                                                       ;AAF019;
-    db $F7                                                               ;AAF01D;
-    dw $6309,$C3F4                                                       ;AAF01E;
-    db $E7                                                               ;AAF022;
-    dw $6306,$C204                                                       ;AAF023;
-    db $E7                                                               ;AAF027;
-    dw $6304,$C3F4                                                       ;AAF028;
-    db $D7                                                               ;AAF02C;
-    dw $6302,$C204                                                       ;AAF02D;
-    db $D7                                                               ;AAF031;
-    dw $6300                                                             ;AAF032;
+    dw $0012                                                             ;AAEFD8;
+    %spritemapEntry(0, $1FE, $DF, 0, 1, 2, 1, $17D)
+    %spritemapEntry(1, $421A, $E7, 0, 1, 2, 1, $120)
+    %spritemapEntry(0, $12, $E7, 0, 1, 2, 1, $10F)
+    %spritemapEntry(1, $420A, $EF, 0, 1, 2, 1, $122)
+    %spritemapEntry(1, $4203, $EC, 0, 1, 2, 1, $10D)
+    %spritemapEntry(1, $43FB, $E4, 0, 1, 2, 1, $10B)
+    %spritemapEntry(1, $43FE, $1F, 0, 1, 2, 1, $170)
+    %spritemapEntry(1, $43F6, $1F, 0, 1, 2, 1, $171)
+    %spritemapEntry(1, $43F6, $0D, 0, 1, 2, 1, $14C)
+    %spritemapEntry(1, $43F6, $15, 0, 1, 2, 1, $15C)
+    %spritemapEntry(1, $43F7, $05, 0, 1, 2, 1, $150)
+    %spritemapEntry(1, $43F7, $FD, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $43FC, $F7, 0, 1, 2, 1, $108)
+    %spritemapEntry(1, $43F4, $F7, 0, 1, 2, 1, $109)
+    %spritemapEntry(1, $43F4, $E7, 0, 1, 2, 1, $106)
+    %spritemapEntry(1, $4204, $E7, 0, 1, 2, 1, $104)
+    %spritemapEntry(1, $43F4, $D7, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $4204, $D7, 0, 1, 2, 1, $100)
 
 Spritemaps_Chozo_14:
-    dw $0011,$01FE                                                       ;AAF034;
-    db $DF                                                               ;AAF038;
-    dw $637D,$C207                                                       ;AAF039;
-    db $ED                                                               ;AAF03D;
-    dw $632A,$C217                                                       ;AAF03E;
-    db $ED                                                               ;AAF042;
-    dw $6328,$C203                                                       ;AAF043;
-    db $EC                                                               ;AAF047;
-    dw $630D,$C3FB                                                       ;AAF048;
-    db $E4                                                               ;AAF04C;
-    dw $630B,$C3FE                                                       ;AAF04D;
-    db $1F                                                               ;AAF051;
-    dw $6370,$C3F6                                                       ;AAF052;
-    db $1F                                                               ;AAF056;
-    dw $6371,$C3F6                                                       ;AAF057;
-    db $0D                                                               ;AAF05B;
-    dw $634C,$C3F6                                                       ;AAF05C;
-    db $15                                                               ;AAF060;
-    dw $635C,$C3F7                                                       ;AAF061;
-    db $05                                                               ;AAF065;
-    dw $6350,$C3F7                                                       ;AAF066;
-    db $FD                                                               ;AAF06A;
-    dw $6340,$C3FC                                                       ;AAF06B;
-    db $F7                                                               ;AAF06F;
-    dw $6308,$C3F4                                                       ;AAF070;
-    db $F7                                                               ;AAF074;
-    dw $6309,$C3F4                                                       ;AAF075;
-    db $E7                                                               ;AAF079;
-    dw $6306,$C204                                                       ;AAF07A;
-    db $E7                                                               ;AAF07E;
-    dw $6304,$C3F4                                                       ;AAF07F;
-    db $D7                                                               ;AAF083;
-    dw $6302,$C204                                                       ;AAF084;
-    db $D7                                                               ;AAF088;
-    dw $6300                                                             ;AAF089;
+    dw $0011                                                             ;AAF034;
+    %spritemapEntry(0, $1FE, $DF, 0, 1, 2, 1, $17D)
+    %spritemapEntry(1, $4207, $ED, 0, 1, 2, 1, $12A)
+    %spritemapEntry(1, $4217, $ED, 0, 1, 2, 1, $128)
+    %spritemapEntry(1, $4203, $EC, 0, 1, 2, 1, $10D)
+    %spritemapEntry(1, $43FB, $E4, 0, 1, 2, 1, $10B)
+    %spritemapEntry(1, $43FE, $1F, 0, 1, 2, 1, $170)
+    %spritemapEntry(1, $43F6, $1F, 0, 1, 2, 1, $171)
+    %spritemapEntry(1, $43F6, $0D, 0, 1, 2, 1, $14C)
+    %spritemapEntry(1, $43F6, $15, 0, 1, 2, 1, $15C)
+    %spritemapEntry(1, $43F7, $05, 0, 1, 2, 1, $150)
+    %spritemapEntry(1, $43F7, $FD, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $43FC, $F7, 0, 1, 2, 1, $108)
+    %spritemapEntry(1, $43F4, $F7, 0, 1, 2, 1, $109)
+    %spritemapEntry(1, $43F4, $E7, 0, 1, 2, 1, $106)
+    %spritemapEntry(1, $4204, $E7, 0, 1, 2, 1, $104)
+    %spritemapEntry(1, $43F4, $D7, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $4204, $D7, 0, 1, 2, 1, $100)
 
 Spritemaps_Chozo_15:
-    dw $0011,$C208                                                       ;AAF08B;
-    db $ED                                                               ;AAF08F;
-    dw $6326,$C218                                                       ;AAF090;
-    db $ED                                                               ;AAF094;
-    dw $6324,$01FE                                                       ;AAF095;
-    db $DF                                                               ;AAF099;
-    dw $637D,$C203                                                       ;AAF09A;
-    db $EC                                                               ;AAF09E;
-    dw $630D,$C3FB                                                       ;AAF09F;
-    db $E4                                                               ;AAF0A3;
-    dw $630B,$C3FE                                                       ;AAF0A4;
-    db $1F                                                               ;AAF0A8;
-    dw $6370,$C3F6                                                       ;AAF0A9;
-    db $1F                                                               ;AAF0AD;
-    dw $6371,$C3F6                                                       ;AAF0AE;
-    db $0D                                                               ;AAF0B2;
-    dw $634C,$C3F6                                                       ;AAF0B3;
-    db $15                                                               ;AAF0B7;
-    dw $635C,$C3F7                                                       ;AAF0B8;
-    db $05                                                               ;AAF0BC;
-    dw $6350,$C3F7                                                       ;AAF0BD;
-    db $FD                                                               ;AAF0C1;
-    dw $6340,$C3FC                                                       ;AAF0C2;
-    db $F7                                                               ;AAF0C6;
-    dw $6308,$C3F4                                                       ;AAF0C7;
-    db $F7                                                               ;AAF0CB;
-    dw $6309,$C3F4                                                       ;AAF0CC;
-    db $E7                                                               ;AAF0D0;
-    dw $6306,$C204                                                       ;AAF0D1;
-    db $E7                                                               ;AAF0D5;
-    dw $6304,$C3F4                                                       ;AAF0D6;
-    db $D7                                                               ;AAF0DA;
-    dw $6302,$C204                                                       ;AAF0DB;
-    db $D7                                                               ;AAF0DF;
-    dw $6300                                                             ;AAF0E0;
+    dw $0011                                                             ;AAF08B;
+    %spritemapEntry(1, $4208, $ED, 0, 1, 2, 1, $126)
+    %spritemapEntry(1, $4218, $ED, 0, 1, 2, 1, $124)
+    %spritemapEntry(0, $1FE, $DF, 0, 1, 2, 1, $17D)
+    %spritemapEntry(1, $4203, $EC, 0, 1, 2, 1, $10D)
+    %spritemapEntry(1, $43FB, $E4, 0, 1, 2, 1, $10B)
+    %spritemapEntry(1, $43FE, $1F, 0, 1, 2, 1, $170)
+    %spritemapEntry(1, $43F6, $1F, 0, 1, 2, 1, $171)
+    %spritemapEntry(1, $43F6, $0D, 0, 1, 2, 1, $14C)
+    %spritemapEntry(1, $43F6, $15, 0, 1, 2, 1, $15C)
+    %spritemapEntry(1, $43F7, $05, 0, 1, 2, 1, $150)
+    %spritemapEntry(1, $43F7, $FD, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $43FC, $F7, 0, 1, 2, 1, $108)
+    %spritemapEntry(1, $43F4, $F7, 0, 1, 2, 1, $109)
+    %spritemapEntry(1, $43F4, $E7, 0, 1, 2, 1, $106)
+    %spritemapEntry(1, $4204, $E7, 0, 1, 2, 1, $104)
+    %spritemapEntry(1, $43F4, $D7, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $4204, $D7, 0, 1, 2, 1, $100)
 
 Spritemaps_Chozo_16:
-    dw $0012,$C208                                                       ;AAF0E2;
-    db $ED                                                               ;AAF0E6;
-    dw $6326,$C218                                                       ;AAF0E7;
-    db $E9                                                               ;AAF0EB;
-    dw $632C,$0018                                                       ;AAF0EC;
-    db $F9                                                               ;AAF0F0;
-    dw $631F,$01FE                                                       ;AAF0F1;
-    db $DF                                                               ;AAF0F5;
-    dw $637D,$C203                                                       ;AAF0F6;
-    db $EC                                                               ;AAF0FA;
-    dw $630D,$C3FB                                                       ;AAF0FB;
-    db $E4                                                               ;AAF0FF;
-    dw $630B,$C3FE                                                       ;AAF100;
-    db $1F                                                               ;AAF104;
-    dw $6370,$C3F6                                                       ;AAF105;
-    db $1F                                                               ;AAF109;
-    dw $6371,$C3F6                                                       ;AAF10A;
-    db $0D                                                               ;AAF10E;
-    dw $634C,$C3F6                                                       ;AAF10F;
-    db $15                                                               ;AAF113;
-    dw $635C,$C3F7                                                       ;AAF114;
-    db $05                                                               ;AAF118;
-    dw $6350,$C3F7                                                       ;AAF119;
-    db $FD                                                               ;AAF11D;
-    dw $6340,$C3FC                                                       ;AAF11E;
-    db $F7                                                               ;AAF122;
-    dw $6308,$C3F4                                                       ;AAF123;
-    db $F7                                                               ;AAF127;
-    dw $6309,$C3F4                                                       ;AAF128;
-    db $E7                                                               ;AAF12C;
-    dw $6306,$C204                                                       ;AAF12D;
-    db $E7                                                               ;AAF131;
-    dw $6304,$C3F4                                                       ;AAF132;
-    db $D7                                                               ;AAF136;
-    dw $6302,$C204                                                       ;AAF137;
-    db $D7                                                               ;AAF13B;
-    dw $6300                                                             ;AAF13C;
+    dw $0012                                                             ;AAF0E2;
+    %spritemapEntry(1, $4208, $ED, 0, 1, 2, 1, $126)
+    %spritemapEntry(1, $4218, $E9, 0, 1, 2, 1, $12C)
+    %spritemapEntry(0, $18, $F9, 0, 1, 2, 1, $11F)
+    %spritemapEntry(0, $1FE, $DF, 0, 1, 2, 1, $17D)
+    %spritemapEntry(1, $4203, $EC, 0, 1, 2, 1, $10D)
+    %spritemapEntry(1, $43FB, $E4, 0, 1, 2, 1, $10B)
+    %spritemapEntry(1, $43FE, $1F, 0, 1, 2, 1, $170)
+    %spritemapEntry(1, $43F6, $1F, 0, 1, 2, 1, $171)
+    %spritemapEntry(1, $43F6, $0D, 0, 1, 2, 1, $14C)
+    %spritemapEntry(1, $43F6, $15, 0, 1, 2, 1, $15C)
+    %spritemapEntry(1, $43F7, $05, 0, 1, 2, 1, $150)
+    %spritemapEntry(1, $43F7, $FD, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $43FC, $F7, 0, 1, 2, 1, $108)
+    %spritemapEntry(1, $43F4, $F7, 0, 1, 2, 1, $109)
+    %spritemapEntry(1, $43F4, $E7, 0, 1, 2, 1, $106)
+    %spritemapEntry(1, $4204, $E7, 0, 1, 2, 1, $104)
+    %spritemapEntry(1, $43F4, $D7, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $4204, $D7, 0, 1, 2, 1, $100)
 
 Spritemaps_Chozo_17:
-    dw $0015,$01E0                                                       ;AAF13E;
-    db $F9                                                               ;AAF142;
-    dw $231F,$C3E8                                                       ;AAF143;
-    db $ED                                                               ;AAF147;
-    dw $2326,$01FA                                                       ;AAF148;
-    db $DF                                                               ;AAF14C;
-    dw $2379,$C3E9                                                       ;AAF14D;
-    db $1B                                                               ;AAF151;
-    dw $2371,$C3E1                                                       ;AAF152;
-    db $1B                                                               ;AAF156;
-    dw $2370,$C3EE                                                       ;AAF157;
-    db $10                                                               ;AAF15B;
-    dw $2358,$C3EE                                                       ;AAF15C;
-    db $08                                                               ;AAF160;
-    dw $2348,$C3F4                                                       ;AAF161;
-    db $FD                                                               ;AAF165;
-    dw $2344,$C3F4                                                       ;AAF166;
-    db $F7                                                               ;AAF16A;
-    dw $2308,$C3FC                                                       ;AAF16B;
-    db $F7                                                               ;AAF16F;
-    dw $2309,$C210                                                       ;AAF170;
-    db $15                                                               ;AAF174;
-    dw $2575,$C204                                                       ;AAF175;
-    db $09                                                               ;AAF179;
-    dw $254E,$C3FB                                                       ;AAF17A;
-    db $FD                                                               ;AAF17E;
-    dw $6542,$C3FB                                                       ;AAF17F;
-    db $05                                                               ;AAF183;
-    dw $6552,$C3D8                                                       ;AAF184;
-    db $E9                                                               ;AAF188;
-    dw $232C,$C3ED                                                       ;AAF189;
-    db $EC                                                               ;AAF18D;
-    dw $230D,$C3F5                                                       ;AAF18E;
-    db $E4                                                               ;AAF192;
-    dw $230B,$C3FC                                                       ;AAF193;
-    db $E7                                                               ;AAF197;
-    dw $2306,$C3EC                                                       ;AAF198;
-    db $E7                                                               ;AAF19C;
-    dw $2304,$C3FC                                                       ;AAF19D;
-    db $D7                                                               ;AAF1A1;
-    dw $2302,$C3EC                                                       ;AAF1A2;
-    db $D7                                                               ;AAF1A6;
-    dw $2300                                                             ;AAF1A7;
+    dw $0015                                                             ;AAF13E;
+    %spritemapEntry(0, $1E0, $F9, 0, 0, 2, 1, $11F)
+    %spritemapEntry(1, $43E8, $ED, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1FA, $DF, 0, 0, 2, 1, $179)
+    %spritemapEntry(1, $43E9, $1B, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43E1, $1B, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $43EE, $10, 0, 0, 2, 1, $158)
+    %spritemapEntry(1, $43EE, $08, 0, 0, 2, 1, $148)
+    %spritemapEntry(1, $43F4, $FD, 0, 0, 2, 1, $144)
+    %spritemapEntry(1, $43F4, $F7, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F7, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $4210, $15, 0, 0, 2, 2, $175)
+    %spritemapEntry(1, $4204, $09, 0, 0, 2, 2, $14E)
+    %spritemapEntry(1, $43FB, $FD, 0, 1, 2, 2, $142)
+    %spritemapEntry(1, $43FB, $05, 0, 1, 2, 2, $152)
+    %spritemapEntry(1, $43D8, $E9, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43ED, $EC, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E4, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43FC, $E7, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E7, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D7, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D7, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_18:
-    dw $0016,$01E0                                                       ;AAF1A9;
-    db $F8                                                               ;AAF1AD;
-    dw $231F,$C3E8                                                       ;AAF1AE;
-    db $EC                                                               ;AAF1B2;
-    dw $2326,$01FA                                                       ;AAF1B3;
-    db $DE                                                               ;AAF1B7;
-    dw $237A,$C3EC                                                       ;AAF1B8;
-    db $1C                                                               ;AAF1BC;
-    dw $2371,$C3E4                                                       ;AAF1BD;
-    db $1C                                                               ;AAF1C1;
-    dw $2370,$C3F1                                                       ;AAF1C2;
-    db $11                                                               ;AAF1C6;
-    dw $2358,$C3F1                                                       ;AAF1C7;
-    db $09                                                               ;AAF1CB;
-    dw $2348,$C3F7                                                       ;AAF1CC;
-    db $04                                                               ;AAF1D0;
-    dw $2352,$C3F7                                                       ;AAF1D1;
-    db $FC                                                               ;AAF1D5;
-    dw $2342,$C3F4                                                       ;AAF1D6;
-    db $F6                                                               ;AAF1DA;
-    dw $2308,$C3FC                                                       ;AAF1DB;
-    db $F6                                                               ;AAF1DF;
-    dw $2309,$C209                                                       ;AAF1E0;
-    db $16                                                               ;AAF1E4;
-    dw $2575,$C3FC                                                       ;AAF1E5;
-    db $09                                                               ;AAF1E9;
-    dw $254E,$C3F9                                                       ;AAF1EA;
-    db $04                                                               ;AAF1EE;
-    dw $2550,$C3F9                                                       ;AAF1EF;
-    db $FC                                                               ;AAF1F3;
-    dw $2540,$C3D8                                                       ;AAF1F4;
-    db $E8                                                               ;AAF1F8;
-    dw $232C,$C3ED                                                       ;AAF1F9;
-    db $EB                                                               ;AAF1FD;
-    dw $230D,$C3F5                                                       ;AAF1FE;
-    db $E3                                                               ;AAF202;
-    dw $230B,$C3FC                                                       ;AAF203;
-    db $E6                                                               ;AAF207;
-    dw $2306,$C3EC                                                       ;AAF208;
-    db $E6                                                               ;AAF20C;
-    dw $2304,$C3FC                                                       ;AAF20D;
-    db $D6                                                               ;AAF211;
-    dw $2302,$C3EC                                                       ;AAF212;
-    db $D6                                                               ;AAF216;
-    dw $2300                                                             ;AAF217;
+    dw $0016                                                             ;AAF1A9;
+    %spritemapEntry(0, $1E0, $F8, 0, 0, 2, 1, $11F)
+    %spritemapEntry(1, $43E8, $EC, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1FA, $DE, 0, 0, 2, 1, $17A)
+    %spritemapEntry(1, $43EC, $1C, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43E4, $1C, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $43F1, $11, 0, 0, 2, 1, $158)
+    %spritemapEntry(1, $43F1, $09, 0, 0, 2, 1, $148)
+    %spritemapEntry(1, $43F7, $04, 0, 0, 2, 1, $152)
+    %spritemapEntry(1, $43F7, $FC, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $43F4, $F6, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F6, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $4209, $16, 0, 0, 2, 2, $175)
+    %spritemapEntry(1, $43FC, $09, 0, 0, 2, 2, $14E)
+    %spritemapEntry(1, $43F9, $04, 0, 0, 2, 2, $150)
+    %spritemapEntry(1, $43F9, $FC, 0, 0, 2, 2, $140)
+    %spritemapEntry(1, $43D8, $E8, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43ED, $EB, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E3, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43FC, $E6, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E6, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D6, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D6, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_19:
-    dw $0016,$C3E8                                                       ;AAF219;
-    db $EB                                                               ;AAF21D;
-    dw $2326,$01E0                                                       ;AAF21E;
-    db $F7                                                               ;AAF222;
-    dw $231F,$01FA                                                       ;AAF223;
-    db $DD                                                               ;AAF227;
-    dw $237B,$C3FA                                                       ;AAF228;
-    db $1E                                                               ;AAF22C;
-    dw $2371,$C3F2                                                       ;AAF22D;
-    db $1E                                                               ;AAF231;
-    dw $2370,$C3FA                                                       ;AAF232;
-    db $13                                                               ;AAF236;
-    dw $235C,$C3FA                                                       ;AAF237;
-    db $0B                                                               ;AAF23B;
-    dw $234C,$C3FD                                                       ;AAF23C;
-    db $17                                                               ;AAF240;
-    dw $2573,$C3F9                                                       ;AAF241;
-    db $03                                                               ;AAF245;
-    dw $2350,$C3F9                                                       ;AAF246;
-    db $FB                                                               ;AAF24A;
-    dw $2340,$C3FA                                                       ;AAF24B;
-    db $08                                                               ;AAF24F;
-    dw $254E,$C3F4                                                       ;AAF250;
-    db $F5                                                               ;AAF254;
-    dw $2308,$C3FC                                                       ;AAF255;
-    db $F5                                                               ;AAF259;
-    dw $2309,$C3F7                                                       ;AAF25A;
-    db $03                                                               ;AAF25E;
-    dw $2552,$C3F7                                                       ;AAF25F;
-    db $FB                                                               ;AAF263;
-    dw $2542,$C3D8                                                       ;AAF264;
-    db $E7                                                               ;AAF268;
-    dw $232C,$C3ED                                                       ;AAF269;
-    db $EA                                                               ;AAF26D;
-    dw $230D,$C3F5                                                       ;AAF26E;
-    db $E2                                                               ;AAF272;
-    dw $230B,$C3FC                                                       ;AAF273;
-    db $E5                                                               ;AAF277;
-    dw $2306,$C3EC                                                       ;AAF278;
-    db $E5                                                               ;AAF27C;
-    dw $2304,$C3FC                                                       ;AAF27D;
-    db $D5                                                               ;AAF281;
-    dw $2302,$C3EC                                                       ;AAF282;
-    db $D5                                                               ;AAF286;
-    dw $2300                                                             ;AAF287;
+    dw $0016                                                             ;AAF219;
+    %spritemapEntry(1, $43E8, $EB, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1E0, $F7, 0, 0, 2, 1, $11F)
+    %spritemapEntry(0, $1FA, $DD, 0, 0, 2, 1, $17B)
+    %spritemapEntry(1, $43FA, $1E, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43F2, $1E, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $43FA, $13, 0, 0, 2, 1, $15C)
+    %spritemapEntry(1, $43FA, $0B, 0, 0, 2, 1, $14C)
+    %spritemapEntry(1, $43FD, $17, 0, 0, 2, 2, $173)
+    %spritemapEntry(1, $43F9, $03, 0, 0, 2, 1, $150)
+    %spritemapEntry(1, $43F9, $FB, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $43FA, $08, 0, 0, 2, 2, $14E)
+    %spritemapEntry(1, $43F4, $F5, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F5, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43F7, $03, 0, 0, 2, 2, $152)
+    %spritemapEntry(1, $43F7, $FB, 0, 0, 2, 2, $142)
+    %spritemapEntry(1, $43D8, $E7, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43ED, $EA, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E2, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43FC, $E5, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E5, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D5, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D5, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_1A:
-    dw $0016,$01E0                                                       ;AAF289;
-    db $F8                                                               ;AAF28D;
-    dw $231F,$C3E8                                                       ;AAF28E;
-    db $EC                                                               ;AAF292;
-    dw $2326,$01FA                                                       ;AAF293;
-    db $DE                                                               ;AAF297;
-    dw $237C,$C201                                                       ;AAF298;
-    db $1D                                                               ;AAF29C;
-    dw $2371,$C3F9                                                       ;AAF29D;
-    db $1D                                                               ;AAF2A1;
-    dw $2370,$C201                                                       ;AAF2A2;
-    db $12                                                               ;AAF2A6;
-    dw $2356,$C201                                                       ;AAF2A7;
-    db $0A                                                               ;AAF2AB;
-    dw $2346,$C3FB                                                       ;AAF2AC;
-    db $04                                                               ;AAF2B0;
-    dw $6352,$C3FB                                                       ;AAF2B1;
-    db $FC                                                               ;AAF2B5;
-    dw $6342,$C3F2                                                       ;AAF2B6;
-    db $1B                                                               ;AAF2BA;
-    dw $2573,$C3F3                                                       ;AAF2BB;
-    db $10                                                               ;AAF2BF;
-    dw $2556,$C3F3                                                       ;AAF2C0;
-    db $08                                                               ;AAF2C4;
-    dw $2546,$C3F4                                                       ;AAF2C5;
-    db $F6                                                               ;AAF2C9;
-    dw $2308,$C3FC                                                       ;AAF2CA;
-    db $F6                                                               ;AAF2CE;
-    dw $2309,$C3F4                                                       ;AAF2CF;
-    db $FC                                                               ;AAF2D3;
-    dw $2544,$C3D8                                                       ;AAF2D4;
-    db $E8                                                               ;AAF2D8;
-    dw $232C,$C3ED                                                       ;AAF2D9;
-    db $EB                                                               ;AAF2DD;
-    dw $230D,$C3F5                                                       ;AAF2DE;
-    db $E3                                                               ;AAF2E2;
-    dw $230B,$C3FC                                                       ;AAF2E3;
-    db $E6                                                               ;AAF2E7;
-    dw $2306,$C3EC                                                       ;AAF2E8;
-    db $E6                                                               ;AAF2EC;
-    dw $2304,$C3FC                                                       ;AAF2ED;
-    db $D6                                                               ;AAF2F1;
-    dw $2302,$C3EC                                                       ;AAF2F2;
-    db $D6                                                               ;AAF2F6;
-    dw $2300                                                             ;AAF2F7;
+    dw $0016                                                             ;AAF289;
+    %spritemapEntry(0, $1E0, $F8, 0, 0, 2, 1, $11F)
+    %spritemapEntry(1, $43E8, $EC, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1FA, $DE, 0, 0, 2, 1, $17C)
+    %spritemapEntry(1, $4201, $1D, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43F9, $1D, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $4201, $12, 0, 0, 2, 1, $156)
+    %spritemapEntry(1, $4201, $0A, 0, 0, 2, 1, $146)
+    %spritemapEntry(1, $43FB, $04, 0, 1, 2, 1, $152)
+    %spritemapEntry(1, $43FB, $FC, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $43F2, $1B, 0, 0, 2, 2, $173)
+    %spritemapEntry(1, $43F3, $10, 0, 0, 2, 2, $156)
+    %spritemapEntry(1, $43F3, $08, 0, 0, 2, 2, $146)
+    %spritemapEntry(1, $43F4, $F6, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F6, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43F4, $FC, 0, 0, 2, 2, $144)
+    %spritemapEntry(1, $43D8, $E8, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43ED, $EB, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E3, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43FC, $E6, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E6, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D6, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D6, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_1B:
-    dw $0015,$C3E8                                                       ;AAF2F9;
-    db $ED                                                               ;AAF2FD;
-    dw $2326,$01E0                                                       ;AAF2FE;
-    db $F9                                                               ;AAF302;
-    dw $231F,$01FA                                                       ;AAF303;
-    db $DF                                                               ;AAF307;
-    dw $2379,$C210                                                       ;AAF308;
-    db $15                                                               ;AAF30C;
-    dw $2375,$C204                                                       ;AAF30D;
-    db $09                                                               ;AAF311;
-    dw $234E,$C3FB                                                       ;AAF312;
-    db $05                                                               ;AAF316;
-    dw $6352,$C3FB                                                       ;AAF317;
-    db $FD                                                               ;AAF31B;
-    dw $6342,$C3F4                                                       ;AAF31C;
-    db $F7                                                               ;AAF320;
-    dw $2308,$C3FC                                                       ;AAF321;
-    db $F7                                                               ;AAF325;
-    dw $2309,$C3E1                                                       ;AAF326;
-    db $1B                                                               ;AAF32A;
-    dw $2570,$C3E9                                                       ;AAF32B;
-    db $1B                                                               ;AAF32F;
-    dw $2571,$C3EE                                                       ;AAF330;
-    db $10                                                               ;AAF334;
-    dw $2558,$C3EE                                                       ;AAF335;
-    db $08                                                               ;AAF339;
-    dw $2548,$C3F4                                                       ;AAF33A;
-    db $FD                                                               ;AAF33E;
-    dw $2544,$C3D8                                                       ;AAF33F;
-    db $E9                                                               ;AAF343;
-    dw $232C,$C3ED                                                       ;AAF344;
-    db $EC                                                               ;AAF348;
-    dw $230D,$C3F5                                                       ;AAF349;
-    db $E4                                                               ;AAF34D;
-    dw $230B,$C3FC                                                       ;AAF34E;
-    db $E7                                                               ;AAF352;
-    dw $2306,$C3EC                                                       ;AAF353;
-    db $E7                                                               ;AAF357;
-    dw $2304,$C3FC                                                       ;AAF358;
-    db $D7                                                               ;AAF35C;
-    dw $2302,$C3EC                                                       ;AAF35D;
-    db $D7                                                               ;AAF361;
-    dw $2300                                                             ;AAF362;
+    dw $0015                                                             ;AAF2F9;
+    %spritemapEntry(1, $43E8, $ED, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1E0, $F9, 0, 0, 2, 1, $11F)
+    %spritemapEntry(0, $1FA, $DF, 0, 0, 2, 1, $179)
+    %spritemapEntry(1, $4210, $15, 0, 0, 2, 1, $175)
+    %spritemapEntry(1, $4204, $09, 0, 0, 2, 1, $14E)
+    %spritemapEntry(1, $43FB, $05, 0, 1, 2, 1, $152)
+    %spritemapEntry(1, $43FB, $FD, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $43F4, $F7, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F7, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43E1, $1B, 0, 0, 2, 2, $170)
+    %spritemapEntry(1, $43E9, $1B, 0, 0, 2, 2, $171)
+    %spritemapEntry(1, $43EE, $10, 0, 0, 2, 2, $158)
+    %spritemapEntry(1, $43EE, $08, 0, 0, 2, 2, $148)
+    %spritemapEntry(1, $43F4, $FD, 0, 0, 2, 2, $144)
+    %spritemapEntry(1, $43D8, $E9, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43ED, $EC, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E4, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43FC, $E7, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E7, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D7, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D7, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_1C:
-    dw $0016,$01E0                                                       ;AAF364;
-    db $F8                                                               ;AAF368;
-    dw $231F,$C3E8                                                       ;AAF369;
-    db $EC                                                               ;AAF36D;
-    dw $2326,$01FA                                                       ;AAF36E;
-    db $DE                                                               ;AAF372;
-    dw $237A,$C209                                                       ;AAF373;
-    db $16                                                               ;AAF377;
-    dw $2375,$C3FC                                                       ;AAF378;
-    db $09                                                               ;AAF37C;
-    dw $234E,$C3F9                                                       ;AAF37D;
-    db $04                                                               ;AAF381;
-    dw $2350,$C3F9                                                       ;AAF382;
-    db $FC                                                               ;AAF386;
-    dw $2340,$C3D8                                                       ;AAF387;
-    db $E8                                                               ;AAF38B;
-    dw $232C,$C3F5                                                       ;AAF38C;
-    db $E3                                                               ;AAF390;
-    dw $230B,$C3ED                                                       ;AAF391;
-    db $EB                                                               ;AAF395;
-    dw $230D,$C3F4                                                       ;AAF396;
-    db $F6                                                               ;AAF39A;
-    dw $2308,$C3FC                                                       ;AAF39B;
-    db $F6                                                               ;AAF39F;
-    dw $2309,$C3FC                                                       ;AAF3A0;
-    db $E6                                                               ;AAF3A4;
-    dw $2306,$C3EC                                                       ;AAF3A5;
-    db $E6                                                               ;AAF3A9;
-    dw $2304,$C3FC                                                       ;AAF3AA;
-    db $D6                                                               ;AAF3AE;
-    dw $2302,$C3EC                                                       ;AAF3AF;
-    db $D6                                                               ;AAF3B3;
-    dw $2300,$C3E4                                                       ;AAF3B4;
-    db $1C                                                               ;AAF3B8;
-    dw $2570,$C3EC                                                       ;AAF3B9;
-    db $1C                                                               ;AAF3BD;
-    dw $2571,$C3F1                                                       ;AAF3BE;
-    db $11                                                               ;AAF3C2;
-    dw $2558,$C3F1                                                       ;AAF3C3;
-    db $09                                                               ;AAF3C7;
-    dw $2548,$C3F7                                                       ;AAF3C8;
-    db $04                                                               ;AAF3CC;
-    dw $2552,$C3F7                                                       ;AAF3CD;
-    db $FC                                                               ;AAF3D1;
-    dw $2542                                                             ;AAF3D2;
+    dw $0016                                                             ;AAF364;
+    %spritemapEntry(0, $1E0, $F8, 0, 0, 2, 1, $11F)
+    %spritemapEntry(1, $43E8, $EC, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1FA, $DE, 0, 0, 2, 1, $17A)
+    %spritemapEntry(1, $4209, $16, 0, 0, 2, 1, $175)
+    %spritemapEntry(1, $43FC, $09, 0, 0, 2, 1, $14E)
+    %spritemapEntry(1, $43F9, $04, 0, 0, 2, 1, $150)
+    %spritemapEntry(1, $43F9, $FC, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $43D8, $E8, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43F5, $E3, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43ED, $EB, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F4, $F6, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F6, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43FC, $E6, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E6, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D6, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D6, 0, 0, 2, 1, $100)
+    %spritemapEntry(1, $43E4, $1C, 0, 0, 2, 2, $170)
+    %spritemapEntry(1, $43EC, $1C, 0, 0, 2, 2, $171)
+    %spritemapEntry(1, $43F1, $11, 0, 0, 2, 2, $158)
+    %spritemapEntry(1, $43F1, $09, 0, 0, 2, 2, $148)
+    %spritemapEntry(1, $43F7, $04, 0, 0, 2, 2, $152)
+    %spritemapEntry(1, $43F7, $FC, 0, 0, 2, 2, $142)
 
 Spritemaps_Chozo_1D:
-    dw $0016,$C3E8                                                       ;AAF3D4;
-    db $EB                                                               ;AAF3D8;
-    dw $2326,$01E0                                                       ;AAF3D9;
-    db $F7                                                               ;AAF3DD;
-    dw $231F,$01FA                                                       ;AAF3DE;
-    db $DD                                                               ;AAF3E2;
-    dw $237B,$C3FD                                                       ;AAF3E3;
-    db $17                                                               ;AAF3E7;
-    dw $2373,$C3FA                                                       ;AAF3E8;
-    db $08                                                               ;AAF3EC;
-    dw $234E,$C3F7                                                       ;AAF3ED;
-    db $03                                                               ;AAF3F1;
-    dw $2352,$C3F7                                                       ;AAF3F2;
-    db $FB                                                               ;AAF3F6;
-    dw $2342,$C3F2                                                       ;AAF3F7;
-    db $1E                                                               ;AAF3FB;
-    dw $2570,$C3FA                                                       ;AAF3FC;
-    db $1E                                                               ;AAF400;
-    dw $2571,$C3FA                                                       ;AAF401;
-    db $13                                                               ;AAF405;
-    dw $255C,$C3FA                                                       ;AAF406;
-    db $0B                                                               ;AAF40A;
-    dw $254C,$C3F9                                                       ;AAF40B;
-    db $03                                                               ;AAF40F;
-    dw $2550,$C3F9                                                       ;AAF410;
-    db $FB                                                               ;AAF414;
-    dw $2540,$C3D8                                                       ;AAF415;
-    db $E7                                                               ;AAF419;
-    dw $232C,$C3ED                                                       ;AAF41A;
-    db $EA                                                               ;AAF41E;
-    dw $230D,$C3F5                                                       ;AAF41F;
-    db $E2                                                               ;AAF423;
-    dw $230B,$C3F4                                                       ;AAF424;
-    db $F5                                                               ;AAF428;
-    dw $2308,$C3FC                                                       ;AAF429;
-    db $F5                                                               ;AAF42D;
-    dw $2309,$C3FC                                                       ;AAF42E;
-    db $E5                                                               ;AAF432;
-    dw $2306,$C3EC                                                       ;AAF433;
-    db $E5                                                               ;AAF437;
-    dw $2304,$C3FC                                                       ;AAF438;
-    db $D5                                                               ;AAF43C;
-    dw $2302,$C3EC                                                       ;AAF43D;
-    db $D5                                                               ;AAF441;
-    dw $2300                                                             ;AAF442;
+    dw $0016                                                             ;AAF3D4;
+    %spritemapEntry(1, $43E8, $EB, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1E0, $F7, 0, 0, 2, 1, $11F)
+    %spritemapEntry(0, $1FA, $DD, 0, 0, 2, 1, $17B)
+    %spritemapEntry(1, $43FD, $17, 0, 0, 2, 1, $173)
+    %spritemapEntry(1, $43FA, $08, 0, 0, 2, 1, $14E)
+    %spritemapEntry(1, $43F7, $03, 0, 0, 2, 1, $152)
+    %spritemapEntry(1, $43F7, $FB, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $43F2, $1E, 0, 0, 2, 2, $170)
+    %spritemapEntry(1, $43FA, $1E, 0, 0, 2, 2, $171)
+    %spritemapEntry(1, $43FA, $13, 0, 0, 2, 2, $15C)
+    %spritemapEntry(1, $43FA, $0B, 0, 0, 2, 2, $14C)
+    %spritemapEntry(1, $43F9, $03, 0, 0, 2, 2, $150)
+    %spritemapEntry(1, $43F9, $FB, 0, 0, 2, 2, $140)
+    %spritemapEntry(1, $43D8, $E7, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43ED, $EA, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E2, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43F4, $F5, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F5, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43FC, $E5, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E5, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D5, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D5, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_1E:
-    dw $0016,$01E0                                                       ;AAF444;
-    db $F8                                                               ;AAF448;
-    dw $231F,$C3E8                                                       ;AAF449;
-    db $EC                                                               ;AAF44D;
-    dw $2326,$01FA                                                       ;AAF44E;
-    db $DE                                                               ;AAF452;
-    dw $237C,$C3F2                                                       ;AAF453;
-    db $1B                                                               ;AAF457;
-    dw $2373,$C3F3                                                       ;AAF458;
-    db $10                                                               ;AAF45C;
-    dw $2356,$C3F3                                                       ;AAF45D;
-    db $08                                                               ;AAF461;
-    dw $2346,$C3F4                                                       ;AAF462;
-    db $FC                                                               ;AAF466;
-    dw $2344,$C3F9                                                       ;AAF467;
-    db $1D                                                               ;AAF46B;
-    dw $2570,$C201                                                       ;AAF46C;
-    db $1D                                                               ;AAF470;
-    dw $2571,$C201                                                       ;AAF471;
-    db $12                                                               ;AAF475;
-    dw $2556,$C201                                                       ;AAF476;
-    db $0A                                                               ;AAF47A;
-    dw $2546,$C3F4                                                       ;AAF47B;
-    db $F6                                                               ;AAF47F;
-    dw $2308,$C3FC                                                       ;AAF480;
-    db $F6                                                               ;AAF484;
-    dw $2309,$C3FB                                                       ;AAF485;
-    db $FC                                                               ;AAF489;
-    dw $6542,$C3FB                                                       ;AAF48A;
-    db $04                                                               ;AAF48E;
-    dw $6552,$C3D8                                                       ;AAF48F;
-    db $E8                                                               ;AAF493;
-    dw $232C,$C3ED                                                       ;AAF494;
-    db $EB                                                               ;AAF498;
-    dw $230D,$C3F5                                                       ;AAF499;
-    db $E3                                                               ;AAF49D;
-    dw $230B,$C3FC                                                       ;AAF49E;
-    db $E6                                                               ;AAF4A2;
-    dw $2306,$C3EC                                                       ;AAF4A3;
-    db $E6                                                               ;AAF4A7;
-    dw $2304,$C3FC                                                       ;AAF4A8;
-    db $D6                                                               ;AAF4AC;
-    dw $2302,$C3EC                                                       ;AAF4AD;
-    db $D6                                                               ;AAF4B1;
-    dw $2300                                                             ;AAF4B2;
+    dw $0016                                                             ;AAF444;
+    %spritemapEntry(0, $1E0, $F8, 0, 0, 2, 1, $11F)
+    %spritemapEntry(1, $43E8, $EC, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $1FA, $DE, 0, 0, 2, 1, $17C)
+    %spritemapEntry(1, $43F2, $1B, 0, 0, 2, 1, $173)
+    %spritemapEntry(1, $43F3, $10, 0, 0, 2, 1, $156)
+    %spritemapEntry(1, $43F3, $08, 0, 0, 2, 1, $146)
+    %spritemapEntry(1, $43F4, $FC, 0, 0, 2, 1, $144)
+    %spritemapEntry(1, $43F9, $1D, 0, 0, 2, 2, $170)
+    %spritemapEntry(1, $4201, $1D, 0, 0, 2, 2, $171)
+    %spritemapEntry(1, $4201, $12, 0, 0, 2, 2, $156)
+    %spritemapEntry(1, $4201, $0A, 0, 0, 2, 2, $146)
+    %spritemapEntry(1, $43F4, $F6, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43FC, $F6, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43FB, $FC, 0, 1, 2, 2, $142)
+    %spritemapEntry(1, $43FB, $04, 0, 1, 2, 2, $152)
+    %spritemapEntry(1, $43D8, $E8, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $43ED, $EB, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $43F5, $E3, 0, 0, 2, 1, $10B)
+    %spritemapEntry(1, $43FC, $E6, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43EC, $E6, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43FC, $D6, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43EC, $D6, 0, 0, 2, 1, $100)
 
 Spritemaps_Chozo_1F:
-    dw $0012,$C208                                                       ;AAF4B4;
-    db $ED                                                               ;AAF4B8;
-    dw $6326,$0018                                                       ;AAF4B9;
-    db $F9                                                               ;AAF4BD;
-    dw $631F,$01FE                                                       ;AAF4BE;
-    db $DF                                                               ;AAF4C2;
-    dw $637D,$C218                                                       ;AAF4C3;
-    db $E9                                                               ;AAF4C7;
-    dw $632C,$C203                                                       ;AAF4C8;
-    db $EC                                                               ;AAF4CC;
-    dw $630D,$C3FB                                                       ;AAF4CD;
-    db $E4                                                               ;AAF4D1;
-    dw $630B,$C3FE                                                       ;AAF4D2;
-    db $1F                                                               ;AAF4D6;
-    dw $6370,$C3F6                                                       ;AAF4D7;
-    db $1F                                                               ;AAF4DB;
-    dw $6371,$C3F6                                                       ;AAF4DC;
-    db $0D                                                               ;AAF4E0;
-    dw $634C,$C3F6                                                       ;AAF4E1;
-    db $15                                                               ;AAF4E5;
-    dw $635C,$C3F7                                                       ;AAF4E6;
-    db $05                                                               ;AAF4EA;
-    dw $6350,$C3F7                                                       ;AAF4EB;
-    db $FD                                                               ;AAF4EF;
-    dw $6340,$C3FC                                                       ;AAF4F0;
-    db $F7                                                               ;AAF4F4;
-    dw $6308,$C3F4                                                       ;AAF4F5;
-    db $F7                                                               ;AAF4F9;
-    dw $6309,$C3F4                                                       ;AAF4FA;
-    db $E7                                                               ;AAF4FE;
-    dw $6306,$C204                                                       ;AAF4FF;
-    db $E7                                                               ;AAF503;
-    dw $6304,$C3F4                                                       ;AAF504;
-    db $D7                                                               ;AAF508;
-    dw $6302,$C204                                                       ;AAF509;
-    db $D7                                                               ;AAF50D;
-    dw $6300                                                             ;AAF50E;
+    dw $0012                                                             ;AAF4B4;
+    %spritemapEntry(1, $4208, $ED, 0, 1, 2, 1, $126)
+    %spritemapEntry(0, $18, $F9, 0, 1, 2, 1, $11F)
+    %spritemapEntry(0, $1FE, $DF, 0, 1, 2, 1, $17D)
+    %spritemapEntry(1, $4218, $E9, 0, 1, 2, 1, $12C)
+    %spritemapEntry(1, $4203, $EC, 0, 1, 2, 1, $10D)
+    %spritemapEntry(1, $43FB, $E4, 0, 1, 2, 1, $10B)
+    %spritemapEntry(1, $43FE, $1F, 0, 1, 2, 1, $170)
+    %spritemapEntry(1, $43F6, $1F, 0, 1, 2, 1, $171)
+    %spritemapEntry(1, $43F6, $0D, 0, 1, 2, 1, $14C)
+    %spritemapEntry(1, $43F6, $15, 0, 1, 2, 1, $15C)
+    %spritemapEntry(1, $43F7, $05, 0, 1, 2, 1, $150)
+    %spritemapEntry(1, $43F7, $FD, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $43FC, $F7, 0, 1, 2, 1, $108)
+    %spritemapEntry(1, $43F4, $F7, 0, 1, 2, 1, $109)
+    %spritemapEntry(1, $43F4, $E7, 0, 1, 2, 1, $106)
+    %spritemapEntry(1, $4204, $E7, 0, 1, 2, 1, $104)
+    %spritemapEntry(1, $43F4, $D7, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $4204, $D7, 0, 1, 2, 1, $100)
 
 Spritemaps_Chozo_20:
-    dw $0012,$0018                                                       ;AAF510;
-    db $F9                                                               ;AAF514;
-    dw $631F,$C208                                                       ;AAF515;
-    db $ED                                                               ;AAF519;
-    dw $6326,$01FE                                                       ;AAF51A;
-    db $DF                                                               ;AAF51E;
-    dw $637C,$C218                                                       ;AAF51F;
-    db $E9                                                               ;AAF523;
-    dw $632C,$C203                                                       ;AAF524;
-    db $EC                                                               ;AAF528;
-    dw $630D,$C3FB                                                       ;AAF529;
-    db $E4                                                               ;AAF52D;
-    dw $630B,$C3FE                                                       ;AAF52E;
-    db $1F                                                               ;AAF532;
-    dw $6370,$C3F6                                                       ;AAF533;
-    db $1F                                                               ;AAF537;
-    dw $6371,$C3F6                                                       ;AAF538;
-    db $0D                                                               ;AAF53C;
-    dw $634C,$C3F6                                                       ;AAF53D;
-    db $15                                                               ;AAF541;
-    dw $635C,$C3F7                                                       ;AAF542;
-    db $05                                                               ;AAF546;
-    dw $6350,$C3F7                                                       ;AAF547;
-    db $FD                                                               ;AAF54B;
-    dw $6340,$C3FC                                                       ;AAF54C;
-    db $F7                                                               ;AAF550;
-    dw $6308,$C3F4                                                       ;AAF551;
-    db $F7                                                               ;AAF555;
-    dw $6309,$C3F4                                                       ;AAF556;
-    db $E7                                                               ;AAF55A;
-    dw $6306,$C204                                                       ;AAF55B;
-    db $E7                                                               ;AAF55F;
-    dw $6304,$C3F4                                                       ;AAF560;
-    db $D7                                                               ;AAF564;
-    dw $6302,$C204                                                       ;AAF565;
-    db $D7                                                               ;AAF569;
-    dw $6300                                                             ;AAF56A;
+    dw $0012                                                             ;AAF510;
+    %spritemapEntry(0, $18, $F9, 0, 1, 2, 1, $11F)
+    %spritemapEntry(1, $4208, $ED, 0, 1, 2, 1, $126)
+    %spritemapEntry(0, $1FE, $DF, 0, 1, 2, 1, $17C)
+    %spritemapEntry(1, $4218, $E9, 0, 1, 2, 1, $12C)
+    %spritemapEntry(1, $4203, $EC, 0, 1, 2, 1, $10D)
+    %spritemapEntry(1, $43FB, $E4, 0, 1, 2, 1, $10B)
+    %spritemapEntry(1, $43FE, $1F, 0, 1, 2, 1, $170)
+    %spritemapEntry(1, $43F6, $1F, 0, 1, 2, 1, $171)
+    %spritemapEntry(1, $43F6, $0D, 0, 1, 2, 1, $14C)
+    %spritemapEntry(1, $43F6, $15, 0, 1, 2, 1, $15C)
+    %spritemapEntry(1, $43F7, $05, 0, 1, 2, 1, $150)
+    %spritemapEntry(1, $43F7, $FD, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $43FC, $F7, 0, 1, 2, 1, $108)
+    %spritemapEntry(1, $43F4, $F7, 0, 1, 2, 1, $109)
+    %spritemapEntry(1, $43F4, $E7, 0, 1, 2, 1, $106)
+    %spritemapEntry(1, $4204, $E7, 0, 1, 2, 1, $104)
+    %spritemapEntry(1, $43F4, $D7, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $4204, $D7, 0, 1, 2, 1, $100)
 
 Spritemaps_Chozo_21:
-    dw $0012,$C218                                                       ;AAF56C;
-    db $E9                                                               ;AAF570;
-    dw $632C,$C208                                                       ;AAF571;
-    db $ED                                                               ;AAF575;
-    dw $6326,$0018                                                       ;AAF576;
-    db $F9                                                               ;AAF57A;
-    dw $631F,$01FE                                                       ;AAF57B;
-    db $DF                                                               ;AAF57F;
-    dw $637B,$C203                                                       ;AAF580;
-    db $EC                                                               ;AAF584;
-    dw $630D,$C3FB                                                       ;AAF585;
-    db $E4                                                               ;AAF589;
-    dw $630B,$C3FE                                                       ;AAF58A;
-    db $1F                                                               ;AAF58E;
-    dw $6370,$C3F6                                                       ;AAF58F;
-    db $1F                                                               ;AAF593;
-    dw $6371,$C3F6                                                       ;AAF594;
-    db $0D                                                               ;AAF598;
-    dw $634C,$C3F6                                                       ;AAF599;
-    db $15                                                               ;AAF59D;
-    dw $635C,$C3F7                                                       ;AAF59E;
-    db $05                                                               ;AAF5A2;
-    dw $6350,$C3F7                                                       ;AAF5A3;
-    db $FD                                                               ;AAF5A7;
-    dw $6340,$C3FC                                                       ;AAF5A8;
-    db $F7                                                               ;AAF5AC;
-    dw $6308,$C3F4                                                       ;AAF5AD;
-    db $F7                                                               ;AAF5B1;
-    dw $6309,$C3F4                                                       ;AAF5B2;
-    db $E7                                                               ;AAF5B6;
-    dw $6306,$C204                                                       ;AAF5B7;
-    db $E7                                                               ;AAF5BB;
-    dw $6304,$C3F4                                                       ;AAF5BC;
-    db $D7                                                               ;AAF5C0;
-    dw $6302,$C204                                                       ;AAF5C1;
-    db $D7                                                               ;AAF5C5;
-    dw $6300                                                             ;AAF5C6;
+    dw $0012                                                             ;AAF56C;
+    %spritemapEntry(1, $4218, $E9, 0, 1, 2, 1, $12C)
+    %spritemapEntry(1, $4208, $ED, 0, 1, 2, 1, $126)
+    %spritemapEntry(0, $18, $F9, 0, 1, 2, 1, $11F)
+    %spritemapEntry(0, $1FE, $DF, 0, 1, 2, 1, $17B)
+    %spritemapEntry(1, $4203, $EC, 0, 1, 2, 1, $10D)
+    %spritemapEntry(1, $43FB, $E4, 0, 1, 2, 1, $10B)
+    %spritemapEntry(1, $43FE, $1F, 0, 1, 2, 1, $170)
+    %spritemapEntry(1, $43F6, $1F, 0, 1, 2, 1, $171)
+    %spritemapEntry(1, $43F6, $0D, 0, 1, 2, 1, $14C)
+    %spritemapEntry(1, $43F6, $15, 0, 1, 2, 1, $15C)
+    %spritemapEntry(1, $43F7, $05, 0, 1, 2, 1, $150)
+    %spritemapEntry(1, $43F7, $FD, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $43FC, $F7, 0, 1, 2, 1, $108)
+    %spritemapEntry(1, $43F4, $F7, 0, 1, 2, 1, $109)
+    %spritemapEntry(1, $43F4, $E7, 0, 1, 2, 1, $106)
+    %spritemapEntry(1, $4204, $E7, 0, 1, 2, 1, $104)
+    %spritemapEntry(1, $43F4, $D7, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $4204, $D7, 0, 1, 2, 1, $100)
 
 Spritemaps_Chozo_22:
-    dw $0012,$0018                                                       ;AAF5C8;
-    db $F9                                                               ;AAF5CC;
-    dw $631F,$C208                                                       ;AAF5CD;
-    db $ED                                                               ;AAF5D1;
-    dw $6326,$01FE                                                       ;AAF5D2;
-    db $DF                                                               ;AAF5D6;
-    dw $637A,$C218                                                       ;AAF5D7;
-    db $E9                                                               ;AAF5DB;
-    dw $632C,$C203                                                       ;AAF5DC;
-    db $EC                                                               ;AAF5E0;
-    dw $630D,$C3FB                                                       ;AAF5E1;
-    db $E4                                                               ;AAF5E5;
-    dw $630B,$C3FE                                                       ;AAF5E6;
-    db $1F                                                               ;AAF5EA;
-    dw $6370,$C3F6                                                       ;AAF5EB;
-    db $1F                                                               ;AAF5EF;
-    dw $6371,$C3F6                                                       ;AAF5F0;
-    db $0D                                                               ;AAF5F4;
-    dw $634C,$C3F6                                                       ;AAF5F5;
-    db $15                                                               ;AAF5F9;
-    dw $635C,$C3F7                                                       ;AAF5FA;
-    db $05                                                               ;AAF5FE;
-    dw $6350,$C3F7                                                       ;AAF5FF;
-    db $FD                                                               ;AAF603;
-    dw $6340,$C3FC                                                       ;AAF604;
-    db $F7                                                               ;AAF608;
-    dw $6308,$C3F4                                                       ;AAF609;
-    db $F7                                                               ;AAF60D;
-    dw $6309,$C3F4                                                       ;AAF60E;
-    db $E7                                                               ;AAF612;
-    dw $6306,$C204                                                       ;AAF613;
-    db $E7                                                               ;AAF617;
-    dw $6304,$C3F4                                                       ;AAF618;
-    db $D7                                                               ;AAF61C;
-    dw $6302,$C204                                                       ;AAF61D;
-    db $D7                                                               ;AAF621;
-    dw $6300                                                             ;AAF622;
+    dw $0012                                                             ;AAF5C8;
+    %spritemapEntry(0, $18, $F9, 0, 1, 2, 1, $11F)
+    %spritemapEntry(1, $4208, $ED, 0, 1, 2, 1, $126)
+    %spritemapEntry(0, $1FE, $DF, 0, 1, 2, 1, $17A)
+    %spritemapEntry(1, $4218, $E9, 0, 1, 2, 1, $12C)
+    %spritemapEntry(1, $4203, $EC, 0, 1, 2, 1, $10D)
+    %spritemapEntry(1, $43FB, $E4, 0, 1, 2, 1, $10B)
+    %spritemapEntry(1, $43FE, $1F, 0, 1, 2, 1, $170)
+    %spritemapEntry(1, $43F6, $1F, 0, 1, 2, 1, $171)
+    %spritemapEntry(1, $43F6, $0D, 0, 1, 2, 1, $14C)
+    %spritemapEntry(1, $43F6, $15, 0, 1, 2, 1, $15C)
+    %spritemapEntry(1, $43F7, $05, 0, 1, 2, 1, $150)
+    %spritemapEntry(1, $43F7, $FD, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $43FC, $F7, 0, 1, 2, 1, $108)
+    %spritemapEntry(1, $43F4, $F7, 0, 1, 2, 1, $109)
+    %spritemapEntry(1, $43F4, $E7, 0, 1, 2, 1, $106)
+    %spritemapEntry(1, $4204, $E7, 0, 1, 2, 1, $104)
+    %spritemapEntry(1, $43F4, $D7, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $4204, $D7, 0, 1, 2, 1, $100)
 
 Spritemaps_Chozo_23:
-    dw $0012,$C218                                                       ;AAF624;
-    db $E9                                                               ;AAF628;
-    dw $632C,$0018                                                       ;AAF629;
-    db $F9                                                               ;AAF62D;
-    dw $631F,$C208                                                       ;AAF62E;
-    db $ED                                                               ;AAF632;
-    dw $6326,$01FE                                                       ;AAF633;
-    db $DF                                                               ;AAF637;
-    dw $6379,$C203                                                       ;AAF638;
-    db $EC                                                               ;AAF63C;
-    dw $630D,$C3FB                                                       ;AAF63D;
-    db $E4                                                               ;AAF641;
-    dw $630B,$C3FE                                                       ;AAF642;
-    db $1F                                                               ;AAF646;
-    dw $6370,$C3F6                                                       ;AAF647;
-    db $1F                                                               ;AAF64B;
-    dw $6371,$C3F6                                                       ;AAF64C;
-    db $0D                                                               ;AAF650;
-    dw $634C,$C3F6                                                       ;AAF651;
-    db $15                                                               ;AAF655;
-    dw $635C,$C3F7                                                       ;AAF656;
-    db $05                                                               ;AAF65A;
-    dw $6350,$C3F7                                                       ;AAF65B;
-    db $FD                                                               ;AAF65F;
-    dw $6340,$C3FC                                                       ;AAF660;
-    db $F7                                                               ;AAF664;
-    dw $6308,$C3F4                                                       ;AAF665;
-    db $F7                                                               ;AAF669;
-    dw $6309,$C3F4                                                       ;AAF66A;
-    db $E7                                                               ;AAF66E;
-    dw $6306,$C204                                                       ;AAF66F;
-    db $E7                                                               ;AAF673;
-    dw $6304,$C3F4                                                       ;AAF674;
-    db $D7                                                               ;AAF678;
-    dw $6302,$C204                                                       ;AAF679;
-    db $D7                                                               ;AAF67D;
-    dw $6300                                                             ;AAF67E;
+    dw $0012                                                             ;AAF624;
+    %spritemapEntry(1, $4218, $E9, 0, 1, 2, 1, $12C)
+    %spritemapEntry(0, $18, $F9, 0, 1, 2, 1, $11F)
+    %spritemapEntry(1, $4208, $ED, 0, 1, 2, 1, $126)
+    %spritemapEntry(0, $1FE, $DF, 0, 1, 2, 1, $179)
+    %spritemapEntry(1, $4203, $EC, 0, 1, 2, 1, $10D)
+    %spritemapEntry(1, $43FB, $E4, 0, 1, 2, 1, $10B)
+    %spritemapEntry(1, $43FE, $1F, 0, 1, 2, 1, $170)
+    %spritemapEntry(1, $43F6, $1F, 0, 1, 2, 1, $171)
+    %spritemapEntry(1, $43F6, $0D, 0, 1, 2, 1, $14C)
+    %spritemapEntry(1, $43F6, $15, 0, 1, 2, 1, $15C)
+    %spritemapEntry(1, $43F7, $05, 0, 1, 2, 1, $150)
+    %spritemapEntry(1, $43F7, $FD, 0, 1, 2, 1, $140)
+    %spritemapEntry(1, $43FC, $F7, 0, 1, 2, 1, $108)
+    %spritemapEntry(1, $43F4, $F7, 0, 1, 2, 1, $109)
+    %spritemapEntry(1, $43F4, $E7, 0, 1, 2, 1, $106)
+    %spritemapEntry(1, $4204, $E7, 0, 1, 2, 1, $104)
+    %spritemapEntry(1, $43F4, $D7, 0, 1, 2, 1, $102)
+    %spritemapEntry(1, $4204, $D7, 0, 1, 2, 1, $100)
 
 Spritemaps_Chozo_24:
-    dw $002A,$C3E0                                                       ;AAF680;
-    db $98                                                               ;AAF684;
-    dw $2344,$C242                                                       ;AAF685;
-    db $98                                                               ;AAF689;
-    dw $234A,$C232                                                       ;AAF68A;
-    db $A0                                                               ;AAF68E;
-    dw $2358,$C232                                                       ;AAF68F;
-    db $98                                                               ;AAF693;
-    dw $2348,$C222                                                       ;AAF694;
-    db $A0                                                               ;AAF698;
-    dw $235C,$C222                                                       ;AAF699;
-    db $98                                                               ;AAF69D;
-    dw $234C,$C202                                                       ;AAF69E;
-    db $98                                                               ;AAF6A2;
-    dw $234E,$C212                                                       ;AAF6A3;
-    db $A0                                                               ;AAF6A7;
-    dw $2356,$C212                                                       ;AAF6A8;
-    db $98                                                               ;AAF6AC;
-    dw $2346,$C201                                                       ;AAF6AD;
-    db $B8                                                               ;AAF6B1;
-    dw $254E,$C211                                                       ;AAF6B2;
-    db $C0                                                               ;AAF6B6;
-    dw $2556,$C211                                                       ;AAF6B7;
-    db $B8                                                               ;AAF6BB;
-    dw $2546,$C241                                                       ;AAF6BC;
-    db $B8                                                               ;AAF6C0;
-    dw $254A,$C231                                                       ;AAF6C1;
-    db $C0                                                               ;AAF6C5;
-    dw $2558,$C231                                                       ;AAF6C6;
-    db $B8                                                               ;AAF6CA;
-    dw $2548,$C221                                                       ;AAF6CB;
-    db $C0                                                               ;AAF6CF;
-    dw $255C,$C221                                                       ;AAF6D0;
-    db $B8                                                               ;AAF6D4;
-    dw $254C,$C3D8                                                       ;AAF6D5;
-    db $F0                                                               ;AAF6D9;
-    dw $2577,$C3C8                                                       ;AAF6DA;
-    db $F0                                                               ;AAF6DE;
-    dw $2575,$C3B8                                                       ;AAF6DF;
-    db $F0                                                               ;AAF6E3;
-    dw $2573,$C3A0                                                       ;AAF6E4;
-    db $F0                                                               ;AAF6E8;
-    dw $2570,$C3A8                                                       ;AAF6E9;
-    db $F0                                                               ;AAF6ED;
-    dw $2571,$C3D8                                                       ;AAF6EE;
-    db $E0                                                               ;AAF6F2;
-    dw $2377,$C3C8                                                       ;AAF6F3;
-    db $E0                                                               ;AAF6F7;
-    dw $2375,$C3B8                                                       ;AAF6F8;
-    db $E0                                                               ;AAF6FC;
-    dw $2373,$C3A8                                                       ;AAF6FD;
-    db $E0                                                               ;AAF701;
-    dw $2371,$C3A0                                                       ;AAF702;
-    db $E0                                                               ;AAF706;
-    dw $2370,$C3D0                                                       ;AAF707;
-    db $A0                                                               ;AAF70B;
-    dw $2352,$C3D0                                                       ;AAF70C;
-    db $98                                                               ;AAF710;
-    dw $2342,$C3B0                                                       ;AAF711;
-    db $A0                                                               ;AAF715;
-    dw $6352,$C3B0                                                       ;AAF716;
-    db $98                                                               ;AAF71A;
-    dw $6342,$C3C0                                                       ;AAF71B;
-    db $A0                                                               ;AAF71F;
-    dw $2350,$C3C0                                                       ;AAF720;
-    db $98                                                               ;AAF724;
-    dw $2340,$C3A0                                                       ;AAF725;
-    db $98                                                               ;AAF729;
-    dw $6344,$C3A1                                                       ;AAF72A;
-    db $B8                                                               ;AAF72E;
-    dw $6544,$C3B0                                                       ;AAF72F;
-    db $B8                                                               ;AAF733;
-    dw $6542,$C3B0                                                       ;AAF734;
-    db $C0                                                               ;AAF738;
-    dw $6552,$C3D0                                                       ;AAF739;
-    db $C0                                                               ;AAF73D;
-    dw $2552,$C3C0                                                       ;AAF73E;
-    db $C0                                                               ;AAF742;
-    dw $2550,$C3E0                                                       ;AAF743;
-    db $B8                                                               ;AAF747;
-    dw $2544,$C3D0                                                       ;AAF748;
-    db $B8                                                               ;AAF74C;
-    dw $2542,$C3C0                                                       ;AAF74D;
-    db $B8                                                               ;AAF751;
-    dw $2540                                                             ;AAF752;
+    dw $002A                                                             ;AAF680;
+    %spritemapEntry(1, $43E0, $98, 0, 0, 2, 1, $144)
+    %spritemapEntry(1, $4242, $98, 0, 0, 2, 1, $14A)
+    %spritemapEntry(1, $4232, $A0, 0, 0, 2, 1, $158)
+    %spritemapEntry(1, $4232, $98, 0, 0, 2, 1, $148)
+    %spritemapEntry(1, $4222, $A0, 0, 0, 2, 1, $15C)
+    %spritemapEntry(1, $4222, $98, 0, 0, 2, 1, $14C)
+    %spritemapEntry(1, $4202, $98, 0, 0, 2, 1, $14E)
+    %spritemapEntry(1, $4212, $A0, 0, 0, 2, 1, $156)
+    %spritemapEntry(1, $4212, $98, 0, 0, 2, 1, $146)
+    %spritemapEntry(1, $4201, $B8, 0, 0, 2, 2, $14E)
+    %spritemapEntry(1, $4211, $C0, 0, 0, 2, 2, $156)
+    %spritemapEntry(1, $4211, $B8, 0, 0, 2, 2, $146)
+    %spritemapEntry(1, $4241, $B8, 0, 0, 2, 2, $14A)
+    %spritemapEntry(1, $4231, $C0, 0, 0, 2, 2, $158)
+    %spritemapEntry(1, $4231, $B8, 0, 0, 2, 2, $148)
+    %spritemapEntry(1, $4221, $C0, 0, 0, 2, 2, $15C)
+    %spritemapEntry(1, $4221, $B8, 0, 0, 2, 2, $14C)
+    %spritemapEntry(1, $43D8, $F0, 0, 0, 2, 2, $177)
+    %spritemapEntry(1, $43C8, $F0, 0, 0, 2, 2, $175)
+    %spritemapEntry(1, $43B8, $F0, 0, 0, 2, 2, $173)
+    %spritemapEntry(1, $43A0, $F0, 0, 0, 2, 2, $170)
+    %spritemapEntry(1, $43A8, $F0, 0, 0, 2, 2, $171)
+    %spritemapEntry(1, $43D8, $E0, 0, 0, 2, 1, $177)
+    %spritemapEntry(1, $43C8, $E0, 0, 0, 2, 1, $175)
+    %spritemapEntry(1, $43B8, $E0, 0, 0, 2, 1, $173)
+    %spritemapEntry(1, $43A8, $E0, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43A0, $E0, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $43D0, $A0, 0, 0, 2, 1, $152)
+    %spritemapEntry(1, $43D0, $98, 0, 0, 2, 1, $142)
+    %spritemapEntry(1, $43B0, $A0, 0, 1, 2, 1, $152)
+    %spritemapEntry(1, $43B0, $98, 0, 1, 2, 1, $142)
+    %spritemapEntry(1, $43C0, $A0, 0, 0, 2, 1, $150)
+    %spritemapEntry(1, $43C0, $98, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $43A0, $98, 0, 1, 2, 1, $144)
+    %spritemapEntry(1, $43A1, $B8, 0, 1, 2, 2, $144)
+    %spritemapEntry(1, $43B0, $B8, 0, 1, 2, 2, $142)
+    %spritemapEntry(1, $43B0, $C0, 0, 1, 2, 2, $152)
+    %spritemapEntry(1, $43D0, $C0, 0, 0, 2, 2, $152)
+    %spritemapEntry(1, $43C0, $C0, 0, 0, 2, 2, $150)
+    %spritemapEntry(1, $43E0, $B8, 0, 0, 2, 2, $144)
+    %spritemapEntry(1, $43D0, $B8, 0, 0, 2, 2, $142)
+    %spritemapEntry(1, $43C0, $B8, 0, 0, 2, 2, $140)
 
 Spritemaps_Chozo_25:
-    dw $0019,$C238                                                       ;AAF754;
-    db $88                                                               ;AAF758;
-    dw $230D,$C240                                                       ;AAF759;
-    db $80                                                               ;AAF75D;
-    dw $230B,$003E                                                       ;AAF75E;
-    db $EF                                                               ;AAF762;
-    dw $2339,$C236                                                       ;AAF763;
-    db $DF                                                               ;AAF767;
-    dw $232C,$C246                                                       ;AAF768;
-    db $E7                                                               ;AAF76C;
-    dw $232A,$C220                                                       ;AAF76D;
-    db $DB                                                               ;AAF771;
-    dw $232A,$C210                                                       ;AAF772;
-    db $DB                                                               ;AAF776;
-    dw $2328,$C245                                                       ;AAF777;
-    db $C8                                                               ;AAF77B;
-    dw $2326,$0045                                                       ;AAF77C;
-    db $C0                                                               ;AAF780;
-    dw $231F,$C235                                                       ;AAF781;
-    db $C0                                                               ;AAF785;
-    dw $2324,$C211                                                       ;AAF786;
-    db $C0                                                               ;AAF78A;
-    dw $2320,$0021                                                       ;AAF78B;
-    db $C0                                                               ;AAF78F;
-    dw $230F,$C221                                                       ;AAF790;
-    db $C8                                                               ;AAF794;
-    dw $2322,$C3B7                                                       ;AAF795;
-    db $BD                                                               ;AAF799;
-    dw $234C,$C3B7                                                       ;AAF79A;
-    db $C5                                                               ;AAF79E;
-    dw $235C,$C399                                                       ;AAF79F;
-    db $D7                                                               ;AAF7A3;
-    dw $2350,$C399                                                       ;AAF7A4;
-    db $CF                                                               ;AAF7A8;
-    dw $2340,$C3DA                                                       ;AAF7A9;
-    db $CA                                                               ;AAF7AD;
-    dw $2370,$C3E2                                                       ;AAF7AE;
-    db $CA                                                               ;AAF7B2;
-    dw $2371,$C3F1                                                       ;AAF7B3;
-    db $A8                                                               ;AAF7B7;
-    dw $2308,$C3F9                                                       ;AAF7B8;
-    db $A8                                                               ;AAF7BC;
-    dw $2309,$C3F9                                                       ;AAF7BD;
-    db $98                                                               ;AAF7C1;
-    dw $2306,$C3E9                                                       ;AAF7C2;
-    db $98                                                               ;AAF7C6;
-    dw $2304,$C3F9                                                       ;AAF7C7;
-    db $88                                                               ;AAF7CB;
-    dw $2302,$C3E9                                                       ;AAF7CC;
-    db $88                                                               ;AAF7D0;
-    dw $2300                                                             ;AAF7D1;
+    dw $0019                                                             ;AAF754;
+    %spritemapEntry(1, $4238, $88, 0, 0, 2, 1, $10D)
+    %spritemapEntry(1, $4240, $80, 0, 0, 2, 1, $10B)
+    %spritemapEntry(0, $3E, $EF, 0, 0, 2, 1, $139)
+    %spritemapEntry(1, $4236, $DF, 0, 0, 2, 1, $12C)
+    %spritemapEntry(1, $4246, $E7, 0, 0, 2, 1, $12A)
+    %spritemapEntry(1, $4220, $DB, 0, 0, 2, 1, $12A)
+    %spritemapEntry(1, $4210, $DB, 0, 0, 2, 1, $128)
+    %spritemapEntry(1, $4245, $C8, 0, 0, 2, 1, $126)
+    %spritemapEntry(0, $45, $C0, 0, 0, 2, 1, $11F)
+    %spritemapEntry(1, $4235, $C0, 0, 0, 2, 1, $124)
+    %spritemapEntry(1, $4211, $C0, 0, 0, 2, 1, $120)
+    %spritemapEntry(0, $21, $C0, 0, 0, 2, 1, $10F)
+    %spritemapEntry(1, $4221, $C8, 0, 0, 2, 1, $122)
+    %spritemapEntry(1, $43B7, $BD, 0, 0, 2, 1, $14C)
+    %spritemapEntry(1, $43B7, $C5, 0, 0, 2, 1, $15C)
+    %spritemapEntry(1, $4399, $D7, 0, 0, 2, 1, $150)
+    %spritemapEntry(1, $4399, $CF, 0, 0, 2, 1, $140)
+    %spritemapEntry(1, $43DA, $CA, 0, 0, 2, 1, $170)
+    %spritemapEntry(1, $43E2, $CA, 0, 0, 2, 1, $171)
+    %spritemapEntry(1, $43F1, $A8, 0, 0, 2, 1, $108)
+    %spritemapEntry(1, $43F9, $A8, 0, 0, 2, 1, $109)
+    %spritemapEntry(1, $43F9, $98, 0, 0, 2, 1, $106)
+    %spritemapEntry(1, $43E9, $98, 0, 0, 2, 1, $104)
+    %spritemapEntry(1, $43F9, $88, 0, 0, 2, 1, $102)
+    %spritemapEntry(1, $43E9, $88, 0, 0, 2, 1, $100)
+
 
 Freespace_BankAA_F7D3:                                                   ;AAF7D3;
 ; $82D bytes
