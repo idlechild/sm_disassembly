@@ -2,22 +2,24 @@
 org $808000
 
 
-Debug_RegionSRAM:
-    dw $0000                                                             ;808000; Skip NTSC/PAL and SRAM mapping check ($85F6)
+;;; $8000: Debug constants ;;;
+DebugConst:
+  .RegionSRAM:
+    dw $0000 ; Skip NTSC/PAL and SRAM mapping check ($85F6)
+  .DemoRecorder:
+    dw $0000 ; Demo recorder ($90:E759)
+  .DebugMode:
+    dw $0000 ; Debug mode, written to $05D1 on boot
+  .DebugScrolling:
+    dw $0000 ; Debug scrolling ($82:8B44: game state 8 - main gameplay)
+  .DisableAudio:
+    dw $0000 ; Disable audio (UploadToAPU_long)
 
-DebugConst_DemoRecorder:
-    dw $0000                                                             ;808002; Demo recorder ($90:E759)
 
-DebugConst_DebugMode:
-    dw $0000                                                             ;808004; Debug mode, written to $05D1 on boot
-
-DebugConst_DebugScrolling:
-    dw $0000                                                             ;808006; Debug scrolling ($82:8B44: game state 8 - main gameplay)
-
-DebugConst_DisableAudio:
-    dw $0000                                                             ;808008; Disable audio ($80:8024)
-
+;;; $800A: Upload to APU (hardcoded parameter) ;;;
 UploadToAPU_Hardcoded:
+;; Parameter:
+;;     [[S] + 1] + 1: APU data pointer ($CF:8000)
     LDA.B $02,S                                                          ;80800A;
     STA.B $04                                                            ;80800C;
     LDA.B $01,S                                                          ;80800E;
@@ -32,18 +34,24 @@ UploadToAPU_Hardcoded:
     LDA.B [$03],Y                                                        ;808020;
     STA.B $01                                                            ;808022; $00 = [(return address) + 1] (parameter address)
 
+
+;;; $8024: Upload to APU (from [$00]) (external) ;;;
 UploadToAPU_long:
+;; Parameter
+;;     $00: APU data pointer
     JSR.W UploadToAPU                                                    ;808024;
     RTL                                                                  ;808027;
 
 
+;;; $8028: Upload to APU (from [$00]) ;;;
 UploadToAPU:
+;; Parameter
+;;     $00: APU data pointer
     LDA.L DebugConst_DisableAudio                                        ;808028;
     BEQ .upload                                                          ;80802C; If [DebugConst_DisableAudio] != 0:
     RTS                                                                  ;80802E; Return
 
-
-.upload:
+  .upload:
     PHP                                                                  ;80802F;
     PHB                                                                  ;808030;
     REP #$30                                                             ;808031;
@@ -66,13 +74,49 @@ UploadToAPU:
     RTS                                                                  ;808058;
 
 
+;;; $8059: Send APU data ;;;
 SendAPUData:
+;; Parameters:
+;;     DB:Y: APU data pointer
+
+; Data format:
+;     ssss dddd [xx xx...] (data block 0)
+;     ssss dddd [xx xx...] (data block 1)
+;     ...
+;     0000 aaaa
+; Where:
+;     s = data block size in bytes
+;     d = destination address
+;     x = data
+;     a = entry address. Ignored by SPC engine after first APU transfer
+
+; The xx data can cross bank boundaries, but the data block entries otherwise can't (i.e. s, d, a and 0000) unless they're word-aligned
+
+; Wait until APU sets APU IO 0..1 = AAh BBh
+; Kick = CCh
+; For each data block:
+;    APU IO 2..3 = destination address
+;    APU IO 1 = 1 (arbitrary non-zero value)
+;    APU IO 0 = kick
+;    Wait until APU echoes kick back through APU IO 0
+;    Index = 0
+;    For each data byte
+;       APU IO 1 = data byte
+;       APU IO 0 = index
+;       Wait until APU echoes index back through APU IO 0
+;       Increment index
+;    Increment index (and again if resulting in 0)
+;    Kick = index
+; Send entry address through APU IO 2..3
+; APU IO 1 = 0
+; APU IO 0 = kick
+; (Optionally wait until APU echoes kick back through APU IO 0)
     PHP                                                                  ;808059;
     REP #$30                                                             ;80805A;
     LDA.W #$3000                                                         ;80805C;
     STA.L $000641                                                        ;80805F;
 
-.retry:
+  .retry:
     LDA.W #$BBAA                                                         ;808063;
     CMP.L $002140                                                        ;808066;
     BEQ .AABB                                                            ;80806A; Wait until [APU IO 0..1] = AAh BBh
@@ -81,51 +125,48 @@ SendAPUData:
     STA.L $000641                                                        ;808071;
     BNE .retry                                                           ;808075;
 
-.crash:
+  .crash:
     BRA .crash                                                           ;808077; If exceeded 3000h attempts: crash
 
-
-.AABB:
+  .AABB:
     SEP #$20                                                             ;808079;
     LDA.B #$CC                                                           ;80807B; Kick = CCh
     BRA .processDataBlock                                                ;80807D;
 
-
-.uploadDataBlock:
+  .uploadDataBlock:
     LDA.W $0000,Y                                                        ;80807F;
     JSR.W IncY_OverflowCheck                                             ;808082; Data = [[Y++]]
     XBA                                                                  ;808085;
     LDA.B #$00                                                           ;808086; Index = 0
     BRA .uploadData                                                      ;808088;
 
-
-.loopNextData:
+  .loopNextData:
     XBA                                                                  ;80808A;
     LDA.W $0000,Y                                                        ;80808B;
     JSR.W IncY_OverflowCheck                                             ;80808E; Data = [[Y++]]
     XBA                                                                  ;808091;
 
-.wait:
+  .wait:
     CMP.L $002140                                                        ;808092;
     BNE .wait                                                            ;808096; Wait until APU IO 0 echoes
     INC A                                                                ;808098; Increment index
 
-.uploadData:
+  .uploadData:
     REP #$20                                                             ;808099;
     STA.L $002140                                                        ;80809B; APU IO 0..1 = [index] [data]
     SEP #$20                                                             ;80809F;
     DEX                                                                  ;8080A1; Decrement X (block size)
     BNE .loopNextData                                                    ;8080A2; If [X] != 0: go to .loopNextData
 
-.wait2:
+  .wait2:
     CMP.L $002140                                                        ;8080A4;
     BNE .wait2                                                           ;8080A8; Wait until APU IO 0 echoes
 
-.inc:
+  .inc:
     ADC.B #$03                                                           ;8080AA; Kick = [index] + 4
     BEQ .inc                                                             ;8080AC; Ensure kick != 0
 
-.processDataBlock:
+  .processDataBlock:
     PHA                                                                  ;8080AE;
     REP #$20                                                             ;8080AF;
     LDA.W $0000,Y                                                        ;8080B1;
@@ -145,7 +186,7 @@ SendAPUData:
     PHX                                                                  ;8080D5;
     LDX.W #$1000                                                         ;8080D6;
 
-.wait3:
+  .wait3:
     DEX                                                                  ;8080D9; Wait until APU IO 0 echoes
     BEQ .return                                                          ;8080DA; If exceeded 1000h attempts: return
     CMP.L $002140                                                        ;8080DC;
@@ -159,8 +200,7 @@ SendAPUData:
     PLP                                                                  ;8080F0;
     RTS                                                                  ;8080F1; Return
 
-
-.return:
+  .return:
     SEP #$20                                                             ;8080F2;
     STZ.W $2141                                                          ;8080F4;
     STZ.W $2142                                                          ;8080F7;
@@ -170,17 +210,40 @@ SendAPUData:
     RTS                                                                  ;8080FF;
 
 
+;;; $8100: Increment Y twice, bank overflow check ;;;
 IncYTwice_OverflowCheck:
+;; Parameters:
+;;     DB:Y: Pointer
+;;     $02: Bank mirror
+;; Returns:
+;;     DB:Y: Pointer incremented twice (Y wraps around from $8000 if bank overflows)
+;;     $02: Bank mirror incremented if needed
+
+; Fails to increment Y a second time if the first increment overflows the bank
     INY                                                                  ;808100;
     BEQ IncY_OverflowCheck_overflow                                      ;808101;
 
+
+;;; $8103: Increment Y, bank overflow check ;;;
 IncY_OverflowCheck:
+;; Parameters:
+;;     DB:Y: Pointer
+;;     $02: Bank mirror
+;; Returns:
+;;     DB:Y: Pointer incremented twice (Y wraps around from $8000 if bank overflows)
+;;     $02: Bank mirror incremented if needed
     INY                                                                  ;808103;
     BEQ IncY_OverflowCheck_overflow                                      ;808104;
     RTS                                                                  ;808106;
 
 
+;;; $8107: Handle bank overflow ;;;
 IncY_OverflowCheck_overflow:
+;; Parameters:
+;;     $02: Bank
+;; Returns:
+;;     Y: $8000
+;;     DB/$02: Incremented bank
     INC.B $02                                                            ;808107; Increment $02
     PEI.B ($01)                                                          ;808109;
     PLB                                                                  ;80810B; DB = [$02]
@@ -189,7 +252,12 @@ IncY_OverflowCheck_overflow:
     RTS                                                                  ;808110;
 
 
+;;; $8111: Generate random number ;;;
 GenerateRandomNumber:
+;; Returns:
+;;     A: New random number
+
+; r(t+1) = r(t) * 5 + 0x111 (roughly; if the adding of x * 100h causes overflow, then a further 1 is added)
     SEP #$20                                                             ;808111;
     LDA.W $05E5                                                          ;808113;
     STA.W $4202                                                          ;808116;
@@ -217,7 +285,15 @@ GenerateRandomNumber:
     RTL                                                                  ;808145;
 
 
+;;; $8146: Update held input ;;;
 UpdateHeldInput:
+;; Parameter:
+;;     A: Timed held input timer reset value ("timed held input" is input held for [A] + 1 frames)
+
+; Called by:
+;     GameState_F_Paused_MapAndItemScreens with A = 3
+
+; Held input is [$8B] & ![$8F]: the input pressed, but not newly
     PHP                                                                  ;808146;
     PHB                                                                  ;808147;
     REP #$30                                                             ;808148;
@@ -241,15 +317,14 @@ UpdateHeldInput:
     STA.W $05DF                                                          ;808170; Timed held input = [held input]
     BRA .return                                                          ;808173; Go to .return
 
-
-.unheld:
+  .unheld:
     LDA.W $05DD                                                          ;808175;
     STA.W $05DB                                                          ;808178; Timed held input timer = [timed held input timer reset value]
 
-.positive:
+  .positive:
     STZ.W $05DF                                                          ;80817B; Timed held input = 0
 
-.return:
+  .return:
     LDA.W $05DF                                                          ;80817E;
     EOR.W $05E3                                                          ;808181;
     AND.W $05DF                                                          ;808184; Newly held down timed held input = newly held down timed held input
@@ -260,18 +335,26 @@ UpdateHeldInput:
     RTL                                                                  ;80818D;
 
 
+;;; $818E: Change bit index to byte index and bitmask ;;;
 BitIndexToByteIndexAndBitmask:
+;; Parameter:
+;;     A: Bit index, 8000h bit is forbidden
+;; Returns:
+;;     A/X: Byte index ([A] >> 3)
+;;     $05E7: Bitmask (1 << ([A] & 7))
+
+; Called mostly by PLMs
     TAX                                                                  ;80818E;
     BPL .dontCrash                                                       ;80818F;
     db $00                                                               ;808191; BRK with no operand
 
-.dontCrash:
+  .dontCrash:
     STZ.W $05E7                                                          ;808192;
     PHA                                                                  ;808195;
     AND.W #$0007                                                         ;808196;
     SEC                                                                  ;808199;
 
-.loop:
+  .loop:
     ROL.W $05E7                                                          ;80819A;
     DEC A                                                                ;80819D;
     BPL .loop                                                            ;80819E;
@@ -283,7 +366,13 @@ BitIndexToByteIndexAndBitmask:
     RTL                                                                  ;8081A5;
 
 
+;;; $81A6: Set boss bits in A for current area ;;;
 SetBossBitsInAForCurrentArea:
+;; Parameter:
+;;     A: Boss bits
+;;         1: Area boss (Kraid, Phantoon, Draygon, both Ridleys)
+;;         2: Area mini-boss (Spore Spawn, Botwoon, Crocomire, Mother Brain)
+;;         4: Area torizo (Bomb Torizo, Golden Torizo)
     PHX                                                                  ;8081A6;
     PHY                                                                  ;8081A7;
     PHP                                                                  ;8081A8;
@@ -299,8 +388,14 @@ SetBossBitsInAForCurrentArea:
     RTL                                                                  ;8081BF;
 
 
+;;; $81C0: Unused. Clear boss bits in A for current area ;;;
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_ClearBossBitsInAForCurrentArea_8081C0:
+;; Parameter:
+;;     A: Boss bits
+;;         1: Area boss (Kraid, Phantoon, Draygon, both Ridleys)
+;;         2: Area mini-boss (Spore Spawn, Botwoon, Crocomire, Mother Brain)
+;;         4: Area torizo (Bomb Torizo, Golden Torizo)
     PHX                                                                  ;8081C0;
     PHY                                                                  ;8081C1;
     PHP                                                                  ;8081C2;
@@ -318,7 +413,15 @@ UNUSED_ClearBossBitsInAForCurrentArea_8081C0:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $81DC: Checks if the boss bits for the current area match any bits in A ;;;
 CheckIfBossBitsForCurrentAreaMatchAnyBitsInA:
+;; Parameter:
+;;     A: Boss bits
+;;         1: Area boss (Kraid, Phantoon, Draygon, both Ridleys)
+;;         2: Area mini-boss (Spore Spawn, Botwoon, Crocomire, Mother Brain)
+;;         4: Area torizo (Bomb Torizo, Golden Torizo)
+;; Returns:
+;;     A/carry: Set if there's a match
     PHX                                                                  ;8081DC;
     PHY                                                                  ;8081DD;
     PHP                                                                  ;8081DE;
@@ -334,8 +437,7 @@ CheckIfBossBitsForCurrentAreaMatchAnyBitsInA:
     CLC                                                                  ;8081F3;
     RTL                                                                  ;8081F4;
 
-
-.match:
+  .match:
     PLP                                                                  ;8081F5;
     PLY                                                                  ;8081F6;
     PLX                                                                  ;8081F7;
@@ -343,7 +445,32 @@ CheckIfBossBitsForCurrentAreaMatchAnyBitsInA:
     RTL                                                                  ;8081F9;
 
 
+;;; $81FA: Mark event [A] ;;;
 MarkEvent_inA:
+;; Parameter:
+;;     A: Event number
+;;         0: Zebes is awake
+;;         1: Shitroid ate sidehopper
+;;         2: Mother Brain's glass is destroyed
+;;         3: Zebetite destroyed bit 0 (true if 1 or 3 zebetites are destroyed)
+;;         4: Zebetite destroyed bit 1 (true if 2 or 3 zebetites are destroyed)
+;;         5: Zebetite destroyed bit 2 (true if all 4 zebetites are destroyed)
+;;         6: Phantoon statue is grey
+;;         7: Ridley statue is grey
+;;         8: Draygon statue is grey
+;;         9: Kraid statue is grey
+;;         Ah: Entrance to Tourian is unlocked
+;;         Bh: Maridia noobtube is broken
+;;         Ch: Lower Norfair chozo has lowered the acid
+;;         Dh: Shaktool cleared a path
+;;         Eh: Zebes timebomb set
+;;         Fh: Critters escaped
+;;         10h: 1st metroid hall cleared
+;;         11h: 1st metroid shaft cleared
+;;         12h: 2nd metroid hall cleared
+;;         13h: 2nd metroid shaft cleared
+;;         14h: Unused
+;;         15h: Outran speed booster lavaquake
     PHX                                                                  ;8081FA;
     PHY                                                                  ;8081FB;
     PHP                                                                  ;8081FC;
@@ -358,7 +485,13 @@ MarkEvent_inA:
     RTL                                                                  ;808211;
 
 
+;;; $8212: Unmark event [A] ;;;
 UnmarkEvent_inA:
+;; Parameter:
+;;     A: Event number
+
+; Called by:
+;     $A6:FCCB: Mark/unmark zebetite destroyed counter event
     PHX                                                                  ;808212;
     PHY                                                                  ;808213;
     PHP                                                                  ;808214;
@@ -376,7 +509,14 @@ UnmarkEvent_inA:
     RTL                                                                  ;808232;
 
 
+;;; $8233: Checks event [A] has happened ;;;
 CheckIfEvent_inA_HasHappened:
+;; Parameter:
+;;     A: Event number
+;; Returns:
+;;     Carry: Set if the event is marked
+
+; Note that Tourian entrance statue FX routine $88:DCCB assumes this routine returns A = 0 when carry clear is returned
     PHX                                                                  ;808233;
     PHY                                                                  ;808234;
     PHP                                                                  ;808235;
@@ -391,8 +531,7 @@ CheckIfEvent_inA_HasHappened:
     CLC                                                                  ;808248;
     RTL                                                                  ;808249;
 
-
-.marked:
+  .marked:
     PLP                                                                  ;80824A;
     PLY                                                                  ;80824B;
     PLX                                                                  ;80824C;
@@ -400,11 +539,16 @@ CheckIfEvent_inA_HasHappened:
     RTL                                                                  ;80824E;
 
 
+;;; $824F: Write 'supermetroid' to SRAM  ;;;
 Write_supermetroid_ToSRAM:
+; Called by:
+;     $8B:E797: Cinematic function - post-credits - scroll item percentage down
+
+; $70:1FE0..1FEB = 'supermetroid' (game completed)
     PHX                                                                  ;80824F;
     LDX.W #$000A                                                         ;808250;
 
-.loop:
+  .loop:
     LDA.L Text_supermetroid,X                                            ;808253;
     STA.L $701FE0,X                                                      ;808257;
     DEX                                                                  ;80825B;
@@ -414,6 +558,7 @@ Write_supermetroid_ToSRAM:
     RTL                                                                  ;808260;
 
 
+;;; $8261: Determine number of demo sets ;;;
 CheckForNonCorruptSRAM:
     PHX                                                                  ;808261;
     LDA.W #$0003                                                         ;808262;
@@ -429,7 +574,7 @@ CheckForNonCorruptSRAM:
     BCC .nonCorrupt                                                      ;808281; If not corrupt, go to .nonCorrupt
     LDX.W #$000A                                                         ;808283;
 
-.corruptLoop:
+  .corruptLoop:
     LDA.L Text_madadameyohn,X                                            ;808286;
     STA.L $701FE0,X                                                      ;80828A; $70:1FE0..1FEB = 'madadameyohn' (all SRAM is corrupt)
     DEX                                                                  ;80828E;
@@ -438,11 +583,10 @@ CheckForNonCorruptSRAM:
     PLX                                                                  ;808292;
     RTL                                                                  ;808293; Return
 
-
-.nonCorrupt:
+  .nonCorrupt:
     LDX.W #$000A                                                         ;808294;
 
-.nonCorruptLoop:
+  .nonCorruptLoop:
     LDA.L $701FE0,X                                                      ;808297;
     CMP.L Text_supermetroid,X                                            ;80829B;
     BNE .return                                                          ;80829F; If $70:1FE0..1FEB = 'supermetroid':
@@ -452,7 +596,7 @@ CheckForNonCorruptSRAM:
     LDA.W #$0004                                                         ;8082A5;
     STA.W $1F59                                                          ;8082A8; Number of demo sets = 4
 
-.return:
+  .return:
     PLX                                                                  ;8082AB;
     RTL                                                                  ;8082AC;
 
@@ -463,16 +607,18 @@ Text_madadameyohn:
 Text_supermetroid:
     db "supermetroid"                                                    ;8082B9; 'supermetroid'
 
+
+;;; $82C5: Wait until the end of a v-blank ;;;
 WaitUntilTheEndOfAVBlank:
     PHA                                                                  ;8082C5;
     PHP                                                                  ;8082C6;
     SEP #$20                                                             ;8082C7;
 
-.waitVBlankStart:
+  .waitVBlankStart:
     LDA.W $4212                                                          ;8082C9;
     BPL .waitVBlankStart                                                 ;8082CC; Wait until v-blank is active
 
-.waitVBlankEnd:
+  .waitVBlankEnd:
     LDA.W $4212                                                          ;8082CE;
     BMI .waitVBlankEnd                                                   ;8082D1; Wait until v-blank has finished
     PLP                                                                  ;8082D3;
@@ -480,7 +626,32 @@ WaitUntilTheEndOfAVBlank:
     RTL                                                                  ;8082D5;
 
 
+;;; $82D6: $05F1 = [A] * [Y] (16-bit unsigned multiplication) ;;;
 A_Y_16bit_UnsignedMultiplication:
+;; Parameters:
+;;     A: Multiplicand
+;;     Y: Multiplicand
+;; Returns:
+;;     $05F1..F4: 32-bit result
+
+; Called by:
+;     $94:84D6: Samus block collision reaction - horizontal - slope - non-square
+;     $94:ACFE: Handle grapple beam swinging movement
+;     $9B:CA65: Propel Samus from grapple swing
+;     $A0:C449: Enemy block collision reaction - horizontal - slope - non-square
+;     $A3:E8A5: Adjust enemy X velocity for slopes
+
+; Exactly 1060 master cycles (78% of a scanline) (1250 if using slowrom).
+
+; Can be inaccurate.
+; Let:
+;     [A] = a + b * 100h
+;     [Y] = c + d * 100h
+; Then:
+;    [A] * [Y] = (a + b * 100h) (c + d * 100h)
+;              = ac + (bc + ad) * 100h + bd * 10000h
+; However, (bc + ad) can overflow 10000h (e.g. C0h * C0h + C0h * C0h = 12000h)
+; and the carry isn't propagated to the calculation of bd (instruction $832D should be removed).
     PHX                                                                  ;8082D6;
     STA.W $05E9                                                          ;8082D7; Let $05E9 = a + b * 100h
     STY.W $05EB                                                          ;8082DA; Let $05EB = c + d * 100h
@@ -525,6 +696,7 @@ A_Y_16bit_UnsignedMultiplication:
     RTL                                                                  ;808337;
 
 
+;;; $8338: Wait for NMI ;;;
 WaitForNMI:
     PHP                                                                  ;808338;
     PHB                                                                  ;808339;
@@ -534,7 +706,7 @@ WaitForNMI:
     LDA.B #$01                                                           ;80833E;
     STA.W $05B4                                                          ;808340; Set NMI request flag
 
-.wait:
+  .wait:
     LDA.W $05B4                                                          ;808343;
     BNE .wait                                                            ;808346; Wait until NMI request acknowledged
     PLB                                                                  ;808348;
@@ -542,6 +714,7 @@ WaitForNMI:
     RTL                                                                  ;80834A;
 
 
+;;; $834B: Enable NMI ;;;
 EnableNMI:
     PHP                                                                  ;80834B;
     PHB                                                                  ;80834C;
@@ -557,6 +730,7 @@ EnableNMI:
     RTL                                                                  ;80835C;
 
 
+;;; $835D: Disable NMI ;;;
 DisableNMI:
     PHP                                                                  ;80835D;
     PHB                                                                  ;80835E;
@@ -572,7 +746,20 @@ DisableNMI:
     RTL                                                                  ;80836E;
 
 
+;;; $836F: Set force blank and wait for NMI ;;;
 SetForceBlankAndWaitForNMI:
+; Called by:
+;     $B032: Unused. Set up rotating mode 7 background
+;     $81:8D0F: (Debug) game over menu - index 0: fade out and configure graphics for menu
+;     $81:944E: File select menu - index 0: title sequence to main - fade out and configure graphics
+;     $81:94EE: File select menu - index 5/13h: fade out from main
+;     $81:AF83: File select map - index Eh: room select map to loading game data - wait
+;     $A7:C1FB: Unpause hook - Kraid is dead
+;     $A7:C24E: Unpause hook - Kraid is alive
+;     $A7:C2A0: Unpause hook - Kraid is sinking
+
+; Note that setting force blank allows PPU writes even if NMI execution spills into the next frame's drawing period,
+; so you can set up large VRAM transfers before calling this
     PHP                                                                  ;80836F;
     PHB                                                                  ;808370;
     PHK                                                                  ;808371;
@@ -587,7 +774,14 @@ SetForceBlankAndWaitForNMI:
     RTL                                                                  ;808381;
 
 
+;;; $8382: Clear force blank and wait for NMI ;;;
 ClearForceBlankAndWaitForNMI:
+; Called by:
+;     $B032: Unused. Set up rotating mode 7 background
+;     $81:8D6D: Debug game over menu - index 1: initialise
+;     $81:91A4: Game over menu - index 1: initialise
+;     $81:9ED6: File select menu - index 2: title sequence to main - initialise
+;     $A7:C24E: Unpause hook - Kraid is alive
     PHP                                                                  ;808382;
     PHB                                                                  ;808383;
     PHK                                                                  ;808384;
@@ -603,7 +797,9 @@ ClearForceBlankAndWaitForNMI:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $8395: Unused. Update CGRAM ;;;
 UNUSED_UpdateCGRAM_808395:
+; This routine is subsumed by $933A (update OAM & CGRAM)
     PHP                                                                  ;808395;
     SEP #$10                                                             ;808396;
     REP #$20                                                             ;808398;
@@ -623,7 +819,12 @@ UNUSED_UpdateCGRAM_808395:
     RTL                                                                  ;8083BC;
 
 
+;;; $83BD: Unused. Write [Y] bytes of [A] to $00:0000 + [X] - 8-bit ;;;
 UNUSED_WriteYBytesOfATo_000000_X_8bit_8083BD:
+;; Parameters:
+;;     A: Fill value
+;;     X: Destination address. Range $0000..1FFF for WRAM writes
+;;     Y: Size
     PHP                                                                  ;8083BD;
     PHB                                                                  ;8083BE;
     PHK                                                                  ;8083BF;
@@ -631,7 +832,7 @@ UNUSED_WriteYBytesOfATo_000000_X_8bit_8083BD:
     SEP #$20                                                             ;8083C1;
     REP #$10                                                             ;8083C3;
 
-.loop:
+  .loop:
     STA.L $000000,X                                                      ;8083C5;
     INX                                                                  ;8083C9;
     DEY                                                                  ;8083CA;
@@ -641,14 +842,19 @@ UNUSED_WriteYBytesOfATo_000000_X_8bit_8083BD:
     RTL                                                                  ;8083CF;
 
 
+;;; $83D0: Unused. Write [Y] bytes of [A] to $00:0000 + [X] - 16-bit ;;;
 UNUSED_WriteYBytesOfATo_000000_X_16bit_8083D0:
+;; Parameters:
+;;     A: Fill value
+;;     X: Destination address. Range $0000..1FFF for WRAM writes
+;;     Y: Size
     PHP                                                                  ;8083D0;
     PHB                                                                  ;8083D1;
     PHK                                                                  ;8083D2;
     PLB                                                                  ;8083D3;
     REP #$30                                                             ;8083D4;
 
-.loop:
+  .loop:
     STA.L $000000,X                                                      ;8083D6;
     INX                                                                  ;8083DA;
     INX                                                                  ;8083DB;
@@ -660,7 +866,12 @@ UNUSED_WriteYBytesOfATo_000000_X_16bit_8083D0:
     RTL                                                                  ;8083E2;
 
 
+;;; $83E3: Unused. Write [Y] bytes of [A] to $7E:0000 + [X] - 8-bit ;;;
 UNUSED_WriteYBytesOfATo_7E0000_X_8bit_8083E3:
+;; Parameters:
+;;     A: Fill value
+;;     X: Destination address
+;;     Y: Size
     PHP                                                                  ;8083E3;
     PHB                                                                  ;8083E4;
     PHK                                                                  ;8083E5;
@@ -668,7 +879,7 @@ UNUSED_WriteYBytesOfATo_7E0000_X_8bit_8083E3:
     SEP #$20                                                             ;8083E7;
     REP #$10                                                             ;8083E9;
 
-.loop:
+  .loop:
     STA.L $7E0000,X                                                      ;8083EB;
     INX                                                                  ;8083EF;
     DEY                                                                  ;8083F0;
@@ -679,14 +890,28 @@ UNUSED_WriteYBytesOfATo_7E0000_X_8bit_8083E3:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $83F6: Write [Y] bytes of [A] to $7E:0000 + [X] - 16-bit ;;;
 WriteYBytesOfATo_7E0000_X_16bit:
+;; Parameters:
+;;     A: Fill value
+;;     X: Destination address
+;;     Y: Size
+
+; Called by:
+;     $88B4: Unused. Clear high RAM
+;     $88EB: Write 800h bytes of [A] to $7E:3000
+;     $88FE: Write 800h bytes of [A] to $7E:4000
+;     $88FE: Write 800h bytes of [A] to $7E:6000
+;     $82:81DD: Set up PPU for gameplay
+;     $8B:8000: Set up PPU for title sequence
+;     $8B:80DA: Set up PPU for intro
     PHP                                                                  ;8083F6;
     PHB                                                                  ;8083F7;
     PHK                                                                  ;8083F8;
     PLB                                                                  ;8083F9;
     REP #$30                                                             ;8083FA;
 
-.loop:
+  .loop:
     STA.L $7E0000,X                                                      ;8083FC;
     INX                                                                  ;808400;
     INX                                                                  ;808401;
@@ -698,14 +923,22 @@ WriteYBytesOfATo_7E0000_X_16bit:
     RTL                                                                  ;808408;
 
 
+;;; $8409: Write [Y] bytes of [A] to $7F:0000 + [X] - 16-bit ;;;
 WriteYBytesOfATo_7F0000_X_16bit:
+;; Parameters:
+;;     A: Fill value
+;;     X: Destination address
+;;     Y: Size
+
+; Called by
+;     $88B4: Unused. Clear high RAM
     PHP                                                                  ;808409;
     PHB                                                                  ;80840A;
     PHK                                                                  ;80840B;
     PLB                                                                  ;80840C;
     REP #$30                                                             ;80840D;
 
-.loop:
+  .loop:
     STA.L $7F0000,X                                                      ;80840F;
     INX                                                                  ;808413;
     INX                                                                  ;808414;
@@ -717,14 +950,16 @@ WriteYBytesOfATo_7F0000_X_16bit:
     RTL                                                                  ;80841B;
 
 
+;;; $841C: Boot ;;;
 Boot:
+; Most SNES games don't randomly wait 3 frames before running initialisation
+; Best wild guess is that they might have had some kind of dev hardware thingy attached somewhere that boot-up had to wait for
     SEI                                                                  ;80841C; Disable IRQ
     CLC                                                                  ;80841D;
     XCE                                                                  ;80841E; Enable native mode
     JML.L .bank80                                                        ;80841F; Execute in bank $80 (FastROM)
 
-
-.bank80:
+  .bank80:
     SEP #$20                                                             ;808423;
     LDA.B #$01                                                           ;808425;
     STA.W $420D                                                          ;808427; Enable FastROM
@@ -739,11 +974,11 @@ Boot:
     SEP #$30                                                             ;808438;
     LDX.B #$04                                                           ;80843A;
 
-.wait3Frames:
+  .wait3Frames:
     LDA.W $4212                                                          ;80843C;
     BPL .wait3Frames                                                     ;80843F; Wait the remainder of this frame and 3 more frames (???)
 
-..wait:
+  ..wait:
     LDA.W $4212                                                          ;808441;
     BMI ..wait                                                           ;808444;
     DEX                                                                  ;808446;
@@ -751,7 +986,7 @@ Boot:
     REP #$30                                                             ;808449;
     LDX.W #$1FFE                                                         ;80844B;
 
-.loop:
+  .loop:
     STZ.W $0000,X                                                        ;80844E;
     DEX                                                                  ;808451; Clear $0000..1FFF
     DEX                                                                  ;808452;
@@ -762,7 +997,15 @@ Boot:
     BRA CommonBootSection                                                ;808460; Go to common boot section
 
 
+;;; $8462: Soft reset ;;;
 SoftReset:
+; Called by:
+;     $9459: Read controller input. Also a debug branch
+;     $81:9003: Debug game over menu - index 3: main
+;     $81:90FE: Game over menu - index 7: fade out into soft reset
+;     $81:94D5: File select menu - index 21h: fade out to title sequence
+
+; Compared to boot ($841C), doesn't display Nintendo logo or upload SPC engine, but still waits 3 frames (see $841C)
     SEI                                                                  ;808462; Disable IRQ
     CLC                                                                  ;808463;
     XCE                                                                  ;808464; Enable native mode
@@ -776,17 +1019,21 @@ SoftReset:
     SEP #$30                                                             ;808471;
     LDX.B #$04                                                           ;808473;
 
-.wait:
+  .wait:
     LDA.W $4212                                                          ;808475;
     BPL .wait                                                            ;808478;
 
-.wait3Frames:
+  .wait3Frames:
     LDA.W $4212                                                          ;80847A;
     BMI .wait3Frames                                                     ;80847D; Wait the remainder of this frame and 3 more frames (???)
     DEX                                                                  ;80847F;
     BNE .wait                                                            ;808480;
 
+
+;;; $8482: Common boot section ;;;
 CommonBootSection:
+; They wait another (see $841C) 3 frames here at $8523
+; It might be giving the SPC engine a chance to run its initialisation after sending zero bytes to the APU IO registers
     SEP #$20                                                             ;808482;
     LDA.B #$8F                                                           ;808484;
     STA.W $2100                                                          ;808486; Enable forced blank
@@ -796,7 +1043,7 @@ CommonBootSection:
     PLB                                                                  ;80848F;
     LDX.W #$1FFE                                                         ;808490;
 
-.clearBank7E:
+  .clearBank7E:
     STZ.W $0000,X                                                        ;808493;
     STZ.W $2000,X                                                        ;808496;
     STZ.W $4000,X                                                        ;808499;
@@ -852,11 +1099,11 @@ CommonBootSection:
     SEP #$30                                                             ;808521;
     LDX.B #$04                                                           ;808523;
 
-.wait:
+  .wait:
     LDA.W $4212                                                          ;808525;
     BPL .wait                                                            ;808528;
 
-.wait3Frames:
+  .wait3Frames:
     LDA.W $4212                                                          ;80852A;
     BMI .wait3Frames                                                     ;80852D; Wait the remainder of this frame and 3 more frames (???)
     DEX                                                                  ;80852F;
@@ -883,14 +1130,29 @@ CommonBootSection:
     STZ.W $0686                                                          ;80856B; Sound handler downtime = 0
     JML.L MainGameLoop                                                   ;80856E; Go to main game loop
 
+
+;;; $8572: Unused. BRK ;;;
     db $00                                                               ;808572; BRK with no operand
 
+
+;;; $8573: Infinite loop; pointed to by misc. error handling ;;;
 Crash_Handler:
+; Called by:
+;     $90:E9CE: Handle periodic damage to Samus
+;     $91:DF51: Deal [A] damage to Samus
+;     $93:8000: Initialise projectile
+;     $93:8071: Initialise super missile link
+;     $93:80A0: Initialise (power) bomb
+;     $93:8163: Initialise shinespark echo or spazer SBA trail projectile
+;     $93:81A4: Initialise SBA projectile
     JML.L Crash_Handler                                                  ;808573; Crash handler, jump to self
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $8577: Unused. Block for [A] frames ;;;
 UNUSED_WaitAFrames_808577:
+;; Parameters:
+;;     A: Number of frames to block for (including the rest of this frame)
     PHP                                                                  ;808577;
     PHB                                                                  ;808578;
     PHK                                                                  ;808579;
@@ -898,7 +1160,7 @@ UNUSED_WaitAFrames_808577:
     SEP #$20                                                             ;80857B;
     STA.W $071C                                                          ;80857D;
 
-.waitNMI:
+  .waitNMI:
     JSL.L WaitForNMI                                                     ;808580;
     DEC.W $071C                                                          ;808584;
     BNE .waitNMI                                                         ;808587;
@@ -908,7 +1170,14 @@ UNUSED_WaitAFrames_808577:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $858C: Load map explored ;;;
 LoadMirrorOfCurrentAreasMapExplored:
+; Called by:
+;     $81:9C9E: File select menu - index 19h: file clear - do file clear
+;     $81:A1C2: File select menu - index 4: main
+;     $81:AD17: File select map - index 9: area select map to room select map - initialise
+;     $82:8000: Game state 6/1Fh/28h (loading game data / set up new game / load demo game data)
+;     $82:DFB6: Load map explored if elevator
     PHP                                                                  ;80858C;
     REP #$30                                                             ;80858D;
     LDA.W $079F                                                          ;80858F;
@@ -916,7 +1185,7 @@ LoadMirrorOfCurrentAreasMapExplored:
     TAX                                                                  ;808593;
     LDY.W #$0000                                                         ;808594;
 
-.loop:
+  .loop:
     LDA.L $7ECD52,X                                                      ;808597;
     STA.W $07F7,Y                                                        ;80859B;
     INX                                                                  ;80859E;
@@ -934,11 +1203,16 @@ LoadMirrorOfCurrentAreasMapExplored:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $85B6: Unused. Generic bitmasks ;;;
 UNUSED_Generic_Bitmasks:
     dw $0001,$0002,$0004,$0008,$0010,$0020,$0040,$0080                   ;8085B6;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $85C6: Save map explored ;;;
 MirrorCurrentAreasMapExplored:
+; Called by:
+;     $82:DF99: Save map explored if elevator
     PHP                                                                  ;8085C6;
     REP #$30                                                             ;8085C7;
     LDA.W $079F                                                          ;8085C9;
@@ -946,7 +1220,7 @@ MirrorCurrentAreasMapExplored:
     TAX                                                                  ;8085CD;
     LDY.W #$0000                                                         ;8085CE;
 
-.loop:
+  .loop:
     LDA.W $07F7,Y                                                        ;8085D1;
     STA.L $7ECD52,X                                                      ;8085D4;
     INX                                                                  ;8085D8;
@@ -962,20 +1236,22 @@ MirrorCurrentAreasMapExplored:
     ORA.W #$00FF                                                         ;8085ED;
     STA.L $7ED908,X                                                      ;8085F0;
 
-.return:
+  .return:
     PLP                                                                  ;8085F4;
     RTL                                                                  ;8085F5;
 
 
+;;; $85F6: NTSC/PAL and SRAM mapping check ;;;
 NTSC_PAL_SRAM_MappingCheck:
+; Checks that the SNES PPU's region matches up with the game header's region
+; and that the SRAM regions $70:0000..1FFF and $70:2000..3FFF are mirrors
     PHP                                                                  ;8085F6;
     SEP #$30                                                             ;8085F7;
-    LDA.L Debug_RegionSRAM                                               ;8085F9;
+    LDA.L DebugConst_RegionSRAM                                          ;8085F9;
     BEQ .region                                                          ;8085FD; If [$80:8000] != 0:
     JMP.W .return                                                        ;8085FF; Return
 
-
-.region:
+  .region:
     LDA.L ROM_HEADER_country&$00FFFF                                     ;808602;
     CMP.B #$00                                                           ;808606; If country code != Japan:
     BEQ .japan                                                           ;808608;
@@ -984,13 +1260,12 @@ NTSC_PAL_SRAM_MappingCheck:
     BEQ .failedRegion                                                    ;80860F;
     JMP.W .SRAMCheck                                                     ;808611;
 
-
-.japan:
+  .japan:
     LDA.W $213F                                                          ;808614;
     BIT.B #$10                                                           ;808617; If PPU set to NTSC: go to .SRAMCheck
     BEQ .SRAMCheck                                                       ;808619;
 
-.failedRegion:
+  .failedRegion:
     LDA.B #$8F                                                           ;80861B;
     STA.W $2100                                                          ;80861D; Enable forced blank
     STZ.W $4200                                                          ;808620; Disable all interrupts
@@ -1036,15 +1311,14 @@ NTSC_PAL_SRAM_MappingCheck:
     LDA.B #$40                                                           ;80868C;
     STA.W $2107                                                          ;80868E; BG1 tilemap base address = $4000
 
-.gotoCrash:
+  .gotoCrash:
     BRA .gotoCrash                                                       ;808691;
 
-
-.SRAMCheck:
+  .SRAMCheck:
     REP #$30                                                             ;808693;
     LDX.W #$1FFE                                                         ;808695;
 
-.backupSRAM:
+  .backupSRAM:
     LDA.L $700000,X                                                      ;808698;
     STA.L $7F0000,X                                                      ;80869C; $7F:0000..1FFF = [$70:0000..1FFF]
     DEX                                                                  ;8086A0;
@@ -1053,7 +1327,7 @@ NTSC_PAL_SRAM_MappingCheck:
     LDA.W #$0000                                                         ;8086A4;
     LDX.W #$1FFE                                                         ;8086A7;
 
-.clearSRAM:
+  .clearSRAM:
     STA.L $700000,X                                                      ;8086AA; Clear $70:0000..1FFF
     DEX                                                                  ;8086AE;
     DEX                                                                  ;8086AF;
@@ -1061,7 +1335,7 @@ NTSC_PAL_SRAM_MappingCheck:
     LDA.W #$0000                                                         ;8086B2;
     LDX.W #$1FFE                                                         ;8086B5;
 
-.writeSRAM:
+  .writeSRAM:
     STA.L $702000,X                                                      ;8086B8;
     INC A                                                                ;8086BC; $70:2000..3FFF = 0..FFFh
     DEX                                                                  ;8086BD;
@@ -1070,30 +1344,29 @@ NTSC_PAL_SRAM_MappingCheck:
     LDA.W #$0000                                                         ;8086C1;
     LDX.W #$1FFE                                                         ;8086C4;
 
-.loop:
+  .loop:
     CMP.L $700000,X                                                      ;8086C7;
     BNE .failedSRAMCheck                                                 ;8086CB; If [$70:0000..1FFF] != 0..FFFh: go to .failedSRAMCheck
     INC A                                                                ;8086CD;
     DEX                                                                  ;8086CE;
     DEX                                                                  ;8086CF;
 
-.verifySRAM:
+  .verifySRAM:
     BPL .loop                                                            ;8086D0;
     LDX.W #$1FFE                                                         ;8086D2;
 
-.restoreSRAM:
+  .restoreSRAM:
     LDA.L $7F0000,X                                                      ;8086D5;
     STA.L $700000,X                                                      ;8086D9; $70:0000..1FFF = [$7F:0000..1FFF]
     DEX                                                                  ;8086DD;
     DEX                                                                  ;8086DE;
     BPL .restoreSRAM                                                     ;8086DF;
 
-.return:
+  .return:
     PLP                                                                  ;8086E1;
     RTS                                                                  ;8086E2; return
 
-
-.failedSRAMCheck:
+  .failedSRAMCheck:
     SEP #$20                                                             ;8086E3;
     LDA.B #$8F                                                           ;8086E5;
     STA.W $2100                                                          ;8086E7; Enable forced blank
@@ -1140,10 +1413,11 @@ NTSC_PAL_SRAM_MappingCheck:
     LDA.B #$40                                                           ;808756;
     STA.W $2107                                                          ;808758; BG1 tilemap base address = $4000
 
-.crash:
+  .crash:
     BRA .crash                                                           ;80875B; Crash
 
 
+;;; $875D: Initialise CPU IO registers ;;;
 Initialise_CPU_IO_Registers:
     LDA.B #$01                                                           ;80875D;
     STA.W $4200                                                          ;80875F; Enable auto-joypad read
@@ -1167,7 +1441,9 @@ Initialise_CPU_IO_Registers:
     RTS                                                                  ;808791;
 
 
+;;; $8792: Initialise PPU registers ;;;
 InitialisePPURegisters:
+; These BG/sprites addresses aren't used, $8B:8000 (set up PPU for title sequence) overwrites them
     LDA.B #$8F                                                           ;808792;
     STA.W $2100                                                          ;808794; Enable forced blank
     STA.B $51                                                            ;808797;
@@ -1287,6 +1563,7 @@ InitialisePPURegisters:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $88B4: Unused. Clear high RAM ;;;
 UNUSED_ClearHighRAM_8088B4:
     REP #$30                                                             ;8088B4;
     LDA.W #$0000                                                         ;8088B6;
@@ -1302,7 +1579,15 @@ UNUSED_ClearHighRAM_8088B4:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $88D1: Write a load of 1C2Fh ;;;
 WriteALoadOf_1C2F:
+; Called by:
+;     $8482: Common boot section
+
+; These assignments have no effect. Before the first read to any of these RAM regions:
+;     $7E:3000..37FF is set to 0 by $8B:8000 (set up PPU for title sequence), which also has no effect, then to either 0 by $82:81DD (set up PPU for gameplay) or Zebes and stars tilemap by $81:9E93 (file select menu - index 1: title sequence to main - load BG2)
+;     $7E:4000..47FF is set to 006Fh by $82:81DD (set up PPU for gameplay)
+;     $7E:6000..67FF is clobbered by a decompression in $82:E3C0 (door transition function - place Samus, load tiles)
     REP #$30                                                             ;8088D1;
     LDA.W #$1C2F                                                         ;8088D3;
     JSL.L Write_800h_Bytes_Of_A_To_7E3000                                ;8088D6; $7E:3000..37FF = 1C2Fh
@@ -1314,7 +1599,13 @@ WriteALoadOf_1C2F:
     RTS                                                                  ;8088EA;
 
 
+;;; $88EB: Write 800h bytes of [A] to $7E:3000 ;;;
 Write_800h_Bytes_Of_A_To_7E3000:
+;; Parameters:
+;;     A: Fill value
+
+; Called by:
+;     $88D1: Write a load of 1C2Fh
     PHP                                                                  ;8088EB;
     PHB                                                                  ;8088EC;
     PHK                                                                  ;8088ED;
@@ -1328,7 +1619,13 @@ Write_800h_Bytes_Of_A_To_7E3000:
     RTL                                                                  ;8088FD;
 
 
+;;; $88FE: Write 800h bytes of [A] to $7E:4000 ;;;
 Write_800h_Bytes_Of_A_To_7E4000:
+;; Parameters:
+;;     A: Fill value
+
+; Called by:
+;     $88D1: Write a load of 1C2Fh
     PHP                                                                  ;8088FE;
     PHB                                                                  ;8088FF;
     PHK                                                                  ;808900;
@@ -1342,7 +1639,13 @@ Write_800h_Bytes_Of_A_To_7E4000:
     RTL                                                                  ;808910;
 
 
+;;; $8911: Write 800h bytes of [A] to $7E:6000 ;;;
 Write_800h_Bytes_Of_A_To_7E6000:
+;; Parameters:
+;;     A: Fill value
+
+; Called by:
+;     $88D1: Write a load of 1C2Fh
     PHP                                                                  ;808911;
     PHB                                                                  ;808912;
     PHK                                                                  ;808913;
@@ -1356,7 +1659,12 @@ Write_800h_Bytes_Of_A_To_7E6000:
     RTL                                                                  ;808923;
 
 
+;;; $8924: Handle fading out ;;;
 HandleFadingOut:
+; When the screen has finished fading out, [$51] = 80h.
+; Easiest way to check is:
+;     LDA $51 : BMI BRANCH_FINISHED ; If PSR.M = 1
+;     LDA $50 : BMI BRANCH_FINISHED ; If PSR.M = 0
     PHP                                                                  ;808924;
     REP #$20                                                             ;808925;
     LDA.W $0725                                                          ;808927;
@@ -1365,8 +1673,7 @@ HandleFadingOut:
     STA.W $0725                                                          ;80892D; Decrement screen fade counter
     BRA .return                                                          ;808930; Return
 
-
-.fadeOut:
+  .fadeOut:
     LDA.W $0723                                                          ;808932;
     STA.W $0725                                                          ;808935; Screen fade counter = [screen fade delay]
     SEP #$30                                                             ;808938;
@@ -1379,16 +1686,21 @@ HandleFadingOut:
     STA.B $51                                                            ;808945; Enable forced blank, brightness = 0
     BRA .return                                                          ;808947; Return
 
-
-.disableFBlank:
+  .disableFBlank:
     STA.B $51                                                            ;808949; Decrement brightness (disable forced blank)
 
-.return:
+  .return:
     PLP                                                                  ;80894B;
     RTL                                                                  ;80894C;
 
 
+;;; $894D: Handle fading in ;;;
 HandleFadingIn:
+; When the screen has finished fading in, [$51] = Fh.
+; Easiest way to check is:
+;     LDA $51 : CMP #$0F : BEQ BRANCH_FINISHED         ; If PSR.M = 1
+;     LDA $50 : ASL : CMP #$1E00 : BCS BRANCH_FINISHED ; If PSR.M = 0
+;     LDA $50 : CMP #$0F00 : BCS BRANCH_FINISHED       ; If PSR.M = 0 and forced blank is known to be disabled (force blank is enabled by fade out)
     PHP                                                                  ;80894D;
     REP #$20                                                             ;80894E;
     LDA.W $0725                                                          ;808950;
@@ -1397,8 +1709,7 @@ HandleFadingIn:
     STA.W $0725                                                          ;808956; Decrement screen fade counter
     BRA .return                                                          ;808959; Return
 
-
-.fadeIn:
+  .fadeIn:
     LDA.W $0723                                                          ;80895B;
     STA.W $0725                                                          ;80895E; Screen fade counter = [screen fade delay]
     SEP #$30                                                             ;808961;
@@ -1408,12 +1719,15 @@ HandleFadingIn:
     BEQ .return                                                          ;808968;
     STA.B $51                                                            ;80896A; Increment brightness (disable forced blank)
 
-.return:
+  .return:
     PLP                                                                  ;80896C;
     RTL                                                                  ;80896D;
 
 
+;;; $896E: Finalise OAM ;;;
 Finalise_OAM:
+; Move unused sprites to Y = F0h and reset OAM stack pointer
+; Uses one hell of an unrolled loop
     PHP                                                                  ;80896E;
     REP #$30                                                             ;80896F;
     LDA.W $0590                                                          ;808971;
@@ -1430,14 +1744,12 @@ Finalise_OAM:
     SEP #$30                                                             ;808988;
     JMP.W ($0012)                                                        ;80898A;
 
-
-.clearOAMStackPointer:
+  .clearOAMStackPointer:
     STZ.W $0590                                                          ;80898D;
     PLP                                                                  ;808990;
     RTL                                                                  ;808991;
 
-
-.spriteY00F0:
+  .spriteY00F0:
     STA.W $0371                                                          ;808992;
     STA.W $0375                                                          ;808995;
     STA.W $0379                                                          ;808998;
@@ -1572,6 +1884,7 @@ Finalise_OAM:
     RTL                                                                  ;808B19;
 
 
+;;; $8B1A: Clear high OAM ;;;
 ClearHighOAM:
     PHP                                                                  ;808B1A;
     REP #$30                                                             ;808B1B;
@@ -1595,13 +1908,41 @@ ClearHighOAM:
     RTL                                                                  ;808B4E;
 
 
+;;; $8B4F: Queue mode 7 transfers ;;;
 QueueMode7Transfers:
+;; Parameter:
+;;     DB:X: Pointer to mode 7 transfers data (see $8BD3)
+
+; Called by:
+;     $8B:9537: Process mode 7 object instruction list (used only by baby metroid in title sequence)
+;     $8B:BDF9: Cinematic function - fly to Ceres - flying into camera with DB:X = $8B:BE74 (back of gunship going to Ceres)
+;     $8B:C345: Cinematic function - Ceres goes boom - Ceres explosions with DB:X = $8B:C3E6 (front of gunship leaving Ceres) / $8B:C3F0/C3FA (clear Ceres tilemap)
+;     $A6:ACBC (Ceres Ridley)
+;     $A6:AD27 (Ceres Ridley)
+;     $A6:F8F1: Animate Ceres elevator platform with DB:X = $A6:F904/F90E (light/dark)
+
+; CGRAM transfers are supported, but no mode 7 transfers data actually define any CGRAM transfers, so $8B62..8B8A is dead code
+
+; From the RAM map:
+; $02D0..032F: Mode 7 transfers. 7 or 9 byte entries. 1 byte zero-terminator
+; {
+;     + 0: Control
+;         DMA control = [control] & 1Fh (transfer unit selection and address increment direction)
+;         DMA target = [control] & C0h:
+;             40h: CGRAM data write
+;             80h: VRAM data write low (tilemap)
+;             C0h: VRAM data write high (tiles)
+;     + 1: Source address
+;     + 4: Size
+;     + 6: Destination address (1 byte for CGRAM transfers, 2 bytes for VRAM transfers)
+;     + 8: VRAM address increment mode (for VRAM transfers only)
+; }
     PHX                                                                  ;808B4F;
     PHY                                                                  ;808B50;
     LDY.W $0334                                                          ;808B51;
     DEX                                                                  ;808B54;
 
-.loop:
+  .loop:
     BIT.W $0000,X                                                        ;808B55;
     BMI .VRAM                                                            ;808B58;
     BVS .CGRAM                                                           ;808B5A;
@@ -1610,8 +1951,7 @@ QueueMode7Transfers:
     PLX                                                                  ;808B60;
     RTL                                                                  ;808B61;
 
-
-.CGRAM:
+  .CGRAM:
     LDA.W $0001,X                                                        ;808B62;
     STA.W $02D0,Y                                                        ;808B65;
     LDA.W $0003,X                                                        ;808B68;
@@ -1631,8 +1971,7 @@ QueueMode7Transfers:
     TAY                                                                  ;808B88;
     BRA .loop                                                            ;808B89;
 
-
-.VRAM:
+  .VRAM:
     LDA.W $0001,X                                                        ;808B8B;
     STA.W $02D0,Y                                                        ;808B8E;
     LDA.W $0003,X                                                        ;808B91;
@@ -1655,6 +1994,7 @@ QueueMode7Transfers:
     BRA .loop                                                            ;808BB8;
 
 
+;;; $8BBA: Handle mode 7 transfers ;;;
 HandleMode7Transfers:
     PHP                                                                  ;808BBA;
     REP #$10                                                             ;808BBB;
@@ -1666,15 +2006,20 @@ HandleMode7Transfers:
     STZ.W $02D0                                                          ;808BCB;
     STZ.W $0334                                                          ;808BCE;
 
-.return:
+  .return:
     PLP                                                                  ;808BD1;
     RTL                                                                  ;808BD2;
 
 
+;;; $8BD3: Process mode 7 transfers ;;;
 ProcessMode7Transfers:
+;; Parameter:
+;;     X: Pointer to mode 7 transfers data
+
+; CGRAM transfers are never queued, so $8BE0..8C10 is dead code
     PHP                                                                  ;808BD3;
 
-.loop:
+  .loop:
     SEP #$20                                                             ;808BD4;
     LDA.W $0000,X                                                        ;808BD6;
     BMI .VRAM                                                            ;808BD9;
@@ -1683,8 +2028,7 @@ ProcessMode7Transfers:
     PLP                                                                  ;808BDE;
     RTL                                                                  ;808BDF;
 
-
-.CGRAM:
+  .CGRAM:
     LSR A                                                                ;808BE0;
     AND.B #$1F                                                           ;808BE1;
     STA.W $4310                                                          ;808BE3;
@@ -1706,8 +2050,7 @@ ProcessMode7Transfers:
     TAX                                                                  ;808C0E;
     BRA .loop                                                            ;808C0F;
 
-
-.VRAM:
+  .VRAM:
     ASL A                                                                ;808C11;
     BMI .VRAMTiles                                                       ;808C12;
     LSR A                                                                ;808C14;
@@ -1733,8 +2076,7 @@ ProcessMode7Transfers:
     TAX                                                                  ;808C48;
     BRA .loop                                                            ;808C49;
 
-
-.VRAMTiles:
+  .VRAMTiles:
     LSR A                                                                ;808C4B;
     AND.B #$1F                                                           ;808C4C;
     STA.W $4310                                                          ;808C4E;
@@ -1759,6 +2101,7 @@ ProcessMode7Transfers:
     JMP.W .loop                                                          ;808C80;
 
 
+;;; $8C83: Handle VRAM write table and scrolling DMAs ;;;
 HandleVRAMWriteTable_ScrollingDMAs:
     PHP                                                                  ;808C83;
     REP #$30                                                             ;808C84;
@@ -1769,7 +2112,7 @@ HandleVRAMWriteTable_ScrollingDMAs:
     STA.W $4310                                                          ;808C90;
     LDY.W #$0000                                                         ;808C93;
 
-.loop:
+  .loop:
     LDA.W $00D0,Y                                                        ;808C96;
     BEQ .done                                                            ;808C99;
     STA.W $4315                                                          ;808C9B;
@@ -1782,7 +2125,7 @@ HandleVRAMWriteTable_ScrollingDMAs:
     BPL .skip                                                            ;808CAF;
     INC A                                                                ;808CB1;
 
-.skip:
+  .skip:
     STA.W $2115                                                          ;808CB2;
     STX.W $2116                                                          ;808CB5;
     SEP #$20                                                             ;808CB8;
@@ -1795,8 +2138,7 @@ HandleVRAMWriteTable_ScrollingDMAs:
     TAY                                                                  ;808CC6;
     BRA .loop                                                            ;808CC7;
 
-
-.done:
+  .done:
     STZ.W $0330                                                          ;808CC9;
     SEP #$20                                                             ;808CCC;
     REP #$10                                                             ;808CCE;
@@ -1806,6 +2148,7 @@ HandleVRAMWriteTable_ScrollingDMAs:
     RTL                                                                  ;808CD7;
 
 
+;;; $8CD8: Execute horizontal scrolling DMAs ;;;
 ExecuteHorizontalScrollingDMAs:
     LDA.B #$81                                                           ;808CD8;
     STA.W $2115                                                          ;808CDA;
@@ -1848,7 +2191,7 @@ ExecuteHorizontalScrollingDMAs:
     LDA.B #$02                                                           ;808D3F;
     STA.W $420B                                                          ;808D41;
 
-.BG2:
+  .BG2:
     LDA.W $097E                                                          ;808D44;
     BEQ .return                                                          ;808D47;
     STZ.W $097E                                                          ;808D49;
@@ -1888,10 +2231,11 @@ ExecuteHorizontalScrollingDMAs:
     LDA.B #$02                                                           ;808DA6;
     STA.W $420B                                                          ;808DA8;
 
-.return:
+  .return:
     RTS                                                                  ;808DAB;
 
 
+;;; $8DAC: Execute vertical scrolling DMAs ;;;
 ExecuteVerticalScrollingDMAs:
     LDA.B #$80                                                           ;808DAC;
     STA.W $2115                                                          ;808DAE;
@@ -1940,7 +2284,7 @@ ExecuteVerticalScrollingDMAs:
     LDA.B #$02                                                           ;808E21;
     STA.W $420B                                                          ;808E23;
 
-.BG2:
+  .BG2:
     LDA.W $098C                                                          ;808E26;
     BEQ .return                                                          ;808E29;
     STZ.W $098C                                                          ;808E2B;
@@ -1978,11 +2322,10 @@ ExecuteVerticalScrollingDMAs:
     SEP #$02                                                             ;808E82;
     BEQ .continue                                                        ;808E84;
 
-.crash:
+  .crash:
     BRA .crash                                                           ;808E86;
 
-
-.continue:
+  .continue:
     REP #$20                                                             ;808E88;
     TYA                                                                  ;808E8A;
     ORA.W #$0020                                                         ;808E8B;
@@ -1994,11 +2337,14 @@ ExecuteVerticalScrollingDMAs:
     LDA.B #$02                                                           ;808E9C;
     STA.W $420B                                                          ;808E9E;
 
-.return:
+  .return:
     RTS                                                                  ;808EA1;
 
 
+;;; $8EA2: Handle VRAM read table ;;;
 HandleVRAMReadTable:
+; Buggy? This routine stores a 1-byte zero-terminator but checks for a 2-byte zero terminator as the loop condition.
+; I think this only works because only one entry is ever set up in any given frame
     PHP                                                                  ;808EA2;
     SEP #$30                                                             ;808EA3;
     LDX.W $0360                                                          ;808EA5;
@@ -2006,14 +2352,13 @@ HandleVRAMReadTable:
     PLP                                                                  ;808EAA;
     RTL                                                                  ;808EAB;
 
-
-.readTable:
+  .readTable:
     STZ.W $0340,X                                                        ;808EAC;
     LDX.B #$00                                                           ;808EAF;
     LDA.B #$80                                                           ;808EB1;
     STA.W $2115                                                          ;808EB3;
 
-.loop:
+  .loop:
     REP #$20                                                             ;808EB6;
     LDA.W $0340,X                                                        ;808EB8;
     BEQ .done                                                            ;808EBB;
@@ -2038,20 +2383,22 @@ HandleVRAMReadTable:
     TAX                                                                  ;808EEC;
     BRA .loop                                                            ;808EED;
 
-
-.done:
+  .done:
     STZ.W $0360                                                          ;808EEF;
     PLP                                                                  ;808EF2;
     RTL                                                                  ;808EF3;
 
 
+;;; $8EF4: Check if music is queued ;;;
 CheckIfMusicIsQueued:
+;; Returns:
+;;     Carry: set if there's a non-zero music queue timer, clear otherwise
     PHP                                                                  ;808EF4;
     REP #$30                                                             ;808EF5;
     PHX                                                                  ;808EF7;
     LDX.W #$000E                                                         ;808EF8;
 
-.loop:
+  .loop:
     LDA.W $0629,X                                                        ;808EFB;
     BNE .nonZeroTimer                                                    ;808EFE;
     DEX                                                                  ;808F00;
@@ -2062,15 +2409,31 @@ CheckIfMusicIsQueued:
     CLC                                                                  ;808F06;
     RTL                                                                  ;808F07;
 
-
-.nonZeroTimer:
+  .nonZeroTimer:
     PLX                                                                  ;808F08;
     PLP                                                                  ;808F09;
     SEC                                                                  ;808F0A;
     RTL                                                                  ;808F0B;
 
 
+;;; $8F0C: Handle music queue ;;;
 HandleMusicQueue:
+; Decrement music timer
+; If [music timer] > 0:
+;     Return
+; If [music timer] = 0:
+;     Process [music entry]
+;     Handle new music track / music data
+;     Erase first entry from queue (advancing the start index)
+;     Sound handler downtime = 8
+;     If music data:
+;         Return
+; If [music queue start index] = [music queue next index] (queue is empty):
+;     Music timer = 0 (try again next loop)
+; Else:
+;     Load music entry and music timer from first entry in queue
+
+; Note that $064C (current music track) is never read anywhere, $07F5 is used instead (music track index)
     PHP                                                                  ;808F0C;
     REP #$20                                                             ;808F0D;
     DEC.W $063F                                                          ;808F0F;
@@ -2079,8 +2442,7 @@ HandleMusicQueue:
     PLP                                                                  ;808F16;
     RTL                                                                  ;808F17;
 
-
-.positive:
+  .positive:
     LDA.W $063D                                                          ;808F18;
     BMI .musicData                                                       ;808F1B;
     SEP #$20                                                             ;808F1D;
@@ -2101,7 +2463,7 @@ HandleMusicQueue:
     AND.W #$000E                                                         ;808F41;
     STA.W $063B                                                          ;808F44;
 
-.negative:
+  .negative:
     LDX.W $063B                                                          ;808F47;
     CPX.W $0639                                                          ;808F4A;
     BEQ .clearTimer                                                      ;808F4D;
@@ -2112,14 +2474,12 @@ HandleMusicQueue:
     PLP                                                                  ;808F5B;
     RTL                                                                  ;808F5C;
 
-
-.clearTimer:
+  .clearTimer:
     STZ.W $063F                                                          ;808F5D;
     PLP                                                                  ;808F60;
     RTL                                                                  ;808F61;
 
-
-.musicData:
+  .musicData:
     AND.W #$00FF                                                         ;808F62;
     STA.W $07F3                                                          ;808F65;
     TAX                                                                  ;808F68;
@@ -2150,7 +2510,12 @@ HandleMusicQueue:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $8FA3: Unused. Queue music data or music track, 16 frame delay, can overwrite old entries, doesn't check for demo ;;;
 UNUSED_QueueMusicDataOrTrack_808FA3:
+;; Parameter:
+;;     A: Music data / music track
+
+; If [A] is negative, the low byte is a music data index, otherwise [A] is a music track
     PHP                                                                  ;808FA3;
     REP #$30                                                             ;808FA4;
     PHX                                                                  ;808FA6;
@@ -2171,7 +2536,12 @@ UNUSED_QueueMusicDataOrTrack_808FA3:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $8FC1: Queue music data or music track, 8 frame delay, cannot set last queue entry ;;;
 QueueMusicDataOrTrack_8FrameDelay:
+;; Parameter:
+;;     A: Music data / music track
+
+; If [A] is negative, the low byte is a music data index, otherwise [A] is a music track
     PHP                                                                  ;808FC1;
     REP #$30                                                             ;808FC2;
     PHX                                                                  ;808FC4;
@@ -2198,14 +2568,32 @@ QueueMusicDataOrTrack_8FrameDelay:
     AND.W #$000E                                                         ;808FED;
     STA.W $0639                                                          ;808FF0;
 
-.return:
+  .return:
     PLY                                                                  ;808FF3;
     PLX                                                                  ;808FF4;
     PLP                                                                  ;808FF5;
     RTL                                                                  ;808FF6;
 
 
+;;; $8FF7: Queue music data or music track, max([Y], 8) frame delay, can overwrite old entries ;;;
 QueueMusicDataOrTrack_YFrameDelay:
+;; Parameter:
+;;     A: Music data / music track
+;;     Y: Delay
+
+; Called by:
+;     $82:DCE0 with A = 5, Y = 14: Game state 14h (death sequence, black out surroundings)
+;     $82:E0D5 with Y = 6: Load new music track if changed
+;     $82:E118 with A = 0: Play room music track after [A] frames
+;     $8B:A613 with A = 5, Y = 14: Cinematic function - intro - queue "the galaxy is at peace" music
+;     $8B:A66F with A = 5, Y = 14: Cinematic function - intro - set up intro text page 1
+;     $8B:BCA0 with A = 5, Y = 14: Cinematic function - fly to Ceres - initial
+;     $8B:C11B with A = 7, Y = 14: Cinematic function - Ceres goes boom - initial
+;     $8B:D480 with A = 5, Y = 14: Cinematic function - ending - setup
+;     $8B:DB9E with A = 5, Y = 14: Cinematic function - ending - space view - change music
+;     $92:ED24 with A = 1, Y = 14: Play Samus fanfare
+
+; If [A] is negative, the low byte is a music data index, otherwise [A] is a music track
     PHP                                                                  ;808FF7;
     REP #$30                                                             ;808FF8;
     PHX                                                                  ;808FFA;
@@ -2219,7 +2607,7 @@ QueueMusicDataOrTrack_YFrameDelay:
     BCS .setTimer                                                        ;80900D;
     LDA.W #$0008                                                         ;80900F;
 
-.setTimer:
+  .setTimer:
     STA.W $0629,X                                                        ;809012;
     INX                                                                  ;809015;
     INX                                                                  ;809016;
@@ -2227,13 +2615,16 @@ QueueMusicDataOrTrack_YFrameDelay:
     AND.W #$000E                                                         ;809018;
     STA.W $0639                                                          ;80901B;
 
-.return:
+  .return:
     PLX                                                                  ;80901E;
     PLP                                                                  ;80901F;
     RTL                                                                  ;809020;
 
 
+;;; $9021: Queue sound, sound library 1, max queued sounds allowed = 15 ;;;
 QueueSound:
+;; Parameter:
+;;     A: Sound to queue
     PHX                                                                  ;809021;
     PHY                                                                  ;809022;
     PHP                                                                  ;809023;
@@ -2243,7 +2634,10 @@ QueueSound:
     BRA QueueSound_Lib1                                                  ;809029;
 
 
+;;; $902B: Queue sound, sound library 1, max queued sounds allowed = 9 ;;;
 QueueSound_Lib1_Max9:
+;; Parameter:
+;;     A: Sound to queue
     PHX                                                                  ;80902B;
     PHY                                                                  ;80902C;
     PHP                                                                  ;80902D;
@@ -2253,7 +2647,10 @@ QueueSound_Lib1_Max9:
     BRA QueueSound_Lib1                                                  ;809033;
 
 
+;;; $9035: Queue sound, sound library 1, max queued sounds allowed = 3 ;;;
 QueueSound_Lib1_Max3:
+;; Parameter:
+;;     A: Sound to queue
     PHX                                                                  ;809035;
     PHY                                                                  ;809036;
     PHP                                                                  ;809037;
@@ -2263,7 +2660,10 @@ QueueSound_Lib1_Max3:
     BRA QueueSound_Lib1                                                  ;80903D;
 
 
+;;; $903F: Queue sound, sound library 1, max queued sounds allowed = 1 ;;;
 QueueSound_Lib1_Max1:
+;; Parameter:
+;;     A: Sound to queue
     PHX                                                                  ;80903F;
     PHY                                                                  ;809040;
     PHP                                                                  ;809041;
@@ -2273,7 +2673,10 @@ QueueSound_Lib1_Max1:
     BRA QueueSound_Lib1                                                  ;809047;
 
 
+;;; $9049: Queue sound, sound library 1, max queued sounds allowed = 6 ;;;
 QueueSound_Lib1_Max6:
+;; Parameter:
+;;     A: Sound to queue
     PHX                                                                  ;809049;
     PHY                                                                  ;80904A;
     PHP                                                                  ;80904B;
@@ -2281,7 +2684,16 @@ QueueSound_Lib1_Max6:
     XBA                                                                  ;80904E;
     LDA.B #$06                                                           ;80904F;
 
+
+;;; $9051: Queue sound, sound library 1 ;;;
 QueueSound_Lib1:
+;; Parameter:
+;;     A low: Max queued sounds allowed
+;;     A high: Sound to queue
+
+; Checks whether sound can be queued; returns if queue threshold is exceeded, sounds are disabled, in a demo or a power bomb is exploding.
+; If it can be queued and the following slot is empty, queues the sound, sets the 'next index' and returns.
+; If the following slot is not empty, the sound with the lower ID gets priority and the 'next index' is unchanged.
     STA.W $0653                                                          ;809051;
     LDA.W $0646                                                          ;809054;
     SEC                                                                  ;809057;
@@ -2306,21 +2718,20 @@ QueueSound_Lib1:
     BCC .queueSound                                                      ;809080;
     LDX.B #$00                                                           ;809082;
 
-.queueSound:
+  .queueSound:
     CPX.W $0643                                                          ;809084;
     BEQ .queueFull                                                       ;809087;
     STA.W $0656,Y                                                        ;809089;
     STX.W $0646                                                          ;80908C;
     STZ.W $0656,X                                                        ;80908F;
 
-.return:
+  .return:
     PLP                                                                  ;809092;
     PLY                                                                  ;809093;
     PLX                                                                  ;809094;
     RTL                                                                  ;809095;
 
-
-.queueFull:
+  .queueFull:
     JSR.W NOPRTS_8091A7                                                  ;809096;
     CMP.W $0656,Y                                                        ;809099;
     BCS .return                                                          ;80909C;
@@ -2328,7 +2739,10 @@ QueueSound_Lib1:
     BRA .return                                                          ;8090A1;
 
 
+;;; $90A3: Queue sound, sound library 2, max queued sounds allowed = 15 ;;;
 QueueSound_Lib2_Max15:
+;; Parameter:
+;;     A: Sound to queue
     PHX                                                                  ;8090A3;
     PHY                                                                  ;8090A4;
     PHP                                                                  ;8090A5;
@@ -2338,7 +2752,10 @@ QueueSound_Lib2_Max15:
     BRA QueueSound_Lib2                                                  ;8090AB;
 
 
+;;; $90AD: Queue sound, sound library 2, max queued sounds allowed = 9 ;;;
 QueueSound_Lib2_Max9:
+;; Parameter:
+;;     A: Sound to queue
     PHX                                                                  ;8090AD;
     PHY                                                                  ;8090AE;
     PHP                                                                  ;8090AF;
@@ -2348,7 +2765,10 @@ QueueSound_Lib2_Max9:
     BRA QueueSound_Lib2                                                  ;8090B5;
 
 
+;;; $90B7: Queue sound, sound library 2, max queued sounds allowed = 3 ;;;
 QueueSound_Lib2_Max3:
+;; Parameter:
+;;     A: Sound to queue
     PHX                                                                  ;8090B7;
     PHY                                                                  ;8090B8;
     PHP                                                                  ;8090B9;
@@ -2358,7 +2778,10 @@ QueueSound_Lib2_Max3:
     BRA QueueSound_Lib2                                                  ;8090BF;
 
 
+;;; $90C1: Queue sound, sound library 2, max queued sounds allowed = 1 ;;;
 QueueSound_Lib2_Max1:
+;; Parameter:
+;;     A: Sound to queue
     PHX                                                                  ;8090C1;
     PHY                                                                  ;8090C2;
     PHP                                                                  ;8090C3;
@@ -2368,7 +2791,10 @@ QueueSound_Lib2_Max1:
     BRA QueueSound_Lib2                                                  ;8090C9;
 
 
+;;; $90CB: Queue sound, sound library 2, max queued sounds allowed = 6 ;;;
 QueueSound_Lib2_Max6:
+;; Parameter:
+;;     A: Sound to queue
     PHX                                                                  ;8090CB;
     PHY                                                                  ;8090CC;
     PHP                                                                  ;8090CD;
@@ -2376,7 +2802,16 @@ QueueSound_Lib2_Max6:
     XBA                                                                  ;8090D0;
     LDA.B #$06                                                           ;8090D1;
 
+
+;;; $90D3: Queue sound, sound library 2 ;;;
 QueueSound_Lib2:
+;; Parameter:
+;;     A low: Max queued sounds allowed
+;;     A high: Sound to queue
+
+; Checks whether sound can be queued; returns if queue threshold is exceeded, sounds are disabled, in a demo or a power bomb is exploding.
+; If it can be queued and the following slot is empty, queues the sound, sets the 'next index' and returns.
+; If the following slot is not empty, the sound with the lower ID gets priority and the 'next index' is unchanged.
     STA.W $0654                                                          ;8090D3;
     LDA.W $0647                                                          ;8090D6;
     SEC                                                                  ;8090D9;
@@ -2401,21 +2836,20 @@ QueueSound_Lib2:
     BCC .queueSound                                                      ;809102;
     LDX.B #$00                                                           ;809104;
 
-.queueSound:
+  .queueSound:
     CPX.W $0644                                                          ;809106;
     BEQ .queueFull                                                       ;809109;
     STA.W $0666,Y                                                        ;80910B;
     STX.W $0647                                                          ;80910E;
     STZ.W $0666,X                                                        ;809111;
 
-.return:
+  .return:
     PLP                                                                  ;809114;
     PLY                                                                  ;809115;
     PLX                                                                  ;809116;
     RTL                                                                  ;809117;
 
-
-.queueFull:
+  .queueFull:
     JSR.W NOPRTS_8091A7                                                  ;809118;
     CMP.W $0666,Y                                                        ;80911B;
     BCS .return                                                          ;80911E;
@@ -2423,7 +2857,10 @@ QueueSound_Lib2:
     BRA .return                                                          ;809123;
 
 
+;;; $9125: Queue sound, sound library 3, max queued sounds allowed = 15 ;;;
 QueueSound_Lib3_Max15:
+;; Parameter:
+;;     A: Sound to queue
     PHX                                                                  ;809125;
     PHY                                                                  ;809126;
     PHP                                                                  ;809127;
@@ -2433,7 +2870,10 @@ QueueSound_Lib3_Max15:
     BRA QueueSound_Lib3                                                  ;80912D;
 
 
+;;; $912F: Queue sound, sound library 3, max queued sounds allowed = 9 ;;;
 QueueSound_Lib3_Max9:
+;; Parameter:
+;;     A: Sound to queue
     PHX                                                                  ;80912F;
     PHY                                                                  ;809130;
     PHP                                                                  ;809131;
@@ -2443,7 +2883,10 @@ QueueSound_Lib3_Max9:
     BRA QueueSound_Lib3                                                  ;809137;
 
 
+;;; $9139: Queue sound, sound library 3, max queued sounds allowed = 3 ;;;
 QueueSound_Lib3_Max3:
+;; Parameter:
+;;     A: Sound to queue
     PHX                                                                  ;809139;
     PHY                                                                  ;80913A;
     PHP                                                                  ;80913B;
@@ -2453,7 +2896,10 @@ QueueSound_Lib3_Max3:
     BRA QueueSound_Lib3                                                  ;809141;
 
 
+;;; $9143: Queue sound, sound library 3, max queued sounds allowed = 1 ;;;
 QueueSound_Lib3_Max1:
+;; Parameter:
+;;     A: Sound to queue
     PHX                                                                  ;809143;
     PHY                                                                  ;809144;
     PHP                                                                  ;809145;
@@ -2463,7 +2909,10 @@ QueueSound_Lib3_Max1:
     BRA QueueSound_Lib3                                                  ;80914B;
 
 
+;;; $914D: Queue sound, sound library 3, max queued sounds allowed = 6 ;;;
 QueueSound_Lib3_Max6:
+;; Parameter:
+;;     A: Sound to queue
     PHX                                                                  ;80914D;
     PHY                                                                  ;80914E;
     PHP                                                                  ;80914F;
@@ -2471,7 +2920,16 @@ QueueSound_Lib3_Max6:
     XBA                                                                  ;809152;
     LDA.B #$06                                                           ;809153;
 
+
+;;; $9155: Queue sound, sound library 3 ;;;
 QueueSound_Lib3:
+;; Parameter:
+;;     A low: Max queued sounds allowed
+;;     A high: Sound to queue
+
+; Checks whether sound can be queued; returns if queue threshold is exceeded, sounds are disabled, in a demo or a power bomb is exploding.
+; If it can be queued and the following slot is empty, queues the sound, sets the 'next index' and returns.
+; If the following slot is not empty, the sound with the lower ID gets priority and the 'next index' is unchanged.
     STA.W $0655                                                          ;809155;
     LDA.W $0648                                                          ;809158;
     SEC                                                                  ;80915B;
@@ -2496,21 +2954,20 @@ QueueSound_Lib3:
     BCC .queueSound                                                      ;809184;
     LDX.B #$00                                                           ;809186;
 
-.queueSound:
+  .queueSound:
     CPX.W $0645                                                          ;809188;
     BEQ .queueFull                                                       ;80918B;
     STA.W $0676,Y                                                        ;80918D;
     STX.W $0648                                                          ;809190;
     STZ.W $0676,X                                                        ;809193;
 
-.return:
+  .return:
     PLP                                                                  ;809196;
     PLY                                                                  ;809197;
     PLX                                                                  ;809198;
     RTL                                                                  ;809199;
 
-
-.queueFull:
+  .queueFull:
     JSR.W NOPRTS_8091A7                                                  ;80919A;
     CMP.W $0676,Y                                                        ;80919D;
     BCS .return                                                          ;8091A0;
@@ -2518,12 +2975,24 @@ QueueSound_Lib3:
     BRA .return                                                          ;8091A5;
 
 
+;;; $91A7: NOP : RTS ;;;
 NOPRTS_8091A7:
+; Called by:
+;     $9051: Queue sound, sound library 1
+;     $90D3: Queue sound, sound library 2
+;     $9155: Queue sound, sound library 3
     NOP                                                                  ;8091A7;
     RTS                                                                  ;8091A8;
 
 
+;;; $91A9: Set up a (H)DMA transfer ;;;
 SetupHDMATransfer:
+;; Parameters:
+;;     [[S] + 1] + 1: DMA channel
+;;     [[S] + 1] + 2: DMA options
+;;     [[S] + 1] + 3: DMA target
+;;     [[S] + 1] + 4: Source address (24-bit)
+;;     [[S] + 1] + 7: Size (in bytes)
     PHP                                                                  ;8091A9;
     PHB                                                                  ;8091AA;
     REP #$30                                                             ;8091AB;
@@ -2555,10 +3024,11 @@ SetupHDMATransfer:
     PLP                                                                  ;8091E4;
     RTL                                                                  ;8091E5;
 
-
-.table:
+  .table:
     db $00,$10,$20,$30,$40,$50,$60,$70                                   ;8091E6;
 
+
+;;; $91EE: Update IO registers ;;;
 Update_IO_Registers:
     LDX.B $84                                                            ;8091EE;
     STX.W $4200                                                          ;8091F0;
@@ -2671,8 +3141,7 @@ Update_IO_Registers:
     BEQ .mode7                                                           ;8092FA;
     RTS                                                                  ;8092FC;
 
-
-.mode7:
+  .mode7:
     LDX.B $78                                                            ;8092FD;
     STX.W $211B                                                          ;8092FF;
     LDX.B $79                                                            ;809302;
@@ -2700,6 +3169,7 @@ Update_IO_Registers:
     RTS                                                                  ;809339;
 
 
+;;; $933A: Update OAM & CGRAM ;;;
 UpdateOAM_CGRAM:
     LDA.W #$0400                                                         ;80933A;
     STA.W $4300                                                          ;80933D;
@@ -2725,7 +3195,14 @@ UpdateOAM_CGRAM:
     RTS                                                                  ;809375;
 
 
+;;; $9376: Transfer Samus tiles to VRAM ;;;
 TransferSamusTilesToVRAM:
+; Samus tiles definition format:
+;     aaaaaa nnnn NNNN
+; where:
+;     a: Source address
+;     n: Part 1 size, n = 0 means 10000h bytes are transferred
+;     N: Part 2 size, N = 0 means no bytes are transferred
     PHB                                                                  ;809376;
     LDX.B #$92                                                           ;809377;
     PHX                                                                  ;809379;
@@ -2765,7 +3242,7 @@ TransferSamusTilesToVRAM:
     STA.W $4315                                                          ;8093C5;
     STX.W $420B                                                          ;8093C8;
 
-.bottom:
+  .bottom:
     LDY.W $071E                                                          ;8093CB;
     BEQ .return                                                          ;8093CE;
     LDY.B #$02                                                           ;8093D0;
@@ -2798,11 +3275,12 @@ TransferSamusTilesToVRAM:
     STA.W $4315                                                          ;80940E;
     STX.W $420B                                                          ;809411;
 
-.return:
+  .return:
     PLB                                                                  ;809414;
     RTS                                                                  ;809415;
 
 
+;;; $9416: Process animated tiles object VRAM transfers ;;;
 ProcessAnimatedTilesObjectVRAMTransfers:
     PHB                                                                  ;809416;
     LDX.B #$87                                                           ;809417;
@@ -2812,7 +3290,7 @@ ProcessAnimatedTilesObjectVRAMTransfers:
     BPL .return                                                          ;80941E;
     LDX.B #$0A                                                           ;809420;
 
-.loop:
+  .loop:
     LDA.W $1EF5,X                                                        ;809422;
     BEQ .next                                                            ;809425;
     LDA.W $1F25,X                                                        ;809427;
@@ -2832,21 +3310,24 @@ ProcessAnimatedTilesObjectVRAMTransfers:
     STY.W $420B                                                          ;80944D;
     STZ.W $1F25,X                                                        ;809450;
 
-.next:
+  .next:
     DEX                                                                  ;809453;
     DEX                                                                  ;809454;
     BPL .loop                                                            ;809455;
 
-.return:
+  .return:
     PLB                                                                  ;809457;
     RTS                                                                  ;809458;
 
 
+;;; $9459: Read controller input. Also a debug branch ;;;
 ReadControllerInput:
+; This is executed at the end of NMI because auto-joypad read is only guaranteed to be executed at some point in the middle of the first scanline of v-blank,
+; and then we need to wait ~3 scanlines for the joypad to finish reading
     PHP                                                                  ;809459;
     SEP #$20                                                             ;80945A;
 
-.wait:
+  .wait:
     LDA.W $4212                                                          ;80945C;
     AND.B #$01                                                           ;80945F;
     BNE .wait                                                            ;809461;
@@ -2869,12 +3350,11 @@ ReadControllerInput:
     STA.B $A3                                                            ;809484;
     BRA .heldEnd                                                         ;809486;
 
-
-.unheld:
+  .unheld:
     LDA.B $87                                                            ;809488;
     STA.B $A3                                                            ;80948A;
 
-.heldEnd:
+  .heldEnd:
     LDA.B $8B                                                            ;80948C;
     STA.B $97                                                            ;80948E;
     LDA.W $05D1                                                          ;809490;
@@ -2882,8 +3362,7 @@ ReadControllerInput:
     PLP                                                                  ;809495;
     RTL                                                                  ;809496;
 
-
-.debug:
+  .debug:
     LDA.W $421A                                                          ;809497;
     STA.B $8D                                                            ;80949A;
     EOR.B $99                                                            ;80949C;
@@ -2902,12 +3381,11 @@ ReadControllerInput:
     STA.B $A5                                                            ;8094B6;
     BRA .held2End                                                        ;8094B8;
 
-
-.unheld2:
+  .unheld2:
     LDA.B $87                                                            ;8094BA;
     STA.B $A5                                                            ;8094BC;
 
-.held2End:
+  .held2End:
     LDA.B $8D                                                            ;8094BE;
     STA.B $99                                                            ;8094C0;
     LDA.W $0617                                                          ;8094C2;
@@ -2918,8 +3396,7 @@ ReadControllerInput:
     STZ.W $05F5                                                          ;8094CE;
     JMP.W SoftReset                                                      ;8094D1;
 
-
-.checkDebug:
+  .checkDebug:
     LDA.W $05D1                                                          ;8094D4;
     BNE .debugEnabled                                                    ;8094D7;
     STZ.W $05C5                                                          ;8094D9;
@@ -2930,16 +3407,14 @@ ReadControllerInput:
     PLP                                                                  ;8094E6;
     RTL                                                                  ;8094E7;
 
-
-.debugEnabled:
+  .debugEnabled:
     STZ.W $05C5                                                          ;8094E8;
     STZ.W $05C7                                                          ;8094EB;
     BIT.W $05CF                                                          ;8094EE;
     BVC .debugInputEnabled                                               ;8094F1;
     JMP.W .return                                                        ;8094F3;
 
-
-.debugInputEnabled:
+  .debugInputEnabled:
     LDA.B $8B                                                            ;8094F6;
     AND.W #$2020                                                         ;8094F8;
     CMP.W #$2020                                                         ;8094FB;
@@ -2949,7 +3424,7 @@ ReadControllerInput:
     STZ.B $8B                                                            ;809505;
     STZ.B $8F                                                            ;809507;
 
-.checkSelectR:
+  .checkSelectR:
     LDA.B $8B                                                            ;809509;
     AND.W #$2010                                                         ;80950B;
     CMP.W #$2010                                                         ;80950E;
@@ -2960,7 +3435,7 @@ ReadControllerInput:
     STZ.B $8B                                                            ;80951B;
     STZ.B $8F                                                            ;80951D;
 
-.checkToggleHUD:
+  .checkToggleHUD:
     LDA.W $05C7                                                          ;80951F;
     BIT.W #$0080                                                         ;809522;
     BEQ .checkAmmoSwap                                                   ;809525;
@@ -2968,7 +3443,7 @@ ReadControllerInput:
     EOR.W #$0030                                                         ;809529;
     STA.B $84                                                            ;80952C;
 
-.checkAmmoSwap:
+  .checkAmmoSwap:
     LDA.W $05C7                                                          ;80952E;
     BIT.W #$8000                                                         ;809531;
     BEQ .swapEnd                                                         ;809534;
@@ -2987,8 +3462,7 @@ ReadControllerInput:
     STZ.W $09CE                                                          ;809559;
     BRA .swapEnd                                                         ;80955C;
 
-
-.swapAmmo:
+  .swapAmmo:
     LDA.W $05C9                                                          ;80955E;
     STA.W $09C6                                                          ;809561;
     LDA.W $05CB                                                          ;809564;
@@ -2996,7 +3470,7 @@ ReadControllerInput:
     LDA.W $05CD                                                          ;80956A;
     STA.W $09CE                                                          ;80956D;
 
-.swapEnd:
+  .swapEnd:
     LDA.W $05C7                                                          ;809570;
     BIT.W #$0040                                                         ;809573;
     BEQ .return                                                          ;809576;
@@ -3004,17 +3478,17 @@ ReadControllerInput:
     EOR.W #$2000                                                         ;80957B;
     STA.W $05CF                                                          ;80957E;
 
-.return:
+  .return:
     PLP                                                                  ;809581;
     RTL                                                                  ;809582;
 
 
+;;; $9583: NMI ;;;
 NMI:
     REP #$30                                                             ;809583;
     JML.L .bank80                                                        ;809585;
 
-
-.bank80:
+  .bank80:
     PHB                                                                  ;809589;
     PHD                                                                  ;80958A;
     PHA                                                                  ;80958B;
@@ -3034,14 +3508,14 @@ NMI:
     JSR.W Update_IO_Registers                                            ;8095A7;
     LDX.B #$00                                                           ;8095AA;
 
-.handleHDMAQueue:
+  .handleHDMAQueue:
     LDA.W $18B4,X                                                        ;8095AC;
     BEQ .next                                                            ;8095AF;
     LDY.W $18C0,X                                                        ;8095B1;
     LDA.W $18D8,X                                                        ;8095B4;
     STA.W $4302,Y                                                        ;8095B7;
 
-.next:
+  .next:
     INX                                                                  ;8095BA;
     INX                                                                  ;8095BB;
     CPX.B #$0C                                                           ;8095BC;
@@ -3053,10 +3527,10 @@ NMI:
     CPX.B #$07                                                           ;8095C8;
     BNE .mode7Disabled                                                   ;8095CA;
 
-.mode7Enabled:
+  .mode7Enabled:
     JSL.L HandleMode7Transfers                                           ;8095CC;
 
-.mode7Disabled:
+  .mode7Disabled:
     JSL.L HandleVRAMWriteTable_ScrollingDMAs                             ;8095D0;
     JSL.L HandleVRAMReadTable                                            ;8095D4;
     SEP #$10                                                             ;8095D8;
@@ -3072,7 +3546,7 @@ NMI:
     STX.W $05B5                                                          ;8095F1;
     INC.W $05B6                                                          ;8095F4;
 
-.return:
+  .return:
     REP #$30                                                             ;8095F7;
     INC.W $05B8                                                          ;8095F9;
     PLY                                                                  ;8095FC;
@@ -3082,8 +3556,7 @@ NMI:
     PLB                                                                  ;809600;
     RTI                                                                  ;809601;
 
-
-.lag:
+  .lag:
     LDX.W $05BA                                                          ;809602;
     INX                                                                  ;809605;
     STX.W $05BA                                                          ;809606;
@@ -3094,6 +3567,7 @@ NMI:
     BRA .return                                                          ;809614;
 
 
+;;; $9616: Interrupt command pointers ;;;
 InterruptCommandPointers:
     dw Interrupt_Cmd0                                                    ;809616;
     dw Interrupt_Cmd2_DisableHVCounterInterrupts                         ;809618;
@@ -3110,7 +3584,12 @@ InterruptCommandPointers:
     dw Interrupt_Cmd18_HorizontalDoorTransition_EndHUDDrawing            ;80962E;
     dw Interrupt_Cmd1A_HorizontalDoorTransition_EndDrawing               ;809630;
 
+
+;;; $9632: Execute door transition VRAM update ;;;
 ExecuteDoorTransitionVRAMUpdate:
+; Called by:
+;     $9771: Interrupt command 12h - vertical door transition - end HUD drawing
+;     $980A: Interrupt command 1Ah - horizontal door transition - end drawing
     SEP #$20                                                             ;809632;
     LDA.B #$80                                                           ;809634;
     STA.W $2100                                                          ;809636;
@@ -3136,23 +3615,32 @@ ExecuteDoorTransitionVRAMUpdate:
     RTS                                                                  ;80966D;
 
 
+;;; $966E: Interrupt command 0 - nothing ;;;
 Interrupt_Cmd0:
+;; Returns:
+;;     A: Interrupt command
+;;     X: IRQ h-counter target
+;;     Y: IRQ v-counter target
     LDA.B $A7                                                            ;80966E;
     BEQ .returnZero                                                      ;809670;
     STZ.B $A7                                                            ;809672;
     BRA .return                                                          ;809674;
 
-
-.returnZero:
+  .returnZero:
     LDA.W #$0000                                                         ;809676;
 
-.return:
+  .return:
     LDX.W #$0000                                                         ;809679;
     LDY.W #$0000                                                         ;80967C;
     RTS                                                                  ;80967F;
 
 
+;;; $9680: Interrupt command 2 - disable h/v-counter interrupts ;;;
 Interrupt_Cmd2_DisableHVCounterInterrupts:
+;; Returns:
+;;     A: Interrupt command
+;;     X: IRQ h-counter target
+;;     Y: IRQ v-counter target
     LDA.W #$0030                                                         ;809680;
     TRB.B $84                                                            ;809683;
     LDA.W #$0000                                                         ;809685;
@@ -3161,7 +3649,12 @@ Interrupt_Cmd2_DisableHVCounterInterrupts:
     RTS                                                                  ;80968A;
 
 
+;;; $968B: Interrupt command 4 - main gameplay - begin HUD drawing ;;;
 Interrupt_Cmd4_MainGameplay_BeginHUDDrawing:
+;; Returns:
+;;     A: Interrupt command
+;;     X: IRQ h-counter target
+;;     Y: IRQ v-counter target
     SEP #$20                                                             ;80968B;
     LDA.B #$5A                                                           ;80968D;
     STA.W $2109                                                          ;80968F;
@@ -3176,7 +3669,12 @@ Interrupt_Cmd4_MainGameplay_BeginHUDDrawing:
     RTS                                                                  ;8096A8;
 
 
+;;; $96A9: Interrupt command 6 - main gameplay - end HUD drawing ;;;
 Interrupt_Cmd6_MainGameplay_EndHUDDrawing:
+;; Returns:
+;;     A: Interrupt command
+;;     X: IRQ h-counter target
+;;     Y: IRQ v-counter target
     SEP #$20                                                             ;8096A9;
     LDA.B $70                                                            ;8096AB;
     STA.W $2130                                                          ;8096AD;
@@ -3192,17 +3690,21 @@ Interrupt_Cmd6_MainGameplay_EndHUDDrawing:
     STZ.B $A7                                                            ;8096C5;
     BRA .return                                                          ;8096C7;
 
-
-.setCommand4:
+  .setCommand4:
     LDA.W #$0004                                                         ;8096C9;
 
-.return:
+  .return:
     LDY.W #$0000                                                         ;8096CC;
     LDX.W #$0098                                                         ;8096CF;
     RTS                                                                  ;8096D2;
 
 
+;;; $96D3: Interrupt command 8 - start of door transition - begin HUD drawing ;;;
 Interrupt_Cmd8_StartDoorTransition_BeginHUDDrawing:
+;; Returns:
+;;     A: Interrupt command
+;;     X: IRQ h-counter target
+;;     Y: IRQ v-counter target
     SEP #$20                                                             ;8096D3;
     LDA.B #$5A                                                           ;8096D5;
     STA.W $2109                                                          ;8096D7;
@@ -3217,7 +3719,12 @@ Interrupt_Cmd8_StartDoorTransition_BeginHUDDrawing:
     RTS                                                                  ;8096F0;
 
 
+;;; $96F1: Interrupt command Ah - start of door transition - end HUD drawing ;;;
 Interrupt_CmdA_StartDoorTransition_EndHUDDrawing:
+;; Returns:
+;;     A: Interrupt command
+;;     X: IRQ h-counter target
+;;     Y: IRQ v-counter target
     SEP #$20                                                             ;8096F1;
     LDA.W $07B3                                                          ;8096F3;
     ORA.W $07B1                                                          ;8096F6;
@@ -3226,11 +3733,10 @@ Interrupt_CmdA_StartDoorTransition_EndHUDDrawing:
     LDA.B #$10                                                           ;8096FD;
     BRA .sprites                                                         ;8096FF;
 
-
-.BG1Sprites:
+  .BG1Sprites:
     LDA.B #$11                                                           ;809701;
 
-.sprites:
+  .sprites:
     STA.W $212C                                                          ;809703;
     REP #$20                                                             ;809706;
     LDA.B $A7                                                            ;809708;
@@ -3238,17 +3744,23 @@ Interrupt_CmdA_StartDoorTransition_EndHUDDrawing:
     STZ.B $A7                                                            ;80970C;
     BRA .return                                                          ;80970E;
 
-
-.command8:
+  .command8:
     LDA.W #$0008                                                         ;809710;
 
-.return:
+  .return:
     LDY.W #$0000                                                         ;809713;
     LDX.W #$0098                                                         ;809716;
     RTS                                                                  ;809719;
 
 
+;;; $971A: Interrupt command Ch - Draygon's room - begin HUD drawing ;;;
 Interrupt_CmdC_Draygon_BeginHUDDrawing:
+;; Returns:
+;;     A: Interrupt command
+;;     X: IRQ h-counter target
+;;     Y: IRQ v-counter target
+
+; Compared to interrupt command 4, this one doesn't set BG3 tilemap base address and size
     SEP #$20                                                             ;80971A;
     LDA.B #$04                                                           ;80971C;
     STA.W $212C                                                          ;80971E;
@@ -3261,7 +3773,14 @@ Interrupt_CmdC_Draygon_BeginHUDDrawing:
     RTS                                                                  ;809732;
 
 
+;;; $9733: Interrupt command Eh - Draygon's room - end HUD drawing ;;;
 Interrupt_CmdE_Draygon_EndHUDDrawing:
+;; Returns:
+;;     A: Interrupt command
+;;     X: IRQ h-counter target
+;;     Y: IRQ v-counter target
+
+; Compared to interrupt command 6, this one doesn't set the main screen layers
     SEP #$20                                                             ;809733;
     LDA.B $5B                                                            ;809735;
     STA.W $2109                                                          ;809737;
@@ -3275,17 +3794,21 @@ Interrupt_CmdE_Draygon_EndHUDDrawing:
     STZ.B $A7                                                            ;80974A;
     BRA .return                                                          ;80974C;
 
-
-.commandC:
+  .commandC:
     LDA.W #$000C                                                         ;80974E;
 
-.return:
+  .return:
     LDY.W #$0000                                                         ;809751;
     LDX.W #$0098                                                         ;809754;
     RTS                                                                  ;809757;
 
 
+;;; $9758: Interrupt command 10h - vertical door transition - begin HUD drawing ;;;
 Interrupt_Cmd10_VerticalDoorTransition_BeginHUDDrawing:
+;; Returns:
+;;     A: Interrupt command
+;;     X: IRQ h-counter target
+;;     Y: IRQ v-counter target
     SEP #$20                                                             ;809758;
     LDA.B #$04                                                           ;80975A;
     STA.W $212C                                                          ;80975C;
@@ -3298,7 +3821,12 @@ Interrupt_Cmd10_VerticalDoorTransition_BeginHUDDrawing:
     RTS                                                                  ;809770;
 
 
+;;; $9771: Interrupt command 12h - vertical door transition - end HUD drawing ;;;
 Interrupt_Cmd12_VerticalDoorTransition_EndHUDDrawing:
+;; Returns:
+;;     A: Interrupt command
+;;     X: IRQ h-counter target
+;;     Y: IRQ v-counter target
     SEP #$20                                                             ;809771;
     LDA.W $07B3                                                          ;809773;
     ORA.W $07B1                                                          ;809776;
@@ -3307,11 +3835,10 @@ Interrupt_Cmd12_VerticalDoorTransition_EndHUDDrawing:
     LDA.B #$10                                                           ;80977D;
     BRA .sprites                                                         ;80977F;
 
-
-.BG1Sprites:
+  .BG1Sprites:
     LDA.B #$11                                                           ;809781;
 
-.sprites:
+  .sprites:
     STA.W $212C                                                          ;809783;
     STZ.W $2130                                                          ;809786;
     STZ.W $2131                                                          ;809789;
@@ -3320,29 +3847,33 @@ Interrupt_Cmd12_VerticalDoorTransition_EndHUDDrawing:
     BPL .scrolling                                                       ;809791;
     JSR.W ExecuteDoorTransitionVRAMUpdate                                ;809793;
 
-.scrolling:
+  .scrolling:
     LDA.W $0931                                                          ;809796;
     BMI .return                                                          ;809799;
     JSL.L DoorTransitionScrolling                                        ;80979B;
 
-.return:
+  .return:
     LDA.W #$0014                                                         ;80979F;
     LDY.W #$00D8                                                         ;8097A2;
     LDX.W #$0098                                                         ;8097A5;
     RTS                                                                  ;8097A8;
 
 
+;;; $97A9: Interrupt command 14h - vertical door transition - end drawing ;;;
 Interrupt_Cmd14_VerticalDoorTransition_EndDrawing:
+;; Returns:
+;;     A: Interrupt command
+;;     X: IRQ h-counter target
+;;     Y: IRQ v-counter target
     LDA.B $A7                                                            ;8097A9;
     BEQ .command10                                                       ;8097AB;
     STZ.B $A7                                                            ;8097AD;
     BRA .return                                                          ;8097AF;
 
-
-.command10:
+  .command10:
     LDA.W #$0010                                                         ;8097B1;
 
-.return:
+  .return:
     LDY.W #$0000                                                         ;8097B4;
     LDX.W #$0098                                                         ;8097B7;
     STZ.W $05B4                                                          ;8097BA;
@@ -3350,7 +3881,12 @@ Interrupt_Cmd14_VerticalDoorTransition_EndDrawing:
     RTS                                                                  ;8097C0;
 
 
+;;; $97C1: Interrupt command 16h - horizontal door transition - begin HUD drawing ;;;
 Interrupt_Cmd16_HorizontalDoorTransition_BeginHUDDrawing:
+;; Returns:
+;;     A: Interrupt command
+;;     X: IRQ h-counter target
+;;     Y: IRQ v-counter target
     SEP #$20                                                             ;8097C1;
     LDA.B #$04                                                           ;8097C3;
     STA.W $212C                                                          ;8097C5;
@@ -3363,7 +3899,12 @@ Interrupt_Cmd16_HorizontalDoorTransition_BeginHUDDrawing:
     RTS                                                                  ;8097D9;
 
 
+;;; $97DA: Interrupt command 18h - horizontal door transition - end HUD drawing ;;;
 Interrupt_Cmd18_HorizontalDoorTransition_EndHUDDrawing:
+;; Returns:
+;;     A: Interrupt command
+;;     X: IRQ h-counter target
+;;     Y: IRQ v-counter target
     SEP #$20                                                             ;8097DA;
     LDA.W $07B3                                                          ;8097DC;
     ORA.W $07B1                                                          ;8097DF;
@@ -3372,11 +3913,10 @@ Interrupt_Cmd18_HorizontalDoorTransition_EndHUDDrawing:
     LDA.B #$10                                                           ;8097E6;
     BRA .sprites                                                         ;8097E8;
 
-
-.BG1Sprites:
+  .BG1Sprites:
     LDA.B #$11                                                           ;8097EA;
 
-.sprites:
+  .sprites:
     STA.W $212C                                                          ;8097EC;
     STZ.W $2130                                                          ;8097EF;
     STZ.W $2131                                                          ;8097F2;
@@ -3385,29 +3925,33 @@ Interrupt_Cmd18_HorizontalDoorTransition_EndHUDDrawing:
     BMI .return                                                          ;8097FA;
     JSL.L DoorTransitionScrolling                                        ;8097FC;
 
-.return:
+  .return:
     LDA.W #$001A                                                         ;809800;
     LDY.W #$00A0                                                         ;809803;
     LDX.W #$0098                                                         ;809806;
     RTS                                                                  ;809809;
 
 
+;;; $980A: Interrupt command 1Ah - horizontal door transition - end drawing ;;;
 Interrupt_Cmd1A_HorizontalDoorTransition_EndDrawing:
+;; Returns:
+;;     A: Interrupt command
+;;     X: IRQ h-counter target
+;;     Y: IRQ v-counter target
     LDX.W $05BC                                                          ;80980A;
     BPL .nextCommand                                                     ;80980D;
     JSR.W ExecuteDoorTransitionVRAMUpdate                                ;80980F;
 
-.nextCommand:
+  .nextCommand:
     LDA.B $A7                                                            ;809812;
     BEQ .command16                                                       ;809814;
     STZ.B $A7                                                            ;809816;
     BRA .return                                                          ;809818;
 
-
-.command16:
+  .command16:
     LDA.W #$0016                                                         ;80981A;
 
-.return:
+  .return:
     LDY.W #$0000                                                         ;80981D;
     LDX.W #$0098                                                         ;809820;
     STZ.W $05B4                                                          ;809823;
@@ -3415,7 +3959,9 @@ Interrupt_Cmd1A_HorizontalDoorTransition_EndDrawing:
     RTS                                                                  ;809829;
 
 
+;;; $982A: Enable h/v-counter interrupts ;;;
 EnableHVCounterInterrupts:
+; Used to enable HUD drawing when starting/resuming gameplay
     PHP                                                                  ;80982A;
     REP #$30                                                             ;80982B;
     LDA.W #$0000                                                         ;80982D;
@@ -3429,7 +3975,9 @@ EnableHVCounterInterrupts:
     RTL                                                                  ;809840;
 
 
+;;; $9841: Enable h/v-counter interrupts now ;;;
 EnableHVCounterInterruptsNow:
+; Used to enable HUD drawing and door transition scrolling in door transition code
     PHP                                                                  ;809841;
     REP #$30                                                             ;809842;
     LDA.W #$0000                                                         ;809844;
@@ -3446,7 +3994,9 @@ EnableHVCounterInterruptsNow:
     RTL                                                                  ;80985E;
 
 
+;;; $985F: Disable h/v-counter interrupts ;;;
 DisableHVCounterInterrupts:
+; Used to disable HUD drawing when ending gameplay
     PHP                                                                  ;80985F;
     REP #$30                                                             ;809860;
     LDA.W #$0030                                                         ;809862;
@@ -3456,12 +4006,16 @@ DisableHVCounterInterrupts:
     RTL                                                                  ;809869;
 
 
+;;; $986A: IRQ ;;;
 IRQ:
+; The first instruction of the routine called by the JSR (e.g. $966E) is executed 79 dots later than the IRQ h-counter target
+; All of the (non-trivial) interrupt commands set IRQ h-counter = 98h, so that's 98h + 79 = 231 dots into the drawing period of the current scanline
+; Also note that the IRQ timing is a bit loose. For the h-counter target 98h,
+; I've seen the IRQ fire at all different points in the range 95h..A3h on different frames (according to Mesen-S event viewer)
     REP #$30                                                             ;80986A;
     JML.L .bank80                                                        ;80986C;
 
-
-.bank80:
+  .bank80:
     PHB                                                                  ;809870;
     PHA                                                                  ;809871;
     PHX                                                                  ;809872;
@@ -3481,8 +4035,10 @@ IRQ:
     RTI                                                                  ;80988A;
 
 
+;;; $988B: HUD tilemaps ;;;
 Tilemap_HUD:
   .topRow:
+; Never changed
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;80988B;
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;80989B;
     dw $2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F,$2C0F                   ;8098AB;
@@ -3534,7 +4090,13 @@ Tilemap_HUD:
     dw $343A,$743A                                                       ;8099C7;
     dw $343B,$743B                                                       ;8099CB;
 
+
+;;; $99CF: Add missiles to HUD tilemap ;;;
 AddMissilesToHUDTilemap:
+; Called by:
+;     $9A79: Initialise HUD
+;     $84:89A9: Instruction - collect [[Y]] ammo missile tank
+;     $91:E355: Debug. Handle debug mode select + L + B
     PHP                                                                  ;8099CF;
     PHB                                                                  ;8099D0;
     PHK                                                                  ;8099D1;
@@ -3557,13 +4119,18 @@ AddMissilesToHUDTilemap:
     LDA.W Tilemap_HUD_missiles+$A                                        ;809A04;
     STA.L $7EC660                                                        ;809A07;
 
-.return:
+  .return:
     PLB                                                                  ;809A0B;
     PLP                                                                  ;809A0C;
     RTL                                                                  ;809A0D;
 
 
+;;; $9A0E: Add super missiles to HUD tilemap ;;;
 AddSuperMissilesToHUDTilemap:
+; Called by:
+;     $9A79: Initialise HUD
+;     $84:89D2: Instruction - collect [[Y]] ammo super missile tank
+;     $91:E355: Debug. Handle debug mode select + L + B
     PHP                                                                  ;809A0E;
     PHX                                                                  ;809A0F;
     PHY                                                                  ;809A10;
@@ -3576,7 +4143,12 @@ AddSuperMissilesToHUDTilemap:
     BRA Write2x2TileIconToHUDTilemap                                     ;809A1C;
 
 
+;;; $9A1E: Add power bombs to HUD tilemap ;;;
 AddPowerBombsToHUDTilemap:
+; Called by:
+;     $9A79: Initialise HUD
+;     $84:89FB: Instruction - collect [[Y]] ammo power bomb tank
+;     $91:E355: Debug. Handle debug mode select + L + B
     PHP                                                                  ;809A1E;
     PHX                                                                  ;809A1F;
     PHY                                                                  ;809A20;
@@ -3589,7 +4161,12 @@ AddPowerBombsToHUDTilemap:
     BRA Write2x2TileIconToHUDTilemap                                     ;809A2C;
 
 
+;;; $9A2E: Add grapple to HUD tilemap ;;;
 AddGrappleToHUDTilemap:
+; Called by:
+;     $9A79: Initialise HUD
+;     $84:891A: Instruction - pick up equipment [[Y]], add grapple to HUD and display grapple message box
+;     $91:E355: Debug. Handle debug mode select + L + B
     PHP                                                                  ;809A2E;
     PHX                                                                  ;809A2F;
     PHY                                                                  ;809A30;
@@ -3602,7 +4179,12 @@ AddGrappleToHUDTilemap:
     BRA Write2x2TileIconToHUDTilemap                                     ;809A3C;
 
 
+;;; $9A3E: Add x-ray to HUD tilemap ;;;
 AddXrayToHUDTilemap:
+; Called by:
+;     $9A79: Initialise HUD
+;     $84:8941: Instruction - pick up equipment [[Y]], add x-ray to HUD and display x-ray message box
+;     $91:E355: Debug. Handle debug mode select + L + B
     PHP                                                                  ;809A3E;
     PHX                                                                  ;809A3F;
     PHY                                                                  ;809A40;
@@ -3611,9 +4193,16 @@ AddXrayToHUDTilemap:
     PLB                                                                  ;809A43;
     REP #$30                                                             ;809A44;
     LDY.W #Tilemap_HUD_xray                                              ;809A46;
-    LDX.W #$002E                                                         ;809A49;
+    LDX.W #$002E                                                         ;809A49; fallthrough to Write2x2TileIconToHUDTilemap
 
+
+;;; $9A4C: Write 2x2 tile icon to HUD tilemap ;;;
 Write2x2TileIconToHUDTilemap:
+;; Parameters:
+;;     X: HUD tilemap index
+;;     Y: Source address
+
+; Expects a pushed DB, Y, X and PSR
     LDA.L $7EC608,X                                                      ;809A4C;
     AND.W #$03FF                                                         ;809A50;
     CMP.W #$000F                                                         ;809A53;
@@ -3627,7 +4216,7 @@ Write2x2TileIconToHUDTilemap:
     LDA.W $0006,Y                                                        ;809A6D;
     STA.L $7EC64A,X                                                      ;809A70;
 
-.return:
+  .return:
     PLB                                                                  ;809A74;
     PLY                                                                  ;809A75;
     PLX                                                                  ;809A76;
@@ -3635,6 +4224,7 @@ Write2x2TileIconToHUDTilemap:
     RTL                                                                  ;809A78;
 
 
+;;; $9A79: Initialise HUD (HUD routine when game is loading) ;;;
 InitialiseHUD_GameLoading:
     PHP                                                                  ;809A79;
     PHB                                                                  ;809A7A;
@@ -3655,7 +4245,7 @@ InitialiseHUD_GameLoading:
     REP #$20                                                             ;809A9E;
     LDX.W #$0000                                                         ;809AA0;
 
-.loopRows123:
+  .loopRows123:
     LDA.W Tilemap_HUD_rows123,X                                          ;809AA3;
     STA.L $7EC608,X                                                      ;809AA6;
     INX                                                                  ;809AAA;
@@ -3667,28 +4257,28 @@ InitialiseHUD_GameLoading:
     BEQ .grapple                                                         ;809AB7;
     JSL.L AddXrayToHUDTilemap                                            ;809AB9;
 
-.grapple:
+  .grapple:
     LDA.W $09A2                                                          ;809ABD;
     BIT.W #$4000                                                         ;809AC0;
     BEQ .missiles                                                        ;809AC3;
     JSL.L AddGrappleToHUDTilemap                                         ;809AC5;
 
-.missiles:
+  .missiles:
     LDA.W $09C8                                                          ;809AC9;
     BEQ .superMissiles                                                   ;809ACC;
     JSL.L AddMissilesToHUDTilemap                                        ;809ACE;
 
-.superMissiles:
+  .superMissiles:
     LDA.W $09CC                                                          ;809AD2;
     BEQ .powerBombs                                                      ;809AD5;
     JSL.L AddSuperMissilesToHUDTilemap                                   ;809AD7;
 
-.powerBombs:
+  .powerBombs:
     LDA.W $09D0                                                          ;809ADB;
     BEQ .previous                                                        ;809ADE;
     JSL.L AddPowerBombsToHUDTilemap                                      ;809AE0;
 
-.previous:
+  .previous:
     STZ.W $0A06                                                          ;809AE4;
     STZ.W $0A08                                                          ;809AE7;
     STZ.W $0A0A                                                          ;809AEA;
@@ -3705,21 +4295,21 @@ InitialiseHUD_GameLoading:
     LDX.W #$0094                                                         ;809B09;
     JSR.W DrawThreeHUDDigits                                             ;809B0C;
 
-.maxSuperMissiles:
+  .maxSuperMissiles:
     LDA.W $09CC                                                          ;809B0F;
     BEQ .maxPowerBombs                                                   ;809B12;
     LDX.W #$009C                                                         ;809B14;
     LDA.W $09CA                                                          ;809B17;
     JSR.W DrawTwoHUDDigits                                               ;809B1A;
 
-.maxPowerBombs:
+  .maxPowerBombs:
     LDA.W $09D0                                                          ;809B1D;
     BEQ .highlight                                                       ;809B20;
     LDA.W $09CE                                                          ;809B22;
     LDX.W #$00A2                                                         ;809B25;
     JSR.W DrawTwoHUDDigits                                               ;809B28;
 
-.highlight:
+  .highlight:
     LDA.W $09D2                                                          ;809B2B;
     LDX.W #$1000                                                         ;809B2E;
     JSR.W ToggleHUDItemHighlight                                         ;809B31;
@@ -3732,6 +4322,7 @@ InitialiseHUD_GameLoading:
     RTL                                                                  ;809B43;
 
 
+;;; $9B44: Handle HUD tilemap (HUD routine when game is paused/running) ;;;
 HandleHUDTilemap_PausedAndRunning:
     PHP                                                                  ;809B44;
     PHB                                                                  ;809B45;
@@ -3748,7 +4339,7 @@ HandleHUDTilemap_PausedAndRunning:
     BNE .drawAutoReserve                                                 ;809B5C;
     LDY.W #Tilemap_HUD_emptyAutoReserve                                  ;809B5E;
 
-.drawAutoReserve:
+  .drawAutoReserve:
     LDA.W $0000,Y                                                        ;809B61;
     STA.L $7EC618                                                        ;809B64;
     LDA.W $0002,Y                                                        ;809B68;
@@ -3762,7 +4353,7 @@ HandleHUDTilemap_PausedAndRunning:
     LDA.W $000A,Y                                                        ;809B84;
     STA.L $7EC69A                                                        ;809B87;
 
-.handleSamusHealth:
+  .handleSamusHealth:
     LDA.W $09C2                                                          ;809B8B;
     CMP.W $0A06                                                          ;809B8E;
     BEQ .handleSamusMissiles                                             ;809B91;
@@ -3796,7 +4387,7 @@ HandleHUDTilemap_PausedAndRunning:
     INC A                                                                ;809BCC;
     STA.B $16                                                            ;809BCD;
 
-.loopEtanks:
+  .loopEtanks:
     DEC.B $16                                                            ;809BCF;
     BEQ .drawEtanksDigits                                                ;809BD1;
     LDX.W #$3430                                                         ;809BD3;
@@ -3805,7 +4396,7 @@ HandleHUDTilemap_PausedAndRunning:
     DEC.B $14                                                            ;809BDA;
     LDX.W #$2831                                                         ;809BDC;
 
-.drawEtanks:
+  .drawEtanks:
     TXA                                                                  ;809BDF;
     LDX.W .etankIconOffsets,Y                                            ;809BE0;
     STA.L $7EC608,X                                                      ;809BE3;
@@ -3814,14 +4405,14 @@ HandleHUDTilemap_PausedAndRunning:
     CPY.W #$001C                                                         ;809BE9;
     BMI .loopEtanks                                                      ;809BEC;
 
-.drawEtanksDigits:
+  .drawEtanksDigits:
     LDA.W #Tilemap_HUDDigits_health                                      ;809BEE;
     STA.B $00                                                            ;809BF1;
     LDX.W #$008C                                                         ;809BF3;
     LDA.B $12                                                            ;809BF6;
     JSR.W DrawTwoHUDDigits                                               ;809BF8;
 
-.handleSamusMissiles:
+  .handleSamusMissiles:
     LDA.W #Tilemap_HUDDigits_ammo                                        ;809BFB;
     STA.B $00                                                            ;809BFE;
     LDA.W $09C8                                                          ;809C00;
@@ -3833,7 +4424,7 @@ HandleHUDTilemap_PausedAndRunning:
     LDX.W #$0094                                                         ;809C10;
     JSR.W DrawThreeHUDDigits                                             ;809C13;
 
-.handleSuperMissiles:
+  .handleSuperMissiles:
     LDA.W $09CC                                                          ;809C16;
     BEQ .handlePowerBombs                                                ;809C19;
     LDA.W $09CA                                                          ;809C1B;
@@ -3848,12 +4439,11 @@ HandleHUDTilemap_PausedAndRunning:
     JSR.W DrawTwoHUDDigits                                               ;809C34;
     BRA .handlePowerBombs                                                ;809C37;
 
-
-.debugSuperMissiles:
+  .debugSuperMissiles:
     LDA.W $0A0A                                                          ;809C39;
     JSR.W DrawThreeHUDDigits                                             ;809C3C;
 
-.handlePowerBombs:
+  .handlePowerBombs:
     LDA.W $09D0                                                          ;809C3F;
     BEQ .handleHighlighter                                               ;809C42;
     LDA.W $09CE                                                          ;809C44;
@@ -3863,7 +4453,8 @@ HandleHUDTilemap_PausedAndRunning:
     LDX.W #$00A2                                                         ;809C4F;
     JSR.W DrawTwoHUDDigits                                               ;809C52;
 
-.handleHighlighter:
+  .handleHighlighter:
+; Plays click sound unless spin/wall jumping, grappling or X-raying
     LDA.W $09D2                                                          ;809C55;
     CMP.W $0A0E                                                          ;809C58;
     BEQ .handleAutoCancel                                                ;809C5B;
@@ -3888,14 +4479,17 @@ HandleHUDTilemap_PausedAndRunning:
     LDA.W #$0039                                                         ;809C8F;
     JSL.L QueueSound_Lib1_Max6                                           ;809C92;
 
-.handleAutoCancel:
+  .handleAutoCancel:
+; Handle auto-cancel highlighter flash
+; Note that the 8-bit frame counter used here is set to 0 by door transition,
+; which usually causes the flash cycle to reset
     LDX.W #$1400                                                         ;809C96;
     LDA.W $05B5                                                          ;809C99;
     BIT.W #$0010                                                         ;809C9C;
     BEQ .highlight                                                       ;809C9F;
     LDX.W #$1000                                                         ;809CA1;
 
-.highlight:
+  .highlight:
     LDA.W $0A04                                                          ;809CA4;
     JSR.W ToggleHUDItemHighlight                                         ;809CA7;
     LDX.W $0330                                                          ;809CAA;
@@ -3919,12 +4513,20 @@ HandleHUDTilemap_PausedAndRunning:
     PLP                                                                  ;809CCC;
     RTL                                                                  ;809CCD;
 
-
 .etankIconOffsets:
+; Energy tank icon tilemap offsets
     dw $0042,$0044,$0046,$0048,$004A,$004C,$004E                         ;809CCE; bottom (first) row
     dw $0002,$0004,$0006,$0008,$000A,$000C,$000E                         ;809CDE; top (second) row
 
+
+;;; $9CEA: Toggle HUD item highlight ;;;
 ToggleHUDItemHighlight:
+;; Parameters:
+;;     A: HUD item index
+;;     X: Tilemap palette bits (palette index * 400h)
+
+; Palette 4 (X = 1000h) is used for the highlighted palette, otherwise palette 5 (X = 1400h) is used
+; This routine assumes missiles are 3 tiles wide and all other icons are 2 tiles wide
     STX.W $077C                                                          ;809CEA;
     DEC A                                                                ;809CED;
     BMI .return                                                          ;809CEE;
@@ -3938,7 +4540,7 @@ ToggleHUDItemHighlight:
     ORA.W $077C                                                          ;809D01;
     STA.L $7EC608,X                                                      ;809D04;
 
-.topRightMiddle:
+  .topRightMiddle:
     LDA.L $7EC60A,X                                                      ;809D08;
     CMP.W #$2C0F                                                         ;809D0C;
     BEQ .bottomLeft                                                      ;809D0F;
@@ -3946,7 +4548,7 @@ ToggleHUDItemHighlight:
     ORA.W $077C                                                          ;809D14;
     STA.L $7EC60A,X                                                      ;809D17;
 
-.bottomLeft:
+  .bottomLeft:
     LDA.L $7EC648,X                                                      ;809D1B;
     CMP.W #$2C0F                                                         ;809D1F;
     BEQ .bottomRightMiddle                                               ;809D22;
@@ -3954,7 +4556,7 @@ ToggleHUDItemHighlight:
     ORA.W $077C                                                          ;809D27;
     STA.L $7EC648,X                                                      ;809D2A;
 
-.bottomRightMiddle:
+  .bottomRightMiddle:
     LDA.L $7EC64A,X                                                      ;809D2E;
     CMP.W #$2C0F                                                         ;809D32;
     BEQ .checkY                                                          ;809D35;
@@ -3962,13 +4564,12 @@ ToggleHUDItemHighlight:
     ORA.W $077C                                                          ;809D3A;
     STA.L $7EC64A,X                                                      ;809D3D;
 
-.checkY:
+  .checkY:
     CPY.W #$0000                                                         ;809D41;
     BEQ .topRight                                                        ;809D44;
     RTS                                                                  ;809D46;
 
-
-.topRight:
+  .topRight:
     LDA.L $7EC60C,X                                                      ;809D47;
     CMP.W #$2C0F                                                         ;809D4B;
     BEQ .bottomRight                                                     ;809D4E;
@@ -3976,7 +4577,7 @@ ToggleHUDItemHighlight:
     ORA.W $077C                                                          ;809D53;
     STA.L $7EC60C,X                                                      ;809D56;
 
-.bottomRight:
+  .bottomRight:
     LDA.L $7EC64C,X                                                      ;809D5A;
     CMP.W #$2C0F                                                         ;809D5E;
     BEQ .return                                                          ;809D61;
@@ -3984,17 +4585,24 @@ ToggleHUDItemHighlight:
     ORA.W $077C                                                          ;809D66;
     STA.L $7EC64C,X                                                      ;809D69;
 
-.return:
+  .return:
     RTS                                                                  ;809D6D;
 
-.HUDItemOffsets:
+  .HUDItemOffsets:
+; HUD item tilemap offsets
     dw $0014                                                             ;809D6E; Missiles
     dw $001C                                                             ;809D70; Super missiles
     dw $0022                                                             ;809D72; Power bombs
     dw $0028                                                             ;809D74; Grapple beam
     dw $002E                                                             ;809D76; X-ray
 
+
+;;; $9D78: Draw three HUD digits ;;;
 DrawThreeHUDDigits:
+;; Parameters:
+;;     A: Number to draw
+;;     X: HUD tilemap index
+;;     $00: Long pointer to digits tilemap
     STA.W $4204                                                          ;809D78;
     SEP #$20                                                             ;809D7B;
     LDA.B #$64                                                           ;809D7D;
@@ -4013,7 +4621,13 @@ DrawThreeHUDDigits:
     INX                                                                  ;809D94;
     LDA.W $4216                                                          ;809D95;
 
+
+;;; $9D98: Draw two HUD digits ;;;
 DrawTwoHUDDigits:
+;; Parameters:
+;;     A: Number to draw
+;;     X: HUD tilemap index
+;;     $00: Long pointer to digits tilemap
     STA.W $4204                                                          ;809D98;
     SEP #$20                                                             ;809D9B;
     LDA.B #$0A                                                           ;809D9D;
@@ -4036,7 +4650,9 @@ DrawTwoHUDDigits:
     RTS                                                                  ;809DBE;
 
 
+;;; $9DBF: HUD digits tilemap ;;;
 Tilemap_HUDDigits:
+; Starting with zero
   .health:
     dw $2C09,$2C00,$2C01,$2C02,$2C03,$2C04,$2C05,$2C06                   ;809DBF;
     dw $2C07,$2C08                                                       ;809DCF;
@@ -4045,7 +4661,16 @@ Tilemap_HUDDigits:
     dw $2C09,$2C00,$2C01,$2C02,$2C03,$2C04,$2C05,$2C06                   ;809DD3;
     dw $2C07,$2C08                                                       ;809DE3;
 
+
+;;; $9DE7: Process timer ;;;
 ProcessTimer:
+;; Returns:
+;;     Carry: Set if timer has reached zero, otherwise clear
+
+; Called by:
+;     $90:E0E6: Timer / Samus hack handler - handle timer
+;     $90:E12E: Timer / Samus hack handler - push Samus out of Ceres Ridley's way
+;     $90:E1C8: Timer / Samus hack handler - pushing Samus out of Ceres Ridley's way
     PHB                                                                  ;809DE7;
     PHK                                                                  ;809DE8;
     PLB                                                                  ;809DE9;
@@ -4061,8 +4686,7 @@ ProcessTimer:
     PLB                                                                  ;809DF9;
     RTL                                                                  ;809DFA;
 
-
-.pointers:
+  .pointers:
     dw ProcessTimer_Inactive                                             ;809DFB;
     dw ProcessTimer_CeresStart                                           ;809DFD;
     dw ProcessTimer_MotherBrainStart                                     ;809DFF;
@@ -4071,19 +4695,30 @@ ProcessTimer:
     dw ProcessTimer_RunningMovingIntoPlace                               ;809E05;
     dw ProcessTimer_RunningMovingIntoPlace_return                        ;809E07;
 
+
+;;; $9E09: Process timer - Ceres start ;;;
 ProcessTimer_CeresStart:
+;; Returns:
+;;     Carry: Clear (timer not reached zero)
     JSL.L ClearTimerRAM                                                  ;809E09;
     LDA.W #$0100                                                         ;809E0D;
     JSL.L SetTimer                                                       ;809E10;
     LDA.W #$8003                                                         ;809E14;
     STA.W $0943                                                          ;809E17;
 
+
+;;; $9E1A: Clear carry. Process timer - inactive ;;;
 ProcessTimer_Inactive:
+;; Returns:
+;;     Carry: Clear (timer not reached zero)
     CLC                                                                  ;809E1A;
     RTS                                                                  ;809E1B;
 
 
+;;; $9E1C: Process timer - Mother Brain start ;;;
 ProcessTimer_MotherBrainStart:
+;; Returns:
+;;     Carry: Clear (timer not reached zero)
     JSL.L ClearTimerRAM                                                  ;809E1C;
     LDA.W #$0300                                                         ;809E20;
     JSL.L SetTimer                                                       ;809E23;
@@ -4093,7 +4728,10 @@ ProcessTimer_MotherBrainStart:
     RTS                                                                  ;809E2E;
 
 
+;;; $9E2F: Process timer - initial delay ;;;
 ProcessTimer_InitialDelay:
+;; Returns:
+;;     Carry: Clear (timer not reached zero)
     SEP #$20                                                             ;809E2F;
     INC.W $0948                                                          ;809E31;
     LDA.W $0948                                                          ;809E34;
@@ -4101,12 +4739,15 @@ ProcessTimer_InitialDelay:
     BCC .return                                                          ;809E39;
     INC.W $0943                                                          ;809E3B;
 
-.return:
+  .return:
     REP #$21                                                             ;809E3E;
     RTS                                                                  ;809E40;
 
 
+;;; $9E41: Process timer - timer running, movement delayed ;;;
 ProcessTimer_RunningMovementDelayed:
+;; Returns:
+;;     Carry: Set if timer has reached zero, otherwise clear
     SEP #$20                                                             ;809E41;
     INC.W $0948                                                          ;809E43;
     LDA.W $0948                                                          ;809E46;
@@ -4115,12 +4756,15 @@ ProcessTimer_RunningMovementDelayed:
     STZ.W $0948                                                          ;809E4D;
     INC.W $0943                                                          ;809E50;
 
-.return:
+  .return:
     REP #$20                                                             ;809E53;
     JMP.W DecrementTimer                                                 ;809E55;
 
 
+;;; $9E58: Process timer - timer running, moving into place ;;;
 ProcessTimer_RunningMovingIntoPlace:
+;; Returns:
+;;     Carry: Set if timer has reached zero, otherwise clear
     LDY.W #$0000                                                         ;809E58;
     LDA.W #$00E0                                                         ;809E5B;
     CLC                                                                  ;809E5E;
@@ -4130,7 +4774,7 @@ ProcessTimer_RunningMovingIntoPlace:
     INY                                                                  ;809E67;
     LDA.W #$DC00                                                         ;809E68;
 
-.XinPosition:
+  .XinPosition:
     STA.W $0948                                                          ;809E6B;
     LDA.W #$FF3F                                                         ;809E6E;
     CLC                                                                  ;809E71;
@@ -4140,22 +4784,31 @@ ProcessTimer_RunningMovingIntoPlace:
     INY                                                                  ;809E7A;
     LDA.W #$3000                                                         ;809E7B;
 
-.YinPosition:
+  .YinPosition:
     STA.W $094A                                                          ;809E7E;
     CPY.W #$0002                                                         ;809E81;
     BNE ProcessTimer_RunningMovingIntoPlace_return                       ;809E84;
     INC.W $0943                                                          ;809E86;
 
+
+;;; $9E89: Process timer - timer running, moved into place ;;;
 ProcessTimer_RunningMovingIntoPlace_return:
+;; Returns:
+;;     Carry: Set if timer has reached zero, otherwise clear
     JMP.W DecrementTimer                                                 ;809E89;
 
 
+;;; $9E8C: Timer = [A high] minutes, [A low] seconds ;;;
 SetTimer:
+; Called by:
+;     $9E09 with A = 100h: Process timer - Ceres start
+;     $9E1C with A = 300h: Process timer - Mother Brain start
     STZ.W $0945                                                          ;809E8C;
     STA.W $0946                                                          ;809E8F;
     RTL                                                                  ;809E92;
 
 
+;;; $9E93: Clear timer RAM ;;;
 ClearTimerRAM:
     LDA.W #$8000                                                         ;809E93;
     STA.W $0948                                                          ;809E96;
@@ -4167,7 +4820,10 @@ ClearTimerRAM:
     RTL                                                                  ;809EA8;
 
 
+;;; $9EA9: Decrement timer ;;;
 DecrementTimer:
+;; Returns:
+;;     Carry: Set if timer has reached zero, otherwise clear
     SEP #$39                                                             ;809EA9; Set carry and decimal
     LDA.W $05B6                                                          ;809EAB;
     AND.B #$7F                                                           ;809EAE;
@@ -4188,24 +4844,23 @@ DecrementTimer:
     STA.W $0946                                                          ;809ED2;
     BRA .checkExpired                                                    ;809ED5;
 
-
-.clearTimer:
+  .clearTimer:
     STZ.W $0945                                                          ;809ED7;
     STZ.W $0946                                                          ;809EDA;
     STZ.W $0947                                                          ;809EDD;
 
-.checkExpired:
+  .checkExpired:
     REP #$39                                                             ;809EE0;
     LDA.W $0945                                                          ;809EE2;
     ORA.W $0946                                                          ;809EE5;
     BNE .return                                                          ;809EE8;
     SEC                                                                  ;809EEA;
 
-.return:
+  .return:
     RTS                                                                  ;809EEB;
 
-
-.centiseconds:
+  .centiseconds:
+; Timer centisecond decrements (43 1s and 85 2s)
     db $01,$02,$02,$01,$02,$02,$01,$02,$02,$01,$02,$02,$02,$01,$02,$02   ;809EEC;
     db $01,$02,$02,$01,$02,$02,$01,$02,$01,$02,$02,$01,$02,$02,$01,$02   ;809EFC;
     db $01,$02,$02,$01,$02,$02,$01,$02,$02,$01,$02,$02,$02,$01,$02,$02   ;809F0C;
@@ -4215,7 +4870,18 @@ DecrementTimer:
     db $01,$02,$02,$01,$02,$02,$01,$02,$02,$01,$02,$02,$02,$01,$02,$02   ;809F4C;
     db $01,$02,$02,$01,$02,$02,$01,$02,$02,$01,$02,$02,$02,$01,$02,$02   ;809F5C;
 
+
+;;; $9F6C: Draw timer ;;;
 DrawTimer:
+; Called by:
+;     $82:8367: Game state 20h (made it to Ceres elevator)
+;     $82:8388: Game state 21h (blackout from Ceres)
+;     $82:E1B7: Game state Ah (loading next room)
+;     $82:E288: Game state Bh (loading next room)
+;     $90:E0E6: Timer / Samus hack handler - handle timer
+;     $90:E114: Timer / Samus hack handler - draw timer
+;     $90:E12E: Timer / Samus hack handler - push Samus out of Ceres Ridley's way
+;     $90:E1C8: Timer / Samus hack handler - pushing Samus out of Ceres Ridley's way
     PHB                                                                  ;809F6C;
     PHK                                                                  ;809F6D;
     PLB                                                                  ;809F6E;
@@ -4235,7 +4901,12 @@ DrawTimer:
     RTL                                                                  ;809F94;
 
 
+;;; $9F95: Draw two timer digits ;;;
 DrawTwoTimerDigits:
+;; Parameters:
+;;     DB: Spritemap bank
+;;     A: Timer value
+;;     X: X position offset
     PHX                                                                  ;809F95;
     PHA                                                                  ;809F96;
     AND.W #$00F0                                                         ;809F97;
@@ -4254,7 +4925,12 @@ DrawTwoTimerDigits:
     PLA                                                                  ;809FAF;
     ADC.W #$0008                                                         ;809FB0;
 
+
+;;; $9FB3: Draw timer spritemap ;;;
 DrawTimerSpritemap:
+;; Parameters:
+;;     A: X position offset
+;;     DB:Y: Spritemap pointer
     STA.B $14                                                            ;809FB3;
     LDA.W $0948                                                          ;809FB5;
     XBA                                                                  ;809FB8;
@@ -4272,7 +4948,9 @@ DrawTimerSpritemap:
     RTS                                                                  ;809FD3;
 
 
+;;; $9FD4: Timer spritemap data ;;;
 TimerDigitsSpritemapPointers:
+; Timer digits spritemap pointers
     dw Spritemap_TimerDigits_0                                           ;809FD4;
     dw Spritemap_TimerDigits_1                                           ;809FD6;
     dw Spritemap_TimerDigits_2                                           ;809FD8;
@@ -4284,6 +4962,7 @@ TimerDigitsSpritemapPointers:
     dw Spritemap_TimerDigits_8                                           ;809FE4;
     dw Spritemap_TimerDigits_9                                           ;809FE6;
 
+; Timer digits spritemaps
 Spritemap_TimerDigits_0:
     dw $0002                                                             ;809FE8;
     %spritemapEntry(0, $1FC, $00, 0, 0, 3, 5, $1EA)
@@ -4334,6 +5013,7 @@ Spritemap_TimerDigits_9:
     %spritemapEntry(0, $1FC, $00, 0, 0, 3, 5, $1F3)
     %spritemapEntry(0, $1FC, $F8, 0, 0, 3, 5, $1E9)
 
+; Timer TIME spritemap
 Spritemap_Timer_TIME:
     dw $0005                                                             ;80A060;
     %spritemapEntry(0, $1F0, $F0, 0, 0, 3, 5, $1F8)
@@ -4342,7 +5022,11 @@ Spritemap_Timer_TIME:
     %spritemapEntry(0, $008, $F8, 0, 0, 3, 5, $1F5)
     %spritemapEntry(0, $1F0, $F8, 0, 0, 3, 5, $1F4)
 
+
+;;; $A07B: Start gameplay ;;;
 StartGameplay:
+; Called by:
+;     $82:8000: Game state 6/1Fh/28h (loading game data / set up new game / load demo game data)
     PHP                                                                  ;80A07B;
     PHB                                                                  ;80A07C;
     PHK                                                                  ;80A07D;
@@ -4391,7 +5075,7 @@ StartGameplay:
     BNE .setNextInterrupt                                                ;80A10C;
     LDA.W #$0004                                                         ;80A10E;
 
-.setNextInterrupt:
+  .setNextInterrupt:
     STA.B $A7                                                            ;80A111;
     JSL.L EnableHVCounterInterrupts                                      ;80A113;
     JSR.W HandleMusicQueueFor20Frames                                    ;80A117;
@@ -4405,13 +5089,16 @@ StartGameplay:
     RTL                                                                  ;80A12A;
 
 
+;;; $A12B: Handle music queue for 20 frames ;;;
 HandleMusicQueueFor20Frames:
+; Called by:
+;     $A07B: Start gameplay
     PHP                                                                  ;80A12B;
     SEP #$30                                                             ;80A12C;
     JSL.L EnableNMI                                                      ;80A12E;
     LDX.B #$14                                                           ;80A132;
 
-.loop:
+  .loop:
     PHX                                                                  ;80A134;
     PHP                                                                  ;80A135;
     JSL.L HandleMusicQueue                                               ;80A136;

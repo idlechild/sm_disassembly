@@ -3,6 +3,7 @@ org $B68000
 
 
 Tiles_PauseScreen_BG1_BG2:
+; First $2000 bytes used for menus
 incbin "../data/Tiles_PauseScreen_BG1_BG2.bin" ; $4000 bytes
 
 Tiles_Menu_PauseScreen_Sprites:
