@@ -2,6 +2,7 @@
 org $B58000
 
 
+; Map tilemaps can't cross bank boundaries
 MapTilemaps_brinstar:
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B58000;
     dw $001F,$001F,$001F,$001F,$001F,$001F,$001F,$001F                   ;B58010;

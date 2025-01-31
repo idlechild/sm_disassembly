@@ -89,12 +89,14 @@ Spritemap_CommonB3_Nothing:
     dw $0000                                                             ;B3804D;
 
 ExtendedSpritemap_CommonB3_Nothing:
-    dw $0001,$0000,$0000                                                 ;B3804F;
+    dw $0001                                                             ;B3804F;
+    dw $0000,$0000                                                 
     dw Spritemap_CommonB3_Nothing                                        ;B38055;
     dw Hitbox_CommonB3_Nothing                                           ;B38057;
 
 Hitbox_CommonB3_Nothing:
-    dw $0001,$0000,$0000,$0000,$0000                                     ;B38059;
+    dw $0001                                                             ;B38059;
+    dw $0000,$0000,$0000,$0000                                     
     dw CommonB3_NormalEnemyTouchAI                                       ;B38063;
     dw CommonB3_NormalEnemyShotAI                                        ;B38065;
 
@@ -533,53 +535,36 @@ UNUSED_Palette_SpinningTurtleEye_B38687:
     dw $240E,$325F,$31DB,$3156,$30D2,$302C,$7FBD,$0C05                   ;B38697;
 
 UNUSED_InstList_SpinningTurtleEye_Initial_B386A7:
-    dw $000A                                                             ;B386A7;
-    dw UNUSED_Spritemaps_SpinningTurtleEye_0_B38714                      ;B386A9;
-    dw $000A                                                             ;B386AB;
-    dw UNUSED_Spritemaps_SpinningTurtleEye_1_B3871B                      ;B386AD;
-    dw $000A                                                             ;B386AF;
-    dw UNUSED_Spritemaps_SpinningTurtleEye_2_B38722                      ;B386B1;
-    dw $000A                                                             ;B386B3;
-    dw UNUSED_Spritemaps_SpinningTurtleEye_3_B38729                      ;B386B5;
-    dw $000A                                                             ;B386B7;
-    dw UNUSED_Spritemaps_SpinningTurtleEye_4_B38730                      ;B386B9;
-    dw $000A                                                             ;B386BB;
-    dw UNUSED_Spritemaps_SpinningTurtleEye_5_B38737                      ;B386BD;
-    dw $000A                                                             ;B386BF;
-    dw UNUSED_Spritemaps_SpinningTurtleEye_6_B3873E                      ;B386C1;
-    dw $000A                                                             ;B386C3;
-    dw UNUSED_Spritemaps_SpinningTurtleEye_7_B38745                      ;B386C5;
+    dw $000A,UNUSED_Spritemaps_SpinningTurtleEye_0_B38714                ;B386A7;
+    dw $000A,UNUSED_Spritemaps_SpinningTurtleEye_1_B3871B                ;B386AB;
+    dw $000A,UNUSED_Spritemaps_SpinningTurtleEye_2_B38722                ;B386AF;
+    dw $000A,UNUSED_Spritemaps_SpinningTurtleEye_3_B38729                ;B386B3;
+    dw $000A,UNUSED_Spritemaps_SpinningTurtleEye_4_B38730                ;B386B7;
+    dw $000A,UNUSED_Spritemaps_SpinningTurtleEye_5_B38737                ;B386BB;
+    dw $000A,UNUSED_Spritemaps_SpinningTurtleEye_6_B3873E                ;B386BF;
+    dw $000A,UNUSED_Spritemaps_SpinningTurtleEye_7_B38745                ;B386C3;
     dw Instruction_Common_GotoY                                          ;B386C7;
     dw UNUSED_InstList_SpinningTurtleEye_Initial_B386A7                  ;B386C9;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_SpinningTurtleEye_B386CB:
-    dw $0008                                                             ;B386CB;
-    dw UNUSED_Spritemaps_SpinningTurtleEye_8_B3874C                      ;B386CD;
-    dw $0008                                                             ;B386CF;
-    dw UNUSED_Spritemaps_SpinningTurtleEye_9_B38753                      ;B386D1;
-    dw $0008                                                             ;B386D3;
-    dw UNUSED_Spritemaps_SpinningTurtleEye_A_B3875A                      ;B386D5;
+    dw $0008,UNUSED_Spritemaps_SpinningTurtleEye_8_B3874C                ;B386CB;
+    dw $0008,UNUSED_Spritemaps_SpinningTurtleEye_9_B38753                ;B386CF;
+    dw $0008,UNUSED_Spritemaps_SpinningTurtleEye_A_B3875A                ;B386D3;
     dw Instruction_Common_GotoY                                          ;B386D7;
     dw UNUSED_InstList_SpinningTurtleEye_B386CB                          ;B386D9;
 
 UNUSED_InstList_SpinningTurtleEye_B386DB:
-    dw $0008                                                             ;B386DB;
-    dw UNUSED_Spritemaps_SpinningTurtleEye_B_B38761                      ;B386DD;
-    dw $0008                                                             ;B386DF;
-    dw UNUSED_Spritemaps_SpinningTurtleEye_C_B38768                      ;B386E1;
-    dw $0008                                                             ;B386E3;
-    dw UNUSED_Spritemaps_SpinningTurtleEye_D_B3876F                      ;B386E5;
+    dw $0008,UNUSED_Spritemaps_SpinningTurtleEye_B_B38761                ;B386DB;
+    dw $0008,UNUSED_Spritemaps_SpinningTurtleEye_C_B38768                ;B386DF;
+    dw $0008,UNUSED_Spritemaps_SpinningTurtleEye_D_B3876F                ;B386E3;
     dw Instruction_Common_GotoY                                          ;B386E7;
     dw UNUSED_InstList_SpinningTurtleEye_B386DB                          ;B386E9;
 
 UNUSED_InstList_SpinningTurtleEye_B386EB:
-    dw $0008                                                             ;B386EB;
-    dw UNUSED_Spritemaps_SpinningTurtleEye_E_B38776                      ;B386ED;
-    dw $0008                                                             ;B386EF;
-    dw UNUSED_Spritemaps_SpinningTurtleEye_F_B3877D                      ;B386F1;
-    dw $0008                                                             ;B386F3;
-    dw UNUSED_Spritemaps_SpinningTurtleEye_10_B38784                     ;B386F5;
+    dw $0008,UNUSED_Spritemaps_SpinningTurtleEye_E_B38776                ;B386EB;
+    dw $0008,UNUSED_Spritemaps_SpinningTurtleEye_F_B3877D                ;B386EF;
+    dw $0008,UNUSED_Spritemaps_SpinningTurtleEye_10_B38784               ;B386F3;
     dw Instruction_Common_GotoY                                          ;B386F7;
     dw UNUSED_InstList_SpinningTurtleEye_B386EB                          ;B386F9;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -608,165 +593,121 @@ RTL_B38713:
 
 
 UNUSED_Spritemaps_SpinningTurtleEye_0_B38714:
-    dw $0001,$01F8                                                       ;B38714;
-    db $F8                                                               ;B38718;
-    dw $3300                                                             ;B38719;
+    dw $0001                                                             ;B38714;
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 1, $100)
 
 UNUSED_Spritemaps_SpinningTurtleEye_1_B3871B:
-    dw $0001,$01F8                                                       ;B3871B;
-    db $F8                                                               ;B3871F;
-    dw $3301                                                             ;B38720;
+    dw $0001                                                             ;B3871B;
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 1, $101)
 
 UNUSED_Spritemaps_SpinningTurtleEye_2_B38722:
-    dw $0001,$01F8                                                       ;B38722;
-    db $F8                                                               ;B38726;
-    dw $3302                                                             ;B38727;
+    dw $0001                                                             ;B38722;
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 1, $102)
 
 UNUSED_Spritemaps_SpinningTurtleEye_3_B38729:
-    dw $0001,$01F8                                                       ;B38729;
-    db $F8                                                               ;B3872D;
-    dw $3303                                                             ;B3872E;
+    dw $0001                                                             ;B38729;
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 1, $103)
 
 UNUSED_Spritemaps_SpinningTurtleEye_4_B38730:
-    dw $0001,$01F8                                                       ;B38730;
-    db $F8                                                               ;B38734;
-    dw $F300                                                             ;B38735;
+    dw $0001                                                             ;B38730;
+    %spritemapEntry(0, $1F8, $F8, 1, 1, 3, 1, $100)
 
 UNUSED_Spritemaps_SpinningTurtleEye_5_B38737:
-    dw $0001,$01F8                                                       ;B38737;
-    db $F8                                                               ;B3873B;
-    dw $F301                                                             ;B3873C;
+    dw $0001                                                             ;B38737;
+    %spritemapEntry(0, $1F8, $F8, 1, 1, 3, 1, $101)
 
 UNUSED_Spritemaps_SpinningTurtleEye_6_B3873E:
-    dw $0001,$01F8                                                       ;B3873E;
-    db $F8                                                               ;B38742;
-    dw $F302                                                             ;B38743;
+    dw $0001                                                             ;B3873E;
+    %spritemapEntry(0, $1F8, $F8, 1, 1, 3, 1, $102)
 
 UNUSED_Spritemaps_SpinningTurtleEye_7_B38745:
-    dw $0001,$01F8                                                       ;B38745;
-    db $F8                                                               ;B38749;
-    dw $F303                                                             ;B3874A;
+    dw $0001                                                             ;B38745;
+    %spritemapEntry(0, $1F8, $F8, 1, 1, 3, 1, $103)
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemaps_SpinningTurtleEye_8_B3874C:
-    dw $0001,$01F8                                                       ;B3874C;
-    db $F8                                                               ;B38750;
-    dw $3304                                                             ;B38751;
+    dw $0001                                                             ;B3874C;
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 1, $104)
 
 UNUSED_Spritemaps_SpinningTurtleEye_9_B38753:
-    dw $0001,$01F8                                                       ;B38753;
-    db $F8                                                               ;B38757;
-    dw $3305                                                             ;B38758;
+    dw $0001                                                             ;B38753;
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 1, $105)
 
 UNUSED_Spritemaps_SpinningTurtleEye_A_B3875A:
-    dw $0001,$01F8                                                       ;B3875A;
-    db $F8                                                               ;B3875E;
-    dw $3306                                                             ;B3875F;
+    dw $0001                                                             ;B3875A;
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 1, $106)
 
 UNUSED_Spritemaps_SpinningTurtleEye_B_B38761:
-    dw $0001,$01F8                                                       ;B38761;
-    db $F8                                                               ;B38765;
-    dw $3307                                                             ;B38766;
+    dw $0001                                                             ;B38761;
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 1, $107)
 
 UNUSED_Spritemaps_SpinningTurtleEye_C_B38768:
-    dw $0001,$01F8                                                       ;B38768;
-    db $F8                                                               ;B3876C;
-    dw $3308                                                             ;B3876D;
+    dw $0001                                                             ;B38768;
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 1, $108)
 
 UNUSED_Spritemaps_SpinningTurtleEye_D_B3876F:
-    dw $0001,$01F8                                                       ;B3876F;
-    db $F8                                                               ;B38773;
-    dw $3309                                                             ;B38774;
+    dw $0001                                                             ;B3876F;
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 1, $109)
 
 UNUSED_Spritemaps_SpinningTurtleEye_E_B38776:
-    dw $0001,$01F8                                                       ;B38776;
-    db $F8                                                               ;B3877A;
-    dw $330A                                                             ;B3877B;
+    dw $0001                                                             ;B38776;
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 1, $10A)
 
 UNUSED_Spritemaps_SpinningTurtleEye_F_B3877D:
-    dw $0001,$01F8                                                       ;B3877D;
-    db $F8                                                               ;B38781;
-    dw $330B                                                             ;B38782;
+    dw $0001                                                             ;B3877D;
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 1, $10B)
 
 UNUSED_Spritemaps_SpinningTurtleEye_10_B38784:
-    dw $0001,$01F8                                                       ;B38784;
-    db $F8                                                               ;B38788;
-    dw $330C                                                             ;B38789;
+    dw $0001                                                             ;B38784;
+    %spritemapEntry(0, $1F8, $F8, 0, 0, 3, 1, $10C)
 endif ; !FEATURE_KEEP_UNREFERENCED
+
 
 Palette_Zeb:
     dw $3800,$021D,$0015,$0008,$0003,$00BD,$0013,$000E                   ;B3878B;
     dw $000B,$7F5A,$7EC0,$6DE0,$54E0,$03E0,$02A0,$0140                   ;B3879B;
 
 InstList_Zeb_FacingLeft_Rising:
-    dw $0002                                                             ;B387AB;
-    dw Spritemaps_Zeb_0                                                  ;B387AD;
-    dw $0002                                                             ;B387AF;
-    dw Spritemaps_Zeb_1                                                  ;B387B1;
-    dw $0002                                                             ;B387B3;
-    dw Spritemaps_Zeb_2                                                  ;B387B5;
-    dw $0002                                                             ;B387B7;
-    dw Spritemaps_Zeb_3                                                  ;B387B9;
-    dw $0002                                                             ;B387BB;
-    dw Spritemaps_Zeb_4                                                  ;B387BD;
-    dw $0002                                                             ;B387BF;
-    dw Spritemaps_Zeb_3                                                  ;B387C1;
-    dw $0002                                                             ;B387C3;
-    dw Spritemaps_Zeb_2                                                  ;B387C5;
-    dw $0002                                                             ;B387C7;
-    dw Spritemaps_Zeb_1                                                  ;B387C9;
+    dw $0002,Spritemaps_Zeb_0                                            ;B387AB;
+    dw $0002,Spritemaps_Zeb_1                                            ;B387AF;
+    dw $0002,Spritemaps_Zeb_2                                            ;B387B3;
+    dw $0002,Spritemaps_Zeb_3                                            ;B387B7;
+    dw $0002,Spritemaps_Zeb_4                                            ;B387BB;
+    dw $0002,Spritemaps_Zeb_3                                            ;B387BF;
+    dw $0002,Spritemaps_Zeb_2                                            ;B387C3;
+    dw $0002,Spritemaps_Zeb_1                                            ;B387C7;
     dw Instruction_Common_GotoY                                          ;B387CB;
     dw InstList_Zeb_FacingLeft_Rising                                    ;B387CD;
 
 InstList_Zeb_FacingLeft_Shooting:
-    dw $0001                                                             ;B387CF;
-    dw Spritemaps_Zeb_0                                                  ;B387D1;
-    dw $0001                                                             ;B387D3;
-    dw Spritemaps_Zeb_1                                                  ;B387D5;
-    dw $0001                                                             ;B387D7;
-    dw Spritemaps_Zeb_3                                                  ;B387D9;
-    dw $0001                                                             ;B387DB;
-    dw Spritemaps_Zeb_4                                                  ;B387DD;
-    dw $0001                                                             ;B387DF;
-    dw Spritemaps_Zeb_3                                                  ;B387E1;
-    dw $0001                                                             ;B387E3;
-    dw Spritemaps_Zeb_1                                                  ;B387E5;
+    dw $0001,Spritemaps_Zeb_0                                            ;B387CF;
+    dw $0001,Spritemaps_Zeb_1                                            ;B387D3;
+    dw $0001,Spritemaps_Zeb_3                                            ;B387D7;
+    dw $0001,Spritemaps_Zeb_4                                            ;B387DB;
+    dw $0001,Spritemaps_Zeb_3                                            ;B387DF;
+    dw $0001,Spritemaps_Zeb_1                                            ;B387E3;
     dw Instruction_Common_GotoY                                          ;B387E7;
     dw InstList_Zeb_FacingLeft_Shooting                                  ;B387E9;
 
 InstList_Zeb_FacingRight_Rising:
-    dw $0002                                                             ;B387EB;
-    dw Spritemaps_Zeb_5                                                  ;B387ED;
-    dw $0002                                                             ;B387EF;
-    dw Spritemaps_Zeb_6                                                  ;B387F1;
-    dw $0002                                                             ;B387F3;
-    dw Spritemaps_Zeb_7                                                  ;B387F5;
-    dw $0002                                                             ;B387F7;
-    dw Spritemaps_Zeb_8                                                  ;B387F9;
-    dw $0002                                                             ;B387FB;
-    dw Spritemaps_Zeb_9                                                  ;B387FD;
-    dw $0002                                                             ;B387FF;
-    dw Spritemaps_Zeb_8                                                  ;B38801;
-    dw $0002                                                             ;B38803;
-    dw Spritemaps_Zeb_7                                                  ;B38805;
-    dw $0002                                                             ;B38807;
-    dw Spritemaps_Zeb_6                                                  ;B38809;
+    dw $0002,Spritemaps_Zeb_5                                            ;B387EB;
+    dw $0002,Spritemaps_Zeb_6                                            ;B387EF;
+    dw $0002,Spritemaps_Zeb_7                                            ;B387F3;
+    dw $0002,Spritemaps_Zeb_8                                            ;B387F7;
+    dw $0002,Spritemaps_Zeb_9                                            ;B387FB;
+    dw $0002,Spritemaps_Zeb_8                                            ;B387FF;
+    dw $0002,Spritemaps_Zeb_7                                            ;B38803;
+    dw $0002,Spritemaps_Zeb_6                                            ;B38807;
     dw Instruction_Common_GotoY                                          ;B3880B;
     dw InstList_Zeb_FacingRight_Rising                                   ;B3880D;
 
 InstList_Zeb_FacingRight_Shooting:
-    dw $0001                                                             ;B3880F;
-    dw Spritemaps_Zeb_5                                                  ;B38811;
-    dw $0001                                                             ;B38813;
-    dw Spritemaps_Zeb_6                                                  ;B38815;
-    dw $0001                                                             ;B38817;
-    dw Spritemaps_Zeb_8                                                  ;B38819;
-    dw $0001                                                             ;B3881B;
-    dw Spritemaps_Zeb_9                                                  ;B3881D;
-    dw $0001                                                             ;B3881F;
-    dw Spritemaps_Zeb_8                                                  ;B38821;
-    dw $0001                                                             ;B38823;
-    dw Spritemaps_Zeb_6                                                  ;B38825;
+    dw $0001,Spritemaps_Zeb_5                                            ;B3880F;
+    dw $0001,Spritemaps_Zeb_6                                            ;B38813;
+    dw $0001,Spritemaps_Zeb_8                                            ;B38817;
+    dw $0001,Spritemaps_Zeb_9                                            ;B3881B;
+    dw $0001,Spritemaps_Zeb_8                                            ;B3881F;
+    dw $0001,Spritemaps_Zeb_6                                            ;B38823;
     dw Instruction_Common_GotoY                                          ;B38827;
     dw InstList_Zeb_FacingRight_Shooting                                 ;B38829;
 
@@ -986,240 +927,176 @@ Set_Zeb_Zebbo_InstList:
 
 
 Spritemaps_Zeb_0:
-    dw $0001,$81F8                                                       ;B389B7;
-    db $F8                                                               ;B389BB;
-    dw $2100                                                             ;B389BC;
+    dw $0001                                                             ;B389B7;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
 
 Spritemaps_Zeb_1:
-    dw $0001,$81F8                                                       ;B389BE;
-    db $F8                                                               ;B389C2;
-    dw $2102                                                             ;B389C3;
+    dw $0001                                                             ;B389BE;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $102)
 
 Spritemaps_Zeb_2:
-    dw $0001,$81F8                                                       ;B389C5;
-    db $F8                                                               ;B389C9;
-    dw $2104                                                             ;B389CA;
+    dw $0001                                                             ;B389C5;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $104)
 
 Spritemaps_Zeb_3:
-    dw $0001,$81F8                                                       ;B389CC;
-    db $F8                                                               ;B389D0;
-    dw $2106                                                             ;B389D1;
+    dw $0001                                                             ;B389CC;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $106)
 
 Spritemaps_Zeb_4:
-    dw $0001,$81F8                                                       ;B389D3;
-    db $F8                                                               ;B389D7;
-    dw $2108                                                             ;B389D8;
+    dw $0001                                                             ;B389D3;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $108)
 
 Spritemaps_Zeb_5:
-    dw $0001,$81F8                                                       ;B389DA;
-    db $F8                                                               ;B389DE;
-    dw $6100                                                             ;B389DF;
+    dw $0001                                                             ;B389DA;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $100)
 
 Spritemaps_Zeb_6:
-    dw $0001,$81F8                                                       ;B389E1;
-    db $F8                                                               ;B389E5;
-    dw $6102                                                             ;B389E6;
+    dw $0001                                                             ;B389E1;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $102)
 
 Spritemaps_Zeb_7:
-    dw $0001,$81F8                                                       ;B389E8;
-    db $F8                                                               ;B389EC;
-    dw $6104                                                             ;B389ED;
+    dw $0001                                                             ;B389E8;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $104)
 
 Spritemaps_Zeb_8:
-    dw $0001,$81F8                                                       ;B389EF;
-    db $F8                                                               ;B389F3;
-    dw $6106                                                             ;B389F4;
+    dw $0001                                                             ;B389EF;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $106)
 
 Spritemaps_Zeb_9:
-    dw $0001,$81F8                                                       ;B389F6;
-    db $F8                                                               ;B389FA;
-    dw $6108                                                             ;B389FB;
+    dw $0001                                                             ;B389F6;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $108)
+
 
 Palette_Zebbo:
     dw $3800,$3F95,$2E8B,$0120,$0060,$3AEE,$2249,$11A4                   ;B389FD;
     dw $0962,$39BB,$30F5,$2C6E,$2827,$7F93,$6ECE,$6229                   ;B38A0D;
 
 InstList_Zebbo_FacingLeft_Rising:
-    dw $0002                                                             ;B38A1D;
-    dw Spritemaps_Zebbo_3                                                ;B38A1F;
-    dw $0001                                                             ;B38A21;
-    dw Spritemaps_Zebbo_4                                                ;B38A23;
-    dw $0002                                                             ;B38A25;
-    dw Spritemaps_Zebbo_5                                                ;B38A27;
-    dw $0001                                                             ;B38A29;
-    dw Spritemaps_Zebbo_4                                                ;B38A2B;
+    dw $0002,Spritemaps_Zebbo_3                                          ;B38A1D;
+    dw $0001,Spritemaps_Zebbo_4                                          ;B38A21;
+    dw $0002,Spritemaps_Zebbo_5                                          ;B38A25;
+    dw $0001,Spritemaps_Zebbo_4                                          ;B38A29;
     dw Instruction_Common_GotoY                                          ;B38A2D;
     dw InstList_Zebbo_FacingLeft_Rising                                  ;B38A2F;
 
 InstList_Zebbo_FacingLeft_Shooting:
-    dw $0003                                                             ;B38A31;
-    dw Spritemaps_Zebbo_0                                                ;B38A33;
-    dw $0003                                                             ;B38A35;
-    dw Spritemaps_Zebbo_1                                                ;B38A37;
-    dw $0003                                                             ;B38A39;
-    dw Spritemaps_Zebbo_2                                                ;B38A3B;
-    dw $0003                                                             ;B38A3D;
-    dw Spritemaps_Zebbo_1                                                ;B38A3F;
+    dw $0003,Spritemaps_Zebbo_0                                          ;B38A31;
+    dw $0003,Spritemaps_Zebbo_1                                          ;B38A35;
+    dw $0003,Spritemaps_Zebbo_2                                          ;B38A39;
+    dw $0003,Spritemaps_Zebbo_1                                          ;B38A3D;
     dw Instruction_Common_GotoY                                          ;B38A41;
     dw InstList_Zebbo_FacingLeft_Shooting                                ;B38A43;
 
 InstList_Zebbo_FacingRight_Rising:
-    dw $0002                                                             ;B38A45;
-    dw Spritemaps_Zebbo_9                                                ;B38A47;
-    dw $0001                                                             ;B38A49;
-    dw Spritemaps_Zebbo_A                                                ;B38A4B;
-    dw $0002                                                             ;B38A4D;
-    dw Spritemaps_Zebbo_B                                                ;B38A4F;
-    dw $0001                                                             ;B38A51;
-    dw Spritemaps_Zebbo_A                                                ;B38A53;
+    dw $0002,Spritemaps_Zebbo_9                                          ;B38A45;
+    dw $0001,Spritemaps_Zebbo_A                                          ;B38A49;
+    dw $0002,Spritemaps_Zebbo_B                                          ;B38A4D;
+    dw $0001,Spritemaps_Zebbo_A                                          ;B38A51;
     dw Instruction_Common_GotoY                                          ;B38A55;
     dw InstList_Zebbo_FacingRight_Rising                                 ;B38A57;
 
 InstList_Zebbo_FacingRight_Shooting:
-    dw $0003                                                             ;B38A59;
-    dw Spritemaps_Zebbo_6                                                ;B38A5B;
-    dw $0003                                                             ;B38A5D;
-    dw Spritemaps_Zebbo_7                                                ;B38A5F;
-    dw $0003                                                             ;B38A61;
-    dw Spritemaps_Zebbo_8                                                ;B38A63;
-    dw $0003                                                             ;B38A65;
-    dw Spritemaps_Zebbo_7                                                ;B38A67;
+    dw $0003,Spritemaps_Zebbo_6                                          ;B38A59;
+    dw $0003,Spritemaps_Zebbo_7                                          ;B38A5D;
+    dw $0003,Spritemaps_Zebbo_8                                          ;B38A61;
+    dw $0003,Spritemaps_Zebbo_7                                          ;B38A65;
     dw Instruction_Common_GotoY                                          ;B38A69;
     dw InstList_Zebbo_FacingRight_Shooting                               ;B38A6B;
 
 Spritemaps_Zebbo_0:
-    dw $0001,$81F8                                                       ;B38A6D;
-    db $F8                                                               ;B38A71;
-    dw $2100                                                             ;B38A72;
+    dw $0001                                                             ;B38A6D;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
 
 Spritemaps_Zebbo_1:
-    dw $0001,$81F8                                                       ;B38A74;
-    db $F8                                                               ;B38A78;
-    dw $2102                                                             ;B38A79;
+    dw $0001                                                             ;B38A74;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $102)
 
 Spritemaps_Zebbo_2:
-    dw $0001,$81F8                                                       ;B38A7B;
-    db $F8                                                               ;B38A7F;
-    dw $2104                                                             ;B38A80;
+    dw $0001                                                             ;B38A7B;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $104)
 
 Spritemaps_Zebbo_3:
-    dw $0001,$81F8                                                       ;B38A82;
-    db $F8                                                               ;B38A86;
-    dw $2106                                                             ;B38A87;
+    dw $0001                                                             ;B38A82;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $106)
 
 Spritemaps_Zebbo_4:
-    dw $0001,$81F8                                                       ;B38A89;
-    db $F8                                                               ;B38A8D;
-    dw $2108                                                             ;B38A8E;
+    dw $0001                                                             ;B38A89;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $108)
 
 Spritemaps_Zebbo_5:
-    dw $0001,$81F8                                                       ;B38A90;
-    db $F8                                                               ;B38A94;
-    dw $210A                                                             ;B38A95;
+    dw $0001                                                             ;B38A90;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10A)
 
 Spritemaps_Zebbo_6:
-    dw $0001,$81F8                                                       ;B38A97;
-    db $F8                                                               ;B38A9B;
-    dw $6100                                                             ;B38A9C;
+    dw $0001                                                             ;B38A97;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $100)
 
 Spritemaps_Zebbo_7:
-    dw $0001,$81F8                                                       ;B38A9E;
-    db $F8                                                               ;B38AA2;
-    dw $6102                                                             ;B38AA3;
+    dw $0001                                                             ;B38A9E;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $102)
 
 Spritemaps_Zebbo_8:
-    dw $0001,$81F8                                                       ;B38AA5;
-    db $F8                                                               ;B38AA9;
-    dw $6104                                                             ;B38AAA;
+    dw $0001                                                             ;B38AA5;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $104)
 
 Spritemaps_Zebbo_9:
-    dw $0001,$81F8                                                       ;B38AAC;
-    db $F8                                                               ;B38AB0;
-    dw $6106                                                             ;B38AB1;
+    dw $0001                                                             ;B38AAC;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $106)
 
 Spritemaps_Zebbo_A:
-    dw $0001,$81F8                                                       ;B38AB3;
-    db $F8                                                               ;B38AB7;
-    dw $6108                                                             ;B38AB8;
+    dw $0001                                                             ;B38AB3;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $108)
 
 Spritemaps_Zebbo_B:
-    dw $0001,$81F8                                                       ;B38ABA;
-    db $F8                                                               ;B38ABE;
-    dw $610A                                                             ;B38ABF;
+    dw $0001                                                             ;B38ABA;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $10A)
+
 
 Palette_Gamet:
     dw $3800,$021D,$0015,$0008,$0003,$015F,$0076,$0050                   ;B38AC1;
     dw $000B,$7FFF,$56E0,$3180,$18C0,$43FF,$42DC,$4176                   ;B38AD1;
 
 InstList_Gamet_FacingLeft_Rising:
-    dw $0002                                                             ;B38AE1;
-    dw Spritemaps_Gamet_0                                                ;B38AE3;
-    dw $0002                                                             ;B38AE5;
-    dw Spritemaps_Gamet_1                                                ;B38AE7;
-    dw $0002                                                             ;B38AE9;
-    dw Spritemaps_Gamet_2                                                ;B38AEB;
-    dw $0002                                                             ;B38AED;
-    dw Spritemaps_Gamet_3                                                ;B38AEF;
-    dw $0002                                                             ;B38AF1;
-    dw Spritemaps_Gamet_4                                                ;B38AF3;
-    dw $0002                                                             ;B38AF5;
-    dw Spritemaps_Gamet_3                                                ;B38AF7;
-    dw $0002                                                             ;B38AF9;
-    dw Spritemaps_Gamet_2                                                ;B38AFB;
-    dw $0002                                                             ;B38AFD;
-    dw Spritemaps_Gamet_1                                                ;B38AFF;
+    dw $0002,Spritemaps_Gamet_0                                          ;B38AE1;
+    dw $0002,Spritemaps_Gamet_1                                          ;B38AE5;
+    dw $0002,Spritemaps_Gamet_2                                          ;B38AE9;
+    dw $0002,Spritemaps_Gamet_3                                          ;B38AED;
+    dw $0002,Spritemaps_Gamet_4                                          ;B38AF1;
+    dw $0002,Spritemaps_Gamet_3                                          ;B38AF5;
+    dw $0002,Spritemaps_Gamet_2                                          ;B38AF9;
+    dw $0002,Spritemaps_Gamet_1                                          ;B38AFD;
     dw Instruction_Common_GotoY                                          ;B38B01;
     dw InstList_Gamet_FacingLeft_Rising                                  ;B38B03;
 
 InstList_Gamet_FacingLeft_Shooting:
-    dw $0001                                                             ;B38B05;
-    dw Spritemaps_Gamet_0                                                ;B38B07;
-    dw $0001                                                             ;B38B09;
-    dw Spritemaps_Gamet_1                                                ;B38B0B;
-    dw $0001                                                             ;B38B0D;
-    dw Spritemaps_Gamet_3                                                ;B38B0F;
-    dw $0001                                                             ;B38B11;
-    dw Spritemaps_Gamet_4                                                ;B38B13;
-    dw $0001                                                             ;B38B15;
-    dw Spritemaps_Gamet_3                                                ;B38B17;
-    dw $0001                                                             ;B38B19;
-    dw Spritemaps_Gamet_1                                                ;B38B1B;
+    dw $0001,Spritemaps_Gamet_0                                          ;B38B05;
+    dw $0001,Spritemaps_Gamet_1                                          ;B38B09;
+    dw $0001,Spritemaps_Gamet_3                                          ;B38B0D;
+    dw $0001,Spritemaps_Gamet_4                                          ;B38B11;
+    dw $0001,Spritemaps_Gamet_3                                          ;B38B15;
+    dw $0001,Spritemaps_Gamet_1                                          ;B38B19;
     dw Instruction_Common_GotoY                                          ;B38B1D;
     dw InstList_Gamet_FacingLeft_Shooting                                ;B38B1F;
 
 InstList_Gamet_FacingRight_Rising:
-    dw $0002                                                             ;B38B21;
-    dw Spritemaps_Gamet_5                                                ;B38B23;
-    dw $0002                                                             ;B38B25;
-    dw Spritemaps_Gamet_6                                                ;B38B27;
-    dw $0002                                                             ;B38B29;
-    dw Spritemaps_Gamet_7                                                ;B38B2B;
-    dw $0002                                                             ;B38B2D;
-    dw Spritemaps_Gamet_8                                                ;B38B2F;
-    dw $0002                                                             ;B38B31;
-    dw Spritemaps_Gamet_9                                                ;B38B33;
-    dw $0002                                                             ;B38B35;
-    dw Spritemaps_Gamet_8                                                ;B38B37;
-    dw $0002                                                             ;B38B39;
-    dw Spritemaps_Gamet_7                                                ;B38B3B;
-    dw $0002                                                             ;B38B3D;
-    dw Spritemaps_Gamet_6                                                ;B38B3F;
+    dw $0002,Spritemaps_Gamet_5                                          ;B38B21;
+    dw $0002,Spritemaps_Gamet_6                                          ;B38B25;
+    dw $0002,Spritemaps_Gamet_7                                          ;B38B29;
+    dw $0002,Spritemaps_Gamet_8                                          ;B38B2D;
+    dw $0002,Spritemaps_Gamet_9                                          ;B38B31;
+    dw $0002,Spritemaps_Gamet_8                                          ;B38B35;
+    dw $0002,Spritemaps_Gamet_7                                          ;B38B39;
+    dw $0002,Spritemaps_Gamet_6                                          ;B38B3D;
     dw Instruction_Common_GotoY                                          ;B38B41;
     dw InstList_Gamet_FacingRight_Rising                                 ;B38B43;
 
 InstList_Gamet_FacingRight_Shooting:
-    dw $0001                                                             ;B38B45;
-    dw Spritemaps_Gamet_5                                                ;B38B47;
-    dw $0001                                                             ;B38B49;
-    dw Spritemaps_Gamet_6                                                ;B38B4B;
-    dw $0001                                                             ;B38B4D;
-    dw Spritemaps_Gamet_8                                                ;B38B4F;
-    dw $0001                                                             ;B38B51;
-    dw Spritemaps_Gamet_9                                                ;B38B53;
-    dw $0001                                                             ;B38B55;
-    dw Spritemaps_Gamet_8                                                ;B38B57;
-    dw $0001                                                             ;B38B59;
-    dw Spritemaps_Gamet_6                                                ;B38B5B;
+    dw $0001,Spritemaps_Gamet_5                                          ;B38B45;
+    dw $0001,Spritemaps_Gamet_6                                          ;B38B49;
+    dw $0001,Spritemaps_Gamet_8                                          ;B38B4D;
+    dw $0001,Spritemaps_Gamet_9                                          ;B38B51;
+    dw $0001,Spritemaps_Gamet_8                                          ;B38B55;
+    dw $0001,Spritemaps_Gamet_6                                          ;B38B59;
     dw Instruction_Common_GotoY                                          ;B38B5D;
     dw InstList_Gamet_FacingRight_Shooting                               ;B38B5F;
 
@@ -1622,104 +1499,79 @@ RTL_B38E95:
 
 
 Spritemaps_Gamet_0:
-    dw $0001,$81F8                                                       ;B38E96;
-    db $F8                                                               ;B38E9A;
-    dw $2100                                                             ;B38E9B;
+    dw $0001                                                             ;B38E96;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $100)
 
 Spritemaps_Gamet_1:
-    dw $0001,$81F8                                                       ;B38E9D;
-    db $F8                                                               ;B38EA1;
-    dw $2102                                                             ;B38EA2;
+    dw $0001                                                             ;B38E9D;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $102)
 
 Spritemaps_Gamet_2:
-    dw $0001,$81F8                                                       ;B38EA4;
-    db $F8                                                               ;B38EA8;
-    dw $2104                                                             ;B38EA9;
+    dw $0001                                                             ;B38EA4;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $104)
 
 Spritemaps_Gamet_3:
-    dw $0001,$81F8                                                       ;B38EAB;
-    db $F8                                                               ;B38EAF;
-    dw $2106                                                             ;B38EB0;
+    dw $0001                                                             ;B38EAB;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $106)
 
 Spritemaps_Gamet_4:
-    dw $0001,$81F8                                                       ;B38EB2;
-    db $F8                                                               ;B38EB6;
-    dw $2108                                                             ;B38EB7;
+    dw $0001                                                             ;B38EB2;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $108)
 
 Spritemaps_Gamet_5:
-    dw $0001,$81F8                                                       ;B38EB9;
-    db $F8                                                               ;B38EBD;
-    dw $6100                                                             ;B38EBE;
+    dw $0001                                                             ;B38EB9;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $100)
 
 Spritemaps_Gamet_6:
-    dw $0001,$81F8                                                       ;B38EC0;
-    db $F8                                                               ;B38EC4;
-    dw $6102                                                             ;B38EC5;
+    dw $0001                                                             ;B38EC0;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $102)
 
 Spritemaps_Gamet_7:
-    dw $0001,$81F8                                                       ;B38EC7;
-    db $F8                                                               ;B38ECB;
-    dw $6104                                                             ;B38ECC;
+    dw $0001                                                             ;B38EC7;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $104)
 
 Spritemaps_Gamet_8:
-    dw $0001,$81F8                                                       ;B38ECE;
-    db $F8                                                               ;B38ED2;
-    dw $6106                                                             ;B38ED3;
+    dw $0001                                                             ;B38ECE;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $106)
 
 Spritemaps_Gamet_9:
-    dw $0001,$81F8                                                       ;B38ED5;
-    db $F8                                                               ;B38ED9;
-    dw $6108                                                             ;B38EDA;
+    dw $0001                                                             ;B38ED5;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $108)
+
 
 Palette_Geega:
     dw $3800,$57FF,$42F7,$158C,$00A5,$4F5A,$36B5,$2610                   ;B38EDC;
     dw $1DCE,$3FE0,$2EE0,$2200,$1100,$7E5B,$552F,$2887                   ;B38EEC;
 
 InstList_Geega_FacingLeft_Rising:
-    dw $0004                                                             ;B38EFC;
-    dw Spritemaps_Geega_0                                                ;B38EFE;
-    dw $0004                                                             ;B38F00;
-    dw Spritemaps_Geega_1                                                ;B38F02;
-    dw $0004                                                             ;B38F04;
-    dw Spritemaps_Geega_2                                                ;B38F06;
-    dw $0004                                                             ;B38F08;
-    dw Spritemaps_Geega_1                                                ;B38F0A;
+    dw $0004,Spritemaps_Geega_0                                          ;B38EFC;
+    dw $0004,Spritemaps_Geega_1                                          ;B38F00;
+    dw $0004,Spritemaps_Geega_2                                          ;B38F04;
+    dw $0004,Spritemaps_Geega_1                                          ;B38F08;
     dw Instruction_Common_GotoY                                          ;B38F0C;
     dw InstList_Geega_FacingLeft_Rising                                  ;B38F0E;
 
 InstList_Geega_FacingLeft_Shooting:
-    dw $0001                                                             ;B38F10;
-    dw Spritemaps_Geega_3                                                ;B38F12;
-    dw $0001                                                             ;B38F14;
-    dw Spritemaps_Geega_4                                                ;B38F16;
-    dw $0001                                                             ;B38F18;
-    dw Spritemaps_Geega_5                                                ;B38F1A;
-    dw $0001                                                             ;B38F1C;
-    dw Spritemaps_Geega_4                                                ;B38F1E;
+    dw $0001,Spritemaps_Geega_3                                          ;B38F10;
+    dw $0001,Spritemaps_Geega_4                                          ;B38F14;
+    dw $0001,Spritemaps_Geega_5                                          ;B38F18;
+    dw $0001,Spritemaps_Geega_4                                          ;B38F1C;
     dw Instruction_Common_GotoY                                          ;B38F20;
     dw InstList_Geega_FacingLeft_Shooting                                ;B38F22;
 
 InstList_Geega_FacingRight_Rising:
-    dw $0004                                                             ;B38F24;
-    dw Spritemaps_Geega_6                                                ;B38F26;
-    dw $0004                                                             ;B38F28;
-    dw Spritemaps_Geega_7                                                ;B38F2A;
-    dw $0004                                                             ;B38F2C;
-    dw Spritemaps_Geega_8                                                ;B38F2E;
-    dw $0004                                                             ;B38F30;
-    dw Spritemaps_Geega_7                                                ;B38F32;
+    dw $0004,Spritemaps_Geega_6                                          ;B38F24;
+    dw $0004,Spritemaps_Geega_7                                          ;B38F28;
+    dw $0004,Spritemaps_Geega_8                                          ;B38F2C;
+    dw $0004,Spritemaps_Geega_7                                          ;B38F30;
     dw Instruction_Common_GotoY                                          ;B38F34;
     dw InstList_Geega_FacingRight_Rising                                 ;B38F36;
 
 InstList_Geega_FacingRight_Shooting:
-    dw $0001                                                             ;B38F38;
-    dw Spritemaps_Geega_9                                                ;B38F3A;
-    dw $0001                                                             ;B38F3C;
-    dw Spritemaps_Geega_A                                                ;B38F3E;
-    dw $0001                                                             ;B38F40;
-    dw Spritemaps_Geega_B                                                ;B38F42;
-    dw $0001                                                             ;B38F44;
-    dw Spritemaps_Geega_A                                                ;B38F46;
+    dw $0001,Spritemaps_Geega_9                                          ;B38F38;
+    dw $0001,Spritemaps_Geega_A                                          ;B38F3C;
+    dw $0001,Spritemaps_Geega_B                                          ;B38F40;
+    dw $0001,Spritemaps_Geega_A                                          ;B38F44;
     dw Instruction_Common_GotoY                                          ;B38F48;
     dw InstList_Geega_FacingRight_Shooting                               ;B38F4A;
 
@@ -2124,40 +1976,53 @@ RTL_B392AC:
 
 
 Spritemaps_Geega_0:
-    db $01,$00,$F8,$C3,$F8,$00,$21                                       ;B392AD;
+    dw $0001                                                             ;B392AD;
+    %spritemapEntry(1, $43F8, $F8, 0, 0, 2, 0, $100)
 
 Spritemaps_Geega_1:
-    db $01,$00,$F8,$C3,$F8,$02,$21                                       ;B392B4;
+    dw $0001                                                             ;B392B4;
+    %spritemapEntry(1, $43F8, $F8, 0, 0, 2, 0, $102)
 
 Spritemaps_Geega_2:
-    db $01,$00,$F8,$C3,$F8,$04,$21                                       ;B392BB;
+    dw $0001                                                             ;B392BB;
+    %spritemapEntry(1, $43F8, $F8, 0, 0, 2, 0, $104)
 
 Spritemaps_Geega_3:
-    db $01,$00,$F8,$C3,$F8,$06,$21                                       ;B392C2;
+    dw $0001                                                             ;B392C2;
+    %spritemapEntry(1, $43F8, $F8, 0, 0, 2, 0, $106)
 
 Spritemaps_Geega_4:
-    db $01,$00,$F8,$C3,$F8,$08,$21                                       ;B392C9;
+    dw $0001                                                             ;B392C9;
+    %spritemapEntry(1, $43F8, $F8, 0, 0, 2, 0, $108)
 
 Spritemaps_Geega_5:
-    db $01,$00,$F8,$C3,$F8,$0A,$21                                       ;B392D0;
+    dw $0001                                                             ;B392D0;
+    %spritemapEntry(1, $43F8, $F8, 0, 0, 2, 0, $10A)
 
 Spritemaps_Geega_6:
-    db $01,$00,$F8,$C3,$F8,$00,$61                                       ;B392D7;
+    dw $0001                                                             ;B392D7;
+    %spritemapEntry(1, $43F8, $F8, 0, 1, 2, 0, $100)
 
 Spritemaps_Geega_7:
-    db $01,$00,$F8,$C3,$F8,$02,$61                                       ;B392DE;
+    dw $0001                                                             ;B392DE;
+    %spritemapEntry(1, $43F8, $F8, 0, 1, 2, 0, $102)
 
 Spritemaps_Geega_8:
-    db $01,$00,$F8,$C3,$F8,$04,$61                                       ;B392E5;
+    dw $0001                                                             ;B392E5;
+    %spritemapEntry(1, $43F8, $F8, 0, 1, 2, 0, $104)
 
 Spritemaps_Geega_9:
-    db $01,$00,$F8,$C3,$F8,$06,$61                                       ;B392EC;
+    dw $0001                                                             ;B392EC;
+    %spritemapEntry(1, $43F8, $F8, 0, 1, 2, 0, $106)
 
 Spritemaps_Geega_A:
-    db $01,$00,$F8,$C3,$F8,$08,$61                                       ;B392F3;
+    dw $0001                                                             ;B392F3;
+    %spritemapEntry(1, $43F8, $F8, 0, 1, 2, 0, $108)
 
 Spritemaps_Geega_B:
-    db $01,$00,$F8,$C3,$F8,$0A,$61                                       ;B392FA;
+    dw $0001                                                             ;B392FA;
+    %spritemapEntry(1, $43F8, $F8, 0, 1, 2, 0, $10A)
+
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_SpritemapPointers_Geega_B39301:
@@ -2181,223 +2046,182 @@ Palette_Botwoon:
 
 InstList_Botwoon_MouthClosed_AimingUp_FacingLeft:
     dw Instruction_Botwoon_EnemyRadius_8x10                              ;B39339;
-    dw $0001                                                             ;B3933B;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimingUp_FacingLeft      ;B3933D;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority2_AimingUp_FacingLeft ;B3933B;
     dw Instruction_Common_Sleep                                          ;B3933F;
 
 InstList_Botwoon_MouthClosed_AimingUpLeft:
     dw Instruction_Botwoon_EnemyRadius_CxC                               ;B39341;
-    dw $0001                                                             ;B39343;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimingUpLeft             ;B39345;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority2_AimingUpLeft       ;B39343;
     dw Instruction_Common_Sleep                                          ;B39347;
 
 InstList_Botwoon_MouthClosed_AimingLeft:
     dw Instruction_Botwoon_EnemyRadius_10x8                              ;B39349;
-    dw $0001                                                             ;B3934B;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimingLeft               ;B3934D;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority2_AimingLeft         ;B3934B;
     dw Instruction_Common_Sleep                                          ;B3934F;
 
 InstList_Botwoon_MouthClosed_AimingDownLeft:
     dw Instruction_Botwoon_EnemyRadius_CxC_duplicate                     ;B39351;
-    dw $0001                                                             ;B39353;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimingDownLeft           ;B39355;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority2_AimingDownLeft     ;B39353;
     dw Instruction_Common_Sleep                                          ;B39357;
 
 UNSUED_InstList_Botwoon_MouthClosed_AimDown_FaceLeft_B39359:
     dw Instruction_Botwoon_EnemyRadius_8x10_duplicate                    ;B39359;
-    dw $0001                                                             ;B3935B;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimDown_FacingLeft       ;B3935D;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority2_AimDown_FacingLeft ;B3935B;
     dw Instruction_Common_Sleep                                          ;B3935F;
 
 InstList_Botwoon_MouthClosed_AimingDown_FacingRight:
     dw Instruction_Botwoon_EnemyRadius_8x10_duplicate_again              ;B39361;
-    dw $0001                                                             ;B39363;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimDown_FacingRight      ;B39365;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority2_AimDown_FacingRight ;B39363;
     dw Instruction_Common_Sleep                                          ;B39367;
 
 InstList_Botwoon_MouthClosed_AimingDownRight:
     dw Instruction_Botwoon_EnemyRadius_CxC_duplicate_again               ;B39369;
-    dw $0001                                                             ;B3936B;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimingDownRight          ;B3936D;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority2_AimingDownRight    ;B3936B;
     dw Instruction_Common_Sleep                                          ;B3936F;
 
 InstList_Botwoon_MouthClosed_AimingRight:
     dw Instruction_Botwoon_EnemyRadius_10x8_duplicate                    ;B39371;
-    dw $0001                                                             ;B39373;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimingRight              ;B39375;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority2_AimingRight        ;B39373;
     dw Instruction_Common_Sleep                                          ;B39377;
 
 InstList_Botwoon_MouthClosed_AimingUpRight:
     dw Instruction_Botwoon_EnemyRadius_CxC_duplicate_again2              ;B39379;
-    dw $0001                                                             ;B3937B;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimingUpRight            ;B3937D;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority2_AimingUpRight      ;B3937B;
     dw Instruction_Common_Sleep                                          ;B3937F;
 
 InstList_Botwoon_MouthClosed_AimingUp_FacingRight:
     dw Instruction_Botwoon_EnemyRadius_8x10_duplicate_again2             ;B39381;
-    dw $0001                                                             ;B39383;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimUp_FacingRight        ;B39385;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority2_AimUp_FacingRight  ;B39383;
     dw Instruction_Common_Sleep                                          ;B39387;
 
 InstList_Botwoon_Hide:
-    dw $0001                                                             ;B39389;
-    dw Spritemap_Common_Nothing                                          ;B3938B;
+    dw $0001,Spritemap_Common_Nothing                                    ;B39389;
     dw Instruction_Common_Sleep                                          ;B3938D;
 
 UNSUED_InstList_Botwoon_Spit_AimingUp_FacingLeft:
-    dw $0020                                                             ;B3938F;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimingUp_FacingLeft      ;B39391;
+    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimingUp_FacingLeft ;B3938F;
     dw Instruction_Botwoon_EnemyRadius_8x10                              ;B39393;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B39395;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B39397;
-    dw $0010                                                             ;B39399;
-    dw Spritemaps_Botwoon_MouthOpen_Priority2_AimingUp_FacingLeft        ;B3939B;
+    dw $0010,Spritemaps_Botwoon_MouthOpen_Priority2_AimingUp_FacingLeft  ;B39399;
     dw Instruction_Common_Sleep                                          ;B3939D;
 
 InstList_Botwoon_Spit_AimingUpLeft:
-    dw $0020                                                             ;B3939F;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimingUpLeft             ;B393A1;
+    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimingUpLeft       ;B3939F;
     dw Instruction_Botwoon_EnemyRadius_CxC                               ;B393A3;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B393A5;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B393A7;
-    dw $0010                                                             ;B393A9;
-    dw Spritemaps_Botwoon_MouthOpen_Priority2_AimingUpLeft               ;B393AB;
+    dw $0010,Spritemaps_Botwoon_MouthOpen_Priority2_AimingUpLeft         ;B393A9;
     dw Instruction_Common_Sleep                                          ;B393AD;
 
 InstList_Botwoon_Spit_AimingLeft:
-    dw $0020                                                             ;B393AF;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimingLeft               ;B393B1;
+    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimingLeft         ;B393AF;
     dw Instruction_Botwoon_EnemyRadius_10x8                              ;B393B3;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B393B5;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B393B7;
-    dw $0019                                                             ;B393B9;
-    dw Spritemaps_Botwoon_MouthOpen_Priority2_AimingLeft                 ;B393BB;
+    dw $0019,Spritemaps_Botwoon_MouthOpen_Priority2_AimingLeft           ;B393B9;
     dw Instruction_Common_Sleep                                          ;B393BD;
 
 InstList_Botwoon_Spit_AimingDownLeft:
-    dw $0020                                                             ;B393BF;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimingDownLeft           ;B393C1;
+    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimingDownLeft     ;B393BF;
     dw Instruction_Botwoon_EnemyRadius_CxC_duplicate                     ;B393C3;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B393C5;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B393C7;
-    dw $0010                                                             ;B393C9;
-    dw Spritemaps_Botwoon_MouthOpen_Priority2_AimingDownLeft             ;B393CB;
+    dw $0010,Spritemaps_Botwoon_MouthOpen_Priority2_AimingDownLeft       ;B393C9;
     dw Instruction_Common_Sleep                                          ;B393CD;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_Botwoon_Spit_AimingDown_FacingLeft_B393CF:
-    dw $0020                                                             ;B393CF;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimDown_FacingLeft       ;B393D1;
+    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimDown_FacingLeft ;B393CF;
     dw Instruction_Botwoon_EnemyRadius_8x10_duplicate                    ;B393D3;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B393D5;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B393D7;
-    dw $0010                                                             ;B393D9;
-    dw Spritemaps_Botwoon_MouthOpen_Priority2_AimingDown_FacingLeft      ;B393DB;
+    dw $0010,Spritemaps_Botwoon_MouthOpen_Priority2_AimingDown_FacingLeft ;B393D9;
     dw Instruction_Common_Sleep                                          ;B393DD;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_Botwoon_Spit_AimingDown_FacingRight:
-    dw $0020                                                             ;B393DF;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimDown_FacingRight      ;B393E1;
+    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimDown_FacingRight ;B393DF;
     dw Instruction_Botwoon_EnemyRadius_8x10_duplicate_again              ;B393E3;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B393E5;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B393E7;
-    dw $0010                                                             ;B393E9;
-    dw Spritemaps_Botwoon_MouthOpen_Priority2_AimDown_FacingRight        ;B393EB;
+    dw $0010,Spritemaps_Botwoon_MouthOpen_Priority2_AimDown_FacingRight  ;B393E9;
     dw Instruction_Common_Sleep                                          ;B393ED;
 
 InstList_Botwoon_Spit_AimingDownRight:
-    dw $0020                                                             ;B393EF;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimingDownRight          ;B393F1;
+    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimingDownRight    ;B393EF;
     dw Instruction_Botwoon_EnemyRadius_CxC_duplicate_again               ;B393F3;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B393F5;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B393F7;
-    dw $0010                                                             ;B393F9;
-    dw Spritemaps_Botwoon_MouthOpen_Priority2_AimingDownRight            ;B393FB;
+    dw $0010,Spritemaps_Botwoon_MouthOpen_Priority2_AimingDownRight      ;B393F9;
     dw Instruction_Common_Sleep                                          ;B393FD;
 
 InstList_Botwoon_Spit_AimingRight:
-    dw $0020                                                             ;B393FF;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimingRight              ;B39401;
+    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimingRight        ;B393FF;
     dw Instruction_Botwoon_EnemyRadius_10x8_duplicate                    ;B39403;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B39405;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B39407;
-    dw $0010                                                             ;B39409;
-    dw Spritemaps_Botwoon_MouthOpen_Priority2_AimingRight                ;B3940B;
+    dw $0010,Spritemaps_Botwoon_MouthOpen_Priority2_AimingRight          ;B39409;
     dw Instruction_Common_Sleep                                          ;B3940D;
 
 InstList_Botwoon_Spit_AimingUpRight:
-    dw $0020                                                             ;B3940F;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimingUpRight            ;B39411;
+    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimingUpRight      ;B3940F;
     dw Instruction_Botwoon_EnemyRadius_CxC_duplicate_again2              ;B39413;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B39415;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B39417;
-    dw $0010                                                             ;B39419;
-    dw Spritemaps_Botwoon_MouthOpen_Priority2_AimingUpRight              ;B3941B;
+    dw $0010,Spritemaps_Botwoon_MouthOpen_Priority2_AimingUpRight        ;B39419;
     dw Instruction_Common_Sleep                                          ;B3941D;
 
 InstList_Botwoon_Spit_AimingUp_FacingRight:
-    dw $0020                                                             ;B3941F;
-    dw Spritemaps_Botwoon_MouthClosed_Priority2_AimUp_FacingRight        ;B39421;
+    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimUp_FacingRight  ;B3941F;
     dw Instruction_Botwoon_EnemyRadius_8x10_duplicate_again2             ;B39423;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B39425;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B39427;
-    dw $0010                                                             ;B39429;
-    dw Spritemaps_Botwoon_MouthOpen_Priority2_AimingUp_FacingRight       ;B3942B;
+    dw $0010,Spritemaps_Botwoon_MouthOpen_Priority2_AimingUp_FacingRight ;B39429;
     dw Instruction_Common_Sleep                                          ;B3942D;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_Botwoon_Hidden_AimingUp_FacingLeft_B3942F:
-    dw $0001                                                             ;B3942F;
-    dw Spritemaps_Botwoon_MouthClosed_Priority0_AimingUp_FacingLeft      ;B39431;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority0_AimingUp_FacingLeft ;B3942F;
     dw Instruction_Common_Sleep                                          ;B39433;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_Botwoon_Hidden_AimingUpLeft:
-    dw $0001                                                             ;B39435;
-    dw Spritemaps_Botwoon_MouthClosed_Priority0_AimingUpLeft             ;B39437;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority0_AimingUpLeft       ;B39435;
     dw Instruction_Common_Sleep                                          ;B39439;
 
 InstList_Botwoon_Hidden_AimingLeft:
-    dw $0001                                                             ;B3943B;
-    dw Spritemaps_Botwoon_MouthClosed_Priority0_AimingLeft               ;B3943D;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority0_AimingLeft         ;B3943B;
     dw Instruction_Common_Sleep                                          ;B3943F;
 
 InstList_Botwoon_Hidden_AimingDownLeft:
-    dw $0001                                                             ;B39441;
-    dw Spritemaps_Botwoon_MouthClosed_Priority0_AimingDownLeft           ;B39443;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority0_AimingDownLeft     ;B39441;
     dw Instruction_Common_Sleep                                          ;B39445;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_Botwoon_Hidden_AimingDown_FacingLeft_B39447:
-    dw $0001                                                             ;B39447;
-    dw Spritemaps_Botwoon_MouthClosed_Priority0_AimDown_FacingLeft       ;B39449;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority0_AimDown_FacingLeft ;B39447;
     dw Instruction_Common_Sleep                                          ;B3944B;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_Botwoon_Hidden_AimingDown_FacingRight:
-    dw $0001                                                             ;B3944D;
-    dw Spritemaps_Botwoon_MouthClosed_Priority0_AimDown_FacingRight      ;B3944F;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority0_AimDown_FacingRight ;B3944D;
     dw Instruction_Common_Sleep                                          ;B39451;
 
 InstList_Botwoon_Hidden_AimingDownRight:
-    dw $0001                                                             ;B39453;
-    dw Spritemaps_Botwoon_MouthClosed_Priority0_AimingDownRight          ;B39455;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority0_AimingDownRight    ;B39453;
     dw Instruction_Common_Sleep                                          ;B39457;
 
 InstList_Botwoon_Hidden_AimingRight:
-    dw $0001                                                             ;B39459;
-    dw Spritemaps_Botwoon_MouthClosed_Priority0_AimingRight              ;B3945B;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority0_AimingRight        ;B39459;
     dw Instruction_Common_Sleep                                          ;B3945D;
 
 InstList_Botwoon_Hidden_AimingUpRight:
-    dw $0001                                                             ;B3945F;
-    dw Spritemaps_Botwoon_MouthClosed_Priority0_AimingUpRight            ;B39461;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority0_AimingUpRight      ;B3945F;
     dw Instruction_Common_Sleep                                          ;B39463;
 
 InstList_Botwoon_Hidden_AimingUp_FacingRIght:
-    dw $0001                                                             ;B39465;
-    dw Spritemaps_Botwoon_MouthClosed_Priority0_AimUp_FacingRight        ;B39467;
+    dw $0001,Spritemaps_Botwoon_MouthClosed_Priority0_AimUp_FacingRight  ;B39465;
     dw Instruction_Common_Sleep                                          ;B39469;
 
 InstListPointers_Botwoon:
@@ -2428,24 +2252,37 @@ InstListPointers_Botwoon_spit:
     dw InstList_Botwoon_Spit_AimingLeft                                  ;B39497;
     dw InstList_Botwoon_Spit_AimingUpLeft                                ;B39499;
 
-BotwoonHoleHitboxes_leftBoundary:
+BotwoonHoleHitboxes:
+;        _____________________ Left boundary
+;       |      _______________ Right boundary
+;       |     |      _________ Top boundary
+;       |     |     |      ___ Bottom boundary
+;       |     |     |     |
+
+  .leftBoundary:
     dw $003C                                                             ;B3949B;
+  .rightBoundary:
+    dw       $0044                                                       ;B3949D;
+  .topBoundary:
+    dw             $006C                                                 ;B3949F;
+  .bottomBoundary:                                                       ;B394A1;
+    dw                   $0074 ; Left
+    dw $007C,$0084,$00AC,$00B4 ; Bottom
+    dw $009C,$00A4,$005C,$0064 ; Top
+    dw $00DC,$00E4,$008C,$0094 ; Right
 
-BotwoonHoleHitboxes_rightBoundary:
-    dw $0044                                                             ;B3949D;
+BotwoonSpeedTable:
+; Indexed by $7E:803E. Used for both Botwoon movement and spit projectile movement
 
-BotwoonHoleHitboxes_topBoundary:
-    dw $006C                                                             ;B3949F;
-
-BotwoonHoleHitboxes_bottomBoundary:
-    dw $0074,$007C,$0084,$00AC,$00B4,$009C,$00A4,$005C                   ;B394A1;
-    dw $0064,$00DC,$00E4,$008C,$0094                                     ;B394B1;
-
-BotwoonSpeedTable_speed:
+;        _________ Speed
+;       |      ___ Body travel time. Number of frames required to reach the current position of the next body part. 30h / speed
+;       |     |
+  .speed:
     dw $0002                                                             ;B394BB;
-
-BotwoonSpeedTable_bodyTravelTime:
-    dw $0018,$0003,$0010,$0004,$000C                                     ;B394BD;
+  .bodyTravelTime:                                                         ;B394BD;
+    dw       $0018 ; Health >= 50%
+    dw $0003,$0010 ; 25% <= health < 50%
+    dw $0004,$000C ; Health < 25%
 
 Instruction_Botwoon_EnemyRadius_8x10:
     LDX.W $0E54                                                          ;B394C7;
@@ -2759,6 +2596,7 @@ BotwoonHealthBasedPalettes:
     dw $1417,$193F,$18FC,$18B7,$1874,$182F,$47FF,$000B                   ;B3980B;
 
 BotwoonHealthThresholdsForPaletteChange:
+;       3000, 2625, 2250, 1875, 1500, 1125,  750,  375
     dw $0BB8,$0A41,$08CA,$0753,$05DC,$0465,$02EE,$0177                   ;B3981B;
 
 BotwoonHealthBasedPaletteHandling:
@@ -3785,1116 +3623,1121 @@ PowerBombReaction_Botwoon:
 
 
 BotwoonMovementData_Terminator:
+; This would be used as a terminator if the Visible_LeftToBottom path was traversed backwards
     db $80,$00                                                           ;B3A058;
 
 BotwoonMovementData_Visible_LeftToBottom:
-    db $01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A05A;
-    db $00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3A06A;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00   ;B3A07A;
-    db $01,$00,$01,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$FF   ;B3A08A;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A09A;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3A0AA;
-    db $01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$00,$01   ;B3A0BA;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3A0CA;
-    db $00,$01,$01,$00,$01,$01,$01,$00,$00,$01,$01,$00,$01,$01,$01,$00   ;B3A0DA;
-    db $00,$01,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$00,$01   ;B3A0EA;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00   ;B3A0FA;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00   ;B3A10A;
-    db $00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00   ;B3A11A;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00   ;B3A12A;
-    db $00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$00,$01   ;B3A13A;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3A14A;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01   ;B3A15A;
-    db $01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$00,$01   ;B3A16A;
-    db $01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A17A;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A18A;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00   ;B3A19A;
-    db $00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$FF,$01,$00,$00,$FF   ;B3A1AA;
-    db $01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$00,$FF   ;B3A1BA;
-    db $01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF   ;B3A1CA;
-    db $00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3A1DA;
-    db $00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00   ;B3A1EA;
-    db $00,$FF,$FF,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00   ;B3A1FA;
-    db $00,$FF,$FF,$00,$FF,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF   ;B3A20A;
-    db $FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3A21A;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00   ;B3A22A;
-    db $FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$00,$01   ;B3A23A;
-    db $FF,$00,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$01   ;B3A24A;
-    db $00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01   ;B3A25A;
-    db $00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01   ;B3A26A;
-    db $FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$FF,$00   ;B3A27A;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$FF,$00,$00,$01   ;B3A28A;
-    db $00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01   ;B3A29A;
-    db $FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01   ;B3A2AA;
-    db $FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00   ;B3A2BA;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01   ;B3A2CA;
-    db $FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01   ;B3A2DA;
-    db $FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01   ;B3A2EA;
-    db $FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00   ;B3A2FA;
-    db $00,$01,$FF,$00,$00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$00,$01   ;B3A30A;
-    db $FF,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$80,$00   ;B3A31A;
+    db $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A05A;
+    db $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3A06A;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00 ;B3A07A;
+    db $01,$00, $01,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF ;B3A08A;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A09A;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3A0AA;
+    db $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $00,$01 ;B3A0BA;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3A0CA;
+    db $00,$01, $01,$00, $01,$01, $01,$00, $00,$01, $01,$00, $01,$01, $01,$00 ;B3A0DA;
+    db $00,$01, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $00,$01 ;B3A0EA;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00 ;B3A0FA;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00 ;B3A10A;
+    db $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00 ;B3A11A;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00 ;B3A12A;
+    db $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $00,$01 ;B3A13A;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3A14A;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01 ;B3A15A;
+    db $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $00,$01 ;B3A16A;
+    db $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A17A;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A18A;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00 ;B3A19A;
+    db $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$FF, $01,$00, $00,$FF ;B3A1AA;
+    db $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $00,$FF ;B3A1BA;
+    db $01,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF ;B3A1CA;
+    db $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3A1DA;
+    db $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00 ;B3A1EA;
+    db $00,$FF, $FF,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00 ;B3A1FA;
+    db $00,$FF, $FF,$00, $FF,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF ;B3A20A;
+    db $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3A21A;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00 ;B3A22A;
+    db $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $00,$01 ;B3A23A;
+    db $FF,$00, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$01 ;B3A24A;
+    db $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01 ;B3A25A;
+    db $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01 ;B3A26A;
+    db $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $FF,$00 ;B3A27A;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01 ;B3A28A;
+    db $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01 ;B3A29A;
+    db $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01 ;B3A2AA;
+    db $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00 ;B3A2BA;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01 ;B3A2CA;
+    db $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01 ;B3A2DA;
+    db $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01 ;B3A2EA;
+    db $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00 ;B3A2FA;
+    db $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$01, $00,$01, $00,$01, $00,$01 ;B3A30A;
+    db $FF,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $80,$00 ;B3A31A;
 
 BotwoonMovementData_Visible_LeftToTop:
-    db $01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00   ;B3A32A;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$01,$01,$01,$00,$00,$01   ;B3A33A;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$01,$00   ;B3A34A;
-    db $00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01   ;B3A35A;
-    db $00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$00,$01,$00,$01   ;B3A36A;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3A37A;
-    db $00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$00,$00,$01   ;B3A38A;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01   ;B3A39A;
-    db $FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$00,$01   ;B3A3AA;
-    db $FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01   ;B3A3BA;
-    db $00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$01,$00,$01,$FF,$00   ;B3A3CA;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01   ;B3A3DA;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3A3EA;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$00   ;B3A3FA;
-    db $00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$01,$00   ;B3A40A;
-    db $00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00   ;B3A41A;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3A42A;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A43A;
-    db $00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A44A;
-    db $00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A45A;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A46A;
-    db $01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A47A;
-    db $01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A48A;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$01,$00   ;B3A49A;
-    db $01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3A4AA;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$FF   ;B3A4BA;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3A4CA;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3A4DA;
-    db $01,$00,$00,$FF,$01,$00,$01,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3A4EA;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$01,$00   ;B3A4FA;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF   ;B3A50A;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF   ;B3A51A;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3A52A;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3A53A;
-    db $01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3A54A;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3A55A;
-    db $00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF   ;B3A56A;
-    db $FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3A57A;
-    db $00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00   ;B3A58A;
-    db $FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3A59A;
-    db $00,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3A5AA;
-    db $FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3A5BA;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF   ;B3A5CA;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00   ;B3A5DA;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3A5EA;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00   ;B3A5FA;
-    db $FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF   ;B3A60A;
-    db $FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF   ;B3A61A;
-    db $00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3A62A;
-    db $00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3A63A;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3A64A;
-    db $00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3A65A;
-    db $01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$00,$FF   ;B3A66A;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3A67A;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A68A;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A69A;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$80,$F0,$00,$00,$00,$00   ;B3A6AA;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00 ;B3A32A;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $01,$01, $01,$00, $00,$01 ;B3A33A;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $01,$00 ;B3A34A;
+    db $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01 ;B3A35A;
+    db $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $00,$01, $00,$01 ;B3A36A;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3A37A;
+    db $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01 ;B3A38A;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01 ;B3A39A;
+    db $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $00,$01 ;B3A3AA;
+    db $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01 ;B3A3BA;
+    db $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$01, $00,$01, $FF,$00 ;B3A3CA;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01 ;B3A3DA;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3A3EA;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $01,$00 ;B3A3FA;
+    db $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $01,$00 ;B3A40A;
+    db $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00 ;B3A41A;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3A42A;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A43A;
+    db $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A44A;
+    db $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A45A;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A46A;
+    db $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A47A;
+    db $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A48A;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$FF, $01,$00 ;B3A49A;
+    db $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3A4AA;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$FF ;B3A4BA;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3A4CA;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3A4DA;
+    db $01,$00, $00,$FF, $01,$00, $01,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3A4EA;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $01,$00 ;B3A4FA;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF ;B3A50A;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF ;B3A51A;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3A52A;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3A53A;
+    db $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3A54A;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3A55A;
+    db $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF ;B3A56A;
+    db $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3A57A;
+    db $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00 ;B3A58A;
+    db $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3A59A;
+    db $00,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3A5AA;
+    db $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3A5BA;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF ;B3A5CA;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00 ;B3A5DA;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3A5EA;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00 ;B3A5FA;
+    db $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF ;B3A60A;
+    db $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF ;B3A61A;
+    db $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3A62A;
+    db $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3A63A;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3A64A;
+    db $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3A65A;
+    db $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF ;B3A66A;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3A67A;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A68A;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A69A;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $80,$F0, $00,$00, $00,$00 ;B3A6AA;
     db $80,$00                                                           ;B3A6BA;
 
 BotwoonMovementData_Visible_LeftToRight:
-    db $00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00   ;B3A6BC;
-    db $00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01   ;B3A6CC;
-    db $01,$01,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$00,$01,$01,$00   ;B3A6DC;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$00,$01   ;B3A6EC;
-    db $00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3A6FC;
-    db $00,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$FF,$00   ;B3A70C;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$FF,$00   ;B3A71C;
-    db $00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01   ;B3A72C;
-    db $00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$01   ;B3A73C;
-    db $00,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$00,$01   ;B3A74C;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3A75C;
-    db $01,$00,$00,$01,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$01,$00   ;B3A76C;
-    db $00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$01,$01   ;B3A77C;
-    db $01,$01,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01   ;B3A78C;
-    db $01,$00,$01,$01,$01,$00,$00,$01,$01,$00,$01,$00,$01,$01,$01,$00   ;B3A79C;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A7AC;
-    db $01,$FF,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3A7BC;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3A7CC;
-    db $01,$00,$00,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$00,$FF,$01,$00   ;B3A7DC;
-    db $01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$00,$FF,$01,$00,$00,$FF   ;B3A7EC;
-    db $01,$00,$00,$FF,$01,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3A7FC;
-    db $00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$00,$FF   ;B3A80C;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3A81C;
-    db $00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3A82C;
-    db $01,$00,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3A83C;
-    db $00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$01,$FF,$00,$FF   ;B3A84C;
-    db $01,$00,$00,$FF,$01,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3A85C;
-    db $00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A86C;
-    db $00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A87C;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A88C;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00   ;B3A89C;
-    db $00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$01,$00,$01,$01,$00   ;B3A8AC;
-    db $00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01   ;B3A8BC;
-    db $01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3A8CC;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$01,$00,$01,$FF,$00   ;B3A8DC;
-    db $00,$01,$FF,$01,$FF,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01   ;B3A8EC;
-    db $FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3A8FC;
-    db $FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$00,$FF   ;B3A90C;
-    db $FF,$00,$FF,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$FF,$00,$FF,$FF,$FF   ;B3A91C;
-    db $00,$FF,$00,$FF,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3A92C;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00   ;B3A93C;
-    db $00,$FF,$00,$FF,$01,$00,$01,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3A94C;
-    db $01,$00,$01,$00,$01,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00   ;B3A95C;
-    db $01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A96C;
-    db $00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$FF   ;B3A97C;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A98C;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A99C;
-    db $00,$01,$01,$00,$01,$00,$01,$01,$01,$00,$01,$00,$00,$01,$01,$00   ;B3A9AC;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A9BC;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00   ;B3A9CC;
-    db $01,$00,$01,$00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$00,$01,$00   ;B3A9DC;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01   ;B3A9EC;
-    db $01,$00,$01,$00,$01,$00,$01,$01,$01,$00,$01,$00,$00,$01,$01,$00   ;B3A9FC;
-    db $01,$00,$00,$01,$01,$00,$01,$01,$01,$00,$00,$01,$01,$00,$00,$01   ;B3AA0C;
-    db $01,$00,$00,$01,$01,$00,$80,$00                                   ;B3AA1C;
+    db $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00 ;B3A6BC;
+    db $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01 ;B3A6CC;
+    db $01,$01, $00,$01, $00,$01, $01,$01, $00,$01, $00,$01, $00,$01, $01,$00 ;B3A6DC;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $01,$01, $00,$01, $00,$01, $00,$01 ;B3A6EC;
+    db $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3A6FC;
+    db $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $FF,$00 ;B3A70C;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $FF,$00 ;B3A71C;
+    db $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01 ;B3A72C;
+    db $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$01 ;B3A73C;
+    db $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $00,$01 ;B3A74C;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3A75C;
+    db $01,$00, $00,$01, $00,$01, $00,$01, $01,$01, $00,$01, $00,$01, $01,$00 ;B3A76C;
+    db $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $01,$01 ;B3A77C;
+    db $01,$01, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01 ;B3A78C;
+    db $01,$00, $01,$01, $01,$00, $00,$01, $01,$00, $01,$00, $01,$01, $01,$00 ;B3A79C;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A7AC;
+    db $01,$FF, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3A7BC;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3A7CC;
+    db $01,$00, $00,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $00,$FF, $01,$00 ;B3A7DC;
+    db $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $00,$FF, $01,$00, $00,$FF ;B3A7EC;
+    db $01,$00, $00,$FF, $01,$FF, $00,$FF, $01,$FF, $00,$FF, $00,$FF, $00,$FF ;B3A7FC;
+    db $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $FF,$FF, $00,$FF, $00,$FF ;B3A80C;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3A81C;
+    db $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3A82C;
+    db $01,$00, $00,$FF, $00,$FF, $01,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3A83C;
+    db $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $01,$FF, $00,$FF ;B3A84C;
+    db $01,$00, $00,$FF, $01,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3A85C;
+    db $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A86C;
+    db $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A87C;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A88C;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00 ;B3A89C;
+    db $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$01, $00,$01, $01,$00 ;B3A8AC;
+    db $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$01, $00,$01, $00,$01 ;B3A8BC;
+    db $01,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3A8CC;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$01, $00,$01, $FF,$00 ;B3A8DC;
+    db $00,$01, $FF,$01, $FF,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01 ;B3A8EC;
+    db $FF,$00, $FF,$00, $FF,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3A8FC;
+    db $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $00,$FF ;B3A90C;
+    db $FF,$00, $FF,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$FF, $00,$FF, $FF,$FF ;B3A91C;
+    db $00,$FF, $00,$FF, $FF,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3A92C;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00 ;B3A93C;
+    db $00,$FF, $00,$FF, $01,$00, $01,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3A94C;
+    db $01,$00, $01,$00, $01,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00 ;B3A95C;
+    db $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A96C;
+    db $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$FF ;B3A97C;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A98C;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A99C;
+    db $00,$01, $01,$00, $01,$00, $01,$01, $01,$00, $01,$00, $00,$01, $01,$00 ;B3A9AC;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A9BC;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00 ;B3A9CC;
+    db $01,$00, $01,$00, $01,$00, $01,$FF, $01,$00, $01,$00, $01,$00, $01,$00 ;B3A9DC;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01 ;B3A9EC;
+    db $01,$00, $01,$00, $01,$00, $01,$01, $01,$00, $01,$00, $00,$01, $01,$00 ;B3A9FC;
+    db $01,$00, $00,$01, $01,$00, $01,$01, $01,$00, $00,$01, $01,$00, $00,$01 ;B3AA0C;
+    db $01,$00, $00,$01, $01,$00, $80,$00                                ;B3AA1C;
 
 BotwoonMovementData_Visible_LeftToLeft:
-    db $01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00   ;B3AA24;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$01,$01,$00,$01,$00   ;B3AA34;
-    db $00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00   ;B3AA44;
-    db $00,$01,$01,$00,$01,$01,$01,$01,$01,$01,$00,$01,$01,$00,$00,$01   ;B3AA54;
-    db $01,$00,$00,$01,$01,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00   ;B3AA64;
-    db $00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01   ;B3AA74;
-    db $00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$00,$01,$00,$01,$01,$00   ;B3AA84;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01   ;B3AA94;
-    db $00,$01,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3AAA4;
-    db $01,$00,$00,$01,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01   ;B3AAB4;
-    db $00,$01,$01,$00,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01   ;B3AAC4;
-    db $01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01   ;B3AAD4;
-    db $01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$01   ;B3AAE4;
-    db $00,$01,$01,$00,$00,$01,$01,$01,$01,$01,$00,$01,$01,$00,$00,$01   ;B3AAF4;
-    db $01,$01,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$01,$01,$01   ;B3AB04;
-    db $01,$01,$01,$01,$01,$01,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01   ;B3AB14;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00   ;B3AB24;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3AB34;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$FF   ;B3AB44;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$01,$00,$01,$00,$00,$FF   ;B3AB54;
-    db $01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3AB64;
-    db $01,$00,$01,$FF,$01,$FF,$01,$FF,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3AB74;
-    db $00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF   ;B3AB84;
-    db $01,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF   ;B3AB94;
-    db $01,$00,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$01,$00   ;B3ABA4;
-    db $00,$FF,$00,$FF,$01,$00,$00,$FF,$01,$FF,$00,$FF,$01,$00,$00,$FF   ;B3ABB4;
-    db $01,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$00,$00,$FF,$01,$00,$01,$00   ;B3ABC4;
-    db $00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3ABD4;
-    db $00,$01,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01   ;B3ABE4;
-    db $01,$00,$01,$01,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00   ;B3ABF4;
-    db $00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01   ;B3AC04;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$01,$01,$00,$01,$01,$00,$00,$01   ;B3AC14;
-    db $00,$01,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3AC24;
-    db $00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01   ;B3AC34;
-    db $FF,$00,$00,$01,$FF,$01,$FF,$01,$00,$01,$FF,$00,$FF,$01,$FF,$00   ;B3AC44;
-    db $00,$01,$FF,$00,$FF,$01,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$00   ;B3AC54;
-    db $00,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3AC64;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3AC74;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3AC84;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3AC94;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$00   ;B3ACA4;
-    db $00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00   ;B3ACB4;
-    db $00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$FF,$FF,$00,$00,$FF   ;B3ACC4;
-    db $FF,$00,$FF,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$00,$FF,$FF   ;B3ACD4;
-    db $FF,$00,$FF,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00   ;B3ACE4;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3ACF4;
-    db $00,$FF,$FF,$00,$FF,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00   ;B3AD04;
-    db $FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00   ;B3AD14;
-    db $FF,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$00,$00,$FF,$FF,$00   ;B3AD24;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$FF   ;B3AD34;
-    db $FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3AD44;
-    db $FF,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3AD54;
-    db $FF,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3AD64;
-    db $00,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3AD74;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3AD84;
-    db $00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$00,$00,$FF,$FF,$00   ;B3AD94;
-    db $00,$FF,$FF,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$00,$FF   ;B3ADA4;
-    db $FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF   ;B3ADB4;
-    db $00,$FF,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF   ;B3ADC4;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$00   ;B3ADD4;
-    db $00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$01,$00   ;B3ADE4;
-    db $00,$FF,$00,$FF,$01,$00,$00,$FF,$80,$00                           ;B3ADF4;
+    db $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00 ;B3AA24;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$01, $01,$00, $01,$00 ;B3AA34;
+    db $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00 ;B3AA44;
+    db $00,$01, $01,$00, $01,$01, $01,$01, $01,$01, $00,$01, $01,$00, $00,$01 ;B3AA54;
+    db $01,$00, $00,$01, $01,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00 ;B3AA64;
+    db $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01 ;B3AA74;
+    db $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $00,$01, $00,$01, $01,$00 ;B3AA84;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01 ;B3AA94;
+    db $00,$01, $00,$01, $00,$01, $01,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3AAA4;
+    db $01,$00, $00,$01, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01 ;B3AAB4;
+    db $00,$01, $01,$00, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01 ;B3AAC4;
+    db $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01 ;B3AAD4;
+    db $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$01 ;B3AAE4;
+    db $00,$01, $01,$00, $00,$01, $01,$01, $01,$01, $00,$01, $01,$00, $00,$01 ;B3AAF4;
+    db $01,$01, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$01, $01,$01 ;B3AB04;
+    db $01,$01, $01,$01, $01,$01, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01 ;B3AB14;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00 ;B3AB24;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3AB34;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF ;B3AB44;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$FF, $01,$00, $01,$00, $00,$FF ;B3AB54;
+    db $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3AB64;
+    db $01,$00, $01,$FF, $01,$FF, $01,$FF, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3AB74;
+    db $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF ;B3AB84;
+    db $01,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF ;B3AB94;
+    db $01,$00, $00,$FF, $00,$FF, $00,$FF, $01,$FF, $00,$FF, $00,$FF, $01,$00 ;B3ABA4;
+    db $00,$FF, $00,$FF, $01,$00, $00,$FF, $01,$FF, $00,$FF, $01,$00, $00,$FF ;B3ABB4;
+    db $01,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$00, $00,$FF, $01,$00, $01,$00 ;B3ABC4;
+    db $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3ABD4;
+    db $00,$01, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01 ;B3ABE4;
+    db $01,$00, $01,$01, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00 ;B3ABF4;
+    db $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01 ;B3AC04;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $01,$01, $00,$01, $01,$00, $00,$01 ;B3AC14;
+    db $00,$01, $01,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3AC24;
+    db $00,$01, $00,$01, $FF,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01 ;B3AC34;
+    db $FF,$00, $00,$01, $FF,$01, $FF,$01, $00,$01, $FF,$00, $FF,$01, $FF,$00 ;B3AC44;
+    db $00,$01, $FF,$00, $FF,$01, $FF,$00, $FF,$01, $FF,$00, $FF,$00, $FF,$00 ;B3AC54;
+    db $00,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3AC64;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3AC74;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3AC84;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3AC94;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$00 ;B3ACA4;
+    db $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00 ;B3ACB4;
+    db $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$FF, $FF,$00, $00,$FF ;B3ACC4;
+    db $FF,$00, $FF,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$00, $FF,$FF ;B3ACD4;
+    db $FF,$00, $FF,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00 ;B3ACE4;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3ACF4;
+    db $00,$FF, $FF,$00, $FF,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00 ;B3AD04;
+    db $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00 ;B3AD14;
+    db $FF,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$00, $00,$FF, $FF,$00 ;B3AD24;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$FF ;B3AD34;
+    db $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3AD44;
+    db $FF,$00, $FF,$00, $FF,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3AD54;
+    db $FF,$00, $FF,$00, $FF,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3AD64;
+    db $00,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3AD74;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3AD84;
+    db $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$00, $00,$FF, $FF,$00 ;B3AD94;
+    db $00,$FF, $FF,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $00,$FF ;B3ADA4;
+    db $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF ;B3ADB4;
+    db $00,$FF, $FF,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF ;B3ADC4;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$00 ;B3ADD4;
+    db $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $01,$00 ;B3ADE4;
+    db $00,$FF, $00,$FF, $01,$00, $00,$FF, $80,$00                       ; B3ADF4;
 
 BotwoonMovementData_Visible_BottomToLeft:
-    db $01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00   ;B3ADFE;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00   ;B3AE0E;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00   ;B3AE1E;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00   ;B3AE2E;
-    db $01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00   ;B3AE3E;
-    db $01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$00,$FF   ;B3AE4E;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00   ;B3AE5E;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00   ;B3AE6E;
-    db $00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3AE7E;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3AE8E;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3AE9E;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3AEAE;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3AEBE;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$FF   ;B3AECE;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3AEDE;
-    db $01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$01,$FF,$00,$FF,$01,$00   ;B3AEEE;
-    db $00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF   ;B3AEFE;
-    db $01,$00,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00   ;B3AF0E;
-    db $00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3AF1E;
-    db $00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$01,$00   ;B3AF2E;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF   ;B3AF3E;
-    db $00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3AF4E;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3AF5E;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF   ;B3AF6E;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF   ;B3AF7E;
-    db $FF,$00,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00   ;B3AF8E;
-    db $00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$00   ;B3AF9E;
-    db $00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF   ;B3AFAE;
-    db $FF,$00,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF   ;B3AFBE;
-    db $FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3AFCE;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF   ;B3AFDE;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3AFEE;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00   ;B3AFFE;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00   ;B3B00E;
-    db $FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3B01E;
-    db $00,$01,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01   ;B3B02E;
-    db $FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3B03E;
-    db $00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$00,$01   ;B3B04E;
-    db $FF,$00,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00   ;B3B05E;
-    db $00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$01,$FF,$01,$00,$01,$FF,$00   ;B3B06E;
-    db $00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00   ;B3B07E;
-    db $00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01   ;B3B08E;
-    db $FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00   ;B3B09E;
-    db $00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00   ;B3B0AE;
-    db $00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01   ;B3B0BE;
-    db $FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3B0CE;
-    db $00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3B0DE;
-    db $00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$01,$FF,$00   ;B3B0EE;
-    db $FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00   ;B3B0FE;
-    db $FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01   ;B3B10E;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00   ;B3B11E;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00   ;B3B12E;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00   ;B3B13E;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01   ;B3B14E;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$80,$00                   ;B3B15E;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00 ;B3ADFE;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00 ;B3AE0E;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00 ;B3AE1E;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00 ;B3AE2E;
+    db $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00 ;B3AE3E;
+    db $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF ;B3AE4E;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00 ;B3AE5E;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00 ;B3AE6E;
+    db $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3AE7E;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3AE8E;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3AE9E;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3AEAE;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3AEBE;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$FF ;B3AECE;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3AEDE;
+    db $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $01,$FF, $00,$FF, $01,$00 ;B3AEEE;
+    db $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF ;B3AEFE;
+    db $01,$00, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00 ;B3AF0E;
+    db $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3AF1E;
+    db $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $01,$00 ;B3AF2E;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF ;B3AF3E;
+    db $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3AF4E;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3AF5E;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF ;B3AF6E;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF ;B3AF7E;
+    db $FF,$00, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00 ;B3AF8E;
+    db $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$00 ;B3AF9E;
+    db $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF ;B3AFAE;
+    db $FF,$00, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF ;B3AFBE;
+    db $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3AFCE;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF ;B3AFDE;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3AFEE;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00 ;B3AFFE;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00 ;B3B00E;
+    db $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3B01E;
+    db $00,$01, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01 ;B3B02E;
+    db $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3B03E;
+    db $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $00,$01 ;B3B04E;
+    db $FF,$00, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00 ;B3B05E;
+    db $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$01, $FF,$01, $00,$01, $FF,$00 ;B3B06E;
+    db $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00 ;B3B07E;
+    db $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01 ;B3B08E;
+    db $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00 ;B3B09E;
+    db $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00 ;B3B0AE;
+    db $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01 ;B3B0BE;
+    db $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3B0CE;
+    db $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3B0DE;
+    db $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$01, $FF,$00 ;B3B0EE;
+    db $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$01, $FF,$00, $FF,$00 ;B3B0FE;
+    db $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01 ;B3B10E;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00 ;B3B11E;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00 ;B3B12E;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$01, $FF,$00 ;B3B13E;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01 ;B3B14E;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $80,$00              ;B3B15E;
 
 BotwoonMovementData_Visible_BottomToTop:
-    db $01,$FF,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3B16A;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3B17A;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$00,$FF   ;B3B18A;
-    db $01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3B19A;
-    db $00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3B1AA;
-    db $01,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3B1BA;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF   ;B3B1CA;
-    db $00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$FF,$00   ;B3B1DA;
-    db $00,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$FF,$00,$FF   ;B3B1EA;
-    db $FF,$00,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF   ;B3B1FA;
-    db $FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3B20A;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01   ;B3B21A;
-    db $FF,$00,$FF,$00,$FF,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01   ;B3B22A;
-    db $FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01   ;B3B23A;
-    db $FF,$00,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01   ;B3B24A;
-    db $00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3B25A;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$01   ;B3B26A;
-    db $00,$01,$01,$01,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$00,$01   ;B3B27A;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00   ;B3B28A;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3B29A;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3B2AA;
-    db $00,$FF,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF   ;B3B2BA;
-    db $01,$00,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3B2CA;
-    db $00,$FF,$01,$00,$00,$FF,$01,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF   ;B3B2DA;
-    db $01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$01,$00   ;B3B2EA;
-    db $00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3B2FA;
-    db $01,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF   ;B3B30A;
-    db $00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3B31A;
-    db $00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3B32A;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF   ;B3B33A;
-    db $00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF   ;B3B34A;
-    db $00,$FF,$FF,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF   ;B3B35A;
-    db $FF,$00,$00,$FF,$FF,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3B36A;
-    db $00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF   ;B3B37A;
-    db $FF,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$00   ;B3B38A;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3B39A;
-    db $00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00   ;B3B3AA;
-    db $00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00   ;B3B3BA;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00   ;B3B3CA;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01   ;B3B3DA;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01   ;B3B3EA;
-    db $00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00   ;B3B3FA;
-    db $00,$01,$01,$01,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00   ;B3B40A;
-    db $00,$01,$01,$00,$01,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00   ;B3B41A;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$01   ;B3B42A;
-    db $01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00   ;B3B43A;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3B44A;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00   ;B3B45A;
-    db $01,$00,$01,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00   ;B3B46A;
-    db $00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3B47A;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3B48A;
-    db $00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3B49A;
-    db $01,$00,$00,$FF,$01,$00,$01,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3B4AA;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3B4BA;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$FF   ;B3B4CA;
-    db $00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3B4DA;
-    db $01,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3B4EA;
-    db $00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF   ;B3B4FA;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00   ;B3B50A;
-    db $FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$00,$01   ;B3B51A;
-    db $FF,$00,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01   ;B3B52A;
-    db $FF,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01   ;B3B53A;
-    db $FF,$00,$00,$01,$00,$01,$FF,$01,$00,$01,$80,$00                   ;B3B54A;
+    db $01,$FF, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3B16A;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3B17A;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $00,$FF ;B3B18A;
+    db $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3B19A;
+    db $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3B1AA;
+    db $01,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3B1BA;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF ;B3B1CA;
+    db $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $FF,$00 ;B3B1DA;
+    db $00,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$FF, $00,$FF ;B3B1EA;
+    db $FF,$00, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF ;B3B1FA;
+    db $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3B20A;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01 ;B3B21A;
+    db $FF,$00, $FF,$00, $FF,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01 ;B3B22A;
+    db $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01 ;B3B23A;
+    db $FF,$00, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01 ;B3B24A;
+    db $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3B25A;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$01 ;B3B26A;
+    db $00,$01, $01,$01, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $00,$01 ;B3B27A;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00 ;B3B28A;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3B29A;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3B2AA;
+    db $00,$FF, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF ;B3B2BA;
+    db $01,$00, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3B2CA;
+    db $00,$FF, $01,$00, $00,$FF, $01,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF ;B3B2DA;
+    db $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $01,$00 ;B3B2EA;
+    db $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3B2FA;
+    db $01,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF ;B3B30A;
+    db $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3B31A;
+    db $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3B32A;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF ;B3B33A;
+    db $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF ;B3B34A;
+    db $00,$FF, $FF,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF ;B3B35A;
+    db $FF,$00, $00,$FF, $FF,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3B36A;
+    db $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF ;B3B37A;
+    db $FF,$00, $FF,$00, $FF,$FF, $FF,$00, $FF,$00, $FF,$FF, $FF,$00, $FF,$00 ;B3B38A;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3B39A;
+    db $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00 ;B3B3AA;
+    db $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00 ;B3B3BA;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00 ;B3B3CA;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01 ;B3B3DA;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01 ;B3B3EA;
+    db $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00 ;B3B3FA;
+    db $00,$01, $01,$01, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00 ;B3B40A;
+    db $00,$01, $01,$00, $01,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00 ;B3B41A;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$01 ;B3B42A;
+    db $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00 ;B3B43A;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3B44A;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00 ;B3B45A;
+    db $01,$00, $01,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00 ;B3B46A;
+    db $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3B47A;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3B48A;
+    db $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3B49A;
+    db $01,$00, $00,$FF, $01,$00, $01,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3B4AA;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3B4BA;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$FF ;B3B4CA;
+    db $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$FF, $00,$FF, $00,$FF, $00,$FF ;B3B4DA;
+    db $01,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3B4EA;
+    db $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF ;B3B4FA;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00 ;B3B50A;
+    db $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $00,$01 ;B3B51A;
+    db $FF,$00, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01 ;B3B52A;
+    db $FF,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01 ;B3B53A;
+    db $FF,$00, $00,$01, $00,$01, $FF,$01, $00,$01, $80,$00              ; B3B54A;
 
 BotwoonMovementData_Visible_BottomToRight:
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$FF,$01,$FF,$01,$FF,$01,$FF   ;B3B556;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3B566;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3B576;
-    db $01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$00,$FF   ;B3B586;
-    db $01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3B596;
-    db $00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF   ;B3B5A6;
-    db $01,$00,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF   ;B3B5B6;
-    db $00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3B5C6;
-    db $01,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3B5D6;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3B5E6;
-    db $FF,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3B5F6;
-    db $FF,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF   ;B3B606;
-    db $00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF   ;B3B616;
-    db $FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$FF   ;B3B626;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$00,$00,$01   ;B3B636;
-    db $FF,$00,$FF,$00,$FF,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00   ;B3B646;
-    db $FF,$01,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00   ;B3B656;
-    db $00,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$00,$01   ;B3B666;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3B676;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3B686;
-    db $FF,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3B696;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3B6A6;
-    db $00,$01,$01,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$00   ;B3B6B6;
-    db $00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01   ;B3B6C6;
-    db $00,$01,$01,$00,$00,$01,$01,$01,$00,$01,$01,$00,$00,$01,$01,$00   ;B3B6D6;
-    db $00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$01,$01,$01,$00,$00,$01   ;B3B6E6;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$01,$00   ;B3B6F6;
-    db $00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00   ;B3B706;
-    db $01,$01,$01,$01,$01,$01,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01   ;B3B716;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01   ;B3B726;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01   ;B3B736;
-    db $01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$00,$01   ;B3B746;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3B756;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$FF   ;B3B766;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00   ;B3B776;
-    db $00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3B786;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3B796;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3B7A6;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3B7B6;
-    db $01,$FF,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00   ;B3B7C6;
-    db $00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF   ;B3B7D6;
-    db $00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3B7E6;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00   ;B3B7F6;
-    db $00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$FF,$00   ;B3B806;
-    db $00,$FF,$FF,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF   ;B3B816;
-    db $FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF   ;B3B826;
-    db $00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00   ;B3B836;
-    db $00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3B846;
-    db $00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF   ;B3B856;
-    db $01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3B866;
-    db $00,$FF,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3B876;
-    db $00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3B886;
-    db $01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00   ;B3B896;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01   ;B3B8A6;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01   ;B3B8B6;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$01,$01,$00,$01   ;B3B8C6;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01   ;B3B8D6;
-    db $00,$01,$01,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3B8E6;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3B8F6;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3B906;
-    db $00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3B916;
-    db $00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01   ;B3B926;
-    db $FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3B936;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$80,$00   ;B3B946;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$FF, $01,$FF, $01,$FF, $01,$FF ;B3B556;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3B566;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3B576;
+    db $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $00,$FF ;B3B586;
+    db $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3B596;
+    db $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF ;B3B5A6;
+    db $01,$00, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF ;B3B5B6;
+    db $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3B5C6;
+    db $01,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3B5D6;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3B5E6;
+    db $FF,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3B5F6;
+    db $FF,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF ;B3B606;
+    db $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF ;B3B616;
+    db $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$FF ;B3B626;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$01, $FF,$00, $FF,$00, $FF,$00, $00,$01 ;B3B636;
+    db $FF,$00, $FF,$00, $FF,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00 ;B3B646;
+    db $FF,$01, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00 ;B3B656;
+    db $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $00,$01 ;B3B666;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3B676;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3B686;
+    db $FF,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3B696;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3B6A6;
+    db $00,$01, $01,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $01,$00 ;B3B6B6;
+    db $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01 ;B3B6C6;
+    db $00,$01, $01,$00, $00,$01, $01,$01, $00,$01, $01,$00, $00,$01, $01,$00 ;B3B6D6;
+    db $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $01,$01, $01,$00, $00,$01 ;B3B6E6;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $01,$00 ;B3B6F6;
+    db $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00 ;B3B706;
+    db $01,$01, $01,$01, $01,$01, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01 ;B3B716;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01 ;B3B726;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01 ;B3B736;
+    db $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $00,$01 ;B3B746;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3B756;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF ;B3B766;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00 ;B3B776;
+    db $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3B786;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3B796;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3B7A6;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3B7B6;
+    db $01,$FF, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00 ;B3B7C6;
+    db $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF ;B3B7D6;
+    db $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3B7E6;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00 ;B3B7F6;
+    db $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $FF,$00 ;B3B806;
+    db $00,$FF, $FF,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF ;B3B816;
+    db $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF ;B3B826;
+    db $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00 ;B3B836;
+    db $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3B846;
+    db $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF ;B3B856;
+    db $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3B866;
+    db $00,$FF, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3B876;
+    db $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3B886;
+    db $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00 ;B3B896;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01 ;B3B8A6;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01 ;B3B8B6;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $01,$01, $00,$01 ;B3B8C6;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01 ;B3B8D6;
+    db $00,$01, $01,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3B8E6;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3B8F6;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3B906;
+    db $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3B916;
+    db $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01 ;B3B926;
+    db $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3B936;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $80,$00 ;B3B946;
 
 BotwoonMovementData_Visible_BottomToBottom:
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3B956;
-    db $00,$FF,$FF,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$FF,$FF,$00,$FF,$FF   ;B3B966;
-    db $FF,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$FF   ;B3B976;
-    db $FF,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$FF,$00,$FF,$00,$FF,$FF,$FF   ;B3B986;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3B996;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3B9A6;
-    db $00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00   ;B3B9B6;
-    db $00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF   ;B3B9C6;
-    db $FF,$00,$00,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$00,$00,$FF,$FF,$00   ;B3B9D6;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3B9E6;
-    db $FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3B9F6;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$00,$00,$FF   ;B3BA06;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$FF,$FF,$FF,$00,$FF,$FF,$00   ;B3BA16;
-    db $00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3BA26;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF   ;B3BA36;
-    db $01,$FF,$00,$FF,$01,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00   ;B3BA46;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3BA56;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00   ;B3BA66;
-    db $01,$FF,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00   ;B3BA76;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3BA86;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3BA96;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3BAA6;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3BAB6;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00   ;B3BAC6;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00   ;B3BAD6;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3BAE6;
-    db $01,$00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3BAF6;
-    db $01,$00,$01,$FF,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00   ;B3BB06;
-    db $01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3BB16;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3BB26;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3BB36;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01   ;B3BB46;
-    db $01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$01,$01   ;B3BB56;
-    db $01,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01   ;B3BB66;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3BB76;
-    db $00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$FF,$01,$00,$01,$FF,$01   ;B3BB86;
-    db $00,$01,$FF,$00,$00,$01,$FF,$01,$FF,$01,$FF,$00,$00,$01,$FF,$00   ;B3BB96;
-    db $00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$00,$01   ;B3BBA6;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00   ;B3BBB6;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00   ;B3BBC6;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3BBD6;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3BBE6;
-    db $FF,$01,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$00,$01,$FF,$00,$00,$01   ;B3BBF6;
-    db $FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$FF,$01   ;B3BC06;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3BC16;
-    db $00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$00,$01,$00,$01   ;B3BC26;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3BC36;
-    db $00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$FF,$01,$00,$01,$00,$01   ;B3BC46;
-    db $FF,$00,$00,$01,$00,$01,$FF,$01,$00,$01,$FF,$00,$00,$01,$00,$01   ;B3BC56;
-    db $FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$01   ;B3BC66;
-    db $FF,$00,$00,$01,$FF,$00,$FF,$01,$FF,$00,$00,$01,$FF,$00,$80,$00   ;B3BC76;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3B956;
+    db $00,$FF, $FF,$00, $FF,$00, $FF,$FF, $FF,$00, $FF,$FF, $FF,$00, $FF,$FF ;B3B966;
+    db $FF,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$FF ;B3B976;
+    db $FF,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$FF, $00,$FF, $00,$FF, $FF,$FF ;B3B986;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3B996;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3B9A6;
+    db $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00 ;B3B9B6;
+    db $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF ;B3B9C6;
+    db $FF,$00, $00,$FF, $FF,$FF, $FF,$FF, $FF,$FF, $FF,$00, $00,$FF, $FF,$00 ;B3B9D6;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3B9E6;
+    db $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3B9F6;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$FF, $FF,$00, $FF,$00, $00,$FF ;B3BA06;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$FF, $FF,$FF, $00,$FF, $FF,$00 ;B3BA16;
+    db $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3BA26;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF ;B3BA36;
+    db $01,$FF, $00,$FF, $01,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00 ;B3BA46;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3BA56;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00 ;B3BA66;
+    db $01,$FF, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00 ;B3BA76;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3BA86;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3BA96;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3BAA6;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3BAB6;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00 ;B3BAC6;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00 ;B3BAD6;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3BAE6;
+    db $01,$00, $01,$00, $01,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3BAF6;
+    db $01,$00, $01,$FF, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00 ;B3BB06;
+    db $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3BB16;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3BB26;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3BB36;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01 ;B3BB46;
+    db $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $01,$01 ;B3BB56;
+    db $01,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$01, $00,$01, $00,$01 ;B3BB66;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3BB76;
+    db $00,$01, $00,$01, $FF,$01, $00,$01, $00,$01, $FF,$01, $00,$01, $FF,$01 ;B3BB86;
+    db $00,$01, $FF,$00, $00,$01, $FF,$01, $FF,$01, $FF,$00, $00,$01, $FF,$00 ;B3BB96;
+    db $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $00,$01 ;B3BBA6;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00 ;B3BBB6;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00 ;B3BBC6;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3BBD6;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3BBE6;
+    db $FF,$01, $FF,$00, $FF,$00, $FF,$01, $FF,$00, $00,$01, $FF,$00, $00,$01 ;B3BBF6;
+    db $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $FF,$01 ;B3BC06;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3BC16;
+    db $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $00,$01, $00,$01 ;B3BC26;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3BC36;
+    db $00,$01, $00,$01, $FF,$01, $00,$01, $00,$01, $FF,$01, $00,$01, $00,$01 ;B3BC46;
+    db $FF,$00, $00,$01, $00,$01, $FF,$01, $00,$01, $FF,$00, $00,$01, $00,$01 ;B3BC56;
+    db $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$01 ;B3BC66;
+    db $FF,$00, $00,$01, $FF,$00, $FF,$01, $FF,$00, $00,$01, $FF,$00, $80,$00 ;B3BC76;
 
 BotwoonMovementData_Visible_TopToLeft:
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$00,$00,$01   ;B3BC86;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$00   ;B3BC96;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01   ;B3BCA6;
-    db $FF,$00,$00,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01   ;B3BCB6;
-    db $FF,$00,$00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$FF,$01,$00,$01   ;B3BCC6;
-    db $00,$01,$FF,$01,$00,$01,$00,$01,$00,$01,$FF,$01,$00,$01,$00,$01   ;B3BCD6;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$00   ;B3BCE6;
-    db $00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01   ;B3BCF6;
-    db $00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01   ;B3BD06;
-    db $01,$00,$00,$01,$01,$01,$01,$01,$01,$00,$00,$01,$01,$00,$00,$01   ;B3BD16;
-    db $01,$00,$01,$01,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00   ;B3BD26;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3BD36;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01   ;B3BD46;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3BD56;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00   ;B3BD66;
-    db $01,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$00,$01,$01,$01,$00   ;B3BD76;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$01,$01,$01,$00,$00,$01,$01,$00   ;B3BD86;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$01,$01,$01   ;B3BD96;
-    db $00,$01,$01,$01,$00,$01,$01,$01,$00,$01,$01,$01,$00,$01,$00,$01   ;B3BDA6;
-    db $01,$01,$00,$01,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$00,$01   ;B3BDB6;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00   ;B3BDC6;
-    db $00,$01,$FF,$01,$FF,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$01   ;B3BDD6;
-    db $FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3BDE6;
-    db $FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3BDF6;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3BE06;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3BE16;
-    db $FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$FF,$FF,$00   ;B3BE26;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$00   ;B3BE36;
-    db $00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$00,$FF   ;B3BE46;
-    db $FF,$00,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF   ;B3BE56;
-    db $FF,$00,$FF,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$00,$00,$FF   ;B3BE66;
-    db $FF,$00,$FF,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$FF,$FF,$00   ;B3BE76;
-    db $00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00   ;B3BE86;
-    db $00,$FF,$FF,$00,$00,$FF,$FF,$FF,$FF,$FF,$FF,$FF,$00,$FF,$FF,$00   ;B3BE96;
-    db $00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00   ;B3BEA6;
-    db $00,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF   ;B3BEB6;
-    db $FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$FF,$FF,$00   ;B3BEC6;
-    db $00,$FF,$FF,$00,$FF,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF   ;B3BED6;
-    db $FF,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00   ;B3BEE6;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00   ;B3BEF6;
-    db $00,$01,$FF,$00,$FF,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00   ;B3BF06;
-    db $00,$01,$FF,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$01,$00,$01   ;B3BF16;
-    db $00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$00,$01,$01,$01,$00,$01   ;B3BF26;
-    db $00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01   ;B3BF36;
-    db $01,$01,$01,$01,$01,$01,$01,$00,$00,$01,$01,$00,$01,$01,$01,$00   ;B3BF46;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3BF56;
-    db $01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3BF66;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3BF76;
-    db $01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3BF86;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3BF96;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00   ;B3BFA6;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF   ;B3BFB6;
-    db $FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF   ;B3BFC6;
-    db $FF,$FF,$FF,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$FF   ;B3BFD6;
-    db $FF,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$00,$00,$FF,$FF,$00   ;B3BFE6;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF   ;B3BFF6;
-    db $FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00   ;B3C006;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3C016;
-    db $00,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF   ;B3C026;
-    db $FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3C036;
-    db $00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$00,$FF   ;B3C046;
-    db $FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF   ;B3C056;
-    db $FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$FF,$FF,$FF,$00,$FF,$FF,$00   ;B3C066;
-    db $00,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$FF,$00,$FF,$FF,$00,$80,$00   ;B3C076;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01 ;B3BC86;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $FF,$00 ;B3BC96;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01 ;B3BCA6;
+    db $FF,$00, $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01 ;B3BCB6;
+    db $FF,$00, $00,$01, $00,$01, $FF,$01, $00,$01, $00,$01, $FF,$01, $00,$01 ;B3BCC6;
+    db $00,$01, $FF,$01, $00,$01, $00,$01, $00,$01, $FF,$01, $00,$01, $00,$01 ;B3BCD6;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $01,$00 ;B3BCE6;
+    db $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01 ;B3BCF6;
+    db $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01 ;B3BD06;
+    db $01,$00, $00,$01, $01,$01, $01,$01, $01,$00, $00,$01, $01,$00, $00,$01 ;B3BD16;
+    db $01,$00, $01,$01, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00 ;B3BD26;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3BD36;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$01 ;B3BD46;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3BD56;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00 ;B3BD66;
+    db $01,$00, $01,$00, $01,$01, $01,$00, $01,$00, $01,$00, $01,$01, $01,$00 ;B3BD76;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $01,$01, $01,$00, $00,$01, $01,$00 ;B3BD86;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$01, $01,$01 ;B3BD96;
+    db $00,$01, $01,$01, $00,$01, $01,$01, $00,$01, $01,$01, $00,$01, $00,$01 ;B3BDA6;
+    db $01,$01, $00,$01, $00,$01, $00,$01, $01,$01, $00,$01, $00,$01, $00,$01 ;B3BDB6;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00 ;B3BDC6;
+    db $00,$01, $FF,$01, $FF,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$01 ;B3BDD6;
+    db $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3BDE6;
+    db $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3BDF6;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3BE06;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3BE16;
+    db $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$FF, $FF,$00 ;B3BE26;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$00 ;B3BE36;
+    db $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $00,$FF ;B3BE46;
+    db $FF,$00, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF ;B3BE56;
+    db $FF,$00, $FF,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$00, $00,$FF ;B3BE66;
+    db $FF,$00, $FF,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$FF, $FF,$00 ;B3BE76;
+    db $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00 ;B3BE86;
+    db $00,$FF, $FF,$00, $00,$FF, $FF,$FF, $FF,$FF, $FF,$FF, $00,$FF, $FF,$00 ;B3BE96;
+    db $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00 ;B3BEA6;
+    db $00,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF ;B3BEB6;
+    db $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$FF, $FF,$00 ;B3BEC6;
+    db $00,$FF, $FF,$00, $FF,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF ;B3BED6;
+    db $FF,$00, $FF,$00, $FF,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00 ;B3BEE6;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$01, $FF,$00, $FF,$00 ;B3BEF6;
+    db $00,$01, $FF,$00, $FF,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00 ;B3BF06;
+    db $00,$01, $FF,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$01, $00,$01 ;B3BF16;
+    db $00,$01, $00,$01, $FF,$01, $00,$01, $00,$01, $00,$01, $01,$01, $00,$01 ;B3BF26;
+    db $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01 ;B3BF36;
+    db $01,$01, $01,$01, $01,$01, $01,$00, $00,$01, $01,$00, $01,$01, $01,$00 ;B3BF46;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3BF56;
+    db $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3BF66;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3BF76;
+    db $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3BF86;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3BF96;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00 ;B3BFA6;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF ;B3BFB6;
+    db $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF ;B3BFC6;
+    db $FF,$FF, $FF,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$FF ;B3BFD6;
+    db $FF,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$00, $00,$FF, $FF,$00 ;B3BFE6;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF ;B3BFF6;
+    db $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00 ;B3C006;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3C016;
+    db $00,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF ;B3C026;
+    db $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3C036;
+    db $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $00,$FF ;B3C046;
+    db $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF ;B3C056;
+    db $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$FF, $FF,$FF, $00,$FF, $FF,$00 ;B3C066;
+    db $00,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$FF, $00,$FF, $FF,$00, $80,$00 ;B3C076;
 
 BotwoonMovementData_Visible_TopToBottom:
-    db $00,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$00,$01   ;B3C086;
-    db $FF,$00,$00,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00   ;B3C096;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01   ;B3C0A6;
-    db $FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00   ;B3C0B6;
-    db $00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00   ;B3C0C6;
-    db $FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3C0D6;
-    db $FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00   ;B3C0E6;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$00   ;B3C0F6;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3C106;
-    db $00,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3C116;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3C126;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3C136;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF   ;B3C146;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3C156;
-    db $00,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00   ;B3C166;
-    db $FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01   ;B3C176;
-    db $FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00   ;B3C186;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$00   ;B3C196;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01   ;B3C1A6;
-    db $00,$01,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3C1B6;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$00,$01   ;B3C1C6;
-    db $01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$00,$01   ;B3C1D6;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$01,$00   ;B3C1E6;
-    db $00,$01,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3C1F6;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01   ;B3C206;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3C216;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3C226;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3C236;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3C246;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00   ;B3C256;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$01,$00   ;B3C266;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00   ;B3C276;
-    db $00,$01,$01,$00,$00,$01,$01,$00,$80,$00                           ;B3C286;
+    db $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $00,$01 ;B3C086;
+    db $FF,$00, $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00 ;B3C096;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01 ;B3C0A6;
+    db $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00 ;B3C0B6;
+    db $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00 ;B3C0C6;
+    db $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3C0D6;
+    db $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$01, $FF,$00 ;B3C0E6;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$01, $FF,$00, $FF,$00, $FF,$00 ;B3C0F6;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3C106;
+    db $00,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3C116;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3C126;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3C136;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF ;B3C146;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3C156;
+    db $00,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00 ;B3C166;
+    db $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01 ;B3C176;
+    db $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00 ;B3C186;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $00,$01, $FF,$00 ;B3C196;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01 ;B3C1A6;
+    db $00,$01, $FF,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3C1B6;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $00,$01 ;B3C1C6;
+    db $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $00,$01 ;B3C1D6;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $01,$00 ;B3C1E6;
+    db $00,$01, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3C1F6;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01 ;B3C206;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3C216;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3C226;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3C236;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3C246;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00 ;B3C256;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$01, $01,$00 ;B3C266;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00 ;B3C276;
+    db $00,$01, $01,$00, $00,$01, $01,$00, $80,$00                       ;B3C286;
 
 BotwoonMovementData_Visible_TopToRight:
-    db $01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00   ;B3C290;
-    db $00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01   ;B3C2A0;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00   ;B3C2B0;
-    db $00,$01,$01,$00,$00,$01,$01,$00,$01,$01,$01,$00,$00,$01,$00,$01   ;B3C2C0;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01   ;B3C2D0;
-    db $01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$00,$01   ;B3C2E0;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01   ;B3C2F0;
-    db $01,$00,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00   ;B3C300;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$00,$01   ;B3C310;
-    db $00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3C320;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3C330;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3C340;
-    db $FF,$01,$00,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01   ;B3C350;
-    db $FF,$00,$00,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00   ;B3C360;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$FF,$00   ;B3C370;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00   ;B3C380;
-    db $00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00   ;B3C390;
-    db $00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00   ;B3C3A0;
-    db $00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3C3B0;
-    db $00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00   ;B3C3C0;
-    db $FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00   ;B3C3D0;
-    db $FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3C3E0;
-    db $FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3C3F0;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01   ;B3C400;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3C410;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3C420;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00   ;B3C430;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3C440;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3C450;
-    db $00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00   ;B3C460;
-    db $00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF   ;B3C470;
-    db $FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF   ;B3C480;
-    db $00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF   ;B3C490;
-    db $00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF   ;B3C4A0;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$00   ;B3C4B0;
-    db $00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3C4C0;
-    db $00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3C4D0;
-    db $01,$FF,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3C4E0;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3C4F0;
-    db $00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3C500;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00   ;B3C510;
-    db $00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3C520;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3C530;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3C540;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01   ;B3C550;
-    db $01,$00,$01,$00,$01,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3C560;
-    db $00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00   ;B3C570;
-    db $00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$01,$00   ;B3C580;
-    db $00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01   ;B3C590;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01   ;B3C5A0;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00   ;B3C5B0;
-    db $00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00   ;B3C5C0;
-    db $00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$00,$01   ;B3C5D0;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00   ;B3C5E0;
-    db $00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00   ;B3C5F0;
-    db $00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01   ;B3C600;
-    db $00,$01,$01,$00,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$01,$00   ;B3C610;
-    db $00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$01,$00   ;B3C620;
-    db $00,$01,$01,$00,$00,$01,$01,$01,$01,$00,$00,$01,$01,$00,$00,$01   ;B3C630;
-    db $01,$00,$01,$01,$01,$00,$01,$01,$01,$00,$01,$00,$01,$00,$00,$01   ;B3C640;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3C650;
-    db $00,$FF,$01,$00,$01,$00,$01,$FF,$01,$00,$00,$FF,$01,$00,$01,$00   ;B3C660;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3C670;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$80,$00   ;B3C680;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00 ;B3C290;
+    db $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01 ;B3C2A0;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00 ;B3C2B0;
+    db $00,$01, $01,$00, $00,$01, $01,$00, $01,$01, $01,$00, $00,$01, $00,$01 ;B3C2C0;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01 ;B3C2D0;
+    db $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $00,$01 ;B3C2E0;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01 ;B3C2F0;
+    db $01,$00, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00 ;B3C300;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $00,$01 ;B3C310;
+    db $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3C320;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3C330;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3C340;
+    db $FF,$01, $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01 ;B3C350;
+    db $FF,$00, $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00 ;B3C360;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $FF,$00 ;B3C370;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00 ;B3C380;
+    db $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00 ;B3C390;
+    db $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00 ;B3C3A0;
+    db $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3C3B0;
+    db $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00 ;B3C3C0;
+    db $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$01, $FF,$00, $FF,$00 ;B3C3D0;
+    db $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3C3E0;
+    db $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3C3F0;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$01 ;B3C400;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3C410;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3C420;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00 ;B3C430;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3C440;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3C450;
+    db $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00 ;B3C460;
+    db $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF ;B3C470;
+    db $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF ;B3C480;
+    db $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF ;B3C490;
+    db $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF ;B3C4A0;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$00 ;B3C4B0;
+    db $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3C4C0;
+    db $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3C4D0;
+    db $01,$FF, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3C4E0;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3C4F0;
+    db $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3C500;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00 ;B3C510;
+    db $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3C520;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3C530;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3C540;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01 ;B3C550;
+    db $01,$00, $01,$00, $01,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3C560;
+    db $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00 ;B3C570;
+    db $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $01,$00 ;B3C580;
+    db $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01 ;B3C590;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01 ;B3C5A0;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00 ;B3C5B0;
+    db $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00 ;B3C5C0;
+    db $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $00,$01 ;B3C5D0;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00 ;B3C5E0;
+    db $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00 ;B3C5F0;
+    db $00,$01, $00,$01, $01,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01 ;B3C600;
+    db $00,$01, $01,$00, $00,$01, $00,$01, $01,$01, $00,$01, $00,$01, $01,$00 ;B3C610;
+    db $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $01,$00 ;B3C620;
+    db $00,$01, $01,$00, $00,$01, $01,$01, $01,$00, $00,$01, $01,$00, $00,$01 ;B3C630;
+    db $01,$00, $01,$01, $01,$00, $01,$01, $01,$00, $01,$00, $01,$00, $00,$01 ;B3C640;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3C650;
+    db $00,$FF, $01,$00, $01,$00, $01,$FF, $01,$00, $00,$FF, $01,$00, $01,$00 ;B3C660;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3C670;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $80,$00 ;B3C680;
 
 BotwoonMovementData_Visible_TopToTop:
-    db $01,$00,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00   ;B3C690;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00   ;B3C6A0;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01   ;B3C6B0;
-    db $01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$00,$01   ;B3C6C0;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$01,$01,$01,$00,$00,$01,$01,$00   ;B3C6D0;
-    db $00,$01,$01,$00,$01,$01,$01,$01,$00,$01,$01,$00,$00,$01,$01,$00   ;B3C6E0;
-    db $00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01   ;B3C6F0;
-    db $00,$01,$01,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3C700;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3C710;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3C720;
-    db $00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01   ;B3C730;
-    db $01,$00,$00,$01,$01,$01,$01,$01,$00,$01,$01,$00,$00,$01,$01,$00   ;B3C740;
-    db $00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01   ;B3C750;
-    db $00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01   ;B3C760;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$FF,$00   ;B3C770;
-    db $00,$01,$FF,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3C780;
-    db $00,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3C790;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3C7A0;
-    db $FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00   ;B3C7B0;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00   ;B3C7C0;
-    db $00,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$FF,$00,$FF,$00,$FF,$FF,$00   ;B3C7D0;
-    db $00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$FF,$FF   ;B3C7E0;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF   ;B3C7F0;
-    db $00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF   ;B3C800;
-    db $00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF   ;B3C810;
-    db $FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF   ;B3C820;
-    db $FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF   ;B3C830;
-    db $FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3C840;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3C850;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00   ;B3C860;
-    db $FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3C870;
-    db $00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00   ;B3C880;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01   ;B3C890;
-    db $00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$00   ;B3C8A0;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$00   ;B3C8B0;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$FF,$00   ;B3C8C0;
-    db $FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$FF,$FF,$00,$FF,$00,$FF,$00   ;B3C8D0;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF   ;B3C8E0;
-    db $FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF   ;B3C8F0;
-    db $00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$FF,$00   ;B3C900;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF   ;B3C910;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3C920;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF   ;B3C930;
-    db $00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$01,$00   ;B3C940;
-    db $00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3C950;
-    db $00,$FF,$01,$00,$00,$FF,$01,$FF,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3C960;
-    db $00,$FF,$01,$00,$00,$FF,$01,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3C970;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3C980;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00   ;B3C990;
-    db $00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3C9A0;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3C9B0;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$80,$00                   ;B3C9C0;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00 ;B3C690;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00 ;B3C6A0;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01 ;B3C6B0;
+    db $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $00,$01 ;B3C6C0;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $01,$01, $01,$00, $00,$01, $01,$00 ;B3C6D0;
+    db $00,$01, $01,$00, $01,$01, $01,$01, $00,$01, $01,$00, $00,$01, $01,$00 ;B3C6E0;
+    db $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01 ;B3C6F0;
+    db $00,$01, $01,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3C700;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3C710;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3C720;
+    db $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01 ;B3C730;
+    db $01,$00, $00,$01, $01,$01, $01,$01, $00,$01, $01,$00, $00,$01, $01,$00 ;B3C740;
+    db $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01 ;B3C750;
+    db $00,$01, $00,$01, $01,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01 ;B3C760;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $FF,$00 ;B3C770;
+    db $00,$01, $FF,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3C780;
+    db $00,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3C790;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3C7A0;
+    db $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00 ;B3C7B0;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00 ;B3C7C0;
+    db $00,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$FF, $00,$FF, $00,$FF, $FF,$00 ;B3C7D0;
+    db $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $FF,$FF ;B3C7E0;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF ;B3C7F0;
+    db $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF ;B3C800;
+    db $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF ;B3C810;
+    db $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF ;B3C820;
+    db $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF ;B3C830;
+    db $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3C840;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3C850;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00 ;B3C860;
+    db $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3C870;
+    db $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00 ;B3C880;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01 ;B3C890;
+    db $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $FF,$00 ;B3C8A0;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $FF,$00 ;B3C8B0;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $FF,$00 ;B3C8C0;
+    db $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$FF, $FF,$00, $FF,$00, $FF,$00 ;B3C8D0;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF ;B3C8E0;
+    db $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF ;B3C8F0;
+    db $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $FF,$00 ;B3C900;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF ;B3C910;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3C920;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF ;B3C930;
+    db $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $01,$00 ;B3C940;
+    db $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3C950;
+    db $00,$FF, $01,$00, $00,$FF, $01,$FF, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3C960;
+    db $00,$FF, $01,$00, $00,$FF, $01,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3C970;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3C980;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00 ;B3C990;
+    db $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3C9A0;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3C9B0;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $80,$00              ; B3C9C0;
 
-BotwoonMovementData_Visible_RightToLeft:
-    db $FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$00,$00,$FF   ;B3C9CC;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00   ;B3C9DC;
-    db $FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00   ;B3C9EC;
-    db $00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$00,$00,$FF   ;B3C9FC;
-    db $FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$00,$FF   ;B3CA0C;
-    db $FF,$00,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00   ;B3CA1C;
-    db $FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF   ;B3CA2C;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00   ;B3CA3C;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$00   ;B3CA4C;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3CA5C;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00   ;B3CA6C;
-    db $FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3CA7C;
-    db $00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$01,$00,$01,$FF,$00,$00,$01   ;B3CA8C;
-    db $FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$FF,$00   ;B3CA9C;
-    db $00,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01   ;B3CAAC;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$FF,$00,$00,$01   ;B3CABC;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$FF,$01,$00,$01   ;B3CACC;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$00,$00,$01   ;B3CADC;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01   ;B3CAEC;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3CAFC;
-    db $00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$00,$01,$00,$01   ;B3CB0C;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01   ;B3CB1C;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$00   ;B3CB2C;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01   ;B3CB3C;
-    db $00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01   ;B3CB4C;
-    db $00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01   ;B3CB5C;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$01,$01,$00   ;B3CB6C;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3CB7C;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00   ;B3CB8C;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3CB9C;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3CBAC;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3CBBC;
-    db $00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF   ;B3CBCC;
-    db $00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3CBDC;
-    db $01,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3CBEC;
-    db $00,$FF,$FF,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00   ;B3CBFC;
-    db $00,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00   ;B3CC0C;
-    db $00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$00   ;B3CC1C;
-    db $00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3CC2C;
-    db $00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$FF   ;B3CC3C;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00   ;B3CC4C;
-    db $FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3CC5C;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3CC6C;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00   ;B3CC7C;
-    db $FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3CC8C;
-    db $00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00   ;B3CC9C;
-    db $FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00   ;B3CCAC;
-    db $FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00   ;B3CCBC;
-    db $FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01   ;B3CCCC;
-    db $FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3CCDC;
-    db $FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3CCEC;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3CCFC;
-    db $00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$00,$00,$FF   ;B3CD0C;
-    db $FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$00,$FF   ;B3CD1C;
-    db $FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$FF,$FF   ;B3CD2C;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3CD3C;
-    db $01,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00   ;B3CD4C;
-    db $00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3CD5C;
-    db $00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3CD6C;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3CD7C;
-    db $FF,$00,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00   ;B3CD8C;
-    db $00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3CD9C;
-    db $00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$FF   ;B3CDAC;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$80,$00   ;B3CDBC;
+BotwoonMovementData_Visible_RightToLeft: 
+    db $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$00, $00,$FF ;B3C9CC;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00 ;B3C9DC;
+    db $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00 ;B3C9EC;
+    db $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$00, $00,$FF ;B3C9FC;
+    db $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $00,$FF ;B3CA0C;
+    db $FF,$00, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00 ;B3CA1C;
+    db $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF ;B3CA2C;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00 ;B3CA3C;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$FF, $FF,$00, $FF,$00 ;B3CA4C;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3CA5C;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00 ;B3CA6C;
+    db $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3CA7C;
+    db $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$01, $00,$01, $FF,$00, $00,$01 ;B3CA8C;
+    db $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $FF,$00 ;B3CA9C;
+    db $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01 ;B3CAAC;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01 ;B3CABC;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $FF,$01, $00,$01 ;B3CACC;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01 ;B3CADC;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01 ;B3CAEC;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3CAFC;
+    db $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $00,$01, $00,$01 ;B3CB0C;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01 ;B3CB1C;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $01,$00 ;B3CB2C;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01 ;B3CB3C;
+    db $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01 ;B3CB4C;
+    db $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01 ;B3CB5C;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$01, $01,$00 ;B3CB6C;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3CB7C;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00 ;B3CB8C;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3CB9C;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3CBAC;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3CBBC;
+    db $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF ;B3CBCC;
+    db $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3CBDC;
+    db $01,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3CBEC;
+    db $00,$FF, $FF,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00 ;B3CBFC;
+    db $00,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00 ;B3CC0C;
+    db $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$00 ;B3CC1C;
+    db $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3CC2C;
+    db $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$FF ;B3CC3C;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00 ;B3CC4C;
+    db $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3CC5C;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3CC6C;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00 ;B3CC7C;
+    db $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3CC8C;
+    db $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00 ;B3CC9C;
+    db $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00 ;B3CCAC;
+    db $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00 ;B3CCBC;
+    db $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01 ;B3CCCC;
+    db $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3CCDC;
+    db $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3CCEC;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3CCFC;
+    db $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$00, $00,$FF ;B3CD0C;
+    db $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $00,$FF ;B3CD1C;
+    db $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $FF,$FF ;B3CD2C;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3CD3C;
+    db $01,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00 ;B3CD4C;
+    db $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3CD5C;
+    db $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3CD6C;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3CD7C;
+    db $FF,$00, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00 ;B3CD8C;
+    db $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3CD9C;
+    db $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$FF ;B3CDAC;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $80,$00 ;B3CDBC;
 
 BotwoonMovementData_Visible_RightToBottom:
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3CDCC;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3CDDC;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00   ;B3CDEC;
-    db $FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3CDFC;
-    db $00,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF   ;B3CE0C;
-    db $FF,$00,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$FF   ;B3CE1C;
-    db $FF,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$FF,$00,$FF   ;B3CE2C;
-    db $FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF   ;B3CE3C;
-    db $00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF   ;B3CE4C;
-    db $00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00   ;B3CE5C;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3CE6C;
-    db $01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF   ;B3CE7C;
-    db $01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3CE8C;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01   ;B3CE9C;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01   ;B3CEAC;
-    db $00,$01,$01,$00,$00,$01,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01   ;B3CEBC;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3CECC;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3CEDC;
-    db $00,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$FF,$00   ;B3CEEC;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$FF,$00   ;B3CEFC;
-    db $00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$00,$01   ;B3CF0C;
-    db $FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3CF1C;
-    db $00,$01,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00   ;B3CF2C;
-    db $FF,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3CF3C;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00   ;B3CF4C;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3CF5C;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00   ;B3CF6C;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3CF7C;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00   ;B3CF8C;
-    db $FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$FF   ;B3CF9C;
-    db $FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF   ;B3CFAC;
-    db $FF,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00   ;B3CFBC;
-    db $00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$FF,$00,$FF   ;B3CFCC;
-    db $FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$FF,$00   ;B3CFDC;
-    db $00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3CFEC;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3CFFC;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3D00C;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3D01C;
-    db $01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3D02C;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01   ;B3D03C;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$01,$00,$01   ;B3D04C;
-    db $01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$01,$01,$00,$01,$00,$01   ;B3D05C;
-    db $01,$00,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$00,$01,$01,$00   ;B3D06C;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3D07C;
-    db $00,$01,$01,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3D08C;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$00   ;B3D09C;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01   ;B3D0AC;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01   ;B3D0BC;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$00,$01   ;B3D0CC;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3D0DC;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$00   ;B3D0EC;
-    db $00,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$FF,$00   ;B3D0FC;
-    db $00,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00   ;B3D10C;
-    db $FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$FF   ;B3D11C;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF   ;B3D12C;
-    db $FF,$00,$80,$00                                                   ;B3D13C;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3CDCC;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3CDDC;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00 ;B3CDEC;
+    db $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3CDFC;
+    db $00,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF ;B3CE0C;
+    db $FF,$00, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$FF ;B3CE1C;
+    db $FF,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$FF, $00,$FF ;B3CE2C;
+    db $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF ;B3CE3C;
+    db $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF ;B3CE4C;
+    db $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00 ;B3CE5C;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$FF, $00,$FF, $00,$FF, $00,$FF ;B3CE6C;
+    db $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF ;B3CE7C;
+    db $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3CE8C;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01 ;B3CE9C;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01 ;B3CEAC;
+    db $00,$01, $01,$00, $00,$01, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01 ;B3CEBC;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3CECC;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3CEDC;
+    db $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $FF,$00 ;B3CEEC;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $FF,$00 ;B3CEFC;
+    db $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $00,$01 ;B3CF0C;
+    db $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3CF1C;
+    db $00,$01, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00 ;B3CF2C;
+    db $FF,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3CF3C;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00 ;B3CF4C;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3CF5C;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00 ;B3CF6C;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3CF7C;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00 ;B3CF8C;
+    db $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$FF ;B3CF9C;
+    db $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF ;B3CFAC;
+    db $FF,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00 ;B3CFBC;
+    db $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$FF, $00,$FF ;B3CFCC;
+    db $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $FF,$00 ;B3CFDC;
+    db $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3CFEC;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3CFFC;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3D00C;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3D01C;
+    db $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3D02C;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01 ;B3D03C;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$01, $00,$01 ;B3D04C;
+    db $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $01,$01, $00,$01, $00,$01 ;B3D05C;
+    db $01,$00, $00,$01, $00,$01, $01,$01, $00,$01, $00,$01, $00,$01, $01,$00 ;B3D06C;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3D07C;
+    db $00,$01, $01,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3D08C;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $01,$00 ;B3D09C;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01 ;B3D0AC;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01 ;B3D0BC;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $00,$01 ;B3D0CC;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3D0DC;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $FF,$00 ;B3D0EC;
+    db $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $FF,$00 ;B3D0FC;
+    db $00,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00 ;B3D10C;
+    db $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$FF, $FF,$00, $FF,$FF ;B3D11C;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF ;B3D12C;
+    db $FF,$00, $80,$00                                                  ;B3D13C;
 
 BotwoonMovementData_Visible_RightToTop:
-    db $FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00   ;B3D140;
-    db $FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00   ;B3D150;
-    db $00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3D160;
-    db $00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$00,$01   ;B3D170;
-    db $FF,$00,$FF,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00   ;B3D180;
-    db $00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$00,$01   ;B3D190;
-    db $FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3D1A0;
-    db $00,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3D1B0;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3D1C0;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00   ;B3D1D0;
-    db $FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00   ;B3D1E0;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00   ;B3D1F0;
-    db $00,$FF,$FF,$00,$FF,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF   ;B3D200;
-    db $FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$FF,$00,$FF,$FF,$00,$00,$FF   ;B3D210;
-    db $00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF   ;B3D220;
-    db $FF,$00,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF   ;B3D230;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3D240;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF   ;B3D250;
-    db $01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3D260;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3D270;
-    db $00,$FF,$01,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3D280;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3D290;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$FF   ;B3D2A0;
-    db $01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00   ;B3D2B0;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01   ;B3D2C0;
-    db $01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00   ;B3D2D0;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00   ;B3D2E0;
-    db $00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$00,$01   ;B3D2F0;
-    db $01,$00,$00,$01,$01,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01   ;B3D300;
-    db $00,$01,$01,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3D310;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3D320;
-    db $FF,$00,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01   ;B3D330;
-    db $FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01   ;B3D340;
-    db $FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01   ;B3D350;
-    db $FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00   ;B3D360;
-    db $FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00   ;B3D370;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF   ;B3D380;
-    db $FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$FF,$00,$FF,$FF,$00   ;B3D390;
-    db $00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF   ;B3D3A0;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3D3B0;
-    db $00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF   ;B3D3C0;
-    db $00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3D3D0;
-    db $01,$FF,$01,$FF,$01,$00,$00,$FF,$01,$00,$01,$FF,$01,$00,$01,$00   ;B3D3E0;
-    db $01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00   ;B3D3F0;
-    db $01,$01,$01,$00,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01   ;B3D400;
-    db $01,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$00   ;B3D410;
-    db $00,$01,$00,$01,$FF,$00,$FF,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3D420;
-    db $00,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00   ;B3D430;
-    db $FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$00,$FF   ;B3D440;
-    db $00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00   ;B3D450;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF   ;B3D460;
-    db $00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF   ;B3D470;
-    db $00,$FF,$FF,$00,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF   ;B3D480;
-    db $FF,$00,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF   ;B3D490;
+    db $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00 ;B3D140;
+    db $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00 ;B3D150;
+    db $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3D160;
+    db $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $00,$01 ;B3D170;
+    db $FF,$00, $FF,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00 ;B3D180;
+    db $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $00,$01 ;B3D190;
+    db $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3D1A0;
+    db $00,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3D1B0;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3D1C0;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00 ;B3D1D0;
+    db $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00 ;B3D1E0;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00 ;B3D1F0;
+    db $00,$FF, $FF,$00, $FF,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF ;B3D200;
+    db $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$FF, $00,$FF, $FF,$00, $00,$FF ;B3D210;
+    db $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF ;B3D220;
+    db $FF,$00, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF ;B3D230;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3D240;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF ;B3D250;
+    db $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3D260;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3D270;
+    db $00,$FF, $01,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3D280;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3D290;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$FF ;B3D2A0;
+    db $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00 ;B3D2B0;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01 ;B3D2C0;
+    db $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00 ;B3D2D0;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00 ;B3D2E0;
+    db $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $00,$01 ;B3D2F0;
+    db $01,$00, $00,$01, $01,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01 ;B3D300;
+    db $00,$01, $01,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3D310;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3D320;
+    db $FF,$00, $00,$01, $00,$01, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01 ;B3D330;
+    db $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01 ;B3D340;
+    db $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01 ;B3D350;
+    db $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00 ;B3D360;
+    db $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00 ;B3D370;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF ;B3D380;
+    db $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$FF, $00,$FF, $FF,$00 ;B3D390;
+    db $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF ;B3D3A0;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3D3B0;
+    db $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF ;B3D3C0;
+    db $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3D3D0;
+    db $01,$FF, $01,$FF, $01,$00, $00,$FF, $01,$00, $01,$FF, $01,$00, $01,$00 ;B3D3E0;
+    db $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00 ;B3D3F0;
+    db $01,$01, $01,$00, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01 ;B3D400;
+    db $01,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $FF,$00 ;B3D410;
+    db $00,$01, $00,$01, $FF,$00, $FF,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3D420;
+    db $00,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00 ;B3D430;
+    db $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $00,$FF ;B3D440;
+    db $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00 ;B3D450;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF ;B3D460;
+    db $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF ;B3D470;
+    db $00,$FF, $FF,$00, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF ;B3D480;
+    db $FF,$00, $00,$FF, $00,$FF, $FF,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF ;B3D490;
     db $80,$00                                                           ;B3D4A0;
 
 BotwoonMovementData_Visible_RightToRight:
-    db $FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$00,$00,$FF   ;B3D4A2;
-    db $FF,$00,$FF,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3D4B2;
-    db $00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF   ;B3D4C2;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$00,$00,$FF,$FF,$00,$FF,$FF   ;B3D4D2;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF   ;B3D4E2;
-    db $FF,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00   ;B3D4F2;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$FF,$00,$FF,$00,$FF,$00   ;B3D502;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00   ;B3D512;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3D522;
-    db $FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01   ;B3D532;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3D542;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00   ;B3D552;
-    db $FF,$01,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$01,$FF,$00,$00,$01   ;B3D562;
-    db $FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00   ;B3D572;
-    db $FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3D582;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3D592;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3D5A2;
-    db $00,$01,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01   ;B3D5B2;
-    db $FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$00,$01   ;B3D5C2;
-    db $FF,$00,$FF,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$01,$FF,$01   ;B3D5D2;
-    db $00,$01,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3D5E2;
-    db $00,$01,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$01,$00,$00,$01   ;B3D5F2;
-    db $01,$01,$01,$01,$00,$01,$01,$00,$01,$01,$01,$00,$00,$01,$01,$00   ;B3D602;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00   ;B3D612;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3D622;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3D632;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3D642;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3D652;
-    db $00,$01,$01,$00,$01,$01,$01,$00,$00,$01,$01,$00,$01,$01,$01,$00   ;B3D662;
-    db $00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$00,$01   ;B3D672;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01   ;B3D682;
-    db $01,$00,$00,$01,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01   ;B3D692;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3D6A2;
-    db $FF,$00,$00,$01,$00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$FF,$00   ;B3D6B2;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$01,$FF,$01   ;B3D6C2;
-    db $FF,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01   ;B3D6D2;
-    db $FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00   ;B3D6E2;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00   ;B3D6F2;
-    db $FF,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$FF   ;B3D702;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$FF,$FF,$FF,$FF,$FF,$00,$FF,$FF,$00   ;B3D712;
-    db $00,$FF,$FF,$FF,$00,$FF,$FF,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF   ;B3D722;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3D732;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF   ;B3D742;
-    db $00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$01,$FF,$00,$FF   ;B3D752;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$FF,$00,$FF,$01,$00,$00,$FF   ;B3D762;
-    db $01,$00,$01,$FF,$01,$FF,$01,$00,$00,$FF,$01,$00,$01,$FF,$01,$00   ;B3D772;
-    db $00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3D782;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$FF   ;B3D792;
-    db $01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00   ;B3D7A2;
-    db $01,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$01,$00   ;B3D7B2;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$FF   ;B3D7C2;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3D7D2;
-    db $01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3D7E2;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3D7F2;
-    db $01,$00,$01,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$00,$01,$00   ;B3D802;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3D812;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3D822;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$01,$00,$01,$00   ;B3D832;
-    db $01,$00,$01,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$FF   ;B3D842;
-    db $01,$00,$00,$FF,$01,$00,$01,$FF,$01,$FF,$01,$00,$00,$FF,$01,$FF   ;B3D852;
-    db $00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF   ;B3D862;
-    db $00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$80,$00           ;B3D872;
+    db $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$00, $00,$FF ;B3D4A2;
+    db $FF,$00, $FF,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3D4B2;
+    db $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF ;B3D4C2;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$00, $00,$FF, $FF,$00, $FF,$FF ;B3D4D2;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF ;B3D4E2;
+    db $FF,$00, $FF,$00, $FF,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00 ;B3D4F2;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$FF, $FF,$00, $FF,$00, $FF,$00 ;B3D502;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00 ;B3D512;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3D522;
+    db $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$01 ;B3D532;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3D542;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00 ;B3D552;
+    db $FF,$01, $FF,$00, $FF,$00, $FF,$01, $FF,$00, $FF,$01, $FF,$00, $00,$01 ;B3D562;
+    db $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$01, $FF,$00, $FF,$00 ;B3D572;
+    db $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3D582;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3D592;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3D5A2;
+    db $00,$01, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01 ;B3D5B2;
+    db $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $00,$01 ;B3D5C2;
+    db $FF,$00, $FF,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$01, $FF,$01 ;B3D5D2;
+    db $00,$01, $FF,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3D5E2;
+    db $00,$01, $00,$01, $00,$01, $01,$01, $00,$01, $00,$01, $01,$00, $00,$01 ;B3D5F2;
+    db $01,$01, $01,$01, $00,$01, $01,$00, $01,$01, $01,$00, $00,$01, $01,$00 ;B3D602;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00 ;B3D612;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3D622;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3D632;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3D642;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3D652;
+    db $00,$01, $01,$00, $01,$01, $01,$00, $00,$01, $01,$00, $01,$01, $01,$00 ;B3D662;
+    db $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $00,$01 ;B3D672;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01 ;B3D682;
+    db $01,$00, $00,$01, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01 ;B3D692;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3D6A2;
+    db $FF,$00, $00,$01, $00,$01, $00,$01, $FF,$01, $00,$01, $00,$01, $FF,$00 ;B3D6B2;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$01, $FF,$01 ;B3D6C2;
+    db $FF,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01 ;B3D6D2;
+    db $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $FF,$01, $FF,$00 ;B3D6E2;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00 ;B3D6F2;
+    db $FF,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$FF ;B3D702;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $FF,$FF, $FF,$FF, $00,$FF, $FF,$00 ;B3D712;
+    db $00,$FF, $FF,$FF, $00,$FF, $FF,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF ;B3D722;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3D732;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF ;B3D742;
+    db $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $01,$FF, $00,$FF ;B3D752;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$FF, $00,$FF, $01,$00, $00,$FF ;B3D762;
+    db $01,$00, $01,$FF, $01,$FF, $01,$00, $00,$FF, $01,$00, $01,$FF, $01,$00 ;B3D772;
+    db $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3D782;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $01,$FF, $01,$00, $01,$00, $01,$FF ;B3D792;
+    db $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00 ;B3D7A2;
+    db $01,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$FF, $01,$00 ;B3D7B2;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF ;B3D7C2;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3D7D2;
+    db $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3D7E2;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3D7F2;
+    db $01,$00, $01,$00, $01,$00, $01,$01, $01,$00, $01,$00, $01,$00, $01,$00 ;B3D802;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3D812;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3D822;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$FF, $01,$00, $01,$00 ;B3D832;
+    db $01,$00, $01,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$FF ;B3D842;
+    db $01,$00, $00,$FF, $01,$00, $01,$FF, $01,$FF, $01,$00, $00,$FF, $01,$FF ;B3D852;
+    db $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF ;B3D862;
+    db $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $80,$00     ;B3D872;
 
 BotwoonMovementData_Hidden_LeftToFromBottom:
-    db $01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3D880;
-    db $00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$01,$00   ;B3D890;
-    db $00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01   ;B3D8A0;
-    db $01,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01   ;B3D8B0;
-    db $00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01   ;B3D8C0;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01   ;B3D8D0;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3D8E0;
-    db $00,$01,$01,$00,$01,$01,$00,$01,$01,$00,$00,$01,$00,$01,$00,$01   ;B3D8F0;
-    db $01,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$00   ;B3D900;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$FF,$00,$00,$01   ;B3D910;
-    db $FF,$00,$00,$01,$FF,$00,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00   ;B3D920;
-    db $FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01,$FF,$00,$FF,$00,$00,$01   ;B3D930;
-    db $FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00   ;B3D940;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3D950;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00   ;B3D960;
-    db $00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00   ;B3D970;
-    db $00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00   ;B3D980;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01   ;B3D990;
-    db $01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00   ;B3D9A0;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF   ;B3D9B0;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3D9C0;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3D9D0;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01   ;B3D9E0;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01   ;B3D9F0;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3D880;
+    db $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $01,$00 ;B3D890;
+    db $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01 ;B3D8A0;
+    db $01,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01 ;B3D8B0;
+    db $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01 ;B3D8C0;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01 ;B3D8D0;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3D8E0;
+    db $00,$01, $01,$00, $01,$01, $00,$01, $01,$00, $00,$01, $00,$01, $00,$01 ;B3D8F0;
+    db $01,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $FF,$00 ;B3D900;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $FF,$00, $00,$01 ;B3D910;
+    db $FF,$00, $00,$01, $FF,$00, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00 ;B3D920;
+    db $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01, $FF,$00, $FF,$00, $00,$01 ;B3D930;
+    db $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00 ;B3D940;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3D950;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00 ;B3D960;
+    db $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00 ;B3D970;
+    db $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00 ;B3D980;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01 ;B3D990;
+    db $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00 ;B3D9A0;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF ;B3D9B0;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3D9C0;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3D9D0;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01 ;B3D9E0;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01 ;B3D9F0;
 
 BotwoonMovementData_Hidden_LeftToFromBottom_End:
     db $80,$00                                                           ;B3DA00;
 
 BotwoonMovementData_Hidden_LeftToFromTop:
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00   ;B3DA02;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$01,$FF,$01,$00,$01,$00,$01,$00   ;B3DA12;
-    db $00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3DA22;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3DA32;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01   ;B3DA42;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00   ;B3DA52;
-    db $00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3DA62;
-    db $00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$00   ;B3DA72;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$00   ;B3DA82;
-    db $00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01   ;B3DA92;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00   ;B3DAA2;
-    db $00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00   ;B3DAB2;
-    db $00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$FF   ;B3DAC2;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00   ;B3DAD2;
-    db $00,$FF,$01,$00,$01,$FF,$01,$00,$00,$FF,$01,$00,$01,$FF,$01,$00   ;B3DAE2;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3DAF2;
-    db $01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$01,$00   ;B3DB02;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3DB12;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00   ;B3DB22;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF   ;B3DB32;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF   ;B3DB42;
-    db $01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3DB52;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3DB62;
-    db $01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01   ;B3DB72;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$01   ;B3DB82;
-    db $01,$00,$01,$00,$00,$01,$01,$00                                   ;B3DB92;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00 ;B3DA02;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $01,$FF, $01,$00, $01,$00, $01,$00 ;B3DA12;
+    db $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3DA22;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3DA32;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01 ;B3DA42;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00 ;B3DA52;
+    db $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3DA62;
+    db $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $00,$01, $FF,$00 ;B3DA72;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $01,$00 ;B3DA82;
+    db $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01 ;B3DA92;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00 ;B3DAA2;
+    db $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00 ;B3DAB2;
+    db $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF ;B3DAC2;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00 ;B3DAD2;
+    db $00,$FF, $01,$00, $01,$FF, $01,$00, $00,$FF, $01,$00, $01,$FF, $01,$00 ;B3DAE2;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3DAF2;
+    db $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $01,$00 ;B3DB02;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3DB12;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00 ;B3DB22;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF ;B3DB32;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF ;B3DB42;
+    db $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3DB52;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3DB62;
+    db $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01 ;B3DB72;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$01 ;B3DB82;
+    db $01,$00, $01,$00, $00,$01, $01,$00                                ;B3DB92;
 
 BotwoonMovementData_Hidden_LeftToFromTop_End:
     db $80,$00                                                           ;B3DB9A;
 
 BotwoonMovementData_Hidden_LeftToFromRight:
-    db $00,$01,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00   ;B3DB9C;
-    db $00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00   ;B3DBAC;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$01,$01,$00   ;B3DBBC;
-    db $00,$01,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$00,$01   ;B3DBCC;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01   ;B3DBDC;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3DBEC;
-    db $00,$01,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$01,$01,$00   ;B3DBFC;
-    db $00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01   ;B3DC0C;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01   ;B3DC1C;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00   ;B3DC2C;
-    db $00,$01,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$00,$01   ;B3DC3C;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3DC4C;
-    db $00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00   ;B3DC5C;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3DC6C;
-    db $00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3DC7C;
-    db $01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00   ;B3DC8C;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3DC9C;
-    db $01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00   ;B3DCAC;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00   ;B3DCBC;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3DCCC;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3DCDC;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3DCEC;
-    db $00,$01,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00   ;B3DCFC;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00   ;B3DD0C;
-    db $01,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3DD1C;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3DD2C;
-    db $01,$00,$01,$00                                                   ;B3DD3C;
+    db $00,$01, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00 ;B3DB9C;
+    db $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00 ;B3DBAC;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$01, $01,$00 ;B3DBBC;
+    db $00,$01, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $00,$01 ;B3DBCC;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01 ;B3DBDC;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3DBEC;
+    db $00,$01, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$01, $01,$00 ;B3DBFC;
+    db $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01 ;B3DC0C;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01 ;B3DC1C;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00 ;B3DC2C;
+    db $00,$01, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $00,$01 ;B3DC3C;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3DC4C;
+    db $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00 ;B3DC5C;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3DC6C;
+    db $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3DC7C;
+    db $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00 ;B3DC8C;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3DC9C;
+    db $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00 ;B3DCAC;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00 ;B3DCBC;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3DCCC;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3DCDC;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3DCEC;
+    db $00,$01, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00 ;B3DCFC;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00 ;B3DD0C;
+    db $01,$00, $01,$00, $01,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3DD1C;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3DD2C;
+    db $01,$00, $01,$00                                                  ;B3DD3C;
 
 BotwoonMovementData_Hidden_LeftToFromRight_End:
     db $80,$00                                                           ;B3DD40;
 
 BotwoonMovementData_Hidden_BottomToFromTop:
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3DD42;
-    db $00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3DD52;
-    db $01,$00,$00,$FF,$01,$00,$01,$FF,$01,$FF,$01,$FF,$01,$FF,$00,$FF   ;B3DD62;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00   ;B3DD72;
-    db $00,$FF,$01,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3DD82;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3DD92;
-    db $00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00,$00,$FF,$00,$FF,$FF,$00   ;B3DDA2;
-    db $00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00,$00,$FF,$FF,$00   ;B3DDB2;
-    db $00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00,$FF,$00,$00,$FF   ;B3DDC2;
-    db $FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$00   ;B3DDD2;
-    db $FF,$00,$00,$FF,$FF,$00,$FF,$00,$00,$FF,$FF,$00,$FF,$FF,$00,$FF   ;B3DDE2;
-    db $FF,$00,$00,$FF,$FF,$FF,$00,$FF,$00,$FF,$00,$FF,$FF,$00,$00,$FF   ;B3DDF2;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF   ;B3DE02;
-    db $00,$FF,$01,$00,$00,$FF,$01,$FF,$01,$00,$00,$FF,$01,$00,$01,$00   ;B3DE12;
-    db $00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$01,$00   ;B3DE22;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3DE32;
-    db $01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3DE42;
-    db $00,$FF,$01,$00,$01,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3DE52;
-    db $00,$FF,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3DE62;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF                           ;B3DE72;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3DD42;
+    db $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3DD52;
+    db $01,$00, $00,$FF, $01,$00, $01,$FF, $01,$FF, $01,$FF, $01,$FF, $00,$FF ;B3DD62;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00 ;B3DD72;
+    db $00,$FF, $01,$FF, $00,$FF, $01,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3DD82;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3DD92;
+    db $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00, $00,$FF, $00,$FF, $FF,$00 ;B3DDA2;
+    db $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00, $00,$FF, $FF,$00 ;B3DDB2;
+    db $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00, $FF,$00, $00,$FF ;B3DDC2;
+    db $FF,$00, $FF,$00, $FF,$00, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$00 ;B3DDD2;
+    db $FF,$00, $00,$FF, $FF,$00, $FF,$00, $00,$FF, $FF,$00, $FF,$FF, $00,$FF ;B3DDE2;
+    db $FF,$00, $00,$FF, $FF,$FF, $00,$FF, $00,$FF, $00,$FF, $FF,$00, $00,$FF ;B3DDF2;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF ;B3DE02;
+    db $00,$FF, $01,$00, $00,$FF, $01,$FF, $01,$00, $00,$FF, $01,$00, $01,$00 ;B3DE12;
+    db $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$01, $01,$00 ;B3DE22;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3DE32;
+    db $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3DE42;
+    db $00,$FF, $01,$00, $01,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3DE52;
+    db $00,$FF, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3DE62;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF                       ;B3DE72;
 
 BotwoonMovementData_Hidden_BottomToFromTop_End:
     db $80,$00                                                           ;B3DE7C;
 
 BotwoonMovementData_Hidden_BottomToFromRight:
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF   ;B3DE7E;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF   ;B3DE8E;
-    db $01,$00,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF   ;B3DE9E;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3DEAE;
-    db $00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3DEBE;
-    db $00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF   ;B3DECE;
-    db $00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$00,$FF   ;B3DEDE;
-    db $FF,$00,$00,$FF,$00,$FF,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF   ;B3DEEE;
-    db $00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$01,$00   ;B3DEFE;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$01,$00   ;B3DF0E;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3DF1E;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3DF2E;
-    db $00,$01,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00   ;B3DF3E;
-    db $01,$01,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00   ;B3DF4E;
-    db $00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01   ;B3DF5E;
-    db $01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$01   ;B3DF6E;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$01,$00   ;B3DF7E;
-    db $01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00   ;B3DF8E;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00   ;B3DF9E;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF   ;B3DFAE;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3DFBE;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3DFCE;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF ;B3DE7E;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF ;B3DE8E;
+    db $01,$00, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF ;B3DE9E;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3DEAE;
+    db $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3DEBE;
+    db $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF ;B3DECE;
+    db $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $00,$FF ;B3DEDE;
+    db $FF,$00, $00,$FF, $00,$FF, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF ;B3DEEE;
+    db $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $01,$00 ;B3DEFE;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00 ;B3DF0E;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3DF1E;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3DF2E;
+    db $00,$01, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00 ;B3DF3E;
+    db $01,$01, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00 ;B3DF4E;
+    db $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01 ;B3DF5E;
+    db $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$01 ;B3DF6E;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $01,$00 ;B3DF7E;
+    db $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00 ;B3DF8E;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00 ;B3DF9E;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF ;B3DFAE;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3DFBE;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3DFCE;
 
 BotwoonMovementData_Hidden_BottomToFromRight_End:
     db $80,$00                                                           ;B3DFDE;
 
 BotwoonMovementData_Hidden_TopToFromRight:
-    db $00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$FF,$00,$00,$01,$00,$01   ;B3DFE0;
-    db $FF,$00,$00,$01,$FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01   ;B3DFF0;
-    db $FF,$00,$00,$01,$00,$01,$FF,$00,$00,$01,$00,$01,$00,$01,$FF,$00   ;B3E000;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3E010;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$01,$00,$00,$01,$00,$01,$00,$01   ;B3E020;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$00,$01,$01,$00,$00,$01,$01,$00   ;B3E030;
-    db $00,$01,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01   ;B3E040;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$00,$01,$01,$00   ;B3E050;
-    db $01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3E060;
-    db $00,$FF,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF   ;B3E070;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3E080;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$00,$FF   ;B3E090;
-    db $01,$00,$00,$FF,$01,$00,$00,$FF,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3E0A0;
-    db $01,$00,$00,$FF,$01,$00,$01,$00,$01,$00,$01,$00,$00,$FF,$01,$00   ;B3E0B0;
-    db $01,$00,$01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01,$00,$01   ;B3E0C0;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$FF,$00   ;B3E0D0;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00,$01   ;B3E0E0;
-    db $00,$01,$00,$01,$00,$01,$00,$01,$00,$01,$01,$01,$00,$01,$00,$01   ;B3E0F0;
-    db $01,$00,$00,$01,$01,$00,$00,$01,$01,$01,$00,$01,$01,$00,$00,$01   ;B3E100;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$00,$01,$01,$00,$01,$00,$00,$01   ;B3E110;
-    db $01,$00,$01,$00,$00,$01,$01,$00,$01,$00,$01,$00,$01,$00,$01,$00   ;B3E120;
-    db $00,$FF,$01,$00,$01,$00,$00,$FF,$00,$FF,$01,$00,$00,$FF,$00,$FF   ;B3E130;
-    db $01,$00,$00,$FF,$00,$FF,$00,$FF,$01,$FF,$00,$FF,$00,$FF           ;B3E140;
+    db $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $FF,$00, $00,$01, $00,$01 ;B3DFE0;
+    db $FF,$00, $00,$01, $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01 ;B3DFF0;
+    db $FF,$00, $00,$01, $00,$01, $FF,$00, $00,$01, $00,$01, $00,$01, $FF,$00 ;B3E000;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3E010;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $01,$00, $00,$01, $00,$01, $00,$01 ;B3E020;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $00,$01, $01,$00, $00,$01, $01,$00 ;B3E030;
+    db $00,$01, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01 ;B3E040;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $00,$01, $01,$00 ;B3E050;
+    db $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3E060;
+    db $00,$FF, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF ;B3E070;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3E080;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $00,$FF ;B3E090;
+    db $01,$00, $00,$FF, $01,$00, $00,$FF, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3E0A0;
+    db $01,$00, $00,$FF, $01,$00, $01,$00, $01,$00, $01,$00, $00,$FF, $01,$00 ;B3E0B0;
+    db $01,$00, $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01, $00,$01 ;B3E0C0;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $FF,$00 ;B3E0D0;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $00,$01 ;B3E0E0;
+    db $00,$01, $00,$01, $00,$01, $00,$01, $00,$01, $01,$01, $00,$01, $00,$01 ;B3E0F0;
+    db $01,$00, $00,$01, $01,$00, $00,$01, $01,$01, $00,$01, $01,$00, $00,$01 ;B3E100;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $00,$01, $01,$00, $01,$00, $00,$01 ;B3E110;
+    db $01,$00, $01,$00, $00,$01, $01,$00, $01,$00, $01,$00, $01,$00, $01,$00 ;B3E120;
+    db $00,$FF, $01,$00, $01,$00, $00,$FF, $00,$FF, $01,$00, $00,$FF, $00,$FF ;B3E130;
+    db $01,$00, $00,$FF, $00,$FF, $00,$FF, $01,$FF, $00,$FF, $00,$FF     ;B3E140;
 
 BotwoonMovementData_Hidden_TopToFromRight_End:
     db $80,$00                                                           ;B3E14E;
 
 BotwoonMovementTable:
+;      ________________ Movement data pointer
+;        ______________ Direction. 0 = forwards, FFFFh = backwards
+;       |      ________ Destination hole. 0 = left, 8 = bottom, 10h = top, 18h = right
+;       |     |
     dw BotwoonMovementData_Visible_LeftToBottom                          ;B3E150;
     dw $0000,$0008,$0000                                                 ;B3E152;
     dw BotwoonMovementData_Visible_LeftToTop                             ;B3E158;
@@ -5052,302 +4895,215 @@ Function_Botwoon_Movement_MoveAccordingToMovementData:
 
 
 Spritemaps_Botwoon_MouthClosed_Priority2_AimingUp_FacingLeft:
-    dw $0002,$81F8                                                       ;B3E31D;
-    db $F7                                                               ;B3E321;
-    dw $2122,$81F8                                                       ;B3E322;
-    db $E7                                                               ;B3E326;
-    dw $2120                                                             ;B3E327;
+    dw $0002                                                             ;B3E31D;
+    %spritemapEntry(1, $1F8, $F7, 0, 0, 2, 0, $122)
+    %spritemapEntry(1, $1F8, $E7, 0, 0, 2, 0, $120)
 
 Spritemaps_Botwoon_MouthClosed_Priority2_AimingUpLeft:
-    dw $0002,$81F8                                                       ;B3E329;
-    db $F6                                                               ;B3E32D;
-    dw $2106,$81F0                                                       ;B3E32E;
-    db $EE                                                               ;B3E332;
-    dw $2104                                                             ;B3E333;
+    dw $0002                                                             ;B3E329;
+    %spritemapEntry(1, $1F8, $F6, 0, 0, 2, 0, $106)
+    %spritemapEntry(1, $1F0, $EE, 0, 0, 2, 0, $104)
 
 Spritemaps_Botwoon_MouthClosed_Priority2_AimingLeft:
-    dw $0002,$81FC                                                       ;B3E335;
-    db $F8                                                               ;B3E339;
-    dw $2102,$81EC                                                       ;B3E33A;
-    db $F8                                                               ;B3E33E;
-    dw $2100                                                             ;B3E33F;
+    dw $0002                                                             ;B3E335;
+    %spritemapEntry(1, $1FC, $F8, 0, 0, 2, 0, $102)
+    %spritemapEntry(1, $1EC, $F8, 0, 0, 2, 0, $100)
 
 Spritemaps_Botwoon_MouthClosed_Priority2_AimingDownLeft:
-    dw $0002,$81F8                                                       ;B3E341;
-    db $F9                                                               ;B3E345;
-    dw $210A,$81F0                                                       ;B3E346;
-    db $01                                                               ;B3E34A;
-    dw $2108                                                             ;B3E34B;
+    dw $0002                                                             ;B3E341;
+    %spritemapEntry(1, $1F8, $F9, 0, 0, 2, 0, $10A)
+    %spritemapEntry(1, $1F0, $01, 0, 0, 2, 0, $108)
 
 Spritemaps_Botwoon_MouthClosed_Priority2_AimDown_FacingLeft:
-    dw $0002,$81F8                                                       ;B3E34D;
-    db $09                                                               ;B3E351;
-    dw $210E,$81F8                                                       ;B3E352;
-    db $F9                                                               ;B3E356;
-    dw $210C                                                             ;B3E357;
+    dw $0002                                                             ;B3E34D;
+    %spritemapEntry(1, $1F8, $09, 0, 0, 2, 0, $10E)
+    %spritemapEntry(1, $1F8, $F9, 0, 0, 2, 0, $10C)
 
 Spritemaps_Botwoon_MouthClosed_Priority2_AimDown_FacingRight:
-    dw $0002,$81F8                                                       ;B3E359;
-    db $09                                                               ;B3E35D;
-    dw $610E,$81F8                                                       ;B3E35E;
-    db $F9                                                               ;B3E362;
-    dw $610C                                                             ;B3E363;
+    dw $0002                                                             ;B3E359;
+    %spritemapEntry(1, $1F8, $09, 0, 1, 2, 0, $10E)
+    %spritemapEntry(1, $1F8, $F9, 0, 1, 2, 0, $10C)
 
 Spritemaps_Botwoon_MouthClosed_Priority2_AimingDownRight:
-    dw $0002,$8000                                                       ;B3E365;
-    db $01                                                               ;B3E369;
-    dw $6108,$81F8                                                       ;B3E36A;
-    db $F9                                                               ;B3E36E;
-    dw $610A                                                             ;B3E36F;
+    dw $0002                                                             ;B3E365;
+    %spritemapEntry(1, $00, $01, 0, 1, 2, 0, $108)
+    %spritemapEntry(1, $1F8, $F9, 0, 1, 2, 0, $10A)
 
 Spritemaps_Botwoon_MouthClosed_Priority2_AimingRight:
-    dw $0002,$81F4                                                       ;B3E371;
-    db $F8                                                               ;B3E375;
-    dw $6102,$8004                                                       ;B3E376;
-    db $F8                                                               ;B3E37A;
-    dw $6100                                                             ;B3E37B;
+    dw $0002                                                             ;B3E371;
+    %spritemapEntry(1, $1F4, $F8, 0, 1, 2, 0, $102)
+    %spritemapEntry(1, $04, $F8, 0, 1, 2, 0, $100)
 
 Spritemaps_Botwoon_MouthClosed_Priority2_AimingUpRight:
-    dw $0002,$8000                                                       ;B3E37D;
-    db $EE                                                               ;B3E381;
-    dw $6104,$81F8                                                       ;B3E382;
-    db $F6                                                               ;B3E386;
-    dw $6106                                                             ;B3E387;
+    dw $0002                                                             ;B3E37D;
+    %spritemapEntry(1, $00, $EE, 0, 1, 2, 0, $104)
+    %spritemapEntry(1, $1F8, $F6, 0, 1, 2, 0, $106)
 
 Spritemaps_Botwoon_MouthClosed_Priority2_AimUp_FacingRight:
-    dw $0002,$81F8                                                       ;B3E389;
-    db $F7                                                               ;B3E38D;
-    dw $6122,$81F8                                                       ;B3E38E;
-    db $E7                                                               ;B3E392;
-    dw $6120                                                             ;B3E393;
+    dw $0002                                                             ;B3E389;
+    %spritemapEntry(1, $1F8, $F7, 0, 1, 2, 0, $122)
+    %spritemapEntry(1, $1F8, $E7, 0, 1, 2, 0, $120)
 
 Spritemaps_Botwoon_MouthOpen_Priority2_AimingUp_FacingLeft:
-    dw $0002,$81F8                                                       ;B3E395;
-    db $F8                                                               ;B3E399;
-    dw $2126,$81F8                                                       ;B3E39A;
-    db $E8                                                               ;B3E39E;
-    dw $2124                                                             ;B3E39F;
+    dw $0002                                                             ;B3E395;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $126)
+    %spritemapEntry(1, $1F8, $E8, 0, 0, 2, 0, $124)
 
 Spritemaps_Botwoon_MouthOpen_Priority2_AimingUpLeft:
-    dw $0003,$01F0                                                       ;B3E3A1;
-    db $00                                                               ;B3E3A5;
-    dw $21A6,$81F8                                                       ;B3E3A6;
-    db $F8                                                               ;B3E3AA;
-    dw $2186,$81F0                                                       ;B3E3AB;
-    db $F0                                                               ;B3E3AF;
-    dw $2184                                                             ;B3E3B0;
+    dw $0003                                                             ;B3E3A1;
+    %spritemapEntry(0, $1F0, $00, 0, 0, 2, 0, $1A6)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $186)
+    %spritemapEntry(1, $1F0, $F0, 0, 0, 2, 0, $184)
 
 Spritemaps_Botwoon_MouthOpen_Priority2_AimingLeft:
-    dw $0002,$81FC                                                       ;B3E3B2;
-    db $F8                                                               ;B3E3B6;
-    dw $2182,$81EC                                                       ;B3E3B7;
-    db $F8                                                               ;B3E3BB;
-    dw $2180                                                             ;B3E3BC;
+    dw $0002                                                             ;B3E3B2;
+    %spritemapEntry(1, $1FC, $F8, 0, 0, 2, 0, $182)
+    %spritemapEntry(1, $1EC, $F8, 0, 0, 2, 0, $180)
 
 Spritemaps_Botwoon_MouthOpen_Priority2_AimingDownLeft:
-    dw $0003,$0000                                                       ;B3E3BE;
-    db $09                                                               ;B3E3C2;
-    dw $21A7,$81F8                                                       ;B3E3C3;
-    db $F9                                                               ;B3E3C7;
-    dw $218A,$81F0                                                       ;B3E3C8;
-    db $01                                                               ;B3E3CC;
-    dw $2188                                                             ;B3E3CD;
+    dw $0003                                                             ;B3E3BE;
+    %spritemapEntry(0, $00, $09, 0, 0, 2, 0, $1A7)
+    %spritemapEntry(1, $1F8, $F9, 0, 0, 2, 0, $18A)
+    %spritemapEntry(1, $1F0, $01, 0, 0, 2, 0, $188)
 
 Spritemaps_Botwoon_MouthOpen_Priority2_AimingDown_FacingLeft:
-    dw $0002,$81F8                                                       ;B3E3CF;
-    db $09                                                               ;B3E3D3;
-    dw $218E,$81F8                                                       ;B3E3D4;
-    db $F9                                                               ;B3E3D8;
-    dw $218C                                                             ;B3E3D9;
+    dw $0002                                                             ;B3E3CF;
+    %spritemapEntry(1, $1F8, $09, 0, 0, 2, 0, $18E)
+    %spritemapEntry(1, $1F8, $F9, 0, 0, 2, 0, $18C)
 
 Spritemaps_Botwoon_MouthOpen_Priority2_AimDown_FacingRight:
-    dw $0002,$81F8                                                       ;B3E3DB;
-    db $09                                                               ;B3E3DF;
-    dw $618E,$81F8                                                       ;B3E3E0;
-    db $F9                                                               ;B3E3E4;
-    dw $618C                                                             ;B3E3E5;
+    dw $0002                                                             ;B3E3DB;
+    %spritemapEntry(1, $1F8, $09, 0, 1, 2, 0, $18E)
+    %spritemapEntry(1, $1F8, $F9, 0, 1, 2, 0, $18C)
 
 Spritemaps_Botwoon_MouthOpen_Priority2_AimingDownRight:
-    dw $0003,$01F8                                                       ;B3E3E7;
-    db $09                                                               ;B3E3EB;
-    dw $61A7,$81F8                                                       ;B3E3EC;
-    db $F9                                                               ;B3E3F0;
-    dw $618A,$8000                                                       ;B3E3F1;
-    db $01                                                               ;B3E3F5;
-    dw $6188                                                             ;B3E3F6;
+    dw $0003                                                             ;B3E3E7;
+    %spritemapEntry(0, $1F8, $09, 0, 1, 2, 0, $1A7)
+    %spritemapEntry(1, $1F8, $F9, 0, 1, 2, 0, $18A)
+    %spritemapEntry(1, $00, $01, 0, 1, 2, 0, $188)
 
 Spritemaps_Botwoon_MouthOpen_Priority2_AimingRight:
-    dw $0002,$81F4                                                       ;B3E3F8;
-    db $F8                                                               ;B3E3FC;
-    dw $6182,$8004                                                       ;B3E3FD;
-    db $F8                                                               ;B3E401;
-    dw $6180                                                             ;B3E402;
+    dw $0002                                                             ;B3E3F8;
+    %spritemapEntry(1, $1F4, $F8, 0, 1, 2, 0, $182)
+    %spritemapEntry(1, $04, $F8, 0, 1, 2, 0, $180)
 
 Spritemaps_Botwoon_MouthOpen_Priority2_AimingUpRight:
-    dw $0003,$0008                                                       ;B3E404;
-    db $00                                                               ;B3E408;
-    dw $61A6,$81F8                                                       ;B3E409;
-    db $F8                                                               ;B3E40D;
-    dw $6186,$8000                                                       ;B3E40E;
-    db $F0                                                               ;B3E412;
-    dw $6184                                                             ;B3E413;
+    dw $0003                                                             ;B3E404;
+    %spritemapEntry(0, $08, $00, 0, 1, 2, 0, $1A6)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $186)
+    %spritemapEntry(1, $00, $F0, 0, 1, 2, 0, $184)
 
 Spritemaps_Botwoon_MouthOpen_Priority2_AimingUp_FacingRight:
-    dw $0002,$81F8                                                       ;B3E415;
-    db $F8                                                               ;B3E419;
-    dw $6126,$81F8                                                       ;B3E41A;
-    db $E8                                                               ;B3E41E;
-    dw $6124                                                             ;B3E41F;
+    dw $0002                                                             ;B3E415;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 2, 0, $126)
+    %spritemapEntry(1, $1F8, $E8, 0, 1, 2, 0, $124)
 
 Spritemaps_Botwoon_MouthClosed_Priority0_AimingUp_FacingLeft:
-    dw $0002,$81F8                                                       ;B3E421;
-    db $F7                                                               ;B3E425;
-    dw $0122,$81F8                                                       ;B3E426;
-    db $E7                                                               ;B3E42A;
-    dw $0120                                                             ;B3E42B;
+    dw $0002                                                             ;B3E421;
+    %spritemapEntry(1, $1F8, $F7, 0, 0, 0, 0, $122)
+    %spritemapEntry(1, $1F8, $E7, 0, 0, 0, 0, $120)
 
 Spritemaps_Botwoon_MouthClosed_Priority0_AimingUpLeft:
-    dw $0002,$81F8                                                       ;B3E42D;
-    db $F6                                                               ;B3E431;
-    dw $0106,$81F0                                                       ;B3E432;
-    db $EE                                                               ;B3E436;
-    dw $0104                                                             ;B3E437;
+    dw $0002                                                             ;B3E42D;
+    %spritemapEntry(1, $1F8, $F6, 0, 0, 0, 0, $106)
+    %spritemapEntry(1, $1F0, $EE, 0, 0, 0, 0, $104)
 
 Spritemaps_Botwoon_MouthClosed_Priority0_AimingLeft:
-    dw $0002,$81FC                                                       ;B3E439;
-    db $F8                                                               ;B3E43D;
-    dw $0102,$81EC                                                       ;B3E43E;
-    db $F8                                                               ;B3E442;
-    dw $0100                                                             ;B3E443;
+    dw $0002                                                             ;B3E439;
+    %spritemapEntry(1, $1FC, $F8, 0, 0, 0, 0, $102)
+    %spritemapEntry(1, $1EC, $F8, 0, 0, 0, 0, $100)
 
 Spritemaps_Botwoon_MouthClosed_Priority0_AimingDownLeft:
-    dw $0002,$81F8                                                       ;B3E445;
-    db $F9                                                               ;B3E449;
-    dw $010A,$81F0                                                       ;B3E44A;
-    db $01                                                               ;B3E44E;
-    dw $0108                                                             ;B3E44F;
+    dw $0002                                                             ;B3E445;
+    %spritemapEntry(1, $1F8, $F9, 0, 0, 0, 0, $10A)
+    %spritemapEntry(1, $1F0, $01, 0, 0, 0, 0, $108)
 
 Spritemaps_Botwoon_MouthClosed_Priority0_AimDown_FacingLeft:
-    dw $0002,$81F8                                                       ;B3E451;
-    db $09                                                               ;B3E455;
-    dw $010E,$81F8                                                       ;B3E456;
-    db $F9                                                               ;B3E45A;
-    dw $010C                                                             ;B3E45B;
+    dw $0002                                                             ;B3E451;
+    %spritemapEntry(1, $1F8, $09, 0, 0, 0, 0, $10E)
+    %spritemapEntry(1, $1F8, $F9, 0, 0, 0, 0, $10C)
 
 Spritemaps_Botwoon_MouthClosed_Priority0_AimDown_FacingRight:
-    dw $0002,$81F8                                                       ;B3E45D;
-    db $09                                                               ;B3E461;
-    dw $410E,$81F8                                                       ;B3E462;
-    db $F9                                                               ;B3E466;
-    dw $410C                                                             ;B3E467;
+    dw $0002                                                             ;B3E45D;
+    %spritemapEntry(1, $1F8, $09, 0, 1, 0, 0, $10E)
+    %spritemapEntry(1, $1F8, $F9, 0, 1, 0, 0, $10C)
 
 Spritemaps_Botwoon_MouthClosed_Priority0_AimingDownRight:
-    dw $0002,$8000                                                       ;B3E469;
-    db $01                                                               ;B3E46D;
-    dw $4108,$81F8                                                       ;B3E46E;
-    db $F9                                                               ;B3E472;
-    dw $410A                                                             ;B3E473;
+    dw $0002                                                             ;B3E469;
+    %spritemapEntry(1, $00, $01, 0, 1, 0, 0, $108)
+    %spritemapEntry(1, $1F8, $F9, 0, 1, 0, 0, $10A)
 
 Spritemaps_Botwoon_MouthClosed_Priority0_AimingRight:
-    dw $0002,$81F4                                                       ;B3E475;
-    db $F8                                                               ;B3E479;
-    dw $4102,$8004                                                       ;B3E47A;
-    db $F8                                                               ;B3E47E;
-    dw $4100                                                             ;B3E47F;
+    dw $0002                                                             ;B3E475;
+    %spritemapEntry(1, $1F4, $F8, 0, 1, 0, 0, $102)
+    %spritemapEntry(1, $04, $F8, 0, 1, 0, 0, $100)
 
 Spritemaps_Botwoon_MouthClosed_Priority0_AimingUpRight:
-    dw $0002,$8000                                                       ;B3E481;
-    db $EE                                                               ;B3E485;
-    dw $4104,$81F8                                                       ;B3E486;
-    db $F6                                                               ;B3E48A;
-    dw $4106                                                             ;B3E48B;
+    dw $0002                                                             ;B3E481;
+    %spritemapEntry(1, $00, $EE, 0, 1, 0, 0, $104)
+    %spritemapEntry(1, $1F8, $F6, 0, 1, 0, 0, $106)
 
 Spritemaps_Botwoon_MouthClosed_Priority0_AimUp_FacingRight:
-    dw $0002,$81F8                                                       ;B3E48D;
-    db $F7                                                               ;B3E491;
-    dw $4122,$81F8                                                       ;B3E492;
-    db $E7                                                               ;B3E496;
-    dw $4120                                                             ;B3E497;
+    dw $0002                                                             ;B3E48D;
+    %spritemapEntry(1, $1F8, $F7, 0, 1, 0, 0, $122)
+    %spritemapEntry(1, $1F8, $E7, 0, 1, 0, 0, $120)
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_Spritemaps_Botwoon_MouthOpen_Prio0_UpFaceLeft_B3E499:
-    dw $0002,$81F8                                                       ;B3E499;
-    db $F8                                                               ;B3E49D;
-    dw $0126,$81F8                                                       ;B3E49E;
-    db $E8                                                               ;B3E4A2;
-    dw $0124                                                             ;B3E4A3;
+    dw $0002                                                             ;B3E499;
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 0, 0, $126)
+    %spritemapEntry(1, $1F8, $E8, 0, 0, 0, 0, $124)
 
 UNUSED_Spritemaps_Botwoon_MouthOpen_Prio0_UpLeft_B3E4A5:
-    dw $0003,$01F0                                                       ;B3E4A5;
-    db $00                                                               ;B3E4A9;
-    dw $01A6,$81F8                                                       ;B3E4AA;
-    db $F8                                                               ;B3E4AE;
-    dw $0186,$81F0                                                       ;B3E4AF;
-    db $F0                                                               ;B3E4B3;
-    dw $0184                                                             ;B3E4B4;
+    dw $0003                                                             ;B3E4A5;
+    %spritemapEntry(0, $1F0, $00, 0, 0, 0, 0, $1A6)
+    %spritemapEntry(1, $1F8, $F8, 0, 0, 0, 0, $186)
+    %spritemapEntry(1, $1F0, $F0, 0, 0, 0, 0, $184)
 
 UNUSED_Spritemaps_Botwoon_MouthOpen_Prio0_Left_B3E4B6:
-    dw $0002,$81FC                                                       ;B3E4B6;
-    db $F8                                                               ;B3E4BA;
-    dw $0182,$81EC                                                       ;B3E4BB;
-    db $F8                                                               ;B3E4BF;
-    dw $0180                                                             ;B3E4C0;
+    dw $0002                                                             ;B3E4B6;
+    %spritemapEntry(1, $1FC, $F8, 0, 0, 0, 0, $182)
+    %spritemapEntry(1, $1EC, $F8, 0, 0, 0, 0, $180)
 
 UNUSED_Spritemaps_Botwoon_MouthOpen_Prio0_DownLeft_B3E4C2:
-    dw $0003,$0000                                                       ;B3E4C2;
-    db $09                                                               ;B3E4C6;
-    dw $01A7,$81F8                                                       ;B3E4C7;
-    db $F9                                                               ;B3E4CB;
-    dw $018A,$81F0                                                       ;B3E4CC;
-    db $01                                                               ;B3E4D0;
-    dw $0188                                                             ;B3E4D1;
+    dw $0003                                                             ;B3E4C2;
+    %spritemapEntry(0, $00, $09, 0, 0, 0, 0, $1A7)
+    %spritemapEntry(1, $1F8, $F9, 0, 0, 0, 0, $18A)
+    %spritemapEntry(1, $1F0, $01, 0, 0, 0, 0, $188)
 
 UNUSED_Spritemap_Botwoon_MouthOpen_Prio0_DownFaceLeft_B3E4D3:
-    dw $0002,$81F8                                                       ;B3E4D3;
-    db $09                                                               ;B3E4D7;
-    dw $018E,$81F8                                                       ;B3E4D8;
-    db $F9                                                               ;B3E4DC;
-    dw $018C                                                             ;B3E4DD;
+    dw $0002                                                             ;B3E4D3;
+    %spritemapEntry(1, $1F8, $09, 0, 0, 0, 0, $18E)
+    %spritemapEntry(1, $1F8, $F9, 0, 0, 0, 0, $18C)
 
 UNUSED_Spritemap_Botwoon_MouthOpen_Pri0_DownFaceRight_B3E4DF:
-    dw $0002,$81F8                                                       ;B3E4DF;
-    db $09                                                               ;B3E4E3;
-    dw $418E,$81F8                                                       ;B3E4E4;
-    db $F9                                                               ;B3E4E8;
-    dw $418C                                                             ;B3E4E9;
+    dw $0002                                                             ;B3E4DF;
+    %spritemapEntry(1, $1F8, $09, 0, 1, 0, 0, $18E)
+    %spritemapEntry(1, $1F8, $F9, 0, 1, 0, 0, $18C)
 
 UNUSED_Spritemaps_Botwoon_MouthOpen_Prio0_DownRight_B3E4EB:
-    dw $0003,$01F8                                                       ;B3E4EB;
-    db $09                                                               ;B3E4EF;
-    dw $41A7,$81F8                                                       ;B3E4F0;
-    db $F9                                                               ;B3E4F4;
-    dw $418A,$8000                                                       ;B3E4F5;
-    db $01                                                               ;B3E4F9;
-    dw $4188                                                             ;B3E4FA;
+    dw $0003                                                             ;B3E4EB;
+    %spritemapEntry(0, $1F8, $09, 0, 1, 0, 0, $1A7)
+    %spritemapEntry(1, $1F8, $F9, 0, 1, 0, 0, $18A)
+    %spritemapEntry(1, $00, $01, 0, 1, 0, 0, $188)
 
 UNUSED_Spritemaps_Botwoon_MouthOpen_Prio0_Right_B3E4FC:
-    dw $0002,$81F4                                                       ;B3E4FC;
-    db $F8                                                               ;B3E500;
-    dw $4182,$8004                                                       ;B3E501;
-    db $F8                                                               ;B3E505;
-    dw $4180                                                             ;B3E506;
+    dw $0002                                                             ;B3E4FC;
+    %spritemapEntry(1, $1F4, $F8, 0, 1, 0, 0, $182)
+    %spritemapEntry(1, $04, $F8, 0, 1, 0, 0, $180)
 
 UNUSED_Spritemaps_Botwoon_MouthOpen_Prio0_UpRight_B3E508:
-    dw $0003,$0008                                                       ;B3E508;
-    db $00                                                               ;B3E50C;
-    dw $41A6,$81F8                                                       ;B3E50D;
-    db $F8                                                               ;B3E511;
-    dw $4186,$8000                                                       ;B3E512;
-    db $F0                                                               ;B3E516;
-    dw $4184                                                             ;B3E517;
+    dw $0003                                                             ;B3E508;
+    %spritemapEntry(0, $08, $00, 0, 1, 0, 0, $1A6)
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 0, 0, $186)
+    %spritemapEntry(1, $00, $F0, 0, 1, 0, 0, $184)
 
 UNUSED_Spritemaps_Botwoon_MouthOpen_Prio0_UpFaceRight_B3E519:
-    dw $0002,$81F8                                                       ;B3E519;
-    db $F8                                                               ;B3E51D;
-    dw $4126,$81F8                                                       ;B3E51E;
-    db $E8                                                               ;B3E522;
-    dw $4124                                                             ;B3E523;
+    dw $0002                                                             ;B3E519;
+    %spritemapEntry(1, $1F8, $F8, 0, 1, 0, 0, $126)
+    %spritemapEntry(1, $1F8, $E8, 0, 1, 0, 0, $124)
 endif ; !FEATURE_KEEP_UNREFERENCED
+
 
 Palette_EtecoonEscape:
     dw $3800,$5F97,$56F2,$2987,$00A0,$6355,$4AB0,$3A0B                   ;B3E525;
@@ -5377,26 +5133,18 @@ InstList_EtecoonEscape_RunningLeft_LowTide_0:
     dw InstList_EtecoonEscape_RunningLeft_HighTide                       ;B3E558;
 
 InstList_EtecoonEscape_RunningLeft_LowTide_1:
-    dw $0005                                                             ;B3E55A;
-    dw Spritemaps_EtecoonEscape_0                                        ;B3E55C;
-    dw $0005                                                             ;B3E55E;
-    dw Spritemaps_EtecoonEscape_1                                        ;B3E560;
-    dw $0005                                                             ;B3E562;
-    dw Spritemaps_EtecoonEscape_2                                        ;B3E564;
-    dw $0005                                                             ;B3E566;
-    dw Spritemaps_EtecoonEscape_1                                        ;B3E568;
+    dw $0005,Spritemaps_EtecoonEscape_0                                  ;B3E55A;
+    dw $0005,Spritemaps_EtecoonEscape_1                                  ;B3E55E;
+    dw $0005,Spritemaps_EtecoonEscape_2                                  ;B3E562;
+    dw $0005,Spritemaps_EtecoonEscape_1                                  ;B3E566;
     dw Instruction_Common_GotoY                                          ;B3E56A;
     dw InstList_EtecoonEscape_RunningLeft_LowTide_1                      ;B3E56C;
 
 InstList_EtecoonEscape_RunningLeft_HighTide:
-    dw $0003                                                             ;B3E56E;
-    dw Spritemaps_EtecoonEscape_0                                        ;B3E570;
-    dw $0003                                                             ;B3E572;
-    dw Spritemaps_EtecoonEscape_1                                        ;B3E574;
-    dw $0003                                                             ;B3E576;
-    dw Spritemaps_EtecoonEscape_2                                        ;B3E578;
-    dw $0003                                                             ;B3E57A;
-    dw Spritemaps_EtecoonEscape_1                                        ;B3E57C;
+    dw $0003,Spritemaps_EtecoonEscape_0                                  ;B3E56E;
+    dw $0003,Spritemaps_EtecoonEscape_1                                  ;B3E572;
+    dw $0003,Spritemaps_EtecoonEscape_2                                  ;B3E576;
+    dw $0003,Spritemaps_EtecoonEscape_1                                  ;B3E57A;
     dw Instruction_Common_GotoY                                          ;B3E57E;
     dw InstList_EtecoonEscape_RunningLeft_HighTide                       ;B3E580;
 
@@ -5405,26 +5153,18 @@ InstList_EtecoonEscape_RunningRight_LowTide_0:
     dw InstList_EtecoonEscape_RunningRight_HighTide                      ;B3E584;
 
 InstList_EtecoonEscape_RunningRight_LowTide_1:
-    dw $0006                                                             ;B3E586;
-    dw Spritemaps_EtecoonEscape_3                                        ;B3E588;
-    dw $0006                                                             ;B3E58A;
-    dw Spritemaps_EtecoonEscape_4                                        ;B3E58C;
-    dw $0006                                                             ;B3E58E;
-    dw Spritemaps_EtecoonEscape_5                                        ;B3E590;
-    dw $0006                                                             ;B3E592;
-    dw Spritemaps_EtecoonEscape_4                                        ;B3E594;
+    dw $0006,Spritemaps_EtecoonEscape_3                                  ;B3E586;
+    dw $0006,Spritemaps_EtecoonEscape_4                                  ;B3E58A;
+    dw $0006,Spritemaps_EtecoonEscape_5                                  ;B3E58E;
+    dw $0006,Spritemaps_EtecoonEscape_4                                  ;B3E592;
     dw Instruction_Common_GotoY                                          ;B3E596;
     dw InstList_EtecoonEscape_RunningRight_LowTide_1                     ;B3E598;
 
 InstList_EtecoonEscape_RunningRight_HighTide:
-    dw $0003                                                             ;B3E59A;
-    dw Spritemaps_EtecoonEscape_3                                        ;B3E59C;
-    dw $0003                                                             ;B3E59E;
-    dw Spritemaps_EtecoonEscape_4                                        ;B3E5A0;
-    dw $0003                                                             ;B3E5A2;
-    dw Spritemaps_EtecoonEscape_5                                        ;B3E5A4;
-    dw $0003                                                             ;B3E5A6;
-    dw Spritemaps_EtecoonEscape_4                                        ;B3E5A8;
+    dw $0003,Spritemaps_EtecoonEscape_3                                  ;B3E59A;
+    dw $0003,Spritemaps_EtecoonEscape_4                                  ;B3E59E;
+    dw $0003,Spritemaps_EtecoonEscape_5                                  ;B3E5A2;
+    dw $0003,Spritemaps_EtecoonEscape_4                                  ;B3E5A6;
     dw Instruction_Common_GotoY                                          ;B3E5AA;
     dw InstList_EtecoonEscape_RunningRight_HighTide                      ;B3E5AC;
 
@@ -5433,54 +5173,38 @@ InstList_EtecoonEscape_RunningForEscape_0:
     dw Function_EtecoonEscape_RunningForEscape                           ;B3E5B0;
 
 InstList_EtecoonEscape_RunningForEscape_1:
-    dw $0003                                                             ;B3E5B2;
-    dw Spritemaps_EtecoonEscape_3                                        ;B3E5B4;
-    dw $0003                                                             ;B3E5B6;
-    dw Spritemaps_EtecoonEscape_4                                        ;B3E5B8;
-    dw $0003                                                             ;B3E5BA;
-    dw Spritemaps_EtecoonEscape_5                                        ;B3E5BC;
-    dw $0003                                                             ;B3E5BE;
-    dw Spritemaps_EtecoonEscape_4                                        ;B3E5C0;
+    dw $0003,Spritemaps_EtecoonEscape_3                                  ;B3E5B2;
+    dw $0003,Spritemaps_EtecoonEscape_4                                  ;B3E5B6;
+    dw $0003,Spritemaps_EtecoonEscape_5                                  ;B3E5BA;
+    dw $0003,Spritemaps_EtecoonEscape_4                                  ;B3E5BE;
     dw Instruction_Common_GotoY                                          ;B3E5C2;
     dw InstList_EtecoonEscape_RunningForEscape_1                         ;B3E5C4;
 
 InstList_EtecoonEscape_Stationary:
-    dw $0040                                                             ;B3E5C6;
-    dw Spritemaps_EtecoonEscape_E                                        ;B3E5C8;
-    dw $0008                                                             ;B3E5CA;
-    dw Spritemaps_EtecoonEscape_F                                        ;B3E5CC;
-    dw $0040                                                             ;B3E5CE;
-    dw Spritemaps_EtecoonEscape_11                                       ;B3E5D0;
-    dw $0008                                                             ;B3E5D2;
-    dw Spritemaps_EtecoonEscape_10                                       ;B3E5D4;
+    dw $0040,Spritemaps_EtecoonEscape_E                                  ;B3E5C6;
+    dw $0008,Spritemaps_EtecoonEscape_F                                  ;B3E5CA;
+    dw $0040,Spritemaps_EtecoonEscape_11                                 ;B3E5CE;
+    dw $0008,Spritemaps_EtecoonEscape_10                                 ;B3E5D2;
     dw Instruction_Common_GotoY                                          ;B3E5D6;
     dw InstList_EtecoonEscape_Stationary                                 ;B3E5D8;
 
 InstList_EtecoonEscape_ExpressGratitudeThenEscape_0:
     dw Instruction_Common_SetEnemy0FB2ToRTS                              ;B3E5DA;
-    dw Instruction_Common_TimerInY                                       ;B3E5DC;
-    dw $0008                                                             ;B3E5DE;
+    dw Instruction_Common_TimerInY,$0008                                 ;B3E5DC;
 
 InstList_EtecoonEscape_ExpressGratitudeThenEscape_1:
-    dw $0008                                                             ;B3E5E0;
-    dw Spritemaps_EtecoonEscape_0                                        ;B3E5E2;
-    dw Instruction_EtecoonEscape_XPositionPlusY                          ;B3E5E4;
-    dw $FFFD,$0008                                                       ;B3E5E6;
-    dw Spritemaps_EtecoonEscape_1                                        ;B3E5EA;
-    dw Instruction_EtecoonEscape_XPositionPlusY                          ;B3E5EC;
-    dw $FFFD,$0008                                                       ;B3E5EE;
-    dw Spritemaps_EtecoonEscape_2                                        ;B3E5F2;
-    dw Instruction_EtecoonEscape_XPositionPlusY                          ;B3E5F4;
-    dw $FFFD,$0008                                                       ;B3E5F6;
-    dw Spritemaps_EtecoonEscape_1                                        ;B3E5FA;
-    dw Instruction_EtecoonEscape_XPositionPlusY                          ;B3E5FC;
-    dw $FFFD                                                             ;B3E5FE;
+    dw $0008,Spritemaps_EtecoonEscape_0                                  ;B3E5E0;
+    dw Instruction_EtecoonEscape_XPositionPlusY,$FFFD                    ;B3E5E4;
+    dw $0008,Spritemaps_EtecoonEscape_1                                  ;B3E5E6;
+    dw Instruction_EtecoonEscape_XPositionPlusY,$FFFD                    ;B3E5EC;
+    dw $0008,Spritemaps_EtecoonEscape_2                                  ;B3E5EE;
+    dw Instruction_EtecoonEscape_XPositionPlusY,$FFFD                    ;B3E5F4;
+    dw $0008,Spritemaps_EtecoonEscape_1                                  ;B3E5F6;
+    dw Instruction_EtecoonEscape_XPositionPlusY,$FFFD                    ;B3E5FC;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;B3E600;
     dw InstList_EtecoonEscape_ExpressGratitudeThenEscape_1               ;B3E602;
-    dw $0040                                                             ;B3E604;
-    dw Spritemaps_EtecoonEscape_E                                        ;B3E606;
-    dw $0008                                                             ;B3E608;
-    dw Spritemaps_EtecoonEscape_F                                        ;B3E60A;
+    dw $0040,Spritemaps_EtecoonEscape_E                                  ;B3E604;
+    dw $0008,Spritemaps_EtecoonEscape_F                                  ;B3E608;
     dw Instruction_Common_GotoY                                          ;B3E60C;
     dw InstList_EtecoonEscape_RunningForEscape_0                         ;B3E60E;
 
@@ -5496,39 +5220,27 @@ Instruction_EtecoonEscape_XPositionPlusY:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_EtecoonEscape_B3E61D:
-    dw $0001                                                             ;B3E61D;
-    dw Spritemaps_EtecoonEscape_6                                        ;B3E61F;
+    dw $0001,Spritemaps_EtecoonEscape_6                                  ;B3E61D;
     dw Instruction_Common_Sleep                                          ;B3E621;
 
 UNUSED_InstList_EtecoonEscape_B3E623:
-    dw $000C                                                             ;B3E623;
-    dw Spritemaps_EtecoonEscape_7                                        ;B3E625;
-    dw $000C                                                             ;B3E627;
-    dw Spritemaps_EtecoonEscape_8                                        ;B3E629;
-    dw $0006                                                             ;B3E62B;
-    dw Spritemaps_EtecoonEscape_9                                        ;B3E62D;
-    dw $000C                                                             ;B3E62F;
-    dw Spritemaps_EtecoonEscape_8                                        ;B3E631;
-    dw $000C                                                             ;B3E633;
-    dw Spritemaps_EtecoonEscape_7                                        ;B3E635;
+    dw $000C,Spritemaps_EtecoonEscape_7                                  ;B3E623;
+    dw $000C,Spritemaps_EtecoonEscape_8                                  ;B3E627;
+    dw $0006,Spritemaps_EtecoonEscape_9                                  ;B3E62B;
+    dw $000C,Spritemaps_EtecoonEscape_8                                  ;B3E62F;
+    dw $000C,Spritemaps_EtecoonEscape_7                                  ;B3E633;
     dw Instruction_Common_Sleep                                          ;B3E637;
 
 UNUSED_InstList_EtecoonEscape_B3E639:
-    dw $0001                                                             ;B3E639;
-    dw Spritemaps_EtecoonEscape_A                                        ;B3E63B;
+    dw $0001,Spritemaps_EtecoonEscape_A                                  ;B3E639;
     dw Instruction_Common_Sleep                                          ;B3E63D;
 
 UNUSED_InstList_EtecoonEscape_B3E63F:
-    dw $000C                                                             ;B3E63F;
-    dw Spritemaps_EtecoonEscape_B                                        ;B3E641;
-    dw $000C                                                             ;B3E643;
-    dw Spritemaps_EtecoonEscape_C                                        ;B3E645;
-    dw $0006                                                             ;B3E647;
-    dw Spritemaps_EtecoonEscape_D                                        ;B3E649;
-    dw $000C                                                             ;B3E64B;
-    dw Spritemaps_EtecoonEscape_C                                        ;B3E64D;
-    dw $000C                                                             ;B3E64F;
-    dw Spritemaps_EtecoonEscape_B                                        ;B3E651;
+    dw $000C,Spritemaps_EtecoonEscape_B                                  ;B3E63F;
+    dw $000C,Spritemaps_EtecoonEscape_C                                  ;B3E643;
+    dw $0006,Spritemaps_EtecoonEscape_D                                  ;B3E647;
+    dw $000C,Spritemaps_EtecoonEscape_C                                  ;B3E64B;
+    dw $000C,Spritemaps_EtecoonEscape_B                                  ;B3E64F;
     dw Instruction_Common_Sleep                                          ;B3E653;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -5633,6 +5345,7 @@ InitAI_EtecoonEscape:
 
 
 .XPosition:
+; Indexed by [enemy parameter 1]
     dw $0080,$00A0,$00E8                                                 ;B3E718;
 
 .YPosition:
@@ -5652,310 +5365,199 @@ InitAI_EtecoonEscape:
     dw $FE00,$0280,$0000                                                 ;B3E730;
 
 Spritemaps_EtecoonEscape_0:
-    dw $0003,$01F2                                                       ;B3E736;
-    db $FF                                                               ;B3E73A;
-    dw $3329,$C3F5                                                       ;B3E73B;
-    db $EF                                                               ;B3E73F;
-    dw $3300,$C3FA                                                       ;B3E740;
-    db $F7                                                               ;B3E744;
-    dw $3302                                                             ;B3E745;
+    dw $0003                                                             ;B3E736;
+    %spritemapEntry(0, $1F2, $FF, 0, 0, 3, 1, $129)
+    %spritemapEntry(1, $43F5, $EF, 0, 0, 3, 1, $100)
+    %spritemapEntry(1, $43FA, $F7, 0, 0, 3, 1, $102)
 
 Spritemaps_EtecoonEscape_1:
-    dw $0002,$C3F5                                                       ;B3E747;
-    db $F0                                                               ;B3E74B;
-    dw $3300,$C3FA                                                       ;B3E74C;
-    db $F8                                                               ;B3E750;
-    dw $3304                                                             ;B3E751;
+    dw $0002                                                             ;B3E747;
+    %spritemapEntry(1, $43F5, $F0, 0, 0, 3, 1, $100)
+    %spritemapEntry(1, $43FA, $F8, 0, 0, 3, 1, $104)
 
 Spritemaps_EtecoonEscape_2:
-    dw $0002,$C3F5                                                       ;B3E753;
-    db $F1                                                               ;B3E757;
-    dw $3300,$C3FA                                                       ;B3E758;
-    db $F9                                                               ;B3E75C;
-    dw $3306                                                             ;B3E75D;
+    dw $0002                                                             ;B3E753;
+    %spritemapEntry(1, $43F5, $F1, 0, 0, 3, 1, $100)
+    %spritemapEntry(1, $43FA, $F9, 0, 0, 3, 1, $106)
 
 Spritemaps_EtecoonEscape_3:
-    dw $0003,$0006                                                       ;B3E75F;
-    db $FF                                                               ;B3E763;
-    dw $7329,$C3FB                                                       ;B3E764;
-    db $EF                                                               ;B3E768;
-    dw $7300,$C3F6                                                       ;B3E769;
-    db $F7                                                               ;B3E76D;
-    dw $7302                                                             ;B3E76E;
+    dw $0003                                                             ;B3E75F;
+    %spritemapEntry(0, $06, $FF, 0, 1, 3, 1, $129)
+    %spritemapEntry(1, $43FB, $EF, 0, 1, 3, 1, $100)
+    %spritemapEntry(1, $43F6, $F7, 0, 1, 3, 1, $102)
 
 Spritemaps_EtecoonEscape_4:
-    dw $0002,$C3FB                                                       ;B3E770;
-    db $F0                                                               ;B3E774;
-    dw $7300,$C3F6                                                       ;B3E775;
-    db $F8                                                               ;B3E779;
-    dw $7304                                                             ;B3E77A;
+    dw $0002                                                             ;B3E770;
+    %spritemapEntry(1, $43FB, $F0, 0, 1, 3, 1, $100)
+    %spritemapEntry(1, $43F6, $F8, 0, 1, 3, 1, $104)
 
 Spritemaps_EtecoonEscape_5:
-    dw $0002,$C3FB                                                       ;B3E77C;
-    db $F1                                                               ;B3E780;
-    dw $7300,$C3F6                                                       ;B3E781;
-    db $F9                                                               ;B3E785;
-    dw $7306                                                             ;B3E786;
+    dw $0002                                                             ;B3E77C;
+    %spritemapEntry(1, $43FB, $F1, 0, 1, 3, 1, $100)
+    %spritemapEntry(1, $43F6, $F9, 0, 1, 3, 1, $106)
 
 Spritemaps_EtecoonEscape_6:
-    dw $0007,$0001                                                       ;B3E788;
-    db $FE                                                               ;B3E78C;
-    dw $7322,$01F8                                                       ;B3E78D;
-    db $FE                                                               ;B3E791;
-    dw $3322,$C3F8                                                       ;B3E792;
-    db $F2                                                               ;B3E796;
-    dw $730C,$01F9                                                       ;B3E797;
-    db $01                                                               ;B3E79B;
-    dw $3324,$0000                                                       ;B3E79C;
-    db $01                                                               ;B3E7A0;
-    dw $7324,$01F9                                                       ;B3E7A1;
-    db $FA                                                               ;B3E7A5;
-    dw $3320,$0000                                                       ;B3E7A6;
-    db $FA                                                               ;B3E7AA;
-    dw $7320                                                             ;B3E7AB;
+    dw $0007                                                             ;B3E788;
+    %spritemapEntry(0, $01, $FE, 0, 1, 3, 1, $122)
+    %spritemapEntry(0, $1F8, $FE, 0, 0, 3, 1, $122)
+    %spritemapEntry(1, $43F8, $F2, 0, 1, 3, 1, $10C)
+    %spritemapEntry(0, $1F9, $01, 0, 0, 3, 1, $124)
+    %spritemapEntry(0, $00, $01, 0, 1, 3, 1, $124)
+    %spritemapEntry(0, $1F9, $FA, 0, 0, 3, 1, $120)
+    %spritemapEntry(0, $00, $FA, 0, 1, 3, 1, $120)
 
 Spritemaps_EtecoonEscape_7:
-    dw $0007,$01F7                                                       ;B3E7AD;
-    db $FC                                                               ;B3E7B1;
-    dw $3322,$0002                                                       ;B3E7B2;
-    db $FC                                                               ;B3E7B6;
-    dw $7322,$C3F8                                                       ;B3E7B7;
-    db $F1                                                               ;B3E7BB;
-    dw $730C,$01F9                                                       ;B3E7BC;
-    db $01                                                               ;B3E7C0;
-    dw $3323,$0000                                                       ;B3E7C1;
-    db $01                                                               ;B3E7C5;
-    dw $7323,$01F9                                                       ;B3E7C6;
-    db $FA                                                               ;B3E7CA;
-    dw $3320,$0000                                                       ;B3E7CB;
-    db $FA                                                               ;B3E7CF;
-    dw $7320                                                             ;B3E7D0;
+    dw $0007                                                             ;B3E7AD;
+    %spritemapEntry(0, $1F7, $FC, 0, 0, 3, 1, $122)
+    %spritemapEntry(0, $02, $FC, 0, 1, 3, 1, $122)
+    %spritemapEntry(1, $43F8, $F1, 0, 1, 3, 1, $10C)
+    %spritemapEntry(0, $1F9, $01, 0, 0, 3, 1, $123)
+    %spritemapEntry(0, $00, $01, 0, 1, 3, 1, $123)
+    %spritemapEntry(0, $1F9, $FA, 0, 0, 3, 1, $120)
+    %spritemapEntry(0, $00, $FA, 0, 1, 3, 1, $120)
 
 Spritemaps_EtecoonEscape_8:
-    dw $0007,$01F9                                                       ;B3E7D2;
-    db $01                                                               ;B3E7D6;
-    dw $3323,$0000                                                       ;B3E7D7;
-    db $01                                                               ;B3E7DB;
-    dw $7323,$C3F8                                                       ;B3E7DC;
-    db $EF                                                               ;B3E7E0;
-    dw $730C,$01F9                                                       ;B3E7E1;
-    db $F9                                                               ;B3E7E5;
-    dw $3320,$0000                                                       ;B3E7E6;
-    db $F9                                                               ;B3E7EA;
-    dw $7320,$01F5                                                       ;B3E7EB;
-    db $F9                                                               ;B3E7EF;
-    dw $3321,$0004                                                       ;B3E7F0;
-    db $F9                                                               ;B3E7F4;
-    dw $7321                                                             ;B3E7F5;
+    dw $0007                                                             ;B3E7D2;
+    %spritemapEntry(0, $1F9, $01, 0, 0, 3, 1, $123)
+    %spritemapEntry(0, $00, $01, 0, 1, 3, 1, $123)
+    %spritemapEntry(1, $43F8, $EF, 0, 1, 3, 1, $10C)
+    %spritemapEntry(0, $1F9, $F9, 0, 0, 3, 1, $120)
+    %spritemapEntry(0, $00, $F9, 0, 1, 3, 1, $120)
+    %spritemapEntry(0, $1F5, $F9, 0, 0, 3, 1, $121)
+    %spritemapEntry(0, $04, $F9, 0, 1, 3, 1, $121)
 
 Spritemaps_EtecoonEscape_9:
-    dw $0007,$01F9                                                       ;B3E7F7;
-    db $01                                                               ;B3E7FB;
-    dw $3323,$0000                                                       ;B3E7FC;
-    db $01                                                               ;B3E800;
-    dw $7323,$C3F8                                                       ;B3E801;
-    db $EF                                                               ;B3E805;
-    dw $730C,$01F9                                                       ;B3E806;
-    db $F9                                                               ;B3E80A;
-    dw $3320,$0000                                                       ;B3E80B;
-    db $F9                                                               ;B3E80F;
-    dw $7320,$01F5                                                       ;B3E810;
-    db $F7                                                               ;B3E814;
-    dw $3321,$0004                                                       ;B3E815;
-    db $F7                                                               ;B3E819;
-    dw $7321                                                             ;B3E81A;
+    dw $0007                                                             ;B3E7F7;
+    %spritemapEntry(0, $1F9, $01, 0, 0, 3, 1, $123)
+    %spritemapEntry(0, $00, $01, 0, 1, 3, 1, $123)
+    %spritemapEntry(1, $43F8, $EF, 0, 1, 3, 1, $10C)
+    %spritemapEntry(0, $1F9, $F9, 0, 0, 3, 1, $120)
+    %spritemapEntry(0, $00, $F9, 0, 1, 3, 1, $120)
+    %spritemapEntry(0, $1F5, $F7, 0, 0, 3, 1, $121)
+    %spritemapEntry(0, $04, $F7, 0, 1, 3, 1, $121)
 
 Spritemaps_EtecoonEscape_A:
-    dw $0007,$01F7                                                       ;B3E81C;
-    db $FE                                                               ;B3E820;
-    dw $3322,$0000                                                       ;B3E821;
-    db $FE                                                               ;B3E825;
-    dw $7322,$C3F8                                                       ;B3E826;
-    db $F2                                                               ;B3E82A;
-    dw $330C,$01FF                                                       ;B3E82B;
-    db $01                                                               ;B3E82F;
-    dw $7324,$01F8                                                       ;B3E830;
-    db $01                                                               ;B3E834;
-    dw $3324,$01FF                                                       ;B3E835;
-    db $FA                                                               ;B3E839;
-    dw $7320,$01F8                                                       ;B3E83A;
-    db $FA                                                               ;B3E83E;
-    dw $3320                                                             ;B3E83F;
+    dw $0007                                                             ;B3E81C;
+    %spritemapEntry(0, $1F7, $FE, 0, 0, 3, 1, $122)
+    %spritemapEntry(0, $00, $FE, 0, 1, 3, 1, $122)
+    %spritemapEntry(1, $43F8, $F2, 0, 0, 3, 1, $10C)
+    %spritemapEntry(0, $1FF, $01, 0, 1, 3, 1, $124)
+    %spritemapEntry(0, $1F8, $01, 0, 0, 3, 1, $124)
+    %spritemapEntry(0, $1FF, $FA, 0, 1, 3, 1, $120)
+    %spritemapEntry(0, $1F8, $FA, 0, 0, 3, 1, $120)
 
 Spritemaps_EtecoonEscape_B:
-    dw $0007,$0001                                                       ;B3E841;
-    db $FC                                                               ;B3E845;
-    dw $7322,$01F6                                                       ;B3E846;
-    db $FC                                                               ;B3E84A;
-    dw $3322,$C3F8                                                       ;B3E84B;
-    db $F1                                                               ;B3E84F;
-    dw $330C,$01FF                                                       ;B3E850;
-    db $01                                                               ;B3E854;
-    dw $7323,$01F8                                                       ;B3E855;
-    db $01                                                               ;B3E859;
-    dw $3323,$01FF                                                       ;B3E85A;
-    db $FA                                                               ;B3E85E;
-    dw $7320,$01F8                                                       ;B3E85F;
-    db $FA                                                               ;B3E863;
-    dw $3320                                                             ;B3E864;
+    dw $0007                                                             ;B3E841;
+    %spritemapEntry(0, $01, $FC, 0, 1, 3, 1, $122)
+    %spritemapEntry(0, $1F6, $FC, 0, 0, 3, 1, $122)
+    %spritemapEntry(1, $43F8, $F1, 0, 0, 3, 1, $10C)
+    %spritemapEntry(0, $1FF, $01, 0, 1, 3, 1, $123)
+    %spritemapEntry(0, $1F8, $01, 0, 0, 3, 1, $123)
+    %spritemapEntry(0, $1FF, $FA, 0, 1, 3, 1, $120)
+    %spritemapEntry(0, $1F8, $FA, 0, 0, 3, 1, $120)
 
 Spritemaps_EtecoonEscape_C:
-    dw $0007,$01FF                                                       ;B3E866;
-    db $01                                                               ;B3E86A;
-    dw $7323,$01F8                                                       ;B3E86B;
-    db $01                                                               ;B3E86F;
-    dw $3323,$C3F8                                                       ;B3E870;
-    db $EF                                                               ;B3E874;
-    dw $330C,$01FF                                                       ;B3E875;
-    db $F9                                                               ;B3E879;
-    dw $7320,$01F8                                                       ;B3E87A;
-    db $F9                                                               ;B3E87E;
-    dw $3320,$0003                                                       ;B3E87F;
-    db $F9                                                               ;B3E883;
-    dw $7321,$01F4                                                       ;B3E884;
-    db $F9                                                               ;B3E888;
-    dw $3321                                                             ;B3E889;
+    dw $0007                                                             ;B3E866;
+    %spritemapEntry(0, $1FF, $01, 0, 1, 3, 1, $123)
+    %spritemapEntry(0, $1F8, $01, 0, 0, 3, 1, $123)
+    %spritemapEntry(1, $43F8, $EF, 0, 0, 3, 1, $10C)
+    %spritemapEntry(0, $1FF, $F9, 0, 1, 3, 1, $120)
+    %spritemapEntry(0, $1F8, $F9, 0, 0, 3, 1, $120)
+    %spritemapEntry(0, $03, $F9, 0, 1, 3, 1, $121)
+    %spritemapEntry(0, $1F4, $F9, 0, 0, 3, 1, $121)
 
 Spritemaps_EtecoonEscape_D:
-    dw $0007,$01FF                                                       ;B3E88B;
-    db $01                                                               ;B3E88F;
-    dw $7323,$01F8                                                       ;B3E890;
-    db $01                                                               ;B3E894;
-    dw $3323,$C3F8                                                       ;B3E895;
-    db $EF                                                               ;B3E899;
-    dw $330C,$01FF                                                       ;B3E89A;
-    db $F9                                                               ;B3E89E;
-    dw $7320,$01F8                                                       ;B3E89F;
-    db $F9                                                               ;B3E8A3;
-    dw $3320,$0003                                                       ;B3E8A4;
-    db $F7                                                               ;B3E8A8;
-    dw $7321,$01F4                                                       ;B3E8A9;
-    db $F7                                                               ;B3E8AD;
-    dw $3321                                                             ;B3E8AE;
+    dw $0007                                                             ;B3E88B;
+    %spritemapEntry(0, $1FF, $01, 0, 1, 3, 1, $123)
+    %spritemapEntry(0, $1F8, $01, 0, 0, 3, 1, $123)
+    %spritemapEntry(1, $43F8, $EF, 0, 0, 3, 1, $10C)
+    %spritemapEntry(0, $1FF, $F9, 0, 1, 3, 1, $120)
+    %spritemapEntry(0, $1F8, $F9, 0, 0, 3, 1, $120)
+    %spritemapEntry(0, $03, $F7, 0, 1, 3, 1, $121)
+    %spritemapEntry(0, $1F4, $F7, 0, 0, 3, 1, $121)
 
 Spritemaps_EtecoonEscape_E:
-    dw $0007,$C3F8                                                       ;B3E8B0;
-    db $ED                                                               ;B3E8B4;
-    dw $3300,$0002                                                       ;B3E8B5;
-    db $F9                                                               ;B3E8B9;
-    dw $7322,$01F7                                                       ;B3E8BA;
-    db $F9                                                               ;B3E8BE;
-    dw $3322,$01F9                                                       ;B3E8BF;
-    db $FF                                                               ;B3E8C3;
-    dw $3324,$0000                                                       ;B3E8C4;
-    db $FF                                                               ;B3E8C8;
-    dw $7324,$01F9                                                       ;B3E8C9;
-    db $F7                                                               ;B3E8CD;
-    dw $3320,$0000                                                       ;B3E8CE;
-    db $F7                                                               ;B3E8D2;
-    dw $7320                                                             ;B3E8D3;
+    dw $0007                                                             ;B3E8B0;
+    %spritemapEntry(1, $43F8, $ED, 0, 0, 3, 1, $100)
+    %spritemapEntry(0, $02, $F9, 0, 1, 3, 1, $122)
+    %spritemapEntry(0, $1F7, $F9, 0, 0, 3, 1, $122)
+    %spritemapEntry(0, $1F9, $FF, 0, 0, 3, 1, $124)
+    %spritemapEntry(0, $00, $FF, 0, 1, 3, 1, $124)
+    %spritemapEntry(0, $1F9, $F7, 0, 0, 3, 1, $120)
+    %spritemapEntry(0, $00, $F7, 0, 1, 3, 1, $120)
 
 Spritemaps_EtecoonEscape_F:
-    dw $0007,$0002                                                       ;B3E8D5;
-    db $F9                                                               ;B3E8D9;
-    dw $7322,$01F7                                                       ;B3E8DA;
-    db $F9                                                               ;B3E8DE;
-    dw $3322,$C3F8                                                       ;B3E8DF;
-    db $ED                                                               ;B3E8E3;
-    dw $730C,$01F9                                                       ;B3E8E4;
-    db $FF                                                               ;B3E8E8;
-    dw $3324,$0000                                                       ;B3E8E9;
-    db $FF                                                               ;B3E8ED;
-    dw $7324,$01F9                                                       ;B3E8EE;
-    db $F7                                                               ;B3E8F2;
-    dw $3320,$0000                                                       ;B3E8F3;
-    db $F7                                                               ;B3E8F7;
-    dw $7320                                                             ;B3E8F8;
+    dw $0007                                                             ;B3E8D5;
+    %spritemapEntry(0, $02, $F9, 0, 1, 3, 1, $122)
+    %spritemapEntry(0, $1F7, $F9, 0, 0, 3, 1, $122)
+    %spritemapEntry(1, $43F8, $ED, 0, 1, 3, 1, $10C)
+    %spritemapEntry(0, $1F9, $FF, 0, 0, 3, 1, $124)
+    %spritemapEntry(0, $00, $FF, 0, 1, 3, 1, $124)
+    %spritemapEntry(0, $1F9, $F7, 0, 0, 3, 1, $120)
+    %spritemapEntry(0, $00, $F7, 0, 1, 3, 1, $120)
 
 Spritemaps_EtecoonEscape_10:
-    dw $0007,$01F6                                                       ;B3E8FA;
-    db $F9                                                               ;B3E8FE;
-    dw $3322,$0001                                                       ;B3E8FF;
-    db $F9                                                               ;B3E903;
-    dw $7322,$C3F8                                                       ;B3E904;
-    db $ED                                                               ;B3E908;
-    dw $330C,$01FF                                                       ;B3E909;
-    db $FF                                                               ;B3E90D;
-    dw $7324,$01F8                                                       ;B3E90E;
-    db $FF                                                               ;B3E912;
-    dw $3324,$01FF                                                       ;B3E913;
-    db $F7                                                               ;B3E917;
-    dw $7320,$01F8                                                       ;B3E918;
-    db $F7                                                               ;B3E91C;
-    dw $3320                                                             ;B3E91D;
+    dw $0007                                                             ;B3E8FA;
+    %spritemapEntry(0, $1F6, $F9, 0, 0, 3, 1, $122)
+    %spritemapEntry(0, $01, $F9, 0, 1, 3, 1, $122)
+    %spritemapEntry(1, $43F8, $ED, 0, 0, 3, 1, $10C)
+    %spritemapEntry(0, $1FF, $FF, 0, 1, 3, 1, $124)
+    %spritemapEntry(0, $1F8, $FF, 0, 0, 3, 1, $124)
+    %spritemapEntry(0, $1FF, $F7, 0, 1, 3, 1, $120)
+    %spritemapEntry(0, $1F8, $F7, 0, 0, 3, 1, $120)
 
 Spritemaps_EtecoonEscape_11:
-    dw $0007,$C3F8                                                       ;B3E91F;
-    db $ED                                                               ;B3E923;
-    dw $3300,$01F6                                                       ;B3E924;
-    db $F9                                                               ;B3E928;
-    dw $3322,$0001                                                       ;B3E929;
-    db $F9                                                               ;B3E92D;
-    dw $7322,$01FF                                                       ;B3E92E;
-    db $FF                                                               ;B3E932;
-    dw $7324,$01F8                                                       ;B3E933;
-    db $FF                                                               ;B3E937;
-    dw $3324,$01FF                                                       ;B3E938;
-    db $F7                                                               ;B3E93C;
-    dw $7320,$01F8                                                       ;B3E93D;
-    db $F7                                                               ;B3E941;
-    dw $3320                                                             ;B3E942;
+    dw $0007                                                             ;B3E91F;
+    %spritemapEntry(1, $43F8, $ED, 0, 0, 3, 1, $100)
+    %spritemapEntry(0, $1F6, $F9, 0, 0, 3, 1, $122)
+    %spritemapEntry(0, $01, $F9, 0, 1, 3, 1, $122)
+    %spritemapEntry(0, $1FF, $FF, 0, 1, 3, 1, $124)
+    %spritemapEntry(0, $1F8, $FF, 0, 0, 3, 1, $124)
+    %spritemapEntry(0, $1FF, $F7, 0, 1, 3, 1, $120)
+    %spritemapEntry(0, $1F8, $F7, 0, 0, 3, 1, $120)
+
 
 Palette_DachoraEscape:
     dw $3800,$3F57,$2E4D,$00E2,$0060,$3AB0,$220B,$1166                   ;B3E944;
     dw $0924,$57FF,$42F7,$2610,$158C,$7C1F,$6018,$300A                   ;B3E954;
 
 InstList_DachoraEscape_RunningAroundAimlessly_LowTide_0:
-    dw Instruction_Common_TimerInY                                       ;B3E964;
-    dw $0005                                                             ;B3E966;
+    dw Instruction_Common_TimerInY,$0005                                 ;B3E964;
 
 InstList_DachoraEscape_RunningAroundAimlessly_LowTide_1:
-    dw $0003                                                             ;B3E968;
-    dw Spritemaps_DachoraEscape_0                                        ;B3E96A;
-    dw InstList_DachoraEscape_XPositionMinus6                            ;B3E96C;
-    dw $0003                                                             ;B3E96E;
-    dw Spritemaps_DachoraEscape_1                                        ;B3E970;
-    dw InstList_DachoraEscape_XPositionMinus6                            ;B3E972;
-    dw $0003                                                             ;B3E974;
-    dw Spritemaps_DachoraEscape_2                                        ;B3E976;
-    dw InstList_DachoraEscape_XPositionMinus6                            ;B3E978;
-    dw $0003                                                             ;B3E97A;
-    dw Spritemaps_DachoraEscape_3                                        ;B3E97C;
-    dw InstList_DachoraEscape_XPositionMinus6                            ;B3E97E;
-    dw $0003                                                             ;B3E980;
-    dw Spritemaps_DachoraEscape_4                                        ;B3E982;
-    dw InstList_DachoraEscape_XPositionMinus6                            ;B3E984;
-    dw $0003                                                             ;B3E986;
-    dw Spritemaps_DachoraEscape_5                                        ;B3E988;
-    dw InstList_DachoraEscape_XPositionMinus6                            ;B3E98A;
+    dw $0003,Spritemaps_DachoraEscape_0                                  ;B3E968;
+    dw Instruction_DachoraEscape_XPositionMinus6                         ;B3E96C;
+    dw $0003,Spritemaps_DachoraEscape_1                                  ;B3E96E;
+    dw Instruction_DachoraEscape_XPositionMinus6                         ;B3E972;
+    dw $0003,Spritemaps_DachoraEscape_2                                  ;B3E974;
+    dw Instruction_DachoraEscape_XPositionMinus6                         ;B3E978;
+    dw $0003,Spritemaps_DachoraEscape_3                                  ;B3E97A;
+    dw Instruction_DachoraEscape_XPositionMinus6                         ;B3E97E;
+    dw $0003,Spritemaps_DachoraEscape_4                                  ;B3E980;
+    dw Instruction_DachoraEscape_XPositionMinus6                         ;B3E984;
+    dw $0003,Spritemaps_DachoraEscape_5                                  ;B3E986;
+    dw Instruction_DachoraEscape_XPositionMinus6                         ;B3E98A;
     dw InstList_DachoraEscape_GotoY_IfAcidLessThanCE                     ;B3E98C;
     dw InstList_DachoraEscape_RunningAroundAimlessly_HighTide_2          ;B3E98E;
     dw InstList_DachoraEscape_GotoY_IfCrittersEscaped                    ;B3E990;
     dw InstList_DachoraEscape_RunningForEscape_0                         ;B3E992;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;B3E994;
     dw InstList_DachoraEscape_RunningAroundAimlessly_LowTide_1           ;B3E996;
-    dw Instruction_Common_TimerInY                                       ;B3E998;
-    dw $0005                                                             ;B3E99A;
+    dw Instruction_Common_TimerInY,$0005                                 ;B3E998;
 
 InstList_DachoraEscape_RunningAroundAimlessly_LowTide_2:
-    dw $0003                                                             ;B3E99C;
-    dw Spritemaps_DachoraEscape_6                                        ;B3E99E;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3E9A0;
-    dw $0003                                                             ;B3E9A2;
-    dw Spritemaps_DachoraEscape_7                                        ;B3E9A4;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3E9A6;
-    dw $0003                                                             ;B3E9A8;
-    dw Spritemaps_DachoraEscape_8                                        ;B3E9AA;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3E9AC;
-    dw $0003                                                             ;B3E9AE;
-    dw Spritemaps_DachoraEscape_9                                        ;B3E9B0;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3E9B2;
-    dw $0003                                                             ;B3E9B4;
-    dw Spritemaps_DachoraEscape_A                                        ;B3E9B6;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3E9B8;
-    dw $0003                                                             ;B3E9BA;
-    dw Spritemaps_DachoraEscape_B                                        ;B3E9BC;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3E9BE;
+    dw $0003,Spritemaps_DachoraEscape_6                                  ;B3E99C;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3E9A0;
+    dw $0003,Spritemaps_DachoraEscape_7                                  ;B3E9A2;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3E9A6;
+    dw $0003,Spritemaps_DachoraEscape_8                                  ;B3E9A8;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3E9AC;
+    dw $0003,Spritemaps_DachoraEscape_9                                  ;B3E9AE;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3E9B2;
+    dw $0003,Spritemaps_DachoraEscape_A                                  ;B3E9B4;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3E9B8;
+    dw $0003,Spritemaps_DachoraEscape_B                                  ;B3E9BA;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3E9BE;
     dw InstList_DachoraEscape_GotoY_IfAcidLessThanCE                     ;B3E9C0;
     dw InstList_DachoraEscape_RunningAroundAimlessly_HighTide_4          ;B3E9C2;
     dw InstList_DachoraEscape_GotoY_IfCrittersEscaped                    ;B3E9C4;
@@ -5966,56 +5568,42 @@ InstList_DachoraEscape_RunningAroundAimlessly_LowTide_2:
     dw InstList_DachoraEscape_RunningAroundAimlessly_LowTide_0           ;B3E9CE;
 
 InstList_DachoraEscape_RunningAroundAimlessly_HighTide_0:
-    dw Instruction_Common_TimerInY                                       ;B3E9D0;
-    dw $0005                                                             ;B3E9D2;
+    dw Instruction_Common_TimerInY,$0005                                 ;B3E9D0;
 
 InstList_DachoraEscape_RunningAroundAimlessly_HighTide_1:
-    dw $0002                                                             ;B3E9D4;
-    dw Spritemaps_DachoraEscape_0                                        ;B3E9D6;
-    dw InstList_DachoraEscape_XPositionMinus6                            ;B3E9D8;
-    dw $0002                                                             ;B3E9DA;
-    dw Spritemaps_DachoraEscape_1                                        ;B3E9DC;
-    dw InstList_DachoraEscape_XPositionMinus6                            ;B3E9DE;
-    dw $0002                                                             ;B3E9E0;
-    dw Spritemaps_DachoraEscape_2                                        ;B3E9E2;
-    dw InstList_DachoraEscape_XPositionMinus6                            ;B3E9E4;
-    dw $0002                                                             ;B3E9E6;
-    dw Spritemaps_DachoraEscape_3                                        ;B3E9E8;
-    dw InstList_DachoraEscape_XPositionMinus6                            ;B3E9EA;
-    dw $0002                                                             ;B3E9EC;
-    dw Spritemaps_DachoraEscape_4                                        ;B3E9EE;
-    dw InstList_DachoraEscape_XPositionMinus6                            ;B3E9F0;
-    dw $0002                                                             ;B3E9F2;
-    dw Spritemaps_DachoraEscape_5                                        ;B3E9F4;
-    dw InstList_DachoraEscape_XPositionMinus6                            ;B3E9F6;
+    dw $0002,Spritemaps_DachoraEscape_0                                  ;B3E9D4;
+    dw Instruction_DachoraEscape_XPositionMinus6                         ;B3E9D8;
+    dw $0002,Spritemaps_DachoraEscape_1                                  ;B3E9DA;
+    dw Instruction_DachoraEscape_XPositionMinus6                         ;B3E9DE;
+    dw $0002,Spritemaps_DachoraEscape_2                                  ;B3E9E0;
+    dw Instruction_DachoraEscape_XPositionMinus6                         ;B3E9E4;
+    dw $0002,Spritemaps_DachoraEscape_3                                  ;B3E9E6;
+    dw Instruction_DachoraEscape_XPositionMinus6                         ;B3E9EA;
+    dw $0002,Spritemaps_DachoraEscape_4                                  ;B3E9EC;
+    dw Instruction_DachoraEscape_XPositionMinus6                         ;B3E9F0;
+    dw $0002,Spritemaps_DachoraEscape_5                                  ;B3E9F2;
+    dw Instruction_DachoraEscape_XPositionMinus6                         ;B3E9F6;
     dw InstList_DachoraEscape_GotoY_IfCrittersEscaped                    ;B3E9F8;
     dw InstList_DachoraEscape_RunningForEscape_0                         ;B3E9FA;
 
 InstList_DachoraEscape_RunningAroundAimlessly_HighTide_2:
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;B3E9FC;
     dw InstList_DachoraEscape_RunningAroundAimlessly_HighTide_1          ;B3E9FE;
-    dw Instruction_Common_TimerInY                                       ;B3EA00;
-    dw $0005                                                             ;B3EA02;
+    dw Instruction_Common_TimerInY,$0005                                 ;B3EA00;
 
 InstList_DachoraEscape_RunningAroundAimlessly_HighTide_3:
-    dw $0002                                                             ;B3EA04;
-    dw Spritemaps_DachoraEscape_6                                        ;B3EA06;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA08;
-    dw $0002                                                             ;B3EA0A;
-    dw Spritemaps_DachoraEscape_7                                        ;B3EA0C;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA0E;
-    dw $0002                                                             ;B3EA10;
-    dw Spritemaps_DachoraEscape_8                                        ;B3EA12;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA14;
-    dw $0002                                                             ;B3EA16;
-    dw Spritemaps_DachoraEscape_9                                        ;B3EA18;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA1A;
-    dw $0002                                                             ;B3EA1C;
-    dw Spritemaps_DachoraEscape_A                                        ;B3EA1E;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA20;
-    dw $0002                                                             ;B3EA22;
-    dw Spritemaps_DachoraEscape_B                                        ;B3EA24;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA26;
+    dw $0002,Spritemaps_DachoraEscape_6                                  ;B3EA04;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA08;
+    dw $0002,Spritemaps_DachoraEscape_7                                  ;B3EA0A;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA0E;
+    dw $0002,Spritemaps_DachoraEscape_8                                  ;B3EA10;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA14;
+    dw $0002,Spritemaps_DachoraEscape_9                                  ;B3EA16;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA1A;
+    dw $0002,Spritemaps_DachoraEscape_A                                  ;B3EA1C;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA20;
+    dw $0002,Spritemaps_DachoraEscape_B                                  ;B3EA22;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA26;
     dw InstList_DachoraEscape_GotoY_IfCrittersEscaped                    ;B3EA28;
     dw InstList_DachoraEscape_RunningForEscape_1                         ;B3EA2A;
 
@@ -6026,66 +5614,47 @@ InstList_DachoraEscape_RunningAroundAimlessly_HighTide_4:
     dw InstList_DachoraEscape_RunningAroundAimlessly_HighTide_0          ;B3EA32;
 
 InstList_DachoraEscape_RunningForEscape_0:
-    dw $001E                                                             ;B3EA34;
-    dw Spritemaps_DachoraEscape_0                                        ;B3EA36;
+    dw $001E,Spritemaps_DachoraEscape_0                                  ;B3EA34;
 
 InstList_DachoraEscape_RunningForEscape_1:
-    dw $005A                                                             ;B3EA38;
-    dw Spritemaps_DachoraEscape_6                                        ;B3EA3A;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA3C;
-    dw $0005                                                             ;B3EA3E;
-    dw Spritemaps_DachoraEscape_7                                        ;B3EA40;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA42;
-    dw $0005                                                             ;B3EA44;
-    dw Spritemaps_DachoraEscape_8                                        ;B3EA46;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA48;
-    dw $0004                                                             ;B3EA4A;
-    dw Spritemaps_DachoraEscape_9                                        ;B3EA4C;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA4E;
-    dw $0004                                                             ;B3EA50;
-    dw Spritemaps_DachoraEscape_A                                        ;B3EA52;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA54;
-    dw $0004                                                             ;B3EA56;
-    dw Spritemaps_DachoraEscape_B                                        ;B3EA58;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA5A;
-    dw $0003                                                             ;B3EA5C;
-    dw Spritemaps_DachoraEscape_6                                        ;B3EA5E;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA60;
-    dw $0003                                                             ;B3EA62;
-    dw Spritemaps_DachoraEscape_7                                        ;B3EA64;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA66;
-    dw $0003                                                             ;B3EA68;
-    dw Spritemaps_DachoraEscape_8                                        ;B3EA6A;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA6C;
-    dw $0002                                                             ;B3EA6E;
-    dw Spritemaps_DachoraEscape_9                                        ;B3EA70;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA72;
-    dw $0002                                                             ;B3EA74;
-    dw Spritemaps_DachoraEscape_A                                        ;B3EA76;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA78;
-    dw $0002                                                             ;B3EA7A;
-    dw Spritemaps_DachoraEscape_B                                        ;B3EA7C;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA7E;
+    dw $005A,Spritemaps_DachoraEscape_6                                  ;B3EA38;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA3C;
+    dw $0005,Spritemaps_DachoraEscape_7                                  ;B3EA3E;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA42;
+    dw $0005,Spritemaps_DachoraEscape_8                                  ;B3EA44;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA48;
+    dw $0004,Spritemaps_DachoraEscape_9                                  ;B3EA4A;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA4E;
+    dw $0004,Spritemaps_DachoraEscape_A                                  ;B3EA50;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA54;
+    dw $0004,Spritemaps_DachoraEscape_B                                  ;B3EA56;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA5A;
+    dw $0003,Spritemaps_DachoraEscape_6                                  ;B3EA5C;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA60;
+    dw $0003,Spritemaps_DachoraEscape_7                                  ;B3EA62;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA66;
+    dw $0003,Spritemaps_DachoraEscape_8                                  ;B3EA68;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA6C;
+    dw $0002,Spritemaps_DachoraEscape_9                                  ;B3EA6E;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA72;
+    dw $0002,Spritemaps_DachoraEscape_A                                  ;B3EA74;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA78;
+    dw $0002,Spritemaps_DachoraEscape_B                                  ;B3EA7A;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA7E;
 
 InstList_DachoraEscape_RunningForEscape_2:
-    dw $0001                                                             ;B3EA80;
-    dw Spritemaps_DachoraEscape_6                                        ;B3EA82;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA84;
-    dw $0001                                                             ;B3EA86;
-    dw Spritemaps_DachoraEscape_7                                        ;B3EA88;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA8A;
-    dw $0001                                                             ;B3EA8C;
-    dw Spritemaps_DachoraEscape_8                                        ;B3EA8E;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA90;
-    dw $0001                                                             ;B3EA92;
-    dw Spritemaps_DachoraEscape_9                                        ;B3EA94;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA96;
-    dw $0001                                                             ;B3EA98;
-    dw Spritemaps_DachoraEscape_A                                        ;B3EA9A;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EA9C;
-    dw $0001                                                             ;B3EA9E;
-    dw Spritemaps_DachoraEscape_B                                        ;B3EAA0;
-    dw InstList_DachoraEscape_XPositionPlus6                             ;B3EAA2;
+    dw $0001,Spritemaps_DachoraEscape_6                                  ;B3EA80;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA84;
+    dw $0001,Spritemaps_DachoraEscape_7                                  ;B3EA86;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA8A;
+    dw $0001,Spritemaps_DachoraEscape_8                                  ;B3EA8C;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA90;
+    dw $0001,Spritemaps_DachoraEscape_9                                  ;B3EA92;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA96;
+    dw $0001,Spritemaps_DachoraEscape_A                                  ;B3EA98;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EA9C;
+    dw $0001,Spritemaps_DachoraEscape_B                                  ;B3EA9E;
+    dw Instruction_DachoraEscape_XPositionPlus6                          ;B3EAA2;
     dw Instruction_Common_GotoY                                          ;B3EAA4;
     dw InstList_DachoraEscape_RunningForEscape_2                         ;B3EAA6;
 
@@ -6119,7 +5688,7 @@ InstList_DachoraEscape_GotoY_IfCrittersEscaped:
     RTL                                                                  ;B3EAC8;
 
 
-InstList_DachoraEscape_XPositionMinus6:
+Instruction_DachoraEscape_XPositionMinus6:
     LDX.W $0E54                                                          ;B3EAC9;
     LDA.W $0F7A,X                                                        ;B3EACC;
     SEC                                                                  ;B3EACF;
@@ -6128,7 +5697,7 @@ InstList_DachoraEscape_XPositionMinus6:
     RTL                                                                  ;B3EAD6;
 
 
-InstList_DachoraEscape_XPositionPlus6:
+Instruction_DachoraEscape_XPositionPlus6:
     LDX.W $0E54                                                          ;B3EAD7;
     LDA.W $0F7A,X                                                        ;B3EADA;
     CLC                                                                  ;B3EADD;
@@ -6167,272 +5736,157 @@ RTL_B3EB1A:
 
 
 Spritemaps_DachoraEscape_0:
-    dw $0009,$01F0                                                       ;B3EB1B;
-    db $F2                                                               ;B3EB1F;
-    dw $3310,$C3F8                                                       ;B3EB20;
-    db $EA                                                               ;B3EB24;
-    dw $3301,$0002                                                       ;B3EB25;
-    db $F7                                                               ;B3EB29;
-    dw $331E,$01FA                                                       ;B3EB2A;
-    db $F7                                                               ;B3EB2E;
-    dw $330E,$01F2                                                       ;B3EB2F;
-    db $03                                                               ;B3EB33;
-    dw $331F,$01F2                                                       ;B3EB34;
-    db $FB                                                               ;B3EB38;
-    dw $330F,$01F2                                                       ;B3EB39;
-    db $0F                                                               ;B3EB3D;
-    dw $3322,$C3FA                                                       ;B3EB3E;
-    db $07                                                               ;B3EB42;
-    dw $3313,$C3FA                                                       ;B3EB43;
-    db $FF                                                               ;B3EB47;
-    dw $3303                                                             ;B3EB48;
+    dw $0009                                                             ;B3EB1B;
+    %spritemapEntry(0, $1F0, $F2, 0, 0, 3, 1, $110)
+    %spritemapEntry(1, $43F8, $EA, 0, 0, 3, 1, $101)
+    %spritemapEntry(0, $02, $F7, 0, 0, 3, 1, $11E)
+    %spritemapEntry(0, $1FA, $F7, 0, 0, 3, 1, $10E)
+    %spritemapEntry(0, $1F2, $03, 0, 0, 3, 1, $11F)
+    %spritemapEntry(0, $1F2, $FB, 0, 0, 3, 1, $10F)
+    %spritemapEntry(0, $1F2, $0F, 0, 0, 3, 1, $122)
+    %spritemapEntry(1, $43FA, $07, 0, 0, 3, 1, $113)
+    %spritemapEntry(1, $43FA, $FF, 0, 0, 3, 1, $103)
 
 Spritemaps_DachoraEscape_1:
-    dw $0009,$01EF                                                       ;B3EB4A;
-    db $F3                                                               ;B3EB4E;
-    dw $3310,$C3F7                                                       ;B3EB4F;
-    db $EB                                                               ;B3EB53;
-    dw $3301,$0002                                                       ;B3EB54;
-    db $F8                                                               ;B3EB58;
-    dw $335F,$01FA                                                       ;B3EB59;
-    db $F8                                                               ;B3EB5D;
-    dw $335E,$01F2                                                       ;B3EB5E;
-    db $04                                                               ;B3EB62;
-    dw $331F,$01F2                                                       ;B3EB63;
-    db $FC                                                               ;B3EB67;
-    dw $330F,$C3FA                                                       ;B3EB68;
-    db $08                                                               ;B3EB6C;
-    dw $3316,$01F2                                                       ;B3EB6D;
-    db $08                                                               ;B3EB71;
-    dw $3315,$C3FA                                                       ;B3EB72;
-    db $00                                                               ;B3EB76;
-    dw $3306                                                             ;B3EB77;
+    dw $0009                                                             ;B3EB4A;
+    %spritemapEntry(0, $1EF, $F3, 0, 0, 3, 1, $110)
+    %spritemapEntry(1, $43F7, $EB, 0, 0, 3, 1, $101)
+    %spritemapEntry(0, $02, $F8, 0, 0, 3, 1, $15F)
+    %spritemapEntry(0, $1FA, $F8, 0, 0, 3, 1, $15E)
+    %spritemapEntry(0, $1F2, $04, 0, 0, 3, 1, $11F)
+    %spritemapEntry(0, $1F2, $FC, 0, 0, 3, 1, $10F)
+    %spritemapEntry(1, $43FA, $08, 0, 0, 3, 1, $116)
+    %spritemapEntry(0, $1F2, $08, 0, 0, 3, 1, $115)
+    %spritemapEntry(1, $43FA, $00, 0, 0, 3, 1, $106)
 
 Spritemaps_DachoraEscape_2:
-    dw $000B,$01EE                                                       ;B3EB79;
-    db $F1                                                               ;B3EB7D;
-    dw $3310,$C3F6                                                       ;B3EB7E;
-    db $E9                                                               ;B3EB82;
-    dw $3301,$01EA                                                       ;B3EB83;
-    db $0E                                                               ;B3EB87;
-    dw $332D,$0002                                                       ;B3EB88;
-    db $F6                                                               ;B3EB8C;
-    dw $331E,$01FA                                                       ;B3EB8D;
-    db $F6                                                               ;B3EB91;
-    dw $330E,$01F2                                                       ;B3EB92;
-    db $FA                                                               ;B3EB96;
-    dw $330F,$C3FA                                                       ;B3EB97;
-    db $FE                                                               ;B3EB9B;
-    dw $3309,$C3F2                                                       ;B3EB9C;
-    db $FE                                                               ;B3EBA0;
-    dw $3308,$000A                                                       ;B3EBA1;
-    db $0E                                                               ;B3EBA5;
-    dw $332B,$000A                                                       ;B3EBA6;
-    db $06                                                               ;B3EBAA;
-    dw $331B,$C3F2                                                       ;B3EBAB;
-    db $06                                                               ;B3EBAF;
-    dw $3318                                                             ;B3EBB0;
+    dw $000B                                                             ;B3EB79;
+    %spritemapEntry(0, $1EE, $F1, 0, 0, 3, 1, $110)
+    %spritemapEntry(1, $43F6, $E9, 0, 0, 3, 1, $101)
+    %spritemapEntry(0, $1EA, $0E, 0, 0, 3, 1, $12D)
+    %spritemapEntry(0, $02, $F6, 0, 0, 3, 1, $11E)
+    %spritemapEntry(0, $1FA, $F6, 0, 0, 3, 1, $10E)
+    %spritemapEntry(0, $1F2, $FA, 0, 0, 3, 1, $10F)
+    %spritemapEntry(1, $43FA, $FE, 0, 0, 3, 1, $109)
+    %spritemapEntry(1, $43F2, $FE, 0, 0, 3, 1, $108)
+    %spritemapEntry(0, $0A, $0E, 0, 0, 3, 1, $12B)
+    %spritemapEntry(0, $0A, $06, 0, 0, 3, 1, $11B)
+    %spritemapEntry(1, $43F2, $06, 0, 0, 3, 1, $118)
 
 Spritemaps_DachoraEscape_3:
-    dw $0009,$01F0                                                       ;B3EBB2;
-    db $F2                                                               ;B3EBB6;
-    dw $3310,$C3F8                                                       ;B3EBB7;
-    db $EA                                                               ;B3EBBB;
-    dw $3301,$0002                                                       ;B3EBBC;
-    db $F7                                                               ;B3EBC0;
-    dw $335F,$01FA                                                       ;B3EBC1;
-    db $F7                                                               ;B3EBC5;
-    dw $335E,$01F2                                                       ;B3EBC6;
-    db $0F                                                               ;B3EBCA;
-    dw $3352,$01F2                                                       ;B3EBCB;
-    db $03                                                               ;B3EBCF;
-    dw $331F,$01F2                                                       ;B3EBD0;
-    db $FB                                                               ;B3EBD4;
-    dw $330F,$C3FA                                                       ;B3EBD5;
-    db $07                                                               ;B3EBD9;
-    dw $3343,$C3FA                                                       ;B3EBDA;
-    db $FF                                                               ;B3EBDE;
-    dw $3333                                                             ;B3EBDF;
+    dw $0009                                                             ;B3EBB2;
+    %spritemapEntry(0, $1F0, $F2, 0, 0, 3, 1, $110)
+    %spritemapEntry(1, $43F8, $EA, 0, 0, 3, 1, $101)
+    %spritemapEntry(0, $02, $F7, 0, 0, 3, 1, $15F)
+    %spritemapEntry(0, $1FA, $F7, 0, 0, 3, 1, $15E)
+    %spritemapEntry(0, $1F2, $0F, 0, 0, 3, 1, $152)
+    %spritemapEntry(0, $1F2, $03, 0, 0, 3, 1, $11F)
+    %spritemapEntry(0, $1F2, $FB, 0, 0, 3, 1, $10F)
+    %spritemapEntry(1, $43FA, $07, 0, 0, 3, 1, $143)
+    %spritemapEntry(1, $43FA, $FF, 0, 0, 3, 1, $133)
 
 Spritemaps_DachoraEscape_4:
-    dw $0009,$01EF                                                       ;B3EBE1;
-    db $F3                                                               ;B3EBE5;
-    dw $3310,$C3F7                                                       ;B3EBE6;
-    db $EB                                                               ;B3EBEA;
-    dw $3301,$01F4                                                       ;B3EBEB;
-    db $10                                                               ;B3EBEF;
-    dw $3352,$01F2                                                       ;B3EBF0;
-    db $04                                                               ;B3EBF4;
-    dw $331F,$01F2                                                       ;B3EBF5;
-    db $FC                                                               ;B3EBF9;
-    dw $330F,$0002                                                       ;B3EBFA;
-    db $F8                                                               ;B3EBFE;
-    dw $331E,$01FA                                                       ;B3EBFF;
-    db $F8                                                               ;B3EC03;
-    dw $330E,$C3FA                                                       ;B3EC04;
-    db $08                                                               ;B3EC08;
-    dw $3346,$C3FA                                                       ;B3EC09;
-    db $00                                                               ;B3EC0D;
-    dw $3336                                                             ;B3EC0E;
+    dw $0009                                                             ;B3EBE1;
+    %spritemapEntry(0, $1EF, $F3, 0, 0, 3, 1, $110)
+    %spritemapEntry(1, $43F7, $EB, 0, 0, 3, 1, $101)
+    %spritemapEntry(0, $1F4, $10, 0, 0, 3, 1, $152)
+    %spritemapEntry(0, $1F2, $04, 0, 0, 3, 1, $11F)
+    %spritemapEntry(0, $1F2, $FC, 0, 0, 3, 1, $10F)
+    %spritemapEntry(0, $02, $F8, 0, 0, 3, 1, $11E)
+    %spritemapEntry(0, $1FA, $F8, 0, 0, 3, 1, $10E)
+    %spritemapEntry(1, $43FA, $08, 0, 0, 3, 1, $146)
+    %spritemapEntry(1, $43FA, $00, 0, 0, 3, 1, $136)
 
 Spritemaps_DachoraEscape_5:
-    dw $000B,$01EE                                                       ;B3EC10;
-    db $F1                                                               ;B3EC14;
-    dw $3310,$C3F6                                                       ;B3EC15;
-    db $E9                                                               ;B3EC19;
-    dw $3301,$0002                                                       ;B3EC1A;
-    db $F6                                                               ;B3EC1E;
-    dw $335F,$01FA                                                       ;B3EC1F;
-    db $F6                                                               ;B3EC23;
-    dw $335E,$01EA                                                       ;B3EC24;
-    db $0E                                                               ;B3EC28;
-    dw $335A,$01F2                                                       ;B3EC29;
-    db $FA                                                               ;B3EC2D;
-    dw $330F,$C3FA                                                       ;B3EC2E;
-    db $FE                                                               ;B3EC32;
-    dw $3339,$C3F2                                                       ;B3EC33;
-    db $06                                                               ;B3EC37;
-    dw $3348,$000A                                                       ;B3EC38;
-    db $06                                                               ;B3EC3C;
-    dw $334B,$000A                                                       ;B3EC3D;
-    db $0E                                                               ;B3EC41;
-    dw $335B,$C3F2                                                       ;B3EC42;
-    db $FE                                                               ;B3EC46;
-    dw $3338                                                             ;B3EC47;
+    dw $000B                                                             ;B3EC10;
+    %spritemapEntry(0, $1EE, $F1, 0, 0, 3, 1, $110)
+    %spritemapEntry(1, $43F6, $E9, 0, 0, 3, 1, $101)
+    %spritemapEntry(0, $02, $F6, 0, 0, 3, 1, $15F)
+    %spritemapEntry(0, $1FA, $F6, 0, 0, 3, 1, $15E)
+    %spritemapEntry(0, $1EA, $0E, 0, 0, 3, 1, $15A)
+    %spritemapEntry(0, $1F2, $FA, 0, 0, 3, 1, $10F)
+    %spritemapEntry(1, $43FA, $FE, 0, 0, 3, 1, $139)
+    %spritemapEntry(1, $43F2, $06, 0, 0, 3, 1, $148)
+    %spritemapEntry(0, $0A, $06, 0, 0, 3, 1, $14B)
+    %spritemapEntry(0, $0A, $0E, 0, 0, 3, 1, $15B)
+    %spritemapEntry(1, $43F2, $FE, 0, 0, 3, 1, $138)
 
 Spritemaps_DachoraEscape_6:
-    dw $0009,$0008                                                       ;B3EC49;
-    db $F2                                                               ;B3EC4D;
-    dw $7310,$C3F8                                                       ;B3EC4E;
-    db $EA                                                               ;B3EC52;
-    dw $7301,$01F6                                                       ;B3EC53;
-    db $F7                                                               ;B3EC57;
-    dw $731E,$01FE                                                       ;B3EC58;
-    db $F7                                                               ;B3EC5C;
-    dw $730E,$0006                                                       ;B3EC5D;
-    db $03                                                               ;B3EC61;
-    dw $731F,$0006                                                       ;B3EC62;
-    db $FB                                                               ;B3EC66;
-    dw $730F,$0006                                                       ;B3EC67;
-    db $0F                                                               ;B3EC6B;
-    dw $7322,$C3F6                                                       ;B3EC6C;
-    db $07                                                               ;B3EC70;
-    dw $7313,$C3F6                                                       ;B3EC71;
-    db $FF                                                               ;B3EC75;
-    dw $7303                                                             ;B3EC76;
+    dw $0009                                                             ;B3EC49;
+    %spritemapEntry(0, $08, $F2, 0, 1, 3, 1, $110)
+    %spritemapEntry(1, $43F8, $EA, 0, 1, 3, 1, $101)
+    %spritemapEntry(0, $1F6, $F7, 0, 1, 3, 1, $11E)
+    %spritemapEntry(0, $1FE, $F7, 0, 1, 3, 1, $10E)
+    %spritemapEntry(0, $06, $03, 0, 1, 3, 1, $11F)
+    %spritemapEntry(0, $06, $FB, 0, 1, 3, 1, $10F)
+    %spritemapEntry(0, $06, $0F, 0, 1, 3, 1, $122)
+    %spritemapEntry(1, $43F6, $07, 0, 1, 3, 1, $113)
+    %spritemapEntry(1, $43F6, $FF, 0, 1, 3, 1, $103)
 
 Spritemaps_DachoraEscape_7:
-    dw $0009,$0009                                                       ;B3EC78;
-    db $F3                                                               ;B3EC7C;
-    dw $7310,$C3F9                                                       ;B3EC7D;
-    db $EB                                                               ;B3EC81;
-    dw $7301,$01F6                                                       ;B3EC82;
-    db $F8                                                               ;B3EC86;
-    dw $735F,$01FE                                                       ;B3EC87;
-    db $F8                                                               ;B3EC8B;
-    dw $735E,$0006                                                       ;B3EC8C;
-    db $04                                                               ;B3EC90;
-    dw $731F,$0006                                                       ;B3EC91;
-    db $FC                                                               ;B3EC95;
-    dw $730F,$C3F6                                                       ;B3EC96;
-    db $08                                                               ;B3EC9A;
-    dw $7316,$0006                                                       ;B3EC9B;
-    db $08                                                               ;B3EC9F;
-    dw $7315,$C3F6                                                       ;B3ECA0;
-    db $00                                                               ;B3ECA4;
-    dw $7306                                                             ;B3ECA5;
+    dw $0009                                                             ;B3EC78;
+    %spritemapEntry(0, $09, $F3, 0, 1, 3, 1, $110)
+    %spritemapEntry(1, $43F9, $EB, 0, 1, 3, 1, $101)
+    %spritemapEntry(0, $1F6, $F8, 0, 1, 3, 1, $15F)
+    %spritemapEntry(0, $1FE, $F8, 0, 1, 3, 1, $15E)
+    %spritemapEntry(0, $06, $04, 0, 1, 3, 1, $11F)
+    %spritemapEntry(0, $06, $FC, 0, 1, 3, 1, $10F)
+    %spritemapEntry(1, $43F6, $08, 0, 1, 3, 1, $116)
+    %spritemapEntry(0, $06, $08, 0, 1, 3, 1, $115)
+    %spritemapEntry(1, $43F6, $00, 0, 1, 3, 1, $106)
 
 Spritemaps_DachoraEscape_8:
-    dw $000B,$000A                                                       ;B3ECA7;
-    db $F1                                                               ;B3ECAB;
-    dw $7310,$C3FA                                                       ;B3ECAC;
-    db $E9                                                               ;B3ECB0;
-    dw $7301,$000E                                                       ;B3ECB1;
-    db $0E                                                               ;B3ECB5;
-    dw $732D,$01F6                                                       ;B3ECB6;
-    db $F6                                                               ;B3ECBA;
-    dw $731E,$01FE                                                       ;B3ECBB;
-    db $F6                                                               ;B3ECBF;
-    dw $730E,$0006                                                       ;B3ECC0;
-    db $FA                                                               ;B3ECC4;
-    dw $730F,$C3F6                                                       ;B3ECC5;
-    db $FE                                                               ;B3ECC9;
-    dw $7309,$C3FE                                                       ;B3ECCA;
-    db $FE                                                               ;B3ECCE;
-    dw $7308,$01EE                                                       ;B3ECCF;
-    db $0E                                                               ;B3ECD3;
-    dw $732B,$01EE                                                       ;B3ECD4;
-    db $06                                                               ;B3ECD8;
-    dw $731B,$C3FE                                                       ;B3ECD9;
-    db $06                                                               ;B3ECDD;
-    dw $7318                                                             ;B3ECDE;
+    dw $000B                                                             ;B3ECA7;
+    %spritemapEntry(0, $0A, $F1, 0, 1, 3, 1, $110)
+    %spritemapEntry(1, $43FA, $E9, 0, 1, 3, 1, $101)
+    %spritemapEntry(0, $0E, $0E, 0, 1, 3, 1, $12D)
+    %spritemapEntry(0, $1F6, $F6, 0, 1, 3, 1, $11E)
+    %spritemapEntry(0, $1FE, $F6, 0, 1, 3, 1, $10E)
+    %spritemapEntry(0, $06, $FA, 0, 1, 3, 1, $10F)
+    %spritemapEntry(1, $43F6, $FE, 0, 1, 3, 1, $109)
+    %spritemapEntry(1, $43FE, $FE, 0, 1, 3, 1, $108)
+    %spritemapEntry(0, $1EE, $0E, 0, 1, 3, 1, $12B)
+    %spritemapEntry(0, $1EE, $06, 0, 1, 3, 1, $11B)
+    %spritemapEntry(1, $43FE, $06, 0, 1, 3, 1, $118)
 
 Spritemaps_DachoraEscape_9:
-    dw $0009,$0008                                                       ;B3ECE0;
-    db $F2                                                               ;B3ECE4;
-    dw $7310,$C3F8                                                       ;B3ECE5;
-    db $EA                                                               ;B3ECE9;
-    dw $7301,$01F6                                                       ;B3ECEA;
-    db $F7                                                               ;B3ECEE;
-    dw $735F,$01FE                                                       ;B3ECEF;
-    db $F7                                                               ;B3ECF3;
-    dw $735E,$0006                                                       ;B3ECF4;
-    db $0F                                                               ;B3ECF8;
-    dw $7352,$0006                                                       ;B3ECF9;
-    db $03                                                               ;B3ECFD;
-    dw $731F,$0006                                                       ;B3ECFE;
-    db $FB                                                               ;B3ED02;
-    dw $730F,$C3F6                                                       ;B3ED03;
-    db $07                                                               ;B3ED07;
-    dw $7343,$C3F6                                                       ;B3ED08;
-    db $FF                                                               ;B3ED0C;
-    dw $7333                                                             ;B3ED0D;
+    dw $0009                                                             ;B3ECE0;
+    %spritemapEntry(0, $08, $F2, 0, 1, 3, 1, $110)
+    %spritemapEntry(1, $43F8, $EA, 0, 1, 3, 1, $101)
+    %spritemapEntry(0, $1F6, $F7, 0, 1, 3, 1, $15F)
+    %spritemapEntry(0, $1FE, $F7, 0, 1, 3, 1, $15E)
+    %spritemapEntry(0, $06, $0F, 0, 1, 3, 1, $152)
+    %spritemapEntry(0, $06, $03, 0, 1, 3, 1, $11F)
+    %spritemapEntry(0, $06, $FB, 0, 1, 3, 1, $10F)
+    %spritemapEntry(1, $43F6, $07, 0, 1, 3, 1, $143)
+    %spritemapEntry(1, $43F6, $FF, 0, 1, 3, 1, $133)
 
 Spritemaps_DachoraEscape_A:
-    dw $0009,$0009                                                       ;B3ED0F;
-    db $F3                                                               ;B3ED13;
-    dw $7310,$C3F9                                                       ;B3ED14;
-    db $EB                                                               ;B3ED18;
-    dw $7301,$0004                                                       ;B3ED19;
-    db $10                                                               ;B3ED1D;
-    dw $7352,$0006                                                       ;B3ED1E;
-    db $04                                                               ;B3ED22;
-    dw $731F,$0006                                                       ;B3ED23;
-    db $FC                                                               ;B3ED27;
-    dw $730F,$01F6                                                       ;B3ED28;
-    db $F8                                                               ;B3ED2C;
-    dw $731E,$01FE                                                       ;B3ED2D;
-    db $F8                                                               ;B3ED31;
-    dw $730E,$C3F6                                                       ;B3ED32;
-    db $08                                                               ;B3ED36;
-    dw $7346,$C3F6                                                       ;B3ED37;
-    db $00                                                               ;B3ED3B;
-    dw $7336                                                             ;B3ED3C;
+    dw $0009                                                             ;B3ED0F;
+    %spritemapEntry(0, $09, $F3, 0, 1, 3, 1, $110)
+    %spritemapEntry(1, $43F9, $EB, 0, 1, 3, 1, $101)
+    %spritemapEntry(0, $04, $10, 0, 1, 3, 1, $152)
+    %spritemapEntry(0, $06, $04, 0, 1, 3, 1, $11F)
+    %spritemapEntry(0, $06, $FC, 0, 1, 3, 1, $10F)
+    %spritemapEntry(0, $1F6, $F8, 0, 1, 3, 1, $11E)
+    %spritemapEntry(0, $1FE, $F8, 0, 1, 3, 1, $10E)
+    %spritemapEntry(1, $43F6, $08, 0, 1, 3, 1, $146)
+    %spritemapEntry(1, $43F6, $00, 0, 1, 3, 1, $136)
 
 Spritemaps_DachoraEscape_B:
-    dw $000B,$000A                                                       ;B3ED3E;
-    db $F1                                                               ;B3ED42;
-    dw $7310,$C3FA                                                       ;B3ED43;
-    db $E9                                                               ;B3ED47;
-    dw $7301,$01F6                                                       ;B3ED48;
-    db $F6                                                               ;B3ED4C;
-    dw $735F,$01FE                                                       ;B3ED4D;
-    db $F6                                                               ;B3ED51;
-    dw $735E,$000E                                                       ;B3ED52;
-    db $0E                                                               ;B3ED56;
-    dw $735A,$0006                                                       ;B3ED57;
-    db $FA                                                               ;B3ED5B;
-    dw $730F,$C3F6                                                       ;B3ED5C;
-    db $FE                                                               ;B3ED60;
-    dw $7339,$C3FE                                                       ;B3ED61;
-    db $06                                                               ;B3ED65;
-    dw $7348,$01EE                                                       ;B3ED66;
-    db $06                                                               ;B3ED6A;
-    dw $734B,$01EE                                                       ;B3ED6B;
-    db $0E                                                               ;B3ED6F;
-    dw $735B,$C3FE                                                       ;B3ED70;
-    db $FE                                                               ;B3ED74;
-    dw $7338                                                             ;B3ED75;
+    dw $000B                                                             ;B3ED3E;
+    %spritemapEntry(0, $0A, $F1, 0, 1, 3, 1, $110)
+    %spritemapEntry(1, $43FA, $E9, 0, 1, 3, 1, $101)
+    %spritemapEntry(0, $1F6, $F6, 0, 1, 3, 1, $15F)
+    %spritemapEntry(0, $1FE, $F6, 0, 1, 3, 1, $15E)
+    %spritemapEntry(0, $0E, $0E, 0, 1, 3, 1, $15A)
+    %spritemapEntry(0, $06, $FA, 0, 1, 3, 1, $10F)
+    %spritemapEntry(1, $43F6, $FE, 0, 1, 3, 1, $139)
+    %spritemapEntry(1, $43FE, $06, 0, 1, 3, 1, $148)
+    %spritemapEntry(0, $1EE, $06, 0, 1, 3, 1, $14B)
+    %spritemapEntry(0, $1EE, $0E, 0, 1, 3, 1, $15B)
+    %spritemapEntry(1, $43FE, $FE, 0, 1, 3, 1, $138)
+
 
 Freespace_BankB3_ED77:                                                   ;B3ED77;
 ; $1289 bytes
