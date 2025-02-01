@@ -2401,9 +2401,13 @@ EnemyPopulations_ThreeMusketeers:
 
 EnemyPopulations_Crocomire:
     dw EnemyHeaders_Crocomire                                            ;A1BB0E;
-    dw $0480,$0078,$BD2A,$A800,$0004,$0000,$0000                         ;A1BB10;
+    dw $0480,$0078                                                       ;A1BB10;
+    dw InstList_Crocomire_WaitForFirstSecondDamage_Roar                  ;A1BB14;
+    dw $A800,$0004,$0000,$0000                                           ;A1BB16;
     dw EnemyHeaders_CrocomireTongue                                      ;A1BB1E;
-    dw $0480,$0078,$BD2A,$A800,$0004,$0000,$0000                         ;A1BB20;
+    dw $0480,$0078                                                       ;A1BB20;
+    dw InstList_Crocomire_WaitForFirstSecondDamage_Roar                  ;A1BB24;
+    dw $A800,$0004,$0000,$0000                                           ;A1BB26;
     dw #$FFFF : db $00                                                   ;A1BB2E;
 
 EnemyPopulations_LNElevSave:
