@@ -9827,7 +9827,7 @@ InstList_Alcoon_FacingLeft_SpawnFireballs:
     dw $0001,Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit      ;A8DC47;
 
 InstList_Alcoon_FacingLeft_Airborne_LookingUp:
-    dw $7FFF,UNUSED_Spritemap_Alcoon_FacingLeft_LookingUp_A8E0BB         ;A8DC4B;
+    dw $7FFF,Spritemap_Alcoon_FacingLeft_LookingUp                       ;A8DC4B;
     dw Instruction_Common_Sleep                                          ;A8DC4F;
 
 InstList_Alcoon_FacingLeft_Airborne_LookingForward:
@@ -10369,8 +10369,7 @@ Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit:
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10A)
     %spritemapEntry(1, $1F6, $E8, 0, 0, 2, 0, $100)
 
-if  !FEATURE_KEEP_UNREFERENCED
-UNUSED_Spritemap_Alcoon_FacingLeft_LookingUp_A8E0BB:
+Spritemap_Alcoon_FacingLeft_LookingUp:
     dw $0006                                                             ;A8E0BB;
     %spritemapEntry(1, $1FD, $F3, 0, 0, 2, 0, $124)
     %spritemapEntry(0, $1FA, $E4, 0, 1, 2, 0, $13A)
@@ -10378,7 +10377,6 @@ UNUSED_Spritemap_Alcoon_FacingLeft_LookingUp_A8E0BB:
     %spritemapEntry(1, $04, $FC, 0, 0, 2, 0, $122)
     %spritemapEntry(1, $1F8, $08, 0, 0, 2, 0, $108)
     %spritemapEntry(1, $1F8, $F8, 0, 0, 2, 0, $10A)
-endif ; !FEATURE_KEEP_UNREFERENCED
 
 Spritemap_Alcoon_FacingRight_FrontFootFoward:
     dw $0006                                                             ;A8E0DB;
