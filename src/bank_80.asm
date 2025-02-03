@@ -5092,7 +5092,7 @@ StartGameplay:
 ;;; $A12B: Handle music queue for 20 frames ;;;
 HandleMusicQueueFor20Frames:
 ; Called by:
-;     $A07B: Start gameplay
+;     StartGameplay
     PHP                                                                  ;80A12B;
     SEP #$30                                                             ;80A12C;
     JSL.L EnableNMI                                                      ;80A12E;
@@ -5112,7 +5112,10 @@ HandleMusicQueueFor20Frames:
     RTS                                                                  ;80A148;
 
 
+;;; $A149: Resume gameplay ;;;
 ResumeGameplay:
+; Called by:
+;     $82:9367: Game state 11h (unpausing, loading normal gameplay)
     PHP                                                                  ;80A149;
     PHB                                                                  ;80A14A;
     PHK                                                                  ;80A14B;
@@ -5133,7 +5136,19 @@ ResumeGameplay:
     RTL                                                                  ;80A175;
 
 
+;;; $A176: Display the viewable part of the room ;;;
 DisplayViewablePartOfRoom:
+; Called by:
+;     $A07B: Start gameplay
+;     $A149: Resume gameplay
+
+; Draws the 17x16 block area starting at:
+;     ([layer 1 X position], [layer 1 Y position]) for BG1 level data
+;     ([layer 2 X position], [layer 2 Y position]) for BG2 level data
+;     ([BG1 X position], [BG1 Y position]) for BG1 VRAM position
+;     ([BG2 X position], [BG2 Y position]) for BG2 VRAM position
+
+; Expects force blank to be enabled!
     PHP                                                                  ;80A176;
     SEP #$20                                                             ;80A177;
     LDA.B $58                                                            ;80A179;
@@ -5146,7 +5161,7 @@ DisplayViewablePartOfRoom:
     JSR.W Calculate_BGScroll_LayerPositionBlocks                         ;80A187;
     LDX.W #$0000                                                         ;80A18A;
 
-.loop:
+  .loop:
     PHX                                                                  ;80A18D;
     LDA.W $08F7                                                          ;80A18E;
     STA.W $0990                                                          ;80A191;
@@ -5170,7 +5185,7 @@ DisplayViewablePartOfRoom:
     STA.W $0996                                                          ;80A1C4;
     JSR.W UpdateBackgroundDataColumn                                     ;80A1C7;
 
-.increment:
+  .increment:
     JSL.L HandleVRAMWriteTable_ScrollingDMAs                             ;80A1CA;
     PLX                                                                  ;80A1CE;
     INC.W $08F7                                                          ;80A1CF;
@@ -5185,11 +5200,12 @@ DisplayViewablePartOfRoom:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $A1E3: Unused. Queue clearing of BG2 tilemap ;;;
 UNUSED_QueueClearingOfBG2Tilemap_80A1E3:
     LDX.W #$0FFE                                                         ;80A1E3;
     LDA.W #$0338                                                         ;80A1E6;
 
-.loop:
+  .loop:
     STA.L $7E4000,X                                                      ;80A1E9;
     DEX                                                                  ;80A1ED;
     DEX                                                                  ;80A1EE;
@@ -5211,11 +5227,14 @@ UNUSED_QueueClearingOfBG2Tilemap_80A1E3:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $A211: Queue clearing of FX tilemap ;;;
 QueueClearingOfFXTilemap:
+; Called by:
+;     $82:8CEF: Game state Dh (pausing, loading pause menu)
     LDX.W #$0EFE                                                         ;80A211;
     LDA.W #$184E                                                         ;80A214;
 
-.loop:
+  .loop:
     STA.L $7E4000,X                                                      ;80A217;
     DEX                                                                  ;80A21B;
     DEX                                                                  ;80A21C;
@@ -5236,7 +5255,14 @@ QueueClearingOfFXTilemap:
     RTL                                                                  ;80A23E;
 
 
+;;; $A23F: Clear BG2 tilemap ;;;
 ClearBG2Tilemap:
+; Called by:
+;     $A07B: Start gameplay
+;     $82:EA56: Load library background - command Ah: clear BG2 tilemap
+;     $82:EA5E: Load library background - command Ch: clear Kraid's layer 2
+
+; Looks like $A27A is supposed to be LDA #$A29B
     PHP                                                                  ;80A23F;
     REP #$20                                                             ;80A240;
     LDA.W #$4800                                                         ;80A242;
@@ -5273,11 +5299,15 @@ ClearBG2Tilemap:
     PLP                                                                  ;80A298;
     RTL                                                                  ;80A299;
 
-
-.addr:
+  .addr:
     dw $0338                                                             ;80A29A;
 
+
+;;; $A29C: Clear FX tilemap ;;;
 ClearFXTilemap:
+; Called by:
+;     $82:E97C: Load library background
+;     $82:EA4E: Load library background - command 6: clear FX tilemap
     PHP                                                                  ;80A29C;
     REP #$20                                                             ;80A29D;
     LDA.W #$5880                                                         ;80A29F;
@@ -5314,11 +5344,30 @@ ClearFXTilemap:
     PLP                                                                  ;80A2F5;
     RTL                                                                  ;80A2F6;
 
-
-.addr:
+  .addr:
     dw $184E                                                             ;80A2F7;
 
+
+;;; $A2F9: Calculate layer 2 X position ;;;
 CalculateLayer2XPosition:
+;; Returns:
+;;     Carry: Clear if BG2 needs to be scrolled
+;;     A: Layer 2 X position
+
+; Called by:
+;     $A07B: Start gameplay
+;     $A3AB: Calculate layer 2 position and BG scrolls and update BG graphics when scrolling
+;     $AD4A: Door transition scrolling setup - right
+;     $AD74: Door transition scrolling setup - left
+;     $AD9E: Door transition scrolling setup - down
+;     $ADC8: Door transition scrolling setup - up
+
+; If [layer 2 scroll X] = 0:
+;     Layer 2 X position = [layer 1 X position]
+; Else if [layer 2 scroll X] = 1:
+;     Carry is set (layer 2 X position unchanged)
+; Else:
+;     Layer 2 X position = [layer 1 X position] * ([layer 2 scroll X] >> 1) / 80h
     PHP                                                                  ;80A2F9;
     LDY.W $0911                                                          ;80A2FA;
     SEP #$20                                                             ;80A2FD;
@@ -5343,7 +5392,7 @@ CalculateLayer2XPosition:
     ADC.W $4216                                                          ;80A32A;
     TAY                                                                  ;80A32D;
 
-.scrollReturn:
+  .scrollReturn:
     REP #$20                                                             ;80A32E;
     TYA                                                                  ;80A330;
     STA.W $0917                                                          ;80A331;
@@ -5351,14 +5400,32 @@ CalculateLayer2XPosition:
     CLC                                                                  ;80A335;
     RTS                                                                  ;80A336;
 
-
-.return:
+  .return:
     PLP                                                                  ;80A337;
     SEC                                                                  ;80A338;
     RTS                                                                  ;80A339;
 
 
+;;; $A33A: Calculate layer 2 Y position ;;;
 CalculateLayer2YPosition:
+;; Returns:
+;;     Carry: Clear if BG2 needs to be scrolled
+;;     A: Layer 2 Y position
+
+; Called by:
+;     $A07B: Start gameplay
+;     $A3AB: Calculate layer 2 position and BG scrolls and update BG graphics when scrolling
+;     $AD4A: Door transition scrolling setup - right
+;     $AD74: Door transition scrolling setup - left
+;     $AD9E: Door transition scrolling setup - down
+;     $ADC8: Door transition scrolling setup - up
+
+; If [layer 2 scroll Y] = 0:
+;     Layer 2 Y position = [layer 1 Y position]
+; Else if [layer 2 scroll Y] = 1:
+;     Carry is set (layer 2 Y position unchanged)
+; Else:
+;     Layer 2 Y position = [layer 1 Y position] * ([layer 2 scroll Y] >> 1) / 80h
     PHP                                                                  ;80A33A;
     LDY.W $0915                                                          ;80A33B;
     SEP #$20                                                             ;80A33E;
@@ -5383,7 +5450,7 @@ CalculateLayer2YPosition:
     ADC.W $4216                                                          ;80A36B;
     TAY                                                                  ;80A36E;
 
-.scrollReturn:
+  .scrollReturn:
     REP #$20                                                             ;80A36F;
     TYA                                                                  ;80A371;
     STA.W $0919                                                          ;80A372;
@@ -5391,14 +5458,17 @@ CalculateLayer2YPosition:
     CLC                                                                  ;80A376;
     RTS                                                                  ;80A377;
 
-
-.return:
+  .return:
     PLP                                                                  ;80A378;
     SEC                                                                  ;80A379;
     RTS                                                                  ;80A37A;
 
 
+;;; $A37B: Calculate BG scrolls ;;;
 CalculateBGScrolls:
+; Called by:
+;     $A07B: Start gameplay
+;     $A3A0: Calculate BG scrolls and update BG graphics when scrolling (door transition)
     LDA.W $0911                                                          ;80A37B;
     CLC                                                                  ;80A37E;
     ADC.W $091D                                                          ;80A37F;
@@ -5418,7 +5488,13 @@ CalculateBGScrolls:
     RTS                                                                  ;80A39F;
 
 
+;;; $A3A0: Calculate BG scrolls and update BG graphics when scrolling ;;;
 CalculateBGScrolls_UpdateBGGraphics_WhenScrolling:
+; Called by:
+;     $AE7E: Door transition scrolling - right
+;     $AEC2: Door transition scrolling - left
+;     $AF02: Door transition scrolling - down
+;     $AF89: Door transition scrolling - up
     PHP                                                                  ;80A3A0;
     PHB                                                                  ;80A3A1;
     PHK                                                                  ;80A3A2;
@@ -5428,13 +5504,17 @@ CalculateBGScrolls_UpdateBGGraphics_WhenScrolling:
     BRA UpdateBGGraphics_WhenScrolling                                   ;80A3A9;
 
 
+;;; $A3AB: Calculate layer 2 position and BG scrolls and update BG graphics when scrolling ;;;
 Calc_Layer2Position_BGScrolls_UpdateBGGraphics_WhenScrolling:
+; Called by
+;     $82:8B44: Game state 8 (main gameplay)
+;     $82:E310: Door transition function - scroll screen to alignment
+;     $82:E675: Unused. Door transition function
     LDA.W $0A78                                                          ;80A3AB;
     BEQ .continue                                                        ;80A3AE;
     RTL                                                                  ;80A3B0;
 
-
-.continue:
+  .continue:
     PHP                                                                  ;80A3B1;
     PHB                                                                  ;80A3B2;
     PHK                                                                  ;80A3B3;
@@ -5454,14 +5534,22 @@ Calc_Layer2Position_BGScrolls_UpdateBGGraphics_WhenScrolling:
     ADC.W $0921                                                          ;80A3CF;
     STA.B $B5                                                            ;80A3D2;
 
-.layer2Y:
+  .layer2Y:
     JSR.W CalculateLayer2YPosition                                       ;80A3D4;
     BCS UpdateBGGraphics_WhenScrolling                                   ;80A3D7;
     CLC                                                                  ;80A3D9;
     ADC.W $0923                                                          ;80A3DA;
-    STA.B $B7                                                            ;80A3DD;
+    STA.B $B7                                                            ;80A3DD; fallthrough to UpdateBGGraphics_WhenScrolling
 
+
+;;; $A3DF: Update BG graphics when scrolling ;;;
 UpdateBGGraphics_WhenScrolling:
+; Called by:
+;     $A3A0: Calculate BG scrolls and update BG graphics when scrolling
+;     $A3AB: Calculate layer 2 position and BG scrolls and update BG graphics when scrolling
+
+; Calculates new BG and layer positions, calls the update level/background data row/column functions and updates the previous layer 1/2 X/Y block values
+; Expects a pushed DB and PSR
     REP #$20                                                             ;80A3DF;
     JSR.W Calculate_BGScroll_LayerPositionBlocks                         ;80A3E1;
     LDX.W #$0000                                                         ;80A3E4;
@@ -5472,7 +5560,7 @@ UpdateBGGraphics_WhenScrolling:
     BMI .updateLayer1                                                    ;80A3F2;
     LDX.W #$0010                                                         ;80A3F4;
 
-.updateLayer1:
+  .updateLayer1:
     TXA                                                                  ;80A3F7;
     CLC                                                                  ;80A3F8;
     ADC.W $08F7                                                          ;80A3F9;
@@ -5487,7 +5575,7 @@ UpdateBGGraphics_WhenScrolling:
     STA.W $0996                                                          ;80A410;
     JSR.W UpdateLevelDataColumn                                          ;80A413;
 
-.layer1HorizontalEnd:
+  .layer1HorizontalEnd:
     LDA.W $091B                                                          ;80A416;
     LSR A                                                                ;80A419;
     BCS .layer2HorizontalEnd                                             ;80A41A;
@@ -5499,7 +5587,7 @@ UpdateBGGraphics_WhenScrolling:
     BMI .updateLayer2                                                    ;80A42A;
     LDX.W #$0010                                                         ;80A42C;
 
-.updateLayer2:
+  .updateLayer2:
     TXA                                                                  ;80A42F;
     CLC                                                                  ;80A430;
     ADC.W $08FB                                                          ;80A431;
@@ -5514,7 +5602,7 @@ UpdateBGGraphics_WhenScrolling:
     STA.W $0996                                                          ;80A448;
     JSR.W UpdateBackgroundDataColumn                                     ;80A44B;
 
-.layer2HorizontalEnd:
+  .layer2HorizontalEnd:
     LDX.W #$0001                                                         ;80A44E;
     LDA.W $08F9                                                          ;80A451;
     CMP.W $0901                                                          ;80A454;
@@ -5537,7 +5625,7 @@ UpdateBGGraphics_WhenScrolling:
     STA.W $0994                                                          ;80A47A;
     JSR.W UpdateLevelDataRow                                             ;80A47D;
 
-.layer1VerticalEnd:
+  .layer1VerticalEnd:
     LDA.W $091C                                                          ;80A480;
     LSR A                                                                ;80A483;
     BCS .return                                                          ;80A484;
@@ -5549,7 +5637,7 @@ UpdateBGGraphics_WhenScrolling:
     BMI .finish                                                          ;80A494;
     LDX.W #$000F                                                         ;80A496;
 
-.finish:
+  .finish:
     TXA                                                                  ;80A499;
     CLC                                                                  ;80A49A;
     ADC.W $08FD                                                          ;80A49B;
@@ -5564,13 +5652,24 @@ UpdateBGGraphics_WhenScrolling:
     STA.W $0994                                                          ;80A4B2;
     JSR.W UpdateBackgroundDataRow                                        ;80A4B5;
 
-.return:
+  .return:
     PLB                                                                  ;80A4B8;
     PLP                                                                  ;80A4B9;
     RTL                                                                  ;80A4BA;
 
 
+;;; $A4BB: Calculate BG scroll and layer position blocks ;;;
 Calculate_BGScroll_LayerPositionBlocks:
+; Called by:
+;     $A176: Display the viewable part of the room
+;     $A3DF: Update BG graphics when scrolling
+;     $AD1D: Draw top row of screen for upwards door transition
+;     $AD4A: Door transition scrolling setup - right
+;     $AD74: Door transition scrolling setup - left
+;     $AD9E: Door transition scrolling setup - down
+;     $ADC8: Door transition scrolling setup - up
+;     $AF02: Door transition scrolling - down
+;     $AF89: Door transition scrolling - up
     LDA.B $B1                                                            ;80A4BB;
     LSR A                                                                ;80A4BD;
     LSR A                                                                ;80A4BE;
@@ -5638,7 +5737,33 @@ Calculate_BGScroll_LayerPositionBlocks:
     RTS                                                                  ;80A527;
 
 
+;;; $A528: Handle scroll zones - horizontal autoscrolling ;;;
 HandleScrollZones_HorizontalAutoscrolling:
+; Called by:
+;     $90:94EC: Main scrolling routine
+;     $90:95A0: Handle horizontal scrolling
+
+; If time frozen:
+;     Return
+;
+; Layer 1 X position = clamp([layer 1 X position], 0, (room width in pixels) - 100h)
+;
+; If layer 1 position + 1/2 scroll down's scroll = red:
+; {
+;     $0933 = position of right scroll boundary
+;     $0939 = [layer 1 X position] + [camera X speed] + 2
+;     Layer 1 X position = min([$0939], [$0933])
+;     If [$0939] < [$0933] and layer 1 position + 1/2 scroll down + 1 scroll right's scroll = red:
+;         Round layer 1 X position to left scroll boundary
+; }
+; Else if layer 1 position + 1/2 scroll down + 1 scroll right's scroll = red:
+; {
+;     $0933 = position of left scroll boundary
+;     $0939 = [layer 1 X position] - [camera X speed] - 2
+;     Layer 1 X position = max([$0939], [$0933])
+;     If [$0939] >= [$0933] and layer 1 position + 1/2 scroll down's scroll = red:
+;         Layer 1 X position = [$0939] rounded to right scroll boundary
+; }
     PHP                                                                  ;80A528;
     PHB                                                                  ;80A529;
     SEP #$20                                                             ;80A52A;
@@ -5715,18 +5840,15 @@ HandleScrollZones_HorizontalAutoscrolling:
     AND.W #$FF00                                                         ;80A5CA;
     BRA +                                                                ;80A5CD;
 
-
-.returnLayer1X:
+  .returnLayer1X:
     LDA.W $0939                                                          ;80A5CF;
     BRA +                                                                ;80A5D2;
 
-
-.reachedRightScrollBoundary:
+  .reachedRightScrollBoundary:
     LDA.W $0933                                                          ;80A5D4;
     BRA +                                                                ;80A5D7;
 
-
-.unboundedFromLeft:
+  .unboundedFromLeft:
     INX                                                                  ;80A5D9;
     LDA.L $7ECD20,X                                                      ;80A5DA;
     AND.W #$00FF                                                         ;80A5DE;
@@ -5764,24 +5886,25 @@ HandleScrollZones_HorizontalAutoscrolling:
     ADC.W #$0100                                                         ;80A62E;
     BRA +                                                                ;80A631;
 
-
-.return0939:
+  .return0939:
     LDA.W $0939                                                          ;80A633;
     BRA +                                                                ;80A636;
 
-
-.reachedLeftScrollBoundary:
+  .reachedLeftScrollBoundary:
     LDA.W $0933                                                          ;80A638;
 
   + STA.W $0911                                                          ;80A63B;
 
-.return:
+  .return:
     PLB                                                                  ;80A63E;
     PLP                                                                  ;80A63F;
     RTL                                                                  ;80A640;
 
 
+;;; $A641: Handle scroll zones - scrolling right ;;;
 HandleScrollZones_ScrollingRight:
+; Called by:
+;     $90:95A0: Handle horizontal scrolling
     PHP                                                                  ;80A641;
     PHB                                                                  ;80A642;
     SEP #$20                                                             ;80A643;
@@ -5805,7 +5928,6 @@ HandleScrollZones_ScrollingRight:
     BCS +                                                                ;80A66A;
     STA.W $0911                                                          ;80A66C;
     BRA .return                                                          ;80A66F;
-
 
   + LDA.W $0915                                                          ;80A671;
     CLC                                                                  ;80A674;
@@ -5837,13 +5959,16 @@ HandleScrollZones_ScrollingRight:
 
   + STA.W $0911                                                          ;80A6B5;
 
-.return:
+  .return:
     PLB                                                                  ;80A6B8;
     PLP                                                                  ;80A6B9;
     RTL                                                                  ;80A6BA;
 
 
+;;; $A6BB: Handle scroll zones - scrolling left ;;;
 HandleScrollZones_ScrollingLeft:
+; Called by:
+;     $90:95A0: Handle horizontal scrolling
     PHP                                                                  ;80A6BB;
     PHB                                                                  ;80A6BC;
     SEP #$20                                                             ;80A6BD;
@@ -5863,7 +5988,6 @@ HandleScrollZones_ScrollingLeft:
     BPL +                                                                ;80A6DC;
     STZ.W $0911                                                          ;80A6DE;
     BRA .return                                                          ;80A6E1;
-
 
   + LDA.W $0915                                                          ;80A6E3;
     CLC                                                                  ;80A6E6;
@@ -5897,13 +6021,47 @@ HandleScrollZones_ScrollingLeft:
 
   + STA.W $0911                                                          ;80A72B;
 
-.return:
+  .return:
     PLB                                                                  ;80A72E;
     PLP                                                                  ;80A72F;
     RTL                                                                  ;80A730;
 
 
+;;; $A731: Handle scroll zones - vertical autoscrolling ;;;
 HandleScrollZones_VerticalAutoscrolling:
+; Called by:
+;     $90:94EC: Main scrolling routine
+;     $90:964F: Handle vertical scrolling
+
+; If time frozen:
+;     Return
+;
+; If layer 1 position + 1/2 scroll right's scroll = blue:
+;     $0933 = 0
+; Else
+;     $0933 = 1Fh
+;
+; Layer 1 Y position = clamp([layer 1 Y position], 0, (room height in pixels) - 100h + [$0933])
+;
+; If layer 1 position + 1/2 scroll right's scroll = red:
+; {
+;     $0935 = position of bottom scroll boundary
+;     $0939 = [layer 1 Y position] + [camera Y speed] + 2
+;     Layer 1 X position = min([$0939], [$0935])
+;     If [$0939] < [$0935] and layer 1 position + 1/2 scroll right + 1 scroll down's scroll = red:
+;         Round layer 1 Y position to top scroll boundary
+; }
+; Else if layer 1 position + 1/2 scroll right + 1 scroll down's scroll = red:
+; {
+;     $0937 = position of top scroll boundary + [$0933]
+;     If [$0937] < [layer 1 Y position]:
+;     {
+;         $0939 = [layer 1 Y position] - [camera Y speed] - 2
+;         Layer 1 Y position = max([$0939], [$0937])
+;         If [$0939] >= [$0937] and layer 1 position + 1/2 scroll right's scroll = red:
+;             Layer 1 Y position = [$0939] rounded to right bottom boundary
+;     }
+; }
     PHP                                                                  ;80A731;
     PHB                                                                  ;80A732;
     SEP #$20                                                             ;80A733;
@@ -5911,7 +6069,6 @@ HandleScrollZones_VerticalAutoscrolling:
     ORA.W $0A79                                                          ;80A738;
     BEQ +                                                                ;80A73B;
     JMP.W .return                                                        ;80A73D;
-
 
   + LDA.B #$8F                                                           ;80A740;
     PHA                                                                  ;80A742;
@@ -6005,17 +6162,14 @@ HandleScrollZones_VerticalAutoscrolling:
     AND.W #$FF00                                                         ;80A80E;
     BRA .returnLayer1Y                                                   ;80A811;
 
-
   + LDA.W $0939                                                          ;80A813;
     BRA .returnLayer1Y                                                   ;80A816;
 
-
-.reachedBottomScrollBoundary:
+  .reachedBottomScrollBoundary:
     LDA.W $0935                                                          ;80A818;
     BRA .returnLayer1Y                                                   ;80A81B;
 
-
-.unboundedFromAbove:
+  .unboundedFromAbove:
     TXA                                                                  ;80A81D;
     CLC                                                                  ;80A81E;
     ADC.W $07A9                                                          ;80A81F;
@@ -6060,25 +6214,26 @@ HandleScrollZones_VerticalAutoscrolling:
     ADC.W #$0100                                                         ;80A880;
     BRA .returnLayer1Y                                                   ;80A883;
 
-
-.returnProposedLayer1X:
+  .returnProposedLayer1X:
     LDA.W $0939                                                          ;80A885;
     BRA .returnLayer1Y                                                   ;80A888;
 
-
-.reachedTopScrollBoundary:
+  .reachedTopScrollBoundary:
     LDA.W $0937                                                          ;80A88A;
 
-.returnLayer1Y:
+  .returnLayer1Y:
     STA.W $0915                                                          ;80A88D;
 
-.return:
+  .return:
     PLB                                                                  ;80A890;
     PLP                                                                  ;80A891;
     RTL                                                                  ;80A892;
 
 
+;;; $A893: Handle scroll zones - scrolling down ;;;
 HandleScrollZones_ScrollingDown:
+; Called by:
+;     $90:964F: Handle vertical scrolling
     PHP                                                                  ;80A893;
     PHB                                                                  ;80A894;
     SEP #$20                                                             ;80A895;
@@ -6141,7 +6296,7 @@ HandleScrollZones_ScrollingDown:
     CMP.W $0915                                                          ;80A919;
     BCS .return                                                          ;80A91C;
 
-.setLayer1Y:
+  .setLayer1Y:
     LDA.W $0939                                                          ;80A91E;
     SEC                                                                  ;80A921;
     SBC.W $0DA6                                                          ;80A922;
@@ -6152,13 +6307,16 @@ HandleScrollZones_ScrollingDown:
 
   + STA.W $0915                                                          ;80A930;
 
-.return:
+  .return:
     PLB                                                                  ;80A933;
     PLP                                                                  ;80A934;
     RTL                                                                  ;80A935;
 
 
+;;; $A936: Handle scroll zones - scrolling up ;;;
 HandleScrollZones_ScrollingUp:
+; Called by:
+;     $90:964F: Handle vertical scrolling
     PHP                                                                  ;80A936;
     PHB                                                                  ;80A937;
     SEP #$20                                                             ;80A938;
@@ -6178,7 +6336,6 @@ HandleScrollZones_ScrollingUp:
     BPL +                                                                ;80A957;
     STZ.W $0915                                                          ;80A959;
     BRA .return                                                          ;80A95C;
-
 
   + SEP #$20                                                             ;80A95E;
     LDA.W $0916                                                          ;80A960;
@@ -6212,12 +6369,13 @@ HandleScrollZones_ScrollingUp:
 
   + STA.W $0915                                                          ;80A9A6;
 
-.return:
+  .return:
     PLB                                                                  ;80A9A9;
     PLP                                                                  ;80A9AA;
     RTL                                                                  ;80A9AB;
 
 
+;;; $A9AC: Debug layer 1 position save/loading ;;;
 Debug_Layer1Position_Saving_Loading:
     LDA.B $91                                                            ;80A9AC;
     AND.W #$0040                                                         ;80A9AE;
@@ -6241,19 +6399,72 @@ Debug_Layer1Position_Saving_Loading:
     RTL                                                                  ;80A9D5;
 
 
+;;; $A9D6: Update background data column ;;;
 UpdateBackgroundDataColumn:
+; Called by:
+;     $A176: Display the viewable part of the room
+;     $A3DF: Update BG graphics when scrolling
     LDX.W #$001C                                                         ;80A9D6;
     BRA UpdateLevelBackgroundDataColumn                                  ;80A9D9;
 
 
+;;; $A9DB: Update level data column ;;;
 UpdateLevelDataColumn:
-    LDX.W #$0000                                                         ;80A9DB;
+; Called by:
+;     $A176: Display the viewable part of the room
+;     $A3DF: Update BG graphics when scrolling
+    LDX.W #$0000                                                         ;80A9DB; fallthrough to UpdateLevelBackgroundDataColumn
 
+
+;;; $A9DE: Update level/background data column ;;;
 UpdateLevelBackgroundDataColumn:
+;; Parameters:
+;;     X: WRAM offset. 0 for level data, 1Ch for background data. See $0956 in RAM map
+
+; Called by:
+;     $A9D6: Update background data column
+;     $A9DB: Update level data column
+
+; VRAM is allocated 32x16 blocks (64x32 VRAM blocks) of space (2 screens)
+; The visible part of the room spans 16x14 blocks
+; Suppose we have a 2x2 screen room, that's 32x32 blocks (64x64 VRAM blocks)
+; Suppose the room was loaded from the top-left and has been scrolled to position (8,8) (in blocks)
+; Initially the memory layout of the level data and VRAM mirror each other (broadly speaking)
+; As the screen is being scrolled down, rows of blocks are loaded and placed after the end of where the previous last row of blocks is
+; Note that the previous top row of blocks isn't erased and the VRAM data isn't "moved up" in memory, the BG1/BG2 scroll registers are incremented instead
+; If the bottom of the VRAM has been reached, the blocks are loaded to the top of VRAM instead, so there's a pacman-esque wrapping behaviour
+
+; When loading a new column of data (due to scrolling horizontally), the column will have to be loaded in two parts (if the visible screen is vertically wrapped in VRAM)
+; The first part is the top of the visible screen corresponding to the bottom part in VRAM
+; The second part is the remaining bottom part of the visible screen corresponding to the wrapped top part in VRAM
+
+; The diagram below is attempting to show this correspondence graphically, each character is 2x2 blocks (4x4 VRAM blocks)
+; # blocks are whatever off-screen blocks
+; O blocks are whatever on-screen blocks
+; * blocks are the blocks that are being loaded by this routine
+; @ blocks (in VRAM) are whatever garbage that exists in VRAM because the screen hasn't been scrolled far enough right
+
+;             Level data            =>              VRAM
+;   0 1 2 3 4 5 6 7 8 9 A B C D E F    0 1 2 3 4 5 6 7 8 9 A B C D E F
+; 0 # # # # # # # # # # # # # # # #    # # # # O O O * O O O O @ @ @ @ \
+; 1 # # # # # # # # # # # # # # # #    # # # # O O O * O O O O @ @ @ @ } The bottom section of the visible screen
+; 2 # # # # # # # # # # # # # # # #    # # # # O O O O O O O O @ @ @ @ /
+; 3 # # # # # # # # # # # # # # # #    # # # # # # # # # # # # @ @ @ @ <-- The row above the visible part of the screen
+; 4 # # # # O O O O O O O O # # # #    # # # # O O O O O O O O @ @ @ @ \
+; 5 # # # # O O O O O O O O # # # #    # # # # O O O O O O O O @ @ @ @ |
+; 6 # # # # O O O * O O O O # # # #    # # # # O O O * O O O O @ @ @ @ } The top section of the visible screen
+; 7 # # # # O O O * O O O O # # # #    # # # # O O O * O O O O @ @ @ @ /
+; 8 # # # # O O O * O O O O # # # #
+; 9 # # # # O O O * O O O O # # # #
+; A # # # # O O O O O O O O # # # #
+; B # # # # # # # # # # # # # # # #
+; C # # # # # # # # # # # # # # # #
+; D # # # # # # # # # # # # # # # #
+; E # # # # # # # # # # # # # # # #
+; F # # # # # # # # # # # # # # # #
     LDA.W $0783                                                          ;80A9DE;
     BEQ +                                                                ;80A9E1;
     RTS                                                                  ;80A9E3;
-
 
   + PHP                                                                  ;80A9E4;
     SEP #$20                                                             ;80A9E5;
@@ -6343,7 +6554,7 @@ UpdateLevelBackgroundDataColumn:
     LDA.W #$0010                                                         ;80AA9E;
     STA.W $0939                                                          ;80AAA1;
 
-.loop:
+  .loop:
     LDA.B [$36],Y                                                        ;80AAA4;
     STA.W $093B                                                          ;80AAA6;
     AND.W #$03FF                                                         ;80AAA9;
@@ -6366,7 +6577,6 @@ UpdateLevelBackgroundDataColumn:
     STA.W $C90A,Y                                                        ;80AAD1;
     JMP.W .next                                                          ;80AAD4;
 
-
   + CMP.W #$0400                                                         ;80AAD7;
     BNE +                                                                ;80AADA;
     LDA.W $A002,X                                                        ;80AADC;
@@ -6382,7 +6592,6 @@ UpdateLevelBackgroundDataColumn:
     EOR.W #$4000                                                         ;80AAFA;
     STA.W $C90A,Y                                                        ;80AAFD;
     BRA .next                                                            ;80AB00;
-
 
   + CMP.W #$0800                                                         ;80AB02;
     BNE +                                                                ;80AB05;
@@ -6400,7 +6609,6 @@ UpdateLevelBackgroundDataColumn:
     STA.W $C90A,Y                                                        ;80AB28;
     BRA .next                                                            ;80AB2B;
 
-
   + LDA.W $A006,X                                                        ;80AB2D;
     EOR.W #$C000                                                         ;80AB30;
     STA.W $C8C8,Y                                                        ;80AB33;
@@ -6414,7 +6622,7 @@ UpdateLevelBackgroundDataColumn:
     EOR.W #$C000                                                         ;80AB4B;
     STA.W $C90A,Y                                                        ;80AB4E;
 
-.next:
+  .next:
     INY                                                                  ;80AB51;
     INY                                                                  ;80AB52;
     INY                                                                  ;80AB53;
@@ -6429,8 +6637,7 @@ UpdateLevelBackgroundDataColumn:
     BEQ .return                                                          ;80AB64;
     JMP.W .loop                                                          ;80AB66;
 
-
-.return:
+  .return:
     PLX                                                                  ;80AB69;
     INC.W $0962,X                                                        ;80AB6A;
     PLB                                                                  ;80AB6D;
@@ -6438,19 +6645,32 @@ UpdateLevelBackgroundDataColumn:
     RTS                                                                  ;80AB6F;
 
 
+;;; $AB70: Update background data row ;;;
 UpdateBackgroundDataRow:
+; Called by:
+;     $A3DF: Update BG graphics when scrolling
     LDX.W #$001C                                                         ;80AB70;
     BRA UpdateBackgroundLevelDataRow                                     ;80AB73;
 
 
+;;; $AB75: Update level data row ;;;
 UpdateLevelDataRow:
-    LDX.W #$0000                                                         ;80AB75;
+; Called by:
+;     $A3DF: Update BG graphics when scrolling
+    LDX.W #$0000                                                         ;80AB75; fallthrough to UpdateBackgroundLevelDataRow
 
+
+;;; $AB78: Update level/background data row ;;;
 UpdateBackgroundLevelDataRow:
+;; Parameters:
+;;     X: WRAM offset. 0 for level data, 1Ch for background data. See $0964 in RAM map
+
+; Called by:
+;     $AB70: Update background data row
+;     $AB75: Update level data row
     LDA.W $0783                                                          ;80AB78;
     BEQ +                                                                ;80AB7B;
     RTS                                                                  ;80AB7D;
-
 
   + PHP                                                                  ;80AB7E;
     SEP #$20                                                             ;80AB7F;
@@ -6553,7 +6773,7 @@ UpdateBackgroundLevelDataRow:
     LDA.W #$0011                                                         ;80AC51;
     STA.W $0939                                                          ;80AC54;
 
-.loop:
+  .loop:
     LDA.B [$36],Y                                                        ;80AC57;
     STA.W $093B                                                          ;80AC59;
     AND.W #$03FF                                                         ;80AC5C;
@@ -6576,7 +6796,6 @@ UpdateBackgroundLevelDataRow:
     STA.W $C98E,Y                                                        ;80AC84;
     JMP.W .next                                                          ;80AC87;
 
-
   + CMP.W #$0400                                                         ;80AC8A;
     BNE +                                                                ;80AC8D;
     LDA.W $A002,X                                                        ;80AC8F;
@@ -6592,7 +6811,6 @@ UpdateBackgroundLevelDataRow:
     EOR.W #$4000                                                         ;80ACAD;
     STA.W $C98E,Y                                                        ;80ACB0;
     BRA .next                                                            ;80ACB3;
-
 
   + CMP.W #$0800                                                         ;80ACB5;
     BNE +                                                                ;80ACB8;
@@ -6610,7 +6828,6 @@ UpdateBackgroundLevelDataRow:
     STA.W $C98E,Y                                                        ;80ACDB;
     BRA .next                                                            ;80ACDE;
 
-
   + LDA.W $A006,X                                                        ;80ACE0;
     EOR.W #$C000                                                         ;80ACE3;
     STA.W $C948,Y                                                        ;80ACE6;
@@ -6624,7 +6841,7 @@ UpdateBackgroundLevelDataRow:
     EOR.W #$C000                                                         ;80ACFE;
     STA.W $C98E,Y                                                        ;80AD01;
 
-.next:
+  .next:
     INY                                                                  ;80AD04;
     INY                                                                  ;80AD05;
     INY                                                                  ;80AD06;
@@ -6637,8 +6854,7 @@ UpdateBackgroundLevelDataRow:
     BEQ .return                                                          ;80AD11;
     JMP.W .loop                                                          ;80AD13;
 
-
-.return:
+  .return:
     PLX                                                                  ;80AD16;
     INC.W $0970,X                                                        ;80AD17;
     PLB                                                                  ;80AD1A;
@@ -6646,7 +6862,12 @@ UpdateBackgroundLevelDataRow:
     RTS                                                                  ;80AD1C;
 
 
+;;; $AD1D: Draw top row of screen for upwards door transition ;;;
 DrawTopRowOfScreenForUpwardsDoorTransition:
+; Called by:
+;     $82:E353: Door transition function - fix doors moving up
+
+; See DoorTransitionScrolling_Up
     STZ.W $0925                                                          ;80AD1D;
     JSR.W Calculate_BGScroll_LayerPositionBlocks                         ;80AD20;
     JSR.W UpdatePreviousLayerBlocks                                      ;80AD23;
@@ -6656,7 +6877,10 @@ DrawTopRowOfScreenForUpwardsDoorTransition:
     RTL                                                                  ;80AD2F;
 
 
+;;; $AD30: Door transition scrolling setup ;;;
 DoorTransitionScrollingSetup:
+; Called by:
+;     $82:E38E: Door transition function - set up scrolling
     REP #$30                                                             ;80AD30;
     LDA.W $0927                                                          ;80AD32;
     STA.W $0911                                                          ;80AD35;
@@ -6670,6 +6894,7 @@ DoorTransitionScrollingSetup:
     RTL                                                                  ;80AD49;
 
 
+;;; $AD4A: Door transition scrolling setup - right ;;;
 DoorTransitionScrollingSetup_Right:
     JSR.W CalculateLayer2XPosition                                       ;80AD4A;
     SEC                                                                  ;80AD4D;
@@ -6689,6 +6914,7 @@ DoorTransitionScrollingSetup_Right:
     RTS                                                                  ;80AD73;
 
 
+;;; $AD74: Door transition scrolling setup - left ;;;
 DoorTransitionScrollingSetup_Left:
     JSR.W CalculateLayer2XPosition                                       ;80AD74;
     CLC                                                                  ;80AD77;
@@ -6708,6 +6934,7 @@ DoorTransitionScrollingSetup_Left:
     RTS                                                                  ;80AD9D;
 
 
+;;; $AD9E: Door transition scrolling setup - down ;;;
 DoorTransitionScrollingSetup_Down:
     JSR.W CalculateLayer2XPosition                                       ;80AD9E;
     JSR.W CalculateLayer2YPosition                                       ;80ADA1;
@@ -6727,6 +6954,7 @@ DoorTransitionScrollingSetup_Down:
     RTS                                                                  ;80ADC7;
 
 
+;;; $ADC8: Door transition scrolling setup - up ;;;
 DoorTransitionScrollingSetup_Up:
     JSR.W CalculateLayer2XPosition                                       ;80ADC8;
     LDA.W $0915                                                          ;80ADCB;
@@ -6756,12 +6984,15 @@ DoorTransitionScrollingSetup_Up:
     RTS                                                                  ;80AE07;
 
 
+;;; $AE08: Pointers to door transition scrolling setup code ;;;
 Door_Transition_Scrolling_Setup_Pointers:
     dw DoorTransitionScrollingSetup_Right                                ;80AE08;
     dw DoorTransitionScrollingSetup_Left                                 ;80AE0A;
     dw DoorTransitionScrollingSetup_Down                                 ;80AE0C;
     dw DoorTransitionScrollingSetup_Up                                   ;80AE0E;
 
+
+;;; $AE10: Update previous layer blocks ;;;
 UpdatePreviousLayerBlocks:
     LDA.W $08F7                                                          ;80AE10;
     STA.W $08FF                                                          ;80AE13;
@@ -6774,7 +7005,13 @@ UpdatePreviousLayerBlocks:
     RTS                                                                  ;80AE28;
 
 
+;;; $AE29: Update BG scroll offsets ;;;
 UpdateBGScrollOffsets:
+; Called by:
+;     $AD4A: Door transition scrolling setup - right
+;     $AD74: Door transition scrolling setup - left
+;     $AD9E: Door transition scrolling setup - down
+;     $ADC8: Door transition scrolling setup - up
     LDA.B $B1                                                            ;80AE29;
     SEC                                                                  ;80AE2B;
     SBC.W $0911                                                          ;80AE2C;
@@ -6794,6 +7031,7 @@ UpdateBGScrollOffsets:
     RTS                                                                  ;80AE4D;
 
 
+;;; $AE4E: Door transition scrolling ;;;
 DoorTransitionScrolling:
     PHP                                                                  ;80AE4E;
     PHB                                                                  ;80AE4F;
@@ -6813,11 +7051,10 @@ DoorTransitionScrolling:
     LDA.W #$8000                                                         ;80AE6D;
     TSB.W $0931                                                          ;80AE70;
 
-.return:
+  .return:
     PLB                                                                  ;80AE73;
     PLP                                                                  ;80AE74;
     RTL                                                                  ;80AE75;
-
 
 .pointers:
     dw DoorTransitionScrolling_Right                                     ;80AE76;
@@ -6825,7 +7062,11 @@ DoorTransitionScrolling:
     dw DoorTransitionScrolling_Down                                      ;80AE7A;
     dw DoorTransitionScrolling_Up                                        ;80AE7C;
 
+
+;;; $AE7E: Door transition scrolling - right ;;;
 DoorTransitionScrolling_Right:
+;; Returns:
+;;     Carry: Set if finished scrolling, clear otherwise
     LDX.W $0925                                                          ;80AE7E;
     PHX                                                                  ;80AE81;
     LDA.W $0AF8                                                          ;80AE82;
@@ -6854,12 +7095,14 @@ DoorTransitionScrolling_Right:
     SEC                                                                  ;80AEBE;
     RTS                                                                  ;80AEBF;
 
-
   + CLC                                                                  ;80AEC0;
     RTS                                                                  ;80AEC1;
 
 
+;;; $AEC2: Door transition scrolling - left ;;;
 DoorTransitionScrolling_Left:
+;; Returns:
+;;     Carry: Set if finished scrolling, clear otherwise
     LDX.W $0925                                                          ;80AEC2;
     PHX                                                                  ;80AEC5;
     LDA.W $0AF8                                                          ;80AEC6;
@@ -6887,12 +7130,25 @@ DoorTransitionScrolling_Left:
     SEC                                                                  ;80AEFE;
     RTS                                                                  ;80AEFF;
 
-
   + CLC                                                                  ;80AF00;
     RTS                                                                  ;80AF01;
 
 
+;;; $AF02: Door transition scrolling - down ;;;
 DoorTransitionScrolling_Down:
+;; Returns:
+;;     Carry: Set if finished scrolling, clear otherwise
+
+; Spends 1 frame drawing the top row of the new room
+; Then spends 38h frames doing the scrolling (38h frames * 4px/frame = 224px)
+
+; The reason the top row of the new room isn't drawn by scrolling is that vertical scrolling loads one row ahead below the screen
+; In other words, there's always a tilemap row loaded that's fully off-screen below the visible tilemap
+; So prior to the door transition when the camera is scrolled to the edge of a scroll,
+; it has already loaded the row below the door into the tilemap (which is garbage if the door was at a room boundary)
+; Any further scrolling would work on the assumption that row has been loaded already, and that row is the top row of the destination room
+
+; tldr: need to redraw the top row to replace the garbage
     LDX.W $0925                                                          ;80AF02;
     PHX                                                                  ;80AF05;
     BNE +                                                                ;80AF06;
@@ -6925,7 +7181,6 @@ DoorTransitionScrolling_Down:
     STA.B $B3                                                            ;80AF40;
     BRA .finish                                                          ;80AF42;
 
-
   + CPX.W #$0039                                                         ;80AF44;
     BCS .finish                                                          ;80AF47;
     LDA.W $0AFC                                                          ;80AF49;
@@ -6946,7 +7201,7 @@ DoorTransitionScrolling_Down:
     STA.W $0919                                                          ;80AF70;
     JSL.L CalculateBGScrolls_UpdateBGGraphics_WhenScrolling              ;80AF73;
 
-.finish:
+  .finish:
     PLX                                                                  ;80AF77;
     INX                                                                  ;80AF78;
     STX.W $0925                                                          ;80AF79;
@@ -6956,12 +7211,24 @@ DoorTransitionScrolling_Down:
     SEC                                                                  ;80AF85;
     RTS                                                                  ;80AF86;
 
-
   + CLC                                                                  ;80AF87;
     RTS                                                                  ;80AF88;
 
 
+;;; $AF89: Door transition scrolling - up ;;;
 DoorTransitionScrolling_Up:
+;; Returns:
+;;     Carry: Set if finished scrolling, clear otherwise
+
+; This routine - unlike the other three door transition directions - is called once prior to the destination room being loaded (via $AD1D)
+; The reason for this is to load the tilemap for the top row of the scroll, which hasn't yet been loaded by the scrolling routine
+; After the destination room has been loaded and the screen starts scrolling, on frames 1..4 don't call the scrolling routine,
+; as that would load the tilemap according to the destination room, which would be the row below the scroll you're going to (likely garbage)
+; Of course there doesn't need to be any updates due to scrolling because the row was already loaded manually on frame 0
+; Then scrolling as per usual for the remaining 34h frames (38h frames * 4px/frame = 224px)
+
+; tldr: need to load top row and not overwrite that row in the next room
+; I'm fairly sure all of this could have been avoided if the vertical scrolling tilemap did updates to rows 0..Fh instead of 1..Fh (see $80:A45E)
     LDX.W $0925                                                          ;80AF89;
     PHX                                                                  ;80AF8C;
     BNE +                                                                ;80AF8D;
@@ -6993,7 +7260,6 @@ DoorTransitionScrolling_Up:
     PLA                                                                  ;80AFC6;
     STA.B $B3                                                            ;80AFC7;
     BRA .done                                                            ;80AFC9;
-
 
   + LDA.W $0AFC                                                          ;80AFCB;
     SEC                                                                  ;80AFCE;
@@ -7031,10 +7297,9 @@ DoorTransitionScrolling_Up:
     STA.B $B7                                                            ;80B01C;
     BRA .done                                                            ;80B01E;
 
-
   + JSL.L CalculateBGScrolls_UpdateBGGraphics_WhenScrolling              ;80B020;
 
-.done:
+  .done:
     PLX                                                                  ;80B024;
     INX                                                                  ;80B025;
     STX.W $0925                                                          ;80B026;
@@ -7043,20 +7308,20 @@ DoorTransitionScrolling_Up:
     SEC                                                                  ;80B02E;
     RTS                                                                  ;80B02F;
 
-
   + CLC                                                                  ;80B030;
     RTS                                                                  ;80B031;
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $B032: Unused. Set up rotating mode 7 background ;;;
 UNUSED_SetupRotatingMode7Background_80B032:
+; Uses data from $98 that doesn't exist anymore
     LDA.W #$0001                                                         ;80B032;
     STA.W $0783                                                          ;80B035;
     LDA.W $0783                                                          ;80B038; >_<
     BNE +                                                                ;80B03B;
     SEC                                                                  ;80B03D; dead code
     RTL                                                                  ;80B03E;
-
 
   + JSL.L SetForceBlankAndWaitForNMI                                     ;80B03F;
     LDA.W #$0080                                                         ;80B043;
@@ -7078,19 +7343,19 @@ UNUSED_SetupRotatingMode7Background_80B032:
     STZ.W $2117                                                          ;80B070;
     LDX.W #$4000                                                         ;80B073;
 
-.loopClearLowBytes:
+  .loopClearLowBytes:
     STZ.W $2118                                                          ;80B076;
     DEX                                                                  ;80B079;
     BNE .loopClearLowBytes                                               ;80B07A;
     LDY.W #$0000                                                         ;80B07C;
     TYX                                                                  ;80B07F;
 
-.loop:
+  .loop:
     STY.W $2116                                                          ;80B080;
     PHY                                                                  ;80B083;
     LDY.W #$0020                                                         ;80B084;
 
-.innerLoop:
+  .innerLoop:
     LDA.L $98C000,X                                                      ;80B087; data doesn't exist in final release?
     STA.W $2118                                                          ;80B08B;
     INX                                                                  ;80B08E;
@@ -7121,6 +7386,7 @@ UNUSED_SetupRotatingMode7Background_80B032:
     RTL                                                                  ;80B0C1;
 
 
+;;; $B0C2: Unused. Configure mode 7 rotation matrix ;;;
 UNUSED_ConfigureMode7RotationMatrix_80B0C2:
     PHP                                                                  ;80B0C2;
     REP #$30                                                             ;80B0C3;
@@ -7149,13 +7415,19 @@ UNUSED_ConfigureMode7RotationMatrix_80B0C2:
     STA.B $7E                                                            ;80B0F8;
     INC.W $0785                                                          ;80B0FA;
 
-.return:
+  .return:
     PLP                                                                  ;80B0FD;
     RTL                                                                  ;80B0FE;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
+;;; $B119: Decompression - variable destination ;;;
 Decompression_HardcodedDestination:
+;; Parameters:
+;;     $47: Source address (3 bytes)
+;;     $4C: Destination address (3 bytes)
+
+; Source may overflow bank, target may NOT
     LDA.B $02,S                                                          ;80B0FF;
     STA.B $45                                                            ;80B101;
     LDA.B $01,S                                                          ;80B103;
@@ -7168,9 +7440,16 @@ Decompression_HardcodedDestination:
     STA.B $4C                                                            ;80B112;
     INY                                                                  ;80B114;
     LDA.B [$44],Y                                                        ;80B115;
-    STA.B $4D                                                            ;80B117;
+    STA.B $4D                                                            ;80B117; fallthrough to Decompression_VariableDestination
 
+
+;;; $B119: Decompression - variable destination ;;;
 Decompression_VariableDestination:
+;; Parameters:
+;;     $47: Source address (3 bytes)
+;;     $4C: Destination address (3 bytes)
+
+; Source may overflow bank, target may NOT
     PHP                                                                  ;80B119;
     PHB                                                                  ;80B11A;
     SEP #$20                                                             ;80B11B;
@@ -7181,7 +7460,7 @@ Decompression_VariableDestination:
     STZ.B $50                                                            ;80B123;
     LDY.W #$0000                                                         ;80B125;
 
-.loopMain:
+  .loopMain:
     PHX                                                                  ;80B128;
     LDX.B $47                                                            ;80B129;
     LDA.W $0000,X                                                        ;80B12B;
@@ -7197,7 +7476,6 @@ Decompression_VariableDestination:
     PLB                                                                  ;80B13D;
     PLP                                                                  ;80B13E;
     RTL                                                                  ;80B13F;
-
 
   + AND.B #$E0                                                           ;80B140;
     CMP.B #$E0                                                           ;80B142;
@@ -7222,8 +7500,7 @@ Decompression_VariableDestination:
     PLX                                                                  ;80B161;
     BRA +                                                                ;80B162;
 
-
-.pushCommandBits:
+  .pushCommandBits:
     PHA                                                                  ;80B164;
     LDA.B #$00                                                           ;80B165;
     XBA                                                                  ;80B167;
@@ -7237,7 +7514,6 @@ Decompression_VariableDestination:
     BPL +                                                                ;80B171;
     JMP.W .dictionaryVariant                                             ;80B173;
 
-
   + CMP.B #$20                                                           ;80B176;
     BEQ .byteFill                                                        ;80B178;
     CMP.B #$40                                                           ;80B17A;
@@ -7245,7 +7521,8 @@ Decompression_VariableDestination:
     CMP.B #$60                                                           ;80B17E;
     BEQ .incrementingFill                                                ;80B180;
 
-.loopDirectCopy:
+  .loopDirectCopy:
+; Command 0: Direct copy
     PHX                                                                  ;80B182;
     LDX.B $47                                                            ;80B183;
     LDA.W $0000,X                                                        ;80B185;
@@ -7261,7 +7538,8 @@ Decompression_VariableDestination:
     BNE .loopDirectCopy                                                  ;80B195;
     BEQ .loopMain                                                        ;80B197;
 
-.byteFill:
+  .byteFill:
+; Command 1: Byte fill
     PHX                                                                  ;80B199;
     LDX.B $47                                                            ;80B19A;
     LDA.W $0000,X                                                        ;80B19C;
@@ -7272,15 +7550,15 @@ Decompression_VariableDestination:
   + STX.B $47                                                            ;80B1A5;
     PLX                                                                  ;80B1A7;
 
-.loopByteFill:
+  .loopByteFill:
     STA.B [$4C],Y                                                        ;80B1A8;
     INY                                                                  ;80B1AA;
     DEX                                                                  ;80B1AB;
     BNE .loopByteFill                                                    ;80B1AC;
     JMP.W .loopMain                                                      ;80B1AE;
 
-
-.wordFill:
+  .wordFill:
+; Command 2: Word fill
     PHX                                                                  ;80B1B1;
     LDX.B $47                                                            ;80B1B2;
     LDA.W $0000,X                                                        ;80B1B4;
@@ -7302,7 +7580,7 @@ Decompression_VariableDestination:
     PLX                                                                  ;80B1D0;
     STA.B $4B                                                            ;80B1D1;
 
-.loopWordFill:
+  .loopWordFill:
     LDA.B $4A                                                            ;80B1D3;
     STA.B [$4C],Y                                                        ;80B1D5;
     INY                                                                  ;80B1D7;
@@ -7314,11 +7592,11 @@ Decompression_VariableDestination:
     DEX                                                                  ;80B1E0;
     BNE .loopWordFill                                                    ;80B1E1;
 
-.goto_loopMain:
+  .goto_loopMain:
     JMP.W .loopMain                                                      ;80B1E3;
 
-
-.incrementingFill:
+  .incrementingFill:
+; Command 3: Incrementing fill
     PHX                                                                  ;80B1E6;
     LDX.B $47                                                            ;80B1E7;
     LDA.W $0000,X                                                        ;80B1E9;
@@ -7329,7 +7607,7 @@ Decompression_VariableDestination:
   + STX.B $47                                                            ;80B1F2;
     PLX                                                                  ;80B1F4;
 
-.loopIncrementingFill:
+  .loopIncrementingFill:
     STA.B [$4C],Y                                                        ;80B1F5;
     INC A                                                                ;80B1F7;
     INY                                                                  ;80B1F8;
@@ -7337,10 +7615,11 @@ Decompression_VariableDestination:
     BNE .loopIncrementingFill                                            ;80B1FA;
     JMP.W .loopMain                                                      ;80B1FC;
 
-
-.dictionaryVariant:
+  .dictionaryVariant:
+; Commands 4..7:
     CMP.B #$C0                                                           ;80B1FF;
     BCS .slidingDictionary                                               ;80B201;
+; Command 4 and 5: dictionary copy and inverted dictionary copy
     AND.B #$20                                                           ;80B203;
     STA.B $4F                                                            ;80B205;
     PHX                                                                  ;80B207;
@@ -7364,10 +7643,10 @@ Decompression_VariableDestination:
     PLX                                                                  ;80B226;
     STA.B $4B                                                            ;80B227;
 
-.dictionaryCopy:
+  .dictionaryCopy:
     SEP #$20                                                             ;80B229;
 
-.loopDictionaryCopy:
+  .loopDictionaryCopy:
     PHX                                                                  ;80B22B;
     PHY                                                                  ;80B22C;
     LDY.B $4A                                                            ;80B22D;
@@ -7386,8 +7665,8 @@ Decompression_VariableDestination:
     BNE .loopDictionaryCopy                                              ;80B240;
     JMP.W .loopMain                                                      ;80B242;
 
-
-.slidingDictionary:
+  .slidingDictionary:
+; Command 6 and 7: sliding dictionary copy and inverted sliding dictionary copy
     AND.B #$20                                                           ;80B245;
     STA.B $4F                                                            ;80B247;
     PHX                                                                  ;80B249;
@@ -7409,7 +7688,13 @@ Decompression_VariableDestination:
     BRA .dictionaryCopy                                                  ;80B264;
 
 
+;;; $B266: Source bank overflow correction ;;;
 SourceBankOverflowCorrection:
+;; Parameters:
+;;     DB: Source bank
+;; Returns:
+;;     X: $8000
+;;     DB: Incremented source bank
     LDX.W #$8000                                                         ;80B266;
     PHA                                                                  ;80B269;
     PHB                                                                  ;80B26A;
@@ -7421,7 +7706,13 @@ SourceBankOverflowCorrection:
     RTS                                                                  ;80B270;
 
 
+;;; $B271: Decompression to VRAM ;;;
 DecompressionToVRAM:
+;; Parameters:
+;;     $47: Source address (3 bytes)
+;;     $4C: Destination VRAM address * 2 (2 bytes) (must not be odd)
+
+; VRAM destination address $2116 and VRAM increment mode $2115 must be set by the caller (ready for 16-bit access)!
     PHP                                                                  ;80B271;
     PHB                                                                  ;80B272;
     REP #$10                                                             ;80B273;
@@ -7449,7 +7740,6 @@ DecompressionToVRAM:
     PLP                                                                  ;80B295;
     RTL                                                                  ;80B296;
 
-
   + AND.B #$E0                                                           ;80B297;
     CMP.B #$E0                                                           ;80B299;
     BNE .pushCommandBits                                                 ;80B29B;
@@ -7473,8 +7763,7 @@ DecompressionToVRAM:
     PLX                                                                  ;80B2B8;
     BRA +                                                                ;80B2B9;
 
-
-.pushCommandBits:
+  .pushCommandBits:
     PHA                                                                  ;80B2BB;
     LDA.B #$00                                                           ;80B2BC;
     XBA                                                                  ;80B2BE;
@@ -7488,7 +7777,6 @@ DecompressionToVRAM:
     BPL +                                                                ;80B2C8;
     JMP.W .dictionaryVariant                                             ;80B2CA;
 
-
   + CMP.B #$20                                                           ;80B2CD;
     BEQ .byteFill                                                        ;80B2CF;
     CMP.B #$40                                                           ;80B2D1;
@@ -7497,8 +7785,8 @@ DecompressionToVRAM:
     BNE .loopDirectCopy                                                  ;80B2D7;
     JMP.W .incrementingFill                                              ;80B2D9;
 
-
-.loopDirectCopy:
+  .loopDirectCopy:
+; Command 0: Direct copy
     PHX                                                                  ;80B2DC;
     LDX.B $47                                                            ;80B2DD;
     LDA.W $0000,X                                                        ;80B2DF;
@@ -7516,18 +7804,17 @@ DecompressionToVRAM:
     STA.L $002118                                                        ;80B2F1;
     BRA .VRAMDataWriteHigh                                               ;80B2F5;
 
-
-.VRAMDataWriteLow:
+  .VRAMDataWriteLow:
     STA.L $002119                                                        ;80B2F7;
 
-.VRAMDataWriteHigh:
+  .VRAMDataWriteHigh:
     INY                                                                  ;80B2FB;
     DEX                                                                  ;80B2FC;
     BNE .loopDirectCopy                                                  ;80B2FD;
     JMP.W .loopMain                                                      ;80B2FF;
 
-
-.byteFill:
+  .byteFill:
+; Command 1: Byte fill
     PHX                                                                  ;80B302;
     LDX.B $47                                                            ;80B303;
     LDA.W $0000,X                                                        ;80B305;
@@ -7538,7 +7825,7 @@ DecompressionToVRAM:
   + STX.B $47                                                            ;80B30E;
     PLX                                                                  ;80B310;
 
-.loopByteFill:
+  .loopByteFill:
     PHA                                                                  ;80B311;
     TYA                                                                  ;80B312;
     LSR A                                                                ;80B313;
@@ -7547,18 +7834,17 @@ DecompressionToVRAM:
     STA.L $002118                                                        ;80B317;
     BRA ..writeLow                                                       ;80B31B;
 
-
-..writeHigh:
+  ..writeHigh:
     STA.L $002119                                                        ;80B31D;
 
-..writeLow:
+  ..writeLow:
     INY                                                                  ;80B321;
     DEX                                                                  ;80B322;
     BNE .loopByteFill                                                    ;80B323;
     JMP.W .loopMain                                                      ;80B325;
 
-
-.wordFill:
+  .wordFill:
+; Command 2: Word fill
     PHX                                                                  ;80B328;
     LDX.B $47                                                            ;80B329;
     LDA.W $0000,X                                                        ;80B32B;
@@ -7580,7 +7866,7 @@ DecompressionToVRAM:
     PLX                                                                  ;80B347;
     STA.B $4B                                                            ;80B348;
 
-.loopWordFill:
+  .loopWordFill:
     LDA.B $4A                                                            ;80B34A;
     PHA                                                                  ;80B34C;
     TYA                                                                  ;80B34D;
@@ -7590,11 +7876,10 @@ DecompressionToVRAM:
     STA.L $002118                                                        ;80B352;
     BRA ..writeLow                                                       ;80B356;
 
-
-..writeHigh:
+  ..writeHigh:
     STA.L $002119                                                        ;80B358;
 
-..writeLow:
+  ..writeLow:
     INY                                                                  ;80B35C;
     DEX                                                                  ;80B35D;
     BEQ .goto_loopMain                                                   ;80B35E;
@@ -7607,20 +7892,19 @@ DecompressionToVRAM:
     STA.L $002118                                                        ;80B368;
     BRA .writeLow2                                                       ;80B36C;
 
-
-..writeHigh2:
+  ..writeHigh2:
     STA.L $002119                                                        ;80B36E;
 
-.writeLow2:
+  .writeLow2:
     INY                                                                  ;80B372;
     DEX                                                                  ;80B373;
     BNE .loopWordFill                                                    ;80B374;
 
-.goto_loopMain:
+  .goto_loopMain:
     JMP.W .loopMain                                                      ;80B376;
 
-
-.incrementingFill:
+  .incrementingFill:
+; Command 3: Incrementing fill
     PHX                                                                  ;80B379;
     LDX.B $47                                                            ;80B37A;
     LDA.W $0000,X                                                        ;80B37C;
@@ -7631,7 +7915,7 @@ DecompressionToVRAM:
   + STX.B $47                                                            ;80B385;
     PLX                                                                  ;80B387;
 
-.loopIncrementingFill:
+  .loopIncrementingFill:
     PHA                                                                  ;80B388;
     TYA                                                                  ;80B389;
     LSR A                                                                ;80B38A;
@@ -7640,21 +7924,21 @@ DecompressionToVRAM:
     STA.L $002118                                                        ;80B38E;
     BRA ..writeLow                                                       ;80B392;
 
-
-..writeHigh:
+  ..writeHigh:
     STA.L $002119                                                        ;80B394;
 
-..writeLow:
+  ..writeLow:
     INY                                                                  ;80B398;
     INC A                                                                ;80B399;
     DEX                                                                  ;80B39A;
     BNE .loopIncrementingFill                                            ;80B39B;
     JMP.W .loopMain                                                      ;80B39D;
 
-
-.dictionaryVariant:
+  .dictionaryVariant:
+; Commands 4..7:
     CMP.B #$C0                                                           ;80B3A0;
     BCS .slidingDictionary                                               ;80B3A2;
+; Command 4 and 5: dictionary copy and inverted dictionary copy
     AND.B #$20                                                           ;80B3A4;
     STA.B $4F                                                            ;80B3A6;
     PHX                                                                  ;80B3A8;
@@ -7683,7 +7967,7 @@ DecompressionToVRAM:
     ADC.B $4A                                                            ;80B3CF;
     STA.B $4A                                                            ;80B3D1;
 
-.loopDictionaryCopy:
+  .loopDictionaryCopy:
     PHX                                                                  ;80B3D3;
     REP #$20                                                             ;80B3D4;
     LDA.B $4A                                                            ;80B3D6;
@@ -7715,19 +7999,18 @@ DecompressionToVRAM:
     STA.L $002118                                                        ;80B404;
     BRA ..writeLow                                                       ;80B408;
 
-
-..writeHigh:
+  ..writeHigh:
     STA.L $002119                                                        ;80B40A;
 
-..writeLow:
+  ..writeLow:
     INY                                                                  ;80B40E;
     PLX                                                                  ;80B40F;
     DEX                                                                  ;80B410;
     BNE .loopDictionaryCopy                                              ;80B411;
     JMP.W .loopMain                                                      ;80B413;
 
-
-.slidingDictionary:
+  .slidingDictionary:
+; Command 6 and 7: sliding dictionary copy and inverted sliding dictionary copy
     AND.B #$20                                                           ;80B416;
     STA.B $4F                                                            ;80B418;
     PHX                                                                  ;80B41A;
@@ -7749,7 +8032,11 @@ DecompressionToVRAM:
     BRA .loopDictionaryCopy                                              ;80B435;
 
 
+;;; $B437: Tilemap - failed NTSC/PAL check ;;;
 Tilemap_FailedRegionCheck:
+; ' THIS GAME PAK IS NOT DESIGINED '
+; ' FOR YOUR SUPER FAMICOM OR      '
+; ' SUPER NES.            NINTENDO '
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;80B437;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;80B447;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;80B457;
@@ -7879,7 +8166,25 @@ Tilemap_FailedRegionCheck:
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;80BC17;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;80BC27;
 
+
+;;; $BC37: Tilemap - failed SRAM mapping check ;;;
 Tilemap_FailedSRAMMappingCheck:
+; '            WARNING             '
+; '                                '
+; ' IT IS A SERIOUS CRIME TO COPY  '
+; ' VIDEO GAMES.      18 USC 2319. '
+; ' PLEASE REFER TO YOUR NINTENDO  '
+; ' GAME INSTRUCTION BOOKLET FOR   '
+; ' FURTHER INFORMATION.           '
+; '--------------------------------'
+; '                                '
+; '             警  告               '
+; '     ビデオゲームのコピーは法律で禁じられています。    '
+; '     詳しくは取扱説明書を参照してください。        '
+
+; (warning)
+; (game copying is prohibited by law.)
+; (for further information, please consult your user's manual.)
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;80BC37;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;80BC47;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;80BC57;
@@ -8009,6 +8314,8 @@ Tilemap_FailedSRAMMappingCheck:
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;80C417;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;80C427;
 
+
+;;; $C437: Load from load station ;;;
 LoadFromLoadStation:
     PHP                                                                  ;80C437;
     PHB                                                                  ;80C438;
@@ -8069,7 +8376,9 @@ LoadFromLoadStation:
     RTL                                                                  ;80C4B4;
 
 
+;;; $C4B5: Load station lists ;;;
 LoadStationListPointers:
+; Pointers to each area's load station list
     dw LoadStations_Crateria                                             ;80C4B5;
     dw LoadStations_Brinstar                                             ;80C4B7;
     dw LoadStations_Norfair                                              ;80C4B9;
@@ -8079,12 +8388,29 @@ LoadStationListPointers:
     dw LoadStations_Ceres                                                ;80C4C1;
     dw LoadStations_Debug                                                ;80C4C3;
 
+
+; Load station lists are indexed by $078B
+; Indices 0..7 are the only ones that can be used by save stations (gunship save station uses 0)
+; Indices 8..Fh are elevators, selectable by the debug file select map if they've been used before (if elevator doors mark them as used)
+; Indices 10h+ are debug load points, except for Crateria's index 12h, which is used for the gunship landing sequence,
+; these debug load points are unconditionally selectable in the debug file select map
+
+;        _________________________ Room pointer
+;        _________________________ Door pointer
+;        _________________________ Door BTS
+;       |      ___________________ Screen X position
+;       |     |      _____________ Screen Y position
+;       |     |     |      _______ Samus Y offset (relative to screen top)
+;       |     |     |     |      _ Samus X offset (relative to screen centre)
+;       |     |     |     |     |
 LoadStations_Crateria:
+; 0: Landing site (from Crateria mainstreet)
     dw RoomHeader_LandingSite                                            ;80C4C5;
     dw Door_Parlor_1                                                     ;80C4C7;
     dw $0000,$0400,$0400,$0040,$0000                                     ;80C4C9;
 
-    dw RoomHeader_CrateriaSave                                           ;80C4D3;
+    dw RoomHeader_CrateriaSave 
+; 1: Crateria save station (from Crateria mainstreet)                                          ;80C4D3;
     dw Door_Parlor_5                                                     ;80C4D5;
     dw $0000,$0000,$0000,$0098,$FFE0                                     ;80C4D7;
 
@@ -8112,22 +8438,27 @@ LoadStations_Crateria:
     dw $0000                                                             ;80C529;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C52B;
 
+; 8: Crateria -> Maridia elevator (from Post Crateria maze yellow door)
     dw RoomHeader_ForgottenHighwayElev                                   ;80C535;
     dw Door_ForgottenHighwayElbow_1                                      ;80C537;
     dw $0000,$0000,$0000,$00A8,$0000                                     ;80C539;
 
+; 9: Crateria -> Red Brinstar elevator (from Pre moat room)
     dw RoomHeader_RedBinstarElev                                         ;80C543;
     dw Door_CrateriaKihunter_2                                           ;80C545;
     dw $0000,$0000,$0000,$00A8,$0000                                     ;80C547;
 
+; Ah: Crateria -> Blue Brinstar elevator (from Old Mother Brain room)
     dw RoomHeader_ElevToBlueBrinstar                                     ;80C551;
     dw Door_Pit_1                                                        ;80C553;
     dw $0000,$0000,$0000,$0088,$0000                                     ;80C555;
 
+; Bh: Crateria -> Green Brinstar elevator (from West Crateria kago hall)
     dw RoomHeader_GreenBrinstarElev                                      ;80C55F;
     dw Door_LowerMushrooms_1                                             ;80C561;
     dw $0000,$0000,$0000,$0088,$0000                                     ;80C563;
 
+; Ch: Tourian entrance (from Pre Tourian hall)
     dw RoomHeader_Statues                                                ;80C56D;
     dw Door_StatuesHallway_1                                             ;80C56F;
     dw $0000,$0000,$0100,$0098,$0000                                     ;80C571;
@@ -8144,36 +8475,44 @@ LoadStations_Crateria:
     dw $0000                                                             ;80C599;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C59B;
 
+; 10h: Landing site (from Crateria mainstreet)
     dw RoomHeader_LandingSite                                            ;80C5A5;
     dw Door_Parlor_1                                                     ;80C5A7;
     dw $0000,$0400,$0400,$0040,$0000                                     ;80C5A9;
 
+; 11h: Wrecked Ship back door (from East Crateria kago shaft)
     dw RoomHeader_EastOcean                                              ;80C5B3;
     dw Door_ForgottenHighwayKagos_0                                      ;80C5B5;
     dw $0000,$0000,$0400,$0095,$0000                                     ;80C5B7;
 
+; 12h: Gunship landing sequence (landing site from landing site)
     dw RoomHeader_LandingSite                                            ;80C5C1;
     dw Door_LandingSite_LandingCutscene                                  ;80C5C3;
     dw $0000,$0400,$0000,$0080,$0000                                     ;80C5C5;
 
 
 LoadStations_Brinstar:
+; 0: Pre Spore Spawn save station (from Charge beam room)
     dw RoomHeader_BigPinkSaveRoom                                        ;80C5CF;
     dw Door_BigPink_4                                                    ;80C5D1;
     dw $0000,$0000,$0000,$0098,$FFE0                                     ;80C5D3;
 
+; 1: Green Brinstar mainstreet save station (from Green Brinstar mainstreet)
     dw RoomHeader_GreenBrinstarSave                                      ;80C5DD;
     dw Door_GreenBrinstarMainShaft_A                                     ;80C5DF;
     dw $0000,$0000,$0000,$0098,$FFE0                                     ;80C5E1;
 
+; 2: Brinstar false floor save station (from Brinstar false floor spike hall)
     dw RoomHeader_EtecoonSave                                            ;80C5EB;
     dw Door_EtecoonETank_3                                               ;80C5ED;
     dw $0000,$0000,$0000,$0098,$FFE0                                     ;80C5EF;
 
+; 3: Kraid save station (from Kraid kihunter hall)
     dw RoomHeader_WarehouseSave                                          ;80C5F9;
     dw Door_WarehouseKihunter_2                                          ;80C5FB;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C5FD;
 
+; 4: Red Brinstar save station (from Red Brinstar -> Crateria elevator)
     dw RoomHeader_RedBrinstarSave                                        ;80C607;
     dw Door_Caterpillar_6                                                ;80C609;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C60B;
@@ -8190,18 +8529,22 @@ LoadStations_Brinstar:
     dw $0000                                                             ;80C633;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C635;
 
+; 8: Green Brinstar mainstreet (from Pre Brinstar map room hall)
     dw RoomHeader_GreenBrinstarMainShaft                                 ;80C63F;
     dw Door_BrinstarPreMap_1                                             ;80C641;
     dw $0001,$0000,$0200,$00A8,$0000                                     ;80C643;
 
+; 9: Morph ball room (from Brinstar diagonal room)
     dw RoomHeader_MorphBall                                              ;80C64D;
     dw Door_GreenHillZone_1                                              ;80C64F;
     dw $0000,$0500,$0200,$00A8,$0000                                     ;80C651;
 
+; Ah: Red Brinstar -> Crateria elevator (from Red Brinstar damage boost hall)
     dw RoomHeader_Caterpillar                                            ;80C65B;
     dw Door_Hellway_1                                                    ;80C65D;
     dw $0000,$0000,$0200,$00A8,$0000                                     ;80C65F;
 
+; Bh: Kraid's lair entrance (from n00b tube east)
     dw RoomHeader_WarehouseEntrance                                      ;80C669;
     dw Door_EastTunnel_1                                                 ;80C66B;
     dw $0000,$0000,$0000,$0088,$0000                                     ;80C66D;
@@ -8222,40 +8565,49 @@ LoadStations_Brinstar:
     dw $0000                                                             ;80C6A3;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C6A5;
 
+; 10h: Green Brinstar mainstreet (from Pre Brinstar map room hall)
     dw RoomHeader_GreenBrinstarMainShaft                                 ;80C6AF;
     dw Door_BrinstarPreMap_1                                             ;80C6B1;
     dw $0001,$0000,$0200,$00A8,$0000                                     ;80C6B3;
 
+; 11h: Pre Kraid room (from Kraid)
     dw RoomHeader_KraidEyeDoor                                           ;80C6BD;
     dw Door_Kraid_0                                                      ;80C6BF;
     dw $0000,$0000,$0100,$0080,$0000                                     ;80C6C1;
 
+; 12h: Charge beam room (from Brinstar false wall super-sidehopper power bomb room)
     dw RoomHeader_BigPink                                                ;80C6CB;
     dw Door_PinkBrinstarPowerBombs_0                                     ;80C6CD;
     dw $0000,$0300,$0000,$0080,$0000                                     ;80C6CF;
 
 
 LoadStations_Norfair:
+; 0: Post Crocomire save station (from Post Crocomire room)
     dw RoomHeader_PostCrocSave                                           ;80C6D9;
     dw Door_PostCrocFarming_3                                            ;80C6DB;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C6DD;
 
+; 1: Bubble Norfair save station (from Bubble Norfair mainstreet)
     dw RoomHeader_BubbleMountainSave                                     ;80C6E7;
     dw Door_BubbleMountain_6                                             ;80C6E9;
     dw $0000,$0000,$0000,$0098,$FFE0                                     ;80C6EB;
 
+; 2: Rock Norfair save station (from Norfair speed blockade hall)
     dw RoomHeader_FrogSave                                               ;80C6F5;
     dw Door_FrogSpeedway_0                                               ;80C6F7;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C6F9;
 
+; 3: Pre Crocomire save station (from Norfair slope)
     dw RoomHeader_CrocomireSave                                          ;80C703;
     dw Door_CrocomireSpeedway_2                                          ;80C705;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C707;
 
+; 4: Pre Lower Norfair save station (from Norfair -> Lower Norfair elevator)
     dw RoomHeader_LNElevSave                                             ;80C711;
     dw Door_LowerNorfairElev_3                                           ;80C713;
     dw $0000,$0000,$0000,$0098,$FFE0                                     ;80C715;
 
+; 5: Lower Norfair save station (from Lower Norfair kihunter shaft)
     dw RoomHeader_LNSave                                                 ;80C71F;
     dw Door_RedKihunterShaft_3                                           ;80C721;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C723;
@@ -8268,14 +8620,17 @@ LoadStations_Norfair:
     dw $0000                                                             ;80C73D;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C73F;
 
+; 8: Norfair mainstreet (from first hot room)
     dw RoomHeader_BusinessCenter                                         ;80C749;
     dw Door_CathedralEntrance_0                                          ;80C74B;
     dw $0000,$0000,$0200,$00A8,$0000                                     ;80C74D;
 
+; 9: Norfair -> Lower Norfair elevator (from Lower Norfair entrance)
     dw RoomHeader_LowerNorfairElev                                       ;80C757;
     dw Door_LavaDive_1                                                   ;80C759;
     dw $0000,$0000,$0000,$0088,$0000                                     ;80C75B;
 
+; Ah: Lower Norfair mainstreet (from Golden chozo statue lava lake)
     dw RoomHeader_MainHall                                               ;80C765;
     dw Door_AcidStatue_1                                                 ;80C767;
     dw $0000,$0400,$0200,$0088,$0000                                     ;80C769;
@@ -8300,36 +8655,44 @@ LoadStations_Norfair:
     dw $0000                                                             ;80C7AD;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C7AF;
 
+; 10h: Norfair mainstreet (from Ice beam mockball hall)
     dw RoomHeader_BusinessCenter                                         ;80C7B9;
     dw Door_IceBeamGate_2                                                ;80C7BB;
     dw $0002,$0000,$0200,$00A8,$0000                                     ;80C7BD;
 
+; 11h: Norfair slope (from Crocomire)
     dw RoomHeader_CrocomireSpeedway                                      ;80C7C7;
     dw Door_Crocomire_1                                                  ;80C7C9;
     dw $0001,$0C00,$0200,$00A0,$0000                                     ;80C7CB;
 
+; 12h: Pre Ridley hall (from Lower Norfair holtz room)
     dw RoomHeader_LNFarming                                              ;80C7D5;
     dw Door_Plowerhouse_0                                                ;80C7D7;
     dw $0000,$0000,$0000,$00A0,$0000                                     ;80C7D9;
 
+; 13h: Post Crocomire room (from Post Crocomire power bombs room)
     dw RoomHeader_PostCrocFarming                                        ;80C7E3;
     dw Door_PostCrocPowerBombs_0                                         ;80C7E5;
     dw $0000,$0000,$0000,$00B5,$0000                                     ;80C7E7;
 
+; 14h: Lower Norfair mainstreet (from Golden chozo statue lava lake)
     dw RoomHeader_MainHall                                               ;80C7F1;
     dw Door_AcidStatue_1                                                 ;80C7F3;
     dw $0001,$0500,$0200,$0035,$0000                                     ;80C7F5;
 
+; 15h: Golden Torizo (from Lower Norfair energy station)
     dw RoomHeader_GoldenTorizo                                           ;80C7FF;
     dw Door_GTEnergyRefill_0                                             ;80C801;
     dw $0000,$0200,$0200,$0000,$0000                                     ;80C803;
 
+; 16h: Golden Torizo (from Golden chozo statue lava lake)
     dw RoomHeader_GoldenTorizo                                           ;80C80D;
     dw Door_AcidStatue_0                                                 ;80C80F;
     dw $0000,$0000,$0000,$0080,$0000                                     ;80C811;
 
 
 LoadStations_WreckedShip:
+; 0: Wrecked Ship save station (from Wrecked Ship mainstreet)
     dw RoomHeader_WreckedShipSave                                        ;80C81B;
     dw Door_WreckedShipMainShaft_6                                       ;80C81D;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C81F;
@@ -8394,28 +8757,34 @@ LoadStations_WreckedShip:
     dw $0000                                                             ;80C8EF;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C8F1;
 
+; 10h: Wrecked Ship entrance treadmill (from Wrecked Ship mainstreet)
     dw RoomHeader_WreckedShipEntrance                                    ;80C8FB;
     dw Door_WreckedShipMainShaft_0                                       ;80C8FD;
     dw $0001,$0000,$0000,$0080,$0000                                     ;80C8FF;
 
+; 11h: Pre Phantoon hall (from Wrecked Ship map station)
     dw RoomHeader_Basement                                               ;80C909;
     dw Door_WreckedShipMap_0                                             ;80C90B;
     dw $0000,$0400,$0000,$0080,$0000                                     ;80C90D;
 
 
 LoadStations_Maridia:
+; 0: n00b tube save station (from n00b tube)
     dw RoomHeader_GlassTunnelSave                                        ;80C917;
     dw Door_GlassTunnel_3                                                ;80C919;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C91B;
 
+; 1: Maridia save station (from Maridia -> Crateria elevator)
     dw RoomHeader_ForgottenHighwaySave                                   ;80C925;
     dw Door_MaridiaElev_1                                                ;80C927;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C929;
 
+; 2: Snail room save station (from Snail room)
     dw RoomHeader_AqueductSave                                           ;80C933;
     dw Door_Aqueduct_5                                                   ;80C935;
     dw $0000,$0000,$0000,$0098,$FFE0                                     ;80C937;
 
+; 3: Draygon save station (from Maridia grapple room)
     dw RoomHeader_DraygonSave                                            ;80C941;
     dw Door_Colosseum_1                                                  ;80C943;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80C945;
@@ -8436,6 +8805,7 @@ LoadStations_Maridia:
     dw $0000                                                             ;80C97B;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C97D;
 
+; 8: Maridia -> Crateria elevator (from Sandy Maridia thin platform hall)
     dw RoomHeader_MaridiaElev                                            ;80C987;
     dw Door_ThreadTheNeedle_1                                            ;80C989;
     dw $0000,$0000,$0200,$00A8,$0000                                     ;80C98B;
@@ -8468,28 +8838,34 @@ LoadStations_Maridia:
     dw $0000                                                             ;80C9EB;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80C9ED;
 
+; 10h: Sandy Maridia unused passage to Sandy Maridia mainstreet (from Sandy Maridia memu room)
     dw RoomHeader_PseudoPlasmaSpark                                      ;80C9F7;
     dw Door_NWestMaridiaBug_1                                            ;80C9F9;
     dw $0001,$0000,$0000,$00D0,$0000                                     ;80C9FB;
 
+; 11h: Pre Draygon room (from ?)
     dw RoomHeader_ThePrecious                                            ;80CA05;
     dw Door_ThePrecious_MaridiaLoad11                                    ;80CA07;
     dw $0000,$0000,$0200,$0080,$0000                                     ;80CA09;
 
+; 12h: Mochtroid room (from Snail room)
     dw RoomHeader_BotwoonHallway                                         ;80CA13;
     dw Door_Aqueduct_3                                                   ;80CA15;
     dw $0000,$0300,$0000,$0080,$0000                                     ;80CA17;
 
+; 13h: Elevatube south (from Sand falls west)
     dw RoomHeader_Oasis                                                  ;80CA21;
     dw Door_WestSandHall_1                                               ;80CA23;
     dw $0000,$0000,$0100,$0080,$0000                                     ;80CA25;
 
 
 LoadStations_Tourian:
+; 0: Pre Mother Brain save station trap (from Pre Mother Brain shaft)
     dw RoomHeader_MotherBrainSave                                        ;80CA2F;
     dw Door_RinkaShaft_1                                                 ;80CA31;
     dw $0000,$0000,$0000,$0098,$FFE0                                     ;80CA33;
 
+; 1: Tourian save station (from Tourian -> Crateria elevator)
     dw RoomHeader_UpperTourianSave                                       ;80CA3D;
     dw Door_TourianFirst_3                                               ;80CA3F;
     dw $0000,$0000,$0000,$0098,$0000                                     ;80CA41;
@@ -8518,6 +8894,7 @@ LoadStations_Tourian:
     dw $0000                                                             ;80CA93;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80CA95;
 
+; 8: Tourian -> Crateria elevator (from Metroid room 1)
     dw RoomHeader_TourianFirst                                           ;80CA9F;
     dw Door_Metroids1_0                                                  ;80CAA1;
     dw $0000,$0000,$0200,$00A8,$0000                                     ;80CAA3;
@@ -8550,16 +8927,19 @@ LoadStations_Tourian:
     dw $0000                                                             ;80CB03;
     dw $0000,$0400,$0400,$00B0,$0000                                     ;80CB05;
 
+; 10h: Pre Mother Brain shaft (from Tourian eye-door room)
     dw RoomHeader_RinkaShaft                                             ;80CB0F;
     dw Door_TourianEyeDoor_1                                             ;80CB11;
     dw $0000,$0000,$0200,$0080,$0000                                     ;80CB13;
 
+; 11h: Pre Mother Brain shaft (from Shitroid room)
     dw RoomHeader_RinkaShaft                                             ;80CB1D;
     dw Door_BigBoy_0                                                     ;80CB1F;
     dw $0000,$0000,$0000,$0080,$0000                                     ;80CB21;
 
 
 LoadStations_Ceres:
+; Ceres elevator shaft (from Ceres pre elevator hall)
     dw RoomHeader_CeresElev                                              ;80CB2B;
     dw Door_FallingTile_0                                                ;80CB2D;
     dw $0000,$0000,$0000,$0048,$0000                                     ;80CB2F;
@@ -8630,6 +9010,7 @@ LoadStations_Ceres:
 
 
 LoadStations_Debug:
+; Debug room (from ?)
     dw RoomHeader_Debug                                                  ;80CC19;
     dw UNUSED_Door_Debug_0_83ABC4                                        ;80CC1B;
     dw $0000,$0000,$0000,$00B0,$0000                                     ;80CC1D;
@@ -8699,7 +9080,9 @@ LoadStations_Debug:
     dw $0000,$0000,$0000,$00B0,$0000                                     ;80CCFD;
 
 
+;;; $CD07: Debug. Set debug elevators as used ;;;
 SetDebugElevatorAsUsed:
+; Called if an elevator door has (elevator properties) & Fh != 0, which is never true, so this routine is unused/debug
     PHP                                                                  ;80CD07;
     PHB                                                                  ;80CD08;
     PHK                                                                  ;80CD09;
@@ -8732,8 +9115,7 @@ SetDebugElevatorAsUsed:
     PLP                                                                  ;80CD44;
     RTL                                                                  ;80CD45;
 
-
-.elevatorBits:
+  .elevatorBits:
     dw ..crateria                                                        ;80CD46;
     dw ..brinstar                                                        ;80CD48;
     dw ..norfair                                                         ;80CD4A;
@@ -8747,6 +9129,7 @@ SetDebugElevatorAsUsed:
 ;       |   |   |    _ Destination bit
 ;       |   |   |   |
 ..crateria:
+; Crateria elevator bits
     db $01,$01,$09,$01                                                   ;80CD52;
     db $01,$02,$03,$04
     db $01,$04,$03,$02
@@ -8754,23 +9137,28 @@ SetDebugElevatorAsUsed:
     db $01,$10,$0B,$01
 
 ..brinstar:
+; Brinstar elevator bits
     db $03,$01,$01,$08                                                   ;80CD66;
     db $03,$02,$01,$04
     db $03,$04,$01,$02
     db $03,$08,$05,$01 
 
 ..norfair:
+; Norfair elevator bits
     db $05,$01,$03,$08                                                   ;80CD76;
     db $05,$02,$05,$04
     db $05,$04,$05,$02
 
 ..maridia:
+; Maridia elevator bits
     db $09,$01,$01,$01                                                   ;80CD82;
 
 ..tourian:
+; Tourian elevator bits
     db $0B,$01,$01,$10                                                   ;80CD86;
 
 ..wreckedShip:
+; Wrecked Ship elevator bits
     db $00,$00,$00,$00                                                   ;80CD8A;
 
 
@@ -8784,32 +9172,42 @@ ROM_HEADER:
     db "Super Metroid        "                                           ;80FFC0;
 
 .ROMSpeed_MapMode:
+; ROM speed and map mode: FastROM, LoROM
     db $30                                                               ;80FFD5;
 
 .chipset:
+; Chipset: ROM + RAM + SRAM
     db $02                                                               ;80FFD6;
 
 .ROMSize:
+; ROM size: 400000h bytes = 4 MiB
     db $0C                                                               ;80FFD7;
 
 .SRAMSize:
+; SRAM size: 2000h bytes = 8 KiB
     db $03                                                               ;80FFD8;
 
 .country:
+; Country code: Japan
     db $00                                                               ;80FFD9;
 
 .developer:
+; Developer code: Nintendo
     db $01                                                               ;80FFDA;
 
 .version:
+; Version number
     db $00                                                               ;80FFDB;
 
 .complement:
+; Checksum complement
     dw $0720                                                             ;80FFDC;
 
 .checksum:
+; Checksum
     dw $F8DF                                                             ;80FFDE;
 
+; Native interrupt vectors
     dw Crash_Handler                                                     ;80FFE0;
     dw Crash_Handler                                                     ;80FFE2;
 
@@ -8831,6 +9229,7 @@ Native_RESET:
 Native_IRQ:
     dw IRQ                                                               ;80FFEE;
 
+; Emulation interrupt vectors
     dw Crash_Handler                                                     ;80FFF0;
     dw Crash_Handler                                                     ;80FFF2;
 

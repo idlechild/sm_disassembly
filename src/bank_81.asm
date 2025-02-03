@@ -2,7 +2,12 @@
 org $818000
 
 
+;;; $8000: Save to SRAM ;;;
 SaveToSRAM:
+;; Parameter:
+;;     A: SRAM slot (0, 1 or 2)
+
+; Almost returns carry clear
     PHP                                                                  ;818000;
     REP #$30                                                             ;818001;
     PHB                                                                  ;818003;
@@ -17,7 +22,7 @@ SaveToSRAM:
     STA.B $12                                                            ;818011;
     LDY.W #$005E                                                         ;818013;
 
-.loopSamus:
+  .loopSamus:
     LDA.W $09A2,Y                                                        ;818016;
     STA.W $D7C0,Y                                                        ;818019;
     DEY                                                                  ;81801C;
@@ -29,7 +34,7 @@ SaveToSRAM:
     TAX                                                                  ;818027;
     LDY.W #$0000                                                         ;818028;
 
-.loopMap:
+  .loopMap:
     LDA.W $07F7,Y                                                        ;81802B;
     STA.W $CD52,X                                                        ;81802E;
     INY                                                                  ;818031;
@@ -48,7 +53,7 @@ SaveToSRAM:
     TAX                                                                  ;81804F;
     LDY.W #$D7C0                                                         ;818050; $7E
 
-.loopToSRAM:
+  .loopToSRAM:
     LDA.W $0000,Y                                                        ;818053;
     STA.L $700000,X                                                      ;818056;
     CLC                                                                  ;81805A;
@@ -75,7 +80,22 @@ SaveToSRAM:
     RTL                                                                  ;818084;
 
 
+;;; $8085: Load from SRAM / clear SRAM ;;;
 LoadFromSRAM:
+;; Parameter:
+;;     A: SRAM slot (0, 1 or 2)
+;; Returns:
+;;     Carry: Set if SRAM was corrupt
+
+; Copies all the data from the SRAM slot out to $7E:D7C0..DE1B
+; If SRAM is not corrupt (according to the checksums):
+;     Copies data to $09A2..0A01 (Samus data and game options)
+;     Loads map data to $7E:CD52..D351, clears Ceres map data $7E:D352..D451 (the working copy $07F7..08F6 isn't updated)
+;     Copies load station index to $078B and area index to $079F
+; Otherwise:
+;     Clears the SRAM slot
+;     Sets load station index to 0 and area index to Crateria
+;     $09A2..0A01 and map data are NOT modified
     REP #$30                                                             ;818085;
     PHB                                                                  ;818087;
     PHX                                                                  ;818088;
@@ -92,7 +112,7 @@ LoadFromSRAM:
     TAX                                                                  ;81809C;
     LDY.W #$D7C0                                                         ;81809D; $7E
 
-.loop:
+  .loop:
     LDA.L $700000,X                                                      ;8180A0;
     STA.W $0000,Y                                                        ;8180A4;
     CLC                                                                  ;8180A7;
@@ -113,8 +133,7 @@ LoadFromSRAM:
     BNE .doubleCheck                                                     ;8180C6;
     BRA .success                                                         ;8180C8;
 
-
-.doubleCheck:
+  .doubleCheck:
     LDA.B $14                                                            ;8180CA;
     CMP.L $701FF0,X                                                      ;8180CC;
     BNE .corrupt                                                         ;8180D0;
@@ -122,10 +141,10 @@ LoadFromSRAM:
     CMP.L $701FF8,X                                                      ;8180D5;
     BNE .corrupt                                                         ;8180D9;
 
-.success:
+  .success:
     LDY.W #$005E                                                         ;8180DB;
 
-.loopSuccess:
+  .loopSuccess:
     LDA.W $D7C0,Y                                                        ;8180DE;
     STA.W $09A2,Y                                                        ;8180E1;
     DEY                                                                  ;8180E4;
@@ -142,8 +161,7 @@ LoadFromSRAM:
     PLB                                                                  ;8180FA;
     RTL                                                                  ;8180FB;
 
-
-.corrupt:
+  .corrupt:
     STZ.B $14                                                            ;8180FC;
     LDX.B $12                                                            ;8180FE;
     LDA.L SaveSlotOffsets,X                                              ;818100;
@@ -151,7 +169,7 @@ LoadFromSRAM:
     LDY.W #$D7C0                                                         ;818105; $7E
     LDA.W #$0000                                                         ;818108;
 
-.loopCorrupt:
+  .loopCorrupt:
     STA.L $700000,X                                                      ;81810B;
     CLC                                                                  ;81810F;
     ADC.B $14                                                            ;818110;
@@ -172,19 +190,25 @@ LoadFromSRAM:
     RTL                                                                  ;81812A;
 
 
+;;; $812B: SRAM offsets for each save slot ;;;
 SaveSlotOffsets:
     dw $0010,$066C,$0CC8                                                 ;81812B;
 
+;;; $8131: Exported map data ;;;
+SRAMMapData:
 ; Lists of offsets into explored map data ($7E:CD52 + (area index) * 100h) whose bytes are saved to SRAM
 ; Map data offsets of 80h+ are specifying the right half of the map (7Fh- are specifying the left half)
 ; Each byte is 8 map tiles, and the first row (offsets 0..3 and 80h..83h) is meaningless padding
-SRAMMapData_size:
+  .size:
+; Size of each exported map
     db $4A,$48,$4C,$12,$42,$15,$08                                       ;818131;
 
-SRAMMapData_offset:
+  .offset:
+; Offset for each exported map
     db $00,$00,$4A,$00,$92,$00,$DE,$00,$F0,$00,$32,$01,$47,$01           ;818138;
 
-SRAMMapData_crateria:
+  .crateria:
+; Crateria map offset list
     db         $07                                                       ;818146;
     db         $0B
     db $0D,$0E,$0F
@@ -222,7 +246,8 @@ SRAMMapData_crateria:
     db                         $BA
     db $00,$00,$00,$00,$00,$00
 
-SRAMMapData_brinstar:
+  .brinstar:
+; Brinstar map offset list
     db     $05                                                           ;818196;
     db     $09,$0A,$0B
     db     $0D,$0E,$0F
@@ -259,7 +284,8 @@ SRAMMapData_brinstar:
     db                     $D5,$D9
     db $00,$00,$00,$00,$00,$00,$00,$00
 
-SRAMMapData_norfair:
+  .norfair:
+; Norfair map offset list
     db     $05                                                           ;8181E6;
     db $08,$09,    $0B
     db $0C,$0D,$0E,$0F
@@ -295,7 +321,8 @@ SRAMMapData_norfair:
     db                 $C4
     db $00,$00,$00,$00
 
-SRAMMapData_wreckedShip:
+  .wreckedShip:
+; Wrecked Ship map offset list
     db     $2D,$2E                                                       ;818236;
     db     $31,$32
     db     $35,$36
@@ -308,7 +335,8 @@ SRAMMapData_wreckedShip:
     db     $51,$52
     db $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
 
-SRAMMapData_maridia:
+  .maridia:
+; Maridia map offset list
     db             $07                                                   ;818256;
     db             $0B
     db         $0E,$0F
@@ -344,7 +372,8 @@ SRAMMapData_maridia:
     db                 $C4
     db $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
 
-SRAMMapData_tourian:
+  .tourian:
+; Tourian map offset list
     db         $26                                                       ;8182A6;
     db         $2A
     db         $2E
@@ -361,7 +390,8 @@ SRAMMapData_tourian:
     db         $5A
     db $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
 
-SRAMMapData_ceres:
+  .ceres:
+; Unused. Ceres map offset list
     db     $2D                                                           ;8182C6;
     db     $31
     db     $35
@@ -372,6 +402,7 @@ SRAMMapData_ceres:
     db $00,$00,$00,$00,$00,$00,$00,$00
 
 MapRoomPointers:
+; Map offset list pointers. Indexed by area
     dw SRAMMapData_crateria                                              ;8182D6;
     dw SRAMMapData_brinstar                                              ;8182D8;
     dw SRAMMapData_norfair                                               ;8182DA;
@@ -380,7 +411,10 @@ MapRoomPointers:
     dw SRAMMapData_tourian                                               ;8182E0;
     dw SRAMMapData_ceres                                                 ;8182E2;
 
+
+;;; $82E4: Load map ;;;
 LoadMap:
+; Doesn't load Ceres map, but does clear it
     PHB                                                                  ;8182E4;
     PHP                                                                  ;8182E5;
     PHK                                                                  ;8182E6;
@@ -389,14 +423,14 @@ LoadMap:
     LDX.W #$0700                                                         ;8182EA;
     LDA.W #$0000                                                         ;8182ED;
 
-.loopTilesExplored:
+  .loopTilesExplored:
     STA.L $7ECD52,X                                                      ;8182F0;
     DEX                                                                  ;8182F4;
     DEX                                                                  ;8182F5;
     BPL .loopTilesExplored                                               ;8182F6;
     STZ.B $16                                                            ;8182F8;
 
-.loopArea:
+  .loopArea:
     LDA.B $16                                                            ;8182FA;
     XBA                                                                  ;8182FC;
     STA.B $14                                                            ;8182FD;
@@ -418,7 +452,7 @@ LoadMap:
     LDA.W #$007E                                                         ;818320;
     STA.B $05                                                            ;818323;
 
-.loopRoom:
+  .loopRoom:
     LDA.B ($00)                                                          ;818325;
     AND.W #$00FF                                                         ;818327;
     CLC                                                                  ;81832A;
@@ -441,7 +475,9 @@ LoadMap:
     RTS                                                                  ;81834A;
 
 
+;;; $834B: Save map ;;;
 SaveMap:
+; Doesn't save Ceres
     PHB                                                                  ;81834B;
     PHP                                                                  ;81834C;
     PHK                                                                  ;81834D;
@@ -449,7 +485,7 @@ SaveMap:
     REP #$30                                                             ;81834F;
     STZ.B $1A                                                            ;818351;
 
-.loopAreas:
+  .loopAreas:
     LDX.B $1A                                                            ;818353;
     LDA.W SRAMMapData_size,X                                             ;818355;
     AND.W #$00FF                                                         ;818358;
@@ -469,7 +505,7 @@ SaveMap:
     LDA.W #$007E                                                         ;818374;
     STA.B $05                                                            ;818377;
 
-.loopRooms:
+  .loopRooms:
     LDA.B ($00)                                                          ;818379;
     AND.W #$00FF                                                         ;81837B;
     CLC                                                                  ;81837E;
@@ -492,6 +528,7 @@ SaveMap:
     RTS                                                                  ;81839E;
 
 
+;;; $839F: Map of OAM index to high X position bit and size bit ;;;
 MapOfOAMIndex:
   .highXPosBit:
     dw $0001                                                             ;81839F;
@@ -530,6 +567,8 @@ MapOfOAMIndex:
     dw $0001,$0002, $0004,$0008, $0010,$0020, $0040,$0080
     dw $0100,$0200, $0400,$0800, $1000,$2000, $4000,$8000
 
+
+;;; $859F: Map of OAM index to high OAM address and corresponding bitmask ;;;
 MapOfOAMIndexToHighOAM:
   .address:
     dw $0570                                                             ;81859F;
@@ -568,17 +607,52 @@ MapOfOAMIndexToHighOAM:
     dw $058E,$0003, $058E,$000C, $058E,$0030, $058E,$00C0
     dw $058E,$0300, $058E,$0C00, $058E,$3000, $058E,$C000      
 
+
+;;; $879F: Add spritemap to OAM - Y origin on-screen ;;;
 AddSpritemapToOAM:
+;; Parameters:
+;;     DB:Y: Address of spritemap
+;;     $12: Spritemap Y origin
+;;     $14: Spritemap X origin
+;;     $16: Palette bits of sprite (palette * 200h)
+
+; Spritemap format is roughly:
+;     nnnn         ; Number of entries (2 bytes)
+;     xxxx yy attt ; Entry 0 (5 bytes)
+;     ...          ; Entry 1...
+; Where:
+;     n = number of entries
+;     x = sprite X offset
+;     y = sprite Y offset
+;     a = attributes
+;     t = tile number
+
+; More specifically, a spritemap entry is:
+;     s000000xxxxxxxxx yyyyyyyy YXpp000ttttttttt
+; Where:
+;     s = size bit
+;     x = sprite X offset
+;     y = sprite Y offset
+;     Y = Y flip
+;     X = X flip
+;     p = priority (relative to background)
+;     t = tile number
+
+; Called by:
+;    $80:9FB3: Draw timer spritemap
+;    $82:8CA1: Draw options menu spritemaps
+;    $8B:936B: Add Nintendo boot logo spritemap to OAM
+;    $8B:9746: Draw cinematic sprite objects - intro/title sequence
+;    $8B:9799: Draw cinematic sprite objects - ending/credits
+;    $A6:A2F2: Enemy graphics drawn hook - Ceres Ridley - draw Baby Metroid and door
     PHX                                                                  ;81879F;
     LDA.W $0000,Y                                                        ;8187A0;
     BNE +                                                                ;8187A3;
     PLX                                                                  ;8187A5;
     RTL                                                                  ;8187A6;
 
-
-.gotoReturn:
+  .gotoReturn:
     JMP.W .return                                                        ;8187A7;
-
 
   + STA.B $18                                                            ;8187AA;
     INY                                                                  ;8187AC;
@@ -589,7 +663,7 @@ AddSpritemapToOAM:
     TAX                                                                  ;8187B6;
     CLC                                                                  ;8187B7;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;8187B8;
     ADC.B $14                                                            ;8187BB;
     STA.W $0370,X                                                        ;8187BD;
@@ -604,7 +678,6 @@ AddSpritemapToOAM:
     STA.B ($1C)                                                          ;8187D6;
     JMP.W .merge                                                         ;8187D8;
 
-
   + LDA.L MapOfOAMIndexToHighOAM_address,X                               ;8187DB;
     STA.B $1C                                                            ;8187DF;
     LDA.B ($1C)                                                          ;8187E1;
@@ -612,8 +685,7 @@ AddSpritemapToOAM:
     STA.B ($1C)                                                          ;8187E7;
     BRA .merge                                                           ;8187E9;
 
-
-.xHighClear:
+  .xHighClear:
     LDA.W $0000,Y                                                        ;8187EB;
     BPL .merge                                                           ;8187EE;
     LDA.L MapOfOAMIndexToHighOAM_address,X                               ;8187F0;
@@ -622,7 +694,7 @@ AddSpritemapToOAM:
     ORA.L MapOfOAMIndex_sizeBit,X                                        ;8187F8;
     STA.B ($1C)                                                          ;8187FC;
 
-.merge:
+  .merge:
     SEP #$20                                                             ;8187FE;
     LDA.W $0002,Y                                                        ;818800;
     CLC                                                                  ;818803;
@@ -633,23 +705,21 @@ AddSpritemapToOAM:
     BCC .onScreen                                                        ;81880C;
     BRA .setOAMPos180h                                                   ;81880E;
 
-
   + ADC.B $12                                                            ;818810;
     BCS .lessThanE0h                                                     ;818812;
     CMP.B #$E0                                                           ;818814;
     BCS .onScreen                                                        ;818816;
     BRA .setOAMPos180h                                                   ;818818;
 
-
-.lessThanE0h:
+  .lessThanE0h:
     CMP.B #$E0                                                           ;81881A;
     BCC .onScreen                                                        ;81881C;
 
-.setOAMPos180h:
+  .setOAMPos180h:
     JSR.W OAMEntry_XPosition_180h                                        ;81881E;
     LDA.B #$E0                                                           ;818821;
 
-.onScreen:
+  .onScreen:
     STA.W $0371,X                                                        ;818823;
     REP #$21                                                             ;818826;
     LDA.W $0003,Y                                                        ;818828;
@@ -668,29 +738,37 @@ AddSpritemapToOAM:
     BEQ +                                                                ;818844;
     JMP.W .loop                                                          ;818846;
 
-
   + STX.W $0590                                                          ;818849;
     PLX                                                                  ;81884C;
     RTL                                                                  ;81884D;
 
-
-.return:
+  .return:
     STA.W $0590                                                          ;81884E;
     PLX                                                                  ;818851;
     RTL                                                                  ;818852;
 
 
+;;; $8853: Add spritemap to OAM - Y origin off-screen ;;;
 AddSpritemapToOAM_Offscreen:
+;; Parameters:
+;;     DB:Y: Address of spritemap
+;;     $12: Spritemap Y origin
+;;     $14: Spritemap X origin
+;;     $16: Palette bits of sprite (palette * 200h)
+
+; Called by:
+;    $8B:9746: Draw cinematic sprite objects - intro/title sequence
+;    $8B:9799: Draw cinematic sprite objects - ending/credits
+
+; See $879F for spritemap format
     PHX                                                                  ;818853;
     LDA.W $0000,Y                                                        ;818854;
     BNE +                                                                ;818857;
     PLX                                                                  ;818859;
     RTL                                                                  ;81885A;
 
-
-.goto_return:
+  .goto_return:
     JMP.W .return                                                        ;81885B;
-
 
   + STA.B $18                                                            ;81885E;
     INY                                                                  ;818860;
@@ -701,7 +779,7 @@ AddSpritemapToOAM_Offscreen:
     TAX                                                                  ;81886A;
     CLC                                                                  ;81886B;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;81886C;
     ADC.B $14                                                            ;81886F;
     STA.W $0370,X                                                        ;818871;
@@ -716,7 +794,6 @@ AddSpritemapToOAM_Offscreen:
     STA.B ($1C)                                                          ;81888A;
     JMP.W .merge                                                         ;81888C;
 
-
   + LDA.L MapOfOAMIndexToHighOAM_address,X                               ;81888F;
     STA.B $1C                                                            ;818893;
     LDA.B ($1C)                                                          ;818895;
@@ -724,8 +801,7 @@ AddSpritemapToOAM_Offscreen:
     STA.B ($1C)                                                          ;81889B;
     BRA .merge                                                           ;81889D;
 
-
-.xHighClear:
+  .xHighClear:
     LDA.W $0000,Y                                                        ;81889F;
     BPL .merge                                                           ;8188A2;
     LDA.L MapOfOAMIndexToHighOAM_address,X                               ;8188A4;
@@ -734,7 +810,7 @@ AddSpritemapToOAM_Offscreen:
     ORA.L MapOfOAMIndex_sizeBit,X                                        ;8188AC;
     STA.B ($1C)                                                          ;8188B0;
 
-.merge:
+  .merge:
     SEP #$20                                                             ;8188B2;
     LDA.W $0002,Y                                                        ;8188B4;
     CLC                                                                  ;8188B7;
@@ -745,23 +821,21 @@ AddSpritemapToOAM_Offscreen:
     BCS .onScreen                                                        ;8188C0;
     BRA .setOAMPos180h                                                   ;8188C2;
 
-
   + ADC.B $12                                                            ;8188C4;
     BCS .lessThanE0h                                                     ;8188C6;
     CMP.B #$E0                                                           ;8188C8;
     BCC .onScreen                                                        ;8188CA;
     BRA .setOAMPos180h                                                   ;8188CC;
 
-
-.lessThanE0h:
+  .lessThanE0h:
     CMP.B #$E0                                                           ;8188CE;
     BCS .onScreen                                                        ;8188D0;
 
-.setOAMPos180h:
+  .setOAMPos180h:
     JSR.W OAMEntry_XPosition_180h                                        ;8188D2;
     LDA.B #$E0                                                           ;8188D5;
 
-.onScreen:
+  .onScreen:
     STA.W $0371,X                                                        ;8188D7;
     REP #$21                                                             ;8188DA;
     LDA.W $0003,Y                                                        ;8188DC;
@@ -780,19 +854,20 @@ AddSpritemapToOAM_Offscreen:
     BEQ +                                                                ;8188F8;
     JMP.W .loop                                                          ;8188FA;
 
-
   + STX.W $0590                                                          ;8188FD;
     PLX                                                                  ;818900;
     RTL                                                                  ;818901;
 
-
-.return:
+  .return:
     STA.W $0590                                                          ;818902;
     PLX                                                                  ;818905;
     RTL                                                                  ;818906;
 
 
+;;; $8907: OAM entry X position = 180h ;;;
 OAMEntry_XPosition_180h:
+;; Parameters:
+;;     X: OAM entry index
     LDA.B #$80                                                           ;818907;
     STA.W $0370,X                                                        ;818909;
     REP #$20                                                             ;81890C;
@@ -805,7 +880,90 @@ OAMEntry_XPosition_180h:
     RTS                                                                  ;81891E;
 
 
+;;; $891F: Add pause menu / menu spritemap to OAM ;;;
 AddSpritemapFrom_82C569_TableToOAM:
+;; Parameters:
+;;     A: Index into pause menu / menu spritemap table ($82:C569)
+;;        {
+;;        4: Map scrolling arrow - right
+;;        5: Map scrolling arrow - left
+;;        6: Map scrolling arrow - up
+;;        7: Map scrolling arrow - down
+;;        8: Save icon
+;;        9: Boss icon
+;;        Ah: Energy station icon
+;;        Bh: Missile station icon
+;;        Ch: Debug save icon
+;;        12h: File select map Samus icon
+;;        14h: Equipment screen item selector - tanks
+;;        15h: Equipment screen item selector - weapons
+;;        16h: Equipment screen item selector - suit/misc/boots
+;;        17h: Debug elevator icon
+;;        1Bh: Full equipment screen reserve tank
+;;        1Fh: End of equipment screen reserve health bar
+;;        20h: Empty equipment screen reserve tank
+;;        21h: Equipment screen 1/7 reserve tank
+;;        22h: Equipment screen 2/7 reserve tank
+;;        23h: Equipment screen 3/7 reserve tank
+;;        24h: Equipment screen 4/7 reserve tank
+;;        25h: Equipment screen 5/7 reserve tank
+;;        26h: Equipment screen 6/7 reserve tank
+;;        27h: Equipment screen 7/7 reserve tank
+;;        28h: L button pressed highlight
+;;        29h: R button pressed highlight
+;;        2Ah: L/R highlight
+;;        2Bh: Start button pressed highlight
+;;        2Ch: File select menu Samus helmet (frame 0)
+;;        2Dh: File select menu Samus helmet (frame 1)
+;;        2Eh: File select menu Samus helmet (frame 2)
+;;        2Fh: File select menu Samus helmet (frame 3)
+;;        30h: File select menu Samus helmet (frame 4)
+;;        31h: File select menu Samus helmet (frame 5)
+;;        32h: File select menu Samus helmet (frame 6)
+;;        33h: File select menu Samus helmet (frame 7)
+;;        34h: Menu selection missile (frame 0)
+;;        35h: Menu selection missile (frame 1)
+;;        36h: Menu selection missile (frame 2)
+;;        37h: Menu selection missile (frame 3)
+;;        38h: Area select - planet Zebes
+;;        39h: Area select - Crateria
+;;        3Ah: Area select - Brinstar
+;;        3Bh: Area select - Norfair
+;;        3Ch: Area select - Wrecked Ship
+;;        3Dh: Area select - Maridia
+;;        3Eh: Area select - Tourian
+;;        40h: File copy arrow - one slot down
+;;        41h: File copy arrow - one slot up
+;;        42h: File copy arrow - two slots down
+;;        43h: File copy arrow - two slots up
+;;        48h: Border around SAMUS DATA
+;;        49h: Border around DATA COPY MODE
+;;        4Ah: Border around DATA CLEAR MODE
+;;        4Bh: Border around OPTION MODE
+;;        4Ch: Border around CONTROLLER SETTING MODE
+;;        4Dh: Border around SPECIAL SETTING MODE
+;;        4Eh: Map station icon
+;;        59h: Elevator destination - Crateria
+;;        5Ah: Elevator destination - Brinstar
+;;        5Bh: Elevator destination - Norfair
+;;        5Ch: Elevator destination - Wrecked Ship
+;;        5Dh: Elevator destination - Maridia
+;;        5Eh: Elevator destination - Tourian
+;;        5Fh: Samus position indicator (frame 0)
+;;        60h: Samus position indicator (frame 1)
+;;        61h: Samus position indicator (frame 2)
+;;        62h: Boss cross-out icon
+;;        63h: Gunship icon
+;;        64h: Game over baby metroid container
+;;        65h: Game over baby metroid (frame 0)
+;;        66h: Game over baby metroid (frame 1)
+;;        67h: Game over baby metroid (frame 2)
+;;        }
+;;     X: Spritemap X origin
+;;     Y: Spritemap Y origin
+;;     $03: Palette bits of sprite (palette * 200h)
+
+; See $879F for spritemap format
     PHB                                                                  ;81891F;
     PEA.W $8200                                                          ;818920;
     PLB                                                                  ;818923;
@@ -823,7 +981,7 @@ AddSpritemapFrom_82C569_TableToOAM:
     LDX.W $0590                                                          ;818937;
     CLC                                                                  ;81893A;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;81893B;
     ADC.B $14                                                            ;81893E;
     STA.W $0370,X                                                        ;818940;
@@ -838,8 +996,7 @@ AddSpritemapFrom_82C569_TableToOAM:
     STA.B ($16)                                                          ;818959;
     JMP.W .merge                                                         ;81895B;
 
-
-.preMerge:
+  .preMerge:
     LDA.L MapOfOAMIndexToHighOAM_address,X                               ;81895E;
     STA.B $16                                                            ;818962;
     LDA.B ($16)                                                          ;818964;
@@ -847,8 +1004,7 @@ AddSpritemapFrom_82C569_TableToOAM:
     STA.B ($16)                                                          ;81896A;
     JMP.W .merge                                                         ;81896C;
 
-
-.xHighClear:
+  .xHighClear:
     LDA.W $0000,Y                                                        ;81896F;
     BPL .merge                                                           ;818972;
     LDA.L MapOfOAMIndexToHighOAM_address,X                               ;818974;
@@ -857,7 +1013,7 @@ AddSpritemapFrom_82C569_TableToOAM:
     ORA.L MapOfOAMIndex_sizeBit,X                                        ;81897C;
     STA.B ($16)                                                          ;818980;
 
-.merge:
+  .merge:
     LDA.W $0002,Y                                                        ;818982;
     CLC                                                                  ;818985;
     ADC.B $12                                                            ;818986;
@@ -879,12 +1035,23 @@ AddSpritemapFrom_82C569_TableToOAM:
     BNE .loop                                                            ;8189A7;
     STX.W $0590                                                          ;8189A9;
 
-.return:
+  .return:
     PLB                                                                  ;8189AC;
     RTL                                                                  ;8189AD;
 
 
+;;; $89AE: Add Samus spritemap to OAM ;;;
 AddSamusSpritemapToOAM:
+;; Parameters:
+;;     A: Index into $92:808D table
+;;     X: Spritemap X origin
+;;     Y: Spritemap Y origin
+
+; Actually uses the palette defined in the spritemap
+; See $8A5F for spritemap format
+; Also called for some atmospheric graphics:
+;     186h..18Eh: Bubbles
+;     18Fh..197h: Diving splash
     PHB                                                                  ;8189AE;
     PEA.W $9200                                                          ;8189AF;
     PLB                                                                  ;8189B2;
@@ -902,7 +1069,7 @@ AddSamusSpritemapToOAM:
     LDX.W $0590                                                          ;8189C6;
     CLC                                                                  ;8189C9;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;8189CA;
     ADC.B $14                                                            ;8189CD;
     STA.W $0370,X                                                        ;8189CF;
@@ -917,8 +1084,7 @@ AddSamusSpritemapToOAM:
     STA.B ($16)                                                          ;8189E8;
     JMP.W .merge                                                         ;8189EA;
 
-
-.preMerge:
+  .preMerge:
     LDA.L MapOfOAMIndexToHighOAM_address,X                               ;8189ED;
     STA.B $16                                                            ;8189F1;
     LDA.B ($16)                                                          ;8189F3;
@@ -926,8 +1092,7 @@ AddSamusSpritemapToOAM:
     STA.B ($16)                                                          ;8189F9;
     JMP.W .merge                                                         ;8189FB;
 
-
-.xHighClear:
+  .xHighClear:
     LDA.W $0000,Y                                                        ;8189FE;
     BPL .merge                                                           ;818A01;
     LDA.L MapOfOAMIndexToHighOAM_address,X                               ;818A03;
@@ -936,7 +1101,7 @@ AddSamusSpritemapToOAM:
     ORA.L MapOfOAMIndex_sizeBit,X                                        ;818A0B;
     STA.B ($16)                                                          ;818A0F;
 
-.merge:
+  .merge:
     LDA.W $0002,Y                                                        ;818A11;
     CLC                                                                  ;818A14;
     ADC.B $12                                                            ;818A15;
@@ -955,12 +1120,26 @@ AddSamusSpritemapToOAM:
     BNE .loop                                                            ;818A30;
     STX.W $0590                                                          ;818A32;
 
-.return:
+  .return:
     PLB                                                                  ;818A35;
     RTL                                                                  ;818A36;
 
 
+;;; $8A37: Add spritemap from $93:A1A1 table to OAM ;;;
 AddSpritemapFrom_93A1A1_TableToOAM:
+;; Parameters:
+;;     A: Index into $93:A1A1 table
+;;     $12: Spritemap Y origin
+;;     $14: Spritemap X origin
+
+; Called by:
+;    $90:BBE1: Draw flare animation component
+;    $93:F5E2: Unused. Draw shinespark windup effect sprite
+;    $9B:C036: Handle grapple beam flare
+
+; Actually uses the palette defined in the spritemap
+; See $8A5F for spritemap format
+; Draws charge / grapple beam flare and charge sparks
     PHB                                                                  ;818A37;
     PEA.W $9300                                                          ;818A38;
     PLB                                                                  ;818A3B;
@@ -975,7 +1154,15 @@ AddSpritemapFrom_93A1A1_TableToOAM:
     BRA AddSpritemapToOAM_Common                                         ;818A49;
 
 
+;;; $8A4B: Add projectile spritemap to OAM ;;;
 AddProjectileSpritemapToOAM:
+;; Parameters:
+;;     X: Projectile index
+;;     $12: Spritemap Y origin
+;;     $14: Spritemap X origin
+
+; Actually uses the palette defined in the spritemap
+; See $8A5F for spritemap format
     PHB                                                                  ;818A4B;
     PEA.W $9300                                                          ;818A4C;
     PLB                                                                  ;818A4F;
@@ -986,16 +1173,47 @@ AddProjectileSpritemapToOAM:
     PLB                                                                  ;818A59;
     RTL                                                                  ;818A5A;
 
-
   + STA.B $18                                                            ;818A5B;
     INY                                                                  ;818A5D;
     INY                                                                  ;818A5E; fallthrough to AddSpritemapToOAM_Common
 
+
+;;; $8A5F: Add spritemap to OAM - no off-screen handling ;;;
 AddSpritemapToOAM_Common:
+;; Parameters:
+;;     DB:Y: Address of first entry in spritemap
+;;     $12: Spritemap Y origin
+;;     $14: Spritemap X origin
+;;     $18: Number of entries
+
+; Spritemap format is roughly:
+;     nnnn         ; Number of entries (2 bytes)
+;     xxxx yy aatt ; Entry 0 (5 bytes)
+;     ...          ; Entry 1...
+; Where:
+;     n = number of entries
+;     x = X offset of sprite from centre
+;     y = Y offset of sprite from centre
+;     a = attributes
+;     t = tile number
+
+; More specifically, a spritemap entry is:
+;     s000000xxxxxxxxx yyyyyyyy YXppPPPttttttttt
+; Where:
+;     s = size bit
+;     x = X offset of sprite from centre
+;     y = Y offset of sprite from centre
+;     Y = Y flip
+;     X = X flip
+;     P = palette
+;     p = priority (relative to background)
+;     t = tile number
+
+; Out of all of the spritemap loading routines, this one is the most sanely coded. No offscreen handling though (sprites wrap)
     LDX.W $0590                                                          ;818A5F;
     CLC                                                                  ;818A62;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;818A63;
     ADC.B $14                                                            ;818A66;
     STA.W $0370,X                                                        ;818A68;
@@ -1036,11 +1254,25 @@ AddSpritemapToOAM_Common:
     RTL                                                                  ;818AB6;
 
 
+;;; $8AB7: RTL ;;;
 RTL_818AB7:
     RTL                                                                  ;818AB7;
 
 
+;;; $8AB8: Add spritemap to OAM with base tile number - no off-screen handling ;;;
 AddSpritemapToOAM_WithBaseTileNumber_8AB8:
+;; Parameters:
+;;     DB:Y: Address of spritemap
+;;     $12: Spritemap Y origin
+;;     $14: Spritemap X origin
+;;     $03: Palette bits of sprite (palette * 200h)
+;;     $00: Base tile number
+
+; Called by:
+;    $A0:944A: Write enemy OAM (non extended spritemap format)
+;    $B4:BD32: Draw sprite objects
+
+; See $879F for spritemap format
     PHY                                                                  ;818AB8;
     LDA.W $0000,Y                                                        ;818AB9;
     BEQ .return                                                          ;818ABC;
@@ -1050,7 +1282,7 @@ AddSpritemapToOAM_WithBaseTileNumber_8AB8:
     LDX.W $0590                                                          ;818AC2;
     CLC                                                                  ;818AC5;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;818AC6;
     ADC.B $14                                                            ;818AC9;
     STA.W $0370,X                                                        ;818ACB;
@@ -1091,16 +1323,30 @@ AddSpritemapToOAM_WithBaseTileNumber_8AB8:
     BNE .loop                                                            ;818B1A;
     STX.W $0590                                                          ;818B1C;
 
-.return:
+  .return:
     PLY                                                                  ;818B1F;
     RTL                                                                  ;818B20;
 
 
+;;; $8B21: Unused. RTL ;;;
 RTL_818B21:
     RTL                                                                  ;818B21;
 
 
+;;; $8B22: Add spritemap to OAM with base tile number - Y origin on-screen ;;;
 AddSpritemapToOAM_WithBaseTileNumber_8B22:
+;; Parameters:
+;;     DB:Y: Address of spritemap
+;;     $12: Spritemap Y origin
+;;     $14: Spritemap X origin
+;;     $03: Palette bits of sprite (palette * 200h)
+;;     $00: Base tile number
+
+; Called by:
+;    $A0:944A: Write enemy OAM (extended spritemap format)
+
+; See $879F for spritemap format
+; Bug: missing CLC before ADC when calculating Y position, causes enemies straddling the left screen boundary to shift down a pixel
     PHY                                                                  ;818B22;
     LDA.W $0000,Y                                                        ;818B23;
     BEQ .return                                                          ;818B26;
@@ -1110,7 +1356,7 @@ AddSpritemapToOAM_WithBaseTileNumber_8B22:
     LDX.W $0590                                                          ;818B2C;
     CLC                                                                  ;818B2F;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;818B30;
     ADC.B $14                                                            ;818B33;
     STA.W $0370,X                                                        ;818B35;
@@ -1140,10 +1386,10 @@ AddSpritemapToOAM_WithBaseTileNumber_8B22:
   + ADC.B $12                                                            ;818B6B;
     BCS .onScreen                                                        ;818B6D;
 
-.yPosF0h:
+  .yPosF0h:
     LDA.B #$F0                                                           ;818B6F;
 
-.onScreen:
+  .onScreen:
     STA.W $0371,X                                                        ;818B71;
     REP #$21                                                             ;818B74;
     LDA.W $0003,Y                                                        ;818B76;
@@ -1161,12 +1407,25 @@ AddSpritemapToOAM_WithBaseTileNumber_8B22:
     BNE .loop                                                            ;818B8F;
     STX.W $0590                                                          ;818B91;
 
-.return:
+  .return:
     PLY                                                                  ;818B94;
     RTL                                                                  ;818B95;
 
 
+;;; $8B96: Add spritemap to OAM with base tile number - Y origin off-screen ;;;
 AddSpritemapToOAM_WithBaseTileNumber_Offscreen_8B96:
+;; Parameters:
+;;     DB:Y: Address of spritemap
+;;     $12: Spritemap Y origin
+;;     $14: Spritemap X origin
+;;     $03: Palette bits of sprite (palette * 200h)
+;;     $00: Base tile number
+
+; Called by:
+;    $A0:944A: Write enemy OAM (extended spritemap format)
+
+; See $879F for spritemap format
+; Bug: missing CLC before ADC when calculating Y position, causes enemies straddling the left screen boundary to shift down a pixel
     PHY                                                                  ;818B96;
     LDA.W $0000,Y                                                        ;818B97;
     BEQ .return                                                          ;818B9A;
@@ -1176,7 +1435,7 @@ AddSpritemapToOAM_WithBaseTileNumber_Offscreen_8B96:
     LDX.W $0590                                                          ;818BA0;
     CLC                                                                  ;818BA3;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;818BA4;
     ADC.B $14                                                            ;818BA7;
     STA.W $0370,X                                                        ;818BA9;
@@ -1206,10 +1465,10 @@ AddSpritemapToOAM_WithBaseTileNumber_Offscreen_8B96:
   + ADC.B $12                                                            ;818BDF;
     BCC .onScreen                                                        ;818BE1;
 
-.yPosF0h:
+  .yPosF0h:
     LDA.B #$F0                                                           ;818BE3;
 
-.onScreen:
+  .onScreen:
     STA.W $0371,X                                                        ;818BE5;
     REP #$21                                                             ;818BE8;
     LDA.W $0003,Y                                                        ;818BEA;
@@ -1227,16 +1486,27 @@ AddSpritemapToOAM_WithBaseTileNumber_Offscreen_8B96:
     BNE .loop                                                            ;818C03;
     STX.W $0590                                                          ;818C05;
 
-.return:
+  .return:
     PLY                                                                  ;818C08;
     RTL                                                                  ;818C09;
 
 
+;;; $8C0A: Add spritemap to OAM with base tile number - Y origin on-screen ;;;
 AddSpritemapToOAM_WithBaseTileNumber_8C0A:
+;; Parameters:
+;;     DB:Y: Address of spritemap
+;;     $12: Spritemap Y origin
+;;     $14: Spritemap X origin
+;;     $1A: Base tile number
+;;     $1C: Palette bits of sprite (palette * 200h)
+
+; Called by:
+;    $86:83D6: Draw enemy projectile
+
+; See $879F for spritemap format
     LDA.W $0000,Y                                                        ;818C0A;
     BNE +                                                                ;818C0D;
     RTL                                                                  ;818C0F;
-
 
   + STA.B $18                                                            ;818C10;
     INY                                                                  ;818C12;
@@ -1244,7 +1514,7 @@ AddSpritemapToOAM_WithBaseTileNumber_8C0A:
     LDX.W $0590                                                          ;818C14;
     CLC                                                                  ;818C17;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;818C18;
     CLC                                                                  ;818C1B;
     ADC.B $14                                                            ;818C1C;
@@ -1268,10 +1538,10 @@ AddSpritemapToOAM_WithBaseTileNumber_8C0A:
   + ADC.B $12                                                            ;818C42;
     BCS .onScreen                                                        ;818C44;
 
-.yPosF0h:
+  .yPosF0h:
     LDA.B #$F0                                                           ;818C46;
 
-.onScreen:
+  .onScreen:
     STA.W $0371,X                                                        ;818C48;
     REP #$21                                                             ;818C4B;
     LDA.W $0000,Y                                                        ;818C4D;
@@ -1299,11 +1569,22 @@ AddSpritemapToOAM_WithBaseTileNumber_8C0A:
     RTL                                                                  ;818C7E;
 
 
+;;; $8C7F: Add spritemap to OAM with base tile number - Y origin off-screen ;;;
 AddSpritemapToOAM_WithBaseTileNumber_Offscreen_8C7F:
+;; Parameters:
+;;     DB:Y: Address of spritemap
+;;     $12: Spritemap Y origin
+;;     $14: Spritemap X origin
+;;     $1A: Base tile number
+;;     $1C: Palette bits of sprite (palette * 200h)
+
+; Called by:
+;    $86:83D6: Draw enemy projectile
+
+; See $879F for spritemap format
     LDA.W $0000,Y                                                        ;818C7F;
     BNE +                                                                ;818C82;
     RTL                                                                  ;818C84;
-
 
   + STA.B $18                                                            ;818C85;
     INY                                                                  ;818C87;
@@ -1311,7 +1592,7 @@ AddSpritemapToOAM_WithBaseTileNumber_Offscreen_8C7F:
     LDX.W $0590                                                          ;818C89;
     CLC                                                                  ;818C8C;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;818C8D;
     CLC                                                                  ;818C90;
     ADC.B $14                                                            ;818C91;
@@ -1335,10 +1616,10 @@ AddSpritemapToOAM_WithBaseTileNumber_Offscreen_8C7F:
   + ADC.B $12                                                            ;818CB7;
     BCC .onScreen                                                        ;818CB9;
 
-.yPosF0h:
+  .yPosF0h:
     LDA.B #$F0                                                           ;818CBB;
 
-.onScreen:
+  .onScreen:
     STA.W $0371,X                                                        ;818CBD;
     REP #$21                                                             ;818CC0;
     LDA.W $0000,Y                                                        ;818CC2;
@@ -1366,7 +1647,9 @@ AddSpritemapToOAM_WithBaseTileNumber_Offscreen_8C7F:
     RTL                                                                  ;818CF3;
 
 
+;;; $8CF4: Debug game over menu ;;;
 Debug_GameOverMenu:
+; Game state 1Dh
     REP #$30                                                             ;818CF4;
     PHB                                                                  ;818CF6;
     PHK                                                                  ;818CF7;
@@ -1378,8 +1661,7 @@ Debug_GameOverMenu:
     PLB                                                                  ;818D01;
     RTL                                                                  ;818D02;
 
-
-.pointers:
+  .pointers:
     dw Debug_GameOverMenu_Index0_FadeOut_ConfigureGraphicsForMenu        ;818D03;
     dw Debug_GameOverMenu_Index1_Initialise                              ;818D05;
     dw Debug_GameOverMenu_Index24_FadeIn                                 ;818D07;
@@ -1387,6 +1669,8 @@ Debug_GameOverMenu:
     dw Debug_GameOverMenu_Index24_FadeIn                                 ;818D0B;
     dw DebugGameOverMenu_Index5_Continue                                 ;818D0D;
 
+
+;;; $8D0F: (Debug) game over menu - index 0: fade out and configure graphics for menu ;;;
 Debug_GameOverMenu_Index0_FadeOut_ConfigureGraphicsForMenu:
     REP #$30                                                             ;818D0F;
     JSL.L HandleFadingOut                                                ;818D11;
@@ -1395,7 +1679,6 @@ Debug_GameOverMenu_Index0_FadeOut_ConfigureGraphicsForMenu:
     BEQ +                                                                ;818D1A;
     RTS                                                                  ;818D1C;
 
-
   + JSL.L SetForceBlankAndWaitForNMI                                     ;818D1D;
     LDA.W #$0001                                                         ;818D21;
     JSL.L QueueSound_Lib3_Max6                                           ;818D24;
@@ -1403,7 +1686,7 @@ Debug_GameOverMenu_Index0_FadeOut_ConfigureGraphicsForMenu:
     JSL.L Wait_End_VBlank_Clear_HDMA                                     ;818D2C;
     LDX.W #$0000                                                         ;818D30;
 
-.loopPalettes:
+  .loopPalettes:
     LDA.L $7EC000,X                                                      ;818D33;
     STA.L $7E3300,X                                                      ;818D37;
     INX                                                                  ;818D3B;
@@ -1412,7 +1695,7 @@ Debug_GameOverMenu_Index0_FadeOut_ConfigureGraphicsForMenu:
     BMI .loopPalettes                                                    ;818D40;
     LDX.W #$0000                                                         ;818D42;
 
-.loopIORegisterMirrors:
+  .loopIORegisterMirrors:
     LDA.B $51,X                                                          ;818D45;
     STA.L $7E3500,X                                                      ;818D47;
     INX                                                                  ;818D4B;
@@ -1433,6 +1716,7 @@ Debug_GameOverMenu_Index0_FadeOut_ConfigureGraphicsForMenu:
     RTS                                                                  ;818D6C;
 
 
+;;; $8D6D: Debug game over menu - index 1: initialise ;;;
 Debug_GameOverMenu_Index1_Initialise:
     REP #$30                                                             ;818D6D;
     LDA.W #$0000                                                         ;818D6F;
@@ -1457,10 +1741,13 @@ Debug_GameOverMenu_Index1_Initialise:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $8DA4: Unused ;;;
 UNUSED_818DA4:
     dw $000F                                                             ;818DA4;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $8DA6: Debug game over menu - index 2/4: fade in ;;;
 Debug_GameOverMenu_Index24_FadeIn:
     REP #$30                                                             ;818DA6;
     JSL.L HandleFadingIn                                                 ;818DA8;
@@ -1470,11 +1757,13 @@ Debug_GameOverMenu_Index24_FadeIn:
     BNE .return                                                          ;818DB4;
     INC.W $0727                                                          ;818DB6;
 
-.return:
+  .return:
     RTS                                                                  ;818DB9;
 
 
+;;; $8DBA: Map VRAM for menu ;;;
 MapVRAMForMenu:
+; PSR.M is set on return(!)
     SEP #$20                                                             ;818DBA;
     STZ.B $6B                                                            ;818DBC;
     LDA.B #$03                                                           ;818DBE;
@@ -1494,6 +1783,7 @@ MapVRAMForMenu:
     RTS                                                                  ;818DDA;
 
 
+;;; $8DDB: Load initial menu tiles ;;;
 LoadInitialMenuTiles:
     PHP                                                                  ;818DDB;
     SEP #$30                                                             ;818DDC;
@@ -1549,11 +1839,12 @@ LoadInitialMenuTiles:
     RTS                                                                  ;818E5F;
 
 
+;;; $8E60: Load menu palettes ;;;
 LoadMenuPalettes:
     REP #$30                                                             ;818E60;
     LDX.W #$0000                                                         ;818E62;
 
-.loop:
+  .loop:
     LDA.L Menu_Palettes,X                                                ;818E65;
     STA.L $7EC000,X                                                      ;818E69;
     LDA.L Menu_Palettes+2,X                                              ;818E6D;
@@ -1567,11 +1858,14 @@ LoadMenuPalettes:
     RTS                                                                  ;818E7E;
 
 
+;;; $8E7F: Load debug game over menu tilemap ;;;
 LoadDebugGameOverMenuTilemap:
+;; Parameters:
+;;     $00: Pointer to VRAM transfer definitions ($81:8EE1)
     LDX.W #$0000                                                         ;818E7F;
     LDA.W #$000F                                                         ;818E82;
 
-.loopClear:
+  .loopClear:
     STA.L $7E3800,X                                                      ;818E85;
     INX                                                                  ;818E89;
     INX                                                                  ;818E8A;
@@ -1595,7 +1889,7 @@ LoadDebugGameOverMenuTilemap:
     LDX.W $0330                                                          ;818EB2;
     LDY.W #$0000                                                         ;818EB5;
 
-.loop:
+  .loop:
     LDA.B [$00],Y                                                        ;818EB8;
     CMP.W #$FFFF                                                         ;818EBA;
     BEQ .return                                                          ;818EBD;
@@ -1620,56 +1914,76 @@ LoadDebugGameOverMenuTilemap:
     INY                                                                  ;818EDA;
     BRA .loop                                                            ;818EDB;
 
-
-.return:
+  .return:
     STX.W $0330                                                          ;818EDD;
     RTL                                                                  ;818EE0;
 
 
+;;; $8EE1: Debug game over menu VRAM transfer definitions ;;;
 Debug_GameOverMenu_VRAMTransferDefinitions:
-    dw $0040                                                             ;818EE1; '            GAME QUIT           '
-    dl Tilemap_DebugGameOverMenu_gameQuit                                ;818EE3;
-    db $00                                                               ;818EE6;
-    dw $5140,$0040                                                       ;818EE7;
+;                        __________________ Size (or FFFFh terminator)
+;                       |     _____________ Source address
+;                       |    |       ______ Padding byte for source bank
+;                       |    |      |   ___ Destination VRAM address
+;                       |    |      |  |
+; '            GAME QUIT           '
+    dw $0040                                                             ;818EE1; Size (or FFFFh terminator)
+    dl Tilemap_DebugGameOverMenu_gameQuit                                ;818EE3; Source address
+    db $00                                                               ;818EE6; Padding byte for source bank
+    dw $5140                                                             ;818EE7; Destination VRAM address
 
-    dl Tilemap_DebugGameOverMenu_wouldYouPlay                            ;818EEB; '        WOULD YOU PLAY ?        '
-    db $00                                                               ;818EEE;
-    dw $5180,$0040                                                       ;818EEF;
+; '        WOULD YOU PLAY ?        '
+    dw $0040                                                             ;818EE9; Size (or FFFFh terminator)
+    dl Tilemap_DebugGameOverMenu_wouldYouPlay                            ;818EEB; Source address
+    db $00                                                               ;818EEE; Padding byte for source bank
+    dw $5180                                                             ;818EEF; Destination VRAM address
 
-    dl Tilemap_DebugGameOverMenu_end                                     ;818EF3; '            END                 '
-    db $00                                                               ;818EF6;
-    dw $51E0,$0040                                                       ;818EF7;
+; '            END                 '
+    dw $0040                                                             ;818EF1; Size (or FFFFh terminator)
+    dl Tilemap_DebugGameOverMenu_end                                     ;818EF3; Source address
+    db $00                                                               ;818EF6; Padding byte for source bank
+    dw $51E0                                                             ;818EF7; Destination VRAM address
 
-    dl Tilemap_DebugGameOverMenu_continue                                ;818EFB; '            CONTINUE            '
-    db $00                                                               ;818EFE;
-    dw $5220                                                             ;818EFF;
-    dw $FFFF
+; '            CONTINUE            '
+    dw $0040                                                             ;818EF9; Size (or FFFFh terminator)
+    dl Tilemap_DebugGameOverMenu_continue                                ;818EFB; Source address
+    db $00                                                               ;818EFE; Padding byte for source bank
+    dw $5220                                                             ;818EFF; Destination VRAM address
+    dw $FFFF                                                             ;818F01; Terminator
 
+
+;;; $8F03: Debug game over menu tilemaps ;;;
 Tilemap_DebugGameOverMenu:
   .gameQuit:
+; '            GAME QUIT           '
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818F03;
     dw $000F,$000F,$000F,$000F,$0070,$006A,$0076,$006E                   ;818F13;
     dw $000F,$007A,$007E,$0072,$007D,$000F,$000F,$000F                   ;818F23;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818F33;
 
   .wouldYouPlay:
+; '        WOULD YOU PLAY ?        '
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818F43;
     dw $0080,$0078,$007E,$0075,$006D,$000F,$0082,$0078                   ;818F53;
     dw $007E,$000F,$0079,$0075,$006A,$0082,$000F,$0085                   ;818F63;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818F73;
 
   .end:
+; '            END                 '
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818F83;
     dw $000F,$000F,$000F,$000F,$006E,$0077,$006D,$000F                   ;818F93;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818FA3;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818FB3;
 
   .continue:
+; '            CONTINUE            '
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818FC3;
     dw $000F,$000F,$000F,$000F,$006C,$0078,$0077,$007D                   ;818FD3;
     dw $0072,$0077,$007E,$006E,$000F,$000F,$000F,$000F                   ;818FE3;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;818FF3;
 
+
+;;; $9003: Debug game over menu - index 3: main ;;;
 DebugGameOverMenu_Index3_Main:
     REP #$30                                                             ;819003;
     LDA.B $8F                                                            ;819005;
@@ -1687,17 +2001,15 @@ DebugGameOverMenu_Index3_Main:
     JSL.L SaveToSRAM                                                     ;819023;
     JML.L SoftReset                                                      ;819027;
 
-
   + INC.W $0727                                                          ;81902B;
     RTS                                                                  ;81902E;
 
-
-.toggleSelection:
+  .toggleSelection:
     LDA.W $0950                                                          ;81902F;
     EOR.W #$0001                                                         ;819032;
     STA.W $0950                                                          ;819035;
 
-.noChange:
+  .noChange:
     LDX.W #$7800                                                         ;819038;
     LDA.W $0950                                                          ;81903B;
     BEQ +                                                                ;81903E;
@@ -1717,10 +2029,13 @@ DebugGameOverMenu_Index3_Main:
     RTS                                                                  ;81905A;
 
 
+;;; $905B: Restore palettes and regular IO registers from debug game over menu ;;;
 RestorePalettesAndIORegistersFromDebugGameOverMenu:
+; The restoring of IO registers here has no effect, due to the ensuing unpause code calling $82:8E19, which sets the IO registers to the pause menu backup
+; The restoring of the palettes is also redundant, due to the unpause code
     LDX.W #$0000                                                         ;81905B;
 
-.loopPalettes:
+  .loopPalettes:
     LDA.L $7E3300,X                                                      ;81905E;
     STA.L $7EC000,X                                                      ;819062;
     INX                                                                  ;819066;
@@ -1729,7 +2044,7 @@ RestorePalettesAndIORegistersFromDebugGameOverMenu:
     BMI .loopPalettes                                                    ;81906B;
     LDX.W #$0000                                                         ;81906D;
 
-.loopIORegisters:
+  .loopIORegisters:
     LDA.L $7E3500,X                                                      ;819070;
     STA.B $51,X                                                          ;819074;
     INX                                                                  ;819076;
@@ -1739,6 +2054,7 @@ RestorePalettesAndIORegistersFromDebugGameOverMenu:
     RTS                                                                  ;81907D;
 
 
+;;; $907E: Debug game over menu - index 5: continue ;;;
 DebugGameOverMenu_Index5_Continue:
     SEP #$30                                                             ;81907E;
     LDA.B #$00                                                           ;819080;
@@ -1760,6 +2076,7 @@ DebugGameOverMenu_Index5_Continue:
     JMP.W RestorePalettesAndIORegistersFromDebugGameOverMenu             ;8190AB;
 
 
+;;; $90AE: Game over menu ;;;
 GameOverMenu:
     REP #$30                                                             ;8190AE;
     PHB                                                                  ;8190B0;
@@ -1772,8 +2089,7 @@ GameOverMenu:
     PLB                                                                  ;8190BB;
     RTL                                                                  ;8190BC;
 
-
-.pointers:
+  .pointers:
     dw Debug_GameOverMenu_Index0_FadeOut_ConfigureGraphicsForMenu        ;8190BD;
     dw GameOverMenu_Index1_Initialise                                    ;8190BF;
     dw GameOverMenu_Index2_PlayMusicTrack                                ;8190C1;
@@ -1783,6 +2099,8 @@ GameOverMenu:
     dw GameOverMenu_Index6_LoadGameMapView                               ;8190C9;
     dw GameOverMenu_Index7_FadeOutIntoGameMapView                        ;8190CB;
 
+
+;;; $90CD: Game over menu - index 3: fade in ;;;
 GameOverMenu_Index3_FadeIn:
     JSL.L Handle_GameOver_BabyMetroid                                    ;8190CD;
     JSL.L Draw_Menu_Selection_Missile                                    ;8190D1;
@@ -1793,10 +2111,11 @@ GameOverMenu_Index3_FadeIn:
     BNE .return                                                          ;8190E1;
     INC.W $0727                                                          ;8190E3;
 
-.return:
+  .return:
     RTS                                                                  ;8190E6;
 
 
+;;; $90E7: Game over menu - index 5: fade out into game map view ;;;
 GameOverMenu_Index5_FadeOutIntoGameMapView:
     JSL.L Handle_GameOver_BabyMetroid                                    ;8190E7;
     JSL.L Draw_Menu_Selection_Missile                                    ;8190EB;
@@ -1806,10 +2125,11 @@ GameOverMenu_Index5_FadeOutIntoGameMapView:
     BNE .return                                                          ;8190F8;
     INC.W $0727                                                          ;8190FA;
 
-.return:
+  .return:
     RTS                                                                  ;8190FD;
 
 
+;;; $90FE: Game over menu - index 7: fade out into soft reset ;;;
 GameOverMenu_Index7_FadeOutIntoGameMapView:
     JSL.L Draw_Menu_Selection_Missile                                    ;8190FE;
     JSL.L Handle_GameOver_BabyMetroid                                    ;819102;
@@ -1819,11 +2139,11 @@ GameOverMenu_Index7_FadeOutIntoGameMapView:
     BEQ .softReset                                                       ;81910F;
     RTS                                                                  ;819111;
 
-
-.softReset:
+  .softReset:
     JML.L SoftReset                                                      ;819112;
 
 
+;;; $9116: Game over menu - index 6: load game map view ;;;
 GameOverMenu_Index6_LoadGameMapView:
     JSL.L Disable_HDMAObjects                                            ;819116;
     JSL.L Wait_End_VBlank_Clear_HDMA                                     ;81911A;
@@ -1834,6 +2154,7 @@ GameOverMenu_Index6_LoadGameMapView:
     RTS                                                                  ;81912A;
 
 
+;;; $912B: Game over menu - index 4: main ;;;
 GameOverMenu_Index4_Main:
     REP #$30                                                             ;81912B;
     JSL.L Handle_GameOver_BabyMetroid                                    ;81912D;
@@ -1855,7 +2176,6 @@ GameOverMenu_Index4_Main:
     STA.W $0727                                                          ;819159;
     RTS                                                                  ;81915C;
 
-
   + LDA.L $7ED914                                                        ;81915D;
     CMP.W #$001F                                                         ;819161;
     BEQ +                                                                ;819164;
@@ -1864,21 +2184,19 @@ GameOverMenu_Index4_Main:
     JSL.L LoadFromSRAM                                                   ;81916C;
     RTS                                                                  ;819170;
 
-
   + STA.W $0998                                                          ;819171;
     LDA.W $0952                                                          ;819174;
     JSL.L LoadFromSRAM                                                   ;819177;
     RTS                                                                  ;81917B;
 
-
-.toggleSelection:
+  .toggleSelection:
     LDA.W #$0037                                                         ;81917C;
     JSL.L QueueSound_Lib1_Max6                                           ;81917F;
     LDA.W $0950                                                          ;819183;
     EOR.W #$0001                                                         ;819186;
     STA.W $0950                                                          ;819189;
 
-.noChange:
+  .noChange:
     LDX.W #$0028                                                         ;81918C;
     LDY.W #$00A0                                                         ;81918F;
     LDA.W $0950                                                          ;819192;
@@ -1891,6 +2209,7 @@ GameOverMenu_Index4_Main:
     RTS                                                                  ;8191A3;
 
 
+;;; $91A4: Game over menu - index 1: initialise ;;;
 GameOverMenu_Index1_Initialise:
     SEP #$20                                                             ;8191A4;
     LDA.B #$11                                                           ;8191A6;
@@ -1913,7 +2232,7 @@ GameOverMenu_Index1_Initialise:
     LDX.W #$0000                                                         ;8191D0;
     LDA.W #$000F                                                         ;8191D3;
 
-.loop:
+  .loop:
     STA.L $7E3600,X                                                      ;8191D6;
     INX                                                                  ;8191DA;
     INX                                                                  ;8191DB;
@@ -1977,6 +2296,7 @@ GameOverMenu_Index1_Initialise:
     RTS                                                                  ;81927C;
 
 
+;;; $927D: HDMA object instruction list - colour math subscreen backdrop colour - game over menu gradient ;;;
 HDMAObjInstList_ColorMathSubscnBackdrop_GameOverMenuGradient:
     dw Instruction_HDMAObject_HDMATableBank : db $81                     ;81927D;
     dw Instruction_HDMAObject_PreInstructionInY : dl RTL_8192DB          ;819280;
@@ -1984,6 +2304,8 @@ HDMAObjInstList_ColorMathSubscnBackdrop_GameOverMenuGradient:
     dw Instruction_HDMAObject_Sleep                                      ;819289;
     dw Instruction_HDMAObject_Delete                                     ;81928B;
 
+
+;;; $928D: HDMA object instruction list - colour math control register B - game over menu gradient ;;;
 HDMAObjInstList_ColorMathCtrlRegB_GameOverMenuGradient:
     dw Instruction_HDMAObject_HDMATableBank : db $81                     ;81928D;
     dw Instruction_HDMAObject_PreInstructionInY : dl RTL_8192DB          ;819290;
@@ -1991,13 +2313,19 @@ HDMAObjInstList_ColorMathCtrlRegB_GameOverMenuGradient:
     dw Instruction_HDMAObject_Sleep                                      ;819299;
     dw Instruction_HDMAObject_Delete                                     ;81929B;
 
+
+;;; $929D: HDMA table - colour math control register B - game over menu gradient ;;;
 HDMATable_ColorMathCtrlRegB_GameOverMenuGradient:
+; Enable subtractive colour math on BG1/backdrop
     db $40,$A1                                                           ;81929D;
     db $3A,$A1
+; Enable colour math on BG1/backdrop
     db $40,$21
     db $40,$21
     db $00,$00
 
+
+;;; $92A7: HDMA table - colour math subscreen backdrop colour - game over menu gradient ;;;
 HDMATable_ColorMathSubscnBackdrop_GameOverMenuGradient:
     db $05,$E8                                                           ;8192A7;
     db $05,$E7
@@ -2026,25 +2354,35 @@ HDMATable_ColorMathSubscnBackdrop_GameOverMenuGradient:
     db $02,$CF
     db $00,$00
 
+
+;;; $92DB: RTL ;;;
 RTL_8192DB:
     RTL                                                                  ;8192DB;
 
 
+;;; $92DC: Game over tilemaps ;;;
 Tilemap_GameOver_gameOver:
+; GAME OVER
     dw $000C,$000A,$0026,$000E,$000F,$0000,$002D,$000E                   ;8192DC;
     dw $000D,$FFFE,$0030,$001A,$0036,$001E,$000F,$0010                   ;8192EC;
     dw $003E,$001E,$003A,$FFFF                                           ;8192FC;
 
+
 Tilemap_GameOver_findTheMetroidLarva:
+; FIND THE METROID LARVA!
     dw $006F,$0072,$0077,$006D,$000F,$007D,$0071,$006E                   ;819304;
     dw $000F,$0076,$006E,$007D,$007B,$0078,$0072,$006D                   ;819314;
     dw $000F,$0075,$006A,$007B,$007F,$006A,$0084,$FFFF                   ;819324;
 
+
 Tilemap_GameOver_tryAgain:
+; TRY AGAIN?
     dw $007D,$007B,$0082,$000F,$006A,$0070,$006A,$0072                   ;819334;
     dw $0077,$000F,$0085,$FFFF                                           ;819344;
 
+
 Tilemap_GameOver_yesReturnToGame:
+; YES (RETURN TO GAME)
     dw $0041,$000E,$002B,$000F,$000F,$000F,$000F,$000F                   ;81934C;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81935C;
     dw $000F,$000F,$000F,$000F,$FFFE,$0017,$001E,$003B                   ;81936C;
@@ -2052,13 +2390,17 @@ Tilemap_GameOver_yesReturnToGame:
     dw $000F,$007D,$0078,$000F,$0070,$006A,$0076,$006E                   ;81938C;
     dw $008B,$FFFF                                                       ;81939C;
 
+
 Tilemap_GameOver_noGoToTitle:
+; N O (GO TO TITLE)
     dw $0027,$000F,$0000,$000F,$000F,$000F,$000F,$000F                   ;8193A0;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;8193B0;
     dw $000F,$FFFE,$0037,$000F,$0010,$000F,$008A,$0070                   ;8193C0;
     dw $0078,$000F,$007D,$0078,$000F,$007D,$0072,$007D                   ;8193D0;
     dw $0075,$006E,$008B,$FFFF                                           ;8193E0;
 
+
+;;; $93E8: Game over menu - index 2: play pre-statue hall music track ;;;
 GameOverMenu_Index2_PlayMusicTrack:
     REP #$30                                                             ;8193E8;
     JSL.L CheckIfMusicIsQueued                                           ;8193EA;
@@ -2067,10 +2409,11 @@ GameOverMenu_Index2_PlayMusicTrack:
     LDA.W #$0004                                                         ;8193F3;
     JSL.L QueueMusicDataOrTrack_8FrameDelay                              ;8193F6;
 
-.return:
+  .return:
     RTS                                                                  ;8193FA;
 
 
+;;; $93FB: File select menu ;;;
 FileSelectMenu:
     REP #$30                                                             ;8193FB;
     PHB                                                                  ;8193FD;
@@ -2083,8 +2426,7 @@ FileSelectMenu:
     PLB                                                                  ;819408;
     RTL                                                                  ;819409;
 
-
-.pointers:
+  .pointers:
     dw FileSelectMenu_Index0_TitleSequenceToMain_FadeOutConfigGfx        ;81940A;
     dw FileSelectMenu_Index1_TitleSequenceToMain_LoadBG2                 ;81940C;
     dw FileSelectMenu_Index2_TitleSequenceToMain                         ;81940E;
@@ -2120,6 +2462,8 @@ FileSelectMenu:
     dw FileSelectMenu_Index20_MainToOptionsMenu_FadeOut                  ;81944A;
     dw FileSelectMenu_Index21_MainToTitleSequence                        ;81944C;
 
+
+;;; $944E: File select menu - index 0: title sequence to main - fade out and configure graphics ;;;
 FileSelectMenu_Index0_TitleSequenceToMain_FadeOutConfigGfx:
     REP #$30                                                             ;81944E;
     JSL.L HandleFadingOut                                                ;819450;
@@ -2127,7 +2471,6 @@ FileSelectMenu_Index0_TitleSequenceToMain_FadeOutConfigGfx:
     AND.W #$000F                                                         ;819456;
     BEQ +                                                                ;819459;
     RTS                                                                  ;81945B;
-
 
   + JSL.L SetForceBlankAndWaitForNMI                                     ;81945C;
     LDA.W #$0001                                                         ;819460;
@@ -2145,10 +2488,13 @@ FileSelectMenu_Index0_TitleSequenceToMain_FadeOutConfigGfx:
     STZ.B $B7                                                            ;819482;
     STZ.B $BB                                                            ;819484;
 
+
+;;; $9486: Load file select palettes ;;;
 LoadFileSelectPalettes:
+; Clone of $8E60, expect with no `REP #$30`
     LDX.W #$0000                                                         ;819486;
 
-.loop:
+  .loop:
     LDA.L Menu_Palettes,X                                                ;819489;
     STA.L $7EC000,X                                                      ;81948D;
     LDA.L Menu_Palettes+2,X                                              ;819491;
@@ -2162,6 +2508,7 @@ LoadFileSelectPalettes:
     RTS                                                                  ;8194A2;
 
 
+;;; $94A3: File select menu - index 20h: main to options menu - fade out ;;;
 FileSelectMenu_Index20_MainToOptionsMenu_FadeOut:
     REP #$30                                                             ;8194A3;
     JSL.L Draw_Menu_Selection_Missile                                    ;8194A5;
@@ -2177,17 +2524,18 @@ FileSelectMenu_Index20_MainToOptionsMenu_FadeOut:
     LDY.W #$0000                                                         ;8194C4;
     LDA.W #$0000                                                         ;8194C7;
 
-.loop:
+  .loop:
     STA.W $198D,Y                                                        ;8194CA;
     INY                                                                  ;8194CD;
     INY                                                                  ;8194CE;
     CPY.W #$0030                                                         ;8194CF;
     BMI .loop                                                            ;8194D2;
 
-.return:
+  .return:
     RTS                                                                  ;8194D4;
 
 
+;;; $94D5: File select menu - index 21h: main to title sequence ;;;
 FileSelectMenu_Index21_MainToTitleSequence:
     REP #$30                                                             ;8194D5;
     JSL.L Draw_Border_Around_SAMUS_DATA                                  ;8194D7;
@@ -2198,15 +2546,17 @@ FileSelectMenu_Index21_MainToTitleSequence:
     BNE .return                                                          ;8194E7;
     JML.L SoftReset                                                      ;8194E9;
 
-
-.return:
+  .return:
     RTS                                                                  ;8194ED;
 
 
+;;; $94EE: File select menu - index 5/13h: fade out from main ;;;
 FileSelectMenu_Index5_13_FadeOutFromMain:
     REP #$30                                                             ;8194EE;
     JSL.L Draw_Menu_Selection_Missile                                    ;8194F0;
 
+
+;;; $94F4: File select menu - index Fh/1Bh: fade out to main ;;;
 FileSelectMenu_IndexF_1B_FadeOutToMain:
     JSL.L HandleFadingOut                                                ;8194F4;
     LDA.B $57                                                            ;8194F8;
@@ -2227,10 +2577,11 @@ FileSelectMenu_IndexF_1B_FadeOutToMain:
     JSL.L SetForceBlankAndWaitForNMI                                     ;819516;
     INC.W $0727                                                          ;81951A;
 
-.return:
+  .return:
     RTS                                                                  ;81951D;
 
 
+;;; $951E: File select menu - index 11h/1Dh: fade in to main ;;;
 FileSelectMenu_Index11_10_FadeInToMain:
     REP #$30                                                             ;81951E;
     LDA.W $0952                                                          ;819520;
@@ -2240,8 +2591,10 @@ FileSelectMenu_Index11_10_FadeInToMain:
     LDA.W FileSelectMenu_SelectionMissile_Coordinates_Yposition,X        ;819526;
     STA.W $19AB                                                          ;819529;
     LDA.W FileSelectMenu_SelectionMissile_Coordinates_Xposition,X        ;81952C;
-    STA.W $19A1                                                          ;81952F;
+    STA.W $19A1                                                          ;81952F; fallthrough to FileSelectMenu_Index7_15_FadeInFromMain
 
+
+;;; $9532: File select menu - index 7/15h: fade in from main ;;;
 FileSelectMenu_Index7_15_FadeInFromMain:
     REP #$30                                                             ;819532;
     JSL.L Draw_Menu_Selection_Missile                                    ;819534;
@@ -2264,14 +2617,17 @@ FileSelectMenu_Index7_15_FadeInFromMain:
     BNE .return                                                          ;81955B;
     INC.W $0727                                                          ;81955D;
 
-.return:
+  .return:
     RTS                                                                  ;819560;
 
 
+;;; $9561: File select menu - index 6: main to file copy - initialise ;;;
 FileSelectMenu_Index6_MainToFileCopy_Initialise:
     REP #$30                                                             ;819561;
-    INC.W $0727                                                          ;819563;
+    INC.W $0727                                                          ;819563; fallthrough to Initialise_FileSelectMenu_FileCopy
 
+
+;;; $9566: Initialise file select menu file copy ;;;
 Initialise_FileSelectMenu_FileCopy:
     JSR.W ClearMenuTilemap                                               ;819566;
     LDY.W #Tilemap_FileSelect_dataCopyMode                               ;819569;
@@ -2291,31 +2647,35 @@ Initialise_FileSelectMenu_FileCopy:
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $9591: Unused. REP #$30 ;;;
 UNUSED_REP30_819591:
     REP #$30                                                             ;819591;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $9593: Set initial file copy/clear menu selection ;;;
 SetInitial_FileCopyClear_MenuSelection:
     LDA.W $0954                                                          ;819593;
     LDY.W #$0000                                                         ;819596;
 
-.loop:
+  .loop:
     LSR A                                                                ;819599;
     BCS .return                                                          ;81959A;
     INY                                                                  ;81959C;
     CPY.W #$0003                                                         ;81959D;
     BMI .loop                                                            ;8195A0;
 
-.return:
+  .return:
     STY.W $19B5                                                          ;8195A2;
     RTS                                                                  ;8195A5;
 
 
+;;; $95A6: Clear menu tilemap ;;;
 ClearMenuTilemap:
     LDX.W #$07FE                                                         ;8195A6;
     LDA.W #$000F                                                         ;8195A9;
 
-.loop:
+  .loop:
     STA.L $7E3600,X                                                      ;8195AC;
     DEX                                                                  ;8195B0;
     DEX                                                                  ;8195B1;
@@ -2323,12 +2683,14 @@ ClearMenuTilemap:
     RTS                                                                  ;8195B4;
 
 
+;;; $95B5: Load menu exit tilemap ;;;
 LoadMenuExitTilemap:
     LDY.W #Tilemap_FileSelect_exit                                       ;8195B5;
     LDX.W #($4<<1)|($1A<<6)                                              ;8195B8; $0688
     JMP.W Load_Tilemap_in_Y_to_X_Coordinates                             ;8195BB;
 
 
+;;; $95BE: Draw file copy/clear save file info ;;;
 Draw_FileCopyClear_SaveFileInfo:
     LDA.W #$0000                                                         ;8195BE;
     JSR.W LoadFromSRAM_external                                          ;8195C1;
@@ -2363,6 +2725,7 @@ Draw_FileCopyClear_SaveFileInfo:
     JMP.W QueueTransfer_MenuTilemap_ToVRAMBG1                            ;81960C;
 
 
+;;; $960F: Draw file copy/clear save slot A info ;;;
 Draw_FileCopyClear_SaveSlotAInfo:
     LDX.W #$0218                                                         ;81960F;
     LDA.W $0954                                                          ;819612;
@@ -2382,6 +2745,7 @@ Draw_FileCopyClear_SaveSlotAInfo:
     JMP.W Load_Tilemap_in_Y_to_X_Coordinates                             ;81963C;
 
 
+;;; $963F: Draw file copy/clear save slot B info ;;;
 Draw_FileCopyClear_SaveSlotBInfo:
     LDX.W #$0318                                                         ;81963F;
     LDA.W $0954                                                          ;819642;
@@ -2401,6 +2765,7 @@ Draw_FileCopyClear_SaveSlotBInfo:
     JMP.W Load_Tilemap_in_Y_to_X_Coordinates                             ;81966C;
 
 
+;;; $966F: Draw file copy/clear save slot C info ;;;
 Draw_FileCopyClear_SaveSlotCInfo:
     LDX.W #$0418                                                         ;81966F;
     LDA.W $0954                                                          ;819672;
@@ -2420,6 +2785,7 @@ Draw_FileCopyClear_SaveSlotCInfo:
     JMP.W Load_Tilemap_in_Y_to_X_Coordinates                             ;81969C;
 
 
+;;; $969F: Queue transfer of menu tilemap to VRAM BG1 ;;;
 QueueTransfer_MenuTilemap_ToVRAMBG1:
     LDX.W $0330                                                          ;81969F;
     LDA.W #$0800                                                         ;8196A2;
@@ -2439,6 +2805,7 @@ QueueTransfer_MenuTilemap_ToVRAMBG1:
     RTS                                                                  ;8196C1;
 
 
+;;; $96C2: File select menu - index 8: file copy - select source ;;;
 FileSelectMenu_Index8_FileCopy_SelectSource:
     REP #$30                                                             ;8196C2;
     JSL.L Draw_Border_Around_DATA_COPY_MODE                              ;8196C4;
@@ -2456,7 +2823,7 @@ FileSelectMenu_Index8_FileCopy_SelectSource:
     LDA.W $0954                                                          ;8196E4;
     LDX.W $19B5                                                          ;8196E7;
 
-.loopDown:
+  .loopDown:
     INX                                                                  ;8196EA;
     CPX.B #$04                                                           ;8196EB;
     BPL Set_FileCopyMenu_SelectionMissile_Position                       ;8196ED;
@@ -2470,10 +2837,9 @@ FileSelectMenu_Index8_FileCopy_SelectSource:
     LDA.W #$0037                                                         ;8196FD;
     JSL.L QueueSound_Lib1_Max6                                           ;819700;
     BRA Set_FileCopyMenu_SelectionMissile_Position                       ;819704;
+    REP #$30                                                             ;819706; >_< dead code
 
-    REP #$30                                                             ;819706;
-
-.B:
+  .B:
     LDA.W $0727                                                          ;819708;
     CLC                                                                  ;81970B;
     ADC.W #$0007                                                         ;81970C;
@@ -2482,13 +2848,12 @@ FileSelectMenu_Index8_FileCopy_SelectSource:
     JSL.L QueueSound_Lib1_Max6                                           ;819715;
     RTS                                                                  ;819719;
 
-
-.up:
+  .up:
     SEP #$30                                                             ;81971A;
     LDA.W $0954                                                          ;81971C;
     LDX.W $19B5                                                          ;81971F;
 
-.loopUp:
+  .loopUp:
     DEX                                                                  ;819722;
     BMI Set_FileCopyMenu_SelectionMissile_Position                       ;819723;
     BIT.W .bitmasks,X                                                    ;819725;
@@ -2499,8 +2864,7 @@ FileSelectMenu_Index8_FileCopy_SelectSource:
     JSL.L QueueSound_Lib1_Max6                                           ;819732;
     BRA Set_FileCopyMenu_SelectionMissile_Position                       ;819736;
 
-
-.select:
+  .select:
     REP #$30                                                             ;819738;
     LDA.W #$0037                                                         ;81973A;
     JSL.L QueueSound_Lib1_Max6                                           ;81973D;
@@ -2511,17 +2875,17 @@ FileSelectMenu_Index8_FileCopy_SelectSource:
     INC.W $0727                                                          ;81974C;
     RTS                                                                  ;81974F;
 
-
   + LDA.W $0727                                                          ;819750;
     CLC                                                                  ;819753;
     ADC.W #$0007                                                         ;819754;
     STA.W $0727                                                          ;819757;
     RTS                                                                  ;81975A;
 
-
-.bitmasks:
+  .bitmasks:
     db $01,$02,$04                                                       ;81975B;
 
+
+;;; $975E: Set file copy menu selection missile position ;;;
 Set_FileCopyMenu_SelectionMissile_Position:
     REP #$30                                                             ;81975E;
     LDA.W $19B5                                                          ;819760;
@@ -2533,10 +2897,11 @@ Set_FileCopyMenu_SelectionMissile_Position:
     STA.W $19A1                                                          ;81976E;
     RTS                                                                  ;819771;
 
-
-.position:
+  .position:
     dw $0048,$0068,$0088,$00D3                                           ;819772;
 
+
+;;; $977A: File select menu - index 9: file copy - initialise select destination ;;;
 FileSelectMenu_Index9_FileCopy_InitialiseSelectDestination:
     REP #$30                                                             ;81977A;
     JSL.L Draw_Border_Around_DATA_COPY_MODE                              ;81977C;
@@ -2544,7 +2909,7 @@ FileSelectMenu_Index9_FileCopy_InitialiseSelectDestination:
     INC.W $0727                                                          ;819783;
     LDA.W #$0000                                                         ;819786;
 
-.loop:
+  .loop:
     CMP.W $19B7                                                          ;819789;
     BNE +                                                                ;81978C;
     INC A                                                                ;81978E;
@@ -2555,6 +2920,7 @@ FileSelectMenu_Index9_FileCopy_InitialiseSelectDestination:
     BRA Set_FileCopyMenu_SelectionMissile_Position                       ;819797;
 
 
+;;; $9799: Draw file copy select destination save file info ;;;
 Draw_FileCopy_SelectDestination_SaveFileInfo:
     JSR.W ClearMenuTilemap                                               ;819799;
     LDY.W #Tilemap_FileSelect_dataCopyMode                               ;81979C;
@@ -2605,6 +2971,7 @@ Draw_FileCopy_SelectDestination_SaveFileInfo:
     JMP.W QueueTransfer_MenuTilemap_ToVRAMBG1                            ;819810;
 
 
+;;; $9813: File select menu - index Ah: file copy - select destination ;;;
 FileSelectMenu_IndexA_FileCopy_SelectDestination:
     REP #$30                                                             ;819813;
     JSL.L Draw_Border_Around_DATA_COPY_MODE                              ;819815;
@@ -2622,7 +2989,7 @@ FileSelectMenu_IndexA_FileCopy_SelectDestination:
     JSL.L QueueSound_Lib1_Max6                                           ;819836;
     LDX.W $19B5                                                          ;81983A;
 
-.loopDown:
+  .loopDown:
     INX                                                                  ;81983D;
     CPX.W #$0004                                                         ;81983E;
     BEQ .setMissilePosition                                              ;819841;
@@ -2630,11 +2997,10 @@ FileSelectMenu_IndexA_FileCopy_SelectDestination:
     BNE .setMenuSelection                                                ;819846;
     BRA .loopDown                                                        ;819848;
 
-
-.setMenuSelection:
+  .setMenuSelection:
     STX.W $19B5                                                          ;81984A;
 
-.setMissilePosition:
+  .setMissilePosition:
     LDA.W $19B5                                                          ;81984D;
     ASL A                                                                ;819850;
     TAX                                                                  ;819851;
@@ -2644,8 +3010,7 @@ FileSelectMenu_IndexA_FileCopy_SelectDestination:
     STA.W $19A1                                                          ;81985B;
     RTS                                                                  ;81985E;
 
-
-.B:
+  .B:
     LDA.W $0727                                                          ;81985F;
     SEC                                                                  ;819862;
     SBC.W #$0002                                                         ;819863;
@@ -2656,8 +3021,7 @@ FileSelectMenu_IndexA_FileCopy_SelectDestination:
     JSL.L QueueSound_Lib1_Max6                                           ;819872;
     JMP.W Initialise_FileSelectMenu_FileCopy                             ;819876;
 
-
-.select:
+  .select:
     LDA.W #$0037                                                         ;819879;
     JSL.L QueueSound_Lib1_Max6                                           ;81987C;
     LDA.W $19B5                                                          ;819880;
@@ -2667,30 +3031,29 @@ FileSelectMenu_IndexA_FileCopy_SelectDestination:
     INC.W $0727                                                          ;81988B;
     BRA .setMissilePosition                                              ;81988E;
 
-
   + LDA.W $0727                                                          ;819890;
     CLC                                                                  ;819893;
     ADC.W #$0005                                                         ;819894;
     STA.W $0727                                                          ;819897;
     RTS                                                                  ;81989A;
 
-
-.up:
+  .up:
     LDA.W #$0037                                                         ;81989B;
     JSL.L QueueSound_Lib1_Max6                                           ;81989E;
     LDX.W $19B5                                                          ;8198A2;
 
-.loopUp:
+  .loopUp:
     DEX                                                                  ;8198A5;
     BMI .setMissilePosition                                              ;8198A6;
     CPX.W $19B7                                                          ;8198A8;
     BNE .setMenuSelection                                                ;8198AB;
     BRA .loopUp                                                          ;8198AD;
 
-
-.positions:
+  .positions:
     dw $0048,$0068,$0088,$00D4                                           ;8198AF;
 
+
+;;; $98B7: File select menu - index Bh: file copy - initialise confirmation ;;;
 FileSelectMenu_IndexB_FileCopy_InitialiseConfirmation:
     JSL.L Draw_Border_Around_DATA_COPY_MODE                              ;8198B7;
     LDY.W #Tilemap_FileSelect_copySamusToSamus                           ;8198BB;
@@ -2713,6 +3076,7 @@ FileSelectMenu_IndexB_FileCopy_InitialiseConfirmation:
     RTS                                                                  ;8198EC;
 
 
+;;; $98ED: Draw file copy/clear confirmation ;;;
 Draw_FileCopyClear_Confirmation:
     LDY.W #Tilemap_FileSelect_isThisOK                                   ;8198ED;
     LDX.W #($A<<1)|($14<<6)                                              ;8198F0; $0514
@@ -2725,7 +3089,7 @@ Draw_FileCopyClear_Confirmation:
     LDX.W #$0680                                                         ;819905;
     LDA.W #$000F                                                         ;819908;
 
-.loop:
+  .loop:
     STA.L $7E3600,X                                                      ;81990B;
     INX                                                                  ;81990F;
     INX                                                                  ;819910;
@@ -2734,8 +3098,10 @@ Draw_FileCopyClear_Confirmation:
     LDY.W #Tilemap_FileSelect_no                                         ;819916;
     LDX.W #($E<<1)|($19<<6)                                              ;819919; $065C
     STZ.W $0F96                                                          ;81991C;
-    JSR.W Load_Tilemap_in_Y_to_X_Coordinates                             ;81991F;
+    JSR.W Load_Tilemap_in_Y_to_X_Coordinates                             ;81991F; fallthrough to Draw_FileCopyClear_Confirmation_SaveFileInfo
 
+
+;;; $9922: Draw file copy/clear confirmation save file info ;;;
 Draw_FileCopyClear_Confirmation_SaveFileInfo:
     LDA.W #$0000                                                         ;819922;
     JSR.W LoadFromSRAM_external                                          ;819925;
@@ -2780,6 +3146,7 @@ Draw_FileCopyClear_Confirmation_SaveFileInfo:
     JMP.W QueueTransfer_MenuTilemap_ToVRAMBG1                            ;819981;
 
 
+;;; $9984: File select menu - index Ch: file copy - confirmation ;;;
 FileSelectMenu_IndexC_FileCopy_Confirmation:
     JSL.L Draw_Border_Around_DATA_COPY_MODE                              ;819984;
     JSL.L Draw_Menu_Selection_Missile                                    ;819988;
@@ -2802,8 +3169,7 @@ FileSelectMenu_IndexC_FileCopy_Confirmation:
     STA.W $0727                                                          ;8199B7;
     JMP.W Initialise_FileSelectMenu_FileCopy                             ;8199BA;
 
-
-.B:
+  .B:
     LDA.W $0727                                                          ;8199BD;
     SEC                                                                  ;8199C0;
     SBC.W #$0003                                                         ;8199C1;
@@ -2814,20 +3180,18 @@ FileSelectMenu_IndexC_FileCopy_Confirmation:
     JSL.L QueueSound_Lib1_Max6                                           ;8199D0;
     RTS                                                                  ;8199D4;
 
-
-.yes:
+  .yes:
     INC.W $0727                                                          ;8199D5;
     RTS                                                                  ;8199D8;
 
-
-.toggle:
+  .toggle:
     LDA.W $19B5                                                          ;8199D9;
     EOR.W #$0001                                                         ;8199DC;
     STA.W $19B5                                                          ;8199DF;
     LDA.W #$0037                                                         ;8199E2;
     JSL.L QueueSound_Lib1_Max6                                           ;8199E5;
 
-.setMissilePosition:
+  .setMissilePosition:
     LDY.W #$00B8                                                         ;8199E9;
     LDA.W $19B5                                                          ;8199EC;
     BEQ +                                                                ;8199EF;
@@ -2839,6 +3203,7 @@ FileSelectMenu_IndexC_FileCopy_Confirmation:
     RTS                                                                  ;8199FD;
 
 
+;;; $99FE: Handle file copy arrow palette ;;;
 HandleFileCopyArrowPalette:
     LDA.W $198F                                                          ;8199FE;
     BEQ .return                                                          ;819A01;
@@ -2851,7 +3216,7 @@ HandleFileCopyArrowPalette:
     TAY                                                                  ;819A13;
     LDX.W #$0000                                                         ;819A14;
 
-.loop:
+  .loop:
     LDA.L $7EC124,X                                                      ;819A17;
     STA.L $7EC122,X                                                      ;819A1B;
     INX                                                                  ;819A1F;
@@ -2861,10 +3226,11 @@ HandleFileCopyArrowPalette:
     TYA                                                                  ;819A26;
     STA.L $7EC12E                                                        ;819A27;
 
-.return:
+  .return:
     RTS                                                                  ;819A2B;
 
 
+;;; $9A2C: File select menu - index Dh: file copy - do file copy ;;;
 FileSelectMenu_Index0_FileCopy_DoFileCopy:
     JSL.L Draw_Border_Around_DATA_COPY_MODE                              ;819A2C;
     JSL.L Draw_Menu_Selection_Missile                                    ;819A30;
@@ -2885,7 +3251,7 @@ FileSelectMenu_Index0_FileCopy_DoFileCopy:
     STA.B $03                                                            ;819A56;
     LDY.W #$0000                                                         ;819A58;
 
-.loop:
+  .loop:
     LDA.B [$00],Y                                                        ;819A5B;
     STA.B [$03],Y                                                        ;819A5D;
     INY                                                                  ;819A5F;
@@ -2918,7 +3284,7 @@ FileSelectMenu_Index0_FileCopy_DoFileCopy:
     LDX.W #$0500                                                         ;819A9B;
     LDA.W #$000F                                                         ;819A9E;
 
-.loopRows:
+  .loopRows:
     STA.L $7E3600,X                                                      ;819AA1;
     INX                                                                  ;819AA5;
     INX                                                                  ;819AA6;
@@ -2947,7 +3313,7 @@ FileSelectMenu_Index0_FileCopy_DoFileCopy:
     LDY.W #$0000                                                         ;819ACE;
     LDA.W #$000F                                                         ;819AD1;
 
-.loopColumns:
+  .loopColumns:
     STA.L $7E3600,X                                                      ;819AD4;
     STA.L $7E35C0,X                                                      ;819AD8;
     INX                                                                  ;819ADC;
@@ -2962,10 +3328,11 @@ FileSelectMenu_Index0_FileCopy_DoFileCopy:
     JSR.W Load_Tilemap_in_Y_to_X_Coordinates                             ;819AEE;
     JMP.W Draw_FileCopyClear_Confirmation_SaveFileInfo                   ;819AF1;
 
-
-.list:
+  .list:
     dw $0001,$0002,$0004                                                 ;819AF4;
 
+
+;;; $9AFA: File select menu - index Eh: file copy - copy completed ;;;
 FileSelectMenu_IndexE_FileCopy_CopyCompleted:
     JSL.L Draw_Border_Around_DATA_COPY_MODE                              ;819AFA;
     LDA.B $8F                                                            ;819AFE;
@@ -2982,16 +3349,17 @@ FileSelectMenu_IndexE_FileCopy_CopyCompleted:
     AND.L $701FEE                                                        ;819B1B;
     BEQ .validSaveSlot                                                   ;819B1F;
 
-.zero:
+  .zero:
     LDX.W #$0000                                                         ;819B21;
 
-.validSaveSlot:
+  .validSaveSlot:
     STX.W $0952                                                          ;819B24;
 
-.return:
+  .return:
     RTS                                                                  ;819B27;
 
 
+;;; $9B28: File select menu - index 12h: file copy to main - menu index = main ;;;
 FileSelectMenu_Index12_FileCopyToMain_MenuIndex_Main:
     LDA.W $0727                                                          ;819B28;
     SEC                                                                  ;819B2B;
@@ -3000,11 +3368,14 @@ FileSelectMenu_Index12_FileCopyToMain_MenuIndex_Main:
     RTS                                                                  ;819B32;
 
 
+;;; $9B33: File select menu - index 14h: main to file clear - initialise ;;;
 FileSelectMenu_Index14_MainToFileClear_Initialise:
     REP #$30                                                             ;819B33;
     JSL.L Draw_Border_Around_DATA_CLEAR_MODE                             ;819B35;
     INC.W $0727                                                          ;819B39;
 
+
+;;; $9B3C: Initialise file select menu file clear ;;;
 Initialise_FileSelectMenu_FileClear:
     JSR.W ClearMenuTilemap                                               ;819B3C;
     LDY.W #Tilemap_FileSelect_dataClearMode                              ;819B3F;
@@ -3022,6 +3393,7 @@ Initialise_FileSelectMenu_FileClear:
     RTS                                                                  ;819B63;
 
 
+;;; $9B64: File select menu - index 16h: file clear - select slot ;;;
 FileSelectMenu_Index16_FileClear_SelectSlot:
     REP #$30                                                             ;819B64;
     JSL.L Draw_Border_Around_DATA_CLEAR_MODE                             ;819B66;
@@ -3039,7 +3411,7 @@ FileSelectMenu_Index16_FileClear_SelectSlot:
     LDA.W $0954                                                          ;819B86;
     LDX.W $19B5                                                          ;819B89;
 
-.loopDown:
+  .loopDown:
     INX                                                                  ;819B8C;
     CPX.B #$04                                                           ;819B8D;
     BPL Set_FileClearMenuSelection_MissilePosition                       ;819B8F;
@@ -3053,8 +3425,7 @@ FileSelectMenu_Index16_FileClear_SelectSlot:
     JSL.L QueueSound_Lib1_Max6                                           ;819B9F;
     BRA Set_FileClearMenuSelection_MissilePosition                       ;819BA3;
 
-
-.exit:
+  .exit:
     REP #$30                                                             ;819BA5;
     LDA.W #$0037                                                         ;819BA7;
     JSL.L QueueSound_Lib1_Max6                                           ;819BAA;
@@ -3064,13 +3435,12 @@ FileSelectMenu_Index16_FileClear_SelectSlot:
     STA.W $0727                                                          ;819BB5;
     RTS                                                                  ;819BB8;
 
-
-.up:
+  .up:
     SEP #$30                                                             ;819BB9;
     LDA.W $0954                                                          ;819BBB;
     LDX.W $19B5                                                          ;819BBE;
 
-.loopUp:
+  .loopUp:
     DEX                                                                  ;819BC1;
     BMI Set_FileClearMenuSelection_MissilePosition                       ;819BC2;
     BIT.W .data,X                                                        ;819BC4;
@@ -3080,8 +3450,7 @@ FileSelectMenu_Index16_FileClear_SelectSlot:
     JSL.L QueueSound_Lib1_Max6                                           ;819BCE;
     BRA Set_FileClearMenuSelection_MissilePosition                       ;819BD2;
 
-
-.select:
+  .select:
     REP #$30                                                             ;819BD4;
     LDA.W #$0037                                                         ;819BD6;
     JSL.L QueueSound_Lib1_Max6                                           ;819BD9;
@@ -3092,10 +3461,11 @@ FileSelectMenu_Index16_FileClear_SelectSlot:
     INC.W $0727                                                          ;819BE8;
     RTS                                                                  ;819BEB;
 
-
-.data:
+  .data:
     db $01,$02,$04                                                       ;819BEC;
 
+
+;;; $9BEF: Set file clear menu selection missile position ;;;
 Set_FileClearMenuSelection_MissilePosition:
     REP #$30                                                             ;819BEF;
     LDA.W $19B5                                                          ;819BF1;
@@ -3107,10 +3477,11 @@ Set_FileClearMenuSelection_MissilePosition:
     STA.W $19A1                                                          ;819BFF;
     RTS                                                                  ;819C02;
 
-
-.positions:
+  .positions:
     dw $0048,$0068,$0088,$00D3                                           ;819C03;
 
+
+;;; $9C0B: File select menu - index 17h: file clear - initialise confirmation ;;;
 FileSelectMenu_Index17_FileClear_InitialiseConfirmation:
     JSL.L Draw_Border_Around_DATA_CLEAR_MODE                             ;819C0B;
     LDY.W #Tilemap_FileSelect_clearSamusA                                ;819C0F;
@@ -3129,6 +3500,7 @@ FileSelectMenu_Index17_FileClear_InitialiseConfirmation:
     RTS                                                                  ;819C35;
 
 
+;;; $9C36: File select menu - index 18h: file clear - confirmation ;;;
 FileSelectMenu_Index18_FileClear_Confirmation:
     JSL.L Draw_Border_Around_DATA_CLEAR_MODE                             ;819C36;
     JSL.L Draw_Menu_Selection_Missile                                    ;819C3A;
@@ -3144,7 +3516,7 @@ FileSelectMenu_Index18_FileClear_Confirmation:
     LDA.W $19B5                                                          ;819C56;
     BEQ .yes                                                             ;819C59;
 
-.B:
+  .B:
     LDA.W $0727                                                          ;819C5B;
     SEC                                                                  ;819C5E;
     SBC.W #$0002                                                         ;819C5F;
@@ -3155,20 +3527,18 @@ FileSelectMenu_Index18_FileClear_Confirmation:
     JSL.L QueueSound_Lib1_Max6                                           ;819C6E;
     JMP.W Initialise_FileSelectMenu_FileClear                            ;819C72;
 
-
-.yes:
+  .yes:
     INC.W $0727                                                          ;819C75;
     RTS                                                                  ;819C78;
 
-
-.toggle:
+  .toggle:
     LDA.W $19B5                                                          ;819C79;
     EOR.W #$0001                                                         ;819C7C;
     STA.W $19B5                                                          ;819C7F;
     LDA.W #$0037                                                         ;819C82;
     JSL.L QueueSound_Lib1_Max6                                           ;819C85;
 
-.setMissilePosition:
+  .setMissilePosition:
     LDY.W #$00B8                                                         ;819C89;
     LDA.W $19B5                                                          ;819C8C;
     BEQ +                                                                ;819C8F;
@@ -3180,6 +3550,7 @@ FileSelectMenu_Index18_FileClear_Confirmation:
     RTS                                                                  ;819C9D;
 
 
+;;; $9C9E: File select menu - index 19h: file clear - do file clear ;;;
 FileSelectMenu_Index19_FileClear_DoFileClear:
     REP #$30                                                             ;819C9E;
     JSL.L Draw_Border_Around_DATA_CLEAR_MODE                             ;819CA0;
@@ -3193,7 +3564,7 @@ FileSelectMenu_Index19_FileClear_DoFileClear:
     LDY.W #$0000                                                         ;819CB4;
     LDA.W #$0000                                                         ;819CB7;
 
-.loopClear:
+  .loopClear:
     STA.B [$00],Y                                                        ;819CBA;
     INY                                                                  ;819CBC;
     INY                                                                  ;819CBD;
@@ -3217,7 +3588,7 @@ FileSelectMenu_Index19_FileClear_DoFileClear:
     LDX.W #$0500                                                         ;819CF2;
     LDA.W #$000F                                                         ;819CF5;
 
-.loopRows:
+  .loopRows:
     STA.L $7E3600,X                                                      ;819CF8;
     INX                                                                  ;819CFC;
     INX                                                                  ;819CFD;
@@ -3235,10 +3606,11 @@ FileSelectMenu_Index19_FileClear_DoFileClear:
     JSR.W Load_Tilemap_in_Y_to_X_Coordinates                             ;819D1A;
     JMP.W Draw_FileCopyClear_Confirmation_SaveFileInfo                   ;819D1D;
 
-
-.data:
+  .data:
     dw $FFFE,$FFFD,$FFFB                                                 ;819D20;
 
+
+;;; $9D26: File select menu - index 1Ah: file clear - clear completed ;;;
 FileSelectMenu_Index1A_FileClear_ClearCompleted:
     JSL.L Draw_Border_Around_DATA_CLEAR_MODE                             ;819D26;
     LDA.B $8F                                                            ;819D2A;
@@ -3250,13 +3622,12 @@ FileSelectMenu_Index1A_FileClear_ClearCompleted:
     JSL.L LoadFromSRAM                                                   ;819D3B;
     BCS .slotACorrupt                                                    ;819D3F;
 
-.selectSlotA:
+  .selectSlotA:
     LDA.W #$0000                                                         ;819D41;
     STA.W $0952                                                          ;819D44;
     RTS                                                                  ;819D47;
 
-
-.slotACorrupt:
+  .slotACorrupt:
     LDA.W #$0001                                                         ;819D48;
     JSL.L LoadFromSRAM                                                   ;819D4B;
     BCS +                                                                ;819D4F;
@@ -3264,17 +3635,17 @@ FileSelectMenu_Index1A_FileClear_ClearCompleted:
     STA.W $0952                                                          ;819D54;
     RTS                                                                  ;819D57;
 
-
   + LDA.W #$0002                                                         ;819D58;
     JSL.L LoadFromSRAM                                                   ;819D5B;
     BCS .selectSlotA                                                     ;819D5F;
     LDA.W #$0002                                                         ;819D61;
     STA.W $0952                                                          ;819D64;
 
-.return:
+  .return:
     RTS                                                                  ;819D67;
 
 
+;;; $9D68: File select menu - index 1Eh: file clear to main - menu index = main ;;;
 FileSelectMenu_Index1E_FileClearToMain_MenuIndex_Main:
     JSL.L Draw_Border_Around_SAMUS_DATA                                  ;819D68;
     LDA.W $0727                                                          ;819D6C;
@@ -3284,6 +3655,7 @@ FileSelectMenu_Index1E_FileClearToMain_MenuIndex_Main:
     RTS                                                                  ;819D76;
 
 
+;;; $9D77: File select menu - index 1Fh: main to options menu - turn Samus helmet ;;;
 FileSelectMenu_Index1F_MainToOptionsMenu_TurnSamusHelmet:
     JSL.L Draw_Menu_Selection_Missile                                    ;819D77;
     JSL.L Draw_Border_Around_SAMUS_DATA                                  ;819D7B;
@@ -3314,13 +3686,14 @@ FileSelectMenu_Index1F_MainToOptionsMenu_TurnSamusHelmet:
     LDA.W $1995                                                          ;819DBA;
     BNE .return                                                          ;819DBD;
 
-.advance:
+  .advance:
     INC.W $0727                                                          ;819DBF;
 
-.return:
+  .return:
     RTS                                                                  ;819DC2;
 
 
+;;; $9DC3: Draw file select Samus helmets ;;;
 Draw_FileSelect_SamusHelmets:
     LDX.W #$0004                                                         ;819DC3;
     LDA.W #$0000                                                         ;819DC6;
@@ -3334,16 +3707,20 @@ Draw_FileSelect_SamusHelmets:
     LDA.W #$0000                                                         ;819DDE;
     STA.W $198D,X                                                        ;819DE1;
 
+
+;;; $9DE4: Draw file select slot Samus helmet ;;;
 Draw_FileSelect_Slot_SamusHelmet:
+;; Parameters:
+;;     X: Slot Samus helmet index. 4/6/8 for slot A/B/C
     PHX                                                                  ;819DE4;
     PHB                                                                  ;819DE5;
     PHK                                                                  ;819DE6;
     PLB                                                                  ;819DE7;
     LDA.W $198D,X                                                        ;819DE8;
-    BEQ timerHandled                                                     ;819DEB;
+    BEQ .timerHandled                                                    ;819DEB;
     DEC A                                                                ;819DED;
     STA.W $198D,X                                                        ;819DEE;
-    BNE timerHandled                                                     ;819DF1;
+    BNE .timerHandled                                                    ;819DF1;
     LDA.W #$0008                                                         ;819DF3;
     STA.W $198D,X                                                        ;819DF6;
     LDA.W $1997,X                                                        ;819DF9;
@@ -3356,7 +3733,7 @@ Draw_FileSelect_Slot_SamusHelmet:
 
   + STA.W $1997,X                                                        ;819E0B;
 
-timerHandled:
+.timerHandled:
     LDA.W $1997,X                                                        ;819E0E;
     ASL A                                                                ;819E11;
     TAY                                                                  ;819E12;
@@ -3374,10 +3751,11 @@ timerHandled:
     PLX                                                                  ;819E2A;
     RTS                                                                  ;819E2B;
 
-
-.data:
+  .data:
     dw $002C,$002D,$002E,$002F,$0030,$0031,$0032,$0033,$0033             ;819E2C;
 
+
+;;; $9E3E: File select map ;;;
 FileSelectMap:
     REP #$30                                                             ;819E3E;
     PHB                                                                  ;819E40;
@@ -3390,15 +3768,14 @@ FileSelectMap:
     PLB                                                                  ;819E4B;
     RTL                                                                  ;819E4C;
 
-
-.pointers:
+  .pointers:
     dw FileSelectMap_Index0_GameOptionsToAreaSelectMap_ClearBG2          ;819E4D;
     dw FileSelectMap_Index1_GameOptionsToAreaSelectMap_FadeOut           ;819E4F;
     dw FileSelectMap_Index2_11_Load_AreaSelect_ForegroundTilemap         ;819E51;
     dw FileSelectMap_Index3_GameOptionsToAreaSelectMap                   ;819E53;
     dw FileSelectMap_Index4_13_PrepareTransitionToAreaSelectMap          ;819E55;
     dw FileSelectMap_Index5_GameOptionsToAreaSelectMap_ExpSqrTrans       ;819E57;
-    dw FineSelectMap_Index6_AreaSelectMap                                ;819E59;
+    dw FileSelectMap_Index6_AreaSelectMap                                ;819E59;
     dw FileSelectMap_Index7_AreaSelectMapToRoomSelectMap                 ;819E5B;
     dw FileSelectMap_Index8_AreaSelectMapToRoomSelectMap                 ;819E5D;
     dw FileSelectMap_Index9_AreaSelectMapToRoomSelectMap_Init            ;819E5F;
@@ -3416,6 +3793,8 @@ FileSelectMap:
     dw FileSelectMap_Index15_RoomSelectMapToAreaSelectMap                ;819E77;
     dw FileSelectMap_Index16_FileClear_AreaSelectMapToGameOptions        ;819E79;
 
+
+;;; $9E7B: File select map - index 16h: file clear - area select map to game options ;;;
 FileSelectMap_Index16_FileClear_AreaSelectMapToGameOptions:
     JSR.W DrawAreaSelectMapLabels                                        ;819E7B;
     JSL.L HandleFadingOut                                                ;819E7E;
@@ -3426,16 +3805,17 @@ FileSelectMap_Index16_FileClear_AreaSelectMapToGameOptions:
     STA.W $0998                                                          ;819E8C;
     STZ.W $0727                                                          ;819E8F;
 
-.return:
+  .return:
     RTS                                                                  ;819E92;
 
 
+;;; $9E93: File select menu - index 1: title sequence to main - load BG2 ;;;
 FileSelectMenu_Index1_TitleSequenceToMain_LoadBG2:
     REP #$30                                                             ;819E93;
     LDX.W #$07FE                                                         ;819E95;
     LDA.W #$000F                                                         ;819E98;
 
-.loop:
+  .loop:
     LDA.L Zebes_and_Stars_Tilemap,X                                      ;819E9B;
     STA.L $7E3600,X                                                      ;819E9F;
     DEX                                                                  ;819EA3;
@@ -3463,6 +3843,7 @@ FileSelectMenu_Index1_TitleSequenceToMain_LoadBG2:
     RTS                                                                  ;819ED5;
 
 
+;;; $9ED6: File select menu - index 2: title sequence to main - initialise ;;;
 FileSelectMenu_Index2_TitleSequenceToMain:
     REP #$30                                                             ;819ED6;
     LDA.L $701FEC                                                        ;819ED8;
@@ -3476,14 +3857,16 @@ FileSelectMenu_Index2_TitleSequenceToMain:
 
   + LDX.W #$0000                                                         ;819EED;
 
-.validSaveSlot:
-    STX.W $0952                                                          ;819EF0;
+  .validSaveSlot:
+    STX.W $0952                                                          ;819EF0; fallthrough to FileSelectMenu_Index10_1C_ReloadMain
 
+
+;;; $9EF3: File select menu - index 10h/1Ch: reload main ;;;
 FileSelectMenu_Index10_1C_ReloadMain:
     LDX.W #$07FE                                                         ;819EF3;
     LDA.W #$000F                                                         ;819EF6;
 
-.loopTilemap:
+  .loopTilemap:
     STA.L $7E3600,X                                                      ;819EF9;
     DEX                                                                  ;819EFD;
     DEX                                                                  ;819EFE;
@@ -3567,7 +3950,7 @@ FileSelectMenu_Index10_1C_ReloadMain:
     STZ.W $0F96                                                          ;819FD8;
     JSR.W Load_Tilemap_in_Y_to_X_Coordinates                             ;819FDB;
 
-.loadTilemap:
+  .loadTilemap:
     LDY.W #Tilemap_FileSelect_exit                                       ;819FDE;
     LDX.W #($4<<1)|($1A<<6)                                              ;819FE1; $0688
     STZ.W $0F96                                                          ;819FE4;
@@ -3610,11 +3993,17 @@ FileSelectMenu_Index10_1C_ReloadMain:
     RTS                                                                  ;81A052;
 
 
+;;; $A053: Load from SRAM / clear SRAM ;;;
 LoadFromSRAM_external:
+;; Parameter:
+;;     A: SRAM slot (0, 1 or 2)
+;; Returns:
+;;     Carry: Set if SRAM was corrupt
     JSL.L LoadFromSRAM                                                   ;81A053;
     RTS                                                                  ;81A057;
 
 
+;;; $A058: File select menu - index 3: title sequence to main - fade in ;;;
 FileSelectMenu_Index3_TitleSequenceToMain_FadeIn:
     JSR.W Draw_FileSelect_SamusHelmets                                   ;81A058;
     LDA.W $0952                                                          ;81A05B;
@@ -3634,11 +4023,15 @@ FileSelectMenu_Index3_TitleSequenceToMain_FadeIn:
     BNE .return                                                          ;81A081;
     INC.W $0727                                                          ;81A083;
 
-.return:
+  .return:
     RTS                                                                  ;81A086;
 
 
+;;; $A087: Draw file selection health ;;;
 Draw_FileSelection_Health:
+;; Parameters:
+;;     X: Menu tilemap index
+;;     Zero: Clear if SRAM is corrupt
     BEQ .zero                                                            ;81A087;
     PHX                                                                  ;81A089;
     JSR.W ClearResetOfMenuTilemapRow                                     ;81A08A;
@@ -3649,8 +4042,7 @@ Draw_FileSelection_Health:
     LDY.W #Tilemap_FileSelect_noData                                     ;81A093;
     JMP.W Load_Tilemap_in_Y_to_X_Coordinates                             ;81A096;
 
-
-.zero:
+  .zero:
     STX.B $1A                                                            ;81A099;
     LDY.W #Tilemap_FileSelect_energy                                     ;81A09B;
     JSR.W Load_Tilemap_in_Y_to_X_Coordinates                             ;81A09E;
@@ -3691,7 +4083,7 @@ Draw_FileSelection_Health:
     ADC.W #$0040                                                         ;81A0E4;
     TAX                                                                  ;81A0E7;
 
-.loop:
+  .loop:
     DEC.B $16                                                            ;81A0E8;
     BMI .etanksDrawn                                                     ;81A0EA;
     LDY.W #$0099                                                         ;81A0EC;
@@ -3715,8 +4107,7 @@ Draw_FileSelection_Health:
     STA.B $18                                                            ;81A10F;
     BRA .loop                                                            ;81A111;
 
-
-.etanksDrawn:
+  .etanksDrawn:
     LDX.B $1A                                                            ;81A113;
     LDA.B $12                                                            ;81A115;
     STA.W $4204                                                          ;81A117;
@@ -3746,7 +4137,11 @@ Draw_FileSelection_Health:
     RTS                                                                  ;81A14D;
 
 
+;;; $A14E: Draw file selection time ;;;
 Draw_FileSelection_Time:
+;; Parameters:
+;;     X: Menu tilemap index
+;;     Zero: Clear if SRAM is corrupt
     BNE .return                                                          ;81A14E;
     STX.B $1A                                                            ;81A150;
     LDA.W $09E0                                                          ;81A152;
@@ -3798,10 +4193,11 @@ Draw_FileSelection_Time:
     ORA.W $0F96                                                          ;81A1BA;
     STA.L $7E3606,X                                                      ;81A1BD;
 
-.return:
+  .return:
     RTS                                                                  ;81A1C1;
 
 
+;;; $A1C2: File select menu - index 4: main ;;;
 FileSelectMenu_Index4_Main:
     REP #$30                                                             ;81A1C2;
     JSL.L Draw_Border_Around_SAMUS_DATA                                  ;81A1C4;
@@ -3821,7 +4217,6 @@ FileSelectMenu_Index4_Main:
     BEQ +                                                                ;81A1ED;
     JMP.W .down                                                          ;81A1EF;
 
-
   + BIT.W #$8000                                                         ;81A1F2;
     BEQ .goto_done                                                       ;81A1F5;
     LDA.W #$0037                                                         ;81A1F7;
@@ -3831,16 +4226,14 @@ FileSelectMenu_Index4_Main:
     LDA.W #$0037                                                         ;81A204;
     JSL.L QueueSound_Lib1_Max6                                           ;81A207;
 
-.goto_done:
+  .goto_done:
     JMP.W .done                                                          ;81A20B;
 
-
-.select:
+  .select:
     LDA.W $0952                                                          ;81A20E;
     CMP.W #$0003                                                         ;81A211;
     BMI +                                                                ;81A214;
     JMP.W .fileOperation                                                 ;81A216;
-
 
   + LDA.W #$002A                                                         ;81A219;
     JSL.L QueueSound_Lib1_Max6                                           ;81A21C;
@@ -3865,13 +4258,11 @@ FileSelectMenu_Index4_Main:
     JSL.L LoadMirrorOfCurrentAreasMapExplored                            ;81A250;
     BRA .done                                                            ;81A254;
 
-
   + JSR.W NewSaveFile                                                    ;81A256;
     STZ.W $0789                                                          ;81A259;
     BRA .done                                                            ;81A25C;
 
-
-.up:
+  .up:
     LDA.W $0954                                                          ;81A25E;
     BEQ +                                                                ;81A261;
     LDA.W $0952                                                          ;81A263;
@@ -3880,24 +4271,21 @@ FileSelectMenu_Index4_Main:
     LDA.W #$0005                                                         ;81A269;
     BRA .storeSelection                                                  ;81A26C;
 
-
   + LDA.W $0952                                                          ;81A26E;
     DEC A                                                                ;81A271;
     BPL +                                                                ;81A272;
     LDA.W #$0005                                                         ;81A274;
     BRA .storeSelection                                                  ;81A277;
 
-
   + CMP.W #$0004                                                         ;81A279;
     BMI .storeSelection                                                  ;81A27C;
     LDA.W #$0002                                                         ;81A27E;
 
-.storeSelection:
+  .storeSelection:
     STA.W $0952                                                          ;81A281;
     BRA .cursorSound                                                     ;81A284;
 
-
-.down:
+  .down:
     LDA.W $0954                                                          ;81A286;
     BEQ +                                                                ;81A289;
     LDA.W $0952                                                          ;81A28B;
@@ -3906,7 +4294,6 @@ FileSelectMenu_Index4_Main:
     BMI .storeSelection2                                                 ;81A292;
     LDA.W #$0000                                                         ;81A294;
     BRA .storeSelection2                                                 ;81A297;
-
 
   + LDA.W $0952                                                          ;81A299;
     INC A                                                                ;81A29C;
@@ -3917,18 +4304,17 @@ FileSelectMenu_Index4_Main:
     LDA.W #$0005                                                         ;81A2A7;
     BRA .storeSelection2                                                 ;81A2AA;
 
-
-.zero:
+  .zero:
     LDA.W #$0000                                                         ;81A2AC;
 
-.storeSelection2:
+  .storeSelection2:
     STA.W $0952                                                          ;81A2AF;
 
-.cursorSound:
+  .cursorSound:
     LDA.W #$0037                                                         ;81A2B2;
     JSL.L QueueSound_Lib1_Max6                                           ;81A2B5;
 
-.done:
+  .done:
     LDA.W $0952                                                          ;81A2B9;
     ASL A                                                                ;81A2BC;
     ASL A                                                                ;81A2BD;
@@ -3939,8 +4325,7 @@ FileSelectMenu_Index4_Main:
     STA.W $19A1                                                          ;81A2C8;
     RTS                                                                  ;81A2CB;
 
-
-.fileOperation:
+  .fileOperation:
     CMP.W #$0003                                                         ;81A2CC;
     BNE +                                                                ;81A2CF;
     LDA.W #$0037                                                         ;81A2D1;
@@ -3951,7 +4336,6 @@ FileSelectMenu_Index4_Main:
     ORA.W #$0003                                                         ;81A2E0;
     STA.B $57                                                            ;81A2E3;
     RTS                                                                  ;81A2E5;
-
 
   + CMP.W #$0004                                                         ;81A2E6;
     BNE .checkFive                                                       ;81A2E9;
@@ -3966,16 +4350,17 @@ FileSelectMenu_Index4_Main:
     ORA.W #$0003                                                         ;81A301;
     STA.B $57                                                            ;81A304;
 
-.checkFive:
+  .checkFive:
     CMP.W #$0005                                                         ;81A306;
     BNE .return                                                          ;81A309;
     LDA.W #$0021                                                         ;81A30B;
     STA.W $0727                                                          ;81A30E;
 
-.return:
+  .return:
     RTS                                                                  ;81A311;
 
 
+;;; $A312: File select menu selection missile co-ordinates ;;;
 FileSelectMenu_SelectionMissile_Coordinates:
   .Yposition:
     dw $0030                                                             ;81A312;
@@ -3987,6 +4372,8 @@ FileSelectMenu_SelectionMissile_Coordinates:
     dw $00BB,$000E ; File clear
     dw $00D3,$000E ; Exit
 
+
+;;; $A32A: File select map - index 0: game options to area select map - clear BG2 and set up fade out ;;;
 FileSelectMap_Index0_GameOptionsToAreaSelectMap_ClearBG2:
     REP #$30                                                             ;81A32A;
     JSR.W ClearMenuTilemap                                               ;81A32C;
@@ -4010,7 +4397,7 @@ FileSelectMap_Index0_GameOptionsToAreaSelectMap_ClearBG2:
     JSR.W LoadFileSelectPalettes                                         ;81A358;
     LDX.W #$0000                                                         ;81A35B;
 
-.loop:
+  .loop:
     LDA.L $7EC000,X                                                      ;81A35E;
     STA.L $7EC200,X                                                      ;81A362;
     INX                                                                  ;81A366;
@@ -4024,6 +4411,7 @@ FileSelectMap_Index0_GameOptionsToAreaSelectMap_ClearBG2:
     RTS                                                                  ;81A37B;
 
 
+;;; $A37C: File select map - index 1: game options to area select map - fade out and load area palettes ;;;
 FileSelectMap_Index1_GameOptionsToAreaSelectMap_FadeOut:
     REP #$30                                                             ;81A37C;
     LDX.W #$0000                                                         ;81A37E;
@@ -4037,7 +4425,7 @@ FileSelectMap_Index1_GameOptionsToAreaSelectMap_FadeOut:
     LDX.W #$0000                                                         ;81A392;
     LDA.W $079F                                                          ;81A395;
 
-.loopMapAreaIndex:
+  .loopMapAreaIndex:
     CMP.W FileSelectMapArea_IndexTable,X                                 ;81A398;
     BEQ +                                                                ;81A39B;
     INX                                                                  ;81A39D;
@@ -4051,15 +4439,14 @@ FileSelectMap_Index1_GameOptionsToAreaSelectMap_FadeOut:
     STA.W $0950                                                          ;81A3A9;
     LDX.W #$0000                                                         ;81A3AC;
 
-.loopAreaColors:
+  .loopAreaColors:
     PHX                                                                  ;81A3AF;
     CPX.W $079F                                                          ;81A3B0;
     BEQ .loadForegroundColors                                            ;81A3B3;
     JSR.W LoadInactiveAreaMapForegroundColors                            ;81A3B5;
     BRA +                                                                ;81A3B8;
 
-
-.loadForegroundColors:
+  .loadForegroundColors:
     JSR.W LoadActiveAreaMapForegroundColors                              ;81A3BA;
 
   + PLX                                                                  ;81A3BD;
@@ -4072,16 +4459,21 @@ FileSelectMap_Index1_GameOptionsToAreaSelectMap_FadeOut:
     LDA.B #$02                                                           ;81A3CC;
     STA.B $69                                                            ;81A3CE;
 
-.return:
+  .return:
     RTS                                                                  ;81A3D0;
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $A3D1: Unused. REP #$30 ;;;
 UNUSED_REP30_81A3D1:
     REP #$30                                                             ;81A3D1;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $A3D3: Load active area map foreground colours ;;;
 LoadActiveAreaMapForegroundColors:
+;; Parameters:
+;;     X: Area index
     TXA                                                                  ;81A3D3;
     ASL A                                                                ;81A3D4;
     TAX                                                                  ;81A3D5;
@@ -4090,14 +4482,29 @@ LoadActiveAreaMapForegroundColors:
     BRA LoadAreaMapForegroundColors                                      ;81A3DA;
 
 
+;;; $A3DC: Load inactive area map foreground colours ;;;
 LoadInactiveAreaMapForegroundColors:
+;; Parameters:
+;;     X: Area index
     TXA                                                                  ;81A3DC;
     ASL A                                                                ;81A3DD;
     TAX                                                                  ;81A3DE;
     LDA.W AreaSelectMap_ForegroundPaletteTable_indices_inactive,X        ;81A3DF;
-    TAY                                                                  ;81A3E2;
+    TAY                                                                  ;81A3E2; fallthrough to LoadAreaMapForegroundColors
 
+
+;;; $A3E3: Load area map foreground colours ;;;
 LoadAreaMapForegroundColors:
+;; Parameters:
+;;     Y: Area select map foreground palette table index (relative to $A4E6)
+
+; Colour set table format:
+;     ssss,dddd ; Entry 0
+;     [...]     ; Entry 1...
+;     FFFF      ; Terminator
+; Where:
+;     s: Palette data index (relative to $A40E) to load 5 colours from
+;     d: Palette RAM index (relative to $7E:C000) to store colours to
     LDA.W AreaSelectMap_ForegroundPaletteTable_data,Y                    ;81A3E3;
     CMP.W #$FFFF                                                         ;81A3E6;
     BEQ .return                                                          ;81A3E9;
@@ -4109,7 +4516,7 @@ LoadAreaMapForegroundColors:
     LDA.W #$0005                                                         ;81A3F2;
     STA.B $12                                                            ;81A3F5;
 
-.loopColors:
+  .loopColors:
     LDA.W AreaSelectMap_ForgegroundPaletteTable,Y                        ;81A3F7;
     STA.L $7EC000,X                                                      ;81A3FA;
     INX                                                                  ;81A3FE;
@@ -4125,8 +4532,7 @@ LoadAreaMapForegroundColors:
     INY                                                                  ;81A40A;
     BRA LoadAreaMapForegroundColors                                      ;81A40B;
 
-
-.return:
+  .return:
     RTS                                                                  ;81A40D;
 
 
@@ -4199,6 +4605,8 @@ AreaSelectMap_ForegroundPaletteTable:
     dw $00AC,$00EC ; Inactive - Tourian
     dw $FFFF
 
+
+;;; $A546: File select map - index 2/11h: load area select foreground tilemap ;;;
 FileSelectMap_Index2_11_Load_AreaSelect_ForegroundTilemap:
     REP #$30                                                             ;81A546;
     LDX.W $0330                                                          ;81A548;
@@ -4224,6 +4632,7 @@ FileSelectMap_Index2_11_Load_AreaSelect_ForegroundTilemap:
     RTS                                                                  ;81A577;
 
 
+;;; $A578: File select map - index 12h: room select map to area select map - load background tilemap ;;;
 FileSelectMap_Index12_RoomSelectMapToAreaSelectMap:
     REP #$30                                                             ;81A578;
     INC.W $0727                                                          ;81A57A;
@@ -4231,12 +4640,17 @@ FileSelectMap_Index12_RoomSelectMapToAreaSelectMap:
     BRA Load_AreaSelect_BackgroundTilemap                                ;81A580;
 
 
+;;; $A582: File select map - index 3: game options to area select map - load background tilemap ;;;
 FileSelectMap_Index3_GameOptionsToAreaSelectMap:
     REP #$30                                                             ;81A582;
     INC.W $0727                                                          ;81A584;
-    LDY.W $079F                                                          ;81A587;
+    LDY.W $079F                                                          ;81A587; fallthrough to Load_AreaSelect_BackgroundTilemap
 
+
+;;; $A58A: Load area select background tilemap ;;;
 Load_AreaSelect_BackgroundTilemap:
+;; Parameters:
+;;     Y: Area index
     LDX.W $0330                                                          ;81A58A;
     LDA.W #$0800                                                         ;81A58D;
     STA.B $D0,X                                                          ;81A590;
@@ -4261,6 +4675,7 @@ Load_AreaSelect_BackgroundTilemap:
     RTS                                                                  ;81A5B2;
 
 
+;;; $A5B3: File select map - index 4/13h: prepare expanding/contracting square transition to area select map ;;;
 FileSelectMap_Index4_13_PrepareTransitionToAreaSelectMap:
     SEP #$20                                                             ;81A5B3;
     LDA.B #$04                                                           ;81A5B5;
@@ -4293,6 +4708,7 @@ FileSelectMap_Index4_13_PrepareTransitionToAreaSelectMap:
     RTS                                                                  ;81A5F5;
 
 
+;;; $A5F6: Configure window 1 for expanding square transition ;;;
 Config_Window1_ExpandingSquareTransition:
     SEP #$20                                                             ;81A5F6;
     LDA.B #$13                                                           ;81A5F8;
@@ -4313,6 +4729,7 @@ Config_Window1_ExpandingSquareTransition:
     RTS                                                                  ;81A61B;
 
 
+;;; $A61C: Set up initial expanding square transition HDMA ;;;
 Setup_Initial_ExpandingSquareTransition_HDMA:
     SEP #$20                                                             ;81A61C;
     LDA.B #$00                                                           ;81A61E;
@@ -4408,10 +4825,14 @@ Setup_Initial_ExpandingSquareTransition_HDMA:
     RTS                                                                  ;81A723;
 
 
+;;; $A724: Expanding square transition speed ;;;
 ExpandingSquareTransitionSpeed:
     db $04                                                               ;81A724;
 
+
+;;; $A725: File select map - index 5: game options to area select map - expanding square transition ;;;
 FileSelectMap_Index5_GameOptionsToAreaSelectMap_ExpSqrTrans:
+; Prepares the room select map when finished transition
     REP #$30                                                             ;81A725;
     JSR.W DrawAreaSelectMapLabels                                        ;81A727;
     SEP #$20                                                             ;81A72A;
@@ -4440,7 +4861,6 @@ FileSelectMap_Index5_GameOptionsToAreaSelectMap_ExpSqrTrans:
     STA.L $7E9E36                                                        ;81A772;
     RTS                                                                  ;81A776;
 
-
   + INC.W $0727                                                          ;81A777;
     LDA.B $69                                                            ;81A77A;
     AND.B #$FD                                                           ;81A77C;
@@ -4460,7 +4880,7 @@ FileSelectMap_Index5_GameOptionsToAreaSelectMap_ExpSqrTrans:
     STA.W $073B                                                          ;81A799;
     LDX.W #$0000                                                         ;81A79C;
 
-.copyTilemap:
+  .copyTilemap:
     LDA.L Tilemap_BG2PauseScreen_BG2RoomSelectMap_0,X                    ;81A79F;
     STA.L $7E4000,X                                                      ;81A7A3;
     INX                                                                  ;81A7A7;
@@ -4469,7 +4889,7 @@ FileSelectMap_Index5_GameOptionsToAreaSelectMap_ExpSqrTrans:
     BMI .copyTilemap                                                     ;81A7AC;
     LDA.W #$2801                                                         ;81A7AE;
 
-.loopTilemap:
+  .loopTilemap:
     STA.L $7E4000,X                                                      ;81A7B1;
     INX                                                                  ;81A7B5;
     INX                                                                  ;81A7B6;
@@ -4483,7 +4903,7 @@ FileSelectMap_Index5_GameOptionsToAreaSelectMap_ExpSqrTrans:
     LDY.W #$0140                                                         ;81A7CA;
     LDX.W #$077E                                                         ;81A7CD;
 
-.loopMapControls:
+  .loopMapControls:
     LDA.W Tilemap_RoomSelectMap_Controls,Y                               ;81A7D0;
     STA.L $7E4000,X                                                      ;81A7D3;
     DEX                                                                  ;81A7D7;
@@ -4509,44 +4929,43 @@ FileSelectMap_Index5_GameOptionsToAreaSelectMap_ExpSqrTrans:
     RTS                                                                  ;81A7FF;
 
 
-FineSelectMap_Index6_AreaSelectMap:
+;;; $A800: File select map - index 6: area select map ;;;
+FileSelectMap_Index6_AreaSelectMap:
+; BUG: The check for debug mode here loads zero if debug mode isn't enabled,
+;      causing the subsequent BITs that expect newly pressed controller 1 input in A to always flag zero
+;      This means pressing up/left/down/right/select the same frame as B/A/start negates the B/A/start input
     REP #$30                                                             ;81A800;
     LDA.B $8F                                                            ;81A802;
     BIT.W #$0A00                                                         ;81A804;
     BEQ +                                                                ;81A807;
-    LDA.W $05D1                                                          ;81A809;
+    LDA.W $05D1                                                          ;81A809; <-- clobbers A >_<;
     BEQ .checkB                                                          ;81A80C;
-    JMP.W FineSelectMap_Index6_AreaSelectMap_Debug                       ;81A80E;
-
+    JMP.W .debug                                                         ;81A80E;
 
   + BIT.W #$2500                                                         ;81A811;
     BEQ .checkB                                                          ;81A814;
-    LDA.W $05D1                                                          ;81A816;
+    LDA.W $05D1                                                          ;81A816; <-- clobbers A >_<;
     BEQ .checkB                                                          ;81A819;
-    JMP.W FineSelectMap_Index6_AreaSelectMap_Debug_debugNext             ;81A81B;
+    JMP.W .debugNext                                                     ;81A81B;
 
-
-.checkB:
+  .checkB:
     BIT.W #$8000                                                         ;81A81E;
     BEQ +                                                                ;81A821;
     LDA.W #$0016                                                         ;81A823;
     STA.W $0727                                                          ;81A826;
     JMP.W DrawAreaSelectMapLabels                                        ;81A829;
 
-
   + BIT.W #$1080                                                         ;81A82C;
-    BEQ JMP_DrawAreaSelectMapLabels                                      ;81A82F;
+    BEQ .JMP_DrawAreaSelectMapLabels                                     ;81A82F;
     LDA.W #$0038                                                         ;81A831;
     JSL.L QueueSound_Lib1_Max6                                           ;81A834;
     JMP.W Select_FileSelectMap_Area                                      ;81A838;
 
-
-JMP_DrawAreaSelectMapLabels:
+  .JMP_DrawAreaSelectMapLabels:
     JMP.W DrawAreaSelectMapLabels                                        ;81A83B;
 
-
-FineSelectMap_Index6_AreaSelectMap_Debug:
-    STZ.B $18                                                            ;81A83E;
+  .debug:
+    STZ.B $18                                                            ;81A83E; >_<
     LDA.B $16                                                            ;81A840;
     STA.B $18                                                            ;81A842;
     LDA.W $0950                                                          ;81A844;
@@ -4560,22 +4979,21 @@ FineSelectMap_Index6_AreaSelectMap_Debug:
     LDA.B $1C                                                            ;81A859;
     JSR.W A_equals_A_Minus_1_Mod_6                                       ;81A85B;
     JSR.W Debug_Check_FileSelectMapArea_CanBeSelected                    ;81A85E;
-    BEQ JMP_DrawAreaSelectMapLabels                                      ;81A861;
+    BEQ .JMP_DrawAreaSelectMapLabels                                     ;81A861;
 
-.selected:
+  .selected:
     LDA.W #$0037                                                         ;81A863;
     JSL.L QueueSound_Lib1_Max6                                           ;81A866;
     JSR.W Switch_Active_FileSelectMapArea                                ;81A86A;
     JMP.W DrawAreaSelectMapLabels                                        ;81A86D;
 
-
-FineSelectMap_Index6_AreaSelectMap_Debug_debugNext:
+  .debugNext:
     LDA.W #$0006                                                         ;81A870;
     STA.B $16                                                            ;81A873;
     LDA.W $0950                                                          ;81A875;
     STA.B $1C                                                            ;81A878;
 
-.loop:
+  .loop:
     LDA.B $1C                                                            ;81A87A;
     JSR.W A_equals_A_Plus_1_Mod_6                                        ;81A87C;
     JSR.W Debug_Check_FileSelectMapArea_CanBeSelected                    ;81A87F;
@@ -4584,33 +5002,36 @@ FineSelectMap_Index6_AreaSelectMap_Debug_debugNext:
     BNE .loop                                                            ;81A886;
     JMP.W DrawAreaSelectMapLabels                                        ;81A888;
 
-
-.switch:
+  .switch:
     JSR.W Switch_Active_FileSelectMapArea                                ;81A88B;
     LDA.W #$0037                                                         ;81A88E;
     JSL.L QueueSound_Lib1_Max6                                           ;81A891;
     JMP.W DrawAreaSelectMapLabels                                        ;81A895;
 
 
+;;; $A898: A = ([A] - 1) % 6 ;;;
 A_equals_A_Minus_1_Mod_6:
     DEC A                                                                ;81A898;
     BPL .return                                                          ;81A899;
     LDA.W #$0005                                                         ;81A89B;
 
-.return:
+  .return:
     RTS                                                                  ;81A89E;
 
 
+;;; $A89F: A = ([A] + 1) % 6 ;;;
 A_equals_A_Plus_1_Mod_6:
     INC A                                                                ;81A89F;
     CMP.W #$0006                                                         ;81A8A0;
     BMI .return                                                          ;81A8A3;
     LDA.W #$0000                                                         ;81A8A5;
 
-.return:
+  .return:
     RTS                                                                  ;81A8A8;
 
 
+
+;;; $A8A9: Select file select map area ;;;
 Select_FileSelectMap_Area:
     INC.W $0727                                                          ;81A8A9;
     LDA.W $05D1                                                          ;81A8AC;
@@ -4619,10 +5040,9 @@ Select_FileSelectMap_Area:
     STA.W $079F                                                          ;81A8B5;
     LDA.L $7ED916                                                        ;81A8B8;
     STA.W $078B                                                          ;81A8BC;
-    JMP.W JMP_DrawAreaSelectMapLabels                                    ;81A8BF;
+    JMP.W FileSelectMap_Index6_AreaSelectMap_JMP_DrawAreaSelectMapLabels ;81A8BF;
 
-
-.debugEnabled:
+  .debugEnabled:
     LDA.W $0950                                                          ;81A8C2;
     ASL A                                                                ;81A8C5;
     TAX                                                                  ;81A8C6;
@@ -4642,13 +5062,13 @@ Select_FileSelectMap_Area:
     TAY                                                                  ;81A8E6;
     LDA.B [$00],Y                                                        ;81A8E7;
 
-.crash:
+  .crash:
     BEQ .crash                                                           ;81A8E9;
     STA.B $00                                                            ;81A8EB;
     LDA.W #$0010                                                         ;81A8ED;
     STA.B $14                                                            ;81A8F0;
 
-.loopSavesElevators:
+  .loopSavesElevators:
     LSR.B $12                                                            ;81A8F2;
     BCC +                                                                ;81A8F4;
     TXA                                                                  ;81A8F6;
@@ -4667,7 +5087,7 @@ Select_FileSelectMap_Area:
     BNE .loopSavesElevators                                              ;81A90C;
     LDA.W #$0008                                                         ;81A90E;
 
-.loopDebugSavePoints:
+  .loopDebugSavePoints:
     TXA                                                                  ;81A911;
     ASL A                                                                ;81A912;
     ASL A                                                                ;81A913;
@@ -4683,16 +5103,22 @@ Select_FileSelectMap_Area:
     DEC.B $14                                                            ;81A925;
     BNE .loopDebugSavePoints                                             ;81A927;
 
-.crash2:
+  .crash2:
     BRA .crash2                                                          ;81A929;
 
-
-.found:
+  .found:
     STX.W $078B                                                          ;81A92B;
-    JMP.W JMP_DrawAreaSelectMapLabels                                    ;81A92E;
+    JMP.W FileSelectMap_Index6_AreaSelectMap_JMP_DrawAreaSelectMapLabels ;81A92E;
 
 
+;;; $A931: Debug. Check if file select map area can be selected ;;;
 Debug_Check_FileSelectMapArea_CanBeSelected:
+;; Parameters:
+;;     A: File select map area index
+;; Returns:
+;;     Zero: Clear if used save station or elevator in area, or if area has debug elevator markers (which they all do); otherwise set
+
+; Always returns zero clear
     STA.B $1C                                                            ;81A931;
     ASL A                                                                ;81A933;
     TAX                                                                  ;81A934;
@@ -4714,10 +5140,11 @@ Debug_Check_FileSelectMapArea_CanBeSelected:
     PLB                                                                  ;81A953;
     CMP.W #$FFFF                                                         ;81A954;
 
-.return:
+  .return:
     RTS                                                                  ;81A957;
 
 
+;;; $A958: Debug. Switch active file select map area ;;;
 Switch_Active_FileSelectMapArea:
     LDA.W $0950                                                          ;81A958;
     ASL A                                                                ;81A95B;
@@ -4740,6 +5167,7 @@ Switch_Active_FileSelectMapArea:
     JMP.W Load_AreaSelect_BackgroundTilemap                              ;81A97B;
 
 
+;;; $A97E: Draw area select map labels ;;;
 DrawAreaSelectMapLabels:
     STZ.B $03                                                            ;81A97E;
     LDX.W #$0080                                                         ;81A980;
@@ -4748,7 +5176,7 @@ DrawAreaSelectMapLabels:
     JSL.L AddSpritemapFrom_82C569_TableToOAM                             ;81A98A;
     STZ.B $1C                                                            ;81A98E;
 
-.loopAreas:
+  .loopAreas:
     LDX.W #$0200                                                         ;81A990;
     LDA.B $1C                                                            ;81A993;
     CMP.W $0950                                                          ;81A995;
@@ -4774,7 +5202,7 @@ DrawAreaSelectMapLabels:
     LDA.W #$0010                                                         ;81A9BA;
     STA.B $1E                                                            ;81A9BD;
 
-.loopSavePoints:
+  .loopSavePoints:
     LDA.W $0000,X                                                        ;81A9BF;
     CMP.W #$FFFF                                                         ;81A9C2;
     BEQ .PLBNext                                                         ;81A9C5;
@@ -4795,7 +5223,7 @@ DrawAreaSelectMapLabels:
     CMP.W #$FFFF                                                         ;81A9E2;
     BEQ .PLBNext                                                         ;81A9E5;
 
-.foundUsedSavePoint:
+  .foundUsedSavePoint:
     PLB                                                                  ;81A9E7;
     LDA.B $1C                                                            ;81A9E8;
     ASL A                                                                ;81A9EA;
@@ -4818,76 +5246,91 @@ DrawAreaSelectMapLabels:
     PLX                                                                  ;81AA07;
     JSL.L AddSpritemapFrom_82C569_TableToOAM                             ;81AA08;
 
-.next:
+  .next:
     INC.B $1C                                                            ;81AA0C;
     LDA.B $1C                                                            ;81AA0E;
     CMP.W #$0006                                                         ;81AA10;
     BPL .return                                                          ;81AA13;
     JMP.W .loopAreas                                                     ;81AA15;
 
-
-.return:
+  .return:
     RTS                                                                  ;81AA18;
 
-
-.PLBNext:
+  .PLBNext:
     PLB                                                                  ;81AA19;
     BRA .next                                                            ;81AA1A;
 
 
+;;; $AA1C: Area select map labels positions ;;;
 FileSelectMap_Labels_Positions:
   .X:
     dw $005B                                                             ;81AA1C;
-
   .Y:
-    dw $0032       ; Crateria
+    dw       $0032 ; Crateria
     dw $002A,$007F ; Brinstar
     dw $005E,$00B5 ; Norfair
     dw $00CE,$0050 ; Wrecked Ship
     dw $00CE,$009F ; Maridia
     dw $0087,$008B ; Tourian
 
+
+;;; $AA34: Room select map expanding square velocities ;;;
 RoomSelectMap_ExpandingSquare_Velocities:
+;        ________________________________________________ Left position subvelocity
+;       |      __________________________________________ Left position velocity
+;       |     |       ___________________________________ Right subvelocity
+;       |     |      |      _____________________________ Right velocity
+;       |     |      |     |       ______________________ Top subvelocity
+;       |     |      |     |      |      ________________ Top velocity
+;       |     |      |     |      |     |       _________ Bottom subvelocity
+;       |     |      |     |      |     |      |      ___ Bottom velocity
+;       |     |      |     |      |     |      |     |
   .leftSub:
     dw $3C00                                                             ;81AA34; Crateria
   .left:
-    dw $FFFE                                                             ;81AA36;
+    dw       $FFFE                                                       ;81AA36;
   .rightSub:
-    dw $3400                                                             ;81AA38;
+    dw              $3400                                                ;81AA38;
   .right:
-    dw $0003                                                             ;81AA3A;
+    dw                    $0003                                          ;81AA3A;
   .topSub:
-    dw $0800                                                             ;81AA3C;
+    dw                           $0800                                   ;81AA3C;
   .top:
-    dw $FFFF                                                             ;81AA3E;
+    dw                                 $FFFF                             ;81AA3E;
   .bottomSub:
-    dw $0000                                                             ;81AA40;
+    dw                                        $0000                      ;81AA40;
   .bottom:
-    dw $0004                                                             ;81AA42;
+    dw                                              $0004                ;81AA42;
 
-    dw $3800,$FFFF,$0000,$0004,$A400,$FFFD,$6800,$0002 ; Brinstar
-    dw $F000,$FFFD,$9400,$0003,$0000,$FFFC,$A800,$0001 ; Norfair
-    dw $0000,$FFFC,$F800,$0000,$7400,$FFFE,$6800,$0003 ; Wrecked Ship
-    dw $0000,$FFFC,$F800,$0000,$EC00,$FFFC,$E000,$0001 ; Maridia
-    dw $2000,$FFFC,$7800,$0003,$0000,$FFFC,$5C00,$0003 ; Tourian
+    dw $3800,$FFFF, $0000,$0004, $A400,$FFFD, $6800,$0002 ; Brinstar
+    dw $F000,$FFFD, $9400,$0003, $0000,$FFFC, $A800,$0001 ; Norfair
+    dw $0000,$FFFC, $F800,$0000, $7400,$FFFE, $6800,$0003 ; Wrecked Ship
+    dw $0000,$FFFC, $F800,$0000, $EC00,$FFFC, $E000,$0001 ; Maridia
+    dw $2000,$FFFC, $7800,$0003, $0000,$FFFC, $5C00,$0003 ; Tourian
 
+
+;;; $AA94: Room select map expanding square timers ;;;
 RoomSelectMap_ExpandingSquare_Timers:
-    dw $0033 ; Crateria                                                  ;81AA94;
+    dw $0033 ; Crateria
     dw $0035 ; Brinstar
     dw $002D ; Norfair
     dw $0033 ; Wrecked Ship
     dw $0033 ; Maridia
     dw $0022 ; Tourian
 
+
+;;; $AAA0: File select map area index table ;;;
 FileSelectMapArea_IndexTable:
 ; Maps file select map area index ($0950) to area index ($079F)
-    dw $0000 ; Crateria                                                  ;81AAA0;
+    dw $0000 ; Crateria
     dw $0003 ; Wrecked Ship
     dw $0005 ; Tourian
     dw $0001 ; Brinstar
     dw $0004 ; Maridia
     dw $0002 ; Norfair
 
+
+;;; $AAAC: File select map - index 7: area select map to room select map - prepare expanding square transition ;;;
 FileSelectMap_Index7_AreaSelectMapToRoomSelectMap:
     REP #$30                                                             ;81AAAC;
     JSR.W DrawAreaSelectMapLabels                                        ;81AAAE;
@@ -4986,6 +5429,7 @@ FileSelectMap_Index7_AreaSelectMapToRoomSelectMap:
     RTS                                                                  ;81ABA6;
 
 
+;;; $ABA7: Set up file select map expanding square transition HDMA ;;;
 Setup_FileSelectMap_ExpandingSquareTransition_HDMA:
     SEP #$20                                                             ;81ABA7;
     LDX.W #$0000                                                         ;81ABA9;
@@ -5020,7 +5464,12 @@ Setup_FileSelectMap_ExpandingSquareTransition_HDMA:
     RTS                                                                  ;81ABF6;
 
 
+;;; $ABF7: Add expanding square transition left position indirect HDMA table entry ;;;
 AddExpandingSquareTransition_LeftPos_IndirectHDMATable:
+;; Parameters:
+;;     A: Number of lines
+;;     X: Indirect HDMA table offset
+;;     Y: Address of window 1 left position
     PHA                                                                  ;81ABF7;
     PHY                                                                  ;81ABF8;
     PHP                                                                  ;81ABF9;
@@ -5053,7 +5502,14 @@ AddExpandingSquareTransition_LeftPos_IndirectHDMATable:
     RTS                                                                  ;81AC2C;
 
 
+;;; $AC2D: Add expanding square transition right position indirect HDMA table entry ;;;
 AddExpandingSquareTransition_RightPos_IndirectHDMATable:
+;; Parameters:
+;;     A: Number of lines
+;;     X: Indirect HDMA table offset
+;;     Y: Address of window 1 right position
+;; Returns:
+;;     X: Next indirect HDMA table offset
     PHP                                                                  ;81AC2D;
     SEP #$20                                                             ;81AC2E;
     BIT.B #$80                                                           ;81AC30;
@@ -5087,6 +5543,7 @@ AddExpandingSquareTransition_RightPos_IndirectHDMATable:
     RTS                                                                  ;81AC65;
 
 
+;;; $AC66: File select map - index 8: area select map to room select map - expanding square transition ;;;
 FileSelectMap_Index8_AreaSelectMapToRoomSelectMap:
     REP #$30                                                             ;81AC66;
     JSR.W HandleRoomSelectMap_ExpandingSquareTransition                  ;81AC68;
@@ -5105,7 +5562,10 @@ FileSelectMap_Index8_AreaSelectMapToRoomSelectMap:
     RTS                                                                  ;81AC83;
 
 
+;;; $AC84: Handle room select map expanding square transition ;;;
 HandleRoomSelectMap_ExpandingSquareTransition:
+;; Returns:
+;;     Negative: Set if finished, clear otherwise
     LDA.L $7E9E30                                                        ;81AC84;
     CLC                                                                  ;81AC88;
     ADC.L $7E9E40                                                        ;81AC89;
@@ -5158,6 +5618,7 @@ HandleRoomSelectMap_ExpandingSquareTransition:
     RTS                                                                  ;81AD16;
 
 
+;;; $AD17: File select map - index 9: area select map to room select map - initialise ;;;
 FileSelectMap_Index9_AreaSelectMapToRoomSelectMap_Init:
     REP #$30                                                             ;81AD17;
     JSL.L LoadMirrorOfCurrentAreasMapExplored                            ;81AD19;
@@ -5201,6 +5662,7 @@ FileSelectMap_Index9_AreaSelectMapToRoomSelectMap_Init:
     RTS                                                                  ;81AD7E;
 
 
+;;; $AD7F: File select map - index Ah: room select map ;;;
 FileSelectMap_IndexA_RoomSelectMap:
     REP #$30                                                             ;81AD7F;
     JSL.L Draw_FileSelectMap_Icons                                       ;81AD81;
@@ -5222,11 +5684,10 @@ FileSelectMap_IndexA_RoomSelectMap:
     LDA.W #$0038                                                         ;81ADAB;
     JSL.L QueueSound_Lib1_Max6                                           ;81ADAE;
 
-.earlyReturn:
+  .earlyReturn:
     RTS                                                                  ;81ADB2;
 
-
-.exit:
+  .exit:
     LDA.W $0727                                                          ;81ADB3;
     CLC                                                                  ;81ADB6;
     ADC.W #$0005                                                         ;81ADB7;
@@ -5234,7 +5695,7 @@ FileSelectMap_IndexA_RoomSelectMap:
     LDX.W #$0000                                                         ;81ADBD;
     LDA.W $079F                                                          ;81ADC0;
 
-.loopMapAreaIndex:
+  .loopMapAreaIndex:
     CMP.W FileSelectMapArea_IndexTable,X                                 ;81ADC3;
     BEQ +                                                                ;81ADC6;
     INX                                                                  ;81ADC8;
@@ -5244,7 +5705,6 @@ FileSelectMap_IndexA_RoomSelectMap:
     STZ.W $0950                                                          ;81ADCF;
     RTS                                                                  ;81ADD2;
 
-
   + TXA                                                                  ;81ADD3;
     LSR A                                                                ;81ADD4;
     STA.W $0950                                                          ;81ADD5;
@@ -5252,8 +5712,7 @@ FileSelectMap_IndexA_RoomSelectMap:
     JSL.L QueueSound_Lib1_Max6                                           ;81ADDB;
     RTS                                                                  ;81ADDF;
 
-
-.debug:
+  .debug:
     LDA.W #$0038                                                         ;81ADE0;
     JSL.L QueueSound_Lib1_Max6                                           ;81ADE3;
     PHB                                                                  ;81ADE7;
@@ -5270,7 +5729,7 @@ FileSelectMap_IndexA_RoomSelectMap:
     STA.B $18                                                            ;81ADFB;
     LDA.W $078B                                                          ;81ADFD;
 
-.loopIndex:
+  .loopIndex:
     LSR.B $18                                                            ;81AE00;
     DEC A                                                                ;81AE02;
     BPL .loopIndex                                                       ;81AE03;
@@ -5281,7 +5740,7 @@ FileSelectMap_IndexA_RoomSelectMap:
     TAX                                                                  ;81AE0D;
     LDA.W $0000,X                                                        ;81AE0E;
 
-.crash:
+  .crash:
     BEQ .crash                                                           ;81AE11;
     STA.B $00                                                            ;81AE13;
     LDA.W $078B                                                          ;81AE15;
@@ -5299,8 +5758,7 @@ FileSelectMap_IndexA_RoomSelectMap:
     BPL .debugSavePoints                                                 ;81AE2B;
     BRA .savesElevators                                                  ;81AE2D;
 
-
-.loopSavesElevators:
+  .loopSavesElevators:
     LSR.B $18                                                            ;81AE2F;
     BCC .savesElevators                                                  ;81AE31;
     LDA.W $078B                                                          ;81AE33;
@@ -5313,13 +5771,13 @@ FileSelectMap_IndexA_RoomSelectMap:
     CMP.W #$FFFF                                                         ;81AE40;
     BNE .found                                                           ;81AE43;
 
-.savesElevators:
+  .savesElevators:
     INC.W $078B                                                          ;81AE45;
     LDA.W $078B                                                          ;81AE48;
     CMP.W #$0010                                                         ;81AE4B;
     BMI .loopSavesElevators                                              ;81AE4E;
 
-.loopDebugSavePoints:
+  .loopDebugSavePoints:
     LDA.W $078B                                                          ;81AE50;
     ASL A                                                                ;81AE53;
     ASL A                                                                ;81AE54;
@@ -5330,12 +5788,11 @@ FileSelectMap_IndexA_RoomSelectMap:
     CMP.W #$FFFE                                                         ;81AE5D;
     BNE .found                                                           ;81AE60;
 
-.debugSavePoints:
+  .debugSavePoints:
     INC.W $078B                                                          ;81AE62;
     BRA .loopDebugSavePoints                                             ;81AE65;
 
-
-.finishedDebugSavePoints:
+  .finishedDebugSavePoints:
     STZ.W $078B                                                          ;81AE67;
     LDA.W $079F                                                          ;81AE6A;
     ASL A                                                                ;81AE6D;
@@ -5344,8 +5801,7 @@ FileSelectMap_IndexA_RoomSelectMap:
     STA.B $18                                                            ;81AE73;
     BRA .loopSavesElevators                                              ;81AE75;
 
-
-.found:
+  .found:
     LDA.W $078B                                                          ;81AE77;
     ASL A                                                                ;81AE7A;
     ASL A                                                                ;81AE7B;
@@ -5367,15 +5823,14 @@ FileSelectMap_IndexA_RoomSelectMap:
     LDA.W #$0000                                                         ;81AE95;
     BRA .storeXScroll                                                    ;81AE98;
 
-
   + CMP.W $05AC                                                          ;81AE9A;
     BMI .storeXScroll                                                    ;81AE9D;
     LDA.W $05AC                                                          ;81AE9F;
 
-.storeXScroll:
+  .storeXScroll:
     STA.B $B1                                                            ;81AEA2;
 
-.noXScroll:
+  .noXScroll:
     INY                                                                  ;81AEA4;
     INY                                                                  ;81AEA5;
     LDA.B [$00],Y                                                        ;81AEA6;
@@ -5397,17 +5852,21 @@ FileSelectMap_IndexA_RoomSelectMap:
 
   + STA.B $B3                                                            ;81AEC4;
 
-.return:
+  .return:
     PLB                                                                  ;81AEC6;
     RTS                                                                  ;81AEC7;
 
 
 if !FEATURE_KEEP_UNREFERENCED
+;;; $AEC8: Unused. REP #$30 ;;;
 UNUSED_REP30_81AEC8:
     REP #$30                                                             ;81AEC8;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
+
+;;; $AECA: Handle file select map scroll arrows ;;;
 Handle_FileSelectMap_ScrollArrows:
+; Fork of $82:B934 (handle map scroll arrows) that changes the map screen boundaries
     PHP                                                                  ;81AECA;
     PHB                                                                  ;81AECB;
     PHK                                                                  ;81AECC;
@@ -5447,13 +5906,12 @@ Handle_FileSelectMap_ScrollArrows:
     LDX.W #MapScroll_ArrowData_mapScrollDirection_down                   ;81AF15;
     JSL.L Draw_MapScrollArrow_and_Check_Scroll_in_that_Direction         ;81AF18;
 
-.return:
+  .return:
     PLB                                                                  ;81AF1C;
     PLP                                                                  ;81AF1D;
     RTS                                                                  ;81AF1E;
 
-
-.cancelScrollDown:
+  .cancelScrollDown:
     LDA.W $05FD                                                          ;81AF1F;
     CMP.W MapScroll_ArrowData_mapScrollDirection_end                     ;81AF22;
     BNE .return                                                          ;81AF25;
@@ -5464,6 +5922,7 @@ Handle_FileSelectMap_ScrollArrows:
 
 
 MapScroll_ArrowData_mapScrollDirection:
+; Map scroll arrow data
 ;        ___________________________ X position
 ;       |      _____________________ Y position
 ;       |     |      _______________ Pause screen animation ID
@@ -5472,19 +5931,17 @@ MapScroll_ArrowData_mapScrollDirection:
 ;       |     |     |     |     |
   .left:
     dw $0010,$0060,$0009,$0200,$0001                                     ;81AF32;
-
   .right:
     dw $00F0,$0060,$0008,$0100,$0002                                     ;81AF3C;
-
   .up:
     dw $0080,$0020,$0006,$0800,$0003                                     ;81AF46;
-
   .down:
     dw $0080,$00A0,$0007,$0400                                           ;81AF50;
-
   .end:
-    dw $0004                                                             ;81AF58;
+    dw                         $0004                                     ;81AF58;
 
+
+;;; $AF5A: File select map - index Bh/Ch: room select map to loading game data - wait before fade out ;;;
 FileSelectMap_IndexB_C_RoomSelectMapToLoadingGameData:
     JSL.L Draw_FileSelectMap_Icons                                       ;81AF5A;
     JSL.L Display_Map_Elevator_Destinations                              ;81AF5E;
@@ -5492,6 +5949,7 @@ FileSelectMap_IndexB_C_RoomSelectMapToLoadingGameData:
     RTS                                                                  ;81AF65;
 
 
+;;; $AF66: File select map - index Dh: room select map to loading game data - fade out ;;;
 FileSelectMap_IndexD_RoomSelectMapToAreaSelectMap_FadeOut:
     JSL.L Draw_FileSelectMap_Icons                                       ;81AF66;
     JSL.L Display_Map_Elevator_Destinations                              ;81AF6A;
@@ -5503,10 +5961,11 @@ FileSelectMap_IndexD_RoomSelectMapToAreaSelectMap_FadeOut:
     LDA.W #$0020                                                         ;81AF7C;
     STA.W $0F7A                                                          ;81AF7F;
 
-.return:
+  .return:
     RTS                                                                  ;81AF82;
 
 
+;;; $AF83: File select map - index Eh: room select map to loading game data - wait ;;;
 FileSelectMap_IndexE_RoomSelectMapToLoadingGameData_Wait:
     LDA.W $0F7A                                                          ;81AF83;
     DEC A                                                                ;81AF86;
@@ -5516,10 +5975,11 @@ FileSelectMap_IndexE_RoomSelectMapToLoadingGameData_Wait:
     INC.W $0998                                                          ;81AF90;
     STZ.W $0727                                                          ;81AF93;
 
-.return:
+  .return:
     RTS                                                                  ;81AF96;
 
 
+;;; $AF97: File select map - index Fh: room select map to area select map - clear BG1 tilemap ;;;
 FileSelectMap_IndexF_RoomSelectMapToAreaSelectMap_ClearBG1:
     SEP #$20                                                             ;81AF97;
     LDA.B #$12                                                           ;81AF99;
@@ -5528,7 +5988,7 @@ FileSelectMap_IndexF_RoomSelectMapToAreaSelectMap_ClearBG1:
     LDA.W #$000F                                                         ;81AF9F;
     LDX.W #$07FE                                                         ;81AFA2;
 
-.loop:
+  .loop:
     STA.L $7E3000,X                                                      ;81AFA5;
     DEX                                                                  ;81AFA9;
     DEX                                                                  ;81AFAA;
@@ -5552,12 +6012,13 @@ FileSelectMap_IndexF_RoomSelectMapToAreaSelectMap_ClearBG1:
     RTS                                                                  ;81AFD2;
 
 
+;;; $AFD3: File select map - index 10h: room select map to area select map - load palettes ;;;
 FileSelectMap_Index10_RoomSelectMapToAreaSelectMap_LoadPal:
     REP #$30                                                             ;81AFD3;
     JSR.W LoadMenuPalettes                                               ;81AFD5;
     LDX.W #$0000                                                         ;81AFD8;
 
-.loop:
+  .loop:
     PHX                                                                  ;81AFDB;
     JSR.W LoadInactiveAreaMapForegroundColors                            ;81AFDC;
     PLX                                                                  ;81AFDF;
@@ -5572,6 +6033,7 @@ FileSelectMap_Index10_RoomSelectMapToAreaSelectMap_LoadPal:
     RTS                                                                  ;81AFF5;
 
 
+;;; $AFF6: File select map - index 14h: prepare contracting square transition to area select map ;;;
 FileSelectMap_Index14_PrepContractSquareTransToAreaSelect:
     SEP #$20                                                             ;81AFF6;
     LDA.B #$00                                                           ;81AFF8;
@@ -5647,6 +6109,7 @@ FileSelectMap_Index14_PrepContractSquareTransToAreaSelect:
     RTS                                                                  ;81B0BA;
 
 
+;;; $B0BB: File select map - index 15h: room select map to area select map - contracting square transition ;;;
 FileSelectMap_Index15_RoomSelectMapToAreaSelectMap:
     REP #$30                                                             ;81B0BB;
     LDA.L $7E9E30                                                        ;81B0BD;
@@ -5695,11 +6158,19 @@ FileSelectMap_Index15_RoomSelectMapToAreaSelectMap:
     STA.B $6C                                                            ;81B146;
     STA.B $6D                                                            ;81B148;
 
-.return:
+  .return:
     RTS                                                                  ;81B14A;
 
 
+;;; $B14B: Tilemap - room select map controls ;;;
 Tilemap_RoomSelectMap_Controls:
+; First word is skipped
+; '                                '
+; '                                '
+; '   <^MAP     AA       BB        '
+; '   v>SCROLL  AAStart  BBCancel  '
+; '                                '
+; '                                '
     dw $2801,$2801,$2801,$2801,$2801,$2801,$2801,$2801                   ;81B14B;
     dw $2801,$2801,$2801,$2801,$2801,$2801,$2801,$2801                   ;81B15B;
     dw $2801,$2801,$2801,$2801,$2801,$2801,$2801,$2801                   ;81B16B;
@@ -5725,6 +6196,8 @@ Tilemap_RoomSelectMap_Controls:
     dw $2801,$2801,$2801,$2801,$2801,$2801,$2801,$2801                   ;81B2AB;
     dw $2801,$2801,$2801,$2801,$2801,$2801,$2801,$2801                   ;81B2BB;
 
+
+;;; $B2CB: New save file ;;;
 NewSaveFile:
     REP #$30                                                             ;81B2CB;
     LDA.W #$0063                                                         ;81B2CD;
@@ -5783,7 +6256,7 @@ NewSaveFile:
     LDX.W #$0000                                                         ;81B36C;
     LDA.W #$0000                                                         ;81B36F;
 
-.loopClearEvents:
+  .loopClearEvents:
     STA.L $7ED830,X                                                      ;81B372;
     STA.L $7ED870,X                                                      ;81B376;
     STA.L $7ED870,X                                                      ;81B37A;
@@ -5798,7 +6271,7 @@ NewSaveFile:
     BMI .loopClearEvents                                                 ;81B397;
     LDA.W #$0000                                                         ;81B399;
 
-.loopClearEventsAgain:
+  .loopClearEventsAgain:
     STA.L $7ED830,X                                                      ;81B39C;
     STA.L $7ED870,X                                                      ;81B3A0;
     STA.L $7ED870,X                                                      ;81B3A4;
@@ -5810,7 +6283,7 @@ NewSaveFile:
     LDX.W #$0000                                                         ;81B3B3;
     LDA.W #$0000                                                         ;81B3B6;
 
-.loopClearMapData:
+  .loopClearMapData:
     STA.L $7ECD52,X                                                      ;81B3B9;
     INX                                                                  ;81B3BD;
     INX                                                                  ;81B3BE;
@@ -5819,7 +6292,10 @@ NewSaveFile:
     RTS                                                                  ;81B3C4;
 
 
+;;; $B3C5: Clear rest of menu tilemap row ;;;
 ClearResetOfMenuTilemapRow:
+;; Parameters:
+;;     X: Menu tilemap index
     TXA                                                                  ;81B3C5;
     AND.W #$003F                                                         ;81B3C6;
     LSR A                                                                ;81B3C9;
@@ -5830,7 +6306,7 @@ ClearResetOfMenuTilemapRow:
     STA.B $12                                                            ;81B3D2;
     LDA.W #$000F                                                         ;81B3D4;
 
-.loop:
+  .loop:
     STA.L $7E3600,X                                                      ;81B3D7;
     INX                                                                  ;81B3DB;
     INX                                                                  ;81B3DC;
@@ -5839,10 +6315,18 @@ ClearResetOfMenuTilemapRow:
     RTS                                                                  ;81B3E1;
 
 
+;;; $B3E2: Load menu tilemap [Y] to ([X] / 2 % 20h, [X] / 40h) ;;;
 Load_Tilemap_in_Y_to_X_Coordinates:
+;; Parameters:
+;;     X: Destination tilemap index
+;;     Y: Source tilemap pointer
+
+; def f(i):
+;     formatValue = lambda v: f'{v:X}' + ('h' if v >= 0xA else '')
+;     print(f'{formatValue(i // 2 % 0x20)}, {formatValue(i // 0x40)}')
     PHX                                                                  ;81B3E2;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;81B3E3;
     CMP.W #$FFFE                                                         ;81B3E6;
     BEQ +                                                                ;81B3E9;
@@ -5856,7 +6340,6 @@ Load_Tilemap_in_Y_to_X_Coordinates:
     INY                                                                  ;81B3FA;
     BRA .loop                                                            ;81B3FB;
 
-
   + INY                                                                  ;81B3FD;
     INY                                                                  ;81B3FE;
     PLA                                                                  ;81B3FF;
@@ -5866,115 +6349,141 @@ Load_Tilemap_in_Y_to_X_Coordinates:
     PHA                                                                  ;81B405;
     BRA .loop                                                            ;81B406;
 
-
-.return:
+  .return:
     PLX                                                                  ;81B408;
     RTS                                                                  ;81B409;
 
 
-Tilemap_FileSelect_SamusData:
+;;; $B40A: File select tilemaps ;;;
+Tilemap_FileSelect:
+  .SamusData:
+; SAMUS DATA
     dw $202B,$200A,$2026,$202D,$202B,$200F,$200D,$200A,$202C,$200A,$FFFE ;81B40A;
     dw $203B,$201A,$2036,$2010,$203B,$200F,$201D,$201A,$2011,$201A,$FFFF ;81B420;
 
-Tilemap_FileSelect_SamusA:
+  .SamusA:
+; SAMUS A
     dw $202B,$200A,$2026,$202D,$202B,$200F,$200A,$FFFE                   ;81B436;
     dw $203B,$201A,$2036,$2010,$203B,$200F,$201A,$FFFF                   ;81B446;
 
-Tilemap_FileSelect_SamusB:
+  .SamusB:
+; SAMUS B
     dw $202B,$200A,$2026,$202D,$202B,$200F,$200B,$FFFE                   ;81B456;
     dw $203B,$201A,$2036,$2010,$203B,$200F,$201B,$FFFF                   ;81B466;
 
-Tilemap_FileSelect_SamusC:
+  .SamusC:
+; SAMUS C
     dw $202B,$200A,$2026,$202D,$202B,$200F,$200C,$FFFE                   ;81B476;
     dw $203B,$201A,$2036,$2010,$203B,$200F,$201C,$FFFF                   ;81B486;
 
-Tilemap_FileSelect_energy:
+  .energy:
+; ENERGY
     dw $209D,$209E,$209F,$20CC,$FFFF                                     ;81B496;
 
-Tilemap_FileSelect_time:
+  .time:
+; TIME
     dw $20AD,$20AE,$20AF,$FFFF                                           ;81B4A0;
 
-Tilemap_FileSelect_colon:
+  .colon:
+; :
     dw $208C,$FFFF                                                       ;81B4A8;
 
-Tilemap_FileSelect_noData:
+  .noData:
+; NO DATA
     dw $000F,$2077,$2078,$200F,$206D,$206A,$207D,$206A                   ;81B4AC;
     dw $200F,$200F,$200F,$FFFF                                           ;81B4BC;
 
-Tilemap_FileSelect_dataCopy:
+  .dataCopy:
+; DATA COPY
     dw $206D,$206A,$207D,$206A,$200F,$206C,$2078,$2079                   ;81B4C4;
     dw $2082,$FFFF                                                       ;81B4D4;
 
-Tilemap_FileSelect_dataClear:
+  .dataClear:
+; DATA CLEAR
     dw $206D,$206A,$207D,$206A,$200F,$206C,$2075,$206E                   ;81B4D8;
     dw $206A,$207B,$FFFF                                                 ;81B4E8;
 
-Tilemap_FileSelect_exit:
+  .exit:
+; EXIT
     dw $206E,$2081,$2072,$207D,$FFFF                                     ;81B4EE;
 
-Tilemap_FileSelect_dataCopyMode:
+  .dataCopyMode:
+; DATA COPY MODE
     dw $000D,$200A,$202C,$200A,$200F,$200C,$2000,$200D                   ;81B4F8;
     dw $2041,$200F,$2026,$2000,$200D,$200E,$FFFE,$201D                   ;81B508;
     dw $201A,$2011,$201A,$200F,$201C,$2010,$2038,$2017                   ;81B518;
     dw $200F,$2036,$2010,$201D,$201E,$FFFF                               ;81B528;
 
-Tilemap_FileSelect_dataClearMode:
+  .dataClearMode:
+; DATA CLEAR MODE
     dw $000D,$000A,$002C,$000A,$000F,$000C,$0025,$000E                   ;81B534;
     dw $000A,$000D,$000F,$0026,$0000,$000D,$000E,$FFFE                   ;81B544;
     dw $001D,$001A,$0011,$001A,$000F,$001C,$0035,$001E                   ;81B554;
     dw $001A,$003A,$000F,$0036,$0010,$001D,$001E,$FFFF                   ;81B564;
 
-Tilemap_FileSelect_copyWhichData:
+  .copyWhichData:
+; COPY WHICH DATA?
     dw $206C,$2078,$2079,$2082,$200F,$2080,$2071,$2072                   ;81B574;
     dw $206C,$2071,$200F,$206D,$206A,$207D,$206A,$2085                   ;81B584;
     dw $FFFF                                                             ;81B594;
 
-Tilemap_FileSelect_copySamusToWhere:
+  .copySamusToWhere:
+; COPY (SAMUS  ) TO WHERE?
     dw $206C,$2078,$2079,$2082,$200F,$208A,$207C,$206A                   ;81B596;
     dw $2076,$207E,$207C,$200F,$200F,$208B,$200F,$207D                   ;81B5A6;
     dw $2078,$200F,$2080,$2071,$206E,$207B,$206E,$2085                   ;81B5B6;
     dw $FFFF                                                             ;81B5C6;
 
-Tilemap_FileSelect_copySamusToSamus:
+  .copySamusToSamus:
+; COPY (SAMUS  ) TO (SAMUS  ).
     dw $206C,$2078,$2079,$2082,$200F,$208A,$207C,$206A                   ;81B5C8;
     dw $2076,$207E,$207C,$200F,$200F,$208B,$200F,$207D                   ;81B5D8;
     dw $2078,$200F,$208A,$207C,$206A,$2076,$207E,$207C                   ;81B5E8;
     dw $200F,$200F,$208B,$2088,$FFFF                                     ;81B5F8;
 
-Tilemap_FileSelect_isThisOK:
+  .isThisOK:
+; IS THIS OK?
     dw $2072,$207C,$200F,$207D,$2071,$2072,$207C,$200F                   ;81B602;
     dw $2078,$2074,$2085,$FFFF                                           ;81B612;
 
-Tilemap_FileSelect_yes:
+  .yes:
+; YES
     dw $2041,$200E,$202B,$FFFE                                           ;81B61A;
     dw $2017,$201E,$203B,$FFFF
 
-Tilemap_FileSelect_no:
+  .no:
+; N O
     dw $2027,$200F,$2000,$FFFE                                           ;81B62A;
     dw $2037,$200F,$2010,$FFFF
 
-Tilemap_FileSelect_copyCompleted:
+  .copyCompleted:
+; COPY COMPLETED.
     dw $206C,$2078,$2079,$2082,$200F,$206C,$2078,$2076                   ;81B63A;
     dw $2079,$2075,$206E,$207D,$206E,$206D,$2088,$FFFF                   ;81B64A;
 
-Tilemap_FileSelect_clearWhichData:
+  .clearWhichData:
+;        CLEAR WHICH DATA?
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$006C                   ;81B65A;
     dw $0075,$006E,$006A,$007B,$000F,$0080,$0071,$0072                   ;81B66A;
     dw $006C,$0071,$000F,$006D,$006A,$007D,$006A,$0085                   ;81B67A;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$FFFF                   ;81B68A;
 
-Tilemap_FileSelect_clearSamusA:
+  .clearSamusA:
+;         CLEAR (SAMUS A).
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81B69A;
     dw $006C,$0075,$006E,$006A,$007B,$000F,$008A,$007C                   ;81B6AA;
     dw $006A,$0076,$007E,$007C,$000F,$006A,$008B,$0088                   ;81B6BA;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$FFFF                   ;81B6CA;
 
-Tilemap_FileSelect_dataCleared:
+  .dataCleared:
+;         DATA CLEARED...
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81B6DA;
     dw $006D,$006A,$007D,$006A,$000F,$006C,$0075,$006E                   ;81B6EA;
     dw $006A,$007B,$006E,$006D,$0088,$0088,$0088,$000F                   ;81B6FA;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$FFFF                   ;81B70A;
 
+
+;;; $B71A: Area select foreground tilemap ;;;
 Tilemap_AreaSelect_Foreground:
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81B71A;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81B72A;
@@ -6105,6 +6614,8 @@ Tilemap_AreaSelect_Foreground:
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81BEFA;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81BF0A;
 
+
+;;; $BF1A: Area select background tilemap - Crateria ;;;
 Tilemap_AreaSelect_Background_Crateria:
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81BF1A;
     dw $000F,$000F,$1C51,$1C4E,$5C4D,$1C53,$1C4D,$1C4E                   ;81BF2A;
@@ -6235,6 +6746,8 @@ Tilemap_AreaSelect_Background_Crateria:
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81C6FA;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81C70A;
 
+
+;;; $C71A: Area select background tilemap - Brinstar ;;;
 Tilemap_AreaSelect_Background_Brinstar:
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81C71A;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81C72A;
@@ -6365,6 +6878,8 @@ Tilemap_AreaSelect_Background_Brinstar:
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81CEFA;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81CF0A;
 
+
+;;; $CF1A: Area select background tilemap - Norfair ;;;
 Tilemap_AreaSelect_Background_Norfair:
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81CF1A;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81CF2A;
@@ -6495,6 +7010,8 @@ Tilemap_AreaSelect_Background_Norfair:
     dw $1C4D,$1C4E,$5C4D,$1C53,$1C4D,$1C4E,$5C4D,$1C53                   ;81D6FA;
     dw $DC51,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81D70A;
 
+
+;;; $D71A: Area select background tilemap - Wrecked Ship ;;;
 Tilemap_AreaSelect_Background_WreckedShip:
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81D71A;
     dw $000F,$000F,$000F,$000F,$1C51,$1C4E,$5C51,$000F                   ;81D72A;
@@ -6625,6 +7142,8 @@ Tilemap_AreaSelect_Background_WreckedShip:
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81DEFA;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81DF0A;
 
+
+;;; $DF1A: Area select background tilemap - Maridia ;;;
 Tilemap_AreaSelect_Background_Maridia:
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81DF1A;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81DF2A;
@@ -6755,6 +7274,8 @@ Tilemap_AreaSelect_Background_Maridia:
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81E6FA;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81E70A;
 
+
+;;; $E71A: Area select background tilemap - Tourian ;;;
 Tilemap_AreaSelect_Background_Tourian:
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81E71A;
     dw $000F,$000F,$000F,$000F,$000F,$000F,$000F,$000F                   ;81E72A;
@@ -6890,15 +7411,18 @@ Freespace_Bank81_EF1A:                                                   ;81EF1A
 
 
 ORG $81FF00
-    db " Special thanks      "                                           ;81FF00; Special thanks 2 Genji Kubota & all debug staff
-    db "  2          Genji Ku"                                           ;81FF15;
-    db "bota         &       "                                           ;81FF2A;
-    db " all debug staff.    "                                           ;81FF3F;
-    db "            "                                                    ;81FF54;
+;;; $FF00: Thanks Genji! ;;;
+    db " Special thanks "
+    db "       2        "
+    db "  Genji Kubota  "
+    db "       &        "
+    db "all debug staff."
+    db "                "
 
 ; Thanks to P.JBoy for the bank logs at https://patrickjohnston.org/bank/index.html
 ; This disassembly relied heavily on his work
 ; Created with https://github.com/IsoFrieze/DiztinGUIsh
+
 
 Freespace_Bank81_FF60:
 ; $A0 bytes
