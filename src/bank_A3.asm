@@ -352,70 +352,72 @@ CommonA3EnemySpeeds_LinearlyIncreasing:
     dw             $0000                                                 ;A3818B;
   .negatedSubspeed:
     dw                   $0000                                           ;A3818D;
-    dw $0000,$1000,$FFFF,$F000
-    dw $0000,$2000,$FFFF,$E000
-    dw $0000,$3000,$FFFF,$D000
-    dw $0000,$4000,$FFFF,$C000
-    dw $0000,$5000,$FFFF,$B000
-    dw $0000,$6000,$FFFF,$A000
-    dw $0000,$7000,$FFFF,$9000
-    dw $0000,$8000,$FFFF,$8000
-    dw $0000,$9000,$FFFF,$7000
-    dw $0000,$A000,$FFFF,$6000
-    dw $0000,$B000,$FFFF,$5000
-    dw $0000,$C000,$FFFF,$4000
-    dw $0000,$D000,$FFFF,$3000
-    dw $0000,$E000,$FFFF,$2000
-    dw $0000,$F000,$FFFF,$1000
-    dw $0001,$0000,$FFFF,$0000
-    dw $0001,$1000,$FFFE,$F000
-    dw $0001,$2000,$FFFE,$E000
-    dw $0001,$3000,$FFFE,$D000
-    dw $0001,$4000,$FFFE,$C000
-    dw $0001,$5000,$FFFE,$B000
-    dw $0001,$6000,$FFFE,$A000
-    dw $0001,$7000,$FFFE,$9000
-    dw $0001,$8000,$FFFE,$8000
-    dw $0001,$9000,$FFFE,$7000
-    dw $0001,$A000,$FFFE,$6000
-    dw $0001,$B000,$FFFE,$5000
-    dw $0001,$C000,$FFFE,$4000
-    dw $0001,$D000,$FFFE,$3000
-    dw $0001,$E000,$FFFE,$2000
-    dw $0001,$F000,$FFFE,$1000
-    dw $0002,$0000,$FFFE,$0000
-    dw $0002,$1000,$FFFD,$F000
-    dw $0002,$2000,$FFFD,$E000
-    dw $0002,$3000,$FFFD,$D000
-    dw $0002,$4000,$FFFD,$C000
-    dw $0002,$5000,$FFFD,$B000
-    dw $0002,$6000,$FFFD,$A000
-    dw $0002,$7000,$FFFD,$9000
-    dw $0002,$8000,$FFFD,$8000
-    dw $0002,$9000,$FFFD,$7000
-    dw $0002,$A000,$FFFD,$6000
-    dw $0002,$B000,$FFFD,$5000
-    dw $0002,$C000,$FFFD,$4000
-    dw $0002,$D000,$FFFD,$3000
-    dw $0002,$E000,$FFFD,$2000
-    dw $0002,$F000,$FFFD,$1000
-    dw $0003,$0000,$FFFD,$0000
-    dw $0003,$1000,$FFFC,$F000
-    dw $0003,$2000,$FFFC,$E000
-    dw $0003,$3000,$FFFC,$D000
-    dw $0003,$4000,$FFFC,$C000
-    dw $0003,$5000,$FFFC,$B000
-    dw $0003,$6000,$FFFC,$A000
-    dw $0003,$7000,$FFFC,$9000
-    dw $0003,$8000,$FFFC,$8000
-    dw $0003,$9000,$FFFC,$7000
-    dw $0003,$A000,$FFFC,$6000
-    dw $0003,$B000,$FFFC,$5000
-    dw $0003,$C000,$FFFC,$4000
-    dw $0003,$D000,$FFFC,$3000
-    dw $0003,$E000,$FFFC,$2000
-    dw $0003,$F000,$FFFC,$1000
-    dw $0004,$0000,$FFFC,$0000
+    dw $0000,$1333,$FFFF,$ECCD
+    dw $0000,$2666,$FFFF,$D99A
+    dw $0000,$3999,$FFFF,$C667
+    dw $0000,$4CCC,$FFFF,$B334
+    dw $0000,$5FFF,$FFFF,$A001
+    dw $0000,$7332,$FFFF,$8CCE
+    dw $0000,$8665,$FFFF,$799B
+    dw $0000,$9998,$FFFF,$6668
+    dw $0000,$ACCB,$FFFF,$5335
+    dw $0000,$BFFE,$FFFF,$4002
+    dw $0000,$D331,$FFFF,$2CCF
+    dw $0000,$E664,$FFFF,$199C
+    dw $0000,$F997,$FFFF,$0669
+    dw $0001,$0CCA,$FFFE,$F336
+    dw $0001,$1FFD,$FFFE,$E003
+    dw $0001,$3330,$FFFE,$CCD0
+    dw $0001,$4663,$FFFE,$B99D
+    dw $0001,$5996,$FFFE,$A66A
+    dw $0001,$6CC9,$FFFE,$9337
+    dw $0001,$7FFC,$FFFE,$8004
+    dw $0001,$932F,$FFFE,$6CD1
+    dw $0001,$A662,$FFFE,$599E
+    dw $0001,$B995,$FFFE,$466B
+    dw $0001,$CCC8,$FFFE,$3338
+    dw $0001,$DFFB,$FFFE,$2005
+    dw $0001,$F32E,$FFFE,$0CD2
+    dw $0002,$0661,$FFFD,$F99F
+    dw $0002,$1994,$FFFD,$E66C
+    dw $0002,$2CC7,$FFFD,$D339
+    dw $0002,$3FFA,$FFFD,$C006
+    dw $0002,$532D,$FFFD,$ACD3
+    dw $0002,$6660,$FFFD,$99A0
+    dw $0002,$7993,$FFFD,$866D
+    dw $0002,$8CC6,$FFFD,$733A
+    dw $0002,$9FF9,$FFFD,$6007
+    dw $0002,$B32C,$FFFD,$4CD4
+    dw $0002,$C65F,$FFFD,$39A1
+    dw $0002,$D992,$FFFD,$266E
+    dw $0002,$ECC5,$FFFD,$133B
+    dw $0002,$FFF8,$FFFD,$0008
+    dw $0003,$132B,$FFFC,$ECD5
+    dw $0003,$265E,$FFFC,$D9A2
+    dw $0003,$3991,$FFFC,$C66F
+    dw $0003,$4CC4,$FFFC,$B33C
+    dw $0003,$5FF7,$FFFC,$A009
+    dw $0003,$732A,$FFFC,$8CD6
+    dw $0003,$865D,$FFFC,$79A3
+    dw $0003,$9990,$FFFC,$6670
+    dw $0003,$ACC3,$FFFC,$533D
+    dw $0003,$BFF6,$FFFC,$400A
+    dw $0003,$D329,$FFFC,$2CD7
+    dw $0003,$E65C,$FFFC,$19A4
+    dw $0003,$F98F,$FFFC,$0671
+    dw $0004,$0CC2,$FFFB,$F33E
+    dw $0004,$1FF5,$FFFB,$E00B
+    dw $0004,$3328,$FFFB,$CCD8
+    dw $0004,$465B,$FFFB,$B9A5
+    dw $0004,$598E,$FFFB,$A672
+    dw $0004,$6CC1,$FFFB,$933F
+    dw $0004,$7FF4,$FFFB,$800C
+    dw $0004,$9327,$FFFB,$6CD9
+    dw $0004,$A65A,$FFFB,$59A6
+    dw $0004,$B98D,$FFFB,$4673
+    dw $0004,$CCC0,$FFFB,$3340
+    dw $0004,$DFF3,$FFFB,$200D
+    dw $0004,$F326,$FFFB,$0CDA
 
 
 ;        _____________________ Subspeed
@@ -436,98 +438,98 @@ CommonA3EnemySpeeds_QuadraticallyIncreasing:
     dw                   $0000                                           ;A38395;
     dw $0109,$0000,$FEF7,$FFFF
     dw $031B,$0000,$FCE5,$FFFF
-    dw $0636,$0000,$F9CA,$FFFF
-    dw $0A5A,$0000,$F5A6,$FFFF
-    dw $0F87,$0000,$F079,$FFFF
-    dw $15BD,$0000,$EA43,$FFFF
-    dw $1CFC,$0000,$E304,$FFFF
-    dw $2544,$0000,$DABC,$FFFF
-    dw $2E95,$0000,$D16B,$FFFF
-    dw $38EF,$0000,$C711,$FFFF
-    dw $4452,$0000,$BBAE,$FFFF
-    dw $50BE,$0000,$AF42,$FFFF
-    dw $5E33,$0000,$A1CD,$FFFF
-    dw $6CB1,$0000,$934F,$FFFF
-    dw $7C38,$0000,$83C8,$FFFF
-    dw $8CC8,$0000,$7338,$FFFF
-    dw $9E61,$0000,$619F,$FFFF
-    dw $B103,$0000,$4EFD,$FFFF
-    dw $C4AE,$0000,$3B52,$FFFF
-    dw $D962,$0000,$269E,$FFFF
-    dw $EF1F,$0000,$10E1,$FFFF
-    dw $05E5,$0000,$FA1B,$FFFF
-    dw $14B4,$0001,$EB4C,$FFFE
-    dw $2D8C,$0001,$D274,$FFFE
-    dw $476D,$0001,$B893,$FFFE
-    dw $6257,$0001,$9DA9,$FFFE
-    dw $7E4A,$0001,$81B6,$FFFE
-    dw $9B46,$0001,$64BA,$FFFE
-    dw $B94B,$0001,$46B5,$FFFE
-    dw $D859,$0001,$27A7,$FFFE
-    dw $F870,$0001,$0790,$FFFE
-    dw $1090,$0002,$EF70,$FFFD
-    dw $32B9,$0002,$CD47,$FFFD
+    dw $073F,$0000,$F8C1,$FFFF
+    dw $0B63,$0000,$F49D,$FFFF
+    dw $1199,$0000,$EE67,$FFFF
+    dw $19E1,$0000,$E61F,$FFFF
+    dw $2229,$0000,$DDD7,$FFFF
+    dw $2C83,$0000,$D37D,$FFFF
+    dw $36DD,$0000,$C923,$FFFF
+    dw $4349,$0000,$BCB7,$FFFF
+    dw $51C7,$0000,$AE39,$FFFF
+    dw $6045,$0000,$9FBB,$FFFF
+    dw $70D5,$0000,$8F2B,$FFFF
+    dw $8165,$0000,$7E9B,$FFFF
+    dw $9407,$0000,$6BF9,$FFFF
+    dw $A8BB,$0000,$5745,$FFFF
+    dw $BD6F,$0000,$4291,$FFFF
+    dw $D435,$0000,$2BCB,$FFFF
+    dw $EAFB,$0000,$1505,$FFFF
+    dw $03D3,$0001,$FC2D,$FFFE
+    dw $15BD,$0001,$EA43,$FFFE
+    dw $30A7,$0001,$CF59,$FFFE
+    dw $4DA3,$0001,$B25D,$FFFE
+    dw $6A9F,$0001,$9561,$FFFE
+    dw $89AD,$0001,$7653,$FFFE
+    dw $AACD,$0001,$5533,$FFFE
+    dw $CBED,$0001,$3413,$FFFE
+    dw $EF1F,$0001,$10E1,$FFFE
+    dw $0951,$0002,$F6AF,$FFFD
+    dw $2E95,$0002,$D16B,$FFFD
     dw $55EB,$0002,$AA15,$FFFD
-    dw $7A26,$0002,$85DA,$FFFD
-    dw $9F6A,$0002,$6096,$FFFD
-    dw $C5B7,$0002,$3A49,$FFFD
-    dw $ED0D,$0002,$12F3,$FFFD
-    dw $0C6C,$0003,$F394,$FFFC
-    dw $35D4,$0003,$CA2C,$FFFC
-    dw $6045,$0003,$9FBB,$FFFC
-    dw $8BBF,$0003,$7441,$FFFC
-    dw $B842,$0003,$47BE,$FFFC
-    dw $E5CE,$0003,$1A32,$FFFC
-    dw $0B63,$0004,$F49D,$FFFB
-    dw $3B01,$0004,$C4FF,$FFFB
-    dw $6BA8,$0004,$9458,$FFFB
-    dw $9D58,$0004,$62A8,$FFFB
-    dw $D011,$0004,$2FEF,$FFFB
-    dw $03D3,$0004,$FC2D,$FFFB
-    dw $2F9E,$0005,$D062,$FFFA
-    dw $6572,$0005,$9A8E,$FFFA
-    dw $9C4F,$0005,$63B1,$FFFA
-    dw $D435,$0005,$2BCB,$FFFA
-    dw $0424,$0006,$FBDC,$FFF9
-    dw $3E1C,$0006,$C1E4,$FFF9
+    dw $7D41,$0002,$82BF,$FFFD
+    dw $A6A9,$0002,$5957,$FFFD
+    dw $D011,$0002,$2FEF,$FFFD
+    dw $FB8B,$0002,$0475,$FFFD
+    dw $2017,$0003,$DFE9,$FFFC
+    dw $4DA3,$0003,$B25D,$FFFC
+    dw $7D41,$0003,$82BF,$FFFC
+    dw $ACDF,$0003,$5321,$FFFC
+    dw $DE8F,$0003,$2171,$FFFC
+    dw $0951,$0004,$F6AF,$FFFB
+    dw $3D13,$0004,$C2ED,$FFFB
+    dw $72E7,$0004,$8D19,$FFFB
+    dw $A8BB,$0004,$5745,$FFFB
+    dw $E0A1,$0004,$1F5F,$FFFB
+    dw $1199,$0005,$EE67,$FFFA
+    dw $4B91,$0005,$B46F,$FFFA
+    dw $879B,$0005,$7865,$FFFA
+    dw $C3A5,$0005,$3C5B,$FFFA
+    dw $01C1,$0005,$FE3F,$FFFA
+    dw $38EF,$0006,$C711,$FFF9
     dw $791D,$0006,$86E3,$FFF9
-    dw $B527,$0006,$4AD9,$FFF9
-    dw $F23A,$0006,$0DC6,$FFF9
-    dw $2756,$0007,$D8AA,$FFF8
-    dw $667B,$0007,$9985,$FFF8
-    dw $A6A9,$0007,$5957,$FFF8
-    dw $E7E0,$0007,$1820,$FFF8
-    dw $2120,$0008,$DEE0,$FFF7
-    dw $6469,$0008,$9B97,$FFF7
-    dw $A8BB,$0008,$5745,$FFF7
-    dw $EE16,$0008,$11EA,$FFF7
-    dw $2B7A,$0009,$D486,$FFF6
-    dw $72E7,$0009,$8D19,$FFF6
-    dw $BB5D,$0009,$44A3,$FFF6
-    dw $04DC,$0009,$FB24,$FFF6
-    dw $4664,$000A,$B99C,$FFF5
-    dw $91F5,$000A,$6E0B,$FFF5
-    dw $DE8F,$000A,$2171,$FFF5
-    dw $2332,$000B,$DCCE,$FFF4
-    dw $71DE,$000B,$8E22,$FFF4
-    dw $C193,$000B,$3E6D,$FFF4
-    dw $0951,$000C,$F6AF,$FFF3
-    dw $5B18,$000C,$A4E8,$FFF3
-    dw $ADE8,$000C,$5218,$FFF3
-    dw $01C1,$000C,$FE3F,$FFF3
-    dw $4DA3,$000D,$B25D,$FFF2
-    dw $A38E,$000D,$5C72,$FFF2
-    dw $FA82,$000D,$057E,$FFF2
-    dw $497F,$000E,$B681,$FFF1
-    dw $A285,$000E,$5D7B,$FFF1
-    dw $FC94,$000E,$036C,$FFF1
-    dw $4EAC,$000F,$B154,$FFF0
-    dw $AACD,$000F,$5533,$FFF0
-    dw $07F7,$000F,$F809,$FFF0
-    dw $5D2A,$0010,$A2D6,$FFEF
-    dw $BC66,$0010,$439A,$FFEF
-    dw $13AB,$0011,$EC55,$FFEE
-    dw $74F9,$0011,$8B07,$FFEE
+    dw $BB5D,$0006,$44A3,$FFF9
+    dw $FD9D,$0006,$0263,$FFF9
+    dw $38EF,$0007,$C711,$FFF8
+    dw $7F53,$0007,$80AD,$FFF8
+    dw $C5B7,$0007,$3A49,$FFF8
+    dw $052D,$0008,$FAD3,$FFF7
+    dw $4DA3,$0008,$B25D,$FFF7
+    dw $982B,$0008,$67D5,$FFF7
+    dw $E4C5,$0008,$1B3B,$FFF7
+    dw $285F,$0009,$D7A1,$FFF6
+    dw $770B,$0009,$88F5,$FFF6
+    dw $C5B7,$0009,$3A49,$FFF6
+    dw $0D75,$000A,$F28B,$FFF5
+    dw $6045,$000A,$9FBB,$FFF5
+    dw $B315,$000A,$4CEB,$FFF5
+    dw $07F7,$000B,$F809,$FFF5
+    dw $53D9,$000B,$AC27,$FFF4
+    dw $AACD,$000B,$5533,$FFF4
+    dw $03D3,$000C,$FC2D,$FFF3
+    dw $53D9,$000C,$AC27,$FFF3
+    dw $AEF1,$000C,$510F,$FFF3
+    dw $0109,$000D,$FEF7,$FFF2
+    dw $5E33,$000D,$A1CD,$FFF2
+    dw $BD6F,$000D,$4291,$FFF2
+    dw $13AB,$000E,$EC55,$FFF1
+    dw $74F9,$000E,$8B07,$FFF1
+    dw $D647,$000E,$29B9,$FFF1
+    dw $30A7,$000F,$CF59,$FFF0
+    dw $9619,$000F,$69E7,$FFF0
+    dw $FB8B,$000F,$0475,$FFF0
+    dw $5A0F,$0010,$A5F1,$FFEF
+    dw $C193,$0010,$3E6D,$FFEF
+    dw $2229,$0011,$DDD7,$FFEE
+    dw $8DD1,$0011,$722F,$FFEE
+    dw $F979,$0011,$0687,$FFEE
+    dw $5E33,$0012,$A1CD,$FFED
+    dw $CBED,$0012,$3413,$FFED
+    dw $32B9,$0013,$CD47,$FFEC
+    dw $A497,$0013,$5B69,$FFEC
+    dw $0D75,$0014,$F28B,$FFEB
+    dw $8165,$0014,$7E9B,$FFEB
+    dw $F555,$0014,$0AAB,$FFEB
 
 
 Palette_Waver:
@@ -573,25 +575,25 @@ Instruction_Waver_SetSpinFinishedFlag:
 
 InitAI_Waver:
     LDX.W $0E54                                                          ;A386ED;
-    LDA.W #$0180                                                         ;A386F0;
+    LDA.W #$01D0                                                         ;A386F0;
     AND.W #$FF00                                                         ;A386F3;
     XBA                                                                  ;A386F6;
     STA.W $0FAA,X                                                        ;A386F7;
-    LDA.W #$0180                                                         ;A386FA;
+    LDA.W #$01D0                                                         ;A386FA;
     AND.W #$00FF                                                         ;A386FD;
     XBA                                                                  ;A38700;
     STA.W $0FA8,X                                                        ;A38701;
     LDA.W $0FB4,X                                                        ;A38704;
     AND.W #$0001                                                         ;A38707;
     BNE .facingLeft                                                      ;A3870A;
-    LDA.W #$0180                                                         ;A3870C;
+    LDA.W #$01D0                                                         ;A3870C;
     EOR.W #$FFFF                                                         ;A3870F;
     INC A                                                                ;A38712;
     AND.W #$FF00                                                         ;A38713;
     XBA                                                                  ;A38716;
     JSL.L Sign_Extend_A                                                  ;A38717;
     STA.W $0FAA,X                                                        ;A3871B;
-    LDA.W #$0180                                                         ;A3871E;
+    LDA.W #$01D0                                                         ;A3871E;
     EOR.W #$FFFF                                                         ;A38721;
     INC A                                                                ;A38724;
     AND.W #$00FF                                                         ;A38725;
@@ -878,7 +880,7 @@ DetermineMetareeYVelocity:
     SBC.W $0F7E,X                                                        ;A389B0;
     STA.W $4204                                                          ;A389B3;
     SEP #$20                                                             ;A389B6;
-    LDA.B #$18                                                           ;A389B8;
+    LDA.B #$12                                                           ;A389B8;
     STA.W $4206                                                          ;A389BA;
     REP #$20                                                             ;A389BD;
     NOP                                                                  ;A389BF;
@@ -914,7 +916,7 @@ Function_Metaree_PrepareToLaunchAttack:
 
 Function_Metaree_LaunchedAttack:
     LDX.W $0E54                                                          ;A389F3;
-    LDA.W #$0015                                                         ;A389F6;
+    LDA.W #$000D                                                         ;A389F6;
     STA.W $0FA8,X                                                        ;A389F9;
     LDA.W $0FB2,X                                                        ;A389FC;
     STA.B $14                                                            ;A389FF;
@@ -965,7 +967,7 @@ Function_Metaree_Burrowing:
     DEC.W $0FA8,X                                                        ;A38A5F;
     BEQ .delete                                                          ;A38A62;
     LDA.W $0FA8,X                                                        ;A38A64;
-    CMP.W #$0008                                                         ;A38A67;
+    CMP.W #$0005                                                         ;A38A67;
     BNE .timerNot8                                                       ;A38A6A;
     LDX.W $0E54                                                          ;A38A6C;
     LDY.W #EnemyProjectile_MetalSkreeParticles_DownRight                 ;A38A6F;
@@ -2084,7 +2086,7 @@ ElevatorAI_1_LeavingRoom:
     STA.W $0799                                                          ;A39584;
     LDA.W $0F80,X                                                        ;A39587;
     CLC                                                                  ;A3958A;
-    ADC.W #$8000                                                         ;A3958B;
+    ADC.W #$C800                                                         ;A3958B;
     STA.W $0F80,X                                                        ;A3958E;
     LDA.W $0F7E,X                                                        ;A39591;
     ADC.W #$0001                                                         ;A39594;
@@ -2097,7 +2099,7 @@ ElevatorAI_1_LeavingRoom:
     STA.W $0799                                                          ;A3959F;
     LDA.W $0F80,X                                                        ;A395A2;
     SEC                                                                  ;A395A5;
-    SBC.W #$8000                                                         ;A395A6;
+    SBC.W #$C800                                                         ;A395A6;
     STA.W $0F80,X                                                        ;A395A9;
     LDA.W $0F7E,X                                                        ;A395AC;
     SBC.W #$0001                                                         ;A395AF;
@@ -2116,7 +2118,7 @@ ElevatorAI_3_EnteringRoom:
     BEQ .down                                                            ;A395C2;
     LDA.W $0F80,X                                                        ;A395C4;
     CLC                                                                  ;A395C7;
-    ADC.W #$8000                                                         ;A395C8;
+    ADC.W #$C800                                                         ;A395C8;
     STA.W $0F80,X                                                        ;A395CB;
     LDA.W $0F7E,X                                                        ;A395CE;
     ADC.W #$0001                                                         ;A395D1;
@@ -2129,7 +2131,7 @@ ElevatorAI_3_EnteringRoom:
 .down:
     LDA.W $0F80,X                                                        ;A395DE;
     SEC                                                                  ;A395E1;
-    SBC.W #$8000                                                         ;A395E2;
+    SBC.W #$C800                                                         ;A395E2;
     STA.W $0F80,X                                                        ;A395E5;
     LDA.W $0F7E,X                                                        ;A395E8;
     SBC.W #$0001                                                         ;A395EB;
@@ -4195,16 +4197,16 @@ Function_Mochtroid_0_NotTouchingSamus:
     SBC.B $14                                                            ;A3A7D4;
     STA.W $0FAE,X                                                        ;A3A7D6;
     BMI .negativeY                                                       ;A3A7D9;
-    CMP.W #$0003                                                         ;A3A7DB;
+    CMP.W #$0004                                                         ;A3A7DB;
     BCC +                                                                ;A3A7DE;
-    LDA.W #$0003                                                         ;A3A7E0;
+    LDA.W #$0004                                                         ;A3A7E0;
     BRA .storeYVelocity                                                  ;A3A7E3;
 
 
 .negativeY:
-    CMP.W #$FFFD                                                         ;A3A7E5;
+    CMP.W #$FFFC                                                         ;A3A7E5;
     BCS +                                                                ;A3A7E8;
-    LDA.W #$FFFD                                                         ;A3A7EA;
+    LDA.W #$FFFC                                                         ;A3A7EA;
 
 .storeYVelocity:
     STA.W $0FAE,X                                                        ;A3A7ED;
@@ -4250,16 +4252,16 @@ Function_Mochtroid_0_NotTouchingSamus:
     SBC.B $14                                                            ;A3A843;
     STA.W $0FAA,X                                                        ;A3A845;
     BMI .negativeX                                                       ;A3A848;
-    CMP.W #$0003                                                         ;A3A84A;
+    CMP.W #$0004                                                         ;A3A84A;
     BCC +                                                                ;A3A84D;
-    LDA.W #$0003                                                         ;A3A84F;
+    LDA.W #$0004                                                         ;A3A84F;
     BRA .storeXVelocity                                                  ;A3A852;
 
 
 .negativeX:
-    CMP.W #$FFFD                                                         ;A3A854;
+    CMP.W #$FFFC                                                         ;A3A854;
     BCS +                                                                ;A3A857;
-    LDA.W #$FFFD                                                         ;A3A859;
+    LDA.W #$FFFC                                                         ;A3A859;
 
 .storeXVelocity:
     STA.W $0FAA,X                                                        ;A3A85C;
@@ -4329,14 +4331,16 @@ Function_Mochtroid_1_TouchingSamus:
 
 
 .moveLeft:
-    STZ.W $0FA8,X                                                        ;A3A8DF;
-    LDA.W #$FFFF                                                         ;A3A8E2;
+    LDA.W #$CCD0
+    STA.W $0FA8,X                                                        ;A3A8DF;
+    LDA.W #$FFFE                                                         ;A3A8E2;
     STA.W $0FAA,X                                                        ;A3A8E5;
     BRA .moveX                                                           ;A3A8E8;
 
 
 .moveRight:
-    STZ.W $0FA8,X                                                        ;A3A8EA;
+    LDA.W #$3330
+    STA.W $0FA8,X                                                        ;A3A8EA;
     LDA.W #$0001                                                         ;A3A8ED;
     STA.W $0FAA,X                                                        ;A3A8F0;
     BRA .moveX                                                           ;A3A8F3;
@@ -4361,14 +4365,16 @@ Function_Mochtroid_1_TouchingSamus:
 
 
 .moveUp:
-    STZ.W $0FAC,X                                                        ;A3A917;
-    LDA.W #$FFFF                                                         ;A3A91A;
+    LDA.W #$CCD0
+    STA.W $0FAC,X                                                        ;A3A917;
+    LDA.W #$FFFE                                                         ;A3A91A;
     STA.W $0FAE,X                                                        ;A3A91D;
     BRA .moveY                                                           ;A3A920;
 
 
 .moveDown:
-    STZ.W $0FAC,X                                                        ;A3A922;
+    LDA.W #$3330
+    STA.W $0FAC,X                                                        ;A3A922;
     LDA.W #$0001                                                         ;A3A925;
     STA.W $0FAE,X                                                        ;A3A928;
     BRA .moveY                                                           ;A3A92B;
@@ -5530,9 +5536,9 @@ ZoaXSpeedTable:
     dw $0000                                                             ;A3B415;
   .subSpeed:
     dw       $0000                                                       ;A3B417;
-    dw $0000,$8000
     dw $0000,$A000
-    dw $0002,$0000
+    dw $0000,$C000
+    dw $0002,$6000
     dw $0000,$0000
 
 Instruction_Zoa_SetXSpeedTableIndexTo4:
@@ -5619,7 +5625,7 @@ Function_Zoa_Rising:
 .rising:
     LDA.W #$0000                                                         ;A3B4C7;
     STA.B $14                                                            ;A3B4CA;
-    LDA.W #$8000                                                         ;A3B4CC;
+    LDA.W #$A000                                                         ;A3B4CC;
     STA.B $12                                                            ;A3B4CF;
     JSL.L MoveEnemyY_minus_12_14                                         ;A3B4D1;
     RTL                                                                  ;A3B4D5;
@@ -7624,9 +7630,9 @@ Function_Skree_PrepareToLaunchAttack:
 
 Function_Skree_LaunchedAttack:
     LDX.W $0E54                                                          ;A3C716;
-    LDA.W #$0015                                                         ;A3C719;
+    LDA.W #$000D                                                         ;A3C719;
     STA.W $0FA8,X                                                        ;A3C71C;
-    LDA.W #$0006                                                         ;A3C71F;
+    LDA.W #$000A                                                         ;A3C71F;
     STA.B $14                                                            ;A3C722;
     STZ.B $12                                                            ;A3C724;
     LDA.W $0F86,X                                                        ;A3C726;
@@ -7638,7 +7644,7 @@ Function_Skree_LaunchedAttack:
     LDX.W $0E54                                                          ;A3C738;
     LDA.W $0F7E,X                                                        ;A3C73B;
     CLC                                                                  ;A3C73E;
-    ADC.W #$0006                                                         ;A3C73F;
+    ADC.W #$000A                                                         ;A3C73F;
     STA.W $0F7E,X                                                        ;A3C742;
     LDA.W #$0001                                                         ;A3C745;
     STA.W $0E24                                                          ;A3C748;
@@ -7675,7 +7681,7 @@ Function_Skree_Burrowing:
     DEC.W $0FA8,X                                                        ;A3C782;
     BEQ .delete                                                          ;A3C785;
     LDA.W $0FA8,X                                                        ;A3C787;
-    CMP.W #$0008                                                         ;A3C78A;
+    CMP.W #$0005                                                         ;A3C78A;
     BNE .timerNot8                                                       ;A3C78D;
     LDX.W $0E54                                                          ;A3C78F;
     LDY.W #EnemyProjectile_SkreeParticles_DownRight                      ;A3C792;
@@ -8263,10 +8269,10 @@ endif ; !FEATURE_KEEP_UNREFERENCED
 
 YardCrawlingSpeeds:
 ; Unit 1/100h px/frame. Indexed by [enemy parameter 1] * 2
-    dw $0040,$0080,$00C0,$0100,$0140,$0180,$01C0,$0200                   ;A3CCA2;
-    dw $0240,$0280,$02C0,$0300,$0340,$0380,$0400,$0440                   ;A3CCB2;
-    dw $0540,$0580,$05C0,$0600,$0640,$0680,$06C0,$0700                   ;A3CCC2;
-    dw $0740,$0780,$07C0,$0800,$0840,$0880,$0800,$0000                   ;A3CCD2;
+    dw $004C,$0099,$00E6,$0133,$017F,$01CC,$0219,$0266                   ;A3CCA2;
+    dw $02B3,$02FF,$034C,$0399,$03E6,$0433,$04CC,$0519                   ;A3CCB2;
+    dw $064C,$0699,$06E6,$0733,$077F,$07CC,$0819,$0866                   ;A3CCC2;
+    dw $08B3,$08FF,$094C,$0999,$09E6,$0A33,$0999,$0000                   ;A3CCD2;
 
 YardTurnData:
 ;        ___________ Outside turn lookahead X offset
@@ -8997,7 +9003,7 @@ Function_Yard_Movement_Airborne:
     BCS .hitWall                                                         ;A3D1CC;
     LDA.L $7E7806,X                                                      ;A3D1CE;
     BMI .right                                                           ;A3D1D2;
-    LDA.W #$1000                                                         ;A3D1D4;
+    LDA.W #$1330                                                         ;A3D1D4;
     EOR.W #$FFFF                                                         ;A3D1D7;
     INC A                                                                ;A3D1DA;
     STA.B $16                                                            ;A3D1DB;
@@ -9008,7 +9014,7 @@ Function_Yard_Movement_Airborne:
 
 
 .right:
-    LDA.W #$1000                                                         ;A3D1E7;
+    LDA.W #$1330                                                         ;A3D1E7;
     STA.B $16                                                            ;A3D1EA;
     LDA.W #$0000                                                         ;A3D1EC;
     STA.B $18                                                            ;A3D1EF;
@@ -9051,7 +9057,7 @@ Function_Yard_Movement_Airborne:
     BCS .collidedVertically                                              ;A3D243;
     CLC                                                                  ;A3D245;
     LDA.L $7E7800,X                                                      ;A3D246;
-    ADC.W #$2000                                                         ;A3D24A;
+    ADC.W #$2660                                                         ;A3D24A;
     STA.L $7E7800,X                                                      ;A3D24D;
     LDA.L $7E7802,X                                                      ;A3D251;
     ADC.W #$0000                                                         ;A3D255;
@@ -10326,12 +10332,32 @@ ReflectedDirectionTable_offsetNegatives:                                 ;A3DD2E
 ;       |     |     |     |     |     |     |     |      _______ Up-left
 ;       |     |     |     |     |     |     |     |     |      _ Up, facing left
 ;       |     |     |     |     |     |     |     |     |     |
-    dw $0000,$DDAE,$0000,$DDAE,$0000,$0000,$DDCF,$0000,$DDCF,$0000, $0000,$0000,$0000,$0000,$0000,$0000 ; 0: Vertical
-    dw $DDF0,$0000,$DE0D,$0000,$DE2A,$DE2A,$0000,$DE47,$0000,$DDF0, $0000,$0000,$0000,$0000,$0000,$0000 ; 1: Up-right diagonal
-    dw $0000,$DE64,$0000,$DE85,$0000,$0000,$DE85,$0000,$DE64,$0000, $0000,$0000,$0000,$0000,$0000,$0000 ; 2: Horizontal
-    dw $DEA6,$0000,$DEC3,$0000,$DEE0,$DEE0,$0000,$DEFD,$0000,$DEA6, $0000,$0000,$0000,$0000,$0000,$0000 ; 3: Down-right diagonal
+    dw $0000,.vertical_upRight_downRight                                                                ; 0: Vertical
+    dw             $0000,.vertical_upRight_downRight
+    dw                         $0000,$0000,.vertical_upLeft_downLeft
+    dw                                           $0000,.vertical_upLeft_downLeft
+    dw                                                       $0000, $0000,$0000,$0000,$0000,$0000,$0000
+    dw .upRightDiagonal_up                                                                              ; 1: Up-right diagonal
+    dw       $0000,.upRightDiagonal_right
+    dw                   $0000,.upRightDiagonal_down
+    dw                               .upRightDiagonal_down
+    dw                                     $0000,.upRightDiagonal_left
+    dw                                                 $0000,.upRightDiagonal_up
+    dw                                                              $0000,$0000,$0000,$0000,$0000,$0000
+    dw $0000,.horizontal_upRight_upLeft                                                                 ; 2: Horizontal
+    dw             $0000,.horizontal_downRight_downLeft
+    dw                         $0000,$0000,.horizontal_downRight_downLeft
+    dw                                           $0000,.horizontal_upRight_upLeft
+    dw                                                       $0000, $0000,$0000,$0000,$0000,$0000,$0000
+    dw .downRightDiagonal_up                                                                            ; 3: Down-right diagonal
+    dw       $0000,.downRightDiagonal_right
+    dw                   $0000,.downRightDiagonal_down
+    dw                               .downRightDiagonal_down
+    dw                                     $0000,.downRightDiagonal_left
+    dw                                                 $0000,.downRightDiagonal_up
+    dw                                                              $0000,$0000,$0000,$0000,$0000,$0000
 
-Function_Reflec_ReflectionOffset_Vertical_UpRight_DownRight:
+.vertical_upRight_downRight:
     LDX.W $0E54                                                          ;A3DDAE;
     LDA.W $0F7A,X                                                        ;A3DDB1;
     SEC                                                                  ;A3DDB4;
@@ -10341,17 +10367,17 @@ Function_Reflec_ReflectionOffset_Vertical_UpRight_DownRight:
     CLC                                                                  ;A3DDBE;
     ADC.W $0BB4,Y                                                        ;A3DDBF;
     CMP.W $0E36                                                          ;A3DDC2;
-    BPL .return1                                                         ;A3DDC5;
+    BPL ..return                                                         ;A3DDC5;
     LDA.W #$0000                                                         ;A3DDC7;
     RTS                                                                  ;A3DDCA;
 
 
-.return1:
+..return:
     LDA.W #$0001                                                         ;A3DDCB;
     RTS                                                                  ;A3DDCE;
 
 
-Function_Reflec_ReflectionOffset_Vertical_UpLeft_DownLeft:
+.vertical_upLeft_downLeft:
     LDX.W $0E54                                                          ;A3DDCF;
     LDA.W $0F7A,X                                                        ;A3DDD2;
     CLC                                                                  ;A3DDD5;
@@ -10361,17 +10387,17 @@ Function_Reflec_ReflectionOffset_Vertical_UpLeft_DownLeft:
     SEC                                                                  ;A3DDDF;
     SBC.W $0BB4,Y                                                        ;A3DDE0;
     CMP.W $0E36                                                          ;A3DDE3;
-    BMI .return1                                                         ;A3DDE6;
+    BMI ..return                                                         ;A3DDE6;
     LDA.W #$0000                                                         ;A3DDE8;
     RTS                                                                  ;A3DDEB;
 
 
-.return1:
+..return:
     LDA.W #$0001                                                         ;A3DDEC;
     RTS                                                                  ;A3DDEF;
 
 
-Function_Reflec_ReflectionOffset_UpRightDiagonal_Up:
+.upRightDiagonal_up:
     LDX.W $0E54                                                          ;A3DDF0;
     LDA.W $0F7A,X                                                        ;A3DDF3;
     STA.W $0E36                                                          ;A3DDF6;
@@ -10379,17 +10405,17 @@ Function_Reflec_ReflectionOffset_UpRightDiagonal_Up:
     CLC                                                                  ;A3DDFC;
     ADC.W $0BB4,Y                                                        ;A3DDFD;
     CMP.W $0E36                                                          ;A3DE00;
-    BMI .return1                                                         ;A3DE03;
+    BMI ..return                                                         ;A3DE03;
     LDA.W #$0000                                                         ;A3DE05;
     RTS                                                                  ;A3DE08;
 
 
-.return1:
+..return:
     LDA.W #$0001                                                         ;A3DE09;
     RTS                                                                  ;A3DE0C;
 
 
-Function_Reflec_ReflectionOffset_UpRightDiagonal_Right:
+.upRightDiagonal_right:
     LDX.W $0E54                                                          ;A3DE0D;
     LDA.W $0F7E,X                                                        ;A3DE10;
     STA.W $0E36                                                          ;A3DE13;
@@ -10397,17 +10423,17 @@ Function_Reflec_ReflectionOffset_UpRightDiagonal_Right:
     SEC                                                                  ;A3DE19;
     SBC.W $0BC8,Y                                                        ;A3DE1A;
     CMP.W $0E36                                                          ;A3DE1D;
-    BPL .return1                                                         ;A3DE20;
+    BPL ..return                                                         ;A3DE20;
     LDA.W #$0000                                                         ;A3DE22;
     RTS                                                                  ;A3DE25;
 
 
-.return1:
+..return:
     LDA.W #$0001                                                         ;A3DE26;
     RTS                                                                  ;A3DE29;
 
 
-Function_Reflec_ReflectionOffset_UpRightDiagonal_Down:
+.upRightDiagonal_down:
     LDX.W $0E54                                                          ;A3DE2A;
     LDA.W $0F7A,X                                                        ;A3DE2D;
     STA.W $0E36                                                          ;A3DE30;
@@ -10415,17 +10441,17 @@ Function_Reflec_ReflectionOffset_UpRightDiagonal_Down:
     SEC                                                                  ;A3DE36;
     SBC.W $0BB4,Y                                                        ;A3DE37;
     CMP.W $0E36                                                          ;A3DE3A;
-    BPL .return1                                                         ;A3DE3D;
+    BPL ..return                                                         ;A3DE3D;
     LDA.W #$0000                                                         ;A3DE3F;
     RTS                                                                  ;A3DE42;
 
 
-.return1:
+..return:
     LDA.W #$0001                                                         ;A3DE43;
     RTS                                                                  ;A3DE46;
 
 
-Function_Reflec_ReflectionOffset_UpRightDiagonal_Left:
+.upRightDiagonal_left:
     LDX.W $0E54                                                          ;A3DE47;
     LDA.W $0F7E,X                                                        ;A3DE4A;
     STA.W $0E36                                                          ;A3DE4D;
@@ -10433,17 +10459,17 @@ Function_Reflec_ReflectionOffset_UpRightDiagonal_Left:
     CLC                                                                  ;A3DE53;
     ADC.W $0BC8,Y                                                        ;A3DE54;
     CMP.W $0E36                                                          ;A3DE57;
-    BMI .return1                                                         ;A3DE5A;
+    BMI ..return                                                         ;A3DE5A;
     LDA.W #$0000                                                         ;A3DE5C;
     RTS                                                                  ;A3DE5F;
 
 
-.return1:
+..return:
     LDA.W #$0001                                                         ;A3DE60;
     RTS                                                                  ;A3DE63;
 
 
-Function_Reflec_ReflectionOffset_Horizontal_UpRight_UpLeft:
+.horizontal_upRight_upLeft:
     LDX.W $0E54                                                          ;A3DE64;
     LDA.W $0F7E,X                                                        ;A3DE67;
     CLC                                                                  ;A3DE6A;
@@ -10453,17 +10479,17 @@ Function_Reflec_ReflectionOffset_Horizontal_UpRight_UpLeft:
     SEC                                                                  ;A3DE74;
     SBC.W $0BC8,Y                                                        ;A3DE75;
     CMP.W $0E36                                                          ;A3DE78;
-    BMI .return1                                                         ;A3DE7B;
+    BMI ..return                                                         ;A3DE7B;
     LDA.W #$0000                                                         ;A3DE7D;
     RTS                                                                  ;A3DE80;
 
 
-.return1:
+..return:
     LDA.W #$0001                                                         ;A3DE81;
     RTS                                                                  ;A3DE84;
 
 
-Func_Reflec_ReflectionOffset_Horizontal_DownRight_DownLeft:
+.horizontal_downRight_downLeft:
     LDX.W $0E54                                                          ;A3DE85;
     LDA.W $0F7E,X                                                        ;A3DE88;
     SEC                                                                  ;A3DE8B;
@@ -10473,17 +10499,17 @@ Func_Reflec_ReflectionOffset_Horizontal_DownRight_DownLeft:
     CLC                                                                  ;A3DE95;
     ADC.W $0BC8,Y                                                        ;A3DE96;
     CMP.W $0E36                                                          ;A3DE99;
-    BPL .return1                                                         ;A3DE9C;
+    BPL ..return                                                         ;A3DE9C;
     LDA.W #$0000                                                         ;A3DE9E;
     RTS                                                                  ;A3DEA1;
 
 
-.return1:
+..return:
     LDA.W #$0001                                                         ;A3DEA2;
     RTS                                                                  ;A3DEA5;
 
 
-Function_Reflec_ReflectionOffset_DownRightDiagonal_Up:
+.downRightDiagonal_up:
     LDX.W $0E54                                                          ;A3DEA6;
     LDA.W $0F7A,X                                                        ;A3DEA9;
     STA.W $0E36                                                          ;A3DEAC;
@@ -10491,17 +10517,17 @@ Function_Reflec_ReflectionOffset_DownRightDiagonal_Up:
     SEC                                                                  ;A3DEB2;
     SBC.W $0BB4,Y                                                        ;A3DEB3;
     CMP.W $0E36                                                          ;A3DEB6;
-    BMI .return1                                                         ;A3DEB9;
+    BMI ..return                                                         ;A3DEB9;
     LDA.W #$0000                                                         ;A3DEBB;
     RTS                                                                  ;A3DEBE;
 
 
-.return1:
+..return:
     LDA.W #$0001                                                         ;A3DEBF;
     RTS                                                                  ;A3DEC2;
 
 
-Function_Reflec_ReflectionOffset_DownRightDiagonal_Right:
+.downRightDiagonal_right:
     LDX.W $0E54                                                          ;A3DEC3;
     LDA.W $0F7E,X                                                        ;A3DEC6;
     STA.W $0E36                                                          ;A3DEC9;
@@ -10509,17 +10535,17 @@ Function_Reflec_ReflectionOffset_DownRightDiagonal_Right:
     CLC                                                                  ;A3DECF;
     ADC.W $0BC8,Y                                                        ;A3DED0;
     CMP.W $0E36                                                          ;A3DED3;
-    BPL .return0                                                         ;A3DED6;
+    BPL ..return                                                         ;A3DED6;
     LDA.W #$0001                                                         ;A3DED8;
     RTS                                                                  ;A3DEDB;
 
 
-.return0:
+..return:
     LDA.W #$0000                                                         ;A3DEDC;
     RTS                                                                  ;A3DEDF;
 
 
-Function_Reflec_ReflectionOffset_DownRightDiagonal_Down:
+.downRightDiagonal_down:
     LDX.W $0E54                                                          ;A3DEE0;
     LDA.W $0F7A,X                                                        ;A3DEE3;
     STA.W $0E36                                                          ;A3DEE6;
@@ -10527,17 +10553,17 @@ Function_Reflec_ReflectionOffset_DownRightDiagonal_Down:
     SEC                                                                  ;A3DEEC;
     SBC.W $0BB4,Y                                                        ;A3DEED;
     CMP.W $0E36                                                          ;A3DEF0;
-    BMI .return1                                                         ;A3DEF3;
+    BMI ..return                                                         ;A3DEF3;
     LDA.W #$0000                                                         ;A3DEF5;
     RTS                                                                  ;A3DEF8;
 
 
-.return1:
+..return:
     LDA.W #$0001                                                         ;A3DEF9;
     RTS                                                                  ;A3DEFC;
 
 
-Function_Reflec_ReflectionOffset_DownRightDiagonal_Left:
+.downRightDiagonal_left:
     LDX.W $0E54                                                          ;A3DEFD;
     LDA.W $0F7E,X                                                        ;A3DF00;
     STA.W $0E36                                                          ;A3DF03;
@@ -10545,12 +10571,12 @@ Function_Reflec_ReflectionOffset_DownRightDiagonal_Left:
     SEC                                                                  ;A3DF09;
     SBC.W $0BC8,Y                                                        ;A3DF0A;
     CMP.W $0E36                                                          ;A3DF0D;
-    BPL .return1                                                         ;A3DF10;
+    BPL ..return                                                         ;A3DF10;
     LDA.W #$0000                                                         ;A3DF12;
     RTS                                                                  ;A3DF15;
 
 
-.return1:
+..return:
     LDA.W #$0001                                                         ;A3DF16;
     RTS                                                                  ;A3DF19;
 
@@ -11265,10 +11291,10 @@ Palette_MZoomer:
 
 CrawlersSpeedTable:
 ; Speed. Unit is 1/100h px/frame. Indexed by [enemy parameter 1] * 2
-    dw $0040,$0080,$00C0,$0100,$0140,$0180,$01C0,$0200                   ;A3E5F0;
-    dw $0240,$0280,$02C0,$0300,$0340,$0380,$0400,$0440                   ;A3E600;
-    dw $0540,$0580,$05C0,$0600,$0640,$0680,$06C0,$0700                   ;A3E610;
-    dw $0740,$0780,$07C0,$0800,$0840,$0880,$0800,$0000                   ;A3E620;
+    dw $004C,$0099,$00E6,$0133,$017F,$01CC,$0219,$0266                   ;A3E5F0;
+    dw $02B3,$02FF,$034C,$0399,$03E6,$0433,$04CC,$0519                   ;A3E600;
+    dw $064C,$0699,$06E6,$0733,$077F,$07CC,$0819,$0866                   ;A3E610;
+    dw $08B3,$08FF,$094C,$0999,$09E6,$0A33,$0999,$0000                   ;A3E620;
 
 
 ; Instruction list pointers. Indexed by [enemy parameter 2]
@@ -11501,7 +11527,7 @@ Function_Crawlers_Falling:
     BPL .fallSpeedCapped                                                 ;A3E7C6;
     LDA.L $7E7802,X                                                      ;A3E7C8;
     CLC                                                                  ;A3E7CC;
-    ADC.W #$8000                                                         ;A3E7CD;
+    ADC.W #$A000                                                         ;A3E7CD;
     STA.L $7E7802,X                                                      ;A3E7D0;
     LDA.L $7E7804,X                                                      ;A3E7D4;
     ADC.W #$0000                                                         ;A3E7D8;
@@ -11993,16 +12019,16 @@ Function_Metroid_0_ChaseSamus:
     SBC.B $14                                                            ;A3EC3B;
     STA.W $0FAE,X                                                        ;A3EC3D;
     BMI .negativeY                                                       ;A3EC40;
-    CMP.W #$0003                                                         ;A3EC42;
+    CMP.W #$0004                                                         ;A3EC42;
     BCC .moveDown                                                        ;A3EC45;
-    LDA.W #$0003                                                         ;A3EC47;
+    LDA.W #$0004                                                         ;A3EC47;
     BRA .storeYVelocity                                                  ;A3EC4A;
 
 
 .negativeY:
-    CMP.W #$FFFD                                                         ;A3EC4C;
+    CMP.W #$FFFC                                                         ;A3EC4C;
     BCS .moveDown                                                        ;A3EC4F;
-    LDA.W #$FFFD                                                         ;A3EC51;
+    LDA.W #$FFFC                                                         ;A3EC51;
 
 .storeYVelocity:
     STA.W $0FAE,X                                                        ;A3EC54;
@@ -12044,16 +12070,16 @@ Function_Metroid_0_ChaseSamus:
     SBC.B $14                                                            ;A3ECA0;
     STA.W $0FAA,X                                                        ;A3ECA2;
     BMI .negativeX                                                       ;A3ECA5;
-    CMP.W #$0003                                                         ;A3ECA7;
+    CMP.W #$0004                                                         ;A3ECA7;
     BCC .moveRight                                                       ;A3ECAA;
-    LDA.W #$0003                                                         ;A3ECAC;
+    LDA.W #$0004                                                         ;A3ECAC;
     BRA .storeXVelocity                                                  ;A3ECAF;
 
 
 .negativeX:
-    CMP.W #$FFFD                                                         ;A3ECB1;
+    CMP.W #$FFFC                                                         ;A3ECB1;
     BCS .moveRight                                                       ;A3ECB4;
-    LDA.W #$FFFD                                                         ;A3ECB6;
+    LDA.W #$FFFC                                                         ;A3ECB6;
 
 .storeXVelocity:
     STA.W $0FAA,X                                                        ;A3ECB9;
@@ -12096,16 +12122,16 @@ Function_Metroid_1_LatchOntoSamus:
 
   + LDA.B $14                                                            ;A3ECFF;
     BMI .negativeY                                                       ;A3ED01;
-    CMP.W #$0003                                                         ;A3ED03;
+    CMP.W #$0004                                                         ;A3ED03;
     BCC .moveDown                                                        ;A3ED06;
-    LDA.W #$0003                                                         ;A3ED08;
+    LDA.W #$0004                                                         ;A3ED08;
     BRA .alwaysClamped                                                   ;A3ED0B;
 
 
 .negativeY:
-    CMP.W #$FFFD                                                         ;A3ED0D;
+    CMP.W #$FFFC                                                         ;A3ED0D;
     BCS .moveDown                                                        ;A3ED10;
-    LDA.W #$FFFD                                                         ;A3ED12;
+    LDA.W #$FFFC                                                         ;A3ED12;
 
 .alwaysClamped:
     STA.B $14                                                            ;A3ED15;
@@ -12144,16 +12170,16 @@ Function_Metroid_1_LatchOntoSamus:
 
   + LDA.B $14                                                            ;A3ED58;
     BMI .negativeX                                                       ;A3ED5A;
-    CMP.W #$0003                                                         ;A3ED5C;
+    CMP.W #$0004                                                         ;A3ED5C;
     BCC .moveRight                                                       ;A3ED5F;
-    LDA.W #$0003                                                         ;A3ED61;
+    LDA.W #$0004                                                         ;A3ED61;
     BRA .storeXVelocity                                                  ;A3ED64;
 
 
 .negativeX:
-    CMP.W #$FFFD                                                         ;A3ED66;
+    CMP.W #$FFFC                                                         ;A3ED66;
     BCS .moveRight                                                       ;A3ED69;
-    LDA.W #$FFFD                                                         ;A3ED6B;
+    LDA.W #$FFFC                                                         ;A3ED6B;
 
 .storeXVelocity:
     STA.B $14                                                            ;A3ED6E;
@@ -12424,7 +12450,7 @@ EnemyShot_Metroid:
     AND.W #$0F00                                                         ;A3EF84;
     CMP.W #$0500                                                         ;A3EF87;
     BNE .returnLower                                                     ;A3EF8A;
-    LDA.W #$0004                                                         ;A3EF8C;
+    LDA.W #$0005                                                         ;A3EF8C;
     STA.W $0FB0,X                                                        ;A3EF8F;
     LDA.W #$0003                                                         ;A3EF92;
     STA.W $0FB2,X                                                        ;A3EF95;
@@ -12759,5 +12785,5 @@ UNUSED_Spritemap_Metroid_Electricity_A3F30A:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-Freespace_BankA3_F311:                                                   ;A3F311;
-; $CEF bytes
+Freespace_BankA3_F32D:                                                   ;A3F311;
+; $CD3 bytes

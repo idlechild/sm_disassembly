@@ -352,70 +352,72 @@ CommonA7EnemySpeeds_LinearlyIncreasing:
     dw             $0000                                                 ;A7818B;
   .negatedSubspeed:
     dw                   $0000                                           ;A7818D;
-    dw $0000,$1000,$FFFF,$F000
-    dw $0000,$2000,$FFFF,$E000
-    dw $0000,$3000,$FFFF,$D000
-    dw $0000,$4000,$FFFF,$C000
-    dw $0000,$5000,$FFFF,$B000
-    dw $0000,$6000,$FFFF,$A000
-    dw $0000,$7000,$FFFF,$9000
-    dw $0000,$8000,$FFFF,$8000
-    dw $0000,$9000,$FFFF,$7000
-    dw $0000,$A000,$FFFF,$6000
-    dw $0000,$B000,$FFFF,$5000
-    dw $0000,$C000,$FFFF,$4000
-    dw $0000,$D000,$FFFF,$3000
-    dw $0000,$E000,$FFFF,$2000
-    dw $0000,$F000,$FFFF,$1000
-    dw $0001,$0000,$FFFF,$0000
-    dw $0001,$1000,$FFFE,$F000
-    dw $0001,$2000,$FFFE,$E000
-    dw $0001,$3000,$FFFE,$D000
-    dw $0001,$4000,$FFFE,$C000
-    dw $0001,$5000,$FFFE,$B000
-    dw $0001,$6000,$FFFE,$A000
-    dw $0001,$7000,$FFFE,$9000
-    dw $0001,$8000,$FFFE,$8000
-    dw $0001,$9000,$FFFE,$7000
-    dw $0001,$A000,$FFFE,$6000
-    dw $0001,$B000,$FFFE,$5000
-    dw $0001,$C000,$FFFE,$4000
-    dw $0001,$D000,$FFFE,$3000
-    dw $0001,$E000,$FFFE,$2000
-    dw $0001,$F000,$FFFE,$1000
-    dw $0002,$0000,$FFFE,$0000
-    dw $0002,$1000,$FFFD,$F000
-    dw $0002,$2000,$FFFD,$E000
-    dw $0002,$3000,$FFFD,$D000
-    dw $0002,$4000,$FFFD,$C000
-    dw $0002,$5000,$FFFD,$B000
-    dw $0002,$6000,$FFFD,$A000
-    dw $0002,$7000,$FFFD,$9000
-    dw $0002,$8000,$FFFD,$8000
-    dw $0002,$9000,$FFFD,$7000
-    dw $0002,$A000,$FFFD,$6000
-    dw $0002,$B000,$FFFD,$5000
-    dw $0002,$C000,$FFFD,$4000
-    dw $0002,$D000,$FFFD,$3000
-    dw $0002,$E000,$FFFD,$2000
-    dw $0002,$F000,$FFFD,$1000
-    dw $0003,$0000,$FFFD,$0000
-    dw $0003,$1000,$FFFC,$F000
-    dw $0003,$2000,$FFFC,$E000
-    dw $0003,$3000,$FFFC,$D000
-    dw $0003,$4000,$FFFC,$C000
-    dw $0003,$5000,$FFFC,$B000
-    dw $0003,$6000,$FFFC,$A000
-    dw $0003,$7000,$FFFC,$9000
-    dw $0003,$8000,$FFFC,$8000
-    dw $0003,$9000,$FFFC,$7000
-    dw $0003,$A000,$FFFC,$6000
-    dw $0003,$B000,$FFFC,$5000
-    dw $0003,$C000,$FFFC,$4000
-    dw $0003,$D000,$FFFC,$3000
-    dw $0003,$E000,$FFFC,$2000
-    dw $0003,$F000,$FFFC,$1000
-    dw $0004,$0000,$FFFC,$0000
+    dw $0000,$1333,$FFFF,$ECCD
+    dw $0000,$2666,$FFFF,$D99A
+    dw $0000,$3999,$FFFF,$C667
+    dw $0000,$4CCC,$FFFF,$B334
+    dw $0000,$5FFF,$FFFF,$A001
+    dw $0000,$7332,$FFFF,$8CCE
+    dw $0000,$8665,$FFFF,$799B
+    dw $0000,$9998,$FFFF,$6668
+    dw $0000,$ACCB,$FFFF,$5335
+    dw $0000,$BFFE,$FFFF,$4002
+    dw $0000,$D331,$FFFF,$2CCF
+    dw $0000,$E664,$FFFF,$199C
+    dw $0000,$F997,$FFFF,$0669
+    dw $0001,$0CCA,$FFFE,$F336
+    dw $0001,$1FFD,$FFFE,$E003
+    dw $0001,$3330,$FFFE,$CCD0
+    dw $0001,$4663,$FFFE,$B99D
+    dw $0001,$5996,$FFFE,$A66A
+    dw $0001,$6CC9,$FFFE,$9337
+    dw $0001,$7FFC,$FFFE,$8004
+    dw $0001,$932F,$FFFE,$6CD1
+    dw $0001,$A662,$FFFE,$599E
+    dw $0001,$B995,$FFFE,$466B
+    dw $0001,$CCC8,$FFFE,$3338
+    dw $0001,$DFFB,$FFFE,$2005
+    dw $0001,$F32E,$FFFE,$0CD2
+    dw $0002,$0661,$FFFD,$F99F
+    dw $0002,$1994,$FFFD,$E66C
+    dw $0002,$2CC7,$FFFD,$D339
+    dw $0002,$3FFA,$FFFD,$C006
+    dw $0002,$532D,$FFFD,$ACD3
+    dw $0002,$6660,$FFFD,$99A0
+    dw $0002,$7993,$FFFD,$866D
+    dw $0002,$8CC6,$FFFD,$733A
+    dw $0002,$9FF9,$FFFD,$6007
+    dw $0002,$B32C,$FFFD,$4CD4
+    dw $0002,$C65F,$FFFD,$39A1
+    dw $0002,$D992,$FFFD,$266E
+    dw $0002,$ECC5,$FFFD,$133B
+    dw $0002,$FFF8,$FFFD,$0008
+    dw $0003,$132B,$FFFC,$ECD5
+    dw $0003,$265E,$FFFC,$D9A2
+    dw $0003,$3991,$FFFC,$C66F
+    dw $0003,$4CC4,$FFFC,$B33C
+    dw $0003,$5FF7,$FFFC,$A009
+    dw $0003,$732A,$FFFC,$8CD6
+    dw $0003,$865D,$FFFC,$79A3
+    dw $0003,$9990,$FFFC,$6670
+    dw $0003,$ACC3,$FFFC,$533D
+    dw $0003,$BFF6,$FFFC,$400A
+    dw $0003,$D329,$FFFC,$2CD7
+    dw $0003,$E65C,$FFFC,$19A4
+    dw $0003,$F98F,$FFFC,$0671
+    dw $0004,$0CC2,$FFFB,$F33E
+    dw $0004,$1FF5,$FFFB,$E00B
+    dw $0004,$3328,$FFFB,$CCD8
+    dw $0004,$465B,$FFFB,$B9A5
+    dw $0004,$598E,$FFFB,$A672
+    dw $0004,$6CC1,$FFFB,$933F
+    dw $0004,$7FF4,$FFFB,$800C
+    dw $0004,$9327,$FFFB,$6CD9
+    dw $0004,$A65A,$FFFB,$59A6
+    dw $0004,$B98D,$FFFB,$4673
+    dw $0004,$CCC0,$FFFB,$3340
+    dw $0004,$DFF3,$FFFB,$200D
+    dw $0004,$F326,$FFFB,$0CDA
 
 
 ;        _____________________ Subspeed
@@ -436,98 +438,98 @@ CommonA7EnemySpeeds_QuadraticallyIncreasing:
     dw                   $0000                                           ;A78395;
     dw $0109,$0000,$FEF7,$FFFF
     dw $031B,$0000,$FCE5,$FFFF
-    dw $0636,$0000,$F9CA,$FFFF
-    dw $0A5A,$0000,$F5A6,$FFFF
-    dw $0F87,$0000,$F079,$FFFF
-    dw $15BD,$0000,$EA43,$FFFF
-    dw $1CFC,$0000,$E304,$FFFF
-    dw $2544,$0000,$DABC,$FFFF
-    dw $2E95,$0000,$D16B,$FFFF
-    dw $38EF,$0000,$C711,$FFFF
-    dw $4452,$0000,$BBAE,$FFFF
-    dw $50BE,$0000,$AF42,$FFFF
-    dw $5E33,$0000,$A1CD,$FFFF
-    dw $6CB1,$0000,$934F,$FFFF
-    dw $7C38,$0000,$83C8,$FFFF
-    dw $8CC8,$0000,$7338,$FFFF
-    dw $9E61,$0000,$619F,$FFFF
-    dw $B103,$0000,$4EFD,$FFFF
-    dw $C4AE,$0000,$3B52,$FFFF
-    dw $D962,$0000,$269E,$FFFF
-    dw $EF1F,$0000,$10E1,$FFFF
-    dw $05E5,$0000,$FA1B,$FFFF
-    dw $14B4,$0001,$EB4C,$FFFE
-    dw $2D8C,$0001,$D274,$FFFE
-    dw $476D,$0001,$B893,$FFFE
-    dw $6257,$0001,$9DA9,$FFFE
-    dw $7E4A,$0001,$81B6,$FFFE
-    dw $9B46,$0001,$64BA,$FFFE
-    dw $B94B,$0001,$46B5,$FFFE
-    dw $D859,$0001,$27A7,$FFFE
-    dw $F870,$0001,$0790,$FFFE
-    dw $1090,$0002,$EF70,$FFFD
-    dw $32B9,$0002,$CD47,$FFFD
+    dw $073F,$0000,$F8C1,$FFFF
+    dw $0B63,$0000,$F49D,$FFFF
+    dw $1199,$0000,$EE67,$FFFF
+    dw $19E1,$0000,$E61F,$FFFF
+    dw $2229,$0000,$DDD7,$FFFF
+    dw $2C83,$0000,$D37D,$FFFF
+    dw $36DD,$0000,$C923,$FFFF
+    dw $4349,$0000,$BCB7,$FFFF
+    dw $51C7,$0000,$AE39,$FFFF
+    dw $6045,$0000,$9FBB,$FFFF
+    dw $70D5,$0000,$8F2B,$FFFF
+    dw $8165,$0000,$7E9B,$FFFF
+    dw $9407,$0000,$6BF9,$FFFF
+    dw $A8BB,$0000,$5745,$FFFF
+    dw $BD6F,$0000,$4291,$FFFF
+    dw $D435,$0000,$2BCB,$FFFF
+    dw $EAFB,$0000,$1505,$FFFF
+    dw $03D3,$0001,$FC2D,$FFFE
+    dw $15BD,$0001,$EA43,$FFFE
+    dw $30A7,$0001,$CF59,$FFFE
+    dw $4DA3,$0001,$B25D,$FFFE
+    dw $6A9F,$0001,$9561,$FFFE
+    dw $89AD,$0001,$7653,$FFFE
+    dw $AACD,$0001,$5533,$FFFE
+    dw $CBED,$0001,$3413,$FFFE
+    dw $EF1F,$0001,$10E1,$FFFE
+    dw $0951,$0002,$F6AF,$FFFD
+    dw $2E95,$0002,$D16B,$FFFD
     dw $55EB,$0002,$AA15,$FFFD
-    dw $7A26,$0002,$85DA,$FFFD
-    dw $9F6A,$0002,$6096,$FFFD
-    dw $C5B7,$0002,$3A49,$FFFD
-    dw $ED0D,$0002,$12F3,$FFFD
-    dw $0C6C,$0003,$F394,$FFFC
-    dw $35D4,$0003,$CA2C,$FFFC
-    dw $6045,$0003,$9FBB,$FFFC
-    dw $8BBF,$0003,$7441,$FFFC
-    dw $B842,$0003,$47BE,$FFFC
-    dw $E5CE,$0003,$1A32,$FFFC
-    dw $0B63,$0004,$F49D,$FFFB
-    dw $3B01,$0004,$C4FF,$FFFB
-    dw $6BA8,$0004,$9458,$FFFB
-    dw $9D58,$0004,$62A8,$FFFB
-    dw $D011,$0004,$2FEF,$FFFB
-    dw $03D3,$0004,$FC2D,$FFFB
-    dw $2F9E,$0005,$D062,$FFFA
-    dw $6572,$0005,$9A8E,$FFFA
-    dw $9C4F,$0005,$63B1,$FFFA
-    dw $D435,$0005,$2BCB,$FFFA
-    dw $0424,$0006,$FBDC,$FFF9
-    dw $3E1C,$0006,$C1E4,$FFF9
+    dw $7D41,$0002,$82BF,$FFFD
+    dw $A6A9,$0002,$5957,$FFFD
+    dw $D011,$0002,$2FEF,$FFFD
+    dw $FB8B,$0002,$0475,$FFFD
+    dw $2017,$0003,$DFE9,$FFFC
+    dw $4DA3,$0003,$B25D,$FFFC
+    dw $7D41,$0003,$82BF,$FFFC
+    dw $ACDF,$0003,$5321,$FFFC
+    dw $DE8F,$0003,$2171,$FFFC
+    dw $0951,$0004,$F6AF,$FFFB
+    dw $3D13,$0004,$C2ED,$FFFB
+    dw $72E7,$0004,$8D19,$FFFB
+    dw $A8BB,$0004,$5745,$FFFB
+    dw $E0A1,$0004,$1F5F,$FFFB
+    dw $1199,$0005,$EE67,$FFFA
+    dw $4B91,$0005,$B46F,$FFFA
+    dw $879B,$0005,$7865,$FFFA
+    dw $C3A5,$0005,$3C5B,$FFFA
+    dw $01C1,$0005,$FE3F,$FFFA
+    dw $38EF,$0006,$C711,$FFF9
     dw $791D,$0006,$86E3,$FFF9
-    dw $B527,$0006,$4AD9,$FFF9
-    dw $F23A,$0006,$0DC6,$FFF9
-    dw $2756,$0007,$D8AA,$FFF8
-    dw $667B,$0007,$9985,$FFF8
-    dw $A6A9,$0007,$5957,$FFF8
-    dw $E7E0,$0007,$1820,$FFF8
-    dw $2120,$0008,$DEE0,$FFF7
-    dw $6469,$0008,$9B97,$FFF7
-    dw $A8BB,$0008,$5745,$FFF7
-    dw $EE16,$0008,$11EA,$FFF7
-    dw $2B7A,$0009,$D486,$FFF6
-    dw $72E7,$0009,$8D19,$FFF6
-    dw $BB5D,$0009,$44A3,$FFF6
-    dw $04DC,$0009,$FB24,$FFF6
-    dw $4664,$000A,$B99C,$FFF5
-    dw $91F5,$000A,$6E0B,$FFF5
-    dw $DE8F,$000A,$2171,$FFF5
-    dw $2332,$000B,$DCCE,$FFF4
-    dw $71DE,$000B,$8E22,$FFF4
-    dw $C193,$000B,$3E6D,$FFF4
-    dw $0951,$000C,$F6AF,$FFF3
-    dw $5B18,$000C,$A4E8,$FFF3
-    dw $ADE8,$000C,$5218,$FFF3
-    dw $01C1,$000C,$FE3F,$FFF3
-    dw $4DA3,$000D,$B25D,$FFF2
-    dw $A38E,$000D,$5C72,$FFF2
-    dw $FA82,$000D,$057E,$FFF2
-    dw $497F,$000E,$B681,$FFF1
-    dw $A285,$000E,$5D7B,$FFF1
-    dw $FC94,$000E,$036C,$FFF1
-    dw $4EAC,$000F,$B154,$FFF0
-    dw $AACD,$000F,$5533,$FFF0
-    dw $07F7,$000F,$F809,$FFF0
-    dw $5D2A,$0010,$A2D6,$FFEF
-    dw $BC66,$0010,$439A,$FFEF
-    dw $13AB,$0011,$EC55,$FFEE
-    dw $74F9,$0011,$8B07,$FFEE
+    dw $BB5D,$0006,$44A3,$FFF9
+    dw $FD9D,$0006,$0263,$FFF9
+    dw $38EF,$0007,$C711,$FFF8
+    dw $7F53,$0007,$80AD,$FFF8
+    dw $C5B7,$0007,$3A49,$FFF8
+    dw $052D,$0008,$FAD3,$FFF7
+    dw $4DA3,$0008,$B25D,$FFF7
+    dw $982B,$0008,$67D5,$FFF7
+    dw $E4C5,$0008,$1B3B,$FFF7
+    dw $285F,$0009,$D7A1,$FFF6
+    dw $770B,$0009,$88F5,$FFF6
+    dw $C5B7,$0009,$3A49,$FFF6
+    dw $0D75,$000A,$F28B,$FFF5
+    dw $6045,$000A,$9FBB,$FFF5
+    dw $B315,$000A,$4CEB,$FFF5
+    dw $07F7,$000B,$F809,$FFF5
+    dw $53D9,$000B,$AC27,$FFF4
+    dw $AACD,$000B,$5533,$FFF4
+    dw $03D3,$000C,$FC2D,$FFF3
+    dw $53D9,$000C,$AC27,$FFF3
+    dw $AEF1,$000C,$510F,$FFF3
+    dw $0109,$000D,$FEF7,$FFF2
+    dw $5E33,$000D,$A1CD,$FFF2
+    dw $BD6F,$000D,$4291,$FFF2
+    dw $13AB,$000E,$EC55,$FFF1
+    dw $74F9,$000E,$8B07,$FFF1
+    dw $D647,$000E,$29B9,$FFF1
+    dw $30A7,$000F,$CF59,$FFF0
+    dw $9619,$000F,$69E7,$FFF0
+    dw $FB8B,$000F,$0475,$FFF0
+    dw $5A0F,$0010,$A5F1,$FFEF
+    dw $C193,$0010,$3E6D,$FFEF
+    dw $2229,$0011,$DDD7,$FFEE
+    dw $8DD1,$0011,$722F,$FFEE
+    dw $F979,$0011,$0687,$FFEE
+    dw $5E33,$0012,$A1CD,$FFED
+    dw $CBED,$0012,$3413,$FFED
+    dw $32B9,$0013,$CD47,$FFEC
+    dw $A497,$0013,$5B69,$FFEC
+    dw $0D75,$0014,$F28B,$FFEB
+    dw $8165,$0014,$7E9B,$FFEB
+    dw $F555,$0014,$0AAB,$FFEB
 
 
 Palette_Kraid:
@@ -556,24 +558,24 @@ InstList_KraidFoot_KraidIsBig_Neutral:
 
 InstList_KraidFoot_KraidIsBig_WalkingForward_0:
     dw Instruction_Kraid_NOP_A7B633                                      ;A786F3;
-    dw $0004,ExtendedSpritemap_KraidFoot_0                               ;A786F5;
-    dw $0004,ExtendedSpritemap_KraidFoot_1                               ;A786F9;
-    dw $0004,ExtendedSpritemap_KraidFoot_2                               ;A786FD;
+    dw $0003,ExtendedSpritemap_KraidFoot_0                               ;A786F5;
+    dw $0003,ExtendedSpritemap_KraidFoot_1                               ;A786F9;
+    dw $0003,ExtendedSpritemap_KraidFoot_2                               ;A786FD;
     dw $0004,ExtendedSpritemap_KraidFoot_3                               ;A78701;
-    dw $0004,ExtendedSpritemap_KraidFoot_4                               ;A78705;
-    dw $0004,ExtendedSpritemap_KraidFoot_5                               ;A78709;
-    dw $0004,ExtendedSpritemap_KraidFoot_6                               ;A7870D;
+    dw $0003,ExtendedSpritemap_KraidFoot_4                               ;A78705;
+    dw $0003,ExtendedSpritemap_KraidFoot_5                               ;A78709;
+    dw $0003,ExtendedSpritemap_KraidFoot_6                               ;A7870D;
     dw $0004,ExtendedSpritemap_KraidFoot_7                               ;A78711;
-    dw $0004,ExtendedSpritemap_KraidFoot_8                               ;A78715;
-    dw $0004,ExtendedSpritemap_KraidFoot_9                               ;A78719;
-    dw $0004,ExtendedSpritemap_KraidFoot_A                               ;A7871D;
+    dw $0003,ExtendedSpritemap_KraidFoot_8                               ;A78715;
+    dw $0003,ExtendedSpritemap_KraidFoot_9                               ;A78719;
+    dw $0003,ExtendedSpritemap_KraidFoot_A                               ;A7871D;
     dw $0003,ExtendedSpritemap_KraidFoot_B                               ;A78721;
     dw $0001,ExtendedSpritemap_KraidFoot_C                               ;A78725;
     dw $0001,ExtendedSpritemap_KraidFoot_D                               ;A78729;
     dw $0001,ExtendedSpritemap_KraidFoot_E                               ;A7872D;
     dw $0001,ExtendedSpritemap_KraidFoot_F                               ;A78731;
     dw $0001,ExtendedSpritemap_KraidFoot_10                              ;A78735;
-    dw $0010,ExtendedSpritemap_KraidFoot_11                              ;A78739;
+    dw $000D,ExtendedSpritemap_KraidFoot_11                              ;A78739;
     dw Instruction_Kraid_DecrementYPosition                              ;A7873D;
     dw Instruction_Kraid_XPositionMinus3                                 ;A7873F;
     dw $0001,ExtendedSpritemap_KraidFoot_12                              ;A78741;
@@ -581,17 +583,17 @@ InstList_KraidFoot_KraidIsBig_WalkingForward_0:
     dw Instruction_Kraid_XPositionMinus3                                 ;A78747;
     dw $0001,ExtendedSpritemap_KraidFoot_13                              ;A78749;
     dw Instruction_Kraid_NOP_A7B633                                      ;A7874D;
-    dw $0003,ExtendedSpritemap_KraidFoot_13                              ;A7874F;
+    dw $0002,ExtendedSpritemap_KraidFoot_13                              ;A7874F;
     dw Instruction_Kraid_DecrementYPosition                              ;A78753;
     dw Instruction_Kraid_XPositionMinus3                                 ;A78755;
     dw $0001,ExtendedSpritemap_KraidFoot_13                              ;A78757;
     dw Instruction_Kraid_NOP_A7B633                                      ;A7875B;
-    dw $0003,ExtendedSpritemap_KraidFoot_13                              ;A7875D;
+    dw $0002,ExtendedSpritemap_KraidFoot_13                              ;A7875D;
     dw Instruction_Kraid_DecrementYPosition                              ;A78761;
     dw Instruction_Kraid_XPositionMinus3                                 ;A78763;
     dw $0001,ExtendedSpritemap_KraidFoot_15                              ;A78765;
     dw Instruction_Kraid_NOP_A7B633                                      ;A78769;
-    dw $0003,ExtendedSpritemap_KraidFoot_15                              ;A7876B;
+    dw $0002,ExtendedSpritemap_KraidFoot_15                              ;A7876B;
     dw Instruction_Kraid_IncrementYPosition_SetScreenShaking             ;A7876F;
     dw Instruction_Kraid_XPositionMinus3                                 ;A78771;
     dw $0001,ExtendedSpritemap_KraidFoot_16                              ;A78773;
@@ -695,7 +697,7 @@ InstList_KraidFoot_LungeForward_1:
 InstList_KraidFoot_KraidIsBig_WalkingBackwards_0:
     dw Instruction_Kraid_NOP_A7B633                                      ;A78887;
     dw Instruction_Kraid_XPositionPlus3                                  ;A78889;
-    dw $0004,ExtendedSpritemap_KraidFoot_22                              ;A7888B;
+    dw $0003,ExtendedSpritemap_KraidFoot_22                              ;A7888B;
     dw Instruction_Kraid_XPositionPlus3                                  ;A7888F;
     dw $0001,ExtendedSpritemap_KraidFoot_20                              ;A78891;
     dw Instruction_Kraid_XPositionPlus3                                  ;A78895;
@@ -733,14 +735,14 @@ InstList_KraidFoot_KraidIsBig_WalkingBackwards_0:
     dw Instruction_Kraid_QueueSFX76_Lib2_Max6                            ;A788ED;
     dw $0001,ExtendedSpritemap_KraidFoot_12                              ;A788EF;
     dw Instruction_Kraid_NOP_A7B633                                      ;A788F3;
-    dw $0014,ExtendedSpritemap_KraidFoot_11                              ;A788F5;
-    dw $0004,ExtendedSpritemap_KraidFoot_10                              ;A788F9;
-    dw $0004,ExtendedSpritemap_KraidFoot_F                               ;A788FD;
-    dw $0004,ExtendedSpritemap_KraidFoot_E                               ;A78901;
+    dw $0011,ExtendedSpritemap_KraidFoot_11                              ;A788F5;
+    dw $0003,ExtendedSpritemap_KraidFoot_10                              ;A788F9;
+    dw $0003,ExtendedSpritemap_KraidFoot_F                               ;A788FD;
+    dw $0003,ExtendedSpritemap_KraidFoot_E                               ;A78901;
     dw $0004,ExtendedSpritemap_KraidFoot_D                               ;A78905;
-    dw $0004,ExtendedSpritemap_KraidFoot_C                               ;A78909;
-    dw $0004,ExtendedSpritemap_KraidFoot_B                               ;A7890D;
-    dw $0004,ExtendedSpritemap_KraidFoot_A                               ;A78911;
+    dw $0003,ExtendedSpritemap_KraidFoot_C                               ;A78909;
+    dw $0003,ExtendedSpritemap_KraidFoot_B                               ;A7890D;
+    dw $0003,ExtendedSpritemap_KraidFoot_A                               ;A78911;
     dw $0004,ExtendedSpritemap_KraidFoot_9                               ;A78915;
     dw $0001,ExtendedSpritemap_KraidFoot_8                               ;A78919;
     dw $0001,ExtendedSpritemap_KraidFoot_7                               ;A7891D;
@@ -759,7 +761,7 @@ if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_KraidFoot_WalkingBackwards_Fast_A7893D:
     dw Instruction_Kraid_NOP_A7B633                                      ;A7893D;
     dw UNUSED_Instruction_Kraid_MoveRight_A7B683                         ;A7893F;
-    dw $0004,ExtendedSpritemap_KraidFoot_22                              ;A78941;
+    dw $0003,ExtendedSpritemap_KraidFoot_22                              ;A78941;
     dw UNUSED_Instruction_Kraid_MoveRight_A7B683                         ;A78945;
     dw $0001,ExtendedSpritemap_KraidFoot_20                              ;A78947;
     dw UNUSED_Instruction_Kraid_MoveRight_A7B683                         ;A7894B;
@@ -797,15 +799,15 @@ UNUSED_InstList_KraidFoot_WalkingBackwards_Fast_A7893D:
     dw Instruction_Kraid_QueueSFX76_Lib2_Max6                            ;A789A3;
     dw $0001,ExtendedSpritemap_KraidFoot_12                              ;A789A5;
     dw Instruction_Kraid_NOP_A7B633                                      ;A789A9;
-    dw $0014,ExtendedSpritemap_KraidFoot_11                              ;A789AB;
+    dw $0010,ExtendedSpritemap_KraidFoot_11                              ;A789AB;
     dw $0004,ExtendedSpritemap_KraidFoot_10                              ;A789AF;
-    dw $0004,ExtendedSpritemap_KraidFoot_F                               ;A789B3;
-    dw $0004,ExtendedSpritemap_KraidFoot_E                               ;A789B7;
-    dw $0004,ExtendedSpritemap_KraidFoot_D                               ;A789BB;
+    dw $0003,ExtendedSpritemap_KraidFoot_F                               ;A789B3;
+    dw $0003,ExtendedSpritemap_KraidFoot_E                               ;A789B7;
+    dw $0003,ExtendedSpritemap_KraidFoot_D                               ;A789BB;
     dw $0004,ExtendedSpritemap_KraidFoot_C                               ;A789BF;
-    dw $0004,ExtendedSpritemap_KraidFoot_B                               ;A789C3;
-    dw $0004,ExtendedSpritemap_KraidFoot_A                               ;A789C7;
-    dw $0004,ExtendedSpritemap_KraidFoot_9                               ;A789CB;
+    dw $0003,ExtendedSpritemap_KraidFoot_B                               ;A789C3;
+    dw $0003,ExtendedSpritemap_KraidFoot_A                               ;A789C7;
+    dw $0003,ExtendedSpritemap_KraidFoot_9                               ;A789CB;
     dw $0001,ExtendedSpritemap_KraidFoot_8                               ;A789CF;
     dw $0001,ExtendedSpritemap_KraidFoot_7                               ;A789D3;
     dw $0001,ExtendedSpritemap_KraidFoot_6                               ;A789D7;
@@ -819,49 +821,49 @@ UNUSED_InstList_KraidFoot_WalkingBackwards_Fast_A7893D:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_KraidArm_Normal_0:
-    dw $0006,ExtendedSpritemap_KraidArm_General_0                        ;A789F3;
-    dw $0006,ExtendedSpritemap_KraidArm_General_1                        ;A789F7;
-    dw $0006,ExtendedSpritemap_KraidArm_General_2                        ;A789FB;
-    dw $0006,ExtendedSpritemap_KraidArm_General_3                        ;A789FF;
-    dw $0006,ExtendedSpritemap_KraidArm_General_4                        ;A78A03;
-    dw $0006,ExtendedSpritemap_KraidArm_General_5                        ;A78A07;
-    dw $0006,ExtendedSpritemap_KraidArm_General_6                        ;A78A0B;
-    dw $0006,ExtendedSpritemap_KraidArm_General_7                        ;A78A0F;
-    dw $0006,ExtendedSpritemap_KraidArm_General_8                        ;A78A13;
-    dw $0006,ExtendedSpritemap_KraidArm_General_9                        ;A78A17;
-    dw $0006,ExtendedSpritemap_KraidArm_General_7                        ;A78A1B;
-    dw $0006,ExtendedSpritemap_KraidArm_General_6                        ;A78A1F;
-    dw $0006,ExtendedSpritemap_KraidArm_General_5                        ;A78A23;
-    dw $0006,ExtendedSpritemap_KraidArm_General_4                        ;A78A27;
-    dw $0006,ExtendedSpritemap_KraidArm_General_3                        ;A78A2B;
-    dw $0006,ExtendedSpritemap_KraidArm_General_2                        ;A78A2F;
-    dw $0006,ExtendedSpritemap_KraidArm_General_1                        ;A78A33;
+    dw $0005,ExtendedSpritemap_KraidArm_General_0                        ;A789F3;
+    dw $0005,ExtendedSpritemap_KraidArm_General_1                        ;A789F7;
+    dw $0005,ExtendedSpritemap_KraidArm_General_2                        ;A789FB;
+    dw $0005,ExtendedSpritemap_KraidArm_General_3                        ;A789FF;
+    dw $0005,ExtendedSpritemap_KraidArm_General_4                        ;A78A03;
+    dw $0005,ExtendedSpritemap_KraidArm_General_5                        ;A78A07;
+    dw $0005,ExtendedSpritemap_KraidArm_General_6                        ;A78A0B;
+    dw $0005,ExtendedSpritemap_KraidArm_General_7                        ;A78A0F;
+    dw $0005,ExtendedSpritemap_KraidArm_General_8                        ;A78A13;
+    dw $0005,ExtendedSpritemap_KraidArm_General_9                        ;A78A17;
+    dw $0005,ExtendedSpritemap_KraidArm_General_7                        ;A78A1B;
+    dw $0005,ExtendedSpritemap_KraidArm_General_6                        ;A78A1F;
+    dw $0005,ExtendedSpritemap_KraidArm_General_5                        ;A78A23;
+    dw $0005,ExtendedSpritemap_KraidArm_General_4                        ;A78A27;
+    dw $0005,ExtendedSpritemap_KraidArm_General_3                        ;A78A2B;
+    dw $0005,ExtendedSpritemap_KraidArm_General_2                        ;A78A2F;
+    dw $0005,ExtendedSpritemap_KraidArm_General_1                        ;A78A33;
 
 InstList_KraidArm_Normal_1:
-    dw $0020,ExtendedSpritemap_KraidArm_General_0                        ;A78A37;
+    dw $001A,ExtendedSpritemap_KraidArm_General_0                        ;A78A37;
     dw Instruction_KraidArm_SlowArmIfLessThanHalfHealth                  ;A78A3B;
     dw Instruction_Common_GotoY                                          ;A78A3D;
     dw InstList_KraidArm_Normal_0                                        ;A78A3F;
 
 InstList_KraidArm_Slow:
-    dw $0008,ExtendedSpritemap_KraidArm_General_0                        ;A78A41;
-    dw $0008,ExtendedSpritemap_KraidArm_General_1                        ;A78A45;
-    dw $0008,ExtendedSpritemap_KraidArm_General_2                        ;A78A49;
-    dw $0008,ExtendedSpritemap_KraidArm_General_3                        ;A78A4D;
-    dw $0008,ExtendedSpritemap_KraidArm_General_4                        ;A78A51;
-    dw $0008,ExtendedSpritemap_KraidArm_General_5                        ;A78A55;
-    dw $0008,ExtendedSpritemap_KraidArm_General_6                        ;A78A59;
-    dw $0008,ExtendedSpritemap_KraidArm_General_7                        ;A78A5D;
-    dw $0008,ExtendedSpritemap_KraidArm_General_8                        ;A78A61;
-    dw $0008,ExtendedSpritemap_KraidArm_General_9                        ;A78A65;
-    dw $0008,ExtendedSpritemap_KraidArm_General_7                        ;A78A69;
-    dw $0008,ExtendedSpritemap_KraidArm_General_6                        ;A78A6D;
-    dw $0008,ExtendedSpritemap_KraidArm_General_5                        ;A78A71;
-    dw $0008,ExtendedSpritemap_KraidArm_General_4                        ;A78A75;
-    dw $0008,ExtendedSpritemap_KraidArm_General_3                        ;A78A79;
-    dw $0008,ExtendedSpritemap_KraidArm_General_2                        ;A78A7D;
-    dw $0008,ExtendedSpritemap_KraidArm_General_1                        ;A78A81;
-    dw $0030,ExtendedSpritemap_KraidArm_General_0                        ;A78A85;
+    dw $0006,ExtendedSpritemap_KraidArm_General_0                        ;A78A41;
+    dw $0006,ExtendedSpritemap_KraidArm_General_1                        ;A78A45;
+    dw $0007,ExtendedSpritemap_KraidArm_General_2                        ;A78A49;
+    dw $0006,ExtendedSpritemap_KraidArm_General_3                        ;A78A4D;
+    dw $0006,ExtendedSpritemap_KraidArm_General_4                        ;A78A51;
+    dw $0007,ExtendedSpritemap_KraidArm_General_5                        ;A78A55;
+    dw $0006,ExtendedSpritemap_KraidArm_General_6                        ;A78A59;
+    dw $0006,ExtendedSpritemap_KraidArm_General_7                        ;A78A5D;
+    dw $0007,ExtendedSpritemap_KraidArm_General_8                        ;A78A61;
+    dw $0006,ExtendedSpritemap_KraidArm_General_9                        ;A78A65;
+    dw $0006,ExtendedSpritemap_KraidArm_General_7                        ;A78A69;
+    dw $0007,ExtendedSpritemap_KraidArm_General_6                        ;A78A6D;
+    dw $0006,ExtendedSpritemap_KraidArm_General_5                        ;A78A71;
+    dw $0006,ExtendedSpritemap_KraidArm_General_4                        ;A78A75;
+    dw $0007,ExtendedSpritemap_KraidArm_General_3                        ;A78A79;
+    dw $0006,ExtendedSpritemap_KraidArm_General_2                        ;A78A7D;
+    dw $0007,ExtendedSpritemap_KraidArm_General_1                        ;A78A81;
+    dw $0028,ExtendedSpritemap_KraidArm_General_0                        ;A78A85;
     dw Instruction_KraidArm_SlowArmIfLessThanHalfHealth                  ;A78A89;
     dw Instruction_Common_GotoY                                          ;A78A8B;
     dw InstList_KraidArm_Slow                                            ;A78A8D;
@@ -880,30 +882,30 @@ Instruction_KraidArm_SlowArmIfLessThanHalfHealth:
 
 
 InstList_KraidArm_RisingSinking:
-    dw $0006,ExtendedSpritemap_KraidArm_RisingSinking_0                  ;A78AA4;
-    dw $0006,ExtendedSpritemap_KraidArm_RisingSinking_1                  ;A78AA8;
-    dw $0006,ExtendedSpritemap_KraidArm_RisingSinking_2                  ;A78AAC;
-    dw $0006,ExtendedSpritemap_KraidArm_RisingSinking_3                  ;A78AB0;
-    dw $0006,ExtendedSpritemap_KraidArm_RisingSinking_4                  ;A78AB4;
-    dw $0006,ExtendedSpritemap_KraidArm_RisingSinking_5                  ;A78AB8;
-    dw $0006,ExtendedSpritemap_KraidArm_RisingSinking_6                  ;A78ABC;
-    dw $0006,ExtendedSpritemap_KraidArm_RisingSinking_7                  ;A78AC0;
-    dw $0006,ExtendedSpritemap_KraidArm_RisingSinking_8                  ;A78AC4;
-    dw $0006,ExtendedSpritemap_KraidArm_RisingSinking_9                  ;A78AC8;
-    dw $0006,ExtendedSpritemap_KraidArm_RisingSinking_7                  ;A78ACC;
-    dw $0006,ExtendedSpritemap_KraidArm_RisingSinking_6                  ;A78AD0;
-    dw $0006,ExtendedSpritemap_KraidArm_RisingSinking_5                  ;A78AD4;
-    dw $0006,ExtendedSpritemap_KraidArm_RisingSinking_4                  ;A78AD8;
-    dw $0006,ExtendedSpritemap_KraidArm_RisingSinking_3                  ;A78ADC;
-    dw $0006,ExtendedSpritemap_KraidArm_RisingSinking_2                  ;A78AE0;
-    dw $0006,ExtendedSpritemap_KraidArm_RisingSinking_1                  ;A78AE4;
-    dw $0020,ExtendedSpritemap_KraidArm_RisingSinking_0                  ;A78AE8;
+    dw $0005,ExtendedSpritemap_KraidArm_RisingSinking_0                  ;A78AA4;
+    dw $0005,ExtendedSpritemap_KraidArm_RisingSinking_1                  ;A78AA8;
+    dw $0005,ExtendedSpritemap_KraidArm_RisingSinking_2                  ;A78AAC;
+    dw $0005,ExtendedSpritemap_KraidArm_RisingSinking_3                  ;A78AB0;
+    dw $0005,ExtendedSpritemap_KraidArm_RisingSinking_4                  ;A78AB4;
+    dw $0005,ExtendedSpritemap_KraidArm_RisingSinking_5                  ;A78AB8;
+    dw $0005,ExtendedSpritemap_KraidArm_RisingSinking_6                  ;A78ABC;
+    dw $0005,ExtendedSpritemap_KraidArm_RisingSinking_7                  ;A78AC0;
+    dw $0005,ExtendedSpritemap_KraidArm_RisingSinking_8                  ;A78AC4;
+    dw $0005,ExtendedSpritemap_KraidArm_RisingSinking_9                  ;A78AC8;
+    dw $0005,ExtendedSpritemap_KraidArm_RisingSinking_7                  ;A78ACC;
+    dw $0005,ExtendedSpritemap_KraidArm_RisingSinking_6                  ;A78AD0;
+    dw $0005,ExtendedSpritemap_KraidArm_RisingSinking_5                  ;A78AD4;
+    dw $0005,ExtendedSpritemap_KraidArm_RisingSinking_4                  ;A78AD8;
+    dw $0005,ExtendedSpritemap_KraidArm_RisingSinking_3                  ;A78ADC;
+    dw $0005,ExtendedSpritemap_KraidArm_RisingSinking_2                  ;A78AE0;
+    dw $0005,ExtendedSpritemap_KraidArm_RisingSinking_1                  ;A78AE4;
+    dw $001A,ExtendedSpritemap_KraidArm_RisingSinking_0                  ;A78AE8;
     dw Instruction_Common_GotoY                                          ;A78AEC;
     dw InstList_KraidArm_RisingSinking                                   ;A78AEE;
 
 InstList_KraidArm_Dying_PreparingToLungeForward:
-    dw $0006,ExtendedSpritemap_KraidArm_General_0                        ;A78AF0;
-    dw $0006,ExtendedSpritemap_KraidArm_Dying_PreparingToLungeForward_0  ;A78AF4;
+    dw $0005,ExtendedSpritemap_KraidArm_General_0                        ;A78AF0;
+    dw $0005,ExtendedSpritemap_KraidArm_Dying_PreparingToLungeForward_0  ;A78AF4;
     dw $7FFF,ExtendedSpritemap_KraidArm_Dying_PreparingToLungeForward_1  ;A78AF8;
     dw Instruction_Common_Sleep                                          ;A78AFC;
 
@@ -916,13 +918,13 @@ InstList_KraidLint_KraidIsBig:
     dw Instruction_Common_Sleep                                          ;A78B08;
 
 InstList_KraidNail:
-    dw $0003,Spritemap_KraidNail_0                                       ;A78B0A;
+    dw $0002,Spritemap_KraidNail_0                                       ;A78B0A;
     dw $0003,Spritemap_KraidNail_1                                       ;A78B0E;
-    dw $0003,Spritemap_KraidNail_2                                       ;A78B12;
+    dw $0002,Spritemap_KraidNail_2                                       ;A78B12;
     dw $0003,Spritemap_KraidNail_3                                       ;A78B16;
-    dw $0003,Spritemap_KraidNail_4                                       ;A78B1A;
+    dw $0002,Spritemap_KraidNail_4                                       ;A78B1A;
     dw $0003,Spritemap_KraidNail_5                                       ;A78B1E;
-    dw $0003,Spritemap_KraidNail_6                                       ;A78B22;
+    dw $0002,Spritemap_KraidNail_6                                       ;A78B22;
     dw $0003,Spritemap_KraidNail_7                                       ;A78B26;
     dw Instruction_Common_GotoY                                          ;A78B2A;
     dw InstList_KraidNail                                                ;A78B2C;
@@ -2974,19 +2976,26 @@ KraidLint_InitialFunctionTimers:
 KraidForwardsSpeed:
     dw $0003                                                             ;A7A91C;
 
-if !FEATURE_KEEP_UNREFERENCED
-UNUSED_KraidConstant_A7A91E:
-    dw $0005                                                             ;A7A91E;
-endif ; !FEATURE_KEEP_UNREFERENCED
+KraidForwardsSubspeed:
+    dw $0CCC                                                             ;A7A91E;
 
 KraidBackwardsSpeed:
-    dw $0003                                                             ;A7A920;
+    dw $0005                                                             ;A7A920;
 
-if !FEATURE_KEEP_UNREFERENCED
-UNUSED_KraidBackwardsFastSpeed_A7A922:
+KraidBackwardsFastSpeed:
     dw $0004                                                             ;A7A922;
 
-UNUSED_KraidConstant_A7A924:
+KraidBackwardsFastSubspeed:
+    dw $0CCC
+
+if !FEATURE_KEEP_UNREFERENCED
+UNUSED_KraidConstant_A7A926:
+    dw $0004
+
+UNUSED_KraidConstant_A7A928:
+    dw $CCCC
+
+UNUSED_KraidConstant:
     dw $0110                                                             ;A7A924;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -3150,7 +3159,7 @@ InitAI_Kraid:
     STA.W $0F86                                                          ;A7AA60;
     LDA.W #Function_Kraid_RestrictSamusXPositionToFirstScreen            ;A7AA63;
     STA.W $0FA8                                                          ;A7AA66;
-    LDA.W #$012C                                                         ;A7AA69;
+    LDA.W #$00FA                                                         ;A7AA69;
     STA.W $0FB2                                                          ;A7AA6C;
     LDA.W #Function_Kraid_RaiseThruFloor_LoadTilemapTopHalf              ;A7AA6F;
     STA.L $7E7800                                                        ;A7AA72;
@@ -4537,8 +4546,11 @@ Instruction_Kraid_QueueSFX76_Lib2_Max6:
 
 Instruction_Kraid_XPositionMinus3:
     PHX                                                                  ;A7B65A;
-    LDA.W $0F7A                                                          ;A7B65B;
+    LDA.W $0F7C                                                          ;A7B65B;
     SEC                                                                  ;A7B65E;
+    SBC.W KraidForwardsSubspeed
+    STA.W $0F7C
+    LDA.W $0F7A
     SBC.W KraidForwardsSpeed                                             ;A7B65F;
     STA.W $0F7A                                                          ;A7B662;
     PLX                                                                  ;A7B665;
@@ -4547,8 +4559,11 @@ Instruction_Kraid_XPositionMinus3:
 
 Instruction_Kraid_XPositionMinus3_duplicate:
     PHX                                                                  ;A7B667;
-    LDA.W $0F7A                                                          ;A7B668;
+    LDA.W $0F7C                                                          ;A7B668;
     SEC                                                                  ;A7B66B;
+    SBC.W KraidForwardsSubspeed
+    STA.W $0F7C
+    LDA.W $0F7A
     SBC.W KraidForwardsSpeed                                             ;A7B66C;
     STA.W $0F7A                                                          ;A7B66F;
     PLX                                                                  ;A7B672;
@@ -4558,8 +4573,11 @@ Instruction_Kraid_XPositionMinus3_duplicate:
 Instruction_Kraid_XPositionPlus3:
     PHX                                                                  ;A7B674;
     PHY                                                                  ;A7B675;
-    LDA.W KraidBackwardsSpeed                                            ;A7B676;
+    LDA.W KraidBackwardsFastSubspeed                                     ;A7B676;
     CLC                                                                  ;A7B679;
+    ADC.W $0F7C
+    STA.W $0F7C
+    LDA.W KraidBackwardsFastSpeed
     ADC.W $0F7A                                                          ;A7B67A;
     STA.W $0F7A                                                          ;A7B67D;
     PLY                                                                  ;A7B680;
@@ -4581,8 +4599,9 @@ UNUSED_Instruction_Kraid_MoveRight_A7B683:
 
 .leftScreen:
     LDX.W #$0000                                                         ;A7B698;
-    STZ.B $12                                                            ;A7B69B;
-    LDA.W UNUSED_KraidBackwardsFastSpeed_A7A922                          ;A7B69D;
+    LDA.W UNUSED_KraidConstant_A7A928
+    STA.B $12                                                            ;A7B69B;
+    LDA.W UNUSED_KraidConstant_A7A926                                    ;A7B69D;
     STA.B $14                                                            ;A7B6A0;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A7B6A2;
     BCS .collision                                                       ;A7B6A6;
@@ -5323,7 +5342,7 @@ Function_KraidMainLoop_AttackingWithMouthOpen:
 
 .rockSpitXVelocities:
 ; Rock spit X velocities. Unit 1/100h px/frame
-    dw $FC00,$FC40,$FB40,$FB80,$FB40,$FC00,$FB80,$FC40                   ;A7BC65;
+    dw $FB34,$FB80,$FA4D,$FA9A,$FA4D,$FB34,$FA9A,$FB80                   ;A7BC65;
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_KraidFoot_LungeForwardIfSamusIsNotInvincible_A7BC75:
@@ -6814,7 +6833,7 @@ Function_Kraid_RaiseThruFloor_LoadTilemapBottomHalf_ShakeScn:
     JSR.W RestrictSamusXPositionToFirstScreen                            ;A7C89A;
     LDA.W #Function_Kraid_RaiseThruFloor_SpawnRNGEarthquakeProjEvery10f  ;A7C89D;
     STA.W $0FA8                                                          ;A7C8A0;
-    LDA.W #$0078                                                         ;A7C8A3;
+    LDA.W #$0064                                                         ;A7C8A3;
     STA.W $0FB2                                                          ;A7C8A6;
     LDA.W #$01F0                                                         ;A7C8A9;
     STA.W $1840                                                          ;A7C8AC;
@@ -6852,7 +6871,7 @@ Function_Kraid_RaiseThruFloor_SpawnRNGEarthquakeProjEvery10f:
     BNE .timerNotExpired                                                 ;A7C8EA;
     LDA.W #Function_Kraid_RaiseThruFloor_SpawnRNGEarthquakeProjEvery8f   ;A7C8EC;
     STA.W $0FA8                                                          ;A7C8EF;
-    LDA.W #$0060                                                         ;A7C8F2;
+    LDA.W #$0050                                                         ;A7C8F2;
     STA.W $0FB2                                                          ;A7C8F5;
     RTL                                                                  ;A7C8F8;
 
@@ -7205,35 +7224,35 @@ Phantoon_FlameRain_HidingTimers:
     dw $003C,$0078,$001E,$003C,$001E,$003C,$001E,$001E                   ;A7CD63;
 
 Phantoon_Figure8_SubAcceleration_SlowStage:
-    dw $0600                                                             ;A7CD73;
+    dw $0730                                                             ;A7CD73;
 Phantoon_Figure8_Acceleration_SlowStage:
     dw $0000                                                             ;A7CD75;
 Phantoon_Figure8_SubAcceleration_FastStages:
-    dw $1000                                                             ;A7CD77;
+    dw $1330                                                             ;A7CD77;
 Phantoon_Figure8_Acceleration_FastStages:
     dw $0000                                                             ;A7CD79;
 
 Phantoon_Figure8_SpeedCaps_Stage0Max:
     dw $0002                                                             ;A7CD7B;
 Phantoon_Figure8_SpeedCaps_Stage1Max:
-    dw $0007                                                             ;A7CD7D;
+    dw $0008                                                             ;A7CD7D;
 Phantoon_Figure8_SpeedCaps_Stage2Min:
     dw $0000                                                             ;A7CD7F;
 
 ; Clone of Phantoon_Figure8_SubAcceleration_SlowStage
 Phantoon_ReverseFigure8_SubAcceleration_SlowStage:
-    dw $0600                                                             ;A7CD81;
+    dw $0730                                                             ;A7CD81;
 Phantoon_ReverseFigure8_Acceleration_SlowStage:
     dw $0000                                                             ;A7CD83;
 Phantoon_ReverseFigure8_SubAcceleration_FastStages:
-    dw $1000                                                             ;A7CD85;
+    dw $1330                                                             ;A7CD85;
 Phantoon_ReverseFigure8_Acceleration_FastStages:
     dw $0000                                                             ;A7CD87;
 
 Phantoon_ReverseFigure8_SpeedCaps_Stage0Max:
     dw $FFFE                                                             ;A7CD89;
 Phantoon_ReverseFigure8_SpeedCaps_Stage1Max:
-    dw $FFF9                                                             ;A7CD8B;
+    dw $FFF8                                                             ;A7CD8B;
 Phantoon_ReverseFigure8_SpeedCaps_Stage2Min:
     dw $0000                                                             ;A7CD8D;
 
@@ -7315,7 +7334,7 @@ InitAI_PhantoonBody:
     STA.L $00179A                                                        ;A7CE20;
     JSL.L DisableMinimap_MarkBossRoomTilesExplored                       ;A7CE24;
     LDX.W $0E54                                                          ;A7CE28;
-    LDA.W #$0078                                                         ;A7CE2B;
+    LDA.W #$0060                                                         ;A7CE2B;
     STA.W $0FB0,X                                                        ;A7CE2E;
     STZ.W $0FA8,X                                                        ;A7CE31;
     STZ.W $0FAA,X                                                        ;A7CE34;
@@ -7995,20 +8014,20 @@ MovePhantoonInSwoopingPattern:
     CMP.W $0F7A                                                          ;A7D301;
     BMI .lessThanX                                                       ;A7D304;
     LDA.W $102C                                                          ;A7D306;
-    CMP.W #$0800                                                         ;A7D309;
+    CMP.W #$0990                                                         ;A7D309;
     BPL +                                                                ;A7D30C;
     CLC                                                                  ;A7D30E;
-    ADC.W #$0020                                                         ;A7D30F;
+    ADC.W #$0026                                                         ;A7D30F;
     STA.W $102C                                                          ;A7D312;
     BRA +                                                                ;A7D315;
 
 
 .lessThanX:
     LDA.W $102C                                                          ;A7D317;
-    CMP.W #$F801                                                         ;A7D31A;
+    CMP.W #$F671                                                         ;A7D31A;
     BMI +                                                                ;A7D31D;
     SEC                                                                  ;A7D31F;
-    SBC.W #$0020                                                         ;A7D320;
+    SBC.W #$0026                                                         ;A7D320;
     STA.W $102C                                                          ;A7D323;
 
   + LDA.W $102C                                                          ;A7D326;
@@ -8058,20 +8077,20 @@ MovePhantoonInSwoopingPattern:
   + CMP.W $0F7E                                                          ;A7D37B;
     BMI .lessThanY                                                       ;A7D37E;
     LDA.W $102E                                                          ;A7D380;
-    CMP.W #$0600                                                         ;A7D383;
+    CMP.W #$0730                                                         ;A7D383;
     BPL +                                                                ;A7D386;
     CLC                                                                  ;A7D388;
-    ADC.W #$0040                                                         ;A7D389;
+    ADC.W #$004C                                                         ;A7D389;
     STA.W $102E                                                          ;A7D38C;
     BRA +                                                                ;A7D38F;
 
 
 .lessThanY:
     LDA.W $102E                                                          ;A7D391;
-    CMP.W #$FA01                                                         ;A7D394;
+    CMP.W #$F8D1                                                         ;A7D394;
     BMI +                                                                ;A7D397;
     SEC                                                                  ;A7D399;
-    SBC.W #$0040                                                         ;A7D39A;
+    SBC.W #$004C                                                         ;A7D39A;
     STA.W $102E                                                          ;A7D39D;
 
   + LDA.W $102E                                                          ;A7D3A0;
@@ -10220,19 +10239,19 @@ InstList_Etecoon_Flexing_1:
 
 EtecoonConstants_initialYVelocityOfHopsAndFailedJumps:
 ; Initial Y velocity of hops and failed jump
-    dw $FFFD,$0000                                                       ;A7E900;
+    dw $FFFC,$6700                                                       ;A7E900;
 
 EtecoonConstants_initialYVelocityOfSuccessfulJump:
 ; Initial Y velocity of successful jump
-    dw $FFFC,$0000                                                       ;A7E904;
+    dw $FFFB,$3400                                                       ;A7E904;
 
 EtecoonConstants_XVelocityRight:
 ; X velocity - right
-    dw $0002,$0000                                                       ;A7E908;
+    dw $0002,$6600                                                       ;A7E908;
 
 EtecoonConstants_XVelocityLeft:
 ; X velocity - left
-    dw $FFFE,$0000                                                       ;A7E90C;
+    dw $FFFD,$9A00                                                       ;A7E90C;
 
 EtecoonConstants_SamusXProximityThresholdAtBottomOfRoom:
 ; Samus X proximity threshold at bottom of room
@@ -10308,7 +10327,7 @@ EtecoonVerticalMovement:
     LDA.W $0FAA,X                                                        ;A7E988;
     STA.B $12                                                            ;A7E98B;
     LDA.W $0FA8,X                                                        ;A7E98D;
-    CMP.W #$0005                                                         ;A7E990;
+    CMP.W #$0006                                                         ;A7E990;
     BPL .move                                                            ;A7E993;
     LDA.W $0FAA,X                                                        ;A7E995;
     CLC                                                                  ;A7E998;
@@ -11475,11 +11494,11 @@ DachoraConstants_echoLifetime:
 
 DachoraConstants_maxXSpeed:
 ; Max X speed
-    dw $0008,$0000                                                       ;A7F4D5;
+    dw $0009,$1000                                                       ;A7F4D5;
 
 DachoraConstants_XAcceleration:
 ; X acceleration
-    dw $0000,$1000                                                       ;A7F4D9;
+    dw $0000,$1400                                                       ;A7F4D9;
 
 InitAI_Dachora:
     LDX.W $0E54                                                          ;A7F4DD;
@@ -11826,7 +11845,7 @@ AccelerateRunningDachora:
     CMP.W #$0004                                                         ;A7F763;
     BNE .checkMaxSpeed                                                   ;A7F766;
     LDA.B $12                                                            ;A7F768;
-    CMP.W #$0000                                                         ;A7F76A;
+    CMP.W #$1000                                                         ;A7F76A;
     BNE .return                                                          ;A7F76D;
 
 .maxSpeed:
@@ -11838,10 +11857,10 @@ AccelerateRunningDachora:
 
 
 .checkMaxSpeed:
-    CMP.W #$0008                                                         ;A7F77A;
+    CMP.W #$0009                                                         ;A7F77A;
     BNE .return                                                          ;A7F77D;
     LDA.B $12                                                            ;A7F77F;
-    CMP.W #$0000                                                         ;A7F781;
+    CMP.W #$1000                                                         ;A7F781;
     BEQ .maxSpeed                                                        ;A7F784;
 
 .return:
@@ -12517,5 +12536,5 @@ Spritemap_Dachora_1D:
     %spritemapEntry(1, $43F5, $00, 0, 1, 3, 1, $13C)
 
 
-Freespace_BankA7_FF82:                                                   ;A7FF82;
-; $7E bytes
+Freespace_BankA7_FFB6:                                                   ;A7FF82;
+; $4A bytes

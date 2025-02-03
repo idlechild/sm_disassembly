@@ -931,32 +931,32 @@ DemoRoomData_pointers:
 DemoRoomData_set0:
     dw RoomHeader_LandingSite                                            ;828774;
     dw Door_Parlor_1                                                     ;828776;
-    dw $0001,$0400,$0400,$0040,$0001,$04D3                               ;828778;
+    dw $0001,$0400,$0400,$0040,$0001,$0400                               ;828778;
     dw DemoRoomCode_LandingSite_BG2Tilemap                               ;828784;
 
     dw RoomHeader_ConstructionZone                                       ;828786;
     dw Door_MorphBall_1                                                  ;828788;
-    dw $0001,$0000,$0000,$006B,$FFD2,$0151                               ;82878A;
+    dw $0001,$0000,$0000,$006B,$FFD2,$0111                               ;82878A;
     dw RTS_828924                                                        ;828796;
 
     dw RoomHeader_SporeSpawnKihunters                                    ;828798;
     dw Door_BigPink_0                                                    ;82879A;
-    dw $0000,$0100,$0000,$00BB,$FFE0,$017A                               ;82879C;
+    dw $0000,$0100,$0000,$00BB,$0000,$0136                               ;82879C;
     dw RTS_828924                                                        ;8287A8;
 
     dw RoomHeader_FrogSpeedway                                           ;8287AA;
     dw Door_UpperNorfairFarming_0                                        ;8287AC;
-    dw $0000,$0700,$0000,$008B,$0048,$01A4                               ;8287AE;
+    dw $0000,$0700,$0000,$008B,$0048,$0164                               ;8287AE;
     dw RTS_828924                                                        ;8287BA;
 
     dw RoomHeader_SpikyAcidSnakesTunnel                                  ;8287BC;
     dw Door_UpperNorfairRefill_1                                         ;8287BE;
-    dw $0001,$0000,$0000,$008B,$FFC2,$01BC                               ;8287C0;
+    dw $0001,$0000,$0000,$008B,$FFC2,$01A8                               ;8287C0;
     dw RTS_828924                                                        ;8287CC;
 
     dw RoomHeader_BigPink                                                ;8287CE;
     dw Door_GreenHillZone_0                                              ;8287D0;
-    dw $0000,$0200,$0600,$0099,$0027,$0265                               ;8287D2;
+    dw $0000,$0200,$0600,$0099,$0027,$0218                               ;8287D2;
     dw DemoRoomCode_ChargeBeamRoom_Scroll21hRed                          ;8287DE;
 
     dw $FFFF                                                             ;8287E0;
@@ -969,17 +969,17 @@ DemoRoomData_set1:
 
     dw RoomHeader_GreenBrinstarFirefleas                                 ;8287F4;
     dw Door_GreenBrinstarMainShaft_3                                     ;8287F6;
-    dw $0003,$0200,$0000,$008B,$0049,$019A                               ;8287F8;
+    dw $0003,$0200,$0000,$008B,$0049,$0190                               ;8287F8;
     dw RTS_828924                                                        ;828804;
 
     dw RoomHeader_GreenHillZone                                          ;828806;
     dw Door_BigPink_3                                                    ;828808;
-    dw $0003,$0500,$0300,$00AB,$FFE2,$0117                               ;82880A;
+    dw $0003,$0500,$0300,$00AB,$FFE2,$00E7                               ;82880A;
     dw RTS_828924                                                        ;828816;
 
     dw RoomHeader_LavaDive                                               ;828818;
     dw Door_KronicBoost_2                                                ;82881A;
-    dw $0002,$0300,$0000,$008B,$004B,$03CA                               ;82881C;
+    dw $0002,$0300,$0000,$008B,$004B,$0313                               ;82881C;
     dw RTS_828924                                                        ;828828;
 
     dw RoomHeader_Flyway                                                 ;82882A;
@@ -989,7 +989,7 @@ DemoRoomData_set1:
 
     dw RoomHeader_Dachora                                                ;82883C;
     dw Door_BigPink_1                                                    ;82883E;
-    dw $0001,$0400,$0200,$0080,$0005,$0317                               ;828840;
+    dw $0001,$0400,$0200,$0080,$0005,$0278                               ;828840;
     dw RTS_828924                                                        ;82884C;
 
     dw $FFFF                                                             ;82884E;
@@ -1007,7 +1007,7 @@ DemoRoomData_set2:
 
     dw RoomHeader_KraidEyeDoor                                           ;828874;
     dw Door_MiniKraid_1                                                  ;828876;
-    dw $0001,$0000,$0100,$008B,$FFD2,$02D3                               ;828878;
+    dw $0001,$0000,$0100,$008B,$FFD2,$0279                               ;828878;
     dw RTS_828924                                                        ;828884;
 
     dw RoomHeader_Caterpillar                                            ;828886;
@@ -1035,7 +1035,7 @@ DemoRoomData_set3:
 
     dw RoomHeader_MtEverest                                              ;8288D0;
     dw Door_RedFish_0                                                    ;8288D2;
-    dw $0000,$0200,$0000,$00AB,$0000,$0332                               ;8288D4;
+    dw $0000,$0200,$0000,$00AB,$0000,$01EB                               ;8288D4;
     dw RTS_828924                                                        ;8288E0;
 
     dw RoomHeader_LandingSite                                            ;8288E2;
@@ -1050,7 +1050,7 @@ DemoRoomData_set3:
 
     dw RoomHeader_LandingSite                                            ;828906;
     dw Door_DemoSet3_0_2_4                                               ;828908;
-    dw $0000,$0600,$0200,$008B,$0004,$0200                               ;82890A;
+    dw $0000,$0600,$0200,$008B,$0004,$01CD                               ;82890A;
     dw DemoRoomCode_LandingSite_BG2Tilemap                               ;828916;
 
     dw $FFFF                                                             ;828918;
@@ -9918,7 +9918,7 @@ HandleSamusRunningOutOfEnergy_and_IncrementGameTime:
     CLC                                                                  ;82DBB5;
     ADC.W #$0001                                                         ;82DBB6;
     STA.W $09DA                                                          ;82DBB9;
-    CMP.W #$003C                                                         ;82DBBC;
+    CMP.W #$0032                                                         ;82DBBC;
     BMI .checkGameTime                                                   ;82DBBF;
     STZ.W $09DA                                                          ;82DBC1;
     LDA.W $09DC                                                          ;82DBC4;
@@ -10714,7 +10714,7 @@ DoorTransitionFunction_HandleElevator:
     JSL.L Run_Samus_Command                                              ;82E185;
     LDA.W $0799                                                          ;82E189;
     BMI .return                                                          ;82E18C;
-    LDA.W #$0030                                                         ;82E18E;
+    LDA.W #$0028                                                         ;82E18E;
     STA.W $092F                                                          ;82E191;
     LDA.W #DoorTransitionFunction_Wait48FramesForDownElevator            ;82E194;
     STA.W $099C                                                          ;82E197;
@@ -12215,27 +12215,27 @@ GameOptionsMenu_1_LoadingOptionsMenu:
     STA.B $47                                                            ;82EC6E;
     JSL.L Decompression_HardcodedDestination                             ;82EC70;
     dl $7FC000                                                           ;82EC74;
-    LDA.W #GameOptionsMenu_ControllerSettings_English_Tilemap>>8&$FF00   ;82EC77;
+    LDA.W #GameOptionsMenu_ControllerSettings_German_Tilemap>>8&$FF00    ;82EC77;
     STA.B $48                                                            ;82EC7A;
-    LDA.W #GameOptionsMenu_ControllerSettings_English_Tilemap            ;82EC7C;
+    LDA.W #GameOptionsMenu_ControllerSettings_German_Tilemap             ;82EC7C;
     STA.B $47                                                            ;82EC7F;
     JSL.L Decompression_HardcodedDestination                             ;82EC81;
     dl $7FC800                                                           ;82EC85;
-    LDA.W #GameOptionsMenu_ControllerSettings_Japanese_Tilemap>>8&$FF00  ;82EC88;
+    LDA.W #GameOptionsMenu_ControllerSettings_French_Tilemap>>8&$FF00    ;82EC88;
     STA.B $48                                                            ;82EC8B;
-    LDA.W #GameOptionsMenu_ControllerSettings_Japanese_Tilemap           ;82EC8D;
+    LDA.W #GameOptionsMenu_ControllerSettings_French_Tilemap             ;82EC8D;
     STA.B $47                                                            ;82EC90;
     JSL.L Decompression_HardcodedDestination                             ;82EC92;
     dl $7FD000                                                           ;82EC96;
-    LDA.W #GameOptionsMenu_SpecialSettings_English_Tilemap>>8&$FF00      ;82EC99;
+    LDA.W #GameOptionsMenu_SpecialSettings_German_Tilemap>>8&$FF00       ;82EC99;
     STA.B $48                                                            ;82EC9C;
-    LDA.W #GameOptionsMenu_SpecialSettings_English_Tilemap               ;82EC9E;
+    LDA.W #GameOptionsMenu_SpecialSettings_German_Tilemap                ;82EC9E;
     STA.B $47                                                            ;82ECA1;
     JSL.L Decompression_HardcodedDestination                             ;82ECA3;
     dl $7FD800                                                           ;82ECA7;
-    LDA.W #GameOptionsMenu_SpecialSettings_Japanese_Tilemap>>8&$FF00     ;82ECAA;
+    LDA.W #GameOptionsMenu_SpecialSettings_French_Tilemap>>8&$FF00       ;82ECAA;
     STA.B $48                                                            ;82ECAD;
-    LDA.W #GameOptionsMenu_SpecialSettings_Japanese_Tilemap              ;82ECAF;
+    LDA.W #GameOptionsMenu_SpecialSettings_French_Tilemap                ;82ECAF;
     STA.B $47                                                            ;82ECB2;
     JSL.L Decompression_HardcodedDestination                             ;82ECB4;
     dl $7FE000                                                           ;82ECB8;
@@ -12380,8 +12380,8 @@ GameOptionsMenu_3_OptionsMenu:
 
 .pointers:
     dw GameOptionsMenu_StartGame                                         ;82EDA7; Start game
-    dw GameOptionsMenu_OptionsMenu_ToggleLanguageText                    ;82EDA9; English text
-    dw GameOptionsMenu_OptionsMenu_ToggleLanguageText                    ;82EDAB; Japanese Text
+    dw GameOptionsMenu_OptionsMenu_ToggleLanguageText                    ;82EDA9; German text
+    dw GameOptionsMenu_OptionsMenu_ToggleLanguageText                    ;82EDAB; French Text
     dw Start_GameOptionsMenu_DissolveTransition                          ;82EDAD; Controller setting mode
     dw Start_GameOptionsMenu_DissolveTransition                          ;82EDAF; Special setting mode
 
@@ -12414,24 +12414,24 @@ GameOptionsMenu_StartGame:
 GameOptionsMenu_OptionsMenu_ToggleLanguageText:
     STZ.W $099E                                                          ;82EDDA;
     LDA.W $09E2                                                          ;82EDDD;
-    BEQ .japaneseText                                                    ;82EDE0;
+    BEQ .frenchText                                                      ;82EDE0;
     STZ.W $09E2                                                          ;82EDE2;
     BRA Set_Language_Text_Option_Highlight                               ;82EDE5;
 
 
-.japaneseText:
+.frenchText:
     LDA.W #$0001                                                         ;82EDE7;
     STA.W $09E2                                                          ;82EDEA;
 
 Set_Language_Text_Option_Highlight:
     LDA.W $09E2                                                          ;82EDED;
-    BNE .japaneseText                                                    ;82EDF0;
+    BNE .frenchText                                                      ;82EDF0;
     LDX.W #$0288                                                         ;82EDF2;
-    LDY.W #$0018                                                         ;82EDF5;
+    LDY.W #$0028                                                         ;82EDF5;
     LDA.W #$0000                                                         ;82EDF8;
     JSR.W Set_GameOptionsMenu_TilePalettes                               ;82EDFB;
     LDX.W #$02C8                                                         ;82EDFE;
-    LDY.W #$0018                                                         ;82EE01;
+    LDY.W #$0028                                                         ;82EE01;
     LDA.W #$0000                                                         ;82EE04;
     JSR.W Set_GameOptionsMenu_TilePalettes                               ;82EE07;
     LDX.W #$0348                                                         ;82EE0A;
@@ -12445,13 +12445,13 @@ Set_Language_Text_Option_Highlight:
     BRA .return                                                          ;82EE22;
 
 
-.japaneseText:
+.frenchText:
     LDX.W #$0288                                                         ;82EE24;
-    LDY.W #$0018                                                         ;82EE27;
+    LDY.W #$0028                                                         ;82EE27;
     LDA.W #$0400                                                         ;82EE2A;
     JSR.W Set_GameOptionsMenu_TilePalettes                               ;82EE2D;
     LDX.W #$02C8                                                         ;82EE30;
-    LDY.W #$0018                                                         ;82EE33;
+    LDY.W #$0028                                                         ;82EE33;
     LDA.W #$0400                                                         ;82EE36;
     JSR.W Set_GameOptionsMenu_TilePalettes                               ;82EE39;
     LDX.W #$0348                                                         ;82EE3C;
@@ -12604,28 +12604,26 @@ GameOptionsMenu_5_DissolveOutScreen:
     BEQ .gotoOptionsMenu                                                 ;82EF46;
     BIT.W #$0004                                                         ;82EF48;
     BNE .specialSubmenu                                                  ;82EF4B;
-    LDA.W $09E2                                                          ;82EF4D;
-    BNE .japaneseControllerSettings                                      ;82EF50;
     LDX.W #$07FE                                                         ;82EF52;
 
-.englishCtrlLoop:
+.germanCtrlLoop:
     LDA.L $7FC800,X                                                      ;82EF55;
     STA.L $7E3000,X                                                      ;82EF59;
     DEX                                                                  ;82EF5D;
     DEX                                                                  ;82EF5E;
-    BPL .englishCtrlLoop                                                 ;82EF5F;
+    BPL .germanCtrlLoop                                                  ;82EF5F;
     BRA .continueControllerSettingsSettings                              ;82EF61;
 
 
-.japaneseControllerSettings:
+.frenchControllerSettings:
     LDX.W #$07FE                                                         ;82EF63;
 
-.japaneseCtrlLoop:
+.frenchCtrlLoop:
     LDA.L $7FD000,X                                                      ;82EF66;
     STA.L $7E3000,X                                                      ;82EF6A;
     DEX                                                                  ;82EF6E;
     DEX                                                                  ;82EF6F;
-    BPL .japaneseCtrlLoop                                                ;82EF70;
+    BPL .frenchCtrlLoop                                                  ;82EF70;
 
 .continueControllerSettingsSettings:
     LDY.W #GameOptionsMenu_Objects_CONTROLLER_SETTING_MODE_Border        ;82EF72;
@@ -12640,28 +12638,26 @@ GameOptionsMenu_5_DissolveOutScreen:
 
 
 .specialSubmenu:
-    LDA.W $09E2                                                          ;82EF81;
-    BNE .japaneseSettings                                                ;82EF84;
     LDX.W #$07FE                                                         ;82EF86;
 
-.englishSettingsLoop:
+.germanSettingsLoop:
     LDA.L $7FD800,X                                                      ;82EF89;
     STA.L $7E3000,X                                                      ;82EF8D;
     DEX                                                                  ;82EF91;
     DEX                                                                  ;82EF92;
-    BPL .englishSettingsLoop                                             ;82EF93;
+    BPL .germanSettingsLoop                                              ;82EF93;
     BRA .continueSpecial                                                 ;82EF95;
 
 
-.japaneseSettings:
+.frenchSettings:
     LDX.W #$07FE                                                         ;82EF97;
 
-.japaneseSettingsLoop:
+.frenchSettingsLoop:
     LDA.L $7FE000,X                                                      ;82EF9A;
     STA.L $7E3000,X                                                      ;82EF9E;
     DEX                                                                  ;82EFA2;
     DEX                                                                  ;82EFA3;
-    BPL .japaneseSettingsLoop                                            ;82EFA4;
+    BPL .frenchSettingsLoop                                              ;82EFA4;
 
 .continueSpecial:
     STZ.W $099E                                                          ;82EFA6;
@@ -13743,5 +13739,5 @@ RTL_82F70E:
     RTL                                                                  ;82F70E;
 
 
-Freespace_Bank82_F70F:                                                   ;82F70F;
-; $8F1 bytes
+Freespace_Bank82_F705:                                                   ;82F70F;
+; $8FB bytes

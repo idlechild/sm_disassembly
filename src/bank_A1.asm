@@ -1117,7 +1117,7 @@ EnemyPopulations_EarlySupers:
     dw EnemyHeaders_Sidehopper                                           ;A19A50;
     dw $0200,$01A8,$0000,$2000,$0000,$0000,$0000                         ;A19A52;
     dw EnemyHeaders_ShutterGrowing                                       ;A19A60;
-    dw $0198,$0128,$0001,$A800,$0000,$0090,$0010                         ;A19A62;
+    dw $0198,$0128,$0001,$A800,$0000,$00A4,$0010                         ;A19A62;
     dw EnemyHeaders_ShutterGrowing                                       ;A19A70;
     dw $0228,$0128,$0001,$A800,$0000,$0090,$0010                         ;A19A72;
     dw EnemyHeaders_ShutterGrowing                                       ;A19A80;
@@ -1457,9 +1457,9 @@ EnemyPopulations_PurpleFarming:
 
 EnemyPopulations_IceBeamGate:
     dw EnemyHeaders_ShutterGrowing                                       ;A1A332;
-    dw $0408,$0258,$0001,$A800,$0000,$00F0,$000D                         ;A1A334;
+    dw $0408,$0258,$0001,$A800,$0000,$00F0,$0010                         ;A1A334;
     dw EnemyHeaders_ShutterGrowing                                       ;A1A342;
-    dw $0608,$0258,$0001,$A800,$0000,$0068,$0010                         ;A1A344;
+    dw $0608,$0258,$0001,$A800,$0000,$0070,$0010                         ;A1A344;
     dw EnemyHeaders_Dessgeega                                            ;A1A352;
     dw $0104,$03AF,$0000,$2000,$0000,$0000,$0000                         ;A1A354;
     dw EnemyHeaders_Dessgeega                                            ;A1A362;
@@ -2118,7 +2118,7 @@ EnemyPopulations_BubbleMountainSave:
 
 EnemyPopulations_HiJumpETank:
     dw EnemyHeaders_Sova                                                 ;A1B3C5;
-    dw $0177,$00B5,$0002,$2801,$0000,$0004,$0004                         ;A1B3C7;
+    dw $0177,$00B5,$0002,$2801,$0000,$0005,$0004                         ;A1B3C7;
     dw #$FFFF : db $01                                                   ;A1B3D5;
 
 EnemyPopulations_BubbleMountain:
@@ -2151,11 +2151,11 @@ EnemyPopulations_IceBeamAcid:
 
 EnemyPopulations_IceBeamTutorial:
     dw EnemyHeaders_Boyon                                                ;A1B48E;
-    dw $0078,$00D9,$0000,$2000,$0000,$0103,$0040                         ;A1B490;
+    dw $0078,$00D5,$0000,$2000,$0000,$0103,$0040                         ;A1B490;
     dw EnemyHeaders_Boyon                                                ;A1B49E;
-    dw $00A8,$00D9,$0000,$2000,$0000,$0103,$0040                         ;A1B4A0;
+    dw $00A8,$00D5,$0000,$2000,$0000,$0103,$0040                         ;A1B4A0;
     dw EnemyHeaders_Boyon                                                ;A1B4AE;
-    dw $00D8,$00D9,$0000,$2000,$0000,$0203,$0040                         ;A1B4B0;
+    dw $00D8,$00D5,$0000,$2000,$0000,$0203,$0040                         ;A1B4B0;
     dw EnemyHeaders_Ripper2                                              ;A1B4BE;
     dw $0158,$00A8,$0000,$2800,$0000,$0018,$0000                         ;A1B4C0;
     dw #$FFFF : db $01                                                   ;A1B4CE;
@@ -2232,11 +2232,11 @@ EnemyPopulations_GrappleTutorial2:
 
 EnemyPopulations_IceBeamSnake:
     dw EnemyHeaders_Sova                                                 ;A1B6AD;
-    dw $0158,$01B8,$0003,$2800,$0000,$0001,$0004                         ;A1B6AF;
+    dw $0158,$01B8,$0003,$2800,$0000,$0002,$0004                         ;A1B6AF;
     dw EnemyHeaders_Sova                                                 ;A1B6BD;
-    dw $0198,$01B8,$0003,$2800,$0000,$0001,$0004                         ;A1B6BF;
+    dw $0198,$01B8,$0003,$2800,$0000,$0002,$0004                         ;A1B6BF;
     dw EnemyHeaders_Sova                                                 ;A1B6CD;
-    dw $0178,$01B8,$0003,$2800,$0000,$0001,$0004                         ;A1B6CF;
+    dw $0178,$01B8,$0003,$2800,$0000,$0002,$0004                         ;A1B6CF;
     dw EnemyHeaders_Fune                                                 ;A1B6DD;
     dw $00B0,$01C4,$0000,$A000,$0000,$5000,$5007                         ;A1B6DF;
     dw EnemyHeaders_Fune                                                 ;A1B6ED;
@@ -2291,11 +2291,11 @@ EnemyPopulations_LNFarming:
 
 EnemyPopulations_SingleChamber:
     dw EnemyHeaders_Multiviola                                           ;A1B81C;
-    dw $003C,$0356,$0000,$2800,$0000,$00D0,$0002                         ;A1B81E;
+    dw $003C,$0356,$0000,$2800,$0000,$00D8,$0002                         ;A1B81E;
     dw EnemyHeaders_Multiviola                                           ;A1B82C;
     dw $0099,$01E3,$0000,$2000,$0000,$0058,$0002                         ;A1B82E;
     dw EnemyHeaders_Multiviola                                           ;A1B83C;
-    dw $00CF,$00D2,$0000,$2800,$0000,$0088,$0002                         ;A1B83E;
+    dw $00CF,$00D2,$0000,$2800,$0000,$0098,$0002                         ;A1B83E;
     dw EnemyHeaders_Alcoon                                               ;A1B84C;
     dw $0080,$0338,$0000,$2800,$0000,$0000,$0000                         ;A1B84E;
     dw EnemyHeaders_Alcoon                                               ;A1B85C;
@@ -3170,7 +3170,7 @@ EnemyPopulations_WateringHole:
 
 EnemyPopulations_CrabShaft:
     dw EnemyHeaders_Sciser                                               ;A1CFC3;
-    dw $0170,$0367,$0002,$2801,$0000,$0003,$0000                         ;A1CFC5;
+    dw $0170,$0367,$0002,$2801,$0000,$0002,$0000                         ;A1CFC5;
     dw EnemyHeaders_Sciser                                               ;A1CFD3;
     dw $0030,$03B8,$0003,$2000,$0000,$0001,$0000                         ;A1CFD5;
     dw EnemyHeaders_Sciser                                               ;A1CFE3;

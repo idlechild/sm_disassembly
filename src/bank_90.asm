@@ -2527,7 +2527,7 @@ Samus_Y_Movement_WithSpeedCalculations:
 
 .down:
     LDA.W $0B2E                                                          ;90910C;
-    CMP.W #$0005                                                         ;90910F;
+    CMP.W #$0006                                                         ;90910F;
     BEQ +                                                                ;909112;
     LDA.W $0B2C                                                          ;909114;
     CLC                                                                  ;909117;
@@ -4532,13 +4532,13 @@ WallJump_Check:
 
 SamusPhysicsConstants:
   .LavaSubDamagePerFrame:
-    dw $8000                                                             ;909E8B;
+    dw $9900                                                             ;909E8B;
 
   .LavaDamagePerFrame:
     dw $0000                                                             ;909E8D;
 
   .AcidSubDamagePerFrame:
-    dw $8000                                                             ;909E8F;
+    dw $CC00                                                             ;909E8F;
 
   .AcidDamagePerFrame:
     dw $0001                                                             ;909E91;
@@ -4550,10 +4550,10 @@ SamusPhysicsConstants:
     dw $0002                                                             ;909E95;
 
   .SpaceJumpMinimumYVelocityInAir:
-    dw $0280                                                             ;909E97;
+    dw $0300                                                             ;909E97;
 
   .SpaceJumpMaximumYVelocityInAir:
-    dw $0500                                                             ;909E99;
+    dw $0600                                                             ;909E99;
 
   .SpaceJumpMinimumYVelocityInWater:
     dw $0080                                                             ;909E9B;
@@ -4565,13 +4565,13 @@ SamusPhysicsConstants:
     dw $0008                                                             ;909E9F;
 
   .YSubAccelerationInAir:
-    dw $1C00                                                             ;909EA1;
+    dw $2800                                                             ;909EA1;
 
   .YSubAccelerationInWater:
-    dw $0800                                                             ;909EA3;
+    dw $0999                                                             ;909EA3;
 
   .YSubAccelerationInAcidLava:
-    dw $0900                                                             ;909EA5;
+    dw $0ACC                                                             ;909EA5;
 
   .YAccelerationInAir:
     dw $0000                                                             ;909EA7;
@@ -4598,52 +4598,52 @@ SamusPhysicsConstants:
     dw $0001                                                             ;909EB5;
 
   .YSubSpeedWhenBouncingInMorphBall:
-    dw $0000                                                             ;909EB7;
+    dw $3300                                                             ;909EB7;
 
   .InitialYSpeeds_Jumping:
-    dw $0004,$0001,$0002                                                 ;909EB9;
+    dw $0005,$0002,$0003                                                 ;909EB9;
 
   .InitialYSubSpeeds_Jumping:
-    dw $E000,$C000,$C000                                                 ;909EBF;
+    dw $D900,$1900,$4C00                                                 ;909EBF;
 
   .InitialYSpeeds_HiJumpJumping:
-    dw $0006,$0002,$0003                                                 ;909EC5;
+    dw $0007,$0003,$0004                                                 ;909EC5;
 
   .InitialYSubSpeeds_HiJumpJumping:
-    dw $0000,$8000,$8000                                                 ;909ECB;
+    dw $3300,$0000,$3300                                                 ;909ECB;
 
   .InitialYSpeeds_WallJumping:
-    dw $0004,$0000,$0002                                                 ;909ED1;
+    dw $0005,$0000,$0003                                                 ;909ED1;
 
   .InitialYSubSpeeds_WallJumping:
-    dw $A000,$4000,$A000                                                 ;909ED7;
+    dw $8C00,$4C00,$2600                                                 ;909ED7;
 
   .InitialYSpeeds_HiJumpWallJumping:
-    dw $0005,$0000,$0003                                                 ;909EDD;
+    dw $0006,$0000,$0004                                                 ;909EDD;
 
   .InitialYSubSpeeds_HiJumpWallJumping:
-    dw $8000,$8000,$8000                                                 ;909EE3;
+    dw $9900,$9900,$3300                                                 ;909EE3;
 
   .InitialYSpeeds_Knockback:
-    dw $0005,$0002,$0002                                                 ;909EE9;
+    dw $0006,$0002,$0002                                                 ;909EE9;
 
   .InitialYSubSpeeds_Knockback:
-    dw $0000,$0000,$0000                                                 ;909EEF;
+    dw $0000,$6600,$6600                                                 ;909EEF;
 
   .InitialYSpeeds_BombJump:
-    dw $0002,$0000,$0000                                                 ;909EF5;
+    dw $0003,$0000,$0000                                                 ;909EF5;
 
   .InitialYSubSpeeds_BombJump:
-    dw $C000,$1000,$1000                                                 ;909EFB;
+    dw $4C00,$1300,$1300                                                 ;909EFB;
 
   .XAccelerations_DashHeld:
     dw $0000,$0000,$0000                                                 ;909F01;
 
   .XSubAccelerations_DashHeld:
-    dw $1000,$0400,$0400                                                 ;909F07;
+    dw $1400,$04CC,$04CC                                                 ;909F07;
 
   .MaxXExtraRunSpeeds_SpeedBooster:
-    dw $0007,$0004,$0004                                                 ;909F0D;
+    dw $0008,$0004,$0004                                                 ;909F0D;
 
   .MaxXExtraRunSubSpeeds_SpeedBooster:
     dw $0000,$0000,$0000                                                 ;909F13;
@@ -4652,19 +4652,19 @@ SamusPhysicsConstants:
     dw $0002,$0001,$0000                                                 ;909F19;
 
   .MaxXExtraRunSpeeds_NoSpeedBooster_1:
-    dw $0000,$0000,$0000                                                 ;909F1F;
+    dw $6600,$3300,$0000                                                 ;909F1F;
 
   .XAccelSpeeds_DiagonalBombJump:
-    dw $0000,$3000,$0003,$0000,$0000,$0800                               ;909F25;
+    dw $0000,$3900,$0003,$9900,$0000,$0999                               ;909F25;
 
   .XAccelSpeeds_DisconnectGrappleInAir:
-    dw $0000,$3000,$000F,$0000,$0000,$1000                               ;909F31;
+    dw $0000,$3900,$0012,$0000,$0000,$1300                               ;909F31;
 
   .XAccelSpeeds_DisconnectGrappleInWater:
-    dw $0000,$3000,$000F,$0000,$0000,$1000                               ;909F3D;
+    dw $0000,$3900,$0012,$0000,$0000,$1300                               ;909F3D;
 
   .XAccelSpeeds_DisconnectGrappleInLavaAcid:
-    dw $0000,$3000,$000F,$0000,$0000,$1000                               ;909F49;
+    dw $0000,$3900,$0012,$0000,$0000,$1300                               ;909F49;
 
 SamusXSpeedTable_Normal:                                                 ;909F55;
 ; Used for Samus X base speed (due to general movement)
@@ -4676,32 +4676,32 @@ SamusXSpeedTable_Normal:                                                 ;909F55
 ;       |     |     |     |      _________ X deceleration
 ;       |     |     |     |     |      ___ X subdeceleration
 ;       |     |     |     |     |     |
-    dw $0000,$C000,$0000,$0000,$0000,$8000 ; 0: Standing
-    dw $0000,$3000,$0002,$C000,$0000,$8000 ; 1: Running
-    dw $0000,$C000,$0001,$4000,$0000,$8000 ; 2: Normal jumping
-    dw $0000,$C000,$0001,$6000,$0000,$8000 ; 3: Spin jumping
-    dw $0000,$C000,$0003,$4000,$0000,$8000 ; 4: Morph ball - on ground
-    dw $0000,$C000,$0000,$0000,$0000,$8000 ; 5: Crouching
-    dw $0000,$C000,$0001,$0000,$0000,$8000 ; 6: Falling
-    dw $0002,$0000,$0001,$0000,$0000,$8000 ; 7: Unused
-    dw $0000,$C000,$0001,$0000,$0000,$8000 ; 8: Morph ball - falling
-    dw $0002,$0000,$0002,$0000,$0000,$8000 ; 9: Unused
-    dw $0001,$8000,$0005,$0000,$0000,$8000 ; Ah: Knockback / crystal flash ending
-    dw $0000,$C000,$0000,$0000,$0000,$8000 ; Bh: Unused
-    dw $0000,$C000,$0000,$0000,$0000,$8000 ; Ch: Unused
-    dw $0000,$C000,$0002,$0000,$0000,$8000 ; Dh: Unused
-    dw $0000,$C000,$0000,$0000,$0000,$8000 ; Eh: Turning around - on ground
-    dw $0000,$C000,$0001,$4000,$0000,$8000 ; Fh: Crouching/standing/morphing/unmorphing transition
-    dw $0000,$C000,$0000,$8000,$0000,$8000 ; 10h: Moonwalking
-    dw $0000,$C000,$0003,$4000,$0000,$8000 ; 11h: Spring ball - on ground
-    dw $0000,$C000,$0001,$4000,$0000,$8000 ; 12h: Spring ball - in air
-    dw $0000,$C000,$0001,$0000,$0000,$8000 ; 13h: Spring ball - falling
-    dw $0000,$C000,$0001,$6000,$0000,$8000 ; 14h: Wall jumping
-    dw $0000,$C000,$0000,$0000,$0000,$8000 ; 15h: Ran into a wall
-    dw $0000,$C000,$0001,$4000,$0000,$8000 ; 16h: Grappling
-    dw $0000,$C000,$0000,$0000,$0000,$8000 ; 17h: Turning around - jumping
-    dw $0000,$C000,$0000,$0000,$0000,$8000 ; 18h: Turning around - falling
-    dw $0000,$C000,$0005,$0000,$0000,$8000 ; 19h: Damage boost
+    dw $0000,$E600,$0000,$0000,$0000,$9900 ; 0: Standing
+    dw $0000,$3900,$0003,$4C00,$0000,$9900 ; 1: Running
+    dw $0000,$E600,$0001,$8000,$0000,$9900 ; 2: Normal jumping
+    dw $0000,$E600,$0001,$A600,$0000,$9900 ; 3: Spin jumping
+    dw $0000,$E600,$0003,$E600,$0000,$9900 ; 4: Morph ball - on ground
+    dw $0000,$E600,$0000,$0000,$0000,$9900 ; 5: Crouching
+    dw $0000,$E600,$0001,$8000,$0000,$9900 ; 6: Falling
+    dw $0002,$0000,$0001,$0000,$0000,$9900 ; 7: Unused
+    dw $0000,$E600,$0001,$3300,$0000,$9900 ; 8: Morph ball - falling
+    dw $0002,$0000,$0002,$0000,$0000,$9900 ; 9: Unused
+    dw $0001,$CC00,$0006,$0000,$0000,$9900 ; Ah: Knockback / crystal flash ending
+    dw $0000,$E600,$0000,$0000,$0000,$9900 ; Bh: Unused
+    dw $0000,$E600,$0000,$0000,$0000,$9900 ; Ch: Unused
+    dw $0000,$E600,$0002,$6600,$0000,$9900 ; Dh: Unused
+    dw $0000,$E600,$0000,$0000,$0000,$9900 ; Eh: Turning around - on ground
+    dw $0000,$E600,$0001,$8000,$0000,$9900 ; Fh: Crouching/standing/morphing/unmorphing transition
+    dw $0000,$E600,$0000,$9900,$0000,$9900 ; 10h: Moonwalking
+    dw $0000,$E600,$0003,$E600,$0000,$9900 ; 11h: Spring ball - on ground
+    dw $0000,$E600,$0001,$8000,$0000,$9900 ; 12h: Spring ball - in air
+    dw $0000,$E600,$0001,$3300,$0000,$9900 ; 13h: Spring ball - falling
+    dw $0000,$E600,$0001,$A600,$0000,$9900 ; 14h: Wall jumping
+    dw $0000,$E600,$0000,$0000,$0000,$9900 ; 15h: Ran into a wall
+    dw $0000,$E600,$0001,$8000,$0000,$9900 ; 16h: Grappling
+    dw $0000,$E600,$0000,$0000,$0000,$9900 ; 17h: Turning around - jumping
+    dw $0000,$E600,$0000,$0000,$0000,$9900 ; 18h: Turning around - falling
+    dw $0000,$E600,$0006,$0000,$0000,$9900 ; 19h: Damage boost
 
 SamusXSpeedTable_InWater:                                                ;90A08D;
 ; Used for Samus X base speed (due to general movement)
@@ -4713,34 +4713,34 @@ SamusXSpeedTable_InWater:                                                ;90A08D
 ;       |     |     |     |      _________ X deceleration
 ;       |     |     |     |     |      ___ X subdeceleration
 ;       |     |     |     |     |     |
-    dw $0000,$C000,$0000,$0000,$0000,$0800 ; 0: Standing
-    dw $0000,$0400,$0002,$C000,$0000,$0800 ; 1: Running
-    dw $0000,$C000,$0001,$4000,$0000,$0800 ; 2: Normal jumping
-    dw $0000,$C000,$0001,$6000,$0000,$0800 ; 3: Spin jumping
-    dw $0000,$0400,$0002,$C000,$0000,$0800 ; 4: Morph ball - on ground
-    dw $0000,$C000,$0000,$0000,$0000,$0800 ; 5: Crouching
-    dw $0000,$C000,$0001,$0000,$0000,$0800 ; 6: Falling
-    dw $0002,$0000,$0001,$0000,$0000,$0800 ; 7: Unused
-    dw $0000,$0400,$0001,$8000,$0000,$0800 ; 8: Morph ball - falling
-    dw $0002,$0000,$0002,$0000,$0000,$0800 ; 9: Unused
-    dw $0001,$8000,$0005,$0000,$0000,$0800 ; Ah: Knockback / crystal flash ending
-    dw $0000,$C000,$0000,$0000,$0000,$0800 ; Bh: Unused
-    dw $0000,$C000,$0000,$0000,$0000,$0800 ; Ch: Unused
-    dw $0000,$C000,$0002,$0000,$0000,$0800 ; Dh: Unused
-    dw $0000,$C000,$0000,$0000,$0000,$0800 ; Eh: Turning around - on ground
-    dw $0000,$C000,$0001,$4000,$0000,$0800 ; Fh: Crouching/standing/morphing/unmorphing transition
-    dw $0000,$C000,$0000,$8000,$0000,$0800 ; 10h: Moonwalking
-    dw $0000,$0400,$0002,$C000,$0000,$0800 ; 11h: Spring ball - on ground
-    dw $0000,$0400,$0001,$4000,$0000,$0800 ; 12h: Spring ball - in air
-    dw $0000,$0400,$0001,$8000,$0000,$0800 ; 13h: Spring ball - falling
-    dw $0000,$C000,$0001,$6000,$0000,$0800 ; 14h: Wall jumping
-    dw $0000,$C000,$0000,$0000,$0000,$0800 ; 15h: Ran into a wall
-    dw $0000,$C000,$0001,$4000,$0000,$0800 ; 16h: Grappling
-    dw $0000,$C000,$0000,$0000,$0000,$0800 ; 17h: Turning around - jumping
-    dw $0000,$C000,$0000,$0000,$0000,$0800 ; 18h: Turning around - falling
-    dw $0000,$C000,$0000,$8000,$0000,$0800 ; 19h: Damage boost
-    dw $0000,$C000,$0005,$0000,$0000,$0800 ; 1Ah: Grabbed by Draygon
-    dw $0000,$C000,$0005,$0000,$0000,$0800 ; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
+    dw $0000,$E600,$0000,$0000,$0000,$0999 ; 0: Standing
+    dw $0000,$04CC,$0003,$4C00,$0000,$0999 ; 1: Running
+    dw $0000,$E600,$0001,$8000,$0000,$0999 ; 2: Normal jumping
+    dw $0000,$E600,$0001,$A600,$0000,$0999 ; 3: Spin jumping
+    dw $0000,$04CC,$0003,$4C00,$0000,$0999 ; 4: Morph ball - on ground
+    dw $0000,$E600,$0000,$0000,$0000,$0999 ; 5: Crouching
+    dw $0000,$E600,$0001,$8000,$0000,$0999 ; 6: Falling
+    dw $0002,$0000,$0001,$0000,$0000,$0999 ; 7: Unused
+    dw $0000,$04CC,$0001,$CC00,$0000,$0999 ; 8: Morph ball - falling
+    dw $0002,$0000,$0002,$0000,$0000,$0999 ; 9: Unused
+    dw $0001,$CC00,$0006,$0000,$0000,$0999 ; Ah: Knockback / crystal flash ending
+    dw $0000,$E600,$0000,$0000,$0000,$0999 ; Bh: Unused
+    dw $0000,$E600,$0000,$0000,$0000,$0999 ; Ch: Unused
+    dw $0000,$E600,$0002,$6600,$0000,$0999 ; Dh: Unused
+    dw $0000,$E600,$0000,$0000,$0000,$0999 ; Eh: Turning around - on ground
+    dw $0000,$E600,$0001,$8000,$0000,$0999 ; Fh: Crouching/standing/morphing/unmorphing transition
+    dw $0000,$E600,$0000,$9900,$0000,$0999 ; 10h: Moonwalking
+    dw $0000,$04CC,$0003,$4C00,$0000,$0999 ; 11h: Spring ball - on ground
+    dw $0000,$04CC,$0001,$8000,$0000,$0999 ; 12h: Spring ball - in air
+    dw $0000,$04CC,$0001,$CC00,$0000,$0999 ; 13h: Spring ball - falling
+    dw $0000,$E600,$0001,$A600,$0000,$0999 ; 14h: Wall jumping
+    dw $0000,$E600,$0000,$0000,$0000,$0999 ; 15h: Ran into a wall
+    dw $0000,$E600,$0001,$8000,$0000,$0999 ; 16h: Grappling
+    dw $0000,$E600,$0000,$0000,$0000,$0999 ; 17h: Turning around - jumping
+    dw $0000,$E600,$0000,$0000,$0000,$0999 ; 18h: Turning around - falling
+    dw $0000,$E600,$0000,$9900,$0000,$0999 ; 19h: Damage boost
+    dw $0000,$E600,$0006,$0000,$0000,$0999 ; 1Ah: Grabbed by Draygon
+    dw $0000,$E600,$0006,$0000,$0000,$0999 ; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 SamusXSpeedTable_InLavaAcid:                                             ;90A1DD;
 ; Used for Samus X base speed (due to general movement)
@@ -4752,34 +4752,34 @@ SamusXSpeedTable_InLavaAcid:                                             ;90A1DD
 ;       |     |     |     |      _________ X deceleration
 ;       |     |     |     |     |      ___ X subdeceleration
 ;       |     |     |     |     |     |
-    dw $0000,$C000,$0000,$0000,$0000,$4000 ; 0: Standing
-    dw $0000,$0400,$0001,$C000,$0000,$4000 ; 1: Running
-    dw $0000,$C000,$0001,$4000,$0000,$4000 ; 2: Normal jumping
-    dw $0000,$C000,$0001,$6000,$0000,$4000 ; 3: Spin jumping
-    dw $0000,$0400,$0002,$C000,$0000,$4000 ; 4: Morph ball - on ground
-    dw $0000,$C000,$0000,$0000,$0000,$4000 ; 5: Crouching
-    dw $0000,$C000,$0001,$0000,$0000,$4000 ; 6: Falling
-    dw $0002,$0000,$0001,$0000,$0000,$4000 ; 7: Unused
-    dw $0000,$0400,$0001,$6000,$0000,$4000 ; 8: Morph ball - falling
-    dw $0002,$0000,$0002,$0000,$0000,$4000 ; 9: Unused
-    dw $0001,$8000,$0005,$0000,$0000,$4000 ; Ah: Knockback / crystal flash ending
-    dw $0000,$C000,$0000,$0000,$0000,$4000 ; Bh: Unused
-    dw $0000,$C000,$0000,$0000,$0000,$4000 ; Ch: Unused
-    dw $0000,$C000,$0002,$0000,$0000,$4000 ; Dh: Unused
-    dw $0000,$C000,$0000,$0000,$0000,$4000 ; Eh: Turning around - on ground
-    dw $0000,$C000,$0001,$4000,$0000,$4000 ; Fh: Crouching/standing/morphing/unmorphing transition
-    dw $0000,$C000,$0000,$8000,$0000,$4000 ; 10h: Moonwalking
-    dw $0000,$0400,$0002,$C000,$0000,$4000 ; 11h: Spring ball - on ground
-    dw $0000,$0400,$0001,$4000,$0000,$4000 ; 12h: Spring ball - in air
-    dw $0000,$0400,$0001,$6000,$0000,$4000 ; 13h: Spring ball - falling
-    dw $0000,$C000,$0001,$6000,$0000,$4000 ; 14h: Wall jumping
-    dw $0000,$C000,$0000,$0000,$0000,$4000 ; 15h: Ran into a wall
-    dw $0000,$C000,$0001,$4000,$0000,$4000 ; 16h: Grappling
-    dw $0000,$C000,$0000,$0000,$0000,$4000 ; 17h: Turning around - jumping
-    dw $0000,$C000,$0000,$0000,$0000,$4000 ; 18h: Turning around - falling
-    dw $0000,$C000,$0000,$8000,$0000,$4000 ; 19h: Damage boost
-    dw $0000,$C000,$0005,$0000,$0000,$4000 ; 1Ah: Grabbed by Draygon
-    dw $0000,$C000,$0005,$0000,$0000,$4000 ; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
+    dw $0000,$E600,$0000,$0000,$0000,$4C00 ; 0: Standing
+    dw $0000,$04CC,$0002,$1900,$0000,$4C00 ; 1: Running
+    dw $0000,$E600,$0001,$8000,$0000,$4C00 ; 2: Normal jumping
+    dw $0000,$E600,$0001,$A600,$0000,$4C00 ; 3: Spin jumping
+    dw $0000,$04CC,$0003,$4C00,$0000,$4C00 ; 4: Morph ball - on ground
+    dw $0000,$E600,$0000,$0000,$0000,$4C00 ; 5: Crouching
+    dw $0000,$E600,$0001,$8000,$0000,$4C00 ; 6: Falling
+    dw $0002,$0000,$0001,$0000,$0000,$4C00 ; 7: Unused
+    dw $0000,$04CC,$0001,$A600,$0000,$4C00 ; 8: Morph ball - falling
+    dw $0002,$0000,$0002,$0000,$0000,$4C00 ; 9: Unused
+    dw $0001,$CC00,$0006,$0000,$0000,$4C00 ; Ah: Knockback / crystal flash ending
+    dw $0000,$E600,$0000,$0000,$0000,$4C00 ; Bh: Unused
+    dw $0000,$E600,$0000,$0000,$0000,$4C00 ; Ch: Unused
+    dw $0000,$E600,$0002,$6600,$0000,$4C00 ; Dh: Unused
+    dw $0000,$E600,$0000,$0000,$0000,$4C00 ; Eh: Turning around - on ground
+    dw $0000,$E600,$0001,$8000,$0000,$4C00 ; Fh: Crouching/standing/morphing/unmorphing transition
+    dw $0000,$E600,$0000,$9900,$0000,$4C00 ; 10h: Moonwalking
+    dw $0000,$04CC,$0003,$4C00,$0000,$4C00 ; 11h: Spring ball - on ground
+    dw $0000,$04CC,$0001,$8000,$0000,$4C00 ; 12h: Spring ball - in air
+    dw $0000,$04CC,$0001,$A600,$0000,$4C00 ; 13h: Spring ball - falling
+    dw $0000,$E600,$0001,$A600,$0000,$4C00 ; 14h: Wall jumping
+    dw $0000,$E600,$0000,$0000,$0000,$4C00 ; 15h: Ran into a wall
+    dw $0000,$E600,$0001,$8000,$0000,$4C00 ; 16h: Grappling
+    dw $0000,$E600,$0000,$0000,$0000,$4C00 ; 17h: Turning around - jumping
+    dw $0000,$E600,$0000,$0000,$0000,$4C00 ; 18h: Turning around - falling
+    dw $0000,$E600,$0000,$9900,$0000,$4C00 ; 19h: Damage boost
+    dw $0000,$E600,$0006,$0000,$0000,$4C00 ; 1Ah: Grabbed by Draygon
+    dw $0000,$E600,$0006,$0000,$0000,$4C00 ; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
 UNUSED_SamusMovement_7_90A32D:
     PHP                                                                  ;90A32D;
@@ -9028,7 +9028,7 @@ Spawn_SuperMissileLink:
 
 
 BombTimerResetValue:
-    dw $003C                                                             ;90BF9B;
+    dw $0034                                                             ;90BF9B;
 
 HUDSelectionHandler_MorphBall:
     PHP                                                                  ;90BF9D;
@@ -9395,7 +9395,7 @@ ProjectileCooldowns_NonBeamProjectiles:                                  ;90C27A
     db $14 ; Super missile
     db $28 ; Power bomb
     db $00
-    db $10 ; Bomb
+    db $0C ; Bomb
     db $00
     db $00
     db $00
@@ -9441,20 +9441,20 @@ ProjectileSFX_NonBeamProjectiles:
 ;       |      ___ Speed for diagonal direction
 ;       |     |
 BeamSpeeds_Horizontal_Vertical:                                          ;90C2D1;
-    dw $0400
+    dw $04CC
 BeamSpeeds_Diagonal:                                                     ;90C2D3;
-    dw       $02AB ; 0: Power
-    dw $0400,$02AB ; 1: Wave
-    dw $0400,$02AB ; 2: Ice
-    dw $0400,$02AB ; 3: Ice + wave
-    dw $0400,$02AB ; 4: Spazer
-    dw $0400,$02AB ; 5: Spazer + wave
-    dw $0400,$02AB ; 6: Spazer + ice
-    dw $0400,$02AB ; 7: Spazer + ice + wave
-    dw $0400,$02AB ; 8: Plasma
-    dw $0400,$02AB ; 9: Plasma + wave
-    dw $0400,$02AB ; Ah: Plasma + ice
-    dw $0400,$02AB ; Bh: Plasma + ice + wave
+    dw       $0333 ; 0: Power
+    dw $04CC,$0333 ; 1: Wave
+    dw $04CC,$0333 ; 2: Ice
+    dw $04CC,$0333 ; 3: Ice + wave
+    dw $04CC,$0333 ; 4: Spazer
+    dw $04CC,$0333 ; 5: Spazer + wave
+    dw $04CC,$0333 ; 6: Spazer + ice
+    dw $04CC,$0333 ; 7: Spazer + ice + wave
+    dw $04CC,$0333 ; 8: Plasma
+    dw $04CC,$0333 ; 9: Plasma + wave
+    dw $04CC,$0333 ; Ah: Plasma + ice
+    dw $04CC,$0333 ; Bh: Plasma + ice + wave
 
 MissileInitializedBitset:
 ; This gets added to projectile $0C7C to indicate that it's been initialised
@@ -9464,16 +9464,16 @@ MissileAccelerations:                                                    ;90C303
 ;        _________ X acceleration. Unit 1/100h px/frame²
 ;       |      ___ Y acceleration. Unit 1/100h px/frame²
 ;       |     |
-    dw $0000,$FFC0 ; 0: Up, facing right
-    dw $0036,$FFCA ; 1: Up-right
-    dw $0040,$0000 ; 2: Right
-    dw $0036,$0036 ; 3: Down-right
-    dw $0000,$0040 ; 4: Down, facing right
-    dw $0000,$0040 ; 5: Down, facing left
-    dw $FFCA,$0036 ; 6: Down-left
-    dw $FFC0,$0000 ; 7: Left
-    dw $FFCA,$FFCA ; 8: Up-left
-    dw $0000,$FFC0 ; 9: Up, facing left
+    dw $0000,$FFB4 ; 0: Up, facing right
+    dw $0040,$FFC0 ; 1: Up-right
+    dw $004C,$0000 ; 2: Right
+    dw $0040,$0040 ; 3: Down-right
+    dw $0000,$004C ; 4: Down, facing right
+    dw $0000,$004C ; 5: Down, facing left
+    dw $FFC0,$0040 ; 6: Down-left
+    dw $FFB4,$0000 ; 7: Left
+    dw $FFC0,$FFC0 ; 8: Up-left
+    dw $0000,$FFB4 ; 9: Up, facing left
 
 SuperMissileAccelerations:                                               ;90C32B;
 ;        _________ X acceleration. Unit 1/100h px/frame²
@@ -9493,28 +9493,28 @@ SuperMissileAccelerations:                                               ;90C32B
 ProjectileAccelerations_X:                                               ;90C353;
 ; X acceleration. Unit 1/100h px/frame²
     dw $0000 ; 0: Up, facing right
-    dw $0010 ; 1: Up-right
-    dw $0010 ; 2: Right
-    dw $0010 ; 3: Down-right
+    dw $0013 ; 1: Up-right
+    dw $0013 ; 2: Right
+    dw $0013 ; 3: Down-right
     dw $0000 ; 4: Down, facing right
     dw $0000 ; 5: Down, facing left
-    dw $FFF0 ; 6: Down-left
-    dw $FFF0 ; 7: Left
-    dw $FFF0 ; 8: Up-left
+    dw $FFED ; 6: Down-left
+    dw $FFED ; 7: Left
+    dw $FFED ; 8: Up-left
     dw $0000 ; 9: Up, facing left
 
 ProjectileAccelerations_Y:                                               ;90C367;
 ; Y acceleration. Unit 1/100h px/frame²
-    dw $FFF0 ; 0: Up, facing right
-    dw $FFF0 ; 1: Up-right
+    dw $FFED ; 0: Up, facing right
+    dw $FFED ; 1: Up-right
     dw $0000 ; 2: Right
-    dw $0010 ; 3: Down-right
-    dw $0010 ; 4: Down, facing right
-    dw $0010 ; 5: Down, facing left
-    dw $0010 ; 6: Down-left
+    dw $0013 ; 3: Down-right
+    dw $0013 ; 4: Down, facing right
+    dw $0013 ; 5: Down, facing left
+    dw $0013 ; 6: Down-left
     dw $0000 ; 7: Left
-    dw $FFF0 ; 8: Up-left
-    dw $FFF0 ; 9: Up, facing left
+    dw $FFED ; 8: Up-left
+    dw $FFED ; 9: Up, facing left
 
 ProtoWeaponConstants_Beams:                                              ;90C37B;
 ; Used only by $94:9C73 to set $0DD2 as part of bomb explosion block collision detection
@@ -9604,14 +9604,14 @@ FlareAnimationDelays_Pointers:
     dw FlareAnimationDelays_FlareFastSparks                              ;90C485;
 
 FlareAnimationDelays_MainFlare:
-    db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03   ;90C487;
-    db $03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$03,$FE,$0E   ;90C497;
+    db $03,$02,$03,$02,$03,$02,$03,$02,$03,$02,$03,$02,$03,$02,$03,$02   ;90C487;
+    db $03,$02,$03,$02,$03,$02,$03,$02,$03,$02,$03,$02,$03,$02,$FE,$0E   ;90C497;
 
 FlareAnimationDelays_FlareSlowSparks:
-    db $05,$04,$03,$03,$03,$03,$FF                                       ;90C4A7;
+    db $04,$03,$02,$03,$02,$03,$FF                                       ;90C4A7;
 
 FlareAnimationDelays_FlareFastSparks:
-    db $04,$03,$02,$02,$02,$02,$FF                                       ;90C4AE;
+    db $03,$02,$02,$02,$02,$02,$FF                                       ;90C4AE;
 
 HandleSwitchingHUDSelection:
     PHP                                                                  ;90C4B5;
@@ -10863,7 +10863,7 @@ FireWaveSBA:
     STZ.W $0C04,X                                                        ;90CD2F;
     LDA.W #ProjectilePreInstruction_WaveSBA                              ;90CD32;
     STA.W $0C68,X                                                        ;90CD35;
-    LDA.W #$0258                                                         ;90CD38;
+    LDA.W #$01E0                                                         ;90CD38;
     STA.W $0BF0,X                                                        ;90CD3B;
     STZ.W $0BDC,X                                                        ;90CD3E;
     STZ.W $0C7C,X                                                        ;90CD41;
@@ -10932,7 +10932,7 @@ FireIceSBA:
     STA.W $0C68,X                                                        ;90CDC5;
     LDA.W IcePlasmaSBAProjectileOriginAngles,X                           ;90CDC8;
     STA.W $0C7C,X                                                        ;90CDCB;
-    LDA.W #$0258                                                         ;90CDCE;
+    LDA.W #$01E0                                                         ;90CDCE;
     STA.W $0BF0,X                                                        ;90CDD1;
     JSL.L InitializeProjectile                                           ;90CDD4;
     DEX                                                                  ;90CDD8;
@@ -14485,9 +14485,6 @@ SamusNewStateHandler_Normal:
     JSR.W HandlePeriodicDamageToSamus                                    ;90E74D;
     JSR.W PauseCheck                                                     ;90E750;
     JSR.W LowEnergyCheck                                                 ;90E753;
-    PLB                                                                  ;90E756;
-    PLP                                                                  ;90E757;
-    RTL                                                                  ;90E758;
 
     LDA.W $09E6                                                          ;90E759; Demo recorder. Remove the three instructions above and set DebugConst_DemoRecorder at $808002 to enable
     BNE +                                                                ;90E75C;
@@ -16723,5 +16720,5 @@ Handle_UnspinSFX_CancellingEchoSound_SettingTimeUpGameState:
     RTS                                                                  ;90F639;
 
 
-Freespace_Bank90_F63A:                                                   ;90F63A;
-; $9C6 bytes
+Freespace_Bank90_F637:                                                   ;90F63A;
+; $9C9 bytes

@@ -352,70 +352,72 @@ CommonB3EnemySpeeds_LinearlyIncreasing:
     dw             $0000                                                 ;B3818B;
   .negatedSubspeed:
     dw                   $0000                                           ;B3818D;
-    dw $0000,$1000,$FFFF,$F000
-    dw $0000,$2000,$FFFF,$E000
-    dw $0000,$3000,$FFFF,$D000
-    dw $0000,$4000,$FFFF,$C000
-    dw $0000,$5000,$FFFF,$B000
-    dw $0000,$6000,$FFFF,$A000
-    dw $0000,$7000,$FFFF,$9000
-    dw $0000,$8000,$FFFF,$8000
-    dw $0000,$9000,$FFFF,$7000
-    dw $0000,$A000,$FFFF,$6000
-    dw $0000,$B000,$FFFF,$5000
-    dw $0000,$C000,$FFFF,$4000
-    dw $0000,$D000,$FFFF,$3000
-    dw $0000,$E000,$FFFF,$2000
-    dw $0000,$F000,$FFFF,$1000
-    dw $0001,$0000,$FFFF,$0000
-    dw $0001,$1000,$FFFE,$F000
-    dw $0001,$2000,$FFFE,$E000
-    dw $0001,$3000,$FFFE,$D000
-    dw $0001,$4000,$FFFE,$C000
-    dw $0001,$5000,$FFFE,$B000
-    dw $0001,$6000,$FFFE,$A000
-    dw $0001,$7000,$FFFE,$9000
-    dw $0001,$8000,$FFFE,$8000
-    dw $0001,$9000,$FFFE,$7000
-    dw $0001,$A000,$FFFE,$6000
-    dw $0001,$B000,$FFFE,$5000
-    dw $0001,$C000,$FFFE,$4000
-    dw $0001,$D000,$FFFE,$3000
-    dw $0001,$E000,$FFFE,$2000
-    dw $0001,$F000,$FFFE,$1000
-    dw $0002,$0000,$FFFE,$0000
-    dw $0002,$1000,$FFFD,$F000
-    dw $0002,$2000,$FFFD,$E000
-    dw $0002,$3000,$FFFD,$D000
-    dw $0002,$4000,$FFFD,$C000
-    dw $0002,$5000,$FFFD,$B000
-    dw $0002,$6000,$FFFD,$A000
-    dw $0002,$7000,$FFFD,$9000
-    dw $0002,$8000,$FFFD,$8000
-    dw $0002,$9000,$FFFD,$7000
-    dw $0002,$A000,$FFFD,$6000
-    dw $0002,$B000,$FFFD,$5000
-    dw $0002,$C000,$FFFD,$4000
-    dw $0002,$D000,$FFFD,$3000
-    dw $0002,$E000,$FFFD,$2000
-    dw $0002,$F000,$FFFD,$1000
-    dw $0003,$0000,$FFFD,$0000
-    dw $0003,$1000,$FFFC,$F000
-    dw $0003,$2000,$FFFC,$E000
-    dw $0003,$3000,$FFFC,$D000
-    dw $0003,$4000,$FFFC,$C000
-    dw $0003,$5000,$FFFC,$B000
-    dw $0003,$6000,$FFFC,$A000
-    dw $0003,$7000,$FFFC,$9000
-    dw $0003,$8000,$FFFC,$8000
-    dw $0003,$9000,$FFFC,$7000
-    dw $0003,$A000,$FFFC,$6000
-    dw $0003,$B000,$FFFC,$5000
-    dw $0003,$C000,$FFFC,$4000
-    dw $0003,$D000,$FFFC,$3000
-    dw $0003,$E000,$FFFC,$2000
-    dw $0003,$F000,$FFFC,$1000
-    dw $0004,$0000,$FFFC,$0000
+    dw $0000,$1333,$FFFF,$ECCD
+    dw $0000,$2666,$FFFF,$D99A
+    dw $0000,$3999,$FFFF,$C667
+    dw $0000,$4CCC,$FFFF,$B334
+    dw $0000,$5FFF,$FFFF,$A001
+    dw $0000,$7332,$FFFF,$8CCE
+    dw $0000,$8665,$FFFF,$799B
+    dw $0000,$9998,$FFFF,$6668
+    dw $0000,$ACCB,$FFFF,$5335
+    dw $0000,$BFFE,$FFFF,$4002
+    dw $0000,$D331,$FFFF,$2CCF
+    dw $0000,$E664,$FFFF,$199C
+    dw $0000,$F997,$FFFF,$0669
+    dw $0001,$0CCA,$FFFE,$F336
+    dw $0001,$1FFD,$FFFE,$E003
+    dw $0001,$3330,$FFFE,$CCD0
+    dw $0001,$4663,$FFFE,$B99D
+    dw $0001,$5996,$FFFE,$A66A
+    dw $0001,$6CC9,$FFFE,$9337
+    dw $0001,$7FFC,$FFFE,$8004
+    dw $0001,$932F,$FFFE,$6CD1
+    dw $0001,$A662,$FFFE,$599E
+    dw $0001,$B995,$FFFE,$466B
+    dw $0001,$CCC8,$FFFE,$3338
+    dw $0001,$DFFB,$FFFE,$2005
+    dw $0001,$F32E,$FFFE,$0CD2
+    dw $0002,$0661,$FFFD,$F99F
+    dw $0002,$1994,$FFFD,$E66C
+    dw $0002,$2CC7,$FFFD,$D339
+    dw $0002,$3FFA,$FFFD,$C006
+    dw $0002,$532D,$FFFD,$ACD3
+    dw $0002,$6660,$FFFD,$99A0
+    dw $0002,$7993,$FFFD,$866D
+    dw $0002,$8CC6,$FFFD,$733A
+    dw $0002,$9FF9,$FFFD,$6007
+    dw $0002,$B32C,$FFFD,$4CD4
+    dw $0002,$C65F,$FFFD,$39A1
+    dw $0002,$D992,$FFFD,$266E
+    dw $0002,$ECC5,$FFFD,$133B
+    dw $0002,$FFF8,$FFFD,$0008
+    dw $0003,$132B,$FFFC,$ECD5
+    dw $0003,$265E,$FFFC,$D9A2
+    dw $0003,$3991,$FFFC,$C66F
+    dw $0003,$4CC4,$FFFC,$B33C
+    dw $0003,$5FF7,$FFFC,$A009
+    dw $0003,$732A,$FFFC,$8CD6
+    dw $0003,$865D,$FFFC,$79A3
+    dw $0003,$9990,$FFFC,$6670
+    dw $0003,$ACC3,$FFFC,$533D
+    dw $0003,$BFF6,$FFFC,$400A
+    dw $0003,$D329,$FFFC,$2CD7
+    dw $0003,$E65C,$FFFC,$19A4
+    dw $0003,$F98F,$FFFC,$0671
+    dw $0004,$0CC2,$FFFB,$F33E
+    dw $0004,$1FF5,$FFFB,$E00B
+    dw $0004,$3328,$FFFB,$CCD8
+    dw $0004,$465B,$FFFB,$B9A5
+    dw $0004,$598E,$FFFB,$A672
+    dw $0004,$6CC1,$FFFB,$933F
+    dw $0004,$7FF4,$FFFB,$800C
+    dw $0004,$9327,$FFFB,$6CD9
+    dw $0004,$A65A,$FFFB,$59A6
+    dw $0004,$B98D,$FFFB,$4673
+    dw $0004,$CCC0,$FFFB,$3340
+    dw $0004,$DFF3,$FFFB,$200D
+    dw $0004,$F326,$FFFB,$0CDA
 
 
 ;        _____________________ Subspeed
@@ -436,98 +438,98 @@ CommonB3EnemySpeeds_QuadraticallyIncreasing:
     dw                   $0000                                           ;B38395;
     dw $0109,$0000,$FEF7,$FFFF
     dw $031B,$0000,$FCE5,$FFFF
-    dw $0636,$0000,$F9CA,$FFFF
-    dw $0A5A,$0000,$F5A6,$FFFF
-    dw $0F87,$0000,$F079,$FFFF
-    dw $15BD,$0000,$EA43,$FFFF
-    dw $1CFC,$0000,$E304,$FFFF
-    dw $2544,$0000,$DABC,$FFFF
-    dw $2E95,$0000,$D16B,$FFFF
-    dw $38EF,$0000,$C711,$FFFF
-    dw $4452,$0000,$BBAE,$FFFF
-    dw $50BE,$0000,$AF42,$FFFF
-    dw $5E33,$0000,$A1CD,$FFFF
-    dw $6CB1,$0000,$934F,$FFFF
-    dw $7C38,$0000,$83C8,$FFFF
-    dw $8CC8,$0000,$7338,$FFFF
-    dw $9E61,$0000,$619F,$FFFF
-    dw $B103,$0000,$4EFD,$FFFF
-    dw $C4AE,$0000,$3B52,$FFFF
-    dw $D962,$0000,$269E,$FFFF
-    dw $EF1F,$0000,$10E1,$FFFF
-    dw $05E5,$0000,$FA1B,$FFFF
-    dw $14B4,$0001,$EB4C,$FFFE
-    dw $2D8C,$0001,$D274,$FFFE
-    dw $476D,$0001,$B893,$FFFE
-    dw $6257,$0001,$9DA9,$FFFE
-    dw $7E4A,$0001,$81B6,$FFFE
-    dw $9B46,$0001,$64BA,$FFFE
-    dw $B94B,$0001,$46B5,$FFFE
-    dw $D859,$0001,$27A7,$FFFE
-    dw $F870,$0001,$0790,$FFFE
-    dw $1090,$0002,$EF70,$FFFD
-    dw $32B9,$0002,$CD47,$FFFD
+    dw $073F,$0000,$F8C1,$FFFF
+    dw $0B63,$0000,$F49D,$FFFF
+    dw $1199,$0000,$EE67,$FFFF
+    dw $19E1,$0000,$E61F,$FFFF
+    dw $2229,$0000,$DDD7,$FFFF
+    dw $2C83,$0000,$D37D,$FFFF
+    dw $36DD,$0000,$C923,$FFFF
+    dw $4349,$0000,$BCB7,$FFFF
+    dw $51C7,$0000,$AE39,$FFFF
+    dw $6045,$0000,$9FBB,$FFFF
+    dw $70D5,$0000,$8F2B,$FFFF
+    dw $8165,$0000,$7E9B,$FFFF
+    dw $9407,$0000,$6BF9,$FFFF
+    dw $A8BB,$0000,$5745,$FFFF
+    dw $BD6F,$0000,$4291,$FFFF
+    dw $D435,$0000,$2BCB,$FFFF
+    dw $EAFB,$0000,$1505,$FFFF
+    dw $03D3,$0001,$FC2D,$FFFE
+    dw $15BD,$0001,$EA43,$FFFE
+    dw $30A7,$0001,$CF59,$FFFE
+    dw $4DA3,$0001,$B25D,$FFFE
+    dw $6A9F,$0001,$9561,$FFFE
+    dw $89AD,$0001,$7653,$FFFE
+    dw $AACD,$0001,$5533,$FFFE
+    dw $CBED,$0001,$3413,$FFFE
+    dw $EF1F,$0001,$10E1,$FFFE
+    dw $0951,$0002,$F6AF,$FFFD
+    dw $2E95,$0002,$D16B,$FFFD
     dw $55EB,$0002,$AA15,$FFFD
-    dw $7A26,$0002,$85DA,$FFFD
-    dw $9F6A,$0002,$6096,$FFFD
-    dw $C5B7,$0002,$3A49,$FFFD
-    dw $ED0D,$0002,$12F3,$FFFD
-    dw $0C6C,$0003,$F394,$FFFC
-    dw $35D4,$0003,$CA2C,$FFFC
-    dw $6045,$0003,$9FBB,$FFFC
-    dw $8BBF,$0003,$7441,$FFFC
-    dw $B842,$0003,$47BE,$FFFC
-    dw $E5CE,$0003,$1A32,$FFFC
-    dw $0B63,$0004,$F49D,$FFFB
-    dw $3B01,$0004,$C4FF,$FFFB
-    dw $6BA8,$0004,$9458,$FFFB
-    dw $9D58,$0004,$62A8,$FFFB
-    dw $D011,$0004,$2FEF,$FFFB
-    dw $03D3,$0004,$FC2D,$FFFB
-    dw $2F9E,$0005,$D062,$FFFA
-    dw $6572,$0005,$9A8E,$FFFA
-    dw $9C4F,$0005,$63B1,$FFFA
-    dw $D435,$0005,$2BCB,$FFFA
-    dw $0424,$0006,$FBDC,$FFF9
-    dw $3E1C,$0006,$C1E4,$FFF9
+    dw $7D41,$0002,$82BF,$FFFD
+    dw $A6A9,$0002,$5957,$FFFD
+    dw $D011,$0002,$2FEF,$FFFD
+    dw $FB8B,$0002,$0475,$FFFD
+    dw $2017,$0003,$DFE9,$FFFC
+    dw $4DA3,$0003,$B25D,$FFFC
+    dw $7D41,$0003,$82BF,$FFFC
+    dw $ACDF,$0003,$5321,$FFFC
+    dw $DE8F,$0003,$2171,$FFFC
+    dw $0951,$0004,$F6AF,$FFFB
+    dw $3D13,$0004,$C2ED,$FFFB
+    dw $72E7,$0004,$8D19,$FFFB
+    dw $A8BB,$0004,$5745,$FFFB
+    dw $E0A1,$0004,$1F5F,$FFFB
+    dw $1199,$0005,$EE67,$FFFA
+    dw $4B91,$0005,$B46F,$FFFA
+    dw $879B,$0005,$7865,$FFFA
+    dw $C3A5,$0005,$3C5B,$FFFA
+    dw $01C1,$0005,$FE3F,$FFFA
+    dw $38EF,$0006,$C711,$FFF9
     dw $791D,$0006,$86E3,$FFF9
-    dw $B527,$0006,$4AD9,$FFF9
-    dw $F23A,$0006,$0DC6,$FFF9
-    dw $2756,$0007,$D8AA,$FFF8
-    dw $667B,$0007,$9985,$FFF8
-    dw $A6A9,$0007,$5957,$FFF8
-    dw $E7E0,$0007,$1820,$FFF8
-    dw $2120,$0008,$DEE0,$FFF7
-    dw $6469,$0008,$9B97,$FFF7
-    dw $A8BB,$0008,$5745,$FFF7
-    dw $EE16,$0008,$11EA,$FFF7
-    dw $2B7A,$0009,$D486,$FFF6
-    dw $72E7,$0009,$8D19,$FFF6
-    dw $BB5D,$0009,$44A3,$FFF6
-    dw $04DC,$0009,$FB24,$FFF6
-    dw $4664,$000A,$B99C,$FFF5
-    dw $91F5,$000A,$6E0B,$FFF5
-    dw $DE8F,$000A,$2171,$FFF5
-    dw $2332,$000B,$DCCE,$FFF4
-    dw $71DE,$000B,$8E22,$FFF4
-    dw $C193,$000B,$3E6D,$FFF4
-    dw $0951,$000C,$F6AF,$FFF3
-    dw $5B18,$000C,$A4E8,$FFF3
-    dw $ADE8,$000C,$5218,$FFF3
-    dw $01C1,$000C,$FE3F,$FFF3
-    dw $4DA3,$000D,$B25D,$FFF2
-    dw $A38E,$000D,$5C72,$FFF2
-    dw $FA82,$000D,$057E,$FFF2
-    dw $497F,$000E,$B681,$FFF1
-    dw $A285,$000E,$5D7B,$FFF1
-    dw $FC94,$000E,$036C,$FFF1
-    dw $4EAC,$000F,$B154,$FFF0
-    dw $AACD,$000F,$5533,$FFF0
-    dw $07F7,$000F,$F809,$FFF0
-    dw $5D2A,$0010,$A2D6,$FFEF
-    dw $BC66,$0010,$439A,$FFEF
-    dw $13AB,$0011,$EC55,$FFEE
-    dw $74F9,$0011,$8B07,$FFEE
+    dw $BB5D,$0006,$44A3,$FFF9
+    dw $FD9D,$0006,$0263,$FFF9
+    dw $38EF,$0007,$C711,$FFF8
+    dw $7F53,$0007,$80AD,$FFF8
+    dw $C5B7,$0007,$3A49,$FFF8
+    dw $052D,$0008,$FAD3,$FFF7
+    dw $4DA3,$0008,$B25D,$FFF7
+    dw $982B,$0008,$67D5,$FFF7
+    dw $E4C5,$0008,$1B3B,$FFF7
+    dw $285F,$0009,$D7A1,$FFF6
+    dw $770B,$0009,$88F5,$FFF6
+    dw $C5B7,$0009,$3A49,$FFF6
+    dw $0D75,$000A,$F28B,$FFF5
+    dw $6045,$000A,$9FBB,$FFF5
+    dw $B315,$000A,$4CEB,$FFF5
+    dw $07F7,$000B,$F809,$FFF5
+    dw $53D9,$000B,$AC27,$FFF4
+    dw $AACD,$000B,$5533,$FFF4
+    dw $03D3,$000C,$FC2D,$FFF3
+    dw $53D9,$000C,$AC27,$FFF3
+    dw $AEF1,$000C,$510F,$FFF3
+    dw $0109,$000D,$FEF7,$FFF2
+    dw $5E33,$000D,$A1CD,$FFF2
+    dw $BD6F,$000D,$4291,$FFF2
+    dw $13AB,$000E,$EC55,$FFF1
+    dw $74F9,$000E,$8B07,$FFF1
+    dw $D647,$000E,$29B9,$FFF1
+    dw $30A7,$000F,$CF59,$FFF0
+    dw $9619,$000F,$69E7,$FFF0
+    dw $FB8B,$000F,$0475,$FFF0
+    dw $5A0F,$0010,$A5F1,$FFEF
+    dw $C193,$0010,$3E6D,$FFEF
+    dw $2229,$0011,$DDD7,$FFEE
+    dw $8DD1,$0011,$722F,$FFEE
+    dw $F979,$0011,$0687,$FFEE
+    dw $5E33,$0012,$A1CD,$FFED
+    dw $CBED,$0012,$3413,$FFED
+    dw $32B9,$0013,$CD47,$FFEC
+    dw $A497,$0013,$5B69,$FFEC
+    dw $0D75,$0014,$F28B,$FFEB
+    dw $8165,$0014,$7E9B,$FFEB
+    dw $F555,$0014,$0AAB,$FFEB
 
 
 UNUSED_Palette_SpinningTurtleEye_B38687:
@@ -813,7 +815,7 @@ Function_Zeb_Zebbo_WaitForSamusToGetNear:
 
 
 Function_Zeb_Zebbo_Rising:
-    LDA.W #$FFFF                                                         ;B388E3;
+    LDA.W #$D000                                                         ;B388E3;
     CLC                                                                  ;B388E6;
     ADC.W $0F80,X                                                        ;B388E7;
     STA.W $0F80,X                                                        ;B388EA;
@@ -846,7 +848,7 @@ Function_Zeb_Zebbo_Shooting:
     BPL .right                                                           ;B3891F;
     LDA.W $0F7C,X                                                        ;B38921;
     SEC                                                                  ;B38924;
-    SBC.W #$0000                                                         ;B38925;
+    SBC.W #$6000                                                         ;B38925;
     STA.W $0F7C,X                                                        ;B38928;
     LDA.W $0F7A,X                                                        ;B3892B;
     SBC.W #$0002                                                         ;B3892E;
@@ -855,7 +857,7 @@ Function_Zeb_Zebbo_Shooting:
 
 
 .right:
-    LDA.W #$0000                                                         ;B38936;
+    LDA.W #$6000                                                         ;B38936;
     CLC                                                                  ;B38939;
     ADC.W $0F7C,X                                                        ;B3893A;
     STA.W $0F7C,X                                                        ;B3893D;
@@ -1221,15 +1223,15 @@ SetupGametFormation:
     STA.W $1028,X                                                        ;B38C5B;
     STA.W $1068,X                                                        ;B38C5E;
     STA.W $10A8,X                                                        ;B38C61;
-    LDA.W #$0068                                                         ;B38C64;
+    LDA.W #$0048                                                         ;B38C64;
     STA.L $7E7804,X                                                      ;B38C67;
-    LDA.W #$0060                                                         ;B38C6B;
+    LDA.W #$0040                                                         ;B38C6B;
     STA.L $7E7844,X                                                      ;B38C6E;
-    LDA.W #$0058                                                         ;B38C72;
+    LDA.W #$0038                                                         ;B38C72;
     STA.L $7E7884,X                                                      ;B38C75;
-    LDA.W #$0070                                                         ;B38C79;
+    LDA.W #$0050                                                         ;B38C79;
     STA.L $7E78C4,X                                                      ;B38C7C;
-    LDA.W #$0078                                                         ;B38C80;
+    LDA.W #$0058                                                         ;B38C80;
     STA.L $7E7904,X                                                      ;B38C83;
     LDA.W #Function_Gamet_MoveToFormation_Center                         ;B38C87;
     STA.W $0FB2,X                                                        ;B38C8A;
@@ -1249,7 +1251,7 @@ Function_Gamet_Rising:
     LDA.W $0F86,X                                                        ;B38CA9;
     AND.W #$FEFF                                                         ;B38CAC;
     STA.W $0F86,X                                                        ;B38CAF;
-    LDA.W #$0080                                                         ;B38CB2;
+    LDA.W #$00A0                                                         ;B38CB2;
     TAY                                                                  ;B38CB5;
     LDA.W $0F80,X                                                        ;B38CB6;
     CLC                                                                  ;B38CB9;
@@ -1297,7 +1299,7 @@ Function_Gamet_MoveToFormation_Center:
 Function_Gamet_MoveToFormation_UpperMiddle:
     LDX.W $0E54                                                          ;B38D0C;
     INC.W $0FAC,X                                                        ;B38D0F;
-    LDA.W #$0080                                                         ;B38D12;
+    LDA.W #$00A0                                                         ;B38D12;
     TAY                                                                  ;B38D15;
     LDA.W $0F80,X                                                        ;B38D16;
     CLC                                                                  ;B38D19;
@@ -1329,7 +1331,7 @@ Function_Gamet_MoveToFormation_UpperMiddle:
 Function_Gamet_MoveToFormation_Top:
     LDX.W $0E54                                                          ;B38D4E;
     INC.W $0FAC,X                                                        ;B38D51;
-    LDA.W #$0080                                                         ;B38D54;
+    LDA.W #$00A0                                                         ;B38D54;
     TAY                                                                  ;B38D57;
     LDA.W $0F80,X                                                        ;B38D58;
     CLC                                                                  ;B38D5B;
@@ -1361,7 +1363,7 @@ Function_Gamet_MoveToFormation_Top:
 Function_Gamet_MoveToFormation_LowerMiddle:
     LDX.W $0E54                                                          ;B38D90;
     INC.W $0FAC,X                                                        ;B38D93;
-    LDA.W #$0080                                                         ;B38D96;
+    LDA.W #$00A0                                                         ;B38D96;
     TAY                                                                  ;B38D99;
     LDA.W $0F80,X                                                        ;B38D9A;
     CLC                                                                  ;B38D9D;
@@ -1393,7 +1395,7 @@ Function_Gamet_MoveToFormation_LowerMiddle:
 Function_Gamet_MoveToFormation_Bottom:
     LDX.W $0E54                                                          ;B38DD2;
     INC.W $0FAC,X                                                        ;B38DD5;
-    LDA.W #$0080                                                         ;B38DD8;
+    LDA.W #$00A0                                                         ;B38DD8;
     TAY                                                                  ;B38DDB;
     LDA.W $0F80,X                                                        ;B38DDC;
     CLC                                                                  ;B38DDF;
@@ -1642,7 +1644,7 @@ Function_Geega_WaitForSamusToGetNear:
     LDA.W $0F86,X                                                        ;B38FDE;
     AND.W #$FEFF                                                         ;B38FE1;
     STA.W $0F86,X                                                        ;B38FE4;
-    LDA.W #$0018                                                         ;B38FE7;
+    LDA.W #$0010                                                         ;B38FE7;
     STA.L $7E8000,X                                                      ;B38FEA;
     LDA.W #Function_Geega_ShootDelay                                     ;B38FEE;
     STA.W $0FA8,X                                                        ;B38FF1;
@@ -1705,13 +1707,13 @@ Function_Geega_ShootingLeft:
     LDA.W $0F7A,X                                                        ;B39066;
     SEC                                                                  ;B39069;
     SBC.W $0AF6                                                          ;B3906A;
-    CMP.W #$0030                                                         ;B3906D;
+    CMP.W #$0028                                                         ;B3906D;
     BPL .return                                                          ;B39070;
     LDA.W #Function_Geega_DippingLeft                                    ;B39072;
     STA.W $0FA8,X                                                        ;B39075;
     STZ.W $0FAC,X                                                        ;B39078;
     STZ.W $0FAE,X                                                        ;B3907B;
-    LDA.W #$0028                                                         ;B3907E;
+    LDA.W #$0024                                                         ;B3907E;
     STA.W $0FB0,X                                                        ;B39081;
     LDA.W #$0001                                                         ;B39084;
     STA.W $0FB2,X                                                        ;B39087;
@@ -1771,13 +1773,13 @@ Function_Geega_ShootingRight:
     SBC.W $0AF6                                                          ;B390FF;
     EOR.W #$FFFF                                                         ;B39102;
     INC A                                                                ;B39105;
-    CMP.W #$0030                                                         ;B39106;
+    CMP.W #$0028                                                         ;B39106;
     BPL .return                                                          ;B39109;
     LDA.W #Function_Geega_DippingRight                                   ;B3910B;
     STA.W $0FA8,X                                                        ;B3910E;
     STZ.W $0FAC,X                                                        ;B39111;
     STZ.W $0FAE,X                                                        ;B39114;
-    LDA.W #$0028                                                         ;B39117;
+    LDA.W #$0024                                                         ;B39117;
     STA.W $0FB0,X                                                        ;B3911A;
     LDA.W #$0001                                                         ;B3911D;
     STA.W $0FB2,X                                                        ;B39120;
@@ -2099,7 +2101,7 @@ InstList_Botwoon_Hide:
     dw Instruction_Common_Sleep                                          ;B3938D;
 
 UNSUED_InstList_Botwoon_Spit_AimingUp_FacingLeft:
-    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimingUp_FacingLeft ;B3938F;
+    dw $001A,Spritemaps_Botwoon_MouthClosed_Priority2_AimingUp_FacingLeft ;B3938F;
     dw Instruction_Botwoon_EnemyRadius_8x10                              ;B39393;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B39395;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B39397;
@@ -2107,7 +2109,7 @@ UNSUED_InstList_Botwoon_Spit_AimingUp_FacingLeft:
     dw Instruction_Common_Sleep                                          ;B3939D;
 
 InstList_Botwoon_Spit_AimingUpLeft:
-    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimingUpLeft       ;B3939F;
+    dw $001A,Spritemaps_Botwoon_MouthClosed_Priority2_AimingUpLeft       ;B3939F;
     dw Instruction_Botwoon_EnemyRadius_CxC                               ;B393A3;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B393A5;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B393A7;
@@ -2115,7 +2117,7 @@ InstList_Botwoon_Spit_AimingUpLeft:
     dw Instruction_Common_Sleep                                          ;B393AD;
 
 InstList_Botwoon_Spit_AimingLeft:
-    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimingLeft         ;B393AF;
+    dw $001A,Spritemaps_Botwoon_MouthClosed_Priority2_AimingLeft         ;B393AF;
     dw Instruction_Botwoon_EnemyRadius_10x8                              ;B393B3;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B393B5;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B393B7;
@@ -2123,7 +2125,7 @@ InstList_Botwoon_Spit_AimingLeft:
     dw Instruction_Common_Sleep                                          ;B393BD;
 
 InstList_Botwoon_Spit_AimingDownLeft:
-    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimingDownLeft     ;B393BF;
+    dw $001A,Spritemaps_Botwoon_MouthClosed_Priority2_AimingDownLeft     ;B393BF;
     dw Instruction_Botwoon_EnemyRadius_CxC_duplicate                     ;B393C3;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B393C5;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B393C7;
@@ -2132,7 +2134,7 @@ InstList_Botwoon_Spit_AimingDownLeft:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_Botwoon_Spit_AimingDown_FacingLeft_B393CF:
-    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimDown_FacingLeft ;B393CF;
+    dw $001A,Spritemaps_Botwoon_MouthClosed_Priority2_AimDown_FacingLeft ;B393CF;
     dw Instruction_Botwoon_EnemyRadius_8x10_duplicate                    ;B393D3;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B393D5;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B393D7;
@@ -2141,7 +2143,7 @@ UNUSED_InstList_Botwoon_Spit_AimingDown_FacingLeft_B393CF:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_Botwoon_Spit_AimingDown_FacingRight:
-    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimDown_FacingRight ;B393DF;
+    dw $001A,Spritemaps_Botwoon_MouthClosed_Priority2_AimDown_FacingRight ;B393DF;
     dw Instruction_Botwoon_EnemyRadius_8x10_duplicate_again              ;B393E3;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B393E5;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B393E7;
@@ -2149,7 +2151,7 @@ InstList_Botwoon_Spit_AimingDown_FacingRight:
     dw Instruction_Common_Sleep                                          ;B393ED;
 
 InstList_Botwoon_Spit_AimingDownRight:
-    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimingDownRight    ;B393EF;
+    dw $001A,Spritemaps_Botwoon_MouthClosed_Priority2_AimingDownRight    ;B393EF;
     dw Instruction_Botwoon_EnemyRadius_CxC_duplicate_again               ;B393F3;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B393F5;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B393F7;
@@ -2157,7 +2159,7 @@ InstList_Botwoon_Spit_AimingDownRight:
     dw Instruction_Common_Sleep                                          ;B393FD;
 
 InstList_Botwoon_Spit_AimingRight:
-    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimingRight        ;B393FF;
+    dw $001A,Spritemaps_Botwoon_MouthClosed_Priority2_AimingRight        ;B393FF;
     dw Instruction_Botwoon_EnemyRadius_10x8_duplicate                    ;B39403;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B39405;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B39407;
@@ -2165,7 +2167,7 @@ InstList_Botwoon_Spit_AimingRight:
     dw Instruction_Common_Sleep                                          ;B3940D;
 
 InstList_Botwoon_Spit_AimingUpRight:
-    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimingUpRight      ;B3940F;
+    dw $001A,Spritemaps_Botwoon_MouthClosed_Priority2_AimingUpRight      ;B3940F;
     dw Instruction_Botwoon_EnemyRadius_CxC_duplicate_again2              ;B39413;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B39415;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B39417;
@@ -2173,7 +2175,7 @@ InstList_Botwoon_Spit_AimingUpRight:
     dw Instruction_Common_Sleep                                          ;B3941D;
 
 InstList_Botwoon_Spit_AimingUp_FacingRight:
-    dw $0020,Spritemaps_Botwoon_MouthClosed_Priority2_AimUp_FacingRight  ;B3941F;
+    dw $001A,Spritemaps_Botwoon_MouthClosed_Priority2_AimUp_FacingRight  ;B3941F;
     dw Instruction_Botwoon_EnemyRadius_8x10_duplicate_again2             ;B39423;
     dw Instruction_Botwoon_QueueSpitSFX                                  ;B39425;
     dw Instruction_Botwoon_SetSpittingFlag                               ;B39427;
@@ -2278,11 +2280,11 @@ BotwoonSpeedTable:
 ;       |      ___ Body travel time. Number of frames required to reach the current position of the next body part. 30h / speed
 ;       |     |
   .speed:
-    dw $0002                                                             ;B394BB;
+    dw $0003                                                             ;B394BB;
   .bodyTravelTime:                                                         ;B394BD;
-    dw       $0018 ; Health >= 50%
-    dw $0003,$0010 ; 25% <= health < 50%
-    dw $0004,$000C ; Health < 25%
+    dw       $0010 ; Health >= 50%
+    dw $0004,$000C ; 25% <= health < 50%
+    dw $0005,$0008 ; Health < 25%
 
 Instruction_Botwoon_EnemyRadius_8x10:
     LDX.W $0E54                                                          ;B394C7;
@@ -2436,7 +2438,7 @@ InitAI_Botwoon:
     STA.W $0FB0,X                                                        ;B395DE;
     LDA.W #Function_Botwoon_Head_MovingAround                            ;B395E1;
     STA.W $0FB2,X                                                        ;B395E4;
-    LDA.W #$0100                                                         ;B395E7;
+    LDA.W #$00C0                                                         ;B395E7;
     STA.L $7E8000,X                                                      ;B395EA;
     LDA.W BotwoonSpeedTable_speed                                        ;B395EE;
     STA.L $7E8030,X                                                      ;B395F1;
@@ -2522,7 +2524,7 @@ UNUSED_Botwoon_MaybeSpitting_B39396:
     BNE +                                                                ;B396AF;
     LDA.W #Function_Botwoon_Head_Spitting_SetAngleAndShow                ;B396B1;
     STA.W $0FB2,X                                                        ;B396B4;
-    LDA.W #$0018                                                         ;B396B7;
+    LDA.W #$0014                                                         ;B396B7;
     STA.L $7E8002,X                                                      ;B396BA;
 
   + LDA.W #$0000                                                         ;B396BE;
@@ -2719,7 +2721,7 @@ SetupBotwoonSpitting:
     STA.W $0FAE,X                                                        ;B39919;
     LDA.W #Function_Botwoon_Head_Spitting_SetAngleAndShow                ;B3991C;
     STA.W $0FB2,X                                                        ;B3991F;
-    LDA.W #$0030                                                         ;B39922;
+    LDA.W #$0028                                                         ;B39922;
     STA.L $7E8002,X                                                      ;B39925;
     LDA.W $0F86,X                                                        ;B39929;
     AND.W #$FBFF                                                         ;B3992C;
@@ -5888,5 +5890,5 @@ Spritemaps_DachoraEscape_B:
     %spritemapEntry(1, $43FE, $FE, 0, 1, 3, 1, $138)
 
 
-Freespace_BankB3_ED77:                                                   ;B3ED77;
-; $1289 bytes
+Freespace_BankB3_ED87:                                                   ;B3ED77;
+; $1279 bytes

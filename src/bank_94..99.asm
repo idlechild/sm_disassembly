@@ -16,10 +16,10 @@ Tiles_Gunship_Ceres_Mode7:
 incbin "../data/Tiles_Gunship_Ceres_Mode7.bin" ; $285A bytes
 
 Tiles_Font1_BG3:
-incbin "../data/Tiles_Font1_BG3.bin" ; $68A bytes
+incbin "../data/Tiles_Font1_BG3.bin" ; $7E5 bytes
 
 Tiles_Font2_BG3:
-incbin "../data/Tiles_Font2_BG3.bin" ; $DAF bytes
+incbin "../data/Tiles_Font2_BG3.bin" ; $709 bytes
 
 Tiles_Intro_Sprite:
 incbin "../data/Tiles_Intro_Sprite.bin" ; $144C bytes
@@ -28,10 +28,10 @@ Tiles_Intro_BG1_BG2:
 incbin "../data/Tiles_Intro_BG1_BG2.bin" ; $57FC bytes
 
 Tiles_Space_Ceres:
-incbin "../data/Tiles_Space_Ceres.bin" ; $1B6C bytes
+incbin "../data/Tiles_Space_Ceres.bin" ; $1CE9 bytes
 
 Tiles_Zebes:
-incbin "../data/Tiles_Zebes.bin" ; $F8E bytes
+incbin "../data/Tiles_Zebes.bin" ; $109A bytes
 
 Title_Mode7_Tilemap:
 incbin "../data/Title_Mode7_Tilemap.bin" ; $265 bytes
@@ -52,19 +52,19 @@ Intro_BG3_TheLastMetroidIsInCaptivity_Tilemap:
 incbin "../data/Intro_BG3_TheLastMetroidIsInCaptivity_Tilemap.bin" ; $E2 bytes
 
 GameOptionsMenu_OptionsScreen_Tilemap:
-incbin "../data/GameOptionsMenu_OptionsScreen_Tilemap.bin" ; $1D9 bytes
+incbin "../data/GameOptionsMenu_OptionsScreen_Tilemap.bin" ; $19E bytes
 
-GameOptionsMenu_ControllerSettings_English_Tilemap:
-incbin "../data/GameOptionsMenu_ControllerSettings_English_Tilemap.bin" ; $1F7 bytes
+GameOptionsMenu_ControllerSettings_German_Tilemap:
+incbin "../data/GameOptionsMenu_ControllerSettings_German_Tilemap.bin" ; $1F7 bytes
 
-GameOptionsMenu_ControllerSettings_Japanese_Tilemap:
-incbin "../data/GameOptionsMenu_ControllerSettings_Japanese_Tilemap.bin" ; $1C9 bytes
+GameOptionsMenu_ControllerSettings_French_Tilemap:
+incbin "../data/GameOptionsMenu_ControllerSettings_French_Tilemap.bin" ; $1C9 bytes
 
-GameOptionsMenu_SpecialSettings_English_Tilemap:
-incbin "../data/GameOptionsMenu_SpecialSettings_English_Tilemap.bin" ; $1AD bytes
+GameOptionsMenu_SpecialSettings_German_Tilemap:
+incbin "../data/GameOptionsMenu_SpecialSettings_German_Tilemap.bin" ; $1AD bytes
 
-GameOptionsMenu_SpecialSettings_Japanese_Tilemap:
-incbin "../data/GameOptionsMenu_SpecialSettings_Japanese_Tilemap.bin" ; $1BA bytes
+GameOptionsMenu_SpecialSettings_French_Tilemap:
+incbin "../data/GameOptionsMenu_SpecialSettings_French_Tilemap.bin" ; $1BA bytes
 
 Samus_Waiting_for_Credits_to_End_Tilemap:
 incbin "../data/Samus_Waiting_for_Credits_to_End_Tilemap.bin" ; $10F bytes
@@ -79,7 +79,7 @@ Tiles_PostCredits_Samus_Shooting_the_Screen:
 incbin "../data/Tiles_PostCredits_Samus_Shooting_the_Screen.bin" ; $FE2 bytes
 
 Tiles_Font3_Background:
-incbin "../data/Tiles_Font3_Background.bin" ; $721 bytes
+incbin "../data/Tiles_Font3_Background.bin" ; $8A5 bytes
 
 Credits_Tilemap:
 incbin "../data/Credits_Tilemap.bin" ; $A88 bytes
@@ -136,5 +136,5 @@ PostCredits_SuperMetroid_Icon_Tilemap:
 incbin "../data/PostCredits_SuperMetroid_Icon_Tilemap.bin" ; $15D bytes
 check bankcross on
 
-Freespace_Bank99_EE21:                                                   ;99EE21;
-; $11DF bytes
+Freespace_Bank99_ECA8:                                                   ;99EE21;
+; $1358 bytes

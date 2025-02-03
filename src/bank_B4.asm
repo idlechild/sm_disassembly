@@ -9052,11 +9052,17 @@ DebugEnemyPopulationData_Atomic:
 
 DebugEnemyPopulationData_Bang:
     dw EnemyHeaders_Bang                                                 ;B4E309;
-    dw $0100,$0100,$0000,$2800,$0000,$BB2B,$0000                         ;B4E30B;
+    dw $0100,$0100,$0000,$2800,$0000                                     ;B4E30B;
+    dw BangAI_Electricity                                                ;B4E315;
+    dw $0000                                                             ;B4E317;
     dw EnemyHeaders_Bang                                                 ;B4E319;
-    dw $0100,$0100,$0000,$2800,$0000,$BB66,$0101                         ;B4E31B;
+    dw $0100,$0100,$0000,$2800,$0000                                     ;B4E31B;
+    dw BangAI_Core                                                       ;B4E325;
+    dw $0101                                                             ;B4E327;
     dw EnemyHeaders_Bang                                                 ;B4E329;
-    dw $0100,$0100,$0000,$2800,$0000,$BB4A,$0000                         ;B4E32B;
+    dw $0100,$0100,$0000,$2800,$0000                                     ;B4E32B;
+    dw BangAI_Shell                                                      ;B4E335;
+    dw $0000                                                             ;B4E337;
     dw $FFFF : db $01
 
 DebugEnemyPopulationData_PirateGreyWall:

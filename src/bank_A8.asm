@@ -352,70 +352,72 @@ CommonA8EnemySpeeds_LinearlyIncreasing:
     dw             $0000                                                 ;A8818B;
   .negatedSubspeed:
     dw                   $0000                                           ;A8818D;
-    dw $0000,$1000,$FFFF,$F000
-    dw $0000,$2000,$FFFF,$E000
-    dw $0000,$3000,$FFFF,$D000
-    dw $0000,$4000,$FFFF,$C000
-    dw $0000,$5000,$FFFF,$B000
-    dw $0000,$6000,$FFFF,$A000
-    dw $0000,$7000,$FFFF,$9000
-    dw $0000,$8000,$FFFF,$8000
-    dw $0000,$9000,$FFFF,$7000
-    dw $0000,$A000,$FFFF,$6000
-    dw $0000,$B000,$FFFF,$5000
-    dw $0000,$C000,$FFFF,$4000
-    dw $0000,$D000,$FFFF,$3000
-    dw $0000,$E000,$FFFF,$2000
-    dw $0000,$F000,$FFFF,$1000
-    dw $0001,$0000,$FFFF,$0000
-    dw $0001,$1000,$FFFE,$F000
-    dw $0001,$2000,$FFFE,$E000
-    dw $0001,$3000,$FFFE,$D000
-    dw $0001,$4000,$FFFE,$C000
-    dw $0001,$5000,$FFFE,$B000
-    dw $0001,$6000,$FFFE,$A000
-    dw $0001,$7000,$FFFE,$9000
-    dw $0001,$8000,$FFFE,$8000
-    dw $0001,$9000,$FFFE,$7000
-    dw $0001,$A000,$FFFE,$6000
-    dw $0001,$B000,$FFFE,$5000
-    dw $0001,$C000,$FFFE,$4000
-    dw $0001,$D000,$FFFE,$3000
-    dw $0001,$E000,$FFFE,$2000
-    dw $0001,$F000,$FFFE,$1000
-    dw $0002,$0000,$FFFE,$0000
-    dw $0002,$1000,$FFFD,$F000
-    dw $0002,$2000,$FFFD,$E000
-    dw $0002,$3000,$FFFD,$D000
-    dw $0002,$4000,$FFFD,$C000
-    dw $0002,$5000,$FFFD,$B000
-    dw $0002,$6000,$FFFD,$A000
-    dw $0002,$7000,$FFFD,$9000
-    dw $0002,$8000,$FFFD,$8000
-    dw $0002,$9000,$FFFD,$7000
-    dw $0002,$A000,$FFFD,$6000
-    dw $0002,$B000,$FFFD,$5000
-    dw $0002,$C000,$FFFD,$4000
-    dw $0002,$D000,$FFFD,$3000
-    dw $0002,$E000,$FFFD,$2000
-    dw $0002,$F000,$FFFD,$1000
-    dw $0003,$0000,$FFFD,$0000
-    dw $0003,$1000,$FFFC,$F000
-    dw $0003,$2000,$FFFC,$E000
-    dw $0003,$3000,$FFFC,$D000
-    dw $0003,$4000,$FFFC,$C000
-    dw $0003,$5000,$FFFC,$B000
-    dw $0003,$6000,$FFFC,$A000
-    dw $0003,$7000,$FFFC,$9000
-    dw $0003,$8000,$FFFC,$8000
-    dw $0003,$9000,$FFFC,$7000
-    dw $0003,$A000,$FFFC,$6000
-    dw $0003,$B000,$FFFC,$5000
-    dw $0003,$C000,$FFFC,$4000
-    dw $0003,$D000,$FFFC,$3000
-    dw $0003,$E000,$FFFC,$2000
-    dw $0003,$F000,$FFFC,$1000
-    dw $0004,$0000,$FFFC,$0000
+    dw $0000,$1333,$FFFF,$ECCD
+    dw $0000,$2666,$FFFF,$D99A
+    dw $0000,$3999,$FFFF,$C667
+    dw $0000,$4CCC,$FFFF,$B334
+    dw $0000,$5FFF,$FFFF,$A001
+    dw $0000,$7332,$FFFF,$8CCE
+    dw $0000,$8665,$FFFF,$799B
+    dw $0000,$9998,$FFFF,$6668
+    dw $0000,$ACCB,$FFFF,$5335
+    dw $0000,$BFFE,$FFFF,$4002
+    dw $0000,$D331,$FFFF,$2CCF
+    dw $0000,$E664,$FFFF,$199C
+    dw $0000,$F997,$FFFF,$0669
+    dw $0001,$0CCA,$FFFE,$F336
+    dw $0001,$1FFD,$FFFE,$E003
+    dw $0001,$3330,$FFFE,$CCD0
+    dw $0001,$4663,$FFFE,$B99D
+    dw $0001,$5996,$FFFE,$A66A
+    dw $0001,$6CC9,$FFFE,$9337
+    dw $0001,$7FFC,$FFFE,$8004
+    dw $0001,$932F,$FFFE,$6CD1
+    dw $0001,$A662,$FFFE,$599E
+    dw $0001,$B995,$FFFE,$466B
+    dw $0001,$CCC8,$FFFE,$3338
+    dw $0001,$DFFB,$FFFE,$2005
+    dw $0001,$F32E,$FFFE,$0CD2
+    dw $0002,$0661,$FFFD,$F99F
+    dw $0002,$1994,$FFFD,$E66C
+    dw $0002,$2CC7,$FFFD,$D339
+    dw $0002,$3FFA,$FFFD,$C006
+    dw $0002,$532D,$FFFD,$ACD3
+    dw $0002,$6660,$FFFD,$99A0
+    dw $0002,$7993,$FFFD,$866D
+    dw $0002,$8CC6,$FFFD,$733A
+    dw $0002,$9FF9,$FFFD,$6007
+    dw $0002,$B32C,$FFFD,$4CD4
+    dw $0002,$C65F,$FFFD,$39A1
+    dw $0002,$D992,$FFFD,$266E
+    dw $0002,$ECC5,$FFFD,$133B
+    dw $0002,$FFF8,$FFFD,$0008
+    dw $0003,$132B,$FFFC,$ECD5
+    dw $0003,$265E,$FFFC,$D9A2
+    dw $0003,$3991,$FFFC,$C66F
+    dw $0003,$4CC4,$FFFC,$B33C
+    dw $0003,$5FF7,$FFFC,$A009
+    dw $0003,$732A,$FFFC,$8CD6
+    dw $0003,$865D,$FFFC,$79A3
+    dw $0003,$9990,$FFFC,$6670
+    dw $0003,$ACC3,$FFFC,$533D
+    dw $0003,$BFF6,$FFFC,$400A
+    dw $0003,$D329,$FFFC,$2CD7
+    dw $0003,$E65C,$FFFC,$19A4
+    dw $0003,$F98F,$FFFC,$0671
+    dw $0004,$0CC2,$FFFB,$F33E
+    dw $0004,$1FF5,$FFFB,$E00B
+    dw $0004,$3328,$FFFB,$CCD8
+    dw $0004,$465B,$FFFB,$B9A5
+    dw $0004,$598E,$FFFB,$A672
+    dw $0004,$6CC1,$FFFB,$933F
+    dw $0004,$7FF4,$FFFB,$800C
+    dw $0004,$9327,$FFFB,$6CD9
+    dw $0004,$A65A,$FFFB,$59A6
+    dw $0004,$B98D,$FFFB,$4673
+    dw $0004,$CCC0,$FFFB,$3340
+    dw $0004,$DFF3,$FFFB,$200D
+    dw $0004,$F326,$FFFB,$0CDA
 
 
 ;        _____________________ Subspeed
@@ -436,98 +438,98 @@ CommonA8EnemySpeeds_QuadraticallyIncreasing:
     dw                   $0000                                           ;A88395;
     dw $0109,$0000,$FEF7,$FFFF
     dw $031B,$0000,$FCE5,$FFFF
-    dw $0636,$0000,$F9CA,$FFFF
-    dw $0A5A,$0000,$F5A6,$FFFF
-    dw $0F87,$0000,$F079,$FFFF
-    dw $15BD,$0000,$EA43,$FFFF
-    dw $1CFC,$0000,$E304,$FFFF
-    dw $2544,$0000,$DABC,$FFFF
-    dw $2E95,$0000,$D16B,$FFFF
-    dw $38EF,$0000,$C711,$FFFF
-    dw $4452,$0000,$BBAE,$FFFF
-    dw $50BE,$0000,$AF42,$FFFF
-    dw $5E33,$0000,$A1CD,$FFFF
-    dw $6CB1,$0000,$934F,$FFFF
-    dw $7C38,$0000,$83C8,$FFFF
-    dw $8CC8,$0000,$7338,$FFFF
-    dw $9E61,$0000,$619F,$FFFF
-    dw $B103,$0000,$4EFD,$FFFF
-    dw $C4AE,$0000,$3B52,$FFFF
-    dw $D962,$0000,$269E,$FFFF
-    dw $EF1F,$0000,$10E1,$FFFF
-    dw $05E5,$0000,$FA1B,$FFFF
-    dw $14B4,$0001,$EB4C,$FFFE
-    dw $2D8C,$0001,$D274,$FFFE
-    dw $476D,$0001,$B893,$FFFE
-    dw $6257,$0001,$9DA9,$FFFE
-    dw $7E4A,$0001,$81B6,$FFFE
-    dw $9B46,$0001,$64BA,$FFFE
-    dw $B94B,$0001,$46B5,$FFFE
-    dw $D859,$0001,$27A7,$FFFE
-    dw $F870,$0001,$0790,$FFFE
-    dw $1090,$0002,$EF70,$FFFD
-    dw $32B9,$0002,$CD47,$FFFD
+    dw $073F,$0000,$F8C1,$FFFF
+    dw $0B63,$0000,$F49D,$FFFF
+    dw $1199,$0000,$EE67,$FFFF
+    dw $19E1,$0000,$E61F,$FFFF
+    dw $2229,$0000,$DDD7,$FFFF
+    dw $2C83,$0000,$D37D,$FFFF
+    dw $36DD,$0000,$C923,$FFFF
+    dw $4349,$0000,$BCB7,$FFFF
+    dw $51C7,$0000,$AE39,$FFFF
+    dw $6045,$0000,$9FBB,$FFFF
+    dw $70D5,$0000,$8F2B,$FFFF
+    dw $8165,$0000,$7E9B,$FFFF
+    dw $9407,$0000,$6BF9,$FFFF
+    dw $A8BB,$0000,$5745,$FFFF
+    dw $BD6F,$0000,$4291,$FFFF
+    dw $D435,$0000,$2BCB,$FFFF
+    dw $EAFB,$0000,$1505,$FFFF
+    dw $03D3,$0001,$FC2D,$FFFE
+    dw $15BD,$0001,$EA43,$FFFE
+    dw $30A7,$0001,$CF59,$FFFE
+    dw $4DA3,$0001,$B25D,$FFFE
+    dw $6A9F,$0001,$9561,$FFFE
+    dw $89AD,$0001,$7653,$FFFE
+    dw $AACD,$0001,$5533,$FFFE
+    dw $CBED,$0001,$3413,$FFFE
+    dw $EF1F,$0001,$10E1,$FFFE
+    dw $0951,$0002,$F6AF,$FFFD
+    dw $2E95,$0002,$D16B,$FFFD
     dw $55EB,$0002,$AA15,$FFFD
-    dw $7A26,$0002,$85DA,$FFFD
-    dw $9F6A,$0002,$6096,$FFFD
-    dw $C5B7,$0002,$3A49,$FFFD
-    dw $ED0D,$0002,$12F3,$FFFD
-    dw $0C6C,$0003,$F394,$FFFC
-    dw $35D4,$0003,$CA2C,$FFFC
-    dw $6045,$0003,$9FBB,$FFFC
-    dw $8BBF,$0003,$7441,$FFFC
-    dw $B842,$0003,$47BE,$FFFC
-    dw $E5CE,$0003,$1A32,$FFFC
-    dw $0B63,$0004,$F49D,$FFFB
-    dw $3B01,$0004,$C4FF,$FFFB
-    dw $6BA8,$0004,$9458,$FFFB
-    dw $9D58,$0004,$62A8,$FFFB
-    dw $D011,$0004,$2FEF,$FFFB
-    dw $03D3,$0004,$FC2D,$FFFB
-    dw $2F9E,$0005,$D062,$FFFA
-    dw $6572,$0005,$9A8E,$FFFA
-    dw $9C4F,$0005,$63B1,$FFFA
-    dw $D435,$0005,$2BCB,$FFFA
-    dw $0424,$0006,$FBDC,$FFF9
-    dw $3E1C,$0006,$C1E4,$FFF9
+    dw $7D41,$0002,$82BF,$FFFD
+    dw $A6A9,$0002,$5957,$FFFD
+    dw $D011,$0002,$2FEF,$FFFD
+    dw $FB8B,$0002,$0475,$FFFD
+    dw $2017,$0003,$DFE9,$FFFC
+    dw $4DA3,$0003,$B25D,$FFFC
+    dw $7D41,$0003,$82BF,$FFFC
+    dw $ACDF,$0003,$5321,$FFFC
+    dw $DE8F,$0003,$2171,$FFFC
+    dw $0951,$0004,$F6AF,$FFFB
+    dw $3D13,$0004,$C2ED,$FFFB
+    dw $72E7,$0004,$8D19,$FFFB
+    dw $A8BB,$0004,$5745,$FFFB
+    dw $E0A1,$0004,$1F5F,$FFFB
+    dw $1199,$0005,$EE67,$FFFA
+    dw $4B91,$0005,$B46F,$FFFA
+    dw $879B,$0005,$7865,$FFFA
+    dw $C3A5,$0005,$3C5B,$FFFA
+    dw $01C1,$0005,$FE3F,$FFFA
+    dw $38EF,$0006,$C711,$FFF9
     dw $791D,$0006,$86E3,$FFF9
-    dw $B527,$0006,$4AD9,$FFF9
-    dw $F23A,$0006,$0DC6,$FFF9
-    dw $2756,$0007,$D8AA,$FFF8
-    dw $667B,$0007,$9985,$FFF8
-    dw $A6A9,$0007,$5957,$FFF8
-    dw $E7E0,$0007,$1820,$FFF8
-    dw $2120,$0008,$DEE0,$FFF7
-    dw $6469,$0008,$9B97,$FFF7
-    dw $A8BB,$0008,$5745,$FFF7
-    dw $EE16,$0008,$11EA,$FFF7
-    dw $2B7A,$0009,$D486,$FFF6
-    dw $72E7,$0009,$8D19,$FFF6
-    dw $BB5D,$0009,$44A3,$FFF6
-    dw $04DC,$0009,$FB24,$FFF6
-    dw $4664,$000A,$B99C,$FFF5
-    dw $91F5,$000A,$6E0B,$FFF5
-    dw $DE8F,$000A,$2171,$FFF5
-    dw $2332,$000B,$DCCE,$FFF4
-    dw $71DE,$000B,$8E22,$FFF4
-    dw $C193,$000B,$3E6D,$FFF4
-    dw $0951,$000C,$F6AF,$FFF3
-    dw $5B18,$000C,$A4E8,$FFF3
-    dw $ADE8,$000C,$5218,$FFF3
-    dw $01C1,$000C,$FE3F,$FFF3
-    dw $4DA3,$000D,$B25D,$FFF2
-    dw $A38E,$000D,$5C72,$FFF2
-    dw $FA82,$000D,$057E,$FFF2
-    dw $497F,$000E,$B681,$FFF1
-    dw $A285,$000E,$5D7B,$FFF1
-    dw $FC94,$000E,$036C,$FFF1
-    dw $4EAC,$000F,$B154,$FFF0
-    dw $AACD,$000F,$5533,$FFF0
-    dw $07F7,$000F,$F809,$FFF0
-    dw $5D2A,$0010,$A2D6,$FFEF
-    dw $BC66,$0010,$439A,$FFEF
-    dw $13AB,$0011,$EC55,$FFEE
-    dw $74F9,$0011,$8B07,$FFEE
+    dw $BB5D,$0006,$44A3,$FFF9
+    dw $FD9D,$0006,$0263,$FFF9
+    dw $38EF,$0007,$C711,$FFF8
+    dw $7F53,$0007,$80AD,$FFF8
+    dw $C5B7,$0007,$3A49,$FFF8
+    dw $052D,$0008,$FAD3,$FFF7
+    dw $4DA3,$0008,$B25D,$FFF7
+    dw $982B,$0008,$67D5,$FFF7
+    dw $E4C5,$0008,$1B3B,$FFF7
+    dw $285F,$0009,$D7A1,$FFF6
+    dw $770B,$0009,$88F5,$FFF6
+    dw $C5B7,$0009,$3A49,$FFF6
+    dw $0D75,$000A,$F28B,$FFF5
+    dw $6045,$000A,$9FBB,$FFF5
+    dw $B315,$000A,$4CEB,$FFF5
+    dw $07F7,$000B,$F809,$FFF5
+    dw $53D9,$000B,$AC27,$FFF4
+    dw $AACD,$000B,$5533,$FFF4
+    dw $03D3,$000C,$FC2D,$FFF3
+    dw $53D9,$000C,$AC27,$FFF3
+    dw $AEF1,$000C,$510F,$FFF3
+    dw $0109,$000D,$FEF7,$FFF2
+    dw $5E33,$000D,$A1CD,$FFF2
+    dw $BD6F,$000D,$4291,$FFF2
+    dw $13AB,$000E,$EC55,$FFF1
+    dw $74F9,$000E,$8B07,$FFF1
+    dw $D647,$000E,$29B9,$FFF1
+    dw $30A7,$000F,$CF59,$FFF0
+    dw $9619,$000F,$69E7,$FFF0
+    dw $FB8B,$000F,$0475,$FFF0
+    dw $5A0F,$0010,$A5F1,$FFEF
+    dw $C193,$0010,$3E6D,$FFEF
+    dw $2229,$0011,$DDD7,$FFEE
+    dw $8DD1,$0011,$722F,$FFEE
+    dw $F979,$0011,$0687,$FFEE
+    dw $5E33,$0012,$A1CD,$FFED
+    dw $CBED,$0012,$3413,$FFED
+    dw $32B9,$0013,$CD47,$FFEC
+    dw $A497,$0013,$5B69,$FFEC
+    dw $0D75,$0014,$F28B,$FFEB
+    dw $8165,$0014,$7E9B,$FFEB
+    dw $F555,$0014,$0AAB,$FFEB
 
 
 Palette_Evir:
@@ -535,64 +537,64 @@ Palette_Evir:
     dw $158C,$03FF,$02B9,$0170,$0069,$0BB1,$1EA9,$0145                   ;A88697;
 
 InstList_Evir_Body_FacingLeft:
-    dw $000A,Spritemap_Evir_0                                            ;A886A7;
-    dw $000A,Spritemap_Evir_1                                            ;A886AB;
-    dw $000A,Spritemap_Evir_2                                            ;A886AF;
-    dw $000A,Spritemap_Evir_3                                            ;A886B3;
-    dw $000A,Spritemap_Evir_4                                            ;A886B7;
-    dw $000A,Spritemap_Evir_5                                            ;A886BB;
+    dw $0008,Spritemap_Evir_0                                            ;A886A7;
+    dw $0008,Spritemap_Evir_1                                            ;A886AB;
+    dw $0008,Spritemap_Evir_2                                            ;A886AF;
+    dw $0008,Spritemap_Evir_3                                            ;A886B3;
+    dw $0008,Spritemap_Evir_4                                            ;A886B7;
+    dw $0008,Spritemap_Evir_5                                            ;A886BB;
     dw Instruction_Common_GotoY                                          ;A886BF;
     dw InstList_Evir_Body_FacingLeft                                     ;A886C1;
 
 InstList_Evir_Arms_FacingLeft:
-    dw $000A,Spritemap_Evir_6                                            ;A886C3;
-    dw $000A,Spritemap_Evir_7                                            ;A886C7;
-    dw $000A,Spritemap_Evir_8                                            ;A886CB;
-    dw $000A,Spritemap_Evir_9                                            ;A886CF;
-    dw $000A,Spritemap_Evir_6                                            ;A886D3;
-    dw $000A,Spritemap_Evir_7                                            ;A886D7;
-    dw $000A,Spritemap_Evir_8                                            ;A886DB;
-    dw $000A,Spritemap_Evir_9                                            ;A886DF;
-    dw $000A,Spritemap_Evir_6                                            ;A886E3;
-    dw $000A,Spritemap_Evir_7                                            ;A886E7;
-    dw $000A,Spritemap_Evir_8                                            ;A886EB;
-    dw $000A,Spritemap_Evir_9                                            ;A886EF;
-    dw $000A,Spritemap_Evir_6                                            ;A886F3;
-    dw $000A,Spritemap_Evir_7                                            ;A886F7;
-    dw $000A,Spritemap_Evir_8                                            ;A886FB;
-    dw $000A,Spritemap_Evir_9                                            ;A886FF;
-    dw $0030,Spritemap_Evir_A                                            ;A88703;
+    dw $0008,Spritemap_Evir_6                                            ;A886C3;
+    dw $0008,Spritemap_Evir_7                                            ;A886C7;
+    dw $0008,Spritemap_Evir_8                                            ;A886CB;
+    dw $0008,Spritemap_Evir_9                                            ;A886CF;
+    dw $0008,Spritemap_Evir_6                                            ;A886D3;
+    dw $0008,Spritemap_Evir_7                                            ;A886D7;
+    dw $0008,Spritemap_Evir_8                                            ;A886DB;
+    dw $0008,Spritemap_Evir_9                                            ;A886DF;
+    dw $0008,Spritemap_Evir_6                                            ;A886E3;
+    dw $0008,Spritemap_Evir_7                                            ;A886E7;
+    dw $0008,Spritemap_Evir_8                                            ;A886EB;
+    dw $0008,Spritemap_Evir_9                                            ;A886EF;
+    dw $0008,Spritemap_Evir_6                                            ;A886F3;
+    dw $0008,Spritemap_Evir_7                                            ;A886F7;
+    dw $0008,Spritemap_Evir_8                                            ;A886FB;
+    dw $0008,Spritemap_Evir_9                                            ;A886FF;
+    dw $0028,Spritemap_Evir_A                                            ;A88703;
     dw Instruction_Common_GotoY                                          ;A88707;
     dw InstList_Evir_Arms_FacingLeft                                     ;A88709;
 
 InstList_Evir_Body_FacingRight:
-    dw $000A,Spritemap_Evir_D                                            ;A8870B;
-    dw $000A,Spritemap_Evir_E                                            ;A8870F;
-    dw $000A,Spritemap_Evir_F                                            ;A88713;
-    dw $000A,Spritemap_Evir_10                                           ;A88717;
-    dw $000A,Spritemap_Evir_11                                           ;A8871B;
-    dw $000A,Spritemap_Evir_12                                           ;A8871F;
+    dw $0008,Spritemap_Evir_D                                            ;A8870B;
+    dw $0008,Spritemap_Evir_E                                            ;A8870F;
+    dw $0008,Spritemap_Evir_F                                            ;A88713;
+    dw $0008,Spritemap_Evir_10                                           ;A88717;
+    dw $0008,Spritemap_Evir_11                                           ;A8871B;
+    dw $0008,Spritemap_Evir_12                                           ;A8871F;
     dw Instruction_CommonA8_GotoY                                        ;A88723;
     dw InstList_Evir_Body_FacingRight                                    ;A88725;
 
 InstList_Evir_Arms_FacingRight:
-    dw $000A,Spritemap_Evir_13                                           ;A88727;
-    dw $000A,Spritemap_Evir_14                                           ;A8872B;
-    dw $000A,Spritemap_Evir_15                                           ;A8872F;
-    dw $000A,Spritemap_Evir_16                                           ;A88733;
-    dw $000A,Spritemap_Evir_13                                           ;A88737;
-    dw $000A,Spritemap_Evir_14                                           ;A8873B;
-    dw $000A,Spritemap_Evir_15                                           ;A8873F;
-    dw $000A,Spritemap_Evir_16                                           ;A88743;
-    dw $000A,Spritemap_Evir_13                                           ;A88747;
-    dw $000A,Spritemap_Evir_14                                           ;A8874B;
-    dw $000A,Spritemap_Evir_15                                           ;A8874F;
-    dw $000A,Spritemap_Evir_16                                           ;A88753;
-    dw $000A,Spritemap_Evir_13                                           ;A88757;
-    dw $000A,Spritemap_Evir_14                                           ;A8875B;
-    dw $000A,Spritemap_Evir_15                                           ;A8875F;
-    dw $000A,Spritemap_Evir_16                                           ;A88763;
-    dw $0030,Spritemap_Evir_17                                           ;A88767;
+    dw $0008,Spritemap_Evir_13                                           ;A88727;
+    dw $0008,Spritemap_Evir_14                                           ;A8872B;
+    dw $0008,Spritemap_Evir_15                                           ;A8872F;
+    dw $0008,Spritemap_Evir_16                                           ;A88733;
+    dw $0008,Spritemap_Evir_13                                           ;A88737;
+    dw $0008,Spritemap_Evir_14                                           ;A8873B;
+    dw $0008,Spritemap_Evir_15                                           ;A8873F;
+    dw $0008,Spritemap_Evir_16                                           ;A88743;
+    dw $0008,Spritemap_Evir_13                                           ;A88747;
+    dw $0008,Spritemap_Evir_14                                           ;A8874B;
+    dw $0008,Spritemap_Evir_15                                           ;A8874F;
+    dw $0008,Spritemap_Evir_16                                           ;A88753;
+    dw $0008,Spritemap_Evir_13                                           ;A88757;
+    dw $0008,Spritemap_Evir_14                                           ;A8875B;
+    dw $0008,Spritemap_Evir_15                                           ;A8875F;
+    dw $0008,Spritemap_Evir_16                                           ;A88763;
+    dw $0028,Spritemap_Evir_17                                           ;A88767;
     dw Instruction_Common_GotoY                                          ;A8876B;
     dw InstList_Evir_Arms_FacingRight                                    ;A8876D;
 
@@ -602,15 +604,15 @@ InstList_Evir_Projectile_Normal:
 
 InstList_Evir_Projectile_Regenerating_0:
     dw Instruction_Evir_SetInitialRegenerationXOffset                    ;A88775;
-    dw Instruction_Common_TimerInY,$0008                                 ;A88777;
+    dw Instruction_Common_TimerInY,$0006                                 ;A88777;
     dw Instruction_Evir_PlaySpitSFX                                      ;A8877B;
 
 InstList_Evir_Projectile_Regenerating_1:
-    dw $0008,Spritemap_Evir_B                                            ;A8877D;
+    dw $0006,Spritemap_Evir_B                                            ;A8877D;
     dw Instruction_Evir_AdvanceRegenerationXOffset                       ;A88781;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;A88783;
     dw InstList_Evir_Projectile_Regenerating_1                           ;A88785;
-    dw $0010,Spritemap_Evir_C                                            ;A88787;
+    dw $000D,Spritemap_Evir_C                                            ;A88787;
     dw Instruction_Evir_FinishRegeneration                               ;A8878B;
     dw Instruction_Common_Sleep                                          ;A8878D;
 
@@ -1890,16 +1892,16 @@ InstList_Fune_FacingLeft_Idling:
     dw Instruction_Common_Sleep                                          ;A8939D;
 
 InstList_Fune_FacingLeft_Active:
-    dw $0010,Spritemap_Fune_FacingLeft_Idle_MouthClosed                  ;A8939F;
-    dw $0008,Spritemap_Fune_FacingLeft_StartOpeningMouth                 ;A893A3;
-    dw $0008,Spritemap_Fune_FacingLeft_MouthOpening1                     ;A893A7;
-    dw $0008,Spritemap_Fune_FacingLeft_MouthOpening2                     ;A893AB;
+    dw $000C,Spritemap_Fune_FacingLeft_Idle_MouthClosed                  ;A8939F;
+    dw $0005,Spritemap_Fune_FacingLeft_StartOpeningMouth                 ;A893A3;
+    dw $0005,Spritemap_Fune_FacingLeft_MouthOpening1                     ;A893A7;
+    dw $0005,Spritemap_Fune_FacingLeft_MouthOpening2                     ;A893AB;
     dw Instruction_Fune_SpawnFireball_FacingLeft                         ;A893AF;
     dw Instruction_FuneNamihe_QueueSpitSFX                               ;A893B1;
-    dw $0010,Spritemap_Fune_FacingLeft_MouthMostOpen                     ;A893B3;
-    dw $0008,Spritemap_Fune_FacingLeft_MouthOpening2                     ;A893B7;
-    dw $0008,Spritemap_Fune_FacingLeft_MouthOpening1                     ;A893BB;
-    dw $0008,Spritemap_Fune_FacingLeft_StartOpeningMouth                 ;A893BF;
+    dw $000C,Spritemap_Fune_FacingLeft_MouthMostOpen                     ;A893B3;
+    dw $0005,Spritemap_Fune_FacingLeft_MouthOpening2                     ;A893B7;
+    dw $0005,Spritemap_Fune_FacingLeft_MouthOpening1                     ;A893BB;
+    dw $0005,Spritemap_Fune_FacingLeft_StartOpeningMouth                 ;A893BF;
     dw Instruction_FuneNamihe_FinishActivity                             ;A893C3;
     dw Instruction_Common_GotoY                                          ;A893C5;
     dw InstList_Fune_FacingLeft_Idling                                   ;A893C7;
@@ -1909,16 +1911,16 @@ InstList_Fune_FacingRight_Idling:
     dw Instruction_Common_Sleep                                          ;A893CD;
 
 InstList_Fune_FacingRight_Active:
-    dw $0010,Spritemap_Fune_FacingRight_Idle_MouthClosed                 ;A893CF;
-    dw $0008,Spritemap_Fune_FacingRight_StartOpeningMouth                ;A893D3;
-    dw $0008,Spritemap_Fune_FacingRight_MouthOpening1                    ;A893D7;
-    dw $0008,Spritemap_Fune_FacingRight_MouthOpening2                    ;A893DB;
+    dw $000C,Spritemap_Fune_FacingRight_Idle_MouthClosed                 ;A893CF;
+    dw $0005,Spritemap_Fune_FacingRight_StartOpeningMouth                ;A893D3;
+    dw $0005,Spritemap_Fune_FacingRight_MouthOpening1                    ;A893D7;
+    dw $0005,Spritemap_Fune_FacingRight_MouthOpening2                    ;A893DB;
     dw Instruction_Fune_SpawnFireball_FacingRight                        ;A893DF;
     dw Instruction_FuneNamihe_QueueSpitSFX                               ;A893E1;
-    dw $0010,Spritemap_Fune_FacingRight_MouthMostOpen                    ;A893E3;
-    dw $0008,Spritemap_Fune_FacingRight_MouthOpening2                    ;A893E7;
-    dw $0008,Spritemap_Fune_FacingRight_MouthOpening1                    ;A893EB;
-    dw $0008,Spritemap_Fune_FacingRight_StartOpeningMouth                ;A893EF;
+    dw $000C,Spritemap_Fune_FacingRight_MouthMostOpen                    ;A893E3;
+    dw $0005,Spritemap_Fune_FacingRight_MouthOpening2                    ;A893E7;
+    dw $0005,Spritemap_Fune_FacingRight_MouthOpening1                    ;A893EB;
+    dw $0005,Spritemap_Fune_FacingRight_StartOpeningMouth                ;A893EF;
     dw Instruction_FuneNamihe_FinishActivity_duplicate                   ;A893F3;
     dw Instruction_Common_GotoY                                          ;A893F5;
     dw InstList_Fune_FacingRight_Idling                                  ;A893F7;
@@ -2044,17 +2046,17 @@ InstList_Namihe_FacingLeft_Idling:
     dw Instruction_Common_Sleep                                          ;A895C1;
 
 InstList_Namihe_FacingLeft_Active:
-    dw $0008,Spritemap_Namihe_FacingLeft_Idle_MouthEyeOpened             ;A895C3;
-    dw $0008,Spritemap_Namihe_FacingLeft_EyeOpened                       ;A895C7;
-    dw $0008,Spritemap_Namihe_FacingLeft_StartOpeningMouth               ;A895CB;
-    dw $0008,Spritemap_Namihe_FacingLeft_MouthOpening1                   ;A895CF;
-    dw $0008,Spritemap_Namihe_FacingLeft_MouthOpening2                   ;A895D3;
+    dw $0007,Spritemap_Namihe_FacingLeft_Idle_MouthEyeOpened             ;A895C3;
+    dw $0007,Spritemap_Namihe_FacingLeft_EyeOpened                       ;A895C7;
+    dw $0007,Spritemap_Namihe_FacingLeft_StartOpeningMouth               ;A895CB;
+    dw $0007,Spritemap_Namihe_FacingLeft_MouthOpening1                   ;A895CF;
+    dw $0007,Spritemap_Namihe_FacingLeft_MouthOpening2                   ;A895D3;
     dw Instruction_Namihe_SpawnFireball_FacingLeft                       ;A895D7;
     dw Instruction_FuneNamihe_QueueSpitSFX                               ;A895D9;
-    dw $0008,Spritemap_Namihe_FacingLeft_MouthMostOpen                   ;A895DB;
-    dw $0008,Spritemap_Namihe_FacingLeft_MouthOpening2                   ;A895DF;
-    dw $0008,Spritemap_Namihe_FacingLeft_MouthOpening1                   ;A895E3;
-    dw $0008,Spritemap_Namihe_FacingLeft_StartOpeningMouth               ;A895E7;
+    dw $0007,Spritemap_Namihe_FacingLeft_MouthMostOpen                   ;A895DB;
+    dw $0007,Spritemap_Namihe_FacingLeft_MouthOpening2                   ;A895DF;
+    dw $0007,Spritemap_Namihe_FacingLeft_MouthOpening1                   ;A895E3;
+    dw $0007,Spritemap_Namihe_FacingLeft_StartOpeningMouth               ;A895E7;
     dw Instruction_FuneNamihe_FinishActivity                             ;A895EB;
     dw Instruction_Common_GotoY                                          ;A895ED;
     dw InstList_Namihe_FacingLeft_Idling                                 ;A895EF;
@@ -2064,17 +2066,17 @@ InstList_Namihe_FacingRight_Idling:
     dw Instruction_Common_Sleep                                          ;A895F5;
 
 InstList_Namihe_FacingRight_Active:
-    dw $0008,Spritemap_Namihe_FacingRight_Idle_MouthEyeClosed            ;A895F7;
-    dw $0008,Spritemap_Namihe_FacingRight_EyeOpened                      ;A895FB;
-    dw $0008,Spritemap_Namihe_FacingRight_StartOpeningMouth              ;A895FF;
-    dw $0008,Spritemap_Namihe_FacingRight_MouthOpening1                  ;A89603;
-    dw $0008,Spritemap_Namihe_FacingRight_MouthOpening2                  ;A89607;
+    dw $0007,Spritemap_Namihe_FacingRight_Idle_MouthEyeClosed            ;A895F7;
+    dw $0007,Spritemap_Namihe_FacingRight_EyeOpened                      ;A895FB;
+    dw $0007,Spritemap_Namihe_FacingRight_StartOpeningMouth              ;A895FF;
+    dw $0007,Spritemap_Namihe_FacingRight_MouthOpening1                  ;A89603;
+    dw $0007,Spritemap_Namihe_FacingRight_MouthOpening2                  ;A89607;
     dw Instruction_Namihe_SpawnFireball_FacingRight                      ;A8960B;
     dw Instruction_FuneNamihe_QueueSpitSFX                               ;A8960D;
-    dw $0008,Spritemap_Namihe_FacingRight_MouthMostOpen                  ;A8960F;
-    dw $0008,Spritemap_Namihe_FacingRight_MouthOpening2                  ;A89613;
-    dw $0008,Spritemap_Namihe_FacingRight_MouthOpening1                  ;A89617;
-    dw $0008,Spritemap_Namihe_FacingRight_StartOpeningMouth              ;A8961B;
+    dw $0007,Spritemap_Namihe_FacingRight_MouthMostOpen                  ;A8960F;
+    dw $0007,Spritemap_Namihe_FacingRight_MouthOpening2                  ;A89613;
+    dw $0007,Spritemap_Namihe_FacingRight_MouthOpening1                  ;A89617;
+    dw $0007,Spritemap_Namihe_FacingRight_StartOpeningMouth              ;A8961B;
     dw Instruction_FuneNamihe_FinishActivity_duplicate                   ;A8961F;
     dw Instruction_Common_GotoY                                          ;A89621;
     dw InstList_Namihe_FacingRight_Idling                                ;A89623;
@@ -2464,9 +2466,9 @@ UNUSED_Coven_BlackPalettes_A899CC:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_Coven:
-    dw $0010,Spritemap_Coven_0                                           ;A89A8C;
-    dw $0010,Spritemap_Coven_1                                           ;A89A90;
-    dw $0010,Spritemap_Coven_2                                           ;A89A94;
+    dw $000D,Spritemap_Coven_0                                           ;A89A8C;
+    dw $000D,Spritemap_Coven_1                                           ;A89A90;
+    dw $000E,Spritemap_Coven_2                                           ;A89A94;
     dw Instruction_Common_GotoY                                          ;A89A98;
     dw InstList_Coven                                                    ;A89A9A;
 
@@ -2488,11 +2490,11 @@ CovenConstants_InitialHoveringYVelocity:
 
 CovenConstants_SleepTimer:
 ; Number of frames to sleep after dematerialising
-    dw $0078                                                             ;A89AA4;
+    dw $0064                                                             ;A89AA4;
 
 CovenConstants_MaterializeTimer:
 ; Number of frames to be materialised for
-    dw $0078                                                             ;A89AA6;
+    dw $0064                                                             ;A89AA6;
 
 CovenConstants_OffsetsFromSamusToMaterialize:
 ; X/Y offsets from Samus position to materialise when Samus has been moving a given direction
@@ -3103,73 +3105,73 @@ Palette_YappingMaw:
 
 
 InstList_YappingMaw_Attacking_FacingUp:
-    dw $0005,Spritemap_YappingMaw_0                                      ;A89F6F;
+    dw $0004,Spritemap_YappingMaw_0                                      ;A89F6F;
     dw $0003,Spritemap_YappingMaw_1                                      ;A89F73;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A89F77;
-    dw $0050,Spritemap_YappingMaw_2                                      ;A89F79;
+    dw $0040,Spritemap_YappingMaw_2                                      ;A89F79;
     dw $0003,Spritemap_YappingMaw_1                                      ;A89F7D;
     dw Instruction_Common_GotoY                                          ;A89F81;
     dw InstList_YappingMaw_Attacking_FacingUp                            ;A89F83;
 
 InstList_YappingMaw_Attacking_FacingUpRight:
-    dw $0005,Spritemap_YappingMaw_3                                      ;A89F85;
+    dw $0004,Spritemap_YappingMaw_3                                      ;A89F85;
     dw $0003,Spritemap_YappingMaw_4                                      ;A89F89;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A89F8D;
-    dw $0050,Spritemap_YappingMaw_5                                      ;A89F8F;
+    dw $0040,Spritemap_YappingMaw_5                                      ;A89F8F;
     dw $0003,Spritemap_YappingMaw_4                                      ;A89F93;
     dw Instruction_Common_GotoY                                          ;A89F97;
     dw InstList_YappingMaw_Attacking_FacingUpRight                       ;A89F99;
 
 InstList_YappingMaw_Attacking_FacingRight:
-    dw $0005,Spritemap_YappingMaw_6                                      ;A89F9B;
+    dw $0004,Spritemap_YappingMaw_6                                      ;A89F9B;
     dw $0003,Spritemap_YappingMaw_7                                      ;A89F9F;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A89FA3;
-    dw $0050,Spritemap_YappingMaw_8                                      ;A89FA5;
+    dw $0040,Spritemap_YappingMaw_8                                      ;A89FA5;
     dw $0003,Spritemap_YappingMaw_7                                      ;A89FA9;
     dw Instruction_Common_GotoY                                          ;A89FAD;
     dw InstList_YappingMaw_Attacking_FacingRight                         ;A89FAF;
 
 InstList_YappingMaw_Attacking_FacingDownRight:
-    dw $0005,Spritemap_YappingMaw_9                                      ;A89FB1;
+    dw $0004,Spritemap_YappingMaw_9                                      ;A89FB1;
     dw $0003,Spritemap_YappingMaw_A                                      ;A89FB5;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A89FB9;
-    dw $0050,Spritemap_YappingMaw_B                                      ;A89FBB;
+    dw $0040,Spritemap_YappingMaw_B                                      ;A89FBB;
     dw $0003,Spritemap_YappingMaw_A                                      ;A89FBF;
     dw Instruction_Common_GotoY                                          ;A89FC3;
     dw InstList_YappingMaw_Attacking_FacingDownRight                     ;A89FC5;
 
 InstList_YappingMaw_Attacking_FacingDown:
-    dw $0005,Spritemap_YappingMaw_C                                      ;A89FC7;
+    dw $0004,Spritemap_YappingMaw_C                                      ;A89FC7;
     dw $0003,Spritemap_YappingMaw_D                                      ;A89FCB;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A89FCF;
-    dw $0050,Spritemap_YappingMaw_E                                      ;A89FD1;
+    dw $0040,Spritemap_YappingMaw_E                                      ;A89FD1;
     dw $0003,Spritemap_YappingMaw_D                                      ;A89FD5;
     dw Instruction_Common_GotoY                                          ;A89FD9;
     dw InstList_YappingMaw_Attacking_FacingDown                          ;A89FDB;
 
 InstList_YappingMaw_Attacking_FacingDownLeft:
-    dw $0005,Spritemap_YappingMaw_F                                      ;A89FDD;
+    dw $0004,Spritemap_YappingMaw_F                                      ;A89FDD;
     dw $0003,Spritemap_YappingMaw_10                                     ;A89FE1;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A89FE5;
-    dw $0050,Spritemap_YappingMaw_11                                     ;A89FE7;
+    dw $0040,Spritemap_YappingMaw_11                                     ;A89FE7;
     dw $0003,Spritemap_YappingMaw_10                                     ;A89FEB;
     dw Instruction_Common_GotoY                                          ;A89FEF;
     dw InstList_YappingMaw_Attacking_FacingDownLeft                      ;A89FF1;
 
 InstList_YappingMaw_Attacking_FacingLeft:
-    dw $0005,Spritemap_YappingMaw_12                                     ;A89FF3;
+    dw $0004,Spritemap_YappingMaw_12                                     ;A89FF3;
     dw $0003,Spritemap_YappingMaw_13                                     ;A89FF7;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A89FFB;
-    dw $0050,Spritemap_YappingMaw_14                                     ;A89FFD;
+    dw $0040,Spritemap_YappingMaw_14                                     ;A89FFD;
     dw $0003,Spritemap_YappingMaw_13                                     ;A8A001;
     dw Instruction_Common_GotoY                                          ;A8A005;
     dw InstList_YappingMaw_Attacking_FacingLeft                          ;A8A007;
 
 InstList_YappingMaw_Attacking_FacingUpLeft:
-    dw $0005,Spritemap_YappingMaw_15                                     ;A8A009;
+    dw $0004,Spritemap_YappingMaw_15                                     ;A8A009;
     dw $0003,Spritemap_YappingMaw_16                                     ;A8A00D;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A8A011;
-    dw $0050,Spritemap_YappingMaw_17                                     ;A8A013;
+    dw $0040,Spritemap_YappingMaw_17                                     ;A8A013;
     dw $0003,Spritemap_YappingMaw_16                                     ;A8A017;
     dw Instruction_Common_GotoY                                          ;A8A01B;
     dw InstList_YappingMaw_Attacking_FacingUpLeft                        ;A8A01D;
@@ -3182,9 +3184,9 @@ InstList_YappingMaw_Cooldown_FacingUp_0:
     dw Instruction_YappingMaw_OffsetSamusUp                              ;A8A025;
 
 InstList_YappingMaw_Cooldown_FacingUp_1:
-    dw $0050,Spritemap_YappingMaw_2                                      ;A8A027;
+    dw $0040,Spritemap_YappingMaw_2                                      ;A8A027;
     dw $0003,Spritemap_YappingMaw_1                                      ;A8A02B;
-    dw $0005,Spritemap_YappingMaw_0                                      ;A8A02F;
+    dw $0004,Spritemap_YappingMaw_0                                      ;A8A02F;
     dw $0003,Spritemap_YappingMaw_1                                      ;A8A033;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A8A037;
     dw Instruction_Common_GotoY                                          ;A8A039;
@@ -3196,9 +3198,9 @@ InstList_YappingMaw_Cooldown_FacingUpLeft_0:
     dw Instruction_YappingMaw_OffsetSamusUp                              ;A8A043;
 
 InstList_YappingMaw_Cooldown_FacingUpLeft_1:
-    dw $0050,Spritemap_YappingMaw_2                                      ;A8A045;
+    dw $0040,Spritemap_YappingMaw_2                                      ;A8A045;
     dw $0003,Spritemap_YappingMaw_1                                      ;A8A049;
-    dw $0005,Spritemap_YappingMaw_0                                      ;A8A04D;
+    dw $0004,Spritemap_YappingMaw_0                                      ;A8A04D;
     dw $0003,Spritemap_YappingMaw_1                                      ;A8A051;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A8A055;
     dw Instruction_CommonA8_GotoY                                        ;A8A057;
@@ -3212,9 +3214,9 @@ InstList_YappingMaw_Cooldown_FacingDown_0:
     dw Instruction_YappingMaw_OffsetSamusDown                            ;A8A061;
 
 InstList_YappingMaw_Cooldown_FacingDown_1:
-    dw $0050,Spritemap_YappingMaw_E                                      ;A8A063;
+    dw $0040,Spritemap_YappingMaw_E                                      ;A8A063;
     dw $0003,Spritemap_YappingMaw_D                                      ;A8A067;
-    dw $0005,Spritemap_YappingMaw_C                                      ;A8A06B;
+    dw $0004,Spritemap_YappingMaw_C                                      ;A8A06B;
     dw $0003,Spritemap_YappingMaw_D                                      ;A8A06F;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A8A073;
     dw Instruction_Common_GotoY                                          ;A8A075;
@@ -3226,9 +3228,9 @@ InstList_YappingMaw_Cooldown_FacingDownLeft_0:
     dw Instruction_YappingMaw_OffsetSamusDown                            ;A8A07F;
 
 InstList_YappingMaw_Cooldown_FacingDownLeft_1:
-    dw $0050,Spritemap_YappingMaw_E                                      ;A8A081;
+    dw $0040,Spritemap_YappingMaw_E                                      ;A8A081;
     dw $0003,Spritemap_YappingMaw_D                                      ;A8A085;
-    dw $0005,Spritemap_YappingMaw_C                                      ;A8A089;
+    dw $0004,Spritemap_YappingMaw_C                                      ;A8A089;
     dw $0003,Spritemap_YappingMaw_D                                      ;A8A08D;
     dw Instruction_YappingMaw_QueueSFXIfOnScreen                         ;A8A091;
     dw Instruction_Common_GotoY                                          ;A8A093;
@@ -3377,7 +3379,7 @@ InitAI_YappingMaw:
     STA.L $7E8020,X                                                      ;A8A17C;
     LDA.W $0FB4,X                                                        ;A8A180;
     STA.W $0FB2,X                                                        ;A8A183;
-    LDA.W #$0040                                                         ;A8A186;
+    LDA.W #$0030                                                         ;A8A186;
     STA.W $0FB0,X                                                        ;A8A189;
     LDA.W #InstList_YappingMaw_Attacking_FacingUp                        ;A8A18C;
     STA.W $0F92,X                                                        ;A8A18F;
@@ -3909,7 +3911,7 @@ Function_YappingMaw_Cooldown:
     STA.L $7E8020,X                                                      ;A8A6AC;
     LDA.W #$0030                                                         ;A8A6B0;
     STA.L $7E802A,X                                                      ;A8A6B3;
-    LDA.W #$0040                                                         ;A8A6B7;
+    LDA.W #$0030                                                         ;A8A6B7;
     STA.W $0FB0,X                                                        ;A8A6BA;
     LDA.W #Function_YappingMaw_Neutral                                   ;A8A6BD;
     STA.W $0FA8,X                                                        ;A8A6C0;
@@ -4354,17 +4356,17 @@ Palette_Kago:
 
 
 InstList_Kago_Initial_SlowAnimation:
-    dw $000A,Spritemap_Kago_0                                            ;A8AB1E;
-    dw $000A,Spritemap_Kago_1                                            ;A8AB22;
-    dw $000A,Spritemap_Kago_2                                            ;A8AB26;
-    dw $000A,Spritemap_Kago_1                                            ;A8AB2A;
+    dw $0008,Spritemap_Kago_0                                            ;A8AB1E;
+    dw $0008,Spritemap_Kago_1                                            ;A8AB22;
+    dw $0008,Spritemap_Kago_2                                            ;A8AB26;
+    dw $0009,Spritemap_Kago_1                                            ;A8AB2A;
     dw Instruction_Common_GotoY                                          ;A8AB2E;
     dw InstList_Kago_Initial_SlowAnimation                               ;A8AB30;
 
 InstList_Kago_TakenHit_FastAnimation:
-    dw $0003,Spritemap_Kago_0                                            ;A8AB32;
+    dw $0002,Spritemap_Kago_0                                            ;A8AB32;
     dw $0003,Spritemap_Kago_1                                            ;A8AB36;
-    dw $0003,Spritemap_Kago_2                                            ;A8AB3A;
+    dw $0002,Spritemap_Kago_2                                            ;A8AB3A;
     dw $0003,Spritemap_Kago_1                                            ;A8AB3E;
     dw Instruction_Common_GotoY                                          ;A8AB42;
     dw InstList_Kago_TakenHit_FastAnimation                              ;A8AB44;
@@ -4487,10 +4489,10 @@ Palette_Magdollite_Glow_3:
     dw $3800,$0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000, $0010,$023F,$00BD,$0014, $0000,$0000,$0000
 
 InstList_Magdollite_Idling_FacingLeft:
-    dw $000D,Spritemap_Magdollite_FacingLeft_Head_0                      ;A8AC9C;
-    dw $000D,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8ACA0;
-    dw $000D,Spritemap_Magdollite_FacingLeft_Head_2                      ;A8ACA4;
-    dw $000D,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8ACA8;
+    dw $000A,Spritemap_Magdollite_FacingLeft_Head_0                      ;A8AC9C;
+    dw $000A,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8ACA0;
+    dw $000A,Spritemap_Magdollite_FacingLeft_Head_2                      ;A8ACA4;
+    dw $000A,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8ACA8;
     dw Instruction_CommonA8_GotoY                                        ;A8ACAC;
     dw InstList_Magdollite_Idling_FacingLeft                             ;A8ACAE;
 
@@ -4499,29 +4501,29 @@ InstList_Magdollite_Slave2_ThrowFireballs_FacingLeft:
     dw $0061                                                             ;A8ACB2;
     dw Instruction_Magdollite_SetWaitingFlag                             ;A8ACB4;
     dw Instruction_Magdollite_SetCooldownTimerTo100                      ;A8ACB6;
-    dw $001A,Spritemap_Magdollite_FacingLeft_Fist_0                      ;A8ACB8;
-    dw $0008,Spritemap_Magdollite_FacingLeft_Fist_1                      ;A8ACBC;
+    dw $0014,Spritemap_Magdollite_FacingLeft_Fist_0                      ;A8ACB8;
+    dw $0006,Spritemap_Magdollite_FacingLeft_Fist_1                      ;A8ACBC;
     dw Instruction_Magdollite_ShiftLeft8Pixels_Up4Pixels_FacingLeft      ;A8ACC0;
-    dw $0005,Spritemap_Magdollite_FacingLeft_Hand_FingersStraight        ;A8ACC2;
+    dw $0004,Spritemap_Magdollite_FacingLeft_Hand_FingersStraight        ;A8ACC2;
     dw Instruction_Magdollite_SpawnLavaProjectile                        ;A8ACC6;
-    dw $0005,Spritemap_Magdollite_FacingLeft_Hand_FingersStraight        ;A8ACC8;
+    dw $0004,Spritemap_Magdollite_FacingLeft_Hand_FingersStraight        ;A8ACC8;
     dw Instruction_Magdollite_SpawnLavaProjectile                        ;A8ACCC;
-    dw $0005,Spritemap_Magdollite_FacingLeft_Hand_FingersStraight        ;A8ACCE;
+    dw $0004,Spritemap_Magdollite_FacingLeft_Hand_FingersStraight        ;A8ACCE;
     dw Instruction_Magdollite_SpawnLavaProjectile                        ;A8ACD2;
     dw Instruction_Magdollite_ShiftLeft8Pixels_Up4Pixels_Left_dup        ;A8ACD4;
-    dw $0005,Spritemap_Magdollite_FacingLeft_Hand_FingersCurled          ;A8ACD6;
+    dw $0004,Spritemap_Magdollite_FacingLeft_Hand_FingersCurled          ;A8ACD6;
     dw Instruction_Magdollite_ResetWaitingFlag                           ;A8ACDA;
     dw Instruction_Common_Sleep                                          ;A8ACDC;
 
 InstList_Magdollite_SplashIntoLavaAndFormBasePillar_Left_0:
     dw Instruction_Magdollite_SetWaitingFlag                             ;A8ACDE;
-    dw $0005,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8ACE0;
+    dw $0004,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8ACE0;
     dw Instruction_Magdollite_MoveDown2Pixels                            ;A8ACE4;
-    dw $0005,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8ACE6;
-    dw $0005,Spritemap_Magdollite_FacingLeft_Head_PokingOutOfLava        ;A8ACEA;
-    dw $0005,Spritemap_Magdollite_FacingLeft_Head_BarelyPokingOutOfLava  ;A8ACEE;
+    dw $0004,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8ACE6;
+    dw $0004,Spritemap_Magdollite_FacingLeft_Head_PokingOutOfLava        ;A8ACEA;
+    dw $0004,Spritemap_Magdollite_FacingLeft_Head_BarelyPokingOutOfLava  ;A8ACEE;
     dw Instruction_Magdollite_MoveDown2Pixels                            ;A8ACF2;
-    dw $0005,Spritemap_Magdollite_FacingLeft_Head_BarelyPokingOutOfLava  ;A8ACF4;
+    dw $0004,Spritemap_Magdollite_FacingLeft_Head_BarelyPokingOutOfLava  ;A8ACF4;
     dw Instruction_Magdollite_MoveDownBy18Pixels_SetSlavesAsVisible      ;A8ACF8;
     dw Instruction_Common_TimerInY                                       ;A8ACFA;
     dw $0018                                                             ;A8ACFC;
@@ -4546,21 +4548,21 @@ InstList_Magdollite_UnformBasePillar_SplashBackToIdle_Left_1:
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;A8AD1A;
     dw InstList_Magdollite_UnformBasePillar_SplashBackToIdle_Left_1      ;A8AD1C;
     dw Instruction_Magdollite_MoveDown4Pixels_SetSlavesAsInvisible       ;A8AD1E;
-    dw $0005,Spritemap_Magdollite_FacingLeft_Head_BarelyPokingOutOfLava  ;A8AD20;
+    dw $0004,Spritemap_Magdollite_FacingLeft_Head_BarelyPokingOutOfLava  ;A8AD20;
     dw Instruction_Magdollite_MoveUp2Pixels                              ;A8AD24;
-    dw $0005,Spritemap_Magdollite_FacingLeft_Head_BarelyPokingOutOfLava  ;A8AD26;
-    dw $0005,Spritemap_Magdollite_FacingLeft_Head_PokingOutOfLava        ;A8AD2A;
-    dw $0005,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8AD2E;
+    dw $0004,Spritemap_Magdollite_FacingLeft_Head_BarelyPokingOutOfLava  ;A8AD26;
+    dw $0004,Spritemap_Magdollite_FacingLeft_Head_PokingOutOfLava        ;A8AD2A;
+    dw $0004,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8AD2E;
     dw Instruction_Magdollite_MoveUp2Pixels                              ;A8AD32;
-    dw $0005,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8AD34;
+    dw $0004,Spritemap_Magdollite_FacingLeft_Head_1                      ;A8AD34;
     dw Instruction_Magdollite_ResetWaitingFlag                           ;A8AD38;
     dw Instruction_Common_Sleep                                          ;A8AD3A;
 
 InstList_Magdollite_Idling_FacingRight:
-    dw $000D,Spritemap_Magdollite_FacingRight_Head_0                     ;A8AD3C;
-    dw $000D,Spritemap_Magdollite_FacingRight_Head_1                     ;A8AD40;
-    dw $000D,Spritemap_Magdollite_FacingRight_Head_2                     ;A8AD44;
-    dw $000D,Spritemap_Magdollite_FacingRight_Head_1                     ;A8AD48;
+    dw $000A,Spritemap_Magdollite_FacingRight_Head_0                     ;A8AD3C;
+    dw $000A,Spritemap_Magdollite_FacingRight_Head_1                     ;A8AD40;
+    dw $000A,Spritemap_Magdollite_FacingRight_Head_2                     ;A8AD44;
+    dw $000A,Spritemap_Magdollite_FacingRight_Head_1                     ;A8AD48;
     dw Instruction_Common_GotoY                                          ;A8AD4C;
     dw InstList_Magdollite_Idling_FacingRight                            ;A8AD4E;
 
@@ -4569,29 +4571,29 @@ InstList_Magdollite_ThrowFireballs_FacingRight:
     dw $0061                                                             ;A8AD52;
     dw Instruction_Magdollite_SetWaitingFlag                             ;A8AD54;
     dw Instruction_Magdollite_SetCooldownTimerTo100                      ;A8AD56;
-    dw $001A,Spritemap_Magdollite_FacingRight_Fist_0                     ;A8AD58;
-    dw $0008,Spritemap_Magdollite_FacingRight_Fist_1                     ;A8AD5C;
+    dw $0013,Spritemap_Magdollite_FacingRight_Fist_0                     ;A8AD58;
+    dw $0006,Spritemap_Magdollite_FacingRight_Fist_1                     ;A8AD5C;
     dw Instruction_Magdollite_ShiftRight8Pixels_Up4Pixels_FaceRight      ;A8AD60;
-    dw $0005,Spritemap_Magdollite_FacingRight_Hand_FingersStraight       ;A8AD62;
+    dw $0004,Spritemap_Magdollite_FacingRight_Hand_FingersStraight       ;A8AD62;
     dw Instruction_Magdollite_SpawnLavaProjectile                        ;A8AD66;
-    dw $0005,Spritemap_Magdollite_FacingRight_Hand_FingersStraight       ;A8AD68;
+    dw $0004,Spritemap_Magdollite_FacingRight_Hand_FingersStraight       ;A8AD68;
     dw Instruction_Magdollite_SpawnLavaProjectile                        ;A8AD6C;
-    dw $0005,Spritemap_Magdollite_FacingRight_Hand_FingersStraight       ;A8AD6E;
+    dw $0004,Spritemap_Magdollite_FacingRight_Hand_FingersStraight       ;A8AD6E;
     dw Instruction_Magdollite_SpawnLavaProjectile                        ;A8AD72;
     dw Instruction_Magdollite_ShiftRight8Pixels_Up4Pixels_Right_dup      ;A8AD74;
-    dw $0005,Spritemap_Magdollite_FacingRight_Hand_FingersCurled         ;A8AD76;
+    dw $0004,Spritemap_Magdollite_FacingRight_Hand_FingersCurled         ;A8AD76;
     dw Instruction_Magdollite_ResetWaitingFlag                           ;A8AD7A;
     dw Instruction_Common_Sleep                                          ;A8AD7C;
 
 InstList_Magdollite_SplashIntoLavaAndFormBasePillar_Right_0:
     dw Instruction_Magdollite_SetWaitingFlag                             ;A8AD7E;
-    dw $0005,Spritemap_Magdollite_FacingRight_Head_1                     ;A8AD80;
+    dw $0004,Spritemap_Magdollite_FacingRight_Head_1                     ;A8AD80;
     dw Instruction_Magdollite_MoveDown2Pixels                            ;A8AD84;
-    dw $0005,Spritemap_Magdollite_FacingRight_Head_1                     ;A8AD86;
-    dw $0005,Spritemap_Magdollite_FacingRight_Head_PokingOutOfLava       ;A8AD8A;
-    dw $0005,Spritemap_Magdollite_FacingRight_Head_BarelyPokingOutOfLava ;A8AD8E;
+    dw $0004,Spritemap_Magdollite_FacingRight_Head_1                     ;A8AD86;
+    dw $0004,Spritemap_Magdollite_FacingRight_Head_PokingOutOfLava       ;A8AD8A;
+    dw $0004,Spritemap_Magdollite_FacingRight_Head_BarelyPokingOutOfLava ;A8AD8E;
     dw Instruction_Magdollite_MoveDown2Pixels                            ;A8AD92;
-    dw $0005,Spritemap_Magdollite_FacingRight_Head_BarelyPokingOutOfLava ;A8AD94;
+    dw $0004,Spritemap_Magdollite_FacingRight_Head_BarelyPokingOutOfLava ;A8AD94;
     dw Instruction_Magdollite_MoveDownBy18Pixels_SetSlavesAsVisible      ;A8AD98;
     dw Instruction_Common_TimerInY                                       ;A8AD9A;
     dw $0018                                                             ;A8AD9C;
@@ -4616,13 +4618,13 @@ InstList_Magdollite_UnformBasePillar_SplashBackToIdle_Right_1:
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;A8ADBA;
     dw InstList_Magdollite_UnformBasePillar_SplashBackToIdle_Right_1     ;A8ADBC;
     dw Instruction_Magdollite_MoveDown4Pixels_SetSlavesAsInvisible       ;A8ADBE;
-    dw $0005,Spritemap_Magdollite_FacingRight_Head_BarelyPokingOutOfLava ;A8ADC0;
+    dw $0004,Spritemap_Magdollite_FacingRight_Head_BarelyPokingOutOfLava ;A8ADC0;
     dw Instruction_Magdollite_MoveUp2Pixels                              ;A8ADC4;
-    dw $0005,Spritemap_Magdollite_FacingRight_Head_BarelyPokingOutOfLava ;A8ADC6;
-    dw $0005,Spritemap_Magdollite_FacingRight_Head_PokingOutOfLava       ;A8ADCA;
-    dw $0005,Spritemap_Magdollite_FacingRight_Head_1                     ;A8ADCE;
+    dw $0004,Spritemap_Magdollite_FacingRight_Head_BarelyPokingOutOfLava ;A8ADC6;
+    dw $0004,Spritemap_Magdollite_FacingRight_Head_PokingOutOfLava       ;A8ADCA;
+    dw $0004,Spritemap_Magdollite_FacingRight_Head_1                     ;A8ADCE;
     dw Instruction_Magdollite_MoveUp2Pixels                              ;A8ADD2;
-    dw $0005,Spritemap_Magdollite_FacingRight_Head_1                     ;A8ADD4;
+    dw $0004,Spritemap_Magdollite_FacingRight_Head_1                     ;A8ADD4;
     dw Instruction_Magdollite_ResetWaitingFlag                           ;A8ADD8;
     dw Instruction_Common_Sleep                                          ;A8ADDA;
 
@@ -4836,7 +4838,7 @@ endif ; !FEATURE_KEEP_UNREFERENCED
 
 Instruction_Magdollite_SetCooldownTimerTo100:
     LDX.W $0E54                                                          ;A8AF44;
-    LDA.W #$0100                                                         ;A8AF47;
+    LDA.W #$00CC                                                         ;A8AF47;
     STA.L $7E7808,X                                                      ;A8AF4A;
     RTL                                                                  ;A8AF4E;
 
@@ -6082,7 +6084,7 @@ Function_Beetom_CrawlingLeft:
     CLC                                                                  ;A8B9F8;
     ADC.W #$0008                                                         ;A8B9F9;
     STA.W $0F7A,X                                                        ;A8B9FC;
-    LDA.W #$C000                                                         ;A8B9FF;
+    LDA.W #$B000                                                         ;A8B9FF;
     STA.B $12                                                            ;A8BA02;
     LDA.W #$FFFF                                                         ;A8BA04;
     STA.B $14                                                            ;A8BA07;
@@ -6131,7 +6133,7 @@ Function_Beetom_CrawlingRight:
     SEC                                                                  ;A8BA5B;
     SBC.W #$0008                                                         ;A8BA5C;
     STA.W $0F7A,X                                                        ;A8BA5F;
-    LDA.W #$4000                                                         ;A8BA62;
+    LDA.W #$5000                                                         ;A8BA62;
     STA.B $12                                                            ;A8BA65;
     STZ.B $14                                                            ;A8BA67;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A8BA69;
@@ -6164,7 +6166,7 @@ Function_Beetom_ShortHopLeft:
 
   + LDA.W #$FFFF                                                         ;A8BA95;
     STA.B $14                                                            ;A8BA98;
-    LDA.W #$C000                                                         ;A8BA9A;
+    LDA.W #$B000                                                         ;A8BA9A;
     STA.B $12                                                            ;A8BA9D;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A8BA9F;
     BCC .return                                                          ;A8BAA3;
@@ -6190,7 +6192,7 @@ Function_Beetom_ShortHopRight:
     JSR.W Function_Beetom_YMovement_ShortHop_Falling                     ;A8BAC5;
 
   + STZ.B $14                                                            ;A8BAC8;
-    LDA.W #$4000                                                         ;A8BACA;
+    LDA.W #$5000                                                         ;A8BACA;
     STA.B $12                                                            ;A8BACD;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A8BACF;
     BCC .return                                                          ;A8BAD3;
@@ -6280,7 +6282,7 @@ Function_Beetom_LongHopLeft:
 
   + LDA.W #$FFFF                                                         ;A8BB66;
     STA.B $14                                                            ;A8BB69;
-    LDA.W #$C000                                                         ;A8BB6B;
+    LDA.W #$B000                                                         ;A8BB6B;
     STA.B $12                                                            ;A8BB6E;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A8BB70;
     BCC .return                                                          ;A8BB74;
@@ -6306,7 +6308,7 @@ Function_Beetom_LongHopRight:
     JSR.W Function_Beetom_YMovement_LongHop_Falling                      ;A8BB96;
 
   + STZ.B $14                                                            ;A8BB99;
-    LDA.W #$4000                                                         ;A8BB9B;
+    LDA.W #$5000                                                         ;A8BB9B;
     STA.B $12                                                            ;A8BB9E;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A8BBA0;
     BCC .return                                                          ;A8BBA4;
@@ -6394,9 +6396,7 @@ Function_Beetom_LungeLeft:
 .falling:
     JSR.W Function_Beetom_YMovement_Lunge_Falling                        ;A8BC34;
 
-  + LDA.W #$0003                                                         ;A8BC37;
-    EOR.W #$FFFF                                                         ;A8BC3A;
-    INC A                                                                ;A8BC3D;
+  + LDA.W #$FFFD                                                         ;A8BC37;
     STA.B $14                                                            ;A8BC3E;
     STZ.B $12                                                            ;A8BC40;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A8BC42;
@@ -6649,9 +6649,7 @@ Function_Beetom_Movement_BeingFlung:
 
 
 .right:
-    LDA.W #$0002                                                         ;A8BE0B;
-    EOR.W #$FFFF                                                         ;A8BE0E;
-    INC A                                                                ;A8BE11;
+    LDA.W #$FFFE                                                         ;A8BE0B;
 
   + STA.B $14                                                            ;A8BE12;
     STZ.B $12                                                            ;A8BE14;
@@ -6981,10 +6979,10 @@ Powamp_YAccel_Sinking:
     dw $0000,$0000                                                       ;A8C1BD;
 
 Powamp_InitialYVelocity_Sinking:
-    dw $0001,$0000                                                       ;A8C1C1;
+    dw $0001,$3300                                                       ;A8C1C1;
 
 Powamp_InitialYVelocity_Rising:
-    dw $FFFF,$8000                                                       ;A8C1C5;
+    dw $FFFF,$B000                                                       ;A8C1C5;
 
 InitAI_Powamp:
     LDX.W $0E54                                                          ;A8C1C9;
@@ -6998,7 +6996,7 @@ InitAI_Powamp:
     STZ.W $0F90,X                                                        ;A8C1E1;
     LDA.W $0FB4,X                                                        ;A8C1E4;
     BNE .balloon                                                         ;A8C1E7;
-    LDA.W #$003C                                                         ;A8C1E9;
+    LDA.W #$0032                                                         ;A8C1E9;
     STA.W $0FB0,X                                                        ;A8C1EC;
     LDA.W #Function_Powamp_Deflated_Resting                              ;A8C1EF;
     STA.W $0FB2,X                                                        ;A8C1F2;
@@ -7469,7 +7467,7 @@ Function_Powamp_Deflated_Sinking:
     STA.W $0F7E,X                                                        ;A8C549;
     LDA.W #Function_Powamp_Deflated_Resting                              ;A8C54C;
     STA.W $0FB2,X                                                        ;A8C54F;
-    LDA.W #$003C                                                         ;A8C552;
+    LDA.W #$0032                                                         ;A8C552;
     STA.W $0FB0,X                                                        ;A8C555;
     LDA.W #$0001                                                         ;A8C558;
     STA.W $0F94,X                                                        ;A8C55B;
@@ -7685,197 +7683,197 @@ InstList_Robot_FacingLeft_WalkingForwards_0:
     dw $0001,Spritemap_Robot_1                                           ;A8C6E9;
 
 InstList_Robot_FacingLeft_WalkingForwards_1:
-    dw $000A,Spritemap_Robot_1                                           ;A8C6ED;
+    dw $0008,Spritemap_Robot_1                                           ;A8C6ED;
     dw $0001,Spritemap_Robot_2                                           ;A8C6F1;
     dw Instruction_Robot_TryShootingLaserLeft                            ;A8C6F5;
-    dw $0009,Spritemap_Robot_2                                           ;A8C6F7;
+    dw $0007,Spritemap_Robot_2                                           ;A8C6F7;
     dw $0001,Spritemap_Robot_3                                           ;A8C6FB;
     dw Instruction_Robot_TryShootingLaserUpLeft                          ;A8C6FF;
-    dw $0009,Spritemap_Robot_3                                           ;A8C701;
-    dw $000A,Spritemap_Robot_4                                           ;A8C705;
+    dw $0007,Spritemap_Robot_3                                           ;A8C701;
+    dw $0009,Spritemap_Robot_4                                           ;A8C705;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C709;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleWallOrFall         ;A8C70B;
-    dw $000A,Spritemap_Robot_5                                           ;A8C70D;
+    dw $0008,Spritemap_Robot_5                                           ;A8C70D;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleWallOrFall         ;A8C711;
-    dw $000A,Spritemap_Robot_6                                           ;A8C713;
-    dw $000A,Spritemap_Robot_7                                           ;A8C717;
-    dw $000A,Spritemap_Robot_8                                           ;A8C71B;
-    dw $000A,Spritemap_Robot_9                                           ;A8C71F;
-    dw $000A,Spritemap_Robot_A                                           ;A8C723;
+    dw $0008,Spritemap_Robot_6                                           ;A8C713;
+    dw $0008,Spritemap_Robot_7                                           ;A8C717;
+    dw $0009,Spritemap_Robot_8                                           ;A8C71B;
+    dw $0008,Spritemap_Robot_9                                           ;A8C71F;
+    dw $0009,Spritemap_Robot_A                                           ;A8C723;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleWallOrFall         ;A8C727;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C729;
-    dw $000A,Spritemap_Robot_B                                           ;A8C72B;
+    dw $0008,Spritemap_Robot_B                                           ;A8C72B;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleWallOrFall         ;A8C72F;
     dw $0001,Spritemap_Robot_0                                           ;A8C731;
     dw Instruction_Robot_TryShootingLaserDownLeft                        ;A8C735;
-    dw $0009,Spritemap_Robot_0                                           ;A8C737;
+    dw $0008,Spritemap_Robot_0                                           ;A8C737;
     dw Instruction_Common_GotoY                                          ;A8C73B;
     dw InstList_Robot_FacingLeft_WalkingForwards_1                       ;A8C73D;
 
 InstList_Robot_FacingLeft_HitWallMovingForwards:
     dw $0001,Spritemap_Robot_B                                           ;A8C73F;
-    dw $000A,Spritemap_Robot_B                                           ;A8C743;
+    dw $0008,Spritemap_Robot_B                                           ;A8C743;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C747;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C749;
-    dw $000A,Spritemap_Robot_A                                           ;A8C74B;
-    dw $000A,Spritemap_Robot_9                                           ;A8C74F;
-    dw $000A,Spritemap_Robot_8                                           ;A8C753;
-    dw $000A,Spritemap_Robot_7                                           ;A8C757;
-    dw $000A,Spritemap_Robot_6                                           ;A8C75B;
+    dw $0008,Spritemap_Robot_A                                           ;A8C74B;
+    dw $0008,Spritemap_Robot_9                                           ;A8C74F;
+    dw $0009,Spritemap_Robot_8                                           ;A8C753;
+    dw $0008,Spritemap_Robot_7                                           ;A8C757;
+    dw $0009,Spritemap_Robot_6                                           ;A8C75B;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C75F;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C761;
-    dw $000A,Spritemap_Robot_5                                           ;A8C763;
+    dw $0008,Spritemap_Robot_5                                           ;A8C763;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C767;
-    dw $000A,Spritemap_Robot_4                                           ;A8C769;
-    dw $000A,Spritemap_Robot_3                                           ;A8C76D;
-    dw $000A,Spritemap_Robot_2                                           ;A8C771;
-    dw $000A,Spritemap_Robot_1                                           ;A8C775;
-    dw $000A,Spritemap_Robot_0                                           ;A8C779;
+    dw $0008,Spritemap_Robot_4                                           ;A8C769;
+    dw $0008,Spritemap_Robot_3                                           ;A8C76D;
+    dw $0009,Spritemap_Robot_2                                           ;A8C771;
+    dw $0008,Spritemap_Robot_1                                           ;A8C775;
+    dw $0009,Spritemap_Robot_0                                           ;A8C779;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C77D;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C77F;
-    dw $000A,Spritemap_Robot_B                                           ;A8C781;
+    dw $0008,Spritemap_Robot_B                                           ;A8C781;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C785;
-    dw $000A,Spritemap_Robot_A                                           ;A8C787;
-    dw $000A,Spritemap_Robot_9                                           ;A8C78B;
-    dw $000A,Spritemap_Robot_8                                           ;A8C78F;
-    dw $000A,Spritemap_Robot_7                                           ;A8C793;
-    dw $000A,Spritemap_Robot_6                                           ;A8C797;
+    dw $0008,Spritemap_Robot_A                                           ;A8C787;
+    dw $0008,Spritemap_Robot_9                                           ;A8C78B;
+    dw $0009,Spritemap_Robot_8                                           ;A8C78F;
+    dw $0008,Spritemap_Robot_7                                           ;A8C793;
+    dw $0009,Spritemap_Robot_6                                           ;A8C797;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C79B;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C79D;
-    dw $000A,Spritemap_Robot_5                                           ;A8C79F;
+    dw $0008,Spritemap_Robot_5                                           ;A8C79F;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C7A3;
-    dw $000A,Spritemap_Robot_4                                           ;A8C7A5;
-    dw $000A,Spritemap_Robot_3                                           ;A8C7A9;
-    dw $000A,Spritemap_Robot_2                                           ;A8C7AD;
-    dw $000A,Spritemap_Robot_1                                           ;A8C7B1;
-    dw $000A,Spritemap_Robot_0                                           ;A8C7B5;
+    dw $0008,Spritemap_Robot_4                                           ;A8C7A5;
+    dw $0008,Spritemap_Robot_3                                           ;A8C7A9;
+    dw $0009,Spritemap_Robot_2                                           ;A8C7AD;
+    dw $0008,Spritemap_Robot_1                                           ;A8C7B1;
+    dw $0009,Spritemap_Robot_0                                           ;A8C7B5;
     dw Instruction_Robot_SetInstListTo_FacingRight_WalkingForwards       ;A8C7B9;
 
 InstList_Robot_FacingLeft_Shot_SamusIsAhead:
     dw $0005,Spritemap_Robot_B                                           ;A8C7BB;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C7BF;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleHittingWall       ;A8C7C1;
-    dw $0005,Spritemap_Robot_A                                           ;A8C7C3;
-    dw $0005,Spritemap_Robot_9                                           ;A8C7C7;
-    dw $0005,Spritemap_Robot_8                                           ;A8C7CB;
-    dw $0005,Spritemap_Robot_7                                           ;A8C7CF;
-    dw $0005,Spritemap_Robot_6                                           ;A8C7D3;
+    dw $0004,Spritemap_Robot_A                                           ;A8C7C3;
+    dw $0004,Spritemap_Robot_9                                           ;A8C7C7;
+    dw $0004,Spritemap_Robot_8                                           ;A8C7CB;
+    dw $0004,Spritemap_Robot_7                                           ;A8C7CF;
+    dw $0004,Spritemap_Robot_6                                           ;A8C7D3;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C7D7;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleHittingWall       ;A8C7D9;
     dw $0005,Spritemap_Robot_5                                           ;A8C7DB;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleHittingWall       ;A8C7DF;
-    dw $0005,Spritemap_Robot_4                                           ;A8C7E1;
-    dw $0005,Spritemap_Robot_3                                           ;A8C7E5;
-    dw $0005,Spritemap_Robot_2                                           ;A8C7E9;
-    dw $0005,Spritemap_Robot_1                                           ;A8C7ED;
-    dw $0005,Spritemap_Robot_0                                           ;A8C7F1;
+    dw $0004,Spritemap_Robot_4                                           ;A8C7E1;
+    dw $0004,Spritemap_Robot_3                                           ;A8C7E5;
+    dw $0004,Spritemap_Robot_2                                           ;A8C7E9;
+    dw $0004,Spritemap_Robot_1                                           ;A8C7ED;
+    dw $0004,Spritemap_Robot_0                                           ;A8C7F1;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleHittingWall       ;A8C7F5;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C7F7;
     dw $0005,Spritemap_Robot_B                                           ;A8C7F9;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleHittingWall       ;A8C7FD;
-    dw $0005,Spritemap_Robot_A                                           ;A8C7FF;
-    dw $0005,Spritemap_Robot_9                                           ;A8C803;
-    dw $0005,Spritemap_Robot_8                                           ;A8C807;
-    dw $0005,Spritemap_Robot_7                                           ;A8C80B;
-    dw $0005,Spritemap_Robot_6                                           ;A8C80F;
+    dw $0004,Spritemap_Robot_A                                           ;A8C7FF;
+    dw $0004,Spritemap_Robot_9                                           ;A8C803;
+    dw $0004,Spritemap_Robot_8                                           ;A8C807;
+    dw $0004,Spritemap_Robot_7                                           ;A8C80B;
+    dw $0004,Spritemap_Robot_6                                           ;A8C80F;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C813;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleHittingWall       ;A8C815;
     dw $0005,Spritemap_Robot_5                                           ;A8C817;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleHittingWall       ;A8C81B;
-    dw $0005,Spritemap_Robot_4                                           ;A8C81D;
-    dw $0005,Spritemap_Robot_3                                           ;A8C821;
-    dw $0005,Spritemap_Robot_2                                           ;A8C825;
-    dw $0005,Spritemap_Robot_1                                           ;A8C829;
-    dw $0005,Spritemap_Robot_0                                           ;A8C82D;
+    dw $0004,Spritemap_Robot_4                                           ;A8C81D;
+    dw $0004,Spritemap_Robot_3                                           ;A8C821;
+    dw $0004,Spritemap_Robot_2                                           ;A8C825;
+    dw $0004,Spritemap_Robot_1                                           ;A8C829;
+    dw $0004,Spritemap_Robot_0                                           ;A8C82D;
     dw Instruction_Robot_SetInstListTo_FacingRight_WalkingForwards       ;A8C831;
 
 InstList_Robot_FacingLeft_Shot_SamusIsBehind:
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C833;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall        ;A8C835;
-    dw $0005,Spritemap_Robot_1                                           ;A8C837;
-    dw $0005,Spritemap_Robot_2                                           ;A8C83B;
-    dw $0005,Spritemap_Robot_3                                           ;A8C83F;
-    dw $0005,Spritemap_Robot_4                                           ;A8C843;
+    dw $0004,Spritemap_Robot_1                                           ;A8C837;
+    dw $0004,Spritemap_Robot_2                                           ;A8C83B;
+    dw $0004,Spritemap_Robot_3                                           ;A8C83F;
+    dw $0004,Spritemap_Robot_4                                           ;A8C843;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C847;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall        ;A8C849;
     dw $0005,Spritemap_Robot_5                                           ;A8C84B;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall        ;A8C84F;
-    dw $0005,Spritemap_Robot_6                                           ;A8C851;
-    dw $0005,Spritemap_Robot_7                                           ;A8C855;
-    dw $0005,Spritemap_Robot_8                                           ;A8C859;
-    dw $0005,Spritemap_Robot_9                                           ;A8C85D;
+    dw $0004,Spritemap_Robot_6                                           ;A8C851;
+    dw $0004,Spritemap_Robot_7                                           ;A8C855;
+    dw $0004,Spritemap_Robot_8                                           ;A8C859;
+    dw $0004,Spritemap_Robot_9                                           ;A8C85D;
     dw $0005,Spritemap_Robot_A                                           ;A8C861;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall        ;A8C865;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C867;
     dw $0005,Spritemap_Robot_B                                           ;A8C869;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall        ;A8C86D;
-    dw $0005,Spritemap_Robot_0                                           ;A8C86F;
-    dw $0005,Spritemap_Robot_1                                           ;A8C873;
-    dw $0005,Spritemap_Robot_2                                           ;A8C877;
-    dw $0005,Spritemap_Robot_3                                           ;A8C87B;
+    dw $0004,Spritemap_Robot_0                                           ;A8C86F;
+    dw $0004,Spritemap_Robot_1                                           ;A8C873;
+    dw $0004,Spritemap_Robot_2                                           ;A8C877;
+    dw $0004,Spritemap_Robot_3                                           ;A8C87B;
     dw $0005,Spritemap_Robot_4                                           ;A8C87F;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C883;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall        ;A8C885;
     dw $0005,Spritemap_Robot_5                                           ;A8C887;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall        ;A8C88B;
-    dw $0005,Spritemap_Robot_6                                           ;A8C88D;
-    dw $0005,Spritemap_Robot_7                                           ;A8C891;
-    dw $0005,Spritemap_Robot_8                                           ;A8C895;
-    dw $0005,Spritemap_Robot_9                                           ;A8C899;
+    dw $0004,Spritemap_Robot_6                                           ;A8C88D;
+    dw $0004,Spritemap_Robot_7                                           ;A8C891;
+    dw $0004,Spritemap_Robot_8                                           ;A8C895;
+    dw $0004,Spritemap_Robot_9                                           ;A8C899;
     dw $0005,Spritemap_Robot_A                                           ;A8C89D;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall        ;A8C8A1;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C8A3;
     dw $0005,Spritemap_Robot_B                                           ;A8C8A5;
     dw Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall        ;A8C8A9;
-    dw $0005,Spritemap_Robot_0                                           ;A8C8AB;
+    dw $0004,Spritemap_Robot_0                                           ;A8C8AB;
     dw Instruction_Robot_Goto_FacingLeft_WalkingForwards                 ;A8C8AF;
 
 InstList_Robot_FacingLeft_ShotLaserDownLeft:
-    dw $0005,Spritemap_Robot_0                                           ;A8C8B1;
-    dw $0002,Spritemap_Robot_B                                           ;A8C8B5;
+    dw $0004,Spritemap_Robot_0                                           ;A8C8B1;
+    dw $0001,Spritemap_Robot_B                                           ;A8C8B5;
     dw Instruction_Common_GotoY                                          ;A8C8B9;
     dw InstList_Robot_FacingLeft_LaserShotRecoil                         ;A8C8BB;
 
 InstList_Robot_FacingLeft_ShotLaserLeft:
-    dw $0005,Spritemap_Robot_1                                           ;A8C8BD;
-    dw $0002,Spritemap_Robot_0                                           ;A8C8C1;
+    dw $0004,Spritemap_Robot_1                                           ;A8C8BD;
+    dw $0001,Spritemap_Robot_0                                           ;A8C8C1;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C8C5;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C8C7;
-    dw $000A,Spritemap_Robot_B                                           ;A8C8C9;
+    dw $0008,Spritemap_Robot_B                                           ;A8C8C9;
     dw Instruction_Common_GotoY                                          ;A8C8CD;
     dw InstList_Robot_FacingLeft_LaserShotRecoil                         ;A8C8CF;
 
 InstList_Robot_FacingLeft_ShotLaserUpLeft:
-    dw $0005,Spritemap_Robot_3                                           ;A8C8D1;
+    dw $0004,Spritemap_Robot_3                                           ;A8C8D1;
     dw $0002,Spritemap_Robot_2                                           ;A8C8D5;
     dw $0002,Spritemap_Robot_1                                           ;A8C8D9;
-    dw $0004,Spritemap_Robot_0                                           ;A8C8DD;
+    dw $0003,Spritemap_Robot_0                                           ;A8C8DD;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C8E1;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C8E3;
-    dw $0004,Spritemap_Robot_B                                           ;A8C8E5;
+    dw $0003,Spritemap_Robot_B                                           ;A8C8E5;
 
 InstList_Robot_FacingLeft_LaserShotRecoil:
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C8E9;
-    dw $0010,Spritemap_Robot_A                                           ;A8C8EB;
-    dw $0005,Spritemap_Robot_9                                           ;A8C8EF;
-    dw $0005,Spritemap_Robot_8                                           ;A8C8F3;
-    dw $0005,Spritemap_Robot_7                                           ;A8C8F7;
-    dw $0005,Spritemap_Robot_6                                           ;A8C8FB;
+    dw $000D,Spritemap_Robot_A                                           ;A8C8EB;
+    dw $0004,Spritemap_Robot_9                                           ;A8C8EF;
+    dw $0004,Spritemap_Robot_8                                           ;A8C8F3;
+    dw $0004,Spritemap_Robot_7                                           ;A8C8F7;
+    dw $0004,Spritemap_Robot_6                                           ;A8C8FB;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C8FF;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C901;
-    dw $000A,Spritemap_Robot_5                                           ;A8C903;
+    dw $0007,Spritemap_Robot_5                                           ;A8C903;
     dw Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall        ;A8C907;
-    dw $000A,Spritemap_Robot_4                                           ;A8C909;
-    dw $000A,Spritemap_Robot_3                                           ;A8C90D;
-    dw $0060,Spritemap_Robot_2                                           ;A8C911;
+    dw $0007,Spritemap_Robot_4                                           ;A8C909;
+    dw $0008,Spritemap_Robot_3                                           ;A8C90D;
+    dw $0050,Spritemap_Robot_2                                           ;A8C911;
     dw Instruction_Robot_DecrementLaserCooldown                          ;A8C915;
     dw Instruction_CommonA8_GotoY                                        ;A8C917;
     dw InstList_Robot_FacingLeft_WalkingForwards_0                       ;A8C919;
 
 InstList_Robot_ApproachingAFallToTheRight:
-    dw $0080,Spritemap_Robot_C                                           ;A8C91B;
-    dw $000A,Spritemap_Robot_D                                           ;A8C91F;
-    dw $000A,Spritemap_Robot_E                                           ;A8C923;
+    dw $006A,Spritemap_Robot_C                                           ;A8C91B;
+    dw $0008,Spritemap_Robot_D                                           ;A8C91F;
+    dw $0008,Spritemap_Robot_E                                           ;A8C923;
     dw Instruction_Robot_DecrementLaserCooldown                          ;A8C927;
     dw Instruction_Common_GotoY                                          ;A8C929;
     dw InstList_Robot_FacingLeft_WalkingForwards_0                       ;A8C92B;
@@ -7886,197 +7884,197 @@ InstList_Robot_FacingRight_WalkingForwards_0:
 InstList_Robot_FacingRight_WalkingForwards_1:
     dw $0001,Spritemap_Robot_C                                           ;A8C931;
     dw Instruction_Robot_TryShootingLaserDownRight                       ;A8C935;
-    dw $0009,Spritemap_Robot_C                                           ;A8C937;
+    dw $0007,Spritemap_Robot_C                                           ;A8C937;
     dw Instruction_Robot_DecrementLaserCooldown                          ;A8C93B;
     dw $000A,Spritemap_Robot_D                                           ;A8C93D;
     dw $0001,Spritemap_Robot_E                                           ;A8C941;
     dw Instruction_Robot_TryShootingLaserRight                           ;A8C945;
-    dw $0009,Spritemap_Robot_E                                           ;A8C947;
+    dw $0007,Spritemap_Robot_E                                           ;A8C947;
     dw $0001,Spritemap_Robot_F                                           ;A8C94B;
     dw Instruction_Robot_TryShootingLaserUpRight                         ;A8C94F;
-    dw $0009,Spritemap_Robot_F                                           ;A8C951;
-    dw $000A,Spritemap_Robot_10                                          ;A8C955;
+    dw $0007,Spritemap_Robot_F                                           ;A8C951;
+    dw $0008,Spritemap_Robot_10                                          ;A8C955;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C959;
     dw Instruction_Robot_FacingRight_MoveForward_HandleWallOrFall        ;A8C95B;
-    dw $000A,Spritemap_Robot_11                                          ;A8C95D;
+    dw $0008,Spritemap_Robot_11                                          ;A8C95D;
     dw Instruction_Robot_FacingRight_MoveForward_HandleWallOrFall        ;A8C961;
-    dw $000A,Spritemap_Robot_12                                          ;A8C963;
-    dw $000A,Spritemap_Robot_13                                          ;A8C967;
-    dw $000A,Spritemap_Robot_14                                          ;A8C96B;
-    dw $000A,Spritemap_Robot_15                                          ;A8C96F;
-    dw $000A,Spritemap_Robot_16                                          ;A8C973;
+    dw $0008,Spritemap_Robot_12                                          ;A8C963;
+    dw $0008,Spritemap_Robot_13                                          ;A8C967;
+    dw $0008,Spritemap_Robot_14                                          ;A8C96B;
+    dw $0008,Spritemap_Robot_15                                          ;A8C96F;
+    dw $0008,Spritemap_Robot_16                                          ;A8C973;
     dw Instruction_Robot_FacingRight_MoveForward_HandleWallOrFall        ;A8C977;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C979;
-    dw $000A,Spritemap_Robot_17                                          ;A8C97B;
+    dw $0008,Spritemap_Robot_17                                          ;A8C97B;
     dw Instruction_Robot_FacingRight_MoveForward_HandleWallOrFall        ;A8C97F;
     dw Instruction_Common_GotoY                                          ;A8C981;
     dw InstList_Robot_FacingRight_WalkingForwards_1                      ;A8C983;
 
 InstList_Robot_FacingRight_HitWallMovingForwards:
     dw $0001,Spritemap_Robot_17                                          ;A8C985;
-    dw $000A,Spritemap_Robot_17                                          ;A8C989;
+    dw $0008,Spritemap_Robot_17                                          ;A8C989;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C98D;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8C98F;
-    dw $000A,Spritemap_Robot_16                                          ;A8C991;
-    dw $000A,Spritemap_Robot_15                                          ;A8C995;
-    dw $000A,Spritemap_Robot_14                                          ;A8C999;
-    dw $000A,Spritemap_Robot_13                                          ;A8C99D;
-    dw $000A,Spritemap_Robot_12                                          ;A8C9A1;
+    dw $0008,Spritemap_Robot_16                                          ;A8C991;
+    dw $0008,Spritemap_Robot_15                                          ;A8C995;
+    dw $0008,Spritemap_Robot_14                                          ;A8C999;
+    dw $0008,Spritemap_Robot_13                                          ;A8C99D;
+    dw $0008,Spritemap_Robot_12                                          ;A8C9A1;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C9A5;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8C9A7;
-    dw $000A,Spritemap_Robot_11                                          ;A8C9A9;
+    dw $0008,Spritemap_Robot_11                                          ;A8C9A9;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8C9AD;
-    dw $000A,Spritemap_Robot_10                                          ;A8C9AF;
-    dw $000A,Spritemap_Robot_F                                           ;A8C9B3;
-    dw $000A,Spritemap_Robot_E                                           ;A8C9B7;
-    dw $000A,Spritemap_Robot_D                                           ;A8C9BB;
-    dw $000A,Spritemap_Robot_C                                           ;A8C9BF;
+    dw $0008,Spritemap_Robot_10                                          ;A8C9AF;
+    dw $0008,Spritemap_Robot_F                                           ;A8C9B3;
+    dw $0008,Spritemap_Robot_E                                           ;A8C9B7;
+    dw $0008,Spritemap_Robot_D                                           ;A8C9BB;
+    dw $0008,Spritemap_Robot_C                                           ;A8C9BF;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C9C3;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8C9C5;
-    dw $000A,Spritemap_Robot_17                                          ;A8C9C7;
+    dw $0008,Spritemap_Robot_17                                          ;A8C9C7;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8C9CB;
-    dw $000A,Spritemap_Robot_16                                          ;A8C9CD;
-    dw $000A,Spritemap_Robot_15                                          ;A8C9D1;
-    dw $000A,Spritemap_Robot_14                                          ;A8C9D5;
-    dw $000A,Spritemap_Robot_13                                          ;A8C9D9;
-    dw $000A,Spritemap_Robot_12                                          ;A8C9DD;
+    dw $0008,Spritemap_Robot_16                                          ;A8C9CD;
+    dw $0008,Spritemap_Robot_15                                          ;A8C9D1;
+    dw $0008,Spritemap_Robot_14                                          ;A8C9D5;
+    dw $0008,Spritemap_Robot_13                                          ;A8C9D9;
+    dw $0008,Spritemap_Robot_12                                          ;A8C9DD;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8C9E1;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8C9E3;
-    dw $000A,Spritemap_Robot_11                                          ;A8C9E5;
+    dw $0008,Spritemap_Robot_11                                          ;A8C9E5;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8C9E9;
-    dw $000A,Spritemap_Robot_10                                          ;A8C9EB;
-    dw $000A,Spritemap_Robot_F                                           ;A8C9EF;
-    dw $000A,Spritemap_Robot_E                                           ;A8C9F3;
-    dw $000A,Spritemap_Robot_D                                           ;A8C9F7;
-    dw $000A,Spritemap_Robot_C                                           ;A8C9FB;
+    dw $0008,Spritemap_Robot_10                                          ;A8C9EB;
+    dw $0008,Spritemap_Robot_F                                           ;A8C9EF;
+    dw $0008,Spritemap_Robot_E                                           ;A8C9F3;
+    dw $0008,Spritemap_Robot_D                                           ;A8C9F7;
+    dw $0008,Spritemap_Robot_C                                           ;A8C9FB;
     dw Instruction_Robot_Goto_FacingLeft_WalkingForwards                 ;A8C9FF;
 
 InstList_Robot_FacingRight_Shot_SamusIsAhead:
     dw $0001,Spritemap_Robot_17                                          ;A8CA01;
-    dw $0005,Spritemap_Robot_17                                          ;A8CA05;
+    dw $0004,Spritemap_Robot_17                                          ;A8CA05;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CA09;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleHittingWall      ;A8CA0B;
-    dw $0005,Spritemap_Robot_16                                          ;A8CA0D;
-    dw $0005,Spritemap_Robot_15                                          ;A8CA11;
-    dw $0005,Spritemap_Robot_14                                          ;A8CA15;
-    dw $0005,Spritemap_Robot_13                                          ;A8CA19;
-    dw $0005,Spritemap_Robot_12                                          ;A8CA1D;
+    dw $0004,Spritemap_Robot_16                                          ;A8CA0D;
+    dw $0004,Spritemap_Robot_15                                          ;A8CA11;
+    dw $0004,Spritemap_Robot_14                                          ;A8CA15;
+    dw $0004,Spritemap_Robot_13                                          ;A8CA19;
+    dw $0004,Spritemap_Robot_12                                          ;A8CA1D;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CA21;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleHittingWall      ;A8CA23;
-    dw $0005,Spritemap_Robot_11                                          ;A8CA25;
+    dw $0004,Spritemap_Robot_11                                          ;A8CA25;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleHittingWall      ;A8CA29;
-    dw $0005,Spritemap_Robot_10                                          ;A8CA2B;
-    dw $0005,Spritemap_Robot_F                                           ;A8CA2F;
-    dw $0005,Spritemap_Robot_E                                           ;A8CA33;
-    dw $0005,Spritemap_Robot_D                                           ;A8CA37;
-    dw $0005,Spritemap_Robot_C                                           ;A8CA3B;
+    dw $0004,Spritemap_Robot_10                                          ;A8CA2B;
+    dw $0004,Spritemap_Robot_F                                           ;A8CA2F;
+    dw $0004,Spritemap_Robot_E                                           ;A8CA33;
+    dw $0004,Spritemap_Robot_D                                           ;A8CA37;
+    dw $0004,Spritemap_Robot_C                                           ;A8CA3B;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleHittingWall      ;A8CA3F;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CA41;
-    dw $0005,Spritemap_Robot_17                                          ;A8CA43;
+    dw $0004,Spritemap_Robot_17                                          ;A8CA43;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleHittingWall      ;A8CA47;
-    dw $0005,Spritemap_Robot_16                                          ;A8CA49;
-    dw $0005,Spritemap_Robot_15                                          ;A8CA4D;
-    dw $0005,Spritemap_Robot_14                                          ;A8CA51;
-    dw $0005,Spritemap_Robot_13                                          ;A8CA55;
-    dw $0005,Spritemap_Robot_12                                          ;A8CA59;
+    dw $0004,Spritemap_Robot_16                                          ;A8CA49;
+    dw $0004,Spritemap_Robot_15                                          ;A8CA4D;
+    dw $0004,Spritemap_Robot_14                                          ;A8CA51;
+    dw $0004,Spritemap_Robot_13                                          ;A8CA55;
+    dw $0004,Spritemap_Robot_12                                          ;A8CA59;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CA5D;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleHittingWall      ;A8CA5F;
-    dw $000A,Spritemap_Robot_11                                          ;A8CA61;
+    dw $0008,Spritemap_Robot_11                                          ;A8CA61;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleHittingWall      ;A8CA65;
-    dw $0005,Spritemap_Robot_10                                          ;A8CA67;
-    dw $0005,Spritemap_Robot_F                                           ;A8CA6B;
-    dw $0005,Spritemap_Robot_E                                           ;A8CA6F;
-    dw $0005,Spritemap_Robot_D                                           ;A8CA73;
-    dw $0005,Spritemap_Robot_C                                           ;A8CA77;
+    dw $0004,Spritemap_Robot_10                                          ;A8CA67;
+    dw $0004,Spritemap_Robot_F                                           ;A8CA6B;
+    dw $0004,Spritemap_Robot_E                                           ;A8CA6F;
+    dw $0004,Spritemap_Robot_D                                           ;A8CA73;
+    dw $0004,Spritemap_Robot_C                                           ;A8CA77;
     dw Instruction_Robot_Goto_FacingLeft_WalkingForwards                 ;A8CA7B;
 
 InstList_Robot_FacingRight_Shot_SamusIsBehind:
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CA7D;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CA7F;
-    dw $0005,Spritemap_Robot_C                                           ;A8CA81;
-    dw $0005,Spritemap_Robot_D                                           ;A8CA85;
-    dw $0005,Spritemap_Robot_E                                           ;A8CA89;
-    dw $0005,Spritemap_Robot_F                                           ;A8CA8D;
-    dw $0005,Spritemap_Robot_10                                          ;A8CA91;
+    dw $0004,Spritemap_Robot_C                                           ;A8CA81;
+    dw $0004,Spritemap_Robot_D                                           ;A8CA85;
+    dw $0004,Spritemap_Robot_E                                           ;A8CA89;
+    dw $0004,Spritemap_Robot_F                                           ;A8CA8D;
+    dw $0004,Spritemap_Robot_10                                          ;A8CA91;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CA95;
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CA97;
     dw $0005,Spritemap_Robot_11                                          ;A8CA99;
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CA9D;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CA9F;
-    dw $0005,Spritemap_Robot_12                                          ;A8CAA1;
-    dw $0005,Spritemap_Robot_13                                          ;A8CAA5;
-    dw $0005,Spritemap_Robot_14                                          ;A8CAA9;
-    dw $0005,Spritemap_Robot_15                                          ;A8CAAD;
-    dw $0005,Spritemap_Robot_16                                          ;A8CAB1;
+    dw $0004,Spritemap_Robot_12                                          ;A8CAA1;
+    dw $0004,Spritemap_Robot_13                                          ;A8CAA5;
+    dw $0004,Spritemap_Robot_14                                          ;A8CAA9;
+    dw $0004,Spritemap_Robot_15                                          ;A8CAAD;
+    dw $0004,Spritemap_Robot_16                                          ;A8CAB1;
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CAB5;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CAB7;
-    dw $0005,Spritemap_Robot_17                                          ;A8CAB9;
+    dw $0004,Spritemap_Robot_17                                          ;A8CAB9;
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CABD;
-    dw $0005,Spritemap_Robot_C                                           ;A8CABF;
-    dw $0005,Spritemap_Robot_D                                           ;A8CAC3;
-    dw $0005,Spritemap_Robot_E                                           ;A8CAC7;
-    dw $0005,Spritemap_Robot_F                                           ;A8CACB;
-    dw $0005,Spritemap_Robot_10                                          ;A8CACF;
+    dw $0004,Spritemap_Robot_C                                           ;A8CABF;
+    dw $0004,Spritemap_Robot_D                                           ;A8CAC3;
+    dw $0004,Spritemap_Robot_E                                           ;A8CAC7;
+    dw $0004,Spritemap_Robot_F                                           ;A8CACB;
+    dw $0004,Spritemap_Robot_10                                          ;A8CACF;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CAD3;
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CAD5;
-    dw $0005,Spritemap_Robot_11                                          ;A8CAD7;
+    dw $0004,Spritemap_Robot_11                                          ;A8CAD7;
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CADB;
-    dw $0005,Spritemap_Robot_12                                          ;A8CADD;
-    dw $0005,Spritemap_Robot_13                                          ;A8CAE1;
-    dw $0005,Spritemap_Robot_14                                          ;A8CAE5;
-    dw $0005,Spritemap_Robot_15                                          ;A8CAE9;
-    dw $0005,Spritemap_Robot_16                                          ;A8CAED;
+    dw $0004,Spritemap_Robot_12                                          ;A8CADD;
+    dw $0004,Spritemap_Robot_13                                          ;A8CAE1;
+    dw $0004,Spritemap_Robot_14                                          ;A8CAE5;
+    dw $0004,Spritemap_Robot_15                                          ;A8CAE9;
+    dw $0004,Spritemap_Robot_16                                          ;A8CAED;
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CAF1;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CAF3;
-    dw $0005,Spritemap_Robot_17                                          ;A8CAF5;
+    dw $0004,Spritemap_Robot_17                                          ;A8CAF5;
     dw Instruction_Robot_FacingRight_MoveForward_HandleHittingWall       ;A8CAF9;
     dw Instruction_Robot_SetInstListTo_FacingRight_WalkingForwards       ;A8CAFB;
 
 InstList_Robot_FacingRight_ShotLaserDownRight:
-    dw $0005,Spritemap_Robot_C                                           ;A8CAFD;
-    dw $0002,Spritemap_Robot_17                                          ;A8CB01;
+    dw $0004,Spritemap_Robot_C                                           ;A8CAFD;
+    dw $0001,Spritemap_Robot_17                                          ;A8CB01;
     dw Instruction_Common_GotoY                                          ;A8CB05;
     dw InstList_Robot_FacingRight_LaserShotRecoil                        ;A8CB07;
 
 InstList_Robot_FacingRight_ShotLaserRight:
-    dw $0005,Spritemap_Robot_D                                           ;A8CB09;
-    dw $0002,Spritemap_Robot_C                                           ;A8CB0D;
+    dw $0004,Spritemap_Robot_D                                           ;A8CB09;
+    dw $0001,Spritemap_Robot_C                                           ;A8CB0D;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CB11;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8CB13;
-    dw $000A,Spritemap_Robot_17                                          ;A8CB15;
+    dw $0008,Spritemap_Robot_17                                          ;A8CB15;
     dw Instruction_Common_GotoY                                          ;A8CB19;
     dw InstList_Robot_FacingRight_LaserShotRecoil                        ;A8CB1B;
 
 InstList_Robot_FacingRight_ShotLaserUpRight:
-    dw $0005,Spritemap_Robot_F                                           ;A8CB1D;
-    dw $0002,Spritemap_Robot_E                                           ;A8CB21;
-    dw $0002,Spritemap_Robot_D                                           ;A8CB25;
-    dw $0004,Spritemap_Robot_C                                           ;A8CB29;
+    dw $0004,Spritemap_Robot_F                                           ;A8CB1D;
+    dw $0001,Spritemap_Robot_E                                           ;A8CB21;
+    dw $0001,Spritemap_Robot_D                                           ;A8CB25;
+    dw $0003,Spritemap_Robot_C                                           ;A8CB29;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CB2D;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8CB2F;
-    dw $0004,Spritemap_Robot_17                                          ;A8CB31;
+    dw $0003,Spritemap_Robot_17                                          ;A8CB31;
 
 InstList_Robot_FacingRight_LaserShotRecoil:
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8CB35;
-    dw $0010,Spritemap_Robot_16                                          ;A8CB37;
-    dw $0005,Spritemap_Robot_15                                          ;A8CB3B;
-    dw $0005,Spritemap_Robot_14                                          ;A8CB3F;
-    dw $0005,Spritemap_Robot_13                                          ;A8CB43;
-    dw $0005,Spritemap_Robot_12                                          ;A8CB47;
+    dw $000D,Spritemap_Robot_16                                          ;A8CB37;
+    dw $0004,Spritemap_Robot_15                                          ;A8CB3B;
+    dw $0004,Spritemap_Robot_14                                          ;A8CB3F;
+    dw $0004,Spritemap_Robot_13                                          ;A8CB43;
+    dw $0004,Spritemap_Robot_12                                          ;A8CB47;
     dw Instruction_Robot_PlaySFXIfOnScreen                               ;A8CB4B;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8CB4D;
-    dw $000A,Spritemap_Robot_11                                          ;A8CB4F;
+    dw $0008,Spritemap_Robot_11                                          ;A8CB4F;
     dw Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall       ;A8CB53;
-    dw $000A,Spritemap_Robot_10                                          ;A8CB55;
-    dw $000A,Spritemap_Robot_F                                           ;A8CB59;
-    dw $0060,Spritemap_Robot_E                                           ;A8CB5D;
+    dw $0008,Spritemap_Robot_10                                          ;A8CB55;
+    dw $0008,Spritemap_Robot_F                                           ;A8CB59;
+    dw $0050,Spritemap_Robot_E                                           ;A8CB5D;
     dw Instruction_Common_GotoY                                          ;A8CB61;
     dw InstList_Robot_FacingRight_WalkingForwards_0                      ;A8CB63;
 
 InstList_Robot_ApproachingAFallToTheLeft:
-    dw $0080,Spritemap_Robot_0                                           ;A8CB65;
-    dw $000A,Spritemap_Robot_1                                           ;A8CB69;
-    dw $000A,Spritemap_Robot_2                                           ;A8CB6D;
+    dw $006A,Spritemap_Robot_0                                           ;A8CB65;
+    dw $0008,Spritemap_Robot_1                                           ;A8CB69;
+    dw $0008,Spritemap_Robot_2                                           ;A8CB6D;
     dw Instruction_Robot_DecrementLaserCooldown                          ;A8CB71;
     dw Instruction_Common_GotoY                                          ;A8CB73;
     dw InstList_Robot_FacingRight_WalkingForwards_0                      ;A8CB75;
@@ -8101,7 +8099,7 @@ InitAI_Robot:
     STZ.W $0F90,X                                                        ;A8CBA4;
     LDA.W #InstList_Robot_Initial                                        ;A8CBA7;
     STA.W $0F92,X                                                        ;A8CBAA;
-    LDA.W #$FE00                                                         ;A8CBAD;
+    LDA.W #$FD9A                                                         ;A8CBAD;
     STA.W $0FA8,X                                                        ;A8CBB0;
     LDA.W #$0001                                                         ;A8CBB3;
     STA.L $7ED654                                                        ;A8CBB6;
@@ -8270,7 +8268,7 @@ Instruction_Robot_FacingLeft_MoveForward_HandleWallOrFall:
     PHY                                                                  ;A8CD0A;
     LDX.W $0E54                                                          ;A8CD0B;
     JSR.W DecrementRobotLaserCooldown                                    ;A8CD0E;
-    LDA.W #$FE00                                                         ;A8CD11;
+    LDA.W #$FD9A                                                         ;A8CD11;
     STA.W $0FA8,X                                                        ;A8CD14;
     LDA.W #$0000                                                         ;A8CD17;
     STA.B $12                                                            ;A8CD1A;
@@ -8322,7 +8320,7 @@ Instruction_Robot_FacingLeft_MoveForward_HandleWallOrFall:
     STA.W $0F7E,X                                                        ;A8CD83;
     PLY                                                                  ;A8CD86;
     LDX.W $0E54                                                          ;A8CD87;
-    LDA.W #$0200                                                         ;A8CD8A;
+    LDA.W #$0266                                                         ;A8CD8A;
     STA.W $0FA8,X                                                        ;A8CD8D;
     LDY.W #InstList_Robot_ApproachingAFallToTheLeft                      ;A8CD90;
     PLX                                                                  ;A8CD93;
@@ -8344,7 +8342,7 @@ Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall:
     PHY                                                                  ;A8CDA5;
     LDX.W $0E54                                                          ;A8CDA6;
     JSR.W DecrementRobotLaserCooldown                                    ;A8CDA9;
-    LDA.W #$FE00                                                         ;A8CDAC;
+    LDA.W #$FD9A                                                         ;A8CDAC;
     STA.W $0FA8,X                                                        ;A8CDAF;
     LDA.W #$0000                                                         ;A8CDB2;
     STA.B $12                                                            ;A8CDB5;
@@ -8382,7 +8380,7 @@ Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall:
     PHY                                                                  ;A8CDEB;
     LDX.W $0E54                                                          ;A8CDEC;
     JSR.W DecrementRobotLaserCooldown                                    ;A8CDEF;
-    LDA.W #$FE00                                                         ;A8CDF2;
+    LDA.W #$FD9A                                                         ;A8CDF2;
     STA.W $0FA8,X                                                        ;A8CDF5;
     LDA.W #$0000                                                         ;A8CDF8;
     STA.B $12                                                            ;A8CDFB;
@@ -8434,7 +8432,7 @@ Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall:
     STA.W $0F7E,X                                                        ;A8CE64;
     PLY                                                                  ;A8CE67;
     LDX.W $0E54                                                          ;A8CE68;
-    LDA.W #$FE00                                                         ;A8CE6B;
+    LDA.W #$FD9A                                                         ;A8CE6B;
     STA.W $0FA8,X                                                        ;A8CE6E;
     LDY.W #InstList_Robot_ApproachingAFallToTheRight                     ;A8CE71;
     PLX                                                                  ;A8CE74;
@@ -8456,7 +8454,7 @@ Instruction_Robot_FacingLeft_MoveBackward_HandleHittingWall:
     PHY                                                                  ;A8CE86;
     LDX.W $0E54                                                          ;A8CE87;
     JSR.W DecrementRobotLaserCooldown                                    ;A8CE8A;
-    LDA.W #$FE00                                                         ;A8CE8D;
+    LDA.W #$FD9A                                                         ;A8CE8D;
     STA.W $0FA8,X                                                        ;A8CE90;
     LDA.W #$0000                                                         ;A8CE93;
     STA.B $12                                                            ;A8CE96;
@@ -8499,7 +8497,7 @@ Instruction_Robot_FacingRight_MoveForward_HandleWallOrFall:
     PHY                                                                  ;A8CED0;
     LDX.W $0E54                                                          ;A8CED1;
     JSR.W DecrementRobotLaserCooldown                                    ;A8CED4;
-    LDA.W #$0200                                                         ;A8CED7;
+    LDA.W #$0266                                                         ;A8CED7;
     STA.W $0FA8,X                                                        ;A8CEDA;
     LDA.W #$0000                                                         ;A8CEDD;
     STA.B $12                                                            ;A8CEE0;
@@ -8551,7 +8549,7 @@ Instruction_Robot_FacingRight_MoveForward_HandleWallOrFall:
     STA.W $0F7E,X                                                        ;A8CF49;
     PLY                                                                  ;A8CF4C;
     LDX.W $0E54                                                          ;A8CF4D;
-    LDA.W #$FE00                                                         ;A8CF50;
+    LDA.W #$FD9A                                                         ;A8CF50;
     STA.W $0FA8,X                                                        ;A8CF53;
     LDY.W #InstList_Robot_ApproachingAFallToTheRight                     ;A8CF56;
     PLX                                                                  ;A8CF59;
@@ -8573,7 +8571,7 @@ Instruction_Robot_FacingRight_MoveForward_HandleHittingWall:
     PHY                                                                  ;A8CF6B;
     LDX.W $0E54                                                          ;A8CF6C;
     JSR.W DecrementRobotLaserCooldown                                    ;A8CF6F;
-    LDA.W #$0200                                                         ;A8CF72;
+    LDA.W #$0266                                                         ;A8CF72;
     STA.W $0FA8,X                                                        ;A8CF75;
     LDA.W #$0000                                                         ;A8CF78;
     STA.B $12                                                            ;A8CF7B;
@@ -8611,7 +8609,7 @@ Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall:
     PHY                                                                  ;A8CFB1;
     LDX.W $0E54                                                          ;A8CFB2;
     JSR.W DecrementRobotLaserCooldown                                    ;A8CFB5;
-    LDA.W #$0200                                                         ;A8CFB8;
+    LDA.W #$0266                                                         ;A8CFB8;
     STA.W $0FA8,X                                                        ;A8CFBB;
     LDA.W #$0000                                                         ;A8CFBE;
     STA.B $12                                                            ;A8CFC1;
@@ -8663,7 +8661,7 @@ Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall:
     STA.W $0F7A,X                                                        ;A8D02A;
     PLY                                                                  ;A8D02D;
     LDX.W $0E54                                                          ;A8D02E;
-    LDA.W #$0200                                                         ;A8D031;
+    LDA.W #$0266                                                         ;A8D031;
     STA.W $0FA8,X                                                        ;A8D034;
     LDY.W #InstList_Robot_ApproachingAFallToTheLeft                      ;A8D037;
     PLX                                                                  ;A8D03A;
@@ -8685,7 +8683,7 @@ Instruction_Robot_FacingRight_MoveBackward_HandleHittingWall:
     PHY                                                                  ;A8D04C;
     LDX.W $0E54                                                          ;A8D04D;
     JSR.W DecrementRobotLaserCooldown                                    ;A8D050;
-    LDA.W #$0200                                                         ;A8D053;
+    LDA.W #$0266                                                         ;A8D053;
     STA.W $0FA8,X                                                        ;A8D056;
     LDA.W #$0000                                                         ;A8D059;
     STA.B $12                                                            ;A8D05C;
@@ -9794,35 +9792,35 @@ InstList_Alcoon_FacingLeft_Walking_0:
     dw Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision           ;A8DBE7;
 
 InstList_Alcoon_FacingLeft_Walking_1:
-    dw $000A,Spritemap_Alcoon_FacingLeft_FrontFootForward                ;A8DBE9;
+    dw $0008,Spritemap_Alcoon_FacingLeft_FrontFootForward                ;A8DBE9;
     dw Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision           ;A8DBED;
-    dw $000A,Spritemap_Alcoon_FacingLeft_FeetTogether_FrontFootDown      ;A8DBEF;
+    dw $0008,Spritemap_Alcoon_FacingLeft_FeetTogether_FrontFootDown      ;A8DBEF;
     dw Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision           ;A8DBF3;
-    dw $000A,Spritemap_Alcoon_FacingLeft_FrontFootBack                   ;A8DBF5;
+    dw $0008,Spritemap_Alcoon_FacingLeft_FrontFootBack                   ;A8DBF5;
     dw Instruction_Alcoon_DecrementStepCounter_MoveHorizontally          ;A8DBF9;
-    dw $000A,Spritemap_Alcoon_FacingLeft_FeetTogether_BackFootForward    ;A8DBFB;
+    dw $0009,Spritemap_Alcoon_FacingLeft_FeetTogether_BackFootForward    ;A8DBFB;
     dw Instruction_Common_GotoY                                          ;A8DBFF;
     dw InstList_Alcoon_FacingLeft_Walking_0                              ;A8DC01;
 
 InstList_Alcoon_FacingLeft_SpawnFireballs:
-    dw $0014,Spritemap_Alcoon_FacingLeft_WingFullyExtended_BackFootFoward ;A8DC03;
-    dw $0009,Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging ;A8DC07;
-    dw $0010,Spritemap_Alcoon_FacingLeft_WingForward_AboutToSpit         ;A8DC0B;
-    dw $0003,Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging ;A8DC0F;
+    dw $0010,Spritemap_Alcoon_FacingLeft_WingFullyExtended_BackFootFoward ;A8DC03;
+    dw $0008,Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging ;A8DC07;
+    dw $000E,Spritemap_Alcoon_FacingLeft_WingForward_AboutToSpit         ;A8DC0B;
+    dw $0002,Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging ;A8DC0F;
     dw Instruction_Alcoon_SpawnAlcoonFireballHorizontally                ;A8DC13;
-    dw $000A,Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit      ;A8DC15;
-    dw $000A,Spritemap_Alcoon_FacingLeft_WingFullyExtended_BackFootFoward ;A8DC19;
-    dw $0009,Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging ;A8DC1D;
-    dw $0010,Spritemap_Alcoon_FacingLeft_WingForward_AboutToSpit         ;A8DC21;
+    dw $0008,Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit      ;A8DC15;
+    dw $0008,Spritemap_Alcoon_FacingLeft_WingFullyExtended_BackFootFoward ;A8DC19;
+    dw $0008,Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging ;A8DC1D;
+    dw $000D,Spritemap_Alcoon_FacingLeft_WingForward_AboutToSpit         ;A8DC21;
     dw $0003,Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging ;A8DC25;
     dw Instruction_Alcoon_SpawnAlcoonFireballUpward                      ;A8DC29;
-    dw $000A,Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit      ;A8DC2B;
-    dw $000A,Spritemap_Alcoon_FacingLeft_WingFullyExtended_BackFootFoward ;A8DC2F;
-    dw $0009,Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging ;A8DC33;
-    dw $0010,Spritemap_Alcoon_FacingLeft_WingForward_AboutToSpit         ;A8DC37;
+    dw $0008,Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit      ;A8DC2B;
+    dw $0008,Spritemap_Alcoon_FacingLeft_WingFullyExtended_BackFootFoward ;A8DC2F;
+    dw $0008,Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging ;A8DC33;
+    dw $000D,Spritemap_Alcoon_FacingLeft_WingForward_AboutToSpit         ;A8DC37;
     dw $0003,Spritemap_Alcoon_FacingLeft_WingMovingForward_MouthEnlarging ;A8DC3B;
     dw Instruction_Alcoon_SpawnAlcoonFireballDownward                    ;A8DC3F;
-    dw $0028,Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit      ;A8DC41;
+    dw $0021,Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit      ;A8DC41;
     dw Instruction_Alcoon_StartWalking                                   ;A8DC45;
     dw $0001,Spritemap_Alcoon_FacingLeft_WingExtended_MouthJustSpit      ;A8DC47;
 
@@ -9838,35 +9836,35 @@ InstList_Alcoon_FacingRight_Walking_0:
     dw Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision           ;A8DC57;
 
 InstList_Alcoon_FacingRight_Walking_1:
-    dw $000A,Spritemap_Alcoon_FacingRight_FrontFootFoward                ;A8DC59;
+    dw $0008,Spritemap_Alcoon_FacingRight_FrontFootFoward                ;A8DC59;
     dw Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision           ;A8DC5D;
-    dw $000A,Spritemap_Alcoon_FacingRight_FeetTogether_FrontFootBack     ;A8DC5F;
+    dw $0008,Spritemap_Alcoon_FacingRight_FeetTogether_FrontFootBack     ;A8DC5F;
     dw Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision           ;A8DC63;
-    dw $000A,Spritemap_Alcoon_FacingRight_FrontFootBack                  ;A8DC65;
+    dw $0008,Spritemap_Alcoon_FacingRight_FrontFootBack                  ;A8DC65;
     dw Instruction_Alcoon_DecrementStepCounter_MoveHorizontally          ;A8DC69;
-    dw $000A,Spritemap_Alcoon_FacingRight_FrontFootUp                    ;A8DC6B;
+    dw $0009,Spritemap_Alcoon_FacingRight_FrontFootUp                    ;A8DC6B;
     dw Instruction_Common_GotoY                                          ;A8DC6F;
     dw InstList_Alcoon_FacingRight_Walking_0                             ;A8DC71;
 
 InstList_Alcoon_FacingRight_SpawnFireballs:
-    dw $0014,Spritemap_Alcoon_FaceRight_WingFullyExtended_BackFootForward ;A8DC73;
-    dw $0009,Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging ;A8DC77;
-    dw $0010,Spritemap_Alcoon_FacingRight_WingForward_AboutToSpit        ;A8DC7B;
-    dw $0003,Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging ;A8DC7F;
+    dw $0010,Spritemap_Alcoon_FaceRight_WingFullyExtended_BackFootForward ;A8DC73;
+    dw $0008,Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging ;A8DC77;
+    dw $000E,Spritemap_Alcoon_FacingRight_WingForward_AboutToSpit        ;A8DC7B;
+    dw $0002,Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging ;A8DC7F;
     dw Instruction_Alcoon_SpawnAlcoonFireballHorizontally                ;A8DC83;
-    dw $000A,Spritemap_Alcoon_FacingRight_WingExtended_MouthJustSpit     ;A8DC85;
-    dw $000A,Spritemap_Alcoon_FaceRight_WingFullyExtended_BackFootForward ;A8DC89;
-    dw $0009,Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging ;A8DC8D;
-    dw $0010,Spritemap_Alcoon_FacingRight_WingForward_AboutToSpit        ;A8DC91;
+    dw $0008,Spritemap_Alcoon_FacingRight_WingExtended_MouthJustSpit     ;A8DC85;
+    dw $0008,Spritemap_Alcoon_FaceRight_WingFullyExtended_BackFootForward ;A8DC89;
+    dw $0008,Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging ;A8DC8D;
+    dw $000D,Spritemap_Alcoon_FacingRight_WingForward_AboutToSpit        ;A8DC91;
     dw $0003,Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging ;A8DC95;
     dw Instruction_Alcoon_SpawnAlcoonFireballUpward                      ;A8DC99;
-    dw $000A,Spritemap_Alcoon_FacingRight_WingExtended_MouthJustSpit     ;A8DC9B;
-    dw $000A,Spritemap_Alcoon_FaceRight_WingFullyExtended_BackFootForward ;A8DC9F;
-    dw $0009,Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging ;A8DCA3;
-    dw $0010,Spritemap_Alcoon_FacingRight_WingForward_AboutToSpit        ;A8DCA7;
+    dw $0008,Spritemap_Alcoon_FacingRight_WingExtended_MouthJustSpit     ;A8DC9B;
+    dw $0008,Spritemap_Alcoon_FaceRight_WingFullyExtended_BackFootForward ;A8DC9F;
+    dw $0008,Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging ;A8DCA3;
+    dw $000D,Spritemap_Alcoon_FacingRight_WingForward_AboutToSpit        ;A8DCA7;
     dw $0003,Spritemap_Alcoon_FaceRight_WingMovingForward_MouthEnlarging ;A8DCAB;
     dw Instruction_Alcoon_SpawnAlcoonFireballDownward                    ;A8DCAF;
-    dw $0028,Spritemap_Alcoon_FacingRight_WingExtended_MouthJustSpit     ;A8DCB1;
+    dw $0021,Spritemap_Alcoon_FacingRight_WingExtended_MouthJustSpit     ;A8DCB1;
     dw Instruction_Alcoon_StartWalking                                   ;A8DCB5;
     dw $0001,Spritemap_Alcoon_FacingRight_WingExtended_MouthJustSpit     ;A8DCB7;
 
@@ -11045,15 +11043,15 @@ FaceBlockGlowColors:                                                     ;A8E7CC
     dw $001F,$0012,$000A,$002B
 
 InstList_FaceBlock_TurningLeft:
-    dw $0030,Spritemap_FaceBlock_FacingForward                           ;A8E80C;
-    dw $0010,Spritemap_FaceBlock_TurningLeft                             ;A8E810;
-    dw $0010,Spritemap_FaceBlock_FacingLeft                              ;A8E814;
+    dw $0028,Spritemap_FaceBlock_FacingForward                           ;A8E80C;
+    dw $000D,Spritemap_FaceBlock_TurningLeft                             ;A8E810;
+    dw $000D,Spritemap_FaceBlock_FacingLeft                              ;A8E814;
     dw Instruction_Common_Sleep                                          ;A8E818;
 
 InstList_FaceBlock_TurningRight:
-    dw $0030,Spritemap_FaceBlock_FacingForward                           ;A8E81A;
-    dw $0010,Spritemap_FaceBlock_TurningRight                            ;A8E81E;
-    dw $0010,Spritemap_FaceBlock_FacingRight                             ;A8E822;
+    dw $0028,Spritemap_FaceBlock_FacingForward                           ;A8E81A;
+    dw $000D,Spritemap_FaceBlock_TurningRight                            ;A8E81E;
+    dw $000D,Spritemap_FaceBlock_FacingRight                             ;A8E822;
     dw Instruction_Common_Sleep                                          ;A8E826;
 
 InstList_FaceBlock_FacingForward:
@@ -11241,46 +11239,46 @@ Palette_KihunterRed:
     dw $102B,$6F11,$522A,$3124,$1824,$02FF,$01BF,$000F                   ;A8E9EA;
 
 InstList_Kihunter_Idling_FacingLeft:
-    dw $0002,Spritemap_Kihunter_0                                        ;A8E9FA;
+    dw $0001,Spritemap_Kihunter_0                                        ;A8E9FA;
     dw $0002,Spritemap_Kihunter_1                                        ;A8E9FE;
     dw $0001,Spritemap_Kihunter_2                                        ;A8EA02;
     dw Instruction_Kihunter_SetIdlingInstListsFacingForwards             ;A8EA06;
 
 InstList_Kihunter_Swiping_FacingLeft:
-    dw $0002,Spritemap_Kihunter_11                                       ;A8EA08;
-    dw $0006,Spritemap_Kihunter_12                                       ;A8EA0C;
+    dw $0001,Spritemap_Kihunter_11                                       ;A8EA08;
+    dw $0005,Spritemap_Kihunter_12                                       ;A8EA0C;
     dw $0002,Spritemap_Kihunter_11                                       ;A8EA10;
-    dw $0002,Spritemap_Kihunter_10                                       ;A8EA14;
+    dw $0001,Spritemap_Kihunter_10                                       ;A8EA14;
     dw $0002,Spritemap_Kihunter_13                                       ;A8EA18;
-    dw $0020,Spritemap_Kihunter_14                                       ;A8EA1C;
+    dw $001A,Spritemap_Kihunter_14                                       ;A8EA1C;
     dw Instruction_Common_GotoY                                          ;A8EA20;
     dw InstList_Kihunter_Idling_FacingLeft                               ;A8EA22;
 
 InstList_Kihunter_Idling_FacingRight:
-    dw $0002,Spritemap_Kihunter_8                                        ;A8EA24;
+    dw $0001,Spritemap_Kihunter_8                                        ;A8EA24;
     dw $0002,Spritemap_Kihunter_9                                        ;A8EA28;
     dw $0001,Spritemap_Kihunter_A                                        ;A8EA2C;
     dw Instruction_Kihunter_SetIdlingInstListsFacingForwards             ;A8EA30;
 
 InstList_Kihunter_Swiping_FacingRight:
-    dw $0002,Spritemap_Kihunter_16                                       ;A8EA32;
-    dw $0006,Spritemap_Kihunter_17                                       ;A8EA36;
+    dw $0001,Spritemap_Kihunter_16                                       ;A8EA32;
+    dw $0005,Spritemap_Kihunter_17                                       ;A8EA36;
     dw $0002,Spritemap_Kihunter_16                                       ;A8EA3A;
-    dw $0002,Spritemap_Kihunter_15                                       ;A8EA3E;
+    dw $0001,Spritemap_Kihunter_15                                       ;A8EA3E;
     dw $0002,Spritemap_Kihunter_18                                       ;A8EA42;
-    dw $0020,Spritemap_Kihunter_19                                       ;A8EA46;
+    dw $001A,Spritemap_Kihunter_19                                       ;A8EA46;
     dw Instruction_Common_GotoY                                          ;A8EA4A;
     dw InstList_Kihunter_Idling_FacingRight                              ;A8EA4C;
 
 InstList_KihunterWings_FacingLeft:
-    dw $0002,Spritemap_Kihunter_3                                        ;A8EA4E;
+    dw $0001,Spritemap_Kihunter_3                                        ;A8EA4E;
     dw $0002,Spritemap_Kihunter_4                                        ;A8EA52;
     dw $0001,Spritemap_Kihunter_5                                        ;A8EA56;
     dw Instruction_CommonA8_GotoY                                        ;A8EA5A;
     dw InstList_KihunterWings_FacingLeft                                 ;A8EA5C;
 
 InstList_KihunterWings_FacingRight:
-    dw $0002,Spritemap_Kihunter_B                                        ;A8EA5E;
+    dw $0001,Spritemap_Kihunter_B                                        ;A8EA5E;
     dw $0002,Spritemap_Kihunter_C                                        ;A8EA62;
     dw $0001,Spritemap_Kihunter_D                                        ;A8EA66;
     dw Instruction_Common_GotoY                                          ;A8EA6A;
@@ -11288,12 +11286,12 @@ InstList_KihunterWings_FacingRight:
 
 if !FEATURE_KEEP_UNREFERENCED
 UNUSED_InstList_KihunterWings_Falling_XFlipped_A8EA6E:
-    dw $0010,Spritemap_Kihunter_6                                        ;A8EA6E;
+    dw $000D,Spritemap_Kihunter_6                                        ;A8EA6E;
     dw Instruction_Common_GotoY                                          ;A8EA72;
     dw UNUSED_InstList_KihunterWings_Falling_XFlipped_A8EA6E             ;A8EA74;
 
 UNUSED_InstList_KihunterWings_Falling_XFlipped_A8EA76:
-    dw $0010,Spritemap_Kihunter_7                                        ;A8EA76;
+    dw $000D,Spritemap_Kihunter_7                                        ;A8EA76;
     dw Instruction_Common_GotoY                                          ;A8EA7A;
     dw UNUSED_InstList_KihunterWings_Falling_XFlipped_A8EA76             ;A8EA7C;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -11309,61 +11307,61 @@ UNUSED_InstList_KihunterWings_Falling_A8EA84:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 InstList_Kihunter_Hop_FacingLeft:
-    dw $0008,Spritemap_Kihunter_1A                                       ;A8EA8A;
-    dw $0008,Spritemap_Kihunter_1B                                       ;A8EA8E;
-    dw $000B,Spritemap_Kihunter_1C                                       ;A8EA92;
-    dw $0002,Spritemap_Kihunter_1B                                       ;A8EA96;
-    dw $0002,Spritemap_Kihunter_1A                                       ;A8EA9A;
+    dw $0007,Spritemap_Kihunter_1A                                       ;A8EA8A;
+    dw $0007,Spritemap_Kihunter_1B                                       ;A8EA8E;
+    dw $0009,Spritemap_Kihunter_1C                                       ;A8EA92;
+    dw $0001,Spritemap_Kihunter_1B                                       ;A8EA96;
+    dw $0001,Spritemap_Kihunter_1A                                       ;A8EA9A;
     dw Instruction_Kihunter_SetFunctionToHop                             ;A8EA9E;
     dw $0001,Spritemap_Kihunter_1D                                       ;A8EAA0;
     dw Instruction_Common_Sleep                                          ;A8EAA4;
 
 InstList_Kihunter_Hop_FacingRight:
-    dw $0008,Spritemap_Kihunter_1E                                       ;A8EAA6;
-    dw $0008,Spritemap_Kihunter_1F                                       ;A8EAAA;
-    dw $000B,Spritemap_Kihunter_20                                       ;A8EAAE;
-    dw $0002,Spritemap_Kihunter_1F                                       ;A8EAB2;
-    dw $0002,Spritemap_Kihunter_1E                                       ;A8EAB6;
+    dw $0006,Spritemap_Kihunter_1E                                       ;A8EAA6;
+    dw $0007,Spritemap_Kihunter_1F                                       ;A8EAAA;
+    dw $0009,Spritemap_Kihunter_20                                       ;A8EAAE;
+    dw $0001,Spritemap_Kihunter_1F                                       ;A8EAB2;
+    dw $0001,Spritemap_Kihunter_1E                                       ;A8EAB6;
     dw Instruction_Kihunter_SetFunctionToHop                             ;A8EABA;
     dw $0001,Spritemap_Kihunter_21                                       ;A8EABC;
     dw Instruction_Common_Sleep                                          ;A8EAC0;
 
 InstList_Kihunter_LandedFromHop_FacingLeft:
-    dw $0008,Spritemap_Kihunter_1A                                       ;A8EAC2;
-    dw $0008,Spritemap_Kihunter_1B                                       ;A8EAC6;
-    dw $000B,Spritemap_Kihunter_1C                                       ;A8EACA;
-    dw $0008,Spritemap_Kihunter_1B                                       ;A8EACE;
+    dw $0006,Spritemap_Kihunter_1A                                       ;A8EAC2;
+    dw $0007,Spritemap_Kihunter_1B                                       ;A8EAC6;
+    dw $0009,Spritemap_Kihunter_1C                                       ;A8EACA;
+    dw $0007,Spritemap_Kihunter_1B                                       ;A8EACE;
     dw Instruction_Kihunter_SetFunctionTo_Wingless_Thinking              ;A8EAD2;
     dw $0001,Spritemap_Kihunter_1A                                       ;A8EAD4;
     dw Instruction_Common_Sleep                                          ;A8EAD8;
 
 InstList_Kihunter_LandedFromHop_FacingRight:
-    dw $0008,Spritemap_Kihunter_1E                                       ;A8EADA;
-    dw $0008,Spritemap_Kihunter_1F                                       ;A8EADE;
-    dw $000B,Spritemap_Kihunter_20                                       ;A8EAE2;
-    dw $0008,Spritemap_Kihunter_1F                                       ;A8EAE6;
+    dw $0006,Spritemap_Kihunter_1E                                       ;A8EADA;
+    dw $0007,Spritemap_Kihunter_1F                                       ;A8EADE;
+    dw $0009,Spritemap_Kihunter_20                                       ;A8EAE2;
+    dw $0007,Spritemap_Kihunter_1F                                       ;A8EAE6;
     dw Instruction_Kihunter_SetFunctionTo_Wingless_Thinking              ;A8EAEA;
     dw $0001,Spritemap_Kihunter_1E                                       ;A8EAEC;
     dw Instruction_Common_Sleep                                          ;A8EAF0;
 
 InstList_Kihunter_AcidSpitAttack_FacingLeft:
-    dw $0020,Spritemap_Kihunter_22                                       ;A8EAF2;
-    dw $0006,Spritemap_Kihunter_23                                       ;A8EAF6;
-    dw $0010,Spritemap_Kihunter_24                                       ;A8EAFA;
+    dw $001A,Spritemap_Kihunter_22                                       ;A8EAF2;
+    dw $0005,Spritemap_Kihunter_23                                       ;A8EAF6;
+    dw $000D,Spritemap_Kihunter_24                                       ;A8EAFA;
     dw $0002,Spritemap_Kihunter_25                                       ;A8EAFE;
     dw Instruction_Kihunter_FireAcidSpitLeft                             ;A8EB02;
-    dw $0018,Spritemap_Kihunter_26                                       ;A8EB04;
+    dw $0015,Spritemap_Kihunter_26                                       ;A8EB04;
     dw Instruction_Kihunter_SetFunctionTo_Wingless_Thinking              ;A8EB08;
     dw $0001,Spritemap_Kihunter_22                                       ;A8EB0A;
     dw Instruction_Common_Sleep                                          ;A8EB0E;
 
 InstList_Kihunter_AcidSpitAttack_FacingRight:
-    dw $0020,Spritemap_Kihunter_27                                       ;A8EB10;
-    dw $0006,Spritemap_Kihunter_28                                       ;A8EB14;
-    dw $0010,Spritemap_Kihunter_29                                       ;A8EB18;
+    dw $001A,Spritemap_Kihunter_27                                       ;A8EB10;
+    dw $0005,Spritemap_Kihunter_28                                       ;A8EB14;
+    dw $000D,Spritemap_Kihunter_29                                       ;A8EB18;
     dw $0002,Spritemap_Kihunter_2A                                       ;A8EB1C;
     dw Instruction_Kihunter_FireAcidSpitRight                            ;A8EB20;
-    dw $0018,Spritemap_Kihunter_2B                                       ;A8EB22;
+    dw $0015,Spritemap_Kihunter_2B                                       ;A8EB22;
     dw Instruction_Kihunter_SetFunctionTo_Wingless_Thinking              ;A8EB26;
     dw $0001,Spritemap_Kihunter_27                                       ;A8EB28;
     dw Instruction_Common_Sleep                                          ;A8EB2C;
@@ -11858,7 +11856,7 @@ InitAI_Kihunter:
     STA.L $7E7828,X                                                      ;A8F1FB;
     LDA.W #Function_Kihunter_Wingless_InitialFalling                     ;A8F1FF;
     STA.W $0FA8,X                                                        ;A8F202;
-    LDA.W #$0000                                                         ;A8F205;
+    LDA.W #$3333                                                         ;A8F205;
     STA.L $7E7810,X                                                      ;A8F208;
     LDA.W #$0001                                                         ;A8F20C;
     STA.L $7E7812,X                                                      ;A8F20F;
@@ -11988,13 +11986,13 @@ Function_Kihunter_Winged_IdleFlying:
     STA.B $18                                                            ;A8F302;
     LDA.B $12                                                            ;A8F304;
     BMI .rightOfSamus                                                    ;A8F306;
-    LDA.W #$0002                                                         ;A8F308;
+    LDA.W #$0003                                                         ;A8F308;
     STA.L $7E7800,X                                                      ;A8F30B;
     LDA.W #$0000                                                         ;A8F30F;
     STA.L $7E7804,X                                                      ;A8F312;
     STA.L $7E7806,X                                                      ;A8F316;
     STA.L $7E7808,X                                                      ;A8F31A;
-    LDA.W #$2000                                                         ;A8F31E;
+    LDA.W #$2666                                                         ;A8F31E;
     STA.L $7E780A,X                                                      ;A8F321;
     LDA.W #$0080                                                         ;A8F325;
     STA.W $0FB2,X                                                        ;A8F328;
@@ -12007,7 +12005,7 @@ Function_Kihunter_Winged_IdleFlying:
 
 
 .rightOfSamus:
-    LDA.W #$FFFE                                                         ;A8F33E;
+    LDA.W #$FFFD                                                         ;A8F33E;
     STA.L $7E7800,X                                                      ;A8F341;
     LDA.W #$0000                                                         ;A8F345;
     STA.L $7E7804,X                                                      ;A8F348;
@@ -12015,7 +12013,7 @@ Function_Kihunter_Winged_IdleFlying:
     LDA.W #$FFFF                                                         ;A8F350;
     STA.L $7E7808,X                                                      ;A8F353;
     STA.L $7E780E,X                                                      ;A8F357;
-    LDA.W #$E000                                                         ;A8F35B;
+    LDA.W #$D99A                                                         ;A8F35B;
     STA.L $7E780A,X                                                      ;A8F35E;
     LDA.W #$00FF                                                         ;A8F362;
     STA.W $0FB2,X                                                        ;A8F365;
@@ -12094,6 +12092,8 @@ Function_Kihunter_Winged_Swoop:
     ADC.L $7E7808,X                                                      ;A8F40C;
     CMP.L $7E7800,X                                                      ;A8F410;
     BPL +                                                                ;A8F414;
+    LDA.W #$6666
+    STA.L $7E7806,X
     LDA.L $7E7800,X                                                      ;A8F416;
 
   + STA.L $7E7804,X                                                      ;A8F41A;
@@ -12766,5 +12766,5 @@ DetermineFallingKihunterWingsSpeedTableIndexResetValue:
     RTS                                                                  ;A8F9BD;
 
 
-Freespace_BankA8_F9BE:                                                   ;A8F9BE;
-; $642 bytes
+Freespace_BankA8_F9CD:                                                   ;A8F9BE;
+; $633 bytes

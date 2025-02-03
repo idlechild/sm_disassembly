@@ -352,70 +352,72 @@ CommonA5EnemySpeeds_LinearlyIncreasing:
     dw             $0000                                                 ;A5818B;
   .negatedSubspeed:
     dw                   $0000                                           ;A5818D;
-    dw $0000,$1000,$FFFF,$F000
-    dw $0000,$2000,$FFFF,$E000
-    dw $0000,$3000,$FFFF,$D000
-    dw $0000,$4000,$FFFF,$C000
-    dw $0000,$5000,$FFFF,$B000
-    dw $0000,$6000,$FFFF,$A000
-    dw $0000,$7000,$FFFF,$9000
-    dw $0000,$8000,$FFFF,$8000
-    dw $0000,$9000,$FFFF,$7000
-    dw $0000,$A000,$FFFF,$6000
-    dw $0000,$B000,$FFFF,$5000
-    dw $0000,$C000,$FFFF,$4000
-    dw $0000,$D000,$FFFF,$3000
-    dw $0000,$E000,$FFFF,$2000
-    dw $0000,$F000,$FFFF,$1000
-    dw $0001,$0000,$FFFF,$0000
-    dw $0001,$1000,$FFFE,$F000
-    dw $0001,$2000,$FFFE,$E000
-    dw $0001,$3000,$FFFE,$D000
-    dw $0001,$4000,$FFFE,$C000
-    dw $0001,$5000,$FFFE,$B000
-    dw $0001,$6000,$FFFE,$A000
-    dw $0001,$7000,$FFFE,$9000
-    dw $0001,$8000,$FFFE,$8000
-    dw $0001,$9000,$FFFE,$7000
-    dw $0001,$A000,$FFFE,$6000
-    dw $0001,$B000,$FFFE,$5000
-    dw $0001,$C000,$FFFE,$4000
-    dw $0001,$D000,$FFFE,$3000
-    dw $0001,$E000,$FFFE,$2000
-    dw $0001,$F000,$FFFE,$1000
-    dw $0002,$0000,$FFFE,$0000
-    dw $0002,$1000,$FFFD,$F000
-    dw $0002,$2000,$FFFD,$E000
-    dw $0002,$3000,$FFFD,$D000
-    dw $0002,$4000,$FFFD,$C000
-    dw $0002,$5000,$FFFD,$B000
-    dw $0002,$6000,$FFFD,$A000
-    dw $0002,$7000,$FFFD,$9000
-    dw $0002,$8000,$FFFD,$8000
-    dw $0002,$9000,$FFFD,$7000
-    dw $0002,$A000,$FFFD,$6000
-    dw $0002,$B000,$FFFD,$5000
-    dw $0002,$C000,$FFFD,$4000
-    dw $0002,$D000,$FFFD,$3000
-    dw $0002,$E000,$FFFD,$2000
-    dw $0002,$F000,$FFFD,$1000
-    dw $0003,$0000,$FFFD,$0000
-    dw $0003,$1000,$FFFC,$F000
-    dw $0003,$2000,$FFFC,$E000
-    dw $0003,$3000,$FFFC,$D000
-    dw $0003,$4000,$FFFC,$C000
-    dw $0003,$5000,$FFFC,$B000
-    dw $0003,$6000,$FFFC,$A000
-    dw $0003,$7000,$FFFC,$9000
-    dw $0003,$8000,$FFFC,$8000
-    dw $0003,$9000,$FFFC,$7000
-    dw $0003,$A000,$FFFC,$6000
-    dw $0003,$B000,$FFFC,$5000
-    dw $0003,$C000,$FFFC,$4000
-    dw $0003,$D000,$FFFC,$3000
-    dw $0003,$E000,$FFFC,$2000
-    dw $0003,$F000,$FFFC,$1000
-    dw $0004,$0000,$FFFC,$0000
+    dw $0000,$1333,$FFFF,$ECCD
+    dw $0000,$2666,$FFFF,$D99A
+    dw $0000,$3999,$FFFF,$C667
+    dw $0000,$4CCC,$FFFF,$B334
+    dw $0000,$5FFF,$FFFF,$A001
+    dw $0000,$7332,$FFFF,$8CCE
+    dw $0000,$8665,$FFFF,$799B
+    dw $0000,$9998,$FFFF,$6668
+    dw $0000,$ACCB,$FFFF,$5335
+    dw $0000,$BFFE,$FFFF,$4002
+    dw $0000,$D331,$FFFF,$2CCF
+    dw $0000,$E664,$FFFF,$199C
+    dw $0000,$F997,$FFFF,$0669
+    dw $0001,$0CCA,$FFFE,$F336
+    dw $0001,$1FFD,$FFFE,$E003
+    dw $0001,$3330,$FFFE,$CCD0
+    dw $0001,$4663,$FFFE,$B99D
+    dw $0001,$5996,$FFFE,$A66A
+    dw $0001,$6CC9,$FFFE,$9337
+    dw $0001,$7FFC,$FFFE,$8004
+    dw $0001,$932F,$FFFE,$6CD1
+    dw $0001,$A662,$FFFE,$599E
+    dw $0001,$B995,$FFFE,$466B
+    dw $0001,$CCC8,$FFFE,$3338
+    dw $0001,$DFFB,$FFFE,$2005
+    dw $0001,$F32E,$FFFE,$0CD2
+    dw $0002,$0661,$FFFD,$F99F
+    dw $0002,$1994,$FFFD,$E66C
+    dw $0002,$2CC7,$FFFD,$D339
+    dw $0002,$3FFA,$FFFD,$C006
+    dw $0002,$532D,$FFFD,$ACD3
+    dw $0002,$6660,$FFFD,$99A0
+    dw $0002,$7993,$FFFD,$866D
+    dw $0002,$8CC6,$FFFD,$733A
+    dw $0002,$9FF9,$FFFD,$6007
+    dw $0002,$B32C,$FFFD,$4CD4
+    dw $0002,$C65F,$FFFD,$39A1
+    dw $0002,$D992,$FFFD,$266E
+    dw $0002,$ECC5,$FFFD,$133B
+    dw $0002,$FFF8,$FFFD,$0008
+    dw $0003,$132B,$FFFC,$ECD5
+    dw $0003,$265E,$FFFC,$D9A2
+    dw $0003,$3991,$FFFC,$C66F
+    dw $0003,$4CC4,$FFFC,$B33C
+    dw $0003,$5FF7,$FFFC,$A009
+    dw $0003,$732A,$FFFC,$8CD6
+    dw $0003,$865D,$FFFC,$79A3
+    dw $0003,$9990,$FFFC,$6670
+    dw $0003,$ACC3,$FFFC,$533D
+    dw $0003,$BFF6,$FFFC,$400A
+    dw $0003,$D329,$FFFC,$2CD7
+    dw $0003,$E65C,$FFFC,$19A4
+    dw $0003,$F98F,$FFFC,$0671
+    dw $0004,$0CC2,$FFFB,$F33E
+    dw $0004,$1FF5,$FFFB,$E00B
+    dw $0004,$3328,$FFFB,$CCD8
+    dw $0004,$465B,$FFFB,$B9A5
+    dw $0004,$598E,$FFFB,$A672
+    dw $0004,$6CC1,$FFFB,$933F
+    dw $0004,$7FF4,$FFFB,$800C
+    dw $0004,$9327,$FFFB,$6CD9
+    dw $0004,$A65A,$FFFB,$59A6
+    dw $0004,$B98D,$FFFB,$4673
+    dw $0004,$CCC0,$FFFB,$3340
+    dw $0004,$DFF3,$FFFB,$200D
+    dw $0004,$F326,$FFFB,$0CDA
 
 
 ;        _____________________ Subspeed
@@ -436,98 +438,98 @@ CommonA5EnemySpeeds_QuadraticallyIncreasing:
     dw                   $0000                                           ;A58395;
     dw $0109,$0000,$FEF7,$FFFF
     dw $031B,$0000,$FCE5,$FFFF
-    dw $0636,$0000,$F9CA,$FFFF
-    dw $0A5A,$0000,$F5A6,$FFFF
-    dw $0F87,$0000,$F079,$FFFF
-    dw $15BD,$0000,$EA43,$FFFF
-    dw $1CFC,$0000,$E304,$FFFF
-    dw $2544,$0000,$DABC,$FFFF
-    dw $2E95,$0000,$D16B,$FFFF
-    dw $38EF,$0000,$C711,$FFFF
-    dw $4452,$0000,$BBAE,$FFFF
-    dw $50BE,$0000,$AF42,$FFFF
-    dw $5E33,$0000,$A1CD,$FFFF
-    dw $6CB1,$0000,$934F,$FFFF
-    dw $7C38,$0000,$83C8,$FFFF
-    dw $8CC8,$0000,$7338,$FFFF
-    dw $9E61,$0000,$619F,$FFFF
-    dw $B103,$0000,$4EFD,$FFFF
-    dw $C4AE,$0000,$3B52,$FFFF
-    dw $D962,$0000,$269E,$FFFF
-    dw $EF1F,$0000,$10E1,$FFFF
-    dw $05E5,$0000,$FA1B,$FFFF
-    dw $14B4,$0001,$EB4C,$FFFE
-    dw $2D8C,$0001,$D274,$FFFE
-    dw $476D,$0001,$B893,$FFFE
-    dw $6257,$0001,$9DA9,$FFFE
-    dw $7E4A,$0001,$81B6,$FFFE
-    dw $9B46,$0001,$64BA,$FFFE
-    dw $B94B,$0001,$46B5,$FFFE
-    dw $D859,$0001,$27A7,$FFFE
-    dw $F870,$0001,$0790,$FFFE
-    dw $1090,$0002,$EF70,$FFFD
-    dw $32B9,$0002,$CD47,$FFFD
+    dw $073F,$0000,$F8C1,$FFFF
+    dw $0B63,$0000,$F49D,$FFFF
+    dw $1199,$0000,$EE67,$FFFF
+    dw $19E1,$0000,$E61F,$FFFF
+    dw $2229,$0000,$DDD7,$FFFF
+    dw $2C83,$0000,$D37D,$FFFF
+    dw $36DD,$0000,$C923,$FFFF
+    dw $4349,$0000,$BCB7,$FFFF
+    dw $51C7,$0000,$AE39,$FFFF
+    dw $6045,$0000,$9FBB,$FFFF
+    dw $70D5,$0000,$8F2B,$FFFF
+    dw $8165,$0000,$7E9B,$FFFF
+    dw $9407,$0000,$6BF9,$FFFF
+    dw $A8BB,$0000,$5745,$FFFF
+    dw $BD6F,$0000,$4291,$FFFF
+    dw $D435,$0000,$2BCB,$FFFF
+    dw $EAFB,$0000,$1505,$FFFF
+    dw $03D3,$0001,$FC2D,$FFFE
+    dw $15BD,$0001,$EA43,$FFFE
+    dw $30A7,$0001,$CF59,$FFFE
+    dw $4DA3,$0001,$B25D,$FFFE
+    dw $6A9F,$0001,$9561,$FFFE
+    dw $89AD,$0001,$7653,$FFFE
+    dw $AACD,$0001,$5533,$FFFE
+    dw $CBED,$0001,$3413,$FFFE
+    dw $EF1F,$0001,$10E1,$FFFE
+    dw $0951,$0002,$F6AF,$FFFD
+    dw $2E95,$0002,$D16B,$FFFD
     dw $55EB,$0002,$AA15,$FFFD
-    dw $7A26,$0002,$85DA,$FFFD
-    dw $9F6A,$0002,$6096,$FFFD
-    dw $C5B7,$0002,$3A49,$FFFD
-    dw $ED0D,$0002,$12F3,$FFFD
-    dw $0C6C,$0003,$F394,$FFFC
-    dw $35D4,$0003,$CA2C,$FFFC
-    dw $6045,$0003,$9FBB,$FFFC
-    dw $8BBF,$0003,$7441,$FFFC
-    dw $B842,$0003,$47BE,$FFFC
-    dw $E5CE,$0003,$1A32,$FFFC
-    dw $0B63,$0004,$F49D,$FFFB
-    dw $3B01,$0004,$C4FF,$FFFB
-    dw $6BA8,$0004,$9458,$FFFB
-    dw $9D58,$0004,$62A8,$FFFB
-    dw $D011,$0004,$2FEF,$FFFB
-    dw $03D3,$0004,$FC2D,$FFFB
-    dw $2F9E,$0005,$D062,$FFFA
-    dw $6572,$0005,$9A8E,$FFFA
-    dw $9C4F,$0005,$63B1,$FFFA
-    dw $D435,$0005,$2BCB,$FFFA
-    dw $0424,$0006,$FBDC,$FFF9
-    dw $3E1C,$0006,$C1E4,$FFF9
+    dw $7D41,$0002,$82BF,$FFFD
+    dw $A6A9,$0002,$5957,$FFFD
+    dw $D011,$0002,$2FEF,$FFFD
+    dw $FB8B,$0002,$0475,$FFFD
+    dw $2017,$0003,$DFE9,$FFFC
+    dw $4DA3,$0003,$B25D,$FFFC
+    dw $7D41,$0003,$82BF,$FFFC
+    dw $ACDF,$0003,$5321,$FFFC
+    dw $DE8F,$0003,$2171,$FFFC
+    dw $0951,$0004,$F6AF,$FFFB
+    dw $3D13,$0004,$C2ED,$FFFB
+    dw $72E7,$0004,$8D19,$FFFB
+    dw $A8BB,$0004,$5745,$FFFB
+    dw $E0A1,$0004,$1F5F,$FFFB
+    dw $1199,$0005,$EE67,$FFFA
+    dw $4B91,$0005,$B46F,$FFFA
+    dw $879B,$0005,$7865,$FFFA
+    dw $C3A5,$0005,$3C5B,$FFFA
+    dw $01C1,$0005,$FE3F,$FFFA
+    dw $38EF,$0006,$C711,$FFF9
     dw $791D,$0006,$86E3,$FFF9
-    dw $B527,$0006,$4AD9,$FFF9
-    dw $F23A,$0006,$0DC6,$FFF9
-    dw $2756,$0007,$D8AA,$FFF8
-    dw $667B,$0007,$9985,$FFF8
-    dw $A6A9,$0007,$5957,$FFF8
-    dw $E7E0,$0007,$1820,$FFF8
-    dw $2120,$0008,$DEE0,$FFF7
-    dw $6469,$0008,$9B97,$FFF7
-    dw $A8BB,$0008,$5745,$FFF7
-    dw $EE16,$0008,$11EA,$FFF7
-    dw $2B7A,$0009,$D486,$FFF6
-    dw $72E7,$0009,$8D19,$FFF6
-    dw $BB5D,$0009,$44A3,$FFF6
-    dw $04DC,$0009,$FB24,$FFF6
-    dw $4664,$000A,$B99C,$FFF5
-    dw $91F5,$000A,$6E0B,$FFF5
-    dw $DE8F,$000A,$2171,$FFF5
-    dw $2332,$000B,$DCCE,$FFF4
-    dw $71DE,$000B,$8E22,$FFF4
-    dw $C193,$000B,$3E6D,$FFF4
-    dw $0951,$000C,$F6AF,$FFF3
-    dw $5B18,$000C,$A4E8,$FFF3
-    dw $ADE8,$000C,$5218,$FFF3
-    dw $01C1,$000C,$FE3F,$FFF3
-    dw $4DA3,$000D,$B25D,$FFF2
-    dw $A38E,$000D,$5C72,$FFF2
-    dw $FA82,$000D,$057E,$FFF2
-    dw $497F,$000E,$B681,$FFF1
-    dw $A285,$000E,$5D7B,$FFF1
-    dw $FC94,$000E,$036C,$FFF1
-    dw $4EAC,$000F,$B154,$FFF0
-    dw $AACD,$000F,$5533,$FFF0
-    dw $07F7,$000F,$F809,$FFF0
-    dw $5D2A,$0010,$A2D6,$FFEF
-    dw $BC66,$0010,$439A,$FFEF
-    dw $13AB,$0011,$EC55,$FFEE
-    dw $74F9,$0011,$8B07,$FFEE
+    dw $BB5D,$0006,$44A3,$FFF9
+    dw $FD9D,$0006,$0263,$FFF9
+    dw $38EF,$0007,$C711,$FFF8
+    dw $7F53,$0007,$80AD,$FFF8
+    dw $C5B7,$0007,$3A49,$FFF8
+    dw $052D,$0008,$FAD3,$FFF7
+    dw $4DA3,$0008,$B25D,$FFF7
+    dw $982B,$0008,$67D5,$FFF7
+    dw $E4C5,$0008,$1B3B,$FFF7
+    dw $285F,$0009,$D7A1,$FFF6
+    dw $770B,$0009,$88F5,$FFF6
+    dw $C5B7,$0009,$3A49,$FFF6
+    dw $0D75,$000A,$F28B,$FFF5
+    dw $6045,$000A,$9FBB,$FFF5
+    dw $B315,$000A,$4CEB,$FFF5
+    dw $07F7,$000B,$F809,$FFF5
+    dw $53D9,$000B,$AC27,$FFF4
+    dw $AACD,$000B,$5533,$FFF4
+    dw $03D3,$000C,$FC2D,$FFF3
+    dw $53D9,$000C,$AC27,$FFF3
+    dw $AEF1,$000C,$510F,$FFF3
+    dw $0109,$000D,$FEF7,$FFF2
+    dw $5E33,$000D,$A1CD,$FFF2
+    dw $BD6F,$000D,$4291,$FFF2
+    dw $13AB,$000E,$EC55,$FFF1
+    dw $74F9,$000E,$8B07,$FFF1
+    dw $D647,$000E,$29B9,$FFF1
+    dw $30A7,$000F,$CF59,$FFF0
+    dw $9619,$000F,$69E7,$FFF0
+    dw $FB8B,$000F,$0475,$FFF0
+    dw $5A0F,$0010,$A5F1,$FFEF
+    dw $C193,$0010,$3E6D,$FFEF
+    dw $2229,$0011,$DDD7,$FFEE
+    dw $8DD1,$0011,$722F,$FFEE
+    dw $F979,$0011,$0687,$FFEE
+    dw $5E33,$0012,$A1CD,$FFED
+    dw $CBED,$0012,$3413,$FFED
+    dw $32B9,$0013,$CD47,$FFEC
+    dw $A497,$0013,$5B69,$FFEC
+    dw $0D75,$0014,$F28B,$FFEB
+    dw $8165,$0014,$7E9B,$FFEB
+    dw $F555,$0014,$0AAB,$FFEB
 
 
 InitAI_DraygonBody:
@@ -597,7 +599,7 @@ Function_DraygonBody_FightIntro_InitialDelay:
     JSR.W HandleFiringWallTurret                                         ;A5871B;
     LDX.W $0E54                                                          ;A5871E; >.<
     LDA.W $0FAA                                                          ;A58721;
-    CMP.W #$0100                                                         ;A58724;
+    CMP.W #$0133                                                         ;A58724;
     BPL .done                                                            ;A58727;
     LDA.W $0FAA                                                          ;A58729;
     BNE .incFunctionTimer                                                ;A5872C;
@@ -636,7 +638,7 @@ Function_DraygonBody_FightIntro_InitialDelay:
     STA.W $0F7A                                                          ;A58779; >.<
     LDA.L $7E7802                                                        ;A5877C;
     STA.W $0F7E                                                          ;A58780; >.<
-    LDA.W #$0018                                                         ;A58783;
+    LDA.W #$001C                                                         ;A58783;
     STA.L $7E781E                                                        ;A58786;
     RTS                                                                  ;A5878A;
 
@@ -645,7 +647,7 @@ Function_DraygonBody_FightIntro_Dance:
     JSR.W HandleFiringWallTurret                                         ;A5878B;
     LDX.W $0E54                                                          ;A5878E; >.<
     LDA.W $0FAA                                                          ;A58791;
-    CMP.W #$04D0                                                         ;A58794;
+    CMP.W #$05C6                                                         ;A58794;
     BPL .startFight                                                      ;A58797;
     JSR.W HandleDraygonFightIntroDance                                   ;A58799;
     INC.W $0FAA                                                          ;A5879C;
@@ -678,7 +680,7 @@ HandleFiringWallTurret:
     LDA.W .YPosition,Y                                                   ;A587CC;
     STA.B $14                                                            ;A587CF;
     LDY.W #EnemyProjectile_DraygonWallTurret                             ;A587D1;
-    LDA.W #$0003                                                         ;A587D4;
+    LDA.W #$0004                                                         ;A587D4;
     JSL.L SpawnEnemyProjectileY_ParameterA_XGraphics                     ;A587D7;
 
 .return:
@@ -1071,7 +1073,7 @@ Function_DraygonBody_GoopRight_Setup:
     STA.W $0F7A                                                          ;A58B10;
     LDA.W #$0180                                                         ;A58B13;
     STA.W $0F7E                                                          ;A58B16;
-    LDA.W #$0000                                                         ;A58B19;
+    LDA.W #$3333                                                         ;A58B19;
     STA.W $0FB0                                                          ;A58B1C;
     LDA.W #$0001                                                         ;A58B1F;
     STA.W $0FAE                                                          ;A58B22;
@@ -1241,7 +1243,7 @@ Function_DraygonBody_GoopLeft_Setup:
     STA.W $0F7A                                                          ;A58C92;
     LDA.W #$0180                                                         ;A58C95;
     STA.W $0F7E                                                          ;A58C98;
-    LDA.W #$0000                                                         ;A58C9B;
+    LDA.W #$3333                                                         ;A58C9B;
     STA.W $0FB0                                                          ;A58C9E;
     LDA.W #$0001                                                         ;A58CA1;
     STA.W $0FAE                                                          ;A58CA4;
@@ -1804,7 +1806,7 @@ Function_DraygonBody_GrabbedSamus_FlyStraightUp:
     JSR.W HandleFiringWallTurret                                         ;A59154;
     LDA.W $0F7E                                                          ;A59157;
     SEC                                                                  ;A5915A;
-    SBC.W #$0004                                                         ;A5915B;
+    SBC.W #$0005                                                         ;A5915B;
     STA.W $0F7E                                                          ;A5915E;
     BMI .offScreenTop                                                    ;A59161;
     RTS                                                                  ;A59163;
@@ -1921,7 +1923,7 @@ Function_DraygonBody_DeathSequence_DriftToDeathSpot:
     STA.W $0FA8                                                          ;A59250;
     LDA.W #$0003                                                         ;A59253;
     JSL.L QueueMusicDataOrTrack_8FrameDelay                              ;A59256;
-    LDA.W #$01A0                                                         ;A5925A;
+    LDA.W #$01C0                                                         ;A5925A;
     STA.W $0FAA                                                          ;A5925D;
     LDA.W #InstList_Draygon_Sleep                                        ;A59260;
     STA.W $0F92                                                          ;A59263;
@@ -3013,7 +3015,7 @@ InstList_DraygonTail_FacingLeft_TailFlail:
 Instruction_DraygonTail_TailWhipHit:
     PHX                                                                  ;A59B9A;
     PHY                                                                  ;A59B9B;
-    LDA.W #$0018                                                         ;A59B9C;
+    LDA.W #$001C                                                         ;A59B9C;
     STA.L $7E781E                                                        ;A59B9F;
     LDX.W $0F78                                                          ;A59BA3;
     LDA.L $A00006,X                                                      ;A59BA6;
@@ -3206,7 +3208,6 @@ InstList_DraygonEye_FacingRight_LookingDown:
     dw Instruction_Common_Sleep                                          ;A59D66;
 
 InstList_DraygonTail_FacingRight_Idle_0:
-    dw $0008,ExtendedSpritemap_Draygon_59                                ;A59D68;
     dw $0007,ExtendedSpritemap_Draygon_5A                                ;A59D6C;
     dw $0006,ExtendedSpritemap_Draygon_5B                                ;A59D70;
     dw $0006,ExtendedSpritemap_Draygon_5C                                ;A59D74;
@@ -7015,8 +7016,8 @@ InstList_SporeSpawn_FightHasStarted:
 
 InstList_SporeSpawn_OpenAndStop_0:
     dw Instruction_SporeSpawn_SporeGenerationFlagInY,$0001               ;A5E6E3;
+    dw $0001,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_0       ;A5E6EB;
     dw Instruction_SporeSpawn_QueueSFXInY_Lib2_Max6,$002C                ;A5E6E7;
-    dw $0001,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_0       ;A5E6E9;
     dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_1       ;A5E6EF;
     dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_2       ;A5E6F3;
     dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_3       ;A5E6F7;
@@ -7078,17 +7079,12 @@ Instruction_SporeSpawn_ClearDamagedFlag:
 
 
 InstList_SporeSpawn_DeathSequence_0:
-    dw Instruction_SporeSpawn_FunctionInY                                ;A5E77D;
-    dw Function_SporeSpawn_SetupDeath                                    ;A5E77F;
     dw $0001,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_6       ;A5E781;
-    dw Instruction_SporeSpawn_FunctionInY                                ;A5E785;
-    dw Function_SporeSpawn_Dying                                         ;A5E787;
     dw Instruction_Common_TimerInY,$000A                                 ;A5E789;
 
 InstList_SporeSpawn_DeathSequence_1:
-    dw $0001,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_6       ;A5E78D;
+    dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_6       ;A5E78D;
     dw Instruction_SporeSpawn_SpawnDyingExplosion                        ;A5E791;
-    dw Instruction_Common_WaitYFrames,$0008                              ;A5E793;
     dw Instruction_Common_DecrementTimer_GotoYIfNonZero_duplicate        ;A5E797;
     dw InstList_SporeSpawn_DeathSequence_1                               ;A5E799;
     dw $0008,ExtendedSpritemap_SporeSpawn_Closed_Closing_Opening_6       ;A5E79B;
@@ -7219,8 +7215,12 @@ Instruction_SporeSpawn_Harden:
 Instruction_SporeSpawn_QueueSFXInY_Lib2_Max6:
     PHX                                                                  ;A5E895;
     PHY                                                                  ;A5E896;
+    LDA.W $0F8C
+    BEQ .return
     LDA.W $0000,Y                                                        ;A5E897;
-    JSL.L QueueSound_Lib2_Max6                                           ;A5E89A;
+    JSL.L QueueSound_Lib2_Max1                                           ;A5E89A;
+
+.return:
     PLY                                                                  ;A5E89E;
     PLX                                                                  ;A5E89F;
     INY                                                                  ;A5E8A0;
@@ -7232,7 +7232,7 @@ Instruction_SporeSpawn_QueueSFXInY_Lib3_Max6:
     PHX                                                                  ;A5E8A3;
     PHY                                                                  ;A5E8A4;
     LDA.W $0000,Y                                                        ;A5E8A5;
-    JSL.L QueueSound_Lib3_Max6                                           ;A5E8A8;
+    JSL.L QueueSound_Lib3_Max1                                           ;A5E8A8;
     PLY                                                                  ;A5E8AC;
     PLX                                                                  ;A5E8AD;
     INY                                                                  ;A5E8AE;
@@ -7393,7 +7393,7 @@ Instruction_SporeSpawn_SpawnHardeningDustCloud:
     LDY.W #EnemyProjectile_MiscDust                                      ;A5E9A0;
     JSL.L SpawnEnemyProjectileY_ParameterA_RoomGraphics                  ;A5E9A3;
     LDA.W #$0029                                                         ;A5E9A7;
-    JSL.L QueueSound_Lib2_Max6                                           ;A5E9AA;
+    JSL.L QueueSound_Lib2_Max1                                           ;A5E9AA;
     PLX                                                                  ;A5E9AE;
     PLY                                                                  ;A5E9AF;
     RTL                                                                  ;A5E9B0;
@@ -7427,7 +7427,7 @@ Instruction_SporeSpawn_SpawnDyingExplosion:
     STZ.B $18                                                            ;A5E9E5;
     JSL.L Create_Sprite_Object                                           ;A5E9E7;
     LDA.W #$0025                                                         ;A5E9EB;
-    JSL.L QueueSound_Lib2_Max6                                           ;A5E9EE;
+    JSL.L QueueSound_Lib2_Max15                                          ;A5E9EE;
     PLX                                                                  ;A5E9F2;
     PLY                                                                  ;A5E9F3;
     RTL                                                                  ;A5E9F4;
@@ -7579,6 +7579,8 @@ Function_SporeSpawn_Descent:
     STA.L $7E7816                                                        ;A5EB3F;
     LDA.W #$0001                                                         ;A5EB43;
     STA.L $7E7818                                                        ;A5EB46;
+    LDA.W #$3333
+    STA.L $7E781E
     LDA.W #$00C0                                                         ;A5EB4A;
     STA.L $7E7814                                                        ;A5EB4D;
     RTS                                                                  ;A5EB51;
@@ -7605,6 +7607,25 @@ Function_SporeSpawn_Moving:
     CLC                                                                  ;A5EB83;
     ADC.W $0FAE,X                                                        ;A5EB84;
     STA.W $0F7E,X                                                        ;A5EB87;
+    LDA.L $7E781E
+    CLC
+    ADC.L $7E781C
+    STA.L $7E781C
+    BCC .add
+    LDA.L $7E7818
+    BMI .decrement
+    LDA.L $7E7814
+    INC
+    STA.L $7E7814
+    BRA .add
+
+
+.decrement:
+    LDA.L $7E7814
+    DEC
+    STA.L $7E7814
+
+.add:
     LDA.L $7E7814                                                        ;A5EB8A;
     CLC                                                                  ;A5EB8E;
     ADC.L $7E7818                                                        ;A5EB8F;
@@ -7840,6 +7861,8 @@ EnemyShot_SporeSpawn_Vulnerable:
 .negativeAngleDelta:
     TYA                                                                  ;A5ED93;
     STA.L $7E7818                                                        ;A5ED94;
+    LDA.W #$6666
+    STA.L $7E781E
 
 .noSpeedUp:
     LDA.L $7E801E                                                        ;A5ED98;
@@ -7919,6 +7942,9 @@ SporeSpawnReaction_Common:
     JSL.L Spawn_Hardcoded_PLM                                            ;A5EE41;
     db $07,$1E                                                           ;A5EE45;
     dw PLMEntries_crumbleSporeSpawnCeiling                               ;A5EE47;
+    JSR.W Function_SporeSpawn_SetupDeath
+    LDA.W #Function_SporeSpawn_Dying
+    STA.W $0FA8
 
 .return:
     RTL                                                                  ;A5EE49;
@@ -8742,5 +8768,5 @@ Spritemap_SporeSpawn_16:
     %spritemapEntry(1, $1D0, $D8, 0, 0, 2, 0, $120)
 
 
-Freespace_BankA5_F95A:                                                   ;A5F95A;
-; $6A6 bytes
+Freespace_BankA5_F99F:                                                   ;A5F95A;
+; $661 bytes
