@@ -143,7 +143,7 @@ Instruction_CommonB2_CallFunctionInY:
     JMP.W ($0012)                                                        ;B28094;
 
 
-.manualReturn:
+  .manualReturn:
     PLX                                                                  ;B28097;
     PLY                                                                  ;B28098;
     INY                                                                  ;B28099;
@@ -161,7 +161,7 @@ Instruction_CommonB2_CallFunctionInY_WithA:
     JMP.W ($0012)                                                        ;B280A9;
 
 
-.manualReturn:
+  .manualReturn:
     PLX                                                                  ;B280AC;
     PLY                                                                  ;B280AD;
     TYA                                                                  ;B280AE;
@@ -188,7 +188,7 @@ UNUSED_Instruction_CommonB2_CallExternalFunctionInY_B280B5:
     RTL                                                                  ;B280CA;
 
 
-.externalFunction:
+  .externalFunction:
     JML.W [$0012]                                                        ;B280CB;
 
 
@@ -210,7 +210,7 @@ UNUSED_Inst_CommonB2_CallExternalFunctionInY_WithA_B280CE:
     RTL                                                                  ;B280E9;
 
 
-.externalFunction:
+  .externalFunction:
     JML.W [$0012]                                                        ;B280EA;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -231,10 +231,10 @@ Instruction_CommonB2_GotoY_PlusY:
     BRA +                                                                ;B280FE;
 
 
-.highByte:
+  .highByte:
     ORA.W #$FF00                                                         ;B28100;
 
-  + CLC                                                                  ;B28103;
++   CLC                                                                  ;B28103;
     ADC.B $12                                                            ;B28104;
     TAY                                                                  ;B28106;
     RTL                                                                  ;B28107;
@@ -572,7 +572,7 @@ EnemyTouch_SpacePirate:
     BNE .return                                                          ;B28772;
     JSL.L NormalEnemyTouchAI                                             ;B28774;
 
-.return:
+  .return:
     RTL                                                                  ;B28778;
 
 
@@ -603,11 +603,11 @@ NormalPirateShot:
     JSL.L EnemyDeath                                                     ;B287B4;
     JSL.L MetalNinjaPirateDeathItemDropRoutine                           ;B287B8;
 
-.return:
+  .return:
     RTL                                                                  ;B287BC;
 
 
-.notGold:
+  .notGold:
     STZ.W $0FAA,X                                                        ;B287BD;
     LDA.W #$0004                                                         ;B287C0;
     JSL.L EnemyDeath                                                     ;B287C3;
@@ -622,7 +622,7 @@ EnemyShot_SpacePirate_GoldNinjaIsVulnerable:
     JMP.W NormalPirateShot                                               ;B287D3;
 
 
-.goldNinja:
+  .goldNinja:
     LDA.W $18A6                                                          ;B287D6;
     ASL A                                                                ;B287D9;
     TAY                                                                  ;B287DA;
@@ -634,7 +634,7 @@ EnemyShot_SpacePirate_GoldNinjaIsVulnerable:
     RTL                                                                  ;B287E8;
 
 
-.beamMissileSuper:
+  .beamMissileSuper:
     LDX.W $0E54                                                          ;B287E9;
     LDA.W $0F78,X                                                        ;B287EC;
     TAX                                                                  ;B287EF;
@@ -642,7 +642,7 @@ EnemyShot_SpacePirate_GoldNinjaIsVulnerable:
     BNE .zeroVuln                                                        ;B287F4;
     LDA.W #EnemyVulnerabilities                                          ;B287F6;
 
-.zeroVuln:
+  .zeroVuln:
     STA.B $14                                                            ;B287F9;
     LDA.B $12                                                            ;B287FB;
     BIT.W #$0F00                                                         ;B287FD;
@@ -658,18 +658,18 @@ EnemyShot_SpacePirate_GoldNinjaIsVulnerable:
     CMP.W #$000F                                                         ;B28814;
     BEQ EnemyShot_SpacePirate_GoldNinjaIsInvincible                      ;B28817;
 
-.gotoNormal:
+  .gotoNormal:
     JMP.W NormalPirateShot                                               ;B28819;
 
 
-.notBeam:
+  .notBeam:
     AND.W #$0F00                                                         ;B2881C;
     CMP.W #$0100                                                         ;B2881F;
     BEQ .missile                                                         ;B28822;
     CMP.W #$0200                                                         ;B28824;
     BNE .gotoNormal                                                      ;B28827;
 
-.missile:
+  .missile:
     XBA                                                                  ;B28829;
     CLC                                                                  ;B2882A;
     ADC.B $14                                                            ;B2882B;
@@ -690,7 +690,7 @@ EnemyShot_SpacePirate_GoldNinjaIsInvincible:
     JMP.W NormalPirateShot                                               ;B28849;
 
 
-.gold:
+  .gold:
     LDX.W $0E54                                                          ;B2884C;
     LDA.W $18A6                                                          ;B2884F;
     ASL A                                                                ;B28852;
@@ -705,11 +705,11 @@ EnemyShot_SpacePirate_GoldNinjaIsInvincible:
     RTL                                                                  ;B28866;
 
 
-.super:
+  .super:
     LDA.W $0C7C,Y                                                        ;B28867;
     BEQ .return                                                          ;B2886A;
 
-.reflect:
+  .reflect:
     LDA.W #$000A                                                         ;B2886C;
     STA.W $0FA0,X                                                        ;B2886F;
     LDA.W $0C04,Y                                                        ;B28872;
@@ -720,24 +720,24 @@ EnemyShot_SpacePirate_GoldNinjaIsInvincible:
     BRA .merge                                                           ;B28880;
 
 
-.notLeft:
+  .notLeft:
     CMP.W #$0002                                                         ;B28882;
     BNE .downFacingLeft                                                  ;B28885;
     LDA.W #$0008                                                         ;B28887;
     BRA .merge                                                           ;B2888A;
 
 
-.downFacingLeft:
+  .downFacingLeft:
     LDA.W #$0005                                                         ;B2888C;
 
-.merge:
+  .merge:
     STA.W $0C04,Y                                                        ;B2888F;
     STY.B $14                                                            ;B28892;
     JSL.L ProjectileReflection                                           ;B28894;
     LDA.W #$0066                                                         ;B28898;
     JSL.L QueueSound_Lib2_Max6                                           ;B2889B;
 
-.return:
+  .return:
     RTL                                                                  ;B2889F;
 
 
@@ -9137,12 +9137,12 @@ Inst_PirateWall_MoveYPixelsDown_ChangeDirOnCollision_Left:
     BEQ .return                                                          ;B2EE67;
     LDY.W #InstList_PirateWall_MovingUpLeftWall_0                        ;B2EE69;
 
-.return:
+  .return:
     PLX                                                                  ;B2EE6C;
     RTL                                                                  ;B2EE6D;
 
 
-.noCOllision:
+  .noCOllision:
     PLX                                                                  ;B2EE6E;
     INY                                                                  ;B2EE6F;
     INY                                                                  ;B2EE70;
@@ -9170,12 +9170,12 @@ Inst_PirateWall_MoveYPixelsDown_ChangeDirOnCollision_Right:
     BEQ .return                                                          ;B2EE99;
     LDY.W #InstList_PirateWall_MovingUpRightWall_0                       ;B2EE9B;
 
-.return:
+  .return:
     PLX                                                                  ;B2EE9E;
     RTL                                                                  ;B2EE9F;
 
 
-.noCollision:
+  .noCollision:
     PLX                                                                  ;B2EEA0;
     INY                                                                  ;B2EEA1;
     INY                                                                  ;B2EEA2;
@@ -9192,7 +9192,7 @@ Instruction_PirateWall_RandomlyChooseADirection_LeftWall:
     BEQ .return                                                          ;B2EEB5;
     LDY.W #InstList_PirateWall_MovingUpLeftWall_0                        ;B2EEB7;
 
-.return:
+  .return:
     PLX                                                                  ;B2EEBA;
     RTL                                                                  ;B2EEBB;
 
@@ -9207,7 +9207,7 @@ Instruction_PirateWall_RandomlyChooseADirection_RightWall:
     BEQ .return                                                          ;B2EECD;
     LDY.W #InstList_PirateWall_MovingUpRightWall_0                       ;B2EECF;
 
-.return:
+  .return:
     PLX                                                                  ;B2EED2;
     RTL                                                                  ;B2EED3;
 
@@ -9335,7 +9335,7 @@ InitAI_PirateWall:
     BEQ .zeroParam                                                       ;B2EFAB;
     LDY.W #InstList_PirateWall_MovingDownRightWall_0                     ;B2EFAD;
 
-.zeroParam:
+  .zeroParam:
     TYA                                                                  ;B2EFB0;
     STA.W $0F92,X                                                        ;B2EFB1;
     LDA.W #$00BE                                                         ;B2EFB4;
@@ -9360,14 +9360,14 @@ InitAI_PirateWall:
     ADC.W #$0002                                                         ;B2EFEE;
     STA.L $7E8004,X                                                      ;B2EFF1;
 
-.notFastJump:
+  .notFastJump:
     LDY.W #Function_PirateWall_ClimbingLeftWall                          ;B2EFF5;
     LDA.W $0FB4,X                                                        ;B2EFF8;
     BIT.W #$0001                                                         ;B2EFFB;
     BEQ +                                                                ;B2EFFE;
     LDY.W #Function_PirateWall_ClimbingRightWall                         ;B2F000;
 
-  + TYA                                                                  ;B2F003;
++   TYA                                                                  ;B2F003;
     STA.W $0FA8,X                                                        ;B2F004;
     LDA.W $0F7A,X                                                        ;B2F007;
     AND.W #$000F                                                         ;B2F00A;
@@ -9381,14 +9381,14 @@ InitAI_PirateWall:
     BRA .return                                                          ;B2F01F;
 
 
-.lessThanB:
+  .lessThanB:
     LDA.W $0F7A,X                                                        ;B2F021;
     AND.W #$FFF8                                                         ;B2F024;
     STA.W $0F7A,X                                                        ;B2F027;
     BRA .return                                                          ;B2F02A; >.<
 
 
-.return:
+  .return:
     RTL                                                                  ;B2F02C;
 
 
@@ -9466,14 +9466,14 @@ Function_PirateWall_WallJumpingRight:
     BRA .return                                                          ;B2F0BA;
 
 
-.lessThanB:
+  .lessThanB:
     LDA.W $0F7A,X                                                        ;B2F0BC;
     AND.W #$FFF8                                                         ;B2F0BF;
     STA.W $0F7A,X                                                        ;B2F0C2;
     BRA .return                                                          ;B2F0C5; >.<
 
 
-.return:
+  .return:
     RTS                                                                  ;B2F0C7;
 
 
@@ -9545,14 +9545,14 @@ Function_PirateWall_WallJumpingLeft:
     BRA .return                                                          ;B2F14E;
 
 
-.lessThanB:
+  .lessThanB:
     LDA.W $0F7A,X                                                        ;B2F150;
     AND.W #$FFF8                                                         ;B2F153;
     STA.W $0F7A,X                                                        ;B2F156;
     BRA .return                                                          ;B2F159; >.<
 
 
-.return:
+  .return:
     RTS                                                                  ;B2F15B;
 
 
@@ -10017,7 +10017,7 @@ Instruction_PirateNinja_SetFunction0FAC_Active:
     BPL .keepLeft                                                        ;B2F5A8;
     LDY.W #InstList_PirateNinja_Active_FacingRight_0                     ;B2F5AA;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;B2F5AD;
     STA.W $0FAC,X                                                        ;B2F5AE;
     PLX                                                                  ;B2F5B1;
@@ -10039,7 +10039,7 @@ UNUSED_Instruction_PirateNinja_Set0FAC_StandingKick_B2F5B3:
     BPL .keepLeft                                                        ;B2F5CB;
     LDY.W #InstList_PirateNinja_StandingKick_FacingRight                 ;B2F5CD;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;B2F5D0;
     STA.W $0FAC,X                                                        ;B2F5D1;
     PLX                                                                  ;B2F5D4;
@@ -10061,7 +10061,7 @@ InitAI_PirateNinja:
     BEQ .zeroParam1                                                      ;B2F5EA;
     LDY.W #InstList_PirateNinja_Initial_FacingRight_0                    ;B2F5EC;
 
-.zeroParam1:
+  .zeroParam1:
     TYA                                                                  ;B2F5EF;
     STA.W $0F92,X                                                        ;B2F5F0;
     STA.W $0FAC,X                                                        ;B2F5F3;
@@ -10076,14 +10076,14 @@ InitAI_PirateNinja:
     BRA +                                                                ;B2F60B;
 
 
-.zeroParam1again:
+  .zeroParam1again:
     LDA.W $0F7A,X                                                        ;B2F60D;
     STA.W $0FB2,X                                                        ;B2F610;
     SEC                                                                  ;B2F613;
     SBC.W $0FB6,X                                                        ;B2F614;
     STA.W $0FB0,X                                                        ;B2F617;
 
-  + LDA.W $0FB2,X                                                        ;B2F61A;
++   LDA.W $0FB2,X                                                        ;B2F61A;
     SEC                                                                  ;B2F61D;
     SBC.W $0FB0,X                                                        ;B2F61E;
     LSR A                                                                ;B2F621;
@@ -10099,7 +10099,7 @@ InitAI_PirateNinja:
     XBA                                                                  ;B2F637;
     STA.B $14                                                            ;B2F638;
 
-.loop:
+  .loop:
     LDA.W #$0020                                                         ;B2F63A;
     CLC                                                                  ;B2F63D;
     ADC.B $12                                                            ;B2F63E;
@@ -10128,7 +10128,7 @@ InitAI_PirateNinja:
     BNE .zeroParam1again2                                                ;B2F671;
     LDY.W $0FB2,X                                                        ;B2F673;
 
-.zeroParam1again2:
+  .zeroParam1again2:
     TYA                                                                  ;B2F676;
     STA.W $0F7A,X                                                        ;B2F677;
     LDA.W #RTS_B2804B                                                    ;B2F67A;
@@ -10140,7 +10140,7 @@ InitAI_PirateNinja:
     LDA.W #$000F                                                         ;B2F68D;
     STA.B $12                                                            ;B2F690;
 
-.loopPalette:
+  .loopPalette:
     LDA.W Palette_Pirate_Gold_NonNinja,Y                                 ;B2F692;
     STA.L $7EC3E0,X                                                      ;B2F695;
     INY                                                                  ;B2F699;
@@ -10167,7 +10167,7 @@ Function_PirateNinja_Initial:
     EOR.W #$FFFF                                                         ;B2F6B5;
     INC A                                                                ;B2F6B8;
 
-  + SEC                                                                  ;B2F6B9;
++   SEC                                                                  ;B2F6B9;
     SBC.W #$0080                                                         ;B2F6BA;
     BPL .tooFar                                                          ;B2F6BD;
     LDA.W $0F7A,X                                                        ;B2F6BF;
@@ -10179,7 +10179,7 @@ Function_PirateNinja_Initial:
     BPL .keepLeft                                                        ;B2F6CD;
     LDY.W #InstList_PirateNinja_Active_FacingRight_0                     ;B2F6CF;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;B2F6D2;
     STA.W $0F92,X                                                        ;B2F6D3;
     STA.W $0FAC,X                                                        ;B2F6D6;
@@ -10188,7 +10188,7 @@ Function_PirateNinja_Initial:
     RTS                                                                  ;B2F6DF;
 
 
-.tooFar:
+  .tooFar:
     JSR.W PirateNinja_FlinchTrigger                                      ;B2F6E0;
     RTS                                                                  ;B2F6E3;
 
@@ -10202,7 +10202,7 @@ Function_PirateNinja_Active:
     BNE .return                                                          ;B2F6F1;
     JSR.W PirateNinja_ProjectileClawAttackTrigger                        ;B2F6F3;
 
-.return:
+  .return:
     RTS                                                                  ;B2F6F6;
 
 
@@ -10222,7 +10222,7 @@ PirateNinja_ProjectileClawAttackTrigger:
     BRA .set1Timer                                                       ;B2F716;
 
 
-.reachedLeftPost:
+  .reachedLeftPost:
     LDA.W $0F7A,X                                                        ;B2F718;
     SEC                                                                  ;B2F71B;
     SBC.W $0AF6                                                          ;B2F71C;
@@ -10230,11 +10230,11 @@ PirateNinja_ProjectileClawAttackTrigger:
     LDA.W #InstList_PirateNinja_ProjectileClawAttack_Left                ;B2F721;
     STA.W $0F92,X                                                        ;B2F724;
 
-.set1Timer:
+  .set1Timer:
     LDA.W #$0001                                                         ;B2F727;
     STA.W $0F94,X                                                        ;B2F72A;
 
-.return:
+  .return:
     RTS                                                                  ;B2F72D;
 
 
@@ -10243,7 +10243,7 @@ PirateNinja_FlinchTrigger:
     LDX.W $0E54                                                          ;B2F72F;
     LDY.W #$0008                                                         ;B2F732;
 
-.loop:
+  .loop:
     LDA.W $0C18,Y                                                        ;B2F735;
     BNE .checkProjectile                                                 ;B2F738;
     DEY                                                                  ;B2F73A;
@@ -10252,7 +10252,7 @@ PirateNinja_FlinchTrigger:
     BRA .returnNoFlinch                                                  ;B2F73E;
 
 
-.checkProjectile:
+  .checkProjectile:
     LDA.W $0B64,Y                                                        ;B2F740;
     SEC                                                                  ;B2F743;
     SBC.W $0F7A,X                                                        ;B2F744;
@@ -10260,7 +10260,7 @@ PirateNinja_FlinchTrigger:
     EOR.W #$FFFF                                                         ;B2F749;
     INC A                                                                ;B2F74C;
 
-  + SEC                                                                  ;B2F74D;
++   SEC                                                                  ;B2F74D;
     SBC.W #$0020                                                         ;B2F74E;
     BPL .returnNoFlinch                                                  ;B2F751;
     LDA.W $0B78,Y                                                        ;B2F753;
@@ -10270,7 +10270,7 @@ PirateNinja_FlinchTrigger:
     EOR.W #$FFFF                                                         ;B2F75C;
     INC A                                                                ;B2F75F;
 
-  + SEC                                                                  ;B2F760;
++   SEC                                                                  ;B2F760;
     SBC.W #$0020                                                         ;B2F761;
     BPL .returnNoFlinch                                                  ;B2F764;
     LDA.W $0F7A,X                                                        ;B2F766;
@@ -10282,7 +10282,7 @@ PirateNinja_FlinchTrigger:
     BPL .keepLeft                                                        ;B2F774;
     LDY.W #InstList_PirateNinja_Flinch_FacingRight                       ;B2F776;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;B2F779;
     STA.W $0F92,X                                                        ;B2F77A;
     LDA.W #$0001                                                         ;B2F77D;
@@ -10292,7 +10292,7 @@ PirateNinja_FlinchTrigger:
     RTS                                                                  ;B2F787;
 
 
-.returnNoFlinch:
+  .returnNoFlinch:
     PLX                                                                  ;B2F788;
     LDA.W #$0000                                                         ;B2F789;
     RTS                                                                  ;B2F78C;
@@ -10308,7 +10308,7 @@ PirateNinja_SpinJumpTrigger:
     EOR.W #$FFFF                                                         ;B2F79A;
     INC A                                                                ;B2F79D;
 
-  + SEC                                                                  ;B2F79E;
++   SEC                                                                  ;B2F79E;
     SBC.W #$0020                                                         ;B2F79F;
     BPL .returnNoSpinJump                                                ;B2F7A2;
     LDY.W #InstList_PirateNinja_SpinJumpLeft_0                           ;B2F7A4;
@@ -10317,7 +10317,7 @@ PirateNinja_SpinJumpTrigger:
     BNE .keepLeft                                                        ;B2F7AD;
     LDY.W #InstList_PirateNinja_SpinJumpRight_0                          ;B2F7AF;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;B2F7B2;
     STA.W $0F92,X                                                        ;B2F7B3;
     LDA.W #$0001                                                         ;B2F7B6;
@@ -10327,7 +10327,7 @@ PirateNinja_SpinJumpTrigger:
     RTS                                                                  ;B2F7C0;
 
 
-.returnNoSpinJump:
+  .returnNoSpinJump:
     PLX                                                                  ;B2F7C1;
     LDA.W #$0000                                                         ;B2F7C2;
     RTS                                                                  ;B2F7C5;
@@ -10343,7 +10343,7 @@ PirateNinja_StandingKickTrigger:
     EOR.W #$FFFF                                                         ;B2F7D3;
     INC A                                                                ;B2F7D6;
 
-  + SEC                                                                  ;B2F7D7;
++   SEC                                                                  ;B2F7D7;
     SBC.W #$0028                                                         ;B2F7D8;
     BPL .returnNoStandingKick                                            ;B2F7DB;
     LDA.W $0AFA                                                          ;B2F7DD;
@@ -10353,7 +10353,7 @@ PirateNinja_StandingKickTrigger:
     EOR.W #$FFFF                                                         ;B2F7E6;
     INC A                                                                ;B2F7E9;
 
-  + SEC                                                                  ;B2F7EA;
++   SEC                                                                  ;B2F7EA;
     SBC.W #$0028                                                         ;B2F7EB;
     BPL .returnNoStandingKick                                            ;B2F7EE;
     LDA.W $0F7A,X                                                        ;B2F7F0;
@@ -10365,7 +10365,7 @@ PirateNinja_StandingKickTrigger:
     BPL .kepLeft                                                         ;B2F7FE;
     LDY.W #InstList_PirateNinja_StandingKick_FacingRight                 ;B2F800;
 
-.kepLeft:
+  .kepLeft:
     TYA                                                                  ;B2F803;
     STA.W $0F92,X                                                        ;B2F804;
     LDA.W #$0001                                                         ;B2F807;
@@ -10375,7 +10375,7 @@ PirateNinja_StandingKickTrigger:
     RTS                                                                  ;B2F811;
 
 
-.returnNoStandingKick:
+  .returnNoStandingKick:
     PLX                                                                  ;B2F812;
     LDA.W #$0000                                                         ;B2F813;
     RTS                                                                  ;B2F816;
@@ -10402,7 +10402,7 @@ Function_PirateNinja_SpinJumpleft_Rising:
     RTS                                                                  ;B2F844;
 
 
-.falling:
+  .falling:
     LDA.W #Function_PirateNinja_SpinJumpLeft_Falling                     ;B2F845;
     STA.W $0FA8,X                                                        ;B2F848;
     RTS                                                                  ;B2F84B;
@@ -10427,7 +10427,7 @@ Function_PirateNinja_SpinJumpLeft_Falling:
     RTS                                                                  ;B2F873;
 
 
-.landing:
+  .landing:
     LDA.W #RTS_B2804B                                                    ;B2F874;
     STA.W $0FA8,X                                                        ;B2F877;
     LDA.W #InstList_PirateNinja_Land_FacingLeft_0                        ;B2F87A;
@@ -10461,7 +10461,7 @@ Function_PirateNinja_SpinJumpRight_Rising:
     RTS                                                                  ;B2F8BD;
 
 
-.falling:
+  .falling:
     LDA.W #Function_PirateNinja_SpinJumpRight_Falling                    ;B2F8BE;
     STA.W $0FA8,X                                                        ;B2F8C1;
     RTS                                                                  ;B2F8C4;
@@ -10486,7 +10486,7 @@ Function_PirateNinja_SpinJumpRight_Falling:
     RTS                                                                  ;B2F8EC;
 
 
-.landing:
+  .landing:
     LDA.W #RTS_B2804B                                                    ;B2F8ED;
     STA.W $0FA8,X                                                        ;B2F8F0;
     LDA.W #InstList_PirateNinja_Land_FacingRight_0                       ;B2F8F3;
@@ -10506,7 +10506,7 @@ Function_PirateNinja_ReadingToDivekick:
     BNE .return                                                          ;B2F911;
     JSR.W PirateNinja_DivekickTrigger                                    ;B2F913;
 
-.return:
+  .return:
     RTS                                                                  ;B2F916;
 
 
@@ -10519,11 +10519,11 @@ PirateNinja_DivekickTrigger:
     EOR.W #$FFFF                                                         ;B2F923;
     INC A                                                                ;B2F926;
 
-  + SEC                                                                  ;B2F927;
++   SEC                                                                  ;B2F927;
     SBC.W #$0020                                                         ;B2F928;
     BPL .return                                                          ;B2F92B;
 
-.loopRNG:
+  .loopRNG:
     JSL.L GenerateRandomNumber                                           ;B2F92D;
     AND.W #$0003                                                         ;B2F931;
     BEQ .loopRNG                                                         ;B2F934;
@@ -10534,7 +10534,7 @@ PirateNinja_DivekickTrigger:
     BNE .keepLeft                                                        ;B2F941;
     LDY.W #$0004                                                         ;B2F943;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;B2F946;
     CLC                                                                  ;B2F947;
     ADC.B $12                                                            ;B2F948;
@@ -10545,17 +10545,17 @@ PirateNinja_DivekickTrigger:
     LDA.W #$0001                                                         ;B2F952;
     STA.W $0F94,X                                                        ;B2F955;
 
-.return:
+  .return:
     RTS                                                                  ;B2F958;
 
 
-.leftPointers:
+  .leftPointers:
     dw $0000                                                             ;B2F959;
     dw InstList_PirateNinja_DivekickLeft_Jump_0                          ;B2F95B;
     dw InstList_PirateNinja_DivekickLeft_Jump_0                          ;B2F95D;
     dw InstList_PirateNinja_DivekickLeft_Jump_0                          ;B2F95F;
 
-.rightPointers:
+  .rightPointers:
     dw $0000                                                             ;B2F961;
     dw InstList_PirateNinja_DivekickRight_Jump_0                         ;B2F963;
     dw InstList_PirateNinja_DivekickRight_Jump_0                         ;B2F965;
@@ -10595,7 +10595,7 @@ Instruction_PirateNinja_DivekickLeft_Jump:
     RTS                                                                  ;B2F9A6;
 
 
-.negativeSpeed:
+  .negativeSpeed:
     LDA.W #Instruction_PirateNinja_DivekickLeft_Divekick                 ;B2F9A7;
     STA.W $0FA8,X                                                        ;B2F9AA;
     LDA.W #InstList_PirateNinja_DivekickLeft_Divekick                    ;B2F9AD;
@@ -10631,7 +10631,7 @@ Instruction_PirateNinja_DivekickLeft_Divekick:
     RTS                                                                  ;B2F9F7;
 
 
-.collision:
+  .collision:
     LDA.W #Instruction_PirateNinja_DivekickLeft_WalkToLeftPost           ;B2F9F8;
     STA.W $0FA8,X                                                        ;B2F9FB;
     LDA.W #InstList_PirateNinja_DivekickLeft_WalkToLeftPost_0            ;B2F9FE;
@@ -10660,7 +10660,7 @@ Instruction_PirateNinja_DivekickLeft_WalkToLeftPost:
     LDA.W #RTS_B2804B                                                    ;B2FA36;
     STA.W $0FA8,X                                                        ;B2FA39;
 
-.return:
+  .return:
     RTS                                                                  ;B2FA3C;
 
 
@@ -10698,7 +10698,7 @@ Instruction_PirateNinja_DivekickRight_Jump:
     RTS                                                                  ;B2FA7A;
 
 
-.negativeSpeed:
+  .negativeSpeed:
     LDA.W #Instruction_PirateNinja_DivekickRight_Divekick                ;B2FA7B;
     STA.W $0FA8,X                                                        ;B2FA7E;
     LDA.W #InstList_PirateNinja_DivekickRight_Divekick                   ;B2FA81;
@@ -10734,7 +10734,7 @@ Instruction_PirateNinja_DivekickRight_Divekick:
     RTS                                                                  ;B2FACB;
 
 
-.landing:
+  .landing:
     LDA.W #Instruction_PirateNinja_DivekickRight_WalkToRightPost         ;B2FACC;
     STA.W $0FA8,X                                                        ;B2FACF;
     LDA.W #InstList_PirateNinja_DivekickRight_WalkToRightPost_0          ;B2FAD2;
@@ -10763,7 +10763,7 @@ Instruction_PirateNinja_DivekickRight_WalkToRightPost:
     LDA.W #RTS_B2804B                                                    ;B2FB0A;
     STA.W $0FA8,X                                                        ;B2FB0D;
 
-.return:
+  .return:
     RTS                                                                  ;B2FB10;
 
 
@@ -10977,12 +10977,12 @@ Instruction_PirateWalking_ChooseAMovement:
     BMI .returnWalking                                                   ;B2FCE7;
     LDY.W #InstList_PirateWalking_WalkingLeft_0                          ;B2FCE9;
 
-.returnWalking:
+  .returnWalking:
     PLX                                                                  ;B2FCEC;
     RTL                                                                  ;B2FCED;
 
 
-.verticalClose:
+  .verticalClose:
     LDX.W $0E54                                                          ;B2FCEE;
     LDY.W #InstList_PirateWalking_FireLasersLeft                         ;B2FCF1;
     LDA.W $0AF6                                                          ;B2FCF4;
@@ -10991,7 +10991,7 @@ Instruction_PirateWalking_ChooseAMovement:
     BMI .returnLasers                                                    ;B2FCFB;
     LDY.W #InstList_PirateWalking_FireLasersRight                        ;B2FCFD;
 
-.returnLasers:
+  .returnLasers:
     PLX                                                                  ;B2FD00;
     RTL                                                                  ;B2FD01;
 
@@ -11004,7 +11004,7 @@ InitAI_PirateWalking:
     BEQ .keepLeft                                                        ;B2FD0E;
     LDY.W #InstList_PirateWalking_WalkingRight_0                         ;B2FD10;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;B2FD13;
     STA.W $0F92,X                                                        ;B2FD14;
     LDA.W #RTS_B2804B                                                    ;B2FD17;
@@ -11028,7 +11028,7 @@ MainAI_PirateWalking:
     BEQ .return                                                          ;B2FD3E;
     JSR.W PirateWalking_FlinchTrigger                                    ;B2FD40;
 
-.return:
+  .return:
     RTL                                                                  ;B2FD43;
 
 
@@ -11044,7 +11044,7 @@ Function_PirateWalking_WalkingLeft:
     BMI .keepLeft                                                        ;B2FD5A;
     LDY.W #InstList_PirateWalking_FireLasersRight                        ;B2FD5C;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;B2FD5F;
     STA.W $0F92,X                                                        ;B2FD60;
     LDA.W #$0001                                                         ;B2FD63;
@@ -11052,7 +11052,7 @@ Function_PirateWalking_WalkingLeft:
     RTS                                                                  ;B2FD69;
 
 
-.walk:
+  .walk:
     LDA.W #$0001                                                         ;B2FD6A;
     STA.B $14                                                            ;B2FD6D;
     STZ.B $12                                                            ;B2FD6F;
@@ -11087,13 +11087,13 @@ Function_PirateWalking_WalkingLeft:
     CMP.W $0FB0,X                                                        ;B2FDBC;
     BPL .return                                                          ;B2FDBF;
 
-.collision:
+  .collision:
     LDA.W #InstList_PirateWalking_LookingAround_FacingLeft               ;B2FDC1;
     STA.W $0F92,X                                                        ;B2FDC4;
     LDA.W #$0001                                                         ;B2FDC7;
     STA.W $0F94,X                                                        ;B2FDCA;
 
-.return:
+  .return:
     RTS                                                                  ;B2FDCD;
 
 
@@ -11109,7 +11109,7 @@ Function_PirateWalking_WalkingRight:
     BMI .keepLeft                                                        ;B2FDE4;
     LDY.W #InstList_PirateWalking_FireLasersRight                        ;B2FDE6;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;B2FDE9;
     STA.W $0F92,X                                                        ;B2FDEA;
     LDA.W #$0001                                                         ;B2FDED;
@@ -11117,7 +11117,7 @@ Function_PirateWalking_WalkingRight:
     RTS                                                                  ;B2FDF3;
 
 
-.walk:
+  .walk:
     LDA.W #$0001                                                         ;B2FDF4;
     STA.B $14                                                            ;B2FDF7;
     STZ.B $12                                                            ;B2FDF9;
@@ -11147,13 +11147,13 @@ Function_PirateWalking_WalkingRight:
     CMP.W $0FB2,X                                                        ;B2FE38;
     BMI .return                                                          ;B2FE3B;
 
-.collision:
+  .collision:
     LDA.W #InstList_PirateWalking_LookingAround_FacingRight              ;B2FE3D;
     STA.W $0F92,X                                                        ;B2FE40;
     LDA.W #$0001                                                         ;B2FE43;
     STA.W $0F94,X                                                        ;B2FE46;
 
-.return:
+  .return:
     RTS                                                                  ;B2FE49;
 
 
@@ -11166,7 +11166,7 @@ PirateWalking_FlinchTrigger:
     LDX.W $0E54                                                          ;B2FE4C;
     LDY.W #$0008                                                         ;B2FE4F;
 
-.loopProjectiles:
+  .loopProjectiles:
     LDA.W $0C18,Y                                                        ;B2FE52;
     BNE .checkProjectile                                                 ;B2FE55;
     DEY                                                                  ;B2FE57;
@@ -11175,7 +11175,7 @@ PirateWalking_FlinchTrigger:
     BRA .returnNoFlinch                                                  ;B2FE5B;
 
 
-.checkProjectile:
+  .checkProjectile:
     LDA.W $0B64,Y                                                        ;B2FE5D;
     SEC                                                                  ;B2FE60;
     SBC.W $0F7A,X                                                        ;B2FE61;
@@ -11183,7 +11183,7 @@ PirateWalking_FlinchTrigger:
     EOR.W #$FFFF                                                         ;B2FE66;
     INC A                                                                ;B2FE69;
 
-  + SEC                                                                  ;B2FE6A;
++   SEC                                                                  ;B2FE6A;
     SBC.W #$0020                                                         ;B2FE6B;
     BPL .returnNoFlinch                                                  ;B2FE6E;
     LDA.W $0B78,Y                                                        ;B2FE70;
@@ -11193,7 +11193,7 @@ PirateWalking_FlinchTrigger:
     EOR.W #$FFFF                                                         ;B2FE79;
     INC A                                                                ;B2FE7C;
 
-  + SEC                                                                  ;B2FE7D;
++   SEC                                                                  ;B2FE7D;
     SBC.W #$0020                                                         ;B2FE7E;
     BPL .returnNoFlinch                                                  ;B2FE81;
     LDA.W $0F7A,X                                                        ;B2FE83;
@@ -11205,7 +11205,7 @@ PirateWalking_FlinchTrigger:
     BPL .keepLeft                                                        ;B2FE91;
     LDY.W #InstList_PirateWalking_Flinch_FacingRight                     ;B2FE93;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;B2FE96;
     STA.W $0F92,X                                                        ;B2FE97;
     LDA.W #$0001                                                         ;B2FE9A;
@@ -11215,7 +11215,7 @@ PirateWalking_FlinchTrigger:
     RTS                                                                  ;B2FEA4;
 
 
-.returnNoFlinch:
+  .returnNoFlinch:
     PLX                                                                  ;B2FEA5;
     LDA.W #$0000                                                         ;B2FEA6;
     RTS                                                                  ;B2FEA9;

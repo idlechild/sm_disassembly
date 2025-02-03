@@ -7391,7 +7391,7 @@ GenerateRandomExplosionOnEvenFramesOnRandomNonBlankTile:
     CMP.W #$00FF                                                         ;8FC17D;
     BNE GenerateRandomExplosionAt_12_14                                  ;8FC180;
 
-.return:
+  .return:
     RTS                                                                  ;8FC182;
 
 
@@ -7425,7 +7425,7 @@ GenerateRandomExplosionAt_12_14:
     BEQ +                                                                ;8FC1BC;
     JSL.L QueueSound_Lib2_Max6                                           ;8FC1BE;
 
-  + TXA                                                                  ;8FC1C2;
++   TXA                                                                  ;8FC1C2;
     AND.W #$0007                                                         ;8FC1C3;
     TAX                                                                  ;8FC1C6;
     LDA.W ExplosionSpriteObjectIDs,X                                     ;8FC1C7;
@@ -7459,7 +7459,7 @@ MainASM_ScrollScreenRightInDachoraRoom:
     ADC.W #$0003                                                         ;8FC202;
     STA.W $0911                                                          ;8FC205;
 
-.return:
+  .return:
     RTS                                                                  ;8FC208;
 
 
@@ -8111,7 +8111,7 @@ UnpauseHook_Draygon:
     LDA.W #$000C                                                         ;8FC904;
     STA.B $A7                                                            ;8FC907;
 
-.return:
+  .return:
     RTL                                                                  ;8FC909;
 
 
@@ -11583,7 +11583,7 @@ MainASM_Elevatube:
     BPL +                                                                ;8FE2C6;
     DEC.B $14                                                            ;8FE2C8;
 
-  + STA.B $13                                                            ;8FE2CA;
++   STA.B $13                                                            ;8FE2CA;
     LDA.W $07E1                                                          ;8FE2CC;
     CLC                                                                  ;8FE2CF;
     ADC.B $12                                                            ;8FE2D0;
@@ -11607,7 +11607,7 @@ MainASM_Elevatube:
     SBC.W #$0E20                                                         ;8FE2FA;
     STA.W $07E5                                                          ;8FE2FD;
 
-.return:
+  .return:
     RTS                                                                  ;8FE300;
 
 
@@ -11896,7 +11896,7 @@ MainASM_SpawnCeresPreElevatorHallFallingDebris:
     BCC +                                                                ;8FE53C;
     LDY.W #EnemyProjectile_CeresFallingTile_Dark                         ;8FE53E;
 
-  + LDA.W $05E5                                                          ;8FE541;
++   LDA.W $05E5                                                          ;8FE541;
     AND.W #$000F                                                         ;8FE544;
     ASL A                                                                ;8FE547;
     TAX                                                                  ;8FE548;
@@ -11905,7 +11905,7 @@ MainASM_SpawnCeresPreElevatorHallFallingDebris:
     RTS                                                                  ;8FE550;
 
 
-.debrisXpos:
+  .debrisXpos:
     dw $0050,$0060,$0070,$0080,$0090,$00A0,$00B0,$00C0                   ;8FE551;
     dw $00D0,$00E0,$00F0,$0110,$0130,$0150,$0170,$0190                   ;8FE561;
 
@@ -11915,7 +11915,7 @@ MainASM_HandleCeresRidleyGetawayCutscene:
     BCC .return                                                          ;8FE575;
     JSL.L HandleCeresRidleyGetawayCutscene                               ;8FE577;
 
-.return:
+  .return:
     RTS                                                                  ;8FE57B;
 
 
@@ -11928,7 +11928,7 @@ MainASM_ShakeScreenSwitchingBetweenLightHorizAndMediumDiag:
     BRA +                                                                ;8FE589;
 
 
-.resetQuakeTimer:
+  .resetQuakeTimer:
     JSL.L GenerateRandomNumber                                           ;8FE58B;
     CMP.W #$0200                                                         ;8FE58F;
     BCS MainASM_GenerateRandomExplosionOnEveryFourthFrame                ;8FE592;
@@ -11936,7 +11936,7 @@ MainASM_ShakeScreenSwitchingBetweenLightHorizAndMediumDiag:
     STA.W $07E1                                                          ;8FE597;
     LDA.W #$0017                                                         ;8FE59A;
 
-  + STA.W $183E                                                          ;8FE59D;
++   STA.W $183E                                                          ;8FE59D;
 
 MainASM_GenerateRandomExplosionOnEveryFourthFrame:
     JSR.W GenerateRandomExplosionOnEveryFourthFrame                      ;8FE5A0;
@@ -11952,7 +11952,7 @@ MainASM_ShakeScreenSwitchingBetweenMediumHorizAndStrongDiag:
     BRA +                                                                ;8FE5B1;
 
 
-.resetQuakeTimer:
+  .resetQuakeTimer:
     JSL.L GenerateRandomNumber                                           ;8FE5B3;
     CMP.W #$0180                                                         ;8FE5B7;
     BCS .noEarthquakeChange                                              ;8FE5BA;
@@ -11960,9 +11960,9 @@ MainASM_ShakeScreenSwitchingBetweenMediumHorizAndStrongDiag:
     STA.W $07E1                                                          ;8FE5BF;
     LDA.W #$001A                                                         ;8FE5C2;
 
-  + STA.W $07E3                                                          ;8FE5C5;
++   STA.W $07E3                                                          ;8FE5C5;
 
-.noEarthquakeChange:
+  .noEarthquakeChange:
     LDA.W $07E3                                                          ;8FE5C8;
     STA.W $183E                                                          ;8FE5CB;
     JSR.W GenerateRandomExplosionOnEveryFourthFrame                      ;8FE5CE;
@@ -11975,7 +11975,7 @@ Room_State_Checking_Handler:
     ADC.W #$000B                                                         ;8FE5D4;
     TAX                                                                  ;8FE5D7;
 
-.loop:
+  .loop:
     LDA.W $0000,X                                                        ;8FE5D8;
     STA.W $07B7                                                          ;8FE5DB;
     INX                                                                  ;8FE5DE;
@@ -12000,7 +12000,7 @@ UNUSED_RoomStateCheck_Door_8FE5EB:
     JMP.W Use_StatePointer_inX                                           ;8FE5F7;
 
 
-  + INX                                                                  ;8FE5FA;
++   INX                                                                  ;8FE5FA;
     INX                                                                  ;8FE5FB;
     INX                                                                  ;8FE5FC;
     INX                                                                  ;8FE5FD;
@@ -12017,7 +12017,7 @@ RoomStateCheck_MainAreaBossIsDead:
     JMP.W Use_StatePointer_inX                                           ;8FE60C;
 
 
-  + INX                                                                  ;8FE60F;
++   INX                                                                  ;8FE60F;
     INX                                                                  ;8FE610;
     RTS                                                                  ;8FE611;
 
@@ -12032,7 +12032,7 @@ RoomStateCheck_EventHasBeenSet:
     JMP.W Use_StatePointer_inX                                           ;8FE622;
 
 
-  + INX                                                                  ;8FE625;
++   INX                                                                  ;8FE625;
     INX                                                                  ;8FE626;
     INX                                                                  ;8FE627;
     RTS                                                                  ;8FE628;
@@ -12048,7 +12048,7 @@ RoomStateCheck_BossIsDead:
     JMP.W Use_StatePointer_inX                                           ;8FE639;
 
 
-  + INX                                                                  ;8FE63C;
++   INX                                                                  ;8FE63C;
     INX                                                                  ;8FE63D;
     INX                                                                  ;8FE63E;
     RTS                                                                  ;8FE63F;
@@ -12064,7 +12064,7 @@ UNUSED_RoomStateCheck_Morphball_8FE640:
     JMP.W Use_StatePointer_inX                                           ;8FE64C;
 
 
-  + INX                                                                  ;8FE64F;
++   INX                                                                  ;8FE64F;
     INX                                                                  ;8FE650;
     RTS                                                                  ;8FE651;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -12081,7 +12081,7 @@ RoomStateCheck_MorphballAndMissiles:
     JMP.W Use_StatePointer_inX                                           ;8FE663;
 
 
-  + INX                                                                  ;8FE666;
++   INX                                                                  ;8FE666;
     INX                                                                  ;8FE667;
     RTS                                                                  ;8FE668;
 
@@ -12094,7 +12094,7 @@ RoomStateCheck_PowerBombs:
     JMP.W Use_StatePointer_inX                                           ;8FE672;
 
 
-  + INX                                                                  ;8FE675;
++   INX                                                                  ;8FE675;
     INX                                                                  ;8FE676;
     RTS                                                                  ;8FE677;
 
@@ -12109,7 +12109,7 @@ UNUSED_RoomStateCheck_SpeedBooster_8FE678:
     JMP.W Use_StatePointer_inX                                           ;8FE684;
 
 
-  + INX                                                                  ;8FE687;
++   INX                                                                  ;8FE687;
     INX                                                                  ;8FE688;
     RTS                                                                  ;8FE689;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -12396,7 +12396,7 @@ Execute_Room_Setup_ASM:
     PLB                                                                  ;8FE89C;
     JSR.W ($0018,X)                                                      ;8FE89D;
 
-.return:
+  .return:
     PLB                                                                  ;8FE8A0;
     PLP                                                                  ;8FE8A1;
     RTL                                                                  ;8FE8A2;
@@ -12416,7 +12416,7 @@ Execute_Door_ASM:
     JMP.W ($0012)                                                        ;8FE8B7;
 
 
-.return:
+  .return:
     PLB                                                                  ;8FE8BA;
     PLP                                                                  ;8FE8BB;
     RTL                                                                  ;8FE8BC;
@@ -12432,7 +12432,7 @@ Execute_Room_Main_ASM:
     JSR.W ($07DF,X)                                                      ;8FE8C8;
     PLB                                                                  ;8FE8CB;
 
-.return:
+  .return:
     RTL                                                                  ;8FE8CC;
 
 
@@ -12455,7 +12455,7 @@ MainASM_CrocomiresRoomShaking:
     BRA .scroll                                                          ;8FE8F4;
 
 
-  + LDA.W #$0007                                                         ;8FE8F6;
++   LDA.W #$0007                                                         ;8FE8F6;
     CLC                                                                  ;8FE8F9;
     ADC.W $0FEE                                                          ;8FE8FA;
     ASL A                                                                ;8FE8FD;
@@ -12464,7 +12464,7 @@ MainASM_CrocomiresRoomShaking:
     SEC                                                                  ;8FE903;
     SBC.B $12                                                            ;8FE904;
 
-.scroll:
+  .scroll:
     STA.B $12                                                            ;8FE906;
     CLC                                                                  ;8FE908;
     ADC.B $B3                                                            ;8FE909;
@@ -12474,11 +12474,11 @@ MainASM_CrocomiresRoomShaking:
     ADC.B $12                                                            ;8FE911;
     STA.B $B7                                                            ;8FE913;
 
-.return:
+  .return:
     RTS                                                                  ;8FE915;
 
 
-.branch:
+  .branch:
     LDA.W $0FAC                                                          ;8FE916;
     CMP.W #$0022                                                         ;8FE919;
     BNE .return                                                          ;8FE91C;
@@ -12495,14 +12495,14 @@ MainASM_CrocomiresRoomShaking:
     RTS                                                                  ;8FE936;
 
 
-  + LDA.W $0911                                                          ;8FE937;
++   LDA.W $0911                                                          ;8FE937;
     SEC                                                                  ;8FE93A;
     SBC.W #$0004                                                         ;8FE93B;
     STA.W $0911                                                          ;8FE93E;
     RTS                                                                  ;8FE941;
 
 
-.behindWallRumbling:
+  .behindWallRumbling:
     LDA.W $0915                                                          ;8FE942;
     CLC                                                                  ;8FE945;
     ADC.W $091F                                                          ;8FE946;
@@ -12535,14 +12535,14 @@ MainASM_RidleysRoomShaking:
     ADC.W .Yspeeds,X                                                     ;8FE975;
     STA.B $B7                                                            ;8FE978;
 
-.return:
+  .return:
     RTS                                                                  ;8FE97A;
 
 
-.Xspeeds:
+  .Xspeeds:
     dw $0000,$0002,$0002,$0002,$0000,$FFFE,$FFFE,$FFFE                   ;8FE97B;
 
-.Yspeeds:
+  .Yspeeds:
     dw $FFFE,$FFFE,$0000,$0002,$0002,$0002,$0000,$FFFE                   ;8FE98B;
 
 Freespace_Bank8F_E99B:                                                   ;8FE99B;

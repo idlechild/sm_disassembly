@@ -1926,16 +1926,16 @@ QueueMode7Transfers:
 ; From the RAM map:
 ; $02D0..032F: Mode 7 transfers. 7 or 9 byte entries. 1 byte zero-terminator
 ; {
-;     + 0: Control
+;   +   0: Control
 ;         DMA control = [control] & 1Fh (transfer unit selection and address increment direction)
 ;         DMA target = [control] & C0h:
 ;             40h: CGRAM data write
 ;             80h: VRAM data write low (tilemap)
 ;             C0h: VRAM data write high (tiles)
-;     + 1: Source address
-;     + 4: Size
-;     + 6: Destination address (1 byte for CGRAM transfers, 2 bytes for VRAM transfers)
-;     + 8: VRAM address increment mode (for VRAM transfers only)
+;   +   1: Source address
+;   +   4: Size
+;   +   6: Destination address (1 byte for CGRAM transfers, 2 bytes for VRAM transfers)
+;   +   8: VRAM address increment mode (for VRAM transfers only)
 ; }
     PHX                                                                  ;808B4F;
     PHY                                                                  ;808B50;
@@ -4513,7 +4513,7 @@ HandleHUDTilemap_PausedAndRunning:
     PLP                                                                  ;809CCC;
     RTL                                                                  ;809CCD;
 
-.etankIconOffsets:
+  .etankIconOffsets:
 ; Energy tank icon tilemap offsets
     dw $0042,$0044,$0046,$0048,$004A,$004C,$004E                         ;809CCE; bottom (first) row
     dw $0002,$0004,$0006,$0008,$000A,$000C,$000E                         ;809CDE; top (second) row
@@ -5611,7 +5611,7 @@ UpdateBGGraphics_WhenScrolling:
     BMI +                                                                ;80A45C;
     LDX.W #$000F                                                         ;80A45E;
 
-  + TXA                                                                  ;80A461;
++   TXA                                                                  ;80A461;
     CLC                                                                  ;80A462;
     ADC.W $08F9                                                          ;80A463;
     STA.W $0992                                                          ;80A466;
@@ -5691,7 +5691,7 @@ Calculate_BGScroll_LayerPositionBlocks:
     BEQ +                                                                ;80A4D7;
     ORA.W #$F000                                                         ;80A4D9;
 
-  + STA.W $08F7                                                          ;80A4DC;
++   STA.W $08F7                                                          ;80A4DC;
     LDA.W $0917                                                          ;80A4DF;
     LSR A                                                                ;80A4E2;
     LSR A                                                                ;80A4E3;
@@ -5701,7 +5701,7 @@ Calculate_BGScroll_LayerPositionBlocks:
     BEQ +                                                                ;80A4E9;
     ORA.W #$F000                                                         ;80A4EB;
 
-  + STA.W $08FB                                                          ;80A4EE;
++   STA.W $08FB                                                          ;80A4EE;
     LDA.B $B3                                                            ;80A4F1;
     LSR A                                                                ;80A4F3;
     LSR A                                                                ;80A4F4;
@@ -5723,7 +5723,7 @@ Calculate_BGScroll_LayerPositionBlocks:
     BEQ +                                                                ;80A50D;
     ORA.W #$F000                                                         ;80A50F;
 
-  + STA.W $08F9                                                          ;80A512;
++   STA.W $08F9                                                          ;80A512;
     LDA.W $0919                                                          ;80A515;
     LSR A                                                                ;80A518;
     LSR A                                                                ;80A519;
@@ -5733,7 +5733,7 @@ Calculate_BGScroll_LayerPositionBlocks:
     BEQ +                                                                ;80A51F;
     ORA.W #$F000                                                         ;80A521;
 
-  + STA.W $08FD                                                          ;80A524;
++   STA.W $08FD                                                          ;80A524;
     RTS                                                                  ;80A527;
 
 
@@ -5773,7 +5773,7 @@ HandleScrollZones_HorizontalAutoscrolling:
     JMP.W .return                                                        ;80A534;
 
 
-  + LDA.B #$8F                                                           ;80A537;
++   LDA.B #$8F                                                           ;80A537;
     PHA                                                                  ;80A539;
     PLB                                                                  ;80A53A;
     REP #$30                                                             ;80A53B;
@@ -5782,14 +5782,14 @@ HandleScrollZones_HorizontalAutoscrolling:
     BPL +                                                                ;80A543;
     STZ.W $0911                                                          ;80A545;
 
-  + LDA.W $07A9                                                          ;80A548;
++   LDA.W $07A9                                                          ;80A548;
     DEC A                                                                ;80A54B;
     XBA                                                                  ;80A54C;
     CMP.W $0911                                                          ;80A54D;
     BCS +                                                                ;80A550;
     STA.W $0911                                                          ;80A552;
 
-  + LDA.W $0915                                                          ;80A555;
++   LDA.W $0915                                                          ;80A555;
     CLC                                                                  ;80A558;
     ADC.W #$0080                                                         ;80A559;
     XBA                                                                  ;80A55C;
@@ -5893,7 +5893,7 @@ HandleScrollZones_HorizontalAutoscrolling:
   .reachedLeftScrollBoundary:
     LDA.W $0933                                                          ;80A638;
 
-  + STA.W $0911                                                          ;80A63B;
++   STA.W $0911                                                          ;80A63B;
 
   .return:
     PLB                                                                  ;80A63E;
@@ -5921,7 +5921,7 @@ HandleScrollZones_ScrollingRight:
     STA.W $0911                                                          ;80A65C;
     STZ.W $090F                                                          ;80A65F;
 
-  + LDA.W $07A9                                                          ;80A662;
++   LDA.W $07A9                                                          ;80A662;
     DEC A                                                                ;80A665;
     XBA                                                                  ;80A666;
     CMP.W $0911                                                          ;80A667;
@@ -5929,7 +5929,7 @@ HandleScrollZones_ScrollingRight:
     STA.W $0911                                                          ;80A66C;
     BRA .return                                                          ;80A66F;
 
-  + LDA.W $0915                                                          ;80A671;
++   LDA.W $0915                                                          ;80A671;
     CLC                                                                  ;80A674;
     ADC.W #$0080                                                         ;80A675;
     XBA                                                                  ;80A678;
@@ -5957,7 +5957,7 @@ HandleScrollZones_ScrollingRight:
     BPL +                                                                ;80A6B0;
     LDA.W $0933                                                          ;80A6B2;
 
-  + STA.W $0911                                                          ;80A6B5;
++   STA.W $0911                                                          ;80A6B5;
 
   .return:
     PLB                                                                  ;80A6B8;
@@ -5984,12 +5984,12 @@ HandleScrollZones_ScrollingLeft:
     STA.W $0911                                                          ;80A6D3;
     STZ.W $090F                                                          ;80A6D6;
 
-  + LDA.W $0911                                                          ;80A6D9;
++   LDA.W $0911                                                          ;80A6D9;
     BPL +                                                                ;80A6DC;
     STZ.W $0911                                                          ;80A6DE;
     BRA .return                                                          ;80A6E1;
 
-  + LDA.W $0915                                                          ;80A6E3;
++   LDA.W $0915                                                          ;80A6E3;
     CLC                                                                  ;80A6E6;
     ADC.W #$0080                                                         ;80A6E7;
     XBA                                                                  ;80A6EA;
@@ -6019,7 +6019,7 @@ HandleScrollZones_ScrollingLeft:
     BCC +                                                                ;80A726;
     LDA.W $0933                                                          ;80A728;
 
-  + STA.W $0911                                                          ;80A72B;
++   STA.W $0911                                                          ;80A72B;
 
   .return:
     PLB                                                                  ;80A72E;
@@ -6070,7 +6070,7 @@ HandleScrollZones_VerticalAutoscrolling:
     BEQ +                                                                ;80A73B;
     JMP.W .return                                                        ;80A73D;
 
-  + LDA.B #$8F                                                           ;80A740;
++   LDA.B #$8F                                                           ;80A740;
     PHA                                                                  ;80A742;
     PLB                                                                  ;80A743;
     REP #$30                                                             ;80A744;
@@ -6096,13 +6096,13 @@ HandleScrollZones_VerticalAutoscrolling:
     BEQ +                                                                ;80A775;
     LDY.W #$001F                                                         ;80A777;
 
-  + STY.W $0933                                                          ;80A77A;
++   STY.W $0933                                                          ;80A77A;
     LDA.W $0915                                                          ;80A77D;
     STA.W $0939                                                          ;80A780;
     BPL +                                                                ;80A783;
     STZ.W $0915                                                          ;80A785;
 
-  + LDA.W $07AB                                                          ;80A788;
++   LDA.W $07AB                                                          ;80A788;
     DEC A                                                                ;80A78B;
     XBA                                                                  ;80A78C;
     CLC                                                                  ;80A78D;
@@ -6111,7 +6111,7 @@ HandleScrollZones_VerticalAutoscrolling:
     BCS +                                                                ;80A794;
     STA.W $0915                                                          ;80A796;
 
-  + SEP #$20                                                             ;80A799;
++   SEP #$20                                                             ;80A799;
     LDA.W $0916                                                          ;80A79B;
     STA.W $4202                                                          ;80A79E;
     LDA.W $07A9                                                          ;80A7A1;
@@ -6162,7 +6162,7 @@ HandleScrollZones_VerticalAutoscrolling:
     AND.W #$FF00                                                         ;80A80E;
     BRA .returnLayer1Y                                                   ;80A811;
 
-  + LDA.W $0939                                                          ;80A813;
++   LDA.W $0939                                                          ;80A813;
     BRA .returnLayer1Y                                                   ;80A816;
 
   .reachedBottomScrollBoundary:
@@ -6265,7 +6265,7 @@ HandleScrollZones_ScrollingDown:
     BEQ +                                                                ;80A8D2;
     LDY.W #$001F                                                         ;80A8D4;
 
-  + STY.W $0933                                                          ;80A8D7;
++   STY.W $0933                                                          ;80A8D7;
     LDA.W $0B0E                                                          ;80A8DA;
     CMP.W $0915                                                          ;80A8DD;
     BPL +                                                                ;80A8E0;
@@ -6273,7 +6273,7 @@ HandleScrollZones_ScrollingDown:
     STA.W $0915                                                          ;80A8E5;
     STZ.W $0913                                                          ;80A8E8;
 
-  + LDA.W $07AB                                                          ;80A8EB;
++   LDA.W $07AB                                                          ;80A8EB;
     DEC A                                                                ;80A8EE;
     XBA                                                                  ;80A8EF;
     CLC                                                                  ;80A8F0;
@@ -6305,7 +6305,7 @@ HandleScrollZones_ScrollingDown:
     BPL +                                                                ;80A92B;
     LDA.W $0937                                                          ;80A92D;
 
-  + STA.W $0915                                                          ;80A930;
++   STA.W $0915                                                          ;80A930;
 
   .return:
     PLB                                                                  ;80A933;
@@ -6332,12 +6332,12 @@ HandleScrollZones_ScrollingUp:
     STA.W $0915                                                          ;80A94E;
     STZ.W $0913                                                          ;80A951;
 
-  + LDA.W $0915                                                          ;80A954;
++   LDA.W $0915                                                          ;80A954;
     BPL +                                                                ;80A957;
     STZ.W $0915                                                          ;80A959;
     BRA .return                                                          ;80A95C;
 
-  + SEP #$20                                                             ;80A95E;
++   SEP #$20                                                             ;80A95E;
     LDA.W $0916                                                          ;80A960;
     STA.W $4202                                                          ;80A963;
     LDA.W $07A9                                                          ;80A966;
@@ -6367,7 +6367,7 @@ HandleScrollZones_ScrollingUp:
     BCC +                                                                ;80A9A1;
     LDA.W $0933                                                          ;80A9A3;
 
-  + STA.W $0915                                                          ;80A9A6;
++   STA.W $0915                                                          ;80A9A6;
 
   .return:
     PLB                                                                  ;80A9A9;
@@ -6382,7 +6382,7 @@ Debug_Layer1Position_Saving_Loading:
     BEQ +                                                                ;80A9B1;
     INC.W $05D3                                                          ;80A9B3;
 
-  + LDA.W $05D3                                                          ;80A9B6;
++   LDA.W $05D3                                                          ;80A9B6;
     LSR A                                                                ;80A9B9;
     BCC +                                                                ;80A9BA;
     LDA.W $05D5                                                          ;80A9BC;
@@ -6392,7 +6392,7 @@ Debug_Layer1Position_Saving_Loading:
     RTL                                                                  ;80A9C8;
 
 
-  + LDA.W $0911                                                          ;80A9C9;
++   LDA.W $0911                                                          ;80A9C9;
     STA.W $05D5                                                          ;80A9CC;
     LDA.W $0915                                                          ;80A9CF;
     STA.W $05D7                                                          ;80A9D2;
@@ -6466,7 +6466,7 @@ UpdateLevelBackgroundDataColumn:
     BEQ +                                                                ;80A9E1;
     RTS                                                                  ;80A9E3;
 
-  + PHP                                                                  ;80A9E4;
++   PHP                                                                  ;80A9E4;
     SEP #$20                                                             ;80A9E5;
     LDA.W $07A5                                                          ;80A9E7;
     STA.W $4202                                                          ;80A9EA;
@@ -6485,7 +6485,7 @@ UpdateLevelBackgroundDataColumn:
     CLC                                                                  ;80AA05;
     ADC.W #$9600                                                         ;80AA06; $7F
 
-  + STA.B $36                                                            ;80AA09;
++   STA.B $36                                                            ;80AA09;
     LDA.W #$007F                                                         ;80AA0B;
     STA.B $38                                                            ;80AA0E;
     LDA.W $0996                                                          ;80AA10;
@@ -6516,12 +6516,12 @@ UpdateLevelBackgroundDataColumn:
     BCC +                                                                ;80AA4D;
     LDA.W #$53E0                                                         ;80AA4F;
 
-  + TXY                                                                  ;80AA52;
++   TXY                                                                  ;80AA52;
     BEQ +                                                                ;80AA53;
     SEC                                                                  ;80AA55;
     SBC.W $098E                                                          ;80AA56;
 
-  + STA.W $0937                                                          ;80AA59;
++   STA.W $0937                                                          ;80AA59;
     CLC                                                                  ;80AA5C;
     ADC.W $0933                                                          ;80AA5D;
     STA.W $095A,X                                                        ;80AA60;
@@ -6537,7 +6537,7 @@ UpdateLevelBackgroundDataColumn:
     LDA.W #$C9D0                                                         ;80AA7B; $7E
     LDY.W #$0108                                                         ;80AA7E;
 
-  + CLC                                                                  ;80AA81;
++   CLC                                                                  ;80AA81;
     ADC.W $0956,X                                                        ;80AA82;
     STA.W $095E,X                                                        ;80AA85;
     CLC                                                                  ;80AA88;
@@ -6577,7 +6577,7 @@ UpdateLevelBackgroundDataColumn:
     STA.W $C90A,Y                                                        ;80AAD1;
     JMP.W .next                                                          ;80AAD4;
 
-  + CMP.W #$0400                                                         ;80AAD7;
++   CMP.W #$0400                                                         ;80AAD7;
     BNE +                                                                ;80AADA;
     LDA.W $A002,X                                                        ;80AADC;
     EOR.W #$4000                                                         ;80AADF;
@@ -6593,7 +6593,7 @@ UpdateLevelBackgroundDataColumn:
     STA.W $C90A,Y                                                        ;80AAFD;
     BRA .next                                                            ;80AB00;
 
-  + CMP.W #$0800                                                         ;80AB02;
++   CMP.W #$0800                                                         ;80AB02;
     BNE +                                                                ;80AB05;
     LDA.W $A004,X                                                        ;80AB07;
     EOR.W #$8000                                                         ;80AB0A;
@@ -6609,7 +6609,7 @@ UpdateLevelBackgroundDataColumn:
     STA.W $C90A,Y                                                        ;80AB28;
     BRA .next                                                            ;80AB2B;
 
-  + LDA.W $A006,X                                                        ;80AB2D;
++   LDA.W $A006,X                                                        ;80AB2D;
     EOR.W #$C000                                                         ;80AB30;
     STA.W $C8C8,Y                                                        ;80AB33;
     LDA.W $A004,X                                                        ;80AB36;
@@ -6672,7 +6672,7 @@ UpdateBackgroundLevelDataRow:
     BEQ +                                                                ;80AB7B;
     RTS                                                                  ;80AB7D;
 
-  + PHP                                                                  ;80AB7E;
++   PHP                                                                  ;80AB7E;
     SEP #$20                                                             ;80AB7F;
     LDA.W $07A5                                                          ;80AB81;
     STA.W $4202                                                          ;80AB84;
@@ -6691,7 +6691,7 @@ UpdateBackgroundLevelDataRow:
     CLC                                                                  ;80AB9F;
     ADC.W #$9600                                                         ;80ABA0; $7F
 
-  + STA.B $36                                                            ;80ABA3;
++   STA.B $36                                                            ;80ABA3;
     LDA.W #$007F                                                         ;80ABA5;
     STA.B $38                                                            ;80ABA8;
     LDA.W $0994                                                          ;80ABAA;
@@ -6732,12 +6732,12 @@ UpdateBackgroundLevelDataRow:
     STA.W $0937                                                          ;80ABFE;
     LDA.W #$53E0                                                         ;80AC01;
 
-  + TXY                                                                  ;80AC04;
++   TXY                                                                  ;80AC04;
     BEQ +                                                                ;80AC05;
     SEC                                                                  ;80AC07;
     SBC.W $098E                                                          ;80AC08;
 
-  + CLC                                                                  ;80AC0B;
++   CLC                                                                  ;80AC0B;
     ADC.W $0933                                                          ;80AC0C;
     STA.W $0968,X                                                        ;80AC0F;
     LDA.W $0937                                                          ;80AC12;
@@ -6746,7 +6746,7 @@ UpdateBackgroundLevelDataRow:
     SEC                                                                  ;80AC18;
     SBC.W $098E                                                          ;80AC19;
 
-  + CLC                                                                  ;80AC1C;
++   CLC                                                                  ;80AC1C;
     ADC.W $4216                                                          ;80AC1D;
     STA.W $096A,X                                                        ;80AC20;
     LDA.W #$C948                                                         ;80AC23; $7E
@@ -6756,7 +6756,7 @@ UpdateBackgroundLevelDataRow:
     LDA.W #$CA50                                                         ;80AC2E; $7E
     LDY.W #$0108                                                         ;80AC31;
 
-  + CLC                                                                  ;80AC34;
++   CLC                                                                  ;80AC34;
     ADC.W $0964,X                                                        ;80AC35;
     STA.W $096C,X                                                        ;80AC38;
     CLC                                                                  ;80AC3B;
@@ -6796,7 +6796,7 @@ UpdateBackgroundLevelDataRow:
     STA.W $C98E,Y                                                        ;80AC84;
     JMP.W .next                                                          ;80AC87;
 
-  + CMP.W #$0400                                                         ;80AC8A;
++   CMP.W #$0400                                                         ;80AC8A;
     BNE +                                                                ;80AC8D;
     LDA.W $A002,X                                                        ;80AC8F;
     EOR.W #$4000                                                         ;80AC92;
@@ -6812,7 +6812,7 @@ UpdateBackgroundLevelDataRow:
     STA.W $C98E,Y                                                        ;80ACB0;
     BRA .next                                                            ;80ACB3;
 
-  + CMP.W #$0800                                                         ;80ACB5;
++   CMP.W #$0800                                                         ;80ACB5;
     BNE +                                                                ;80ACB8;
     LDA.W $A004,X                                                        ;80ACBA;
     EOR.W #$8000                                                         ;80ACBD;
@@ -6828,7 +6828,7 @@ UpdateBackgroundLevelDataRow:
     STA.W $C98E,Y                                                        ;80ACDB;
     BRA .next                                                            ;80ACDE;
 
-  + LDA.W $A006,X                                                        ;80ACE0;
++   LDA.W $A006,X                                                        ;80ACE0;
     EOR.W #$C000                                                         ;80ACE3;
     STA.W $C948,Y                                                        ;80ACE6;
     LDA.W $A004,X                                                        ;80ACE9;
@@ -7056,7 +7056,7 @@ DoorTransitionScrolling:
     PLP                                                                  ;80AE74;
     RTL                                                                  ;80AE75;
 
-.pointers:
+  .pointers:
     dw DoorTransitionScrolling_Right                                     ;80AE76;
     dw DoorTransitionScrolling_Left                                      ;80AE78;
     dw DoorTransitionScrolling_Down                                      ;80AE7A;
@@ -7095,7 +7095,7 @@ DoorTransitionScrolling_Right:
     SEC                                                                  ;80AEBE;
     RTS                                                                  ;80AEBF;
 
-  + CLC                                                                  ;80AEC0;
++   CLC                                                                  ;80AEC0;
     RTS                                                                  ;80AEC1;
 
 
@@ -7130,7 +7130,7 @@ DoorTransitionScrolling_Left:
     SEC                                                                  ;80AEFE;
     RTS                                                                  ;80AEFF;
 
-  + CLC                                                                  ;80AF00;
++   CLC                                                                  ;80AF00;
     RTS                                                                  ;80AF01;
 
 
@@ -7181,7 +7181,7 @@ DoorTransitionScrolling_Down:
     STA.B $B3                                                            ;80AF40;
     BRA .finish                                                          ;80AF42;
 
-  + CPX.W #$0039                                                         ;80AF44;
++   CPX.W #$0039                                                         ;80AF44;
     BCS .finish                                                          ;80AF47;
     LDA.W $0AFC                                                          ;80AF49;
     CLC                                                                  ;80AF4C;
@@ -7211,7 +7211,7 @@ DoorTransitionScrolling_Down:
     SEC                                                                  ;80AF85;
     RTS                                                                  ;80AF86;
 
-  + CLC                                                                  ;80AF87;
++   CLC                                                                  ;80AF87;
     RTS                                                                  ;80AF88;
 
 
@@ -7261,7 +7261,7 @@ DoorTransitionScrolling_Up:
     STA.B $B3                                                            ;80AFC7;
     BRA .done                                                            ;80AFC9;
 
-  + LDA.W $0AFC                                                          ;80AFCB;
++   LDA.W $0AFC                                                          ;80AFCB;
     SEC                                                                  ;80AFCE;
     SBC.W $092B                                                          ;80AFCF;
     STA.W $0AFC                                                          ;80AFD2;
@@ -7297,7 +7297,7 @@ DoorTransitionScrolling_Up:
     STA.B $B7                                                            ;80B01C;
     BRA .done                                                            ;80B01E;
 
-  + JSL.L CalculateBGScrolls_UpdateBGGraphics_WhenScrolling              ;80B020;
++   JSL.L CalculateBGScrolls_UpdateBGGraphics_WhenScrolling              ;80B020;
 
   .done:
     PLX                                                                  ;80B024;
@@ -7308,7 +7308,7 @@ DoorTransitionScrolling_Up:
     SEC                                                                  ;80B02E;
     RTS                                                                  ;80B02F;
 
-  + CLC                                                                  ;80B030;
++   CLC                                                                  ;80B030;
     RTS                                                                  ;80B031;
 
 
@@ -7323,7 +7323,7 @@ UNUSED_SetupRotatingMode7Background_80B032:
     SEC                                                                  ;80B03D; dead code
     RTL                                                                  ;80B03E;
 
-  + JSL.L SetForceBlankAndWaitForNMI                                     ;80B03F;
++   JSL.L SetForceBlankAndWaitForNMI                                     ;80B03F;
     LDA.W #$0080                                                         ;80B043;
     STA.W $2115                                                          ;80B046;
     STZ.W $2116                                                          ;80B049;
@@ -7468,7 +7468,7 @@ Decompression_VariableDestination:
     BNE +                                                                ;80B12F;
     JSR.W SourceBankOverflowCorrection                                   ;80B131;
 
-  + STX.B $47                                                            ;80B134;
++   STX.B $47                                                            ;80B134;
     PLX                                                                  ;80B136;
     STA.B $4A                                                            ;80B137;
     CMP.B #$FF                                                           ;80B139;
@@ -7477,7 +7477,7 @@ Decompression_VariableDestination:
     PLP                                                                  ;80B13E;
     RTL                                                                  ;80B13F;
 
-  + AND.B #$E0                                                           ;80B140;
++   AND.B #$E0                                                           ;80B140;
     CMP.B #$E0                                                           ;80B142;
     BNE .pushCommandBits                                                 ;80B144;
     LDA.B $4A                                                            ;80B146;
@@ -7496,7 +7496,7 @@ Decompression_VariableDestination:
     BNE +                                                                ;80B15A;
     JSR.W SourceBankOverflowCorrection                                   ;80B15C;
 
-  + STX.B $47                                                            ;80B15F;
++   STX.B $47                                                            ;80B15F;
     PLX                                                                  ;80B161;
     BRA +                                                                ;80B162;
 
@@ -7507,14 +7507,14 @@ Decompression_VariableDestination:
     LDA.B $4A                                                            ;80B168;
     AND.B #$1F                                                           ;80B16A;
 
-  + TAX                                                                  ;80B16C;
++   TAX                                                                  ;80B16C;
     INX                                                                  ;80B16D;
     PLA                                                                  ;80B16E;
     CMP.B #$00                                                           ;80B16F;
     BPL +                                                                ;80B171;
     JMP.W .dictionaryVariant                                             ;80B173;
 
-  + CMP.B #$20                                                           ;80B176;
++   CMP.B #$20                                                           ;80B176;
     BEQ .byteFill                                                        ;80B178;
     CMP.B #$40                                                           ;80B17A;
     BEQ .wordFill                                                        ;80B17C;
@@ -7530,7 +7530,7 @@ Decompression_VariableDestination:
     BNE +                                                                ;80B189;
     JSR.W SourceBankOverflowCorrection                                   ;80B18B;
 
-  + STX.B $47                                                            ;80B18E;
++   STX.B $47                                                            ;80B18E;
     PLX                                                                  ;80B190;
     STA.B [$4C],Y                                                        ;80B191;
     INY                                                                  ;80B193;
@@ -7547,7 +7547,7 @@ Decompression_VariableDestination:
     BNE +                                                                ;80B1A0;
     JSR.W SourceBankOverflowCorrection                                   ;80B1A2;
 
-  + STX.B $47                                                            ;80B1A5;
++   STX.B $47                                                            ;80B1A5;
     PLX                                                                  ;80B1A7;
 
   .loopByteFill:
@@ -7566,7 +7566,7 @@ Decompression_VariableDestination:
     BNE +                                                                ;80B1B8;
     JSR.W SourceBankOverflowCorrection                                   ;80B1BA;
 
-  + STX.B $47                                                            ;80B1BD;
++   STX.B $47                                                            ;80B1BD;
     PLX                                                                  ;80B1BF;
     STA.B $4A                                                            ;80B1C0;
     PHX                                                                  ;80B1C2;
@@ -7576,7 +7576,7 @@ Decompression_VariableDestination:
     BNE +                                                                ;80B1C9;
     JSR.W SourceBankOverflowCorrection                                   ;80B1CB;
 
-  + STX.B $47                                                            ;80B1CE;
++   STX.B $47                                                            ;80B1CE;
     PLX                                                                  ;80B1D0;
     STA.B $4B                                                            ;80B1D1;
 
@@ -7604,7 +7604,7 @@ Decompression_VariableDestination:
     BNE +                                                                ;80B1ED;
     JSR.W SourceBankOverflowCorrection                                   ;80B1EF;
 
-  + STX.B $47                                                            ;80B1F2;
++   STX.B $47                                                            ;80B1F2;
     PLX                                                                  ;80B1F4;
 
   .loopIncrementingFill:
@@ -7629,7 +7629,7 @@ Decompression_VariableDestination:
     BNE +                                                                ;80B20E;
     JSR.W SourceBankOverflowCorrection                                   ;80B210;
 
-  + STX.B $47                                                            ;80B213;
++   STX.B $47                                                            ;80B213;
     PLX                                                                  ;80B215;
     STA.B $4A                                                            ;80B216;
     PHX                                                                  ;80B218;
@@ -7639,7 +7639,7 @@ Decompression_VariableDestination:
     BNE +                                                                ;80B21F;
     JSR.W SourceBankOverflowCorrection                                   ;80B221;
 
-  + STX.B $47                                                            ;80B224;
++   STX.B $47                                                            ;80B224;
     PLX                                                                  ;80B226;
     STA.B $4B                                                            ;80B227;
 
@@ -7658,7 +7658,7 @@ Decompression_VariableDestination:
     BEQ +                                                                ;80B237;
     EOR.B #$FF                                                           ;80B239;
 
-  + STA.B [$4C],Y                                                        ;80B23B;
++   STA.B [$4C],Y                                                        ;80B23B;
     INY                                                                  ;80B23D;
     PLX                                                                  ;80B23E;
     DEX                                                                  ;80B23F;
@@ -7676,7 +7676,7 @@ Decompression_VariableDestination:
     BNE +                                                                ;80B250;
     JSR.W SourceBankOverflowCorrection                                   ;80B252;
 
-  + STX.B $47                                                            ;80B255;
++   STX.B $47                                                            ;80B255;
     PLX                                                                  ;80B257;
     STA.B $4A                                                            ;80B258;
     STZ.B $4B                                                            ;80B25A;
@@ -7723,7 +7723,7 @@ DecompressionToVRAM:
     STZ.B $50                                                            ;80B27B;
     LDY.B $4C                                                            ;80B27D;
 
-.loopMain:
+  .loopMain:
     PHX                                                                  ;80B27F;
     LDX.B $47                                                            ;80B280;
     LDA.W $0000,X                                                        ;80B282;
@@ -7731,7 +7731,7 @@ DecompressionToVRAM:
     BNE +                                                                ;80B286;
     JSR.W SourceBankOverflowCorrection                                   ;80B288;
 
-  + STX.B $47                                                            ;80B28B;
++   STX.B $47                                                            ;80B28B;
     PLX                                                                  ;80B28D;
     STA.B $4A                                                            ;80B28E;
     CMP.B #$FF                                                           ;80B290;
@@ -7740,7 +7740,7 @@ DecompressionToVRAM:
     PLP                                                                  ;80B295;
     RTL                                                                  ;80B296;
 
-  + AND.B #$E0                                                           ;80B297;
++   AND.B #$E0                                                           ;80B297;
     CMP.B #$E0                                                           ;80B299;
     BNE .pushCommandBits                                                 ;80B29B;
     LDA.B $4A                                                            ;80B29D;
@@ -7759,7 +7759,7 @@ DecompressionToVRAM:
     BNE +                                                                ;80B2B1;
     JSR.W SourceBankOverflowCorrection                                   ;80B2B3;
 
-  + STX.B $47                                                            ;80B2B6;
++   STX.B $47                                                            ;80B2B6;
     PLX                                                                  ;80B2B8;
     BRA +                                                                ;80B2B9;
 
@@ -7770,14 +7770,14 @@ DecompressionToVRAM:
     LDA.B $4A                                                            ;80B2BF;
     AND.B #$1F                                                           ;80B2C1;
 
-  + TAX                                                                  ;80B2C3;
++   TAX                                                                  ;80B2C3;
     INX                                                                  ;80B2C4;
     PLA                                                                  ;80B2C5;
     CMP.B #$00                                                           ;80B2C6;
     BPL +                                                                ;80B2C8;
     JMP.W .dictionaryVariant                                             ;80B2CA;
 
-  + CMP.B #$20                                                           ;80B2CD;
++   CMP.B #$20                                                           ;80B2CD;
     BEQ .byteFill                                                        ;80B2CF;
     CMP.B #$40                                                           ;80B2D1;
     BEQ .wordFill                                                        ;80B2D3;
@@ -7794,7 +7794,7 @@ DecompressionToVRAM:
     BNE +                                                                ;80B2E3;
     JSR.W SourceBankOverflowCorrection                                   ;80B2E5;
 
-  + STX.B $47                                                            ;80B2E8;
++   STX.B $47                                                            ;80B2E8;
     PLX                                                                  ;80B2EA;
     PHA                                                                  ;80B2EB;
     TYA                                                                  ;80B2EC;
@@ -7822,7 +7822,7 @@ DecompressionToVRAM:
     BNE +                                                                ;80B309;
     JSR.W SourceBankOverflowCorrection                                   ;80B30B;
 
-  + STX.B $47                                                            ;80B30E;
++   STX.B $47                                                            ;80B30E;
     PLX                                                                  ;80B310;
 
   .loopByteFill:
@@ -7852,7 +7852,7 @@ DecompressionToVRAM:
     BNE +                                                                ;80B32F;
     JSR.W SourceBankOverflowCorrection                                   ;80B331;
 
-  + STX.B $47                                                            ;80B334;
++   STX.B $47                                                            ;80B334;
     PLX                                                                  ;80B336;
     STA.B $4A                                                            ;80B337;
     PHX                                                                  ;80B339;
@@ -7862,7 +7862,7 @@ DecompressionToVRAM:
     BNE +                                                                ;80B340;
     JSR.W SourceBankOverflowCorrection                                   ;80B342;
 
-  + STX.B $47                                                            ;80B345;
++   STX.B $47                                                            ;80B345;
     PLX                                                                  ;80B347;
     STA.B $4B                                                            ;80B348;
 
@@ -7912,7 +7912,7 @@ DecompressionToVRAM:
     BNE +                                                                ;80B380;
     JSR.W SourceBankOverflowCorrection                                   ;80B382;
 
-  + STX.B $47                                                            ;80B385;
++   STX.B $47                                                            ;80B385;
     PLX                                                                  ;80B387;
 
   .loopIncrementingFill:
@@ -7948,7 +7948,7 @@ DecompressionToVRAM:
     BNE +                                                                ;80B3AF;
     JSR.W SourceBankOverflowCorrection                                   ;80B3B1;
 
-  + STX.B $47                                                            ;80B3B4;
++   STX.B $47                                                            ;80B3B4;
     PLX                                                                  ;80B3B6;
     STA.B $4A                                                            ;80B3B7;
     PHX                                                                  ;80B3B9;
@@ -7958,7 +7958,7 @@ DecompressionToVRAM:
     BNE +                                                                ;80B3C0;
     JSR.W SourceBankOverflowCorrection                                   ;80B3C2;
 
-  + STX.B $47                                                            ;80B3C5;
++   STX.B $47                                                            ;80B3C5;
     PLX                                                                  ;80B3C7;
     STA.B $4B                                                            ;80B3C8;
     REP #$20                                                             ;80B3CA;
@@ -7978,13 +7978,13 @@ DecompressionToVRAM:
     BCC +                                                                ;80B3E5;
     XBA                                                                  ;80B3E7;
 
-  + INC.B $4A                                                            ;80B3E8;
++   INC.B $4A                                                            ;80B3E8;
     SEP #$20                                                             ;80B3EA;
     LDX.B $4F                                                            ;80B3EC;
     BEQ +                                                                ;80B3EE;
     EOR.B #$FF                                                           ;80B3F0;
 
-  + PHA                                                                  ;80B3F2;
++   PHA                                                                  ;80B3F2;
     REP #$20                                                             ;80B3F3;
     TYA                                                                  ;80B3F5;
     LSR A                                                                ;80B3F6;
@@ -8020,7 +8020,7 @@ DecompressionToVRAM:
     BNE +                                                                ;80B421;
     JSR.W SourceBankOverflowCorrection                                   ;80B423;
 
-  + STX.B $47                                                            ;80B426;
++   STX.B $47                                                            ;80B426;
     PLX                                                                  ;80B428;
     STA.B $4A                                                            ;80B429;
     STZ.B $4B                                                            ;80B42B;
@@ -8409,7 +8409,7 @@ LoadStations_Crateria:
     dw Door_Parlor_1                                                     ;80C4C7;
     dw $0000,$0400,$0400,$0040,$0000                                     ;80C4C9;
 
-    dw RoomHeader_CrateriaSave 
+    dw RoomHeader_CrateriaSave
 ; 1: Crateria save station (from Crateria mainstreet)                                          ;80C4D3;
     dw Door_Parlor_5                                                     ;80C4D5;
     dw $0000,$0000,$0000,$0098,$FFE0                                     ;80C4D7;
@@ -9128,7 +9128,7 @@ SetDebugElevatorAsUsed:
 ;       |   |    _____ Destination area index
 ;       |   |   |    _ Destination bit
 ;       |   |   |   |
-..crateria:
+  ..crateria:
 ; Crateria elevator bits
     db $01,$01,$09,$01                                                   ;80CD52;
     db $01,$02,$03,$04
@@ -9136,28 +9136,28 @@ SetDebugElevatorAsUsed:
     db $01,$08,$03,$01
     db $01,$10,$0B,$01
 
-..brinstar:
+  ..brinstar:
 ; Brinstar elevator bits
     db $03,$01,$01,$08                                                   ;80CD66;
     db $03,$02,$01,$04
     db $03,$04,$01,$02
-    db $03,$08,$05,$01 
+    db $03,$08,$05,$01
 
-..norfair:
+  ..norfair:
 ; Norfair elevator bits
     db $05,$01,$03,$08                                                   ;80CD76;
     db $05,$02,$05,$04
     db $05,$04,$05,$02
 
-..maridia:
+  ..maridia:
 ; Maridia elevator bits
     db $09,$01,$01,$01                                                   ;80CD82;
 
-..tourian:
+  ..tourian:
 ; Tourian elevator bits
     db $0B,$01,$01,$10                                                   ;80CD86;
 
-..wreckedShip:
+  ..wreckedShip:
 ; Wrecked Ship elevator bits
     db $00,$00,$00,$00                                                   ;80CD8A;
 
@@ -9171,39 +9171,39 @@ ORG $80FFC0
 ROM_HEADER:
     db "Super Metroid        "                                           ;80FFC0;
 
-.ROMSpeed_MapMode:
+  .ROMSpeed_MapMode:
 ; ROM speed and map mode: FastROM, LoROM
     db $30                                                               ;80FFD5;
 
-.chipset:
+  .chipset:
 ; Chipset: ROM + RAM + SRAM
     db $02                                                               ;80FFD6;
 
-.ROMSize:
+  .ROMSize:
 ; ROM size: 400000h bytes = 4 MiB
     db $0C                                                               ;80FFD7;
 
-.SRAMSize:
+  .SRAMSize:
 ; SRAM size: 2000h bytes = 8 KiB
     db $03                                                               ;80FFD8;
 
-.country:
+  .country:
 ; Country code: Japan
     db $00                                                               ;80FFD9;
 
-.developer:
+  .developer:
 ; Developer code: Nintendo
     db $01                                                               ;80FFDA;
 
-.version:
+  .version:
 ; Version number
     db $00                                                               ;80FFDB;
 
-.complement:
+  .complement:
 ; Checksum complement
     dw $0720                                                             ;80FFDC;
 
-.checksum:
+  .checksum:
 ; Checksum
     dw $F8DF                                                             ;80FFDE;
 

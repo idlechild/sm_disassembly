@@ -9,7 +9,7 @@ PostGrappleCollisionDetection_Horizontal_Slope_NonSquare:
     JMP.W .right                                                         ;948006;
 
 
-.left:
+  .left:
     LDA.W $0DC4                                                          ;948009;
     STA.W $4204                                                          ;94800C;
     SEP #$20                                                             ;94800F;
@@ -27,7 +27,7 @@ PostGrappleCollisionDetection_Horizontal_Slope_NonSquare:
     RTS                                                                  ;948026;
 
 
-..centerInBlock:
+  ..centerInBlock:
     LDA.B $20                                                            ;948027;
     AND.W #$000F                                                         ;948029;
     STA.W $0DD4                                                          ;94802C;
@@ -47,11 +47,11 @@ PostGrappleCollisionDetection_Horizontal_Slope_NonSquare:
     BRA +                                                                ;94804D;
 
 
-..blockBTSMSB:
+  ..blockBTSMSB:
     LDA.W $0AFA                                                          ;94804F;
     EOR.W #$000F                                                         ;948052;
 
-  + AND.W #$000F                                                         ;948055;
++   AND.W #$000F                                                         ;948055;
     CLC                                                                  ;948058;
     ADC.W $0DD6                                                          ;948059;
     TAX                                                                  ;94805C;
@@ -63,21 +63,21 @@ PostGrappleCollisionDetection_Horizontal_Slope_NonSquare:
     BEQ ..returnCarrySet                                                 ;948068;
     BMI ..returnCarryClear                                               ;94806A;
 
-..returnCarrySet:
+  ..returnCarrySet:
     SEC                                                                  ;94806C;
     RTS                                                                  ;94806D;
 
 
-..returnCarryClear:
+  ..returnCarryClear:
     CLC                                                                  ;94806E;
     RTS                                                                  ;94806F;
 
 
-..gotoSolid:
+  ..gotoSolid:
     JMP.W PostGrappleCollisionDetection_Horizontal_Solid                 ;948070;
 
 
-.right:
+  .right:
     LDA.W $0DC4                                                          ;948073;
     STA.W $4204                                                          ;948076;
     SEP #$20                                                             ;948079;
@@ -95,7 +95,7 @@ PostGrappleCollisionDetection_Horizontal_Slope_NonSquare:
     RTS                                                                  ;948090;
 
 
-..centerInBlock:
+  ..centerInBlock:
     LDA.B $20                                                            ;948091;
     AND.W #$000F                                                         ;948093;
     STA.W $0DD4                                                          ;948096;
@@ -115,11 +115,11 @@ PostGrappleCollisionDetection_Horizontal_Slope_NonSquare:
     BRA +                                                                ;9480B7;
 
 
-..blockBTSMSB:
+  ..blockBTSMSB:
     LDA.W $0AFA                                                          ;9480B9;
     EOR.W #$000F                                                         ;9480BC;
 
-  + AND.W #$000F                                                         ;9480BF;
++   AND.W #$000F                                                         ;9480BF;
     CLC                                                                  ;9480C2;
     ADC.W $0DD6                                                          ;9480C3;
     TAX                                                                  ;9480C6;
@@ -131,17 +131,17 @@ PostGrappleCollisionDetection_Horizontal_Slope_NonSquare:
     BEQ +                                                                ;9480D2;
     BPL ..returnCarryClear                                               ;9480D4;
 
-  + EOR.W #$FFFF                                                         ;9480D6;
++   EOR.W #$FFFF                                                         ;9480D6;
     SEC                                                                  ;9480D9;
     RTS                                                                  ;9480DA;
 
 
-..returnCarryClear:
+  ..returnCarryClear:
     CLC                                                                  ;9480DB;
     RTS                                                                  ;9480DC;
 
 
-..gotoSolid:
+  ..gotoSolid:
     JMP.W PostGrappleCollisionDetection_Horizontal_Solid                 ;9480DD;
 
 
@@ -152,7 +152,7 @@ PostGrappleCollisionDetection_Vertical_Slope_NonSquare:
     JMP.W .down                                                          ;9480E6;
 
 
-.up:
+  .up:
     LDA.W $0DC4                                                          ;9480E9;
     STA.W $4204                                                          ;9480EC;
     SEP #$20                                                             ;9480EF;
@@ -170,7 +170,7 @@ PostGrappleCollisionDetection_Vertical_Slope_NonSquare:
     RTS                                                                  ;948106;
 
 
-..centerInBlock:
+  ..centerInBlock:
     LDA.B $20                                                            ;948107;
     AND.W #$000F                                                         ;948109;
     STA.W $0DD4                                                          ;94810C;
@@ -189,11 +189,11 @@ PostGrappleCollisionDetection_Vertical_Slope_NonSquare:
     BRA +                                                                ;948129;
 
 
-..blockBTS40:
+  ..blockBTS40:
     LDA.W $0AF6                                                          ;94812B;
     EOR.W #$000F                                                         ;94812E;
 
-  + AND.W #$000F                                                         ;948131;
++   AND.W #$000F                                                         ;948131;
     CLC                                                                  ;948134;
     ADC.W $0DD6                                                          ;948135;
     TAX                                                                  ;948138;
@@ -205,21 +205,21 @@ PostGrappleCollisionDetection_Vertical_Slope_NonSquare:
     BEQ ..returnCarrySet                                                 ;948144;
     BMI ..returnCarryClear                                               ;948146;
 
-..returnCarrySet:
+  ..returnCarrySet:
     SEC                                                                  ;948148;
     RTS                                                                  ;948149;
 
 
-..returnCarryClear:
+  ..returnCarryClear:
     CLC                                                                  ;94814A;
     RTS                                                                  ;94814B;
 
 
-..gotoSolid:
+  ..gotoSolid:
     JMP.W PostGrappleCollisionDetection_Vertical_Solid                   ;94814C;
 
 
-.down:
+  .down:
     LDA.W $0DC4                                                          ;94814F;
     STA.W $4204                                                          ;948152;
     SEP #$20                                                             ;948155;
@@ -237,7 +237,7 @@ PostGrappleCollisionDetection_Vertical_Slope_NonSquare:
     RTS                                                                  ;94816C;
 
 
-..centerInBlock:
+  ..centerInBlock:
     LDA.B $20                                                            ;94816D;
     AND.W #$000F                                                         ;94816F;
     STA.W $0DD4                                                          ;948172;
@@ -256,11 +256,11 @@ PostGrappleCollisionDetection_Vertical_Slope_NonSquare:
     BRA +                                                                ;94818F;
 
 
-..blockBTS40:
+  ..blockBTS40:
     LDA.W $0AF6                                                          ;948191;
     EOR.W #$000F                                                         ;948194;
 
-  + AND.W #$000F                                                         ;948197;
++   AND.W #$000F                                                         ;948197;
     CLC                                                                  ;94819A;
     ADC.W $0DD6                                                          ;94819B;
     TAX                                                                  ;94819E;
@@ -272,17 +272,17 @@ PostGrappleCollisionDetection_Vertical_Slope_NonSquare:
     BEQ +                                                                ;9481AA;
     BPL ..returnCarryClear                                               ;9481AC;
 
-  + EOR.W #$FFFF                                                         ;9481AE;
++   EOR.W #$FFFF                                                         ;9481AE;
     SEC                                                                  ;9481B1;
     RTS                                                                  ;9481B2;
 
 
-..returnCarryClear:
+  ..returnCarryClear:
     CLC                                                                  ;9481B3;
     RTS                                                                  ;9481B4;
 
 
-..gotoSolid:
+  ..gotoSolid:
     JMP.W PostGrappleCollisionDetection_Vertical_Solid                   ;9481B5;
 
 
@@ -319,7 +319,7 @@ PostGrappleCollisionDetection_Horizontal_Slope_Square:
     BRA .noCollision                                                     ;9481F6;
 
 
-.top:
+  .top:
     CMP.B $1C                                                            ;9481F8;
     BNE .checkBothHalves                                                 ;9481FA;
     LDA.W $0AFA                                                          ;9481FC;
@@ -328,23 +328,23 @@ PostGrappleCollisionDetection_Horizontal_Slope_Square:
     AND.W #$0008                                                         ;948203;
     BNE .checkBottomHalf                                                 ;948206;
 
-.checkBothHalves:
+  .checkBothHalves:
     LDA.W SquareSlopeDefinitions_Bank94-1,X                              ;948208;
     BMI .solid                                                           ;94820B;
 
-.checkBottomHalf:
+  .checkBottomHalf:
     TXA                                                                  ;94820D;
     EOR.W #$0002                                                         ;94820E;
     TAX                                                                  ;948211;
     LDA.W SquareSlopeDefinitions_Bank94-1,X                              ;948212;
     BMI .solid                                                           ;948215;
 
-.noCollision:
+  .noCollision:
     CLC                                                                  ;948217;
     RTS                                                                  ;948218;
 
 
-.solid:
+  .solid:
     LDA.W $0B02                                                          ;948219;
     LSR A                                                                ;94821C;
     BCC .left                                                            ;94821D;
@@ -354,7 +354,7 @@ PostGrappleCollisionDetection_Horizontal_Slope_Square:
     RTS                                                                  ;948225;
 
 
-.left:
+  .left:
     LDA.B $20                                                            ;948226;
     AND.W #$0007                                                         ;948228;
     EOR.W #$0007                                                         ;94822B;
@@ -394,7 +394,7 @@ PostGrappleCollisionDetection_Vertical_Slope_Square:
     BRA .returnNoCollision                                               ;94826D;
 
 
-.leftmostBlock:
+  .leftmostBlock:
     CMP.B $1C                                                            ;94826F;
     BNE .checkBothHalves                                                 ;948271;
     LDA.W $0AF6                                                          ;948273;
@@ -403,23 +403,23 @@ PostGrappleCollisionDetection_Vertical_Slope_Square:
     AND.W #$0008                                                         ;94827A;
     BNE .right                                                           ;94827D;
 
-.checkBothHalves:
+  .checkBothHalves:
     LDA.W SquareSlopeDefinitions_Bank94-1,X                              ;94827F;
     BMI .solid                                                           ;948282;
 
-.right:
+  .right:
     TXA                                                                  ;948284;
     EOR.W #$0001                                                         ;948285;
     TAX                                                                  ;948288;
     LDA.W SquareSlopeDefinitions_Bank94-1,X                              ;948289;
     BMI .solid                                                           ;94828C;
 
-.returnNoCollision:
+  .returnNoCollision:
     CLC                                                                  ;94828E;
     RTS                                                                  ;94828F;
 
 
-.solid:
+  .solid:
     LDA.W $0B02                                                          ;948290;
     LSR A                                                                ;948293;
     BCC .up                                                              ;948294;
@@ -429,7 +429,7 @@ PostGrappleCollisionDetection_Vertical_Slope_Square:
     RTS                                                                  ;94829C;
 
 
-.up:
+  .up:
     LDA.B $20                                                            ;94829D;
     AND.W #$0007                                                         ;94829F;
     EOR.W #$0007                                                         ;9482A2;
@@ -451,7 +451,7 @@ PostGrappleCollisionDetection_Horizontal_Slope:
     JMP.W PostGrappleCollisionDetection_Horizontal_Slope_NonSquare       ;9482B8;
 
 
-.gotoSquare:
+  .gotoSquare:
     JMP.W PostGrappleCollisionDetection_Horizontal_Slope_Square          ;9482BB;
 
 
@@ -471,7 +471,7 @@ PostGrappleCollisionDetection_Vertical_Slope:
     JMP.W PostGrappleCollisionDetection_Vertical_Slope_NonSquare         ;9482D4;
 
 
-.gotoSquare:
+  .gotoSquare:
     JMP.W PostGrappleCollisionDetection_Vertical_Slope_Square            ;9482D7;
 
 
@@ -590,7 +590,7 @@ PostGrappleCollisionDetection_Rightwards:
     ASL A                                                                ;948392;
     TAX                                                                  ;948393;
 
-.loop:
+  .loop:
     JSR.W PostGrappleCollisionDetection_Horizontal_SingleBlock           ;948394;
     BCC .noCollision                                                     ;948397;
     INC A                                                                ;948399;
@@ -598,7 +598,7 @@ PostGrappleCollisionDetection_Rightwards:
     BCC .noCollision                                                     ;94839D;
     STA.W $0E04                                                          ;94839F;
 
-.noCollision:
+  .noCollision:
     TXA                                                                  ;9483A2;
     CLC                                                                  ;9483A3;
     ADC.W $07A5                                                          ;9483A4;
@@ -646,7 +646,7 @@ PostGrappleCollisionDetection_Leftwards:
     ASL A                                                                ;9483F0;
     TAX                                                                  ;9483F1;
 
-.loop:
+  .loop:
     JSR.W PostGrappleCollisionDetection_Horizontal_SingleBlock           ;9483F2;
     BCC .noCollision                                                     ;9483F5;
     INC A                                                                ;9483F7;
@@ -654,7 +654,7 @@ PostGrappleCollisionDetection_Leftwards:
     BCC .noCollision                                                     ;9483FB;
     STA.W $0E06                                                          ;9483FD;
 
-.noCollision:
+  .noCollision:
     TXA                                                                  ;948400;
     CLC                                                                  ;948401;
     ADC.W $07A5                                                          ;948402;
@@ -704,7 +704,7 @@ PostGrappleCollisionDetection_Downwards:
     ASL A                                                                ;948452;
     TAX                                                                  ;948453;
 
-.loop:
+  .loop:
     JSR.W PostGrappleCollisionDetection_Vertical_SingleBlock             ;948454;
     BCC .nocollision                                                     ;948457;
     INC A                                                                ;948459;
@@ -712,7 +712,7 @@ PostGrappleCollisionDetection_Downwards:
     BCC .nocollision                                                     ;94845D;
     STA.W $0E08                                                          ;94845F;
 
-.nocollision:
+  .nocollision:
     INX                                                                  ;948462;
     INX                                                                  ;948463;
     DEC.B $1A                                                            ;948464;
@@ -758,7 +758,7 @@ PostGrappleCollisionDetection_Upwards:
     ASL A                                                                ;9484AC;
     TAX                                                                  ;9484AD;
 
-.loop:
+  .loop:
     JSR.W PostGrappleCollisionDetection_Vertical_SingleBlock             ;9484AE;
     BCC .noCollision                                                     ;9484B1;
     INC A                                                                ;9484B3;
@@ -766,7 +766,7 @@ PostGrappleCollisionDetection_Upwards:
     BCC .noCollision                                                     ;9484B7;
     STA.W $0E0A                                                          ;9484B9;
 
-.noCollision:
+  .noCollision:
     INX                                                                  ;9484BC;
     INX                                                                  ;9484BD;
     DEC.B $1A                                                            ;9484BE;
@@ -799,12 +799,12 @@ SamusBlockCollisionDetection_Horizontal_Slope_NonSquare:
     ORA.W $0B2E                                                          ;9484E1;
     BEQ .SamusOnSlopeSurface                                             ;9484E4;
 
-.returnNoCollision:
+  .returnNoCollision:
     CLC                                                                  ;9484E6;
     RTS                                                                  ;9484E7;
 
 
-.SamusOnSlopeSurface:
+  .SamusOnSlopeSurface:
     LDA.W $1E77                                                          ;9484E8;
     AND.W #$001F                                                         ;9484EB;
     ASL A                                                                ;9484EE;
@@ -825,12 +825,12 @@ SamusBlockCollisionDetection_Horizontal_Slope_NonSquare:
     BRA .backToReality                                                   ;94850E;
 
 
-  + LDA.W $0B48                                                          ;948510;
++   LDA.W $0B48                                                          ;948510;
     SEC                                                                  ;948513;
     SBC.W .speedModifiers,X                                              ;948514;
     BCS .backToReality                                                   ;948517; >.<
 
-.backToReality:
+  .backToReality:
     SEP #$20                                                             ;948519;
     LDA.B $12                                                            ;94851B;
     XBA                                                                  ;94851D;
@@ -853,7 +853,7 @@ SamusBlockCollisionDetection_Horizontal_Slope_NonSquare:
     RTS                                                                  ;948545;
 
 
-.right:
+  .right:
     LDA.W $0B48                                                          ;948546;
     ORA.W $0B46                                                          ;948549;
     BEQ ..backToReality                                                  ;94854C;
@@ -867,12 +867,12 @@ SamusBlockCollisionDetection_Horizontal_Slope_NonSquare:
     BRA ..backToReality                                                  ;94855F;
 
 
-  + LDA.W $0B48                                                          ;948561;
++   LDA.W $0B48                                                          ;948561;
     SEC                                                                  ;948564;
     SBC.W .speedModifiers,X                                              ;948565;
     BCS ..backToReality                                                  ;948568;
 
-..backToReality:
+  ..backToReality:
     SEP #$20                                                             ;94856A;
     LDA.B $12                                                            ;94856C;
     XBA                                                                  ;94856E;
@@ -946,7 +946,7 @@ UNUSED_948606:
     RTS                                                                  ;948623;
 
 
-.centerInBlock:
+  .centerInBlock:
     LDA.B $18                                                            ;948624;
     SEC                                                                  ;948626;
     SBC.W $0AFE                                                          ;948627;
@@ -969,11 +969,11 @@ UNUSED_948606:
     BRA +                                                                ;948651;
 
 
-.blockBTSMSB:
+  .blockBTSMSB:
     LDA.W $0AFA                                                          ;948653;
     EOR.W #$000F                                                         ;948656;
 
-  + AND.W #$000F                                                         ;948659;
++   AND.W #$000F                                                         ;948659;
     CLC                                                                  ;94865C;
     ADC.W $0DD6                                                          ;94865D;
     TAX                                                                  ;948660;
@@ -985,27 +985,27 @@ UNUSED_948606:
     BEQ +                                                                ;94866C;
     BPL ..returnNoCollision                                              ;94866E;
 
-  + CLC                                                                  ;948670;
++   CLC                                                                  ;948670;
     ADC.B $12                                                            ;948671;
     BPL +                                                                ;948673;
     LDA.W #$0000                                                         ;948675;
 
-  + STA.B $12                                                            ;948678;
++   STA.B $12                                                            ;948678;
     STZ.B $14                                                            ;94867A;
     SEC                                                                  ;94867C;
     RTS                                                                  ;94867D;
 
 
-..returnNoCollision:
+  ..returnNoCollision:
     CLC                                                                  ;94867E;
     RTS                                                                  ;94867F;
 
 
-.gotoSolidShootableGrapple:
+  .gotoSolidShootableGrapple:
     JMP.W SamusBlockCollisionReaction_Horizontal_SolidShootableGrapple   ;948680;
 
 
-.right:
+  .right:
     LDA.W $0DC4                                                          ;948683;
     STA.W $4204                                                          ;948686;
     SEP #$20                                                             ;948689;
@@ -1023,7 +1023,7 @@ UNUSED_948606:
     RTS                                                                  ;9486A0;
 
 
-..centerInBlock:
+  ..centerInBlock:
     LDA.B $18                                                            ;9486A1;
     CLC                                                                  ;9486A3;
     ADC.W $0AFE                                                          ;9486A4;
@@ -1046,11 +1046,11 @@ UNUSED_948606:
     BRA +                                                                ;9486CC;
 
 
-..blockBTSMSB:
+  ..blockBTSMSB:
     LDA.W $0AFA                                                          ;9486CE;
     EOR.W #$000F                                                         ;9486D1;
 
-  + AND.W #$000F                                                         ;9486D4;
++   AND.W #$000F                                                         ;9486D4;
     CLC                                                                  ;9486D7;
     ADC.W $0DD6                                                          ;9486D8;
     TAX                                                                  ;9486DB;
@@ -1062,23 +1062,23 @@ UNUSED_948606:
     BEQ +                                                                ;9486E7;
     BPL ..returnNoCollision                                              ;9486E9;
 
-  + CLC                                                                  ;9486EB;
++   CLC                                                                  ;9486EB;
     ADC.B $12                                                            ;9486EC;
     BPL +                                                                ;9486EE;
     LDA.W #$0000                                                         ;9486F0;
 
-  + STA.B $12                                                            ;9486F3;
++   STA.B $12                                                            ;9486F3;
     STZ.B $14                                                            ;9486F5;
     SEC                                                                  ;9486F7;
     RTS                                                                  ;9486F8;
 
 
-..returnNoCollision:
+  ..returnNoCollision:
     CLC                                                                  ;9486F9;
     RTS                                                                  ;9486FA;
 
 
-..gotoSolidShootableGrapple:
+  ..gotoSolidShootableGrapple:
     JMP.W SamusBlockCollisionReaction_Horizontal_SolidShootableGrapple   ;9486FB;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -1090,7 +1090,7 @@ SamusBlockCollisionReaction_Vertical_Slope_NonSquare:
     JMP.W .down                                                          ;948704;
 
 
-.up:
+  .up:
     LDA.W $0DC4                                                          ;948707;
     STA.W $4204                                                          ;94870A;
     SEP #$20                                                             ;94870D;
@@ -1108,7 +1108,7 @@ SamusBlockCollisionReaction_Vertical_Slope_NonSquare:
     RTS                                                                  ;948724;
 
 
-..centerInBlock:
+  ..centerInBlock:
     LDA.B $18                                                            ;948725;
     SEC                                                                  ;948727;
     SBC.W $0B00                                                          ;948728;
@@ -1130,11 +1130,11 @@ SamusBlockCollisionReaction_Vertical_Slope_NonSquare:
     BRA +                                                                ;94874E;
 
 
-..blockBTS40:
+  ..blockBTS40:
     LDA.W $0AF6                                                          ;948750;
     EOR.W #$000F                                                         ;948753;
 
-  + AND.W #$000F                                                         ;948756;
++   AND.W #$000F                                                         ;948756;
     CLC                                                                  ;948759;
     ADC.W $0DD6                                                          ;94875A;
     TAX                                                                  ;94875D;
@@ -1146,27 +1146,27 @@ SamusBlockCollisionReaction_Vertical_Slope_NonSquare:
     BEQ +                                                                ;948769;
     BPL ..returnNoCollision                                              ;94876B;
 
-  + CLC                                                                  ;94876D;
++   CLC                                                                  ;94876D;
     ADC.B $12                                                            ;94876E;
     BPL +                                                                ;948770;
     LDA.W #$0000                                                         ;948772;
 
-  + STA.B $12                                                            ;948775;
++   STA.B $12                                                            ;948775;
     STZ.B $14                                                            ;948777;
     SEC                                                                  ;948779;
     RTS                                                                  ;94877A;
 
 
-..returnNoCollision:
+  ..returnNoCollision:
     CLC                                                                  ;94877B;
     RTS                                                                  ;94877C;
 
 
-..gotoReturnNoCollision:
+  ..gotoReturnNoCollision:
     JMP.W ..returnNoCollision                                            ;94877D; >.<
 
 
-.down:
+  .down:
     LDA.W $0DC4                                                          ;948780;
     STA.W $4204                                                          ;948783;
     SEP #$20                                                             ;948786;
@@ -1184,7 +1184,7 @@ SamusBlockCollisionReaction_Vertical_Slope_NonSquare:
     RTS                                                                  ;94879D;
 
 
-..centerInBlock:
+  ..centerInBlock:
     LDA.B $18                                                            ;94879E;
     CLC                                                                  ;9487A0;
     ADC.W $0B00                                                          ;9487A1;
@@ -1206,11 +1206,11 @@ SamusBlockCollisionReaction_Vertical_Slope_NonSquare:
     BRA +                                                                ;9487C5;
 
 
-..blockBTS40:
+  ..blockBTS40:
     LDA.W $0AF6                                                          ;9487C7;
     EOR.W #$000F                                                         ;9487CA;
 
-  + AND.W #$000F                                                         ;9487CD;
++   AND.W #$000F                                                         ;9487CD;
     CLC                                                                  ;9487D0;
     ADC.W $0DD6                                                          ;9487D1;
     TAX                                                                  ;9487D4;
@@ -1222,18 +1222,18 @@ SamusBlockCollisionReaction_Vertical_Slope_NonSquare:
     BEQ +                                                                ;9487E0;
     BPL ..returnNoCollision                                              ;9487E2;
 
-  + CLC                                                                  ;9487E4;
++   CLC                                                                  ;9487E4;
     ADC.B $12                                                            ;9487E5;
     BPL +                                                                ;9487E7;
     LDA.W #$0000                                                         ;9487E9;
 
-  + STA.B $12                                                            ;9487EC;
++   STA.B $12                                                            ;9487EC;
     STZ.B $14                                                            ;9487EE;
     SEC                                                                  ;9487F0;
     RTS                                                                  ;9487F1;
 
 
-..returnNoCollision:
+  ..returnNoCollision:
     CLC                                                                  ;9487F2;
     RTS                                                                  ;9487F3;
 
@@ -1248,7 +1248,7 @@ Align_SamusYPosition_WithNonSquareSlope:
     JMP.W .return                                                        ;9487FF;
 
 
-.bottom:
+  .bottom:
     LDA.W $0AF6                                                          ;948802;
     STA.B $1A                                                            ;948805;
     LDA.W $0AFA                                                          ;948807;
@@ -1292,11 +1292,11 @@ Align_SamusYPosition_WithNonSquareSlope:
     BRA +                                                                ;948860;
 
 
-..blockBTS40:
+  ..blockBTS40:
     LDA.W $0AF6                                                          ;948862;
     EOR.W #$000F                                                         ;948865;
 
-  + AND.W #$000F                                                         ;948868;
++   AND.W #$000F                                                         ;948868;
     CLC                                                                  ;94886B;
     ADC.W $0DD6                                                          ;94886C;
     TAX                                                                  ;94886F;
@@ -1312,7 +1312,7 @@ Align_SamusYPosition_WithNonSquareSlope:
     LDA.W #$0001                                                         ;948884;
     STA.W $0DBA                                                          ;948887;
 
-.SamusTopCheck:
+  .SamusTopCheck:
     LDA.W $0AF6                                                          ;94888A;
     STA.B $1A                                                            ;94888D;
     LDA.W $0AFA                                                          ;94888F;
@@ -1355,11 +1355,11 @@ Align_SamusYPosition_WithNonSquareSlope:
     BRA +                                                                ;9488E9;
 
 
-..blockBTS40:
+  ..blockBTS40:
     LDA.W $0AF6                                                          ;9488EB;
     EOR.W #$000F                                                         ;9488EE;
 
-  + AND.W #$000F                                                         ;9488F1;
++   AND.W #$000F                                                         ;9488F1;
     CLC                                                                  ;9488F4;
     ADC.W $0DD6                                                          ;9488F5;
     TAX                                                                  ;9488F8;
@@ -1371,7 +1371,7 @@ Align_SamusYPosition_WithNonSquareSlope:
     BEQ +                                                                ;948904;
     BPL .return                                                          ;948906;
 
-  + EOR.W #$FFFF                                                         ;948908;
++   EOR.W #$FFFF                                                         ;948908;
     INC A                                                                ;94890B;
     CLC                                                                  ;94890C;
     ADC.W $0AFA                                                          ;94890D;
@@ -1379,7 +1379,7 @@ Align_SamusYPosition_WithNonSquareSlope:
     LDA.W #$0001                                                         ;948913;
     STA.W $0DBA                                                          ;948916;
 
-.return:
+  .return:
     PLB                                                                  ;948919;
     RTL                                                                  ;94891A;
 
@@ -1492,7 +1492,7 @@ SamusBlockCollisionReaction_Horizontal_Slope_Square:
     BRA .returnNoCollision                                               ;948D62;
 
 
-.top:
+  .top:
     CMP.B $1C                                                            ;948D64;
     BNE .checkBothHalves                                                 ;948D66;
     LDA.W $0AFA                                                          ;948D68;
@@ -1501,23 +1501,23 @@ SamusBlockCollisionReaction_Horizontal_Slope_Square:
     AND.W #$0008                                                         ;948D6F;
     BNE .checkBottomHalf                                                 ;948D72;
 
-.checkBothHalves:
+  .checkBothHalves:
     LDA.W SquareSlopeDefinitions_Bank94-1,X                              ;948D74;
     BMI .solid                                                           ;948D77;
 
-.checkBottomHalf:
+  .checkBottomHalf:
     TXA                                                                  ;948D79;
     EOR.W #$0002                                                         ;948D7A;
     TAX                                                                  ;948D7D;
     LDA.W SquareSlopeDefinitions_Bank94-1,X                              ;948D7E;
     BMI .solid                                                           ;948D81;
 
-.returnNoCollision:
+  .returnNoCollision:
     CLC                                                                  ;948D83;
     RTS                                                                  ;948D84;
 
 
-.solid:
+  .solid:
     STZ.B $14                                                            ;948D85;
     LDA.B $20                                                            ;948D87;
     BIT.B $12                                                            ;948D89;
@@ -1529,7 +1529,7 @@ SamusBlockCollisionReaction_Horizontal_Slope_Square:
     BPL .notMinimum                                                      ;948D97;
     LDA.W #$0000                                                         ;948D99;
 
-.notMinimum:
+  .notMinimum:
     STA.B $12                                                            ;948D9C;
     LDA.W #$FFFF                                                         ;948D9E;
     STA.W $0AF8                                                          ;948DA1;
@@ -1537,7 +1537,7 @@ SamusBlockCollisionReaction_Horizontal_Slope_Square:
     RTS                                                                  ;948DA5;
 
 
-.negative12:
+  .negative12:
     ORA.W #$0007                                                         ;948DA6;
     SEC                                                                  ;948DA9;
     ADC.W $0AFE                                                          ;948DAA;
@@ -1546,7 +1546,7 @@ SamusBlockCollisionReaction_Horizontal_Slope_Square:
     BMI .notMin                                                          ;948DB1;
     LDA.W #$0000                                                         ;948DB3;
 
-.notMin:
+  .notMin:
     STA.B $12                                                            ;948DB6;
     STZ.W $0AF8                                                          ;948DB8;
     SEC                                                                  ;948DBB;
@@ -1583,7 +1583,7 @@ SamusBlockCollisionReaction_Vertical_Slope_Square:
     BRA .returnNoCollision                                               ;948DF3;
 
 
-.checkLeft:
+  .checkLeft:
     CMP.B $1C                                                            ;948DF5;
     BNE .checkBothHalves                                                 ;948DF7;
     LDA.W $0AF6                                                          ;948DF9;
@@ -1592,23 +1592,23 @@ SamusBlockCollisionReaction_Vertical_Slope_Square:
     AND.W #$0008                                                         ;948E00;
     BNE .checkRightHalf                                                  ;948E03;
 
-.checkBothHalves:
+  .checkBothHalves:
     LDA.W SquareSlopeDefinitions_Bank94-1,X                              ;948E05;
     BMI .solid                                                           ;948E08;
 
-.checkRightHalf:
+  .checkRightHalf:
     TXA                                                                  ;948E0A;
     EOR.W #$0001                                                         ;948E0B;
     TAX                                                                  ;948E0E;
     LDA.W SquareSlopeDefinitions_Bank94-1,X                              ;948E0F;
     BMI .solid                                                           ;948E12;
 
-.returnNoCollision:
+  .returnNoCollision:
     CLC                                                                  ;948E14;
     RTS                                                                  ;948E15;
 
 
-.solid:
+  .solid:
     STZ.B $14                                                            ;948E16;
     LDA.B $20                                                            ;948E18;
     BIT.B $12                                                            ;948E1A;
@@ -1620,7 +1620,7 @@ SamusBlockCollisionReaction_Vertical_Slope_Square:
     BPL .notMin                                                          ;948E28;
     LDA.W #$0000                                                         ;948E2A;
 
-.notMin:
+  .notMin:
     STA.B $12                                                            ;948E2D;
     LDA.W #$FFFF                                                         ;948E2F;
     STA.W $0AFC                                                          ;948E32;
@@ -1630,7 +1630,7 @@ SamusBlockCollisionReaction_Vertical_Slope_Square:
     RTS                                                                  ;948E3C;
 
 
-.negative12:
+  .negative12:
     ORA.W #$0007                                                         ;948E3D;
     SEC                                                                  ;948E40;
     ADC.W $0B00                                                          ;948E41;
@@ -1639,7 +1639,7 @@ SamusBlockCollisionReaction_Vertical_Slope_Square:
     BMI .notMinimum                                                      ;948E48;
     LDA.W #$0000                                                         ;948E4A;
 
-.notMinimum:
+  .notMinimum:
     STA.B $12                                                            ;948E4D;
     STZ.W $0AFC                                                          ;948E4F;
     SEC                                                                  ;948E52;
@@ -1673,7 +1673,7 @@ UNUSED_DetermineSamusSuitPaletteIndex_948E68:
     DEY                                                                  ;948E7A;
     DEY                                                                  ;948E7B;
 
-.return:
+  .return:
     RTS                                                                  ;948E7C;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -1701,7 +1701,7 @@ SamusBlockCollisionReaction_SpikeBlock_BTS0_GenericSpike:
     JSL.L CheckIfBossBitsForCurrentAreaMatchAnyBitsInA                   ;948E8E;
     BCC .return                                                          ;948E92;
 
-.notWreckedShip:
+  .notWreckedShip:
     LDA.W $18A8                                                          ;948E94;
     BNE .return                                                          ;948E97;
     LDA.W #$003C                                                         ;948E99;
@@ -1724,10 +1724,10 @@ SamusBlockCollisionReaction_SpikeBlock_BTS0_GenericSpike:
     BRA .return                                                          ;948EC9;
 
 
-.left:
+  .left:
     STZ.W $0A54                                                          ;948ECB;
 
-.return:
+  .return:
     RTS                                                                  ;948ECE;
 
 
@@ -1754,10 +1754,10 @@ SamusBlockCollisionReaction_SpikeBlock_BTS1_KraidsLairSpike:
     BRA .return                                                          ;948F04;
 
 
-.left:
+  .left:
     STZ.W $0A54                                                          ;948F06;
 
-.return:
+  .return:
     RTS                                                                  ;948F09;
 
 
@@ -1784,10 +1784,10 @@ SamusBlockCollisionReact_SpikeBlock_BTS3_DraygonBrokenTurret:
     BRA .return                                                          ;948F3F;
 
 
-.left:
+  .left:
     STZ.W $0A54                                                          ;948F41;
 
-.return:
+  .return:
     RTS                                                                  ;948F44;
 
 
@@ -1814,7 +1814,7 @@ SamusBlockCollisionReaction_Horizontal_SolidShootableGrapple:
     BPL .leftNotMin                                                      ;948F5C;
     LDA.W #$0000                                                         ;948F5E;
 
-.leftNotMin:
+  .leftNotMin:
     STA.B $12                                                            ;948F61;
     LDA.W #$FFFF                                                         ;948F63;
     STA.W $0AF8                                                          ;948F66;
@@ -1822,7 +1822,7 @@ SamusBlockCollisionReaction_Horizontal_SolidShootableGrapple:
     RTS                                                                  ;948F6A;
 
 
-.negative12:
+  .negative12:
     ORA.W #$000F                                                         ;948F6B;
     SEC                                                                  ;948F6E;
     ADC.W $0AFE                                                          ;948F6F;
@@ -1831,7 +1831,7 @@ SamusBlockCollisionReaction_Horizontal_SolidShootableGrapple:
     BMI .rightNotMin                                                     ;948F76;
     LDA.W #$0000                                                         ;948F78;
 
-.rightNotMin:
+  .rightNotMin:
     STA.B $12                                                            ;948F7B;
     STZ.W $0AF8                                                          ;948F7D;
     SEC                                                                  ;948F80;
@@ -1851,7 +1851,7 @@ SamusBlockCollisionReaction_Vertical_SolidShootableGrapple:
     BPL .bottomNotMin                                                    ;948F95;
     LDA.W #$0000                                                         ;948F97;
 
-.bottomNotMin:
+  .bottomNotMin:
     STA.B $12                                                            ;948F9A;
     LDA.W #$FFFF                                                         ;948F9C;
     STA.W $0AFC                                                          ;948F9F;
@@ -1859,7 +1859,7 @@ SamusBlockCollisionReaction_Vertical_SolidShootableGrapple:
     RTS                                                                  ;948FA3;
 
 
-.negative12:
+  .negative12:
     ORA.W #$000F                                                         ;948FA4;
     SEC                                                                  ;948FA7;
     ADC.W $0B00                                                          ;948FA8;
@@ -1868,7 +1868,7 @@ SamusBlockCollisionReaction_Vertical_SolidShootableGrapple:
     BMI .topNotMin                                                       ;948FAF;
     LDA.W #$0000                                                         ;948FB1;
 
-.topNotMin:
+  .topNotMin:
     STA.B $12                                                            ;948FB4;
     STZ.W $0AFC                                                          ;948FB6;
     SEC                                                                  ;948FB9;
@@ -1887,7 +1887,7 @@ SamusBlockCollisionReaction_Horizontal_Slope:
     JMP.W SamusBlockCollisionDetection_Horizontal_Slope_NonSquare        ;948FD4;
 
 
-.gotoSquare:
+  .gotoSquare:
     JMP.W SamusBlockCollisionReaction_Horizontal_Slope_Square            ;948FD7;
 
 
@@ -1902,7 +1902,7 @@ SamusBlockCollisionReaction_Vertical_Slope:
     JMP.W SamusBlockCollisionReaction_Vertical_Slope_NonSquare           ;948FF0;
 
 
-.gotoSquare:
+  .gotoSquare:
     JMP.W SamusBlockCollisionReaction_Vertical_Slope_Square              ;948FF3;
 
 
@@ -1994,7 +1994,7 @@ SamusBlockCollisionReaction_Horizontal_SpecialAir:
     RTS                                                                  ;949086;
 
 
-.blockBTSMSB:
+  .blockBTSMSB:
     AND.W #$007F                                                         ;949087;
     ASL A                                                                ;94908A;
     TAY                                                                  ;94908B;
@@ -2022,7 +2022,7 @@ SamusBlockCollisionReaction_Vertical_SpecialAir:
     RTS                                                                  ;9490B4;
 
 
-.blockBTSMSB:
+  .blockBTSMSB:
     AND.W #$007F                                                         ;9490B5;
     ASL A                                                                ;9490B8;
     TAY                                                                  ;9490B9;
@@ -2050,11 +2050,11 @@ SamusBlockCollisionReaction_Horizontal_SpecialBlock:
     JMP.W SamusBlockCollisionReaction_Horizontal_SolidShootableGrapple   ;9490E3;
 
 
-.return:
+  .return:
     RTS                                                                  ;9490E6;
 
 
-.areaDependent:
+  .areaDependent:
     AND.W #$007F                                                         ;9490E7;
     ASL A                                                                ;9490EA;
     TAY                                                                  ;9490EB;
@@ -2069,7 +2069,7 @@ SamusBlockCollisionReaction_Horizontal_SpecialBlock:
     JMP.W SamusBlockCollisionReaction_Horizontal_SolidShootableGrapple   ;9490FE;
 
 
-..return:
+  ..return:
     RTS                                                                  ;949101;
 
 
@@ -2087,11 +2087,11 @@ SamusBlockCollisionReaction_Vertical_SpecialBlock:
     JMP.W SamusBlockCollisionReaction_Vertical_SolidShootableGrapple     ;94911A;
 
 
-.return:
+  .return:
     RTS                                                                  ;94911D;
 
 
-.areaDependent:
+  .areaDependent:
     AND.W #$007F                                                         ;94911E;
     ASL A                                                                ;949121;
     TAY                                                                  ;949122;
@@ -2106,7 +2106,7 @@ SamusBlockCollisionReaction_Vertical_SpecialBlock:
     JMP.W SamusBlockCollisionReaction_Vertical_SolidShootableGrapple     ;949135;
 
 
-..return:
+  ..return:
     RTS                                                                  ;949138;
 
 
@@ -2372,7 +2372,7 @@ SamusBlockCollisionReaction_Horizontal_BombableAir:
     RTS                                                                  ;949310;
 
 
-.returnNoCollision:
+  .returnNoCollision:
     CLC                                                                  ;949311;
     RTS                                                                  ;949312;
 
@@ -2391,7 +2391,7 @@ SamusBlockCollisionReaction_Vertical_BombableAir:
     RTS                                                                  ;94932A;
 
 
-.returnNoCollision:
+  .returnNoCollision:
     CLC                                                                  ;94932B;
     RTS                                                                  ;94932C;
 
@@ -2410,11 +2410,11 @@ SamusBlockCollisionReaction_Horizontal_BombBlock:
     JMP.W SamusBlockCollisionReaction_Horizontal_SolidShootableGrapple   ;949345;
 
 
-.gotoSolidShootableGrapple:
+  .gotoSolidShootableGrapple:
     JMP.W SamusBlockCollisionReaction_Horizontal_SolidShootableGrapple   ;949348;
 
 
-.return:
+  .return:
     RTS                                                                  ;94934B;
 
 
@@ -2432,11 +2432,11 @@ SamusBlockCollisionReaction_Vertical_BombBlock:
     JMP.W SamusBlockCollisionReaction_Vertical_SolidShootableGrapple     ;949364;
 
 
-.gotoSolidShootableGrapple:
+  .gotoSolidShootableGrapple:
     JMP.W SamusBlockCollisionReaction_Vertical_SolidShootableGrapple     ;949367;
 
 
-.return:
+  .return:
     RTS                                                                  ;94936A;
 
 
@@ -2481,14 +2481,14 @@ SamusBlockCollisionReaction_Horizontal_Door:
     RTS                                                                  ;9493BC;
 
 
-.notAPointer:
+  .notAPointer:
     LDA.W $0A1C                                                          ;9493BD;
     CMP.W #$0009                                                         ;9493C0;
     BCS .gotoSolidShootableGrapple                                       ;9493C3;
     LDA.W #$0001                                                         ;9493C5;
     STA.W $0E16                                                          ;9493C8;
 
-.gotoSolidShootableGrapple:
+  .gotoSolidShootableGrapple:
     JMP.W SamusBlockCollisionReaction_Horizontal_SolidShootableGrapple   ;9493CB;
 
 
@@ -2515,14 +2515,14 @@ SamusBlockCollisionReaction_Vertical_Door:
     RTS                                                                  ;9493FF;
 
 
-.notAPointer:
+  .notAPointer:
     LDA.W $0A1C                                                          ;949400;
     CMP.W #$0009                                                         ;949403;
     BCS .gotoSolidShootableGrapple                                       ;949406;
     LDA.W #$0001                                                         ;949408;
     STA.W $0E16                                                          ;94940B;
 
-.gotoSolidShootableGrapple:
+  .gotoSolidShootableGrapple:
     JMP.W SamusBlockCollisionReaction_Vertical_SolidShootableGrapple     ;94940E;
 
 
@@ -2537,10 +2537,10 @@ BlockShotBombedGrappledCollisionInsideReaction_HorizontalExt:
     BRA +                                                                ;949425;
 
 
-.highByte:
+  .highByte:
     ORA.W #$FF00                                                         ;949427;
 
-  + CLC                                                                  ;94942A;
++   CLC                                                                  ;94942A;
     ADC.W $0DC4                                                          ;94942B;
     STA.W $0DC4                                                          ;94942E;
     ASL A                                                                ;949431;
@@ -2557,7 +2557,7 @@ BlockShotBombedGrappledCollisionInsideReaction_HorizontalExt:
     SBC.W #$0003                                                         ;949441;
     PHA                                                                  ;949444;
 
-.returnNoCollision:
+  .returnNoCollision:
     CLC                                                                  ;949445;
     RTS                                                                  ;949446;
 
@@ -2572,7 +2572,7 @@ BlockShotBombedGrappledCollisionInsideReaction_VerticalExt:
     STA.W $0DD4                                                          ;949458;
     LDA.W $0DC4                                                          ;94945B;
 
-.loopUpper:
+  .loopUpper:
     CLC                                                                  ;94945E;
     ADC.W $07A5                                                          ;94945F;
     DEC.W $0DD4                                                          ;949462;
@@ -2580,18 +2580,18 @@ BlockShotBombedGrappledCollisionInsideReaction_VerticalExt:
     JMP.W +                                                              ;949467;
 
 
-.highByte:
+  .highByte:
     ORA.W #$FF00                                                         ;94946A;
     STA.W $0DD4                                                          ;94946D;
     LDA.W $0DC4                                                          ;949470;
 
-.loopLower:
+  .loopLower:
     SEC                                                                  ;949473;
     SBC.W $07A5                                                          ;949474;
     INC.W $0DD4                                                          ;949477;
     BNE .loopLower                                                       ;94947A;
 
-  + STA.W $0DC4                                                          ;94947C;
++   STA.W $0DC4                                                          ;94947C;
     ASL A                                                                ;94947F;
     TAX                                                                  ;949480;
     LDA.L $7F0002,X                                                      ;949481;
@@ -2606,7 +2606,7 @@ BlockShotBombedGrappledCollisionInsideReaction_VerticalExt:
     SBC.W #$0003                                                         ;94948F;
     PHA                                                                  ;949492;
 
-.returnNoCollision:
+  .returnNoCollision:
     CLC                                                                  ;949493;
     RTS                                                                  ;949494;
 
@@ -2751,12 +2751,12 @@ SamusBlockCollisionDetection_Horizontal:
     BRA +                                                                ;949575;
 
 
-.movingRight:
+  .movingRight:
     CLC                                                                  ;949577;
     ADC.W $0AFE                                                          ;949578;
     DEC A                                                                ;94957B;
 
-  + STA.B $20                                                            ;94957C;
++   STA.B $20                                                            ;94957C;
     LSR A                                                                ;94957E;
     LSR A                                                                ;94957F;
     LSR A                                                                ;949580;
@@ -2766,7 +2766,7 @@ SamusBlockCollisionDetection_Horizontal:
     ASL A                                                                ;949586;
     TAX                                                                  ;949587;
 
-.loop:
+  .loop:
     JSR.W SamusBlockCollisionReaction_Horizontal                         ;949588;
     BCS .returnCollision                                                 ;94958B;
     TXA                                                                  ;94958D;
@@ -2780,7 +2780,7 @@ SamusBlockCollisionDetection_Horizontal:
     RTS                                                                  ;94959B;
 
 
-.returnCollision:
+  .returnCollision:
     SEC                                                                  ;94959C;
     RTS                                                                  ;94959D;
 
@@ -2801,12 +2801,12 @@ SamusBlockCollisionDetection_Vertical_LeftToRight:
     BRA +                                                                ;9495B8;
 
 
-.movingDown:
+  .movingDown:
     CLC                                                                  ;9495BA;
     ADC.W $0B00                                                          ;9495BB;
     DEC A                                                                ;9495BE;
 
-  + STA.B $20                                                            ;9495BF;
++   STA.B $20                                                            ;9495BF;
     LSR A                                                                ;9495C1;
     LSR A                                                                ;9495C2;
     LSR A                                                                ;9495C3;
@@ -2829,7 +2829,7 @@ SamusBlockCollisionDetection_Vertical_LeftToRight:
     ASL A                                                                ;9495E4;
     TAX                                                                  ;9495E5;
 
-.loop:
+  .loop:
     JSR.W SamusBlockCollisionReaction_Vertical                           ;9495E6;
     BCS .returnCollision                                                 ;9495E9;
     INX                                                                  ;9495EB;
@@ -2840,7 +2840,7 @@ SamusBlockCollisionDetection_Vertical_LeftToRight:
     RTS                                                                  ;9495F2;
 
 
-.returnCollision:
+  .returnCollision:
     SEC                                                                  ;9495F3;
     RTS                                                                  ;9495F4;
 
@@ -2862,12 +2862,12 @@ SamusBlockCollisionDetection_Vertical_RightToLeft:
     BRA +                                                                ;949611;
 
 
-.movingDown:
+  .movingDown:
     CLC                                                                  ;949613;
     ADC.W $0B00                                                          ;949614;
     DEC A                                                                ;949617;
 
-  + STA.B $20                                                            ;949618;
++   STA.B $20                                                            ;949618;
     LSR A                                                                ;94961A;
     LSR A                                                                ;94961B;
     LSR A                                                                ;94961C;
@@ -2891,7 +2891,7 @@ SamusBlockCollisionDetection_Vertical_RightToLeft:
     ASL A                                                                ;94963E;
     TAX                                                                  ;94963F;
 
-.loop:
+  .loop:
     JSR.W SamusBlockCollisionReaction_Vertical                           ;949640;
     BCS .returnCollision                                                 ;949643;
     DEX                                                                  ;949645;
@@ -2904,7 +2904,7 @@ SamusBlockCollisionDetection_Vertical_RightToLeft:
     RTS                                                                  ;949650;
 
 
-.returnCollision:
+  .returnCollision:
     SEC                                                                  ;949651;
     RTS                                                                  ;949652;
 
@@ -2921,7 +2921,7 @@ Get_12_14_949653:
     BNE .return                                                          ;949664;
     INC.B $12                                                            ;949666;
 
-.return:
+  .return:
     RTS                                                                  ;949668;
 
 
@@ -2937,7 +2937,7 @@ Get_12_14_949669:
     BNE .return                                                          ;94967A;
     INC.B $12                                                            ;94967C;
 
-.return:
+  .return:
     RTS                                                                  ;94967E;
 
 
@@ -2961,7 +2961,7 @@ WallJumpBlockCollisionDetection:
     RTL                                                                  ;9496A0;
 
 
-.noCollision:
+  .noCollision:
     JSR.W Get_12_14_949653                                               ;9496A1;
     PLB                                                                  ;9496A4;
     PLP                                                                  ;9496A5;
@@ -2976,14 +2976,14 @@ BlockCollisionDetectionDueToChangeOfPose:
     EOR.W #$FFFF                                                         ;9496AF;
     INC A                                                                ;9496B2;
 
-.positive:
+  .positive:
     AND.W #$FFF8                                                         ;9496B3;
     BNE +                                                                ;9496B6;
     JSL.L BlockCollisionDetectionDueToChangeOfPose_SingleBlock           ;9496B8;
     RTL                                                                  ;9496BC;
 
 
-  + LDA.B $12                                                            ;9496BD;
++   LDA.B $12                                                            ;9496BD;
     PHA                                                                  ;9496BF;
     LDA.B $14                                                            ;9496C0;
     PHA                                                                  ;9496C2;
@@ -2999,7 +2999,7 @@ BlockCollisionDetectionDueToChangeOfPose:
     RTL                                                                  ;9496D7;
 
 
-.noCollision:
+  .noCollision:
     PLA                                                                  ;9496D8;
     STA.B $14                                                            ;9496D9;
     PLA                                                                  ;9496DB;
@@ -3025,11 +3025,11 @@ BlockCollisionDetectionDueToChangeOfPose_SingleBlock:
     BCC .noCollision                                                     ;9496FE;
     BCS .collision                                                       ;949700;
 
-.nonZeroFrameCounter:
+  .nonZeroFrameCounter:
     JSR.W SamusBlockCollisionDetection_Vertical_RightToLeft              ;949702;
     BCC .noCollision                                                     ;949705;
 
-.collision:
+  .collision:
     JSR.W Get_12_14_949669                                               ;949707;
     PLB                                                                  ;94970A;
     PLP                                                                  ;94970B;
@@ -3039,7 +3039,7 @@ BlockCollisionDetectionDueToChangeOfPose_SingleBlock:
     RTL                                                                  ;949713;
 
 
-.noCollision:
+  .noCollision:
     JSR.W Get_12_14_949669                                               ;949714;
     PLB                                                                  ;949717;
     PLP                                                                  ;949718;
@@ -3074,7 +3074,7 @@ MoveSamusRight_NoSolidEnemyCollision:
     RTL                                                                  ;94974A;
 
 
-.noCollision:
+  .noCollision:
     LDA.W $0AF8                                                          ;94974B;
     CLC                                                                  ;94974E;
     ADC.B $14                                                            ;94974F;
@@ -3107,11 +3107,11 @@ MoveSamusDown_NoSolidEnemyCollision:
     BCC .noCollision                                                     ;94977E;
     BCS .moveVertically                                                  ;949780;
 
-.nonZeroFrameCounter:
+  .nonZeroFrameCounter:
     JSR.W SamusBlockCollisionDetection_Vertical_RightToLeft              ;949782;
     BCC .noCollision                                                     ;949785;
 
-.moveVertically:
+  .moveVertically:
     LDA.W $0AFC                                                          ;949787;
     CLC                                                                  ;94978A;
     ADC.B $14                                                            ;94978B;
@@ -3120,7 +3120,7 @@ MoveSamusDown_NoSolidEnemyCollision:
     ADC.B $12                                                            ;949793;
     STA.W $0AFA                                                          ;949795;
 
-.collision:
+  .collision:
     PLB                                                                  ;949798;
     PLP                                                                  ;949799;
     SEC                                                                  ;94979A;
@@ -3129,7 +3129,7 @@ MoveSamusDown_NoSolidEnemyCollision:
     RTL                                                                  ;9497A1;
 
 
-.noCollision:
+  .noCollision:
     LDA.W $0AFC                                                          ;9497A2;
     CLC                                                                  ;9497A5;
     ADC.B $14                                                            ;9497A6;
@@ -3155,7 +3155,7 @@ BlockInsideReaction_Slope:
     RTS                                                                  ;9497CE;
 
 
-.returnDuplicate:
+  .returnDuplicate:
     RTS                                                                  ;9497CF;
 
 
@@ -3198,7 +3198,7 @@ UNUSED_SomeKindOfUpwardsBoost_9497F2:
     RTS                                                                  ;949807;
 
 
-.down:
+  .down:
     STZ.W $0B2E                                                          ;949808;
     STZ.W $0B2C                                                          ;94980B;
     CLC                                                                  ;94980E;
@@ -3237,7 +3237,7 @@ CLCRTS_949812:
     RTS                                                                  ;949848;
 
 
-.down:
+  .down:
     STZ.W $0B2E                                                          ;949849;
     STZ.W $0B2C                                                          ;94984C;
     LDA.W .data3,Y                                                       ;94984F;
@@ -3286,10 +3286,10 @@ BlockInsideReaction_SpikeAir_BTS2_AirSpike:
     BRA .return                                                          ;9498A0;
 
 
-.facingRight:
+  .facingRight:
     STZ.W $0A54                                                          ;9498A2;
 
-.return:
+  .return:
     LDA.W #SamusXSpeedTable_Normal                                       ;9498A5;
     STA.W $0A6C                                                          ;9498A8;
     RTS                                                                  ;9498AB;
@@ -3343,14 +3343,14 @@ BlockInsideReaction_SpecialAir_BTS8_WSTreadmill_Right:
     JSL.L CheckIfBossBitsForCurrentAreaMatchAnyBitsInA                   ;9498F5;
     BCC .return                                                          ;9498F9;
 
-.notWreckedShip:
+  .notWreckedShip:
     LDA.W $0B2E                                                          ;9498FB;
     BNE .return                                                          ;9498FE;
     STZ.W $0B56                                                          ;949900;
     LDA.W #$0002                                                         ;949903;
     STA.W $0B58                                                          ;949906;
 
-.return:
+  .return:
     LDA.W #SamusXSpeedTable_Normal                                       ;949909;
     STA.W $0A6C                                                          ;94990C;
     RTS                                                                  ;94990F;
@@ -3364,14 +3364,14 @@ BlockInsideReaction_SpecialAir_BTS9_WSTreadmill_Left:
     JSL.L CheckIfBossBitsForCurrentAreaMatchAnyBitsInA                   ;94991B;
     BCC .return                                                          ;94991F;
 
-.notWreckedShip:
+  .notWreckedShip:
     LDA.W $0B2E                                                          ;949921;
     BNE .return                                                          ;949924;
     STZ.W $0B56                                                          ;949926;
     LDA.W #$FFFE                                                         ;949929;
     STA.W $0B58                                                          ;94992C;
 
-.return:
+  .return:
     LDA.W #SamusXSpeedTable_Normal                                       ;94992F;
     STA.W $0A6C                                                          ;949932;
     RTS                                                                  ;949935;
@@ -3402,7 +3402,7 @@ BlockInsideReaction_SpecialAir_BTS46_ScrollPLMTrigger:
     LDA.W #PLMEntries_scrollPLMTrigger                                   ;94995E;
     JSL.L Spawn_PLM_to_CurrentBlockIndex                                 ;949961;
 
-.return:
+  .return:
     RTS                                                                  ;949965;
 
 
@@ -3655,7 +3655,7 @@ BlockInsideReaction_SpecialAir:
     RTS                                                                  ;949B28;
 
 
-.negativeBTS:
+  .negativeBTS:
     XBA                                                                  ;949B29;
     AND.W #$007F                                                         ;949B2A;
     ASL A                                                                ;949B2D;
@@ -3743,7 +3743,7 @@ SamusBlockInsideHandling:
     TAX                                                                  ;949BD2;
     JSR.W (BlockInsideReactionPointers,X)                                ;949BD3;
 
-.top:
+  .top:
     LDA.W #$0002                                                         ;949BD6;
     STA.W $1E73                                                          ;949BD9;
     LDA.W $0AFA                                                          ;949BDC;
@@ -3775,7 +3775,7 @@ SamusBlockInsideHandling:
     TAX                                                                  ;949C17;
     JSR.W (BlockInsideReactionPointers,X)                                ;949C18;
 
-.return:
+  .return:
     PLB                                                                  ;949C1B;
     RTL                                                                  ;949C1C;
 
@@ -3819,18 +3819,18 @@ CalculateBlockAt_12_1E_1C_20:
     REP #$20                                                             ;949C5D;
     LDA.W $4216                                                          ;949C5F;
 
-.zeroIndex:
+  .zeroIndex:
     CLC                                                                  ;949C62;
     ADC.W $0DD4                                                          ;949C63;
     STA.W $0DC4                                                          ;949C66;
     BRA .return                                                          ;949C69;
 
 
-.giveUp:
+  .giveUp:
     LDA.W #$FFFF                                                         ;949C6B;
     STA.W $0DC4                                                          ;949C6E;
 
-.return:
+  .return:
     PLP                                                                  ;949C71;
     RTS                                                                  ;949C72;
 
@@ -3859,7 +3859,7 @@ DetermineProjectile_Prototype:
     BRA .return                                                          ;949C9A;
 
 
-.notBeam:
+  .notBeam:
     ASL A                                                                ;949C9C;
     INC A                                                                ;949C9D;
     TAX                                                                  ;949C9E;
@@ -3867,7 +3867,7 @@ DetermineProjectile_Prototype:
     AND.W #$00FF                                                         ;949CA2;
     STA.W $0DD2                                                          ;949CA5;
 
-.return:
+  .return:
     PLX                                                                  ;949CA8;
     PLB                                                                  ;949CA9;
     PLP                                                                  ;949CAA;
@@ -3908,10 +3908,10 @@ BombAndPowerBombExplosionBlockCollisionHandling:
     BRA .return                                                          ;949CEC;
 
 
-.bomb:
+  .bomb:
     JSR.W BombExplosionBlockCollisionHandling                            ;949CEE;
 
-.return:
+  .return:
     PLB                                                                  ;949CF1;
     PLP                                                                  ;949CF2;
     RTL                                                                  ;949CF3;
@@ -3942,7 +3942,7 @@ BombExplosionBlockCollisionHandling:
     JSR.W MoveBlockIndexX_OneRowDown_OneColumRight_duplicate             ;949D2C;
     JSR.W BlockBombedReaction                                            ;949D2F;
 
-.return:
+  .return:
     RTS                                                                  ;949D32;
 
 
@@ -4006,7 +4006,7 @@ BombSpreadBlockReaction_Slope:
     JMP.W BlockShotReaction_Horizontal_Slope_NonSquare                   ;949D6C;
 
 
-.returnCollision:
+  .returnCollision:
     SEC                                                                  ;949D6F;
     RTS                                                                  ;949D70;
 
@@ -4026,7 +4026,7 @@ BlockBombedReaction_SpecialBlock:
     RTS                                                                  ;949D8A;
 
 
-.areaDependent:
+  .areaDependent:
     AND.W #$007F                                                         ;949D8B;
     ASL A                                                                ;949D8E;
     TAY                                                                  ;949D8F;
@@ -4169,7 +4169,7 @@ BlockBombShotGrappledReaction_ShootableAir:
     RTS                                                                  ;949E6E;
 
 
-.returnDuplicate:
+  .returnDuplicate:
     REP #$40                                                             ;949E6F;
     CLC                                                                  ;949E71; >.<
     RTS                                                                  ;949E72;
@@ -4190,7 +4190,7 @@ BlockBombShotGrappledReaction_ShootableBlock:
     RTS                                                                  ;949E8C;
 
 
-.areaDependent:
+  .areaDependent:
     AND.W #$007F                                                         ;949E8D;
     ASL A                                                                ;949E90;
     TAY                                                                  ;949E91;
@@ -4393,7 +4393,7 @@ BlockShotBombedGrappledReaction_BombableAir:
     RTS                                                                  ;949FEF;
 
 
-.returnDuplicate:
+  .returnDuplicate:
     REP #$40                                                             ;949FF0;
     CLC                                                                  ;949FF2; >.<
     RTS                                                                  ;949FF3;
@@ -4414,7 +4414,7 @@ BlockShotBombedGrappledReaction_BombableBlock:
     RTS                                                                  ;94A00D;
 
 
-.returnDuplicate:
+  .returnDuplicate:
     REP #$40                                                             ;94A00E;
     SEC                                                                  ;94A010;
     RTS                                                                  ;94A011;
@@ -4478,11 +4478,11 @@ PowerBombExplosionBlockCollisionHandling:
     BPL .return                                                          ;94A06F;
     STZ.W $0C7C,X                                                        ;94A071;
 
-.return:
+  .return:
     RTS                                                                  ;94A074;
 
 
-.zero:
+  .zero:
     LDA.W $0CEB                                                          ;94A075;
     AND.W #$00FF                                                         ;94A078;
     STA.B $12                                                            ;94A07B;
@@ -4497,7 +4497,7 @@ PowerBombExplosionBlockCollisionHandling:
     BPL .set16                                                           ;94A08A;
     LDA.W #$0000                                                         ;94A08C;
 
-.set16:
+  .set16:
     LSR A                                                                ;94A08F;
     LSR A                                                                ;94A090;
     LSR A                                                                ;94A091;
@@ -4515,7 +4515,7 @@ PowerBombExplosionBlockCollisionHandling:
     LDA.W $07A5                                                          ;94A0A4;
     DEC A                                                                ;94A0A7;
 
-.set18:
+  .set18:
     STA.B $18                                                            ;94A0A8;
     LDA.W $0CE4                                                          ;94A0AA;
     SEC                                                                  ;94A0AD;
@@ -4523,7 +4523,7 @@ PowerBombExplosionBlockCollisionHandling:
     BPL .set1A                                                           ;94A0B0;
     LDA.W #$0000                                                         ;94A0B2;
 
-.set1A:
+  .set1A:
     LSR A                                                                ;94A0B5;
     LSR A                                                                ;94A0B6;
     LSR A                                                                ;94A0B7;
@@ -4541,7 +4541,7 @@ PowerBombExplosionBlockCollisionHandling:
     LDA.W $07A7                                                          ;94A0CA;
     DEC A                                                                ;94A0CD;
 
-.set1C:
+  .set1C:
     STA.B $1C                                                            ;94A0CE;
     LDA.B $15                                                            ;94A0D0;
     AND.W #$FF00                                                         ;94A0D2;
@@ -4577,7 +4577,7 @@ PowerBombExplosionBlockCollisionHandling_Row:
     SBC.B $16                                                            ;94A10C;
     TAY                                                                  ;94A10E;
 
-.loop:
+  .loop:
     PHY                                                                  ;94A10F;
     JSR.W BlockBombedReaction                                            ;94A110;
     PLY                                                                  ;94A113;
@@ -4604,7 +4604,7 @@ PowerBombExplosionBlockCollisionHandling_Column:
     SBC.B $1A                                                            ;94A132;
     TAY                                                                  ;94A134;
 
-.loop:
+  .loop:
     PHY                                                                  ;94A135;
     JSR.W BlockBombedReaction                                            ;94A136;
     PLY                                                                  ;94A139;
@@ -4627,7 +4627,7 @@ BlockShotReaction_Horizontal_Slope:
     JMP.W BlockShotReaction_Horizontal_Slope_NonSquare                   ;94A156;
 
 
-.gotoSquare:
+  .gotoSquare:
     JMP.W BlockShotReaction_Horizontal_Slope_Square                      ;94A159;
 
 
@@ -4645,7 +4645,7 @@ BlockShotReaction_Vertical_Slope:
     JMP.W BlockShotReaction_Vertical_Slope_NonSquare                     ;94A16D;
 
 
-.gotoSquare:
+  .gotoSquare:
     JMP.W BlockShotReaction_Vertical_Slope_Square                        ;94A170;
 
 
@@ -4708,10 +4708,10 @@ BlockShotReaction_Horizontal:
     BCC .blockCollision                                                  ;94A1D0;
     DEC.B $28                                                            ;94A1D2;
 
-.blockCollision:
+  .blockCollision:
     PLX                                                                  ;94A1D4;
 
-.return:
+  .return:
     RTS                                                                  ;94A1D5;
 
 
@@ -4732,10 +4732,10 @@ BlockShotReaction_Vertical:
     BCC .blockCollision                                                  ;94A1F1;
     DEC.B $28                                                            ;94A1F3;
 
-.blockCollision:
+  .blockCollision:
     PLX                                                                  ;94A1F5;
 
-.return:
+  .return:
     RTS                                                                  ;94A1F6;
 
 
@@ -4795,7 +4795,7 @@ MoveBeamHorizontally_NoWaveBeam:
     BPL +                                                                ;94A248;
     DEC.B $14                                                            ;94A24A;
 
-  + STA.B $13                                                            ;94A24C;
++   STA.B $13                                                            ;94A24C;
     JSR.W CalculateProjectileYBlockSpan                                  ;94A24E;
     LDA.W $0B78,X                                                        ;94A251;
     SEC                                                                  ;94A254;
@@ -4826,11 +4826,11 @@ MoveBeamHorizontally_NoWaveBeam:
     BRA +                                                                ;94A287;
 
 
-.negative14:
+  .negative14:
     SEC                                                                  ;94A289;
     SBC.W $0BB4,X                                                        ;94A28A;
 
-  + STA.B $1C                                                            ;94A28D;
++   STA.B $1C                                                            ;94A28D;
     LSR A                                                                ;94A28F;
     LSR A                                                                ;94A290;
     LSR A                                                                ;94A291;
@@ -4847,7 +4847,7 @@ MoveBeamHorizontally_NoWaveBeam:
     CMP.W $07A9                                                          ;94A2A5;
     BPL .noCollision                                                     ;94A2A8;
 
-.loop:
+  .loop:
     JSR.W BlockShotReaction_Horizontal                                   ;94A2AA;
     TXA                                                                  ;94A2AD;
     CLC                                                                  ;94A2AE;
@@ -4859,14 +4859,14 @@ MoveBeamHorizontally_NoWaveBeam:
     LDA.B $28                                                            ;94A2BA;
     BMI .completeCollision                                               ;94A2BC;
 
-.noCollision:
+  .noCollision:
     PLX                                                                  ;94A2BE;
     PLB                                                                  ;94A2BF;
     CLC                                                                  ;94A2C0;
     RTL                                                                  ;94A2C1;
 
 
-.completeCollision:
+  .completeCollision:
     PLX                                                                  ;94A2C2;
     JSL.L Kill_Projectile                                                ;94A2C3;
     PLB                                                                  ;94A2C7;
@@ -4886,7 +4886,7 @@ MoveBeamVertically_NoWaveBeam:
     BPL +                                                                ;94A2D7;
     DEC.B $14                                                            ;94A2D9;
 
-  + STA.B $13                                                            ;94A2DB;
++   STA.B $13                                                            ;94A2DB;
     JSR.W CalculateProjectileXBlockSpan                                  ;94A2DD;
     LDA.W $0BA0,X                                                        ;94A2E0;
     CLC                                                                  ;94A2E3;
@@ -4905,11 +4905,11 @@ MoveBeamVertically_NoWaveBeam:
     BRA +                                                                ;94A2FE;
 
 
-.negative14:
+  .negative14:
     SEC                                                                  ;94A300;
     SBC.W $0BC8,X                                                        ;94A301;
 
-  + STA.B $1C                                                            ;94A304;
++   STA.B $1C                                                            ;94A304;
     LSR A                                                                ;94A306;
     LSR A                                                                ;94A307;
     LSR A                                                                ;94A308;
@@ -4938,7 +4938,7 @@ MoveBeamVertically_NoWaveBeam:
     CMP.W $07AB                                                          ;94A334;
     BPL .noCollision                                                     ;94A337;
 
-.loop:
+  .loop:
     JSR.W BlockShotReaction_Vertical                                     ;94A339;
     INX                                                                  ;94A33C;
     INX                                                                  ;94A33D;
@@ -4947,14 +4947,14 @@ MoveBeamVertically_NoWaveBeam:
     LDA.B $28                                                            ;94A342;
     BMI .completeCollision                                               ;94A344;
 
-.noCollision:
+  .noCollision:
     PLX                                                                  ;94A346;
     PLB                                                                  ;94A347;
     CLC                                                                  ;94A348;
     RTL                                                                  ;94A349;
 
 
-.completeCollision:
+  .completeCollision:
     PLX                                                                  ;94A34A;
     JSL.L Kill_Projectile                                                ;94A34B;
     PLB                                                                  ;94A34F;
@@ -4974,7 +4974,7 @@ MoveBeamHorizontally_WaveBeam:
     BPL +                                                                ;94A35F;
     DEC.B $14                                                            ;94A361;
 
-  + STA.B $13                                                            ;94A363;
++   STA.B $13                                                            ;94A363;
     JSR.W CalculateProjectileYBlockSpan                                  ;94A365;
     LDA.W $0B78,X                                                        ;94A368;
     SEC                                                                  ;94A36B;
@@ -5005,11 +5005,11 @@ MoveBeamHorizontally_WaveBeam:
     BRA +                                                                ;94A39E;
 
 
-.leftBoundary:
+  .leftBoundary:
     SEC                                                                  ;94A3A0;
     SBC.W $0BB4,X                                                        ;94A3A1;
 
-  + STA.B $1C                                                            ;94A3A4;
++   STA.B $1C                                                            ;94A3A4;
     LSR A                                                                ;94A3A6;
     LSR A                                                                ;94A3A7;
     LSR A                                                                ;94A3A8;
@@ -5033,7 +5033,7 @@ MoveBeamHorizontally_WaveBeam:
     BPL .returnNoCollision                                               ;94A3CD;
     TYX                                                                  ;94A3CF;
 
-.loop:
+  .loop:
     JSR.W BlockShotReaction_Horizontal                                   ;94A3D0;
     TXA                                                                  ;94A3D3;
     CLC                                                                  ;94A3D4;
@@ -5043,7 +5043,7 @@ MoveBeamHorizontally_WaveBeam:
     DEC.B $26                                                            ;94A3DC;
     BPL .loop                                                            ;94A3DE;
 
-.returnNoCollision:
+  .returnNoCollision:
     PLX                                                                  ;94A3E0;
     PLB                                                                  ;94A3E1;
     CLC                                                                  ;94A3E2;
@@ -5062,7 +5062,7 @@ MoveBeamVertically_WaveBeam:
     BPL +                                                                ;94A3F1;
     DEC.B $14                                                            ;94A3F3;
 
-  + STA.B $13                                                            ;94A3F5;
++   STA.B $13                                                            ;94A3F5;
     JSR.W CalculateProjectileXBlockSpan                                  ;94A3F7;
     LDA.W $0BA0,X                                                        ;94A3FA;
     CLC                                                                  ;94A3FD;
@@ -5081,11 +5081,11 @@ MoveBeamVertically_WaveBeam:
     BRA +                                                                ;94A418;
 
 
-.negative14:
+  .negative14:
     SEC                                                                  ;94A41A;
     SBC.W $0BC8,X                                                        ;94A41B;
 
-  + STA.B $1C                                                            ;94A41E;
++   STA.B $1C                                                            ;94A41E;
     LSR A                                                                ;94A420;
     LSR A                                                                ;94A421;
     LSR A                                                                ;94A422;
@@ -5121,14 +5121,14 @@ MoveBeamVertically_WaveBeam:
     BPL .returnNoCollision                                               ;94A45F;
     TYX                                                                  ;94A461;
 
-.loop:
+  .loop:
     JSR.W BlockShotReaction_Vertical                                     ;94A462;
     INX                                                                  ;94A465;
     INX                                                                  ;94A466;
     DEC.B $26                                                            ;94A467;
     BPL .loop                                                            ;94A469;
 
-.returnNoCollision:
+  .returnNoCollision:
     PLX                                                                  ;94A46B;
     PLB                                                                  ;94A46C;
     CLC                                                                  ;94A46D;
@@ -5150,7 +5150,7 @@ MoveMissileHorizontally:
     BPL +                                                                ;94A483;
     DEC.B $14                                                            ;94A485;
 
-  + STA.B $13                                                            ;94A487;
++   STA.B $13                                                            ;94A487;
     LDA.W $0B78,X                                                        ;94A489;
     LSR A                                                                ;94A48C;
     LSR A                                                                ;94A48D;
@@ -5186,14 +5186,14 @@ MoveMissileHorizontally:
     JSR.W BlockShotReaction_Horizontal                                   ;94A4C8;
     BCS .collision                                                       ;94A4CB;
 
-.noCollision:
+  .noCollision:
     PLX                                                                  ;94A4CD;
     PLB                                                                  ;94A4CE;
     CLC                                                                  ;94A4CF;
     RTL                                                                  ;94A4D0;
 
 
-.collision:
+  .collision:
     PLX                                                                  ;94A4D1;
     JSL.L Kill_Projectile                                                ;94A4D2;
     PLB                                                                  ;94A4D6;
@@ -5216,7 +5216,7 @@ MoveMissileVertically:
     BPL +                                                                ;94A4ED;
     DEC.B $14                                                            ;94A4EF;
 
-  + STA.B $13                                                            ;94A4F1;
++   STA.B $13                                                            ;94A4F1;
     LDA.W $0BA0,X                                                        ;94A4F3;
     CLC                                                                  ;94A4F6;
     ADC.B $12                                                            ;94A4F7;
@@ -5252,14 +5252,14 @@ MoveMissileVertically:
     JSR.W BlockShotReaction_Vertical                                     ;94A532;
     BCS .collision                                                       ;94A535;
 
-.noCollision:
+  .noCollision:
     PLX                                                                  ;94A537;
     PLB                                                                  ;94A538;
     CLC                                                                  ;94A539;
     RTL                                                                  ;94A53A;
 
 
-.collision:
+  .collision:
     PLX                                                                  ;94A53B;
     JSL.L Kill_Projectile                                                ;94A53C;
     PLB                                                                  ;94A540;
@@ -5324,11 +5324,11 @@ BlockShotReaction_Slope_NonSquare:
     BRA +                                                                ;94A5A7;
 
 
-.blockBTS40:
+  .blockBTS40:
     LDA.W $0B64,Y                                                        ;94A5A9;
     EOR.W #$000F                                                         ;94A5AC;
 
-  + AND.W #$000F                                                         ;94A5AF;
++   AND.W #$000F                                                         ;94A5AF;
     CLC                                                                  ;94A5B2;
     ADC.W $0DD6                                                          ;94A5B3;
     PHA                                                                  ;94A5B6;
@@ -5337,7 +5337,7 @@ BlockShotReaction_Slope_NonSquare:
     JMP.W .YFlip                                                         ;94A5BD;
 
 
-.blockBTSMSB:
+  .blockBTSMSB:
     PLX                                                                  ;94A5C0;
     LDA.W $0B78,Y                                                        ;94A5C1;
     AND.W #$000F                                                         ;94A5C4;
@@ -5352,14 +5352,14 @@ BlockShotReaction_Slope_NonSquare:
     RTS                                                                  ;94A5DB;
 
 
-.collision:
+  .collision:
     STZ.B $26                                                            ;94A5DC;
     STZ.B $28                                                            ;94A5DE;
     SEC                                                                  ;94A5E0;
     RTS                                                                  ;94A5E1;
 
 
-.YFlip:
+  .YFlip:
     PLX                                                                  ;94A5E2;
     LDA.W $0B78,Y                                                        ;94A5E3;
     AND.W #$000F                                                         ;94A5E6;
@@ -5373,7 +5373,7 @@ BlockShotReaction_Slope_NonSquare:
     RTS                                                                  ;94A5FA;
 
 
-..collision:
+  ..collision:
     STZ.B $26                                                            ;94A5FB;
     STZ.B $28                                                            ;94A5FD;
     SEC                                                                  ;94A5FF;
@@ -5420,7 +5420,7 @@ BombSpreadBlockCollisionDetection:
     BRA .returnNoCollision                                               ;94A645;
 
 
-.nonZeroTimer:
+  .nonZeroTimer:
     LDA.W $0DC4                                                          ;94A647;
     CMP.W #$FFFF                                                         ;94A64A;
     BEQ .returnCollision                                                 ;94A64D;
@@ -5436,14 +5436,14 @@ BombSpreadBlockCollisionDetection:
     JSR.W (BombSpreadBlockReaction_Pointers,X)                           ;94A65D;
     BCS .returnCollision                                                 ;94A660;
 
-.returnNoCollision:
+  .returnNoCollision:
     PLB                                                                  ;94A662;
     PLP                                                                  ;94A663;
     CLC                                                                  ;94A664;
     RTL                                                                  ;94A665;
 
 
-.returnCollision:
+  .returnCollision:
     PLB                                                                  ;94A666;
     PLP                                                                  ;94A667;
     SEC                                                                  ;94A668;
@@ -5481,7 +5481,7 @@ BlockShotReaction_Horizontal_Slope_Square:
     LDA.W SquareSlopeDefinitions_Bank94-1,X                              ;94A6A2;
     BMI .gotoReturnCollision                                             ;94A6A5;
 
-.bottomHalf:
+  .bottomHalf:
     TXA                                                                  ;94A6A7;
     EOR.W #$0002                                                         ;94A6A8;
     TAX                                                                  ;94A6AB;
@@ -5494,16 +5494,16 @@ BlockShotReaction_Horizontal_Slope_Square:
     LDA.W SquareSlopeDefinitions_Bank94-1,X                              ;94A6B9;
     BMI .gotoReturnCollision                                             ;94A6BC;
 
-.returnNoCollision:
+  .returnNoCollision:
     CLC                                                                  ;94A6BE;
     RTS                                                                  ;94A6BF;
 
 
-.gotoReturnCollision:
+  .gotoReturnCollision:
     JMP.W .returnCollision                                               ;94A6C0; >.<
 
 
-.multiBlock:
+  .multiBlock:
     LDA.B $26                                                            ;94A6C3;
     BNE .topBlockCheck                                                   ;94A6C5;
     LDA.W $0B78,Y                                                        ;94A6C7;
@@ -5517,7 +5517,7 @@ BlockShotReaction_Horizontal_Slope_Square:
     BRA .returnNoCollisionDuplicate                                      ;94A6D9;
 
 
-.topBlockCheck:
+  .topBlockCheck:
     CMP.B $1A                                                            ;94A6DB;
     BNE .checkBothHalves                                                 ;94A6DD;
     LDA.W $0B78,Y                                                        ;94A6DF;
@@ -5526,32 +5526,32 @@ BlockShotReaction_Horizontal_Slope_Square:
     AND.W #$0008                                                         ;94A6E6;
     BNE .checkBottomHalf                                                 ;94A6E9;
 
-.checkBothHalves:
+  .checkBothHalves:
     LDA.W SquareSlopeDefinitions_Bank94-1,X                              ;94A6EB;
     BMI .completeWaste                                                   ;94A6EE;
 
-.checkBottomHalf:
+  .checkBottomHalf:
     TXA                                                                  ;94A6F0;
     EOR.W #$0002                                                         ;94A6F1;
     TAX                                                                  ;94A6F4;
     LDA.W SquareSlopeDefinitions_Bank94-1,X                              ;94A6F5;
     BMI .completeWaste                                                   ;94A6F8;
 
-.returnNoCollisionDuplicate:
+  .returnNoCollisionDuplicate:
     CLC                                                                  ;94A6FA;
     RTS                                                                  ;94A6FB;
 
 
-.completeWaste:
+  .completeWaste:
     JMP.W .returnCollision                                               ;94A6FC;
 
 
-.returnCollision:
+  .returnCollision:
     SEC                                                                  ;94A6FF;
     RTS                                                                  ;94A700;
 
 
-.missile:
+  .missile:
     LDY.W $0DDE                                                          ;94A701;
     LDA.W $0B78,Y                                                        ;94A704;
     AND.W #$0008                                                         ;94A707;
@@ -5560,13 +5560,13 @@ BlockShotReaction_Horizontal_Slope_Square:
     EOR.W #$0002                                                         ;94A70D;
     TAX                                                                  ;94A710;
 
-  + LDA.W SquareSlopeDefinitions_Bank94-1,X                              ;94A711;
++   LDA.W SquareSlopeDefinitions_Bank94-1,X                              ;94A711;
     BMI .returnCollisionDuplicate                                        ;94A714;
     CLC                                                                  ;94A716;
     RTS                                                                  ;94A717;
 
 
-.returnCollisionDuplicate:
+  .returnCollisionDuplicate:
     SEC                                                                  ;94A718;
     RTS                                                                  ;94A719;
 
@@ -5601,7 +5601,7 @@ BlockShotReaction_Vertical_Slope_Square:
     LDA.W SquareSlopeDefinitions_Bank94-1,X                              ;94A751;
     BMI .gotoReturnCollision                                             ;94A754;
 
-.right:
+  .right:
     TXA                                                                  ;94A756;
     EOR.W #$0001                                                         ;94A757;
     TAX                                                                  ;94A75A;
@@ -5614,16 +5614,16 @@ BlockShotReaction_Vertical_Slope_Square:
     LDA.W SquareSlopeDefinitions_Bank94-1,X                              ;94A768;
     BMI .gotoReturnCollision                                             ;94A76B;
 
-.returnNoCollision:
+  .returnNoCollision:
     CLC                                                                  ;94A76D;
     RTS                                                                  ;94A76E;
 
 
-.gotoReturnCollision:
+  .gotoReturnCollision:
     JMP.W .returnCollision                                               ;94A76F;
 
 
-.multiBlock:
+  .multiBlock:
     LDA.B $26                                                            ;94A772;
     BNE .leftmostBlockCheck                                              ;94A774;
     LDA.W $0B64,Y                                                        ;94A776;
@@ -5637,7 +5637,7 @@ BlockShotReaction_Vertical_Slope_Square:
     BRA .returnNoCollisionDuplicate                                      ;94A788;
 
 
-.leftmostBlockCheck:
+  .leftmostBlockCheck:
     CMP.B $1A                                                            ;94A78A;
     BNE .checkBothHalves                                                 ;94A78C;
     LDA.W $0B64,Y                                                        ;94A78E;
@@ -5646,32 +5646,32 @@ BlockShotReaction_Vertical_Slope_Square:
     AND.W #$0008                                                         ;94A795;
     BNE .checkLeftHalf                                                   ;94A798;
 
-.checkBothHalves:
+  .checkBothHalves:
     LDA.W SquareSlopeDefinitions_Bank94-1,X                              ;94A79A;
     BMI .gotoNowhere                                                     ;94A79D;
 
-.checkLeftHalf:
+  .checkLeftHalf:
     TXA                                                                  ;94A79F;
     EOR.W #$0001                                                         ;94A7A0;
     TAX                                                                  ;94A7A3;
     LDA.W SquareSlopeDefinitions_Bank94-1,X                              ;94A7A4;
     BMI .gotoNowhere                                                     ;94A7A7;
 
-.returnNoCollisionDuplicate:
+  .returnNoCollisionDuplicate:
     CLC                                                                  ;94A7A9;
     RTS                                                                  ;94A7AA;
 
 
-.gotoNowhere:
+  .gotoNowhere:
     JMP.W .returnCollision                                               ;94A7AB; >.<
 
 
-.returnCollision:
+  .returnCollision:
     SEC                                                                  ;94A7AE;
     RTS                                                                  ;94A7AF;
 
 
-.missile:
+  .missile:
     LDY.W $0DDE                                                          ;94A7B0;
     LDA.W $0B64,Y                                                        ;94A7B3;
     AND.W #$0008                                                         ;94A7B6;
@@ -5680,14 +5680,14 @@ BlockShotReaction_Vertical_Slope_Square:
     EOR.W #$0001                                                         ;94A7BC;
     TAX                                                                  ;94A7BF;
 
-.leftHalf:
+  .leftHalf:
     LDA.W SquareSlopeDefinitions_Bank94-1,X                              ;94A7C0;
     BMI .returnCollisionDuplicate                                        ;94A7C3;
     CLC                                                                  ;94A7C5;
     RTS                                                                  ;94A7C6;
 
 
-.returnCollisionDuplicate:
+  .returnCollisionDuplicate:
     SEC                                                                  ;94A7C7;
     RTS                                                                  ;94A7C8;
 
@@ -5719,13 +5719,13 @@ BlockGrappleReaction_GrappleBlock:
     RTS                                                                  ;94A7ED;
 
 
-  + AND.W #$007F                                                         ;94A7EE; >_<
++   AND.W #$007F                                                         ;94A7EE; >_<
     REP #$40                                                             ;94A7F1;
     CLC                                                                  ;94A7F3;
     RTS                                                                  ;94A7F4;
 
 
-.PLMs:
+  .PLMs:
     dw PLMEntries_Grappled_GrappleBlock                                  ;94A7F5;
     dw PLMEntries_Grappled_RespawningBreakableGrappleBlock               ;94A7F7;
     dw PLMEntries_Grappled_BreakableGrappleBlock                         ;94A7F9;
@@ -5744,13 +5744,13 @@ BlockGrappleReaction_SpikeBlock:
     RTS                                                                  ;94A813;
 
 
-  + AND.W #$007F                                                         ;94A814; >_<
++   AND.W #$007F                                                         ;94A814; >_<
     REP #$40                                                             ;94A817;
     CLC                                                                  ;94A819;
     RTS                                                                  ;94A81A;
 
 
-.PLMs:
+  .PLMs:
     dw PLMEntries_Grappled_GenericSpikeBlock                             ;94A81B;
     dw PLMEntries_Grappled_GenericSpikeBlock                             ;94A81D;
     dw PLMEntries_Grappled_GenericSpikeBlock                             ;94A81F;
@@ -5802,7 +5802,7 @@ GrappleBeamBlockCollisionDetection:
     LDA.W #$FFC0                                                         ;94A876;
     TSB.W $0D84                                                          ;94A879;
 
-.YQuarterVelocity:
+  .YQuarterVelocity:
     LDA.W $0D24                                                          ;94A87C;
     STA.W $0D87                                                          ;94A87F;
     CLC                                                                  ;94A882;
@@ -5815,11 +5815,11 @@ GrappleBeamBlockCollisionDetection:
     LDA.W #$FFC0                                                         ;94A894;
     TSB.W $0D88                                                          ;94A897;
 
-.loopSetup:
+  .loopSetup:
     LDA.W #$0004                                                         ;94A89A;
     STA.W $0D8A                                                          ;94A89D;
 
-.loop:
+  .loop:
     LDA.W $0D0E                                                          ;94A8A0;
     CLC                                                                  ;94A8A3;
     ADC.W $0D82                                                          ;94A8A4;
@@ -5869,7 +5869,7 @@ GrappleBeamBlockCollisionDetection:
     RTL                                                                  ;94A917;
 
 
-.notConnected:
+  .notConnected:
     DEC.W $0D8A                                                          ;94A918;
     BNE .loop                                                            ;94A91B;
     PLB                                                                  ;94A91D;
@@ -5924,12 +5924,12 @@ CalculatePositionFromGrappleBeamEndWithDistanceAndAngle:
     BRA +                                                                ;94A96E;
 
 
-.angleLessThan80:
+  .angleLessThan80:
     LDA.W $0D08                                                          ;94A970;
     AND.W #$FFF0                                                         ;94A973;
     ORA.W #$0007                                                         ;94A976;
 
-  + STA.W $0D08                                                          ;94A979;
++   STA.W $0D08                                                          ;94A979;
     LDA.L SineCosineTables_NegativeCosine_SignExtended,X                 ;94A97C;
     BMI .notBetween40_C0                                                 ;94A980;
     LDA.W $0D0C                                                          ;94A982;
@@ -5938,15 +5938,15 @@ CalculatePositionFromGrappleBeamEndWithDistanceAndAngle:
     BRA .setEndPosition                                                  ;94A98B;
 
 
-.notBetween40_C0:
+  .notBetween40_C0:
     LDA.W $0D0C                                                          ;94A98D;
     AND.W #$FFF0                                                         ;94A990;
     ORA.W #$0007                                                         ;94A993;
 
-.setEndPosition:
+  .setEndPosition:
     STA.W $0D0C                                                          ;94A996;
 
-.grapplingEnemy:
+  .grapplingEnemy:
     SEP #$20                                                             ;94A999;
     LDA.W $0D84                                                          ;94A99B;
     STA.W $4202                                                          ;94A99E;
@@ -5961,7 +5961,7 @@ CalculatePositionFromGrappleBeamEndWithDistanceAndAngle:
     BRA +                                                                ;94A9B5;
 
 
-.not100:
+  .not100:
     SEP #$20                                                             ;94A9B7;
     STA.W $4203                                                          ;94A9B9;
     REP #$20                                                             ;94A9BC;
@@ -5975,7 +5975,7 @@ CalculatePositionFromGrappleBeamEndWithDistanceAndAngle:
     BRA +                                                                ;94A9CB;
 
 
-.negative:
+  .negative:
     CMP.W #$FF00                                                         ;94A9CD;
     BNE .notFF00                                                         ;94A9D0;
     LDA.W $0D08                                                          ;94A9D2;
@@ -5984,7 +5984,7 @@ CalculatePositionFromGrappleBeamEndWithDistanceAndAngle:
     BRA +                                                                ;94A9D9;
 
 
-.notFF00:
+  .notFF00:
     SEP #$20                                                             ;94A9DB;
     EOR.B #$FF                                                           ;94A9DD;
     INC A                                                                ;94A9DF;
@@ -6000,7 +6000,7 @@ CalculatePositionFromGrappleBeamEndWithDistanceAndAngle:
     CLC                                                                  ;94A9F2;
     ADC.W $0D08                                                          ;94A9F3;
 
-  + STA.W $0D90                                                          ;94A9F6;
++   STA.W $0D90                                                          ;94A9F6;
     LSR A                                                                ;94A9F9;
     LSR A                                                                ;94A9FA;
     LSR A                                                                ;94A9FB;
@@ -6017,7 +6017,7 @@ CalculatePositionFromGrappleBeamEndWithDistanceAndAngle:
     BRA +                                                                ;94AA15;
 
 
-.not100again:
+  .not100again:
     SEP #$20                                                             ;94AA17;
     STA.W $4203                                                          ;94AA19;
     REP #$20                                                             ;94AA1C;
@@ -6031,7 +6031,7 @@ CalculatePositionFromGrappleBeamEndWithDistanceAndAngle:
     BRA +                                                                ;94AA2B;
 
 
-.negativeAgain:
+  .negativeAgain:
     CMP.W #$FF00                                                         ;94AA2D;
     BNE .notFF00again                                                    ;94AA30;
     LDA.W $0D0C                                                          ;94AA32;
@@ -6040,7 +6040,7 @@ CalculatePositionFromGrappleBeamEndWithDistanceAndAngle:
     BRA +                                                                ;94AA39;
 
 
-.notFF00again:
+  .notFF00again:
     SEP #$20                                                             ;94AA3B;
     EOR.B #$FF                                                           ;94AA3D;
     INC A                                                                ;94AA3F;
@@ -6056,7 +6056,7 @@ CalculatePositionFromGrappleBeamEndWithDistanceAndAngle:
     CLC                                                                  ;94AA52;
     ADC.W $0D0C                                                          ;94AA53;
 
-  + STA.W $0D92                                                          ;94AA56;
++   STA.W $0D92                                                          ;94AA56;
     LSR A                                                                ;94AA59;
     LSR A                                                                ;94AA5A;
     LSR A                                                                ;94AA5B;
@@ -6095,7 +6095,7 @@ GrappleSwingCollisionReaction:
     RTS                                                                  ;94AA95;
 
 
-.returnCollision:
+  .returnCollision:
     PLX                                                                  ;94AA96;
     PLA                                                                  ;94AA97;
     SEC                                                                  ;94AA98;
@@ -6135,16 +6135,16 @@ GrappleSwingCollisionReaction_SpikeAir:
     LDA.W #$000A                                                         ;94AACF;
     STA.W $18AA                                                          ;94AAD2;
 
-.return:
+  .return:
     CLC                                                                  ;94AAD5;
     RTS                                                                  ;94AAD6;
 
 
-.zeroes0:
+  .zeroes0:
     dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;94AAD7;
     dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;94AAE7;
 
-.zeroes1:
+  .zeroes1:
     dw $0000,$0000,$0010,$0000,$0000,$0000,$0000,$0000                   ;94AAF7;
     dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;94AB07;
 
@@ -6171,16 +6171,16 @@ GrappleSwingCollisionReaction_SpikeBlock:
     LDA.W #$000A                                                         ;94AB48;
     STA.W $18AA                                                          ;94AB4B;
 
-.return:
+  .return:
     SEC                                                                  ;94AB4E;
     RTS                                                                  ;94AB4F;
 
 
-.zeroes:
+  .zeroes:
     dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;94AB50;
     dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;94AB60;
 
-.damage:
+  .damage:
     dw $003C,$0010,$0000,$0000,$0000,$0000,$0000,$0000                   ;94AB70;
     dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;94AB80;
 
@@ -6231,7 +6231,7 @@ GrappleSwingCollisionReaction_duplicate:
     RTS                                                                  ;94ABE1;
 
 
-.returnCollision:
+  .returnCollision:
     PLX                                                                  ;94ABE2;
     PLA                                                                  ;94ABE3;
     SEC                                                                  ;94ABE4;
@@ -6246,7 +6246,7 @@ GrappleSwingCollisionDetectionDueToSwinging:
     ADC.W $0CFE                                                          ;94ABF0;
     STA.W $0D84                                                          ;94ABF3;
 
-.loop:
+  .loop:
     JSR.W CalculatePositionFromGrappleBeamEndWithDistanceAndAngle        ;94ABF6;
     JSR.W GrappleSwingCollisionReaction_duplicate                        ;94ABF9;
     BCS .return                                                          ;94ABFC;
@@ -6260,7 +6260,7 @@ GrappleSwingCollisionDetectionDueToSwinging:
     RTS                                                                  ;94AC0E;
 
 
-.return:
+  .return:
     NOP                                                                  ;94AC0F; >_<
     RTS                                                                  ;94AC10;
 
@@ -6289,12 +6289,12 @@ HandleGrappleBeamLengthChange:
     JMP.W .returnCarryClear                                              ;94AC39;
 
 
-.nonZeroLengthDelta:
+  .nonZeroLengthDelta:
     BMI .positiveGrappleBeamLengthDelta                                  ;94AC3C;
     JMP.W .increaseLength                                                ;94AC3E;
 
 
-.positiveGrappleBeamLengthDelta:
+  .positiveGrappleBeamLengthDelta:
     LDA.W $0CFE                                                          ;94AC41;
     CLC                                                                  ;94AC44;
     ADC.W $0D00                                                          ;94AC45;
@@ -6303,7 +6303,7 @@ HandleGrappleBeamLengthChange:
     STZ.W $0D00                                                          ;94AC4D;
     LDA.W #$0008                                                         ;94AC50;
 
-.greaterThanEqualTo8:
+  .greaterThanEqualTo8:
     STA.W $0D8C                                                          ;94AC53;
     LDA.W #$0008                                                         ;94AC56;
     STA.W $0D8E                                                          ;94AC59;
@@ -6315,7 +6315,7 @@ HandleGrappleBeamLengthChange:
     CMP.W $0D8C                                                          ;94AC69;
     BEQ .decreasedToTargetLength                                         ;94AC6C;
 
-.decreaseLength:
+  .decreaseLength:
     STA.W $0D8A                                                          ;94AC6E;
     DEC A                                                                ;94AC71;
     CLC                                                                  ;94AC72;
@@ -6329,7 +6329,7 @@ HandleGrappleBeamLengthChange:
     CMP.W $0D8C                                                          ;94AC87;
     BNE .decreaseLength                                                  ;94AC8A;
 
-.decreasedToTargetLength:
+  .decreasedToTargetLength:
     LDA.W $0D8C                                                          ;94AC8C;
     STA.W $0CFE                                                          ;94AC8F;
     PLB                                                                  ;94AC92;
@@ -6337,7 +6337,7 @@ HandleGrappleBeamLengthChange:
     RTL                                                                  ;94AC94;
 
 
-.collision:
+  .collision:
     LDA.W $0D8A                                                          ;94AC95;
     STA.W $0CFE                                                          ;94AC98;
     PLB                                                                  ;94AC9B;
@@ -6345,7 +6345,7 @@ HandleGrappleBeamLengthChange:
     RTL                                                                  ;94AC9D;
 
 
-.increaseLength:
+  .increaseLength:
     LDA.W $0CFE                                                          ;94AC9E;
     CLC                                                                  ;94ACA1;
     ADC.W $0D00                                                          ;94ACA2;
@@ -6354,7 +6354,7 @@ HandleGrappleBeamLengthChange:
     STZ.W $0D00                                                          ;94ACAA;
     LDA.W #$003F                                                         ;94ACAD;
 
-.lessThan3F:
+  .lessThan3F:
     STA.W $0D8C                                                          ;94ACB0;
     LDA.W #$0038                                                         ;94ACB3;
     STA.W $0D8E                                                          ;94ACB6;
@@ -6366,7 +6366,7 @@ HandleGrappleBeamLengthChange:
     CMP.W $0D8C                                                          ;94ACC6;
     BEQ .increasedToTargetLength                                         ;94ACC9;
 
-.loopIncreaseLength:
+  .loopIncreaseLength:
     STA.W $0D8A                                                          ;94ACCB;
     INC A                                                                ;94ACCE;
     CLC                                                                  ;94ACCF;
@@ -6380,7 +6380,7 @@ HandleGrappleBeamLengthChange:
     CMP.W $0D8C                                                          ;94ACE4;
     BNE .loopIncreaseLength                                              ;94ACE7;
 
-.increasedToTargetLength:
+  .increasedToTargetLength:
     LDA.W $0D8C                                                          ;94ACE9;
     STA.W $0CFE                                                          ;94ACEC;
     PLB                                                                  ;94ACEF;
@@ -6394,7 +6394,7 @@ HandleGrappleBeamLengthChange:
     RTL                                                                  ;94ACFA;
 
 
-.returnCarryClear:
+  .returnCarryClear:
     PLB                                                                  ;94ACFB;
     CLC                                                                  ;94ACFC;
     RTL                                                                  ;94ACFD;
@@ -6410,7 +6410,7 @@ HandleGrappleBeamSwingingMovement:
     BEQ .nonLiquidPhysics                                                ;94AD0A;
     LDY.W #$00A0                                                         ;94AD0C;
 
-.nonLiquidPhysics:
+  .nonLiquidPhysics:
     LDA.W $0D26                                                          ;94AD0F;
     CLC                                                                  ;94AD12;
     ADC.W $0D2E                                                          ;94AD13;
@@ -6426,7 +6426,7 @@ HandleGrappleBeamSwingingMovement:
     JMP.W .anticlockwise                                                 ;94AD2C;
 
 
-.preClockwise:
+  .preClockwise:
     JSL.L A_Y_16bit_UnsignedMultiplication                               ;94AD2F;
     LDA.W $05F2                                                          ;94AD33;
     BEQ .gotoFailedMovement                                              ;94AD36;
@@ -6434,11 +6434,11 @@ HandleGrappleBeamSwingingMovement:
     BRA .clockwise                                                       ;94AD3B;
 
 
-.gotoFailedMovement:
+  .gotoFailedMovement:
     JMP.W .failedMovement                                                ;94AD3D;
 
 
-.clockwise:
+  .clockwise:
     CLC                                                                  ;94AD40;
     ADC.W $0CFA                                                          ;94AD41;
     XBA                                                                  ;94AD44;
@@ -6453,7 +6453,7 @@ HandleGrappleBeamSwingingMovement:
     CMP.W $0D88                                                          ;94AD59;
     BEQ ..reachedTarget                                                  ;94AD5C;
 
-..loop:
+  ..loop:
     STA.W $0D86                                                          ;94AD5E;
     INC A                                                                ;94AD61;
     INC A                                                                ;94AD62;
@@ -6468,7 +6468,7 @@ HandleGrappleBeamSwingingMovement:
     CMP.W $0D88                                                          ;94AD76;
     BNE ..loop                                                           ;94AD79;
 
-..reachedTarget:
+  ..reachedTarget:
     LDA.W $0CFA                                                          ;94AD7B;
     CLC                                                                  ;94AD7E;
     ADC.W $0D9C                                                          ;94AD7F;
@@ -6480,7 +6480,7 @@ HandleGrappleBeamSwingingMovement:
     BPL +                                                                ;94AD91;
     STZ.W $0D30                                                          ;94AD93;
 
-  + LDA.W $0D2E                                                          ;94AD96;
++   LDA.W $0D2E                                                          ;94AD96;
     BPL +                                                                ;94AD99;
     CLC                                                                  ;94AD9B;
     ADC.W #$0006                                                         ;94AD9C;
@@ -6488,23 +6488,23 @@ HandleGrappleBeamSwingingMovement:
     BRA ..returnCarryClear                                               ;94ADA1;
 
 
-  + SEC                                                                  ;94ADA3;
++   SEC                                                                  ;94ADA3;
     SBC.W #$0006                                                         ;94ADA4;
     BMI ..zero                                                           ;94ADA7;
     BRA ..returnCarryClear                                               ;94ADA9;
 
 
-..zero:
+  ..zero:
     LDA.W #$0000                                                         ;94ADAB;
 
-..returnCarryClear:
+  ..returnCarryClear:
     STA.W $0D2E                                                          ;94ADAE;
     PLB                                                                  ;94ADB1;
     CLC                                                                  ;94ADB2;
     RTL                                                                  ;94ADB3;
 
 
-..collision:
+  ..collision:
     LDA.W $0D86                                                          ;94ADB4;
     LSR A                                                                ;94ADB7;
     AND.W #$00FF                                                         ;94ADB8;
@@ -6518,7 +6518,7 @@ HandleGrappleBeamSwingingMovement:
     CMP.W #$0005                                                         ;94ADCD;
     BNE ..bounce                                                         ;94ADD0;
 
-..noBounce:
+  ..noBounce:
     LDA.W $0CFE                                                          ;94ADD2;
     CMP.W #$0008                                                         ;94ADD5;
     BNE ..bounce                                                         ;94ADD8;
@@ -6531,7 +6531,7 @@ HandleGrappleBeamSwingingMovement:
     RTL                                                                  ;94ADE8;
 
 
-..bounce:
+  ..bounce:
     LDA.W #$0010                                                         ;94ADE9;
     STA.W $0D30                                                          ;94ADEC;
     LDA.W $0D26                                                          ;94ADEF;
@@ -6553,7 +6553,7 @@ HandleGrappleBeamSwingingMovement:
     RTL                                                                  ;94AE0F;
 
 
-.anticlockwise:
+  .anticlockwise:
     CLC                                                                  ;94AE10;
     ADC.W $0CFA                                                          ;94AE11;
     XBA                                                                  ;94AE14;
@@ -6568,7 +6568,7 @@ HandleGrappleBeamSwingingMovement:
     CMP.W $0D88                                                          ;94AE29;
     BEQ ..reachedTarget                                                  ;94AE2C;
 
-..loop:
+  ..loop:
     STA.W $0D86                                                          ;94AE2E;
     DEC A                                                                ;94AE31;
     DEC A                                                                ;94AE32;
@@ -6583,7 +6583,7 @@ HandleGrappleBeamSwingingMovement:
     CMP.W $0D88                                                          ;94AE46;
     BNE ..loop                                                           ;94AE49;
 
-..reachedTarget:
+  ..reachedTarget:
     LDA.W $0CFA                                                          ;94AE4B;
     CLC                                                                  ;94AE4E;
     ADC.W $0D9C                                                          ;94AE4F;
@@ -6595,7 +6595,7 @@ HandleGrappleBeamSwingingMovement:
     BPL +                                                                ;94AE61;
     STZ.W $0D30                                                          ;94AE63;
 
-  + LDA.W $0D2E                                                          ;94AE66;
++   LDA.W $0D2E                                                          ;94AE66;
     BPL +                                                                ;94AE69;
     CLC                                                                  ;94AE6B;
     ADC.W #$0006                                                         ;94AE6C;
@@ -6603,23 +6603,23 @@ HandleGrappleBeamSwingingMovement:
     BRA ..returnCarryClear                                               ;94AE71;
 
 
-  + SEC                                                                  ;94AE73;
++   SEC                                                                  ;94AE73;
     SBC.W #$0006                                                         ;94AE74;
     BMI ..zero                                                           ;94AE77;
     BRA ..returnCarryClear                                               ;94AE79;
 
 
-..zero:
+  ..zero:
     LDA.W #$0000                                                         ;94AE7B;
 
-..returnCarryClear:
+  ..returnCarryClear:
     STA.W $0D2E                                                          ;94AE7E;
     PLB                                                                  ;94AE81;
     CLC                                                                  ;94AE82;
     RTL                                                                  ;94AE83;
 
 
-..collision:
+  ..collision:
     LDA.W $0D86                                                          ;94AE84;
     LSR A                                                                ;94AE87;
     AND.W #$00FF                                                         ;94AE88;
@@ -6633,7 +6633,7 @@ HandleGrappleBeamSwingingMovement:
     CMP.W #$0005                                                         ;94AE9D;
     BNE ..bounce                                                         ;94AEA0;
 
-  + LDA.W $0CFE                                                          ;94AEA2;
++   LDA.W $0CFE                                                          ;94AEA2;
     CMP.W #$0008                                                         ;94AEA5;
     BNE ..bounce                                                         ;94AEA8;
     LDA.W #$8000                                                         ;94AEAA;
@@ -6645,7 +6645,7 @@ HandleGrappleBeamSwingingMovement:
     RTL                                                                  ;94AEB8;
 
 
-..bounce:
+  ..bounce:
     LDA.W #$0010                                                         ;94AEB9;
     STA.W $0D30                                                          ;94AEBC;
     LDA.W $0D26                                                          ;94AEBF;
@@ -6667,7 +6667,7 @@ HandleGrappleBeamSwingingMovement:
     RTL                                                                  ;94AEDF;
 
 
-.failedMovement:
+  .failedMovement:
     PLB                                                                  ;94AEE0;
     CLC                                                                  ;94AEE1;
     RTL                                                                  ;94AEE2;
@@ -6682,7 +6682,7 @@ HandleGrappleBeamSwingingMovement:
     LDA.W #GrappleBeamFunction_Dropped                                   ;94AEF6;
     STA.W $0D32                                                          ;94AEF9;
 
-..lessThan20:
+  ..lessThan20:
     STZ.W $0D26                                                          ;94AEFC;
     STZ.W $0D2E                                                          ;94AEFF;
     PLB                                                                  ;94AF02;
@@ -6690,7 +6690,7 @@ HandleGrappleBeamSwingingMovement:
     RTL                                                                  ;94AF04;
 
 
-..rising:
+  ..rising:
     STZ.W $0D38                                                          ;94AF05;
     PLB                                                                  ;94AF08;
     SEC                                                                  ;94AF09;
@@ -6727,7 +6727,7 @@ CLCRTL_94AF0B:
     LSR A                                                                ;94AF32;
     STA.W $0D98                                                          ;94AF33;
 
-.loop:
+  .loop:
     LDA.L SineCosineTables_NegativeCosine_SignExtended,X                 ;94AF36;
     CLC                                                                  ;94AF3A;
     ADC.W $0D96                                                          ;94AF3B;
@@ -6763,7 +6763,7 @@ CLCRTL_94AF0B:
     RTL                                                                  ;94AF7D;
 
 
-  + LDA.W #GrappleBeamFunction_Dropped                                   ;94AF7E;
++   LDA.W #GrappleBeamFunction_Dropped                                   ;94AF7E;
     STA.W $0D32                                                          ;94AF81;
     PLB                                                                  ;94AF84;
     SEC                                                                  ;94AF85;
@@ -6773,7 +6773,7 @@ CLCRTL_94AF0B:
 InitializeGrappleSegmentAnimations:
     LDX.W #$001E                                                         ;94AF87;
 
-.loop:
+  .loop:
     LDA.W #InstList_DrawGrappleBeam_GrappleSegmentAnimations_3           ;94AF8A;
     STA.W $0D62,X                                                        ;94AF8D;
     LDA.W #InstList_DrawGrappleBeam_GrappleSegmentAnimations_2           ;94AF90;
@@ -6819,7 +6819,7 @@ DrawGrappleBeam:
     BPL +                                                                ;94AFE0;
     DEC.B $1C                                                            ;94AFE2;
 
-  + STA.B $1B                                                            ;94AFE4;
++   STA.B $1B                                                            ;94AFE4;
     STZ.B $1E                                                            ;94AFE6;
     STZ.B $20                                                            ;94AFE8;
     LDA.L SineCosineTables_NegativeCosine_SignExtended,X                 ;94AFEA;
@@ -6829,7 +6829,7 @@ DrawGrappleBeam:
     BPL +                                                                ;94AFF1;
     DEC.B $20                                                            ;94AFF3;
 
-  + STA.B $1F                                                            ;94AFF5;
++   STA.B $1F                                                            ;94AFF5;
     LDA.W $0CFA                                                          ;94AFF7;
     AND.W #$8000                                                         ;94AFFA;
     LSR A                                                                ;94AFFD;
@@ -6875,12 +6875,12 @@ DrawGrappleBeam:
     STA.B $28                                                            ;94B04F;
     LDX.W #$001E                                                         ;94B051;
 
-.loopAnimations:
+  .loopAnimations:
     DEC.W $0D42,X                                                        ;94B054;
     BNE .processedInstructions                                           ;94B057;
     LDY.W $0D62,X                                                        ;94B059;
 
-.loopInstructions:
+  .loopInstructions:
     LDA.W $0000,Y                                                        ;94B05C;
     BPL .notInstruction                                                  ;94B05F;
     STA.B $24                                                            ;94B061;
@@ -6890,14 +6890,14 @@ DrawGrappleBeam:
     JMP.W ($0024)                                                        ;94B068;
 
 
-.notInstruction:
+  .notInstruction:
     STA.W $0D42,X                                                        ;94B06B;
     TYA                                                                  ;94B06E;
     CLC                                                                  ;94B06F;
     ADC.W #$0004                                                         ;94B070;
     STA.W $0D62,X                                                        ;94B073;
 
-.processedInstructions:
+  .processedInstructions:
     LDA.B $14                                                            ;94B076;
     ORA.B $18                                                            ;94B078;
     AND.W #$FF00                                                         ;94B07A;
@@ -6915,7 +6915,7 @@ DrawGrappleBeam:
     DEC.B $28                                                            ;94B08F;
     BPL .loopAnimations                                                  ;94B091;
 
-  + LDA.W $0A1C                                                          ;94B093;
++   LDA.W $0A1C                                                          ;94B093;
     CMP.W #$00B2                                                         ;94B096;
     BEQ .connectedEnd                                                    ;94B099;
     CMP.W #$00B3                                                         ;94B09B;
@@ -6924,10 +6924,10 @@ DrawGrappleBeam:
     BRA .return                                                          ;94B0A3;
 
 
-.connectedEnd:
+  .connectedEnd:
     JSR.W DrawGrappleBeamEnd_Connected                                   ;94B0A5;
 
-.return:
+  .return:
     PLB                                                                  ;94B0A8;
     RTL                                                                  ;94B0A9;
 
@@ -6953,7 +6953,7 @@ DrawGrappleSegment:
     ORA.L MapOfOAMIndex_highXPosBit,X                                    ;94B0CD;
     STA.B ($22)                                                          ;94B0D1;
 
-  + LDA.B $18                                                            ;94B0D3;
++   LDA.B $18                                                            ;94B0D3;
     STA.W $0371,X                                                        ;94B0D5;
     LDA.B $16                                                            ;94B0D8;
     CLC                                                                  ;94B0DA;
@@ -7001,7 +7001,7 @@ DrawGrappleBeamEnd_NotConnected:
     ORA.L MapOfOAMIndex_highXPosBit,X                                    ;94B126;
     STA.B ($22)                                                          ;94B12A;
 
-  + LDA.B $18                                                            ;94B12C; >_<
++   LDA.B $18                                                            ;94B12C; >_<
     LDA.W $0D0C                                                          ;94B12E;
     SEC                                                                  ;94B131;
     SBC.W $0915                                                          ;94B132;
@@ -7015,7 +7015,7 @@ DrawGrappleBeamEnd_NotConnected:
     ADC.W #$0004                                                         ;94B144;
     STA.W $0590                                                          ;94B147;
 
-.return:
+  .return:
     RTS                                                                  ;94B14A;
 
 
@@ -7035,7 +7035,7 @@ DrawGrappleBeamEnd_Connected:
     ORA.L MapOfOAMIndex_highXPosBit,X                                    ;94B169;
     STA.B ($22)                                                          ;94B16D;
 
-  + LDA.W $0D0C                                                          ;94B16F;
++   LDA.W $0D0C                                                          ;94B16F;
     SEC                                                                  ;94B172;
     SBC.W $0915                                                          ;94B173;
     SBC.W #$0004                                                         ;94B176;

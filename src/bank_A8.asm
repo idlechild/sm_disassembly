@@ -143,7 +143,7 @@ Instruction_CommonA8_CallFunctionInY:
     JMP.W ($0012)                                                        ;A88094;
 
 
-.manualReturn:
+  .manualReturn:
     PLX                                                                  ;A88097;
     PLY                                                                  ;A88098;
     INY                                                                  ;A88099;
@@ -161,7 +161,7 @@ Instruction_CommonA8_CallFunctionInY_WithA:
     JMP.W ($0012)                                                        ;A880A9;
 
 
-.manualReturn:
+  .manualReturn:
     PLX                                                                  ;A880AC;
     PLY                                                                  ;A880AD;
     TYA                                                                  ;A880AE;
@@ -188,7 +188,7 @@ UNUSED_Instruction_CommonA8_CallExternalFunctionInY_A880B5:
     RTL                                                                  ;A880CA;
 
 
-.externalFunction:
+  .externalFunction:
     JML.W [$0012]                                                        ;A880CB;
 
 
@@ -210,7 +210,7 @@ UNUSED_Inst_CommonA8_CallExternalFunctionInY_WithA_A880CE:
     RTL                                                                  ;A880E9;
 
 
-.externalFunction:
+  .externalFunction:
     JML.W [$0012]                                                        ;A880EA;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -231,10 +231,10 @@ Instruction_CommonA8_GotoY_PlusY:
     BRA +                                                                ;A880FE;
 
 
-.highByte:
+  .highByte:
     ORA.W #$FF00                                                         ;A88100;
 
-  + CLC                                                                  ;A88103;
++   CLC                                                                  ;A88103;
     ADC.B $12                                                            ;A88104;
     TAY                                                                  ;A88106;
     RTL                                                                  ;A88107;
@@ -634,11 +634,11 @@ Instruction_Evir_SetInitialRegenerationXOffset:
     BRA .return                                                          ;A887AD;
 
 
-.facingRight:
+  .facingRight:
     LDA.W #$FFF8                                                         ;A887AF;
     STA.W $0FB2,X                                                        ;A887B2;
 
-.return:
+  .return:
     RTL                                                                  ;A887B5;
 
 
@@ -651,10 +651,10 @@ Instruction_Evir_AdvanceRegenerationXOffset:
     BRA .return                                                          ;A887C5;
 
 
-.facingRight:
+  .facingRight:
     INC.W $0FB2,X                                                        ;A887C7;
 
-.return:
+  .return:
     RTL                                                                  ;A887CA;
 
 
@@ -694,12 +694,12 @@ InitAI_Evir:
     BRA +                                                                ;A8881B;
 
 
-.nonZeroParam1:
+  .nonZeroParam1:
     JSR.W HandleEvirArms                                                 ;A8881D;
     LDA.W #$0004                                                         ;A88820;
     STA.W $0F9A,X                                                        ;A88823;
 
-  + LDA.W #$0000                                                         ;A88826;
++   LDA.W #$0000                                                         ;A88826;
     STA.L $7E7800,X                                                      ;A88829;
     STA.L $7E7802,X                                                      ;A8882D;
     LDA.W #Function_Evir_HandleBodyArms                                  ;A88831;
@@ -716,18 +716,18 @@ SetEvirFacingDirection:
     BRA +                                                                ;A88847;
 
 
-.SamusToTheRight:
+  .SamusToTheRight:
     LDA.W #$0001                                                         ;A88849;
     STA.W $0FAA,X                                                        ;A8884C;
 
-  + LDA.W #InstList_Evir_Body_FacingLeft                                 ;A8884F;
++   LDA.W #InstList_Evir_Body_FacingLeft                                 ;A8884F;
     STA.L $7E7804,X                                                      ;A88852;
     LDA.W $0FAA,X                                                        ;A88856;
     BEQ .keepLeft                                                        ;A88859;
     LDA.W #InstList_Evir_Body_FacingRight                                ;A8885B;
     STA.L $7E7804,X                                                      ;A8885E;
 
-.keepLeft:
+  .keepLeft:
     JSR.W SetEvirInstList                                                ;A88862;
     RTS                                                                  ;A88865;
 
@@ -751,7 +751,7 @@ HandleEvirArms:
     BRA .return                                                          ;A8888F;
 
 
-.facingRight:
+  .facingRight:
     LDA.W $0F3A,X                                                        ;A88891;
     CLC                                                                  ;A88894;
     ADC.W #$0004                                                         ;A88895;
@@ -764,7 +764,7 @@ HandleEvirArms:
     STA.L $7E7804,X                                                      ;A888A8;
     JSR.W SetEvirInstList                                                ;A888AC;
 
-.return:
+  .return:
     RTS                                                                  ;A888AF;
 
 
@@ -804,7 +804,7 @@ ResetEvirProjectilePosition:
     BRA .return                                                          ;A88904;
 
 
-.notUp:
+  .notUp:
     LDA.W $0EFA,X                                                        ;A88906;
     CLC                                                                  ;A88909;
     ADC.W #$0004                                                         ;A8890A;
@@ -814,7 +814,7 @@ ResetEvirProjectilePosition:
     ADC.W #$0012                                                         ;A88914;
     STA.W $0F7E,X                                                        ;A88917;
 
-.return:
+  .return:
     RTS                                                                  ;A8891A;
 
 
@@ -832,10 +832,10 @@ Function_Evir_HandleBodyArms:
     BRA .return                                                          ;A8892D;
 
 
-.notMaster:
+  .notMaster:
     JSR.W Call_HandleEvirArms                                            ;A8892F;
 
-.return:
+  .return:
     RTS                                                                  ;A88932;
 
 
@@ -845,7 +845,7 @@ HandleEvirBody:
     BNE .directionChosen                                                 ;A8893A;
     JSR.W SetEvirFacingDirection                                         ;A8893C;
 
-.directionChosen:
+  .directionChosen:
     LDA.L $7E7800,X                                                      ;A8893F;
     BNE .sinking                                                         ;A88943;
     LDA.W $0F7E,X                                                        ;A88945;
@@ -858,12 +858,12 @@ HandleEvirBody:
     BCC .storeYSubPosition                                               ;A88958;
     INC.W $0F7E,X                                                        ;A8895A;
 
-.storeYSubPosition:
+  .storeYSubPosition:
     STA.W $0F80,X                                                        ;A8895D;
     BRA +                                                                ;A88960;
 
 
-.sinking:
+  .sinking:
     LDA.W $0F7E,X                                                        ;A88962;
     CLC                                                                  ;A88965;
     ADC.L $7E7808,X                                                      ;A88966;
@@ -874,10 +874,10 @@ HandleEvirBody:
     BCC ..storeYSubPosition                                              ;A88975;
     INC.W $0F7E,X                                                        ;A88977;
 
-..storeYSubPosition:
+  ..storeYSubPosition:
     STA.W $0F80,X                                                        ;A8897A;
 
-  + DEC.W $0FB0,X                                                        ;A8897D;
++   DEC.W $0FB0,X                                                        ;A8897D;
     BPL .return                                                          ;A88980;
     LDA.W $0FB7,X                                                        ;A88982;
     AND.W #$00FF                                                         ;A88985;
@@ -886,7 +886,7 @@ HandleEvirBody:
     EOR.W #$0001                                                         ;A8898F;
     STA.L $7E7800,X                                                      ;A88992;
 
-.return:
+  .return:
     RTS                                                                  ;A88996;
 
 
@@ -909,7 +909,7 @@ MainAI_EvirProjectile:
     BRA .merge                                                           ;A889B9;
 
 
-.angleInitialized:
+  .angleInitialized:
     LDA.L $7E7818,X                                                      ;A889BB;
     BEQ .doneSpawning                                                    ;A889BF;
     LDA.W #InstList_Evir_Projectile_Regenerating_0                       ;A889C1;
@@ -918,10 +918,10 @@ MainAI_EvirProjectile:
     BRA .merge                                                           ;A889CB;
 
 
-.doneSpawning:
+  .doneSpawning:
     JSR.W ShootEvirProjectileAtSamus                                     ;A889CD;
 
-.merge:
+  .merge:
     JSR.W ($0FAC,X)                                                      ;A889D0;
     RTL                                                                  ;A889D3;
 
@@ -960,7 +960,7 @@ ShootEvirProjectileAtSamus:
     LDA.W #Function_EvirProjectile_Moving                                ;A88A2D;
     STA.W $0FAC,X                                                        ;A88A30;
 
-.return:
+  .return:
     RTS                                                                  ;A88A33;
 
 
@@ -983,7 +983,7 @@ Function_EvirProjectile_Moving:
     BCC +                                                                ;A88A54;
     INC.W $0F7A,X                                                        ;A88A56;
 
-  + STA.W $0F7C,X                                                        ;A88A59;
++   STA.W $0F7C,X                                                        ;A88A59;
     LDA.W $0F7E,X                                                        ;A88A5C;
     CLC                                                                  ;A88A5F;
     ADC.L $7E7812,X                                                      ;A88A60;
@@ -994,7 +994,7 @@ Function_EvirProjectile_Moving:
     BCC +                                                                ;A88A6F;
     INC.W $0F7E,X                                                        ;A88A71;
 
-  + STA.W $0F80,X                                                        ;A88A74;
++   STA.W $0F80,X                                                        ;A88A74;
     RTS                                                                  ;A88A77;
 
 
@@ -1015,14 +1015,14 @@ Function_EvirProjectile_Regenerating:
     BRA .return                                                          ;A88AA1;
 
 
-.notRegenerating:
+  .notRegenerating:
     JSR.W ResetEvirProjectilePosition                                    ;A88AA3;
     LDA.W $0F7A,X                                                        ;A88AA6;
     CLC                                                                  ;A88AA9;
     ADC.W $0FB2,X                                                        ;A88AAA;
     STA.W $0F7A,X                                                        ;A88AAD;
 
-.return:
+  .return:
     RTS                                                                  ;A88AB0;
 
 
@@ -1045,7 +1045,7 @@ StartEvirProjectileRegeneratingIfFarOffScreen:
     STA.L $7E7804,X                                                      ;A88AE0;
     JSR.W SetEvirInstList                                                ;A88AE4;
 
-.return:
+  .return:
     RTS                                                                  ;A88AE7;
 
 
@@ -1060,7 +1060,7 @@ SetEvirInstList:
     STA.W $0F94,X                                                        ;A88AFF;
     STZ.W $0F90,X                                                        ;A88B02;
 
-.return:
+  .return:
     RTS                                                                  ;A88B05;
 
 
@@ -1088,7 +1088,7 @@ ContactReaction_Evir_Common:
     ORA.W #$0200                                                         ;A88B2A;
     STA.W $1006,X                                                        ;A88B2D;
 
-.notDead:
+  .notDead:
     LDA.W $0F9E,X                                                        ;A88B30;
     BEQ .return                                                          ;A88B33;
     STA.W $0FDE,X                                                        ;A88B35;
@@ -1104,7 +1104,7 @@ ContactReaction_Evir_Common:
     LDA.W $0F9E,X                                                        ;A88B52;
     STA.W $101E,X                                                        ;A88B55;
 
-.return:
+  .return:
     RTL                                                                  ;A88B58;
 
 
@@ -1520,13 +1520,13 @@ InitAI_Eye:
     BRA .return                                                          ;A8908C;
 
 
-.facingRight:
+  .facingRight:
     LDA.W #InstList_Eye_FacingRight_Closed                               ;A8908E;
     STA.W $0F92,X                                                        ;A89091;
     BRA .return                                                          ;A89094;
 
 
-.mountPart:
+  .mountPart:
     AND.W #$000F                                                         ;A89096;
     ASL A                                                                ;A89099;
     TAY                                                                  ;A8909A;
@@ -1544,24 +1544,24 @@ InitAI_Eye:
     STA.W $0F92,X                                                        ;A890B8;
     LDX.W #$01FE                                                         ;A890BB;
 
-.loop:
+  .loop:
     LDA.W #$00FF                                                         ;A890BE;
     STA.L $7E9100,X                                                      ;A890C1;
     DEX                                                                  ;A890C5;
     DEX                                                                  ;A890C6;
     BPL .loop                                                            ;A890C7;
 
-.return:
+  .return:
     RTL                                                                  ;A890C9;
 
 
-.XOffsets:
+  .XOffsets:
     dw $FFF8,$0008,$0000,$0000                                           ;A890CA;
 
-.YOffsets:
+  .YOffsets:
     dw $0000,$0000,$FFF8,$0008                                           ;A890D2;
 
-.instListPointers:
+  .instListPointers:
     dw InstList_Eye_Mount_FacingLeft                                     ;A890DA;
     dw InstList_Eye_Mount_FacingRight                                    ;A890DC;
     dw InstList_Eye_Mount_FacingUp                                       ;A890DE;
@@ -1575,7 +1575,7 @@ MainAI_Eye:
     JMP.W ($0FB2,X)                                                      ;A890ED;
 
 
-.return:
+  .return:
     RTL                                                                  ;A890F0;
 
 
@@ -1600,14 +1600,14 @@ Function_Eye_WaitForSamusToGetNear:
     BRA +                                                                ;A8911F;
 
 
-.zeroParam:
+  .zeroParam:
     LDA.W #InstList_Eye_FacingRight_Activating                           ;A89121;
     STA.W $0F92,X                                                        ;A89124;
 
-  + LDA.W #Function_Eye_Activating                                       ;A89127;
++   LDA.W #Function_Eye_Activating                                       ;A89127;
     STA.W $0FB2,X                                                        ;A8912A;
 
-.return:
+  .return:
     RTL                                                                  ;A8912D;
 
 
@@ -1616,7 +1616,7 @@ Function_Eye_Activating:
     BEQ .timerExpired                                                    ;A89131;
     BPL .return                                                          ;A89133;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #$0017                                                         ;A89135;
     JSL.L QueueSound_Lib2_Max6                                           ;A89138;
     JSL.L Spawn_MorphBallEyeBeam_HDMAObject                              ;A8913C;
@@ -1633,7 +1633,7 @@ Function_Eye_Activating:
     JSL.L CalculateAngleOf_12_14_Offset                                  ;A89158;
     STA.W $0FAE,X                                                        ;A8915C;
 
-.return:
+  .return:
     RTL                                                                  ;A8915F;
 
 
@@ -1647,7 +1647,7 @@ Function_Eye_Active:
     TAY                                                                  ;A89171;
     BNE .inProximity                                                     ;A89172;
 
-.notInProximity:
+  .notInProximity:
     LDA.W #$0071                                                         ;A89174;
     JSL.L QueueSound_Lib2_Max6                                           ;A89177;
     STZ.W $0FAC,X                                                        ;A8917B;
@@ -1661,16 +1661,16 @@ Function_Eye_Active:
     BRA +                                                                ;A89192;
 
 
-.zeroParam:
+  .zeroParam:
     LDA.W #InstList_Eye_FacingRight_Deactivating                         ;A89194;
     STA.W $0F92,X                                                        ;A89197;
 
-  + LDA.W #Function_Eye_Deactivating                                     ;A8919A;
++   LDA.W #Function_Eye_Deactivating                                     ;A8919A;
     STA.W $0FB2,X                                                        ;A8919D;
     BRA .merge                                                           ;A891A0;
 
 
-.inProximity:
+  .inProximity:
     LDA.W $0AF6                                                          ;A891A2;
     SEC                                                                  ;A891A5;
     SBC.W $0F7A,X                                                        ;A891A6;
@@ -1688,7 +1688,7 @@ Function_Eye_Active:
     ADC.W #InstList_Eye_Active                                           ;A891C1;
     STA.W $0F92,X                                                        ;A891C4;
 
-.merge:
+  .merge:
     LDA.W #$0001                                                         ;A891C7;
     STA.W $0F94,X                                                        ;A891CA;
     RTL                                                                  ;A891CD;
@@ -1699,11 +1699,11 @@ Function_Eye_Deactivating:
     BEQ .timerExpired                                                    ;A891D1;
     BPL .return                                                          ;A891D3;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #Function_Eye_WaitForSamusToGetNear                            ;A891D5;
     STA.W $0FB2,X                                                        ;A891D8;
 
-.return:
+  .return:
     RTL                                                                  ;A891DB;
 
 
@@ -2156,7 +2156,7 @@ Instruction_FuneNamihe_FinishActivity:
     LDA.W #Function_Namihe_WaitForSamusToGetNear                         ;A896AD;
     STA.W $0FAA,X                                                        ;A896B0;
 
-.return:
+  .return:
     RTL                                                                  ;A896B3;
 
 
@@ -2175,7 +2175,7 @@ Instruction_FuneNamihe_FinishActivity_duplicate:
     LDA.W #Function_Namihe_WaitForSamusToGetNear                         ;A896CC;
     STA.W $0FAA,X                                                        ;A896CF;
 
-.return:
+  .return:
     RTL                                                                  ;A896D2;
 
 
@@ -2204,14 +2204,14 @@ InitAI_Fune_Namihe:
     LDA.W #Function_Namihe_WaitForSamusToGetNear                         ;A89703;
     STA.W $0FAA,X                                                        ;A89706;
 
-.speciesDetermined:
+  .speciesDetermined:
     LDA.W $0FB4,X                                                        ;A89709;
     AND.W #$00F0                                                         ;A8970C;
     BEQ .directionDetermined                                             ;A8970F;
     INC.W $0FA8,X                                                        ;A89711;
     INC.W $0FA8,X                                                        ;A89714;
 
-.directionDetermined:
+  .directionDetermined:
     JSR.W SetFuneNamiheInstList                                          ;A89717;
     LDA.W $0FB7,X                                                        ;A8971A;
     AND.W #$00FF                                                         ;A8971D;
@@ -2246,7 +2246,7 @@ Function_Fune_WaitForTimer:
     STA.W $0FAA,X                                                        ;A89755;
     STZ.W $0FB0,X                                                        ;A89758;
 
-.return:
+  .return:
     RTS                                                                  ;A8975B;
 
 
@@ -2268,7 +2268,7 @@ Function_Namihe_WaitForSamusToGetNear:
     LDA.W #RTS_A8978F                                                    ;A89780;
     STA.W $0FAA,X                                                        ;A89783;
 
-.notInProximity:
+  .notInProximity:
     LDA.L $7E7800,X                                                      ;A89786;
     STA.W $0FA8,X                                                        ;A8978A;
     RTS                                                                  ;A8978D;
@@ -2546,7 +2546,7 @@ InitAI_Coven:
     STA.B $12                                                            ;A89B2C;
     LDA.W #$0000                                                         ;A89B2E;
 
-.loop:
+  .loop:
     STA.L $7EC200,X                                                      ;A89B31;
     INX                                                                  ;A89B35;
     INX                                                                  ;A89B36;
@@ -2577,7 +2577,7 @@ Function_Coven_Materialize_FadeToWhite:
     LDA.W #$0010                                                         ;A89B59;
     STA.B $12                                                            ;A89B5C;
 
-.loopUpper:
+  .loopUpper:
     LDA.L $7EC000,X                                                      ;A89B5E;
     AND.W #$001F                                                         ;A89B62;
     CMP.W #$001F                                                         ;A89B65;
@@ -2588,7 +2588,7 @@ Function_Coven_Materialize_FadeToWhite:
     STA.L $7EC000,X                                                      ;A89B72;
     DEY                                                                  ;A89B76;
 
-.next:
+  .next:
     INX                                                                  ;A89B77;
     INX                                                                  ;A89B78;
     DEC.B $12                                                            ;A89B79;
@@ -2609,7 +2609,7 @@ Function_Coven_Materialize_FadeToWhite:
     TAX                                                                  ;A89B97;
     LDY.W #$0000                                                         ;A89B98;
 
-.loopLower:
+  .loopLower:
     LDA.W Palette_Coven,Y                                                ;A89B9B;
     STA.L $7EC200,X                                                      ;A89B9E;
     INX                                                                  ;A89BA2;
@@ -2619,7 +2619,7 @@ Function_Coven_Materialize_FadeToWhite:
     CPY.W #$0020                                                         ;A89BA6;
     BMI .loopLower                                                       ;A89BA9;
 
-.return:
+  .return:
     PLX                                                                  ;A89BAB;
     RTL                                                                  ;A89BAC;
 
@@ -2667,7 +2667,7 @@ Function_Coven_Materialize_FadeFromWhite:
     LDA.W CovenConstants_SamusMovementCounterThreshold                   ;A89C29;
     STA.L $7E781C,X                                                      ;A89C2C;
 
-.return:
+  .return:
     RTL                                                                  ;A89C30;
 
 
@@ -2690,18 +2690,18 @@ HandleFadeInTimerAndIndex:
     BIT.W #$0002                                                         ;A89C4F;
     BEQ .timerExpired                                                    ;A89C52;
 
-.return:
+  .return:
     RTS                                                                  ;A89C54;
 
 
-.timerExpired:
+  .timerExpired:
     LDA.W $0F86,X                                                        ;A89C55;
     AND.W #$FEFF                                                         ;A89C58;
     STA.W $0F86,X                                                        ;A89C5B;
     RTS                                                                  ;A89C5E;
 
 
-.terminator:
+  .terminator:
     LDA.W #$0000                                                         ;A89C5F;
     STA.W $0FAA,X                                                        ;A89C62;
     STA.W $0FAC,X                                                        ;A89C65;
@@ -2721,7 +2721,7 @@ Function_Coven_Dematerializing:
     LDA.W CovenConstants_SleepTimer                                      ;A89C83;
     STA.W $0FAA,X                                                        ;A89C86;
 
-.return:
+  .return:
     RTL                                                                  ;A89C89;
 
 
@@ -2746,7 +2746,7 @@ Function_Coven_Materialized:
     BRA +                                                                ;A89CBF;
 
 
-.subvelocity:
+  .subvelocity:
     LDA.L $7E7802,X                                                      ;A89CC1;
     CLC                                                                  ;A89CC5;
     ADC.W CovenConstants_HoveringYAccelerationDeceleration               ;A89CC6;
@@ -2755,7 +2755,7 @@ Function_Coven_Materialized:
     ADC.W #$0000                                                         ;A89CD1;
     STA.L $7E7804,X                                                      ;A89CD4;
 
-  + LDA.W $0FAA,X                                                        ;A89CD8;
++   LDA.W $0FAA,X                                                        ;A89CD8;
     DEC A                                                                ;A89CDB;
     STA.W $0FAA,X                                                        ;A89CDC;
     BNE .return                                                          ;A89CDF;
@@ -2778,14 +2778,14 @@ Function_Coven_Materialized:
     STA.B $12                                                            ;A89D03;
     LDA.W #$7FFF                                                         ;A89D05;
 
-.loop:
+  .loop:
     STA.L $7EC200,X                                                      ;A89D08;
     INX                                                                  ;A89D0C;
     INX                                                                  ;A89D0D;
     DEC.B $12                                                            ;A89D0E;
     BPL .loop                                                            ;A89D10;
 
-.return:
+  .return:
     RTL                                                                  ;A89D12;
 
 
@@ -2796,7 +2796,7 @@ Function_Coven_Dematerialized_Asleep:
     STA.W $0FAA,X                                                        ;A89D19;
     BNE .return                                                          ;A89D1C;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #$0001                                                         ;A89D1E;
     STA.W $0FAA,X                                                        ;A89D21;
     LDA.W #$0002                                                         ;A89D24;
@@ -2804,7 +2804,7 @@ Function_Coven_Dematerialized_Asleep:
     LDA.W #Function_Coven_Dematerialized_Awake                           ;A89D2A;
     STA.W $0FA8,X                                                        ;A89D2D;
 
-.return:
+  .return:
     RTL                                                                  ;A89D30;
 
 
@@ -2837,14 +2837,14 @@ Function_Coven_Dematerialized_Awake:
     JMP.W .updateZone                                                    ;A89D5F;
 
 
-  + LDA.W #$0004                                                         ;A89D62;
++   LDA.W #$0004                                                         ;A89D62;
     STA.L $7E780A,X                                                      ;A89D65;
     LDA.W #$000C                                                         ;A89D69;
     STA.L $7E7812,X                                                      ;A89D6C;
     BRA .materialize                                                     ;A89D70;
 
 
-.breakLockOn:
+  .breakLockOn:
     LDA.W CovenConstants_SamusStationaryFramesThreshold                  ;A89D72;
     STA.L $7E781A,X                                                      ;A89D75;
     LDY.W #$0000                                                         ;A89D79;
@@ -2857,10 +2857,10 @@ Function_Coven_Dematerialized_Awake:
     BRA .checkXMovementDirection                                         ;A89D8B;
 
 
-.noXMovement:
+  .noXMovement:
     LDY.W #$0004                                                         ;A89D8D;
 
-.checkXMovementDirection:
+  .checkXMovementDirection:
     TYA                                                                  ;A89D90;
     CMP.L $7E780A,X                                                      ;A89D91;
     BEQ .checkYMovement                                                  ;A89D95;
@@ -2871,7 +2871,7 @@ Function_Coven_Dematerialized_Awake:
     BRA .updateZone                                                      ;A89DA3;
 
 
-.materialize:
+  .materialize:
     LDA.W #Function_Coven_Materialize_FadeToWhite                        ;A89DA5;
     STA.W $0FA8,X                                                        ;A89DA8;
     LDA.W CovenConstants_SamusStationaryFramesThreshold                  ;A89DAB;
@@ -2893,7 +2893,7 @@ Function_Coven_Dematerialized_Awake:
     RTL                                                                  ;A89DD7;
 
 
-.checkYMovement:
+  .checkYMovement:
     LDY.W #$0000                                                         ;A89DD8;
     LDA.W $0AFA                                                          ;A89DDB;
     SEC                                                                  ;A89DDE;
@@ -2904,10 +2904,10 @@ Function_Coven_Dematerialized_Awake:
     BRA .checkYMovementDirection                                         ;A89DEA;
 
 
-.noYMovement:
+  .noYMovement:
     LDY.W #$000C                                                         ;A89DEC;
 
-.checkYMovementDirection:
+  .checkYMovementDirection:
     TYA                                                                  ;A89DEF;
     CMP.L $7E7812,X                                                      ;A89DF0;
     BEQ .matchingYMovementDirection                                      ;A89DF4;
@@ -2918,13 +2918,13 @@ Function_Coven_Dematerialized_Awake:
     BRA .updateZone                                                      ;A89E02;
 
 
-.matchingYMovementDirection:
+  .matchingYMovementDirection:
     LDA.L $7E781C,X                                                      ;A89E04;
     DEC A                                                                ;A89E08;
     STA.L $7E781C,X                                                      ;A89E09;
     BEQ .materialize                                                     ;A89E0D;
 
-.updateZone:
+  .updateZone:
     LDA.W $0AF6                                                          ;A89E0F;
     STA.L $7E780C,X                                                      ;A89E12;
     SEC                                                                  ;A89E16;
@@ -2987,7 +2987,7 @@ AdvanceCovenPaletteTransition:
     JMP.W .return                                                        ;A89E95;
 
 
-.notDoorTransition:
+  .notDoorTransition:
     LDX.W $0E54                                                          ;A89E98;
     LDA.W $0F96,X                                                        ;A89E9B;
     XBA                                                                  ;A89E9E;
@@ -3002,14 +3002,14 @@ AdvanceCovenPaletteTransition:
     ADC.W #$0020                                                         ;A89EA9;
     STA.B $14                                                            ;A89EAC;
 
-.loop:
+  .loop:
     LDA.L $7EC200,X                                                      ;A89EAE;
     CMP.L $7EC000,X                                                      ;A89EB2;
     BNE .notReachedTarget                                                ;A89EB6;
     JMP.W .next                                                          ;A89EB8;
 
 
-.notReachedTarget:
+  .notReachedTarget:
     AND.W #$001F                                                         ;A89EBB;
     STA.B $12                                                            ;A89EBE;
     LDA.L $7EC000,X                                                      ;A89EC0;
@@ -3021,17 +3021,17 @@ AdvanceCovenPaletteTransition:
     BRA +                                                                ;A89ECE;
 
 
-.notReachedRedTarget:
+  .notReachedRedTarget:
     DEC A                                                                ;A89ED0;
 
-  + STA.B $12                                                            ;A89ED1;
++   STA.B $12                                                            ;A89ED1;
     LDA.L $7EC000,X                                                      ;A89ED3;
     AND.W #$FFE0                                                         ;A89ED7;
     ORA.B $12                                                            ;A89EDA;
     STA.L $7EC000,X                                                      ;A89EDC;
     INY                                                                  ;A89EE0;
 
-.redEnd:
+  .redEnd:
     LDA.L $7EC200,X                                                      ;A89EE1;
     AND.W #$03E0                                                         ;A89EE5;
     STA.B $12                                                            ;A89EE8;
@@ -3045,18 +3045,18 @@ AdvanceCovenPaletteTransition:
     BRA +                                                                ;A89EFB;
 
 
-.notReachedGreenTarget:
+  .notReachedGreenTarget:
     SEC                                                                  ;A89EFD;
     SBC.W #$0020                                                         ;A89EFE;
 
-  + STA.B $12                                                            ;A89F01;
++   STA.B $12                                                            ;A89F01;
     LDA.L $7EC000,X                                                      ;A89F03;
     AND.W #$FC1F                                                         ;A89F07;
     ORA.B $12                                                            ;A89F0A;
     STA.L $7EC000,X                                                      ;A89F0C;
     INY                                                                  ;A89F10;
 
-.greenEnd:
+  .greenEnd:
     LDA.L $7EC200,X                                                      ;A89F11;
     AND.W #$7C00                                                         ;A89F15;
     STA.B $12                                                            ;A89F18;
@@ -3070,18 +3070,18 @@ AdvanceCovenPaletteTransition:
     BRA +                                                                ;A89F2B;
 
 
-.notReachedBlueTarget:
+  .notReachedBlueTarget:
     SEC                                                                  ;A89F2D;
     SBC.W #$0400                                                         ;A89F2E;
 
-  + STA.B $12                                                            ;A89F31;
++   STA.B $12                                                            ;A89F31;
     LDA.L $7EC000,X                                                      ;A89F33;
     AND.W #$83FF                                                         ;A89F37;
     ORA.B $12                                                            ;A89F3A;
     STA.L $7EC000,X                                                      ;A89F3C;
     INY                                                                  ;A89F40;
 
-.next:
+  .next:
     INX                                                                  ;A89F41;
     INX                                                                  ;A89F42;
     CPX.B $14                                                            ;A89F43;
@@ -3089,7 +3089,7 @@ AdvanceCovenPaletteTransition:
     JMP.W .loop                                                          ;A89F47;
 
 
-.return:
+  .return:
     TYA                                                                  ;A89F4A;
     PLY                                                                  ;A89F4B;
     PLX                                                                  ;A89F4C;
@@ -3353,7 +3353,7 @@ Instruction_YappingMaw_QueueSFXIfOnScreen:
     LDA.W #$002F                                                         ;A8A13E;
     JSL.L QueueSound_Lib2_Max6                                           ;A8A141;
 
-.return:
+  .return:
     PLX                                                                  ;A8A145;
     PLY                                                                  ;A8A146;
     RTL                                                                  ;A8A147;
@@ -3394,7 +3394,7 @@ InitAI_YappingMaw:
     LDA.W #$FFF8                                                         ;A8A1AC;
     STA.B $22                                                            ;A8A1AF;
 
-.keepUp:
+  .keepUp:
     LDA.W #$0001                                                         ;A8A1B1;
     STA.W $0F94,X                                                        ;A8A1B4;
     STZ.W $0F90,X                                                        ;A8A1B7;
@@ -3406,7 +3406,7 @@ InitAI_YappingMaw:
     LDA.W #$0003                                                         ;A8A1CA;
     STA.L $7E8808,X                                                      ;A8A1CD;
 
-.loop:
+  .loop:
     LDX.W $0E54                                                          ;A8A1D1;
     LDY.W #EnemyProjectile_YappingMawsBody                               ;A8A1D4;
     JSL.L SpawnEnemyProjectileY_ParameterA_XGraphics                     ;A8A1D7;
@@ -3471,16 +3471,16 @@ Function_YappingMaw_Neutral:
     LDA.W #$0040                                                         ;A8A26F;
     STA.L $7E7810,X                                                      ;A8A272;
 
-  + LDA.W $0E3A                                                          ;A8A276;
++   LDA.W $0E3A                                                          ;A8A276;
     STA.L $7E7814,X                                                      ;A8A279;
     LDA.W #Function_YappingMaw_Attack                                    ;A8A27D;
     STA.W $0FA8,X                                                        ;A8A280;
 
-.return:
+  .return:
     RTS                                                                  ;A8A283;
 
 
-.pointBlank:
+  .pointBlank:
     LDA.W #$0030                                                         ;A8A284;
     STA.L $7E802A,X                                                      ;A8A287;
     RTS                                                                  ;A8A28B;
@@ -3511,11 +3511,11 @@ Function_YappingMaw_Attack:
     BRA +                                                                ;A8A2C7;
 
 
-.targetAngleGreaterThanEqualTo80:
+  .targetAngleGreaterThanEqualTo80:
     LDA.W #$0001                                                         ;A8A2C9;
     STA.L $7E801E,X                                                      ;A8A2CC;
 
-  + JSR.W CalculateYappingMawOriginPosition                              ;A8A2D0;
++   JSR.W CalculateYappingMawOriginPosition                              ;A8A2D0;
     LDA.L $7E7814,X                                                      ;A8A2D3;
     CLC                                                                  ;A8A2D7;
     ADC.W #$0010                                                         ;A8A2D8;
@@ -3674,7 +3674,7 @@ Function_YappingMaw_Attacking:
     BRA +                                                                ;A8A471;
 
 
-.notAimingDown:
+  .notAimingDown:
     CLC                                                                  ;A8A473;
     LDA.W #$0080                                                         ;A8A474;
     ADC.B $14                                                            ;A8A477;
@@ -3686,7 +3686,7 @@ Function_YappingMaw_Attacking:
     ADC.B $14                                                            ;A8A489;
     STA.L $7E8008,X                                                      ;A8A48B;
 
-  + LDA.L $7E7812,X                                                      ;A8A48F;
++   LDA.L $7E7812,X                                                      ;A8A48F;
     STA.W $0E32                                                          ;A8A493;
     LDA.L $7E8002,X                                                      ;A8A496;
     JSL.L Math_Cosine_A8A73E                                             ;A8A49A;
@@ -3784,7 +3784,7 @@ Function_YappingMaw_Attacking:
     BRA .gotoMoveSamus                                                   ;A8A5D0;
 
 
-.cooldown:
+  .cooldown:
     LDA.W #Function_YappingMaw_Cooldown                                  ;A8A5D2;
     STA.W $0FA8,X                                                        ;A8A5D5;
     LDA.W #$0030                                                         ;A8A5D8;
@@ -3797,27 +3797,27 @@ Function_YappingMaw_Attacking:
     BRA .up                                                              ;A8A5ED;
 
 
-.gotoMoveSamus:
+  .gotoMoveSamus:
     BRA .moveSamus                                                       ;A8A5EF;
 
 
-.upRight:
+  .upRight:
     LDA.W #InstList_YappingMaw_Cooldown_FacingUpRight                    ;A8A5F1;
     STA.W $0F92,X                                                        ;A8A5F4;
     BRA .upMerge                                                         ;A8A5F7;
 
 
-.upLeft:
+  .upLeft:
     LDA.W #InstList_YappingMaw_Cooldown_FacingUpLeft_0                   ;A8A5F9;
     STA.W $0F92,X                                                        ;A8A5FC;
     BRA .upMerge                                                         ;A8A5FF;
 
 
-.up:
+  .up:
     LDA.W #InstList_YappingMaw_Cooldown_FacingUp_0                       ;A8A601;
     STA.W $0F92,X                                                        ;A8A604;
 
-.upMerge:
+  .upMerge:
     LDA.W $0FB6,X                                                        ;A8A607;
     BNE .return                                                          ;A8A60A;
     LDA.L $7E8028,X                                                      ;A8A60C;
@@ -3828,30 +3828,30 @@ Function_YappingMaw_Attacking:
     BRA .down                                                            ;A8A61A;
 
 
-.downRight:
+  .downRight:
     LDA.W #InstList_YappingMaw_Cooldown_FacingDownRight                  ;A8A61C;
     STA.W $0F92,X                                                        ;A8A61F;
     BRA .moveSamus                                                       ;A8A622;
 
 
-.downLeft:
+  .downLeft:
     LDA.W #InstList_YappingMaw_Cooldown_FacingDownLeft_0                 ;A8A624;
     STA.W $0F92,X                                                        ;A8A627;
     BRA .moveSamus                                                       ;A8A62A;
 
 
-.down:
+  .down:
     LDA.W #InstList_YappingMaw_Cooldown_FacingDown_0                     ;A8A62C;
     STA.W $0F92,X                                                        ;A8A62F;
     BRA .return                                                          ;A8A632;
 
 
-.moveSamus:
+  .moveSamus:
     LDA.L $7E8020,X                                                      ;A8A634;
     BEQ .return                                                          ;A8A638;
     JSR.W MoveSamusWithYappingMawPincers                                 ;A8A63A;
 
-.return:
+  .return:
     RTS                                                                  ;A8A63D;
 
 
@@ -3867,7 +3867,7 @@ UpdateYappingMawAngularSpeed:
     BCC +                                                                ;A8A652;
     INC.W $0FAA,X                                                        ;A8A654;
 
-  + STA.W $0FAC,X                                                        ;A8A657;
++   STA.W $0FAC,X                                                        ;A8A657;
     LDA.W $0FAE,X                                                        ;A8A65A;
     CLC                                                                  ;A8A65D;
     ADC.W #$0008                                                         ;A8A65E;
@@ -3897,7 +3897,7 @@ Function_YappingMaw_Cooldown:
     BEQ .notGrabbingSamus                                                ;A8A691;
     JSR.W MoveSamusWithYappingMawPincers                                 ;A8A693;
 
-.notGrabbingSamus:
+  .notGrabbingSamus:
     DEC.W $0FB0,X                                                        ;A8A696;
     BPL .return                                                          ;A8A699;
     LDA.W $0A60                                                          ;A8A69B;
@@ -3914,7 +3914,7 @@ Function_YappingMaw_Cooldown:
     LDA.W #Function_YappingMaw_Neutral                                   ;A8A6BD;
     STA.W $0FA8,X                                                        ;A8A6C0;
 
-.return:
+  .return:
     RTS                                                                  ;A8A6C3;
 
 
@@ -3995,7 +3995,7 @@ Math_Sine_A8A742:
     INC A                                                                ;A8A75D;
     INC.B $14                                                            ;A8A75E;
 
-  + AND.W #$FF00                                                         ;A8A760;
++   AND.W #$FF00                                                         ;A8A760;
     XBA                                                                  ;A8A763;
     SEP #$20                                                             ;A8A764;
     STA.W $4202                                                          ;A8A766;
@@ -4021,7 +4021,7 @@ Math_Sine_A8A742:
     ORA.W #$FF00                                                         ;A8A78D;
     STA.B $16                                                            ;A8A790;
 
-  + LDA.B $16                                                            ;A8A792;
++   LDA.B $16                                                            ;A8A792;
     LDX.W $0E54                                                          ;A8A794;
     PLP                                                                  ;A8A797;
     RTL                                                                  ;A8A798;
@@ -4040,7 +4040,7 @@ EnemyTouch_YappingMaw:
     LDA.W #RTS_90E90E                                                    ;A8A7B6;
     STA.W $0A60                                                          ;A8A7B9;
 
-.return:
+  .return:
     RTL                                                                  ;A8A7BC;
 
 
@@ -4077,13 +4077,13 @@ EnemyShot_YappingMaw:
     LDA.W #SamusPoseInputHandler_Normal                                  ;A8A80B;
     STA.W $0A60                                                          ;A8A80E;
 
-.notDemo:
+  .notDemo:
     LDA.W #$0000                                                         ;A8A811;
     STA.L $7E8020,X                                                      ;A8A814;
     BRA .return                                                          ;A8A818;
 
 
-.alive:
+  .alive:
     LDA.W $0F9E,X                                                        ;A8A81A;
     BEQ .return                                                          ;A8A81D;
     LDA.W $0A60                                                          ;A8A81F;
@@ -4092,11 +4092,11 @@ EnemyShot_YappingMaw:
     LDA.W #SamusPoseInputHandler_Normal                                  ;A8A827;
     STA.W $0A60                                                          ;A8A82A;
 
-.alsoNotDemo:
+  .alsoNotDemo:
     LDA.W #$0000                                                         ;A8A82D;
     STA.L $7E8020,X                                                      ;A8A830;
 
-.return:
+  .return:
     RTL                                                                  ;A8A834;
 
 
@@ -4140,7 +4140,7 @@ SetYappingMawBodySegmentFrozenPalette:
     ORA.L $7E880A,X                                                      ;A8A891;
     STA.W $19BB,Y                                                        ;A8A895;
 
-.return:
+  .return:
     RTS                                                                  ;A8A898;
 
 
@@ -4175,7 +4175,7 @@ SetYappingMawBaseFrozenPalette:
     ORA.B $12                                                            ;A8A8E7;
     STA.L $7EF078,X                                                      ;A8A8E9;
 
-.return:
+  .return:
     RTS                                                                  ;A8A8ED;
 
 
@@ -4424,7 +4424,7 @@ EnemyShot_Kago:
     LDA.W #$0001                                                         ;A8ABA9;
     STA.W $0F94,X                                                        ;A8ABAC;
 
-.takenHit:
+  .takenHit:
     LDA.L $7E7808,X                                                      ;A8ABAF;
     SEC                                                                  ;A8ABB3;
     SBC.W #$0001                                                         ;A8ABB4;
@@ -4436,7 +4436,7 @@ EnemyShot_Kago:
     LDA.W #$0001                                                         ;A8ABC7;
     STA.W $0FB2,X                                                        ;A8ABCA;
 
-.notDead:
+  .notDead:
     LDY.W #EnemyProjectile_KagoBug                                       ;A8ABCD;
     LDA.W $0F7E,X                                                        ;A8ABD0;
     JSL.L SpawnEnemyProjectileY_ParameterA_XGraphics                     ;A8ABD3;
@@ -4671,7 +4671,7 @@ Instruction_Magdollite_QueueSFXInY_Lib2_Max6_IfOnScreen:
     LDA.W $0000,Y                                                        ;A8AE1A;
     JSL.L QueueSound_Lib2_Max6                                           ;A8AE1D;
 
-.offScreen:
+  .offScreen:
     PLY                                                                  ;A8AE21;
     PLX                                                                  ;A8AE22;
     INY                                                                  ;A8AE23;
@@ -4891,7 +4891,7 @@ Function_Magdollite_Init_Master:
     LDA.W #$0001                                                         ;A8AFBB;
     STA.L $7E7800,X                                                      ;A8AFBE;
 
-.keepLeft:
+  .keepLeft:
     LDA.L $7E7800,X                                                      ;A8AFC2;
     LDA.W #InstList_Magdollite_Idling_FacingLeft                         ;A8AFC6;
     STA.W $0FAE,X                                                        ;A8AFC9;
@@ -4900,7 +4900,7 @@ Function_Magdollite_Init_Master:
     LDA.W #InstList_Magdollite_Idling_FacingRight                        ;A8AFD2;
     STA.W $0FAE,X                                                        ;A8AFD5;
 
-.keepLeft2:
+  .keepLeft2:
     JSR.W CheckIfMagdolliteInstListChanged                               ;A8AFD8;
     LDA.W #Function_Magdollite_WaitForSamusToGetNear                     ;A8AFDB;
     STA.W $0FB2,X                                                        ;A8AFDE;
@@ -5034,7 +5034,7 @@ EnemyGraphicsDrawnHook_Magdollite_PeriodicallyCyclePalettes:
     LDA.B $18                                                            ;A8B103;
     STA.L $7EC018,X                                                      ;A8B105;
 
-.return:
+  .return:
     RTL                                                                  ;A8B109;
 
 
@@ -5060,7 +5060,7 @@ Function_Magdollite_WaitForSamusToGetNear:
     LDA.W #$0001                                                         ;A8B136;
     STA.L $7E7800,X                                                      ;A8B139;
 
-.facingDirectionChosen:
+  .facingDirectionChosen:
     JSR.W CheckIfMagdolliteInstListChanged                               ;A8B13D;
     LDA.L $7E7888,X                                                      ;A8B140;
     BPL .return                                                          ;A8B144;
@@ -5077,12 +5077,12 @@ Function_Magdollite_WaitForSamusToGetNear:
     LDA.W #InstList_Magdollite_SplashIntoLavaAndFormBasePillar_Right_0   ;A8B165;
     STA.W $0FAE,X                                                        ;A8B168;
 
-.keepLeft:
+  .keepLeft:
     JSR.W CheckIfMagdolliteInstListChanged                               ;A8B16B;
     LDA.W #Function_Magdollite_WaitUntilBasePillarFormed                 ;A8B16E;
     STA.W $0FB2,X                                                        ;A8B171;
 
-.return:
+  .return:
     RTS                                                                  ;A8B174;
 
 
@@ -5097,7 +5097,7 @@ Function_Magdollite_WaitUntilBasePillarFormed:
     LDA.W #Function_Magdollite_WaitForOtherPartsToFinish                 ;A8B18C;
     STA.W $0FB2,X                                                        ;A8B18F;
 
-.return:
+  .return:
     RTS                                                                  ;A8B192;
 
 
@@ -5112,12 +5112,12 @@ Function_Magdollite_WaitForOtherPartsToFinish:
     LDA.W #InstList_Magdollite_UnformBasePillar_SplashBackToIdle_Right_0 ;A8B1A8;
     STA.W $0FAE,X                                                        ;A8B1AB;
 
-.facingDirectionChosen:
+  .facingDirectionChosen:
     JSR.W CheckIfMagdolliteInstListChanged                               ;A8B1AE;
     LDA.W #Function_Magdollite_UnformBasePillarBackToHeadIdling          ;A8B1B1;
     STA.W $0FB2,X                                                        ;A8B1B4;
 
-.return:
+  .return:
     RTS                                                                  ;A8B1B7;
 
 
@@ -5132,12 +5132,12 @@ Function_Magdollite_UnformBasePillarBackToHeadIdling:
     LDA.W #InstList_Magdollite_Idling_FacingRight                        ;A8B1CD;
     STA.W $0FAE,X                                                        ;A8B1D0;
 
-.facingDirectionChosen:
+  .facingDirectionChosen:
     JSR.W CheckIfMagdolliteInstListChanged                               ;A8B1D3;
     LDA.W #Function_Magdollite_WaitForSamusToGetNear                     ;A8B1D6;
     STA.W $0FB2,X                                                        ;A8B1D9;
 
-.return:
+  .return:
     RTS                                                                  ;A8B1DC;
 
 
@@ -5155,7 +5155,7 @@ Function_Magdollite_Slave1_WaitForAttackToBeTriggered:
     LDA.L $7E7806,X                                                      ;A8B1FC;
     STA.W $0F7E,X                                                        ;A8B200;
 
-.return:
+  .return:
     RTS                                                                  ;A8B203;
 
 
@@ -5168,7 +5168,7 @@ Function_Magdollite_Slave1_HandlePillarGrowth:
     BCC +                                                                ;A8B212;
     INC.W $0FB0,X                                                        ;A8B214;
 
-  + LDA.W $0F7E,X                                                        ;A8B217;
++   LDA.W $0F7E,X                                                        ;A8B217;
     ADC.L $7E77D4,X                                                      ;A8B21A;
     STA.W $0F7E,X                                                        ;A8B21E;
     CLC                                                                  ;A8B221;
@@ -5199,7 +5199,7 @@ Function_Magdollite_Slave1_AddPillarStacksToReachSamusHeight:
     BRA .return                                                          ;A8B257;
 
 
-.doneGrowing:
+  .doneGrowing:
     LDA.W #Function_Magdollite_Slave1_GetEnemyIndex                      ;A8B259;
     STA.W $0FB2,X                                                        ;A8B25C;
     LDA.W #$0001                                                         ;A8B25F;
@@ -5212,7 +5212,7 @@ Function_Magdollite_Slave1_AddPillarStacksToReachSamusHeight:
     BRA .return                                                          ;A8B272;
 
 
-.increasePillarStack:
+  .increasePillarStack:
     INC.W $0FAA,X                                                        ;A8B274;
     INC.W $0FAA,X                                                        ;A8B277;
     LDA.W $0F7E,X                                                        ;A8B27A;
@@ -5224,7 +5224,7 @@ Function_Magdollite_Slave1_AddPillarStacksToReachSamusHeight:
     STA.W $0FAE,X                                                        ;A8B28A;
     JSR.W CheckIfMagdolliteInstListChanged                               ;A8B28D;
 
-.return:
+  .return:
     RTS                                                                  ;A8B290;
 
 
@@ -5250,7 +5250,7 @@ Function_Magdollite_Slave1_HandlePillarShrinking:
     INC.W $0F7E,X                                                        ;A8B2B8;
     INC.W $0FB0,X                                                        ;A8B2BB;
 
-  + STA.W $0F80,X                                                        ;A8B2BE;
++   STA.W $0F80,X                                                        ;A8B2BE;
     JSR.W RemoveMagdollitePillarStacksUntilBackToBaseHeight              ;A8B2C1;
     RTS                                                                  ;A8B2C4;
 
@@ -5268,7 +5268,7 @@ RemoveMagdollitePillarStacksUntilBackToBaseHeight:
     BRA .return                                                          ;A8B2D8;
 
 
-.removeTileAndRecenter:
+  .removeTileAndRecenter:
     DEC.W $0FAA,X                                                        ;A8B2DA;
     DEC.W $0FAA,X                                                        ;A8B2DD;
     LDA.W $0F7E,X                                                        ;A8B2E0;
@@ -5282,7 +5282,7 @@ RemoveMagdollitePillarStacksUntilBackToBaseHeight:
     BRA .return                                                          ;A8B2F6;
 
 
-.doneShrinking:
+  .doneShrinking:
     LDA.W #$0001                                                         ;A8B2F8;
     STA.L $7E781A,X                                                      ;A8B2FB;
     LDA.W #$0000                                                         ;A8B2FF;
@@ -5290,7 +5290,7 @@ RemoveMagdollitePillarStacksUntilBackToBaseHeight:
     LDA.W #Function_Magdollite_Slave1_WaitForAttackToBeTriggered         ;A8B306;
     STA.W $0FB2,X                                                        ;A8B309;
 
-.return:
+  .return:
     RTS                                                                  ;A8B30C;
 
 
@@ -5302,7 +5302,7 @@ Function_Magdollite_Slave2_Idling_WaitingForTrigger:
     LDA.W #Function_Magdollite_Slave2_SetToThrowFireballsAfterGrowing    ;A8B318;
     STA.W $0FB2,X                                                        ;A8B31B;
 
-.return:
+  .return:
     RTS                                                                  ;A8B31E;
 
 
@@ -5324,7 +5324,7 @@ Function_Magdollite_Slave2_SetSlave1ToShrinkAfterFireballs:
     LDA.L $7E7826,X                                                      ;A8B34B;
     STA.W $0F7E,X                                                        ;A8B34F;
 
-.done:
+  .done:
     JSR.W SetMagdolliteYRadius                                           ;A8B352;
     RTS                                                                  ;A8B355;
 
@@ -5344,7 +5344,7 @@ Function_Magdollite_Slave2_SetToThrowFireballsAfterGrowing:
     LDA.W #$0001                                                         ;A8B377;
     STA.W $0FAA,X                                                        ;A8B37A;
 
-.directionChosen:
+  .directionChosen:
     JSR.W CheckIfMagdolliteInstListChanged                               ;A8B37D;
     LDA.W #Function_Magdollite_Slave2_SetSlave1ToShrinkAfterFireballs    ;A8B380;
     STA.W $0FB2,X                                                        ;A8B383;
@@ -5355,14 +5355,14 @@ Function_Magdollite_Slave2_SetToThrowFireballsAfterGrowing:
     BRA .done                                                            ;A8B394;
 
 
-.waiting:
+  .waiting:
     LDY.W $0F6A,X                                                        ;A8B396;
     LDA.W $0F3E,X                                                        ;A8B399;
     SEC                                                                  ;A8B39C;
     SBC.W MagdolliteYOffsetAimingAtSamus,Y                               ;A8B39D;
     STA.W $0F7E,X                                                        ;A8B3A0;
 
-.done:
+  .done:
     JSR.W SetMagdolliteYRadius                                           ;A8B3A3;
     RTS                                                                  ;A8B3A6;
 
@@ -5377,14 +5377,14 @@ Function_Magdollite_Slave2_GoBackToIdlingAfterPillarShrinks:
     BRA .done                                                            ;A8B3B8;
 
 
-.notWaitingForTrigger:
+  .notWaitingForTrigger:
     LDY.W $0F6A,X                                                        ;A8B3BA;
     LDA.W $0F3E,X                                                        ;A8B3BD;
     SEC                                                                  ;A8B3C0;
     SBC.W MagdolliteYOffsetAimingAtSamus,Y                               ;A8B3C1;
     STA.W $0F7E,X                                                        ;A8B3C4;
 
-.done:
+  .done:
     JSR.W SetMagdolliteYRadius                                           ;A8B3C7;
     RTS                                                                  ;A8B3CA;
 
@@ -5401,7 +5401,7 @@ SetMagdolliteYRadius:
     LDA.W #$0008                                                         ;A8B3DE;
     STA.W $0F04,X                                                        ;A8B3E1;
 
-.return:
+  .return:
     RTS                                                                  ;A8B3E4;
 
 
@@ -5416,7 +5416,7 @@ CheckIfMagdolliteInstListChanged:
     STA.W $0F94,X                                                        ;A8B3F9;
     STZ.W $0F90,X                                                        ;A8B3FC;
 
-.return:
+  .return:
     RTS                                                                  ;A8B3FF;
 
 
@@ -5444,7 +5444,7 @@ ContactReaction_Magdollite_Common:
     ORA.W #$0200                                                         ;A8B424;
     STA.W $1006,X                                                        ;A8B427;
 
-.notDead:
+  .notDead:
     LDA.W $0F9E,X                                                        ;A8B42A;
     BEQ .return                                                          ;A8B42D;
     STA.W $0FDE,X                                                        ;A8B42F;
@@ -5456,7 +5456,7 @@ ContactReaction_Magdollite_Common:
     ORA.W #$0004                                                         ;A8B441;
     STA.W $100A,X                                                        ;A8B444;
 
-.return:
+  .return:
     RTL                                                                  ;A8B447;
 
 
@@ -5816,7 +5816,7 @@ InitAI_Beetom:
     LDA.W #InstList_Beetom_Crawling_FacingLeft_0                         ;A8B7DE;
     STA.L $7E7800,X                                                      ;A8B7E1;
 
-.SamusToTheLeft:
+  .SamusToTheLeft:
     JSR.W SetBeetomInstList                                              ;A8B7E5;
     LDA.W #Function_Beetom_DecideAction                                  ;A8B7E8;
     STA.W $0FAC,X                                                        ;A8B7EB;
@@ -5827,7 +5827,7 @@ Beetom_CalculateInitialHopSpeed:
     STZ.B $12                                                            ;A8B7EF;
     STZ.B $14                                                            ;A8B7F1;
 
-.loop:
+  .loop:
     LDA.B $12                                                            ;A8B7F3;
     CLC                                                                  ;A8B7F5;
     ADC.B $18                                                            ;A8B7F6;
@@ -5862,11 +5862,11 @@ Function_Beetom_DecideAction:
     BRA .return                                                          ;A8B826;
 
 
-.notInProximity:
+  .notInProximity:
     LDA.W #Function_Beetom_DecideAction_SamusNotInProximity              ;A8B828;
     STA.W $0FAC,X                                                        ;A8B82B;
 
-.return:
+  .return:
     RTS                                                                  ;A8B82E;
 
 
@@ -5989,7 +5989,7 @@ Function_Beetom_DecideAction_SamusInProximity:
     LDA.W #$0000                                                         ;A8B940;
     STA.L $7E7812,X                                                      ;A8B943;
 
-.SamusToTheLeft:
+  .SamusToTheLeft:
     JSR.W SetBeetomInstList                                              ;A8B947;
     LDA.W #$0000                                                         ;A8B94A;
     STA.L $7E780A,X                                                      ;A8B94D;
@@ -6025,7 +6025,7 @@ Function_Beetom_StartDropping:
     LDA.W #InstList_Beetom_Crawling_FacingRight_0                        ;A8B98A;
     STA.L $7E7800,X                                                      ;A8B98D;
 
-.keepLeft:
+  .keepLeft:
     JSR.W SetBeetomInstList                                              ;A8B991;
     LDA.W #$0000                                                         ;A8B994;
     STA.L $7E780A,X                                                      ;A8B997;
@@ -6050,7 +6050,7 @@ Function_Beetom_Idling:
     LDA.W #Function_Beetom_DecideAction                                  ;A8B9BA;
     STA.W $0FAC,X                                                        ;A8B9BD;
 
-.return:
+  .return:
     RTS                                                                  ;A8B9C0;
 
 
@@ -6077,7 +6077,7 @@ Function_Beetom_CrawlingLeft:
     BRA .return                                                          ;A8B9F3;
 
 
-.collidedWithBlock:
+  .collidedWithBlock:
     LDA.W $0F7A,X                                                        ;A8B9F5;
     CLC                                                                  ;A8B9F8;
     ADC.W #$0008                                                         ;A8B9F9;
@@ -6093,13 +6093,13 @@ Function_Beetom_CrawlingLeft:
     BRA .return                                                          ;A8BA15;
 
 
-.end:
+  .end:
     LDA.W #$0040                                                         ;A8BA17;
     STA.W $0FAE,X                                                        ;A8BA1A;
     LDA.W #Function_Beetom_DecideAction                                  ;A8BA1D;
     STA.W $0FAC,X                                                        ;A8BA20;
 
-.return:
+  .return:
     RTS                                                                  ;A8BA23;
 
 
@@ -6126,7 +6126,7 @@ Function_Beetom_CrawlingRight:
     BRA .return                                                          ;A8BA56;
 
 
-.collidedWithBlock:
+  .collidedWithBlock:
     LDA.W $0F7A,X                                                        ;A8BA58;
     SEC                                                                  ;A8BA5B;
     SBC.W #$0008                                                         ;A8BA5C;
@@ -6141,13 +6141,13 @@ Function_Beetom_CrawlingRight:
     BRA .return                                                          ;A8BA75;
 
 
-.end:
+  .end:
     LDA.W #$0040                                                         ;A8BA77;
     STA.W $0FAE,X                                                        ;A8BA7A;
     LDA.W #Function_Beetom_DecideAction                                  ;A8BA7D;
     STA.W $0FAC,X                                                        ;A8BA80;
 
-.return:
+  .return:
     RTS                                                                  ;A8BA83;
 
 
@@ -6159,10 +6159,10 @@ Function_Beetom_ShortHopLeft:
     BRA +                                                                ;A8BA90;
 
 
-.falling:
+  .falling:
     JSR.W Function_Beetom_YMovement_ShortHop_Falling                     ;A8BA92;
 
-  + LDA.W #$FFFF                                                         ;A8BA95;
++   LDA.W #$FFFF                                                         ;A8BA95;
     STA.B $14                                                            ;A8BA98;
     LDA.W #$C000                                                         ;A8BA9A;
     STA.B $12                                                            ;A8BA9D;
@@ -6174,7 +6174,7 @@ Function_Beetom_ShortHopLeft:
     LDA.W #Function_Beetom_StartDropping                                 ;A8BAB0;
     STA.W $0FAC,X                                                        ;A8BAB3;
 
-.return:
+  .return:
     RTS                                                                  ;A8BAB6;
 
 
@@ -6186,10 +6186,10 @@ Function_Beetom_ShortHopRight:
     BRA +                                                                ;A8BAC3;
 
 
-.falling:
+  .falling:
     JSR.W Function_Beetom_YMovement_ShortHop_Falling                     ;A8BAC5;
 
-  + STZ.B $14                                                            ;A8BAC8;
++   STZ.B $14                                                            ;A8BAC8;
     LDA.W #$4000                                                         ;A8BACA;
     STA.B $12                                                            ;A8BACD;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A8BACF;
@@ -6200,7 +6200,7 @@ Function_Beetom_ShortHopRight:
     LDA.W #Function_Beetom_StartDropping                                 ;A8BAE0;
     STA.W $0FAC,X                                                        ;A8BAE3;
 
-.return:
+  .return:
     RTS                                                                  ;A8BAE6;
 
 
@@ -6221,7 +6221,7 @@ Function_Beetom_YMovement_ShortHop_Rising:
     BRA .return                                                          ;A8BB04;
 
 
-.notCollidedWithBlock:
+  .notCollidedWithBlock:
     LDA.W $0FAA,X                                                        ;A8BB06;
     SEC                                                                  ;A8BB09;
     SBC.W #$0004                                                         ;A8BB0A;
@@ -6232,7 +6232,7 @@ Function_Beetom_YMovement_ShortHop_Rising:
     LDA.W #$0001                                                         ;A8BB18;
     STA.L $7E780A,X                                                      ;A8BB1B;
 
-.return:
+  .return:
     RTS                                                                  ;A8BB1F;
 
 
@@ -6253,7 +6253,7 @@ Function_Beetom_YMovement_ShortHop_Falling:
     BRA .return                                                          ;A8BB3D;
 
 
-.notCollidedWithBlock:
+  .notCollidedWithBlock:
     LDA.W $0FAA,X                                                        ;A8BB3F;
     CLC                                                                  ;A8BB42;
     ADC.W #$0004                                                         ;A8BB43;
@@ -6263,7 +6263,7 @@ Function_Beetom_YMovement_ShortHop_Falling:
     LDA.W #$0040                                                         ;A8BB4E;
     STA.W $0FAA,X                                                        ;A8BB51;
 
-.return:
+  .return:
     RTS                                                                  ;A8BB54;
 
 
@@ -6275,10 +6275,10 @@ Function_Beetom_LongHopLeft:
     BRA +                                                                ;A8BB61;
 
 
-.falling:
+  .falling:
     JSR.W Function_Beetom_YMovement_LongHop_Falling                      ;A8BB63;
 
-  + LDA.W #$FFFF                                                         ;A8BB66;
++   LDA.W #$FFFF                                                         ;A8BB66;
     STA.B $14                                                            ;A8BB69;
     LDA.W #$C000                                                         ;A8BB6B;
     STA.B $12                                                            ;A8BB6E;
@@ -6290,7 +6290,7 @@ Function_Beetom_LongHopLeft:
     LDA.W #Function_Beetom_StartDropping                                 ;A8BB81;
     STA.W $0FAC,X                                                        ;A8BB84;
 
-.return:
+  .return:
     RTS                                                                  ;A8BB87;
 
 
@@ -6302,10 +6302,10 @@ Function_Beetom_LongHopRight:
     BRA +                                                                ;A8BB94;
 
 
-.falling:
+  .falling:
     JSR.W Function_Beetom_YMovement_LongHop_Falling                      ;A8BB96;
 
-  + STZ.B $14                                                            ;A8BB99;
++   STZ.B $14                                                            ;A8BB99;
     LDA.W #$4000                                                         ;A8BB9B;
     STA.B $12                                                            ;A8BB9E;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A8BBA0;
@@ -6316,7 +6316,7 @@ Function_Beetom_LongHopRight:
     LDA.W #Function_Beetom_StartDropping                                 ;A8BBB1;
     STA.W $0FAC,X                                                        ;A8BBB4;
 
-.return:
+  .return:
     RTS                                                                  ;A8BBB7;
 
 
@@ -6337,7 +6337,7 @@ Function_Beetom_YMovement_LongHop_Rising:
     BRA .return                                                          ;A8BBD5;
 
 
-.notCollidedWithBlock:
+  .notCollidedWithBlock:
     LDA.W $0FAA,X                                                        ;A8BBD7;
     SEC                                                                  ;A8BBDA;
     SBC.W #$0005                                                         ;A8BBDB;
@@ -6348,7 +6348,7 @@ Function_Beetom_YMovement_LongHop_Rising:
     LDA.W #$0001                                                         ;A8BBE9;
     STA.L $7E780A,X                                                      ;A8BBEC;
 
-.return:
+  .return:
     RTS                                                                  ;A8BBF0;
 
 
@@ -6369,7 +6369,7 @@ Function_Beetom_YMovement_LongHop_Falling:
     BRA .return                                                          ;A8BC0E;
 
 
-.notCollidedWithBlock:
+  .notCollidedWithBlock:
     LDA.W $0FAA,X                                                        ;A8BC10;
     CLC                                                                  ;A8BC13;
     ADC.W #$0005                                                         ;A8BC14;
@@ -6379,7 +6379,7 @@ Function_Beetom_YMovement_LongHop_Falling:
     LDA.W #$0040                                                         ;A8BC1F;
     STA.W $0FAA,X                                                        ;A8BC22;
 
-.return:
+  .return:
     RTS                                                                  ;A8BC25;
 
 
@@ -6391,10 +6391,10 @@ Function_Beetom_LungeLeft:
     BRA +                                                                ;A8BC32;
 
 
-.falling:
+  .falling:
     JSR.W Function_Beetom_YMovement_Lunge_Falling                        ;A8BC34;
 
-  + LDA.W #$0003                                                         ;A8BC37;
++   LDA.W #$0003                                                         ;A8BC37;
     EOR.W #$FFFF                                                         ;A8BC3A;
     INC A                                                                ;A8BC3D;
     STA.B $14                                                            ;A8BC3E;
@@ -6407,7 +6407,7 @@ Function_Beetom_LungeLeft:
     LDA.W #Function_Beetom_StartDropping                                 ;A8BC53;
     STA.W $0FAC,X                                                        ;A8BC56;
 
-.return:
+  .return:
     RTS                                                                  ;A8BC59;
 
 
@@ -6419,10 +6419,10 @@ Function_Beetom_LungeRight:
     BRA +                                                                ;A8BC66;
 
 
-.falling:
+  .falling:
     JSR.W Function_Beetom_YMovement_Lunge_Falling                        ;A8BC68;
 
-  + LDA.W #$0003                                                         ;A8BC6B;
++   LDA.W #$0003                                                         ;A8BC6B;
     STA.B $14                                                            ;A8BC6E;
     STZ.B $12                                                            ;A8BC70;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A8BC72;
@@ -6433,7 +6433,7 @@ Function_Beetom_LungeRight:
     LDA.W #Function_Beetom_StartDropping                                 ;A8BC83;
     STA.W $0FAC,X                                                        ;A8BC86;
 
-.return:
+  .return:
     RTS                                                                  ;A8BC89;
 
 
@@ -6454,7 +6454,7 @@ Function_Beetom_YMovement_Lunge_Rising:
     BRA .return                                                          ;A8BCA7;
 
 
-.notCollidedWithBlock:
+  .notCollidedWithBlock:
     LDA.W $0FAA,X                                                        ;A8BCA9;
     SEC                                                                  ;A8BCAC;
     SBC.W #$0005                                                         ;A8BCAD;
@@ -6465,7 +6465,7 @@ Function_Beetom_YMovement_Lunge_Rising:
     LDA.W #$0001                                                         ;A8BCBB;
     STA.L $7E780A,X                                                      ;A8BCBE;
 
-.return:
+  .return:
     RTS                                                                  ;A8BCC2;
 
 
@@ -6486,7 +6486,7 @@ Function_Beetom_YMovement_Lunge_Falling:
     BRA .return                                                          ;A8BCE0;
 
 
-.notCollidedWithBlock:
+  .notCollidedWithBlock:
     LDA.W $0FAA,X                                                        ;A8BCE2;
     CLC                                                                  ;A8BCE5;
     ADC.W #$0003                                                         ;A8BCE6;
@@ -6496,7 +6496,7 @@ Function_Beetom_YMovement_Lunge_Falling:
     LDA.W #$0040                                                         ;A8BCF1;
     STA.W $0FAA,X                                                        ;A8BCF4;
 
-.return:
+  .return:
     RTS                                                                  ;A8BCF7;
 
 
@@ -6516,7 +6516,7 @@ Function_Beetom_DrainingSamus_FacingLeft:
     STA.B $14                                                            ;A8BD19;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A8BD1B;
 
-.notCollidedWithWall:
+  .notCollidedWithWall:
     LDA.W #$0000                                                         ;A8BD1F;
     STA.L $7E7810,X                                                      ;A8BD22;
     LDA.W #Function_Beetom_StartBeingFlung                               ;A8BD26;
@@ -6524,7 +6524,7 @@ Function_Beetom_DrainingSamus_FacingLeft:
     BRA .return                                                          ;A8BD2C;
 
 
-.attached:
+  .attached:
     LDA.W $0AF6                                                          ;A8BD2E;
     STA.W $0F7A,X                                                        ;A8BD31;
     LDA.W $0AFA                                                          ;A8BD34;
@@ -6533,7 +6533,7 @@ Function_Beetom_DrainingSamus_FacingLeft:
     STA.W $0F7E,X                                                        ;A8BD3B;
     JSR.W UpdateBeetomButtonCounter                                      ;A8BD3E;
 
-.return:
+  .return:
     RTS                                                                  ;A8BD41;
 
 
@@ -6553,7 +6553,7 @@ Function_Beetom_DrainingSamus_FacingRight:
     STA.B $14                                                            ;A8BD63;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A8BD65;
 
-.notCollidedWithWall:
+  .notCollidedWithWall:
     LDA.W #$0000                                                         ;A8BD69;
     STA.L $7E7810,X                                                      ;A8BD6C;
     LDA.W #Function_Beetom_StartBeingFlung                               ;A8BD70;
@@ -6561,7 +6561,7 @@ Function_Beetom_DrainingSamus_FacingRight:
     BRA .return                                                          ;A8BD76;
 
 
-.attached:
+  .attached:
     LDA.W $0AF6                                                          ;A8BD78;
     STA.W $0F7A,X                                                        ;A8BD7B;
     LDA.W $0AFA                                                          ;A8BD7E;
@@ -6570,7 +6570,7 @@ Function_Beetom_DrainingSamus_FacingRight:
     STA.W $0F7E,X                                                        ;A8BD85;
     JSR.W UpdateBeetomButtonCounter                                      ;A8BD88;
 
-.return:
+  .return:
     RTS                                                                  ;A8BD8B;
 
 
@@ -6582,7 +6582,7 @@ UpdateBeetomButtonCounter:
     STA.W $0FB2,X                                                        ;A8BD96;
     DEC.W $0FB0,X                                                        ;A8BD99;
 
-.return:
+  .return:
     RTS                                                                  ;A8BD9C;
 
 
@@ -6601,11 +6601,11 @@ Function_Beetom_Dropping:
     BRA .return                                                          ;A8BDBC;
 
 
-.keepLeft:
+  .keepLeft:
     LDA.W #Function_Beetom_StartCrawlingRight                            ;A8BDBE;
     STA.W $0FAC,X                                                        ;A8BDC1;
 
-.return:
+  .return:
     RTS                                                                  ;A8BDC4;
 
 
@@ -6632,7 +6632,7 @@ Function_Beetom_Movement_BeingFlung:
     BRA +                                                                ;A8BDE9;
 
 
-.notCollidedWithBlock:
+  .notCollidedWithBlock:
     LDA.W $0FAA,X                                                        ;A8BDEB;
     CLC                                                                  ;A8BDEE;
     ADC.W #$0001                                                         ;A8BDEF;
@@ -6642,18 +6642,18 @@ Function_Beetom_Movement_BeingFlung:
     LDA.W #$0040                                                         ;A8BDFA;
     STA.W $0FAA,X                                                        ;A8BDFD;
 
-  + LDA.L $7E7812,X                                                      ;A8BE00;
++   LDA.L $7E7812,X                                                      ;A8BE00;
     BNE .right                                                           ;A8BE04;
     LDA.W #$0002                                                         ;A8BE06;
     BRA +                                                                ;A8BE09;
 
 
-.right:
+  .right:
     LDA.W #$0002                                                         ;A8BE0B;
     EOR.W #$FFFF                                                         ;A8BE0E;
     INC A                                                                ;A8BE11;
 
-  + STA.B $14                                                            ;A8BE12;
++   STA.B $14                                                            ;A8BE12;
     STZ.B $12                                                            ;A8BE14;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A8BE16;
     BCC .return                                                          ;A8BE1A;
@@ -6663,7 +6663,7 @@ Function_Beetom_Movement_BeingFlung:
     LDA.W #Function_Beetom_StartDropping                                 ;A8BE27;
     STA.W $0FAC,X                                                        ;A8BE2A;
 
-.return:
+  .return:
     RTS                                                                  ;A8BE2D;
 
 
@@ -6678,11 +6678,11 @@ EnemyTouch_Beetom:
     BRA +                                                                ;A8BE43;
 
 
-.right:
+  .right:
     LDA.W #Function_Beetom_StartDrainingSamus_FacingRight                ;A8BE45;
     STA.W $0FAC,X                                                        ;A8BE48;
 
-  + LDA.W #$0001                                                         ;A8BE4B;
++   LDA.W #$0001                                                         ;A8BE4B;
     STA.L $7E7810,X                                                      ;A8BE4E;
     LDA.W #$0040                                                         ;A8BE52;
     STA.W $0FB0,X                                                        ;A8BE55;
@@ -6697,7 +6697,7 @@ EnemyTouch_Beetom:
     SBC.W $0F7E,X                                                        ;A8BE6D;
     STA.L $7E780E,X                                                      ;A8BE70;
 
-.attached:
+  .attached:
     LDA.W $0A6E                                                          ;A8BE74;
     BNE .damage                                                          ;A8BE77;
     LDA.W $0E44                                                          ;A8BE79;
@@ -6710,18 +6710,18 @@ EnemyTouch_Beetom:
     LDA.W #$002D                                                         ;A8BE8C;
     JSL.L QueueSound_Lib3_Max6                                           ;A8BE8F;
 
-  + LDA.W $0FA4,X                                                        ;A8BE93;
++   LDA.W $0FA4,X                                                        ;A8BE93;
     AND.W #$003F                                                         ;A8BE96;
     CMP.W #$003F                                                         ;A8BE99;
     BNE .return                                                          ;A8BE9C;
 
-.damage:
+  .damage:
     JSL.L CommonA8_NormalEnemyTouchAI                                    ;A8BE9E;
     LDA.W #$0000                                                         ;A8BEA2;
     STA.W $18A8                                                          ;A8BEA5;
     STA.W $18AA                                                          ;A8BEA8;
 
-.return:
+  .return:
     RTL                                                                  ;A8BEAB;
 
 
@@ -6736,11 +6736,11 @@ EnemyShot_Beetom:
     CMP.W #Function_Beetom_DrainingSamus_FacingLeft                      ;A8BEC0;
     BNE .return                                                          ;A8BEC3;
 
-.startDropping:
+  .startDropping:
     LDA.W #Function_Beetom_StartDropping                                 ;A8BEC5;
     STA.W $0FAC,X                                                        ;A8BEC8;
 
-.return:
+  .return:
     LDA.W #$0000                                                         ;A8BECB;
     STA.L $7E7810,X                                                      ;A8BECE;
     RTL                                                                  ;A8BED2;
@@ -7007,7 +7007,7 @@ InitAI_Powamp:
     BRA .return                                                          ;A8C1FB;
 
 
-.balloon:
+  .balloon:
     LDA.W $0F7A,X                                                        ;A8C1FD;
     STA.W $0FA8,X                                                        ;A8C200;
     LDA.W $0F7E,X                                                        ;A8C203;
@@ -7019,7 +7019,7 @@ InitAI_Powamp:
     LDA.W $0FB6,X                                                        ;A8C215;
     STA.W $0FAE,X                                                        ;A8C218;
 
-.return:
+  .return:
     RTL                                                                  ;A8C21B;
 
 
@@ -7035,7 +7035,7 @@ RTL_A8C222:
 FirePowampSpikesIn8Directions:
     LDY.W #$0007                                                         ;A8C223;
 
-.loop:
+  .loop:
     TYA                                                                  ;A8C226;
     PHY                                                                  ;A8C227;
     LDY.W #EnemyProjectile_Powamp                                        ;A8C228;
@@ -7059,7 +7059,7 @@ HandlePowampBalloonYOffset:
     BMI +                                                                ;A8C248;
     LDA.W #$0000                                                         ;A8C24A;
 
-  + TAY                                                                  ;A8C24D;
++   TAY                                                                  ;A8C24D;
     LDA.W $0F7E,X                                                        ;A8C24E;
     CLC                                                                  ;A8C251;
     ADC.W .risingYOffsets,Y                                              ;A8C252;
@@ -7067,7 +7067,7 @@ HandlePowampBalloonYOffset:
     BRA .return                                                          ;A8C258;
 
 
-.sinking:
+  .sinking:
     SEC                                                                  ;A8C25A;
     SBC.W #$0004                                                         ;A8C25B;
     SEC                                                                  ;A8C25E;
@@ -7077,20 +7077,20 @@ HandlePowampBalloonYOffset:
     BMI +                                                                ;A8C266;
     LDA.W #$0000                                                         ;A8C268;
 
-  + TAY                                                                  ;A8C26B;
++   TAY                                                                  ;A8C26B;
     LDA.W $0F7E,X                                                        ;A8C26C;
     CLC                                                                  ;A8C26F;
     ADC.W .sinkingYOffsets,Y                                             ;A8C270;
     STA.W $0F3E,X                                                        ;A8C273;
 
-.return:
+  .return:
     RTS                                                                  ;A8C276;
 
 ; Balloon Y offsets. Indexed by animation frame into inflate/deflate instruction list
-.risingYOffsets:
+  .risingYOffsets:
     dw $FFF4,$FFF0,$FFEC                                                 ;A8C277;
 
-.sinkingYOffsets:
+  .sinkingYOffsets:
     dw $FFEC,$FFF0,$FFF4                                                 ;A8C27D;
 
 
@@ -7099,7 +7099,7 @@ Function_Powamp_Deflated_Resting:
     BEQ .timerExpired                                                    ;A8C286;
     BPL .done                                                            ;A8C288;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #$0001                                                         ;A8C28A;
     STA.W $0F54,X                                                        ;A8C28D;
     LDA.W #InstList_Powamp_Balloon_StartingToRise                        ;A8C290;
@@ -7109,7 +7109,7 @@ Function_Powamp_Deflated_Resting:
     LDA.W #$000A                                                         ;A8C29C;
     STA.W $0FB0,X                                                        ;A8C29F;
 
-.done:
+  .done:
     JSR.W HandlePowampBalloonYOffset                                     ;A8C2A2;
     RTL                                                                  ;A8C2A5;
 
@@ -7119,7 +7119,7 @@ Function_Powamp_Inflating:
     BEQ .timerExpired                                                    ;A8C2A9;
     BPL .done                                                            ;A8C2AB;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #Function_Powamp_Inflated_RiseToTargetHeight                   ;A8C2AD;
     STA.W $0FB2,X                                                        ;A8C2B0;
     LDA.W Powamp_InitialYVelocity_Rising                                 ;A8C2B3;
@@ -7131,7 +7131,7 @@ Function_Powamp_Inflating:
     LDA.W #InstList_Powamp_Body_FastAnimation                            ;A8C2C5;
     STA.W $0F92,X                                                        ;A8C2C8;
 
-.done:
+  .done:
     JSR.W HandlePowampBalloonYOffset                                     ;A8C2CB;
     RTL                                                                  ;A8C2CE;
 
@@ -7145,12 +7145,12 @@ Function_Powamp_Inflated_RiseToTargetHeight:
     JMP.W Function_Powamp_Grappled_RiseToTargetHeight                    ;A8C2DD;
 
 
-.notGrappleAI:
+  .notGrappleAI:
     DEC.W $0FAE,X                                                        ;A8C2E0;
     BEQ .negativeTimer                                                   ;A8C2E3;
     BPL .timerNotExpired                                                 ;A8C2E5;
 
-.negativeTimer:
+  .negativeTimer:
     LDA.W #$0005                                                         ;A8C2E7;
     STA.W $0FAE,X                                                        ;A8C2EA;
     LDA.W $0FAC,X                                                        ;A8C2ED;
@@ -7167,10 +7167,10 @@ Function_Powamp_Inflated_RiseToTargetHeight:
     BMI .storeIndex                                                      ;A8C306;
     LDA.W #$0000                                                         ;A8C308;
 
-.storeIndex:
+  .storeIndex:
     STA.W $0FAC,X                                                        ;A8C30B;
 
-.timerNotExpired:
+  .timerNotExpired:
     LDA.W $0FAA,X                                                        ;A8C30E;
     CLC                                                                  ;A8C311;
     ADC.W Powamp_YAccel_Rising+2                                         ;A8C312;
@@ -7190,7 +7190,7 @@ Function_Powamp_Inflated_RiseToTargetHeight:
     CMP.W $0F7E,X                                                        ;A8C338;
     BMI .done                                                            ;A8C33B;
 
-.doneRising:
+  .doneRising:
     LDA.W $0FAC,X                                                        ;A8C33D;
     BEQ .centered                                                        ;A8C340;
     CMP.W #$0006                                                         ;A8C342;
@@ -7200,7 +7200,7 @@ Function_Powamp_Inflated_RiseToTargetHeight:
     BRA .done                                                            ;A8C34D;
 
 
-.centered:
+  .centered:
     LDA.W #Function_Powamp_Deflating                                     ;A8C34F;
     STA.W $0FB2,X                                                        ;A8C352;
     LDA.W #$000A                                                         ;A8C355;
@@ -7210,7 +7210,7 @@ Function_Powamp_Inflated_RiseToTargetHeight:
     LDA.W #InstList_Powamp_Balloon_StartSinking                          ;A8C361;
     STA.W $0F52,X                                                        ;A8C364;
 
-.done:
+  .done:
     JSR.W HandlePowampBalloonYOffset                                     ;A8C367;
     RTL                                                                  ;A8C36A;
 
@@ -7220,7 +7220,7 @@ Function_Powamp_Inflated_FinishWiggle:
     BEQ .timerExpired                                                    ;A8C36E;
     BPL .continueRising                                                  ;A8C370;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #$0005                                                         ;A8C372;
     STA.W $0FAE,X                                                        ;A8C375;
     LDA.W $0FAC,X                                                        ;A8C378;
@@ -7240,12 +7240,12 @@ Function_Powamp_Inflated_FinishWiggle:
     BMI .storeIndex                                                      ;A8C398;
     LDA.W #$0000                                                         ;A8C39A;
 
-.storeIndex:
+  .storeIndex:
     STA.W $0FAC,X                                                        ;A8C39D;
     BRA .continueRising                                                  ;A8C3A0;
 
 
-.centered:
+  .centered:
     LDA.W #Function_Powamp_Deflating                                     ;A8C3A2;
     STA.W $0FB2,X                                                        ;A8C3A5;
     LDA.W #$000A                                                         ;A8C3A8;
@@ -7257,7 +7257,7 @@ Function_Powamp_Inflated_FinishWiggle:
     BRA .return                                                          ;A8C3BA;
 
 
-.continueRising:
+  .continueRising:
     LDA.W $0FAA,X                                                        ;A8C3BC;
     CLC                                                                  ;A8C3BF;
     ADC.W Powamp_YAccel_Rising+2                                         ;A8C3C0;
@@ -7271,7 +7271,7 @@ Function_Powamp_Inflated_FinishWiggle:
     STA.B $12                                                            ;A8C3D7;
     JSL.L MoveEnemyDownBy_14_12                                          ;A8C3D9;
 
-.return:
+  .return:
     JSR.W HandlePowampBalloonYOffset                                     ;A8C3DD;
     RTL                                                                  ;A8C3E0;
 
@@ -7285,12 +7285,12 @@ Function_Powamp_Grappled_RiseToTargetHeight:
     RTL                                                                  ;A8C3EF;
 
 
-.grappleAI:
+  .grappleAI:
     DEC.W $0FAE,X                                                        ;A8C3F0;
     BEQ .timerExpired                                                    ;A8C3F3;
     BPL .timerNotExpired                                                 ;A8C3F5;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #$0005                                                         ;A8C3F7;
     STA.W $0FAE,X                                                        ;A8C3FA;
     LDA.W $0FAC,X                                                        ;A8C3FD;
@@ -7307,10 +7307,10 @@ Function_Powamp_Grappled_RiseToTargetHeight:
     BMI .storeIndex                                                      ;A8C416;
     LDA.W #$0000                                                         ;A8C418;
 
-.storeIndex:
+  .storeIndex:
     STA.W $0FAC,X                                                        ;A8C41B;
 
-.timerNotExpired:
+  .timerNotExpired:
     LDA.W $0FAA,X                                                        ;A8C41E;
     CLC                                                                  ;A8C421;
     ADC.W Powamp_YAccel_Rising+2                                         ;A8C422;
@@ -7330,7 +7330,7 @@ Function_Powamp_Grappled_RiseToTargetHeight:
     CMP.W $0F7E,X                                                        ;A8C448;
     BMI .return                                                          ;A8C44B;
 
-.doneSinking:
+  .doneSinking:
     LDA.W $0FAC,X                                                        ;A8C44D;
     BEQ .centered                                                        ;A8C450;
     CMP.W #$0006                                                         ;A8C452;
@@ -7340,11 +7340,11 @@ Function_Powamp_Grappled_RiseToTargetHeight:
     BRA .return                                                          ;A8C45D;
 
 
-.centered:
+  .centered:
     LDA.W #Function_Powamp_Grappled_Resting                              ;A8C45F;
     STA.W $0FB2,X                                                        ;A8C462;
 
-.return:
+  .return:
     JSR.W HandlePowampBalloonYOffset                                     ;A8C465;
     RTL                                                                  ;A8C468;
 
@@ -7358,12 +7358,12 @@ Function_Powamp_Grappled_FinishWiggle:
     RTL                                                                  ;A8C477;
 
 
-.GrappleAI:
+  .GrappleAI:
     DEC.W $0FAE,X                                                        ;A8C478;
     BEQ .timerExpired                                                    ;A8C47B;
     BPL .continueRising                                                  ;A8C47D;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #$0005                                                         ;A8C47F;
     STA.W $0FAE,X                                                        ;A8C482;
     LDA.W $0FAC,X                                                        ;A8C485;
@@ -7383,18 +7383,18 @@ Function_Powamp_Grappled_FinishWiggle:
     BMI .storeIndex                                                      ;A8C4A5;
     LDA.W #$0000                                                         ;A8C4A7;
 
-.storeIndex:
+  .storeIndex:
     STA.W $0FAC,X                                                        ;A8C4AA;
     BRA .continueRising                                                  ;A8C4AD;
 
 
-.centered:
+  .centered:
     LDA.W #Function_Powamp_Grappled_Resting                              ;A8C4AF;
     STA.W $0FB2,X                                                        ;A8C4B2;
     BRA .return                                                          ;A8C4B5;
 
 
-.continueRising:
+  .continueRising:
     LDA.W $0FAA,X                                                        ;A8C4B7;
     CLC                                                                  ;A8C4BA;
     ADC.W Powamp_YAccel_Rising+2                                         ;A8C4BB;
@@ -7408,7 +7408,7 @@ Function_Powamp_Grappled_FinishWiggle:
     STA.B $12                                                            ;A8C4D2;
     JSL.L MoveEnemyDownBy_14_12                                          ;A8C4D4;
 
-.return:
+  .return:
     JSR.W HandlePowampBalloonYOffset                                     ;A8C4D8;
     RTL                                                                  ;A8C4DB;
 
@@ -7426,7 +7426,7 @@ Function_Powamp_Grappled_Resting:
     LDA.W #InstList_Powamp_Balloon_StartSinking                          ;A8C4F6;
     STA.W $0F52,X                                                        ;A8C4F9;
 
-.done:
+  .done:
     JSR.W HandlePowampBalloonYOffset                                     ;A8C4FC;
     RTL                                                                  ;A8C4FF;
 
@@ -7436,7 +7436,7 @@ Function_Powamp_Deflating:
     BEQ .timerExpired                                                    ;A8C503;
     BPL .done                                                            ;A8C505;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #Function_Powamp_Deflated_Sinking                              ;A8C507;
     STA.W $0FB2,X                                                        ;A8C50A;
     LDA.W Powamp_InitialYVelocity_Sinking                                ;A8C50D;
@@ -7444,7 +7444,7 @@ Function_Powamp_Deflating:
     LDA.W Powamp_InitialYVelocity_Sinking+2                              ;A8C513;
     STA.W $0FAA,X                                                        ;A8C516;
 
-.done:
+  .done:
     JSR.W HandlePowampBalloonYOffset                                     ;A8C519;
     RTL                                                                  ;A8C51C;
 
@@ -7476,7 +7476,7 @@ Function_Powamp_Deflated_Sinking:
     LDA.W #InstList_Powamp_Body_SlowAnimation                            ;A8C55E;
     STA.W $0F92,X                                                        ;A8C561;
 
-.done:
+  .done:
     JSR.W HandlePowampBalloonYOffset                                     ;A8C564;
     RTL                                                                  ;A8C567;
 
@@ -7501,7 +7501,7 @@ Function_Powamp_FatalDamage:
     LDA.W #$0001                                                         ;A8C583;
     STA.W $0F54,X                                                        ;A8C586;
 
-  + LDA.W #Function_Powamp_DeathSequence                                 ;A8C589;
++   LDA.W #Function_Powamp_DeathSequence                                 ;A8C589;
     STA.W $0FB2,X                                                        ;A8C58C;
     LDA.W #$0020                                                         ;A8C58F;
     STA.W $0FB0,X                                                        ;A8C592;
@@ -7509,7 +7509,7 @@ Function_Powamp_FatalDamage:
     RTL                                                                  ;A8C598;
 
 
-.instListPointers:
+  .instListPointers:
 ; Pointers to animation frames in inflate instruction list
     dw InstList_Powamp_Balloon_Inflated                                  ;A8C599;
     dw InstList_Powamp_Balloon_Inflating                                 ;A8C59B;
@@ -7520,7 +7520,7 @@ Function_Powamp_DeathSequence:
     BEQ .timerExpired                                                    ;A8C5A2;
     BPL .done                                                            ;A8C5A4;
 
-.timerExpired:
+  .timerExpired:
     STZ.W $0F4C,X                                                        ;A8C5A6;
     LDA.W $0F46,X                                                        ;A8C5A9;
     ORA.W #$0200                                                         ;A8C5AC;
@@ -7530,7 +7530,7 @@ Function_Powamp_DeathSequence:
     RTL                                                                  ;A8C5B9;
 
 
-.done:
+  .done:
     JSR.W HandlePowampBalloonYOffset                                     ;A8C5BA;
     RTL                                                                  ;A8C5BD;
 
@@ -7549,7 +7549,7 @@ EnemyTouch_Powamp:
     RTL                                                                  ;A8C5D7;
 
 
-.dead:
+  .dead:
     LDA.W $0F46,X                                                        ;A8C5D8;
     ORA.W #$0200                                                         ;A8C5DB;
     STA.W $0F46,X                                                        ;A8C5DE;
@@ -7559,7 +7559,7 @@ EnemyTouch_Powamp:
     LDA.W #$0A00                                                         ;A8C5E8;
     STA.W $0F96,X                                                        ;A8C5EB;
 
-.return:
+  .return:
     RTL                                                                  ;A8C5EE;
 
 
@@ -7572,7 +7572,7 @@ EnemyShot_Powamp:
     RTL                                                                  ;A8C5F9;
 
 
-.body:
+  .body:
     JSL.L NormalEnemyShotAI_NoDeathCheck_NoEnemyShotGraphic_External     ;A8C5FA;
     LDA.W $0F8A,X                                                        ;A8C5FE;
     BIT.W #$0004                                                         ;A8C601;
@@ -7583,7 +7583,7 @@ EnemyShot_Powamp:
     ORA.W #$0004                                                         ;A8C60F;
     STA.W $0F4A,X                                                        ;A8C612;
 
-.notFrozenAI:
+  .notFrozenAI:
     LDA.W $0F8A,X                                                        ;A8C615;
     BIT.W #$0002                                                         ;A8C618;
     BEQ .notHurtAI                                                       ;A8C61B;
@@ -7593,7 +7593,7 @@ EnemyShot_Powamp:
     ORA.W #$0002                                                         ;A8C626;
     STA.W $0F4A,X                                                        ;A8C629;
 
-.notHurtAI:
+  .notHurtAI:
     LDA.W $0F8C,X                                                        ;A8C62C;
     BNE .return                                                          ;A8C62F;
     LDA.W #Function_Powamp_FatalDamage                                   ;A8C631;
@@ -7601,7 +7601,7 @@ EnemyShot_Powamp:
     LDA.W #$0001                                                         ;A8C637;
     STA.W $0FB6,X                                                        ;A8C63A;
 
-.return:
+  .return:
     PLB                                                                  ;A8C63D;
     RTL                                                                  ;A8C63E;
 
@@ -7617,7 +7617,7 @@ PowerBombReaction_Powamp:
     BRA .return                                                          ;A8C654;
 
 
-.notDead:
+  .notDead:
     LDA.W $0FA2,X                                                        ;A8C656;
     STA.W $0F62,X                                                        ;A8C659;
     LDA.W $0FA0,X                                                        ;A8C65C;
@@ -7629,7 +7629,7 @@ PowerBombReaction_Powamp:
     LDA.W $0F8A,X                                                        ;A8C66E;
     STA.W $0F4A,X                                                        ;A8C671;
 
-.return:
+  .return:
     RTL                                                                  ;A8C674;
 
 
@@ -8121,10 +8121,10 @@ InitAI_RobotNoPower:
     CMP.W #$0004                                                         ;A8CBD7;
     BMI .valid                                                           ;A8CBDA;
 
-.zeroParam1:
+  .zeroParam1:
     LDA.W #$0000                                                         ;A8CBDC;
 
-.valid:
+  .valid:
     STA.W $0FB4,X                                                        ;A8CBDF;
     ASL A                                                                ;A8CBE2;
     TAY                                                                  ;A8CBE3;
@@ -8158,7 +8158,7 @@ InitAI_RobotNoPower:
     RTL                                                                  ;A8CC2F;
 
 
-.pointers:
+  .pointers:
 ; Instruction list pointers. Indexed by [enemy parameter 1] * 2
     dw InstList_RobotNoPower_Neutral                                     ;A8CC30;
     dw InstList_RobotNoPower_LeaningLeft                                 ;A8CC32;
@@ -8208,7 +8208,7 @@ EnemyGraphicsDrawnHook_Robot_PeriodicallyCyclePalettes:
     LDA.L $7ED656                                                        ;A8CC87;
     TAY                                                                  ;A8CC8B;
 
-.again:
+  .again:
     LDA.W .paletteColor9,Y                                               ;A8CC8C;
     BMI .zero                                                            ;A8CC8F;
     STA.L $7EC112,X                                                      ;A8CC91;
@@ -8226,11 +8226,11 @@ EnemyGraphicsDrawnHook_Robot_PeriodicallyCyclePalettes:
     STA.L $7ED656                                                        ;A8CCB6;
     PLX                                                                  ;A8CCBA;
 
-.return:
+  .return:
     RTL                                                                  ;A8CCBB;
 
 
-.zero:
+  .zero:
     LDY.W #$0000                                                         ;A8CCBC;
     BRA .again                                                           ;A8CCBF;
 
@@ -8238,15 +8238,15 @@ EnemyGraphicsDrawnHook_Robot_PeriodicallyCyclePalettes:
 ;        ____________________________ Palette colours 9..Ch. Negative = terminator
 ;       |                         ___ Timer
 ;       |                        |
-.paletteColor9:
+  .paletteColor9:
     dw $001F                                                             ;A8CCC1;
-.paletteColorA:
+  .paletteColorA:
     dw       $0018                                                       ;A8CCC3;
-.paletteColorB:
+  .paletteColorB:
     dw             $000F                                                 ;A8CCC5;
-.paletteColorC:
+  .paletteColorC:
     dw                   $0008                                           ;A8CCC7;
-.timer:
+  .timer:
     dw                          $0040                                    ;A8CCC9;
     dw $0018,$000F,$0008,$001F, $0010
     dw $000F,$0008,$001F,$0018, $0010
@@ -8261,7 +8261,7 @@ DecrementRobotLaserCooldown:
     DEC A                                                                ;A8CD04;
     STA.W $0FAA,X                                                        ;A8CD05;
 
-.return:
+  .return:
     RTS                                                                  ;A8CD08;
 
 
@@ -8288,7 +8288,7 @@ Instruction_Robot_FacingLeft_MoveForward_HandleWallOrFall:
     RTL                                                                  ;A8CD36;
 
 
-.notCollidedWithWall:
+  .notCollidedWithWall:
     JSL.L CheckIfEnemyIsTouchingSamusFromBelow                           ;A8CD37;
     AND.W #$FFFF                                                         ;A8CD3B;
     BEQ .notTouchingSamusFromBelow                                       ;A8CD3E;
@@ -8297,7 +8297,7 @@ Instruction_Robot_FacingLeft_MoveForward_HandleWallOrFall:
     LDA.W #$FFFC                                                         ;A8CD46;
     STA.W $0B58                                                          ;A8CD49;
 
-.notTouchingSamusFromBelow:
+  .notTouchingSamusFromBelow:
     LDA.W $0F7E,X                                                        ;A8CD4C;
     STA.W $0FAE,X                                                        ;A8CD4F;
     LDA.W $0F7A,X                                                        ;A8CD52;
@@ -8329,7 +8329,7 @@ Instruction_Robot_FacingLeft_MoveForward_HandleWallOrFall:
     RTL                                                                  ;A8CD94;
 
 
-.collidedWithBlock:
+  .collidedWithBlock:
     LDA.W $0FAC,X                                                        ;A8CD95;
     STA.W $0F7A,X                                                        ;A8CD98;
     LDA.W $0FAE,X                                                        ;A8CD9B;
@@ -8362,7 +8362,7 @@ Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall:
     RTL                                                                  ;A8CDD1;
 
 
-.notCollidedWtihWall:
+  .notCollidedWtihWall:
     JSL.L CheckIfEnemyIsTouchingSamusFromBelow                           ;A8CDD2;
     AND.W #$FFFF                                                         ;A8CDD6;
     BEQ .return                                                          ;A8CDD9;
@@ -8371,7 +8371,7 @@ Instruction_Robot_FacingLeft_MoveForward_HandleHittingWall:
     LDA.W #$FFFC                                                         ;A8CDE1;
     STA.W $0B58                                                          ;A8CDE4;
 
-.return:
+  .return:
     PLY                                                                  ;A8CDE7;
     PLX                                                                  ;A8CDE8;
     RTL                                                                  ;A8CDE9;
@@ -8400,7 +8400,7 @@ Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall:
     RTL                                                                  ;A8CE17;
 
 
-.notCollidedWithWall:
+  .notCollidedWithWall:
     JSL.L CheckIfEnemyIsTouchingSamusFromBelow                           ;A8CE18;
     AND.W #$FFFF                                                         ;A8CE1C;
     BEQ .notTouchingSamusFromBelow                                       ;A8CE1F;
@@ -8409,7 +8409,7 @@ Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall:
     LDA.W #$0004                                                         ;A8CE27;
     STA.W $0B58                                                          ;A8CE2A;
 
-.notTouchingSamusFromBelow:
+  .notTouchingSamusFromBelow:
     LDA.W $0F7E,X                                                        ;A8CE2D;
     STA.W $0FAE,X                                                        ;A8CE30;
     LDA.W $0F7A,X                                                        ;A8CE33;
@@ -8441,7 +8441,7 @@ Instruction_Robot_FacingLeft_MoveBackward_HandleWallOrFall:
     RTL                                                                  ;A8CE75;
 
 
-.collidedWithBlock:
+  .collidedWithBlock:
     LDA.W $0FAC,X                                                        ;A8CE76;
     STA.W $0F7A,X                                                        ;A8CE79;
     LDA.W $0FAE,X                                                        ;A8CE7C;
@@ -8474,7 +8474,7 @@ Instruction_Robot_FacingLeft_MoveBackward_HandleHittingWall:
     RTL                                                                  ;A8CEB2;
 
 
-.notCollidedWithWall:
+  .notCollidedWithWall:
     JSL.L CheckIfEnemyIsTouchingSamusFromBelow                           ;A8CEB3;
     AND.W #$FFFF                                                         ;A8CEB7;
     BEQ .return                                                          ;A8CEBA;
@@ -8483,7 +8483,7 @@ Instruction_Robot_FacingLeft_MoveBackward_HandleHittingWall:
     LDA.W #$0004                                                         ;A8CEC2;
     STA.W $0B58                                                          ;A8CEC5;
 
-.return:
+  .return:
     PLY                                                                  ;A8CEC8;
     PLX                                                                  ;A8CEC9;
     RTL                                                                  ;A8CECA;
@@ -8517,7 +8517,7 @@ Instruction_Robot_FacingRight_MoveForward_HandleWallOrFall:
     RTL                                                                  ;A8CEFC;
 
 
-.notCollidedWithWall:
+  .notCollidedWithWall:
     JSL.L CheckIfEnemyIsTouchingSamusFromBelow                           ;A8CEFD;
     AND.W #$FFFF                                                         ;A8CF01;
     BEQ .notTouchingSamusFromBelow                                       ;A8CF04;
@@ -8526,7 +8526,7 @@ Instruction_Robot_FacingRight_MoveForward_HandleWallOrFall:
     LDA.W #$0004                                                         ;A8CF0C;
     STA.W $0B58                                                          ;A8CF0F;
 
-.notTouchingSamusFromBelow:
+  .notTouchingSamusFromBelow:
     LDA.W $0F7E,X                                                        ;A8CF12;
     STA.W $0FAE,X                                                        ;A8CF15;
     LDA.W $0F7A,X                                                        ;A8CF18;
@@ -8558,7 +8558,7 @@ Instruction_Robot_FacingRight_MoveForward_HandleWallOrFall:
     RTL                                                                  ;A8CF5A;
 
 
-.collidedWithBlock:
+  .collidedWithBlock:
     LDA.W $0FAC,X                                                        ;A8CF5B;
     STA.W $0F7A,X                                                        ;A8CF5E;
     LDA.W $0FAE,X                                                        ;A8CF61;
@@ -8591,7 +8591,7 @@ Instruction_Robot_FacingRight_MoveForward_HandleHittingWall:
     RTL                                                                  ;A8CF97;
 
 
-.notCollidedWithWall:
+  .notCollidedWithWall:
     JSL.L CheckIfEnemyIsTouchingSamusFromBelow                           ;A8CF98;
     AND.W #$FFFF                                                         ;A8CF9C;
     BEQ .return                                                          ;A8CF9F;
@@ -8600,7 +8600,7 @@ Instruction_Robot_FacingRight_MoveForward_HandleHittingWall:
     LDA.W #$0004                                                         ;A8CFA7;
     STA.W $0B58                                                          ;A8CFAA;
 
-.return:
+  .return:
     PLY                                                                  ;A8CFAD;
     PLX                                                                  ;A8CFAE;
     RTL                                                                  ;A8CFAF;
@@ -8629,7 +8629,7 @@ Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall:
     RTL                                                                  ;A8CFDD;
 
 
-.notCollidedWithWall:
+  .notCollidedWithWall:
     JSL.L CheckIfEnemyIsTouchingSamusFromBelow                           ;A8CFDE;
     AND.W #$FFFF                                                         ;A8CFE2;
     BEQ .notTouchingSamusFromBelow                                       ;A8CFE5;
@@ -8638,7 +8638,7 @@ Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall:
     LDA.W #$FFFC                                                         ;A8CFED;
     STA.W $0B58                                                          ;A8CFF0;
 
-.notTouchingSamusFromBelow:
+  .notTouchingSamusFromBelow:
     LDA.W $0F7E,X                                                        ;A8CFF3;
     STA.W $0FAE,X                                                        ;A8CFF6;
     LDA.W $0F7A,X                                                        ;A8CFF9;
@@ -8670,7 +8670,7 @@ Instruction_Robot_FacingRight_MoveBackward_HandleWallOrFall:
     RTL                                                                  ;A8D03B;
 
 
-.collidedWithBlock:
+  .collidedWithBlock:
     LDA.W $0FAE,X                                                        ;A8D03C;
     STA.W $0F7E,X                                                        ;A8D03F;
     LDA.W $0FAC,X                                                        ;A8D042;
@@ -8703,7 +8703,7 @@ Instruction_Robot_FacingRight_MoveBackward_HandleHittingWall:
     RTL                                                                  ;A8D078;
 
 
-.notCollidedWithWall:
+  .notCollidedWithWall:
     JSL.L CheckIfEnemyIsTouchingSamusFromBelow                           ;A8D079;
     AND.W #$FFFF                                                         ;A8D07D;
     BEQ .return                                                          ;A8D080;
@@ -8712,7 +8712,7 @@ Instruction_Robot_FacingRight_MoveBackward_HandleHittingWall:
     LDA.W #$FFFC                                                         ;A8D088;
     STA.W $0B58                                                          ;A8D08B;
 
-.return:
+  .return:
     PLY                                                                  ;A8D08E;
     PLX                                                                  ;A8D08F;
     RTL                                                                  ;A8D090;
@@ -8739,7 +8739,7 @@ Instruction_Robot_PlaySFXIfOnScreen:
     LDA.W #$0068                                                         ;A8D0B8;
     JSL.L QueueSound_Lib2_Max6                                           ;A8D0BB;
 
-.return:
+  .return:
     PLY                                                                  ;A8D0BF;
     PLX                                                                  ;A8D0C0;
     RTL                                                                  ;A8D0C1;
@@ -8781,7 +8781,7 @@ HandleFiringLaser_Upwards:
     RTL                                                                  ;A8D0FB;
 
 
-.timerNotExpired:
+  .timerNotExpired:
     JSR.W DecrementRobotLaserCooldown                                    ;A8D0FC;
     RTL                                                                  ;A8D0FF;
 
@@ -8813,7 +8813,7 @@ HandleFiringLaser_Horizontal:
     RTL                                                                  ;A8D12C;
 
 
-.timerNotExpired:
+  .timerNotExpired:
     JSR.W DecrementRobotLaserCooldown                                    ;A8D12D;
     RTL                                                                  ;A8D130;
 
@@ -8849,7 +8849,7 @@ HandleFiringLaser_Downwards:
     RTL                                                                  ;A8D166;
 
 
-.timerNotExpired:
+  .timerNotExpired:
     JSR.W DecrementRobotLaserCooldown                                    ;A8D167;
     RTL                                                                  ;A8D16A;
 
@@ -8872,7 +8872,7 @@ EnemyTouch_Robot:
     RTL                                                                  ;A8D185;
 
 
-.rightOfSamus:
+  .rightOfSamus:
     LDA.W #$0004                                                         ;A8D186;
     STA.W $0B58                                                          ;A8D189;
     RTL                                                                  ;A8D18C;
@@ -8905,24 +8905,24 @@ EnemyShot_Robot:
     BRA .merge                                                           ;A8D1C1;
 
 
-.facingRight_behind:
+  .facingRight_behind:
     LDA.W #InstList_Robot_FacingRight_Shot_SamusIsBehind                 ;A8D1C3;
     BRA .merge                                                           ;A8D1C6;
 
 
-.return:
+  .return:
     PLY                                                                  ;A8D1C8;
     PLX                                                                  ;A8D1C9;
     RTL                                                                  ;A8D1CA;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W $0AF6                                                          ;A8D1CB;
     CMP.W $0F7A,X                                                        ;A8D1CE;
     BPL .facingLeft_behind                                               ;A8D1D1;
     LDA.W #InstList_Robot_FacingLeft_Shot_SamusIsAhead                   ;A8D1D3;
 
-.merge:
+  .merge:
     STA.W $0F92,X                                                        ;A8D1D6;
     LDA.W #$0001                                                         ;A8D1D9;
     STA.W $0F94,X                                                        ;A8D1DC;
@@ -8935,7 +8935,7 @@ EnemyShot_Robot:
     RTL                                                                  ;A8D1EB;
 
 
-.facingLeft_behind:
+  .facingLeft_behind:
     LDA.W #InstList_Robot_FacingLeft_Shot_SamusIsBehind                  ;A8D1EC;
     BRA .merge                                                           ;A8D1EF;
 
@@ -9443,7 +9443,7 @@ MainAI_Bull:
     LDA.W #$0000                                                         ;A8D920;
     STA.L $7E7806,X                                                      ;A8D923;
 
-.function:
+  .function:
     JSR.W ($0FA8,X)                                                      ;A8D927;
     RTL                                                                  ;A8D92A;
 
@@ -9457,7 +9457,7 @@ Function_Bull_MovementDelay:
     LDA.W #Function_Bull_TargetSamus                                     ;A8D939;
     STA.W $0FA8,X                                                        ;A8D93C;
 
-.return:
+  .return:
     RTS                                                                  ;A8D93F;
 
 
@@ -9483,7 +9483,7 @@ Function_Bull_Accelerating:
     BPL .maxSpeed                                                        ;A8D96D;
     JSR.W AccelerateBull                                                 ;A8D96F;
 
-.maxSpeed:
+  .maxSpeed:
     JSR.W BullXMovement                                                  ;A8D972;
     JSR.W BullYMovement                                                  ;A8D975;
     JSR.W TriggerBullDecelerationIfTooFarOffTarget                       ;A8D978;
@@ -9499,7 +9499,7 @@ Function_Bull_Decelerating:
     BEQ .stopped                                                         ;A8D989;
     BPL .decelerate                                                      ;A8D98B;
 
-.stopped:
+  .stopped:
     LDA.W #Function_Bull_MovementDelay                                   ;A8D98D;
     STA.W $0FA8,X                                                        ;A8D990;
     LDA.W #$0000                                                         ;A8D993;
@@ -9509,7 +9509,7 @@ Function_Bull_Decelerating:
     RTS                                                                  ;A8D99F;
 
 
-.decelerate:
+  .decelerate:
     JSR.W BullXMovement                                                  ;A8D9A0;
     JSR.W BullYMovement                                                  ;A8D9A3;
     JSR.W DecelerateBull                                                 ;A8D9A6;
@@ -9534,7 +9534,7 @@ TriggerBullDecelerationIfTooFarOffTarget:
     LDA.W #$0018                                                         ;A8D9D4;
     STA.W $0FAC,X                                                        ;A8D9D7;
 
-.return:
+  .return:
     RTS                                                                  ;A8D9DA;
 
 
@@ -9555,7 +9555,7 @@ BullXMovement:
     BPL .positive                                                        ;A8D9F7;
     INC.B $1A                                                            ;A8D9F9;
 
-.positive:
+  .positive:
     LDA.B $12                                                            ;A8D9FB;
     JSL.L NegateA_A0B067                                                 ;A8D9FD;
     AND.W #$FF00                                                         ;A8DA01;
@@ -9568,7 +9568,7 @@ BullXMovement:
     BEQ .notLeft                                                         ;A8DA11;
     JSR.W Negate_1E_1C_A8DAF6                                            ;A8DA13;
 
-.notLeft:
+  .notLeft:
     CLC                                                                  ;A8DA16;
     LDA.W $0F7C,X                                                        ;A8DA17;
     ADC.B $1C                                                            ;A8DA1A;
@@ -9594,7 +9594,7 @@ BullYMovement:
     BPL .positive                                                        ;A8DA40;
     INC.B $1A                                                            ;A8DA42;
 
-.positive:
+  .positive:
     LDA.B $12                                                            ;A8DA44;
     JSL.L NegateA_A0B067                                                 ;A8DA46;
     AND.W #$FF00                                                         ;A8DA4A;
@@ -9607,7 +9607,7 @@ BullYMovement:
     BEQ .notUp                                                           ;A8DA5A;
     JSR.W Negate_1E_1C_A8DAF6                                            ;A8DA5C;
 
-.notUp:
+  .notUp:
     CLC                                                                  ;A8DA5F;
     LDA.W $0F80,X                                                        ;A8DA60;
     ADC.B $1C                                                            ;A8DA63;
@@ -9632,7 +9632,7 @@ AccelerateBull:
     ADC.W $0FAA,X                                                        ;A8DA8B;
     STA.W $0FAE,X                                                        ;A8DA8E;
 
-.return:
+  .return:
     RTS                                                                  ;A8DA91;
 
 
@@ -9650,7 +9650,7 @@ DecelerateBull:
     SBC.W $0FAA,X                                                        ;A8DAAC;
     STA.W $0FAE,X                                                        ;A8DAAF;
 
-.return:
+  .return:
     RTS                                                                  ;A8DAB2;
 
 
@@ -9689,7 +9689,7 @@ Math_24Bit_UnsignedMultiplication_A8DAB3:
     BCC .return                                                          ;A8DAF0;
     INC.B $1E                                                            ;A8DAF2;
 
-.return:
+  .return:
     PLP                                                                  ;A8DAF4;
     RTS                                                                  ;A8DAF5;
 
@@ -9703,18 +9703,18 @@ Negate_1E_1C_A8DAF6:
     BRA +                                                                ;A8DB00;
 
 
-.nonZero:
+  .nonZero:
     LDA.B $1C                                                            ;A8DB02; >.<
     LDA.W #$0000                                                         ;A8DB04;
     SEC                                                                  ;A8DB07;
     SBC.B $1C                                                            ;A8DB08;
     STA.B $1C                                                            ;A8DB0A;
 
-  + LDA.B $1E                                                            ;A8DB0C;
++   LDA.B $1E                                                            ;A8DB0C;
     EOR.W #$FFFF                                                         ;A8DB0E;
     STA.B $1E                                                            ;A8DB11;
 
-.return:
+  .return:
     RTS                                                                  ;A8DB13;
 
 
@@ -9729,7 +9729,7 @@ EnemyShot_Bull:
     RTL                                                                  ;A8DB2B;
 
 
-.noDamage:
+  .noDamage:
     LDA.L $7E7806,X                                                      ;A8DB2C;
     BNE .return                                                          ;A8DB30;
     LDA.W #$0001                                                         ;A8DB32;
@@ -9757,7 +9757,7 @@ EnemyShot_Bull:
     LDA.W #$0001                                                         ;A8DB6E;
     STA.L $7E7806,X                                                      ;A8DB71;
 
-.return:
+  .return:
     RTL                                                                  ;A8DB75;
 
 
@@ -9906,7 +9906,7 @@ InitAI_Alcoon:
     STA.W $0FA8,X                                                        ;A8DCF6;
     JSR.W SetupAlcoonJumpMovement                                        ;A8DCF9;
 
-.loopRising:
+  .loopRising:
     LDA.W $0FAC,X                                                        ;A8DCFC;
     CLC                                                                  ;A8DCFF;
     ADC.W $0F80,X                                                        ;A8DD00;
@@ -9917,7 +9917,7 @@ InitAI_Alcoon:
     JSR.W AlcoonYAcceleration                                            ;A8DD0F;
     BMI .loopRising                                                      ;A8DD12;
 
-.loopFalling:
+  .loopFalling:
     LDA.W $0FAC,X                                                        ;A8DD14;
     STA.B $12                                                            ;A8DD17;
     LDA.W $0FAA,X                                                        ;A8DD19;
@@ -9928,7 +9928,7 @@ InitAI_Alcoon:
     BRA .loopFalling                                                     ;A8DD27;
 
 
-.collidedWithBlock:
+  .collidedWithBlock:
     LDA.W $0F7E,X                                                        ;A8DD29;
     STA.L $7E7806,X                                                      ;A8DD2C;
     LDA.W $0FB2,X                                                        ;A8DD30;
@@ -9973,7 +9973,7 @@ Function_Alcoon_WaitForSamusToGetNear:
     EOR.W #$FFFF                                                         ;A8DD7B;
     INC A                                                                ;A8DD7E;
 
-.SamusBelowSpawn:
+  .SamusBelowSpawn:
     CMP.W #$0020                                                         ;A8DD7F;
     BPL .return                                                          ;A8DD82;
     LDA.W $0AF6                                                          ;A8DD84;
@@ -9984,7 +9984,7 @@ Function_Alcoon_WaitForSamusToGetNear:
     EOR.W #$FFFF                                                         ;A8DD8E;
     INC A                                                                ;A8DD91;
 
-  + CMP.W AlcoonConstants_XThresholdToEmerge                             ;A8DD92;
++   CMP.W AlcoonConstants_XThresholdToEmerge                             ;A8DD92;
     BPL .returnPLP                                                       ;A8DD95;
     JSR.W SetupAlcoonJumpMovement                                        ;A8DD97;
     LDY.W #InstList_Alcoon_FacingLeft_Airborne_LookingUp                 ;A8DD9A;
@@ -9994,7 +9994,7 @@ Function_Alcoon_WaitForSamusToGetNear:
     LDY.W #InstList_Alcoon_FacingRight_Airborne_LookingUp                ;A8DDA3;
     LDA.W #$0002                                                         ;A8DDA6;
 
-.SamusToTheRight:
+  .SamusToTheRight:
     STA.W $0FAE,X                                                        ;A8DDA9;
     TYA                                                                  ;A8DDAC;
     STA.W $0F92,X                                                        ;A8DDAD;
@@ -10005,11 +10005,11 @@ Function_Alcoon_WaitForSamusToGetNear:
     LDA.W #$005E                                                         ;A8DDBC;
     JSL.L QueueSound_Lib2_Max6                                           ;A8DDBF;
 
-.return:
+  .return:
     RTL                                                                  ;A8DDC3;
 
 
-.returnPLP:
+  .returnPLP:
     PLP                                                                  ;A8DDC4;
     RTL                                                                  ;A8DDC5;
 
@@ -10025,7 +10025,7 @@ Function_Alcoon_Emerging_Rising:
     JSR.W AlcoonYAcceleration                                            ;A8DDD9;
     BMI .return                                                          ;A8DDDC;
 
-.falling:
+  .falling:
     LDA.W #Function_Alcoon_Emerging_Falling                              ;A8DDDE;
     STA.W $0FA8,X                                                        ;A8DDE1;
     LDY.W #InstList_Alcoon_FacingLeft_Airborne_LookingForward            ;A8DDE4;
@@ -10033,13 +10033,13 @@ Function_Alcoon_Emerging_Rising:
     BMI .keepLeft                                                        ;A8DDEA;
     LDY.W #InstList_Alcoon_FacingRight_Airborne_LookingForward           ;A8DDEC;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;A8DDEF;
     STA.W $0F92,X                                                        ;A8DDF0;
     LDA.W #$0001                                                         ;A8DDF3;
     STA.W $0F94,X                                                        ;A8DDF6;
 
-.return:
+  .return:
     RTL                                                                  ;A8DDF9;
 
     LDA.W #$0000                                                         ;A8DDFA; dead code
@@ -10059,7 +10059,7 @@ Function_Alcoon_Emerging_Falling:
     RTL                                                                  ;A8DE18;
 
 
-.collidedWithBlock:
+  .collidedWithBlock:
     LDA.W $0AF6                                                          ;A8DE19;
     SEC                                                                  ;A8DE1C;
     SBC.W $0F7A,X                                                        ;A8DE1D;
@@ -10071,7 +10071,7 @@ Function_Alcoon_Emerging_Falling:
     LDA.W #$0002                                                         ;A8DE2A;
     LDY.W #InstList_Alcoon_FacingRight_Walking_0                         ;A8DE2D;
 
-.directionChosen:
+  .directionChosen:
     STA.W $0FAE,X                                                        ;A8DE30;
     TYA                                                                  ;A8DE33;
     STA.W $0F92,X                                                        ;A8DE34;
@@ -10096,7 +10096,7 @@ Function_Alcoon_MoveHorizontally_SpitFireballsAtSamus:
     EOR.W #$FFFF                                                         ;A8DE60;
     INC A                                                                ;A8DE63;
 
-  + CMP.W AlcoonConstants_XThresholdToHide                               ;A8DE64;
++   CMP.W AlcoonConstants_XThresholdToHide                               ;A8DE64;
     BPL .farAway                                                         ;A8DE67;
     LDA.W $0AF6                                                          ;A8DE69;
     SEC                                                                  ;A8DE6C;
@@ -10106,7 +10106,7 @@ Function_Alcoon_MoveHorizontally_SpitFireballsAtSamus:
     EOR.W #$FFFF                                                         ;A8DE73;
     INC A                                                                ;A8DE76;
 
-  + LDA.L $7E7808,X                                                      ;A8DE77;
++   LDA.L $7E7808,X                                                      ;A8DE77;
     BNE .returnPLP                                                       ;A8DE7B;
     PLP                                                                  ;A8DE7D;
     BMI .facingLeft                                                      ;A8DE7E;
@@ -10116,17 +10116,17 @@ Function_Alcoon_MoveHorizontally_SpitFireballsAtSamus:
     RTL                                                                  ;A8DE88;
 
 
-.returnPLP:
+  .returnPLP:
     PLP                                                                  ;A8DE89;
     RTL                                                                  ;A8DE8A;
 
 
-.facingLeft:
+  .facingLeft:
     LDY.W #InstList_Alcoon_FacingLeft_SpawnFireballs                     ;A8DE8B;
     LDA.W $0FAE,X                                                        ;A8DE8E;
     BPL .return                                                          ;A8DE91;
 
-.fireballs:
+  .fireballs:
     TYA                                                                  ;A8DE93;
     STA.W $0F92,X                                                        ;A8DE94;
     LDA.W #$0001                                                         ;A8DE97;
@@ -10134,11 +10134,11 @@ Function_Alcoon_MoveHorizontally_SpitFireballsAtSamus:
     LDA.W #RTL_A8DECC                                                    ;A8DE9D;
     STA.W $0FA8,X                                                        ;A8DEA0;
 
-.return:
+  .return:
     RTL                                                                  ;A8DEA3;
 
 
-.farAway:
+  .farAway:
     LDA.W #Function_Alcoon_Hiding_Rising                                 ;A8DEA4;
     STA.W $0FA8,X                                                        ;A8DEA7;
     LDA.W #$FFFC                                                         ;A8DEAA;
@@ -10150,7 +10150,7 @@ Function_Alcoon_MoveHorizontally_SpitFireballsAtSamus:
     BMI +                                                                ;A8DEBC;
     LDY.W #InstList_Alcoon_FacingRight_Airborne_LookingForward           ;A8DEBE;
 
-  + TYA                                                                  ;A8DEC1;
++   TYA                                                                  ;A8DEC1;
     STA.W $0F92,X                                                        ;A8DEC2;
     LDA.W #$0001                                                         ;A8DEC5;
     STA.W $0F94,X                                                        ;A8DEC8;
@@ -10174,7 +10174,7 @@ Function_Alcoon_Hiding_Rising:
     LDA.W #Function_Alcoon_Hiding_Falling                                ;A8DEE5;
     STA.W $0FA8,X                                                        ;A8DEE8;
 
-.return:
+  .return:
     RTL                                                                  ;A8DEEB;
 
 
@@ -10192,7 +10192,7 @@ Function_Alcoon_Hiding_Falling:
     RTL                                                                  ;A8DF07;
 
 
-.reachedTargetY:
+  .reachedTargetY:
     LDA.W $0FB2,X                                                        ;A8DF08;
     STA.W $0F7E,X                                                        ;A8DF0B;
     LDA.L $7E7804,X                                                      ;A8DF0E;
@@ -10237,13 +10237,13 @@ Instruction_Alcoon_StartWalking:
     BNE +                                                                ;A8DF4E;
     LDA.W #$0002                                                         ;A8DF50;
 
-  + STA.L $7E7808,X                                                      ;A8DF53;
++   STA.L $7E7808,X                                                      ;A8DF53;
     LDY.W #InstList_Alcoon_FacingLeft_Walking_0                          ;A8DF57;
     LDA.W $0FAE,X                                                        ;A8DF5A;
     BMI .return                                                          ;A8DF5D;
     LDY.W #InstList_Alcoon_FacingRight_Walking_0                         ;A8DF5F;
 
-.return:
+  .return:
     RTL                                                                  ;A8DF62;
 
 
@@ -10267,14 +10267,14 @@ Instruction_Alcoon_MoveHorizontally_TurnIfWallCollision:
     RTL                                                                  ;A8DF87;
 
 
-.turnAround:
+  .turnAround:
     PLY                                                                  ;A8DF88;
     LDY.W #InstList_Alcoon_FacingLeft_Walking_1                          ;A8DF89;
     LDA.W $0FAE,X                                                        ;A8DF8C;
     BPL .directionChosen                                                 ;A8DF8F;
     LDY.W #InstList_Alcoon_FacingRight_Walking_1                         ;A8DF91;
 
-.directionChosen:
+  .directionChosen:
     EOR.W #$FFFF                                                         ;A8DF94;
     INC A                                                                ;A8DF97;
     STA.W $0FAE,X                                                        ;A8DF98;
@@ -10597,7 +10597,7 @@ ChooseAtomicYMovementFunction:
     LDA.W #Function_Atomic_MoveDown                                      ;A8E3E8;
     STA.W $0FA8,X                                                        ;A8E3EB;
 
-.return:
+  .return:
     RTS                                                                  ;A8E3EE;
 
 
@@ -10610,7 +10610,7 @@ ChooseAtomicXMovementFunction:
     LDA.W #Function_Atomic_MoveRight                                     ;A8E3FE;
     STA.W $0FAA,X                                                        ;A8E401;
 
-.return:
+  .return:
     RTS                                                                  ;A8E404;
 
 
@@ -10626,7 +10626,7 @@ Function_Atomic_MoveUp:
     BCC .done                                                            ;A8E41B;
     INC.W $0F7E,X                                                        ;A8E41D;
 
-.done:
+  .done:
     STA.W $0F80,X                                                        ;A8E420;
     RTS                                                                  ;A8E423;
 
@@ -10643,7 +10643,7 @@ Function_Atomic_MoveDown:
     BCC .done                                                            ;A8E43A;
     INC.W $0F7E,X                                                        ;A8E43C;
 
-.done:
+  .done:
     STA.W $0F80,X                                                        ;A8E43F;
     RTS                                                                  ;A8E442;
 
@@ -10660,7 +10660,7 @@ Function_Atomic_MoveLeft:
     BCC .done                                                            ;A8E459;
     INC.W $0F7A,X                                                        ;A8E45B;
 
-.done:
+  .done:
     STA.W $0F7C,X                                                        ;A8E45E;
     RTS                                                                  ;A8E461;
 
@@ -10677,7 +10677,7 @@ Function_Atomic_MoveRight:
     BCC .done                                                            ;A8E478;
     INC.W $0F7A,X                                                        ;A8E47A;
 
-.done:
+  .done:
     STA.W $0F7C,X                                                        ;A8E47D;
     RTS                                                                  ;A8E480;
 
@@ -10864,7 +10864,7 @@ InitAI_Spark:
     RTL                                                                  ;A8E674;
 
 
-.PhantoonAlive:
+  .PhantoonAlive:
     LDX.W $0E54                                                          ;A8E675;
     LDA.W $0F86,X                                                        ;A8E678;
     ORA.W $0100                                                          ;A8E67B; >_<
@@ -10872,12 +10872,12 @@ InitAI_Spark:
     RTL                                                                  ;A8E681;
 
 
-.instListPointers:
+  .instListPointers:
     dw InstList_Spark_Constant                                           ;A8E682;
     dw InstList_Spark_Constant                                           ;A8E684;
     dw InstList_Spark_EmitFallingSparks                                  ;A8E686;
 
-.functionPointers:
+  .functionPointers:
     dw RTL_A8E694                                                        ;A8E688;
     dw Function_Spark_Intermittent_Active                                ;A8E68A;
     dw Function_Spark_EmitFallingSparks                                  ;A8E68C;
@@ -10899,7 +10899,7 @@ Function_Spark_Intermittent_Inactive:
     RTL                                                                  ;A8E69E;
 
 
-.timerExpired:
+  .timerExpired:
     LDA.W #Function_Spark_Intermittent_Active                            ;A8E69F;
     STA.W $0FAA,X                                                        ;A8E6A2;
     LDA.W #InstList_Spark_FlickerOn                                      ;A8E6A5;
@@ -10919,7 +10919,7 @@ Function_Spark_Intermittent_Active:
     RTL                                                                  ;A8E6C0;
 
 
-.timerExpired:
+  .timerExpired:
     LDA.W #Function_Spark_Intermittent_Inactive                          ;A8E6C1;
     STA.W $0FAA,X                                                        ;A8E6C4;
     LDA.W #InstList_Spark_FlickerOut                                     ;A8E6C7;
@@ -10940,7 +10940,7 @@ Function_Spark_EmitFallingSparks:
     RTL                                                                  ;A8E6E5;
 
 
-.timerExpired:
+  .timerExpired:
     LDX.W $0E54                                                          ;A8E6E6;
     LDY.W #EnemyProjectile_FallingSpark                                  ;A8E6E9;
     JSL.L SpawnEnemyProjectileY_ParameterA_XGraphics                     ;A8E6EC;
@@ -10957,7 +10957,7 @@ SetSparkFunctionTimer:
     CLC                                                                  ;A8E702;
     ADC.W #$0004                                                         ;A8E703;
 
-.noRNG:
+  .noRNG:
     CLC                                                                  ;A8E706;
     ADC.B $12                                                            ;A8E707;
     STA.W $0FB2,X                                                        ;A8E709;
@@ -11070,7 +11070,7 @@ InitAI_FaceBlock:
     BNE .morphBallCollected                                              ;A8E840;
     LDY.W #RTL_A8804C                                                    ;A8E842;
 
-.morphBallCollected:
+  .morphBallCollected:
     STY.W $178C                                                          ;A8E845;
     LDA.W #EnemyGraphicsDrawnHook_FaceBlock_PeriodicallyCyclePalettes>>16 ;A8E848;
     STA.W $178E                                                          ;A8E84B;
@@ -11111,7 +11111,7 @@ EnemyGraphicsDrawnHook_FaceBlock_PeriodicallyCyclePalettes:
     LDA.W #$0004                                                         ;A8E88D;
     STA.W $060B                                                          ;A8E890;
 
-.loopColors:
+  .loopColors:
     LDA.W FaceBlockGlowColors,Y                                          ;A8E893;
     STA.L $7EC112,X                                                      ;A8E896;
     INY                                                                  ;A8E89A;
@@ -11125,7 +11125,7 @@ EnemyGraphicsDrawnHook_FaceBlock_PeriodicallyCyclePalettes:
     AND.W #$0007                                                         ;A8E8A7;
     STA.W $1796                                                          ;A8E8AA;
 
-.return:
+  .return:
     RTL                                                                  ;A8E8AD;
 
 
@@ -11164,7 +11164,7 @@ MainAI_FaceBlock:
     BMI .keepLeft                                                        ;A8E900;
     LDY.W #InstList_FaceBlock_TurningRight                               ;A8E902;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;A8E905;
     STA.W $0F92,X                                                        ;A8E906;
     LDA.W #$0001                                                         ;A8E909;
@@ -11174,7 +11174,7 @@ MainAI_FaceBlock:
     LDA.W #$0010                                                         ;A8E915;
     STA.W $1798                                                          ;A8E918;
 
-.return:
+  .return:
     RTL                                                                  ;A8E91B;
 
 
@@ -11863,7 +11863,7 @@ InitAI_Kihunter:
     LDA.W #$0001                                                         ;A8F20C;
     STA.L $7E7812,X                                                      ;A8F20F;
 
-.return:
+  .return:
     RTL                                                                  ;A8F213;
 
 
@@ -11893,7 +11893,7 @@ InitAI_KihunterWings:
     ORA.W #$0200                                                         ;A8F255;
     STA.W $0F86,X                                                        ;A8F258;
 
-.return:
+  .return:
     RTL                                                                  ;A8F25B;
 
 
@@ -11923,20 +11923,20 @@ Function_Kihunter_Winged_IdleFlying:
     BRA .changeY                                                         ;A8F28C;
 
 
-.collidedWithBlock:
+  .collidedWithBlock:
     LDA.L $7E7812,X                                                      ;A8F28E;
     EOR.W #$FFFF                                                         ;A8F292;
     INC A                                                                ;A8F295;
     BRA .changeY                                                         ;A8F296;
 
 
-.idleDown:
+  .idleDown:
     LDA.W #$0001                                                         ;A8F298;
 
-.changeY:
+  .changeY:
     STA.L $7E7812,X                                                      ;A8F29B;
 
-.noChangeY:
+  .noChangeY:
     LDA.L $7E780C,X                                                      ;A8F29F;
     STA.B $12                                                            ;A8F2A3;
     LDA.L $7E780E,X                                                      ;A8F2A5;
@@ -11951,7 +11951,7 @@ Function_Kihunter_Winged_IdleFlying:
     BMI .movingLeft                                                      ;A8F2C0;
     LDY.W #$0004                                                         ;A8F2C2;
 
-.movingLeft:
+  .movingLeft:
     LDA.W .instListPointers_kihunter,Y                                   ;A8F2C5;
     STA.W $0F92,X                                                        ;A8F2C8;
     LDA.W .instListPointers_wings,Y                                      ;A8F2CB;
@@ -11960,7 +11960,7 @@ Function_Kihunter_Winged_IdleFlying:
     STA.W $0F94,X                                                        ;A8F2D4;
     STA.W $0FD4,X                                                        ;A8F2D7;
 
-.noCollision:
+  .noCollision:
     JSL.L AlignEnemyYPositionWIthNonSquareSlope                          ;A8F2DA;
     LDA.W $0AF6                                                          ;A8F2DE;
     SEC                                                                  ;A8F2E1;
@@ -11970,13 +11970,13 @@ Function_Kihunter_Winged_IdleFlying:
     EOR.W #$FFFF                                                         ;A8F2E9;
     INC A                                                                ;A8F2EC;
 
-  + STA.B $14                                                            ;A8F2ED;
++   STA.B $14                                                            ;A8F2ED;
     CMP.W KihunterConstants_XProximityToActivateSwoop                    ;A8F2EF;
     BMI +                                                                ;A8F2F2;
     RTL                                                                  ;A8F2F4;
 
 
-  + LDA.W $0AFA                                                          ;A8F2F5;
++   LDA.W $0AFA                                                          ;A8F2F5;
     SEC                                                                  ;A8F2F8;
     SBC.W $0F7E,X                                                        ;A8F2F9;
     CMP.W #$0020                                                         ;A8F2FC;
@@ -11984,7 +11984,7 @@ Function_Kihunter_Winged_IdleFlying:
     RTL                                                                  ;A8F301;
 
 
-.outsideRange:
+  .outsideRange:
     STA.B $18                                                            ;A8F302;
     LDA.B $12                                                            ;A8F304;
     BMI .rightOfSamus                                                    ;A8F306;
@@ -12006,7 +12006,7 @@ Function_Kihunter_Winged_IdleFlying:
     BRA +                                                                ;A8F33C;
 
 
-.rightOfSamus:
+  .rightOfSamus:
     LDA.W #$FFFE                                                         ;A8F33E;
     STA.L $7E7800,X                                                      ;A8F341;
     LDA.W #$0000                                                         ;A8F345;
@@ -12023,7 +12023,7 @@ Function_Kihunter_Winged_IdleFlying:
     STA.L $7E781C,X                                                      ;A8F36B;
     LDY.W #$0000                                                         ;A8F36F;
 
-  + LDA.W .instListPointers_kihunter,Y                                   ;A8F372;
++   LDA.W .instListPointers_kihunter,Y                                   ;A8F372;
     STA.W $0F92,X                                                        ;A8F375;
     LDA.W .instListPointers_wings,Y                                      ;A8F378;
     STA.W $0FD2,X                                                        ;A8F37B;
@@ -12047,9 +12047,9 @@ Function_Kihunter_Winged_IdleFlying:
     RTL                                                                  ;A8F3AF;
 
 
-.instListPointers_kihunter:
+  .instListPointers_kihunter:
     dw InstList_Kihunter_Idling_FacingLeft                               ;A8F3B0;
-.instListPointers_wings:
+  .instListPointers_wings:
     dw InstList_KihunterWings_FacingLeft                                 ;A8F3B2;
     dw InstList_Kihunter_Idling_FacingRight                              ;A8F3B4;
     dw InstList_KihunterWings_FacingRight                                ;A8F3B6;
@@ -12063,12 +12063,12 @@ Function_Kihunter_Winged_Swoop:
     BRA +                                                                ;A8F3C7;
 
 
-.arcingRight:
+  .arcingRight:
     LDA.W $0FB2,X                                                        ;A8F3C9;
     CMP.L $7E781C,X                                                      ;A8F3CC;
     BMI .noInstListChange                                                ;A8F3D0;
 
-  + LDA.L $7E7820,X                                                      ;A8F3D2;
++   LDA.L $7E7820,X                                                      ;A8F3D2;
     BNE .noInstListChange                                                ;A8F3D6;
     LDA.W #$0001                                                         ;A8F3D8;
     STA.L $7E7820,X                                                      ;A8F3DB;
@@ -12077,13 +12077,13 @@ Function_Kihunter_Winged_Swoop:
     BPL .keepRight                                                       ;A8F3E6;
     LDY.W #InstList_Kihunter_Swiping_FacingLeft                          ;A8F3E8;
 
-.keepRight:
+  .keepRight:
     TYA                                                                  ;A8F3EB;
     STA.W $0F92,X                                                        ;A8F3EC;
     LDA.W #$0001                                                         ;A8F3EF;
     STA.W $0F94,X                                                        ;A8F3F2;
 
-.noInstListChange:
+  .noInstListChange:
     LDA.L $7E7808,X                                                      ;A8F3F5;
     BPL .rightwards                                                      ;A8F3F9;
     LDA.L $7E7806,X                                                      ;A8F3FB;
@@ -12096,7 +12096,7 @@ Function_Kihunter_Winged_Swoop:
     BPL +                                                                ;A8F414;
     LDA.L $7E7800,X                                                      ;A8F416;
 
-  + STA.L $7E7804,X                                                      ;A8F41A;
++   STA.L $7E7804,X                                                      ;A8F41A;
     LDA.W $0FB2,X                                                        ;A8F41E;
     CLC                                                                  ;A8F421;
     ADC.L $7E7804,X                                                      ;A8F422;
@@ -12108,7 +12108,7 @@ Function_Kihunter_Winged_Swoop:
     RTL                                                                  ;A8F434;
 
 
-.rightwards:
+  .rightwards:
     LDA.L $7E7806,X                                                      ;A8F435;
     CLC                                                                  ;A8F439;
     ADC.L $7E780A,X                                                      ;A8F43A;
@@ -12119,7 +12119,7 @@ Function_Kihunter_Winged_Swoop:
     BMI +                                                                ;A8F44E;
     LDA.L $7E7800,X                                                      ;A8F450;
 
-  + STA.L $7E7804,X                                                      ;A8F454;
++   STA.L $7E7804,X                                                      ;A8F454;
     LDA.W $0FB2,X                                                        ;A8F458;
     CLC                                                                  ;A8F45B;
     ADC.L $7E7804,X                                                      ;A8F45C;
@@ -12131,7 +12131,7 @@ Function_Kihunter_Winged_Swoop:
     RTL                                                                  ;A8F46E;
 
 
-.swoopContinues:
+  .swoopContinues:
     LDA.L $7E7822,X                                                      ;A8F46F;
     STA.W $0E32                                                          ;A8F473;
     LDA.W $0FB2,X                                                        ;A8F476;
@@ -12160,7 +12160,7 @@ Function_Kihunter_Winged_Swoop:
     RTL                                                                  ;A8F4B3;
 
 
-.collidedHorizontally:
+  .collidedHorizontally:
     LDA.L $7E7808,X                                                      ;A8F4B4;
     BPL .arcRight                                                        ;A8F4B8;
     LDA.W #$0000                                                         ;A8F4BA;
@@ -12170,13 +12170,13 @@ Function_Kihunter_Winged_Swoop:
     BRA .collidedVertically                                              ;A8F4C8;
 
 
-.arcRight:
+  .arcRight:
     LDA.W #$0000                                                         ;A8F4CA;
     STA.L $7E780C,X                                                      ;A8F4CD;
     LDA.W #$FFFF                                                         ;A8F4D1;
     STA.L $7E780E,X                                                      ;A8F4D4;
 
-.collidedVertically:
+  .collidedVertically:
     LDA.W #Function_Kihunter_Winged_BackOff                              ;A8F4D8;
     STA.W $0FA8,X                                                        ;A8F4DB;
     LDA.W #$0000                                                         ;A8F4DE;
@@ -12206,7 +12206,7 @@ Function_Kihunter_Winged_BackOff:
     RTL                                                                  ;A8F51E;
 
 
-.collidedWithBlock:
+  .collidedWithBlock:
     LDA.W #Function_Kihunter_Winged_IdleFlying                           ;A8F51F;
     STA.W $0FA8,X                                                        ;A8F522;
     RTL                                                                  ;A8F525;
@@ -12222,7 +12222,7 @@ Instruction_Kihunter_SetIdlingInstListsFacingForwards:
     LDA.W #InstList_KihunterWings_FacingRight                            ;A8F537;
     STA.B $12                                                            ;A8F53A;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;A8F53C;
     STA.W $0F92,X                                                        ;A8F53D;
     LDA.W #$0001                                                         ;A8F540;
@@ -12235,7 +12235,7 @@ Instruction_Kihunter_SetIdlingInstListsFacingForwards:
     LDA.W #$0001                                                         ;A8F553;
     STA.W $0FD4,X                                                        ;A8F556;
 
-.return:
+  .return:
     RTL                                                                  ;A8F559;
 
 
@@ -12251,7 +12251,7 @@ Function_Kihunter_Wingless_InitialFalling:
     RTL                                                                  ;A8F572;
 
 
-.notCollidedWithBlock:
+  .notCollidedWithBlock:
     LDA.L $7E7810,X                                                      ;A8F573;
     CLC                                                                  ;A8F577;
     ADC.W KihunterConstants_fallingAcceleration_hop                      ;A8F578;
@@ -12286,7 +12286,7 @@ Function_Kihunter_Wingless_PrepareToHop:
     RTL                                                                  ;A8F5C8;
 
 
-.rightOfSamus:
+  .rightOfSamus:
     LDA.W #$0000                                                         ;A8F5C9;
     STA.L $7E780C,X                                                      ;A8F5CC;
     LDA.W #$FFFE                                                         ;A8F5D0;
@@ -12333,7 +12333,7 @@ Function_Kihunter_Wingless_Hop:
     RTL                                                                  ;A8F62F;
 
 
-.collidedHorizontally:
+  .collidedHorizontally:
     LDA.L $7E780E,X                                                      ;A8F630;
     EOR.W #$FFFF                                                         ;A8F634;
     INC A                                                                ;A8F637;
@@ -12341,7 +12341,7 @@ Function_Kihunter_Wingless_Hop:
     RTL                                                                  ;A8F63C;
 
 
-.collidedVertically:
+  .collidedVertically:
     LDA.L $7E7812,X                                                      ;A8F63D;
     BMI .hitCeiling                                                      ;A8F641;
     LDA.W #$0000                                                         ;A8F643;
@@ -12358,7 +12358,7 @@ Function_Kihunter_Wingless_Hop:
     BMI .keepLeft                                                        ;A8F667;
     LDY.W #InstList_Kihunter_LandedFromHop_FacingRight                   ;A8F669;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;A8F66C;
     STA.W $0F92,X                                                        ;A8F66D;
     LDA.W #$0001                                                         ;A8F670;
@@ -12366,7 +12366,7 @@ Function_Kihunter_Wingless_Hop:
     RTL                                                                  ;A8F676;
 
 
-.hitCeiling:
+  .hitCeiling:
     LDA.W #$0001                                                         ;A8F677;
     STA.L $7E7812,X                                                      ;A8F67A;
     RTL                                                                  ;A8F67E;
@@ -12394,15 +12394,15 @@ Function_Kihunter_Wingless_Thinking:
     EOR.W #$FFFF                                                         ;A8F6A2;
     INC A                                                                ;A8F6A5;
 
-  + CMP.W #$0060                                                         ;A8F6A6;
++   CMP.W #$0060                                                         ;A8F6A6;
     BPL .keepHop                                                         ;A8F6A9;
     LDY.W #Function_Kihunter_Wingless_FireAcidSpit                       ;A8F6AB;
 
-.keepHop:
+  .keepHop:
     TYA                                                                  ;A8F6AE;
     STA.W $0FA8,X                                                        ;A8F6AF;
 
-.return:
+  .return:
     RTL                                                                  ;A8F6B2;
 
 
@@ -12413,7 +12413,7 @@ Function_Kihunter_Wingless_FireAcidSpit:
     BPL .keepLeft                                                        ;A8F6BC;
     LDY.W #InstList_Kihunter_AcidSpitAttack_FacingRight                  ;A8F6BE;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;A8F6C1;
     STA.W $0F92,X                                                        ;A8F6C2;
     LDA.W #$0001                                                         ;A8F6C5;
@@ -12473,17 +12473,17 @@ EnemyShot_Kihunter:
     LDA.W $0F9C,X                                                        ;A8F726;
     STA.W $0FDC,X                                                        ;A8F729;
 
-.returnUpper:
+  .returnUpper:
     RTL                                                                  ;A8F72C;
 
 
-.dead:
+  .dead:
     LDA.W #$0200                                                         ;A8F72D;
     STA.W $0FC6,X                                                        ;A8F730;
     RTL                                                                  ;A8F733;
 
 
-.clipWings:
+  .clipWings:
     LDA.L $7E7828,X                                                      ;A8F734;
     BNE .returnUpper                                                     ;A8F738;
     LDA.W #$0001                                                         ;A8F73A;
@@ -12535,7 +12535,7 @@ EnemyShot_Kihunter:
     ORA.W #$0800                                                         ;A8F7C4;
     STA.W $0F86,X                                                        ;A8F7C7;
 
-.returnLower:
+  .returnLower:
     PLA                                                                  ;A8F7CA;
     STA.W $0E54                                                          ;A8F7CB;
     RTL                                                                  ;A8F7CE;
@@ -12592,13 +12592,13 @@ Function_KihunterWings_Falling_DriftingLeft:
     RTL                                                                  ;A8F840;
 
 
-  + LDA.W $0FAA,X                                                        ;A8F841;
++   LDA.W $0FAA,X                                                        ;A8F841;
     SEC                                                                  ;A8F844;
     SBC.W #$0180                                                         ;A8F845;
     BPL .return                                                          ;A8F848;
     LDA.W #$0100                                                         ;A8F84A;
 
-.return:
+  .return:
     STA.W $0FAA,X                                                        ;A8F84D;
     RTL                                                                  ;A8F850;
 
@@ -12690,18 +12690,18 @@ Function_KihunterWings_Falling_DriftingRight:
     RTL                                                                  ;A8F91D;
 
 
-  + LDA.W $0FAA,X                                                        ;A8F91E;
++   LDA.W $0FAA,X                                                        ;A8F91E;
     SEC                                                                  ;A8F921;
     SBC.W #$0180                                                         ;A8F922;
     BPL .return                                                          ;A8F925;
     LDA.W #$0100                                                         ;A8F927;
 
-.return:
+  .return:
     STA.W $0FAA,X                                                        ;A8F92A;
     RTL                                                                  ;A8F92D;
 
 
-.collidedVertically:
+  .collidedVertically:
     LDA.W $0F86,X                                                        ;A8F92E;
     ORA.W #$0200                                                         ;A8F931;
     STA.W $0F86,X                                                        ;A8F934;
@@ -12746,7 +12746,7 @@ DetermineFallingKihunterWingsSpeedTableIndexResetValue:
     STA.L $7E7814,X                                                      ;A8F993;
     STA.W $0FAA,X                                                        ;A8F997;
 
-.loop:
+  .loop:
     LDA.L $7E7814,X                                                      ;A8F99A;
     CLC                                                                  ;A8F99E;
     ADC.W #$0180                                                         ;A8F99F;

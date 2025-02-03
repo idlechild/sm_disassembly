@@ -14,13 +14,13 @@ GoldenTorizo_HealthBasedPalette_Handling:
     BEQ +                                                                ;84800C;
     LDA.W #$0038                                                         ;84800E;
 
-  + ASL A                                                                ;848011;
++   ASL A                                                                ;848011;
     ASL A                                                                ;848012;
     ORA.W #$001E                                                         ;848013;
     TAY                                                                  ;848016;
     LDX.W #$001E                                                         ;848017;
 
-.loop:
+  .loop:
     LDA.W .palette2,Y                                                    ;84801A;
     STA.L $7EC140,X                                                      ;84801D;
     LDA.W .palette1,Y                                                    ;848021;
@@ -36,7 +36,7 @@ GoldenTorizo_HealthBasedPalette_Handling:
     RTL                                                                  ;848031;
 
 
-.palette1:                                                               ;848032;
+  .palette1:                                                               ;848032;
     dw $1000,$56BA,$41B2,$1447,$0403,$4E15,$3570,$24CB,$1868,$6F7F,$51F8,$410E,$031F,$01DA,$00F5,$0C63 ; 0..7FFh
     dw $1000,$56DB,$39D3,$1047,$0403,$4636,$2D91,$20EC,$1489,$6F9B,$5215,$3D2C,$133B,$0DF6,$0CF2,$0C63 ; 800h..FFFh
     dw $1000,$52FB,$31F4,$1067,$0402,$3E76,$25B2,$192D,$10A9,$6F96,$5251,$396A,$2756,$1A13,$190F,$0863 ; 1000h..17FFh
@@ -46,7 +46,7 @@ GoldenTorizo_HealthBasedPalette_Handling:
     dw $1000,$4B9D,$0E98,$04A8,$0000,$1F19,$0A55,$05D1,$052C,$73C4,$4F03,$2E02,$6FC4,$4E84,$4D23,$0043 ; 3000h..37FFh
     dw $0000,$4BBE,$06B9,$00A8,$0000,$173A,$0276,$01F2,$014D,$73E0,$4F20,$2A20,$7FE0,$5AA0,$5920,$0043 ; 3800h+
 
-.palette2:                                                               ;848132;
+  .palette2:                                                               ;848132;
     dw $1000,$4215,$2D0D,$0002,$0000,$3970,$20CB,$0C26,$0403,$463A,$28B3,$1809,$6F7F,$51FD,$4113,$0C63 ; 0..7FFh
     dw $1000,$4236,$252E,$0002,$0000,$3191,$1CEC,$0C47,$0424,$4656,$28D0,$1428,$6F7B,$51F9,$40F0,$0C63 ; 800h..FFFh
     dw $1000,$3E56,$214F,$0002,$0000,$29D1,$190D,$0888,$0424,$4693,$290E,$1046,$6F76,$4DF5,$40EE,$0842 ; 1000h..17FFh
@@ -65,7 +65,7 @@ Load_Room_PLM_Graphics:
     STZ.W $1C2D                                                          ;848238;
     LDX.W #$0000                                                         ;84823B;
 
-.loop:
+  .loop:
     PHX                                                                  ;84823E;
     LDY.W $1C2F,X                                                        ;84823F;
     JSR.W Instruction_PLM_LoadItemPLMGFX                                 ;848242;
@@ -94,11 +94,11 @@ UNUSED_Clear_SpinJumpSound_GoingThroughDoor_848258:
     CMP.W #$1400                                                         ;848263;
     BNE .return                                                          ;848266;
 
-.playSound:
+  .playSound:
     LDA.W #$0032                                                         ;848268;
     JSL.L QueueSound                                                     ;84826B;
 
-.return:
+  .return:
     RTL                                                                  ;84826F;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -118,11 +118,11 @@ UNUSED_Play_Resumed_SpinJumpSound_848278:
     CMP.W #$1400                                                         ;848283;
     BNE .return                                                          ;848286;
 
-.playSound:
+  .playSound:
     LDA.W #$0030                                                         ;848288;
     JSL.L QueueSound                                                     ;84828B;
 
-.return:
+  .return:
     RTL                                                                  ;84828F;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -193,7 +193,7 @@ Write_Row_of_Level_Data_Block_and_BTS:
     LDA.B $12                                                            ;8482F9;
     LDY.B $16                                                            ;8482FB;
 
-.loopLevelData:
+  .loopLevelData:
     STA.L $7F0002,X                                                      ;8482FD;
     INX                                                                  ;848301;
     INX                                                                  ;848302;
@@ -204,7 +204,7 @@ Write_Row_of_Level_Data_Block_and_BTS:
     LDA.B $14                                                            ;848309;
     LDY.B $16                                                            ;84830B;
 
-.loopBTS:
+  .loopBTS:
     STA.L $7F6402,X                                                      ;84830D;
     INX                                                                  ;848311;
     DEY                                                                  ;848312;
@@ -225,7 +225,7 @@ Load_Item_and_Room_Special_Xray_Blocks:
     PLB                                                                  ;848321;
     LDX.W #$004E                                                         ;848322;
 
-.loopPLM:
+  .loopPLM:
     LDA.W $1C37,X                                                        ;848325;
     CMP.W #PreInstruction_PLM_GotoLinkInstructionIfTriggered             ;848328;
     BCC .next                                                            ;84832B;
@@ -249,7 +249,7 @@ Load_Item_and_Room_Special_Xray_Blocks:
     JSL.L LoadBlockToXrayBG2Tilemap                                      ;84835A;
     PLX                                                                  ;84835E;
 
-.next:
+  .next:
     DEX                                                                  ;84835F;
     DEX                                                                  ;848360;
     BPL .loopPLM                                                         ;848361;
@@ -258,7 +258,7 @@ Load_Item_and_Room_Special_Xray_Blocks:
     BEQ .return                                                          ;84836A;
     TAX                                                                  ;84836C;
 
-.loopRoomVar:
+  .loopRoomVar:
     LDA.L $8F0000,X                                                      ;84836D;
     BEQ .return                                                          ;848371;
     AND.W #$00FF                                                         ;848373;
@@ -279,7 +279,7 @@ Load_Item_and_Room_Special_Xray_Blocks:
     JMP.W .loopRoomVar                                                   ;848395;
 
 
-.return:
+  .return:
     PLY                                                                  ;848398;
     PLX                                                                  ;848399;
     PLB                                                                  ;84839A;
@@ -287,7 +287,7 @@ Load_Item_and_Room_Special_Xray_Blocks:
     RTL                                                                  ;84839C;
 
 
-.InstructionPointers:
+  .InstructionPointers:
     dw DrawInst_DrawItemFrame0_0                                         ;84839D;
     dw DrawInst_DrawItemFrame0_1                                         ;84839F;
     dw DrawInst_DrawItemFrame0_2                                         ;8483A1;
@@ -321,7 +321,7 @@ Clear_PLMs:
     PHX                                                                  ;8483C6;
     LDX.W #$004E                                                         ;8483C7;
 
-.loop:
+  .loop:
     STZ.W $1C37,X                                                        ;8483CA;
     DEX                                                                  ;8483CD;
     DEX                                                                  ;8483CE;
@@ -340,7 +340,7 @@ Spawn_Hardcoded_PLM:
     PLB                                                                  ;8483DB;
     LDY.W #$004E                                                         ;8483DC;
 
-.loop:
+  .loop:
     LDA.W $1C37,Y                                                        ;8483DF;
     BEQ .found                                                           ;8483E2;
     DEY                                                                  ;8483E4;
@@ -357,7 +357,7 @@ Spawn_Hardcoded_PLM:
     RTL                                                                  ;8483F4;
 
 
-.found:
+  .found:
     SEP #$20                                                             ;8483F5;
     LDA.B $08,S                                                          ;8483F7;
     PHA                                                                  ;8483F9;
@@ -426,7 +426,7 @@ Spawn_Room_PLM:
     PLB                                                                  ;84846F;
     LDY.W #$004E                                                         ;848470;
 
-.loop:
+  .loop:
     LDA.W $1C37,Y                                                        ;848473;
     BEQ .found                                                           ;848476;
     DEY                                                                  ;848478;
@@ -440,7 +440,7 @@ Spawn_Room_PLM:
     RTL                                                                  ;848481;
 
 
-.found:
+  .found:
     SEP #$20                                                             ;848482;
     LDA.L $8F0003,X                                                      ;848484;
     STA.W $4202                                                          ;848488;
@@ -495,7 +495,7 @@ Spawn_PLM_to_CurrentBlockIndex:
     TAY                                                                  ;8484EC;
     LDX.W #$004E                                                         ;8484ED;
 
-.loop:
+  .loop:
     LDA.W $1C37,X                                                        ;8484F0;
     BEQ .found                                                           ;8484F3;
     DEX                                                                  ;8484F5;
@@ -507,7 +507,7 @@ Spawn_PLM_to_CurrentBlockIndex:
     RTL                                                                  ;8484FC;
 
 
-.found:
+  .found:
     LDA.W $0DC4                                                          ;8484FD;
     ASL A                                                                ;848500;
     STA.W $1C87,X                                                        ;848501;
@@ -550,7 +550,7 @@ UNUSED_Spawn_Enemy_PLM_84853E:
     PHA                                                                  ;848544;
     LDX.W #$004E                                                         ;848545;
 
-.loop:
+  .loop:
     LDA.W $1C37,X                                                        ;848548;
     BEQ .found                                                           ;84854B;
     DEX                                                                  ;84854D;
@@ -563,7 +563,7 @@ UNUSED_Spawn_Enemy_PLM_84853E:
     RTL                                                                  ;848555;
 
 
-.found:
+  .found:
     LDA.W $0F7E,Y                                                        ;848556;
     LSR A                                                                ;848559;
     LSR A                                                                ;84855A;
@@ -624,19 +624,19 @@ PLM_Handler:
     STZ.W $1C25                                                          ;8485BF;
     LDX.W #$004E                                                         ;8485C2;
 
-.loop:
+  .loop:
     STX.W $1C27                                                          ;8485C5;
     LDA.W $1C37,X                                                        ;8485C8;
     BEQ .next                                                            ;8485CB;
     JSR.W Process_PLM                                                    ;8485CD;
     LDX.W $1C27                                                          ;8485D0;
 
-.next:
+  .next:
     DEX                                                                  ;8485D3;
     DEX                                                                  ;8485D4;
     BPL .loop                                                            ;8485D5;
 
-.return:
+  .return:
     PLB                                                                  ;8485D7;
     PLP                                                                  ;8485D8;
     RTL                                                                  ;8485D9;
@@ -651,7 +651,7 @@ Process_PLM:
     BNE .return                                                          ;8485E9;
     LDY.W $1D27,X                                                        ;8485EB;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;8485EE;
     BPL .nonZeroTimer                                                    ;8485F1;
     STA.B $12                                                            ;8485F3;
@@ -661,7 +661,7 @@ Process_PLM:
     JMP.W ($0012)                                                        ;8485FA; Execute ASM Instruction
 
 
-.nonZeroTimer:
+  .nonZeroTimer:
     STA.L $7EDE1C,X                                                      ;8485FD;
     LDA.W $0002,Y                                                        ;848601;
     STA.L $7EDE6C,X                                                      ;848604;
@@ -674,7 +674,7 @@ Process_PLM:
     JSL.L Calculate_PLM_Block_Coordinates                                ;848616;
     JSR.W DrawPLM_HardCoded                                              ;84861A;
 
-.return:
+  .return:
     RTS                                                                  ;84861D;
 
 
@@ -685,7 +685,7 @@ Process_PLM_Draw_Instruction:
     STA.B $12                                                            ;848626;
     TAX                                                                  ;848628;
 
-.loopDrawEntry:
+  .loopDrawEntry:
     LDA.W $0000,Y                                                        ;848629;
     BMI .column                                                          ;84862C;
     AND.W #$00FF                                                         ;84862E;
@@ -693,7 +693,7 @@ Process_PLM_Draw_Instruction:
     INY                                                                  ;848633;
     INY                                                                  ;848634;
 
-.loopRow:
+  .loopRow:
     LDA.W $0000,Y                                                        ;848635;
     STA.L $7F0002,X                                                      ;848638;
     INY                                                                  ;84863C;
@@ -705,13 +705,13 @@ Process_PLM_Draw_Instruction:
     JMP.W .next                                                          ;848644;
 
 
-.column:
+  .column:
     AND.W #$00FF                                                         ;848647;
     STA.B $16                                                            ;84864A;
     INY                                                                  ;84864C;
     INY                                                                  ;84864D;
 
-.loopColumn:
+  .loopColumn:
     LDA.W $0000,Y                                                        ;84864E;
     STA.L $7F0002,X                                                      ;848651;
     INY                                                                  ;848655;
@@ -724,13 +724,13 @@ Process_PLM_Draw_Instruction:
     DEC.B $16                                                            ;848660;
     BNE .loopColumn                                                      ;848662;
 
-.next:
+  .next:
     LDA.W $0000,Y                                                        ;848664;
     BNE +                                                                ;848667;
     RTS                                                                  ;848669;
 
 
-  + DEY                                                                  ;84866A;
++   DEY                                                                  ;84866A;
     LDA.W $0000,Y                                                        ;84866B;
     XBA                                                                  ;84866E;
     BPL .positive                                                        ;84866F;
@@ -738,10 +738,10 @@ Process_PLM_Draw_Instruction:
     BRA +                                                                ;848674;
 
 
-.positive:
+  .positive:
     AND.W #$00FF                                                         ;848676;
 
-  + ASL A                                                                ;848679;
++   ASL A                                                                ;848679;
     CLC                                                                  ;84867A;
     ADC.B $12                                                            ;84867B;
     STA.B $14                                                            ;84867D;
@@ -754,24 +754,24 @@ Process_PLM_Draw_Instruction:
     TAX                                                                  ;84868C;
     LDA.W #$0000                                                         ;84868D;
 
-  - SEC                                                                  ;848690;
+-   SEC                                                                  ;848690;
     SBC.W $07A5                                                          ;848691;
     DEX                                                                  ;848694;
     BNE -                                                                ;848695;
     BRA .setX                                                            ;848697;
 
 
-  + AND.W #$00FF                                                         ;848699;
++   AND.W #$00FF                                                         ;848699;
     BEQ .setX                                                            ;84869C;
     TAX                                                                  ;84869E;
     LDA.W #$0000                                                         ;84869F;
 
-  - CLC                                                                  ;8486A2;
+-   CLC                                                                  ;8486A2;
     ADC.W $07A5                                                          ;8486A3;
     DEX                                                                  ;8486A6;
     BNE -                                                                ;8486A7;
 
-.setX:
+  .setX:
     ASL A                                                                ;8486A9;
     CLC                                                                  ;8486AA;
     ADC.B $14                                                            ;8486AB;
@@ -848,7 +848,7 @@ UNUSED_Instruction_PLM_CallFuctionInY_withA_8486E8:
     RTS                                                                  ;848707;
 
 
-.externalFunction:
+  .externalFunction:
     JML.W [$0012]                                                        ;848708;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -869,7 +869,7 @@ Instruction_PLM_CallFunctionInY:
     RTS                                                                  ;848720;
 
 
-.externalFunction:
+  .externalFunction:
     JML.W [$0012]                                                        ;848721;
 
 
@@ -890,10 +890,10 @@ UNUSED_Instruction_PLM_GotoY_PlusMinusY_848729:
     BRA +                                                                ;848735;
 
 
-.negative:
+  .negative:
     ORA.W #$FF00                                                         ;848737;
 
-  + CLC                                                                  ;84873A;
++   CLC                                                                  ;84873A;
     ADC.B $12                                                            ;84873B;
     TAY                                                                  ;84873D;
     RTS                                                                  ;84873E;
@@ -977,7 +977,7 @@ Instruction_PLM_LoadItemPLMGFX:
     ADC.W #$0010                                                         ;8487AB;
     STA.B $18                                                            ;8487AE;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;8487B0;
     AND.W #$00FF                                                         ;8487B3;
     XBA                                                                  ;8487B6;
@@ -995,11 +995,11 @@ Instruction_PLM_LoadItemPLMGFX:
     LDX.W $1C27                                                          ;8487C9;
     RTS                                                                  ;8487CC;
 
-.VRAMAddresses:
+  .VRAMAddresses:
     dw $3E00,$3E80,$3F00,$3F80                                           ;8487CD;
-.tileTableIndices:
+  .tileTableIndices:
     dw $0470,$0480,$0490,$04A0                                           ;8487D5;
-.startingTileNumbers:
+  .startingTileNumbers:
     dw $03E0,$03E8,$03F0,$03F8                                           ;8487DD;
 
 
@@ -1034,7 +1034,7 @@ Instruction_PLM_GotoY_ifBossBitsSet:
     JMP.W Instruction_PLM_GotoY                                          ;84881B;
 
 
-  + INY                                                                  ;84881E;
++   INY                                                                  ;84881E;
     INY                                                                  ;84881F;
     RTS                                                                  ;848820;
 
@@ -1058,7 +1058,7 @@ Instruction_PLM_GotoY_ifEventIsSet:
     JMP.W Instruction_PLM_GotoY                                          ;848838;
 
 
-.return:
+  .return:
     INY                                                                  ;84883B;
     INY                                                                  ;84883C;
     RTS                                                                  ;84883D;
@@ -1084,13 +1084,13 @@ Instruction_PLM_GotoY_ifRoomArg_ChozoBlockDestroyed:
     JMP.W Instruction_PLM_GotoY                                          ;84885C;
 
 
-.return:
+  .return:
     INY                                                                  ;84885F;
     INY                                                                  ;848860;
     RTS                                                                  ;848861;
 
 
-.pullX:
+  .pullX:
     PLX                                                                  ;848862;
     BRA .return                                                          ;848863;
 
@@ -1104,7 +1104,7 @@ Instruction_PLM_SetRoomArg_ChozoBlockDestroyed:
     ORA.W $05E7                                                          ;848873;
     STA.L $7ED830,X                                                      ;848876;
 
-.return:
+  .return:
     PLX                                                                  ;84887A;
     RTS                                                                  ;84887B;
 
@@ -1121,13 +1121,13 @@ Instruction_PLM_GotoY_ifRoomArg_ItemIsCollected:
     JMP.W Instruction_PLM_GotoY                                          ;848890;
 
 
-.return:
+  .return:
     INY                                                                  ;848893;
     INY                                                                  ;848894;
     RTS                                                                  ;848895;
 
 
-.pullX:
+  .pullX:
     PLX                                                                  ;848896;
     BRA .return                                                          ;848897;
 
@@ -1141,7 +1141,7 @@ Instruction_PLM_SetRoomArg_ItemCollected:
     ORA.W $05E7                                                          ;8488A7;
     STA.L $7ED870,X                                                      ;8488AA;
 
-.return:
+  .return:
     PLX                                                                  ;8488AE;
     RTS                                                                  ;8488AF;
 
@@ -1253,7 +1253,7 @@ Instruction_PLM_CollectHealth_ReserveTank:
     BNE .playMusic                                                       ;848993;
     INC.W $09C0                                                          ;848995;
 
-.playMusic:
+  .playMusic:
     LDA.W #$0168                                                         ;848998;
     JSL.L Play_Room_Music_Track_After_A_Frames                           ;84899B;
     LDA.W #$0019                                                         ;84899F;
@@ -1356,7 +1356,7 @@ UNUSED_Instruction_PLM_WaitUntil_Enemy0_IsDead_848A40:
     LDA.W #$0001                                                         ;848A51;
     STA.L $7EDE1C,X                                                      ;848A54;
 
-.return:
+  .return:
     RTS                                                                  ;848A58;
 
 
@@ -1371,7 +1371,7 @@ UNUSED_Instruction_PLM_WaitUntil_Enemy0_IsDead_848A59:
     LDA.W #$0001                                                         ;848A6A;
     STA.L $7EDE1C,X                                                      ;848A6D;
 
-.return:
+  .return:
     RTS                                                                  ;848A71;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -1390,13 +1390,13 @@ Instruction_PLM_GotoY_ifRoomArg_DoorIsSet:
     RTS                                                                  ;848A8A;
 
 
-.return:
+  .return:
     INY                                                                  ;848A8B;
     INY                                                                  ;848A8C;
     RTS                                                                  ;848A8D;
 
 
-.pullX:
+  .pullX:
     PLX                                                                  ;848A8E;
     BRA .return                                                          ;848A8F;
 
@@ -1416,7 +1416,7 @@ Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY:
   .return:
     RTS                                                                  ;848AA6;
 
-.carrySet:
+  .carrySet:
     PHX                                                                  ;848AA7;
     LDA.W $1DC7,X                                                        ;848AA8;
     BMI .setMSB                                                          ;848AAB;
@@ -1425,7 +1425,7 @@ Instruction_PLM_IncDoorHit_SetRoomArgDoor_GotoY:
     ORA.W $05E7                                                          ;848AB5;
     STA.L $7ED8B0,X                                                      ;848AB8;
 
-.setMSB:
+  .setMSB:
     PLX                                                                  ;848ABC;
     ORA.W #$8000                                                         ;848ABD;
     STA.W $1DC7,X                                                        ;848AC0;
@@ -1451,7 +1451,7 @@ Instruction_PLM_IncRoomArg_RoomArgFFFF_GotoY:
     RTS                                                                  ;848AE0;
 
 
-.FFFF:
+  .FFFF:
     LDA.W #$FFFF                                                         ;848AE1;
     STA.W $1DC7,X                                                        ;848AE4;
     LDA.W #.return                                                       ;848AE7;
@@ -1527,7 +1527,7 @@ Instruction_PLM_ProcessAirScrollUpdate:
     LDA.W #$0000                                                         ;848B63;
     SEP #$20                                                             ;848B66;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;848B68;
     BMI .specialAir                                                      ;848B6B;
     TAX                                                                  ;848B6D;
@@ -1538,7 +1538,7 @@ Instruction_PLM_ProcessAirScrollUpdate:
     BRA .loop                                                            ;848B77;
 
 
-.specialAir:
+  .specialAir:
     REP #$20                                                             ;848B79;
     PLY                                                                  ;848B7B;
     PLX                                                                  ;848B7C;
@@ -1566,7 +1566,7 @@ Instruction_PLM_ProcessSolidScrollUpdate:
     LDA.W #$0000                                                         ;848BA1;
     SEP #$20                                                             ;848BA4;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;848BA6;
     BMI .specialBlock                                                    ;848BA9;
     TAX                                                                  ;848BAB;
@@ -1577,7 +1577,7 @@ Instruction_PLM_ProcessSolidScrollUpdate:
     BRA .loop                                                            ;848BB5;
 
 
-.specialBlock:
+  .specialBlock:
     REP #$20                                                             ;848BB7;
     PLY                                                                  ;848BB9;
     PLX                                                                  ;848BBA;
@@ -1607,7 +1607,7 @@ Instruction_PLM_ClearMusicQueue_QueueMusicTrack:
     PHX                                                                  ;848BDD;
     LDX.W #$000E                                                         ;848BDE;
 
-.loop:
+  .loop:
     STZ.W $0619,X                                                        ;848BE1;
     STZ.W $0629,X                                                        ;848BE4;
     DEX                                                                  ;848BE7;
@@ -1768,7 +1768,7 @@ Instruction_PLM_Activate_EnergyStation:
     LDA.W $09C4                                                          ;848CC0;
     STA.W $09C2                                                          ;848CC3;
 
-.unlockSamus:
+  .unlockSamus:
     LDA.W #$0001                                                         ;848CC6;
     JSL.L Run_Samus_Command                                              ;848CC9;
     PLY                                                                  ;848CCD;
@@ -1787,7 +1787,7 @@ Instruction_PLM_Activate_MissileStation:
     LDA.W $09C8                                                          ;848CE1;
     STA.W $09C6                                                          ;848CE4;
 
-.unlockSamus:
+  .unlockSamus:
     LDA.W #$0001                                                         ;848CE7;
     JSL.L Run_Samus_Command                                              ;848CEA;
     PLY                                                                  ;848CEE;
@@ -1824,7 +1824,7 @@ Instruction_PLM_GotoY_or_ActivateSaveStation:
     RTS                                                                  ;848D31;
 
 
-.gotoY:
+  .gotoY:
     PLY                                                                  ;848D32;
     PLX                                                                  ;848D33;
     LDA.W $0000,Y                                                        ;848D34;
@@ -1853,13 +1853,13 @@ Instruction_PLM_GotoY_ifSamusIsWithin_YColumnsRowsOfPLM:
     EOR.W #$FFFF                                                         ;848D52;
     INC A                                                                ;848D55;
 
-  + SEP #$20                                                             ;848D56;
++   SEP #$20                                                             ;848D56;
     CMP.W $0000,Y                                                        ;848D58;
     REP #$20                                                             ;848D5B;
     BEQ +                                                                ;848D5D;
     BCS .tooFar                                                          ;848D5F;
 
-  + LDA.W $0AFA                                                          ;848D61;
++   LDA.W $0AFA                                                          ;848D61;
     LSR A                                                                ;848D64;
     LSR A                                                                ;848D65;
     LSR A                                                                ;848D66;
@@ -1870,19 +1870,19 @@ Instruction_PLM_GotoY_ifSamusIsWithin_YColumnsRowsOfPLM:
     EOR.W #$FFFF                                                         ;848D6E;
     INC A                                                                ;848D71;
 
-  + SEP #$20                                                             ;848D72;
++   SEP #$20                                                             ;848D72;
     CMP.W $0001,Y                                                        ;848D74;
     REP #$20                                                             ;848D77;
     BEQ .gotoY                                                           ;848D79;
     BCS .tooFar                                                          ;848D7B;
 
-.gotoY:
+  .gotoY:
     LDA.W $0002,Y                                                        ;848D7D;
     TAY                                                                  ;848D80;
     RTS                                                                  ;848D81;
 
 
-.tooFar:
+  .tooFar:
     TYA                                                                  ;848D82;
     CLC                                                                  ;848D83;
     ADC.W #$0004                                                         ;848D84;
@@ -1939,7 +1939,7 @@ DrawPLM:
     LDA.W $1C2B                                                          ;848DC0;
     STA.B $20                                                            ;848DC3;
 
-.loopDrawEntry:
+  .loopDrawEntry:
     LDA.W $0915                                                          ;848DC5;
     LSR A                                                                ;848DC8;
     LSR A                                                                ;848DC9;
@@ -1953,12 +1953,12 @@ DrawPLM:
     RTS                                                                  ;848DD6;
 
 
-  + LDA.W $0000,Y                                                        ;848DD7;
++   LDA.W $0000,Y                                                        ;848DD7;
     BPL .horizontal                                                      ;848DDA;
     JMP.W .vertical                                                      ;848DDC;
 
 
-.horizontal:
+  .horizontal:
     AND.W #$7FFF                                                         ;848DDF;
     STA.B $14                                                            ;848DE2;
     STZ.B $1C                                                            ;848DE4;
@@ -1997,18 +1997,18 @@ DrawPLM:
     LDA.B $16                                                            ;848E1F;
     STA.B $18                                                            ;848E21;
 
-  + LDA.B $16                                                            ;848E23;
++   LDA.B $16                                                            ;848E23;
     CLC                                                                  ;848E25;
     ADC.W #$0011                                                         ;848E26;
     STA.B $16                                                            ;848E29;
     CMP.B $1E                                                            ;848E2B;
     BPL +                                                                ;848E2D;
 
-.return8E2F:
+  .return8E2F:
     RTS                                                                  ;848E2F;
 
 
-  + LDA.B $18                                                            ;848E30;
++   LDA.B $18                                                            ;848E30;
     CLC                                                                  ;848E32;
     ADC.B $14                                                            ;848E33;
     DEC A                                                                ;848E35;
@@ -2022,19 +2022,19 @@ DrawPLM:
     STA.B $14                                                            ;848E42;
     BEQ .return8E2F                                                      ;848E44;
 
-  + PHX                                                                  ;848E46;
++   PHX                                                                  ;848E46;
     LDX.W $0330                                                          ;848E47;
     CPX.W #$01E0                                                         ;848E4A;
     BMI +                                                                ;848E4D;
 
-.pullXreturn:
+  .pullXreturn:
     PLX                                                                  ;848E4F;
 
-.return8E50:
+  .return8E50:
     RTS                                                                  ;848E50;
 
 
-  + LDA.W #$0200                                                         ;848E51;
++   LDA.W #$0200                                                         ;848E51;
     SEC                                                                  ;848E54;
     SBC.W $1C25                                                          ;848E55;
     LSR A                                                                ;848E58;
@@ -2065,7 +2065,7 @@ DrawPLM:
     BRA +                                                                ;848E8A;
 
 
-.greaterThan10h:
+  .greaterThan10h:
     ASL A                                                                ;848E8C;
     CLC                                                                  ;848E8D;
     ADC.B $0C                                                            ;848E8E;
@@ -2079,7 +2079,7 @@ DrawPLM:
     SBC.W #$0400                                                         ;848E9E;
     PHA                                                                  ;848EA1;
 
-  + LDA.B $14                                                            ;848EA2;
++   LDA.B $14                                                            ;848EA2;
     ASL A                                                                ;848EA4;
     STA.B $1E                                                            ;848EA5;
     PLA                                                                  ;848EA7;
@@ -2094,7 +2094,7 @@ DrawPLM:
     JMP.W .horizOneScreen                                                ;848EB7;
 
 
-  + CPX.W #$00E4                                                         ;848EBA;
++   CPX.W #$00E4                                                         ;848EBA;
     BPL .return8F2C                                                      ;848EBD;
     LDA.W #$0020                                                         ;848EBF;
     SEC                                                                  ;848EC2;
@@ -2155,13 +2155,13 @@ DrawPLM:
     BRA .horizAddToVRAMWriteTableEnd                                     ;848F2A;
 
 
-.return8F2C:
+  .return8F2C:
     PLA                                                                  ;848F2C;
     PLX                                                                  ;848F2D;
     RTS                                                                  ;848F2E;
 
 
-.horizOneScreen:
+  .horizOneScreen:
     PLA                                                                  ;848F2F;
     JSR.W PartiallySetupVRAMWriteTableEntries_SingleScrnPLMDrawTilemap   ;848F30;
     LDA.B $D5,X                                                          ;848F33;
@@ -2173,7 +2173,7 @@ DrawPLM:
     ADC.W #$000E                                                         ;848F3D;
     STA.W $0330                                                          ;848F40;
 
-.horizAddToVRAMWriteTableEnd:
+  .horizAddToVRAMWriteTableEnd:
     LDA.B $12                                                            ;848F43;
     ASL A                                                                ;848F45;
     STA.B $12                                                            ;848F46;
@@ -2185,7 +2185,7 @@ DrawPLM:
     STA.B $03                                                            ;848F4E;
     LDY.W #$0000                                                         ;848F50;
 
-.loopHorizBlock:
+  .loopHorizBlock:
     LDA.B ($03)                                                          ;848F53;
     STA.B $1E                                                            ;848F55;
     AND.W #$03FF                                                         ;848F57;
@@ -2209,7 +2209,7 @@ DrawPLM:
     BRA .horizNextBlock                                                  ;848F7F;
 
 
-.horizCopyBlockWithFlip:
+  .horizCopyBlockWithFlip:
     CMP.W #$0400                                                         ;848F81;
     BNE .horizCopyBlockWithVertFlip                                      ;848F84;
     LDA.L $7EA002,X                                                      ;848F86;
@@ -2227,7 +2227,7 @@ DrawPLM:
     EOR.W #$4000                                                         ;848FA7;
     STA.B [$06],Y                                                        ;848FAA;
 
-.horizNextBlock:
+  .horizNextBlock:
     INY                                                                  ;848FAC;
     INY                                                                  ;848FAD;
     INC.B $03                                                            ;848FAE;
@@ -2243,12 +2243,12 @@ DrawPLM:
     JMP.W .nextDrawEntry                                                 ;848FC5;
 
 
-.return8FC8:
+  .return8FC8:
     PLX                                                                  ;848FC8;
     RTS                                                                  ;848FC9;
 
 
-.horizCopyBlockWithVertFlip:
+  .horizCopyBlockWithVertFlip:
     CMP.W #$0800                                                         ;848FCA;
     BNE .horizCopyBlockWithBothFlips                                     ;848FCD;
     LDA.L $7EA004,X                                                      ;848FCF;
@@ -2268,7 +2268,7 @@ DrawPLM:
     BRA .horizNextBlock                                                  ;848FF5;
 
 
-.horizCopyBlockWithBothFlips:
+  .horizCopyBlockWithBothFlips:
     LDA.L $7EA006,X                                                      ;848FF7;
     EOR.W #$C000                                                         ;848FFB;
     STA.B [$00],Y                                                        ;848FFE;
@@ -2286,7 +2286,7 @@ DrawPLM:
     BRA .horizNextBlock                                                  ;84901D;
 
 
-.vertical:
+  .vertical:
     AND.W #$7FFF                                                         ;84901F;
     STA.B $14                                                            ;849022;
     LDA.W $0911                                                          ;849024;
@@ -2298,17 +2298,17 @@ DrawPLM:
     BEQ +                                                                ;84902D;
     BPL .return903B                                                      ;84902F;
 
-  + CLC                                                                  ;849031;
++   CLC                                                                  ;849031;
     ADC.W #$0011                                                         ;849032;
     CMP.B $1E                                                            ;849035;
     BEQ .return903B                                                      ;849037;
     BPL +                                                                ;849039;
 
-.return903B:
+  .return903B:
     RTS                                                                  ;84903B;
 
 
-  + LDA.B $1E                                                            ;84903C;
++   LDA.B $1E                                                            ;84903C;
     STA.B $18                                                            ;84903E;
     STZ.B $12                                                            ;849040;
     LDA.B $1A                                                            ;849042;
@@ -2330,17 +2330,17 @@ DrawPLM:
     SBC.B $12                                                            ;84905F;
     STA.B $14                                                            ;849061;
 
-.crash:
+  .crash:
     BMI .crash                                                           ;849063;
     BNE +                                                                ;849065;
     RTS                                                                  ;849067;
 
 
-.drawBlockGreaterThanScreenBlock:
+  .drawBlockGreaterThanScreenBlock:
     LDA.B $20                                                            ;849068;
     STA.B $1A                                                            ;84906A;
 
-  + LDA.B $1A                                                            ;84906C;
++   LDA.B $1A                                                            ;84906C;
     CLC                                                                  ;84906E;
     ADC.B $14                                                            ;84906F;
     SEC                                                                  ;849071;
@@ -2354,17 +2354,17 @@ DrawPLM:
     BEQ .return903B                                                      ;84907F;
     BMI .return908C                                                      ;849081;
 
-  + PHX                                                                  ;849083;
++   PHX                                                                  ;849083;
     LDX.W $0330                                                          ;849084;
     CPX.W #$00F0                                                         ;849087;
     BMI +                                                                ;84908A;
 
-.return908C:
+  .return908C:
     PLX                                                                  ;84908C;
     RTS                                                                  ;84908D;
 
 
-  + LDA.W #$0200                                                         ;84908E;
++   LDA.W #$0200                                                         ;84908E;
     SEC                                                                  ;849091;
     SBC.W $1C25                                                          ;849092;
     LSR A                                                                ;849095;
@@ -2393,7 +2393,7 @@ DrawPLM:
     STA.B $03                                                            ;8490BC;
     LDY.W #$0000                                                         ;8490BE;
 
-.loopVertBlock:
+  .loopVertBlock:
     LDA.B ($03)                                                          ;8490C1;
     STA.B $1E                                                            ;8490C3;
     AND.W #$03FF                                                         ;8490C5;
@@ -2417,7 +2417,7 @@ DrawPLM:
     JMP.W .vertNextBlock                                                 ;8490ED;
 
 
-.vertCopyBlockWithFlip:
+  .vertCopyBlockWithFlip:
     CMP.W #$0400                                                         ;8490F0;
     BNE .vertCopyBlockWithVertFlip                                       ;8490F3;
     LDA.L $7EA002,X                                                      ;8490F5;
@@ -2437,7 +2437,7 @@ DrawPLM:
     BRA .vertNextBlock                                                   ;84911B;
 
 
-.vertCopyBlockWithVertFlip:
+  .vertCopyBlockWithVertFlip:
     CMP.W #$0800                                                         ;84911D;
     BNE .vertCopyBlockWithBothFlips                                      ;849120;
     LDA.L $7EA004,X                                                      ;849122;
@@ -2457,7 +2457,7 @@ DrawPLM:
     BRA .vertNextBlock                                                   ;849148;
 
 
-.vertCopyBlockWithBothFlips:
+  .vertCopyBlockWithBothFlips:
     LDA.L $7EA006,X                                                      ;84914A;
     EOR.W #$C000                                                         ;84914E;
     STA.B [$00],Y                                                        ;849151;
@@ -2473,7 +2473,7 @@ DrawPLM:
     EOR.W #$C000                                                         ;84916B;
     STA.B [$06],Y                                                        ;84916E;
 
-.vertNextBlock:
+  .vertNextBlock:
     INY                                                                  ;849170;
     INY                                                                  ;849171;
     INC.B $03                                                            ;849172;
@@ -2489,12 +2489,12 @@ DrawPLM:
     JMP.W .loopVertBlock                                                 ;849189;
 
 
-.return918C:
+  .return918C:
     PLX                                                                  ;84918C;
     RTS                                                                  ;84918D;
 
 
-.nextDrawEntry:
+  .nextDrawEntry:
     PLX                                                                  ;84918E;
     LDY.B $03                                                            ;84918F;
     LDA.B $16                                                            ;849191;
@@ -2504,12 +2504,12 @@ DrawPLM:
     ADC.B $03                                                            ;849197;
     TAY                                                                  ;849199;
 
-  + LDA.W $0000,Y                                                        ;84919A;
++   LDA.W $0000,Y                                                        ;84919A;
     BNE +                                                                ;84919D;
     RTS                                                                  ;84919F;
 
 
-  + AND.W #$00FF                                                         ;8491A0;
++   AND.W #$00FF                                                         ;8491A0;
     BIT.W #$0080                                                         ;8491A3;
     BNE +                                                                ;8491A6;
     CLC                                                                  ;8491A8;
@@ -2518,12 +2518,12 @@ DrawPLM:
     BRA .incY                                                            ;8491AE;
 
 
-  + ORA.W #$FF00                                                         ;8491B0;
++   ORA.W #$FF00                                                         ;8491B0;
     CLC                                                                  ;8491B3;
     ADC.W $1C29                                                          ;8491B4;
     STA.B $1E                                                            ;8491B7;
 
-.incY:
+  .incY:
     INY                                                                  ;8491B9;
     LDA.W $0000,Y                                                        ;8491BA;
     AND.W #$00FF                                                         ;8491BD;
@@ -2536,7 +2536,7 @@ DrawPLM:
     JMP.W .loopDrawEntry                                                 ;8491CC;
 
 
-.setHighByte:
+  .setHighByte:
     ORA.W #$FF00                                                         ;8491CF;
     CLC                                                                  ;8491D2;
     ADC.W $1C2B                                                          ;8491D3;
@@ -2569,7 +2569,7 @@ Calculate_PLMDrawTilemap_VRAMDestination:
     BRA .fallthrough                                                     ;849207;
 
 
-.greaterThanF:
+  .greaterThanF:
     ASL A                                                                ;849209;
     CLC                                                                  ;84920A;
     ADC.B $0C                                                            ;84920B;
@@ -2583,7 +2583,7 @@ Calculate_PLMDrawTilemap_VRAMDestination:
     SBC.W #$0400                                                         ;84921B;
     PHA                                                                  ;84921E;
 
-.fallthrough:
+  .fallthrough:
     PLA                                                                  ;84921F;
 
 PartiallySetupVRAMWriteTableEntries_SingleScrnPLMDrawTilemap:
@@ -5219,7 +5219,7 @@ Instruction_PLM_GotoY_EnableMovementIfSamusEnergyIsFull:
     RTS                                                                  ;84AE3F;
 
 
-.fullEnergy:
+  .fullEnergy:
     LDA.W #$0001                                                         ;84AE40;
     JSL.L Run_Samus_Command                                              ;84AE43;
     LDA.W $0000,Y                                                        ;84AE47;
@@ -5293,7 +5293,7 @@ Instruction_PLM_GotoY_EnableMovementIfSamusMissilesAreFull:
     RTS                                                                  ;84AEC9;
 
 
-.missilesFull:
+  .missilesFull:
     LDA.W #$0001                                                         ;84AECA;
     JSL.L Run_Samus_Command                                              ;84AECD;
     LDA.W $0000,Y                                                        ;84AED1;
@@ -5507,7 +5507,7 @@ Setup_WreckedShipEntranceTreadmill:
     LDA.W #$00FF                                                         ;84B04D;
     LDY.W #$0038                                                         ;84B050;
 
-.loop:
+  .loop:
     STA.L $7F0002,X                                                      ;84B053;
     INX                                                                  ;84B057;
     INX                                                                  ;84B058;
@@ -5543,10 +5543,10 @@ UNUSED_LoadFXEntry_CompletelyBroken_84B05D:
     PLB                                                                  ;84B082;
     BCC .return                                                          ;84B083;
 
-.loadFXEntry:
+  .loadFXEntry:
     JSL.L Load_FX_Entry                                                  ;84B085;
 
-.return:
+  .return:
     CLC                                                                  ;84B089;
     RTS                                                                  ;84B08A;
 
@@ -5565,7 +5565,7 @@ UNUSED_LoadFXEntry0IfPLMIsInLeftmostScreenColumn_84B08B:
     JMP.W UNUSED_LoadFXEntry_CompletelyBroken_84B05D                     ;84B0A1;
 
 
-.return:
+  .return:
     CLC                                                                  ;84B0A4;
     RTS                                                                  ;84B0A5;
 
@@ -5584,7 +5584,7 @@ UNUSED_LoadFXEntry1IfPLMIsInLeftmostScreenColumn_84B0A6:
     JMP.W UNUSED_LoadFXEntry_CompletelyBroken_84B05D                     ;84B0BC;
 
 
-.return:
+  .return:
     CLC                                                                  ;84B0BF;
     RTS                                                                  ;84B0C0;
 
@@ -5603,7 +5603,7 @@ UNUSED_LoadFXEntry2IfPLMIsInLeftmostScreenColumn_84B0C1:
     JMP.W UNUSED_LoadFXEntry_CompletelyBroken_84B05D                     ;84B0D7;
 
 
-.return:
+  .return:
     CLC                                                                  ;84B0DA;
     RTS                                                                  ;84B0DB;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -5623,7 +5623,7 @@ Setup_BrinstarFloorPlant:
     RTS                                                                  ;84B0F3;
 
 
-.deactivate:
+  .deactivate:
     LDX.W $1C87,Y                                                        ;84B0F4;
     LDA.L $7F0002,X                                                      ;84B0F7;
     AND.W #$8FFF                                                         ;84B0FB;
@@ -5650,7 +5650,7 @@ Setup_BrinstarCeilingPlant:
     RTS                                                                  ;84B126;
 
 
-.deactivate:
+  .deactivate:
     LDX.W $1C87,Y                                                        ;84B127;
     LDA.L $7F0002,X                                                      ;84B12A;
     AND.W #$8FFF                                                         ;84B12E;
@@ -5668,7 +5668,7 @@ Setup_BrinstarCeilingPlant:
 ActivateStationIfSamusArmCannonLinedUp:
     LDX.W #$004E                                                         ;84B146;
 
-.loop:
+  .loop:
     CMP.W $1C87,X                                                        ;84B149;
     BEQ .found                                                           ;84B14C;
     DEX                                                                  ;84B14E;
@@ -5677,7 +5677,7 @@ ActivateStationIfSamusArmCannonLinedUp:
     BRA .delete                                                          ;84B152;
 
 
-.found:
+  .found:
     PHX                                                                  ;84B154;
     LDX.W $1C27                                                          ;84B155;
     JSL.L Calculate_PLM_Block_Coordinates                                ;84B158;
@@ -5700,7 +5700,7 @@ ActivateStationIfSamusArmCannonLinedUp:
     RTS                                                                  ;84B182;
 
 
-.delete:
+  .delete:
     LDA.W #$0000                                                         ;84B183;
     STA.W $1C37,Y                                                        ;84B186;
     SEC                                                                  ;84B189;
@@ -5732,7 +5732,7 @@ Setup_MapStation:
     RTS                                                                  ;84B1C0;
 
 
-.setInstruction:
+  .setInstruction:
     LDA.W #InstList_PLM_MapStation_2                                     ;84B1C1;
     STA.W $1D27,Y                                                        ;84B1C4;
     RTS                                                                  ;84B1C7;
@@ -5754,7 +5754,7 @@ Setup_MapStationRightAccess:
     JMP.W ActivateStationIfSamusArmCannonLinedUp                         ;84B1E5;
 
 
-.connected:
+  .connected:
     LDA.W #$0000                                                         ;84B1E8;
     STA.W $1C37,Y                                                        ;84B1EB;
     SEC                                                                  ;84B1EE;
@@ -5780,7 +5780,7 @@ Setup_MapStationLeftAccess:
     JMP.W ActivateStationIfSamusArmCannonLinedUp                         ;84B212;
 
 
-.connected:
+  .connected:
     LDA.W #$0000                                                         ;84B215;
     STA.W $1C37,Y                                                        ;84B218;
     SEC                                                                  ;84B21B;
@@ -5844,7 +5844,7 @@ Setup_EnergyStationRightAccess:
     JMP.W ActivateStationIfSamusArmCannonLinedUp                         ;84B292;
 
 
-.connected:
+  .connected:
     LDA.W #$0000                                                         ;84B295;
     STA.W $1C37,Y                                                        ;84B298;
     SEC                                                                  ;84B29B;
@@ -5871,7 +5871,7 @@ Setup_EnergyStationLeftAccess:
     JMP.W ActivateStationIfSamusArmCannonLinedUp                         ;84B2C5;
 
 
-.connected:
+  .connected:
     LDA.W #$0000                                                         ;84B2C8;
     STA.W $1C37,Y                                                        ;84B2CB;
     SEC                                                                  ;84B2CE;
@@ -5897,7 +5897,7 @@ Setup_MissileStationRightAccess:
     JMP.W ActivateStationIfSamusArmCannonLinedUp                         ;84B2F5;
 
 
-.connected:
+  .connected:
     LDA.W #$0000                                                         ;84B2F8;
     STA.W $1C37,Y                                                        ;84B2FB;
     SEC                                                                  ;84B2FE;
@@ -5924,7 +5924,7 @@ Setup_MissileStationLeftAccess:
     JMP.W ActivateStationIfSamusArmCannonLinedUp                         ;84B328;
 
 
-.connected:
+  .connected:
     LDA.W #$0000                                                         ;84B32B;
     STA.W $1C37,Y                                                        ;84B32E;
     SEC                                                                  ;84B331;
@@ -5997,18 +5997,18 @@ Setup_ScrollBlockTouchPLM:
     STZ.W $1C87,X                                                        ;84B397;
     LDX.W #$004E                                                         ;84B39A;
 
-.loop:
+  .loop:
     CMP.W $1C87,X                                                        ;84B39D;
     BEQ .found                                                           ;84B3A0;
     DEX                                                                  ;84B3A2;
     DEX                                                                  ;84B3A3;
     BPL .loop                                                            ;84B3A4;
 
-.crash:
+  .crash:
     BRA .crash                                                           ;84B3A6;
 
 
-.found:
+  .found:
     LDA.W $1E17,X                                                        ;84B3A8;
     BMI .return                                                          ;84B3AB;
     LDA.W #$8000                                                         ;84B3AD;
@@ -6018,7 +6018,7 @@ Setup_ScrollBlockTouchPLM:
     LDA.W #$0001                                                         ;84B3B9;
     STA.L $7EDE1C,X                                                      ;84B3BC;
 
-.return:
+  .return:
     RTS                                                                  ;84B3C0;
 
 
@@ -6069,11 +6069,11 @@ Setup_IcePhysics:
     CMP.W #$000F                                                         ;84B3FB;
     BNE .return                                                          ;84B3FE;
 
-.decel:
+  .decel:
     LDA.W #$0010                                                         ;84B400;
     STA.W $0B4C                                                          ;84B403;
 
-.return:
+  .return:
     CLC                                                                  ;84B406;
     RTS                                                                  ;84B407;
 
@@ -6093,7 +6093,7 @@ Setup_QuicksandSurface:
     BEQ +                                                                ;84B429;
     LDY.W #$0002                                                         ;84B42B;
 
-  + LDA.W $1E73                                                          ;84B42E;
++   LDA.W $1E73                                                          ;84B42E;
     BNE InsideReaction_QuicksandSurface_SamusIsGrounded_return           ;84B431;
     LDA.W $0B36                                                          ;84B433;
     AND.W #$0003                                                         ;84B436;
@@ -6103,7 +6103,7 @@ Setup_QuicksandSurface:
     RTS                                                                  ;84B43E;
 
 
-.pointers:
+  .pointers:
     dw InsideReaction_QuicksandSurface_SamusIsGrounded                   ;84B43F;
     dw InsideReaction_QuicksandSurface_SamusIsMovingUp                   ;84B441;
     dw InsideReaction_QuicksandSurface_SamusIsMovingDown                 ;84B443;
@@ -6130,7 +6130,7 @@ InsideReaction_QuicksandSurface_SamusIsMovingUp:
     LDA.W QuicksandSurface_InsideReaction_maxVelocity,Y                  ;84B468;
     STA.W $0B2D                                                          ;84B46B;
 
-  + STZ.W $0B5A                                                          ;84B46E;
++   STZ.W $0B5A                                                          ;84B46E;
     STZ.W $0B5C                                                          ;84B471;
     LDA.W QuicksandSurface_InsideReaction_distanceInAir,Y                ;84B474;
     STA.W $0B5B                                                          ;84B477;
@@ -6194,14 +6194,14 @@ Setup_QuicksandSurface_BTS85:
     RTS                                                                  ;84B4CD;
 
 
-.vertical:
+  .vertical:
     LDY.W #$0000                                                         ;84B4CE;
     LDA.W $09A2                                                          ;84B4D1;
     BIT.W #$0020                                                         ;84B4D4;
     BEQ +                                                                ;84B4D7;
     LDY.W #$0002                                                         ;84B4D9;
 
-  + LDX.B $12                                                            ;84B4DC;
++   LDX.B $12                                                            ;84B4DC;
     LDA.B $14                                                            ;84B4DE;
     STA.B $12                                                            ;84B4E0;
     STX.B $14                                                            ;84B4E2;
@@ -6217,7 +6217,7 @@ Setup_QuicksandSurface_BTS85:
     RTS                                                                  ;84B4F7;
 
 
-.pointers:
+  .pointers:
     dw CollisionReaction_QuicksandSurface_SamusIsGrounded                ;84B4F8;
     dw ClearCarry_84B528                                                 ;84B4FA;
     dw CollisionReaction_QuicksandSurface_SamusIsMovingDown              ;84B4FC;
@@ -6233,7 +6233,7 @@ CollisionReaction_QuicksandSurface_SamusIsGrounded:
     BRA .noCollision                                                     ;84B510;
 
 
-.up:
+  .up:
     LDA.W $0A6E                                                          ;84B512;
     CMP.W #$0001                                                         ;84B515;
     BEQ CollisionReaction_QuicksandSurface_QuicksandSpeedBoosting        ;84B518;
@@ -6242,9 +6242,9 @@ CollisionReaction_QuicksandSurface_SamusIsGrounded:
     BCS +                                                                ;84B51F;
     STA.B $13                                                            ;84B521;
 
-  + INC.W $1E71                                                          ;84B523;
++   INC.W $1E71                                                          ;84B523;
 
-.noCollision:
+  .noCollision:
     CLC                                                                  ;84B526;
     RTS                                                                  ;84B527;
 
@@ -6294,7 +6294,7 @@ Setup_ClearBabyMetroidInvisibleWall:
     LDX.W $1C87,Y                                                        ;84B551;
     LDY.W #$000A                                                         ;84B554;
 
-.loop:
+  .loop:
     LDA.L $7F0002,X                                                      ;84B557;
     AND.W #$0FFF                                                         ;84B55B;
     STA.L $7F0002,X                                                      ;84B55E;
@@ -6312,7 +6312,7 @@ CreateBabyMetroidInvisibleWall:
     LDX.W $1C87,Y                                                        ;84B56F;
     LDY.W #$000A                                                         ;84B572;
 
-.loop:
+  .loop:
     LDA.L $7F0002,X                                                      ;84B575;
     AND.W #$0FFF                                                         ;84B579;
     ORA.W #$8000                                                         ;84B57C;
@@ -6336,7 +6336,7 @@ Setup_CollisionReaction_SaveStationTrigger:
     CMP.W #$0002                                                         ;84B59D;
     BNE .collisionReturn                                                 ;84B5A0;
 
-.standing:
+  .standing:
     LDA.W $1E75                                                          ;84B5A2;
     BNE .collisionReturn                                                 ;84B5A5;
     LDA.W $0B02                                                          ;84B5A7;
@@ -6360,7 +6360,7 @@ Setup_CollisionReaction_SaveStationTrigger:
     STZ.W $1C37,X                                                        ;84B5CE;
     LDX.W #$004E                                                         ;84B5D1;
 
-.loop:
+  .loop:
     CMP.W $1C87,X                                                        ;84B5D4;
     BEQ .found                                                           ;84B5D7;
     DEX                                                                  ;84B5D9;
@@ -6370,13 +6370,13 @@ Setup_CollisionReaction_SaveStationTrigger:
     RTS                                                                  ;84B5DE;
 
 
-.found:
+  .found:
     INC.W $1D27,X                                                        ;84B5DF;
     INC.W $1D27,X                                                        ;84B5E2;
     LDA.W #$0001                                                         ;84B5E5;
     STA.L $7EDE1C,X                                                      ;84B5E8;
 
-.collisionReturn:
+  .collisionReturn:
     SEC                                                                  ;84B5EC;
     RTS                                                                  ;84B5ED;
 
@@ -6844,10 +6844,10 @@ Setup_EnableSoundsIn20Frames_F0FramesIfCeres:
     BRA +                                                                ;84B7CE;
 
 
-.ceres:
+  .ceres:
     LDA.W #$00F0                                                         ;84B7D0;
 
-  + STA.W $1D77,Y                                                        ;84B7D3;
++   STA.W $1D77,Y                                                        ;84B7D3;
     LDA.W #PreInstruction_PLM_DecTimer_EnableSounds_DeletePLMIfZero      ;84B7D6;
     STA.W $1CD7,Y                                                        ;84B7D9;
     RTS                                                                  ;84B7DC;
@@ -6859,7 +6859,7 @@ PreInstruction_PLM_DecTimer_EnableSounds_DeletePLMIfZero:
     STZ.W $05F5                                                          ;84B7E2;
     STZ.W $1C37,X                                                        ;84B7E5;
 
-.return:
+  .return:
     RTS                                                                  ;84B7E8;
 
 
@@ -6883,7 +6883,7 @@ PreInst_PLM_WakePLM_StartLavaquakeIfSpeedBoosterCollected:
     RTS                                                                  ;84B809;
 
 
-.collectedSpeedBooster:
+  .collectedSpeedBooster:
     LDA.W $197A                                                          ;84B80A;
     BMI .deletePLM                                                       ;84B80D;
     LDA.W #$FF80                                                         ;84B80F;
@@ -6896,7 +6896,7 @@ PreInst_PLM_WakePLM_StartLavaquakeIfSpeedBoosterCollected:
     RTS                                                                  ;84B825;
 
 
-.deletePLM:
+  .deletePLM:
     STZ.W $1C37,X                                                        ;84B826;
     RTS                                                                  ;84B829;
 
@@ -6912,7 +6912,7 @@ PreInst_PLM_WakePLM_StartFXMotionIfSamusIsFarEnoughLeft:
     INC.W $1D27,X                                                        ;84B83F;
     STZ.W $1D77,X                                                        ;84B842;
 
-.return:
+  .return:
     RTS                                                                  ;84B845;
 
 
@@ -6928,18 +6928,18 @@ PreInst_PLM_AdvanceLavaAsSamusMovesLeft_SetLavaquakeEvent:
     BCS +                                                                ;84B85A;
     STA.W $1978                                                          ;84B85C;
 
-  + LDA.W .FXYVelocity,Y                                                 ;84B85F;
++   LDA.W .FXYVelocity,Y                                                 ;84B85F;
     STA.W $197C                                                          ;84B862;
     TYA                                                                  ;84B865;
     CLC                                                                  ;84B866;
     ADC.W #$0006                                                         ;84B867;
     STA.W $1D77,X                                                        ;84B86A;
 
-.return:
+  .return:
     RTS                                                                  ;84B86D;
 
 
-.setLavaquake:
+  .setLavaquake:
     LDA.W #$0015                                                         ;84B86E;
     JSL.L MarkEvent_inA                                                  ;84B871;
     RTS                                                                  ;84B875;
@@ -6976,7 +6976,7 @@ Setup_SpeedBoosterEscape:
     LDA.W #$0000                                                         ;84B8A5;
     STA.W $1C37,Y                                                        ;84B8A8;
 
-.return:
+  .return:
     RTS                                                                  ;84B8AB;
 
 
@@ -6992,7 +6992,7 @@ PreInstruction_PLM_ShaktoolsRoom:
     LDA.W #$0101                                                         ;84B8BC;
     STA.L $7ECD22                                                        ;84B8BF;
 
-.powerBombNotActive:
+  .powerBombNotActive:
     LDA.W #$0348                                                         ;84B8C3;
     CMP.W $0AF6                                                          ;84B8C6;
     BCS .return                                                          ;84B8C9;
@@ -7000,7 +7000,7 @@ PreInstruction_PLM_ShaktoolsRoom:
     JSL.L MarkEvent_inA                                                  ;84B8CE;
     STZ.W $1C37,X                                                        ;84B8D2;
 
-.return:
+  .return:
     RTS                                                                  ;84B8D5;
 
 
@@ -7046,7 +7046,7 @@ WakePLMIfSamusIsBelowRightOfTarget:
     LDA.W #$0001                                                         ;84B911;
     STA.L $7EDE1C,X                                                      ;84B914;
 
-.return:
+  .return:
     RTS                                                                  ;84B918;
 
 
@@ -7070,7 +7070,7 @@ PreInstruction_PLM_MakeOldTourianEscapeShaftFakeWallExplode:
     JSL.L SpawnEnemyProjectileY_ParameterA_RoomGraphics                  ;84B93A;
     PLY                                                                  ;84B93E;
 
-.return:
+  .return:
     RTS                                                                  ;84B93F;
 
 
@@ -7092,7 +7092,7 @@ PreInst_PLM_RaiseAcidInEscapeRoomBeforeOldTourianEscapeShaft:
     LDA.W #$0010                                                         ;84B95D;
     STA.W $1980                                                          ;84B960;
 
-.return:
+  .return:
     RTS                                                                  ;84B963;
 
 
@@ -7125,7 +7125,7 @@ Setup_Reaction_CrittersEscapeBlock:
     RTS                                                                  ;84B989;
 
 
-.projectile:
+  .projectile:
     LDX.W $1C87,Y                                                        ;84B98A;
     LDA.L $7F0002,X                                                      ;84B98D;
     AND.W #$F000                                                         ;84B991;
@@ -7242,7 +7242,7 @@ Instruction_PLM_GotoYIfSamusDoesntHaveBombs:
     RTS                                                                  ;84BA79;
 
 
-.noBombs:
+  .noBombs:
     LDA.W $0000,Y                                                        ;84BA7A;
     TAY                                                                  ;84BA7D;
     RTS                                                                  ;84BA7E;
@@ -7334,7 +7334,7 @@ Setup_ClearCrateriaMainstreetEscapePassageIfCrittersEscaped:
     LDA.W #$0000                                                         ;84BB12;
     STA.W $1C37,Y                                                        ;84BB15;
 
-.return:
+  .return:
     RTS                                                                  ;84BB18;
 
 
@@ -7383,7 +7383,7 @@ PreInstruction_PLM_WakePLMIfTriggered:
     LDA.W #.return                                                       ;84BB64;
     STA.W $1CD7,X                                                        ;84BB67;
 
-.return:
+  .return:
     RTS                                                                  ;84BB6A;
 
 
@@ -7406,10 +7406,10 @@ PreInst_PLM_WakePLMIfTriggeredOrSamusWithin4BlockColumnBelow:
     CMP.W #$0005                                                         ;84BB86;
     BCC .triggered                                                       ;84BB89;
 
-  + LDA.W $1D77,X                                                        ;84BB8B;
++   LDA.W $1D77,X                                                        ;84BB8B;
     BEQ .return                                                          ;84BB8E;
 
-.triggered:
+  .triggered:
     INC.W $1D27,X                                                        ;84BB90;
     INC.W $1D27,X                                                        ;84BB93;
     LDA.W #$0001                                                         ;84BB96;
@@ -7417,7 +7417,7 @@ PreInst_PLM_WakePLMIfTriggeredOrSamusWithin4BlockColumnBelow:
     LDA.W #.return                                                       ;84BB9D;
     STA.W $1CD7,X                                                        ;84BBA0;
 
-.return:
+  .return:
     RTS                                                                  ;84BBA3;
 
 
@@ -7440,10 +7440,10 @@ PreInst_PLM_WakePLMIfTriggeredOrSamusWithin4BlockColumnAbove:
     CMP.W #$FFFC                                                         ;84BBBF;
     BCS .triggered                                                       ;84BBC2;
 
-  + LDA.W $1D77,X                                                        ;84BBC4;
++   LDA.W $1D77,X                                                        ;84BBC4;
     BEQ .return                                                          ;84BBC7;
 
-.triggered:
+  .triggered:
     INC.W $1D27,X                                                        ;84BBC9;
     INC.W $1D27,X                                                        ;84BBCC;
     LDA.W #$0001                                                         ;84BBCF;
@@ -7451,7 +7451,7 @@ PreInst_PLM_WakePLMIfTriggeredOrSamusWithin4BlockColumnAbove:
     LDA.W #.return                                                       ;84BBD6;
     STA.W $1CD7,X                                                        ;84BBD9;
 
-.return:
+  .return:
     RTS                                                                  ;84BBDC;
 
 
@@ -7479,7 +7479,7 @@ Instruction_PLM_WakeEnemyProjectileAtPLMsPosition:
     LDA.W $1C87,X                                                        ;84BBF2;
     LDX.W #$0022                                                         ;84BBF5;
 
-.loop:
+  .loop:
     CMP.W $1AFF,X                                                        ;84BBF8;
     BEQ .found                                                           ;84BBFB;
     DEX                                                                  ;84BBFD;
@@ -7487,7 +7487,7 @@ Instruction_PLM_WakeEnemyProjectileAtPLMsPosition:
     BPL .loop                                                            ;84BBFF;
     db $00                                                               ;84BC01; BRK with no operand
 
-.found:
+  .found:
     LDA.W #$0001                                                         ;84BC02;
     STA.W $1B8F,X                                                        ;84BC05;
     INC.W $1B47,X                                                        ;84BC08;
@@ -7636,7 +7636,7 @@ PreInstruction_PLM_GotoLinkInstructionIfShot:
     LDA.W #$0001                                                         ;84BD1E;
     STA.L $7EDE1C,X                                                      ;84BD21;
 
-.return:
+  .return:
     RTS                                                                  ;84BD25;
 
 
@@ -7654,11 +7654,11 @@ PreInstruction_PLM_GotoLinkInstructionIfHitWithPowerBomb:
     RTS                                                                  ;84BD44;
 
 
-.playSFX:
+  .playSFX:
     LDA.W #$0057                                                         ;84BD45;
     JSL.L QueueSound_Lib2_Max6                                           ;84BD48;
 
-.clearPLMShotStatus:
+  .clearPLMShotStatus:
     STZ.W $1D77,X                                                        ;84BD4C;
     RTS                                                                  ;84BD4F;
 
@@ -7672,7 +7672,7 @@ PreInstruction_PLM_GotoLinkInstructionIfShotWithAMissile:
     CMP.W #$0100                                                         ;84BD5D;
     BNE .dud                                                             ;84BD60;
 
-.missile:
+  .missile:
     STZ.W $1D77,X                                                        ;84BD62;
     LDA.L $7EDEBC,X                                                      ;84BD65;
     STA.W $1D27,X                                                        ;84BD69;
@@ -7681,16 +7681,16 @@ PreInstruction_PLM_GotoLinkInstructionIfShotWithAMissile:
     RTS                                                                  ;84BD73;
 
 
-.dud:
+  .dud:
     LDA.W #$0057                                                         ;84BD74;
     JSL.L QueueSound_Lib2_Max6                                           ;84BD77;
 
-.clearPLMShotStatus:
+  .clearPLMShotStatus:
     STZ.W $1D77,X                                                        ;84BD7B;
     RTS                                                                  ;84BD7E;
 
 
-.super:
+  .super:
     LDA.W #$0077                                                         ;84BD7F;
     STA.L $7EDF0C,X                                                      ;84BD82;
     BRA .missile                                                         ;84BD86;
@@ -7710,11 +7710,11 @@ PreInstruction_PLM_GotoLinkInstIfShotWithASuperMissile:
     RTS                                                                  ;84BDA6;
 
 
-.playSFX:
+  .playSFX:
     LDA.W #$0057                                                         ;84BDA7;
     JSL.L QueueSound_Lib2_Max6                                           ;84BDAA;
 
-.clearPLMShotStatus:
+  .clearPLMShotStatus:
     STZ.W $1D77,X                                                        ;84BDAE;
     RTS                                                                  ;84BDB1;
 
@@ -7734,7 +7734,7 @@ Play_Dud_Sound:
     LDA.W #$0057                                                         ;84BDC9;
     JSL.L QueueSound_Lib2_Max6                                           ;84BDCC;
 
-.clearPLMShotStatus:
+  .clearPLMShotStatus:
     STZ.W $1D77,X                                                        ;84BDD0;
     RTS                                                                  ;84BDD3;
 
@@ -7746,7 +7746,7 @@ PreInstruction_PLM_GotoLinkInstructionIfAreaBossDead:
     JMP.W Goto_Link_Instruction                                          ;84BDDD;
 
 
-.playSFX:
+  .playSFX:
     JMP.W Play_Dud_Sound                                                 ;84BDE0;
 
 
@@ -7757,7 +7757,7 @@ PreInstruction_PLM_GotoLinkInstructionIfAreaMiniBossIsDead:
     JMP.W Goto_Link_Instruction                                          ;84BDEC;
 
 
-.playSFX:
+  .playSFX:
     JMP.W Play_Dud_Sound                                                 ;84BDEF;
 
 
@@ -7768,7 +7768,7 @@ PreInstruction_PLM_GotoLinkInstructionIfAreaTorizoIsDead:
     JMP.W Goto_Link_Instruction                                          ;84BDFB;
 
 
-.playSFX:
+  .playSFX:
     JMP.W Play_Dud_Sound                                                 ;84BDFE;
 
 
@@ -7785,7 +7785,7 @@ PreInst_PLM_GotoLinkInst_SetZebesAwakeEventIfEnemiesDead:
     JMP.W Goto_Link_Instruction                                          ;84BE14;
 
 
-.playSFX:
+  .playSFX:
     PLX                                                                  ;84BE17;
     PLY                                                                  ;84BE18;
     JMP.W Play_Dud_Sound                                                 ;84BE19;
@@ -7805,7 +7805,7 @@ PreInst_PLM_GotoLinkInstIfTourianStatueFinishedProcessing:
     JMP.W Goto_Link_Instruction                                          ;84BE28;
 
 
-.playSFX:
+  .playSFX:
     PLX                                                                  ;84BE2B;
     PLY                                                                  ;84BE2C;
     JMP.W Play_Dud_Sound                                                 ;84BE2D;
@@ -7818,7 +7818,7 @@ PreInstruction_PLM_GotoLinkInstructionIfCrittersEscaped:
     JMP.W Goto_Link_Instruction                                          ;84BE39;
 
 
-.playSFX:
+  .playSFX:
     JMP.W Play_Dud_Sound                                                 ;84BE3C;
 
 
@@ -7831,7 +7831,7 @@ Instruction_PLM_SetGreyDoorPreInstruction:
     RTS                                                                  ;84BE4A;
 
 
-.pointers:
+  .pointers:
     dw PreInstruction_PLM_GotoLinkInstructionIfAreaBossDead              ;84BE4B;
     dw PreInstruction_PLM_GotoLinkInstructionIfAreaMiniBossIsDead        ;84BE4D;
     dw PreInstruction_PLM_GotoLinkInstructionIfAreaTorizoIsDead          ;84BE4F;
@@ -8614,7 +8614,7 @@ Setup_LeftGreenGateTrigger:
     JMP.W TriggerPLMOfBlockToTheRight                                    ;84C55B;
 
 
-.playSFX:
+  .playSFX:
     LDA.W #$0057                                                         ;84C55E;
     JSL.L QueueSound_Lib2_Max6                                           ;84C561;
     LDA.W #$0000                                                         ;84C565;
@@ -8631,7 +8631,7 @@ Setup_RightGreenGateTrigger:
     JMP.W TriggerPLMOfBlockToTheLeft                                     ;84C57A;
 
 
-.playSFX:
+  .playSFX:
     LDA.W #$0057                                                         ;84C57D;
     JSL.L QueueSound_Lib2_Max6                                           ;84C580;
     LDA.W #$0000                                                         ;84C584;
@@ -8648,11 +8648,11 @@ Setup_LeftRedGateTrigger:
     CMP.W #$0200                                                         ;84C599;
     BNE .playSFX                                                         ;84C59C;
 
-.triggerPLM:
+  .triggerPLM:
     JMP.W TriggerPLMOfBlockToTheRight                                    ;84C59E;
 
 
-.playSFX:
+  .playSFX:
     LDA.W #$0057                                                         ;84C5A1;
     JSL.L QueueSound_Lib2_Max6                                           ;84C5A4;
     LDA.W #$0000                                                         ;84C5A8;
@@ -8669,11 +8669,11 @@ Setup_RightRedGateTrigger:
     CMP.W #$0200                                                         ;84C5BD;
     BNE .playSFX                                                         ;84C5C0;
 
-.triggerPLM:
+  .triggerPLM:
     JMP.W TriggerPLMOfBlockToTheLeft                                     ;84C5C2;
 
 
-.playSFX:
+  .playSFX:
     LDA.W #$0057                                                         ;84C5C5;
     JSL.L QueueSound_Lib2_Max6                                           ;84C5C8;
     LDA.W #$0000                                                         ;84C5CC;
@@ -8690,7 +8690,7 @@ Setup_LeftYellowGateTrigger:
     JMP.W TriggerPLMOfBlockToTheRight                                    ;84C5E1;
 
 
-.playSFX:
+  .playSFX:
     LDA.W #$0057                                                         ;84C5E4;
     JSL.L QueueSound_Lib2_Max6                                           ;84C5E7;
     LDA.W #$0000                                                         ;84C5EB;
@@ -8705,7 +8705,7 @@ RightYellowGateTrigger:
     JMP.W TriggerPLMOfBlockToTheLeft                                     ;84C5FF;
 
 
-.playSFX:
+  .playSFX:
     LDA.W #$0057                                                         ;84C602;
     JSL.L QueueSound_Lib2_Max6                                           ;84C605;
     LDA.W #$0000                                                         ;84C609;
@@ -8722,7 +8722,7 @@ Setup_LeftBlueGateTrigger:
     JMP.W TriggerPLMOfBlockToTheRight                                    ;84C61E;
 
 
-.deletePLM:
+  .deletePLM:
     LDA.W #$0000                                                         ;84C621;
     STA.W $1C37,Y                                                        ;84C624;
 
@@ -8735,7 +8735,7 @@ Setup_RightBlueGateTrigger:
     JMP.W TriggerPLMOfBlockToTheLeft                                     ;84C635;
 
 
-.deletePLM:
+  .deletePLM:
     LDA.W #$0000                                                         ;84C638;
     STA.W $1C37,Y                                                        ;84C63B;
     RTS                                                                  ;84C63E;
@@ -8756,7 +8756,7 @@ TriggerPLMOfBlockToTheLeft:
 TriggerPLMAtBlockIndex_A:
     LDX.W #$004E                                                         ;84C64C;
 
-.loop:
+  .loop:
     CMP.W $1C87,X                                                        ;84C64F;
     BEQ .found                                                           ;84C652;
     DEX                                                                  ;84C654;
@@ -8765,12 +8765,12 @@ TriggerPLMAtBlockIndex_A:
     BRA .return                                                          ;84C658;
 
 
-.found:
+  .found:
     LDA.W $1D77,X                                                        ;84C65A;
     BNE .return                                                          ;84C65D;
     INC.W $1D77,X                                                        ;84C65F;
 
-.return:
+  .return:
     LDA.W #$0000                                                         ;84C662;
     STA.W $1C37,Y                                                        ;84C665;
     SEC                                                                  ;84C668;
@@ -8865,7 +8865,7 @@ Setup_DownwardsGateShotblock:
     DEX                                                                  ;84C6F5;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84C6F6;
 
-.noRoomArg:
+  .noRoomArg:
     LDX.W $1DC7,Y                                                        ;84C6F9;
     LDA.W .rightBlock,X                                                  ;84C6FC;
     BEQ .return                                                          ;84C6FF;
@@ -8874,11 +8874,11 @@ Setup_DownwardsGateShotblock:
     INX                                                                  ;84C705;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84C706;
 
-.return:
+  .return:
     RTS                                                                  ;84C709;
 
 
-.instListPointers:
+  .instListPointers:
     dw InstList_PLM_DownwardsGateShotblock_BlueLeft                      ;84C70A;
     dw InstList_PLM_DownwardsGateShotblock_BlueRight                     ;84C70C;
     dw InstList_PLM_DownwardsGateShotblock_RedLeft                       ;84C70E;
@@ -8896,9 +8896,9 @@ Setup_DownwardsGateShotblock:
 ;       |     |     |     |     |     |      _________ Ch: Yellow left
 ;       |     |     |     |     |     |     |      ___ Eh: Yellow right
 ;       |     |     |     |     |     |     |     |
-.leftBlock:
+  .leftBlock:
     dw $C046,$0000,$C048,$0000,$C04A,$0000,$C04C,$0000                   ;84C71A;
-.rightBlock:
+  .rightBlock:
     dw $0000,$C047,$0000,$C049,$0000,$C04B,$0000,$C04D                   ;84C72A;
 
 Setup_UpwardsGateShotblock:
@@ -8913,7 +8913,7 @@ Setup_UpwardsGateShotblock:
     DEX                                                                  ;84C74F;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84C750;
 
-.noRoomArg:
+  .noRoomArg:
     LDX.W $1DC7,Y                                                        ;84C753;
     LDA.W .rightBlock,X                                                  ;84C756;
     BEQ .return                                                          ;84C759;
@@ -8922,11 +8922,11 @@ Setup_UpwardsGateShotblock:
     INX                                                                  ;84C75F;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84C760;
 
-.return:
+  .return:
     RTS                                                                  ;84C763;
 
 
-.instListPointers:
+  .instListPointers:
     dw InstList_PLM_UpwardsGateShotblock_BlueLeft                        ;84C764;
     dw InstList_PLM_UpwardsGateShotblock_BlueRight                       ;84C766;
     dw InstList_PLM_UpwardsGateShotblock_RedLeft                         ;84C768;
@@ -8944,9 +8944,9 @@ Setup_UpwardsGateShotblock:
 ;       |     |     |     |     |     |      _________ Ch: Yellow left
 ;       |     |     |     |     |     |     |      ___ Eh: Yellow right
 ;       |     |     |     |     |     |     |     |
-.leftBlock:
+  .leftBlock:
     dw $C046,$0000,$C048,$0000,$C04A,$0000,$C04C,$0000                   ;84C774;
-.rightBlock:
+  .rightBlock:
     dw $0000,$C047,$0000,$C049,$0000,$C04B,$0000,$C04D                   ;84C784;
 
 Setup_GreyDoor:
@@ -8981,7 +8981,7 @@ Setup_BlueDoor:
     RTS                                                                  ;84C7CF;
 
 
-.notPowerBomb:
+  .notPowerBomb:
     LDX.W $1C87,Y                                                        ;84C7D0;
     LDA.L $7F0002,X                                                      ;84C7D3;
     AND.W #$0FFF                                                         ;84C7D7;
@@ -8996,7 +8996,7 @@ Setup_GenericShotTriggerForAPLM:
     STZ.W $1C87,X                                                        ;84C7E6;
     LDX.W #$004E                                                         ;84C7E9;
 
-.loop:
+  .loop:
     CMP.W $1C87,X                                                        ;84C7EC;
     BEQ .found                                                           ;84C7EF;
     DEX                                                                  ;84C7F1;
@@ -9005,7 +9005,7 @@ Setup_GenericShotTriggerForAPLM:
     RTS                                                                  ;84C7F5;
 
 
-.found:
+  .found:
     LDY.W $0DDE                                                          ;84C7F6;
     LDA.W $0C18,Y                                                        ;84C7F9;
     AND.W #$1FFF                                                         ;84C7FC;
@@ -9731,7 +9731,7 @@ UNUSED_Setup_84CDC2:
     CMP.W #$0082                                                         ;84CDCA;
     BNE .deletePLM                                                       ;84CDCD;
 
-.screwAttacking:
+  .screwAttacking:
     LDX.W $1C87,Y                                                        ;84CDCF;
     LDA.L $7F0002,X                                                      ;84CDD2;
     STA.W $1E17,Y                                                        ;84CDD6;
@@ -9741,7 +9741,7 @@ UNUSED_Setup_84CDC2:
     RTS                                                                  ;84CDE1;
 
 
-.deletePLM:
+  .deletePLM:
     LDA.W #$0000                                                         ;84CDE2;
     STA.W $1C37,Y                                                        ;84CDE5;
     SEC                                                                  ;84CDE8;
@@ -9773,7 +9773,7 @@ Setup_Collision_RespawningSpeedBoostBlock:
     RTS                                                                  ;84CE1D;
 
 
-.speed:
+  .speed:
     LDX.W $1C87,Y                                                        ;84CE1E;
     LDA.L $7F0002,X                                                      ;84CE21;
     AND.W #$F000                                                         ;84CE25;
@@ -9804,7 +9804,7 @@ Setup_Collision_RespawningCrumbleBlock:
     RTS                                                                  ;84CE62;
 
 
-.deletePLM:
+  .deletePLM:
     LDA.W #$0000                                                         ;84CE63;
     STA.W $1C37,Y                                                        ;84CE66;
     SEC                                                                  ;84CE69;
@@ -9850,7 +9850,7 @@ Setup_Collision_RespawningBombBlock:
     RTS                                                                  ;84CEC0;
 
 
-.screwOrSpeed:
+  .screwOrSpeed:
     LDX.W $1C87,Y                                                        ;84CEC1;
     LDA.L $7F0002,X                                                      ;84CEC4;
     AND.W #$F000                                                         ;84CEC8;
@@ -9875,7 +9875,7 @@ Setup_Reaction_RespawningBombBlock:
     RTS                                                                  ;84CEF3;
 
 
-.powerBomb:
+  .powerBomb:
     LDX.W $1C87,Y                                                        ;84CEF4;
     LDA.L $7F0002,X                                                      ;84CEF7;
     AND.W #$F000                                                         ;84CEFB;
@@ -9886,7 +9886,7 @@ Setup_Reaction_RespawningBombBlock:
     RTS                                                                  ;84CF0B;
 
 
-.bomb:
+  .bomb:
     LDA.W $1D27,Y                                                        ;84CF0C;
     CLC                                                                  ;84CF0F;
     ADC.W #$0003                                                         ;84CF10;
@@ -9914,7 +9914,7 @@ Setup_Reaction_RespawningPowerBombBlock:
     RTS                                                                  ;84CF47;
 
 
-.powerBomb:
+  .powerBomb:
     LDX.W $1C87,Y                                                        ;84CF48;
     LDA.L $7F0002,X                                                      ;84CF4B;
     AND.W #$F000                                                         ;84CF4F;
@@ -9925,7 +9925,7 @@ Setup_Reaction_RespawningPowerBombBlock:
     RTS                                                                  ;84CF5F;
 
 
-.bomb:
+  .bomb:
     LDA.W #UNUSED_InstList_PLM_PowerBombBlockBombed_84C91C               ;84CF60;
     STA.W $1D27,Y                                                        ;84CF63;
     RTS                                                                  ;84CF66;
@@ -9944,7 +9944,7 @@ Setup_Reaction_SuperMissileBlock:
     RTS                                                                  ;84CF80;
 
 
-.superMissile:
+  .superMissile:
     LDX.W $1C87,Y                                                        ;84CF81;
     LDA.L $7F0002,X                                                      ;84CF84;
     AND.W #$F000                                                         ;84CF88;
@@ -9955,7 +9955,7 @@ Setup_Reaction_SuperMissileBlock:
     RTS                                                                  ;84CF98;
 
 
-.bomb:
+  .bomb:
     LDA.W #UNUSED_InstList_PLM_SuperMissileBlockBombed_84C922            ;84CF99;
     STA.W $1D27,Y                                                        ;84CF9C;
     RTS                                                                  ;84CF9F;
@@ -9970,7 +9970,7 @@ Setup_Reaction_SpeedCrumbleBlock:
     LDA.W #$0000                                                         ;84CFAE;
     STA.W $1C37,Y                                                        ;84CFB1;
 
-.return:
+  .return:
     RTS                                                                  ;84CFB4;
 
 
@@ -10373,7 +10373,7 @@ PreInstruction_DeletePLM_SpawnTriggerBlockIf_4_8_IsBlankAir:
     LDX.W $1C27                                                          ;84D186;
     STZ.W $1C37,X                                                        ;84D189;
 
-.return:
+  .return:
     PLX                                                                  ;84D18C;
     RTS                                                                  ;84D18D;
 
@@ -10398,7 +10398,7 @@ Setup_Reaction_LowerNorfairChozoHandTrigger:
     CMP.W #$007A                                                         ;84D1AF;
     BNE .return                                                          ;84D1B2;
 
-.react:
+  .react:
     LDA.W #$000C                                                         ;84D1B4;
     JSL.L MarkEvent_inA                                                  ;84D1B7;
     LDA.W #$0001                                                         ;84D1BB;
@@ -10413,7 +10413,7 @@ Setup_Reaction_LowerNorfairChozoHandTrigger:
     db $0C,$1D                                                           ;84D1DA;
     dw PLMEntries_CrumbleLowerNorfairChozoRoomPlug                       ;84D1DC;
 
-.return:
+  .return:
     LDA.W #$0000                                                         ;84D1DE;
     STA.W $1C37,Y                                                        ;84D1E1;
     SEC                                                                  ;84D1E4;
@@ -10429,11 +10429,11 @@ PreInstruction_PLM_IncrementPLMRoomArgIfShotByMissile:
     CMP.W #$0100                                                         ;84D1F3;
     BNE .return                                                          ;84D1F6;
 
-.incRoomArg:
+  .incRoomArg:
     STZ.W $1D77,X                                                        ;84D1F8;
     INC.W $1DC7,X                                                        ;84D1FB;
 
-.return:
+  .return:
     STZ.W $1D77,X                                                        ;84D1FE;
     RTS                                                                  ;84D201;
 
@@ -10536,7 +10536,7 @@ Instruction_PLM_GotoY_IfRoomArgGreaterThanY:
     RTS                                                                  ;84D305;
 
 
-.next:
+  .next:
     INY                                                                  ;84D306;
     INY                                                                  ;84D307;
     INY                                                                  ;84D308;
@@ -10581,7 +10581,7 @@ PreInstruction_PLM_WakePLMIfSamusHasBombs:
     LDA.W #.return                                                       ;84D350;
     STA.W $1CD7,X                                                        ;84D353;
 
-.return:
+  .return:
     RTS                                                                  ;84D356;
 
 
@@ -10677,7 +10677,7 @@ UNUSED_PreInst_PLM_GotoToLinkInstructionIfBombed_84D409:
     LDA.W #$0001                                                         ;84D41B;
     STA.L $7EDE1C,X                                                      ;84D41E;
 
-.clearShotStatus:
+  .clearShotStatus:
     STZ.W $1D77,X                                                        ;84D422;
     RTS                                                                  ;84D425;
 
@@ -10779,7 +10779,7 @@ PreInstruction_PLM_WakePLMIf_A_B_X_Y_Left_Right:
     INC.W $1D27,X                                                        ;84D4CD;
     INC.W $1D27,X                                                        ;84D4D0;
 
-.return:
+  .return:
     RTS                                                                  ;84D4D3;
 
 
@@ -10929,7 +10929,7 @@ Setup_BombTorizosCrumblingChozo:
     LDA.W #$0000                                                         ;84D60F;
     STA.W $1C37,Y                                                        ;84D612;
 
-.return:
+  .return:
     RTS                                                                  ;84D615;
 
 
@@ -10956,7 +10956,7 @@ Setup_Collision_WreckedShipChozoHandTrigger:
     CMP.W #$007A                                                         ;84D641;
     BNE .return                                                          ;84D644;
 
-.trigger:
+  .trigger:
     LDA.W #$0001                                                         ;84D646;
     STA.W $0FB4                                                          ;84D649;
     LDA.W #$0202                                                         ;84D64C;
@@ -10973,7 +10973,7 @@ Setup_Collision_WreckedShipChozoHandTrigger:
     db $17,$1D                                                           ;84D673;
     dw PLMEntries_ClearSlopeAccessForWreckedShipChozo                    ;84D675;
 
-.return:
+  .return:
     LDA.W #$0000                                                         ;84D677;
     STA.W $1C37,Y                                                        ;84D67A;
     SEC                                                                  ;84D67D;
@@ -11113,11 +11113,11 @@ UNUSED_PreInst_PLM_WakePLMIfSamusIsWithin4Blocks_84D710:
     EOR.W #$FFFF                                                         ;84D721;
     INC A                                                                ;84D724;
 
-  + CMP.W #$0004                                                         ;84D725;
++   CMP.W #$0004                                                         ;84D725;
     BEQ +                                                                ;84D728;
     BCS .return                                                          ;84D72A;
 
-  + LDA.W $0AFA                                                          ;84D72C;
++   LDA.W $0AFA                                                          ;84D72C;
     LSR A                                                                ;84D72F;
     LSR A                                                                ;84D730;
     LSR A                                                                ;84D731;
@@ -11128,16 +11128,16 @@ UNUSED_PreInst_PLM_WakePLMIfSamusIsWithin4Blocks_84D710:
     EOR.W #$FFFF                                                         ;84D739;
     INC A                                                                ;84D73C;
 
-  + CMP.W #$0004                                                         ;84D73D;
++   CMP.W #$0004                                                         ;84D73D;
     BEQ +                                                                ;84D740;
     BCS .return                                                          ;84D742;
 
-  + LDA.L $7EDEBC,X                                                      ;84D744;
++   LDA.L $7EDEBC,X                                                      ;84D744;
     STA.W $1D27,X                                                        ;84D748;
     LDA.W #$0001                                                         ;84D74B;
     STA.L $7EDE1C,X                                                      ;84D74E;
 
-.return:
+  .return:
     RTS                                                                  ;84D752;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -11157,7 +11157,7 @@ PreInstruction_PLM_WakePLMIfRoomArgDoorIsSet:
     LDA.W #$0001                                                         ;84D772;
     STA.L $7EDE1C,X                                                      ;84D775;
 
-.return:
+  .return:
     RTS                                                                  ;84D779;
 
 
@@ -11569,7 +11569,7 @@ Setup_EyeDoorEye:
     LDA.W #$D0FF                                                         ;84DAB2;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84DAB5;
 
-.return:
+  .return:
     RTS                                                                  ;84DAB8;
 
 
@@ -11585,7 +11585,7 @@ Setup_EyeDoor:
     LDA.W #$A000                                                         ;84DACE;
     JSR.W Write_Level_Data_Block_Type_and_BTS                            ;84DAD1;
 
-.return:
+  .return:
     RTS                                                                  ;84DAD4;
 
 
@@ -11632,7 +11632,7 @@ PreInst_PLM_SetMetroidsClearedStateWhenRequired_RoomArg12:
     LDA.W #$0010                                                         ;84DAE6;
     JSL.L MarkEvent_inA                                                  ;84DAE9;
 
-.return:
+  .return:
     RTS                                                                  ;84DAED;
 
 
@@ -11643,7 +11643,7 @@ PreInst_PLM_SetMetroidsClearedStateWhenRequired_RoomArg14:
     LDA.W #$0011                                                         ;84DAF6;
     JSL.L MarkEvent_inA                                                  ;84DAF9;
 
-.return:
+  .return:
     RTS                                                                  ;84DAFD;
 
 
@@ -11654,7 +11654,7 @@ PreInst_PLM_SetMetroidsClearedStateWhenRequired_RoomArg16:
     LDA.W #$0012                                                         ;84DB06;
     JSL.L MarkEvent_inA                                                  ;84DB09;
 
-.return:
+  .return:
     RTS                                                                  ;84DB0D;
 
 
@@ -11665,7 +11665,7 @@ PreInst_PLM_SetMetroidsClearedStateWhenRequired_RoomArg18:
     LDA.W #$0013                                                         ;84DB16;
     JSL.L MarkEvent_inA                                                  ;84DB19;
 
-.return:
+  .return:
     RTS                                                                  ;84DB1D;
 
 
@@ -11676,7 +11676,7 @@ PreInstruction_PLM_SetsMetroidsClearedStatesWhenRequired:
     RTS                                                                  ;84DB27;
 
 
-.pointers:
+  .pointers:
     dw RTS_84DAD5                                                        ;84DB28;
     dw RTS_84DAD6                                                        ;84DB2A;
     dw RTS_84DAD7                                                        ;84DB2C;
@@ -11732,18 +11732,18 @@ PreInst_PLM_GotoLinkInstructionIfShotWithAMissile_Draygon:
     CMP.W #$0100                                                         ;84DB6F;
     BNE .return                                                          ;84DB72;
 
-.missile:
+  .missile:
     STZ.W $1D77,X                                                        ;84DB74;
     LDA.L $7EDEBC,X                                                      ;84DB77;
     STA.W $1D27,X                                                        ;84DB7B;
     LDA.W #$0001                                                         ;84DB7E;
     STA.L $7EDE1C,X                                                      ;84DB81;
 
-.return:
+  .return:
     RTS                                                                  ;84DB85;
 
 
-.super:
+  .super:
     LDA.W #$0077                                                         ;84DB86;
     STA.W $1DC7,X                                                        ;84DB89;
     BRA .missile                                                         ;84DB8C;
@@ -12299,7 +12299,7 @@ PreInstruction_PLM_GotoLinkInstructionIfTriggered:
     LDA.W #$0001                                                         ;84DFA1;
     STA.L $7EDE1C,X                                                      ;84DFA4;
 
-.return:
+  .return:
     RTS                                                                  ;84DFA8;
 
 
@@ -12349,7 +12349,7 @@ PreInstruction_PLM_WakePLMIfTriggered_WithDeadCodePBCheck:
     LDA.W #$0001                                                         ;84DFFF;
     STA.L $7EDE1C,X                                                      ;84E002;
 
-.return:
+  .return:
     RTS                                                                  ;84E006;
 
 
@@ -12396,7 +12396,7 @@ Instruction_PLM_DrawItemFrame0:
     BRA DrawPLM_Wait4Frames                                              ;84E05D;
 
 
-.drawInsts:
+  .drawInsts:
     dw DrawInst_DrawItemFrame0_0                                         ;84E05F;
     dw DrawInst_DrawItemFrame0_1                                         ;84E061;
     dw DrawInst_DrawItemFrame0_2                                         ;84E063;
@@ -12412,7 +12412,7 @@ Instruction_PLM_DrawItemFrame1:
     BRA DrawPLM_Wait4Frames                                              ;84E075;
 
 
-.drawInsts:
+  .drawInsts:
     dw DrawInst_DrawItemFrame1_0                                         ;84E077;
     dw DrawInst_DrawItemFrame1_1                                         ;84E079;
     dw DrawInst_DrawItemFrame1_2                                         ;84E07B;
@@ -14417,7 +14417,7 @@ Setup_ItemCollisionDetection:
     STZ.W $1C87,X                                                        ;84EEB4;
     LDX.W #$004E                                                         ;84EEB7;
 
-.loop:
+  .loop:
     CMP.W $1C87,X                                                        ;84EEBA;
     BEQ .found                                                           ;84EEBD;
     DEX                                                                  ;84EEBF;
@@ -14425,14 +14425,14 @@ Setup_ItemCollisionDetection:
     BPL .loop                                                            ;84EEC1;
     db $00                                                               ;84EEC3; BRK with no operand
 
-.found:
+  .found:
     LDA.W #$00FF                                                         ;84EEC4;
     STA.W $1D77,X                                                        ;84EEC7;
     CLC                                                                  ;84EECA;
     RTS                                                                  ;84EECB;
 
 
-.delete:
+  .delete:
     LDA.W #$0000                                                         ;84EECC;
     STA.W $1C37,Y                                                        ;84EECF;
     RTS                                                                  ;84EED2;

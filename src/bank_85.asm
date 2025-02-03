@@ -73,14 +73,14 @@ MessageBox_Routine:
     JSR.W Play_2_Lag_Frames_of_Music_and_Sound_Effects                   ;8580B4;
     JSR.W MaybeTriggerPauseScreen_or_ReturnSaveConfirmationSelection     ;8580B7;
 
-.return:
+  .return:
     PLY                                                                  ;8580BA;
     PLX                                                                  ;8580BB;
     PLB                                                                  ;8580BC;
     PLP                                                                  ;8580BD;
     RTL                                                                  ;8580BE;
 
-.gunship:
+  .gunship:
     JSR.W Handle_MessageBox_Interaction                                  ;8580BF;
     JSR.W Close_MessageBox                                               ;8580C2;
     LDA.W $05F9                                                          ;8580C5;
@@ -96,7 +96,7 @@ MessageBox_Routine:
     JSR.W Handle_MessageBox_Interaction                                  ;8580E2;
     JSR.W Close_MessageBox                                               ;8580E5;
 
-.no:
+  .no:
     JSR.W Clear_MessageBox_BG3Tilemap                                    ;8580E8;
     JSR.W Restore_PPU                                                    ;8580EB;
     JSL.L Queue_Samus_Movement_SoundEffects                              ;8580EE;
@@ -115,16 +115,16 @@ MaybeTriggerPauseScreen_or_ReturnSaveConfirmationSelection:
     RTS                                                                  ;85810A;
 
 
-.notMapPause:
+  .notMapPause:
     CMP.W #$001C                                                         ;85810B;
     BEQ .saveConfirmationSelection                                       ;85810E;
     CMP.W #$0017                                                         ;858110;
     BNE .return                                                          ;858113;
 
-.saveConfirmationSelection:
+  .saveConfirmationSelection:
     LDA.W $05F9                                                          ;858115;
 
-.return:
+  .return:
     RTS                                                                  ;858118;
 
 
@@ -134,7 +134,7 @@ Play_Saving_Sound_Effect:
     JSL.L QueueSound_Lib1_Max6                                           ;85811E;
     LDA.W #$00A0                                                         ;858122;
 
-.loop:
+  .loop:
     PHA                                                                  ;858125;
     JSL.L HandleMusicQueue                                               ;858126;
     JSL.L HandleSounds                                                   ;85812A;
@@ -150,7 +150,7 @@ Wait_for_Lag_Frame:
     SEP #$20                                                             ;858137;
     LDA.W $05B8                                                          ;858139;
 
-.wait:
+  .wait:
     CMP.W $05B8                                                          ;85813C;
     BEQ .wait                                                            ;85813F;
     PLP                                                                  ;858141;
@@ -199,7 +199,7 @@ Initialise_PPU_for_MessageBoxes:
     LDX.W #$0080                                                         ;8581A4;
     LDA.W #$0000                                                         ;8581A7;
 
-.loop:
+  .loop:
     STA.L $7E3000,X                                                      ;8581AA;
     DEX                                                                  ;8581AE;
     DEX                                                                  ;8581AF;
@@ -234,7 +234,7 @@ Clear_MessageBox_BG3Tilemap:
     LDX.W #$06FE                                                         ;8581F5;
     LDA.W .blankTile                                                     ;8581F8;
 
-.loop:
+  .loop:
     STA.L $7E3800,X                                                      ;8581FB;
     DEX                                                                  ;8581FF;
     DEX                                                                  ;858200;
@@ -262,7 +262,7 @@ Clear_MessageBox_BG3Tilemap:
     RTS                                                                  ;85823E;
 
 
-.blankTile:
+  .blankTile:
     dw $000E                                                             ;85823F;
 
 Initialise_MessageBox:
@@ -290,7 +290,7 @@ endif ; !FEATURE_KEEP_UNREFERENCED
 Write_Large_MessageBox_Tilemap:
     LDX.W #$0000                                                         ;85825A;
 
-.topBorderLoop:
+  .topBorderLoop:
     LDA.W Large_MessageBox_TopBottomBorder_Tilemap,X                     ;85825D;
     STA.L $7E3200,X                                                      ;858260;
     INX                                                                  ;858264;
@@ -303,7 +303,7 @@ Write_Large_MessageBox_Tilemap:
     STA.B $16                                                            ;858274;
     LDY.W #$0000                                                         ;858276;
 
-.bottomBorderLoop:
+  .bottomBorderLoop:
     LDA.W Large_MessageBox_TopBottomBorder_Tilemap,Y                     ;858279;
     STA.L $7E3200,X                                                      ;85827C;
     INY                                                                  ;858280;
@@ -319,7 +319,7 @@ Write_Small_MessageBox_Tilemap:
     LDY.W #$0000                                                         ;858289;
     LDX.W #$0000                                                         ;85828C;
 
-.topBorderLoop:
+  .topBorderLoop:
     LDA.W Small_MessageBox_TopBottomBorder_Tilemap,X                     ;85828F;
     STA.L $7E3200,X                                                      ;858292;
     INX                                                                  ;858296;
@@ -331,7 +331,7 @@ Write_Small_MessageBox_Tilemap:
     STA.B $16                                                            ;8582A3;
     LDY.W #$0000                                                         ;8582A5;
 
-.bottomBorderLoop:
+  .bottomBorderLoop:
     LDA.W Small_MessageBox_TopBottomBorder_Tilemap,Y                     ;8582A8;
     STA.L $7E3200,X                                                      ;8582AB;
     INY                                                                  ;8582AF;
@@ -356,7 +356,7 @@ Write_Message_Tilemap:
     LDX.W #$0000                                                         ;8582D4;
     LDA.W #$0000                                                         ;8582D7;
 
-.zeroLoop:
+  .zeroLoop:
     STA.L $7E3000,X                                                      ;8582DA;
     INX                                                                  ;8582DE;
     INX                                                                  ;8582DF;
@@ -385,7 +385,7 @@ Write_Message_Tilemap:
     LDX.W #$0040                                                         ;858309;
     LDY.W #$0000                                                         ;85830C;
 
-.messageLoop:
+  .messageLoop:
     LDA.B ($00),Y                                                        ;85830F;
     STA.L $7E3200,X                                                      ;858311;
     INX                                                                  ;858315;
@@ -499,7 +499,7 @@ DrawSpecialButton_SetupPPUForLargeMessageBox:
     BNE .found                                                           ;858407;
     LDY.W #$000E                                                         ;858409;
 
-.found:
+  .found:
     LDA.W $1C1F                                                          ;85840C;
     DEC A                                                                ;85840F;
     ASL A                                                                ;858410;
@@ -514,7 +514,7 @@ DrawSpecialButton_SetupPPUForLargeMessageBox:
     RTS                                                                  ;858425;
 
 
-.buttons:                                                                ;858426;
+  .buttons:                                                                ;858426;
     dw $28E0 ; A
     dw $3CE1 ; B
     dw $2CF7 ; X
@@ -544,7 +544,7 @@ Open_MessageBox:
     REP #$30                                                             ;85844C;
     STZ.W $05A2                                                          ;85844E;
 
-.loop:
+  .loop:
     JSR.W Write_MessageBox_BG3_Yscroll_HDMA_DataTable                    ;858451;
     LDA.W $05A2                                                          ;858454;
     CLC                                                                  ;858457;
@@ -577,7 +577,7 @@ Handle_MessageBox_Interaction:
     BEQ .lagLoop                                                         ;85848E;
     LDX.W #$0168                                                         ;858490;
 
-.lagLoop:
+  .lagLoop:
     JSR.W Wait_for_Lag_Frame                                             ;858493;
     PHX                                                                  ;858496;
     JSL.L HandleMusicQueue                                               ;858497;
@@ -586,7 +586,7 @@ Handle_MessageBox_Interaction:
     DEX                                                                  ;8584A0;
     BNE .lagLoop                                                         ;8584A1;
 
-.loopInput:
+  .loopInput:
     LDA.W $4212                                                          ;8584A3;
     BIT.B #$01                                                           ;8584A6;
     BNE .loopInput                                                       ;8584A8;
@@ -595,19 +595,19 @@ Handle_MessageBox_Interaction:
     LDA.W $4219                                                          ;8584AF;
     BEQ .loopInput                                                       ;8584B2;
 
-.busyReturn:
+  .busyReturn:
     RTS                                                                  ;8584B4;
 
 
-.save:
+  .save:
     REP #$30                                                             ;8584B5;
     STZ.W $05F9                                                          ;8584B7;
 
-.saveInput:
+  .saveInput:
     SEP #$30                                                             ;8584BA;
     LDX.B #$02                                                           ;8584BC;
 
-.waitLoop:
+  .waitLoop:
     JSR.W Wait_for_Lag_Frame                                             ;8584BE;
     PHX                                                                  ;8584C1;
     JSL.L HandleMusicQueue                                               ;8584C2;
@@ -633,17 +633,17 @@ Handle_MessageBox_Interaction:
     BRA .saveInput                                                       ;8584F5;
 
 
-.return:
+  .return:
     RTS                                                                  ;8584F7;
 
 
-.inputA:
+  .inputA:
     LDA.W $05F9                                                          ;8584F8;
     BNE .return                                                          ;8584FB;
     BRA .return                                                          ;8584FD;
 
 
-.inputB:
+  .inputB:
     LDA.W #$0002                                                         ;8584FF;
     STA.W $05F9                                                          ;858502;
     BRA .return                                                          ;858505;
@@ -658,11 +658,11 @@ Toggle_Save_Confirmation_Selection:
     BNE +                                                                ;858516;
     LDY.W #$0080                                                         ;858518;
 
-  + LDX.W #$0100                                                         ;85851B;
++   LDX.W #$0100                                                         ;85851B;
     LDA.W #$0020                                                         ;85851E;
     STA.B $34                                                            ;858521;
 
-.loop:
+  .loop:
     LDA.W UNUSED_MessageTilemaps_YES_859581,Y                            ;858523;
     STA.L $7E3200,X                                                      ;858526;
     INX                                                                  ;85852A;
@@ -701,7 +701,7 @@ Play_2_Lag_Frames_of_Music_and_Sound_Effects:
     SEP #$30                                                             ;858574;
     LDX.B #$02                                                           ;858576;
 
-.loop:
+  .loop:
     JSR.W Wait_for_Lag_Frame                                             ;858578;
     PHX                                                                  ;85857B;
     JSL.L HandleMusicQueue                                               ;85857C;
@@ -715,7 +715,7 @@ Play_2_Lag_Frames_of_Music_and_Sound_Effects:
 Close_MessageBox:
     REP #$30                                                             ;858589;
 
-.loop:
+  .loop:
     JSR.W Write_MessageBox_BG3_Yscroll_HDMA_DataTable                    ;85858B;
     LDA.W $05A2                                                          ;85858E;
     SEC                                                                  ;858591;
@@ -752,7 +752,7 @@ Write_MessageBox_BG3_Yscroll_HDMA_DataTable:
     LDA.W #$001E                                                         ;8585D7;
     STA.B $14                                                            ;8585DA;
 
-.loop:
+  .loop:
     LDA.W $05AA                                                          ;8585DC;
     SEC                                                                  ;8585DF;
     SBC.W $05A8                                                          ;8585E0;
@@ -777,7 +777,7 @@ Write_MessageBox_BG3_Yscroll_HDMA_DataTable:
     TYX                                                                  ;858609;
     LDA.W #$0000                                                         ;85860A;
 
-.zeroLoop:
+  .zeroLoop:
     STA.L $7E3000,X                                                      ;85860D;
     INX                                                                  ;858611;
     INX                                                                  ;858612;

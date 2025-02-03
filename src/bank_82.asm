@@ -16,7 +16,7 @@ GameState_6_1F_28_LoadingGameData_SetupNewGame_LoadDemoData:
     BRA .gameplay                                                        ;82801B;
 
 
-.notDemo:
+  .notDemo:
     LDA.L $7ED914                                                        ;82801D;
     CMP.W #$0005                                                         ;828021;
     BEQ .onZebes                                                         ;828024;
@@ -27,7 +27,7 @@ GameState_6_1F_28_LoadingGameData_SetupNewGame_LoadDemoData:
     BRA .onZebes                                                         ;828030;
 
 
-.zebesLanding:
+  .zebesLanding:
     STZ.W $079F                                                          ;828032;
     LDA.W #$0012                                                         ;828035;
     STA.W $078B                                                          ;828038;
@@ -35,20 +35,20 @@ GameState_6_1F_28_LoadingGameData_SetupNewGame_LoadDemoData:
     BRA .onZebes                                                         ;82803F;
 
 
-.ceres:
+  .ceres:
     LDA.W #$0006                                                         ;828041;
     STA.W $079F                                                          ;828044;
     STZ.W $078B                                                          ;828047;
     JSL.L ClearTimerRAM                                                  ;82804A;
 
-.onZebes:
+  .onZebes:
     JSR.W InialiseIORegistersForGameplay                                 ;82804E;
     JSR.W Load_StandardBG3Tiles_SpriteTiles_ClearTilemaps                ;828051;
     JSR.W LoadInitialPalette                                             ;828054;
     JSL.L InitializeSamus                                                ;828057;
     JSL.L LoadFromLoadStation                                            ;82805B;
 
-.gameplay:
+  .gameplay:
     JSL.L StartGameplay                                                  ;82805F;
     JSL.L InitialiseHUD_GameLoading                                      ;828063;
     JSL.L RTL_A09784                                                     ;828067;
@@ -57,7 +57,7 @@ GameState_6_1F_28_LoadingGameData_SetupNewGame_LoadDemoData:
     LDY.W #$0020                                                         ;82806E;
     LDX.W #$0000                                                         ;828071;
 
-.loopTargetSamusPalette:
+  .loopTargetSamusPalette:
     LDA.L $7EC180,X                                                      ;828074;
     STA.L $7EC380,X                                                      ;828078;
     INX                                                                  ;82807C;
@@ -82,7 +82,7 @@ GameState_6_1F_28_LoadingGameData_SetupNewGame_LoadDemoData:
     JMP.W .demo                                                          ;8280B0;
 
 
-  + LDA.L $7ED914                                                        ;8280B3;
++   LDA.L $7ED914                                                        ;8280B3;
     CMP.W #$0022                                                         ;8280B7;
     BNE .notZebesLanding                                                 ;8280BA;
     LDA.W #$0005                                                         ;8280BC;
@@ -90,7 +90,7 @@ GameState_6_1F_28_LoadingGameData_SetupNewGame_LoadDemoData:
     LDA.W #$000F                                                         ;8280C3;
     STA.W $0DA0                                                          ;8280C6;
 
-.loopAlpha:
+  .loopAlpha:
     JSL.L TransferEnemyTilesToVRAM_InitialiseEnemies                     ;8280C9;
     JSL.L WaitForNMI                                                     ;8280CD;
     DEC.W $0DA0                                                          ;8280D1;
@@ -101,7 +101,7 @@ GameState_6_1F_28_LoadingGameData_SetupNewGame_LoadDemoData:
     LDY.W #$0200                                                         ;8280DC;
     LDX.W #$0000                                                         ;8280DF;
 
-.loopAlphaPalettes:
+  .loopAlphaPalettes:
     LDA.L $7EC200,X                                                      ;8280E2;
     STA.L $7EC000,X                                                      ;8280E6;
     INX                                                                  ;8280EA;
@@ -114,11 +114,11 @@ GameState_6_1F_28_LoadingGameData_SetupNewGame_LoadDemoData:
     RTS                                                                  ;8280F2;
 
 
-.notZebesLanding:
+  .notZebesLanding:
     LDA.W #$0006                                                         ;8280F3;
     STA.W $0DA0                                                          ;8280F6;
 
-.loopBeta:
+  .loopBeta:
     JSL.L TransferEnemyTilesToVRAM_InitialiseEnemies                     ;8280F9;
     JSL.L WaitForNMI                                                     ;8280FD;
     DEC.W $0DA0                                                          ;828101;
@@ -130,7 +130,7 @@ GameState_6_1F_28_LoadingGameData_SetupNewGame_LoadDemoData:
     LDY.W #$0200                                                         ;82810F;
     LDX.W #$0000                                                         ;828112;
 
-.loopBetaPalettes:
+  .loopBetaPalettes:
     LDA.L $7EC200,X                                                      ;828115;
     STA.L $7EC000,X                                                      ;828119;
     INX                                                                  ;82811D;
@@ -150,18 +150,18 @@ GameState_6_1F_28_LoadingGameData_SetupNewGame_LoadDemoData:
     RTS                                                                  ;82813C;
 
 
-.runSamusCmd:
+  .runSamusCmd:
     LDA.W #$0009                                                         ;82813D;
     JSL.L Run_Samus_Command                                              ;828140;
     PLP                                                                  ;828144;
     RTS                                                                  ;828145;
 
 
-.demo:
+  .demo:
     LDA.W #$0006                                                         ;828146;
     STA.W $0DA0                                                          ;828149;
 
-.transferVRAM:
+  .transferVRAM:
     JSL.L TransferEnemyTilesToVRAM_InitialiseEnemies                     ;82814C;
     JSL.L WaitForNMI                                                     ;828150;
     DEC.W $0DA0                                                          ;828154;
@@ -192,7 +192,7 @@ GameState_6_1F_28_LoadingGameData_SetupNewGame_LoadDemoData:
     LDY.W #$0200                                                         ;828184;
     LDX.W #$0000                                                         ;828187;
 
-.loopDemoPalettes:
+  .loopDemoPalettes:
     LDA.L $7EC200,X                                                      ;82818A;
     STA.L $7EC000,X                                                      ;82818E;
     INX                                                                  ;828192;
@@ -343,7 +343,7 @@ LoadInitialPalette:
     LDY.W #$0200                                                         ;8282CB;
     LDX.W #$0000                                                         ;8282CE;
 
-.loop:
+  .loop:
     LDA.L Initial_Palette_BGPalette0,X                                   ;8282D1;
     STA.L $7EC000,X                                                      ;8282D5;
     INX                                                                  ;8282D9;
@@ -418,16 +418,16 @@ GameState_20_MadeItToCeresElevator:
     BEQ +                                                                ;82836D;
     JSL.L DrawTimer                                                      ;82836F;
 
-  + JSR.W GameState_8_MainGameplay                                       ;828373;
++   JSR.W GameState_8_MainGameplay                                       ;828373;
     DEC.W $0AA0                                                          ;828376;
     BEQ +                                                                ;828379;
     BPL .return                                                          ;82837B;
 
-  + INC.W $0998                                                          ;82837D;
++   INC.W $0998                                                          ;82837D;
     STZ.W $0723                                                          ;828380;
     STZ.W $0725                                                          ;828383;
 
-.return:
+  .return:
     PLP                                                                  ;828386;
     RTS                                                                  ;828387;
 
@@ -439,7 +439,7 @@ GameState_21_BlackoutFromCeres:
     BEQ +                                                                ;82838E;
     JSL.L DrawTimer                                                      ;828390;
 
-  + JSR.W GameState_8_MainGameplay                                       ;828394;
++   JSR.W GameState_8_MainGameplay                                       ;828394;
     JSL.L HandleFadingOut                                                ;828397;
     SEP #$20                                                             ;82839B;
     LDA.B $51                                                            ;82839D;
@@ -450,7 +450,7 @@ GameState_21_BlackoutFromCeres:
     RTS                                                                  ;8283A6;
 
 
-  + JSL.L EnableNMI                                                      ;8283A7;
++   JSL.L EnableNMI                                                      ;8283A7;
     REP #$20                                                             ;8283AB;
     JSL.L Wait_End_VBlank_Clear_HDMA                                     ;8283AD;
     JSL.L DisableHVCounterInterrupts                                     ;8283B1;
@@ -503,7 +503,7 @@ GameState_23_TimeUp:
     STZ.W $0723                                                          ;828429;
     STZ.W $0725                                                          ;82842C;
 
-.return:
+  .return:
     PLP                                                                  ;82842F;
     RTS                                                                  ;828430;
 
@@ -521,7 +521,7 @@ GameState_24_WhitingOutFromTimeUp:
     RTS                                                                  ;828443;
 
 
-  + JSL.L EnableNMI                                                      ;828444;
++   JSL.L EnableNMI                                                      ;828444;
     REP #$20                                                             ;828448;
     JSL.L Wait_End_VBlank_Clear_HDMA                                     ;82844A;
     JSL.L DisableHVCounterInterrupts                                     ;82844E;
@@ -555,7 +555,7 @@ GameState_24_WhitingOutFromTimeUp:
     STZ.W $0727                                                          ;82849A;
     LDX.W #$00FE                                                         ;82849D;
 
-.loop:
+  .loop:
     STZ.W $1A8D,X                                                        ;8284A0;
     DEX                                                                  ;8284A3;
     DEX                                                                  ;8284A4;
@@ -566,7 +566,7 @@ GameState_24_WhitingOutFromTimeUp:
     RTS                                                                  ;8284AE;
 
 
-.notZebesTimebomb:
+  .notZebesTimebomb:
     LDA.W #$0025                                                         ;8284AF;
     STA.W $0998                                                          ;8284B2;
     LDA.W #CinematicFunction_CeresGoesBoom_Initial                       ;8284B5;
@@ -589,7 +589,7 @@ GameState_26_SamusEscapesFromZebes:
     RTS                                                                  ;8284D2;
 
 
-  + JSL.L EnableNMI                                                      ;8284D3;
++   JSL.L EnableNMI                                                      ;8284D3;
     REP #$20                                                             ;8284D7;
     JSL.L Wait_End_VBlank_Clear_HDMA                                     ;8284D9;
     JSL.L DisableHVCounterInterrupts                                     ;8284DD;
@@ -650,15 +650,15 @@ GameState_2A_PlayingDemo:
     BRA .endDemos                                                        ;828558;
 
 
-.decDemoTimer:
+  .decDemoTimer:
     DEC.W $1F53                                                          ;82855A;
     BEQ +                                                                ;82855D;
     BPL .return                                                          ;82855F;
 
-  + STZ.W $0DEC                                                          ;828561;
++   STZ.W $0DEC                                                          ;828561;
     LDX.W #$005A                                                         ;828564;
 
-.loop:
+  .loop:
     JSL.L WaitForNMI                                                     ;828567;
     LDA.B $8F                                                            ;82856B;
     BNE .pressedInput                                                    ;82856D;
@@ -667,11 +667,11 @@ GameState_2A_PlayingDemo:
     BRA .endDemos                                                        ;828572;
 
 
-.pressedInput:
+  .pressedInput:
     LDA.W #$0001                                                         ;828574;
     STA.W $0DEC                                                          ;828577;
 
-.endDemos:
+  .endDemos:
     INC.W $0998                                                          ;82857A;
     STZ.W $05F5                                                          ;82857D;
     SEP #$20                                                             ;828580;
@@ -682,7 +682,7 @@ GameState_2A_PlayingDemo:
     STA.W $0723                                                          ;82858B;
     STA.W $0725                                                          ;82858E;
 
-.return:
+  .return:
     PLP                                                                  ;828591;
     RTS                                                                  ;828592;
 
@@ -695,7 +695,7 @@ GameState_2B_UnloadGameData:
     BEQ +                                                                ;82859C;
     JSR.W CheckForNextDemo                                               ;82859E;
 
-  + JSL.L EnableNMI                                                      ;8285A1;
++   JSL.L EnableNMI                                                      ;8285A1;
     INC.W $0998                                                          ;8285A5;
     STZ.W $0723                                                          ;8285A8;
     STZ.W $0725                                                          ;8285AB;
@@ -713,7 +713,7 @@ GameState_2B_UnloadGameData:
     SBC.W #$198D                                                         ;8285CB;
     TAX                                                                  ;8285CE;
 
-.clearNonGameplayRAM:
+  .clearNonGameplayRAM:
     STZ.W $198D,X                                                        ;8285CF;
     DEX                                                                  ;8285D2;
     DEX                                                                  ;8285D3;
@@ -725,7 +725,7 @@ GameState_2B_UnloadGameData:
     SBC.W #$077C                                                         ;8285DC;
     TAX                                                                  ;8285DF;
 
-.clearGameplayRAM:
+  .clearGameplayRAM:
     STZ.W $077C,X                                                        ;8285E0;
     DEX                                                                  ;8285E3;
     DEX                                                                  ;8285E4;
@@ -760,7 +760,7 @@ GameState_2C_TransitionFromDemo:
     RTS                                                                  ;82861C;
 
 
-.titleSequence:
+  .titleSequence:
     JSL.L Load_Title_Sequence_Graphics                                   ;82861D;
     LDA.W #$0002                                                         ;828621;
     STA.W $1A53                                                          ;828624;
@@ -770,7 +770,7 @@ GameState_2C_TransitionFromDemo:
     RTS                                                                  ;82862E;
 
 
-.nextDemoScene:
+  .nextDemoScene:
     LDA.W #$0028                                                         ;82862F;
     STA.W $0998                                                          ;828632;
     PLP                                                                  ;828635;
@@ -804,13 +804,13 @@ CheckForNextDemo:
     BCC +                                                                ;828664;
     LDA.W #$0000                                                         ;828666;
 
-  + STA.W $1F55                                                          ;828669;
++   STA.W $1F55                                                          ;828669;
     STZ.W $1F57                                                          ;82866C;
     PLP                                                                  ;82866F;
     RTS                                                                  ;828670;
 
 
-.nextDemoScene:
+  .nextDemoScene:
     LDA.W #$8000                                                         ;828671;
     STA.W $0DEC                                                          ;828674;
     PLP                                                                  ;828677;
@@ -876,7 +876,7 @@ LoadDemoRoomData:
     INC.W $1F57                                                          ;8286F6;
     LDX.W #$0000                                                         ;8286F9;
 
-.loopEvents:
+  .loopEvents:
     LDA.W #$FFFF                                                         ;8286FC;
     STA.L $7ED830,X                                                      ;8286FF;
     STA.L $7ED870,X                                                      ;828703;
@@ -893,7 +893,7 @@ LoadDemoRoomData:
     CPX.W #$0008                                                         ;828728;
     BMI .loopEvents                                                      ;82872B;
 
-.loopItems:
+  .loopItems:
     LDA.W #$FFFF                                                         ;82872D;
     STA.L $7ED830,X                                                      ;828730;
     STA.L $7ED870,X                                                      ;828734;
@@ -906,7 +906,7 @@ LoadDemoRoomData:
     LDA.W #$0000                                                         ;828746;
     LDX.W #$0000                                                         ;828749;
 
-.loopMapData:
+  .loopMapData:
     STA.L $7ECD52,X                                                      ;82874C;
     INX                                                                  ;828750;
     INX                                                                  ;828751;
@@ -1093,7 +1093,7 @@ MainGameLoop:
     STZ.W $0DF4                                                          ;828944;
     CLI                                                                  ;828947;
 
-.loop:
+  .loop:
     PHP                                                                  ;828948;
     REP #$30                                                             ;828949;
     JSL.L HDMAObjectHandler_HandleMusicQueue                             ;82894B;
@@ -1116,7 +1116,7 @@ MainGameLoop:
     BRA .loop                                                            ;82897F;
 
 
-.gamemodes:
+  .gamemodes:
     dw GameState_0_ResetStart                                            ;828981;
     dw GameState_1_TitleSequence                                         ;828983;
     dw GameState_2_GameOptionsMenu                                       ;828985;
@@ -1191,7 +1191,7 @@ HandleSounds:
     BPL .downtime                                                        ;8289F6;
     LDY.B #$00                                                           ;8289F8;
 
-.loop:
+  .loop:
     PHY                                                                  ;8289FA;
     LDA.W $0649,Y                                                        ;8289FB;
     ASL A                                                                ;8289FE;
@@ -1205,7 +1205,7 @@ HandleSounds:
     RTL                                                                  ;828A0A;
 
 
-.downtime:
+  .downtime:
     STA.W $0686                                                          ;828A0B;
     STZ.W $2141                                                          ;828A0E;
     STZ.W $064D                                                          ;828A11;
@@ -1217,7 +1217,7 @@ HandleSounds:
     RTL                                                                  ;828A21;
 
 
-.pointers:
+  .pointers:
     dw SoundState_0_SendAPUSoundRequestFromQueue                         ;828A22;
     dw SoundState_1_WaitForAPUSoundRequestAcknowledgement                ;828A24;
     dw SoundState_2_ClearSoundRequest                                    ;828A26;
@@ -1242,11 +1242,11 @@ SoundState_0_SendAPUSoundRequestFromQueue:
     STA.W $0643,X                                                        ;828A4B;
     INC.W $0649,X                                                        ;828A4E;
 
-.return:
+  .return:
     RTS                                                                  ;828A51;
 
 
-.data:
+  .data:
     db $00,$10,$20                                                       ;828A52;
 
 SoundState_1_WaitForAPUSoundRequestAcknowledgement:
@@ -1258,12 +1258,12 @@ SoundState_1_WaitForAPUSoundRequestAcknowledgement:
     BRA .return                                                          ;828A61;
 
 
-.incState:
+  .incState:
     INC.W $0649,X                                                        ;828A63;
     LDA.B #$02                                                           ;828A66;
     STA.W $0650,X                                                        ;828A68;
 
-.return:
+  .return:
     RTS                                                                  ;828A6B;
 
 
@@ -1275,7 +1275,7 @@ SoundState_2_ClearSoundRequest:
     STZ.W $064D,X                                                        ;828A75;
     INC.W $0649,X                                                        ;828A78;
 
-.return:
+  .return:
     RTS                                                                  ;828A7B;
 
 
@@ -1288,12 +1288,12 @@ SoudnState_3_WaitForAPUClearRequestAcknowledgement:
     BRA .return                                                          ;828A88;
 
 
-.state0:
+  .state0:
     STZ.W $0649,X                                                        ;828A8A;
     BRA SoundState_0_SendAPUSoundRequestFromQueue                        ;828A8D;
 
 
-.return:
+  .return:
     RTS                                                                  ;828A8F;
 
 
@@ -1303,7 +1303,7 @@ SoundState_4_ResetSoundState:
     BNE .return                                                          ;828A94;
     STZ.W $0649,X                                                        ;828A96;
 
-.return:
+  .return:
     RTS                                                                  ;828A99;
 
 
@@ -1333,10 +1333,10 @@ ShowSpareCPUDebug_UpdatePrevCtrl1Input:
     BRA +                                                                ;828AC6;
 
 
-.clearFlag:
+  .clearFlag:
     STZ.W $0DF4                                                          ;828AC8;
 
-  + LDA.W $0DF4                                                          ;828ACB;
++   LDA.W $0DF4                                                          ;828ACB;
     BEQ .return                                                          ;828ACE;
     SEP #$20                                                             ;828AD0;
     LDA.B $51                                                            ;828AD2;
@@ -1345,7 +1345,7 @@ ShowSpareCPUDebug_UpdatePrevCtrl1Input:
     STA.W $2100                                                          ;828AD8;
     REP #$20                                                             ;828ADB;
 
-.return:
+  .return:
     LDA.B $8B                                                            ;828ADD;
     STA.W $0DFE                                                          ;828ADF;
     PLP                                                                  ;828AE2;
@@ -1365,7 +1365,7 @@ GameState_0_ResetStart:
     LDA.W #$0003                                                         ;828AFE;
     STA.W $1F55                                                          ;828B01;
 
-.return:
+  .return:
     INC.W $0998                                                          ;828B04;
     RTS                                                                  ;828B07;
 
@@ -1413,7 +1413,7 @@ GameState_7_MainGameplayFadingIn:
     STZ.W $0725                                                          ;828B37;
     INC.W $0998                                                          ;828B3A;
 
-.return:
+  .return:
     PLP                                                                  ;828B3D;
     RTS                                                                  ;828B3E;
 
@@ -1436,7 +1436,7 @@ GameState_8_MainGameplay:
     BNE +                                                                ;828B5F;
     JSL.L Samus_Projectiles_Interaction_Handling                         ;828B61;
 
-  + JSL.L Main_Enemy_Routine                                             ;828B65;
++   JSL.L Main_Enemy_Routine                                             ;828B65;
     JSL.L SamusNewStateHandler                                           ;828B69;
     JSL.L Enemy_Projectile_Handler                                       ;828B6D;
     JSL.L PLM_Handler                                                    ;828B71;
@@ -1447,15 +1447,15 @@ GameState_8_MainGameplay:
     JSL.L Projectile_vs_Projectile_Collision_Handling                    ;828B82;
     JSL.L Process_Enemy_PowerBomb_Interaction                            ;828B86;
 
-  + JSL.L Main_Scrolling_Routine                                         ;828B8A;
++   JSL.L Main_Scrolling_Routine                                         ;828B8A;
     LDA.L DebugConst_DebugScrolling                                      ;828B8E;
     BEQ +                                                                ;828B92;
     JSL.L Debug_Layer1Position_Saving_Loading                            ;828B94;
 
-  + JSL.L Draw_Samus_Projectiles_Enemies_and_Enemy_Projectiles           ;828B98;
++   JSL.L Draw_Samus_Projectiles_Enemies_and_Enemy_Projectiles           ;828B98;
     JSL.L Handle_Queuing_Enemy_BG2_Tilemap_VRAM_Transfer                 ;828B9C;
 
-.skipProcessing:
+  .skipProcessing:
     JSL.L HandleHUDTilemap_PausedAndRunning                              ;828BA0;
     JSL.L Calc_Layer2Position_BGScrolls_UpdateBGGraphics_WhenScrolling   ;828BA4;
     JSL.L Execute_Room_Main_ASM                                          ;828BA8;
@@ -1471,7 +1471,7 @@ Delete_GameOptionsMenu_Objects:
     REP #$30                                                             ;828BBA;
     LDX.W #$000E                                                         ;828BBC;
 
-.loop:
+  .loop:
     STZ.W $1A9D,X                                                        ;828BBF;
     STZ.W $1AFD,X                                                        ;828BC2;
     DEX                                                                  ;828BC5;
@@ -1489,7 +1489,7 @@ Spawn_GameOptionsMenu_Object:
     TYX                                                                  ;828BD2;
     LDY.W #$000E                                                         ;828BD3;
 
-.loop:
+  .loop:
     LDA.W $1AFD,Y                                                        ;828BD6;
     BEQ .instruction                                                     ;828BD9;
     DEY                                                                  ;828BDB;
@@ -1501,7 +1501,7 @@ Spawn_GameOptionsMenu_Object:
     RTS                                                                  ;828BE2;
 
 
-.instruction:
+  .instruction:
     REP #$30                                                             ;828BE3;
     LDA.W $0002,X                                                        ;828BE5;
     STA.W $1B0D,Y                                                        ;828BE8;
@@ -1531,14 +1531,14 @@ GameOptionsMenu_ObjectHandler:
     REP #$30                                                             ;828C12;
     LDX.W #$000E                                                         ;828C14;
 
-.loop:
+  .loop:
     STX.W $1A8F                                                          ;828C17;
     LDA.W $1AFD,X                                                        ;828C1A;
     BEQ .next                                                            ;828C1D;
     JSR.W Process_GameOptionsMenu_Object                                 ;828C1F;
     LDX.W $1A8F                                                          ;828C22;
 
-.next:
+  .next:
     DEX                                                                  ;828C25;
     DEX                                                                  ;828C26;
     BPL .loop                                                            ;828C27;
@@ -1553,7 +1553,7 @@ Process_GameOptionsMenu_Object:
     BNE .return                                                          ;828C34;
     LDY.W $1AFD,X                                                        ;828C36;
 
-.returnPEA:
+  .returnPEA:
     LDA.W $0000,Y                                                        ;828C39;
     BPL .instruction                                                     ;828C3C;
     STA.B $12                                                            ;828C3E;
@@ -1563,7 +1563,7 @@ Process_GameOptionsMenu_Object:
     JMP.W ($0012)                                                        ;828C45;
 
 
-.instruction:
+  .instruction:
     STA.W $1B1D,X                                                        ;828C48;
     LDA.W $0002,Y                                                        ;828C4B;
     STA.W $1A9D,X                                                        ;828C4E;
@@ -1572,7 +1572,7 @@ Process_GameOptionsMenu_Object:
     ADC.W #$0004                                                         ;828C53;
     STA.W $1AFD,X                                                        ;828C56;
 
-.return:
+  .return:
     RTS                                                                  ;828C59;
 
 
@@ -1608,7 +1608,7 @@ Instruction_GameOptionsMenu_ClearPreInstruction:
     LDA.W #.RTS                                                          ;828C7B;
     STA.W $1B0D,X                                                        ;828C7E;
 
-.RTS:
+  .RTS:
     RTS                                                                  ;828C81;
 
 
@@ -1648,7 +1648,7 @@ Draw_GameOptionsMenu_Spritemaps:
     PHB                                                                  ;828CA4;
     LDX.W #$000E                                                         ;828CA5;
 
-.loop:
+  .loop:
     LDA.W $1A9D,X                                                        ;828CA8;
     BEQ .next                                                            ;828CAB;
     PEA.W $8200                                                          ;828CAD;
@@ -1663,7 +1663,7 @@ Draw_GameOptionsMenu_Spritemaps:
     STA.B $12                                                            ;828CC2;
     JSL.L AddSpritemapToOAM                                              ;828CC4;
 
-.next:
+  .next:
     DEX                                                                  ;828CC8;
     DEX                                                                  ;828CC9;
     BPL .loop                                                            ;828CCA;
@@ -1685,7 +1685,7 @@ GameState_C_Pausing_NormalGameplayDarkening:
     STZ.W $0725                                                          ;828CE7;
     INC.W $0998                                                          ;828CEA;
 
-.return:
+  .return:
     PLP                                                                  ;828CED;
     RTS                                                                  ;828CEE;
 
@@ -1711,7 +1711,7 @@ GameState_D_Pausing_LoadingPauseScreen:
     JML.W [$0601]                                                        ;828D11;
 
 
-.returnPEA:
+  .returnPEA:
     PLB                                                                  ;828D14;
     PLP                                                                  ;828D15;
     JSL.L Cancel_Sound_Effects                                           ;828D16;
@@ -1958,11 +1958,11 @@ LoadPauseScreen_BaseTilemaps:
     LDA.W #$0011                                                         ;828F45;
     STA.B $14                                                            ;828F48;
 
-.loopRows:
+  .loopRows:
     LDA.W #$0008                                                         ;828F4A;
     STA.B $12                                                            ;828F4D;
 
-.loopColumns:
+  .loopColumns:
     LDA.W $0000,Y                                                        ;828F4F;
     STA.L $7E3000,X                                                      ;828F52;
     INX                                                                  ;828F56;
@@ -2033,7 +2033,7 @@ Load_EquipmentScreen_ReserveHealth_Tilemap:
     ADC.W #$0804                                                         ;828FCB;
     STA.L $7E3B10                                                        ;828FCE;
 
-.return:
+  .return:
     PLP                                                                  ;828FD2;
     RTS                                                                  ;828FD3;
 
@@ -2046,7 +2046,7 @@ BackupGameplayPalettes_LoadPauseScreenPalettes:
     LDY.W #$0200                                                         ;828FDA;
     LDX.W #$0000                                                         ;828FDD;
 
-.loopBackupGameplay:
+  .loopBackupGameplay:
     LDA.L $7EC000,X                                                      ;828FE0;
     STA.L $7E3300,X                                                      ;828FE4;
     INX                                                                  ;828FE8;
@@ -2060,7 +2060,7 @@ BackupGameplayPalettes_LoadPauseScreenPalettes:
     LDY.W #$0200                                                         ;828FF2;
     LDX.W #$0000                                                         ;828FF5;
 
-.loopLoadPause:
+  .loopLoadPause:
     LDA.L Palettes_PauseScreen,X                                         ;828FF8;
     STA.L $7EC000,X                                                      ;828FFC;
     INX                                                                  ;829000;
@@ -2126,7 +2126,7 @@ Setup_MapScrolling_for_FileSelectMap:
     BRA .Yscroll                                                         ;829064;
 
 
-.Xscroll:
+  .Xscroll:
     LDA.W #$0020                                                         ;829066;
     SEC                                                                  ;829069;
     SBC.B $12                                                            ;82906A;
@@ -2137,7 +2137,7 @@ Setup_MapScrolling_for_FileSelectMap:
     SBC.B $12                                                            ;829073;
     STA.B $B1                                                            ;829075;
 
-.Yscroll:
+  .Yscroll:
     LDA.W $05B2                                                          ;829077;
     SEC                                                                  ;82907A;
     SBC.W $05B0                                                          ;82907B;
@@ -2180,7 +2180,7 @@ Setup_MapScrolling_for_FileSelectMap:
     LDA.W #$FFD8                                                         ;8290C2;
     STA.B $B3                                                            ;8290C5;
 
-.return:
+  .return:
     RTL                                                                  ;8290C7;
 
 
@@ -2198,7 +2198,7 @@ GameState_E_Paused_LoadingPauseScreen:
     STZ.W $0725                                                          ;8290E0;
     INC.W $0998                                                          ;8290E3;
 
-.return:
+  .return:
     PLP                                                                  ;8290E6;
     RTS                                                                  ;8290E7;
 
@@ -2231,7 +2231,7 @@ MainPauseRoutine:
     RTL                                                                  ;82910F;
 
 
-.pointers:
+  .pointers:
     dw PauseMenu_0_MapScreen                                             ;829110;
     dw PauseScreen_1_EquipmentScreen                                     ;829112;
     dw PauseMenu_2_MapScreenToEquipmentScreen_FadingOut                  ;829114;
@@ -2284,7 +2284,7 @@ PauseMenu_2_MapScreenToEquipmentScreen_FadingOut:
     STZ.W $0725                                                          ;82917F;
     INC.W $0727                                                          ;829182;
 
-.return:
+  .return:
     RTS                                                                  ;829185;
 
 
@@ -2303,7 +2303,7 @@ PauseMenu_5_EquipmentScreenToMapScreen_FadingOut:
     STZ.W $0725                                                          ;8291A4;
     INC.W $0727                                                          ;8291A7;
 
-.return:
+  .return:
     RTS                                                                  ;8291AA;
 
 
@@ -2360,9 +2360,9 @@ PauseMenu_7_EquipmentScreenToMapScreen_FadingIn:
     BEQ +                                                                ;829228;
     LDA.W #$0001                                                         ;82922A;
 
-  + STA.W $0727                                                          ;82922D;
++   STA.W $0727                                                          ;82922D;
 
-.return:
+  .return:
     RTS                                                                  ;829230;
 
 
@@ -2383,9 +2383,9 @@ PauseMenu_4_MapScreenToEquipmentScreen_FadingIn:
     BEQ +                                                                ;829254;
     LDA.W #$0001                                                         ;829256;
 
-  + STA.W $0727                                                          ;829259;
++   STA.W $0727                                                          ;829259;
 
-.return:
+  .return:
     RTS                                                                  ;82925C;
 
 
@@ -2404,7 +2404,7 @@ MapScrolling:
     RTL                                                                  ;82926D;
 
 
-.pointers:
+  .pointers:
     dw MapScrolling_None                                                 ;82926E;
     dw MapScrolling_Left                                                 ;829270;
     dw MapScrolling_Right                                                ;829272;
@@ -2426,7 +2426,7 @@ GetMapScrollSpeedIndexInX:
     ADC.W #$0020                                                         ;829289;
     TAX                                                                  ;82928C;
 
-.return:
+  .return:
     RTS                                                                  ;82928D;
 
 
@@ -2451,7 +2451,7 @@ MapScrolling_Common:
     BEQ .return                                                          ;8292B7;
     DEC.W $05FB                                                          ;8292B9;
 
-.return:
+  .return:
     RTS                                                                  ;8292BC;
 
 
@@ -2504,7 +2504,7 @@ GameState_10_Unpausing_LoadingNormalGameplay:
     STZ.W $0725                                                          ;829343;
     INC.W $0998                                                          ;829346;
 
-.return:
+  .return:
     PLP                                                                  ;829349;
     RTS                                                                  ;82934A;
 
@@ -2518,7 +2518,7 @@ Draw_PauseMenu_During_FadeOut:
     JMP.W MapScreen_DrawSamusPositionIndicator                           ;82935B;
 
 
-.equipScreen:
+  .equipScreen:
     JSR.W EquipmentScreen_DrawItemSelector                               ;82935E;
     JSR.W EquipmentScreen_DisplayReserveTankAmount_shell                 ;829361;
     JMP.W Handle_PauseMenu_L_R_PressedHighlight                          ;829364;
@@ -2543,7 +2543,7 @@ GameState_11_Unpausing_LoadingNormalGameplay:
     JML.W [$0604]                                                        ;82938B; Execute unpause hook
 
 
-.returnPEA:
+  .returnPEA:
     JSL.L Enable_HDMAObjects                                             ;82938E;
     JSL.L Enable_AnimatedTilesObjects                                    ;829392;
     JSL.L Queue_Samus_Movement_SoundEffects                              ;829396;
@@ -2569,7 +2569,7 @@ GameState_12_Unpausing_NormalGameplayBrightening:
     LDA.W #$0008                                                         ;8293BB;
     STA.W $0998                                                          ;8293BE;
 
-.return:
+  .return:
     PLP                                                                  ;8293C1;
     RTS                                                                  ;8293C2;
 
@@ -2618,7 +2618,7 @@ Load_PauseMenuMapTilemap_and_AreaLabel:
     BMI +                                                                ;829421;
     LDA.W #$0000                                                         ;829423;
 
-  + ASL A                                                                ;829426;
++   ASL A                                                                ;829426;
     TAX                                                                  ;829427;
     LDA.W AreaLabelTilemaps_pointers,X                                   ;829428;
     STA.W $4312                                                          ;82942B;
@@ -2640,7 +2640,7 @@ LoadPauseMenuMapTilemap:
     BMI +                                                                ;829446;
     LDA.W #$0000                                                         ;829448;
 
-  + STA.B $12                                                            ;82944B;
++   STA.B $12                                                            ;82944B;
     ASL A                                                                ;82944D;
     CLC                                                                  ;82944E;
     ADC.B $12                                                            ;82944F;
@@ -2670,14 +2670,14 @@ LoadPauseMenuMapTilemap:
     STZ.B $12                                                            ;829489;
     CLC                                                                  ;82948B;
 
-.loopWithoutMapData:
+  .loopWithoutMapData:
     ROL.W $07F7,X                                                        ;82948C;
     BCS .exploredMapTile                                                 ;82948F;
     REP #$20                                                             ;829491;
     LDA.W #$001F                                                         ;829493;
     STA.B [$03],Y                                                        ;829496;
 
-.nextWithoutMapData:
+  .nextWithoutMapData:
     SEP #$20                                                             ;829498;
     INY                                                                  ;82949A;
     INY                                                                  ;82949B;
@@ -2693,7 +2693,7 @@ LoadPauseMenuMapTilemap:
     RTS                                                                  ;8294AD;
 
 
-.exploredMapTile:
+  .exploredMapTile:
     INC.W $07F7,X                                                        ;8294AE;
     REP #$30                                                             ;8294B1;
     LDA.B [$00],Y                                                        ;8294B3;
@@ -2702,7 +2702,7 @@ LoadPauseMenuMapTilemap:
     BRA .nextWithoutMapData                                              ;8294BA;
 
 
-.mapCollected:
+  .mapCollected:
     REP #$30                                                             ;8294BC;
     LDA.B [$06]                                                          ;8294BE;
     XBA                                                                  ;8294C0;
@@ -2721,7 +2721,7 @@ LoadPauseMenuMapTilemap:
     LDY.W #$0000                                                         ;8294DA;
     LDX.W #$0010                                                         ;8294DD;
 
-.loopWithMapData:
+  .loopWithMapData:
     LDA.B [$00],Y                                                        ;8294E0;
     ASL.B $28                                                            ;8294E2;
     BCC +                                                                ;8294E4;
@@ -2730,11 +2730,11 @@ LoadPauseMenuMapTilemap:
     BRA .decX                                                            ;8294EB;
 
 
-  + ASL.B $26                                                            ;8294ED;
++   ASL.B $26                                                            ;8294ED;
     BCS .decX                                                            ;8294EF;
     LDA.W #$001F                                                         ;8294F1;
 
-.decX:
+  .decX:
     STA.B [$03],Y                                                        ;8294F4;
     DEX                                                                  ;8294F6;
     BNE .next                                                            ;8294F7;
@@ -2750,7 +2750,7 @@ LoadPauseMenuMapTilemap:
     INC.B $09                                                            ;82950A;
     INC.B $09                                                            ;82950C;
 
-.next:
+  .next:
     INY                                                                  ;82950E;
     INY                                                                  ;82950F;
     CPY.W #$1000                                                         ;829510;
@@ -2777,7 +2777,7 @@ DrawRoomSelectMap:
     BMI +                                                                ;829533;
     LDA.W #$0000                                                         ;829535;
 
-  + STA.B $12                                                            ;829538;
++   STA.B $12                                                            ;829538;
     ASL A                                                                ;82953A;
     CLC                                                                  ;82953B;
     ADC.B $12                                                            ;82953C;
@@ -2807,14 +2807,14 @@ DrawRoomSelectMap:
     STZ.B $12                                                            ;829576;
     CLC                                                                  ;829578;
 
-.loopWithoutMapData:
+  .loopWithoutMapData:
     ROL.W $07F7,X                                                        ;829579;
     BCS .exploredMapTile                                                 ;82957C;
     REP #$20                                                             ;82957E;
     LDA.W #$000F                                                         ;829580;
     STA.B [$03],Y                                                        ;829583;
 
-.nextWithoutMapData:
+  .nextWithoutMapData:
     SEP #$20                                                             ;829585;
     INY                                                                  ;829587;
     INY                                                                  ;829588;
@@ -2829,7 +2829,7 @@ DrawRoomSelectMap:
     JMP.W .return                                                        ;829599;
 
 
-.exploredMapTile:
+  .exploredMapTile:
     INC.W $07F7,X                                                        ;82959C;
     REP #$30                                                             ;82959F;
     LDA.B [$00],Y                                                        ;8295A1;
@@ -2838,7 +2838,7 @@ DrawRoomSelectMap:
     BRA .nextWithoutMapData                                              ;8295A8;
 
 
-.mapCollected:
+  .mapCollected:
     REP #$30                                                             ;8295AA;
     LDA.B [$06]                                                          ;8295AC;
     XBA                                                                  ;8295AE;
@@ -2857,7 +2857,7 @@ DrawRoomSelectMap:
     LDY.W #$0000                                                         ;8295C8;
     LDX.W #$0010                                                         ;8295CB;
 
-.loopWithMapData:
+  .loopWithMapData:
     LDA.B [$00],Y                                                        ;8295CE;
     ASL.B $28                                                            ;8295D0;
     BCC +                                                                ;8295D2;
@@ -2866,11 +2866,11 @@ DrawRoomSelectMap:
     BRA .decX                                                            ;8295D9;
 
 
-  + ASL.B $26                                                            ;8295DB;
++   ASL.B $26                                                            ;8295DB;
     BCS .decX                                                            ;8295DD;
     LDA.W #$001F                                                         ;8295DF;
 
-.decX:
+  .decX:
     STA.B [$03],Y                                                        ;8295E2;
     DEX                                                                  ;8295E4;
     BNE .next                                                            ;8295E5;
@@ -2886,13 +2886,13 @@ DrawRoomSelectMap:
     INC.B $09                                                            ;8295F8;
     INC.B $09                                                            ;8295FA;
 
-.next:
+  .next:
     INY                                                                  ;8295FC;
     INY                                                                  ;8295FD;
     CPY.W #$1000                                                         ;8295FE;
     BMI .loopWithMapData                                                 ;829601;
 
-.return:
+  .return:
     REP #$30                                                             ;829603;
     LDX.W $0330                                                          ;829605;
     LDA.W #$1000                                                         ;829608;
@@ -2923,7 +2923,7 @@ DrawRoomSelectMap_AreaLabel:
     TAX                                                                  ;829633;
     LDY.W #$0000                                                         ;829634;
 
-.loop:
+  .loop:
     LDA.W $0000,X                                                        ;829637;
     AND.W #$EFFF                                                         ;82963A;
     STA.B [$00],Y                                                        ;82963D;
@@ -3484,7 +3484,7 @@ SetupMapScrollingForPauseMenu:
     BRA .Yscroll                                                         ;829E61;
 
 
-.Xscroll:
+  .Xscroll:
     LDA.W #$0020                                                         ;829E63;
     SEC                                                                  ;829E66;
     SBC.B $12                                                            ;829E67;
@@ -3495,7 +3495,7 @@ SetupMapScrollingForPauseMenu:
     SBC.B $12                                                            ;829E70;
     STA.B $B1                                                            ;829E72;
 
-.Yscroll:
+  .Yscroll:
     LDA.W $05B2                                                          ;829E74;
     SEC                                                                  ;829E77;
     SBC.W $05B0                                                          ;829E78;
@@ -3538,7 +3538,7 @@ SetupMapScrollingForPauseMenu:
     LDA.W #$FFD8                                                         ;829EBE;
     STA.B $B3                                                            ;829EC1;
 
-.return:
+  .return:
     RTS                                                                  ;829EC3;
 
 
@@ -3559,13 +3559,13 @@ DetermineMapScrollLimits:
     BRA +                                                                ;829EDE;
 
 
-.areaMapNotCollected:
+  .areaMapNotCollected:
     LDA.W #$0000                                                         ;829EE0;
     STA.B $08                                                            ;829EE3;
     LDA.W #$07F7                                                         ;829EE5;
     STA.B $06                                                            ;829EE8;
 
-  + PHK                                                                  ;829EEA;
++   PHK                                                                  ;829EEA;
     PLB                                                                  ;829EEB;
     SEP #$20                                                             ;829EEC;
     LDA.B $08                                                            ;829EEE;
@@ -3584,7 +3584,7 @@ DetermineMapScrollLimits:
     SBC.W #$0018                                                         ;829F0D;
     STA.W $05AC                                                          ;829F10;
 
-  + LDA.B $06                                                            ;829F13;
++   LDA.B $06                                                            ;829F13;
     CLC                                                                  ;829F15;
     ADC.W #$0083                                                         ;829F16;
     STA.B $00                                                            ;829F19;
@@ -3624,7 +3624,7 @@ DetermineLeftmostMapColumn:
     LDA.B #$00                                                           ;829F50;
     LDX.W #$0000                                                         ;829F52;
 
-.loopColumns:
+  .loopColumns:
     TXA                                                                  ;829F55;
     AND.B #$07                                                           ;829F56;
     TAY                                                                  ;829F58;
@@ -3632,7 +3632,7 @@ DetermineLeftmostMapColumn:
     STA.B $12                                                            ;829F5C;
     LDY.W #$0000                                                         ;829F5E;
 
-.loopRows:
+  .loopRows:
     LDA.B [$00],Y                                                        ;829F61;
     BIT.B $12                                                            ;829F63;
     BNE .return                                                          ;829F65;
@@ -3656,7 +3656,7 @@ DetermineLeftmostMapColumn:
     ADC.B #$00                                                           ;829F84;
     STA.B $01                                                            ;829F86;
 
-  + CPX.W #$0020                                                         ;829F88;
++   CPX.W #$0020                                                         ;829F88;
     BNE .loopColumns                                                     ;829F8B;
     LDA.B $00                                                            ;829F8D;
     CLC                                                                  ;829F8F;
@@ -3668,15 +3668,15 @@ DetermineLeftmostMapColumn:
     BRA .loopColumns                                                     ;829F9A;
 
 
-.emptyMap:
+  .emptyMap:
     LDX.W #$001A                                                         ;829F9C;
 
-.return:
+  .return:
     PLP                                                                  ;829F9F;
     RTS                                                                  ;829FA0;
 
 
-.bits:
+  .bits:
     db $80,$40,$20,$10,$08,$04,$02,$01                                   ;829FA1;
 
 DetermineRightmostMapColumn:
@@ -3687,7 +3687,7 @@ DetermineRightmostMapColumn:
     LDA.B #$00                                                           ;829FAF;
     LDX.W #$003F                                                         ;829FB1;
 
-.loopColumns:
+  .loopColumns:
     TXA                                                                  ;829FB4;
     AND.B #$07                                                           ;829FB5;
     TAY                                                                  ;829FB7;
@@ -3695,7 +3695,7 @@ DetermineRightmostMapColumn:
     STA.B $12                                                            ;829FBB;
     LDY.W #$0000                                                         ;829FBD;
 
-.loopRows:
+  .loopRows:
     LDA.B [$00],Y                                                        ;829FC0;
     BIT.B $12                                                            ;829FC2;
     BNE .return                                                          ;829FC4;
@@ -3719,7 +3719,7 @@ DetermineRightmostMapColumn:
     SBC.B #$00                                                           ;829FE2;
     STA.B $01                                                            ;829FE4;
 
-  + CPX.W #$001F                                                         ;829FE6;
++   CPX.W #$001F                                                         ;829FE6;
     BNE .loopColumns                                                     ;829FE9;
     REP #$20                                                             ;829FEB;
     LDA.B $00                                                            ;829FED;
@@ -3731,15 +3731,15 @@ DetermineRightmostMapColumn:
     BRA .loopColumns                                                     ;829FFA;
 
 
-.emptyMap:
+  .emptyMap:
     LDX.W #$001C                                                         ;829FFC;
 
-.return:
+  .return:
     PLP                                                                  ;829FFF;
     RTS                                                                  ;82A000;
 
 
-.bits:
+  .bits:
     db $80,$40,$20,$10,$08,$04,$02,$01                                   ;82A001;
 
 DetermineTopmostMapRow:
@@ -3756,7 +3756,7 @@ DetermineTopmostMapRow:
     LDX.W #$0000                                                         ;82A01D;
     LDY.W #$0000                                                         ;82A020;
 
-.loop:
+  .loop:
     LDA.B [$00],Y                                                        ;82A023;
     BNE .return                                                          ;82A025;
     LDA.B [$03],Y                                                        ;82A027;
@@ -3780,7 +3780,7 @@ DetermineTopmostMapRow:
     BMI .loop                                                            ;82A04C;
     LDX.W #$0001                                                         ;82A04E;
 
-.return:
+  .return:
     PLP                                                                  ;82A051;
     RTS                                                                  ;82A052;
 
@@ -3799,7 +3799,7 @@ DetermineLeftmostMapRow:
     LDX.W #$001F                                                         ;82A067;
     LDY.W #$0000                                                         ;82A06A;
 
-.loop:
+  .loop:
     LDA.B [$00],Y                                                        ;82A06D;
     BNE .return                                                          ;82A06F;
     LDA.B [$03],Y                                                        ;82A071;
@@ -3822,7 +3822,7 @@ DetermineLeftmostMapRow:
     BNE .loop                                                            ;82A093;
     LDX.W #$000B                                                         ;82A095;
 
-.return:
+  .return:
     PLP                                                                  ;82A098;
     RTS                                                                  ;82A099;
 
@@ -3922,7 +3922,7 @@ Load_EquipmentScreen_EquipmentTilemaps:
     STA.B $16                                                            ;82A165;
     JSR.W Copy_Bytes_from_X_to_7ERAM                                     ;82A167;
 
-  + LDY.W #$0000                                                         ;82A16A;
++   LDY.W #$0000                                                         ;82A16A;
     LDA.W #EquipmentScreenData_RAMTilemapOffsets_weapons                 ;82A16D;
     STA.B $03                                                            ;82A170;
     LDA.W #$0082                                                         ;82A172;
@@ -3932,7 +3932,7 @@ Load_EquipmentScreen_EquipmentTilemaps:
     LDA.W $0A76                                                          ;82A17B;
     BNE .hyperBeam                                                       ;82A17E;
 
-.loopWeapons:
+  .loopWeapons:
     LDA.W EquipmentScreenData_EquipmentBitmasks_weapons,Y                ;82A180;
     BIT.W $09A8                                                          ;82A183;
     BNE +                                                                ;82A186;
@@ -3943,7 +3943,7 @@ Load_EquipmentScreen_EquipmentTilemaps:
     BRA .nextWeapon                                                      ;82A193;
 
 
-  + LDX.W EquipmentScreenData_PointersEquipmentTIlemaps_weapons,Y        ;82A195;
++   LDX.W EquipmentScreenData_PointersEquipmentTIlemaps_weapons,Y        ;82A195;
     LDA.W #$000A                                                         ;82A198;
     STA.B $16                                                            ;82A19B;
     JSR.W Copy_Bytes_from_X_to_7ERAM                                     ;82A19D;
@@ -3956,7 +3956,7 @@ Load_EquipmentScreen_EquipmentTilemaps:
     STA.B $16                                                            ;82A1B0;
     JSR.W Copy_Bytes_of_Palette_from_7E_to_12                            ;82A1B2;
 
-.nextWeapon:
+  .nextWeapon:
     INY                                                                  ;82A1B5;
     INY                                                                  ;82A1B6;
     LDA.B [$03],Y                                                        ;82A1B7;
@@ -3966,10 +3966,10 @@ Load_EquipmentScreen_EquipmentTilemaps:
     BRA .merge                                                           ;82A1C0;
 
 
-.hyperBeam:
+  .hyperBeam:
     LDY.W #$0000                                                         ;82A1C2;
 
-.loopHyperBeamWeapons:
+  .loopHyperBeamWeapons:
     LDX.W HyperBeamTilemaps,Y                                            ;82A1C5;
     LDA.W #$000A                                                         ;82A1C8;
     STA.B $16                                                            ;82A1CB;
@@ -3981,7 +3981,7 @@ Load_EquipmentScreen_EquipmentTilemaps:
     CPY.W #$000C                                                         ;82A1D6;
     BMI .loopHyperBeamWeapons                                            ;82A1D9;
 
-.merge:
+  .merge:
     LDY.W #$0000                                                         ;82A1DB;
     LDA.W #EquipmentScreenData_RAMTilemapOffsets_suitsMisc               ;82A1DE;
     STA.B $03                                                            ;82A1E1;
@@ -3990,7 +3990,7 @@ Load_EquipmentScreen_EquipmentTilemaps:
     LDA.B [$03],Y                                                        ;82A1E8;
     STA.B $00                                                            ;82A1EA;
 
-.loopSuitMisc:
+  .loopSuitMisc:
     LDA.W EquipmentScreenData_EquipmentBitmasks_suitsMisc,Y              ;82A1EC;
     BIT.W $09A4                                                          ;82A1EF;
     BNE +                                                                ;82A1F2;
@@ -4001,7 +4001,7 @@ Load_EquipmentScreen_EquipmentTilemaps:
     BRA .nextSuitMisc                                                    ;82A1FF;
 
 
-  + LDX.W EquipmentScreenData_PointersEquipmentTIlemaps_suitsMisc,Y      ;82A201;
++   LDX.W EquipmentScreenData_PointersEquipmentTIlemaps_suitsMisc,Y      ;82A201;
     LDA.W #$0012                                                         ;82A204;
     STA.B $16                                                            ;82A207;
     JSR.W Copy_Bytes_from_X_to_7ERAM                                     ;82A209;
@@ -4014,7 +4014,7 @@ Load_EquipmentScreen_EquipmentTilemaps:
     STA.B $16                                                            ;82A21C;
     JSR.W Copy_Bytes_of_Palette_from_7E_to_12                            ;82A21E;
 
-.nextSuitMisc:
+  .nextSuitMisc:
     INY                                                                  ;82A221;
     INY                                                                  ;82A222;
     LDA.B [$03],Y                                                        ;82A223;
@@ -4029,7 +4029,7 @@ Load_EquipmentScreen_EquipmentTilemaps:
     LDA.B [$03],Y                                                        ;82A239;
     STA.B $00                                                            ;82A23B;
 
-.loopBoots:
+  .loopBoots:
     LDA.W EquipmentScreenData_EquipmentBitmasks_boots,Y                  ;82A23D;
     BIT.W $09A4                                                          ;82A240;
     BNE +                                                                ;82A243;
@@ -4040,7 +4040,7 @@ Load_EquipmentScreen_EquipmentTilemaps:
     BRA .nextBoots                                                       ;82A250;
 
 
-  + LDA.W #$0012                                                         ;82A252;
++   LDA.W #$0012                                                         ;82A252;
     STA.B $16                                                            ;82A255;
     LDX.W EquipmentScreenData_PointersEquipmentTIlemaps_boots,Y          ;82A257;
     JSR.W Copy_Bytes_from_X_to_7ERAM                                     ;82A25A;
@@ -4053,7 +4053,7 @@ Load_EquipmentScreen_EquipmentTilemaps:
     STA.B $16                                                            ;82A26D;
     JSR.W Copy_Bytes_of_Palette_from_7E_to_12                            ;82A26F;
 
-.nextBoots:
+  .nextBoots:
     INY                                                                  ;82A272;
     INY                                                                  ;82A273;
     LDA.B [$03],Y                                                        ;82A274;
@@ -4072,7 +4072,7 @@ Copy_Bytes_from_X_to_7ERAM:
     REP #$30                                                             ;82A286;
     LDY.W #$0000                                                         ;82A288;
 
-.loop:
+  .loop:
     LDA.W $0000,X                                                        ;82A28B;
     STA.B [$00],Y                                                        ;82A28E;
     INX                                                                  ;82A290;
@@ -4096,7 +4096,7 @@ Copy_Bytes_of_Palette_from_7E_to_12:
     REP #$30                                                             ;82A2A5;
     LDY.W #$0000                                                         ;82A2A7;
 
-.loop:
+  .loop:
     LDA.B [$00],Y                                                        ;82A2AA;
     AND.W #$E3FF                                                         ;82A2AC;
     ORA.B $12                                                            ;82A2AF;
@@ -4137,7 +4137,7 @@ ContinueInitialising_GameplayResume:
     LDY.W #$0200                                                         ;82A2E8;
     LDX.W #$0000                                                         ;82A2EB;
 
-.loop:
+  .loop:
     LDA.L $7E3300,X                                                      ;82A2EE;
     STA.L $7EC000,X                                                      ;82A2F2;
     INX                                                                  ;82A2F6;
@@ -4267,7 +4267,7 @@ UNUSED_Change_Pose_Due_to_Equipment_Change:
 endif ; !FEATURE_KEEP_UNREFERENCED
 
 
-.pointers:
+  .pointers:
     dw RTS_82A425                                                        ;82A3ED;
     dw RTS_82A425                                                        ;82A3EF;
     dw RTS_82A425                                                        ;82A3F1;
@@ -4319,19 +4319,19 @@ ChangePose_DueTo_EquipmentChange_SpinJumping:
     BRA .return                                                          ;82A444;
 
 
-.spaceJump:
+  .spaceJump:
     LDA.W $09A2                                                          ;82A446;
     BIT.W #$0020                                                         ;82A449;
     BNE .return                                                          ;82A44C;
     BRA .merge                                                           ;82A44E;
 
 
-.screwAttack:
+  .screwAttack:
     LDA.W $09A2                                                          ;82A450;
     BIT.W #$0008                                                         ;82A453;
     BNE .return                                                          ;82A456;
 
-.merge:
+  .merge:
     LDA.W $0A1E                                                          ;82A458;
     AND.W #$00FF                                                         ;82A45B;
     CMP.W #$0004                                                         ;82A45E;
@@ -4341,15 +4341,15 @@ ChangePose_DueTo_EquipmentChange_SpinJumping:
     BRA .initialisePose                                                  ;82A469;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$001A                                                         ;82A46B;
     STA.W $0A1C                                                          ;82A46E;
 
-.initialisePose:
+  .initialisePose:
     JSL.L InitializeSamusPose_1                                          ;82A471;
     JSL.L Set_Samus_AnimationFrame_if_PoseChanged                        ;82A475;
 
-.return:
+  .return:
     PLP                                                                  ;82A479;
     RTS                                                                  ;82A47A;
 
@@ -4369,15 +4369,15 @@ Change_Pose_due_to_Equipment_Change_MovementTypes_7_9:
     BRA .initialisePose                                                  ;82A497;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$0041                                                         ;82A499;
     STA.W $0A1C                                                          ;82A49C;
 
-.initialisePose:
+  .initialisePose:
     JSL.L InitializeSamusPose_1                                          ;82A49F;
     JSL.L Set_Samus_AnimationFrame_if_PoseChanged                        ;82A4A3;
 
-.return:
+  .return:
     PLP                                                                  ;82A4A7;
     RTS                                                                  ;82A4A8;
 
@@ -4397,15 +4397,15 @@ ChangePose_DueTo_EquipmentChange_MorphBall:
     BRA .initialisePose                                                  ;82A4C5;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$007A                                                         ;82A4C7;
     STA.W $0A1C                                                          ;82A4CA;
 
-.initialisePose:
+  .initialisePose:
     JSL.L InitializeSamusPose_1                                          ;82A4CD;
     JSL.L Set_Samus_AnimationFrame_if_PoseChanged                        ;82A4D1;
 
-.return:
+  .return:
     PLP                                                                  ;82A4D5;
     RTS                                                                  ;82A4D6;
 
@@ -4425,15 +4425,15 @@ ChangePose_DueTo_EquipmentChange_SpringBall:
     BRA .initialisePose                                                  ;82A4F3;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$0041                                                         ;82A4F5;
     STA.W $0A1C                                                          ;82A4F8;
 
-.initialisePose:
+  .initialisePose:
     JSL.L InitializeSamusPose_1                                          ;82A4FB;
     JSL.L Set_Samus_AnimationFrame_if_PoseChanged                        ;82A4FF;
 
-.return:
+  .return:
     PLP                                                                  ;82A503;
     RTS                                                                  ;82A504;
 
@@ -4459,7 +4459,7 @@ Handle_PauseScreen_L_R_Input:
     BRA .highlightR                                                      ;82A523;
 
 
-.R:
+  .R:
     LDA.W $0753                                                          ;82A525;
     CMP.W #$0002                                                         ;82A528;
     BEQ .return                                                          ;82A52B;
@@ -4468,7 +4468,7 @@ Handle_PauseScreen_L_R_Input:
     LDA.W #$0002                                                         ;82A533;
     STA.W $0727                                                          ;82A536;
 
-.highlightR:
+  .highlightR:
     LDA.W #$0002                                                         ;82A539;
     STA.W $0751                                                          ;82A53C;
     STA.W $0753                                                          ;82A53F;
@@ -4476,7 +4476,7 @@ Handle_PauseScreen_L_R_Input:
     BRA .merge                                                           ;82A545;
 
 
-.L:
+  .L:
     LDA.W $0753                                                          ;82A547;
     BEQ .return                                                          ;82A54A;
     LDA.W Duration_Of_L_R_Button_Pressed_Highlight                       ;82A54C;
@@ -4484,17 +4484,17 @@ Handle_PauseScreen_L_R_Input:
     LDA.W #$0005                                                         ;82A552;
     STA.W $0727                                                          ;82A555;
 
-.highlightL:
+  .highlightL:
     LDA.W #$0001                                                         ;82A558;
     STA.W $0751                                                          ;82A55B;
     STZ.W $0753                                                          ;82A55E;
     JSR.W Set_PauseScreen_ButtonLabelPalettes                            ;82A561;
 
-.merge:
+  .merge:
     LDA.W #$0038                                                         ;82A564;
     JSL.L QueueSound_Lib1_Max6                                           ;82A567;
 
-.return:
+  .return:
     PLP                                                                  ;82A56B;
     RTS                                                                  ;82A56C;
 
@@ -4523,7 +4523,7 @@ Handle_PauseMenu_L_R_PressedHighlight:
     PLA                                                                  ;82A593;
     JSL.L AddSpritemapFrom_82C569_TableToOAM                             ;82A594;
 
-.return:
+  .return:
     PLP                                                                  ;82A598;
     RTS                                                                  ;82A599;
 
@@ -4565,7 +4565,7 @@ Handle_PauseScreen_StartButton:
     STA.W $0729                                                          ;82A5E6;
     INC.W $0998                                                          ;82A5E9;
 
-  + JSR.W Update_PauseMenu_L_R_Start_VRAMTilemap                         ;82A5EC;
++   JSR.W Update_PauseMenu_L_R_Start_VRAMTilemap                         ;82A5EC;
     PLP                                                                  ;82A5EF;
     RTS                                                                  ;82A5F0;
 
@@ -4587,7 +4587,7 @@ Handle_PauseMenu_StartPressedHighlight:
     LDA.W #$002B                                                         ;82A60B;
     JSL.L AddSpritemapFrom_82C569_TableToOAM                             ;82A60E;
 
-.return:
+  .return:
     PLB                                                                  ;82A612;
     PLP                                                                  ;82A613;
     RTL                                                                  ;82A614;
@@ -4604,7 +4604,7 @@ Set_PauseScreen_ButtonLabelPalettes:
     RTS                                                                  ;82A621;
 
 
-.pointers:
+  .pointers:
     dw Set_PauseScreen_ButtonLabelPalettes_MapScreen                     ;82A622;
     dw Set_PauseScreen_ButtonLabelPalettes_Unpausing                     ;82A624;
     dw Set_PauseScreen_ButtonLabelPalettes_EquipmentScreen               ;82A626;
@@ -4616,7 +4616,7 @@ Set_PauseScreen_ButtonLabelPalettes_EquipmentScreen:
     LDY.W #$000A                                                         ;82A62D;
     LDX.W #$0000                                                         ;82A630;
 
-.loopTopMAP:
+  .loopTopMAP:
     LDA.L $7E364A,X                                                      ;82A633;
     AND.W #$E3FF                                                         ;82A637;
     ORA.W #$0800                                                         ;82A63A;
@@ -4632,7 +4632,7 @@ Set_PauseScreen_ButtonLabelPalettes_EquipmentScreen:
     LDY.W #$000A                                                         ;82A64B;
     LDX.W #$0000                                                         ;82A64E;
 
-.loopBottomMAP:
+  .loopBottomMAP:
     LDA.L $7E368A,X                                                      ;82A651;
     AND.W #$E3FF                                                         ;82A655;
     ORA.W #$0800                                                         ;82A658;
@@ -4648,7 +4648,7 @@ Set_PauseScreen_ButtonLabelPalettes_EquipmentScreen:
     LDY.W #$0008                                                         ;82A669;
     LDX.W #$0000                                                         ;82A66C;
 
-.loopTopEXIT:
+  .loopTopEXIT:
     LDA.L $7E3658,X                                                      ;82A66F;
     AND.W #$E3FF                                                         ;82A673;
     ORA.W #$0800                                                         ;82A676;
@@ -4664,7 +4664,7 @@ Set_PauseScreen_ButtonLabelPalettes_EquipmentScreen:
     LDY.W #$0008                                                         ;82A687;
     LDX.W #$0000                                                         ;82A68A;
 
-.loopBottomEXIT:
+  .loopBottomEXIT:
     LDA.L $7E3698,X                                                      ;82A68D;
     AND.W #$E3FF                                                         ;82A691;
     ORA.W #$0800                                                         ;82A694;
@@ -4680,7 +4680,7 @@ Set_PauseScreen_ButtonLabelPalettes_EquipmentScreen:
     LDY.W #$000A                                                         ;82A6A5;
     LDX.W #$0000                                                         ;82A6A8;
 
-.loopTopSAMUS:
+  .loopTopSAMUS:
     LDA.L $7E366C,X                                                      ;82A6AB;
     AND.W #$E3FF                                                         ;82A6AF;
     ORA.W #$1400                                                         ;82A6B2;
@@ -4696,7 +4696,7 @@ Set_PauseScreen_ButtonLabelPalettes_EquipmentScreen:
     LDY.W #$000A                                                         ;82A6C3;
     LDX.W #$0000                                                         ;82A6C6;
 
-.loopBottomSAMUS:
+  .loopBottomSAMUS:
     LDA.L $7E36AC,X                                                      ;82A6C9;
     AND.W #$E3FF                                                         ;82A6CD;
     ORA.W #$1400                                                         ;82A6D0;
@@ -4717,7 +4717,7 @@ Set_PauseScreen_ButtonLabelPalettes_Unpausing:
     LDY.W #$0008                                                         ;82A6E4;
     LDX.W #$0000                                                         ;82A6E7;
 
-.loopTopEXIT:
+  .loopTopEXIT:
     LDA.L $7E3658,X                                                      ;82A6EA;
     AND.W #$E3FF                                                         ;82A6EE;
     ORA.W #$0800                                                         ;82A6F1;
@@ -4733,7 +4733,7 @@ Set_PauseScreen_ButtonLabelPalettes_Unpausing:
     LDY.W #$0008                                                         ;82A702;
     LDX.W #$0000                                                         ;82A705;
 
-.loopBottomEXIT:
+  .loopBottomEXIT:
     LDA.L $7E3698,X                                                      ;82A708;
     AND.W #$E3FF                                                         ;82A70C;
     ORA.W #$0800                                                         ;82A70F;
@@ -4749,7 +4749,7 @@ Set_PauseScreen_ButtonLabelPalettes_Unpausing:
     LDY.W #$000A                                                         ;82A720;
     LDX.W #$0000                                                         ;82A723;
 
-.loopTopMAP:
+  .loopTopMAP:
     LDA.L $7E364A,X                                                      ;82A726;
     AND.W #$E3FF                                                         ;82A72A;
     ORA.W #$1400                                                         ;82A72D;
@@ -4765,7 +4765,7 @@ Set_PauseScreen_ButtonLabelPalettes_Unpausing:
     LDY.W #$000A                                                         ;82A73E;
     LDX.W #$0000                                                         ;82A741;
 
-.loopBottomMAP:
+  .loopBottomMAP:
     LDA.L $7E368A,X                                                      ;82A744;
     AND.W #$E3FF                                                         ;82A748;
     ORA.W #$1400                                                         ;82A74B;
@@ -4781,7 +4781,7 @@ Set_PauseScreen_ButtonLabelPalettes_Unpausing:
     LDY.W #$000A                                                         ;82A75C;
     LDX.W #$0000                                                         ;82A75F;
 
-.loopTopSAMUS:
+  .loopTopSAMUS:
     LDA.L $7E366C,X                                                      ;82A762;
     AND.W #$E3FF                                                         ;82A766;
     ORA.W #$1400                                                         ;82A769;
@@ -4797,7 +4797,7 @@ Set_PauseScreen_ButtonLabelPalettes_Unpausing:
     LDY.W #$000A                                                         ;82A77A;
     LDX.W #$0000                                                         ;82A77D;
 
-.loopBottomSAMUS:
+  .loopBottomSAMUS:
     LDA.L $7E36AC,X                                                      ;82A780;
     AND.W #$E3FF                                                         ;82A784;
     ORA.W #$1400                                                         ;82A787;
@@ -4818,7 +4818,7 @@ Set_PauseScreen_ButtonLabelPalettes_MapScreen:
     LDY.W #$000A                                                         ;82A79B;
     LDX.W #$0000                                                         ;82A79E;
 
-.loopTopSAMUS:
+  .loopTopSAMUS:
     LDA.L $7E366C,X                                                      ;82A7A1;
     AND.W #$E3FF                                                         ;82A7A5;
     ORA.W #$0800                                                         ;82A7A8;
@@ -4834,7 +4834,7 @@ Set_PauseScreen_ButtonLabelPalettes_MapScreen:
     LDY.W #$000A                                                         ;82A7B9;
     LDX.W #$0000                                                         ;82A7BC;
 
-.loopBottomSAMUS:
+  .loopBottomSAMUS:
     LDA.L $7E36AC,X                                                      ;82A7BF;
     AND.W #$E3FF                                                         ;82A7C3;
     ORA.W #$0800                                                         ;82A7C6;
@@ -4850,7 +4850,7 @@ Set_PauseScreen_ButtonLabelPalettes_MapScreen:
     LDY.W #$0008                                                         ;82A7D7;
     LDX.W #$0000                                                         ;82A7DA;
 
-.loopTopEXIT:
+  .loopTopEXIT:
     LDA.L $7E3658,X                                                      ;82A7DD;
     AND.W #$E3FF                                                         ;82A7E1;
     ORA.W #$0800                                                         ;82A7E4;
@@ -4866,7 +4866,7 @@ Set_PauseScreen_ButtonLabelPalettes_MapScreen:
     LDY.W #$0008                                                         ;82A7F5;
     LDX.W #$0000                                                         ;82A7F8;
 
-.loopBottomEXIT:
+  .loopBottomEXIT:
     LDA.L $7E3698,X                                                      ;82A7FB;
     AND.W #$E3FF                                                         ;82A7FF;
     ORA.W #$0800                                                         ;82A802;
@@ -4882,7 +4882,7 @@ Set_PauseScreen_ButtonLabelPalettes_MapScreen:
     LDY.W #$000A                                                         ;82A813;
     LDX.W #$0000                                                         ;82A816;
 
-.loopTopMAP:
+  .loopTopMAP:
     LDA.L $7E364A,X                                                      ;82A819;
     AND.W #$E3FF                                                         ;82A81D;
     ORA.W #$1400                                                         ;82A820;
@@ -4898,7 +4898,7 @@ Set_PauseScreen_ButtonLabelPalettes_MapScreen:
     LDY.W #$000A                                                         ;82A831;
     LDX.W #$0000                                                         ;82A834;
 
-.loopBottomMAP:
+  .loopBottomMAP:
     LDA.L $7E368A,X                                                      ;82A837;
     AND.W #$E3FF                                                         ;82A83B;
     ORA.W #$1400                                                         ;82A83E;
@@ -4966,7 +4966,7 @@ Draw_PauseScreen_SpriteAnimation:
     BEQ +                                                                ;82A897;
     BPL .nonZero                                                         ;82A899;
 
-  + STY.B $18                                                            ;82A89B;
++   STY.B $18                                                            ;82A89B;
     LDA.W PauseScreen_SpriteAnimationData_frame,X                        ;82A89D;
     TAY                                                                  ;82A8A0;
     LDA.W $0000,Y                                                        ;82A8A1;
@@ -4993,10 +4993,10 @@ Draw_PauseScreen_SpriteAnimation:
     LDA.W $0000,Y                                                        ;82A8CF;
     AND.W #$00FF                                                         ;82A8D2;
 
-  + LDY.B $18                                                            ;82A8D5;
++   LDY.B $18                                                            ;82A8D5;
     STA.W $0000,Y                                                        ;82A8D7;
 
-.nonZero:
+  .nonZero:
     LDA.W PauseScreen_SpriteAnimationData_frame,X                        ;82A8DA;
     TAY                                                                  ;82A8DD;
     LDA.W $0000,Y                                                        ;82A8DE;
@@ -5056,7 +5056,7 @@ Handle_PauseScreen_PaletteAnimation:
     LDA.W $074F                                                          ;82A93E;
     INC A                                                                ;82A941;
 
-.loop:
+  .loop:
     STA.W $074F                                                          ;82A942;
     ASL A                                                                ;82A945;
     CLC                                                                  ;82A946;
@@ -5075,7 +5075,7 @@ Handle_PauseScreen_PaletteAnimation:
     BRA .loop                                                            ;82A962;
 
 
-  + STA.W $073B                                                          ;82A964;
++   STA.W $073B                                                          ;82A964;
     LDA.W $074F                                                          ;82A967;
     REP #$30                                                             ;82A96A;
     XBA                                                                  ;82A96C;
@@ -5087,7 +5087,7 @@ Handle_PauseScreen_PaletteAnimation:
     TAY                                                                  ;82A974;
     LDX.W #$001E                                                         ;82A975;
 
-.loopAnimationTimer:
+  .loopAnimationTimer:
     LDA.W .paletteData,Y                                                 ;82A978;
     STA.L $7EC160,X                                                      ;82A97B;
     DEY                                                                  ;82A97F;
@@ -5096,12 +5096,12 @@ Handle_PauseScreen_PaletteAnimation:
     DEX                                                                  ;82A982;
     BPL .loopAnimationTimer                                              ;82A983;
 
-.return:
+  .return:
     PLP                                                                  ;82A985;
     RTS                                                                  ;82A986;
 
 
-.paletteData:
+  .paletteData:
     dw $0000,$7E7F,$015F,$7C14,$7FFF,$4E73,$0000,$318C,$0070,$2870,$318C,$0000,$0000,$318C,$0000,$318C
     dw $0000,$6E1C,$011B,$7412,$739C,$5294,$00A6,$294D,$004E,$3092,$294B,$00A6,$1084,$294A,$0000,$298E
     dw $0000,$61BA,$00F9,$6810,$6B5A,$56B5,$012A,$2530,$004C,$34B4,$294B,$012A,$18C6,$2108,$0000,$25B0
@@ -5137,14 +5137,14 @@ EquipmentScreen_SetupReserveMode_and_DetermineInitialSelect:
     LDX.W #EquipmentScreenTilemaps_manual                                ;82AB6B;
     LDY.W #$0082                                                         ;82AB6E;
 
-  + STY.B $02                                                            ;82AB71;
++   STY.B $02                                                            ;82AB71;
     STX.B $00                                                            ;82AB73;
     LDA.W #$0004                                                         ;82AB75;
     STA.B $12                                                            ;82AB78;
     LDX.W #$0000                                                         ;82AB7A;
     LDY.W #$0000                                                         ;82AB7D;
 
-.loopTilemap:
+  .loopTilemap:
     LDA.L $7E3A8E,X                                                      ;82AB80;
     AND.W #$FC00                                                         ;82AB84;
     ORA.B [$00],Y                                                        ;82AB87;
@@ -5156,7 +5156,7 @@ EquipmentScreen_SetupReserveMode_and_DetermineInitialSelect:
     DEC.B $12                                                            ;82AB91;
     BNE .loopTilemap                                                     ;82AB93;
 
-.noReserves:
+  .noReserves:
     STZ.W $0741                                                          ;82AB95;
     LDA.W L_R_HighlightAnimationData_PauseScreenPaletteAnimationDelays   ;82AB98;
     AND.W #$00FF                                                         ;82AB9B;
@@ -5172,12 +5172,12 @@ EquipmentScreen_SetupReserveMode_and_DetermineInitialSelect:
     BRA .return                                                          ;82ABB8;
 
 
-  + LDA.W $0A76                                                          ;82ABBA;
++   LDA.W $0A76                                                          ;82ABBA;
     BNE .noBeams                                                         ;82ABBD;
     LDA.W $09A8                                                          ;82ABBF;
     LDX.W #$0000                                                         ;82ABC2;
 
-.loopBeams:
+  .loopBeams:
     BIT.W EquipmentScreenData_EquipmentBitmasks_weapons,X                ;82ABC5;
     BNE +                                                                ;82ABC8;
     INX                                                                  ;82ABCA;
@@ -5187,7 +5187,7 @@ EquipmentScreen_SetupReserveMode_and_DetermineInitialSelect:
     BRA .noBeams                                                         ;82ABD1;
 
 
-  + TXA                                                                  ;82ABD3;
++   TXA                                                                  ;82ABD3;
     LSR A                                                                ;82ABD4;
     XBA                                                                  ;82ABD5;
     ORA.W #$0001                                                         ;82ABD6;
@@ -5195,11 +5195,11 @@ EquipmentScreen_SetupReserveMode_and_DetermineInitialSelect:
     BRA .return                                                          ;82ABDC;
 
 
-.noBeams:
+  .noBeams:
     LDA.W $09A4                                                          ;82ABDE;
     LDX.W #$0000                                                         ;82ABE1;
 
-.loopSuitMisc:
+  .loopSuitMisc:
     BIT.W EquipmentScreenData_EquipmentBitmasks_suitsMisc,X              ;82ABE4;
     BNE +                                                                ;82ABE7;
     INX                                                                  ;82ABE9;
@@ -5209,7 +5209,7 @@ EquipmentScreen_SetupReserveMode_and_DetermineInitialSelect:
     BRA .noSuitMisc                                                      ;82ABF0;
 
 
-  + TXA                                                                  ;82ABF2;
++   TXA                                                                  ;82ABF2;
     LSR A                                                                ;82ABF3;
     XBA                                                                  ;82ABF4;
     ORA.W #$0002                                                         ;82ABF5;
@@ -5217,10 +5217,10 @@ EquipmentScreen_SetupReserveMode_and_DetermineInitialSelect:
     BRA .return                                                          ;82ABFB;
 
 
-.noSuitMisc:
+  .noSuitMisc:
     LDX.W #$0000                                                         ;82ABFD;
 
-.loopNoSuitMisc:
+  .loopNoSuitMisc:
     BIT.W EquipmentScreenData_EquipmentBitmasks_boots,X                  ;82AC00;
     INX                                                                  ;82AC03;
     INX                                                                  ;82AC04;
@@ -5234,13 +5234,13 @@ EquipmentScreen_SetupReserveMode_and_DetermineInitialSelect:
     ORA.W #$0003                                                         ;82AC0F;
     STA.W $0755                                                          ;82AC12;
 
-.return:
+  .return:
     LDA.W $09D6                                                          ;82AC15;
     BEQ +                                                                ;82AC18;
     JSR.W EquipmentScreen_GlowingArrow_Solid_On                          ;82AC1A;
     JSR.W EquipmentScreen_WriteSamusWireframeTilemap_and_BG1ToVRAM       ;82AC1D;
 
-  + PLP                                                                  ;82AC20;
++   PLP                                                                  ;82AC20;
     RTS                                                                  ;82AC21;
 
 
@@ -5284,7 +5284,7 @@ EquipmentScreen_Main:
     RTS                                                                  ;82AC67;
 
 
-.pointers:
+  .pointers:
     dw EquipmentScreen_Main_Tanks                                        ;82AC68;
     dw EquipmentScreen_Main_Weapons                                      ;82AC6A;
     dw EquipmentScreen_Main_SuitsMisc                                    ;82AC6C;
@@ -5305,7 +5305,7 @@ EquipmentScreen_Main_Tanks:
     RTS                                                                  ;82AC86;
 
 
-.pointers:
+  .pointers:
     dw EquipmentScreen_Main_Tanks_Mode                                   ;82AC87;
     dw EquipmentScreen_Main_Tanks_ReserveTank                            ;82AC89;
 
@@ -5324,16 +5324,16 @@ EquipmentScreen_Main_Tanks_DPadResponse:
     CMP.W #$FFFF                                                         ;82ACA5;
     BNE .exit                                                            ;82ACA8;
 
-.moveToBoots:
+  .moveToBoots:
     LDX.W #$0000                                                         ;82ACAA;
     JSR.W EquipmentScreen_MoveLowerOnBoots                               ;82ACAD;
 
-.exit:
+  .exit:
     PLP                                                                  ;82ACB0;
     RTS                                                                  ;82ACB1;
 
 
-.notRight:
+  .notRight:
     BIT.W #$0800                                                         ;82ACB2;
     BNE .up                                                              ;82ACB5;
     BIT.W #$0400                                                         ;82ACB7;
@@ -5356,13 +5356,13 @@ EquipmentScreen_Main_Tanks_DPadResponse:
     BRA .return                                                          ;82ACE5;
 
 
-.moveToBeams:
+  .moveToBeams:
     LDX.W #$0000                                                         ;82ACE7;
     JSR.W EquipmentScreen_MoveLowerOnBeams                               ;82ACEA;
     BRA .return                                                          ;82ACED;
 
 
-.up:
+  .up:
     LDA.W $0755                                                          ;82ACEF;
     AND.W #$FF00                                                         ;82ACF2;
     BEQ .return                                                          ;82ACF5;
@@ -5373,7 +5373,7 @@ EquipmentScreen_Main_Tanks_DPadResponse:
     SBC.W #$0100                                                         ;82AD02;
     STA.W $0755                                                          ;82AD05;
 
-.return:
+  .return:
     PLP                                                                  ;82AD08;
     RTS                                                                  ;82AD09;
 
@@ -5393,13 +5393,13 @@ EquipmentScreen_Main_Tanks_GlowingArrow:
     RTS                                                                  ;82AD1F;
 
 
-.solidOff:
+  .solidOff:
     JSR.W EquipmentScreen_GlowingArrow_Solid_Off                         ;82AD20;
     PLP                                                                  ;82AD23;
     RTS                                                                  ;82AD24;
 
 
-.pointers:
+  .pointers:
     dw EquipmentScreen_GlowingArrow_Animated                             ;82AD25;
     dw EquipmentScreen_GlowingArrow_Solid_On                             ;82AD27;
 
@@ -5419,7 +5419,7 @@ EquipmentScreen_GlowingArrow_Animated:
     RTS                                                                  ;82AD4A;
 
 
-.disableGlow:
+  .disableGlow:
     LDA.W #$039E                                                         ;82AD4B;
     STA.L $7EC0D6                                                        ;82AD4E;
     LDA.W #$0156                                                         ;82AD52;
@@ -5428,11 +5428,11 @@ EquipmentScreen_GlowingArrow_Animated:
     RTS                                                                  ;82AD5C;
 
 
-.palette6:
+  .palette6:
     dw $039E,$077D,$0B5C,$0F5B,$133A,$171A,$1F19,$22F8,$26D7,$2AD6,$2EB6,$3695,$3A94,$3E73,$4253,$4A52
     dw $4A52,$4253,$3E73,$3A94,$3695,$2EB6,$2AD6,$26D7,$22F8,$1F19,$171A,$133A,$0F5B,$0B5C,$077D,$039E
 
-.paletteB:
+  .paletteB:
     dw $0156,$0155,$0554,$0954,$0D53,$0D52,$1152,$1551,$1970,$1D70,$1D6F,$216E,$256E,$296D,$296C,$318C
     dw $318C,$296C,$296D,$256E,$216E,$1D6F,$1D70,$1970,$1551,$1152,$0D52,$0D53,$0954,$0554,$0155,$0156
 
@@ -5462,7 +5462,7 @@ EquipmentScreen_Enable_EnergyArrowGlow:
     LDY.W #$0010                                                         ;82AE07;
     LDX.W #$0000                                                         ;82AE0A;
 
-.loopVertical:
+  .loopVertical:
     LDA.L $7E3902,X                                                      ;82AE0D;
     AND.W #$E3FF                                                         ;82AE11;
     ORA.W #$1800                                                         ;82AE14;
@@ -5480,7 +5480,7 @@ EquipmentScreen_Enable_EnergyArrowGlow:
     LDY.W #$0004                                                         ;82AE29;
     LDX.W #$0000                                                         ;82AE2C;
 
-.loopHorizontal:
+  .loopHorizontal:
     LDA.L $7E3B02,X                                                      ;82AE2F;
     AND.W #$E3FF                                                         ;82AE33;
     ORA.W #$1800                                                         ;82AE36;
@@ -5503,7 +5503,7 @@ EquipmentScreen_Disable_EnergyArrowGlow:
     LDY.W #$0010                                                         ;82AE4C;
     LDX.W #$0000                                                         ;82AE4F;
 
-.loopVertical:
+  .loopVertical:
     LDA.L $7E3902,X                                                      ;82AE52;
     AND.W #$E3FF                                                         ;82AE56;
     ORA.W #$1C00                                                         ;82AE59;
@@ -5521,7 +5521,7 @@ EquipmentScreen_Disable_EnergyArrowGlow:
     LDY.W #$0004                                                         ;82AE6E;
     LDX.W #$0000                                                         ;82AE71;
 
-.loopHorizontal:
+  .loopHorizontal:
     LDA.L $7E3B02,X                                                      ;82AE74;
     AND.W #$E3FF                                                         ;82AE78;
     ORA.W #$1C00                                                         ;82AE7B;
@@ -5557,7 +5557,7 @@ EquipmentScreen_Main_Tanks_Mode:
     LDY.W #$0008                                                         ;82AEB5;
     LDX.W #$0000                                                         ;82AEB8;
 
-.loopAuto:
+  .loopAuto:
     LDA.L $7E3A8E,X                                                      ;82AEBB;
     AND.W #$FC00                                                         ;82AEBF;
     ORA.L EquipmentScreenTilemaps_manual,X                               ;82AEC2;
@@ -5571,7 +5571,7 @@ EquipmentScreen_Main_Tanks_Mode:
     BRA .return                                                          ;82AED1;
 
 
-.manual:
+  .manual:
     LDA.W #$0001                                                         ;82AED3;
     STA.W $09C0                                                          ;82AED6;
     JSR.W EquipmentScreen_SetHUDReserveAUTOTilemap                       ;82AED9;
@@ -5580,7 +5580,7 @@ EquipmentScreen_Main_Tanks_Mode:
     LDY.W #$0008                                                         ;82AEDF;
     LDX.W #$0000                                                         ;82AEE2;
 
-.loopManual:
+  .loopManual:
     LDA.L $7E3A8E,X                                                      ;82AEE5;
     AND.W #$FC00                                                         ;82AEE9;
     ORA.L EquipmentScreenTilemaps_auto,X                                 ;82AEEC;
@@ -5592,7 +5592,7 @@ EquipmentScreen_Main_Tanks_Mode:
     BNE .loopManual                                                      ;82AEF8;
     PLP                                                                  ;82AEFA;
 
-.return:
+  .return:
     PLP                                                                  ;82AEFB;
     RTS                                                                  ;82AEFC;
 
@@ -5603,7 +5603,7 @@ EquipmentScreen_SetHUDReserveAUTOTilemap:
     BNE +                                                                ;82AF03;
     LDY.W #Tilemap_HUD_emptyAutoReserve                                  ;82AF05;
 
-  + LDA.W $0000,Y                                                        ;82AF08;
++   LDA.W $0000,Y                                                        ;82AF08;
     STA.L $7EC618                                                        ;82AF0B;
     LDA.W $0002,Y                                                        ;82AF0F;
     STA.L $7EC61A                                                        ;82AF12;
@@ -5643,7 +5643,7 @@ EquipmentScreen_Main_Tanks_ReserveTank:
     AND.W #$FFF8                                                         ;82AF65;
     STA.W $0757                                                          ;82AF68;
 
-.soundTimer:
+  .soundTimer:
     LDA.W $0757                                                          ;82AF6B;
     DEC A                                                                ;82AF6E;
     STA.W $0757                                                          ;82AF6F;
@@ -5653,7 +5653,7 @@ EquipmentScreen_Main_Tanks_ReserveTank:
     LDA.W #$002D                                                         ;82AF7A;
     JSL.L QueueSound_Lib3_Max6                                           ;82AF7D;
 
-.incrementEnergy:
+  .incrementEnergy:
     LDA.W $09C2                                                          ;82AF81;
     CLC                                                                  ;82AF84;
     ADC.W ReserveTank_TransferEnergyPerFrame                             ;82AF85;
@@ -5665,7 +5665,7 @@ EquipmentScreen_Main_Tanks_ReserveTank:
     BRA .emptyReserve                                                    ;82AF96;
 
 
-.decrementReserve:
+  .decrementReserve:
     LDA.W $09D6                                                          ;82AF98;
     SEC                                                                  ;82AF9B;
     SBC.W ReserveTank_TransferEnergyPerFrame                             ;82AF9C;
@@ -5677,13 +5677,13 @@ EquipmentScreen_Main_Tanks_ReserveTank:
     ADC.W $09D6                                                          ;82AFAA;
     STA.W $09C2                                                          ;82AFAD;
 
-.emptyReserve:
+  .emptyReserve:
     STZ.W $09D6                                                          ;82AFB0;
     STZ.W $0757                                                          ;82AFB3;
     JSR.W EquipmentScreen_Disable_EnergyArrowGlow                        ;82AFB6;
     STZ.W $0755                                                          ;82AFB9;
 
-.return:
+  .return:
     PLP                                                                  ;82AFBC;
     RTS                                                                  ;82AFBD;
 
@@ -5701,7 +5701,7 @@ EquipmentScreen_Main_Weapons:
     JSR.W EquipmentScreen_Main_ButtonResponse                            ;82AFD3;
     JSR.W EquipmentScreen_Main_Weapons_PlasmaSpazerCheck                 ;82AFD6;
 
-.return:
+  .return:
     PLP                                                                  ;82AFD9;
     RTS                                                                  ;82AFDA;
 
@@ -5725,13 +5725,13 @@ EquipmentScreen_Main_Weapons_MoveResponse:
     BRA .return                                                          ;82B000;
 
 
-.top:
+  .top:
     LDX.W #$0000                                                         ;82B002;
     JSR.W EquipmentScreen_MoveLowerOnSuitsMisc                           ;82B005;
     BRA .return                                                          ;82B008;
 
 
-.rightEnd:
+  .rightEnd:
     BIT.W #$0400                                                         ;82B00A;
     BNE .down                                                            ;82B00D;
     BIT.W #$0800                                                         ;82B00F;
@@ -5751,7 +5751,7 @@ EquipmentScreen_Main_Weapons_MoveResponse:
     CMP.W #$FFFF                                                         ;82B02F;
     BNE .return                                                          ;82B032;
 
-.moveToReserve:
+  .moveToReserve:
     LDX.W #$0000                                                         ;82B034;
     JSR.W EquipmentScreen_MoveToReserveTanks                             ;82B037;
     CMP.W #$0000                                                         ;82B03A;
@@ -5761,7 +5761,7 @@ EquipmentScreen_Main_Weapons_MoveResponse:
     BRA .return                                                          ;82B044;
 
 
-.down:
+  .down:
     LDA.W $0A76                                                          ;82B046;
     BNE .return                                                          ;82B049;
     LDA.W $0755                                                          ;82B04B;
@@ -5777,7 +5777,7 @@ EquipmentScreen_Main_Weapons_MoveResponse:
     TAX                                                                  ;82B062;
     JSR.W EquipmentScreen_MoveLowerOnBeams                               ;82B063;
 
-.return:
+  .return:
     PLP                                                                  ;82B066;
     RTS                                                                  ;82B067;
 
@@ -5805,7 +5805,7 @@ EquipmentScreen_Main_Weapons_PlasmaSpazerCheck:
     BRA .merge                                                           ;82B097;
 
 
-.spazerToggled:
+  .spazerToggled:
     LDA.B $24                                                            ;82B099;
     BIT.W #$0004                                                         ;82B09B;
     BNE .return                                                          ;82B09E;
@@ -5817,14 +5817,14 @@ EquipmentScreen_Main_Weapons_PlasmaSpazerCheck:
     LDA.W EquipmentScreenData_RAMTilemapOffsets_weapons_plasma           ;82B0AE;
     STA.B $00                                                            ;82B0B1;
 
-.merge:
+  .merge:
     LDA.W #$0C00                                                         ;82B0B3;
     STA.B $12                                                            ;82B0B6;
     LDA.W #$000A                                                         ;82B0B8;
     STA.B $16                                                            ;82B0BB;
     JSR.W Copy_Bytes_of_Palette_from_7E_to_12                            ;82B0BD;
 
-.return:
+  .return:
     PLP                                                                  ;82B0C0;
     RTS                                                                  ;82B0C1;
 
@@ -5857,13 +5857,13 @@ EquipmentScreen_SuitsMisc_MoveResponse:
     LDA.B $12                                                            ;82B0F1;
     STA.W $0755                                                          ;82B0F3;
 
-.topOfBeams:
+  .topOfBeams:
     LDX.W #$0000                                                         ;82B0F6;
     JSR.W EquipmentScreen_MoveLowerOnBeams                               ;82B0F9;
     BRA .return                                                          ;82B0FC;
 
 
-.leftEnd:
+  .leftEnd:
     BIT.W #$0800                                                         ;82B0FE;
     BNE .up                                                              ;82B101;
     BIT.W #$0400                                                         ;82B103;
@@ -5884,13 +5884,13 @@ EquipmentScreen_SuitsMisc_MoveResponse:
     CMP.W #$FFFF                                                         ;82B126;
     BNE .return                                                          ;82B129;
 
-.moveToBoots:
+  .moveToBoots:
     LDX.W #$0000                                                         ;82B12B;
     JSR.W EquipmentScreen_MoveLowerOnBoots                               ;82B12E;
     BRA .return                                                          ;82B131;
 
 
-.up:
+  .up:
     LDA.W $0755                                                          ;82B133;
     AND.W #$FF00                                                         ;82B136;
     BEQ .return                                                          ;82B139;
@@ -5904,7 +5904,7 @@ EquipmentScreen_SuitsMisc_MoveResponse:
     TAX                                                                  ;82B14A;
     JSR.W EquipmentScreen_MoveHigherOnSuitsMisc                          ;82B14B;
 
-.return:
+  .return:
     PLP                                                                  ;82B14E;
     RTS                                                                  ;82B14F;
 
@@ -5935,7 +5935,7 @@ EquipmentScreen_Main_Boots_MoveResponse:
     CMP.W #$FFFF                                                         ;82B17A;
     BNE .return                                                          ;82B17D;
 
-.moveToReserve:
+  .moveToReserve:
     LDX.W #$0000                                                         ;82B17F;
     JSR.W EquipmentScreen_MoveToReserveTanks                             ;82B182;
     CMP.W #$0000                                                         ;82B185;
@@ -5945,7 +5945,7 @@ EquipmentScreen_Main_Boots_MoveResponse:
     BRA .return                                                          ;82B18F;
 
 
-.leftEnd:
+  .leftEnd:
     BIT.W #$0400                                                         ;82B191;
     BNE .down                                                            ;82B194;
     BIT.W #$0800                                                         ;82B196;
@@ -5965,13 +5965,13 @@ EquipmentScreen_Main_Boots_MoveResponse:
     CMP.W #$FFFF                                                         ;82B1B6;
     BNE .return                                                          ;82B1B9;
 
-.moveToSuitsMisc:
+  .moveToSuitsMisc:
     LDX.W #$000A                                                         ;82B1BB;
     JSR.W EquipmentScreen_MoveHigherOnSuitsMisc                          ;82B1BE;
     BRA .return                                                          ;82B1C1;
 
 
-.down:
+  .down:
     LDA.W $0755                                                          ;82B1C3;
     CMP.W #$0203                                                         ;82B1C6;
     BEQ .return                                                          ;82B1C9;
@@ -5985,7 +5985,7 @@ EquipmentScreen_Main_Boots_MoveResponse:
     TAX                                                                  ;82B1DA;
     JSR.W EquipmentScreen_MoveLowerOnBoots                               ;82B1DB;
 
-.return:
+  .return:
     PLP                                                                  ;82B1DE;
     RTS                                                                  ;82B1DF;
 
@@ -6024,7 +6024,7 @@ EquipmentScreen_WriteSamusWireframeTilemap:
     AND.W #$0101                                                         ;82B212;
     LDX.W #$0000                                                         ;82B215;
 
-.loopSuit:
+  .loopSuit:
     CMP.W .bitmaps,X                                                     ;82B218;
     BEQ +                                                                ;82B21B;
     INX                                                                  ;82B21D;
@@ -6032,7 +6032,7 @@ EquipmentScreen_WriteSamusWireframeTilemap:
     BRA .loopSuit                                                        ;82B21F;
 
 
-  + LDA.W .addresses,X                                                   ;82B221;
++   LDA.W .addresses,X                                                   ;82B221;
     STA.B $00                                                            ;82B224;
     LDA.W #$0082                                                         ;82B226;
     STA.B $02                                                            ;82B229;
@@ -6041,12 +6041,12 @@ EquipmentScreen_WriteSamusWireframeTilemap:
     LDY.W #$0000                                                         ;82B230;
     LDX.W #$01D8                                                         ;82B233;
 
-.loopRow:
+  .loopRow:
     PHX                                                                  ;82B236;
     LDA.W #$0008                                                         ;82B237;
     STA.B $12                                                            ;82B23A;
 
-.loop:
+  .loop:
     LDA.B [$00],Y                                                        ;82B23C;
     STA.L $7E3800,X                                                      ;82B23E;
     INX                                                                  ;82B242;
@@ -6066,10 +6066,10 @@ EquipmentScreen_WriteSamusWireframeTilemap:
     RTS                                                                  ;82B256;
 
 
-.bitmaps:
+  .bitmaps:
     dw $0000,$0100,$0001,$0101                                           ;82B257;
 
-.addresses:
+  .addresses:
     dw Samus_Wireframe_Tilemaps_powerSuit                                ;82B25F;
     dw Samus_Wireframe_Tilemaps_hiJumpBoots                              ;82B261;
     dw Samus_Wireframe_Tilemaps_variaSuit                                ;82B263;
@@ -6106,7 +6106,7 @@ EquipmentScreen_DrawItemSelector:
     LDA.W #$0003                                                         ;82B29A;
     JSR.W Draw_PauseScreen_SpriteAnimation                               ;82B29D;
 
-.return:
+  .return:
     PLP                                                                  ;82B2A0;
     RTS                                                                  ;82B2A1;
 
@@ -6131,7 +6131,7 @@ EquipmentScreen_DisplayReserveTankAmount:
     RTS                                                                  ;82B2BA;
 
 
-  + STA.W $4204                                                          ;82B2BB;
++   STA.W $4204                                                          ;82B2BB;
     SEP #$20                                                             ;82B2BE;
     LDA.B #$64                                                           ;82B2C0;
     STA.W $4206                                                          ;82B2C2;
@@ -6167,7 +6167,7 @@ EquipmentScreen_DisplayReserveTankAmount:
     BEQ .empty                                                           ;82B2F7;
     LDY.W #$0000                                                         ;82B2F9;
 
-.loopFullTanks:
+  .loopFullTanks:
     PHY                                                                  ;82B2FC;
     LDA.W EquipmentScreen_ReserveTank_Xpositions,Y                       ;82B2FD;
     TAX                                                                  ;82B300;
@@ -6182,7 +6182,7 @@ EquipmentScreen_DisplayReserveTankAmount:
     BNE .loopFullTanks                                                   ;82B311;
     STY.B $34                                                            ;82B313;
 
-.empty:
+  .empty:
     LDA.W $4216                                                          ;82B315;
     BEQ .loopEmptyTanks                                                  ;82B318;
     STA.W $4204                                                          ;82B31A;
@@ -6210,7 +6210,7 @@ EquipmentScreen_DisplayReserveTankAmount:
     INX                                                                  ;82B344;
     INX                                                                  ;82B345;
 
-  + LDA.W $09D6                                                          ;82B346;
++   LDA.W $09D6                                                          ;82B346;
     CMP.W #$0064                                                         ;82B349;
     BMI +                                                                ;82B34C;
     TXA                                                                  ;82B34E;
@@ -6218,7 +6218,7 @@ EquipmentScreen_DisplayReserveTankAmount:
     ADC.W #$0010                                                         ;82B350;
     TAX                                                                  ;82B353;
 
-  + LDA.W .spritemapIDs,X                                                ;82B354;
++   LDA.W .spritemapIDs,X                                                ;82B354;
     PHA                                                                  ;82B357;
     LDX.B $34                                                            ;82B358;
     LDA.W EquipmentScreen_ReserveTank_Xpositions,X                       ;82B35A;
@@ -6231,7 +6231,7 @@ EquipmentScreen_DisplayReserveTankAmount:
     INC.B $34                                                            ;82B369;
     INC.B $34                                                            ;82B36B;
 
-.loopEmptyTanks:
+  .loopEmptyTanks:
     LDX.B $34                                                            ;82B36D;
     LDA.B $30                                                            ;82B36F;
     CMP.B $2C                                                            ;82B371;
@@ -6248,7 +6248,7 @@ EquipmentScreen_DisplayReserveTankAmount:
     BRA .loopEmptyTanks                                                  ;82B38A;
 
 
-  + LDX.B $34                                                            ;82B38C;
++   LDX.B $34                                                            ;82B38C;
     LDA.W EquipmentScreen_ReserveTank_Xpositions,X                       ;82B38E;
     TAX                                                                  ;82B391;
     LDY.W EquipmentScreen_ReserveTank_Yposition                          ;82B392;
@@ -6286,7 +6286,7 @@ EquipmentScreen_DisplayReserveTankAmount:
     RTS                                                                  ;82B3D8;
 
 
-.spritemapIDs:
+  .spritemapIDs:
 ; Partial reserve tank spritemap IDs (for $82:C569 table)
     dw $0020,$0021,$0022,$0023,$0024,$0025,$0026,$0027 ; [Samus reserve health] < 100
     dw $0020,$0021,$0022,$0023,$0024,$0025,$0026,$0027 ; [Samus reserve health] >= 100
@@ -6302,7 +6302,7 @@ EquipmentScreen_Main_DisplayReserves_PaletteSetup:
     BEQ .incrementAnimationFrame                                         ;82B409;
     BPL .positive                                                        ;82B40B;
 
-.incrementAnimationFrame:
+  .incrementAnimationFrame:
     LDA.W $0743                                                          ;82B40D;
     INC A                                                                ;82B410;
     STA.W $0743                                                          ;82B411;
@@ -6316,10 +6316,10 @@ EquipmentScreen_Main_DisplayReserves_PaletteSetup:
     LDA.W ReserveTank_AnimationData                                      ;82B424;
     AND.W #$00FF                                                         ;82B427;
 
-.animationTimer:
+  .animationTimer:
     STA.W $072F                                                          ;82B42A;
 
-.positive:
+  .positive:
     LDA.W $0743                                                          ;82B42D;
     ASL A                                                                ;82B430;
     INC A                                                                ;82B431;
@@ -6330,7 +6330,7 @@ EquipmentScreen_Main_DisplayReserves_PaletteSetup:
     LDA.W SpritePalette_IndexValues,X                                    ;82B438;
     STA.B $03                                                            ;82B43B;
 
-.return:
+  .return:
     PLP                                                                  ;82B43D;
     RTS                                                                  ;82B43E;
 
@@ -6345,7 +6345,7 @@ EquipmentScreen_MoveToReserveTanks:
     JSL.L QueueSound_Lib1_Max6                                           ;82B44D;
     LDA.W #$0001                                                         ;82B451;
 
-.return:
+  .return:
     PLP                                                                  ;82B454;
     RTS                                                                  ;82B455;
 
@@ -6356,7 +6356,7 @@ EquipmentScreen_MoveLowerOnBeams:
     LDA.W $0A76                                                          ;82B459;
     BNE .cancel                                                          ;82B45C;
 
-.loop:
+  .loop:
     LDA.W $09A8                                                          ;82B45E;
     BIT.W EquipmentScreenData_EquipmentBitmasks_weapons,X                ;82B461;
     BNE .found                                                           ;82B464;
@@ -6365,13 +6365,13 @@ EquipmentScreen_MoveLowerOnBeams:
     CPX.W #$000A                                                         ;82B468;
     BMI .loop                                                            ;82B46B;
 
-.cancel:
+  .cancel:
     LDA.B $12                                                            ;82B46D;
     STA.W $0755                                                          ;82B46F;
     BRA .return                                                          ;82B472;
 
 
-.found:
+  .found:
     TXA                                                                  ;82B474;
     LSR A                                                                ;82B475;
     XBA                                                                  ;82B476;
@@ -6381,7 +6381,7 @@ EquipmentScreen_MoveLowerOnBeams:
     LDA.W #$0037                                                         ;82B480;
     JSL.L QueueSound_Lib1_Max6                                           ;82B483;
 
-.return:
+  .return:
     PLP                                                                  ;82B487;
     RTS                                                                  ;82B488;
 
@@ -6392,7 +6392,7 @@ EquipmentScreen_MoveHigherOnBeams:
     LDA.W $0A76                                                          ;82B48C;
     BNE .cancel                                                          ;82B48F;
 
-.loop:
+  .loop:
     LDA.W $09A8                                                          ;82B491;
     BIT.W EquipmentScreenData_EquipmentBitmasks_weapons,X                ;82B494;
     BNE .found                                                           ;82B497;
@@ -6400,12 +6400,12 @@ EquipmentScreen_MoveHigherOnBeams:
     DEX                                                                  ;82B49A;
     BPL .loop                                                            ;82B49B;
 
-.cancel:
+  .cancel:
     LDA.W #$FFFF                                                         ;82B49D;
     BRA .return                                                          ;82B4A0;
 
 
-.found:
+  .found:
     LDA.W #$0037                                                         ;82B4A2;
     JSL.L QueueSound_Lib1_Max6                                           ;82B4A5;
     TXA                                                                  ;82B4A9;
@@ -6415,7 +6415,7 @@ EquipmentScreen_MoveHigherOnBeams:
     ORA.W #$0001                                                         ;82B4AF;
     STA.W $0755                                                          ;82B4B2;
 
-.return:
+  .return:
     PLP                                                                  ;82B4B5;
     RTS                                                                  ;82B4B6;
 
@@ -6424,7 +6424,7 @@ EquipmentScreen_MoveLowerOnSuitsMisc:
     PHP                                                                  ;82B4B7;
     REP #$30                                                             ;82B4B8;
 
-.loop:
+  .loop:
     LDA.W $09A4                                                          ;82B4BA;
     BIT.W EquipmentScreenData_EquipmentBitmasks_suitsMisc,X              ;82B4BD;
     BNE +                                                                ;82B4C0;
@@ -6436,7 +6436,7 @@ EquipmentScreen_MoveLowerOnSuitsMisc:
     BRA .return                                                          ;82B4CC;
 
 
-  + LDA.W #$0037                                                         ;82B4CE;
++   LDA.W #$0037                                                         ;82B4CE;
     JSL.L QueueSound_Lib1_Max6                                           ;82B4D1;
     TXA                                                                  ;82B4D5;
     LSR A                                                                ;82B4D6;
@@ -6446,7 +6446,7 @@ EquipmentScreen_MoveLowerOnSuitsMisc:
     STA.W $0755                                                          ;82B4DE;
     LDA.W #$0000                                                         ;82B4E1;
 
-.return:
+  .return:
     PLP                                                                  ;82B4E4;
     RTS                                                                  ;82B4E5;
 
@@ -6455,7 +6455,7 @@ EquipmentScreen_MoveHigherOnSuitsMisc:
     PHP                                                                  ;82B4E6;
     REP #$30                                                             ;82B4E7;
 
-.loop:
+  .loop:
     LDA.W $09A4                                                          ;82B4E9;
     BIT.W EquipmentScreenData_EquipmentBitmasks_suitsMisc,X              ;82B4EC;
     BNE +                                                                ;82B4EF;
@@ -6467,7 +6467,7 @@ EquipmentScreen_MoveHigherOnSuitsMisc:
     BRA .return                                                          ;82B4FA;
 
 
-  + LDA.W #$0037                                                         ;82B4FC;
++   LDA.W #$0037                                                         ;82B4FC;
     JSL.L QueueSound_Lib1_Max6                                           ;82B4FF;
     TXA                                                                  ;82B503;
     LSR A                                                                ;82B504;
@@ -6476,7 +6476,7 @@ EquipmentScreen_MoveHigherOnSuitsMisc:
     ORA.W #$0002                                                         ;82B509;
     STA.W $0755                                                          ;82B50C;
 
-.return:
+  .return:
     PLP                                                                  ;82B50F;
     RTS                                                                  ;82B510;
 
@@ -6485,7 +6485,7 @@ EquipmentScreen_MoveLowerOnBoots:
     PHP                                                                  ;82B511;
     REP #$30                                                             ;82B512;
 
-.loop:
+  .loop:
     LDA.W $09A4                                                          ;82B514;
     BIT.W EquipmentScreenData_EquipmentBitmasks_boots,X                  ;82B517;
     BNE +                                                                ;82B51A;
@@ -6498,7 +6498,7 @@ EquipmentScreen_MoveLowerOnBoots:
     BRA .return                                                          ;82B528;
 
 
-  + LDA.W #$0037                                                         ;82B52A;
++   LDA.W #$0037                                                         ;82B52A;
     JSL.L QueueSound_Lib1_Max6                                           ;82B52D;
     TXA                                                                  ;82B531;
     LSR A                                                                ;82B532;
@@ -6507,7 +6507,7 @@ EquipmentScreen_MoveLowerOnBoots:
     ORA.W #$0003                                                         ;82B537;
     STA.W $0755                                                          ;82B53A;
 
-.return:
+  .return:
     PLP                                                                  ;82B53D;
     RTS                                                                  ;82B53E;
 
@@ -6516,7 +6516,7 @@ EquipmentScreen_MoveHigherOnBoots:
     PHP                                                                  ;82B53F;
     REP #$30                                                             ;82B540;
 
-.loop:
+  .loop:
     LDA.W $09A4                                                          ;82B542;
     BIT.W EquipmentScreenData_EquipmentBitmasks_boots,X                  ;82B545;
     BNE +                                                                ;82B548;
@@ -6527,7 +6527,7 @@ EquipmentScreen_MoveHigherOnBoots:
     BRA .return                                                          ;82B551;
 
 
-  + LDA.W #$0037                                                         ;82B553;
++   LDA.W #$0037                                                         ;82B553;
     JSL.L QueueSound_Lib1_Max6                                           ;82B556;
     TXA                                                                  ;82B55A;
     LSR A                                                                ;82B55B;
@@ -6536,7 +6536,7 @@ EquipmentScreen_MoveHigherOnBoots:
     ORA.W #$0003                                                         ;82B560;
     STA.W $0755                                                          ;82B563;
 
-.return:
+  .return:
     PLP                                                                  ;82B566;
     RTS                                                                  ;82B567;
 
@@ -6551,7 +6551,7 @@ EquipmentScreen_Main_ButtonResponse:
     RTS                                                                  ;82B573;
 
 
-  + LDA.W #$0038                                                         ;82B574;
++   LDA.W #$0038                                                         ;82B574;
     JSL.L QueueSound_Lib1_Max6                                           ;82B577;
     LDA.W $0755                                                          ;82B57B;
     AND.W #$00FF                                                         ;82B57E;
@@ -6593,7 +6593,7 @@ EquipmentScreen_Main_ButtonResponse:
     BRA .return                                                          ;82B5C8;
 
 
-  + LDA.W $0000,X                                                        ;82B5CA;
++   LDA.W $0000,X                                                        ;82B5CA;
     EOR.W #$FFFF                                                         ;82B5CD;
     STA.B $12                                                            ;82B5D0;
     LDA.W $0000,Y                                                        ;82B5D2;
@@ -6605,7 +6605,7 @@ EquipmentScreen_Main_ButtonResponse:
     STA.B $16                                                            ;82B5E1;
     JSR.W Copy_Bytes_of_Palette_from_7E_to_12                            ;82B5E3;
 
-.return:
+  .return:
     PLP                                                                  ;82B5E6;
     RTS                                                                  ;82B5E7;
 
@@ -6619,7 +6619,7 @@ UNUSED_ConvertAToThreeDecimalDigits:
     STZ.B $14                                                            ;82B5EF;
     STZ.B $16                                                            ;82B5F1;
 
-  - LDA.B $18                                                            ;82B5F3;
+-   LDA.B $18                                                            ;82B5F3;
     SEC                                                                  ;82B5F5;
     SBC.W #$0064                                                         ;82B5F6;
     STA.B $18                                                            ;82B5F9;
@@ -6628,11 +6628,11 @@ UNUSED_ConvertAToThreeDecimalDigits:
     BRA -                                                                ;82B5FF;
 
 
-  + CLC                                                                  ;82B601;
++   CLC                                                                  ;82B601;
     ADC.W #$0064                                                         ;82B602;
     STA.B $18                                                            ;82B605;
 
-  - LDA.B $18                                                            ;82B607;
+-   LDA.B $18                                                            ;82B607;
     SEC                                                                  ;82B609;
     SBC.W #$000A                                                         ;82B60A;
     STA.B $18                                                            ;82B60D;
@@ -6641,11 +6641,11 @@ UNUSED_ConvertAToThreeDecimalDigits:
     BRA -                                                                ;82B613;
 
 
-  + CLC                                                                  ;82B615;
++   CLC                                                                  ;82B615;
     ADC.W #$000A                                                         ;82B616;
     STA.B $18                                                            ;82B619;
 
-  - LDA.B $18                                                            ;82B61B;
+-   LDA.B $18                                                            ;82B61B;
     SEC                                                                  ;82B61D;
     SBC.W #$0001                                                         ;82B61E;
     STA.B $18                                                            ;82B621;
@@ -6654,7 +6654,7 @@ UNUSED_ConvertAToThreeDecimalDigits:
     BRA -                                                                ;82B627;
 
 
-.return:
+  .return:
     PLP                                                                  ;82B629;
     RTS                                                                  ;82B62A;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -6676,7 +6676,7 @@ Draw_PauseMenu_during_FadeIn:
     RTL                                                                  ;82B641;
 
 
-.mapScreen:
+  .mapScreen:
     JSR.W MapScreen_DrawSamusPositionIndicator                           ;82B642;
     JSL.L Draw_Map_Icons                                                 ;82B645;
     JSL.L Display_Map_Elevator_Destinations                              ;82B649;
@@ -6701,7 +6701,7 @@ UNUSED_82B650:
     RTL                                                                  ;82B663;
 
 
-  + JSL.L Display_Map_Elevator_Destinations                              ;82B664;
++   JSL.L Display_Map_Elevator_Destinations                              ;82B664;
     JSR.W MapScreen_DrawSamusPositionIndicator                           ;82B668;
     JSL.L Draw_Map_Icons                                                 ;82B66B;
     PLB                                                                  ;82B66F;
@@ -6740,7 +6740,7 @@ Draw_Map_Icons:
     LDA.W #$0008                                                         ;82B6B6;
     JSR.W Draw_Simple_MapIcons                                           ;82B6B9;
 
-  + LDA.W $079F                                                          ;82B6BC;
++   LDA.W $079F                                                          ;82B6BC;
     BNE .return                                                          ;82B6BF;
     LDA.W #$0E00                                                         ;82B6C1;
     STA.B $03                                                            ;82B6C4;
@@ -6755,7 +6755,7 @@ Draw_Map_Icons:
     LDA.W #$0063                                                         ;82B6D4;
     JSL.L AddSpritemapFrom_82C569_TableToOAM                             ;82B6D7;
 
-.return:
+  .return:
     PLB                                                                  ;82B6DB;
     RTL                                                                  ;82B6DC;
 
@@ -6813,7 +6813,7 @@ Draw_FileSelectMap_Icons:
     LDA.W #$0012                                                         ;82B744;
     JSL.L AddSpritemapFrom_82C569_TableToOAM                             ;82B747;
 
-  + PLY                                                                  ;82B74B;
++   PLY                                                                  ;82B74B;
     PLX                                                                  ;82B74C;
     PLA                                                                  ;82B74D;
     JSL.L AddSpritemapFrom_82C569_TableToOAM                             ;82B74E;
@@ -6831,7 +6831,7 @@ Draw_FileSelectMap_Icons:
     LDA.W #$000C                                                         ;82B771;
     JSR.W Draw_Simple_MapIcons                                           ;82B774;
 
-  + LDA.W $079F                                                          ;82B777;
++   LDA.W $079F                                                          ;82B777;
     BNE .return                                                          ;82B77A;
     LDA.W #$0E00                                                         ;82B77C;
     STA.B $03                                                            ;82B77F;
@@ -6846,7 +6846,7 @@ Draw_FileSelectMap_Icons:
     LDA.W #$0063                                                         ;82B78F;
     JSL.L AddSpritemapFrom_82C569_TableToOAM                             ;82B792;
 
-.return:
+  .return:
     PLB                                                                  ;82B796;
     RTL                                                                  ;82B797;
 
@@ -6875,11 +6875,11 @@ Draw_SaveStation_MapIcons:
     LDA.W $0000,X                                                        ;82B7C3;
     BNE Draw_MapIcons_ofGivenType                                        ;82B7C6;
 
-.return:
+  .return:
     RTS                                                                  ;82B7C8;
 
 
-.bits:
+  .bits:
     db $01,$02,$04,$08,$10,$20,$40,$80                                   ;82B7C9;
 
 Draw_Debug_Save_MapIcons:
@@ -6934,7 +6934,7 @@ Draw_Simple_MapIcons:
 Draw_MapIcons_ofGivenType:
     TAX                                                                  ;82B81C;
 
-.loop:
+  .loop:
     LDA.W $0000,X                                                        ;82B81D;
     BIT.W #$8000                                                         ;82B820;
     BNE .return                                                          ;82B823;
@@ -6960,10 +6960,10 @@ Draw_MapIcons_ofGivenType:
     LDA.B $22                                                            ;82B847;
     JSL.L AddSpritemapFrom_82C569_TableToOAM                             ;82B849;
 
-.restoreX:
+  .restoreX:
     PLX                                                                  ;82B84D;
 
-.next:
+  .next:
     INX                                                                  ;82B84E;
     INX                                                                  ;82B84F;
     INX                                                                  ;82B850;
@@ -6971,7 +6971,7 @@ Draw_MapIcons_ofGivenType:
     BRA .loop                                                            ;82B852;
 
 
-.return:
+  .return:
     RTS                                                                  ;82B854;
 
 
@@ -7011,7 +7011,7 @@ Check_if_MapPosition_isExplored:
     RTS                                                                  ;82B889;
 
 
-.bits:
+  .bits:
     db $80,$40,$20,$10,$08,$04,$02,$01                                   ;82B88A;
 
 Display_Map_Boss_Icons:
@@ -7030,7 +7030,7 @@ Display_Map_Boss_Icons:
     BEQ .return                                                          ;82B8AD;
     TAX                                                                  ;82B8AF;
 
-.bossIcons:
+  .bossIcons:
     LDA.W $0000,X                                                        ;82B8B0;
     CMP.W #$FFFF                                                         ;82B8B3;
     BEQ .return                                                          ;82B8B6;
@@ -7043,7 +7043,7 @@ Display_Map_Boss_Icons:
     LDA.W $0789                                                          ;82B8C6;
     BEQ .skip                                                            ;82B8C9;
 
-.drawBossIcon:
+  .drawBossIcon:
     PHX                                                                  ;82B8CB;
     LDA.W $0002,X                                                        ;82B8CC;
     SEC                                                                  ;82B8CF;
@@ -7057,7 +7057,7 @@ Display_Map_Boss_Icons:
     JSL.L AddSpritemapFrom_82C569_TableToOAM                             ;82B8DC;
     PLX                                                                  ;82B8E0;
 
-.next:
+  .next:
     INX                                                                  ;82B8E1;
     INX                                                                  ;82B8E2;
     INX                                                                  ;82B8E3;
@@ -7065,16 +7065,16 @@ Display_Map_Boss_Icons:
     BRA .bossIcons                                                       ;82B8E5;
 
 
-.return:
+  .return:
     RTS                                                                  ;82B8E7;
 
 
-.skip:
+  .skip:
     LSR.B $24                                                            ;82B8E8;
     BRA .next                                                            ;82B8EA;
 
 
-.bossDead:
+  .bossDead:
     PHX                                                                  ;82B8EC;
     LDA.W $0002,X                                                        ;82B8ED;
     SEC                                                                  ;82B8F0;
@@ -7114,7 +7114,7 @@ Draw_MapScrollArrow_and_Check_Scroll_in_that_Direction:
     LDA.W $0008,X                                                        ;82B92B;
     STA.W $05FD                                                          ;82B92E;
 
-.return:
+  .return:
     RTL                                                                  ;82B931;
 
 
@@ -7139,7 +7139,7 @@ Handle_MapScrollArrows:
     LDX.W #MapScrollArrows_left                                          ;82B949;
     JSL.L Draw_MapScrollArrow_and_Check_Scroll_in_that_Direction         ;82B94C;
 
-  + LDA.W $05AE                                                          ;82B950;
++   LDA.W $05AE                                                          ;82B950;
     CLC                                                                  ;82B953;
     ADC.W #$0018                                                         ;82B954;
     SEC                                                                  ;82B957;
@@ -7149,7 +7149,7 @@ Handle_MapScrollArrows:
     LDX.W #MapScrollArrows_right                                         ;82B95F;
     JSL.L Draw_MapScrollArrow_and_Check_Scroll_in_that_Direction         ;82B962;
 
-  + LDA.W $05B0                                                          ;82B966;
++   LDA.W $05B0                                                          ;82B966;
     SEC                                                                  ;82B969;
     SBC.W #$0038                                                         ;82B96A;
     CMP.B $B3                                                            ;82B96D;
@@ -7157,7 +7157,7 @@ Handle_MapScrollArrows:
     LDX.W #MapScrollArrows_up                                            ;82B971;
     JSL.L Draw_MapScrollArrow_and_Check_Scroll_in_that_Direction         ;82B974;
 
-  + LDA.W $05B2                                                          ;82B978;
++   LDA.W $05B2                                                          ;82B978;
     SEC                                                                  ;82B97B;
     SBC.W #$00B1                                                         ;82B97C;
     CMP.B $B3                                                            ;82B97F;
@@ -7165,13 +7165,13 @@ Handle_MapScrollArrows:
     LDX.W #MapScrollArrows_down                                          ;82B983;
     JSL.L Draw_MapScrollArrow_and_Check_Scroll_in_that_Direction         ;82B986;
 
-.return:
+  .return:
     PLB                                                                  ;82B98A;
     PLP                                                                  ;82B98B;
     RTL                                                                  ;82B98C;
 
 
-.cancelScrollDown:
+  .cancelScrollDown:
     LDA.W $05FD                                                          ;82B98D;
     CMP.W MapScrollArrows_downDirection                                  ;82B990;
     BNE .return                                                          ;82B993;
@@ -7237,11 +7237,11 @@ Update_Samus_Position_Indicator_Animation:
     INC.W $077A                                                          ;82BA0B;
     LDX.W #$0000                                                         ;82BA0E;
 
-  + STX.W $0776                                                          ;82BA11;
++   STX.W $0776                                                          ;82BA11;
     LDA.W .delays,X                                                      ;82BA14;
     STA.W $0778                                                          ;82BA17;
 
-.nonZero:
+  .nonZero:
     DEC A                                                                ;82BA1A;
     STA.W $0778                                                          ;82BA1B;
     LDX.W $0776                                                          ;82BA1E;
@@ -7249,10 +7249,10 @@ Update_Samus_Position_Indicator_Animation:
     RTS                                                                  ;82BA24;
 
 
-.delays:
+  .delays:
     db $08,$00,$04,$00,$08,$00,$04,$00                                   ;82BA25;
 
-.spritemapIDs:
+  .spritemapIDs:
     db $5F,$00,$60,$00,$61,$00,$60,$00                                   ;82BA2D; (into $82:C569 table)
 
 Draw_Border_Around_SAMUS_DATA:
@@ -7303,7 +7303,7 @@ Draw_Menu_Selection_Missile:
     LDA.W .animTimer,Y                                                   ;82BA88;
     STA.W $198D                                                          ;82BA8B;
 
-  + LDA.W #$0E00                                                         ;82BA8E;
++   LDA.W #$0E00                                                         ;82BA8E;
     STA.B $03                                                            ;82BA91;
     LDA.W $1997                                                          ;82BA93;
     ASL A                                                                ;82BA96;
@@ -7319,10 +7319,10 @@ Draw_Menu_Selection_Missile:
     JML.L AddSpritemapFrom_82C569_TableToOAM                             ;82BAA6;
 
 
-.animTimer:
+  .animTimer:
     dw $0008,$0008,$0008,$0008                                           ;82BAAA;
 
-.animFrame:
+  .animFrame:
     dw $0037,$0036,$0035,$0034                                           ;82BAB2;
 
 Draw_FileCopy_Arrow:
@@ -7343,10 +7343,10 @@ Draw_FileCopy_Arrow:
     BEQ +                                                                ;82BAD8;
     LDX.W #$000C                                                         ;82BADA;
 
-  + BRA .spawnSprite                                                     ;82BADD;
++   BRA .spawnSprite                                                     ;82BADD;
 
 
-.upwards:
+  .upwards:
     LDX.W #$0012                                                         ;82BADF;
     CMP.W #$0002                                                         ;82BAE2;
     BPL .spawnSprite                                                     ;82BAE5;
@@ -7356,7 +7356,7 @@ Draw_FileCopy_Arrow:
     BEQ .spawnSprite                                                     ;82BAF0;
     LDX.W #$001E                                                         ;82BAF2;
 
-.spawnSprite:
+  .spawnSprite:
     LDA.W #$0200                                                         ;82BAF5;
     STA.B $03                                                            ;82BAF8;
     LDA.W .tableIndex,X                                                  ;82BAFA;
@@ -7374,11 +7374,11 @@ Draw_FileCopy_Arrow:
 ;       |      _________ X position
 ;       |     |      ___ Y position
 ;       |     |     |
-.tableIndex:
+  .tableIndex:
     dw $0042                                                             ;82BB0C;
-.tableXpos:
+  .tableXpos:
     dw       $0014
-.tableYpos:
+  .tableYpos:
     dw             $0068 ; 0:   A ------> C
     dw $0040,$0014,$0058 ; 6:   A -> B
     dw $0040,$0014,$0078 ; Ch:       B -> C
@@ -7403,7 +7403,7 @@ Display_Map_Elevator_Destinations:
     LDA.W Map_Elevator_Destinations,X                                    ;82BB4B;
     TAX                                                                  ;82BB4E;
 
-.loop:
+  .loop:
     LDA.W $0000,X                                                        ;82BB4F;
     CMP.W #$FFFF                                                         ;82BB52;
     BEQ .return                                                          ;82BB55;
@@ -7425,7 +7425,7 @@ Display_Map_Elevator_Destinations:
     BRA .loop                                                            ;82BB71;
 
 
-.return:
+  .return:
     PLB                                                                  ;82BB73;
     RTL                                                                  ;82BB74;
 
@@ -7460,7 +7460,7 @@ Draw_GameOver_BabyMetroid:
     TAY                                                                  ;82BBA2;
     LDX.W #$0000                                                         ;82BBA3;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;82BBA6;
     STA.L $7EC180,X                                                      ;82BBA9;
     INY                                                                  ;82BBAD;
@@ -7631,13 +7631,13 @@ Queue_Samus_Movement_SoundEffects:
     LDA.W #$002B                                                         ;82BE3C;
     JSL.L QueueSound_Lib3_Max6                                           ;82BE3F;
 
-  + LDA.W $0CD0                                                          ;82BE43;
++   LDA.W $0CD0                                                          ;82BE43;
     CMP.W #$0010                                                         ;82BE46;
     BMI +                                                                ;82BE49;
     LDA.W #$0041                                                         ;82BE4B;
     JSL.L QueueSound_Lib1_Max6                                           ;82BE4E;
 
-  + LDA.W #$0014                                                         ;82BE52;
++   LDA.W #$0014                                                         ;82BE52;
     JSL.L Run_Samus_Command                                              ;82BE55;
     RTL                                                                  ;82BE59;
 
@@ -7657,10 +7657,10 @@ UNUSED_82BE5A:
     STA.B $02                                                            ;82BE6E;
     LDY.W #$0000                                                         ;82BE70;
 
-.clear12:
+  .clear12:
     STZ.B $12                                                            ;82BE73;
 
-.loop:
+  .loop:
     LDA.B [$00],Y                                                        ;82BE75;
     AND.W #$03FF                                                         ;82BE77;
     CMP.W #$001F                                                         ;82BE7A;
@@ -7669,10 +7669,10 @@ UNUSED_82BE5A:
     BRA +                                                                ;82BE80;
 
 
-.clc:
+  .clc:
     CLC                                                                  ;82BE82;
 
-  + ROL.B $12                                                            ;82BE83;
++   ROL.B $12                                                            ;82BE83;
     INY                                                                  ;82BE85;
     INY                                                                  ;82BE86;
     TYA                                                                  ;82BE87;
@@ -7680,7 +7680,7 @@ UNUSED_82BE5A:
     BNE .loop                                                            ;82BE8B;
     CPY.W #$1000                                                         ;82BE8D;
 
-.crash:
+  .crash:
     BPL .crash                                                           ;82BE90;
     TYA                                                                  ;82BE92; dead code
     LSR A                                                                ;82BE93;
@@ -7700,7 +7700,7 @@ UNUSED_82BEA3:
     LDX.W #$0600                                                         ;82BEA5;
     LDA.W #$0000                                                         ;82BEA8;
 
-.loop:
+  .loop:
     STA.L $7E3000,X                                                      ;82BEAB;
     STA.L $7E4000,X                                                      ;82BEAF;
     DEX                                                                  ;82BEB3;
@@ -7711,7 +7711,7 @@ UNUSED_82BEA3:
     STA.L $7E4004                                                        ;82BEBF;
     STZ.W $079F                                                          ;82BEC3;
 
-.biggerLoop:
+  .biggerLoop:
     REP #$20                                                             ;82BEC6;
     LDA.W $079F                                                          ;82BEC8;
     XBA                                                                  ;82BECB;
@@ -7721,7 +7721,7 @@ UNUSED_82BEA3:
     LDA.B #$FF                                                           ;82BED0;
     STA.B $12                                                            ;82BED2;
 
-.middleLoop:
+  .middleLoop:
     LDA.W ReserveTank_TransferEnergyPerFrame,Y                           ;82BED4;
     BEQ +                                                                ;82BED7;
     TYA                                                                  ;82BED9;
@@ -7734,7 +7734,7 @@ UNUSED_82BEA3:
     STA.L $7E4000,X                                                      ;82BEE8;
     PLX                                                                  ;82BEEC;
 
-  + INY                                                                  ;82BEED;
++   INY                                                                  ;82BEED;
     LDA.B $12                                                            ;82BEEE;
     DEC A                                                                ;82BEF0;
     STA.B $12                                                            ;82BEF1;
@@ -7746,7 +7746,7 @@ UNUSED_82BEA3:
     CMP.B #$07                                                           ;82BEFE;
     BMI .biggerLoop                                                      ;82BF00;
 
-.crash:
+  .crash:
     BRA .crash                                                           ;82BF02;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -9563,14 +9563,14 @@ Advance_GradualColorChange_ofBGPalette6:
     RTL                                                                  ;82D984;
 
 
-.advance:
+  .advance:
     PHB                                                                  ;82D985;
     PEA.W $7E7E                                                          ;82D986;
     PLB                                                                  ;82D989;
     PLB                                                                  ;82D98A;
     LDX.W #$00C0                                                         ;82D98B;
 
-.loop:
+  .loop:
     PHX                                                                  ;82D98E;
     LDA.L $7EC200,X                                                      ;82D98F;
     TAY                                                                  ;82D993;
@@ -9604,14 +9604,14 @@ Advance_GradualColorChange_ofPaletteRAM:
     RTL                                                                  ;82D9CF;
 
 
-.advance:
+  .advance:
     STY.B $22                                                            ;82D9D0;
     PHB                                                                  ;82D9D2;
     PEA.W $7E7E                                                          ;82D9D3;
     PLB                                                                  ;82D9D6;
     PLB                                                                  ;82D9D7;
 
-.loop:
+  .loop:
     PHX                                                                  ;82D9D8;
     LDA.L $7EC200,X                                                      ;82D9D9;
     TAY                                                                  ;82D9DD;
@@ -9646,14 +9646,14 @@ Advance_GradualColorChange_ofAllPalettes:
     RTS                                                                  ;82DA17;
 
 
-.advance:
+  .advance:
     PHB                                                                  ;82DA18;
     PEA.W $7E7E                                                          ;82DA19;
     PLB                                                                  ;82DA1C;
     PLB                                                                  ;82DA1D;
     LDX.W #$0000                                                         ;82DA1E;
 
-.loop:
+  .loop:
     STX.W $C404                                                          ;82DA21;
     LDA.W $C200,X                                                        ;82DA24;
     CMP.W $C000,X                                                        ;82DA27;
@@ -9666,7 +9666,7 @@ Advance_GradualColorChange_ofAllPalettes:
     LDX.W $C404                                                          ;82DA37;
     STA.W $C000,X                                                        ;82DA3A;
 
-.next:
+  .next:
     INX                                                                  ;82DA3D;
     INX                                                                  ;82DA3E;
     CPX.W #$0200                                                         ;82DA3F;
@@ -9747,7 +9747,7 @@ CalculateTheAth_TransitionalColorComponent_fromXtoY:
     RTS                                                                  ;82DAAC;
 
 
-.AisNonZero:
+  .AisNonZero:
     DEC A                                                                ;82DAAD;
     CMP.W $C402                                                          ;82DAAE;
     BNE +                                                                ;82DAB1;
@@ -9755,7 +9755,7 @@ CalculateTheAth_TransitionalColorComponent_fromXtoY:
     RTS                                                                  ;82DAB4;
 
 
-  + PHX                                                                  ;82DAB5;
++   PHX                                                                  ;82DAB5;
     INC A                                                                ;82DAB6;
     STA.B $14                                                            ;82DAB7;
     TYA                                                                  ;82DAB9;
@@ -9766,7 +9766,7 @@ CalculateTheAth_TransitionalColorComponent_fromXtoY:
     EOR.W #$FFFF                                                         ;82DAC1;
     INC A                                                                ;82DAC4;
 
-  + XBA                                                                  ;82DAC5;
++   XBA                                                                  ;82DAC5;
     AND.W #$FF00                                                         ;82DAC6;
     STA.L $004204                                                        ;82DAC9;
     SEP #$21                                                             ;82DACD;
@@ -9785,7 +9785,7 @@ CalculateTheAth_TransitionalColorComponent_fromXtoY:
     EOR.W #$FFFF                                                         ;82DAE7;
     INC A                                                                ;82DAEA;
 
-  + STA.B $12                                                            ;82DAEB;
++   STA.B $12                                                            ;82DAEB;
     PLA                                                                  ;82DAED;
     XBA                                                                  ;82DAEE;
     CLC                                                                  ;82DAEF;
@@ -9825,9 +9825,9 @@ Advance_GradualColorChange_ofPalettesInA:
     RTS                                                                  ;82DB20;
 
 
-  + STZ.W $C404                                                          ;82DB21;
++   STZ.W $C404                                                          ;82DB21;
 
-.loop:
+  .loop:
     PLA                                                                  ;82DB24;
     BEQ +                                                                ;82DB25;
     LSR A                                                                ;82DB27;
@@ -9839,13 +9839,13 @@ Advance_GradualColorChange_ofPalettesInA:
     BRA .loop                                                            ;82DB34;
 
 
-.advance:
+  .advance:
     JSR.W Advance_GradualColorChange_ofPaletteX_DividedBy_20             ;82DB36;
     BRA .loop                                                            ;82DB39;
 
     PLA                                                                  ;82DB3B; dead code (just the PLA)
 
-  + INC.W $C400                                                          ;82DB3C;
++   INC.W $C400                                                          ;82DB3C;
     CLC                                                                  ;82DB3F;
     RTS                                                                  ;82DB40;
 
@@ -9853,7 +9853,7 @@ Advance_GradualColorChange_ofPalettesInA:
 Advance_GradualColorChange_ofPaletteX_DividedBy_20:
     LDX.W $C404                                                          ;82DB41;
 
-.loop:
+  .loop:
     LDA.W $C200,X                                                        ;82DB44;
     CMP.W $C000,X                                                        ;82DB47;
     BEQ .next                                                            ;82DB4A;
@@ -9865,7 +9865,7 @@ Advance_GradualColorChange_ofPaletteX_DividedBy_20:
     LDX.W $C404                                                          ;82DB57;
     STA.W $C000,X                                                        ;82DB5A;
 
-.next:
+  .next:
     INX                                                                  ;82DB5D;
     INX                                                                  ;82DB5E;
     STX.W $C404                                                          ;82DB5F;
@@ -9882,7 +9882,7 @@ HandleSamusRunningOutOfEnergy_and_IncrementGameTime:
     BEQ .zeroEnergy                                                      ;82DB6F;
     BPL .tickGameTime                                                    ;82DB71;
 
-.zeroEnergy:
+  .zeroEnergy:
     LDA.W $09C0                                                          ;82DB73;
     BIT.W #$0001                                                         ;82DB76;
     BEQ .noAutoReserve                                                   ;82DB79;
@@ -9897,7 +9897,7 @@ HandleSamusRunningOutOfEnergy_and_IncrementGameTime:
     BRA .tickGameTime                                                    ;82DB93;
 
 
-.noAutoReserve:
+  .noAutoReserve:
     LDA.W $0998                                                          ;82DB95;
     CMP.W #$0008                                                         ;82DB98;
     BEQ .normalGameplay                                                  ;82DB9B;
@@ -9905,7 +9905,7 @@ HandleSamusRunningOutOfEnergy_and_IncrementGameTime:
     RTS                                                                  ;82DB9E;
 
 
-.normalGameplay:
+  .normalGameplay:
     LDA.W #$8000                                                         ;82DB9F;
     STA.W $0A78                                                          ;82DBA2;
     LDA.W #$0011                                                         ;82DBA5;
@@ -9913,7 +9913,7 @@ HandleSamusRunningOutOfEnergy_and_IncrementGameTime:
     LDA.W #$0013                                                         ;82DBAC;
     STA.W $0998                                                          ;82DBAF;
 
-.tickGameTime:
+  .tickGameTime:
     LDA.W $09DA                                                          ;82DBB2;
     CLC                                                                  ;82DBB5;
     ADC.W #$0001                                                         ;82DBB6;
@@ -9940,7 +9940,7 @@ HandleSamusRunningOutOfEnergy_and_IncrementGameTime:
     ADC.W #$0001                                                         ;82DBEC;
     STA.W $09E0                                                          ;82DBEF;
 
-.checkGameTime:
+  .checkGameTime:
     LDA.W $09E0                                                          ;82DBF2;
     CMP.W #$0064                                                         ;82DBF5;
     BPL .capGameTime                                                     ;82DBF8;
@@ -9948,7 +9948,7 @@ HandleSamusRunningOutOfEnergy_and_IncrementGameTime:
     RTS                                                                  ;82DBFB;
 
 
-.capGameTime:
+  .capGameTime:
     LDA.W #$003B                                                         ;82DBFC;
     STA.W $09DA                                                          ;82DBFF;
     STA.W $09DC                                                          ;82DC02;
@@ -9970,7 +9970,7 @@ GameState_1B_ReserveTankAuto:
     LDA.W #$0010                                                         ;82DC21;
     JSL.L Run_Samus_Command                                              ;82DC24;
 
-  + JSR.W GameState_8_MainGameplay                                       ;82DC28;
++   JSR.W GameState_8_MainGameplay                                       ;82DC28;
     JSL.L Low_Health_Check_external                                      ;82DC2B;
     PLP                                                                  ;82DC2F;
     RTS                                                                  ;82DC30;
@@ -9985,7 +9985,7 @@ Reserve_Tank_Auto_Refill:
     LDA.W #$002D                                                         ;82DC3E;
     JSL.L QueueSound_Lib3_Max3                                           ;82DC41;
 
-  + LDA.W $09C2                                                          ;82DC45;
++   LDA.W $09C2                                                          ;82DC45;
     CLC                                                                  ;82DC48;
     ADC.W #$0001                                                         ;82DC49;
     STA.W $09C2                                                          ;82DC4C;
@@ -9996,7 +9996,7 @@ Reserve_Tank_Auto_Refill:
     BRA .zeroReserve                                                     ;82DC5A;
 
 
-  + LDA.W $09D6                                                          ;82DC5C;
++   LDA.W $09D6                                                          ;82DC5C;
     SEC                                                                  ;82DC5F;
     SBC.W #$0001                                                         ;82DC60;
     STA.W $09D6                                                          ;82DC63;
@@ -10007,17 +10007,17 @@ Reserve_Tank_Auto_Refill:
     ADC.W $09D6                                                          ;82DC6E;
     STA.W $09C2                                                          ;82DC71;
 
-.zeroReserve:
+  .zeroReserve:
     STZ.W $09D6                                                          ;82DC74;
 
-.return:
+  .return:
     LDA.W $09D6                                                          ;82DC77;
     BNE .notDoneRefilling                                                ;82DC7A;
     SEC                                                                  ;82DC7C;
     RTS                                                                  ;82DC7D;
 
 
-.notDoneRefilling:
+  .notDoneRefilling:
     CLC                                                                  ;82DC7E;
     RTS                                                                  ;82DC7F;
 
@@ -10028,7 +10028,7 @@ GameState_13_DeathSequence_Start:
     JSR.W GameState_8_MainGameplay                                       ;82DC83;
     LDX.W #$01FE                                                         ;82DC86;
 
-  - LDA.L $7EC000,X                                                      ;82DC89;
+-   LDA.L $7EC000,X                                                      ;82DC89;
     STA.L $7E3300,X                                                      ;82DC8D;
     DEX                                                                  ;82DC91;
     DEX                                                                  ;82DC92;
@@ -10036,20 +10036,20 @@ GameState_13_DeathSequence_Start:
     LDX.W #$017E                                                         ;82DC95;
     LDA.W #$0000                                                         ;82DC98;
 
-  - STA.L $7EC200,X                                                      ;82DC9B;
+-   STA.L $7EC200,X                                                      ;82DC9B;
     DEX                                                                  ;82DC9F;
     DEX                                                                  ;82DCA0;
     BPL -                                                                ;82DCA1;
     LDX.W #$005E                                                         ;82DCA3;
     LDA.W #$0000                                                         ;82DCA6;
 
-  - STA.L $7EC3A0,X                                                      ;82DCA9;
+-   STA.L $7EC3A0,X                                                      ;82DCA9;
     DEX                                                                  ;82DCAD;
     DEX                                                                  ;82DCAE;
     BPL -                                                                ;82DCAF;
     LDX.W #$001E                                                         ;82DCB1;
 
-  - LDA.L $7EC180,X                                                      ;82DCB4;
+-   LDA.L $7EC180,X                                                      ;82DCB4;
     STA.L $7EC380,X                                                      ;82DCB8;
     DEX                                                                  ;82DCBC;
     DEX                                                                  ;82DCBD;
@@ -10080,7 +10080,7 @@ GameState_14_DeathSequence_BlackOutSurroundings:
     RTS                                                                  ;82DCF3;
 
 
-  + JSL.L Wait_End_VBlank_Clear_HDMA                                     ;82DCF4;
++   JSL.L Wait_End_VBlank_Clear_HDMA                                     ;82DCF4;
     JSL.L DisableHVCounterInterrupts                                     ;82DCF8;
     STZ.W $1982                                                          ;82DCFC;
     STZ.B $AB                                                            ;82DCFF;
@@ -10100,7 +10100,7 @@ GameState_14_DeathSequence_BlackOutSurroundings:
     STZ.W $0725                                                          ;82DD1D;
     LDX.W #$00FE                                                         ;82DD20;
 
-  - STZ.W $1A8D,X                                                        ;82DD23;
+-   STZ.W $1A8D,X                                                        ;82DD23;
     DEX                                                                  ;82DD26;
     DEX                                                                  ;82DD27;
     BPL -                                                                ;82DD28;
@@ -10138,7 +10138,7 @@ GameState_15_DeathSequence_WaitForMusic:
     JSL.L SetSamusDeathSequencePose                                      ;82DD7E;
     INC.W $0998                                                          ;82DD82;
 
-.reutrn:
+  .reutrn:
     PLP                                                                  ;82DD85;
     RTS                                                                  ;82DD86;
 
@@ -10151,9 +10151,9 @@ GameState_16_DeathSequence_PreFlashing:
     BEQ +                                                                ;82DD91;
     BPL .return                                                          ;82DD93;
 
-  + INC.W $0998                                                          ;82DD95;
++   INC.W $0998                                                          ;82DD95;
 
-.return:
+  .return:
     PLP                                                                  ;82DD98;
     RTS                                                                  ;82DD99;
 
@@ -10168,10 +10168,10 @@ GameState_17_DeathSequence_Flashing:
     BRA .return                                                          ;82DDA7;
 
 
-.flashingEnded:
+  .flashingEnded:
     JSL.L Draw_Samus_During_Death_Animation                              ;82DDA9;
 
-.return:
+  .return:
     PLP                                                                  ;82DDAD;
     RTS                                                                  ;82DDAE;
 
@@ -10187,7 +10187,7 @@ GameState_18_DeathSequence_ExplosionWhiteOut:
     STA.W $0725                                                          ;82DDBF;
     INC.W $0998                                                          ;82DDC2;
 
-.return:
+  .return:
     PLP                                                                  ;82DDC5;
     RTS                                                                  ;82DDC6;
 
@@ -10211,7 +10211,7 @@ GameState_19_DeathSequence_BlackOut:
     RTS                                                                  ;82DDEC;
 
 
-.return:
+  .return:
     REP #$20                                                             ;82DDED;
     PLP                                                                  ;82DDEF;
     RTS                                                                  ;82DDF0;
@@ -10269,10 +10269,10 @@ Load_Door_Header:
     BRA .positive                                                        ;82DE5D;
 
 
-.vertical:
+  .vertical:
     LDA.W #$0180                                                         ;82DE5F;
 
-.positive:
+  .positive:
     STA.B $13                                                            ;82DE62;
     LDA.B $12                                                            ;82DE64;
     STA.W $092B                                                          ;82DE66;
@@ -10394,7 +10394,7 @@ WaitUntilTheEndOfAVBlank_and_Enable_H_V_CounterInterrupts:
     BEQ .return                                                          ;82DF76;
     JSL.L EnableHVCounterInterruptsNow                                   ;82DF78;
 
-.return:
+  .return:
     REP #$20                                                             ;82DF7C;
     PLP                                                                  ;82DF7E;
     RTS                                                                  ;82DF7F;
@@ -10409,7 +10409,7 @@ Much_ado_about_nothing:
     JSL.L DisableHVCounterInterrupts                                     ;82DF8D;
     JSL.L EnableHVCounterInterrupts                                      ;82DF91;
 
-.return:
+  .return:
     REP #$20                                                             ;82DF95; >.<
     PLP                                                                  ;82DF97;
     RTS                                                                  ;82DF98;
@@ -10421,13 +10421,13 @@ Save_Map_Explored_If_Elevator:
     BEQ +                                                                ;82DF9F;
     JSL.L SetDebugElevatorAsUsed                                         ;82DFA1;
 
-  + LDX.W $078D                                                          ;82DFA5;
++   LDX.W $078D                                                          ;82DFA5;
     LDA.L $830002,X                                                      ;82DFA8;
     BIT.W #$0040                                                         ;82DFAC;
     BEQ .return                                                          ;82DFAF;
     JSL.L MirrorCurrentAreasMapExplored                                  ;82DFB1;
 
-.return:
+  .return:
     RTS                                                                  ;82DFB5;
 
 
@@ -10438,7 +10438,7 @@ Load_Map_Explored_If_Elevator:
     BEQ .return                                                          ;82DFC0;
     JSL.L LoadMirrorOfCurrentAreasMapExplored                            ;82DFC2;
 
-.return:
+  .return:
     RTS                                                                  ;82DFC6;
 
 
@@ -10447,7 +10447,7 @@ Draw_Inanimate_Samus_Bank82:
     BNE .return                                                          ;82DFCA;
     JSL.L Draw_Inanimate_Samus                                           ;82DFCC;
 
-.return:
+  .return:
     RTS                                                                  ;82DFD0;
 
 
@@ -10458,7 +10458,7 @@ Load_EnemyGFX_to_VRAM:
     BEQ .return                                                          ;82DFD9;
     TXY                                                                  ;82DFDB;
 
-.loop:
+  .loop:
     LDA.L $B40000,X                                                      ;82DFDC;
     CMP.W #$FFFF                                                         ;82DFE0;
     BEQ .return                                                          ;82DFE3;
@@ -10480,7 +10480,7 @@ Load_EnemyGFX_to_VRAM:
     BRA .doorFlag                                                        ;82E00C;
 
 
-  + AND.W #$7FFF                                                         ;82E00E;
++   AND.W #$7FFF                                                         ;82E00E;
     STA.W $05C3                                                          ;82E011;
     TYX                                                                  ;82E014;
     LDA.L $B40002,X                                                      ;82E015;
@@ -10492,11 +10492,11 @@ Load_EnemyGFX_to_VRAM:
     ORA.W #$6000                                                         ;82E020;
     STA.W $05BE                                                          ;82E023;
 
-.doorFlag:
+  .doorFlag:
     LDA.W #$8000                                                         ;82E026;
     TSB.W $05BC                                                          ;82E029;
 
-.wait:
+  .wait:
     LDA.W $05BC                                                          ;82E02C;
     BMI .wait                                                            ;82E02F;
     INY                                                                  ;82E031;
@@ -10507,7 +10507,7 @@ Load_EnemyGFX_to_VRAM:
     BRA .loop                                                            ;82E036;
 
 
-.return:
+  .return:
     RTS                                                                  ;82E038;
 
 
@@ -10538,7 +10538,7 @@ Perform_Door_Transition_VRAM_Update:
     LDA.W #$8000                                                         ;82E065;
     TSB.W $05BC                                                          ;82E068;
 
-.wait:
+  .wait:
     LDA.W $05BC                                                          ;82E06B;
     BMI .wait                                                            ;82E06E;
     RTS                                                                  ;82E070;
@@ -10561,7 +10561,7 @@ Queue_Room_Music_Data:
     ORA.W #$FF00                                                         ;82E091;
     JSL.L QueueMusicDataOrTrack_8FrameDelay                              ;82E094;
 
-.return:
+  .return:
     PLB                                                                  ;82E098;
     PLP                                                                  ;82E099;
     RTL                                                                  ;82E09A;
@@ -10592,7 +10592,7 @@ Update_Music_Track_Index:
     LDA.W $07C9                                                          ;82E0CC;
     STA.W $07F5                                                          ;82E0CF;
 
-.return:
+  .return:
     PLB                                                                  ;82E0D2;
     PLP                                                                  ;82E0D3;
     RTL                                                                  ;82E0D4;
@@ -10624,7 +10624,7 @@ Load_New_Music_Track_If_Changed:
     LDA.W $07C9                                                          ;82E109;
     JSL.L QueueMusicDataOrTrack_YFrameDelay                              ;82E10C;
 
-.return:
+  .return:
     PLB                                                                  ;82E110;
     PLP                                                                  ;82E111;
     RTL                                                                  ;82E112;
@@ -10651,7 +10651,7 @@ Play_Room_Music_Track_After_A_Frames:
     LDA.W $07F5                                                          ;82E12D;
     JSL.L QueueMusicDataOrTrack_8FrameDelay                              ;82E130;
 
-.return:
+  .return:
     PLY                                                                  ;82E134;
     PLB                                                                  ;82E135;
     PLP                                                                  ;82E136;
@@ -10666,21 +10666,21 @@ Load_Target_Colors_for_Common_SpritesBeamsFlashingEnemies:
     REP #$30                                                             ;82E139;
     LDX.W #$001E                                                         ;82E13B;
 
-  - LDA.L Initial_Palette_spritePalette5,X                               ;82E13E;
+-   LDA.L Initial_Palette_spritePalette5,X                               ;82E13E;
     STA.L $7EC3A0,X                                                      ;82E142;
     DEX                                                                  ;82E146;
     DEX                                                                  ;82E147;
     BPL -                                                                ;82E148;
     LDX.W #$001E                                                         ;82E14A;
 
-  - LDA.L $7EC1C0,X                                                      ;82E14D;
+-   LDA.L $7EC1C0,X                                                      ;82E14D;
     STA.L $7EC3C0,X                                                      ;82E151;
     DEX                                                                  ;82E155;
     DEX                                                                  ;82E156;
     BPL -                                                                ;82E157;
     LDX.W #$001E                                                         ;82E159;
 
-  - LDA.L Standard_Target_Sprite_Palette_Line0,X                         ;82E15C;
+-   LDA.L Standard_Target_Sprite_Palette_Line0,X                         ;82E15C;
     STA.L $7EC300,X                                                      ;82E160;
     DEX                                                                  ;82E164;
     DEX                                                                  ;82E165;
@@ -10695,13 +10695,13 @@ GameState_9_HitADoorBlock:
     JMP.W ($099C)                                                        ;82E16F;
 
 
-.manualReturn:
+  .manualReturn:
     BCS .gameStateA                                                      ;82E172;
     PLP                                                                  ;82E174;
     RTS                                                                  ;82E175;
 
 
-.gameStateA:
+  .gameStateA:
     INC.W $0998                                                          ;82E176;
     PLP                                                                  ;82E179;
     JMP.W GameState_A_LoadingNextRoom                                    ;82E17A;
@@ -10721,7 +10721,7 @@ DoorTransitionFunction_HandleElevator:
     JMP.W DoorTransitionFunction_Wait48FramesForDownElevator             ;82E19A;
 
 
-.return:
+  .return:
     SEC                                                                  ;82E19D;
     RTS                                                                  ;82E19E;
 
@@ -10737,7 +10737,7 @@ DoorTransitionFunction_Wait48FramesForDownElevator:
     RTS                                                                  ;82E1B4;
 
 
-.return:
+  .return:
     SEC                                                                  ;82E1B5;
     RTS                                                                  ;82E1B6;
 
@@ -10762,7 +10762,7 @@ GameState_A_LoadingNextRoom:
     LDX.W #$00FE                                                         ;82E1E1;
     LDA.W #$0000                                                         ;82E1E4;
 
-  - STA.W $C200,X                                                        ;82E1E7;
+-   STA.W $C200,X                                                        ;82E1E7;
     STA.W $C300,X                                                        ;82E1EA;
     DEX                                                                  ;82E1ED;
     DEX                                                                  ;82E1EE;
@@ -10809,7 +10809,7 @@ GameState_A_LoadingNextRoom:
     STA.W $C3BA                                                          ;82E264;
     JSL.L DrawTimer                                                      ;82E267;
 
-.clearSounds:
+  .clearSounds:
     JSL.L Clear_Sounds_When_Going_Through_Door                           ;82E26B;
     LDA.W #$0071                                                         ;82E26F;
     JSL.L QueueSound_Lib2_Max15                                          ;82E272;
@@ -10831,12 +10831,12 @@ GameState_B_LoadingNextRoom:
     JMP.W ($099C)                                                        ;82E28F;
 
 
-.manualReturn:
+  .manualReturn:
     LDA.W $0943                                                          ;82E292;
     BEQ .return                                                          ;82E295;
     JSL.L DrawTimer                                                      ;82E297;
 
-.return:
+  .return:
     PLB                                                                  ;82E29B;
     PLP                                                                  ;82E29C;
     RTS                                                                  ;82E29D;
@@ -10868,7 +10868,7 @@ DoorTransitionFunction_WaitForSoundsToFinish:
     LDA.W #DoorTransitionFunction_FadeOutTheScreen                       ;82E2D3;
     STA.W $099C                                                          ;82E2D6;
 
-.return:
+  .return:
     PLP                                                                  ;82E2D9;
     RTS                                                                  ;82E2DA;
 
@@ -10883,7 +10883,7 @@ DoorTransitionFunction_FadeOutTheScreen:
     RTS                                                                  ;82E2EF;
 
 
-  + LDA.W #DoorTransitionFunction_LoadDoorHeader_DeleteHDMAObjects_IRQ   ;82E2F0;
++   LDA.W #DoorTransitionFunction_LoadDoorHeader_DeleteHDMAObjects_IRQ   ;82E2F0;
     STA.W $099C                                                          ;82E2F3;
     RTS                                                                  ;82E2F6;
 
@@ -10915,11 +10915,11 @@ DoorTransitionFunction_ScrollScreenToAlignment:
     BRA .return                                                          ;82E32A;
 
 
-  + INC.W $0915                                                          ;82E32C;
++   INC.W $0915                                                          ;82E32C;
     BRA .return                                                          ;82E32F;
 
 
-.vertical:
+  .vertical:
     LDA.W $0910                                                          ;82E331;
     BIT.W #$FF00                                                         ;82E334;
     BEQ .done                                                            ;82E337;
@@ -10928,14 +10928,14 @@ DoorTransitionFunction_ScrollScreenToAlignment:
     BRA .return                                                          ;82E33E;
 
 
-  + INC.W $0911                                                          ;82E340;
++   INC.W $0911                                                          ;82E340;
 
-.return:
+  .return:
     JSL.L Calc_Layer2Position_BGScrolls_UpdateBGGraphics_WhenScrolling   ;82E343;
     RTS                                                                  ;82E347;
 
 
-.done:
+  .done:
     JSL.L Calc_Layer2Position_BGScrolls_UpdateBGGraphics_WhenScrolling   ;82E348;
     LDA.W #DoorTransitionFunction_FixDoorsMovingUp                       ;82E34C;
     STA.W $099C                                                          ;82E34F;
@@ -10952,7 +10952,7 @@ DoorTransitionFunction_FixDoorsMovingUp:
     BNE +                                                                ;82E361;
     JSL.L DrawTopRowOfScreenForUpwardsDoorTransition                     ;82E363;
 
-  + LDA.W #DoorTransitionFunction_LoadRoomHeader_SetupMap_Decompress     ;82E367;
++   LDA.W #DoorTransitionFunction_LoadRoomHeader_SetupMap_Decompress     ;82E367;
     STA.W $099C                                                          ;82E36A;
     RTS                                                                  ;82E36D;
 
@@ -10985,13 +10985,13 @@ DoorTransitionFunction_SetupScrolling:
     BNE +                                                                ;82E3A3;
     INC.B $B3                                                            ;82E3A5;
 
-  + LDA.W $0791                                                          ;82E3A7;
++   LDA.W $0791                                                          ;82E3A7;
     AND.W #$0003                                                         ;82E3AA;
     CMP.W #$0003                                                         ;82E3AD;
     BEQ +                                                                ;82E3B0;
     STZ.W $0925                                                          ;82E3B2;
 
-  + JSL.L DoorTransitionScrollingSetup                                   ;82E3B5;
++   JSL.L DoorTransitionScrollingSetup                                   ;82E3B5;
     LDA.W #DoorTransitionFunction_PlaceSamus_LoadTiles                   ;82E3B9;
     STA.W $099C                                                          ;82E3BC;
     RTS                                                                  ;82E3BF;
@@ -11023,10 +11023,10 @@ DoorTransitionFunction_PlaceSamus_LoadTiles:
     BRA .vertical                                                        ;82E3F9;
 
 
-.horizontal:
+  .horizontal:
     LDA.W #$0016                                                         ;82E3FB;
 
-.vertical:
+  .vertical:
     STA.B $A7                                                            ;82E3FE;
     JSR.W WaitUntilTheEndOfAVBlank_and_Enable_H_V_CounterInterrupts      ;82E400;
     LDA.W $07B3                                                          ;82E403;
@@ -11042,7 +11042,7 @@ DoorTransitionFunction_PlaceSamus_LoadTiles:
     JSL.L Decompression_HardcodedDestination                             ;82E41D;
     dl $7E7000                                                           ;82E421;
 
-.decompress:
+  .decompress:
     LDA.W $07C4                                                          ;82E424;
     STA.B $48                                                            ;82E427;
     LDA.W $07C3                                                          ;82E429;
@@ -11080,7 +11080,7 @@ DoorTransitionFunction_PlaceSamus_LoadTiles:
     dl Tiles_Standard_BG3                                                ;82E48B;
     dw $4000,$1000                                                       ;82E48E;
 
-.checkUp:
+  .checkUp:
     LDA.W $0791                                                          ;82E492;
     AND.W #$0003                                                         ;82E495;
     CMP.W #$0003                                                         ;82E498;
@@ -11088,7 +11088,7 @@ DoorTransitionFunction_PlaceSamus_LoadTiles:
     LDA.W #$0010                                                         ;82E49D;
     STA.B $A7                                                            ;82E4A0;
 
-  + LDA.W #DoorTransitionFunction_LoadSpritesBGPLMsAudio_RunDoorRoomASM  ;82E4A2;
++   LDA.W #DoorTransitionFunction_LoadSpritesBGPLMsAudio_RunDoorRoomASM  ;82E4A2;
     STA.W $099C                                                          ;82E4A5;
     RTS                                                                  ;82E4A8;
 
@@ -11127,25 +11127,25 @@ DoorTransitionFunction_LoadSpritesBGPLMsAudio_RunDoorRoomASM:
     LDA.W #$8000                                                         ;82E507;
     TSB.W $05BC                                                          ;82E50A;
 
-.waitVRAM:
+  .waitVRAM:
     BIT.W $05BC                                                          ;82E50D;
     BMI .waitVRAM                                                        ;82E510;
 
-  + LDX.W $07BB                                                          ;82E512;
++   LDX.W $07BB                                                          ;82E512;
     LDY.W $0016,X                                                        ;82E515;
     BPL .noLibraryBackground                                             ;82E518;
 
-.loop:
+  .loop:
     LDX.W $0000,Y                                                        ;82E51A;
     INY                                                                  ;82E51D;
     INY                                                                  ;82E51E;
     JSR.W (Library_Background_Function_Pointers,X)                       ;82E51F;
     BCC .loop                                                            ;82E522;
 
-.noLibraryBackground:
+  .noLibraryBackground:
     REP #$30                                                             ;82E524;
 
-.waitDoor:
+  .waitDoor:
     LDA.W $0931                                                          ;82E526;
     BPL .waitDoor                                                        ;82E529;
     LDA.W #$3BE0                                                         ;82E52B;
@@ -11165,11 +11165,11 @@ DoorTransitionFunction_LoadSpritesBGPLMsAudio_RunDoorRoomASM:
     BRA .return                                                          ;82E557;
 
 
-.right:
+  .right:
     LDA.W #$0007                                                         ;82E559;
     TSB.W $0AF6                                                          ;82E55C;
 
-.return:
+  .return:
     LDA.W #DoorTransitionFunction_HandleAnimatedTiles                    ;82E55F;
     STA.W $099C                                                          ;82E562;
     RTS                                                                  ;82E565;
@@ -11179,7 +11179,7 @@ Clear_FX_Tilemap_bank82:
     LDX.W #$077E                                                         ;82E566;
     LDA.W #$184E                                                         ;82E569;
 
-.loop:
+  .loop:
     STA.L $7E4000,X                                                      ;82E56C;
     STA.L $7E4780,X                                                      ;82E570;
     DEX                                                                  ;82E574;
@@ -11195,7 +11195,7 @@ Clear_BG2_Tilemap_bank82:
     LDX.W #$07FE                                                         ;82E583;
     LDA.W #$0338                                                         ;82E586;
 
-.loop:
+  .loop:
     STA.L $7E4000,X                                                      ;82E589;
     STA.L $7E4800,X                                                      ;82E58D;
     DEX                                                                  ;82E591;
@@ -11211,7 +11211,7 @@ Clear_Kraids_BG2_Tilemap:
     LDX.W #$07FE                                                         ;82E5A0;
     LDA.W #$0338                                                         ;82E5A3;
 
-.loop:
+  .loop:
     STA.L $7E4000,X                                                      ;82E5A6;
     STA.L $7E4800,X                                                      ;82E5AA;
     DEX                                                                  ;82E5AE;
@@ -11253,7 +11253,7 @@ LoadLibraryBackground_E_DoorDependentTransferToVRAM:
     RTS                                                                  ;82E5E8;
 
 
-  + INY                                                                  ;82E5E9;
++   INY                                                                  ;82E5E9;
     INY                                                                  ;82E5EA;
 
 LoadLibraryBackground_2_TransferToVRAM:
@@ -11268,7 +11268,7 @@ LoadLibraryBackground_2_TransferToVRAM:
     LDA.W #$8000                                                         ;82E603;
     TSB.W $05BC                                                          ;82E606;
 
-.wait:
+  .wait:
     BIT.W $05BC                                                          ;82E609;
     BMI .wait                                                            ;82E60C;
     TYA                                                                  ;82E60E;
@@ -11346,7 +11346,7 @@ DoorTransitionFunction_WaitForMusicQueueClear_and_LoadMusic:
     STA.W $099C                                                          ;82E66D;
     JSL.L Load_New_Music_Track_If_Changed                                ;82E670;
 
-.return:
+  .return:
     RTS                                                                  ;82E674;
 
 
@@ -11366,7 +11366,7 @@ UNUSED_DoorTransitionFunction:
     LDA.W #DoorTransitionFunction_NudgeSamusIfInterceptingTheDoor        ;82E69B;
     STA.W $099C                                                          ;82E69E;
 
-.return:
+  .return:
     RTS                                                                  ;82E6A1;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -11384,7 +11384,7 @@ DoorTransitionFunction_NudgeSamusIfInterceptingTheDoor:
     BRA .Y                                                               ;82E6BA;
 
 
-.X:
+  .X:
     CMP.W #$00E0                                                         ;82E6BC;
     BNE .Y                                                               ;82E6BF;
     LDA.W $0AF6                                                          ;82E6C1;
@@ -11393,7 +11393,7 @@ DoorTransitionFunction_NudgeSamusIfInterceptingTheDoor:
     SBC.W #$0008                                                         ;82E6C8;
     STA.W $0AF6                                                          ;82E6CB;
 
-.Y:
+  .Y:
     LDA.W $0AFA                                                          ;82E6CE;
     AND.W #$00F0                                                         ;82E6D1;
     CMP.W #$0010                                                         ;82E6D4;
@@ -11406,16 +11406,16 @@ DoorTransitionFunction_NudgeSamusIfInterceptingTheDoor:
     BRA +                                                                ;82E6E6;
 
 
-.what:
+  .what:
     CMP.W #$00E0                                                         ;82E6E8;
 
-  + PHB                                                                  ;82E6EB;
++   PHB                                                                  ;82E6EB;
     PEA.W $7E00                                                          ;82E6EC;
     PLB                                                                  ;82E6EF;
     PLB                                                                  ;82E6F0;
     LDX.W #$01FE                                                         ;82E6F1;
 
-.loop:
+  .loop:
     STZ.W $9C00,X                                                        ;82E6F4;
     STZ.W $9E00,X                                                        ;82E6F7;
     DEX                                                                  ;82E6FA;
@@ -11426,7 +11426,7 @@ DoorTransitionFunction_NudgeSamusIfInterceptingTheDoor:
     BNE +                                                                ;82E701;
     LDA.W #$0004                                                         ;82E703;
 
-  + STA.B $A7                                                            ;82E706;
++   STA.B $A7                                                            ;82E706;
     JSR.W Much_ado_about_nothing                                         ;82E708;
     LDA.W $0E16                                                          ;82E70B;
     BEQ .notElevator                                                     ;82E70E;
@@ -11437,11 +11437,11 @@ DoorTransitionFunction_NudgeSamusIfInterceptingTheDoor:
     BRA .notElevator                                                     ;82E71C;
 
 
-.samusCmd:
+  .samusCmd:
     LDA.W #$0007                                                         ;82E71E;
     JSL.L Run_Samus_Command                                              ;82E721;
 
-.notElevator:
+  .notElevator:
     JSL.L SetLiquidPhysicsType                                           ;82E725;
     LDA.W #DoorTransitionFunction_FadeInTheScreen_and_RunEnemies_Finish  ;82E729;
     STA.W $099C                                                          ;82E72C;
@@ -11468,7 +11468,7 @@ DoorTransitionFunction_FadeInTheScreen_and_RunEnemies_Finish:
     LDA.W #$0008                                                         ;82E764;
     STA.W $0998                                                          ;82E767;
 
-.return:
+  .return:
     RTS                                                                  ;82E76A;
 
 
@@ -11535,7 +11535,7 @@ LoadLevelData_CRE_TileTable_ScrollData_PLMs_DoorASM_RoomASM:
     LDX.W #$63FE                                                         ;82E7DC;
     LDA.W #$8000                                                         ;82E7DF;
 
-.loopA:
+  .loopA:
     STA.L $7F0002,X                                                      ;82E7E2;
     DEX                                                                  ;82E7E6;
     DEX                                                                  ;82E7E7;
@@ -11559,11 +11559,11 @@ LoadLevelData_CRE_TileTable_ScrollData_PLMs_DoorASM_RoomASM:
     BRA +                                                                ;82E80D;
 
 
-.loopB:
+  .loopB:
     LDA.W $0002,Y                                                        ;82E80F;
     STA.W $9602,X                                                        ;82E812;
 
-  + DEY                                                                  ;82E815;
++   DEY                                                                  ;82E815;
     DEY                                                                  ;82E816;
     DEX                                                                  ;82E817;
     DEX                                                                  ;82E818;
@@ -11576,11 +11576,11 @@ LoadLevelData_CRE_TileTable_ScrollData_PLMs_DoorASM_RoomASM:
     BRA +                                                                ;82E824;
 
 
-.loopC:
+  .loopC:
     LDA.W $0002,Y                                                        ;82E826;
     STA.W $6402,X                                                        ;82E829;
 
-  + DEY                                                                  ;82E82C;
++   DEY                                                                  ;82E82C;
     DEY                                                                  ;82E82D;
     DEX                                                                  ;82E82E;
     DEX                                                                  ;82E82F;
@@ -11604,7 +11604,7 @@ LoadLevelData_CRE_TileTable_ScrollData_PLMs_DoorASM_RoomASM:
     BRA .scrolls                                                         ;82E85D;
 
 
-.skipCRE:
+  .skipCRE:
     LDA.W $07C1                                                          ;82E85F;
     STA.B $48                                                            ;82E862;
     LDA.W $07C0                                                          ;82E864;
@@ -11612,13 +11612,13 @@ LoadLevelData_CRE_TileTable_ScrollData_PLMs_DoorASM_RoomASM:
     JSL.L Decompression_HardcodedDestination                             ;82E869;
     dl $7EA000                                                           ;82E86D;
 
-.scrolls:
+  .scrolls:
     LDX.W $07BB                                                          ;82E870;
     LDY.W $000E,X                                                        ;82E873;
     BPL .presetScrolls                                                   ;82E876;
     LDX.W #$0000                                                         ;82E878;
 
-.loopD:
+  .loopD:
     LDA.W $0000,Y                                                        ;82E87B;
     STA.L $7ECD20,X                                                      ;82E87E;
     INY                                                                  ;82E882;
@@ -11630,7 +11630,7 @@ LoadLevelData_CRE_TileTable_ScrollData_PLMs_DoorASM_RoomASM:
     BRA .scrollsEnd                                                      ;82E88B;
 
 
-.presetScrolls:
+  .presetScrolls:
     STY.B $12                                                            ;82E88D;
     SEP #$30                                                             ;82E88F;
     LDA.W $07AB                                                          ;82E891;
@@ -11640,16 +11640,16 @@ LoadLevelData_CRE_TileTable_ScrollData_PLMs_DoorASM_RoomASM:
     LDX.B #$00                                                           ;82E899;
     LDY.B #$00                                                           ;82E89B;
 
-.loop:
+  .loop:
     CPY.B $14                                                            ;82E89D;
     BNE +                                                                ;82E89F;
     LDA.B $12                                                            ;82E8A1;
     INC A                                                                ;82E8A3;
 
-  + PHY                                                                  ;82E8A4;
++   PHY                                                                  ;82E8A4;
     LDY.B #$00                                                           ;82E8A5;
 
-.loopE:
+  .loopE:
     STA.L $7ECD20,X                                                      ;82E8A7;
     INX                                                                  ;82E8AB;
     INY                                                                  ;82E8AC;
@@ -11660,14 +11660,14 @@ LoadLevelData_CRE_TileTable_ScrollData_PLMs_DoorASM_RoomASM:
     CPY.W $07AB                                                          ;82E8B4;
     BNE .loop                                                            ;82E8B7;
 
-.scrollsEnd:
+  .scrollsEnd:
     REP #$30                                                             ;82E8B9;
     LDX.W $07BB                                                          ;82E8BB;
     LDA.W $0014,X                                                        ;82E8BE;
     BEQ +                                                                ;82E8C1;
     TAX                                                                  ;82E8C3;
 
-.loopF:
+  .loopF:
     LDA.W $0000,X                                                        ;82E8C4;
     BEQ +                                                                ;82E8C7;
     JSL.L Spawn_Room_PLM                                                 ;82E8C9;
@@ -11678,14 +11678,14 @@ LoadLevelData_CRE_TileTable_ScrollData_PLMs_DoorASM_RoomASM:
     BRA .loopF                                                           ;82E8D3;
 
 
-  + JSL.L Execute_Door_ASM                                               ;82E8D5;
++   JSL.L Execute_Door_ASM                                               ;82E8D5;
     JSL.L Execute_Room_Setup_ASM                                         ;82E8D9;
     LDA.W $0E16                                                          ;82E8DD;
     BEQ .return                                                          ;82E8E0;
     LDA.W #$0002                                                         ;82E8E2;
     STA.W $0E18                                                          ;82E8E5;
 
-.return:
+  .return:
     PLB                                                                  ;82E8E8;
     PLP                                                                  ;82E8E9;
     RTL                                                                  ;82E8EA;
@@ -11714,7 +11714,7 @@ Spawn_Door_Closing_PLM:
     LDX.W #$0012                                                         ;82E912;
     JSL.L Spawn_Room_PLM                                                 ;82E915;
 
-.return:
+  .return:
     PLB                                                                  ;82E919;
     PLP                                                                  ;82E91A;
     RTS                                                                  ;82E91B;
@@ -11737,19 +11737,19 @@ CheckIfColoredDoorcapWasSpawned_SwitchDoorPLMInstruction:
     CLI                                                                  ;82E93D;
     LDX.W #$004E                                                         ;82E93E;
 
-.loop:
+  .loop:
     CMP.W $1C87,X                                                        ;82E941;
     BEQ .found                                                           ;82E944;
     DEX                                                                  ;82E946;
     DEX                                                                  ;82E947;
     BPL .loop                                                            ;82E948;
 
-.noColoredDoor:
+  .noColoredDoor:
     CLC                                                                  ;82E94A;
     RTS                                                                  ;82E94B;
 
 
-.found:
+  .found:
     LDA.W $1C37,X                                                        ;82E94C;
     BEQ .noColoredDoor                                                   ;82E94F;
     LDA.W $1DC7,X                                                        ;82E951;
@@ -11761,7 +11761,7 @@ CheckIfColoredDoorcapWasSpawned_SwitchDoorPLMInstruction:
     AND.W $05E7                                                          ;82E960;
     BNE .noColoredDoor                                                   ;82E963;
 
-  + LDA.W #$0001                                                         ;82E965;
++   LDA.W #$0001                                                         ;82E965;
     STA.L $7EDE1C,X                                                      ;82E968;
     TXY                                                                  ;82E96C;
     LDA.W $1C37,X                                                        ;82E96D;
@@ -11801,7 +11801,7 @@ LoadLibraryBackground_LoadingPausing:
     TAY                                                                  ;82E9B7;
     CLC                                                                  ;82E9B8;
 
-  + PEA.W $8F00                                                          ;82E9B9;
++   PEA.W $8F00                                                          ;82E9B9;
     PLB                                                                  ;82E9BC;
     PLB                                                                  ;82E9BD;
     REP #$20                                                             ;82E9BE;
@@ -11809,20 +11809,20 @@ LoadLibraryBackground_LoadingPausing:
     LDY.W $0016,X                                                        ;82E9C3;
     BPL .return                                                          ;82E9C6;
 
-.loop:
+  .loop:
     LDX.W $0000,Y                                                        ;82E9C8;
     INY                                                                  ;82E9CB;
     INY                                                                  ;82E9CC;
     JSR.W (.pointers,X)                                                  ;82E9CD;
     BCC .loop                                                            ;82E9D0;
 
-.return:
+  .return:
     PLB                                                                  ;82E9D2;
     PLP                                                                  ;82E9D3;
     RTL                                                                  ;82E9D4;
 
 
-.pointers:
+  .pointers:
     dw LoadLibraryBackgroundLP_0_Terminator                              ;82E9D5;
     dw LoadLibraryBackgroundLP_2_TransferToVRAM                          ;82E9D7;
     dw LoadLibraryBackgroundLP_4_Decompression                           ;82E9D9;
@@ -11849,7 +11849,7 @@ LoadLibraryBackgroundLP_E_DoorDependentTransferToVRAM:
     RTS                                                                  ;82E9F6;
 
 
-  + INY                                                                  ;82E9F7;
++   INY                                                                  ;82E9F7;
     INY                                                                  ;82E9F8;
 
 LoadLibraryBackgroundLP_2_TransferToVRAM:
@@ -11937,7 +11937,7 @@ Load_Level_Scroll_and_CRE_Data:
     LDX.W #$18FE                                                         ;82EA78;
     LDA.W #$8000                                                         ;82EA7B;
 
-  - STA.L $7F0002,X                                                      ;82EA7E;
+-   STA.L $7F0002,X                                                      ;82EA7E;
     STA.L $7F1902,X                                                      ;82EA82;
     STA.L $7F3202,X                                                      ;82EA86;
     STA.L $7F4B02,X                                                      ;82EA8A;
@@ -11963,10 +11963,10 @@ Load_Level_Scroll_and_CRE_Data:
     BRA +                                                                ;82EAB5;
 
 
-  - LDA.W $0002,Y                                                        ;82EAB7;
+-   LDA.W $0002,Y                                                        ;82EAB7;
     STA.W $9602,X                                                        ;82EABA;
 
-  + DEY                                                                  ;82EABD;
++   DEY                                                                  ;82EABD;
     DEY                                                                  ;82EABE;
     DEX                                                                  ;82EABF;
     DEX                                                                  ;82EAC0;
@@ -11979,10 +11979,10 @@ Load_Level_Scroll_and_CRE_Data:
     BRA +                                                                ;82EACC;
 
 
-  - LDA.W $0002,Y                                                        ;82EACE;
+-   LDA.W $0002,Y                                                        ;82EACE;
     STA.W $6402,X                                                        ;82EAD1;
 
-  + DEY                                                                  ;82EAD4;
++   DEY                                                                  ;82EAD4;
     DEY                                                                  ;82EAD5;
     DEX                                                                  ;82EAD6;
     DEX                                                                  ;82EAD7;
@@ -12001,7 +12001,7 @@ Load_Level_Scroll_and_CRE_Data:
     JSL.L Decompression_HardcodedDestination                             ;82EAF5;
     dl $7EA000                                                           ;82EAF9;
 
-  + LDA.W $07C1                                                          ;82EAFC;
++   LDA.W $07C1                                                          ;82EAFC;
     STA.B $48                                                            ;82EAFF;
     LDA.W $07C0                                                          ;82EB01;
     STA.B $47                                                            ;82EB04;
@@ -12010,7 +12010,7 @@ Load_Level_Scroll_and_CRE_Data:
     BRA +                                                                ;82EB0D;
 
 
-.inCeres:
+  .inCeres:
     LDA.W $07C1                                                          ;82EB0F;
     STA.B $48                                                            ;82EB12;
     LDA.W $07C0                                                          ;82EB14;
@@ -12018,12 +12018,12 @@ Load_Level_Scroll_and_CRE_Data:
     JSL.L Decompression_HardcodedDestination                             ;82EB19;
     dl $7EA000                                                           ;82EB1D;
 
-  + LDX.W $07BB                                                          ;82EB20;
++   LDX.W $07BB                                                          ;82EB20;
     LDY.W $000E,X                                                        ;82EB23;
     BPL .presetScrolls                                                   ;82EB26;
     LDX.W #$0000                                                         ;82EB28;
 
-  - LDA.W $0000,Y                                                        ;82EB2B;
+-   LDA.W $0000,Y                                                        ;82EB2B;
     STA.L $7ECD20,X                                                      ;82EB2E;
     INY                                                                  ;82EB32;
     INY                                                                  ;82EB33;
@@ -12034,7 +12034,7 @@ Load_Level_Scroll_and_CRE_Data:
     BRA .return                                                          ;82EB3B;
 
 
-.presetScrolls:
+  .presetScrolls:
     STY.B $12                                                            ;82EB3D;
     SEP #$30                                                             ;82EB3F;
     LDA.W $07AB                                                          ;82EB41;
@@ -12044,16 +12044,16 @@ Load_Level_Scroll_and_CRE_Data:
     LDX.B #$00                                                           ;82EB49;
     LDY.B #$00                                                           ;82EB4B;
 
-.loop:
+  .loop:
     CPY.B $14                                                            ;82EB4D;
     BNE +                                                                ;82EB4F;
     LDA.B $12                                                            ;82EB51;
     INC A                                                                ;82EB53;
 
-  + PHY                                                                  ;82EB54;
++   PHY                                                                  ;82EB54;
     LDY.B #$00                                                           ;82EB55;
 
-  - STA.L $7ECD20,X                                                      ;82EB57;
+-   STA.L $7ECD20,X                                                      ;82EB57;
     INX                                                                  ;82EB5B;
     INY                                                                  ;82EB5C;
     CPY.W $07A9                                                          ;82EB5D;
@@ -12063,7 +12063,7 @@ Load_Level_Scroll_and_CRE_Data:
     CPY.W $07AB                                                          ;82EB64;
     BNE .loop                                                            ;82EB67;
 
-.return:
+  .return:
     REP #$30                                                             ;82EB69;
     RTL                                                                  ;82EB6B;
 
@@ -12077,7 +12077,7 @@ CreatePLMs_ExecuteDoorASM_RoomSetupASM_SetElevatorStatus:
     BEQ .noPLMs                                                          ;82EB77;
     TAX                                                                  ;82EB79;
 
-.loop:
+  .loop:
     LDA.W $0000,X                                                        ;82EB7A;
     BEQ .noPLMs                                                          ;82EB7D;
     JSL.L Spawn_Room_PLM                                                 ;82EB7F;
@@ -12088,7 +12088,7 @@ CreatePLMs_ExecuteDoorASM_RoomSetupASM_SetElevatorStatus:
     BRA .loop                                                            ;82EB89;
 
 
-.noPLMs:
+  .noPLMs:
     JSL.L Execute_Door_ASM                                               ;82EB8B;
     JSL.L Execute_Room_Setup_ASM                                         ;82EB8F;
     LDA.W $0E16                                                          ;82EB93;
@@ -12096,7 +12096,7 @@ CreatePLMs_ExecuteDoorASM_RoomSetupASM_SetElevatorStatus:
     LDA.W #$0002                                                         ;82EB98;
     STA.W $0E18                                                          ;82EB9B;
 
-.return:
+  .return:
     RTL                                                                  ;82EB9E;
 
 
@@ -12117,13 +12117,13 @@ GameState_2_GameOptionsMenu:
     BMI .return                                                          ;82EBB9;
     JSR.W Draw_GameOptionsMenu_BG1                                       ;82EBBB;
 
-.return:
+  .return:
     PLB                                                                  ;82EBBE;
     PLP                                                                  ;82EBBF;
     RTS                                                                  ;82EBC0;
 
 
-.pointers:
+  .pointers:
     dw GameOptionsMenu_0_FinishFadingOut                                 ;82EBC1;
     dw GameOptionsMenu_1_LoadingOptionsMenu                              ;82EBC3;
     dw GameOptionsMenu_2_FadingInOptionsMenu                             ;82EBC5;
@@ -12152,7 +12152,7 @@ GameOptionsMenu_0_FinishFadingOut:
     RTS                                                                  ;82EBF6;
 
 
-  + SEP #$20                                                             ;82EBF7;
++   SEP #$20                                                             ;82EBF7;
     LDA.B $51                                                            ;82EBF9;
     CMP.B #$0E                                                           ;82EBFB;
     BNE .return                                                          ;82EBFD;
@@ -12165,7 +12165,7 @@ GameOptionsMenu_0_FinishFadingOut:
     RTS                                                                  ;82EC0D;
 
 
-.return:
+  .return:
     REP #$20                                                             ;82EC0E;
     RTS                                                                  ;82EC10;
 
@@ -12204,7 +12204,7 @@ GameOptionsMenu_1_LoadingOptionsMenu:
     STZ.W $0DE0                                                          ;82EC54;
     LDX.W #$01FE                                                         ;82EC57;
 
-  - LDA.L Menu_Palettes,X                                                ;82EC5A;
+-   LDA.L Menu_Palettes,X                                                ;82EC5A;
     STA.L $7EC000,X                                                      ;82EC5E;
     DEX                                                                  ;82EC62;
     DEX                                                                  ;82EC63;
@@ -12241,7 +12241,7 @@ GameOptionsMenu_1_LoadingOptionsMenu:
     dl $7FE000                                                           ;82ECB8;
     LDX.W #$07FE                                                         ;82ECBB;
 
-  - LDA.L $7FC000,X                                                      ;82ECBE;
+-   LDA.L $7FC000,X                                                      ;82ECBE;
     STA.L $7E3000,X                                                      ;82ECC2;
     DEX                                                                  ;82ECC6;
     DEX                                                                  ;82ECC7;
@@ -12271,7 +12271,7 @@ GameOptionsMenu_2_FadingInOptionsMenu:
     RTS                                                                  ;82ECFB;
 
 
-.return:
+  .return:
     REP #$20                                                             ;82ECFC;
     RTS                                                                  ;82ECFE;
 
@@ -12307,7 +12307,7 @@ Set_GameOptionsMenu_TilePalettes:
     REP #$30                                                             ;82ED29;
     STA.B $12                                                            ;82ED2B;
 
-.loop:
+  .loop:
     LDA.L $7E3000,X                                                      ;82ED2D;
     AND.W #$E3FF                                                         ;82ED31;
     ORA.B $12                                                            ;82ED34;
@@ -12336,7 +12336,7 @@ GameOptionsMenu_3_OptionsMenu:
     BRA .checkB                                                          ;82ED5E;
 
 
-.checkDown:
+  .checkDown:
     LDA.B $8F                                                            ;82ED60;
     AND.W #$0400                                                         ;82ED62;
     BEQ .checkB                                                          ;82ED65;
@@ -12349,7 +12349,7 @@ GameOptionsMenu_3_OptionsMenu:
     BNE .checkB                                                          ;82ED78;
     STZ.W $099E                                                          ;82ED7A;
 
-.checkB:
+  .checkB:
     LDA.B $8F                                                            ;82ED7D;
     BIT.W #$8000                                                         ;82ED7F;
     BNE .cancel                                                          ;82ED82;
@@ -12358,7 +12358,7 @@ GameOptionsMenu_3_OptionsMenu:
     BIT.W #$1000                                                         ;82ED89;
     BEQ .return                                                          ;82ED8C;
 
-.actiate:
+  .actiate:
     LDA.W #$0038                                                         ;82ED8E;
     JSL.L QueueSound_Lib1_Max6                                           ;82ED91;
     LDA.W $099E                                                          ;82ED95;
@@ -12366,19 +12366,19 @@ GameOptionsMenu_3_OptionsMenu:
     TAX                                                                  ;82ED99;
     JSR.W (.pointers,X)                                                  ;82ED9A;
 
-.return:
+  .return:
     PLP                                                                  ;82ED9D;
     RTS                                                                  ;82ED9E;
 
 
-.cancel:
+  .cancel:
     LDA.W #$000B                                                         ;82ED9F;
     STA.W $0DE2                                                          ;82EDA2;
     PLP                                                                  ;82EDA5;
     RTS                                                                  ;82EDA6;
 
 
-.pointers:
+  .pointers:
     dw GameOptionsMenu_StartGame                                         ;82EDA7; Start game
     dw GameOptionsMenu_OptionsMenu_ToggleLanguageText                    ;82EDA9; English text
     dw GameOptionsMenu_OptionsMenu_ToggleLanguageText                    ;82EDAB; Japanese Text
@@ -12392,18 +12392,18 @@ GameOptionsMenu_StartGame:
     BIT.W #$0020                                                         ;82EDB8;
     BEQ .startGame                                                       ;82EDBB;
 
-.debug:
+  .debug:
     LDA.L $7ED914                                                        ;82EDBD;
     CMP.W #$0005                                                         ;82EDC1;
     BNE .fadeScreen                                                      ;82EDC4;
 
-.startGame:
+  .startGame:
     LDA.W #$0004                                                         ;82EDC6;
     STA.W $0DE2                                                          ;82EDC9;
     RTS                                                                  ;82EDCC;
 
 
-.fadeScreen:
+  .fadeScreen:
     STZ.W $0723                                                          ;82EDCD;
     STZ.W $0725                                                          ;82EDD0;
     LDA.W #$000C                                                         ;82EDD3;
@@ -12419,7 +12419,7 @@ GameOptionsMenu_OptionsMenu_ToggleLanguageText:
     BRA Set_Language_Text_Option_Highlight                               ;82EDE5;
 
 
-.japaneseText:
+  .japaneseText:
     LDA.W #$0001                                                         ;82EDE7;
     STA.W $09E2                                                          ;82EDEA;
 
@@ -12445,7 +12445,7 @@ Set_Language_Text_Option_Highlight:
     BRA .return                                                          ;82EE22;
 
 
-.japaneseText:
+  .japaneseText:
     LDX.W #$0288                                                         ;82EE24;
     LDY.W #$0018                                                         ;82EE27;
     LDA.W #$0400                                                         ;82EE2A;
@@ -12463,7 +12463,7 @@ Set_Language_Text_Option_Highlight:
     LDA.W #$0000                                                         ;82EE4E;
     JSR.W Set_GameOptionsMenu_TilePalettes                               ;82EE51;
 
-.return:
+  .return:
     RTS                                                                  ;82EE54;
 
 
@@ -12496,7 +12496,7 @@ GameOptionsMenu_B_TransitionBackToFileSelect:
     RTS                                                                  ;82EE8E;
 
 
-.return:
+  .return:
     REP #$20                                                             ;82EE8F;
     RTS                                                                  ;82EE91;
 
@@ -12516,7 +12516,7 @@ GameOptionsMenu_C_FadingOutOptionsMenuToStartGame:
     RTS                                                                  ;82EEB0;
 
 
-.return:
+  .return:
     REP #$20                                                             ;82EEB1;
     RTS                                                                  ;82EEB3;
 
@@ -12529,7 +12529,7 @@ GameOptionsMenu_4_StartGame:
     BIT.W #$0020                                                         ;82EEBE;
     BEQ .debug                                                           ;82EEC1;
 
-.checkLoadingState:
+  .checkLoadingState:
     LDA.L $7ED914                                                        ;82EEC3;
     BEQ .intro                                                           ;82EEC7;
     STA.W $0998                                                          ;82EEC9;
@@ -12540,7 +12540,7 @@ GameOptionsMenu_4_StartGame:
     BRA .cutscene                                                        ;82EED7;
 
 
-.intro:
+  .intro:
     LDA.W #$001E                                                         ;82EED9;
     STA.W $0998                                                          ;82EEDC;
     LDA.W #CinematicFunction_Intro_Initial                               ;82EEDF;
@@ -12551,13 +12551,13 @@ GameOptionsMenu_4_StartGame:
     RTS                                                                  ;82EEEE;
 
 
-.cutscene:
+  .cutscene:
     STZ.W $099E                                                          ;82EEEF;
     STZ.W $0DE2                                                          ;82EEF2;
     RTS                                                                  ;82EEF5;
 
 
-.debug:
+  .debug:
     LDA.L $7ED914                                                        ;82EEF6;
     CMP.W #$0005                                                         ;82EEFA;
     BEQ .fileSelectMap                                                   ;82EEFD;
@@ -12569,7 +12569,7 @@ GameOptionsMenu_4_StartGame:
     RTS                                                                  ;82EF10;
 
 
-.fileSelectMap:
+  .fileSelectMap:
     LDA.W #$0005                                                         ;82EF11;
     STA.W $0998                                                          ;82EF14;
     RTS                                                                  ;82EF17;
@@ -12585,7 +12585,7 @@ GameOptionsMenu_5_DissolveOutScreen:
     ADC.B #$10                                                           ;82EF25;
     STA.B $57                                                            ;82EF27;
 
-.notFinishedFadingOut:
+  .notFinishedFadingOut:
     LDA.B $51                                                            ;82EF29;
     CMP.B #$80                                                           ;82EF2B;
     BEQ .finishedFadingOut                                               ;82EF2D;
@@ -12593,7 +12593,7 @@ GameOptionsMenu_5_DissolveOutScreen:
     RTS                                                                  ;82EF31;
 
 
-.finishedFadingOut:
+  .finishedFadingOut:
     JSL.L EnableNMI                                                      ;82EF32;
     REP #$20                                                             ;82EF36;
     STZ.W $0723                                                          ;82EF38;
@@ -12608,7 +12608,7 @@ GameOptionsMenu_5_DissolveOutScreen:
     BNE .japaneseControllerSettings                                      ;82EF50;
     LDX.W #$07FE                                                         ;82EF52;
 
-.englishCtrlLoop:
+  .englishCtrlLoop:
     LDA.L $7FC800,X                                                      ;82EF55;
     STA.L $7E3000,X                                                      ;82EF59;
     DEX                                                                  ;82EF5D;
@@ -12617,17 +12617,17 @@ GameOptionsMenu_5_DissolveOutScreen:
     BRA .continueControllerSettingsSettings                              ;82EF61;
 
 
-.japaneseControllerSettings:
+  .japaneseControllerSettings:
     LDX.W #$07FE                                                         ;82EF63;
 
-.japaneseCtrlLoop:
+  .japaneseCtrlLoop:
     LDA.L $7FD000,X                                                      ;82EF66;
     STA.L $7E3000,X                                                      ;82EF6A;
     DEX                                                                  ;82EF6E;
     DEX                                                                  ;82EF6F;
     BPL .japaneseCtrlLoop                                                ;82EF70;
 
-.continueControllerSettingsSettings:
+  .continueControllerSettingsSettings:
     LDY.W #GameOptionsMenu_Objects_CONTROLLER_SETTING_MODE_Border        ;82EF72;
     JSR.W Spawn_GameOptionsMenu_Object                                   ;82EF75;
     JSR.W GameOptionsMenu_ControllerBindings                             ;82EF78;
@@ -12635,16 +12635,16 @@ GameOptionsMenu_5_DissolveOutScreen:
     RTS                                                                  ;82EF7E;
 
 
-.gotoOptionsMenu:
+  .gotoOptionsMenu:
     BRA .optionsMenu                                                     ;82EF7F;
 
 
-.specialSubmenu:
+  .specialSubmenu:
     LDA.W $09E2                                                          ;82EF81;
     BNE .japaneseSettings                                                ;82EF84;
     LDX.W #$07FE                                                         ;82EF86;
 
-.englishSettingsLoop:
+  .englishSettingsLoop:
     LDA.L $7FD800,X                                                      ;82EF89;
     STA.L $7E3000,X                                                      ;82EF8D;
     DEX                                                                  ;82EF91;
@@ -12653,17 +12653,17 @@ GameOptionsMenu_5_DissolveOutScreen:
     BRA .continueSpecial                                                 ;82EF95;
 
 
-.japaneseSettings:
+  .japaneseSettings:
     LDX.W #$07FE                                                         ;82EF97;
 
-.japaneseSettingsLoop:
+  .japaneseSettingsLoop:
     LDA.L $7FE000,X                                                      ;82EF9A;
     STA.L $7E3000,X                                                      ;82EF9E;
     DEX                                                                  ;82EFA2;
     DEX                                                                  ;82EFA3;
     BPL .japaneseSettingsLoop                                            ;82EFA4;
 
-.continueSpecial:
+  .continueSpecial:
     STZ.W $099E                                                          ;82EFA6;
     JSR.W Set_SpecialSetting_Highlights                                  ;82EFA9;
     LDA.W #$0001                                                         ;82EFAC;
@@ -12676,10 +12676,10 @@ GameOptionsMenu_5_DissolveOutScreen:
     RTS                                                                  ;82EFC1;
 
 
-.optionsMenu:
+  .optionsMenu:
     LDX.W #$07FE                                                         ;82EFC2;
 
-.optionsMenuLoop:
+  .optionsMenuLoop:
     LDA.L $7FC000,X                                                      ;82EFC5;
     STA.L $7E3000,X                                                      ;82EFC9;
     DEX                                                                  ;82EFCD;
@@ -12701,7 +12701,7 @@ GameOptionsMenu_6_DissolveInScreen:
     SBC.B #$10                                                           ;82EFE8;
     STA.B $57                                                            ;82EFEA;
 
-.brightness:
+  .brightness:
     LDA.B $51                                                            ;82EFEC;
     CMP.B #$0F                                                           ;82EFEE;
     BNE .return                                                          ;82EFF0;
@@ -12719,20 +12719,20 @@ GameOptionsMenu_6_DissolveInScreen:
     RTS                                                                  ;82F00F;
 
 
-.specialSubmenu:
+  .specialSubmenu:
     LDA.W #$0008                                                         ;82F010;
     STA.W $0DE2                                                          ;82F013;
     STZ.W $099E                                                          ;82F016;
     RTS                                                                  ;82F019;
 
 
-.OptionsMenu:
+  .OptionsMenu:
     LDA.W #$0003                                                         ;82F01A;
     STA.W $0DE2                                                          ;82F01D;
     RTS                                                                  ;82F020;
 
 
-.return:
+  .return:
     REP #$20                                                             ;82F021;
     RTS                                                                  ;82F023;
 
@@ -12750,7 +12750,7 @@ GameOptionsMenu_8_SpecialSettings:
     BRA .checkB                                                          ;82F03D;
 
 
-.checkDown:
+  .checkDown:
     LDA.B $8F                                                            ;82F03F;
     AND.W #$0400                                                         ;82F041;
     BEQ .checkB                                                          ;82F044;
@@ -12763,7 +12763,7 @@ GameOptionsMenu_8_SpecialSettings:
     BNE .checkB                                                          ;82F057;
     STZ.W $099E                                                          ;82F059;
 
-.checkB:
+  .checkB:
     LDA.B $8F                                                            ;82F05C;
     BIT.W #$8000                                                         ;82F05E;
     BEQ .checkActivate                                                   ;82F061;
@@ -12774,7 +12774,7 @@ GameOptionsMenu_8_SpecialSettings:
     RTS                                                                  ;82F070;
 
 
-.checkActivate:
+  .checkActivate:
     LDA.B $8F                                                            ;82F071;
     BIT.W #$1380                                                         ;82F073;
     BEQ .return                                                          ;82F076;
@@ -12785,11 +12785,11 @@ GameOptionsMenu_8_SpecialSettings:
     TAX                                                                  ;82F083;
     JSR.W (.pointers,X)                                                  ;82F084;
 
-.return:
+  .return:
     RTS                                                                  ;82F087;
 
 
-.pointers:
+  .pointers:
     dw GameOptions_SpecialSettings_ToggleSetting                         ;82F088;
     dw GameOptions_SpecialSettings_ToggleSetting                         ;82F08A;
     dw GameOptions_SpecialSettings_End                                   ;82F08C;
@@ -12807,11 +12807,11 @@ GameOptions_SpecialSettings_ToggleSetting:
     BRA .highlight                                                       ;82F0A2;
 
 
-.toggleOn:
+  .toggleOn:
     LDA.W #$0001                                                         ;82F0A4;
     STA.W $0000,X                                                        ;82F0A7;
 
-.highlight:
+  .highlight:
     JSR.W Set_SpecialSetting_Highlights                                  ;82F0AA;
     RTS                                                                  ;82F0AD;
 
@@ -12867,7 +12867,7 @@ Set_SpecialSetting_Highlights:
     RTS                                                                  ;82F107;
 
 
-.settingIsOn:
+  .settingIsOn:
     LDA.W $099E                                                          ;82F108;
     ASL A                                                                ;82F10B;
     ASL A                                                                ;82F10C;
@@ -12901,21 +12901,21 @@ Set_SpecialSetting_Highlights:
     RTS                                                                  ;82F148;
 
 
-.iconCancelManualRow0:
+  .iconCancelManualRow0:
     dw $01E0                                                             ;82F149;
-.iconCancelManualRow1:
+  .iconCancelManualRow1:
     dw $0220                                                             ;82F14B;
-.moonwalkOnRow0:
+  .moonwalkOnRow0:
     dw $0360                                                             ;82F14D;
-.moonwalkOnRow1:
+  .moonwalkOnRow1:
     dw $03A0                                                             ;82F14F;
-.iconCancelAutoRow0:
+  .iconCancelAutoRow0:
     dw $01EE                                                             ;82F151;
-.iconCancelAutoRow1:
+  .iconCancelAutoRow1:
     dw $022E                                                             ;82F153;
-.moonwalkOffRow0:
+  .moonwalkOffRow0:
     dw $036E                                                             ;82F155;
-.moonwalkOffRow1:
+  .moonwalkOffRow1:
     dw $03AE                                                             ;82F157;
 
 GameOptionsMenu_7_ControllerSettings:
@@ -12933,17 +12933,17 @@ GameOptionsMenu_7_ControllerSettings:
     RTS                                                                  ;82F175;
 
 
-.gotoScrollDown:
+  .gotoScrollDown:
     LDA.W #$0008                                                         ;82F176;
     STA.W $099E                                                          ;82F179;
     BRA .scrollDown                                                      ;82F17C;
 
 
-.return:
+  .return:
     RTS                                                                  ;82F17E;
 
 
-.upEnd:
+  .upEnd:
     LDA.B $8F                                                            ;82F17F;
     AND.W #$0400                                                         ;82F181;
     BEQ .downEnd                                                         ;82F184;
@@ -12960,19 +12960,19 @@ GameOptionsMenu_7_ControllerSettings:
     BRA .scrollUp                                                        ;82F1A1;
 
 
-.scrollDown:
+  .scrollDown:
     LDA.W #$0009                                                         ;82F1A3;
     STA.W $0DE2                                                          ;82F1A6;
     RTS                                                                  ;82F1A9;
 
 
-.scrollUp:
+  .scrollUp:
     LDA.W #$000A                                                         ;82F1AA;
     STA.W $0DE2                                                          ;82F1AD;
     RTS                                                                  ;82F1B0;
 
 
-.downEnd:
+  .downEnd:
     LDA.B $8F                                                            ;82F1B1;
     BEQ .misplacedCode                                                   ;82F1B3;
     LDA.W #$0038                                                         ;82F1B5;
@@ -12984,12 +12984,12 @@ GameOptionsMenu_7_ControllerSettings:
     RTS                                                                  ;82F1C4;
 
 
-.misplacedCode:
+  .misplacedCode:
     LDA.B $91                                                            ;82F1C5;
     BRA .backOnTrack                                                     ;82F1C7;
 
 
-.pointers:
+  .pointers:
     dw GameOptions_ControllerSettings_SetBinding                         ;82F1C9;
     dw GameOptions_ControllerSettings_SetBinding                         ;82F1CB;
     dw GameOptions_ControllerSettings_SetBinding                         ;82F1CD;
@@ -13000,7 +13000,7 @@ GameOptionsMenu_7_ControllerSettings:
     dw GameOptions_ControllerSettings_End                                ;82F1D7;
     dw GameOptions_ControllerSettings_ResetToDefault                     ;82F1D9;
 
-.backOnTrack:
+  .backOnTrack:
     TAY                                                                  ;82F1DB;
     BEQ .otherReturn                                                     ;82F1DC;
     LDA.W $099E                                                          ;82F1DE;
@@ -13020,14 +13020,14 @@ GameOptionsMenu_7_ControllerSettings:
     RTS                                                                  ;82F1FF;
 
 
-.debugInvulOff:
+  .debugInvulOff:
     STZ.W $0DE0                                                          ;82F200;
 
-.otherReturn:
+  .otherReturn:
     RTS                                                                  ;82F203;
 
 
-.inputs:                                                                 ;82F204;
+  .inputs:                                                                 ;82F204;
     dw $0020,$0020,$0020,$0020 ; L
     dw $0010,$0010,$0010,$0010,$0010,$0010 ; R
     dw $4000 ; Y
@@ -13041,7 +13041,7 @@ GameOptions_ControllerSettings_ResetToDefault:
     RTS                                                                  ;82F22B;
 
 
-.reset:
+  .reset:
     LDA.W #$0040                                                         ;82F22C;
     STA.W $09B2                                                          ;82F22F;
     LDA.W #$0080                                                         ;82F232;
@@ -13068,13 +13068,13 @@ GameOptions_ControllerSettings_End:
     RTS                                                                  ;82F264;
 
 
-.end:
+  .end:
     JSR.W Save_GameOptionsMenu_ControllerBindings                        ;82F265;
     BCS .return                                                          ;82F268;
     STZ.W $099E                                                          ;82F26A;
     JSR.W Start_GameOptionsMenu_DissolveTransition                       ;82F26D;
 
-.return:
+  .return:
     RTS                                                                  ;82F270;
 
 
@@ -13088,7 +13088,7 @@ GameOptionsMenu_9_ScrollControllerSettingsDown:
     LDA.W #$0007                                                         ;82F27E;
     STA.W $0DE2                                                          ;82F281;
 
-.return:
+  .return:
     RTS                                                                  ;82F284;
 
 
@@ -13126,7 +13126,7 @@ PreInstruction_MenuSelectionMissile:
     RTS                                                                  ;82F2BD;
 
 
-  + LDA.W $0DE2                                                          ;82F2BE;
++   LDA.W $0DE2                                                          ;82F2BE;
     ASL A                                                                ;82F2C1;
     TAY                                                                  ;82F2C2;
     LDA.W .pointers,Y                                                    ;82F2C3;
@@ -13145,14 +13145,14 @@ PreInstruction_MenuSelectionMissile:
     RTS                                                                  ;82F2DF;
 
 
-  + LDA.W #$0180                                                         ;82F2E0;
++   LDA.W #$0180                                                         ;82F2E0;
     STA.W $1AAD,X                                                        ;82F2E3;
     LDA.W #$0010                                                         ;82F2E6;
     STA.W $1ABD,X                                                        ;82F2E9;
     RTS                                                                  ;82F2EC;
 
 
-.pointers:
+  .pointers:
     dw $0000,$0000                                                       ;82F2ED; 0 - Finish fading out
     dw .OptionsMenu_X                                                    ;82F2F1; 2 - Fading in options menu
     dw .OptionsMenu_X                                                    ;82F2F3; 3 - Options menu
@@ -13163,18 +13163,18 @@ PreInstruction_MenuSelectionMissile:
     dw .OptionsMenu_X                                                    ;82F303; B - Transition back to file selection
     dw $0000                                                             ;82F305; C - Fading out options menu to start game
 
-.OptionsMenu_X:
+  .OptionsMenu_X:
     dw $0018                                                             ;82F307;
-.OptionsMenu_Y:                                                          ;82F309;
+  .OptionsMenu_Y:                                                          ;82F309;
     dw       $0038
     dw $0018,$0058
     dw $0018,$0070
     dw $0018,$0090
     dw $0018,$00B0
 
-.ControllerSettings_X:
+  .ControllerSettings_X:
     dw $0028                                                             ;82F31B;
-.ControllerSettings_Y:                                                   ;82F31D;
+  .ControllerSettings_Y:                                                   ;82F31D;
     dw       $0030
     dw $0028,$0048
     dw $0028,$0060
@@ -13185,12 +13185,12 @@ PreInstruction_MenuSelectionMissile:
     dw $0028,$00B8
     dw $0028,$00D0
 
-.SpecialSettings_X:
+  .SpecialSettings_X:
     dw $0010                                                             ;82F33F;
-.SpecialSettings_Y:                                                      ;82F341;
+  .SpecialSettings_Y:                                                      ;82F341;
     dw       $0040
     dw $0010,$0070
-    dw $0010,$00A0                                     
+    dw $0010,$00A0
 
 Setup_BorderAround_OPTION_MODE:
     LDA.W #$007C                                                         ;82F34B;
@@ -13237,14 +13237,14 @@ PreInstruction_BorderAround_OPTIONS_MODE:
     RTS                                                                  ;82F390;
 
 
-.delete:
+  .delete:
     REP #$20                                                             ;82F391;
     LDA.W #$0001                                                         ;82F393;
     STA.W $1B1D,X                                                        ;82F396;
     LDA.W #InstList_GameOptionsMenu_Delete                               ;82F399;
     STA.W $1AFD,X                                                        ;82F39C;
 
-.return:
+  .return:
     RTS                                                                  ;82F39F;
 
 
@@ -13260,7 +13260,7 @@ PreInstruction_BorderAround_CONTRLLER_SETTING_MODE:
     RTS                                                                  ;82F3B2;
 
 
-.delete:
+  .delete:
     REP #$20                                                             ;82F3B3;
     LDA.W #$0001                                                         ;82F3B5;
     STA.W $1B1D,X                                                        ;82F3B8;
@@ -13269,7 +13269,7 @@ PreInstruction_BorderAround_CONTRLLER_SETTING_MODE:
     RTS                                                                  ;82F3C1;
 
 
-.dissolveInEnd:
+  .dissolveInEnd:
     CMP.W #$0009                                                         ;82F3C2;
     BNE .checkScrollingUp                                                ;82F3C5;
     LDA.W $1ABD,X                                                        ;82F3C7;
@@ -13279,7 +13279,7 @@ PreInstruction_BorderAround_CONTRLLER_SETTING_MODE:
     RTS                                                                  ;82F3D1;
 
 
-.checkScrollingUp:
+  .checkScrollingUp:
     CMP.W #$000A                                                         ;82F3D2;
     BNE .return                                                          ;82F3D5;
     LDA.W $1ABD,X                                                        ;82F3D7;
@@ -13287,7 +13287,7 @@ PreInstruction_BorderAround_CONTRLLER_SETTING_MODE:
     ADC.W #$0002                                                         ;82F3DB;
     STA.W $1ABD,X                                                        ;82F3DE;
 
-.return:
+  .return:
     RTS                                                                  ;82F3E1;
 
 
@@ -13303,14 +13303,14 @@ PreInstruction_BorderAround_SPECIAL_SETTING_MODE:
     RTS                                                                  ;82F3F4;
 
 
-.startedFadingIn:
+  .startedFadingIn:
     REP #$20                                                             ;82F3F5;
     LDA.W #$0001                                                         ;82F3F7;
     STA.W $1B1D,X                                                        ;82F3FA;
     LDA.W #InstList_GameOptionsMenu_Delete                               ;82F3FD;
     STA.W $1AFD,X                                                        ;82F400;
 
-.return:
+  .return:
     RTS                                                                  ;82F403;
 
 
@@ -13324,7 +13324,7 @@ UNUSED_PreInstruction_82F404:
     LDA.W #InstList_GameOptionsMenu_Delete                               ;82F412;
     STA.W $1AFD,X                                                        ;82F415;
 
-.return:
+  .return:
     RTS                                                                  ;82F418;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -13350,7 +13350,7 @@ PreInstruction_FileSelectMenu_SamusHelmet:
     RTS                                                                  ;82F440;
 
 
-.extraRTS:
+  .extraRTS:
     RTS                                                                  ;82F441;
 
 
@@ -13452,7 +13452,7 @@ GameOptionsMenu_Objects_SAMUS_DATA_Border:
 GameOptionsMenu_ControllerBindings:
     LDX.W #$0000                                                         ;82F4DC;
 
-.loop:
+  .loop:
     LDA.W Configurable_Controller_Binding_RAM_Addresses,X                ;82F4DF;
     TAY                                                                  ;82F4E2;
     LDA.W $0000,Y                                                        ;82F4E3;
@@ -13471,47 +13471,47 @@ GameOptionsMenu_ControllerBindings:
     BIT.W #$0010                                                         ;82F504;
     BNE .R                                                               ;82F507;
 
-.X:
+  .X:
     LDA.W #$0000                                                         ;82F509;
     STA.W $1B3D,X                                                        ;82F50C;
     BRA .next                                                            ;82F50F;
 
 
-.A:
+  .A:
     LDA.W #$0001                                                         ;82F511;
     STA.W $1B3D,X                                                        ;82F514;
     BRA .next                                                            ;82F517;
 
 
-.B:
+  .B:
     LDA.W #$0002                                                         ;82F519;
     STA.W $1B3D,X                                                        ;82F51C;
     BRA .next                                                            ;82F51F;
 
 
-.Select:
+  .Select:
     LDA.W #$0003                                                         ;82F521;
     STA.W $1B3D,X                                                        ;82F524;
     BRA .next                                                            ;82F527;
 
 
-.Y:
+  .Y:
     LDA.W #$0004                                                         ;82F529;
     STA.W $1B3D,X                                                        ;82F52C;
     BRA .next                                                            ;82F52F;
 
 
-.L:
+  .L:
     LDA.W #$0005                                                         ;82F531;
     STA.W $1B3D,X                                                        ;82F534;
     BRA .next                                                            ;82F537;
 
 
-.R:
+  .R:
     LDA.W #$0006                                                         ;82F539;
     STA.W $1B3D,X                                                        ;82F53C;
 
-.next:
+  .next:
     INX                                                                  ;82F53F;
     INX                                                                  ;82F540;
     CPX.W #$000E                                                         ;82F541;
@@ -13519,7 +13519,7 @@ GameOptionsMenu_ControllerBindings:
     JMP.W .loop                                                          ;82F546;
 
 
-.return:
+  .return:
     RTS                                                                  ;82F549;
 
 
@@ -13535,13 +13535,13 @@ Configurable_Controller_Binding_RAM_Addresses:                           ;82F54A
 Save_GameOptionsMenu_ControllerBindings:
     LDX.W #$0000                                                         ;82F558;
 
-.loop:
+  .loop:
     PHX                                                                  ;82F55B;
     LDA.W Configurable_Controller_Binding_RAM_Addresses,X                ;82F55C;
     TAY                                                                  ;82F55F;
     LDA.W $1B3D,X                                                        ;82F560;
 
-.L:
+  .L:
     ASL A                                                                ;82F563;
     TAX                                                                  ;82F564;
     LDA.W Controller_Input_Bitmasks,X                                    ;82F565;
@@ -13569,7 +13569,7 @@ Controller_Input_Bitmasks:
 Draw_GameOptionsMenu_ControllerBindings:
     LDX.W #$0000                                                         ;82F587;
 
-.loop:
+  .loop:
     PHX                                                                  ;82F58A;
     LDA.W $1B3D,X                                                        ;82F58B;
     ASL A                                                                ;82F58E;
@@ -13613,7 +13613,7 @@ Draw_GameOptionsMenu_ControllerBindings:
     LDA.W ButtonTilemaps_OFF+$A                                          ;82F5FA;
     STA.L $7E3572                                                        ;82F5FD;
 
-.shoulderButton:
+  .shoulderButton:
     LDA.W $1B49                                                          ;82F601;
     CMP.W #$0005                                                         ;82F604;
     BEQ .return                                                          ;82F607;
@@ -13632,7 +13632,7 @@ Draw_GameOptionsMenu_ControllerBindings:
     LDA.W ButtonTilemaps_OFF+$A                                          ;82F631;
     STA.L $7E3632                                                        ;82F634;
 
-.return:
+  .return:
     RTS                                                                  ;82F638;
 
 
@@ -13652,31 +13652,31 @@ ControllerButton_TilemapPointers:
 
 ButtonTilemaps_X:                                                        ;82F659;
     dw $0093,$C0A3,$000F
-    dw $00A3,$C093,$000F                               
+    dw $00A3,$C093,$000F
 
 ButtonTilemaps_A:                                                        ;82F665;
     dw $0090,$4090,$000F
-    dw $00A0,$40A0,$000F                               
+    dw $00A0,$40A0,$000F
 
 ButtonTilemaps_B:                                                        ;82F671;
     dw $0091,$0092,$000F
-    dw $00A1,$00A2,$000F                               
+    dw $00A1,$00A2,$000F
 
 ButtonTilemaps_Select:                                                   ;82F67D;
     dw $0095,$0096,$0097
-    dw $00A5,$00A6,$00A7                               
+    dw $00A5,$00A6,$00A7
 
 ButtonTilemaps_Y:                                                        ;82F689;
     dw $0094,$4094,$000F
-    dw $00A4,$40A4,$000F                               
+    dw $00A4,$40A4,$000F
 
 ButtonTilemaps_L:                                                        ;82F695;
     dw $009A,$009B,$409A
-    dw $809A,$00AB,$C09A                               
+    dw $809A,$00AB,$C09A
 
 ButtonTilemaps_R:                                                        ;82F6A1;
     dw $009A,$009C,$409A
-    dw $809A,$00AC,$C09A                               
+    dw $809A,$00AC,$C09A
 
 ButtonTilemaps_OFF:                                                      ;82F6AD;
     dw $0000,$000E,$000E
@@ -13686,7 +13686,7 @@ GameOptions_ControllerSettings_SetBinding:
     LDX.W #$000C                                                         ;82F6B9;
     LDA.B $8F                                                            ;82F6BC;
 
-.loopInput:
+  .loopInput:
     BIT.W Controller_Input_Bitmasks,X                                    ;82F6BE;
     BNE +                                                                ;82F6C1;
     DEX                                                                  ;82F6C3;
@@ -13695,7 +13695,7 @@ GameOptions_ControllerSettings_SetBinding:
     RTS                                                                  ;82F6C7;
 
 
-  + TXA                                                                  ;82F6C8;
++   TXA                                                                  ;82F6C8;
     LSR A                                                                ;82F6C9;
     STA.B $12                                                            ;82F6CA;
     LDA.W $099E                                                          ;82F6CC;
@@ -13706,10 +13706,10 @@ GameOptions_ControllerSettings_SetBinding:
     BMI +                                                                ;82F6D7;
     LDA.W #$0000                                                         ;82F6D9;
 
-  + TAY                                                                  ;82F6DC;
++   TAY                                                                  ;82F6DC;
     LDX.W #$0005                                                         ;82F6DD;
 
-.loopFindExisting:
+  .loopFindExisting:
     LDA.W $1B3D,Y                                                        ;82F6E0;
     CMP.B $12                                                            ;82F6E3;
     BEQ .found                                                           ;82F6E5;
@@ -13719,11 +13719,11 @@ GameOptions_ControllerSettings_SetBinding:
     BMI .next                                                            ;82F6EC;
     LDY.W #$0000                                                         ;82F6EE;
 
-.next:
+  .next:
     DEX                                                                  ;82F6F1;
     BPL .loopFindExisting                                                ;82F6F2;
 
-.found:
+  .found:
     PHY                                                                  ;82F6F4;
     LDA.W $099E                                                          ;82F6F5;
     ASL A                                                                ;82F6F8;

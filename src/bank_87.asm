@@ -26,7 +26,7 @@ Clear_AnimatedTilesObjects:
     PHX                                                                  ;878019;
     LDX.W #$000A                                                         ;87801A;
 
-.loop:
+  .loop:
     STZ.W $1EF5,X                                                        ;87801D;
     DEX                                                                  ;878020;
     DEX                                                                  ;878021;
@@ -44,7 +44,7 @@ Spawn_AnimatedTilesObject:
     PLB                                                                  ;87802B;
     LDX.W #$000A                                                         ;87802C;
 
-.loop:
+  .loop:
     LDA.W $1EF5,X                                                        ;87802F;
     BEQ .found                                                           ;878032;
     DEX                                                                  ;878034;
@@ -57,7 +57,7 @@ Spawn_AnimatedTilesObject:
     RTL                                                                  ;87803C;
 
 
-.found:
+  .found:
     TYA                                                                  ;87803D;
     STA.W $1EF5,X                                                        ;87803E;
     STZ.W $1F01,X                                                        ;878041;
@@ -86,19 +86,19 @@ AnimatedTilesObject_Handler:
     BPL .return                                                          ;87806B;
     LDX.W #$000A                                                         ;87806D;
 
-.loop:
+  .loop:
     STX.W $1EF3                                                          ;878070;
     LDA.W $1EF5,X                                                        ;878073;
     BEQ .next                                                            ;878076;
     JSR.W Process_AnimatedTilesObject                                    ;878078;
     LDX.W $1EF3                                                          ;87807B;
 
-.next:
+  .next:
     DEX                                                                  ;87807E;
     DEX                                                                  ;87807F;
     BPL .loop                                                            ;878080;
 
-.return:
+  .return:
     PLB                                                                  ;878082;
     PLP                                                                  ;878083;
     RTL                                                                  ;878084;
@@ -110,7 +110,7 @@ Process_AnimatedTilesObject:
     BNE .return                                                          ;87808B;
     LDY.W $1F0D,X                                                        ;87808D;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;878090;
     BPL .notInstruction                                                  ;878093;
     STA.W $1F49                                                          ;878095;
@@ -120,7 +120,7 @@ Process_AnimatedTilesObject:
     JMP.W ($1F49)                                                        ;87809D;
 
 
-.notInstruction:
+  .notInstruction:
     STA.W $1F19,X                                                        ;8780A0;
     LDA.W $0002,Y                                                        ;8780A3;
     STA.W $1F25,X                                                        ;8780A6;
@@ -129,7 +129,7 @@ Process_AnimatedTilesObject:
     ADC.W #$0004                                                         ;8780AB;
     STA.W $1F0D,X                                                        ;8780AE;
 
-.return:
+  .return:
     RTS                                                                  ;8780B1;
 
 
@@ -156,10 +156,10 @@ UNUSED_Instruction_AnimatedTilesObject_GotoYPlusY_8780BC:
     BRA +                                                                ;8780C9;
 
 
-.highByte:
+  .highByte:
     ORA.W #$FF00                                                         ;8780CB;
 
-  + CLC                                                                  ;8780CE;
++   CLC                                                                  ;8780CE;
     ADC.W $1F49                                                          ;8780CF;
     TAY                                                                  ;8780D2;
     RTS                                                                  ;8780D3;
@@ -234,7 +234,7 @@ UNUSED_Inst_AnimTilesObject_GotoYIfBossBitsInYSet_878120:
     JMP.W Instruction_AnimatedTilesObject_GotoY                          ;87812D;
 
 
-.notSet:
+  .notSet:
     INY                                                                  ;878130;
     INY                                                                  ;878131;
     RTS                                                                  ;878132;
@@ -258,7 +258,7 @@ Instruction_AnimatedTilesObject_GotoYIfEventYSet:
     JMP.W Instruction_AnimatedTilesObject_GotoY                          ;87814A;
 
 
-.notSet:
+  .notSet:
     INY                                                                  ;87814D;
     INY                                                                  ;87814E;
     RTS                                                                  ;87814F;
@@ -326,7 +326,7 @@ Instruction_AnimatedTilesObject_WaitUntilAreaBossIsDead:
     LDA.W #$0001                                                         ;8781C4;
     STA.W $1F19,X                                                        ;8781C7;
 
-.return:
+  .return:
     RTS                                                                  ;8781CA;
 
 
@@ -505,7 +505,7 @@ Instruction_AnimTilesObject_GotoYIfAnyBossBitsYSetForAreaY:
     JMP.W Instruction_AnimatedTilesObject_GotoY                          ;87831A;
 
 
-.notSet:
+  .notSet:
     INY                                                                  ;87831D;
     INY                                                                  ;87831E;
     RTS                                                                  ;87831F;
@@ -539,7 +539,7 @@ Instruction_AnimatedTilesObject_GotoYIfTourianStatueBusy:
     JMP.W Instruction_AnimatedTilesObject_GotoY                          ;878343;
 
 
-.notBusy:
+  .notBusy:
     INY                                                                  ;878346;
     INY                                                                  ;878347;
     RTS                                                                  ;878348;
@@ -591,7 +591,7 @@ Instruction_AnimatedTilesObject_Write8ColorsOfTargetPaletteD:
     LDX.W $0000,Y                                                        ;878381;
     LDY.W #$0000                                                         ;878384;
 
-.loop:
+  .loop:
     LDA.W .palleteData,Y                                                 ;878387;
     STA.L $7EC200,X                                                      ;87838A;
     INX                                                                  ;87838E;
@@ -607,7 +607,7 @@ Instruction_AnimatedTilesObject_Write8ColorsOfTargetPaletteD:
     RTS                                                                  ;87839B;
 
 
-.palleteData:
+  .palleteData:
     dw $3800,$7F58,$6ED5,$5A71,$49EE,$356A,$24E7,$1083                   ;87839C;
 
 InstList_AnimatedTilesObject_TourianStatuePhantoon:

@@ -21,13 +21,13 @@ AnimateSamus:
     BEQ +                                                                ;908025;
     BPL .return                                                          ;908027;
 
-  + LDA.W $0A96                                                          ;908029;
++   LDA.W $0A96                                                          ;908029;
     INC A                                                                ;90802C;
     STA.W $0A96                                                          ;90802D;
     BRA .handleDelay                                                     ;908030;
 
 
-.neutralJump:
+  .neutralJump:
     LDA.W $0B36                                                          ;908032;
     CMP.W #$0002                                                         ;908035;
     BEQ +                                                                ;908038;
@@ -40,26 +40,26 @@ AnimateSamus:
     LDA.W #$0004                                                         ;90804A;
     STA.W $0A94                                                          ;90804D;
 
-  + LDA.W $0A94                                                          ;908050;
++   LDA.W $0A94                                                          ;908050;
     DEC A                                                                ;908053;
     STA.W $0A94                                                          ;908054;
     BEQ .incAnimFrame                                                    ;908057;
     BPL .return                                                          ;908059;
 
-.incAnimFrame:
+  .incAnimFrame:
     LDA.W $0A96                                                          ;90805B;
     INC A                                                                ;90805E;
     STA.W $0A96                                                          ;90805F;
 
-.handleDelay:
+  .handleDelay:
     JSR.W Handle_Samus_AnimationDelay                                    ;908062;
 
-.return:
+  .return:
     PLP                                                                  ;908065;
     RTS                                                                  ;908066;
 
 
-.pointers:
+  .pointers:
     dw AnimateSamus_FX_None                                              ;908067;
     dw AnimateSamus_FX_Lava                                              ;908069;
     dw AnimateSamus_FX_Acid                                              ;90806B;
@@ -84,7 +84,7 @@ AnimateSamus_FX_None:
     RTS                                                                  ;90808B;
 
 
-  + STZ.W $0AD2                                                          ;90808C;
++   STZ.W $0AD2                                                          ;90808C;
     LDA.W #$000E                                                         ;90808F;
     JSL.L QueueSound_Lib2_Max6                                           ;908092;
     LDA.W $0A74                                                          ;908096;
@@ -97,14 +97,14 @@ AnimateSamus_FX_None:
     CMP.W #$0014                                                         ;9080A9;
     BNE .goto_Spawn_WaterSplash_AirBubbles                               ;9080AC;
 
-  + LDA.W #$0030                                                         ;9080AE;
++   LDA.W #$0030                                                         ;9080AE;
     JSL.L QueueSound_Lib1_Max6                                           ;9080B1;
 
-.goto_Spawn_WaterSplash_AirBubbles:
+  .goto_Spawn_WaterSplash_AirBubbles:
     BRA Spawn_WaterSplash_AirBubbles                                     ;9080B5;
 
 
-.return:
+  .return:
     RTS                                                                  ;9080B7;
 
 
@@ -116,7 +116,7 @@ AnimateSamus_FX_Water:
     BRA AnimateSamus_FX_None                                             ;9080C1;
 
 
-  + LDA.W $197E                                                          ;9080C3;
++   LDA.W $197E                                                          ;9080C3;
     BIT.W #$0004                                                         ;9080C6;
     BNE AnimateSamus_FX_None                                             ;9080C9;
     LDA.W SamusPhysicsConstants_AnimationDelayInWater                    ;9080CB;
@@ -147,7 +147,7 @@ Spawn_WaterSplash_AirBubbles:
     BRA Spawn_AirBubbles                                                 ;90810D;
 
 
-.grounded:
+  .grounded:
     LDA.W #$0100                                                         ;90810F;
     STA.W $0AEC                                                          ;908112;
     STA.W $0AEE                                                          ;908115;
@@ -197,13 +197,13 @@ Spawn_AirBubbles:
     BRA .queueSFX                                                        ;908182;
 
 
-.bubblesSFX:
+  .bubblesSFX:
     LDA.W #$0011                                                         ;908184;
 
-.queueSFX:
+  .queueSFX:
     JSL.L QueueSound_Lib2_Max6                                           ;908187;
 
-.noBubbles:
+  .noBubbles:
     LDA.W $0A1C                                                          ;90818B;
     CMP.W #$0000                                                         ;90818E;
     BEQ .zeroFrameBuffer                                                 ;908191;
@@ -213,10 +213,10 @@ Spawn_AirBubbles:
     BIT.W #$0020                                                         ;90819B;
     BEQ .return                                                          ;90819E;
 
-.zeroFrameBuffer:
+  .zeroFrameBuffer:
     STZ.W $0A9C                                                          ;9081A0;
 
-.return:
+  .return:
     RTS                                                                  ;9081A3;
 
 
@@ -262,7 +262,7 @@ AnimateSamus_FX_Lava:
     STZ.W $0B42                                                          ;9081D2;
     STZ.W $0B44                                                          ;9081D5;
 
-.zeroSpeedTimer:
+  .zeroSpeedTimer:
     LDA.W $09A2                                                          ;9081D8;
     BIT.W #$0020                                                         ;9081DB;
     BNE .gravityEquipped                                                 ;9081DE;
@@ -275,7 +275,7 @@ AnimateSamus_FX_Lava:
     LDA.W #$002D                                                         ;9081F0;
     JSL.L QueueSound_Lib3_Max3                                           ;9081F3;
 
-.periodicDamage:
+  .periodicDamage:
     LDA.W $0A4E                                                          ;9081F7;
     CLC                                                                  ;9081FA;
     ADC.W SamusPhysicsConstants_LavaSubDamagePerFrame                    ;9081FB;
@@ -311,7 +311,7 @@ AnimateSamus_FX_Acid:
     LDA.W #$002D                                                         ;908232;
     JSL.L QueueSound_Lib3_Max3                                           ;908235;
 
-  + LDA.W $0A4E                                                          ;908239;
++   LDA.W $0A4E                                                          ;908239;
     CLC                                                                  ;90823C;
     ADC.W SamusPhysicsConstants_AcidSubDamagePerFrame                    ;90823D;
     STA.W $0A4E                                                          ;908240;
@@ -363,7 +363,7 @@ AnimateSamus_SubmergedInLavaAcid:
     LDA.W #$0010                                                         ;9082BC;
     JSL.L QueueSound_Lib2_Max6                                           ;9082BF;
 
-.fullySubmerged:
+  .fullySubmerged:
     LDA.W $0A1C                                                          ;9082C3;
     CMP.W #$0000                                                         ;9082C6;
     BEQ .zeroBuffer                                                      ;9082C9;
@@ -373,10 +373,10 @@ AnimateSamus_SubmergedInLavaAcid:
     BIT.W #$0020                                                         ;9082D3;
     BEQ .return                                                          ;9082D6;
 
-.zeroBuffer:
+  .zeroBuffer:
     STZ.W $0A9C                                                          ;9082D8;
 
-.return:
+  .return:
     RTS                                                                  ;9082DB;
 
 
@@ -403,7 +403,7 @@ Handle_Samus_AnimationDelay:
     BRA .return                                                          ;908303;
 
 
-  + JSR.W Handle_SpeedBooster_AnimationDelay                             ;908305;
++   JSR.W Handle_SpeedBooster_AnimationDelay                             ;908305;
     TAX                                                                  ;908308;
     BEQ .return                                                          ;908309;
     AND.W #$000F                                                         ;90830B;
@@ -417,13 +417,13 @@ Handle_Samus_AnimationDelay:
     ADC.W $0A9C                                                          ;90831B;
     STA.W $0A94                                                          ;90831E;
 
-.return:
+  .return:
     PLB                                                                  ;908321;
     PLP                                                                  ;908322;
     RTS                                                                  ;908323;
 
 
-.pointers:
+  .pointers:
     dw CLCRTS_908344                                                     ;908324;
     dw CLCRTS_908344                                                     ;908326;
     dw CLCRTS_908344                                                     ;908328;
@@ -456,7 +456,7 @@ AnimDelay_6_GotoBeginningIfSamusNotLowEnergy:
     RTS                                                                  ;908355;
 
 
-.lowEnergy:
+  .lowEnergy:
     LDA.W $0A96                                                          ;908356;
     INC A                                                                ;908359;
     STA.W $0A96                                                          ;90835A;
@@ -492,11 +492,11 @@ AnimDelay_8_EnableAutoJumpHack_TransitionToPoseIfNotJumping:
     LDA.W #SamusPoseInputHandler_AutoJumpHack                            ;90838F;
     STA.W $0A60                                                          ;908392;
 
-.goto_TransitionToPose:
+  .goto_TransitionToPose:
     JMP.W AnimDelay_D_TransitionToPose                                   ;908395;
 
 
-.return:
+  .return:
     CLC                                                                  ;908398;
     RTS                                                                  ;908399;
 
@@ -520,7 +520,7 @@ AnimDelay_9_TransitionToPoseDependingOnItemEquippedAndYSpeed:
     BRA .return                                                          ;9083BA;
 
 
-  + INY                                                                  ;9083BC;
++   INY                                                                  ;9083BC;
     INY                                                                  ;9083BD;
     INY                                                                  ;9083BE;
     LDA.B [$00],Y                                                        ;9083BF;
@@ -529,7 +529,7 @@ AnimDelay_9_TransitionToPoseDependingOnItemEquippedAndYSpeed:
     BRA .return                                                          ;9083C7;
 
 
-.equippedItems:
+  .equippedItems:
     LDA.W $0B2E                                                          ;9083C9;
     BNE +                                                                ;9083CC;
     LDA.W $0B2C                                                          ;9083CE;
@@ -544,7 +544,7 @@ AnimDelay_9_TransitionToPoseDependingOnItemEquippedAndYSpeed:
     BRA .return                                                          ;9083DF;
 
 
-  + INY                                                                  ;9083E1;
++   INY                                                                  ;9083E1;
     INY                                                                  ;9083E2;
     INY                                                                  ;9083E3;
     INY                                                                  ;9083E4;
@@ -553,7 +553,7 @@ AnimDelay_9_TransitionToPoseDependingOnItemEquippedAndYSpeed:
     AND.W #$00FF                                                         ;9083E8;
     STA.W $0A2C                                                          ;9083EB;
 
-.return:
+  .return:
     LDA.W #$0003                                                         ;9083EE;
     STA.W $0A32                                                          ;9083F1;
     CLC                                                                  ;9083F4;
@@ -572,14 +572,14 @@ UNUSED_AnimDelay_A_TransitionToPoseDependingOnYSpeed_9083F6:
     BRA +                                                                ;908409;
 
 
-.nonZeroYSpeed:
+  .nonZeroYSpeed:
     INY                                                                  ;90840B;
     INY                                                                  ;90840C;
     LDA.B [$00],Y                                                        ;90840D;
     AND.W #$00FF                                                         ;90840F;
     STA.W $0A2C                                                          ;908412;
 
-  + LDA.W #$0003                                                         ;908415;
++   LDA.W #$0003                                                         ;908415;
     STA.W $0A32                                                          ;908418;
     CLC                                                                  ;90841B;
     RTS                                                                  ;90841C;
@@ -600,20 +600,20 @@ AnimDelay_B_SelectAnimDelaySequenceForWallJump:
     BRA .submerged                                                       ;90843A;
 
 
-.lessThanZero:
+  .lessThanZero:
     LDA.W $1962                                                          ;90843C;
     BMI .notSubmerged                                                    ;90843F;
     CMP.B $14                                                            ;908441;
     BMI .submerged                                                       ;908443;
 
-.notSubmerged:
+  .notSubmerged:
     LDA.W $09A2                                                          ;908445;
     BIT.W #$0008                                                         ;908448;
     BNE .screwAttack                                                     ;90844B;
     BIT.W #$0200                                                         ;90844D;
     BNE .spaceJump                                                       ;908450;
 
-.submerged:
+  .submerged:
     LDA.W #$0031                                                         ;908452;
     JSL.L QueueSound_Lib1_Max6                                           ;908455;
     LDA.W $0A96                                                          ;908459;
@@ -624,7 +624,7 @@ AnimDelay_B_SelectAnimDelaySequenceForWallJump:
     RTS                                                                  ;908462;
 
 
-.spaceJump:
+  .spaceJump:
     LDA.W #$003E                                                         ;908463;
     JSL.L QueueSound_Lib1_Max6                                           ;908466;
     LDA.W $0A96                                                          ;90846A;
@@ -636,7 +636,7 @@ AnimDelay_B_SelectAnimDelaySequenceForWallJump:
     RTS                                                                  ;908476;
 
 
-.screwAttack:
+  .screwAttack:
     LDA.W #$0033                                                         ;908477;
     JSL.L QueueSound_Lib1_Max6                                           ;90847A;
     LDA.W $0A96                                                          ;90847E;
@@ -663,7 +663,7 @@ UNUSED_AnimDelay_C_TransToPoseDependingOnItemEquipped_90848B:
     BRA .return                                                          ;9084A1;
 
 
-.equippedItems:
+  .equippedItems:
     INY                                                                  ;9084A3;
     INY                                                                  ;9084A4;
     INY                                                                  ;9084A5;
@@ -671,7 +671,7 @@ UNUSED_AnimDelay_C_TransToPoseDependingOnItemEquipped_90848B:
     AND.W #$00FF                                                         ;9084A8;
     STA.W $0A2C                                                          ;9084AB;
 
-.return:
+  .return:
     LDA.W #$0003                                                         ;9084AE;
     STA.W $0A32                                                          ;9084B1;
     CLC                                                                  ;9084B4;
@@ -737,11 +737,11 @@ Handle_NormalAnimationDelay:
     BRA .return                                                          ;908515;
 
 
-.noSpeedBooster:
+  .noSpeedBooster:
     LDA.L AnimationDelayTable_Running_NoSpeedBooster_pointer             ;908517;
     STA.B $00                                                            ;90851B;
 
-.return:
+  .return:
     LDA.B [$00],Y                                                        ;90851D;
     AND.W #$00FF                                                         ;90851F;
     CLC                                                                  ;908522;
@@ -766,14 +766,14 @@ Handle_SpeedBooster_AnimationDelay:
     JMP.W .finish                                                        ;90853D;
 
 
-.checkPressingRun:
+  .checkPressingRun:
     LDA.B $8B                                                            ;908540;
     BIT.W $09B6                                                          ;908542;
     BNE .checkMovementType                                               ;908545;
     JMP.W .finish                                                        ;908547;
 
 
-.checkMovementType:
+  .checkMovementType:
     LDA.W $0A1F                                                          ;90854A;
     AND.W #$00FF                                                         ;90854D;
     CMP.W #$0001                                                         ;908550;
@@ -781,7 +781,7 @@ Handle_SpeedBooster_AnimationDelay:
     JMP.W .finish                                                        ;908555;
 
 
-.speedBoosterEquipped:
+  .speedBoosterEquipped:
     LDA.W $09A2                                                          ;908558;
     BIT.W #$2000                                                         ;90855B;
     BNE .speedBoostTimer                                                 ;90855E;
@@ -798,7 +798,7 @@ Handle_SpeedBooster_AnimationDelay:
     BRA .return                                                          ;90857B;
 
 
-.speedBoostTimer:
+  .speedBoostTimer:
     LDA.W $0B3E                                                          ;90857D;
     DEC A                                                                ;908580;
     STA.W $0B3E                                                          ;908581;
@@ -817,7 +817,7 @@ Handle_SpeedBooster_AnimationDelay:
     LDA.W #$0003                                                         ;9085A3;
     JSL.L QueueSound_Lib3_Max6                                           ;9085A6;
 
-  + XBA                                                                  ;9085AA;
++   XBA                                                                  ;9085AA;
     AND.W #$00FF                                                         ;9085AB;
     ASL A                                                                ;9085AE;
     TAX                                                                  ;9085AF;
@@ -838,11 +838,11 @@ Handle_SpeedBooster_AnimationDelay:
     BRA .return                                                          ;9085D8;
 
 
-.finish:
+  .finish:
     LDA.B [$00],Y                                                        ;9085DA;
     AND.W #$00FF                                                         ;9085DC;
 
-.return:
+  .return:
     PLB                                                                  ;9085DF;
     PLP                                                                  ;9085E0;
     RTS                                                                  ;9085E1;
@@ -868,7 +868,7 @@ Draw_Samus:
     JMP.W .invisible                                                     ;908603;
 
 
-  + LDA.W $0A1C                                                          ;908606;
++   LDA.W $0A1C                                                          ;908606;
     ASL A                                                                ;908609;
     TAX                                                                  ;90860A;
     PHX                                                                  ;90860B;
@@ -897,7 +897,7 @@ Draw_Samus:
     LDY.W $0B06                                                          ;908640;
     JSL.L AddSamusSpritemapToOAM                                         ;908643;
 
-.invisible:
+  .invisible:
     JSL.L Set_SamusTilesDefinitions_ForCurrentAnimation                  ;908647;
     PLB                                                                  ;90864B;
     PLP                                                                  ;90864C;
@@ -950,12 +950,12 @@ DetermineIf_SamusBottomHalf_IsDrawn_Standing:
     CMP.W #$0000                                                         ;908690;
     BEQ .facingForward                                                   ;908693;
 
-.return:
+  .return:
     SEC                                                                  ;908695;
     RTS                                                                  ;908696;
 
 
-.facingForward:
+  .facingForward:
     LDX.W $0590                                                          ;908697;
     LDA.W $0AF6                                                          ;90869A;
     SEC                                                                  ;90869D;
@@ -991,12 +991,12 @@ DetermineIf_SamusBottomHalf_IsDrawn_SpinJumping:
     LDA.W $0A96                                                          ;9086DD;
     BNE .spinning                                                        ;9086E0;
 
-.returnCarrySet:
+  .returnCarrySet:
     SEC                                                                  ;9086E2;
     RTS                                                                  ;9086E3;
 
 
-.spinning:
+  .spinning:
     CMP.W #$000B                                                         ;9086E4;
     BPL .returnCarrySet                                                  ;9086E7;
     STZ.W $0ACA                                                          ;9086E9;
@@ -1013,17 +1013,17 @@ DetermineIf_SamusBottomHalf_IsDrawn_Knockback_CFEnding:
     BRA .returnCarrySet                                                  ;9086FB;
 
 
-.crystalFlashEnding:
+  .crystalFlashEnding:
     LDA.W $0A96                                                          ;9086FD;
     CMP.W #$0003                                                         ;908700;
     BMI .noBottom                                                        ;908703;
 
-.returnCarrySet:
+  .returnCarrySet:
     SEC                                                                  ;908705;
     RTS                                                                  ;908706;
 
 
-.noBottom:
+  .noBottom:
     STZ.W $0ACA                                                          ;908707;
     CLC                                                                  ;90870A;
     RTS                                                                  ;90870B;
@@ -1046,18 +1046,18 @@ DetermineIf_SamusBottomHalf_IsDrawn_TransitionPoses:
     BRA .noBottom                                                        ;90872D;
 
 
-.returnCarrySet:
+  .returnCarrySet:
     SEC                                                                  ;90872F;
     RTS                                                                  ;908730;
 
 
-.noBottom:
+  .noBottom:
     STZ.W $0ACA                                                          ;908731;
     CLC                                                                  ;908734;
     RTS                                                                  ;908735;
 
 
-.unused:
+  .unused:
     CMP.W #$00DD                                                         ;908736;
     BPL .greaterThanDD                                                   ;908739;
     LDA.W $0A96                                                          ;90873B;
@@ -1065,7 +1065,7 @@ DetermineIf_SamusBottomHalf_IsDrawn_TransitionPoses:
     BRA .noBottom                                                        ;908740;
 
 
-.greaterThanDD:
+  .greaterThanDD:
     LDA.W $0A96                                                          ;908742;
     CMP.W #$0002                                                         ;908745;
     BEQ .returnCarrySet                                                  ;908748;
@@ -1079,16 +1079,16 @@ DetermineIf_SamusBottomHalf_IsDrawn_UnusedMovementTypeD:
     CMP.W #$0066                                                         ;908754;
     BNE .returnCarrySet                                                  ;908757;
 
-  + LDA.W $0A96                                                          ;908759;
++   LDA.W $0A96                                                          ;908759;
     CMP.W #$0001                                                         ;90875C;
     BPL .noBottom                                                        ;90875F;
 
-.returnCarrySet:
+  .returnCarrySet:
     SEC                                                                  ;908761;
     RTS                                                                  ;908762;
 
 
-.noBottom:
+  .noBottom:
     STZ.W $0ACA                                                          ;908763;
     CLC                                                                  ;908766;
     RTS                                                                  ;908767;
@@ -1099,12 +1099,12 @@ DetermineIf_SamusBottomHalf_IsDrawn_WallJumping:
     CMP.W #$0003                                                         ;90876B;
     BPL .spinning                                                        ;90876E;
 
-.returnCarrySet:
+  .returnCarrySet:
     SEC                                                                  ;908770;
     RTS                                                                  ;908771;
 
 
-.spinning:
+  .spinning:
     CMP.W #$000D                                                         ;908772;
     BPL .returnCarrySet                                                  ;908775;
     STZ.W $0ACA                                                          ;908777;
@@ -1117,12 +1117,12 @@ DetermineIf_SamusBottomHalf_IsDrawn_DamageBoost:
     CMP.W #$0002                                                         ;90877F;
     BPL .spinning                                                        ;908782;
 
-.returnCarrySet:
+  .returnCarrySet:
     SEC                                                                  ;908784;
     RTS                                                                  ;908785;
 
 
-.spinning:
+  .spinning:
     CMP.W #$0009                                                         ;908786;
     BPL .returnCarrySet                                                  ;908789;
     STZ.W $0ACA                                                          ;90878B;
@@ -1141,22 +1141,22 @@ DetermineIf_SamusBottomHalf_IsDrawn_Shinespark_CF_Drained:
     BRA .returnCarrySet                                                  ;9087A2;
 
 
-.notShinespark:
+  .notShinespark:
     CMP.W #$00E8                                                         ;9087A4;
     BEQ +                                                                ;9087A7;
     CMP.W #$00E9                                                         ;9087A9;
     BNE .returnCarrySet                                                  ;9087AC;
 
-  + LDA.W $0A96                                                          ;9087AE;
++   LDA.W $0A96                                                          ;9087AE;
     CMP.W #$0002                                                         ;9087B1;
     BMI .noBottom                                                        ;9087B4;
 
-.returnCarrySet:
+  .returnCarrySet:
     SEC                                                                  ;9087B6;
     RTS                                                                  ;9087B7;
 
 
-.noBottom:
+  .noBottom:
     STZ.W $0ACA                                                          ;9087B8;
     CLC                                                                  ;9087BB;
     RTS                                                                  ;9087BC;
@@ -1175,25 +1175,25 @@ DrawSamusEchoes:
     RTS                                                                  ;9087D1;
 
 
-  + LDA.W $0AB2                                                          ;9087D2;
++   LDA.W $0AB2                                                          ;9087D2;
     BEQ +                                                                ;9087D5;
     LDY.W #$0002                                                         ;9087D7;
     JSR.W DrawSamusEcho                                                  ;9087DA;
 
-  + LDA.W $0AB0                                                          ;9087DD;
++   LDA.W $0AB0                                                          ;9087DD;
     BEQ .returnUpper                                                     ;9087E0;
     LDY.W #$0000                                                         ;9087E2;
     JSR.W DrawSamusEcho                                                  ;9087E5;
 
-.returnUpper:
+  .returnUpper:
     PLP                                                                  ;9087E8;
     RTS                                                                  ;9087E9;
 
 
-.mergingEchoes:
+  .mergingEchoes:
     LDY.W #$0002                                                         ;9087EA;
 
-.loop:
+  .loop:
     LDA.W $0AB0,Y                                                        ;9087ED;
     BEQ .next                                                            ;9087F0;
     LDA.W $0AB8,Y                                                        ;9087F2;
@@ -1206,11 +1206,11 @@ DrawSamusEchoes:
     BRA .noYAdjustment                                                   ;908803;
 
 
-  + CLC                                                                  ;908805;
++   CLC                                                                  ;908805;
     ADC.W #$0002                                                         ;908806;
     STA.W $0AB8,Y                                                        ;908809;
 
-.noYAdjustment:
+  .noYAdjustment:
     LDA.W $0AC0,Y                                                        ;90880C;
     BMI .positive                                                        ;90880F;
     LDA.W $0AB0,Y                                                        ;908811;
@@ -1224,7 +1224,7 @@ DrawSamusEchoes:
     BRA .next                                                            ;908826;
 
 
-.positive:
+  .positive:
     LDA.W $0AB0,Y                                                        ;908828;
     CLC                                                                  ;90882B;
     ADC.W $0AC0,Y                                                        ;90882C;
@@ -1236,10 +1236,10 @@ DrawSamusEchoes:
     BRA .next                                                            ;90883D;
 
 
-.drawEcho:
+  .drawEcho:
     JSR.W DrawSamusEcho                                                  ;90883F;
 
-.next:
+  .next:
     DEY                                                                  ;908842;
     DEY                                                                  ;908843;
     BPL .loop                                                            ;908844;
@@ -1249,7 +1249,7 @@ DrawSamusEchoes:
     BNE .returnLower                                                     ;90884E;
     STZ.W $0AAE                                                          ;908850;
 
-.returnLower:
+  .returnLower:
     PLP                                                                  ;908853;
     RTS                                                                  ;908854;
 
@@ -1276,11 +1276,11 @@ DrawSamusEcho:
     CMP.W #$00F8                                                         ;908879;
     BMI .addSpritemap                                                    ;90887C;
 
-  + PLY                                                                  ;90887E;
++   PLY                                                                  ;90887E;
     RTS                                                                  ;90887F;
 
 
-.addSpritemap:
+  .addSpritemap:
     TAY                                                                  ;908880;
     LDA.W $0AC8                                                          ;908881;
     JSL.L AddSamusSpritemapToOAM                                         ;908884;
@@ -1309,7 +1309,7 @@ DrawSamusEcho:
     JSL.L AddSamusSpritemapToOAM                                         ;9088B4;
     PLY                                                                  ;9088B8;
 
-.return:
+  .return:
     RTS                                                                  ;9088B9;
 
 
@@ -1328,7 +1328,7 @@ DrawShinesparkCrashEchoCircle:
     JMP.W .return                                                        ;9088CD;
 
 
-  + LDA.W $0A1C                                                          ;9088D0;
++   LDA.W $0A1C                                                          ;9088D0;
     ASL A                                                                ;9088D3;
     TAX                                                                  ;9088D4;
     PHX                                                                  ;9088D5;
@@ -1356,14 +1356,14 @@ DrawShinesparkCrashEchoCircle:
     CMP.W #$00F8                                                         ;908900;
     BMI +                                                                ;908903;
 
-.pullReturn:
+  .pullReturn:
     PLA                                                                  ;908905;
     PLY                                                                  ;908906;
     PLX                                                                  ;908907;
     BRA .return                                                          ;908908;
 
 
-  + TAY                                                                  ;90890A;
++   TAY                                                                  ;90890A;
     PLA                                                                  ;90890B;
     JSL.L AddSamusSpritemapToOAM                                         ;90890C;
     PLY                                                                  ;908910;
@@ -1399,7 +1399,7 @@ DrawShinesparkCrashEchoCircle:
     PLA                                                                  ;90894B;
     JSL.L AddSamusSpritemapToOAM                                         ;90894C;
 
-.return:
+  .return:
     PLB                                                                  ;908950;
     PLP                                                                  ;908951;
     RTS                                                                  ;908952;
@@ -1416,12 +1416,12 @@ DrawShinesparkCrashEchoProjectiles:
     LDY.W #$0006                                                         ;908963;
     JSR.W DrawSamusEcho                                                  ;908966;
 
-  + LDA.W $0AC4                                                          ;908969;
++   LDA.W $0AC4                                                          ;908969;
     BEQ .return                                                          ;90896C;
     LDY.W #$0004                                                         ;90896E;
     JSR.W DrawSamusEcho                                                  ;908971;
 
-.return:
+  .return:
     PLP                                                                  ;908974;
     RTL                                                                  ;908975;
 
@@ -1438,12 +1438,12 @@ Draw_Samus_Starting_Death_Animation:
     BEQ +                                                                ;908983;
     BPL .drawDeath                                                       ;908985;
 
-  + LDA.W $0A96                                                          ;908987;
++   LDA.W $0A96                                                          ;908987;
     INC A                                                                ;90898A;
     STA.W $0A96                                                          ;90898B;
     JSR.W Handle_Samus_AnimationDelay                                    ;90898E;
 
-.drawDeath:
+  .drawDeath:
     JSL.L Draw_Samus_During_Death_Animation                              ;908991;
     PLB                                                                  ;908995;
     PLP                                                                  ;908996;
@@ -1501,7 +1501,7 @@ Draw_Samus_During_Death_Animation:
     PLA                                                                  ;9089F4;
     JSL.L AddSamusSpritemapToOAM                                         ;9089F5;
 
-.setDefinitions:
+  .setDefinitions:
     JSL.L Set_SamusTilesDefinitions_ForCurrentAnimation                  ;9089F9;
     PLB                                                                  ;9089FD;
     PLP                                                                  ;9089FE;
@@ -1543,7 +1543,7 @@ Draw_Inanimate_Samus:
     LDY.W $0B06                                                          ;908A3E;
     JSL.L AddSamusSpritemapToOAM                                         ;908A41;
 
-.setDefinitions:
+  .setDefinitions:
     JSL.L Set_SamusTilesDefinitions_ForCurrentAnimation                  ;908A45;
     PLB                                                                  ;908A49;
     PLP                                                                  ;908A4A;
@@ -1555,7 +1555,7 @@ Handle_AtmosphericEffects:
     REP #$30                                                             ;908A4D;
     LDY.W #$0006                                                         ;908A4F;
 
-.loop:
+  .loop:
     LDA.W $0AEC,Y                                                        ;908A52;
     BEQ .next                                                            ;908A55;
     PHA                                                                  ;908A57;
@@ -1585,7 +1585,7 @@ Handle_AtmosphericEffects:
     BRA .execute                                                         ;908A84;
 
 
-  + PHX                                                                  ;908A86;
++   PHX                                                                  ;908A86;
     LDA.W AtmosphericGraphics_AnimationTimers,X                          ;908A87;
     CLC                                                                  ;908A8A;
     ADC.B $12                                                            ;908A8B;
@@ -1604,10 +1604,10 @@ Handle_AtmosphericEffects:
     BRA .next                                                            ;908AAA;
 
 
-.execute:
+  .execute:
     JSR.W (.pointers,X)                                                  ;908AAC;
 
-.next:
+  .next:
     DEY                                                                  ;908AAF;
     DEY                                                                  ;908AB0;
     BPL .loop                                                            ;908AB1;
@@ -1615,7 +1615,7 @@ Handle_AtmosphericEffects:
     RTS                                                                  ;908AB4;
 
 
-.pointers:
+  .pointers:
     dw $0000                                                             ;908AB5;
     dw AtmosphericEffects_1_2_FootstepSplashes                           ;908AB7;
     dw AtmosphericEffects_1_2_FootstepSplashes                           ;908AB9;
@@ -1664,7 +1664,7 @@ AtmosphericEffects_1_2_FootstepSplashes:
     RTS                                                                  ;908B12;
 
 
-.return:
+  .return:
     PLY                                                                  ;908B13;
     PLY                                                                  ;908B14;
     RTS                                                                  ;908B15;
@@ -1695,13 +1695,13 @@ AtmosphericEffects_4_LavaSurfaceDamage:
     BRA +                                                                ;908B3E;
 
 
-.greaterThanEqualTo4:
+  .greaterThanEqualTo4:
     LDA.W $0ADC,Y                                                        ;908B40;
     SEC                                                                  ;908B43;
     SBC.W #$0001                                                         ;908B44;
     STA.W $0ADC,Y                                                        ;908B47;
 
-  + LDA.W $0AE4,Y                                                        ;908B4A;
++   LDA.W $0AE4,Y                                                        ;908B4A;
     SEC                                                                  ;908B4D;
     SBC.W #$0001                                                         ;908B4E;
     STA.W $0AE4,Y                                                        ;908B51;
@@ -1743,7 +1743,7 @@ AddAtmosphericSpritemapToOAM:
     RTS                                                                  ;908B8F;
 
 
-.return:
+  .return:
     PLA                                                                  ;908B90;
     PLY                                                                  ;908B91;
     RTS                                                                  ;908B92;
@@ -1829,7 +1829,7 @@ Calculate_SamusSpritemapPosition:
     RTS                                                                  ;908C4E;
 
 
-.notCeres:
+  .notCeres:
     TXY                                                                  ;908C4F;
     LDA.W $0A1F                                                          ;908C50;
     AND.W #$00FF                                                         ;908C53;
@@ -1839,7 +1839,7 @@ Calculate_SamusSpritemapPosition:
     RTS                                                                  ;908C5B;
 
 
-.pointers:
+  .pointers:
     dw CalculateSamusSpritemapPosition_Standing                          ;908C5C; *0: Standing
     dw CalculateUsualSamusSpritemapPosition                              ;908C5E;  1: Running
     dw CalculateUsualSamusSpritemapPosition                              ;908C60;  2: Normal jumping
@@ -1880,7 +1880,7 @@ CalculateUsualSamusSpritemapPosition:
     BEQ +                                                                ;908CA2;
     ORA.W #$FF00                                                         ;908CA4;
 
-  + STA.B $12                                                            ;908CA7;
++   STA.B $12                                                            ;908CA7;
     LDA.W $0AFA                                                          ;908CA9;
     SEC                                                                  ;908CAC;
     SBC.B $12                                                            ;908CAD;
@@ -1935,7 +1935,7 @@ CalculateSamusSpritemapPosition_Standing:
     RTS                                                                  ;908D06;
 
 
-.facingForward:
+  .facingForward:
     LDA.W $0A96                                                          ;908D07;
     CMP.W #$0002                                                         ;908D0A;
     BMI Goto_CalculateUsualSamusSpritemapPosition                        ;908D0D;
@@ -1956,9 +1956,9 @@ CalculateSamusSpritemapPosition_Standing:
 
   .data:                                                                 ;908D28;
     db $03,$06,$00,$00 ; Facing right - landing from normal jump
-    db $03,$06,$00,$00 ; Facing left  - landing from normal jump
+    db $03,$06,$00,$00 ; Facing left-   landing from normal jump
     db $03,$03,$06,$00 ; Facing right - landing from spin jump
-    db $03,$03,$06,$00 ; Facing left  - landing from spin jump
+    db $03,$03,$06,$00 ; Facing left-   landing from spin jump
 
 Goto_CalculateUsualSamusSpritemapPosition:
     PLB                                                                  ;908D38;
@@ -1987,7 +1987,7 @@ CalculateSamusSpritemapPosition_TransitionPoses:
     BEQ +                                                                ;908D5E;
     ORA.W #$FF00                                                         ;908D60;
 
-  + STA.B $12                                                            ;908D63;
++   STA.B $12                                                            ;908D63;
     LDA.W $0AFA                                                          ;908D65;
     CLC                                                                  ;908D68;
     ADC.B $12                                                            ;908D69;
@@ -2006,15 +2006,15 @@ CalculateSamusSpritemapPosition_TransitionPoses:
 
   .data:                                                                 ;908D80;
     db $F8,$00 ; Facing right - crouching transition
-    db $F8,$00 ; Facing left  - crouching transition
+    db $F8,$00 ; Facing left-   crouching transition
     db $FC,$FE ; Facing right - morphing transition
-    db $FC,$FE ; Facing left  - morphing transition
+    db $FC,$FE ; Facing left-   morphing transition
     db $00,$00 ; Unused
     db $00,$00 ; Unused
     db $FC,$00 ; Facing right - standing transition
-    db $FC,$00 ; Facing left  - standing transition
+    db $FC,$00 ; Facing left-   standing transition
     db $05,$04 ; Facing right - unmorphing transition
-    db $05,$04 ; Facing left  - unmorphing transition
+    db $05,$04 ; Facing left-   unmorphing transition
     db $00,$00 ; Unused
     db $00,$00 ; Unused
 
@@ -2033,18 +2033,18 @@ CalculateSamusSpritemapPosition_Shinespark_CF_Drained:
     CMP.W #$00EB                                                         ;908DAC;
     BNE .goto_CalculateUsualSamusSpritemapPosition                       ;908DAF;
 
-  + LDX.W $0A96                                                          ;908DB1;
++   LDX.W $0A96                                                          ;908DB1;
     CPX.W #$0005                                                         ;908DB4;
     BMI .goto_CalculateUsualSamusSpritemapPosition                       ;908DB7;
     LDA.W #$FFFD                                                         ;908DB9;
     BRA .merge                                                           ;908DBC;
 
 
-.goto_CalculateUsualSamusSpritemapPosition:
+  .goto_CalculateUsualSamusSpritemapPosition:
     JMP.W Goto_CalculateUsualSamusSpritemapPosition                      ;908DBE;
 
 
-.drainedNotStanding:
+  .drainedNotStanding:
     LDX.W $0A96                                                          ;908DC1;
     LDA.W .data,X                                                        ;908DC4;
     AND.W #$00FF                                                         ;908DC7;
@@ -2052,7 +2052,7 @@ CalculateSamusSpritemapPosition_Shinespark_CF_Drained:
     BEQ .merge                                                           ;908DCD;
     ORA.W #$FF00                                                         ;908DCF;
 
-.merge:
+  .merge:
     STA.B $12                                                            ;908DD2;
     LDA.W $0AFA                                                          ;908DD4;
     CLC                                                                  ;908DD7;
@@ -2070,7 +2070,7 @@ CalculateSamusSpritemapPosition_Shinespark_CF_Drained:
     RTS                                                                  ;908DEE;
 
 
-.data:
+  .data:
 ; Samus drained - crouching
     db $07,$05,$F8,$F8,$F8,$F8,$F8,$FB,$04,$04,$04,$04,$00,$00,$04,$FD   ;908DEF;
     db $FB,$00,$00,$04,$FD,$FB,$FD,$04,$00,$00,$04,$00,$00,$04,$00,$00   ;908DFF;
@@ -2091,7 +2091,7 @@ SetLiquidPhysicsType:
     RTL                                                                  ;908E25;
 
 
-.pointers:
+  .pointers:
     dw SetLiquidPhysicsType_Air                                          ;908E26; ; 0: None / 20h: Unused scrolling sky
     dw SetLiquidPhysicsType_LavaAcid                                     ;908E28; ; 2: Lava / 22h: Unused
     dw SetLiquidPhysicsType_LavaAcid                                     ;908E2A; ; 4: Acid / 24h: Fireflea
@@ -2124,7 +2124,7 @@ SetLiquidPhysicsType_Water:
     BRA SetLiquidPhysicsType_Air                                         ;908E53;
 
 
-  + LDA.W $197E                                                          ;908E55;
++   LDA.W $197E                                                          ;908E55;
     BIT.W #$0004                                                         ;908E58;
     BNE SetLiquidPhysicsType_Air                                         ;908E5B;
     LDA.W #$0001                                                         ;908E5D;
@@ -2164,13 +2164,13 @@ UNUSED_SamusMovement_908E75:
     BRA .return                                                          ;908E9C;
 
 
-  + LDA.W #$0002                                                         ;908E9E;
++   LDA.W #$0002                                                         ;908E9E;
     STA.W $0B4A                                                          ;908EA1;
 
-.decelerating:
+  .decelerating:
     JSR.W MoveSamus_Horizontally                                         ;908EA4;
 
-.return:
+  .return:
     PLP                                                                  ;908EA7;
     RTS                                                                  ;908EA8;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -2188,28 +2188,28 @@ MoveSamus_Horizontally:
     BRA .rightwards                                                      ;908EBE;
 
 
-.notTurning:
+  .notTurning:
     LDA.W $0A1E                                                          ;908EC0;
     AND.W #$00FF                                                         ;908EC3;
     CMP.W #$0004                                                         ;908EC6;
     BEQ .leftwards                                                       ;908EC9;
 
-.rightwards:
+  .rightwards:
     JSR.W CalculateSamusXDisplacement_ForMovingRight                     ;908ECB;
     BRA .merge                                                           ;908ECE;
 
 
-.leftwards:
+  .leftwards:
     JSR.W CalculateSamusXDisplacement_ForMovingLeft                      ;908ED0;
 
-.merge:
+  .merge:
     LDA.B $12                                                            ;908ED3;
     BMI .left                                                            ;908ED5;
     JSR.W MoveSamus_Right                                                ;908ED7;
     RTS                                                                  ;908EDA;
 
 
-.left:
+  .left:
     JSR.W MoveSamus_Left                                                 ;908EDB;
     RTS                                                                  ;908EDE;
 
@@ -2226,32 +2226,32 @@ MoveSamus_Horizontally_KnockbackBombJump:
     BRA .leftwards                                                       ;908EF2;
 
 
-  + LDX.W #SamusPhysicsConstants_XAccelSpeeds_DiagonalBombJump           ;908EF4;
++   LDX.W #SamusPhysicsConstants_XAccelSpeeds_DiagonalBombJump           ;908EF4;
     JSR.W CalculateSamusXBaseSpeed_DecelerationAllowed                   ;908EF7;
     LDA.W $0A56                                                          ;908EFA;
     AND.W #$00FF                                                         ;908EFD;
     CMP.W #$0001                                                         ;908F00;
     BEQ .leftwards                                                       ;908F03;
 
-.rightwards:
+  .rightwards:
     JSR.W CalculateSamusXDisplacement_ForMovingRight                     ;908F05;
     BRA .merge                                                           ;908F08;
 
 
-.leftwards:
+  .leftwards:
     JSR.W CalculateSamusXDisplacement_ForMovingLeft                      ;908F0A;
 
-.merge:
+  .merge:
     LDA.B $12                                                            ;908F0D;
     BMI .left                                                            ;908F0F;
     JSR.W MoveSamus_Right                                                ;908F11;
     BRA .return                                                          ;908F14;
 
 
-.left:
+  .left:
     JSR.W MoveSamus_Left                                                 ;908F16;
 
-.return:
+  .return:
     PLP                                                                  ;908F19;
     RTS                                                                  ;908F1A;
 
@@ -2274,7 +2274,7 @@ Handle_EndOfBombJump:
     BRA .return                                                          ;908F3E;
 
 
-  + STZ.W $0B2C                                                          ;908F40;
++   STZ.W $0B2C                                                          ;908F40;
     STZ.W $0B2E                                                          ;908F43;
     LDA.W #$0002                                                         ;908F46;
     STA.W $0B36                                                          ;908F49;
@@ -2285,7 +2285,7 @@ Handle_EndOfBombJump:
     LDA.W #$0002                                                         ;908F57;
     STA.W $0B4A                                                          ;908F5A;
 
-.return:
+  .return:
     PLP                                                                  ;908F5D;
     RTS                                                                  ;908F5E;
 
@@ -2302,19 +2302,19 @@ MoveSamus_Horizontally_PushedByCeresRidley:
     BRA +                                                                ;908F73;
 
 
-.left:
+  .left:
     JSR.W CalculateSamusXDisplacement_ForMovingLeft                      ;908F75;
 
-  + LDA.B $12                                                            ;908F78;
++   LDA.B $12                                                            ;908F78;
     BMI .moveLeft                                                        ;908F7A;
     JSR.W MoveSamus_Right                                                ;908F7C;
     BRA .return                                                          ;908F7F;
 
 
-.moveLeft:
+  .moveLeft:
     JSR.W MoveSamus_Left                                                 ;908F81;
 
-.return:
+  .return:
     PLP                                                                  ;908F84;
     RTS                                                                  ;908F85;
 
@@ -2333,7 +2333,7 @@ MoveSamus_Vertically_PushedByCeresRidley:
     ADC.W $0B34                                                          ;908F9E;
     STA.W $0B2E                                                          ;908FA1;
 
-  + LDA.W $0B2C                                                          ;908FA4;
++   LDA.W $0B2C                                                          ;908FA4;
     STA.B $14                                                            ;908FA7;
     LDA.W $0B2E                                                          ;908FA9;
     STA.B $12                                                            ;908FAC;
@@ -2356,13 +2356,13 @@ Samus_Jumping_Movement:
     CMP.W #$005B                                                         ;908FCB;
     BPL .jumping                                                         ;908FCE;
 
-  + STZ.W $0B4A                                                          ;908FD0;
++   STZ.W $0B4A                                                          ;908FD0;
     JSR.W MoveSamus_HorizontallyWithZeroBaseXSpeed                       ;908FD3;
     JSR.W MoveSamus_ByExtraYDisplacement                                 ;908FD6;
     JMP.W .return                                                        ;908FD9; >.<
 
 
-.jumping:
+  .jumping:
     LDA.W $0B36                                                          ;908FDC;
     CMP.W #$0001                                                         ;908FDF;
     BNE .setFallingEnd                                                   ;908FE2;
@@ -2372,12 +2372,12 @@ Samus_Jumping_Movement:
     LDA.W $0B2E                                                          ;908FEB;
     BPL .setFallingEnd                                                   ;908FEE;
 
-  + STZ.W $0B2C                                                          ;908FF0;
++   STZ.W $0B2C                                                          ;908FF0;
     STZ.W $0B2E                                                          ;908FF3;
     LDA.W #$0002                                                         ;908FF6;
     STA.W $0B36                                                          ;908FF9;
 
-.setFallingEnd:
+  .setFallingEnd:
     JSR.W Determine_SamusXSpeedTable_EntryPointer                        ;908FFC;
     JSR.W CalculateSamusXBaseSpeed_DecelerationDisallowed                ;908FFF;
     LDA.W $0A1F                                                          ;909002;
@@ -2399,19 +2399,19 @@ Samus_Jumping_Movement:
     BRA .noXMovement                                                     ;90902B;
 
 
-.wallJumping:
+  .wallJumping:
     LDA.W $0B4A                                                          ;90902D;
     BNE .XMovement                                                       ;909030;
     LDA.W #$0002                                                         ;909032;
     STA.W $0B4A                                                          ;909035;
 
-.XMovement:
+  .XMovement:
     JSR.W MoveSamus_Horizontally                                         ;909038;
 
-.noXMovement:
+  .noXMovement:
     JSR.W Samus_Y_Movement_WithSpeedCalculations                         ;90903B;
 
-.return:
+  .return:
     PLP                                                                  ;90903E;
     RTS                                                                  ;90903F;
 
@@ -2429,12 +2429,12 @@ Samus_SpinJumping_Movement:
     LDA.W $0B2E                                                          ;909055;
     BPL .setFallingEnd                                                   ;909058;
 
-  + STZ.W $0B2C                                                          ;90905A;
++   STZ.W $0B2C                                                          ;90905A;
     STZ.W $0B2E                                                          ;90905D;
     LDA.W #$0002                                                         ;909060;
     STA.W $0B36                                                          ;909063;
 
-.setFallingEnd:
+  .setFallingEnd:
     JSR.W Determine_SamusXSpeedTable_EntryPointer                        ;909066;
     JSR.W CalculateSamusXBaseSpeed_DecelerationDisallowed                ;909069;
     BCS .allowXMovement                                                  ;90906C;
@@ -2451,14 +2451,14 @@ Samus_SpinJumping_Movement:
     BRA .allowXMovement                                                  ;909088;
 
 
-.leftwards:
+  .leftwards:
     LDA.B $8B                                                            ;90908A;
     BIT.W #$0200                                                         ;90908C;
     BEQ +                                                                ;90908F;
     BRA .allowXMovement                                                  ;909091;
 
 
-  + STZ.B $12                                                            ;909093;
++   STZ.B $12                                                            ;909093;
     STZ.B $14                                                            ;909095;
     STZ.W $0B46                                                          ;909097;
     STZ.W $0B48                                                          ;90909A;
@@ -2467,13 +2467,13 @@ Samus_SpinJumping_Movement:
     BRA .merge                                                           ;9090A3;
 
 
-.allowXMovement:
+  .allowXMovement:
     LDA.W $0B4A                                                          ;9090A5;
     BNE .merge                                                           ;9090A8;
     LDA.W #$0002                                                         ;9090AA;
     STA.W $0B4A                                                          ;9090AD;
 
-.merge:
+  .merge:
     JSR.W MoveSamus_Horizontally                                         ;9090B0;
     LDA.W SamusPhysicsConstants_MaximumDistanceFromWallForWallJump       ;9090B3;
     STA.B $12                                                            ;9090B6;
@@ -2482,7 +2482,7 @@ Samus_SpinJumping_Movement:
     BCS .return                                                          ;9090BD;
     JSR.W Samus_Y_Movement_WithSpeedCalculations                         ;9090BF;
 
-.return:
+  .return:
     PLP                                                                  ;9090C2;
     RTS                                                                  ;9090C3;
 
@@ -2500,7 +2500,7 @@ CheckIfSamusHasStartedFalling:
     LDA.W #$0002                                                         ;9090DA;
     STA.W $0B36                                                          ;9090DD;
 
-.return:
+  .return:
     PLP                                                                  ;9090E0;
     RTS                                                                  ;9090E1;
 
@@ -2525,7 +2525,7 @@ Samus_Y_Movement_WithSpeedCalculations:
     BRA +                                                                ;90910A;
 
 
-.down:
+  .down:
     LDA.W $0B2E                                                          ;90910C;
     CMP.W #$0005                                                         ;90910F;
     BEQ +                                                                ;909112;
@@ -2537,13 +2537,13 @@ Samus_Y_Movement_WithSpeedCalculations:
     ADC.W $0B34                                                          ;909121;
     STA.W $0B2E                                                          ;909124;
 
-  + LDA.W $0B5C                                                          ;909127;
++   LDA.W $0B5C                                                          ;909127;
     BEQ .checkDirection                                                  ;90912A;
     LDA.W $0B5A                                                          ;90912C;
     BEQ .checkDirection                                                  ;90912F;
     NOP                                                                  ;909131;
 
-.checkDirection:
+  .checkDirection:
     LDA.W $0B36                                                          ;909132;
     CMP.W #$0002                                                         ;909135;
     BEQ .notDown                                                         ;909138;
@@ -2557,7 +2557,7 @@ Samus_Y_Movement_WithSpeedCalculations:
     BNE .notDown                                                         ;909149;
     INC.B $12                                                            ;90914B;
 
-.notDown:
+  .notDown:
     LDA.W $0B5A                                                          ;90914D;
     CLC                                                                  ;909150;
     ADC.B $14                                                            ;909151;
@@ -2570,10 +2570,10 @@ Samus_Y_Movement_WithSpeedCalculations:
     BRA .return                                                          ;909161;
 
 
-.moveUp:
+  .moveUp:
     JSR.W MoveSamus_Up                                                   ;909163;
 
-.return:
+  .return:
     PLP                                                                  ;909166;
     RTS                                                                  ;909167;
 
@@ -2599,10 +2599,10 @@ Samus_Falling_Movement:
     BRA +                                                                ;909192;
 
 
-.pressingLeftRight:
+  .pressingLeftRight:
     JSR.W MoveSamus_Horizontally                                         ;909194;
 
-  + JSR.W CheckIfSamusHasStartedFalling                                  ;909197;
++   JSR.W CheckIfSamusHasStartedFalling                                  ;909197;
     JSR.W Samus_Y_Movement_WithSpeedCalculations                         ;90919A;
     PLP                                                                  ;90919D;
     RTS                                                                  ;90919E;
@@ -2626,7 +2626,7 @@ Samus_Morphed_Falling_Movement:
     STZ.W $0B48                                                          ;9091C0;
     STZ.W $0DD0                                                          ;9091C3;
 
-.moveHorizontally:
+  .moveHorizontally:
     JSR.W MoveSamus_Horizontally                                         ;9091C6;
     JSR.W CheckIfSamusHasStartedFalling                                  ;9091C9;
     JSR.W Samus_Y_Movement_WithSpeedCalculations                         ;9091CC;
@@ -2652,7 +2652,7 @@ Samus_Morphed_Bouncing_Movement:
     STZ.W $0B48                                                          ;9091F2;
     STZ.W $0DD0                                                          ;9091F5;
 
-.pressingLeftRight:
+  .pressingLeftRight:
     JSR.W MoveSamus_Horizontally                                         ;9091F8;
     LDA.W $0A52                                                          ;9091FB;
     BNE .return                                                          ;9091FE;
@@ -2661,7 +2661,7 @@ Samus_Morphed_Bouncing_Movement:
     LDA.W $0B5A                                                          ;909205;
     BEQ .noExtraDisplacement                                             ;909208;
 
-.extraYDisplacement:
+  .extraYDisplacement:
     LDA.W #$0002                                                         ;90920A;
     STA.W $0B36                                                          ;90920D;
     STZ.W $0B2C                                                          ;909210;
@@ -2681,16 +2681,16 @@ Samus_Morphed_Bouncing_Movement:
     BRA .return                                                          ;909230;
 
 
-.moveUp:
+  .moveUp:
     JSR.W MoveSamus_Up                                                   ;909232;
     BRA .return                                                          ;909235;
 
 
-.noExtraDisplacement:
+  .noExtraDisplacement:
     JSR.W CheckIfSamusHasStartedFalling                                  ;909237;
     JSR.W Samus_Y_Movement_WithSpeedCalculations                         ;90923A;
 
-.return:
+  .return:
     PLP                                                                  ;90923D;
     RTS                                                                  ;90923E;
 
@@ -2712,16 +2712,16 @@ Samus_Y_Movement_NoSpeedCalculations:
     BRA .gotoMoveDown                                                    ;90925C;
 
 
-.adjustedBySlope:
+  .adjustedBySlope:
     STZ.B $14                                                            ;90925E;
     LDA.W #$0001                                                         ;909260;
     STA.B $12                                                            ;909263;
 
-.gotoMoveDown:
+  .gotoMoveDown:
     BRA .moveDown                                                        ;909265;
 
 
-.useExtraDisplacement:
+  .useExtraDisplacement:
     STZ.B $14                                                            ;909267;
     STZ.B $12                                                            ;909269;
     LDA.W $0B5A                                                          ;90926B;
@@ -2734,15 +2734,15 @@ Samus_Y_Movement_NoSpeedCalculations:
     BMI .moveUp                                                          ;90927A;
     INC.B $12                                                            ;90927C;
 
-.moveDown:
+  .moveDown:
     JSR.W MoveSamus_Down                                                 ;90927E;
     BRA .return                                                          ;909281;
 
 
-.moveUp:
+  .moveUp:
     JSR.W MoveSamus_Up                                                   ;909283;
 
-.return:
+  .return:
     PLP                                                                  ;909286;
     RTS                                                                  ;909287;
 
@@ -2758,7 +2758,7 @@ MoveSamus_ByExtraYDisplacement:
     RTS                                                                  ;909296;
 
 
-.move:
+  .move:
     STZ.B $14                                                            ;909297;
     STZ.B $12                                                            ;909299;
     LDA.W $0B5A                                                          ;90929B;
@@ -2774,10 +2774,10 @@ MoveSamus_ByExtraYDisplacement:
     BRA .return                                                          ;9092B1;
 
 
-.moveUp:
+  .moveUp:
     JSR.W MoveSamus_Up                                                   ;9092B3;
 
-.return:
+  .return:
     PLP                                                                  ;9092B6;
     RTS                                                                  ;9092B7;
 
@@ -2789,7 +2789,7 @@ Simple_Samus_Y_Movement:
     RTS                                                                  ;9092BE;
 
 
-.movingUpDown:
+  .movingUpDown:
     JSR.W CheckIfSamusHasStartedFalling                                  ;9092BF;
     JSR.W Samus_Y_Movement_WithSpeedCalculations                         ;9092C2;
     SEC                                                                  ;9092C5;
@@ -2803,7 +2803,7 @@ Simple_Samus_Y_Movement_duplicate:
     RTS                                                                  ;9092CD;
 
 
-.movingUpDown:
+  .movingUpDown:
     JSR.W CheckIfSamusHasStartedFalling                                  ;9092CE;
     JSR.W Samus_Y_Movement_WithSpeedCalculations                         ;9092D1;
     SEC                                                                  ;9092D4;
@@ -2817,7 +2817,7 @@ UNUSED_MoveSamus_9092D6:
     BRA .uselessBranch                                                   ;9092D9; >.<
 
 
-.uselessBranch:
+  .uselessBranch:
     LDA.W $0AFA                                                          ;9092DB;
     CLC                                                                  ;9092DE;
     ADC.B $12                                                            ;9092DF;
@@ -2846,32 +2846,32 @@ RTS_9092E9:
     BRA .return                                                          ;909306;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.B $8B                                                            ;909308;
     BIT.W #$0200                                                         ;90930A;
     BNE .leftwards                                                       ;90930D;
     BRA .return                                                          ;90930F;
 
 
-.rightwards:
+  .rightwards:
     JSR.W CalculateSamusXDisplacement_ForMovingRight                     ;909311;
     BRA .merge                                                           ;909314;
 
 
-.leftwards:
+  .leftwards:
     JSR.W CalculateSamusXDisplacement_ForMovingLeft                      ;909316;
 
-.merge:
+  .merge:
     LDA.B $12                                                            ;909319;
     BMI .moveLeft                                                        ;90931B;
     JSR.W MoveSamus_Right                                                ;90931D;
     BRA +                                                                ;909320;
 
 
-.moveLeft:
+  .moveLeft:
     JSR.W MoveSamus_Left                                                 ;909322;
 
-  + LDA.W $0DD0                                                          ;909325;
++   LDA.W $0DD0                                                          ;909325;
     BNE .return                                                          ;909328;
     LDA.W $0A1E                                                          ;90932A;
     AND.W #$00FF                                                         ;90932D;
@@ -2882,13 +2882,13 @@ RTS_9092E9:
     BRA +                                                                ;90933B;
 
 
-.leftFacing:
+  .leftFacing:
     LDA.W #$000A                                                         ;90933D;
     STA.W $0A28                                                          ;909340;
 
-  + STZ.W $0DC6                                                          ;909343;
++   STZ.W $0DC6                                                          ;909343;
 
-.return:
+  .return:
     PLP                                                                  ;909346;
     RTS                                                                  ;909347;
 
@@ -2913,7 +2913,7 @@ MoveSamus_Left:
     BNE .checkSolidEnemyCollision                                        ;909362;
     INC.B $12                                                            ;909364;
 
-.checkSolidEnemyCollision:
+  .checkSolidEnemyCollision:
     JSL.L Samus_vs_SolidEnemy_CollisionDetection                         ;909366;
     STA.W $0DD0                                                          ;90936A;
     TAX                                                                  ;90936D;
@@ -2925,7 +2925,7 @@ MoveSamus_Left:
     RTS                                                                  ;90937B;
 
 
-.noSolidEnemyCollision:
+  .noSolidEnemyCollision:
     LDA.B $12                                                            ;90937C;
     EOR.W #$FFFF                                                         ;90937E;
     STA.B $12                                                            ;909381;
@@ -2936,7 +2936,7 @@ MoveSamus_Left:
     BNE .moveRight                                                       ;90938B;
     INC.B $12                                                            ;90938D;
 
-.moveRight:
+  .moveRight:
     JSL.L MoveSamusRight_NoSolidEnemyCollision                           ;90938F;
     LDA.B $14                                                            ;909393;
     STA.W $0DAC                                                          ;909395;
@@ -2947,7 +2947,7 @@ MoveSamus_Left:
     BEQ +                                                                ;9093A3;
     STZ.W $0DD0                                                          ;9093A5;
 
-  + JSR.W Kill_SamusXSpeed_IfCollisionDetected                           ;9093A8;
++   JSR.W Kill_SamusXSpeed_IfCollisionDetected                           ;9093A8;
     JSL.L Align_SamusYPosition_WithNonSquareSlope                        ;9093AB;
     PLP                                                                  ;9093AF;
     RTS                                                                  ;9093B0;
@@ -2967,7 +2967,7 @@ MoveSamus_Right:
     RTS                                                                  ;9093C9;
 
 
-  + JSL.L MoveSamusRight_NoSolidEnemyCollision                           ;9093CA;
++   JSL.L MoveSamusRight_NoSolidEnemyCollision                           ;9093CA;
     LDA.B $14                                                            ;9093CE;
     STA.W $0DB0                                                          ;9093D0;
     LDA.B $12                                                            ;9093D3;
@@ -2977,7 +2977,7 @@ MoveSamus_Right:
     BNE +                                                                ;9093DE;
     STZ.W $0DD0                                                          ;9093E0;
 
-  + JSR.W Kill_SamusXSpeed_IfCollisionDetected                           ;9093E3;
++   JSR.W Kill_SamusXSpeed_IfCollisionDetected                           ;9093E3;
     JSL.L Align_SamusYPosition_WithNonSquareSlope                        ;9093E6;
     PLP                                                                  ;9093EA;
     RTS                                                                  ;9093EB;
@@ -2998,7 +2998,7 @@ MoveSamus_Up:
     BNE +                                                                ;909404;
     INC.B $12                                                            ;909406;
 
-  + JSL.L Samus_vs_SolidEnemy_CollisionDetection                         ;909408;
++   JSL.L Samus_vs_SolidEnemy_CollisionDetection                         ;909408;
     STA.W $0DD0                                                          ;90940C;
     TAX                                                                  ;90940F;
     BEQ +                                                                ;909410;
@@ -3008,7 +3008,7 @@ MoveSamus_Up:
     RTS                                                                  ;909419;
 
 
-  + LDA.B $12                                                            ;90941A;
++   LDA.B $12                                                            ;90941A;
     EOR.W #$FFFF                                                         ;90941C;
     STA.B $12                                                            ;90941F;
     LDA.B $14                                                            ;909421;
@@ -3018,7 +3018,7 @@ MoveSamus_Up:
     BNE +                                                                ;909429;
     INC.B $12                                                            ;90942B;
 
-  + JSL.L MoveSamusDown_NoSolidEnemyCollision                            ;90942D;
++   JSL.L MoveSamusDown_NoSolidEnemyCollision                            ;90942D;
     LDA.B $14                                                            ;909431;
     STA.W $0DB4                                                          ;909433;
     LDA.B $12                                                            ;909436;
@@ -3043,7 +3043,7 @@ MoveSamus_Down:
     RTS                                                                  ;90945A;
 
 
-.move:
+  .move:
     JSL.L MoveSamusDown_NoSolidEnemyCollision                            ;90945B;
     LDA.B $14                                                            ;90945F;
     STA.W $0DB8                                                          ;909461;
@@ -3067,7 +3067,7 @@ SamusMovementHandler_ReleasedFromGrappleSwing:
     LDA.W #SamusMovementHandler_Normal                                   ;909487;
     STA.W $0A58                                                          ;90948A;
 
-.up:
+  .up:
     LDA.W #$0002                                                         ;90948D;
     STA.W $0B4A                                                          ;909490;
     JSR.W DetermineGrappleSwing_SamusXSpeedTable_EntryPointer            ;909493;
@@ -3087,17 +3087,17 @@ SamusMovementHandler_ReleasedFromGrappleSwing:
     BRA .YMovement                                                       ;9094B7;
 
 
-.pressingLeftRight:
+  .pressingLeftRight:
     JSR.W MoveSamus_Horizontally                                         ;9094B9;
 
-.YMovement:
+  .YMovement:
     JSR.W Samus_Y_Movement_WithSpeedCalculations                         ;9094BC;
     LDA.W $0DC6                                                          ;9094BF;
     BEQ .return                                                          ;9094C2;
     LDA.W #SamusMovementHandler_Normal                                   ;9094C4;
     STA.W $0A58                                                          ;9094C7;
 
-.return:
+  .return:
     RTS                                                                  ;9094CA;
 
 
@@ -3114,7 +3114,7 @@ SamusMovementHandler_SamusDrained_Falling:
     STZ.W $0B2C                                                          ;9094E5;
     STZ.W $0B2E                                                          ;9094E8;
 
-.return:
+  .return:
     RTS                                                                  ;9094EB;
 
 
@@ -3140,16 +3140,16 @@ Main_Scrolling_Routine:
     BRA .grappleScrollHorizontalEnd                                      ;909511;
 
 
-  + CMP.W #$0060                                                         ;909513;
++   CMP.W #$0060                                                         ;909513;
     BCS .grappleScrollHorizontalEnd                                      ;909516;
 
-.grappleScrollLeft:
+  .grappleScrollLeft:
     LDA.W $0911                                                          ;909518;
     SEC                                                                  ;90951B;
     SBC.W #$0003                                                         ;90951C;
     STA.W $0911                                                          ;90951F;
 
-.grappleScrollHorizontalEnd:
+  .grappleScrollHorizontalEnd:
     LDA.W $0AFA                                                          ;909522;
     BMI .grappleScrollVerticalEnd                                        ;909525;
     SEC                                                                  ;909527;
@@ -3164,34 +3164,34 @@ Main_Scrolling_Routine:
     BRA .grappleScrollVerticalEnd                                        ;90953C;
 
 
-  + CMP.W #$0070                                                         ;90953E;
++   CMP.W #$0070                                                         ;90953E;
     BCS .grappleScrollVerticalEnd                                        ;909541;
 
-.grappleScrollUp:
+  .grappleScrollUp:
     LDA.W $0915                                                          ;909543;
     SEC                                                                  ;909546;
     SBC.W #$0003                                                         ;909547;
     STA.W $0915                                                          ;90954A;
 
-.grappleScrollVerticalEnd:
+  .grappleScrollVerticalEnd:
     JSL.L HandleScrollZones_HorizontalAutoscrolling                      ;90954D;
     JSL.L HandleScrollZones_VerticalAutoscrolling                        ;909551;
     BRA .finishedScrolling                                               ;909555;
 
 
-.normalScrolling:
+  .normalScrolling:
     JSR.W Calculate_CameraXSpeed                                         ;909557;
     JSR.W Handle_Horizontal_Scrolling                                    ;90955A;
     JSR.W CalculateVerticalDistanceSamusMovedLastFrame                   ;90955D;
     JSR.W Handle_Vertical_Scrolling                                      ;909560;
 
-.finishedScrolling:
+  .finishedScrolling:
     LDX.W $07E9                                                          ;909563;
     BEQ +                                                                ;909566;
     LDX.W #$0000                                                         ;909568;
     JSR.W ($07E9,X)                                                      ;90956B;
 
-  + LDA.W $0AF6                                                          ;90956E;
++   LDA.W $0AF6                                                          ;90956E;
     STA.W $0B10                                                          ;909571;
     LDA.W $0AF8                                                          ;909574;
     STA.W $0B12                                                          ;909577;
@@ -3210,7 +3210,7 @@ ScrollingFinishedHook_SporeSpawnFight:
     BCC .return                                                          ;90958F;
     STA.W $0915                                                          ;909591;
 
-.return:
+  .return:
     RTS                                                                  ;909594;
 
 
@@ -3235,7 +3235,7 @@ Handle_Horizontal_Scrolling:
     JMP.W .return                                                        ;9095AF;
 
 
-  + LDA.W $0911                                                          ;9095B2;
++   LDA.W $0911                                                          ;9095B2;
     STA.B $12                                                            ;9095B5;
     LDA.W $0A52                                                          ;9095B7;
     BNE .backwards                                                       ;9095BA;
@@ -3244,7 +3244,7 @@ Handle_Horizontal_Scrolling:
     CMP.W #$0010                                                         ;9095C2;
     BNE .forwards                                                        ;9095C5;
 
-.backwards:
+  .backwards:
     LDA.W $0A1E                                                          ;9095C7;
     AND.W #$00FF                                                         ;9095CA;
     CMP.W #$0004                                                         ;9095CD;
@@ -3252,7 +3252,7 @@ Handle_Horizontal_Scrolling:
     BRA .left                                                            ;9095D2;
 
 
-.forwards:
+  .forwards:
     LDA.W $0B4A                                                          ;9095D4;
     CMP.W #$0001                                                         ;9095D7;
     BEQ .backwards                                                       ;9095DA;
@@ -3261,7 +3261,7 @@ Handle_Horizontal_Scrolling:
     CMP.W #$0004                                                         ;9095E2;
     BEQ .left                                                            ;9095E5;
 
-.right:
+  .right:
     LDX.W $0941                                                          ;9095E7;
     LDA.W $0AF6                                                          ;9095EA;
     SEC                                                                  ;9095ED;
@@ -3270,14 +3270,14 @@ Handle_Horizontal_Scrolling:
     BRA .merge                                                           ;9095F4;
 
 
-.left:
+  .left:
     LDX.W $0941                                                          ;9095F6;
     LDA.W $0AF6                                                          ;9095F9;
     SEC                                                                  ;9095FC;
     SBC.W .facingLeft,X                                                  ;9095FD;
     STA.W $0B0A                                                          ;909600;
 
-.merge:
+  .merge:
     LDA.W $0B0A                                                          ;909603;
     CMP.W $0911                                                          ;909606;
     BEQ .return                                                          ;909609;
@@ -3293,7 +3293,7 @@ Handle_Horizontal_Scrolling:
     BRA .return                                                          ;909624;
 
 
-  + LDA.W $090F                                                          ;909626;
++   LDA.W $090F                                                          ;909626;
     SEC                                                                  ;909629;
     SBC.W $0DA4                                                          ;90962A;
     STA.W $090F                                                          ;90962D;
@@ -3302,7 +3302,7 @@ Handle_Horizontal_Scrolling:
     STA.W $0911                                                          ;909636;
     JSL.L HandleScrollZones_ScrollingLeft                                ;909639;
 
-.return:
+  .return:
     PLP                                                                  ;90963D;
     RTS                                                                  ;90963E;
 
@@ -3323,7 +3323,7 @@ Handle_Vertical_Scrolling:
     JMP.W .return                                                        ;90965E;
 
 
-  + LDA.W $0915                                                          ;909661;
++   LDA.W $0915                                                          ;909661;
     STA.B $12                                                            ;909664;
     LDA.W $0B36                                                          ;909666;
     CMP.W #$0001                                                         ;909669;
@@ -3335,13 +3335,13 @@ Handle_Vertical_Scrolling:
     BRA +                                                                ;909678;
 
 
-.up:
+  .up:
     LDA.W $0AFA                                                          ;90967A;
     SEC                                                                  ;90967D;
     SBC.W $07AF                                                          ;90967E;
     STA.W $0B0E                                                          ;909681;
 
-  + LDA.W $0B0E                                                          ;909684;
++   LDA.W $0B0E                                                          ;909684;
     CMP.W $0915                                                          ;909687;
     BEQ .return                                                          ;90968A;
     BMI .idealLessThanActual                                             ;90968C;
@@ -3356,7 +3356,7 @@ Handle_Vertical_Scrolling:
     BRA .return                                                          ;9096A5;
 
 
-.idealLessThanActual:
+  .idealLessThanActual:
     LDA.W $0913                                                          ;9096A7;
     SEC                                                                  ;9096AA;
     SBC.W $0DA8                                                          ;9096AB;
@@ -3366,7 +3366,7 @@ Handle_Vertical_Scrolling:
     STA.W $0915                                                          ;9096B7;
     JSL.L HandleScrollZones_ScrollingUp                                  ;9096BA;
 
-.return:
+  .return:
     PLP                                                                  ;9096BE;
     RTS                                                                  ;9096BF;
 
@@ -3380,7 +3380,7 @@ Calculate_CameraXSpeed:
     BRA .right                                                           ;9096CB;
 
 
-  + LDA.W $0B12                                                          ;9096CD;
++   LDA.W $0B12                                                          ;9096CD;
     SEC                                                                  ;9096D0;
     SBC.W $0AF8                                                          ;9096D1;
     STA.W $0DA4                                                          ;9096D4;
@@ -3392,7 +3392,7 @@ Calculate_CameraXSpeed:
     BRA .return                                                          ;9096E4;
 
 
-.right:
+  .right:
     LDA.W $0AF8                                                          ;9096E6;
     SEC                                                                  ;9096E9;
     SBC.W $0B12                                                          ;9096EA;
@@ -3403,7 +3403,7 @@ Calculate_CameraXSpeed:
     ADC.W SamusPhysicsConstants_CameraXOffsetFromSamusWhenTurning        ;9096F7;
     STA.W $0DA2                                                          ;9096FA;
 
-.return:
+  .return:
     PLP                                                                  ;9096FD;
     RTS                                                                  ;9096FE;
 
@@ -3417,7 +3417,7 @@ CalculateVerticalDistanceSamusMovedLastFrame:
     BRA .down                                                            ;90970A;
 
 
-  + LDA.W $0B16                                                          ;90970C;
++   LDA.W $0B16                                                          ;90970C;
     SEC                                                                  ;90970F;
     SBC.W $0AFC                                                          ;909710;
     STA.W $0DA8                                                          ;909713;
@@ -3429,7 +3429,7 @@ CalculateVerticalDistanceSamusMovedLastFrame:
     BRA .return                                                          ;909723;
 
 
-.down:
+  .down:
     LDA.W $0AFC                                                          ;909725;
     SEC                                                                  ;909728;
     SBC.W $0B16                                                          ;909729;
@@ -3440,7 +3440,7 @@ CalculateVerticalDistanceSamusMovedLastFrame:
     ADC.W SamusPhysicsConstants_CameraXOffsetFromSamusWhenTurning        ;909736;
     STA.W $0DA6                                                          ;909739;
 
-.return:
+  .return:
     PLP                                                                  ;90973C;
     RTS                                                                  ;90973D;
 
@@ -3459,27 +3459,27 @@ Handle_Samus_XExtraRunSpeed:
     BRA .gravity                                                         ;909756;
 
 
-.negativeYPosition:
+  .negativeYPosition:
     LDA.W $1962                                                          ;909758;
     BMI .gravity                                                         ;90975B;
     CMP.B $12                                                            ;90975D;
     BMI .gotoNotRunning                                                  ;90975F;
 
-.gravity:
+  .gravity:
     LDX.W #$0000                                                         ;909761;
     BRA .gravityContinued                                                ;909764;
 
 
-.submerged:
+  .submerged:
     LDA.W $197E                                                          ;909766;
     BIT.W #$0004                                                         ;909769;
     BNE .gravity                                                         ;90976C;
 
-.gotoNotRunning:
+  .gotoNotRunning:
     JMP.W .notRunning                                                    ;90976E;
 
 
-.gravityContinued:
+  .gravityContinued:
     LDA.W $0A1F                                                          ;909771;
     AND.W #$00FF                                                         ;909774;
     CMP.W #$0001                                                         ;909777;
@@ -3487,14 +3487,14 @@ Handle_Samus_XExtraRunSpeed:
     JMP.W .notRunning                                                    ;90977C;
 
 
-.checkDash:
+  .checkDash:
     LDA.B $8B                                                            ;90977F;
     AND.W $09B6                                                          ;909781;
     BNE .running                                                         ;909784;
     JMP.W .notRunning                                                    ;909786;
 
 
-.running:
+  .running:
     LDA.W $09A2                                                          ;909789;
     BIT.W #$2000                                                         ;90978C;
     BEQ .noSpeedBooster                                                  ;90978F;
@@ -3507,7 +3507,7 @@ Handle_Samus_XExtraRunSpeed:
     LDA.L SpeedBoostTimerResetValues                                     ;9097A2;
     STA.W $0B3E                                                          ;9097A6;
 
-.hasMomentum:
+  .hasMomentum:
     LDA.W $0B42                                                          ;9097A9;
     CMP.W SamusPhysicsConstants_MaxXExtraRunSpeeds_SpeedBooster,X        ;9097AC;
     BMI .accelerating                                                    ;9097AF;
@@ -3521,14 +3521,14 @@ Handle_Samus_XExtraRunSpeed:
     BRA .done                                                            ;9097C5;
 
 
-.noSpeedBooster:
+  .noSpeedBooster:
     LDA.W $0B3C                                                          ;9097C7;
     BNE +                                                                ;9097CA;
     LDA.W #$0001                                                         ;9097CC;
     STA.W $0B3C                                                          ;9097CF;
     STZ.W $0B3E                                                          ;9097D2;
 
-  + LDA.W $0B42                                                          ;9097D5;
++   LDA.W $0B42                                                          ;9097D5;
     CMP.W SamusPhysicsConstants_MaxXExtraRunSpeeds_NoSpeedBooster_0,X    ;9097D8;
     BMI .accelerating                                                    ;9097DB;
     LDA.W $0B44                                                          ;9097DD;
@@ -3541,7 +3541,7 @@ Handle_Samus_XExtraRunSpeed:
     BRA .done                                                            ;9097F1;
 
 
-.accelerating:
+  .accelerating:
     LDA.W $0B44                                                          ;9097F3;
     CLC                                                                  ;9097F6;
     ADC.W SamusPhysicsConstants_XSubAccelerations_DashHeld,X             ;9097F7;
@@ -3552,13 +3552,13 @@ Handle_Samus_XExtraRunSpeed:
     BRA .done                                                            ;909806;
 
 
-.notRunning:
+  .notRunning:
     LDA.W $0B3C                                                          ;909808;
     BNE .done                                                            ;90980B;
     STZ.W $0B42                                                          ;90980D;
     STZ.W $0B44                                                          ;909810;
 
-.done:
+  .done:
     LDA.W $0B3E                                                          ;909813;
     AND.W #$FF00                                                         ;909816;
     CMP.W #$0400                                                         ;909819;
@@ -3566,7 +3566,7 @@ Handle_Samus_XExtraRunSpeed:
     LDA.W #$0001                                                         ;90981E;
     STA.W $0A6E                                                          ;909821;
 
-.return:
+  .return:
     PLP                                                                  ;909824;
     RTS                                                                  ;909825;
 
@@ -3604,7 +3604,7 @@ MoveSamus_Left_NoCollisionDetection:
     BNE +                                                                ;909862;
     INC.B $12                                                            ;909864;
 
-  + LDA.B $14                                                            ;909866;
++   LDA.B $14                                                            ;909866;
     STA.W $0DAC                                                          ;909868;
     LDA.B $12                                                            ;90986B;
     STA.W $0DAA                                                          ;90986D;
@@ -3644,7 +3644,7 @@ MoveSamus_Up_NoCollisionDetection:
     BNE +                                                                ;9098AD;
     INC.B $12                                                            ;9098AF;
 
-  + LDA.B $14                                                            ;9098B1;
++   LDA.B $14                                                            ;9098B1;
     STA.W $0DB4                                                          ;9098B3;
     LDA.B $12                                                            ;9098B6;
     STA.W $0DB2                                                          ;9098B8;
@@ -3668,18 +3668,18 @@ Make_Samus_Jump:
     BRA .normalGravity                                                   ;9098D7;
 
 
-.negativeYPosition:
+  .negativeYPosition:
     LDA.W $1962                                                          ;9098D9;
     BMI .normalGravity                                                   ;9098DC;
     CMP.B $12                                                            ;9098DE;
     BMI .submergedInAcidLava                                             ;9098E0;
 
-.normalGravity:
+  .normalGravity:
     LDX.W #$0000                                                         ;9098E2;
     BRA .merge                                                           ;9098E5;
 
 
-.submergedInWater:
+  .submergedInWater:
     LDA.W $197E                                                          ;9098E7;
     BIT.W #$0004                                                         ;9098EA;
     BNE .normalGravity                                                   ;9098ED;
@@ -3687,10 +3687,10 @@ Make_Samus_Jump:
     BRA .merge                                                           ;9098F2;
 
 
-.submergedInAcidLava:
+  .submergedInAcidLava:
     LDX.W #$0004                                                         ;9098F4;
 
-.merge:
+  .merge:
     LDA.W $09A2                                                          ;9098F7;
     BIT.W #$0100                                                         ;9098FA;
     BNE .hiJumpEquipped                                                  ;9098FD;
@@ -3701,13 +3701,13 @@ Make_Samus_Jump:
     BRA +                                                                ;90990B;
 
 
-.hiJumpEquipped:
+  .hiJumpEquipped:
     LDA.W SamusPhysicsConstants_InitialYSubSpeeds_HiJumpJumping,X        ;90990D;
     STA.W $0B2C                                                          ;909910;
     LDA.W SamusPhysicsConstants_InitialYSpeeds_HiJumpJumping,X           ;909913;
     STA.W $0B2E                                                          ;909916;
 
-  + LDA.W $09A2                                                          ;909919;
++   LDA.W $09A2                                                          ;909919;
     BIT.W #$2000                                                         ;90991C;
     BEQ +                                                                ;90991F;
     LDA.W $0B42                                                          ;909921;
@@ -3722,7 +3722,7 @@ Make_Samus_Jump:
     ADC.B $12                                                            ;909935;
     STA.W $0B2E                                                          ;909937;
 
-  + STZ.W $0A9E                                                          ;90993A;
++   STZ.W $0A9E                                                          ;90993A;
     STZ.W $0AA0                                                          ;90993D;
     LDA.W #$0001                                                         ;909940;
     STA.W $0B36                                                          ;909943;
@@ -3748,18 +3748,18 @@ Make_Samus_WallJump:
     BRA .normalGravity                                                   ;909964;
 
 
-.negativeYPosition:
+  .negativeYPosition:
     LDA.W $1962                                                          ;909966;
     BMI .normalGravity                                                   ;909969;
     CMP.B $12                                                            ;90996B;
     BMI .submergedInAcidLava                                             ;90996D;
 
-.normalGravity:
+  .normalGravity:
     LDX.W #$0000                                                         ;90996F;
     BRA .merge                                                           ;909972;
 
 
-.submergedInWater:
+  .submergedInWater:
     LDA.W $197E                                                          ;909974;
     BIT.W #$0004                                                         ;909977;
     BNE .normalGravity                                                   ;90997A;
@@ -3767,10 +3767,10 @@ Make_Samus_WallJump:
     BRA .merge                                                           ;90997F;
 
 
-.submergedInAcidLava:
+  .submergedInAcidLava:
     LDX.W #$0004                                                         ;909981;
 
-.merge:
+  .merge:
     LDA.W $09A2                                                          ;909984;
     BIT.W #$0100                                                         ;909987;
     BNE .hiJumpEquipped                                                  ;90998A;
@@ -3781,13 +3781,13 @@ Make_Samus_WallJump:
     BRA +                                                                ;909998;
 
 
-.hiJumpEquipped:
+  .hiJumpEquipped:
     LDA.W SamusPhysicsConstants_InitialYSubSpeeds_HiJumpWallJumping,X    ;90999A;
     STA.W $0B2C                                                          ;90999D;
     LDA.W SamusPhysicsConstants_InitialYSpeeds_HiJumpWallJumping,X       ;9099A0;
     STA.W $0B2E                                                          ;9099A3;
 
-  + LDA.W $09A2                                                          ;9099A6;
++   LDA.W $09A2                                                          ;9099A6;
     BIT.W #$2000                                                         ;9099A9;
     BEQ +                                                                ;9099AC;
     LDA.W $0B42                                                          ;9099AE;
@@ -3802,7 +3802,7 @@ Make_Samus_WallJump:
     ADC.B $12                                                            ;9099C2;
     STA.W $0B2E                                                          ;9099C4;
 
-  + STZ.W $0A9E                                                          ;9099C7;
++   STZ.W $0A9E                                                          ;9099C7;
     STZ.W $0AA0                                                          ;9099CA;
     LDA.W #$0001                                                         ;9099CD;
     STA.W $0B36                                                          ;9099D0;
@@ -3828,18 +3828,18 @@ SetSamusYSpeedForKnockback:
     BRA .inAir                                                           ;9099F1;
 
 
-.negativeYPosition:
+  .negativeYPosition:
     LDA.W $1962                                                          ;9099F3;
     BMI .inAir                                                           ;9099F6;
     CMP.B $12                                                            ;9099F8;
     BMI .inAcidLava                                                      ;9099FA;
 
-.inAir:
+  .inAir:
     LDX.W #$0000                                                         ;9099FC;
     BRA .merge                                                           ;9099FF;
 
 
-.inWater:
+  .inWater:
     LDA.W $197E                                                          ;909A01;
     BIT.W #$0004                                                         ;909A04;
     BNE .inAir                                                           ;909A07;
@@ -3847,10 +3847,10 @@ SetSamusYSpeedForKnockback:
     BRA .merge                                                           ;909A0C;
 
 
-.inAcidLava:
+  .inAcidLava:
     LDX.W #$0004                                                         ;909A0E;
 
-.merge:
+  .merge:
     LDA.W SamusPhysicsConstants_InitialYSubSpeeds_Knockback,X            ;909A11;
     STA.W $0B2C                                                          ;909A14;
     LDA.W SamusPhysicsConstants_InitialYSpeeds_Knockback,X               ;909A17;
@@ -3878,18 +3878,18 @@ Make_Samus_BombJump:
     BRA .normalGravity                                                   ;909A44;
 
 
-.negativeYPosition:
+  .negativeYPosition:
     LDA.W $1962                                                          ;909A46;
     BMI .normalGravity                                                   ;909A49;
     CMP.B $12                                                            ;909A4B;
     BMI .submergedInAcidLava                                             ;909A4D;
 
-.normalGravity:
+  .normalGravity:
     LDX.W #$0000                                                         ;909A4F;
     BRA .merge                                                           ;909A52;
 
 
-.submergedInWater:
+  .submergedInWater:
     LDA.W $197E                                                          ;909A54;
     BIT.W #$0004                                                         ;909A57;
     BNE .normalGravity                                                   ;909A5A;
@@ -3897,10 +3897,10 @@ Make_Samus_BombJump:
     BRA .merge                                                           ;909A5F;
 
 
-.submergedInAcidLava:
+  .submergedInAcidLava:
     LDX.W #$0004                                                         ;909A61;
 
-.merge:
+  .merge:
     LDA.W SamusPhysicsConstants_InitialYSubSpeeds_BombJump,X             ;909A64;
     STA.W $0B2C                                                          ;909A67;
     LDA.W SamusPhysicsConstants_InitialYSpeeds_BombJump,X                ;909A6A;
@@ -3929,7 +3929,7 @@ CalculateSamusXBaseSpeed_DecelerationAllowed:
     BMI .return                                                          ;909A9C;
     BEQ .checkMaxSubSpeed                                                ;909A9E;
 
-.capXSpeed:
+  .capXSpeed:
     LDA.W $0004,X                                                        ;909AA0;
     STA.W $0B46                                                          ;909AA3;
     LDA.W $0006,X                                                        ;909AA6;
@@ -3937,7 +3937,7 @@ CalculateSamusXBaseSpeed_DecelerationAllowed:
     BRA .return                                                          ;909AAC;
 
 
-.checkMaxSubSpeed:
+  .checkMaxSubSpeed:
     LDA.W $0B48                                                          ;909AAE;
     CMP.W $0006,X                                                        ;909AB1;
     BMI .return                                                          ;909AB4;
@@ -3945,7 +3945,7 @@ CalculateSamusXBaseSpeed_DecelerationAllowed:
     BRA .capXSpeed                                                       ;909AB8;
 
 
-.decelerating:
+  .decelerating:
     SEP #$20                                                             ;909ABA;
     LDA.W $0B4C                                                          ;909ABC;
     BEQ .zeroMultiplier                                                  ;909ABF;
@@ -3971,14 +3971,14 @@ CalculateSamusXBaseSpeed_DecelerationAllowed:
     BRA +                                                                ;909AE9;
 
 
-.zeroMultiplier:
+  .zeroMultiplier:
     REP #$20                                                             ;909AEB;
     LDA.W $000A,X                                                        ;909AED;
     STA.B $14                                                            ;909AF0;
     LDA.W $0008,X                                                        ;909AF2;
     STA.B $12                                                            ;909AF5;
 
-  + LDA.W $0B48                                                          ;909AF7;
++   LDA.W $0B48                                                          ;909AF7;
     SEC                                                                  ;909AFA;
     SBC.B $14                                                            ;909AFB;
     STA.W $0B48                                                          ;909AFD;
@@ -3990,7 +3990,7 @@ CalculateSamusXBaseSpeed_DecelerationAllowed:
     STZ.W $0B48                                                          ;909B0D;
     STZ.W $0B4A                                                          ;909B10;
 
-.return:
+  .return:
     LDA.W $0B46                                                          ;909B13;
     STA.B $12                                                            ;909B16;
     LDA.W $0B48                                                          ;909B18;
@@ -4016,7 +4016,7 @@ CalculateSamusXBaseSpeed_DecelerationDisallowed:
     BMI .returnClear                                                     ;909B40;
     BEQ .checkMaxSubSpeed                                                ;909B42;
 
-.capXSpeed:
+  .capXSpeed:
     LDA.W $0004,X                                                        ;909B44;
     STA.W $0B46                                                          ;909B47;
     LDA.W $0006,X                                                        ;909B4A;
@@ -4024,7 +4024,7 @@ CalculateSamusXBaseSpeed_DecelerationDisallowed:
     BRA .returnSet                                                       ;909B50;
 
 
-.checkMaxSubSpeed:
+  .checkMaxSubSpeed:
     LDA.W $0B48                                                          ;909B52;
     CMP.W $0006,X                                                        ;909B55;
     BMI .returnClear                                                     ;909B58;
@@ -4032,7 +4032,7 @@ CalculateSamusXBaseSpeed_DecelerationDisallowed:
     BRA .capXSpeed                                                       ;909B5C;
 
 
-.turningAround:
+  .turningAround:
     SEP #$20                                                             ;909B5E;
     LDA.W $0B4C                                                          ;909B60;
     BEQ .zeroMultiplier                                                  ;909B63;
@@ -4058,14 +4058,14 @@ CalculateSamusXBaseSpeed_DecelerationDisallowed:
     BRA +                                                                ;909B8D;
 
 
-.zeroMultiplier:
+  .zeroMultiplier:
     REP #$20                                                             ;909B8F;
     LDA.W $000A,X                                                        ;909B91;
     STA.B $14                                                            ;909B94;
     LDA.W $0008,X                                                        ;909B96;
     STA.B $12                                                            ;909B99;
 
-  + LDA.W $0B48                                                          ;909B9B;
++   LDA.W $0B48                                                          ;909B9B;
     SEC                                                                  ;909B9E;
     SBC.B $14                                                            ;909B9F;
     STA.W $0B48                                                          ;909BA1;
@@ -4077,7 +4077,7 @@ CalculateSamusXBaseSpeed_DecelerationDisallowed:
     STZ.W $0B48                                                          ;909BB1;
     STZ.W $0B4A                                                          ;909BB4;
 
-.returnClear:
+  .returnClear:
     LDA.W $0B46                                                          ;909BB7;
     STA.B $12                                                            ;909BBA;
     LDA.W $0B48                                                          ;909BBC;
@@ -4087,7 +4087,7 @@ CalculateSamusXBaseSpeed_DecelerationDisallowed:
     RTS                                                                  ;909BC3;
 
 
-.returnSet:
+  .returnSet:
     LDA.W $0B46                                                          ;909BC4;
     STA.B $12                                                            ;909BC7;
     LDA.W $0B48                                                          ;909BC9;
@@ -4111,17 +4111,17 @@ Determine_SamusXSpeedTable_EntryPointer:
     BRA .gotoSpeedTableSet                                               ;909BE9;
 
 
-.negativeYPosition:
+  .negativeYPosition:
     LDA.W $1962                                                          ;909BEB;
     BMI .gotoSpeedTableSet                                               ;909BEE;
     CMP.B $12                                                            ;909BF0;
     BMI .submergedInAcidLava                                             ;909BF2;
 
-.gotoSpeedTableSet:
+  .gotoSpeedTableSet:
     BRA .speedTableSet                                                   ;909BF4;
 
 
-.submergedInWater:
+  .submergedInWater:
     LDA.W $197E                                                          ;909BF6;
     BIT.W #$0004                                                         ;909BF9;
     BNE .gotoSpeedTableSet                                               ;909BFC;
@@ -4130,11 +4130,11 @@ Determine_SamusXSpeedTable_EntryPointer:
     BRA .speedTableSet                                                   ;909C04;
 
 
-.submergedInAcidLava:
+  .submergedInAcidLava:
     LDA.W #SamusXSpeedTable_InLavaAcid                                   ;909C06;
     STA.W $0A6C                                                          ;909C09;
 
-.speedTableSet:
+  .speedTableSet:
     LDA.W $0A1F                                                          ;909C0C;
     AND.W #$00FF                                                         ;909C0F;
     STA.B $14                                                            ;909C12;
@@ -4164,18 +4164,18 @@ DetermineGrappleSwing_SamusXSpeedTable_EntryPointer:
     BRA .normalGravity                                                   ;909C39;
 
 
-.negativeYPosition:
+  .negativeYPosition:
     LDA.W $1962                                                          ;909C3B;
     BMI .normalGravity                                                   ;909C3E;
     CMP.B $12                                                            ;909C40;
     BMI .submergedInAcidLava                                             ;909C42;
 
-.normalGravity:
+  .normalGravity:
     LDX.W #SamusPhysicsConstants_XAccelSpeeds_DisconnectGrappleInAir     ;909C44;
     BRA .return                                                          ;909C47;
 
 
-.submergedInWater:
+  .submergedInWater:
     LDA.W $197E                                                          ;909C49;
     BIT.W #$0004                                                         ;909C4C;
     BNE .normalGravity                                                   ;909C4F;
@@ -4183,10 +4183,10 @@ DetermineGrappleSwing_SamusXSpeedTable_EntryPointer:
     BRA .return                                                          ;909C54;
 
 
-.submergedInAcidLava:
+  .submergedInAcidLava:
     LDX.W #SamusPhysicsConstants_XAccelSpeeds_DisconnectGrappleInLavaAcid   ;909C56;
 
-.return:
+  .return:
     PLP                                                                  ;909C59;
     RTS                                                                  ;909C5A;
 
@@ -4203,13 +4203,13 @@ Determine_Samus_YAcceleration:
     BRA .notSubmerged                                                    ;909C70;
 
 
-.negativeYPosition:
+  .negativeYPosition:
     LDA.W $1962                                                          ;909C72;
     BMI .notSubmerged                                                    ;909C75;
     CMP.B $12                                                            ;909C77;
     BMI .submergedInAcidLava                                             ;909C79;
 
-.notSubmerged:
+  .notSubmerged:
     LDA.W SamusPhysicsConstants_YSubAccelerationInAir                    ;909C7B;
     STA.W $0B32                                                          ;909C7E;
     LDA.W SamusPhysicsConstants_YAccelerationInAir                       ;909C81;
@@ -4217,7 +4217,7 @@ Determine_Samus_YAcceleration:
     BRA .return                                                          ;909C87;
 
 
-.submergedInWater:
+  .submergedInWater:
     LDA.W $197E                                                          ;909C89;
     BIT.W #$0004                                                         ;909C8C;
     BNE .notSubmerged                                                    ;909C8F;
@@ -4228,13 +4228,13 @@ Determine_Samus_YAcceleration:
     BRA .return                                                          ;909C9D;
 
 
-.submergedInAcidLava:
+  .submergedInAcidLava:
     LDA.W SamusPhysicsConstants_YSubAccelerationInAcidLava               ;909C9F;
     STA.W $0B32                                                          ;909CA2;
     LDA.W SamusPhysicsConstants_YAccelerationInAcidLava                  ;909CA5;
     STA.W $0B34                                                          ;909CA8;
 
-.return:
+  .return:
     RTS                                                                  ;909CAB;
 
 
@@ -4253,11 +4253,11 @@ Grapple_WallJump_Check:
     CMP.W #$0008                                                         ;909CC3;
     BEQ .facingRight                                                     ;909CC6;
 
-.gotoReturnCarryClear:
+  .gotoReturnCarryClear:
     JMP.W .returnCarryClear                                              ;909CC8;
 
 
-.facingRight:
+  .facingRight:
     LDA.W #$0001                                                         ;909CCB;
     STA.W $0B02                                                          ;909CCE;
     JSL.L Samus_vs_SolidEnemy_CollisionDetection                         ;909CD1;
@@ -4271,14 +4271,14 @@ Grapple_WallJump_Check:
     JMP.W .returnCarryClear                                              ;909CE5;
 
 
-.checkJump:
+  .checkJump:
     LDA.B $8F                                                            ;909CE8;
     BIT.W $09B4                                                          ;909CEA;
     BNE .wallJumpEnemy                                                   ;909CED;
     BRA .returnCarryClear                                                ;909CEF;
 
 
-.facingLeft:
+  .facingLeft:
     STZ.W $0B02                                                          ;909CF1;
     JSL.L Samus_vs_SolidEnemy_CollisionDetection                         ;909CF4;
     TAX                                                                  ;909CF8;
@@ -4293,7 +4293,7 @@ Grapple_WallJump_Check:
     BNE .wallJumpCollision                                               ;909D0A;
     INC.B $12                                                            ;909D0C;
 
-.wallJumpCollision:
+  .wallJumpCollision:
     JSL.L WallJumpBlockCollisionDetection                                ;909D0E;
     BCC .returnCarryClear                                                ;909D12;
     LDA.B $8F                                                            ;909D14;
@@ -4302,12 +4302,12 @@ Grapple_WallJump_Check:
     BRA .returnCarryClear                                                ;909D1B;
 
 
-.collisionDetected:
+  .collisionDetected:
     LDA.B $8F                                                            ;909D1D;
     BIT.W $09B4                                                          ;909D1F;
     BEQ .returnCarryClear                                                ;909D22;
 
-.wallJumpEnemy:
+  .wallJumpEnemy:
     LDA.B $16                                                            ;909D24;
     STA.W $0E1C                                                          ;909D26;
     PLB                                                                  ;909D29;
@@ -4316,14 +4316,14 @@ Grapple_WallJump_Check:
     RTL                                                                  ;909D2C;
 
 
-.returnCarrySet:
+  .returnCarrySet:
     PLB                                                                  ;909D2D;
     PLP                                                                  ;909D2E;
     SEC                                                                  ;909D2F;
     RTL                                                                  ;909D30;
 
 
-.returnCarryClear:
+  .returnCarryClear:
     PLB                                                                  ;909D31;
     PLP                                                                  ;909D32;
     CLC                                                                  ;909D33;
@@ -4340,7 +4340,7 @@ WallJump_Check:
     CMP.W #$0014                                                         ;909D43;
     BNE .carryClearReturn                                                ;909D46;
 
-.spinJumping:
+  .spinJumping:
     LDA.W $0A1C                                                          ;909D48;
     CMP.W #$0081                                                         ;909D4B;
     BEQ .screwAttack                                                     ;909D4E;
@@ -4352,27 +4352,27 @@ WallJump_Check:
     JMP.W .wallJumpEligibleAnimation                                     ;909D5D;
 
 
-.screwAttack:
+  .screwAttack:
     LDA.W $0A96                                                          ;909D60;
     CMP.W #$001B                                                         ;909D63;
     BMI .spinningAnimation                                               ;909D66;
     JMP.W .wallJumpEligibleAnimation                                     ;909D68;
 
 
-.spinningAnimation:
+  .spinningAnimation:
     LDA.B $8B                                                            ;909D6B;
     BIT.W #$0200                                                         ;909D6D;
     BNE .spinningPressingLeft                                            ;909D70;
     BIT.W #$0100                                                         ;909D72;
     BNE .spinningPressingRight                                           ;909D75;
 
-.carryClearReturn:
+  .carryClearReturn:
     PLP                                                                  ;909D77;
     CLC                                                                  ;909D78;
     RTS                                                                  ;909D79;
 
 
-.spinningPressingLeft:
+  .spinningPressingLeft:
     LDA.W #$0001                                                         ;909D7A;
     STA.W $0B02                                                          ;909D7D;
     JSL.L Samus_vs_SolidEnemy_CollisionDetection                         ;909D80;
@@ -4383,7 +4383,7 @@ WallJump_Check:
     BRA .collisionDetected                                               ;909D8D;
 
 
-.spinningPressingRight:
+  .spinningPressingRight:
     STZ.W $0B02                                                          ;909D8F;
     JSL.L Samus_vs_SolidEnemy_CollisionDetection                         ;909D92;
     TAX                                                                  ;909D96;
@@ -4398,11 +4398,11 @@ WallJump_Check:
     BNE .wallJumpCollisionDetection                                      ;909DA8;
     INC.B $12                                                            ;909DAA;
 
-.wallJumpCollisionDetection:
+  .wallJumpCollisionDetection:
     JSL.L WallJumpBlockCollisionDetection                                ;909DAC;
     BCC .carryClearReturn                                                ;909DB0;
 
-.collisionDetected:
+  .collisionDetected:
     LDA.W $0A1C                                                          ;909DB2;
     CMP.W #$0081                                                         ;909DB5;
     BEQ .screwAttackPose                                                 ;909DB8;
@@ -4415,7 +4415,7 @@ WallJump_Check:
     JMP.W .carryClearReturn                                              ;909DCB;
 
 
-.screwAttackPose:
+  .screwAttackPose:
     LDA.W #$0001                                                         ;909DCE;
     STA.W $0A94                                                          ;909DD1;
     LDA.W #$001A                                                         ;909DD4;
@@ -4423,7 +4423,7 @@ WallJump_Check:
     JMP.W .carryClearReturn                                              ;909DDA;
 
 
-.wallJumpEligibleAnimation:
+  .wallJumpEligibleAnimation:
     LDA.W #$FFFF                                                         ;909DDD;
     STA.W $0E1C                                                          ;909DE0;
     LDA.B $8B                                                            ;909DE3;
@@ -4432,11 +4432,11 @@ WallJump_Check:
     BIT.W #$0100                                                         ;909DEA;
     BNE .wallJumpEligiblePressingRight                                   ;909DED;
 
-.gotoReturnCarryClear:
+  .gotoReturnCarryClear:
     JMP.W .returnCarryClear                                              ;909DEF;
 
 
-.wallJumpEligiblePressingLeft:
+  .wallJumpEligiblePressingLeft:
     LDA.W #$0001                                                         ;909DF2;
     STA.W $0B02                                                          ;909DF5;
     JSL.L Samus_vs_SolidEnemy_CollisionDetection                         ;909DF8;
@@ -4450,14 +4450,14 @@ WallJump_Check:
     JMP.W .returnCarryClear                                              ;909E0C;
 
 
-.collision:
+  .collision:
     LDA.B $8F                                                            ;909E0F;
     BIT.W $09B4                                                          ;909E11;
     BNE .wallJumpEnemy                                                   ;909E14;
     BRA .returnCarryClear                                                ;909E16;
 
 
-.wallJumpEligiblePressingRight:
+  .wallJumpEligiblePressingRight:
     STZ.W $0B02                                                          ;909E18;
     JSL.L Samus_vs_SolidEnemy_CollisionDetection                         ;909E1B;
     TAX                                                                  ;909E1F;
@@ -4472,7 +4472,7 @@ WallJump_Check:
     BNE .wallJumpBlockCollisionDetection                                 ;909E31;
     INC.B $12                                                            ;909E33;
 
-.wallJumpBlockCollisionDetection:
+  .wallJumpBlockCollisionDetection:
     JSL.L WallJumpBlockCollisionDetection                                ;909E35;
     BCC .returnCarryClear                                                ;909E39;
     LDA.B $8F                                                            ;909E3B;
@@ -4481,19 +4481,19 @@ WallJump_Check:
     BRA .returnCarryClear                                                ;909E42;
 
 
-.leftCollisionDetected:
+  .leftCollisionDetected:
     LDA.B $8F                                                            ;909E44;
     BIT.W $09B4                                                          ;909E46;
     BEQ .returnCarryClear                                                ;909E49;
 
-.wallJumpEnemy:
+  .wallJumpEnemy:
     LDA.W #$0000                                                         ;909E4B;
     BEQ .checkDistanceEnemy                                              ;909E4E;
     LDA.B $12                                                            ;909E50;
     CMP.W #$0005                                                         ;909E52;
     BMI .returnCarryClear                                                ;909E55;
 
-.checkDistanceEnemy:
+  .checkDistanceEnemy:
     LDA.B $12                                                            ;909E57;
     CMP.W #$0008                                                         ;909E59;
     BPL .returnCarryClear                                                ;909E5C;
@@ -4506,14 +4506,14 @@ WallJump_Check:
     RTS                                                                  ;909E6B;
 
 
-.wallJumpBlock:
+  .wallJumpBlock:
     LDA.W #$0000                                                         ;909E6C;
     BEQ .checkDistanceBlock                                              ;909E6F;
     LDA.B $12                                                            ;909E71;
     CMP.W #$0005                                                         ;909E73;
     BMI .returnCarryClear                                                ;909E76;
 
-.checkDistanceBlock:
+  .checkDistanceBlock:
     LDA.B $12                                                            ;909E78;
     CMP.W #$0008                                                         ;909E7A;
     BPL .returnCarryClear                                                ;909E7D;
@@ -4524,7 +4524,7 @@ WallJump_Check:
     RTS                                                                  ;909E87;
 
 
-.returnCarryClear:
+  .returnCarryClear:
     PLP                                                                  ;909E88;
     CLC                                                                  ;909E89;
     RTS                                                                  ;909E8A;
@@ -4804,11 +4804,11 @@ SamusMovementHandler_Normal:
     JSR.W (.pointers,X)                                                  ;90A344;
     JSR.W UpdateSamusEchoPosition                                        ;90A347;
 
-.return:
+  .return:
     RTS                                                                  ;90A34A;
 
 
-.pointers:
+  .pointers:
     dw SamusMovement_Standing                                            ;90A34B; 0: Standing
     dw SamusMovement_Running                                             ;90A34D; 1: Running
     dw SamusMovement_Jumping                                             ;90A34F; 2: Normal jumping
@@ -4848,7 +4848,7 @@ SamusMovement_Standing:
     BRA .notFacingForward                                                ;90A390;
 
 
-.facingForward:
+  .facingForward:
     LDA.W $0E18                                                          ;90A392;
     BEQ .noChange                                                        ;90A395;
     LDA.W #$0002                                                         ;90A397;
@@ -4858,19 +4858,19 @@ SamusMovement_Standing:
     STZ.B $14                                                            ;90A3A2;
     JSL.L MoveSamusDown_NoSolidEnemyCollision                            ;90A3A4;
 
-.noChange:
+  .noChange:
     STZ.W $0DC6                                                          ;90A3A8;
     BRA .return                                                          ;90A3AB;
 
 
-.notFacingForward:
+  .notFacingForward:
     LDA.W $0A1C                                                          ;90A3AD;
     CMP.W #$0001                                                         ;90A3B0;
     BEQ .checkPressingShot                                               ;90A3B3;
     CMP.W #$0002                                                         ;90A3B5;
     BNE .moveSamus                                                       ;90A3B8;
 
-.checkPressingShot:
+  .checkPressingShot:
     LDA.B $8B                                                            ;90A3BA;
     BIT.W $09B2                                                          ;90A3BC;
     BEQ .moveSamus                                                       ;90A3BF;
@@ -4878,7 +4878,7 @@ SamusMovement_Standing:
     STA.W $0A94                                                          ;90A3C4;
     STZ.W $0A96                                                          ;90A3C7;
 
-.moveSamus:
+  .moveSamus:
     JSR.W MoveSamus_HorizontallyWithZeroBaseXSpeed                       ;90A3CA;
     JSR.W Samus_Y_Movement_NoSpeedCalculations                           ;90A3CD;
     JSL.L Cancel_SpeedBoosting                                           ;90A3D0;
@@ -4888,7 +4888,7 @@ SamusMovement_Standing:
     STZ.W $0B48                                                          ;90A3DD;
     STZ.W $0B4A                                                          ;90A3E0;
 
-.return:
+  .return:
     PLP                                                                  ;90A3E3;
     RTS                                                                  ;90A3E4;
 
@@ -4918,12 +4918,12 @@ SamusMovement_Running:
     LDA.W #$0006                                                         ;90A41B;
     JSL.L QueueSound_Lib3_Max6                                           ;90A41E;
 
-.return:
+  .return:
     PLP                                                                  ;90A422;
     RTS                                                                  ;90A423;
 
 
-.frames:
+  .frames:
 ; Presumably these frames correspond to the points when Samus' foot hits the ground
     db $00,$00,$01,$00,$00,$00,$00,$01,$00,$00                           ;90A424;
 
@@ -4952,21 +4952,21 @@ SamusMovement_SpinJumping:
     BRA +                                                                ;90A456;
 
 
-.negativeYPosition:
+  .negativeYPosition:
     LDA.W $1962                                                          ;90A458;
     BMI .nonLiquidPhysics                                                ;90A45B;
     CMP.B $14                                                            ;90A45D;
     BPL .nonLiquidPhysics                                                ;90A45F;
 
-  + LDA.W #$0001                                                         ;90A461;
++   LDA.W #$0001                                                         ;90A461;
     STA.B $12                                                            ;90A464;
     BRA .determinedLiquidPhysics                                         ;90A466;
 
 
-.nonLiquidPhysics:
+  .nonLiquidPhysics:
     STZ.B $12                                                            ;90A468;
 
-.determinedLiquidPhysics:
+  .determinedLiquidPhysics:
     LDA.B $12                                                            ;90A46A;
     BNE .liquidPhysics                                                   ;90A46C;
     LDA.W $09A2                                                          ;90A46E;
@@ -4980,11 +4980,11 @@ SamusMovement_SpinJumping:
     BRA .liquidPhysics                                                   ;90A483;
 
 
-.gotoScrewAttack:
+  .gotoScrewAttack:
     JMP.W .screwAttack                                                   ;90A485;
 
 
-.spaceJumpEligible:
+  .spaceJumpEligible:
     LDA.W $0B36                                                          ;90A488;
     CMP.W #$0002                                                         ;90A48B;
     BNE .screwAttackEligible                                             ;90A48E;
@@ -4998,14 +4998,14 @@ SamusMovement_SpinJumping:
     BRA +                                                                ;90A4A2;
 
 
-.airPhysics:
+  .airPhysics:
     LDA.W $0B2D                                                          ;90A4A4;
     CMP.W SamusPhysicsConstants_SpaceJumpMinimumYVelocityInAir           ;90A4A7;
     BMI .screwAttackEligible                                             ;90A4AA;
     CMP.W SamusPhysicsConstants_SpaceJumpMaximumYVelocityInAir           ;90A4AC;
     BPL .screwAttackEligible                                             ;90A4AF;
 
-  + LDA.W $0DFA                                                          ;90A4B1;
++   LDA.W $0DFA                                                          ;90A4B1;
     AND.W #$FF00                                                         ;90A4B4;
     ORA.W #$0001                                                         ;90A4B7;
     STA.W $0DFA                                                          ;90A4BA;
@@ -5014,7 +5014,7 @@ SamusMovement_SpinJumping:
     BEQ .screwAttackEligible                                             ;90A4C2;
     JSL.L Make_Samus_Jump                                                ;90A4C4;
 
-.screwAttackEligible:
+  .screwAttackEligible:
     LDA.W $0A1C                                                          ;90A4C8;
     CMP.W #$0081                                                         ;90A4CB;
     BEQ .screwAttack                                                     ;90A4CE;
@@ -5023,7 +5023,7 @@ SamusMovement_SpinJumping:
     BRA .liquidPhysics                                                   ;90A4D5; >.<
 
 
-.liquidPhysics:
+  .liquidPhysics:
     LDA.B $12                                                            ;90A4D7;
     BEQ +                                                                ;90A4D9;
     LDX.W $0A96                                                          ;90A4DB;
@@ -5036,7 +5036,7 @@ SamusMovement_SpinJumping:
     LDA.W #$002F                                                         ;90A4EE;
     JSL.L QueueSound_Lib1_Max6                                           ;90A4F1;
 
-  + LDA.W $0CD0                                                          ;90A4F5;
++   LDA.W $0CD0                                                          ;90A4F5;
     CMP.W #$003C                                                         ;90A4F8;
     BMI .return                                                          ;90A4FB;
     LDA.B $12                                                            ;90A4FD;
@@ -5046,17 +5046,17 @@ SamusMovement_SpinJumping:
     BRA .return                                                          ;90A507;
 
 
-.screwAttack:
+  .screwAttack:
     LDA.W #$0003                                                         ;90A509;
     STA.W $0A6E                                                          ;90A50C;
 
-.return:
+  .return:
     JSR.W Samus_SpinJumping_Movement                                     ;90A50F;
     PLP                                                                  ;90A512;
     RTS                                                                  ;90A513;
 
 
-.framesSFX:
+  .framesSFX:
 ; Samus animation frames on which to play underwater space jump sound effect
     db $01,$00,$00,$00,$00,$00,$00,$00,$01,$00,$00,$00,$00               ;90A514;
 
@@ -5075,12 +5075,12 @@ SamusMovement_MorphBall_OnGround:
     BRA .moveSamus                                                       ;90A53C;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W $0A1C                                                          ;90A53E;
     CMP.W #$0041                                                         ;90A541;
     BNE .decelerating                                                    ;90A544;
 
-.moveSamus:
+  .moveSamus:
     JSR.W MoveSamus_HorizontallyWithZeroBaseXSpeed                       ;90A546;
     JSR.W Simple_Samus_Y_Movement                                        ;90A549;
     BCS .return                                                          ;90A54C;
@@ -5094,13 +5094,13 @@ SamusMovement_MorphBall_OnGround:
     BRA .return                                                          ;90A564;
 
 
-.decelerating:
+  .decelerating:
     JSR.W Samus_X_Movement                                               ;90A566;
     JSR.W Simple_Samus_Y_Movement                                        ;90A569;
     BCS .return                                                          ;90A56C;
     JSR.W Samus_Y_Movement_NoSpeedCalculations                           ;90A56E;
 
-.return:
+  .return:
     PLP                                                                  ;90A571;
     RTS                                                                  ;90A572;
 
@@ -5135,7 +5135,7 @@ SamusMovement_Falling:
     BRA .return                                                          ;90A5AA;
 
 
-.falling:
+  .falling:
     LDA.W $0B2E                                                          ;90A5AC;
     CMP.W #$0005                                                         ;90A5AF;
     BMI .return                                                          ;90A5B2;
@@ -5147,7 +5147,7 @@ SamusMovement_Falling:
     LDA.W #$0005                                                         ;90A5C2;
     STA.W $0A96                                                          ;90A5C5;
 
-.return:
+  .return:
     PLP                                                                  ;90A5C8;
     RTS                                                                  ;90A5C9;
 
@@ -5167,17 +5167,17 @@ SamusMovement_MorphBall_Falling:
     STZ.W $0B48                                                          ;90A5E6;
     STZ.W $0B4A                                                          ;90A5E9;
 
-.pressingLeftRight:
+  .pressingLeftRight:
     LDA.W $0B20                                                          ;90A5EC;
     BNE .morphBounce                                                     ;90A5EF;
     JSR.W Samus_Morphed_Falling_Movement                                 ;90A5F1;
     BRA .return                                                          ;90A5F4;
 
 
-.morphBounce:
+  .morphBounce:
     JSR.W Samus_Morphed_Bouncing_Movement                                ;90A5F6;
 
-.return:
+  .return:
     PLP                                                                  ;90A5F9;
     RTS                                                                  ;90A5FA;
 
@@ -5232,13 +5232,13 @@ SamusMovement_TransitionPoses:
     TAX                                                                  ;90A631;
     JSR.W (.pointers,X)                                                  ;90A632;
 
-.moveSamus:
+  .moveSamus:
     JSR.W MoveSamus_HorizontallyWithZeroBaseXSpeed                       ;90A635;
     JSR.W Simple_Samus_Y_Movement_duplicate                              ;90A638;
     BCS .noYMovement                                                     ;90A63B;
     JSR.W Samus_Y_Movement_NoSpeedCalculations                           ;90A63D;
 
-.noYMovement:
+  .noYMovement:
     LDA.W $0DC6                                                          ;90A640;
     CMP.W #$0401                                                         ;90A643;
     BNE .noChange                                                        ;90A646;
@@ -5247,23 +5247,23 @@ SamusMovement_TransitionPoses:
     STZ.W $0B36                                                          ;90A64E;
     STZ.W $0B20                                                          ;90A651;
 
-.noChange:
+  .noChange:
     STZ.W $0DC6                                                          ;90A654;
     PLP                                                                  ;90A657;
     RTS                                                                  ;90A658;
 
 
-.pointers:
+  .pointers:
     dw RTS_90A671                                                        ;90A659; 35h: Facing right - crouching transition
-    dw RTS_90A671                                                        ;90A65B; 36h: Facing left  - crouching transition
+    dw RTS_90A671                                                        ;90A65B; 36h: Facing left-   crouching transition
     dw RTS_90A671                                                        ;90A65D; 37h: Facing right - morphing transition
-    dw RTS_90A671                                                        ;90A65F; 38h: Facing left  - morphing transition
+    dw RTS_90A671                                                        ;90A65F; 38h: Facing left-   morphing transition
     dw Enable_Horizontal_Slope_Detection                                 ;90A661; 39h: Unused
     dw Enable_Horizontal_Slope_Detection                                 ;90A663; 3Ah: Unused
     dw RTS_90A671                                                        ;90A665; 3Bh: Facing right - standing transition
-    dw RTS_90A671                                                        ;90A667; 3Ch: Facing left  - standing transition
+    dw RTS_90A671                                                        ;90A667; 3Ch: Facing left-   standing transition
     dw RTS_90A671                                                        ;90A669; 3Dh: Facing right - unmorphing transition
-    dw RTS_90A671                                                        ;90A66B; 3Eh: Facing left  - unmorphing transition
+    dw RTS_90A671                                                        ;90A66B; 3Eh: Facing left-   unmorphing transition
     dw Enable_Horizontal_Slope_Detection                                 ;90A66D; 3Fh: Unused
     dw Enable_Horizontal_Slope_Detection                                 ;90A66F; 40h: Unused
 
@@ -5315,12 +5315,12 @@ SamusMovement_SpringBall_OnGround:
     BRA +                                                                ;90A6BA;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W $0A1C                                                          ;90A6BC;
     CMP.W #$007A                                                         ;90A6BF;
     BNE .decelerating                                                    ;90A6C2;
 
-  + JSR.W MoveSamus_HorizontallyWithZeroBaseXSpeed                       ;90A6C4;
++   JSR.W MoveSamus_HorizontallyWithZeroBaseXSpeed                       ;90A6C4;
     JSR.W Simple_Samus_Y_Movement                                        ;90A6C7;
     BCS .return                                                          ;90A6CA;
     JSR.W Samus_Y_Movement_NoSpeedCalculations                           ;90A6CC;
@@ -5333,13 +5333,13 @@ SamusMovement_SpringBall_OnGround:
     BRA .return                                                          ;90A6E2;
 
 
-.decelerating:
+  .decelerating:
     JSR.W Samus_X_Movement                                               ;90A6E4;
     JSR.W Simple_Samus_Y_Movement                                        ;90A6E7;
     BCS .return                                                          ;90A6EA;
     JSR.W Samus_Y_Movement_NoSpeedCalculations                           ;90A6EC;
 
-.return:
+  .return:
     PLP                                                                  ;90A6EF;
     RTS                                                                  ;90A6F0;
 
@@ -5353,10 +5353,10 @@ SamusMovement_SpringBall_InAir:
     BRA .return                                                          ;90A6FC;
 
 
-.bouncing:
+  .bouncing:
     JSR.W Samus_Morphed_Bouncing_Movement                                ;90A6FE;
 
-.return:
+  .return:
     PLP                                                                  ;90A701;
     RTS                                                                  ;90A702;
 
@@ -5376,17 +5376,17 @@ SamusMovement_SpringBall_Falling:
     STZ.W $0B48                                                          ;90A71F;
     STZ.W $0B4A                                                          ;90A722;
 
-.checkBounce:
+  .checkBounce:
     LDA.W $0B20                                                          ;90A725;
     BNE .bouncing                                                        ;90A728;
     JSR.W Samus_Morphed_Falling_Movement                                 ;90A72A;
     BRA .return                                                          ;90A72D;
 
 
-.bouncing:
+  .bouncing:
     JSR.W Samus_Morphed_Bouncing_Movement                                ;90A72F;
 
-.return:
+  .return:
     PLP                                                                  ;90A732;
     RTS                                                                  ;90A733;
 
@@ -5407,11 +5407,11 @@ SamusMovement_WallJumping:
     BRA .jumpingMovement                                                 ;90A752;
 
 
-.greaterThan16:
+  .greaterThan16:
     LDA.W #$0003                                                         ;90A754;
     STA.W $0A6E                                                          ;90A757;
 
-.jumpingMovement:
+  .jumpingMovement:
     JSR.W Samus_Jumping_Movement                                         ;90A75A;
     PLP                                                                  ;90A75D;
     RTS                                                                  ;90A75E;
@@ -5441,7 +5441,7 @@ SamusMovement_Grappling:
     BEQ .return                                                          ;90A789;
     STZ.W $0DC6                                                          ;90A78B;
 
-.return:
+  .return:
     PLP                                                                  ;90A78E;
     RTS                                                                  ;90A78F;
 
@@ -5454,7 +5454,7 @@ SamusMovement_TurningAround_Jumping:
     BCS +                                                                ;90A799;
     JSR.W Samus_Y_Movement_NoSpeedCalculations                           ;90A79B;
 
-  + JSL.L Cancel_SpeedBoosting                                           ;90A79E;
++   JSL.L Cancel_SpeedBoosting                                           ;90A79E;
     STZ.W $0B42                                                          ;90A7A2;
     STZ.W $0B44                                                          ;90A7A5;
     STZ.W $0DC6                                                          ;90A7A8;
@@ -5470,7 +5470,7 @@ SamusMovement_TurningAround_Falling:
     BCS +                                                                ;90A7B6;
     JSR.W Samus_Y_Movement_NoSpeedCalculations                           ;90A7B8;
 
-  + JSL.L Cancel_SpeedBoosting                                           ;90A7BB;
++   JSL.L Cancel_SpeedBoosting                                           ;90A7BB;
     STZ.W $0B42                                                          ;90A7BF;
     STZ.W $0B44                                                          ;90A7C2;
     STZ.W $0DC6                                                          ;90A7C5;
@@ -5514,7 +5514,7 @@ DisableMinimap_MarkBossRoomTilesExplored:
     ORA.W #$2C00                                                         ;90A7F1;
     LDX.W #$0000                                                         ;90A7F4;
 
-.loop:
+  .loop:
     STA.L $7EC63C,X                                                      ;90A7F7;
     STA.L $7EC67C,X                                                      ;90A7FB;
     STA.L $7EC6BC,X                                                      ;90A7FF;
@@ -5525,7 +5525,7 @@ DisableMinimap_MarkBossRoomTilesExplored:
     LDA.W $179C                                                          ;90A80A;
     LDX.W #$0014                                                         ;90A80D;
 
-.loopBossID:
+  .loopBossID:
     CMP.W .bossID,X                                                      ;90A810;
     BEQ +                                                                ;90A813;
     DEX                                                                  ;90A815;
@@ -5538,10 +5538,10 @@ DisableMinimap_MarkBossRoomTilesExplored:
     RTL                                                                  ;90A81D;
 
 
-  + LDA.W .pointer,X                                                     ;90A81E;
++   LDA.W .pointer,X                                                     ;90A81E;
     TAX                                                                  ;90A821;
 
-.loopMapTiles:
+  .loopMapTiles:
     LDA.W $0000,X                                                        ;90A822;
     BMI .return                                                          ;90A825;
     STA.B $12                                                            ;90A827;
@@ -5555,7 +5555,7 @@ DisableMinimap_MarkBossRoomTilesExplored:
     BRA .loopMapTiles                                                    ;90A835;
 
 
-.return:
+  .return:
     PLB                                                                  ;90A837;
     PLP                                                                  ;90A838;
     RTL                                                                  ;90A839;
@@ -5690,7 +5690,7 @@ Update_Minimap:
     RTL                                                                  ;90A924;
 
 
-  + LDA.W $0AF6                                                          ;90A925;
++   LDA.W $0AF6                                                          ;90A925;
     LSR A                                                                ;90A928;
     LSR A                                                                ;90A929;
     LSR A                                                                ;90A92A;
@@ -5701,7 +5701,7 @@ Update_Minimap:
     RTL                                                                  ;90A932;
 
 
-  + LDA.W $0AFA                                                          ;90A933;
++   LDA.W $0AFA                                                          ;90A933;
     LSR A                                                                ;90A936;
     LSR A                                                                ;90A937;
     LSR A                                                                ;90A938;
@@ -5712,7 +5712,7 @@ Update_Minimap:
     RTL                                                                  ;90A940;
 
 
-  + STZ.B $2E                                                            ;90A941;
++   STZ.B $2E                                                            ;90A941;
     LDA.W $0AF6                                                          ;90A943;
     AND.W #$FF00                                                         ;90A946;
     XBA                                                                  ;90A949;
@@ -5764,7 +5764,7 @@ Update_Minimap:
     DEX                                                                  ;90A999;
     INC.B $2E                                                            ;90A99A;
 
-  + ASL A                                                                ;90A99C;
++   ASL A                                                                ;90A99C;
     TAY                                                                  ;90A99D;
     STX.B $32                                                            ;90A99E;
     STY.B $34                                                            ;90A9A0;
@@ -5823,10 +5823,10 @@ Update_Minimap:
     BRA +                                                                ;90AA08;
 
 
-.SamusAtOrigin:
+  .SamusAtOrigin:
     LDA.B $20                                                            ;90AA0A;
 
-  + CMP.W #$0006                                                         ;90AA0C;
++   CMP.W #$0006                                                         ;90AA0C;
     BMI .singlePage                                                      ;90AA0F;
     LDA.B $22                                                            ;90AA11;
     BNE .nonZero                                                         ;90AA13;
@@ -5838,23 +5838,23 @@ Update_Minimap:
     BRA .adjustMapBits                                                   ;90AA1D;
 
 
-.nonZero:
+  .nonZero:
     SEP #$20                                                             ;90AA1F;
     TXA                                                                  ;90AA21;
     SEC                                                                  ;90AA22;
     SBC.B #$7C                                                           ;90AA23;
     STA.B $30                                                            ;90AA25;
 
-.adjustMapBits:
+  .adjustMapBits:
     REP #$30                                                             ;90AA27;
     JSR.W AdjustMapBitsForMapPageSpill                                   ;90AA29;
 
-.singlePage:
+  .singlePage:
     LDA.B $34                                                            ;90AA2C;
     LSR A                                                                ;90AA2E;
     CMP.W #$0000                                                         ;90AA2F;
 
-.loop:
+  .loop:
     BEQ Update_HUD_Minimap_Tilemap                                       ;90AA32;
     ASL.B $18                                                            ;90AA34;
     ASL.B $26                                                            ;90AA36;
@@ -5889,12 +5889,12 @@ Update_HUD_Minimap_Tilemap:
     BRA +                                                                ;90AA68;
 
 
-.notLeftMapPage:
+  .notLeftMapPage:
     LDA.W $060B                                                          ;90AA6A;
     SEC                                                                  ;90AA6D;
     SBC.W #$0022                                                         ;90AA6E;
 
-  + ASL A                                                                ;90AA71;
++   ASL A                                                                ;90AA71;
     TAY                                                                  ;90AA72;
     LDA.W $079F                                                          ;90AA73;
     ASL A                                                                ;90AA76;
@@ -5919,7 +5919,7 @@ Update_HUD_Minimap_Tilemap:
     LDA.W $0789                                                          ;90AAA0;
     PHP                                                                  ;90AAA3;
 
-.loop:
+  .loop:
     ASL.B $26                                                            ;90AAA4;
     BCC .row0BlankTile                                                   ;90AAA6;
     LDA.B [$00],Y                                                        ;90AAA8;
@@ -5927,10 +5927,10 @@ Update_HUD_Minimap_Tilemap:
     PHP                                                                  ;90AAAB;
     BNE .row0NotBlank                                                    ;90AAAC;
 
-.row0BlankTile:
+  .row0BlankTile:
     LDA.W #$001F                                                         ;90AAAE;
 
-.row0NotBlank:
+  .row0NotBlank:
     AND.W #$E3FF                                                         ;90AAB1;
     ORA.W #$2C00                                                         ;90AAB4;
     STA.L $7EC63C,X                                                      ;90AAB7;
@@ -5941,17 +5941,17 @@ Update_HUD_Minimap_Tilemap:
     ORA.W #$2800                                                         ;90AAC4;
     STA.L $7EC63C,X                                                      ;90AAC7;
 
-  + ASL.B $28                                                            ;90AACB;
++   ASL.B $28                                                            ;90AACB;
     BCC .row1BlankTile                                                   ;90AACD;
     LDA.B [$03],Y                                                        ;90AACF;
     PLP                                                                  ;90AAD1;
     PHP                                                                  ;90AAD2;
     BNE .row1NotBlank                                                    ;90AAD3;
 
-.row1BlankTile:
+  .row1BlankTile:
     LDA.W #$001F                                                         ;90AAD5;
 
-.row1NotBlank:
+  .row1NotBlank:
     AND.W #$E3FF                                                         ;90AAD8;
     ORA.W #$2C00                                                         ;90AADB;
     STA.L $7EC67C,X                                                      ;90AADE;
@@ -5970,17 +5970,17 @@ Update_HUD_Minimap_Tilemap:
     BNE +                                                                ;90AB03;
     JSR.W MarkMapTileAboveSamusExplored                                  ;90AB05;
 
-  + ASL.B $2A                                                            ;90AB08;
++   ASL.B $2A                                                            ;90AB08;
     BCC .row2BlankTile                                                   ;90AB0A;
     LDA.B [$06],Y                                                        ;90AB0C;
     PLP                                                                  ;90AB0E;
     PHP                                                                  ;90AB0F;
     BNE .row2NotBlank                                                    ;90AB10;
 
-.row2BlankTile:
+  .row2BlankTile:
     LDA.W #$001F                                                         ;90AB12;
 
-.row2NotBlank:
+  .row2NotBlank:
     AND.W #$E3FF                                                         ;90AB15;
     ORA.W #$2C00                                                         ;90AB18;
     STA.L $7EC6BC,X                                                      ;90AB1B;
@@ -5991,7 +5991,7 @@ Update_HUD_Minimap_Tilemap:
     ORA.W #$2800                                                         ;90AB28;
     STA.L $7EC6BC,X                                                      ;90AB2B;
 
-.next:
+  .next:
     INX                                                                  ;90AB2F;
     INX                                                                  ;90AB30;
     INY                                                                  ;90AB31;
@@ -6005,12 +6005,12 @@ Update_HUD_Minimap_Tilemap:
     ADC.W #$07C0                                                         ;90AB3E;
     TAY                                                                  ;90AB41;
 
-  + DEC.B $12                                                            ;90AB42;
++   DEC.B $12                                                            ;90AB42;
     BEQ .handleFlashing                                                  ;90AB44;
     JMP.W .loop                                                          ;90AB46;
 
 
-.handleFlashing:
+  .handleFlashing:
     PLP                                                                  ;90AB49;
     LDA.W $05B5                                                          ;90AB4A;
     AND.W #$0008                                                         ;90AB4D;
@@ -6019,7 +6019,7 @@ Update_HUD_Minimap_Tilemap:
     ORA.W #$1C00                                                         ;90AB56;
     STA.L $7EC680                                                        ;90AB59;
 
-.return:
+  .return:
     PLP                                                                  ;90AB5D;
     RTL                                                                  ;90AB5E;
 
@@ -6063,13 +6063,13 @@ AdjustMapBitsForMapPageSpill:
     BRA +                                                                ;90AB9C;
 
 
-.leftMapPage1:
+  .leftMapPage1:
     LDA.B $2C                                                            ;90AB9E;
     STA.B $18                                                            ;90ABA0;
     LDA.B $2D                                                            ;90ABA2;
     STA.B $26                                                            ;90ABA4;
 
-  + LDA.W $07FB,X                                                        ;90ABA6;
++   LDA.W $07FB,X                                                        ;90ABA6;
     STA.B $2C                                                            ;90ABA9;
     REP #$20                                                             ;90ABAB;
     LDA.B $09                                                            ;90ABAD;
@@ -6089,13 +6089,13 @@ AdjustMapBitsForMapPageSpill:
     BRA +                                                                ;90ABC9;
 
 
-.leftMapPage2:
+  .leftMapPage2:
     LDA.B $2C                                                            ;90ABCB;
     STA.B $1A                                                            ;90ABCD;
     LDA.B $2D                                                            ;90ABCF;
     STA.B $28                                                            ;90ABD1;
 
-  + LDA.W $07FF,X                                                        ;90ABD3;
++   LDA.W $07FF,X                                                        ;90ABD3;
     STA.B $2C                                                            ;90ABD6;
     REP #$20                                                             ;90ABD8;
     LDA.B $09                                                            ;90ABDA;
@@ -6115,13 +6115,13 @@ AdjustMapBitsForMapPageSpill:
     BRA .return                                                          ;90ABF6;
 
 
-.leftMapPage3:
+  .leftMapPage3:
     LDA.B $2C                                                            ;90ABF8;
     STA.B $1C                                                            ;90ABFA;
     LDA.B $2D                                                            ;90ABFC;
     STA.B $2A                                                            ;90ABFE;
 
-.return:
+  .return:
     REP #$30                                                             ;90AC00;
     PLP                                                                  ;90AC02;
     RTS                                                                  ;90AC03;
@@ -6146,14 +6146,14 @@ Handle_Samus_Cooldown:
     STA.W $0CCC                                                          ;90AC29;
     BPL .return                                                          ;90AC2C;
 
-.resetCooldown:
+  .resetCooldown:
     STZ.W $0CCC                                                          ;90AC2E;
 
-.return:
+  .return:
     RTS                                                                  ;90AC31;
 
 
-.timeFrozen:
+  .timeFrozen:
     LDA.W #$0020                                                         ;90AC32;
     STA.W $0CCC                                                          ;90AC35;
     RTS                                                                  ;90AC38;
@@ -6175,7 +6175,7 @@ Check_if_Samus_Can_Fire_Beam:
     RTS                                                                  ;90AC57;
 
 
-.noFire:
+  .noFire:
     CLC                                                                  ;90AC58;
     RTS                                                                  ;90AC59;
 
@@ -6188,7 +6188,7 @@ Check_if_Samus_Can_Fire_Missile:
     CMP.W #$0005                                                         ;90AC65;
     BPL .noFire                                                          ;90AC68;
 
-.freeSlot:
+  .freeSlot:
     LDA.W $0CCC                                                          ;90AC6A;
     AND.W #$00FF                                                         ;90AC6D;
     BNE .noFire                                                          ;90AC70;
@@ -6201,12 +6201,12 @@ Check_if_Samus_Can_Fire_Missile:
     RTS                                                                  ;90AC80;
 
 
-.noFire:
+  .noFire:
     CLC                                                                  ;90AC81;
     RTS                                                                  ;90AC82;
 
 
-.superMissile:
+  .superMissile:
     LDA.W $0CCE                                                          ;90AC83;
     CMP.W #$0004                                                         ;90AC86;
     BMI .freeSlot                                                        ;90AC89;
@@ -6265,7 +6265,7 @@ Load_Beam_Palette_withStackPrepped:
     LDY.W #$0000                                                         ;90ACD8;
     LDX.W #$0000                                                         ;90ACDB;
 
-.loop:
+  .loop:
     LDA.B [$00],Y                                                        ;90ACDE;
     STA.L $7EC1C0,X                                                      ;90ACE0;
     INX                                                                  ;90ACE4;
@@ -6303,7 +6303,7 @@ Load_Beam_Palette:
     LDY.W #$0000                                                         ;90AD0C;
     LDX.W #$0000                                                         ;90AD0F;
 
-.loop:
+  .loop:
     LDA.B [$00],Y                                                        ;90AD12;
     STA.L $7EC1C0,X                                                      ;90AD14;
     INX                                                                  ;90AD18;
@@ -6320,7 +6320,7 @@ Reset_Projectile_Data:
     REP #$30                                                             ;90AD23;
     LDX.W #$0000                                                         ;90AD25;
 
-.loop:
+  .loop:
     STZ.W $0C90,X                                                        ;90AD28;
     STZ.W $0B64,X                                                        ;90AD2B;
     STZ.W $0B78,X                                                        ;90AD2E;
@@ -6350,7 +6350,7 @@ Reset_Projectile_Data:
     STZ.W $09D2                                                          ;90AD70;
     STZ.W $0A04                                                          ;90AD73;
 
-  + STZ.W $0AB0                                                          ;90AD76;
++   STZ.W $0AB0                                                          ;90AD76;
     STZ.W $0AB2                                                          ;90AD79;
     STZ.W $0AB4                                                          ;90AD7C;
     STZ.W $0AB6                                                          ;90AD7F;
@@ -6368,13 +6368,13 @@ Reset_Projectile_Data:
     STZ.W $0A4A                                                          ;90ADA2;
     JSL.L LoadSamusSuitTargetPalette                                     ;90ADA5;
 
-.checkHyper:
+  .checkHyper:
     LDA.W $0A76                                                          ;90ADA9;
     BEQ .return                                                          ;90ADAC;
     LDY.W #PaletteFXObjects_HyperBeam                                    ;90ADAE;
     JSL.L Spawn_PaletteFXObject                                          ;90ADB1;
 
-.return:
+  .return:
     PLP                                                                  ;90ADB5;
     RTL                                                                  ;90ADB6;
 
@@ -6407,11 +6407,11 @@ Clear_Projectile:
     BRA .return                                                          ;90ADFA;
 
 
-  + DEC.W $0CD2                                                          ;90ADFC;
++   DEC.W $0CD2                                                          ;90ADFC;
     BPL .return                                                          ;90ADFF;
     STZ.W $0CD2                                                          ;90AE01;
 
-.return:
+  .return:
     PLP                                                                  ;90AE04;
     RTL                                                                  ;90AE05;
 
@@ -6433,7 +6433,7 @@ Kill_Projectile:
     RTL                                                                  ;90AE1F;
 
 
-.beam:
+  .beam:
     TXY                                                                  ;90AE20;
     LDA.W $0C04,X                                                        ;90AE21;
     AND.W #$000F                                                         ;90AE24;
@@ -6442,7 +6442,7 @@ Kill_Projectile:
     JSR.W (.pointers,X)                                                  ;90AE29;
     TYX                                                                  ;90AE2C;
 
-.missile:
+  .missile:
     JSL.L PartOfKillProjectile_QueueSFX_SetInstruction                   ;90AE2D;
     LDA.W #RTS_90B169                                                    ;90AE31;
     STA.W $0C68,X                                                        ;90AE34;
@@ -6451,7 +6451,7 @@ Kill_Projectile:
     RTL                                                                  ;90AE39;
 
 
-.pointers:
+  .pointers:
     dw KillBeam_Up                                                       ;90AE3A;
     dw KillBeam_UpRight                                                  ;90AE3C;
     dw KillBeam_Right                                                    ;90AE3E;
@@ -6550,14 +6550,14 @@ Handle_Projectiles:
     STA.W $0DDE                                                          ;90AED4;
     TAX                                                                  ;90AED7;
 
-.loop:
+  .loop:
     LDA.W $0C40,X                                                        ;90AED8;
     BEQ .next                                                            ;90AEDB;
     JSR.W ($0C68,X)                                                      ;90AEDD;
     JSL.L ProjectileInstructionHandler                                   ;90AEE0;
     LDX.W $0DDE                                                          ;90AEE4;
 
-.next:
+  .next:
     DEX                                                                  ;90AEE7;
     DEX                                                                  ;90AEE8;
     STX.W $0DDE                                                          ;90AEE9;
@@ -6575,7 +6575,7 @@ Beam_NoWaveBeam:
     RTS                                                                  ;90AEFF;
 
 
-.trail:
+  .trail:
     DEC.W $0C90,X                                                        ;90AF00;
     BNE +                                                                ;90AF03;
     LDA.W #$0004                                                         ;90AF05;
@@ -6583,7 +6583,7 @@ Beam_NoWaveBeam:
     JSL.L Spawn_ProjectileTrail                                          ;90AF0B;
     LDX.W $0DDE                                                          ;90AF0F;
 
-  + LDA.W $0C04,X                                                        ;90AF12;
++   LDA.W $0C04,X                                                        ;90AF12;
     AND.W #$000F                                                         ;90AF15;
     ASL A                                                                ;90AF18;
     TAY                                                                  ;90AF19;
@@ -6625,7 +6625,7 @@ BeamBlockCollision_NoWaveBeam_Diagonal:
     BCS .return                                                          ;90AF59;
     JSL.L MoveBeamVertically_NoWaveBeam                                  ;90AF5B;
 
-.return:
+  .return:
     RTS                                                                  ;90AF5F;
 
 
@@ -6643,7 +6643,7 @@ ProjectilePreInstruction_Missile:
     RTS                                                                  ;90AF74;
 
 
-.notDeleted:
+  .notDeleted:
     DEC.W $0C90,X                                                        ;90AF75;
     BNE +                                                                ;90AF78;
     LDA.W #$0004                                                         ;90AF7A;
@@ -6651,7 +6651,7 @@ ProjectilePreInstruction_Missile:
     JSL.L Spawn_ProjectileTrail                                          ;90AF80;
     LDX.W $0DDE                                                          ;90AF84;
 
-  + LDA.W $0C04,X                                                        ;90AF87;
++   LDA.W $0C04,X                                                        ;90AF87;
     AND.W #$000F                                                         ;90AF8A;
     ASL A                                                                ;90AF8D;
     TAY                                                                  ;90AF8E;
@@ -6699,7 +6699,7 @@ MissileBlockCollision_Diagonal:
     BCS .return                                                          ;90AFD6;
     JSL.L MoveMissileVertically                                          ;90AFD8;
 
-.return:
+  .return:
     RTS                                                                  ;90AFDC;
 
 
@@ -6717,7 +6717,7 @@ ProjectilePreInstruction_SuperMissile:
     BRA .delete                                                          ;90AFF1;
 
 
-.notDeleted:
+  .notDeleted:
     DEC.W $0C90,X                                                        ;90AFF3;
     BNE +                                                                ;90AFF6;
     LDA.W #$0002                                                         ;90AFF8;
@@ -6725,7 +6725,7 @@ ProjectilePreInstruction_SuperMissile:
     JSL.L Spawn_ProjectileTrail                                          ;90AFFE;
     LDX.W $0DDE                                                          ;90B002;
 
-  + LDA.W $0C04,X                                                        ;90B005;
++   LDA.W $0C04,X                                                        ;90B005;
     AND.W #$000F                                                         ;90B008;
     TAY                                                                  ;90B00B;
     JSR.W AccelerateMissile                                              ;90B00C;
@@ -6738,10 +6738,10 @@ ProjectilePreInstruction_SuperMissile:
     RTS                                                                  ;90B01A;
 
 
-.delete:
+  .delete:
     LDY.W #$0008                                                         ;90B01B;
 
-.loop:
+  .loop:
     LDA.W $0C18,Y                                                        ;90B01E;
     AND.W #$0FFF                                                         ;90B021;
     CMP.W #$0200                                                         ;90B024;
@@ -6749,7 +6749,7 @@ ProjectilePreInstruction_SuperMissile:
     TYX                                                                  ;90B029;
     JSL.L Clear_Projectile                                               ;90B02A;
 
-.next:
+  .next:
     DEY                                                                  ;90B02E;
     DEY                                                                  ;90B02F;
     BPL .loop                                                            ;90B030;
@@ -6785,7 +6785,7 @@ SuperMissileBlockCollision_Diagonal:
     RTS                                                                  ;90B065;
 
 
-.collision:
+  .collision:
     JSR.W SuperMissileLink_HorizontalBlockCollisionDetection             ;90B066;
     RTS                                                                  ;90B069;
 
@@ -6804,7 +6804,7 @@ ProjectilePreInstruction_SuperMissileLink:
     JSL.L Clear_Projectile                                               ;90B07D;
     LDY.W #$0008                                                         ;90B081;
 
-.loop:
+  .loop:
     LDA.W $0C18,Y                                                        ;90B084;
     AND.W #$0FFF                                                         ;90B087;
     CMP.W #$0200                                                         ;90B08A;
@@ -6812,12 +6812,12 @@ ProjectilePreInstruction_SuperMissileLink:
     TYX                                                                  ;90B08F;
     JSL.L Clear_Projectile                                               ;90B090;
 
-.next:
+  .next:
     DEY                                                                  ;90B094;
     DEY                                                                  ;90B095;
     BPL .loop                                                            ;90B096;
 
-.return:
+  .return:
     RTS                                                                  ;90B098;
 
 
@@ -6829,7 +6829,7 @@ ProjectilePreInstruction_Bomb:
     RTS                                                                  ;90B0A5;
 
 
-.notDeleted:
+  .notDeleted:
     JSR.W HandleBomb                                                     ;90B0A6;
     JSL.L BombAndPowerBombExplosionBlockCollisionHandling                ;90B0A9;
     RTS                                                                  ;90B0AD;
@@ -6843,7 +6843,7 @@ ProjectilePreInstruction_PowerBomb:
     RTS                                                                  ;90B0BA;
 
 
-.notDeleted:
+  .notDeleted:
     JSR.W HandlePowerBomb                                                ;90B0BB;
     JSL.L BombAndPowerBombExplosionBlockCollisionHandling                ;90B0BE;
     RTS                                                                  ;90B0C2;
@@ -6857,7 +6857,7 @@ ProjectilePreInstruction_Beam_WavePlasmaSpazer_ChargeIceWave:
     RTS                                                                  ;90B0CF;
 
 
-.notDeleted:
+  .notDeleted:
     DEC.W $0C90,X                                                        ;90B0D0;
     BNE WaveBeamSharedPreInstruction                                     ;90B0D3;
     LDA.W #$0004                                                         ;90B0D5;
@@ -6875,7 +6875,7 @@ ProjectilePreInstruction_Beam_UnchargedIceWave:
     RTS                                                                  ;90B0F0;
 
 
-.notDeleted:
+  .notDeleted:
     DEC.W $0C90,X                                                        ;90B0F1;
     BNE WaveBeamSharedPreInstruction                                     ;90B0F4;
     LDA.W #$0003                                                         ;90B0F6;
@@ -6902,7 +6902,7 @@ WaveBeamSharedPreInstruction:
     RTS                                                                  ;90B126;
 
 
-.pointers:
+  .pointers:
     dw WaveBeamBlockCollision_Vertical                                   ;90B127;
     dw WaveBeamBlockCollision_Diagonal                                   ;90B129;
     dw WaveBeamBlockCollision_Horizontal                                 ;90B12B;
@@ -6926,7 +6926,7 @@ WaveBeamBlockCollision_Diagonal:
     BCS .return                                                          ;90B14A;
     JSL.L MoveBeamVertically_WaveBeam                                    ;90B14C;
 
-.return:
+  .return:
     RTS                                                                  ;90B150;
 
 
@@ -6944,7 +6944,7 @@ ProjectilePreInstruction_HyperBeam:
     RTS                                                                  ;90B165;
 
 
-.gotoShared:
+  .gotoShared:
     JMP.W WaveBeamSharedPreInstruction                                   ;90B166;
 
 RTS_90B169:
@@ -6961,13 +6961,13 @@ DeleteProjectileIfTooFarOffScreen:
     CMP.W #$0140                                                         ;90B179;
     BMI .verticalCheck                                                   ;90B17C;
 
-.delete:
+  .delete:
     JSL.L Clear_Projectile                                               ;90B17E;
     SEC                                                                  ;90B182;
     RTS                                                                  ;90B183;
 
 
-.verticalCheck:
+  .verticalCheck:
     LDA.W $0B78,X                                                        ;90B184;
     SEC                                                                  ;90B187;
     SBC.W $0915                                                          ;90B188;
@@ -6998,17 +6998,17 @@ InitializeBeamVelocities:
     JMP.W (.pointers,X)                                                  ;90B1B0;
 
 
-.notDiagonal:
+  .notDiagonal:
     LDA.W BeamSpeeds_Horizontal_Vertical,Y                               ;90B1B3;
     STA.B $16                                                            ;90B1B6;
     BRA .merge                                                           ;90B1B8;
 
 
-.diagonal:
+  .diagonal:
     LDA.W BeamSpeeds_Diagonal,Y                                          ;90B1BA;
     STA.B $16                                                            ;90B1BD;
 
-.merge:
+  .merge:
     LDX.B $14                                                            ;90B1BF;
     STX.B $12                                                            ;90B1C1;
     JSR.W InitializeProjectileVelocities                                 ;90B1C3;
@@ -7017,7 +7017,7 @@ InitializeBeamVelocities:
     RTL                                                                  ;90B1C8;
 
 
-.pointers:
+  .pointers:
     dw .notDiagonal                                                      ;90B1C9;
     dw .diagonal                                                         ;90B1CB;
     dw .notDiagonal                                                      ;90B1CD;
@@ -7076,7 +7076,7 @@ InitializeProjectileVelocities:
     JMP.W (.pointers,X)                                                  ;90B201;
 
 
-.pointers:
+  .pointers:
     dw InitializeProjectileVelocities_Up                                 ;90B204;
     dw InitializeProjectileVelocities_UpRight                            ;90B206;
     dw InitializeProjectileVelocities_Right                              ;90B208;
@@ -7097,13 +7097,13 @@ InitializeProjectileVelocities_Up:
     BRA +                                                                ;90B224;
 
 
-.left:
+  .left:
     LSR A                                                                ;90B226;
     LSR A                                                                ;90B227;
     ORA.W #$C000                                                         ;90B228;
     STA.B $12                                                            ;90B22B;
 
-  + LDA.B $16                                                            ;90B22D;
++   LDA.B $16                                                            ;90B22D;
     EOR.W #$FFFF                                                         ;90B22F;
     INC A                                                                ;90B232;
     CLC                                                                  ;90B233;
@@ -7122,13 +7122,13 @@ InitializeProjectileVelocities_UpRight:
     BRA +                                                                ;90B249;
 
 
-.left:
+  .left:
     LSR A                                                                ;90B24B;
     LSR A                                                                ;90B24C;
     ORA.W #$C000                                                         ;90B24D;
     STA.B $12                                                            ;90B250;
 
-  + LDA.B $16                                                            ;90B252;
++   LDA.B $16                                                            ;90B252;
     EOR.W #$FFFF                                                         ;90B254;
     INC A                                                                ;90B257;
     CLC                                                                  ;90B258;
@@ -7210,13 +7210,13 @@ InitializeProjectileVelocities_UpLeft:
     BRA +                                                                ;90B2D3;
 
 
-.left:
+  .left:
     LSR A                                                                ;90B2D5;
     LSR A                                                                ;90B2D6;
     ORA.W #$C000                                                         ;90B2D7;
     STA.B $12                                                            ;90B2DA;
 
-  + LDA.B $16                                                            ;90B2DC;
++   LDA.B $16                                                            ;90B2DC;
     EOR.W #$FFFF                                                         ;90B2DE;
     INC A                                                                ;90B2E1;
     CLC                                                                  ;90B2E2;
@@ -7256,7 +7256,7 @@ AccelerateMissile:
     BRA .return                                                          ;90B327;
 
 
-.initialized:
+  .initialized:
     LDA.W $0C04,X                                                        ;90B329;
     AND.W #$000F                                                         ;90B32C;
     ASL A                                                                ;90B32F;
@@ -7273,13 +7273,13 @@ AccelerateMissile:
     BRA +                                                                ;90B345;
 
 
-.superMissile:
+  .superMissile:
     LDA.W #SuperMissileAccelerations                                     ;90B347;
     CLC                                                                  ;90B34A;
     ADC.B $12                                                            ;90B34B;
     TAY                                                                  ;90B34D;
 
-  + LDA.W $0BDC,X                                                        ;90B34E;
++   LDA.W $0BDC,X                                                        ;90B34E;
     CLC                                                                  ;90B351;
     ADC.W $0000,Y                                                        ;90B352;
     STA.W $0BDC,X                                                        ;90B355;
@@ -7288,7 +7288,7 @@ AccelerateMissile:
     ADC.W $0002,Y                                                        ;90B35C;
     STA.W $0BF0,X                                                        ;90B35F;
 
-.return:
+  .return:
     PLY                                                                  ;90B362;
     PLX                                                                  ;90B363;
     PLP                                                                  ;90B364;
@@ -7306,14 +7306,14 @@ SuperMissileLink:
     RTS                                                                  ;90B379;
 
 
-.superMissile:
+  .superMissile:
     LDA.W $0C7C,X                                                        ;90B37A;
     BIT.W #$FF00                                                         ;90B37D;
     BNE .initialized                                                     ;90B380;
     RTS                                                                  ;90B382;
 
 
-.initialized:
+  .initialized:
     AND.W #$00FF                                                         ;90B383;
     TAY                                                                  ;90B386;
     LDA.W $0BF0,X                                                        ;90B387;
@@ -7321,7 +7321,7 @@ SuperMissileLink:
     EOR.W #$FFFF                                                         ;90B38C;
     INC A                                                                ;90B38F;
 
-  + AND.W #$FF00                                                         ;90B390;
++   AND.W #$FF00                                                         ;90B390;
     CMP.W #$0B00                                                         ;90B393;
     BMI .slow                                                            ;90B396;
     XBA                                                                  ;90B398;
@@ -7348,11 +7348,11 @@ SuperMissileLink:
     TYX                                                                  ;90B3C6;
     JSL.L Clear_Projectile                                               ;90B3C7;
 
-.return:
+  .return:
     RTS                                                                  ;90B3CB;
 
 
-.upwards:
+  .upwards:
     PHX                                                                  ;90B3CC;
     LDA.W $0B78,X                                                        ;90B3CD;
     CLC                                                                  ;90B3D0;
@@ -7369,13 +7369,13 @@ SuperMissileLink:
     CMP.W #$0800                                                         ;90B3E9;
     BNE .return                                                          ;90B3EC;
 
-.explosion:
+  .explosion:
     TYX                                                                  ;90B3EE;
     JSL.L Clear_Projectile                                               ;90B3EF;
     RTS                                                                  ;90B3F3;
 
 
-.slow:
+  .slow:
     LDA.W $0C18,X                                                        ;90B3F4;
     AND.W #$0F00                                                         ;90B3F7;
     CMP.W #$0800                                                         ;90B3FA;
@@ -7396,14 +7396,14 @@ SuperMissileLink_HorizontalBlockCollisionDetection:
     RTS                                                                  ;90B419;
 
 
-.superMissile:
+  .superMissile:
     LDA.W $0C7C,X                                                        ;90B41A;
     BIT.W #$FF00                                                         ;90B41D;
     BNE .initialized                                                     ;90B420;
     RTS                                                                  ;90B422;
 
 
-.initialized:
+  .initialized:
     AND.W #$00FF                                                         ;90B423;
     TAY                                                                  ;90B426;
     LDA.W $0BDC,X                                                        ;90B427;
@@ -7411,7 +7411,7 @@ SuperMissileLink_HorizontalBlockCollisionDetection:
     EOR.W #$FFFF                                                         ;90B42C;
     INC A                                                                ;90B42F;
 
-  + AND.W #$FF00                                                         ;90B430;
++   AND.W #$FF00                                                         ;90B430;
     CMP.W #$0B00                                                         ;90B433;
     BMI .slow                                                            ;90B436;
     XBA                                                                  ;90B438;
@@ -7438,11 +7438,11 @@ SuperMissileLink_HorizontalBlockCollisionDetection:
     TYX                                                                  ;90B466;
     JSL.L Clear_Projectile                                               ;90B467;
 
-.return:
+  .return:
     RTS                                                                  ;90B46B;
 
 
-.leftwards:
+  .leftwards:
     PHX                                                                  ;90B46C;
     LDA.W $0B64,X                                                        ;90B46D;
     CLC                                                                  ;90B470;
@@ -7459,13 +7459,13 @@ SuperMissileLink_HorizontalBlockCollisionDetection:
     CMP.W #$0800                                                         ;90B489;
     BNE .return                                                          ;90B48C;
 
-.explosion:
+  .explosion:
     TYX                                                                  ;90B48E;
     JSL.L Clear_Projectile                                               ;90B48F;
     RTS                                                                  ;90B493;
 
 
-.slow:
+  .slow:
     LDA.W $0C18,X                                                        ;90B494;
     AND.W #$0F00                                                         ;90B497;
     CMP.W #$0800                                                         ;90B49A;
@@ -7486,7 +7486,7 @@ UNUSED_ClearLinkedSuperMissileIfSuperMissileExplosion_90B4A6:
     RTL                                                                  ;90B4B2;
 
 
-.initialized:
+  .initialized:
     AND.W #$00FF                                                         ;90B4B3;
     TAY                                                                  ;90B4B6;
     LDA.W $0C18,X                                                        ;90B4B7;
@@ -7496,7 +7496,7 @@ UNUSED_ClearLinkedSuperMissileIfSuperMissileExplosion_90B4A6:
     TYX                                                                  ;90B4C2;
     JSL.L Clear_Projectile                                               ;90B4C3;
 
-.return:
+  .return:
     PLP                                                                  ;90B4C7;
     RTL                                                                  ;90B4C8;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -7691,7 +7691,7 @@ Spawn_ProjectileTrail:
     BRA +                                                                ;90B663;
 
 
-.notBeam:
+  .notBeam:
     XBA                                                                  ;90B665;
     AND.W #$000F                                                         ;90B666;
     CMP.W #$0003                                                         ;90B669;
@@ -7699,27 +7699,27 @@ Spawn_ProjectileTrail:
     CLC                                                                  ;90B66E;
     ADC.W #$001F                                                         ;90B66F;
 
-  + ASL A                                                                ;90B672;
++   ASL A                                                                ;90B672;
     TAX                                                                  ;90B673;
     PEA.W $7E7E                                                          ;90B674;
     PLB                                                                  ;90B677;
     PLB                                                                  ;90B678;
     LDY.W #$0022                                                         ;90B679;
 
-.loop:
+  .loop:
     LDA.W $D658,Y                                                        ;90B67C;
     BEQ .found                                                           ;90B67F;
     DEY                                                                  ;90B681;
     DEY                                                                  ;90B682;
     BPL .loop                                                            ;90B683;
 
-.returnCarrySet:
+  .returnCarrySet:
     PLB                                                                  ;90B685;
     SEC                                                                  ;90B686;
     RTL                                                                  ;90B687;
 
 
-.found:
+  .found:
     LDA.W #$0001                                                         ;90B688;
     STA.W $D658,Y                                                        ;90B68B;
     STA.W $D67C,Y                                                        ;90B68E;
@@ -7744,10 +7744,10 @@ HandleProjectileTrails:
     JMP.W .timeIsFrozen                                                  ;90B6B4;
 
 
-.notFrozen:
+  .notFrozen:
     LDY.W #$0022                                                         ;90B6B7;
 
-.main:
+  .main:
     LDA.W $D658,Y                                                        ;90B6BA;
     BEQ .leftTrailEnd                                                    ;90B6BD;
     DEC A                                                                ;90B6BF;
@@ -7755,7 +7755,7 @@ HandleProjectileTrails:
     BNE .leftInstructionsEnd                                             ;90B6C3;
     LDX.W $D6A0,Y                                                        ;90B6C5;
 
-.loopLeft:
+  .loopLeft:
     LDA.L $900000,X                                                      ;90B6C8;
     BPL .notAPointer                                                     ;90B6CC;
     INX                                                                  ;90B6CE;
@@ -7765,7 +7765,7 @@ HandleProjectileTrails:
     JMP.W ($0012)                                                        ;90B6D5;
 
 
-.notAPointer:
+  .notAPointer:
     STA.W $D658,Y                                                        ;90B6D8;
     BEQ .leftTrailEnd                                                    ;90B6DB;
     LDA.L $900002,X                                                      ;90B6DD;
@@ -7775,7 +7775,7 @@ HandleProjectileTrails:
     ADC.W #$0004                                                         ;90B6E6;
     STA.W $D6A0,Y                                                        ;90B6E9;
 
-.leftInstructionsEnd:
+  .leftInstructionsEnd:
     LDX.W $0590                                                          ;90B6EC;
     CPX.W #$0200                                                         ;90B6EF;
     BPL .leftTrailEnd                                                    ;90B6F2;
@@ -7798,7 +7798,7 @@ HandleProjectileTrails:
     ADC.W #$0004                                                         ;90B71A;
     STA.W $0590                                                          ;90B71D;
 
-.leftTrailEnd:
+  .leftTrailEnd:
     LDA.W $D67C,Y                                                        ;90B720;
     BEQ .rightTrailEnd                                                   ;90B723;
     DEC A                                                                ;90B725;
@@ -7806,7 +7806,7 @@ HandleProjectileTrails:
     BNE .rightInstructionsEnd                                            ;90B729;
     LDX.W $D6C4,Y                                                        ;90B72B;
 
-.loop:
+  .loop:
     LDA.L $900000,X                                                      ;90B72E;
     BPL .notPointer                                                      ;90B732;
     INX                                                                  ;90B734;
@@ -7816,7 +7816,7 @@ HandleProjectileTrails:
     JMP.W ($0012)                                                        ;90B73B;
 
 
-.notPointer:
+  .notPointer:
     STA.W $D67C,Y                                                        ;90B73E;
     BEQ .rightTrailEnd                                                   ;90B741;
     LDA.L $900002,X                                                      ;90B743;
@@ -7826,7 +7826,7 @@ HandleProjectileTrails:
     ADC.W #$0004                                                         ;90B74C;
     STA.W $D6C4,Y                                                        ;90B74F;
 
-.rightInstructionsEnd:
+  .rightInstructionsEnd:
     LDX.W $0590                                                          ;90B752;
     CPX.W #$0200                                                         ;90B755;
     BPL .rightTrailEnd                                                   ;90B758;
@@ -7849,22 +7849,22 @@ HandleProjectileTrails:
     ADC.W #$0004                                                         ;90B780;
     STA.W $0590                                                          ;90B783;
 
-.rightTrailEnd:
+  .rightTrailEnd:
     DEY                                                                  ;90B786;
     DEY                                                                  ;90B787;
     BMI .return                                                          ;90B788;
     JMP.W .main                                                          ;90B78A;
 
 
-.return:
+  .return:
     PLB                                                                  ;90B78D;
     RTL                                                                  ;90B78E;
 
 
-.timeIsFrozen:
+  .timeIsFrozen:
     LDY.W #$0022                                                         ;90B78F;
 
-.loopTimeIsFrozen:
+  .loopTimeIsFrozen:
     LDX.W $0590                                                          ;90B792;
     CPX.W #$0200                                                         ;90B795;
     BPL +                                                                ;90B798;
@@ -7889,7 +7889,7 @@ HandleProjectileTrails:
     ADC.W #$0004                                                         ;90B7C5;
     STA.W $0590                                                          ;90B7C8;
 
-  + LDX.W $0590                                                          ;90B7CB;
++   LDX.W $0590                                                          ;90B7CB;
     CPX.W #$0200                                                         ;90B7CE;
     BPL .next                                                            ;90B7D1;
     LDA.W $D67C,Y                                                        ;90B7D3;
@@ -7913,14 +7913,14 @@ HandleProjectileTrails:
     ADC.W #$0004                                                         ;90B7FE;
     STA.W $0590                                                          ;90B801;
 
-.next:
+  .next:
     DEY                                                                  ;90B804;
     DEY                                                                  ;90B805;
     BMI .returnFrozen                                                    ;90B806;
     JMP.W .loopTimeIsFrozen                                              ;90B808;
 
 
-.returnFrozen:
+  .returnFrozen:
     PLB                                                                  ;90B80B;
     RTL                                                                  ;90B80C;
 
@@ -7936,13 +7936,13 @@ HUDSelectionHandler_Nothing_PowerBombs:
     BIT.W #$1000                                                         ;90B81E;
     BNE .charge                                                          ;90B821;
 
-  + LDA.B $8B                                                            ;90B823;
++   LDA.B $8B                                                            ;90B823;
     AND.W $09B2                                                          ;90B825;
     BEQ .return                                                          ;90B828;
     JMP.W Fire_Uncharge_Beam                                             ;90B82A;
 
 
-.charge:
+  .charge:
     LDA.W $0B5E                                                          ;90B82D;
     BEQ +                                                                ;90B830;
     LDA.W $0CD0                                                          ;90B832;
@@ -7951,7 +7951,7 @@ HUDSelectionHandler_Nothing_PowerBombs:
     BRA .releaseUnchargedBeam                                            ;90B83A;
 
 
-  + LDA.B $8B                                                            ;90B83C;
++   LDA.B $8B                                                            ;90B83C;
     AND.W $09B2                                                          ;90B83E;
     BEQ +                                                                ;90B841;
     LDA.W $0CD0                                                          ;90B843;
@@ -7965,31 +7965,31 @@ HUDSelectionHandler_Nothing_PowerBombs:
     JMP.W Fire_Uncharge_Beam                                             ;90B857;
 
 
-  + LDA.W $0CD0                                                          ;90B85A;
++   LDA.W $0CD0                                                          ;90B85A;
     BEQ .return                                                          ;90B85D;
     CMP.W #$003C                                                         ;90B85F;
     BPL .releaseChargedBeam                                              ;90B862;
 
-.releaseUnchargedBeam:
+  .releaseUnchargedBeam:
     STZ.W $0CD0                                                          ;90B864;
     JSR.W ClearFlareAnimationState                                       ;90B867;
     JMP.W Fire_Uncharge_Beam                                             ;90B86A;
 
 
-.releaseChargedBeam:
+  .releaseChargedBeam:
     STZ.W $0CD0                                                          ;90B86D;
     JSR.W ClearFlareAnimationState                                       ;90B870;
     JMP.W FireChargeBeam                                                 ;90B873;
 
 
-.SBA:
+  .SBA:
     JSR.W FireSBA                                                        ;90B876;
     BCC .return                                                          ;90B879;
     STZ.W $0CD0                                                          ;90B87B;
     JSR.W ClearFlareAnimationState                                       ;90B87E;
     JSL.L LoadSamusSuitPalette                                           ;90B881;
 
-.return:
+  .return:
     PLP                                                                  ;90B885;
     RTS                                                                  ;90B886;
 
@@ -8000,11 +8000,11 @@ Fire_Uncharge_Beam:
     JMP.W FireHyperBeam                                                  ;90B88C;
 
 
-.notHyper:
+  .notHyper:
     JSR.W Check_if_Samus_Can_Fire_Beam                                   ;90B88F;
     BCS .fire                                                            ;90B892;
 
-.cannotFire:
+  .cannotFire:
     LDA.W $0DC2                                                          ;90B894;
     CMP.W #$0010                                                         ;90B897;
     BPL +                                                                ;90B89A;
@@ -8012,17 +8012,17 @@ Fire_Uncharge_Beam:
     RTS                                                                  ;90B89D;
 
 
-  + STZ.W $0DC0                                                          ;90B89E;
++   STZ.W $0DC0                                                          ;90B89E;
     LDA.W #$0002                                                         ;90B8A1;
     JSL.L QueueSound                                                     ;90B8A4;
     PLP                                                                  ;90B8A8;
     RTS                                                                  ;90B8A9;
 
 
-.fire:
+  .fire:
     LDX.W #$0000                                                         ;90B8AA;
 
-.loop:
+  .loop:
     LDA.W $0C2C,X                                                        ;90B8AD;
     BEQ .zeroDamage                                                      ;90B8B0;
     INX                                                                  ;90B8B2;
@@ -8032,7 +8032,7 @@ Fire_Uncharge_Beam:
     DEX                                                                  ;90B8B9;
     DEX                                                                  ;90B8BA;
 
-.zeroDamage:
+  .zeroDamage:
     STX.B $14                                                            ;90B8BB;
     JSR.W InitializeProjectilePositionDirection                          ;90B8BD;
     BCS .cannotFire                                                      ;90B8C0;
@@ -8073,7 +8073,7 @@ Fire_Uncharge_Beam:
     BRA +                                                                ;90B91A;
 
 
-.chargeEquippedOrPreviouslyPressedShot:
+  .chargeEquippedOrPreviouslyPressedShot:
     LDA.W $0C18,X                                                        ;90B91C;
     PHA                                                                  ;90B91F;
     AND.W #$003F                                                         ;90B920;
@@ -8085,7 +8085,7 @@ Fire_Uncharge_Beam:
     BIT.W #$0001                                                         ;90B92E;
     BNE .waveBeam                                                        ;90B931;
 
-  + STZ.W $0BDC,X                                                        ;90B933;
++   STZ.W $0BDC,X                                                        ;90B933;
     STZ.W $0BF0,X                                                        ;90B936;
     STX.W $0DDE                                                          ;90B939;
     JSR.W InitialBeamBlockCollision_NoWaveBeam                           ;90B93C;
@@ -8096,13 +8096,13 @@ Fire_Uncharge_Beam:
     BRA .merge                                                           ;90B94A;
 
 
-.waveBeam:
+  .waveBeam:
     STZ.W $0BDC,X                                                        ;90B94C;
     STZ.W $0BF0,X                                                        ;90B94F;
     STX.W $0DDE                                                          ;90B952;
     JSR.W InitialWaveBeamBlockCollision                                  ;90B955;
 
-.merge:
+  .merge:
     STX.B $14                                                            ;90B958;
     LDA.W $0C18,X                                                        ;90B95A;
     AND.W #$000F                                                         ;90B95D;
@@ -8112,12 +8112,12 @@ Fire_Uncharge_Beam:
     STA.W $0C68,X                                                        ;90B965;
     JSL.L InitializeBeamVelocities                                       ;90B968;
 
-.return:
+  .return:
     PLP                                                                  ;90B96C;
     RTS                                                                  ;90B96D;
 
 
-.pointers:
+  .pointers:
 ; Projectile pre-instruction pointers
     dw Beam_NoWaveBeam                                                   ;90B96E; 0: Power
     dw ProjectilePreInstruction_Beam_UnchargedIceWave                    ;90B970; 1: Wave
@@ -8136,7 +8136,7 @@ FireChargeBeam:
     JSR.W Check_if_Samus_Can_Fire_Beam                                   ;90B986;
     BCS .fire                                                            ;90B989;
 
-.cannotFire:
+  .cannotFire:
     LDA.W $0DC2                                                          ;90B98B;
     CMP.W #$0010                                                         ;90B98E;
     BPL +                                                                ;90B991;
@@ -8144,17 +8144,17 @@ FireChargeBeam:
     RTS                                                                  ;90B994;
 
 
-  + STZ.W $0DC0                                                          ;90B995;
++   STZ.W $0DC0                                                          ;90B995;
     LDA.W #$0002                                                         ;90B998;
     JSL.L QueueSound                                                     ;90B99B;
     PLP                                                                  ;90B99F;
     RTS                                                                  ;90B9A0;
 
 
-.fire:
+  .fire:
     LDX.W #$0000                                                         ;90B9A1;
 
-.loop:
+  .loop:
     LDA.W $0C2C,X                                                        ;90B9A4;
     BEQ .zeroDamage                                                      ;90B9A7;
     INX                                                                  ;90B9A9;
@@ -8164,7 +8164,7 @@ FireChargeBeam:
     DEX                                                                  ;90B9B0;
     DEX                                                                  ;90B9B1;
 
-.zeroDamage:
+  .zeroDamage:
     STX.B $14                                                            ;90B9B2;
     JSR.W InitializeProjectilePositionDirection                          ;90B9B4;
     BCS .cannotFire                                                      ;90B9B7;
@@ -8205,13 +8205,13 @@ FireChargeBeam:
     BRA +                                                                ;90BA14;
 
 
-.waveBeam:
+  .waveBeam:
     STZ.W $0BDC,X                                                        ;90BA16;
     STZ.W $0BF0,X                                                        ;90BA19;
     STX.W $0DDE                                                          ;90BA1C;
     JSR.W InitialWaveBeamBlockCollision                                  ;90BA1F;
 
-  + STX.B $14                                                            ;90BA22;
++   STX.B $14                                                            ;90BA22;
     LDA.W $0C18,X                                                        ;90BA24;
     AND.W #$000F                                                         ;90BA27;
     ASL A                                                                ;90BA2A;
@@ -8220,7 +8220,7 @@ FireChargeBeam:
     STA.W $0C68,X                                                        ;90BA2F;
     JSL.L InitializeBeamVelocities                                       ;90BA32;
 
-.return:
+  .return:
     LDA.W #$0004                                                         ;90BA36;
     STA.W $0B18                                                          ;90BA39;
     PLP                                                                  ;90BA3C;
@@ -8256,7 +8256,7 @@ InitializeProjectilePositionDirection:
     BRA .initialize                                                      ;90BA6A;
 
 
-.zero:
+  .zero:
     LDA.L PoseDefinitions_directionShotsFired,X                          ;90BA6C;
     AND.W #$00FF                                                         ;90BA70;
     BIT.W #$00F0                                                         ;90BA73;
@@ -8266,7 +8266,7 @@ InitializeProjectilePositionDirection:
     JMP.W .returnNoFire                                                  ;90BA7D;
 
 
-.initialize:
+  .initialize:
     STA.W $0C04,Y                                                        ;90BA80;
     LDA.L PoseDefinitions_YOffset,X                                      ;90BA83;
     AND.W #$00FF                                                         ;90BA87;
@@ -8298,7 +8298,7 @@ InitializeProjectilePositionDirection:
     RTS                                                                  ;90BAC4;
 
 
-.notMoonwalk:
+  .notMoonwalk:
     LDA.W ProjectileOriginOffsetsByDirection_ProjX_Moonwalk_Running,X    ;90BAC5;
     CLC                                                                  ;90BAC8;
     ADC.W $0AF6                                                          ;90BAC9;
@@ -8313,7 +8313,7 @@ InitializeProjectilePositionDirection:
     RTS                                                                  ;90BADD;
 
 
-.unused:
+  .unused:
     PHX                                                                  ;90BADE;
     LDA.W $0A24                                                          ;90BADF;
     ASL A                                                                ;90BAE2;
@@ -8328,9 +8328,9 @@ InitializeProjectilePositionDirection:
     JMP.W .initialize                                                    ;90BAF3;
 
 
-  + PLX                                                                  ;90BAF6;
++   PLX                                                                  ;90BAF6;
 
-.returnNoFire:
+  .returnNoFire:
     DEC.W $0CCE                                                          ;90BAF7;
     SEC                                                                  ;90BAFA;
     RTS                                                                  ;90BAFB;
@@ -8345,16 +8345,16 @@ HandleChargingBeamGraphicsAudio:
     BEQ .returnUpper                                                     ;90BB07;
     BPL .chargeBeam                                                      ;90BB09;
 
-.returnUpper:
+  .returnUpper:
     PLP                                                                  ;90BB0B;
     RTS                                                                  ;90BB0C;
 
 
-.gotoHyperBeam:
+  .gotoHyperBeam:
     JMP.W .hyperBeam                                                     ;90BB0D;
 
 
-.chargeBeam:
+  .chargeBeam:
     CMP.W #$0001                                                         ;90BB10;
     BNE .notOne                                                          ;90BB13;
     STZ.W $0CD6                                                          ;90BB15;
@@ -8367,22 +8367,22 @@ HandleChargingBeamGraphicsAudio:
     LDA.W #$0004                                                         ;90BB2A;
     STA.W $0CE0                                                          ;90BB2D;
 
-.notOne:
+  .notOne:
     LDA.W $0CD0                                                          ;90BB30;
     CMP.W #$000F                                                         ;90BB33;
     BPL +                                                                ;90BB36;
     JMP.W .returnMiddle                                                  ;90BB38;
 
 
-  + CMP.W #$0010                                                         ;90BB3B;
++   CMP.W #$0010                                                         ;90BB3B;
     BNE .zeroIndex                                                       ;90BB3E;
     LDA.W #$0008                                                         ;90BB40;
     JSL.L QueueSound_Lib1_Max9                                           ;90BB43;
 
-.zeroIndex:
+  .zeroIndex:
     LDX.W #$0000                                                         ;90BB47;
 
-.loopChargeBeam:
+  .loopChargeBeam:
     SEP #$20                                                             ;90BB4A;
     LDA.B #$90                                                           ;90BB4C;
     STA.B $02                                                            ;90BB4E;
@@ -8406,14 +8406,14 @@ HandleChargingBeamGraphicsAudio:
     BRA .merge                                                           ;90BB77;
 
 
-.restart:
+  .restart:
     LDA.W #$0000                                                         ;90BB79;
     STA.W $0CD6,X                                                        ;90BB7C;
     TAY                                                                  ;90BB7F;
     BRA .merge                                                           ;90BB80;
 
 
-.goBack:
+  .goBack:
     INY                                                                  ;90BB82;
     LDA.B [$00],Y                                                        ;90BB83;
     AND.W #$00FF                                                         ;90BB85;
@@ -8424,12 +8424,12 @@ HandleChargingBeamGraphicsAudio:
     STA.W $0CD6,X                                                        ;90BB90;
     TAY                                                                  ;90BB93;
 
-.merge:
+  .merge:
     LDA.B [$00],Y                                                        ;90BB94;
     AND.W #$00FF                                                         ;90BB96;
     STA.W $0CDC,X                                                        ;90BB99;
 
-.chargeBeamAnimationUpdateEnd:
+  .chargeBeamAnimationUpdateEnd:
     PHX                                                                  ;90BB9C;
     JSR.W DrawFlareAnimationComponent                                    ;90BB9D;
     PLX                                                                  ;90BBA0;
@@ -8441,22 +8441,22 @@ HandleChargingBeamGraphicsAudio:
     CPX.W #$0006                                                         ;90BBAB;
     BMI .loopChargeBeam                                                  ;90BBAE;
 
-.returnMiddle:
+  .returnMiddle:
     PLP                                                                  ;90BBB0;
     RTS                                                                  ;90BBB1;
 
 
-.hyperBeam:
+  .hyperBeam:
     LDA.W $0CD0                                                          ;90BBB2;
     BEQ .returnLower                                                     ;90BBB5;
     LDX.W #$0004                                                         ;90BBB7;
 
-.loopHyperBeam:
+  .loopHyperBeam:
     DEC.W $0CDC,X                                                        ;90BBBA;
     BEQ .timerExpired                                                    ;90BBBD;
     BPL .hyperBeamAnimationUpdateEnd                                     ;90BBBF;
 
-.timerExpired:
+  .timerExpired:
     DEC.W $0CD6,X                                                        ;90BBC1;
     BNE .nonZeroAnimationFrame                                           ;90BBC4;
     CPX.W #$0004                                                         ;90BBC6;
@@ -8465,11 +8465,11 @@ HandleChargingBeamGraphicsAudio:
     BRA .hyperBeamAnimationUpdateEnd                                     ;90BBCE;
 
 
-.nonZeroAnimationFrame:
+  .nonZeroAnimationFrame:
     LDA.W #$0003                                                         ;90BBD0;
     STA.W $0CDC,X                                                        ;90BBD3;
 
-.hyperBeamAnimationUpdateEnd:
+  .hyperBeamAnimationUpdateEnd:
     PHX                                                                  ;90BBD6;
     JSR.W DrawFlareAnimationComponent                                    ;90BBD7;
     PLX                                                                  ;90BBDA;
@@ -8477,7 +8477,7 @@ HandleChargingBeamGraphicsAudio:
     DEX                                                                  ;90BBDC;
     BPL .loopHyperBeam                                                   ;90BBDD;
 
-.returnLower:
+  .returnLower:
     PLP                                                                  ;90BBDF;
     RTS                                                                  ;90BBE0;
 
@@ -8502,13 +8502,13 @@ DrawFlareAnimationComponent:
     BRA +                                                                ;90BC06;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.L FlareSpritemapTable_IndexOffsets_facingLeft,X                  ;90BC08;
     CLC                                                                  ;90BC0C;
     ADC.B $12                                                            ;90BC0D;
     STA.B $16                                                            ;90BC0F;
 
-  + LDA.W $0A1C                                                          ;90BC11;
++   LDA.W $0A1C                                                          ;90BC11;
     ASL A                                                                ;90BC14;
     ASL A                                                                ;90BC15;
     ASL A                                                                ;90BC16;
@@ -8525,12 +8525,12 @@ DrawFlareAnimationComponent:
     CMP.W #$0010                                                         ;90BC32;
     BNE .continue                                                        ;90BC35;
 
-.returnUpper:
+  .returnUpper:
     PLP                                                                  ;90BC37;
     RTS                                                                  ;90BC38;
 
 
-.continue:
+  .continue:
     AND.W #$000F                                                         ;90BC39;
     ASL A                                                                ;90BC3C;
     TAX                                                                  ;90BC3D;
@@ -8542,7 +8542,7 @@ DrawFlareAnimationComponent:
     STA.W $0D84                                                          ;90BC4C;
     JSL.L Calculate_SamusPosition_InRotatingElevatorRoom                 ;90BC4F;
 
-.notRotating:
+  .notRotating:
     LDA.W $0A1F                                                          ;90BC53;
     AND.W #$00FF                                                         ;90BC56;
     CMP.W #$0001                                                         ;90BC59;
@@ -8563,7 +8563,7 @@ DrawFlareAnimationComponent:
     BRA +                                                                ;90BC7A;
 
 
-.running:
+  .running:
     LDA.W ProjectileOriginOffsetsByDirection_FlareX_Running,X            ;90BC7C;
     CLC                                                                  ;90BC7F;
     ADC.W $0AF6                                                          ;90BC80;
@@ -8578,25 +8578,25 @@ DrawFlareAnimationComponent:
     SBC.W $0915                                                          ;90BC93;
     STA.B $12                                                            ;90BC96;
 
-  + AND.W #$FF00                                                         ;90BC98;
++   AND.W #$FF00                                                         ;90BC98;
     BNE .greaterThanEqualTo100                                           ;90BC9B;
     LDA.B $16                                                            ;90BC9D;
     JSL.L AddSpritemapFrom_93A1A1_TableToOAM                             ;90BC9F;
     BRA +                                                                ;90BCA3;
 
 
-.greaterThanEqualTo100:
+  .greaterThanEqualTo100:
     LDA.B $16                                                            ;90BCA5;
     JSL.L RTL_818AB7                                                     ;90BCA7;
 
-  + LDA.W $093F                                                          ;90BCAB;
++   LDA.W $093F                                                          ;90BCAB;
     BPL .returnLower                                                     ;90BCAE;
     LDA.W $0D84                                                          ;90BCB0;
     STA.W $0AFA                                                          ;90BCB3;
     LDA.W $0D82                                                          ;90BCB6;
     STA.W $0AF6                                                          ;90BCB9;
 
-.returnLower:
+  .returnLower:
     PLP                                                                  ;90BCBC;
     RTS                                                                  ;90BCBD;
 
@@ -8618,10 +8618,10 @@ FireHyperBeam:
     RTS                                                                  ;90BCD7;
 
 
-.canFire:
+  .canFire:
     LDX.W #$0000                                                         ;90BCD8;
 
-.loop:
+  .loop:
     LDA.W $0C2C,X                                                        ;90BCDB;
     BEQ .zeroDamage                                                      ;90BCDE;
     INX                                                                  ;90BCE0;
@@ -8631,7 +8631,7 @@ FireHyperBeam:
     DEX                                                                  ;90BCE7;
     DEX                                                                  ;90BCE8;
 
-.zeroDamage:
+  .zeroDamage:
     STX.B $14                                                            ;90BCE9;
     JSR.W InitializeProjectilePositionDirection                          ;90BCEB;
     BCS .return                                                          ;90BCEE;
@@ -8676,7 +8676,7 @@ FireHyperBeam:
     LDA.W #$8000                                                         ;90BD5C;
     STA.W $0CD0                                                          ;90BD5F;
 
-.return:
+  .return:
     PLP                                                                  ;90BD62;
     RTS                                                                  ;90BD63;
 
@@ -8692,7 +8692,7 @@ InitialBeamBlockCollision_NoWaveBeam:
     RTS                                                                  ;90BD71;
 
 
-.pointers:
+  .pointers:
     dw InitialBeamBlockCollision_NoWaveBeam_Vertical                     ;90BD72; 0: Up, facing right
     dw InitialBeamBlockCollision_NoWaveBeam_Diagonal                     ;90BD74; 1: Up-right
     dw InitialBeamBlockCollision_NoWaveBeam_Right                        ;90BD76; 2: Right
@@ -8716,7 +8716,7 @@ InitialBeamBlockCollision_NoWaveBeam_Diagonal:
     BCS .return                                                          ;90BD95;
     JSL.L MoveBeamVertically_NoWaveBeam                                  ;90BD97;
 
-.return:
+  .return:
     RTS                                                                  ;90BD9B;
 
 
@@ -8745,7 +8745,7 @@ InitialWaveBeamBlockCollision:
     RTS                                                                  ;90BDBF;
 
 
-.pointers:
+  .pointers:
     dw InitialWaveBeamBlockCollision_Vertical                            ;90BDC0; 0: Up, facing right
     dw InitialWaveBeamBlockCollision_Diagonal                            ;90BDC2; 1: Up-right
     dw InitialWaveBeamBlockCollision_Right                               ;90BDC4; 2: Right
@@ -8769,7 +8769,7 @@ InitialWaveBeamBlockCollision_Diagonal:
     BCS .return                                                          ;90BDE3;
     JSL.L MoveBeamVertically_WaveBeam                                    ;90BDE5;
 
-.return:
+  .return:
     RTS                                                                  ;90BDE9;
 
 
@@ -8812,7 +8812,7 @@ ProjectileReflection:
     BRA .return                                                          ;90BE2D;
 
 
-.missile:
+  .missile:
     JSL.L InitializeProjectile                                           ;90BE2F;
     LDA.W #ProjectilePreInstruction_Missile                              ;90BE33;
     STA.W $0C68,X                                                        ;90BE36;
@@ -8821,7 +8821,7 @@ ProjectileReflection:
     BRA .return                                                          ;90BE3F;
 
 
-.super:
+  .super:
     PHX                                                                  ;90BE41;
     LDA.W $0C7C,X                                                        ;90BE42;
     AND.W #$00FF                                                         ;90BE45;
@@ -8834,7 +8834,7 @@ ProjectileReflection:
     LDA.W #$00F0                                                         ;90BE58;
     STA.W $0C7C,X                                                        ;90BE5B;
 
-.return:
+  .return:
     PLX                                                                  ;90BE5E;
     PLB                                                                  ;90BE5F;
     PLP                                                                  ;90BE60;
@@ -8854,22 +8854,22 @@ HUDSelectionHandler_Missiles_SuperMissiles:
     RTS                                                                  ;90BE75;
 
 
-.checkIfCanFire:
+  .checkIfCanFire:
     JSR.W Check_if_Samus_Can_Fire_Missile                                ;90BE76;
     BCS .fire                                                            ;90BE79;
 
-.returnUpper:
+  .returnUpper:
     PLP                                                                  ;90BE7B;
     RTS                                                                  ;90BE7C;
 
 
-.cannotFire:
+  .cannotFire:
     DEC.W $0CCE                                                          ;90BE7D;
     PLP                                                                  ;90BE80;
     RTS                                                                  ;90BE81;
 
 
-.fire:
+  .fire:
     LDA.W $09D2                                                          ;90BE82;
     CMP.W #$0002                                                         ;90BE85;
     BEQ .selectedSupers                                                  ;90BE88;
@@ -8878,14 +8878,14 @@ HUDSelectionHandler_Missiles_SuperMissiles:
     BRA .zeroIndex                                                       ;90BE8F;
 
 
-.selectedSupers:
+  .selectedSupers:
     LDA.W $09CA                                                          ;90BE91;
     BEQ .cannotFire                                                      ;90BE94;
 
-.zeroIndex:
+  .zeroIndex:
     LDX.W #$0000                                                         ;90BE96;
 
-.loop:
+  .loop:
     LDA.W $0C2C,X                                                        ;90BE99;
     BEQ +                                                                ;90BE9C;
     INX                                                                  ;90BE9E;
@@ -8895,13 +8895,13 @@ HUDSelectionHandler_Missiles_SuperMissiles:
     BRA .cannotFire                                                      ;90BEA5;
 
 
-  + STX.B $14                                                            ;90BEA7;
++   STX.B $14                                                            ;90BEA7;
     JSR.W InitializeProjectilePositionDirection                          ;90BEA9;
     BCC +                                                                ;90BEAC;
     JMP.W .returnUpper                                                   ;90BEAE;
 
 
-  + LDA.W #$0014                                                         ;90BEB1;
++   LDA.W #$0014                                                         ;90BEB1;
     STA.W $18AC                                                          ;90BEB4;
     LDA.W $09D2                                                          ;90BEB7;
     CMP.W #$0002                                                         ;90BEBA;
@@ -8910,10 +8910,10 @@ HUDSelectionHandler_Missiles_SuperMissiles:
     BRA +                                                                ;90BEC2;
 
 
-.decSuperCount:
+  .decSuperCount:
     DEC.W $09CA                                                          ;90BEC4;
 
-  + LDX.B $14                                                            ;90BEC7;
++   LDX.B $14                                                            ;90BEC7;
     LDA.W #$0004                                                         ;90BEC9;
     STA.W $0C90,X                                                        ;90BECC;
     LDA.W $09D2                                                          ;90BECF;
@@ -8933,7 +8933,7 @@ HUDSelectionHandler_Missiles_SuperMissiles:
     LDA.W ProjectileSFX_NonBeamProjectiles,X                             ;90BEEC;
     JSL.L QueueSound_Lib1_Max6                                           ;90BEEF;
 
-.init:
+  .init:
     JSR.W InitializeMissileVelocities                                    ;90BEF3;
     JSL.L InitializeProjectile                                           ;90BEF6;
     LDA.W $0C18,X                                                        ;90BEFA;
@@ -8945,11 +8945,11 @@ HUDSelectionHandler_Missiles_SuperMissiles:
     BRA +                                                                ;90BF09;
 
 
-.superMissile:
+  .superMissile:
     LDA.W #ProjectilePreInstruction_SuperMissile                         ;90BF0B;
     STA.W $0C68,X                                                        ;90BF0E;
 
-  + PLA                                                                  ;90BF11;
++   PLA                                                                  ;90BF11;
     XBA                                                                  ;90BF12;
     AND.W #$000F                                                         ;90BF13;
     TAY                                                                  ;90BF16;
@@ -8963,7 +8963,7 @@ HUDSelectionHandler_Missiles_SuperMissiles:
     BRA .returnLower                                                     ;90BF2B;
 
 
-  + LDA.W $09D2                                                          ;90BF2D;
++   LDA.W $09D2                                                          ;90BF2D;
     CMP.W #$0002                                                         ;90BF30;
     BEQ .supersSelected                                                  ;90BF33;
     LDA.W $09C6                                                          ;90BF35;
@@ -8971,14 +8971,14 @@ HUDSelectionHandler_Missiles_SuperMissiles:
     BRA .clearHUDSelection                                               ;90BF3A;
 
 
-.supersSelected:
+  .supersSelected:
     LDA.W $09CA                                                          ;90BF3C;
     BNE .returnLower                                                     ;90BF3F;
 
-.clearHUDSelection:
+  .clearHUDSelection:
     STZ.W $09D2                                                          ;90BF41;
 
-.returnLower:
+  .returnLower:
     PLP                                                                  ;90BF44;
     RTS                                                                  ;90BF45;
 
@@ -8986,7 +8986,7 @@ HUDSelectionHandler_Missiles_SuperMissiles:
 Spawn_SuperMissileLink:
     LDX.W #$0000                                                         ;90BF46;
 
-.loop:
+  .loop:
     LDA.W $0C2C,X                                                        ;90BF49;
     BEQ .zeroDamage                                                      ;90BF4C;
     INX                                                                  ;90BF4E;
@@ -8996,7 +8996,7 @@ Spawn_SuperMissileLink:
     BRA .return                                                          ;90BF55;
 
 
-.zeroDamage:
+  .zeroDamage:
     STX.B $14                                                            ;90BF57;
     TXY                                                                  ;90BF59;
     LDA.W $0C18,Y                                                        ;90BF5A;
@@ -9023,7 +9023,7 @@ Spawn_SuperMissileLink:
     STA.W $0C7C,X                                                        ;90BF94;
     INC.W $0CCE                                                          ;90BF97;
 
-.return:
+  .return:
     RTS                                                                  ;90BF9A;
 
 
@@ -9042,7 +9042,7 @@ HUDSelectionHandler_MorphBall:
     JMP.W .powerBomb                                                     ;90BFAF;
 
 
-.notPressingShot:
+  .notPressingShot:
     LDA.W $0CD0                                                          ;90BFB2;
     BEQ .return                                                          ;90BFB5;
     LDA.W #$0002                                                         ;90BFB7;
@@ -9051,17 +9051,17 @@ HUDSelectionHandler_MorphBall:
     JSR.W ClearFlareAnimationState                                       ;90BFC1;
     JSL.L LoadSamusSuitPalette                                           ;90BFC4;
 
-.return:
+  .return:
     PLP                                                                  ;90BFC8;
     RTS                                                                  ;90BFC9;
 
 
-.bomb:
+  .bomb:
     JSR.W FireBombOrBombSpread                                           ;90BFCA;
     BCC .returnBomb                                                      ;90BFCD;
     LDX.W #$000A                                                         ;90BFCF;
 
-.loopBomb:
+  .loopBomb:
     LDA.W $0C18,X                                                        ;90BFD2;
     BEQ .noProjectileType                                                ;90BFD5;
     INX                                                                  ;90BFD7;
@@ -9071,7 +9071,7 @@ HUDSelectionHandler_MorphBall:
     DEX                                                                  ;90BFDE;
     DEX                                                                  ;90BFDF;
 
-.noProjectileType:
+  .noProjectileType:
     STX.B $14                                                            ;90BFE0;
     LDA.W #$0500                                                         ;90BFE2;
     STA.W $0C18,X                                                        ;90BFE5;
@@ -9095,21 +9095,21 @@ HUDSelectionHandler_MorphBall:
     AND.W #$00FF                                                         ;90C014;
     STA.W $0CCC                                                          ;90C017;
 
-.returnBomb:
+  .returnBomb:
     PLP                                                                  ;90C01A;
     RTS                                                                  ;90C01B;
 
 
-.powerBomb:
+  .powerBomb:
     LDA.W $0CEE                                                          ;90C01C;
     BPL .inactive                                                        ;90C01F;
 
-.returnPowerBomb:
+  .returnPowerBomb:
     PLP                                                                  ;90C021;
     RTS                                                                  ;90C022;
 
 
-.inactive:
+  .inactive:
     JSR.W FireBomb                                                       ;90C023;
     BCC .returnPowerBomb                                                 ;90C026;
     LDA.W $09CE                                                          ;90C028;
@@ -9121,7 +9121,7 @@ HUDSelectionHandler_MorphBall:
     STA.W $0CEE                                                          ;90C036;
     LDX.W #$000A                                                         ;90C039;
 
-.loopPowerBomb:
+  .loopPowerBomb:
     LDA.W $0C18,X                                                        ;90C03C;
     BEQ +                                                                ;90C03F;
     INX                                                                  ;90C041;
@@ -9131,7 +9131,7 @@ HUDSelectionHandler_MorphBall:
     DEX                                                                  ;90C048;
     DEX                                                                  ;90C049;
 
-  + STX.B $14                                                            ;90C04A;
++   STX.B $14                                                            ;90C04A;
     LDA.W $09D2                                                          ;90C04C;
     XBA                                                                  ;90C04F;
     STA.B $12                                                            ;90C050;
@@ -9164,14 +9164,14 @@ HUDSelectionHandler_MorphBall:
     BRA .returnFinal                                                     ;90C097;
 
 
-  + LDA.W $09D2                                                          ;90C099;
++   LDA.W $09D2                                                          ;90C099;
     CMP.W #$0003                                                         ;90C09C;
     BNE .returnFinal                                                     ;90C09F;
     LDA.W $09CE                                                          ;90C0A1;
     BNE .returnFinal                                                     ;90C0A4;
     STZ.W $09D2                                                          ;90C0A6;
 
-.returnFinal:
+  .returnFinal:
     PLP                                                                  ;90C0A9;
     RTS                                                                  ;90C0AA;
 
@@ -9196,13 +9196,13 @@ FireBombOrBombSpread:
     BRA .return                                                          ;90C0D5;
 
 
-.bombSpread:
+  .bombSpread:
     JSR.W BombSpread                                                     ;90C0D7;
     JSL.L LoadSamusSuitPalette                                           ;90C0DA;
     LDA.W #$0002                                                         ;90C0DE;
     JSL.L QueueSound_Lib1_Max9                                           ;90C0E1;
 
-.return:
+  .return:
     CLC                                                                  ;90C0E5;
     RTS                                                                  ;90C0E6;
 
@@ -9219,7 +9219,7 @@ FireBomb:
     AND.W #$00FF                                                         ;90C0FB;
     BNE .noFire                                                          ;90C0FE;
 
-  + LDA.W $0CCC                                                          ;90C100;
++   LDA.W $0CCC                                                          ;90C100;
     INC A                                                                ;90C103;
     STA.W $0CCC                                                          ;90C104;
     LDA.W $0CD2                                                          ;90C107;
@@ -9229,7 +9229,7 @@ FireBomb:
     RTS                                                                  ;90C10F;
 
 
-.noFire:
+  .noFire:
     LDA.W $0CD0                                                          ;90C110;
     BEQ .returnCarryClear                                                ;90C113;
     LDA.W #$0002                                                         ;90C115;
@@ -9238,7 +9238,7 @@ FireBomb:
     JSR.W ClearFlareAnimationState                                       ;90C11F;
     JSL.L LoadSamusSuitPalette                                           ;90C122;
 
-.returnCarryClear:
+  .returnCarryClear:
     CLC                                                                  ;90C126;
     RTS                                                                  ;90C127;
 
@@ -9261,12 +9261,12 @@ HandleBomb:
     BRA .return                                                          ;90C148;
 
 
-.explosion:
+  .explosion:
     LDA.W #$0008                                                         ;90C14A;
     JSL.L QueueSound_Lib2_Max6                                           ;90C14D;
     JSL.L Initialize_Bomb_Explosion                                      ;90C151;
 
-.return:
+  .return:
     PLP                                                                  ;90C155;
     RTS                                                                  ;90C156;
 
@@ -9289,7 +9289,7 @@ HandlePowerBomb:
     BRA .return                                                          ;90C177;
 
 
-.explosion:
+  .explosion:
     LDA.W $0B64,X                                                        ;90C179;
     STA.W $0CE2                                                          ;90C17C;
     LDA.W $0B78,X                                                        ;90C17F;
@@ -9309,12 +9309,12 @@ HandlePowerBomb:
     BRA .return                                                          ;90C19B;
 
 
-.zero:
+  .zero:
     LDA.W $0CEE                                                          ;90C19D;
     BNE .return                                                          ;90C1A0;
     JSL.L Clear_Projectile                                               ;90C1A2;
 
-.return:
+  .return:
     PLP                                                                  ;90C1A6;
     RTS                                                                  ;90C1A7;
 
@@ -9625,7 +9625,7 @@ HandleSwitchingHUDSelection:
     BRA .itemCancel                                                      ;90C4C7;
 
 
-.notItemCancel:
+  .notItemCancel:
     LDA.B $8B                                                            ;90C4C9;
     BIT.W $09B8                                                          ;90C4CB;
     BNE +                                                                ;90C4CE;
@@ -9633,10 +9633,10 @@ HandleSwitchingHUDSelection:
     BRA .checkItemSelect                                                 ;90C4D2;
 
 
-  + LDA.W #$0001                                                         ;90C4D4;
++   LDA.W #$0001                                                         ;90C4D4;
     STA.B $16                                                            ;90C4D7;
 
-.checkItemSelect:
+  .checkItemSelect:
     LDA.B $8F                                                            ;90C4D9;
     BIT.W $09BA                                                          ;90C4DB;
     BEQ .itemSelectEnd                                                   ;90C4DE;
@@ -9645,13 +9645,13 @@ HandleSwitchingHUDSelection:
     CMP.W #$0006                                                         ;90C4E4;
     BMI .itemCancelEnd                                                   ;90C4E7;
 
-.itemCancel:
+  .itemCancel:
     LDA.W #$0000                                                         ;90C4E9;
 
-.itemCancelEnd:
+  .itemCancelEnd:
     STA.W $09D2                                                          ;90C4EC;
 
-.loop:
+  .loop:
     ASL A                                                                ;90C4EF;
     TAX                                                                  ;90C4F0;
     JSR.W (.pointers,X)                                                  ;90C4F1;
@@ -9666,7 +9666,7 @@ HandleSwitchingHUDSelection:
     BRA .loop                                                            ;90C508;
 
 
-.checkHoldingItemCancel:
+  .checkHoldingItemCancel:
     LDA.B $16                                                            ;90C50A;
     BEQ .resetAutoCancel                                                 ;90C50C;
     LDA.W $09D2                                                          ;90C50E;
@@ -9674,10 +9674,10 @@ HandleSwitchingHUDSelection:
     BRA .itemSelectEnd                                                   ;90C514;
 
 
-.resetAutoCancel:
+  .resetAutoCancel:
     STZ.W $0A04                                                          ;90C516;
 
-.itemSelectEnd:
+  .itemSelectEnd:
     LDA.W $09D2                                                          ;90C519;
     CMP.B $12                                                            ;90C51C;
     BNE .itemChanged                                                     ;90C51E;
@@ -9687,21 +9687,21 @@ HandleSwitchingHUDSelection:
     BMI .toggleArmCannon                                                 ;90C527;
     LDA.W #$0002                                                         ;90C529;
 
-.toggleArmCannon:
+  .toggleArmCannon:
     STA.W $0AAA                                                          ;90C52C;
     BRA .return                                                          ;90C52F;
 
 
-.itemChanged:
+  .itemChanged:
     LDA.W #$0001                                                         ;90C531;
     STA.W $0AAA                                                          ;90C534;
 
-.return:
+  .return:
     PLP                                                                  ;90C537;
     RTS                                                                  ;90C538;
 
 
-.pointers:
+  .pointers:
     dw SwitchedToHUDItemHandler_Nothing                                  ;90C539; Nothing
     dw SwitchedToHUDItemHandler_Missiles                                 ;90C53B; Missiles
     dw SwitchedToHUDItemHandler_SuperMissiles                            ;90C53D; Super missiles
@@ -9724,7 +9724,7 @@ SwitchedToHUDItemHandler_Missiles:
     RTS                                                                  ;90C557;
 
 
-.hasMissiles:
+  .hasMissiles:
     STZ.W $0CD0                                                          ;90C558;
     JSR.W ClearFlareAnimationState                                       ;90C55B;
     JSL.L LoadSamusSuitPalette                                           ;90C55E;
@@ -9739,7 +9739,7 @@ SwitchedToHUDItemHandler_SuperMissiles:
     RTS                                                                  ;90C56A;
 
 
-.hasSupers:
+  .hasSupers:
     STZ.W $0CD0                                                          ;90C56B;
     JSR.W ClearFlareAnimationState                                       ;90C56E;
     JSL.L LoadSamusSuitPalette                                           ;90C571;
@@ -9754,7 +9754,7 @@ SwitchedToHUDItemHandler_PowerBombs:
     RTS                                                                  ;90C57D;
 
 
-.hasPowerBombs:
+  .hasPowerBombs:
     STZ.W $0CD0                                                          ;90C57E;
     JSR.W ClearFlareAnimationState                                       ;90C581;
     JSL.L LoadSamusSuitPalette                                           ;90C584;
@@ -9770,7 +9770,7 @@ SwitchedToHUDItemHandler_GrappleBeam:
     RTS                                                                  ;90C593;
 
 
-.hasGrappleBeam:
+  .hasGrappleBeam:
     LDA.W $0D32                                                          ;90C594;
     CMP.W #GrappleBeamFunction_Inactive                                  ;90C597;
     BNE .returnCarryClear                                                ;90C59A;
@@ -9780,7 +9780,7 @@ SwitchedToHUDItemHandler_GrappleBeam:
     LDA.W #GrappleBeamFunction_Inactive                                  ;90C5A6;
     STA.W $0D32                                                          ;90C5A9;
 
-.returnCarryClear:
+  .returnCarryClear:
     CLC                                                                  ;90C5AC;
     RTS                                                                  ;90C5AD;
 
@@ -9793,7 +9793,7 @@ SwitchedToHUDItemHandler_XrayScope:
     RTS                                                                  ;90C5B7;
 
 
-.hasXrayScope:
+  .hasXrayScope:
     STZ.W $0CD0                                                          ;90C5B8;
     JSR.W ClearFlareAnimationState                                       ;90C5BB;
     JSL.L LoadSamusSuitPalette                                           ;90C5BE;
@@ -9810,10 +9810,10 @@ HandleArmCannonOpenState:
     JSR.W UpdateArmCannonIsOpenState                                     ;90C5CF;
     BCC .noChange                                                        ;90C5D2;
 
-.advanceArmCannonFrame:
+  .advanceArmCannonFrame:
     JSR.W AdvanceArmCannonFrame                                          ;90C5D4;
 
-.noChange:
+  .noChange:
     LDA.W $0A1C                                                          ;90C5D7;
     ASL A                                                                ;90C5DA;
     TAX                                                                  ;90C5DB;
@@ -9846,11 +9846,11 @@ UpdateArmCannonIsOpenState:
     BRA .toggleArmCannon                                                 ;90C613;
 
 
-.closed:
+  .closed:
     LDA.W #$0004                                                         ;90C615;
     STA.W $0AA8                                                          ;90C618;
 
-.toggleArmCannon:
+  .toggleArmCannon:
     LDA.B $12                                                            ;90C61B;
     ORA.W #$0100                                                         ;90C61D;
     STA.W $0AA6                                                          ;90C620;
@@ -9858,7 +9858,7 @@ UpdateArmCannonIsOpenState:
     RTS                                                                  ;90C624;
 
 
-.returnCarryClear:
+  .returnCarryClear:
     CLC                                                                  ;90C625;
     RTS                                                                  ;90C626;
 
@@ -9877,7 +9877,7 @@ AdvanceArmCannonFrame:
     BRA .return                                                          ;90C63D;
 
 
-.open:
+  .open:
     LDA.W $0AA8                                                          ;90C63F;
     INC A                                                                ;90C642;
     CMP.W #$0003                                                         ;90C643;
@@ -9886,21 +9886,21 @@ AdvanceArmCannonFrame:
     BRA .return                                                          ;90C64B;
 
 
-.fullyClosed:
+  .fullyClosed:
     STZ.W $0AA8                                                          ;90C64D;
     BRA .fullyTransitioned                                               ;90C650;
 
 
-.fullyOpen:
+  .fullyOpen:
     LDA.W #$0003                                                         ;90C652;
     STA.W $0AA8                                                          ;90C655;
 
-.fullyTransitioned:
+  .fullyTransitioned:
     LDA.W $0AA6                                                          ;90C658;
     AND.W #$00FF                                                         ;90C65B;
     STA.W $0AA6                                                          ;90C65E;
 
-.return:
+  .return:
     PLP                                                                  ;90C661;
     RTS                                                                  ;90C662;
 
@@ -9916,12 +9916,12 @@ DrawArmCannon:
     AND.W #$0001                                                         ;90C673;
     BEQ .draw                                                            ;90C676;
 
-.return:
+  .return:
     PLP                                                                  ;90C678;
     RTS                                                                  ;90C679;
 
 
-.draw:
+  .draw:
     LDA.W $0A1C                                                          ;90C67A;
     ASL A                                                                ;90C67D;
     TAX                                                                  ;90C67E;
@@ -9944,7 +9944,7 @@ DrawArmCannon:
     BRA .merge                                                           ;90C6A2;
 
 
-  + LDA.W $0002,Y                                                        ;90C6A4;
++   LDA.W $0002,Y                                                        ;90C6A4;
     AND.W #$007F                                                         ;90C6A7;
     ASL A                                                                ;90C6AA;
     TAX                                                                  ;90C6AB;
@@ -9955,7 +9955,7 @@ DrawArmCannon:
     BRA .merge                                                           ;90C6B3;
 
 
-.spritePositive:
+  .spritePositive:
     ASL A                                                                ;90C6B5;
     TAX                                                                  ;90C6B6;
     TYA                                                                  ;90C6B7;
@@ -9963,7 +9963,7 @@ DrawArmCannon:
     INC A                                                                ;90C6B9;
     STA.B $16                                                            ;90C6BA;
 
-.merge:
+  .merge:
     LDA.W .spriteValues,X                                                ;90C6BC;
     STA.B $18                                                            ;90C6BF;
     LDA.W $0A96                                                          ;90C6C1;
@@ -9977,14 +9977,14 @@ DrawArmCannon:
     BEQ +                                                                ;90C6D2;
     ORA.W #$FF00                                                         ;90C6D4;
 
-  + STA.B $12                                                            ;90C6D7;
++   STA.B $12                                                            ;90C6D7;
     LDA.W $0001,Y                                                        ;90C6D9;
     AND.W #$00FF                                                         ;90C6DC;
     BIT.W #$0080                                                         ;90C6DF;
     BEQ +                                                                ;90C6E2;
     ORA.W #$FF00                                                         ;90C6E4;
 
-  + STA.B $14                                                            ;90C6E7;
++   STA.B $14                                                            ;90C6E7;
     LDA.W $0A1C                                                          ;90C6E9;
     ASL A                                                                ;90C6EC;
     ASL A                                                                ;90C6ED;
@@ -10020,7 +10020,7 @@ DrawArmCannon:
     ADC.W #$0004                                                         ;90C72D;
     STA.W $0590                                                          ;90C730;
 
-  + LDA.W $0A1C                                                          ;90C733;
++   LDA.W $0A1C                                                          ;90C733;
     ASL A                                                                ;90C736;
     TAX                                                                  ;90C737;
     LDA.W ArmCannonDrawingData,X                                         ;90C738;
@@ -10036,13 +10036,13 @@ DrawArmCannon:
     BRA .tilesPositive                                                   ;90C752;
 
 
-.nonZeroAnimFrame:
+  .nonZeroAnimFrame:
     INY                                                                  ;90C754;
     INY                                                                  ;90C755;
     LDA.W $0000,Y                                                        ;90C756;
     AND.W #$007F                                                         ;90C759;
 
-.tilesPositive:
+  .tilesPositive:
     ASL A                                                                ;90C75C;
     TAX                                                                  ;90C75D;
     LDA.W .pointers,X                                                    ;90C75E;
@@ -10075,11 +10075,11 @@ DrawArmCannon:
     RTS                                                                  ;90C790;
 
 
-.spriteValues:
+  .spriteValues:
 ; Indexed by direction (see $0C04)
     dw $281F,$281F,$281F,$681F,$A81F,$E81F,$281F,$681F,$681F,$681F       ;90C791; Sprite tile number and attributes
 
-.pointers:
+  .pointers:
 ; Pointers to below table
     dw .armCannonTiles_0                                                 ;90C7A5;
     dw .armCannonTiles_3                                                 ;90C7A7;
@@ -10093,22 +10093,22 @@ DrawArmCannon:
     dw .armCannonTiles_0                                                 ;90C7B7;
 
 ; Pointers to tiles in bank $9A, indexed by arm cannon frame
-.armCannonTiles_0:
+  .armCannonTiles_0:
     dw $0000                                                             ;90C7B9;
     dw Tiles_NonClosed_ArmCannon_Vertical_0                              ;90C7BB;
     dw Tiles_NonClosed_ArmCannon_Vertical_1                              ;90C7BD;
     dw Tiles_NonClosed_ArmCannon_Vertical_2                              ;90C7BF;
-.armCannonTiles_1:
+  .armCannonTiles_1:
     dw $0000                                                             ;90C7C1;
     dw Tiles_NonClosed_ArmCannon_Horizontal_0                            ;90C7C3;
     dw Tiles_NonClosed_ArmCannon_Horizontal_1                            ;90C7C5;
     dw Tiles_NonClosed_ArmCannon_Horizontal_2                            ;90C7C7;
-.armCannonTiles_2:
+  .armCannonTiles_2:
     dw $0000                                                             ;90C7C9;
     dw Tiles_NonClosed_ArmCannon_DownwardsDiagonal_0                     ;90C7CB;
     dw Tiles_NonClosed_ArmCannon_DownwardsDiagonal_1                     ;90C7CD;
     dw Tiles_NonClosed_ArmCannon_DownwardsDiagonal_2                     ;90C7CF;
-.armCannonTiles_3:
+  .armCannonTiles_3:
     dw $0000                                                             ;90C7D1;
     dw Tiles_NonClosed_ArmCannon_UpwardsDiagonal_0                       ;90C7D3;
     dw Tiles_NonClosed_ArmCannon_UpwardsDiagonal_1                       ;90C7D5;
@@ -10421,12 +10421,12 @@ ArmCannonDrawingData_FacingRight:
     db $0B,$FD,$0B,$FD                                                   ;90C9ED;
 
 ArmCannonDrawingData_FacingLeft:
-; 2: Facing left  - normal
+; 2: Facing left-   normal
 ; 48h: Unused
-; 8Ah: Facing left  - ran into a wall
+; 8Ah: Facing left-   ran into a wall
 ; A9h: Unused
-; BCh: Facing left  - grabbed by Draygon - firing
-; E7h: Facing left  - landing from normal jump - firing
+; BCh: Facing left-   grabbed by Draygon - firing
+; E7h: Facing left-   landing from normal jump - firing
     db $07,$01,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD   ;90C9F1;
     db $ED,$FD,$ED,$FD                                                   ;90CA01;
 
@@ -10435,7 +10435,7 @@ ArmCannonDrawingData_FacingRight_AimingUp:
     db $81,$01,$80,$01,$0E,$EA,$FE,$E1                                   ;90CA05;
 
 ArmCannonDrawingData_FacingLeft_AimingUp:
-; 4: Facing left  - aiming up
+; 4: Facing left-   aiming up
     db $88,$01,$89,$01,$EA,$E9,$FA,$E1                                   ;90CA0D;
 
 ArmCannonDrawingData_FacingRight_AimingUpRight:
@@ -10449,13 +10449,13 @@ ArmCannonDrawingData_FacingRight_AimingUpRight:
     db $01,$01,$0D,$EA                                                   ;90CA15;
 
 ArmCannonDrawingData_FacingLeft_AimingUpLeft:
-; 6: Facing left  - aiming up-left
-; 58h: Facing left  - normal jump transition - aiming up-left
-; BBh: Facing left  - grabbed by Draygon - not moving - aiming up-left
-; D0h: Facing left  - ran into a wall - aiming up-left
-; E3h: Facing left  - landing from normal jump - aiming up-left
-; F4h: Facing left  - crouching transition - aiming up-left
-; FAh: Facing left  - standing transition - aiming up-left
+; 6: Facing left-   aiming up-left
+; 58h: Facing left-   normal jump transition - aiming up-left
+; BBh: Facing left-   grabbed by Draygon - not moving - aiming up-left
+; D0h: Facing left-   ran into a wall - aiming up-left
+; E3h: Facing left-   landing from normal jump - aiming up-left
+; F4h: Facing left-   crouching transition - aiming up-left
+; FAh: Facing left-   standing transition - aiming up-left
     db $08,$01,$EB,$E9                                                   ;90CA19;
 
 ArmCannonDrawingData_FacingRight_AimingDownRight:
@@ -10470,14 +10470,14 @@ ArmCannonDrawingData_FacingRight_AimingDownRight:
     db $03,$01,$0D,$02                                                   ;90CA1D;
 
 ArmCannonDrawingData_FacingLeft_AimingDownLeft:
-; 8: Facing left  - aiming down-left
-; 5Ah: Facing left  - normal jump transition - aiming down-left
+; 8: Facing left-   aiming down-left
+; 5Ah: Facing left-   normal jump transition - aiming down-left
 ; ABh: Unused
-; BDh: Facing left  - grabbed by Draygon - not moving - aiming down-left
-; D2h: Facing left  - ran into a wall - aiming down-left
-; E5h: Facing left  - landing from normal jump - aiming down-left
-; F6h: Facing left  - crouching transition - aiming down-left
-; FCh: Facing left  - standing transition - aiming down-left
+; BDh: Facing left-   grabbed by Draygon - not moving - aiming down-left
+; D2h: Facing left-   ran into a wall - aiming down-left
+; E5h: Facing left-   landing from normal jump - aiming down-left
+; F6h: Facing left-   crouching transition - aiming down-left
+; FCh: Facing left-   standing transition - aiming down-left
     db $06,$01,$EB,$02                                                   ;90CA21;
 
 ArmCannonDrawingData_MovingRight_GunExtended:
@@ -10486,7 +10486,7 @@ ArmCannonDrawingData_MovingRight_GunExtended:
     db $11,$F9,$11,$F8,$11,$F9                                           ;90CA35;
 
 ArmCannonDrawingData_MovingLeft_GunExtended:
-; Ch: Moving left  - gun extended
+; Ch: Moving left-   gun extended
     db $07,$01,$E7,$FA,$E7,$FA,$E7,$F8,$E7,$F9,$E7,$F9,$E7,$FA,$E7,$F9   ;90CA3B;
     db $E7,$F8,$E7,$F9,$E7,$F9                                           ;90CA4B;
 
@@ -10496,7 +10496,7 @@ ArmCannonDrawingData_MovingRight_AimingUpRight:
     db $0C,$E9,$0C,$E8,$0C,$E9                                           ;90CA61;
 
 ArmCannonDrawingData_MovingLeft_AimingUpLeft:
-; 10h: Moving left  - aiming up-left
+; 10h: Moving left-   aiming up-left
     db $08,$01,$EC,$EA,$EC,$EA,$EC,$E9,$EC,$E8,$EC,$E9,$EC,$EA,$EC,$EA   ;90CA67;
     db $EC,$E9,$EC,$E8,$EC,$E9                                           ;90CA77;
 
@@ -10506,7 +10506,7 @@ ArmCannonDrawingData_MovingRight_AimingDownRight:
     db $0B,$00,$0B,$FF,$0B,$00                                           ;90CA8D;
 
 ArmCannonDrawingData_MovingLeft_AimingDownLeft:
-; 12h: Moving left  - aiming down-left
+; 12h: Moving left-   aiming down-left
     db $06,$01,$ED,$01,$ED,$01,$ED,$00,$ED,$FF,$ED,$00,$ED,$01,$ED,$01   ;90CA93;
     db $ED,$00,$ED,$FF,$ED,$00                                           ;90CAA3;
 
@@ -10516,7 +10516,7 @@ ArmCannonDrawingData_FacingRight_NormalJump_NotMoving_GunExt:
     db $02,$01,$0B,$FD,$0B,$FD                                           ;90CAA9;
 
 ArmCannonDrawingData_FacingLeft_NormalJump_NotMoving_GunExt:
-; 14h: Facing left  - normal jump - not aiming - not moving - gun extended
+; 14h: Facing left-   normal jump - not aiming - not moving - gun extended
 ; ADh: Unused
     db $07,$01,$ED,$FD,$ED,$FD                                           ;90CAAF;
 
@@ -10525,7 +10525,7 @@ ArmCannonDrawingData_FacingRight_NormalJump_AimingUp:
     db $81,$01,$80,$01,$0E,$E9,$FE,$E0                                   ;90CAB5;
 
 ArmCannonDrawingData_FacingLeft_NormalJump_AimingUp:
-; 16h: Facing left  - normal jump - aiming up
+; 16h: Facing left-   normal jump - aiming up
     db $88,$01,$89,$01,$EA,$E8,$FA,$E0                                   ;90CABD;
 
 ArmCannonDrawingData_FacingRight_NormalJump_AimingDown:
@@ -10534,7 +10534,7 @@ ArmCannonDrawingData_FacingRight_NormalJump_AimingDown:
     db $04,$01,$00,$0D,$00,$0D                                           ;90CAC5;
 
 ArmCannonDrawingData_FacingLeft_NormalJump_AimingDown:
-; 18h: Facing left  - normal jump - aiming down
+; 18h: Facing left-   normal jump - aiming down
 ; AFh: Unused
     db $05,$01,$F7,$0D,$F7,$0D                                           ;90CACB;
 
@@ -10547,7 +10547,7 @@ ArmCannonDrawingData_FacingRight_NormalJump_MovingForward:
     db $02,$01,$0B,$FD,$0B,$FD                                           ;90CAD9;
 
 ArmCannonDrawingData_FacingLeft_NormalJump_MovingForward:
-; 52h: Facing left  - normal jump - not aiming - moving forward
+; 52h: Facing left-   normal jump - not aiming - moving forward
     db $07,$01,$ED,$FD,$ED,$FD                                           ;90CADF;
 
 ArmCannonDrawingData_FacingRight_NormalJump_AimingUpRight:
@@ -10555,7 +10555,7 @@ ArmCannonDrawingData_FacingRight_NormalJump_AimingUpRight:
     db $01,$01,$0C,$EA,$0C,$EA                                           ;90CAE5;
 
 ArmCannonDrawingData_FacingLeft_NormalJump_AimingUpLeft:
-; 6Ah: Facing left  - normal jump - aiming up-left
+; 6Ah: Facing left-   normal jump - aiming up-left
     db $08,$01,$EC,$EA,$EC,$EA                                           ;90CAEB;
 
 ArmCannonDrawingData_FacingRight_NormalJump_AimingDownRight:
@@ -10564,7 +10564,7 @@ ArmCannonDrawingData_FacingRight_NormalJump_AimingDownRight:
     db $03,$01,$0B,$01,$0B,$01                                           ;90CAF1;
 
 ArmCannonDrawingData_FacingLeft_NormalJump_AimingDownLeft:
-; 6Ch: Facing left  - normal jump - aiming down-left
+; 6Ch: Facing left-   normal jump - aiming down-left
 ; B1h: Unused
     db $06,$01,$ED,$01,$ED,$01                                           ;90CAF7;
 
@@ -10573,7 +10573,7 @@ ArmCannonDrawingData_FacingRight_Falling_GunExtended:
     db $02,$01,$0B,$FD,$0B,$FD,$0B,$FD,$0B,$FD,$0B,$FD,$0B,$FD,$0B,$FD   ;90CAFD;
 
 ArmCannonDrawingData_FacingLeft_Falling_GunExtended:
-; 68h: Facing left  - falling - gun extended
+; 68h: Facing left-   falling - gun extended
     db $07,$01,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD   ;90CB0D;
 
 ArmCannonDrawingData_FacingRight_Falling_AimingUp:
@@ -10581,7 +10581,7 @@ ArmCannonDrawingData_FacingRight_Falling_AimingUp:
     db $81,$01,$80,$01,$0E,$E9,$FE,$E0,$FE,$E0                           ;90CB1D;
 
 ArmCannonDrawingData_FacingLeft_Falling_AimingUp:
-; 2Ch: Facing left  - falling - aiming up
+; 2Ch: Facing left-   falling - aiming up
     db $88,$01,$89,$01,$EA,$E8,$FA,$E4,$FA,$E4                           ;90CB27;
 
 ArmCannonDrawingData_FacingRight_Falling_AimingDown:
@@ -10589,7 +10589,7 @@ ArmCannonDrawingData_FacingRight_Falling_AimingDown:
     db $04,$01,$00,$09,$00,$09                                           ;90CB31;
 
 ArmCannonDrawingData_FacingLeft_Falling_AimingDown:
-; 2Eh: Facing left  - falling - aiming down
+; 2Eh: Facing left-   falling - aiming down
     db $05,$01,$F7,$09,$F7,$09                                           ;90CB37;
 
 ArmCannonDrawingData_FacingRight_Falling_AimingUpRight:
@@ -10597,7 +10597,7 @@ ArmCannonDrawingData_FacingRight_Falling_AimingUpRight:
     db $01,$01,$0C,$EA,$0C,$EA,$0C,$EA                                   ;90CB3D;
 
 ArmCannonDrawingData_FacingLeft_Falling_AimingUpLeft:
-; 6Eh: Facing left  - falling - aiming up-left
+; 6Eh: Facing left-   falling - aiming up-left
     db $08,$01,$EC,$EA,$EC,$EA,$EC,$EA                                   ;90CB45;
 
 ArmCannonDrawingData_FacingRight_Falling_AimingDownRight:
@@ -10605,7 +10605,7 @@ ArmCannonDrawingData_FacingRight_Falling_AimingDownRight:
     db $03,$01,$0B,$01,$0B,$01,$0B,$01                                   ;90CB4D;
 
 ArmCannonDrawingData_FacingLeft_Falling_AimingDownLeft:
-; 70h: Facing left  - falling - aiming down-left
+; 70h: Facing left-   falling - aiming down-left
     db $06,$01,$ED,$01,$ED,$01,$ED,$01                                   ;90CB55;
 
 ArmCannonDrawingData_FacingRight_Crouching:
@@ -10615,7 +10615,7 @@ ArmCannonDrawingData_FacingRight_Crouching:
     db $0B,$FD,$0B,$FD                                                   ;90CB6D;
 
 ArmCannonDrawingData_FacingLeft_Crouching:
-; 28h: Facing left  - crouching
+; 28h: Facing left-   crouching
 ; B5h: Unused
     db $07,$01,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD,$ED,$FD   ;90CB71;
     db $ED,$FD,$ED,$FD                                                   ;90CB81;
@@ -10625,7 +10625,7 @@ ArmCannonDrawingData_FacingRight_Crouching_AimingUpRight:
     db $01,$01,$0E,$E9                                                   ;90CB85;
 
 ArmCannonDrawingData_FacingLeft_Crouching_AimingUpLeft:
-; 72h: Facing left  - crouching - aiming up-left
+; 72h: Facing left-   crouching - aiming up-left
     db $08,$01,$EA,$E8                                                   ;90CB89;
 
 ArmCannonDrawingData_FacingRight_Crouching_AimingDownRight:
@@ -10633,7 +10633,7 @@ ArmCannonDrawingData_FacingRight_Crouching_AimingDownRight:
     db $03,$01,$0D,$02                                                   ;90CB8D;
 
 ArmCannonDrawingData_FacingLeft_Crouching_AimingDownLeft:
-; 74h: Facing left  - crouching - aiming down-left
+; 74h: Facing left-   crouching - aiming down-left
 ; B7h: Unused
     db $06,$01,$EB,$02                                                   ;90CB91;
 
@@ -10642,11 +10642,11 @@ ArmCannonDrawingData_FacingRight_Crouching_AimingUp:
     db $81,$01,$80,$01,$0E,$E9,$FE,$E0                                   ;90CB95;
 
 ArmCannonDrawingData_FacingLeft_Crouching_AimingUp:
-; 86h: Facing left  - crouching - aiming up
+; 86h: Facing left-   crouching - aiming up
     db $88,$01,$89,$01,$EA,$E8,$FA,$E0                                   ;90CB9D;
 
 ArmCannonDrawingData_FacingLeft_Moonwalk:
-; 49h: Facing left  - moonwalk
+; 49h: Facing left-   moonwalk
     db $02,$01,$F1,$FD,$F1,$FC,$F1,$FC,$F1,$FD,$F1,$FC,$F1,$FC           ;90CBA5;
 
 ArmCannonDrawingData_FacingRight_Moonwalk:
@@ -10654,7 +10654,7 @@ ArmCannonDrawingData_FacingRight_Moonwalk:
     db $07,$01,$07,$FD,$07,$FC,$07,$FC,$07,$FD,$07,$FC,$07,$FC           ;90CBB3;
 
 ArmCannonDrawingData_FacingLeft_Moonwalk_AimingUpLeft:
-; 75h: Facing left  - moonwalk - aiming up-left
+; 75h: Facing left-   moonwalk - aiming up-left
     db $08,$01,$EC,$EA,$EC,$E9,$EC,$E9,$EC,$EA,$EC,$E9,$EC,$E9           ;90CBC1;
 
 ArmCannonDrawingData_FacingRight_Moonwalk_AimingUpRight:
@@ -10662,7 +10662,7 @@ ArmCannonDrawingData_FacingRight_Moonwalk_AimingUpRight:
     db $01,$01,$0C,$EA,$0C,$E9,$0C,$E9,$0C,$EA,$0C,$E9,$0C,$E9           ;90CBCF;
 
 ArmCannonDrawingData_FacingLeft_Moonwalk_AimingDownLeft:
-; 77h: Facing left  - moonwalk - aiming down-left
+; 77h: Facing left-   moonwalk - aiming down-left
     db $06,$01,$ED,$01,$ED,$00,$ED,$00,$ED,$01,$ED,$00,$ED,$00           ;90CBDD;
 
 ArmCannonDrawingData_FacingRight_Moonwalk_AimingDownRight:
@@ -10685,10 +10685,10 @@ ArmCannonDrawingData_FacingRight_Transition_AimingUp:
     db $00,$01,$FE,$E1,$FE,$E1                                           ;90CC15;
 
 ArmCannonDrawingData_FacingLeft_Transition_AimingUp:
-; 56h: Facing left  - normal jump transition - aiming up
-; E1h: Facing left  - landing from normal jump - aiming up
-; F2h: Facing left  - crouching transition - aiming up
-; F8h: Facing left  - standing transition - aiming up
+; 56h: Facing left-   normal jump transition - aiming up
+; E1h: Facing left-   landing from normal jump - aiming up
+; F2h: Facing left-   crouching transition - aiming up
+; F8h: Facing left-   standing transition - aiming up
     db $09,$01,$FA,$E1,$FA,$E1                                           ;90CC1B;
 
 CostOfSBAsInPowerBombs:                                                  ;90CC21;
@@ -10722,7 +10722,7 @@ Math_90CC39:
     BRA +                                                                ;90CC4C;
 
 
-.greaterThanEqualTo80:
+  .greaterThanEqualTo80:
     SEC                                                                  ;90CC4E;
     SBC.W #$0080                                                         ;90CC4F;
     AND.W #$00FF                                                         ;90CC52;
@@ -10732,7 +10732,7 @@ Math_90CC39:
     EOR.W #$FFFF                                                         ;90CC5A;
     INC A                                                                ;90CC5D;
 
-  + STA.B $14                                                            ;90CC5E;
++   STA.B $14                                                            ;90CC5E;
     LDA.B $1A                                                            ;90CC60;
     SEC                                                                  ;90CC62;
     SBC.W #$0040                                                         ;90CC63;
@@ -10745,7 +10745,7 @@ Math_90CC39:
     BRA +                                                                ;90CC73;
 
 
-.AGreaterThanEqualTo80:
+  .AGreaterThanEqualTo80:
     SEC                                                                  ;90CC75;
     SBC.W #$0080                                                         ;90CC76;
     AND.W #$00FF                                                         ;90CC79;
@@ -10755,7 +10755,7 @@ Math_90CC39:
     EOR.W #$FFFF                                                         ;90CC81;
     INC A                                                                ;90CC84;
 
-  + STA.B $16                                                            ;90CC85;
++   STA.B $16                                                            ;90CC85;
     PLX                                                                  ;90CC87;
     PLP                                                                  ;90CC88;
     RTS                                                                  ;90CC89;
@@ -10798,7 +10798,7 @@ FireSBA:
     RTS                                                                  ;90CCC9;
 
 
-.powerBombsSelected:
+  .powerBombsSelected:
     LDA.W $09A6                                                          ;90CCCA;
     AND.W #$000F                                                         ;90CCCD;
     ASL A                                                                ;90CCD0;
@@ -10809,18 +10809,18 @@ FireSBA:
     BPL +                                                                ;90CCD9;
     LDA.W #$0000                                                         ;90CCDB;
 
-  + STA.W $09CE                                                          ;90CCDE;
++   STA.W $09CE                                                          ;90CCDE;
     JSR.W (.pointers,X)                                                  ;90CCE1;
     LDA.W $09CE                                                          ;90CCE4;
     BNE .return                                                          ;90CCE7;
     STZ.W $09D2                                                          ;90CCE9;
     STZ.W $0A04                                                          ;90CCEC;
 
-.return:
+  .return:
     RTS                                                                  ;90CCEF;
 
 
-.pointers:
+  .pointers:
     dw CLCRTS_90CD18                                                     ;90CCF0; 0: Power
     dw FireWaveSBA                                                       ;90CCF2; 1: Wave
     dw FireIceSBA                                                        ;90CCF4; 2: Ice
@@ -10853,7 +10853,7 @@ CLCRTS_90CD18:
 FireWaveSBA:
     LDX.W #$0006                                                         ;90CD1A;
 
-.loop:
+  .loop:
     LDA.W #$0004                                                         ;90CD1D;
     STA.W $0C90,X                                                        ;90CD20;
     LDA.W $09A6                                                          ;90CD23;
@@ -10897,11 +10897,11 @@ FireWaveSBA:
     RTS                                                                  ;90CD8A;
 
 
-.XOffsets:
+  .XOffsets:
 ; X offsets from Samus
     dw $0080,$0080,$FF80,$FF80                                           ;90CD8B;
 
-.YOffsets:
+  .YOffsets:
 ; y offsets from Samus
     dw $0080,$FF80,$FF80,$0080                                           ;90CD93;
 
@@ -10912,15 +10912,15 @@ FireIceSBA:
     CMP.W #ProjectilePreInstruction_IceSBA_Main                          ;90CDA3;
     BNE .fire                                                            ;90CDA6;
 
-.returnCarryClear:
+  .returnCarryClear:
     CLC                                                                  ;90CDA8;
     RTS                                                                  ;90CDA9;
 
 
-.fire:
+  .fire:
     LDX.W #$0006                                                         ;90CDAA;
 
-.loop:
+  .loop:
     LDA.W #$0004                                                         ;90CDAD;
     STA.W $0C90,X                                                        ;90CDB0;
     LDA.W $09A6                                                          ;90CDB3;
@@ -10955,11 +10955,11 @@ FireIceSBA:
     BRA .finish                                                          ;90CE03;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$FFFC                                                         ;90CE05;
     STA.W $0B60                                                          ;90CE08;
 
-.finish:
+  .finish:
     LDA.W #$0023                                                         ;90CE0B;
     JSL.L QueueSound_Lib1_Max6                                           ;90CE0E;
     SEC                                                                  ;90CE12;
@@ -10969,7 +10969,7 @@ FireIceSBA:
 FireSpazerSBA:
     LDX.W #$0006                                                         ;90CE14;
 
-.loop:
+  .loop:
     LDA.W .initialTrailTimers,X                                          ;90CE17;
     STA.W $0C90,X                                                        ;90CE1A;
     LDA.W #$0005                                                         ;90CE1D;
@@ -10994,12 +10994,12 @@ FireSpazerSBA:
     BRA .next                                                            ;90CE56;
 
 
-.greaterThanEqualTo4:
+  .greaterThanEqualTo4:
     LDA.W #$8024                                                         ;90CE58;
     STA.W $0C18,X                                                        ;90CE5B;
     JSL.L Initialize_ShinesparkEcho_or_SpazerSBATrailProjectile          ;90CE5E;
 
-.next:
+  .next:
     DEX                                                                  ;90CE62;
     DEX                                                                  ;90CE63;
     BPL .loop                                                            ;90CE64;
@@ -11018,10 +11018,10 @@ FireSpazerSBA:
     RTS                                                                  ;90CE87;
 
 
-.initialTrailTimers:
+  .initialTrailTimers:
     dw $0000,$0000,$0004,$0004                                           ;90CE88;
 
-.angleDeltas:
+  .angleDeltas:
     dw $0004,$FFFC,$0004,$FFFC                                           ;90CE90;
 
 FirePlasmaSBA:
@@ -11032,9 +11032,9 @@ FirePlasmaSBA:
     RTS                                                                  ;90CEA1;
 
 
-  + LDX.W #$0006                                                         ;90CEA2;
++   LDX.W #$0006                                                         ;90CEA2;
 
-.loop:
+  .loop:
     LDA.W $09A6                                                          ;90CEA5;
     AND.W #$100F                                                         ;90CEA8;
     ORA.W #$8010                                                         ;90CEAB;
@@ -11068,11 +11068,11 @@ FirePlasmaSBA:
     BRA .playSFX                                                         ;90CEF8;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$FFFC                                                         ;90CEFA;
     STA.W $0B60                                                          ;90CEFD;
 
-.playSFX:
+  .playSFX:
     LDA.W #$0027                                                         ;90CF00;
     JSL.L QueueSound_Lib1_Max6                                           ;90CF03;
     SEC                                                                  ;90CF07;
@@ -11089,7 +11089,7 @@ ProjectilePreInstruction_IceSBA_Main:
     RTS                                                                  ;90CF1C;
 
 
-.trail:
+  .trail:
     DEC.W $0C90,X                                                        ;90CF1D;
     BNE +                                                                ;90CF20;
     LDA.W #$0004                                                         ;90CF22;
@@ -11097,7 +11097,7 @@ ProjectilePreInstruction_IceSBA_Main:
     JSL.L Spawn_ProjectileTrail                                          ;90CF28;
     LDX.W $0DDE                                                          ;90CF2C;
 
-  + LDA.W $0C7C,X                                                        ;90CF2F;
++   LDA.W $0C7C,X                                                        ;90CF2F;
     TAY                                                                  ;90CF32;
     LDA.W #$0020                                                         ;90CF33;
     JSR.W Math_90CC39                                                    ;90CF36;
@@ -11123,7 +11123,7 @@ ProjectilePreInstruction_IceSBA_Main:
     LDA.W #$0024                                                         ;90CF69;
     JSL.L QueueSound_Lib1_Max6                                           ;90CF6C;
 
-.done:
+  .done:
     LDA.W #$0002                                                         ;90CF70;
     STA.W $0CCC                                                          ;90CF73;
     STZ.W $0CD0                                                          ;90CF76;
@@ -11138,7 +11138,7 @@ ProjectilePreInstruction_IceSBA_End:
     RTS                                                                  ;90CF86;
 
 
-.notDeleted:
+  .notDeleted:
     DEC.W $0C90,X                                                        ;90CF87;
     BNE +                                                                ;90CF8A;
     LDA.W #$0004                                                         ;90CF8C;
@@ -11146,7 +11146,7 @@ ProjectilePreInstruction_IceSBA_End:
     JSL.L Spawn_ProjectileTrail                                          ;90CF92;
     LDX.W $0DDE                                                          ;90CF96;
 
-  + LDA.W $0C7C,X                                                        ;90CF99;
++   LDA.W $0C7C,X                                                        ;90CF99;
     TAY                                                                  ;90CF9C;
     LDA.W $0BDC,X                                                        ;90CF9D;
     JSR.W Math_90CC39                                                    ;90CFA0;
@@ -11186,7 +11186,7 @@ ProjectilePreInstruction_IceSBA_End:
     RTS                                                                  ;90CFF4;
 
 
-.clearProjectile:
+  .clearProjectile:
     JSL.L Clear_Projectile                                               ;90CFF5;
     RTS                                                                  ;90CFF9;
 
@@ -11230,11 +11230,11 @@ TriggerShinesparkWindup:
     LDA.W #$0002                                                         ;90D058;
     JSL.L QueueSound_Lib1_Max9                                           ;90D05B;
 
-.resetFlare:
+  .resetFlare:
     STZ.W $0CD0                                                          ;90D05F;
     JSR.W ClearFlareAnimationState                                       ;90D062;
 
-.return:
+  .return:
     PLB                                                                  ;90D065;
     PLP                                                                  ;90D066;
     RTL                                                                  ;90D067;
@@ -11245,7 +11245,7 @@ SamusMovementHandler_ShinesparkWindup:
     BEQ .timerExpired                                                    ;90D06B;
     BPL .return                                                          ;90D06D;
 
-.timerExpired:
+  .timerExpired:
     LDA.W $0A1E                                                          ;90D06F;
     AND.W #$00FF                                                         ;90D072;
     CMP.W #$0004                                                         ;90D075;
@@ -11255,11 +11255,11 @@ SamusMovementHandler_ShinesparkWindup:
     BRA +                                                                ;90D080;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$00CC                                                         ;90D082;
     STA.W $0A2A                                                          ;90D085;
 
-  + LDA.W #SamusMovementHandler_VerticalShinespark                       ;90D088;
++   LDA.W #SamusMovementHandler_VerticalShinespark                       ;90D088;
     STA.W $0A58                                                          ;90D08B;
     LDA.W #RTS_90E90E                                                    ;90D08E;
     STA.W $0A60                                                          ;90D091;
@@ -11271,7 +11271,7 @@ SamusMovementHandler_ShinesparkWindup:
     LDA.W #$000F                                                         ;90D0A3;
     JSL.L QueueSound_Lib3_Max9                                           ;90D0A6;
 
-.return:
+  .return:
     RTS                                                                  ;90D0AA;
 
 
@@ -11292,7 +11292,7 @@ SamusMovementHandler_VerticalShinespark:
     BPL .return                                                          ;90D0D1;
     STZ.W $09C2                                                          ;90D0D3; >_<
 
-.return:
+  .return:
     RTS                                                                  ;90D0D6;
 
 
@@ -11314,7 +11314,7 @@ SamusMovementHandler_DiagonalShinespark:
     BPL .return                                                          ;90D100;
     STZ.W $09C2                                                          ;90D102; >_<
 
-.return:
+  .return:
     RTS                                                                  ;90D105;
 
 
@@ -11335,7 +11335,7 @@ SamusMovementHandler_HorizontalShinespark:
     BPL .return                                                          ;90D12C;
     STZ.W $09C2                                                          ;90D12E; >_<
 
-.return:
+  .return:
     RTS                                                                  ;90D131;
 
 
@@ -11355,7 +11355,7 @@ Shinespark_Horizontal_Movement:
     STA.W $0B42                                                          ;90D153;
     STZ.W $0B44                                                          ;90D156;
 
-  + STZ.B $12                                                            ;90D159;
++   STZ.B $12                                                            ;90D159;
     STZ.B $14                                                            ;90D15B;
     LDA.W $0A1E                                                          ;90D15D;
     AND.W #$00FF                                                         ;90D160;
@@ -11368,7 +11368,7 @@ Shinespark_Horizontal_Movement:
     LDA.W #$000F                                                         ;90D172;
     STA.B $12                                                            ;90D175;
 
-.rightCollision:
+  .rightCollision:
     JSL.L Samus_vs_SolidEnemy_CollisionDetection                         ;90D177;
     TAX                                                                  ;90D17B;
     BEQ .moveRight                                                       ;90D17C;
@@ -11376,13 +11376,13 @@ Shinespark_Horizontal_Movement:
     BRA .merge                                                           ;90D181;
 
 
-.moveRight:
+  .moveRight:
     JSL.L MoveSamusRight_NoSolidEnemyCollision                           ;90D183;
     JSL.L Align_SamusYPosition_WithNonSquareSlope                        ;90D187;
     BRA .merge                                                           ;90D18B;
 
 
-.left:
+  .left:
     JSR.W CalculateSamusXDisplacement_ForMovingLeft                      ;90D18D;
     LDA.B $12                                                            ;90D190;
     EOR.W #$FFFF                                                         ;90D192;
@@ -11394,13 +11394,13 @@ Shinespark_Horizontal_Movement:
     BNE +                                                                ;90D19F;
     INC.B $12                                                            ;90D1A1;
 
-  + LDA.B $12                                                            ;90D1A3;
++   LDA.B $12                                                            ;90D1A3;
     CMP.W #$000F                                                         ;90D1A5;
     BMI .leftCollision                                                   ;90D1A8;
     LDA.W #$000F                                                         ;90D1AA;
     STA.B $12                                                            ;90D1AD;
 
-.leftCollision:
+  .leftCollision:
     JSL.L Samus_vs_SolidEnemy_CollisionDetection                         ;90D1AF;
     TAX                                                                  ;90D1B3;
     BEQ .flipDirection                                                   ;90D1B4;
@@ -11408,7 +11408,7 @@ Shinespark_Horizontal_Movement:
     BRA .merge                                                           ;90D1B9;
 
 
-.flipDirection:
+  .flipDirection:
     LDA.B $12                                                            ;90D1BB;
     EOR.W #$FFFF                                                         ;90D1BD;
     STA.B $12                                                            ;90D1C0;
@@ -11419,11 +11419,11 @@ Shinespark_Horizontal_Movement:
     BNE .moveLeft                                                        ;90D1CA;
     INC.B $12                                                            ;90D1CC;
 
-.moveLeft:
+  .moveLeft:
     JSL.L MoveSamusRight_NoSolidEnemyCollision                           ;90D1CE;
     JSL.L Align_SamusYPosition_WithNonSquareSlope                        ;90D1D2;
 
-.merge:
+  .merge:
     LDA.W $0AF6                                                          ;90D1D6;
     SEC                                                                  ;90D1D9;
     SBC.W $0B10                                                          ;90D1DA;
@@ -11437,14 +11437,14 @@ Shinespark_Horizontal_Movement:
     RTS                                                                  ;90D1EE;
 
 
-  + CMP.W #$FFF1                                                         ;90D1EF;
++   CMP.W #$FFF1                                                         ;90D1EF;
     BPL .return                                                          ;90D1F2;
     LDA.W $0AF6                                                          ;90D1F4;
     CLC                                                                  ;90D1F7;
     ADC.W #$000F                                                         ;90D1F8;
     STA.W $0B10                                                          ;90D1FB;
 
-.return:
+  .return:
     RTS                                                                  ;90D1FE;
 
 
@@ -11472,7 +11472,7 @@ Shinespark_Vertical_Movement:
     LDA.W #$000E                                                         ;90D234;
     STA.B $12                                                            ;90D237;
 
-.flipDirection:
+  .flipDirection:
     LDA.B $12                                                            ;90D239;
     EOR.W #$FFFF                                                         ;90D23B;
     STA.B $12                                                            ;90D23E;
@@ -11483,7 +11483,7 @@ Shinespark_Vertical_Movement:
     BNE +                                                                ;90D248;
     INC.B $12                                                            ;90D24A;
 
-  + LDA.W $0B5A                                                          ;90D24C;
++   LDA.W $0B5A                                                          ;90D24C;
     CLC                                                                  ;90D24F;
     ADC.B $14                                                            ;90D250;
     STA.B $14                                                            ;90D252;
@@ -11502,13 +11502,13 @@ Shinespark_Vertical_Movement:
     BNE +                                                                ;90D270;
     INC.B $12                                                            ;90D272;
 
-  + LDA.B $12                                                            ;90D274;
++   LDA.B $12                                                            ;90D274;
     CMP.W #$000F                                                         ;90D276;
     BMI .collisionDetection                                              ;90D279;
     LDA.W #$000F                                                         ;90D27B;
     STA.B $12                                                            ;90D27E;
 
-.collisionDetection:
+  .collisionDetection:
     JSL.L Samus_vs_SolidEnemy_CollisionDetection                         ;90D280;
     TAX                                                                  ;90D284;
     BEQ +                                                                ;90D285;
@@ -11516,7 +11516,7 @@ Shinespark_Vertical_Movement:
     BRA .noMovement                                                      ;90D28A;
 
 
-  + LDA.B $12                                                            ;90D28C;
++   LDA.B $12                                                            ;90D28C;
     EOR.W #$FFFF                                                         ;90D28E;
     STA.B $12                                                            ;90D291;
     LDA.B $14                                                            ;90D293;
@@ -11526,10 +11526,10 @@ Shinespark_Vertical_Movement:
     BNE .moveSamus                                                       ;90D29B;
     INC.B $12                                                            ;90D29D;
 
-.moveSamus:
+  .moveSamus:
     JSL.L MoveSamusDown_NoSolidEnemyCollision                            ;90D29F;
 
-.noMovement:
+  .noMovement:
     LDA.W $0AFA                                                          ;90D2A3;
     SEC                                                                  ;90D2A6;
     SBC.W $0B14                                                          ;90D2A7;
@@ -11540,7 +11540,7 @@ Shinespark_Vertical_Movement:
     ADC.W #$000E                                                         ;90D2B3;
     STA.W $0B14                                                          ;90D2B6;
 
-.return:
+  .return:
     RTS                                                                  ;90D2B9;
 
 
@@ -11554,7 +11554,7 @@ EndShinesparkIfCollisionDetectedOrLowEnergy:
     RTS                                                                  ;90D2C8;
 
 
-.endShinespark:
+  .endShinespark:
     LDA.W $0A1E                                                          ;90D2C9;
     AND.W #$00FF                                                         ;90D2CC;
     CMP.W #$0004                                                         ;90D2CF;
@@ -11568,7 +11568,7 @@ EndShinesparkIfCollisionDetectedOrLowEnergy:
     BRA +                                                                ;90D2E6;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$0020                                                         ;90D2E8;
     STA.W $0AC0                                                          ;90D2EB;
     LDA.W #$00A0                                                         ;90D2EE;
@@ -11576,7 +11576,7 @@ EndShinesparkIfCollisionDetectedOrLowEnergy:
     LDA.W #$0004                                                         ;90D2F4;
     STA.W $0AB4                                                          ;90D2F7;
 
-  + STZ.W $0B2C                                                          ;90D2FA;
++   STZ.W $0B2C                                                          ;90D2FA;
     STZ.W $0B2E                                                          ;90D2FD;
     STZ.W $0B42                                                          ;90D300;
     STZ.W $0B44                                                          ;90D303;
@@ -11614,7 +11614,7 @@ SamusMovementHandler_ShinesparkCrash_EchoesCircleSamus:
     JSR.W (.pointers,X)                                                  ;90D354;
     LDX.W #$0002                                                         ;90D357;
 
-.loop:
+  .loop:
     LDY.W $0AC0,X                                                        ;90D35A;
     LDA.W $0AAE                                                          ;90D35D;
     AND.W #$00FF                                                         ;90D360;
@@ -11633,7 +11633,7 @@ SamusMovementHandler_ShinesparkCrash_EchoesCircleSamus:
     RTS                                                                  ;90D37C;
 
 
-.pointers:
+  .pointers:
     dw ShinesparkCrash_EchoesCircleSamus_Phase0                          ;90D37D;
     dw ShinesparkCrash_EchoesCircleSamus_Phase1                          ;90D37F;
     dw ShinesparkCrash_EchoesCircleSamus_Phase2                          ;90D381;
@@ -11646,7 +11646,7 @@ ShinesparkCrash_EchoesCircleSamus_Phase0:
     BMI +                                                                ;90D38D;
     ORA.W #$0100                                                         ;90D38F;
 
-  + STA.W $0AAE                                                          ;90D392;
++   STA.W $0AAE                                                          ;90D392;
     RTS                                                                  ;90D395;
 
 
@@ -11672,7 +11672,7 @@ ShinesparkCrash_EchoesCircleSamus_Phase1:
     ORA.W #$0200                                                         ;90D3C5;
     STA.W $0AAE                                                          ;90D3C8;
 
-.return:
+  .return:
     RTS                                                                  ;90D3CB;
 
 
@@ -11685,7 +11685,7 @@ ShinesparkCrash_EchoesCircleSamus_Phase2:
     BEQ .zeroDistance                                                    ;90D3D9;
     BPL .return                                                          ;90D3DB;
 
-.zeroDistance:
+  .zeroDistance:
     LDA.W #ShinesparkCrash_EchoesFinishedCirclingSamus                   ;90D3DD;
     STA.W $0A58                                                          ;90D3E0;
     LDA.W #$001E                                                         ;90D3E3;
@@ -11694,7 +11694,7 @@ ShinesparkCrash_EchoesCircleSamus_Phase2:
     STZ.W $0AC0                                                          ;90D3EC;
     STZ.W $0AC2                                                          ;90D3EF;
 
-.return:
+  .return:
     RTS                                                                  ;90D3F2;
 
 
@@ -11705,13 +11705,13 @@ ShinesparkCrash_EchoesFinishedCirclingSamus:
     BEQ .timerExpired                                                    ;90D3FC;
     BPL .return                                                          ;90D3FE;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #ShinesparkCrash_Finish                                        ;90D400;
     STA.W $0A58                                                          ;90D403;
     LDA.W #SamusDrawingHandler_Default                                   ;90D406;
     STA.W $0A5C                                                          ;90D409;
 
-.return:
+  .return:
     RTS                                                                  ;90D40C;
 
 
@@ -11745,7 +11745,7 @@ ShinesparkCrash_Finish:
     STA.W $0C82                                                          ;90D454;
     STZ.W $0BE2                                                          ;90D457;
 
-.extraEcho:
+  .extraEcho:
     INC.W $0CCE                                                          ;90D45A;
     LDA.W #$0040                                                         ;90D45D;
     STA.W $0AC6                                                          ;90D460;
@@ -11769,7 +11769,7 @@ ShinesparkCrash_Finish:
     STA.W $0C84                                                          ;90D491;
     STZ.W $0BE4                                                          ;90D494;
 
-.dontFire:
+  .dontFire:
     STZ.W $0CCC                                                          ;90D497;
     LDA.W #$0001                                                         ;90D49A;
     STA.W $0A68                                                          ;90D49D;
@@ -11782,26 +11782,26 @@ ShinesparkCrash_Finish:
     BRA .finish                                                          ;90D4B1;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$0002                                                         ;90D4B3;
     STA.W $0A2C                                                          ;90D4B6;
 
-.finish:
+  .finish:
     LDA.W #$0002                                                         ;90D4B9;
     STA.W $0A32                                                          ;90D4BC;
     STZ.W $0DEC                                                          ;90D4BF;
     STZ.W $0DEE                                                          ;90D4C2;
     RTS                                                                  ;90D4C5;
 
-.data0:                                                                  ;90D4C6;
+  .data0:                                                                  ;90D4C6;
     db $00                                                               
-.data1:                                                                  ;90D4C7;
+  .data1:                                                                  ;90D4C7;
     db     $80 ; C9h: Facing right - shinespark - horizontal
-    db $00,$80 ; CAh: Facing left  - shinespark - horizontal
+    db $00,$80 ; CAh: Facing left-   shinespark - horizontal
     db $40,$C0 ; CBh: Facing right - shinespark - vertical
-    db $40,$C0 ; CCh: Facing left  - shinespark - vertical
+    db $40,$C0 ; CCh: Facing left-   shinespark - vertical
     db $E0,$60 ; CDh: Facing right - shinespark - diagonal
-    db $20,$A0 ; CEh: Facing left  - shinespark - diagonal
+    db $20,$A0 ; CEh: Facing left-   shinespark - diagonal
 
 
 ProjectilePreInstruction_SpeedEcho:
@@ -11836,7 +11836,7 @@ ProjectilePreInstruction_SpeedEcho:
     RTS                                                                  ;90D516;
 
 
-.done:
+  .done:
     STZ.W $0ABE,X                                                        ;90D517;
     STZ.W $0AAE,X                                                        ;90D51A;
     STZ.W $0AB6,X                                                        ;90D51D;
@@ -11850,13 +11850,13 @@ UNUSED_GrappleBeam_90D525:
     BIT.W $09B2                                                          ;90D527;
     BNE .holdingShot                                                     ;90D52A;
 
-.cancel:
+  .cancel:
     LDA.W #GrappleBeamFunction_HitNothing_Cancel                         ;90D52C;
     STA.W $0D32                                                          ;90D52F;
     RTS                                                                  ;90D532;
 
 
-.holdingShot:
+  .holdingShot:
     LDA.W $0A9E                                                          ;90D533;
     DEC A                                                                ;90D536;
     STA.W $0A9E                                                          ;90D537;
@@ -11885,7 +11885,7 @@ UNUSED_GrappleBeam_90D525:
     LDA.W #$0010                                                         ;90D56D;
     STA.W $0D00                                                          ;90D570;
 
-.continue:
+  .continue:
     LDA.W $0CFA                                                          ;90D573;
     XBA                                                                  ;90D576;
     AND.W #$00FF                                                         ;90D577;
@@ -11922,7 +11922,7 @@ CrystalFlash:
     CMP.B $12                                                            ;90D5B7;
     BNE .returnCarrySet                                                  ;90D5B9;
 
-.skipInputCheck:
+  .skipInputCheck:
     LDA.W $0B2E                                                          ;90D5BB;
     BNE .returnCarrySet                                                  ;90D5BE;
     LDA.W $0B2C                                                          ;90D5C0;
@@ -11942,13 +11942,13 @@ CrystalFlash:
     CMP.W #$000A                                                         ;90D5E5;
     BPL .activate                                                        ;90D5E8;
 
-.returnCarrySet:
+  .returnCarrySet:
     PLP                                                                  ;90D5EA;
     SEC                                                                  ;90D5EB;
     RTL                                                                  ;90D5EC;
 
 
-.activate:
+  .activate:
     LDA.W $0A1E                                                          ;90D5ED;
     AND.W #$00FF                                                         ;90D5F0;
     CMP.W #$0004                                                         ;90D5F3;
@@ -11957,10 +11957,10 @@ CrystalFlash:
     BRA .storePose                                                       ;90D5FB;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$00D4                                                         ;90D5FD;
 
-.storePose:
+  .storePose:
     STA.W $0A1C                                                          ;90D600;
     JSL.L InitializeSamusPose_1                                          ;90D603;
     JSL.L Set_Samus_AnimationFrame_if_PoseChanged                        ;90D607;
@@ -11984,7 +11984,7 @@ CrystalFlash:
     LDA.W #RTS_90E90E                                                    ;90D63C;
     STA.W $0A60                                                          ;90D63F;
 
-.skipInputHandler:
+  .skipInputHandler:
     LDA.W #$0009                                                         ;90D642;
     STA.W $0AA2                                                          ;90D645;
     STZ.W $0DEA                                                          ;90D648;
@@ -12044,7 +12044,7 @@ SamusMovementHandler_CrystalFlash_RaiseSamus_GenerateBubble:
     PLY                                                                  ;90D6CB;
     PLX                                                                  ;90D6CC;
 
-.return:
+  .return:
     RTS                                                                  ;90D6CD;
 
 
@@ -12058,7 +12058,7 @@ SamusMovementHandler_CrystalFlash_DecrementAmmo:
     RTS                                                                  ;90D6DC;
 
 
-.pointers:
+  .pointers:
     dw CrystalFlash_DecrementMissiles                                    ;90D6DD;
     dw CrystalFlash_DecrementSuperMissiles                               ;90D6DF;
     dw CrystalFlash_DecrementPowerBombs                                  ;90D6E1;
@@ -12074,12 +12074,12 @@ CrystalFlash_DecrementMissiles:
     BEQ .timerExpired                                                    ;90D6F8;
     BPL .return                                                          ;90D6FA;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #$000A                                                         ;90D6FC;
     STA.W $0DEC                                                          ;90D6FF;
     INC.W $0DEA                                                          ;90D702;
 
-.return:
+  .return:
     RTS                                                                  ;90D705;
 
 
@@ -12094,12 +12094,12 @@ CrystalFlash_DecrementSuperMissiles:
     BEQ .timerExpired                                                    ;90D71B;
     BPL .return                                                          ;90D71D;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #$000A                                                         ;90D71F;
     STA.W $0DEC                                                          ;90D722;
     INC.W $0DEA                                                          ;90D725;
 
-.return:
+  .return:
     RTS                                                                  ;90D728;
 
 
@@ -12114,7 +12114,7 @@ CrystalFlash_DecrementPowerBombs:
     BEQ .timerExpired                                                    ;90D73E;
     BPL .return                                                          ;90D740;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #SamusMovementHandler_CrystalFlash_Finish                      ;90D742;
     STA.W $0A58                                                          ;90D745;
     LDA.W #SamusDrawingHandler_Default                                   ;90D748;
@@ -12124,7 +12124,7 @@ CrystalFlash_DecrementPowerBombs:
     LDA.W #$000C                                                         ;90D754;
     STA.W $0A96                                                          ;90D757;
 
-.return:
+  .return:
     RTS                                                                  ;90D75A;
 
 
@@ -12135,7 +12135,7 @@ SamusMovementHandler_CrystalFlash_Finish:
     INC A                                                                ;90D763;
     STA.W $0AFA                                                          ;90D764;
 
-  + LDA.W $0A1F                                                          ;90D767;
++   LDA.W $0A1F                                                          ;90D767;
     AND.W #$00FF                                                         ;90D76A;
     BNE .return                                                          ;90D76D;
     STZ.W $0CEE                                                          ;90D76F;
@@ -12151,7 +12151,7 @@ SamusMovementHandler_CrystalFlash_Finish:
     STZ.W $18A8                                                          ;90D78C;
     STZ.W $18AA                                                          ;90D78F;
 
-.return:
+  .return:
     RTS                                                                  ;90D792;
 
 
@@ -12163,7 +12163,7 @@ ProjectilePreInstruction_PlasmaSBA:
     RTS                                                                  ;90D79F;
 
 
-.notDeleted:
+  .notDeleted:
     LDA.W #$0002                                                         ;90D7A0;
     STA.W $0CCC                                                          ;90D7A3;
     STZ.W $0CD0                                                          ;90D7A6;
@@ -12191,7 +12191,7 @@ ProjectilePreInstruction_PlasmaSBA:
     JMP.W (.pointers,X)                                                  ;90D7D8;
 
 
-.pointers:
+  .pointers:
     dw PlasmaSBA_Phase0_Expanding                                        ;90D7DB;
     dw PlasmaSBA_Phase1_Contracting                                      ;90D7DD;
     dw PlasmaSBA_Phase2_Dispersing                                       ;90D7DF;
@@ -12207,7 +12207,7 @@ PlasmaSBA_Phase0_Expanding:
     LDA.W #$0001                                                         ;90D7F3;
     STA.W $0BF0,Y                                                        ;90D7F6;
 
-.return:
+  .return:
     RTS                                                                  ;90D7F9;
 
 
@@ -12222,7 +12222,7 @@ PlasmaSBA_Phase1_Contracting:
     LDA.W #$0002                                                         ;90D80C;
     STA.W $0BF0,Y                                                        ;90D80F;
 
-.return:
+  .return:
     RTS                                                                  ;90D812;
 
 
@@ -12249,7 +12249,7 @@ PlasmaSBA_Phase2_Dispersing:
     RTS                                                                  ;90D842;
 
 
-.clear:
+  .clear:
     TYX                                                                  ;90D843;
     JSL.L Clear_Projectile                                               ;90D844;
     RTS                                                                  ;90D848;
@@ -12263,10 +12263,10 @@ BombSpread:
     RTS                                                                  ;90D852;
 
 
-.notYetBombSpread:
+  .notYetBombSpread:
     LDX.W #$000A                                                         ;90D853;
 
-.loop:
+  .loop:
     LDA.W #$8500                                                         ;90D856;
     STA.W $0C18,X                                                        ;90D859;
     STZ.W $0C04,X                                                        ;90D85C;
@@ -12337,14 +12337,14 @@ ProjectilePreInstruction_BombSpread:
     RTS                                                                  ;90D903;
 
 
-.notDeleted:
+  .notDeleted:
     JSR.W HandleBomb                                                     ;90D904;
     LDA.W $0C7C,X                                                        ;90D907;
     BNE .timerNotExpired                                                 ;90D90A;
     JMP.W .movementDone                                                  ;90D90C;
 
 
-.timerNotExpired:
+  .timerNotExpired:
     LDA.W $0C90,X                                                        ;90D90F;
     CLC                                                                  ;90D912;
     ADC.W $0B32                                                          ;90D913;
@@ -12382,13 +12382,13 @@ ProjectilePreInstruction_BombSpread:
     JMP.W .return                                                        ;90D968;
 
 
-.negativeYVelocity:
+  .negativeYVelocity:
     STZ.W $0BF0,X                                                        ;90D96B;
     STZ.W $0BC8,X                                                        ;90D96E;
     JMP.W .return                                                        ;90D971;
 
 
-.falling:
+  .falling:
     LDX.W $0DDE                                                          ;90D974;
     LDA.W $0BDC,X                                                        ;90D977;
     XBA                                                                  ;90D97A;
@@ -12405,7 +12405,7 @@ ProjectilePreInstruction_BombSpread:
     BRA .left                                                            ;90D991;
 
 
-.right:
+  .right:
     LDA.W $0B8C,X                                                        ;90D993;
     CLC                                                                  ;90D996;
     ADC.B $14                                                            ;90D997;
@@ -12416,7 +12416,7 @@ ProjectilePreInstruction_BombSpread:
     BRA .movementDone                                                    ;90D9A4;
 
 
-.left:
+  .left:
     LDA.W $0B8C,X                                                        ;90D9A6;
     SEC                                                                  ;90D9A9;
     SBC.B $14                                                            ;90D9AA;
@@ -12425,7 +12425,7 @@ ProjectilePreInstruction_BombSpread:
     SBC.B $12                                                            ;90D9B2;
     STA.W $0B64,X                                                        ;90D9B4;
 
-.movementDone:
+  .movementDone:
     JSL.L BombSpreadBlockCollisionDetection                              ;90D9B7;
     BCC .return                                                          ;90D9BB;
     LDX.W $0DDE                                                          ;90D9BD;
@@ -12453,7 +12453,7 @@ ProjectilePreInstruction_BombSpread:
     BRA .return                                                          ;90D9EE;
 
 
-.bounceLeft:
+  .bounceLeft:
     ORA.W #$8000                                                         ;90D9F0;
     STA.W $0BDC,X                                                        ;90D9F3;
     LDA.W $0B8C,X                                                        ;90D9F6;
@@ -12464,7 +12464,7 @@ ProjectilePreInstruction_BombSpread:
     SBC.B $12                                                            ;90DA02;
     STA.W $0B64,X                                                        ;90DA04;
 
-.return:
+  .return:
     RTS                                                                  ;90DA07;
 
 
@@ -12476,14 +12476,14 @@ ProjectilePreInstruction_WaveSBA:
     BEQ .deleted                                                         ;90DA13;
     BPL .alive                                                           ;90DA15;
 
-.deleted:
+  .deleted:
     LDA.W #$0029                                                         ;90DA17;
     JSL.L QueueSound_Lib1_Max6                                           ;90DA1A;
     JSL.L Clear_Projectile                                               ;90DA1E;
     RTS                                                                  ;90DA22;
 
 
-.alive:
+  .alive:
     LDA.W $0BDC,X                                                        ;90DA23;
     STA.B $22                                                            ;90DA26;
     LDA.W $0C7C,X                                                        ;90DA28;
@@ -12495,7 +12495,7 @@ ProjectilePreInstruction_WaveSBA:
     JSL.L Spawn_ProjectileTrail                                          ;90DA38;
     LDX.W $0DDE                                                          ;90DA3C;
 
-.checkCrossingRightToLeft:
+  .checkCrossingRightToLeft:
     LDA.W $0AF6                                                          ;90DA3F;
     CMP.W $0B64,X                                                        ;90DA42;
     BMI .checkCrossingLeftToRight                                        ;90DA45;
@@ -12508,7 +12508,7 @@ ProjectilePreInstruction_WaveSBA:
     BRA +                                                                ;90DA56;
 
 
-.checkCrossingLeftToRight:
+  .checkCrossingLeftToRight:
     LDA.W $0BDC,X                                                        ;90DA58;
     CMP.W #$F801                                                         ;90DA5B;
     BMI +                                                                ;90DA5E;
@@ -12516,7 +12516,7 @@ ProjectilePreInstruction_WaveSBA:
     SBC.W #$0040                                                         ;90DA61;
     STA.W $0BDC,X                                                        ;90DA64;
 
-  + LDA.W $0BDC,X                                                        ;90DA67;
++   LDA.W $0BDC,X                                                        ;90DA67;
     XBA                                                                  ;90DA6A;
     PHA                                                                  ;90DA6B;
     AND.W #$FF00                                                         ;90DA6C;
@@ -12527,7 +12527,7 @@ ProjectilePreInstruction_WaveSBA:
     BEQ +                                                                ;90DA78;
     ORA.W #$FF00                                                         ;90DA7A;
 
-  + STA.B $12                                                            ;90DA7D;
++   STA.B $12                                                            ;90DA7D;
     LDA.W $0B8C,X                                                        ;90DA7F;
     CLC                                                                  ;90DA82;
     ADC.B $14                                                            ;90DA83;
@@ -12547,7 +12547,7 @@ ProjectilePreInstruction_WaveSBA:
     BRA .notMaxYVelocity                                                 ;90DAA7;
 
 
-.checkYVelocity:
+  .checkYVelocity:
     LDA.W $0C7C,X                                                        ;90DAA9;
     CMP.W #$F801                                                         ;90DAAC;
     BMI .notMaxYVelocity                                                 ;90DAAF;
@@ -12555,7 +12555,7 @@ ProjectilePreInstruction_WaveSBA:
     SBC.W #$0040                                                         ;90DAB2;
     STA.W $0C7C,X                                                        ;90DAB5;
 
-.notMaxYVelocity:
+  .notMaxYVelocity:
     LDA.W $0C7C,X                                                        ;90DAB8;
     XBA                                                                  ;90DABB;
     PHA                                                                  ;90DABC;
@@ -12567,7 +12567,7 @@ ProjectilePreInstruction_WaveSBA:
     BEQ +                                                                ;90DAC9;
     ORA.W #$FF00                                                         ;90DACB;
 
-  + STA.B $12                                                            ;90DACE;
++   STA.B $12                                                            ;90DACE;
     LDA.W $0BA0,X                                                        ;90DAD0;
     CLC                                                                  ;90DAD3;
     ADC.B $14                                                            ;90DAD4;
@@ -12584,15 +12584,15 @@ ProjectilePreInstruction_WaveSBA:
     BRA .playSFX                                                         ;90DAEF;
 
 
-.negativeXVelocity:
+  .negativeXVelocity:
     LDA.B $22                                                            ;90DAF1;
     BMI .return                                                          ;90DAF3;
 
-.playSFX:
+  .playSFX:
     LDA.W #$0028                                                         ;90DAF5;
     JSL.L QueueSound_Lib1_Max6                                           ;90DAF8;
 
-.return:
+  .return:
     LDA.W #$0002                                                         ;90DAFC;
     STA.W $0CCC                                                          ;90DAFF;
     STZ.W $0CD0                                                          ;90DB02;
@@ -12607,7 +12607,7 @@ ProjectilePreInstruction_SpazerSBA:
     RTS                                                                  ;90DB11;
 
 
-.notDeleted:
+  .notDeleted:
     DEC.W $0C90,X                                                        ;90DB12;
     BNE .timerNotExpired                                                 ;90DB15;
     LDA.W #$0004                                                         ;90DB17;
@@ -12615,7 +12615,7 @@ ProjectilePreInstruction_SpazerSBA:
     JSL.L Spawn_ProjectileTrail                                          ;90DB1D;
     LDX.W $0DDE                                                          ;90DB21;
 
-.timerNotExpired:
+  .timerNotExpired:
     LDA.W $0C7C,X                                                        ;90DB24;
     TAY                                                                  ;90DB27;
     LDA.W $0BDC,X                                                        ;90DB28;
@@ -12634,12 +12634,12 @@ ProjectilePreInstruction_SpazerSBA:
     RTS                                                                  ;90DB48;
 
 
-.phases:
+  .phases:
     dw SpazerSBA_Phase0_Circling                                         ;90DB49;
     dw SpazerSBA_Phase2_FlyingUpTowardsPoint                             ;90DB4B;
     dw SpazerSBA_Phase4_FlyingUpAwayFromPoint                            ;90DB4D;
 
-.clearing:
+  .clearing:
 ; Projectile clearing subroutines
     dw ClearSpazerSBAPair_0                                              ;90DB4F;
     dw ClearSpazerSBAPair_2                                              ;90DB51;
@@ -12699,11 +12699,11 @@ SpazerSBA_Phase0_Circling:
     LDA.W #$0002                                                         ;90DBC0;
     STA.W $0CA4,Y                                                        ;90DBC3;
 
-.return:
+  .return:
     RTS                                                                  ;90DBC6;
 
 
-.angleDeltas:
+  .angleDeltas:
     dw $0002,$FFFE,$0002,$FFFE                                           ;90DBC7;
 
 SpazerSBA_Phase2_FlyingUpTowardsPoint:
@@ -12721,7 +12721,7 @@ SpazerSBA_Phase2_FlyingUpTowardsPoint:
     RTS                                                                  ;90DBE8;
 
 
-  + LDA.W $0C7C,Y                                                        ;90DBE9;
++   LDA.W $0C7C,Y                                                        ;90DBE9;
     CLC                                                                  ;90DBEC;
     ADC.W $0BF0,Y                                                        ;90DBED;
     AND.W #$00FF                                                         ;90DBF0;
@@ -12745,11 +12745,11 @@ SpazerSBA_Phase2_FlyingUpTowardsPoint:
     LDA.W #$0026                                                         ;90DC20;
     JSL.L QueueSound_Lib1_Max6                                           ;90DC23;
 
-.return:
+  .return:
     RTS                                                                  ;90DC27;
 
 
-.angleDeltas:
+  .angleDeltas:
     dw $FFFE,$0002,$FFFE,$0002                                           ;90DC28;
 
 SpazerSBA_Phase4_FlyingUpAwayFromPoint:
@@ -12764,12 +12764,12 @@ SpazerSBA_Phase4_FlyingUpAwayFromPoint:
     CMP.W #$0010                                                         ;90DC41;
     BPL .onScreen                                                        ;90DC44;
 
-.fireSBAEnd:
+  .fireSBAEnd:
     JSR.W FireEndOfSpazerSBA                                             ;90DC46;
     RTS                                                                  ;90DC49;
 
 
-.onScreen:
+  .onScreen:
     LDA.W $0C7C,Y                                                        ;90DC4A;
     CLC                                                                  ;90DC4D;
     ADC.W $0BF0,Y                                                        ;90DC4E;
@@ -12802,11 +12802,11 @@ FireEndOfSpazerSBA:
     TYX                                                                  ;90DC8E;
     JSL.L Initialize_ShinesparkEcho_or_SpazerSBATrailProjectile          ;90DC8F;
 
-.return:
+  .return:
     RTS                                                                  ;90DC93;
 
 
-.data:
+  .data:
     dw $0010,$0010,$FFF0,$FFF0                                           ;90DC94;
 
 ProjectilePreInstruction_EndOfSpazerSBA:
@@ -12817,7 +12817,7 @@ ProjectilePreInstruction_EndOfSpazerSBA:
     RTS                                                                  ;90DCA8;
 
 
-.notDeleted:
+  .notDeleted:
     DEC.W $0C90,X                                                        ;90DCA9;
     BNE .timerNotExpired                                                 ;90DCAC;
     LDA.W #$0004                                                         ;90DCAE;
@@ -12825,7 +12825,7 @@ ProjectilePreInstruction_EndOfSpazerSBA:
     JSL.L Spawn_ProjectileTrail                                          ;90DCB4;
     LDX.W $0DDE                                                          ;90DCB8;
 
-.timerNotExpired:
+  .timerNotExpired:
     LDA.W $0B78,X                                                        ;90DCBB;
     CLC                                                                  ;90DCBE;
     ADC.W #$0008                                                         ;90DCBF;
@@ -12838,7 +12838,7 @@ ProjectilePreInstruction_EndOfSpazerSBA:
     RTS                                                                  ;90DCD2;
 
 
-  + LDA.W #$0002                                                         ;90DCD3;
++   LDA.W #$0002                                                         ;90DCD3;
     STA.W $0CCC                                                          ;90DCD6;
     STZ.W $0CD0                                                          ;90DCD9;
     RTS                                                                  ;90DCDC;
@@ -12861,15 +12861,15 @@ HandleHUDSpecificBehaviorAndProjectiles:
     LDA.W $0A78                                                          ;90DCFB;
     BNE .return                                                          ;90DCFE;
 
-.facingForward:
+  .facingForward:
     JSR.W Handle_Projectiles                                             ;90DD00;
 
-.return:
+  .return:
     PLP                                                                  ;90DD03;
     RTS                                                                  ;90DD04;
 
 
-.pointers:
+  .pointers:
     dw HUDSelectionHandler_Standard                                      ;90DD05; 0: Standing
     dw HUDSelectionHandler_Standard                                      ;90DD07; 1: Running
     dw HUDSelectionHandler_Standard                                      ;90DD09; 2: Normal jumping
@@ -12909,25 +12909,25 @@ HUDSelectionHandler_Standard:
     BRA .execute                                                         ;90DD4B;
 
 
-.notFiringGrapple:
+  .notFiringGrapple:
     LDA.W $0A78                                                          ;90DD4D;
     BEQ .Xray                                                            ;90DD50;
     LDX.W #$000A                                                         ;90DD52;
     BRA .execute                                                         ;90DD55;
 
 
-.Xray:
+  .Xray:
     LDA.W $09D2                                                          ;90DD57;
     ASL A                                                                ;90DD5A;
     TAX                                                                  ;90DD5B;
 
-.execute:
+  .execute:
     JSR.W (.pointers,X)                                                  ;90DD5C;
     PLP                                                                  ;90DD5F;
     RTS                                                                  ;90DD60;
 
 
-.pointers:
+  .pointers:
     dw HUDSelectionHandler_Nothing_PowerBombs                            ;90DD61; Nothing
     dw HUDSelectionHandler_Missiles_SuperMissiles                        ;90DD63; Missiles
     dw HUDSelectionHandler_Missiles_SuperMissiles                        ;90DD65; Super missiles
@@ -12948,14 +12948,14 @@ HUDSelectionHandler_TurningAround:
     RTS                                                                  ;90DD7C;
 
 
-.notShooting:
+  .notShooting:
     LDA.W $0D32                                                          ;90DD7D;
     CMP.W #GrappleBeamFunction_Inactive                                  ;90DD80;
     BEQ .return                                                          ;90DD83;
     LDA.W #GrappleBeamFunction_HitNothing_Cancel                         ;90DD85;
     STA.W $0D32                                                          ;90DD88;
 
-.return:
+  .return:
     RTS                                                                  ;90DD8B;
 
 
@@ -12972,24 +12972,24 @@ HUDSelectionHandler_TransitionPoses:
     AND.W #$00FF                                                         ;90DDA1;
     BNE HUDSelectionHandler_SpinWallJump_Knockback_Shinespark_CF_etc     ;90DDA4;
 
-.standard:
+  .standard:
     JSR.W HUDSelectionHandler_Standard                                   ;90DDA6;
 
-.return:
+  .return:
     RTS                                                                  ;90DDA9;
 
 
-.flags:                                                                  ;90DDAA;
+  .flags:                                                                  ;90DDAA;
     db $00 ; Facing right - crouching transition
-    db $00 ; Facing left  - crouching transition
+    db $00 ; Facing left-   crouching transition
     db $01 ; Facing right - morphing transition
-    db $01 ; Facing left  - morphing transition
+    db $01 ; Facing left-   morphing transition
     db $01 ; Unused
     db $01 ; Unused
     db $00 ; Facing right - standing transition
-    db $00 ; Facing left  - standing transition
+    db $00 ; Facing left-   standing transition
     db $01 ; Facing right - unmorphing transition
-    db $01 ; Facing left  - unmorphing transition
+    db $01 ; Facing left-   unmorphing transition
     db $01 ; Unused
     db $01 ; Unused
 
@@ -13001,7 +13001,7 @@ HUDSelectionHandler_SpinWallJump_Knockback_Shinespark_CF_etc:
     STA.W $0D32                                                          ;90DDC1;
     JSR.W HUDSelectionHandler_Standard                                   ;90DDC4;
 
-.return:
+  .return:
     RTS                                                                  ;90DDC7;
 
 
@@ -13013,7 +13013,7 @@ HUDSelectionHandler_Xray:
     RTS                                                                  ;90DDD2;
 
 
-.Xray:
+  .Xray:
     JSL.L XrayHandler                                                    ;90DDD3;
     RTS                                                                  ;90DDD7;
 
@@ -13026,10 +13026,10 @@ HUDSelectionHandler_GrabbedByDraygon:
     BRA .return                                                          ;90DDE3;
 
 
-.morphBall:
+  .morphBall:
     JSR.W HUDSelectionHandler_MorphBall                                  ;90DDE5;
 
-.return:
+  .return:
     RTS                                                                  ;90DDE8;
 
 
@@ -13046,7 +13046,7 @@ SamusIsHit_Interruption:
     BRA .returnUpper                                                     ;90DDFF;
 
 
-.notInvincible:
+  .notInvincible:
     LDA.W $0A78                                                          ;90DE01;
     BNE .returnUpper                                                     ;90DE04;
     LDA.W $0A52                                                          ;90DE06;
@@ -13060,12 +13060,12 @@ SamusIsHit_Interruption:
     LDA.W #$0001                                                         ;90DE18;
     STA.W $0A30                                                          ;90DE1B;
 
-.returnUpper:
+  .returnUpper:
     PLP                                                                  ;90DE1E;
     RTS                                                                  ;90DE1F;
 
 
-.knockbackTimerZero:
+  .knockbackTimerZero:
     LDA.W $0A52                                                          ;90DE20;
     BEQ .noKnockback                                                     ;90DE23;
     LDA.W $0A1F                                                          ;90DE25;
@@ -13081,20 +13081,20 @@ SamusIsHit_Interruption:
     RTS                                                                  ;90DE3F;
 
 
-.superSpecialProspectivePose:
+  .superSpecialProspectivePose:
     LDA.W $0A1C                                                          ;90DE40;
     STA.W $0A2C                                                          ;90DE43;
     BRA .knockbackFinished                                               ;90DE46;
 
 
-.knockbackMovement:
+  .knockbackMovement:
     LDA.W $0CD0                                                          ;90DE48;
     CMP.W #$0010                                                         ;90DE4B;
     BMI .lessThan10                                                      ;90DE4E;
     LDA.W #$0041                                                         ;90DE50;
     JSL.L QueueSound_Lib1_Max6                                           ;90DE53;
 
-.lessThan10:
+  .lessThan10:
     LDA.W $0A1E                                                          ;90DE57;
     AND.W #$00FF                                                         ;90DE5A;
     CMP.W #$0004                                                         ;90DE5D;
@@ -13104,28 +13104,28 @@ SamusIsHit_Interruption:
     BRA .knockbackFinished                                               ;90DE68;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$002A                                                         ;90DE6A;
     STA.W $0A2C                                                          ;90DE6D;
 
-.knockbackFinished:
+  .knockbackFinished:
     LDA.W #$0001                                                         ;90DE70;
     STA.W $0A32                                                          ;90DE73;
     PLP                                                                  ;90DE76;
     RTS                                                                  ;90DE77;
 
 
-.noKnockback:
+  .noKnockback:
     LDA.W $0A56                                                          ;90DE78;
     BEQ .returnLower                                                     ;90DE7B;
     JSR.W SerupBombJump                                                  ;90DE7D;
 
-.returnLower:
+  .returnLower:
     PLP                                                                  ;90DE80;
     RTS                                                                  ;90DE81;
 
 
-.pointers:
+  .pointers:
     dw KnockbackTransition_Normal                                        ;90DE82; 0: Standing
     dw KnockbackTransition_Normal                                        ;90DE84; 1: Running
     dw KnockbackTransition_Normal                                        ;90DE86; 2: Normal jumping
@@ -13164,13 +13164,13 @@ KnockbackTransition_SetSamusDrainedHurtAnimation_OrIgnore:
     BRA .return                                                          ;90DEC7;
 
 
-.drainedCrouchingFalling:
+  .drainedCrouchingFalling:
     LDA.W #$0011                                                         ;90DEC9;
     STA.W $0A94                                                          ;90DECC;
     LDA.W #$001A                                                         ;90DECF;
     STA.W $0A96                                                          ;90DED2;
 
-.return:
+  .return:
     STZ.W $0A30                                                          ;90DED5;
     STZ.W $0A52                                                          ;90DED8;
     CLC                                                                  ;90DEDB;
@@ -13210,11 +13210,11 @@ KnockbackTransition_Normal:
     BRA .return                                                          ;90DF0B;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$0054                                                         ;90DF0D;
     STA.W $0A2A                                                          ;90DF10;
 
-.return:
+  .return:
     SEC                                                                  ;90DF13;
     RTS                                                                  ;90DF14;
 
@@ -13236,11 +13236,11 @@ UNUSED_KnockbackTransition_Movement7_90DF1D:
     BRA .return                                                          ;90DF2E;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$0034                                                         ;90DF30;
     STA.W $0A2A                                                          ;90DF33;
 
-.return:
+  .return:
     SEC                                                                  ;90DF36;
     RTS                                                                  ;90DF37;
 
@@ -13254,7 +13254,7 @@ SamusMovementHandler_Knockback:
     RTS                                                                  ;90DF43;
 
 
-.pointers:
+  .pointers:
     dw ZeroIndex_Crash                                                   ;90DF44; 0: Crashes
     dw KnockbackMoement_Up                                               ;90DF46; 1: Up left
     dw KnockbackMoement_Up                                               ;90DF48; 2: Up right
@@ -13304,7 +13304,7 @@ HandleKnockbackVerticalCollision:
     STZ.W $0B48                                                          ;90DF91;
     JSL.L AlignSamusBottomPositionWithPreviousPose                       ;90DF94;
 
-.return:
+  .return:
     RTS                                                                  ;90DF98;
 
 
@@ -13321,11 +13321,11 @@ SerupBombJump:
     LDA.W #$0003                                                         ;90DFAE;
     STA.W $0A30                                                          ;90DFB1;
 
-.return:
+  .return:
     RTS                                                                  ;90DFB4;
 
 
-.pointers:
+  .pointers:
     dw SetupBombJump_Standing_Crouching                                  ;90DFB5; 0: Standing
     dw SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple      ;90DFB7; 1: Running
     dw SetupBombJump_Jumping_Turning_DamageBoost_TransitionPoses         ;90DFB9; 2: Normal jumping
@@ -13373,11 +13373,11 @@ SetupBombJump_Run_Fall_Moonwalk_WallJump_RanIntoWall_Grapple:
     BRA .returnCarrySet                                                  ;90E008;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$0052                                                         ;90E00A;
     STA.W $0A2A                                                          ;90E00D;
 
-.returnCarrySet:
+  .returnCarrySet:
     SEC                                                                  ;90E010;
     RTS                                                                  ;90E011;
 
@@ -13414,7 +13414,7 @@ SamusMovementHandler_BombJump_Main:
     RTS                                                                  ;90E03A;
 
 
-.directionAssigned:
+  .directionAssigned:
     AND.W #$00FF                                                         ;90E03B;
     ASL A                                                                ;90E03E;
     TAX                                                                  ;90E03F;
@@ -13422,7 +13422,7 @@ SamusMovementHandler_BombJump_Main:
     RTS                                                                  ;90E043;
 
 
-.pointers:
+  .pointers:
     dw ZeroIndex_Crash                                                   ;90E044; 0: Crashes
     dw SamusMovementHandler_BombJump_Main_Horizontal                     ;90E046; 1: Left
     dw SamusMovementHandler_BombJump_Main_Straight                       ;90E048; 2: Straight
@@ -13438,10 +13438,10 @@ SamusMovementHandler_BombJump_Main_Horizontal:
     LDA.W $0DD0                                                          ;90E05D;
     BEQ .return                                                          ;90E060;
 
-.end:
+  .end:
     JSR.W EndBombJump                                                    ;90E062;
 
-.return:
+  .return:
     RTS                                                                  ;90E065;
 
 
@@ -13454,10 +13454,10 @@ SamusMovementHandler_BombJump_Main_Straight:
     LDA.W $0DD0                                                          ;90E074;
     BEQ .return                                                          ;90E077;
 
-.end:
+  .end:
     JSR.W EndBombJump                                                    ;90E079;
 
-.return:
+  .return:
     RTS                                                                  ;90E07C;
 
 
@@ -13470,7 +13470,7 @@ EndBombJump:
     LDA.W #SamusPoseInputHandler_Normal                                  ;90E08B;
     STA.W $0A60                                                          ;90E08E;
 
-.notDemo:
+  .notDemo:
     STZ.W $0A56                                                          ;90E091;
     RTS                                                                  ;90E094;
 
@@ -13503,7 +13503,7 @@ SamusTimerHackHandler_HandleLettingSamusUpFromBeingDrained:
     LDA.W #RTS_90E90E                                                    ;90E0BE;
     STA.W $0A5A                                                          ;90E0C1;
 
-.return:
+  .return:
     RTS                                                                  ;90E0C4;
 
 
@@ -13521,7 +13521,7 @@ SamusTimerHackHandler_LetSamusFailToStandUpFromBeingDrained:
     LDA.W #$0012                                                         ;90E0DF;
     STA.W $0A96                                                          ;90E0E2;
 
-.return:
+  .return:
     RTS                                                                  ;90E0E5;
 
 
@@ -13533,7 +13533,7 @@ SamusTimerHackHandler_HandleTimer:
     LDX.W #$01FE                                                         ;90E0F2;
     LDA.W #$7FFF                                                         ;90E0F5;
 
-.loop:
+  .loop:
     STA.L $7EC200,X                                                      ;90E0F8;
     DEX                                                                  ;90E0FC;
     DEX                                                                  ;90E0FD;
@@ -13542,12 +13542,12 @@ SamusTimerHackHandler_HandleTimer:
     STA.W $0A5A                                                          ;90E103;
     JSL.L Disable_PaletteFXObjects                                       ;90E106;
 
-.timerNotExpired:
+  .timerNotExpired:
     LDA.W $0943                                                          ;90E10A;
     BEQ .return                                                          ;90E10D;
     JSL.L DrawTimer                                                      ;90E10F;
 
-.return:
+  .return:
     RTS                                                                  ;90E113;
 
 
@@ -13581,11 +13581,11 @@ SamusTimerHackHandler_PushSamusOutOfCeresRidleysWay:
     BRA +                                                                ;90E13F;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$0054                                                         ;90E141;
     STA.W $0A1C                                                          ;90E144;
 
-  + JSL.L InitializeSamusPose_1                                          ;90E147;
++   JSL.L InitializeSamusPose_1                                          ;90E147;
     JSL.L Set_Samus_AnimationFrame_if_PoseChanged                        ;90E14B;
     LDA.W $0A20                                                          ;90E14F;
     STA.W $0A24                                                          ;90E152;
@@ -13613,11 +13613,11 @@ SamusTimerHackHandler_PushSamusOutOfCeresRidleysWay:
     BRA +                                                                ;90E18B;
 
 
-.pushLeft:
+  .pushLeft:
     LDA.W #$0001                                                         ;90E18D;
     STA.W $0A62                                                          ;90E190;
 
-  + LDA.W #$0005                                                         ;90E193;
++   LDA.W #$0005                                                         ;90E193;
     STA.W $0B2E                                                          ;90E196;
     STZ.W $0B2C                                                          ;90E199;
     STZ.W $0A56                                                          ;90E19C;
@@ -13635,7 +13635,7 @@ SamusTimerHackHandler_PushSamusOutOfCeresRidleysWay:
     BEQ .return                                                          ;90E1C1;
     JSL.L DrawTimer                                                      ;90E1C3;
 
-.return:
+  .return:
     RTS                                                                  ;90E1C7;
 
 
@@ -13646,12 +13646,12 @@ SamusTimerHackHandler_PushingSmausOutOfCeresRidleysWay:
     CMP.W #$0050                                                         ;90E1D0;
     BNE .notDamageBoost                                                  ;90E1D3;
 
-.damageBoost:
+  .damageBoost:
     LDA.W #$FFFF                                                         ;90E1D5;
     STA.W $0A28                                                          ;90E1D8;
     STZ.W $0A2E                                                          ;90E1DB;
 
-.notDamageBoost:
+  .notDamageBoost:
     LDA.W $0A62                                                          ;90E1DE;
     ASL A                                                                ;90E1E1;
     TAX                                                                  ;90E1E2;
@@ -13662,11 +13662,11 @@ SamusTimerHackHandler_PushingSmausOutOfCeresRidleysWay:
     BEQ .return                                                          ;90E1F0;
     JSL.L DrawTimer                                                      ;90E1F2;
 
-.return:
+  .return:
     RTS                                                                  ;90E1F6;
 
 
-.pointers:
+  .pointers:
     dw $0000                                                             ;90E1F7;
     dw PushingSamusOutOfCeresRidleysWay_Leftwards                        ;90E1F9;
     dw PushingSamusOutOfCeresRidleysWay_Rightwards                       ;90E1FB;
@@ -13684,7 +13684,7 @@ PushingSamusOutOfCeresRidleysWay_Leftwards:
     RTS                                                                  ;90E217;
 
 
-.vertical:
+  .vertical:
     JSR.W MoveSamus_Vertically_PushedByCeresRidley                       ;90E218;
     RTS                                                                  ;90E21B;
 
@@ -13702,7 +13702,7 @@ PushingSamusOutOfCeresRidleysWay_Rightwards:
     RTS                                                                  ;90E236;
 
 
-.vertical:
+  .vertical:
     JSR.W MoveSamus_Vertically_PushedByCeresRidley                       ;90E237;
     RTS                                                                  ;90E23A;
 
@@ -13720,11 +13720,11 @@ SetSamusIntoTheGrabbedByDraygonPose:
     BRA .merge                                                           ;90E24C;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$00BA                                                         ;90E24E;
     STA.W $0A1C                                                          ;90E251;
 
-.merge:
+  .merge:
     JSL.L InitializeSamusPose_1                                          ;90E254;
     JSL.L Set_Samus_AnimationFrame_if_PoseChanged                        ;90E258;
     LDA.W #SamusTimerHackHandler_GrabbedByDraygon                        ;90E25C;
@@ -13764,11 +13764,11 @@ SamusTimerHackHandler_GrabbedByDraygon:
     BRA .escape                                                          ;90E2B2;
 
 
-.return:
+  .return:
     RTS                                                                  ;90E2B4;
 
 
-.escape:
+  .escape:
     LDA.B $8F                                                            ;90E2B5;
     AND.W #$0F00                                                         ;90E2B7;
     BEQ .return                                                          ;90E2BA;
@@ -13805,7 +13805,7 @@ ReleaseSamusFromDraygon:
     BRA Merge                                                            ;90E2EF;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$0002                                                         ;90E2F1;
     STA.W $0A1C                                                          ;90E2F4;
 
@@ -13898,7 +13898,7 @@ UNUSED_SamusTimerHackHandler_PushMorphBallCeresRidley_90E3A3:
     LDA.W $0DD0                                                          ;90E3AE;
     BEQ .return                                                          ;90E3B1;
 
-.disable:
+  .disable:
     LDA.W #SamusMovementHandler_Normal                                   ;90E3B3;
     STA.W $0A58                                                          ;90E3B6;
     LDA.W #RTS_90E90E                                                    ;90E3B9;
@@ -13909,7 +13909,7 @@ UNUSED_SamusTimerHackHandler_PushMorphBallCeresRidley_90E3A3:
     STA.W $0A2A                                                          ;90E3C8;
     STZ.W $0A30                                                          ;90E3CB;
 
-.return:
+  .return:
     RTS                                                                  ;90E3CE;
 
 
@@ -13928,11 +13928,11 @@ UNUSED_SetSamusSpecialFalling_90E3CF:
     BRA +                                                                ;90E3E6;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$002A                                                         ;90E3E8;
     STA.W $0A2A                                                          ;90E3EB;
 
-  + STZ.W $0A30                                                          ;90E3EE;
++   STZ.W $0A30                                                          ;90E3EE;
     LDA.W #RTS_90E90E                                                    ;90E3F1;
     STA.W $0A58                                                          ;90E3F4;
     LDA.W #UNUSED_SamusTimerHackHandler_SpecialFalling_90E41B            ;90E3F7;
@@ -13975,7 +13975,7 @@ UNUSED_SamusTimerHackHandler_SpecialFalling_90E41B:
     ADC.W $0B34                                                          ;90E430;
     STA.W $0B2E                                                          ;90E433;
 
-.GreaterThan4:
+  .GreaterThan4:
     LDA.W $0A1C                                                          ;90E436;
     CMP.W #$0029                                                         ;90E439;
     BEQ .checkPose                                                       ;90E43C;
@@ -13988,7 +13988,7 @@ UNUSED_SamusTimerHackHandler_SpecialFalling_90E41B:
     BRA .return                                                          ;90E44D;
 
 
-.checkPose:
+  .checkPose:
     LDA.W $0B2E                                                          ;90E44F;
     CMP.W #$0005                                                         ;90E452;
     BMI .return                                                          ;90E455;
@@ -13997,7 +13997,7 @@ UNUSED_SamusTimerHackHandler_SpecialFalling_90E41B:
     LDA.W #$0004                                                         ;90E45D;
     STA.W $0A96                                                          ;90E460;
 
-.return:
+  .return:
     RTS                                                                  ;90E463;
 
 
@@ -14016,7 +14016,7 @@ CalculateSamusXDisplacement_ForMovingLeft:
     BNE +                                                                ;90E47C;
     INC.B $12                                                            ;90E47E;
 
-  + LDA.W $0B56                                                          ;90E480;
++   LDA.W $0B56                                                          ;90E480;
     CLC                                                                  ;90E483;
     ADC.B $14                                                            ;90E484;
     STA.B $14                                                            ;90E486;
@@ -14030,21 +14030,21 @@ CalculateSamusXDisplacement_ForMovingLeft:
     RTS                                                                  ;90E497;
 
 
-.maxClamp:
+  .maxClamp:
     LDA.W #$000F                                                         ;90E498;
     STA.B $12                                                            ;90E49B;
     PLP                                                                  ;90E49D;
     RTS                                                                  ;90E49E;
 
 
-.clamp:
+  .clamp:
     CMP.W #$FFF1                                                         ;90E49F;
     BMI .minClamp                                                        ;90E4A2;
     PLP                                                                  ;90E4A4;
     RTS                                                                  ;90E4A5;
 
 
-.minClamp:
+  .minClamp:
     LDA.W #$FFF1                                                         ;90E4A6;
     STA.B $12                                                            ;90E4A9;
     PLP                                                                  ;90E4AB;
@@ -14071,21 +14071,21 @@ CalculateSamusXDisplacement_ForMovingRight:
     RTS                                                                  ;90E4D0;
 
 
-.maxClamp:
+  .maxClamp:
     LDA.W #$000F                                                         ;90E4D1;
     STA.B $12                                                            ;90E4D4;
     PLP                                                                  ;90E4D6;
     RTS                                                                  ;90E4D7;
 
 
-.clamp:
+  .clamp:
     CMP.W #$FFF1                                                         ;90E4D8;
     BMI .minClamp                                                        ;90E4DB;
     PLP                                                                  ;90E4DD;
     RTS                                                                  ;90E4DE;
 
 
-.minClamp:
+  .minClamp:
     LDA.W #$FFF1                                                         ;90E4DF;
     STA.B $12                                                            ;90E4E2;
     PLP                                                                  ;90E4E4;
@@ -14098,12 +14098,12 @@ CalculateSamusXSpeed:
     BMI +                                                                ;90E4EC;
     LDA.W #$0004                                                         ;90E4EE;
 
-  + ASL A                                                                ;90E4F1;
++   ASL A                                                                ;90E4F1;
     TAX                                                                  ;90E4F2;
     JMP.W (.pointers,X)                                                  ;90E4F3;
 
 
-.pointers:
+  .pointers:
     dw CalculateSamusXSpeed_Divisor0                                     ;90E4F6;
     dw CalculateSamusXSpeed_Divisor1                                     ;90E4F8;
     dw CalculateSamusXSpeed_Divisor2                                     ;90E4FA;
@@ -14251,11 +14251,11 @@ Kill_SamusXSpeed_IfCollisionDetected:
     BRA .killSpeed                                                       ;90E5E1;
 
 
-.left:
+  .left:
     LDA.W #$0004                                                         ;90E5E3;
     STA.W $0DCE                                                          ;90E5E6;
 
-.killSpeed:
+  .killSpeed:
     JSL.L Cancel_SpeedBoosting                                           ;90E5E9;
     STZ.W $0B42                                                          ;90E5ED;
     STZ.W $0B44                                                          ;90E5F0;
@@ -14265,11 +14265,11 @@ Kill_SamusXSpeed_IfCollisionDetected:
     BRA .return                                                          ;90E5FC;
 
 
-.noCollision:
+  .noCollision:
     STZ.W $0DC6                                                          ;90E5FE;
     STZ.W $0DCE                                                          ;90E601;
 
-.return:
+  .return:
     PLP                                                                  ;90E604;
     RTS                                                                  ;90E605;
 
@@ -14284,10 +14284,10 @@ SetSamusSolidVerticalCollisionResult_UpwardsMovement:
     BRA .return                                                          ;90E614;
 
 
-.noChange:
+  .noChange:
     STZ.W $0DC6                                                          ;90E616;
 
-.return:
+  .return:
     PLP                                                                  ;90E619;
     RTS                                                                  ;90E61A;
 
@@ -14308,7 +14308,7 @@ SetSamusSolidVerticalCollisionResult_DownwardsMovement:
     BRA .return                                                          ;90E637;
 
 
-.noCollision:
+  .noCollision:
     LDA.W $0DC6                                                          ;90E639;
     AND.W #$00FF                                                         ;90E63C;
     CMP.W #$0005                                                         ;90E63F;
@@ -14322,12 +14322,12 @@ SetSamusSolidVerticalCollisionResult_DownwardsMovement:
     STA.W $0DC7                                                          ;90E653;
     REP #$30                                                             ;90E656;
 
-.return:
+  .return:
     PLP                                                                  ;90E658;
     RTS                                                                  ;90E659;
 
 
-.data0:                                                                  ;90E65A;
+  .data0:                                                                  ;90E65A;
     db $00 ; 0: Standing
     db $00 ; 1: Running
     db $04 ; 2: Normal jumping
@@ -14357,7 +14357,7 @@ SetSamusSolidVerticalCollisionResult_DownwardsMovement:
     db $04 ; 1Ah: Grabbed by Draygon
     db $04 ; 1Bh: Shinespark / crystal flash / drained by metroid / damaged by MB's attacks
 
-.data1:                                                                  ;90E676;
+  .data1:                                                                  ;90E676;
     db $04 ; 0: Standing
     db $04 ; 1: Running
     db $00 ; 2: Normal jumping
@@ -14495,18 +14495,18 @@ SamusNewStateHandler_Normal:
     BNE +                                                                ;90E761;
     JSR.W DemoRecorder_MoveSamusWithControlPad                           ;90E763;
 
-  + LDA.L DebugConst_DemoRecorder                                        ;90E766;
++   LDA.L DebugConst_DemoRecorder                                        ;90E766;
     BEQ .debugMode                                                       ;90E76A;
     JSL.L RecordDemoInputFrame                                           ;90E76C;
     JSL.L Pause_Terminate_Reset_DemoRecorder                             ;90E770;
 
-.debugMode:
+  .debugMode:
     JSL.L Debug_HandleSelectL_B                                          ;90E774;
     BIT.W $05CF                                                          ;90E778;
     BPL .togglePlacementMode                                             ;90E77B;
     JSR.W DemoRecorder_DisplaySamusPositionAsAmmoIfMorphed               ;90E77D;
 
-.togglePlacementMode:
+  .togglePlacementMode:
     JSR.W HandleSamusPlacementModeToggles                                ;90E780;
     PLB                                                                  ;90E783;
     PLP                                                                  ;90E784;
@@ -14527,7 +14527,7 @@ HandleSamusPlacementModeToggles:
     BRA .return                                                          ;90E79E;
 
 
-.enabled:
+  .enabled:
     LDA.W #$0001                                                         ;90E7A0;
     STA.W $09E6                                                          ;90E7A3;
     LDA.W #SamusDrawingHandler_Default                                   ;90E7A6;
@@ -14535,7 +14535,7 @@ HandleSamusPlacementModeToggles:
     BRA .return                                                          ;90E7AC;
 
 
-.pressedB:
+  .pressedB:
     LDA.W $09E6                                                          ;90E7AE;
     BNE .return                                                          ;90E7B1;
     LDA.B $91                                                            ;90E7B3;
@@ -14549,7 +14549,7 @@ HandleSamusPlacementModeToggles:
     LDA.W #SamusNewStateHandler_Debug                                    ;90E7CA;
     STA.W $0A44                                                          ;90E7CD;
 
-.return:
+  .return:
     PLP                                                                  ;90E7D0;
     RTS                                                                  ;90E7D1;
 
@@ -14570,7 +14570,7 @@ SamusNewStateHandler_Debug:
     JSL.L Enable_Enemy_Projectiles                                       ;90E7EB;
     STZ.W $0A78                                                          ;90E7EF;
 
-.return:
+  .return:
     PLB                                                                  ;90E7F2;
     PLP                                                                  ;90E7F3;
     RTL                                                                  ;90E7F4;
@@ -14651,16 +14651,16 @@ SamusNewStateHandler_SamusAppearance:
     BIT.W #$8000                                                         ;90E893;
     BNE .keepInvincibility                                               ;90E896;
 
-.disableInvincibility:
+  .disableInvincibility:
     STZ.W $0DE0                                                          ;90E898;
 
-.keepInvincibility:
+  .keepInvincibility:
     LDA.W #SamusCurrentStateHandler_Normal                               ;90E89B;
     STA.W $0A42                                                          ;90E89E;
     LDA.W #SamusNewStateHandler_Normal                                   ;90E8A1;
     STA.W $0A44                                                          ;90E8A4;
 
-.return:
+  .return:
     PLB                                                                  ;90E8A7;
     PLP                                                                  ;90E8A8;
     RTL                                                                  ;90E8A9;
@@ -14682,7 +14682,7 @@ SamusNewStateHandler_Ceres:
     LDA.W #$0023                                                         ;90E8C4;
     STA.W $0998                                                          ;90E8C7;
 
-.return:
+  .return:
     PLB                                                                  ;90E8CA;
     PLP                                                                  ;90E8CB;
     RTL                                                                  ;90E8CC;
@@ -14787,7 +14787,7 @@ SamusPoseInputHandler_AutoJumpHack:
     STA.B $8F                                                            ;90E938;
     STZ.W $0AF4                                                          ;90E93A;
 
-.not1Through9:
+  .not1Through9:
     JSL.L NormalSamusPoseInputHandler                                    ;90E93D;
     PLA                                                                  ;90E941;
     STA.B $8F                                                            ;90E942;
@@ -14812,7 +14812,7 @@ SamusMovementHandler_Xray:
     RTS                                                                  ;90E95A;
 
 
-.turning:
+  .turning:
     LDA.W #$000F                                                         ;90E95B;
     STA.W $0A94                                                          ;90E95E;
     LDA.W $0A1E                                                          ;90E961;
@@ -14826,29 +14826,29 @@ SamusMovementHandler_Xray:
     BRA .storeAnimFrame                                                  ;90E977;
 
 
-  + CMP.W #$0032                                                         ;90E979;
++   CMP.W #$0032                                                         ;90E979;
     BPL +                                                                ;90E97C;
     LDA.W #$0001                                                         ;90E97E;
     BRA .storeAnimFrame                                                  ;90E981;
 
 
-  + CMP.W #$004B                                                         ;90E983;
++   CMP.W #$004B                                                         ;90E983;
     BPL +                                                                ;90E986;
     LDA.W #$0002                                                         ;90E988;
     BRA .storeAnimFrame                                                  ;90E98B;
 
 
-  + CMP.W #$0064                                                         ;90E98D;
++   CMP.W #$0064                                                         ;90E98D;
     BPL +                                                                ;90E990;
     LDA.W #$0003                                                         ;90E992;
     BRA .storeAnimFrame                                                  ;90E995;
 
 
-  + LDA.W #$0004                                                         ;90E997;
++   LDA.W #$0004                                                         ;90E997;
     BRA .storeAnimFrame                                                  ;90E99A;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W $0A82                                                          ;90E99C;
     CMP.W #$0099                                                         ;90E99F;
     BPL +                                                                ;90E9A2;
@@ -14856,28 +14856,28 @@ SamusMovementHandler_Xray:
     BRA .storeAnimFrame                                                  ;90E9A7;
 
 
-  + CMP.W #$00B2                                                         ;90E9A9;
++   CMP.W #$00B2                                                         ;90E9A9;
     BPL +                                                                ;90E9AC;
     LDA.W #$0003                                                         ;90E9AE;
     BRA .storeAnimFrame                                                  ;90E9B1;
 
 
-  + CMP.W #$00CB                                                         ;90E9B3;
++   CMP.W #$00CB                                                         ;90E9B3;
     BPL +                                                                ;90E9B6;
     LDA.W #$0002                                                         ;90E9B8;
     BRA .storeAnimFrame                                                  ;90E9BB;
 
 
-  + CMP.W #$00E4                                                         ;90E9BD;
++   CMP.W #$00E4                                                         ;90E9BD;
     BPL .lookingUp                                                       ;90E9C0;
     LDA.W #$0001                                                         ;90E9C2;
     BRA .storeAnimFrame                                                  ;90E9C5;
 
 
-.lookingUp:
+  .lookingUp:
     LDA.W #$0000                                                         ;90E9C7;
 
-.storeAnimFrame:
+  .storeAnimFrame:
     STA.W $0A96                                                          ;90E9CA;
     RTS                                                                  ;90E9CD;
 
@@ -14890,7 +14890,7 @@ HandlePeriodicDamageToSamus:
     JMP.W .timeIsFrozen                                                  ;90E9D6;
 
 
-.timeIsNotFrozen:
+  .timeIsNotFrozen:
     LDA.W $09A2                                                          ;90E9D9;
     BIT.W #$0020                                                         ;90E9DC;
     BNE .gravitySuit                                                     ;90E9DF;
@@ -14909,7 +14909,7 @@ HandlePeriodicDamageToSamus:
     BRA .crashIfNegative                                                 ;90E9FA;
 
 
-.gravitySuit:
+  .gravitySuit:
     LDA.W $0A4F                                                          ;90E9FC;
     LSR A                                                                ;90E9FF;
     LSR A                                                                ;90EA00;
@@ -14922,13 +14922,13 @@ HandlePeriodicDamageToSamus:
     AND.W #$00FF                                                         ;90EA0B;
     STA.W $0A50                                                          ;90EA0E;
 
-.crashIfNegative:
+  .crashIfNegative:
     LDA.W $0A50                                                          ;90EA11;
     BPL .dontCrash                                                       ;90EA14;
     JML.L Crash_Handler                                                  ;90EA16;
 
 
-.dontCrash:
+  .dontCrash:
     LDA.W $0A4C                                                          ;90EA1A;
     SEC                                                                  ;90EA1D;
     SBC.W $0A4E                                                          ;90EA1E;
@@ -14945,7 +14945,7 @@ HandlePeriodicDamageToSamus:
     RTS                                                                  ;90EA3C;
 
 
-.timeIsFrozen:
+  .timeIsFrozen:
     STZ.W $0A4E                                                          ;90EA3D;
     STZ.W $0A50                                                          ;90EA40;
     PLP                                                                  ;90EA43;
@@ -14976,7 +14976,7 @@ PauseCheck:
     LDA.W #$000C                                                         ;90EA77;
     STA.W $0998                                                          ;90EA7A;
 
-.return:
+  .return:
     PLP                                                                  ;90EA7D;
     RTS                                                                  ;90EA7E;
 
@@ -14993,7 +14993,7 @@ LowEnergyCheck:
     BRA .return                                                          ;90EA96;
 
 
-.lowEnergy:
+  .lowEnergy:
     LDA.W $0A6A                                                          ;90EA98;
     BNE .return                                                          ;90EA9B;
     LDA.W #$0002                                                         ;90EA9D;
@@ -15001,7 +15001,7 @@ LowEnergyCheck:
     LDA.W #$0001                                                         ;90EAA4;
     STA.W $0A6A                                                          ;90EAA7;
 
-.return:
+  .return:
     RTS                                                                  ;90EAAA;
 
 
@@ -15026,10 +15026,10 @@ HandleSamus_AutoJumpTimer_HurtFlashCounter_PrevInputEnergy:
     BRA .previousInput                                                   ;90EAC8;
 
 
-.noJump:
+  .noJump:
     STZ.W $0AF4                                                          ;90EACA;
 
-.previousInput:
+  .previousInput:
     LDA.B $8B                                                            ;90EACD;
     STA.W $0DFE                                                          ;90EACF;
     LDA.B $8F                                                            ;90EAD2;
@@ -15042,7 +15042,7 @@ HandleSamus_AutoJumpTimer_HurtFlashCounter_PrevInputEnergy:
     LDA.W #$0001                                                         ;90EAE4;
     STA.W $0A48                                                          ;90EAE7;
 
-.debugInvincibility:
+  .debugInvincibility:
     LDA.W $0DE0                                                          ;90EAEA;
     CMP.W #$0007                                                         ;90EAED;
     BMI .setPreviousEnergy                                               ;90EAF0;
@@ -15051,11 +15051,11 @@ HandleSamus_AutoJumpTimer_HurtFlashCounter_PrevInputEnergy:
     BRA .return                                                          ;90EAF8;
 
 
-.setPreviousEnergy:
+  .setPreviousEnergy:
     LDA.W $09C2                                                          ;90EAFA;
     STA.W $0A12                                                          ;90EAFD;
 
-.return:
+  .return:
     PLP                                                                  ;90EB00;
     RTS                                                                  ;90EB01;
 
@@ -15123,7 +15123,7 @@ DrawSamus_NoCharge_NoGrapple:
     RTS                                                                  ;90EB6E;
 
 
-.facingForward:
+  .facingForward:
     JSR.W Handle_AtmosphericEffects                                      ;90EB6F;
     JSR.W DrawArmCannon                                                  ;90EB72;
     JSR.W Draw_Samus                                                     ;90EB75;
@@ -15131,7 +15131,7 @@ DrawSamus_NoCharge_NoGrapple:
     RTS                                                                  ;90EB7B;
 
 
-.noArmCannon:
+  .noArmCannon:
     JSR.W Handle_AtmosphericEffects                                      ;90EB7C;
     JSR.W Draw_Samus                                                     ;90EB7F;
     JSR.W DrawSamusEchoes                                                ;90EB82;
@@ -15148,10 +15148,10 @@ SamusDrawingHandler_FiringGrappleBeam:
     CMP.W #UNUSED_GrappleBeamFunction_Unfiring_9BC759                    ;90EB96;
     BNE .startPositionCalculated                                         ;90EB99;
 
-.firing:
+  .firing:
     JSL.L UpdateGrappleBeamStartPositionDuringGrappleFire                ;90EB9B;
 
-.startPositionCalculated:
+  .startPositionCalculated:
     JSL.L HandleGrappleBeamFlare                                         ;90EB9F;
     LDA.W $0AAC                                                          ;90EBA3;
     AND.W #$000F                                                         ;90EBA6;
@@ -15168,7 +15168,7 @@ SamusDrawingHandler_FiringGrappleBeam:
     RTS                                                                  ;90EBC6;
 
 
-.notFacingForward:
+  .notFacingForward:
     JSR.W Handle_AtmosphericEffects                                      ;90EBC7;
     JSR.W DrawArmCannon                                                  ;90EBCA;
     JSR.W Draw_Samus                                                     ;90EBCD;
@@ -15179,7 +15179,7 @@ SamusDrawingHandler_FiringGrappleBeam:
     RTS                                                                  ;90EBDD;
 
 
-.noArmCannon:
+  .noArmCannon:
     JSR.W Handle_AtmosphericEffects                                      ;90EBDE;
     JSR.W Draw_Samus                                                     ;90EBE1;
     JSL.L UpdateGrappleBeamTiles_IncrementFlareCounter                   ;90EBE4;
@@ -15187,7 +15187,7 @@ SamusDrawingHandler_FiringGrappleBeam:
     BEQ .return                                                          ;90EBEB;
     JSL.L DrawGrappleBeam                                                ;90EBED;
 
-.return:
+  .return:
     RTS                                                                  ;90EBF1;
 
 
@@ -15199,7 +15199,7 @@ SamusDisplayHandler_ShinesparkCrashCircle:
     JSR.W Draw_Samus                                                     ;90EBF3;
     LDX.W #$0002                                                         ;90EBF6;
 
-.loop:
+  .loop:
     PHX                                                                  ;90EBF9;
     JSR.W DrawShinesparkCrashEchoCircle                                  ;90EBFA;
     PLX                                                                  ;90EBFD;
@@ -15214,7 +15214,7 @@ UNUSED_SamusDisplayHandler_DrawSamusEchoes_90EC03:
     JSR.W SamusDrawingHandler_Default                                    ;90EC03;
     LDX.W #$0002                                                         ;90EC06;
 
-.loop:
+  .loop:
     PHX                                                                  ;90EC09;
     JSR.W DrawSamusEchoes                                                ;90EC0A;
     PLX                                                                  ;90EC0D;
@@ -15343,13 +15343,13 @@ Determine_SamusSuitPalette_Index:
     RTS                                                                  ;90ECC6;
 
 
-.varia:
+  .varia:
     LDA.W #$0002                                                         ;90ECC7;
     STA.W $0A74                                                          ;90ECCA;
     RTS                                                                  ;90ECCD;
 
 
-.gravity:
+  .gravity:
     LDA.W #$0004                                                         ;90ECCE;
     STA.W $0A74                                                          ;90ECD1;
     RTS                                                                  ;90ECD4;
@@ -15366,7 +15366,7 @@ DemoRecorder_MoveSamusWithControlPad:
     STZ.B $14                                                            ;90ECE4;
     JSR.W MoveSamus_Up                                                   ;90ECE6;
 
-.checkDown:
+  .checkDown:
     LDA.B $8B                                                            ;90ECE9;
     BIT.W #$0400                                                         ;90ECEB;
     BEQ .checkLeft                                                       ;90ECEE;
@@ -15375,7 +15375,7 @@ DemoRecorder_MoveSamusWithControlPad:
     STZ.B $14                                                            ;90ECF5;
     JSR.W MoveSamus_Down                                                 ;90ECF7;
 
-.checkLeft:
+  .checkLeft:
     LDA.B $8B                                                            ;90ECFA;
     BIT.W #$0200                                                         ;90ECFC;
     BEQ .checkRight                                                      ;90ECFF;
@@ -15384,7 +15384,7 @@ DemoRecorder_MoveSamusWithControlPad:
     STZ.B $14                                                            ;90ED06;
     JSR.W MoveSamus_Left                                                 ;90ED08;
 
-.checkRight:
+  .checkRight:
     LDA.B $8B                                                            ;90ED0B;
     BIT.W #$0100                                                         ;90ED0D;
     BEQ .return                                                          ;90ED10;
@@ -15393,7 +15393,7 @@ DemoRecorder_MoveSamusWithControlPad:
     STZ.B $14                                                            ;90ED17;
     JSR.W MoveSamus_Right                                                ;90ED19;
 
-.return:
+  .return:
     PLP                                                                  ;90ED1C;
     RTS                                                                  ;90ED1D;
 
@@ -15406,7 +15406,7 @@ if !FEATURE_KEEP_UNREFERENCED
 UNUSED_WasteTime_90ED1F:
     LDX.W #$00C8                                                         ;90ED1F;
 
-.loop:
+  .loop:
     DEX                                                                  ;90ED22;
     BPL .loop                                                            ;90ED23;
     RTS                                                                  ;90ED25;
@@ -15435,11 +15435,11 @@ DemoRecorder_DisplaySamusPositionAsAmmoIfMorphed:
     STA.W $09CA                                                          ;90ED49;
     STA.W $09CC                                                          ;90ED4C;
 
-.return:
+  .return:
     RTS                                                                  ;90ED4F;
 
 
-.poses:                                                                  ;90ED50;
+  .poses:                                                                  ;90ED50;
     db $00 ;  0: Standing
     db $00 ;  1: Running
     db $00 ;  2: Normal jumping
@@ -15492,7 +15492,7 @@ FootstepGraphics:
     RTS                                                                  ;90ED90;
 
 
-.pointers:
+  .pointers:
     dw FootstepGraphics_Crateria                                         ;90ED91; Crateria
     dw FootstepGraphics_Common                                           ;90ED93; Brinstar
     dw FootstepGraphics_Common                                           ;90ED95; Norfair
@@ -15508,7 +15508,7 @@ FootstepGraphics_Crateria:
     JMP.W FootstepGraphics_Common                                        ;90EDA6;
 
 
-.notCinematic:
+  .notCinematic:
     LDX.W $079D                                                          ;90EDA9;
     CPX.W #$0010                                                         ;90EDAC;
     BPL .gotoCommon                                                      ;90EDAF;
@@ -15521,11 +15521,11 @@ FootstepGraphics_Crateria:
     BIT.W #$0004                                                         ;90EDC1;
     BNE FootstepGraphics_Maridia                                         ;90EDC4;
 
-.gotoCommon:
+  .gotoCommon:
     JMP.W FootstepGraphics_Common                                        ;90EDC6;
 
 
-.footstepTypes:                                                          ;90EDC9;
+  .footstepTypes:                                                          ;90EDC9;
     db $01 ; 0: Landing site
     db $00
     db $00
@@ -15543,14 +15543,14 @@ FootstepGraphics_Crateria:
     db $04 ; Eh: Moat
     db $00
 
-.wreckedShipEntrance:
+  .wreckedShipEntrance:
     LDA.W $0AFA                                                          ;90EDD9;
     CMP.W #$03B0                                                         ;90EDDC;
     BPL FootstepGraphics_Maridia                                         ;90EDDF;
     JMP.W FootstepGraphics_Common                                        ;90EDE1;
 
 
-.landingSite:
+  .landingSite:
     LDA.W $196E                                                          ;90EDE4;
     CMP.W #$000A                                                         ;90EDE7;
     BNE FootstepGraphics_Common                                          ;90EDEA; fallthrough to FootstepGraphics_Maridia
@@ -15567,13 +15567,13 @@ FootstepGraphics_Maridia:
     BRA .return                                                          ;90EE01;
 
 
-.negativeYPosition:
+  .negativeYPosition:
     LDA.W $1962                                                          ;90EE03;
     BMI .nonLiquidPhysics                                                ;90EE06;
     CMP.B $12                                                            ;90EE08;
     BMI .return                                                          ;90EE0A;
 
-.nonLiquidPhysics:
+  .nonLiquidPhysics:
     LDA.W $0A1E                                                          ;90EE0C;
     AND.W #$00FF                                                         ;90EE0F;
     CMP.W #$0004                                                         ;90EE12;
@@ -15589,7 +15589,7 @@ FootstepGraphics_Maridia:
     BRA .merge                                                           ;90EE2B;
 
 
-.facingRight:
+  .facingRight:
     LDA.W $0AF6                                                          ;90EE2D;
     SEC                                                                  ;90EE30;
     SBC.W #$000C                                                         ;90EE31;
@@ -15599,7 +15599,7 @@ FootstepGraphics_Maridia:
     ADC.W #$0008                                                         ;90EE3B;
     STA.W $0ADE                                                          ;90EE3E;
 
-.merge:
+  .merge:
     LDA.W $0AFA                                                          ;90EE41;
     CLC                                                                  ;90EE44;
     ADC.W #$0010                                                         ;90EE45;
@@ -15613,7 +15613,7 @@ FootstepGraphics_Maridia:
     LDA.W #$0003                                                         ;90EE5D;
     STA.W $0AD6                                                          ;90EE60;
 
-.return:
+  .return:
     RTS                                                                  ;90EE63;
 
 
@@ -15633,13 +15633,13 @@ FootstepGraphics_Common:
     BRA .return                                                          ;90EE84;
 
 
-.negativeYPosition:
+  .negativeYPosition:
     LDA.W $1962                                                          ;90EE86;
     BMI .nonLiquidPhysics                                                ;90EE89;
     CMP.B $12                                                            ;90EE8B;
     BMI .return                                                          ;90EE8D;
 
-.nonLiquidPhysics:
+  .nonLiquidPhysics:
     LDA.W $0A1E                                                          ;90EE8F;
     AND.W #$00FF                                                         ;90EE92;
     CMP.W #$0004                                                         ;90EE95;
@@ -15655,7 +15655,7 @@ FootstepGraphics_Common:
     BRA .merge                                                           ;90EEAE;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W $0AF6                                                          ;90EEB0;
     SEC                                                                  ;90EEB3;
     SBC.W #$000C                                                         ;90EEB4;
@@ -15665,7 +15665,7 @@ FootstepGraphics_Common:
     ADC.W #$0008                                                         ;90EEBE;
     STA.W $0ADE                                                          ;90EEC1;
 
-.merge:
+  .merge:
     LDA.W $0AFA                                                          ;90EEC4;
     CLC                                                                  ;90EEC7;
     ADC.W #$0010                                                         ;90EEC8;
@@ -15679,7 +15679,7 @@ FootstepGraphics_Common:
     LDA.W #$0003                                                         ;90EEE0;
     STA.W $0AD6                                                          ;90EEE3;
 
-.return:
+  .return:
     RTS                                                                  ;90EEE6;
 
 
@@ -15704,10 +15704,10 @@ UpdateSamusEchoPosition:
     BMI .storeDistance                                                   ;90EF13;
     LDX.W #$0000                                                         ;90EF15;
 
-.storeDistance:
+  .storeDistance:
     STX.W $0AAE                                                          ;90EF18;
 
-.return:
+  .return:
     RTS                                                                  ;90EF1B;
 
 
@@ -15731,7 +15731,7 @@ PostGrappleCollisionDetection:
     LDA.W $0E08                                                          ;90EF32;
     BNE .return                                                          ;90EF35;
 
-.noEject:
+  .noEject:
     LDA.W $0E08                                                          ;90EF37;
     BEQ .return                                                          ;90EF3A;
     LDA.W $0AFA                                                          ;90EF3C;
@@ -15747,7 +15747,7 @@ PostGrappleCollisionDetection:
     SBC.W $0E08                                                          ;90EF56;
     STA.W $0AFA                                                          ;90EF59;
 
-.return:
+  .return:
     PLP                                                                  ;90EF5C;
     RTL                                                                  ;90EF5D;
 
@@ -15767,7 +15767,7 @@ UNUSED_FireUnknownProjectile27_90EF5E:
     STZ.W $0A32                                                          ;90EF7C;
     LDX.W #$0006                                                         ;90EF7F;
 
-.loop:
+  .loop:
     LDA.W #$8027                                                         ;90EF82;
     STA.W $0C18,X                                                        ;90EF85;
     STZ.W $0C04,X                                                        ;90EF88;
@@ -15795,11 +15795,11 @@ UNUSED_FireUnknownProjectile27_90EF5E:
     RTS                                                                  ;90EFC2;
 
 
-.XOffsets:
+  .XOffsets:
 ; X offsets from Samus
     dw $0080,$0080,$FF80,$FF80                                           ;90EFC3;
 
-.YOffsets:
+  .YOffsets:
 ; Y offsets from Samus
     dw $FF80,$0080,$0080,$FF80                                           ;90EFCB;
 
@@ -15822,12 +15822,12 @@ UNUSED_ProjectilePreInstruction_UnknownProjectile27_90EFD3:
     LDA.W #UNUSED_SamusMovementHandler_90F04B                            ;90EFF9;
     STA.W $0A58                                                          ;90EFFC;
 
-.clear:
+  .clear:
     JSL.L Clear_Projectile                                               ;90EFFF;
     RTS                                                                  ;90F003;
 
 
-.not1:
+  .not1:
     INC.W $0C7C,X                                                        ;90F004;
     LDA.W #$00B4                                                         ;90F007;
     STA.W $0A68                                                          ;90F00A;
@@ -15843,17 +15843,17 @@ UNUSED_ProjectilePreInstruction_UnknownProjectile27_90EFD3:
     ADC.W .YOffsets,X                                                    ;90F024;
     STA.W $0B78,X                                                        ;90F027;
 
-.return:
+  .return:
     RTS                                                                  ;90F02A;
 
 ; Indexed by projectile index
-.XVelocities:
+  .XVelocities:
     dw $FFFC,$FFFC,$0004,$0004                                           ;90F02B;
-.YVelocities:
+  .YVelocities:
     dw $0004,$FFFC,$FFFC,$0004                                           ;90F033;
-.XOffsets:
+  .XOffsets:
     dw $0080,$0080,$FF80,$FF80                                           ;90F03B;
-.YOffsets:
+  .YOffsets:
     dw $FF80,$0080,$0080,$FF80                                           ;90F043;
 
 
@@ -15872,7 +15872,7 @@ UNUSED_SamusMovementHandler_90F04B:
     LDA.W #UNUSED_SamusMovementHandler_90F072                            ;90F06B;
     STA.W $0A58                                                          ;90F06E;
 
-.return:
+  .return:
     RTS                                                                  ;90F071;
 
 
@@ -15884,7 +15884,7 @@ UNUSED_SamusMovementHandler_90F072:
     LDA.W #SamusMovementHandler_Normal                                   ;90F07D;
     STA.W $0A58                                                          ;90F080;
 
-.return:
+  .return:
     RTS                                                                  ;90F083;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -15909,14 +15909,14 @@ Run_Samus_Command:
     STZ.W $0A30                                                          ;90F0A4;
     STZ.W $0A32                                                          ;90F0A7;
 
-.return:
+  .return:
     PLX                                                                  ;90F0AA;
     PLB                                                                  ;90F0AB;
     PLP                                                                  ;90F0AC;
     RTL                                                                  ;90F0AD;
 
 
-.pointers:
+  .pointers:
     dw SamusCommand_0_LockSamus                                          ;90F0AE;
     dw SamusCommand_1_UnlockSamus                                        ;90F0B0;
     dw SamusCommand_2_SamusReachedCeresElevator                          ;90F0B2;
@@ -15995,11 +15995,11 @@ SamusCommand_2_SamusReachedCeresElevator:
     BRA +                                                                ;90F136;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$0002                                                         ;90F138;
     STA.W $0A1C                                                          ;90F13B;
 
-  + STZ.W $0A9A                                                          ;90F13E;
++   STZ.W $0A9A                                                          ;90F13E;
     JSL.L InitializeSamusPose_1                                          ;90F141;
     JSL.L Set_Samus_AnimationFrame_if_PoseChanged                        ;90F145;
     LDA.W #$003C                                                         ;90F149;
@@ -16014,12 +16014,12 @@ SamusCommand_3_UnspinSamus:
     LDA.W #GrappleBeamFunction_Dropped                                   ;90F15A;
     STA.W $0D32                                                          ;90F15D;
 
-.returnCarryClear:
+  .returnCarryClear:
     CLC                                                                  ;90F160;
     RTS                                                                  ;90F161;
 
 
-.grappleInactive:
+  .grappleInactive:
     LDA.W $0A1F                                                          ;90F162;
     AND.W #$00FF                                                         ;90F165;
     CMP.W #$0003                                                         ;90F168;
@@ -16027,7 +16027,7 @@ SamusCommand_3_UnspinSamus:
     CMP.W #$0014                                                         ;90F16D;
     BNE .returnCarryClear                                                ;90F170;
 
-.checkDirection:
+  .checkDirection:
     LDA.W $0A1E                                                          ;90F172;
     AND.W #$00FF                                                         ;90F175;
     CMP.W #$0004                                                         ;90F178;
@@ -16037,11 +16037,11 @@ SamusCommand_3_UnspinSamus:
     BRA +                                                                ;90F183;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W #$0002                                                         ;90F185;
     STA.W $0A1C                                                          ;90F188;
 
-  + STZ.W $0A9A                                                          ;90F18B;
++   STZ.W $0A9A                                                          ;90F18B;
     JSL.L InitializeSamusPose_1                                          ;90F18E;
     JSL.L Set_Samus_AnimationFrame_if_PoseChanged                        ;90F192;
     JSR.W Update_Samus_PreviousPose                                      ;90F196;
@@ -16071,7 +16071,7 @@ SamusCommand_6_LockSamusIntoRefillStation:
     LDA.W #$0002                                                         ;90F1BE;
     JSL.L QueueSound                                                     ;90F1C1;
 
-.gotoEndChargeBeam:
+  .gotoEndChargeBeam:
     JMP.W EndChargeBeam                                                  ;90F1C5;
 
 
@@ -16133,7 +16133,7 @@ SamusCommand_9_SetupSamusForZebesStart:
     BRA .merge                                                           ;90F256;
 
 
-.varia:
+  .varia:
     LDY.W #PaletteFXObjects_SamusLoading_VariaSuit                       ;90F258;
     JSL.L Spawn_PaletteFXObject                                          ;90F25B;
     LDA.W #$009B                                                         ;90F25F;
@@ -16141,13 +16141,13 @@ SamusCommand_9_SetupSamusForZebesStart:
     BRA .merge                                                           ;90F265;
 
 
-.gravity:
+  .gravity:
     LDY.W #PaletteFXObjects_SamusLoading_GravitySuit                     ;90F267;
     JSL.L Spawn_PaletteFXObject                                          ;90F26A;
     LDA.W #$009B                                                         ;90F26E;
     STA.W $0A1C                                                          ;90F271;
 
-.merge:
+  .merge:
     JSL.L LoadSamusSuitPalette                                           ;90F274;
     JSL.L InitializeSamusPose_1                                          ;90F278;
     LDA.W #$0003                                                         ;90F27C;
@@ -16182,7 +16182,7 @@ SamusCommand_C_UpdateSamusDueToUnpause:
     LDA.W #SamusNewStateHandler_Normal                                   ;90F2B0;
     STA.W $0A44                                                          ;90F2B3;
 
-.return:
+  .return:
     SEC                                                                  ;90F2B6;
     RTS                                                                  ;90F2B7;
 
@@ -16196,7 +16196,7 @@ SamusCommand_D_CheckIfGrappleBeamIsActive:
     RTS                                                                  ;90F2C4;
 
 
-.active:
+  .active:
     LDA.W #$0001                                                         ;90F2C5;
     CLC                                                                  ;90F2C8;
     RTS                                                                  ;90F2C9;
@@ -16226,7 +16226,7 @@ SamusCommand_10_UnlockSamusFromReserveTank:
     RTS                                                                  ;90F2E9;
 
 
-.noRainbowBeam:
+  .noRainbowBeam:
     LDA.W #SamusCurrentStateHandler_Normal                               ;90F2EA;
     STA.W $0A42                                                          ;90F2ED;
     LDA.W #SamusNewStateHandler_Normal                                   ;90F2F0;
@@ -16278,7 +16278,7 @@ SamusCommand_14_QueueLowEnergyAndGrappleSFX:
     LDA.W #$0002                                                         ;90F339;
     JSL.L QueueSound_Lib3_Max6                                           ;90F33C;
 
-.notLowEnergy:
+  .notLowEnergy:
     JSR.W SamusCommand_D_CheckIfGrappleBeamIsActive                      ;90F340;
     TAY                                                                  ;90F343;
     BEQ .grappleInactive                                                 ;90F344;
@@ -16288,7 +16288,7 @@ SamusCommand_14_QueueLowEnergyAndGrappleSFX:
     RTS                                                                  ;90F34E;
 
 
-.grappleInactive:
+  .grappleInactive:
     LDA.W $0A1E                                                          ;90F34F;
     AND.W #$00FF                                                         ;90F352;
     CMP.W #$0003                                                         ;90F355;
@@ -16297,7 +16297,7 @@ SamusCommand_14_QueueLowEnergyAndGrappleSFX:
     RTS                                                                  ;90F35B;
 
 
-  + LDA.W $0A1C                                                          ;90F35C;
++   LDA.W $0A1C                                                          ;90F35C;
     CMP.W #$0081                                                         ;90F35F;
     BEQ .screwAttack                                                     ;90F362;
     CMP.W #$0082                                                         ;90F364;
@@ -16312,14 +16312,14 @@ SamusCommand_14_QueueLowEnergyAndGrappleSFX:
     RTS                                                                  ;90F37B;
 
 
-.spaceJump:
+  .spaceJump:
     LDA.W #$003E                                                         ;90F37C;
     JSL.L QueueSound_Lib1_Max6                                           ;90F37F;
     CLC                                                                  ;90F383;
     RTS                                                                  ;90F384;
 
 
-.screwAttack:
+  .screwAttack:
     LDA.W #$0033                                                         ;90F385;
     JSL.L QueueSound_Lib1_Max6                                           ;90F388;
     CLC                                                                  ;90F38C;
@@ -16402,7 +16402,7 @@ SamusCommand_1B_LockSamusForReserveTank:
     JMP.W SamusCommand_0_LockSamus                                       ;90F419;
 
 
-.rainbowBeam:
+  .rainbowBeam:
     SEC                                                                  ;90F41C;
     RTS                                                                  ;90F41D;
 
@@ -16418,7 +16418,7 @@ SamusCommand_1C_PlaySpinJumpSoundIfSpinJumping:
     RTS                                                                  ;90F42F;
 
 
-.spinJumping:
+  .spinJumping:
     LDA.W $0A1C                                                          ;90F430;
     CMP.W #$0081                                                         ;90F433;
     BEQ .screwAttack                                                     ;90F436;
@@ -16431,28 +16431,28 @@ SamusCommand_1C_PlaySpinJumpSoundIfSpinJumping:
     BRA .spinJump                                                        ;90F447;
 
 
-.wallJump:
+  .wallJump:
     LDA.W $0A96                                                          ;90F449;
     CMP.W #$0017                                                         ;90F44C;
     BPL .screwAttack                                                     ;90F44F;
     CMP.W #$000D                                                         ;90F451;
     BPL .spaceJump                                                       ;90F454;
 
-.spinJump:
+  .spinJump:
     LDA.W #$0031                                                         ;90F456;
     JSL.L QueueSound_Lib1_Max9                                           ;90F459;
     CLC                                                                  ;90F45D;
     RTS                                                                  ;90F45E;
 
 
-.spaceJump:
+  .spaceJump:
     LDA.W #$003E                                                         ;90F45F;
     JSL.L QueueSound_Lib1_Max9                                           ;90F462;
     CLC                                                                  ;90F466;
     RTS                                                                  ;90F467;
 
 
-.screwAttack:
+  .screwAttack:
     LDA.W #$0033                                                         ;90F468;
     JSL.L QueueSound_Lib1_Max9                                           ;90F46B;
     CLC                                                                  ;90F46F;
@@ -16467,14 +16467,14 @@ SamusCommand_1D_ClearSoundsWhenGoingThroughDoor:
     CMP.W #$0014                                                         ;90F47C;
     BNE .notSpinning                                                     ;90F47F;
 
-.endSpaceJumpSFX:
+  .endSpaceJumpSFX:
     LDA.W #$0032                                                         ;90F481;
     JSL.L QueueSound                                                     ;90F484;
     CLC                                                                  ;90F488;
     RTS                                                                  ;90F489;
 
 
-.notSpinning:
+  .notSpinning:
     LDA.B $8B                                                            ;90F48A;
     BIT.W $09B2                                                          ;90F48C;
     BNE .returnCarryClear                                                ;90F48F;
@@ -16484,7 +16484,7 @@ SamusCommand_1D_ClearSoundsWhenGoingThroughDoor:
     LDA.W #$0002                                                         ;90F499;
     JSL.L QueueSound                                                     ;90F49C;
 
-.returnCarryClear:
+  .returnCarryClear:
     CLC                                                                  ;90F4A0;
     RTS                                                                  ;90F4A1;
 
@@ -16500,20 +16500,20 @@ SamusCommand_1E_ResumeSoundsAfterPowerBombExplosion:
     CMP.W #$0014                                                         ;90F4B5;
     BNE .notSpinning                                                     ;90F4B8;
 
-.spinJumpSFX:
+  .spinJumpSFX:
     JSR.W SamusCommand_1C_PlaySpinJumpSoundIfSpinJumping                 ;90F4BA;
     CLC                                                                  ;90F4BD;
     RTS                                                                  ;90F4BE;
 
 
-.notSpinning:
+  .notSpinning:
     LDA.W $0CD0                                                          ;90F4BF;
     CMP.W #$0010                                                         ;90F4C2;
     BMI .returnCarryClear                                                ;90F4C5;
     LDA.W #$0041                                                         ;90F4C7;
     JSL.L QueueSound_Lib1_Max9                                           ;90F4CA;
 
-.returnCarryClear:
+  .returnCarryClear:
     CLC                                                                  ;90F4CE;
     RTS                                                                  ;90F4CF;
 
@@ -16526,7 +16526,7 @@ SamusCommand_1F_KillGrappleBeam:
     RTS                                                                  ;90F4D9;
 
 
-.grappleActive:
+  .grappleActive:
     STZ.W $0D1E                                                          ;90F4DA;
     STZ.W $0D20                                                          ;90F4DD;
     STZ.W $0D34                                                          ;90F4E0;
@@ -16562,7 +16562,7 @@ UNUSED_ResumeSounds_90F507:
     LDA.W #$0041                                                         ;90F526;
     JSL.L QueueSound_Lib1_Max9                                           ;90F529;
 
-.return:
+  .return:
     CLC                                                                  ;90F52D;
     RTS                                                                  ;90F52E;
 endif ; !FEATURE_KEEP_UNREFERENCED
@@ -16592,7 +16592,7 @@ DebugCommandHandler_GiveSamusAShinesparkIfYNewlyPressed:
     STA.W $0ACC                                                          ;90F545;
     STZ.W $0ACE                                                          ;90F548;
 
-.return:
+  .return:
     RTS                                                                  ;90F54B;
 
 
@@ -16605,7 +16605,7 @@ DebugCommandHandler_DisableRainbowSamus_StandHerUp:
     LDA.W #RTS_90F534                                                    ;90F55A;
     STA.W $0A5E                                                          ;90F55D;
 
-.return:
+  .return:
     RTS                                                                  ;90F560;
 
 
@@ -16618,7 +16618,7 @@ DebugCommandHandler_ReleaseSamusFromDrainedPoseIfYNewlyPress:
     LDA.W #$0002                                                         ;90F56E;
     JSL.L DrainedSamusController                                         ;90F571;
 
-.return:
+  .return:
     RTS                                                                  ;90F575;
 
 
@@ -16634,10 +16634,10 @@ Handle_UnspinSFX_CancellingEchoSound_SettingTimeUpGameState:
     LDA.W #$0041                                                         ;90F587;
     JSL.L QueueSound_Lib1_Max9                                           ;90F58A;
 
-.pressingShot:
+  .pressingShot:
     STZ.W $0DC0                                                          ;90F58E;
 
-.notSet:
+  .notSet:
     LDA.W $0B40                                                          ;90F591;
     BEQ .echoes                                                          ;90F594;
     LDA.W $0B3E                                                          ;90F596;
@@ -16647,7 +16647,7 @@ Handle_UnspinSFX_CancellingEchoSound_SettingTimeUpGameState:
     LDA.W #$0025                                                         ;90F5A1;
     JSL.L QueueSound_Lib3_Max15                                          ;90F5A4;
 
-.echoes:
+  .echoes:
     LDA.W $0A11                                                          ;90F5A8;
     AND.W #$00FF                                                         ;90F5AB;
     CMP.W #$0003                                                         ;90F5AE;
@@ -16655,7 +16655,7 @@ Handle_UnspinSFX_CancellingEchoSound_SettingTimeUpGameState:
     CMP.W #$0014                                                         ;90F5B3;
     BNE .checkDebug                                                      ;90F5B6;
 
-.spinJumping:
+  .spinJumping:
     LDA.W $0A1F                                                          ;90F5B8;
     AND.W #$00FF                                                         ;90F5BB;
     CMP.W #$0003                                                         ;90F5BE;
@@ -16671,11 +16671,11 @@ Handle_UnspinSFX_CancellingEchoSound_SettingTimeUpGameState:
     BIT.W $09B2                                                          ;90F5D9;
     BEQ .checkDebug                                                      ;90F5DC;
 
-.negative:
+  .negative:
     LDA.W #$0001                                                         ;90F5DE;
     STA.W $0DC0                                                          ;90F5E1;
 
-.checkDebug:
+  .checkDebug:
     LDA.W $05D1                                                          ;90F5E4;
     BEQ .debugEnd                                                        ;90F5E7;
     LDA.W $0A1C                                                          ;90F5E9;
@@ -16689,7 +16689,7 @@ Handle_UnspinSFX_CancellingEchoSound_SettingTimeUpGameState:
     RTS                                                                  ;90F5FC;
 
 
-.checkInputs:
+  .checkInputs:
     LDA.B $8D                                                            ;90F5FD;
     AND.W #$0030                                                         ;90F5FF;
     CMP.W #$0030                                                         ;90F602;
@@ -16702,10 +16702,10 @@ Handle_UnspinSFX_CancellingEchoSound_SettingTimeUpGameState:
     BRA .debugEnd                                                        ;90F614;
 
 
-.resetInvincibility:
+  .resetInvincibility:
     STZ.W $0DE0                                                          ;90F616;
 
-.debugEnd:
+  .debugEnd:
     LDA.W #$000E                                                         ;90F619;
     JSL.L CheckIfEvent_inA_HasHappened                                   ;90F61C;
     BCC .return                                                          ;90F620;
@@ -16718,7 +16718,7 @@ Handle_UnspinSFX_CancellingEchoSound_SettingTimeUpGameState:
     LDA.W #$0023                                                         ;90F632;
     STA.W $0998                                                          ;90F635;
 
-.return:
+  .return:
     PLP                                                                  ;90F638;
     RTS                                                                  ;90F639;
 

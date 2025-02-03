@@ -143,7 +143,7 @@ Instruction_CommonA7_CallFunctionInY:
     JMP.W ($0012)                                                        ;A78094;
 
 
-.manualReturn:
+  .manualReturn:
     PLX                                                                  ;A78097;
     PLY                                                                  ;A78098;
     INY                                                                  ;A78099;
@@ -161,7 +161,7 @@ Instruction_CommonA7_CallFunctionInY_WithA:
     JMP.W ($0012)                                                        ;A780A9;
 
 
-.manualReturn:
+  .manualReturn:
     PLX                                                                  ;A780AC;
     PLY                                                                  ;A780AD;
     TYA                                                                  ;A780AE;
@@ -188,7 +188,7 @@ UNUSED_Instruction_CommonA7_CallExternalFunctionInY_A780B5:
     RTL                                                                  ;A780CA;
 
 
-.externalFunction:
+  .externalFunction:
     JML.W [$0012]                                                        ;A780CB;
 
 
@@ -210,7 +210,7 @@ UNUSED_Inst_CommonA7_CallExternalFunctionInY_WithA_A780CE:
     RTL                                                                  ;A780E9;
 
 
-.externalFunction:
+  .externalFunction:
     JML.W [$0012]                                                        ;A780EA;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -231,10 +231,10 @@ Instruction_CommonA7_GotoY_PlusY:
     BRA +                                                                ;A780FE;
 
 
-.highByte:
+  .highByte:
     ORA.W #$FF00                                                         ;A78100;
 
-  + CLC                                                                  ;A78103;
++   CLC                                                                  ;A78103;
     ADC.B $12                                                            ;A78104;
     TAY                                                                  ;A78106;
     RTL                                                                  ;A78107;
@@ -875,7 +875,7 @@ Instruction_KraidArm_SlowArmIfLessThanHalfHealth:
     BPL .return                                                          ;A78A9E;
     LDY.W #InstList_KraidArm_Slow                                        ;A78AA0;
 
-.return:
+  .return:
     RTL                                                                  ;A78AA3;
 
 
@@ -2033,7 +2033,7 @@ EnemyTouch_KraidArm:
     RTL                                                                  ;A79495;
 
 
-.SamusInvincible:
+  .SamusInvincible:
     JSR.W PushSamusBack                                                  ;A79496;
     LDA.W #Function_KraidLint_FireLint                                   ;A79499;
     STA.W $10A8                                                          ;A7949C;
@@ -3012,7 +3012,7 @@ CheckIfKraidHasDied:
     RTS                                                                  ;A7A93D;
 
 
-.returnAlive:
+  .returnAlive:
     PLX                                                                  ;A7A93E;
     LDA.W #$0000                                                         ;A7A93F;
     RTS                                                                  ;A7A942;
@@ -3045,11 +3045,11 @@ InitAI_Kraid:
     JMP.W .alive                                                         ;A7A978;
 
 
-.dead:
+  .dead:
     LDX.W #$00C0                                                         ;A7A97B;
     LDY.W #$0000                                                         ;A7A97E;
 
-.loopBGPalette6:
+  .loopBGPalette6:
     LDA.W Palette_KraidRoomBackground,Y                                  ;A7A981;
     STA.L $7EC200,X                                                      ;A7A984;
     INX                                                                  ;A7A988;
@@ -3061,7 +3061,7 @@ InitAI_Kraid:
     LDX.W #$07FE                                                         ;A7A991;
     LDA.W #$0338                                                         ;A7A994;
 
-.loopBG2Tilemap:
+  .loopBG2Tilemap:
     STA.L $7E2000,X                                                      ;A7A997;
     DEX                                                                  ;A7A99B;
     DEX                                                                  ;A7A99C;
@@ -3094,7 +3094,7 @@ InitAI_Kraid:
     RTL                                                                  ;A7A9DB;
 
 
-.alive:
+  .alive:
     SEP #$20                                                             ;A7A9DC;
     LDA.B #$43                                                           ;A7A9DE;
     STA.B $59                                                            ;A7A9E0;
@@ -3114,7 +3114,7 @@ InitAI_Kraid:
     LSR A                                                                ;A7AA07;
     STA.B $12                                                            ;A7AA08;
 
-.loopKraidHealth:
+  .loopKraidHealth:
     STA.L $7E780C,X                                                      ;A7AA0A;
     CLC                                                                  ;A7AA0E;
     ADC.B $12                                                            ;A7AA0F;
@@ -3160,7 +3160,7 @@ InitAI_Kraid:
     LDX.W #$003E                                                         ;A7AA80;
     LDA.W #$0338                                                         ;A7AA83;
 
-.loopKraidGFX:
+  .loopKraidGFX:
     STA.L $7E2FC0,X                                                      ;A7AA86;
     DEX                                                                  ;A7AA8A;
     DEX                                                                  ;A7AA8B;
@@ -3169,7 +3169,7 @@ InitAI_Kraid:
     STA.W $183E                                                          ;A7AA91;
     LDX.W #$0000                                                         ;A7AA94;
 
-.loopSpritePalette3:
+  .loopSpritePalette3:
     LDA.W .spritePalette3,X                                              ;A7AA97;
     STA.L $7EC360,X                                                      ;A7AA9A;
     INX                                                                  ;A7AA9E;
@@ -3178,7 +3178,7 @@ InitAI_Kraid:
     BMI .loopSpritePalette3                                              ;A7AAA3;
     RTL                                                                  ;A7AAA5;
 
-.spritePalette3:
+  .spritePalette3:
 ; Sprite palette 3 - Kraid rocks
     dw $0000,$0000,$0000,$0000,$0000,$0DF6,$0D92,$0CEC                   ;A7AAA6;
     dw $0CA9,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;A7AAB6;
@@ -3214,7 +3214,7 @@ SetupKraidGFXWithTheTilePriorityCleared:
     STA.L $7E782C                                                        ;A7AB15;
     LDX.W #$0000                                                         ;A7AB19;
 
-.loop0:
+  .loop0:
     LDA.L $7E2000,X                                                      ;A7AB1C;
     AND.W #$DFFF                                                         ;A7AB20;
     STA.L $7E2800,X                                                      ;A7AB23;
@@ -3224,7 +3224,7 @@ SetupKraidGFXWithTheTilePriorityCleared:
     BMI .loop0                                                           ;A7AB2C;
     LDX.W #$0000                                                         ;A7AB2E;
 
-.loop1:
+  .loop1:
     LDA.L $7E4000,X                                                      ;A7AB31;
     AND.B $12                                                            ;A7AB35;
     STA.L $7E2000,X                                                      ;A7AB37;
@@ -3250,7 +3250,7 @@ InitAI_KraidArm:
     RTL                                                                  ;A7AB63;
 
 
-.dead:
+  .dead:
     JSR.W SetEnemyPropertiesToDead                                       ;A7AB64;
     RTL                                                                  ;A7AB67;
 
@@ -3275,7 +3275,7 @@ InitAI_KraidLintTop:
     RTL                                                                  ;A7AB97;
 
 
-.dead:
+  .dead:
     JSR.W SetEnemyPropertiesToDead                                       ;A7AB98;
     RTL                                                                  ;A7AB9B;
 
@@ -3298,7 +3298,7 @@ InitAI_KraidLintMiddle:
     RTL                                                                  ;A7ABC5;
 
 
-.dead:
+  .dead:
     JSR.W SetEnemyPropertiesToDead                                       ;A7ABC6;
     RTL                                                                  ;A7ABC9;
 
@@ -3321,7 +3321,7 @@ InitAI_KraidLintBottom:
     RTL                                                                  ;A7ABF3;
 
 
-.dead:
+  .dead:
     JSR.W SetEnemyPropertiesToDead                                       ;A7ABF4;
     RTL                                                                  ;A7ABF7;
 
@@ -3342,7 +3342,7 @@ InitAI_KraidFoot:
     RTL                                                                  ;A7AC1C;
 
 
-.dead:
+  .dead:
     JSR.W SetEnemyPropertiesToDead                                       ;A7AC1D;
     RTL                                                                  ;A7AC20;
 
@@ -3373,14 +3373,14 @@ Function_Kraid_KraidGetsBig_BreakCeilingIntoPlatforms:
     BNE .nonZeroCounter                                                  ;A7AC53;
     JSR.W SpawnRandomEarthquakeProjectile                                ;A7AC55;
 
-.nonZeroCounter:
+  .nonZeroCounter:
     LDY.W #$0001                                                         ;A7AC58;
     LDA.W $0F7E                                                          ;A7AC5B;
     BIT.W #$0002                                                         ;A7AC5E;
     BEQ +                                                                ;A7AC61;
     LDY.W #$FFFF                                                         ;A7AC63;
 
-  + STY.B $12                                                            ;A7AC66;
++   STY.B $12                                                            ;A7AC66;
     LDA.W $0F7A                                                          ;A7AC68;
     CLC                                                                  ;A7AC6B;
     ADC.B $12                                                            ;A7AC6C;
@@ -3402,28 +3402,28 @@ Function_Kraid_KraidGetsBig_BreakCeilingIntoPlatforms:
     JMP.W ($0012)                                                        ;A7AC99;
 
 
-.manualReturn:
+  .manualReturn:
     LDX.W $0FB2                                                          ;A7AC9C;
     INX                                                                  ;A7AC9F;
     INX                                                                  ;A7ACA0;
     STX.W $0FB2                                                          ;A7ACA1;
 
-.done:
+  .done:
     LDA.W $0F7E                                                          ;A7ACA4;
     CMP.W #$0128                                                         ;A7ACA7;
     BPL .return                                                          ;A7ACAA;
     LDA.W #Function_Kraid_KraidGetsBig_SetBG2TilemapPriorityBits         ;A7ACAC;
     STA.W $0FA8                                                          ;A7ACAF;
 
-.return:
+  .return:
     RTL                                                                  ;A7ACB2;
 
 
-.XPositions:
+  .XPositions:
 ; Falling rocks X positions
     dw $0068,$00D8,$0028,$00A8,$0058,$00C8,$0038,$00B8,$0048             ;A7ACB3;
 
-.functionPointers:
+  .functionPointers:
 ; Ceiling break PLM spawning function pointers
     dw .spawnPLM4                                                        ;A7ACC5;
     dw .spawnPLM8                                                        ;A7ACC7;
@@ -3435,63 +3435,63 @@ Function_Kraid_KraidGetsBig_BreakCeilingIntoPlatforms:
     dw .spawnPLM6                                                        ;A7ACD3;
     dw .spawnPLM2                                                        ;A7ACD5;
 
-.spawnPLM0:
+  .spawnPLM0:
     JSL.L Spawn_Hardcoded_PLM                                            ;A7ACD7;
     db $02,$12                                                           ;A7ACDB;
     dw PLMEntries_crumbleKraidCeilingBlockIntoBackground1                ;A7ACDD;
     JMP.W .manualReturn                                                  ;A7ACDF;
 
 
-.spawnPLM1:
+  .spawnPLM1:
     JSL.L Spawn_Hardcoded_PLM                                            ;A7ACE2;
     db $03,$12                                                           ;A7ACE6;
     dw PLMEntries_crumbleKraidCeilingBlockIntoBackground2                ;A7ACE8;
     JMP.W .manualReturn                                                  ;A7ACEA;
 
 
-.spawnPLM2:
+  .spawnPLM2:
     JSL.L Spawn_Hardcoded_PLM                                            ;A7ACED;
     db $04,$12                                                           ;A7ACF1;
     dw PLMEntries_crumbleKraidCeilingBlockIntoBackground3                ;A7ACF3;
     JMP.W .manualReturn                                                  ;A7ACF5;
 
 
-.spawnPLM3:
+  .spawnPLM3:
     JSL.L Spawn_Hardcoded_PLM                                            ;A7ACF8;
     db $05,$12                                                           ;A7ACFC;
     dw PLMEntries_crumbleKraidCeilingBlockIntoBackground2                ;A7ACFE;
     JMP.W .manualReturn                                                  ;A7AD00;
 
 
-.spawnPLM4:
+  .spawnPLM4:
     JSL.L Spawn_Hardcoded_PLM                                            ;A7AD03;
     db $06,$12                                                           ;A7AD07;
     dw PLMEntries_crumbleKraidCeilingBlockIntoBackground3                ;A7AD09;
     JMP.W .manualReturn                                                  ;A7AD0B;
 
 
-.spawnPLM5:
+  .spawnPLM5:
     JSL.L Spawn_Hardcoded_PLM                                            ;A7AD0E;
     db $0A,$12                                                           ;A7AD12;
     dw PLMEntries_crumbleKraidCeilingBlockIntoBackground3                ;A7AD14;
     JMP.W .manualReturn                                                  ;A7AD16;
 
 
-.spawnPLM6:
+  .spawnPLM6:
     JSL.L Spawn_Hardcoded_PLM                                            ;A7AD19;
     db $0B,$12                                                           ;A7AD1D;
     dw PLMEntries_crumbleKraidCeilingBlockIntoBackground2                ;A7AD1F;
     JMP.W .manualReturn                                                  ;A7AD21;
 
 
-.spawnPLM7:
+  .spawnPLM7:
     JSL.L Spawn_Hardcoded_PLM                                            ;A7AD24;
     db $0C,$12                                                           ;A7AD28;
     dw PLMEntries_crumbleKraidCeilingBlockIntoBackground3                ;A7AD2A;
     JMP.W .manualReturn                                                  ;A7AD2C;
 
 
-.spawnPLM8:
+  .spawnPLM8:
     JSL.L Spawn_Hardcoded_PLM                                            ;A7AD2F;
     db $0D,$12                                                           ;A7AD33;
     dw PLMEntries_crumbleKraidCeilingBlockIntoBackground2                ;A7AD35;
@@ -3501,7 +3501,7 @@ Function_Kraid_KraidGetsBig_BreakCeilingIntoPlatforms:
 Function_Kraid_KraidGetsBig_SetBG2TilemapPriorityBits:
     LDX.W #$0000                                                         ;A7AD3A;
 
-.loop:
+  .loop:
     LDA.L $7E2000,X                                                      ;A7AD3D;
     ORA.W #$2000                                                         ;A7AD41;
     STA.L $7E2000,X                                                      ;A7AD44;
@@ -3545,7 +3545,7 @@ DrawKraidsRoomBackground:
     LDX.W #$00C0                                                         ;A7AD9A;
     LDY.W #$0000                                                         ;A7AD9D;
 
-.loop:
+  .loop:
     LDA.W Palette_KraidRoomBackground,Y                                  ;A7ADA0;
     STA.L $7EC200,X                                                      ;A7ADA3;
     INX                                                                  ;A7ADA7;
@@ -3606,7 +3606,7 @@ SetLintYPositionsAndRandomThinkingTimer:
     BNE .multiplyBy40                                                    ;A7AE13;
     LDA.W #$0002                                                         ;A7AE15;
 
-.multiplyBy40:
+  .multiplyBy40:
     ASL A                                                                ;A7AE18;
     ASL A                                                                ;A7AE19;
     ASL A                                                                ;A7AE1A;
@@ -3624,7 +3624,7 @@ Function_Kraid_KraidGetsBig_FadeInRoomBackground:
     RTL                                                                  ;A7AE2B;
 
 
-.reachedTargetColor:
+  .reachedTargetColor:
     JSR.W SetupKraidGetsBig_Thinking                                     ;A7AE2C;
     LDX.W #$0080                                                         ;A7AE2F;
     LDA.W KraidLint_InitialFunctionTimers_top                            ;A7AE32;
@@ -3683,7 +3683,7 @@ Function_Kraid_MainLoop_Thinking:
     LDA.W InstList_Kraid_Roar_0                                          ;A7AEBD;
     STA.W $0FAC                                                          ;A7AEC0;
 
-.return:
+  .return:
     RTL                                                                  ;A7AEC3;
 
 
@@ -3700,7 +3700,7 @@ Function_Kraid_KraidGetsBig_Thinking:
     LDA.W InstList_Kraid_Roar_0                                          ;A7AEDD;
     STA.W $0FAC                                                          ;A7AEE0;
 
-.return:
+  .return:
     RTL                                                                  ;A7AEE3;
 
 
@@ -3729,11 +3729,11 @@ Function_Kraid_KraidShot_KraidsMouthIsOpen:
     LDA.W #$0002                                                         ;A7AF21;
     STA.L $7E7802                                                        ;A7AF24;
 
-.return:
+  .return:
     RTL                                                                  ;A7AF28;
 
 
-.done:
+  .done:
     LDA.W #$0000                                                         ;A7AF29;
     STA.L $7E780A                                                        ;A7AF2C;
     BRA .return                                                          ;A7AF30;
@@ -3745,7 +3745,7 @@ KraidInstListHandling:
     DEC.W $0FAC                                                          ;A7AF37;
     BEQ ProcessKraidInstList                                             ;A7AF3A;
 
-.return:
+  .return:
     RTS                                                                  ;A7AF3C;
 
 
@@ -3786,11 +3786,11 @@ ProcessKraidInstList:
     PLX                                                                  ;A7AF7E;
     LDA.W #$0001                                                         ;A7AF7F;
 
-.return:
+  .return:
     RTS                                                                  ;A7AF82;
 
 
-.ASMInstruction:
+  .ASMInstruction:
     STA.B $12                                                            ;A7AF83;
     JMP.W ($0012)                                                        ;A7AF85;
 
@@ -3829,7 +3829,7 @@ KraidsMouth_vs_Projectile_CollisionHandling:
     RTS                                                                  ;A7AFB6;
 
 
-.notDying:
+  .notDying:
     LDA.W $0FAA                                                          ;A7AFB7;
     SEC                                                                  ;A7AFBA;
     SBC.W #$0008                                                         ;A7AFBB;
@@ -3841,7 +3841,7 @@ KraidsMouth_vs_Projectile_CollisionHandling:
     JMP.W .noProjectiles                                                 ;A7AFCA;
 
 
-.notTerminator:
+  .notTerminator:
     TAX                                                                  ;A7AFCD;
     LDA.W #$0001                                                         ;A7AFCE;
     STA.W $0FB0                                                          ;A7AFD1;
@@ -3863,7 +3863,7 @@ KraidsMouth_vs_Projectile_CollisionHandling:
     ASL A                                                                ;A7AFF7;
     TAX                                                                  ;A7AFF8;
 
-.loop:
+  .loop:
     LDA.W $0B78,X                                                        ;A7AFF9;
     SEC                                                                  ;A7AFFC;
     SBC.W $0BC8,X                                                        ;A7AFFD;
@@ -3889,7 +3889,7 @@ KraidsMouth_vs_Projectile_CollisionHandling:
     ORA.W #$0001                                                         ;A7B02C;
     STA.L $7E780A                                                        ;A7B02F;
 
-.notBeam:
+  .notBeam:
     PHX                                                                  ;A7B033;
     TXA                                                                  ;A7B034;
     LSR A                                                                ;A7B035;
@@ -3903,19 +3903,19 @@ KraidsMouth_vs_Projectile_CollisionHandling:
     STA.W $0C04,X                                                        ;A7B046;
     LDY.W #$0001                                                         ;A7B049;
 
-.next:
+  .next:
     DEX                                                                  ;A7B04C;
     DEX                                                                  ;A7B04D;
     BPL .loop                                                            ;A7B04E;
 
-.noProjectiles:
+  .noProjectiles:
     PLX                                                                  ;A7B050;
     CPY.W #$0000                                                         ;A7B051;
     BNE .collision                                                       ;A7B054;
     RTS                                                                  ;A7B056;
 
 
-.collision:
+  .collision:
     LDA.W #$0006                                                         ;A7B057;
     STA.L $7E782A                                                        ;A7B05A;
     LDA.W #$0002                                                         ;A7B05E;
@@ -3926,14 +3926,14 @@ KraidsMouth_vs_Projectile_CollisionHandling:
     ORA.W #$0004                                                         ;A7B06E;
     STA.L $7E780A                                                        ;A7B071;
 
-.notChargedBeam:
+  .notChargedBeam:
     LDA.W $0F8C                                                          ;A7B075;
     CMP.W #$0001                                                         ;A7B078;
     BMI .dead                                                            ;A7B07B;
     RTS                                                                  ;A7B07D;
 
 
-.dead:
+  .dead:
     LDA.W $0FA8                                                          ;A7B07E;
     CMP.W #KraidDeath_Initialize                                         ;A7B081;
     BPL .return                                                          ;A7B084;
@@ -3949,7 +3949,7 @@ KraidsMouth_vs_Projectile_CollisionHandling:
     JSR.W SetupKraidGFXWithTheTilePriorityCleared                        ;A7B0A1;
     LDX.W #$0000                                                         ;A7B0A4;
 
-.loopSetIntangible:
+  .loopSetIntangible:
     LDA.W $0F86,X                                                        ;A7B0A7;
     ORA.W #$0400                                                         ;A7B0AA;
     STA.W $0F86,X                                                        ;A7B0AD;
@@ -3966,7 +3966,7 @@ KraidsMouth_vs_Projectile_CollisionHandling:
     ADC.W #$003C                                                         ;A7B0C4;
     STA.W $0FAA                                                          ;A7B0C7;
 
-.return:
+  .return:
     RTS                                                                  ;A7B0CA;
 
 
@@ -3981,7 +3981,7 @@ SpawnExplosionProjectile:
     BNE .superMissile                                                    ;A7B0DE;
     LDY.W #$0006                                                         ;A7B0E0;
 
-.superMissile:
+  .superMissile:
     TYA                                                                  ;A7B0E3;
     LDY.W #EnemyProjectile_MiscDust                                      ;A7B0E4;
     JSL.L SpawnEnemyProjectileY_ParameterA_RoomGraphics                  ;A7B0E7;
@@ -4003,7 +4003,7 @@ KraidBody_vs_Samus_CollisionHandling:
     SBC.W $0F7E                                                          ;A7B108;
     LDX.W #$0000                                                         ;A7B10B;
 
-.loop:
+  .loop:
     CMP.W HitboxDefinitionTable_KraidBody_bottom,X                       ;A7B10E;
     BPL +                                                                ;A7B111;
     CMP.W HitboxDefinitionTable_KraidBody_top,X                          ;A7B113;
@@ -4015,7 +4015,7 @@ KraidBody_vs_Samus_CollisionHandling:
     BRA .loop                                                            ;A7B11C;
 
 
-  + LDA.W HitboxDefinitionTable_KraidBody_left,X                         ;A7B11E;
++   LDA.W HitboxDefinitionTable_KraidBody_left,X                         ;A7B11E;
     CLC                                                                  ;A7B121;
     ADC.W $0F7A                                                          ;A7B122;
     SEC                                                                  ;A7B125;
@@ -4029,7 +4029,7 @@ KraidBody_vs_Samus_CollisionHandling:
     STA.W $0AF6                                                          ;A7B136;
     STA.W $0B10                                                          ;A7B139;
 
-.lessThan28:
+  .lessThan28:
     LDA.W $0AFA                                                          ;A7B13C;
     SEC                                                                  ;A7B13F;
     SBC.W #$0008                                                         ;A7B140;
@@ -4037,18 +4037,18 @@ KraidBody_vs_Samus_CollisionHandling:
     BPL +                                                                ;A7B147;
     LDA.L $7E7808                                                        ;A7B149;
 
-  + STA.W $0AFA                                                          ;A7B14D;
++   STA.W $0AFA                                                          ;A7B14D;
     STA.W $0B14                                                          ;A7B150;
     JSR.W PushSamusBack                                                  ;A7B153;
     LDA.W $18A8                                                          ;A7B156;
     BNE .return1                                                         ;A7B159;
     JSL.L NormalEnemyTouchAI                                             ;A7B15B;
 
-.return0:
+  .return0:
     RTS                                                                  ;A7B15F;
 
 
-.return1:
+  .return1:
     RTS                                                                  ;A7B160;
 
 
@@ -4078,7 +4078,7 @@ KraidBody_vs_Projectile_CollisionHandling:
     RTS                                                                  ;A7B18B;
 
 
-.lessThanC537:
+  .lessThanC537:
     STZ.W $0FB0                                                          ;A7B18C;
     LDA.L $7E780A                                                        ;A7B18F;
     AND.W #$FFFE                                                         ;A7B193;
@@ -4107,7 +4107,7 @@ KraidBody_vs_Projectile_CollisionHandling:
     ASL A                                                                ;A7B1C8;
     TAX                                                                  ;A7B1C9;
 
-.loop:
+  .loop:
     LDA.W $0B78,X                                                        ;A7B1CA;
     SEC                                                                  ;A7B1CD;
     SBC.W $0BC8,X                                                        ;A7B1CE;
@@ -4125,7 +4125,7 @@ KraidBody_vs_Projectile_CollisionHandling:
     CMP.B $16                                                            ;A7B1E8;
     BMI .next                                                            ;A7B1EA;
 
-.hit:
+  .hit:
     JSR.W SpawnExplosionProjectile                                       ;A7B1EC;
     LDA.W $0C04,X                                                        ;A7B1EF;
     ORA.W #$0010                                                         ;A7B1F2;
@@ -4137,14 +4137,14 @@ KraidBody_vs_Projectile_CollisionHandling:
     ORA.W #$0001                                                         ;A7B204;
     STA.L $7E780A                                                        ;A7B207;
 
-  + INC.B $30                                                            ;A7B20B;
++   INC.B $30                                                            ;A7B20B;
 
-.next:
+  .next:
     DEX                                                                  ;A7B20D;
     DEX                                                                  ;A7B20E;
     BPL .loop                                                            ;A7B20F;
 
-.noProjectiles:
+  .noProjectiles:
     PLX                                                                  ;A7B211;
     LDY.B $30                                                            ;A7B212;
     CPY.W #$0000                                                         ;A7B214;
@@ -4160,11 +4160,11 @@ KraidBody_vs_Projectile_CollisionHandling:
     ORA.W #$0302                                                         ;A7B230;
     STA.L $7E780A                                                        ;A7B233;
 
-.return:
+  .return:
     RTS                                                                  ;A7B237;
 
 
-.body:
+  .body:
     LDA.W $0B64,X                                                        ;A7B238;
     CLC                                                                  ;A7B23B;
     ADC.W $0BB4,X                                                        ;A7B23C;
@@ -4174,7 +4174,7 @@ KraidBody_vs_Projectile_CollisionHandling:
     SBC.W $0F7E                                                          ;A7B245;
     LDY.W #$0000                                                         ;A7B248;
 
-.loopBody:
+  .loopBody:
     CMP.W HitboxDefinitionTable_KraidBody_bottom,Y                       ;A7B24B;
     BPL +                                                                ;A7B24E;
     CMP.W HitboxDefinitionTable_KraidBody_top,Y                          ;A7B250;
@@ -4186,7 +4186,7 @@ KraidBody_vs_Projectile_CollisionHandling:
     BRA .loopBody                                                        ;A7B259;
 
 
-  + LDA.W HitboxDefinitionTable_KraidBody_left,Y                         ;A7B25B;
++   LDA.W HitboxDefinitionTable_KraidBody_left,Y                         ;A7B25B;
     CLC                                                                  ;A7B25E;
     ADC.W $0F7A                                                          ;A7B25F;
     SEC                                                                  ;A7B262;
@@ -4211,13 +4211,13 @@ UNUSED_HandleProjectileDamageAndSound:
     LDA.W #$0010                                                         ;A7B282;
     STA.W $0FA0                                                          ;A7B285;
 
-.notPlasmaOrCharge:
+  .notPlasmaOrCharge:
     LDX.W $0F78                                                          ;A7B288;
     LDA.L $A0003C,X                                                      ;A7B28B;
     BNE .vulnerabilities                                                 ;A7B28F;
     LDA.W #EnemyVulnerabilities                                          ;A7B291;
 
-.vulnerabilities:
+  .vulnerabilities:
     STA.B $14                                                            ;A7B294;
     LDA.B $12                                                            ;A7B296;
     BIT.W #$0F00                                                         ;A7B298;
@@ -4230,14 +4230,14 @@ UNUSED_HandleProjectileDamageAndSound:
     BRA .determinedVulnerability                                         ;A7B2A8;
 
 
-.notBeam:
+  .notBeam:
     AND.W #$0F00                                                         ;A7B2AA;
     CMP.W #$0100                                                         ;A7B2AD;
     BEQ .superMissile                                                    ;A7B2B0;
     CMP.W #$0200                                                         ;A7B2B2;
     BNE .missileEnd                                                      ;A7B2B5;
 
-.superMissile:
+  .superMissile:
     XBA                                                                  ;A7B2B7;
     CLC                                                                  ;A7B2B8;
     ADC.B $14                                                            ;A7B2B9;
@@ -4246,7 +4246,7 @@ UNUSED_HandleProjectileDamageAndSound:
     BRA .determinedVulnerability                                         ;A7B2C0;
 
 
-.missileEnd:
+  .missileEnd:
     CMP.W #$0300                                                         ;A7B2C2;
     BNE .notPowerBomb                                                    ;A7B2C5;
     LDX.B $14                                                            ;A7B2C7;
@@ -4254,13 +4254,13 @@ UNUSED_HandleProjectileDamageAndSound:
     BRA .determinedVulnerability                                         ;A7B2CD;
 
 
-.notPowerBomb:
+  .notPowerBomb:
     CMP.W #$0500                                                         ;A7B2CF;
     BNE .return                                                          ;A7B2D2;
     LDX.B $14                                                            ;A7B2D4;
     LDA.L $B4000F,X                                                      ;A7B2D6;
 
-.determinedVulnerability:
+  .determinedVulnerability:
     AND.W #$00FF                                                         ;A7B2DA;
     STA.W $0E32                                                          ;A7B2DD;
     BEQ .return                                                          ;A7B2E0;
@@ -4296,15 +4296,15 @@ UNUSED_HandleProjectileDamageAndSound:
     BPL .storeHealth                                                     ;A7B321;
     LDA.W #$0000                                                         ;A7B323;
 
-.storeHealth:
+  .storeHealth:
     STA.W $0F8C                                                          ;A7B326;
 
-.tripleDamageEnd:
+  .tripleDamageEnd:
     LDX.W $0F78                                                          ;A7B329;
     LDA.L $A0000E,X                                                      ;A7B32C;
     JSL.L QueueSound_Lib2_Max6                                           ;A7B330;
 
-.return:
+  .return:
     PLY                                                                  ;A7B334;
     PLX                                                                  ;A7B335;
     RTS                                                                  ;A7B336;
@@ -4321,7 +4321,7 @@ KraidPaletteHandling:
     BRA +                                                                ;A7B345;
 
 
-.alive:
+  .alive:
     LDA.L $7E782A                                                        ;A7B347;
     BEQ .return                                                          ;A7B34B;
     LDA.L $7E782C                                                        ;A7B34D;
@@ -4334,10 +4334,10 @@ KraidPaletteHandling:
     DEC A                                                                ;A7B363;
     STA.L $7E782A                                                        ;A7B364;
 
-  + JSR.W KraidHurtFlashHandling                                         ;A7B368;
++   JSR.W KraidHurtFlashHandling                                         ;A7B368;
     JSR.W KraidHealthBasedPaletteHandling                                ;A7B36B;
 
-.return:
+  .return:
     PLY                                                                  ;A7B36E;
     PLX                                                                  ;A7B36F;
     RTS                                                                  ;A7B370;
@@ -4350,10 +4350,10 @@ KraidHurtFlashHandling:
     BNE .loopSetup                                                       ;A7B37B;
     LDY.W #$0020                                                         ;A7B37D;
 
-.loopSetup:
+  .loopSetup:
     LDX.W #$0000                                                         ;A7B380;
 
-.loop:
+  .loop:
     LDA.W Palette_Kraid_Sprite_HurtFlash,Y                               ;A7B383;
     STA.L $7EC1E0,X                                                      ;A7B386;
     INX                                                                  ;A7B38A;
@@ -4373,14 +4373,14 @@ KraidHealthBasedPaletteHandling:
     LDX.W #$000E                                                         ;A7B3A0;
     LDA.W $0F8C                                                          ;A7B3A3;
 
-.loop:
+  .loop:
     CMP.L $7E780C,X                                                      ;A7B3A6;
     BPL .getIndex                                                        ;A7B3AA;
     DEX                                                                  ;A7B3AC;
     DEX                                                                  ;A7B3AD;
     BNE .loop                                                            ;A7B3AE;
 
-.getIndex:
+  .getIndex:
     INX                                                                  ;A7B3B0;
     INX                                                                  ;A7B3B1;
     TXA                                                                  ;A7B3B2;
@@ -4390,10 +4390,10 @@ KraidHealthBasedPaletteHandling:
     ASL A                                                                ;A7B3B6;
     TAY                                                                  ;A7B3B7;
 
-.hurtFlashFrame:
+  .hurtFlashFrame:
     LDX.W #$0000                                                         ;A7B3B8;
 
-.loopPalette:
+  .loopPalette:
     LDA.W Palette_Kraid_BG_HurtFlash,Y                                   ;A7B3BB;
     STA.L $7EC0E0,X                                                      ;A7B3BE;
     LDA.W Palette_Kraid_Sprite_HurtFlash,Y                               ;A7B3C2;
@@ -4579,7 +4579,7 @@ UNUSED_Instruction_Kraid_MoveRight_A7B683:
     STA.L $7E781E                                                        ;A7B692;
     BNE .return                                                          ;A7B696;
 
-.leftScreen:
+  .leftScreen:
     LDX.W #$0000                                                         ;A7B698;
     STZ.B $12                                                            ;A7B69B;
     LDA.W UNUSED_KraidBackwardsFastSpeed_A7A922                          ;A7B69D;
@@ -4587,13 +4587,13 @@ UNUSED_Instruction_Kraid_MoveRight_A7B683:
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A7B6A2;
     BCS .collision                                                       ;A7B6A6;
 
-.return:
+  .return:
     PLY                                                                  ;A7B6A8;
     PLX                                                                  ;A7B6A9;
     RTL                                                                  ;A7B6AA;
 
 
-.collision:
+  .collision:
     LDA.W #$0000                                                         ;A7B6AB;
     STA.W $183E                                                          ;A7B6AE;
     LDA.W #$0007                                                         ;A7B6B1;
@@ -4623,11 +4623,11 @@ Function_Kraid_KraidShot_GlowEye:
     LDA.W #$0100                                                         ;A7B6E1;
     LDA.W $0FAC                                                          ;A7B6E4;
 
-.notTerminator:
+  .notTerminator:
     LDX.W #$00E2                                                         ;A7B6E7;
     LDY.W #$0000                                                         ;A7B6EA;
 
-.loop:
+  .loop:
     LDA.L $7EC000,X                                                      ;A7B6ED;
     AND.W #$001F                                                         ;A7B6F1;
     CLC                                                                  ;A7B6F4;
@@ -4637,7 +4637,7 @@ Function_Kraid_KraidShot_GlowEye:
     INY                                                                  ;A7B6FD;
     LDA.W #$001F                                                         ;A7B6FE;
 
-  + STA.B $12                                                            ;A7B701;
++   STA.B $12                                                            ;A7B701;
     LDA.L $7EC000,X                                                      ;A7B703;
     AND.W #$03E0                                                         ;A7B707;
     CLC                                                                  ;A7B70A;
@@ -4647,7 +4647,7 @@ Function_Kraid_KraidShot_GlowEye:
     INY                                                                  ;A7B713;
     LDA.W #$03E0                                                         ;A7B714;
 
-  + STA.B $14                                                            ;A7B717;
++   STA.B $14                                                            ;A7B717;
     LDA.L $7EC000,X                                                      ;A7B719;
     AND.W #$FC00                                                         ;A7B71D;
     ORA.B $12                                                            ;A7B720;
@@ -4662,7 +4662,7 @@ Function_Kraid_KraidShot_GlowEye:
     LDA.W #Function_Kraid_KraidShot_UnglowEye                            ;A7B734;
     STA.W $0FA8                                                          ;A7B737;
 
-.return:
+  .return:
     PLY                                                                  ;A7B73A;
     PLX                                                                  ;A7B73B;
     RTL                                                                  ;A7B73C;
@@ -4674,14 +4674,14 @@ Function_Kraid_KraidShot_UnglowEye:
     LDX.W #$000E                                                         ;A7B73F;
     LDA.W $0F8C                                                          ;A7B742;
 
-.loopHealth:
+  .loopHealth:
     CMP.L $7E780C,X                                                      ;A7B745;
     BPL .getIndexY                                                       ;A7B749;
     DEX                                                                  ;A7B74B;
     DEX                                                                  ;A7B74C;
     BNE .loopHealth                                                      ;A7B74D;
 
-.getIndexY:
+  .getIndexY:
     INX                                                                  ;A7B74F;
     INX                                                                  ;A7B750;
     TXA                                                                  ;A7B751;
@@ -4693,7 +4693,7 @@ Function_Kraid_KraidShot_UnglowEye:
     LDX.W #$00E2                                                         ;A7B757;
     STZ.B $14                                                            ;A7B75A;
 
-.loop:
+  .loop:
     LDA.L $7EC000,X                                                      ;A7B75C;
     AND.W #$001F                                                         ;A7B760;
     STA.B $12                                                            ;A7B763;
@@ -4706,7 +4706,7 @@ Function_Kraid_KraidShot_UnglowEye:
     DEC A                                                                ;A7B775;
     STA.L $7EC000,X                                                      ;A7B776;
 
-  + LDA.L $7EC000,X                                                      ;A7B77A;
++   LDA.L $7EC000,X                                                      ;A7B77A;
     AND.W #$03E0                                                         ;A7B77E;
     STA.B $12                                                            ;A7B781;
     LDA.W Palette_Kraid_BG_HurtFlash+2,Y                                 ;A7B783;
@@ -4719,7 +4719,7 @@ Function_Kraid_KraidShot_UnglowEye:
     SBC.W #$0020                                                         ;A7B794;
     STA.L $7EC000,X                                                      ;A7B797;
 
-.next:
+  .next:
     INX                                                                  ;A7B79B;
     INX                                                                  ;A7B79C;
     INY                                                                  ;A7B79D;
@@ -4735,7 +4735,7 @@ Function_Kraid_KraidShot_UnglowEye:
     LDA.W InstList_Kraid_Roar_0                                          ;A7B7B4;
     STA.W $0FAC                                                          ;A7B7B7;
 
-.return:
+  .return:
     PLY                                                                  ;A7B7BA;
     PLX                                                                  ;A7B7BB;
     RTL                                                                  ;A7B7BC;
@@ -4759,7 +4759,7 @@ MainAI_KraidArm:
     BPL +                                                                ;A7B7DE;
     AND.W #$FEFF                                                         ;A7B7E0;
 
-  + STA.W $0FC6                                                          ;A7B7E3;
++   STA.W $0FC6                                                          ;A7B7E3;
     LDA.W $0F7A                                                          ;A7B7E6;
     CLC                                                                  ;A7B7E9;
     ADC.W #$0000                                                         ;A7B7EA;
@@ -4771,7 +4771,7 @@ MainAI_KraidArm:
     INC A                                                                ;A7B7FC;
     STA.W $0FD4                                                          ;A7B7FD;
 
-.return:
+  .return:
     RTL                                                                  ;A7B800;
 
 
@@ -4828,7 +4828,7 @@ Function_KraidLint_ProduceLint:
     LDA.W #$001E                                                         ;A7B861;
     STA.W $0FB2,X                                                        ;A7B864;
 
-.return:
+  .return:
     RTL                                                                  ;A7B867;
 
 
@@ -4839,7 +4839,7 @@ Function_KraidLint_ChargeLint:
     BEQ .zeroTimer                                                       ;A7B871;
     LDY.W #$0E00                                                         ;A7B873;
 
-.zeroTimer:
+  .zeroTimer:
     TYA                                                                  ;A7B876;
     STA.W $0F96,X                                                        ;A7B877;
     LDA.W $0F7A                                                          ;A7B87A;
@@ -4855,7 +4855,7 @@ Function_KraidLint_ChargeLint:
     LDA.W #$001F                                                         ;A7B893;
     JSL.L QueueSound_Lib3_Max6                                           ;A7B896;
 
-.return:
+  .return:
     RTL                                                                  ;A7B89A;
 
 
@@ -4875,7 +4875,7 @@ Function_KraidLint_FireLint:
     STA.W $0F86,X                                                        ;A7B8BA;
     PLA                                                                  ;A7B8BD;
 
-.greaterThanEqualTo38:
+  .greaterThanEqualTo38:
     CMP.W #$0020                                                         ;A7B8BE;
     BPL .greaterThanEqualTo20                                            ;A7B8C1;
     LDA.W $0F86,X                                                        ;A7B8C3;
@@ -4889,7 +4889,7 @@ Function_KraidLint_FireLint:
     STA.L $7E7800,X                                                      ;A7B8DB;
     STZ.W $0FAA,X                                                        ;A7B8DF;
 
-.greaterThanEqualTo20:
+  .greaterThanEqualTo20:
     JSL.L CheckIfEnemyIsTouchingSamusFromBelow                           ;A7B8E2;
     AND.W #$FFFF                                                         ;A7B8E6;
     BEQ .return                                                          ;A7B8E9;
@@ -4903,10 +4903,10 @@ Function_KraidLint_FireLint:
     BPL .storeExtraDisplacement                                          ;A7B8FE;
     LDA.W #$FFF0                                                         ;A7B900;
 
-.storeExtraDisplacement:
+  .storeExtraDisplacement:
     STA.W $0B58                                                          ;A7B903;
 
-.return:
+  .return:
     RTL                                                                  ;A7B906;
 
 
@@ -4921,7 +4921,7 @@ Function_KraidNail_WaitUntilTopLintXPosition100Plus:
     AND.W #$FBFF                                                         ;A7B91C;
     STA.W $0F86,X                                                        ;A7B91F;
 
-.return:
+  .return:
     RTL                                                                  ;A7B922;
 
 
@@ -4939,7 +4939,7 @@ Function_Kraid_HandleFunctionTimer:
     LDA.L $7E7800,X                                                      ;A7B937;
     STA.W $0FA8,X                                                        ;A7B93B;
 
-.return:
+  .return:
     RTL                                                                  ;A7B93E;
 
 
@@ -4956,7 +4956,7 @@ Function_KraidFoot_StartRetreat:
     LDA.W #$0001                                                         ;A7B959;
     STA.W $0F94,X                                                        ;A7B95C;
 
-.return:
+  .return:
     RTL                                                                  ;A7B95F;
 
 
@@ -4977,7 +4977,7 @@ KraidLint_vs_Samus_CollisionHandling:
     RTS                                                                  ;A7B972;
 
 
-.notIntangible:
+  .notIntangible:
     LDA.W $18A8                                                          ;A7B973;
     BNE .return                                                          ;A7B976;
     LDA.W $0F7A,X                                                        ;A7B978;
@@ -5028,7 +5028,7 @@ KraidLint_vs_Samus_CollisionHandling:
     BMI +                                                                ;A7B9DC;
     LDA.W #$0010                                                         ;A7B9DE;
 
-  + STA.W $0B58                                                          ;A7B9E1;
++   STA.W $0B58                                                          ;A7B9E1;
     PHX                                                                  ;A7B9E4;
     PHP                                                                  ;A7B9E5;
     JSL.L NormalEnemyTouchAI                                             ;A7B9E6;
@@ -5038,7 +5038,7 @@ KraidLint_vs_Samus_CollisionHandling:
     ORA.W #$0400                                                         ;A7B9EF;
     STA.W $0F86,X                                                        ;A7B9F2;
 
-.return:
+  .return:
     RTS                                                                  ;A7B9F5;
 
 
@@ -5061,12 +5061,12 @@ MainAI_KraidFoot:
     BRA +                                                                ;A7BA1A;
 
 
-.offScreen:
+  .offScreen:
     CPX.W $0915                                                          ;A7BA1C;
     BMI +                                                                ;A7BA1F;
     ORA.W #$0100                                                         ;A7BA21;
 
-  + STA.W $10C6                                                          ;A7BA24;
++   STA.W $10C6                                                          ;A7BA24;
     LDX.W $0E54                                                          ;A7BA27;
     JMP.W ($10E8)                                                        ;A7BA2A;
 
@@ -5082,7 +5082,7 @@ Function_KraidFoot_Phase2_Thinking:
     BNE .return                                                          ;A7BA37;
     LDX.W #$0000                                                         ;A7BA39;
 
-.loopXPositions:
+  .loopXPositions:
     LDA.W $0F7A                                                          ;A7BA3C;
     CMP.W .XPosition,X                                                   ;A7BA3F;
     BEQ +                                                                ;A7BA42;
@@ -5094,13 +5094,13 @@ Function_KraidFoot_Phase2_Thinking:
     BMI .loopXPositions                                                  ;A7BA4B;
     LDX.W #$0004                                                         ;A7BA4D;
 
-  + LDA.W $05E5                                                          ;A7BA50;
++   LDA.W $05E5                                                          ;A7BA50;
     AND.W #$001C                                                         ;A7BA53;
     CMP.W #$0010                                                         ;A7BA56;
     BMI +                                                                ;A7BA59;
     LDA.W #$0010                                                         ;A7BA5B;
 
-  + CLC                                                                  ;A7BA5E;
++   CLC                                                                  ;A7BA5E;
     ADC.W .movementDataPointer,X                                         ;A7BA5F;
     TAX                                                                  ;A7BA62;
     LDA.W $0002,X                                                        ;A7BA63;
@@ -5113,11 +5113,11 @@ Function_KraidFoot_Phase2_Thinking:
     RTL                                                                  ;A7BA75;
 
 
-.backwards:
+  .backwards:
     LDA.W $0000,X                                                        ;A7BA76;
     JSR.W SetKraidWalkingBackwards                                       ;A7BA79;
 
-.return:
+  .return:
     RTL                                                                  ;A7BA7C;
 
 ; Movement table
@@ -5127,9 +5127,9 @@ Function_KraidFoot_Phase2_Thinking:
 ;        _________ Kraid X position
 ;       |      ___ Kraid movement data
 ;       |     |
-.XPosition:
+  .XPosition:
     dw $00F0                                                             ;A7BA7D;
-.movementDataPointer:
+  .movementDataPointer:
     dw       .movementData0                                              ;A7BA7F;
     dw $0160,.movementData1                                              ;A7BA81;
     dw $0180,.movementData2                                              ;A7BA85;
@@ -5140,17 +5140,17 @@ Function_KraidFoot_Phase2_Thinking:
 ;        _________ Kraid target X position
 ;       |      ___ Thinking timer
 ;       |     |
-.movementData0:
+  .movementData0:
     dw $0180,$0158, $0180,$0158, $00D0,$002C, $0170,$002C, $0170,$002C   ;A7BA95;
-.movementData1:
+  .movementData1:
     dw $00F0,$0100, $0180,$0158, $00D0,$002C, $0140,$002C, $0170,$002C   ;A7BAA9;
-.movementData2:
+  .movementData2:
     dw $00F0,$0100, $0160,$0158, $00D0,$002C, $0140,$002C, $0170,$002C   ;A7BABD;
-.movementData3:
+  .movementData3:
     dw $00F0,$0100, $0160,$0158, $0180,$0158, $0140,$002C, $0170,$002C   ;A7BAD1;
-.movementData4:
+  .movementData4:
     dw $00F0,$0100, $0160,$0158, $0180,$0158, $00D0,$002C, $0170,$002C   ;A7BAE5;
-.movementData5:
+  .movementData5:
     dw $00F0,$0100, $0180,$0158, $0170,$0158, $00D0,$002C, $0140,$002C   ;A7BAF9;
 
 
@@ -5187,7 +5187,7 @@ Function_KraidFoot_Phase2_WalkingBackward:
     BPL .return                                                          ;A7BB4E;
     STA.W $0F7A                                                          ;A7BB50;
 
-.walking:
+  .walking:
     LDA.W $10D2                                                          ;A7BB53;
     CMP.W #InstList_KraidFoot_KraidIsBig_WalkingBackwards_1              ;A7BB56;
     BMI .return                                                          ;A7BB59;
@@ -5198,7 +5198,7 @@ Function_KraidFoot_Phase2_WalkingBackward:
     LDA.W #InstList_KraidFoot_KraidIsBig_Neutral                         ;A7BB67;
     STA.W $10D2                                                          ;A7BB6A;
 
-.return:
+  .return:
     RTL                                                                  ;A7BB6D;
 
 
@@ -5209,7 +5209,7 @@ Function_KraidFoot_Phase2Setup_WalkToStartingPoint:
     BPL .return                                                          ;A7BB77;
     STA.W $0F7A                                                          ;A7BB79;
 
-.walking:
+  .walking:
     LDA.W $10D2                                                          ;A7BB7C;
     CMP.W #InstList_KraidFoot_KraidIsBig_WalkingBackwards_1              ;A7BB7F;
     BMI .return                                                          ;A7BB82;
@@ -5224,7 +5224,7 @@ Function_KraidFoot_Phase2Setup_WalkToStartingPoint:
     LDA.W #InstList_KraidFoot_KraidIsBig_Neutral                         ;A7BB9D;
     STA.W $10D2                                                          ;A7BBA0;
 
-.return:
+  .return:
     RTL                                                                  ;A7BBA3;
 
 
@@ -5250,11 +5250,11 @@ Function_KraidFoot_Phase2_WalkingForward:
     LDA.W #InstList_KraidFoot_KraidIsBig_Neutral                         ;A7BBCE;
     STA.W $10D2                                                          ;A7BBD1;
 
-.return:
+  .return:
     RTL                                                                  ;A7BBD4;
 
 
-.forwards:
+  .forwards:
     LDA.W $10D2                                                          ;A7BBD5;
     CMP.W #InstList_KraidFoot_KraidIsBig_WalkingForward_1                ;A7BBD8;
     BNE .return                                                          ;A7BBDB;
@@ -5288,11 +5288,11 @@ Function_KraidMainLoop_AttackingWithMouthOpen:
     LDA.W #$001E                                                         ;A7BC1B;
     JSL.L QueueSound_Lib3_Max6                                           ;A7BC1E;
 
-.return:
+  .return:
     RTL                                                                  ;A7BC22;
 
 
-.finishedInstructions:
+  .finishedInstructions:
     JSR.W SetupKraidMainLoop_Thinking                                    ;A7BC23;
     LDA.W #$005A                                                         ;A7BC26;
     STA.W $0FAC                                                          ;A7BC29;
@@ -5315,13 +5315,13 @@ Function_KraidMainLoop_AttackingWithMouthOpen:
     RTL                                                                  ;A7BC5C;
 
 
-.done:
+  .done:
     LDA.W #$0000                                                         ;A7BC5D;
     STA.L $7E780A                                                        ;A7BC60;
     RTL                                                                  ;A7BC64;
 
 
-.rockSpitXVelocities:
+  .rockSpitXVelocities:
 ; Rock spit X velocities. Unit 1/100h px/frame
     dw $FC00,$FC40,$FB40,$FB80,$FB40,$FC00,$FB80,$FC40                   ;A7BC65;
 
@@ -5341,17 +5341,17 @@ UNUSED_KraidFoot_LungeForwardIfSamusIsNotInvincible_A7BC75:
     BMI +                                                                ;A7BC92;
     LDA.W #$0120                                                         ;A7BC94;
 
-  + STA.L $7E781E                                                        ;A7BC97;
++   STA.L $7E781E                                                        ;A7BC97;
     LDA.W #$0001                                                         ;A7BC9B;
     STA.W $10D4                                                          ;A7BC9E;
     LDA.W #InstList_KraidFoot_KraidIsBig_WalkingBackwards_0              ;A7BCA1;
     STA.W $10D2                                                          ;A7BCA4;
 
-.return:
+  .return:
     RTL                                                                  ;A7BCA7;
 
 
-.lunge:
+  .lunge:
     LDA.W #$0001                                                         ;A7BCA8;
     STA.W $10D4                                                          ;A7BCAB;
     LDA.W #InstList_KraidFoot_LungeForward_0                             ;A7BCAE;
@@ -5435,7 +5435,7 @@ MainAI_KraidNail:
     JMP.W ($1128)                                                        ;A7BD3C;
 
 
-.delete:
+  .delete:
     LDA.W $1106                                                          ;A7BD3F;
     ORA.W #$0300                                                         ;A7BD42;
     STA.W $1106                                                          ;A7BD45;
@@ -5450,7 +5450,7 @@ MainAI_KraidNailBad:
     JMP.W ($1168)                                                        ;A7BD53;
 
 
-.delete:
+  .delete:
     LDA.W $1146                                                          ;A7BD56;
     ORA.W #$0300                                                         ;A7BD59;
     STA.W $1146                                                          ;A7BD5C;
@@ -5467,16 +5467,16 @@ Function_KraidNail_Initialize:
     BNE +                                                                ;A7BD70;
     LDA.W $1170                                                          ;A7BD72;
 
-  + CMP.W #$0000                                                         ;A7BD75;
++   CMP.W #$0000                                                         ;A7BD75;
     BPL .positiveYVelocity                                               ;A7BD78;
     LDA.W .upwardsVelocityPointers,Y                                     ;A7BD7A;
     BRA +                                                                ;A7BD7D;
 
 
-.positiveYVelocity:
+  .positiveYVelocity:
     LDA.W .downwardsVelocityPointers,Y                                   ;A7BD7F;
 
-  + TAY                                                                  ;A7BD82;
++   TAY                                                                  ;A7BD82;
     LDA.W $0000,Y                                                        ;A7BD83;
     STA.W $0FAA,X                                                        ;A7BD86;
     LDA.W $0002,Y                                                        ;A7BD89;
@@ -5501,7 +5501,7 @@ Function_KraidNail_Initialize:
     BIT.W #$0001                                                         ;A7BDC2;
     BNE .horizontal                                                      ;A7BDC5;
 
-.diagonal:
+  .diagonal:
     LDA.W #$0000                                                         ;A7BDC7;
     STA.L $7E780E,X                                                      ;A7BDCA;
     LDA.W $0F7A                                                          ;A7BDCE;
@@ -5518,13 +5518,13 @@ Function_KraidNail_Initialize:
     RTL                                                                  ;A7BDE9;
 
 
-.horizontal:
+  .horizontal:
     LDA.L $7E798E                                                        ;A7BDEA;
     CPX.W #$01C0                                                         ;A7BDEE;
     BEQ .notKraidNailBad                                                 ;A7BDF1;
     LDA.L $7E79CE                                                        ;A7BDF3;
 
-.notKraidNailBad:
+  .notKraidNailBad:
     CMP.W #$0001                                                         ;A7BDF7;
     BEQ .diagonal                                                        ;A7BDFA;
     LDA.W #$0001                                                         ;A7BDFC;
@@ -5550,14 +5550,14 @@ Function_KraidNail_Initialize:
     STA.W $0F86,X                                                        ;A7BE3A;
     RTL                                                                  ;A7BE3D;
 
-.upwardsVelocityPointers:
+  .upwardsVelocityPointers:
 ; Table of Kraid fingernail upwards velocities
     dw .upwards0                                                         ;A7BE3E;
     dw .upwards1                                                         ;A7BE40;
     dw .upwards2                                                         ;A7BE42;
     dw .upwards3                                                         ;A7BE44;
 
-.downwardsVelocityPointers:
+  .downwardsVelocityPointers:
 ; Table of Kraid fingernail downwards velocities
     dw .downwards0                                                       ;A7BE46;
     dw .downwards1                                                       ;A7BE48;
@@ -5569,21 +5569,21 @@ Function_KraidNail_Initialize:
 ;       |     |      _________ Y subvelocity
 ;       |     |     |      ___ Y velocity
 ;       |     |     |     |
-.upwards0:
+  .upwards0:
     dw $0000,$FFFF,$0000,$0001                                           ;A7BE4E;
-.downwards0:
+  .downwards0:
     dw $0000,$FFFF,$0000,$FFFF                                           ;A7BE56;
-.upwards1:
+  .upwards1:
     dw $0000,$FFFF,$0000,$0001                                           ;A7BE5E;
-.downwards1:
+  .downwards1:
     dw $0000,$FFFF,$0000,$FFFF                                           ;A7BE66;
-.upwards2:
+  .upwards2:
     dw $0000,$FFFF,$0000,$0001                                           ;A7BE6E;
-.downwards2:
+  .downwards2:
     dw $0000,$FFFF,$0000,$FFFF                                           ;A7BE76;
-.upwards3:
+  .upwards3:
     dw $0000,$FFFF,$0000,$0001                                           ;A7BE7E;
-.downwards3:
+  .downwards3:
     dw $0000,$FFFF,$0000,$FFFF                                           ;A7BE86;
 
 
@@ -5605,10 +5605,10 @@ Function_KraidNail_Fire:
     BRA .bounced                                                         ;A7BEB2;
 
 
-.loopSetup:
+  .loopSetup:
     LDY.W #$0000                                                         ;A7BEB4;
 
-.loop:
+  .loop:
     LDA.W $0F7E                                                          ;A7BEB7;
     CLC                                                                  ;A7BEBA;
     ADC.W .topBoundaryOffset,Y                                           ;A7BEBB;
@@ -5621,7 +5621,7 @@ Function_KraidNail_Fire:
     BRA .loop                                                            ;A7BEC7;
 
 
-  + LDA.W $0F7A                                                          ;A7BEC9;
++   LDA.W $0F7A                                                          ;A7BEC9;
     CLC                                                                  ;A7BECC;
     ADC.W .leftBoundaryOffset,Y                                          ;A7BECD;
     STA.B $12                                                            ;A7BED0;
@@ -5641,7 +5641,7 @@ Function_KraidNail_Fire:
     INC A                                                                ;A7BEF2;
     STA.W $0FAC,X                                                        ;A7BEF3;
 
-.bounced:
+  .bounced:
     LDA.W $0FAE,X                                                        ;A7BEF6;
     STA.B $12                                                            ;A7BEF9;
     LDA.W $0FB0,X                                                        ;A7BEFB;
@@ -5657,15 +5657,15 @@ Function_KraidNail_Fire:
     ADC.W #$0000                                                         ;A7BF16;
     STA.W $0FB0,X                                                        ;A7BF19;
 
-.return:
+  .return:
     RTL                                                                  ;A7BF1C;
 
 ;        _________ Left boundary offset
 ;       |      ___ Top boundary offset
 ;       |     |
-.leftBoundaryOffset:
+  .leftBoundaryOffset:
     dw $FFC0                                                             ;A7BF1D;
-.topBoundaryOffset:
+  .topBoundaryOffset:
     dw       $0010                                                       ;A7BF1F;
     dw $FFD8,$FFD8
     dw $FFF0,$FFA0
@@ -5689,7 +5689,7 @@ Function_KraidFoot_Phase1_PrepareToLungeForward:
     LDA.W #$0000                                                         ;A7BF56;
     STA.W $10F2                                                          ;A7BF59;
 
-.return:
+  .return:
     RTL                                                                  ;A7BF5C;
 
 
@@ -5701,7 +5701,7 @@ Function_KraidFoot_Phase1_LungeForward:
     LDA.W #$005C                                                         ;A7BF68;
     STA.W $0F7A                                                          ;A7BF6B;
 
-  + LDA.W $10D2                                                          ;A7BF6E;
++   LDA.W $10D2                                                          ;A7BF6E;
     CMP.W #InstList_KraidFoot_LungeForward_1                             ;A7BF71;
     BNE .return                                                          ;A7BF74;
     LDA.W $0F7A                                                          ;A7BF76;
@@ -5714,7 +5714,7 @@ Function_KraidFoot_Phase1_LungeForward:
     RTL                                                                  ;A7BF8A;
 
 
-.done:
+  .done:
     LDA.W #Function_KraidFoot_Phase1_RetreatFromLunge                    ;A7BF8B;
     STA.L $7E7940                                                        ;A7BF8E;
     LDA.W #Function_KraidFoot_StartRetreat                               ;A7BF92;
@@ -5726,7 +5726,7 @@ Function_KraidFoot_Phase1_LungeForward:
     LDA.W #InstList_KraidFoot_KraidIsBig_Neutral                         ;A7BFA4;
     STA.W $10D2                                                          ;A7BFA7;
 
-.return:
+  .return:
     RTL                                                                  ;A7BFAA;
 
 
@@ -5738,7 +5738,7 @@ Function_KraidFoot_Phase1_RetreatFromLunge:
     LDA.W #$00B0                                                         ;A7BFB6;
     STA.W $0F7A                                                          ;A7BFB9;
 
-  + LDA.W $10D2                                                          ;A7BFBC;
++   LDA.W $10D2                                                          ;A7BFBC;
     CMP.W #InstList_KraidFoot_KraidIsBig_WalkingBackwards_1              ;A7BFBF;
     BMI .return                                                          ;A7BFC2;
     LDA.W $0F7A                                                          ;A7BFC4;
@@ -5751,7 +5751,7 @@ Function_KraidFoot_Phase1_RetreatFromLunge:
     RTL                                                                  ;A7BFD8;
 
 
-.done:
+  .done:
     LDA.W #InstList_KraidArm_Normal_0                                    ;A7BFD9;
     STA.W $0FD2                                                          ;A7BFDC;
     LDA.W #$0001                                                         ;A7BFDF;
@@ -5767,7 +5767,7 @@ Function_KraidFoot_Phase1_RetreatFromLunge:
     LDA.W #Function_KraidFoot_Phase1_PrepareToLungeForward               ;A7BFFD;
     STA.L $7E7940                                                        ;A7C000;
 
-.return:
+  .return:
     RTL                                                                  ;A7C004;
 
 
@@ -5778,7 +5778,7 @@ HandleKraidPhase1:
     RTS                                                                  ;A7C00E;
 
 
-.getBig:
+  .getBig:
     LDA.W #Function_Kraid_ProcessKraidInstruction                        ;A7C00F;
     STA.W $0FA8                                                          ;A7C012;
     LDA.W #$00B4                                                         ;A7C015;
@@ -5799,7 +5799,7 @@ HandleKraidPhase1:
     BEQ +                                                                ;A7C03F;
     LDY.W #$001A                                                         ;A7C041;
 
-  + TYA                                                                  ;A7C044;
++   TYA                                                                  ;A7C044;
     CLC                                                                  ;A7C045;
     ADC.W #InstList_Kraid_Roar_1                                         ;A7C046;
     STA.W $0FAA                                                          ;A7C049;
@@ -6091,7 +6091,7 @@ UnpauseHook_KraidIsSinking:
     LDY.W #$0000                                                         ;A7C2D7;
     LDX.W $0330                                                          ;A7C2DA;
 
-.loop:
+  .loop:
     REP #$30                                                             ;A7C2DD;
     LDA.W ShrinkingKraidTable_KraidYPosition,Y                           ;A7C2DF;
     CMP.W #$FFFF                                                         ;A7C2E2;
@@ -6123,7 +6123,7 @@ UnpauseHook_KraidIsSinking:
     BRA .loop                                                            ;A7C31C;
 
 
-.return:
+  .return:
     PLB                                                                  ;A7C31E;
     JSL.L SetForceBlankAndWaitForNMI                                     ;A7C31F;
     PLP                                                                  ;A7C323;
@@ -6164,11 +6164,11 @@ KraidDeath_Initialize:
     RTL                                                                  ;A7C366;
 
 
-.notHurtFrame:
+  .notHurtFrame:
     LDX.W #$00C0                                                         ;A7C367;
     LDA.W #$0000                                                         ;A7C36A;
 
-.loopPalette6:
+  .loopPalette6:
     STA.L $7EC200,X                                                      ;A7C36D;
     INX                                                                  ;A7C371;
     INX                                                                  ;A7C372;
@@ -6176,7 +6176,7 @@ KraidDeath_Initialize:
     BMI .loopPalette6                                                    ;A7C376;
     LDX.W #$001E                                                         ;A7C378;
 
-.loopPalette7:
+  .loopPalette7:
     LDA.W Palette_Kraid_Death,X                                          ;A7C37B;
     STA.L $7EC0E0,X                                                      ;A7C37E;
     DEX                                                                  ;A7C382;
@@ -6236,7 +6236,7 @@ KraidDeath_FadeOutBackground:
     LDX.W #$0000                                                         ;A7C416;
     LDA.W #$0000                                                         ;A7C419;
 
-.loopClearRoomBackground:
+  .loopClearRoomBackground:
     STA.L $7E4000,X                                                      ;A7C41C;
     STA.L $7E4002,X                                                      ;A7C420;
     INX                                                                  ;A7C424;
@@ -6265,7 +6265,7 @@ KraidDeath_FadeOutBackground:
     ADC.W #$0007                                                         ;A7C450;
     STA.W $0330                                                          ;A7C453;
 
-.return:
+  .return:
     RTL                                                                  ;A7C456;
 
 
@@ -6283,7 +6283,7 @@ UNUSED_ProcessKraidInstruction_WithNoASMInstructions_A7C457:
     RTS                                                                  ;A7C46F;
 
 
-.timer:
+  .timer:
     STA.W $0FAC                                                          ;A7C470;
     TXA                                                                  ;A7C473;
     CLC                                                                  ;A7C474;
@@ -6312,7 +6312,7 @@ UNUSED_ProcessKraidInstruction_WithNoASMInstructions_A7C457:
     INX                                                                  ;A7C49F;
     STX.W $0330                                                          ;A7C4A0;
 
-.return:
+  .return:
     RTS                                                                  ;A7C4A3;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -6374,7 +6374,7 @@ PlaySoundEveryHalfSecond:
     LDA.W #$001E                                                         ;A7C52F;
     STA.L $7E9000                                                        ;A7C532;
 
-.return:
+  .return:
     RTS                                                                  ;A7C536;
 
 
@@ -6415,14 +6415,14 @@ KraidDeath_SinkThroughFloor:
     JMP.W DrawKraidsRoomBackground                                       ;A7C59B;
 
 
-.return:
+  .return:
     RTL                                                                  ;A7C59E;
 
 
 HandleKraidSinking:
     LDY.W #$0000                                                         ;A7C59F;
 
-.loop:
+  .loop:
     LDA.W ShrinkingKraidTable_KraidYPosition,Y                           ;A7C5A2;
     BMI .return                                                          ;A7C5A5;
     CMP.W $0F7E                                                          ;A7C5A7;
@@ -6434,7 +6434,7 @@ HandleKraidSinking:
     BRA .loop                                                            ;A7C5B2;
 
 
-.found:
+  .found:
     LDA.W ShrinkingKraidTable_VRAMBG2TilemapOffset,Y                     ;A7C5B4;
     BMI .executeFunction                                                 ;A7C5B7;
     LDX.W $0330                                                          ;A7C5B9;
@@ -6457,11 +6457,11 @@ HandleKraidSinking:
     ADC.W #$0007                                                         ;A7C5DC;
     STA.W $0330                                                          ;A7C5DF;
 
-.executeFunction:
+  .executeFunction:
     TYX                                                                  ;A7C5E2;
     JSR.W (ShrinkingKraidTable_functionPointer,X)                        ;A7C5E3;
 
-.return:
+  .return:
     RTS                                                                  ;A7C5E6;
 
 ShrinkingKraidTable:
@@ -6607,7 +6607,7 @@ Function_Kraid_FadeInRegularBG_ClearBG2TilemapTopHalf:
     LDX.W #$07FE                                                         ;A7C71D;
     LDA.W #$0338                                                         ;A7C720;
 
-.loop:
+  .loop:
     STA.L $7E2000,X                                                      ;A7C723;
     DEX                                                                  ;A7C727;
     DEX                                                                  ;A7C728;
@@ -6741,11 +6741,11 @@ Function_Kraid_FadeInRegularBG_FadeInBGPalette6:
     LDA.W #Function_Kraid_FadeInRegularBG_SetToDead_KraidWasAlive        ;A7C835;
     STA.W $0FA8                                                          ;A7C838;
 
-.return:
+  .return:
     RTL                                                                  ;A7C83B;
 
 
-.KraidIsDead:
+  .KraidIsDead:
     LDA.W #Function_Kraid_FadeInRegularBG_SetToDead_KraidWasDead         ;A7C83C;
     STA.W $0FA8                                                          ;A7C83F;
     RTL                                                                  ;A7C842;
@@ -6757,10 +6757,10 @@ Function_Kraid_FadeInRegularBG_SetToDead_KraidWasAlive:
     LDA.W $0911                                                          ;A7C848;
     BEQ .return                                                          ;A7C84B;
 
-.setToDead:
+  .setToDead:
     JSR.W SetEnemyPropertiesToDead                                       ;A7C84D;
 
-.return:
+  .return:
     RTL                                                                  ;A7C850;
 
 
@@ -6770,10 +6770,10 @@ Function_Kraid_FadeInRegularBG_SetToDead_KraidWasDead:
     LDA.W $0911                                                          ;A7C856;
     BEQ .return                                                          ;A7C859;
 
-.setToDead:
+  .setToDead:
     JSR.W SetEnemyPropertiesToDead                                       ;A7C85B;
 
-.return:
+  .return:
     LDA.W #$FFFF                                                         ;A7C85E;
     STA.W $08FF                                                          ;A7C861;
     RTL                                                                  ;A7C864;
@@ -6857,12 +6857,12 @@ Function_Kraid_RaiseThruFloor_SpawnRNGEarthquakeProjEvery10f:
     RTL                                                                  ;A7C8F8;
 
 
-.timerNotExpired:
+  .timerNotExpired:
     AND.W #$000F                                                         ;A7C8F9;
     BNE .return                                                          ;A7C8FC;
     JSR.W SpawnRandomEarthquakeProjectile                                ;A7C8FE;
 
-.return:
+  .return:
     RTL                                                                  ;A7C901;
 
 
@@ -6879,12 +6879,12 @@ Function_Kraid_RaiseThruFloor_SpawnRNGEarthquakeProjEvery8f:
     RTL                                                                  ;A7C91A;
 
 
-.timerNotExpired:
+  .timerNotExpired:
     AND.W #$0007                                                         ;A7C91B;
     BNE .return                                                          ;A7C91E;
     JSR.W SpawnRandomEarthquakeProjectile                                ;A7C920;
 
-.return:
+  .return:
     RTL                                                                  ;A7C923;
 
 
@@ -6895,13 +6895,13 @@ Function_Kraid_RaiseThruFloor_RaiseKraid:
     BNE +                                                                ;A7C92D;
     JSR.W SpawnRandomEarthquakeProjectile                                ;A7C92F;
 
-  + LDY.W #$0001                                                         ;A7C932;
++   LDY.W #$0001                                                         ;A7C932;
     LDA.W $0F7E                                                          ;A7C935;
     BIT.W #$0002                                                         ;A7C938;
     BNE +                                                                ;A7C93B;
     LDY.W #$FFFF                                                         ;A7C93D;
 
-  + STY.B $12                                                            ;A7C940;
++   STY.B $12                                                            ;A7C940;
     LDA.W $0F7A                                                          ;A7C942;
     CLC                                                                  ;A7C945;
     ADC.B $12                                                            ;A7C946;
@@ -6932,7 +6932,7 @@ Function_Kraid_RaiseThruFloor_RaiseKraid:
     LDA.W #$0001                                                         ;A7C98E;
     STA.W $0FD4                                                          ;A7C991;
 
-.return:
+  .return:
     RTL                                                                  ;A7C994;
 
 
@@ -6949,7 +6949,7 @@ SpawnRandomEarthquakeProjectile:
     EOR.W #$FFFF                                                         ;A7C9AB;
     TAX                                                                  ;A7C9AE;
 
-  + TXA                                                                  ;A7C9AF;
++   TXA                                                                  ;A7C9AF;
     CLC                                                                  ;A7C9B0;
     ADC.W $0F7A                                                          ;A7C9B1;
     STA.B $12                                                            ;A7C9B4;
@@ -6971,7 +6971,7 @@ SpawnRandomEarthquakeProjectile:
     BEQ .keepLeft                                                        ;A7C9DB;
     LDY.W #EnemyProjectile_KraidFloorRocks_Right                         ;A7C9DD;
 
-.keepLeft:
+  .keepLeft:
     LDX.W $0E54                                                          ;A7C9E0;
     LDA.W $05E5                                                          ;A7C9E3;
     AND.W #$03F0                                                         ;A7C9E6;
@@ -6988,7 +6988,7 @@ RestrictSamusXPositionToFirstScreen:
     STA.W $0AF6                                                          ;A7C9FA;
     STA.W $0B10                                                          ;A7C9FD;
 
-.return:
+  .return:
     RTS                                                                  ;A7CA00;
 
 
@@ -7290,7 +7290,7 @@ InitAI_PhantoonBody:
     LDX.W #$0FFE                                                         ;A7CDF3;
     LDA.W #$0338                                                         ;A7CDF6;
 
-.loopBG2Tilemap:
+  .loopBG2Tilemap:
     STA.L $7E2000,X                                                      ;A7CDF9;
     DEX                                                                  ;A7CDFD;
     DEX                                                                  ;A7CDFE;
@@ -7298,7 +7298,7 @@ InitAI_PhantoonBody:
     LDX.W #$07FE                                                         ;A7CE01;
     LDA.W #$0000                                                         ;A7CE04;
 
-.loop9000:
+  .loop9000:
     STA.L $7E9000,X                                                      ;A7CE07;
     DEX                                                                  ;A7CE0B;
     DEX                                                                  ;A7CE0C;
@@ -7306,7 +7306,7 @@ InitAI_PhantoonBody:
     LDX.W #$001E                                                         ;A7CE0F;
     LDA.W #$0000                                                         ;A7CE12;
 
-.loopBGPalette:
+  .loopBGPalette:
     STA.L $7EC2E0,X                                                      ;A7CE15;
     DEX                                                                  ;A7CE19;
     DEX                                                                  ;A7CE1A;
@@ -7354,7 +7354,7 @@ InitAI_Phantoon_Eye_Tentacles_Mouth:
     RTL                                                                  ;A7CE8D;
 
 
-.instListPointers:
+  .instListPointers:
     dw InstList_Phantoon_Body_Invulnerable                               ;A7CE8E;
     dw InstList_Phantoon_Eye_Closed                                      ;A7CE90;
     dw InstList_Phantoon_Tentacles                                       ;A7CE92;
@@ -7376,7 +7376,7 @@ MainAI_Phantoon:
     JMP.W ($0FB2,X)                                                      ;A7CEAF;
 
 
-.manualReturn:
+  .manualReturn:
     TXA                                                                  ;A7CEB2;
     BNE .return                                                          ;A7CEB3;
     LDA.W $0F7A,X                                                        ;A7CEB5;
@@ -7402,7 +7402,7 @@ MainAI_Phantoon:
     SBC.W #$FFD8                                                         ;A7CEE7;
     STA.B $B7                                                            ;A7CEEA;
 
-.return:
+  .return:
     RTL                                                                  ;A7CEEC;
 
 
@@ -7418,7 +7418,7 @@ PlayPhantoonMaterializationSFX:
     BMI .storeIndex                                                      ;A7CF02;
     LDA.W #$0000                                                         ;A7CF04;
 
-.storeIndex:
+  .storeIndex:
     STA.L $7E9032                                                        ;A7CF07;
     RTS                                                                  ;A7CF0B;
 
@@ -7436,10 +7436,10 @@ Phantoon_BrokenNothingness:
     BRA .return                                                          ;A7CF21;
 
 
-.nonZero:
+  .nonZero:
     STZ.W $9030,X                                                        ;A7CF23;
 
-.return:
+  .return:
     RTS                                                                  ;A7CF26;
 
 
@@ -7463,7 +7463,7 @@ GrowShrinkPhantoonWaveAmplitude:
     BRA .returnNotCompletedCycle                                         ;A7CF4A;
 
 
-.shrinking:
+  .shrinking:
     LDA.W $106E                                                          ;A7CF4C;
     SEC                                                                  ;A7CF4F;
     SBC.B $12                                                            ;A7CF50;
@@ -7474,7 +7474,7 @@ GrowShrinkPhantoonWaveAmplitude:
     RTS                                                                  ;A7CF5B;
 
 
-.returnNotCompletedCycle:
+  .returnNotCompletedCycle:
     CLC                                                                  ;A7CF5C;
     RTS                                                                  ;A7CF5D;
 
@@ -7491,7 +7491,7 @@ SpawnCasualFlame:
 PhantoonMaterializationFlameSpiral:
     LDY.W #$0007                                                         ;A7CF70;
 
-.loop:
+  .loop:
     PHY                                                                  ;A7CF73;
     TYA                                                                  ;A7CF74;
     ORA.W #$0600                                                         ;A7CF75;
@@ -7515,7 +7515,7 @@ SpawnFlameRainProjectiles:
     LDA.W #$0010                                                         ;A7CF98;
     STA.B $14                                                            ;A7CF9B;
 
-.loop:
+  .loop:
     TYA                                                                  ;A7CF9D;
     ORA.W #$0400                                                         ;A7CF9E;
     ORA.B $14                                                            ;A7CFA1;
@@ -7528,7 +7528,7 @@ SpawnFlameRainProjectiles:
     BMI +                                                                ;A7CFB0;
     LDY.W #$0000                                                         ;A7CFB2;
 
-  + LDA.B $14                                                            ;A7CFB5;
++   LDA.B $14                                                            ;A7CFB5;
     CLC                                                                  ;A7CFB7;
     ADC.W #$0010                                                         ;A7CFB8;
     STA.B $14                                                            ;A7CFBB;
@@ -7537,7 +7537,7 @@ SpawnFlameRainProjectiles:
     RTS                                                                  ;A7CFC1;
 
 
-.firstFlamePositions:
+  .firstFlamePositions:
 ; Position of first flame
     db $05,$07,$00,$07,$05,$03,$01,$03                                   ;A7CFC2;
 
@@ -7546,7 +7546,7 @@ HandleCasualFlames:
     BEQ .timerExpired                                                    ;A7CFCD;
     BPL .return                                                          ;A7CFCF;
 
-.timerExpired:
+  .timerExpired:
     LDA.W $106C,X                                                        ;A7CFD1;
     BPL .positiveIndex                                                   ;A7CFD4;
     JSL.L GenerateRandomNumber                                           ;A7CFD6;
@@ -7569,12 +7569,12 @@ HandleCasualFlames:
     BRA .return                                                          ;A7CFFA;
 
 
-.positiveIndex:
+  .positiveIndex:
     DEC.W $106C,X                                                        ;A7CFFC;
     BEQ .indexReachedZero                                                ;A7CFFF;
     BPL .nonZeroTimer                                                    ;A7D001;
 
-.indexReachedZero:
+  .indexReachedZero:
     LDA.W #$FFFF                                                         ;A7D003;
     STA.W $106C,X                                                        ;A7D006;
     LDA.W $1068,X                                                        ;A7D009;
@@ -7587,7 +7587,7 @@ HandleCasualFlames:
     BRA +                                                                ;A7D018;
 
 
-.nonZeroTimer:
+  .nonZeroTimer:
     LDA.W $106C,X                                                        ;A7D01A;
     ASL A                                                                ;A7D01D;
     STA.B $12                                                            ;A7D01E;
@@ -7601,12 +7601,12 @@ HandleCasualFlames:
     LDA.W $0002,Y                                                        ;A7D02C;
     STA.W $106A,X                                                        ;A7D02F;
 
-  + LDA.W #$0001                                                         ;A7D032;
++   LDA.W #$0001                                                         ;A7D032;
     STA.W $1054,X                                                        ;A7D035;
     LDA.W #InstList_Phantoon_Mouth_SpawnFlame                            ;A7D038;
     STA.W $1052,X                                                        ;A7D03B;
 
-.return:
+  .return:
     RTS                                                                  ;A7D03E;
 
 
@@ -7654,7 +7654,7 @@ PickNewPhantoonPattern:
     BMI +                                                                ;A7D0A2;
     STZ.W $0FA8                                                          ;A7D0A4;
 
-  + LDA.W #$0001                                                         ;A7D0A7;
++   LDA.W #$0001                                                         ;A7D0A7;
     STA.W $0FAC                                                          ;A7D0AA;
     STZ.W $0FAA                                                          ;A7D0AD;
     STZ.W $0FAE                                                          ;A7D0B0;
@@ -7662,7 +7662,7 @@ PickNewPhantoonPattern:
     BRA .merge                                                           ;A7D0B6;
 
 
-.reversed:
+  .reversed:
     LDA.W $0FEC                                                          ;A7D0B8;
     BNE +                                                                ;A7D0BB;
     LDA.W $0FA8                                                          ;A7D0BD;
@@ -7672,13 +7672,13 @@ PickNewPhantoonPattern:
     LDA.W #$0215                                                         ;A7D0C6;
     STA.W $0FA8                                                          ;A7D0C9;
 
-  + STZ.W $0FAC                                                          ;A7D0CC;
++   STZ.W $0FAC                                                          ;A7D0CC;
     STZ.W $0FAA                                                          ;A7D0CF;
     STZ.W $0FAE                                                          ;A7D0D2;
     LDA.W #$0001                                                         ;A7D0D5;
     STA.W $0FEC                                                          ;A7D0D8;
 
-.merge:
+  .merge:
     LDA.W $0FB6                                                          ;A7D0DB;
     BNE +                                                                ;A7D0DE;
     LDA.W #Function_Phantoon_Figure8_Moving                              ;A7D0E0;
@@ -7686,7 +7686,7 @@ PickNewPhantoonPattern:
     RTS                                                                  ;A7D0E6;
 
 
-  + STZ.W $0FF2                                                          ;A7D0E7;
++   STZ.W $0FF2                                                          ;A7D0E7;
     LDA.W #Function_Phantoon_FlameRain_InitialFlameRain                  ;A7D0EA;
     STA.W $0FB2                                                          ;A7D0ED;
     RTS                                                                  ;A7D0F0;
@@ -7703,7 +7703,7 @@ AdjustSpeedAndMovePhantoonInFigure8:
     RTS                                                                  ;A7D104;
 
 
-.reversed:
+  .reversed:
     JSR.W UpdateReversedFigure8PhantoonSpeed                             ;A7D105;
     LDY.W #PhantoonMovementData                                          ;A7D108;
     LDA.W #$0215                                                         ;A7D10B;
@@ -7720,7 +7720,7 @@ UpdateFigure8PhantoonSpeed:
     BRA .stage2                                                          ;A7D11E;
 
 
-.stage0:
+  .stage0:
     LDA.W $0FAA                                                          ;A7D120;
     CLC                                                                  ;A7D123;
     ADC.W Phantoon_Figure8_SubAcceleration_SlowStage                     ;A7D124;
@@ -7736,11 +7736,11 @@ UpdateFigure8PhantoonSpeed:
     STZ.W $0FAA                                                          ;A7D13F;
     INC.W $0FAE                                                          ;A7D142;
 
-..return:
+  ..return:
     RTS                                                                  ;A7D145;
 
 
-.stage1:
+  .stage1:
     LDA.W $0FAA                                                          ;A7D146;
     CLC                                                                  ;A7D149;
     ADC.W Phantoon_Figure8_SubAcceleration_FastStages                    ;A7D14A;
@@ -7755,11 +7755,11 @@ UpdateFigure8PhantoonSpeed:
     STZ.W $0FAA                                                          ;A7D164;
     INC.W $0FAE                                                          ;A7D167;
 
-..return:
+  ..return:
     RTS                                                                  ;A7D16A;
 
 
-.stage2:
+  .stage2:
     LDA.W $0FAA                                                          ;A7D16B;
     SEC                                                                  ;A7D16E;
     SBC.W Phantoon_Figure8_SubAcceleration_FastStages                    ;A7D16F;
@@ -7771,14 +7771,14 @@ UpdateFigure8PhantoonSpeed:
     BEQ .negativeSpeed                                                   ;A7D181;
     BPL .return                                                          ;A7D183;
 
-.negativeSpeed:
+  .negativeSpeed:
     LDA.W Phantoon_Figure8_SpeedCaps_Stage2Min                           ;A7D185;
     INC A                                                                ;A7D188;
     STA.W $0FAC                                                          ;A7D189;
     STZ.W $0FAA                                                          ;A7D18C;
     STZ.W $0FAE                                                          ;A7D18F;
 
-.return:
+  .return:
     RTS                                                                  ;A7D192;
 
 
@@ -7790,7 +7790,7 @@ UpdateReversedFigure8PhantoonSpeed:
     BRA .stage2                                                          ;A7D19D;
 
 
-.stage0:
+  .stage0:
     LDA.W $0FAA                                                          ;A7D19F;
     SEC                                                                  ;A7D1A2;
     SBC.W Phantoon_ReverseFigure8_SubAcceleration_SlowStage              ;A7D1A3;
@@ -7802,18 +7802,18 @@ UpdateReversedFigure8PhantoonSpeed:
     BEQ +                                                                ;A7D1B5;
     BPL .stage0_return                                                   ;A7D1B7;
 
-  + LDA.W Phantoon_ReverseFigure8_SpeedCaps_Stage0Max                    ;A7D1B9;
++   LDA.W Phantoon_ReverseFigure8_SpeedCaps_Stage0Max                    ;A7D1B9;
     INC A                                                                ;A7D1BC;
     INC A                                                                ;A7D1BD;
     STA.W $0FAC                                                          ;A7D1BE;
     STZ.W $0FAA                                                          ;A7D1C1;
     INC.W $0FAE                                                          ;A7D1C4;
 
-.stage0_return:
+  .stage0_return:
     RTS                                                                  ;A7D1C7;
 
 
-.stage1:
+  .stage1:
     LDA.W $0FAA                                                          ;A7D1C8;
     SEC                                                                  ;A7D1CB;
     SBC.W Phantoon_ReverseFigure8_SubAcceleration_FastStages             ;A7D1CC;
@@ -7825,17 +7825,17 @@ UpdateReversedFigure8PhantoonSpeed:
     BEQ +                                                                ;A7D1DE;
     BPL .stage1_return                                                   ;A7D1E0;
 
-  + LDA.W Phantoon_ReverseFigure8_SpeedCaps_Stage1Max                    ;A7D1E2;
++   LDA.W Phantoon_ReverseFigure8_SpeedCaps_Stage1Max                    ;A7D1E2;
     INC A                                                                ;A7D1E5;
     STA.W $0FAC                                                          ;A7D1E6;
     STZ.W $0FAA                                                          ;A7D1E9;
     INC.W $0FAE                                                          ;A7D1EC;
 
-.stage1_return:
+  .stage1_return:
     RTS                                                                  ;A7D1EF;
 
 
-.stage2:
+  .stage2:
     LDA.W $0FAA                                                          ;A7D1F0;
     CLC                                                                  ;A7D1F3;
     ADC.W Phantoon_ReverseFigure8_SubAcceleration_FastStages             ;A7D1F4;
@@ -7850,7 +7850,7 @@ UpdateReversedFigure8PhantoonSpeed:
     STZ.W $0FAA                                                          ;A7D20E;
     STZ.W $0FAE                                                          ;A7D211;
 
-..return:
+  ..return:
     RTS                                                                  ;A7D214;
 
 
@@ -7861,7 +7861,7 @@ MovePhantoonInFigure8:
     RTS                                                                  ;A7D21C;
 
 
-.loop:
+  .loop:
     PHY                                                                  ;A7D21D;
     LDA.W $0FA8                                                          ;A7D21E;
     ASL A                                                                ;A7D221;
@@ -7876,7 +7876,7 @@ MovePhantoonInFigure8:
     BEQ +                                                                ;A7D232;
     ORA.W #$FF00                                                         ;A7D234;
 
-  + STA.B $12                                                            ;A7D237;
++   STA.B $12                                                            ;A7D237;
     LDA.W $0F7A                                                          ;A7D239;
     CLC                                                                  ;A7D23C;
     ADC.B $12                                                            ;A7D23D;
@@ -7887,7 +7887,7 @@ MovePhantoonInFigure8:
     BEQ +                                                                ;A7D24B;
     ORA.W #$FF00                                                         ;A7D24D;
 
-  + STA.B $12                                                            ;A7D250;
++   STA.B $12                                                            ;A7D250;
     LDA.W $0F7E                                                          ;A7D252;
     CLC                                                                  ;A7D255;
     ADC.B $12                                                            ;A7D256;
@@ -7899,13 +7899,13 @@ MovePhantoonInFigure8:
     BMI +                                                                ;A7D264;
     STZ.W $0FA8                                                          ;A7D266;
 
-  + PLY                                                                  ;A7D269;
++   PLY                                                                  ;A7D269;
     DEC.B $16                                                            ;A7D26A;
     BEQ .return                                                          ;A7D26C;
     BRA .loop                                                            ;A7D26E;
 
 
-.return:
+  .return:
     RTS                                                                  ;A7D270;
 
 
@@ -7918,7 +7918,7 @@ MovePhantoonInReverseFigure8:
     RTS                                                                  ;A7D27C;
 
 
-.loop:
+  .loop:
     PHY                                                                  ;A7D27D;
     LDA.W $0FA8                                                          ;A7D27E;
     ASL A                                                                ;A7D281;
@@ -7933,7 +7933,7 @@ MovePhantoonInReverseFigure8:
     BEQ +                                                                ;A7D292;
     ORA.W #$FF00                                                         ;A7D294;
 
-  + STA.B $12                                                            ;A7D297;
++   STA.B $12                                                            ;A7D297;
     LDA.W $0F7A                                                          ;A7D299;
     SEC                                                                  ;A7D29C;
     SBC.B $12                                                            ;A7D29D;
@@ -7944,7 +7944,7 @@ MovePhantoonInReverseFigure8:
     BEQ +                                                                ;A7D2AB;
     ORA.W #$FF00                                                         ;A7D2AD;
 
-  + STA.B $12                                                            ;A7D2B0;
++   STA.B $12                                                            ;A7D2B0;
     LDA.W $0F7E                                                          ;A7D2B2;
     SEC                                                                  ;A7D2B5;
     SBC.B $12                                                            ;A7D2B6;
@@ -7956,13 +7956,13 @@ MovePhantoonInReverseFigure8:
     LDA.B $14                                                            ;A7D2C4;
     STA.W $0FA8                                                          ;A7D2C6;
 
-  + PLY                                                                  ;A7D2C9;
++   PLY                                                                  ;A7D2C9;
     DEC.B $16                                                            ;A7D2CA;
     BEQ .return                                                          ;A7D2CC;
     BRA .loop                                                            ;A7D2CE;
 
 
-.return:
+  .return:
     RTS                                                                  ;A7D2D0;
 
 
@@ -7980,7 +7980,7 @@ MovePhantoonInSwoopingPattern:
     BRA .targetCalculated                                                ;A7D2EB;
 
 
-.targetXNegative:
+  .targetXNegative:
     SEC                                                                  ;A7D2ED;
     SBC.W #$0002                                                         ;A7D2EE;
     STA.W $1030                                                          ;A7D2F1;
@@ -7988,10 +7988,10 @@ MovePhantoonInSwoopingPattern:
     BEQ +                                                                ;A7D2F7;
     BPL .targetCalculated                                                ;A7D2F9;
 
-  + LDA.W #$0000                                                         ;A7D2FB;
++   LDA.W #$0000                                                         ;A7D2FB;
     STA.W $1030                                                          ;A7D2FE;
 
-.targetCalculated:
+  .targetCalculated:
     CMP.W $0F7A                                                          ;A7D301;
     BMI .lessThanX                                                       ;A7D304;
     LDA.W $102C                                                          ;A7D306;
@@ -8003,7 +8003,7 @@ MovePhantoonInSwoopingPattern:
     BRA +                                                                ;A7D315;
 
 
-.lessThanX:
+  .lessThanX:
     LDA.W $102C                                                          ;A7D317;
     CMP.W #$F801                                                         ;A7D31A;
     BMI +                                                                ;A7D31D;
@@ -8011,7 +8011,7 @@ MovePhantoonInSwoopingPattern:
     SBC.W #$0020                                                         ;A7D320;
     STA.W $102C                                                          ;A7D323;
 
-  + LDA.W $102C                                                          ;A7D326;
++   LDA.W $102C                                                          ;A7D326;
     XBA                                                                  ;A7D329;
     PHA                                                                  ;A7D32A;
     AND.W #$FF00                                                         ;A7D32B;
@@ -8022,7 +8022,7 @@ MovePhantoonInSwoopingPattern:
     BEQ +                                                                ;A7D337;
     ORA.W #$FF00                                                         ;A7D339;
 
-  + STA.B $12                                                            ;A7D33C;
++   STA.B $12                                                            ;A7D33C;
     LDA.W $0F7C                                                          ;A7D33E;
     CLC                                                                  ;A7D341;
     ADC.B $14                                                            ;A7D342;
@@ -8037,12 +8037,12 @@ MovePhantoonInSwoopingPattern:
     BRA .checkDead                                                       ;A7D35A;
 
 
-  + CMP.W #$01C0                                                         ;A7D35C;
++   CMP.W #$01C0                                                         ;A7D35C;
     BMI .checkDead                                                       ;A7D35F;
     LDA.W #$01C0                                                         ;A7D361;
     STA.W $0F7A                                                          ;A7D364;
 
-.checkDead:
+  .checkDead:
     LDA.W $0FB2,X                                                        ;A7D367;
     CMP.W #Function_Phantoon_Swooping_FatalDamage                        ;A7D36A;
     BNE .notDeathSwoop                                                   ;A7D36D;
@@ -8050,12 +8050,12 @@ MovePhantoonInSwoopingPattern:
     BRA +                                                                ;A7D372;
 
 
-.notDeathSwoop:
+  .notDeathSwoop:
     LDA.W $0AFA                                                          ;A7D374;
     SEC                                                                  ;A7D377;
     SBC.W #$0030                                                         ;A7D378;
 
-  + CMP.W $0F7E                                                          ;A7D37B;
++   CMP.W $0F7E                                                          ;A7D37B;
     BMI .lessThanY                                                       ;A7D37E;
     LDA.W $102E                                                          ;A7D380;
     CMP.W #$0600                                                         ;A7D383;
@@ -8066,7 +8066,7 @@ MovePhantoonInSwoopingPattern:
     BRA +                                                                ;A7D38F;
 
 
-.lessThanY:
+  .lessThanY:
     LDA.W $102E                                                          ;A7D391;
     CMP.W #$FA01                                                         ;A7D394;
     BMI +                                                                ;A7D397;
@@ -8074,7 +8074,7 @@ MovePhantoonInSwoopingPattern:
     SBC.W #$0040                                                         ;A7D39A;
     STA.W $102E                                                          ;A7D39D;
 
-  + LDA.W $102E                                                          ;A7D3A0;
++   LDA.W $102E                                                          ;A7D3A0;
     XBA                                                                  ;A7D3A3;
     PHA                                                                  ;A7D3A4;
     AND.W #$FF00                                                         ;A7D3A5;
@@ -8085,7 +8085,7 @@ MovePhantoonInSwoopingPattern:
     BEQ +                                                                ;A7D3B1;
     ORA.W #$FF00                                                         ;A7D3B3;
 
-  + STA.B $12                                                            ;A7D3B6;
++   STA.B $12                                                            ;A7D3B6;
     LDA.W $0F80                                                          ;A7D3B8;
     CLC                                                                  ;A7D3BB;
     ADC.B $14                                                            ;A7D3BC;
@@ -8100,12 +8100,12 @@ MovePhantoonInSwoopingPattern:
     RTS                                                                  ;A7D3D4;
 
 
-  + CMP.W #$00D8                                                         ;A7D3D5;
++   CMP.W #$00D8                                                         ;A7D3D5;
     BMI .return                                                          ;A7D3D8;
     LDA.W #$00D8                                                         ;A7D3DA;
     STA.W $0F7E                                                          ;A7D3DD;
 
-.return:
+  .return:
     RTS                                                                  ;A7D3E0;
 
 
@@ -8132,7 +8132,7 @@ MakePhantoonLookTowardsSamus:
     RTS                                                                  ;A7D40C;
 
 
-.directionPointers:
+  .directionPointers:
     dw InstList_Phantoon_Eyeball_LookingUp                               ;A7D40D; Up
     dw InstList_Phantoon_Eyeball_LookingUpRight                          ;A7D40F; Up-right
     dw InstList_Phantoon_Eyeball_LookingRight                            ;A7D411; Right
@@ -8156,17 +8156,17 @@ StartPhantoonDeathSequence:
     BRA +                                                                ;A7D435;
 
 
-.swooping:
+  .swooping:
     LDA.W #Function_Phantoon_Swooping_FatalDamage                        ;A7D437;
     STA.W $0FB2,X                                                        ;A7D43A;
 
-  + STZ.W $0FEC                                                          ;A7D43D;
++   STZ.W $0FEC                                                          ;A7D43D;
     STZ.W $0FF2                                                          ;A7D440;
     JSR.W MakePhantoonLookTowardsSamus                                   ;A7D443;
     LDX.W #$01FE                                                         ;A7D446;
     LDA.B $B5                                                            ;A7D449;
 
-.loopBG2XScroll:
+  .loopBG2XScroll:
     STA.L $7E9100,X                                                      ;A7D44B;
     DEX                                                                  ;A7D44F;
     DEX                                                                  ;A7D450;
@@ -8195,7 +8195,7 @@ AdvancePhantoonFadeOut_DenominatorInA:
     LDA.W #$0001                                                         ;A7D47E;
     STA.W $0FF2                                                          ;A7D481;
 
-.return:
+  .return:
     PLX                                                                  ;A7D484;
     RTS                                                                  ;A7D485;
 
@@ -8215,7 +8215,7 @@ AdvancePhantoonFadeIn_DenominatorInA:
     LDA.W #$0001                                                         ;A7D4A0;
     STA.W $0FF2                                                          ;A7D4A3;
 
-.return:
+  .return:
     PLX                                                                  ;A7D4A6;
     RTS                                                                  ;A7D4A7;
 
@@ -8229,7 +8229,7 @@ Function_Phantoon_FightIntro_SpawnCircleOfFlames:
     BEQ .timerExpired                                                    ;A7D4AC;
     BPL .return                                                          ;A7D4AE;
 
-.timerExpired:
+  .timerExpired:
     LDA.W $0FA8                                                          ;A7D4B0;
     LDY.W #EnemyProjectile_PhantoonStartingFlames                        ;A7D4B3;
     JSL.L SpawnEnemyProjectileY_ParameterA_XGraphics                     ;A7D4B6;
@@ -8252,7 +8252,7 @@ Function_Phantoon_FightIntro_SpawnCircleOfFlames:
     db $00,$06                                                           ;A7D4E9;
     dw PLMEntries_drawPhantoonsDoorDuringBossFight                       ;A7D4EB;
 
-.return:
+  .return:
     RTS                                                                  ;A7D4ED;
 
 
@@ -8261,7 +8261,7 @@ Function_Phantoon_FightIntro_SpinCircleOfFlames:
     BEQ .timerExpired                                                    ;A7D4F1;
     BPL .return                                                          ;A7D4F3;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #$00F0                                                         ;A7D4F5;
     STA.W $0FB0,X                                                        ;A7D4F8;
     LDA.W #$0001                                                         ;A7D4FB;
@@ -8269,7 +8269,7 @@ Function_Phantoon_FightIntro_SpinCircleOfFlames:
     LDA.W #Function_Phantoon_FightIntro_StartWavyFadeIn                  ;A7D501;
     STA.W $0FB2,X                                                        ;A7D504;
 
-.return:
+  .return:
     RTS                                                                  ;A7D507;
 
 
@@ -8278,7 +8278,7 @@ Function_Phantoon_FightIntro_StartWavyFadeIn:
     BEQ .timerExpired                                                    ;A7D50B;
     BPL .return                                                          ;A7D50D;
 
-.timerExpired:
+  .timerExpired:
     STZ.W $0FAA,X                                                        ;A7D50F;
     LDA.W $1988                                                          ;A7D512;
     ORA.W #$4000                                                         ;A7D515;
@@ -8299,7 +8299,7 @@ Function_Phantoon_FightIntro_StartWavyFadeIn:
     LDA.W #$0005                                                         ;A7D542;
     JSL.L QueueMusicDataOrTrack_8FrameDelay                              ;A7D545;
 
-.return:
+  .return:
     RTS                                                                  ;A7D549;
 
 
@@ -8316,13 +8316,13 @@ Function_Phantoon_FightIntro_WavyFadeIn:
     BEQ .shrinking                                                       ;A7D562;
     BPL .return                                                          ;A7D564;
 
-.shrinking:
+  .shrinking:
     LDA.W #$0001                                                         ;A7D566;
     STA.W $1070                                                          ;A7D569;
     BRA .return                                                          ;A7D56C;
 
 
-.done:
+  .done:
     LDA.W #Function_Phantoon_FightIntro_PickFirstPattern                 ;A7D56E;
     STA.W $0FB2,X                                                        ;A7D571;
     LDA.W #$0001                                                         ;A7D574;
@@ -8330,7 +8330,7 @@ Function_Phantoon_FightIntro_WavyFadeIn:
     LDA.W #$001E                                                         ;A7D57A;
     STA.W $0FB0,X                                                        ;A7D57D;
 
-.return:
+  .return:
     RTS                                                                  ;A7D580;
 
 
@@ -8339,7 +8339,7 @@ UNUSED_Function_Phantoon_FightIntro_A7D581:
     LDX.W #$01FE                                                         ;A7D581;
     LDA.W #$0000                                                         ;A7D584;
 
-.loop:
+  .loop:
     STA.L $7E9100,X                                                      ;A7D587;
     DEX                                                                  ;A7D58B;
     DEX                                                                  ;A7D58C;
@@ -8355,7 +8355,7 @@ Function_Phantoon_FightIntro_PickFirstPattern:
     BEQ .timerExpired                                                    ;A7D599;
     BPL .return                                                          ;A7D59B;
 
-.timerExpired:
+  .timerExpired:
     STZ.W $0FF4                                                          ;A7D59D;
     LDA.W #Function_Phantoon_Figure8_Moving                              ;A7D5A0;
     STA.W $0FB2,X                                                        ;A7D5A3;
@@ -8378,7 +8378,7 @@ Function_Phantoon_FightIntro_PickFirstPattern:
     RTS                                                                  ;A7D5D0;
 
 
-.reversed:
+  .reversed:
     STZ.W $0FAC                                                          ;A7D5D1;
     STZ.W $0FAA                                                          ;A7D5D4;
     STZ.W $0FAE                                                          ;A7D5D7;
@@ -8387,7 +8387,7 @@ Function_Phantoon_FightIntro_PickFirstPattern:
     LDA.W #$0215                                                         ;A7D5E0;
     STA.W $0FA8                                                          ;A7D5E3;
 
-.return:
+  .return:
     RTS                                                                  ;A7D5E6;
 
 
@@ -8398,7 +8398,7 @@ Function_Phantoon_Figure8_Moving:
     BEQ .timerExpired                                                    ;A7D5F0;
     BPL .return                                                          ;A7D5F2;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #RTS_A7D4A8                                                    ;A7D5F4;
     STA.W $0FB2,X                                                        ;A7D5F7;
     LDA.W #$0001                                                         ;A7D5FA;
@@ -8408,7 +8408,7 @@ Function_Phantoon_Figure8_Moving:
     STZ.W $0FB6                                                          ;A7D606;
     JSR.W PhantoonMaterializationFlameSpiral                             ;A7D609;
 
-.return:
+  .return:
     RTS                                                                  ;A7D60C;
 
 
@@ -8417,7 +8417,7 @@ Function_Phantoon_Figure8_VulnerableWindow:
     BEQ .timerExpired                                                    ;A7D610;
     BPL .waiting                                                         ;A7D612;
 
-.timerExpired:
+  .timerExpired:
     STZ.W $102A,X                                                        ;A7D614;
     LDA.W $1028                                                          ;A7D617;
     BEQ .swoopingNotTriggered                                            ;A7D61A;
@@ -8429,7 +8429,7 @@ Function_Phantoon_Figure8_VulnerableWindow:
     BRA .waiting                                                         ;A7D62B;
 
 
-.swoopingNotTriggered:
+  .swoopingNotTriggered:
     LDA.W #RTS_A7D4A8                                                    ;A7D62D;
     STA.W $0FB2,X                                                        ;A7D630;
     LDA.W #$0001                                                         ;A7D633;
@@ -8447,7 +8447,7 @@ Function_Phantoon_Figure8_VulnerableWindow:
     RTS                                                                  ;A7D657;
 
 
-.waiting:
+  .waiting:
     JSR.W MakePhantoonLookTowardsSamus                                   ;A7D658;
     RTS                                                                  ;A7D65B;
 
@@ -8472,7 +8472,7 @@ Function_Phantoon_Swooping_Opaque:
     BEQ .timerExpired                                                    ;A7D681;
     BPL .return                                                          ;A7D683;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #Function_Phantoon_Swooping_FadeOut                            ;A7D685;
     STA.W $0FB2,X                                                        ;A7D688;
     LDA.W $1988                                                          ;A7D68B;
@@ -8491,7 +8491,7 @@ Function_Phantoon_Swooping_Opaque:
     STZ.W $0FF2                                                          ;A7D6B2;
     STZ.W $102A,X                                                        ;A7D6B5;
 
-.return:
+  .return:
     RTS                                                                  ;A7D6B8;
 
 
@@ -8506,7 +8506,7 @@ Function_Phantoon_Swooping_FadeOut:
     LDA.W #$0078                                                         ;A7D6CD;
     STA.W $0FB0,X                                                        ;A7D6D0;
 
-.return:
+  .return:
     RTS                                                                  ;A7D6D3;
 
 
@@ -8515,11 +8515,11 @@ Function_Phantoon_HidingBeforeFigure8_Hiding:
     BEQ .timerExpired                                                    ;A7D6D7;
     BPL .return                                                          ;A7D6D9;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #Function_Phantoon_HidingBeforeFigure8_PlacePhantoon           ;A7D6DB;
     STA.W $0FB2,X                                                        ;A7D6DE;
 
-.return:
+  .return:
     RTS                                                                  ;A7D6E1;
 
 
@@ -8536,7 +8536,7 @@ Function_Phantoon_HidingBeforeFigure8_PlacePhantoon:
     BRA +                                                                ;A7D6FD;
 
 
-.leftSidePattern:
+  .leftSidePattern:
     LDA.W #$018F                                                         ;A7D6FF;
     STA.W $0FA8                                                          ;A7D702;
     LDA.W #$0030                                                         ;A7D705;
@@ -8544,7 +8544,7 @@ Function_Phantoon_HidingBeforeFigure8_PlacePhantoon:
     LDA.W #$0060                                                         ;A7D70B;
     STA.W $0F7E                                                          ;A7D70E;
 
-  + STZ.W $0FEC                                                          ;A7D711;
++   STZ.W $0FEC                                                          ;A7D711;
     LDA.W #$0001                                                         ;A7D714;
     STA.W $0FAC                                                          ;A7D717;
     STZ.W $0FAA                                                          ;A7D71A;
@@ -8564,7 +8564,7 @@ Function_Phantoon_HidingBeforeFigure8_FadingIn:
     LDA.W #Function_Phantoon_Figure8_Moving                              ;A7D738;
     STA.W $0FB2                                                          ;A7D73B;
 
-.return:
+  .return:
     RTS                                                                  ;A7D73E;
 
 
@@ -8598,7 +8598,7 @@ Function_Phantoon_FlameRain_MakePhantoonVulnerable:
     LDA.W #$005A                                                         ;A7D781;
     STA.W $0FB0                                                          ;A7D784;
 
-.return:
+  .return:
     RTS                                                                  ;A7D787;
 
 
@@ -8607,7 +8607,7 @@ Function_Phantoon_FlameRain_VulnerableWindow:
     BEQ .timerExpired                                                    ;A7D78B;
     BPL .return                                                          ;A7D78D;
 
-.timerExpired:
+  .timerExpired:
     STZ.W $102A,X                                                        ;A7D78F;
     LDA.W $1028                                                          ;A7D792;
     BEQ .endVulnerableWindow                                             ;A7D795;
@@ -8618,7 +8618,7 @@ Function_Phantoon_FlameRain_VulnerableWindow:
     RTS                                                                  ;A7D7A3;
 
 
-.endVulnerableWindow:
+  .endVulnerableWindow:
     LDA.W #Function_Phantoon_FlameRain_FadingOut                         ;A7D7A4;
     STA.W $0FB2,X                                                        ;A7D7A7;
     STZ.W $0FF2                                                          ;A7D7AA;
@@ -8636,7 +8636,7 @@ Function_Phantoon_FlameRain_VulnerableWindow:
     ORA.W #$4000                                                         ;A7D7CE;
     STA.W $1988                                                          ;A7D7D1;
 
-.return:
+  .return:
     RTS                                                                  ;A7D7D4;
 
 
@@ -8648,7 +8648,7 @@ Function_Phantoon_FlameRain_FadingOut:
     RTS                                                                  ;A7D7E0;
 
 
-.fadeComplete:
+  .fadeComplete:
     LDA.W #Function_Phantoon_FlameRain_SubsequentFlameRain               ;A7D7E1;
     STA.W $0FB2,X                                                        ;A7D7E4;
     JSL.L GenerateRandomNumber                                           ;A7D7E7;
@@ -8665,7 +8665,7 @@ Function_Phantoon_FlameRain_SubsequentFlameRain:
     BEQ .timerExpired                                                    ;A7D7FA;
     BPL .return                                                          ;A7D7FC;
 
-.timerExpired:
+  .timerExpired:
     JSL.L GenerateRandomNumber                                           ;A7D7FE;
     AND.W #$0007                                                         ;A7D802;
     PHA                                                                  ;A7D805;
@@ -8685,7 +8685,7 @@ Function_Phantoon_FlameRain_SubsequentFlameRain:
     PLA                                                                  ;A7D825;
     JSR.W SpawnFlameRainProjectiles                                      ;A7D826;
 
-.return:
+  .return:
     RTS                                                                  ;A7D829;
 
 
@@ -8698,7 +8698,7 @@ Function_Phantoon_FlameRain_InitialFlameRain:
     BEQ .timerExpired                                                    ;A7D839;
     BPL .return                                                          ;A7D83B;
 
-.timerExpired:
+  .timerExpired:
     STZ.W $1028                                                          ;A7D83D;
     LDA.W #Function_Phantoon_FlameRain_ShowPhantoon                      ;A7D840;
     STA.W $0FB2,X                                                        ;A7D843;
@@ -8710,11 +8710,11 @@ Function_Phantoon_FlameRain_InitialFlameRain:
     RTS                                                                  ;A7D854;
 
 
-.pattern0:
+  .pattern0:
     LDA.W #$0000                                                         ;A7D855;
     JSR.W SpawnFlameRainProjectiles                                      ;A7D858;
 
-.return:
+  .return:
     RTS                                                                  ;A7D85B;
 
 
@@ -8728,7 +8728,7 @@ Function_Phantoon_Enraged_FadingOutBeforeRage:
     LDA.W #$0078                                                         ;A7D86D;
     STA.W $0FB0,X                                                        ;A7D870;
 
-.return:
+  .return:
     RTS                                                                  ;A7D873;
 
 
@@ -8737,7 +8737,7 @@ Function_Phantoon_Enraged_Hiding:
     BEQ .timerExpired                                                    ;A7D877;
     BPL .return                                                          ;A7D879;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #Function_Phantoon_Enraged_FadingIn                            ;A7D87B;
     STA.W $0FB2,X                                                        ;A7D87E;
     LDA.W #$0080                                                         ;A7D881;
@@ -8746,7 +8746,7 @@ Function_Phantoon_Enraged_Hiding:
     STA.W $0F7E                                                          ;A7D88A;
     STZ.W $0FF2                                                          ;A7D88D;
 
-.return:
+  .return:
     RTS                                                                  ;A7D890;
 
 
@@ -8761,7 +8761,7 @@ Function_Phantoon_Enraged_FadingIn:
     STA.W $0FB0,X                                                        ;A7D8A5;
     STZ.W $0FF2                                                          ;A7D8A8;
 
-.return:
+  .return:
     RTS                                                                  ;A7D8AB;
 
 
@@ -8770,13 +8770,13 @@ Function_Phantoon_Enraged_Rage:
     BEQ .timerExpired                                                    ;A7D8AF;
     BPL .return                                                          ;A7D8B1;
 
-.timerExpired:
+  .timerExpired:
     LDA.W $0FF2                                                          ;A7D8B3;
     BIT.W #$0001                                                         ;A7D8B6;
     BNE .oddWave                                                         ;A7D8B9;
     LDY.W #$0006                                                         ;A7D8BB;
 
-.loopEvenWave:
+  .loopEvenWave:
     PHY                                                                  ;A7D8BE;
     TYA                                                                  ;A7D8BF;
     ORA.W #$0200                                                         ;A7D8C0;
@@ -8788,10 +8788,10 @@ Function_Phantoon_Enraged_Rage:
     BRA .merge                                                           ;A7D8CE;
 
 
-.oddWave:
+  .oddWave:
     LDY.W #$000F                                                         ;A7D8D0;
 
-.loopOddWave:
+  .loopOddWave:
     PHY                                                                  ;A7D8D3;
     TYA                                                                  ;A7D8D4;
     ORA.W #$0200                                                         ;A7D8D5;
@@ -8802,7 +8802,7 @@ Function_Phantoon_Enraged_Rage:
     CPY.W #$0008                                                         ;A7D8E1;
     BPL .loopOddWave                                                     ;A7D8E4;
 
-.merge:
+  .merge:
     LDA.W #$0029                                                         ;A7D8E6;
     JSL.L QueueSound_Lib3_Max6                                           ;A7D8E9;
     LDA.W $0FF2                                                          ;A7D8ED;
@@ -8815,7 +8815,7 @@ Function_Phantoon_Enraged_Rage:
     RTS                                                                  ;A7D8FF;
 
 
-.doneRaging:
+  .doneRaging:
     LDA.W #$0001                                                         ;A7D900;
     STA.W $0FD4                                                          ;A7D903;
     LDA.W #InstList_Phantoon_Eye_Close                                   ;A7D906;
@@ -8824,7 +8824,7 @@ Function_Phantoon_Enraged_Rage:
     LDA.W #Function_Phantoon_Enraged_FadingOutAfterRage                  ;A7D90F;
     STA.W $0FB2,X                                                        ;A7D912;
 
-.return:
+  .return:
     RTS                                                                  ;A7D915;
 
 
@@ -8838,7 +8838,7 @@ Function_Phantoon_Enraged_FadingOutAfterRage:
     LDA.W #$0078                                                         ;A7D927;
     STA.W $0FB0,X                                                        ;A7D92A;
 
-.return:
+  .return:
     RTS                                                                  ;A7D92D;
 
 
@@ -8853,7 +8853,7 @@ Function_Phantoon_Swooping_FatalDamage:
     LDA.W #Function_Phantoon_DeathSequence_FadingInAndOut                ;A7D941;
     STA.W $0FB2,X                                                        ;A7D944;
 
-.return:
+  .return:
     RTS                                                                  ;A7D947;
 
 
@@ -8869,13 +8869,13 @@ Function_Phantoon_DeathSequence_FadingInAndOut:
     BRA .return                                                          ;A7D95C;
 
 
-.advanceFade:
+  .advanceFade:
     LDA.W #$000C                                                         ;A7D95E;
     JSR.W AdvancePhantoonFadeIn_DenominatorInA                           ;A7D961;
     LDA.W $0FF2                                                          ;A7D964;
     BEQ .return                                                          ;A7D967;
 
-.fadeComplete:
+  .fadeComplete:
     STZ.W $0FF2                                                          ;A7D969;
     LDA.W $0FEC                                                          ;A7D96C;
     INC A                                                                ;A7D96F;
@@ -8889,7 +8889,7 @@ Function_Phantoon_DeathSequence_FadingInAndOut:
     STZ.W $1032                                                          ;A7D984;
     STZ.W $0FA8                                                          ;A7D987;
 
-.return:
+  .return:
     RTS                                                                  ;A7D98A;
 
 
@@ -8900,7 +8900,7 @@ Function_Phantoon_DeathSequence_Exploding:
     RTS                                                                  ;A7D992;
 
 
-.timerExpired:
+  .timerExpired:
     LDA.W $1032                                                          ;A7D993;
     ASL A                                                                ;A7D996;
     ASL A                                                                ;A7D997;
@@ -8911,7 +8911,7 @@ Function_Phantoon_DeathSequence_Exploding:
     BEQ +                                                                ;A7D9A2;
     ORA.W #$FF00                                                         ;A7D9A4;
 
-  + STA.B $12                                                            ;A7D9A7;
++   STA.B $12                                                            ;A7D9A7;
     LDA.W $0F7A                                                          ;A7D9A9;
     CLC                                                                  ;A7D9AC;
     ADC.B $12                                                            ;A7D9AD;
@@ -8922,7 +8922,7 @@ Function_Phantoon_DeathSequence_Exploding:
     BEQ +                                                                ;A7D9BA;
     ORA.W #$FF00                                                         ;A7D9BC;
 
-  + STA.B $14                                                            ;A7D9BF;
++   STA.B $14                                                            ;A7D9BF;
     LDA.W $0F7E                                                          ;A7D9C1;
     CLC                                                                  ;A7D9C4;
     ADC.B $14                                                            ;A7D9C5;
@@ -8941,11 +8941,11 @@ Function_Phantoon_DeathSequence_Exploding:
     BRA +                                                                ;A7D9E5;
 
 
-.PhantoonExplosion:
+  .PhantoonExplosion:
     LDA.W #$002B                                                         ;A7D9E7;
     JSL.L QueueSound_Lib2_Max6                                           ;A7D9EA;
 
-  + PLY                                                                  ;A7D9EE;
++   PLY                                                                  ;A7D9EE;
     LDA.W .timer,Y                                                       ;A7D9EF;
     AND.W #$00FF                                                         ;A7D9F2;
     STA.W $0FB0,X                                                        ;A7D9F5;
@@ -8964,16 +8964,16 @@ Function_Phantoon_DeathSequence_Exploding:
     LDA.W #Function_Phantoon_DeathSequence_SetupWavyMosaicPhantoon       ;A7DA16;
     STA.W $0FB2,X                                                        ;A7DA19;
 
-.return:
+  .return:
     RTS                                                                  ;A7DA1C;
 
-.XOffset:
+  .XOffset:
     db $00                                                               ;A7DA1D;
-.YOffset:
+  .YOffset:
     db     $00                                                           ;A7DA1E;
-.explosionType:
+  .explosionType:
     db         $1D                                                       ;A7DA1F;
-.timer:                                                                  ;A7DA20;
+  .timer:                                                                  ;A7DA20;
 ;        _______________ X offset
 ;       |    ___________ Y offset
 ;       |   |    _______ Explosion type. 3 = small, 1Dh = big
@@ -9039,7 +9039,7 @@ Function_Phantoon_DeathSequence_WavyMosaicPhantoon:
     BRA .return                                                          ;A7DAB6;
 
 
-.mosaicF2:
+  .mosaicF2:
     REP #$20                                                             ;A7DAB8;
     LDA.W #$FFFF                                                         ;A7DABA;
     STA.W $0FEC                                                          ;A7DABD;
@@ -9047,7 +9047,7 @@ Function_Phantoon_DeathSequence_WavyMosaicPhantoon:
     BRA .return                                                          ;A7DAC3;
 
 
-.doneMosaic:
+  .doneMosaic:
     LDA.W #$000C                                                         ;A7DAC5;
     JSR.W AdvancePhantoonFadeOut_DenominatorInA                          ;A7DAC8;
     LDA.W $0FF2                                                          ;A7DACB;
@@ -9055,7 +9055,7 @@ Function_Phantoon_DeathSequence_WavyMosaicPhantoon:
     LDA.W #Function_Phantoon_DeathSequence_ClearGraphics                 ;A7DAD0;
     STA.W $0FB2,X                                                        ;A7DAD3;
 
-.return:
+  .return:
     RTS                                                                  ;A7DAD6;
 
 
@@ -9081,7 +9081,7 @@ Function_Phantoon_DeathSequence_ClearGraphics:
     LDX.W #$03FE                                                         ;A7DB0A;
     LDA.W #$0338                                                         ;A7DB0D;
 
-.loop:
+  .loop:
     STA.L $7E2000,X                                                      ;A7DB10;
     DEX                                                                  ;A7DB14;
     DEX                                                                  ;A7DB15;
@@ -9117,7 +9117,7 @@ Function_Phantoon_DeathSequence_ActivateWreckedShip:
     RTS                                                                  ;A7DB47;
 
 
-.timerExpired:
+  .timerExpired:
     LDA.W $05B6                                                          ;A7DB48;
     BIT.W #$0003                                                         ;A7DB4B;
     BNE .return                                                          ;A7DB4E;
@@ -9147,7 +9147,7 @@ Function_Phantoon_DeathSequence_ActivateWreckedShip:
     LDA.W #$0003                                                         ;A7DB91;
     JSL.L QueueMusicDataOrTrack_8FrameDelay                              ;A7DB94;
 
-.return:
+  .return:
     PLX                                                                  ;A7DB98;
     RTS                                                                  ;A7DB99;
 
@@ -9164,10 +9164,10 @@ AdvancePhantoonFadeOut:
     RTS                                                                  ;A7DBAC;
 
 
-.advance:
+  .advance:
     LDX.W #$0000                                                         ;A7DBAD;
 
-.loop:
+  .loop:
     PHX                                                                  ;A7DBB0;
     LDA.W Palette_Phantoon_FadeOutTarget,X                               ;A7DBB1;
     TAY                                                                  ;A7DBB4;
@@ -9200,10 +9200,10 @@ AdvancePhantoonFadeIn:
     RTS                                                                  ;A7DBE7;
 
 
-.advance:
+  .advance:
     LDX.W #$0000                                                         ;A7DBE8;
 
-.loop:
+  .loop:
     PHX                                                                  ;A7DBEB;
     JSR.W GetPhantoonHealthBasedPaletteColor                             ;A7DBEC;
     LDA.L $7EC0E0,X                                                      ;A7DBEF;
@@ -9234,7 +9234,7 @@ GetPhantoonHealthBasedPaletteColor:
     STA.B $14                                                            ;A7DC1C;
     STZ.B $16                                                            ;A7DC1E;
 
-.loop:
+  .loop:
     LDA.B $14                                                            ;A7DC20;
     CMP.W $0F8C,X                                                        ;A7DC22;
     BPL .getPointer                                                      ;A7DC25;
@@ -9248,7 +9248,7 @@ GetPhantoonHealthBasedPaletteColor:
     CMP.W #$0007                                                         ;A7DC33;
     BMI .loop                                                            ;A7DC36;
 
-.getPointer:
+  .getPointer:
     LDA.B $16                                                            ;A7DC38;
     ASL A                                                                ;A7DC3A;
     TAY                                                                  ;A7DC3B;
@@ -9262,7 +9262,7 @@ GetPhantoonHealthBasedPaletteColor:
     RTS                                                                  ;A7DC49;
 
 
-.palettePointers:
+  .palettePointers:
     dw Palette_Phantoon_HealthBased_0                                    ;A7DC4A;
     dw Palette_Phantoon_HealthBased_1                                    ;A7DC4C;
     dw Palette_Phantoon_HealthBased_2                                    ;A7DC4E;
@@ -9284,10 +9284,10 @@ AdvanceWreckedShipPowerOnPaletteTransition:
     RTS                                                                  ;A7DC6C;
 
 
-.advance:
+  .advance:
     LDX.W #$0000                                                         ;A7DC6D;
 
-.loop:
+  .loop:
     PHX                                                                  ;A7DC70;
     LDA.W Palette_WreckedShipPoweredOn,X                                 ;A7DC71;
     TAY                                                                  ;A7DC74;
@@ -9378,7 +9378,7 @@ CalculateTheAthTransitionalColorComponentFromXToY:
     RTS                                                                  ;A7DCF7;
 
 
-.notZero:
+  .notZero:
     DEC A                                                                ;A7DCF8;
     CMP.W $0FEE                                                          ;A7DCF9;
     BNE +                                                                ;A7DCFC;
@@ -9386,7 +9386,7 @@ CalculateTheAthTransitionalColorComponentFromXToY:
     RTS                                                                  ;A7DCFF;
 
 
-  + PHX                                                                  ;A7DD00;
++   PHX                                                                  ;A7DD00;
     INC A                                                                ;A7DD01;
     STA.B $14                                                            ;A7DD02;
     TYA                                                                  ;A7DD04;
@@ -9397,7 +9397,7 @@ CalculateTheAthTransitionalColorComponentFromXToY:
     EOR.W #$FFFF                                                         ;A7DD0C;
     INC A                                                                ;A7DD0F;
 
-  + SEP #$21                                                             ;A7DD10;
++   SEP #$21                                                             ;A7DD10;
     STZ.W $4204                                                          ;A7DD12;
     STA.W $4205                                                          ;A7DD15;
     LDA.W $0FEE                                                          ;A7DD18;
@@ -9416,7 +9416,7 @@ CalculateTheAthTransitionalColorComponentFromXToY:
     EOR.W #$FFFF                                                         ;A7DD2F;
     INC A                                                                ;A7DD32;
 
-  + STA.B $12                                                            ;A7DD33;
++   STA.B $12                                                            ;A7DD33;
     PLA                                                                  ;A7DD35;
     XBA                                                                  ;A7DD36;
     CLC                                                                  ;A7DD37;
@@ -9439,10 +9439,10 @@ HurtAI_Phantoon:
     BIT.W #$FF00                                                         ;A7DD55;
     BEQ .return                                                          ;A7DD58;
 
-.healthBased:
+  .healthBased:
     LDX.W #$001E                                                         ;A7DD5A;
 
-.loopPalette:
+  .loopPalette:
     JSR.W GetPhantoonHealthBasedPaletteColor                             ;A7DD5D;
     TYA                                                                  ;A7DD60;
     STA.L $7EC0E0,X                                                      ;A7DD61;
@@ -9455,13 +9455,13 @@ HurtAI_Phantoon:
     BRA .return                                                          ;A7DD72;
 
 
-.white:
+  .white:
     LDA.W $1036                                                          ;A7DD74;
     BIT.W #$FF00                                                         ;A7DD77;
     BNE .return                                                          ;A7DD7A;
     LDX.W #$001E                                                         ;A7DD7C;
 
-.loopWhite:
+  .loopWhite:
     LDA.W #$7FFF                                                         ;A7DD7F;
     STA.L $7EC0E0,X                                                      ;A7DD82;
     DEX                                                                  ;A7DD86;
@@ -9471,7 +9471,7 @@ HurtAI_Phantoon:
     ORA.W #$0100                                                         ;A7DD8D;
     STA.W $1036                                                          ;A7DD90;
 
-.return:
+  .return:
     PLP                                                                  ;A7DD93;
     RTL                                                                  ;A7DD94;
 
@@ -9494,7 +9494,7 @@ EnemyShot_Phantoon:
     RTL                                                                  ;A7DDA5;
 
 
-.notDead:
+  .notDead:
     LDX.W $0E54                                                          ;A7DDA6;
     LDA.W $0F8C,X                                                        ;A7DDA9;
     PHA                                                                  ;A7DDAC;
@@ -9512,12 +9512,12 @@ EnemyShot_Phantoon:
     STA.W $0F86                                                          ;A7DDCC;
     JSR.W StartPhantoonDeathSequence                                     ;A7DDCF;
 
-.returnUpper:
+  .returnUpper:
     PLB                                                                  ;A7DDD2;
     RTL                                                                  ;A7DDD3;
 
 
-.alive:
+  .alive:
     LDA.W $0F8A,X                                                        ;A7DDD4;
     BIT.W #$0002                                                         ;A7DDD7;
     BEQ .returnUpper                                                     ;A7DDDA;
@@ -9533,7 +9533,7 @@ EnemyShot_Phantoon:
     JMP.W .return1036_2                                                  ;A7DDF5;
 
 
-.swooping:
+  .swooping:
     LDA.B $12                                                            ;A7DDF8;
     SEC                                                                  ;A7DDFA;
     SBC.W $0F8C,X                                                        ;A7DDFB;
@@ -9550,7 +9550,7 @@ EnemyShot_Phantoon:
     JMP.W .enraged                                                       ;A7DE15;
 
 
-.overDamaged:
+  .overDamaged:
     LDA.W $102A,X                                                        ;A7DE18;
     CLC                                                                  ;A7DE1B;
     ADC.B $12                                                            ;A7DE1C;
@@ -9562,7 +9562,7 @@ EnemyShot_Phantoon:
     BRA .return1036_2                                                    ;A7DE2C;
 
 
-.vulnerableWindow:
+  .vulnerableWindow:
     LDA.B $12                                                            ;A7DE2E;
     SEC                                                                  ;A7DE30;
     SBC.W $0F8C,X                                                        ;A7DE31;
@@ -9579,7 +9579,7 @@ EnemyShot_Phantoon:
     JMP.W .enraged                                                       ;A7DE4B;
 
 
-  + LDA.W $102A,X                                                        ;A7DE4E;
++   LDA.W $102A,X                                                        ;A7DE4E;
     CLC                                                                  ;A7DE51;
     ADC.B $12                                                            ;A7DE52;
     STA.W $102A,X                                                        ;A7DE54;
@@ -9605,23 +9605,23 @@ EnemyShot_Phantoon:
     LDA.W #$0010                                                         ;A7DE8A;
     STA.W $0FB0,X                                                        ;A7DE8D;
 
-.returnLower:
+  .returnLower:
     PLB                                                                  ;A7DE90;
     RTL                                                                  ;A7DE91;
 
 
-.return1036_2:
+  .return1036_2:
     LDA.W #$0002                                                         ;A7DE92;
     STA.W $1036                                                          ;A7DE95;
     PLB                                                                  ;A7DE98;
     RTL                                                                  ;A7DE99;
 
 
-.nextRound:
+  .nextRound:
     LDA.W #Function_Phantoon_Swooping_FadeOut                            ;A7DE9A;
     STA.W $0FB2,X                                                        ;A7DE9D;
 
-.nextRoundOrEnraged:
+  .nextRoundOrEnraged:
     STZ.W $0FB0,X                                                        ;A7DEA0;
     STZ.W $1028                                                          ;A7DEA3;
     STZ.W $102A,X                                                        ;A7DEA6;
@@ -9642,7 +9642,7 @@ EnemyShot_Phantoon:
     BRA .return1036_2                                                    ;A7DED3;
 
 
-.enraged:
+  .enraged:
     LDA.W #Function_Phantoon_Enraged_FadingOutBeforeRage                 ;A7DED5;
     STA.W $0FB2,X                                                        ;A7DED8;
     BRA .nextRoundOrEnraged                                              ;A7DEDB;
@@ -10269,11 +10269,11 @@ MainAI_Etecoon:
     BRA .return                                                          ;A7E952;
 
 
-.executeFunction:
+  .executeFunction:
     JMP.W ($0FB2,X)                                                      ;A7E954;
 
 
-.return:
+  .return:
     RTL                                                                  ;A7E957;
 
 
@@ -10289,7 +10289,7 @@ FreezeEtecoonIfQuakeActive:
     ADC.W #$0080                                                         ;A7E96D;
     STA.W $0F94,X                                                        ;A7E970;
 
-.return:
+  .return:
     RTS                                                                  ;A7E973;
 
 
@@ -10318,7 +10318,7 @@ EtecoonVerticalMovement:
     ADC.L $000B34                                                        ;A7E9A3;
     STA.W $0FA8,X                                                        ;A7E9A7;
 
-.move:
+  .move:
     JSL.L MoveEnemyDownBy_14_12                                          ;A7E9AA;
     RTS                                                                  ;A7E9AE;
 
@@ -10329,7 +10329,7 @@ Function_Etecoon_Initial:
     RTL                                                                  ;A7E9B4;
 
 
-.notDoorTransition:
+  .notDoorTransition:
     LDA.W $0FB0,X                                                        ;A7E9B5;
     BPL .positive                                                        ;A7E9B8;
     LDA.W #$0080                                                         ;A7E9BA;
@@ -10342,7 +10342,7 @@ Function_Etecoon_Initial:
     LDA.W #$0035                                                         ;A7E9CC;
     JSL.L QueueSound_Lib2_Max15                                          ;A7E9CF;
 
-.flex:
+  .flex:
     LDA.W #$0001                                                         ;A7E9D3;
     STA.W $0F94,X                                                        ;A7E9D6;
     LDA.W #InstList_Etecoon_Flexing_0                                    ;A7E9D9;
@@ -10352,12 +10352,12 @@ Function_Etecoon_Initial:
     RTL                                                                  ;A7E9E5;
 
 
-.positive:
+  .positive:
     DEC.W $0FB0,X                                                        ;A7E9E6;
     BEQ .hop                                                             ;A7E9E9;
     BPL .return                                                          ;A7E9EB;
 
-.hop:
+  .hop:
     LDA.W #InstList_Etecoon_Hopping_FacingLeft                           ;A7E9ED;
     STA.W $0F92,X                                                        ;A7E9F0;
     LDA.W #Function_Etecoon_StartHop_BottomOfRoom                        ;A7E9F3;
@@ -10365,7 +10365,7 @@ Function_Etecoon_Initial:
     LDA.W #$000B                                                         ;A7E9F9;
     STA.W $0FB0,X                                                        ;A7E9FC;
 
-.return:
+  .return:
     RTL                                                                  ;A7E9FF;
 
 
@@ -10374,7 +10374,7 @@ Function_Etecoon_StartHop_BottomOfRoom:
     BEQ .timerExpired                                                    ;A7EA03;
     BPL .return                                                          ;A7EA05;
 
-.timerExpired:
+  .timerExpired:
     LDA.W EtecoonConstants_initialYVelocityOfHopsAndFailedJumps          ;A7EA07;
     STA.W $0FA8,X                                                        ;A7EA0A;
     LDA.W EtecoonConstants_initialYVelocityOfHopsAndFailedJumps+2        ;A7EA0D;
@@ -10393,7 +10393,7 @@ Function_Etecoon_StartHop_BottomOfRoom:
     LDA.W #$0033                                                         ;A7EA2F;
     JSL.L QueueSound_Lib2_Max6                                           ;A7EA32;
 
-.return:
+  .return:
     RTL                                                                  ;A7EA36;
 
 
@@ -10403,7 +10403,7 @@ Function_Etecoon_Hopping_BottomOfRoom:
     RTL                                                                  ;A7EA3C;
 
 
-.collision:
+  .collision:
     LDA.W $0FA8,X                                                        ;A7EA3D;
     BPL .notRising                                                       ;A7EA40;
     STZ.W $0FA8,X                                                        ;A7EA42;
@@ -10415,7 +10415,7 @@ Function_Etecoon_Hopping_BottomOfRoom:
     RTL                                                                  ;A7EA54;
 
 
-.notRising:
+  .notRising:
     LDA.W #$0040                                                         ;A7EA55;
     JSL.L IsSamusWithingAPixelRowsOfEnemy                                ;A7EA58;
     TAY                                                                  ;A7EA5C;
@@ -10433,13 +10433,13 @@ Function_Etecoon_Hopping_BottomOfRoom:
     BRA +                                                                ;A7EA7B;
 
 
-.left:
+  .left:
     LDA.W #InstList_Etecoon_LookLeftAtSamusAndRunRight                   ;A7EA7D;
     STA.W $0F92,X                                                        ;A7EA80;
     LDA.W #$0001                                                         ;A7EA83;
     STA.W $0FB4,X                                                        ;A7EA86;
 
-  + LDA.W #$0020                                                         ;A7EA89;
++   LDA.W #$0020                                                         ;A7EA89;
     STA.W $0FB0,X                                                        ;A7EA8C;
     LDA.W #$0001                                                         ;A7EA8F;
     STA.W $0F94,X                                                        ;A7EA92;
@@ -10448,7 +10448,7 @@ Function_Etecoon_Hopping_BottomOfRoom:
     RTL                                                                  ;A7EA9B;
 
 
-.hopMore:
+  .hopMore:
     LDA.W #$000B                                                         ;A7EA9C;
     STA.W $0FB0,X                                                        ;A7EA9F;
     LDA.W #Function_Etecoon_StartHop_BottomOfRoom                        ;A7EAA2;
@@ -10465,7 +10465,7 @@ Function_Etecoon_LookAtSamus:
     BEQ .timerExpired                                                    ;A7EAB8;
     BPL .return                                                          ;A7EABA;
 
-.timerExpired:
+  .timerExpired:
     LDA.W $0F92,X                                                        ;A7EABC;
     INC A                                                                ;A7EABF;
     INC A                                                                ;A7EAC0;
@@ -10483,7 +10483,7 @@ Function_Etecoon_LookAtSamus:
     BRA +                                                                ;A7EAE1;
 
 
-.left:
+  .left:
     LDA.W EtecoonConstants_XVelocityLeft                                 ;A7EAE3;
     STA.W $0FAC,X                                                        ;A7EAE6;
     LDA.W EtecoonConstants_XVelocityLeft+2                               ;A7EAE9;
@@ -10491,12 +10491,12 @@ Function_Etecoon_LookAtSamus:
     LDA.W #Function_Etecoon_RunningLeft                                  ;A7EAEF;
     STA.W $0FB2,X                                                        ;A7EAF2;
 
-  + LDA.W EtecoonConstants_initialYVelocityOfHopsAndFailedJumps          ;A7EAF5;
++   LDA.W EtecoonConstants_initialYVelocityOfHopsAndFailedJumps          ;A7EAF5;
     STA.W $0FA8,X                                                        ;A7EAF8;
     LDA.W EtecoonConstants_initialYVelocityOfHopsAndFailedJumps+2        ;A7EAFB;
     STA.W $0FAA,X                                                        ;A7EAFE;
 
-.return:
+  .return:
     RTL                                                                  ;A7EB01;
 
 
@@ -10516,7 +10516,7 @@ Function_Etecoon_RunningLeft:
     LDA.W #$0001                                                         ;A7EB25;
     STA.W $0FB4,X                                                        ;A7EB28;
 
-.return:
+  .return:
     RTL                                                                  ;A7EB2B;
 
 
@@ -10535,7 +10535,7 @@ Function_Etecoon_RunningRight:
     RTL                                                                  ;A7EB4B;
 
 
-.move:
+  .move:
     JSR.W EtecoonHorizontalMovement                                      ;A7EB4C;
     RTL                                                                  ;A7EB4F;
 
@@ -10553,12 +10553,12 @@ Function_Etecoon_Jumping:
     BRA +                                                                ;A7EB69;
 
 
-.leftEligible:
+  .leftEligible:
     LDA.W #InstList_Etecoon_WallJumpLeftEligible                         ;A7EB6B;
     STA.W $0F92,X                                                        ;A7EB6E;
     STZ.W $0FB4,X                                                        ;A7EB71;
 
-  + LDA.W #$0001                                                         ;A7EB74;
++   LDA.W #$0001                                                         ;A7EB74;
     STA.W $0F94,X                                                        ;A7EB77;
     LDA.W #Function_Etecoon_WallJump                                     ;A7EB7A;
     STA.W $0FB2,X                                                        ;A7EB7D;
@@ -10570,11 +10570,11 @@ Function_Etecoon_Jumping:
     LDA.W #$0032                                                         ;A7EB8E;
     JSL.L QueueSound_Lib2_Max6                                           ;A7EB91;
 
-.returnUpper:
+  .returnUpper:
     RTL                                                                  ;A7EB95;
 
 
-.noWall:
+  .noWall:
     JSR.W EtecoonVerticalMovement                                        ;A7EB96;
     BCC .returnLower                                                     ;A7EB99;
     LDA.W $0FB4,X                                                        ;A7EB9B;
@@ -10584,11 +10584,11 @@ Function_Etecoon_Jumping:
     BRA +                                                                ;A7EBA6;
 
 
-.hopLeft:
+  .hopLeft:
     LDA.W #InstList_Etecoon_Hopping_FacingLeft                           ;A7EBA8;
     STA.W $0F92,X                                                        ;A7EBAB;
 
-  + LDA.W #$0001                                                         ;A7EBAE;
++   LDA.W #$0001                                                         ;A7EBAE;
     STA.W $0F94,X                                                        ;A7EBB1;
     LDA.W #$000B                                                         ;A7EBB4;
     STA.W $0FB0,X                                                        ;A7EBB7;
@@ -10599,7 +10599,7 @@ Function_Etecoon_Jumping:
     LDA.W EtecoonConstants_initialYVelocityOfHopsAndFailedJumps+2        ;A7EBC6;
     STA.W $0FAA,X                                                        ;A7EBC9;
 
-.returnLower:
+  .returnLower:
     RTL                                                                  ;A7EBCC;
 
 
@@ -10609,7 +10609,7 @@ Function_Etecoon_WallJump:
     BEQ .timerExpired                                                    ;A7EBD3;
     BPL .return                                                          ;A7EBD5;
 
-.timerExpired:
+  .timerExpired:
     LDA.W $0FB4,X                                                        ;A7EBD7;
     BEQ .left                                                            ;A7EBDA;
     LDA.W #InstList_Etecoon_WallJumpRight                                ;A7EBDC;
@@ -10621,7 +10621,7 @@ Function_Etecoon_WallJump:
     BRA +                                                                ;A7EBEE;
 
 
-.left:
+  .left:
     LDA.W #InstList_Etecoon_WallJump_0                                   ;A7EBF0;
     STA.W $0F92,X                                                        ;A7EBF3;
     LDA.W EtecoonConstants_XVelocityLeft                                 ;A7EBF6;
@@ -10629,7 +10629,7 @@ Function_Etecoon_WallJump:
     LDA.W EtecoonConstants_XVelocityLeft+2                               ;A7EBFC;
     STA.W $0FAE,X                                                        ;A7EBFF;
 
-  + LDA.W #$0001                                                         ;A7EC02;
++   LDA.W #$0001                                                         ;A7EC02;
     STA.W $0F94,X                                                        ;A7EC05;
     LDA.W #Function_Etecoon_Jumping                                      ;A7EC08;
     STA.W $0FB2,X                                                        ;A7EC0B;
@@ -10638,7 +10638,7 @@ Function_Etecoon_WallJump:
     LDA.W EtecoonConstants_initialYVelocityOfHopsAndFailedJumps+2        ;A7EC14;
     STA.W $0FAA,X                                                        ;A7EC17;
 
-.return:
+  .return:
     RTL                                                                  ;A7EC1A;
 
 
@@ -10647,7 +10647,7 @@ Function_Etecoon_LandedFromJump:
     BEQ .timerExpired                                                    ;A7EC1E;
     BPL .return                                                          ;A7EC20;
 
-.timerExpired:
+  .timerExpired:
     LDA.W EtecoonConstants_initialYVelocityOfHopsAndFailedJumps          ;A7EC22;
     STA.W $0FA8,X                                                        ;A7EC25;
     LDA.W EtecoonConstants_initialYVelocityOfHopsAndFailedJumps+2        ;A7EC28;
@@ -10661,11 +10661,11 @@ Function_Etecoon_LandedFromJump:
     LDA.W #$0001                                                         ;A7EC3A;
     STA.W $0F94,X                                                        ;A7EC3D;
 
-.return:
+  .return:
     RTL                                                                  ;A7EC40;
 
 
-.pointers:
+  .pointers:
     dw RunToLeftRunUpPoint                                               ;A7EC41;
     dw RunToRightRunUpPoint                                              ;A7EC43;
     dw HopAtCenterRunUpPoint                                             ;A7EC45;
@@ -10725,7 +10725,7 @@ Function_Etecoon_RunToLeftRunUpPoint:
     LDA.W #InstList_Etecoon_Hopping_FacingLeft                           ;A7ECB4;
     STA.W $0F92,X                                                        ;A7ECB7;
 
-.return:
+  .return:
     RTL                                                                  ;A7ECBA;
 
 
@@ -10743,7 +10743,7 @@ Function_Etecoon_RunToRightRunUpPoint:
     LDA.W #InstList_Etecoon_Hopping_FacingLeft                           ;A7ECD8;
     STA.W $0F92,X                                                        ;A7ECDB;
 
-.return:
+  .return:
     RTL                                                                  ;A7ECDE;
 
 
@@ -10763,7 +10763,7 @@ Function_Etecoon_RunningForSuccessfulMorphTunnelJump:
     LDA.W #InstList_Etecoon_JumpingRight                                 ;A7ED02;
     STA.W $0F92,X                                                        ;A7ED05;
 
-.return:
+  .return:
     RTL                                                                  ;A7ED08;
 
 
@@ -10780,7 +10780,7 @@ Function_Etecoon_SuccessfulMorphTunnelJump:
     LDA.W #Function_Etecoon_RunningThroughMorphTunnel                    ;A7ED23;
     STA.W $0FB2,X                                                        ;A7ED26;
 
-.return:
+  .return:
     RTL                                                                  ;A7ED29;
 
 
@@ -10800,7 +10800,7 @@ Function_Etecoon_RunningThroughMorphTunnel:
     LDA.W EtecoonConstants_initialYVelocityOfSuccessfulJump+2            ;A7ED4D;
     STA.W $0FAA,X                                                        ;A7ED50;
 
-.return:
+  .return:
     RTL                                                                  ;A7ED53;
 
 
@@ -10817,7 +10817,7 @@ Function_Etecoon_FallingFromMorphTunnelLedge:
     LDA.W #Function_Etecoon_StartHop_TopOfRoom                           ;A7ED6E;
     STA.W $0FB2,X                                                        ;A7ED71;
 
-.return:
+  .return:
     RTL                                                                  ;A7ED74;
 
 
@@ -10828,7 +10828,7 @@ Function_Etecoon_Hopping_TopOfRoom:
     RTL                                                                  ;A7ED7D;
 
 
-.collision:
+  .collision:
     LDA.W $0FA8,X                                                        ;A7ED7E;
     BPL .rising                                                          ;A7ED81;
     STZ.W $0FA8,X                                                        ;A7ED83;
@@ -10840,7 +10840,7 @@ Function_Etecoon_Hopping_TopOfRoom:
     RTL                                                                  ;A7ED95;
 
 
-.rising:
+  .rising:
     LDA.W #$000B                                                         ;A7ED96;
     STA.W $0FB0,X                                                        ;A7ED99;
     LDA.W #$0001                                                         ;A7ED9C;
@@ -10851,20 +10851,20 @@ Function_Etecoon_Hopping_TopOfRoom:
     BIT.W #$0002                                                         ;A7EDAB;
     BNE .successEtecoon                                                  ;A7EDAE;
 
-.hop:
+  .hop:
     LDA.W #Function_Etecoon_StartHop_TopOfRoom                           ;A7EDB0;
     STA.W $0FB2,X                                                        ;A7EDB3;
     BRA .return                                                          ;A7EDB6;
 
 
-.successEtecoon:
+  .successEtecoon:
     LDA.W $0F7A,X                                                        ;A7EDB8;
     CMP.W #$0340                                                         ;A7EDBB;
     BPL .hop                                                             ;A7EDBE;
     LDA.W #Function_Etecoon_HopUntilSamusIsNear                          ;A7EDC0;
     STA.W $0FB2,X                                                        ;A7EDC3;
 
-.return:
+  .return:
     RTL                                                                  ;A7EDC6;
 
 
@@ -10874,7 +10874,7 @@ Function_Etecoon_StartHop_TopOfRoom:
     BEQ .timerExpired                                                    ;A7EDCD;
     BPL .return                                                          ;A7EDCF;
 
-.timerExpired:
+  .timerExpired:
     LDA.W $0FB4,X                                                        ;A7EDD1;
     CLC                                                                  ;A7EDD4;
     ADC.W #$0100                                                         ;A7EDD5;
@@ -10899,7 +10899,7 @@ Function_Etecoon_StartHop_TopOfRoom:
     BRA .merge                                                           ;A7EE0C;
 
 
-.notFailedJump:
+  .notFailedJump:
     LDA.W #Function_Etecoon_Hopping_TopOfRoom                            ;A7EE0E;
     STA.W $0FB2,X                                                        ;A7EE11;
     LDA.W $0F92,X                                                        ;A7EE14;
@@ -10907,7 +10907,7 @@ Function_Etecoon_StartHop_TopOfRoom:
     INC A                                                                ;A7EE18;
     STA.W $0F92,X                                                        ;A7EE19;
 
-.merge:
+  .merge:
     LDA.W EtecoonConstants_initialYVelocityOfHopsAndFailedJumps          ;A7EE1C;
     STA.W $0FA8,X                                                        ;A7EE1F;
     LDA.W EtecoonConstants_initialYVelocityOfHopsAndFailedJumps+2        ;A7EE22;
@@ -10920,7 +10920,7 @@ Function_Etecoon_StartHop_TopOfRoom:
     LDA.W #$0033                                                         ;A7EE36;
     JSL.L QueueSound_Lib2_Max6                                           ;A7EE39;
 
-.return:
+  .return:
     RTL                                                                  ;A7EE3D;
 
 
@@ -10930,7 +10930,7 @@ Function_Etecoon_HopUntilSamusIsNear:
     BEQ .timerExpired                                                    ;A7EE44;
     BPL .return                                                          ;A7EE46;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #$0040                                                         ;A7EE48;
     JSL.L IsSamusWithingAPixelRowsOfEnemy                                ;A7EE4B;
     TAY                                                                  ;A7EE4F;
@@ -10946,7 +10946,7 @@ Function_Etecoon_HopUntilSamusIsNear:
     BRA .skipSFX                                                         ;A7EE68;
 
 
-.notClose:
+  .notClose:
     LDA.W EtecoonConstants_initialYVelocityOfHopsAndFailedJumps          ;A7EE6A;
     STA.W $0FA8,X                                                        ;A7EE6D;
     LDA.W EtecoonConstants_initialYVelocityOfHopsAndFailedJumps+2        ;A7EE70;
@@ -10963,11 +10963,11 @@ Function_Etecoon_HopUntilSamusIsNear:
     LDA.W #$0033                                                         ;A7EE8C;
     JSL.L QueueSound_Lib2_Max6                                           ;A7EE8F;
 
-.skipSFX:
+  .skipSFX:
     LDA.W #$0001                                                         ;A7EE93;
     STA.W $0F94,X                                                        ;A7EE96;
 
-.return:
+  .return:
     RTL                                                                  ;A7EE99;
 
 
@@ -10983,7 +10983,7 @@ Function_Etecoon_RunningForFailedMorphTunnelJump:
     LDA.W #InstList_Etecoon_JumpingRight                                 ;A7EEB1;
     STA.W $0F92,X                                                        ;A7EEB4;
 
-.return:
+  .return:
     RTL                                                                  ;A7EEB7;
 
 
@@ -11006,7 +11006,7 @@ Function_Etecoon_FailedTunnelJump:
     LDA.W #InstList_Etecoon_RunningLeft                                  ;A7EEE4;
     STA.W $0F92,X                                                        ;A7EEE7;
 
-.return:
+  .return:
     RTL                                                                  ;A7EEEA;
 
 
@@ -11499,16 +11499,16 @@ InitAI_Dachora:
     BRA +                                                                ;A7F505;
 
 
-.left:
+  .left:
     LDA.W #InstList_Dachora_Idling_FacingLeft                            ;A7F507;
     STA.W $0F92,X                                                        ;A7F50A;
 
-  + LDA.W #Function_Dachora_WaitForSamusToBeNear                         ;A7F50D;
++   LDA.W #Function_Dachora_WaitForSamusToBeNear                         ;A7F50D;
     STA.W $0FB2,X                                                        ;A7F510;
     RTL                                                                  ;A7F513;
 
 
-.echo:
+  .echo:
     BIT.W #$0001                                                         ;A7F514;
     BEQ ..left                                                           ;A7F517;
     LDA.W #InstList_Dachora_Echo_FacingRight                             ;A7F519;
@@ -11516,11 +11516,11 @@ InitAI_Dachora:
     BRA +                                                                ;A7F51F;
 
 
-..left:
+  ..left:
     LDA.W #InstList_Dachora_Echo_FacingLeft                              ;A7F521;
     STA.W $0F92,X                                                        ;A7F524;
 
-  + LDA.W #Function_Dachora_Echo                                         ;A7F527;
++   LDA.W #Function_Dachora_Echo                                         ;A7F527;
     STA.W $0FB2,X                                                        ;A7F52A;
     RTL                                                                  ;A7F52D;
 
@@ -11550,7 +11550,7 @@ LoadDachoraPalette:
     TYX                                                                  ;A7F54A;
     LDY.W #$0000                                                         ;A7F54B;
 
-.loop:
+  .loop:
     LDA.W $0000,X                                                        ;A7F54E;
     STA.B [$00],Y                                                        ;A7F551;
     INX                                                                  ;A7F553;
@@ -11564,7 +11564,7 @@ LoadDachoraPalette:
     RTS                                                                  ;A7F55E;
 
 
-.pointers:
+  .pointers:
 ; pointers to $7E
     dw $C100                                                             ;A7F55F;
     dw $C120                                                             ;A7F561;
@@ -11599,11 +11599,11 @@ Function_Dachora_WaitForSamusToBeNear:
     BRA +                                                                ;A7F59A;
 
 
-.left:
+  .left:
     LDA.W #InstList_Dachora_Blinking_FacingLeft                          ;A7F59C;
     STA.W $0F92,X                                                        ;A7F59F;
 
-  + LDA.W #$0001                                                         ;A7F5A2;
++   LDA.W #$0001                                                         ;A7F5A2;
     STA.W $0F94,X                                                        ;A7F5A5;
     LDA.W #Function_Dachora_StartRunning                                 ;A7F5A8;
     STA.W $0FB2,X                                                        ;A7F5AB;
@@ -11612,7 +11612,7 @@ Function_Dachora_WaitForSamusToBeNear:
     LDA.W #$001D                                                         ;A7F5B4;
     JSL.L QueueSound_Lib2_Max15                                          ;A7F5B7;
 
-.return:
+  .return:
     RTL                                                                  ;A7F5BB;
 
 
@@ -11628,18 +11628,18 @@ Function_Dachora_StartRunning:
     BRA +                                                                ;A7F5D2;
 
 
-.left:
+  .left:
     LDA.W #InstList_Dachora_RunningLeft                                  ;A7F5D4;
     STA.W $0F92,X                                                        ;A7F5D7;
     LDA.W #Function_Dachora_RunningLeft                                  ;A7F5DA;
     STA.W $0FB2,X                                                        ;A7F5DD;
 
-  + LDA.W #$0001                                                         ;A7F5E0;
++   LDA.W #$0001                                                         ;A7F5E0;
     STA.W $0F94,X                                                        ;A7F5E3;
     LDA.W #$0001                                                         ;A7F5E6;
     STA.W $0FB0,X                                                        ;A7F5E9;
 
-.return:
+  .return:
     RTL                                                                  ;A7F5EC;
 
 
@@ -11655,13 +11655,13 @@ Function_Dachora_RunningLeft:
     BNE +                                                                ;A7F5FF;
     INC.B $14                                                            ;A7F601;
 
-  + JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A7F603;
++   JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A7F603;
     BCS .stop                                                            ;A7F607;
     JSL.L AlignEnemyYPositionWIthNonSquareSlope                          ;A7F609;
     BRA .noWall                                                          ;A7F60D;
 
 
-.stop:
+  .stop:
     LDA.W #InstList_Dachora_RunningRight                                 ;A7F60F;
     STA.W $0F92,X                                                        ;A7F612;
     LDA.W #Function_Dachora_RunningRight                                 ;A7F615;
@@ -11669,7 +11669,7 @@ Function_Dachora_RunningLeft:
     LDA.W #$0001                                                         ;A7F61B;
     STA.W $0FB0,X                                                        ;A7F61E;
 
-.merge:
+  .merge:
     LDA.W #$0001                                                         ;A7F621;
     STA.W $0FB4,X                                                        ;A7F624;
     LDA.W #$0001                                                         ;A7F627;
@@ -11681,7 +11681,7 @@ Function_Dachora_RunningLeft:
     RTL                                                                  ;A7F639;
 
 
-.noWall:
+  .noWall:
     LDA.W $0F7A,X                                                        ;A7F63A;
     CMP.W #$0060                                                         ;A7F63D;
     BMI .stop                                                            ;A7F640;
@@ -11707,7 +11707,7 @@ Function_Dachora_RunningRight:
     BRA .noWall                                                          ;A7F66B;
 
 
-.collision:
+  .collision:
     LDA.W #$0071                                                         ;A7F66D;
     JSL.L QueueSound_Lib2_Max15                                          ;A7F670;
     LDA.W #InstList_Dachora_RunningLeft                                  ;A7F674;
@@ -11715,13 +11715,13 @@ Function_Dachora_RunningRight:
     LDA.W #Function_Dachora_RunningLeft                                  ;A7F67A;
     STA.W $0FB2,X                                                        ;A7F67D;
 
-.merge:
+  .merge:
     STZ.W $0FB4,X                                                        ;A7F680;
     STZ.W $0FA8,X                                                        ;A7F683;
     LDY.W #Palette_Dachora                                               ;A7F686;
     JSR.W LoadDachoraPalette                                             ;A7F689;
 
-.newAnimation:
+  .newAnimation:
     STZ.W $0FB0,X                                                        ;A7F68C;
     STZ.W $0FAA,X                                                        ;A7F68F;
     LDA.W #$0001                                                         ;A7F692;
@@ -11729,14 +11729,14 @@ Function_Dachora_RunningRight:
     RTL                                                                  ;A7F698;
 
 
-.noWall:
+  .noWall:
     LDA.W $0F7A,X                                                        ;A7F699;
     CMP.W #$0480                                                         ;A7F69C;
     BPL +                                                                ;A7F69F;
     RTL                                                                  ;A7F6A1;
 
 
-  + LDA.W #InstList_Dachora_ChargeShinespark_FacingRight                 ;A7F6A2;
++   LDA.W #InstList_Dachora_ChargeShinespark_FacingRight                 ;A7F6A2;
     STA.W $0F92,X                                                        ;A7F6A5;
     LDA.W #Function_Dachora_ActivateShinespark                           ;A7F6A8;
     STA.W $0FB2,X                                                        ;A7F6AB;
@@ -11767,7 +11767,7 @@ AccelerateRunningDachora:
     LDA.W #$0039                                                         ;A7F6E5;
     JSL.L QueueSound_Lib2_Max6                                           ;A7F6E8;
 
-.animTimer:
+  .animTimer:
     LDA.W $0FB0,X                                                        ;A7F6EC;
     DEC A                                                                ;A7F6EF;
     STA.W $0FB0,X                                                        ;A7F6F0;
@@ -11775,7 +11775,7 @@ AccelerateRunningDachora:
     BEQ .loadPalette                                                     ;A7F6F6;
     BPL .noPaletteChange                                                 ;A7F6F8;
 
-.loadPalette:
+  .loadPalette:
     LDA.W $0FB0,X                                                        ;A7F6FA;
     XBA                                                                  ;A7F6FD;
     AND.W #$00FF                                                         ;A7F6FE;
@@ -11793,7 +11793,7 @@ AccelerateRunningDachora:
     LDA.W #$0310                                                         ;A7F719;
     STA.W $0FB0,X                                                        ;A7F71C;
 
-.noPaletteChange:
+  .noPaletteChange:
     LDA.W #$0001                                                         ;A7F71F;
     STA.B $14                                                            ;A7F722;
     STZ.B $12                                                            ;A7F724;
@@ -11813,7 +11813,7 @@ AccelerateRunningDachora:
     BRA .return                                                          ;A7F74A;
 
 
-.increaseSpeed:
+  .increaseSpeed:
     LDA.W $0FAA,X                                                        ;A7F74C;
     CLC                                                                  ;A7F74F;
     ADC.W DachoraConstants_XAcceleration+2                               ;A7F750;
@@ -11829,7 +11829,7 @@ AccelerateRunningDachora:
     CMP.W #$0000                                                         ;A7F76A;
     BNE .return                                                          ;A7F76D;
 
-.maxSpeed:
+  .maxSpeed:
     LDA.W $0F92,X                                                        ;A7F76F;
     CLC                                                                  ;A7F772;
     ADC.W #$001C                                                         ;A7F773;
@@ -11837,18 +11837,18 @@ AccelerateRunningDachora:
     RTS                                                                  ;A7F779;
 
 
-.checkMaxSpeed:
+  .checkMaxSpeed:
     CMP.W #$0008                                                         ;A7F77A;
     BNE .return                                                          ;A7F77D;
     LDA.B $12                                                            ;A7F77F;
     CMP.W #$0000                                                         ;A7F781;
     BEQ .maxSpeed                                                        ;A7F784;
 
-.return:
+  .return:
     RTS                                                                  ;A7F786;
 
 
-.pointers:
+  .pointers:
     dw Palette_Dachora_SpeedBoosting_0                                   ;A7F787;
     dw Palette_Dachora_SpeedBoosting_1                                   ;A7F789;
     dw Palette_Dachora_SpeedBoosting_2                                   ;A7F78B;
@@ -11889,20 +11889,20 @@ Function_Dachora_ActivateShinespark:
     BRA +                                                                ;A7F7E5;
 
 
-.left:
+  .left:
     LDA.W #InstList_Dachora_Echo_FacingLeft                              ;A7F7E7;
     STA.W $0FD2,X                                                        ;A7F7EA;
     STA.W $1012,X                                                        ;A7F7ED;
     STA.W $1052,X                                                        ;A7F7F0;
     STA.W $1092,X                                                        ;A7F7F3;
 
-  + LDA.W #$0001                                                         ;A7F7F6;
++   LDA.W #$0001                                                         ;A7F7F6;
     STA.W $0FD4,X                                                        ;A7F7F9;
     STA.W $1014,X                                                        ;A7F7FC;
     STA.W $1054,X                                                        ;A7F7FF;
     STA.W $1094,X                                                        ;A7F802;
 
-.return:
+  .return:
     RTL                                                                  ;A7F805;
 
 
@@ -11930,7 +11930,7 @@ Function_Dachora_Shinesparking:
     LDA.W #$000F                                                         ;A7F83D;
     STA.B $14                                                            ;A7F840;
 
-  + LDA.B $14                                                            ;A7F842;
++   LDA.B $14                                                            ;A7F842;
     EOR.W #$FFFF                                                         ;A7F844;
     STA.B $14                                                            ;A7F847;
     LDA.B $12                                                            ;A7F849;
@@ -11940,7 +11940,7 @@ Function_Dachora_Shinesparking:
     BNE .move                                                            ;A7F851;
     INC.B $14                                                            ;A7F853;
 
-.move:
+  .move:
     JSL.L MoveEnemyDownBy_14_12                                          ;A7F855;
     BCC .return                                                          ;A7F859;
     LDA.W $0FB4,X                                                        ;A7F85B;
@@ -11952,12 +11952,12 @@ Function_Dachora_Shinesparking:
     BRA +                                                                ;A7F86C;
 
 
-.right:
+  .right:
     LDA.W #InstList_Dachora_Falling_FacingLeft                           ;A7F86E;
     STA.W $0F92,X                                                        ;A7F871;
     STZ.W $0FB4,X                                                        ;A7F874;
 
-  + LDA.W #Function_Dachora_Falling                                      ;A7F877;
++   LDA.W #Function_Dachora_Falling                                      ;A7F877;
     STA.W $0FB2,X                                                        ;A7F87A;
     LDA.W #$0001                                                         ;A7F87D;
     STA.W $0F94,X                                                        ;A7F880;
@@ -11969,7 +11969,7 @@ Function_Dachora_Shinesparking:
     LDA.W #$003C                                                         ;A7F892;
     JSL.L QueueSound_Lib2_Max6                                           ;A7F895;
 
-.return:
+  .return:
     RTL                                                                  ;A7F899;
 
 
@@ -11981,7 +11981,7 @@ UpdateDachoraEchoPositions:
     RTS                                                                  ;A7F8A3;
 
 
-.timerExpired:
+  .timerExpired:
     LDA.W DachoraConstants_echoPositionUpdateInterval                    ;A7F8A4;
     STA.W $0FE8,X                                                        ;A7F8A7;
     LDA.W $0FEE,X                                                        ;A7F8AA;
@@ -11995,7 +11995,7 @@ UpdateDachoraEchoPositions:
     RTS                                                                  ;A7F8C1;
 
 
-.echo1:
+  .echo1:
     LDA.W $102E,X                                                        ;A7F8C2;
     BNE .echo2                                                           ;A7F8C5;
     LDA.W $0F7A,X                                                        ;A7F8C7;
@@ -12007,7 +12007,7 @@ UpdateDachoraEchoPositions:
     RTS                                                                  ;A7F8D9;
 
 
-.echo2:
+  .echo2:
     LDA.W $106E,X                                                        ;A7F8DA;
     BNE .echo3                                                           ;A7F8DD;
     LDA.W $0F7A,X                                                        ;A7F8DF;
@@ -12019,7 +12019,7 @@ UpdateDachoraEchoPositions:
     RTS                                                                  ;A7F8F1;
 
 
-.echo3:
+  .echo3:
     LDA.W $10AE,X                                                        ;A7F8F2;
     BNE .return                                                          ;A7F8F5;
     LDA.W $0F7A,X                                                        ;A7F8F7;
@@ -12029,7 +12029,7 @@ UpdateDachoraEchoPositions:
     LDA.W DachoraConstants_echoLifetime                                  ;A7F903;
     STA.W $10AE,X                                                        ;A7F906;
 
-.return:
+  .return:
     RTS                                                                  ;A7F909;
 
 
@@ -12050,11 +12050,11 @@ LoadDachoraShinePalette:
     BMI .return                                                          ;A7F927;
     STZ.W $0FB0,X                                                        ;A7F929;
 
-.return:
+  .return:
     RTS                                                                  ;A7F92C;
 
 
-.pointers:
+  .pointers:
     dw Palette_Dachora_Shine_0                                           ;A7F92D;
     dw Palette_Dachora_Shine_1                                           ;A7F92F;
     dw Palette_Dachora_Shine_2                                           ;A7F931;
@@ -12076,7 +12076,7 @@ Function_Dachora_Falling:
     STA.B $14                                                            ;A7F956;
     STZ.B $12                                                            ;A7F958;
 
-  + JSL.L MoveEnemyDownBy_14_12                                          ;A7F95A;
++   JSL.L MoveEnemyDownBy_14_12                                          ;A7F95A;
     BCC .return                                                          ;A7F95E;
     LDA.W $0FB4,X                                                        ;A7F960;
     BEQ .left                                                            ;A7F963;
@@ -12087,18 +12087,18 @@ Function_Dachora_Falling:
     BRA +                                                                ;A7F971;
 
 
-.left:
+  .left:
     LDA.W #InstList_Dachora_RunningLeft                                  ;A7F973;
     STA.W $0F92,X                                                        ;A7F976;
     LDA.W #Function_Dachora_RunningLeft                                  ;A7F979;
     STA.W $0FB2,X                                                        ;A7F97C;
 
-  + LDA.W #$0001                                                         ;A7F97F;
++   LDA.W #$0001                                                         ;A7F97F;
     STA.W $0F94,X                                                        ;A7F982;
     STZ.W $0FA8,X                                                        ;A7F985;
     STZ.W $0FAA,X                                                        ;A7F988;
 
-.return:
+  .return:
     RTL                                                                  ;A7F98B;
 
 
@@ -12116,23 +12116,23 @@ Function_Dachora_Echo:
     BRA .invisible                                                       ;A7F9A3;
 
 
-  + LDA.W $05B6                                                          ;A7F9A5;
++   LDA.W $05B6                                                          ;A7F9A5;
     BIT.W #$0001                                                         ;A7F9A8;
     BEQ .visible                                                         ;A7F9AB;
 
-.invisible:
+  .invisible:
     LDA.W $0F86,X                                                        ;A7F9AD;
     ORA.W #$0100                                                         ;A7F9B0;
     STA.W $0F86,X                                                        ;A7F9B3;
     BRA .return                                                          ;A7F9B6;
 
 
-.visible:
+  .visible:
     LDA.W $0F86,X                                                        ;A7F9B8;
     AND.W #$FEFF                                                         ;A7F9BB;
     STA.W $0F86,X                                                        ;A7F9BE;
 
-.return:
+  .return:
     RTL                                                                  ;A7F9C1;
 
 

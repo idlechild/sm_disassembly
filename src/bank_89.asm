@@ -3340,11 +3340,11 @@ Load_FX_Entry:
     BRA .return                                                          ;89AB76;
 
 
-.blend0:
+  .blend0:
     LDA.W #$0000                                                         ;89AB78;
     STA.L $7EC036                                                        ;89AB7B;
 
-.return:
+  .return:
     PLB                                                                  ;89AB7F;
     PLP                                                                  ;89AB80;
     RTL                                                                  ;89AB81;
@@ -3364,10 +3364,10 @@ Load_FX_Header:
     RTL                                                                  ;89AB92;
 
 
-  + LDA.W $0000,X                                                        ;89AB93;
++   LDA.W $0000,X                                                        ;89AB93;
     LDY.W #$0000                                                         ;89AB96;
 
-.loopDoor:
+  .loopDoor:
     LDA.W $0000,X                                                        ;89AB99;
     BEQ .load                                                            ;89AB9C;
     CMP.W #$FFFF                                                         ;89AB9E;
@@ -3377,7 +3377,7 @@ Load_FX_Header:
     RTL                                                                  ;89ABA5;
 
 
-  + CMP.W $078D                                                          ;89ABA6;
++   CMP.W $078D                                                          ;89ABA6;
     BEQ .load                                                            ;89ABA9;
     TXA                                                                  ;89ABAB;
     CLC                                                                  ;89ABAC;
@@ -3390,7 +3390,7 @@ Load_FX_Header:
     BRA .loopDoor                                                        ;89ABB7;
 
 
-.load:
+  .load:
     STY.W $1968                                                          ;89ABB9;
     STX.W $1966                                                          ;89ABBC;
     LDX.W $1966                                                          ;89ABBF;
@@ -3425,11 +3425,11 @@ Load_FX_Header:
     BRA +                                                                ;89AC19;
 
 
-.blend0:
+  .blend0:
     LDA.W #$0000                                                         ;89AC1B;
     STA.L $7EC236                                                        ;89AC1E;
 
-  + LDX.W $1966                                                          ;89AC22;
++   LDX.W $1966                                                          ;89AC22;
     LDA.W $0009,X                                                        ;89AC25;
     AND.W #$00FF                                                         ;89AC28;
     STA.W $196E                                                          ;89AC2B;
@@ -3438,7 +3438,7 @@ Load_FX_Header:
     LDA.W FXType_Tilemap_Pointers,Y                                      ;89AC31;
     STA.W $1964                                                          ;89AC34;
 
-  + LDX.W $1966                                                          ;89AC37;
++   LDX.W $1966                                                          ;89AC37;
     LDA.W $0009,X                                                        ;89AC3A;
     AND.W #$00FF                                                         ;89AC3D;
     BEQ .JMLreturn                                                       ;89AC40;
@@ -3452,7 +3452,7 @@ Load_FX_Header:
     JML.W [$0012]                                                        ;89AC51;
 
 
-.JMLreturn:
+  .JMLreturn:
     LDX.W $1966                                                          ;89AC54;
     LDA.W $000D,X                                                        ;89AC57;
     AND.W #$00FF                                                         ;89AC5A;
@@ -3465,7 +3465,7 @@ Load_FX_Header:
     STA.B $AF                                                            ;89AC6A;
     LDY.W #$0000                                                         ;89AC6C;
 
-.loopPaletteFX:
+  .loopPaletteFX:
     LSR.W $196A                                                          ;89AC6F;
     BCS .spawnPaletteFX                                                  ;89AC72;
     INY                                                                  ;89AC74;
@@ -3475,7 +3475,7 @@ Load_FX_Header:
     BRA .paletteFXEnd                                                    ;89AC7B;
 
 
-.spawnPaletteFX:
+  .spawnPaletteFX:
     LDA.B ($AF),Y                                                        ;89AC7D;
     PHY                                                                  ;89AC7F;
     TAY                                                                  ;89AC80;
@@ -3486,7 +3486,7 @@ Load_FX_Header:
     BRA .loopPaletteFX                                                   ;89AC88;
 
 
-.paletteFXEnd:
+  .paletteFXEnd:
     LDX.W $1966                                                          ;89AC8A;
     LDA.W $000E,X                                                        ;89AC8D;
     AND.W #$00FF                                                         ;89AC90;
@@ -3499,7 +3499,7 @@ Load_FX_Header:
     STA.B $AF                                                            ;89ACA0;
     LDY.W #$0000                                                         ;89ACA2;
 
-.loopAnimatedTiles:
+  .loopAnimatedTiles:
     LSR.W $196A                                                          ;89ACA5;
     BCS .spawnAnimatedTiles                                              ;89ACA8;
     INY                                                                  ;89ACAA;
@@ -3509,7 +3509,7 @@ Load_FX_Header:
     BRA .return                                                          ;89ACB1;
 
 
-.spawnAnimatedTiles:
+  .spawnAnimatedTiles:
     LDA.B ($AF),Y                                                        ;89ACB3;
     PHY                                                                  ;89ACB5;
     TAY                                                                  ;89ACB6;
@@ -3520,7 +3520,7 @@ Load_FX_Header:
     BRA .loopAnimatedTiles                                               ;89ACBE;
 
 
-.return:
+  .return:
     PLB                                                                  ;89ACC0;
     PLP                                                                  ;89ACC1;
     RTL                                                                  ;89ACC2;
@@ -3536,7 +3536,7 @@ RoomMainASM_CeresElevatorShaft:
     RTL                                                                  ;89ACCC;
 
 
-.rotating:
+  .rotating:
     LDA.W #$0080                                                         ;89ACCD;
     SEC                                                                  ;89ACD0;
     SBC.W #$0010                                                         ;89ACD1;
@@ -3567,7 +3567,7 @@ RoomMainASM_CeresElevatorShaft:
     LDA.W #$0020                                                         ;89AD14;
     STA.W $0998                                                          ;89AD17;
 
-.handleRotationMatrix:
+  .handleRotationMatrix:
     DEC.W $07E3                                                          ;89AD1A;
     BPL .return                                                          ;89AD1D;
     LDA.W $07E1                                                          ;89AD1F;
@@ -3595,27 +3595,27 @@ RoomMainASM_CeresElevatorShaft:
     BRA .storeIndex                                                      ;89AD4F;
 
 
-.decRotationMatrixIndex:
+  .decRotationMatrixIndex:
     DEC A                                                                ;89AD51;
     CMP.W #$8000                                                         ;89AD52;
     BNE .storeIndex                                                      ;89AD55;
     LDA.W #$0000                                                         ;89AD57;
 
-.storeIndex:
+  .storeIndex:
     STA.W $07E1                                                          ;89AD5A;
 
-.return:
+  .return:
     PLB                                                                  ;89AD5D;
     RTL                                                                  ;89AD5E;
 
 
-.timer:
+  .timer:
     dw $003C                                                             ;89AD5F;
 
-.sinT:
+  .sinT:
     dw $FFDE                                                             ;89AD61;
 
-.cosT:
+  .cosT:
     dw $00FE,$001A,$FFDF,$00FE,$0018,$FFE0,$00FE,$0016                   ;89AD63;
     dw $FFE1,$00FE,$0014,$FFE2,$00FE,$0012,$FFE3,$00FE                   ;89AD73;
     dw $0010,$FFE4,$00FE,$000E,$FFE5,$00FF,$000C,$FFE6                   ;89AD83;
@@ -3630,7 +3630,7 @@ RoomMainASM_CeresElevatorShaft:
     dw $0001,$FFFC,$0100,$0001,$FFFD,$0100,$0001,$FFFE                   ;89AE13;
     dw $0100,$0001,$FFFF,$0100                                           ;89AE23;
 
-.initialEntry:
+  .initialEntry:
     dw $0001,$0000,$0100,$0001,$0001,$0100,$0001,$0002                   ;89AE2B;
     dw $0100,$0001,$0003,$0100,$0001,$0004,$0100,$0002                   ;89AE3B;
     dw $0005,$0100,$0002,$0006,$0100,$0002,$0007,$0100                   ;89AE4B;

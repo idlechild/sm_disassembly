@@ -2029,13 +2029,13 @@ DebugHandler_7_EnemyDebugger_EnemySpawnDataEditor:
     BRA .draw                                                            ;B49317;
 
 
-.nonZeroName:
+  .nonZeroName:
     TAX                                                                  ;B49319;
     LDA.L $B4000C,X                                                      ;B4931A;
     CLC                                                                  ;B4931E;
     ADC.W #$0030                                                         ;B4931F;
 
-.draw:
+  .draw:
     JSL.L Add_Debug_Spritemap_to_OAM                                     ;B49322;
     JSR.W Draw_Debug_Enemy_Spawn_Values                                  ;B49326;
     LDA.B $91                                                            ;B49329;
@@ -2046,14 +2046,14 @@ DebugHandler_7_EnemyDebugger_EnemySpawnDataEditor:
     RTS                                                                  ;B49336;
 
 
-.checkSelect:
+  .checkSelect:
     LDA.B $91                                                            ;B49337;
     BIT.W #$2000                                                         ;B49339;
     BEQ .checkA                                                          ;B4933C;
     INC.W $185C                                                          ;B4933E;
     STZ.W $185E                                                          ;B49341;
 
-.checkA:
+  .checkA:
     LDA.B $91                                                            ;B49344;
     BIT.W #$0080                                                         ;B49346;
     BEQ .checkL                                                          ;B49349;
@@ -2063,14 +2063,14 @@ DebugHandler_7_EnemyDebugger_EnemySpawnDataEditor:
     LDA.W $0F7E,X                                                        ;B49355;
     STA.L $7E7022,X                                                      ;B49358;
 
-.checkL:
+  .checkL:
     LDA.B $91                                                            ;B4935C;
     BIT.W #$0020                                                         ;B4935E;
     BEQ .return                                                          ;B49361;
     INC.W $185C                                                          ;B49363;
     INC.W $185C                                                          ;B49366;
 
-.return:
+  .return:
     LDA.W #$0001                                                         ;B49369;
     RTS                                                                  ;B4936C;
 
@@ -2227,7 +2227,7 @@ DebugHandler_9_EnemyDebugger_EnemySpawner:
     LDA.W #$0038                                                         ;B494DF;
     STA.W $0E2A                                                          ;B494E2;
 
-.loop:
+  .loop:
     LDX.W $0E26                                                          ;B494E5;
     LDA.L $B40000,X                                                      ;B494E8;
     CMP.W #$FFFF                                                         ;B494EC;
@@ -2269,7 +2269,7 @@ DebugHandler_9_EnemyDebugger_EnemySpawner:
     BRA .loop                                                            ;B4954A;
 
 
-.endLoop:
+  .endLoop:
     LDA.W #$0A00                                                         ;B4954C;
     STA.B $26                                                            ;B4954F;
     LDA.W #$00B0                                                         ;B49551;
@@ -2283,7 +2283,7 @@ DebugHandler_9_EnemyDebugger_EnemySpawner:
     BRA .resolvedName                                                    ;B49567;
 
 
-.hasSpawnID:
+  .hasSpawnID:
     TAX                                                                  ;B49569;
     LDA.L $A0003E,X                                                      ;B4956A;
     BNE +                                                                ;B4956E;
@@ -2291,12 +2291,12 @@ DebugHandler_9_EnemyDebugger_EnemySpawner:
     BRA .resolvedName                                                    ;B49573;
 
 
-  + TAX                                                                  ;B49575;
++   TAX                                                                  ;B49575;
     LDA.L $B4000C,X                                                      ;B49576;
     CLC                                                                  ;B4957A;
     ADC.W #$0030                                                         ;B4957B;
 
-.resolvedName:
+  .resolvedName:
     JSL.L Add_Debug_Spritemap_to_OAM                                     ;B4957E;
     LDA.B $91                                                            ;B49582;
     BIT.W #$0400                                                         ;B49584;
@@ -2308,9 +2308,9 @@ DebugHandler_9_EnemyDebugger_EnemySpawner:
     BNE +                                                                ;B49593;
     LDA.W #$0000                                                         ;B49595;
 
-  + STA.W $1864                                                          ;B49598;
++   STA.W $1864                                                          ;B49598;
 
-.checkTerminator:
+  .checkTerminator:
     LDA.W $07D1                                                          ;B4959B;
     CLC                                                                  ;B4959E;
     ADC.W $1864                                                          ;B4959F;
@@ -2322,7 +2322,7 @@ DebugHandler_9_EnemyDebugger_EnemySpawner:
     LDX.W $07D1                                                          ;B495AF;
     LDA.L $B40000,X                                                      ;B495B2;
 
-  + STA.B $12                                                            ;B495B6;
++   STA.B $12                                                            ;B495B6;
     TAX                                                                  ;B495B8;
     LDA.L $A0003E,X                                                      ;B495B9;
     TAX                                                                  ;B495BD;
@@ -2340,7 +2340,7 @@ DebugHandler_9_EnemyDebugger_EnemySpawner:
     RTS                                                                  ;B495DC;
 
 
-.checkL:
+  .checkL:
     LDA.B $91                                                            ;B495DD;
     BIT.W #$0020                                                         ;B495DF;
     BNE .checkB                                                          ;B495E2;
@@ -2348,7 +2348,7 @@ DebugHandler_9_EnemyDebugger_EnemySpawner:
     RTS                                                                  ;B495E7;
 
 
-.checkB:
+  .checkB:
     LDX.W $1866                                                          ;B495E8;
     CMP.W #$8000                                                         ;B495EB;
     BMI +                                                                ;B495EE;
@@ -2363,7 +2363,7 @@ DebugHandler_9_EnemyDebugger_EnemySpawner:
     RTS                                                                  ;B49606;
 
 
-  + LDY.W $1846                                                          ;B49607;
++   LDY.W $1846                                                          ;B49607;
     LDA.W $0F7A,Y                                                        ;B4960A;
     STA.W $1868                                                          ;B4960D;
     LDA.W $0F7E,Y                                                        ;B49610;
@@ -2403,11 +2403,11 @@ Debug_HandleCursorMovement:
     BNE +                                                                ;B49657;
     LDA.W #$00C0                                                         ;B49659;
 
-  + STA.W $1860                                                          ;B4965C;
++   STA.W $1860                                                          ;B4965C;
     BRA .return                                                          ;B4965F;
 
 
-.noRight:
+  .noRight:
     BIT.W #$0200                                                         ;B49661;
     BEQ .noLeft                                                          ;B49664;
     LDA.W $1860                                                          ;B49666;
@@ -2417,11 +2417,11 @@ Debug_HandleCursorMovement:
     BNE +                                                                ;B49670;
     LDA.W #$00D8                                                         ;B49672;
 
-  + STA.W $1860                                                          ;B49675;
++   STA.W $1860                                                          ;B49675;
     BRA .return                                                          ;B49678;
 
 
-.noLeft:
+  .noLeft:
     BIT.W #$0400                                                         ;B4967A;
     BEQ .noDown                                                          ;B4967D;
     LDA.W $1862                                                          ;B4967F;
@@ -2431,11 +2431,11 @@ Debug_HandleCursorMovement:
     BNE +                                                                ;B49689;
     LDA.W #$0030                                                         ;B4968B;
 
-  + STA.W $1862                                                          ;B4968E;
++   STA.W $1862                                                          ;B4968E;
     BRA .return                                                          ;B49691;
 
 
-.noDown:
+  .noDown:
     BIT.W #$0800                                                         ;B49693;
     BEQ .return                                                          ;B49696;
     LDA.W $1862                                                          ;B49698;
@@ -2445,10 +2445,10 @@ Debug_HandleCursorMovement:
     BNE .setCursorY                                                      ;B496A2;
     LDA.W #$0060                                                         ;B496A4;
 
-.setCursorY:
+  .setCursorY:
     STA.W $1862                                                          ;B496A7;
 
-.return:
+  .return:
     RTS                                                                  ;B496AA;
 
 
@@ -2490,7 +2490,7 @@ Debug_HandleDigitModification:
     BRA +                                                                ;B496FD;
 
 
-.notNewlyPressedX:
+  .notNewlyPressedX:
     BIT.W #$8000                                                         ;B496FF;
     BEQ +                                                                ;B49702;
     LDA.W $1860                                                          ;B49704;
@@ -2510,7 +2510,7 @@ Debug_HandleDigitModification:
     SBC.W .data,X                                                        ;B4971C;
     STA.W $0012,Y                                                        ;B4971F;
 
-  + LDX.W $1846                                                          ;B49722;
++   LDX.W $1846                                                          ;B49722;
     LDA.B $12                                                            ;B49725;
     STA.L $7E7020,X                                                      ;B49727;
     LDA.B $14                                                            ;B4972B;
@@ -2528,7 +2528,7 @@ Debug_HandleDigitModification:
     RTS                                                                  ;B4974F;
 
 
-.data:
+  .data:
     dw $1000,$0100,$0010,$0001                                           ;B49750;
 
 DebugHandler_10_EnemyDebugger_EnemyAllocationViewer:
@@ -2540,7 +2540,7 @@ DebugHandler_10_EnemyDebugger_EnemyAllocationViewer:
     RTS                                                                  ;B49765;
 
 
-.notNewlyPressedSelect:
+  .notNewlyPressedSelect:
     LDA.W $07D1                                                          ;B49766;
     TAX                                                                  ;B49769;
     STA.W $0E26                                                          ;B4976A;
@@ -2549,7 +2549,7 @@ DebugHandler_10_EnemyDebugger_EnemyAllocationViewer:
     STA.W $0E2A                                                          ;B49773;
     STZ.W $0E2C                                                          ;B49776;
 
-.loop:
+  .loop:
     LDX.W $0E26                                                          ;B49779;
     LDA.L $B40000,X                                                      ;B4977C;
     CMP.W #$FFFF                                                         ;B49780;
@@ -2598,7 +2598,7 @@ DebugHandler_10_EnemyDebugger_EnemyAllocationViewer:
     BRA .loop                                                            ;B497EE;
 
 
-.terminated:
+  .terminated:
     LDA.W $0E2C                                                          ;B497F0;
     STA.W $0E24                                                          ;B497F3;
     LDA.W #$00A8                                                         ;B497F6;
@@ -2626,7 +2626,7 @@ DebugHandler:
     RTL                                                                  ;B4981E;
 
 
-.pointers:
+  .pointers:
     dw DebugHandler_0_Default                                            ;B4981F;
     dw DebugHandler_1_PaletteViewer_SpritePalettes                       ;B49821;
     dw DebugHandler_2_PaletteViewer_BGPalettes                           ;B49823;
@@ -2661,7 +2661,7 @@ DebugHandler_4_SpriteTilesViewer_FirstHalf:
     RTS                                                                  ;B49862;
 
 
-.resetIndex:
+  .resetIndex:
     STZ.W $185C                                                          ;B49863;
     LDA.W #$0001                                                         ;B49866;
     RTS                                                                  ;B49869;
@@ -2679,36 +2679,36 @@ DebugHandler_3_SpriteTilesViewer_SecondHalf:
     BRA .merge                                                           ;B49880;
 
 
-  + CMP.W #$0200                                                         ;B49882;
++   CMP.W #$0200                                                         ;B49882;
     BNE +                                                                ;B49885;
     LDA.W #$0400                                                         ;B49887;
     STA.W $185A                                                          ;B4988A;
     BRA .merge                                                           ;B4988D;
 
 
-  + CMP.W #$0400                                                         ;B4988F;
++   CMP.W #$0400                                                         ;B4988F;
     BNE +                                                                ;B49892;
     LDA.W #$0600                                                         ;B49894;
     STA.W $185A                                                          ;B49897;
     BRA .merge                                                           ;B4989A;
 
 
-  + CMP.W #$0600                                                         ;B4989C;
++   CMP.W #$0600                                                         ;B4989C;
     BNE +                                                                ;B4989F;
     LDA.W #$0E00                                                         ;B498A1;
     STA.W $185A                                                          ;B498A4;
     BRA .merge                                                           ;B498A7;
 
 
-  + LDA.W #$0000                                                         ;B498A9;
++   LDA.W #$0000                                                         ;B498A9;
     STA.W $185A                                                          ;B498AC;
     BRA .merge                                                           ;B498AF;
 
 
-.noChange:
+  .noChange:
     LDA.W $185A                                                          ;B498B1;
 
-.merge:
+  .merge:
     STA.B $26                                                            ;B498B4;
     LDA.W #$0080                                                         ;B498B6;
     STA.B $14                                                            ;B498B9;
@@ -2723,7 +2723,7 @@ DebugHandler_3_SpriteTilesViewer_SecondHalf:
     RTS                                                                  ;B498D2;
 
 
-.incIndex:
+  .incIndex:
     INC.W $185C                                                          ;B498D3;
     LDA.W #$0001                                                         ;B498D6;
     RTS                                                                  ;B498D9;
@@ -2752,10 +2752,10 @@ DebugHandler_1_PaletteViewer_SpritePalettes:
     RTS                                                                  ;B4990E;
 
 
-.setupLoop:
+  .setupLoop:
     LDX.W #$00FE                                                         ;B4990F;
 
-.loop:
+  .loop:
     LDA.L $7EC000,X                                                      ;B49912;
     STA.L $7EC100,X                                                      ;B49916;
     DEX                                                                  ;B4991A;
@@ -2789,7 +2789,7 @@ DebugHandler_2_PaletteViewer_BGPalettes:
     RTS                                                                  ;B49959;
 
 
-.resetIndex:
+  .resetIndex:
     STZ.W $185C                                                          ;B4995A;
     LDA.W #$0001                                                         ;B4995D;
     RTS                                                                  ;B49960;
@@ -2803,7 +2803,7 @@ DebugHandler_0_Default:
     STX.W $0998                                                          ;B4996B;
     STZ.W $0727                                                          ;B4996E;
 
-.checkL:
+  .checkL:
     LDA.B $91                                                            ;B49971;
     BIT.W #$0020                                                         ;B49973;
     BEQ .notNewlyPressedStartL                                           ;B49976;
@@ -2811,7 +2811,7 @@ DebugHandler_0_Default:
     EOR.W #$0001                                                         ;B4997B;
     STA.W $185E                                                          ;B4997E;
 
-.notNewlyPressedStartL:
+  .notNewlyPressedStartL:
     LDA.W $05C5                                                          ;B49981;
     BIT.W #$0080                                                         ;B49984;
     BNE .SelectLA                                                        ;B49987;
@@ -2832,27 +2832,27 @@ DebugHandler_0_Default:
     RTS                                                                  ;B499AC;
 
 
-.A:
+  .A:
     LDY.W #$0001                                                         ;B499AD;
     LDA.W $0E12                                                          ;B499B0;
     BEQ .toggle                                                          ;B499B3;
     LDY.W #$0000                                                         ;B499B5;
 
-.toggle:
+  .toggle:
     TYA                                                                  ;B499B8;
     STA.W $0E12                                                          ;B499B9;
     LDA.W #$0000                                                         ;B499BC;
     RTS                                                                  ;B499BF;
 
 
-.Select:
+  .Select:
     LDA.W #$0010                                                         ;B499C0;
     STA.W $185C                                                          ;B499C3;
     LDA.W #$0000                                                         ;B499C6;
     RTS                                                                  ;B499C9;
 
 
-.SelectLX:
+  .SelectLX:
     INC.W $185C                                                          ;B499CA;
     INC.W $185C                                                          ;B499CD;
     INC.W $185C                                                          ;B499D0;
@@ -2860,7 +2860,7 @@ DebugHandler_0_Default:
     RTS                                                                  ;B499D6;
 
 
-.R:
+  .R:
     INC.W $185C                                                          ;B499D7;
     INC.W $185C                                                          ;B499DA;
     INC.W $185C                                                          ;B499DD;
@@ -2870,7 +2870,7 @@ DebugHandler_0_Default:
     RTS                                                                  ;B499E9;
 
 
-.SelectLA:
+  .SelectLA:
     SEP #$20                                                             ;B499EA;
     LDA.B #$80                                                           ;B499EC;
     STA.W $2100                                                          ;B499EE;
@@ -2928,7 +2928,7 @@ DebugHandler_6_EnemyDebugger_EnemyMover:
     RTS                                                                  ;B49A66;
 
 
-.checkSelect:
+  .checkSelect:
     LDA.B $91                                                            ;B49A67;
     BIT.W #$2000                                                         ;B49A69;
     BEQ .checkA                                                          ;B49A6C;
@@ -2942,20 +2942,20 @@ DebugHandler_6_EnemyDebugger_EnemyMover:
     BMI +                                                                ;B49A7F;
     LDA.W #$0000                                                         ;B49A81;
 
-  + STA.W $1846                                                          ;B49A84;
++   STA.W $1846                                                          ;B49A84;
     BRA .checkA                                                          ;B49A87;
 
 
-.pressingB:
+  .pressingB:
     LDA.W $1846                                                          ;B49A89;
     SEC                                                                  ;B49A8C;
     SBC.W #$0040                                                         ;B49A8D;
     BNE +                                                                ;B49A90;
     LDA.W #$07C0                                                         ;B49A92;
 
-  + STA.W $1846                                                          ;B49A95;
++   STA.W $1846                                                          ;B49A95;
 
-.checkA:
+  .checkA:
     LDA.B $91                                                            ;B49A98;
     BIT.W #$0080                                                         ;B49A9A;
     BEQ .checkX                                                          ;B49A9D;
@@ -2967,7 +2967,7 @@ DebugHandler_6_EnemyDebugger_EnemyMover:
     LDA.W $0AFA                                                          ;B49AAC;
     STA.W $0F7E,X                                                        ;B49AAF;
 
-.checkX:
+  .checkX:
     LDX.W $1846                                                          ;B49AB2;
     LDA.B $8D                                                            ;B49AB5;
     BIT.W #$0040                                                         ;B49AB7;
@@ -2976,10 +2976,10 @@ DebugHandler_6_EnemyDebugger_EnemyMover:
     BRA +                                                                ;B49AC0;
 
 
-.moveWithDpad:
+  .moveWithDpad:
     JSL.L Debug_MoveEnemyWithDpad_QuarterPixelPerFrame                   ;B49AC2;
 
-  + LDX.W $1846                                                          ;B49AC6;
++   LDX.W $1846                                                          ;B49AC6;
     LDA.W $0F7A,X                                                        ;B49AC9;
     CMP.W $0911                                                          ;B49ACC;
     BMI +                                                                ;B49ACF;
@@ -3020,7 +3020,7 @@ DebugHandler_6_EnemyDebugger_EnemyMover:
     LDA.W #$0025                                                         ;B49B23;
     JSL.L Add_Debug_Spritemap_to_OAM                                     ;B49B26;
 
-  + LDA.W #$00B0                                                         ;B49B2A;
++   LDA.W #$00B0                                                         ;B49B2A;
     STA.B $14                                                            ;B49B2D;
     LDA.W #$0050                                                         ;B49B2F;
     STA.B $12                                                            ;B49B32;
@@ -3074,13 +3074,13 @@ DebugHandler_6_EnemyDebugger_EnemyMover:
     BRA .draw                                                            ;B49BBC;
 
 
-.debugName:
+  .debugName:
     TAX                                                                  ;B49BBE;
     LDA.L $B4000C,X                                                      ;B49BBF;
     CLC                                                                  ;B49BC3;
     ADC.W #$0030                                                         ;B49BC4;
 
-.draw:
+  .draw:
     JSL.L Add_Debug_Spritemap_to_OAM                                     ;B49BC7;
     JSR.W Debug_Draw_Enemy_Set_Name                                      ;B49BCB;
     STZ.W $1864                                                          ;B49BCE;
@@ -3097,7 +3097,7 @@ DebugHandler_A_EnemyDebugger_RAMViewer_0:
     RTS                                                                  ;B49BE2;
 
 
-  + LDA.W #$00B0                                                         ;B49BE3;
++   LDA.W #$00B0                                                         ;B49BE3;
     STA.B $14                                                            ;B49BE6;
     LDA.W #$0050                                                         ;B49BE8;
     STA.B $12                                                            ;B49BEB;
@@ -3150,7 +3150,7 @@ DebugHandler_B_EnemyDebugger_RAMViewer_1:
     RTS                                                                  ;B49C6A;
 
 
-  + LDA.W #$00B0                                                         ;B49C6B;
++   LDA.W #$00B0                                                         ;B49C6B;
     STA.B $14                                                            ;B49C6E;
     LDA.W #$0050                                                         ;B49C70;
     STA.B $12                                                            ;B49C73;
@@ -3203,7 +3203,7 @@ DebugHandler_C_EnemyDebugger_RAMViewer_2:
     RTS                                                                  ;B49CF2;
 
 
-  + LDA.W #$00B0                                                         ;B49CF3;
++   LDA.W #$00B0                                                         ;B49CF3;
     STA.B $14                                                            ;B49CF6;
     LDA.W #$0050                                                         ;B49CF8;
     STA.B $12                                                            ;B49CFB;
@@ -3256,7 +3256,7 @@ DebugHandler_D_EnemyDebugger_RAMViewer_3:
     RTS                                                                  ;B49D7A;
 
 
-  + LDA.W #$00B0                                                         ;B49D7B;
++   LDA.W #$00B0                                                         ;B49D7B;
     STA.B $14                                                            ;B49D7E;
     LDA.W #$0050                                                         ;B49D80;
     STA.B $12                                                            ;B49D83;
@@ -3309,7 +3309,7 @@ DebugHandler_E_EnemyDebugger_RAMViewer_4:
     RTS                                                                  ;B49E02;
 
 
-  + LDA.W #$00B0                                                         ;B49E03;
++   LDA.W #$00B0                                                         ;B49E03;
     STA.B $14                                                            ;B49E06;
     LDA.W #$0050                                                         ;B49E08;
     STA.B $12                                                            ;B49E0B;
@@ -3362,7 +3362,7 @@ DebugHandler_F_EnemyDebugger_RAMViewer_5:
     RTS                                                                  ;B49E8A;
 
 
-  + LDA.W #$00B0                                                         ;B49E8B;
++   LDA.W #$00B0                                                         ;B49E8B;
     STA.B $14                                                            ;B49E8E;
     LDA.W #$0050                                                         ;B49E90;
     STA.B $12                                                            ;B49E93;
@@ -3417,12 +3417,12 @@ Debug_MoveEnemyWithDpad_QuarterPixelPerFrame:
     BRA .checkUp                                                         ;B49F17;
 
 
-.notPressingLeft:
+  .notPressingLeft:
     BIT.W #$0100                                                         ;B49F19;
     BEQ .checkUp                                                         ;B49F1C;
     INC.W $0F7A,X                                                        ;B49F1E;
 
-.checkUp:
+  .checkUp:
     LDA.B $8D                                                            ;B49F21;
     BIT.W #$0800                                                         ;B49F23;
     BEQ .notPressingUp                                                   ;B49F26;
@@ -3430,12 +3430,12 @@ Debug_MoveEnemyWithDpad_QuarterPixelPerFrame:
     BRA .return                                                          ;B49F2B;
 
 
-.notPressingUp:
+  .notPressingUp:
     BIT.W #$0400                                                         ;B49F2D;
     BEQ .return                                                          ;B49F30;
     INC.W $0F7E,X                                                        ;B49F32;
 
-.return:
+  .return:
     RTL                                                                  ;B49F35;
 
 
@@ -3450,7 +3450,7 @@ Debug_MoveEnemyWithDpad_4PixelsPerFrame:
     BRA .checkUp                                                         ;B49F47;
 
 
-.notPressingLeft:
+  .notPressingLeft:
     BIT.W #$0100                                                         ;B49F49;
     BEQ .checkUp                                                         ;B49F4C;
     LDA.W $0F7A,X                                                        ;B49F4E;
@@ -3458,7 +3458,7 @@ Debug_MoveEnemyWithDpad_4PixelsPerFrame:
     ADC.W #$0004                                                         ;B49F52;
     STA.W $0F7A,X                                                        ;B49F55;
 
-.checkUp:
+  .checkUp:
     LDA.B $8D                                                            ;B49F58;
     BIT.W #$0800                                                         ;B49F5A;
     BEQ .notPressingUp                                                   ;B49F5D;
@@ -3469,7 +3469,7 @@ Debug_MoveEnemyWithDpad_4PixelsPerFrame:
     BRA .return                                                          ;B49F69;
 
 
-.notPressingUp:
+  .notPressingUp:
     BIT.W #$0400                                                         ;B49F6B;
     BEQ .return                                                          ;B49F6E;
     INC.W $0F7E,X                                                        ;B49F70;
@@ -3478,7 +3478,7 @@ Debug_MoveEnemyWithDpad_4PixelsPerFrame:
     ADC.W #$0004                                                         ;B49F77;
     STA.W $0F7E,X                                                        ;B49F7A;
 
-.return:
+  .return:
     RTL                                                                  ;B49F7D;
 
 
@@ -3573,7 +3573,7 @@ Add_Debug_Spritemap_to_OAM:
     STA.B $18                                                            ;B4A030;
     LDX.W $0590                                                          ;B4A032;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;B4A035;
     STA.B $1A                                                            ;B4A038;
     AND.W #$01FF                                                         ;B4A03A;
@@ -3601,7 +3601,7 @@ Add_Debug_Spritemap_to_OAM:
     PLY                                                                  ;B4A064;
     LDX.B $1C                                                            ;B4A065;
 
-  + LDA.W $0370,X                                                        ;B4A067;
++   LDA.W $0370,X                                                        ;B4A067;
     AND.W #$0001                                                         ;B4A06A;
     BEQ +                                                                ;B4A06D;
     TXA                                                                  ;B4A06F;
@@ -3619,7 +3619,7 @@ Add_Debug_Spritemap_to_OAM:
     PLY                                                                  ;B4A086;
     LDX.B $1C                                                            ;B4A087;
 
-  + SEP #$20                                                             ;B4A089;
++   SEP #$20                                                             ;B4A089;
     LDA.W $0000,Y                                                        ;B4A08B;
     BMI +                                                                ;B4A08E;
     CLC                                                                  ;B4A090;
@@ -3630,7 +3630,7 @@ Add_Debug_Spritemap_to_OAM:
     BRA .F0                                                              ;B4A099;
 
 
-  + CLC                                                                  ;B4A09B;
++   CLC                                                                  ;B4A09B;
     ADC.B $12                                                            ;B4A09C;
     BCS .checkMax                                                        ;B4A09E;
     CMP.B #$F0                                                           ;B4A0A0;
@@ -3638,19 +3638,19 @@ Add_Debug_Spritemap_to_OAM:
     BRA .F0                                                              ;B4A0A4;
 
 
-.checkMax:
+  .checkMax:
     CMP.B #$F0                                                           ;B4A0A6;
     BCC .store                                                           ;B4A0A8;
 
-.F0:
+  .F0:
     LDA.B #$F0                                                           ;B4A0AA;
 
-.store:
+  .store:
     STA.W $0370,X                                                        ;B4A0AC;
     REP #$20                                                             ;B4A0AF;
     INX                                                                  ;B4A0B1;
 
-.unknown:
+  .unknown:
     INY                                                                  ;B4A0B2;
     LDA.B $26                                                            ;B4A0B3;
     BEQ .useSpritemapEntryPalette                                        ;B4A0B5;
@@ -3660,10 +3660,10 @@ Add_Debug_Spritemap_to_OAM:
     BRA .next                                                            ;B4A0BF;
 
 
-.useSpritemapEntryPalette:
+  .useSpritemapEntryPalette:
     LDA.W $0000,Y                                                        ;B4A0C1;
 
-.next:
+  .next:
     STA.W $0370,X                                                        ;B4A0C4;
     INY                                                                  ;B4A0C7;
     INY                                                                  ;B4A0C8;
@@ -3676,7 +3676,7 @@ Add_Debug_Spritemap_to_OAM:
     JMP.W .loop                                                          ;B4A0D4;
 
 
-.return:
+  .return:
     STX.W $0590                                                          ;B4A0D7;
     SEP #$20                                                             ;B4A0DA;
     PLB                                                                  ;B4A0DC;
@@ -3685,15 +3685,15 @@ Add_Debug_Spritemap_to_OAM:
     RTL                                                                  ;B4A0E0;
 
 
-.size:
+  .size:
 ; OAM size bits
     dw $0002,$0008,$0020,$0080,$0200,$0800,$2000,$8000                   ;B4A0E1;
 
-.XPosition:
+  .XPosition:
 ; OAM X position high bits
     dw $0001,$0004,$0010,$0040,$0100,$0400,$1000,$4000                   ;B4A0F1;
 
-.indices:
+  .indices:
 ; High OAM indices (indexed by [(low) OAM index] / 2)
     dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;B4A101;
     dw $0002,$0002,$0002,$0002,$0002,$0002,$0002,$0002                   ;B4A111;
@@ -5565,7 +5565,7 @@ Create_Sprite_Object:
     REP #$30                                                             ;B4BC2F;
     LDX.W #$003E                                                         ;B4BC31;
 
-.loop:
+  .loop:
     LDA.L $7EEF78,X                                                      ;B4BC34;
     BEQ .found                                                           ;B4BC38;
     DEX                                                                  ;B4BC3A;
@@ -5574,7 +5574,7 @@ Create_Sprite_Object:
     BRA .return                                                          ;B4BC3E;
 
 
-.found:
+  .found:
     LDA.W #$0000                                                         ;B4BC40;
     STA.L $7EF078,X                                                      ;B4BC43;
     STA.L $7EF178,X                                                      ;B4BC47;
@@ -5598,7 +5598,7 @@ Create_Sprite_Object:
     STA.L $7EEFF8,X                                                      ;B4BC77;
     STX.B $12                                                            ;B4BC7B;
 
-.return:
+  .return:
     PLB                                                                  ;B4BC7D;
     PLP                                                                  ;B4BC7E;
     PLY                                                                  ;B4BC7F;
@@ -5621,7 +5621,7 @@ HandleSpriteObjects:
     LDX.W #$003E                                                         ;B4BC95;
     STX.W $1844                                                          ;B4BC98;
 
-.loop:
+  .loop:
     LDX.W $1844                                                          ;B4BC9B;
     LDA.L $7EEF78,X                                                      ;B4BC9E;
     BEQ .next                                                            ;B4BCA2;
@@ -5646,7 +5646,7 @@ HandleSpriteObjects:
     LDX.W $1844                                                          ;B4BCD0;
     STA.L $7EEFF8,X                                                      ;B4BCD3;
 
-.next:
+  .next:
     LDA.W $1844                                                          ;B4BCD7;
     DEC A                                                                ;B4BCDA;
     DEC A                                                                ;B4BCDB;
@@ -5655,13 +5655,13 @@ HandleSpriteObjects:
     BRA .return                                                          ;B4BCE1;
 
 
-.ASMInstruction:
+  .ASMInstruction:
     STA.B $12                                                            ;B4BCE3;
     PEA.W .next-1                                                        ;B4BCE5;
     JMP.W ($0012)                                                        ;B4BCE8;
 
 
-.return:
+  .return:
     PLB                                                                  ;B4BCEB;
     PLP                                                                  ;B4BCEC;
     PLY                                                                  ;B4BCED;
@@ -5714,7 +5714,7 @@ DrawSpriteObjects:
     REP #$30                                                             ;B4BD3B;
     LDX.W #$003E                                                         ;B4BD3D;
 
-.loop:
+  .loop:
     LDA.L $7EEF78,X                                                      ;B4BD40;
     BEQ .next                                                            ;B4BD44;
     LDA.L $7EF0F8,X                                                      ;B4BD46;
@@ -5747,7 +5747,7 @@ DrawSpriteObjects:
     JSL.L AddSpritemapToOAM_WithBaseTileNumber_8AB8                      ;B4BD89;
     PLX                                                                  ;B4BD8D;
 
-.next:
+  .next:
     DEX                                                                  ;B4BD8E;
     DEX                                                                  ;B4BD8F;
     BPL .loop                                                            ;B4BD90;
@@ -5762,7 +5762,7 @@ ClearSpriteObjects:
     LDX.W #$03FE                                                         ;B4BD97;
     LDA.W #$0000                                                         ;B4BD9A;
 
-.loop:
+  .loop:
     STA.L $7EEF78,X                                                      ;B4BD9D;
     DEX                                                                  ;B4BDA1;
     DEX                                                                  ;B4BDA2;

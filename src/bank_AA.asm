@@ -143,7 +143,7 @@ Instruction_CommonAA_CallFunctionInY:
     JMP.W ($0012)                                                        ;AA8094;
 
 
-.manualReturn:
+  .manualReturn:
     PLX                                                                  ;AA8097;
     PLY                                                                  ;AA8098;
     INY                                                                  ;AA8099;
@@ -161,7 +161,7 @@ Instruction_CommonAA_CallFunctionInY_WithA:
     JMP.W ($0012)                                                        ;AA80A9;
 
 
-.manualReturn:
+  .manualReturn:
     PLX                                                                  ;AA80AC;
     PLY                                                                  ;AA80AD;
     TYA                                                                  ;AA80AE;
@@ -188,7 +188,7 @@ UNUSED_Instruction_CommonAA_CallExternalFunctionInY_AA80B5:
     RTL                                                                  ;AA80CA;
 
 
-.externalFunction:
+  .externalFunction:
     JML.W [$0012]                                                        ;AA80CB;
 
 
@@ -210,7 +210,7 @@ UNUSED_Inst_CommonAA_CallExternalFunctionInY_WithA_AA80CE:
     RTL                                                                  ;AA80E9;
 
 
-.externalFunction:
+  .externalFunction:
     JML.W [$0012]                                                        ;AA80EA;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -231,10 +231,10 @@ Instruction_CommonAA_GotoY_PlusY:
     BRA +                                                                ;AA80FE;
 
 
-.highByte:
+  .highByte:
     ORA.W #$FF00                                                         ;AA8100;
 
-  + CLC                                                                  ;AA8103;
++   CLC                                                                  ;AA8103;
     ADC.B $12                                                            ;AA8104;
     TAY                                                                  ;AA8106;
     RTL                                                                  ;AA8107;
@@ -4168,7 +4168,7 @@ Instruction_Torizo_SetupPaletteTransitionToBlack:
     LDX.W #$001E                                                         ;AAB239;
     LDA.W #$0000                                                         ;AAB23C;
 
-.loop:
+  .loop:
     STA.L $7EC340,X                                                      ;AAB23F;
     STA.L $7EC320,X                                                      ;AAB243;
     DEX                                                                  ;AAB247;
@@ -4192,10 +4192,10 @@ Instruction_Torizo_SetBossBit_QueueElevatorMusic_SpawnDrops:
     BRA .return                                                          ;AAB267;
 
 
-.notCrateria:
+  .notCrateria:
     JSL.L GoldenTorizoDeathItemDropRoutine                               ;AAB269;
 
-.return:
+  .return:
     PLP                                                                  ;AAB26D;
     PLX                                                                  ;AAB26E;
     PLY                                                                  ;AAB26F;
@@ -5284,10 +5284,10 @@ MakeTorizoJumpForwards:
     BRA +                                                                ;AAC212;
 
 
-.facingRight:
+  .facingRight:
     LDA.W #$0200                                                         ;AAC214;
 
-  + STA.W $0FA8,X                                                        ;AAC217;
++   STA.W $0FA8,X                                                        ;AAC217;
     LDA.W #$FA40                                                         ;AAC21A;
     STA.W $0FAA,X                                                        ;AAC21D;
     LDA.W #$0028                                                         ;AAC220;
@@ -5304,10 +5304,10 @@ MakeTorizoJumpBackwards:
     BRA +                                                                ;AAC235;
 
 
-.facingRight:
+  .facingRight:
     LDA.W #$FD00                                                         ;AAC237;
 
-  + STA.W $0FA8,X                                                        ;AAC23A;
++   STA.W $0FA8,X                                                        ;AAC23A;
     LDA.W #$FB80                                                         ;AAC23D;
     STA.W $0FAA,X                                                        ;AAC240;
     LDA.W #$0028                                                         ;AAC243;
@@ -5321,7 +5321,7 @@ LoadInitialBombTorizoPalettes:
     PHX                                                                  ;AAC250;
     LDX.W #$001E                                                         ;AAC251;
 
-.loop:
+  .loop:
     LDA.W Palette_Torizo_InitialBombTorizo_SpritePalette2,X              ;AAC254;
     STA.L $7EC340,X                                                      ;AAC257;
     LDA.W Palette_Torizo_InitialBombTorizo_SpritePalette1,X              ;AAC25B;
@@ -5337,7 +5337,7 @@ LoadNormalTorizoTargetPalettes:
     PHX                                                                  ;AAC268;
     LDX.W #$001E                                                         ;AAC269;
 
-.loop:
+  .loop:
     LDA.W Palette_Torizo_Normal_SpritePalette2,X                         ;AAC26C;
     STA.L $7EC340,X                                                      ;AAC26F;
     LDA.W Palette_Torizo_Normal_SpritePalette1,X                         ;AAC273;
@@ -5353,7 +5353,7 @@ LoadInitialGoldenTorizoPalettes:
     PHX                                                                  ;AAC280;
     LDX.W #$001E                                                         ;AAC281;
 
-.loop:
+  .loop:
     LDA.W Palette_Torizo_InitialGoldenTorizo_SpritePalette2,X            ;AAC284;
     STA.L $7EC340,X                                                      ;AAC287;
     LDA.W Palette_Torizo_InitialGoldenTorizo_SpritePalette1,X            ;AAC28B;
@@ -5369,7 +5369,7 @@ LoadGoldenTorizoPalettes:
     PHX                                                                  ;AAC298;
     LDX.W #$001E                                                         ;AAC299;
 
-.loop:
+  .loop:
     LDA.W Palette_Torizo_GoldenTorizo_SpritePalette2,X                   ;AAC29C;
     STA.L $7EC340,X                                                      ;AAC29F;
     LDA.W Palette_Torizo_GoldenTorizo_SpritePalette1,X                   ;AAC2A3;
@@ -5385,7 +5385,7 @@ LoadNormalTorizoPalettes:
     PHX                                                                  ;AAC2B0;
     LDX.W #$001E                                                         ;AAC2B1;
 
-.loop:
+  .loop:
     LDA.W Palette_Torizo_Normal_SpritePalette2,X                         ;AAC2B4;
     STA.L $7EC140,X                                                      ;AAC2B7;
     LDA.W Palette_Torizo_Normal_SpritePalette1,X                         ;AAC2BB;
@@ -5425,7 +5425,7 @@ Instruction_Torizo_GotoY_IfFaceBlownUp_ElseGotoY2_IfGolden:
     RTL                                                                  ;AAC2E7;
 
 
-.faceBlownUp:
+  .faceBlownUp:
     LDA.W $0000,Y                                                        ;AAC2E8;
     TAY                                                                  ;AAC2EB;
     RTL                                                                  ;AAC2EC;
@@ -5457,7 +5457,7 @@ Instruction_Torizo_Spawn5LowHealthExplosion_SleepFor28Frames:
     PHA                                                                  ;AAC307;
     LDY.W #$0005                                                         ;AAC308;
 
-.loop:
+  .loop:
     PHY                                                                  ;AAC30B;
     LDA.B $03,S                                                          ;AAC30C;
     LDY.W #EnemyProjectile_BombTorizoLowHealthExplosion                  ;AAC30E;
@@ -5513,7 +5513,7 @@ Instruction_Torizo_SpawnLowHealthInitialDroolIfHealthIsLow:
     JSL.L SpawnEnemyProjectileY_ParameterA_XGraphics                     ;AAC367;
     PLY                                                                  ;AAC36B;
 
-.return:
+  .return:
     RTL                                                                  ;AAC36C;
 
 
@@ -5588,11 +5588,11 @@ Instruction_Torizo_StandingUpMovement_IndexInY:
     RTL                                                                  ;AAC3ED;
 
 
-.XVelocities:
+  .XVelocities:
     dw $FFF7,$FFFA,$FFF9,$0005,$FFF0,$FFF9, $0000,$0000                  ;AAC3EE; 0..Ah: Facing left
     dw $0009,$0006,$0007,$FFFB,$0010,$0007, $0000,$0000                  ;AAC3FE; 10h..1Ah: Facing right
 
-.YVelocities:
+  .YVelocities:
     dw $0000,$FFFA,$FFFA,$FFF9,$0000,$0000, $0000,$0000                  ;AAC40E;
 
 Instruction_Torizo_SittingDownMovement_IndexInY:
@@ -5616,11 +5616,11 @@ Instruction_Torizo_SittingDownMovement_IndexInY:
     RTL                                                                  ;AAC43F;
 
 
-.negatedXVelocities:
+  .negatedXVelocities:
     dw $FFF7,$FFFA,$FFF9,$0005,$FFF0,$FFF9, $0000,$0000                  ;AAC440; 0..Ah: Facing left
     dw $0009,$0006,$0007,$FFFB,$0010,$0007, $0000,$0000                  ;AAC450; 10h..1Ah: Facing right
 
-.negatedYVelocities:
+  .negatedYVelocities:
     dw $0000,$FFFA,$FFFA,$FFF9,$0000,$0000, $0000,$0000                  ;AAC460;
 
 Instruction_Torizo_BombTorizoWalkingMovement_Normal_IndexInY:
@@ -5642,12 +5642,12 @@ Instruction_Torizo_BombTorizoWalkingMovement_Normal_IndexInY:
     RTL                                                                  ;AAC495;
 
 
-.turningLeft:
+  .turningLeft:
     LDY.W #InstList_Torizo_FacingLeft_TurningLeft                        ;AAC496;
     RTL                                                                  ;AAC499;
 
 
-.noCollision:
+  .noCollision:
     JSL.L AlignEnemyYPositionWIthNonSquareSlope                          ;AAC49A;
     LDA.W $0AF6                                                          ;AAC49E;
     SEC                                                                  ;AAC4A1;
@@ -5659,19 +5659,19 @@ Instruction_Torizo_BombTorizoWalkingMovement_Normal_IndexInY:
     RTL                                                                  ;AAC4AC;
 
 
-.facingAway:
+  .facingAway:
     LDA.L $7E7806,X                                                      ;AAC4AD;
     BNE .return                                                          ;AAC4B1;
     LDA.W #$0048                                                         ;AAC4B3;
     STA.L $7E7806,X                                                      ;AAC4B6;
 
-.return:
+  .return:
     INY                                                                  ;AAC4BA;
     INY                                                                  ;AAC4BB;
     RTL                                                                  ;AAC4BC;
 
 
-.velocities:
+  .velocities:
     dw $FFFB,$0000,$FFFB,$FFED,$FFF0,$FFF9,$0000,$FFF9,$FFEF,$FFEE       ;AAC4BD; 0..12h: Moving left
     dw $0005,$0000,$0005,$0013,$0010,$0007,$0000,$0007,$0011,$0012       ;AAC4CD; 14h..26h: Moving right
 
@@ -5694,12 +5694,12 @@ Instruction_Torizo_BTWalkingMovement_Faceless_IndexInY:
     RTL                                                                  ;AAC50A;
 
 
-.turningLeft:
+  .turningLeft:
     LDY.W #InstList_Torizo_FacingLeft_Faceless_TurningLeft               ;AAC50B;
     RTL                                                                  ;AAC50E;
 
 
-.noCollision:
+  .noCollision:
     JSL.L AlignEnemyYPositionWIthNonSquareSlope                          ;AAC50F;
     LDA.W $0AF6                                                          ;AAC513;
     SEC                                                                  ;AAC516;
@@ -5711,19 +5711,19 @@ Instruction_Torizo_BTWalkingMovement_Faceless_IndexInY:
     RTL                                                                  ;AAC521;
 
 
-.facingAway:
+  .facingAway:
     LDA.L $7E7806,X                                                      ;AAC522;
     BNE .return                                                          ;AAC526;
     LDA.W #$0048                                                         ;AAC528;
     STA.L $7E7806,X                                                      ;AAC52B;
 
-.return:
+  .return:
     INY                                                                  ;AAC52F;
     INY                                                                  ;AAC530;
     RTL                                                                  ;AAC531;
 
 
-.velocities:
+  .velocities:
     dw $FFFB,$0000,$FFFB,$FFED,$FFF0,$FFF9,$0000,$FFF9                   ;AAC532;
     dw $FFEF,$FFEE,$0005,$0000,$0005,$0013,$0010,$0007                   ;AAC542;
     dw $0000,$0007,$0011,$0012                                           ;AAC552;
@@ -5736,7 +5736,7 @@ Instruction_Torizo_GotoY_IfRising:
     RTL                                                                  ;AAC561;
 
 
-.rising:
+  .rising:
     LDA.W $0000,Y                                                        ;AAC562;
     TAY                                                                  ;AAC565;
     RTL                                                                  ;AAC566;
@@ -5747,13 +5747,13 @@ Instruction_Torizo_CallYIfSamusIsLessThan38PixelsInFront:
     JSL.L CheckIfXDistanceBetweenEnemyAndSamusIsAtLeastA                 ;AAC56A;
     BCC .near                                                            ;AAC56E;
 
-.return:
+  .return:
     INY                                                                  ;AAC570;
     INY                                                                  ;AAC571;
     RTL                                                                  ;AAC572;
 
 
-.near:
+  .near:
     LDA.W $0AF6                                                          ;AAC573;
     SEC                                                                  ;AAC576;
     SBC.W $0F7A,X                                                        ;AAC577;
@@ -5780,7 +5780,7 @@ Instruction_Torizo_GotoYAndJumpBackwardsIfLessThan20Pixels:
     RTL                                                                  ;AAC5A0;
 
 
-.return:
+  .return:
     INY                                                                  ;AAC5A1;
     INY                                                                  ;AAC5A2;
     RTL                                                                  ;AAC5A3;
@@ -5802,15 +5802,15 @@ Instruction_Torizo_CallY_OrY2_ForBombTorizoAttack:
     BIT.W #$0008                                                         ;AAC5BC;
     BEQ .sonicBooms                                                      ;AAC5BF;
 
-.spewOrbs:
+  .spewOrbs:
     LDA.W $0000,Y                                                        ;AAC5C1;
     BRA .return                                                          ;AAC5C4;
 
 
-.sonicBooms:
+  .sonicBooms:
     LDA.W $0002,Y                                                        ;AAC5C6;
 
-.return:
+  .return:
     TAY                                                                  ;AAC5C9;
     RTL                                                                  ;AAC5CA;
 
@@ -5878,7 +5878,7 @@ HandleLowHealthInitialDrool:
     JMP.W .returnNotCrateria                                             ;AAC625; >.<
 
 
-.crateria:
+  .crateria:
     LDA.W $05E5                                                          ;AAC628;
     AND.W #$8142                                                         ;AAC62B; If [random number] & 8142h = 0: (1/16 chance)
     BNE .return                                                          ;AAC62E;
@@ -5889,11 +5889,11 @@ HandleLowHealthInitialDrool:
     LDY.W #EnemyProjectile_BombTorizoInitialDrool                        ;AAC63A;
     JSL.L SpawnEnemyProjectileY_ParameterA_XGraphics                     ;AAC63D;
 
-.return:
+  .return:
     RTS                                                                  ;AAC641;
 
 
-.returnNotCrateria:
+  .returnNotCrateria:
     RTS                                                                  ;AAC642; >.<
 
 
@@ -5904,7 +5904,7 @@ HandleFalling:
     BPL +                                                                ;AAC64A;
     DEC.B $14                                                            ;AAC64C;
 
-  + STA.B $13                                                            ;AAC64E;
++   STA.B $13                                                            ;AAC64E;
     JSL.L MoveEnemyDownBy_14_12                                          ;AAC650;
     BCS .collision                                                       ;AAC654;
     LDA.W $0FAA,X                                                        ;AAC656;
@@ -5914,7 +5914,7 @@ HandleFalling:
     RTS                                                                  ;AAC660;
 
 
-.collision:
+  .collision:
     LDA.W $0FAA,X                                                        ;AAC661;
     BMI .return                                                          ;AAC664;
     CMP.W #$0100                                                         ;AAC666;
@@ -5926,7 +5926,7 @@ HandleFalling:
     LDA.W #$0100                                                         ;AAC677;
     STA.W $0FAA,X                                                        ;AAC67A;
 
-.return:
+  .return:
     RTS                                                                  ;AAC67D;
 
 
@@ -5940,11 +5940,11 @@ HurtAI_BombTorizo:
     BRA .return                                                          ;AAC68D;
 
 
-.flash:
+  .flash:
     PHX                                                                  ;AAC68F;
     LDX.W #$001E                                                         ;AAC690;
 
-.loop:
+  .loop:
     LDA.W #$7FFF                                                         ;AAC693;
     STA.L $7EC140,X                                                      ;AAC696;
     STA.L $7EC120,X                                                      ;AAC69A;
@@ -5953,7 +5953,7 @@ HurtAI_BombTorizo:
     BPL .loop                                                            ;AAC6A0;
     PLX                                                                  ;AAC6A2;
 
-.return:
+  .return:
     RTL                                                                  ;AAC6A3;
 
 
@@ -5976,7 +5976,7 @@ UNUSED_Torizo_AAC6AC:
     LDA.W #RTS_AAC6AB                                                    ;AAC6B8;
     STA.W $0FB0,X                                                        ;AAC6BB;
 
-.return:
+  .return:
     RTS                                                                  ;AAC6BE;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -5994,7 +5994,7 @@ Function_Torizo_WakeWhenBombTorizoChozoFinishesCrumbling:
     PHX                                                                  ;AAC6CF;
     LDX.W #$004E                                                         ;AAC6D0;
 
-.loop:
+  .loop:
     LDA.W $1C37,X                                                        ;AAC6D3;
     CMP.W #PLMEntries_BombTorizosCrumblingChozo                          ;AAC6D6;
     BEQ .return                                                          ;AAC6D9;
@@ -6014,7 +6014,7 @@ Function_Torizo_WakeWhenBombTorizoChozoFinishesCrumbling:
     RTS                                                                  ;AAC6FC;
 
 
-.return:
+  .return:
     PLX                                                                  ;AAC6FD;
     RTS                                                                  ;AAC6FE;
 
@@ -6035,7 +6035,7 @@ Function_Torizo_NormalMovement:
     RTS                                                                  ;AAC722;
 
 
-.notLowHealth:
+  .notLowHealth:
     BIT.W $0FB6,X                                                        ;AAC723;
     BVS .noChange                                                        ;AAC726;
     LDA.W $0F8C,X                                                        ;AAC728;
@@ -6047,10 +6047,10 @@ Function_Torizo_NormalMovement:
     BRA +                                                                ;AAC738;
 
 
-.facingRight:
+  .facingRight:
     LDA.W #InstList_Torizo_FacingLeft_Faceless_TurningLeft               ;AAC73A;
 
-  + STA.L $7E7800,X                                                      ;AAC73D;
++   STA.L $7E7800,X                                                      ;AAC73D;
     LDA.W #InstList_Torizo_Callable_BlowUpBombTorizosFace                ;AAC741;
     STA.W $0F92,X                                                        ;AAC744;
     LDA.W #$0001                                                         ;AAC747;
@@ -6058,7 +6058,7 @@ Function_Torizo_NormalMovement:
     RTS                                                                  ;AAC74D;
 
 
-.noChange:
+  .noChange:
     JSR.W ($0FB2,X)                                                      ;AAC74E;
     RTS                                                                  ;AAC751;
 
@@ -6069,7 +6069,7 @@ Function_Torizo_Movement_Walking:
     JMP.W .faceless                                                      ;AAC757;
 
 
-.notFaceless:
+  .notFaceless:
     LDA.L $7E7806,X                                                      ;AAC75A;
     BEQ .notTurning                                                      ;AAC75E;
     DEC A                                                                ;AAC760;
@@ -6083,28 +6083,28 @@ Function_Torizo_Movement_Walking:
     BRA +                                                                ;AAC776;
 
 
-.facingRight:
+  .facingRight:
     LDA.W #InstList_Torizo_FacingLeft_TurningLeft                        ;AAC778;
 
-  + STA.W $0F92,X                                                        ;AAC77B;
++   STA.W $0F92,X                                                        ;AAC77B;
     LDA.W #$0001                                                         ;AAC77E;
     STA.W $0F94,X                                                        ;AAC781;
     RTS                                                                  ;AAC784;
 
 
-.notTurning:
+  .notTurning:
     STZ.B $12                                                            ;AAC785;
     LDA.W $0FA8,X                                                        ;AAC787;
     BPL +                                                                ;AAC78A;
     EOR.W #$FFFF                                                         ;AAC78C;
     INC A                                                                ;AAC78F;
 
-  + INC A                                                                ;AAC790;
++   INC A                                                                ;AAC790;
     CMP.W #$0010                                                         ;AAC791;
     BCC +                                                                ;AAC794;
     LDA.W #$000F                                                         ;AAC796;
 
-  + STA.B $14                                                            ;AAC799;
++   STA.B $14                                                            ;AAC799;
     JSL.L MoveEnemyDownBy_14_12                                          ;AAC79B;
     BCS .returnUpper                                                     ;AAC79F;
     LDA.W $0FB4,X                                                        ;AAC7A1;
@@ -6113,21 +6113,21 @@ Function_Torizo_Movement_Walking:
     BRA +                                                                ;AAC7A9;
 
 
-..facingRight:
+  ..facingRight:
     LDA.W #InstList_Torizo_FacingRight_Falling_0                         ;AAC7AB;
 
-  + STA.W $0F92,X                                                        ;AAC7AE;
++   STA.W $0F92,X                                                        ;AAC7AE;
     LDA.W #$0001                                                         ;AAC7B1;
     STA.W $0F94,X                                                        ;AAC7B4;
     LDA.W #$0100                                                         ;AAC7B7;
     STA.W $0FAA,X                                                        ;AAC7BA;
     STZ.W $0FA8,X                                                        ;AAC7BD;
 
-.returnUpper:
+  .returnUpper:
     RTS                                                                  ;AAC7C0;
 
 
-.faceless:
+  .faceless:
     LDA.L $7E7806,X                                                      ;AAC7C1;
     BEQ .facelessNotTurning                                              ;AAC7C5;
     DEC A                                                                ;AAC7C7;
@@ -6141,28 +6141,28 @@ Function_Torizo_Movement_Walking:
     BRA +                                                                ;AAC7DD;
 
 
-..facingRight:
+  ..facingRight:
     LDA.W #InstList_Torizo_FacingLeft_Faceless_TurningLeft               ;AAC7DF;
 
-  + STA.W $0F92,X                                                        ;AAC7E2;
++   STA.W $0F92,X                                                        ;AAC7E2;
     LDA.W #$0001                                                         ;AAC7E5;
     STA.W $0F94,X                                                        ;AAC7E8;
     RTS                                                                  ;AAC7EB;
 
 
-.facelessNotTurning:
+  .facelessNotTurning:
     STZ.B $12                                                            ;AAC7EC;
     LDA.W $0FA8,X                                                        ;AAC7EE;
     BPL +                                                                ;AAC7F1;
     EOR.W #$FFFF                                                         ;AAC7F3;
     INC A                                                                ;AAC7F6;
 
-  + INC A                                                                ;AAC7F7;
++   INC A                                                                ;AAC7F7;
     CMP.W #$0010                                                         ;AAC7F8;
     BCC +                                                                ;AAC7FB;
     LDA.W #$000F                                                         ;AAC7FD;
 
-  + STA.B $14                                                            ;AAC800;
++   STA.B $14                                                            ;AAC800;
     JSL.L MoveEnemyDownBy_14_12                                          ;AAC802;
     BCS .returnLower                                                     ;AAC806;
     LDA.W $0FB4,X                                                        ;AAC808;
@@ -6171,17 +6171,17 @@ Function_Torizo_Movement_Walking:
     BRA +                                                                ;AAC810;
 
 
-..facingRight:
+  ..facingRight:
     LDA.W #InstList_Torizo_FacingRight_Falling_0                         ;AAC812;
 
-  + STA.W $0F92,X                                                        ;AAC815;
++   STA.W $0F92,X                                                        ;AAC815;
     LDA.W #$0001                                                         ;AAC818;
     STA.W $0F94,X                                                        ;AAC81B;
     LDA.W #$0100                                                         ;AAC81E;
     STA.W $0FAA,X                                                        ;AAC821;
     STZ.W $0FA8,X                                                        ;AAC824;
 
-.returnLower:
+  .returnLower:
     RTS                                                                  ;AAC827;
 
 
@@ -6197,7 +6197,7 @@ Function_Torizo_Movement_Jumping_Falling:
     BPL +                                                                ;AAC833;
     DEC.B $14                                                            ;AAC835;
 
-  + STA.B $13                                                            ;AAC837;
++   STA.B $13                                                            ;AAC837;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;AAC839;
     JSL.L AlignEnemyYPositionWIthNonSquareSlope                          ;AAC83D;
     STZ.B $12                                                            ;AAC841;
@@ -6206,7 +6206,7 @@ Function_Torizo_Movement_Jumping_Falling:
     BPL +                                                                ;AAC848;
     DEC.B $14                                                            ;AAC84A;
 
-  + STA.B $13                                                            ;AAC84C;
++   STA.B $13                                                            ;AAC84C;
     JSL.L MoveEnemyDownBy_14_12                                          ;AAC84E;
     BCS .collision                                                       ;AAC852;
     LDA.W $0FAA,X                                                        ;AAC854;
@@ -6216,7 +6216,7 @@ Function_Torizo_Movement_Jumping_Falling:
     RTS                                                                  ;AAC85E;
 
 
-.collision:
+  .collision:
     LDA.L $7E7800,X                                                      ;AAC85F;
     STA.W $0F92,X                                                        ;AAC863;
     LDA.W #$0001                                                         ;AAC866;
@@ -6241,7 +6241,7 @@ InitAI_Torizo:
     RTL                                                                  ;AAC894;
 
 
-.notDead:
+  .notDead:
     LDY.W $079F                                                          ;AAC895;
     LDX.W $0E54                                                          ;AAC898;
     LDA.W $0F86,X                                                        ;AAC89B;
@@ -6275,7 +6275,7 @@ InitAI_Torizo:
     STA.W $0FAA,X                                                        ;AAC8EF;
     LDX.W #$001E                                                         ;AAC8F2;
 
-.loopTargetPalettes:
+  .loopTargetPalettes:
     LDA.W Palette_Torizo_BombTorizoStatue,X                              ;AAC8F5;
     STA.L $7EC3E0,X                                                      ;AAC8F8;
     LDA.W Palette_Torizo_OrbProjectile,X                                 ;AAC8FC;
@@ -6290,7 +6290,7 @@ InitAI_Torizo:
     RTL                                                                  ;AAC913;
 
 
-.GTCode:
+  .GTCode:
     JSR.W LoadInitialGoldenTorizoPalettes                                ;AAC914;
     LDA.B $8B                                                            ;AAC917;
     CMP.W #$C0C0                                                         ;AAC919; ABXY inputs
@@ -6317,7 +6317,7 @@ InitAI_Torizo:
     STA.W $09A6                                                          ;AAC957;
     STA.W $09A8                                                          ;AAC95A;
 
-.return:
+  .return:
     RTL                                                                  ;AAC95D;
 
 
@@ -6364,7 +6364,7 @@ EnemyShot_Torizo_Normal:
     JMP.W ShotReaction_GoldenTorizo_Normal                               ;AAC981;
 
 
-.crateria:
+  .crateria:
     LDX.W $0E54                                                          ;AAC984;
     LDA.W $0F9C,X                                                        ;AAC987;
     ORA.L $7E7808,X                                                      ;AAC98A;
@@ -6386,7 +6386,7 @@ EnemyShot_Torizo_Normal:
     ORA.W #$0400                                                         ;AAC9BA;
     STA.W $0F86,X                                                        ;AAC9BD;
 
-.return:
+  .return:
     RTL                                                                  ;AAC9C0;
 
 
@@ -6400,7 +6400,7 @@ EnemyShot_Torizo_StandUp_SitDown:
     JMP.W ShotReaction_GoldenTorizo_StandUp_SitDown                      ;AAC9C7;
 
 
-.return:
+  .return:
     RTL                                                                  ;AAC9CA;
 
 
@@ -6495,7 +6495,7 @@ Instruction_Torizo_GotoY_IfNotHitGround:
     RTL                                                                  ;AACADA;
 
 
-.notHitGround:
+  .notHitGround:
     INY                                                                  ;AACADB;
     INY                                                                  ;AACADC;
     RTL                                                                  ;AACADD;
@@ -7037,7 +7037,7 @@ Instruction_GoldenTorizo_EyeBeamAttack_0:
     PHX                                                                  ;AAD0F3;
     LDX.W #$0022                                                         ;AAD0F4;
 
-.loop:
+  .loop:
     LDA.W $1997,X                                                        ;AAD0F7;
     CMP.W #EnemyProjectile_GoldenTorizoEgg                               ;AAD0FA;
     BEQ .gotoY                                                           ;AAD0FD;
@@ -7050,7 +7050,7 @@ Instruction_GoldenTorizo_EyeBeamAttack_0:
     RTL                                                                  ;AAD106;
 
 
-.gotoY:
+  .gotoY:
     PLX                                                                  ;AAD107;
     LDA.W $0000,Y                                                        ;AAD108;
     TAY                                                                  ;AAD10B;
@@ -7320,12 +7320,12 @@ MainAI_GoldenTorizo:
     BRA .executeFunction                                                 ;AAD380;
 
 
-.spaceJump:
+  .spaceJump:
     LDA.L $7E780E,X                                                      ;AAD382;
     INC A                                                                ;AAD386;
     STA.L $7E780E,X                                                      ;AAD387;
 
-.executeFunction:
+  .executeFunction:
     JSR.W ($0FB0,X)                                                      ;AAD38B;
     RTL                                                                  ;AAD38E;
 
@@ -7372,11 +7372,11 @@ HurtAI_GoldenTorizo:
     BRA .return                                                          ;AAD3C9;
 
 
-.flash:
+  .flash:
     PHX                                                                  ;AAD3CB;
     LDX.W #$001E                                                         ;AAD3CC;
 
-.loopPalettes:
+  .loopPalettes:
     LDA.W #$7FFF                                                         ;AAD3CF;
     STA.L $7EC140,X                                                      ;AAD3D2;
     STA.L $7EC120,X                                                      ;AAD3D6;
@@ -7385,7 +7385,7 @@ HurtAI_GoldenTorizo:
     BPL .loopPalettes                                                    ;AAD3DC;
     PLX                                                                  ;AAD3DE;
 
-.return:
+  .return:
     RTL                                                                  ;AAD3DF;
 
 
@@ -7422,7 +7422,7 @@ Instruction_GoldenTorizo_GotoY_IfSamusIsMorphedBehindTorizo:
     CMP.W #$007C                                                         ;AAD422;
     BNE .noGo                                                            ;AAD425;
 
-.gotoY:
+  .gotoY:
     LDA.W #$0000                                                         ;AAD427;
     STA.L $7E7812,X                                                      ;AAD42A;
     LDA.W $0000,Y                                                        ;AAD42E;
@@ -7430,7 +7430,7 @@ Instruction_GoldenTorizo_GotoY_IfSamusIsMorphedBehindTorizo:
     RTL                                                                  ;AAD432;
 
 
-.noGo:
+  .noGo:
     INY                                                                  ;AAD433;
     INY                                                                  ;AAD434;
     RTL                                                                  ;AAD435;
@@ -7468,7 +7468,7 @@ Instruction_GT_CallY_25Chance_IfSamusMorphedInFrontOfTorizo:
     RTL                                                                  ;AAD470;
 
 
-.noGo:
+  .noGo:
     INY                                                                  ;AAD471;
     INY                                                                  ;AAD472;
     RTL                                                                  ;AAD473;
@@ -7492,7 +7492,7 @@ Instruction_GoldenTorizo_CallY_25Chance_IfHealthLessThan789:
     RTL                                                                  ;AAD497;
 
 
-.noGo:
+  .noGo:
     INY                                                                  ;AAD498;
     INY                                                                  ;AAD499;
     RTL                                                                  ;AAD49A;
@@ -7514,7 +7514,7 @@ Instruction_GoldenTorizo_CallY_IfStunHealthGreaterThan2A31:
     RTL                                                                  ;AAD4B6;
 
 
-.noGo:
+  .noGo:
     INY                                                                  ;AAD4B7;
     INY                                                                  ;AAD4B8;
     RTL                                                                  ;AAD4B9;
@@ -7536,7 +7536,7 @@ Instruction_GoldenTorizo_GotoY_JumpForwards_IfAtLeast70Pixel:
     AND.W #$0101                                                         ;AAD4DC;
     BEQ .noGo                                                            ;AAD4DF;
 
-.jump:
+  .jump:
     LDA.W #$0000                                                         ;AAD4E1;
     STA.L $7E7812,X                                                      ;AAD4E4;
     JSR.W MakeTorizoJumpForwards                                         ;AAD4E8;
@@ -7545,7 +7545,7 @@ Instruction_GoldenTorizo_GotoY_JumpForwards_IfAtLeast70Pixel:
     RTL                                                                  ;AAD4EF;
 
 
-.noGo:
+  .noGo:
     INY                                                                  ;AAD4F0;
     INY                                                                  ;AAD4F1;
     RTL                                                                  ;AAD4F2;
@@ -7569,7 +7569,7 @@ Instruction_GoldenTorizo_GotoY_JumpBack_IfLessThan20Pixels:
     JSR.W CheckIfTorizoIsFacingSamus                                     ;AAD50F;
     BMI .noGo                                                            ;AAD512;
 
-.jump:
+  .jump:
     LDA.W #$0000                                                         ;AAD514;
     STA.L $7E7812,X                                                      ;AAD517;
     JSR.W MakeTorizoJumpBackwards                                        ;AAD51B;
@@ -7578,7 +7578,7 @@ Instruction_GoldenTorizo_GotoY_JumpBack_IfLessThan20Pixels:
     RTL                                                                  ;AAD522;
 
 
-.noGo:
+  .noGo:
     INY                                                                  ;AAD523;
     INY                                                                  ;AAD524;
     RTL                                                                  ;AAD525;
@@ -7600,15 +7600,15 @@ Instruction_GoldenTorizo_CallY_OrY2_ForAttack:
     AND.W #$0008                                                         ;AAD53E;
     BEQ .sonicBooms                                                      ;AAD541;
 
-.spewOrbs:
+  .spewOrbs:
     LDA.W $0000,Y                                                        ;AAD543;
     BRA .return                                                          ;AAD546;
 
 
-.sonicBooms:
+  .sonicBooms:
     LDA.W $0002,Y                                                        ;AAD548;
 
-.return:
+  .return:
     TAY                                                                  ;AAD54B;
     RTL                                                                  ;AAD54C;
 
@@ -7632,12 +7632,12 @@ Instruction_GoldenTorizo_WalkingMovement_IndexInY:
     RTL                                                                  ;AAD572;
 
 
-.facingRight:
+  .facingRight:
     LDY.W #InstList_GoldenTorizo_TurningLeft                             ;AAD573;
     RTL                                                                  ;AAD576;
 
 
-.noCollision:
+  .noCollision:
     JSL.L AlignEnemyYPositionWIthNonSquareSlope                          ;AAD577;
     LDA.W $0AF6                                                          ;AAD57B;
     SEC                                                                  ;AAD57E;
@@ -7649,19 +7649,19 @@ Instruction_GoldenTorizo_WalkingMovement_IndexInY:
     RTL                                                                  ;AAD589;
 
 
-.facingAway:
+  .facingAway:
     LDA.L $7E7806,X                                                      ;AAD58A;
     BNE .return                                                          ;AAD58E;
     LDA.W #$0010                                                         ;AAD590;
     STA.L $7E7806,X                                                      ;AAD593;
 
-.return:
+  .return:
     INY                                                                  ;AAD597;
     INY                                                                  ;AAD598;
     RTL                                                                  ;AAD599;
 
 
-.velocities:
+  .velocities:
     dw $FFFB,$0000,$FFFB,$FFED,$FFF0,$FFF9,$0000,$FFF9                   ;AAD59A;
     dw $FFEF,$FFEE,$0005,$0000,$0005,$0013,$0010,$0007                   ;AAD5AA;
     dw $0000,$0007,$0011,$0012                                           ;AAD5BA;
@@ -7678,7 +7678,7 @@ Function_GoldenTorizo_WakeIfSamusIsBelowAndRightOfTargetPos:
     LDA.W #$0001                                                         ;AAD5D8;
     STA.W $0F94,X                                                        ;AAD5DB;
 
-.return:
+  .return:
     RTS                                                                  ;AAD5DE;
 
 
@@ -7713,28 +7713,28 @@ Function_GoldenTorizo_Movement_Walking:
     BRA +                                                                ;AAD60D;
 
 
-.facingRight:
+  .facingRight:
     LDA.W #InstList_GoldenTorizo_TurningLeft                             ;AAD60F;
 
-  + STA.W $0F92,X                                                        ;AAD612;
++   STA.W $0F92,X                                                        ;AAD612;
     LDA.W #$0001                                                         ;AAD615;
     STA.W $0F94,X                                                        ;AAD618;
     RTS                                                                  ;AAD61B;
 
 
-.notTurning:
+  .notTurning:
     STZ.B $12                                                            ;AAD61C;
     LDA.W $0FA8,X                                                        ;AAD61E;
     BPL +                                                                ;AAD621;
     EOR.W #$FFFF                                                         ;AAD623;
     INC A                                                                ;AAD626;
 
-  + INC A                                                                ;AAD627;
++   INC A                                                                ;AAD627;
     CMP.W #$0010                                                         ;AAD628;
     BCC +                                                                ;AAD62B;
     LDA.W #$000F                                                         ;AAD62D;
 
-  + STA.B $14                                                            ;AAD630;
++   STA.B $14                                                            ;AAD630;
     JSL.L MoveEnemyDownBy_14_12                                          ;AAD632;
     BCS .return                                                          ;AAD636;
     LDA.W $0FB4,X                                                        ;AAD638;
@@ -7743,17 +7743,17 @@ Function_GoldenTorizo_Movement_Walking:
     BRA +                                                                ;AAD640;
 
 
-..facingRight:
+  ..facingRight:
     LDA.W #InstList_Torizo_FacingRight_Falling_0                         ;AAD642;
 
-  + STA.W $0F92,X                                                        ;AAD645;
++   STA.W $0F92,X                                                        ;AAD645;
     LDA.W #$0001                                                         ;AAD648;
     STA.W $0F94,X                                                        ;AAD64B;
     LDA.W #$0100                                                         ;AAD64E;
     STA.W $0FAA,X                                                        ;AAD651;
     STZ.W $0FA8,X                                                        ;AAD654;
 
-.return:
+  .return:
     RTS                                                                  ;AAD657;
 
 
@@ -7764,7 +7764,7 @@ ShotReaction_GoldenTorizo_StandUp_SitDown:
     LDA.L $7E7808,X                                                      ;AAD660;
     BEQ ShotReaction_GoldenTorizo_Damaged                                ;AAD664;
 
-.return:
+  .return:
     RTL                                                                  ;AAD666;
 
 
@@ -7777,15 +7777,15 @@ ShotReaction_GoldenTorizo_Normal:
     JMP.W ShotReaction_GoldenTorizo_Damaged                              ;AAD675;
 
 
-.gotoFlashOrAnimLock:
+  .gotoFlashOrAnimLock:
     JMP.W .flashOrAnimLock                                               ;AAD678; >.<
 
 
-.return:
+  .return:
     RTL                                                                  ;AAD67B;
 
 
-.flashOrAnimLock:
+  .flashOrAnimLock:
     LDA.W $0FB6,X                                                        ;AAD67C;
     BIT.W #$1000                                                         ;AAD67F;
     BNE .stun                                                            ;AAD682;
@@ -7800,7 +7800,7 @@ ShotReaction_GoldenTorizo_Normal:
     CMP.W #$0200                                                         ;AAD698;
     BEQ ShotReaction_GoldenTorizo_Normal_SuperMissile                    ;AAD69B;
 
-.stun:
+  .stun:
     LDA.W $0FB6,X                                                        ;AAD69D;
     ORA.W #$2000                                                         ;AAD6A0;
     STA.W $0FB6,X                                                        ;AAD6A3; fallthrough to ShotReaction_GoldenTorizo_Damaged
@@ -7821,7 +7821,7 @@ ShotReaction_GoldenTorizo_Damaged:
     ORA.W #$0400                                                         ;AAD6CA;
     STA.W $0F86,X                                                        ;AAD6CD;
 
-.return:
+  .return:
     RTL                                                                  ;AAD6D0;
 
 
@@ -7839,10 +7839,10 @@ ShotReaction_GoldenTorizo_Normal_Missile:
     BRA +                                                                ;AAD6EE;
 
 
-.keepRight:
+  .keepRight:
     LDA.W #InstList_GoldenTorizo_Dodge_TurningRight                      ;AAD6F0;
 
-  + STA.W $0F92,X                                                        ;AAD6F3;
++   STA.W $0F92,X                                                        ;AAD6F3;
     RTL                                                                  ;AAD6F6;
 
 
@@ -7852,7 +7852,7 @@ ShotReaction_GoldenTorizo_Normal_SuperMissile:
     JMP.W ShotReaction_GoldenTorizo_Damaged                              ;AAD6FC;
 
 
-.facingSamus:
+  .facingSamus:
     LDA.W $0FB6,X                                                        ;AAD6FF;
     ORA.W #$1000                                                         ;AAD702;
     STA.W $0FB6,X                                                        ;AAD705;
@@ -7872,22 +7872,22 @@ ShotReaction_GoldenTorizo_Normal_SuperMissile:
     BRA +                                                                ;AAD72D;
 
 
-.facingRight:
+  .facingRight:
     LDA.W #InstList_GoldenTorizo_CaughtSuper_FacingRight_RightLegFwd     ;AAD72F;
     BRA +                                                                ;AAD732;
 
 
-.backgroundLegForward:
+  .backgroundLegForward:
     BIT.W $0FB4,X                                                        ;AAD734;
     BMI ..facingRight                                                    ;AAD737;
     LDA.W #InstList_GoldenTorizo_CaughtSuper_FacingLeft_RightLegFwd      ;AAD739;
     BRA +                                                                ;AAD73C;
 
 
-..facingRight:
+  ..facingRight:
     LDA.W #InstList_GoldenTorizo_CaughtSuper_FacingRight_LeftLegFwd      ;AAD73E;
 
-  + STA.W $0F92,X                                                        ;AAD741;
++   STA.W $0F92,X                                                        ;AAD741;
     RTL                                                                  ;AAD744;
 
 
@@ -7953,10 +7953,10 @@ InitAI_TourianStatue:
     LDY.W #EnemyProjectile_TourianStatuePhantoon                         ;AAD7F3;
     JSL.L SpawnEnemyProjectileY_ParameterA_RoomGraphics                  ;AAD7F6;
 
-.nonZeroParam1:
+  .nonZeroParam1:
     LDX.W #$001E                                                         ;AAD7FA;
 
-.loopPalettes:
+  .loopPalettes:
     LDA.W Palettes_TourianStatue_BaseDecoration,X                        ;AAD7FD;
     STA.L $7EC3E0,X                                                      ;AAD800;
     LDA.W Palettes_TourianStatue_Phantoon,X                              ;AAD804;
@@ -7967,7 +7967,7 @@ InitAI_TourianStatue:
     RTL                                                                  ;AAD80F;
 
 
-.pointers:
+  .pointers:
     dw InstList_TourianStatue_BaseDecoration_0                           ;AAD810;
     dw InstList_TourianStatue_Ridley_0                                   ;AAD812;
     dw InstList_TourianStatue_Phantoon_0                                 ;AAD814;
@@ -8075,7 +8075,7 @@ MoveShaktoolPiece1Pixel:
     BPL +                                                                ;AAD966;
     DEC.B $14                                                            ;AAD968;
 
-  + STA.B $13                                                            ;AAD96A;
++   STA.B $13                                                            ;AAD96A;
     LDA.W $0F7C,Y                                                        ;AAD96C;
     CLC                                                                  ;AAD96F;
     ADC.B $12                                                            ;AAD970;
@@ -8089,7 +8089,7 @@ MoveShaktoolPiece1Pixel:
     BPL +                                                                ;AAD985;
     DEC.B $14                                                            ;AAD987;
 
-  + STA.B $13                                                            ;AAD989;
++   STA.B $13                                                            ;AAD989;
     LDA.W $0F80,Y                                                        ;AAD98B;
     CLC                                                                  ;AAD98E;
     ADC.B $12                                                            ;AAD98F;
@@ -8277,7 +8277,7 @@ RTS_AADAE4:
     BNE .return                                                          ;AADAEC;
     LDY.W #$000C                                                         ;AADAEE;
 
-.loop:
+  .loop:
     LDA.W #RTS_AADCAA                                                    ;AADAF1;
     STA.W $0FB2,X                                                        ;AADAF4;
     LDA.W ShaktoolPieceData_unusedAttackInstListPointer,Y                ;AADAF7;
@@ -8292,7 +8292,7 @@ RTS_AADAE4:
     DEY                                                                  ;AADB0A;
     BPL .loop                                                            ;AADB0B;
 
-.return:
+  .return:
     RTS                                                                  ;AADB0D;
 
 
@@ -8410,12 +8410,12 @@ SetSHaktoolPieceNeighborAngleDeltaDueToBlockCollision:
     BRA +                                                                ;AADC17;
 
 
-.antiClockwise:
+  .antiClockwise:
     SBC.W $0FA8,X                                                        ;AADC19;
     CLC                                                                  ;AADC1C;
     ADC.W $0FAA,X                                                        ;AADC1D;
 
-  + XBA                                                                  ;AADC20;
++   XBA                                                                  ;AADC20;
     AND.W #$00FF                                                         ;AADC21;
     ASL A                                                                ;AADC24;
     ASL A                                                                ;AADC25;
@@ -8434,7 +8434,7 @@ PositionShaktoolPieceRelativeToPreviousPiece:
     BPL +                                                                ;AADC39;
     DEC.B $14                                                            ;AADC3B;
 
-  + STA.B $13                                                            ;AADC3D;
++   STA.B $13                                                            ;AADC3D;
     LDA.B $12                                                            ;AADC3F;
     CLC                                                                  ;AADC41;
     ADC.W $0F3C,X                                                        ;AADC42;
@@ -8448,7 +8448,7 @@ PositionShaktoolPieceRelativeToPreviousPiece:
     BPL +                                                                ;AADC57;
     DEC.B $14                                                            ;AADC59;
 
-  + STA.B $13                                                            ;AADC5B;
++   STA.B $13                                                            ;AADC5B;
     LDA.B $12                                                            ;AADC5D;
     CLC                                                                  ;AADC5F;
     ADC.W $0F40,X                                                        ;AADC60;
@@ -8506,15 +8506,15 @@ Function_Shaktool_ArmPiece_SetPosition_HandleCurling:
     BRA +                                                                ;AADCC1;
 
 
-.notFullyCurled:
+  .notFullyCurled:
     LDA.W $0FAC,X                                                        ;AADCC3;
 
-  + BIT.W $0FB4,X                                                        ;AADCC6;
++   BIT.W $0FB4,X                                                        ;AADCC6;
     BPL .clockwise                                                       ;AADCC9;
     EOR.W #$FFFF                                                         ;AADCCB;
     INC A                                                                ;AADCCE;
 
-.clockwise:
+  .clockwise:
     CLC                                                                  ;AADCCF;
     ADC.W $0FAA,X                                                        ;AADCD0;
     STA.W $0FAA,X                                                        ;AADCD3;
@@ -8536,7 +8536,7 @@ Function_Shaktool_Head:
     BPL +                                                                ;AADCEF;
     EOR.W #$8000                                                         ;AADCF1;
 
-  + XBA                                                                  ;AADCF4;
++   XBA                                                                  ;AADCF4;
     CLC                                                                  ;AADCF5;
     ADC.W #$0008                                                         ;AADCF6;
     AND.W #$00E0                                                         ;AADCF9;
@@ -8555,7 +8555,7 @@ Function_Shaktool_Head:
     RTS                                                                  ;AADD14;
 
 
-.pointers:
+  .pointers:
     dw InstList_Shaktool_Head_AimingUp                                   ;AADD15;
     dw InstList_Shaktool_Head_AimingUpRight                              ;AADD17;
     dw InstList_Shaktool_Head_AimingRight                                ;AADD19;
@@ -8610,7 +8610,7 @@ Function_Shaktool_FinalPiece:
     RTS                                                                  ;AADD7E;
 
 
-.notFullyCurled:
+  .notFullyCurled:
     LDA.W $0FAA,X                                                        ;AADD7F;
     EOR.W $0FA8,X                                                        ;AADD82;
     AND.W #$FF00                                                         ;AADD85;
@@ -8625,7 +8625,7 @@ Function_Shaktool_FinalPiece:
     AND.W #$FF00                                                         ;AADD9F;
     STA.W $0FAE,X                                                        ;AADDA2;
 
-  + LDA.W $0FAC,X                                                        ;AADDA5;
++   LDA.W $0FAC,X                                                        ;AADDA5;
     CLC                                                                  ;AADDA8;
     ADC.W $0FAE,X                                                        ;AADDA9;
     STA.W $0FAE,X                                                        ;AADDAC;
@@ -8636,12 +8636,12 @@ Function_Shaktool_FinalPiece:
     ORA.W #$4000                                                         ;AADDBA;
     JSR.W ShaktoolPiecesMovementOptionsInA                               ;AADDBD;
 
-.return:
+  .return:
     JSR.W RTS_AADAE4                                                     ;AADDC0;
     RTS                                                                  ;AADDC3;
 
 
-.collision:
+  .collision:
     LDA.W $0FB4,X                                                        ;AADDC4;
     BIT.W #$2000                                                         ;AADDC7;
     BEQ .curling                                                         ;AADDCA;
@@ -8656,7 +8656,7 @@ Function_Shaktool_FinalPiece:
     BRA +                                                                ;AADDDC;
 
 
-.curling:
+  .curling:
     PLA                                                                  ;AADDDE;
     PLA                                                                  ;AADDDF;
     PLA                                                                  ;AADDE0;
@@ -8672,7 +8672,7 @@ Function_Shaktool_FinalPiece:
     AND.W #$BFFF                                                         ;AADDFA;
     JSR.W ShaktoolPiecesMovementOptionsInA                               ;AADDFD;
 
-  + STZ.W $0FAE,X                                                        ;AADE00;
++   STZ.W $0FAE,X                                                        ;AADE00;
     LDY.W $0FB0,X                                                        ;AADE03;
     JSL.L CalculateAngleOfEnemyYFromEnemyX                               ;AADE06;
     XBA                                                                  ;AADE0A;
@@ -8684,14 +8684,14 @@ Function_Shaktool_FinalPiece:
     BRA +                                                                ;AADE17;
 
 
-.antiClockwise:
+  .antiClockwise:
     SEC                                                                  ;AADE19;
     SBC.W #$4000                                                         ;AADE1A;
 
-  + JSR.W ShaktoolPiecesFacingAngleInA                                   ;AADE1D;
++   JSR.W ShaktoolPiecesFacingAngleInA                                   ;AADE1D;
     LDY.W #$000C                                                         ;AADE20;
 
-.loop:
+  .loop:
     JSR.W SetSHaktoolPieceNeighborAngleDeltaDueToBlockCollision          ;AADE23;
     LDA.W #RTS_AADCAA                                                    ;AADE26;
     STA.W $0FB2,X                                                        ;AADE29;
@@ -8741,7 +8741,7 @@ InitAI_Shaktool:
     BEQ .return                                                          ;AADE8F;
     JSR.W PositionShaktoolPieceRelativeToPreviousPiece                   ;AADE91;
 
-.return:
+  .return:
     RTL                                                                  ;AADE94;
 
 
@@ -8843,7 +8843,7 @@ EnemyShot_Shaktool:
     STA.W $10C6,Y                                                        ;AADF55;
     STA.W $1106,Y                                                        ;AADF58;
 
-.return:
+  .return:
     RTL                                                                  ;AADF5B;
 
 
@@ -9086,7 +9086,7 @@ Function_Chozo_LowerNorfair:
     LDA.W #$0001                                                         ;AAE450;
     STA.W $0F94,X                                                        ;AAE453;
 
-.return:
+  .return:
     RTS                                                                  ;AAE456;
 
 
@@ -9225,7 +9225,7 @@ Instruction_Chozo_SpawnChozoSpikeClearingFootstepProjectile:
     LDY.W #EnemyProjectile_WreckedShipChozoSpikeClearingFootsteps        ;AAE5CC;
     JSL.L SpawnEnemyProjectileY_ParameterA_RoomGraphics                  ;AAE5CF;
 
-.return:
+  .return:
     PLY                                                                  ;AAE5D3;
     PLX                                                                  ;AAE5D4;
     INY                                                                  ;AAE5D5;
@@ -9244,11 +9244,11 @@ Instruction_Chozo_Movement_IndexInY:
     BPL +                                                                ;AAE5E9;
     DEC.B $14                                                            ;AAE5EB;
 
-  + STA.B $13                                                            ;AAE5ED;
++   STA.B $13                                                            ;AAE5ED;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;AAE5EF;
     BCS .goingNowhere                                                    ;AAE5F3; >_<
 
-.goingNowhere:
+  .goingNowhere:
     STZ.B $12                                                            ;AAE5F5;
     STZ.B $14                                                            ;AAE5F7;
     LDY.W $0FAC,X                                                        ;AAE5F9;
@@ -9257,14 +9257,14 @@ Instruction_Chozo_Movement_IndexInY:
     EOR.W #$FFFF                                                         ;AAE601;
     INC A                                                                ;AAE604;
 
-  + BPL +                                                                ;AAE605;
++   BPL +                                                                ;AAE605;
     DEC.B $14                                                            ;AAE607;
 
-  + STA.B $13                                                            ;AAE609;
++   STA.B $13                                                            ;AAE609;
     JSL.L MoveEnemyDownBy_14_12                                          ;AAE60B;
     BCS .move                                                            ;AAE60F;
 
-.move:
+  .move:
     JSL.L AlignEnemyYPositionWIthNonSquareSlope                          ;AAE611;
     LDY.W $0FAC,X                                                        ;AAE615;
     LDA.W $0F7A,X                                                        ;AAE618;
@@ -9281,21 +9281,21 @@ Instruction_Chozo_Movement_IndexInY:
     RTL                                                                  ;AAE62F;
 
 
-.XVelocity:
+  .XVelocity:
 ; Enemy X velocity. Unit 1/100h px/frame. Absolute value used for Y velocity
     dw $0000,$0000,$0000,$0000,$FE00,$FD00,$F200,$F800                   ;AAE630; 0..1Eh: Wrecked Ship. Only 0..16h used
     dw $FE00,$FD00,$F200,$F800,$0000,$0000,$0000,$0000                   ;AAE640;
     dw $0000,$0000,$0000,$0000,$0200,$0300,$0E00,$0800                   ;AAE650; 20h..3Eh: Lower Norfair. Only 0..6h used
     dw $0200,$0300,$0E00,$0800,$0000,$0000,$0000,$0000                   ;AAE660;
 
-.XOffsets:
+  .XOffsets:
 ; Samus X offsets from enemy
     dw $FFE4,$FFE2,$FFE0,$FFE0,$FFE0,$FFE0,$FFE0,$FFE0                   ;AAE670; 0..1Eh: Wrecked Ship. Only 0..16h used
     dw $FFE0,$FFE0,$FFE0,$FFE0,$FFE0,$FFE0,$FFE0,$FFE0                   ;AAE680;
     dw $001C,$001E,$0020,$0020,$0020,$0020,$0020,$0020                   ;AAE690; 20h..3Eh: Lower Norfair. Only 0..6h used
     dw $0020,$0020,$0020,$0020,$0020,$0020,$0020,$0020                   ;AAE6A0;
 
-.YOffsets:
+  .YOffsets:
 ; Samus Y offsets from enemy
     dw $FFE0,$FFE7,$FFE9,$FFE9,$FFE9,$FFE8,$FFE7,$FFE8                   ;AAE6B0; 0..1Eh: Wrecked Ship. Only 0..16h used
     dw $FFE9,$FFE8,$FFE7,$FFE8,$FFE9,$FFE9,$FFE9,$FFE9                   ;AAE6C0;
@@ -9320,7 +9320,7 @@ Instruction_Chozo_ReleaseSamus_BlockSlopeAccess:
 InitAI_NoobTubeCrack:
     LDX.W #$003E                                                         ;AAE716;
 
-.loop:
+  .loop:
     LDA.W Palette_NoobTubeCrack_SpritePalette1,X                         ;AAE719;
     STA.L $7EC320,X                                                      ;AAE71C;
     DEX                                                                  ;AAE720;
@@ -9352,7 +9352,7 @@ InitAI_Chozo:
     BNE .lowerNorfair                                                    ;AAE75C;
     LDX.W #$001E                                                         ;AAE75E;
 
-.loopWreckedShip:
+  .loopWreckedShip:
     LDA.W Palette_Chozo_WreckedShip_SpritePalette2,X                     ;AAE761;
     STA.L $7EC340,X                                                      ;AAE764;
     LDA.W Palette_Chozo_WreckedShip_SpritePalette1,X                     ;AAE768;
@@ -9369,10 +9369,10 @@ InitAI_Chozo:
     RTL                                                                  ;AAE783;
 
 
-.lowerNorfair:
+  .lowerNorfair:
     LDX.W #$001E                                                         ;AAE784;
 
-.loop:
+  .loop:
     LDA.W Palette_Chozo_LowerNorfair_SpritePalette2,X                    ;AAE787;
     STA.L $7EC340,X                                                      ;AAE78A;
     LDA.W Palette_Chozo_LowerNorfair_SpritePalette1,X                    ;AAE78E;
@@ -9386,7 +9386,7 @@ InitAI_Chozo:
     RTL                                                                  ;AAE7A1;
 
 
-.instListPointers:
+  .instListPointers:
     dw InstList_Chozo_WreckedShip_Initial                                ;AAE7A2;
     dw InstList_Chozo_LowerNorfair_Initial                               ;AAE7A4;
 
@@ -9418,7 +9418,7 @@ Function_Chozo_WreckedShip:
     LDA.W #$0100                                                         ;AAE7D3;
     STA.W $0FAA,X                                                        ;AAE7D6;
 
-.return:
+  .return:
     RTS                                                                  ;AAE7D9;
 
 

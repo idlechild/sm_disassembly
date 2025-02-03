@@ -143,7 +143,7 @@ Instruction_CommonA2_CallFunctionInY:
     JMP.W ($0012)                                                        ;A28094;
 
 
-.manualReturn:
+  .manualReturn:
     PLX                                                                  ;A28097;
     PLY                                                                  ;A28098;
     INY                                                                  ;A28099;
@@ -161,7 +161,7 @@ Instruction_CommonA2_CallFunctionInY_WithA:
     JMP.W ($0012)                                                        ;A280A9;
 
 
-.manualReturn:
+  .manualReturn:
     PLX                                                                  ;A280AC;
     PLY                                                                  ;A280AD;
     TYA                                                                  ;A280AE;
@@ -188,7 +188,7 @@ UNUSED_Instruction_CommonA2_CallExternalFunctionInY_A280B5:
     RTL                                                                  ;A280CA;
 
 
-.externalFunction:
+  .externalFunction:
     JML.W [$0012]                                                        ;A280CB;
 
 
@@ -210,7 +210,7 @@ UNUSED_Inst_CommonA2_CallExternalFunctionInY_WithA_A280CE:
     RTL                                                                  ;A280E9;
 
 
-.externalFunction:
+  .externalFunction:
     JML.W [$0012]                                                        ;A280EA;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -231,10 +231,10 @@ Instruction_CommonA2_GotoY_PlusY:
     BRA +                                                                ;A280FE;
 
 
-.highByte:
+  .highByte:
     ORA.W #$FF00                                                         ;A28100;
 
-  + CLC                                                                  ;A28103;
++   CLC                                                                  ;A28103;
     ADC.B $12                                                            ;A28104;
     TAY                                                                  ;A28106;
     RTL                                                                  ;A28107;
@@ -603,7 +603,7 @@ InitAI_Boyon:
 CalculateInitialBounceSpeed:
     PHP                                                                  ;A28755;
 
-.loop:
+  .loop:
     LDY.W $0FB0,X                                                        ;A28756;
     SEP #$20                                                             ;A28759;
     LDA.W BoyonData_speedTable,Y                                         ;A2875B;
@@ -611,7 +611,7 @@ CalculateInitialBounceSpeed:
     BMI +                                                                ;A28761;
     LDA.B #$FF                                                           ;A28763;
 
-  + STA.W $4202                                                          ;A28765;
++   STA.W $4202                                                          ;A28765;
     LDA.W $0FA8,X                                                        ;A28768;
     STA.W $4203                                                          ;A2876B;
     NOP                                                                  ;A2876E;
@@ -645,7 +645,7 @@ MainAI_Boyon:
     RTL                                                                  ;A287AF;
 
 
-.notJumping:
+  .notJumping:
     LDA.W $0FA8,X                                                        ;A287B0;
     STA.L $7E7806,X                                                      ;A287B3;
     JSR.W CheckIfSamusIsInProximity                                      ;A287B7;
@@ -660,7 +660,7 @@ MainAI_Boyon:
     BRA .return                                                          ;A287D2;
 
 
-.SamusInProximity:
+  .SamusInProximity:
     LDA.W #$0000                                                         ;A287D4;
     STA.L $7E7804,X                                                      ;A287D7;
     STA.L $7E7808,X                                                      ;A287DB;
@@ -670,7 +670,7 @@ MainAI_Boyon:
     STA.W $0FB2,X                                                        ;A287E7;
     JSR.W SetBoyonBouncingInstList                                       ;A287EA;
 
-.bouncing:
+  .bouncing:
     LDX.W $0E54                                                          ;A287ED;
     LDA.L $7E7806,X                                                      ;A287F0;
     STA.W $0FA8,X                                                        ;A287F4;
@@ -679,7 +679,7 @@ MainAI_Boyon:
     TAX                                                                  ;A287FC;
     JSR.W (BoyonData_bounceFunctionPointers,X)                           ;A287FD;
 
-.return:
+  .return:
     RTL                                                                  ;A28800;
 
 
@@ -693,7 +693,7 @@ Function_Boyon_Falling:
     BMI .lessThan17                                                      ;A28812;
     LDA.B #$FF                                                           ;A28814;
 
-.lessThan17:
+  .lessThan17:
     STA.W $4202                                                          ;A28816;
     LDA.W $0FA8,X                                                        ;A28819;
     STA.W $4203                                                          ;A2881C;
@@ -717,7 +717,7 @@ Function_Boyon_Falling:
     STA.L $7E7804,X                                                      ;A28848;
     STZ.W $0FB2,X                                                        ;A2884C;
 
-.return:
+  .return:
     RTS                                                                  ;A2884F;
 
 
@@ -730,7 +730,7 @@ Function_Boyon_Jumping:
     BMI .lessThan17                                                      ;A2885E;
     LDA.B #$FF                                                           ;A28860;
 
-.lessThan17:
+  .lessThan17:
     STA.W $4202                                                          ;A28862;
     LDA.W $0FA8,X                                                        ;A28865;
     STA.W $4203                                                          ;A28868;
@@ -752,11 +752,11 @@ Function_Boyon_Jumping:
     BRA .return                                                          ;A2888A;
 
 
-.doneJumping:
+  .doneJumping:
     LDA.W #$0000                                                         ;A2888C;
     STA.L $7E7802,X                                                      ;A2888F;
 
-.return:
+  .return:
     RTS                                                                  ;A28893;
 
 
@@ -939,7 +939,7 @@ InitAI_Stoke:
     LDA.W #Function_Stoke_MovingRight                                    ;A289E9;
     STA.W $0FB2,X                                                        ;A289EC;
 
-.return:
+  .return:
     RTL                                                                  ;A289EF;
 
 
@@ -1000,7 +1000,7 @@ Function_Stoke_MovingLeft:
     BCC .return                                                          ;A28A56;
     JSR.W SetStokeAttackingLeftInstList                                  ;A28A58;
 
-.return:
+  .return:
     RTS                                                                  ;A28A5B;
 
 
@@ -1015,7 +1015,7 @@ Function_Stoke_MovingRight:
     BCC .return                                                          ;A28A6F;
     JSR.W SetStokeAttackingRightInstList                                 ;A28A71;
 
-.return:
+  .return:
     RTS                                                                  ;A28A74;
 
 
@@ -1031,7 +1031,7 @@ StokeMovement:
     BRA .return                                                          ;A28A82;
 
 
-.notCollidedWithWall:
+  .notCollidedWithWall:
     LDA.W #$0002                                                         ;A28A84;
     STA.B $14                                                            ;A28A87;
     STZ.B $12                                                            ;A28A89;
@@ -1039,7 +1039,7 @@ StokeMovement:
     BCS .return                                                          ;A28A8F;
     JSR.W TurnStokeAround                                                ;A28A91;
 
-.return:
+  .return:
     RTS                                                                  ;A28A94;
 
 
@@ -1051,7 +1051,7 @@ TurnStokeAround:
     BEQ .return                                                          ;A28AA1;
     JSR.W SetStokeMovingRightInstList                                    ;A28AA3;
 
-.return:
+  .return:
     RTS                                                                  ;A28AA6;
 
 
@@ -1070,10 +1070,10 @@ DecideWhetherToAttack:
     BRA .return                                                          ;A28AC4;
 
 
-.returnNoAttack:
+  .returnNoAttack:
     CLC                                                                  ;A28AC6;
 
-.return:
+  .return:
     RTS                                                                  ;A28AC7;
 
 
@@ -1393,7 +1393,7 @@ InitAI_BabyTurtle:
     BMI .keepPointer                                                     ;A28DC8;
     LDY.W #InstList_BabyTurtle_CrawlingRight                             ;A28DCA;
 
-.keepPointer:
+  .keepPointer:
     TYA                                                                  ;A28DCD;
     STA.W $0F92,X                                                        ;A28DCE;
     RTL                                                                  ;A28DD1;
@@ -1438,7 +1438,7 @@ Function_MamaTurtle_Asleep:
     RTL                                                                  ;A28E1E;
 
 
-.asleep:
+  .asleep:
     STZ.W $0F84,X                                                        ;A28E1F;
     LDA.W $0F7A,X                                                        ;A28E22;
     SEC                                                                  ;A28E25;
@@ -1448,14 +1448,14 @@ Function_MamaTurtle_Asleep:
     EOR.W #$FFFF                                                         ;A28E2C;
     INC A                                                                ;A28E2F;
 
-  + CMP.W #$0018                                                         ;A28E30;
++   CMP.W #$0018                                                         ;A28E30;
     BPL .returnPLP                                                       ;A28E33;
     PLP                                                                  ;A28E35;
     BPL .SamusToTheRight                                                 ;A28E36;
     CLC                                                                  ;A28E38;
     ADC.W #$0018                                                         ;A28E39;
 
-.SamusToTheRight:
+  .SamusToTheRight:
     ASL A                                                                ;A28E3C;
     TAX                                                                  ;A28E3D;
     LDA.W SleepingMamaTurtleShellShape,X                                 ;A28E3E;
@@ -1485,11 +1485,11 @@ Function_MamaTurtle_Asleep:
     ADC.W $0B5C                                                          ;A28E77;
     STA.W $0B5C                                                          ;A28E7A;
 
-.return:
+  .return:
     RTL                                                                  ;A28E7D;
 
 
-.returnPLP:
+  .returnPLP:
     PLP                                                                  ;A28E7E;
     RTL                                                                  ;A28E7F;
 
@@ -1518,7 +1518,7 @@ Function_MamaTurtle_LeaveShell:
     SBC.W #$0001                                                         ;A28EFA;
     STA.W $0B58                                                          ;A28EFD;
 
-.notTouchingSamusFromBelow:
+  .notTouchingSamusFromBelow:
     DEC.W $0F7E,X                                                        ;A28F00;
     STZ.B $12                                                            ;A28F03;
     LDA.W #$0010                                                         ;A28F05;
@@ -1530,10 +1530,10 @@ Function_MamaTurtle_LeaveShell:
     BRA +                                                                ;A28F16;
 
 
-.odd:
+  .odd:
     DEC.W $0F7A,X                                                        ;A28F18;
 
-  + LDA.W #$0001                                                         ;A28F1B;
++   LDA.W #$0001                                                         ;A28F1B;
     STA.B $14                                                            ;A28F1E;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A28F20;
     BCS .return                                                          ;A28F24;
@@ -1546,7 +1546,7 @@ Function_MamaTurtle_LeaveShell:
     LDA.W #RTL_A28E09                                                    ;A28F38;
     STA.W $0FA8,X                                                        ;A28F3B;
 
-.return:
+  .return:
     RTL                                                                  ;A28F3E;
 
 
@@ -1558,7 +1558,7 @@ Function_MamaTurtle_EnterShell:
     BPL .keepLeft                                                        ;A28F49;
     LDY.W #InstList_MamaTurtle_FacingRight_EnterShell                    ;A28F4B;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;A28F4E;
     STA.W $0F92,X                                                        ;A28F4F;
     LDA.W #$0001                                                         ;A28F52;
@@ -1586,9 +1586,9 @@ HandleSamusLandingOnHoveringTatori:
     BPL +                                                                ;A28F84;
     LDA.W #$FFF0                                                         ;A28F86;
 
-  + STA.W $0B58                                                          ;A28F89;
++   STA.W $0B58                                                          ;A28F89;
 
-.return:
+  .return:
     RTS                                                                  ;A28F8C;
 
 
@@ -1609,7 +1609,7 @@ Function_MamaTurtle_RiseToHover:
     SBC.W #$0001                                                         ;A28FAC;
     STA.W $0B5C                                                          ;A28FAF;
 
-.notTouchingSamusFromBelow:
+  .notTouchingSamusFromBelow:
     LDA.L $7E7800,X                                                      ;A28FB2;
     DEC A                                                                ;A28FB6;
     STA.L $7E7800,X                                                      ;A28FB7;
@@ -1621,7 +1621,7 @@ Function_MamaTurtle_RiseToHover:
     BPL +                                                                ;A28FC7;
     LDY.W #$0004                                                         ;A28FC9;
 
-  + LDA.W MamaTurtleConstants_HoveringXAcceleration_subAcceleration,Y    ;A28FCC;
++   LDA.W MamaTurtleConstants_HoveringXAcceleration_subAcceleration,Y    ;A28FCC;
     STA.L $7E7802,X                                                      ;A28FCF;
     LDA.W MamaTurtleConstants_HoveringXAcceleration_acceleration,Y       ;A28FD3;
     STA.L $7E7804,X                                                      ;A28FD6;
@@ -1631,7 +1631,7 @@ Function_MamaTurtle_RiseToHover:
     LDA.W #Function_MamaTurtle_Hovering                                  ;A28FE4;
     STA.W $0FA8,X                                                        ;A28FE7;
 
-.return:
+  .return:
     RTL                                                                  ;A28FEA;
 
 
@@ -1655,7 +1655,7 @@ Function_MamaTurtle_Hovering:
     EOR.W #$FFFF                                                         ;A29019;
     INC A                                                                ;A2901C;
 
-  + CMP.W MamaTurtleConstants_maxHoveringXSpeed                          ;A2901D;
++   CMP.W MamaTurtleConstants_maxHoveringXSpeed                          ;A2901D;
     BMI .pullA                                                           ;A29020;
     PLA                                                                  ;A29022;
     LDY.W MamaTurtleConstants_maxHoveringXSpeed                          ;A29023;
@@ -1667,15 +1667,15 @@ Function_MamaTurtle_Hovering:
     INC A                                                                ;A29034;
     TAY                                                                  ;A29035;
 
-  + PHY                                                                  ;A29036;
++   PHY                                                                  ;A29036;
 
-.pullA:
+  .pullA:
     PLA                                                                  ;A29037;
     STA.W $0FB0,X                                                        ;A29038;
     RTL                                                                  ;A2903B;
 
 
-.hitWall:
+  .hitWall:
     LDA.L $7E7806,X                                                      ;A2903C;
     EOR.W #$FFFF                                                         ;A29040;
     INC A                                                                ;A29043;
@@ -1723,11 +1723,11 @@ Function_MamaTurtle_RisingToPeak:
     RTL                                                                  ;A290AD;
 
 
-  + LDA.W MamaTurtleConstants_hoveringAtPeakPosition                     ;A290AE;
++   LDA.W MamaTurtleConstants_hoveringAtPeakPosition                     ;A290AE;
     STA.L $7E7800,X                                                      ;A290B1;
     LDA.W #Function_MamaTurtle_HoveringAtPeak                            ;A290B5;
 
-.merge:
+  .merge:
     STA.W $0FA8,X                                                        ;A290B8;
     LDA.W #$0000                                                         ;A290BB;
     STA.L $7E780E,X                                                      ;A290BE;
@@ -1735,7 +1735,7 @@ Function_MamaTurtle_RisingToPeak:
     RTL                                                                  ;A290C6;
 
 
-.notTouchingSamus:
+  .notTouchingSamus:
     LDA.W #Function_MamaTurtle_Falling                                   ;A290C7;
     BRA .merge                                                           ;A290CA;
 
@@ -1749,7 +1749,7 @@ Function_MamaTurtle_HoveringAtPeak:
     LDA.W #Function_MamaTurtle_Falling                                   ;A290DA;
     STA.W $0FA8,X                                                        ;A290DD;
 
-.return:
+  .return:
     RTL                                                                  ;A290E0;
 
 
@@ -1766,7 +1766,7 @@ Function_MamaTurtle_Falling:
     ADC.W #$0000                                                         ;A290FD;
     STA.L $7E7808,X                                                      ;A29100;
 
-.maxVelocity:
+  .maxVelocity:
     STZ.B $12                                                            ;A29104;
     LDA.L $7E7808,X                                                      ;A29106;
     STA.B $14                                                            ;A2910A;
@@ -1777,7 +1777,7 @@ Function_MamaTurtle_Falling:
     BMI .keepLeft                                                        ;A29118;
     LDY.W #InstList_MamaTurtle_FacingRight_LeaveShell                    ;A2911A;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;A2911D;
     STA.W $0F92,X                                                        ;A2911E;
     LDA.W #$0001                                                         ;A29121;
@@ -1785,7 +1785,7 @@ Function_MamaTurtle_Falling:
     LDA.W #RTL_A28E09                                                    ;A29127;
     STA.W $0FA8,X                                                        ;A2912A;
 
-.return:
+  .return:
     RTL                                                                  ;A2912D;
 
 
@@ -1812,13 +1812,13 @@ Function_BabyTurtle_Crawling_NotCarryingSamus:
     BMI .keepLeft                                                        ;A2915E;
     LDY.W #InstList_BabyTurtle_FacingRight_Hiding                        ;A29160;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;A29163;
     STA.W $0F92,X                                                        ;A29164;
     LDA.W #$0001                                                         ;A29167;
     STA.W $0F94,X                                                        ;A2916A;
 
-.return:
+  .return:
     RTL                                                                  ;A2916D;
 
 
@@ -1829,11 +1829,11 @@ Function_BabyTurtle_Hiding_CarryingSamus:
     LDA.W #$0004                                                         ;A29177;
     STA.L $7E780A,X                                                      ;A2917A;
 
-.return:
+  .return:
     RTL                                                                  ;A2917E;
 
 
-.notTouchingSamus:
+  .notTouchingSamus:
     LDA.L $7E780A,X                                                      ;A2917F;
     DEC A                                                                ;A29183;
     STA.L $7E780A,X                                                      ;A29184;
@@ -1864,13 +1864,13 @@ Function_BabyTurtle_Hiding_NotCarryingSamus:
     BNE .keepLeft                                                        ;A291C6;
     LDY.W BabyTurtleConstants_maxSpinningRightVelocity                   ;A291C8;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;A291CB;
     STA.W $0FB0,X                                                        ;A291CC;
     RTL                                                                  ;A291CF;
 
 
-.notTouchingSamus:
+  .notTouchingSamus:
     LDA.L $7E7800,X                                                      ;A291D0;
     DEC A                                                                ;A291D4;
     STA.L $7E7800,X                                                      ;A291D5;
@@ -1878,13 +1878,13 @@ Function_BabyTurtle_Hiding_NotCarryingSamus:
     RTL                                                                  ;A291DB;
 
 
-.timerExpired:
+  .timerExpired:
     LDY.W #InstList_BabyTurtle_CrawlingLeft                              ;A291DC;
     LDA.W $0FB0,X                                                        ;A291DF;
     BMI ..keepLeft                                                       ;A291E2;
     LDY.W #InstList_BabyTurtle_CrawlingRight                             ;A291E4;
 
-..keepLeft:
+  ..keepLeft:
     TYA                                                                  ;A291E7;
     STA.W $0F92,X                                                        ;A291E8;
     LDA.W #$0001                                                         ;A291EB;
@@ -1907,7 +1907,7 @@ Function_BabyTurtle_Spinning_Unstoppable:
     RTL                                                                  ;A29211;
 
 
-.collidedWithWall:
+  .collidedWithWall:
     LDA.W $0FB0,X                                                        ;A29212;
     EOR.W #$FFFF                                                         ;A29215;
     INC A                                                                ;A29218;
@@ -1922,7 +1922,7 @@ UNUSED_A2921D:
     BMI .keepLeft                                                        ;A29223;
     LDY.W #InstList_BabyTurtle_CrawlingRight                             ;A29225;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;A29228;
     STA.W $0F92,X                                                        ;A29229;
     LDA.W #$0001                                                         ;A2922C;
@@ -1942,7 +1942,7 @@ Function_BabyTurtle_Spinning_Stoppable:
     BMI .keepLeft                                                        ;A29248;
     LDY.W #InstList_BabyTurtle_CrawlingRight                             ;A2924A;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;A2924D;
     STA.W $0F92,X                                                        ;A2924E;
     LDA.W #$0001                                                         ;A29251;
@@ -1967,7 +1967,7 @@ Function_BabyTurtle_Crawling_CarryingSamus:
     LDA.W #Function_BabyTurtle_Crawling_NotCarryingSamus                 ;A2927A;
     STA.W $0FA8,X                                                        ;A2927D;
 
-.return:
+  .return:
     RTL                                                                  ;A29280;
 
 
@@ -1982,7 +1982,7 @@ EnemyTouch_MamaTurtle:
     LDA.W #$0002                                                         ;A29296;
     STA.L $7E7808,X                                                      ;A29299;
 
-.return:
+  .return:
     RTL                                                                  ;A2929D;
 
 
@@ -1998,7 +1998,7 @@ EnemyTouch_BabyTurtle:
     RTL                                                                  ;A292AA;
 
 
-  + LDA.W $0FB0,X                                                        ;A292AB;
++   LDA.W $0FB0,X                                                        ;A292AB;
     BMI .negative                                                        ;A292AE;
     LDA.W #InstList_BabyTurtle_CrawlingLeft                              ;A292B0;
     STA.W $0F92,X                                                        ;A292B3;
@@ -2006,12 +2006,12 @@ EnemyTouch_BabyTurtle:
     BRA +                                                                ;A292B9;
 
 
-.negative:
+  .negative:
     LDA.W #InstList_BabyTurtle_CrawlingRight                             ;A292BB;
     STA.W $0F92,X                                                        ;A292BE;
     LDA.W #$0001                                                         ;A292C1;
 
-  + STA.W $0FB0,X                                                        ;A292C4;
++   STA.W $0FB0,X                                                        ;A292C4;
     LDA.W #$0001                                                         ;A292C7;
     STA.W $0F94,X                                                        ;A292CA;
     LDA.W $0F7A,X                                                        ;A292CD;
@@ -2024,13 +2024,13 @@ EnemyTouch_BabyTurtle:
     BRA +                                                                ;A292DF;
 
 
-.SamusToTheLeft:
+  .SamusToTheLeft:
     LDA.W $0AF6                                                          ;A292E1;
     CLC                                                                  ;A292E4;
     ADC.W $0AFE                                                          ;A292E5;
     ADC.W $0F82,X                                                        ;A292E8;
 
-  + STA.W $0F7A,X                                                        ;A292EB;
++   STA.W $0F7A,X                                                        ;A292EB;
     LDA.W #Function_BabyTurtle_Crawling_NotCarryingSamus                 ;A292EE;
     STA.W $0FA8,X                                                        ;A292F1;
     STZ.B $12                                                            ;A292F4;
@@ -2046,7 +2046,7 @@ AwakenTurtle:
     BEQ .return                                                          ;A29309;
     DEC.W $0FB2,X                                                        ;A2930B;
 
-.return:
+  .return:
     RTL                                                                  ;A2930E;
 
 
@@ -2106,7 +2106,7 @@ MamaTurtle_vs_Samus_CollisionDetection:
     BNE .return                                                          ;A2937A;
     JSL.L NormalEnemyTouchAI                                             ;A2937C;
 
-.return:
+  .return:
     RTS                                                                  ;A29380;
 
 
@@ -2126,7 +2126,7 @@ Instruction_BabyTurtle_Crawl:
     LDA.W #$0001                                                         ;A2939E;
     STA.B $30                                                            ;A293A1;
 
-.notTouchingSamusFromBelow:
+  .notTouchingSamusFromBelow:
     LDA.W $0F7E,X                                                        ;A293A3;
     STA.B $32                                                            ;A293A6;
     LDA.W $0FAE,X                                                        ;A293A8;
@@ -2153,19 +2153,19 @@ Instruction_BabyTurtle_Crawl:
     EOR.W #$FFFF                                                         ;A293D8;
     INC A                                                                ;A293DB;
 
-  + CMP.W #$0018                                                         ;A293DC;
++   CMP.W #$0018                                                         ;A293DC;
     BPL .notOnMama                                                       ;A293DF;
     PLP                                                                  ;A293E1;
     BPL .rightOfMama                                                     ;A293E2;
     CLC                                                                  ;A293E4;
     ADC.W #$0018                                                         ;A293E5;
 
-.rightOfMama:
+  .rightOfMama:
     ASL A                                                                ;A293E8;
     TAX                                                                  ;A293E9;
     LDA.W SleepingMamaTurtleShellShape,X                                 ;A293EA;
 
-.merge:
+  .merge:
     STA.B $14                                                            ;A293ED;
     STZ.B $12                                                            ;A293EF;
     LDX.W $0E54                                                          ;A293F1;
@@ -2179,13 +2179,13 @@ Instruction_BabyTurtle_Crawl:
     ADC.W $0B5C                                                          ;A29403;
     STA.W $0B5C                                                          ;A29406;
 
-.return:
+  .return:
     PLY                                                                  ;A29409;
     PLX                                                                  ;A2940A;
     RTL                                                                  ;A2940B;
 
 
-.notOnMama:
+  .notOnMama:
     PLP                                                                  ;A2940C;
     LDA.W #$0001                                                         ;A2940D;
     BRA .merge                                                           ;A29410;
@@ -2202,7 +2202,7 @@ Instruction_BabyTurtle_LoopOrTurnAroundIfMovedTooFar:
     EOR.W #$FFFF                                                         ;A29420;
     INC A                                                                ;A29423;
 
-  + CMP.W BabyTurtleConstants_travelDistance                             ;A29424;
++   CMP.W BabyTurtleConstants_travelDistance                             ;A29424;
     BMI .noTurn                                                          ;A29427;
     PLP                                                                  ;A29429;
     BMI .rightOfSpawn                                                    ;A2942A;
@@ -2210,23 +2210,23 @@ Instruction_BabyTurtle_LoopOrTurnAroundIfMovedTooFar:
     BRA +                                                                ;A2942F;
 
 
-.rightOfSpawn:
+  .rightOfSpawn:
     LDA.W #$FFFF                                                         ;A29431;
 
-  + STA.W $0FB0,X                                                        ;A29434;
++   STA.W $0FB0,X                                                        ;A29434;
 
-.merge:
+  .merge:
     LDY.W #InstList_BabyTurtle_CrawlingRight                             ;A29437;
     LDA.W $0FB0,X                                                        ;A2943A;
     BPL .return                                                          ;A2943D;
     LDY.W #InstList_BabyTurtle_CrawlingLeft                              ;A2943F;
 
-.return:
+  .return:
     PLX                                                                  ;A29442;
     RTL                                                                  ;A29443;
 
 
-.noTurn:
+  .noTurn:
     PLP                                                                  ;A29444;
     BRA .merge                                                           ;A29445;
 
@@ -2274,11 +2274,11 @@ Instruction_BabyTurtle_LeaveShell:
     BMI .return                                                          ;A29499;
     LDY.W #InstList_BabyTurtle_FacingRight_LeaveShell                    ;A2949B;
 
-.return:
+  .return:
     RTL                                                                  ;A2949E;
 
 
-.returnPLY:
+  .returnPLY:
     PLY                                                                  ;A2949F;
     RTL                                                                  ;A294A0;
 
@@ -2291,17 +2291,17 @@ Instruction_BabyTurtle_LeftShell:
     LDA.W #Function_BabyTurtle_Crawling_CarryingSamus                    ;A294AD;
     STA.W $0FA8,X                                                        ;A294B0;
 
-.chooseDirection:
+  .chooseDirection:
     LDY.W #InstList_BabyTurtle_CrawlingLeft                              ;A294B3;
     LDA.W $0FB0,X                                                        ;A294B6;
     BMI .return                                                          ;A294B9;
     LDY.W #InstList_BabyTurtle_CrawlingRight                             ;A294BB;
 
-.return:
+  .return:
     RTL                                                                  ;A294BE;
 
 
-.notTouchingSamusFromBelow:
+  .notTouchingSamusFromBelow:
     LDA.W #Function_BabyTurtle_Crawling_NotCarryingSamus                 ;A294BF;
     STA.W $0FA8,X                                                        ;A294C2;
     BRA .chooseDirection                                                 ;A294C5;
@@ -2794,7 +2794,7 @@ InitiateHop:
     JSR.W Puyo_CheckIfSamusIsInProximity                                 ;A29A8D;
     LDA.L $7E7800,X                                                      ;A29A90;
 
-.hop:
+  .hop:
     JSR.W ChooseHopType                                                  ;A29A94;
     JSR.W Puyo_CalculateInitialHopSpeed                                  ;A29A97;
     RTS                                                                  ;A29A9A;
@@ -2817,13 +2817,13 @@ ChooseHopType:
     LDA.W #$0000                                                         ;A29ABA;
     STA.L $7E7804,X                                                      ;A29ABD;
 
-.checkInverted:
+  .checkInverted:
     LDA.L $7E7808,X                                                      ;A29AC1;
     BEQ .notInverted                                                     ;A29AC5;
     LDA.L $7E780A,X                                                      ;A29AC7;
     STA.L $7E7804,X                                                      ;A29ACB;
 
-.notInverted:
+  .notInverted:
     LDA.W #$0000                                                         ;A29ACF;
     STA.L $7E7808,X                                                      ;A29AD2;
     JSR.W GetRandomNumber0_7                                             ;A29AD6;
@@ -2836,13 +2836,13 @@ ChooseHopType:
     AND.W #$0001                                                         ;A29AE9;
     STA.B $1C                                                            ;A29AEC;
 
-.nonZeroHopType:
+  .nonZeroHopType:
     LDA.B $1C                                                            ;A29AEE;
     CMP.W #$0002                                                         ;A29AF0;
     BMI .greaterThan2                                                    ;A29AF3;
     LDA.W #$0002                                                         ;A29AF5;
 
-.greaterThan2:
+  .greaterThan2:
     ASL A                                                                ;A29AF8;
     ASL A                                                                ;A29AF9;
     ASL A                                                                ;A29AFA;
@@ -2870,7 +2870,7 @@ Puyo_CalculateInitialHopSpeed:
     STZ.B $16                                                            ;A29B20;
     STZ.B $18                                                            ;A29B22;
 
-.loop:
+  .loop:
     LDA.B $16                                                            ;A29B24;
     CLC                                                                  ;A29B26;
     ADC.W PuyoHopTable_XSpeed,Y                                          ;A29B27;
@@ -2915,7 +2915,7 @@ Function_Puyo_Grounded:
     STA.L $7E7802,X                                                      ;A29B79;
     JSR.W InitiateHop                                                    ;A29B7D;
 
-.return:
+  .return:
     RTS                                                                  ;A29B80;
 
 
@@ -2932,7 +2932,7 @@ PuyoMovement:
     BMI +                                                                ;A29B91;
     LDA.W #$4000                                                         ;A29B93;
 
-  + AND.W #$FF00                                                         ;A29B96;
++   AND.W #$FF00                                                         ;A29B96;
     XBA                                                                  ;A29B99;
     ASL A                                                                ;A29B9A;
     ASL A                                                                ;A29B9B;
@@ -2945,7 +2945,7 @@ PuyoMovement:
     DEY                                                                  ;A29BA6;
     DEY                                                                  ;A29BA7;
 
-.notFalling:
+  .notFalling:
     LDA.W CommonEnemySpeeds_QuadraticallyIncreasing+4,Y                  ;A29BA8;
     STA.B $12                                                            ;A29BAB;
     LDA.W CommonEnemySpeeds_QuadraticallyIncreasing+6,Y                  ;A29BAD;
@@ -2969,17 +2969,17 @@ PuyoMovement:
     BRA .gotoReturn                                                      ;A29BE4;
 
 
-.falling:
+  .falling:
     LDA.W #Function_Puyo_Grounded                                        ;A29BE6;
     STA.W $0FAE,X                                                        ;A29BE9;
     LDA.W #$0000                                                         ;A29BEC;
     STA.L $7E7802,X                                                      ;A29BEF;
 
-.gotoReturn:
+  .gotoReturn:
     BRA .return                                                          ;A29BF3;
 
 
-.noCollision:
+  .noCollision:
     LDY.W $0FB2,X                                                        ;A29BF5;
     LDA.L $7E7806,X                                                      ;A29BF8;
     BNE ..falling                                                        ;A29BFC;
@@ -2991,19 +2991,19 @@ PuyoMovement:
     BRA +                                                                ;A29C0B;
 
 
-..falling:
+  ..falling:
     JSR.W SetFallingInstList                                             ;A29C0D;
     LDA.W $0FAA,X                                                        ;A29C10;
     CLC                                                                  ;A29C13;
     ADC.W PuyoHopTable_YSpeedTableIndexDelta,Y                           ;A29C14;
     STA.W $0FAA,X                                                        ;A29C17;
 
-  + BPL .positiveIndex                                                   ;A29C1A;
++   BPL .positiveIndex                                                   ;A29C1A;
     LDA.W #$0001                                                         ;A29C1C;
     STA.L $7E7806,X                                                      ;A29C1F;
     STZ.W $0FAA,X                                                        ;A29C23;
 
-.positiveIndex:
+  .positiveIndex:
     LDY.W $0FB2,X                                                        ;A29C26;
     LDA.W PuyoHopTable_XSpeed,Y                                          ;A29C29;
     AND.W #$FF00                                                         ;A29C2C;
@@ -3017,7 +3017,7 @@ PuyoMovement:
     INC A                                                                ;A29C3F;
     STA.B $14                                                            ;A29C40;
 
-.moveRight:
+  .moveRight:
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A29C42;
     BCC .return                                                          ;A29C46;
     LDA.W #$0001                                                         ;A29C48;
@@ -3034,7 +3034,7 @@ PuyoMovement:
     BRA .return                                                          ;A29C6E; >.<
 
 
-.return:
+  .return:
     RTS                                                                  ;A29C70;
 
 
@@ -3050,22 +3050,22 @@ SetRisingInstList:
     BRA .rightFrame2                                                     ;A29C89;
 
 
-.rightFrame0:
+  .rightFrame0:
     LDA.W #InstList_Puyo_HoppingRight_0_HoppingLeft_4                    ;A29C8B;
     BRA .return                                                          ;A29C8E;
 
 
-.rightFrame1:
+  .rightFrame1:
     LDA.W #InstList_Puyo_HoppingRight_1_HoppingLeft_3                    ;A29C90;
     BRA .return                                                          ;A29C93;
 
 
-.rightFrame2:
+  .rightFrame2:
     LDA.W #InstList_Puyo_Hopping_2                                       ;A29C95;
     BRA .return                                                          ;A29C98;
 
 
-.left:
+  .left:
     LDA.W $0FAA,X                                                        ;A29C9A;
     CMP.L $7E780C,X                                                      ;A29C9D;
     BPL .leftFrame0                                                      ;A29CA1;
@@ -3074,22 +3074,22 @@ SetRisingInstList:
     BRA .leftFrame2                                                      ;A29CA9;
 
 
-.leftFrame0:
+  .leftFrame0:
     LDA.W #InstList_Puyo_HoppingRight_4_HoppingLeft_0                    ;A29CAB;
     BRA .return                                                          ;A29CAE;
 
 
-.leftFrame1:
+  .leftFrame1:
     LDA.W #InstList_Puyo_HoppingRight_3_HoppingLeft_1                    ;A29CB0;
     BRA .return                                                          ;A29CB3;
 
 
-.leftFrame2:
+  .leftFrame2:
     LDA.W #InstList_Puyo_Hopping_2                                       ;A29CB5;
     BRA .return                                                          ;A29CB8;
 
 
-.return:
+  .return:
     JSR.W SetPuyoInstList                                                ;A29CBA;
     RTS                                                                  ;A29CBD;
 
@@ -3106,22 +3106,22 @@ SetFallingInstList:
     BRA .rightFrame4                                                     ;A29CD6;
 
 
-.rightFrame2:
+  .rightFrame2:
     LDA.W #InstList_Puyo_Hopping_2                                       ;A29CD8;
     BRA .return                                                          ;A29CDB;
 
 
-.rightFrame3:
+  .rightFrame3:
     LDA.W #InstList_Puyo_HoppingRight_3_HoppingLeft_1                    ;A29CDD;
     BRA .return                                                          ;A29CE0;
 
 
-.rightFrame4:
+  .rightFrame4:
     LDA.W #InstList_Puyo_HoppingRight_4_HoppingLeft_0                    ;A29CE2;
     BRA .return                                                          ;A29CE5;
 
 
-.left:
+  .left:
     LDA.W $0FAA,X                                                        ;A29CE7;
     CMP.L $7E780E,X                                                      ;A29CEA;
     BMI .leftFrame2                                                      ;A29CEE;
@@ -3130,22 +3130,22 @@ SetFallingInstList:
     BRA .leftFrame4                                                      ;A29CF6;
 
 
-.leftFrame2:
+  .leftFrame2:
     LDA.W #InstList_Puyo_Hopping_2                                       ;A29CF8;
     BRA .return                                                          ;A29CFB;
 
 
-.leftFrame3:
+  .leftFrame3:
     LDA.W #InstList_Puyo_HoppingRight_1_HoppingLeft_3                    ;A29CFD;
     BRA .return                                                          ;A29D00;
 
 
-.leftFrame4:
+  .leftFrame4:
     LDA.W #InstList_Puyo_HoppingRight_0_HoppingLeft_4                    ;A29D02;
     BRA .return                                                          ;A29D05;
 
 
-.return:
+  .return:
     JSR.W SetPuyoInstList                                                ;A29D07;
     RTS                                                                  ;A29D0A;
 
@@ -3158,13 +3158,13 @@ Function_Puyo_Airborne_Normal_ShortHop:
     LDA.L $7E7802,X                                                      ;A29D17;
     BNE .return                                                          ;A29D1B;
 
-.inverted:
+  .inverted:
     LDA.W #$0000                                                         ;A29D1D;
     STA.L $7E7802,X                                                      ;A29D20;
     LDA.W #InstList_Puyo_GroundedDropping_Slow                           ;A29D24;
     JSR.W SetPuyoInstList                                                ;A29D27;
 
-.return:
+  .return:
     RTS                                                                  ;A29D2A;
 
 
@@ -3176,13 +3176,13 @@ Function_Puyo_Airborne_Normal_BigHop:
     LDA.L $7E7802,X                                                      ;A29D37;
     BNE .return                                                          ;A29D3B;
 
-.inverted:
+  .inverted:
     LDA.W #$0000                                                         ;A29D3D;
     STA.L $7E7802,X                                                      ;A29D40;
     LDA.W #InstList_Puyo_GroundedDropping_Medium                         ;A29D44;
     JSR.W SetPuyoInstList                                                ;A29D47;
 
-.return:
+  .return:
     RTS                                                                  ;A29D4A;
 
 
@@ -3194,13 +3194,13 @@ Function_Puyo_Airborne_Normal_LongHop:
     LDA.L $7E7802,X                                                      ;A29D57;
     BNE .return                                                          ;A29D5B;
 
-.inverted:
+  .inverted:
     LDA.W #$0000                                                         ;A29D5D;
     STA.L $7E7802,X                                                      ;A29D60;
     LDA.W #InstList_Puyo_GroundedDropping_Fast                           ;A29D64;
     JSR.W SetPuyoInstList                                                ;A29D67;
 
-.return:
+  .return:
     RTS                                                                  ;A29D6A;
 
 
@@ -3216,13 +3216,13 @@ Function_Puyo_Airborne_GiantHop:
     LDA.W #Function_Puyo_Grounded                                        ;A29D84;
     STA.W $0FAE,X                                                        ;A29D87;
 
-.inverted:
+  .inverted:
     LDA.W #$0000                                                         ;A29D8A;
     STA.L $7E7802,X                                                      ;A29D8D;
     LDA.W #InstList_Puyo_GroundedDropping_Slow                           ;A29D91;
     JSR.W SetPuyoInstList                                                ;A29D94;
 
-.return:
+  .return:
     RTS                                                                  ;A29D97;
 
 
@@ -3248,7 +3248,7 @@ Function_Puyo_Airborne_Dropping:
     LDA.W #Function_Puyo_Grounded                                        ;A29DC6;
     STA.W $0FAE,X                                                        ;A29DC9;
 
-.return:
+  .return:
     RTS                                                                  ;A29DCC;
 
 
@@ -3266,7 +3266,7 @@ Function_Puyo_Airborne_Dropped:
     LDA.W #InstList_Puyo_GroundedDropping_Slow                           ;A29DED;
     JSR.W SetPuyoInstList                                                ;A29DF0;
 
-.return:
+  .return:
     RTS                                                                  ;A29DF3;
 
 
@@ -3413,10 +3413,10 @@ InitAI_Cacatac:
     BRA +                                                                ;A29F5C;
 
 
-.upsideDown:
+  .upsideDown:
     JSR.W SetCacatacInstList_UpsideDown_Idling                           ;A29F5E;
 
-  + LDA.W $0FB4,X                                                        ;A29F61;
++   LDA.W $0FB4,X                                                        ;A29F61;
     AND.W #$00FF                                                         ;A29F64;
     STA.W $0FB0,X                                                        ;A29F67;
     ASL A                                                                ;A29F6A;
@@ -3466,7 +3466,7 @@ Function_Cacatac_MovingLeft:
     BCC +                                                                ;A29FC4;
     INC.W $0F7A,X                                                        ;A29FC6;
 
-  + STA.W $0F7C,X                                                        ;A29FC9;
++   STA.W $0F7C,X                                                        ;A29FC9;
     LDA.W $0F7A,X                                                        ;A29FCC;
     CLC                                                                  ;A29FCF;
     ADC.W $0FAE,X                                                        ;A29FD0;
@@ -3478,7 +3478,7 @@ Function_Cacatac_MovingLeft:
     LDA.W #$0001                                                         ;A29FE2;
     STA.W $0FB0,X                                                        ;A29FE5;
 
-.attack:
+  .attack:
     JSR.W MaybeMakeCacatacAttack                                         ;A29FE8;
     RTS                                                                  ;A29FEB;
 
@@ -3491,7 +3491,7 @@ Function_Cacatac_MovingRight:
     BCC +                                                                ;A29FF6;
     INC.W $0F7A,X                                                        ;A29FF8;
 
-  + STA.W $0F7C,X                                                        ;A29FFB;
++   STA.W $0F7C,X                                                        ;A29FFB;
     LDA.W $0F7A,X                                                        ;A29FFE;
     CLC                                                                  ;A2A001;
     ADC.W $0FAA,X                                                        ;A2A002;
@@ -3502,7 +3502,7 @@ Function_Cacatac_MovingRight:
     STA.W $0FB2,X                                                        ;A2A011;
     STZ.W $0FB0,X                                                        ;A2A014;
 
-.attack:
+  .attack:
     JSR.W MaybeMakeCacatacAttack                                         ;A2A017;
     RTS                                                                  ;A2A01A;
 
@@ -3529,10 +3529,10 @@ MaybeMakeCacatacAttack:
     BRA .return                                                          ;A2A043;
 
 
-.keepUpsideUp:
+  .keepUpsideUp:
     JSR.W SetCacatacInstList_UpsideDown_Attacking                        ;A2A045;
 
-.return:
+  .return:
     RTS                                                                  ;A2A048;
 
 
@@ -3584,7 +3584,7 @@ Instruction_Cacatac_SetFunction_MovingLeftRight:
     LDA.W #Function_Cacatac_MovingRight                                  ;A2A0A0;
     STA.W $0FB2,X                                                        ;A2A0A3;
 
-.return:
+  .return:
     RTL                                                                  ;A2A0A6;
 
 
@@ -3899,7 +3899,7 @@ InitAI_Owtch:
     ADC.W $0F7E,X                                                        ;A2A477;
     STA.W $0F7E,X                                                        ;A2A47A;
 
-.return:
+  .return:
     RTL                                                                  ;A2A47D;
 
 
@@ -3940,7 +3940,7 @@ Function_Owtch_0_MovingLeft:
     BCC +                                                                ;A2A4BA;
     INC.W $0F7A,X                                                        ;A2A4BC;
 
-  + STA.W $0F7C,X                                                        ;A2A4BF;
++   STA.W $0F7C,X                                                        ;A2A4BF;
     LDA.W $0F7A,X                                                        ;A2A4C2;
     CLC                                                                  ;A2A4C5;
     ADC.W $0FAE,X                                                        ;A2A4C6;
@@ -3949,7 +3949,7 @@ Function_Owtch_0_MovingLeft:
     BPL +                                                                ;A2A4D0;
     DEC.W $0FB0,X                                                        ;A2A4D2;
 
-  + JSR.W MaybeMakeOwtchSink                                             ;A2A4D5;
++   JSR.W MaybeMakeOwtchSink                                             ;A2A4D5;
     RTS                                                                  ;A2A4D8;
 
 
@@ -3961,7 +3961,7 @@ Function_Owtch_1_MovingRight:
     BCC +                                                                ;A2A4E3;
     INC.W $0F7A,X                                                        ;A2A4E5;
 
-  + STA.W $0F7C,X                                                        ;A2A4E8;
++   STA.W $0F7C,X                                                        ;A2A4E8;
     LDA.W $0F7A,X                                                        ;A2A4EB;
     CLC                                                                  ;A2A4EE;
     ADC.W $0FAA,X                                                        ;A2A4EF;
@@ -3970,7 +3970,7 @@ Function_Owtch_1_MovingRight:
     BMI +                                                                ;A2A4F9;
     STZ.W $0FB0,X                                                        ;A2A4FB;
 
-  + JSR.W MaybeMakeOwtchSink                                             ;A2A4FE;
++   JSR.W MaybeMakeOwtchSink                                             ;A2A4FE;
     RTS                                                                  ;A2A501;
 
 
@@ -3983,7 +3983,7 @@ Function_Owtch_2_Underground:
     LDA.W #$0004                                                         ;A2A510;
     STA.W $0FB0,X                                                        ;A2A513;
 
-.return:
+  .return:
     RTS                                                                  ;A2A516;
 
 
@@ -4003,7 +4003,7 @@ Function_Owtch_3_Sinking:
     LDA.W OwtchConstants_undergroundTimers,Y                             ;A2A536;
     STA.L $7E7800,X                                                      ;A2A539;
 
-.return:
+  .return:
     RTS                                                                  ;A2A53D;
 
 
@@ -4016,7 +4016,7 @@ Function_Owtch_4_Rising:
     AND.W #$0001                                                         ;A2A54C;
     STA.W $0FB0,X                                                        ;A2A54F;
 
-.return:
+  .return:
     RTS                                                                  ;A2A552;
 
 
@@ -4031,7 +4031,7 @@ MaybeMakeOwtchSink:
     LDA.W #$0003                                                         ;A2A566;
     STA.W $0FB0,X                                                        ;A2A569;
 
-.return:
+  .return:
     RTS                                                                  ;A2A56C;
 
 
@@ -4057,7 +4057,7 @@ EnemyShot_Owtch:
     BPL .return                                                          ;A2A582;
     JSL.L CommonA2_NormalEnemyShotAI                                     ;A2A584;
 
-.return:
+  .return:
     RTL                                                                  ;A2A588;
 
 
@@ -4140,7 +4140,7 @@ InitAI_ShipTop:
     CMP.W #$0028                                                         ;A2A668;
     BEQ .demoTransition                                                  ;A2A66B;
 
-.landingOnZebes:
+  .landingOnZebes:
     LDA.L $7ED914                                                        ;A2A66D;
     CMP.W #$0022                                                         ;A2A671;
     BNE .notLandingOnZebes                                               ;A2A674;
@@ -4153,7 +4153,7 @@ InitAI_ShipTop:
     BRA .merge                                                           ;A2A686;
 
 
-.notLandingOnZebes:
+  .notLandingOnZebes:
     LDA.W $0F7E,X                                                        ;A2A688;
     SEC                                                                  ;A2A68B;
     SBC.W #$0019                                                         ;A2A68C;
@@ -4164,7 +4164,7 @@ InitAI_ShipTop:
     BRA .merge                                                           ;A2A69B;
 
 
-.demoTransition:
+  .demoTransition:
     LDA.W $1F55                                                          ;A2A69D;
     BNE .landingOnZebes                                                  ;A2A6A0;
     LDA.W #$0472                                                         ;A2A6A2;
@@ -4179,7 +4179,7 @@ InitAI_ShipTop:
     LDA.W #$0090                                                         ;A2A6BB;
     STA.W $0FA8                                                          ;A2A6BE;
 
-.merge:
+  .merge:
     LDY.W #PaletteFXObjects_GunshipGlow                                  ;A2A6C1;
     JSL.L Spawn_PaletteFXObject                                          ;A2A6C4;
     LDA.W #$0001                                                         ;A2A6C8;
@@ -4203,11 +4203,11 @@ InitAI_ShipBottomEntrance:
     BRA +                                                                ;A2A6F2;
 
 
-.shipBottom:
+  .shipBottom:
     LDA.W #InstList_ShipBottom                                           ;A2A6F4;
     STA.W $0F92,X                                                        ;A2A6F7;
 
-  + LDA.W $0F58,X                                                        ;A2A6FA;
++   LDA.W $0F58,X                                                        ;A2A6FA;
     STA.W $0F98,X                                                        ;A2A6FD;
     LDA.W #$0E00                                                         ;A2A700;
     STA.W $0F96,X                                                        ;A2A703;
@@ -4223,7 +4223,7 @@ InitAI_ShipBottomEntrance:
     BRA .merge                                                           ;A2A71E;
 
 
-.notLandingOnZebes:
+  .notLandingOnZebes:
     LDA.W $0F7E,X                                                        ;A2A720;
     CLC                                                                  ;A2A723;
     ADC.W #$000F                                                         ;A2A724;
@@ -4233,7 +4233,7 @@ InitAI_ShipBottomEntrance:
     BRA .merge                                                           ;A2A730;
 
 
-.entrancePad:
+  .entrancePad:
     LDA.W $0EFE,X                                                        ;A2A732;
     DEC A                                                                ;A2A735;
     STA.W $0F7E,X                                                        ;A2A736;
@@ -4247,7 +4247,7 @@ InitAI_ShipBottomEntrance:
     LDA.W #InstList_ShipEntrancePad_Opening_0                            ;A2A74C;
     STA.W $0F92,X                                                        ;A2A74F;
 
-.merge:
+  .merge:
     LDA.W #RTL_A2A7D7                                                    ;A2A752;
     STA.W $0FB2,X                                                        ;A2A755;
     RTL                                                                  ;A2A758;
@@ -4259,13 +4259,13 @@ MainAI_ShipTop:
     BEQ .SFX                                                             ;A2A75F;
     BPL .noSFX                                                           ;A2A761;
 
-.SFX:
+  .SFX:
     LDA.W #$004D                                                         ;A2A763;
     JSL.L QueueSound_Lib2_Max6                                           ;A2A766;
     LDA.W #$0046                                                         ;A2A76A;
     STA.W $0FEE,X                                                        ;A2A76D;
 
-.noSFX:
+  .noSFX:
     LDA.W $0FB2,X                                                        ;A2A770;
     CMP.W #Function_Ship_LandingOnZebes_WaitForShipEntranceToOpen        ;A2A773;
     BMI .function                                                        ;A2A776;
@@ -4273,7 +4273,7 @@ MainAI_ShipTop:
     BPL .function                                                        ;A2A77B;
     JSR.W ProcessShipHover                                               ;A2A77D;
 
-.function:
+  .function:
     JMP.W ($0FB2,X)                                                      ;A2A780;
 
 
@@ -4286,7 +4286,7 @@ ProcessShipHover:
     BEQ .timerExpired                                                    ;A2A787;
     BPL .return                                                          ;A2A789;
 
-.timerExpired:
+  .timerExpired:
     LDA.W $0FAC,X                                                        ;A2A78B;
     ASL A                                                                ;A2A78E;
     TAY                                                                  ;A2A78F;
@@ -4299,7 +4299,7 @@ ProcessShipHover:
     BEQ +                                                                ;A2A7A2;
     ORA.W #$FF00                                                         ;A2A7A4;
 
-  + STA.B $12                                                            ;A2A7A7;
++   STA.B $12                                                            ;A2A7A7;
     LDA.W $0F7E,X                                                        ;A2A7A9;
     CLC                                                                  ;A2A7AC;
     ADC.B $12                                                            ;A2A7AD;
@@ -4317,7 +4317,7 @@ ProcessShipHover:
     AND.W #$0003                                                         ;A2A7C8;
     STA.W $0FAC,X                                                        ;A2A7CB;
 
-.return:
+  .return:
     RTS                                                                  ;A2A7CE;
 
 ;        ______ Timer
@@ -4358,7 +4358,7 @@ UNUSED_Function_Ship_RiseToYPosition80_Descend:
     LDA.W #Function_Ship_LandingOnZebes_Descending                       ;A2A805;
     STA.W $0FB2,X                                                        ;A2A808;
 
-.return:
+  .return:
     RTL                                                                  ;A2A80B;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -4398,7 +4398,7 @@ Function_Ship_LandingOnZebes_Descending:
     RTL                                                                  ;A2A860;
 
 
-.slowDown:
+  .slowDown:
     LDA.W $0AFC                                                          ;A2A861;
     CLC                                                                  ;A2A864;
     ADC.W #$8000                                                         ;A2A865;
@@ -4441,7 +4441,7 @@ Function_Ship_LandingOnZebes_Descending:
     STA.W $0FB2,X                                                        ;A2A8C9;
     STZ.W $0FB0,X                                                        ;A2A8CC;
 
-.return:
+  .return:
     RTL                                                                  ;A2A8CF;
 
 
@@ -4490,7 +4490,7 @@ Function_Ship_LandingOnZebes_ApplyBrakes:
     LDA.W #$0014                                                         ;A2A93A;
     JSL.L QueueSound_Lib3_Max6                                           ;A2A93D;
 
-.return:
+  .return:
     RTL                                                                  ;A2A941;
 
 
@@ -4499,11 +4499,11 @@ Function_Ship_LandingOnZebes_WaitForShipEntranceToOpen:
     BEQ .timerExpired                                                    ;A2A945;
     BPL .return                                                          ;A2A947;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #Function_Ship_LandingOnZebes_EjectSamus                       ;A2A949;
     STA.W $0FB2,X                                                        ;A2A94C;
 
-.return:
+  .return:
     RTL                                                                  ;A2A94F;
 
 
@@ -4529,7 +4529,7 @@ Function_Ship_LandingOnZebes_EjectSamus:
     LDA.W #$0015                                                         ;A2A97F;
     JSL.L QueueSound_Lib3_Max6                                           ;A2A982;
 
-.return:
+  .return:
     RTL                                                                  ;A2A986;
 
 
@@ -4538,7 +4538,7 @@ Function_Ship_LandOnZebes_WaitForShipEntranceToClose_UnlockSamus:
     BEQ .timerExpired                                                    ;A2A98A;
     BPL .return                                                          ;A2A98C;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #Function_Ship_Idle_HandleLettingSamusEnter                    ;A2A98E;
     STA.W $0FB2,X                                                        ;A2A991;
     LDA.W #SamusCurrentStateHandler_Normal                               ;A2A994;
@@ -4554,7 +4554,7 @@ Function_Ship_LandOnZebes_WaitForShipEntranceToClose_UnlockSamus:
     LDA.W $0952                                                          ;A2A9B5;
     JSL.L SaveToSRAM                                                     ;A2A9B8;
 
-.return:
+  .return:
     RTL                                                                  ;A2A9BC;
 
 
@@ -4590,11 +4590,11 @@ Function_Ship_Idle_HandleLettingSamusEnter:
     BIT.W #$0400                                                         ;A2AA03;
     BNE .enterShip                                                       ;A2AA06;
 
-.return:
+  .return:
     RTL                                                                  ;A2AA08;
 
 
-.enterShip:
+  .enterShip:
     LDA.W #Function_Ship_SamusEntering_WaitForEntrancePadToOpen          ;A2AA09;
     STA.W $0FB2,X                                                        ;A2AA0C;
     LDA.W $0AF6                                                          ;A2AA0F;
@@ -4604,7 +4604,7 @@ Function_Ship_Idle_HandleLettingSamusEnter:
     STA.W $0AF6                                                          ;A2AA1A;
     STA.W $0B10                                                          ;A2AA1D;
 
-.skipMovingSamus:
+  .skipMovingSamus:
     JSL.L MakeSamusFaceForward                                           ;A2AA20;
     LDA.W #$001A                                                         ;A2AA24;
     JSL.L Run_Samus_Command                                              ;A2AA27;
@@ -4628,11 +4628,11 @@ Function_Ship_SamusEntering_WaitForEntrancePadToOpen:
     BEQ .timerExpired                                                    ;A2AA52;
     BPL .return                                                          ;A2AA54;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #Function_Ship_SamusEntering_LowerSamus                        ;A2AA56;
     STA.W $0FB2,X                                                        ;A2AA59;
 
-.return:
+  .return:
     RTL                                                                  ;A2AA5C;
 
 
@@ -4658,7 +4658,7 @@ Function_Ship_SamusEntering_LowerSamus:
     LDA.W #$0015                                                         ;A2AA8C;
     JSL.L QueueSound_Lib3_Max6                                           ;A2AA8F;
 
-.return:
+  .return:
     RTL                                                                  ;A2AA93;
 
 
@@ -4667,11 +4667,11 @@ Function_Ship_SamusEntering_WaitForEntrancePadToClose:
     BEQ .timerExpired                                                    ;A2AA97;
     BPL .return                                                          ;A2AA99;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #Function_Ship_SamusEntered_LiftoffOrRestoreSamusEnergyAmmo    ;A2AA9B;
     STA.W $0FB2,X                                                        ;A2AA9E;
 
-.return:
+  .return:
     RTL                                                                  ;A2AAA1;
 
 
@@ -4708,7 +4708,7 @@ Function_Ship_SamusEntered_LiftoffOrRestoreSamusEnergyAmmo:
     BIT.W #$8000                                                         ;A2AAF3;
     BEQ .continue                                                        ;A2AAF6;
 
-.liftoff:
+  .liftoff:
     LDA.W #Function_Ship_Liftoff_LoadDustCloudTiles                      ;A2AAF8;
     STA.W $0FB2,X                                                        ;A2AAFB;
     STZ.W $0FF2,X                                                        ;A2AAFE;
@@ -4722,11 +4722,11 @@ Function_Ship_SamusEntered_LiftoffOrRestoreSamusEnergyAmmo:
     RTL                                                                  ;A2AB17;
 
 
-.continue:
+  .continue:
     LDA.W #Function_Ship_SamusEntered_HandleSaveConfirmation             ;A2AB18;
     STA.W $0FB2,X                                                        ;A2AB1B;
 
-.return:
+  .return:
     RTL                                                                  ;A2AB1E;
 
 
@@ -4742,7 +4742,7 @@ Function_Ship_SamusEntered_HandleSaveConfirmation:
     LDA.W $0952                                                          ;A2AB39;
     JSL.L SaveToSRAM                                                     ;A2AB3C;
 
-.selectedNo:
+  .selectedNo:
     LDA.W #Function_Ship_SamusExiting_WaitForEntrancePadToOpen           ;A2AB40;
     STA.W $0FB2,X                                                        ;A2AB43;
     LDA.W #$0001                                                         ;A2AB46;
@@ -4761,11 +4761,11 @@ Function_Ship_SamusExiting_WaitForEntrancePadToOpen:
     BEQ .timerExpired                                                    ;A2AB63;
     BPL .return                                                          ;A2AB65;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #Function_Ship_SamusExiting_RaiseSamus                         ;A2AB67;
     STA.W $0FB2,X                                                        ;A2AB6A;
 
-.return:
+  .return:
     RTL                                                                  ;A2AB6D;
 
 
@@ -4791,7 +4791,7 @@ Function_Ship_SamusExiting_RaiseSamus:
     LDA.W #$0015                                                         ;A2AB9D;
     JSL.L QueueSound_Lib3_Max6                                           ;A2ABA0;
 
-.return:
+  .return:
     RTL                                                                  ;A2ABA4;
 
 
@@ -4800,7 +4800,7 @@ Function_Ship_SamusExiting_WaitForEntrancePadToClose:
     BEQ .timerExpired                                                    ;A2ABA8;
     BPL .return                                                          ;A2ABAA;
 
-.timerExpired:
+  .timerExpired:
     LDA.W #Function_Ship_Idle_HandleLettingSamusEnter                    ;A2ABAC;
     STA.W $0FB2,X                                                        ;A2ABAF;
     LDA.W $0998                                                          ;A2ABB2;
@@ -4811,7 +4811,7 @@ Function_Ship_SamusExiting_WaitForEntrancePadToClose:
     LDA.W #SamusNewStateHandler_Normal                                   ;A2ABC0;
     STA.W $0A44                                                          ;A2ABC3;
 
-.return:
+  .return:
     RTL                                                                  ;A2ABC6;
 
 
@@ -4848,11 +4848,11 @@ Function_Ship_Liftoff_LoadDustCloudTiles:
     STA.W $0FB2,X                                                        ;A2AC00;
     STZ.W $0DEC                                                          ;A2AC03;
 
-.return:
+  .return:
     RTL                                                                  ;A2AC06;
 
 
-.src:
+  .src:
 ; Source addresses (bank $94)
     dw Tiles_GunshipLiftoffDustClouds                                    ;A2AC07;
     dw Tiles_GunshipLiftoffDustClouds+$400                               ;A2AC09;
@@ -4860,7 +4860,7 @@ Function_Ship_Liftoff_LoadDustCloudTiles:
     dw Tiles_GunshipLiftoffDustClouds+$C00                               ;A2AC0D;
     dw Tiles_GunshipLiftoffDustClouds+$1000                              ;A2AC0F;
 
-.dest:
+  .dest:
 ; Destination VRAM addresses
     dw $7600,$7800,$7A00,$7C00,$7E00                                     ;A2AC11;
 
@@ -4878,7 +4878,7 @@ Function_Ship_Liftoff_FireUpEngines_SpawnDustClouds:
     BRA .merge                                                           ;A2AC35;
 
 
-  + LDA.W $0AFA                                                          ;A2AC37;
++   LDA.W $0AFA                                                          ;A2AC37;
     SEC                                                                  ;A2AC3A;
     SBC.W #$0001                                                         ;A2AC3B;
     STA.W $0AFA                                                          ;A2AC3E;
@@ -4886,7 +4886,7 @@ Function_Ship_Liftoff_FireUpEngines_SpawnDustClouds:
     BRA .merge                                                           ;A2AC44;
 
 
-.rumbleIntensifies:
+  .rumbleIntensifies:
     BIT.W #$0001                                                         ;A2AC46;
     BEQ +                                                                ;A2AC49;
     LDA.W $0AFA                                                          ;A2AC4B;
@@ -4897,13 +4897,13 @@ Function_Ship_Liftoff_FireUpEngines_SpawnDustClouds:
     BRA .merge                                                           ;A2AC58;
 
 
-  + LDA.W $0AFA                                                          ;A2AC5A;
++   LDA.W $0AFA                                                          ;A2AC5A;
     SEC                                                                  ;A2AC5D;
     SBC.W #$0002                                                         ;A2AC5E;
     STA.W $0AFA                                                          ;A2AC61;
     STA.W $0B14                                                          ;A2AC64;
 
-.merge:
+  .merge:
     LDA.W $0AFA                                                          ;A2AC67;
     SEC                                                                  ;A2AC6A;
     SBC.W #$0011                                                         ;A2AC6B;
@@ -4925,7 +4925,7 @@ Function_Ship_Liftoff_FireUpEngines_SpawnDustClouds:
     RTL                                                                  ;A2AC94;
 
 
-.spawnDustClouds:
+  .spawnDustClouds:
     CMP.W #$0040                                                         ;A2AC95;
     BNE .return                                                          ;A2AC98;
     LDA.W #$0000                                                         ;A2AC9A;
@@ -4947,7 +4947,7 @@ Function_Ship_Liftoff_FireUpEngines_SpawnDustClouds:
     LDY.W #EnemyProjectile_GunShipLiftoffDustClouds                      ;A2ACCF;
     JSL.L SpawnEnemyProjectileY_ParameterA_RoomGraphics                  ;A2ACD2;
 
-.return:
+  .return:
     RTL                                                                  ;A2ACD6;
 
 
@@ -4974,7 +4974,7 @@ Function_Ship_Liftoff_SteadyRise:
     LDA.W #$0200                                                         ;A2AD07;
     STA.W $0FF2,X                                                        ;A2AD0A;
 
-.return:
+  .return:
     RTL                                                                  ;A2AD0D;
 
 
@@ -4990,7 +4990,7 @@ Function_Ship_Liftoff_Accelerating_SetGameState:
     STZ.W $0723                                                          ;A2AD26;
     STZ.W $0725                                                          ;A2AD29;
 
-.return:
+  .return:
     RTL                                                                  ;A2AD2C;
 
 
@@ -5005,7 +5005,7 @@ Function_Ship_Liftoff_Accelerating:
     LDA.W #$0900                                                         ;A2AD3F;
     STA.W $0FF2,X                                                        ;A2AD42;
 
-  + LDA.W $0FF2,X                                                        ;A2AD45;
++   LDA.W $0FF2,X                                                        ;A2AD45;
     XBA                                                                  ;A2AD48;
     PHA                                                                  ;A2AD49;
     AND.W #$FF00                                                         ;A2AD4A;
@@ -5252,10 +5252,10 @@ MoveFlyAccordingToAngle:
     BRA +                                                                ;A2B0AC;
 
 
-.lowByteX:
+  .lowByteX:
     AND.W #$00FF                                                         ;A2B0AE;
 
-  + ADC.W $0F7A,Y                                                        ;A2B0B1;
++   ADC.W $0F7A,Y                                                        ;A2B0B1;
     STA.W $0F7A,Y                                                        ;A2B0B4;
     LDA.L SineCosineTables_NegativeCosine_SignExtended-1,X               ;A2B0B7;
     AND.W #$FF00                                                         ;A2B0BB;
@@ -5269,10 +5269,10 @@ MoveFlyAccordingToAngle:
     BRA +                                                                ;A2B0CF;
 
 
-.lowByteY:
+  .lowByteY:
     AND.W #$00FF                                                         ;A2B0D1;
 
-  + ADC.W $0F7E,Y                                                        ;A2B0D4;
++   ADC.W $0F7E,Y                                                        ;A2B0D4;
     STA.W $0F7E,Y                                                        ;A2B0D7;
     TYX                                                                  ;A2B0DA;
     RTS                                                                  ;A2B0DB;
@@ -5291,10 +5291,10 @@ MoveFlyAccordingToVelocities:
     BRA +                                                                ;A2B0F2;
 
 
-.lowByteX:
+  .lowByteX:
     AND.W #$00FF                                                         ;A2B0F4;
 
-  + ADC.W $0F7A,X                                                        ;A2B0F7;
++   ADC.W $0F7A,X                                                        ;A2B0F7;
     STA.W $0F7A,X                                                        ;A2B0FA;
     LDA.W $0FAB,X                                                        ;A2B0FD;
     AND.W #$FF00                                                         ;A2B100;
@@ -5308,10 +5308,10 @@ MoveFlyAccordingToVelocities:
     BRA +                                                                ;A2B113;
 
 
-.lowByteY:
+  .lowByteY:
     AND.W #$00FF                                                         ;A2B115;
 
-  + ADC.W $0F7E,X                                                        ;A2B118;
++   ADC.W $0F7E,X                                                        ;A2B118;
     STA.W $0F7E,X                                                        ;A2B11B;
     RTS                                                                  ;A2B11E;
 
@@ -5349,12 +5349,12 @@ Function_Flies_IdleMovement_ClockwiseCircle:
     BRA .move                                                            ;A2B157;
 
 
-.retreatTimerExpired:
+  .retreatTimerExpired:
     LDA.W #$0070                                                         ;A2B159;
     JSL.L CheckIfXDistanceBetweenEnemyAndSamusIsAtLeastA                 ;A2B15C;
     BCC SetFlyToAttackSamus                                              ;A2B160;
 
-.move:
+  .move:
     JSR.W MoveFlyAccordingToAngle                                        ;A2B162;
     LDA.W $0FB0,X                                                        ;A2B165;
     CLC                                                                  ;A2B168;
@@ -5365,7 +5365,7 @@ Function_Flies_IdleMovement_ClockwiseCircle:
     RTL                                                                  ;A2B174;
 
 
-.antiClockwise:
+  .antiClockwise:
     LDA.W #Function_Flies_IdleMovement_AntiClockwiseCircle               ;A2B175;
     STA.W $0FB2,X                                                        ;A2B178;
     RTL                                                                  ;A2B17B;
@@ -5379,12 +5379,12 @@ Function_Flies_IdleMovement_AntiClockwiseCircle:
     BRA .move                                                            ;A2B185;
 
 
-.retreatTimerExpired:
+  .retreatTimerExpired:
     LDA.W #$0070                                                         ;A2B187;
     JSL.L CheckIfXDistanceBetweenEnemyAndSamusIsAtLeastA                 ;A2B18A;
     BCC SetFlyToAttackSamus                                              ;A2B18E;
 
-.move:
+  .move:
     JSR.W MoveFlyAccordingToAngle                                        ;A2B190;
     LDA.W $0FB0,X                                                        ;A2B193;
     SEC                                                                  ;A2B196;
@@ -5395,7 +5395,7 @@ Function_Flies_IdleMovement_AntiClockwiseCircle:
     RTL                                                                  ;A2B1A2;
 
 
-.clockwise:
+  .clockwise:
     LDA.W #Function_Flies_IdleMovement_ClockwiseCircle                   ;A2B1A3;
     STA.W $0FB2,X                                                        ;A2B1A6;
     RTL                                                                  ;A2B1A9;
@@ -5411,13 +5411,13 @@ Function_Flies_AttackSamus:
     RTL                                                                  ;A2B1BA;
 
 
-.positiveYVelocity:
+  .positiveYVelocity:
     CMP.W $0FAE,X                                                        ;A2B1BB;
     BCS .aboveTarget                                                     ;A2B1BE;
     RTL                                                                  ;A2B1C0;
 
 
-.aboveTarget:
+  .aboveTarget:
     LDA.W $0FAC,X                                                        ;A2B1C1;
     EOR.W #$FFFF                                                         ;A2B1C4;
     INC A                                                                ;A2B1C7;
@@ -5434,7 +5434,7 @@ Function_Flies_Retreat:
     RTL                                                                  ;A2B1DA;
 
 
-.retreatTimerExpired:
+  .retreatTimerExpired:
     LDA.W #$0018                                                         ;A2B1DB;
     STA.W $0FA8,X                                                        ;A2B1DE;
     LDA.W #Function_Flies_IdleMovement_ClockwiseCircle                   ;A2B1E1;
@@ -5662,7 +5662,7 @@ MainAI_Multiviola:
     INC A                                                                ;A2B452;
     STA.W $0FAE,X                                                        ;A2B453;
 
-  + LDA.W $0FAC,X                                                        ;A2B456;
++   LDA.W $0FAC,X                                                        ;A2B456;
     STA.B $14                                                            ;A2B459;
     LDA.W $0FAE,X                                                        ;A2B45B;
     STA.B $12                                                            ;A2B45E;
@@ -5674,7 +5674,7 @@ MainAI_Multiviola:
     BRA .return                                                          ;A2B46F;
 
 
-.notCollidedWithWall:
+  .notCollidedWithWall:
     LDA.W $0FB4,X                                                        ;A2B471;
     CLC                                                                  ;A2B474;
     ADC.W #$0080                                                         ;A2B475;
@@ -5688,7 +5688,7 @@ MainAI_Multiviola:
     INC A                                                                ;A2B48C;
     STA.W $0FB2,X                                                        ;A2B48D;
 
-  + LDA.W $0FB0,X                                                        ;A2B490;
++   LDA.W $0FB0,X                                                        ;A2B490;
     STA.B $14                                                            ;A2B493;
     LDA.W $0FB2,X                                                        ;A2B495;
     STA.B $12                                                            ;A2B498;
@@ -5698,7 +5698,7 @@ MainAI_Multiviola:
     EOR.W #$00C0                                                         ;A2B4A3;
     STA.W $0FB4,X                                                        ;A2B4A6;
 
-.return:
+  .return:
     RTL                                                                  ;A2B4A9;
 
 
@@ -5814,7 +5814,7 @@ Function_Polyp_WaitForSamusToGetNear:
     LDA.W #Function_Polyp_ShootRock                                      ;A2B5AB;
     STA.W $0FA8,X                                                        ;A2B5AE;
 
-.return:
+  .return:
     RTS                                                                  ;A2B5B1;
 
 
@@ -5848,7 +5848,7 @@ Function_Polyp_Cooldown:
     LDA.W #Function_Polyp_WaitForSamusToGetNear                          ;A2B5F2;
     STA.W $0FA8,X                                                        ;A2B5F5;
 
-.return:
+  .return:
     RTS                                                                  ;A2B5F8;
 
 
@@ -5883,13 +5883,13 @@ InitAI_Rinka:
     BRA .propertiesSet                                                   ;A2B628;
 
 
-.notMBRoom:
+  .notMBRoom:
     LDA.W $0F86,X                                                        ;A2B62A;
     ORA.W #$6400                                                         ;A2B62D;
     AND.W #$F7FF                                                         ;A2B630;
     STA.W $0F86,X                                                        ;A2B633;
 
-.propertiesSet:
+  .propertiesSet:
     LDA.W #$0400                                                         ;A2B636;
     STA.W $0F96,X                                                        ;A2B639;
     BRA ResetRinka                                                       ;A2B63C;
@@ -5900,7 +5900,7 @@ RespawnRinka:
     BEQ .notMBRoom                                                       ;A2B641;
     JSR.W SpawnMotherBrainsRoomRinka                                     ;A2B643;
 
-.notMBRoom:
+  .notMBRoom:
     LDA.L $7E7020,X                                                      ;A2B646;
     STA.W $0F7A,X                                                        ;A2B64A;
     LDA.L $7E7022,X                                                      ;A2B64D;
@@ -5923,7 +5923,7 @@ ResetRinka:
     RTL                                                                  ;A2B67A;
 
 
-.MBRoom:
+  .MBRoom:
     LDA.L $7E783A                                                        ;A2B67B;
     BEQ .MBPhase1                                                        ;A2B67F;
     LDA.W $0F86,X                                                        ;A2B681;
@@ -5932,7 +5932,7 @@ ResetRinka:
     RTL                                                                  ;A2B68A;
 
 
-.MBPhase1:
+  .MBPhase1:
     LDA.W #InstList_Rinka_MotherBrainsRoom_0                             ;A2B68B;
     STA.W $0F92,X                                                        ;A2B68E;
     LDA.W #$0001                                                         ;A2B691;
@@ -5966,9 +5966,9 @@ SpawnMotherBrainsRoomRinka:
     RTS                                                                  ;A2B6C9;
 
 
-  + LDY.W #$0000                                                         ;A2B6CA;
++   LDY.W #$0000                                                         ;A2B6CA;
 
-.loopOnScreen:
+  .loopOnScreen:
     LDA.W MotherBrainsRoomRinkaSpawnData_XPosition,Y                     ;A2B6CD;
     STA.B $12                                                            ;A2B6D0;
     LDA.W MotherBrainsRoomRinkaSpawnData_YPosition,Y                     ;A2B6D2;
@@ -5982,7 +5982,7 @@ SpawnMotherBrainsRoomRinka:
     PLX                                                                  ;A2B6E6;
     BCC .found                                                           ;A2B6E7;
 
-.next:
+  .next:
     INY                                                                  ;A2B6E9;
     INY                                                                  ;A2B6EA;
     INY                                                                  ;A2B6EB;
@@ -5996,7 +5996,7 @@ SpawnMotherBrainsRoomRinka:
     RTS                                                                  ;A2B6F7;
 
 
-.found:
+  .found:
     LDA.B $12                                                            ;A2B6F8;
     STA.L $7E7020,X                                                      ;A2B6FA;
     STA.W $0F7A,X                                                        ;A2B6FE;
@@ -6013,10 +6013,10 @@ SpawnMotherBrainsRoomRinka:
     RTS                                                                  ;A2B71A;
 
 
-.notFound:
+  .notFound:
     LDY.W #$0000                                                         ;A2B71B;
 
-.loopAny:
+  .loopAny:
     PHX                                                                  ;A2B71E;
     LDX.W MotherBrainsRoomRinkaSpawnData_spawnPointAvailabilityIndex,Y   ;A2B71F;
     LDA.L $7E87FE,X                                                      ;A2B722;
@@ -6034,7 +6034,7 @@ SpawnMotherBrainsRoomRinka:
     RTS                                                                  ;A2B735;
 
 
-.spawn:
+  .spawn:
     LDA.W MotherBrainsRoomRinkaSpawnData_XPosition,Y                     ;A2B736;
     STA.L $7E7020,X                                                      ;A2B739;
     STA.W $0F7A,X                                                        ;A2B73D;
@@ -6075,7 +6075,7 @@ MotherBrainsRoomRinkaSpawnData:
 GetAvailabilityIndexOfEnemySpawnPosition:
     LDY.W #$0000                                                         ;A2B79D;
 
-.loop:
+  .loop:
     LDA.W MotherBrainsRoomRinkaSpawnData_XPosition,Y                     ;A2B7A0;
     CMP.L $7E7020,X                                                      ;A2B7A3;
     BNE .next                                                            ;A2B7A7;
@@ -6083,7 +6083,7 @@ GetAvailabilityIndexOfEnemySpawnPosition:
     CMP.L $7E7022,X                                                      ;A2B7AC;
     BEQ .found                                                           ;A2B7B0;
 
-.next:
+  .next:
     TYA                                                                  ;A2B7B2;
     CLC                                                                  ;A2B7B3;
     ADC.W #$0006                                                         ;A2B7B4;
@@ -6092,7 +6092,7 @@ GetAvailabilityIndexOfEnemySpawnPosition:
     BMI .loop                                                            ;A2B7BB;
     LDY.W #$0000                                                         ;A2B7BD;
 
-.found:
+  .found:
     LDA.W MotherBrainsRoomRinkaSpawnData_spawnPointAvailabilityIndex,Y   ;A2B7C0;
     RTS                                                                  ;A2B7C3;
 
@@ -6108,7 +6108,7 @@ MainAI_Rinka:
     JML.L RinkaDeath                                                     ;A2B7D8;
 
 
-.function:
+  .function:
     JMP.W ($0FA8,X)                                                      ;A2B7DC;
 
 
@@ -6125,13 +6125,13 @@ Function_Rinka_Fire:
     BRA +                                                                ;A2B7F8;
 
 
-.notMBRoom:
+  .notMBRoom:
     LDA.W $0F86,X                                                        ;A2B7FA;
     ORA.W #$0800                                                         ;A2B7FD;
     AND.W #$FBFF                                                         ;A2B800;
     STA.W $0F86,X                                                        ;A2B803;
 
-  + LDA.W $0AF6                                                          ;A2B806;
++   LDA.W $0AF6                                                          ;A2B806;
     SEC                                                                  ;A2B809;
     SBC.W $0F7A,X                                                        ;A2B80A;
     STA.B $12                                                            ;A2B80D;
@@ -6188,7 +6188,7 @@ DeleteAndRespawnRinka:
     JML.L DeleteEnemyAndAnyConnectedEnemies                              ;A2B876;
 
 
-.notMBRoom:
+  .notMBRoom:
     JSR.W DecrementRinkaCounter                                          ;A2B87A;
     JMP.W RespawnRinka                                                   ;A2B87D;
 
@@ -6204,10 +6204,10 @@ DecrementRinkaCounter:
     BPL .storeRinkaCounter                                               ;A2B892;
     LDA.W #$0000                                                         ;A2B894;
 
-.storeRinkaCounter:
+  .storeRinkaCounter:
     STA.L $7E783C                                                        ;A2B897;
 
-.return:
+  .return:
     RTS                                                                  ;A2B89B;
 
 
@@ -6223,7 +6223,7 @@ UNUSED_Rinka_A2B89C:
     RTS                                                                  ;A2B8B0;
 
 
-.setAsIntangible:
+  .setAsIntangible:
     LDA.W $0F86,X                                                        ;A2B8B1;
     ORA.W #$0400                                                         ;A2B8B4;
     STA.W $0F86,X                                                        ;A2B8B7;
@@ -6243,7 +6243,7 @@ MarkRinkaSpawnPointAvailable:
     PLX                                                                  ;A2B8CE;
     STA.W $0FAE,X                                                        ;A2B8CF;
 
-.return:
+  .return:
     RTS                                                                  ;A2B8D2;
 
 
@@ -6270,7 +6270,7 @@ CheckIfRinkaIsOnScreen:
     RTL                                                                  ;A2B8FC;
 
 
-.returnOffScreen:
+  .returnOffScreen:
     SEC                                                                  ;A2B8FD;
     RTL                                                                  ;A2B8FE;
 
@@ -6298,7 +6298,7 @@ CheckIfPositionIsOnScreen:
     RTL                                                                  ;A2B926;
 
 
-.returnOffScreen:
+  .returnOffScreen:
     SEC                                                                  ;A2B927;
     RTL                                                                  ;A2B928;
 
@@ -6308,14 +6308,14 @@ FrozenAI_Rinka:
     BCC .onScreen                                                        ;A2B92D;
     STZ.W $0F9E,X                                                        ;A2B92F;
 
-.onScreen:
+  .onScreen:
     JSL.L NormalEnemyFrozenAI                                            ;A2B932;
     LDA.L $7E783A                                                        ;A2B936;
     BNE .delete                                                          ;A2B93A;
     RTL                                                                  ;A2B93C;
 
 
-.delete:
+  .delete:
     JSR.W DecrementRinkaCounter                                          ;A2B93D;
     JSR.W MarkRinkaSpawnPointAvailable                                   ;A2B940;
     JML.L RinkaDeath                                                     ;A2B943;
@@ -6338,7 +6338,7 @@ PowerBombReaction_Rinka:
     RTL                                                                  ;A2B95B;
 
 
-.notInvisible:
+  .notInvisible:
     JSL.L NormalEnemyPowerBombAI_NoDeathCheck_External                   ;A2B95C;
 
 ContactReaction_Rinka_Common:
@@ -6347,7 +6347,7 @@ ContactReaction_Rinka_Common:
     RTL                                                                  ;A2B965;
 
 
-.dead:
+  .dead:
     JSR.W DecrementRinkaCounter                                          ;A2B966;
     JSR.W MarkRinkaSpawnPointAvailable                                   ;A2B969;
     LDA.W $0FB4,X                                                        ;A2B96C;
@@ -6356,7 +6356,7 @@ ContactReaction_Rinka_Common:
     JML.L RinkaDeath                                                     ;A2B974;
 
 
-.MBRoom:
+  .MBRoom:
     LDA.W $0F86,X                                                        ;A2B978;
     ORA.W #$0500                                                         ;A2B97B;
     STA.W $0F86,X                                                        ;A2B97E;
@@ -6384,7 +6384,7 @@ UNUSED_Instruction_Rinka_GotoYIfCounterGreaterThan2_A2B9A2:
     RTL                                                                  ;A2B9AD;
 
 
-.gotoY:
+  .gotoY:
     LDA.W $0000,Y                                                        ;A2B9AE;
     TAY                                                                  ;A2B9B1;
     RTL                                                                  ;A2B9B2;
@@ -6621,7 +6621,7 @@ Function_Rio_WaitForSamusToGetNear:
     RTL                                                                  ;A2BBF6;
 
 
-.SamusNear:
+  .SamusNear:
     LDA.W RioConstants_YVelocity                                         ;A2BBF7;
     STA.W $0FAC,X                                                        ;A2BBFA;
     LDA.W RioConstants_XVelocity                                         ;A2BBFD;
@@ -6634,7 +6634,7 @@ Function_Rio_WaitForSamusToGetNear:
     INC A                                                                ;A2BC11;
     STA.W $0FAE,X                                                        ;A2BC12;
 
-  + LDA.W #InstList_Rio_Swooping_Part1                                   ;A2BC15;
++   LDA.W #InstList_Rio_Swooping_Part1                                   ;A2BC15;
     JSR.W SetRioInstList                                                 ;A2BC18;
     LDA.W #Function_Rio_Swoop_Descending                                 ;A2BC1B;
     STA.W $0FAA,X                                                        ;A2BC1E;
@@ -6644,7 +6644,7 @@ Function_Rio_WaitForSamusToGetNear:
     LDA.W #$0065                                                         ;A2BC2A;
     JSL.L QueueSound_Lib2_Max6                                           ;A2BC2D;
 
-.return:
+  .return:
     RTL                                                                  ;A2BC31;
 
 
@@ -6654,7 +6654,7 @@ Function_Rio_SwoopCooldown:
     RTL                                                                  ;A2BC37;
 
 
-.finishedAnimation:
+  .finishedAnimation:
     STZ.W $0FB0,X                                                        ;A2BC38;
     LDA.W #InstList_Rio_PostSwoopIdle                                    ;A2BC3B;
     JSR.W SetRioInstList                                                 ;A2BC3E;
@@ -6670,7 +6670,7 @@ Function_Rio_Swoop_Descending:
     BPL +                                                                ;A2BC4F;
     DEC.B $14                                                            ;A2BC51;
 
-  + STA.B $13                                                            ;A2BC53;
++   STA.B $13                                                            ;A2BC53;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A2BC55;
     BCS .collidedHorizontally                                            ;A2BC59;
     STZ.B $12                                                            ;A2BC5B;
@@ -6679,7 +6679,7 @@ Function_Rio_Swoop_Descending:
     BPL +                                                                ;A2BC62;
     DEC.B $14                                                            ;A2BC64;
 
-  + STA.B $13                                                            ;A2BC66;
++   STA.B $13                                                            ;A2BC66;
     JSL.L MoveEnemyDownBy_14_12                                          ;A2BC68;
     BCS .collidedVertically                                              ;A2BC6C;
     LDA.W $0FAC,X                                                        ;A2BC6E;
@@ -6693,11 +6693,11 @@ Function_Rio_Swoop_Descending:
     LDA.W #InstList_Rio_Swooping_Part2                                   ;A2BC82;
     JSR.W SetRioInstList                                                 ;A2BC85;
 
-.return:
+  .return:
     RTL                                                                  ;A2BC88;
 
 
-.homing:
+  .homing:
     LDA.W $0FAE,X                                                        ;A2BC89;
     STA.W $0FA8,X                                                        ;A2BC8C;
     STZ.W $0FAE,X                                                        ;A2BC8F;
@@ -6707,13 +6707,13 @@ Function_Rio_Swoop_Descending:
     RTL                                                                  ;A2BC9B;
 
 
-.collidedHorizontally:
+  .collidedHorizontally:
     LDA.W $0FAE,X                                                        ;A2BC9C;
     EOR.W #$FFFF                                                         ;A2BC9F;
     INC A                                                                ;A2BCA2;
     STA.W $0FAE,X                                                        ;A2BCA3;
 
-.collidedVertically:
+  .collidedVertically:
     LDA.W $0FAC,X                                                        ;A2BCA6;
     EOR.W #$FFFF                                                         ;A2BCA9;
     INC A                                                                ;A2BCAC;
@@ -6730,7 +6730,7 @@ Function_Rio_Swoop_Ascending:
     BPL +                                                                ;A2BCBE;
     DEC.B $14                                                            ;A2BCC0;
 
-  + STA.B $13                                                            ;A2BCC2;
++   STA.B $13                                                            ;A2BCC2;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A2BCC4;
     BCC .notCollidedWithWall                                             ;A2BCC8;
     LDA.W $0FAE,X                                                        ;A2BCCA;
@@ -6738,14 +6738,14 @@ Function_Rio_Swoop_Ascending:
     INC A                                                                ;A2BCD0;
     STA.W $0FAE,X                                                        ;A2BCD1;
 
-.notCollidedWithWall:
+  .notCollidedWithWall:
     STZ.B $12                                                            ;A2BCD4;
     STZ.B $14                                                            ;A2BCD6;
     LDA.W $0FAC,X                                                        ;A2BCD8;
     BPL +                                                                ;A2BCDB;
     DEC.B $14                                                            ;A2BCDD;
 
-  + STA.B $13                                                            ;A2BCDF;
++   STA.B $13                                                            ;A2BCDF;
     JSL.L MoveEnemyDownBy_14_12                                          ;A2BCE1;
     BCS .notCollidedWithBlock                                            ;A2BCE5;
     LDA.W $0FAC,X                                                        ;A2BCE7;
@@ -6755,7 +6755,7 @@ Function_Rio_Swoop_Ascending:
     RTL                                                                  ;A2BCF1;
 
 
-.notCollidedWithBlock:
+  .notCollidedWithBlock:
     LDA.W #InstList_Rio_SwoopCooldown                                    ;A2BCF2;
     JSR.W SetRioInstList                                                 ;A2BCF5;
     LDA.W #Function_Rio_SwoopCooldown                                    ;A2BCF8;
@@ -6783,7 +6783,7 @@ Function_Rio_Homing:
     BPL +                                                                ;A2BD25;
     DEC.B $14                                                            ;A2BD27;
 
-  + STA.B $13                                                            ;A2BD29;
++   STA.B $13                                                            ;A2BD29;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A2BD2B;
     STZ.B $12                                                            ;A2BD2F;
     STZ.B $14                                                            ;A2BD31;
@@ -6791,12 +6791,12 @@ Function_Rio_Homing:
     BPL +                                                                ;A2BD36;
     DEC.B $14                                                            ;A2BD38;
 
-  + STA.B $13                                                            ;A2BD3A;
++   STA.B $13                                                            ;A2BD3A;
     JSL.L MoveEnemyDownBy_14_12                                          ;A2BD3C;
     RTL                                                                  ;A2BD40;
 
 
-.resumeSwoop:
+  .resumeSwoop:
     LDA.W $0FA8,X                                                        ;A2BD41;
     STA.W $0FAE,X                                                        ;A2BD44;
     LDA.W #$FFFF                                                         ;A2BD47;
@@ -6816,7 +6816,7 @@ SetRioInstList:
     STA.W $0F94,X                                                        ;A2BD65;
     STZ.W $0F90,X                                                        ;A2BD68;
 
-.return:
+  .return:
     RTS                                                                  ;A2BD6B;
 
 
@@ -6939,7 +6939,7 @@ InitAI_Squeept:
     RTL                                                                  ;A2BEC4;
 
 
-.flame:
+  .flame:
     LDA.W #InstList_Squeept_Flame_0                                      ;A2BEC5;
     STA.W $0F92,X                                                        ;A2BEC8;
     LDA.W #Function_Squeept_Flame                                        ;A2BECB;
@@ -6962,25 +6962,25 @@ Function_Squeept_Flame:
     RTL                                                                  ;A2BEEA;
 
 
-.notDead:
+  .notDead:
     LDA.W $0F5E,X                                                        ;A2BEEB;
     STA.W $0F9E,X                                                        ;A2BEEE;
     BEQ .frozen                                                          ;A2BEF1;
     BRA .invisible                                                       ;A2BEF3;
 
 
-.frozen:
+  .frozen:
     BIT.W $0F6C,X                                                        ;A2BEF5;
     BMI .visible                                                         ;A2BEF8;
 
-.invisible:
+  .invisible:
     LDA.W $0F86,X                                                        ;A2BEFA;
     ORA.W #$0100                                                         ;A2BEFD;
     STA.W $0F86,X                                                        ;A2BF00;
     RTL                                                                  ;A2BF03;
 
 
-.visible:
+  .visible:
     LDA.W $0F86,X                                                        ;A2BF04;
     AND.W #$FEFF                                                         ;A2BF07;
     STA.W $0F86,X                                                        ;A2BF0A;
@@ -7020,10 +7020,10 @@ Function_Squeept_Rising:
     BRA +                                                                ;A2BF54;
 
 
-.lowByte:
+  .lowByte:
     AND.W #$00FF                                                         ;A2BF56;
 
-  + ADC.W $0F7E,X                                                        ;A2BF59;
++   ADC.W $0F7E,X                                                        ;A2BF59;
     STA.W $0F7E,X                                                        ;A2BF5C;
     LDA.W $0FAC,X                                                        ;A2BF5F;
     CLC                                                                  ;A2BF62;
@@ -7034,7 +7034,7 @@ Function_Squeept_Rising:
     RTL                                                                  ;A2BF6E;
 
 
-.maxHeight:
+  .maxHeight:
     LDA.W #InstList_Squeept_Flipping_Falling                             ;A2BF6F;
     JSR.W SetSqueeptInstList                                             ;A2BF72;
     LDA.W #Function_Squeept_Flipping                                     ;A2BF75;
@@ -7055,10 +7055,10 @@ Function_Squeept_Flipping:
     BRA +                                                                ;A2BF92;
 
 
-.lowByte:
+  .lowByte:
     AND.W #$00FF                                                         ;A2BF94;
 
-  + ADC.W $0F7E,X                                                        ;A2BF97;
++   ADC.W $0F7E,X                                                        ;A2BF97;
     STA.W $0F7E,X                                                        ;A2BF9A;
     LDA.W $0FAC,X                                                        ;A2BF9D;
     CLC                                                                  ;A2BFA0;
@@ -7069,7 +7069,7 @@ Function_Squeept_Flipping:
     RTL                                                                  ;A2BFAD;
 
 
-.animationFinished:
+  .animationFinished:
     LDA.W #$0000                                                         ;A2BFAE;
     STA.L $7E7800,X                                                      ;A2BFB1;
     LDA.W #Function_Squeept_Falling                                      ;A2BFB5;
@@ -7090,10 +7090,10 @@ Function_Squeept_Falling:
     BRA +                                                                ;A2BFD2;
 
 
-.lowByte:
+  .lowByte:
     AND.W #$00FF                                                         ;A2BFD4;
 
-  + ADC.W $0F7E,X                                                        ;A2BFD7;
++   ADC.W $0F7E,X                                                        ;A2BFD7;
     STA.W $0F7E,X                                                        ;A2BFDA;
     AND.W #$00F0                                                         ;A2BFDD;
     CMP.W #$00F0                                                         ;A2BFE0;
@@ -7105,7 +7105,7 @@ Function_Squeept_Falling:
     RTL                                                                  ;A2BFEF;
 
 
-.nextJump:
+  .nextJump:
     LDA.W $0FAE,X                                                        ;A2BFF0;
     STA.W $0F7A,X                                                        ;A2BFF3;
     LDA.W $0FB0,X                                                        ;A2BFF6;
@@ -7130,7 +7130,7 @@ SetSqueeptInstList:
     STA.W $0F94,X                                                        ;A2C025;
     STZ.W $0F90,X                                                        ;A2C028;
 
-.return:
+  .return:
     RTS                                                                  ;A2C02B;
 
 
@@ -7382,7 +7382,7 @@ InitAI_Geruta:
     RTL                                                                  ;A2C265;
 
 
-.flames:
+  .flames:
     LDA.W #InstList_Geruta_Flames_Ascending                              ;A2C266;
     STA.L $7E7800,X                                                      ;A2C269;
     STA.W $0F92,X                                                        ;A2C26D;
@@ -7406,7 +7406,7 @@ Function_Geruta_Flames:
     RTL                                                                  ;A2C28F;
 
 
-.notDead:
+  .notDead:
     LDA.W $0F5E,X                                                        ;A2C290;
     STA.W $0F9E,X                                                        ;A2C293;
     BEQ .notFrozen                                                       ;A2C296;
@@ -7415,7 +7415,7 @@ Function_Geruta_Flames:
     RTL                                                                  ;A2C29A; >_<
 
 
-.notFrozen:
+  .notFrozen:
     LDA.W $0F86,X                                                        ;A2C29B;
     AND.W #$FEFF                                                         ;A2C29E;
     STA.W $0F86,X                                                        ;A2C2A1;
@@ -7423,14 +7423,14 @@ Function_Geruta_Flames:
     CMP.W #InstList_Geruta_Main_Idle                                     ;A2C2A8;
     BNE .swooping                                                        ;A2C2AB;
 
-.frozen:
+  .frozen:
     LDA.W $0F86,X                                                        ;A2C2AD;
     ORA.W #$0100                                                         ;A2C2B0;
     STA.W $0F86,X                                                        ;A2C2B3;
     RTL                                                                  ;A2C2B6;
 
 
-.swooping:
+  .swooping:
     LDA.W #InstList_Geruta_Flames_Ascending                              ;A2C2B7;
     STA.B $12                                                            ;A2C2BA;
     LDA.L $7E77C4,X                                                      ;A2C2BC;
@@ -7438,7 +7438,7 @@ Function_Geruta_Flames:
     LDA.W #InstList_Geruta_Flames_Descending                             ;A2C2C2;
     STA.B $12                                                            ;A2C2C5;
 
-  + LDA.B $12                                                            ;A2C2C7;
++   LDA.B $12                                                            ;A2C2C7;
     JSR.W SetGerutaInstList                                              ;A2C2C9;
     LDA.W $0F86,X                                                        ;A2C2CC;
     AND.W #$FEFF                                                         ;A2C2CF;
@@ -7460,18 +7460,18 @@ Function_Geruta_Idle:
     JSL.L CheckIfXDistanceBetweenEnemyAndSamusIsAtLeastA                 ;A2C2F2;
     BCC .swoop                                                           ;A2C2F6;
 
-  + LDA.L $7E7802,X                                                      ;A2C2F8;
++   LDA.L $7E7802,X                                                      ;A2C2F8;
     BEQ .return                                                          ;A2C2FC;
     LDA.W #$0000                                                         ;A2C2FE;
     STA.L $7E7802,X                                                      ;A2C301;
     LDA.W #InstList_Geruta_Main_Idle                                     ;A2C305;
     JSR.W SetGerutaInstList                                              ;A2C308;
 
-.return:
+  .return:
     RTL                                                                  ;A2C30B;
 
 
-.swoop:
+  .swoop:
     LDA.W $05E5                                                          ;A2C30C;
     LSR A                                                                ;A2C30F;
     AND.W #$0002                                                         ;A2C310;
@@ -7488,7 +7488,7 @@ Function_Geruta_Idle:
     INC A                                                                ;A2C32E;
     STA.W $0FAA,X                                                        ;A2C32F;
 
-.SamusToTheLeft:
+  .SamusToTheLeft:
     LDA.W #InstList_Geruta_Main_Swoop_StartDescending                    ;A2C332;
     JSR.W SetGerutaInstList                                              ;A2C335;
     LDA.W #Function_Geruta_StartSwoop                                    ;A2C338;
@@ -7502,7 +7502,7 @@ Function_Geruta_StartSwoop:
     RTL                                                                  ;A2C345;
 
 
-.finishedStartAnimation:
+  .finishedStartAnimation:
     LDA.W #$0000                                                         ;A2C346;
     STA.L $7E7802,X                                                      ;A2C349;
     LDA.W #InstList_Geruta_Main_Swoop_Descending                         ;A2C34D;
@@ -7521,7 +7521,7 @@ Function_Geruta_Swoop_Descending:
     BPL +                                                                ;A2C368;
     DEC.B $14                                                            ;A2C36A;
 
-  + STA.B $13                                                            ;A2C36C;
++   STA.B $13                                                            ;A2C36C;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A2C36E;
     BCC .notCollidedWithWall                                             ;A2C372;
     LDA.W $0FAA,X                                                        ;A2C374;
@@ -7529,14 +7529,14 @@ Function_Geruta_Swoop_Descending:
     INC A                                                                ;A2C37A;
     STA.W $0FAA,X                                                        ;A2C37B;
 
-.notCollidedWithWall:
+  .notCollidedWithWall:
     STZ.B $12                                                            ;A2C37E;
     STZ.B $14                                                            ;A2C380;
     LDA.W $0FA8,X                                                        ;A2C382;
     BPL +                                                                ;A2C385;
     DEC.B $14                                                            ;A2C387;
 
-  + STA.B $13                                                            ;A2C389;
++   STA.B $13                                                            ;A2C389;
     JSL.L MoveEnemyDownBy_14_12                                          ;A2C38B;
     BCS .collidedWithBlock                                               ;A2C38F;
     LDA.W $0FA8,X                                                        ;A2C391;
@@ -7547,7 +7547,7 @@ Function_Geruta_Swoop_Descending:
     RTL                                                                  ;A2C39D;
 
 
-.collidedWithBlock:
+  .collidedWithBlock:
     LDA.W #$FFFF                                                         ;A2C39E;
     STA.W $0FA8,X                                                        ;A2C3A1;
     LDA.W #InstList_Geruta_Main_Swoop_StartAscending                     ;A2C3A4;
@@ -7564,7 +7564,7 @@ Function_Geruta_Swoop_Ascending:
     BPL +                                                                ;A2C3B8;
     DEC.B $14                                                            ;A2C3BA;
 
-  + STA.B $13                                                            ;A2C3BC;
++   STA.B $13                                                            ;A2C3BC;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A2C3BE;
     BCC .notCollidedWithWall                                             ;A2C3C2;
     LDA.W $0FAA,X                                                        ;A2C3C4;
@@ -7572,14 +7572,14 @@ Function_Geruta_Swoop_Ascending:
     INC A                                                                ;A2C3CA;
     STA.W $0FAA,X                                                        ;A2C3CB;
 
-.notCollidedWithWall:
+  .notCollidedWithWall:
     STZ.B $12                                                            ;A2C3CE;
     STZ.B $14                                                            ;A2C3D0;
     LDA.W $0FA8,X                                                        ;A2C3D2;
     BPL +                                                                ;A2C3D5;
     DEC.B $14                                                            ;A2C3D7;
 
-  + STA.B $13                                                            ;A2C3D9;
++   STA.B $13                                                            ;A2C3D9;
     JSL.L MoveEnemyDownBy_14_12                                          ;A2C3DB;
     BCS .collidedVertically                                              ;A2C3DF;
     LDA.W $0FA8,X                                                        ;A2C3E1;
@@ -7593,11 +7593,11 @@ Function_Geruta_Swoop_Ascending:
     LDA.W #InstList_Geruta_Main_Swoop_Ascending                          ;A2C3F8;
     JSR.W SetGerutaInstList                                              ;A2C3FB;
 
-.return:
+  .return:
     RTL                                                                  ;A2C3FE;
 
 
-.collidedVertically:
+  .collidedVertically:
     LDA.W #Function_Geruta_FinishSwoop                                   ;A2C3FF;
     STA.W $0FB2,X                                                        ;A2C402;
     RTL                                                                  ;A2C405;
@@ -7619,7 +7619,7 @@ SetGerutaInstList:
     STA.W $0F94,X                                                        ;A2C420;
     STZ.W $0F90,X                                                        ;A2C423;
 
-.return:
+  .return:
     RTS                                                                  ;A2C426;
 
 
@@ -7900,7 +7900,7 @@ InitAI_Holtz:
     RTL                                                                  ;A2C712;
 
 
-.idle:
+  .idle:
     LDA.W #Function_Holtz_Idle                                           ;A2C713;
     STA.W $0FB2,X                                                        ;A2C716;
     LDA.W #InstList_Holtz_Idle_0                                         ;A2C719;
@@ -7924,25 +7924,25 @@ Function_Holtz_Flames:
     RTL                                                                  ;A2C73C;
 
 
-.notDead:
+  .notDead:
     LDA.W $0F5E,X                                                        ;A2C73D;
     STA.W $0F9E,X                                                        ;A2C740;
     BEQ .frozen                                                          ;A2C743;
     BRA .invisible                                                       ;A2C745;
 
 
-.frozen:
+  .frozen:
     LDA.L $7E77C4,X                                                      ;A2C747;
     BNE .visible                                                         ;A2C74B;
 
-.invisible:
+  .invisible:
     LDA.W $0F86,X                                                        ;A2C74D;
     ORA.W #$0100                                                         ;A2C750;
     STA.W $0F86,X                                                        ;A2C753;
     RTL                                                                  ;A2C756;
 
 
-.visible:
+  .visible:
     LDA.W $0F86,X                                                        ;A2C757;
     AND.W #$FEFF                                                         ;A2C75A;
     STA.W $0F86,X                                                        ;A2C75D;
@@ -7963,7 +7963,7 @@ Function_Holtz_Idle:
     JSL.L CheckIfXDistanceBetweenEnemyAndSamusIsAtLeastA                 ;A2C77C;
     BCC .triggered                                                       ;A2C780;
 
-.quarterChancestayIdle:
+  .quarterChancestayIdle:
     LDA.W #$0000                                                         ;A2C782;
     STA.L $7E7802,X                                                      ;A2C785;
     LDA.W #InstList_Holtz_Idle_0                                         ;A2C789;
@@ -7971,7 +7971,7 @@ Function_Holtz_Idle:
     RTL                                                                  ;A2C78F;
 
 
-.triggered:
+  .triggered:
     LDA.W HoltzConstants_initialYVelocity                                ;A2C790;
     STA.W $0FAC,X                                                        ;A2C793;
     LDA.W HoltzConstants_XSpeed                                          ;A2C796;
@@ -7984,7 +7984,7 @@ Function_Holtz_Idle:
     INC A                                                                ;A2C7AA;
     STA.W $0FAE,X                                                        ;A2C7AB;
 
-  + LDA.W #InstList_Holtz_PrepareToSwoop                                 ;A2C7AE;
++   LDA.W #InstList_Holtz_PrepareToSwoop                                 ;A2C7AE;
     JSR.W SetHoltzInstList                                               ;A2C7B1;
     LDA.W #Function_Holtz_PrepareToSwoop                                 ;A2C7B4;
     STA.W $0FB2,X                                                        ;A2C7B7;
@@ -7997,7 +7997,7 @@ Function_Holtz_PrepareToSwoop:
     RTL                                                                  ;A2C7C1;
 
 
-.animationFinished:
+  .animationFinished:
     LDA.W #$0000                                                         ;A2C7C2;
     STA.L $7E7802,X                                                      ;A2C7C5;
     LDA.W #InstList_Holtz_Swoop_Descending                               ;A2C7C9;
@@ -8014,7 +8014,7 @@ Function_Holtz_Swoop_Descending:
     BPL +                                                                ;A2C7DD;
     DEC.B $14                                                            ;A2C7DF;
 
-  + STA.B $13                                                            ;A2C7E1;
++   STA.B $13                                                            ;A2C7E1;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A2C7E3;
     BCC .notCollidedWithWall                                             ;A2C7E7;
     LDA.W $0FAE,X                                                        ;A2C7E9;
@@ -8022,14 +8022,14 @@ Function_Holtz_Swoop_Descending:
     INC A                                                                ;A2C7EF;
     STA.W $0FAE,X                                                        ;A2C7F0;
 
-.notCollidedWithWall:
+  .notCollidedWithWall:
     STZ.B $12                                                            ;A2C7F3;
     STZ.B $14                                                            ;A2C7F5;
     LDA.W $0FAC,X                                                        ;A2C7F7;
     BPL +                                                                ;A2C7FA;
     DEC.B $14                                                            ;A2C7FC;
 
-  + STA.B $13                                                            ;A2C7FE;
++   STA.B $13                                                            ;A2C7FE;
     JSL.L MoveEnemyDownBy_14_12                                          ;A2C800;
     BCS .notCollidedWithBlock                                            ;A2C804;
     LDA.W $0FAC,X                                                        ;A2C806;
@@ -8040,7 +8040,7 @@ Function_Holtz_Swoop_Descending:
     RTL                                                                  ;A2C812;
 
 
-.notCollidedWithBlock:
+  .notCollidedWithBlock:
     LDA.W #$FFFF                                                         ;A2C813;
     STA.W $0FAC,X                                                        ;A2C816;
     LDA.W #InstList_Holtz_Swoop_Ascending_Part1                          ;A2C819;
@@ -8059,7 +8059,7 @@ Function_Holtz_Swoop_Ascending:
     BPL +                                                                ;A2C834;
     DEC.B $14                                                            ;A2C836;
 
-  + STA.B $13                                                            ;A2C838;
++   STA.B $13                                                            ;A2C838;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A2C83A;
     BCC .notCollidedWithWall                                             ;A2C83E;
     LDA.W $0FAE,X                                                        ;A2C840;
@@ -8067,14 +8067,14 @@ Function_Holtz_Swoop_Ascending:
     INC A                                                                ;A2C846;
     STA.W $0FAE,X                                                        ;A2C847;
 
-.notCollidedWithWall:
+  .notCollidedWithWall:
     STZ.B $12                                                            ;A2C84A;
     STZ.B $14                                                            ;A2C84C;
     LDA.W $0FAC,X                                                        ;A2C84E;
     BPL +                                                                ;A2C851;
     DEC.B $14                                                            ;A2C853;
 
-  + STA.B $13                                                            ;A2C855;
++   STA.B $13                                                            ;A2C855;
     JSL.L MoveEnemyDownBy_14_12                                          ;A2C857;
     BCS .collidedVertically                                              ;A2C85B;
     LDA.W $0FAC,X                                                        ;A2C85D;
@@ -8088,11 +8088,11 @@ Function_Holtz_Swoop_Ascending:
     LDA.W #InstList_Holtz_Swoop_Part2_0                                  ;A2C874;
     JSR.W SetHoltzInstList                                               ;A2C877;
 
-.return:
+  .return:
     RTL                                                                  ;A2C87A;
 
 
-.collidedVertically:
+  .collidedVertically:
     LDA.W #InstList_Holtz_SwoopCooldown                                  ;A2C87B;
     JSR.W SetHoltzInstList                                               ;A2C87E;
     LDA.W #Function_Holtz_SwoopCooldown                                  ;A2C881;
@@ -8106,7 +8106,7 @@ Function_Holtz_SwoopCooldown:
     RTL                                                                  ;A2C88E;
 
 
-.animationFinished:
+  .animationFinished:
     LDA.W #$0000                                                         ;A2C88F;
     STA.L $7E7802,X                                                      ;A2C892;
     LDA.W #InstList_Holtz_SwoopCooldown                                  ;A2C896;
@@ -8126,7 +8126,7 @@ SetHoltzInstList:
     STA.W $0F94,X                                                        ;A2C8B6;
     STZ.W $0F90,X                                                        ;A2C8B9;
 
-.return:
+  .return:
     RTS                                                                  ;A2C8BC;
 
 
@@ -8627,7 +8627,7 @@ HandlePushingSamus:
     SBC.L $7E7810,X                                                      ;A2CD46;
     STA.W $0B5C                                                          ;A2CD4A;
 
-.notTouchingSamusFromBelow:
+  .notTouchingSamusFromBelow:
     LDA.L $7E7808,X                                                      ;A2CD4D;
     BEQ .return                                                          ;A2CD51;
     LDA.W $0F7A,X                                                        ;A2CD53;
@@ -8640,16 +8640,16 @@ HandlePushingSamus:
     BRA +                                                                ;A2CD65;
 
 
-.movedLeft:
+  .movedLeft:
     LDA.L $7E780A,X                                                      ;A2CD67;
     BEQ .return                                                          ;A2CD6B;
 
-  + LDA.W $0B58                                                          ;A2CD6D;
++   LDA.W $0B58                                                          ;A2CD6D;
     CLC                                                                  ;A2CD70;
     ADC.B $12                                                            ;A2CD71;
     STA.W $0B58                                                          ;A2CD73;
 
-.return:
+  .return:
     RTS                                                                  ;A2CD76;
 
 
@@ -8671,7 +8671,7 @@ StopIfSamusIsPressingTowardsOum:
     BRA .return                                                          ;A2CD9E;
 
 
-.checkPressingRight:
+  .checkPressingRight:
     LDA.B $8B                                                            ;A2CDA0;
     AND.W #$0100                                                         ;A2CDA2;
     BEQ .return                                                          ;A2CDA5;
@@ -8682,7 +8682,7 @@ StopIfSamusIsPressingTowardsOum:
     BRA .return                                                          ;A2CDB5;
 
 
-.stationary:
+  .stationary:
     LDA.L $7E780A,X                                                      ;A2CDB7;
     BEQ .SamusIsToTheRight                                               ;A2CDBB;
     LDA.W $0FAE,X                                                        ;A2CDBD;
@@ -8693,19 +8693,19 @@ StopIfSamusIsPressingTowardsOum:
     BRA +                                                                ;A2CDC9;
 
 
-.SamusIsToTheRight:
+  .SamusIsToTheRight:
     LDA.W $0FAE,X                                                        ;A2CDCB;
     BNE .return                                                          ;A2CDCE;
     LDA.B $8B                                                            ;A2CDD0;
     AND.W #$0200                                                         ;A2CDD2;
     BEQ .return                                                          ;A2CDD5;
 
-  + LDA.W #$0001                                                         ;A2CDD7;
++   LDA.W #$0001                                                         ;A2CDD7;
     STA.L $7E7816,X                                                      ;A2CDDA;
     LDA.L $7E780C,X                                                      ;A2CDDE;
     STA.W $0F7A,X                                                        ;A2CDE2;
 
-.return:
+  .return:
     RTS                                                                  ;A2CDE5;
 
 
@@ -8717,7 +8717,7 @@ Function_Oum_Idle:
     BRA .return                                                          ;A2CDF1;
 
 
-.noBounce:
+  .noBounce:
     LDA.W #$0000                                                         ;A2CDF3;
     STA.L $7E7800,X                                                      ;A2CDF6;
     JSL.L Get_SamusX_minus_EnemyX                                        ;A2CDFA;
@@ -8726,7 +8726,7 @@ Function_Oum_Idle:
     STA.W $0FAE,X                                                        ;A2CE03;
     STA.L $7E7800,X                                                      ;A2CE06;
 
-.SamusToTheLeft:
+  .SamusToTheLeft:
     JSR.W SetOumInstList                                                 ;A2CE0A;
     LDA.W #$0018                                                         ;A2CE0D;
     JSL.L IsSamusWithinAPixelColumnsOfEnemy                              ;A2CE10;
@@ -8738,7 +8738,7 @@ Function_Oum_Idle:
     LDA.W #Function_Oum_Rolling                                          ;A2CE24;
     STA.W $0FA8,X                                                        ;A2CE27;
 
-.return:
+  .return:
     RTS                                                                  ;A2CE2A;
 
 
@@ -8750,7 +8750,7 @@ Function_Oum_Rolling:
     BRA .collidedWithBlock                                               ;A2CE36;
 
 
-.noBounce:
+  .noBounce:
     STZ.B $12                                                            ;A2CE38;
     LDA.W #$0001                                                         ;A2CE3A;
     STA.B $14                                                            ;A2CE3D;
@@ -8762,13 +8762,13 @@ Function_Oum_Rolling:
     LDA.W #$0003                                                         ;A2CE4E;
     STA.W $0FB0,X                                                        ;A2CE51;
 
-.collidedWithBlock:
+  .collidedWithBlock:
     LDA.L $7E7816,X                                                      ;A2CE54;
     BEQ .notStopped                                                      ;A2CE58;
     JMP.W .return                                                        ;A2CE5A;
 
 
-.notStopped:
+  .notStopped:
     STZ.B $24                                                            ;A2CE5D;
     DEC.W $0FAC,X                                                        ;A2CE5F;
     BPL .noAttack                                                        ;A2CE62;
@@ -8789,7 +8789,7 @@ Function_Oum_Rolling:
     STA.L $7E7800,X                                                      ;A2CE8E;
     STA.W $0FAE,X                                                        ;A2CE92;
 
-.SamusToTheRight:
+  .SamusToTheRight:
     LDA.W #$0080                                                         ;A2CE95;
     STA.W $0FAC,X                                                        ;A2CE98;
     LDA.L $7E7800,X                                                      ;A2CE9B;
@@ -8802,7 +8802,7 @@ Function_Oum_Rolling:
     JMP.W .return                                                        ;A2CEB2;
 
 
-.noAttack:
+  .noAttack:
     LDA.W #$0080                                                         ;A2CEB5;
     TAY                                                                  ;A2CEB8;
     LDA.W $0FAE,X                                                        ;A2CEB9;
@@ -8812,7 +8812,7 @@ Function_Oum_Rolling:
     INY                                                                  ;A2CEC0;
     INY                                                                  ;A2CEC1;
 
-.notLeft:
+  .notLeft:
     LDA.W CommonEnemySpeeds_LinearlyIncreasing+2,Y                       ;A2CEC2;
     STA.B $12                                                            ;A2CEC5;
     LDA.W CommonEnemySpeeds_LinearlyIncreasing,Y                         ;A2CEC7;
@@ -8831,18 +8831,18 @@ Function_Oum_Rolling:
     BRA .noAdjustForSamus                                                ;A2CEE8;
 
 
-.right:
+  .right:
     LDA.B $14                                                            ;A2CEEA;
     CLC                                                                  ;A2CEEC;
     ADC.W #$0010                                                         ;A2CEED;
     STA.B $14                                                            ;A2CEF0;
 
-.noAdjustForSamus:
+  .noAdjustForSamus:
     JSL.L MoveEnemyRightBy_14_12_TreatSlopesAsWalls                      ;A2CEF2;
     BCC .notCollidedWithWall                                             ;A2CEF6;
     INC.B $24                                                            ;A2CEF8;
 
-.notCollidedWithWall:
+  .notCollidedWithWall:
     LDA.L $7E7808,X                                                      ;A2CEFA;
     BEQ .noUnadjustForSamus                                              ;A2CEFE;
     LDA.W $0FAE,X                                                        ;A2CF00;
@@ -8857,13 +8857,13 @@ Function_Oum_Rolling:
     BRA .noUnadjustForSamus                                              ;A2CF18;
 
 
-.movingRight:
+  .movingRight:
     LDA.W $0F7A,X                                                        ;A2CF1A;
     SEC                                                                  ;A2CF1D;
     SBC.W #$0010                                                         ;A2CF1E;
     STA.W $0F7A,X                                                        ;A2CF21;
 
-.noUnadjustForSamus:
+  .noUnadjustForSamus:
     LDA.B $24                                                            ;A2CF24;
     BEQ .return                                                          ;A2CF26;
     LDA.W $0FAE,X                                                        ;A2CF28;
@@ -8874,7 +8874,7 @@ Function_Oum_Rolling:
     STA.L $7E7800,X                                                      ;A2CF38;
     JSR.W SetOumInstList                                                 ;A2CF3C;
 
-.return:
+  .return:
     RTS                                                                  ;A2CF3F;
 
 
@@ -8892,7 +8892,7 @@ Function_Oum_Attacking:
     LDA.W #Function_Oum_Rolling                                          ;A2CF5F;
     STA.W $0FA8,X                                                        ;A2CF62;
 
-.return:
+  .return:
     RTS                                                                  ;A2CF65;
 
 
@@ -8904,7 +8904,7 @@ Function_Oum_Falling:
     BMI +                                                                ;A2CF70;
     LDA.W #$4000                                                         ;A2CF72;
 
-  + STA.W $0FAA,X                                                        ;A2CF75;
++   STA.W $0FAA,X                                                        ;A2CF75;
     AND.W #$FF00                                                         ;A2CF78;
     XBA                                                                  ;A2CF7B;
     ASL A                                                                ;A2CF7C;
@@ -8924,12 +8924,12 @@ Function_Oum_Falling:
     BPL .notNegative                                                     ;A2CF9A;
     STZ.W $0FB0,X                                                        ;A2CF9C;
 
-.notNegative:
+  .notNegative:
     STA.W $0FAA,X                                                        ;A2CF9F;
     LDA.W #Function_Oum_Rising                                           ;A2CFA2;
     STA.W $0FB2,X                                                        ;A2CFA5;
 
-.return:
+  .return:
     RTS                                                                  ;A2CFA8;
 
 
@@ -8945,7 +8945,7 @@ Function_Oum_Rising:
     BRA .return                                                          ;A2CFBE;
 
 
-.notNegative:
+  .notNegative:
     AND.W #$FF00                                                         ;A2CFC0;
     XBA                                                                  ;A2CFC3;
     ASL A                                                                ;A2CFC4;
@@ -8958,7 +8958,7 @@ Function_Oum_Rising:
     STA.B $14                                                            ;A2CFD0;
     JSL.L MoveEnemyDownBy_14_12                                          ;A2CFD2;
 
-.return:
+  .return:
     RTS                                                                  ;A2CFD6;
 
 
@@ -8983,7 +8983,7 @@ SetOumInstList:
     STA.W $0F94,X                                                        ;A2CFF8;
     STZ.W $0F90,X                                                        ;A2CFFB;
 
-.return:
+  .return:
     RTS                                                                  ;A2CFFE;
 
 
@@ -9005,7 +9005,7 @@ CheckIfTouchingSamus:
     LDA.W #$0001                                                         ;A2D02C;
     STA.L $7E780A,X                                                      ;A2D02F;
 
-.return:
+  .return:
     RTS                                                                  ;A2D033;
 
 
@@ -9315,13 +9315,13 @@ EnemyTouch_Oum_DoesNotHurtSamus:
     RTL                                                                  ;A2D3A8;
 
 
-.rightOfSamus:
+  .rightOfSamus:
     LDA.W $0B58                                                          ;A2D3A9;
     CLC                                                                  ;A2D3AC;
     ADC.W #$FFFC                                                         ;A2D3AD;
     STA.W $0B58                                                          ;A2D3B0;
 
-.return:
+  .return:
     RTL                                                                  ;A2D3B3;
 
 
@@ -9872,7 +9872,7 @@ CalculateChootInitialJumpSpeed:
     STZ.B $16                                                            ;A2DFEB;
     STZ.B $18                                                            ;A2DFED;
 
-.loop:
+  .loop:
     LDA.B $18                                                            ;A2DFEF;
     CLC                                                                  ;A2DFF1;
     ADC.W #$0200                                                         ;A2DFF2;
@@ -9889,7 +9889,7 @@ CalculateChootInitialJumpSpeed:
     BCC +                                                                ;A2E005;
     INC.B $16                                                            ;A2E007;
 
-  + STA.B $14                                                            ;A2E009;
++   STA.B $14                                                            ;A2E009;
     LDA.B $16                                                            ;A2E00B;
     CLC                                                                  ;A2E00D;
     ADC.W CommonEnemySpeeds_QuadraticallyIncreasing+2,Y                  ;A2E00E;
@@ -9926,7 +9926,7 @@ Function_Choot_WaitForSamusToGetNear:
     LDA.W #Function_Choot_PrepareToJump                                  ;A2E048;
     STA.W $0FA8,X                                                        ;A2E04B;
 
-.return:
+  .return:
     RTS                                                                  ;A2E04E;
 
 
@@ -9941,7 +9941,7 @@ Function_Choot_PrepareToJump:
     LDA.W #Function_Choot_Jumping                                        ;A2E063;
     STA.W $0FA8,X                                                        ;A2E066;
 
-.return:
+  .return:
     RTS                                                                  ;A2E069;
 
 
@@ -9960,7 +9960,7 @@ Function_Choot_Jumping:
     BCC +                                                                ;A2E07F;
     INC.W $0F7E,X                                                        ;A2E081;
 
-  + STA.W $0F80,X                                                        ;A2E084;
++   STA.W $0F80,X                                                        ;A2E084;
     LDA.W $0F7E,X                                                        ;A2E087;
     CLC                                                                  ;A2E08A;
     ADC.W CommonEnemySpeeds_QuadraticallyIncreasing+6,Y                  ;A2E08B;
@@ -9986,7 +9986,7 @@ Function_Choot_Jumping:
     LDA.W #Function_Choot_Falling                                        ;A2E0C6;
     STA.W $0FA8,X                                                        ;A2E0C9;
 
-.return:
+  .return:
     RTS                                                                  ;A2E0CC;
 
 
@@ -10025,7 +10025,7 @@ Function_Choot_Falling:
     BRA .return                                                          ;A2E121;
 
 
-  + LDA.L $7E7808,X                                                      ;A2E123;
++   LDA.L $7E7808,X                                                      ;A2E123;
     CLC                                                                  ;A2E127;
     ADC.W $0000,Y                                                        ;A2E128;
     STA.W $0F7A,X                                                        ;A2E12B;
@@ -10038,7 +10038,7 @@ Function_Choot_Falling:
     ADC.W #$0100                                                         ;A2E13D;
     STA.W $0FAC,X                                                        ;A2E140;
 
-.return:
+  .return:
     RTS                                                                  ;A2E143;
 
 
@@ -10122,18 +10122,18 @@ InitAI_GRipper:
     BRA +                                                                ;A2E1F7;
 
 
-.negateSpeed:
+  .negateSpeed:
     LDA.W CommonEnemySpeeds_LinearlyIncreasing+4,Y                       ;A2E1F9;
     STA.W $0FAE,X                                                        ;A2E1FC;
     LDA.W CommonEnemySpeeds_LinearlyIncreasing+6,Y                       ;A2E1FF;
     STA.W $0FAC,X                                                        ;A2E202;
 
-  + LDY.W #InstList_GRipper_MovingLeft                                   ;A2E205;
++   LDY.W #InstList_GRipper_MovingLeft                                   ;A2E205;
     LDA.W $0FAE,X                                                        ;A2E208;
     BMI .setMinMaxX                                                      ;A2E20B;
     LDY.W #InstList_GRipper_MovingRight                                  ;A2E20D;
 
-.setMinMaxX:
+  .setMinMaxX:
     TYA                                                                  ;A2E210;
     STA.W $0F92,X                                                        ;A2E211;
     LDA.W $0FB4,X                                                        ;A2E214;
@@ -10158,7 +10158,7 @@ MainAI_GRipper:
     RTL                                                                  ;A2E23E;
 
 
-.collidedWithWall:
+  .collidedWithWall:
     LDX.W $0E54                                                          ;A2E23F;
     LDA.W $0FB0,X                                                        ;A2E242;
     TAY                                                                  ;A2E245;
@@ -10172,14 +10172,14 @@ MainAI_GRipper:
     BRA .setInstList                                                     ;A2E25A;
 
 
-.movingLeft:
+  .movingLeft:
     LDA.W CommonEnemySpeeds_LinearlyIncreasing+4,Y                       ;A2E25C;
     STA.W $0FAE,X                                                        ;A2E25F;
     LDA.W CommonEnemySpeeds_LinearlyIncreasing+6,Y                       ;A2E262;
     STA.W $0FAC,X                                                        ;A2E265;
     LDY.W #InstList_GRipper_MovingLeft                                   ;A2E268;
 
-.setInstList:
+  .setInstList:
     TYA                                                                  ;A2E26B;
     STA.W $0F92,X                                                        ;A2E26C;
     LDA.W #$0001                                                         ;A2E26F;
@@ -10198,7 +10198,7 @@ CheckIfGRipperMovedLeftTooFar:
     RTS                                                                  ;A2E287;
 
 
-.notTooFar:
+  .notTooFar:
     CLC                                                                  ;A2E288;
     RTS                                                                  ;A2E289;
 
@@ -10213,7 +10213,7 @@ CheckIfGRipperMovedRightTooFar:
     RTS                                                                  ;A2E298;
 
 
-.notTooFar:
+  .notTooFar:
     CLC                                                                  ;A2E299;
     RTS                                                                  ;A2E29A;
 
@@ -10241,10 +10241,10 @@ UNUSED_EnemyShot_A2E2A4:
     BMI +                                                                ;A2E2B6;
     LDY.W #Spritemap_GRipper_Ripper2_7                                   ;A2E2B8;
 
-  + TYA                                                                  ;A2E2BB;
++   TYA                                                                  ;A2E2BB;
     STA.W $0F8E,X                                                        ;A2E2BC;
 
-.return:
+  .return:
     RTL                                                                  ;A2E2BF;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -10288,7 +10288,7 @@ InitAI_Ripper2:
     BEQ .keepLeft                                                        ;A2E321;
     LDY.W #InstList_Ripper2_MovingLeft                                   ;A2E323;
 
-.keepLeft:
+  .keepLeft:
     TYA                                                                  ;A2E326;
     STA.W $0F92,X                                                        ;A2E327;
     LDA.W $0FB4,X                                                        ;A2E32A;
@@ -10306,7 +10306,7 @@ InitAI_Ripper2:
     RTL                                                                  ;A2E345;
 
 
-  + LDA.W CommonEnemySpeeds_LinearlyIncreasing+4,Y                       ;A2E346;
++   LDA.W CommonEnemySpeeds_LinearlyIncreasing+4,Y                       ;A2E346;
     STA.W $0FAE,X                                                        ;A2E349;
     LDA.W CommonEnemySpeeds_LinearlyIncreasing+6,Y                       ;A2E34C;
     STA.W $0FAC,X                                                        ;A2E34F;
@@ -10334,20 +10334,20 @@ MainAI_Ripper2:
     BRA +                                                                ;A2E381;
 
 
-.movingLeft:
+  .movingLeft:
     LDA.W CommonEnemySpeeds_LinearlyIncreasing+4,Y                       ;A2E383;
     STA.W $0FAE,X                                                        ;A2E386;
     LDA.W CommonEnemySpeeds_LinearlyIncreasing+6,Y                       ;A2E389;
     STA.W $0FAC,X                                                        ;A2E38C;
     LDY.W #InstList_Ripper2_MovingRight                                  ;A2E38F;
 
-  + TYA                                                                  ;A2E392;
++   TYA                                                                  ;A2E392;
     STA.W $0F92,X                                                        ;A2E393;
     LDA.W #$0001                                                         ;A2E396;
     STA.W $0F94,X                                                        ;A2E399;
     STZ.W $0F90,X                                                        ;A2E39C;
 
-.return:
+  .return:
     RTL                                                                  ;A2E39F;
 
 
@@ -10373,11 +10373,11 @@ EnemyShot_GRipper_Ripper2:
     BMI .setSpritemap                                                    ;A2E3BB;
     LDY.W #Spritemap_GRipper_Ripper2_7                                   ;A2E3BD;
 
-.setSpritemap:
+  .setSpritemap:
     TYA                                                                  ;A2E3C0;
     STA.W $0F8E,X                                                        ;A2E3C1;
 
-.return:
+  .return:
     RTL                                                                  ;A2E3C4;
 
 
@@ -10459,7 +10459,7 @@ InitAI_Ripper:
     BNE .keepRight                                                       ;A2E4A8;
     LDY.W #InstList_Ripper_MovingLeft                                    ;A2E4AA;
 
-.keepRight:
+  .keepRight:
     TYA                                                                  ;A2E4AD;
     STA.W $0F92,X                                                        ;A2E4AE;
     LDA.W $0FB4,X                                                        ;A2E4B1;
@@ -10477,7 +10477,7 @@ InitAI_Ripper:
     RTL                                                                  ;A2E4CC;
 
 
-  + LDA.W CommonEnemySpeeds_LinearlyIncreasing+4,Y                       ;A2E4CD;
++   LDA.W CommonEnemySpeeds_LinearlyIncreasing+4,Y                       ;A2E4CD;
     STA.W $0FAE,X                                                        ;A2E4D0;
     LDA.W CommonEnemySpeeds_LinearlyIncreasing+6,Y                       ;A2E4D3;
     STA.W $0FAC,X                                                        ;A2E4D6;
@@ -10505,20 +10505,20 @@ MainAI_Ripper:
     BRA +                                                                ;A2E508;
 
 
-.movingLeft:
+  .movingLeft:
     LDA.W CommonEnemySpeeds_LinearlyIncreasing+4,Y                       ;A2E50A;
     STA.W $0FAE,X                                                        ;A2E50D;
     LDA.W CommonEnemySpeeds_LinearlyIncreasing+6,Y                       ;A2E510;
     STA.W $0FAC,X                                                        ;A2E513;
     LDY.W #InstList_Ripper_MovingLeft                                    ;A2E516;
 
-  + TYA                                                                  ;A2E519;
++   TYA                                                                  ;A2E519;
     STA.W $0F92,X                                                        ;A2E51A;
     LDA.W #$0001                                                         ;A2E51D;
     STA.W $0F94,X                                                        ;A2E520;
     STZ.W $0F90,X                                                        ;A2E523;
 
-.return:
+  .return:
     RTL                                                                  ;A2E526;
 
 
@@ -10636,7 +10636,7 @@ InitAI_Dragon:
     RTL                                                                  ;A2E635;
 
 
-.idle:
+  .idle:
     LDA.W #$0000                                                         ;A2E636;
     STA.L $7E7800,X                                                      ;A2E639;
     STA.L $7E7802,X                                                      ;A2E63D;
@@ -10658,7 +10658,7 @@ Function_Dragon_WaitToRise:
     RTL                                                                  ;A2E659;
 
 
-.timerExpired:
+  .timerExpired:
     LDA.W #$0030                                                         ;A2E65A;
     STA.W $0FAE,X                                                        ;A2E65D;
     LDA.W #Function_Dragon_Rising                                        ;A2E660;
@@ -10681,7 +10681,7 @@ Function_Dragon_WaitToRise:
     BRA +                                                                ;A2E68E;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.L $7E7800,X                                                      ;A2E690;
     AND.B #$FE                                                           ;A2E694;
     STA.L $7E7800,X                                                      ;A2E696;
@@ -10689,7 +10689,7 @@ Function_Dragon_WaitToRise:
     AND.B #$FE                                                           ;A2E69E;
     STA.L $7E7840,X                                                      ;A2E6A0;
 
-  + REP #$20                                                             ;A2E6A4;
++   REP #$20                                                             ;A2E6A4;
     JSR.W SetDragonInstList                                              ;A2E6A6;
     JSR.W SetDragonWingsInstList                                         ;A2E6A9;
     RTL                                                                  ;A2E6AC;
@@ -10707,7 +10707,7 @@ Function_Dragon_Rising:
     LDA.W #Function_Dragon_Attacking                                     ;A2E6C4;
     STA.W $0FB2,X                                                        ;A2E6C7;
 
-.timerNotExpired:
+  .timerNotExpired:
     LDA.W $0F80,X                                                        ;A2E6CA;
     SEC                                                                  ;A2E6CD;
     SBC.W #$0000                                                         ;A2E6CE;
@@ -10748,7 +10748,7 @@ Function_Dragon_Attacking:
     LDA.W #Function_Dragon_WaitToSink                                    ;A2E72D;
     STA.W $0FB2,X                                                        ;A2E730;
 
-.return:
+  .return:
     RTL                                                                  ;A2E733;
 
 
@@ -10761,7 +10761,7 @@ Function_Dragon_WaitToSink:
     STA.W $0FB2,X                                                        ;A2E742;
     JSR.W SetDragonInstList                                              ;A2E745;
 
-.return:
+  .return:
     RTL                                                                  ;A2E748;
 
 
@@ -10773,7 +10773,7 @@ Function_Dragon_Sinking:
     LDA.W #Function_Dragon_WaitToRise                                    ;A2E754;
     STA.W $0FB2,X                                                        ;A2E757;
 
-.timerNotExpired:
+  .timerNotExpired:
     LDA.W $0F80,X                                                        ;A2E75A;
     CLC                                                                  ;A2E75D;
     ADC.W #$0000                                                         ;A2E75E;
@@ -10809,7 +10809,7 @@ SetDragonInstList:
     STA.W $0F94,X                                                        ;A2E79E;
     STZ.W $0F90,X                                                        ;A2E7A1;
 
-.return:
+  .return:
     RTS                                                                  ;A2E7A4;
 
 
@@ -10827,7 +10827,7 @@ SetDragonWingsInstList:
     STA.W $0FD4,X                                                        ;A2E7C1;
     STZ.W $0FD0,X                                                        ;A2E7C4;
 
-.return:
+  .return:
     RTS                                                                  ;A2E7C7;
 
 
@@ -10856,7 +10856,7 @@ ContactReaction_Dragon_Common:
     BRA .return                                                          ;A2E7EB;
 
 
-.notDead:
+  .notDead:
     LDA.W $0FA2,X                                                        ;A2E7ED;
     STA.W $0FE2,X                                                        ;A2E7F0;
     LDA.W $0FA0,X                                                        ;A2E7F3;
@@ -10868,7 +10868,7 @@ ContactReaction_Dragon_Common:
     LDA.W $0F8A,X                                                        ;A2E805;
     STA.W $0FCA,X                                                        ;A2E808;
 
-.return:
+  .return:
     RTL                                                                  ;A2E80B;
 
 
@@ -11041,7 +11041,7 @@ InitAI_ShutterGrowing:
     BRA +                                                                ;A2EA0D;
 
 
-.movingDown:
+  .movingDown:
     LDA.W $0F7E,X                                                        ;A2EA0F;
     STA.W $0FAA,X                                                        ;A2EA12;
     CLC                                                                  ;A2EA15;
@@ -11054,7 +11054,7 @@ InitAI_ShutterGrowing:
     ADC.W #$0008                                                         ;A2EA24;
     STA.W $0FB0,X                                                        ;A2EA27;
 
-  + STZ.W $0F88,X                                                        ;A2EA2A;
++   STZ.W $0F88,X                                                        ;A2EA2A;
     STZ.W $0FB2,X                                                        ;A2EA2D;
     LDA.W #InstList_Shutter_GrowthLevel0                                 ;A2EA30;
     STA.W $0F92,X                                                        ;A2EA33;
@@ -11100,7 +11100,7 @@ Function_ShutterGrowing_Initial_Upwards_WaitForTimer:
     RTS                                                                  ;A2EAC6;
 
 
-  + JSR.W PlayGateOpeningClosingSFXIfOnScreen                            ;A2EAC7;
++   JSR.W PlayGateOpeningClosingSFXIfOnScreen                            ;A2EAC7;
     LDA.W #Function_ShutterGrowing_Growing_Upwards                       ;A2EACA;
     STA.W $0FA8,X                                                        ;A2EACD;
     RTS                                                                  ;A2EAD0;
@@ -11115,7 +11115,7 @@ Func_ShutterGrowing_Initial_Upwards_WaitForSamusToGetNear:
     LDA.W #Function_ShutterGrowing_Growing_Upwards                       ;A2EAE0;
     STA.W $0FA8,X                                                        ;A2EAE3;
 
-.return:
+  .return:
     RTS                                                                  ;A2EAE6;
 
 
@@ -11128,7 +11128,7 @@ Func_ShutterGrowing_Initial_Downwards_WaitForSamusToGetNear:
     LDA.W #Function_ShutterGrowing_Growing_Downwards                     ;A2EAF6;
     STA.W $0FA8,X                                                        ;A2EAF9;
 
-.return:
+  .return:
     RTS                                                                  ;A2EAFC;
 
 
@@ -11140,7 +11140,7 @@ Function_ShutterGrowing_Initial_Downwards_WaitForTimer:
     RTS                                                                  ;A2EB06;
 
 
-  + JSR.W PlayGateOpeningClosingSFXIfOnScreen                            ;A2EB07;
++   JSR.W PlayGateOpeningClosingSFXIfOnScreen                            ;A2EB07;
     LDA.W #Function_ShutterGrowing_Growing_Downwards                     ;A2EB0A;
     STA.W $0FA8,X                                                        ;A2EB0D;
     RTS                                                                  ;A2EB10;
@@ -11154,7 +11154,7 @@ Function_ShutterGrowing_Growing_Downwards:
     RTS                                                                  ;A2EB19;
 
 
-.pointers:
+  .pointers:
     dw Function_ShutterGrowing_Growing_Downwards_GrowthLevel0            ;A2EB1A;
     dw Function_ShutterGrowing_Growing_Downwards_GrowthLevel1            ;A2EB1C;
     dw Function_ShutterGrowing_Growing_Downwards_GrowthLevel2            ;A2EB1E;
@@ -11190,7 +11190,7 @@ Function_ShutterGrowing_Growing_Downwards_GrowthLevel0:
     LDA.W #$0010                                                         ;A2EB5F;
     STA.W $0F84,X                                                        ;A2EB62;
 
-.return:
+  .return:
     RTS                                                                  ;A2EB65;
 
 
@@ -11219,7 +11219,7 @@ Function_ShutterGrowing_Growing_Downwards_GrowthLevel1:
     LDA.W #$0018                                                         ;A2EBA0;
     STA.W $0F84,X                                                        ;A2EBA3;
 
-.return:
+  .return:
     RTS                                                                  ;A2EBA6;
 
 
@@ -11248,7 +11248,7 @@ Function_ShutterGrowing_Growing_Downwards_GrowthLevel2:
     LDA.W #$0020                                                         ;A2EBE1;
     STA.W $0F84,X                                                        ;A2EBE4;
 
-.return:
+  .return:
     RTS                                                                  ;A2EBE7;
 
 
@@ -11269,7 +11269,7 @@ Function_ShutterGrowing_Growing_Downwards_GrowthLevel3:
     STA.W $0F7E,X                                                        ;A2EC0C;
     INC.W $0FB2,X                                                        ;A2EC0F;
 
-.return:
+  .return:
     RTS                                                                  ;A2EC12;
 
 
@@ -11290,11 +11290,11 @@ Function_ShutterGrowing_Growing_Upwards:
     ADC.W $0B5C                                                          ;A2EC33;
     STA.W $0B5C                                                          ;A2EC36;
 
-.return:
+  .return:
     RTS                                                                  ;A2EC39;
 
 
-.pointers:
+  .pointers:
     dw Function_ShutterGrowing_Growing_Upwards_GrowthLevel0              ;A2EC3A;
     dw Function_ShutterGrowing_Growing_Upwards_GrowthLevel1              ;A2EC3C;
     dw Function_ShutterGrowing_Growing_Upwards_GrowthLevel2              ;A2EC3E;
@@ -11330,7 +11330,7 @@ Function_ShutterGrowing_Growing_Upwards_GrowthLevel0:
     LDA.W #$0010                                                         ;A2EC7F;
     STA.W $0F84,X                                                        ;A2EC82;
 
-.return:
+  .return:
     RTS                                                                  ;A2EC85;
 
 
@@ -11359,7 +11359,7 @@ Function_ShutterGrowing_Growing_Upwards_GrowthLevel1:
     LDA.W #$0018                                                         ;A2ECC0;
     STA.W $0F84,X                                                        ;A2ECC3;
 
-.return:
+  .return:
     RTS                                                                  ;A2ECC6;
 
 
@@ -11388,7 +11388,7 @@ Function_ShutterGrowing_Growing_Upwards_GrowthLevel2:
     LDA.W #$0020                                                         ;A2ED01;
     STA.W $0F84,X                                                        ;A2ED04;
 
-.return:
+  .return:
     RTS                                                                  ;A2ED07;
 
 
@@ -11409,7 +11409,7 @@ Function_ShutterGrowing_Growing_Upwards_GrowthLevel3:
     STA.W $0F7E,X                                                        ;A2ED2C;
     INC.W $0FB2,X                                                        ;A2ED2F;
 
-.return:
+  .return:
     RTS                                                                  ;A2ED32;
 
 
@@ -11580,7 +11580,7 @@ Init_Shutter_Kamer_Common:
     SBC.L $7E780A,X                                                      ;A2EEB8;
     STA.L $7E781E,X                                                      ;A2EEBC;
 
-.keep20:
+  .keep20:
     LDA.W #Function_Shutter_Kamer_Initial                                ;A2EEC0;
     STA.W $0FA8,X                                                        ;A2EEC3;
     LDA.W #$0000                                                         ;A2EEC6;
@@ -11598,7 +11598,7 @@ MainAI_ShutterShootable_ShutterDestroyable_Kamer:
     BRA .return                                                          ;A2EEDF;
 
 
-  + LDA.W $0FA8,X                                                        ;A2EEE1;
++   LDA.W $0FA8,X                                                        ;A2EEE1;
     CMP.W #Function_Kamer_MovingDown                                     ;A2EEE4;
     BEQ .return                                                          ;A2EEE7;
     LDA.W $182C                                                          ;A2EEE9;
@@ -11613,7 +11613,7 @@ MainAI_ShutterShootable_ShutterDestroyable_Kamer:
     BEQ .return                                                          ;A2EF02;
     JSL.L PowerBombReaction_ShutterShootable_ShutterDestroyable_Kamer    ;A2EF04;
 
-.return:
+  .return:
     RTL                                                                  ;A2EF08;
 
 
@@ -11633,7 +11633,7 @@ Function_Shutter_Kamer_WaitForTimer:
     STA.W $0FAA,X                                                        ;A2EF21;
     JSR.W ActivateKamer                                                  ;A2EF24;
 
-.return:
+  .return:
     RTS                                                                  ;A2EF27;
 
 
@@ -11644,7 +11644,7 @@ Function_Shutter_Kamer_WaitForSamusToGetNear:
     BEQ .return                                                          ;A2EF33;
     JSR.W ActivateKamer                                                  ;A2EF35;
 
-.return:
+  .return:
     RTS                                                                  ;A2EF38;
 
 
@@ -11667,7 +11667,7 @@ ActivateKamer:
     LDA.W #Function_Kamer_MovingDown                                     ;A2EF50;
     STA.W $0FA8,X                                                        ;A2EF53;
 
-.keepUp:
+  .keepUp:
     JSR.W PlayGateOpeningClosingSFXIfOnScreen                            ;A2EF56;
     RTS                                                                  ;A2EF59;
 
@@ -11678,7 +11678,7 @@ PlayGateOpeningClosingSFXIfOnScreen:
     LDA.W #$000E                                                         ;A2EF60;
     JSL.L QueueSound_Lib3_Max6                                           ;A2EF63;
 
-.return:
+  .return:
     RTS                                                                  ;A2EF67;
 
 
@@ -11693,14 +11693,14 @@ Function_Kamer_MovingUp:
     LDA.W #$0001                                                         ;A2EF7F;
     STA.L $7E7814,X                                                      ;A2EF82;
 
-.notTouchingSamusFromBelow:
+  .notTouchingSamusFromBelow:
     LDA.W $0F80,X                                                        ;A2EF86;
     CLC                                                                  ;A2EF89;
     ADC.W $0FB0,X                                                        ;A2EF8A;
     BCC +                                                                ;A2EF8D;
     INC.W $0F7E,X                                                        ;A2EF8F;
 
-  + STA.W $0F80,X                                                        ;A2EF92;
++   STA.W $0F80,X                                                        ;A2EF92;
     LDA.W $0F7E,X                                                        ;A2EF95;
     CLC                                                                  ;A2EF98;
     ADC.W $0FB2,X                                                        ;A2EF99;
@@ -11712,7 +11712,7 @@ Function_Kamer_MovingUp:
     SBC.L $7E781C,X                                                      ;A2EFA9;
     STA.W $0B5C                                                          ;A2EFAD;
 
-.notMovingSamus:
+  .notMovingSamus:
     LDA.L $7E781E,X                                                      ;A2EFB0;
     CMP.W $0F7E,X                                                        ;A2EFB4;
     BMI .return                                                          ;A2EFB7;
@@ -11725,11 +11725,11 @@ Function_Kamer_MovingUp:
     BRA .return                                                          ;A2EFCB;
 
 
-.setFunction:
+  .setFunction:
     LDA.W #Function_Shutter_Kamer_GetEnemyIndex_duplicate                ;A2EFCD;
     STA.W $0FA8,X                                                        ;A2EFD0;
 
-.return:
+  .return:
     RTS                                                                  ;A2EFD3;
 
 
@@ -11744,14 +11744,14 @@ Function_Kamer_MovingDown:
     LDA.W #$0001                                                         ;A2EFEB;
     STA.L $7E7814,X                                                      ;A2EFEE;
 
-.notTouchingSamusFromBelow:
+  .notTouchingSamusFromBelow:
     LDA.W $0F80,X                                                        ;A2EFF2;
     CLC                                                                  ;A2EFF5;
     ADC.W $0FAC,X                                                        ;A2EFF6;
     BCC +                                                                ;A2EFF9;
     INC.W $0F7E,X                                                        ;A2EFFB;
 
-  + STA.W $0F80,X                                                        ;A2EFFE;
++   STA.W $0F80,X                                                        ;A2EFFE;
     LDA.W $0F7E,X                                                        ;A2F001;
     CLC                                                                  ;A2F004;
     ADC.W $0FAE,X                                                        ;A2F005;
@@ -11763,7 +11763,7 @@ Function_Kamer_MovingDown:
     SBC.L $7E781C,X                                                      ;A2F015;
     STA.W $0B5C                                                          ;A2F019;
 
-.notMovingSamus:
+  .notMovingSamus:
     LDA.W $0F7E,X                                                        ;A2F01C;
     CMP.L $7E7820,X                                                      ;A2F01F;
     BMI .return                                                          ;A2F023;
@@ -11776,11 +11776,11 @@ Function_Kamer_MovingDown:
     BRA .return                                                          ;A2F037;
 
 
-.setFunction:
+  .setFunction:
     LDA.W #Function_Shutter_Kamer_GetEnemyIndex_duplicate                ;A2F039;
     STA.W $0FA8,X                                                        ;A2F03C;
 
-.return:
+  .return:
     RTS                                                                  ;A2F03F;
 
 
@@ -11798,14 +11798,14 @@ Function_Kamer_StoppedMovingUp:
     LDA.W #Function_Shutter_Kamer_WaitForSamusToGetNear                  ;A2F05D;
     STA.W $0FA8,X                                                        ;A2F060;
 
-.upwards:
+  .upwards:
     LDX.W $0E54                                                          ;A2F063;
     LDA.W $0F78,X                                                        ;A2F066;
     CMP.W #EnemyHeaders_Kamer2                                           ;A2F069;
     BEQ .return                                                          ;A2F06C;
     JSR.W PlayGateOpeningClosingSFXIfOnScreen                            ;A2F06E;
 
-.return:
+  .return:
     RTS                                                                  ;A2F071;
 
 
@@ -11824,7 +11824,7 @@ Function_Kamer_StoppedMovingDown:
     LDA.W #Function_Shutter_Kamer_WaitForSamusToGetNear                  ;A2F092;
     STA.W $0FA8,X                                                        ;A2F095;
 
-.return:
+  .return:
     RTS                                                                  ;A2F098;
 
 
@@ -11863,14 +11863,14 @@ PowerBombReaction_ShutterShootable_ShutterDestroyable_Kamer:
     LDA.W #$0001                                                         ;A2F0CD;
     STA.L $7E7818,X                                                      ;A2F0D0;
 
-.function8:
+  .function8:
     LDA.W $0FA8,X                                                        ;A2F0D4;
     CMP.W #Function_Kamer_MovingUp                                       ;A2F0D7;
     BNE .notMovingUp                                                     ;A2F0DA;
     BRA .return                                                          ;A2F0DC;
 
 
-.notMovingUp:
+  .notMovingUp:
     LDA.W $0FA8,X                                                        ;A2F0DE;
     CMP.W #Function_Kamer_MovingDown                                     ;A2F0E1;
     BEQ .return                                                          ;A2F0E4;
@@ -11881,15 +11881,15 @@ PowerBombReaction_ShutterShootable_ShutterDestroyable_Kamer:
     LDA.W #Function_Kamer_MovingDown                                     ;A2F0F2;
     STA.W $0FA8,X                                                        ;A2F0F5;
 
-.upwards:
+  .upwards:
     LDA.L $7E8000,X                                                      ;A2F0F8;
     EOR.W #$0001                                                         ;A2F0FC;
     STA.L $7E8000,X                                                      ;A2F0FF;
 
-.nonShootable:
+  .nonShootable:
     JSR.W PlayGateOpeningClosingSFXIfOnScreen                            ;A2F103;
 
-.return:
+  .return:
     RTL                                                                  ;A2F106;
 
 
@@ -11969,7 +11969,7 @@ InitializeHorizontalShutter:
     SBC.L $7E780A,X                                                      ;A2F1BA;
     STA.L $7E7822,X                                                      ;A2F1BE;
 
-.notLeftwards:
+  .notLeftwards:
     LDA.W #Function_HorizontalShutter_Initial                            ;A2F1C2;
     STA.W $0FA8,X                                                        ;A2F1C5;
     LDA.W $0AF6                                                          ;A2F1C8;
@@ -11990,7 +11990,7 @@ MainAI_ShutterHorizShootable:
     BRA +                                                                ;A2F1EC;
 
 
-.notMovingLeft:
+  .notMovingLeft:
     LDA.W $0FA8,X                                                        ;A2F1EE;
     CMP.W #Function_HorizontalShutter_MovingRight                        ;A2F1F1;
     BEQ +                                                                ;A2F1F4;
@@ -12006,7 +12006,7 @@ MainAI_ShutterHorizShootable:
     BEQ +                                                                ;A2F20F;
     JSL.L PowerBombReaction_CommonReaction_HorizontalShutter             ;A2F211;
 
-  + LDA.W $0AF6                                                          ;A2F215;
++   LDA.W $0AF6                                                          ;A2F215;
     STA.L $7E782A,X                                                      ;A2F218;
     LDA.W $0AF8                                                          ;A2F21C;
     STA.L $7E782C,X                                                      ;A2F21F;
@@ -12029,7 +12029,7 @@ Function_HorizontalShutter_Initial_WaitForTimer:
     STA.W $0FAA,X                                                        ;A2F23C;
     JSR.W ActivateHorizontalShutter                                      ;A2F23F;
 
-.return:
+  .return:
     RTS                                                                  ;A2F242;
 
 
@@ -12040,7 +12040,7 @@ Function_HorizontalShutter_Initial_WaitForSamusToGetNear:
     BEQ .return                                                          ;A2F24E;
     JSR.W ActivateHorizontalShutter                                      ;A2F250;
 
-.return:
+  .return:
     RTS                                                                  ;A2F253;
 
 
@@ -12063,7 +12063,7 @@ ActivateHorizontalShutter:
     LDA.W #Function_HorizontalShutter_MovingRight                        ;A2F26B;
     STA.W $0FA8,X                                                        ;A2F26E;
 
-.return:
+  .return:
     RTS                                                                  ;A2F271;
 
 
@@ -12081,7 +12081,7 @@ Function_HorizontalShutter_MovingLeft:
     LDA.W #$0001                                                         ;A2F291;
     STA.L $7E7826,X                                                      ;A2F294;
 
-.notTouchingSamus:
+  .notTouchingSamus:
     CLC                                                                  ;A2F298;
     LDA.W $0F7C,X                                                        ;A2F299;
     ADC.W $0FB0,X                                                        ;A2F29C;
@@ -12097,7 +12097,7 @@ Function_HorizontalShutter_MovingLeft:
     STA.W $0B58                                                          ;A2F2BA;
     JSR.W EjectSamusIfPressingRight                                      ;A2F2BD;
 
-.notMovingSamus:
+  .notMovingSamus:
     LDA.L $7E7822,X                                                      ;A2F2C0;
     CMP.W $0F7A,X                                                        ;A2F2C4;
     BMI .return                                                          ;A2F2C7;
@@ -12110,10 +12110,10 @@ Function_HorizontalShutter_MovingLeft:
     BRA .return                                                          ;A2F2DB;
 
 
-  + LDA.W #EnemyTouch_ShutterHorizShootable                              ;A2F2DD;
++   LDA.W #EnemyTouch_ShutterHorizShootable                              ;A2F2DD;
     STA.W $0FA8,X                                                        ;A2F2E0;
 
-.return:
+  .return:
     RTS                                                                  ;A2F2E3;
 
 
@@ -12131,7 +12131,7 @@ Function_HorizontalShutter_MovingRight:
     LDA.W #$0001                                                         ;A2F303;
     STA.L $7E7826,X                                                      ;A2F306;
 
-.notTouchingSamus:
+  .notTouchingSamus:
     CLC                                                                  ;A2F30A;
     LDA.W $0F7C,X                                                        ;A2F30B;
     ADC.W $0FAC,X                                                        ;A2F30E;
@@ -12147,7 +12147,7 @@ Function_HorizontalShutter_MovingRight:
     STA.W $0B58                                                          ;A2F32C;
     JSR.W EjectSamusIfPressingLeft                                       ;A2F32F;
 
-.notMovingSamus:
+  .notMovingSamus:
     LDA.W $0F7A,X                                                        ;A2F332;
     CMP.L $7E7824,X                                                      ;A2F335;
     BMI .return                                                          ;A2F339;
@@ -12160,10 +12160,10 @@ Function_HorizontalShutter_MovingRight:
     BRA .return                                                          ;A2F34D;
 
 
-  + LDA.W #EnemyTouch_ShutterHorizShootable                              ;A2F34F;
++   LDA.W #EnemyTouch_ShutterHorizShootable                              ;A2F34F;
     STA.W $0FA8,X                                                        ;A2F352;
 
-.return:
+  .return:
     RTS                                                                  ;A2F355;
 
 
@@ -12179,7 +12179,7 @@ EjectSamusIfPressingRight:
     STA.W $0B58                                                          ;A2F36A;
     STZ.W $0B5A                                                          ;A2F36D;
 
-.return:
+  .return:
     RTS                                                                  ;A2F370;
 
 
@@ -12195,7 +12195,7 @@ EjectSamusIfPressingLeft:
     STA.W $0B58                                                          ;A2F385;
     STZ.W $0B5A                                                          ;A2F388;
 
-.return:
+  .return:
     RTS                                                                  ;A2F38B;
 
 
@@ -12213,7 +12213,7 @@ Function_HorizontalShutter_StoppedMovingLeft:
     LDA.W #Function_HorizontalShutter_Initial_WaitForSamusToGetNear      ;A2F3A9;
     STA.W $0FA8,X                                                        ;A2F3AC;
 
-.return:
+  .return:
     RTS                                                                  ;A2F3AF;
 
 
@@ -12231,7 +12231,7 @@ Function_HorizontalShutter_StoppedMovingRight:
     LDA.W #Function_HorizontalShutter_Initial_WaitForSamusToGetNear      ;A2F3CD;
     STA.W $0FA8,X                                                        ;A2F3D0;
 
-.return:
+  .return:
     RTS                                                                  ;A2F3D3;
 
 
@@ -12257,7 +12257,7 @@ EnemyTouch_HorizShootableShutter:
     BRA .return                                                          ;A2F3FB;
 
 
-.checkPressingLeft:
+  .checkPressingLeft:
     LDA.B $8B                                                            ;A2F3FD;
     AND.W #$0200                                                         ;A2F3FF;
     BEQ .return                                                          ;A2F402;
@@ -12265,7 +12265,7 @@ EnemyTouch_HorizShootableShutter:
     STA.W $0B58                                                          ;A2F407;
     STZ.W $0B5A                                                          ;A2F40A;
 
-.return:
+  .return:
     RTL                                                                  ;A2F40D;
 
 
@@ -12288,14 +12288,14 @@ PowerBombReaction_CommonReaction_HorizontalShutter:
     LDA.W #$0001                                                         ;A2F431;
     STA.L $7E7818,X                                                      ;A2F434;
 
-.function8:
+  .function8:
     LDA.W $0FA8,X                                                        ;A2F438;
     CMP.W #Function_HorizontalShutter_MovingLeft                         ;A2F43B;
     BNE .notMovingLeft                                                   ;A2F43E;
     BRA .return                                                          ;A2F440;
 
 
-.notMovingLeft:
+  .notMovingLeft:
     LDA.W $0FA8,X                                                        ;A2F442;
     CMP.W #Function_HorizontalShutter_MovingRight                        ;A2F445;
     BEQ .return                                                          ;A2F448;
@@ -12309,7 +12309,7 @@ PowerBombReaction_CommonReaction_HorizontalShutter:
     LDA.W #Function_HorizontalShutter_MovingRight                        ;A2F461;
     STA.W $0FA8,X                                                        ;A2F464;
 
-.return:
+  .return:
     RTL                                                                  ;A2F467;
 
 

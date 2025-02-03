@@ -155,7 +155,7 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedRight:
     STA.W $0004,X                                                        ;ADDF0D;
     PHX                                                                  ;ADDF10;
 
-.loopLeftEdge:
+  .loopLeftEdge:
     LDA.B $18                                                            ;ADDF11;
     CLC                                                                  ;ADDF13;
     ADC.B $14                                                            ;ADDF14;
@@ -171,10 +171,10 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedRight:
     CPY.W #$0020                                                         ;ADDF27;
     BNE .loopLeftEdge                                                    ;ADDF2A;
 
-..done:
+  ..done:
     LDA.W #$00FF                                                         ;ADDF2C;
 
-.loopLeftSidePadding:
+  .loopLeftSidePadding:
     STA.W $0000,X                                                        ;ADDF2F;
     DEX                                                                  ;ADDF32;
     DEX                                                                  ;ADDF33;
@@ -187,7 +187,7 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedRight:
     LDA.W $803E                                                          ;ADDF3D;
     TAY                                                                  ;ADDF40;
 
-.loopRightEdge:
+  .loopRightEdge:
     LDA.B $16                                                            ;ADDF41;
     CLC                                                                  ;ADDF43;
     ADC.B $12                                                            ;ADDF44;
@@ -206,10 +206,10 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedRight:
     RTS                                                                  ;ADDF5D;
 
 
-..done:
+  ..done:
     LDA.W #$00FF                                                         ;ADDF5E;
 
-.loopRightSidePadding:
+  .loopRightSidePadding:
     STA.W $0000,X                                                        ;ADDF61;
     INX                                                                  ;ADDF64;
     INX                                                                  ;ADDF65;
@@ -268,7 +268,7 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedUpwards:
     RTS                                                                  ;ADDFE6;
 
 
-.greaterThanEqualTo80:
+  .greaterThanEqualTo80:
     SEC                                                                  ;ADDFE7;
     SBC.W #$007F                                                         ;ADDFE8;
     STA.B $12                                                            ;ADDFEB;
@@ -293,7 +293,7 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedUpwards:
     RTS                                                                  ;ADE023;
 
 
-.pointers:
+  .pointers:
     dw CalculateMotherBrainRainbowBeamHDMADataTable_AimedUpRight         ;ADE024;
     dw CalculateMotherBrainRainbowBeamHDMADataTable_AimedUp              ;ADE026;
     dw $0000                                                             ;ADE028;
@@ -331,14 +331,14 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedUpRight:
     STA.W $0002,X                                                        ;ADE068;
     STA.W $0004,X                                                        ;ADE06B;
 
-.loop:
+  .loop:
     LDA.B $16                                                            ;ADE06E;
     CLC                                                                  ;ADE070;
     ADC.B $12                                                            ;ADE071;
     BCC +                                                                ;ADE073;
     LDA.W #$FFFF                                                         ;ADE075;
 
-  + STA.B $16                                                            ;ADE078;
++   STA.B $16                                                            ;ADE078;
     AND.W #$FF00                                                         ;ADE07A;
     XBA                                                                  ;ADE07D;
     STA.B $24                                                            ;ADE07E;
@@ -348,14 +348,14 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedUpRight:
     BCC +                                                                ;ADE085;
     LDA.W #$FFFF                                                         ;ADE087;
 
-  + STA.B $18                                                            ;ADE08A;
++   STA.B $18                                                            ;ADE08A;
     AND.W #$FF00                                                         ;ADE08C;
     ORA.B $24                                                            ;ADE08F;
     CMP.W #$FFFF                                                         ;ADE091;
     BNE .next                                                            ;ADE094;
     LDA.W #$00FF                                                         ;ADE096;
 
-.next:
+  .next:
     STA.W $0000,X                                                        ;ADE099;
     DEX                                                                  ;ADE09C;
     DEX                                                                  ;ADE09D;
@@ -400,14 +400,14 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedUp:
     STA.W $0002,X                                                        ;ADE0E6;
     STA.W $0004,X                                                        ;ADE0E9;
 
-.loop:
+  .loop:
     LDA.B $16                                                            ;ADE0EC;
     SEC                                                                  ;ADE0EE;
     SBC.B $12                                                            ;ADE0EF;
     BCS +                                                                ;ADE0F1;
     LDA.W #$0000                                                         ;ADE0F3;
 
-  + STA.B $16                                                            ;ADE0F6;
++   STA.B $16                                                            ;ADE0F6;
     AND.W #$FF00                                                         ;ADE0F8;
     XBA                                                                  ;ADE0FB;
     STA.B $1A                                                            ;ADE0FC;
@@ -417,14 +417,14 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedUp:
     BCC +                                                                ;ADE103;
     LDA.W #$FFFF                                                         ;ADE105;
 
-  + STA.B $18                                                            ;ADE108;
++   STA.B $18                                                            ;ADE108;
     AND.W #$FF00                                                         ;ADE10A;
     ORA.B $1A                                                            ;ADE10D;
     CMP.W #$FFFF                                                         ;ADE10F;
     BNE .next                                                            ;ADE112;
     LDA.W #$00FF                                                         ;ADE114;
 
-.next:
+  .next:
     STA.W $0000,X                                                        ;ADE117;
     DEX                                                                  ;ADE11A;
     DEX                                                                  ;ADE11B;
@@ -471,14 +471,14 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedUpLeft:
     STA.W $0002,X                                                        ;ADE168;
     STA.W $0004,X                                                        ;ADE16B;
 
-.loop:
+  .loop:
     LDA.B $16                                                            ;ADE16E;
     SEC                                                                  ;ADE170;
     SBC.B $12                                                            ;ADE171;
     BCS +                                                                ;ADE173;
     LDA.W #$0000                                                         ;ADE175;
 
-  + STA.B $16                                                            ;ADE178;
++   STA.B $16                                                            ;ADE178;
     AND.W #$FF00                                                         ;ADE17A;
     XBA                                                                  ;ADE17D;
     STA.B $24                                                            ;ADE17E;
@@ -488,14 +488,14 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedUpLeft:
     BCS +                                                                ;ADE185;
     LDA.W #$0000                                                         ;ADE187;
 
-  + STA.B $18                                                            ;ADE18A;
++   STA.B $18                                                            ;ADE18A;
     AND.W #$FF00                                                         ;ADE18C;
     ORA.B $24                                                            ;ADE18F;
     CMP.W #$FFFF                                                         ;ADE191;
     BNE .next                                                            ;ADE194;
     LDA.W #$00FF                                                         ;ADE196;
 
-.next:
+  .next:
     STA.W $0000,X                                                        ;ADE199;
     DEX                                                                  ;ADE19C;
     DEX                                                                  ;ADE19D;
@@ -545,7 +545,7 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedDownwards:
     RTS                                                                  ;ADE20D;
 
 
-.pointers:
+  .pointers:
     dw CalculateMotherBrainRainbowBeamHDMADataTable_AimedDownRight       ;ADE20E;
     dw $0000                                                             ;ADE210;
     dw CalculateMotherBrainRainbowBeamHDMADataTable_AimedDown            ;ADE212;
@@ -578,7 +578,7 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedDownRight:
     LDX.W #$9D04                                                         ;ADE249;
     LDA.W #$00FF                                                         ;ADE24C;
 
-.loopPadAbove:
+  .loopPadAbove:
     STA.W $0000,X                                                        ;ADE24F;
     INX                                                                  ;ADE252;
     INX                                                                  ;ADE253;
@@ -587,14 +587,14 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedDownRight:
     LDA.W $803A                                                          ;ADE257;
     TAY                                                                  ;ADE25A;
 
-.loopBeam:
+  .loopBeam:
     LDA.B $16                                                            ;ADE25B;
     CLC                                                                  ;ADE25D;
     ADC.B $12                                                            ;ADE25E;
     BCC +                                                                ;ADE260;
     LDA.W #$FFFF                                                         ;ADE262;
 
-  + STA.B $16                                                            ;ADE265;
++   STA.B $16                                                            ;ADE265;
     AND.W #$FF00                                                         ;ADE267;
     XBA                                                                  ;ADE26A;
     STA.B $1A                                                            ;ADE26B;
@@ -604,14 +604,14 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedDownRight:
     BCC +                                                                ;ADE272;
     LDA.W #$FFFF                                                         ;ADE274;
 
-  + STA.B $18                                                            ;ADE277;
++   STA.B $18                                                            ;ADE277;
     AND.W #$FF00                                                         ;ADE279;
     ORA.B $1A                                                            ;ADE27C;
     CMP.W #$FFFF                                                         ;ADE27E;
     BNE +                                                                ;ADE281;
     LDA.W #$00FF                                                         ;ADE283;
 
-  + STA.W $0000,X                                                        ;ADE286;
++   STA.W $0000,X                                                        ;ADE286;
     INX                                                                  ;ADE289;
     INX                                                                  ;ADE28A;
     INY                                                                  ;ADE28B;
@@ -650,7 +650,7 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedDown:
     LDX.W #$9D04                                                         ;ADE2CA;
     LDA.W #$00FF                                                         ;ADE2CD;
 
-.loopPadAbove:
+  .loopPadAbove:
     STA.W $0000,X                                                        ;ADE2D0;
     INX                                                                  ;ADE2D3;
     INX                                                                  ;ADE2D4;
@@ -659,14 +659,14 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedDown:
     LDA.W $803A                                                          ;ADE2D8;
     TAY                                                                  ;ADE2DB;
 
-.loopBeam:
+  .loopBeam:
     LDA.B $16                                                            ;ADE2DC;
     SEC                                                                  ;ADE2DE;
     SBC.B $12                                                            ;ADE2DF;
     BCS +                                                                ;ADE2E1;
     LDA.W #$0000                                                         ;ADE2E3;
 
-  + STA.B $16                                                            ;ADE2E6;
++   STA.B $16                                                            ;ADE2E6;
     AND.W #$FF00                                                         ;ADE2E8;
     XBA                                                                  ;ADE2EB;
     STA.B $1A                                                            ;ADE2EC;
@@ -676,14 +676,14 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedDown:
     BCC +                                                                ;ADE2F3;
     LDA.W #$FFFF                                                         ;ADE2F5;
 
-  + STA.B $18                                                            ;ADE2F8;
++   STA.B $18                                                            ;ADE2F8;
     AND.W #$FF00                                                         ;ADE2FA;
     ORA.B $1A                                                            ;ADE2FD;
     CMP.W #$FFFF                                                         ;ADE2FF;
     BNE +                                                                ;ADE302;
     LDA.W #$00FF                                                         ;ADE304;
 
-  + STA.W $0000,X                                                        ;ADE307;
++   STA.W $0000,X                                                        ;ADE307;
     INX                                                                  ;ADE30A;
     INX                                                                  ;ADE30B;
     INY                                                                  ;ADE30C;
@@ -724,7 +724,7 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedDownLeft:
     LDX.W #$9D04                                                         ;ADE34F;
     LDA.W #$00FF                                                         ;ADE352;
 
-.loopPadAbove:
+  .loopPadAbove:
     STA.W $0000,X                                                        ;ADE355;
     INX                                                                  ;ADE358;
     INX                                                                  ;ADE359;
@@ -733,14 +733,14 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedDownLeft:
     LDA.W $803A                                                          ;ADE35D;
     TAY                                                                  ;ADE360;
 
-.loopBeam:
+  .loopBeam:
     LDA.B $16                                                            ;ADE361;
     SEC                                                                  ;ADE363;
     SBC.B $12                                                            ;ADE364;
     BCS +                                                                ;ADE366;
     LDA.W #$0000                                                         ;ADE368;
 
-  + STA.B $16                                                            ;ADE36B;
++   STA.B $16                                                            ;ADE36B;
     AND.W #$FF00                                                         ;ADE36D;
     XBA                                                                  ;ADE370;
     STA.B $1A                                                            ;ADE371;
@@ -750,13 +750,13 @@ CalculateMotherBrainRainbowBeamHDMADataTable_AimedDownLeft:
     BCS +                                                                ;ADE378;
     LDA.W #$0000                                                         ;ADE37A;
 
-  + STA.B $18                                                            ;ADE37D;
++   STA.B $18                                                            ;ADE37D;
     AND.W #$FF00                                                         ;ADE37F;
     ORA.B $1A                                                            ;ADE382;
     BNE +                                                                ;ADE384;
     LDA.W #$00FF                                                         ;ADE386;
 
-  + STA.W $0000,X                                                        ;ADE389;
++   STA.W $0000,X                                                        ;ADE389;
     INX                                                                  ;ADE38C;
     INX                                                                  ;ADE38D;
     INY                                                                  ;ADE38E;
@@ -799,7 +799,7 @@ MotherBrainHealthBasedPaletteHandling:
     RTL                                                                  ;ADE3DE;
 
 
-.recovered:
+  .recovered:
     PHB                                                                  ;ADE3DF;
     PEA.W $AD00                                                          ;ADE3E0;
     PLB                                                                  ;ADE3E3;
@@ -816,7 +816,7 @@ MotherBrainHealthBasedPaletteHandling:
     BCS .writePalette                                                    ;ADE3FE;
     LDY.W #$0006                                                         ;ADE400;
 
-.writePalette:
+  .writePalette:
     PHY                                                                  ;ADE403;
     LDA.W MotherBrainHealthBasedPalettes_BrainBody,Y                     ;ADE404;
     TAY                                                                  ;ADE407;
@@ -1091,7 +1091,7 @@ FadeMotherBrainPaletteToBlack:
     RTL                                                                  ;ADE9BD;
 
 
-.notZero:
+  .notZero:
     PHB                                                                  ;ADE9BE;
     PEA.W $AD00                                                          ;ADE9BF;
     PLB                                                                  ;ADE9C2;
@@ -1113,7 +1113,7 @@ FadeMotherBrainPaletteToBlack:
     RTL                                                                  ;ADE9E7;
 
 
-.pointers:
+  .pointers:
     dw .pallete0                                                         ;ADE9E8;
     dw .pallete1                                                         ;ADE9EA;
     dw .pallete2                                                         ;ADE9EC;
@@ -1132,97 +1132,97 @@ FadeMotherBrainPaletteToBlack:
     dw .palleteF                                                         ;ADEA06;
     dw $0000                                                             ;ADEA08;
 
-.pallete0:
+  .pallete0:
     dw $159F,$00DB,$0033,$000E,$31FB,$2577,$18F4,$0C70                   ;ADEA0A;
     dw $1D7F,$193B,$10D7,$0C93,$0450,$4A5F,$000E,$000E                   ;ADEA1A;
     dw $000E,$0010,$14F5,$10B3,$0872,$0430,$000E,$000E                   ;ADEA2A;
     dw $000E,$000E,$000E,$14F5                                           ;ADEA3A;
 
-.pallete1:
+  .pallete1:
     dw $117D,$00B9,$0031,$000D,$2DD9,$2155,$14D2,$084F                   ;ADEA42;
     dw $195D,$1519,$0CB5,$0871,$042F,$421D,$000D,$000D                   ;ADEA52;
     dw $000D,$000F,$10D3,$0C91,$0450,$042F,$000D,$000D                   ;ADEA62;
     dw $000D,$000D,$000D,$10D3                                           ;ADEA72;
 
-.pallete2:
+  .pallete2:
     dw $115A,$00B7,$0010,$000C,$29B7,$1D34,$14D1,$084D                   ;ADEA7A;
     dw $193A,$14F7,$0CB4,$0870,$002D,$3DFA,$000C,$000C                   ;ADEA8A;
     dw $000C,$000D,$10D2,$0C90,$044F,$000D,$000C,$000C                   ;ADEA9A;
     dw $000C,$000C,$000C,$10D2                                           ;ADEAAA;
 
-.pallete3:
+  .pallete3:
     dw $1138,$0095,$000F,$000B,$2595,$1D12,$10B0,$084C                   ;ADEAB2;
     dw $1518,$10F5,$0C92,$086F,$002C,$39D8,$000B,$000B                   ;ADEAC2;
     dw $000B,$000C,$10B0,$0C8F,$044E,$000C,$000B,$000B                   ;ADEAD2;
     dw $000B,$000B,$000B,$10B0                                           ;ADEAE2;
 
-.pallete4:
+  .pallete4:
     dw $0D16,$0093,$000E,$000A,$2173,$1910,$10AE,$084B                   ;ADEAEA;
     dw $1516,$10D3,$0C90,$086E,$002B,$35B6,$000A,$000A                   ;ADEAFA;
     dw $000A,$000B,$0CAF,$0C6E,$044D,$000B,$000A,$000A                   ;ADEB0A;
     dw $000A,$000A,$000A,$0CAF                                           ;ADEB1A;
 
-.pallete5:
+  .pallete5:
     dw $0D14,$0092,$000C,$0009,$2152,$18EF,$108D,$084A                   ;ADEB22;
     dw $10F4,$10D2,$088F,$084C,$002A,$3194,$0009,$0009                   ;ADEB32;
     dw $0009,$000A,$0C8E,$086C,$044C,$000A,$0009,$0009                   ;ADEB42;
     dw $0009,$0009,$0009,$0C8E                                           ;ADEB52;
 
-.pallete6:
+  .pallete6:
     dw $0CF2,$0070,$000B,$0008,$1D30,$14CD,$0C8C,$0429                   ;ADEB5A;
     dw $10D2,$0CB0,$086D,$044B,$0029,$2952,$0008,$0008                   ;ADEB6A;
     dw $0008,$0009,$0C8C,$086B,$042A,$0009,$0008,$0008                   ;ADEB7A;
     dw $0008,$0008,$0008,$0C8C                                           ;ADEB8A;
 
-.pallete7:
+  .pallete7:
     dw $08D0,$006E,$000A,$0007,$190E,$10AC,$0C6A,$0428                   ;ADEB92;
     dw $0CB0,$0C8E,$086C,$044A,$0028,$2530,$0007,$0007                   ;ADEBA2;
     dw $0007,$0008,$086B,$084A,$0429,$0008,$0007,$0007                   ;ADEBB2;
     dw $0007,$0007,$0007,$086B                                           ;ADEBC2;
 
-.pallete8:
+  .pallete8:
     dw $08AE,$004C,$0008,$0006,$14EC,$10AA,$0869,$0427                   ;ADEBCA;
     dw $0CAE,$088C,$044A,$0428,$0027,$210E,$0006,$0006                   ;ADEBDA;
     dw $0006,$0007,$0869,$0448,$0428,$0007,$0006,$0006                   ;ADEBEA;
     dw $0006,$0006,$0006,$0869                                           ;ADEBFA;
 
-.pallete9:
+  .pallete9:
     dw $088C,$004A,$0007,$0005,$10CA,$0C89,$0848,$0426                   ;ADEC02;
     dw $088C,$086A,$0449,$0427,$0006,$1CEC,$0005,$0005                   ;ADEC12;
     dw $0005,$0006,$0848,$0447,$0027,$0006,$0005,$0005                   ;ADEC22;
     dw $0005,$0005,$0005,$0848                                           ;ADEC32;
 
-.palleteA:
+  .palleteA:
     dw $048A,$0049,$0006,$0004,$10A9,$0C67,$0846,$0425                   ;ADEC3A;
     dw $086A,$0869,$0447,$0426,$0005,$18CA,$0004,$0004                   ;ADEC4A;
     dw $0004,$0005,$0447,$0426,$0026,$0005,$0004,$0004                   ;ADEC5A;
     dw $0004,$0004,$0004,$0447                                           ;ADEC6A;
 
-.palleteB:
+  .palleteB:
     dw $0468,$0027,$0005,$0003,$0C87,$0866,$0425,$0004                   ;ADEC72;
     dw $0468,$0447,$0426,$0025,$0004,$1088,$0003,$0003                   ;ADEC82;
     dw $0003,$0004,$0425,$0425,$0004,$0004,$0003,$0003                   ;ADEC92;
     dw $0003,$0003,$0003,$0425                                           ;ADECA2;
 
-.palleteC:
+  .palleteC:
     dw $0446,$0025,$0003,$0002,$0865,$0444,$0424,$0003                   ;ADECAA;
     dw $0446,$0425,$0024,$0003,$0003,$0C66,$0002,$0002                   ;ADECBA;
     dw $0002,$0003,$0424,$0023,$0003,$0003,$0002,$0002                   ;ADECCA;
     dw $0002,$0002,$0002,$0424                                           ;ADECDA;
 
-.palleteD:
+  .palleteD:
     dw $0024,$0003,$0002,$0001,$0443,$0423,$0022,$0002                   ;ADECE2;
     dw $0424,$0023,$0003,$0002,$0002,$0844,$0001,$0001                   ;ADECF2;
     dw $0001,$0002,$0022,$0002,$0002,$0002,$0001,$0001                   ;ADED02;
     dw $0001,$0001,$0001,$0022                                           ;ADED12;
 
-.palleteE:
+  .palleteE:
     dw $0002,$0001,$0001,$0001,$0021,$0001,$0001,$0001                   ;ADED1A;
     dw $0002,$0001,$0001,$0001,$0001,$0422,$0001,$0001                   ;ADED2A;
     dw $0001,$0001,$0001,$0001,$0001,$0001,$0001,$0001                   ;ADED3A;
     dw $0001,$0001,$0001,$0001                                           ;ADED4A;
 
-.palleteF:
+  .palleteF:
     dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;ADED52;
     dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;ADED62;
     dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;ADED72;
@@ -1338,7 +1338,7 @@ TransitionMotherBrainPaletteFromGrey_DrainedByBabyMetroid:
     RTL                                                                  ;ADEF16;
 
 
-.notZero:
+  .notZero:
     PHB                                                                  ;ADEF17;
     PEA.W $AD00                                                          ;ADEF18;
     PLB                                                                  ;ADEF1B;
@@ -1372,7 +1372,7 @@ TransitionMotherBrainPaletteToGrey_DrainedByBabyMetroid:
     RTL                                                                  ;ADEF53;
 
 
-.notZero:
+  .notZero:
     PHB                                                                  ;ADEF54;
     PEA.W $AD00                                                          ;ADEF55;
     PLB                                                                  ;ADEF58;
@@ -1397,7 +1397,7 @@ TransitionMotherBrainPaletteToGrey_DrainedByBabyMetroid:
     RTL                                                                  ;ADEF86;
 
 
-.pointers:
+  .pointers:
     dw .palette0                                                         ;ADEF87;
     dw .palette1                                                         ;ADEF89;
     dw .palette2                                                         ;ADEF8B;
@@ -1408,42 +1408,42 @@ TransitionMotherBrainPaletteToGrey_DrainedByBabyMetroid:
     dw .palette7                                                         ;ADEF95;
     dw $0000                                                             ;ADEF97;
 
-.palette0:
+  .palette0:
     dw $2C75,$2C6F,$2829,$2823,$6231,$55AD,$4929,$3884                   ;ADEF99;
     dw $4DB5,$4551,$40ED,$38A8,$3064,$7EB5,$2800,$1422                   ;ADEFA9;
     dw $3129,$2CE7,$24A5,$1C42,$416B                                     ;ADEFB9;
 
-.palette1:
+  .palette1:
     dw $30D5,$2CAF,$2869,$2443,$6252,$51CE,$454A,$3484                   ;ADEFC3;
     dw $4DF5,$4591,$410E,$34C9,$2C85,$7ED6,$2400,$1022                   ;ADEFD3;
     dw $2D29,$28E7,$20A5,$1842,$394A                                     ;ADEFE3;
 
-.palette2:
+  .palette2:
     dw $3536,$30F0,$248A,$2044,$5E73,$51EF,$414A,$2CA5                   ;ADEFED;
     dw $4E16,$45B2,$3D4E,$3509,$28A5,$7F18,$1C00,$1022                   ;ADEFFD;
     dw $2908,$24C6,$1CA5,$1842,$354A                                     ;ADF00D;
 
-.palette3:
+  .palette3:
     dw $3996,$3130,$24CA,$1C64,$5E94,$4E10,$3D6B,$28A5                   ;ADF017;
     dw $4E56,$45F2,$3D6F,$312A,$24C6,$7F39,$1800,$0C22                   ;ADF027;
     dw $2508,$20C6,$18A5,$1442,$2D29                                     ;ADF037;
 
-.palette4:
+  .palette4:
     dw $4217,$3591,$24EA,$1864,$5AD6,$4A10,$396B,$24A5                   ;ADF041;
     dw $4E97,$4213,$39AF,$314B,$24E7,$7F7B,$1000,$0822                   ;ADF051;
     dw $2108,$1CC6,$1884,$1042,$2929                                     ;ADF061;
 
-.palette5:
+  .palette5:
     dw $4677,$35D1,$252A,$1484,$5AF7,$4631,$358C,$20A5                   ;ADF06B;
     dw $4ED7,$4253,$39D0,$2D6C,$2108,$7F9C,$0C00,$0422                   ;ADF07B;
     dw $1D08,$18C6,$1484,$0C42,$2108                                     ;ADF08B;
 
-.palette6:
+  .palette6:
     dw $4AD8,$3A12,$214B,$1085,$5718,$4652,$318C,$18C6                   ;ADF095;
     dw $4EF8,$4274,$3610,$2DAC,$1D28,$7FDE,$0400,$0422                   ;ADF0A5;
     dw $18E7,$14A5,$1084,$0C42,$1D08                                     ;ADF0B5;
 
-.palette7:
+  .palette7:
     dw $4F38,$3A52,$218B,$0CA5,$5739,$4273,$2DAD,$14C6                   ;ADF0BF;
     dw $4F38,$42B4,$3631,$29CD,$1949,$7FFF,$0000,$0022                   ;ADF0CF;
     dw $14E7,$10A5,$0C84,$0842,$14E7                                     ;ADF0DF;
@@ -1457,7 +1457,7 @@ TransitionMotherBrainPaletteToGrey_RealDeath:
     RTL                                                                  ;ADF0F2;
 
 
-.notZero:
+  .notZero:
     PHB                                                                  ;ADF0F3;
     PEA.W $AD00                                                          ;ADF0F4;
     PLB                                                                  ;ADF0F7;
@@ -1471,7 +1471,7 @@ TransitionMotherBrainPaletteToGrey_RealDeath:
     RTL                                                                  ;ADF106;
 
 
-.pointers:
+  .pointers:
     dw .palette0                                                         ;ADF107;
     dw .palette1                                                         ;ADF109;
     dw .palette2                                                         ;ADF10B;
@@ -1482,35 +1482,35 @@ TransitionMotherBrainPaletteToGrey_RealDeath:
     dw .palette7                                                         ;ADF115;
     dw $0000                                                             ;ADF117;
 
-.palette0:
+  .palette0:
     dw $159F,$00DB,$0033,$000E,$31FB,$2577,$18F4,$0C70                   ;ADF119;
     dw $1D7F,$193B,$10D7,$0C93,$0450,$4A5F,$000C                         ;ADF129;
 
-.palette1:
+  .palette1:
     dw $1DDE,$091A,$0472,$002D,$361B,$2996,$1D13,$0C6F                   ;ADF137;
     dw $25BE,$1D7A,$1516,$10B2,$086F,$529F,$000A                         ;ADF147;
 
-.palette2:
+  .palette2:
     dw $261D,$1138,$0891,$042B,$3E5A,$2DB6,$1D32,$108D                   ;ADF155;
     dw $29FD,$2599,$1D35,$14F1,$088E,$5ADF,$0009                         ;ADF165;
 
-.palette3:
+  .palette3:
     dw $2E5C,$1977,$0CD0,$044A,$427A,$31D5,$2151,$108C                   ;ADF173;
     dw $323C,$29D8,$2174,$1910,$0CAD,$631F,$0007                         ;ADF183;
 
-.palette4:
+  .palette4:
     dw $367B,$21B6,$14EE,$0869,$46BA,$3615,$2550,$10AA                   ;ADF191;
     dw $3A7B,$3217,$2594,$1D50,$10EC,$673F,$0005                         ;ADF1A1;
 
-.palette5:
+  .palette5:
     dw $3EBA,$29F5,$192D,$0888,$4ADA,$3A34,$296F,$10A9                   ;ADF1AF;
     dw $42BA,$3656,$29D3,$216F,$150B,$6F7F,$0003                         ;ADF1BF;
 
-.palette6:
+  .palette6:
     dw $46F9,$3213,$1D4C,$0C86,$5319,$3E54,$298E,$14C7                   ;ADF1CD;
     dw $46F9,$3E75,$31F2,$25AE,$152A,$77BF,$0002                         ;ADF1DD;
 
-.palette7:
+  .palette7:
     dw $4F38,$3A52,$218B,$0CA5,$5739,$4273,$2DAD,$14C6                   ;ADF1EB;
     dw $4F38,$42B4,$3631,$29CD,$1949,$7FFF,$0000                         ;ADF1FB;
 
@@ -1535,7 +1535,7 @@ FadeOutBackgroundForBabyMetroidDeathSequence:
     RTL                                                                  ;ADF22E;
 
 
-.justZeroes:
+  .justZeroes:
     dw $0000,$0000,$0000,$0000,$0000,$0000,$0000,$0000                   ;ADF22F;
     dw $0000,$0000,$0000,$0000,$0000,$0000                               ;ADF23F;
 
@@ -1548,7 +1548,7 @@ FadeInBackgroundForMotherBrainPhase3:
     RTL                                                                  ;ADF254;
 
 
-.notZero:
+  .notZero:
     PHB                                                                  ;ADF255;
     PEA.W $AD00                                                          ;ADF256;
     PLB                                                                  ;ADF259;
@@ -1565,7 +1565,7 @@ FadeInBackgroundForMotherBrainPhase3:
     RTL                                                                  ;ADF272;
 
 
-.pointers:
+  .pointers:
     dw .palette6                                                         ;ADF273;
     dw .palette5                                                         ;ADF275;
     dw .palette4                                                         ;ADF277;
@@ -1575,43 +1575,43 @@ FadeInBackgroundForMotherBrainPhase3:
     dw .palette0                                                         ;ADF27F;
     dw $0000                                                             ;ADF281;
 
-.palette0:
+  .palette0:
     dw $72B2,$71C7,$4463,$4A16,$3991,$2D2C,$1CA7,$20E5                   ;ADF283;
     dw $18A4,$1083,$0841,$0000,$0000,$02DF,$6318,$6318                   ;ADF293;
     dw $0802,$5294,$39CE,$2108,$1084,$0019,$0012,$5C00                   ;ADF2A3;
     dw $4000,$1084,$197F,$7FFF                                           ;ADF2B3;
 
-.palette1:
+  .palette1:
     dw $624F,$6186,$3842,$3DB2,$314E,$24EA,$1886,$18C4                   ;ADF2BB;
     dw $1483,$0C62,$0420,$0000,$0000,$025A,$5294,$5294                   ;ADF2CB;
     dw $0401,$4631,$318C,$18C6,$0C63,$0015,$000F,$4C00                   ;ADF2DB;
     dw $3400,$0C63,$153A,$6B5A                                           ;ADF2EB;
 
-.palette2:
+  .palette2:
     dw $51EC,$5145,$3042,$316F,$290C,$1CC8,$1465,$14A3                   ;ADF2F3;
     dw $1062,$0842,$0420,$0000,$0000,$01F6,$4631,$4631                   ;ADF303;
     dw $0401,$39CE,$294A,$14A5,$0842,$0011,$000C,$4000                   ;ADF313;
     dw $2C00,$0842,$10F6,$5AD6                                           ;ADF323;
 
-.palette3:
+  .palette3:
     dw $418A,$4104,$2421,$292C,$20C9,$18A6,$1044,$1082                   ;ADF32B;
     dw $0C42,$0841,$0420,$0000,$0000,$0191,$35AD,$35AD                   ;ADF33B;
     dw $0401,$2D6B,$2108,$1084,$0842,$000E,$000A,$3400                   ;ADF34B;
     dw $2400,$0842,$0CD1,$4631                                           ;ADF35B;
 
-.palette4:
+  .palette4:
     dw $3127,$30C3,$1C21,$1CC9,$18A7,$1065,$0C43,$0C62                   ;ADF363;
     dw $0841,$0421,$0000,$0000,$0000,$012D,$294A,$294A                   ;ADF373;
     dw $0000,$2108,$18C6,$0C63,$0421,$000A,$0007,$2400                   ;ADF383;
     dw $1800,$0421,$088D,$35AD                                           ;ADF393;
 
-.palette5:
+  .palette5:
     dw $20C5,$2082,$1000,$1486,$1064,$0C43,$0822,$0841                   ;ADF39B;
     dw $0421,$0420,$0000,$0000,$0000,$00C8,$18C6,$18C6                   ;ADF3AB;
     dw $0000,$14A5,$1084,$0842,$0421,$0007,$0005,$1800                   ;ADF3BB;
     dw $1000,$0421,$0468,$2108                                           ;ADF3CB;
 
-.palette6:
+  .palette6:
     dw $1062,$1041,$0800,$0843,$0822,$0421,$0401,$0420                   ;ADF3D3;
     dw $0000,$0000,$0000,$0000,$0000,$0064,$0C63,$0C63                   ;ADF3E3;
     dw $0000,$0842,$0842,$0421,$0000,$0003,$0002,$0C00                   ;ADF3F3;
@@ -1639,7 +1639,7 @@ HandleMotherBrainBodyFlickering:
     RTL                                                                  ;ADF432;
 
 
-.invisible:
+  .invisible:
     LDA.B $69                                                            ;ADF433;
     AND.W #$FFFD                                                         ;ADF435;
     STA.B $69                                                            ;ADF438;

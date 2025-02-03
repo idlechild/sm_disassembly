@@ -25,7 +25,7 @@ InitializeProjectile:
     BRA .merge                                                           ;938025;
 
 
-.charged:
+  .charged:
     AND.W #$000F                                                         ;938027;
     ASL A                                                                ;93802A;
     TAY                                                                  ;93802B;
@@ -34,7 +34,7 @@ InitializeProjectile:
     BRA .merge                                                           ;938030;
 
 
-.notBeam:
+  .notBeam:
     XBA                                                                  ;938032;
     AND.W #$000F                                                         ;938033;
     ASL A                                                                ;938036;
@@ -42,14 +42,14 @@ InitializeProjectile:
     LDA.W SamusProjectileDataPointers_NonBeam,Y                          ;938038;
     TAY                                                                  ;93803B;
 
-.merge:
+  .merge:
     LDA.W $0000,Y                                                        ;93803C;
     STA.W $0C2C,X                                                        ;93803F;
     BPL .dontCrash                                                       ;938042;
     JML.L Crash_Handler                                                  ;938044;
 
 
-.dontCrash:
+  .dontCrash:
     INY                                                                  ;938048;
     INY                                                                  ;938049;
     TYA                                                                  ;93804A;
@@ -90,7 +90,7 @@ InitializeSuperMissileLink:
     JML.L Crash_Handler                                                  ;93808B;
 
 
-.dontCrash:
+  .dontCrash:
     INY                                                                  ;93808F;
     INY                                                                  ;938090;
     LDA.W $0000,Y                                                        ;938091;
@@ -120,7 +120,7 @@ InitializeBomb:
     JML.L Crash_Handler                                                  ;9380BA;
 
 
-.dontCrash:
+  .dontCrash:
     INY                                                                  ;9380BE;
     INY                                                                  ;9380BF;
     LDA.W $0000,Y                                                        ;9380C0;
@@ -152,13 +152,13 @@ PartOfKillProjectile_QueueSFX_SetInstruction:
     BRA .return                                                          ;9380F6;
 
 
-.notBeam:
+  .notBeam:
     LDA.W $1F51                                                          ;9380F8;
     BNE .setExplosion                                                    ;9380FB;
     LDA.W #$0007                                                         ;9380FD;
     JSL.L QueueSound_Lib2_Max6                                           ;938100;
 
-.setExplosion:
+  .setExplosion:
     LDA.W $0C18,X                                                        ;938104;
     PHA                                                                  ;938107;
     AND.W #$F0FF                                                         ;938108;
@@ -172,7 +172,7 @@ PartOfKillProjectile_QueueSFX_SetInstruction:
     BRA .setCooldown                                                     ;93811D;
 
 
-.superMissile:
+  .superMissile:
     LDA.W ProjectileDataTable_NonBeam_SuperMissileExplosion_pointer      ;93811F;
     STA.W $0C40,X                                                        ;938122;
     LDA.W #$0014                                                         ;938125;
@@ -180,14 +180,14 @@ PartOfKillProjectile_QueueSFX_SetInstruction:
     LDA.W #$001E                                                         ;93812B;
     STA.W $1840                                                          ;93812E;
 
-.setCooldown:
+  .setCooldown:
     LDA.W $0CCC                                                          ;938131;
     CMP.W #$0015                                                         ;938134;
     BMI .return                                                          ;938137;
     LDA.W #$0014                                                         ;938139;
     STA.W $0CCC                                                          ;93813C;
 
-.return:
+  .return:
     LDA.W #$0001                                                         ;93813F;
     STA.W $0C54,X                                                        ;938142;
     LDA.W #$0008                                                         ;938145;
@@ -236,7 +236,7 @@ Initialize_ShinesparkEcho_or_SpazerSBATrailProjectile:
     JML.L Crash_Handler                                                  ;93818A;
 
 
-.dontCrash:
+  .dontCrash:
     INY                                                                  ;93818E;
     INY                                                                  ;93818F;
     TYA                                                                  ;938190;
@@ -270,7 +270,7 @@ InitializeSBAProjectile:
     JML.L Crash_Handler                                                  ;9381BE;
 
 
-.dontCrash:
+  .dontCrash:
     LDA.W $0002,Y                                                        ;9381C2;
     STA.W $0C40,X                                                        ;9381C5;
     LDA.W #$0001                                                         ;9381C8;
@@ -310,7 +310,7 @@ ProjectileInstructionHandler:
     BNE .return                                                          ;9381F5;
     LDY.W $0C40,X                                                        ;9381F7;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;9381FA;
     BPL .timer                                                           ;9381FD;
     STA.B $12                                                            ;9381FF;
@@ -320,7 +320,7 @@ ProjectileInstructionHandler:
     JMP.W ($0012)                                                        ;938206;
 
 
-.timer:
+  .timer:
     STA.W $0C54,X                                                        ;938209;
     LDA.W $0002,Y                                                        ;93820C;
     STA.W $0CB8,X                                                        ;93820F;
@@ -335,7 +335,7 @@ ProjectileInstructionHandler:
     ADC.W #$0008                                                         ;938226;
     STA.W $0C40,X                                                        ;938229;
 
-.return:
+  .return:
     PLB                                                                  ;93822C;
     PLP                                                                  ;93822D;
     RTL                                                                  ;93822E;
@@ -368,7 +368,7 @@ UNUSED_Instruction_SamusProj_GotoY_BasedOnBombTimer_938240:
     RTS                                                                  ;93824E;
 
 
-.lessThanY:
+  .lessThanY:
     LDA.W $0002,Y                                                        ;93824F;
     TAY                                                                  ;938252;
     RTS                                                                  ;938253;
@@ -381,13 +381,13 @@ DrawProjectiles:
     LDX.W #$0008                                                         ;938257;
     STX.W $0DDE                                                          ;93825A;
 
-.loop:
+  .loop:
     LDA.W $0C40,X                                                        ;93825D;
     BNE +                                                                ;938260;
     JMP.W .next                                                          ;938262;
 
 
-  + LDA.W $0C18,X                                                        ;938265;
++   LDA.W $0C18,X                                                        ;938265;
     BIT.W #$0F10                                                         ;938268;
     BNE .noFlickering                                                    ;93826B;
     BIT.W #$000C                                                         ;93826D;
@@ -401,13 +401,13 @@ DrawProjectiles:
     BRA .next                                                            ;938280;
 
 
-  + LDA.W $05B6                                                          ;938282;
++   LDA.W $05B6                                                          ;938282;
     BIT.W #$0001                                                         ;938285;
     BNE .next                                                            ;938288;
     BRA .draw                                                            ;93828A;
 
 
-.spazerPlasma:
+  .spazerPlasma:
     TXA                                                                  ;93828C;
     BIT.W #$0002                                                         ;93828D;
     BNE +                                                                ;938290;
@@ -417,18 +417,18 @@ DrawProjectiles:
     BRA .draw                                                            ;93829A;
 
 
-  + LDA.W $05B6                                                          ;93829C;
++   LDA.W $05B6                                                          ;93829C;
     BIT.W #$0002                                                         ;93829F;
     BEQ .next                                                            ;9382A2;
     BRA .draw                                                            ;9382A4;
 
 
-.noFlickering:
+  .noFlickering:
     AND.W #$0F00                                                         ;9382A6;
     CMP.W #$0300                                                         ;9382A9;
     BPL .next                                                            ;9382AC;
 
-.draw:
+  .draw:
     LDA.W $093F                                                          ;9382AE;
     BPL .noRotation                                                      ;9382B1;
     JSL.L Calculate_ProjectilePosition_InRotatingElevatorRoom            ;9382B3;
@@ -436,7 +436,7 @@ DrawProjectiles:
     BRA .positionCalculated                                              ;9382B9;
 
 
-.noRotation:
+  .noRotation:
     LDA.W $0B64,X                                                        ;9382BB;
     SEC                                                                  ;9382BE;
     SBC.W $0911                                                          ;9382BF;
@@ -446,7 +446,7 @@ DrawProjectiles:
     SBC.W $0915                                                          ;9382C8;
     STA.B $12                                                            ;9382CB;
 
-.positionCalculated:
+  .positionCalculated:
     AND.W #$FF00                                                         ;9382CD;
     BNE +                                                                ;9382D0;
     LDA.W $0CB8,X                                                        ;9382D2;
@@ -455,14 +455,14 @@ DrawProjectiles:
     BRA .loadIndex                                                       ;9382DB;
 
 
-  + LDA.W $0CB8,X                                                        ;9382DD;
++   LDA.W $0CB8,X                                                        ;9382DD;
     BPL .loadIndex                                                       ;9382E0;
     JSL.L RTL_818AB7                                                     ;9382E2;
 
-.loadIndex:
+  .loadIndex:
     LDX.W $0DDE                                                          ;9382E6;
 
-.next:
+  .next:
     DEX                                                                  ;9382E9;
     DEX                                                                  ;9382EA;
     STX.W $0DDE                                                          ;9382EB;
@@ -470,7 +470,7 @@ DrawProjectiles:
     JMP.W .loop                                                          ;9382F0;
 
 
-.echoes:
+  .echoes:
     JSL.L DrawShinesparkCrashEchoProjectiles                             ;9382F3;
     JSL.L HandleProjectileTrails                                         ;9382F7;
     PLP                                                                  ;9382FB;
@@ -484,7 +484,7 @@ UNUSED_PartialDrawProjectiles_9282FD:
     LDX.W #$0008                                                         ;938300;
     STX.W $0DDE                                                          ;938303;
 
-.loop:
+  .loop:
     LDA.W $0C40,X                                                        ;938306;
     BEQ .next                                                            ;938309;
     LDA.W $0B64,X                                                        ;93830B;
@@ -505,14 +505,14 @@ UNUSED_PartialDrawProjectiles_9282FD:
     BRA .getIndex                                                        ;93832F;
 
 
-  + LDA.W $0CB8,X                                                        ;938331;
++   LDA.W $0CB8,X                                                        ;938331;
     BPL .getIndex                                                        ;938334;
     JSL.L RTL_818AB7                                                     ;938336;
 
-.getIndex:
+  .getIndex:
     LDX.W $0DDE                                                          ;93833A;
 
-.next:
+  .next:
     DEX                                                                  ;93833D;
     DEX                                                                  ;93833E;
     STX.W $0DDE                                                          ;93833F;
@@ -520,7 +520,7 @@ UNUSED_PartialDrawProjectiles_9282FD:
     JMP.W .loop                                                          ;938344;
 
 
-.timerExpired:
+  .timerExpired:
     JSL.L HandleProjectileTrails                                         ;938347;
     PLP                                                                  ;93834B;
     RTL                                                                  ;93834C;
@@ -533,7 +533,7 @@ DrawBombsAndProjectileExplosions:
     LDX.W #$0012                                                         ;938350;
     STX.W $0DDE                                                          ;938353;
 
-.loop:
+  .loop:
     LDA.W $0C40,X                                                        ;938356;
     BEQ .next                                                            ;938359;
     LDA.W $0C18,X                                                        ;93835B;
@@ -550,11 +550,11 @@ DrawBombsAndProjectileExplosions:
     BRA .calculatedPosition                                              ;938378;
 
 
-.powerBomb:
+  .powerBomb:
     LDA.W $0C7C,X                                                        ;93837A;
     BEQ .next                                                            ;93837D;
 
-.normalPositionCalculation:
+  .normalPositionCalculation:
     LDA.W $0B64,X                                                        ;93837F;
     SEC                                                                  ;938382;
     SBC.W $0911                                                          ;938383;
@@ -568,7 +568,7 @@ DrawBombsAndProjectileExplosions:
     SBC.W $0915                                                          ;938396;
     STA.B $12                                                            ;938399;
 
-.calculatedPosition:
+  .calculatedPosition:
     AND.W #$FF00                                                         ;93839B;
     BNE .offScreen                                                       ;93839E;
     LDA.W $0CB8,X                                                        ;9383A0;
@@ -577,12 +577,12 @@ DrawBombsAndProjectileExplosions:
     BRA .next                                                            ;9383AA;
 
 
-.offScreen:
+  .offScreen:
     LDA.W $0CB8,X                                                        ;9383AC;
     JSL.L RTL_818AB7                                                     ;9383AF;
     LDX.W $0DDE                                                          ;9383B3;
 
-.next:
+  .next:
     DEX                                                                  ;9383B6;
     DEX                                                                  ;9383B7;
     STX.W $0DDE                                                          ;9383B8;
@@ -9343,7 +9343,7 @@ UNUSED_DrawShinesparkWindupEffectSprite_93F5E2:
     CMP.W #$00C8                                                         ;93F5F0;
     BNE .return                                                          ;93F5F3;
 
-.verticalShinesparkWindup:
+  .verticalShinesparkWindup:
     LDA.W $05B6                                                          ;93F5F5;
     BIT.W #$0001                                                         ;93F5F8;
     BNE .return                                                          ;93F5FB;
@@ -9360,7 +9360,7 @@ UNUSED_DrawShinesparkWindupEffectSprite_93F5E2:
     ADC.W #$0002                                                         ;93F613;
     JSL.L AddSpritemapFrom_93A1A1_TableToOAM                             ;93F616;
 
-.return:
+  .return:
     PLB                                                                  ;93F61A;
     PLP                                                                  ;93F61B;
     RTL                                                                  ;93F61C;

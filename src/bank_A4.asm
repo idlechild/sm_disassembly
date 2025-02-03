@@ -143,7 +143,7 @@ Instruction_CommonA4_CallFunctionInY:
     JMP.W ($0012)                                                        ;A48094;
 
 
-.manualReturn:
+  .manualReturn:
     PLX                                                                  ;A48097;
     PLY                                                                  ;A48098;
     INY                                                                  ;A48099;
@@ -161,7 +161,7 @@ Instruction_CommonA4_CallFunctionInY_WithA:
     JMP.W ($0012)                                                        ;A480A9;
 
 
-.manualReturn:
+  .manualReturn:
     PLX                                                                  ;A480AC;
     PLY                                                                  ;A480AD;
     TYA                                                                  ;A480AE;
@@ -188,7 +188,7 @@ UNUSED_Instruction_CommonA4_CallExternalFunctionInY_A480B5:
     RTL                                                                  ;A480CA;
 
 
-.externalFunction:
+  .externalFunction:
     JML.W [$0012]                                                        ;A480CB;
 
 
@@ -210,7 +210,7 @@ UNUSED_Inst_CommonA4_CallExternalFunctionInY_WithA_A480CE:
     RTL                                                                  ;A480E9;
 
 
-.externalFunction:
+  .externalFunction:
     JML.W [$0012]                                                        ;A480EA;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -231,10 +231,10 @@ Instruction_CommonA4_GotoY_PlusY:
     BRA +                                                                ;A480FE;
 
 
-.highByte:
+  .highByte:
     ORA.W #$FF00                                                         ;A48100;
 
-  + CLC                                                                  ;A48103;
++   CLC                                                                  ;A48103;
     ADC.B $12                                                            ;A48104;
     TAY                                                                  ;A48106;
     RTL                                                                  ;A48107;
@@ -589,7 +589,7 @@ Instruction_Crocomire_FightAI:
     RTL                                                                  ;A486B2;
 
 
-.pointers:
+  .pointers:
     dw FightAI_Crocomire_0_LockUp_SetInitialInstList                     ;A486B3;
     dw FightAI_Crocomire_2_StepForwardUntilOnScreen_StepForward          ;A486B5;
     dw FightAI_Crocomire_4_Asleep                                        ;A486B7;
@@ -638,7 +638,7 @@ FightAI_Crocomire_4_Asleep:
     EOR.W #$FFFF                                                         ;A486FB;
     INC A                                                                ;A486FE;
 
-  + CMP.W #$00E0                                                         ;A486FF;
++   CMP.W #$00E0                                                         ;A486FF;
     BPL .return                                                          ;A48702;
     LDA.W $0FAA                                                          ;A48704;
     ORA.W #$8000                                                         ;A48707;
@@ -647,7 +647,7 @@ FightAI_Crocomire_4_Asleep:
     LDA.W #$0012                                                         ;A48710;
     STA.W $0FAC                                                          ;A48713;
 
-.return:
+  .return:
     RTS                                                                  ;A48716;
 
 
@@ -666,7 +666,7 @@ FightAI_Crocomire_6_SteppingForward:
     RTS                                                                  ;A48736;
 
 
-.step:
+  .step:
     LDA.W $0F7A                                                          ;A48737;
     CMP.W CrocomireConstants_XThresholdSpikeWall                         ;A4873A;
     BMI .nearSpikeWall                                                   ;A4873D;
@@ -674,11 +674,11 @@ FightAI_Crocomire_6_SteppingForward:
     BMI .return                                                          ;A48742;
     LDY.W #InstList_Crocomire_StepForward                                ;A48744;
 
-.return:
+  .return:
     RTS                                                                  ;A48747;
 
 
-.nearSpikeWall:
+  .nearSpikeWall:
     LDY.W #InstList_CrocomireTongue_NearSpikeWallCharge_0                ;A48748;
     LDA.W #$000A                                                         ;A4874B;
     STA.W $0FAC                                                          ;A4874E;
@@ -696,7 +696,7 @@ Instruction_Crocomire_MaybeStartProjectileAttack:
     STZ.W $0FB2                                                          ;A48764;
     LDY.W #InstList_Crocomire_ProjectileAttack_0                         ;A48767;
 
-.return:
+  .return:
     PLX                                                                  ;A4876A;
     RTL                                                                  ;A4876B;
 
@@ -713,7 +713,7 @@ FightAI_Crocomire_8_ProjectileAttack:
     RTS                                                                  ;A48783;
 
 
-.notDamaged:
+  .notDamaged:
     LDA.W $0FB2                                                          ;A48784;
     CMP.W #$0012                                                         ;A48787;
     BPL .stepForward                                                     ;A4878A;
@@ -731,7 +731,7 @@ FightAI_Crocomire_8_ProjectileAttack:
     RTS                                                                  ;A487A7;
 
 
-.stepForward:
+  .stepForward:
     LDY.W #InstList_Crocomire_StepForwardAfterDelay                      ;A487A8;
     LDA.W #$0006                                                         ;A487AB;
     STA.W $0FAC                                                          ;A487AE;
@@ -748,7 +748,7 @@ FightAI_Crocomire_A_NearSpikeWallCharge:
     LDA.W #$000C                                                         ;A487C3;
     STA.W $0FAC                                                          ;A487C6;
 
-.return:
+  .return:
     RTS                                                                  ;A487C9;
 
 
@@ -764,7 +764,7 @@ FightAI_Crocomire_C_SteppingBack:
     RTS                                                                  ;A487DE;
 
 
-.stepForward:
+  .stepForward:
     LDA.W #$0006                                                         ;A487DF;
     STA.W $0FAC                                                          ;A487E2;
     LDY.W #InstList_Crocomire_StepForward                                ;A487E5;
@@ -779,7 +779,7 @@ FightAI_Crocomire_E_BackOffFromSpikeWall:
     STA.W $0FAC                                                          ;A487F4;
     LDY.W #InstList_Crocomire_StepForward                                ;A487F7;
 
-.return:
+  .return:
     RTS                                                                  ;A487FA;
 
 
@@ -811,12 +811,12 @@ FightAI_Crocomire_12_WaitForFirstDamage:
     RTS                                                                  ;A4882C;
 
 
-.notDamaged:
+  .notDamaged:
     CPY.W #InstList_Crocomire_WaitForFirstSecondDamage_RoarCloseMouth_1  ;A4882D;
     BMI .return                                                          ;A48830;
     LDY.W #InstList_Crocomire_WaitForFirstSecondDamage_Roar              ;A48832;
 
-.return:
+  .return:
     RTS                                                                  ;A48835;
 
 
@@ -833,12 +833,12 @@ FightAI_Crocomire_14_WaitForSecondDamage:
     RTS                                                                  ;A48850;
 
 
-.notDamaged:
+  .notDamaged:
     CPY.W #InstList_Crocomire_WaitForFirstSecondDamage_RoarCloseMouth_1  ;A48851;
     BMI .return                                                          ;A48854;
     LDY.W #InstList_Crocomire_WaitForFirstSecondDamage_Roar              ;A48856;
 
-.return:
+  .return:
     RTS                                                                  ;A48859;
 
 
@@ -855,12 +855,12 @@ UNUSED_FightAI_Crocomire_16_WaitForSecondDamage_A4885A:
     RTS                                                                  ;A48874;
 
 
-.notDamaged:
+  .notDamaged:
     CPY.W #InstList_Crocomire_WaitForFirstSecondDamage_RoarCloseMouth_1  ;A48875;
     BMI .return                                                          ;A48878;
     LDY.W #InstList_Crocomire_WaitForFirstSecondDamage_Roar              ;A4887A;
 
-.return:
+  .return:
     RTS                                                                  ;A4887D;
 
 
@@ -876,7 +876,7 @@ FightAI_Crocomire_18_PowerBombedCharge:
     STA.W $0FAC                                                          ;A48893;
     LDY.W #InstList_Crocomire_StepForward                                ;A48896;
 
-.return:
+  .return:
     RTS                                                                  ;A48899;
 
 
@@ -891,7 +891,7 @@ UNUSED_FightAI_Crocomire_1A_DoNearSpikeWallCharge_A4889A:
     RTS                                                                  ;A488AE;
 
 
-.SamusNotHitByClaw:
+  .SamusNotHitByClaw:
     AND.W #$BF00                                                         ;A488AF;
     ORA.W #$A000                                                         ;A488B2;
     STA.W $0FAA                                                          ;A488B5;
@@ -928,13 +928,13 @@ UNUSED_ChargeCrocomireForwardOneStepAfterDelay_A488EE:
     DEC.W $0FAE                                                          ;A488F9;
     BNE .return                                                          ;A488FC;
 
-.timerExpired:
+  .timerExpired:
     LDX.W $0E54                                                          ;A488FE;
     JSR.W ChargeCrocomireForwardOneStep                                  ;A48901;
     LDA.W #$0020                                                         ;A48904;
     STA.W $0FAC                                                          ;A48907;
 
-.return:
+  .return:
     RTS                                                                  ;A4890A;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -959,7 +959,7 @@ UNUSED_FightAI_Crocomire_1E_ChooseForwardMovingAttack_A4891B:
     RTS                                                                  ;A4892F;
 
 
-.setInstList:
+  .setInstList:
     JSR.W FightAI_Crocomire_0_LockUp_SetInitialInstList                  ;A48930;
     LDA.W #$0010                                                         ;A48933;
     STA.W $0FAE                                                          ;A48936;
@@ -980,7 +980,7 @@ UNUSED_FightAI_Crocomire_20_DoNothingAndStepForward_A48940:
     LDA.W #$0024                                                         ;A48957;
     STA.W $0FAC                                                          ;A4895A;
 
-.return:
+  .return:
     RTS                                                                  ;A4895D;
 
 
@@ -997,7 +997,7 @@ UNUSED_FightAI_Crocomire_22_MoveForwardUntilHitSamus_A4895E:
     RTS                                                                  ;A48978;
 
 
-.notAgainstSpikes:
+  .notAgainstSpikes:
     LDA.W $0FAA                                                          ;A48979;
     BIT.W #$4000                                                         ;A4897C;
     BNE .SamusHitByClaw                                                  ;A4897F;
@@ -1005,7 +1005,7 @@ UNUSED_FightAI_Crocomire_22_MoveForwardUntilHitSamus_A4895E:
     STA.W $0FAC                                                          ;A48984;
     JSR.W UNUSED_SetFightIntroMovingClawsInstList_A48805                 ;A48987;
 
-.SamusHitByClaw:
+  .SamusHitByClaw:
     LDA.W $0FAA                                                          ;A4898A;
     BIT.W #$4000                                                         ;A4898D;
     BEQ .return                                                          ;A48990;
@@ -1017,7 +1017,7 @@ UNUSED_FightAI_Crocomire_22_MoveForwardUntilHitSamus_A4895E:
     LDA.W #$002A                                                         ;A489A1;
     STA.W $0FAC                                                          ;A489A4;
 
-.return:
+  .return:
     RTS                                                                  ;A489A7;
 
 
@@ -1037,7 +1037,7 @@ UNUSED_FightAI_Crocomire_24_MoveClaws_StepForward_A489A8:
     RTS                                                                  ;A489CA;
 
 
-.timerExpired:
+  .timerExpired:
     JSR.W FightAI_Crocomire_2_StepForwardUntilOnScreen_StepForward       ;A489CB;
     LDA.W #$0028                                                         ;A489CE;
     STA.W $0FAC                                                          ;A489D1;
@@ -1054,7 +1054,7 @@ UNUSED_FightAI_Crocomire_26_StepForward_A489DE:
     AND.W #$FCFF                                                         ;A489E6;
     STA.W $0FAA                                                          ;A489E9;
 
-.stepForward:
+  .stepForward:
     LDX.W $0E54                                                          ;A489EC;
     JSR.W FightAI_Crocomire_2_StepForwardUntilOnScreen_StepForward       ;A489EF;
     LDA.W #$0028                                                         ;A489F2;
@@ -1076,7 +1076,7 @@ UNUSED_FightAI_Crocomire_28_MovingClaws_A489F9:
     RTS                                                                  ;A48A16;
 
 
-.timerNotExpired:
+  .timerNotExpired:
     LDA.W $0FAA                                                          ;A48A17;
     BIT.W #$4000                                                         ;A48A1A;
     BEQ .steppingBack                                                    ;A48A1D;
@@ -1087,7 +1087,7 @@ UNUSED_FightAI_Crocomire_28_MovingClaws_A489F9:
     RTS                                                                  ;A48A2C;
 
 
-.steppingBack:
+  .steppingBack:
     AND.W #$BFFF                                                         ;A48A2D;
     STA.W $0FAA                                                          ;A48A30;
     LDA.W #$000C                                                         ;A48A33;
@@ -1108,7 +1108,7 @@ InitAI_Crocomire:
     LDX.W #$0000                                                         ;A48A62;
     LDA.W #$0338                                                         ;A48A65;
 
-.loopBG2Tilemap:
+  .loopBG2Tilemap:
     STA.L $7E2000,X                                                      ;A48A68;
     INX                                                                  ;A48A6C;
     INX                                                                  ;A48A6D;
@@ -1127,7 +1127,7 @@ InitAI_Crocomire:
     STA.L $7ECD20                                                        ;A48A92;
     LDX.W #$0020                                                         ;A48A96;
 
-.loopTargetPalette:
+  .loopTargetPalette:
     LDA.W Palette_Crocomire_Sprite2,X                                    ;A48A99;
     STA.L $7EC340,X                                                      ;A48A9C;
     LDA.W Palette_Crocomire_Sprite5,X                                    ;A48AA0;
@@ -1154,7 +1154,7 @@ InitAI_Crocomire:
     RTL                                                                  ;A48ADB;
 
 
-.dead:
+  .dead:
     LDA.W #$0101                                                         ;A48ADC;
     STA.L $7ECD20                                                        ;A48ADF;
     STA.L $7ECD22                                                        ;A48AE3;
@@ -1213,7 +1213,7 @@ UpdateCrocomireBG2Scroll:
     STA.B $B7                                                            ;A48B66;
     LDX.W #$0020                                                         ;A48B68;
 
-.loop:
+  .loop:
     LDA.W $0F8E                                                          ;A48B6B;
     CMP.W .pointers,X                                                    ;A48B6E;
     BEQ .found                                                           ;A48B71;
@@ -1223,7 +1223,7 @@ UpdateCrocomireBG2Scroll:
     BRA UpdateCrocomireBG2XScroll                                        ;A48B77;
 
 
-.pointers:
+  .pointers:
     dw ExtendedSpritemap_Crocomire_ChargeForward_StepBack_0              ;A48B79;
     dw ExtendedSpritemap_Crocomire_ChargeForward_StepBack_1              ;A48B7B;
     dw ExtendedSpritemap_Crocomire_ChargeForward_StepBack_2              ;A48B7D;
@@ -1242,7 +1242,7 @@ UpdateCrocomireBG2Scroll:
     dw ExtendedSpritemap_Crocomire_MovingClaws_3                         ;A48B97;
     dw ExtendedSpritemap_Crocomire_MovingClaws_4                         ;A48B99;
 
-.found:
+  .found:
     TAY                                                                  ;A48B9B;
     LDA.W $001C,Y                                                        ;A48B9C;
     CLC                                                                  ;A48B9F;
@@ -1265,7 +1265,7 @@ UpdateCrocomireBG2XScroll:
     CMP.W $0911                                                          ;A48BC3;
     BMI .offScreen                                                       ;A48BC6;
 
-.onScreen:
+  .onScreen:
     LDA.W $0911                                                          ;A48BC8;
     SEC                                                                  ;A48BCB;
     SBC.W $0F7A,X                                                        ;A48BCC;
@@ -1276,24 +1276,24 @@ UpdateCrocomireBG2XScroll:
     EOR.W #$FFFF                                                         ;A48BD6;
     INC A                                                                ;A48BD9;
 
-  + CMP.W #$011C                                                         ;A48BDA;
++   CMP.W #$011C                                                         ;A48BDA;
     BMI +                                                                ;A48BDD;
     PLA                                                                  ;A48BDF;
     LDA.W #$0100                                                         ;A48BE0;
     PHA                                                                  ;A48BE3;
 
-  + PLA                                                                  ;A48BE4;
++   PLA                                                                  ;A48BE4;
     STA.B $B5                                                            ;A48BE5;
     RTL                                                                  ;A48BE7;
 
 
-.offScreen:
+  .offScreen:
     LDA.W #$0100                                                         ;A48BE8;
     STA.B $B5                                                            ;A48BEB;
     RTL                                                                  ;A48BED;
 
 
-.rightOffScreenCheck:
+  .rightOffScreenCheck:
     LDA.W $0911                                                          ;A48BEE;
     CLC                                                                  ;A48BF1;
     ADC.W #$0100                                                         ;A48BF2;
@@ -1317,7 +1317,7 @@ MainAI_Crocomire:
     RTL                                                                  ;A48C13;
 
 
-.pointers:
+  .pointers:
     dw MainAI_Crocomire_DeathSequence_0_NotStarted                       ;A48C14;
     dw MainAI_Crocomire_DeathSequence_2_Falling                          ;A48C16;
     dw MainAI_Crocomire_DeathSequence_4_A_Hop_1_2_Resting                ;A48C18;
@@ -1374,7 +1374,7 @@ MainAI_Crocomire_DeathSequence_0_NotStarted:
     LDA.W #$0100                                                         ;A48C81;
     STA.L $7ECD24                                                        ;A48C84;
 
-.bridgeNotInSight:
+  .bridgeNotInSight:
     LDX.W $0E54                                                          ;A48C88;
     JSL.L UpdateCrocomireBG2Scroll                                       ;A48C8B; fallthrough to RTS_A48C8F
 
@@ -1410,7 +1410,7 @@ Crocomire_vs_Samus_CollisionHandling:
     LDA.W #$FFFF                                                         ;A48CC4;
     STA.W $0B5C                                                          ;A48CC7;
 
-.return:
+  .return:
     RTS                                                                  ;A48CCA;
 
 
@@ -1425,7 +1425,7 @@ CrocomireHurtFlashHandling:
     LDA.W #$7FFF                                                         ;A48CDD;
     LDX.W #$000E                                                         ;A48CE0;
 
-.loopWhite:
+  .loopWhite:
     STA.L $7EC0E0,X                                                      ;A48CE3;
     DEX                                                                  ;A48CE7;
     DEX                                                                  ;A48CE8;
@@ -1433,17 +1433,17 @@ CrocomireHurtFlashHandling:
     RTS                                                                  ;A48CEB;
 
 
-.palette:
+  .palette:
     LDX.W #$000E                                                         ;A48CEC;
 
-.loopPalette:
+  .loopPalette:
     LDA.W Palette_Crocomire_BG12,X                                       ;A48CEF;
     STA.L $7EC0E0,X                                                      ;A48CF2;
     DEX                                                                  ;A48CF6;
     DEX                                                                  ;A48CF7;
     BPL .loopPalette                                                     ;A48CF8;
 
-.return:
+  .return:
     RTS                                                                  ;A48CFA;
 
 
@@ -1490,7 +1490,7 @@ HandlePlayingCrocomireAcidDamageSFX:
     LDA.W #$0022                                                         ;A48D35;
     JSL.L QueueSound_Lib3_Max6                                           ;A48D38;
 
-.return:
+  .return:
     PLY                                                                  ;A48D3C;
     PLX                                                                  ;A48D3D;
     RTL                                                                  ;A48D3E;
@@ -1508,7 +1508,7 @@ MainAI_Crocomire_DeathSequence_20_26_Hop_4_5_Resting:
     RTS                                                                  ;A48D50;
 
 
-.timerExpired:
+  .timerExpired:
     INC.W $0FA8                                                          ;A48D51;
     INC.W $0FA8                                                          ;A48D54;
     LDA.W #$0300                                                         ;A48D57;
@@ -1535,12 +1535,12 @@ HandleCrocomiresBridge:
     LDY.W #EnemyProjectile_MiscDust                                      ;A48D86;
     JSL.L SpawnEnemyProjectileY_ParameterA_RoomGraphics                  ;A48D89;
 
-.returnUpper:
+  .returnUpper:
     PLY                                                                  ;A48D8D;
     RTL                                                                  ;A48D8E;
 
 
-.notOnBridge:
+  .notOnBridge:
     LDA.W #$0000                                                         ;A48D8F;
     STA.L $7E9000                                                        ;A48D92;
     STA.L $7E9002                                                        ;A48D96;
@@ -1550,7 +1550,7 @@ HandleCrocomiresBridge:
     RTL                                                                  ;A48DA3;
 
 
-.oneBlockDeep:
+  .oneBlockDeep:
     LDA.W $0F7A                                                          ;A48DA4;
     CMP.W #$0610                                                         ;A48DA7;
     BMI .deadCode                                                        ;A48DAA;
@@ -1571,12 +1571,12 @@ HandleCrocomiresBridge:
     LDY.W #EnemyProjectile_MiscDust                                      ;A48DD3;
     JSL.L SpawnEnemyProjectileY_ParameterA_RoomGraphics                  ;A48DD6;
 
-.returnMiddle:
+  .returnMiddle:
     PLY                                                                  ;A48DDA;
     RTL                                                                  ;A48DDB;
 
 
-.deadCode:
+  .deadCode:
     LDA.W #$0000                                                         ;A48DDC;
     STA.L $7E9002                                                        ;A48DDF;
     STA.L $7E9006                                                        ;A48DE3;
@@ -1585,7 +1585,7 @@ HandleCrocomiresBridge:
     RTL                                                                  ;A48DEC;
 
 
-.twoBlocksDeep:
+  .twoBlocksDeep:
     LDA.W $0F7A                                                          ;A48DED;
     CMP.W #$0620                                                         ;A48DF0;
     BMI .deadCode2                                                       ;A48DF3;
@@ -1609,12 +1609,12 @@ HandleCrocomiresBridge:
     LDY.W #EnemyProjectile_MiscDust                                      ;A48E24;
     JSL.L SpawnEnemyProjectileY_ParameterA_RoomGraphics                  ;A48E27;
 
-.returnLower:
+  .returnLower:
     PLY                                                                  ;A48E2B;
     RTL                                                                  ;A48E2C;
 
 
-.deadCode2:
+  .deadCode2:
     LDA.W #$0000                                                         ;A48E2D;
     STA.L $7E9006                                                        ;A48E30;
     STA.L $7E900A                                                        ;A48E34;
@@ -1622,14 +1622,14 @@ HandleCrocomiresBridge:
     RTL                                                                  ;A48E39;
 
 
-.threeBlocksDeep:
+  .threeBlocksDeep:
     CMP.W CrocomireConstants_XThresholdBridge                            ;A48E3A;
     BPL .collapseBridge                                                  ;A48E3D;
     PLY                                                                  ;A48E3F;
     RTL                                                                  ;A48E40;
 
 
-.collapseBridge:
+  .collapseBridge:
     JSR.W CollapseCrocomiresBridge                                       ;A48E41;
     LDA.W #$0001                                                         ;A48E44;
     STA.L $7E8000                                                        ;A48E47;
@@ -1799,7 +1799,7 @@ Instruction_Crocomire_MoveLeft4Pixels:
     STA.B $14                                                            ;A48FF1;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A48FF3;
 
-.return:
+  .return:
     PLY                                                                  ;A48FF7;
     PLX                                                                  ;A48FF8;
     RTL                                                                  ;A48FF9;
@@ -1825,7 +1825,7 @@ SpawnBigDustCloudProjectileWithRandomXOffset:
     EOR.W #$FFFF                                                         ;A49013;
     INC A                                                                ;A49016;
 
-.spawn:
+  .spawn:
     JSL.L SpawnBigDustCloudProjectile                                    ;A49017;
     PLX                                                                  ;A4901B;
     RTS                                                                  ;A4901C;
@@ -1846,7 +1846,7 @@ Instruction_Crocomire_MoveLeft_SpawnCloud_HandleSpikeWall:
     BMI .spawnDustCloud                                                  ;A49038;
     LDX.W #$FFE0                                                         ;A4903A;
 
-.spawnDustCloud:
+  .spawnDustCloud:
     LDA.W $05E5                                                          ;A4903D;
     AND.W #$000F                                                         ;A49040;
     STX.B $12                                                            ;A49043;
@@ -1858,7 +1858,7 @@ Instruction_Crocomire_MoveLeft_SpawnCloud_HandleSpikeWall:
     RTL                                                                  ;A4904E;
 
 
-.hitWall:
+  .hitWall:
     PLY                                                                  ;A4904F;
     LDY.W #InstList_Crocomire_BackOffFromSpikeWall                       ;A49050;
     LDA.W #$000E                                                         ;A49053;
@@ -1883,7 +1883,7 @@ Instruction_Crocomire_MoveRight4PixelsIfOnScreen:
     BPL .return                                                          ;A49076;
     JSL.L MoveEnemyRightBy_14_12_IgnoreSlopes                            ;A49078;
 
-.return:
+  .return:
     PLY                                                                  ;A4907C;
     PLX                                                                  ;A4907D;
     RTL                                                                  ;A4907E;
@@ -1936,7 +1936,7 @@ MainAI_Crocomire_DeathSequence_3C_Hop_6_Sinking:
     STZ.W $0941                                                          ;A490D8;
     STZ.W $0688                                                          ;A490DB;
 
-.return:
+  .return:
     RTS                                                                  ;A490DE;
 
 
@@ -1953,7 +1953,7 @@ SetMelting2InstListPointer:
     BPL .setInstList                                                     ;A490F8;
     LDY.W #InstList_Crocomire_Melting2_Top4Rows                          ;A490FA;
 
-.setInstList:
+  .setInstList:
     TYA                                                                  ;A490FD;
     STA.W $0F92                                                          ;A490FE;
     LDA.W #$0001                                                         ;A49101;
@@ -1975,7 +1975,7 @@ MainAI_Crocomire_DeathSequence_1E_24_2A_Hop_3_4_5_Sinking:
     BPL .setInstList                                                     ;A49124;
     LDY.W #InstList_Crocomire_Melting1_Top4Rows                          ;A49126;
 
-.setInstList:
+  .setInstList:
     TYA                                                                  ;A49129;
     STA.W $0F92                                                          ;A4912A;
     LDA.W #$0001                                                         ;A4912D;
@@ -1990,7 +1990,7 @@ MainAI_Crocomire_DeathSequence_2_Falling:
     JMP.W MainAI_Crocomire_DeathSequence_8_E_Hop_1_2_Sinking             ;A4913F;
 
 
-.indexLessThan16:
+  .indexLessThan16:
     TAX                                                                  ;A49142;
     INC A                                                                ;A49143;
     INC A                                                                ;A49144;
@@ -2001,7 +2001,7 @@ MainAI_Crocomire_DeathSequence_2_Falling:
     JMP.W MainAI_Crocomire_DeathSequence_8_E_Hop_1_2_Sinking             ;A49153;
 
 
-.XPositions:
+  .XPositions:
 ; Crocomire bridge crumbling enemy projectile X positions
 ; Note that these are all on the screen to the right of the one Crocomire dies on,
 ; and they use the normal floor graphics, not the bridge graphics
@@ -2026,7 +2026,7 @@ HandleCrocomireAcidDamageSmoke:
     EOR.W #$FFFF                                                         ;A4918E;
     TAX                                                                  ;A49191;
 
-  + TXA                                                                  ;A49192;
++   TXA                                                                  ;A49192;
     CLC                                                                  ;A49193;
     ADC.W $0F7A                                                          ;A49194;
     STA.B $12                                                            ;A49197;
@@ -2045,7 +2045,7 @@ HandleCrocomireAcidDamageSmoke:
     STZ.B $18                                                            ;A491B3;
     JSL.L Create_Sprite_Object                                           ;A491B5;
 
-.return:
+  .return:
     RTS                                                                  ;A491B9;
 
 
@@ -2070,7 +2070,7 @@ SinkCrocomireDown:
     RTS                                                                  ;A491E8;
 
 
-.reachedLeftLedge:
+  .reachedLeftLedge:
     LDA.B $B7                                                            ;A491E9;
     EOR.W #$FFFF                                                         ;A491EB;
     INC A                                                                ;A491EE;
@@ -2087,7 +2087,7 @@ SinkCrocomireDown:
     STA.B $12                                                            ;A49201;
     LDA.W #$0338                                                         ;A49203;
 
-.loopTilemap:
+  .loopTilemap:
     STA.L $7E2000,X                                                      ;A49206;
     INX                                                                  ;A4920A;
     INX                                                                  ;A4920B;
@@ -2110,7 +2110,7 @@ SinkCrocomireDown:
     BMI +                                                                ;A49234;
     LDA.B #$30                                                           ;A49236;
 
-  + STA.W $0FAF,X                                                        ;A49238;
++   STA.W $0FAF,X                                                        ;A49238;
     CLC                                                                  ;A4923B;
     ADC.W $0FB0,X                                                        ;A4923C;
     STA.W $0FB0,X                                                        ;A4923F;
@@ -2120,7 +2120,7 @@ SinkCrocomireDown:
     BMI +                                                                ;A49249;
     LDA.B #$03                                                           ;A4924B;
 
-  + STA.W $0FB1,X                                                        ;A4924D;
++   STA.W $0FB1,X                                                        ;A4924D;
     LDA.W $0FB0,X                                                        ;A49250;
     CLC                                                                  ;A49253;
     ADC.W $0FB3,X                                                        ;A49254;
@@ -2149,7 +2149,7 @@ MainAI_Crocomire_DeathSequence_34_Hop_6_Rising:
     BPL .setInstListPointer                                              ;A4928A;
     LDY.W #InstList_Crocomire_Melting2_Top4Rows                          ;A4928C;
 
-.setInstListPointer:
+  .setInstListPointer:
     TYA                                                                  ;A4928F;
     STA.W $0F92,X                                                        ;A49290;
     LDA.W #$0001                                                         ;A49293;
@@ -2173,7 +2173,7 @@ MainAI_Crocomire_DeathSequence_16_22_28_Hop_3_4_5_Rising:
     BPL .setInstListPointer                                              ;A492BD;
     LDY.W #InstList_Crocomire_Melting1_Top4Rows                          ;A492BF;
 
-.setInstListPointer:
+  .setInstListPointer:
     TYA                                                                  ;A492C2;
     STA.W $0F92,X                                                        ;A492C3;
     LDA.W #$0001                                                         ;A492C6;
@@ -2198,7 +2198,7 @@ RaiseCrocomireUp:
     RTS                                                                  ;A492EF;
 
 
-.raised:
+  .raised:
     JSL.L UpdateCrocomireBG2Scroll                                       ;A492F0;
     LDA.W $0FAE                                                          ;A492F4;
     CLC                                                                  ;A492F7;
@@ -2207,7 +2207,7 @@ RaiseCrocomireUp:
     BMI +                                                                ;A492FE;
     LDA.W #$1F00                                                         ;A49300;
 
-  + STA.W $0FAE                                                          ;A49303;
++   STA.W $0FAE                                                          ;A49303;
     SEP #$20                                                             ;A49306;
     LDA.W $0FB0                                                          ;A49308;
     SEC                                                                  ;A4930B;
@@ -2220,7 +2220,7 @@ RaiseCrocomireUp:
     STA.W $0FB0                                                          ;A4931B;
     LDA.B #$00                                                           ;A4931E;
 
-.positiveYVelocity:
+  .positiveYVelocity:
     STA.W $0FB1                                                          ;A49320;
     LDA.W $0FB3                                                          ;A49323;
     SEC                                                                  ;A49326;
@@ -2266,7 +2266,7 @@ MainAI_Crocomire_DeathSequence_10_Hop_3_LoadMeltingTilemap:
     LDX.W #$0000                                                         ;A4938D;
     LDA.W #$0338                                                         ;A49390;
 
-.loopClearTilemap:
+  .loopClearTilemap:
     STA.L $7E2000,X                                                      ;A49393;
     STA.L $7E2002,X                                                      ;A49397;
     INX                                                                  ;A4939B;
@@ -2277,7 +2277,7 @@ MainAI_Crocomire_DeathSequence_10_Hop_3_LoadMeltingTilemap:
     BMI .loopClearTilemap                                                ;A493A2;
     LDX.W #$0000                                                         ;A493A4;
 
-.loopMeltingTilemap:
+  .loopMeltingTilemap:
     LDA.L MeltingCrocomireTilesLoadingTable_Tilemap_Melting1,X           ;A493A7;
     CMP.W #$FFFF                                                         ;A493AB;
     BEQ .done                                                            ;A493AE;
@@ -2287,7 +2287,7 @@ MainAI_Crocomire_DeathSequence_10_Hop_3_LoadMeltingTilemap:
     BRA .loopMeltingTilemap                                              ;A493B6;
 
 
-.done:
+  .done:
     TXA                                                                  ;A493B8;
     CLC                                                                  ;A493B9;
     ADC.W #$0400                                                         ;A493BA; fallthrough to WriteCrocomireBG2Tilemap
@@ -2316,7 +2316,7 @@ ResetCrocomireBG2YScrollHDMADataTable:
     LDA.B $B7                                                            ;A493DF;
     LDX.W #$01FE                                                         ;A493E1;
 
-.loop:
+  .loop:
     STA.L $7ECAF0,X                                                      ;A493E4;
     DEX                                                                  ;A493E8;
     DEX                                                                  ;A493E9;
@@ -2339,7 +2339,7 @@ MainAI_Crocomire_DeathSequence_2C_Hop_6_LoadMeltingTilemap:
     LDX.W #$0000                                                         ;A4940E;
     LDA.W #$0338                                                         ;A49411;
 
-.loopClearTilemap:
+  .loopClearTilemap:
     STA.L $7E2000,X                                                      ;A49414;
     INX                                                                  ;A49418;
     INX                                                                  ;A49419;
@@ -2347,7 +2347,7 @@ MainAI_Crocomire_DeathSequence_2C_Hop_6_LoadMeltingTilemap:
     BMI .loopClearTilemap                                                ;A4941D;
     LDX.W #$0000                                                         ;A4941F;
 
-.loopMeltingTilemap:
+  .loopMeltingTilemap:
     LDA.L MeltingCrocomireTilesLoadingTable_Tilemap_Melting2,X           ;A49422;
     CMP.W #$FFFF                                                         ;A49426;
     BEQ .done                                                            ;A49429;
@@ -2357,7 +2357,7 @@ MainAI_Crocomire_DeathSequence_2C_Hop_6_LoadMeltingTilemap:
     BRA .loopMeltingTilemap                                              ;A49431;
 
 
-.done:
+  .done:
     TXA                                                                  ;A49433;
     CLC                                                                  ;A49434;
     ADC.W #$0400                                                         ;A49435;
@@ -2394,7 +2394,7 @@ MainAI_Crocomire_DeathSequence_12_2E_Hop_3_4_LoadMeltTiles:
     ADC.W #$0008                                                         ;A49473;
     TAX                                                                  ;A49476;
 
-.loop:
+  .loop:
     LDY.W MeltingCrocomireTilesLoadingTable_Melting1_0,X                 ;A49477;
     CPY.W #$FFFF                                                         ;A4947A;
     BEQ .done                                                            ;A4947D;
@@ -2404,7 +2404,7 @@ MainAI_Crocomire_DeathSequence_12_2E_Hop_3_4_LoadMeltTiles:
     LDA.W $068E                                                          ;A49484;
     STA.B $12                                                            ;A49487;
 
-.loopInner:
+  .loopInner:
     LDA.B [$00],Y                                                        ;A49489;
     STA.L $7E0000,X                                                      ;A4948B;
     INX                                                                  ;A4948F;
@@ -2421,14 +2421,14 @@ MainAI_Crocomire_DeathSequence_12_2E_Hop_3_4_LoadMeltTiles:
     BRA .loop                                                            ;A4949C;
 
 
-.done:
+  .done:
     INX                                                                  ;A4949E;
     INX                                                                  ;A4949F;
     STX.W $069A                                                          ;A494A0;
     STX.W $068A                                                          ;A494A3;
     LDX.W #$0080                                                         ;A494A6;
 
-.loopYOffsets:
+  .loopYOffsets:
     STZ.W $069C,X                                                        ;A494A9;
     DEX                                                                  ;A494AC;
     DEX                                                                  ;A494AD;
@@ -2469,7 +2469,7 @@ MainAI_Crocomire_DeathSequence_14_30_Hop_3_6_UploadingToVRAM:
     RTS                                                                  ;A494EA;
 
 
-.terminator:
+  .terminator:
     STY.W $0330                                                          ;A494EB;
     LDX.W $0E54                                                          ;A494EE;
     INC.W $0FA8,X                                                        ;A494F1;
@@ -2498,7 +2498,7 @@ CreateCrocomireMeltingHDMAObject:
     TAX                                                                  ;A49517;
     LDA.B $B7                                                            ;A49518;
 
-.loop:
+  .loop:
     STA.L $7ECAF0,X                                                      ;A4951A;
     DEX                                                                  ;A4951E;
     DEX                                                                  ;A4951F;
@@ -2558,18 +2558,18 @@ MainAI_Crocomire_DeathSequence_1A_38_Hop_3_6_Melting:
     ADC.W #$0004                                                         ;A49595;
     TAX                                                                  ;A49598;
 
-  + STX.W $0F7A                                                          ;A49599;
++   STX.W $0F7A                                                          ;A49599;
     JSL.L EraseMeltingCrocomirePixelColumn                               ;A4959C;
     CMP.W #$0000                                                         ;A495A0;
     BNE .noError                                                         ;A495A3;
 
-.finished:
+  .finished:
     LDX.W $0E54                                                          ;A495A5;
     INC.W $0FA8,X                                                        ;A495A8;
     INC.W $0FA8,X                                                        ;A495AB;
     LDX.W $069A                                                          ;A495AE;
 
-.loopFindTerminator:
+  .loopFindTerminator:
     LDA.W MeltingCrocomireTilesLoadingTable_Melting1_0,X                 ;A495B1;
     CMP.W #$FFFF                                                         ;A495B4;
     BEQ .terminator                                                      ;A495B7;
@@ -2580,7 +2580,7 @@ MainAI_Crocomire_DeathSequence_1A_38_Hop_3_6_Melting:
     BRA .loopFindTerminator                                              ;A495BF;
 
 
-.terminator:
+  .terminator:
     INX                                                                  ;A495C1;
     INX                                                                  ;A495C2;
     STX.W $069A                                                          ;A495C3;
@@ -2591,7 +2591,7 @@ MainAI_Crocomire_DeathSequence_1A_38_Hop_3_6_Melting:
     RTS                                                                  ;A495D1;
 
 
-.noError:
+  .noError:
     LDX.W $0E54                                                          ;A495D2;
     JSL.L UpdateCrocomireBG2Scroll                                       ;A495D5;
     LDA.W $0692                                                          ;A495D9;
@@ -2608,7 +2608,7 @@ MainAI_Crocomire_DeathSequence_1A_38_Hop_3_6_Melting:
     BPL .finished                                                        ;A495F2;
     LDA.W #$0010                                                         ;A495F4;
 
-  + STA.W $0694                                                          ;A495F7;
++   STA.W $0694                                                          ;A495F7;
     LDA.W $0692                                                          ;A495FA;
     CLC                                                                  ;A495FD;
     ADC.W #$0180                                                         ;A495FE;
@@ -2616,7 +2616,7 @@ MainAI_Crocomire_DeathSequence_1A_38_Hop_3_6_Melting:
     BMI +                                                                ;A49604;
     LDA.W #$5000                                                         ;A49606;
 
-  + STA.W $0692                                                          ;A49609;
++   STA.W $0692                                                          ;A49609;
     STZ.B $12                                                            ;A4960C;
     LDA.W $0FBE                                                          ;A4960E;
     SEC                                                                  ;A49611;
@@ -2628,7 +2628,7 @@ MainAI_Crocomire_DeathSequence_1A_38_Hop_3_6_Melting:
     STA.W $05A6                                                          ;A4961B;
     ASL A                                                                ;A4961E;
 
-.loopMeltingRows:
+  .loopMeltingRows:
     TYA                                                                  ;A4961F;
     SEC                                                                  ;A49620;
     SBC.W $05A6                                                          ;A49621;
@@ -2642,7 +2642,7 @@ MainAI_Crocomire_DeathSequence_1A_38_Hop_3_6_Melting:
     BCS .carrySet                                                        ;A49633;
     INY                                                                  ;A49635;
 
-.carrySet:
+  .carrySet:
     INC.W $05A6                                                          ;A49636;
     INX                                                                  ;A49639;
     INX                                                                  ;A4963A;
@@ -2652,14 +2652,14 @@ MainAI_Crocomire_DeathSequence_1A_38_Hop_3_6_Melting:
     BPL .return                                                          ;A49643;
     LDA.B $B7                                                            ;A49645;
 
-.loopTablePadding:
+  .loopTablePadding:
     STA.L $7ECAF0,X                                                      ;A49647;
     INX                                                                  ;A4964B;
     INX                                                                  ;A4964C;
     CPX.W #$0200                                                         ;A4964D;
     BMI .loopTablePadding                                                ;A49650;
 
-.return:
+  .return:
     RTS                                                                  ;A49652;
 
 
@@ -2673,7 +2673,7 @@ MainAI_Crocomire_DeathSequence_1C_3A_Hop_3_6_ClearTilemap:
     LDA.W #$0338                                                         ;A49664;
     LDX.W #$0FFE                                                         ;A49667;
 
-.loop:
+  .loop:
     STA.L $7E2000,X                                                      ;A4966A;
     DEX                                                                  ;A4966E;
     DEX                                                                  ;A4966F;
@@ -2724,7 +2724,7 @@ EraseMeltingCrocomirePixelColumn:
     STZ.B $17                                                            ;A496DB;
     LDX.W $0690                                                          ;A496DD;
 
-.loopFindColumnToErase:
+  .loopFindColumnToErase:
     LDA.W CrocomireMeltingXOffsetTable,X                                 ;A496E0;
     TAY                                                                  ;A496E3;
     LDA.W $069C,Y                                                        ;A496E4;
@@ -2739,13 +2739,13 @@ EraseMeltingCrocomirePixelColumn:
     RTL                                                                  ;A496F8;
 
 
-  + STX.W $0690                                                          ;A496F9;
++   STX.W $0690                                                          ;A496F9;
     TXA                                                                  ;A496FC;
     AND.B #$07                                                           ;A496FD;
     TAY                                                                  ;A496FF;
     REP #$20                                                             ;A49700;
 
-.loopEraseColumn:
+  .loopEraseColumn:
     LDX.W $0690                                                          ;A49702;
     LDA.W CrocomireMeltingXOffsetTable,X                                 ;A49705;
     AND.W #$00FF                                                         ;A49708;
@@ -2800,9 +2800,9 @@ EraseMeltingCrocomirePixelColumn:
     DEC.B $12                                                            ;A4977B;
     BNE .loopEraseColumn                                                 ;A4977D;
 
-  + REP #$30                                                             ;A4977F;
++   REP #$30                                                             ;A4977F;
 
-.cycled:
+  .cycled:
     LDA.W $069A                                                          ;A49781;
     CLC                                                                  ;A49784;
     ADC.W $068A                                                          ;A49785;
@@ -2815,7 +2815,7 @@ EraseMeltingCrocomirePixelColumn:
     BRA .cycled                                                          ;A49797;
 
 
-  + STA.W $00D0,Y                                                        ;A49799;
++   STA.W $00D0,Y                                                        ;A49799;
     LDA.W MeltingCrocomireTilesLoadingTable_Melting1_0+6,X               ;A4979C;
     STA.W $00D2,Y                                                        ;A4979F;
     LDA.W MeltingCrocomireTilesLoadingTable_Melting1_0+4,X               ;A497A2;
@@ -2835,7 +2835,7 @@ EraseMeltingCrocomirePixelColumn:
     BMI +                                                                ;A497C6;
     STZ.W $0690                                                          ;A497C8;
 
-  + STA.W $0690                                                          ;A497CB;
++   STA.W $0690                                                          ;A497CB;
     LDA.W #$0001                                                         ;A497CE;
     PLP                                                                  ;A497D1;
     RTL                                                                  ;A497D2;
@@ -2875,7 +2875,7 @@ MainAI_Crocomire_DeathSequence_3E_BehindWall_WaitForSamus:
     JMP.W NextCrocomireDeathSequenceIndex                                ;A4982C;
 
 
-.return:
+  .return:
     RTS                                                                  ;A4982F;
 
 
@@ -2891,7 +2891,7 @@ MainAI_Crocomire_DeathSequence_58_FlowingDownTheRiver:
     RTS                                                                  ;A49845;
 
 
-.leftOfFightArea:
+  .leftOfFightArea:
     LDA.W #$01E0                                                         ;A49846;
     STA.W $0F7A                                                          ;A49849;
     LDA.W #$0036                                                         ;A4984C;
@@ -2911,7 +2911,7 @@ MainAI_Crocomire_DeathSequence_40_BehindWall_Rumbling:
     STA.W $0FAE                                                          ;A4986A;
     LDX.W #$001E                                                         ;A4986D;
 
-.loopSpritePalette:
+  .loopSpritePalette:
     LDA.W Palette_Crocomire_Sprite3,X                                    ;A49870;
     STA.L $7EC160,X                                                      ;A49873;
     DEX                                                                  ;A49877;
@@ -2920,7 +2920,7 @@ MainAI_Crocomire_DeathSequence_40_BehindWall_Rumbling:
     JMP.W NextCrocomireDeathSequenceIndex                                ;A4987B;
 
 
-  + LDX.W $0FAE                                                          ;A4987E;
++   LDX.W $0FAE                                                          ;A4987E;
     LDA.W $0FEE                                                          ;A49881;
     CMP.W .targetYOffset,X                                               ;A49884;
     BEQ .equal                                                           ;A49887;
@@ -2928,17 +2928,17 @@ MainAI_Crocomire_DeathSequence_40_BehindWall_Rumbling:
     CLC                                                                  ;A4988B;
     ADC.W $106E                                                          ;A4988C;
 
-.return:
+  .return:
     STA.W $0FEE                                                          ;A4988F;
     RTS                                                                  ;A49892;
 
 
-  + SEC                                                                  ;A49893;
++   SEC                                                                  ;A49893;
     SBC.W $106E                                                          ;A49894;
     BRA .return                                                          ;A49897;
 
 
-.equal:
+  .equal:
     LDA.W .targetYOffset,X                                               ;A49899;
     BPL .positive                                                        ;A4989C;
     LDA.W $102E                                                          ;A4989E;
@@ -2953,7 +2953,7 @@ MainAI_Crocomire_DeathSequence_40_BehindWall_Rumbling:
     RTS                                                                  ;A498B3;
 
 
-.rumbleTimerExpired:
+  .rumbleTimerExpired:
     INX                                                                  ;A498B4;
     INX                                                                  ;A498B5;
     LDA.W .targetYOffset,X                                               ;A498B6;
@@ -2963,14 +2963,14 @@ MainAI_Crocomire_DeathSequence_40_BehindWall_Rumbling:
     LDA.W .targetYOffset,X                                               ;A498BE;
     STA.W $106E                                                          ;A498C1;
 
-.positive:
+  .positive:
     INX                                                                  ;A498C4;
     INX                                                                  ;A498C5;
     STX.W $0FAE                                                          ;A498C6;
     RTS                                                                  ;A498C9;
 
 
-.targetYOffset:
+  .targetYOffset:
 ; Rumble table                                                           ;A498CA;
 ;        _______________ Target Y offset. 8080h = terminator
 ;       |      _________ Rumble cooldown
@@ -3006,7 +3006,7 @@ MainAI_Crocomire_DeathSequence_42_BehindWall_NoMoreRumbling:
     RTS                                                                  ;A4991E;
 
 
-  + LDX.W $0330                                                          ;A4991F;
++   LDX.W $0330                                                          ;A4991F;
     LDA.W #$0200                                                         ;A49922;
     STA.B $D0,X                                                          ;A49925;
     LDA.W .skeletonSpriteTilesSourceAddress,Y                            ;A49927;
@@ -3035,7 +3035,7 @@ MainAI_Crocomire_DeathSequence_42_BehindWall_NoMoreRumbling:
     RTS                                                                  ;A49951;
 
 
-.zero:
+  .zero:
     LDA.W #$01E0                                                         ;A49952;
     STA.W $0F7A                                                          ;A49955;
     LDA.W #$0036                                                         ;A49958;
@@ -3063,7 +3063,7 @@ MainAI_Crocomire_DeathSequence_42_BehindWall_NoMoreRumbling:
     STA.W $0F96                                                          ;A49998;
     LDX.W #$001E                                                         ;A4999B;
 
-.loopSpritePalette:
+  .loopSpritePalette:
     LDA.W Palette_Crocomire_Sprite1,X                                    ;A4999E;
     STA.L $7EC120,X                                                      ;A499A1;
     DEX                                                                  ;A499A5;
@@ -3073,7 +3073,7 @@ MainAI_Crocomire_DeathSequence_42_BehindWall_NoMoreRumbling:
     LDA.W #$0008                                                         ;A499AD;
     STA.B $12                                                            ;A499B0;
 
-.loop:
+  .loop:
     LDX.W $0E54                                                          ;A499B2;
     LDY.W #EnemyProjectile_CrocomireSpikeWallPieces                      ;A499B5;
     JSL.L SpawnEnemyProjectileY_ParameterA_XGraphics                     ;A499B8;
@@ -3084,15 +3084,15 @@ MainAI_Crocomire_DeathSequence_42_BehindWall_NoMoreRumbling:
     JMP.W NextCrocomireDeathSequenceIndex                                ;A499C7;
 
 
-.deadReturn:
+  .deadReturn:
     RTS                                                                  ;A499CA;
 
 
-.VRAMSpriteTilesOffset:
+  .VRAMSpriteTilesOffset:
 ; VRAM sprite tiles offsets. FFFFh = terminator
     dw $1600,$1700,$1800,$1900,$1E00,$1F00,$FFFF                         ;A499CB;
 
-.skeletonSpriteTilesSourceAddress:
+  .skeletonSpriteTilesSourceAddress:
 ; Skeleton sprite tiles source addresses. Bank $AD
     dw Tiles_CrocomireSkeleton_0                                         ;A499D9;
     dw Tiles_CrocomireSkeleton_1                                         ;A499DB;
@@ -3115,7 +3115,7 @@ MainAI_Crocomire_DeathSequence_44_BreaksDownWall:
     BMI +                                                                ;A49A00;
     LDA.W #$0002                                                         ;A49A02;
 
-  + STA.W $0FB2                                                          ;A49A05;
++   STA.W $0FB2                                                          ;A49A05;
     LDA.W $0F7C                                                          ;A49A08;
     CLC                                                                  ;A49A0B;
     ADC.W $0FB0                                                          ;A49A0C;
@@ -3124,7 +3124,7 @@ MainAI_Crocomire_DeathSequence_44_BreaksDownWall:
     ADC.W $0FB2                                                          ;A49A15;
     STA.W $0F7A                                                          ;A49A18;
 
-.timer:
+  .timer:
     LDA.W $102E                                                          ;A49A1B;
     BEQ .return                                                          ;A49A1E;
     DEC.W $102E                                                          ;A49A20;
@@ -3137,7 +3137,7 @@ MainAI_Crocomire_DeathSequence_44_BreaksDownWall:
     JMP.W NextCrocomireDeathSequenceIndex                                ;A49A34;
 
 
-.return:
+  .return:
     RTS                                                                  ;A49A37;
 
 
@@ -3152,7 +3152,7 @@ MainAI_Crocomire_DeathSequence_46_SkeletonFalls:
     BMI +                                                                ;A49A4B;
     LDA.W #$0005                                                         ;A49A4D;
 
-  + STA.W $0FB2                                                          ;A49A50;
++   STA.W $0FB2                                                          ;A49A50;
     LDA.W #$E000                                                         ;A49A53;
     CLC                                                                  ;A49A56;
     ADC.W $0F80                                                          ;A49A57;
@@ -3180,7 +3180,7 @@ MainAI_Crocomire_DeathSequence_46_SkeletonFalls:
     JMP.W NextCrocomireDeathSequenceIndex                                ;A49A97;
 
 
-.return:
+  .return:
     RTS                                                                  ;A49A9A;
 
 
@@ -3298,7 +3298,7 @@ MainAI_Crocomire_DeathSequence_48_SkeletonFallsApart:
     JMP.W NextCrocomireDeathSequenceIndex                                ;A49B46;
 
 
-.notFallenApartYet:
+  .notFallenApartYet:
     LDA.W $0FB0                                                          ;A49B49;
     CLC                                                                  ;A49B4C;
     ADC.W #$1000                                                         ;A49B4D;
@@ -3309,7 +3309,7 @@ MainAI_Crocomire_DeathSequence_48_SkeletonFallsApart:
     BMI +                                                                ;A49B5C;
     LDA.W #$0006                                                         ;A49B5E;
 
-  + STA.W $0FB2                                                          ;A49B61;
++   STA.W $0FB2                                                          ;A49B61;
     RTS                                                                  ;A49B64;
 
 
@@ -3969,7 +3969,7 @@ EnemyShot_Crocomire_Nothing:
     BPL +                                                                ;A4B95A;
     INC A                                                                ;A4B95C;
 
-  + STA.B $12                                                            ;A4B95D;
++   STA.B $12                                                            ;A4B95D;
     LDA.W $0FAA                                                          ;A4B95F;
     ORA.B $12                                                            ;A4B962;
     STA.W $0FAA                                                          ;A4B964;
@@ -3992,7 +3992,7 @@ EnemyShot_Crocomire_SpawnShotExplosion:
     BNE .notBeamMissileBomb                                              ;A4B982;
     LDY.W #$0006                                                         ;A4B984;
 
-.notBeamMissileBomb:
+  .notBeamMissileBomb:
     TYA                                                                  ;A4B987;
     LDY.W #EnemyProjectile_MiscDust                                      ;A4B988;
     JSL.L SpawnEnemyProjectileY_ParameterA_RoomGraphics                  ;A4B98B;
@@ -4029,7 +4029,7 @@ PowerBombReaction_Crocomire:
     LDA.W $0000,X                                                        ;A4B9D5;
     STA.B $12                                                            ;A4B9D8;
 
-.loop:
+  .loop:
     LDA.W $0006,X                                                        ;A4B9DA;
     LDY.W #InstList_Crocomire_PowerBombReaction_MouthFullyOpen           ;A4B9DD;
     CMP.W #ExtendedTilemap_Crocomire_1                                   ;A4B9E0;
@@ -4045,13 +4045,13 @@ PowerBombReaction_Crocomire:
     BNE .loop                                                            ;A4B9F5;
     LDY.W #InstList_Crocomire_PowerBombReaction_MouthNotOpen_0           ;A4B9F7;
 
-.mouthNotOpen:
+  .mouthNotOpen:
     TYA                                                                  ;A4B9FA;
     STA.W $0F92                                                          ;A4B9FB;
     LDA.W #$0001                                                         ;A4B9FE;
     STA.W $0F94                                                          ;A4BA01;
 
-.return:
+  .return:
     RTL                                                                  ;A4BA04;
 
 
@@ -4081,7 +4081,7 @@ EnemyShot_Crocomire_OpenMouth:
     JMP.W EnemyShot_Crocomire_SpawnShotExplosion_duplicate               ;A4BA3A;
 
 
-.notBeam:
+  .notBeam:
     AND.W #$0F00                                                         ;A4BA3D;
     LDX.W CrocomireConstants_stepsWhenDamagedByMissile                   ;A4BA40;
     CMP.W #$0100                                                         ;A4BA43;
@@ -4091,7 +4091,7 @@ EnemyShot_Crocomire_OpenMouth:
     BEQ .damage                                                          ;A4BA4E;
     LDX.W #$0000                                                         ;A4BA50;
 
-.damage:
+  .damage:
     TXA                                                                  ;A4BA53;
     CMP.W #$0000                                                         ;A4BA54;
     BEQ .flash                                                           ;A4BA57;
@@ -4099,14 +4099,14 @@ EnemyShot_Crocomire_OpenMouth:
     ADC.W $0FAE                                                          ;A4BA5A;
     STA.W $0FAE                                                          ;A4BA5D;
 
-.offScreen:
+  .offScreen:
     LDA.W $0FAA                                                          ;A4BA60;
     AND.W #$000F                                                         ;A4BA63;
     CMP.W #$000F                                                         ;A4BA66;
     BPL +                                                                ;A4BA69;
     INC A                                                                ;A4BA6B;
 
-  + STA.B $12                                                            ;A4BA6C;
++   STA.B $12                                                            ;A4BA6C;
     LDA.W $0FAA                                                          ;A4BA6E;
     BIT.W #$0800                                                         ;A4BA71;
     BNE .damaged                                                         ;A4BA74;
@@ -4116,12 +4116,12 @@ EnemyShot_Crocomire_OpenMouth:
     BNE +                                                                ;A4BA7F;
     LDX.W CrocomireConstants_mouthCloseDelayWhenDamaged_ProjAttack       ;A4BA81;
 
-  + TXA                                                                  ;A4BA84;
++   TXA                                                                  ;A4BA84;
     CLC                                                                  ;A4BA85;
     ADC.W $0F94                                                          ;A4BA86;
     STA.W $0F94                                                          ;A4BA89;
 
-.damaged:
+  .damaged:
     LDA.W $0FAA                                                          ;A4BA8C;
     AND.W #$BFF0                                                         ;A4BA8F;
     ORA.W #$0800                                                         ;A4BA92;
@@ -4130,7 +4130,7 @@ EnemyShot_Crocomire_OpenMouth:
     LDA.W #$000A                                                         ;A4BA9A;
     STA.W $0FB0                                                          ;A4BA9D;
 
-.flash:
+  .flash:
     LDA.W $0F9C                                                          ;A4BAA0;
     CLC                                                                  ;A4BAA3;
     ADC.W #$000E                                                         ;A4BAA4;
@@ -4157,7 +4157,7 @@ EnemyShot_Crocomire_SpawnShotExplosion_duplicate:
     BNE .notBeamMissileBomb                                              ;A4BACE;
     LDY.W #$0006                                                         ;A4BAD0;
 
-.notBeamMissileBomb:
+  .notBeamMissileBomb:
     TYA                                                                  ;A4BAD3;
     LDY.W #EnemyProjectile_MiscDust                                      ;A4BAD4;
     JSL.L SpawnEnemyProjectileY_ParameterA_RoomGraphics                  ;A4BAD7;
@@ -8618,7 +8618,7 @@ InitAI_CrocomireTongue:
     RTL                                                                  ;A4F6AA;
 
 
-.dead:
+  .dead:
     LDX.W $0E54                                                          ;A4F6AB;
     LDA.W $0F86,X                                                        ;A4F6AE;
     ORA.W #$0300                                                         ;A4F6B1;

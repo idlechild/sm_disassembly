@@ -6413,7 +6413,7 @@ Clear_PaletteFXObjects:
     PHX                                                                  ;8DC4DB;
     LDX.W #$000E                                                         ;8DC4DC;
 
-.loop:
+  .loop:
     STZ.W $1E7D,X                                                        ;8DC4DF;
     DEX                                                                  ;8DC4E2;
     DEX                                                                  ;8DC4E3;
@@ -6431,7 +6431,7 @@ Spawn_PaletteFXObject:
     PLB                                                                  ;8DC4ED;
     LDX.W #$000E                                                         ;8DC4EE;
 
-.loop:
+  .loop:
     LDA.W $1E7D,X                                                        ;8DC4F1;
     BEQ .zero                                                            ;8DC4F4;
     DEX                                                                  ;8DC4F6;
@@ -6444,7 +6444,7 @@ Spawn_PaletteFXObject:
     RTL                                                                  ;8DC4FE;
 
 
-.zero:
+  .zero:
     TYA                                                                  ;8DC4FF;
     STA.W $1E7D,X                                                        ;8DC500;
     STZ.W $1E8D,X                                                        ;8DC503;
@@ -6480,19 +6480,19 @@ PaletteFXObject_Handler:
     BPL .return                                                          ;8DC530;
     LDX.W #$000E                                                         ;8DC532;
 
-.loop:
+  .loop:
     STX.W $1E7B                                                          ;8DC535;
     LDA.W $1E7D,X                                                        ;8DC538;
     BEQ .next                                                            ;8DC53B;
     JSR.W Process_PaleteFXObject                                         ;8DC53D;
     LDX.W $1E7B                                                          ;8DC540;
 
-.next:
+  .next:
     DEX                                                                  ;8DC543;
     DEX                                                                  ;8DC544;
     BPL .loop                                                            ;8DC545;
 
-.return:
+  .return:
     PLB                                                                  ;8DC547;
     PLP                                                                  ;8DC548;
     RTL                                                                  ;8DC549;
@@ -6507,7 +6507,7 @@ Process_PaleteFXObject:
     LDA.W $1EBD,X                                                        ;8DC557;
     TAY                                                                  ;8DC55A;
 
-.loopDetermineColorIndex:
+  .loopDetermineColorIndex:
     LDA.W $0000,Y                                                        ;8DC55B;
     BPL .timer                                                           ;8DC55E;
     STA.B $12                                                            ;8DC560;
@@ -6517,12 +6517,12 @@ Process_PaleteFXObject:
     JMP.W ($0012)                                                        ;8DC567;
 
 
-.timer:
+  .timer:
     STA.W $1ECD,X                                                        ;8DC56A;
     LDA.W $1E8D,X                                                        ;8DC56D;
     TAX                                                                  ;8DC570;
 
-.loopWriteColors:
+  .loopWriteColors:
     LDA.W $0002,Y                                                        ;8DC571;
     BPL .storeColor                                                      ;8DC574;
     STA.B $12                                                            ;8DC576;
@@ -6530,7 +6530,7 @@ Process_PaleteFXObject:
     JMP.W ($0012)                                                        ;8DC57B;
 
 
-.storeColor:
+  .storeColor:
     STA.L $7EC000,X                                                      ;8DC57E;
     INX                                                                  ;8DC582;
     INX                                                                  ;8DC583;
@@ -6657,7 +6657,7 @@ UNUSED_Inst_PaletteFXObject_CallExternalFunctionInY_8DC5E4:
     RTS                                                                  ;8DC5FA;
 
 
-.externalFunction:
+  .externalFunction:
     JML.W [$0012]                                                        ;8DC5FB;
 
 
@@ -6678,7 +6678,7 @@ UNUSED_Inst_PaletteFXObject_CallExternalFuncInYWithA_8DC5FE:
     RTS                                                                  ;8DC61A;
 
 
-.externalFunction:
+  .externalFunction:
     JML.W [$0012]                                                        ;8DC61B;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -6700,10 +6700,10 @@ UNUSED_Instruction_PaletteFXObject_GotoYPlusY_8DC623:
     BRA +                                                                ;8DC62F;
 
 
-.highByte:
+  .highByte:
     ORA.W #$FF00                                                         ;8DC631;
 
-  + CLC                                                                  ;8DC634;
++   CLC                                                                  ;8DC634;
     ADC.B $12                                                            ;8DC635;
     TAY                                                                  ;8DC637;
     RTS                                                                  ;8DC638;
@@ -7979,7 +7979,7 @@ PreInstruction_PaletteFXObject_DeleteIfIntroPage2IsActive:
     LDA.W #$0001                                                         ;8DE219;
     STA.W $1ECD,X                                                        ;8DE21C;
 
-.return:
+  .return:
     RTS                                                                  ;8DE21F;
 
 
@@ -8036,7 +8036,7 @@ PreInstruction_PaletteFXObject_DeleteIfEnemy0Died:
     BNE .return                                                          ;8DE2E3;
     STZ.W $1E7D,X                                                        ;8DE2E5;
 
-.return:
+  .return:
     RTS                                                                  ;8DE2E8;
 
 
@@ -8114,7 +8114,7 @@ PreInstruction_PaletteFXObject_SamusInHeat:
     LDA.W #$002D                                                         ;8DE3A4;
     JSL.L QueueSound_Lib3_Max6                                           ;8DE3A7;
 
-  + LDA.W $1EED                                                          ;8DE3AB;
++   LDA.W $1EED                                                          ;8DE3AB;
     CMP.W $1EEF                                                          ;8DE3AE;
     BEQ .return                                                          ;8DE3B1;
     STA.W $1EEF                                                          ;8DE3B3;
@@ -8129,22 +8129,22 @@ PreInstruction_PaletteFXObject_SamusInHeat:
     BRA .setInstListPointer                                              ;8DE3C9;
 
 
-.checkVaria:
+  .checkVaria:
     BIT.W #$0001                                                         ;8DE3CB;
     BEQ .powerSuit                                                       ;8DE3CE;
     LDA.W #.InstListPointers_varia                                       ;8DE3D0;
     BRA .setInstListPointer                                              ;8DE3D3;
 
 
-.powerSuit:
+  .powerSuit:
     LDA.W #.InstListPointers_power                                        ;8DE3D5;
 
-.setInstListPointer:
+  .setInstListPointer:
     STA.B $12                                                            ;8DE3D8;
     LDA.B ($12),Y                                                        ;8DE3DA;
     STA.W $1EBD,X                                                        ;8DE3DC;
 
-.return:
+  .return:
     RTS                                                                  ;8DE3DF;
 
 
@@ -8211,17 +8211,17 @@ Setup_PaletteFXObject_Norfair1_Tourian1:
     BRA +                                                                ;8DE44B;
 
 
-.checkVaria:
+  .checkVaria:
     BIT.W #$0001                                                         ;8DE44D;
     BEQ .powerSuit                                                       ;8DE450;
     LDA.W #InstList_PaletteFXObject_SamusInHeat_VariaSuit_0              ;8DE452;
     BRA +                                                                ;8DE455;
 
 
-.powerSuit:
+  .powerSuit:
     LDA.W #InstList_PaletteFXObject_SamusInHeat_PowerSuit_0              ;8DE457;
 
-  + STA.W $1EBD,Y                                                        ;8DE45A;
++   STA.W $1EBD,Y                                                        ;8DE45A;
     RTS                                                                  ;8DE45D;
 
 
@@ -8534,7 +8534,7 @@ UNUSED_PreInstruction_PaletteFXObject_WaitUntilAreBossIsDead:
     LDA.W #$0001                                                         ;8DEB34;
     STA.W $1ECD,X                                                        ;8DEB37;
 
-.return:
+  .return:
     RTS                                                                  ;8DEB3A;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -8606,7 +8606,7 @@ PreInst_PaletteFXObject_RestartCrateria1IfSamusIsntLowEnough:
     LDA.W #InstList_PaletteFXObject_Crateria1_1                          ;8DEC67;
     STA.W $1EBD,X                                                        ;8DEC6A;
 
-.return:
+  .return:
     RTS                                                                  ;8DEC6D;
 
 
@@ -8681,7 +8681,7 @@ UNUSED_PreInst_PalFXObj_RestartDarkLightningIfSamus_8DED84:
     LDA.W #UNUSED_InstList_PaletteFXObject_DarkLightning_1_8DEC76        ;8DED92;
     STA.W $1EBD,X                                                        ;8DED95;
 
-.return:
+  .return:
     RTS                                                                  ;8DED98;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -8781,7 +8781,7 @@ PreInstruction_PaletteFXObject_DeleteIfAreaMiniBossIsDead:
     BEQ .return                                                          ;8DEED1;
     STZ.W $1E7D,X                                                        ;8DEED3;
 
-.return:
+  .return:
     RTS                                                                  ;8DEED6;
 
 
@@ -9338,7 +9338,7 @@ PreInstruction_PaletteFXObject_DeleteIf2MoreObjectsSpawned:
     BEQ .return                                                          ;8DF624;
     STZ.W $1E7D,X                                                        ;8DF626;
 
-.return:
+  .return:
     RTS                                                                  ;8DF629;
 
 
@@ -9423,7 +9423,7 @@ Setup_PaletteFXObject_Brinstar8:
     LDA.W #$0000                                                         ;8DF73E;
     STA.W $1E7D,Y                                                        ;8DF741;
 
-.return:
+  .return:
     RTS                                                                  ;8DF744;
 
 

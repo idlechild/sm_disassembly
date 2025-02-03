@@ -11,21 +11,21 @@ LayerBlending_Handler:
     JSR.W Initialize_LayerBlending                                       ;88800A;
     JSR.W (.pointers,X)                                                  ;88800D;
 
-.powerBomb:
+  .powerBomb:
     BIT.W $1987                                                          ;888010;
     BPL .xrayShowBlocks                                                  ;888013;
     JSR.W Handle_LayerBlending_PowerBomb                                 ;888015;
     BRA .return                                                          ;888018;
 
 
-.xrayShowBlocks:
+  .xrayShowBlocks:
     BIT.W $1987                                                          ;88801A;
     BVC .xrayHideBlocks                                                  ;88801D;
     JSR.W Handle_LayerBlending_Xray_CanShowBlocks                        ;88801F;
     BRA .return                                                          ;888022;
 
 
-.xrayHideBlocks:
+  .xrayHideBlocks:
     LDA.W $1987                                                          ;888024;
     BIT.B #$20                                                           ;888027;
     BEQ .xrayFirefleaRoom                                                ;888029;
@@ -33,7 +33,7 @@ LayerBlending_Handler:
     BRA .return                                                          ;88802E;
 
 
-.xrayFirefleaRoom:
+  .xrayFirefleaRoom:
     LDA.W $1987                                                          ;888030;
     BIT.B #$10                                                           ;888033;
     BEQ .return                                                          ;888035;
@@ -41,12 +41,12 @@ LayerBlending_Handler:
     BRA .return                                                          ;88803A; >_<
 
 
-.return:
+  .return:
     PLP                                                                  ;88803C;
     RTS                                                                  ;88803D;
 
 
-.pointers:
+  .pointers:
     dw RTS_888074                                                        ;88803E;
     dw RTS_888074                                                        ;888040;
     dw LayerBlending_4_Phantoon                                          ;888042;
@@ -198,7 +198,7 @@ LayerBlending_18_1E_30_Water_LavaAcid_Fog:
     LDA.B #$04                                                           ;888107;
     STA.B $69                                                            ;888109;
 
-.return:
+  .return:
     RTS                                                                  ;88810B;
 
 
@@ -225,7 +225,7 @@ LayerBlending_28:
     LDA.B #$80                                                           ;888125;
     STA.B $76                                                            ;888127;
 
-.return:
+  .return:
     RTS                                                                  ;888129;
 
 
@@ -242,7 +242,7 @@ LayerBlending_2A:
     LDA.B #$80                                                           ;88813D;
     STA.B $76                                                            ;88813F;
 
-.return:
+  .return:
     RTS                                                                  ;888141;
 
 
@@ -344,7 +344,7 @@ Handle_LayerBlending_Xray_CantShowBlocks:
     LDA.B #$11                                                           ;8881D6;
     STA.B $69                                                            ;8881D8;
 
-.return:
+  .return:
     RTS                                                                  ;8881DA;
 
 
@@ -377,12 +377,12 @@ Handle_LayerBlending_PowerBomb:
     BNE +                                                                ;888208;
     LDY.B #$06                                                           ;88820A;
 
-  + TYX                                                                  ;88820C;
++   TYX                                                                  ;88820C;
     JSR.W (.pointers,X)                                                  ;88820D;
     RTS                                                                  ;888210;
 
 
-.pointers:
+  .pointers:
     dw Handle_LayerBlending_PowerBomb_0_2                                ;888211;
     dw Handle_LayerBlending_PowerBomb_0_2                                ;888213;
     dw Handle_LayerBlending_PowerBomb_4                                  ;888215;
@@ -488,7 +488,7 @@ Delete_HDMAObjects:
     PHX                                                                  ;8882B3;
     LDX.W #$000A                                                         ;8882B4;
 
-.loop:
+  .loop:
     STZ.W $18B4,X                                                        ;8882B7;
     DEX                                                                  ;8882BA;
     DEX                                                                  ;8882BB;
@@ -519,16 +519,16 @@ Initialise_Special_Effects_for_New_Room:
     BRA .earthquakeSFX                                                   ;8882EB;
 
 
-.noEarthquakeSFX:
+  .noEarthquakeSFX:
     LDA.W #$FFFF                                                         ;8882ED;
     STA.W $0609                                                          ;8882F0;
 
-.earthquakeSFX:
+  .earthquakeSFX:
     STZ.W $05F7                                                          ;8882F3;
     SEP #$30                                                             ;8882F6;
     LDX.B #$20                                                           ;8882F8;
 
-.loopClearHDMARegisters:
+  .loopClearHDMARegisters:
     STZ.W $4300,X                                                        ;8882FA;
     LDA.B #$13                                                           ;8882FD;
     STA.W $4301,X                                                        ;8882FF;
@@ -700,7 +700,7 @@ Spawn_HDMAObject:
     STA.B $14                                                            ;888456;
     LDX.W #$0000                                                         ;888458;
 
-.loop:
+  .loop:
     LDA.W $18B4,X                                                        ;88845B;
     BEQ Spawn_HDMAObject_to_Slot_X                                       ;88845E;
     ASL.B $12                                                            ;888460;
@@ -714,7 +714,7 @@ Spawn_HDMAObject:
     CPX.W #$000C                                                         ;88846E;
     BNE .loop                                                            ;888471;
 
-.returnFullArray:
+  .returnFullArray:
     PLB                                                                  ;888473;
     PLP                                                                  ;888474;
     SEC                                                                  ;888475;
@@ -772,7 +772,7 @@ HDMAObjectHandler_HandleMusicQueue:
     db $40,$29                                                           ;8884DD;
     dw InstList_PowerBombExplosion_Window2_RightPosition                 ;8884DF;
 
-  + PHK                                                                  ;8884E1;
++   PHK                                                                  ;8884E1;
     PLB                                                                  ;8884E2;
     REP #$30                                                             ;8884E3;
     LDA.W $1982                                                          ;8884E5;
@@ -784,7 +784,7 @@ HDMAObjectHandler_HandleMusicQueue:
     STX.B $85                                                            ;8884F4;
     STX.W $18B3                                                          ;8884F6;
 
-.loop:
+  .loop:
     STX.W $18B2                                                          ;8884F9;
     LDA.W $18B4,X                                                        ;8884FC;
     BEQ .next                                                            ;8884FF;
@@ -793,7 +793,7 @@ HDMAObjectHandler_HandleMusicQueue:
     JSR.W HDMAObject_Instruction_Handler                                 ;888505;
     LDX.W $18B2                                                          ;888508;
 
-.next:
+  .next:
     INX                                                                  ;88850B;
     INX                                                                  ;88850C;
     CPX.B #$0C                                                           ;88850D;
@@ -805,7 +805,7 @@ HDMAObjectHandler_HandleMusicQueue:
 
     STZ.B $85                                                            ;888517; dead code
 
-.return:
+  .return:
     PLB                                                                  ;888519;
     PLP                                                                  ;88851A;
     RTL                                                                  ;88851B;
@@ -822,7 +822,7 @@ HDMAObject_Instruction_Handler:
     JML.W [$0012]                                                        ;88852C;
 
 
-.manualReturn:
+  .manualReturn:
     SEP #$10                                                             ;88852F;
     REP #$20                                                             ;888531;
     LDX.W $18B2                                                          ;888533;
@@ -835,7 +835,7 @@ HDMAObject_Instruction_Handler:
     REP #$10                                                             ;888543;
     TAY                                                                  ;888545;
 
-.loop:
+  .loop:
     LDA.W $0000,Y                                                        ;888546;
     BPL .timer                                                           ;888549;
     STA.B $12                                                            ;88854B;
@@ -845,7 +845,7 @@ HDMAObject_Instruction_Handler:
     JMP.W ($0012)                                                        ;888552;
 
 
-.timer:
+  .timer:
     STA.W $18E4,X                                                        ;888555;
     TYA                                                                  ;888558;
     CLC                                                                  ;888559;
@@ -854,7 +854,7 @@ HDMAObject_Instruction_Handler:
     LDA.W $0002,Y                                                        ;888560;
     STA.W $18D8,X                                                        ;888563;
 
-.return:
+  .return:
     SEP #$30                                                             ;888566;
     RTS                                                                  ;888568;
 
@@ -897,7 +897,7 @@ UNUSED_Instruction_HDMAObject_CallFunctionY_88858B:
     JMP.W ($0012)                                                        ;888595;
 
 
-.return:
+  .return:
     PLY                                                                  ;888598;
     PLX                                                                  ;888599;
     INY                                                                  ;88859A;
@@ -915,7 +915,7 @@ UNUSED_Instruction_HDMAObject_CallFunctionYWithA_88859D:
     JMP.W ($0012)                                                        ;8885AA;
 
 
-.return:
+  .return:
     PLY                                                                  ;8885AD;
     PLX                                                                  ;8885AE;
     INY                                                                  ;8885AF;
@@ -942,7 +942,7 @@ Instruction_HDMAObject_CallExternalFunctionInY:
     RTS                                                                  ;8885C9;
 
 
-.externalFunction:
+  .externalFunction:
     JML.W [$0012]                                                        ;8885CA;
 
 
@@ -965,7 +965,7 @@ UNUSED_Instruction_HDMAObject_CallExternalFuncYWithA_8885CD:
     RTS                                                                  ;8885E8;
 
 
-.externalFunction:
+  .externalFunction:
     JML.W [$0012]                                                        ;8885E9;
 endif ; !FEATURE_KEEP_UNREFERENCED
 
@@ -987,10 +987,10 @@ UNUSED_Instruction_HDMAObject_GotoY_Y_8885F1:
     BRA +                                                                ;8885FD;
 
 
-.highByte:
+  .highByte:
     ORA.W #$FF00                                                         ;8885FF;
 
-  + CLC                                                                  ;888602;
++   CLC                                                                  ;888602;
     ADC.B $12                                                            ;888603;
     TAY                                                                  ;888605;
     RTS                                                                  ;888606;
@@ -1119,18 +1119,18 @@ RaiseOrLower_FX:
     BPL +                                                                ;8886AC;
     LDA.W #$0000                                                         ;8886AE;
 
-  + STA.W $1978                                                          ;8886B1;
++   STA.W $1978                                                          ;8886B1;
     LDA.W $197A                                                          ;8886B4;
     CMP.W $1978                                                          ;8886B7;
     BCC .return                                                          ;8886BA;
     STA.W $1978                                                          ;8886BC;
     STZ.W $1976                                                          ;8886BF;
 
-.return:
+  .return:
     RTS                                                                  ;8886C2;
 
 
-.lower:
+  .lower:
     STA.B $17                                                            ;8886C3;
     LDA.W $1976                                                          ;8886C5;
     CLC                                                                  ;8886C8;
@@ -1141,7 +1141,7 @@ RaiseOrLower_FX:
     BPL +                                                                ;8886D3;
     LDA.W #$FFFF                                                         ;8886D5;
 
-  + STA.W $1978                                                          ;8886D8;
++   STA.W $1978                                                          ;8886D8;
     LDA.W $197A                                                          ;8886DB;
     CMP.W $1978                                                          ;8886DE;
     BCS .returnCarryClear                                                ;8886E1;
@@ -1151,12 +1151,12 @@ RaiseOrLower_FX:
     RTS                                                                  ;8886EA;
 
 
-.returnCarryClear:
+  .returnCarryClear:
     CLC                                                                  ;8886EB;
     RTS                                                                  ;8886EC;
 
 
-.returnCarrySet:
+  .returnCarrySet:
     SEC                                                                  ;8886ED;
     RTS                                                                  ;8886EE;
 
@@ -1179,7 +1179,7 @@ PreInstruction_Xray_Main:
     LDA.W #$0087                                                         ;888713;
     STA.B $76                                                            ;888716;
 
-  + TXA                                                                  ;888718;
++   TXA                                                                  ;888718;
     TSB.W $1986                                                          ;888719;
     LDA.W $0A7A                                                          ;88871C;
     ASL A                                                                ;88871F;
@@ -1189,7 +1189,7 @@ PreInstruction_Xray_Main:
     RTL                                                                  ;888725;
 
 
-.pointers:
+  .pointers:
     dw HandleXrayScope_State0_NoBeam                                     ;888726;
     dw HandleXrayScope_State1_BeamIsWidening                             ;888728;
     dw HandleXrayScope_State2_FullBeam                                   ;88872A;
@@ -1208,14 +1208,14 @@ HandleXrayScope_State0_NoBeam:
     BRA .return                                                          ;888742;
 
 
-.calculateHDMATable:
+  .calculateHDMATable:
     JSR.W Calculate_Xray_HDMADataTable                                   ;888744;
     LDA.W $0A7A                                                          ;888747;
     INC A                                                                ;88874A;
     STA.W $0A7A                                                          ;88874B;
     JSR.W RTS_888753                                                     ;88874E;
 
-.return:
+  .return:
     PLP                                                                  ;888751;
     RTS                                                                  ;888752;
 
@@ -1235,7 +1235,7 @@ HandleXrayScope_State1_BeamIsWidening:
     BRA .return                                                          ;888764;
 
 
-  + JSR.W RTS_888753                                                     ;888766;
++   JSR.W RTS_888753                                                     ;888766;
     REP #$20                                                             ;888769;
     LDA.W $0A7E                                                          ;88876B;
     CLC                                                                  ;88876E;
@@ -1260,10 +1260,10 @@ HandleXrayScope_State1_BeamIsWidening:
     INC A                                                                ;8887A2;
     STA.W $0A7A                                                          ;8887A3;
 
-.calculateHDMATable:
+  .calculateHDMATable:
     JSR.W Calculate_Xray_HDMADataTable                                   ;8887A6;
 
-.return:
+  .return:
     PLP                                                                  ;8887A9;
     RTS                                                                  ;8887AA;
 
@@ -1281,7 +1281,7 @@ HandleXrayScope_State2_FullBeam:
     RTS                                                                  ;8887BF;
 
 
-.state3:
+  .state3:
     INC.W $0A7A                                                          ;8887C0;
     PLP                                                                  ;8887C3;
     RTS                                                                  ;8887C4;
@@ -1298,15 +1298,15 @@ HandleMovingXray_UpDown:
     BRA .return                                                          ;8887D4;
 
 
-.up:
+  .up:
     JSR.W MoveXray_Up                                                    ;8887D6;
     BRA .return                                                          ;8887D9;
 
 
-.down:
+  .down:
     JSR.W MoveXray_Down                                                  ;8887DB;
 
-.return:
+  .return:
     PLP                                                                  ;8887DE;
     RTS                                                                  ;8887DF;
 
@@ -1328,13 +1328,13 @@ MoveXray_Up:
     SBC.W $0A84                                                          ;8887FD;
     BPL .return                                                          ;888800;
 
-.setAngularWidth:
+  .setAngularWidth:
     LDA.W $0A84                                                          ;888802;
     STA.W $0A82                                                          ;888805;
     BRA .return                                                          ;888808;
 
 
-.facingLeft:
+  .facingLeft:
     CLC                                                                  ;88880A;
     ADC.W $0A84                                                          ;88880B;
     CMP.W #$0100                                                         ;88880E;
@@ -1349,13 +1349,13 @@ MoveXray_Up:
     BEQ .return                                                          ;888825;
     BMI .return                                                          ;888827;
 
-.max100:
+  .max100:
     LDA.W #$0100                                                         ;888829;
     SEC                                                                  ;88882C;
     SBC.W $0A84                                                          ;88882D;
     STA.W $0A82                                                          ;888830;
 
-.return:
+  .return:
     PLP                                                                  ;888833;
     RTS                                                                  ;888834;
 
@@ -1380,7 +1380,7 @@ MoveXray_Down:
     BEQ .return                                                          ;88885B;
     BMI .return                                                          ;88885D;
 
-.setAngularWidth:
+  .setAngularWidth:
     LDA.W #$0080                                                         ;88885F;
     SEC                                                                  ;888862;
     SBC.W $0A84                                                          ;888863;
@@ -1388,7 +1388,7 @@ MoveXray_Down:
     BRA .return                                                          ;888869;
 
 
-.facingLeft:
+  .facingLeft:
     SEC                                                                  ;88886B;
     SBC.W $0A84                                                          ;88886C;
     CMP.W #$0080                                                         ;88886F;
@@ -1403,12 +1403,12 @@ MoveXray_Down:
     BEQ .return                                                          ;888886;
     BPL .return                                                          ;888888;
 
-  + LDA.W #$0080                                                         ;88888A;
++   LDA.W #$0080                                                         ;88888A;
     CLC                                                                  ;88888D;
     ADC.W $0A84                                                          ;88888E;
     STA.W $0A82                                                          ;888891;
 
-.return:
+  .return:
     PLP                                                                  ;888894;
     RTS                                                                  ;888895;
 
@@ -1437,14 +1437,14 @@ Calculate_Xray_HDMADataTable:
     BRA .checkMovement                                                   ;8888C4;
 
 
-.facingLeft:
+  .facingLeft:
     LDA.W $0AF6                                                          ;8888C6;
     SEC                                                                  ;8888C9;
     SBC.W $0911                                                          ;8888CA;
     SBC.W #$0003                                                         ;8888CD;
     TAX                                                                  ;8888D0;
 
-.checkMovement:
+  .checkMovement:
     LDA.W $0A1F                                                          ;8888D1;
     AND.W #$00FF                                                         ;8888D4;
     CMP.W #$0005                                                         ;8888D7;
@@ -1457,14 +1457,14 @@ Calculate_Xray_HDMADataTable:
     BRA .checkScreenPosition                                             ;8888E7;
 
 
-.crouching:
+  .crouching:
     LDA.W $0AFA                                                          ;8888E9;
     SEC                                                                  ;8888EC;
     SBC.W $0915                                                          ;8888ED;
     SBC.W #$000C                                                         ;8888F0;
     TAY                                                                  ;8888F3;
 
-.checkScreenPosition:
+  .checkScreenPosition:
     CPX.W #$0000                                                         ;8888F4;
     BMI .leftOfScreen                                                    ;8888F7;
     CPX.W #$0100                                                         ;8888F9;
@@ -1476,7 +1476,7 @@ Calculate_Xray_HDMADataTable:
     BRA .onScreenFromOffScreen                                           ;888909;
 
 
-.leftOfScreen:
+  .leftOfScreen:
     LDA.W $0A1E                                                          ;88890B;
     AND.W #$00FF                                                         ;88890E;
     CMP.W #$0004                                                         ;888911;
@@ -1484,23 +1484,23 @@ Calculate_Xray_HDMADataTable:
     BRA .onScreenFromOffScreen                                           ;888916;
 
 
-.onScreen:
+  .onScreen:
     JSL.L Calc_Xray_HDMADataTable_OnScreen                               ;888918;
     PLP                                                                  ;88891C;
     RTS                                                                  ;88891D;
 
 
-.onScreenFromOffScreen:
+  .onScreenFromOffScreen:
     JSL.L Calc_Xray_HDMADataTable_OffScreen                              ;88891E;
     PLP                                                                  ;888922;
     RTS                                                                  ;888923;
 
 
-.offScreen:
+  .offScreen:
     LDX.W #$01FE                                                         ;888924;
     LDA.W #$00FF                                                         ;888927;
 
-.loop:
+  .loop:
     STA.L $7E9800,X                                                      ;88892A;
     DEX                                                                  ;88892E;
     DEX                                                                  ;88892F;
@@ -1531,7 +1531,7 @@ HandleXrayScope_State3_DeactivateBeam_RestoreBG2_FirstHalf:
     BEQ +                                                                ;888968;
     LDX.W #$4000                                                         ;88896A;
 
-  + TXA                                                                  ;88896D;
++   TXA                                                                  ;88896D;
     TSB.W $1986                                                          ;88896E;
     LDA.W #$0000                                                         ;888971;
     STA.L $7EC000                                                        ;888974;
@@ -1563,7 +1563,7 @@ HandleXrayScope_State3_DeactivateBeam_RestoreBG2_FirstHalf:
     STA.W $0330                                                          ;8889B2;
     INC.W $0A7A                                                          ;8889B5;
 
-.return:
+  .return:
     PLP                                                                  ;8889B8;
     RTS                                                                  ;8889B9;
 
@@ -1580,7 +1580,7 @@ HandleXrayScope_State4_DeactivateBeam_RestoreBG2_SecondHalf:
     BEQ +                                                                ;8889CF;
     LDX.W #$4000                                                         ;8889D1;
 
-  + TXA                                                                  ;8889D4;
++   TXA                                                                  ;8889D4;
     TSB.W $1986                                                          ;8889D5;
     LDX.W $0330                                                          ;8889D8;
     CPX.W #$00F0                                                         ;8889DB;
@@ -1603,7 +1603,7 @@ HandleXrayScope_State4_DeactivateBeam_RestoreBG2_SecondHalf:
     STA.W $0330                                                          ;888A00;
     INC.W $0A7A                                                          ;888A03;
 
-.return:
+  .return:
     PLP                                                                  ;888A06;
     RTS                                                                  ;888A07;
 
@@ -1620,7 +1620,7 @@ HandleXrayScope_State5_DeactivateBeam_Finish:
     BEQ +                                                                ;888A1D;
     LDX.W #$4000                                                         ;888A1F;
 
-  + TXA                                                                  ;888A22;
++   TXA                                                                  ;888A22;
     TSB.W $1986                                                          ;888A23;
     LDA.W $0A78                                                          ;888A26;
     BNE .timeIsFrozen                                                    ;888A29;
@@ -1628,7 +1628,7 @@ HandleXrayScope_State5_DeactivateBeam_Finish:
     RTS                                                                  ;888A2C;
 
 
-.timeIsFrozen:
+  .timeIsFrozen:
     STZ.W $0A78                                                          ;888A2D;
     STZ.W $0A7A                                                          ;888A30;
     STZ.W $0A7C                                                          ;888A33;
@@ -1660,7 +1660,7 @@ HandleXrayScope_State5_DeactivateBeam_Finish:
     LDA.B #$20                                                           ;888A7C;
     STA.B $74                                                            ;888A7E;
 
-  + LDA.B #$7E                                                           ;888A80;
++   LDA.B #$7E                                                           ;888A80;
     STA.B $02                                                            ;888A82;
     REP #$20                                                             ;888A84;
     LDA.W #$9800                                                         ;888A86; $7E
@@ -1668,7 +1668,7 @@ HandleXrayScope_State5_DeactivateBeam_Finish:
     LDY.W #$01FE                                                         ;888A8B;
     LDA.W #$00FF                                                         ;888A8E;
 
-.loop:
+  .loop:
     STA.B [$00],Y                                                        ;888A91;
     DEY                                                                  ;888A93;
     DEY                                                                  ;888A94;
@@ -1678,7 +1678,7 @@ HandleXrayScope_State5_DeactivateBeam_Finish:
     STZ.W $09D2                                                          ;888A9C;
     STZ.W $0A04                                                          ;888A9F;
 
-.return:
+  .return:
     PLP                                                                  ;888AA2;
     RTS                                                                  ;888AA3;
 
@@ -1699,7 +1699,7 @@ Spawn_PowerBombExplosion:
     RTL                                                                  ;888AC6;
 
 
-.pending:
+  .pending:
     LDA.W #$4000                                                         ;888AC7;
     STA.W $0592                                                          ;888ACA;
     RTL                                                                  ;888ACD;
@@ -1782,10 +1782,10 @@ PowerBombExplosion_ClearnUp_TryCrystalFlash:
     PLX                                                                  ;888B63;
     BCC .crystalFlashing                                                 ;888B64;
 
-.clearPBFlag:
+  .clearPBFlag:
     STZ.W $0CEE                                                          ;888B66;
 
-.crystalFlashing:
+  .crystalFlashing:
     STZ.W $0592                                                          ;888B69;
     STZ.W $18B4,X                                                        ;888B6C;
     STZ.W $18B6,X                                                        ;888B6F;
@@ -1819,7 +1819,7 @@ PreInstruction_PowerBombExplosion_5_AfterGlow:
     RTL                                                                  ;888B9D;
 
 
-.exploding:
+  .exploding:
     DEC.W $1908,X                                                        ;888B9E;
     BPL .return                                                          ;888BA1;
     SEP #$20                                                             ;888BA3;
@@ -1832,7 +1832,7 @@ PreInstruction_PowerBombExplosion_5_AfterGlow:
     ORA.B #$20                                                           ;888BB2;
     STA.W $0074                                                          ;888BB4;
 
-.green:
+  .green:
     LDA.W $0075                                                          ;888BB7;
     AND.B #$1F                                                           ;888BBA;
     BEQ .blue                                                            ;888BBC;
@@ -1840,7 +1840,7 @@ PreInstruction_PowerBombExplosion_5_AfterGlow:
     ORA.B #$40                                                           ;888BBF;
     STA.W $0075                                                          ;888BC1;
 
-.blue:
+  .blue:
     LDA.W $0076                                                          ;888BC4;
     AND.B #$1F                                                           ;888BC7;
     BEQ .setTimer                                                        ;888BC9;
@@ -1848,16 +1848,16 @@ PreInstruction_PowerBombExplosion_5_AfterGlow:
     ORA.B #$80                                                           ;888BCC;
     STA.W $0076                                                          ;888BCE;
 
-.setTimer:
+  .setTimer:
     LDA.L PowerBomb_Stage5_HDMAObjectTimer                               ;888BD1;
     STA.W $1908,X                                                        ;888BD5;
     REP #$20                                                             ;888BD8;
 
-.return:
+  .return:
     RTL                                                                  ;888BDA;
 
 
-.wake:
+  .wake:
     REP #$20                                                             ;888BDB;
     LDA.W #$0001                                                         ;888BDD;
     STA.W $18E4,X                                                        ;888BE0;
@@ -1878,11 +1878,11 @@ Calc_PowerBombExplo_HDMADataTables_PreScaled_LeftOfScreen:
     BRA .next                                                            ;888BFE;
 
 
-  + STA.L $7EC506,X                                                      ;888C00;
++   STA.L $7EC506,X                                                      ;888C00;
     LDA.B #$00                                                           ;888C04;
     STA.L $7EC406,X                                                      ;888C06;
 
-.next:
+  .next:
     INY                                                                  ;888C0A;
     INX                                                                  ;888C0B;
     CPX.W #$00C0                                                         ;888C0C;
@@ -1898,21 +1898,21 @@ Calculate_PowerBombExplo_HDMADataTables_PreScaled_OnScreen:
     BCC +                                                                ;888C1B;
     LDA.B #$FF                                                           ;888C1D;
 
-  + STA.L $7EC506,X                                                      ;888C1F;
++   STA.L $7EC506,X                                                      ;888C1F;
     LDA.W $0CE6                                                          ;888C23;
     SEC                                                                  ;888C26;
     SBC.W $0000,Y                                                        ;888C27;
     BCS .storeTable                                                      ;888C2A;
     LDA.B #$00                                                           ;888C2C;
 
-.storeTable:
+  .storeTable:
     STA.L $7EC406,X                                                      ;888C2E;
     INY                                                                  ;888C32;
     INX                                                                  ;888C33;
     CPX.W #$00C0                                                         ;888C34;
     BNE Calculate_PowerBombExplo_HDMADataTables_PreScaled_OnScreen       ;888C37;
 
-.return:
+  .return:
     RTS                                                                  ;888C39;
 
 
@@ -1928,11 +1928,11 @@ Calc_PowerBombExplo_HDMADataTables_PreScaled_RightOfScreen:
     BRA .next                                                            ;888C4E;
 
 
-  + STA.L $7EC406,X                                                      ;888C50;
++   STA.L $7EC406,X                                                      ;888C50;
     LDA.B #$FF                                                           ;888C54;
     STA.L $7EC506,X                                                      ;888C56;
 
-.next:
+  .next:
     INY                                                                  ;888C5A;
     INX                                                                  ;888C5B;
     CPX.W #$00C0                                                         ;888C5C;
@@ -1946,7 +1946,7 @@ Calculate_PowerBombExplosion_HDMADataTablePointers:
     RTL                                                                  ;888C67;
 
 
-.exploding:
+  .exploding:
     LDA.W $0CE2                                                          ;888C68;
     SEC                                                                  ;888C6B;
     SBC.W $0911                                                          ;888C6C;
@@ -1957,7 +1957,7 @@ Calculate_PowerBombExplosion_HDMADataTablePointers:
     BRA .offScreen                                                       ;888C78;
 
 
-  + STA.W $0CE6                                                          ;888C7A;
++   STA.W $0CE6                                                          ;888C7A;
     LDA.W $0CE4                                                          ;888C7D;
     SEC                                                                  ;888C80;
     SBC.W $0915                                                          ;888C81;
@@ -1966,10 +1966,10 @@ Calculate_PowerBombExplosion_HDMADataTablePointers:
     CMP.W #$0300                                                         ;888C88;
     BCC .onScreen                                                        ;888C8B;
 
-.offScreen:
+  .offScreen:
     LDA.W #$0000                                                         ;888C8D;
 
-.onScreen:
+  .onScreen:
     EOR.W #$03FF                                                         ;888C90;
     SEC                                                                  ;888C93;
     SBC.W #$0100                                                         ;888C94;
@@ -1979,7 +1979,7 @@ Calculate_PowerBombExplosion_HDMADataTablePointers:
     BNE +                                                                ;888CA0;
     STZ.W $0CE8                                                          ;888CA2;
 
-  + LDA.W $18C0,X                                                        ;888CA5;
++   LDA.W $18C0,X                                                        ;888CA5;
     AND.W #$00FF                                                         ;888CA8;
     TAY                                                                  ;888CAB;
     LDA.W $0CE8                                                          ;888CAC;
@@ -2017,11 +2017,11 @@ Calculate_PowerBombExplo_HDMADataTables_Scaled_LeftOfScreen:
     BRA .loopDataTable                                                   ;888CE9;
 
 
-.moveToHighByte:
+  .moveToHighByte:
     XBA                                                                  ;888CEB;
     LDA.B #$00                                                           ;888CEC;
 
-.loopDataTable:
+  .loopDataTable:
     STA.L $7EC406,X                                                      ;888CEE;
     XBA                                                                  ;888CF2;
     STA.L $7EC506,X                                                      ;888CF3;
@@ -2032,7 +2032,7 @@ Calculate_PowerBombExplo_HDMADataTables_Scaled_LeftOfScreen:
     JMP.W .loopDataTable                                                 ;888CFD;
 
 
-.nextShapeDefinite:
+  .nextShapeDefinite:
     INY                                                                  ;888D00;
     BPL Calculate_PowerBombExplo_HDMADataTables_Scaled_LeftOfScreen      ;888D01;
     RTS                                                                  ;888D03;
@@ -2055,7 +2055,7 @@ Calculate_PowerBombExplosion_HDMADataTables_Scaled_OnScreen:
     BCC .lowByte                                                         ;888D20;
     LDA.B #$FF                                                           ;888D22;
 
-.lowByte:
+  .lowByte:
     XBA                                                                  ;888D24;
     LDA.W $0CE6                                                          ;888D25;
     SEC                                                                  ;888D28;
@@ -2063,7 +2063,7 @@ Calculate_PowerBombExplosion_HDMADataTables_Scaled_OnScreen:
     BCS .loopDataTable                                                   ;888D2C;
     LDA.B #$00                                                           ;888D2E;
 
-.loopDataTable:
+  .loopDataTable:
     STA.L $7EC406,X                                                      ;888D30;
     XBA                                                                  ;888D34;
     STA.L $7EC506,X                                                      ;888D35;
@@ -2074,7 +2074,7 @@ Calculate_PowerBombExplosion_HDMADataTables_Scaled_OnScreen:
     JMP.W .loopDataTable                                                 ;888D3F;
 
 
-.next:
+  .next:
     INY                                                                  ;888D42;
     BPL Calculate_PowerBombExplosion_HDMADataTables_Scaled_OnScreen      ;888D43;
     RTS                                                                  ;888D45;
@@ -2101,13 +2101,13 @@ Calculate_PowerBombExplo_HDMADataTables_Scaled_RightOfScreen:
     BRA +                                                                ;888D69;
 
 
-.lessThan100:
+  .lessThan100:
     XBA                                                                  ;888D6B;
     LDA.B #$FF                                                           ;888D6C;
 
-  + XBA                                                                  ;888D6E;
++   XBA                                                                  ;888D6E;
 
-.loopDataTable:
+  .loopDataTable:
     STA.L $7EC406,X                                                      ;888D6F;
     XBA                                                                  ;888D73;
     STA.L $7EC506,X                                                      ;888D74;
@@ -2118,7 +2118,7 @@ Calculate_PowerBombExplo_HDMADataTables_Scaled_RightOfScreen:
     JMP.W .loopDataTable                                                 ;888D7E;
 
 
-.nextShapeDefinition:
+  .nextShapeDefinition:
     INY                                                                  ;888D81;
     BPL Calculate_PowerBombExplo_HDMADataTables_Scaled_RightOfScreen     ;888D82;
     RTS                                                                  ;888D84;
@@ -2179,7 +2179,7 @@ PreInstruction_PowerBombExplosion_3_Explosion_Yellow:
     RTL                                                                  ;888DEE;
 
 
-.exploding:
+  .exploding:
     PHP                                                                  ;888DEF;
     PHB                                                                  ;888DF0;
     REP #$30                                                             ;888DF1;
@@ -2212,15 +2212,15 @@ PreInstruction_PowerBombExplosion_3_Explosion_Yellow:
     JMP.W Calculate_PowerBombExplo_HDMADataTables_Scaled_RightOfScreen   ;888E27;
 
 
-.onScreen:
+  .onScreen:
     JMP.W Calculate_PowerBombExplosion_HDMADataTables_Scaled_OnScreen    ;888E2A;
 
 
-.offScreenLeft:
+  .offScreenLeft:
     JMP.W Calculate_PowerBombExplo_HDMADataTables_Scaled_LeftOfScreen    ;888E2D;
 
 
-.loopPadDataTableBegin:
+  .loopPadDataTableBegin:
     STA.L $7EC406,X                                                      ;888E30;
     XBA                                                                  ;888E34;
     STA.L $7EC506,X                                                      ;888E35;
@@ -2233,7 +2233,7 @@ PreInstruction_PowerBombExplosion_3_Explosion_Yellow:
     BEQ .finishedTable                                                   ;888E42;
     LDA.B #$FF                                                           ;888E44;
 
-.loopPadDataTableEnd:
+  .loopPadDataTableEnd:
     STA.L $7EC406,X                                                      ;888E46;
     INC A                                                                ;888E4A;
     STA.L $7EC506,X                                                      ;888E4B;
@@ -2242,7 +2242,7 @@ PreInstruction_PowerBombExplosion_3_Explosion_Yellow:
     CPX.B #$C0                                                           ;888E51;
     BNE .loopPadDataTableEnd                                             ;888E53;
 
-.finishedTable:
+  .finishedTable:
     LDA.W $0CEB                                                          ;888E55;
     LSR A                                                                ;888E58;
     LSR A                                                                ;888E59;
@@ -2279,13 +2279,13 @@ PreInstruction_PowerBombExplosion_3_Explosion_Yellow:
     JMP.W .return                                                        ;888EA1;
 
 
-.lessThan8600:
+  .lessThan8600:
     LDA.W $0CF0                                                          ;888EA4;
     CLC                                                                  ;888EA7;
     ADC.L PowerBombExplosion_RadiusAcceleration                          ;888EA8;
     STA.W $0CF0                                                          ;888EAC;
 
-.return:
+  .return:
     PLB                                                                  ;888EAF;
     PLP                                                                  ;888EB0;
     RTL                                                                  ;888EB1;
@@ -2297,7 +2297,7 @@ PreInstruction_PowerBombExplosion_4_Explosion_White:
     RTL                                                                  ;888EB7;
 
 
-.exploding:
+  .exploding:
     PHP                                                                  ;888EB8;
     PHB                                                                  ;888EB9;
     REP #$30                                                             ;888EBA;
@@ -2319,15 +2319,15 @@ PreInstruction_PowerBombExplosion_4_Explosion_White:
     JMP.W Calc_PowerBombExplo_HDMADataTables_PreScaled_RightOfScreen     ;888EDC;
 
 
-.onScreen:
+  .onScreen:
     JMP.W Calculate_PowerBombExplo_HDMADataTables_PreScaled_OnScreen     ;888EDF;
 
 
-.offScreenLeft:
+  .offScreenLeft:
     JMP.W Calc_PowerBombExplo_HDMADataTables_PreScaled_LeftOfScreen      ;888EE2;
 
 
-.manualReturn:
+  .manualReturn:
     SEP #$30                                                             ;888EE5;
     LDA.B #$00                                                           ;888EE7;
     XBA                                                                  ;888EE9;
@@ -2367,7 +2367,7 @@ PreInstruction_PowerBombExplosion_4_Explosion_White:
     LDA.W #$0020                                                         ;888F36;
     STA.W $1938,X                                                        ;888F39;
 
-.notPreExplosion:
+  .notPreExplosion:
     LDA.W $0CEA                                                          ;888F3C;
     CLC                                                                  ;888F3F;
     ADC.W $0CF0                                                          ;888F40;
@@ -2378,7 +2378,7 @@ PreInstruction_PowerBombExplosion_4_Explosion_White:
     ADC.L PowerBombExplosion_RadiusAcceleration                          ;888F4C;
     STA.W $0CF0                                                          ;888F50;
 
-.return:
+  .return:
     PLB                                                                  ;888F53;
     PLP                                                                  ;888F54;
     RTL                                                                  ;888F55;
@@ -2390,7 +2390,7 @@ Calculate_PowerBombPreExplosion_HDMAObjectTablePointers:
     RTL                                                                  ;888F5B;
 
 
-.exploding:
+  .exploding:
     LDA.W $0CE2                                                          ;888F5C;
     SEC                                                                  ;888F5F;
     SBC.W $0911                                                          ;888F60;
@@ -2401,7 +2401,7 @@ Calculate_PowerBombPreExplosion_HDMAObjectTablePointers:
     BRA .offScreen                                                       ;888F6C;
 
 
-  + STA.W $0CE6                                                          ;888F6E;
++   STA.W $0CE6                                                          ;888F6E;
     LDA.W $0CE4                                                          ;888F71;
     SEC                                                                  ;888F74;
     SBC.W $0915                                                          ;888F75;
@@ -2410,10 +2410,10 @@ Calculate_PowerBombPreExplosion_HDMAObjectTablePointers:
     CMP.W #$0300                                                         ;888F7C;
     BCC .onScreen                                                        ;888F7F;
 
-.offScreen:
+  .offScreen:
     LDA.W #$0000                                                         ;888F81;
 
-.onScreen:
+  .onScreen:
     EOR.W #$03FF                                                         ;888F84;
     SEC                                                                  ;888F87;
     SBC.W #$0100                                                         ;888F88;
@@ -2423,7 +2423,7 @@ Calculate_PowerBombPreExplosion_HDMAObjectTablePointers:
     BNE +                                                                ;888F94;
     STZ.W $0CE8                                                          ;888F96;
 
-  + LDA.W $18C0,X                                                        ;888F99;
++   LDA.W $18C0,X                                                        ;888F99;
     AND.W #$00FF                                                         ;888F9C;
     TAY                                                                  ;888F9F;
     LDA.W $0CE8                                                          ;888FA0;
@@ -2462,10 +2462,10 @@ UNUSED_CalcPowerBombRelatedHDMATables_Scaled_Left_888FBA:
     BRA .loop                                                            ;888FDD;
 
 
-  + XBA                                                                  ;888FDF;
++   XBA                                                                  ;888FDF;
     LDA.B #$00                                                           ;888FE0;
 
-.loop:
+  .loop:
     STA.L $7EC406,X                                                      ;888FE2;
     XBA                                                                  ;888FE6;
     STA.L $7EC506,X                                                      ;888FE7;
@@ -2476,7 +2476,7 @@ UNUSED_CalcPowerBombRelatedHDMATables_Scaled_Left_888FBA:
     JMP.W .loop                                                          ;888FF1;
 
 
-.next:
+  .next:
     INY                                                                  ;888FF4;
     BPL UNUSED_CalcPowerBombRelatedHDMATables_Scaled_Left_888FBA         ;888FF5;
     RTS                                                                  ;888FF7;
@@ -2499,14 +2499,14 @@ UNUSED_CalcPBRelatedHDMADataTables_Scaled_OnScreen_888FF8:
     BCC +                                                                ;889014;
     LDA.B #$FF                                                           ;889016;
 
-  + XBA                                                                  ;889018;
++   XBA                                                                  ;889018;
     LDA.W $0CE6                                                          ;889019;
     SEC                                                                  ;88901C;
     SBC.W $4217                                                          ;88901D;
     BCS .loop                                                            ;889020;
     LDA.B #$00                                                           ;889022;
 
-.loop:
+  .loop:
     STA.L $7EC406,X                                                      ;889024;
     XBA                                                                  ;889028;
     STA.L $7EC506,X                                                      ;889029;
@@ -2517,7 +2517,7 @@ UNUSED_CalcPBRelatedHDMADataTables_Scaled_OnScreen_888FF8:
     JMP.W .loop                                                          ;889033;
 
 
-.next:
+  .next:
     INY                                                                  ;889036;
     BPL UNUSED_CalcPBRelatedHDMADataTables_Scaled_OnScreen_888FF8        ;889037;
     RTS                                                                  ;889039;
@@ -2544,13 +2544,13 @@ UNUSED_CalPBRelatedHDMADataTables_Scaled_OnScreen_88903A:
     BRA +                                                                ;88905D;
 
 
-.lowByteFF:
+  .lowByteFF:
     XBA                                                                  ;88905F;
     LDA.B #$FF                                                           ;889060;
 
-  + XBA                                                                  ;889062;
++   XBA                                                                  ;889062;
 
-.loop:
+  .loop:
     STA.L $7EC406,X                                                      ;889063;
     XBA                                                                  ;889067;
     STA.L $7EC506,X                                                      ;889068;
@@ -2561,7 +2561,7 @@ UNUSED_CalPBRelatedHDMADataTables_Scaled_OnScreen_88903A:
     JMP.W .loop                                                          ;889072;
 
 
-.next:
+  .next:
     INY                                                                  ;889075;
     BPL UNUSED_CalPBRelatedHDMADataTables_Scaled_OnScreen_88903A         ;889076;
     RTS                                                                  ;889078;
@@ -2631,7 +2631,7 @@ PreInstruction_PowerBombExplosion_1_PreExplosion_White:
     RTL                                                                  ;8890E4;
 
 
-.exploding:
+  .exploding:
     PHP                                                                  ;8890E5;
     PHB                                                                  ;8890E6;
     REP #$30                                                             ;8890E7;
@@ -2664,15 +2664,15 @@ PreInstruction_PowerBombExplosion_1_PreExplosion_White:
     JMP.W Calculate_PowerBombExplo_HDMADataTables_Scaled_RightOfScreen   ;88911D;
 
 
-.onScreen:
+  .onScreen:
     JMP.W Calculate_PowerBombExplosion_HDMADataTables_Scaled_OnScreen    ;889120;
 
 
-.offScreenLeft:
+  .offScreenLeft:
     JMP.W Calculate_PowerBombExplo_HDMADataTables_Scaled_LeftOfScreen    ;889123;
 
 
-.loopPadDataTableBegin:
+  .loopPadDataTableBegin:
     STA.L $7EC406,X                                                      ;889126;
     XBA                                                                  ;88912A;
     STA.L $7EC506,X                                                      ;88912B;
@@ -2685,7 +2685,7 @@ PreInstruction_PowerBombExplosion_1_PreExplosion_White:
     BEQ .finishedTable                                                   ;889138;
     LDA.B #$FF                                                           ;88913A;
 
-.loopPadDataTableEnd:
+  .loopPadDataTableEnd:
     STA.L $7EC406,X                                                      ;88913C;
     INC A                                                                ;889140;
     STA.L $7EC506,X                                                      ;889141;
@@ -2694,7 +2694,7 @@ PreInstruction_PowerBombExplosion_1_PreExplosion_White:
     CPX.B #$C0                                                           ;889147;
     BNE .loopPadDataTableEnd                                             ;889149;
 
-.finishedTable:
+  .finishedTable:
     LDA.W $0CED                                                          ;88914B;
     LSR A                                                                ;88914E;
     LSR A                                                                ;88914F;
@@ -2731,13 +2731,13 @@ PreInstruction_PowerBombExplosion_1_PreExplosion_White:
     JMP.W .return                                                        ;889197;
 
 
-.lessThan9200:
+  .lessThan9200:
     LDA.W $0CF0                                                          ;88919A;
     SEC                                                                  ;88919D;
     SBC.L PowerBomb_PreExplosion_RadiusAcceleration                      ;88919E;
     STA.W $0CF0                                                          ;8891A2;
 
-.return:
+  .return:
     PLB                                                                  ;8891A5;
     PLP                                                                  ;8891A6;
     RTL                                                                  ;8891A7;
@@ -2749,7 +2749,7 @@ PreInstruction_PowerBombExplosion_2_PreExplosion_Yellow:
     RTL                                                                  ;8891AD;
 
 
-.exploding:
+  .exploding:
     PHP                                                                  ;8891AE;
     PHB                                                                  ;8891AF;
     REP #$30                                                             ;8891B0;
@@ -2771,15 +2771,15 @@ PreInstruction_PowerBombExplosion_2_PreExplosion_Yellow:
     JMP.W Calc_PowerBombExplo_HDMADataTables_PreScaled_RightOfScreen     ;8891D2;
 
 
-.onScreen:
+  .onScreen:
     JMP.W Calculate_PowerBombExplo_HDMADataTables_PreScaled_OnScreen     ;8891D5;
 
 
-.offScreenLeft:
+  .offScreenLeft:
     JMP.W Calc_PowerBombExplo_HDMADataTables_PreScaled_LeftOfScreen      ;8891D8;
 
 
-.manualReturn:
+  .manualReturn:
     SEP #$30                                                             ;8891DB;
     LDA.B #$00                                                           ;8891DD;
     XBA                                                                  ;8891DF;
@@ -2817,7 +2817,7 @@ PreInstruction_PowerBombExplosion_2_PreExplosion_Yellow:
     INC.W $18CC,X                                                        ;889226;
     STZ.W $1908,X                                                        ;889229;
 
-.notA206:
+  .notA206:
     LDA.W $0CEC                                                          ;88922C;
     CLC                                                                  ;88922F;
     ADC.W $0CF0                                                          ;889230;
@@ -2828,7 +2828,7 @@ PreInstruction_PowerBombExplosion_2_PreExplosion_Yellow:
     SBC.L PowerBomb_PreExplosion_RadiusAcceleration                      ;88923C;
     STA.W $0CF0                                                          ;889240;
 
-.return:
+  .return:
     PLB                                                                  ;889243;
     PLP                                                                  ;889244;
     RTL                                                                  ;889245;
@@ -3217,7 +3217,7 @@ PreInstruction_CrystalFlash_2_AfterGlow:
     RTL                                                                  ;88A362;
 
 
-.exploding:
+  .exploding:
     DEC.W $1908,X                                                        ;88A363;
     BPL .return                                                          ;88A366;
     SEP #$20                                                             ;88A368;
@@ -3233,7 +3233,7 @@ PreInstruction_CrystalFlash_2_AfterGlow:
     ORA.B #$20                                                           ;88A37F;
     STA.W $0074                                                          ;88A381; >.<
 
-.green:
+  .green:
     LDA.W $0075                                                          ;88A384; >.<
     AND.B #$1F                                                           ;88A387;
     BEQ .blue                                                            ;88A389;
@@ -3241,7 +3241,7 @@ PreInstruction_CrystalFlash_2_AfterGlow:
     ORA.B #$40                                                           ;88A38C;
     STA.W $0075                                                          ;88A38E; >.<
 
-.blue:
+  .blue:
     LDA.W $0076                                                          ;88A391; >.<
     AND.B #$1F                                                           ;88A394;
     BEQ .setTimer                                                        ;88A396;
@@ -3249,16 +3249,16 @@ PreInstruction_CrystalFlash_2_AfterGlow:
     ORA.B #$80                                                           ;88A399;
     STA.W $0076                                                          ;88A39B; >.<
 
-.setTimer:
+  .setTimer:
     LDA.L PowerBomb_Stage5_HDMAObjectTimer                               ;88A39E;
     STA.W $1908,X                                                        ;88A3A2;
     REP #$20                                                             ;88A3A5;
 
-.return:
+  .return:
     RTL                                                                  ;88A3A7;
 
 
-.wake:
+  .wake:
     REP #$20                                                             ;88A3A8;
     LDA.W #$0001                                                         ;88A3AA;
     STA.W $18E4,X                                                        ;88A3AD;
@@ -3280,11 +3280,11 @@ UNUSED_CalcCrystalFlashHDMADataTables_PreScaled_Left_88A3B7:
     BRA .loop                                                            ;88A3CB;
 
 
-  + STA.L $7EC506,X                                                      ;88A3CD;
++   STA.L $7EC506,X                                                      ;88A3CD;
     LDA.B #$00                                                           ;88A3D1;
     STA.L $7EC406,X                                                      ;88A3D3;
 
-.loop:
+  .loop:
     INY                                                                  ;88A3D7;
     INX                                                                  ;88A3D8;
     CPX.W #$00C0                                                         ;88A3D9;
@@ -3300,20 +3300,20 @@ UNUSED_Calc_CF_HDMADataTables_PreScaled_OnScreen_88A3DF:
     BCC +                                                                ;88A3E8;
     LDA.B #$FF                                                           ;88A3EA;
 
-  + STA.L $7EC506,X                                                      ;88A3EC;
++   STA.L $7EC506,X                                                      ;88A3EC;
     LDA.W $0CE6                                                          ;88A3F0;
     SEC                                                                  ;88A3F3;
     SBC.W $0000,Y                                                        ;88A3F4;
     BCS +                                                                ;88A3F7;
     LDA.B #$00                                                           ;88A3F9;
 
-  + STA.L $7EC406,X                                                      ;88A3FB;
++   STA.L $7EC406,X                                                      ;88A3FB;
     INY                                                                  ;88A3FF;
     INX                                                                  ;88A400;
     CPX.W #$00C0                                                         ;88A401;
     BNE UNUSED_Calc_CF_HDMADataTables_PreScaled_OnScreen_88A3DF          ;88A404;
 
-.return:
+  .return:
     RTS                                                                  ;88A406;
 
 
@@ -3329,11 +3329,11 @@ UNUSED_Calc_CF_HDMADataTables_PreScaled_RightOfScreen_88A407:
     BRA .next                                                            ;88A41B;
 
 
-  + STA.L $7EC406,X                                                      ;88A41D;
++   STA.L $7EC406,X                                                      ;88A41D;
     LDA.B #$FF                                                           ;88A421;
     STA.L $7EC506,X                                                      ;88A423;
 
-.next:
+  .next:
     INY                                                                  ;88A427;
     INX                                                                  ;88A428;
     CPX.W #$00C0                                                         ;88A429;
@@ -3348,7 +3348,7 @@ Calculate_CrystalFlash_HDMAObjectTablePointers:
     RTL                                                                  ;88A434;
 
 
-.exploding:
+  .exploding:
     LDA.W $0CE2                                                          ;88A435;
     SEC                                                                  ;88A438;
     SBC.W $0911                                                          ;88A439;
@@ -3359,7 +3359,7 @@ Calculate_CrystalFlash_HDMAObjectTablePointers:
     BRA .offScreen                                                       ;88A445;
 
 
-  + STA.W $0CE6                                                          ;88A447;
++   STA.W $0CE6                                                          ;88A447;
     LDA.W $0CE4                                                          ;88A44A;
     SEC                                                                  ;88A44D;
     SBC.W $0915                                                          ;88A44E;
@@ -3368,10 +3368,10 @@ Calculate_CrystalFlash_HDMAObjectTablePointers:
     CMP.W #$0300                                                         ;88A455;
     BCC .onScreen                                                        ;88A458;
 
-.offScreen:
+  .offScreen:
     LDA.W #$0000                                                         ;88A45A;
 
-.onScreen:
+  .onScreen:
     EOR.W #$03FF                                                         ;88A45D;
     SEC                                                                  ;88A460;
     SBC.W #$0100                                                         ;88A461;
@@ -3381,7 +3381,7 @@ Calculate_CrystalFlash_HDMAObjectTablePointers:
     BNE +                                                                ;88A46D;
     STZ.W $0CE8                                                          ;88A46F;
 
-  + LDA.W $18C0,X                                                        ;88A472;
++   LDA.W $18C0,X                                                        ;88A472;
     AND.W #$00FF                                                         ;88A475;
     TAY                                                                  ;88A478;
     LDA.W $0CE8                                                          ;88A479;
@@ -3419,11 +3419,11 @@ Calculate_CrystalFlash_HDMADataTables_Scaled_LeftOfScreen:
     BRA .loop                                                            ;88A4B6;
 
 
-.lowByteZero:
+  .lowByteZero:
     XBA                                                                  ;88A4B8;
     LDA.B #$00                                                           ;88A4B9;
 
-.loop:
+  .loop:
     STA.L $7EC406,X                                                      ;88A4BB;
     XBA                                                                  ;88A4BF;
     STA.L $7EC506,X                                                      ;88A4C0;
@@ -3434,7 +3434,7 @@ Calculate_CrystalFlash_HDMADataTables_Scaled_LeftOfScreen:
     JMP.W .loop                                                          ;88A4CA;
 
 
-.next:
+  .next:
     INY                                                                  ;88A4CD;
     BPL Calculate_CrystalFlash_HDMADataTables_Scaled_LeftOfScreen        ;88A4CE;
     RTS                                                                  ;88A4D0;
@@ -3457,14 +3457,14 @@ Calculate_CrystalFlash_HDMADataTables_Scaled_OnScreen:
     BCC +                                                                ;88A4ED;
     LDA.B #$FF                                                           ;88A4EF;
 
-  + XBA                                                                  ;88A4F1;
++   XBA                                                                  ;88A4F1;
     LDA.W $0CE6                                                          ;88A4F2;
     SEC                                                                  ;88A4F5;
     SBC.W $4217                                                          ;88A4F6;
     BCS .loop                                                            ;88A4F9;
     LDA.B #$00                                                           ;88A4FB;
 
-.loop:
+  .loop:
     STA.L $7EC406,X                                                      ;88A4FD;
     XBA                                                                  ;88A501;
     STA.L $7EC506,X                                                      ;88A502;
@@ -3475,7 +3475,7 @@ Calculate_CrystalFlash_HDMADataTables_Scaled_OnScreen:
     JMP.W .loop                                                          ;88A50C;
 
 
-.next:
+  .next:
     INY                                                                  ;88A50F;
     BPL Calculate_CrystalFlash_HDMADataTables_Scaled_OnScreen            ;88A510;
     RTS                                                                  ;88A512;
@@ -3502,13 +3502,13 @@ Calculate_CrystalFlash_HDMADataTables_Scaled_RightOfScreen:
     BRA +                                                                ;88A536;
 
 
-.lowByteFF:
+  .lowByteFF:
     XBA                                                                  ;88A538;
     LDA.B #$FF                                                           ;88A539;
 
-  + XBA                                                                  ;88A53B;
++   XBA                                                                  ;88A53B;
 
-.loop:
+  .loop:
     STA.L $7EC406,X                                                      ;88A53C;
     XBA                                                                  ;88A540;
     STA.L $7EC506,X                                                      ;88A541;
@@ -3519,7 +3519,7 @@ Calculate_CrystalFlash_HDMADataTables_Scaled_RightOfScreen:
     JMP.W .loop                                                          ;88A54B;
 
 
-.next:
+  .next:
     INY                                                                  ;88A54E;
     BPL Calculate_CrystalFlash_HDMADataTables_Scaled_RightOfScreen       ;88A54F;
     RTS                                                                  ;88A551;
@@ -3531,7 +3531,7 @@ PreInstruction_CrystalFlash_1_Explosion:
     RTL                                                                  ;88A557;
 
 
-.exploding:
+  .exploding:
     PHP                                                                  ;88A558;
     PHB                                                                  ;88A559;
     REP #$30                                                             ;88A55A;
@@ -3564,15 +3564,15 @@ PreInstruction_CrystalFlash_1_Explosion:
     JMP.W Calculate_CrystalFlash_HDMADataTables_Scaled_RightOfScreen     ;88A590;
 
 
-.onScreen:
+  .onScreen:
     JMP.W Calculate_CrystalFlash_HDMADataTables_Scaled_OnScreen          ;88A593;
 
 
-.offScreenLeft:
+  .offScreenLeft:
     JMP.W Calculate_CrystalFlash_HDMADataTables_Scaled_LeftOfScreen      ;88A596;
 
 
-.loopPadDataTableBegin:
+  .loopPadDataTableBegin:
     STA.L $7EC406,X                                                      ;88A599;
     XBA                                                                  ;88A59D;
     STA.L $7EC506,X                                                      ;88A59E;
@@ -3585,7 +3585,7 @@ PreInstruction_CrystalFlash_1_Explosion:
     BEQ .finishedTable                                                   ;88A5AB;
     LDA.B #$FF                                                           ;88A5AD;
 
-.loopPadDataTableEnd:
+  .loopPadDataTableEnd:
     STA.L $7EC406,X                                                      ;88A5AF;
     INC A                                                                ;88A5B3;
     STA.L $7EC506,X                                                      ;88A5B4;
@@ -3594,7 +3594,7 @@ PreInstruction_CrystalFlash_1_Explosion:
     CPX.B #$C0                                                           ;88A5BA;
     BNE .loopPadDataTableEnd                                             ;88A5BC;
 
-.finishedTable:
+  .finishedTable:
     LDA.W $0CEB                                                          ;88A5BE;
     LSR A                                                                ;88A5C1;
     LSR A                                                                ;88A5C2;
@@ -3631,13 +3631,13 @@ PreInstruction_CrystalFlash_1_Explosion:
     JMP.W .return                                                        ;88A60A;
 
 
-.lessThan2000:
+  .lessThan2000:
     LDA.W $0CF0                                                          ;88A60D;
     CLC                                                                  ;88A610;
     ADC.L PowerBombExplosion_RadiusAcceleration                          ;88A611;
     STA.W $0CF0                                                          ;88A615;
 
-.return:
+  .return:
     PLB                                                                  ;88A618;
     PLP                                                                  ;88A619;
     RTL                                                                  ;88A61A;
@@ -3704,10 +3704,10 @@ PreInstruction_FXType_22_BG3XScroll:
     AND.W #$001E                                                         ;88A68E;
     STA.W $0596                                                          ;88A691;
 
-  + LDY.W $0596                                                          ;88A694;
++   LDY.W $0596                                                          ;88A694;
     LDX.W #$0000                                                         ;88A697;
 
-.loop:
+  .loop:
     LDA.W FXType_22_BG3XScrollHDMAData,Y                                 ;88A69A;
     STA.L $7E9E80,X                                                      ;88A69D;
     INX                                                                  ;88A6A1;
@@ -3719,7 +3719,7 @@ PreInstruction_FXType_22_BG3XScroll:
     BRA .merge                                                           ;88A6AA;
 
 
-.wavy:
+  .wavy:
     DEC.W $1920,X                                                        ;88A6AC;
     BNE +                                                                ;88A6AF;
     LDA.W #$0006                                                         ;88A6B1;
@@ -3730,11 +3730,11 @@ PreInstruction_FXType_22_BG3XScroll:
     AND.W #$001F                                                         ;88A6BC;
     STA.W $1914,X                                                        ;88A6BF;
 
-  + LDA.W $1914,X                                                        ;88A6C2;
++   LDA.W $1914,X                                                        ;88A6C2;
     TAX                                                                  ;88A6C5;
     LDY.W #$001E                                                         ;88A6C6;
 
-.loopWavy:
+  .loopWavy:
     LDA.B $B1                                                            ;88A6C9;
     CLC                                                                  ;88A6CB;
     ADC.W WaveDisplacementTable_Water,Y                                  ;88A6CC;
@@ -3748,7 +3748,7 @@ PreInstruction_FXType_22_BG3XScroll:
     DEY                                                                  ;88A6DB;
     BPL .loopWavy                                                        ;88A6DC;
 
-.merge:
+  .merge:
     LDA.W #$0000                                                         ;88A6DE;
     STA.L $7E9E00                                                        ;88A6E1;
     STA.L $7E9F00                                                        ;88A6E5;
@@ -3770,11 +3770,11 @@ PreInstruction_FXType_22_BG3XScroll:
     BRA +                                                                ;88A716;
 
 
-.lessThan400:
+  .lessThan400:
     LDA.W #$0000                                                         ;88A718;
     STA.L $7E9F02                                                        ;88A71B;
 
-  + LDX.W #$0005                                                         ;88A71F;
++   LDX.W #$0005                                                         ;88A71F;
     LDA.W #$9E80                                                         ;88A722; $7E
     STA.B $14                                                            ;88A725;
     LDA.W #$0080                                                         ;88A727;
@@ -3785,7 +3785,7 @@ PreInstruction_FXType_22_BG3XScroll:
     SBC.B $12                                                            ;88A733;
     TAY                                                                  ;88A735;
 
-.loopPad:
+  .loopPad:
     TYA                                                                  ;88A736;
     SEC                                                                  ;88A737;
     SBC.W #$0010                                                         ;88A738;
@@ -3803,14 +3803,14 @@ PreInstruction_FXType_22_BG3XScroll:
     BRA .loopPad                                                         ;88A757;
 
 
-.lessThan10:
+  .lessThan10:
     TYA                                                                  ;88A759;
     CMP.W #$0000                                                         ;88A75A;
     BEQ +                                                                ;88A75D;
     CLC                                                                  ;88A75F;
     ADC.W #$0080                                                         ;88A760;
 
-  + STA.L $7E9E00,X                                                      ;88A763;
++   STA.L $7E9E00,X                                                      ;88A763;
     STA.L $7E9F00,X                                                      ;88A767;
     LDA.W #$9E80                                                         ;88A76B; $7E
     STA.L $7E9E01,X                                                      ;88A76E;
@@ -3839,11 +3839,11 @@ Calculate_FXType_22_IndirectHDMATable:
     BMI .remainingScanlineCounter                                        ;88A79D;
     LDA.W #$00C1                                                         ;88A79F;
 
-.remainingScanlineCounter:
+  .remainingScanlineCounter:
     STA.B $12                                                            ;88A7A2;
     STA.B $18                                                            ;88A7A4;
 
-.loop:
+  .loop:
     SEC                                                                  ;88A7A6;
     SBC.W #$0010                                                         ;88A7A7;
     BMI .done                                                            ;88A7AA;
@@ -3860,10 +3860,10 @@ Calculate_FXType_22_IndirectHDMATable:
     BRA .loop                                                            ;88A7C2;
 
 
-.onlyOneEntryNeeded:
+  .onlyOneEntryNeeded:
     STA.B $12                                                            ;88A7C4;
 
-.done:
+  .done:
     LDA.B $18                                                            ;88A7C6;
     ORA.B $16                                                            ;88A7C8;
     STA.L $7E9E00,X                                                      ;88A7CA;
@@ -3873,7 +3873,7 @@ Calculate_FXType_22_IndirectHDMATable:
     INX                                                                  ;88A7D5;
     INX                                                                  ;88A7D6;
 
-.return:
+  .return:
     RTS                                                                  ;88A7D7;
 
 
@@ -3930,13 +3930,13 @@ Calculate_FXType_22_BG3YScrollHDMATable:
     STA.B $12                                                            ;88A83B;
     LDY.W #$0000                                                         ;88A83D;
 
-.loopFirstStrip:
+  .loopFirstStrip:
     CMP.B ($00),Y                                                        ;88A840;
     BMI +                                                                ;88A842;
     CMP.B ($09),Y                                                        ;88A844;
     BMI .foundFirstStrip                                                 ;88A846;
 
-  + INY                                                                  ;88A848;
++   INY                                                                  ;88A848;
     INY                                                                  ;88A849;
     INY                                                                  ;88A84A;
     INY                                                                  ;88A84B;
@@ -3948,7 +3948,7 @@ Calculate_FXType_22_BG3YScrollHDMATable:
     RTS                                                                  ;88A853;
 
 
-.foundFirstStrip:
+  .foundFirstStrip:
     LDA.B $12                                                            ;88A854;
     CMP.W #$04E0                                                         ;88A856;
     BMI .YposMod10                                                       ;88A859;
@@ -3956,10 +3956,10 @@ Calculate_FXType_22_BG3YScrollHDMATable:
     BRA +                                                                ;88A85E;
 
 
-.YposMod10:
+  .YposMod10:
     AND.W #$000F                                                         ;88A860;
 
-  + STA.B $16                                                            ;88A863;
++   STA.B $16                                                            ;88A863;
     LDA.B ($03),Y                                                        ;88A865;
     SEC                                                                  ;88A867;
     SBC.B $16                                                            ;88A868;
@@ -3973,16 +3973,16 @@ Calculate_FXType_22_BG3YScrollHDMATable:
     BRA .next                                                            ;88A87B;
 
 
-.loopHDMATable:
+  .loopHDMATable:
     LDA.B $12                                                            ;88A87D;
 
-.loopStrip:
+  .loopStrip:
     CMP.B ($00),Y                                                        ;88A87F;
     BMI +                                                                ;88A881;
     CMP.B ($09),Y                                                        ;88A883;
     BMI .foundStrip                                                      ;88A885;
 
-  + INY                                                                  ;88A887;
++   INY                                                                  ;88A887;
     INY                                                                  ;88A888;
     INY                                                                  ;88A889;
     INY                                                                  ;88A88A;
@@ -3994,7 +3994,7 @@ Calculate_FXType_22_BG3YScrollHDMATable:
     RTS                                                                  ;88A892;
 
 
-.foundStrip:
+  .foundStrip:
     LDA.B ($03),Y                                                        ;88A893;
     STA.L $7E9C00,X                                                      ;88A895;
     LDA.B ($06),Y                                                        ;88A899;
@@ -4002,7 +4002,7 @@ Calculate_FXType_22_BG3YScrollHDMATable:
     SBC.W $0598                                                          ;88A89C;
     STA.L $7E9C01,X                                                      ;88A89F;
 
-.next:
+  .next:
     LDA.L $7E9C00,X                                                      ;88A8A3;
     AND.W #$00FF                                                         ;88A8A7;
     STA.B $14                                                            ;88A8AA;
@@ -4032,7 +4032,7 @@ Damage_Samus_IfSheIsInTheTopRow:
     RTS                                                                  ;88A8D2;
 
 
-.8damage:
+  .8damage:
     LDA.W #$0008                                                         ;88A8D3;
     STA.W $0A50                                                          ;88A8D6;
     RTS                                                                  ;88A8D9;
@@ -4229,7 +4229,7 @@ Handle_ScrollingSky_BG2XScroll_HDMATables:
     REP #$30                                                             ;88ADC8;
     LDY.W #$0000                                                         ;88ADCA;
 
-.loopDataTable:
+  .loopDataTable:
     LDA.W ScrollingSky_ScrollingTable_HDMADataTableEntryPointer,Y        ;88ADCD;
     TAX                                                                  ;88ADD0;
     LDA.W ScrollingSky_ScrollingTable_scrollSubspeed,Y                   ;88ADD1;
@@ -4262,14 +4262,14 @@ Handle_ScrollingSky_BG2XScroll_HDMATables:
     LDY.W #$0000                                                         ;88AE1B;
     LDX.W #$0003                                                         ;88AE1E;
 
-.loopIndirectTable:
+  .loopIndirectTable:
     LDA.B $12                                                            ;88AE21;
     CMP.W ScrollingSky_ScrollingTable_topPosition,Y                      ;88AE23;
     BMI +                                                                ;88AE26;
     CMP.W ScrollingSky_ScrollingTable_nextEntry,Y                        ;88AE28;
     BMI .scrollingSection                                                ;88AE2B;
 
-  + TYA                                                                  ;88AE2D;
++   TYA                                                                  ;88AE2D;
     CLC                                                                  ;88AE2E;
     ADC.W #$0008                                                         ;88AE2F;
     TAY                                                                  ;88AE32;
@@ -4279,7 +4279,7 @@ Handle_ScrollingSky_BG2XScroll_HDMATables:
     SEC                                                                  ;88AE3B;
     SBC.B $12                                                            ;88AE3C;
 
-.loopNonScrollingSection:
+  .loopNonScrollingSection:
     STA.B $18                                                            ;88AE3E;
     CMP.W #$0080                                                         ;88AE40;
     BMI .lessThan80                                                      ;88AE43;
@@ -4296,7 +4296,7 @@ Handle_ScrollingSky_BG2XScroll_HDMATables:
     BRA .loopNonScrollingSection                                         ;88AE5C;
 
 
-.lessThan80:
+  .lessThan80:
     STA.L $7E9F00,X                                                      ;88AE5E;
     LDA.W #$00B5                                                         ;88AE62;
     STA.L $7E9F01,X                                                      ;88AE65;
@@ -4305,7 +4305,7 @@ Handle_ScrollingSky_BG2XScroll_HDMATables:
     RTL                                                                  ;88AE70;
 
 
-.scrollingSection:
+  .scrollingSection:
     LDA.W ScrollingSky_ScrollingTable_nextEntry,Y                        ;88AE71;
     SEC                                                                  ;88AE74;
     SBC.B $12                                                            ;88AE75;
@@ -4325,7 +4325,7 @@ Handle_ScrollingSky_BG2XScroll_HDMATables:
     SEC                                                                  ;88AE93;
     SBC.W #$007F                                                         ;88AE94;
 
-.heightLessThan80:
+  .heightLessThan80:
     STA.L $7E9F00,X                                                      ;88AE97;
     LDA.W ScrollingSky_ScrollingTable_HDMADataTableEntryPointer,Y        ;88AE9B;
     CLC                                                                  ;88AE9E;
@@ -4344,7 +4344,7 @@ Handle_ScrollingSky_BG2XScroll_HDMATables:
     JMP.W .loopIndirectTable                                             ;88AEB6;
 
 
-.terminateTable:
+  .terminateTable:
     LDA.W #$0000                                                         ;88AEB9;
     STA.L $7E9F03,X                                                      ;88AEBC;
     RTL                                                                  ;88AEC0;
@@ -4416,7 +4416,7 @@ RoomMainASM_ScrollingSky:
     RTL                                                                  ;88AFAF;
 
 
-.timeNotFrozen:
+  .timeNotFrozen:
     REP #$30                                                             ;88AFB0;
     LDA.W $0915                                                          ;88AFB2;
     STA.B $B7                                                            ;88AFB5;
@@ -4568,17 +4568,17 @@ PreInstruction_Fireflea_BG3XScroll:
     BRA .storeIndex                                                      ;88B0E6;
 
 
-.lessThanA:
+  .lessThanA:
     LDA.W $177A                                                          ;88B0E8;
     INC A                                                                ;88B0EB;
     CMP.W #$000C                                                         ;88B0EC;
     BCC .storeIndex                                                      ;88B0EF;
     LDA.W #$0000                                                         ;88B0F1;
 
-.storeIndex:
+  .storeIndex:
     STA.W $177A                                                          ;88B0F4;
 
-.nonZero:
+  .nonZero:
     REP #$30                                                             ;88B0F7;
     LDA.W $177A                                                          ;88B0F9;
     ASL A                                                                ;88B0FC;
@@ -4599,7 +4599,7 @@ PreInstruction_Fireflea_BG3XScroll:
     ORA.B #$20                                                           ;88B118;
     STA.B $74                                                            ;88B11A;
 
-.return:
+  .return:
     PLP                                                                  ;88B11C;
     RTL                                                                  ;88B11D;
 
@@ -4669,7 +4669,7 @@ PreInstruction_ExpandingContractingEffect_BG2YScroll:
     BRA +                                                                ;88B1AD;
 
 
-.expanding:
+  .expanding:
     LDA.W $05A2                                                          ;88B1AF;
     CLC                                                                  ;88B1B2;
     ADC.W #$0400                                                         ;88B1B3;
@@ -4678,14 +4678,14 @@ PreInstruction_ExpandingContractingEffect_BG2YScroll:
     BMI +                                                                ;88B1BC;
     INC.W $05A0                                                          ;88B1BE;
 
-  + LDA.W #$0080                                                         ;88B1C1;
++   LDA.W #$0080                                                         ;88B1C1;
     STA.W $05A4                                                          ;88B1C4;
     STA.W $05A6                                                          ;88B1C7;
     LDA.W #$007F                                                         ;88B1CA;
     STA.W $05A8                                                          ;88B1CD;
     STA.W $05AA                                                          ;88B1D0;
 
-.counterLessThan4:
+  .counterLessThan4:
     LDA.W $05A4                                                          ;88B1D3;
     ASL A                                                                ;88B1D6;
     TAX                                                                  ;88B1D7;
@@ -4696,7 +4696,7 @@ PreInstruction_ExpandingContractingEffect_BG2YScroll:
     LDA.W #$0020                                                         ;88B1DF;
     STA.B $14                                                            ;88B1E2;
 
-.loop:
+  .loop:
     LDA.W $05A6                                                          ;88B1E4;
     SEC                                                                  ;88B1E7;
     SBC.W $05A4                                                          ;88B1E8;
@@ -4716,7 +4716,7 @@ PreInstruction_ExpandingContractingEffect_BG2YScroll:
     INC.W $05A6                                                          ;88B207;
     DEC.W $05AA                                                          ;88B20A;
 
-  + INC.W $05A4                                                          ;88B20D;
++   INC.W $05A4                                                          ;88B20D;
     DEC.W $05A8                                                          ;88B210;
     DEY                                                                  ;88B213;
     DEY                                                                  ;88B214;
@@ -4744,7 +4744,7 @@ Handle_Earthquake_SoundEffect:
     LDX.W #$0000                                                         ;88B235;
     LDA.W .soundIndex,X                                                  ;88B238;
 
-.quake:
+  .quake:
     JSL.L QueueSound_Lib2_Max6                                           ;88B23B;
     LDA.W $05E5                                                          ;88B23F;
     AND.W #$0003                                                         ;88B242;
@@ -4756,7 +4756,7 @@ Handle_Earthquake_SoundEffect:
     INX                                                                  ;88B24E;
     STX.W $0607                                                          ;88B24F;
 
-.return:
+  .return:
     PLP                                                                  ;88B252;
     PLY                                                                  ;88B253;
     PLX                                                                  ;88B254;
@@ -4765,9 +4765,9 @@ Handle_Earthquake_SoundEffect:
 ;        _________ Sound index (sound library 2)
 ;       |      ___ Base timer
 ;       |     |
-.soundIndex:
+  .soundIndex:
     dw $0046                                                             ;88B256;
-.baseTimer:
+  .baseTimer:
     dw       $0001
     dw $0046,$0003
     dw $0046,$0002
@@ -4824,7 +4824,7 @@ Handle_Tide:
     RTS                                                                  ;88B2D0;
 
 
-.smallTide:
+  .smallTide:
     STZ.W $1970                                                          ;88B2D1;
     STZ.W $1972                                                          ;88B2D4;
     LDA.W $1975                                                          ;88B2D7;
@@ -4838,7 +4838,7 @@ Handle_Tide:
     BPL +                                                                ;88B2E6;
     DEC.W $1972                                                          ;88B2E8;
 
-  + STA.W $1971                                                          ;88B2EB;
++   STA.W $1971                                                          ;88B2EB;
     LDA.L SineCosineTables_NegativeCosine_SignExtended,X                 ;88B2EE;
     BPL .smallBelowMidpoint                                              ;88B2F2;
     LDA.W $1974                                                          ;88B2F4;
@@ -4847,17 +4847,17 @@ Handle_Tide:
     BRA .returnSmallTide                                                 ;88B2FB;
 
 
-.smallBelowMidpoint:
+  .smallBelowMidpoint:
     LDA.W $1974                                                          ;88B2FD;
     CLC                                                                  ;88B300;
     ADC.W #$0120                                                         ;88B301;
 
-.returnSmallTide:
+  .returnSmallTide:
     STA.W $1974                                                          ;88B304;
     RTS                                                                  ;88B307;
 
 
-.bigTide:
+  .bigTide:
     STZ.W $1970                                                          ;88B308;
     STZ.W $1972                                                          ;88B30B;
     LDA.W $1975                                                          ;88B30E;
@@ -4873,7 +4873,7 @@ Handle_Tide:
     BPL +                                                                ;88B31F;
     DEC.W $1972                                                          ;88B321;
 
-  + STA.W $1971                                                          ;88B324;
++   STA.W $1971                                                          ;88B324;
     LDA.L SineCosineTables_NegativeCosine_SignExtended,X                 ;88B327;
     BPL .bigBelowMidpoint                                                ;88B32B;
     LDA.W $1974                                                          ;88B32D;
@@ -4882,12 +4882,12 @@ Handle_Tide:
     BRA .returnBigTide                                                   ;88B334;
 
 
-.bigBelowMidpoint:
+  .bigBelowMidpoint:
     LDA.W $1974                                                          ;88B336;
     CLC                                                                  ;88B339;
     ADC.W #$00E0                                                         ;88B33A;
 
-.returnBigTide:
+  .returnBigTide:
     STA.W $1974                                                          ;88B33D;
     RTS                                                                  ;88B340;
 
@@ -4909,25 +4909,25 @@ FXRisingFunction_LavaAcid_Normal:
     BEQ .return1                                                         ;88B350;
     BCS .doRise                                                          ;88B352;
 
-.return1:
+  .return1:
     RTS                                                                  ;88B354;
 
 
-.negative:
+  .negative:
     LDA.W $197A                                                          ;88B355;
     CMP.W $1978                                                          ;88B358;
     BEQ .return2                                                         ;88B35B;
     BCC .doRise                                                          ;88B35D;
 
-.return2:
+  .return2:
     RTS                                                                  ;88B35F;
 
 
-.doRise:
+  .doRise:
     LDA.W #FXRisingFunction_LavaAcid_WaitToRise                          ;88B360;
     STA.W $196C                                                          ;88B363;
 
-.return3:
+  .return3:
     RTS                                                                  ;88B366;
 
 
@@ -4942,7 +4942,7 @@ FXRisingFunction_LavaAcid_WaitToRise:
     LDA.W #FXRisingFunction_LavaAcid_Rising                              ;88B37B;
     STA.W $196C                                                          ;88B37E;
 
-.return:
+  .return:
     RTS                                                                  ;88B381;
 
 
@@ -4957,7 +4957,7 @@ FXRisingFunction_LavaAcid_Rising:
     RTS                                                                  ;88B396;
 
 
-.reachedTarget:
+  .reachedTarget:
     STZ.W $197C                                                          ;88B397;
     LDA.W #FXRisingFunction_LavaAcid_Normal                              ;88B39A;
     STA.W $196C                                                          ;88B39D;
@@ -4984,13 +4984,13 @@ PreInstruction_LavaAcid_BG3YScroll:
     RTL                                                                  ;88B3BD;
 
 
-.timeNotFrozen:
+  .timeNotFrozen:
     REP #$30                                                             ;88B3BE;
     PEA.W .manualReturn-1                                                ;88B3C0;
     JMP.W ($196C)                                                        ;88B3C3;
 
 
-.manualReturn:
+  .manualReturn:
     JSR.W Handle_Tide                                                    ;88B3C6;
     SEP #$10                                                             ;88B3C9;
     LDA.W $1976                                                          ;88B3CB;
@@ -5013,26 +5013,26 @@ PreInstruction_LavaAcid_BG3YScroll:
     BEQ +                                                                ;88B3FB;
     BPL .positive                                                        ;88B3FD;
 
-  + EOR.W #$001F                                                         ;88B3FF;
++   EOR.W #$001F                                                         ;88B3FF;
     AND.W #$001F                                                         ;88B402;
     ORA.W #$0100                                                         ;88B405;
     BRA .merge                                                           ;88B408;
 
 
-.positive:
+  .positive:
     CMP.W #$0100                                                         ;88B40A;
     BCC .onScreen                                                        ;88B40D;
 
-.offScreen:
+  .offScreen:
     LDA.W #$0000                                                         ;88B40F;
     BRA .merge                                                           ;88B412;
 
 
-.onScreen:
+  .onScreen:
     EOR.W #$00FF                                                         ;88B414;
     AND.W #$00FF                                                         ;88B417;
 
-.merge:
+  .merge:
     STA.L $7E9C02                                                        ;88B41A;
     LDX.W $18B2                                                          ;88B41E;
     LDA.W $196E                                                          ;88B421;
@@ -5051,7 +5051,7 @@ PreInstruction_LavaAcid_BG3YScroll:
     AND.W #$00FF                                                         ;88B443;
     JSL.L QueueSound_Lib2_Max6                                           ;88B446;
 
-  + LDA.W $05E5                                                          ;88B44A;
++   LDA.W $05E5                                                          ;88B44A;
     XBA                                                                  ;88B44D;
     STA.W $05E5                                                          ;88B44E;
     LDX.W $18B2                                                          ;88B451;
@@ -5069,13 +5069,13 @@ PreInstruction_LavaAcid_BG3YScroll:
     BRA .merge2                                                          ;88B46D;
 
 
-  + CMP.W #$0200                                                         ;88B46F;
++   CMP.W #$0200                                                         ;88B46F;
     BCC .merge2                                                          ;88B472;
 
-.negative:
+  .negative:
     LDA.W #$01FF                                                         ;88B474;
 
-.merge2:
+  .merge2:
     EOR.W #$01FF                                                         ;88B477;
     INC A                                                                ;88B47A;
     AND.W #$03FF                                                         ;88B47B;
@@ -5115,13 +5115,13 @@ PreInstruction_LavaAcid_BG2YScroll:
     BIT.W #$0006                                                         ;88B4E4;
     BNE .wavy                                                            ;88B4E7;
 
-.timeNotFrozen:
+  .timeNotFrozen:
     LDX.W $18B2                                                          ;88B4E9;
     JSR.W Setup_LavaAcid_BG2YScrollDataTable_NotWavy                     ;88B4EC;
     BRA .merge                                                           ;88B4EF;
 
 
-.wavy:
+  .wavy:
     BIT.W #$0002                                                         ;88B4F1;
     BNE .verticallyWavy                                                  ;88B4F4;
     LDX.W $18B2                                                          ;88B4F6;
@@ -5129,11 +5129,11 @@ PreInstruction_LavaAcid_BG2YScroll:
     BRA .merge                                                           ;88B4FC;
 
 
-.verticallyWavy:
+  .verticallyWavy:
     LDX.W $18B2                                                          ;88B4FE;
     JSR.W Setup_LavaAcid_BG2YScrollDataTable_VerticallyWavy              ;88B501;
 
-.merge:
+  .merge:
     LDX.W $18B2                                                          ;88B504;
     LDA.B $B7                                                            ;88B507;
     AND.W #$000F                                                         ;88B509;
@@ -5160,7 +5160,7 @@ Setup_LavaAcid_BG2YScrollDataTable_NotWavy:
     LDA.B $B7                                                            ;88B52C;
     AND.W #$01FF                                                         ;88B52E;
 
-.loop:
+  .loop:
     STA.L $7E9C46,X                                                      ;88B531;
     DEX                                                                  ;88B535;
     DEX                                                                  ;88B536;
@@ -5185,14 +5185,14 @@ Setup_LavaAcid_BG2YScrollDataTable_HorizontallyWavy:
     AND.W #$001E                                                         ;88B557;
     STA.W $1914,X                                                        ;88B55A;
 
-.nonZeroTimer:
+  .nonZeroTimer:
     PHX                                                                  ;88B55D;
     LDY.W $1914,X                                                        ;88B55E;
     LDX.B #$1E                                                           ;88B561;
     LDA.W #$000F                                                         ;88B563;
     STA.B $12                                                            ;88B566;
 
-.loop:
+  .loop:
     LDA.B $B5                                                            ;88B568;
     CLC                                                                  ;88B56A;
     ADC.W .waveDisplacementTable,Y                                       ;88B56B;
@@ -5214,7 +5214,7 @@ Setup_LavaAcid_BG2YScrollDataTable_HorizontallyWavy:
     RTS                                                                  ;88B588;
 
 
-.waveDisplacementTable:
+  .waveDisplacementTable:
     dw $0000,$0000,$0001,$0001,$0001,$0001,$0000,$0000                   ;88B589;
     dw $FFFF,$FFFF,$FFFF,$FFFF,$0000,$0000,$0000,$0000                   ;88B599;
 
@@ -5234,7 +5234,7 @@ Setup_LavaAcid_BG2YScrollDataTable_VerticallyWavy:
     AND.W #$001E                                                         ;88B5C5;
     STA.W $1914,X                                                        ;88B5C8;
 
-.nonZeroTimer:
+  .nonZeroTimer:
     PHX                                                                  ;88B5CB;
     LDA.B $B7                                                            ;88B5CC;
     AND.W #$000F                                                         ;88B5CE;
@@ -5252,7 +5252,7 @@ Setup_LavaAcid_BG2YScrollDataTable_VerticallyWavy:
     LDA.W #$000F                                                         ;88B5E4;
     STA.B $12                                                            ;88B5E7;
 
-.loop:
+  .loop:
     LDA.B $B7                                                            ;88B5E9;
     CLC                                                                  ;88B5EB;
     ADC.W .waveDisplacementTable,Y                                       ;88B5EC;
@@ -6496,7 +6496,7 @@ FXType_6_Water:
     db $42,$0F                                                           ;88C41F;
     dw InstList_Water_BG2_Xscroll                                        ;88C421;
 
-.notWavy:
+  .notWavy:
     JSL.L Spawn_BG3_Scroll_HDMA_Object                                   ;88C423;
     RTL                                                                  ;88C427;
 
@@ -6510,25 +6510,25 @@ FXRisingFunction_Water_Normal:
     BEQ .return1                                                         ;88C435;
     BCS .doRise                                                          ;88C437;
 
-.return1:
+  .return1:
     RTS                                                                  ;88C439;
 
 
-.negative:
+  .negative:
     LDA.W $197A                                                          ;88C43A;
     CMP.W $1978                                                          ;88C43D;
     BEQ .return2                                                         ;88C440;
     BCC .doRise                                                          ;88C442;
 
-.return2:
+  .return2:
     RTS                                                                  ;88C444;
 
 
-.doRise:
+  .doRise:
     LDA.W #FXRisingFunction_Water_WaitToRise                             ;88C445;
     STA.W $196C                                                          ;88C448;
 
-.return3:
+  .return3:
     RTS                                                                  ;88C44B;
 
 
@@ -6538,7 +6538,7 @@ FXRisingFunction_Water_WaitToRise:
     LDA.W #FXRisingFunction_Water_Rising                                 ;88C451;
     STA.W $196C                                                          ;88C454;
 
-.return:
+  .return:
     RTS                                                                  ;88C457;
 
 
@@ -6549,7 +6549,7 @@ FXRisingFunction_Water_Rising:
     STA.W $196C                                                          ;88C460;
     STZ.W $197C                                                          ;88C463;
 
-.return:
+  .return:
     RTS                                                                  ;88C466;
 
 
@@ -6573,7 +6573,7 @@ PreInstruction_Water_BG3_Xscroll:
     RTL                                                                  ;88C49B;
 
 
-.notFrozen:
+  .notFrozen:
     PHX                                                                  ;88C49C;
     PHY                                                                  ;88C49D;
     REP #$30                                                             ;88C49E;
@@ -6581,7 +6581,7 @@ PreInstruction_Water_BG3_Xscroll:
     JMP.W ($196C)                                                        ;88C4A3;
 
 
-.functionReturn:
+  .functionReturn:
     JSR.W Handle_Tide                                                    ;88C4A6;
     SEP #$10                                                             ;88C4A9;
     LDA.W $1976                                                          ;88C4AB;
@@ -6598,26 +6598,26 @@ PreInstruction_Water_BG3_Xscroll:
     BEQ +                                                                ;88C4C7;
     BPL .notAboveScreen                                                  ;88C4C9;
 
-  + EOR.W #$001F                                                         ;88C4CB;
++   EOR.W #$001F                                                         ;88C4CB;
     AND.W #$001F                                                         ;88C4CE;
     ORA.W #$0100                                                         ;88C4D1;
     BRA .merge                                                           ;88C4D4;
 
 
-.notAboveScreen:
+  .notAboveScreen:
     CMP.W #$0100                                                         ;88C4D6;
     BCC .onScreen                                                        ;88C4D9;
 
-.negative:
+  .negative:
     LDA.W #$0000                                                         ;88C4DB;
     BRA .merge                                                           ;88C4DE;
 
 
-.onScreen:
+  .onScreen:
     EOR.W #$00FF                                                         ;88C4E0;
     AND.W #$00FF                                                         ;88C4E3;
 
-.merge:
+  .merge:
     STA.L $7ECADE                                                        ;88C4E6;
     LDX.W $18B2                                                          ;88C4EA;
     LDA.W $192C,X                                                        ;88C4ED;
@@ -6627,10 +6627,10 @@ PreInstruction_Water_BG3_Xscroll:
     BRA +                                                                ;88C4F6;
 
 
-.lowByte:
+  .lowByte:
     AND.W #$00FF                                                         ;88C4F8;
 
-  + CLC                                                                  ;88C4FB;
++   CLC                                                                  ;88C4FB;
     ADC.W $0911                                                          ;88C4FC;
     STA.B $14                                                            ;88C4FF;
     DEC.W $1920,X                                                        ;88C501;
@@ -6643,12 +6643,12 @@ PreInstruction_Water_BG3_Xscroll:
     AND.W #$001E                                                         ;88C511;
     STA.W $1914,X                                                        ;88C514;
 
-.loopSetup:
+  .loopSetup:
     LDA.W $1914,X                                                        ;88C517;
     TAX                                                                  ;88C51A;
     LDY.B #$1E                                                           ;88C51B;
 
-.loop:
+  .loop:
     LDA.B $14                                                            ;88C51D;
     CLC                                                                  ;88C51F;
     ADC.W WaveDisplacementTable_Water,Y                                  ;88C520;
@@ -6670,7 +6670,7 @@ PreInstruction_Water_BG3_Xscroll:
     ADC.W #$0040                                                         ;88C541;
     STA.W $192C,X                                                        ;88C544;
 
-  + LDX.W $18B2                                                          ;88C547;
++   LDX.W $18B2                                                          ;88C547;
     LDA.W $195E                                                          ;88C54A;
     BMI .negative2                                                       ;88C54D;
     SEC                                                                  ;88C54F;
@@ -6683,14 +6683,14 @@ PreInstruction_Water_BG3_Xscroll:
     BRA .merge2                                                          ;88C55F;
 
 
-.lessThan100:
+  .lessThan100:
     CMP.W #$0200                                                         ;88C561;
     BCC .merge2                                                          ;88C564;
 
-.negative2:
+  .negative2:
     LDA.W #$01FF                                                         ;88C566;
 
-.merge2:
+  .merge2:
     EOR.W #$01FF                                                         ;88C569;
     INC A                                                                ;88C56C;
     AND.W #$03FF                                                         ;88C56D;
@@ -6724,15 +6724,15 @@ PreInstruction_Water_BG2_Xscroll:
     BNE .wavy                                                            ;88C59B;
     STZ.W $18B4,X                                                        ;88C59D;
 
-.notWavy:
+  .notWavy:
     JSR.W Setup_Water_BG2_Xscroll_DataTable_NotWavy                      ;88C5A0;
     BRA .merge                                                           ;88C5A3;
 
 
-.wavy:
+  .wavy:
     JSR.W Setup_Water_BG2_Xscroll_DataTable_Wavy                         ;88C5A5;
 
-.merge:
+  .merge:
     LDA.W $18C0,X                                                        ;88C5A8;
     AND.W #$00FF                                                         ;88C5AB;
     TAY                                                                  ;88C5AE;
@@ -6748,14 +6748,14 @@ PreInstruction_Water_BG2_Xscroll:
     BRA .merge2                                                          ;88C5C4;
 
 
-.lessThan100:
+  .lessThan100:
     CMP.W #$0200                                                         ;88C5C6;
     BCC .merge2                                                          ;88C5C9;
 
-.negative:
+  .negative:
     LDA.W #$01FF                                                         ;88C5CB;
 
-.merge2:
+  .merge2:
     EOR.W #$01FF                                                         ;88C5CE;
     AND.W #$03FF                                                         ;88C5D1;
     STA.B $12                                                            ;88C5D4;
@@ -6780,7 +6780,7 @@ Setup_Water_BG2_Xscroll_DataTable_Wavy:
     AND.W #$001E                                                         ;88C5F4;
     STA.W $1914,X                                                        ;88C5F7;
 
-  + PHX                                                                  ;88C5FA;
++   PHX                                                                  ;88C5FA;
     LDA.B $B7                                                            ;88C5FB;
     AND.W #$000F                                                         ;88C5FD;
     ASL A                                                                ;88C600;
@@ -6797,7 +6797,7 @@ Setup_Water_BG2_Xscroll_DataTable_Wavy:
     LDA.W #$000F                                                         ;88C613;
     STA.B $12                                                            ;88C616;
 
-.loop:
+  .loop:
     LDA.B $B5                                                            ;88C618;
     CLC                                                                  ;88C61A;
     ADC.W WaveDisplacementTable_Water,Y                                  ;88C61B;
@@ -6823,7 +6823,7 @@ Setup_Water_BG2_Xscroll_DataTable_NotWavy:
     LDX.B #$1E                                                           ;88C637;
     LDA.B $B5                                                            ;88C639;
 
-.loop:
+  .loop:
     STA.L $7E9C48,X                                                      ;88C63B;
     DEX                                                                  ;88C63F;
     DEX                                                                  ;88C640;
@@ -8569,7 +8569,7 @@ Instruction_HDMAObjectBG3XVelocity:
     RTS                                                                  ;88D991;
 
 
-.BG3XVelocities:
+  .BG3XVelocities:
     dw $FA00,$0600,$FC00,$0400                                           ;88D992;
 
 if !FEATURE_KEEP_UNREFERENCED
@@ -8591,7 +8591,7 @@ PreInstruction_RainBG3Scroll:
     RTL                                                                  ;88D9B2;
 
 
-.notFrozen:
+  .notFrozen:
     LDA.W $1944,X                                                        ;88D9B3;
     SEC                                                                  ;88D9B6;
     SBC.W $0915                                                          ;88D9B7;
@@ -8603,10 +8603,10 @@ PreInstruction_RainBG3Scroll:
     BRA +                                                                ;88D9C5;
 
 
-.lowByteD9C7:
+  .lowByteD9C7:
     AND.W #$00FF                                                         ;88D9C7;
 
-  + CLC                                                                  ;88D9CA;
++   CLC                                                                  ;88D9CA;
     ADC.B $12                                                            ;88D9CB;
     STA.L $7ECADE                                                        ;88D9CD;
     LDA.W $1914,X                                                        ;88D9D1;
@@ -8626,10 +8626,10 @@ PreInstruction_RainBG3Scroll:
     BRA +                                                                ;88D9F3;
 
 
-.lowByteD9F5:
+  .lowByteD9F5:
     AND.W #$00FF                                                         ;88D9F5;
 
-  + CLC                                                                  ;88D9F8;
++   CLC                                                                  ;88D9F8;
     ADC.B $12                                                            ;88D9F9;
     STA.L $7ECADC                                                        ;88D9FB;
     LDA.W $1920,X                                                        ;88D9FF;
@@ -8686,7 +8686,7 @@ PreInstruction_Spores_BG3_Xsscroll:
     RTL                                                                  ;88DA58;
 
 
-.notFrozen:
+  .notFrozen:
     LDA.W $192C,X                                                        ;88DA59;
     XBA                                                                  ;88DA5C;
     BPL .lowByteDA64                                                     ;88DA5D;
@@ -8694,10 +8694,10 @@ PreInstruction_Spores_BG3_Xsscroll:
     BRA +                                                                ;88DA62;
 
 
-.lowByteDA64:
+  .lowByteDA64:
     AND.W #$00FF                                                         ;88DA64;
 
-  + CLC                                                                  ;88DA67;
++   CLC                                                                  ;88DA67;
     ADC.W $0915                                                          ;88DA68;
     STA.L $7ECADE                                                        ;88DA6B;
     LDA.W $192C,X                                                        ;88DA6F;
@@ -8712,10 +8712,10 @@ PreInstruction_Spores_BG3_Xsscroll:
     BRA +                                                                ;88DA84;
 
 
-.lowByteDA86:
+  .lowByteDA86:
     AND.W #$00FF                                                         ;88DA86;
 
-  + CLC                                                                  ;88DA89;
++   CLC                                                                  ;88DA89;
     ADC.W $0911                                                          ;88DA8A;
     STA.L $7ECADC                                                        ;88DA8D;
     STA.B $12                                                            ;88DA91;
@@ -8739,12 +8739,12 @@ UNUSED_HandleSporesWaviness_88DA9F:
     AND.W #$001F                                                         ;88DAAF;
     STA.W $1914,X                                                        ;88DAB2;
 
-.setupLoop:
+  .setupLoop:
     LDA.W $1914,X                                                        ;88DAB5;
     TAX                                                                  ;88DAB8;
     LDY.B #$1E                                                           ;88DAB9;
 
-.loop:
+  .loop:
     LDA.B $12                                                            ;88DABB;
     CLC                                                                  ;88DABD;
     ADC.W $0AF6                                                          ;88DABE;
@@ -8770,7 +8770,7 @@ UNUSED_HandleSporesWaviness_88DA9F:
     RTL                                                                  ;88DAE7;
 
 
-.waveDisplacementTable:
+  .waveDisplacementTable:
 ; Same as WaveDisplacementTable_Water
     dw $0000,$0001,$0001,$0000,$0000,$FFFF,$FFFF,$0000                   ;88DAE8;
     dw $0000,$0001,$0001,$0000,$0000,$FFFF,$FFFF,$0000                   ;88DAF8;
@@ -8822,7 +8822,7 @@ PreInstruction_Fog_BG3Scroll:
     RTL                                                                  ;88DB47;
 
 
-.timeNotFrozen:
+  .timeNotFrozen:
     LDA.W $1914,X                                                        ;88DB48;
     XBA                                                                  ;88DB4B;
     BPL .lowByteDB53                                                     ;88DB4C;
@@ -8830,10 +8830,10 @@ PreInstruction_Fog_BG3Scroll:
     BRA +                                                                ;88DB51;
 
 
-.lowByteDB53:
+  .lowByteDB53:
     AND.W #$00FF                                                         ;88DB53;
 
-  + CLC                                                                  ;88DB56;
++   CLC                                                                  ;88DB56;
     ADC.W $0915                                                          ;88DB57;
     STA.L $7ECADE                                                        ;88DB5A;
     LDA.W $1914,X                                                        ;88DB5E;
@@ -8847,10 +8847,10 @@ PreInstruction_Fog_BG3Scroll:
     BRA +                                                                ;88DB71;
 
 
-.lowByteDB73:
+  .lowByteDB73:
     AND.W #$00FF                                                         ;88DB73;
 
-  + CLC                                                                  ;88DB76;
++   CLC                                                                  ;88DB76;
     ADC.W $0911                                                          ;88DB77;
     STA.L $7ECADC                                                        ;88DB7A;
     LDA.W $1920,X                                                        ;88DB7E;
@@ -8871,7 +8871,7 @@ FXType_26_TourianEntranceStatue:
     LDA.W #$0202                                                         ;88DB9B;
     STA.L $7ECD20                                                        ;88DB9E;
 
-.tourianLocked:
+  .tourianLocked:
     SEP #$20                                                             ;88DBA2;
     LDA.B #$4A                                                           ;88DBA4;
     STA.B $59                                                            ;88DBA6;
@@ -8925,7 +8925,7 @@ PreInst_TourianEntranceStatue_BG2_Yscroll_WaitForUnlock:
     INC.W $18CC,X                                                        ;88DC18;
     INC.W $18CC,X                                                        ;88DC1B;
 
-.setYscroll:
+  .setYscroll:
     JSR.W Set_TourianEntranceStatue_BG2_Yscroll                          ;88DC1E;
     PLP                                                                  ;88DC21;
     RTL                                                                  ;88DC22;
@@ -8955,7 +8955,7 @@ PreInst_TourianEntranceStatue_BG2Yscroll_DescentDelay:
     INC.W $18CC,X                                                        ;88DC5F;
     INC.W $18CC,X                                                        ;88DC62;
 
-.setYscroll:
+  .setYscroll:
     JSR.W Set_TourianEntranceStatue_BG2_Yscroll                          ;88DC65;
     RTL                                                                  ;88DC68;
 
@@ -8992,10 +8992,10 @@ PreInstruction_TourianEntranceStatue_BG2_Yscroll_Descending:
     INC.W $18CC,X                                                        ;88DCB0;
     INC.W $18CC,X                                                        ;88DCB3;
 
-.setYscroll:
+  .setYscroll:
     JSR.W Set_TourianEntranceStatue_BG2_Yscroll                          ;88DCB6;
 
-.return:
+  .return:
     RTL                                                                  ;88DCB9;
 
 
@@ -9023,7 +9023,7 @@ Instruction_GotoY_ifEntranceToTourianUnlocked:
     RTS                                                                  ;88DCEA;
 
 
-.gotoY:
+  .gotoY:
     LDA.W #$FF10                                                         ;88DCEB;
     STA.W $1920,X                                                        ;88DCEE;
     STA.L $7E9E00                                                        ;88DCF1;
@@ -9152,7 +9152,7 @@ FXType_2C_CeresHaze:
     RTL                                                                  ;88DDD8;
 
 
-.alive:
+  .alive:
     JSL.L Spawn_HDMAObject                                               ;88DDD9;
     db $40,$32                                                           ;88DDDD;
     dw InstList_CeresHaze_ColorMathSubScnBackColor_RidleyDead_0          ;88DDDF;
@@ -9179,7 +9179,7 @@ UNUSED_PreInst_CeresHaze_ColorMathSubScnBackdropColor_NoFade:
     ORA.B #$0F                                                           ;88DE00;
     LDX.B #$0F                                                           ;88DE02;
 
-.loop:
+  .loop:
     STA.L $7E9D00,X                                                      ;88DE04;
     DEC A                                                                ;88DE08;
     DEX                                                                  ;88DE09;
@@ -9207,7 +9207,7 @@ Setup_CeresHaze_ColorMathSubScnBackColor_HDMAObject_FadingIn:
     RTL                                                                  ;88DE26;
 
 
-.fadingIn:
+  .fadingIn:
     LDA.W #PreInstruction_CeresHaze_ColorMathSubScnBackColor_FadingIn    ;88DE27;
     STA.W $18F0,X                                                        ;88DE2A;
 
@@ -9231,7 +9231,7 @@ PreInstruction_CeresHaze_ColorMathSubScnBackColor_FadingIn:
     LDA.W $1914,X                                                        ;88DE50;
     LDX.B #$0F                                                           ;88DE53;
 
-.loop:
+  .loop:
     STA.B $12                                                            ;88DE55;
     ORA.B $14                                                            ;88DE57;
     STA.L $7E9D00,X                                                      ;88DE59;
@@ -9240,7 +9240,7 @@ PreInstruction_CeresHaze_ColorMathSubScnBackColor_FadingIn:
     BPL .next                                                            ;88DE60;
     LDA.B #$00                                                           ;88DE62;
 
-.next:
+  .next:
     DEX                                                                  ;88DE64;
     BPL .loop                                                            ;88DE65;
     PLP                                                                  ;88DE67;
@@ -9249,7 +9249,7 @@ PreInstruction_CeresHaze_ColorMathSubScnBackColor_FadingIn:
     RTL                                                                  ;88DE6C;
 
 
-.done:
+  .done:
     LDA.W #PreInstruction_CeresHaze_ColorMathSubScnBackColor_FadedIn     ;88DE6D;
     STA.W $18F0,X                                                        ;88DE70;
     RTL                                                                  ;88DE73;
@@ -9270,7 +9270,7 @@ PreInstruction_CeresHaze_ColorMathSubScnBackColor_FadedIn:
     RTL                                                                  ;88DE8E;
 
 
-.fadingOut:
+  .fadingOut:
     LDA.W #PreInstruction_CeresHaze_ColorMathSubScnBackColor_FadingOut   ;88DE8F;
     STA.W $18F0,X                                                        ;88DE92;
     RTL                                                                  ;88DE95;
@@ -9295,7 +9295,7 @@ PreInstruction_CeresHaze_ColorMathSubScnBackColor_FadingOut:
     LDA.W $1914,X                                                        ;88DEB6;
     LDX.B #$0F                                                           ;88DEB9;
 
-.loop:
+  .loop:
     STA.B $12                                                            ;88DEBB;
     ORA.B $14                                                            ;88DEBD;
     STA.L $7E9D00,X                                                      ;88DEBF;
@@ -9304,14 +9304,14 @@ PreInstruction_CeresHaze_ColorMathSubScnBackColor_FadingOut:
     BPL .next                                                            ;88DEC6;
     LDA.B #$00                                                           ;88DEC8;
 
-.next:
+  .next:
     DEX                                                                  ;88DECA;
     BPL .loop                                                            ;88DECB;
     PLP                                                                  ;88DECD;
     PLX                                                                  ;88DECE;
     DEC.W $1914,X                                                        ;88DECF;
 
-.return:
+  .return:
     RTL                                                                  ;88DED2;
 
 
@@ -9469,7 +9469,7 @@ PreInstruction_DraygonMainScreenLayers:
     BRA .aroundBottom                                                    ;88DFD1;
 
 
-.aroundTop:
+  .aroundTop:
     LDA.W #$0001                                                         ;88DFD3;
     STA.W $18E4,X                                                        ;88DFD6;
     LDA.W #InstList_DraygonMainScreenLayers_DraygonAroundTop             ;88DFD9;
@@ -9477,7 +9477,7 @@ PreInstruction_DraygonMainScreenLayers:
     RTL                                                                  ;88DFDF;
 
 
-.offScreen:
+  .offScreen:
     LDA.W #$0001                                                         ;88DFE0;
     STA.W $18E4,X                                                        ;88DFE3;
     LDA.W #InstList_DraygonMainScreenLayers_DraygonOffScreen             ;88DFE6;
@@ -9485,7 +9485,7 @@ PreInstruction_DraygonMainScreenLayers:
     RTL                                                                  ;88DFEC;
 
 
-.aroundBottom:
+  .aroundBottom:
     LDA.W #$0001                                                         ;88DFED;
     STA.W $18E4,X                                                        ;88DFF0;
     LDA.W #InstList_DraygonMainScreenLayers_DraygonAroundBottom          ;88DFF3;
@@ -9493,7 +9493,7 @@ PreInstruction_DraygonMainScreenLayers:
     RTL                                                                  ;88DFF9;
 
 
-.aroundMiddle:
+  .aroundMiddle:
     LDA.W #$0001                                                         ;88DFFA;
     STA.W $18E4,X                                                        ;88DFFD;
     LDA.W #InstList_DraygonMainScreenLayers_DraygonAroundMiddle          ;88E000;
@@ -9549,12 +9549,12 @@ PreInstruction_VariaSuitPickup:
     LDA.W #$0012                                                         ;88E046;
     STA.W $1986                                                          ;88E049;
 
-.return:
+  .return:
     PLP                                                                  ;88E04C;
     RTL                                                                  ;88E04D;
 
 
-.pointers:
+  .pointers:
     dw SuitPickup_Stage0_LightBeamAppears                                ;88E04E;
     dw SuitPickup_Stage1_LightBeamWidens_Linear                          ;88E050;
     dw SuitPickup_Stage3_LightBeamWidens_Curved                          ;88E052;
@@ -9582,12 +9582,12 @@ PreInstruction_GravitySuitPickup:
     LDA.W #$0012                                                         ;88E07C;
     STA.W $1986                                                          ;88E07F;
 
-.return:
+  .return:
     PLP                                                                  ;88E082;
     RTL                                                                  ;88E083;
 
 
-.poitners:
+  .poitners:
     dw SuitPickup_Stage0_LightBeamAppears                                ;88E084;
     dw SuitPickup_Stage1_LightBeamWidens_Linear                          ;88E086;
     dw SuitPickup_Stage3_LightBeamWidens_Curved                          ;88E088;
@@ -9604,7 +9604,7 @@ SuitPickup_Stage0_LightBeamAppears:
     TAY                                                                  ;88E09C;
     LDX.W #$0000                                                         ;88E09D;
 
-.loopUpperHalf:
+  .loopUpperHalf:
     LDA.W .positions                                                     ;88E0A0;
     STA.L $7E9800,X                                                      ;88E0A3;
     INX                                                                  ;88E0A7;
@@ -9613,10 +9613,10 @@ SuitPickup_Stage0_LightBeamAppears:
     BEQ +                                                                ;88E0AA;
     BPL .loopUpperHalf                                                   ;88E0AC;
 
-  + LDX.W #$01FE                                                         ;88E0AE;
++   LDX.W #$01FE                                                         ;88E0AE;
     LDY.W $0DEE                                                          ;88E0B1;
 
-.loopLowerHalf:
+  .loopLowerHalf:
     LDA.W .positions                                                     ;88E0B4;
     STA.L $7E9800,X                                                      ;88E0B7;
     DEX                                                                  ;88E0BB;
@@ -9625,19 +9625,19 @@ SuitPickup_Stage0_LightBeamAppears:
     BEQ +                                                                ;88E0BE;
     BPL .loopLowerHalf                                                   ;88E0C0;
 
-  + LDA.W $0DEE                                                          ;88E0C2;
++   LDA.W $0DEE                                                          ;88E0C2;
     CMP.W #$0080                                                         ;88E0C5;
     BMI .return                                                          ;88E0C8;
     INC.W $0DEC                                                          ;88E0CA;
     LDA.W #$7878                                                         ;88E0CD;
     STA.W $0DEE                                                          ;88E0D0;
 
-.return:
+  .return:
     SEC                                                                  ;88E0D3;
     RTS                                                                  ;88E0D4;
 
 
-.positions:
+  .positions:
     db $78,$78                                                           ;88E0D5;
 
 SuitPickup_Stage1_LightBeamWidens_Linear:
@@ -9653,7 +9653,7 @@ SuitPickup_Stage1_LightBeamWidens_Linear:
     REP #$20                                                             ;88E0ED;
     LDX.W #$01FE                                                         ;88E0EF;
 
-.loop:
+  .loop:
     LDA.W $0DEE                                                          ;88E0F2;
     STA.L $7E9800,X                                                      ;88E0F5;
     DEX                                                                  ;88E0F9;
@@ -9667,7 +9667,7 @@ SuitPickup_Stage1_LightBeamWidens_Linear:
     LDA.W #$846C                                                         ;88E10B; Suit pickup light beam left position = 6Ch, right position = 84h
     STA.W $0DEE                                                          ;88E10E;
 
-.return:
+  .return:
     SEC                                                                  ;88E111;
     RTS                                                                  ;88E112;
 
@@ -9688,30 +9688,30 @@ SuitPickup_Stage3_LightBeamWidens_Curved:
     BCC .greaterThanZero                                                 ;88E12F;
     LDA.B #$FF                                                           ;88E131;
 
-.greaterThanZero:
+  .greaterThanZero:
     STA.W $0DEF                                                          ;88E133;
     REP #$20                                                             ;88E136;
     BRA .loopSetup                                                       ;88E138;
 
 
-.lessThanZero:
+  .lessThanZero:
     REP #$20                                                             ;88E13A;
     LDA.W #$FF00                                                         ;88E13C;
     STA.W $0DEE                                                          ;88E13F;
 
-.loopSetup:
+  .loopSetup:
     SEP #$20                                                             ;88E142;
     LDX.W #$0000                                                         ;88E144;
     LDY.W #$0000                                                         ;88E147;
 
-.loopUpperHalf:
+  .loopUpperHalf:
     LDA.W $0DEE                                                          ;88E14A;
     SEC                                                                  ;88E14D;
     SBC.W SuitPickup_LightBeam_CurveWidths,Y                             ;88E14E;
     BPL +                                                                ;88E151;
     LDA.B #$00                                                           ;88E153;
 
-  + STA.L $7E9800,X                                                      ;88E155;
++   STA.L $7E9800,X                                                      ;88E155;
     INX                                                                  ;88E159;
     LDA.W $0DEF                                                          ;88E15A;
     CLC                                                                  ;88E15D;
@@ -9719,21 +9719,21 @@ SuitPickup_Stage3_LightBeamWidens_Curved:
     BCC +                                                                ;88E161;
     LDA.B #$FF                                                           ;88E163;
 
-  + STA.L $7E9800,X                                                      ;88E165;
++   STA.L $7E9800,X                                                      ;88E165;
     INX                                                                  ;88E169;
     INY                                                                  ;88E16A;
     CPX.W #$0100                                                         ;88E16B;
     BMI .loopUpperHalf                                                   ;88E16E;
     DEY                                                                  ;88E170;
 
-.loopLowerHalf:
+  .loopLowerHalf:
     LDA.W $0DEE                                                          ;88E171;
     SEC                                                                  ;88E174;
     SBC.W SuitPickup_LightBeam_CurveWidths,Y                             ;88E175;
     BPL +                                                                ;88E178;
     LDA.B #$00                                                           ;88E17A;
 
-  + STA.L $7E9800,X                                                      ;88E17C;
++   STA.L $7E9800,X                                                      ;88E17C;
     INX                                                                  ;88E180;
     LDA.W $0DEF                                                          ;88E181;
     CLC                                                                  ;88E184;
@@ -9741,7 +9741,7 @@ SuitPickup_Stage3_LightBeamWidens_Curved:
     BCC +                                                                ;88E188;
     LDA.B #$FF                                                           ;88E18A;
 
-  + STA.L $7E9800,X                                                      ;88E18C;
++   STA.L $7E9800,X                                                      ;88E18C;
     INX                                                                  ;88E190;
     DEY                                                                  ;88E191;
     CPX.W #$0200                                                         ;88E192;
@@ -9760,7 +9760,7 @@ SuitPickup_Stage3_LightBeamWidens_Curved:
     STA.W $0DDC                                                          ;88E1B2;
     STZ.W $0DEE                                                          ;88E1B5;
 
-.return:
+  .return:
     SEC                                                                  ;88E1B8;
     RTS                                                                  ;88E1B9;
 
@@ -9773,10 +9773,10 @@ SuitPickup_Stage4_LightBeamShrinks:
     BRA +                                                                ;88E1C5;
 
 
-.advanceToOrange:
+  .advanceToOrange:
     JSR.W AdvanceSuitPickup_ColorMathSubScnBackdrop_TransitionToBlue     ;88E1C7;
 
-  + LDA.W $0DDC                                                          ;88E1CA;
++   LDA.W $0DDC                                                          ;88E1CA;
     AND.W #$FF00                                                         ;88E1CD;
     XBA                                                                  ;88E1D0;
     STA.B $12                                                            ;88E1D1;
@@ -9787,7 +9787,7 @@ SuitPickup_Stage4_LightBeamShrinks:
     TAY                                                                  ;88E1DC;
     LDX.W #$0000                                                         ;88E1DD;
 
-.loopUpperHalf:
+  .loopUpperHalf:
     LDA.W #$00FF                                                         ;88E1E0;
     STA.L $7E9800,X                                                      ;88E1E3;
     INX                                                                  ;88E1E7;
@@ -9796,12 +9796,12 @@ SuitPickup_Stage4_LightBeamShrinks:
     BEQ .setupLowerLoop                                                  ;88E1EA;
     BPL .loopUpperHalf                                                   ;88E1EC;
 
-.setupLowerLoop:
+  .setupLowerLoop:
     LDX.W #$01FE                                                         ;88E1EE;
     LDY.W $0DEE                                                          ;88E1F1;
     DEY                                                                  ;88E1F4;
 
-.loopLowerHalf:
+  .loopLowerHalf:
     LDA.W #$00FF                                                         ;88E1F5;
     STA.L $7E9800,X                                                      ;88E1F8;
     DEX                                                                  ;88E1FC;
@@ -9810,7 +9810,7 @@ SuitPickup_Stage4_LightBeamShrinks:
     BEQ +                                                                ;88E1FF;
     BPL .loopLowerHalf                                                   ;88E201;
 
-  + LDA.W $0DDC                                                          ;88E203;
++   LDA.W $0DDC                                                          ;88E203;
     SEC                                                                  ;88E206;
     SBC.W #$0020                                                         ;88E207;
     STA.W $0DDC                                                          ;88E20A;
@@ -9819,14 +9819,14 @@ SuitPickup_Stage4_LightBeamShrinks:
     LDA.W #$0100                                                         ;88E212;
     STA.W $0DDC                                                          ;88E215;
 
-  + LDA.W $0DEE                                                          ;88E218;
++   LDA.W $0DEE                                                          ;88E218;
     CMP.W #$0080                                                         ;88E21B;
     BMI .return                                                          ;88E21E;
     INC.W $0DEC                                                          ;88E220;
     LDA.W #$F8FF                                                         ;88E223;
     STA.W $0DEE                                                          ;88E226;
 
-.return:
+  .return:
     SEC                                                                  ;88E229;
     RTS                                                                  ;88E22A;
 
@@ -9850,7 +9850,7 @@ SuitPickup_Stage5_LightBeamDissipates:
     BMI .return                                                          ;88E251;
     INC.W $0DEC                                                          ;88E253;
 
-.return:
+  .return:
     SEC                                                                  ;88E256;
     RTS                                                                  ;88E257;
 
@@ -9908,7 +9908,7 @@ AdvanceSuitPickup_ColorMathSubScnBackdrop_TransitionToWhite:
     LDA.B #$3F                                                           ;88E2C6;
     STA.W $0DF0                                                          ;88E2C8;
 
-.green:
+  .green:
     LDA.W $0DF1                                                          ;88E2CB;
     CMP.B #$5F                                                           ;88E2CE;
     BEQ .blue                                                            ;88E2D0;
@@ -9920,7 +9920,7 @@ AdvanceSuitPickup_ColorMathSubScnBackdrop_TransitionToWhite:
     LDA.B #$5F                                                           ;88E2DB;
     STA.W $0DF1                                                          ;88E2DD;
 
-.blue:
+  .blue:
     LDA.W $0DF2                                                          ;88E2E0;
     CMP.B #$9F                                                           ;88E2E3;
     BEQ .return                                                          ;88E2E5;
@@ -9932,7 +9932,7 @@ AdvanceSuitPickup_ColorMathSubScnBackdrop_TransitionToWhite:
     LDA.B #$9F                                                           ;88E2F0;
     STA.W $0DF2                                                          ;88E2F2;
 
-.return:
+  .return:
     REP #$20                                                             ;88E2F5;
     SEC                                                                  ;88E2F7;
     RTS                                                                  ;88E2F8;
@@ -9946,21 +9946,21 @@ AdvanceSuitPickup_ColorMathSubScnBackdrop_TransitionToOrange:
     DEC A                                                                ;88E302;
     STA.W $0DF0                                                          ;88E303;
 
-.green:
+  .green:
     LDA.W $0DF1                                                          ;88E306;
     CMP.B #$4D                                                           ;88E309;
     BEQ .blue                                                            ;88E30B;
     DEC A                                                                ;88E30D;
     STA.W $0DF1                                                          ;88E30E;
 
-.blue:
+  .blue:
     LDA.W $0DF2                                                          ;88E311;
     CMP.B #$83                                                           ;88E314;
     BEQ .return                                                          ;88E316;
     DEC A                                                                ;88E318;
     STA.W $0DF2                                                          ;88E319;
 
-.return:
+  .return:
     REP #$20                                                             ;88E31C;
     SEC                                                                  ;88E31E;
     RTS                                                                  ;88E31F;
@@ -10024,21 +10024,21 @@ AdvanceSuitPickup_ColorMathSubScnBackdrop_TransitionToBlue:
     DEC A                                                                ;88E3AB;
     STA.W $0DF0                                                          ;88E3AC;
 
-.green:
+  .green:
     LDA.W $0DF1                                                          ;88E3AF;
     CMP.B #$49                                                           ;88E3B2;
     BEQ .blue                                                            ;88E3B4;
     DEC A                                                                ;88E3B6;
     STA.W $0DF1                                                          ;88E3B7;
 
-.blue:
+  .blue:
     LDA.W $0DF2                                                          ;88E3BA;
     CMP.B #$90                                                           ;88E3BD;
     BEQ .return                                                          ;88E3BF;
     DEC A                                                                ;88E3C1;
     STA.W $0DF2                                                          ;88E3C2;
 
-.return:
+  .return:
     REP #$20                                                             ;88E3C5;
     SEC                                                                  ;88E3C7;
     RTS                                                                  ;88E3C8;
@@ -10068,22 +10068,22 @@ PreInstruction_PhantoonSemiTransparency:
     BRA .return                                                          ;88E45C;
 
 
-.BG2Disabled:
+  .BG2Disabled:
     LDA.W #$0004                                                         ;88E45E;
     STA.W $1986                                                          ;88E461;
     BRA .return                                                          ;88E464;
 
 
-.semiTransparent:
+  .semiTransparent:
     LDA.W #$001A                                                         ;88E466;
     STA.W $1986                                                          ;88E469;
 
-.return:
+  .return:
     PLP                                                                  ;88E46C;
     RTL                                                                  ;88E46D;
 
 
-.delete:
+  .delete:
     LDA.W #$0004                                                         ;88E46E;
     STA.W $1986                                                          ;88E471;
     LDX.W $18B2                                                          ;88E474;
@@ -10161,7 +10161,7 @@ Instruction_Setup_WavyPhantoon:
     BRA .merge                                                           ;88E51B;
 
 
-.wavelengthDoubled:
+  .wavelengthDoubled:
     LDA.W #$00C0                                                         ;88E51D;
     STA.L $7E9000                                                        ;88E520;
     STA.L $7E9003                                                        ;88E524;
@@ -10178,7 +10178,7 @@ Instruction_Setup_WavyPhantoon:
     LDA.W #$0000                                                         ;88E54C;
     STA.L $7E900C                                                        ;88E54F;
 
-.merge:
+  .merge:
     LDA.W #$FFFE                                                         ;88E553;
     STA.W $1914,X                                                        ;88E556;
     LDA.W #$0001                                                         ;88E559;
@@ -10205,7 +10205,7 @@ PreInstruction_WavyPhantoon:
     RTL                                                                  ;88E581;
 
 
-.phantoonEnabled:
+  .phantoonEnabled:
     BIT.W #$0001                                                         ;88E582;
     BNE .doubledE593                                                     ;88E585;
     LDA.W #$0008                                                         ;88E587;
@@ -10215,13 +10215,13 @@ PreInstruction_WavyPhantoon:
     BRA +                                                                ;88E591;
 
 
-.doubledE593:
+  .doubledE593:
     LDA.W #$0004                                                         ;88E593;
     STA.B $1C                                                            ;88E596;
     LDA.W #$0080                                                         ;88E598;
     STA.B $1E                                                            ;88E59B;
 
-  + PHX                                                                  ;88E59D;
++   PHX                                                                  ;88E59D;
     DEC.W $1920,X                                                        ;88E59E;
     BNE .nonZeroTimer                                                    ;88E5A1;
     LDA.W #$0001                                                         ;88E5A3;
@@ -10235,12 +10235,12 @@ PreInstruction_WavyPhantoon:
     AND.W #$01FF                                                         ;88E5B5;
     STA.W $1914,X                                                        ;88E5B8;
 
-.nonZeroTimer:
+  .nonZeroTimer:
     LDA.W $1914,X                                                        ;88E5BB;
     STA.B $14                                                            ;88E5BE;
     LDX.W #$0000                                                         ;88E5C0;
 
-.loop:
+  .loop:
     PHX                                                                  ;88E5C3;
     LDX.B $14                                                            ;88E5C4;
     LDA.L SineCosineTables_8bitSine_SignExtended,X                       ;88E5C6;
@@ -10248,7 +10248,7 @@ PreInstruction_WavyPhantoon:
     JMP.W .negative                                                      ;88E5CC;
 
 
-.positive:
+  .positive:
     STA.B $12                                                            ;88E5CF;
     SEP #$20                                                             ;88E5D1;
     STA.W $4202                                                          ;88E5D3;
@@ -10316,7 +10316,7 @@ PreInstruction_WavyPhantoon:
     JMP.W .next                                                          ;88E653;
 
 
-.negative:
+  .negative:
     EOR.W #$FFFF                                                         ;88E656;
     INC A                                                                ;88E659;
     STA.B $12                                                            ;88E65A;
@@ -10384,7 +10384,7 @@ PreInstruction_WavyPhantoon:
     SBC.B $12                                                            ;88E6D8;
     STA.L $7E9100,X                                                      ;88E6DA;
 
-.next:
+  .next:
     INX                                                                  ;88E6DE;
     INX                                                                  ;88E6DF;
     CPX.B $1E                                                            ;88E6E0;
@@ -10392,12 +10392,12 @@ PreInstruction_WavyPhantoon:
     JMP.W .loop                                                          ;88E6E4;
 
 
-  + LDA.W $0FF4                                                          ;88E6E7;
++   LDA.W $0FF4                                                          ;88E6E7;
     BIT.W #$0001                                                         ;88E6EA;
     BNE .doubledE706                                                     ;88E6ED;
     LDX.W #$003E                                                         ;88E6EF;
 
-.loopNotDoubled:
+  .loopNotDoubled:
     LDA.B $B5                                                            ;88E6F2;
     SEC                                                                  ;88E6F4;
     SBC.L $7E9100,X                                                      ;88E6F5;
@@ -10410,10 +10410,10 @@ PreInstruction_WavyPhantoon:
     BRA .return                                                          ;88E704;
 
 
-.doubledE706:
+  .doubledE706:
     LDX.W #$007E                                                         ;88E706;
 
-.loopDoubled:
+  .loopDoubled:
     LDA.B $B5                                                            ;88E709;
     SEC                                                                  ;88E70B;
     SBC.L $7E9100,X                                                      ;88E70C;
@@ -10424,7 +10424,7 @@ PreInstruction_WavyPhantoon:
     DEX                                                                  ;88E718;
     BPL .loopDoubled                                                     ;88E719;
 
-.return:
+  .return:
     PLX                                                                  ;88E71B;
     PLP                                                                  ;88E71C;
     RTL                                                                  ;88E71D;
@@ -10531,12 +10531,12 @@ PreInstruction_MotherBrainRainbowBeam:
     PLB                                                                  ;88E7DF;
     JSR.W Set_RainbowBeam_ColorMathSubscreenBackdropColor                ;88E7E0;
 
-.return:
+  .return:
     PLP                                                                  ;88E7E3;
     RTL                                                                  ;88E7E4;
 
 
-.delete:
+  .delete:
     LDX.W $18B2                                                          ;88E7E5;
     STZ.W $18B4,X                                                        ;88E7E8;
     PLP                                                                  ;88E7EB;
@@ -10552,13 +10552,13 @@ Set_RainbowBeam_ColorMathSubscreenBackdropColor:
     BRA .setColor                                                        ;88E7FB;
 
 
-.notSet:
+  .notSet:
     INC.W $1914                                                          ;88E7FD;
     INC.W $1914                                                          ;88E800;
     INC.W $1914                                                          ;88E803;
     INC.W $1914                                                          ;88E806;
 
-.setColor:
+  .setColor:
     PHA                                                                  ;88E809;
     SEP #$20                                                             ;88E80A;
     AND.B #$1F                                                           ;88E80C;
@@ -10707,7 +10707,7 @@ Update_MorphBallEyeBeam_HDMATable_ColorMathSubScnBackColor:
     BRA .merge                                                           ;88E9BD;
 
 
-.offScreen:
+  .offScreen:
     SEP #$20                                                             ;88E9BF;
     LDA.B #$7E                                                           ;88E9C1;
     STA.B $02                                                            ;88E9C3;
@@ -10716,7 +10716,7 @@ Update_MorphBallEyeBeam_HDMATable_ColorMathSubScnBackColor:
     STA.B $00                                                            ;88E9CA;
     JSL.L Calc_Xray_HDMADataTable_OffScreen                              ;88E9CC;
 
-.merge:
+  .merge:
     PLX                                                                  ;88E9D0;
     SEP #$20                                                             ;88E9D1;
     LDA.W $1914,X                                                        ;88E9D3;
@@ -10761,7 +10761,7 @@ PreInstruction_MorphBallEyeBeam_BeamIsWidening:
     LDA.W #$0001                                                         ;88EA31;
     STA.W $18E4,X                                                        ;88EA34;
 
-.update:
+  .update:
     JSR.W Update_MorphBallEyeBeam_HDMATable_ColorMathSubScnBackColor     ;88EA37;
     PLP                                                                  ;88EA3A;
     RTL                                                                  ;88EA3B;
@@ -10785,7 +10785,7 @@ PreInstruction_MorphBallEyeBeamHDMA_FullBeam:
     RTL                                                                  ;88EA5C;
 
 
-.update:
+  .update:
     JSR.W Update_MorphBallEyeBeam_HDMATable_ColorMathSubScnBackColor     ;88EA5D;
     LDA.L $7E9090                                                        ;88EA60;
     ASL A                                                                ;88EA64;
@@ -10852,7 +10852,7 @@ PreInstruction_MorphBallEyeBeamHDMA_DeactivateBeam:
     STZ.W $192C,X                                                        ;88EAEE;
     LDX.W #$01FE                                                         ;88EAF1;
 
-.loop:
+  .loop:
     LDA.W #$00FF                                                         ;88EAF4;
     STA.L $7E9100,X                                                      ;88EAF7;
     DEX                                                                  ;88EAFB;
@@ -10874,7 +10874,7 @@ PreInstruction_MorphBallEyeBeamHDMA_DeactivateBeam:
     BRA .return                                                          ;88EB27;
 
 
-.notDone:
+  .notDone:
     REP #$20                                                             ;88EB29;
     JSR.W Update_MorphBallEyeBeam_HDMATable_ColorMathSubScnBackColor     ;88EB2B;
     LDX.W $18B2                                                          ;88EB2E;
@@ -10885,24 +10885,24 @@ PreInstruction_MorphBallEyeBeamHDMA_DeactivateBeam:
     DEC A                                                                ;88EB3A;
     STA.W $1914,X                                                        ;88EB3B;
 
-.green:
+  .green:
     LDA.W $1915,X                                                        ;88EB3E;
     CMP.B #$40                                                           ;88EB41;
     BEQ .blue                                                            ;88EB43;
     DEC A                                                                ;88EB45;
     STA.W $1915,X                                                        ;88EB46;
 
-.blue:
+  .blue:
     LDA.W $1920,X                                                        ;88EB49;
     CMP.B #$80                                                           ;88EB4C;
     BEQ .returnREP20                                                     ;88EB4E;
     DEC A                                                                ;88EB50;
     STA.W $1920,X                                                        ;88EB51;
 
-.returnREP20:
+  .returnREP20:
     REP #$20                                                             ;88EB54; >.<
 
-.return:
+  .return:
     PLP                                                                  ;88EB56;
     RTL                                                                  ;88EB57;
 
@@ -10979,7 +10979,7 @@ PreInst_ColorMathSubScnBackdropColor_TitleSequenceGradient:
     LDA.W #$0001                                                         ;88EBCA;
     STA.W $18E4,X                                                        ;88EBCD;
 
-.return:
+  .return:
     PLP                                                                  ;88EBD0;
     RTL                                                                  ;88EBD1;
 
@@ -10998,7 +10998,7 @@ PreInstruction_ColorMathControlRegB_TitleSequenceGradient:
     LDA.W #$0001                                                         ;88EBE8;
     STA.W $18E4,X                                                        ;88EBEB;
 
-.return:
+  .return:
     PLP                                                                  ;88EBEE;
     RTL                                                                  ;88EBEF;
 
@@ -11048,7 +11048,7 @@ PreInstruction_IntroCutsceneCrossFade:
     LDA.W #$0001                                                         ;88EC33;
     STA.W $18E4,X                                                        ;88EC36;
 
-.return:
+  .return:
     PLP                                                                  ;88EC39;
     RTL                                                                  ;88EC3A;
 
@@ -11128,7 +11128,7 @@ PreInstruction_WavySamus:
     RTL                                                                  ;88ECD0;
 
 
-.enabled:
+  .enabled:
     LDA.W #$0004                                                         ;88ECD1;
     STA.B $1C                                                            ;88ECD4;
     LDA.W #$0080                                                         ;88ECD6;
@@ -11146,7 +11146,7 @@ PreInstruction_WavySamus:
     STA.B $14                                                            ;88ECF1;
     LDX.W #$0000                                                         ;88ECF3;
 
-.loop:
+  .loop:
     PHX                                                                  ;88ECF6;
     LDX.B $14                                                            ;88ECF7;
     LDA.L SineCosineTables_8bitSine_SignExtended,X                       ;88ECF9;
@@ -11154,7 +11154,7 @@ PreInstruction_WavySamus:
     JMP.W .negative                                                      ;88ECFF;
 
 
-  + STA.B $12                                                            ;88ED02;
++   STA.B $12                                                            ;88ED02;
     SEP #$20                                                             ;88ED04;
     STA.W $4202                                                          ;88ED06;
     LDA.W $0D9E                                                          ;88ED09;
@@ -11221,7 +11221,7 @@ PreInstruction_WavySamus:
     JMP.W .next                                                          ;88ED86;
 
 
-.negative:
+  .negative:
     EOR.W #$FFFF                                                         ;88ED89;
     INC A                                                                ;88ED8C;
     STA.B $12                                                            ;88ED8D;
@@ -11289,7 +11289,7 @@ PreInstruction_WavySamus:
     SBC.B $12                                                            ;88EE0B;
     STA.L $7E9800,X                                                      ;88EE0D;
 
-.next:
+  .next:
     INX                                                                  ;88EE11;
     INX                                                                  ;88EE12;
     CPX.B $1E                                                            ;88EE13;
@@ -11297,9 +11297,9 @@ PreInstruction_WavySamus:
     JMP.W .loop                                                          ;88EE17;
 
 
-  + LDX.W #$007E                                                         ;88EE1A;
++   LDX.W #$007E                                                         ;88EE1A;
 
-.loopBG3XScroll:
+  .loopBG3XScroll:
     LDA.B $B9                                                            ;88EE1D;
     SEC                                                                  ;88EE1F;
     SBC.L $7E9800,X                                                      ;88EE20;
